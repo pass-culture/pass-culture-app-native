@@ -1,0 +1,2 @@
+$1  {{camelCase ModuleName}}: Reducer<{{ModuleName}}State, {{ModuleName}}Action>;
+};

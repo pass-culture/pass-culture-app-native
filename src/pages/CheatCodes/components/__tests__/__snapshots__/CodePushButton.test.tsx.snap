@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodePushButton prints AWAITING_USER_ACTION 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "marginLeft": 5,
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 12,
+      }
+    }
+  >
+    Awaiting action
+  </Text>
+</View>
+`;
+
+exports[`CodePushButton prints CHECKING_FOR_UPDATE 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "marginLeft": 5,
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 12,
+      }
+    }
+  >
+    Checking for update
+  </Text>
+</View>
+`;
+
+exports[`CodePushButton prints DOWNLOADING_PACKAGE 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "marginLeft": 5,
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 12,
+      }
+    }
+  >
+    Downloading
+  </Text>
+</View>
+`;
+
+exports[`CodePushButton prints INSTALLING_UPDATE 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "marginLeft": 5,
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 12,
+      }
+    }
+  >
+    Installing
+  </Text>
+</View>
+`;
+
+exports[`CodePushButton prints that a new version is available if version mismatches 1`] = `
+<Text
+  style={
+    Object {
+      "fontSize": 11,
+    }
+  }
+>
+  New version on AppCenter
+</Text>
+`;
+
+exports[`CodePushButton prints undefined 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "marginLeft": 5,
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 12,
+      }
+    }
+  >
+    No update found
+  </Text>
+</View>
+`;
+
+exports[`CodePushButton renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "marginLeft": 5,
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 12,
+      }
+    }
+  >
+    Check update
+  </Text>
+</View>
+`;

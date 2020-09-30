@@ -1,0 +1,9 @@
+fastlane_require 'dotenv'
+
+private_lane :load_env_file do |options|
+  check_env_exists(
+    env: ENV["ENV"],
+  )
+  Dotenv.overload(".env.secret")
+  Dotenv.overload("../.env.#{ENV["ENV"]}")
+end

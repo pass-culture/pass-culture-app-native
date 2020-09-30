@@ -1,0 +1,9 @@
+import { action, ActionType } from 'typesafe-actions';
+
+export const setValue = (value: string) => action('SET_VALUE', { value });
+
+const actions = {
+  setValue,
+};
+
+export type {{ ModuleName }}Action = ActionType<typeof actions>;

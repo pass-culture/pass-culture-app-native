@@ -1,0 +1,9 @@
+{
+   "localeDir": "src/locales/",
+   "srcPathDirs": ["src/"],
+   "srcPathIgnorePatterns": [
+        "/__tests__/"
+    ],
+   "format": "po",
+   "sourceLocale": "en"
+}

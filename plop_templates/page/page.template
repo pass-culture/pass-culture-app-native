@@ -1,0 +1,17 @@
+import React, { FunctionComponent } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+import { RootStackParamList } from '../../navigation';
+
+type {{PageName}}ScreenNavigationProp = StackNavigationProp<RootStackParamList, '{{PageName}}'>;
+
+type Props = {
+  navigation: {{PageName}}ScreenNavigationProp;
+};
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+});
+
+export const {{PageName}}: FunctionComponent<Props> = () => <View style={styles.container}></View>;
