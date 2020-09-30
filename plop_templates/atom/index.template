@@ -1,0 +1,1 @@
+export { {{ AtomName }} } from './{{ AtomName }}.atom';

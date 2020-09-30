@@ -1,0 +1,96 @@
+fastlane_require 'dotenv'
+fastlane_require 'spaceship'
+release_notes_command = "git log HEAD --pretty=format:\"%s\" -1"
+
+import("FastfileConfig")
+import("FastfileCheck")
+import("FastfileEnvironment")
+import("FastfileIOSSigning")
+
+
+
+# iOS
+
+platform :ios do
+
+  lane :build do |options|
+    gym(
+      scheme: ENV['IOS_SCHEME'],
+      output_directory: "#{ENV['IOS_IPA_DIRECTORY']}",
+      output_name: "#{ENV['IOS_IPA_NAME']}",
+      silent: true,
+      workspace: "#{ENV['IOS_PROJECT_PATH']}/PassCulture.xcworkspace")
+  end
+
+  lane :deploy_appCenter do |options|
+    appcenter_upload(
+      api_token: ENV['APPCENTER_API_TOKEN'],
+      owner_name: ENV['APPCENTER_ORGANISATION'],
+      owner_type: "organization",
+      app_name: ENV['APPCENTER_IOS_APP_ID'],
+      ipa: "#{ENV['IOS_IPA_DIRECTORY']}/#{ENV['IOS_IPA_NAME']}",
+      release_notes: %x[#{release_notes_command}],
+      destinations: ENV['APPCENTER_DISTRIBUTE_GROUPS']
+    )
+    gsp_path = "#{ENV['IOS_PROJECT_PATH']}/PassCulture/GoogleService-Info.plist"
+    upload_symbols_to_crashlytics(binary_path:"#{ENV['IOS_PROJECT_PATH']}/Pods/Fabric/upload-symbols", gsp_path: gsp_path)
+  end
+
+  lane :deploy do |options|
+    if options[:codepush] then # @codepush
+      release_notes = %x[#{release_notes_command}]
+      sh "cd .. && appcenter codepush release-react -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
+    else
+      match(
+        shallow_clone: true,
+        clone_branch_directly: true,
+      )
+      build
+      if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
+        deploy_appCenter
+      else
+        pilot(
+          distribute_external: false,
+          skip_waiting_for_build_processing: true
+        )
+      end
+    end
+  end
+
+end
+
+#  Android
+
+platform :android do
+  lane :build do |options|
+    gradle(
+      task: ENV['ANDROID_GRADLE_TASK'],
+      project_dir: ENV['ANDROID_PROJECT_DIR']
+    )
+  end
+
+  lane :deploy_appCenter do |options|
+    appcenter_upload(
+      api_token: ENV['APPCENTER_API_TOKEN'],
+      owner_name: ENV['APPCENTER_ORGANISATION'],
+      owner_type: "organization",
+      app_name: ENV['APPCENTER_ANDROID_APP_ID'],
+      apk: ENV["ANDROID_APK_PATH"],
+      release_notes: %x[#{release_notes_command}],
+      destinations: ENV['APPCENTER_DISTRIBUTE_GROUPS']
+    )
+  end
+
+  lane :deploy do |options|
+    if options[:codepush] then # @codepush
+      release_notes = %x[#{release_notes_command}]
+      sh "cd .. && appcenter codepush release-react -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
+    else
+      build
+      if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
+        deploy_appCenter
+      end
+    end
+  end
+
+end

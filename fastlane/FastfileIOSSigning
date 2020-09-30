@@ -1,0 +1,67 @@
+platform :ios do
+  lane :generate_certificates do |options|
+    produce(
+      app_identifier: ENV['IOS_APP_ID'],
+      team_id: ENV['IOS_TEAM_ID'],
+      app_name: ENV['IOS_APP_NAME'],
+      skip_itc: true
+    )
+    match(
+      app_identifier: ENV['IOS_APP_ID'],
+      type: 'development',
+      shallow_clone: true,
+      clone_branch_directly: true,
+      force_for_new_devices: true
+    )
+    match(
+      app_identifier: ENV['IOS_APP_ID'],
+      shallow_clone: true,
+      clone_branch_directly: true,
+      force_for_new_devices: true
+    )
+    update_provisioning_profile
+  end
+
+
+  lane :download_certificates do |options|
+    match(
+      app_identifier: ENV['IOS_APP_ID'],
+      type: 'development',
+      shallow_clone: true,
+      clone_branch_directly: true,
+      readonly: true
+    )
+    match(
+      app_identifier: ENV['IOS_APP_ID'],
+      shallow_clone: true,
+      clone_branch_directly: true,
+      readonly: true
+    )
+    update_provisioning_profile
+  end
+
+  private_lane :update_provisioning_profile do |options|
+    development_profile_env_name = "sigh_#{ENV['IOS_APP_ID']}_development_profile-name"
+    release_profile_env_name = "sigh_#{ENV['IOS_APP_ID']}_#{ENV['MATCH_TYPE']}_profile-name"
+    sh "sed -i '' -e \"s/IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT=.*/IOS_PROVISIONING_PROFILE_SPECIFIER_DEVELOPMENT='#{ENV[development_profile_env_name]}'/g\" ../.env.#{ENV['ENV']}"
+    sh "sed -i '' -e \"s/IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE=.*/IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE='#{ENV[release_profile_env_name]}'/g\" ../.env.#{ENV['ENV']}"
+  end
+
+  lane :setup_push do
+    Spaceship.login
+    Spaceship.select_team
+    keyName = "Push JWT #{ENV['IOS_APP_NAME']} #{ENV['ENV']}".gsub!(/[^0-9A-Za-z ]/, '')
+    key = Spaceship::Portal::Key.create(name: keyName, apns: true)
+    puts "Key ID is"
+    puts key.id
+    File.write("#{keyName}.p8", key.download)
+  end
+
+  lane :add_device do |options|
+    register_device(
+      name: options[:name],
+      udid: options[:udid],
+    )
+    update_provisioning_profile
+  end
+end

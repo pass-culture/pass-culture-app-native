@@ -1,0 +1,5 @@
+import { RootState } from '../rootReducer';
+
+export const valueSelector = (state: RootState): string | undefined => {
+  return state.{{camelCase ModuleName}}.value;
+};

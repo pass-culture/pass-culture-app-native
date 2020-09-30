@@ -1,0 +1,14 @@
+import React from 'react';
+import { render } from 'react-native-testing-library';
+import { {{ PageName }} } from '../{{ PageName }}.component';
+
+describe('{{ PageName }} page', () => {
+  const navigation = {
+    navigate: jest.fn(),
+  } as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+
+  it('renders correctly', () => {
+    const {{camelCase PageName}} = render(<{{PageName}} navigation={navigation} />);
+    expect({{camelCase PageName}}).toMatchSnapshot();
+  });
+});
