@@ -1,0 +1,6 @@
+# Skip docs generation
+skip_docs
+
+before_all do |lane, options|
+  load_env_file
+end

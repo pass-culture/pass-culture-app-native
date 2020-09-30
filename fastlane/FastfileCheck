@@ -1,0 +1,13 @@
+private_lane :check_env_exists do |options|
+  if !File.file?("../.env.#{ENV['ENV']}")
+    UI.user_error!("Env #{ENV['ENV']} does not exist")
+  end
+end
+
+private_lane :check_git_status do |options|
+  ensure_git_branch(
+    branch: "#{options[:name]}"
+  )
+  ensure_git_status_clean
+  git_pull
+end

@@ -1,0 +1,5 @@
+import React, { FunctionComponent } from 'react';
+
+interface Props {}
+
+export const {{ AtomName }}: FunctionComponent<Props> = () => null;

@@ -1,0 +1,6 @@
+git_url("git@github.com:bamlab/certificates.git")
+
+storage_mode("git")
+git_branch("master")
+
+username("developers.bam@gmail.com")

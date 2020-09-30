@@ -1,0 +1,10 @@
+import React from 'react';
+import { render } from 'react-native-testing-library';
+import { {{ AtomName }} } from '../{{ AtomName }}.atom';
+
+describe('{{ AtomName }} atom', () => {
+  it('renders correctly', () => {
+    const component = render(<{{ AtomName }} />);
+    expect(component).toMatchSnapshot();
+  });
+});

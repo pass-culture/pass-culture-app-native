@@ -1,0 +1,15 @@
+import { createReducer } from 'typesafe-actions';
+import { {{ModuleName}}Action } from './actions';
+
+export interface {{ModuleName}}State {
+  value?: string;
+}
+
+export const initialState = {};
+
+export const {{camelCase ModuleName}}Reducer = createReducer<{{ModuleName}}State, {{ModuleName}}Action>(initialState, {
+  SET_VALUE: (state, action) => ({
+    ...state,
+    value: action.payload.value,
+  }),
+});
