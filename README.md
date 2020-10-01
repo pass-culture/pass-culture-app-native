@@ -73,7 +73,6 @@ To find where a feature is installed / used, run a search on the whole project u
 | Redux Persist Sensitive | @redux-persist-sensitive |
 | React Navigation        | @react-navigation        |
 | CodePush                | @codepush                |
-| Storybook               | @storybook               |
 
 ## Testing
 

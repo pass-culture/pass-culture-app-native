@@ -33,11 +33,6 @@ msgstr ""
 #~ msgid "Go to Login Page with Params"
 #~ msgstr "Aller sur la page de login avec params"
 
-#. Title of the button to go to storybook
-#: src/pages/CheatCodes/CheatCodes.component.tsx:18
-#~ msgid "Go to storybook"
-#~ msgstr "Aller au storybook"
-
 #. The title of the login page
 #: src/pages/Login/Login.component.tsx:35
 #~ msgid "Login page"

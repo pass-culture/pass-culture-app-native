@@ -24,10 +24,6 @@
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/native": "^5.7.5",
     "@react-navigation/stack": "^5.0.6",
-    "@storybook/addon-actions": "^6.0.22",
-    "@storybook/addon-links": "^6.0.22",
-    "@storybook/addons": "^6.0.22",
-    "@storybook/react-native": "^5.3.18",
     "babel-core": "^6.26.3",
     "i18n-js": "^3.5.1",
     "jsc-android": "^241213.1.0",
@@ -152,14 +148,6 @@
         "@types/lingui__react",
         "@types/lingui__core",
         "@types/lingui__macros"
-      ]
-    },
-    "@storybook": {
-      "dependencies": [
-        "@storybook/addon-actions",
-        "@storybook/addon-links",
-        "@storybook/addons",
-        "@storybook/react-native"
       ]
     }
   }
