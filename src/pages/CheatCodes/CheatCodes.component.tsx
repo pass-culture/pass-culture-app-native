@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { CommonActions } from '@react-navigation/native';
 import { t } from '@lingui/macro';
@@ -30,10 +30,5 @@ export const CheatCodes: FunctionComponent<Props> = ({ navigation }) => (
       }
     />
     {env.FEATURE_FLAG_CODE_PUSH && <CodePushButton />}
-    {/* @storybook */}
-    <Button
-      onPress={() => navigation.navigate('Storybook')}
-      title={i18n._(/*i18n: Title of the button to go to storybook*/ t`Go to storybook`)}
-    ></Button>
   </View>
 );

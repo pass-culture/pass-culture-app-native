@@ -3,13 +3,11 @@ import { NavigationContainer } from '@react-navigation/native'; // @react-naviga
 import { createStackNavigator } from '@react-navigation/stack'; // @react-navigation
 
 import { Home, Login, CheatCodes } from '../pages';
-import { StorybookUIRoot } from '../../storybook'; // @storybook
 
 export type RootStackParamList = {
   Home: undefined;
   Login?: { userId: string };
   CheatCodes: undefined;
-  Storybook: undefined;
 };
 
 const RootStack = createStackNavigator<RootStackParamList>();
@@ -25,7 +23,6 @@ export const RootNavigator = () => {
           initialParams={{ userId: 'test_user_id' }}
         />
         <RootStack.Screen name="CheatCodes" component={CheatCodes} />
-        <RootStack.Screen name="Storybook" component={StorybookUIRoot} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
