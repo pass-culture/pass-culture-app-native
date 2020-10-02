@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  run-tests:
+    working_directory: ~/pass-culture-app-native
+    docker:
+      - image: cimg/node:12.16
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore yarn.lock cache
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+      - restore_cache:
+          name: Restore package.json cache
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+      - run: yarn install
+      - save_cache:
+          name: Save yarn.lock cache
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - ~/.cache/yarn
+      - save_cache:
+          name: Save package.json cache
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+      - run:
+          name: Linter
+          command: |
+            yarn test:lint
+      - run:
+          name: Type Tests
+          command: |
+            yarn test:types
+      - run:
+          name: Unit Tests
+          command: |
+            yarn test:unit
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - run-tests

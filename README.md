@@ -14,7 +14,9 @@ Make sure you have installed:
 - node
   - yarn
   - react-native-cli
-- ruby
+- ruby (ruby version >= 2.4.0) 
+  - `sudo apt-add-repository ppa:brightbox/ruby-ng && sudo apt-get update`
+  - `sudo apt-get install ruby2.4`
   - bundler (`sudo gem install bundler`)
 - transcrypt (`brew install transcrypt`)
 
