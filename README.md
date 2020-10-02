@@ -65,14 +65,11 @@ When you generated the repository with [react-native-make](https://github.com/ba
 
 To find where a feature is installed / used, run a search on the whole project using the tag
 
-| Name                    |  Tag                     |
-| ----------------------- | ------------------------ |
-| Translations            | @translations            |
-| Redux                   | @redux                   |
-| Redux Persist           | @redux-persist           |
-| Redux Persist Sensitive | @redux-persist-sensitive |
-| React Navigation        | @react-navigation        |
-| CodePush                | @codepush                |
+| Name             |  Tag              |
+| ---------------- | ----------------- |
+| Translations     | @translations     |
+| React Navigation | @react-navigation |
+| CodePush         | @codepush         |
 
 ## Testing
 
