@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "src/*": ["./*"]
+    },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -23,8 +27,6 @@
     "jest.config.js",
     "react-native.config.js",
     "rn-cli.config.js",
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx",
     "__mocks__/**",
     "coverage/**"
   ]
