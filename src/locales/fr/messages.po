@@ -38,11 +38,6 @@ msgstr ""
 #~ msgid "Login page"
 #~ msgstr "Page de login"
 
-#. The title of button to test redux
-#: src/pages/Login/Login.component.tsx:38
-#~ msgid "Redux test"
-#~ msgstr "Test de redux"
-
 #. The title of button to toggle loader
 #: src/pages/Login/Login.component.tsx:42
 #~ msgid "Toggle selector"

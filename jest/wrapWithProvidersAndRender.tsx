@@ -2,32 +2,22 @@
 import { I18nProvider } from '@lingui/react';
 import React from 'react';
 import { render, RenderAPI } from 'react-native-testing-library';
-import { i18n } from '../src/lib/i18n';
-import { Provider as ReduxProvider } from 'react-redux';
-import { Store, createStore } from 'redux';
-import { rootReducer, RootState } from '../src/redux/rootReducer';
+import { i18n } from 'libs/i18n';
 
 interface WrapWithProvidersAndRenderParams {
   Component: React.FunctionComponent<any>;
   props?: Record<string, any>;
-  testInitialReduxState?: Partial<RootState>;
 }
 
 export const wrapWithProvidersAndRender = ({
   Component,
   props = {},
-  testInitialReduxState,
-}: WrapWithProvidersAndRenderParams): { component: RenderAPI; store: Store } => {
-  // @ts-ignore
-  const store = createStore(rootReducer, testInitialReduxState);
-
+}: WrapWithProvidersAndRenderParams): { component: RenderAPI } => {
   const WrappedComponent = (
     <I18nProvider language={i18n.language} i18n={i18n}>
-      <ReduxProvider store={store}>
-        <Component {...props} />
-      </ReduxProvider>
+      <Component {...props} />
     </I18nProvider>
   );
 
-  return { component: render(WrappedComponent), store };
+  return { component: render(WrappedComponent) };
 };
