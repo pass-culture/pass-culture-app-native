@@ -1,39 +1,41 @@
-import React from 'react';
-import { render, act, fireEvent } from 'react-native-testing-library';
-import { CheatCodes } from './CheatCodes';
-import { env } from 'libs/environment';
+import React from 'react'
+import { render, act, fireEvent } from 'react-native-testing-library'
+
+import { env } from 'libs/environment'
+
+import { CheatCodes } from './CheatCodes'
 
 jest.mock('libs/environment', () => ({
   env: {
     FEATURE_FLAG_CODE_PUSH: true,
   },
-}));
+}))
 
 describe('CheatCodes component', () => {
   const navigation = {
     dispatch: jest.fn(),
-  } as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
   it('should have a button to go to the Login', async () => {
-    const cheatCodes = render(<CheatCodes navigation={navigation} />);
-    expect(cheatCodes).toMatchSnapshot();
-  });
+    const cheatCodes = render(<CheatCodes navigation={navigation} />)
+    expect(cheatCodes).toMatchSnapshot()
+  })
 
   it('should have a button to go to the Login', async () => {
-    const cheatCodes = render(<CheatCodes navigation={navigation} />);
+    const cheatCodes = render(<CheatCodes navigation={navigation} />)
 
-    cheatCodes.getByText('Check update');
-    const Button = cheatCodes.getByTestId('enLanguageButton');
+    cheatCodes.getByText('Check update')
+    const Button = cheatCodes.getByTestId('enLanguageButton')
     act(() => {
-      fireEvent.press(Button);
-    });
+      fireEvent.press(Button)
+    })
 
-    expect(navigation.dispatch).toHaveBeenCalled();
-  });
+    expect(navigation.dispatch).toHaveBeenCalled()
+  })
 
   it('should have a button to go to the Login', async () => {
-    env.FEATURE_FLAG_CODE_PUSH = false;
-    const cheatCodes = render(<CheatCodes navigation={navigation} />);
-    expect(() => cheatCodes.getByText('Check update')).toThrowError();
-  });
-});
+    env.FEATURE_FLAG_CODE_PUSH = false
+    const cheatCodes = render(<CheatCodes navigation={navigation} />)
+    expect(() => cheatCodes.getByText('Check update')).toThrowError()
+  })
+})

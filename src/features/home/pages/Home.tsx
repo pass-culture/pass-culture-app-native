@@ -1,28 +1,28 @@
-import React, { FunctionComponent, useCallback } from 'react';
-import { Button, StyleSheet, View, Text } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { t } from '@lingui/macro';
-import { i18n } from 'libs/i18n';
+import { t } from '@lingui/macro'
+import { StackNavigationProp } from '@react-navigation/stack'
+import React, { FunctionComponent, useCallback } from 'react'
+import { Button, StyleSheet, View, Text } from 'react-native'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator';
+import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { i18n } from 'libs/i18n'
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
 type Props = {
-  navigation: HomeScreenNavigationProp;
-};
+  navigation: HomeScreenNavigationProp
+}
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-});
+})
 
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const goToLoginPage = useCallback((): void => {
-    navigation.navigate('Login');
-  }, []);
+    navigation.navigate('Login')
+  }, [])
   const goToLoginPageWithParams = useCallback((): void => {
-    navigation.navigate('Login', { userId: 'I have been Set by params' });
-  }, []);
+    navigation.navigate('Login', { userId: 'I have been Set by params' })
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -39,5 +39,5 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
         onPress={goToLoginPageWithParams}
       />
     </View>
-  );
-};
+  )
+}

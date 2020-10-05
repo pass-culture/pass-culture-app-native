@@ -1,18 +1,19 @@
-import React from 'react';
-import { render, fireEvent } from 'react-native-testing-library';
-import { CheatCodesButton } from './CheatCodesButton';
+import React from 'react'
+import { render, fireEvent } from 'react-native-testing-library'
+
+import { CheatCodesButton } from './CheatCodesButton'
 
 describe('CheatCodesButton component', () => {
   const navigation = {
     navigate: jest.fn(),
-  } as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
   it('should have a button to go to the Login', () => {
-    const component = render(<CheatCodesButton navigation={navigation} />);
+    const component = render(<CheatCodesButton navigation={navigation} />)
 
-    const Button = component.getByText('CheatCodes');
-    fireEvent.press(Button);
+    const Button = component.getByText('CheatCodes')
+    fireEvent.press(Button)
 
-    expect(navigation.navigate).toHaveBeenCalledWith('CheatCodes');
-  });
-});
+    expect(navigation.navigate).toHaveBeenCalledWith('CheatCodes')
+  })
+})
