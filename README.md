@@ -98,7 +98,6 @@ yarn jest --coverage
 You can automatically generate files by running the following commands:
 
 - `yarn plop atom` : generate an empty atom
-- `yarn plop module` : generate a Redux module whose state contains `value`
 - `yarn plop page` : generate an empty page
 
 ## Deploy
