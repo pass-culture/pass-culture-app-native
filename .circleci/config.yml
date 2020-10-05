@@ -7,20 +7,15 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          name: Restore yarn.lock cache
-          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
-      - restore_cache:
-          name: Restore package.json cache
-          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-      - run: yarn install
+          name: Restore Node Modules
+          keys:
+            - node-modules-{{ checksum "package.json" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
       - save_cache:
-          name: Save yarn.lock cache
-          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
-          paths:
-            - ~/.cache/yarn
-      - save_cache:
-          name: Save package.json cache
-          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          name: Save Node Modules
+          key: node-modules-{{ checksum "package.json" }}
           paths:
             - node_modules
       - run:
@@ -28,7 +23,7 @@ jobs:
           command: |
             yarn test:lint
       - run:
-          name: Type Tests
+          name: Typescript Type Check
           command: |
             yarn test:types
       - run:
