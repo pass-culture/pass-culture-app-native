@@ -1,28 +1,28 @@
-import React, { FunctionComponent } from 'react';
-import { Button, View, Text, StyleSheet } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RouteProp } from '@react-navigation/native';
-import { t } from '@lingui/macro';
-import { i18n } from 'libs/i18n';
+import { t } from '@lingui/macro'
+import { RouteProp } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
+import React, { FunctionComponent } from 'react'
+import { Button, View, Text, StyleSheet } from 'react-native'
 
-import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton';
-import { RootStackParamList } from 'features/navigation/RootNavigator';
+import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { i18n } from 'libs/i18n'
 
-type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
-type LoginScreenRouteProp = RouteProp<RootStackParamList, 'Login'>;
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>
+type LoginScreenRouteProp = RouteProp<RootStackParamList, 'Login'>
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-});
+})
 
 type Props = {
-  navigation: LoginScreenNavigationProp;
-  route: LoginScreenRouteProp;
-};
+  navigation: LoginScreenNavigationProp
+  route: LoginScreenRouteProp
+}
 export const Login: FunctionComponent<Props> = function ({ navigation, route }) {
   const goToHomePage = (): void => {
-    navigation.navigate('Home');
-  };
+    navigation.navigate('Home')
+  }
 
   return (
     <View style={styles.container}>
@@ -35,5 +35,5 @@ export const Login: FunctionComponent<Props> = function ({ navigation, route }) 
       <CheatCodesButton navigation={navigation} />
       <Text>{route.params && route.params.userId}</Text>
     </View>
-  );
-};
+  )
+}

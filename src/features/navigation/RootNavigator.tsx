@@ -1,20 +1,20 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native'; // @react-navigation
-import { createStackNavigator } from '@react-navigation/stack'; // @react-navigation
+import { NavigationContainer } from '@react-navigation/native' // @react-navigation
+import { createStackNavigator } from '@react-navigation/stack' // @react-navigation
+import React from 'react'
 
-import { Home } from 'features/home/pages/Home';
-import { Login } from 'features/auth/pages/Login';
-import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes';
+import { Login } from 'features/auth/pages/Login'
+import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
+import { Home } from 'features/home/pages/Home'
 
 export type RootStackParamList = {
-  Home: undefined;
-  Login?: { userId: string };
-  CheatCodes: undefined;
-};
+  CheatCodes: undefined
+  Home: undefined
+  Login?: { userId: string }
+}
 
-const RootStack = createStackNavigator<RootStackParamList>();
+const RootStack = createStackNavigator<RootStackParamList>()
 
-export const RootNavigator = () => {
+export const RootNavigator: React.FC = function () {
   return (
     <NavigationContainer>
       <RootStack.Navigator initialRouteName="Home">
@@ -27,5 +27,5 @@ export const RootNavigator = () => {
         <RootStack.Screen name="CheatCodes" component={CheatCodes} />
       </RootStack.Navigator>
     </NavigationContainer>
-  );
-};
+  )
+}

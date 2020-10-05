@@ -1,13 +1,14 @@
-import Config from '@bam.tech/react-native-config';
-import { parseBooleanVariables } from './parseBooleanVariables';
+import Config from '@bam.tech/react-native-config'
+
+import { parseBooleanVariables } from './parseBooleanVariables'
 
 export interface Environment {
-  ENV: string;
-  API_ENDPOINT: string;
-  WEBSOCKET_ENDPOINT: string;
-  FEATURE_FLAG_CHEAT_CODES: boolean;
-  FEATURE_FLAG_CODE_PUSH: boolean;
-  FEATURE_FLAG_CODE_PUSH_MANUAL: boolean;
+  API_ENDPOINT: string
+  ENV: string
+  FEATURE_FLAG_CHEAT_CODES: boolean
+  FEATURE_FLAG_CODE_PUSH: boolean
+  FEATURE_FLAG_CODE_PUSH_MANUAL: boolean
+  WEBSOCKET_ENDPOINT: string
 }
 
-export const env = parseBooleanVariables(Config) as Environment;
+export const env = parseBooleanVariables(Config) as Environment

@@ -1,6 +1,6 @@
-import { NodePlopAPI } from 'plop';
+import { NodePlopAPI } from 'plop'
 
-export default function (plop: NodePlopAPI) {
+export default function (plop: NodePlopAPI): void {
   // Atom generator
   plop.setGenerator('atom', {
     description: 'add a new atom',
@@ -10,8 +10,8 @@ export default function (plop: NodePlopAPI) {
         name: 'AtomName',
         message: 'Atom name?',
         validate: (input) => {
-          if (input[0] === input[0].toLowerCase()) return 'Please capitalize';
-          return true;
+          if (input[0] === input[0].toLowerCase()) return 'Please capitalize'
+          return true
         },
       },
     ],
@@ -32,7 +32,7 @@ export default function (plop: NodePlopAPI) {
         templateFile: 'plop_templates/atom/test.template',
       },
     ],
-  });
+  })
 
   // Page generator
   plop.setGenerator('page', {
@@ -43,8 +43,8 @@ export default function (plop: NodePlopAPI) {
         name: 'PageName',
         message: 'Page name?',
         validate: (input) => {
-          if (input[0] === input[0].toLowerCase()) return 'Please capitalize';
-          return true;
+          if (input[0] === input[0].toLowerCase()) return 'Please capitalize'
+          return true
         },
       },
     ],
@@ -89,7 +89,7 @@ export default function (plop: NodePlopAPI) {
         templateFile: 'plop_templates/page/RootNavigator/import.template',
       },
     ],
-  });
+  })
 
   // Redux module generator
   plop.setGenerator('module', {
@@ -100,8 +100,8 @@ export default function (plop: NodePlopAPI) {
         name: 'ModuleName',
         message: 'Module name?',
         validate: (input) => {
-          if (input[0] === input[0].toLowerCase()) return 'Please capitalize';
-          return true;
+          if (input[0] === input[0].toLowerCase()) return 'Please capitalize'
+          return true
         },
       },
     ],
@@ -151,5 +151,5 @@ export default function (plop: NodePlopAPI) {
         templateFile: 'plop_templates/module/rootReducer/RootReducer.template',
       },
     ],
-  });
+  })
 }

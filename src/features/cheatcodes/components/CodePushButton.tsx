@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import CodePush from 'react-native-code-push'; // @codepush
+import React, { Component, ReactElement } from 'react'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import CodePush from 'react-native-code-push' // @codepush
 
 interface State {
-  info?: string;
-  status?: string;
-  mismatch: boolean;
+  info?: string
+  mismatch: boolean
+  status?: string
 }
 
 const styles = StyleSheet.create({
@@ -22,26 +22,26 @@ const styles = StyleSheet.create({
     fontSize: 8,
     maxWidth: 150,
   },
-});
+})
 
 export class CodePushButton extends Component<unknown, State> {
   public state = {
     info: undefined,
     status: undefined,
     mismatch: false,
-  };
+  }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     CodePush.getUpdateMetadata().then((update): void => {
-      if (!update) return;
-      let info = update.label;
+      if (!update) return
+      let info = update.label
       if (update.description) {
-        info += ' (' + update.description + ')';
+        info += ' (' + update.description + ')'
       }
       this.setState({
         info,
-      });
-    });
+      })
+    })
   }
 
   private lookForUpdate = () => {
@@ -56,29 +56,29 @@ export class CodePushButton extends Component<unknown, State> {
       (SyncStatus): void => {
         switch (SyncStatus) {
           case CodePush.SyncStatus.CHECKING_FOR_UPDATE:
-            this.setState({ status: 'Checking for update' });
-            break;
+            this.setState({ status: 'Checking for update' })
+            break
           case CodePush.SyncStatus.AWAITING_USER_ACTION:
-            this.setState({ status: 'Awaiting action' });
-            break;
+            this.setState({ status: 'Awaiting action' })
+            break
           case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
-            this.setState({ status: 'Downloading' });
-            break;
+            this.setState({ status: 'Downloading' })
+            break
           case CodePush.SyncStatus.INSTALLING_UPDATE:
-            this.setState({ status: 'Installing' });
-            break;
+            this.setState({ status: 'Installing' })
+            break
           default:
-            this.setState({ status: 'No update found' });
+            this.setState({ status: 'No update found' })
         }
       },
       undefined,
       (mismatch): void => mismatch && this.setState({ mismatch: true })
-    );
-  };
+    )
+  }
 
-  public render() {
+  public render(): ReactElement {
     if (this.state.mismatch) {
-      return <Text style={styles.newVersion}>New version on AppCenter</Text>;
+      return <Text style={styles.newVersion}>New version on AppCenter</Text>
     }
 
     return (
@@ -90,6 +90,6 @@ export class CodePushButton extends Component<unknown, State> {
           </Text>
         )}
       </TouchableOpacity>
-    );
+    )
   }
 }

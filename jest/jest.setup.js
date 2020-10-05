@@ -1,2 +1,2 @@
 /* eslint-disable no-undef */
-import 'cross-fetch/polyfill';
+import 'cross-fetch/polyfill'
