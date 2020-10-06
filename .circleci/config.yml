@@ -9,13 +9,13 @@ jobs:
       - restore_cache:
           name: Restore Node Modules
           keys:
-            - node-modules-{{ checksum "package.json" }}
+            - node-modules-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install --immutable
       - save_cache:
           name: Save Node Modules
-          key: node-modules-{{ checksum "package.json" }}
+          key: node-modules-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
       - run:
