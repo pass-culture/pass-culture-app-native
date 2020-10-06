@@ -1,5 +1,5 @@
+import { render } from '@testing-library/react-native'
 import React from 'react'
-import { render, act, fireEvent } from 'react-native-testing-library'
 
 import { env } from 'libs/environment'
 
@@ -16,21 +16,9 @@ describe('CheatCodes component', () => {
     dispatch: jest.fn(),
   } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
-  it('should have a button to go to the Login', async () => {
+  it('should render correctly', async () => {
     const cheatCodes = render(<CheatCodes navigation={navigation} />)
     expect(cheatCodes).toMatchSnapshot()
-  })
-
-  it('should have a button to go to the Login', async () => {
-    const cheatCodes = render(<CheatCodes navigation={navigation} />)
-
-    cheatCodes.getByText('Check update')
-    const Button = cheatCodes.getByTestId('enLanguageButton')
-    act(() => {
-      fireEvent.press(Button)
-    })
-
-    expect(navigation.dispatch).toHaveBeenCalled()
   })
 
   it('should have a button to go to the Login', async () => {

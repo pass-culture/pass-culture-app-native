@@ -26,12 +26,12 @@ msgstr ""
 #. Title of the go to login button
 #: src/pages/Home/Home.component.tsx:17
 #~ msgid "Go to Login Page"
-#~ msgstr "Aller sur la Home page"
+#~ msgstr "Aller sur la page de connexion"
 
 #. Title of the go to login with params button
 #: src/pages/Home/Home.component.tsx:19
 #~ msgid "Go to Login Page with Params"
-#~ msgstr "Aller sur la page de login avec params"
+#~ msgstr "Aller sur la page de connexion avec params"
 
 #. The title of the login page
 #: src/pages/Login/Login.component.tsx:35

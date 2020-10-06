@@ -78,11 +78,11 @@ export class CodePushButton extends Component<unknown, State> {
 
   public render(): ReactElement {
     if (this.state.mismatch) {
-      return <Text style={styles.newVersion}>New version on AppCenter</Text>
+      return <Text style={styles.newVersion}>Nouvelle version sur AppCenter</Text>
     }
 
     return (
-      <TouchableOpacity style={styles.button} onPress={this.lookForUpdate}>
+      <TouchableOpacity testID="container" style={styles.button} onPress={this.lookForUpdate}>
         <Text style={styles.status}>{this.state.status || 'Check update'}</Text>
         {!!this.state.info && (
           <Text style={styles.info} numberOfLines={3}>

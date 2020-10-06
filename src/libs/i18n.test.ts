@@ -5,12 +5,7 @@ import { i18n } from './i18n'
 
 describe('i18n', () => {
   describe('t', () => {
-    it('translates to english', () => {
-      expect(findBestAvailableLanguage).toHaveBeenCalled()
-      expect(i18n._(t`Welcome to BAM!`)).toEqual('Welcome to BAM!')
-    })
-    it('translates to french when language is set to french', () => {
-      i18n.activate('fr')
+    it('translates to french by default', () => {
       expect(findBestAvailableLanguage).toHaveBeenCalled()
       expect(i18n._(t`Welcome to BAM!`)).toEqual('Bienvenue chez BAM')
     })

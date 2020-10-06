@@ -1,15 +1,13 @@
+import { render, waitFor } from '@testing-library/react-native'
 import React from 'react'
-import TestRenderer from 'react-test-renderer'
-
-import { tick } from 'libs/utils.test'
 
 import { App } from './App'
 
 describe('App', () => {
   it('instantiate the application', async () => {
-    TestRenderer.create(<App />)
-    await TestRenderer.act(async () => {
-      await tick()
-    })
+    const { getByText } = render(<App />)
+
+    const welcomeText = await waitFor(() => getByText('Bienvenue chez BAM'))
+    expect(welcomeText.props.children).toBe('Bienvenue chez BAM')
   })
 })
