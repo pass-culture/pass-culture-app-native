@@ -32,8 +32,6 @@ platform :ios do
       release_notes: %x[#{release_notes_command}],
       destinations: ENV['APPCENTER_DISTRIBUTE_GROUPS']
     )
-    gsp_path = "#{ENV['IOS_PROJECT_PATH']}/PassCulture/GoogleService-Info.plist"
-    upload_symbols_to_crashlytics(binary_path:"#{ENV['IOS_PROJECT_PATH']}/Pods/Fabric/upload-symbols", gsp_path: gsp_path)
   end
 
   lane :deploy do |options|
