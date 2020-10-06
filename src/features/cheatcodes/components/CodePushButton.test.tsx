@@ -1,5 +1,6 @@
+import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
-import CodePush from 'react-native-code-push' // @codepush
+import CodePush, { LocalPackage, RemotePackage } from 'react-native-code-push' // @codepush
 import TestRenderer from 'react-test-renderer'
 
 import { tick } from 'libs/utils.test'
@@ -8,13 +9,13 @@ import { CodePushButton } from './CodePushButton'
 
 describe('CodePushButton', () => {
   it('renders correctly', () => {
-    const testRenderer = TestRenderer.create(<CodePushButton />)
-    expect(testRenderer).toMatchSnapshot()
+    const button = render(<CodePushButton />)
+    expect(button).toMatchSnapshot()
   })
   it('gets the metadata on mount', async () => {
     // We fake CodePush update metdata
     CodePush.getUpdateMetadata = jest.fn(() =>
-      Promise.resolve({ label: 'V4', description: 'New Release !' })
+      Promise.resolve({ label: 'V4', description: 'New Release !' } as LocalPackage)
     )
     const testRenderer = TestRenderer.create(<CodePushButton />)
     expect(CodePush.getUpdateMetadata).toHaveBeenCalled()
@@ -25,7 +26,7 @@ describe('CodePushButton', () => {
   })
   it('gets the partial metadata', async () => {
     // We fake CodePush update metdata with partial information
-    CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve({ label: 'V5' }))
+    CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve({ label: 'V5' } as LocalPackage))
     const testRenderer = TestRenderer.create(<CodePushButton />)
     expect(CodePush.getUpdateMetadata).toHaveBeenCalled()
     await tick()
@@ -35,7 +36,7 @@ describe('CodePushButton', () => {
   })
   it('gets the partial metadata', async () => {
     // We fake CodePush update metdata with null information
-    CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve())
+    CodePush.getUpdateMetadata = jest.fn(() => Promise.resolve(null))
     const testRenderer = TestRenderer.create(<CodePushButton />)
     expect(CodePush.getUpdateMetadata).toHaveBeenCalled()
     await tick()
@@ -45,17 +46,23 @@ describe('CodePushButton', () => {
   })
   it('prints that a new version is available if version mismatches', () => {
     // We fake that a new version is available
-    CodePush.sync = jest.fn((options, _, __, mismatchCb) => {
-      mismatchCb(true)
+    CodePush.sync = jest.fn((_, __, ___, mismatchCb) => {
+      if (mismatchCb) {
+        mismatchCb({} as RemotePackage)
+      }
+      return Promise.resolve(CodePush.SyncStatus.AWAITING_USER_ACTION)
     })
+
     // We press the sync button
-    const testRenderer = TestRenderer.create(<CodePushButton />)
-    testRenderer.root.children[0].props.onPress()
+    const { getByTestId, getByText } = render(<CodePushButton />)
+    fireEvent.press(getByTestId('container'))
     expect(CodePush.sync).toHaveBeenCalled()
-    expect(testRenderer.root.instance.state.mismatch).toEqual(true)
+
     // We expect our component to render that a new version is available
-    expect(testRenderer).toMatchSnapshot()
+    const text = 'Nouvelle version sur AppCenter'
+    expect(getByText(text).props.children).toBe(text)
   })
+
   test.each`
     status
     ${CodePush.SyncStatus.CHECKING_FOR_UPDATE}
@@ -65,15 +72,19 @@ describe('CodePushButton', () => {
     ${undefined}
   `('prints $status', ({ status }) => {
     // We fake that a new version is available
-    CodePush.sync = jest.fn((options, syncCb) => {
-      syncCb(status)
+    CodePush.sync = jest.fn((_options, syncCb) => {
+      if (syncCb) {
+        syncCb(status)
+      }
+      return Promise.resolve(status)
     })
+
     // We press the sync button
-    const testRenderer = TestRenderer.create(<CodePushButton />)
-    testRenderer.root.children[0].props.onPress()
+    const button = render(<CodePushButton />)
+    fireEvent.press(button.getByTestId('container'))
     expect(CodePush.sync).toHaveBeenCalled()
-    expect(testRenderer.root.instance.state.status).toBeDefined()
-    // We expect our component to render that a new version is available
-    expect(testRenderer).toMatchSnapshot()
+
+    // We expect our component to render that the corresponding message status
+    expect(button).toMatchSnapshot()
   })
 })

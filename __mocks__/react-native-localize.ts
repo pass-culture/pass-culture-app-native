@@ -1,20 +1,20 @@
 class RNLocalize {
-  static registeredHandler = () => {};
-  static findBestAvailableLanguage = jest.fn(() => undefined);
+  static registeredHandler = () => {}
+  static findBestAvailableLanguage = jest.fn(() => undefined)
 
   static addEventListener = jest.fn((_, handler) => {
-    RNLocalize.registeredHandler = handler;
-  });
-  static removeEventListener = jest.fn();
+    RNLocalize.registeredHandler = handler
+  })
+  static removeEventListener = jest.fn()
 
   static simulateLocalizationChange = () => {
-    RNLocalize.registeredHandler();
-  };
+    RNLocalize.registeredHandler()
+  }
 
   static findBestAvailableLanguage = jest.fn(() => ({
-    languageTag: 'en',
+    languageTag: 'fr',
     isRTL: false,
-  }));
+  }))
 }
 
-module.exports = RNLocalize;
+module.exports = RNLocalize

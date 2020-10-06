@@ -3,15 +3,14 @@ import { findBestAvailableLanguage } from 'react-native-localize'
 
 import frenchCatalog from 'locales/fr/messages'
 
-const fallbackLanguageTag = 'en'
+const fallbackLanguageTag = 'fr'
 
-const { languageTag } = findBestAvailableLanguage([fallbackLanguageTag, 'fr']) as {
-  isRTL: boolean
-  languageTag: string
-}
+const availableTags = [fallbackLanguageTag]
+
+const languageSettings = findBestAvailableLanguage(availableTags)
 
 export const i18n = setupI18n({
-  language: languageTag || fallbackLanguageTag,
+  language: languageSettings?.languageTag || fallbackLanguageTag,
   catalogs: {
     fr: frenchCatalog,
   },

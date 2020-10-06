@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { I18nProvider } from '@lingui/react'
+import { render, RenderAPI } from '@testing-library/react-native'
 import React from 'react'
-import { render, RenderAPI } from 'react-native-testing-library'
 
 import { i18n } from 'libs/i18n'
 
