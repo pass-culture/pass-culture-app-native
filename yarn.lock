@@ -951,7 +951,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.5.4", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.5.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
   version "7.11.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
   integrity sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==
@@ -4700,6 +4700,19 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
+flatted@^3.0.4:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.1.0.tgz#a5d06b4a8b01e3a63771daa5cb7a1903e2e57067"
+  integrity sha512-tW+UkmtNg/jv9CSofAKvgVcO7c2URjhTdW1ZTkcAritblu8tajiYy7YisnIflEwtKssCtOxpnBRoCB7iap0/TA==
+
+flipper-plugin-react-query-native-devtools@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/flipper-plugin-react-query-native-devtools/-/flipper-plugin-react-query-native-devtools-0.5.0.tgz#c9924979dd5ae4b846c5dd7aba60f4ccd670e220"
+  integrity sha512-T9ZlSS/RTpP1k53n5P4628ubU+IQ5P3+/Ahc1eNMzqJ2RQAqmbSvgllBNgQBzRMk6bs5cssQ4GSpFkYhLmOVhQ==
+  dependencies:
+    flatted "^3.0.4"
+    lodash "^4.17.15"
+
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -8441,6 +8454,11 @@ react-native-code-push@^6.2.0:
     semver "^7.3.2"
     xcode "3.0.1"
 
+react-native-flipper@^0.61.0:
+  version "0.61.0"
+  resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.61.0.tgz#9613f1e8a7f90d1564f44ffc9fd7ced4f366debc"
+  integrity sha512-wRa2Y2pXBoW3m+p3QbtL4NesuRXQW4gJgRHnDe6nkm+ifgt/6+WHGNcWqngmKdNCsNtWTIoDiLOc3/CNdhyfHQ==
+
 react-native-gesture-handler@^1.6.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.8.0.tgz#18f61f51da50320f938957b0ee79bc58f47449dc"
@@ -8515,6 +8533,18 @@ react-native@0.63.3:
     stacktrace-parser "^0.1.3"
     use-subscription "^1.0.0"
     whatwg-fetch "^3.0.0"
+
+react-query-native-devtools@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-query-native-devtools/-/react-query-native-devtools-0.3.2.tgz#967471d08f786896f8afda223b04c8e2785eb200"
+  integrity sha512-N3Qeb4iRAqscY6O1TnQ2+Lh/c8kmzmVVX4NlDHf5U2VCvhkX9kbF0J+nr1B7Ji8ahimON+sMLV0zVmH8QDc/dg==
+
+react-query@^2.23.1:
+  version "2.23.1"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-2.23.1.tgz#7d676f56d3c6e96b4de4d0b178baf6bb6a0ec272"
+  integrity sha512-qIma0Kvr//LWgWFah7RcntvD4FurXXdQaQeIfqhCWKdhihhe3Xs5BHsljAP68jo719/+xhWxL3I96SvrU4gGHA==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
 
 react-refresh@^0.4.0:
   version "0.4.2"
