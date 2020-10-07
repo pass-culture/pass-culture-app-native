@@ -43,7 +43,7 @@ Options:
 }
 
 DEV=0
-APP_ENV="staging"
+APP_ENV="testing"
 APP_OS="ios and android"
 
 DEPLOY_TYPE="soft"
