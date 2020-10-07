@@ -14,7 +14,7 @@ Make sure you have installed:
 - node
   - yarn
   - react-native-cli
-- ruby (ruby version >= 2.4.0) 
+- ruby (ruby version >= 2.4.0)
   - `sudo apt-add-repository ppa:brightbox/ruby-ng && sudo apt-get update`
   - `sudo apt-get install ruby2.4`
   - bundler (`sudo gem install bundler`)
@@ -29,14 +29,6 @@ bundle install
 yarn
 bundle exec pod repo update
 cd ios && bundle exec pod install && cd ..
-```
-
-### Configuration
-
-Ask the password to a BAM's architect.
-
-```
-transcrypt -c aes-256-cbc -p '<password>'
 ```
 
 ### Run the app
@@ -102,14 +94,20 @@ You can automatically generate files by running the following commands:
 
 ## Deploy
 
-A staging environment have been created for you. This environment push the application on Appcenter.
+### Testing (manual deploy for the moment)
 
-You can find the pushed app at:
+You can find the testing app at:
 
-- https://appcenter.ms/orgs/BAM.tech/apps/passculture-staging-ios
-- https://appcenter.ms/orgs/BAM.tech/apps/passculture-staging-android/
+- https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
+- https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-android
 
-To deploy in staging, just run
+Pre-requisites:
+
+- get testing.keystore file, put it in `android/keystores` folder
+- get the keystore password, put it in `android/keystores/testing.keystore.properties`
+- get the Appcenter API token, you will be asked for it
+
+To deploy in testing environment, just run
 
 ```
 ./scripts/deploy.sh -t hard
