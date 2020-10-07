@@ -110,7 +110,30 @@ Pre-requisites:
 To deploy in testing environment, just run
 
 ```
-./scripts/deploy.sh -t hard
+./scripts/deploy.sh -t hard -o android
+```
+
+> Only android working for the moment
+
+> Default env is testing, no need to specify it in the command
+
+### Staging (manual deploy for the moment)
+
+You can find the testing app at:
+
+- https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios
+- https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-android
+
+Pre-requisites:
+
+- get testing.keystore file, put it in `android/keystores folder`
+- get the keystore password, put it in `android/keystores/staging.keystore.properties`
+- get the Appcenter API token, you will be asked for it
+
+To deploy in testing environment, just run
+
+```
+./scripts/deploy.sh -t hard -e staging -o android
 ```
 
 There is few options on the deploy command. Please run the following command to have all usages:
