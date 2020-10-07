@@ -2,6 +2,8 @@ import { I18nProvider } from '@lingui/react' //@translations
 import React, { FunctionComponent } from 'react'
 import CodePush from 'react-native-code-push' // @codepush
 import 'react-native-gesture-handler' // @react-navigation
+import { QueryCache, ReactQueryCacheProvider } from 'react-query'
+import { addPlugin } from 'react-query-native-devtools'
 
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
@@ -19,11 +21,19 @@ const codePushOptionsAuto = {
   checkFrequency: CodePush.CheckFrequency.ON_APP_START,
 }
 
+const queryCache = new QueryCache()
+
+if (__DEV__) {
+  addPlugin(queryCache)
+}
+
 const AppComponent: FunctionComponent = function () {
   return (
-    <I18nProvider language={i18n.language} i18n={i18n}>
-      <RootNavigator />
-    </I18nProvider>
+    <ReactQueryCacheProvider queryCache={queryCache}>
+      <I18nProvider language={i18n.language} i18n={i18n}>
+        <RootNavigator />
+      </I18nProvider>
+    </ReactQueryCacheProvider>
   )
 }
 
