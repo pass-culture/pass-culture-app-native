@@ -4,11 +4,13 @@ apply plugin: "com.android.application"
 
 // @react-native-config
 project.ext.envConfigFiles = [
+        apptestingdebug: ".env.testing",
+        apptestingrelease: ".env.testing",
         stagingdebug: ".env.staging",
         stagingrelease: ".env.staging",
         productiondebug: ".env.production",
         productionrelease: ".env.production",
-        "": ".env.staging",                         // Default (must be the last in the list so as not to override others)
+        "": ".env.testing",                         // Default (must be the last in the list so as not to override others)
 ]
 apply from: project(':bam.tech_react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
@@ -190,6 +192,10 @@ android {
 
     flavorDimensions "environment"
     productFlavors {
+        // ProductFlavors names can not start with 'test' https://android.googlesource.com/platform/tools/build/+/21b5320e57ba21f829ecbb4862cf0b9876e11778/gradle/src/main/groovy/com/android/build/gradle/AndroidPlugin.groovy#93
+        apptesting {
+            dimension "environment"
+        }
         staging {
             dimension "environment"
         }
