@@ -94,18 +94,39 @@ You can automatically generate files by running the following commands:
 
 ## Deploy
 
-### Testing (manual deploy for the moment)
+### Manual deploy for the moment => will be automated by ticket 4558
 
 You can find the testing app at:
 
-- https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
-- https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-android
+- https://appcenter.ms/orgs/pass-Culture/apps/passculture-<ENV:testing|staging>-ios
+- https://appcenter.ms/orgs/pass-Culture/apps/passculture-<ENV:testing|staging>-android
+
+#### Soft deploy
+
+Pre-requisites :
+
+- run `appcenter login` and connectwith your passculture email address
+- get CODEPUSH_KEY_ANDROID, put it in `.env.{ENV}`
+- comment lines 75 and 77 (git status and check_environment) of scripts/deploy, as you will have local changes since deploy is manual for the moment
+
+Then run:
+
+```
+./scripts/deploy.sh -o android
+```
+
+> Only android working for the moment
+
+> Default env is testing, no need to specify it in the command
+
+#### Hard deploy (if I modified native code)
 
 Pre-requisites:
 
 - get testing.keystore file, put it in `android/keystores` folder
-- get the keystore password, put it in `android/keystores/testing.keystore.properties`
+- get the keystore password, put it in `android/keystores/{ENV}.keystore.properties`
 - get the Appcenter API token, you will be asked for it
+- comment lines 75 and 77 (git status and check_environment) of scripts/deploy, as you will have local changes since deploy is manual for the moment
 
 To deploy in testing environment, just run
 
@@ -116,31 +137,6 @@ To deploy in testing environment, just run
 > Only android working for the moment
 
 > Default env is testing, no need to specify it in the command
-
-### Staging (manual deploy for the moment)
-
-You can find the testing app at:
-
-- https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios
-- https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-android
-
-Pre-requisites:
-
-- get testing.keystore file, put it in `android/keystores folder`
-- get the keystore password, put it in `android/keystores/staging.keystore.properties`
-- get the Appcenter API token, you will be asked for it
-
-To deploy in testing environment, just run
-
-```
-./scripts/deploy.sh -t hard -e staging -o android
-```
-
-There is few options on the deploy command. Please run the following command to have all usages:
-
-```
-./scripts/deploy.sh -h
-```
 
 ### CodePush
 
