@@ -13,7 +13,16 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   button: {
-    marginLeft: 5,
+    position: 'absolute',
+    right: 0,
+    bottom: 20,
+    backgroundColor: 'grey',
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRightWidth: 0,
+    padding: 10,
   },
   status: {
     fontSize: 12,

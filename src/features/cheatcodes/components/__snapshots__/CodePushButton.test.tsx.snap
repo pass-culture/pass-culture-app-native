@@ -13,8 +13,17 @@ exports[`CodePushButton prints AWAITING_USER_ACTION 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": 5,
+      "backgroundColor": "grey",
+      "borderBottomLeftRadius": 5,
+      "borderColor": "white",
+      "borderRightWidth": 0,
+      "borderTopLeftRadius": 5,
+      "borderWidth": 1,
+      "bottom": 20,
       "opacity": 1,
+      "padding": 10,
+      "position": "absolute",
+      "right": 0,
     }
   }
   testID="container"
@@ -44,8 +53,17 @@ exports[`CodePushButton prints CHECKING_FOR_UPDATE 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": 5,
+      "backgroundColor": "grey",
+      "borderBottomLeftRadius": 5,
+      "borderColor": "white",
+      "borderRightWidth": 0,
+      "borderTopLeftRadius": 5,
+      "borderWidth": 1,
+      "bottom": 20,
       "opacity": 1,
+      "padding": 10,
+      "position": "absolute",
+      "right": 0,
     }
   }
   testID="container"
@@ -75,8 +93,17 @@ exports[`CodePushButton prints DOWNLOADING_PACKAGE 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": 5,
+      "backgroundColor": "grey",
+      "borderBottomLeftRadius": 5,
+      "borderColor": "white",
+      "borderRightWidth": 0,
+      "borderTopLeftRadius": 5,
+      "borderWidth": 1,
+      "bottom": 20,
       "opacity": 1,
+      "padding": 10,
+      "position": "absolute",
+      "right": 0,
     }
   }
   testID="container"
@@ -106,8 +133,17 @@ exports[`CodePushButton prints INSTALLING_UPDATE 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": 5,
+      "backgroundColor": "grey",
+      "borderBottomLeftRadius": 5,
+      "borderColor": "white",
+      "borderRightWidth": 0,
+      "borderTopLeftRadius": 5,
+      "borderWidth": 1,
+      "bottom": 20,
       "opacity": 1,
+      "padding": 10,
+      "position": "absolute",
+      "right": 0,
     }
   }
   testID="container"
@@ -137,8 +173,17 @@ exports[`CodePushButton prints undefined 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": 5,
+      "backgroundColor": "grey",
+      "borderBottomLeftRadius": 5,
+      "borderColor": "white",
+      "borderRightWidth": 0,
+      "borderTopLeftRadius": 5,
+      "borderWidth": 1,
+      "bottom": 20,
       "opacity": 1,
+      "padding": 10,
+      "position": "absolute",
+      "right": 0,
     }
   }
   testID="container"
@@ -168,8 +213,17 @@ exports[`CodePushButton renders correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": 5,
+      "backgroundColor": "grey",
+      "borderBottomLeftRadius": 5,
+      "borderColor": "white",
+      "borderRightWidth": 0,
+      "borderTopLeftRadius": 5,
+      "borderWidth": 1,
+      "bottom": 20,
       "opacity": 1,
+      "padding": 10,
+      "position": "absolute",
+      "right": 0,
     }
   }
   testID="container"
