@@ -6,7 +6,7 @@ import 'react-native-gesture-handler' // @react-navigation
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
-import './services/sentry'
+import './libs/sentry'
 
 const codePushOptionsManual = {
   updateDialog: true,

@@ -12,6 +12,7 @@ module.exports = {
           features: './src/features',
           libs: './src/libs',
           locales: './src/locales',
+          ui: './src/ui',
         },
       },
     ],

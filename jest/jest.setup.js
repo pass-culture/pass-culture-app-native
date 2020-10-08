@@ -6,3 +6,15 @@ import 'cross-fetch/polyfill'
    "Animated: `useNativeDriver` is not supported because the native animated module is missing. 
    Falling back to JS-based animation." */
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
+
+jest.mock('@react-native-community/geolocation', () => {
+  return {
+    addListener: jest.fn(),
+    getCurrentPosition: jest.fn(),
+    removeListeners: jest.fn(),
+    requestAuthorization: jest.fn(),
+    setConfiguration: jest.fn(),
+    startObserving: jest.fn(),
+    stopObserving: jest.fn(),
+  }
+})
