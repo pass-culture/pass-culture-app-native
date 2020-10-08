@@ -4,8 +4,11 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { Button, StyleSheet, View, Text } from 'react-native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { env } from 'libs/environment'
 import { useGeolocation, CoordinatesView } from 'libs/geolocation'
 import { i18n } from 'libs/i18n'
+
+import { CodePushButton } from '../components/CodePushButton'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
@@ -35,6 +38,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
       <Button title={i18n._(t`Go to Login Page`)} onPress={goToLoginPage} />
       <Button title={i18n._(t`Go to Login Page with Params`)} onPress={goToLoginPageWithParams} />
       <CoordinatesView position={position} style={styles.geolocation} />
+      {env.FEATURE_FLAG_CODE_PUSH && <CodePushButton />}
     </View>
   )
 }

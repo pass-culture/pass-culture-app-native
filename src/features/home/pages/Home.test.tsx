@@ -1,7 +1,15 @@
 import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
+import { env } from 'libs/environment'
+
 import { Home } from './Home'
+
+jest.mock('libs/environment', () => ({
+  env: {
+    FEATURE_FLAG_CODE_PUSH: true,
+  },
+}))
 
 describe('Home component', () => {
   const navigation = {
@@ -27,5 +35,11 @@ describe('Home component', () => {
     expect(navigation.navigate).toHaveBeenCalledWith('Login', {
       userId: 'I have been Set by params',
     })
+  })
+
+  it('should nothave code push button', async () => {
+    env.FEATURE_FLAG_CODE_PUSH = false
+    const home = render(<Home navigation={navigation} />)
+    expect(() => home.getByText('Check update')).toThrowError()
   })
 })
