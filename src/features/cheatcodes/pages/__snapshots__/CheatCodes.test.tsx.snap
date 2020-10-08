@@ -44,33 +44,5 @@ exports[`CheatCodes component should render correctly 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "marginLeft": 5,
-        "opacity": 1,
-      }
-    }
-    testID="container"
-  >
-    <Text
-      style={
-        Object {
-          "fontSize": 12,
-        }
-      }
-    >
-      Check update
-    </Text>
-  </View>
 </View>
 `;
