@@ -74,3 +74,6 @@ ios/envfile
 # Lingui
 src/locales/_build
 src/locales/*/*.js
+
+# Deploy
+android/keystores/*
