@@ -1,4 +1,4 @@
-import { setupI18n } from '@lingui/core' //@translations
+import { MessageDescriptor, setupI18n } from '@lingui/core' //@translations
 import { findBestAvailableLanguage } from 'react-native-localize'
 
 import frenchCatalog from 'locales/fr/messages'
@@ -15,3 +15,7 @@ export const i18n = setupI18n({
     fr: frenchCatalog,
   },
 })
+
+export function _(id: MessageDescriptor): string {
+  return i18n._(id)
+}
