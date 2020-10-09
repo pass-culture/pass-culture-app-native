@@ -2,6 +2,8 @@ import React, { Component, ReactElement } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import CodePush from 'react-native-code-push' // @codepush
 
+import { Colors } from 'ui/theme/colors'
+
 interface State {
   info?: string
   mismatch: boolean
@@ -16,10 +18,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0,
     bottom: 20,
-    backgroundColor: 'grey',
+    backgroundColor: Colors.grey,
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
-    borderColor: 'white',
+    borderColor: Colors.white,
     borderWidth: 1,
     borderRightWidth: 0,
     padding: 10,
