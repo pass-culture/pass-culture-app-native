@@ -4,6 +4,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { Button, StyleSheet, View, Text } from 'react-native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { useGeolocation, CoordinatesView } from 'libs/geolocation'
 import { i18n } from 'libs/i18n'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
@@ -14,9 +15,12 @@ type Props = {
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  geolocation: { position: 'absolute', alignItems: 'center', bottom: 50 },
 })
 
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
+  const position = useGeolocation()
+
   const goToLoginPage = useCallback((): void => {
     navigation.navigate('Login')
   }, [])
@@ -30,6 +34,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
       <Text>{i18n._(t`Welcome to BAM!`)}</Text>
       <Button title={i18n._(t`Go to Login Page`)} onPress={goToLoginPage} />
       <Button title={i18n._(t`Go to Login Page with Params`)} onPress={goToLoginPageWithParams} />
+      <CoordinatesView position={position} style={styles.geolocation} />
     </View>
   )
 }

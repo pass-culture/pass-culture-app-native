@@ -95,5 +95,72 @@ exports[`Home component should render correctly 1`] = `
       </Text>
     </View>
   </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "flexDirection": "row",
+        },
+        Object {
+          "alignItems": "center",
+          "bottom": 50,
+          "position": "absolute",
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 9,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "blue",
+          }
+        }
+      >
+         Lat 
+      </Text>
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 9,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "blue",
+          }
+        }
+      >
+         Lon 
+      </Text>
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 9,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "blue",
+          }
+        }
+      >
+         Alt 
+      </Text>
+    </Text>
+  </View>
 </View>
 `;
