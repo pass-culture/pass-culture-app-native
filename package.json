@@ -6,6 +6,7 @@
     "node": ">=12.13.0 <13.0.0"
   },
   "scripts": {
+    "launch": "react-native run-android --variant=apptestingDebug && react-native start",
     "start": "react-native start",
     "test": "yarn test:lint && yarn test:types && yarn test:unit",
     "test:lint": "eslint . --ext .js,.ts,.tsx --cache",
