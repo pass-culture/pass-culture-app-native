@@ -6,7 +6,7 @@ import { Button, StyleSheet, View, Text } from 'react-native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { useGeolocation, CoordinatesView } from 'libs/geolocation'
-import { i18n } from 'libs/i18n'
+import { _ } from 'libs/i18n'
 
 import { CodePushButton } from '../components/CodePushButton'
 
@@ -34,9 +34,9 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text>{i18n._(t`Welcome to BAM!`)}</Text>
-      <Button title={i18n._(t`Go to Login Page`)} onPress={goToLoginPage} />
-      <Button title={i18n._(t`Go to Login Page with Params`)} onPress={goToLoginPageWithParams} />
+      <Text>{_(t`Welcome to BAM!`)}</Text>
+      <Button title={_(t`Go to Login Page`)} onPress={goToLoginPage} />
+      <Button title={_(t`Go to Login Page with Params`)} onPress={goToLoginPageWithParams} />
       <CoordinatesView position={position} style={styles.geolocation} />
       {env.FEATURE_FLAG_CODE_PUSH && <CodePushButton />}
     </View>
