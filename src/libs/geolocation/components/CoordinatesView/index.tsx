@@ -1,9 +1,9 @@
-import React, { FunctionComponent, memo } from 'react'
+import React, { FunctionComponent } from 'react'
 import { StyleSheet, Text, View, StyleProp, ViewStyle } from 'react-native'
 
 import { Colors } from 'ui/theme/colors'
 
-import { GeoLocationCoordinates } from '../types'
+import { GeoLocationCoordinates } from '../../types'
 
 interface Props {
   position: GeoLocationCoordinates
@@ -38,4 +38,4 @@ const CoordinatesView: FunctionComponent<Props> = ({ position, style }) => {
   )
 }
 
-export default memo(CoordinatesView)
+export default CoordinatesView

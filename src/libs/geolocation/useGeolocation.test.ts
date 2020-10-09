@@ -1,11 +1,11 @@
-import CommunityGeolocation, {
+import Geolocation, {
   GeolocationResponse,
   GeolocationError,
 } from '@react-native-community/geolocation'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { Alert } from 'react-native'
 
-import { useGeolocation } from './communityGeolocation'
+import { useGeolocation } from './useGeolocation'
 
 const EiffelTourCoordinates = {
   latitude: 48.85,
@@ -13,52 +13,55 @@ const EiffelTourCoordinates = {
   altitude: 100,
 }
 
-const getCurrentPositionFunction = (shouldFail: boolean) => (
-  onSuccess: (position: GeolocationResponse) => void,
+const getCurrentPositionFail = (
+  _onSuccess: (position: GeolocationResponse) => void,
   onError?: (error: GeolocationError) => void
 ) =>
   process.nextTick(() => {
     act(() => {
-      if (shouldFail) {
-        onError?.({
-          code: 1,
-          message: 'Timeout error',
-        } as GeolocationError)
-      } else {
-        onSuccess({
-          coords: EiffelTourCoordinates,
-        } as GeolocationResponse)
-      }
+      onError?.({
+        code: 1,
+        message: 'Timeout error',
+      } as GeolocationError)
     })
   })
 
-describe('useCommunityGeolocation', () => {
+const getCurrentPositionSuccess = (onSuccess: (position: GeolocationResponse) => void) =>
+  process.nextTick(() => {
+    act(() => {
+      onSuccess({
+        coords: EiffelTourCoordinates,
+      } as GeolocationResponse)
+    })
+  })
+
+describe('useGeolocation', () => {
+  afterEach(() => {
+    jest.restoreAllMocks()
+  })
+
   it('should call getCurrentPosition', async () => {
     const getCurrentPosition = jest
-      .spyOn(CommunityGeolocation, 'getCurrentPosition')
-      .mockImplementation(getCurrentPositionFunction(false))
+      .spyOn(Geolocation, 'getCurrentPosition')
+      .mockImplementation(getCurrentPositionSuccess)
 
     renderHook(() => useGeolocation())
 
     expect(getCurrentPosition).toHaveBeenCalled()
-    getCurrentPosition.mockRestore()
   })
+
   it('should resolve with the geolocation', async () => {
-    const getCurrentPosition = jest
-      .spyOn(CommunityGeolocation, 'getCurrentPosition')
-      .mockImplementation(getCurrentPositionFunction(false))
+    jest.spyOn(Geolocation, 'getCurrentPosition').mockImplementation(getCurrentPositionSuccess)
 
     const { result, waitForNextUpdate } = renderHook(() => useGeolocation())
 
     await waitForNextUpdate()
 
     expect(result.current).toEqual(EiffelTourCoordinates)
-    getCurrentPosition.mockRestore()
   })
+
   it('should reject with empty coordinates', async () => {
-    const getCurrentPosition = jest
-      .spyOn(CommunityGeolocation, 'getCurrentPosition')
-      .mockImplementation(getCurrentPositionFunction(true))
+    jest.spyOn(Geolocation, 'getCurrentPosition').mockImplementation(getCurrentPositionFail)
     const alert = jest.spyOn(Alert, 'alert')
 
     const { result, waitFor } = renderHook(() => useGeolocation())
@@ -73,8 +76,5 @@ describe('useCommunityGeolocation', () => {
       }
     )
     expect(result.current).toEqual({})
-
-    alert.mockRestore()
-    getCurrentPosition.mockRestore()
   })
 })
