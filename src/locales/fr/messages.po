@@ -13,37 +13,25 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#. The title of button to generate a random token
-#: src/pages/Login/Login.component.tsx:40
-#~ msgid "Generate a random token"
-#~ msgstr "Génère un token aléatoire"
-
 #. The title of button to go to the home page
-#: src/pages/Login/Login.component.tsx:36
-#~ msgid "Go to Home Page"
-#~ msgstr "Aller sur la home page"
+#: src/features/auth/pages/Login.tsx:15
+msgid "Go to Home Page"
+msgstr "Aller sur la home page"
 
-#. Title of the go to login button
-#: src/pages/Home/Home.component.tsx:17
-#~ msgid "Go to Login Page"
-#~ msgstr "Aller sur la page de connexion"
+#: src/features/home/pages/Home.tsx:20
+msgid "Go to Login Page"
+msgstr "Aller sur la page de connexion"
 
-#. Title of the go to login with params button
-#: src/pages/Home/Home.component.tsx:19
-#~ msgid "Go to Login Page with Params"
-#~ msgstr "Aller sur la page de connexion avec params"
+#: src/features/home/pages/Home.tsx:21
+msgid "Go to Login Page with Params"
+msgstr "Aller sur la page de connexion avec params"
 
 #. The title of the login page
-#: src/pages/Login/Login.component.tsx:35
-#~ msgid "Login page"
-#~ msgstr "Page de login"
+#: src/features/auth/pages/Login.tsx:14
+msgid "Login page"
+msgstr "Page de login"
 
-#. The title of button to toggle loader
-#: src/pages/Login/Login.component.tsx:42
-#~ msgid "Toggle selector"
-#~ msgstr "Toggle selector"
-
-#. Welcome message on Home page
-#: src/pages/Home/Home.component.tsx:16
-#~ msgid "Welcome to BAM!"
-#~ msgstr "Bienvenue chez BAM"
+#: src/features/home/pages/Home.tsx:19
+#: src/libs/i18n.test.ts:8
+msgid "Welcome to BAM!"
+msgstr "Bienvenue chez BAM"
