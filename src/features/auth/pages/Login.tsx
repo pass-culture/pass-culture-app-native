@@ -26,8 +26,8 @@ export const Login: FunctionComponent<Props> = function ({ navigation, route }) 
 
   return (
     <View style={styles.container}>
-      <Text>{_(t`Login page`)}</Text>
-      <Button testID="homepageButton" title={_(t`Go to Home Page`)} onPress={goToHomePage} />
+      <Text>{_(t`Page de connexion`)}</Text>
+      <Button testID="homepageButton" title={_(t`Aller sur la home page`)} onPress={goToHomePage} />
       <CheatCodesButton navigation={navigation} />
       <Text>{route.params && route.params.userId}</Text>
     </View>

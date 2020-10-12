@@ -34,9 +34,12 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text>{_(t`Welcome to BAM!`)}</Text>
-      <Button title={_(t`Go to Login Page`)} onPress={goToLoginPage} />
-      <Button title={_(t`Go to Login Page with Params`)} onPress={goToLoginPageWithParams} />
+      <Text>{_(t`Bienvenue à Pass Culture`)}</Text>
+      <Button title={_(t`Aller sur la page de connexion`)} onPress={goToLoginPage} />
+      <Button
+        title={_(t`Aller sur la page de connexion avec params`)}
+        onPress={goToLoginPageWithParams}
+      />
       <CoordinatesView position={position} style={styles.geolocation} />
       {env.FEATURE_FLAG_CODE_PUSH && <CodePushButton />}
     </View>
