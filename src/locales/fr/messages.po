@@ -13,25 +13,26 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#. The title of button to go to the home page
 #: src/features/auth/pages/Login.tsx:15
-msgid "Go to Home Page"
+msgid "Aller sur la home page"
 msgstr "Aller sur la home page"
 
 #: src/features/home/pages/Home.tsx:20
-msgid "Go to Login Page"
+msgid "Aller sur la page de connexion"
 msgstr "Aller sur la page de connexion"
 
 #: src/features/home/pages/Home.tsx:21
-msgid "Go to Login Page with Params"
+msgid "Aller sur la page de connexion avec params"
 msgstr "Aller sur la page de connexion avec params"
 
-#. The title of the login page
-#: src/features/auth/pages/Login.tsx:14
-msgid "Login page"
-msgstr "Page de login"
-
 #: src/features/home/pages/Home.tsx:19
+msgid "Bienvenue à Pass Culture"
+msgstr "Bienvenue à Pass Culture"
+
+#: src/features/auth/pages/Login.tsx:14
+msgid "Page de connexion"
+msgstr "Page de connexion"
+
 #: src/libs/i18n.test.ts:8
-msgid "Welcome to BAM!"
-msgstr "Bienvenue chez BAM"
+msgid "Welcome to Pass Culture"
+msgstr "Bienvenue à Pass Culture"

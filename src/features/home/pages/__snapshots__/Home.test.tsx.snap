@@ -11,7 +11,7 @@ exports[`Home component should render correctly 1`] = `
   }
 >
   <Text>
-    Bienvenue chez BAM
+    Bienvenue à Pass Culture
   </Text>
   <View
     accessibilityRole="button"

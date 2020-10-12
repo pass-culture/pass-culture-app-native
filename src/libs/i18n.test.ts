@@ -7,7 +7,7 @@ describe('i18n', () => {
   describe('t', () => {
     it('translates to french by default', () => {
       expect(findBestAvailableLanguage).toHaveBeenCalled()
-      expect(i18n._(t`Welcome to BAM!`)).toEqual('Bienvenue chez BAM')
+      expect(i18n._(t`Welcome to Pass Culture`)).toEqual('Bienvenue à Pass Culture')
     })
   })
 })
