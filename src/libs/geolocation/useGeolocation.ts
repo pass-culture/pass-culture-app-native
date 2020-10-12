@@ -11,7 +11,7 @@ export const useGeolocation = (): GeoLocationCoordinates => {
     Geolocation.getCurrentPosition(
       (currentPosition) => setInitialPosition(currentPosition.coords),
       (error) => Alert.alert('Error', JSON.stringify(error)),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
     )
   }, [])
 
