@@ -246,6 +246,8 @@ PODS:
   - React-jsinspector (0.63.3)
   - react-native-config (0.13.0):
     - React
+  - react-native-flipper (0.61.0):
+    - React
   - react-native-geolocation (2.0.2):
     - React
   - react-native-safe-area-context (3.1.8):
@@ -374,6 +376,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - "react-native-config (from `../node_modules/@bam.tech/react-native-config`)"
+  - react-native-flipper (from `../node_modules/react-native-flipper`)
   - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-sensitive-info (from `../node_modules/react-native-sensitive-info`)
@@ -450,6 +453,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-config:
     :path: "../node_modules/@bam.tech/react-native-config"
+  react-native-flipper:
+    :path: "../node_modules/react-native-flipper"
   react-native-geolocation:
     :path: "../node_modules/@react-native-community/geolocation"
   react-native-safe-area-context:
@@ -524,6 +529,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: b56c03e61c0dd5f5801255f2160a815f4a53d451
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
   react-native-config: 056581a0891d0269428219c45c696dd91c6f9eee
+  react-native-flipper: 7936453fec474d5360a14cf6ac035bd689611ffd
   react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
   react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
   react-native-sensitive-info: 400c6e3d27945e15c8cddb5b4b92233c85ee06f8
