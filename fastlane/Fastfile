@@ -66,7 +66,15 @@ platform :android do
       project_dir: ENV['ANDROID_PROJECT_DIR']
     )
   end
-
+  private_lane :deploy_playStore do |options|
+    UI.important("env: #{options[:env]}")
+    supply(
+      package_name: ENV['ANDROID_APP_ID'],
+      skip_upload_metadata: true, 
+      skip_upload_images: true, 
+      skip_upload_screenshots: true  
+    )
+  end
   lane :deploy_appCenter do |options|
     appcenter_upload(
       api_token: ENV['APPCENTER_API_TOKEN'],
@@ -87,6 +95,8 @@ platform :android do
       build
       if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
         deploy_appCenter
+      elsif ENV['DEPLOYMENT_PLATFORM'] === 'store' then
+        deploy_playStore
       end
     end
   end
