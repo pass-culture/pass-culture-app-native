@@ -9,7 +9,6 @@ export interface Environment {
   FEATURE_FLAG_CODE_PUSH: boolean
   FEATURE_FLAG_CODE_PUSH_MANUAL: boolean
   SENTRY_DSN: string
-  VERSION: string
   WEBSOCKET_ENDPOINT: string
 }
 
