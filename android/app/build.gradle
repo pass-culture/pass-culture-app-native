@@ -15,7 +15,11 @@ project.ext.envConfigFiles = [
 apply from: project(':bam.tech_react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
+// Allows to read json (ie: package.json)
+import groovy.json.JsonSlurper
+def packageSlurper = new JsonSlurper()
 
+def packageJson = packageSlurper.parse file('../../package.json')
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -159,8 +163,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         resValue "string", "app_name", project.env.get("ANDROID_APP_NAME")
         resValue "string", "build_config_package", "com.passculture" // @react-native-config
-        versionCode (project.env.get("BUILD") as Integer)
-        versionName project.env.get("VERSION")
+        versionCode (packageJson.build as Integer)
+        versionName packageJson.version
         buildConfigField "String", "CODEPUSH_KEY", "\"${project.env.get("CODEPUSH_KEY_ANDROID")}\"" // @codepush
         multiDexEnabled true
     }
