@@ -11,6 +11,10 @@ describe('CoordinatesView component', () => {
           latitude: 45,
           longitude: 25,
           altitude: 200,
+          accuracy: 1,
+          heading: 0,
+          speed: 0,
+          altitudeAccuracy: 1,
         }}
       />
     )

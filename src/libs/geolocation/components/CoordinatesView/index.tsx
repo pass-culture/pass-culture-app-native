@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import { StyleSheet, Text, View, StyleProp, ViewStyle } from 'react-native'
+import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { Colors } from 'ui/theme/colors'
 
-import { GeoLocationCoordinates } from '../../types'
-
 interface Props {
-  position: GeoLocationCoordinates
+  position: GeoCoordinates | null
   style?: StyleProp<ViewStyle>
 }
 

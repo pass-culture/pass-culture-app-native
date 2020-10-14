@@ -35,6 +35,20 @@ module.exports = {
       },
     ],
     semi: 'off', // no semicolons, as in prettier
+    /**
+     * When dealing with cross-platforms features, linting test files results in error
+     * due to a such conflit:
+     * - android.test.ts: is not recognized as a android file
+     * - test.android.ts: is not recognized as a test file
+     * Setting androidPathRegex and iosPathRegex aim to fix that conflict
+     */
+    'react-native/split-platform-components': [
+      2,
+      {
+        androidPathRegex: '\\.android(.test)?.(ts|tsx)$',
+        iosPathRegex: '\\.ios(.test)?.(ts|tsx)$',
+      },
+    ],
   },
   settings: {
     react: {
@@ -42,7 +56,20 @@ module.exports = {
     },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: [
+          '.js',
+          '.jsx',
+          '.android.js',
+          '.android.jsx',
+          '.ios.js',
+          '.ios.jsx',
+          '.ts',
+          '.tsx',
+          '.android.ts',
+          '.android.tsx',
+          '.ios.ts',
+          '.ios.tsx',
+        ],
       },
       alias: {
         map: [
