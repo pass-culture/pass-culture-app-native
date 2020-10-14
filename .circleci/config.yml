@@ -34,8 +34,53 @@ jobs:
           command: |
             yarn test:unit
 
+
+
+  deploy-android-testing:
+    working_directory: ~/pass-culture-app-native
+    docker:
+      - image: circleci/android:api-28-node
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Node Modules
+          keys:
+            - node-modules-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Node Modules
+          key: node-modules-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - run:
+          name: Install gem dependencies
+          command: |
+            bundle install
+      - run:
+          name: Setup env variables
+          command: |
+            mkdir android/keystores
+            echo $ANDROID_KEYSTORE | base64 -d > android/keystores/testing.keystore
+            echo "storePassword=$ANDROID_KEYSTORE_STORE" >> android/keystores/testing.keystore.properties
+            echo "keyPassword=$ANDROID_KEYSTORE_KEY" >>  android/keystores/testing.keystore.properties
+            export APPCENTER_API_TOKEN=$APPCENTER_API_TOKEN_TESTING
+            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
+      - run:
+          name: Deploy Android App
+          command: |
+            yarn appcenter login --token ${APPCENTER_API_TOEKN} --quiet
+            ./scripts/deploy.sh -o android -t soft -e testing
+
+
 workflows:
   version: 2
   commit:
     jobs:
-      - run-tests
+      #- run-tests
+      - deploy-android-testing:
+          filters:
+            branches:
+              only:
+                - pc-4727-android-deploy-in-testing
