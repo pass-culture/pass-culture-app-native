@@ -41,7 +41,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
         onPress={goToLoginPageWithParams}
       />
       <CoordinatesView position={position} style={styles.geolocation} />
-      {env.FEATURE_FLAG_CODE_PUSH && <CodePushButton />}
+      {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
     </View>
   )
 }
