@@ -1,4 +1,4 @@
 import CoordinatesView from './components/CoordinatesView'
+import { useGeolocation } from './useGeolocation'
 
-export * from './useGeolocation'
-export { CoordinatesView }
+export { CoordinatesView, useGeolocation }
