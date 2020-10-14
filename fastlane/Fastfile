@@ -37,7 +37,7 @@ platform :ios do
   lane :deploy do |options|
     if options[:codepush] then # @codepush
       release_notes = %x[#{release_notes_command}]
-      sh "cd .. && appcenter codepush release-react -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
+      sh "cd .. && yarn appcenter codepush release-react -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
     else
       match(
         shallow_clone: true,
@@ -90,7 +90,7 @@ platform :android do
   lane :deploy do |options|
     if options[:codepush] then # @codepush
       release_notes = %x[#{release_notes_command}]
-      sh "cd .. && appcenter codepush release-react -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
+      sh "cd .. && yarn appcenter codepush release-react -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
     else
       build
       if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then

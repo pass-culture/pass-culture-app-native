@@ -28,6 +28,7 @@
     "@react-navigation/native": "^5.7.5",
     "@react-navigation/stack": "^5.0.6",
     "@sentry/react-native": "^1.8.2",
+    "appcenter-cli": "^2.7.2",
     "babel-core": "^6.26.3",
     "i18n-js": "^3.5.1",
     "jsc-android": "^241213.1.0",
