@@ -12,8 +12,9 @@ I have:
 
 If native code (ios/android) was modified, after the PR is merged go to master and upgrade the __app version__ (+1 patch):
 
+(later there will be a script to embed these commands) 
 - use `yarn version --patch` (it will create a commit and a tag)
-- then `git push`
+- then `git push && git push origin <tag_name>`
 - then use the deploy script (temporary -> waiting for CI/CD to be ready)
 
 ## Technical strategy
