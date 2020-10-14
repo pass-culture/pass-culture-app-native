@@ -37,8 +37,8 @@ describe('Home component', () => {
     })
   })
 
-  it('should nothave code push button', async () => {
-    env.FEATURE_FLAG_CODE_PUSH = false
+  it('should not have code push button', async () => {
+    env.FEATURE_FLAG_CODE_PUSH_MANUAL = false
     const home = render(<Home navigation={navigation} />)
     expect(() => home.getByText('Check update')).toThrowError()
   })
