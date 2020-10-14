@@ -60,6 +60,13 @@ check_environment(){
   fi
 }
 
+check_dependency(){
+  if ! which jq >/dev/null
+  then
+    error "Please install jq at: https://stedolan.github.io/jq/download/" 
+    exit 1
+  fi
+}
 
 while getopts ":e:o:t:h:d" opt; do
   case $opt in
@@ -71,6 +78,8 @@ while getopts ":e:o:t:h:d" opt; do
     \?) error "Invalid option -$OPTARG"; exit 1;;
   esac
 done
+
+check_dependency
 
 [[ -z $(git status -s) ]] || warn 'Please make sure you deploy with no changes or untracked files. You can run *git stash --include-untracked*.'
 
