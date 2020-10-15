@@ -54,23 +54,31 @@ jobs:
           key: node-modules-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
+      - restore_cache:
+          name: Restore Gem dependencies
+          key: bundle-{{ checksum "Gemfile.lock" }}
       - run:
-          name: Install gem dependencies
+          name: Install Gem dependencies
           command: |
-            bundle install
+            bundle install --path=vendor/bundle
+      - save_cache:
+          name: Save Gem dependencies
+          key: bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/.bundle/
+            - vendor/bundle
       - run:
-          name: Setup env variables
+          name: Setup android keystore
           command: |
             mkdir android/keystores
-            echo $ANDROID_KEYSTORE | base64 -d > android/keystores/testing.keystore
-            echo "storePassword=$ANDROID_KEYSTORE_STORE" >> android/keystores/testing.keystore.properties
-            echo "keyPassword=$ANDROID_KEYSTORE_KEY" >>  android/keystores/testing.keystore.properties
-            export APPCENTER_API_TOKEN=$APPCENTER_API_TOKEN_TESTING
-            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
+            echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
+            echo "storePassword=$ANDROID_KEYSTORE_STORE_TESTING" >> android/keystores/testing.keystore.properties
+            echo "keyPassword=$ANDROID_KEYSTORE_KEY_TESTING" >>  android/keystores/testing.keystore.properties
       - run:
           name: Deploy Android App
           command: |
-            yarn appcenter login --token ${APPCENTER_API_TOEKN} --quiet
+            export APPCENTER_API_TOKEN=$APPCENTER_API_TOKEN_TESTING
+            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
             ./scripts/deploy.sh -o android -t soft -e testing
 
 
@@ -78,9 +86,11 @@ workflows:
   version: 2
   commit:
     jobs:
-      #- run-tests
+      - run-tests
       - deploy-android-testing:
           filters:
             branches:
               only:
-                - pc-4727-android-deploy-in-testing
+                - master
+          requires:
+            - run-tests
