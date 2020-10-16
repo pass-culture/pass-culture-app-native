@@ -24,10 +24,6 @@ const styles = StyleSheet.create({
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const position = useGeolocation()
 
-  const goToLoginPage = useCallback((): void => {
-    navigation.navigate('Login')
-  }, [])
-
   const goToLoginPageWithParams = useCallback((): void => {
     navigation.navigate('Login', { userId: 'I have been Set by params' })
   }, [])
@@ -35,7 +31,6 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>{_(t`Bienvenue à Pass Culture`)}</Text>
-      <Button title={_(t`Aller sur la page de connexion`)} onPress={goToLoginPage} />
       <Button
         title={_(t`Aller sur la page de connexion avec params`)}
         onPress={goToLoginPageWithParams}

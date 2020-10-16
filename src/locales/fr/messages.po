@@ -18,15 +18,11 @@ msgstr ""
 msgid "Aller sur la home page"
 msgstr "Aller sur la home page"
 
-#: src/features/home/pages/Home.tsx:22
-msgid "Aller sur la page de connexion"
-msgstr "Aller sur la page de connexion"
-
-#: src/features/home/pages/Home.tsx:23
+#: src/features/home/pages/Home.tsx:19
 msgid "Aller sur la page de connexion avec params"
 msgstr "Aller sur la page de connexion avec params"
 
-#: src/features/home/pages/Home.tsx:21
+#: src/features/home/pages/Home.tsx:18
 msgid "Bienvenue à Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
