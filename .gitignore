@@ -82,3 +82,6 @@ fastlane/playStoreServiceAccount.json
 # CircleCI
 vendor/
 .bundle/
+
+# local settings
+.env.development
