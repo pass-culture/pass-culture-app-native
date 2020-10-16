@@ -3,7 +3,7 @@ import { parseBooleanVariables } from './parseBooleanVariables'
 describe('parseBooleanVariables', () => {
   const mockedConfig = {
     ENV: 'staging',
-    API_ENDPOINT: 'your-api.com',
+    API_BASE_URL: 'your-api.com',
     WEBSOCKET_ENDPOINT: 'websocket-endpoint',
     FEATURE_FLAG_CHEAT_CODES: 'true',
     FEATURE_FLAG_CODE_PUSH: 'true',
@@ -20,7 +20,7 @@ describe('parseBooleanVariables', () => {
     expect(convertedConfig.FEATURE_FLAG_CODE_PUSH).toBeTruthy()
   })
   it('should not touch strings other than "true" and "false"', () => {
-    expect(convertedConfig.API_ENDPOINT).toEqual('your-api.com')
+    expect(convertedConfig.API_BASE_URL).toEqual('your-api.com')
     expect(convertedConfig.WEBSOCKET_ENDPOINT).toEqual('websocket-endpoint')
     expect(convertedConfig.SENTRY_DSN).toEqual('sentry-dsn')
   })
