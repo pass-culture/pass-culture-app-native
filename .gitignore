@@ -78,3 +78,7 @@ src/locales/*/*.js
 # Deploy
 android/keystores/*
 fastlane/playStoreServiceAccount.json
+
+# CircleCI
+vendor/
+.bundle/
