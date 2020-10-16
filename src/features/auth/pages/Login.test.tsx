@@ -4,6 +4,7 @@ import { render, fireEvent, waitFor, act } from '@testing-library/react-native'
 import React from 'react'
 import { Text } from 'react-native'
 
+import { NotAuthenticatedError } from 'libs/fetch'
 import { IUser } from 'types'
 
 import * as api from '../api'
@@ -35,7 +36,9 @@ describe('<Login/>', () => {
   })
 
   it('should NOT redirect to home page when signin has failed', async () => {
-    jest.spyOn(api, 'signin').mockImplementation(signingFail)
+    jest.spyOn(api, 'signin').mockImplementation(() => {
+      throw new NotAuthenticatedError()
+    })
     const { getByText, queryByText } = render(
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Login">
@@ -56,8 +59,4 @@ describe('<Login/>', () => {
 
 async function signingSuccess() {
   return {} as IUser
-}
-
-async function signingFail() {
-  return undefined
 }
