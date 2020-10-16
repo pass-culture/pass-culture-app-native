@@ -1057,6 +1057,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@bam.tech/react-native-batch@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/@bam.tech/react-native-batch/-/react-native-batch-5.2.1.tgz#c8dbe3ce5dca9f704e9522ba5b22bbad4d2c4088"
+  integrity sha512-yX4wIAlPgzhqcp6LLIxjywjXW4lr42wUEDVkiQgZA+ekqR8T8FdcRylo7T+tWz69kA2uIsYPojT3Ya9m0ErErQ==
+
 "@bam.tech/react-native-config@^0.13.0":
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/@bam.tech/react-native-config/-/react-native-config-0.13.0.tgz#e42314b07cbd1dd7f0301a455846be78f641dee8"
@@ -9189,6 +9194,7 @@ react-native-flipper@^0.61.0:
   version "0.61.0"
   resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.61.0.tgz#9613f1e8a7f90d1564f44ffc9fd7ced4f366debc"
   integrity sha512-wRa2Y2pXBoW3m+p3QbtL4NesuRXQW4gJgRHnDe6nkm+ifgt/6+WHGNcWqngmKdNCsNtWTIoDiLOc3/CNdhyfHQ==
+
 react-native-geolocation-service@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-native-geolocation-service/-/react-native-geolocation-service-5.0.0.tgz#eaf0541c99db9cbed5af5e2ad2822d166e3a7543"
