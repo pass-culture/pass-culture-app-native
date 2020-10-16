@@ -13,26 +13,43 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/auth/pages/Login.tsx:15
+#: src/features/auth/pages/Login.tsx:46
+#: src/features/auth/pages/Login.tsx:51
 msgid "Aller sur la home page"
 msgstr "Aller sur la home page"
 
-#: src/features/home/pages/Home.tsx:20
+#: src/features/home/pages/Home.tsx:22
 msgid "Aller sur la page de connexion"
 msgstr "Aller sur la page de connexion"
 
-#: src/features/home/pages/Home.tsx:21
+#: src/features/home/pages/Home.tsx:23
 msgid "Aller sur la page de connexion avec params"
 msgstr "Aller sur la page de connexion avec params"
 
-#: src/features/home/pages/Home.tsx:19
+#: src/features/home/pages/Home.tsx:21
 msgid "Bienvenue à Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/pages/Login.tsx:14
+#. title of login page
+#: src/features/auth/pages/Login.tsx:47
+#: src/features/auth/pages/Login.tsx:50
+msgid "Login"
+msgstr "Connexion"
+
+#: src/features/auth/pages/Login.tsx:45
 msgid "Page de connexion"
 msgstr "Page de connexion"
 
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
+
+#. email placeholder
+#: src/features/auth/pages/Login.tsx:48
+msgid "name@domain.com"
+msgstr "name@domain.com"
+
+#. password placeholder
+#: src/features/auth/pages/Login.tsx:49
+msgid "password"
+msgstr "password"
