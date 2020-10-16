@@ -140,12 +140,15 @@ workflows:
                 - master
           requires:
             - run-tests
-      - deploy-android-staging:
+      - approve-deploy-android-staging:
           type: approval
           filters:
             branches:
               only:
                 # when the poc is approved, replace with master
                 - staging-test-deploy-tmp-branch
+          # requires:
+          #   - run-tests
+      - deploy-android-staging:
           requires:
-            - run-tests
+            - approve-deploy-android-staging
