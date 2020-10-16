@@ -37,9 +37,9 @@ export const Login: FunctionComponent<Props> = function ({ navigation, route }) 
         'Content-type': 'application/json',
       },
     }
-    return await fetch(env.API_ENDPOINT + '/beneficiaries/signin', config)
+    return await fetch(env.API_BASE_URL + '/beneficiaries/signin', config)
       .then((response) => {
-        CookieManager.setFromResponse(env.API_ENDPOINT, response.headers.map['set-cookie']).then(
+        CookieManager.setFromResponse(env.API_BASE_URL, response.headers.map['set-cookie']).then(
           () => {
             goToHomePage()
           }
