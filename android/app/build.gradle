@@ -6,6 +6,7 @@ apply plugin: "com.android.application"
 project.ext.envConfigFiles = [
         apptestingdebug: ".env.testing",
         apptestingrelease: ".env.testing",
+        developmentdebug: ".env.development",
         stagingdebug: ".env.staging",
         stagingrelease: ".env.staging",
         productiondebug: ".env.production",
@@ -198,6 +199,9 @@ android {
     productFlavors {
         // ProductFlavors names can not start with 'test' https://android.googlesource.com/platform/tools/build/+/21b5320e57ba21f829ecbb4862cf0b9876e11778/gradle/src/main/groovy/com/android/build/gradle/AndroidPlugin.groovy#93
         apptesting {
+            dimension "environment"
+        }
+        development {
             dimension "environment"
         }
         staging {
