@@ -132,7 +132,8 @@ workflows:
           filters:
             branches:
               ignore:
-                - deploy-android-staging
+                - deploy-staging-2
+                - staging-test-deploy-tmp-branch
       - deploy-android-testing:
           filters:
             branches:
