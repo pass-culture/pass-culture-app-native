@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
-import { Button, View, Text, TextInput, StyleSheet } from 'react-native'
+import { Button, View, Text, TextInput, StyleSheet, Alert } from 'react-native'
 
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
@@ -33,9 +33,13 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
   const [password, setPassword] = useState(INITIAL_PASSWORD)
 
   async function handleSignin() {
-    const user = await signin({ email, password })
-    if (user) {
-      props.navigation.navigate('Home')
+    try {
+      const user = await signin({ email, password })
+      if (user) {
+        props.navigation.navigate('Home')
+      }
+    } catch (err) {
+      Alert.alert(_(t`Échec de la connexion au Pass Culture: ${err.message}`))
     }
   }
 

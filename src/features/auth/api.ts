@@ -1,5 +1,3 @@
-import { Alert } from 'react-native'
-
 import { post } from 'libs/fetch'
 import { IUser } from 'types'
 
@@ -8,12 +6,7 @@ type Credentials = {
   password: string
 }
 
-export async function signin({ email, password }: Credentials): Promise<IUser | undefined> {
+export async function signin({ email, password }: Credentials): Promise<IUser> {
   const body = { identifier: email, password }
-  try {
-    return post<IUser>('/users/signin', { body })
-  } catch (error) {
-    Alert.alert('Failed to fetch cookie : ', error)
-    return undefined
-  }
+  return post<IUser>('/users/signin', { body })
 }

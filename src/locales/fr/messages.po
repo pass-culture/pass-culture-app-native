@@ -21,25 +21,48 @@ msgstr "Aller sur la page de connexion avec params"
 msgid "Bienvenue à Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/pages/Login.tsx:36
+#: src/features/auth/pages/Login.tsx:41
 msgid "Connectez-vous :"
 msgstr "Connectez-vous :"
 
 #. login button
-#: src/features/auth/pages/Login.tsx:39
+#: src/features/auth/pages/Login.tsx:44
 msgid "Connexion"
 msgstr "Connexion"
+
+#. Authentication error message
+#: src/libs/fetch.ts:51
+msgid "Erreur d'authentification"
+msgstr "Erreur d'authentification"
+
+#. setCookieFromResponse error
+#: src/libs/storage.ts:23
+msgid "La réponse ne contient pas de cookie"
+msgstr "La réponse ne contient pas de cookie"
 
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
 #. email placeholder
-#: src/features/auth/pages/Login.tsx:37
+#: src/features/auth/pages/Login.tsx:42
 msgid "name@domain.com"
 msgstr "name@domain.com"
 
 #. password placeholder
-#: src/features/auth/pages/Login.tsx:38
+#: src/features/auth/pages/Login.tsx:43
 msgid "password"
 msgstr "password"
+
+#: src/libs/fetch.ts:43
+msgid "Échec dans la récupération du cookie: {err}"
+msgstr "Échec dans la récupération du cookie: {err}"
+
+#: src/features/auth/pages/Login.tsx:36
+msgid "Échec de la connexion au Pass Culture: {0}"
+msgstr "Échec de la connexion au Pass Culture: {0}"
+
+#. Http error message
+#: src/libs/fetch.ts:37
+msgid "Échec de la requête {url}, code: {0}"
+msgstr "Échec de la requête {url}, code: {0}"
