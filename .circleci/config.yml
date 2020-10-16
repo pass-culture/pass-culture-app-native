@@ -68,7 +68,7 @@ jobs:
       - run:
           name: Setup android keystore for testing environment
           command: |
-            mkdir android/keystores
+            mkdir -p android/keystores
             echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
             echo "storePassword=$ANDROID_KEYSTORE_STORE_TESTING" >> android/keystores/testing.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_TESTING" >>  android/keystores/testing.keystore.properties
@@ -112,10 +112,10 @@ jobs:
       - run:
           name: Setup android keystore for staging environment
           command: |
-            mkdir android/keystores
-            echo $ANDROID_KEYSTORE_STAGING | base64 -di > android/keystores/staging.keystore
-            echo "storePassword=$ANDROID_KEYSTORE_STORE_STAGING" >> android/keystores/staging.keystore.properties
-            echo "keyPassword=$ANDROID_KEYSTORE_KEY_STAGING" >>  android/keystores/staging.keystore.properties
+            mkdir -p android/keystores
+            echo $ANDROID_KEYSTORE_BASE64_STAGING | base64 -di > android/keystores/staging.keystore
+            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_STAGING" >> android/keystores/staging.keystore.properties
+            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_STAGING" >>  android/keystores/staging.keystore.properties
       - run:
           name: Deploy Android App for staging environment
           command: |
@@ -132,7 +132,7 @@ workflows:
           filters:
             branches:
               ignore:
-                - deploy-staging-2
+                - deploy-staging-3
       - deploy-android-testing:
           filters:
             branches:
