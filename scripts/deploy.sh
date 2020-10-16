@@ -93,13 +93,13 @@ if [ $DEPLOY_TYPE == "hard" ]; then
     echo -e "${GREEN}- - - - -"
     echo -e "Fastlane 🍎  iOS $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane ios deploy --env=$APP_ENV
+    bundle exec fastlane ios deploy --env $APP_ENV
   fi
   if [[ $APP_OS != "ios" ]]; then
     echo -e "${YELLOW}- - - - -"
     echo "Fastlane 🤖  Android $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane android deploy --env=$APP_ENV
+    bundle exec fastlane android deploy --env $APP_ENV
   fi
 fi
 
@@ -112,13 +112,13 @@ if [ $DEPLOY_TYPE == "soft" ]; then
     echo -e "${GREEN}- - - - -"
     echo -e "Codepush 🍎  iOS ${APP_ENV}"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane ios deploy codepush: --env=$APP_ENV
+    bundle exec fastlane ios deploy codepush: --env $APP_ENV
   fi
   if [[ $APP_OS != "ios" ]]; then
     echo -e "${YELLOW}- - - - -"
     echo -e "Codepush 🤖  Android ${APP_ENV}"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane android deploy codepush: --env=$APP_ENV
+    bundle exec fastlane android deploy codepush: --env $APP_ENV
   fi
 fi
 
