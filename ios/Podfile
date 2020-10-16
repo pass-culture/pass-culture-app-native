@@ -5,7 +5,7 @@ platform :ios, '10.0'
 
 target 'PassCulture' do
   config = use_native_modules!
-
+  
   use_react_native!(:path => config["reactNativePath"])
 
   # Third party deps podspec link, to include if 0.60 autolinking not supported
@@ -15,7 +15,7 @@ target 'PassCulture' do
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable these next few lines.
   use_flipper!
-  pod 'react-native-cookies', :path => '../node_modules/@react-native-community/cookies'
+  pod 'react-native-cookies', :path => '../node_modules/@react-native-community/cookies'  
   post_install do |installer|
     flipper_post_install(installer)
   end
