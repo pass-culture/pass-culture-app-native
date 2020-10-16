@@ -40,54 +40,112 @@ jobs:
       - image: circleci/android:api-28-node
     steps:
       - checkout
-      - restore_cache:
+      - restore_node:
           name: Restore Node Modules
           keys:
             - node-modules-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install --immutable
-      - save_cache:
+      - save_node:
           name: Save Node Modules
           key: node-modules-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
-      - restore_cache:
+      - restore_gems:
           name: Restore Gem dependencies
           key: bundle-{{ checksum "Gemfile.lock" }}
       - run:
           name: Install Gem dependencies
           command: |
             bundle install --path=vendor/bundle
-      - save_cache:
+      - save_gems:
           name: Save Gem dependencies
           key: bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.bundle/
             - vendor/bundle
       - run:
-          name: Setup android keystore
+          name: Setup android keystore for testing environment
           command: |
             mkdir android/keystores
             echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
             echo "storePassword=$ANDROID_KEYSTORE_STORE_TESTING" >> android/keystores/testing.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_TESTING" >>  android/keystores/testing.keystore.properties
       - run:
-          name: Deploy Android App
+          name: Deploy Android App for testing environment
           command: |
             export APPCENTER_API_TOKEN=$APPCENTER_API_TOKEN_TESTING
             export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
             ./scripts/deploy.sh -o android -t soft -e testing
 
+  deploy-android-staging:
+    docker:
+      - image: circleci/android:api-28-node
+    steps:
+      - checkout
+      - restore_node:
+          name: Restore Node Modules
+          keys:
+            - node-modules-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_node:
+          name: Save Node Modules
+          key: node-modules-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - restore_gems:
+          name: Restore Gem dependencies
+          key: bundle-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Install Gem dependencies
+          command: |
+            bundle install --path=vendor/bundle
+      - save_gems:
+          name: Save Gem dependencies
+          key: bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/.bundle/
+            - vendor/bundle
+      - run:
+          name: Setup android keystore for staging environment
+          command: |
+            mkdir android/keystores
+            echo $ANDROID_KEYSTORE_STAGING | base64 -di > android/keystores/staging.keystore
+            echo "storePassword=$ANDROID_KEYSTORE_STORE_STAGING" >> android/keystores/staging.keystore.properties
+            echo "keyPassword=$ANDROID_KEYSTORE_KEY_STAGING" >>  android/keystores/staging.keystore.properties
+      - run:
+          name: Deploy Android App for staging environment
+          command: |
+            export APPCENTER_API_TOKEN=$APPCENTER_API_TOKEN_STAGING
+            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_STAGING
+            ./scripts/deploy.sh -o android -t soft -e staging
+
 workflows:
   version: 2
   commit:
     jobs:
-      - run-tests
+      - run-tests:
+          # remove this filter when deploy-android-staging is setup
+          filters:
+            branches:
+              ignore:
+                - deploy-android-staging
       - deploy-android-testing:
           filters:
             branches:
               only:
                 - master
+          requires:
+            - run-tests
+      - deploy-android-staging:
+          type: approval
+          filters:
+            branches:
+              only:
+                # when the poc is approved, replace with master
+                - staging-test-deploy-tmp-branch
           requires:
             - run-tests
