@@ -1,20 +1,63 @@
-import { render, fireEvent } from '@testing-library/react-native'
+import { NavigationContainer } from '@react-navigation/native' // @react-navigation
+import { createStackNavigator } from '@react-navigation/stack' // @react-navigation
+import { render, fireEvent, waitFor, act } from '@testing-library/react-native'
 import React from 'react'
+import { Text } from 'react-native'
+
+import { IUser } from 'types'
+
+import * as api from '../api'
 
 import { Login } from './Login'
 
-describe('Login component', () => {
-  const navigation = {
-    navigate: jest.fn(),
-  } as any // eslint-disable-line @typescript-eslint/no-explicit-any
-  const route = {
-    params: { userId: 'testId' },
-  } as any // eslint-disable-line @typescript-eslint/no-explicit-any
+const Home = () => <Text>Home message</Text>
 
-  it('should have a button to go to the Home page', () => {
-    const login = render(<Login navigation={navigation} route={route} />)
-    const HomeButton = login.getByTestId('homepageButton')
-    fireEvent.press(HomeButton)
-    expect(navigation.navigate).toHaveBeenCalledWith('Home')
+const RootStack = createStackNavigator()
+
+describe('<Login/>', () => {
+  it('should redirect to home page when signin is successful', async () => {
+    jest.spyOn(api, 'signin').mockImplementation(signingSuccess)
+    const { getByText, queryByText } = render(
+      <NavigationContainer>
+        <RootStack.Navigator initialRouteName="Login">
+          <RootStack.Screen name="Home" component={Home} />
+          <RootStack.Screen name="Login" component={Login} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    )
+
+    fireEvent.press(getByText('Connexion'))
+
+    await act(async () => {
+      const HomeMessage = await waitFor(() => queryByText('Home message'))
+      expect(HomeMessage).toBeTruthy()
+    })
+  })
+
+  it('should NOT redirect to home page when signin has failed', async () => {
+    jest.spyOn(api, 'signin').mockImplementation(signingFail)
+    const { getByText, queryByText } = render(
+      <NavigationContainer>
+        <RootStack.Navigator initialRouteName="Login">
+          <RootStack.Screen name="Home" component={Home} />
+          <RootStack.Screen name="Login" component={Login} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    )
+
+    fireEvent.press(getByText('Connexion'))
+
+    await act(async () => {
+      const HomeMessage = await waitFor(() => queryByText('Home message'))
+      expect(HomeMessage).toBeNull()
+    })
   })
 })
+
+async function signingSuccess() {
+  return {} as IUser
+}
+
+async function signingFail() {
+  return undefined
+}

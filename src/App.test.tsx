@@ -4,10 +4,10 @@ import React from 'react'
 import { App } from './App'
 
 describe('App', () => {
-  it('instantiate the application', async () => {
+  it('should display a a prompt to sign-in message', async () => {
     const { getByText } = render(<App />)
 
-    const welcomeText = await waitFor(() => getByText('Bienvenue à Pass Culture'))
-    expect(welcomeText.props.children).toBe('Bienvenue à Pass Culture')
+    const welcomeText = await waitFor(() => getByText('Connectez-vous :'))
+    expect(welcomeText.props.children).toBe('Connectez-vous :')
   })
 })
