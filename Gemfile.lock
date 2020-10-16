@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/KrauseFx/fastlane-plugin-load_json
+  revision: 821c6ae468428ac53178295e12136d76961e8820
+  specs:
+    fastlane-plugin-load_json (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -233,6 +239,7 @@ DEPENDENCIES
   cocoapods
   fastlane
   fastlane-plugin-appcenter
+  fastlane-plugin-load_json!
 
 BUNDLED WITH
    2.1.4
