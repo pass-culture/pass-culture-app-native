@@ -11,5 +11,5 @@ private_lane :load_env_file do |options|
   UI.important("version: #{package["version"]}")
   UI.important("version: #{package["build"]}")
   ENV["VERSION"] = package["version"]
-  ENV["BUILD"] = package["build"]
+  
 end
