@@ -23,7 +23,7 @@ const codePushOptionsAuto = {
 
 const queryCache = new QueryCache()
 
-if (__DEV__) {
+if (__DEV__ && process.env.JEST !== 'true') {
   addPlugin(queryCache)
 }
 
