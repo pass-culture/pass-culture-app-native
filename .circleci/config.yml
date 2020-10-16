@@ -1,14 +1,8 @@
-version: 2
-jobs:
-  run-tests:
-    working_directory: ~/pass-culture-app-native
-    docker:
-      - image: cimg/node:12.16
-        auth:
-          username: $DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
+version: 2.1
+commands:
+  install_node_modules:
+    description: Install Node Dependencies
     steps:
-      - checkout
       - restore_cache:
           name: Restore Node Modules
           keys:
@@ -21,6 +15,34 @@ jobs:
           key: node-modules-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
+  install_ruby_modules:
+    description: Install Ruby Dependencies
+    steps:
+      - restore_cache:
+          name: Restore Gem dependencies
+          key: bundle-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Install Gem dependencies
+          command: |
+            bundle install --path=vendor/bundle
+      - save_cache:
+          name: Save Gem dependencies
+          key: bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/.bundle/
+            - vendor/bundle
+
+jobs:
+  run-tests:
+    working_directory: ~/pass-culture-app-native
+    docker:
+      - image: cimg/node:12.16
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - install_node_modules
       - run:
           name: Linter
           command: |
@@ -40,38 +62,15 @@ jobs:
       - image: circleci/android:api-28-node
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Node Modules
-          keys:
-            - node-modules-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn install --immutable
-      - save_cache:
-          name: Save Node Modules
-          key: node-modules-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
-      - restore_cache:
-          name: Restore Gem dependencies
-          key: bundle-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: Install Gem dependencies
-          command: |
-            bundle install --path=vendor/bundle
-      - save_cache:
-          name: Save Gem dependencies
-          key: bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ~/.bundle/
-            - vendor/bundle
+      - install_node_modules
+      - install_ruby_modules
       - run:
           name: Setup android keystore for testing environment
           command: |
             mkdir -p android/keystores
             echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
-            echo "storePassword=$ANDROID_KEYSTORE_STORE_TESTING" >> android/keystores/testing.keystore.properties
-            echo "keyPassword=$ANDROID_KEYSTORE_KEY_TESTING" >>  android/keystores/testing.keystore.properties
+            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
+            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
       - run:
           name: Deploy Android App for testing environment
           command: |
@@ -84,36 +83,13 @@ jobs:
       - image: circleci/android:api-28-node
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Node Modules
-          keys:
-            - node-modules-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn install --immutable
-      - save_cache:
-          name: Save Node Modules
-          key: node-modules-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
-      - restore_cache:
-          name: Restore Gem dependencies
-          key: bundle-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: Install Gem dependencies
-          command: |
-            bundle install --path=vendor/bundle
-      - save_cache:
-          name: Save Gem dependencies
-          key: bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ~/.bundle/
-            - vendor/bundle
+      - install_node_modules
+      - install_ruby_modules
       - run:
           name: Setup android keystore for staging environment
           command: |
             mkdir -p android/keystores
-            echo $ANDROID_KEYSTORE_BASE64_STAGING | base64 -di > android/keystores/staging.keystore
+            echo $ANDROID_KEYSTORE_STAGING | base64 -di > android/keystores/staging.keystore
             echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_STAGING" >> android/keystores/staging.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_STAGING" >>  android/keystores/staging.keystore.properties
       - run:
@@ -121,7 +97,7 @@ jobs:
           command: |
             export APPCENTER_API_TOKEN=$APPCENTER_API_TOKEN_STAGING
             export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_STAGING
-            ./scripts/deploy.sh -o android -t soft -e staging
+            ./scripts/deploy.sh -o android -t hard -e staging
 
 workflows:
   version: 2
@@ -140,15 +116,11 @@ workflows:
                 - master
           requires:
             - run-tests
-      - approve-deploy-android-staging:
-          type: approval
+      - deploy-android-staging:
           filters:
             branches:
               only:
-                # when the poc is approved, replace with master
+                # when the poc is approved, replace with staging
                 - staging-test-deploy-tmp-branch
           # requires:
           #   - run-tests
-      - deploy-android-staging:
-          requires:
-            - approve-deploy-android-staging
