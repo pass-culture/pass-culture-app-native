@@ -22,6 +22,7 @@
     "version:testing": "./scripts/update_testing_version.sh"
   },
   "dependencies": {
+    "@bam.tech/react-native-batch": "^5.2.1",
     "@bam.tech/react-native-config": "^0.13.0",
     "@lingui/react": "^2.9.2",
     "@react-native-community/async-storage": "^1.7.1",
