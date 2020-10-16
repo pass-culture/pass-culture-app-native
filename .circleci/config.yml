@@ -84,26 +84,26 @@ jobs:
       - image: circleci/android:api-28-node
     steps:
       - checkout
-      - restore_node:
+      - restore_cache:
           name: Restore Node Modules
           keys:
             - node-modules-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install --immutable
-      - save_node:
+      - save_cache:
           name: Save Node Modules
           key: node-modules-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
-      - restore_node:
+      - restore_cache:
           name: Restore Gem dependencies
           key: bundle-{{ checksum "Gemfile.lock" }}
       - run:
           name: Install Gem dependencies
           command: |
             bundle install --path=vendor/bundle
-      - save_node:
+      - save_cache:
           name: Save Gem dependencies
           key: bundle-{{ checksum "Gemfile.lock" }}
           paths:
