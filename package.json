@@ -18,7 +18,8 @@
     "postinstall": "patch-package && jetify && yarn translations:compile",
     "translations:add-locale": "lingui add-locale",
     "translations:extract": "lingui extract --clean",
-    "translations:compile": "lingui compile"
+    "translations:compile": "lingui compile",
+    "update_testing_version": "./scripts/update_testing_version.sh"
   },
   "dependencies": {
     "@bam.tech/react-native-config": "^0.13.0",
