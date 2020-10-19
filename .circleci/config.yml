@@ -100,7 +100,7 @@ jobs:
             ./scripts/deploy.sh -o android -t hard -e staging
 
 workflows:
-  version: 2
+  version: 2.1
   commit:
     jobs:
       - run-tests:
