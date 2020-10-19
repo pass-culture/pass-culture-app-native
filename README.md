@@ -46,6 +46,23 @@ yarn launch`
 On iOS you can run the following command:
 `react-native run-ios --scheme PassCulture-Staging`
 
+#### Development environment
+
+To run the app on a development environment in order to request a local API, you need to create a `.env.development` file,
+copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address. Then create a
+`keystores/development.keystore.properties` under `/android` directory with this configuration (required in `build.gradle`):
+
+```
+keyAlias=passculture
+storeFile=development.keystore
+storePassword=
+keyPassword=
+```
+
+Then run the app with this command:
+
+`react-native run-android --variant=developmentDebug`
+
 ## Features
 
 When you generated the repository with [react-native-make](https://github.com/bamlab/react-native-make) the following feature must be present:
