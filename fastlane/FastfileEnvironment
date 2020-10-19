@@ -6,7 +6,8 @@ private_lane :load_env_file do |options|
   )
   Dotenv.overload(".env.secret")
   Dotenv.overload("../.env.#{ENV["ENV"]}")
-  
+  Dotenv.overload(".env.#{ENV["ENV"]}.secret")
+
   package=load_json(json_path:"package.json")
   UI.important("version: #{package["version"]}")
   UI.important("version: #{package["build"]}")
