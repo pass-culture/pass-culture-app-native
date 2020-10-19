@@ -64,13 +64,6 @@ jobs:
       - checkout
       - install_node_modules
       - install_ruby_modules
-      # - run:
-      #     name: Setup android keystore for testing environment
-      #     command: |
-            # mkdir -p android/keystores
-            # echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
-            # echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
-            # echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
       - run:
           name: Deploy Android App for testing environment
           command: |
@@ -105,26 +98,18 @@ workflows:
   version: 2.1
   commit:
     jobs:
-      - run-tests:
-          # remove this filter when deploy-android-staging is setup
-          filters:
-            branches:
-              ignore:
-                - deploy-staging-4
-                - staging-test-deploy-tmp-branch
+      - run-tests
       - deploy-android-testing:
           filters:
             branches:
               only:
                 - master
-                - staging-test-deploy-tmp-branch
-          # requires:
-          #   - run-tests
-      # - deploy-android-staging:
-      #     filters:
-      #       branches:
-      #         only:
-      #           # when the poc is approved, replace with staging
-      #           - staging-test-deploy-tmp-branch
-      #     # requires:
-          #   - run-tests
+          requires:
+            - run-tests
+      - deploy-android-staging:
+          filters:
+            branches:
+              only:
+                - staging
+          requires:
+            - run-tests
