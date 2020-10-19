@@ -92,7 +92,7 @@ platform :android do
       release_notes = %x[#{release_notes_command}]
       sh "cd .. && yarn appcenter codepush release-react --token #{ENV['APPCENTER_API_TOKEN']} -d #{ENV['CODEPUSH_DEPLOYMENT_NAME']} -a #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} --target-binary-version \"#{ENV['VERSION']}\" --description \"#{release_notes}\" --disable-duplicate-release-error"
     else
-      build --stacktrace
+      build
       if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
         deploy_appCenter
       elsif ENV['DEPLOYMENT_PLATFORM'] === 'store' then
