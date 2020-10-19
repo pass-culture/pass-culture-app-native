@@ -247,6 +247,7 @@ PODS:
   - react-native-config (0.13.0):
     - React
   - react-native-flipper (0.61.0):
+    - React
   - react-native-geolocation-service (5.0.0):
     - React
   - react-native-safe-area-context (3.1.8):
