@@ -79,6 +79,7 @@ src/locales/*/*.js
 android/keystores/*
 fastlane/playStoreServiceAccount.json
 .env.*.secret
+.env.secret
 
 # CircleCI
 vendor/
