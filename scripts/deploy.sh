@@ -48,13 +48,17 @@ APP_OS="ios and android"
 
 DEPLOY_TYPE="soft"
 
+# TODO: replace staging-test-deploy-tmp-branch with staging
 
 check_environment(){
   CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
-  if [ "$CURRENT_BRANCH" != "master" ]
+  if [ "$APP_ENV" == "testing" && "$CURRENT_BRANCH" != "master" ]
   then
     warn "Wrong branch, checkout master to deploy to $APP_ENV."
+  elif [ "$APP_ENV" == "staging" && "$CURRENT_BRANCH" != "staging-test-deploy-tmp-branch" ]
+  then
+    warn "Wrong branch, checkout staging to deploy to $APP_ENV."
   else
     success "Deploying to $APP_ENV."
   fi
