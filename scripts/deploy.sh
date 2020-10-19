@@ -48,17 +48,13 @@ APP_OS="ios and android"
 
 DEPLOY_TYPE="soft"
 
-# TODO: replace staging-test-deploy-tmp-branch with staging
-# TODO: remove --stacktrace option below to android->hard
-# TODO: remove --stacktrace in fastfile android->deploy->build
-
 check_environment(){
   CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
   if [ "$APP_ENV" == "testing" && "$CURRENT_BRANCH" != "master" ]
   then
     warn "Wrong branch, checkout master to deploy to $APP_ENV."
-  elif [ "$APP_ENV" == "staging" && "$CURRENT_BRANCH" != "staging-test-deploy-tmp-branch" ]
+  elif [ "$APP_ENV" == "staging" && "$CURRENT_BRANCH" != "staging" ]
   then
     warn "Wrong branch, checkout staging to deploy to $APP_ENV."
   else
@@ -99,7 +95,7 @@ if [ $DEPLOY_TYPE == "hard" ]; then
     echo -e "${GREEN}- - - - -"
     echo -e "Fastlane 🍎  iOS $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane ios deploy --env $APP_ENV --verbose
+    bundle exec fastlane ios deploy --env $APP_ENV
   fi
   if [[ $APP_OS != "ios" ]]; then
     echo -e "${YELLOW}- - - - -"
