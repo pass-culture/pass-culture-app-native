@@ -90,6 +90,7 @@ jobs:
           command: |
             mkdir -p android/keystores
             echo $ANDROID_KEYSTORE_STAGING | base64 -di > android/keystores/staging.keystore
+            echo "keyAlias=passculture" >> android/keystores/staging.keystore.properties
             echo "storeFile=staging.keystore" >> android/keystores/staging.keystore.properties
             echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_STAGING" >> android/keystores/staging.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_STAGING" >>  android/keystores/staging.keystore.properties
