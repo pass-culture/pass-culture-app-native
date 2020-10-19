@@ -95,13 +95,13 @@ if [ $DEPLOY_TYPE == "hard" ]; then
     echo -e "${GREEN}- - - - -"
     echo -e "Fastlane 🍎  iOS $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane ios deploy --env $APP_ENV --verbose
+    bundle exec fastlane ios deploy --env $APP_ENV
   fi
   if [[ $APP_OS != "ios" ]]; then
     echo -e "${YELLOW}- - - - -"
     echo "Fastlane 🤖  Android $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane android deploy --env $APP_ENV
+    bundle exec fastlane android deploy --env $APP_ENV --verbose
   fi
 fi
 
