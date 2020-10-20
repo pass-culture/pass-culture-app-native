@@ -164,6 +164,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         resValue "string", "app_name", project.env.get("ANDROID_APP_NAME")
         resValue "string", "build_config_package", "com.passculture" // @react-native-config
+        resValue "string", "BATCH_API_KEY", project.env.get("BATCH_API_KEY")
         versionCode (packageJson.build as Integer)
         versionName packageJson.version
         buildConfigField "String", "CODEPUSH_KEY", "\"${project.env.get("CODEPUSH_KEY_ANDROID")}\"" // @codepush
@@ -251,7 +252,11 @@ dependencies {
     } else {
       implementation jscFlavor
     }
+    implementation platform('com.google.firebase:firebase-bom:25.12.0') // firebase 
+    implementation "com.google.firebase:firebase-messaging" // firebase - batch
 }
+
+apply plugin: 'com.google.gms.google-services' // firebase (batch)
 
 // Run this once to be able to run the application with BUCK
 // puts all compile dependencies into folder libs for BUCK to use
