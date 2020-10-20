@@ -87,3 +87,6 @@ vendor/
 
 # local settings
 .env.development
+
+# Google service
+google-services.json
