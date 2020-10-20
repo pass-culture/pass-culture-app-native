@@ -12,5 +12,10 @@
 -keep class com.facebook.hermes.unicode.** { *; }
 -keep class com.facebook.jni.** { *; }
 
+# Three following lines may be to uncomment the day we enable proguard (that if push notifs are KO)
+# -dontwarn com.google.android.gms.**
+# -keep class com.google.android.gms.** { *; }
+# -keep class com.google.firebase.** { *; } 
+
 # @react-native-config
 -keep class com.passculture.BuildConfig { *; }
