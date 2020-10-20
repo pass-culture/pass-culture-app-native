@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
 
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const position = useGeolocation()
-
   const goToLoginPageWithParams = useCallback((): void => {
     navigation.navigate('Login', { userId: 'I have been Set by params' })
   }, [])
