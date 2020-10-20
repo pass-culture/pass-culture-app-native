@@ -1,3 +1,4 @@
+import { Batch } from '@bam.tech/react-native-batch'
 import { I18nProvider } from '@lingui/react' //@translations
 import React, { FunctionComponent } from 'react'
 import CodePush from 'react-native-code-push' // @codepush
@@ -9,6 +10,8 @@ import { RootNavigator } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
 import './libs/sentry'
+
+Batch.start()
 
 const codePushOptionsManual = {
   updateDialog: true,
