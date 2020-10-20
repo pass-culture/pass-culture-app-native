@@ -22,6 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(BUILD)</string>
+	<key>BatchAPIKey</key>
+	<string>$(BATCH_API_KEY_IOS)</string>
 	<key>CodePushDeploymentKey</key>
 	<string>$(CODEPUSH_KEY_IOS)</string>
 	<key>LSRequiresIPhoneOS</key>
