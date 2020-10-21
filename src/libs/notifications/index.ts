@@ -1,1 +1,1 @@
-export { useBatchStartNotification } from './useBatchStartNotification'
+export { useBatchStartNotification } from './hooks/useBatchStartNotification'
