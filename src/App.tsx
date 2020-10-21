@@ -1,4 +1,3 @@
-import { Batch } from '@bam.tech/react-native-batch'
 import { I18nProvider } from '@lingui/react' //@translations
 import React, { FunctionComponent } from 'react'
 import CodePush from 'react-native-code-push' // @codepush
@@ -9,9 +8,9 @@ import { addPlugin } from 'react-query-native-devtools'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
-import './libs/sentry'
 
-Batch.start()
+import './libs/sentry'
+import { useBatchStartNotification } from './libs/notifications'
 
 const codePushOptionsManual = {
   updateDialog: true,
@@ -31,6 +30,8 @@ if (__DEV__ && process.env.JEST !== 'true') {
 }
 
 const AppComponent: FunctionComponent = function () {
+  useBatchStartNotification()
+
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
       <I18nProvider language={i18n.language} i18n={i18n}>
