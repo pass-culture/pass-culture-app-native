@@ -17,6 +17,7 @@ module.exports = {
     },
   },
   rules: {
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
     // This is essential. Without this misplaced hooks would go straight to production
@@ -64,6 +65,7 @@ module.exports = {
           '.ios.js',
           '.ios.jsx',
           '.ts',
+          '.d.ts',
           '.tsx',
           '.android.ts',
           '.android.tsx',
