@@ -1,9 +1,11 @@
 import { BatchUser } from '@bam.tech/react-native-batch'
+import { t } from '@lingui/macro'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { View, Text, Alert } from 'react-native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { _ } from 'libs/i18n'
 
 import { CrashTestButton } from '../components/CrashTestButton'
 
@@ -19,8 +21,13 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       const installationId = await BatchUser.getInstallationID()
       callback(installationId)
     } catch (e) {
-      Alert.alert('error', e)
-      callback('error')
+      Alert.alert(
+        'Batch error',
+        _(
+          /*i18n: Error message on Batch get installation ID*/ t`An error has occured while obtaining the Batch installation ID : ${e}`
+        )
+      )
+      callback('Batch error')
     }
   }, [])
   const [batchInstallationId, setBatchInstallationId] = useState('none')
