@@ -44,5 +44,8 @@ exports[`CheatCodes component should render correctly 1`] = `
       </Text>
     </View>
   </View>
+  <Text>
+    none
+  </Text>
 </View>
 `;
