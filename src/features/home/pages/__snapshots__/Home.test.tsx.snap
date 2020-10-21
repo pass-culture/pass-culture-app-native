@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home component should render correctly 1`] = `
+exports[`Home component With current user loaded should render correctly 1`] = `
 <View
   style={
     Object {
@@ -52,6 +52,66 @@ exports[`Home component should render correctly 1`] = `
       >
         Aller sur la page de connexion avec params
       </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "paddingVertical": 20,
+      }
+    }
+  >
+    <Text>
+      FIRSTNAME: John
+    </Text>
+    <Text>
+      LASTNAME: Doe
+    </Text>
+    <Text>
+      EMAIL: john.doe@passculture.app
+    </Text>
+    <View
+      accessibilityRole="button"
+      accessibilityState={Object {}}
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID="refreshUserInformationsButton"
+    >
+      <View
+        style={
+          Array [
+            Object {},
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#007AFF",
+                "fontSize": 18,
+                "margin": 8,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Rafraîchir les données de l'utilisateur
+        </Text>
+      </View>
     </View>
   </View>
   <View
