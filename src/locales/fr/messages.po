@@ -17,6 +17,11 @@ msgstr ""
 msgid "Aller sur la page de connexion avec params"
 msgstr "Aller sur la page de connexion avec params"
 
+#. Error message on Batch get installation ID
+#: src/features/cheatcodes/pages/CheatCodes.tsx:24
+msgid "An error has occured while obtaining the Batch installation ID : {e}"
+msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
+
 #: src/features/home/pages/Home.tsx:18
 msgid "Bienvenue à Pass Culture"
 msgstr "Bienvenue à Pass Culture"
