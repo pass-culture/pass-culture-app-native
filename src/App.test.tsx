@@ -1,3 +1,4 @@
+import { Batch } from '@bam.tech/react-native-batch'
 import { render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 
@@ -9,5 +10,9 @@ describe('App', () => {
 
     const welcomeText = await waitFor(() => getByText('Connectez-vous :'))
     expect(welcomeText.props.children).toBe('Connectez-vous :')
+  })
+  it('should call Batch.start to optin notifications', () => {
+    render(<App />)
+    expect(Batch.start).toHaveBeenCalled()
   })
 })
