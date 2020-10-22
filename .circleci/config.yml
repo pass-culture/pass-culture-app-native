@@ -1,4 +1,5 @@
 version: 2.1
+
 commands:
   install_node_modules:
     description: Install Node Dependencies
@@ -110,12 +111,26 @@ jobs:
 
   deploy-ios-testing-hard:
     macos:
-      xcode: '11.1.0'
+      xcode: '11.7.0'
     steps:
       - checkout
-#      - run:
-#          name: Skip job when no tag found
-#          command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
+      #      - run:
+      #          name: Skip job when no tag found
+      #          command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
+      - add_ssh_keys:
+          fingerprints:
+            - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
+      - run: pwd
+      - run:
+          name: Install node version
+          command: |
+            set +e
+            touch $BASH_ENV
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+            echo nvm install 12.16.3 >> $BASH_ENV
+            echo nvm alias default 12.16.3 >> $BASH_ENV
       - run:
           name: Install Dependencies
           command: yarn install --immutable
@@ -127,10 +142,8 @@ jobs:
           name: Install cocoapods
           command: cd ios/ && bundle exec pod install
       - run:
-          name: Decode match secrets
-          command: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
-      - run:
           name: Deploy IOS App for testing environment
+          no_output_timeout: 60m
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
