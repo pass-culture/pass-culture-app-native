@@ -6,13 +6,13 @@ commands:
       - restore_cache:
           name: Restore Node Modules
           keys:
-            - node-modules-{{ checksum "yarn.lock" }}
+            - node-modules-v1-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install --immutable
       - save_cache:
           name: Save Node Modules
-          key: node-modules-{{ checksum "yarn.lock" }}
+          key: node-modules-v1-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
   install_ruby_modules:
@@ -20,14 +20,14 @@ commands:
     steps:
       - restore_cache:
           name: Restore Gem dependencies
-          key: bundle-{{ checksum "Gemfile.lock" }}
+          key: bundle-v1-{{ checksum "Gemfile.lock" }}
       - run:
           name: Install Gem dependencies
           command: |
             bundle install --path=vendor/bundle
       - save_cache:
           name: Save Gem dependencies
-          key: bundle-{{ checksum "Gemfile.lock" }}
+          key: bundle-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.bundle/
             - vendor/bundle
@@ -161,8 +161,8 @@ workflows:
             branches:
               only:
                 - master
-              requires:
-                - run-tests
+          requires:
+            - run-tests
       - deploy-android-testing-hard:
           filters:
             branches:
