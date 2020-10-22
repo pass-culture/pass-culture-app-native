@@ -34,7 +34,6 @@ commands:
 
 jobs:
   run-tests:
-    working_directory: ~/pass-culture-app-native
     docker:
       - image: cimg/node:12.16
         auth:
@@ -57,11 +56,14 @@ jobs:
             yarn test:unit
 
   deploy-android-testing-soft:
-    working_directory: ~/pass-culture-app-native
     docker:
       - image: circleci/android:api-28-node
     steps:
       - checkout
+      - run:
+          name: Skip job when new tag to deploy
+          command: |
+            git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' && circleci step halt || true
       - install_node_modules
       - install_ruby_modules
       - run:
@@ -76,6 +78,10 @@ jobs:
       - image: circleci/android:api-28-node
     steps:
       - checkout
+      - run:
+          name: Skip job when no tag found
+          command: |
+            git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - install_node_modules
       - install_ruby_modules
       - run:
@@ -136,10 +142,7 @@ workflows:
           filters:
             branches:
               only:
-                - PC-4626-batch-notification
-            tags:
-              only:
-                - /^testing_v[0-9]+(\.[0-9]+){2}$/
+                - master
           requires:
             - run-tests
       - deploy-android-staging:
