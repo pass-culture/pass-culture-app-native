@@ -85,9 +85,9 @@ jobs:
       - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
     steps:
       - checkout
-      #- run:
-      #    name: Skip job when no tag found
-      #    command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
+      - run:
+          name: Skip job when no tag found
+          command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - install_node_modules
       - install_ruby_modules
       - run:
@@ -110,18 +110,22 @@ jobs:
 
   deploy-ios-testing-hard:
     macos:
-      xcode: '12.0.1'
+      xcode: '11.1.0'
     steps:
       - checkout
+#      - run:
+#          name: Skip job when no tag found
+#          command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - run:
-          name: Skip job when no tag found
+          name: Install Dependencies
+          command: yarn install --immutable
+      - run:
+          name: Install Gem dependencies
           command: |
-            git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
-      - install_node_modules
-      - install_ruby_modules
-      -run :
-         name: Install cocoapods
-         command: cd ios/ && bundle exec pod install 
+            bundle install --path=vendor/bundle
+      - run:
+          name: Install cocoapods
+          command: cd ios/ && bundle exec pod install
       - run:
           name: Decode match secrets
           command: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
@@ -157,7 +161,11 @@ workflows:
   version: 2.1
   commit:
     jobs:
-      - run-tests
+      - run-tests:
+          filters:
+            branches:
+              only:
+                - master
       - deploy-soft-testing:
           filters:
             branches:
@@ -185,5 +193,4 @@ workflows:
               only:
                 - pc-4730-deploy-ios-staging-and-hard-testing
           #requires:
-            #- run-tests
-    
+          #- run-tests
