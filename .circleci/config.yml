@@ -72,7 +72,7 @@ jobs:
       - run:
           name: Deploy Android App for testing environment
           command: |
-            export APPCENTER_API_TOKEN=$APPCENTER_API_TOKEN_ANDROID_TESTING
+            export APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
             ./scripts/deploy.sh -o android -t soft -e testing
 
@@ -87,7 +87,7 @@ jobs:
       - run:
           name: Deploy IOS App for testing environment
           command: |
-            export APPCENTER_API_TOKEN=$APPCENTER_API_TOKEN_IOS_TESTING
+            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
 
