@@ -10,14 +10,12 @@ I have:
 - [ ] Added a **screenshot** for UI tickets.
 - [ ] Explained my technical strategy below if feature is complex.
 
-If native code (ios/android) was modified, after the PR is merged go to master and upgrade the **app version** (+1 patch):
+## Deploy hard
 
-(later there will be a script to embed these commands)
+If native code (ios/android) was modified, **before** the PR is merged, on the working branch, upgrade the **app version** (+1 patch):
 
-- use `yarn version --patch` (it will create a commit and a tag)
-  - if you want an hard deployment of the testing environment, use `yarn version:testing` instead.
-- then `git push && git push origin <tag_name>`
-- then use the deploy script (temporary -> waiting for CI/CD to be ready)
+- if you want an hard deployment of the testing environment, use `yarn version:testing` (this will create a commit with a tag)
+- then run `git push --follow-tags`
 
 ## Technical strategy
 
