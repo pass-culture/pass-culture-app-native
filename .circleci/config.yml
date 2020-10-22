@@ -109,6 +109,26 @@ jobs:
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o android -t hard -e testing
 
+  deploy-ios-testing-hard:
+    macos:
+      xcode: '12.0.1'
+    steps:
+      - checkout
+      - run:
+          name: Skip job when no tag found
+          command: |
+            git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
+      - install_node_modules
+      - install_ruby_modules
+      - run:
+          name: Retrieve ios certificate for testing environment
+          command: pwd
+      - run:
+          name: Deploy IOS App for testing environment
+          command: |
+            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
+            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
+            ./scripts/deploy.sh -o ios -t hard -e testing
   deploy-android-staging:
     docker:
       - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
