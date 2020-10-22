@@ -85,10 +85,9 @@ jobs:
       - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
     steps:
       - checkout
-      - run:
-          name: Skip job when no tag found
-          command: |
-            git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
+      #- run:
+      #    name: Skip job when no tag found
+      #    command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - install_node_modules
       - install_ruby_modules
       - run:
@@ -120,9 +119,12 @@ jobs:
             git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - install_node_modules
       - install_ruby_modules
+      -run :
+         name: Install cocoapods
+         command: cd ios/ && bundle exec pod install 
       - run:
-          name: Retrieve ios certificate for testing environment
-          command: pwd
+          name: Decode match secrets
+          command: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
       - run:
           name: Deploy IOS App for testing environment
           command: |
@@ -177,3 +179,11 @@ workflows:
                 - staging
           requires:
             - run-tests
+      - deploy-ios-testing-hard:
+          filters:
+            branches:
+              only:
+                - pc-4730-deploy-ios-staging-and-hard-testing
+          #requires:
+            #- run-tests
+    
