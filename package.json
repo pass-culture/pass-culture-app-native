@@ -7,8 +7,8 @@
     "node": ">=12.13.0 <13.0.0"
   },
   "scripts": {
-    "install:android": "react-native run-android --variant=developmentDebug",
-    "install:android:testing": "react-native run-android --variant=apptestingDebug",
+    "run:android": "react-native run-android --variant=developmentDebug",
+    "run:android:testing": "react-native run-android --variant=apptestingDebug",
     "start": "react-native start",
     "test": "yarn test:lint && yarn test:types && yarn test:unit",
     "test:lint": "eslint . --ext .js,.ts,.tsx --cache",

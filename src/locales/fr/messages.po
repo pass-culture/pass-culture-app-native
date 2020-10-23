@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/home/pages/Home.tsx:19
+#: src/features/home/pages/Home.tsx:23
 msgid "Aller sur la page de connexion avec params"
 msgstr "Aller sur la page de connexion avec params"
 
@@ -22,7 +22,11 @@ msgstr "Aller sur la page de connexion avec params"
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
-#: src/features/home/pages/Home.tsx:18
+#: src/libs/storage.ts:23
+msgid "Aucun token à sauvegarder"
+msgstr "Aucun token à sauvegarder"
+
+#: src/features/home/pages/Home.tsx:22
 msgid "Bienvenue à Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
@@ -40,10 +44,9 @@ msgstr "Connexion"
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
 
-#. setCookieFromResponse error
-#: src/libs/storage.ts:23
-msgid "La réponse ne contient pas de cookie"
-msgstr "La réponse ne contient pas de cookie"
+#: src/features/home/pages/Home.tsx:29
+msgid "Rafraîchir les données de l'utilisateur"
+msgstr "Rafraîchir les données de l'utilisateur"
 
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
@@ -59,15 +62,10 @@ msgstr "name@domain.com"
 msgid "password"
 msgstr "password"
 
-#: src/libs/fetch.ts:43
-msgid "Échec dans la récupération du cookie: {err}"
-msgstr "Échec dans la récupération du cookie: {err}"
-
 #: src/features/auth/pages/Login.tsx:36
 msgid "Échec de la connexion au Pass Culture: {0}"
 msgstr "Échec de la connexion au Pass Culture: {0}"
 
-#. Http error message
-#: src/libs/fetch.ts:37
+#: src/libs/fetch.ts:43
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"

@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const position = useGeolocation()
-  const { user, isFetching, refetch, isError } = useCurrentUser()
+  const { email, isFetching, refetch, isError } = useCurrentUser()
 
   const goToLoginPageWithParams = useCallback((): void => {
     navigation.navigate('Login', { userId: 'I have been Set by params' })
@@ -41,11 +41,9 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
         onPress={goToLoginPageWithParams}
       />
       {isFetching && <ActivityIndicator testID="user-activity-indicator" />}
-      {user && !isError && (
+      {email && !isError && (
         <View style={styles.userInformations}>
-          <Text>{`FIRSTNAME: ${user.firstName}`}</Text>
-          <Text>{`LASTNAME: ${user.lastName}`}</Text>
-          <Text>{`EMAIL: ${user.email}`}</Text>
+          <Text>{`EMAIL: ${email}`}</Text>
           <Button
             title={_(t`Rafraîchir les données de l'utilisateur`)}
             onPress={refetchUserInformations}

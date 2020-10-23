@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
-import CookieManager from '@react-native-community/cookies'
 
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
+
+import { getToken } from './storage'
 
 export type RequestCredentials = 'omit' | 'same-origin' | 'include' | undefined
 
@@ -18,36 +19,27 @@ export async function get<Body>(url: string, request: RequestInit = {}): Promise
 }
 
 async function makeRequest<Body>(url: string, request: RequestInit): Promise<Body> {
-  const config = {
-    credentials: 'include' as RequestCredentials,
-    ...request,
-    headers: {
-      Accept: 'application/json',
-      'Content-type': 'application/json',
-    },
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  }
+  if (request.credentials !== 'omit') {
+    const token = await getToken()
+    headers['Authorization'] = `Bearer ${token}`
   }
 
-  // If cookie authentication is required check cookie existence or fail
-  const localCookie = await CookieManager.get(env.API_BASE_URL)
-  if (!localCookie.session && config.credentials !== 'omit') {
-    throw Error(_(/*i18n setCookieFromResponse error */ t`La réponse ne contient pas de cookie`))
+  const config = {
+    ...request,
+    headers,
   }
 
   const response = await fetch(env.API_BASE_URL + url, config)
 
-  if (!response.ok) {
-    if (response.status === 401) {
-      throw new NotAuthenticatedError()
-    }
-    throw new Error(
-      _(/*i18n: Http error message */ t`Échec de la requête ${url}, code: ${response.status}`)
-    )
+  if (response.status === 401) {
+    throw new NotAuthenticatedError()
   }
-
-  // refresh cookie in CookieManager
-  const cookie = response.headers.get('set-cookie')
-  if (cookie) {
-    CookieManager.setFromResponse(env.API_BASE_URL, cookie)
+  if (!response.ok) {
+    throw new Error(_(t`Échec de la requête ${url}, code: ${response.status}`))
   }
 
   const json = await response.json()
