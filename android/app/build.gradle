@@ -146,7 +146,7 @@ def enableHermes = project.ext.react.get("enableHermes", false);
  * Keystores passwords are crypted with transcrypt and located in
  * keystores/*.keystore.properties files.
  */
- def keystorePropertiesFile = rootProject.file("keystores/${project.env.get("ENV")}.keystore.properties")
+def keystorePropertiesFile = rootProject.file("keystores/${project.env.get("ENV")}.keystore.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
