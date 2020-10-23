@@ -14,7 +14,7 @@ fi
 VERSION=$(jq -r '.version' "${1}/package.json")
 BUILD=$(jq -r '.build' "${1}/package.json")
 
-echo "VERSION=$VERSION"
-echo "BUILD=$BUILD"
+echo "VERSION=$VERSION" >> "${1}/ios/react-native-config.xcconfig"
+echo "BUILD=$BUILD" >> "${1}/ios/react-native-config.xcconfig"
 
 exit 0

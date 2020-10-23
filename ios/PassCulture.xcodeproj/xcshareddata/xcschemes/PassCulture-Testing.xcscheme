@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Load env file"
-               scriptText = "echo &quot;.env.testing&quot; &gt;  ${SRCROOT}/envfile&#10;ENVFILE=.env.testing ${SRCROOT}/../node_modules/@bam.tech/react-native-config/ios/ReactNativeConfig/BuildXCConfig.rb ${SRCROOT}/.. ${SRCROOT}/react-native-config.xcconfig&#10;&#10;${SRCROOT}/../scripts/print_project_version.sh ${SRCROOT}/.. &gt;&gt; ${SRCROOT}/react-native-config.xcconfig&#10;">
+               scriptText = "echo &quot;.env.testing&quot; &gt;  ${SRCROOT}/envfile&#10;ENVFILE=.env.testing ${SRCROOT}/../node_modules/@bam.tech/react-native-config/ios/ReactNativeConfig/BuildXCConfig.rb ${SRCROOT}/.. ${SRCROOT}/react-native-config.xcconfig&#10;&#10;${SRCROOT}/../scripts/print_project_version.sh ${SRCROOT}/..&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
