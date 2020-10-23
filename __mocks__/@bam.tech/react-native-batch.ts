@@ -5,3 +5,7 @@ export const Batch = {
 export const BatchUser = {
   getInstallationID: jest.fn(),
 }
+
+export const BatchPush = {
+  registerForRemoteNotifications: jest.fn(),
+}
