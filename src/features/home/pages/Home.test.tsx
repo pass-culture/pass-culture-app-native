@@ -3,7 +3,6 @@ import React from 'react'
 
 import * as authApi from 'features/auth/api'
 import { env } from 'libs/environment'
-import { IUser } from 'types'
 
 import { Home } from './Home'
 
@@ -12,6 +11,16 @@ jest.mock('libs/environment', () => ({
     FEATURE_FLAG_CODE_PUSH: true,
   },
 }))
+
+function mockUseCurrentUser({
+  email = 'john.doe@passculture.app',
+  isFetching = false,
+  isError = false,
+  refetch = async () => 'john.doe@passculture.app',
+}: Partial<ReturnType<typeof authApi.useCurrentUser>> = {}): void {
+  const value = { email, isFetching, isError, refetch, error: undefined }
+  jest.spyOn(authApi, 'useCurrentUser').mockReturnValue(value)
+}
 
 describe('Home component', () => {
   const navigation = {
@@ -22,13 +31,7 @@ describe('Home component', () => {
 
   describe('With current user loaded', () => {
     beforeEach(() => {
-      jest.spyOn(authApi, 'useCurrentUser').mockReturnValue({
-        user: {
-          firstName: 'John',
-          lastName: 'Doe',
-          email: 'john.doe@passculture.app',
-        } as IUser,
-      } as ReturnType<typeof authApi.useCurrentUser>)
+      mockUseCurrentUser()
     })
 
     it('should have a welcome message', async () => {
@@ -58,20 +61,19 @@ describe('Home component', () => {
       expect(() => home.getByText('Check update')).toThrowError()
     })
   })
+
   describe('Without current user', () => {
     it('should display activity indicator when loading', () => {
-      jest.spyOn(authApi, 'useCurrentUser').mockReturnValue({
-        isFetching: true,
-      } as ReturnType<typeof authApi.useCurrentUser>)
+      mockUseCurrentUser({ isFetching: true })
 
       const { getByTestId } = render(<Home navigation={navigation} />)
       const activityIndicator = getByTestId('user-activity-indicator')
       expect(activityIndicator).toBeTruthy()
     })
+
     it('should not display activity indicator when not loading', () => {
-      jest.spyOn(authApi, 'useCurrentUser').mockReturnValue({
-        isFetching: false,
-      } as ReturnType<typeof authApi.useCurrentUser>)
+      mockUseCurrentUser({ isFetching: false })
+
       const { getByTestId } = render(<Home navigation={navigation} />)
       let activityIndicator
       try {
@@ -81,10 +83,10 @@ describe('Home component', () => {
         expect(activityIndicator).toBeFalsy()
       }
     })
+
     it('should not display user view on error', () => {
-      jest.spyOn(authApi, 'useCurrentUser').mockReturnValue({
-        isError: true,
-      } as ReturnType<typeof authApi.useCurrentUser>)
+      mockUseCurrentUser({ isError: true })
+
       const { getByText } = render(<Home navigation={navigation} />)
       let refreshButton
       try {
@@ -94,18 +96,12 @@ describe('Home component', () => {
         expect(refreshButton).toBeFalsy()
       }
     })
+
     it('should call refetch when the refetchbutton is clicked', () => {
       const refetch = jest.fn()
-      jest.spyOn(authApi, 'useCurrentUser').mockReturnValue({
-        user: {
-          firstName: 'John',
-          lastName: 'Doe',
-          email: 'john.doe@passculture.app',
-        } as IUser,
-        refetch: () => refetch(),
-      } as ReturnType<typeof authApi.useCurrentUser>)
-      const { getByTestId } = render(<Home navigation={navigation} />)
+      mockUseCurrentUser({ refetch })
 
+      const { getByTestId } = render(<Home navigation={navigation} />)
       const refreshButton = getByTestId('refreshUserInformationsButton')
       refreshButton.props.onClick()
 

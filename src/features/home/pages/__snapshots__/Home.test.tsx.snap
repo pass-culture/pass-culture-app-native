@@ -63,12 +63,6 @@ exports[`Home component With current user loaded should render correctly 1`] = `
     }
   >
     <Text>
-      FIRSTNAME: John
-    </Text>
-    <Text>
-      LASTNAME: Doe
-    </Text>
-    <Text>
       EMAIL: john.doe@passculture.app
     </Text>
     <View
