@@ -16,6 +16,8 @@ target 'PassCulture' do
   # you should disable these next few lines.
   use_flipper!
   pod 'react-native-cookies', :path => '../node_modules/@react-native-community/cookies'  
+  pod 'RNBatchPush', :path => '../node_modules/@bam.tech/react-native-batch/ios'
+
   post_install do |installer|
     flipper_post_install(installer)
   end
