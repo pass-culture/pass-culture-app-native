@@ -10,7 +10,7 @@ import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
 
 import './libs/sentry'
-import { useBatchStartNotification } from './libs/notifications'
+import { startBatchNotification } from './libs/notifications'
 
 const codePushOptionsManual = {
   updateDialog: true,
@@ -30,7 +30,7 @@ if (__DEV__ && process.env.JEST !== 'true') {
 }
 
 const AppComponent: FunctionComponent = function () {
-  useBatchStartNotification()
+  startBatchNotification()
 
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
