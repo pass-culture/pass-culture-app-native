@@ -1,4 +1,5 @@
 module.exports = {
+  assets: ['./assets/fonts/'],
   dependencies: {
     // disable autolinking for these unsupported libraries
     // @codepush
