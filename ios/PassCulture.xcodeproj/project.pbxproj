@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		042C3F171E8246C0835AF4E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C1955A99E745B9B354F57A /* AppDelegate.m */; };
 		2A5B3D8DAFAA4030AF31D9D7 /* libPods-PassCulture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F625F4D6377B4766806FA581 /* libPods-PassCulture.a */; };
@@ -13,6 +12,12 @@
 		8FEB737BACB244CF8BB8C051 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33106CFBBB44FF5B75130D1 /* SplashScreen.storyboard */; };
 		CE363314E2974BF48FF6C850 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8881E10DAB84DAA99A29F65 /* Images.xcassets */; };
 		DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */; };
+		98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */; };
+		3CBC0349590140A1865DA48C /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD221C6CACA34DB9AF0A9DFA /* Montserrat-ExtraBoldItalic.ttf */; };
+		F4E8C120AED243C7AB108C37 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */; };
+		1AFC4F7B230841A78FC27836 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A44026DF307C44498490941C /* Montserrat-MediumItalic.ttf */; };
+		94D55C9476A7485C9076C139 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F423851ED1194E90940E001F /* Montserrat-Regular.ttf */; };
+		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +48,12 @@
 		D9306B1F89B44991A1F9A9F6 /* libPods-PassCultureTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PassCultureTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0101357B234447B64D029A /* PassCulture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PassCulture-Bridging-Header.h"; sourceTree = "<group>"; };
 		F625F4D6377B4766806FA581 /* libPods-PassCulture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PassCulture.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DD221C6CACA34DB9AF0A9DFA /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "Montserrat-ExtraBoldItalic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; name = "Montserrat-Medium.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A44026DF307C44498490941C /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Montserrat-MediumItalic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F423851ED1194E90940E001F /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; name = "Montserrat-SemiBold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +83,7 @@
 				EB02EDD0A6CC42B28A408830 /* Products */,
 				77E58495325A4481BF007316 /* Frameworks */,
 				D2B9297F2C754E49AAED936C /* Pods */,
+				68415A3080844E43A0AB50B9 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -132,6 +144,20 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		68415A3080844E43A0AB50B9 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */,
+				DD221C6CACA34DB9AF0A9DFA /* Montserrat-ExtraBoldItalic.ttf */,
+				90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */,
+				A44026DF307C44498490941C /* Montserrat-MediumItalic.ttf */,
+				F423851ED1194E90940E001F /* Montserrat-Regular.ttf */,
+				CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -200,6 +226,12 @@
 				CE363314E2974BF48FF6C850 /* Images.xcassets in Resources */,
 				DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */,
 				8FEB737BACB244CF8BB8C051 /* SplashScreen.storyboard in Resources */,
+				98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */,
+				3CBC0349590140A1865DA48C /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				F4E8C120AED243C7AB108C37 /* Montserrat-Medium.ttf in Resources */,
+				1AFC4F7B230841A78FC27836 /* Montserrat-MediumItalic.ttf in Resources */,
+				94D55C9476A7485C9076C139 /* Montserrat-Regular.ttf in Resources */,
+				3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
