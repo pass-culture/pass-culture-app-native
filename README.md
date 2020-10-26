@@ -75,6 +75,13 @@ Then run the app with this command:
 
 `react-native run-android --variant=developmentDebug`
 
+### Debugging
+
+#### Tools
+
+You can install [Flipper](https://fbflipper.com/) that will help you visualize the application's logs and network information.
+We recommend installing the plugin `react-query-native-devtools` to analyze react query. This plugin is available through `Manage Plugins` > `Install Plugins`: `react-query-native-devtools`. This should work without further configuration for both platforms.
+
 ## Features
 
 When you generated the repository with [react-native-make](https://github.com/bamlab/react-native-make) the following feature must be present:
