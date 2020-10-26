@@ -5,7 +5,7 @@ import { App } from './App'
 import * as BatchLocalLib from './libs/notifications'
 
 jest.mock('./libs/notifications', () => ({
-  useBatchStartNotification: jest.fn(),
+  startBatchNotification: jest.fn(),
 }))
 
 describe('App', () => {
@@ -15,8 +15,8 @@ describe('App', () => {
     const welcomeText = await waitFor(() => getByText('Connectez-vous :'))
     expect(welcomeText.props.children).toBe('Connectez-vous :')
   })
-  it('should call useBatchStartNotification to optin to notifications', () => {
+  it('should call startBatchNotification to optin to notifications', () => {
     render(<App />)
-    expect(BatchLocalLib.useBatchStartNotification).toHaveBeenCalled()
+    expect(BatchLocalLib.startBatchNotification).toHaveBeenCalled()
   })
 })
