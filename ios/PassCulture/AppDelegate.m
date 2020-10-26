@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "RNBatch.h"
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
@@ -36,6 +37,7 @@ static void InitializeFlipper(UIApplication *application) {
                                                    moduleName:@"PassCulture"
                                             initialProperties:nil];
 
+  [RNBatch start:false]; // or true if you want the do not disturb mode
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
