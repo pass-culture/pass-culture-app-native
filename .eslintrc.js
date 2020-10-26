@@ -23,7 +23,13 @@ module.exports = {
     // This is essential. Without this misplaced hooks would go straight to production
     // since there is no way to detect this during testing.
     'react-hooks/rules-of-hooks': 'error',
-
+    'no-restricted-imports': [
+      'error',
+      {
+        name: 'styled-components',
+        message: 'Use styled-components/native instead',
+      },
+    ],
     strict: ['error', 'global'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'prettier/prettier': 'error',
