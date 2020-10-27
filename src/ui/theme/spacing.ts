@@ -3,6 +3,8 @@ import styled from 'styled-components/native'
 const UNIT_SPACE = 4
 
 export const getSpacing = (numberOfSpaces: number): number => UNIT_SPACE * numberOfSpaces
+export const getSpacingString = (numberOfSpaces: number): string =>
+  `${UNIT_SPACE * numberOfSpaces}px`
 
 interface SpacerProps {
   numberOfSpaces: number
