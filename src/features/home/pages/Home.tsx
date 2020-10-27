@@ -1,13 +1,15 @@
 import { t } from '@lingui/macro'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback } from 'react'
-import { Button, StyleSheet, View, Text, ActivityIndicator } from 'react-native'
+import { Button, Text, ActivityIndicator } from 'react-native'
+import styled from 'styled-components/native'
 
 import { useCurrentUser } from 'features/auth/api'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { useGeolocation, CoordinatesView } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
+import { getSpacing } from 'ui/theme'
 
 import { CodePushButton } from '../components/CodePushButton'
 
@@ -17,10 +19,21 @@ type Props = {
   navigation: HomeScreenNavigationProp
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  geolocation: { position: 'absolute', alignItems: 'center', bottom: 50 },
-  userInformations: { alignItems: 'center', paddingVertical: 20 },
+const Container = styled.View({
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+})
+
+const CoordinatesViewContainer = styled(CoordinatesView)({
+  position: 'absolute',
+  alignItems: 'center',
+  bottom: 50,
+})
+
+const UserInformationContainer = styled.View({
+  alignItems: 'center',
+  paddingVertical: getSpacing(5),
 })
 
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
@@ -34,7 +47,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const refetchUserInformations = useCallback((): void => void refetch(), [])
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>{_(t`Bienvenue à Pass Culture`)}</Text>
       <Button
         title={_(t`Aller sur la page de connexion avec params`)}
@@ -42,17 +55,17 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
       />
       {isFetching && <ActivityIndicator testID="user-activity-indicator" />}
       {email && !isError && (
-        <View style={styles.userInformations}>
+        <UserInformationContainer>
           <Text>{`EMAIL: ${email}`}</Text>
           <Button
             title={_(t`Rafraîchir les données de l'utilisateur`)}
             onPress={refetchUserInformations}
             testID="refreshUserInformationsButton"
           />
-        </View>
+        </UserInformationContainer>
       )}
-      <CoordinatesView position={position} style={styles.geolocation} />
+      <CoordinatesViewContainer position={position} />
       {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
-    </View>
+    </Container>
   )
 }
