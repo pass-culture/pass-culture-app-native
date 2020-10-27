@@ -59,6 +59,7 @@
     "react-native-screens": "^2.0.0-beta.8",
     "react-native-sensitive-info": "^5.5.5",
     "react-native-svg": "^12.1.0",
+    "react-native-webview": "^10.10.0",
     "react-query": "^2.23.1",
     "recompose": "^0.30.0",
     "styled-components": "^5.2.0",
