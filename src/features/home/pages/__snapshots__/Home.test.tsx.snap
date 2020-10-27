@@ -141,7 +141,7 @@ exports[`Home component With current user loaded should render correctly 1`] = `
       <Text
         style={
           Object {
-            "color": "blue",
+            "color": "#0066ff",
           }
         }
       >
@@ -158,7 +158,7 @@ exports[`Home component With current user loaded should render correctly 1`] = `
       <Text
         style={
           Object {
-            "color": "blue",
+            "color": "#0066ff",
           }
         }
       >
@@ -175,7 +175,7 @@ exports[`Home component With current user loaded should render correctly 1`] = `
       <Text
         style={
           Object {
-            "color": "blue",
+            "color": "#0066ff",
           }
         }
       >

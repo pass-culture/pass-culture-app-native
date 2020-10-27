@@ -22,7 +22,7 @@ exports[`CoordinatesView component should render correctly 1`] = `
     <Text
       style={
         Object {
-          "color": "blue",
+          "color": "#0066ff",
         }
       }
     >
@@ -40,7 +40,7 @@ exports[`CoordinatesView component should render correctly 1`] = `
     <Text
       style={
         Object {
-          "color": "blue",
+          "color": "#0066ff",
         }
       }
     >
@@ -58,7 +58,7 @@ exports[`CoordinatesView component should render correctly 1`] = `
     <Text
       style={
         Object {
-          "color": "blue",
+          "color": "#0066ff",
         }
       }
     >
