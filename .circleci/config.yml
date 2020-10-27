@@ -107,7 +107,6 @@ jobs:
           name: Deploy Android App for testing environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
             ./scripts/deploy.sh -o android -t hard -e testing
 
   deploy-android-staging:
@@ -130,7 +129,6 @@ jobs:
           name: Deploy Android App for staging environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
-            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_STAGING
             ./scripts/deploy.sh -o android -t hard -e staging
 
 workflows:
