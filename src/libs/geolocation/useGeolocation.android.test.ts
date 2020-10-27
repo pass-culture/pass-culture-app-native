@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { Alert, Platform, PermissionsAndroid } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
-import { getAllowedPermissions } from '../../../jest/permissions-android'
+import { getAllowedPermissions } from 'tests/permissions-android'
 
 import {
   EiffelTourCoordinates,
