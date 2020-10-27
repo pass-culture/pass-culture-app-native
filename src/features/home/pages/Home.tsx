@@ -9,6 +9,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { useGeolocation, CoordinatesView } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
+import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing } from 'ui/theme'
 
 import { CodePushButton } from '../components/CodePushButton'
@@ -36,6 +37,12 @@ const UserInformationContainer = styled.View({
   paddingVertical: getSpacing(5),
 })
 
+const HeaderBackgroundWrapper = styled.View({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+})
+
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const position = useGeolocation()
   const { email, isFetching, refetch, isError } = useCurrentUser()
@@ -48,6 +55,9 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
 
   return (
     <Container>
+      <HeaderBackgroundWrapper>
+        <HeaderBackground />
+      </HeaderBackgroundWrapper>
       <Text>{_(t`Bienvenue à Pass Culture`)}</Text>
       <Button
         title={_(t`Aller sur la page de connexion avec params`)}
