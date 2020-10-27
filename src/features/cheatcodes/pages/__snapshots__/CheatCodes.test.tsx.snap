@@ -91,7 +91,7 @@ exports[`CheatCodes component should render correctly 1`] = `
           ]
         }
       >
-        Navigate to Home
+        Naviguer vers la page d'accueil
       </Text>
     </View>
   </View>

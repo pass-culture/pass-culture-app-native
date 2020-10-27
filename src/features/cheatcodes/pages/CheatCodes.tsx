@@ -5,14 +5,13 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from 'reac
 import { Text, Alert } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CodePushButton } from 'features/cheatcodes/components/CodePushButton'
+import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
+import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
-
-import { Spacer } from '../../../ui/theme'
-import { CodePushButton } from '../components/CodePushButton'
-import { CrashTestButton } from '../components/CrashTestButton'
-import { NavigateHomeButton } from '../components/NavigateHomeButton/NavigateHomeButton'
+import { Spacer } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
 

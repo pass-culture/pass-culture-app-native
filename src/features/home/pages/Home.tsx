@@ -6,13 +6,10 @@ import styled from 'styled-components/native'
 
 import { useCurrentUser } from 'features/auth/api'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { env } from 'libs/environment'
 import { useGeolocation, CoordinatesView } from 'libs/geolocation'
 import { i18n } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
-
-import { CodePushButton } from '../../cheatcodes/components/CodePushButton'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
