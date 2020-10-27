@@ -87,6 +87,7 @@
     "jest": "^25.1.0",
     "jetifier": "^1.6.5",
     "metro-react-native-babel-preset": "0.63.0",
+    "msw": "^0.21.3",
     "plop": "^2.6.0",
     "prettier": "^2.1.2",
     "react-dom": "16.11.0",
