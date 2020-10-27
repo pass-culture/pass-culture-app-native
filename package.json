@@ -28,7 +28,6 @@
     "@bam.tech/react-native-config": "^0.13.0",
     "@lingui/react": "^2.9.2",
     "@react-native-community/async-storage": "^1.7.1",
-    "@react-native-community/cookies": "^4.0.1",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/native": "^5.7.5",
     "@react-navigation/stack": "^5.0.6",
