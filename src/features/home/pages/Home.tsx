@@ -10,7 +10,7 @@ import { env } from 'libs/environment'
 import { useGeolocation, CoordinatesView } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 import { CodePushButton } from '../components/CodePushButton'
 
@@ -23,7 +23,6 @@ type Props = {
 const Container = styled.View({
   flex: 1,
   alignItems: 'center',
-  justifyContent: 'center',
 })
 
 const CoordinatesViewContainer = styled(CoordinatesView)({
@@ -58,6 +57,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
       <HeaderBackgroundWrapper>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
+      <Spacer.Flex />
       <Text>{_(t`Bienvenue à Pass Culture`)}</Text>
       <Button
         title={_(t`Aller sur la page de connexion avec params`)}
@@ -76,6 +76,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
       )}
       <CoordinatesViewContainer position={position} />
       {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
+      <Spacer.Flex />
     </Container>
   )
 }
