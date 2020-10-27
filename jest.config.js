@@ -14,5 +14,5 @@ module.exports = {
   cacheDirectory: '.jest/cache',
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
   coveragePathIgnorePatterns: ['/node_modules/', '/src/environment', '/src/locales'],
-  collectCoverage: true,
+  collectCoverage: false,
 }

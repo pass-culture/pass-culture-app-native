@@ -14,6 +14,7 @@
     "test:lint": "eslint . --ext .js,.ts,.tsx --cache",
     "test:types": "tsc --noEmit",
     "test:unit": "JEST=true jest",
+    "test:unit:full": "JEST=true jest --collect-coverage",
     "fix:lint": "eslint . --ext .js,.ts,.tsx --fix",
     "plop": "plop",
     "postinstall": "patch-package && jetify && yarn translations:compile",
