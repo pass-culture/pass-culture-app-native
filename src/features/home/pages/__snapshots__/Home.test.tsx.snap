@@ -9,11 +9,231 @@ exports[`Home component With current user loaded should render correctly 1`] = `
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "justifyContent": "center",
       },
     ]
   }
 >
+  <View
+    style={
+      Array [
+        Object {
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <RNSVGSvgView
+      align="none"
+      bbHeight={352}
+      bbWidth={750}
+      focusable={false}
+      height={352}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": 352,
+            "width": 750,
+          },
+        ]
+      }
+      vbHeight={352}
+      vbWidth={375}
+      width={750}
+    >
+      <RNSVGGroup>
+        <RNSVGDefs>
+          <RNSVGLinearGradient
+            gradient={
+              Array [
+                0,
+                -1376171,
+                1,
+                -13500266,
+              ]
+            }
+            gradientTransform={null}
+            gradientUnits={0}
+            name="prefix__b"
+            x1="34.782%"
+            x2="88.023%"
+            y1="5.945%"
+            y2="111.119%"
+          />
+          <RNSVGLinearGradient
+            gradient={
+              Array [
+                0,
+                -1376171,
+                1,
+                -13500266,
+              ]
+            }
+            gradientTransform={null}
+            gradientUnits={0}
+            name="prefix__c"
+            x1="50%"
+            x2="37.519%"
+            y1="15.944%"
+            y2="116.187%"
+          />
+          <RNSVGPath
+            d="M0 0h375v352H0z"
+            name="prefix__a"
+          />
+        </RNSVGDefs>
+        <RNSVGGroup
+          fill={null}
+          fillRule={0}
+          propList={
+            Array [
+              "fill",
+              "fillRule",
+            ]
+          }
+        >
+          <RNSVGMask
+            fill={4294967295}
+            height="100%"
+            maskContentUnits={1}
+            maskTransform={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            maskUnits={0}
+            name="prefix__d"
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            width="100%"
+            x="0%"
+            y="0%"
+          >
+            <RNSVGUse
+              height={0}
+              href="prefix__a"
+              width={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGMask>
+          <RNSVGUse
+            fill={
+              Array [
+                1,
+                "prefix__b",
+              ]
+            }
+            height={0}
+            href="prefix__a"
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            width={0}
+            x={0}
+            y={0}
+          />
+          <RNSVGPath
+            d="M89.727-4.98c24.421 187.472 211.753 121.594 197.5 277.418-4.24 46.354-22.177 69.072-46.982 79.563L0 351.989V-5z"
+            fill={
+              Array [
+                1,
+                "prefix__c",
+              ]
+            }
+            mask="prefix__d"
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+  <View
+    numberOfSpaces={18}
+    style={
+      Array [
+        Object {
+          "height": 72,
+        },
+      ]
+    }
+  />
+  <Text
+    color="#ffffff"
+    style={
+      Array [
+        Object {
+          "color": "#ffffff",
+          "fontFamily": "Montserrat-ExtraBoldItalic",
+          "fontSize": 28,
+          "fontWeight": "800",
+          "lineHeight": 34,
+        },
+      ]
+    }
+  >
+    Bienvenue !
+  </Text>
+  <View
+    numberOfSpaces={2}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
+  <Text
+    color="#ffffff"
+    style={
+      Array [
+        Object {
+          "color": "#ffffff",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "fontWeight": "normal",
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    Toute la culture dans votre main
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
   <Text>
     Bienvenue à Pass Culture
   </Text>
@@ -183,5 +403,16 @@ exports[`Home component With current user loaded should render correctly 1`] = `
       </Text>
     </Text>
   </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
 </View>
 `;
