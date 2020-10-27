@@ -11,6 +11,7 @@ import { server } from 'tests/server'
 import { Login } from './Login'
 
 const RootStack = createStackNavigator()
+jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
 beforeEach(() => jest.useFakeTimers())
 
