@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/home/pages/Home.tsx:23
+#: src/features/home/pages/Home.tsx:51
 msgid "Aller sur la page de connexion avec params"
 msgstr "Aller sur la page de connexion avec params"
 
@@ -26,16 +26,21 @@ msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 msgid "Aucun token à sauvegarder"
 msgstr "Aucun token à sauvegarder"
 
-#: src/features/home/pages/Home.tsx:22
+#. Welcome title message
+#: src/features/home/pages/Home.tsx:43
+msgid "Bienvenue !"
+msgstr "Bienvenue !"
+
+#: src/features/home/pages/Home.tsx:50
 msgid "Bienvenue à Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/pages/Login.tsx:41
+#: src/features/auth/pages/Login.tsx:36
 msgid "Connectez-vous :"
 msgstr "Connectez-vous :"
 
 #. login button
-#: src/features/auth/pages/Login.tsx:44
+#: src/features/auth/pages/Login.tsx:39
 msgid "Connexion"
 msgstr "Connexion"
 
@@ -44,25 +49,30 @@ msgstr "Connexion"
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
 
-#: src/features/home/pages/Home.tsx:29
+#: src/features/home/pages/Home.tsx:55
 msgid "Rafraîchir les données de l'utilisateur"
 msgstr "Rafraîchir les données de l'utilisateur"
+
+#. Welcome body message
+#: src/features/home/pages/Home.tsx:47
+msgid "Toute la culture dans votre main"
+msgstr "Toute la culture dans votre main"
 
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
 #. email placeholder
-#: src/features/auth/pages/Login.tsx:42
+#: src/features/auth/pages/Login.tsx:37
 msgid "name@domain.com"
 msgstr "name@domain.com"
 
 #. password placeholder
-#: src/features/auth/pages/Login.tsx:43
+#: src/features/auth/pages/Login.tsx:38
 msgid "password"
 msgstr "password"
 
-#: src/features/auth/pages/Login.tsx:36
+#: src/features/auth/api.ts:28
 msgid "Échec de la connexion au Pass Culture: {0}"
 msgstr "Échec de la connexion au Pass Culture: {0}"
 
