@@ -1,21 +1,22 @@
 import { NavigationContainer } from '@react-navigation/native' // @react-navigation
 import { createStackNavigator } from '@react-navigation/stack' // @react-navigation
-import { render, fireEvent, waitFor, act } from '@testing-library/react-native'
+import { render, fireEvent } from '@testing-library/react-native'
+import { rest } from 'msw'
 import React from 'react'
-import { Text } from 'react-native'
 
-import * as api from '../api'
+import { Home } from 'features/home/pages/Home'
+import { env } from 'libs/environment'
+import { server } from 'tests/server'
 
 import { Login } from './Login'
 
-const Home = () => <Text>Home message</Text>
-
 const RootStack = createStackNavigator()
+
+beforeEach(() => jest.useFakeTimers())
 
 describe('<Login/>', () => {
   it('should redirect to home page when signin is successful', async () => {
-    jest.spyOn(api, 'signin').mockImplementation(signingSuccess)
-    const { getByText, queryByText } = render(
+    const { getByText, findByText } = render(
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Login">
           <RootStack.Screen name="Home" component={Home} />
@@ -24,17 +25,20 @@ describe('<Login/>', () => {
       </NavigationContainer>
     )
 
-    fireEvent.press(getByText('Connexion'))
+    const connexionButton = getByText('Connexion')
+    fireEvent.press(connexionButton)
 
-    await act(async () => {
-      const HomeMessage = await waitFor(() => queryByText('Home message'))
-      expect(HomeMessage).toBeTruthy()
-    })
+    const welcomeMessage = findByText('Bienvenue à Pass Culture')
+    expect(welcomeMessage).toBeTruthy()
   })
 
   it('should NOT redirect to home page when signin has failed', async () => {
-    jest.spyOn(api, 'signin').mockImplementation(signingFailure)
-    const { getByText, queryByText } = render(
+    server.use(
+      rest.post(env.API_BASE_URL + '/users/signin', async (req, res, ctx) => {
+        return res(ctx.status(401))
+      })
+    )
+    const { getByText, findByText } = render(
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Login">
           <RootStack.Screen name="Home" component={Home} />
@@ -42,20 +46,10 @@ describe('<Login/>', () => {
         </RootStack.Navigator>
       </NavigationContainer>
     )
+    const connexionButton = getByText('Connexion')
+    fireEvent.press(connexionButton)
 
-    fireEvent.press(getByText('Connexion'))
-
-    await act(async () => {
-      const HomeMessage = await waitFor(() => queryByText('Home message'))
-      expect(HomeMessage).toBeNull()
-    })
+    const failureMessage = findByText('Échec de la connexion au Pass Culture')
+    expect(failureMessage).toBeTruthy()
   })
 })
-
-async function signingSuccess() {
-  return true
-}
-
-async function signingFailure() {
-  return false
-}
