@@ -17,28 +17,6 @@ type Props = {
   navigation: HomeScreenNavigationProp
 }
 
-const Container = styled.View({
-  flex: 1,
-  alignItems: 'center',
-})
-
-const CoordinatesViewContainer = styled(CoordinatesView)({
-  position: 'absolute',
-  alignItems: 'center',
-  bottom: 50,
-})
-
-const UserInformationContainer = styled.View({
-  alignItems: 'center',
-  paddingVertical: getSpacing(5),
-})
-
-const HeaderBackgroundWrapper = styled.View({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-})
-
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const position = useGeolocation()
   const { email, isFetching, refetch, isError } = useCurrentUser()
@@ -84,3 +62,25 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
     </Container>
   )
 }
+
+const Container = styled.View({
+  flex: 1,
+  alignItems: 'center',
+})
+
+const CoordinatesViewContainer = styled(CoordinatesView)({
+  position: 'absolute',
+  alignItems: 'center',
+  bottom: 50,
+})
+
+const UserInformationContainer = styled.View({
+  alignItems: 'center',
+  paddingVertical: getSpacing(5),
+})
+
+const HeaderBackgroundWrapper = styled.View({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+})
