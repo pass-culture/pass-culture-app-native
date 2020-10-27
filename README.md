@@ -51,14 +51,9 @@ cd ios && bundle exec pod install && cd ..
 In order to launch the app in your simulator, you need to go to Android Studio first.
 Then open the Android Virtual Devices Manager and select (or create) a Virtual Device with the android version you want to run.
 Once the emulator is up and running, go to your terminal in the project workspace and run the following command:
-`yarn install yarn launch`
+`yarn install yarn android:testing`
 
-#### IOS
-
-On iOS you can run the following command:
-`react-native run-ios --scheme PassCulture-Staging`
-
-#### Development environment
+##### Development environment
 
 To run the app on a development environment in order to request a local API, you need to create a `.env.development` file,
 copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address. Then create a
@@ -71,9 +66,16 @@ storePassword=
 keyPassword=
 ```
 
+You will also need to copy the `google-services.json` file (you can find it in 1password) in `android/app` directory.
+
 Then run the app with this command:
 
-`react-native run-android --variant=developmentDebug`
+`yarn android`
+
+#### IOS
+
+On iOS you can run the following command:
+`yarn ios:testing`
 
 ### Debugging
 
