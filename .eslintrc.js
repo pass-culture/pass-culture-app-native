@@ -79,6 +79,7 @@ module.exports = {
           ['libs', './src/libs'],
           ['locales', './src/locales'],
           ['types', './src/types'],
+          ['tests', './src/tests'],
           ['ui', './src/ui'],
         ],
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
