@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { useCurrentUser } from 'features/auth/api'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { useGeolocation, CoordinatesView } from 'libs/geolocation'
-import { i18n } from 'libs/i18n'
+import { _ } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
 
@@ -34,16 +34,16 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={18} />
       <Typo.Title1 color={ColorsEnum.WHITE}>
-        {i18n._(/*i18n: Welcome title message */ t`Bienvenue !`)}
+        {_(/*i18n: Welcome title message */ t`Bienvenue !`)}
       </Typo.Title1>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Body color={ColorsEnum.WHITE}>
-        {i18n._(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
+        {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
       </Typo.Body>
       <Spacer.Flex />
-      <Text>{i18n._(t`Bienvenue à Pass Culture`)}</Text>
+      <Text>{_(t`Bienvenue à Pass Culture`)}</Text>
       <Button
-        title={i18n._(t`Aller sur la page de connexion avec params`)}
+        title={_(t`Aller sur la page de connexion avec params`)}
         onPress={goToLoginPageWithParams}
       />
       {isFetching && <ActivityIndicator testID="user-activity-indicator" />}
@@ -51,7 +51,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
         <UserInformationContainer>
           <Text>{`EMAIL: ${email}`}</Text>
           <Button
-            title={i18n._(t`Rafraîchir les données de l'utilisateur`)}
+            title={_(t`Rafraîchir les données de l'utilisateur`)}
             onPress={refetchUserInformations}
             testID="refreshUserInformationsButton"
           />
