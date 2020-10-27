@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleSheet, Text, View, StyleProp, ViewStyle } from 'react-native'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { Colors } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 interface Props {
   position: GeoCoordinates | null
@@ -12,7 +12,7 @@ interface Props {
 const styles = StyleSheet.create({
   container: { flexDirection: 'row', flex: 1 },
   geolocationText: { fontSize: 9 },
-  coordinateLabel: { color: Colors.blue },
+  coordinateLabel: { color: ColorsEnum.ACCENT },
 })
 
 /**

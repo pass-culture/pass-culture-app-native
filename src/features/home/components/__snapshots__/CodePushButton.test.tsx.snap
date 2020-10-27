@@ -13,9 +13,9 @@ exports[`CodePushButton prints AWAITING_USER_ACTION 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "grey",
+      "backgroundColor": "#c7c7cc",
       "borderBottomLeftRadius": 5,
-      "borderColor": "white",
+      "borderColor": "#ffffff",
       "borderRightWidth": 0,
       "borderTopLeftRadius": 5,
       "borderWidth": 1,
@@ -53,9 +53,9 @@ exports[`CodePushButton prints CHECKING_FOR_UPDATE 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "grey",
+      "backgroundColor": "#c7c7cc",
       "borderBottomLeftRadius": 5,
-      "borderColor": "white",
+      "borderColor": "#ffffff",
       "borderRightWidth": 0,
       "borderTopLeftRadius": 5,
       "borderWidth": 1,
@@ -93,9 +93,9 @@ exports[`CodePushButton prints DOWNLOADING_PACKAGE 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "grey",
+      "backgroundColor": "#c7c7cc",
       "borderBottomLeftRadius": 5,
-      "borderColor": "white",
+      "borderColor": "#ffffff",
       "borderRightWidth": 0,
       "borderTopLeftRadius": 5,
       "borderWidth": 1,
@@ -133,9 +133,9 @@ exports[`CodePushButton prints INSTALLING_UPDATE 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "grey",
+      "backgroundColor": "#c7c7cc",
       "borderBottomLeftRadius": 5,
-      "borderColor": "white",
+      "borderColor": "#ffffff",
       "borderRightWidth": 0,
       "borderTopLeftRadius": 5,
       "borderWidth": 1,
@@ -173,9 +173,9 @@ exports[`CodePushButton prints undefined 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "grey",
+      "backgroundColor": "#c7c7cc",
       "borderBottomLeftRadius": 5,
-      "borderColor": "white",
+      "borderColor": "#ffffff",
       "borderRightWidth": 0,
       "borderTopLeftRadius": 5,
       "borderWidth": 1,
@@ -213,9 +213,9 @@ exports[`CodePushButton renders correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "grey",
+      "backgroundColor": "#c7c7cc",
       "borderBottomLeftRadius": 5,
-      "borderColor": "white",
+      "borderColor": "#ffffff",
       "borderRightWidth": 0,
       "borderTopLeftRadius": 5,
       "borderWidth": 1,

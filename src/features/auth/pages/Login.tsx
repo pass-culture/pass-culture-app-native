@@ -8,7 +8,7 @@ import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButto
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
-import { Colors } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 import { signin } from '../api'
 
@@ -63,5 +63,5 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  input: { borderColor: Colors.black, borderWidth: 1 },
+  input: { borderColor: ColorsEnum.BLACK, borderWidth: 1 },
 })

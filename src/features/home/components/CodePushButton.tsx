@@ -2,7 +2,7 @@ import React, { Component, ReactElement } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import CodePush from 'react-native-code-push' // @codepush
 
-import { Colors } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 interface State {
   info?: string
@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0,
     bottom: 20,
-    backgroundColor: Colors.grey,
+    backgroundColor: ColorsEnum.GREY_MEDIUM,
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
-    borderColor: Colors.white,
+    borderColor: ColorsEnum.WHITE,
     borderWidth: 1,
     borderRightWidth: 0,
     padding: 10,
