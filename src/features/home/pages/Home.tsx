@@ -12,7 +12,7 @@ import { i18n } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
 
-import { CodePushButton } from '../components/CodePushButton'
+import { CodePushButton } from '../../cheatcodes/components/CodePushButton'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
@@ -83,7 +83,6 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
         </UserInformationContainer>
       )}
       <CoordinatesViewContainer position={position} />
-      {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
       <Spacer.Flex />
     </Container>
   )
