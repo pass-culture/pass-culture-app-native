@@ -19,10 +19,6 @@ type Props = {
   navigation: CheatCodesNavigationProp
 }
 
-const Container = styled.View({
-  flex: 1,
-})
-
 export const CheatCodes: FunctionComponent<Props> = function () {
   const getBatchInstallationID = useCallback(async (callback: (installationId: string) => void) => {
     try {
@@ -52,3 +48,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
     </Container>
   )
 }
+
+const Container = styled.View({
+  flex: 1,
+})
