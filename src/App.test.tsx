@@ -7,6 +7,7 @@ import * as BatchLocalLib from './libs/notifications'
 jest.mock('./libs/notifications', () => ({
   startBatchNotification: jest.fn(),
 }))
+jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
 describe('App', () => {
   it('should display a a prompt to sign-in message', async () => {
