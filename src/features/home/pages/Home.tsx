@@ -11,6 +11,8 @@ import { _ } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
 
+import { getHomepageEntries } from '../api'
+
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
 type Props = {
@@ -57,6 +59,11 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
           />
         </UserInformationContainer>
       )}
+      <Button
+        title={_(t`Récupérer les données Contentful`)}
+        onPress={getHomepageEntries}
+        testID="getHomepageEntries"
+      />
       <CoordinatesViewContainer position={position} />
       <Spacer.Flex />
     </Container>
