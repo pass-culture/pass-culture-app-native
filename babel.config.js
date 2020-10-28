@@ -7,7 +7,7 @@ module.exports = {
       {
         cwd: 'babelrc',
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.js', '.ios.js', '.android.js'],
-        root: ['./src/', './__mocks__'],
+        root: ['./src/'],
         alias: {
           features: './src/features',
           libs: './src/libs',
@@ -15,7 +15,7 @@ module.exports = {
           types: './src/types',
           tests: './src/tests',
           ui: './src/ui',
-          __mocks__: './__mocks__',
+          __mocks__: './__mocks__/',
         },
       },
     ],
