@@ -11,8 +11,7 @@ const DEPTH_LEVEL = 2
 export const getHomepageEntries = async () => {
   try {
     const homepageData = await getExternal(
-      CONTENTFUL_BASE_URL,
-      `/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}/entries?include=${DEPTH_LEVEL}&content_type=homepage&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
+      `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}/entries?include=${DEPTH_LEVEL}&content_type=homepage&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
     )
     return homepageData
   } catch (error) {

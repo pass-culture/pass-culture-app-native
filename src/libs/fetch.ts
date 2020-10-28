@@ -10,28 +10,20 @@ export type RequestCredentials = 'omit' | 'same-origin' | 'include' | undefined
 export async function post<Body>(url: string, request: RequestInit): Promise<Body> {
   request.method = 'POST'
   request.body = JSON.stringify(request.body)
-  return makeRequest<Body>(url, request)
+  return makeRequest<Body>(env.API_BASE_URL + url, request)
 }
 
 export async function get<Body>(url: string, request: RequestInit = {}): Promise<Body> {
   request.method = 'GET'
+  return makeRequest<Body>(env.API_BASE_URL + url, request)
+}
+
+export async function getExternal<Body>(url: string, request: RequestInit = {}): Promise<Body> {
+  request.method = 'GET'
   return makeRequest<Body>(url, request)
 }
 
-export async function getExternal<Body>(
-  apiBaseUrl: string,
-  url: string,
-  request: RequestInit = {}
-): Promise<Body> {
-  request.method = 'GET'
-  return makeRequest<Body>(url, request, apiBaseUrl)
-}
-
-async function makeRequest<Body>(
-  url: string,
-  request: RequestInit,
-  apiBaseUrl: string | null = null
-): Promise<Body> {
+async function makeRequest<Body>(url: string, request: RequestInit): Promise<Body> {
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -46,9 +38,7 @@ async function makeRequest<Body>(
     headers,
   }
 
-  const baseUrl = apiBaseUrl || env.API_BASE_URL
-
-  const response = await fetch(baseUrl + url, config)
+  const response = await fetch(url, config)
 
   if (response.status === 401) {
     throw new NotAuthenticatedError()
