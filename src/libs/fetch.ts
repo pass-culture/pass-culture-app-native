@@ -18,7 +18,20 @@ export async function get<Body>(url: string, request: RequestInit = {}): Promise
   return makeRequest<Body>(url, request)
 }
 
-async function makeRequest<Body>(url: string, request: RequestInit): Promise<Body> {
+export async function getExternal<Body>(
+  apiBaseUrl: string,
+  url: string,
+  request: RequestInit = {}
+): Promise<Body> {
+  request.method = 'GET'
+  return makeRequest<Body>(url, request, apiBaseUrl)
+}
+
+async function makeRequest<Body>(
+  url: string,
+  request: RequestInit,
+  apiBaseUrl: string | null = null
+): Promise<Body> {
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -33,7 +46,9 @@ async function makeRequest<Body>(url: string, request: RequestInit): Promise<Bod
     headers,
   }
 
-  const response = await fetch(env.API_BASE_URL + url, config)
+  const baseUrl = apiBaseUrl || env.API_BASE_URL
+
+  const response = await fetch(baseUrl + url, config)
 
   if (response.status === 401) {
     throw new NotAuthenticatedError()
