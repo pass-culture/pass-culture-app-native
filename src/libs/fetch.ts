@@ -20,7 +20,7 @@ export async function get<Body>(url: string, request: RequestInit = {}): Promise
 
 export async function getExternal<Body>(url: string, request: RequestInit = {}): Promise<Body> {
   request.method = 'GET'
-  return makeRequest<Body>(url, request)
+  return makeExternalRequest<Body>(url, request)
 }
 
 async function makeRequest<Body>(url: string, request: RequestInit): Promise<Body> {
@@ -31,6 +31,30 @@ async function makeRequest<Body>(url: string, request: RequestInit): Promise<Bod
   if (request.credentials !== 'omit') {
     const token = await getToken()
     headers['Authorization'] = `Bearer ${token}`
+  }
+
+  const config = {
+    ...request,
+    headers,
+  }
+
+  const response = await fetch(url, config)
+
+  if (response.status === 401) {
+    throw new NotAuthenticatedError()
+  }
+  if (!response.ok) {
+    throw new Error(_(t`Échec de la requête ${url}, code: ${response.status}`))
+  }
+
+  const json = await response.json()
+  return json
+}
+
+async function makeExternalRequest<Body>(url: string, request: RequestInit): Promise<Body> {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
   }
 
   const config = {
