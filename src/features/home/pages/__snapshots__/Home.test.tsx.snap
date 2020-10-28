@@ -351,7 +351,6 @@ exports[`Home component With current user loaded should render correctly 1`] = `
         "opacity": 1,
       }
     }
-    testID="getHomepageEntries"
   >
     <View
       style={

@@ -59,11 +59,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
           />
         </UserInformationContainer>
       )}
-      <Button
-        title={_(t`Récupérer les données Contentful`)}
-        onPress={getHomepageEntries}
-        testID="getHomepageEntries"
-      />
+      <Button title={_(t`Récupérer les données Contentful`)} onPress={getHomepageEntries} />
       <CoordinatesViewContainer position={position} />
       <Spacer.Flex />
     </Container>
