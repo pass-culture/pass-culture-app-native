@@ -112,6 +112,7 @@ jobs:
   deploy-ios-testing-hard:
     macos:
       xcode: '12.0.1'
+    working_directory: ~/pass-culture
     steps:
       - checkout
       #      - run:
@@ -130,12 +131,8 @@ jobs:
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
             echo 'nvm install 12.16.3 &> /dev/null' >> $BASH_ENV
             echo 'nvm alias default 12.16.3 &> /dev/null' >> $BASH_ENV
-      - run:
-          name: Install Dependencies
-          command: yarn install --immutable
-      - run:
-          name: Install Gem dependencies
-          command: bundle install --path=vendor/bundle
+      - install_node_modules
+      - install_ruby_modules
       - run:
           name: Install cocoapods
           command: cd ios/ && bundle exec pod install
