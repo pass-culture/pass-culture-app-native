@@ -1,6 +1,19 @@
 version: 2.1
 
 commands:
+  install_node_version:
+    description: Install Node version with NVM
+    steps:
+      - run:
+          name: Install Node version with NVM
+          command: |
+            set +e
+            touch $BASH_ENV
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+            echo 'nvm install 12.16.3 &> /dev/null' >> $BASH_ENV
+            echo 'nvm alias default 12.16.3 &> /dev/null' >> $BASH_ENV
   install_node_modules:
     description: Install Node Dependencies
     steps:
@@ -15,7 +28,7 @@ commands:
           name: Save Node Modules
           key: node-modules-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
-            - ~/node_modules
+            - node_modules
   install_ruby_modules:
     description: Install Ruby Dependencies
     steps:
@@ -30,7 +43,7 @@ commands:
           name: Save Gem dependencies
           key: bundle-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
-            - ~/.bundle/
+            - .bundle/
             - ~/vendor/bundle
   skip_testing_soft_deploy_when_new_tag:
     description: Skip job when new tag to deploy
@@ -118,22 +131,13 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      #      - run:
-      #          name: Skip job when no tag found
-      #          command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
+      - run:
+          name: Skip job when no tag found
+          command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - add_ssh_keys:
           fingerprints:
             - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
-      - run:
-          name: Install node version
-          command: |
-            set +e
-            touch $BASH_ENV
-            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
-            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-            echo 'nvm install 12.16.3 &> /dev/null' >> $BASH_ENV
-            echo 'nvm alias default 12.16.3 &> /dev/null' >> $BASH_ENV
+      - install_node_version
       - install_node_modules
       - install_ruby_modules
       - run:
@@ -144,10 +148,35 @@ jobs:
           command: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
       - run:
           name: Deploy IOS App for testing environment
-          no_output_timeout: 60m
+          no_output_timeout: 30m
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t hard -e testing
+
+  deploy-ios-staging:
+    macos:
+      xcode: '12.0.1'
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
+      - install_node_version
+      - install_node_modules
+      - install_ruby_modules
+      - run:
+          name: Install cocoapods
+          command: cd ios/ && bundle exec pod install
+      - run:
+          name: Decode match secrets
+          command: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+      - run:
+          name: Deploy IOS App for staging environment
+          no_output_timeout: 30m
+          command: |
+            export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
+            ./scripts/deploy.sh -o ios -t hard -e staging
 
   deploy-android-staging:
     docker:
@@ -181,10 +210,17 @@ workflows:
           filters:
             branches:
               only:
-                - pc-4730-deploy-ios-staging-and-hard-testing
+                - master
           requires:
             - run-tests
       - deploy-android-testing-hard:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - run-tests
+      - deploy-ios-testing-hard:
           filters:
             branches:
               only:
@@ -198,10 +234,10 @@ workflows:
                 - staging
           requires:
             - run-tests
-      - deploy-ios-testing-hard:
+      - deploy-ios-staging:
           filters:
             branches:
               only:
                 - pc-4730-deploy-ios-staging-and-hard-testing
-          #requires:
-          #- run-tests
+          requires:
+            - run-tests
