@@ -20,13 +20,13 @@ commands:
       - restore_cache:
           name: Restore Node Modules
           keys:
-            - node-modules-{{ checksum "yarn.lock" }}-{{ arch }}
+            - node-modules-v1-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
           name: Install Dependencies
           command: yarn install --immutable
       - save_cache:
           name: Save Node Modules
-          key: node-modules-{{ checksum "yarn.lock" }}-{{ arch }}
+          key: node-modules-v1-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
             - node_modules
   install_ruby_modules:
@@ -34,17 +34,17 @@ commands:
     steps:
       - restore_cache:
           name: Restore Gem dependencies
-          key: bundle-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
       - run:
           name: Install Gem dependencies
           command: |
             bundle install --path=vendor/bundle
       - save_cache:
           name: Save Gem dependencies
-          key: bundle-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
             - .bundle/
-            - ~/vendor/bundle
+            - vendor/bundle
   skip_testing_soft_deploy_when_new_tag:
     description: Skip job when new tag to deploy
     steps:
@@ -238,6 +238,6 @@ workflows:
           filters:
             branches:
               only:
-                - pc-4730-deploy-ios-staging-and-hard-testing
+                - staging
           requires:
             - run-tests
