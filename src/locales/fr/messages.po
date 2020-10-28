@@ -24,7 +24,7 @@ msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
 #: src/libs/storage.ts:23
 msgid "Aucun token à sauvegarder"
-msgstr "Aucun token à sauvegarder<<<<<<< HEAD"
+msgstr "Aucun token à sauvegarder"
 
 #. Welcome title message
 #: src/features/home/pages/Home.tsx:24
@@ -47,7 +47,7 @@ msgstr "Connexion"
 #. Authentication error message
 #: src/libs/fetch.ts:58
 msgid "Erreur d'authentification"
-msgstr "Erreur d'authentification<<<<<<< HEAD"
+msgstr "Erreur d'authentification"
 
 #: src/features/home/pages/Home.tsx:36
 msgid "Rafraîchir les données de l'utilisateur"
@@ -55,7 +55,7 @@ msgstr "Rafraîchir les données de l'utilisateur"
 
 #: src/features/home/pages/Home.tsx:38
 msgid "Récupérer les données Contentful"
-msgstr "Récupérer les données Contentful>>>>>>> :sparkles: (PC-4413) add api call to contentful"
+msgstr "Récupérer les données Contentful"
 
 #. Welcome body message
 #: src/features/home/pages/Home.tsx:28

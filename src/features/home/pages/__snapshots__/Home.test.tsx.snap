@@ -372,7 +372,7 @@ exports[`Home component With current user loaded should render correctly 1`] = `
           ]
         }
       >
-        Récupérer les données Contentful&gt;&gt;&gt;&gt;&gt;&gt;&gt; :sparkles: (PC-4413) add api call to contentful
+        Récupérer les données Contentful
       </Text>
     </View>
   </View>
