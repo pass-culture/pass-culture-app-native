@@ -12,7 +12,7 @@ I have:
 
 ## Deploy hard
 
-If native code (ios/android) was modified, **before** the PR is merged, on the working branch, upgrade the **app version** (+1 patch):
+If native code (ios/android) was modified, **after** the PR is merged, on the master branch, upgrade the **app version** (+1 patch):
 
 - if you want an hard deployment of the testing environment, use `yarn version:testing` (this will create a commit with a tag)
 - then run `git push --follow-tags`
