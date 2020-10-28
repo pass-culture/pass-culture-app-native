@@ -12,6 +12,9 @@ export interface Environment {
   SIGNIN_IDENTIFIER: string
   SIGNIN_PASSWORD: string
   WEBSOCKET_ENDPOINT: string
+  CONTENTFUL_ACCESS_TOKEN: string
+  CONTENTFUL_ENVIRONMENT: string
+  CONTENTFUL_SPACE_ID: string
 }
 
 export const env = parseBooleanVariables(Config) as Environment
