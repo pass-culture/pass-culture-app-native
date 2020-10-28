@@ -61,7 +61,7 @@ jobs:
 
   deploy-soft-testing:
     docker:
-      - image: circleci/android:api-28-node
+      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
     steps:
       - checkout
       - skip_testing_soft_deploy_when_new_tag
@@ -82,7 +82,7 @@ jobs:
 
   deploy-android-testing-hard:
     docker:
-      - image: circleci/android:api-28-node
+      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
     steps:
       - checkout
       - run:
@@ -111,7 +111,7 @@ jobs:
 
   deploy-android-staging:
     docker:
-      - image: circleci/android:api-28-node
+      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
     steps:
       - checkout
       - install_node_modules
