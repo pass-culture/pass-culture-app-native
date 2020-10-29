@@ -96,7 +96,7 @@ exports[`CheatCodes component should render correctly 1`] = `
     </View>
   </View>
   <Text>
-    none
+    installationID
   </Text>
   <View
     style={

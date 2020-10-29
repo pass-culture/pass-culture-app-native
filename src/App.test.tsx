@@ -1,4 +1,5 @@
-import { render, waitFor } from '@testing-library/react-native'
+import { cleanup } from '@testing-library/react-hooks'
+import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { App } from './App'
@@ -7,17 +8,24 @@ import * as BatchLocalLib from './libs/notifications'
 jest.mock('./libs/notifications', () => ({
   startBatchNotification: jest.fn(),
 }))
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+jest.mock('features/navigation/RootNavigator', () => ({
+  RootNavigator() {
+    return 'Placeholder for RootNavigator'
+  },
+}))
 
-describe('App', () => {
-  it('should display a a prompt to sign-in message', async () => {
-    const { getByText } = render(<App />)
+afterEach(cleanup)
 
-    const welcomeText = await waitFor(() => getByText('Connectez-vous :'))
-    expect(welcomeText.props.children).toBe('Connectez-vous :')
+describe('<App /> with mocked RootNavigator', () => {
+  it('should render', () => {
+    const { toJSON } = render(<App />)
+
+    expect(toJSON()).toMatchSnapshot()
   })
-  it('should call startBatchNotification to optin to notifications', () => {
+
+  it('should call startBatchNotification() to optin to notifications', () => {
     render(<App />)
+
     expect(BatchLocalLib.startBatchNotification).toHaveBeenCalled()
   })
 })
