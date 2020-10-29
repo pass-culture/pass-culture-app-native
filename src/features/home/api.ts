@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import resolveResponse from 'contentful-resolve-response'
 import { Alert } from 'react-native'
 
 import { env } from 'libs/environment'
@@ -13,7 +14,10 @@ export const getHomepageEntries = async () => {
     const homepageData = await getExternal(
       `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}/entries?include=${DEPTH_LEVEL}&content_type=homepage&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
     )
-    return homepageData
+    const formattedResponse = resolveResponse(homepageData)
+    /* Support good practice is to configure on Contentful dashboard only 1 contenttype homepage
+    But there is not blocking on the dashboard, that's why we select first one here */
+    return formattedResponse[0]
   } catch (error) {
     Alert.alert(
       _(t`Échec de la récupération du contenu Contentful pour la homepage ${error.message}`)
