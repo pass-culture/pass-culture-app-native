@@ -1,10 +1,12 @@
-import { NavigationContainer } from '@react-navigation/native' // @react-navigation
-import { createStackNavigator } from '@react-navigation/stack' // @react-navigation
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
 import { Login } from 'features/auth/pages/Login'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Home } from 'features/home/pages/Home'
+
+import { onNavigationStateChange } from './services'
 
 export type RootStackParamList = {
   CheatCodes: undefined
@@ -16,7 +18,7 @@ const RootStack = createStackNavigator<RootStackParamList>()
 
 export const RootNavigator: React.FC = function () {
   return (
-    <NavigationContainer>
+    <NavigationContainer onStateChange={onNavigationStateChange}>
       <RootStack.Navigator initialRouteName="Login">
         <RootStack.Screen name="Home" component={Home} />
         <RootStack.Screen
