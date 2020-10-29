@@ -89,3 +89,83 @@ interface EntryCollectionError {
 interface EntryCollectionInclusions<T> {
   [string]: Array<Asset | Entry<T>>
 }
+
+export interface AlgoliaParameters {
+  sys: Sys
+  fields: AlgoliaParametersFields
+}
+
+export interface AlgoliaParametersFields {
+  title?: stirng
+  tags?: Array<string>
+  hitsPerPage?: number
+}
+
+export interface DisplayParameters {
+  sys: Sys
+  fields: DisplayParametersFields
+}
+
+export interface DisplayParametersFields {
+  title?: string
+  layout?: string
+  minOffers?: number
+}
+
+interface CoverParameters {
+  sys: Sys
+  fields: {
+    title: string
+    image: Image
+  }
+}
+
+interface Image {
+  sys: Sys
+  fields: {
+    title: string
+    file: {
+      url: string
+      details: {
+        size: number
+        image: {
+          width: 450
+          height: 195
+        }
+      }
+      fileName: string
+      contentType: string
+    }
+  }
+}
+
+export interface HomepageEntries {
+  sys: Sys
+  fields: {
+    modules: Array<Module>
+  }
+}
+
+export interface Module {
+  sys: Sys
+  fields: ModuleFields
+}
+
+export interface ModuleFields {
+  title: string
+  algoliaParameters?: AlgoliaParameters
+  displayParameters?: DisplayParameters
+  cover?: CoverParameters
+  alt?: string
+  offerId?: string
+  firstLine?: string
+  secondLine?: string
+  url?: string
+}
+
+export const CONTENT_TYPES = {
+  ALGOLIA: 'algolia',
+  EXCLUSIVITY: 'exclusivity',
+  HOMEPAGE: 'homepage',
+  INFORMATION: 'information',
+}
