@@ -32,18 +32,10 @@ export class OffersWithCover extends Offers {
 }
 
 export class ExclusivityPane {
-  alt: string | undefined
-  image: string | undefined | null
-  offerId: string | undefined
-  constructor({
-    alt,
-    image,
-    offerId,
-  }: {
-    alt: string | undefined
-    image: string | undefined | null
-    offerId: string | undefined
-  }) {
+  alt: string
+  image: string
+  offerId: string
+  constructor({ alt, image, offerId }: { alt: string; image: string; offerId: string }) {
     this.alt = alt
     this.image = image
     this.offerId = offerId
@@ -72,3 +64,5 @@ export class BusinessPane {
     this.url = url
   }
 }
+
+export type ProcessedModule = Offers | ExclusivityPane | BusinessPane | OffersWithCover

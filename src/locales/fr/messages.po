@@ -13,12 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/home/pages/Home.tsx:32
+#: src/features/home/pages/Home.tsx:38
 msgid "Aller sur la page de connexion avec params"
 msgstr "Aller sur la page de connexion avec params"
 
 #. Error message on Batch get installation ID
-#: src/features/cheatcodes/pages/CheatCodes.tsx:29
+#: src/features/cheatcodes/pages/CheatCodes.tsx:41
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
@@ -27,38 +27,34 @@ msgid "Aucun token à sauvegarder"
 msgstr "Aucun token à sauvegarder"
 
 #. Welcome title message
-#: src/features/home/pages/Home.tsx:24
+#: src/features/home/pages/Home.tsx:28
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
-#: src/features/home/pages/Home.tsx:31
+#: src/features/home/pages/Home.tsx:37
 msgid "Bienvenue à Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/pages/Login.tsx:36
+#: src/features/auth/pages/Login.tsx:34
 msgid "Connectez-vous :"
 msgstr "Connectez-vous :"
 
 #. login button
-#: src/features/auth/pages/Login.tsx:39
+#: src/features/auth/pages/Login.tsx:37
 msgid "Connexion"
 msgstr "Connexion"
 
 #. Authentication error message
-#: src/libs/fetch.ts:58
+#: src/libs/fetch.ts:75
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
 
-#: src/features/home/pages/Home.tsx:36
+#: src/features/home/pages/Home.tsx:43
 msgid "Rafraîchir les données de l'utilisateur"
 msgstr "Rafraîchir les données de l'utilisateur"
 
-#: src/features/home/pages/Home.tsx:38
-msgid "Récupérer les données Contentful"
-msgstr "Récupérer les données Contentful"
-
 #. Welcome body message
-#: src/features/home/pages/Home.tsx:28
+#: src/features/home/pages/Home.tsx:32
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
 
@@ -67,23 +63,24 @@ msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
 #. email placeholder
-#: src/features/auth/pages/Login.tsx:37
+#: src/features/auth/pages/Login.tsx:35
 msgid "name@domain.com"
 msgstr "name@domain.com"
 
 #. password placeholder
-#: src/features/auth/pages/Login.tsx:38
+#: src/features/auth/pages/Login.tsx:36
 msgid "password"
 msgstr "password"
 
-#: src/features/auth/api.ts:28
+#: src/features/auth/api.ts:31
 msgid "Échec de la connexion au Pass Culture: {0}"
 msgstr "Échec de la connexion au Pass Culture: {0}"
 
-#: src/libs/fetch.ts:50
+#: src/libs/fetch.ts:49
+#: src/libs/fetch.ts:67
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"
 
-#: src/features/home/api.ts:23
+#: src/features/home/api.ts:24
 msgid "Échec de la récupération du contenu Contentful pour la homepage {0}"
 msgstr "Échec de la récupération du contenu Contentful pour la homepage {0}"

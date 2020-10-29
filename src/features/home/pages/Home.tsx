@@ -11,8 +11,10 @@ import { _ } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
 
-import { getHomepageModules } from './useHomepageModules'
 import { ExclusivityModule } from '../components/ExclusivityModule'
+import { ExclusivityPane, ProcessedModule } from '../components/moduleTypes'
+
+import { useHomePageModules } from './useHomepageModules'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
@@ -23,6 +25,7 @@ type Props = {
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const position = useGeolocation()
   const { email, isFetching, refetch, isError } = useCurrentUser()
+  const modules = useHomePageModules()
 
   const goToLoginPageWithParams = useCallback((): void => {
     navigation.navigate('Login', { userId: 'I have been Set by params' })
@@ -45,18 +48,19 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
           {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
         </Typo.Body>
         <Spacer.Column numberOfSpaces={8} />
-        <ExclusivityModule
-          alt="Samedi, c'est Nuit Blanche !"
-          image="https://images.ctfassets.net/2bg01iqy0isv/1ljtAvN1oEGY2DL2mntdo8/e3efe474291f0daee3b30cf7d7a68049/Group_6__5_.png" // minotaure
-          offerId="G7JPK"
-        />
+        {modules.map((module: ProcessedModule) => {
+          if (module instanceof ExclusivityPane) {
+            return <ExclusivityModule {...module} />
+          }
+          return <></>
+        })}
         <Spacer.Column numberOfSpaces={6} />
-        <Spacer.Flex />
         <Text>{_(t`Bienvenue à Pass Culture`)}</Text>
         <Button
           title={_(t`Aller sur la page de connexion avec params`)}
           onPress={goToLoginPageWithParams}
         />
+        <Spacer.Column numberOfSpaces={6} />
         {isFetching && <ActivityIndicator testID="user-activity-indicator" />}
         {email && !isError && (
           <UserInformationContainer>
@@ -68,9 +72,9 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
             />
           </UserInformationContainer>
         )}
-        <Button title={_(t`Récupérer les données Contentful`)} onPress={getHomepageModules} />
+        <Spacer.Column numberOfSpaces={6} />
         <CoordinatesViewContainer position={position} />
-        <Spacer.Flex />
+        <Spacer.Column numberOfSpaces={6} />
       </Container>
     </ScrollView>
   )
