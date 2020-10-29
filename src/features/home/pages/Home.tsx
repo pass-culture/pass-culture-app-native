@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback } from 'react'
-import { Button, Text, ActivityIndicator } from 'react-native'
+import { Button, Image, Text, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useCurrentUser } from 'features/auth/api'
@@ -12,6 +12,7 @@ import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
 
 import { getHomepageModules } from './useHomepageModules'
+import { ExclusivityModule } from '../components/ExclusivityModule'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
@@ -42,6 +43,14 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
       <Typo.Body color={ColorsEnum.WHITE}>
         {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
       </Typo.Body>
+      <Spacer.Flex />
+      <ExclusivityModule
+        alt={"Samedi, c'est Nuit Blanche !"}
+        image={
+          'https://images.ctfassets.net/2bg01iqy0isv/4fHAxzZIXhsGwAHvOZKdFK/3744c6947170eeb9205239ec57bba42f/73880_UDEucG5n.png'
+        }
+        offerId={'G7JPK'}
+      />
       <Spacer.Flex />
       <Text>{_(t`Bienvenue à Pass Culture`)}</Text>
       <Button
