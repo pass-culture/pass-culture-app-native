@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
-import { RouteProp } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
 import { Button, View, Text, TextInput, StyleSheet } from 'react-native'
 
@@ -12,13 +11,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { signin } from '../api'
 
-type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>
-type LoginScreenRouteProp = RouteProp<RootStackParamList, 'Login'>
-
-type Props = {
-  navigation: LoginScreenNavigationProp
-  route: LoginScreenRouteProp
-}
+type Props = StackScreenProps<RootStackParamList, 'Login'>
 
 let INITIAL_IDENTIFIER = ''
 let INITIAL_PASSWORD = ''

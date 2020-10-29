@@ -1,56 +1,50 @@
-import { NavigationContainer } from '@react-navigation/native' // @react-navigation
-import { createStackNavigator } from '@react-navigation/stack' // @react-navigation
+import { StackScreenProps } from '@react-navigation/stack'
 import { render, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 
-import { Home } from 'features/home/pages/Home'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { navigationTestProps } from 'tests/navigation'
 import { server } from 'tests/server'
+import { flushAllPromises } from 'tests/utils'
 
 import { Login } from './Login'
 
-const RootStack = createStackNavigator()
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-
-beforeEach(() => jest.useFakeTimers())
+beforeEach(() => {
+  jest.resetAllMocks()
+})
 
 describe('<Login/>', () => {
   it('should redirect to home page when signin is successful', async () => {
-    const { getByText, findByText } = render(
-      <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Login">
-          <RootStack.Screen name="Home" component={Home} />
-          <RootStack.Screen name="Login" component={Login} />
-        </RootStack.Navigator>
-      </NavigationContainer>
+    const { findByText } = render(
+      <Login {...(navigationTestProps as StackScreenProps<RootStackParamList, 'Login'>)} />
     )
 
-    const connexionButton = getByText('Connexion')
-    fireEvent.press(connexionButton)
+    fireEvent.press(await findByText('Connexion'))
+    await flushAllPromises()
 
-    const welcomeMessage = findByText('Bienvenue à Pass Culture')
-    expect(welcomeMessage).toBeTruthy()
+    expect(analytics.logLogin).toBeCalledTimes(1)
+    expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
+    expect(navigationTestProps.navigation.navigate).toBeCalledWith('Home')
   })
 
   it('should NOT redirect to home page when signin has failed', async () => {
     server.use(
-      rest.post(env.API_BASE_URL + '/users/signin', async (req, res, ctx) => {
-        return res(ctx.status(401))
-      })
+      rest.post(env.API_BASE_URL + '/native/v1/signin', async (req, res, ctx) =>
+        res(ctx.status(401))
+      )
     )
-    const { getByText, findByText } = render(
-      <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Login">
-          <RootStack.Screen name="Home" component={Home} />
-          <RootStack.Screen name="Login" component={Login} />
-        </RootStack.Navigator>
-      </NavigationContainer>
+    const { findByText } = render(
+      <Login {...(navigationTestProps as StackScreenProps<RootStackParamList, 'Login'>)} />
     )
-    const connexionButton = getByText('Connexion')
-    fireEvent.press(connexionButton)
 
-    const failureMessage = findByText('Échec de la connexion au Pass Culture')
-    expect(failureMessage).toBeTruthy()
+    const connexionButton = await findByText('Connexion')
+    fireEvent.press(connexionButton)
+    await flushAllPromises()
+
+    expect(analytics.logLogin).not.toBeCalled()
+    expect(navigationTestProps.navigation.navigate).not.toBeCalled()
   })
 })
