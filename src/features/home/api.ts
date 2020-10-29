@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import resolveResponse from 'contentful-resolve-response'
 import { Alert } from 'react-native'
 
+import { EntryCollection, EntryFields } from 'features/home/contentful.d'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 import { _ } from 'libs/i18n'
@@ -11,7 +12,7 @@ const DEPTH_LEVEL = 2
 
 export const getHomepageEntries = async () => {
   try {
-    const homepageData = await getExternal(
+    const homepageData: EntryCollection<EntryFields> = await getExternal(
       `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}/entries?include=${DEPTH_LEVEL}&content_type=homepage&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
     )
     const formattedResponse = resolveResponse(homepageData)
