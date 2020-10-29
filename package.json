@@ -7,8 +7,10 @@
     "node": ">=12.13.0 <13.0.0"
   },
   "scripts": {
-    "run:android": "react-native run-android --variant=developmentDebug",
-    "run:android:testing": "react-native run-android --variant=apptestingDebug",
+    "android": "react-native run-android --variant=developmentDebug",
+    "android:testing": "react-native run-android --variant=apptestingDebug",
+    "android:staging": "react-native run-android --variant=stagingDebug",
+    "android:prod": "react-native run-android --variant=productionDebug",
     "start": "react-native start",
     "test": "yarn test:lint && yarn test:types && yarn test:unit",
     "test:lint": "eslint . --ext .js,.ts,.tsx --cache",
