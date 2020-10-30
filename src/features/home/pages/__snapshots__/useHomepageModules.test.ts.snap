@@ -1,0 +1,626 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useHomepageModules processHomepageEntries should format homepage entries so we can use it to display infos on home page 1`] = `
+Array [
+  Offers {
+    "algolia": Object {
+      "fields": Object {
+        "hitsPerPage": 10,
+        "tags": Array [
+          "	starter_pack_rentree",
+        ],
+        "title": "Pour bien commencer...",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "algoliaParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-12T09:58:37.660Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "1QEiCosX8czkjnxf5CTsvR",
+        "locale": "en-US",
+        "revision": 14,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-28T17:38:37.435Z",
+      },
+    },
+    "display": Object {
+      "fields": Object {
+        "layout": "one-item-medium",
+        "minOffers": 2,
+        "title": "Pour bien commencer...",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "displayParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-12T09:50:31.664Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "5xa0SUTU18l7YfZZFgxvGw",
+        "locale": "en-US",
+        "revision": 3,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-28T14:49:31.709Z",
+      },
+    },
+  },
+  Offers {
+    "algolia": Object {
+      "fields": Object {
+        "hitsPerPage": 4,
+        "tags": Array [
+          "visites",
+        ],
+        "title": "Puisque tu aimes les visites",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "algoliaParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-12T10:06:10.318Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "4Mr0DO6Lyt7r53A3ZTtQuj",
+        "locale": "en-US",
+        "revision": 8,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-12T20:14:47.999Z",
+      },
+    },
+    "display": Object {
+      "fields": Object {
+        "layout": "two-items",
+        "minOffers": 2,
+        "title": "Puisque tu aimes les visites...",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "displayParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-12T10:06:23.994Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "66mkIlb2gWurNEdNsOZu6A",
+        "locale": "en-US",
+        "revision": 2,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-12T19:58:49.836Z",
+      },
+    },
+  },
+  Offers {
+    "algolia": Object {
+      "fields": Object {
+        "hitsPerPage": 4,
+        "tags": Array [
+          "offre_du_moment",
+        ],
+        "title": "Les offres du moment",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "algoliaParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-08-13T08:50:14.600Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "6L8Dpdp9wLRTnmyIdpErXT",
+        "locale": "en-US",
+        "revision": 9,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-13T20:07:22.693Z",
+      },
+    },
+    "display": Object {
+      "fields": Object {
+        "layout": "one-item-medium",
+        "minOffers": 1,
+        "title": "Offres du moment",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "displayParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-08-13T08:50:32.042Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "4TLmm3GKuj3U6QEC8Rd90F",
+        "locale": "en-US",
+        "revision": 6,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-13T20:05:19.272Z",
+      },
+    },
+  },
+  Offers {
+    "algolia": Object {
+      "fields": Object {
+        "beginningDatetime": "2020-09-11T00:01+02:00",
+        "endingDatetime": "2020-09-12T23:59+02:00",
+        "hitsPerPage": 30,
+        "title": "Week-end",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "algoliaParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-08-29T07:45:46.830Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "1JprSqCDtqiIST2Y6k40W2",
+        "locale": "en-US",
+        "revision": 2,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-08-29T07:57:20.653Z",
+      },
+    },
+    "display": Object {
+      "fields": Object {
+        "layout": "two-items",
+        "minOffers": 2,
+        "title": "A faire ce week-end !",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "displayParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-08-29T07:45:59.469Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "27aIcxqppovf2ChsaFjOQ5",
+        "locale": "en-US",
+        "revision": 1,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-08-29T07:45:59.469Z",
+      },
+    },
+  },
+  BusinessPane {
+    "firstLine": "Donne ton avis...",
+    "image": "https://images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png",
+    "secondLine": "En répondant à notre rapide questionnaire",
+    "url": "https://passculture.typeform.com/to/PYl2WwKC?email={email}",
+  },
+  Offers {
+    "algolia": Object {
+      "fields": Object {
+        "hitsPerPage": 10,
+        "tags": Array [
+          "duo",
+        ],
+        "title": "Offres duo",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "algoliaParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-07-28T14:18:50.976Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "41LC4UqDFJcMihS5uELawU",
+        "locale": "en-US",
+        "revision": 49,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-12T20:12:38.015Z",
+      },
+    },
+    "display": Object {
+      "fields": Object {
+        "layout": "two-items",
+        "minOffers": 2,
+        "title": "A faire à deux",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "displayParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-07-28T14:19:35.878Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "2fqphBLJADhOYkkzPHvzcT",
+        "locale": "en-US",
+        "revision": 31,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-12T20:12:43.399Z",
+      },
+    },
+  },
+  OffersWithCover {
+    "algolia": Object {
+      "fields": Object {
+        "hitsPerPage": 2,
+        "tags": Array [
+          "foot",
+        ],
+        "title": "Sélection Mbappé",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "algoliaParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-12T20:39:46.191Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "2VE6YV7Hyxbo9Tz3fn1vTM",
+        "locale": "en-US",
+        "revision": 3,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-12T20:46:20.548Z",
+      },
+    },
+    "cover": "https://images.ctfassets.net/2bg01iqy0isv/bRKhK9wmpNkD6l5Zeo71J/cc59c22fe0382b61e831e4693e32826f/1020_Mbapp__2.png",
+    "display": Object {
+      "fields": Object {
+        "layout": "one-item-medium",
+        "minOffers": 2,
+        "title": "La sélection de ...",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "displayParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-12T20:40:08.977Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "eLESwUjpZNqJyn9haXWGt",
+        "locale": "en-US",
+        "revision": 3,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-14T12:28:32.602Z",
+      },
+    },
+  },
+  Offers {
+    "algolia": Object {
+      "fields": Object {
+        "hitsPerPage": 4,
+        "tags": Array [
+          "goncourt",
+        ],
+        "title": "Goncourt",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "algoliaParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-13T20:12:35.505Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "JAhJxDb0L6p9EUXBiVt0J",
+        "locale": "en-US",
+        "revision": 2,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-13T20:26:07.952Z",
+      },
+    },
+    "display": Object {
+      "fields": Object {
+        "layout": "two-items",
+        "minOffers": 2,
+        "title": "Découvre les livres sélectionnés pour le Goncourt des lycéens 2020 !",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "displayParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-13T20:12:58.372Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "4w8mtsIKDr7NhJuRk9u6WC",
+        "locale": "en-US",
+        "revision": 1,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-13T20:12:58.372Z",
+      },
+    },
+  },
+  Offers {
+    "algolia": Object {
+      "fields": Object {
+        "categories": Array [
+          "Instruments de musique",
+          "Musique",
+        ],
+        "hitsPerPage": 6,
+        "title": "Musique",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "algoliaParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-29T15:35:17.130Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "7ELpkgmfriVTPiszrMNpzq",
+        "locale": "en-US",
+        "revision": 1,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-29T15:35:17.130Z",
+      },
+    },
+    "display": Object {
+      "fields": Object {
+        "layout": "one-item-medium",
+        "minOffers": 2,
+        "title": "Parce que tu aimes la musique...",
+      },
+      "sys": Object {
+        "contentType": Object {
+          "sys": Object {
+            "id": "displayParameters",
+            "linkType": "ContentType",
+            "type": "Link",
+          },
+        },
+        "createdAt": "2020-10-29T15:35:35.598Z",
+        "environment": Object {
+          "sys": Object {
+            "id": "testing",
+            "linkType": "Environment",
+            "type": "Link",
+          },
+        },
+        "id": "6aKQHURvMuLUXqFnr6dV7D",
+        "locale": "en-US",
+        "revision": 1,
+        "space": Object {
+          "sys": Object {
+            "id": "2bg01iqy0isv",
+            "linkType": "Space",
+            "type": "Link",
+          },
+        },
+        "type": "Entry",
+        "updatedAt": "2020-10-29T15:35:35.598Z",
+      },
+    },
+  },
+  ExclusivityPane {
+    "alt": "Exclusitivité du moment",
+    "image": "https://images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png",
+    "offerId": "AE67",
+  },
+]
+`;

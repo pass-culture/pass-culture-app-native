@@ -20,7 +20,7 @@ export const getHomepageModules = async () => {
   }
 }
 
-const processHomepageEntries = (homepage: HomepageEntries) => {
+export const processHomepageEntries = (homepage: HomepageEntries) => {
   const {
     fields: { modules },
   } = homepage
