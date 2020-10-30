@@ -168,4 +168,5 @@ export const CONTENT_TYPES = {
   EXCLUSIVITY: 'exclusivity',
   HOMEPAGE: 'homepage',
   INFORMATION: 'information',
+  BUSINESS: 'business',
 }
