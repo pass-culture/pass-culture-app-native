@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { render, fireEvent, cleanup } from '@testing-library/react-native'
+import { render, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 
@@ -14,10 +14,6 @@ import { Login } from './Login'
 
 beforeEach(() => {
   jest.resetAllMocks()
-})
-
-afterEach(() => {
-  cleanup()
 })
 
 describe('<Login/>', () => {

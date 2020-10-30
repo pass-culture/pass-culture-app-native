@@ -1,4 +1,4 @@
-import { act, cleanup, render } from '@testing-library/react-native'
+import { act, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
@@ -11,8 +11,6 @@ const installationID = 'installationID'
 beforeAll(() => {
   BatchUser.getInstallationID.mockImplementation(() => Promise.resolve(installationID))
 })
-
-afterEach(cleanup)
 
 describe('CheatCodes component', () => {
   const navigation = {
