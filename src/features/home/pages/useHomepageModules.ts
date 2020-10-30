@@ -33,24 +33,20 @@ export const processHomepageEntries = (homepage: HomepageEntries) => {
       if (matchesContentType(module, CONTENT_TYPES.ALGOLIA)) {
         const algoliaParameters = fields.algoliaParameters || {}
         const displayParameters = fields.displayParameters || {}
+        if (!hasAtLeastOneField(algoliaParameters)) return undefined
 
-        if (hasAtLeastOneField(algoliaParameters)) {
-          if (fields.cover) {
-            const cover = fields.cover
-
-            if (hasAtLeastOneField(cover)) {
-              return new OffersWithCover({
-                algolia: algoliaParameters,
-                cover: buildImageUrl(cover.fields),
-                display: displayParameters,
-              })
-            }
-          } else {
-            return new Offers({
-              algolia: algoliaParameters,
-              display: displayParameters,
-            })
-          }
+        const cover = fields.cover
+        if (cover && hasAtLeastOneField(cover)) {
+          return new OffersWithCover({
+            algolia: algoliaParameters,
+            cover: buildImageUrl(cover.fields),
+            display: displayParameters,
+          })
+        } else {
+          return new Offers({
+            algolia: algoliaParameters,
+            display: displayParameters,
+          })
         }
       } else if (matchesContentType(module, CONTENT_TYPES.EXCLUSIVITY)) {
         return new ExclusivityPane({
