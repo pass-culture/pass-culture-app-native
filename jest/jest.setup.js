@@ -18,5 +18,8 @@ jest.mock('libs/analytics')
 jest.mock('libs/environment', () => ({
   env: {
     API_BASE_URL: 'http://localhost',
+    CONTENTFUL_SPACE_ID: 'contentfulSpaceId',
+    CONTENTFUL_ENVIRONMENT: 'environment',
+    CONTENTFUL_ACCESS_TOKEN: 'accessToken',
   },
 }))
