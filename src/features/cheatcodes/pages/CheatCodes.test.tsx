@@ -18,12 +18,13 @@ describe('CheatCodes component', () => {
   } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
   it('should render correctly', async () => {
-    const { toJSON } = render(<CheatCodes navigation={navigation} />)
+    const instance = render(<CheatCodes navigation={navigation} />)
 
     await act(async () => {
       await flushAllPromises()
-      expect(toJSON()).toMatchSnapshot()
     })
+
+    expect(instance).toMatchSnapshot()
   })
 
   it('should call installationID and display it', async () => {
@@ -31,8 +32,9 @@ describe('CheatCodes component', () => {
 
     await act(async () => {
       await flushAllPromises()
-      expect(BatchUser.getInstallationID).toHaveBeenCalled()
-      expect(queryByText(installationID)).toBeTruthy()
     })
+
+    expect(BatchUser.getInstallationID).toHaveBeenCalled()
+    expect(queryByText(installationID)).toBeTruthy()
   })
 })
