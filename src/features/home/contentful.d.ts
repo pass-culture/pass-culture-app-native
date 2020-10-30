@@ -51,26 +51,26 @@ interface Sys {
   space?: {
     sys: SpaceLink
   }
-  contentType: {
+  contentType?: {
     sys: ContentTypeLink
   }
 }
 
 interface SpaceLink {
-  type: 'Link'
-  linkType: 'Space'
+  type: string
+  linkType: string
   id: string
 }
 
 interface ContentTypeLink {
-  type: 'Link'
-  linkType: 'ContentType'
+  type: string
+  linkType: string
   id: string
 }
 
 interface EntryTypeLink {
-  type: 'Link'
-  linkType: 'Entry'
+  type: string
+  linkType: string
   id: string
 }
 
@@ -115,8 +115,8 @@ export interface DisplayParametersFields {
 interface CoverParameters {
   sys: Sys
   fields: {
-    title: string
-    image: Image
+    title?: string
+    image?: Image
   }
 }
 
@@ -129,8 +129,8 @@ interface Image {
       details: {
         size: number
         image: {
-          width: 450
-          height: 195
+          width: number
+          height: number
         }
       }
       fileName: string
