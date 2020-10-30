@@ -52,14 +52,13 @@ export const processHomepageEntries = (homepage: HomepageEntries) => {
             })
           }
         }
-      } else {
-        if (matchesContentType(module, CONTENT_TYPES.EXCLUSIVITY)) {
-          return new ExclusivityPane({
-            alt: fields.alt,
-            image: buildImageUrl(fields),
-            offerId: fields.offerId,
-          })
-        }
+      } else if (matchesContentType(module, CONTENT_TYPES.EXCLUSIVITY)) {
+        return new ExclusivityPane({
+          alt: fields.alt,
+          image: buildImageUrl(fields),
+          offerId: fields.offerId,
+        })
+      } else if (matchesContentType(module, CONTENT_TYPES.BUSINESS)) {
         return new BusinessPane({
           firstLine: fields.firstLine,
           image: buildImageUrl(fields),
@@ -67,6 +66,7 @@ export const processHomepageEntries = (homepage: HomepageEntries) => {
           url: fields.url,
         })
       }
+      return undefined
     })
     .filter((module) => module !== undefined)
 }
