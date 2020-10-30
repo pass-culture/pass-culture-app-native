@@ -236,98 +236,11 @@ exports[`Home component With current user loaded should render correctly 1`] = `
         }
       />
       <View
-        style={
-          Array [
-            Object {
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {
-                "width": 24,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <View
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "borderRadius": 8,
-                },
-              ]
-            }
-          >
-            <Image
-              accessibilityLabel="Samedi, c'est Nuit Blanche !"
-              accessible={true}
-              source={
-                Object {
-                  "uri": "https://images.ctfassets.net/2bg01iqy0isv/1ljtAvN1oEGY2DL2mntdo8/e3efe474291f0daee3b30cf7d7a68049/Group_6__5_.png",
-                }
-              }
-              style={
-                Array [
-                  Object {
-                    "borderRadius": 8,
-                    "height": 615.5,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "width": 24,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
         numberOfSpaces={6}
         style={
           Array [
             Object {
               "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
             },
           ]
         }
@@ -376,6 +289,16 @@ exports[`Home component With current user loaded should render correctly 1`] = `
           </Text>
         </View>
       </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
       <View
         style={
           Array [
@@ -433,46 +356,15 @@ exports[`Home component With current user loaded should render correctly 1`] = `
         </View>
       </View>
       <View
-        accessibilityRole="button"
-        accessibilityState={Object {}}
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        numberOfSpaces={6}
         style={
-          Object {
-            "opacity": 1,
-          }
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
         }
-      >
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#007AFF",
-                  "fontSize": 18,
-                  "margin": 8,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Récupérer les données Contentful
-          </Text>
-        </View>
-      </View>
+      />
       <View
         style={
           Array [
@@ -543,12 +435,11 @@ exports[`Home component With current user loaded should render correctly 1`] = `
         </Text>
       </View>
       <View
+        numberOfSpaces={6}
         style={
           Array [
             Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "height": 24,
             },
           ]
         }

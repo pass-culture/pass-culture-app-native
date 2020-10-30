@@ -41,7 +41,7 @@ describe('Home component', () => {
       expect(welcomeText.props.children).toBe('Bienvenue à Pass Culture')
     })
 
-    it('should render correctly', () => {
+    it('should render correctly', async () => {
       const home = render(<Home navigation={navigation} />)
       expect(home).toMatchSnapshot()
     })
