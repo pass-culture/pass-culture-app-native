@@ -90,3 +90,4 @@ vendor/
 
 # Google service
 google-services.json
+ios/GoogleService-Info.plist
