@@ -91,12 +91,6 @@ const hasAtLeastOneField = (object: any) => {
 }
 
 const matchesContentType = (module: Module, contentType: string) => {
-  const {
-    sys: {
-      contentType: {
-        sys: { id },
-      },
-    },
-  } = module
+  const id = module.sys.contentType?.sys.id
   return id === contentType
 }
