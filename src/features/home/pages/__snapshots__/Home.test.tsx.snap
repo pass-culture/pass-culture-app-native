@@ -27,7 +27,7 @@ exports[`Home component With current user loaded should render correctly 1`] = `
     <RNSVGSvgView
       align="none"
       bbHeight={352}
-      bbWidth={750}
+      bbWidth={754}
       focusable={false}
       height={352}
       meetOrSlice={0}
@@ -42,13 +42,13 @@ exports[`Home component With current user loaded should render correctly 1`] = `
           Object {
             "flex": 0,
             "height": 352,
-            "width": 750,
+            "width": 754,
           },
         ]
       }
       vbHeight={352}
       vbWidth={375}
-      width={750}
+      width={754}
     >
       <RNSVGGroup>
         <RNSVGDefs>
