@@ -28,47 +28,45 @@ export const processHomepageEntries = (homepage: HomepageEntries) => {
   return modules
     .map((module: Module) => {
       const { fields }: { fields: ModuleFields } = module
+      if (!fields || !hasAtLeastOneField(fields)) return undefined
 
-      if (fields && hasAtLeastOneField(fields)) {
-        if (matchesContentType(module, CONTENT_TYPES.ALGOLIA)) {
-          const algoliaParameters = fields.algoliaParameters || {}
-          const displayParameters = fields.displayParameters || {}
+      if (matchesContentType(module, CONTENT_TYPES.ALGOLIA)) {
+        const algoliaParameters = fields.algoliaParameters || {}
+        const displayParameters = fields.displayParameters || {}
 
-          if (hasAtLeastOneField(algoliaParameters)) {
-            if (fields.cover) {
-              const cover = fields.cover
+        if (hasAtLeastOneField(algoliaParameters)) {
+          if (fields.cover) {
+            const cover = fields.cover
 
-              if (hasAtLeastOneField(cover)) {
-                return new OffersWithCover({
-                  algolia: algoliaParameters,
-                  cover: buildImageUrl(cover.fields),
-                  display: displayParameters,
-                })
-              }
-            } else {
-              return new Offers({
+            if (hasAtLeastOneField(cover)) {
+              return new OffersWithCover({
                 algolia: algoliaParameters,
+                cover: buildImageUrl(cover.fields),
                 display: displayParameters,
               })
             }
-          }
-        } else {
-          if (matchesContentType(module, CONTENT_TYPES.EXCLUSIVITY)) {
-            return new ExclusivityPane({
-              alt: fields.alt,
-              image: buildImageUrl(fields),
-              offerId: fields.offerId,
+          } else {
+            return new Offers({
+              algolia: algoliaParameters,
+              display: displayParameters,
             })
           }
-          return new BusinessPane({
-            firstLine: fields.firstLine,
+        }
+      } else {
+        if (matchesContentType(module, CONTENT_TYPES.EXCLUSIVITY)) {
+          return new ExclusivityPane({
+            alt: fields.alt,
             image: buildImageUrl(fields),
-            secondLine: fields.secondLine,
-            url: fields.url,
+            offerId: fields.offerId,
           })
         }
+        return new BusinessPane({
+          firstLine: fields.firstLine,
+          image: buildImageUrl(fields),
+          secondLine: fields.secondLine,
+          url: fields.url,
+        })
       }
-      return undefined
     })
     .filter((module) => module !== undefined)
 }
