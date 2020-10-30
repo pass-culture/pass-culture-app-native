@@ -8,7 +8,7 @@ export const HeaderBackground: React.FC = (): JSX.Element => {
   return (
     <Svg
       preserveAspectRatio="none"
-      width={Dimensions.get('screen').width}
+      width={Dimensions.get('screen').width + getSpacing(1)}
       height={getSpacing(88)}
       viewBox={`0 0 375 352`}>
       <Defs>
