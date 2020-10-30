@@ -16,6 +16,7 @@ export const getHomepageModules = async () => {
     return modules
   } catch (error) {
     console.error(error)
+    return
   }
 }
 
@@ -67,6 +68,7 @@ const processHomepageEntries = (homepage: HomepageEntries) => {
           })
         }
       }
+      return undefined
     })
     .filter((module) => module !== undefined)
 }
