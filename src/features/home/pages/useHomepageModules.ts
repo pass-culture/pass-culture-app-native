@@ -75,13 +75,9 @@ export const processHomepageEntries = (homepage: HomepageEntries) => {
 
 const buildImageUrl = (fields: any): string | null => {
   const image = fields.image
-
   if (image && hasAtLeastOneField(image.fields)) {
-    const file = image.fields.file
-
-    if (file.url) {
-      return `https:${fields.image.fields.file.url}`
-    }
+    const { url } = image.fields.file
+    return url ? `https:${url}` : null
   }
   return null
 }
