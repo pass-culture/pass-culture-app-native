@@ -2,13 +2,13 @@ import { StackScreenProps } from '@react-navigation/stack'
 import { render, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { navigationTestProps } from 'tests/navigation'
 import { server } from 'tests/server'
-import { flushAllPromises } from 'tests/utils'
 
 import { Login } from './Login'
 
@@ -22,12 +22,14 @@ describe('<Login/>', () => {
       <Login {...(navigationTestProps as StackScreenProps<RootStackParamList, 'Login'>)} />
     )
 
-    fireEvent.press(await findByText('Connexion'))
-    await flushAllPromises()
+    const connexionButton = await findByText('Connexion')
+    fireEvent.press(connexionButton)
 
-    expect(analytics.logLogin).toBeCalledTimes(1)
-    expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
-    expect(navigationTestProps.navigation.navigate).toBeCalledWith('Home')
+    await waitForExpect(() => {
+      expect(analytics.logLogin).toBeCalledTimes(1)
+      expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
+      expect(navigationTestProps.navigation.navigate).toBeCalledWith('Home')
+    })
   })
 
   it('should NOT redirect to home page when signin has failed', async () => {
@@ -42,9 +44,10 @@ describe('<Login/>', () => {
 
     const connexionButton = await findByText('Connexion')
     fireEvent.press(connexionButton)
-    await flushAllPromises()
 
-    expect(analytics.logLogin).not.toBeCalled()
-    expect(navigationTestProps.navigation.navigate).not.toBeCalled()
+    await waitForExpect(() => {
+      expect(analytics.logLogin).not.toBeCalled()
+      expect(navigationTestProps.navigation.navigate).not.toBeCalled()
+    })
   })
 })
