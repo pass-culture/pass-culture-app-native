@@ -7,7 +7,7 @@ import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 import { _ } from 'libs/i18n'
 
-const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
+export const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 const DEPTH_LEVEL = 2
 
 export const getHomepageEntries = async (): Promise<HomepageEntries | undefined> => {
