@@ -5,9 +5,16 @@ import { ScrollView, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHomepageModules } from 'features/home/api'
+import { BusinessModule } from 'features/home/components/BusinessModule'
 import { ExclusivityModule } from 'features/home/components/ExclusivityModule'
 import { OffersModule } from 'features/home/components/OffersModule'
-import { ExclusivityPane, Offers, OffersWithCover, ProcessedModule } from 'features/home/contentful'
+import {
+  BusinessPane,
+  ExclusivityPane,
+  Offers,
+  OffersWithCover,
+  ProcessedModule,
+} from 'features/home/contentful'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
@@ -53,6 +60,9 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
           }
           if (module instanceof ExclusivityPane) {
             return <ExclusivityModule key={module.offerId} {...module} />
+          }
+          if (module instanceof BusinessPane) {
+            return <BusinessModule {...module} />
           }
           return <React.Fragment key={index} />
         })}
