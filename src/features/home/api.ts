@@ -1,32 +1,34 @@
-import { t } from '@lingui/macro'
 import resolveResponse from 'contentful-resolve-response'
-import { Alert } from 'react-native'
+import { useQuery } from 'react-query'
 
+import { ProcessedModule } from 'features/home/components/moduleTypes'
 import { EntryCollection, EntryFields, HomepageEntries } from 'features/home/contentful.d'
+import { processHomepageEntries } from 'features/home/pages/processHomepageEntries'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
-import { _ } from 'libs/i18n'
 
 export const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 const DEPTH_LEVEL = 2
-
-export const getHomepageEntries = async (): Promise<HomepageEntries | undefined> => {
-  try {
-    const homepageData: EntryCollection<EntryFields> = await getExternal(
-      `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}/entries?include=${DEPTH_LEVEL}&content_type=homepage&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
-    )
-    return adaptHomepageEntries(homepageData)
-  } catch (error) {
-    Alert.alert(
-      _(t`Échec de la récupération du contenu Contentful pour la homepage ${error.message}`)
-    )
-    return
-  }
-}
 
 const adaptHomepageEntries = (homepageData: EntryCollection<EntryFields>): HomepageEntries => {
   const formattedResponse = resolveResponse(homepageData)
   /* Support good practice is to configure on Contentful dashboard only 1 contenttype homepage
     But there is not blocking on the dashboard, that's why we select first one here */
   return formattedResponse[0]
+}
+
+export async function getHomepageEntries() {
+  const json = await getExternal<EntryCollection<EntryFields>>(
+    `${CONTENTFUL_BASE_URL}` +
+      `/spaces/${env.CONTENTFUL_SPACE_ID}` +
+      `/environments/${env.CONTENTFUL_ENVIRONMENT}` +
+      `/entries?include=${DEPTH_LEVEL}&content_type=homepage&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
+  )
+  return adaptHomepageEntries(json)
+}
+
+export function useHomepageModules() {
+  return useQuery<ProcessedModule[]>('homepageModules', async () =>
+    processHomepageEntries(await getHomepageEntries())
+  )
 }

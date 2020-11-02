@@ -5,16 +5,14 @@ import { ActivityIndicator, Button, ScrollView, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useCurrentUser } from 'features/auth/api'
+import { useHomepageModules } from 'features/home/api'
+import { ExclusivityModule } from 'features/home/components/ExclusivityModule'
+import { ExclusivityPane, ProcessedModule } from 'features/home/components/moduleTypes'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { useGeolocation, CoordinatesView } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, Spacer, Typo, getSpacing } from 'ui/theme'
-
-import { ExclusivityModule } from '../components/ExclusivityModule'
-import { ExclusivityPane, ProcessedModule } from '../components/moduleTypes'
-
-import { useHomePageModules } from './useHomepageModules'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
@@ -25,7 +23,7 @@ type Props = {
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const position = useGeolocation()
   const { email, isFetching, refetch, isError } = useCurrentUser()
-  const modules = useHomePageModules()
+  const { data: modules = [] } = useHomepageModules()
 
   const goToLoginPageWithParams = useCallback((): void => {
     navigation.navigate('Login', { userId: 'I have been Set by params' })
