@@ -2,7 +2,7 @@ import React from 'react'
 import { Dimensions, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ExclusivityPane } from './moduleTypes'
+import { ExclusivityPane } from 'features/home/contentful'
 
 export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => (
   <Row>

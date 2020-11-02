@@ -1,18 +1,18 @@
 import {
-  Offers,
-  OffersWithCover,
-  ExclusivityPane,
-  BusinessPane,
-  ProcessedModule,
-} from 'features/home/components/moduleTypes'
-import {
   HomepageEntries,
   Module,
   ModuleFields,
   CONTENT_TYPES,
   CoverParameters,
   AlgoliaParameters,
-} from 'features/home/contentful.d'
+} from './contentful.d'
+import {
+  Offers,
+  OffersWithCover,
+  ExclusivityPane,
+  BusinessPane,
+  ProcessedModule,
+} from './moduleTypes'
 
 export const processHomepageEntries = (homepage: HomepageEntries): Array<ProcessedModule> => {
   const {
