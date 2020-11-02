@@ -22,7 +22,7 @@
     "translations:extract": "lingui extract --clean",
     "translations:compile": "lingui compile",
     "version:testing": "./scripts/update_testing_version.sh",
-    "version:staging": "./scripts/deploy_new_staging_version.sh"
+    "trigger:staging:deploy": "./scripts/deploy_new_staging_version.sh"
   },
   "dependencies": {
     "@bam.tech/react-native-batch": "^5.2.1",

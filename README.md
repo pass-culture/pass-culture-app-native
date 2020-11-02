@@ -138,6 +138,13 @@ You can automatically generate files by running the following commands:
 
 ## Deploy
 
+### Deploy to staging
+
+When you want to deploy the current version of master in staging, you can run the following command:
+
+`yarn trigger:staging:deploy`
+
+
 ### Manual deploy for the moment => will be automated by ticket 4558
 
 You can find the testing app at:
