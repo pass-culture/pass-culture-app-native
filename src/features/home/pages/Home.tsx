@@ -62,7 +62,12 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
             return <ExclusivityModule key={module.offerId} {...module} />
           }
           if (module instanceof BusinessPane) {
-            return <BusinessModule {...module} />
+            return (
+              <>
+                <BusinessModule {...module} />
+                <Spacer.Column numberOfSpaces={6} />
+              </>
+            )
           }
           return <React.Fragment key={index} />
         })}
