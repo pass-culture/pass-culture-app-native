@@ -144,6 +144,9 @@ jobs:
           name: Install cocoapods
           command: cd ios/ && bundle exec pod install
       - run:
+          name: Setup iOS Google services config
+          command: echo $IOS_GOOGLE_SERVICES_PLIST > ios/GoogleService-Info.plist
+      - run:
           name: Decode match secrets
           command: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
       - run:
