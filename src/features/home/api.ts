@@ -1,9 +1,13 @@
 import resolveResponse from 'contentful-resolve-response'
 import { useQuery } from 'react-query'
 
-import { ProcessedModule } from 'features/home/components/moduleTypes'
-import { EntryCollection, EntryFields, HomepageEntries } from 'features/home/contentful.d'
-import { processHomepageEntries } from 'features/home/pages/processHomepageEntries'
+import {
+  EntryCollection,
+  EntryFields,
+  HomepageEntries,
+  ProcessedModule,
+  processHomepageEntries,
+} from 'features/home/contentful'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 
