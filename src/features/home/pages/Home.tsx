@@ -6,7 +6,8 @@ import styled from 'styled-components/native'
 
 import { useHomepageModules } from 'features/home/api'
 import { ExclusivityModule } from 'features/home/components/ExclusivityModule'
-import { ExclusivityPane, ProcessedModule } from 'features/home/contentful'
+import { OffersModule } from 'features/home/components/OffersModule'
+import { ExclusivityPane, Offers, OffersWithCover, ProcessedModule } from 'features/home/contentful'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -40,7 +41,10 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
           {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
         </Typo.Body>
         <Spacer.Column numberOfSpaces={8} />
-        {modules.map((module: ProcessedModule, index: number) => {
+        {modules.reverse().map((module: ProcessedModule, index: number) => {
+          if (module instanceof Offers || module instanceof OffersWithCover) {
+            return <OffersModule key={index} {...module} />
+          }
           if (module instanceof ExclusivityPane) {
             return <ExclusivityModule key={module.offerId} {...module} />
           }
