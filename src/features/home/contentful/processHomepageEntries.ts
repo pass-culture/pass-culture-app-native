@@ -54,7 +54,6 @@ export const processHomepageEntries = (homepage: HomepageEntries): Array<Process
     return
   })
 
-  // We shouldn't be needing the 'as' next line
   return processedModules.filter(Boolean) as Array<ProcessedModule>
 }
 
