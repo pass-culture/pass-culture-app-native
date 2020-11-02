@@ -23,39 +23,34 @@ export const processHomepageEntries = (homepage: HomepageEntries): Array<Process
     const { fields }: { fields: ModuleFields } = module
     if (!fields || !hasAtLeastOneField(fields)) return
 
-    if (matchesContentType(module, CONTENT_TYPES.ALGOLIA)) {
-      const algoliaParameters = fields.algoliaParameters || {}
-      const displayParameters = fields.displayParameters || {}
-      if (!hasAtLeastOneField(algoliaParameters)) return
+    const contentType = getContentType(module)
+    if (contentType === CONTENT_TYPES.ALGOLIA) {
+      const { algoliaParameters, displayParameters, cover } = fields
 
-      const { cover } = fields
+      // algoliaParameters and displayParameters are required for algolia modules
+      if (!algoliaParameters || !displayParameters || !hasAtLeastOneField(algoliaParameters)) return
+      const { fields: algolia } = algoliaParameters
+      const { fields: display } = displayParameters
+
       if (cover && hasAtLeastOneField(cover)) {
-        return new OffersWithCover({
-          algolia: algoliaParameters,
-          cover: buildImageUrl(cover.fields),
-          display: displayParameters,
-        })
+        return new OffersWithCover({ algolia, cover: buildImageUrl(cover.fields), display })
       } else {
-        return new Offers({
-          algolia: algoliaParameters,
-          display: displayParameters,
-        })
+        return new Offers({ algolia, display })
       }
-    } else if (matchesContentType(module, CONTENT_TYPES.EXCLUSIVITY)) {
+    }
+
+    if (contentType === CONTENT_TYPES.EXCLUSIVITY) {
       const { alt, offerId } = fields
       const image = buildImageUrl(fields)
-      if (alt && image && offerId) {
-        // Those 3 fields are required in Contentful. Shouldn't be undefined
-        return new ExclusivityPane({ alt, image, offerId })
-      }
-    } else if (matchesContentType(module, CONTENT_TYPES.BUSINESS)) {
-      return new BusinessPane({
-        firstLine: fields.firstLine,
-        image: buildImageUrl(fields),
-        secondLine: fields.secondLine,
-        url: fields.url,
-      })
+      // Those 3 fields are required for the exclusivity module in Contentful
+      if (alt && image && offerId) return new ExclusivityPane({ alt, image, offerId })
     }
+
+    if (contentType === CONTENT_TYPES.BUSINESS) {
+      const { firstLine, secondLine, url } = fields
+      return new BusinessPane({ firstLine, image: buildImageUrl(fields), secondLine, url })
+    }
+
     return
   })
 
@@ -78,7 +73,7 @@ const hasAtLeastOneField = (
   return Object.keys(object).length > 0
 }
 
-const matchesContentType = (module: Module, contentType: string) => {
-  const id = module.sys.contentType?.sys.id
-  return id === contentType
+const getContentType = (module: Module) => {
+  const { contentType } = module.sys
+  return contentType && contentType.sys.id
 }
