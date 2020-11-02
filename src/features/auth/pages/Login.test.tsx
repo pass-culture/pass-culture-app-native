@@ -28,7 +28,7 @@ describe('<Login/>', () => {
     await waitForExpect(() => {
       expect(analytics.logLogin).toBeCalledTimes(1)
       expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
-      expect(navigationTestProps.navigation.navigate).toBeCalledWith('Home')
+      expect(navigationTestProps.navigation.navigate).toHaveBeenCalledWith('Home')
     })
   })
 

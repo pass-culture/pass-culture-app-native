@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExclusivityModule component should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "width": 24,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "borderRadius": 8,
+          },
+        ]
+      }
+    >
+      <Image
+        accessibilityLabel="Image d'Adèle"
+        accessible={true}
+        source={
+          Object {
+            "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "borderRadius": 8,
+              "height": 615.5,
+            },
+          ]
+        }
+        testID="imageExclu"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "width": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;

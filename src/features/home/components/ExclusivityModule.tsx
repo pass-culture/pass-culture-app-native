@@ -12,7 +12,12 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => (
       <TouchableHighlight
         onPress={() => console.log(`Opening offer ${offerId}...`)} // eslint-disable-line no-console
       >
-        <Image source={{ uri: image }} accessible={!!alt} accessibilityLabel={alt} />
+        <Image
+          source={{ uri: image }}
+          accessible={!!alt}
+          accessibilityLabel={alt}
+          testID="imageExclu"
+        />
       </TouchableHighlight>
     </ImageContainer>
     <Margin />
