@@ -16,7 +16,7 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
         onPress={() => console.log(`Opening ${url}`)} // eslint-disable-line no-console
       >
         <ImageContainer>
-          <ImageBackground source={{ uri: image }}>
+          <ImageBackground source={{ uri: image }} testID="imageBusiness">
             <Container>
               <BusinessModuleIcon />
               <StyledText numberOfLines={2}>
