@@ -162,6 +162,7 @@ android {
         applicationId project.env.get("ANDROID_APP_ID")
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        resValue "string", "url_prefix", project.env.get("URL_PREFIX")
         resValue "string", "app_name", project.env.get("ANDROID_APP_NAME")
         resValue "string", "build_config_package", "com.passculture" // @react-native-config
         resValue "string", "BATCH_API_KEY", project.env.get("BATCH_API_KEY_ANDROID")
