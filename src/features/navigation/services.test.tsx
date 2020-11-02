@@ -24,7 +24,7 @@ describe('onNavigationStateChange()', () => {
     })
 
     expect(analytics.logScreenView).toBeCalledTimes(1)
-    expect(analytics.logScreenView).toBeCalledWith({ screen_name: 'Screen2' })
+    expect(analytics.logScreenView).toHaveBeenCalledWith({ screen_name: 'Screen2' })
 
     await act(async () => {
       navigate('Screen1')
@@ -32,7 +32,7 @@ describe('onNavigationStateChange()', () => {
     })
 
     expect(analytics.logScreenView).toBeCalledTimes(2)
-    expect(analytics.logScreenView).toBeCalledWith({ screen_name: 'Screen1' })
+    expect(analytics.logScreenView).toHaveBeenCalledWith({ screen_name: 'Screen1' })
   })
 })
 
