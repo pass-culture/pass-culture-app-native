@@ -19,7 +19,7 @@ const RootStack = createStackNavigator<RootStackParamList>()
 export const RootNavigator: React.FC = function () {
   return (
     <NavigationContainer onStateChange={onNavigationStateChange}>
-      <RootStack.Navigator initialRouteName="Login">
+      <RootStack.Navigator initialRouteName="Home">
         <RootStack.Screen name="Home" component={Home} />
         <RootStack.Screen
           name="Login"
