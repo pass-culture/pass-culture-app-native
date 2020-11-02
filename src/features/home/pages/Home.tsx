@@ -46,11 +46,11 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
           {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
         </Typo.Body>
         <Spacer.Column numberOfSpaces={8} />
-        {modules.map((module: ProcessedModule) => {
+        {modules.map((module: ProcessedModule, index: number) => {
           if (module instanceof ExclusivityPane) {
-            return <ExclusivityModule {...module} />
+            return <ExclusivityModule key={module.offerId} {...module} />
           }
-          return <></>
+          return <React.Fragment key={index} />
         })}
         <Spacer.Column numberOfSpaces={6} />
         <Text>{_(t`Bienvenue à Pass Culture`)}</Text>
