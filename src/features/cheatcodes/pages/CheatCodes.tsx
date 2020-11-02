@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { CodePushButton } from 'features/cheatcodes/components/CodePushButton'
 import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
+import { IdCheckButton } from 'features/cheatcodes/components/IdCheckButton'
 import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
@@ -30,6 +31,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
     <Container>
       <CrashTestButton />
       <NavigateHomeButton />
+      <IdCheckButton />
       <Text>{batchInstallationId}</Text>
       <Spacer.Flex />
       {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
