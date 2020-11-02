@@ -1,0 +1,302 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BusinessModule component should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "width": 24,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "borderRadius": 8,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 8,
+              "overflow": "hidden",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityIgnoresInvertColors={true}
+          style={
+            Array [
+              Object {
+                "height": 147.5,
+                "justifyContent": "center",
+                "width": 702,
+              },
+            ]
+          }
+        >
+          <Image
+            source={
+              Object {
+                "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "height": undefined,
+                  "width": undefined,
+                },
+                undefined,
+              ]
+            }
+            testID="imageBusiness"
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "paddingBottom": 8,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 8,
+                },
+              ]
+            }
+          >
+            <RNSVGSvgView
+              align="xMidYMid"
+              bbHeight="56"
+              bbWidth="56"
+              focusable={false}
+              height="56"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 56,
+                    "width": 56,
+                  },
+                ]
+              }
+              vbHeight={56}
+              vbWidth={56}
+              width="56"
+            >
+              <RNSVGGroup>
+                <RNSVGGroup
+                  fill={null}
+                  fillRule={0}
+                  propList={
+                    Array [
+                      "fill",
+                      "fillRule",
+                    ]
+                  }
+                >
+                  <RNSVGGroup
+                    fill={4294967295}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGGroup>
+                      <RNSVGPath
+                        d="M31.13 42.676c.484 0 .876.392.876.875 0 .443-.33.81-.756.867l-.12.008h-6.446c-.483 0-.875-.392-.875-.875 0-.443.329-.809.756-.867l.119-.008h6.447zm.94-3.827c.482 0 .874.392.874.875 0 .443-.329.81-.756.867l-.119.008h-8.324c-.483 0-.875-.392-.875-.875 0-.443.33-.809.756-.867l.119-.008h8.324zm-2.502-27.112c4.862.55 8.838 4.456 9.464 9.306.489 3.777-.98 7.4-3.813 9.754-.371.31-.923.258-1.232-.113-.309-.372-.258-.924.113-1.233 2.377-1.975 3.607-5.008 3.197-8.184-.524-4.05-3.863-7.332-7.926-7.79-5.435-.614-10.12 3.6-10.12 9.002 0 2.338.887 4.534 2.458 6.203.666.711 1.062 1.626 1.123 2.59l.008.265v2.102c0 .44.327.803.75.86l.118.008h8.877c.484 0 .875.392.875.875 0 .443-.329.81-.756.867l-.119.008h-8.877c-1.385 0-2.52-1.076-2.612-2.438l-.006-.18v-2.102c0-.615-.234-1.206-.657-1.657-1.872-1.989-2.933-4.613-2.933-7.4 0-6.444 5.592-11.473 12.068-10.743zm-1.942 4.425c.185.446-.027.958-.473 1.143-2.254.935-3.754 3.138-3.754 5.619 0 .483-.391.875-.875.875-.483 0-.875-.392-.875-.875 0-3.195 1.932-6.032 4.834-7.235.446-.186.958.026 1.143.473z"
+                        matrix={
+                          Array [
+                            1,
+                            0,
+                            0,
+                            1,
+                            0,
+                            0,
+                          ]
+                        }
+                      />
+                    </RNSVGGroup>
+                  </RNSVGGroup>
+                </RNSVGGroup>
+              </RNSVGGroup>
+            </RNSVGSvgView>
+            <Text
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <Text
+                color="#ffffff"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "fontWeight": "bold",
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                firstLine
+
+              </Text>
+              <Text
+                color="#ffffff"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                secondLine
+              </Text>
+            </Text>
+            <RNSVGSvgView
+              align="xMidYMid"
+              bbHeight="32"
+              bbWidth="32"
+              focusable={false}
+              height="32"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "flex": 0,
+                    "height": 32,
+                    "width": 32,
+                  },
+                ]
+              }
+              vbHeight={32}
+              vbWidth={32}
+              width="32"
+            >
+              <RNSVGGroup>
+                <RNSVGGroup
+                  fill={null}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                >
+                  <RNSVGGroup
+                    fill={4294967295}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGGroup>
+                      <RNSVGPath
+                        d="M8.94 19.466c-.301.277-.778.266-1.065-.025-.287-.29-.276-.75.026-1.027l5.314-4.878c1.746-1.603 4.49-1.603 6.237 0l5.314 4.878c.302.277.313.737.026 1.027-.287.29-.764.302-1.065.025l-5.315-4.878c-1.164-1.069-2.993-1.069-4.158 0L8.94 19.466z"
+                        matrix={
+                          Array [
+                            6.123233995736766e-17,
+                            1,
+                            -1,
+                            6.123233995736766e-17,
+                            32.33299999999997,
+                            -0.33299999999997,
+                          ]
+                        }
+                      />
+                    </RNSVGGroup>
+                  </RNSVGGroup>
+                </RNSVGGroup>
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "width": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;
