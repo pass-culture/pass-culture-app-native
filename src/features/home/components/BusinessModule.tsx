@@ -2,8 +2,9 @@ import React from 'react'
 import { Dimensions, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
+import { BusinessModuleIcon } from 'features/home/assets/BusinessModuleIcon'
 import { BusinessPane } from 'features/home/contentful'
-import { Typo, ColorsEnum } from 'ui/theme'
+import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
 
 export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPane) => (
   <Row>
@@ -16,6 +17,7 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
         <ImageContainer>
           <ImageBackground source={{ uri: image }}>
             <Container>
+              <BusinessModuleIcon />
               <StyledText numberOfLines={2}>
                 <Typo.ButtonText color={ColorsEnum.WHITE}>{firstLine} </Typo.ButtonText>
                 <Typo.Body color={ColorsEnum.WHITE}>{secondLine}</Typo.Body>
@@ -66,6 +68,7 @@ const ImageBackground = styled.ImageBackground({
 const Container = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+  padding: getSpacing(2),
 })
 
 const StyledText = styled.Text({
