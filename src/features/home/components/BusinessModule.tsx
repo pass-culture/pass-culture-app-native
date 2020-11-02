@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dimensions, PixelRatio, Text } from 'react-native'
+import { Dimensions, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BusinessPane } from 'features/home/contentful'
@@ -15,13 +15,12 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
       >
         <ImageContainer>
           <ImageBackground source={{ uri: image }}>
-            <TextContainer>
-              <Text>
-                <Typo.ButtonText color={ColorsEnum.WHITE}>{firstLine}</Typo.ButtonText>
-                <Typo.ButtonText color={ColorsEnum.WHITE}> </Typo.ButtonText>
+            <Container>
+              <StyledText numberOfLines={2}>
+                <Typo.ButtonText color={ColorsEnum.WHITE}>{firstLine} </Typo.ButtonText>
                 <Typo.Body color={ColorsEnum.WHITE}>{secondLine}</Typo.Body>
-              </Text>
-            </TextContainer>
+              </StyledText>
+            </Container>
           </ImageBackground>
         </ImageContainer>
       </TouchableHighlight>
@@ -61,8 +60,14 @@ const ImageContainer = styled.View({
 const ImageBackground = styled.ImageBackground({
   height: imageHeight,
   width: imageWidth,
+  justifyContent: 'center',
 })
 
-const TextContainer = styled.View({
+const Container = styled.View({
   flexDirection: 'row',
+  alignItems: 'center',
+})
+
+const StyledText = styled.Text({
+  flex: 1,
 })
