@@ -8,7 +8,6 @@ import { useHomepageModules } from 'features/home/api'
 import { ExclusivityModule } from 'features/home/components/ExclusivityModule'
 import { ExclusivityPane, ProcessedModule } from 'features/home/contentful'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { useGeolocation, CoordinatesView } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -20,7 +19,6 @@ type Props = {
 }
 
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
-  const position = useGeolocation()
   const { data: modules = [] } = useHomepageModules()
 
   const goToLoginPage = useCallback((): void => {
@@ -51,8 +49,6 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
         <Spacer.Column numberOfSpaces={6} />
         <Button title={_(t`Aller sur la page de connexion`)} onPress={goToLoginPage} />
         <Spacer.Column numberOfSpaces={6} />
-        <CoordinatesViewContainer position={position} />
-        <Spacer.Column numberOfSpaces={6} />
       </Container>
     </ScrollView>
   )
@@ -61,12 +57,6 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
 const Container = styled.View({
   flex: 1,
   alignItems: 'center',
-})
-
-const CoordinatesViewContainer = styled(CoordinatesView)({
-  position: 'absolute',
-  alignItems: 'center',
-  bottom: 50,
 })
 
 const HeaderBackgroundWrapper = styled.View({
