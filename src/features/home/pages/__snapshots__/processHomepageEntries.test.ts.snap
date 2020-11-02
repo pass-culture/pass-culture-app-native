@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useHomepageModules processHomepageEntries should format homepage entries so we can use it to display infos on home page 1`] = `
+exports[`processHomepageEntries should format homepage entries so we can use it to display infos on home page 1`] = `
 Array [
   Offers {
     "algolia": Object {

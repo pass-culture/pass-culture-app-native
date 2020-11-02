@@ -1,7 +1,3 @@
-import { useEffect, useState } from 'react'
-import { Alert } from 'react-native'
-
-import { getHomepageEntries } from 'features/home/api'
 import {
   Offers,
   OffersWithCover,
@@ -17,31 +13,6 @@ import {
   CoverParameters,
   AlgoliaParameters,
 } from 'features/home/contentful.d'
-
-export const useHomePageModules = (): Array<ProcessedModule> => {
-  const [modules, setModules] = useState<Array<ProcessedModule>>([])
-
-  useEffect(() => {
-    getHomepageModules()
-      .then(setModules)
-      .catch((error: string) => Alert.alert('Cannot fetch homepage modules', JSON.stringify(error)))
-  }, [])
-
-  return modules
-}
-
-export const getHomepageModules = async (): Promise<Array<ProcessedModule>> => {
-  try {
-    const homepageEntries = await getHomepageEntries()
-    // TODO: handle errors
-    if (!homepageEntries) return []
-    const modules = processHomepageEntries(homepageEntries)
-    return modules
-  } catch (error) {
-    console.error(error)
-    return []
-  }
-}
 
 export const processHomepageEntries = (homepage: HomepageEntries): Array<ProcessedModule> => {
   const {
