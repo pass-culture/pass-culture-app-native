@@ -56,7 +56,8 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
       const { firstLine, secondLine, url, image } = fields as BusinessFields
       return new BusinessPane({
         firstLine,
-        image: buildImageUrl(image),
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        image: buildImageUrl(image)!,
         secondLine,
         url,
       })
