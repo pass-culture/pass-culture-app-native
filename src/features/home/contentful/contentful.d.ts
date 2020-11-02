@@ -96,9 +96,22 @@ export interface AlgoliaParameters {
 }
 
 export interface AlgoliaParametersFields {
-  title?: stirng
+  title: string
+  isGeolocated?: boolean
+  aroundRadius?: number
+  categories?: string[]
   tags?: Array<string>
-  hitsPerPage?: number
+  isDigital?: boolean
+  isThing?: boolean
+  isEvent?: boolean
+  beginningDatetime?: string
+  endingDatetime?: string
+  isFree?: boolean
+  priceMin?: number
+  priceMax?: number
+  isDuo?: boolean
+  newestOnly?: boolean
+  hitsPerPage: number
 }
 
 export interface DisplayParameters {
@@ -107,9 +120,9 @@ export interface DisplayParameters {
 }
 
 export interface DisplayParametersFields {
-  title?: string
-  layout?: string
-  minOffers?: number
+  title: string
+  layout: string
+  minOffers: number
 }
 
 interface CoverParameters {
@@ -151,6 +164,7 @@ export interface Module {
   fields: ModuleFields
 }
 
+// Split between the different types of Content type ?
 export interface ModuleFields {
   title: string
   algoliaParameters?: AlgoliaParameters
