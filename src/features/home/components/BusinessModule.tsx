@@ -3,6 +3,7 @@ import { Dimensions, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BusinessModuleIcon } from 'features/home/assets/BusinessModuleIcon'
+import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
 import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
 
@@ -22,6 +23,7 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
                 <Typo.ButtonText color={ColorsEnum.WHITE}>{firstLine} </Typo.ButtonText>
                 <Typo.Body color={ColorsEnum.WHITE}>{secondLine}</Typo.Body>
               </StyledText>
+              <NextArrowIcon />
             </Container>
           </ImageBackground>
         </ImageContainer>
@@ -73,4 +75,5 @@ const Container = styled.View({
 
 const StyledText = styled.Text({
   flex: 1,
+  padding: getSpacing(1),
 })
