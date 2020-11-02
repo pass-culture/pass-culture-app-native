@@ -7,31 +7,36 @@ import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
 import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
 
-export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPane) => (
-  <Row>
-    {/** Explicitly defining Margin component for easier use for other components, with gutters */}
-    <Margin />
-    <TouchableContainer>
-      <TouchableHighlight
-        onPress={() => console.log(`Opening ${url}`)} // eslint-disable-line no-console
-      >
-        <ImageContainer>
-          <ImageBackground source={{ uri: image }} testID="imageBusiness">
-            <Container>
-              <BusinessModuleIcon />
-              <StyledText numberOfLines={2}>
-                <Typo.ButtonText color={ColorsEnum.WHITE}>{firstLine} </Typo.ButtonText>
-                <Typo.Body color={ColorsEnum.WHITE}>{secondLine}</Typo.Body>
-              </StyledText>
-              <NextArrowIcon />
-            </Container>
-          </ImageBackground>
-        </ImageContainer>
-      </TouchableHighlight>
-    </TouchableContainer>
-    <Margin />
-  </Row>
-)
+export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPane) => {
+  const firstLineWithEndSpace = `${firstLine} `
+  return (
+    <Row>
+      {/** Explicitly defining Margin component for easier use for other components, with gutters */}
+      <Margin />
+      <TouchableContainer>
+        <TouchableHighlight
+          onPress={() => console.log(`Opening ${url}`)} // eslint-disable-line no-console
+        >
+          <ImageContainer>
+            <ImageBackground source={{ uri: image }} testID="imageBusiness">
+              <Container>
+                <BusinessModuleIcon />
+                <StyledText numberOfLines={2}>
+                  <Typo.ButtonText color={ColorsEnum.WHITE}>
+                    {firstLineWithEndSpace}
+                  </Typo.ButtonText>
+                  <Typo.Body color={ColorsEnum.WHITE}>{secondLine}</Typo.Body>
+                </StyledText>
+                <NextArrowIcon />
+              </Container>
+            </ImageBackground>
+          </ImageContainer>
+        </TouchableHighlight>
+      </TouchableContainer>
+      <Margin />
+    </Row>
+  )
+}
 
 // TODO(agarcia): place these constants in a file for style
 const MARGIN_DP = 24

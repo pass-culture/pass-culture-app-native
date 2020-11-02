@@ -203,7 +203,6 @@ exports[`BusinessModule component should render correctly 1`] = `
                 }
               >
                 firstLine
-
               </Text>
               <Text
                 color="#ffffff"
