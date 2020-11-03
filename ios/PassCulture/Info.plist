@@ -20,6 +20,19 @@
 	<string>$(VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+          <key>CFBundleTypeRole</key>
+          <string>Editor</string>
+          <key>CFBundleURLName</key>
+          <string>$(URL_PREFIX)</string>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>$(URL_PREFIX)</string>
+          </array>
+        </dict>
+    </array>
 	<key>CFBundleVersion</key>
 	<string>$(BUILD)</string>
 	<key>BatchAPIKey</key>
