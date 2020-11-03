@@ -7,8 +7,8 @@ import styled from 'styled-components/native'
 import { _ } from 'libs/i18n'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
-import { ArrowPrevious } from 'ui/icons/ArrowPrevious'
-import { Close } from 'ui/icons/Close'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export const AppComponents: FunctionComponent = () => {

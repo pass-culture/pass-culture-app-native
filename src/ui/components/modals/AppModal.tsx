@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react'
 import { Modal, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ArrowPrevious } from 'ui/icons/ArrowPrevious'
-import { Close } from 'ui/icons/Close'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum } from 'ui/theme'
 
 import { ModalHeader } from './ModalHeader'

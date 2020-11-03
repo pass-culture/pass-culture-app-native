@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { TextStyle, ViewStyle, StyleProp } from 'react-native'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/icons/types'
+import { IconInterface } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
 import { isStyleObject } from '../typeguards'
