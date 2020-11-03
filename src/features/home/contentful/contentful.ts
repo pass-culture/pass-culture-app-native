@@ -1,6 +1,37 @@
-interface EntryCollection<T> extends ContentfulCollection<Entry<T>> {
+export const CONTENT_TYPES = {
+  ALGOLIA: 'algolia',
+  ALGOLIA_PARAMETERS: 'algoliaParameters',
+  DISPLAY_PARAMETERS: 'displayParameters',
+  EXCLUSIVITY: 'exclusivity',
+  HOMEPAGE: 'homepage',
+  INFORMATION: 'information',
+  BUSINESS: 'business',
+}
+
+export enum ContentTypes {
+  ALGOLIA = 'algolia',
+  ALGOLIA_PARAMETERS = 'algoliaParameters',
+  EXCLUSIVITY = 'exclusivity',
+  DISPLAY = 'display',
+  DISPLAY_PARAMETERS = 'displayParameters',
+  HOMEPAGE = 'homepage',
+  INFORMATION = 'information',
+  BUSINESS = 'business',
+}
+
+interface Entry<T, ContentType> {
+  sys: Sys<ContentType>
+  fields: T
+  update(): Promise<Entry<T, ContentType>>
+}
+
+interface EntryCollectionInclusions<T, ContentType> {
+  string: Array<Asset<ContentType> | Entry<T, ContentType>>
+}
+
+interface EntryCollection<T, ContentType> extends ContentfulCollection<Entry<T, ContentType>> {
   errors?: Array<EntryCollectionError>
-  includes?: EntryCollectionInclusions
+  includes?: EntryCollectionInclusions<T, ContentType>
 }
 
 interface EntryFields {
@@ -15,14 +46,8 @@ interface ContentfulCollection<T> {
   items: Array<T>
 }
 
-interface Entry<T> {
-  sys: Sys
-  fields: T
-  update(): Promise<Entry<T>>
-}
-
-interface Asset {
-  sys: Sys
+interface Asset<ContentType> {
+  sys: Sys<ContentType>
   fields: {
     title: string
     description: string
@@ -36,33 +61,32 @@ interface Asset {
         }
       }
       fileName: string
-      contentType: string
+      contentType: ContentType
     }
   }
 }
 
-interface Sys {
+interface Sys<ContentType> {
   type: string
   id: string
   createdAt: string
   updatedAt: string
+  environment: { sys: { id: string; type: string; linkType: string } }
   locale: string
   revision?: number
   space?: {
     sys: SpaceLink
   }
   contentType?: {
-    sys: ContentTypeLink
+    sys: {
+      type: string
+      linkType: string
+      id: ContentType
+    }
   }
 }
 
 interface SpaceLink {
-  type: string
-  linkType: string
-  id: string
-}
-
-interface ContentTypeLink {
   type: string
   linkType: string
   id: string
@@ -86,27 +110,33 @@ interface EntryCollectionError {
   }
 }
 
-interface EntryCollectionInclusions<T> {
-  [string]: Array<Asset | Entry<T>>
+interface AlgoliaParameters {
+  sys: Sys<typeof CONTENT_TYPES.ALGOLIA>
+  fields: AlgoliaParametersFields
 }
 
-interface AlgoliaParameters {
-  sys: Sys
-  fields: AlgoliaParametersFields
+interface DisplayParameters {
+  sys: Sys<typeof CONTENT_TYPES.DISPLAY_PARAMETERS>
+  fields: DisplayParametersFields
+}
+
+interface Cover {
+  sys: Sys<typeof CONTENT_TYPES.INFORMATION>
+  fields: CoverFields
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/cover/fields
 interface CoverFields {
   title: string
-  image: string
+  image: Image
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algolia/fields
-interface AgoliaFields {
+interface AlgoliaFields {
   title: string
-  algoliaParameters: AlgoliaParametersFields
-  displayParameters: DisplayParametersFields
-  cover: CoverFields
+  algoliaParameters: AlgoliaParameters
+  displayParameters: DisplayParameters
+  cover?: Cover
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algoliaParameters/fields
@@ -141,7 +171,7 @@ interface BusinessFields {
   title: string
   firstLine?: string
   secondLine?: string
-  image: string
+  image: Image
   url?: string
 }
 
@@ -149,37 +179,26 @@ interface BusinessFields {
 interface ExclusivityFields {
   title: string
   alt: string
-  image: string
+  image: Image
   offerId: string
 }
 
-// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types
-type ModuleFields =
-  | AgoliaFields
-  | AgoliaParametersFields
-  | BusinessFields
-  | CoverFields
-  | DisplayParametersFields
-  | ExclusivityFields
-  | HomepageFields
-
-interface DisplayParameters {
-  sys: Sys
-  fields: DisplayParametersFields
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepage/fields
+interface HomepageFields {
+  title: string
+  modules: HomepageModule[]
 }
 
-interface CoverParameters {
-  sys: Sys
-  fields: {
-    title?: string
-    image?: Image
-  }
-}
+type HomepageModule =
+  | { sys: Sys<'algolia'>; fields: AlgoliaFields }
+  | { sys: Sys<'business'>; fields: BusinessFields }
+  | { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
 
 interface Image {
-  sys: Sys
+  sys: Sys<typeof CONTENT_TYPES.INFORMATION>
   fields: {
     title: string
+    description?: string
     file: {
       url: string
       details: {
@@ -196,33 +215,22 @@ interface Image {
 }
 
 interface HomepageEntries {
-  sys: Sys
-  fields: {
-    modules: Array<Module>
-  }
-}
-
-interface Module {
-  sys: Sys
-  fields: ModuleFields
-}
-
-export const CONTENT_TYPES = {
-  ALGOLIA: 'algolia',
-  EXCLUSIVITY: 'exclusivity',
-  HOMEPAGE: 'homepage',
-  INFORMATION: 'information',
-  BUSINESS: 'business',
+  sys: Sys<typeof CONTENT_TYPES.HOMEPAGE>
+  fields: HomepageFields
 }
 
 export type {
-  Module,
+  HomepageModule,
+  AlgoliaFields,
   AlgoliaParameters,
-  CoverParameters,
   AlgoliaParametersFields,
+  BusinessFields,
+  Cover,
   DisplayParametersFields,
   EntryCollection,
   EntryFields,
+  ExclusivityFields,
+  CoverFields,
+  Image,
   HomepageEntries,
-  ModuleFields,
 }

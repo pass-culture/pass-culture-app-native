@@ -1,3 +1,5 @@
+import { HomepageEntries } from 'features/home/contentful'
+
 export const homepageEntriesAPIResponse = {
   sys: { type: 'Array' },
   total: 2,
@@ -642,7 +644,7 @@ export const homepageEntriesAPIResponse = {
   },
 }
 
-export const adaptedHomepageEntries = {
+export const adaptedHomepageEntries: HomepageEntries = {
   sys: {
     space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
     id: '16PgpnlCOYYIhUTclR0oO4',

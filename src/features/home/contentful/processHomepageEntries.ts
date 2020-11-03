@@ -1,11 +1,12 @@
 import {
+  AlgoliaFields,
+  BusinessFields,
+  ExclusivityFields,
   HomepageEntries,
-  Module,
-  ModuleFields,
+  HomepageModule,
   CONTENT_TYPES,
-  CoverParameters,
-  AlgoliaParameters,
-} from './contentful.d'
+  Image,
+} from './contentful'
 import {
   Offers,
   OffersWithCover,
@@ -22,52 +23,53 @@ function moveExcluModuleOnTop(modules: Array<ProcessedModule>) {
   return [excluModules[0], ...otherModules]
 }
 
-export const processHomepageEntries = (homepage: HomepageEntries): Array<ProcessedModule> => {
+export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModule[] => {
   const {
     fields: { modules },
   } = homepage
 
-  const processedModules = modules.map((module: Module) => {
-    const { fields }: { fields: ModuleFields } = module
+  const processedModules = modules.map((module) => {
+    const { fields } = module
     if (!fields || !hasAtLeastOneField(fields)) return
 
     const contentType = getContentType(module)
-    if (contentType === CONTENT_TYPES.ALGOLIA) {
-      const { algoliaParameters, displayParameters, cover } = fields
+    if (contentType === 'algolia') {
+      const { algoliaParameters, displayParameters, cover } = fields as AlgoliaFields
+      if (!hasAtLeastOneField(algoliaParameters)) return
 
-      // algoliaParameters and displayParameters are required for algolia modules
-      if (!algoliaParameters || !displayParameters || !hasAtLeastOneField(algoliaParameters)) return
       const { fields: algolia } = algoliaParameters
       const { fields: display } = displayParameters
 
       if (cover && hasAtLeastOneField(cover)) {
-        return new OffersWithCover({ algolia, cover: buildImageUrl(cover.fields), display })
-      } else {
-        return new Offers({ algolia, display })
+        return new OffersWithCover({ algolia, cover: buildImageUrl(cover.fields.image), display })
       }
+      return new Offers({ algolia, display })
     }
 
-    if (contentType === CONTENT_TYPES.EXCLUSIVITY) {
-      const { alt, offerId } = fields
-      const image = buildImageUrl(fields)
-      // Those 3 fields are required for the exclusivity module in Contentful
-      if (alt && image && offerId) return new ExclusivityPane({ alt, image, offerId })
+    if (contentType === 'exclusivity') {
+      const { alt, offerId, image } = fields as ExclusivityFields
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      return new ExclusivityPane({ alt, image: buildImageUrl(image)!, offerId })
     }
 
     if (contentType === CONTENT_TYPES.BUSINESS) {
-      const { firstLine, secondLine, url } = fields
-      return new BusinessPane({ firstLine, image: buildImageUrl(fields), secondLine, url })
+      const { firstLine, secondLine, url, image } = fields as BusinessFields
+      return new BusinessPane({
+        firstLine,
+        image: buildImageUrl(image),
+        secondLine,
+        url,
+      })
     }
 
     return
   })
 
-  const filteredModules = processedModules.filter(Boolean) as Array<ProcessedModule>
+  const filteredModules = processedModules.filter(Boolean) as ProcessedModule[]
   return moveExcluModuleOnTop(filteredModules)
 }
 
-const buildImageUrl = (fields: CoverParameters['fields']): string | null => {
-  const image = fields.image
+const buildImageUrl = (image: Image): string | null => {
   if (image && hasAtLeastOneField(image.fields)) {
     const { url } = image.fields.file
     return url ? `https:${url}` : null
@@ -75,13 +77,12 @@ const buildImageUrl = (fields: CoverParameters['fields']): string | null => {
   return null
 }
 
-const hasAtLeastOneField = (
-  object: ModuleFields | CoverParameters | AlgoliaParameters | Record<string, unknown>
-) => {
+// eslint-disable-next-line
+const hasAtLeastOneField = (object: any) => {
   return Object.keys(object).length > 0
 }
 
-const getContentType = (module: Module) => {
+const getContentType = (module: HomepageModule) => {
   const { contentType } = module.sys
   return contentType && contentType.sys.id
 }
