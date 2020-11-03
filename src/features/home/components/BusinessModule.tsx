@@ -20,7 +20,9 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
           <ImageContainer>
             <ImageBackground source={{ uri: image }} testID="imageBusiness">
               <Container>
-                <IdeaIcon />
+                <IconContainer>
+                  <IdeaIcon />
+                </IconContainer>
                 <StyledText numberOfLines={2}>
                   <Typo.ButtonText color={ColorsEnum.WHITE}>
                     {firstLineWithEndSpace}
@@ -81,4 +83,9 @@ const Container = styled.View({
 const StyledText = styled.Text({
   flex: 1,
   padding: getSpacing(1),
+})
+
+const IconContainer = styled.View({
+  width: 56,
+  height: 56,
 })

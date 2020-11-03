@@ -3,7 +3,7 @@ import Svg, { Path, G } from 'react-native-svg'
 
 export const IdeaIcon: React.FC = (): JSX.Element => {
   return (
-    <Svg width="56" height="56" viewBox="0 0 56 56">
+    <Svg>
       <G fill="none" fillRule="evenodd">
         <G fill="#FFF">
           <G>
