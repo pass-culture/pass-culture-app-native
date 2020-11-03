@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dimensions, PixelRatio, View } from 'react-native'
+import { Dimensions, PixelRatio, View, Linking } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IdeaIcon } from 'features/home/assets/IdeaIcon'
@@ -8,15 +8,16 @@ import { BusinessPane } from 'features/home/contentful'
 import { Typo, ColorsEnum, getSpacing, Margin, BORDER_RADIUS, MARGIN_DP } from 'ui/theme'
 
 export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPane) => {
+  const openUrl = () => {
+    url && Linking.openURL(url)
+  }
   return (
     <View>
       <Margin horizontal />
       <Row>
         {/** Explicitly defining Margin component for easier use for other components, with gutters */}
         <Margin />
-        <TouchableHighlight
-          onPress={() => console.log(`Opening ${url}`)} // eslint-disable-line no-console
-        >
+        <TouchableHighlight onPress={openUrl}>
           <ImageContainer>
             <ImageBackground source={{ uri: image }} testID="imageBusiness">
               <Container>
