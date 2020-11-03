@@ -6,7 +6,9 @@ import { Typo } from 'ui/theme'
 
 export const ModuleTitle = ({ title }: { title: string }) => (
   <Container>
-    <Typo.Title3 numberOfLines={1}>{title}</Typo.Title3>
+    <Typo.Title3 numberOfLines={1} testID="moduleTitle">
+      {title}
+    </Typo.Title3>
   </Container>
 )
 
