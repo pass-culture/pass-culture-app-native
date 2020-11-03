@@ -2,7 +2,7 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { Typo, MARGIN_DP } from 'ui/theme'
 
 export const ModuleTitle = ({ title }: { title: string }) => (
   <Container>
@@ -11,8 +11,6 @@ export const ModuleTitle = ({ title }: { title: string }) => (
     </Typo.Title3>
   </Container>
 )
-
-const MARGIN_DP = 24
 
 const Container = styled.View({
   marginHorizontal: PixelRatio.roundToNearestPixel(MARGIN_DP),

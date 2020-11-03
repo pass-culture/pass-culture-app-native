@@ -13,11 +13,11 @@ exports[`OffersModule component should render correctly 1`] = `
   }
 >
   <View
+    horizontal={true}
     style={
       Array [
         Object {
           "height": 24,
-          "width": 24,
         },
       ]
     }
@@ -49,11 +49,11 @@ exports[`OffersModule component should render correctly 1`] = `
     />
   </View>
   <View
+    horizontal={true}
     style={
       Array [
         Object {
           "height": 16,
-          "width": 16,
         },
       ]
     }
@@ -253,7 +253,6 @@ exports[`OffersModule component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "height": 24,
                 "width": 24,
               },
             ]
@@ -474,7 +473,6 @@ exports[`OffersModule component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "height": 16,
                 "width": 16,
               },
             ]
@@ -695,7 +693,6 @@ exports[`OffersModule component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "height": 16,
                 "width": 16,
               },
             ]

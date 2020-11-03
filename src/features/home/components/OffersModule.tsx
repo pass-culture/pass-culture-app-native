@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { PixelRatio, FlatList } from 'react-native'
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
 import { AlgoliaHit } from 'libs/algolia'
 import { algoliaHits } from 'libs/algolia/algoliaHits'
+import { Gutter, Margin } from 'ui/theme'
 
 type OfferWithOptionalCover = Partial<OffersWithCover> & Pick<Offers, 'algolia' | 'display'>
 
@@ -27,9 +28,9 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
 
   return (
     <Container>
-      <Margin />
+      <Margin horizontal />
       <ModuleTitle title={title} />
-      <Gutter />
+      <Gutter horizontal />
       <FlatList
         horizontal
         data={hits}
@@ -44,20 +45,4 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
   )
 }
 
-// TODO(agarcia): place these constants in a file for style
-const MARGIN_DP = 24
-const GUTTER_DP = 16
-
-const Container = styled.View({
-  flex: 1,
-})
-
-const Margin = styled.View({
-  width: PixelRatio.roundToNearestPixel(MARGIN_DP),
-  height: PixelRatio.roundToNearestPixel(MARGIN_DP),
-})
-
-const Gutter = styled.View({
-  width: PixelRatio.roundToNearestPixel(GUTTER_DP),
-  height: PixelRatio.roundToNearestPixel(GUTTER_DP),
-})
+const Container = styled.View({ flex: 1 })
