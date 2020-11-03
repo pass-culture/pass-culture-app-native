@@ -1,8 +1,8 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { ArrowPrevious } from 'ui/icons/ArrowPrevious'
-import { Close } from 'ui/icons/Close'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { Close } from 'ui/svg/icons/Close'
 
 import { ModalHeader } from './ModalHeader'
 
