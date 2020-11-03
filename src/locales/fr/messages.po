@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/cheatcodes/pages/AppComponents.tsx:49
+msgid "Add components"
+msgstr "Add components"
+
 #: src/features/home/pages/Home.tsx:39
 msgid "Aller sur la page de connexion"
 msgstr "Aller sur la page de connexion"
@@ -31,38 +35,116 @@ msgstr "Aucun token à sauvegarder"
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
-#: src/features/auth/pages/Login.tsx:36
-msgid "Connectez-vous :"
-msgstr "Connectez-vous :"
+#: src/features/cheatcodes/pages/AppComponents.tsx:23
+msgid "Button - Theme Primary"
+msgstr "Button - Theme Primary"
 
-#. login button
-#: src/features/auth/pages/Login.tsx:39
-msgid "Connexion"
-msgstr "Connexion"
+#: src/features/cheatcodes/pages/AppComponents.tsx:29
+msgid "Button - Theme Quaternary"
+msgstr "Button - Theme Quaternary"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:25
+msgid "Button - Theme Secondary"
+msgstr "Button - Theme Secondary"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:27
+msgid "Button - Theme Tertiary"
+msgstr "Button - Theme Tertiary"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:22
+msgid "Buttons"
+msgstr "Buttons"
+
+#: src/features/home/pages/Home.tsx:17
+msgid "Composants"
+msgstr "Composants"
 
 #. Authentication error message
 #: src/libs/fetch.ts:75
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
 
+#: src/features/cheatcodes/pages/AppComponents.tsx:11
+msgid "Hero"
+msgstr "Hero"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:34
+msgid "Input - Any string"
+msgstr "Input - Any string"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:36
+msgid "Input - Email input"
+msgstr "Input - Email input"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:38
+msgid "Input - Email password"
+msgstr "Input - Email password"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:33
+msgid "Inputs"
+msgstr "Inputs"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:43
+msgid "Modal - Basic"
+msgstr "Modal - Basic"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:45
+msgid "Modal - Progressive"
+msgstr "Modal - Progressive"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:42
+msgid "Modals"
+msgstr "Modals"
+
+#: src/features/cheatcodes/pages/Navigation.tsx:10
+#: src/features/home/pages/Home.tsx:18
+msgid "Navigation"
+msgstr "Navigation"
+
+#: src/features/cheatcodes/pages/Navigation.tsx:12
+msgid "Page Login"
+msgstr "Page Login"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:16
+msgid "This is a body"
+msgstr "This is a body"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:17
+msgid "This is a button text"
+msgstr "This is a button text"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:18
+msgid "This is a caption"
+msgstr "This is a caption"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:12
+msgid "Title 1"
+msgstr "Title 1"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:13
+msgid "Title 2"
+msgstr "Title 2"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:14
+msgid "Title 3"
+msgstr "Title 3"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:15
+msgid "Title 4"
+msgstr "Title 4"
+
 #. Welcome body message
 #: src/features/home/pages/Home.tsx:29
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
 
+#: src/features/cheatcodes/pages/AppComponents.tsx:9
+msgid "Typos"
+msgstr "Typos"
+
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
-
-#. email placeholder
-#: src/features/auth/pages/Login.tsx:37
-msgid "name@domain.com"
-msgstr "name@domain.com"
-
-#. password placeholder
-#: src/features/auth/pages/Login.tsx:38
-msgid "password"
-msgstr "password"
 
 #: src/features/auth/api.ts:31
 msgid "Échec de la connexion au Pass Culture: {0}"
