@@ -34,7 +34,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
       <FlatList
         horizontal
         data={hits}
-        renderItem={({ item }) => <OfferTile tile={item} />}
+        renderItem={({ item }) => <OfferTile tile={item} layout={display.layout} />}
         keyExtractor={(item) => item.objectID}
         ListHeaderComponent={() => <Margin />}
         ItemSeparatorComponent={() => <Gutter />}

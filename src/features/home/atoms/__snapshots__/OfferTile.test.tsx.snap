@@ -29,13 +29,15 @@ exports[`OfferTile component should render correctly 1`] = `
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "height": 264,
+          "height": 360,
         },
       ]
     }
   >
     <View>
       <Image
+        imageHeight={336}
+        imageWidth={223}
         source={
           Object {
             "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/FDUE2",
@@ -46,8 +48,8 @@ exports[`OfferTile component should render correctly 1`] = `
             Object {
               "borderTopLeftRadius": 8,
               "borderTopRightRadius": 8,
-              "height": 240,
-              "width": 159.5,
+              "height": 336,
+              "width": 223,
             },
           ]
         }
@@ -139,11 +141,12 @@ exports[`OfferTile component should render correctly 1`] = `
     </View>
   </View>
   <View
+    imageWidth={223}
     style={
       Array [
         Object {
           "marginTop": 8,
-          "maxWidth": 159.5,
+          "maxWidth": 223,
         },
       ]
     }
