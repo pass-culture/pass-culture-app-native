@@ -3,6 +3,7 @@ import { Dimensions, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExclusivityPane } from 'features/home/contentful'
+import { Margin, BORDER_RADIUS, MARGIN_DP } from 'ui/theme'
 
 export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => (
   <Row>
@@ -24,10 +25,6 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => (
   </Row>
 )
 
-// TODO(agarcia): place these constants in a file for style
-const MARGIN_DP = 24
-const BORDER_RADIUS = 8
-
 const imageWidth = Dimensions.get('window').width - 2 * MARGIN_DP
 const imageHeight = PixelRatio.roundToNearestPixel((imageWidth * 292) / 333)
 
@@ -37,10 +34,6 @@ const Row = styled.View({
 
 const ImageContainer = styled.View({
   flex: 1,
-})
-
-const Margin = styled.View({
-  width: PixelRatio.roundToNearestPixel(MARGIN_DP),
 })
 
 const TouchableHighlight = styled.TouchableHighlight({

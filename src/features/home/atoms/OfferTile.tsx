@@ -3,7 +3,7 @@ import { Text, View, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AlgoliaHit } from 'libs/algolia'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { ColorsEnum, Typo, BORDER_RADIUS, MARGIN_DP, GUTTER_DP } from 'ui/theme'
 
 const formatPrice = (price?: number): string => {
   return price ? `${price} €`.replace('.', ',') : 'Gratuit'
@@ -39,10 +39,6 @@ export const OfferTile = ({ tile: { offer } }: { tile: AlgoliaHit }) => (
     </CaptionContainer>
   </Container>
 )
-
-const BORDER_RADIUS = 8
-const MARGIN_DP = 24
-const GUTTER_DP = 16
 
 const imageHeight = 240 // this works for small tuiles. We have to consider large tuiles (displayParameters)
 const imageWidth = PixelRatio.roundToNearestPixel((imageHeight * 146) / 220)

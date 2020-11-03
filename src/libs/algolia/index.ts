@@ -1,3 +1,1 @@
-import { AlgoliaHit } from './algolia.d'
-
-export type { AlgoliaHit }
+export type { AlgoliaHit } from './algolia.d'
