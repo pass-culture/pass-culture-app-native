@@ -19,6 +19,8 @@ export enum ContentTypes {
   BUSINESS = 'business',
 }
 
+export type Layout = 'two-items' | 'one-item-medium'
+
 interface Entry<T, ContentType> {
   sys: Sys<ContentType>
   fields: T
@@ -162,7 +164,7 @@ interface AlgoliaParametersFields {
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/displayParameters/fields
 interface DisplayParametersFields {
   title: string
-  layout: string
+  layout: Layout
   minOffers: number
 }
 
