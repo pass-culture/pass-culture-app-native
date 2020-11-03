@@ -8,7 +8,6 @@ import { BusinessPane } from 'features/home/contentful'
 import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
 
 export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPane) => {
-  const firstLineWithEndSpace = `${firstLine} `
   return (
     <Row>
       {/** Explicitly defining Margin component for easier use for other components, with gutters */}
@@ -22,10 +21,12 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
               <IconContainer>
                 <IdeaIcon />
               </IconContainer>
-              <StyledText numberOfLines={2}>
-                <Typo.ButtonText color={ColorsEnum.WHITE}>{firstLineWithEndSpace}</Typo.ButtonText>
-                <Typo.Body color={ColorsEnum.WHITE}>{secondLine}</Typo.Body>
-              </StyledText>
+              <TextContainer>
+                <Typo.ButtonText color={ColorsEnum.WHITE}>{firstLine}</Typo.ButtonText>
+                <Typo.Body numberOfLines={2} color={ColorsEnum.WHITE}>
+                  {secondLine}
+                </Typo.Body>
+              </TextContainer>
               <NextArrowIcon />
             </Container>
           </ImageBackground>
@@ -72,8 +73,9 @@ const Container = styled.View({
   padding: getSpacing(2),
 })
 
-const StyledText = styled.Text({
+const TextContainer = styled.View({
   flex: 1,
+  flexDirection: 'column',
   padding: getSpacing(1),
 })
 

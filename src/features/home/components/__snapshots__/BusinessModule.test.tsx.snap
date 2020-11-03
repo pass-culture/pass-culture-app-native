@@ -164,12 +164,12 @@ exports[`BusinessModule component should render correctly 1`] = `
               </RNSVGGroup>
             </RNSVGSvgView>
           </View>
-          <Text
-            numberOfLines={2}
+          <View
             style={
               Array [
                 Object {
                   "flexBasis": 0,
+                  "flexDirection": "column",
                   "flexGrow": 1,
                   "flexShrink": 1,
                   "paddingBottom": 4,
@@ -198,6 +198,7 @@ exports[`BusinessModule component should render correctly 1`] = `
             </Text>
             <Text
               color="#ffffff"
+              numberOfLines={2}
               style={
                 Array [
                   Object {
@@ -212,7 +213,7 @@ exports[`BusinessModule component should render correctly 1`] = `
             >
               secondLine
             </Text>
-          </Text>
+          </View>
           <RNSVGSvgView
             align="xMidYMid"
             bbHeight="32"
