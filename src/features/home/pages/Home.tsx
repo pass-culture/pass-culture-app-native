@@ -21,12 +21,12 @@ type Props = {
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
   const { data: modules = [] } = useHomepageModules()
 
-  const goToLoginPage = useCallback((): void => {
-    navigation.navigate('Login')
-  }, [])
+  const goToLoginPage = useCallback((): void => navigation.navigate('Login'), [])
+  const goToComponentsPage = useCallback((): void => navigation.navigate('AppComponents'), [])
 
   return (
     <ScrollView>
+      <Button title={_(t`Composants`)} onPress={goToComponentsPage} />
       <Container>
         <HeaderBackgroundWrapper>
           <HeaderBackground />
