@@ -4,43 +4,90 @@ exports[`Home component should render correctly 1`] = `
 <RCTScrollView>
   <View>
     <View
-      accessibilityRole="button"
-      accessibilityState={Object {}}
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "opacity": 1,
-        }
+        Array [
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "width": "100%",
+          },
+        ]
       }
     >
       <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {},
-          ]
+          Object {
+            "borderColor": "#151515",
+            "borderWidth": 2,
+            "opacity": 1,
+            "paddingBottom": 4,
+            "paddingLeft": 4,
+            "paddingRight": 4,
+            "paddingTop": 4,
+          }
         }
       >
         <Text
           style={
             Array [
               Object {
-                "color": "#007AFF",
-                "fontSize": 18,
-                "margin": 8,
-                "textAlign": "center",
+                "color": "#151515",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "fontWeight": "normal",
+                "lineHeight": 20,
               },
             ]
           }
         >
           Composants
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "borderColor": "#151515",
+            "borderWidth": 2,
+            "opacity": 1,
+            "paddingBottom": 4,
+            "paddingLeft": 4,
+            "paddingRight": 4,
+            "paddingTop": 4,
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "fontWeight": "normal",
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Navigation
         </Text>
       </View>
     </View>
@@ -276,57 +323,6 @@ exports[`Home component should render correctly 1`] = `
           ]
         }
       />
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityRole="button"
-        accessibilityState={Object {}}
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#007AFF",
-                  "fontSize": 18,
-                  "margin": 8,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Aller sur la page de connexion
-          </Text>
-        </View>
-      </View>
       <View
         numberOfSpaces={6}
         style={

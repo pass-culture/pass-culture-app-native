@@ -5,12 +5,14 @@ import React from 'react'
 import { Login } from 'features/auth/pages/Login'
 import AppComponents from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
+import Navigation from 'features/cheatcodes/pages/Navigation'
 import { Home } from 'features/home/pages/Home'
 
 import { onNavigationStateChange } from './services'
 
 export type RootStackParamList = {
   AppComponents: undefined
+  Navigation: undefined
   CheatCodes: undefined
   Home: undefined
   Login?: { userId: string }
@@ -30,6 +32,7 @@ export const RootNavigator: React.FC = function () {
         />
         <RootStack.Screen name="CheatCodes" component={CheatCodes} />
         <RootStack.Screen name="AppComponents" component={AppComponents} />
+        <RootStack.Screen name="Navigation" component={Navigation} />
       </RootStack.Navigator>
     </NavigationContainer>
   )

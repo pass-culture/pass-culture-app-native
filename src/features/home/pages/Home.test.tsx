@@ -23,14 +23,31 @@ describe('Home component', () => {
     expect(welcomeText.props.children).toBe('Bienvenue !')
   })
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     const home = render(<Home navigation={navigation} />)
+
     expect(home).toMatchSnapshot()
   })
 
   it('should not have code push button', async () => {
     env.FEATURE_FLAG_CODE_PUSH_MANUAL = false
     const home = render(<Home navigation={navigation} />)
+
     expect(() => home.getByText('Check update')).toThrowError()
+  })
+
+  it('should have components and navigation buttons when NOT in PROD', async () => {
+    const home = render(<Home navigation={navigation} />)
+
+    expect(() => home.getByText('Composants')).toBeTruthy()
+    expect(() => home.getByText('Navigation')).toBeTruthy()
+  })
+
+  it('should NOT have components or navigation buttons when in PROD', async () => {
+    env.ENV = 'production'
+    const home = render(<Home navigation={navigation} />)
+
+    expect(() => home.getByText('Composants')).toThrowError()
+    expect(() => home.getByText('Navigation')).toThrowError()
   })
 })
