@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
 import { Login } from 'features/auth/pages/Login'
-import AppComponents from 'features/cheatcodes/pages/AppComponents'
+import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import Navigation from 'features/cheatcodes/pages/Navigation'
