@@ -1,5 +1,6 @@
 import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
+import { Linking } from 'react-native'
 
 import { BusinessModule } from './BusinessModule'
 
@@ -17,11 +18,10 @@ describe('BusinessModule component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  // Temporary test. We have to adapt it with navigation once implemented
-  it('should navigate to the offer when clicking on the image', async () => {
-    global.console = { ...global.console, log: jest.fn() }
+  it('should open url when clicking on the image', async () => {
     const { getByTestId } = render(<BusinessModule {...props} />)
+    const openUrlSpy = jest.spyOn(Linking, 'openURL')
     fireEvent.press(getByTestId('imageBusiness'))
-    expect(console.log).toHaveBeenCalledWith('Opening url') // eslint-disable-line no-console
+    expect(openUrlSpy).toHaveBeenCalledWith('url')
   })
 })
