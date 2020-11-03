@@ -7,7 +7,9 @@ import { Offers, OffersWithCover } from 'features/home/contentful'
 import { AlgoliaHit } from 'libs/algolia'
 import { algoliaHits } from 'libs/algolia/algoliaHits'
 
-export const OffersModule = (props: Offers | OffersWithCover) => {
+type OfferWithOptionalCover = Partial<OffersWithCover> & Pick<Offers, 'algolia' | 'display'>
+
+export const OffersModule = (props: OfferWithOptionalCover) => {
   const { algolia, display } = props
   const { minOffers, title } = display
   // TODO(agarcia): actually get hits and nbHits from querying algolia
@@ -30,7 +32,7 @@ export const OffersModule = (props: Offers | OffersWithCover) => {
       <Gutter />
       <FlatList
         horizontal
-        data={hits || []}
+        data={hits}
         renderItem={({ item }) => <OfferTile tile={item} />}
         keyExtractor={(item) => item.objectID}
         ListHeaderComponent={() => <Margin />}

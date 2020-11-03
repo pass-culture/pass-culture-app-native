@@ -1,0 +1,922 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OffersModule component should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "height": 24,
+          "width": 24,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "height": 24,
+          "marginHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "lineHeight": 24,
+          },
+        ]
+      }
+      testID="moduleTitle"
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "height": 16,
+          "width": 16,
+        },
+      ]
+    }
+  />
+  <RCTScrollView
+    ItemSeparatorComponent={[Function]}
+    ListFooterComponent={<React.Fragment />}
+    ListHeaderComponent={[Function]}
+    data={
+      Array [
+        Object {
+          "_geoloc": Object {
+            "lat": 47.65904,
+            "lng": -2.75922,
+          },
+          "objectID": "XU8A",
+          "offer": Object {
+            "author": "Oda, Eiichiro",
+            "category": "LIVRE",
+            "dateCreated": 1571211104.882934,
+            "dates": Array [],
+            "description": "Pour traverser la route de tous les périls, Luffy a sélectionné le meilleur équipage possible. Zorro ne fait pas exception : Luffy en est certain, son ami est le meilleur sabreur du monde ! Et ce n'est quand même pas Oeil de Faucon, ce mystérieux combattant, qui va mettre la réputation de Zorro en jeu ?!",
+            "id": "XU8A",
+            "isDigital": false,
+            "isDuo": false,
+            "isEvent": false,
+            "isThing": true,
+            "isbn": "9782017097679",
+            "label": "Livre ou carte lecture",
+            "musicSubType": null,
+            "musicType": null,
+            "name": "One Piece T.6 ; la promesse de Zorro",
+            "performer": null,
+            "priceMax": 5,
+            "priceMin": 5,
+            "prices": Array [
+              5,
+            ],
+            "showSubType": null,
+            "showType": null,
+            "speaker": null,
+            "stageDirector": null,
+            "stocksDateCreated": Array [
+              1571211104.906349,
+            ],
+            "tags": Array [],
+            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/FDUE2",
+            "times": Array [],
+            "type": "Lire",
+            "visa": null,
+            "withdrawalDetails": null,
+          },
+          "offerer": Object {
+            "name": "CHEMINANT S A",
+          },
+          "venue": Object {
+            "city": "VANNES",
+            "departementCode": "56",
+            "name": "CHEMINANT S A",
+            "publicName": "Librairie Cheminant à Vannes",
+          },
+        },
+        Object {
+          "_geoloc": Object {
+            "lat": 48.5764,
+            "lng": -3.82528,
+          },
+          "objectID": "EA964",
+          "offer": Object {
+            "author": "Oda, Eiichiro",
+            "category": "LIVRE",
+            "dateCreated": 1592844633.690835,
+            "dates": Array [],
+            "description": "Ça y est ! Luffy et Zorro sont prêts à embarquer sur la route de tous les périls. Mais avant ça, ils doivent trouver un navigateur digne de ce nom pour compléter leur équipage ! Mais ce n'est pas si facile de trouver la perle rare... Surtout que l'un des plus terribles capitaines pirates a juré de les arrêter !",
+            "id": "EA964",
+            "isDigital": false,
+            "isDuo": false,
+            "isEvent": false,
+            "isThing": true,
+            "isbn": "9782017071976",
+            "label": "Livre ou carte lecture",
+            "musicSubType": null,
+            "musicType": null,
+            "name": "One Piece T.2 ; le capitaine Baggy",
+            "performer": null,
+            "priceMax": 5.5,
+            "priceMin": 5.5,
+            "prices": Array [
+              5.5,
+            ],
+            "showSubType": null,
+            "showType": null,
+            "speaker": null,
+            "stageDirector": null,
+            "stocksDateCreated": Array [
+              1592844633.693503,
+            ],
+            "tags": Array [],
+            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E25T6",
+            "times": Array [],
+            "type": "Lire",
+            "visa": null,
+            "withdrawalDetails": null,
+          },
+          "offerer": Object {
+            "name": "DIALOGUES MORLAIX",
+          },
+          "venue": Object {
+            "city": "MORLAIX",
+            "departementCode": "29",
+            "name": "DIALOGUES MORLAIX",
+            "publicName": null,
+          },
+        },
+        Object {
+          "_geoloc": Object {
+            "lat": 43.60792,
+            "lng": 3.88565,
+          },
+          "objectID": "J64GK",
+          "offer": Object {
+            "author": "Oda, Eiichiro",
+            "category": "LIVRE",
+            "dateCreated": 1603180022.499456,
+            "dates": Array [],
+            "description": "Pipo ment comme il respire ! Du coup, lorsqu'il annonce aux habitants de son village que des pirates vont les attaquer, personne ne le prend au sérieux. Grave erreur ! L'attaque est réellement prévue, et elle va provenir de quelqu'un dont personne ne se serait méfié. Grâce à Luffy et ses amis, les villageois vont apprendre qu'il ne faut pas se fier aux apparences...",
+            "id": "J64GK",
+            "isDigital": false,
+            "isDuo": false,
+            "isEvent": false,
+            "isThing": true,
+            "isbn": "9782011183088",
+            "label": "Livre ou carte lecture",
+            "musicSubType": null,
+            "musicType": null,
+            "name": "One Piece T.4 ; révélation",
+            "performer": null,
+            "priceMax": 5.51,
+            "priceMin": 5.51,
+            "prices": Array [
+              5.51,
+            ],
+            "showSubType": null,
+            "showType": null,
+            "speaker": null,
+            "stageDirector": null,
+            "stocksDateCreated": Array [
+              1603180022.502248,
+            ],
+            "tags": Array [],
+            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E7K2K",
+            "times": Array [],
+            "type": "Lire",
+            "visa": null,
+            "withdrawalDetails": null,
+          },
+          "offerer": Object {
+            "name": "RELAIS FNAC",
+          },
+          "venue": Object {
+            "city": "MONTPELLIER",
+            "departementCode": "34",
+            "name": "Fnac Montpellier",
+            "publicName": null,
+          },
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={true}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsHorizontalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "borderRadius": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 264,
+                },
+              ]
+            }
+          >
+            <View>
+              <Image
+                source={
+                  Object {
+                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/FDUE2",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "height": 240,
+                      "width": 159.5,
+                    },
+                  ]
+                }
+                testID="offerTileImage"
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#151515",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "width": "50%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    LIVRE
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "height": 16,
+                        "width": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "width": "50%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text>
+                      1,2km
+                    </Text>
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 159.5,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              One Piece T.6 ; la promesse de Zorro
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Dès le 12 mars 2020
+              </Text>
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              5 €
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "height": 16,
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "borderRadius": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 264,
+                },
+              ]
+            }
+          >
+            <View>
+              <Image
+                source={
+                  Object {
+                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E25T6",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "height": 240,
+                      "width": 159.5,
+                    },
+                  ]
+                }
+                testID="offerTileImage"
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#151515",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "width": "50%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    LIVRE
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "height": 16,
+                        "width": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "width": "50%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text>
+                      1,2km
+                    </Text>
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 159.5,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              One Piece T.2 ; le capitaine Baggy
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Dès le 12 mars 2020
+              </Text>
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              5,5 €
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "height": 16,
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "borderRadius": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 264,
+                },
+              ]
+            }
+          >
+            <View>
+              <Image
+                source={
+                  Object {
+                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E7K2K",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "height": 240,
+                      "width": 159.5,
+                    },
+                  ]
+                }
+                testID="offerTileImage"
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#151515",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "width": "50%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    LIVRE
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "height": 16,
+                        "width": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "width": "50%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text>
+                      1,2km
+                    </Text>
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 159.5,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              One Piece T.4 ; révélation
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Dès le 12 mars 2020
+              </Text>
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              5,51 €
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+      />
+    </View>
+  </RCTScrollView>
+</View>
+`;
