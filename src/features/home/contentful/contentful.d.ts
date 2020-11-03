@@ -1,9 +1,9 @@
-export interface EntryCollection<T> extends ContentfulCollection<Entry<T>> {
+interface EntryCollection<T> extends ContentfulCollection<Entry<T>> {
   errors?: Array<EntryCollectionError>
   includes?: EntryCollectionInclusions
 }
 
-export interface EntryFields {
+interface EntryFields {
   modules: Array<{ sys: EntryTypeLink }>
   title: string
 }
@@ -90,17 +90,32 @@ interface EntryCollectionInclusions<T> {
   [string]: Array<Asset | Entry<T>>
 }
 
-export interface AlgoliaParameters {
+interface AlgoliaParameters {
   sys: Sys
   fields: AlgoliaParametersFields
 }
 
-export interface AlgoliaParametersFields {
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/cover/fields
+interface CoverFields {
+  title: string
+  image: string
+}
+
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algolia/fields
+interface AgoliaFields {
+  title: string
+  algoliaParameters: AlgoliaParametersFields
+  displayParameters: DisplayParametersFields
+  cover: CoverFields
+}
+
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algoliaParameters/fields
+interface AlgoliaParametersFields {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
   categories?: string[]
-  tags?: Array<string>
+  tags?: string[]
   isDigital?: boolean
   isThing?: boolean
   isEvent?: boolean
@@ -114,15 +129,43 @@ export interface AlgoliaParametersFields {
   hitsPerPage: number
 }
 
-export interface DisplayParameters {
-  sys: Sys
-  fields: DisplayParametersFields
-}
-
-export interface DisplayParametersFields {
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/displayParameters/fields
+interface DisplayParametersFields {
   title: string
   layout: string
   minOffers: number
+}
+
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/business/fields
+interface BusinessFields {
+  title: string
+  firstLine?: string
+  secondLine?: string
+  image: string
+  url?: string
+}
+
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivity/fields
+interface ExclusivityFields {
+  title: string
+  alt: string
+  image: string
+  offerId: string
+}
+
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types
+type ModuleFields =
+  | AgoliaFields
+  | AgoliaParametersFields
+  | BusinessFields
+  | CoverFields
+  | DisplayParametersFields
+  | ExclusivityFields
+  | HomepageFields
+
+interface DisplayParameters {
+  sys: Sys
+  fields: DisplayParametersFields
 }
 
 interface CoverParameters {
@@ -152,29 +195,16 @@ interface Image {
   }
 }
 
-export interface HomepageEntries {
+interface HomepageEntries {
   sys: Sys
   fields: {
     modules: Array<Module>
   }
 }
 
-export interface Module {
+interface Module {
   sys: Sys
   fields: ModuleFields
-}
-
-// Split between the different types of Content type ?
-export interface ModuleFields {
-  title: string
-  algoliaParameters?: AlgoliaParameters
-  displayParameters?: DisplayParameters
-  cover?: CoverParameters
-  alt?: string
-  offerId?: string
-  firstLine?: string
-  secondLine?: string
-  url?: string
 }
 
 export const CONTENT_TYPES = {
@@ -183,4 +213,16 @@ export const CONTENT_TYPES = {
   HOMEPAGE: 'homepage',
   INFORMATION: 'information',
   BUSINESS: 'business',
+}
+
+export type {
+  Module,
+  AlgoliaParameters,
+  CoverParameters,
+  AlgoliaParametersFields,
+  DisplayParametersFields,
+  EntryCollection,
+  EntryFields,
+  HomepageEntries,
+  ModuleFields,
 }

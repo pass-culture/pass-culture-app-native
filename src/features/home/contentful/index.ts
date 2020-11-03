@@ -1,6 +1,4 @@
-import { EntryCollection, EntryFields, HomepageEntries } from './contentful.d'
-import { ExclusivityPane, Offers, OffersWithCover, ProcessedModule } from './moduleTypes'
-import { processHomepageEntries } from './processHomepageEntries'
-
-export type { EntryCollection, EntryFields, HomepageEntries, ProcessedModule }
-export { ExclusivityPane, Offers, OffersWithCover, processHomepageEntries }
+export type { EntryCollection, EntryFields, HomepageEntries } from './contentful.d'
+export { ExclusivityPane, Offers, OffersWithCover } from './moduleTypes'
+export type { ProcessedModule } from './moduleTypes'
+export { processHomepageEntries } from './processHomepageEntries'
