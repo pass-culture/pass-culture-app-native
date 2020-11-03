@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
 
-export const BusinessModuleIcon: React.FC = (): JSX.Element => {
+export const IdeaIcon: React.FC = (): JSX.Element => {
   return (
     <Svg width="56" height="56" viewBox="0 0 56 56">
       <G fill="none" fillRule="evenodd">

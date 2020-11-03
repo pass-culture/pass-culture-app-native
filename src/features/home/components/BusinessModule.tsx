@@ -2,7 +2,7 @@ import React from 'react'
 import { Dimensions, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BusinessModuleIcon } from 'features/home/assets/BusinessModuleIcon'
+import { IdeaIcon } from 'features/home/assets/IdeaIcon'
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
 import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
@@ -20,7 +20,7 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
           <ImageContainer>
             <ImageBackground source={{ uri: image }} testID="imageBusiness">
               <Container>
-                <BusinessModuleIcon />
+                <IdeaIcon />
                 <StyledText numberOfLines={2}>
                   <Typo.ButtonText color={ColorsEnum.WHITE}>
                     {firstLineWithEndSpace}
