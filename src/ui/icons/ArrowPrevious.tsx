@@ -5,11 +5,12 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export const ArrowNext: React.FunctionComponent<IconInterface> = ({
+export const ArrowPrevious: React.FunctionComponent<IconInterface> = ({
   size = 32,
   color = ColorsEnum.BLACK,
+  testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 32 32">
+  <Svg width={size} height={size} viewBox="0 0 32 32" testID={testID}>
     <G fill="none" fill-rule="evenodd">
       <G fill={color}>
         <G>

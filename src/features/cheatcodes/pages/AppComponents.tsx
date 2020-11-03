@@ -1,13 +1,25 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, View, Text } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
+import AppModal from 'ui/components/modals/AppModal'
+import useModal from 'ui/components/modals/useModal'
+import { ArrowPrevious } from 'ui/icons/ArrowPrevious'
+import { Close } from 'ui/icons/Close'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-const AppComponents: FunctionComponent = () => {
+export const AppComponents: FunctionComponent = () => {
+  const {
+    visible: basicModalVisible,
+    showModal: showBasicModal,
+    hideModal: hideBasicModal,
+  } = useModal(false)
+
   return (
-    <ScrollView>
+    <StyledScrollView>
       {/* Typos */}
       <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Typos`)}</Typo.Title1>
 
@@ -36,23 +48,52 @@ const AppComponents: FunctionComponent = () => {
       <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Inputs`)}</Typo.Title1>
       <Typo.Title4>{_(t`Input - Any string`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={1} />
-      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Input - Email input`)}</Typo.Title4>
+      <Typo.Title4>{_(t`Input - Email input`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={1} />
       <Typo.Title4>{_(t`Input - Email password`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Modals */}
       <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Modals`)}</Typo.Title1>
-      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Modal - Basic`)}</Typo.Title4>
+      <TouchableOpacity onPress={showBasicModal}>
+        <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Modal - Basic`)}</Typo.Title4>
+      </TouchableOpacity>
+      <AppModal
+        title="a basic modal"
+        visible={basicModalVisible}
+        onClose={hideBasicModal}
+        onBackNavigation={hideBasicModal}>
+        <Text>An simple content</Text>
+      </AppModal>
       <Spacer.Column numberOfSpaces={1} />
       <Typo.Title4>{_(t`Modal - Progressive`)}</Typo.Title4>
+      <Spacer.Column numberOfSpaces={5} />
+
+      {/* Icons */}
+      <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Icons`)}</Typo.Title1>
+      <AlignedText>
+        <ArrowPrevious size={24} />
+        <Text>{_(t` - ArrowPrevious `)}</Text>
+      </AlignedText>
+      <AlignedText>
+        <Close size={24} />
+        <Text>{_(t` - Close `)}</Text>
+      </AlignedText>
+      <Spacer.Column numberOfSpaces={1} />
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Create your category */}
       <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Add components`)}</Typo.Title1>
       <Spacer.Column numberOfSpaces={5} />
-    </ScrollView>
+    </StyledScrollView>
   )
 }
 
-export default AppComponents
+const AlignedText = styled(View)({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
+
+const StyledScrollView = styled(ScrollView)({
+  padding: 20,
+})
