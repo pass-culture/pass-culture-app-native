@@ -13,28 +13,24 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
     <Row>
       {/** Explicitly defining Margin component for easier use for other components, with gutters */}
       <Margin />
-      <TouchableContainer>
-        <TouchableHighlight
-          onPress={() => console.log(`Opening ${url}`)} // eslint-disable-line no-console
-        >
-          <ImageContainer>
-            <ImageBackground source={{ uri: image }} testID="imageBusiness">
-              <Container>
-                <IconContainer>
-                  <IdeaIcon />
-                </IconContainer>
-                <StyledText numberOfLines={2}>
-                  <Typo.ButtonText color={ColorsEnum.WHITE}>
-                    {firstLineWithEndSpace}
-                  </Typo.ButtonText>
-                  <Typo.Body color={ColorsEnum.WHITE}>{secondLine}</Typo.Body>
-                </StyledText>
-                <NextArrowIcon />
-              </Container>
-            </ImageBackground>
-          </ImageContainer>
-        </TouchableHighlight>
-      </TouchableContainer>
+      <TouchableHighlight
+        onPress={() => console.log(`Opening ${url}`)} // eslint-disable-line no-console
+      >
+        <ImageContainer>
+          <ImageBackground source={{ uri: image }} testID="imageBusiness">
+            <Container>
+              <IconContainer>
+                <IdeaIcon />
+              </IconContainer>
+              <StyledText numberOfLines={2}>
+                <Typo.ButtonText color={ColorsEnum.WHITE}>{firstLineWithEndSpace}</Typo.ButtonText>
+                <Typo.Body color={ColorsEnum.WHITE}>{secondLine}</Typo.Body>
+              </StyledText>
+              <NextArrowIcon />
+            </Container>
+          </ImageBackground>
+        </ImageContainer>
+      </TouchableHighlight>
       <Margin />
     </Row>
   )
@@ -45,14 +41,10 @@ const MARGIN_DP = 24
 const BORDER_RADIUS = 8
 
 const imageWidth = Dimensions.get('window').width - 2 * MARGIN_DP
-const imageHeight = PixelRatio.roundToNearestPixel((imageWidth * 116) / 553)
+const imageHeight = PixelRatio.roundToNearestPixel((imageWidth * 116) / 332)
 
 const Row = styled.View({
   flexDirection: 'row',
-})
-
-const TouchableContainer = styled.View({
-  flex: 1,
 })
 
 const Margin = styled.View({
