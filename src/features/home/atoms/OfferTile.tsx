@@ -15,7 +15,7 @@ export const OfferTile = ({ tile: { offer } }: { tile: AlgoliaHit }) => (
       onPress={() => console.log(`Opening offer ${offer.id}...`)} // eslint-disable-line no-console
     >
       <View>
-        <Image source={{ uri: offer.thumbUrl }} />
+        <Image source={{ uri: offer.thumbUrl }} testID="offerTileImage" />
         <Row>
           <TextWrapper>
             <Typo.Caption color={ColorsEnum.WHITE}>{offer.category}</Typo.Caption>

@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OfferTile component should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "height": 264,
+        },
+      ]
+    }
+  >
+    <View>
+      <Image
+        source={
+          Object {
+            "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/FDUE2",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "height": 240,
+              "width": 159.5,
+            },
+          ]
+        }
+        testID="offerTileImage"
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#151515",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "flexDirection": "row",
+              "height": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "width": "50%",
+              },
+            ]
+          }
+        >
+          <Text
+            color="#ffffff"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            LIVRE
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffffff",
+                "height": 16,
+                "width": 1,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "width": "50%",
+              },
+            ]
+          }
+        >
+          <Text
+            color="#ffffff"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            <Text>
+              1,2km
+            </Text>
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "marginTop": 8,
+          "maxWidth": 159.5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      One Piece T.6 ; la promesse de Zorro
+    </Text>
+    <Text
+      color="#626262"
+      style={
+        Array [
+          Object {
+            "color": "#626262",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      <Text>
+        Dès le 12 mars 2020
+      </Text>
+    </Text>
+    <Text
+      color="#626262"
+      style={
+        Array [
+          Object {
+            "color": "#626262",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      5 €
+    </Text>
+  </View>
+</View>
+`;

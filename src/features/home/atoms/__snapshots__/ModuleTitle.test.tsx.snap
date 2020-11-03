@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleTitle component should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "height": 24,
+        "marginHorizontal": 24,
+      },
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "lineHeight": 24,
+        },
+      ]
+    }
+    testID="moduleTitle"
+  >
+    Pour bien commencer
+  </Text>
+</View>
+`;
