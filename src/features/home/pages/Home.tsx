@@ -41,7 +41,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
           {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
         </Typo.Body>
         <Spacer.Column numberOfSpaces={8} />
-        {modules.reverse().map((module: ProcessedModule, index: number) => {
+        {modules.map((module: ProcessedModule, index: number) => {
           if (module instanceof Offers || module instanceof OffersWithCover) {
             return <OffersModule key={index} {...module} />
           }

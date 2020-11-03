@@ -14,6 +14,14 @@ import {
   ProcessedModule,
 } from './moduleTypes'
 
+function moveExcluModuleOnTop(modules: Array<ProcessedModule>) {
+  const excluModules = modules.filter((m) => m instanceof ExclusivityPane)
+  if (!excluModules.length) return modules
+
+  const otherModules = modules.filter((m) => !(m instanceof ExclusivityPane))
+  return [excluModules[0], ...otherModules]
+}
+
 export const processHomepageEntries = (homepage: HomepageEntries): Array<ProcessedModule> => {
   const {
     fields: { modules },
@@ -54,7 +62,8 @@ export const processHomepageEntries = (homepage: HomepageEntries): Array<Process
     return
   })
 
-  return processedModules.filter(Boolean) as Array<ProcessedModule>
+  const filteredModules = processedModules.filter(Boolean) as Array<ProcessedModule>
+  return moveExcluModuleOnTop(filteredModules)
 }
 
 const buildImageUrl = (fields: CoverParameters['fields']): string | null => {

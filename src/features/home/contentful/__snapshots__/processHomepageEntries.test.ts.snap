@@ -2,6 +2,11 @@
 
 exports[`processHomepageEntries should format homepage entries so we can use it to display infos on home page 1`] = `
 Array [
+  ExclusivityPane {
+    "alt": "Exclusitivité du moment",
+    "image": "https://images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png",
+    "offerId": "AE67",
+  },
   Offers {
     "algolia": Object {
       "hitsPerPage": 10,
@@ -120,11 +125,6 @@ Array [
       "minOffers": 2,
       "title": "Parce que tu aimes la musique...",
     },
-  },
-  ExclusivityPane {
-    "alt": "Exclusitivité du moment",
-    "image": "https://images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png",
-    "offerId": "AE67",
   },
 ]
 `;
