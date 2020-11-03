@@ -1,4 +1,4 @@
-import { AlgoliaParametersFields, DisplayParametersFields } from './contentful.d'
+import { AlgoliaParametersFields, DisplayParametersFields } from './contentful'
 
 export class Offers {
   algolia: AlgoliaParametersFields

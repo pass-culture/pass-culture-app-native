@@ -26,6 +26,7 @@ describe('processHomepageEntries', () => {
     const emptyModulesHomepageEntries = {
       sys,
       fields: {
+        title: 'Homepage',
         modules: [],
       },
     }

@@ -14,7 +14,9 @@ import { getExternal } from 'libs/fetch'
 export const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 const DEPTH_LEVEL = 2
 
-const adaptHomepageEntries = (homepageData: EntryCollection<EntryFields>): HomepageEntries => {
+const adaptHomepageEntries = (
+  homepageData: EntryCollection<EntryFields, string>
+): HomepageEntries => {
   const formattedResponse = resolveResponse(homepageData)
   /* Support good practice is to configure on Contentful dashboard only 1 contenttype homepage
     But there is not blocking on the dashboard, that's why we select first one here */
@@ -22,7 +24,7 @@ const adaptHomepageEntries = (homepageData: EntryCollection<EntryFields>): Homep
 }
 
 export async function getHomepageEntries() {
-  const json = await getExternal<EntryCollection<EntryFields>>(
+  const json = await getExternal<EntryCollection<EntryFields, string>>(
     `${CONTENTFUL_BASE_URL}` +
       `/spaces/${env.CONTENTFUL_SPACE_ID}` +
       `/environments/${env.CONTENTFUL_ENVIRONMENT}` +
