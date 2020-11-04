@@ -1,11 +1,14 @@
-import React, { FunctionComponent } from 'react'
-import { GestureResponderEvent, StyleProp, TextStyle, ViewStyle } from 'react-native'
+import React, { FunctionComponent, memo } from 'react'
+import { GestureResponderEvent, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { PassCulture } from 'ui/svg/icons/PassCulture'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, Typo } from 'ui/theme'
 
 import { isStyleObjectTypeGuard } from '../typeguards'
+
+import { AppButtonTheme, AppButtonThemesConfiguration } from './types'
 
 interface AppButtonProps {
   title: string
@@ -15,153 +18,114 @@ interface AppButtonProps {
   icon?: FunctionComponent<IconInterface>
   iconColor?: ColorsEnum
   iconSize?: number
+  isLoading?: boolean
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
 }
 
-export const AppButton: FunctionComponent<AppButtonProps> = (props) => {
+/**
+ * Themes and styles priority order:
+ * - customStyle erases isLoadingTheme
+ * - isLoadingTheme erases disabledTheme
+ * - disabledTheme erases buttonTheme
+ */
+const _AppButton: FunctionComponent<AppButtonProps> = (props) => {
   const Icon = props.icon
   const iconTheme = AppButtonThemesConfiguration[props.buttonTheme].icon
-  const pressHandler = props.disabled ? undefined : props.onPress
-  const longPressHandler = props.disabled ? undefined : props.onLongPress
+  const disabledIconTheme = AppButtonThemesConfiguration[props.buttonTheme].disabledIcon
+
+  const pressHandler = props.disabled || props.isLoading ? undefined : props.onPress
+  const longPressHandler = props.disabled || props.isLoading ? undefined : props.onLongPress
 
   return (
     <Container
+      testID="button-container"
       buttonTheme={props.buttonTheme}
       customStyle={props.customStyles?.container}
       disabled={props.disabled}
+      isLoading={props.isLoading}
       onPress={pressHandler}
       onLongPress={longPressHandler}>
-      {Icon && (
-        <IconContainer>
-          <Icon
-            color={props.iconColor || iconTheme?.color}
-            size={props.iconSize || iconTheme?.size}
-          />
-        </IconContainer>
+      {props.isLoading ? (
+        <PassCulture
+          testID="button-isloading-icon"
+          color={props.iconColor || iconTheme?.color}
+          size={props.iconSize || iconTheme?.size}
+        />
+      ) : (
+        <>
+          {Icon && (
+            <View>
+              <Icon
+                testID="button-icon"
+                color={
+                  props.iconColor ||
+                  (props.disabled && disabledIconTheme?.color) ||
+                  iconTheme?.color
+                }
+                size={props.iconSize || iconTheme?.size}
+              />
+            </View>
+          )}
+          <Title
+            testID="button-title"
+            buttonTheme={props.buttonTheme}
+            customStyle={props.customStyles?.title}
+            disabled={props.disabled}>
+            {props.title}
+          </Title>
+        </>
       )}
-      <Title buttonTheme={props.buttonTheme} customStyle={props.customStyles?.title}>
-        {props.title}
-      </Title>
     </Container>
   )
 }
 
-export enum AppButtonTheme {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  TERTIARY = 'tertiary',
-  QUATERNARY = 'quaternary',
-}
+// memo is used to avoid useless rendering while props remain unchanged
+export const AppButton = memo(_AppButton)
 
 interface CustomizableProps {
   customStyle: StyleProp<TextStyle>
   buttonTheme: AppButtonTheme
   disabled?: boolean
+  isLoading?: boolean
 }
 
 const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: 0.3,
-}))<CustomizableProps>(({ customStyle, buttonTheme, disabled }) => {
-  const theme = AppButtonThemesConfiguration[buttonTheme].background as ViewStyle
+  activeOpacity: 0.7,
+}))<CustomizableProps>(({ customStyle, buttonTheme, disabled, isLoading }) => {
+  const containerTheme = AppButtonThemesConfiguration[buttonTheme].container as ViewStyle
+  const disabledContainerTheme = AppButtonThemesConfiguration[buttonTheme]
+    .disabledContainer as ViewStyle
+  const isLoadingContainerTheme = AppButtonThemesConfiguration[buttonTheme]
+    .isLoadingContainer as ViewStyle
+
   return {
-    opacity: disabled ? 0.3 : 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    ...(isStyleObjectTypeGuard(theme) ? theme : null),
+    ...(isStyleObjectTypeGuard(containerTheme) ? containerTheme : null),
+    ...(disabled && isStyleObjectTypeGuard(disabledContainerTheme) ? disabledContainerTheme : null),
+    ...(isLoading && isStyleObjectTypeGuard(isLoadingContainerTheme)
+      ? isLoadingContainerTheme
+      : null),
     ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
   }
 })
 
-const Title = styled(Typo.ButtonText)(({ customStyle, buttonTheme }: CustomizableProps) => {
-  const theme = AppButtonThemesConfiguration?.[buttonTheme]?.title as TextStyle
-  return {
-    ...(isStyleObjectTypeGuard(theme) ? theme : null),
-    ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
-  }
-})
+const Title = styled(Typo.ButtonText)(
+  ({ customStyle, buttonTheme, disabled }: CustomizableProps) => {
+    const theme = AppButtonThemesConfiguration?.[buttonTheme]?.title as TextStyle
+    const disabledTheme = AppButtonThemesConfiguration?.[buttonTheme]?.disabledTitle as TextStyle
 
-const IconContainer = styled.View({
-  marginRight: 10,
-})
+    return {
+      ...(isStyleObjectTypeGuard(theme) ? theme : null),
+      ...(disabled && isStyleObjectTypeGuard(disabledTheme) ? disabledTheme : null),
+      ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
+    }
+  }
+)
 
 export interface AppButtonStyleClasses {
   container?: ViewStyle
   title?: TextStyle
-}
-
-export const AppButtonThemesConfiguration: {
-  [theme in AppButtonTheme]: {
-    title?: TextStyle & {
-      color?: ColorsEnum
-    }
-    background?: ViewStyle & {
-      backgroundColor?: ColorsEnum
-    }
-    icon?: ViewStyle & {
-      color?: ColorsEnum
-      size?: number
-    }
-  }
-} = {
-  [AppButtonTheme.PRIMARY]: {
-    title: {
-      color: ColorsEnum.WHITE,
-    },
-    background: {
-      backgroundColor: ColorsEnum.PRIMARY,
-      borderRadius: 24,
-      padding: 10,
-    },
-    icon: {
-      color: ColorsEnum.WHITE,
-      size: 20,
-    },
-  },
-  [AppButtonTheme.SECONDARY]: {
-    title: {
-      color: ColorsEnum.PRIMARY,
-    },
-    background: {
-      borderRadius: 24,
-      borderWidth: 2,
-      borderColor: ColorsEnum.PRIMARY,
-      padding: 10,
-    },
-    icon: {
-      color: ColorsEnum.PRIMARY,
-      size: 20,
-    },
-  },
-  [AppButtonTheme.TERTIARY]: {
-    title: {
-      color: ColorsEnum.PRIMARY,
-    },
-    background: {
-      backgroundColor: ColorsEnum.TRANSPARENT,
-      borderRadius: 24,
-      padding: 10,
-    },
-    icon: {
-      color: ColorsEnum.PRIMARY,
-      size: 20,
-    },
-  },
-  [AppButtonTheme.QUATERNARY]: {
-    title: {
-      color: ColorsEnum.PRIMARY,
-      fontSize: 14,
-      fontFamily: 'Montserrat-SemiBold',
-    },
-    background: {
-      backgroundColor: ColorsEnum.TRANSPARENT,
-      borderRadius: 24,
-      padding: 12,
-    },
-    icon: {
-      color: ColorsEnum.PRIMARY,
-      size: 20,
-    },
-  },
 }
