@@ -1,5 +1,12 @@
 import React, { FunctionComponent, memo } from 'react'
-import { GestureResponderEvent, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
+import {
+  Dimensions,
+  GestureResponderEvent,
+  StyleProp,
+  TextStyle,
+  View,
+  ViewStyle,
+} from 'react-native'
 import styled from 'styled-components/native'
 
 import { PassCulture } from 'ui/svg/icons/PassCulture'
@@ -71,6 +78,7 @@ const _AppButton: FunctionComponent<AppButtonProps> = (props) => {
             testID="button-title"
             buttonTheme={props.buttonTheme}
             customStyle={props.customStyles?.title}
+            numberOfLines={1}
             disabled={props.disabled}>
             {props.title}
           </Title>
@@ -118,6 +126,7 @@ const Title = styled(Typo.ButtonText)(
     const disabledTheme = AppButtonThemesConfiguration?.[buttonTheme]?.disabledTitle as TextStyle
 
     return {
+      maxWidth: Dimensions.get('screen').width - 100,
       ...(isStyleObjectTypeGuard(theme) ? theme : null),
       ...(disabled && isStyleObjectTypeGuard(disabledTheme) ? disabledTheme : null),
       ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
