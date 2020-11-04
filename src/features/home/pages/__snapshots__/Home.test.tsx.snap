@@ -313,6 +313,19 @@ exports[`Home component should render correctly 1`] = `
       >
         Toute la culture dans votre main
       </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "flex-start",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
       <View
         numberOfSpaces={8}
         style={

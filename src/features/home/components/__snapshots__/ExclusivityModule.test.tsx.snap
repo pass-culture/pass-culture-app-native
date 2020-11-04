@@ -26,6 +26,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
+          "maxHeight": 360,
         },
       ]
     }
@@ -44,6 +45,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
         Array [
           Object {
             "borderRadius": 8,
+            "maxHeight": 360,
           },
         ]
       }
@@ -61,6 +63,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
             Object {
               "borderRadius": 8,
               "height": 615.5,
+              "maxHeight": 360,
             },
           ]
         }
