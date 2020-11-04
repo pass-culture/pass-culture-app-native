@@ -23,6 +23,7 @@ module.exports = {
     // This is essential. Without this misplaced hooks would go straight to production
     // since there is no way to detect this during testing.
     'react-hooks/rules-of-hooks': 'error',
+    'react/jsx-fragments': ['error', 'element'], // Otherwise `lingui extract` fails when using the shorthand syntax i.e. <></>
     'no-restricted-imports': [
       'error',
       {
