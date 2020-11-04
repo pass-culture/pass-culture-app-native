@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
-import { isStyleObject } from '../typeguards'
+import { isStyleObjectTypeGuard } from '../typeguards'
 
 interface Props {
   title: string
@@ -44,7 +44,7 @@ const DynamicContainer = styled.View<{
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
-  ...(isStyleObject(customStyle) ? customStyle : null),
+  ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
 }))
 
 const HeaderAction = styled.TouchableOpacity({
@@ -57,7 +57,7 @@ const Title = styled.Text<{
 }>(({ customStyle }) => ({
   flex: 0.6,
   textAlign: 'center',
-  ...(isStyleObject(customStyle) ? customStyle : null),
+  ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
 }))
 
 export interface ModalHeaderStyleClasses {
