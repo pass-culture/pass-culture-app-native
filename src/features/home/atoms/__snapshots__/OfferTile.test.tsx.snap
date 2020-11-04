@@ -37,7 +37,7 @@ exports[`OfferTile component should render correctly 1`] = `
     <View>
       <Image
         imageHeight={288}
-        imageWidth={191}
+        imageWidth={192}
         source={
           Object {
             "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/FDUE2",
@@ -49,7 +49,7 @@ exports[`OfferTile component should render correctly 1`] = `
               "borderTopLeftRadius": 8,
               "borderTopRightRadius": 8,
               "height": 288,
-              "width": 191,
+              "width": 192,
             },
           ]
         }
@@ -141,12 +141,12 @@ exports[`OfferTile component should render correctly 1`] = `
     </View>
   </View>
   <View
-    imageWidth={191}
+    imageWidth={192}
     style={
       Array [
         Object {
           "marginTop": 8,
-          "maxWidth": 191,
+          "maxWidth": 192,
         },
       ]
     }

@@ -64,7 +64,7 @@ exports[`BusinessModule component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "height": 245.5,
+                "height": 234,
                 "justifyContent": "center",
                 "maxHeight": 144,
                 "width": 702,
