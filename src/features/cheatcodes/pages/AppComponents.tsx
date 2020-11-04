@@ -14,6 +14,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { AppButton, AppButtonTheme } from 'ui/components/buttons/AppButton'
 
 export const AppComponents: FunctionComponent = () => {
   const {
@@ -40,12 +41,24 @@ export const AppComponents: FunctionComponent = () => {
       {/* Buttons */}
       <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Buttons`)}</Typo.Title1>
       <Typo.Title4>{_(t`Button - Theme Primary`)}</Typo.Title4>
+      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.PRIMARY} icon={Close} />
       <Spacer.Column numberOfSpaces={1} />
+      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.PRIMARY}  />
+      <Spacer.Column numberOfSpaces={1} />
+      <AppButton title="Custom button" buttonTheme={AppButtonTheme.PRIMARY} customStyles={{
+        container: {
+          backgroundColor: ColorsEnum.GREEN_VALID
+        }
+      }} icon={Close} />
+      <Spacer.Column numberOfSpaces={2} />
       <Typo.Title4>{_(t`Button - Theme Secondary`)}</Typo.Title4>
-      <Spacer.Column numberOfSpaces={1} />
+      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.SECONDARY} icon={Close} />
+      <Spacer.Column numberOfSpaces={2} />
       <Typo.Title4>{_(t`Button - Theme Tertiary`)}</Typo.Title4>
-      <Spacer.Column numberOfSpaces={1} />
+      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.TERTIARY} icon={Close} />
+      <Spacer.Column numberOfSpaces={2} />
       <Typo.Title4>{_(t`Button - Theme Quaternary`)}</Typo.Title4>
+      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.QUATERNARY} icon={Close} />
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Modals */}

@@ -13,4 +13,5 @@ export enum ColorsEnum {
   ATTENTION = '#ffea00',
   GREEN_VALID = '#15884f',
   ERROR = '#b60025',
+  TRANSPARENT = 'transparent',
 }
