@@ -43,6 +43,7 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
 
 const imageWidth = Dimensions.get('window').width - 2 * MARGIN_DP
 const imageHeight = PixelRatio.roundToNearestPixel((imageWidth * 116) / 332)
+const maxHeight = PixelRatio.roundToNearestPixel(6 * MARGIN_DP)
 
 const Row = styled.View({
   flexDirection: 'row',
@@ -55,12 +56,14 @@ const TouchableHighlight = styled.TouchableHighlight({
 const ImageContainer = styled.View({
   borderRadius: BORDER_RADIUS,
   overflow: 'hidden',
+  maxHeight,
 })
 
 const ImageBackground = styled.ImageBackground({
   height: imageHeight,
   width: imageWidth,
   justifyContent: 'center',
+  maxHeight,
 })
 
 const Container = styled.View({

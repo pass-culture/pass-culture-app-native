@@ -27,6 +27,7 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => (
 
 const imageWidth = Dimensions.get('window').width - 2 * MARGIN_DP
 const imageHeight = PixelRatio.roundToNearestPixel((imageWidth * 292) / 333)
+const maxHeight = PixelRatio.roundToNearestPixel(15 * MARGIN_DP)
 
 const Row = styled.View({
   flexDirection: 'row',
@@ -34,13 +35,16 @@ const Row = styled.View({
 
 const ImageContainer = styled.View({
   flex: 1,
+  maxHeight,
 })
 
 const TouchableHighlight = styled.TouchableHighlight({
   borderRadius: BORDER_RADIUS,
+  maxHeight,
 })
 
 const Image = styled.Image({
   height: imageHeight,
   borderRadius: BORDER_RADIUS,
+  maxHeight,
 })

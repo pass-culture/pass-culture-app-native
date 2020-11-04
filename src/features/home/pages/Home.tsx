@@ -41,7 +41,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
           </CheatTouchableOpacity>
         </CheatButtonsContainer>
       )}
-      <Container>
+      <CenterContainer>
         <HeaderBackgroundWrapper>
           <HeaderBackground />
         </HeaderBackgroundWrapper>
@@ -53,6 +53,8 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
         <Typo.Body color={ColorsEnum.WHITE}>
           {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
         </Typo.Body>
+      </CenterContainer>
+      <Container>
         <Spacer.Column numberOfSpaces={8} />
         {modules.map((module: ProcessedModule, index: number) => {
           if (module instanceof Offers || module instanceof OffersWithCover) {
@@ -72,9 +74,14 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
   )
 }
 
-const Container = styled.View({
+const CenterContainer = styled.View({
   flex: 1,
   alignItems: 'center',
+})
+
+const Container = styled.View({
+  flex: 1,
+  alignItems: 'flex-start',
 })
 
 const HeaderBackgroundWrapper = styled.View({

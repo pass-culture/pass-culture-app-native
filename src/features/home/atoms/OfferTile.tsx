@@ -16,7 +16,10 @@ interface OfferTileProps {
 }
 
 export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: OfferTileProps) => {
-  const imageHeight = layout === 'two-items' ? 10 * MARGIN_DP : 14 * MARGIN_DP
+  // Taken from Zeplin
+  const RATIO_SMALL = Math.round(220 / MARGIN_DP) // => 9
+  const RATIO_MEDIUM = Math.round(292 / MARGIN_DP) // => 12
+  const imageHeight = layout === 'two-items' ? RATIO_SMALL * MARGIN_DP : RATIO_MEDIUM * MARGIN_DP
   const imageWidth = PixelRatio.roundToNearestPixel((imageHeight * 146) / 220)
 
   return (
@@ -51,7 +54,9 @@ export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: Offer
         <Typo.Caption color={ColorsEnum.GREY_DARK}>
           <Text>{'Dès le 12 mars 2020'}</Text>
         </Typo.Caption>
-        <Typo.Caption color={ColorsEnum.GREY_DARK}>{formatPrice(offer.priceMin)}</Typo.Caption>
+        <Typo.Caption color={ColorsEnum.GREY_DARK}>
+          {`${formatPrice(offer.priceMin)}${offer.isDuo ? ' - Duo' : ''}`}
+        </Typo.Caption>
       </CaptionContainer>
     </Container>
   )
