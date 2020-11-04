@@ -1,26 +1,24 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback, useState } from 'react'
 import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
+import { AppButton, AppButtonTheme } from 'ui/components/buttons'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { AppButton, AppButtonTheme } from 'ui/components/buttons/AppButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
+import { PassCulture } from 'ui/svg/icons/PassCulture'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 function onButtonPress() {
   Alert.alert('you pressed it')
-}
-function onButtonLongPress() {
-  Alert.alert('you long pressed it')
 }
 
 export const AppComponents: FunctionComponent = () => {
@@ -30,8 +28,15 @@ export const AppComponents: FunctionComponent = () => {
     hideModal: hideBasicModal,
   } = useModal(false)
 
+  const [customButtonIsLoading, setCustomButtonIsLoading] = useState(false)
+
+  const onButtonLongPress = useCallback(() => {
+    setCustomButtonIsLoading(true)
+    setTimeout(() => setCustomButtonIsLoading(false), 3000)
+  }, [])
+
   return (
-    <StyledScrollView>
+    <StyledScrollView style={{ backgroundColor: ColorsEnum.GREY_LIGHT }}>
       {/* Typos */}
       <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Typos`)}</Typo.Title1>
 
@@ -48,6 +53,7 @@ export const AppComponents: FunctionComponent = () => {
       {/* Buttons */}
       <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Buttons`)}</Typo.Title1>
       <Typo.Title4>{_(t`Button - Theme Primary`)}</Typo.Title4>
+      <Spacer.Column numberOfSpaces={1} />
       <AppButton
         title="Se connecter"
         onPress={onButtonPress}
@@ -57,8 +63,16 @@ export const AppComponents: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={1} />
       <AppButton
         title="Se connecter"
+        buttonTheme={AppButtonTheme.PRIMARY}
+        isLoading
+        onPress={onButtonPress}
+      />
+      <Spacer.Column numberOfSpaces={1} />
+      <AppButton
+        title="Disabled button"
         onPress={onButtonPress}
         buttonTheme={AppButtonTheme.PRIMARY}
+        icon={Close}
         disabled
       />
       <Spacer.Column numberOfSpaces={1} />
@@ -73,30 +87,81 @@ export const AppComponents: FunctionComponent = () => {
           },
         }}
         icon={Close}
+        isLoading={customButtonIsLoading}
       />
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Title4>{_(t`Button - Theme Secondary`)}</Typo.Title4>
+      <Spacer.Column numberOfSpaces={1} />
       <AppButton
         title="Se connecter"
         onPress={onButtonPress}
         buttonTheme={AppButtonTheme.SECONDARY}
         icon={Close}
       />
+      <Spacer.Column numberOfSpaces={1} />
+      <AppButton
+        title="Se connecter"
+        buttonTheme={AppButtonTheme.SECONDARY}
+        isLoading
+        onPress={onButtonPress}
+      />
+      <Spacer.Column numberOfSpaces={1} />
+      <AppButton
+        title="Disabled"
+        buttonTheme={AppButtonTheme.SECONDARY}
+        icon={Close}
+        disabled
+        onPress={onButtonPress}
+      />
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Title4>{_(t`Button - Theme Tertiary`)}</Typo.Title4>
+      <Spacer.Column numberOfSpaces={1} />
       <AppButton
         title="Se connecter"
         onPress={onButtonPress}
         buttonTheme={AppButtonTheme.TERTIARY}
         icon={Close}
       />
+      <Spacer.Column numberOfSpaces={1} />
+      <AppButton
+        title="Loading"
+        onPress={onButtonPress}
+        buttonTheme={AppButtonTheme.TERTIARY}
+        icon={Close}
+        isLoading
+      />
+      <Spacer.Column numberOfSpaces={1} />
+      <AppButton
+        title="Disabled"
+        onPress={onButtonPress}
+        buttonTheme={AppButtonTheme.TERTIARY}
+        icon={Close}
+        disabled
+      />
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Title4>{_(t`Button - Theme Quaternary`)}</Typo.Title4>
+      <Spacer.Column numberOfSpaces={1} />
       <AppButton
         title="Se connecter"
         onPress={onButtonPress}
         buttonTheme={AppButtonTheme.QUATERNARY}
         icon={Close}
+      />
+      <Spacer.Column numberOfSpaces={1} />
+      <AppButton
+        title="Se connecter"
+        onPress={onButtonPress}
+        buttonTheme={AppButtonTheme.QUATERNARY}
+        icon={Close}
+        isLoading
+      />
+      <Spacer.Column numberOfSpaces={1} />
+      <AppButton
+        title="Se connecter"
+        onPress={onButtonPress}
+        buttonTheme={AppButtonTheme.QUATERNARY}
+        icon={Close}
+        disabled
       />
       <Spacer.Column numberOfSpaces={5} />
 
@@ -125,6 +190,10 @@ export const AppComponents: FunctionComponent = () => {
       <AlignedText>
         <Close size={24} />
         <Text>{_(t` - Close `)}</Text>
+      </AlignedText>
+      <AlignedText>
+        <PassCulture size={24} />
+        <Text>{_(t` - PassCulture `)}</Text>
       </AlignedText>
       <AlignedText>
         <Eye size={24} />
