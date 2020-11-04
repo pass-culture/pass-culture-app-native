@@ -15,6 +15,7 @@ type Props = StackScreenProps<RootStackParamList, 'Login'>
 
 let INITIAL_IDENTIFIER = ''
 let INITIAL_PASSWORD = ''
+const ERROR_MESSAGE = ''
 
 if (__DEV__) {
   INITIAL_IDENTIFIER = env.SIGNIN_IDENTIFIER
@@ -24,18 +25,23 @@ if (__DEV__) {
 export const Login: FunctionComponent<Props> = function (props: Props) {
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
+  const [errorMessage, setErrorMessage] = useState(ERROR_MESSAGE)
 
   async function handleSignin() {
     const isSigninSuccessful = await signin({ email, password })
     if (isSigninSuccessful) {
       props.navigation.navigate('Home')
+    } else {
+      setErrorMessage('Email ou mot de passe incorrect')
     }
   }
 
   return (
     <View style={styles.container}>
       <Text>{_(t`Connectez-vous :`)}</Text>
+      <Text>{errorMessage}</Text>
       <TextInput
+        keyboardType={'email-address'}
         style={styles.input}
         placeholder={_(/*i18n: email placeholder */ t`name@domain.com`)}
         value={email}

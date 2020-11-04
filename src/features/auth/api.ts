@@ -1,11 +1,8 @@
-import { t } from '@lingui/macro'
-import { Alert } from 'react-native'
 import { useQuery } from 'react-query'
 
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { get, post } from 'libs/fetch'
-import { _ } from 'libs/i18n'
 import { saveToken } from 'libs/storage'
 
 type Credentials = {
@@ -15,20 +12,22 @@ type Credentials = {
 
 type SigninResponse = {
   access_token: string
+  refresh_token: string
 }
 
 export async function signin({ email, password }: Credentials): Promise<boolean> {
   const body = { identifier: email, password }
   try {
-    const { access_token } = await post<SigninResponse>('/native/v1/signin', {
+    const { access_token, refresh_token } = await post<SigninResponse>('/native/v1/signin', {
       body,
       credentials: 'omit',
     })
     await saveToken(access_token)
+    await saveToken(refresh_token)
     await analytics.logLogin({ method: env.API_BASE_URL })
     return true
   } catch (error) {
-    Alert.alert(_(t`Échec de la connexion au Pass Culture: ${error.message}`))
+    console.log(error)
     return false
   }
 }

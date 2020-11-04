@@ -11,6 +11,7 @@ import { navigationTestProps } from 'tests/navigation'
 import { server } from 'tests/server'
 
 import { Login } from './Login'
+import {err} from "react-native-svg/lib/typescript/xml";
 
 beforeEach(() => {
   jest.resetAllMocks()
@@ -35,7 +36,7 @@ describe('<Login/>', () => {
   it('should NOT redirect to home page when signin has failed', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/signin', async (req, res, ctx) =>
-        res(ctx.status(401))
+        res(ctx.status(400))
       )
     )
     const { findByText } = render(
@@ -49,5 +50,7 @@ describe('<Login/>', () => {
       expect(analytics.logLogin).not.toBeCalled()
       expect(navigationTestProps.navigation.navigate).not.toBeCalled()
     })
+    const errorMessage = await findByText('Email ou mot de passe incorrect')
+    expect(errorMessage).not.toBeNull()
   })
 })
