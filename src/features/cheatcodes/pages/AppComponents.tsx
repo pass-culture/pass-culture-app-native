@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
-import { ScrollView, View, Text } from 'react-native'
+import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -8,13 +8,20 @@ import { _ } from 'libs/i18n'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { AppButton, AppButtonTheme } from 'ui/components/buttons/AppButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
-import { AppButton, AppButtonTheme } from 'ui/components/buttons/AppButton'
+
+function onButtonPress() {
+  Alert.alert('you pressed it')
+}
+function onButtonLongPress() {
+  Alert.alert('you long pressed it')
+}
 
 export const AppComponents: FunctionComponent = () => {
   const {
@@ -41,24 +48,56 @@ export const AppComponents: FunctionComponent = () => {
       {/* Buttons */}
       <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Buttons`)}</Typo.Title1>
       <Typo.Title4>{_(t`Button - Theme Primary`)}</Typo.Title4>
-      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.PRIMARY} icon={Close} />
+      <AppButton
+        title="Se connecter"
+        onPress={onButtonPress}
+        buttonTheme={AppButtonTheme.PRIMARY}
+        icon={Close}
+      />
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.PRIMARY}  />
+      <AppButton
+        title="Se connecter"
+        onPress={onButtonPress}
+        buttonTheme={AppButtonTheme.PRIMARY}
+        disabled
+      />
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton title="Custom button" buttonTheme={AppButtonTheme.PRIMARY} customStyles={{
-        container: {
-          backgroundColor: ColorsEnum.GREEN_VALID
-        }
-      }} icon={Close} />
+      <AppButton
+        title="Custom button long press"
+        onPress={onButtonPress}
+        onLongPress={onButtonLongPress}
+        buttonTheme={AppButtonTheme.PRIMARY}
+        customStyles={{
+          container: {
+            backgroundColor: ColorsEnum.GREEN_VALID,
+          },
+        }}
+        icon={Close}
+      />
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Title4>{_(t`Button - Theme Secondary`)}</Typo.Title4>
-      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.SECONDARY} icon={Close} />
+      <AppButton
+        title="Se connecter"
+        onPress={onButtonPress}
+        buttonTheme={AppButtonTheme.SECONDARY}
+        icon={Close}
+      />
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Title4>{_(t`Button - Theme Tertiary`)}</Typo.Title4>
-      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.TERTIARY} icon={Close} />
+      <AppButton
+        title="Se connecter"
+        onPress={onButtonPress}
+        buttonTheme={AppButtonTheme.TERTIARY}
+        icon={Close}
+      />
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Title4>{_(t`Button - Theme Quaternary`)}</Typo.Title4>
-      <AppButton title="Se connecter" buttonTheme={AppButtonTheme.QUATERNARY} icon={Close} />
+      <AppButton
+        title="Se connecter"
+        onPress={onButtonPress}
+        buttonTheme={AppButtonTheme.QUATERNARY}
+        icon={Close}
+      />
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Modals */}
