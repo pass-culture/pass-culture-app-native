@@ -53,6 +53,7 @@ exports[`BusinessModule component should render correctly 1`] = `
           Array [
             Object {
               "borderRadius": 8,
+              "maxHeight": 144,
               "overflow": "hidden",
             },
           ]
@@ -65,6 +66,7 @@ exports[`BusinessModule component should render correctly 1`] = `
               Object {
                 "height": 245.5,
                 "justifyContent": "center",
+                "maxHeight": 144,
                 "width": 702,
               },
             ]

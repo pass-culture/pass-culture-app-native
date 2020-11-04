@@ -182,7 +182,7 @@ exports[`OffersModule component should render correctly 1`] = `
             "description": "Pipo ment comme il respire ! Du coup, lorsqu'il annonce aux habitants de son village que des pirates vont les attaquer, personne ne le prend au sérieux. Grave erreur ! L'attaque est réellement prévue, et elle va provenir de quelqu'un dont personne ne se serait méfié. Grâce à Luffy et ses amis, les villageois vont apprendre qu'il ne faut pas se fier aux apparences...",
             "id": "J64GK",
             "isDigital": false,
-            "isDuo": false,
+            "isDuo": true,
             "isEvent": false,
             "isThing": true,
             "isbn": "9782011183088",
@@ -298,15 +298,15 @@ exports[`OffersModule component should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "height": 360,
+                  "height": 312,
                 },
               ]
             }
           >
             <View>
               <Image
-                imageHeight={336}
-                imageWidth={223}
+                imageHeight={288}
+                imageWidth={191}
                 source={
                   Object {
                     "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/FDUE2",
@@ -317,8 +317,8 @@ exports[`OffersModule component should render correctly 1`] = `
                     Object {
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
-                      "height": 336,
-                      "width": 223,
+                      "height": 288,
+                      "width": 191,
                     },
                   ]
                 }
@@ -410,12 +410,12 @@ exports[`OffersModule component should render correctly 1`] = `
             </View>
           </View>
           <View
-            imageWidth={223}
+            imageWidth={191}
             style={
               Array [
                 Object {
                   "marginTop": 8,
-                  "maxWidth": 223,
+                  "maxWidth": 191,
                 },
               ]
             }
@@ -521,15 +521,15 @@ exports[`OffersModule component should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "height": 360,
+                  "height": 312,
                 },
               ]
             }
           >
             <View>
               <Image
-                imageHeight={336}
-                imageWidth={223}
+                imageHeight={288}
+                imageWidth={191}
                 source={
                   Object {
                     "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E25T6",
@@ -540,8 +540,8 @@ exports[`OffersModule component should render correctly 1`] = `
                     Object {
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
-                      "height": 336,
-                      "width": 223,
+                      "height": 288,
+                      "width": 191,
                     },
                   ]
                 }
@@ -633,12 +633,12 @@ exports[`OffersModule component should render correctly 1`] = `
             </View>
           </View>
           <View
-            imageWidth={223}
+            imageWidth={191}
             style={
               Array [
                 Object {
                   "marginTop": 8,
-                  "maxWidth": 223,
+                  "maxWidth": 191,
                 },
               ]
             }
@@ -744,15 +744,15 @@ exports[`OffersModule component should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "height": 360,
+                  "height": 312,
                 },
               ]
             }
           >
             <View>
               <Image
-                imageHeight={336}
-                imageWidth={223}
+                imageHeight={288}
+                imageWidth={191}
                 source={
                   Object {
                     "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E7K2K",
@@ -763,8 +763,8 @@ exports[`OffersModule component should render correctly 1`] = `
                     Object {
                       "borderTopLeftRadius": 8,
                       "borderTopRightRadius": 8,
-                      "height": 336,
-                      "width": 223,
+                      "height": 288,
+                      "width": 191,
                     },
                   ]
                 }
@@ -856,12 +856,12 @@ exports[`OffersModule component should render correctly 1`] = `
             </View>
           </View>
           <View
-            imageWidth={223}
+            imageWidth={191}
             style={
               Array [
                 Object {
                   "marginTop": 8,
-                  "maxWidth": 223,
+                  "maxWidth": 191,
                 },
               ]
             }
@@ -914,7 +914,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 ]
               }
             >
-              5,51 €
+              5,51 € - Duo
             </Text>
           </View>
         </View>
