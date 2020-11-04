@@ -1,10 +1,12 @@
+import { t } from '@lingui/macro'
 import React from 'react'
-import { Text, View, PixelRatio } from 'react-native'
+import { Text, View, PixelRatio, _Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
 import { AlgoliaHit } from 'libs/algolia'
 import { ColorsEnum, Typo, BORDER_RADIUS, MARGIN_DP, GUTTER_DP } from 'ui/theme'
+import { _ } from 'libs/i18n'
 
 const formatPrice = (price?: number): string => {
   return price ? `${price} €`.replace('.', ',') : 'Gratuit'
@@ -55,7 +57,9 @@ export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: Offer
           <Text>{'Dès le 12 mars 2020'}</Text>
         </Typo.Caption>
         <Typo.Caption color={ColorsEnum.GREY_DARK}>
-          {`${formatPrice(offer.priceMin)}${offer.isDuo ? ' - Duo' : ''}`}
+          {`${formatPrice(offer.priceMin)}${
+            offer.isDuo ? ` - ${_(/*i18n: Duo offer */ t`Duo`)}` : ''
+          }`}
         </Typo.Caption>
       </CaptionContainer>
     </Container>
