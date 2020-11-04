@@ -93,7 +93,7 @@ export const AppComponents: FunctionComponent = () => {
       <Typo.Title4>{_(t`Button - Theme Secondary`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={1} />
       <AppButton
-        title="Se connecter"
+        title="Se connecter avec un très long texte, est-ce possible ?"
         onPress={onButtonPress}
         buttonTheme={AppButtonTheme.SECONDARY}
         icon={Close}
