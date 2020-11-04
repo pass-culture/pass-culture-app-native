@@ -17,11 +17,12 @@ interface OfferTileProps {
   layout?: Layout
 }
 
+// Taken from Zeplin
+const RATIO_SMALL = Math.round(220 / MARGIN_DP) // => 9
+const RATIO_MEDIUM = Math.round(292 / MARGIN_DP) // => 12
+
 export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: OfferTileProps) => {
-  // Taken from Zeplin
-  const RATIO_SMALL = Math.round(220 / MARGIN_DP) // => 9
-  const RATIO_MEDIUM = Math.round(292 / MARGIN_DP) // => 12
-  const imageHeight = layout === 'two-items' ? RATIO_SMALL * MARGIN_DP : RATIO_MEDIUM * MARGIN_DP
+  const imageHeight = (layout === 'two-items' ? RATIO_SMALL : RATIO_MEDIUM) * MARGIN_DP
   const imageWidth = PixelRatio.roundToNearestPixel((imageHeight * 146) / 220)
 
   return (
@@ -73,21 +74,21 @@ const Container = styled.View({
   flex: 1,
 })
 
-const TouchableHighlight = styled.TouchableHighlight(
-  ({ imageHeight }: { imageHeight: number }) => ({
+const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(
+  ({ imageHeight }) => ({
     borderRadius: BORDER_RADIUS,
     height: imageHeight + rowHeight,
     flex: 1,
   })
 )
 
-const CaptionContainer = styled.View(({ imageWidth }: { imageWidth: number }) => ({
+const CaptionContainer = styled.View<{ imageWidth: number }>(({ imageWidth }) => ({
   maxWidth: imageWidth,
   marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
 }))
 
-const Image = styled.Image(
-  ({ imageWidth, imageHeight }: { imageWidth: number; imageHeight: number }) => ({
+const Image = styled.Image<{ imageWidth: number; imageHeight: number }>(
+  ({ imageWidth, imageHeight }) => ({
     height: imageHeight,
     width: imageWidth,
     borderTopLeftRadius: BORDER_RADIUS,
