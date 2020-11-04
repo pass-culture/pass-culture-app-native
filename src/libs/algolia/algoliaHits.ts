@@ -113,7 +113,7 @@ export const algoliaHits: AlgoliaHit[] = [
       id: 'J64GK',
       isbn: '9782011183088',
       isDigital: false,
-      isDuo: false,
+      isDuo: true,
       isEvent: false,
       isThing: true,
       label: 'Livre ou carte lecture',
