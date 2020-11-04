@@ -5,10 +5,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
+import { PasswordInput } from 'ui/components/inputs/PasswordInput'
+import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
+import { Eye } from 'ui/svg/icons/Eye'
+import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export const AppComponents: FunctionComponent = () => {
@@ -44,15 +48,6 @@ export const AppComponents: FunctionComponent = () => {
       <Typo.Title4>{_(t`Button - Theme Quaternary`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={5} />
 
-      {/* Inputs */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Inputs`)}</Typo.Title1>
-      <Typo.Title4>{_(t`Input - Any string`)}</Typo.Title4>
-      <Spacer.Column numberOfSpaces={1} />
-      <Typo.Title4>{_(t`Input - Email input`)}</Typo.Title4>
-      <Spacer.Column numberOfSpaces={1} />
-      <Typo.Title4>{_(t`Input - Email password`)}</Typo.Title4>
-      <Spacer.Column numberOfSpaces={5} />
-
       {/* Modals */}
       <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Modals`)}</Typo.Title1>
       <TouchableOpacity onPress={showBasicModal}>
@@ -79,7 +74,34 @@ export const AppComponents: FunctionComponent = () => {
         <Close size={24} />
         <Text>{_(t` - Close `)}</Text>
       </AlignedText>
+      <AlignedText>
+        <Eye size={24} />
+        <Text>{_(t` - Eye `)}</Text>
+      </AlignedText>
+      <AlignedText>
+        <EyeSlash size={24} />
+        <Text>{_(t` - EyeSlash `)}</Text>
+      </AlignedText>
       <Spacer.Column numberOfSpaces={1} />
+
+      {/* Inputs */}
+      <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Inputs`)}</Typo.Title1>
+      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Text Input`)}</Typo.Title4>
+      <TextInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
+      <Spacer.Column numberOfSpaces={1} />
+      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Text Input - Email`)}</Typo.Title4>
+      <TextInput
+        value=""
+        onChangeText={doNothingFn}
+        placeholder={'Placeholder'}
+        keyboardType="email-address"
+      />
+      <Spacer.Column numberOfSpaces={1} />
+      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Text Input - Error`)}</Typo.Title4>
+      <TextInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} isError={true} />
+      <Spacer.Column numberOfSpaces={1} />
+      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Password Input`)}</Typo.Title4>
+      <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Create your category */}
@@ -97,3 +119,7 @@ const AlignedText = styled(View)({
 const StyledScrollView = styled(ScrollView)({
   padding: 20,
 })
+
+function doNothingFn() {
+  /* do nothing */
+}
