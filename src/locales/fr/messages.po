@@ -13,15 +13,23 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:64
+#: src/features/cheatcodes/pages/AppComponents.tsx:59
 msgid "- ArrowPrevious"
 msgstr "- ArrowPrevious"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:68
+#: src/features/cheatcodes/pages/AppComponents.tsx:63
 msgid "- Close"
 msgstr "- Close"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:74
+#: src/features/cheatcodes/pages/AppComponents.tsx:67
+msgid "- Eye"
+msgstr "- Eye"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:71
+msgid "- EyeSlash"
+msgstr "- EyeSlash"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:91
 msgid "Add components"
 msgstr "Add components"
 
@@ -37,25 +45,25 @@ msgstr "Aucun token à sauvegarder"
 #. Welcome title message
 #: src/features/home/pages/Home.tsx:31
 msgid "Bienvenue !"
-msgstr "Bienvenue !"
+msgstr "Bienvenue !
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:30
+#: src/features/cheatcodes/pages/AppComponents.tsx:34
 msgid "Button - Theme Primary"
 msgstr "Button - Theme Primary"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:36
+#: src/features/cheatcodes/pages/AppComponents.tsx:40
 msgid "Button - Theme Quaternary"
 msgstr "Button - Theme Quaternary"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:32
+#: src/features/cheatcodes/pages/AppComponents.tsx:36
 msgid "Button - Theme Secondary"
 msgstr "Button - Theme Secondary"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:34
+#: src/features/cheatcodes/pages/AppComponents.tsx:38
 msgid "Button - Theme Tertiary"
 msgstr "Button - Theme Tertiary"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:29
+#: src/features/cheatcodes/pages/AppComponents.tsx:33
 msgid "Buttons"
 msgstr "Buttons"
 
@@ -73,7 +81,7 @@ msgid "Connexion"
 msgstr "Connexion"
 
 #. Duo offer
-#: src/features/home/atoms/OfferTile.tsx:41
+#: src/features/home/atoms/OfferTile.tsx:39
 msgid "Duo"
 msgstr "Duo"
 
@@ -82,39 +90,27 @@ msgstr "Duo"
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:18
+#: src/features/cheatcodes/pages/AppComponents.tsx:22
 msgid "Hero"
 msgstr "Hero"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:61
+#: src/features/cheatcodes/pages/AppComponents.tsx:56
 msgid "Icons"
 msgstr "Icons"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:41
-msgid "Input - Any string"
-msgstr "Input - Any string"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:43
-msgid "Input - Email input"
-msgstr "Input - Email input"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:45
-msgid "Input - Email password"
-msgstr "Input - Email password"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:40
+#: src/features/cheatcodes/pages/AppComponents.tsx:76
 msgid "Inputs"
 msgstr "Inputs"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:51
+#: src/features/cheatcodes/pages/AppComponents.tsx:46
 msgid "Modal - Basic"
 msgstr "Modal - Basic"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:57
+#: src/features/cheatcodes/pages/AppComponents.tsx:52
 msgid "Modal - Progressive"
 msgstr "Modal - Progressive"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:49
+#: src/features/cheatcodes/pages/AppComponents.tsx:44
 msgid "Modals"
 msgstr "Modals"
 
@@ -126,31 +122,47 @@ msgstr "Navigation"
 msgid "Page Login"
 msgstr "Page Login"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:23
+#: src/features/cheatcodes/pages/AppComponents.tsx:86
+msgid "Password Input"
+msgstr "Password Input"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:77
+msgid "Text Input"
+msgstr "Text Input"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:80
+msgid "Text Input - Email"
+msgstr "Text Input - Email"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:83
+msgid "Text Input - Error"
+msgstr "Text Input - Error"
+
+#: src/features/cheatcodes/pages/AppComponents.tsx:27
 msgid "This is a body"
 msgstr "This is a body"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:24
+#: src/features/cheatcodes/pages/AppComponents.tsx:28
 msgid "This is a button text"
 msgstr "This is a button text"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:25
+#: src/features/cheatcodes/pages/AppComponents.tsx:29
 msgid "This is a caption"
 msgstr "This is a caption"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:19
+#: src/features/cheatcodes/pages/AppComponents.tsx:23
 msgid "Title 1"
 msgstr "Title 1"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:20
+#: src/features/cheatcodes/pages/AppComponents.tsx:24
 msgid "Title 2"
 msgstr "Title 2"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:21
+#: src/features/cheatcodes/pages/AppComponents.tsx:25
 msgid "Title 3"
 msgstr "Title 3"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:22
+#: src/features/cheatcodes/pages/AppComponents.tsx:26
 msgid "Title 4"
 msgstr "Title 4"
 
@@ -159,7 +171,7 @@ msgstr "Title 4"
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:16
+#: src/features/cheatcodes/pages/AppComponents.tsx:20
 msgid "Typos"
 msgstr "Typos"
 
