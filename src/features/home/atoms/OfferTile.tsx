@@ -6,7 +6,16 @@ import styled from 'styled-components/native'
 import { Layout } from 'features/home/contentful'
 import { AlgoliaHit } from 'libs/algolia'
 import { _ } from 'libs/i18n'
-import { ColorsEnum, Typo, BORDER_RADIUS, MARGIN_DP, GUTTER_DP } from 'ui/theme'
+import {
+  ColorsEnum,
+  Typo,
+  BORDER_RADIUS,
+  MARGIN_DP,
+  GUTTER_DP,
+  LENGTH_M,
+  LENGTH_L,
+  RATIO_ALGOLIA,
+} from 'ui/theme'
 
 const formatPrice = (price?: number): string => {
   return price ? `${price} €`.replace('.', ',') : 'Gratuit'
@@ -17,13 +26,9 @@ interface OfferTileProps {
   layout?: Layout
 }
 
-// Taken from Zeplin
-const RATIO_SMALL = Math.round(220 / MARGIN_DP) // => 9
-const RATIO_MEDIUM = Math.round(292 / MARGIN_DP) // => 12
-
 export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: OfferTileProps) => {
-  const imageHeight = (layout === 'two-items' ? RATIO_SMALL : RATIO_MEDIUM) * MARGIN_DP
-  const imageWidth = PixelRatio.roundToNearestPixel((imageHeight * 146) / 220)
+  const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
+  const imageWidth = PixelRatio.roundToNearestPixel(imageHeight * RATIO_ALGOLIA)
 
   return (
     <Container>

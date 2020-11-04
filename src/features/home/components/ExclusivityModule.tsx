@@ -3,7 +3,7 @@ import { Dimensions, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExclusivityPane } from 'features/home/contentful'
-import { Margin, BORDER_RADIUS, MARGIN_DP } from 'ui/theme'
+import { Margin, BORDER_RADIUS, MARGIN_DP, LENGTH_XL, RATIO_EXCLU } from 'ui/theme'
 
 export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => (
   <Row>
@@ -26,8 +26,7 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => (
 )
 
 const imageWidth = Dimensions.get('window').width - 2 * MARGIN_DP
-const imageHeight = PixelRatio.roundToNearestPixel((imageWidth * 292) / 333)
-const maxHeight = PixelRatio.roundToNearestPixel(15 * MARGIN_DP)
+const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_EXCLU)
 
 const Row = styled.View({
   flexDirection: 'row',
@@ -35,16 +34,16 @@ const Row = styled.View({
 
 const ImageContainer = styled.View({
   flex: 1,
-  maxHeight,
+  maxHeight: LENGTH_XL,
 })
 
 const TouchableHighlight = styled.TouchableHighlight({
   borderRadius: BORDER_RADIUS,
-  maxHeight,
+  maxHeight: LENGTH_XL,
 })
 
 const Image = styled.Image({
   height: imageHeight,
   borderRadius: BORDER_RADIUS,
-  maxHeight,
+  maxHeight: LENGTH_XL,
 })
