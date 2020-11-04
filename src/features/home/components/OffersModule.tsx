@@ -24,7 +24,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
     hits.length < nbHits &&
     !('tags' in algolia || 'beginningDatetime' in algolia || 'endingDatetime' in algolia)
 
-  if (!shouldModuleBeDisplayed) return <></>
+  if (!shouldModuleBeDisplayed) return <React.Fragment></React.Fragment>
 
   return (
     <Container>
@@ -38,7 +38,9 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
         keyExtractor={(item) => item.objectID}
         ListHeaderComponent={() => <Margin />}
         ItemSeparatorComponent={() => <Gutter />}
-        ListFooterComponent={showSeeMore ? <></> : <></>} // TODO: 'See more' design
+        ListFooterComponent={
+          showSeeMore ? <React.Fragment></React.Fragment> : <React.Fragment></React.Fragment>
+        } // TODO: 'See more' design
         showsHorizontalScrollIndicator={false}
       />
     </Container>
