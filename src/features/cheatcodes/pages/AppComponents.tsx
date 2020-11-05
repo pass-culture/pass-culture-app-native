@@ -1,11 +1,14 @@
-import { t } from '@lingui/macro'
+/* eslint-disable react-native/no-raw-text */
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
-import { AppButton, AppButtonTheme } from 'ui/components/buttons'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -14,7 +17,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
-import { PassCulture } from 'ui/svg/icons/PassCulture'
+import { Logo } from 'ui/svg/icons/Logo'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 function onButtonPress() {
@@ -28,147 +31,96 @@ export const AppComponents: FunctionComponent = () => {
     hideModal: hideBasicModal,
   } = useModal(false)
 
-  const [customButtonIsLoading, setCustomButtonIsLoading] = useState(false)
+  const [buttonIsLoading, setButtonIsLoading] = useState(false)
 
-  const onButtonLongPress = useCallback(() => {
-    setCustomButtonIsLoading(true)
-    setTimeout(() => setCustomButtonIsLoading(false), 3000)
+  const onTriggerFakeLoading = useCallback(() => {
+    setButtonIsLoading(true)
+    setTimeout(() => setButtonIsLoading(false), 3000)
   }, [])
 
   return (
     <StyledScrollView style={{ backgroundColor: ColorsEnum.GREY_LIGHT }}>
       {/* Typos */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Typos`)}</Typo.Title1>
+      <Typo.Title1 color={ColorsEnum.PRIMARY}>Typos</Typo.Title1>
 
-      <Typo.Hero>{_(t`Hero`)}</Typo.Hero>
-      <Typo.Title1>{_(t`Title 1`)}</Typo.Title1>
-      <Typo.Title2>{_(t`Title 2`)}</Typo.Title2>
-      <Typo.Title3>{_(t`Title 3`)}</Typo.Title3>
-      <Typo.Title4>{_(t`Title 4`)}</Typo.Title4>
-      <Typo.Body>{_(t`This is a body`)}</Typo.Body>
-      <Typo.ButtonText>{_(t`This is a button text`)}</Typo.ButtonText>
-      <Typo.Caption>{_(t`This is a caption`)}</Typo.Caption>
+      <Typo.Hero>Hero</Typo.Hero>
+      <Typo.Title1>Title 1</Typo.Title1>
+      <Typo.Title2>Title 2</Typo.Title2>
+      <Typo.Title3>Title 3</Typo.Title3>
+      <Typo.Title4>Title 4</Typo.Title4>
+      <Typo.Body>This is a body</Typo.Body>
+      <Typo.ButtonText>This is a button text</Typo.ButtonText>
+      <Typo.Caption>This is a caption</Typo.Caption>
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Buttons */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Buttons`)}</Typo.Title1>
-      <Typo.Title4>{_(t`Button - Theme Primary`)}</Typo.Title4>
+      <Typo.Title1 color={ColorsEnum.PRIMARY}>Buttons</Typo.Title1>
+      {/* Buttons: Primary */}
+      <Typo.Title4>Button - Theme Primary</Typo.Title4>
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Se connecter"
+      <ButtonPrimary
+        title="Longpress to see"
         onPress={onButtonPress}
-        buttonTheme={AppButtonTheme.PRIMARY}
+        onLongPress={onTriggerFakeLoading}
         icon={Close}
+        isLoading={buttonIsLoading}
       />
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Se connecter"
-        buttonTheme={AppButtonTheme.PRIMARY}
-        isLoading
-        onPress={onButtonPress}
-      />
-      <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Disabled button"
-        onPress={onButtonPress}
-        buttonTheme={AppButtonTheme.PRIMARY}
-        icon={Close}
-        disabled
-      />
-      <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Custom button long press"
-        onPress={onButtonPress}
-        onLongPress={onButtonLongPress}
-        buttonTheme={AppButtonTheme.PRIMARY}
-        customStyles={{
-          container: {
-            backgroundColor: ColorsEnum.GREEN_VALID,
-          },
-        }}
-        icon={Close}
-        isLoading={customButtonIsLoading}
-      />
+      <ButtonPrimary title="Disabled" onPress={onButtonPress} icon={Close} disabled />
       <Spacer.Column numberOfSpaces={2} />
-      <Typo.Title4>{_(t`Button - Theme Secondary`)}</Typo.Title4>
+      {/* Buttons: White Primary */}
+      <Typo.Title4>Button - White Primary Secondary</Typo.Title4>
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Se connecter avec un très long texte, est-ce possible ?"
-        onPress={onButtonPress}
-        buttonTheme={AppButtonTheme.SECONDARY}
+      <ButtonPrimaryWhite
+        title="White button"
+        onPress={onTriggerFakeLoading}
+        isLoading={buttonIsLoading}
         icon={Close}
       />
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Se connecter"
-        buttonTheme={AppButtonTheme.SECONDARY}
-        isLoading
-        onPress={onButtonPress}
-      />
-      <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Disabled"
-        buttonTheme={AppButtonTheme.SECONDARY}
-        icon={Close}
-        disabled
-        onPress={onButtonPress}
-      />
+      <ButtonPrimaryWhite title="Disabled" onPress={onButtonPress} icon={Close} disabled />
       <Spacer.Column numberOfSpaces={2} />
-      <Typo.Title4>{_(t`Button - Theme Tertiary`)}</Typo.Title4>
+      {/* Buttons: Secondary */}
+      <Typo.Title4>Button - Theme Secondary</Typo.Title4>
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Se connecter"
-        onPress={onButtonPress}
-        buttonTheme={AppButtonTheme.TERTIARY}
+      <ButtonSecondary
+        title="Triggers all active buttons"
         icon={Close}
+        isLoading={buttonIsLoading}
+        onPress={onTriggerFakeLoading}
       />
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Loading"
-        onPress={onButtonPress}
-        buttonTheme={AppButtonTheme.TERTIARY}
-        icon={Close}
-        isLoading
-      />
-      <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Disabled"
-        onPress={onButtonPress}
-        buttonTheme={AppButtonTheme.TERTIARY}
-        icon={Close}
-        disabled
-      />
+      <ButtonSecondary title="Disabled" icon={Close} disabled onPress={onButtonPress} />
       <Spacer.Column numberOfSpaces={2} />
-      <Typo.Title4>{_(t`Button - Theme Quaternary`)}</Typo.Title4>
+      {/* Buttons: Tertiary */}
+      <Typo.Title4>Button - Theme Tertiary</Typo.Title4>
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Se connecter"
-        onPress={onButtonPress}
-        buttonTheme={AppButtonTheme.QUATERNARY}
+      <ButtonTertiary
+        title="Triggers all active buttons"
         icon={Close}
+        isLoading={buttonIsLoading}
+        onPress={onTriggerFakeLoading}
       />
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Se connecter"
-        onPress={onButtonPress}
-        buttonTheme={AppButtonTheme.QUATERNARY}
+      <ButtonTertiary title="Disabled" onPress={onButtonPress} icon={Close} disabled />
+      <Spacer.Column numberOfSpaces={2} />
+      {/* Buttons: Quaternary */}
+      <Typo.Title4>Button - Theme Quaternary</Typo.Title4>
+      <Spacer.Column numberOfSpaces={1} />
+      <ButtonQuaternary
+        title="Triggers all active buttons"
         icon={Close}
-        isLoading
+        isLoading={buttonIsLoading}
+        onPress={onTriggerFakeLoading}
       />
       <Spacer.Column numberOfSpaces={1} />
-      <AppButton
-        title="Se connecter"
-        onPress={onButtonPress}
-        buttonTheme={AppButtonTheme.QUATERNARY}
-        icon={Close}
-        disabled
-      />
+      <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Modals */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Modals`)}</Typo.Title1>
+      <Typo.Title1 color={ColorsEnum.PRIMARY}>Modals</Typo.Title1>
       <TouchableOpacity onPress={showBasicModal}>
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Modal - Basic`)}</Typo.Title4>
+        <Typo.Title4 color={ColorsEnum.TERTIARY}>Modal - Basic</Typo.Title4>
       </TouchableOpacity>
       <AppModal
         title="a basic modal"
@@ -178,39 +130,39 @@ export const AppComponents: FunctionComponent = () => {
         <Text>An simple content</Text>
       </AppModal>
       <Spacer.Column numberOfSpaces={1} />
-      <Typo.Title4>{_(t`Modal - Progressive`)}</Typo.Title4>
+      <Typo.Title4>Modal - Progressive</Typo.Title4>
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Icons */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Icons`)}</Typo.Title1>
+      <Typo.Title1 color={ColorsEnum.PRIMARY}>Icons</Typo.Title1>
       <AlignedText>
         <ArrowPrevious size={24} />
-        <Text>{_(t` - ArrowPrevious `)}</Text>
+        <Text> - ArrowPrevious </Text>
       </AlignedText>
       <AlignedText>
         <Close size={24} />
-        <Text>{_(t` - Close `)}</Text>
+        <Text> - Close </Text>
       </AlignedText>
       <AlignedText>
-        <PassCulture size={24} />
-        <Text>{_(t` - PassCulture `)}</Text>
+        <Logo size={24} />
+        <Text> - PassCulture </Text>
       </AlignedText>
       <AlignedText>
         <Eye size={24} />
-        <Text>{_(t` - Eye `)}</Text>
+        <Text> - Eye </Text>
       </AlignedText>
       <AlignedText>
         <EyeSlash size={24} />
-        <Text>{_(t` - EyeSlash `)}</Text>
+        <Text> - EyeSlash </Text>
       </AlignedText>
       <Spacer.Column numberOfSpaces={1} />
 
       {/* Inputs */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Inputs`)}</Typo.Title1>
-      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Text Input`)}</Typo.Title4>
+      <Typo.Title1 color={ColorsEnum.PRIMARY}>Inputs</Typo.Title1>
+      <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input</Typo.Title4>
       <TextInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
       <Spacer.Column numberOfSpaces={1} />
-      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Text Input - Email`)}</Typo.Title4>
+      <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input - Email</Typo.Title4>
       <TextInput
         value=""
         onChangeText={doNothingFn}
@@ -218,15 +170,15 @@ export const AppComponents: FunctionComponent = () => {
         keyboardType="email-address"
       />
       <Spacer.Column numberOfSpaces={1} />
-      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Text Input - Error`)}</Typo.Title4>
+      <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input - Error</Typo.Title4>
       <TextInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} isError={true} />
       <Spacer.Column numberOfSpaces={1} />
-      <Typo.Title4 color={ColorsEnum.TERTIARY}>{_(t`Password Input`)}</Typo.Title4>
+      <Typo.Title4 color={ColorsEnum.TERTIARY}>Password Input</Typo.Title4>
       <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Create your category */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY}>{_(t`Add components`)}</Typo.Title1>
+      <Typo.Title1 color={ColorsEnum.PRIMARY}>Add components</Typo.Title1>
       <Spacer.Column numberOfSpaces={5} />
     </StyledScrollView>
   )
