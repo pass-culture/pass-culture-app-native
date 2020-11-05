@@ -199,6 +199,9 @@ jobs:
             echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_STAGING" >> android/keystores/staging.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_STAGING" >>  android/keystores/staging.keystore.properties
       - run:
+          name: Setup android Google services config
+          command: echo $ANDROID_GOOGLE_SERVICES_JSON > android/app/google-services.json
+      - run:
           name: Deploy Android App for staging environment
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
