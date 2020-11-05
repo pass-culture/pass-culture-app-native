@@ -175,6 +175,9 @@ jobs:
           name: Decode match secrets
           command: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
       - run:
+          name: Setup iOS Google services config
+          command: echo $IOS_GOOGLE_SERVICES_PLIST > ios/GoogleService-Info.plist
+      - run:
           name: Deploy IOS App for staging environment
           no_output_timeout: 30m
           command: |
