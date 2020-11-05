@@ -43,6 +43,7 @@
     "@sentry/react-native": "^1.8.2",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/styled-components": "^5.1.4",
+    "algoliasearch": "^4.6.0",
     "appcenter-cli": "^2.7.2",
     "babel-core": "^6.26.3",
     "contentful-resolve-response": "^1.2.2",
