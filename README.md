@@ -74,7 +74,10 @@ Then run the app with this command:
 
 #### IOS
 
-On iOS you can run the following command:
+You will need to get the `GoogleService-Info.plist` file in this `ios` directory.
+You can get a copy of the testing configuration one through the password manager.
+
+And then, you can run the following command:
 `yarn ios:testing`
 
 ### Debugging
