@@ -145,7 +145,7 @@ jobs:
           command: cd ios/ && bundle exec pod install
       - run:
           name: Setup iOS Google services config
-          command: echo $IOS_GOOGLE_SERVICES_PLIST > ios/GoogleService-Info.plist
+          command: echo $IOS_GOOGLE_SERVICES_PLIST_TESTING > ios/GoogleService-Info.plist
       - run:
           name: Decode match secrets
           command: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
@@ -176,7 +176,7 @@ jobs:
           command: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
       - run:
           name: Setup iOS Google services config
-          command: echo $IOS_GOOGLE_SERVICES_PLIST > ios/GoogleService-Info.plist
+          command: echo $IOS_GOOGLE_SERVICES_PLIST_STAGING > ios/GoogleService-Info.plist
       - run:
           name: Deploy IOS App for staging environment
           no_output_timeout: 30m
