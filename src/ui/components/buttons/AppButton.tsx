@@ -1,88 +1,58 @@
-import React, { FunctionComponent, memo } from 'react'
-import {
-  Dimensions,
-  GestureResponderEvent,
-  StyleProp,
-  TextStyle,
-  View,
-  ViewStyle,
-} from 'react-native'
+import React, { Fragment, FunctionComponent, memo } from 'react'
+import { Dimensions, GestureResponderEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { PassCulture } from 'ui/svg/icons/PassCulture'
+import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
-import { isStyleObjectTypeGuard } from '../typeguards'
-
-import { AppButtonTheme, AppButtonThemesConfiguration } from './types'
-
-interface AppButtonProps {
+export interface BaseButtonProps {
   title: string
-  buttonTheme: AppButtonTheme
-  customStyles?: AppButtonStyleClasses
   disabled?: boolean
-  icon?: FunctionComponent<IconInterface>
-  iconColor?: ColorsEnum
-  iconSize?: number
   isLoading?: boolean
+  icon?: FunctionComponent<IconInterface>
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
 }
 
-/**
- * Themes and styles priority order:
- * - customStyle erases isLoadingTheme
- * - isLoadingTheme erases disabledTheme
- * - disabledTheme erases buttonTheme
- */
-const _AppButton: FunctionComponent<AppButtonProps> = (props) => {
-  const Icon = props.icon
-  const iconTheme = AppButtonThemesConfiguration[props.buttonTheme].icon
-  const disabledIconTheme = AppButtonThemesConfiguration[props.buttonTheme].disabledIcon
+export interface AppButtonProps extends BaseButtonProps {
+  loadingIconColor: ColorsEnum
+  iconColor?: ColorsEnum
+  iconSize?: number
+  textColor?: ColorsEnum
+  textSize?: number
+  backgroundColor?: ColorsEnum
+  borderColor?: ColorsEnum
+}
 
+type Only<TestedType, StandardType> = TestedType &
+  Record<Exclude<keyof TestedType, keyof StandardType>, never>
+
+const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) => {
+  const Icon = props.icon
   const pressHandler = props.disabled || props.isLoading ? undefined : props.onPress
   const longPressHandler = props.disabled || props.isLoading ? undefined : props.onLongPress
 
   return (
     <Container
       testID="button-container"
-      buttonTheme={props.buttonTheme}
-      customStyle={props.customStyles?.container}
-      disabled={props.disabled}
-      isLoading={props.isLoading}
+      backgroundColor={props.backgroundColor}
+      borderColor={props.borderColor}
       onPress={pressHandler}
       onLongPress={longPressHandler}>
       {props.isLoading ? (
-        <PassCulture
-          testID="button-isloading-icon"
-          color={props.iconColor || iconTheme?.color}
-          size={props.iconSize || iconTheme?.size}
-        />
+        <Logo testID="button-isloading-icon" color={props.loadingIconColor} size={props.iconSize} />
       ) : (
-        <>
-          {Icon && (
-            <View>
-              <Icon
-                testID="button-icon"
-                color={
-                  props.iconColor ||
-                  (props.disabled && disabledIconTheme?.color) ||
-                  iconTheme?.color
-                }
-                size={props.iconSize || iconTheme?.size}
-              />
-            </View>
-          )}
+        <Fragment>
+          {Icon && <Icon testID="button-icon" color={props.iconColor} size={props.iconSize} />}
           <Title
             testID="button-title"
-            buttonTheme={props.buttonTheme}
-            customStyle={props.customStyles?.title}
-            numberOfLines={1}
-            disabled={props.disabled}>
+            textColor={props.textColor}
+            textSize={props.textSize}
+            numberOfLines={1}>
             {props.title}
           </Title>
-        </>
+        </Fragment>
       )}
     </Container>
   )
@@ -91,50 +61,33 @@ const _AppButton: FunctionComponent<AppButtonProps> = (props) => {
 // memo is used to avoid useless rendering while props remain unchanged
 export const AppButton = memo(_AppButton)
 
-interface CustomizableProps {
-  customStyle: StyleProp<TextStyle>
-  buttonTheme: AppButtonTheme
-  disabled?: boolean
-  isLoading?: boolean
+interface ContainerProps {
+  backgroundColor?: ColorsEnum
+  borderColor?: ColorsEnum
 }
 
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: 0.7,
-}))<CustomizableProps>(({ customStyle, buttonTheme, disabled, isLoading }) => {
-  const containerTheme = AppButtonThemesConfiguration[buttonTheme].container as ViewStyle
-  const disabledContainerTheme = AppButtonThemesConfiguration[buttonTheme]
-    .disabledContainer as ViewStyle
-  const isLoadingContainerTheme = AppButtonThemesConfiguration[buttonTheme]
-    .isLoadingContainer as ViewStyle
+}))<ContainerProps>(({ backgroundColor, borderColor }) => ({
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: 24,
+  padding: 2,
+  backgroundColor,
+  borderColor,
+  borderWidth: borderColor ? 2 : 0,
+  height: 40,
+}))
 
-  return {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    ...(isStyleObjectTypeGuard(containerTheme) ? containerTheme : null),
-    ...(disabled && isStyleObjectTypeGuard(disabledContainerTheme) ? disabledContainerTheme : null),
-    ...(isLoading && isStyleObjectTypeGuard(isLoadingContainerTheme)
-      ? isLoadingContainerTheme
-      : null),
-    ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
-  }
-})
-
-const Title = styled(Typo.ButtonText)(
-  ({ customStyle, buttonTheme, disabled }: CustomizableProps) => {
-    const theme = AppButtonThemesConfiguration?.[buttonTheme]?.title as TextStyle
-    const disabledTheme = AppButtonThemesConfiguration?.[buttonTheme]?.disabledTitle as TextStyle
-
-    return {
-      maxWidth: Dimensions.get('screen').width - 100,
-      ...(isStyleObjectTypeGuard(theme) ? theme : null),
-      ...(disabled && isStyleObjectTypeGuard(disabledTheme) ? disabledTheme : null),
-      ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
-    }
-  }
-)
-
-export interface AppButtonStyleClasses {
-  container?: ViewStyle
-  title?: TextStyle
+interface TitleProps {
+  textColor?: ColorsEnum
+  textSize?: number
 }
+
+const Title = styled(Typo.ButtonText)<TitleProps>(({ textColor, textSize }) => ({
+  maxWidth: Dimensions.get('screen').width - getSpacing(25),
+  color: textColor,
+  fontSize: textSize,
+  marginLeft: 5,
+}))
