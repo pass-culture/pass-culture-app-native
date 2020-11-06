@@ -15,20 +15,16 @@ describe('AppButton Component', () => {
       getByTestId('button-icon')
     })
     it('should not display icon when not provided', () => {
-      const { getByTestId } = render(
+      const { queryByTestId } = render(
         <AppButton title="Testing Disabled" loadingIconColor={ColorsEnum.BLACK} />
       )
-      try {
-        getByTestId('button-icon')
-        fail()
-      } catch (error) {
-        expect(error).toBeDefined()
-      }
+      const icon = queryByTestId('button-icon')
+      expect(icon).toBeFalsy()
     })
   })
   describe('* isLoading property', () => {
     it('should display right elements when isLoading equals true', () => {
-      const { getByTestId } = render(
+      const { getByTestId, queryByTestId } = render(
         <AppButton
           title="Testing Disabled"
           loadingIconColor={ColorsEnum.BLACK}
@@ -37,15 +33,11 @@ describe('AppButton Component', () => {
         />
       )
       getByTestId('button-isloading-icon')
-      try {
-        getByTestId('button-icon')
-        fail()
-      } catch (error) {
-        expect(error).toBeDefined()
-      }
+      const icon = queryByTestId('button-icon')
+      expect(icon).toBeFalsy()
     })
     it('should display right elements when isLoading equals false', () => {
-      const { getByTestId } = render(
+      const { getByTestId, queryByTestId } = render(
         <AppButton
           title="Testing Disabled"
           loadingIconColor={ColorsEnum.BLACK}
@@ -55,12 +47,8 @@ describe('AppButton Component', () => {
       )
 
       getByTestId('button-icon')
-      try {
-        getByTestId('button-isloading-icon')
-        fail()
-      } catch (error) {
-        expect(error).toBeDefined()
-      }
+      const icon = queryByTestId('button-isloading-icon')
+      expect(icon).toBeFalsy()
     })
   })
   describe('* Disabled property', () => {

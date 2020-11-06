@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export interface BaseButtonProps {
   title: string
@@ -67,7 +68,7 @@ interface ContainerProps {
 }
 
 const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: 0.7,
+  activeOpacity: ACTIVE_OPACITY,
 }))<ContainerProps>(({ backgroundColor, borderColor }) => ({
   flexDirection: 'row',
   justifyContent: 'center',
