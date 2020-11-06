@@ -10,6 +10,7 @@ import {
 } from 'features/home/contentful'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
+import {getRefreshToken} from "libs/keychain";
 
 export const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 const DEPTH_LEVEL = 2
@@ -24,6 +25,8 @@ const adaptHomepageEntries = (
 }
 
 export async function getHomepageEntries() {
+  const token = await getRefreshToken()
+  console.log('token 2', token)
   const json = await getExternal<EntryCollection<EntryFields, string>>(
     `${CONTENTFUL_BASE_URL}` +
       `/spaces/${env.CONTENTFUL_SPACE_ID}` +

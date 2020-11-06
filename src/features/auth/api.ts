@@ -7,6 +7,7 @@ import { env } from 'libs/environment'
 import { get, post } from 'libs/fetch'
 import { _ } from 'libs/i18n'
 import { saveToken } from 'libs/storage'
+import {getRefreshToken, storeRefreshToken} from "libs/keychain";
 
 type Credentials = {
   email: string
@@ -25,6 +26,11 @@ export async function signin({ email, password }: Credentials): Promise<boolean>
       credentials: 'omit',
     })
     await saveToken(access_token)
+    await storeRefreshToken(email, access_token)
+
+    const token = await getRefreshToken()
+    console.log('token', token)
+
     await analytics.logLogin({ method: env.API_BASE_URL })
     return true
   } catch (error) {
