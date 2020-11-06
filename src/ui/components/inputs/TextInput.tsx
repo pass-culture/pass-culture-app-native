@@ -13,8 +13,8 @@ type UsedTextInputProps = Pick<
 
 type CustomProps = {
   isError?: boolean
-  width?: number
-  height?: number
+  width?: number | string
+  height?: number | string
 }
 
 export type TextInputProps = UsedTextInputProps & CustomProps

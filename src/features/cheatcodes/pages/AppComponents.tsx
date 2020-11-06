@@ -19,6 +19,7 @@ import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Logo } from 'ui/svg/icons/Logo'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
+import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 function onButtonPress() {
@@ -161,6 +162,10 @@ export const AppComponents: FunctionComponent = () => {
       <AlignedText>
         <UserCircle size={24} />
         <Text> - UserCircle </Text>
+      </AlignedText>
+      <AlignedText>
+        <Warning size={24} />
+        <Text> - Warning </Text>
       </AlignedText>
       <Spacer.Column numberOfSpaces={1} />
 

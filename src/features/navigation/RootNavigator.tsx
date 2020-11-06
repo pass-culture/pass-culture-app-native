@@ -15,23 +15,23 @@ export type RootStackParamList = {
   AppComponents: undefined
   Navigation: undefined
   CheatCodes: undefined
-  Home: undefined
+  Home: { shouldDisplayLoginModal: boolean }
   IdCheck: undefined
-  Login?: { userId: string }
+  Login: undefined
 }
 
-const RootStack = createStackNavigator<RootStackParamList>()
+export const RootStack = createStackNavigator<RootStackParamList>()
 
 export const RootNavigator: React.FC = function () {
   return (
     <NavigationContainer onStateChange={onNavigationStateChange}>
       <RootStack.Navigator initialRouteName="Home">
-        <RootStack.Screen name="Home" component={Home} />
         <RootStack.Screen
-          name="Login"
-          component={Login}
-          initialParams={{ userId: 'test_user_id' }}
+          name="Home"
+          component={Home}
+          initialParams={{ shouldDisplayLoginModal: false }}
         />
+        <RootStack.Screen name="Login" component={Login} />
         <RootStack.Screen name="CheatCodes" component={CheatCodes} />
         <RootStack.Screen name="AppComponents" component={AppComponents} />
         <RootStack.Screen name="Navigation" component={Navigation} />

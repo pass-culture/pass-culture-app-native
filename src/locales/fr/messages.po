@@ -13,25 +13,9 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:59
-msgid "- ArrowPrevious"
-msgstr "- ArrowPrevious"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:63
-msgid "- Close"
-msgstr "- Close"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:67
-msgid "- Eye"
-msgstr "- Eye"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:71
-msgid "- EyeSlash"
-msgstr "- EyeSlash"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:91
-msgid "Add components"
-msgstr "Add components"
+#: src/features/auth/pages/Login.tsx:73
+msgid "Adresse e-mail"
+msgstr "Adresse e-mail"
 
 #. Error message on Batch get installation ID
 #: src/features/cheatcodes/pages/CheatCodes.tsx:43
@@ -43,78 +27,45 @@ msgid "Aucun token à sauvegarder"
 msgstr "Aucun token à sauvegarder"
 
 #. Welcome title message
-#: src/features/home/pages/Home.tsx:31
+#: src/features/home/pages/Home.tsx:49
 msgid "Bienvenue !"
-msgstr "Bienvenue !
+msgstr "Bienvenue !"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:34
-msgid "Button - Theme Primary"
-msgstr "Button - Theme Primary"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:40
-msgid "Button - Theme Quaternary"
-msgstr "Button - Theme Quaternary"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:36
-msgid "Button - Theme Secondary"
-msgstr "Button - Theme Secondary"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:38
-msgid "Button - Theme Tertiary"
-msgstr "Button - Theme Tertiary"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:33
-msgid "Buttons"
-msgstr "Buttons"
-
-#: src/features/home/pages/Home.tsx:19
+#: src/features/home/pages/Home.tsx:34
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/pages/Login.tsx:36
-msgid "Connectez-vous :"
-msgstr "Connectez-vous :"
-
-#. login button
-#: src/features/auth/pages/Login.tsx:39
-msgid "Connexion"
-msgstr "Connexion"
+#: src/features/auth/pages/Login.tsx:61
+msgid "Connecte-toi !"
+msgstr "Connecte-toi !"
 
 #. Duo offer
 #: src/features/home/atoms/OfferTile.tsx:39
 msgid "Duo"
 msgstr "Duo"
 
+#: src/features/auth/pages/Login.tsx:67
+msgid "E-mail ou mot de passe incorrect"
+msgstr "E-mail ou mot de passe incorrect"
+
 #. Authentication error message
 #: src/libs/fetch.ts:75
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:22
-msgid "Hero"
-msgstr "Hero"
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:20
+msgid "Le pass Culture est accessible à tous !"
+msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:56
-msgid "Icons"
-msgstr "Icons"
+#: src/features/auth/pages/Login.tsx:79
+msgid "Mot de passe"
+msgstr "Mot de passe"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:76
-msgid "Inputs"
-msgstr "Inputs"
+#: src/features/auth/pages/Login.tsx:85
+msgid "Mot de passe oublié ?"
+msgstr "Mot de passe oublié ?"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:46
-msgid "Modal - Basic"
-msgstr "Modal - Basic"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:52
-msgid "Modal - Progressive"
-msgstr "Modal - Progressive"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:44
-msgid "Modals"
-msgstr "Modals"
-
-#: src/features/home/pages/Home.tsx:22
+#: src/features/home/pages/Home.tsx:37
 msgid "Navigation"
 msgstr "Navigation"
 
@@ -122,76 +73,37 @@ msgstr "Navigation"
 msgid "Page Login"
 msgstr "Page Login"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:86
-msgid "Password Input"
-msgstr "Password Input"
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:27
+msgid "S'inscrire"
+msgstr "S'inscrire"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:77
-msgid "Text Input"
-msgstr "Text Input"
+#: src/features/auth/pages/Login.tsx:89
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:28
+msgid "Se connecter"
+msgstr "Se connecter"
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:80
-msgid "Text Input - Email"
-msgstr "Text Input - Email"
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:23
+msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
+msgstr "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 
-#: src/features/cheatcodes/pages/AppComponents.tsx:83
-msgid "Text Input - Error"
-msgstr "Text Input - Error"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:27
-msgid "This is a body"
-msgstr "This is a body"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:28
-msgid "This is a button text"
-msgstr "This is a button text"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:29
-msgid "This is a caption"
-msgstr "This is a caption"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:23
-msgid "Title 1"
-msgstr "Title 1"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:24
-msgid "Title 2"
-msgstr "Title 2"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:25
-msgid "Title 3"
-msgstr "Title 3"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:26
-msgid "Title 4"
-msgstr "Title 4"
+#. password placeholder
+#: src/features/auth/pages/Login.tsx:81
+msgid "Ton mot de passe"
+msgstr "Ton mot de passe"
 
 #. Welcome body message
-#: src/features/home/pages/Home.tsx:35
+#: src/features/home/pages/Home.tsx:53
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
-
-#: src/features/cheatcodes/pages/AppComponents.tsx:20
-msgid "Typos"
-msgstr "Typos"
 
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
 #. email placeholder
-#: src/features/auth/pages/Login.tsx:37
-msgid "name@domain.com"
-msgstr "name@domain.com"
-
-#. password placeholder
-#: src/features/auth/pages/Login.tsx:38
-msgid "password"
-msgstr "password"
-
-#: src/features/auth/api.ts:31
-msgid "Échec de la connexion au Pass Culture: {0}"
-msgstr "Échec de la connexion au Pass Culture: {0}"
+#: src/features/auth/pages/Login.tsx:75
+msgid "tonadresse@email.com"
+msgstr "tonadresse@email.com"
 
 #: src/libs/fetch.ts:49
 #: src/libs/fetch.ts:67
