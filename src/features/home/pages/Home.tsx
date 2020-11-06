@@ -18,8 +18,12 @@ import {
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
+import { useModal } from 'ui/components/modals/useModal'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
+import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+
+import SignUpSignInChoiceModal from '../components/SignUpSignInChoiceModal'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
@@ -28,6 +32,11 @@ type Props = {
 }
 
 export const Home: FunctionComponent<Props> = function ({ navigation }) {
+  const {
+    visible: signInModalVisible,
+    showModal: showSignInModal,
+    hideModal: hideSignInModal,
+  } = useModal(false)
   const { data: modules = [] } = useHomepageModules()
   return (
     <ScrollView>
@@ -44,6 +53,9 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
       <CenterContainer>
         <HeaderBackgroundWrapper>
           <HeaderBackground />
+          <UserProfileContainer onPress={showSignInModal}>
+            <UserCircle size={32} color={ColorsEnum.WHITE} />
+          </UserProfileContainer>
         </HeaderBackgroundWrapper>
         <Spacer.Column numberOfSpaces={18} />
         <Typo.Title1 color={ColorsEnum.WHITE}>
@@ -70,6 +82,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation }) {
         })}
         <Spacer.Column numberOfSpaces={6} />
       </Container>
+      <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
     </ScrollView>
   )
 }
@@ -94,6 +107,14 @@ const CheatButtonsContainer = styled.View({
   width: '100%',
   flexDirection: 'row',
   justifyContent: 'space-around',
+})
+
+const UserProfileContainer = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.3,
+})({
+  position: 'absolute',
+  right: 24,
+  top: 20,
 })
 
 const CheatTouchableOpacity = styled(TouchableOpacity)({

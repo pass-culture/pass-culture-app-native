@@ -2,8 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Modal, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Close } from 'ui/svg/icons/Close'
+import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme'
 
 import { ModalHeader } from './ModalHeader'
@@ -11,28 +10,32 @@ import { ModalHeader } from './ModalHeader'
 interface Props {
   title: string
   visible: boolean
-  onClose?: () => void
-  onBackNavigation?: () => void
+  leftIcon?: FunctionComponent<IconInterface>
+  onLeftIconPress?: () => void
+  rightIcon?: FunctionComponent<IconInterface>
+  onRightIconPress?: () => void
 }
 
 export const AppModal: FunctionComponent<Props> = ({
   title,
   visible,
-  onClose,
-  onBackNavigation,
+  leftIcon,
+  onLeftIconPress,
+  rightIcon,
+  onRightIconPress,
   children,
 }) => (
   <Modal animationType="slide" statusBarTranslucent transparent={true} visible={visible}>
-    <TouchableWithoutFeedback onPress={onClose}>
+    <TouchableWithoutFeedback onPress={onRightIconPress}>
       <Overlay>
         <TouchableWithoutFeedback>
           <Container>
             <ModalHeader
               title={title}
-              leftIcon={ArrowPrevious}
-              onLeftIconPress={onBackNavigation}
-              rightIcon={Close}
-              onRightIconPress={onClose}
+              leftIcon={leftIcon}
+              onLeftIconPress={onLeftIconPress}
+              rightIcon={rightIcon}
+              onRightIconPress={onRightIconPress}
             />
             <Content>{children}</Content>
           </Container>
@@ -46,6 +49,7 @@ const Overlay = styled.View({
   flex: 1,
   flexDirection: 'column',
   justifyContent: 'flex-end',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
 })
 
 const Container = styled.View({
