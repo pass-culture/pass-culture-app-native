@@ -18,6 +18,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Logo } from 'ui/svg/icons/Logo'
+import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 function onButtonPress() {
@@ -125,8 +126,10 @@ export const AppComponents: FunctionComponent = () => {
       <AppModal
         title="a basic modal"
         visible={basicModalVisible}
-        onClose={hideBasicModal}
-        onBackNavigation={hideBasicModal}>
+        leftIcon={ArrowPrevious}
+        onLeftIconPress={hideBasicModal}
+        rightIcon={Close}
+        onRightIconPress={hideBasicModal}>
         <Text>An simple content</Text>
       </AppModal>
       <Spacer.Column numberOfSpaces={1} />
@@ -144,16 +147,20 @@ export const AppComponents: FunctionComponent = () => {
         <Text> - Close </Text>
       </AlignedText>
       <AlignedText>
-        <Logo size={24} />
-        <Text> - PassCulture </Text>
-      </AlignedText>
-      <AlignedText>
         <Eye size={24} />
         <Text> - Eye </Text>
       </AlignedText>
       <AlignedText>
         <EyeSlash size={24} />
         <Text> - EyeSlash </Text>
+      </AlignedText>
+      <AlignedText>
+        <Logo size={24} />
+        <Text> - Logo </Text>
+      </AlignedText>
+      <AlignedText>
+        <UserCircle size={24} />
+        <Text> - UserCircle </Text>
       </AlignedText>
       <Spacer.Column numberOfSpaces={1} />
 
