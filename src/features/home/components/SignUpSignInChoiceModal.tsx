@@ -15,7 +15,7 @@ interface Props {
   dismissModal: () => void
 }
 
-const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dismissModal }) => {
+export const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dismissModal }) => {
   const { navigate } = useNavigation()
 
   function goToSignUp() {
@@ -51,5 +51,3 @@ const Description = styled.Text({
   textAlign: 'center',
   paddingBottom: 30,
 })
-
-export default SignUpSignInChoiceModal

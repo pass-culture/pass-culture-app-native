@@ -22,8 +22,9 @@ import { useModal } from 'ui/components/modals/useModal'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-import SignUpSignInChoiceModal from '../components/SignUpSignInChoiceModal'
+import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
 
@@ -110,7 +111,7 @@ const CheatButtonsContainer = styled.View({
 })
 
 const UserProfileContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.3,
+  activeOpacity: ACTIVE_OPACITY,
 })({
   position: 'absolute',
   right: 24,

@@ -15,3 +15,5 @@ export enum ColorsEnum {
   ERROR = '#b60025',
   TRANSPARENT = 'transparent',
 }
+
+export const ACTIVE_OPACITY = 0.7
