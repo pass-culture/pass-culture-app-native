@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { useFocusEffect } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
@@ -26,19 +27,23 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>
+type Props = StackScreenProps<RootStackParamList, 'Home'>
 
-type Props = {
-  navigation: HomeScreenNavigationProp
-}
-
-export const Home: FunctionComponent<Props> = function ({ navigation }) {
-  const {
-    visible: signInModalVisible,
-    showModal: showSignInModal,
-    hideModal: hideSignInModal,
-  } = useModal(false)
+export const Home: FunctionComponent<Props> = function ({ navigation, route }: Props) {
+  const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const { data: modules = [] } = useHomepageModules()
+
+  function hideSignInModal() {
+    navigation.setParams({ shouldDisplayLoginModal: false })
+    hideModal()
+  }
+
+  useFocusEffect(() => {
+    if (route.params.shouldDisplayLoginModal) {
+      showSignInModal()
+    }
+  })
+
   return (
     <ScrollView>
       {env.ENV !== 'production' && (

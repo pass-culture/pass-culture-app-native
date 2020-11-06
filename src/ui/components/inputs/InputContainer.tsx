@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 import { ColorsEnum, getShadow, padding } from 'ui/theme'
 
 type Props = {
-  width?: number
-  height?: number
+  width?: number | string
+  height?: number | string
   isError?: boolean
   isFocus?: boolean
 }
