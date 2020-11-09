@@ -21,6 +21,9 @@ jest.mock('libs/environment', () => ({
     CONTENTFUL_SPACE_ID: 'contentfulSpaceId',
     CONTENTFUL_ENVIRONMENT: 'environment',
     CONTENTFUL_ACCESS_TOKEN: 'accessToken',
+    ALGOLIA_APPLICATION_ID: 'algoliaAppId',
+    ALGOLIA_INDEX_NAME: 'algoliaIndexName',
+    ALGOLIA_SEARCH_API_KEY: 'algoliaApiKey',
   },
 }))
 
