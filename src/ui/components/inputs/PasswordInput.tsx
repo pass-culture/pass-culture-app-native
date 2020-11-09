@@ -37,7 +37,7 @@ export function PasswordInput(props: TextInputProps): JSX.Element {
         autoFocus={props.autoFocus}
         onFocus={onFocus}
         onBlur={onBlur}>
-        <Typo.Body color={ColorsEnum.GREY_DARK}>{props.value}</Typo.Body>
+        <Typo.Body color={ColorsEnum.BLACK}>{props.value}</Typo.Body>
       </StyledTextInput>
       <IconTouchableOpacity onPress={togglePasswordDisplay}>
         {shouldHidePassword ? (
