@@ -2280,6 +2280,14 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-query@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-query/-/react-query-1.1.2.tgz#3d7f3c9457116d05ba4eabb9e7f882b6d496436c"
+  integrity sha512-/IuQs37kmUg7C417Rotu+uf/3LghR3Qv6RGHO2YU1P+wFx167Hy3WJ3r9Si0jOyJVTDtjF2Lt0xSeq+kJwokKw==
+  dependencies:
+    "@types/react" "*"
+    ts-toolbelt "*"
+
 "@types/react-test-renderer@*", "@types/react-test-renderer@^16.9.2":
   version "16.9.3"
   resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-16.9.3.tgz#96bab1860904366f4e848b739ba0e2f67bcae87e"
@@ -11559,6 +11567,11 @@ ts-jest@26.4.1:
     mkdirp "1.x"
     semver "7.x"
     yargs-parser "20.x"
+
+ts-toolbelt@*:
+  version "8.0.7"
+  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-8.0.7.tgz#4dad2928831a811ee17dbdab6eb1919fc0a295bf"
+  integrity sha512-KICHyKxc5Nu34kyoODrEe2+zvuQQaubTJz7pnC5RQ19TH/Jged1xv+h8LBrouaSD310m75oAljYs59LNHkLDkQ==
 
 tsconfig-paths@^3.9.0:
   version "3.9.0"
