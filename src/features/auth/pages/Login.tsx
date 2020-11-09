@@ -61,60 +61,58 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Background />
       <StyledFakeModal>
-        <StyledForm>
-          <ModalHeader
-            title={_(t`Connecte-toi !`)}
-            leftIcon={ArrowPrevious}
-            onLeftIconPress={onBackNavigation}
-            rightIcon={Close}
-            onRightIconPress={onClose}
+        <ModalHeader
+          title={_(t`Connecte-toi !`)}
+          leftIcon={ArrowPrevious}
+          onLeftIconPress={onBackNavigation}
+          rightIcon={Close}
+          onRightIconPress={onClose}
+        />
+        {shouldShowErrorMessage && (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={5} />
+            <StyledInline>
+              <Warning size={24} />
+              <Typo.Caption color={ColorsEnum.ERROR}>
+                {_(t`E-mail ou mot de passe incorrect`)}
+              </Typo.Caption>
+            </StyledInline>
+          </React.Fragment>
+        )}
+        <Spacer.Column numberOfSpaces={7} />
+        <StyledInput>
+          <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+          <TextInput
+            value={email}
+            onChangeText={setEmail}
+            placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
+            keyboardType="email-address"
+            autoFocus={true}
+            isError={shouldShowErrorMessage}
+            width="100%"
           />
-          {shouldShowErrorMessage && (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={5} />
-              <StyledInline>
-                <Warning size={24} />
-                <Typo.Caption color={ColorsEnum.ERROR}>
-                  {_(t`E-mail ou mot de passe incorrect`)}
-                </Typo.Caption>
-              </StyledInline>
-            </React.Fragment>
-          )}
-          <Spacer.Column numberOfSpaces={7} />
-          <StyledInput>
-            <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
-            <Spacer.Column numberOfSpaces={2} />
-            <TextInput
-              value={email}
-              onChangeText={setEmail}
-              placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
-              keyboardType="email-address"
-              autoFocus={true}
-              isError={shouldShowErrorMessage}
-              width="100%"
-            />
-          </StyledInput>
-          <Spacer.Column numberOfSpaces={6} />
-          <StyledInput>
-            <Typo.Body>{_(t`Mot de passe`)}</Typo.Body>
-            <Spacer.Column numberOfSpaces={2} />
-            <PasswordInput
-              value={password}
-              onChangeText={setPassword}
-              placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
-              isError={shouldShowErrorMessage}
-              width="100%"
-            />
-          </StyledInput>
-          <Spacer.Column numberOfSpaces={7} />
-          <StyledForgottenPasswordTouchableOpacity onPress={onForgottenPasswordClick}>
-            <Typo.ButtonText>{_(t`Mot de passe oublié ?`)}</Typo.ButtonText>
-          </StyledForgottenPasswordTouchableOpacity>
-          <Spacer.Column numberOfSpaces={8} />
-          <StyledSigninButton>
-            <ButtonPrimary title={_(t`Se connecter`)} onPress={handleSignin} />
-          </StyledSigninButton>
-        </StyledForm>
+        </StyledInput>
+        <Spacer.Column numberOfSpaces={6} />
+        <StyledInput>
+          <Typo.Body>{_(t`Mot de passe`)}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+          <PasswordInput
+            value={password}
+            onChangeText={setPassword}
+            placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+            isError={shouldShowErrorMessage}
+            width="100%"
+          />
+        </StyledInput>
+        <Spacer.Column numberOfSpaces={7} />
+        <StyledForgottenPasswordTouchableOpacity onPress={onForgottenPasswordClick}>
+          <Typo.ButtonText>{_(t`Mot de passe oublié ?`)}</Typo.ButtonText>
+        </StyledForgottenPasswordTouchableOpacity>
+        <Spacer.Column numberOfSpaces={8} />
+        <StyledSigninButton>
+          <ButtonPrimary title={_(t`Se connecter`)} onPress={handleSignin} />
+        </StyledSigninButton>
       </StyledFakeModal>
     </TouchableWithoutFeedback>
   )
@@ -141,18 +139,12 @@ const StyledFakeModal = styled.View({
   }),
 })
 
-const StyledForm = styled.View({
-  flexDirection: 'column',
-  alignItems: 'center',
-  width: '100%',
-  maxWidth: getSpacing(125),
-})
-
 const StyledInput = styled.View({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
   width: '100%',
+  maxWidth: getSpacing(125),
 })
 
 const StyledInline = styled.View({
@@ -160,12 +152,17 @@ const StyledInline = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-around',
   alignItems: 'center',
+  maxWidth: getSpacing(125),
 })
 
 const StyledSigninButton = styled.View({
   width: '100%',
+  maxWidth: getSpacing(125),
 })
 
 const StyledForgottenPasswordTouchableOpacity = styled.TouchableOpacity({
-  alignSelf: 'flex-end',
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  width: '100%',
+  maxWidth: getSpacing(125),
 })
