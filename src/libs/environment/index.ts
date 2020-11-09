@@ -18,6 +18,9 @@ export interface Environment {
   URL_PREFIX: string
   ANDROID_APP_ID: string
   IOS_APP_ID: string
+  ALGOLIA_APPLICATION_ID: string
+  ALGOLIA_SEARCH_API_KEY: string
+  ALGOLIA_INDEX_NAME: string
 }
 
 export const env = parseBooleanVariables(Config) as Environment
