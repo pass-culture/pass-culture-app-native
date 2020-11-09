@@ -40,7 +40,7 @@ exports[`OfferTile component should render correctly 1`] = `
         imageWidth={192}
         source={
           Object {
-            "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/FDUE2",
+            "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
           }
         }
         style={
@@ -94,7 +94,7 @@ exports[`OfferTile component should render correctly 1`] = `
               ]
             }
           >
-            LIVRE
+            MUSIQUE
           </Text>
         </View>
         <View
@@ -165,7 +165,7 @@ exports[`OfferTile component should render correctly 1`] = `
         ]
       }
     >
-      One Piece T.6 ; la promesse de Zorro
+      Mensch ! Où sont les Hommes ?
     </Text>
     <Text
       color="#626262"
@@ -199,7 +199,7 @@ exports[`OfferTile component should render correctly 1`] = `
         ]
       }
     >
-      5 €
+      28 €
     </Text>
   </View>
 </View>

@@ -1,11 +1,11 @@
 interface Offer {
-  author?: string
+  author?: string | null
   category?: string
   dateCreated?: number
-  dates?: string[]
-  description?: string
+  dates?: number[]
+  description?: string | null
   id?: string
-  isbn?: string
+  isbn?: string | null
   isDigital?: boolean
   isDuo?: boolean
   isEvent?: boolean
@@ -25,7 +25,7 @@ interface Offer {
   stocksDateCreated?: number[]
   thumbUrl?: string
   tags?: string[]
-  times?: string[]
+  times?: number[]
   type?: string
   visa?: string | null
   withdrawalDetails?: string | null

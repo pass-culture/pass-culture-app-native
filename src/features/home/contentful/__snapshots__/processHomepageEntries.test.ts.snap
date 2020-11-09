@@ -5,6 +5,7 @@ Array [
   ExclusivityPane {
     "alt": "Exclusitivité du moment",
     "image": "https://images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png",
+    "moduleId": "KiG6rWuQYhHuGIBXZNeB2",
     "offerId": "AE67",
   },
   Offers {
@@ -20,6 +21,7 @@ Array [
       "minOffers": 2,
       "title": "Pour bien commencer...",
     },
+    "moduleId": "GlQb8Zg3n1PoYVmOyVCgW",
   },
   Offers {
     "algolia": Object {
@@ -34,6 +36,7 @@ Array [
       "minOffers": 2,
       "title": "Puisque tu aimes les visites...",
     },
+    "moduleId": "5u3NaFTcu2XR5KgJ1OAg8C",
   },
   Offers {
     "algolia": Object {
@@ -48,6 +51,7 @@ Array [
       "minOffers": 1,
       "title": "Offres du moment",
     },
+    "moduleId": "1LgDMVOKdH3agA0WG2LFEr",
   },
   Offers {
     "algolia": Object {
@@ -61,10 +65,12 @@ Array [
       "minOffers": 2,
       "title": "A faire ce week-end !",
     },
+    "moduleId": "3AbfVZZIZhfvSfGxJSrSqe",
   },
   BusinessPane {
     "firstLine": "Donne ton avis...",
     "image": "https://images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png",
+    "moduleId": "K2yYJkeX30OoepIooo2Um",
     "secondLine": "En répondant à notre rapide questionnaire",
     "url": "https://passculture.typeform.com/to/PYl2WwKC?email={email}",
   },
@@ -81,6 +87,7 @@ Array [
       "minOffers": 2,
       "title": "A faire à deux",
     },
+    "moduleId": "3HnwRT9WtAl8pxywz83sX3",
   },
   OffersWithCover {
     "algolia": Object {
@@ -96,6 +103,7 @@ Array [
       "minOffers": 2,
       "title": "La sélection de ...",
     },
+    "moduleId": "2Fjxhdirgh17ZvdPNZGDP4",
   },
   Offers {
     "algolia": Object {
@@ -110,6 +118,7 @@ Array [
       "minOffers": 2,
       "title": "Découvre les livres sélectionnés pour le Goncourt des lycéens 2020 !",
     },
+    "moduleId": "7c7xq3ulzqO2yDRJLDmths",
   },
   Offers {
     "algolia": Object {
@@ -125,6 +134,7 @@ Array [
       "minOffers": 2,
       "title": "Parce que tu aimes la musique...",
     },
+    "moduleId": "6lk6vCol5Qza2mfdtsTzW",
   },
 ]
 `;

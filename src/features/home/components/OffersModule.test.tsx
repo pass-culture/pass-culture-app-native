@@ -8,6 +8,7 @@ import { OffersModule } from './OffersModule'
 const props = {
   algolia: {} as AlgoliaParametersFields,
   display: { minOffers: 0 } as DisplayParametersFields,
+  moduleId: 'module-id',
 }
 
 describe('OffersModule component', () => {

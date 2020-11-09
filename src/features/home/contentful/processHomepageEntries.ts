@@ -27,9 +27,11 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
   const {
     fields: { modules },
   } = homepage
-
   const processedModules = modules.map((module) => {
-    const { fields } = module
+    const {
+      fields,
+      sys: { id: moduleId },
+    } = module
     if (!fields || !hasAtLeastOneField(fields)) return
 
     const contentType = getContentType(module)
@@ -41,15 +43,20 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
       const { fields: display } = displayParameters
 
       if (cover && hasAtLeastOneField(cover)) {
-        return new OffersWithCover({ algolia, cover: buildImageUrl(cover.fields.image), display })
+        return new OffersWithCover({
+          algolia,
+          cover: buildImageUrl(cover.fields.image),
+          display,
+          moduleId,
+        })
       }
-      return new Offers({ algolia, display })
+      return new Offers({ algolia, display, moduleId })
     }
 
     if (contentType === 'exclusivity') {
       const { alt, offerId, image } = fields as ExclusivityFields
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return new ExclusivityPane({ alt, image: buildImageUrl(image)!, offerId })
+      return new ExclusivityPane({ alt, image: buildImageUrl(image)!, offerId, moduleId })
     }
 
     if (contentType === CONTENT_TYPES.BUSINESS) {
@@ -60,6 +67,7 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
         image: buildImageUrl(image)!,
         secondLine,
         url,
+        moduleId,
       })
     }
 
