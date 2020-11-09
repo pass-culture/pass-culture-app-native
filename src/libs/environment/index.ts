@@ -15,6 +15,9 @@ export interface Environment {
   CONTENTFUL_ACCESS_TOKEN: string
   CONTENTFUL_ENVIRONMENT: string
   CONTENTFUL_SPACE_ID: string
+  URL_PREFIX: string
+  ANDROID_APP_ID: string
+  IOS_APP_ID: string
 }
 
 export const env = parseBooleanVariables(Config) as Environment
