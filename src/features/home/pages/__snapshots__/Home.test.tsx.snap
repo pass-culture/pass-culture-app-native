@@ -663,11 +663,11 @@ exports[`Home component should render correctly without login modal 1`] = `
                             </View>
                           </View>
                           <View
-                            numberOfSpaces={18}
+                            numberOfSpaces={8}
                             style={
                               Array [
                                 Object {
-                                  "height": 72,
+                                  "height": 32,
                                 },
                               ]
                             }
@@ -716,6 +716,16 @@ exports[`Home component should render correctly without login modal 1`] = `
                           </Text>
                         </View>
                         <View
+                          numberOfSpaces={6}
+                          style={
+                            Array [
+                              Object {
+                                "height": 24,
+                              },
+                            ]
+                          }
+                        />
+                        <View
                           style={
                             Array [
                               Object {
@@ -727,16 +737,6 @@ exports[`Home component should render correctly without login modal 1`] = `
                             ]
                           }
                         >
-                          <View
-                            numberOfSpaces={8}
-                            style={
-                              Array [
-                                Object {
-                                  "height": 32,
-                                },
-                              ]
-                            }
-                          />
                           <View
                             numberOfSpaces={6}
                             style={

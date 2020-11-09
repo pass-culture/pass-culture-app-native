@@ -63,7 +63,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation, route }: P
             <UserCircle size={32} color={ColorsEnum.WHITE} />
           </UserProfileContainer>
         </HeaderBackgroundWrapper>
-        <Spacer.Column numberOfSpaces={18} />
+        <Spacer.Column numberOfSpaces={8} />
         <Typo.Title1 color={ColorsEnum.WHITE}>
           {_(/*i18n: Welcome title message */ t`Bienvenue !`)}
         </Typo.Title1>
@@ -72,19 +72,19 @@ export const Home: FunctionComponent<Props> = function ({ navigation, route }: P
           {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
         </Typo.Body>
       </CenterContainer>
+      <Spacer.Column numberOfSpaces={6} />
       <Container>
-        <Spacer.Column numberOfSpaces={8} />
         {modules.map((module: ProcessedModule, index: number) => {
           if (module instanceof Offers || module instanceof OffersWithCover) {
-            return <OffersModule key={index} {...module} />
+            return <OffersModule key={`offer-${index}`} {...module} />
           }
           if (module instanceof ExclusivityPane) {
             return <ExclusivityModule key={module.offerId} {...module} />
           }
           if (module instanceof BusinessPane) {
-            return <BusinessModule {...module} />
+            return <BusinessModule key={`business-module-${index}`} {...module} />
           }
-          return <React.Fragment key={index} />
+          return null
         })}
         <Spacer.Column numberOfSpaces={6} />
       </Container>
