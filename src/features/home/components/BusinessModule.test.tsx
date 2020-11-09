@@ -9,6 +9,7 @@ const props = {
   secondLine: 'secondLine',
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
   url: 'url',
+  moduleId: 'module-id',
 }
 describe('BusinessModule component', () => {
   afterAll(() => jest.resetAllMocks())
