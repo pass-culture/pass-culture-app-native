@@ -9,6 +9,7 @@ describe('parseBooleanVariables', () => {
     FEATURE_FLAG_CODE_PUSH: 'true',
     FEATURE_FLAG_CODE_PUSH_MANUAL: 'false',
     SENTRY_DSN: 'sentry-dsn',
+    URL_PREFIX: 'passculture',
   }
   const convertedConfig = parseBooleanVariables(mockedConfig)
 
@@ -23,5 +24,6 @@ describe('parseBooleanVariables', () => {
     expect(convertedConfig.API_BASE_URL).toEqual('your-api.com')
     expect(convertedConfig.WEBSOCKET_ENDPOINT).toEqual('websocket-endpoint')
     expect(convertedConfig.SENTRY_DSN).toEqual('sentry-dsn')
+    expect(convertedConfig.URL_PREFIX).toEqual('passculture')
   })
 })
