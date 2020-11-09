@@ -798,7 +798,10 @@ exports[`Home component should render correctly without login modal 1`] = `
                                     "flexDirection": "column",
                                     "justifyContent": "flex-start",
                                     "minHeight": 300,
-                                    "paddingVertical": 20,
+                                    "paddingBottom": 20,
+                                    "paddingLeft": 20,
+                                    "paddingRight": 20,
+                                    "paddingTop": 20,
                                     "width": "100%",
                                   },
                                 ]
@@ -810,7 +813,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                                     Object {
                                       "alignItems": "center",
                                       "flexDirection": "row",
-                                      "justifyContent": "center",
+                                      "justifyContent": "space-between",
                                       "width": "100%",
                                     },
                                   ]
@@ -828,10 +831,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                                   onStartShouldSetResponder={[Function]}
                                   style={
                                     Object {
-                                      "alignItems": "center",
-                                      "flexBasis": 0,
-                                      "flexGrow": 0.2,
-                                      "flexShrink": 1,
+                                      "marginLeft": -4,
                                       "opacity": 1,
                                     }
                                   }
@@ -878,10 +878,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                                   onStartShouldSetResponder={[Function]}
                                   style={
                                     Object {
-                                      "alignItems": "center",
-                                      "flexBasis": 0,
-                                      "flexGrow": 0.2,
-                                      "flexShrink": 1,
+                                      "marginRight": -4,
                                       "opacity": 1,
                                     }
                                   }
@@ -958,9 +955,6 @@ exports[`Home component should render correctly without login modal 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "paddingBottom": 20,
-                                      "paddingLeft": 20,
-                                      "paddingRight": 20,
                                       "paddingTop": 20,
                                     },
                                   ]

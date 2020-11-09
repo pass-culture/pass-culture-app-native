@@ -25,15 +25,15 @@ export const ModalHeader: FunctionComponent<Props> = ({
   onRightIconPress,
 }) => (
   <DynamicContainer customStyle={customStyles?.container}>
-    <HeaderAction onPress={onLeftIconPress} testID="leftIconButton">
+    <LeftHeaderAction onPress={onLeftIconPress} testID="leftIconButton">
       {LeftIcon && <LeftIcon size={32} testID="leftIcon" />}
-    </HeaderAction>
+    </LeftHeaderAction>
     <Title customStyle={customStyles?.title}>
       <Typo.Title4 numberOfLines={2}>{title}</Typo.Title4>
     </Title>
-    <HeaderAction onPress={onRightIconPress} testID="rightIconButton">
+    <RightHeaderAction onPress={onRightIconPress} testID="rightIconButton">
       {RightIcon && <RightIcon size={32} testID="rightIcon" />}
-    </HeaderAction>
+    </RightHeaderAction>
   </DynamicContainer>
 )
 
@@ -41,15 +41,19 @@ const DynamicContainer = styled.View<{
   customStyle: StyleProp<ViewStyle>
 }>(({ customStyle }) => ({
   flexDirection: 'row',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
   ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
 }))
 
-const HeaderAction = styled.TouchableOpacity({
-  flex: 0.2,
-  alignItems: 'center',
+/* The negative margins are used to compensate for the
+  "empty" space of SVG icons. */
+const RightHeaderAction = styled.TouchableOpacity({
+  marginRight: -4,
+})
+const LeftHeaderAction = styled.TouchableOpacity({
+  marginLeft: -4,
 })
 
 const Title = styled.Text<{
