@@ -35,7 +35,7 @@ export const InputContainer = styled.View(function ({
     maxWidth,
     flexDirection: 'row' as const, // for some reason we have an unsolvable type issue without this casting
     alignItems: 'center',
-    ...padding(1, 2),
+    ...padding(1, 4),
     borderRadius: 22,
     border: `solid 1px ${borderColor}`,
     backgroundColor: ColorsEnum.WHITE,
