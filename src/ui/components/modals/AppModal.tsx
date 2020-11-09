@@ -61,9 +61,9 @@ const Container = styled.View({
   width: '100%',
   borderTopStartRadius: 16,
   borderTopEndRadius: 16,
-  paddingVertical: 20,
+  padding: 20,
 })
 
 const Content = styled.View({
-  padding: 20,
+  paddingTop: 20,
 })
