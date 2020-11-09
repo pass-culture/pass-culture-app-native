@@ -1,8 +1,9 @@
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer, RouteProp } from '@react-navigation/native'
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 
 import { Login } from 'features/auth/pages/Login'
+import { ReinitializePassword } from 'features/auth/pages/ReinitializePassword'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -17,10 +18,18 @@ export type RootStackParamList = {
   CheatCodes: undefined
   Home: { shouldDisplayLoginModal: boolean }
   IdCheck: undefined
-  Login: undefined
+  Login?: { userId: string }
+  ReinitializePassword: { token: string; expiration_date: number }
 }
 
-export const RootStack = createStackNavigator<RootStackParamList>()
+export type RouteNames = keyof RootStackParamList
+export type Route<RouteName extends RouteNames> = RouteProp<RootStackParamList, RouteName>
+export type NavigationProp<RouteName extends RouteNames> = StackNavigationProp<
+  RootStackParamList,
+  RouteName
+>
+
+const RootStack = createStackNavigator<RootStackParamList>()
 
 export const RootNavigator: React.FC = function () {
   return (
@@ -33,11 +42,8 @@ export const RootNavigator: React.FC = function () {
           options={{ headerShown: false }}
         />
         <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <RootStack.Screen
-          name="CheatCodes"
-          component={CheatCodes}
-          options={{ headerShown: false }}
-        />
+        <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
+        <RootStack.Screen name="IdCheck" component={IdCheck} options={{ headerShown: false }} />
         <RootStack.Screen
           name="AppComponents"
           component={AppComponents}
@@ -48,7 +54,11 @@ export const RootNavigator: React.FC = function () {
           component={Navigation}
           options={{ headerShown: false }}
         />
-        <RootStack.Screen name="IdCheck" component={IdCheck} options={{ headerShown: false }} />
+        <RootStack.Screen
+          name="CheatCodes"
+          component={CheatCodes}
+          options={{ headerShown: false }}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   )
