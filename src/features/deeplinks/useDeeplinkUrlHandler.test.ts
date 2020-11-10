@@ -1,19 +1,14 @@
 import { navigate } from '__mocks__/@react-navigation/native'
+import { RouteParams } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 
-import { DeepLinkToScreenMap } from './types'
+import { DeepLinksToScreenConfiguration } from './types'
 import {
   decodeDeeplinkParts,
   formatAndroidDeeplinkDomain,
   formatIosDeeplinkDomain,
   useDeeplinkUrlHandler,
 } from './useDeeplinkUrlHandler'
-
-jest.mock('features/deeplinks/types', () => ({
-  deeplinkRoutesToScreensMap: {
-    'my-route-to-login': 'Login',
-  } as DeepLinkToScreenMap,
-}))
 
 describe('useDeeplinkUrlHandler', () => {
   describe('Formatting', () => {
@@ -55,13 +50,16 @@ describe('useDeeplinkUrlHandler', () => {
   describe('Navigation handler', () => {
     it('should redirect to the right component when it exists', () => {
       const handleDeeplinkUrl = useDeeplinkUrlHandler()
-      const url = formatIosDeeplinkDomain() + 'my-route-to-login?param1=one&param2=2'
+      const url =
+        formatIosDeeplinkDomain() + 'my-route-to-test?param1=one&param2=2&param3=true&param4=false'
 
       handleDeeplinkUrl({ url })
 
-      expect(navigate).toHaveBeenCalledWith('Login', {
+      expect(navigate).toHaveBeenCalledWith('UniqueTestRoute', {
         param1: 'one',
-        param2: '2',
+        param2: 2,
+        param3: true,
+        param4: false,
       })
     })
     it('should redirect to Home when the route is not recognized', () => {
@@ -74,3 +72,36 @@ describe('useDeeplinkUrlHandler', () => {
     })
   })
 })
+
+/** FAKING NAVIGATION BY REDEFINING A LOCAL STACK PARAMLIST */
+type RoutesListForTest = { 'my-route-to-test': 'UniqueTestRoute'; default: 'Home' }
+
+type RootStackParamListForTest = {
+  UniqueTestRoute: { param1: string; param2: number; param3: boolean; param4: boolean }
+}
+
+jest.mock('features/deeplinks/types', () => ({
+  deeplinkToScreenConfiguration: {
+    'my-route-to-test': {
+      screen: 'UniqueTestRoute',
+      paramConverter({
+        param1,
+        param2,
+        param3,
+        param4,
+      }: Record<string, string>): RouteParams<RootStackParamListForTest, 'UniqueTestRoute'> {
+        return {
+          param1,
+          param2: Number(param2),
+          param3: param3 === 'true',
+          param4: param4 === 'true',
+        }
+      },
+    },
+    default: {
+      screen: 'Home',
+    },
+  } as DeepLinksToScreenConfiguration<RoutesListForTest, RootStackParamListForTest>,
+}))
+
+/** FAKING NAVIGATION END */

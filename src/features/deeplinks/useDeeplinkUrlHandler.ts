@@ -6,7 +6,7 @@ import {
   AllowedDeeplinkRoutes,
   DeeplinkEvent,
   DeeplinkParts,
-  deeplinkRoutesToScreensMap,
+  deeplinkToScreenConfiguration,
 } from './types'
 
 export function formatIosDeeplinkDomain() {
@@ -36,11 +36,12 @@ export function decodeDeeplinkParts(url: string): DeeplinkParts {
 export function useOnDeeplinkError() {
   const { navigate } = useNavigation()
 
-  // remove this comment when decided about deeplink errors behavior
+  // TODO: remove this comment when decided about deeplink errors behavior
+  // See https://passculture.atlassian.net/browse/PC-5165
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return (error: string) => {
     // shall we navigate to oops 404 ?
-    navigate('Home')
+    navigate(deeplinkToScreenConfiguration['default'].screen)
   }
 }
 
@@ -52,13 +53,16 @@ export function useDeeplinkUrlHandler() {
     try {
       const { routeName, params } = decodeDeeplinkParts(e.url)
 
-      const screen = deeplinkRoutesToScreensMap[routeName]
+      const { screen, paramConverter } = deeplinkToScreenConfiguration[routeName]
       if (!screen) {
-        // this error is not displayed to the user but used to trigger the catch branch
+        // this error is not displayed to the user but used to trigger the catch branch below
         throw new Error('Unkwnon screen')
       }
 
-      navigate(screen, params)
+      // convert uri params to match the screen params' type expectations
+      const convertedParams = paramConverter ? paramConverter(params) : params
+
+      navigate(screen, convertedParams)
     } catch (error) {
       onError(error.message)
     }
