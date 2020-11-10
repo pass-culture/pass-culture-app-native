@@ -66,157 +66,440 @@ exports[`OffersModule component should render correctly 1`] = `
       Array [
         Object {
           "_geoloc": Object {
-            "lat": 47.65904,
-            "lng": -2.75922,
+            "lat": 48.94374,
+            "lng": 2.48171,
           },
-          "objectID": "XU8A",
+          "_highlightResult": Object {
+            "offer": Object {
+              "description": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Bel astre voyageur, hôte qui nous arrives, Des profondeurs du ciel et qu'on n'attendait pas, Où vas-tu ? Quel dessein pousse vers nous tes pas ? Toi qui vogues au large en cette mer sans rives",
+              },
+              "id": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "AGHYQ",
+              },
+              "label": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Abonnements concerts",
+              },
+              "musicSubType": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "914",
+              },
+              "musicType": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "900",
+              },
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Mensch ! Où sont les Hommes ?",
+              },
+              "type": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Écouter",
+              },
+            },
+            "offerer": Object {
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Danse Jazz Dans Tes Bottes",
+              },
+            },
+            "venue": Object {
+              "city": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Aulnay-sous-Bois",
+              },
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Michel et son accordéon",
+              },
+            },
+          },
+          "objectID": "AGHYQ",
           "offer": Object {
-            "author": "Oda, Eiichiro",
-            "category": "LIVRE",
-            "dateCreated": 1571211104.882934,
+            "author": null,
+            "category": "MUSIQUE",
+            "dateCreated": 1604358109.991316,
             "dates": Array [],
-            "description": "Pour traverser la route de tous les périls, Luffy a sélectionné le meilleur équipage possible. Zorro ne fait pas exception : Luffy en est certain, son ami est le meilleur sabreur du monde ! Et ce n'est quand même pas Oeil de Faucon, ce mystérieux combattant, qui va mettre la réputation de Zorro en jeu ?!",
-            "id": "XU8A",
+            "description": "Bel astre voyageur, hôte qui nous arrives, Des profondeurs du ciel et qu'on n'attendait pas, Où vas-tu ? Quel dessein pousse vers nous tes pas ? Toi qui vogues au large en cette mer sans rives",
+            "id": "AGHYQ",
             "isDigital": false,
             "isDuo": false,
             "isEvent": false,
             "isThing": true,
-            "isbn": "9782017097679",
-            "label": "Livre ou carte lecture",
-            "musicSubType": null,
-            "musicType": null,
-            "name": "One Piece T.6 ; la promesse de Zorro",
+            "isbn": null,
+            "label": "Abonnements concerts",
+            "musicSubType": "914",
+            "musicType": "900",
+            "name": "Mensch ! Où sont les Hommes ?",
             "performer": null,
-            "priceMax": 5,
-            "priceMin": 5,
+            "priceMax": 28,
+            "priceMin": 28,
             "prices": Array [
-              5,
+              28,
             ],
             "showSubType": null,
             "showType": null,
             "speaker": null,
             "stageDirector": null,
             "stocksDateCreated": Array [
-              1571211104.906349,
+              1604358115.556418,
             ],
             "tags": Array [],
-            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/FDUE2",
+            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
             "times": Array [],
-            "type": "Lire",
+            "type": "Écouter",
             "visa": null,
             "withdrawalDetails": null,
           },
           "offerer": Object {
-            "name": "CHEMINANT S A",
+            "name": "Danse Jazz Dans Tes Bottes",
           },
           "venue": Object {
-            "city": "VANNES",
-            "departementCode": "56",
-            "name": "CHEMINANT S A",
-            "publicName": "Librairie Cheminant à Vannes",
-          },
-        },
-        Object {
-          "_geoloc": Object {
-            "lat": 48.5764,
-            "lng": -3.82528,
-          },
-          "objectID": "EA964",
-          "offer": Object {
-            "author": "Oda, Eiichiro",
-            "category": "LIVRE",
-            "dateCreated": 1592844633.690835,
-            "dates": Array [],
-            "description": "Ça y est ! Luffy et Zorro sont prêts à embarquer sur la route de tous les périls. Mais avant ça, ils doivent trouver un navigateur digne de ce nom pour compléter leur équipage ! Mais ce n'est pas si facile de trouver la perle rare... Surtout que l'un des plus terribles capitaines pirates a juré de les arrêter !",
-            "id": "EA964",
-            "isDigital": false,
-            "isDuo": false,
-            "isEvent": false,
-            "isThing": true,
-            "isbn": "9782017071976",
-            "label": "Livre ou carte lecture",
-            "musicSubType": null,
-            "musicType": null,
-            "name": "One Piece T.2 ; le capitaine Baggy",
-            "performer": null,
-            "priceMax": 5.5,
-            "priceMin": 5.5,
-            "prices": Array [
-              5.5,
-            ],
-            "showSubType": null,
-            "showType": null,
-            "speaker": null,
-            "stageDirector": null,
-            "stocksDateCreated": Array [
-              1592844633.693503,
-            ],
-            "tags": Array [],
-            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E25T6",
-            "times": Array [],
-            "type": "Lire",
-            "visa": null,
-            "withdrawalDetails": null,
-          },
-          "offerer": Object {
-            "name": "DIALOGUES MORLAIX",
-          },
-          "venue": Object {
-            "city": "MORLAIX",
-            "departementCode": "29",
-            "name": "DIALOGUES MORLAIX",
+            "city": "Aulnay-sous-Bois",
+            "departementCode": "93",
+            "name": "Michel et son accordéon",
             "publicName": null,
           },
         },
         Object {
           "_geoloc": Object {
-            "lat": 43.60792,
-            "lng": 3.88565,
+            "lat": 48.91265,
+            "lng": 2.4513,
           },
-          "objectID": "J64GK",
+          "_highlightResult": Object {
+            "offer": Object {
+              "author": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Catherine Mater",
+              },
+              "description": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
+              },
+              "id": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "AGHYA",
+              },
+              "label": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Musique",
+              },
+              "musicSubType": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "914",
+              },
+              "musicType": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "900",
+              },
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "I want something more",
+              },
+              "performer": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Frank Despacito",
+              },
+              "type": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Écouter",
+              },
+            },
+            "offerer": Object {
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Club Dorothy",
+              },
+            },
+            "venue": Object {
+              "city": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Drancy",
+              },
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Maison de la Brique",
+              },
+            },
+          },
+          "objectID": "AGHYA",
           "offer": Object {
-            "author": "Oda, Eiichiro",
-            "category": "LIVRE",
-            "dateCreated": 1603180022.499456,
+            "author": "Catherine Mater",
+            "category": "MUSIQUE",
+            "dateCreated": 1604358109.991316,
             "dates": Array [],
-            "description": "Pipo ment comme il respire ! Du coup, lorsqu'il annonce aux habitants de son village que des pirates vont les attaquer, personne ne le prend au sérieux. Grave erreur ! L'attaque est réellement prévue, et elle va provenir de quelqu'un dont personne ne se serait méfié. Grâce à Luffy et ses amis, les villageois vont apprendre qu'il ne faut pas se fier aux apparences...",
-            "id": "J64GK",
+            "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
+            "id": "AGHYA",
             "isDigital": false,
-            "isDuo": true,
+            "isDuo": false,
             "isEvent": false,
             "isThing": true,
-            "isbn": "9782011183088",
-            "label": "Livre ou carte lecture",
-            "musicSubType": null,
-            "musicType": null,
-            "name": "One Piece T.4 ; révélation",
-            "performer": null,
-            "priceMax": 5.51,
-            "priceMin": 5.51,
+            "isbn": null,
+            "label": "Musique",
+            "musicSubType": "914",
+            "musicType": "900",
+            "name": "I want something more",
+            "performer": "Frank Despacito",
+            "priceMax": 23,
+            "priceMin": 23,
             "prices": Array [
-              5.51,
+              23,
             ],
             "showSubType": null,
             "showType": null,
             "speaker": null,
             "stageDirector": null,
             "stocksDateCreated": Array [
-              1603180022.502248,
+              1604358115.524528,
             ],
             "tags": Array [],
-            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E7K2K",
+            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDKQ",
             "times": Array [],
-            "type": "Lire",
+            "type": "Écouter",
             "visa": null,
             "withdrawalDetails": null,
           },
           "offerer": Object {
-            "name": "RELAIS FNAC",
+            "name": "Club Dorothy",
           },
           "venue": Object {
-            "city": "MONTPELLIER",
-            "departementCode": "34",
-            "name": "Fnac Montpellier",
+            "city": "Drancy",
+            "departementCode": "93",
+            "name": "Maison de la Brique",
+            "publicName": null,
+          },
+        },
+        Object {
+          "_geoloc": Object {
+            "lat": 4.90339,
+            "lng": -52.31663,
+          },
+          "_highlightResult": Object {
+            "offer": Object {
+              "id": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "AGHWS",
+              },
+              "label": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Concert ou festival",
+              },
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Un lit sous une rivière",
+              },
+              "type": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Écouter",
+              },
+            },
+            "offerer": Object {
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Théâtre Balboa",
+              },
+            },
+            "venue": Object {
+              "city": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Cayenne",
+              },
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Espace des Gnoux",
+              },
+            },
+          },
+          "objectID": "AGHWS",
+          "offer": Object {
+            "author": null,
+            "category": "MUSIQUE",
+            "dateCreated": 1604358109.991255,
+            "dates": Array [
+              1605643200,
+            ],
+            "description": null,
+            "id": "AGHWS",
+            "isDigital": false,
+            "isDuo": true,
+            "isEvent": true,
+            "isThing": false,
+            "isbn": null,
+            "label": "Concert ou festival",
+            "musicSubType": null,
+            "musicType": null,
+            "name": "Un lit sous une rivière",
+            "performer": null,
+            "priceMax": 34,
+            "priceMin": 34,
+            "prices": Array [
+              34,
+            ],
+            "showSubType": null,
+            "showType": null,
+            "speaker": null,
+            "stageDirector": null,
+            "stocksDateCreated": Array [
+              1604358115.242088,
+            ],
+            "tags": Array [],
+            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDBA",
+            "times": Array [
+              72000,
+            ],
+            "type": "Écouter",
+            "visa": null,
+            "withdrawalDetails": null,
+          },
+          "offerer": Object {
+            "name": "Théâtre Balboa",
+          },
+          "venue": Object {
+            "city": "Cayenne",
+            "departementCode": "973",
+            "name": "Espace des Gnoux",
+            "publicName": null,
+          },
+        },
+        Object {
+          "_geoloc": Object {
+            "lat": 4.90339,
+            "lng": -52.31663,
+          },
+          "_highlightResult": Object {
+            "offer": Object {
+              "description": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
+              },
+              "id": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "AGH2M",
+              },
+              "label": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Abonnements concerts",
+              },
+              "musicSubType": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "892",
+              },
+              "musicType": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "880",
+              },
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "I want something more",
+              },
+              "type": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Écouter",
+              },
+            },
+            "offerer": Object {
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Théâtre Balboa",
+              },
+            },
+            "venue": Object {
+              "city": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Cayenne",
+              },
+              "name": Object {
+                "matchLevel": "none",
+                "matchedWords": Array [],
+                "value": "Espace des Gnoux",
+              },
+            },
+          },
+          "objectID": "AGH2M",
+          "offer": Object {
+            "author": null,
+            "category": "MUSIQUE",
+            "dateCreated": 1604358109.991316,
+            "dates": Array [],
+            "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
+            "id": "AGH2M",
+            "isDigital": false,
+            "isDuo": false,
+            "isEvent": false,
+            "isThing": true,
+            "isbn": null,
+            "label": "Abonnements concerts",
+            "musicSubType": "892",
+            "musicType": "880",
+            "name": "I want something more",
+            "performer": null,
+            "priceMax": 28,
+            "priceMin": 28,
+            "prices": Array [
+              28,
+            ],
+            "showSubType": null,
+            "showType": null,
+            "speaker": null,
+            "stageDirector": null,
+            "stocksDateCreated": Array [
+              1604358115.646641,
+            ],
+            "tags": Array [],
+            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZQ",
+            "times": Array [],
+            "type": "Écouter",
+            "visa": null,
+            "withdrawalDetails": null,
+          },
+          "offerer": Object {
+            "name": "Théâtre Balboa",
+          },
+          "venue": Object {
+            "city": "Cayenne",
+            "departementCode": "973",
+            "name": "Espace des Gnoux",
             "publicName": null,
           },
         },
@@ -309,7 +592,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 imageWidth={192}
                 source={
                   Object {
-                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/FDUE2",
+                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
                   }
                 }
                 style={
@@ -363,7 +646,7 @@ exports[`OffersModule component should render correctly 1`] = `
                       ]
                     }
                   >
-                    LIVRE
+                    MUSIQUE
                   </Text>
                 </View>
                 <View
@@ -434,7 +717,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 ]
               }
             >
-              One Piece T.6 ; la promesse de Zorro
+              Mensch ! Où sont les Hommes ?
             </Text>
             <Text
               color="#626262"
@@ -468,7 +751,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 ]
               }
             >
-              5 €
+              28 €
             </Text>
           </View>
         </View>
@@ -532,7 +815,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 imageWidth={192}
                 source={
                   Object {
-                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E25T6",
+                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDKQ",
                   }
                 }
                 style={
@@ -586,7 +869,7 @@ exports[`OffersModule component should render correctly 1`] = `
                       ]
                     }
                   >
-                    LIVRE
+                    MUSIQUE
                   </Text>
                 </View>
                 <View
@@ -657,7 +940,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 ]
               }
             >
-              One Piece T.2 ; le capitaine Baggy
+              I want something more
             </Text>
             <Text
               color="#626262"
@@ -691,7 +974,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 ]
               }
             >
-              5,5 €
+              23 €
             </Text>
           </View>
         </View>
@@ -755,7 +1038,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 imageWidth={192}
                 source={
                   Object {
-                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-staging/thumbs/products/E7K2K",
+                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDBA",
                   }
                 }
                 style={
@@ -809,7 +1092,7 @@ exports[`OffersModule component should render correctly 1`] = `
                       ]
                     }
                   >
-                    LIVRE
+                    MUSIQUE
                   </Text>
                 </View>
                 <View
@@ -880,7 +1163,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 ]
               }
             >
-              One Piece T.4 ; révélation
+              Un lit sous une rivière
             </Text>
             <Text
               color="#626262"
@@ -914,7 +1197,230 @@ exports[`OffersModule component should render correctly 1`] = `
                 ]
               }
             >
-              5,51 € - Duo
+              34 € - Duo
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "borderRadius": 8,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "height": 312,
+                },
+              ]
+            }
+          >
+            <View>
+              <Image
+                imageHeight={288}
+                imageWidth={192}
+                source={
+                  Object {
+                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZQ",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderTopLeftRadius": 8,
+                      "borderTopRightRadius": 8,
+                      "height": 288,
+                      "width": 192,
+                    },
+                  ]
+                }
+                testID="offerTileImage"
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#151515",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "width": "50%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    MUSIQUE
+                  </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "height": 16,
+                        "width": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "width": "50%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text>
+                      1,2km
+                    </Text>
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            imageWidth={192}
+            style={
+              Array [
+                Object {
+                  "marginTop": 8,
+                  "maxWidth": 192,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              I want something more
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              <Text>
+                Dès le 12 mars 2020
+              </Text>
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              28 €
             </Text>
           </View>
         </View>
