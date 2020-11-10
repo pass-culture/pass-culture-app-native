@@ -5,19 +5,20 @@ import { env } from 'libs/environment'
 import { get, post } from 'libs/fetch'
 import { saveToken } from 'libs/storage'
 
-type Credentials = {
+export type SigninBody = {
   email: string
   password: string
 }
 
-type SigninResponse = {
+export type SigninResponse = {
   access_token: string
+  refresh_token: string
 }
 
-export async function signin({ email, password }: Credentials): Promise<boolean> {
+export async function signin({ email, password }: SigninBody): Promise<boolean> {
   const body = { identifier: email, password }
   try {
-    const { access_token } = await post<SigninResponse>('/native/v1/signin', {
+    const { access_token, refresh_token } = await post<SigninResponse>('/native/v1/signin', {
       body,
       credentials: 'omit',
     })
@@ -29,7 +30,7 @@ export async function signin({ email, password }: Credentials): Promise<boolean>
   }
 }
 
-type LoggedInAs = {
+export type CurrentUserResponse = {
   logged_in_as: string
 }
 
@@ -37,7 +38,7 @@ export function useCurrentUser() {
   const { data: email, isFetching, refetch, error, isError } = useQuery<string>({
     querykey: 'currentUser',
     queryFn: async function () {
-      const json = await get<LoggedInAs>('/native/v1/protected')
+      const json = await get<CurrentUserResponse>('/native/v1/protected')
       return json.logged_in_as
     },
   })
