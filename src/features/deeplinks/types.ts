@@ -1,4 +1,4 @@
-import { RouteNames } from 'features/navigation/RootNavigator'
+import { RouteParams, RootStackParamList } from 'features/navigation/RootNavigator'
 
 export interface DeeplinkParts {
   routeName: AllowedDeeplinkRoutes
@@ -9,9 +9,40 @@ export interface DeeplinkEvent {
   url: string
 }
 
-export type DeepLinkToScreenMap = { [route: string]: RouteNames }
-export const deeplinkRoutesToScreensMap: DeepLinkToScreenMap = {
-  'mot-de-passe-perdu': 'ReinitializePassword',
+type DeepLinksToScreenMap = {
+  'mot-de-passe-perdu': 'ReinitializePassword'
+  default: 'Home'
 }
 
-export type AllowedDeeplinkRoutes = keyof typeof deeplinkRoutesToScreensMap
+export type DeepLinksToScreenConfiguration<
+  Routes extends Record<string, string>, // 2nd string targets ScreenNames
+  StackParamList extends Record<string, unknown> // unknow targets any screen params type
+> = {
+  [routename in keyof Routes]: {
+    screen: Routes[routename]
+    paramConverter?: (
+      params: Record<string, string>
+    ) => RouteParams<StackParamList, Routes[routename]>
+  }
+}
+
+export const deeplinkToScreenConfiguration: DeepLinksToScreenConfiguration<
+  DeepLinksToScreenMap,
+  RootStackParamList
+> = {
+  'mot-de-passe-perdu': {
+    screen: 'ReinitializePassword',
+    paramConverter: ({
+      token,
+      expiration_date,
+    }: Record<string, string>): RouteParams<RootStackParamList, 'ReinitializePassword'> => ({
+      token,
+      expiration_date: Number(expiration_date),
+    }),
+  },
+  default: {
+    screen: 'Home',
+  },
+}
+
+export type AllowedDeeplinkRoutes = keyof typeof deeplinkToScreenConfiguration

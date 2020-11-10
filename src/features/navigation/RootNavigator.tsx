@@ -1,4 +1,4 @@
-import { NavigationContainer, RouteProp } from '@react-navigation/native'
+import { NavigationContainer, NavigationProp, RouteProp } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 
@@ -21,13 +21,6 @@ export type RootStackParamList = {
   Login?: { userId: string }
   ReinitializePassword: { token: string; expiration_date: number }
 }
-
-export type RouteNames = keyof RootStackParamList
-export type Route<RouteName extends RouteNames> = RouteProp<RootStackParamList, RouteName>
-export type NavigationProp<RouteName extends RouteNames> = StackNavigationProp<
-  RootStackParamList,
-  RouteName
->
 
 const RootStack = createStackNavigator<RootStackParamList>()
 
@@ -63,3 +56,44 @@ export const RootNavigator: React.FC = function () {
     </NavigationContainer>
   )
 }
+
+/** Type helper to share screen names */
+export type ScreenNames = keyof RootStackParamList
+/**
+ * Type helper for useRoute
+ *
+ * const {
+ *  params: { token, expiration_date },
+ * } = useRoute<UseRouteType<'ReinitializePassword'>>()
+ */
+export type UseRouteType<ScreenName extends ScreenNames> = RouteProp<RootStackParamList, ScreenName>
+/**
+ * Type helper for navigation prop
+ *
+ * type Props = {
+ *   navigation: ScreenNavigationProp<'Home'>
+ * }
+ */
+export type ScreenNavigationProp<ScreenName extends ScreenNames> = StackNavigationProp<
+  RootStackParamList,
+  ScreenName
+>
+/**
+ * Type helper for useNavigation
+ *
+ * const navigation = useNavigation<UseNavigationType>()
+ */
+export type UseNavigationType = NavigationProp<RootStackParamList>
+/**
+ * Type helper to access route params
+ *
+ * export type MyStackParamList = {
+ *   Login?: { userId: string }
+ * }
+ *
+ * RouteParams<'Login', MyStackParamList>  // will return ({ userId: string } | undefined)
+ */
+export type RouteParams<
+  StackParamList extends Record<string, unknown>,
+  Screename extends keyof StackParamList
+> = Pick<StackParamList, Screename>[Screename]

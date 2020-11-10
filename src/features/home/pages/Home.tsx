@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
@@ -16,7 +15,7 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
@@ -28,9 +27,10 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 
-type Props = StackScreenProps<RootStackParamList, 'Home'>
+export const Home: FunctionComponent = function () {
+  const navigation = useNavigation<UseNavigationType>()
+  const { params } = useRoute<UseRouteType<'Home'>>()
 
-export const Home: FunctionComponent<Props> = function ({ navigation, route }: Props) {
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const { data: modules = [] } = useHomepageModules()
 
@@ -40,7 +40,7 @@ export const Home: FunctionComponent<Props> = function ({ navigation, route }: P
   }
 
   useFocusEffect(() => {
-    if (route.params.shouldDisplayLoginModal) {
+    if (params.shouldDisplayLoginModal) {
       showSignInModal()
     }
   })
