@@ -48,17 +48,8 @@ jest.mock('algoliasearch', () =>
 )
 
 describe('fetchAlgolia', () => {
-  /* beforeEach(() => {
-    algoliasearch.mockReturnValue({ initIndex })
-    initIndex.mockReturnValue({ search })
-  }) */
-
   it('should fetch with provided keywords and default page number', () => {
     // given
-    //const initIndex = jest.fn()
-    //algoliasearch.mockReturnValue({ initIndex })
-    //const search = jest.fn()
-    //initIndex.mockReturnValue({ search })
     const keywords = 'searched keywords'
 
     // when

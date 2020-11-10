@@ -2,6 +2,14 @@ import { SearchResponse } from '@algolia/client-search'
 
 import { AlgoliaHit } from '../algolia'
 
+/**
+ * _highlightResult(s) are commented due to
+ * a mismatch between algoliasearch declared types
+ * and actual received data
+ *
+ * this part is commented so we still have the snapshot of it
+ */
+
 export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
   hits: [
     {

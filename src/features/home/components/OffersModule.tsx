@@ -1,11 +1,12 @@
-import React from 'react'
+import { Hit } from '@algolia/client-search'
+import React, { useCallback } from 'react'
 import { Alert, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { useFetchAlgolia } from 'libs/algolia'
-import { isErrorWithMessage } from 'libs/typesUtils/typeGuards'
+import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
+import { isErrorWithMessageTypeGuard } from 'libs/typesUtils/typeGuards'
 
 import { Spacer } from '../../../ui/theme'
 
@@ -22,9 +23,16 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
   const { hits, nbHits } = useFetchAlgolia({
     algoliaParameters: parameters,
     onError: (error: unknown) =>
-      Alert.alert('Error', isErrorWithMessage(error) ? error.message : 'algolia-error'),
-    queryKey: `module-${moduleId}`,
+      Alert.alert('Error', isErrorWithMessageTypeGuard(error) ? error.message : 'algolia-error'),
+    cacheKey: `module-${moduleId}`,
   })
+
+  const renderItem = useCallback(
+    ({ item }: { item: Hit<AlgoliaHit> }) => (
+      <OfferTile key={item.objectID} tile={item} layout={layout} />
+    ),
+    [layout]
+  )
 
   const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= minOffers
   if (!shouldModuleBeDisplayed) return <React.Fragment></React.Fragment>
@@ -32,6 +40,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
   const showSeeMore =
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
+
   return (
     <Container>
       <Spacer.Column numberOfSpaces={6} />
@@ -40,7 +49,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
       <FlatList
         horizontal
         data={hits}
-        renderItem={({ item }) => <OfferTile key={item.objectID} tile={item} layout={layout} />}
+        renderItem={renderItem}
         keyExtractor={(item) => item.objectID}
         ListHeaderComponent={() => <Spacer.Row numberOfSpaces={6} />}
         ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}

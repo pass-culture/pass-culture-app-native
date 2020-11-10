@@ -12,9 +12,9 @@ export const getDatesFromTimeRangeAndDate = (date: Date, timeRange: Range<number
   return [beginningDatetime, endingDatetime]
 }
 
-const getDateAtGivenTime = (date: Date, time: number): Date => {
+const getDateAtGivenTime = (date: Date, hours: number): Date => {
   const dateWithTime = new Date(date.getTime())
-  dateWithTime.setHours(time)
+  dateWithTime.setHours(hours)
   dateWithTime.setMinutes(0)
   dateWithTime.setSeconds(0)
   dateWithTime.setMilliseconds(0)
