@@ -69,64 +69,6 @@ exports[`OffersModule component should render correctly 1`] = `
             "lat": 48.94374,
             "lng": 2.48171,
           },
-          "_highlightResult": Object {
-            "offer": Object {
-              "description": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Bel astre voyageur, hôte qui nous arrives, Des profondeurs du ciel et qu'on n'attendait pas, Où vas-tu ? Quel dessein pousse vers nous tes pas ? Toi qui vogues au large en cette mer sans rives",
-              },
-              "id": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "AGHYQ",
-              },
-              "label": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Abonnements concerts",
-              },
-              "musicSubType": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "914",
-              },
-              "musicType": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "900",
-              },
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Mensch ! Où sont les Hommes ?",
-              },
-              "type": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Écouter",
-              },
-            },
-            "offerer": Object {
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Danse Jazz Dans Tes Bottes",
-              },
-            },
-            "venue": Object {
-              "city": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Aulnay-sous-Bois",
-              },
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Michel et son accordéon",
-              },
-            },
-          },
           "objectID": "AGHYQ",
           "offer": Object {
             "author": null,
@@ -179,74 +121,6 @@ exports[`OffersModule component should render correctly 1`] = `
             "lat": 48.91265,
             "lng": 2.4513,
           },
-          "_highlightResult": Object {
-            "offer": Object {
-              "author": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Catherine Mater",
-              },
-              "description": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
-              },
-              "id": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "AGHYA",
-              },
-              "label": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Musique",
-              },
-              "musicSubType": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "914",
-              },
-              "musicType": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "900",
-              },
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "I want something more",
-              },
-              "performer": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Frank Despacito",
-              },
-              "type": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Écouter",
-              },
-            },
-            "offerer": Object {
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Club Dorothy",
-              },
-            },
-            "venue": Object {
-              "city": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Drancy",
-              },
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Maison de la Brique",
-              },
-            },
-          },
           "objectID": "AGHYA",
           "offer": Object {
             "author": "Catherine Mater",
@@ -298,49 +172,6 @@ exports[`OffersModule component should render correctly 1`] = `
           "_geoloc": Object {
             "lat": 4.90339,
             "lng": -52.31663,
-          },
-          "_highlightResult": Object {
-            "offer": Object {
-              "id": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "AGHWS",
-              },
-              "label": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Concert ou festival",
-              },
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Un lit sous une rivière",
-              },
-              "type": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Écouter",
-              },
-            },
-            "offerer": Object {
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Théâtre Balboa",
-              },
-            },
-            "venue": Object {
-              "city": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Cayenne",
-              },
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Espace des Gnoux",
-              },
-            },
           },
           "objectID": "AGHWS",
           "offer": Object {
@@ -397,64 +228,6 @@ exports[`OffersModule component should render correctly 1`] = `
           "_geoloc": Object {
             "lat": 4.90339,
             "lng": -52.31663,
-          },
-          "_highlightResult": Object {
-            "offer": Object {
-              "description": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
-              },
-              "id": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "AGH2M",
-              },
-              "label": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Abonnements concerts",
-              },
-              "musicSubType": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "892",
-              },
-              "musicType": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "880",
-              },
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "I want something more",
-              },
-              "type": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Écouter",
-              },
-            },
-            "offerer": Object {
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Théâtre Balboa",
-              },
-            },
-            "venue": Object {
-              "city": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Cayenne",
-              },
-              "name": Object {
-                "matchLevel": "none",
-                "matchedWords": Array [],
-                "value": "Espace des Gnoux",
-              },
-            },
           },
           "objectID": "AGH2M",
           "offer": Object {

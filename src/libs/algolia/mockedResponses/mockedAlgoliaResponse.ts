@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import { SearchResponse } from '@algolia/client-search'
 
 import { AlgoliaHit } from '../algolia'
@@ -50,7 +48,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       },
       _geoloc: { lat: 48.94374, lng: 2.48171 },
       objectID: 'AGHYQ',
-      _highlightResult: {
+      /* _highlightResult: {
         offer: {
           description: {
             value:
@@ -80,7 +78,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
           city: { value: 'Aulnay-sous-Bois', matchLevel: 'none', matchedWords: [] },
           name: { value: 'Michel et son accordéon', matchLevel: 'none', matchedWords: [] },
         },
-      },
+      }, */
     },
     {
       offer: {
@@ -126,7 +124,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       },
       _geoloc: { lat: 48.91265, lng: 2.4513 },
       objectID: 'AGHYA',
-      _highlightResult: {
+      /* _highlightResult: {
         offer: {
           author: { value: 'Catherine Mater', matchLevel: 'none', matchedWords: [] },
           description: {
@@ -150,7 +148,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
           city: { value: 'Drancy', matchLevel: 'none', matchedWords: [] },
           name: { value: 'Maison de la Brique', matchLevel: 'none', matchedWords: [] },
         },
-      },
+      }, */
     },
     {
       offer: {
@@ -195,7 +193,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
       objectID: 'AGHWS',
-      _highlightResult: {
+      /* _highlightResult: {
         offer: {
           id: { value: 'AGHWS', matchLevel: 'none', matchedWords: [] },
           label: { value: 'Concert ou festival', matchLevel: 'none', matchedWords: [] },
@@ -209,7 +207,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
           city: { value: 'Cayenne', matchLevel: 'none', matchedWords: [] },
           name: { value: 'Espace des Gnoux', matchLevel: 'none', matchedWords: [] },
         },
-      },
+      }, */
     },
     {
       offer: {
@@ -255,7 +253,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
       objectID: 'AGH2M',
-      _highlightResult: {
+      /* _highlightResult: {
         offer: {
           description: {
             value:
@@ -277,7 +275,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
           city: { value: 'Cayenne', matchLevel: 'none', matchedWords: [] },
           name: { value: 'Espace des Gnoux', matchLevel: 'none', matchedWords: [] },
         },
-      },
+      }, */
     },
   ],
   nbHits: 4,
