@@ -72,7 +72,7 @@ jobs:
       - run:
           name: Unit Tests
           command: |
-            yarn test:unit
+            yarn test:unit:ci
 
   deploy-soft-testing:
     docker:
