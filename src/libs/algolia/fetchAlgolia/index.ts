@@ -1,0 +1,1 @@
+export { fetchAlgolia } from './fetchAlgolia'
