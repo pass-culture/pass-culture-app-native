@@ -55,7 +55,6 @@ const Title4 = styled(ColoredText)({
 const ButtonText = styled(ColoredText)({
   fontFamily: 'Montserrat-Bold',
   fontSize: getSpacing(3.75),
-  fontWeight: fontWeight.BOLD,
   lineHeight: getSpacingString(5),
 })
 
@@ -65,6 +64,7 @@ const Body = styled(ColoredText)({
   fontWeight: fontWeight.NORMAL,
   lineHeight: getSpacingString(5),
 })
+
 const Caption = styled(ColoredText)({
   fontFamily: 'Montserrat-SemiBold',
   fontSize: getSpacing(3),
