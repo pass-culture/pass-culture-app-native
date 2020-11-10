@@ -22,7 +22,7 @@ import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Logo } from 'ui/svg/icons/Logo'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Warning } from 'ui/svg/icons/Warning'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 function onButtonPress() {
   Alert.alert('you pressed it')
@@ -212,7 +212,7 @@ const AlignedText = styled(View)({
 })
 
 const StyledScrollView = styled(ScrollView)({
-  padding: 20,
+  padding: getSpacing(5),
 })
 
 function doNothingFn() {
