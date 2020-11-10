@@ -1,5 +1,4 @@
 import { PixelRatio } from 'react-native'
-import styled from 'styled-components/native'
 
 export const BORDER_RADIUS = 8
 
@@ -17,19 +16,3 @@ export const LENGTH_XL = PixelRatio.roundToNearestPixel(15 * MARGIN_DP)
 export const RATIO_BUSINESS = 1 / 3
 export const RATIO_ALGOLIA = 2 / 3
 export const RATIO_EXCLU = 5 / 6
-
-interface Props {
-  horizontal?: boolean
-}
-
-export const Margin = styled.View<Props>(({ horizontal = false }) =>
-  horizontal
-    ? { height: PixelRatio.roundToNearestPixel(MARGIN_DP) }
-    : { width: PixelRatio.roundToNearestPixel(MARGIN_DP) }
-)
-
-export const Gutter = styled.View<Props>(({ horizontal = false }) =>
-  horizontal
-    ? { height: PixelRatio.roundToNearestPixel(GUTTER_DP) }
-    : { width: PixelRatio.roundToNearestPixel(GUTTER_DP) }
-)

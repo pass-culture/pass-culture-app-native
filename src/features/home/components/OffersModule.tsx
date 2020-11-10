@@ -6,7 +6,8 @@ import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
 import { useFetchAlgolia } from 'libs/algolia'
 import { isErrorWithMessage } from 'libs/typesUtils/typeGuards'
-import { Gutter, Margin } from 'ui/theme'
+
+import { Spacer } from '../../../ui/theme'
 
 type OfferWithOptionalCover = Partial<OffersWithCover> &
   Pick<Offers, 'algolia' | 'display' | 'moduleId'>
@@ -33,18 +34,18 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
   return (
     <Container>
-      <Margin horizontal />
+      <Spacer.Column numberOfSpaces={6} />
       <ModuleTitle title={title} />
-      <Gutter horizontal />
+      <Spacer.Column numberOfSpaces={4} />
       <FlatList
         horizontal
         data={hits}
         renderItem={({ item }) => <OfferTile key={item.objectID} tile={item} layout={layout} />}
         keyExtractor={(item) => item.objectID}
-        ListHeaderComponent={() => <Margin />}
-        ItemSeparatorComponent={() => <Gutter />}
+        ListHeaderComponent={() => <Spacer.Row numberOfSpaces={6} />}
+        ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
         ListFooterComponent={
-          showSeeMore ? <React.Fragment></React.Fragment> : <React.Fragment></React.Fragment>
+          showSeeMore ? <Spacer.Row numberOfSpaces={6} /> : <Spacer.Row numberOfSpaces={6} />
         } // TODO: 'See more' design
         showsHorizontalScrollIndicator={false}
       />
