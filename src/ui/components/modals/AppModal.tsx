@@ -3,7 +3,7 @@ import { Modal, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -59,12 +59,12 @@ const Container = styled.View({
   alignItems: 'center',
   minHeight: 300,
   width: '100%',
-  borderTopStartRadius: 16,
-  borderTopEndRadius: 16,
-  padding: 20,
+  borderTopStartRadius: getSpacing(4),
+  borderTopEndRadius: getSpacing(4),
+  padding: getSpacing(5),
 })
 
 const Content = styled.View({
-  paddingTop: 20,
+  paddingTop: getSpacing(5),
   width: '100%',
 })
