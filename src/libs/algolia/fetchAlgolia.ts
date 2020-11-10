@@ -220,7 +220,9 @@ const getDatePredicate = (lowerDate: number, higherDate: number): string =>
 const buildDateAndTimePredicate = ({
   date,
   timeRange,
-}: NoNullProperties<Pick<FetchAlgoliaParameters, 'date' | 'timeRange'>>): FiltersArray[0] => {
+}: NoNullProperties<
+  Required<Pick<FetchAlgoliaParameters, 'date' | 'timeRange'>>
+>): FiltersArray[0] => {
   let dateFilter, rangeTimestamps
   switch (date.option) {
     case DATE_FILTER_OPTIONS.CURRENT_WEEK:
@@ -247,7 +249,7 @@ const buildDateAndTimePredicate = ({
 }
 
 const buildDateOnlyPredicate = (
-  date: Exclude<FetchAlgoliaParameters['date'], null>
+  date: Exclude<FetchAlgoliaParameters['date'], null | undefined>
 ): FiltersArray[0] => {
   let beginningDate, endingDate
   switch (date.option) {

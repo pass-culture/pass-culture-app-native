@@ -38,11 +38,11 @@ export interface ParsedAlgoliaParameters {
   geolocation: AlgoliaGeolocation | null
 }
 
-interface ExtraAlgoliaParameters {
+export interface ExtraAlgoliaParameters {
   date: AlgoliaDate | null
   keywords: string
   page: number
   sortBy: string
   timeRange: Range<number> | null
 }
-export type FetchAlgoliaParameters = ParsedAlgoliaParameters & ExtraAlgoliaParameters
+export type FetchAlgoliaParameters = ParsedAlgoliaParameters & Partial<ExtraAlgoliaParameters>
