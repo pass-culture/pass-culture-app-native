@@ -11,6 +11,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
   }
 >
   <View
+    numberOfSpaces={6}
     style={
       Array [
         Object {
@@ -72,6 +73,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
     </View>
   </View>
   <View
+    numberOfSpaces={6}
     style={
       Array [
         Object {

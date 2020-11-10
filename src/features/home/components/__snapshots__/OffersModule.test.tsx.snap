@@ -13,7 +13,7 @@ exports[`OffersModule component should render correctly 1`] = `
   }
 >
   <View
-    horizontal={true}
+    numberOfSpaces={6}
     style={
       Array [
         Object {
@@ -49,7 +49,7 @@ exports[`OffersModule component should render correctly 1`] = `
     />
   </View>
   <View
-    horizontal={true}
+    numberOfSpaces={4}
     style={
       Array [
         Object {
@@ -60,7 +60,11 @@ exports[`OffersModule component should render correctly 1`] = `
   />
   <RCTScrollView
     ItemSeparatorComponent={[Function]}
-    ListFooterComponent={<React.Fragment />}
+    ListFooterComponent={
+      <Styled(View)
+        numberOfSpaces={6}
+      />
+    }
     ListHeaderComponent={[Function]}
     data={
       Array [
@@ -306,6 +310,7 @@ exports[`OffersModule component should render correctly 1`] = `
         onLayout={[Function]}
       >
         <View
+          numberOfSpaces={6}
           style={
             Array [
               Object {
@@ -529,6 +534,7 @@ exports[`OffersModule component should render correctly 1`] = `
           </View>
         </View>
         <View
+          numberOfSpaces={4}
           style={
             Array [
               Object {
@@ -752,6 +758,7 @@ exports[`OffersModule component should render correctly 1`] = `
           </View>
         </View>
         <View
+          numberOfSpaces={4}
           style={
             Array [
               Object {
@@ -975,6 +982,7 @@ exports[`OffersModule component should render correctly 1`] = `
           </View>
         </View>
         <View
+          numberOfSpaces={4}
           style={
             Array [
               Object {
@@ -1200,7 +1208,18 @@ exports[`OffersModule component should render correctly 1`] = `
       </View>
       <View
         onLayout={[Function]}
-      />
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
     </View>
   </RCTScrollView>
 </View>

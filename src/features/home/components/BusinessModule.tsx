@@ -9,11 +9,11 @@ import {
   Typo,
   ColorsEnum,
   getSpacing,
-  Margin,
   BORDER_RADIUS,
   MARGIN_DP,
   LENGTH_S,
   RATIO_BUSINESS,
+  Spacer,
 } from 'ui/theme'
 
 export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPane) => {
@@ -22,10 +22,10 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
   }
   return (
     <View>
-      <Margin horizontal />
+      <Spacer.Column numberOfSpaces={6} />
       <Row>
-        {/** Explicitly defining Margin component for easier use for other components, with gutters */}
-        <Margin />
+        {/** Explicitly defining Margin component for easier use for other components, with spacers */}
+        <Spacer.Row numberOfSpaces={6} />
         <TouchableHighlight onPress={openUrl}>
           <ImageContainer>
             <ImageBackground source={{ uri: image }} testID="imageBusiness">
@@ -44,7 +44,7 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
             </ImageBackground>
           </ImageContainer>
         </TouchableHighlight>
-        <Margin />
+        <Spacer.Row numberOfSpaces={6} />
       </Row>
     </View>
   )

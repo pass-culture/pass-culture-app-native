@@ -14,6 +14,4 @@ export {
   RATIO_BUSINESS,
   RATIO_ALGOLIA,
   RATIO_EXCLU,
-  Gutter,
-  Margin,
 } from 'ui/theme/grid'
