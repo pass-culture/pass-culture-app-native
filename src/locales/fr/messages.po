@@ -23,8 +23,12 @@ msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
 #: src/libs/storage.ts:23
-msgid "Aucun token à sauvegarder"
-msgstr "Aucun token à sauvegarder"
+msgid "Aucun access token à sauvegarder"
+msgstr "Aucun access token à sauvegarder"
+
+#: src/libs/keychain.ts:16
+msgid "Aucun refresh token à sauvegarder"
+msgstr "Aucun refresh token à sauvegarder"
 
 #. Welcome title message
 #: src/features/home/pages/Home.tsx:49
@@ -52,6 +56,11 @@ msgstr "E-mail ou mot de passe incorrect"
 #: src/libs/fetch.ts:75
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
+
+#: src/libs/keychain.ts:22
+#: src/libs/keychain.ts:36
+msgid "Keychain non accessible"
+msgstr "Keychain non accessible"
 
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:20
 msgid "Le pass Culture est accessible à tous !"

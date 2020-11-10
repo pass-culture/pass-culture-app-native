@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { get, post } from 'libs/fetch'
+import { saveRefreshToken } from 'libs/keychain'
 import { saveAccessToken } from 'libs/storage'
 
 export type SigninBody = {
@@ -22,6 +23,7 @@ export async function signin({ email, password }: SigninBody): Promise<boolean> 
       body,
       credentials: 'omit',
     })
+    await saveRefreshToken(email, refresh_token)
     await saveAccessToken(access_token)
     await analytics.logLogin({ method: env.API_BASE_URL })
     return true
