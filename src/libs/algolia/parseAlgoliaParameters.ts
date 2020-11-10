@@ -58,11 +58,7 @@ const _buildPriceRange = ({ priceMin = 0, priceMax = 500 }): [number, number] =>
 }
 
 const _buildCategories = (categoriesLabel: string[]): string[] => {
-  const categories: string[] = []
-  Object.values(CATEGORY_CRITERIA).forEach((categoryCriterion) => {
-    if (categoriesLabel.includes(categoryCriterion.label)) {
-      categories.push(categoryCriterion.facetFilter)
-    }
-  })
-  return categories
+  return Object.values(CATEGORY_CRITERIA)
+    .filter((categoryCriterion) => categoriesLabel.includes(categoryCriterion.label))
+    .map((categoryCriterion) => categoryCriterion.facetFilter)
 }
