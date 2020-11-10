@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { get, post } from 'libs/fetch'
-import { saveToken } from 'libs/storage'
+import { saveAccessToken } from 'libs/storage'
 
 export type SigninBody = {
   email: string
@@ -22,7 +22,7 @@ export async function signin({ email, password }: SigninBody): Promise<boolean> 
       body,
       credentials: 'omit',
     })
-    await saveToken(access_token)
+    await saveAccessToken(access_token)
     await analytics.logLogin({ method: env.API_BASE_URL })
     return true
   } catch (error) {
