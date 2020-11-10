@@ -3,7 +3,7 @@ import { t } from '@lingui/macro'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 
-import { getToken } from './storage'
+import { getAccessToken } from './storage'
 
 export type RequestCredentials = 'omit' | 'same-origin' | 'include' | undefined
 
@@ -29,8 +29,8 @@ async function makeRequest<Body>(url: string, request: RequestInit): Promise<Bod
     Accept: 'application/json',
   }
   if (request.credentials !== 'omit') {
-    const token = await getToken()
-    headers['Authorization'] = `Bearer ${token}`
+    const accessToken = await getAccessToken()
+    headers['Authorization'] = `Bearer ${accessToken}`
   }
 
   const config = {

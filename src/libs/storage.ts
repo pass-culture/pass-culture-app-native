@@ -4,17 +4,17 @@ import { Alert } from 'react-native'
 
 import { _ } from 'libs/i18n'
 
-const TOKEN_STORAGE_KEY = 'authent_token'
+const ACCESS_TOKEN_STORAGE_KEY = 'access_token'
 
-export async function getToken(): Promise<string | null> {
-  return readString(TOKEN_STORAGE_KEY)
+export async function getAccessToken(): Promise<string | null> {
+  return readString(ACCESS_TOKEN_STORAGE_KEY)
 }
 
-export async function saveToken(token: string | undefined): Promise<void> {
-  if (!token) {
-    throw Error(_(t`Aucun token à sauvegarder`))
+export async function saveAccessToken(accessToken: string | undefined): Promise<void> {
+  if (!accessToken) {
+    throw Error(_(t`Aucun access token à sauvegarder`))
   }
-  await saveString(TOKEN_STORAGE_KEY, token)
+  await saveString(ACCESS_TOKEN_STORAGE_KEY, accessToken)
 }
 
 async function readString(storageKey: string): Promise<string | null> {
