@@ -15,6 +15,8 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
+import { Email } from 'ui/svg/icons/Email'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Logo } from 'ui/svg/icons/Logo'
@@ -162,6 +164,14 @@ export const AppComponents: FunctionComponent = () => {
       <AlignedText>
         <UserCircle size={24} />
         <Text> - UserCircle </Text>
+      </AlignedText>
+      <AlignedText>
+        <Email size={24} />
+        <Text> - Email </Text>
+      </AlignedText>
+      <AlignedText>
+        <ExternalSite size={24} />
+        <Text> - External site </Text>
       </AlignedText>
       <AlignedText>
         <Warning size={24} />
