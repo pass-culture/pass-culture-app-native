@@ -36,6 +36,7 @@ export function Navigation(): JSX.Element {
         <LittleDescription>{MdpDeeplink}</LittleDescription>
         <Spacer.Column numberOfSpaces={5} />
       </ScrollView>
+      <Button title="CheatCodes" onPress={() => navigation.navigate('CheatCodes')} />
     </SafeContainer>
   )
 }
