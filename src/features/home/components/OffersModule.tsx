@@ -5,9 +5,8 @@ import styled from 'styled-components/native'
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
 import { useFetchAlgolia } from 'libs/algolia'
+import { isErrorWithMessage } from 'libs/typesUtils/typeGuards'
 import { Gutter, Margin } from 'ui/theme'
-
-import { isErrorWithMessage } from '../../../libs/typesUtils/typeGuards'
 
 type OfferWithOptionalCover = Partial<OffersWithCover> &
   Pick<Offers, 'algolia' | 'display' | 'moduleId'>

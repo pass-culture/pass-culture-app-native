@@ -41,3 +41,14 @@ console.warn = function (message) {
   }
   originalWarn(message)
 }
+
+const originalError = console.error.bind(console.error)
+console.error = function (message) {
+  const messagesToIgnore = ['dummy-error']
+  for (messageToIgnore of messagesToIgnore) {
+    if (message.includes(messagesToIgnore)) {
+      return
+    }
+  }
+  originalError(message)
+}

@@ -10,7 +10,7 @@ import { fetchAlgolia } from '../fetchAlgolia'
 import { parseAlgoliaParameters } from '../parseAlgoliaParameters'
 import { ExtraAlgoliaParameters, FetchAlgoliaParameters } from '../types'
 
-interface UseFtechAlgoliaInterface {
+export interface UseFetchAlgoliaInterface {
   algoliaParameters: AlgoliaParametersFields
   extraParameters?: Partial<ExtraAlgoliaParameters>
   onSuccess?: (data: SearchResponse<AlgoliaHit> | undefined) => void
@@ -24,7 +24,7 @@ export const useFetchAlgolia = ({
   onSuccess,
   queryKey,
   onError,
-}: UseFtechAlgoliaInterface) => {
+}: UseFetchAlgoliaInterface) => {
   const geolocation = useGeolocation()
   const [hits, setHits] = useState<Hit<AlgoliaHit>[]>([])
   const [nbHits, setNbHits] = useState(0)
