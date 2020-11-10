@@ -15,14 +15,14 @@ export interface UseFetchAlgoliaInterface {
   extraParameters?: Partial<ExtraAlgoliaParameters>
   onSuccess?: (data: SearchResponse<AlgoliaHit> | undefined) => void
   onError?: (error: unknown) => void
-  queryKey: string
+  cacheKey: string
 }
 
 export const useFetchAlgolia = ({
   algoliaParameters,
   extraParameters,
   onSuccess,
-  queryKey,
+  cacheKey,
   onError,
 }: UseFetchAlgoliaInterface) => {
   const geolocation = useGeolocation()
@@ -31,7 +31,7 @@ export const useFetchAlgolia = ({
   const parsedParameters = parseAlgoliaParameters({ geolocation, parameters: algoliaParameters })
 
   const { data, error, isLoading, isError } = useQuery<SearchResponse<AlgoliaHit> | undefined>(
-    queryKey,
+    cacheKey,
     async () => {
       if (!parsedParameters) return undefined
       return await fetchAlgolia<AlgoliaHit>({

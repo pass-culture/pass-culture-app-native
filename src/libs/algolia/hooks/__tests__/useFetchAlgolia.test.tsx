@@ -1,10 +1,9 @@
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
-import React from 'react'
-import { QueryCache, ReactQueryCacheProvider } from 'react-query'
 
 import { useFetchAlgolia } from 'libs/algolia'
 import { parseAlgoliaParameters } from 'libs/algolia/parseAlgoliaParameters'
 import { FetchAlgoliaParameters } from 'libs/algolia/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { UseFetchAlgoliaInterface } from '../useFetchAlgolia'
 
@@ -20,7 +19,7 @@ const mockOnError = jest.fn()
 const props: UseFetchAlgoliaInterface = {
   algoliaParameters: { hitsPerPage: 10, title: 'param title' },
   extraParameters: { page: 0 },
-  queryKey: 'queryKey',
+  cacheKey: 'cacheKey',
   onSuccess: mockOnSuccess,
   onError: mockOnError,
 }
@@ -34,10 +33,7 @@ describe('useFetchAlgolia', () => {
     const { result, waitForNextUpdate } = renderHook((props) => useFetchAlgolia(props), {
       initialProps: props,
       // eslint-disable-next-line react/display-name
-      wrapper: ({ children }) => {
-        const queryCache = new QueryCache()
-        return <ReactQueryCacheProvider queryCache={queryCache}>{children}</ReactQueryCacheProvider>
-      },
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     expect(mockFetchAlgolia).toHaveBeenCalledWith({
       ...parseAlgoliaParameters({ geolocation: null, parameters: props.algoliaParameters }),
@@ -56,10 +52,7 @@ describe('useFetchAlgolia', () => {
     const { waitForNextUpdate } = renderHook((props) => useFetchAlgolia({ ...props }), {
       initialProps: { ...props },
       // eslint-disable-next-line react/display-name
-      wrapper: ({ children }) => {
-        const queryCache = new QueryCache()
-        return <ReactQueryCacheProvider queryCache={queryCache}>{children}</ReactQueryCacheProvider>
-      },
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {
       await waitForNextUpdate()
@@ -73,11 +66,7 @@ describe('useFetchAlgolia', () => {
 
     const { waitForNextUpdate, result, waitFor } = renderHook((props) => useFetchAlgolia(props), {
       initialProps: props,
-      // eslint-disable-next-line react/display-name
-      wrapper: ({ children }) => {
-        const queryCache = new QueryCache()
-        return <ReactQueryCacheProvider queryCache={queryCache}>{children}</ReactQueryCacheProvider>
-      },
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {
       await waitForNextUpdate()

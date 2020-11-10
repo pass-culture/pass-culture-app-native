@@ -13,7 +13,11 @@ describe('OfferTile component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  // Temporary test. We have to adapt it with navigation once implemented
+  /**
+   * Temporary test. We have to adapt it with navigation once implemented
+   * TODO: change the way this test is made using navigation mock when possible
+   */
+
   it('should navigate to the offer when clicking on the image', async () => {
     global.console = { ...global.console, log: jest.fn() }
     const { getByTestId } = render(<OfferTile tile={mockedAlgoliaResponse.hits[0]} />)
