@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { useHomepageModules } from 'features/home/api'
 import { BusinessModule } from 'features/home/components/BusinessModule'
 import { ExclusivityModule } from 'features/home/components/ExclusivityModule'
@@ -44,6 +45,8 @@ export const Home: FunctionComponent = function () {
       showSignInModal()
     }
   })
+
+  useListenDeepLinksEffect()
 
   return (
     <SafeContainer>

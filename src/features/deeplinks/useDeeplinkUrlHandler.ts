@@ -1,25 +1,15 @@
 import { useNavigation } from '@react-navigation/native'
 
-import { env } from 'libs/environment'
-
 import {
   AllowedDeeplinkRoutes,
   DeeplinkEvent,
   DeeplinkParts,
   deeplinkToScreenConfiguration,
 } from './types'
-
-export function formatIosDeeplinkDomain() {
-  return `${env.URL_PREFIX}://${env.IOS_APP_ID}/`
-}
-
-export function formatAndroidDeeplinkDomain() {
-  return `${env.URL_PREFIX}://${env.ANDROID_APP_ID}/`
-}
+import { formatDeeplinkDomain } from './utils'
 
 export function decodeDeeplinkParts(url: string): DeeplinkParts {
-  let route = url.replace(formatIosDeeplinkDomain(), '')
-  route = route.replace(formatAndroidDeeplinkDomain(), '')
+  const route = url.replace(formatDeeplinkDomain(), '')
 
   const [routeName, searchParams] = route.split('?') as [AllowedDeeplinkRoutes, string]
   const params = searchParams

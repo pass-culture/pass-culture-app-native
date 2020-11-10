@@ -1,33 +1,18 @@
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RouteParams } from 'features/navigation/RootNavigator'
-import { env } from 'libs/environment'
 
 import { DeepLinksToScreenConfiguration } from './types'
-import {
-  decodeDeeplinkParts,
-  formatAndroidDeeplinkDomain,
-  formatIosDeeplinkDomain,
-  useDeeplinkUrlHandler,
-} from './useDeeplinkUrlHandler'
+import { decodeDeeplinkParts, useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
+import { formatDeeplinkDomain } from './utils'
 
 describe('useDeeplinkUrlHandler', () => {
-  describe('Formatting', () => {
-    it('should format properly the deeplink domain for iOS', () => {
-      const deeplinkUrl = formatIosDeeplinkDomain()
-      expect(deeplinkUrl).toEqual(`${env.URL_PREFIX}://${env.IOS_APP_ID}/`)
-    })
-    it('should format properly the deeplink domain for Android', () => {
-      const deeplinkUrl = formatAndroidDeeplinkDomain()
-      expect(deeplinkUrl).toEqual(`${env.URL_PREFIX}://${env.ANDROID_APP_ID}/`)
-    })
-  })
   describe('Url parts', () => {
     const uri = 'my-route?param1=one&param2=2&param3=true&param4=false'
     const uriWithoutParams = 'my-route/test' // slash will be included in the route name
 
     it.each([
-      ['Android', formatAndroidDeeplinkDomain() + uri],
-      ['iOS', formatIosDeeplinkDomain() + uri],
+      ['Android', formatDeeplinkDomain() + uri],
+      ['iOS', formatDeeplinkDomain() + uri],
     ])('should parse route name and uri params for %s', (_platform, url) => {
       const { routeName, params } = decodeDeeplinkParts(url)
       expect(routeName).toEqual('my-route')
@@ -39,8 +24,8 @@ describe('useDeeplinkUrlHandler', () => {
       })
     })
     it.each([
-      ['Android', formatAndroidDeeplinkDomain() + uriWithoutParams],
-      ['iOS', formatIosDeeplinkDomain() + uriWithoutParams],
+      ['Android', formatDeeplinkDomain() + uriWithoutParams],
+      ['iOS', formatDeeplinkDomain() + uriWithoutParams],
     ])('should handle url without uri params for %s', (_platform, url) => {
       const { routeName, params } = decodeDeeplinkParts(url)
       expect(routeName).toEqual('my-route/test')
@@ -51,7 +36,7 @@ describe('useDeeplinkUrlHandler', () => {
     it('should redirect to the right component when it exists', () => {
       const handleDeeplinkUrl = useDeeplinkUrlHandler()
       const url =
-        formatIosDeeplinkDomain() + 'my-route-to-test?param1=one&param2=2&param3=true&param4=false'
+        formatDeeplinkDomain() + 'my-route-to-test?param1=one&param2=2&param3=true&param4=false'
 
       handleDeeplinkUrl({ url })
 
@@ -64,7 +49,7 @@ describe('useDeeplinkUrlHandler', () => {
     })
     it('should redirect to Home when the route is not recognized', () => {
       const handleDeeplinkUrl = useDeeplinkUrlHandler()
-      const url = formatIosDeeplinkDomain() + 'unknwon-route?param1=one&param2=2'
+      const url = formatDeeplinkDomain() + 'unknwon-route?param1=one&param2=2'
 
       handleDeeplinkUrl({ url })
 

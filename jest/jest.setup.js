@@ -25,8 +25,8 @@ jest.mock('libs/environment', () => ({
     ALGOLIA_INDEX_NAME: 'algoliaIndexName',
     ALGOLIA_SEARCH_API_KEY: 'algoliaApiKey',
     URL_PREFIX: 'passculture',
-    IOS_APP_ID: 'app.android',
-    ANDROID_APP_ID: 'app.ios',
+    IOS_APP_ID: 'app.ios',
+    ANDROID_APP_ID: 'app.android',
   },
 }))
 
