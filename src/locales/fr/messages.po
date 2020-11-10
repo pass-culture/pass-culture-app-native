@@ -13,12 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/auth/pages/Login.tsx:73
+#: src/features/auth/pages/Login.tsx:72
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
 #. Error message on Batch get installation ID
-#: src/features/cheatcodes/pages/CheatCodes.tsx:43
+#: src/features/cheatcodes/pages/CheatCodes.tsx:49
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
@@ -31,24 +31,48 @@ msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
 
 #. Welcome title message
-#: src/features/home/pages/Home.tsx:49
+#: src/features/home/pages/Home.tsx:55
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
-#: src/features/home/pages/Home.tsx:34
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:48
+msgid "Clique sur le lien reçu à l'adresse :"
+msgstr "Clique sur le lien reçu à l'adresse :"
+
+#: src/features/home/pages/Home.tsx:40
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/pages/Login.tsx:61
+#: src/features/auth/pages/ReinitializePassword.tsx:46
+msgid "Confirmer le mot de passe"
+msgstr "Confirmer le mot de passe"
+
+#: src/features/auth/pages/Login.tsx:60
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
+
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:61
+msgid "Consulter mes e-mails"
+msgstr "Consulter mes e-mails"
+
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:58
+msgid "Contacter le support"
+msgstr "Contacter le support"
+
+#: src/features/auth/pages/ReinitializePassword.tsx:58
+msgid "Continuer"
+msgstr "Continuer"
 
 #. Duo offer
 #: src/features/home/atoms/OfferTile.tsx:39
 msgid "Duo"
 msgstr "Duo"
 
-#: src/features/auth/pages/Login.tsx:67
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:45
+msgid "E-mail envoyé !"
+msgstr "E-mail envoyé !"
+
+#: src/features/auth/pages/Login.tsx:66
 msgid "E-mail ou mot de passe incorrect"
 msgstr "E-mail ou mot de passe incorrect"
 
@@ -57,36 +81,57 @@ msgstr "E-mail ou mot de passe incorrect"
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
 
+#: src/features/deeplinks/listener.android.ts:16
+#: src/features/deeplinks/listener.android.ts:19
+msgid "Impossible d'ouvrir le lien"
+msgstr "Impossible d'ouvrir le lien"
+
 #: src/libs/keychain.ts:22
 #: src/libs/keychain.ts:36
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:53
+msgid "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
+msgstr "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
+
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:20
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/auth/pages/Login.tsx:79
+#: src/features/auth/pages/Login.tsx:78
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
-#: src/features/auth/pages/Login.tsx:85
+#: src/features/auth/pages/Login.tsx:84
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
-#: src/features/home/pages/Home.tsx:37
+#: src/features/home/pages/Home.tsx:43
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/cheatcodes/pages/Navigation.tsx:11
+#: src/features/auth/pages/ReinitializePassword.tsx:40
+msgid "Nouveau mot de passe"
+msgstr "Nouveau mot de passe"
+
+#: src/features/cheatcodes/pages/Navigation.tsx:19
 msgid "Page Login"
 msgstr "Page Login"
+
+#: src/features/cheatcodes/pages/Navigation.tsx:21
+msgid "Page Reinitialisation de Mdp"
+msgstr "Page Reinitialisation de Mdp"
+
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:57
+msgid "S'il n'arrive pas tu peux :"
+msgstr "S'il n'arrive pas tu peux :"
 
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:27
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
-#: src/features/auth/pages/Login.tsx:89
+#: src/features/auth/pages/Login.tsx:87
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:28
 msgid "Se connecter"
 msgstr "Se connecter"
@@ -95,13 +140,15 @@ msgstr "Se connecter"
 msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 msgstr "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 
-#. password placeholder
-#: src/features/auth/pages/Login.tsx:81
+#: src/features/auth/pages/Login.tsx:80
+#: src/features/auth/pages/ReinitializePassword.tsx:37
+#: src/features/auth/pages/ReinitializePassword.tsx:42
+#: src/features/auth/pages/ReinitializePassword.tsx:48
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
 #. Welcome body message
-#: src/features/home/pages/Home.tsx:53
+#: src/features/home/pages/Home.tsx:59
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
 
@@ -109,8 +156,16 @@ msgstr "Toute la culture dans votre main"
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
+#: src/features/auth/pages/ReinitializePassword.tsx:54
+msgid "les mots de passe ne concordent pas"
+msgstr "les mots de passe ne concordent pas"
+
+#: src/features/cheatcodes/pages/Navigation.tsx:26
+msgid "simulate email deeplink clic with:"
+msgstr "simulate email deeplink clic with:"
+
 #. email placeholder
-#: src/features/auth/pages/Login.tsx:75
+#: src/features/auth/pages/Login.tsx:74
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
