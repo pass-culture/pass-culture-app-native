@@ -1,6 +1,6 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { AlgoliaParametersFields } from '../../features/home/contentful'
+import { AlgoliaParametersFields } from 'features/home/contentful'
 
 import { CATEGORY_CRITERIA } from './enums/criteriaEnums'
 import { ParsedAlgoliaParameters } from './types'
