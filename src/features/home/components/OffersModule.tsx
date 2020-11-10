@@ -1,31 +1,37 @@
-import React, { useState } from 'react'
-import { FlatList } from 'react-native'
+import React from 'react'
+import { Alert, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { AlgoliaHit } from 'libs/algolia'
-import { algoliaHits } from 'libs/algolia/algoliaHits'
+import { useFetchAlgolia } from 'libs/algolia'
 import { Gutter, Margin } from 'ui/theme'
 
-type OfferWithOptionalCover = Partial<OffersWithCover> & Pick<Offers, 'algolia' | 'display'>
+import { isErrorWithMessage } from '../../../libs/typesUtils/typeGuards'
+
+type OfferWithOptionalCover = Partial<OffersWithCover> &
+  Pick<Offers, 'algolia' | 'display' | 'moduleId'>
 
 export const OffersModule = (props: OfferWithOptionalCover) => {
-  const { algolia, display } = props
-  const { minOffers, title } = display
-  // TODO(agarcia): actually get hits and nbHits from querying algolia
-  const [hits] = useState<AlgoliaHit[]>(algoliaHits)
-  const [nbHits] = useState(20)
+  const {
+    algolia: parameters,
+    display: { minOffers, title, layout },
+    moduleId,
+  } = props
 
-  const atLeastOneHit = hits.length > 0
-  const minOffersHasBeenReached = nbHits >= minOffers
-  const shouldModuleBeDisplayed = atLeastOneHit && minOffersHasBeenReached
-  const showSeeMore =
-    hits.length < nbHits &&
-    !('tags' in algolia || 'beginningDatetime' in algolia || 'endingDatetime' in algolia)
+  const { hits, nbHits } = useFetchAlgolia({
+    algoliaParameters: parameters,
+    onError: (error: unknown) =>
+      Alert.alert('Error', isErrorWithMessage(error) ? error.message : 'algolia-error'),
+    queryKey: `module-${moduleId}`,
+  })
 
+  const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= minOffers
   if (!shouldModuleBeDisplayed) return <React.Fragment></React.Fragment>
 
+  const showSeeMore =
+    hits.length < nbHits &&
+    !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
   return (
     <Container>
       <Margin horizontal />
@@ -34,7 +40,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
       <FlatList
         horizontal
         data={hits}
-        renderItem={({ item }) => <OfferTile tile={item} layout={display.layout} />}
+        renderItem={({ item }) => <OfferTile key={item.objectID} tile={item} layout={layout} />}
         keyExtractor={(item) => item.objectID}
         ListHeaderComponent={() => <Margin />}
         ItemSeparatorComponent={() => <Gutter />}
