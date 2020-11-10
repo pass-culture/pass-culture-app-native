@@ -4,6 +4,7 @@ import React from 'react'
 
 import { Login } from 'features/auth/pages/Login'
 import { ReinitializePassword } from 'features/auth/pages/ReinitializePassword'
+import { ResetPasswordEmailSent } from 'features/auth/pages/ResetPasswordEmailSent'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -20,6 +21,7 @@ export type RootStackParamList = {
   IdCheck: undefined
   Login?: { userId: string }
   ReinitializePassword: { token: string; expiration_date: number }
+  ResetPasswordEmailSent: { userEmail: string }
 }
 
 export const RootStack = createStackNavigator<RootStackParamList>()
@@ -56,6 +58,7 @@ export const RootNavigator: React.FC = function () {
           component={CheatCodes}
           options={{ headerShown: false }}
         />
+        <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
       </RootStack.Navigator>
     </NavigationContainer>
   )
