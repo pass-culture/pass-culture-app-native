@@ -9888,6 +9888,11 @@ react-native-code-push@^6.2.0:
     semver "^7.3.2"
     xcode "3.0.1"
 
+react-native-email-link@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-email-link/-/react-native-email-link-1.10.0.tgz#e724a528d49c8f4d8525615501dc4c791ae1026b"
+  integrity sha512-QPbG0pbI6sfqaQJt5RoOrRtpbxEO3iB/UX2354qMqPqbPHk1ijxgAQj2wGpnRZqOKI62PqfCrub+0NUmCgZ3bg==
+
 react-native-flipper@^0.61.0:
   version "0.61.0"
   resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.61.0.tgz#9613f1e8a7f90d1564f44ffc9fd7ced4f366debc"
