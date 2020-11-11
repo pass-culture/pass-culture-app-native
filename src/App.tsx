@@ -9,9 +9,9 @@ import { addPlugin } from 'react-query-native-devtools'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
-
-import './libs/sentry'
-import { startBatchNotification } from './libs/notifications'
+import 'libs/sentry'
+import { startBatchNotification } from 'libs/notifications'
+import { useHideSplashScreen } from 'libs/splashscreen'
 
 const codePushOptionsManual = {
   updateDialog: true,
@@ -32,6 +32,8 @@ if (__DEV__ && process.env.JEST !== 'true') {
 
 const AppComponent: FunctionComponent = function () {
   startBatchNotification()
+
+  useHideSplashScreen()
 
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
