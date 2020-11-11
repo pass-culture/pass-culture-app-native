@@ -14,6 +14,8 @@ import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
+const MILLISECONDS_IN_A_SECOND = 1000
+
 export const ReinitializePassword = () => {
   const {
     params: { expiration_date },
@@ -29,14 +31,14 @@ export const ReinitializePassword = () => {
   const allowSubmission = password.length > 0 && arePasswordsMatching
 
   function onClose() {
-    navigation.navigate('Home', { shouldDisplayLoginModal: true })
+    navigation.navigate('Home', { shouldDisplayLoginModal: false })
   }
   function submitPassword() {
     // TODO: call submit function using the 'token' params
   }
 
   useEffect(() => {
-    if (expiration_date * 1000 < new Date().getTime()) {
+    if (expiration_date * MILLISECONDS_IN_A_SECOND < new Date().getTime()) {
       navigation.navigate('Login')
     }
   }, [])

@@ -23,22 +23,24 @@ export const BottomCard: FunctionComponent = ({ children }) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <AvoidingKeyboardContainer bottom={keyboardHeight}>
+      <AvoidingKeyboardContainer keyboardHeight={keyboardHeight}>
         <Background />
-        <StyledFakeModal>{children}</StyledFakeModal>
+        <StyledBottomCardContainer>{children}</StyledBottomCardContainer>
       </AvoidingKeyboardContainer>
     </TouchableWithoutFeedback>
   )
 }
 
 interface AvoidingKeyboardContainerProps {
-  bottom: number
+  keyboardHeight: number
 }
-const AvoidingKeyboardContainer = styled(View)<AvoidingKeyboardContainerProps>(({ bottom }) => ({
-  bottom,
-}))
+const AvoidingKeyboardContainer = styled(View)<AvoidingKeyboardContainerProps>(
+  ({ keyboardHeight }) => ({
+    bottom: keyboardHeight,
+  })
+)
 
-const StyledFakeModal = styled.View({
+const StyledBottomCardContainer = styled.View({
   position: 'absolute',
   bottom: 0,
   width: '100%',
