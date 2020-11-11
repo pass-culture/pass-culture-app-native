@@ -6,7 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryCache, ReactQueryCacheProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
-import { RootNavigator } from 'features/navigation/RootNavigator'
+import { RootTabNavigator } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
 import 'libs/sentry'
@@ -39,7 +39,7 @@ const AppComponent: FunctionComponent = function () {
     <ReactQueryCacheProvider queryCache={queryCache}>
       <I18nProvider language={i18n.language} i18n={i18n}>
         <SafeAreaProvider>
-          <RootNavigator />
+          <RootTabNavigator />
         </SafeAreaProvider>
       </I18nProvider>
     </ReactQueryCacheProvider>
