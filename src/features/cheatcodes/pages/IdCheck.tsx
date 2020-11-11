@@ -3,11 +3,11 @@ import React from 'react'
 import { StyleSheet, Text } from 'react-native'
 import { WebView } from 'react-native-webview'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
 
 const ID_CHECK_URL = 'https://id-check-front-dev.passculture.app/'
 
-type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'IdCheck'>
+type CheatCodesNavigationProp = StackNavigationProp<HomeStackParamList, 'IdCheck'>
 
 type Props = {
   navigation: CheatCodesNavigationProp

@@ -11,7 +11,7 @@ import { IdCheck } from '../../cheatcodes/pages/IdCheck'
 import { Navigation } from '../../cheatcodes/pages/Navigation'
 import { Home } from '../pages/Home'
 
-export type RootStackParamList = {
+export type HomeStackParamList = {
   AppComponents: undefined
   Navigation: undefined
   CheatCodes: undefined
@@ -22,38 +22,38 @@ export type RootStackParamList = {
   ResetPasswordEmailSent: { userEmail: string }
 }
 
-export const RootStack = createStackNavigator<RootStackParamList>()
+export const HomeStack = createStackNavigator<HomeStackParamList>()
 
 export const HomeNavigator: React.FC = function () {
   return (
-    <RootStack.Navigator initialRouteName="Home">
-      <RootStack.Screen
+    <HomeStack.Navigator initialRouteName="Home">
+      <HomeStack.Screen
         name="Home"
         component={Home}
         initialParams={{ shouldDisplayLoginModal: false }}
         options={{ headerShown: false }}
       />
-      <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-      <RootStack.Screen
+      <HomeStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+      <HomeStack.Screen
         name="ReinitializePassword"
         component={ReinitializePassword}
         options={{ headerShown: false }}
       />
-      <RootStack.Screen name="IdCheck" component={IdCheck} options={{ headerShown: false }} />
-      <RootStack.Screen
+      <HomeStack.Screen name="IdCheck" component={IdCheck} options={{ headerShown: false }} />
+      <HomeStack.Screen
         name="AppComponents"
         component={AppComponents}
         options={{ headerShown: false }}
       />
-      <RootStack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }} />
-      <RootStack.Screen name="CheatCodes" component={CheatCodes} options={{ headerShown: false }} />
-      <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
-    </RootStack.Navigator>
+      <HomeStack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }} />
+      <HomeStack.Screen name="CheatCodes" component={CheatCodes} options={{ headerShown: false }} />
+      <HomeStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
+    </HomeStack.Navigator>
   )
 }
 
 /** Type helper to share screen names */
-export type ScreenNames = keyof RootStackParamList
+export type ScreenNames = keyof HomeStackParamList
 /**
  * Type helper for useRoute
  *
@@ -61,7 +61,7 @@ export type ScreenNames = keyof RootStackParamList
  *  params: { token, expiration_date },
  * } = useRoute<UseRouteType<'ReinitializePassword'>>()
  */
-export type UseRouteType<ScreenName extends ScreenNames> = RouteProp<RootStackParamList, ScreenName>
+export type UseRouteType<ScreenName extends ScreenNames> = RouteProp<HomeStackParamList, ScreenName>
 /**
  * Type helper for navigation prop
  *
@@ -70,7 +70,7 @@ export type UseRouteType<ScreenName extends ScreenNames> = RouteProp<RootStackPa
  * }
  */
 export type ScreenNavigationProp<ScreenName extends ScreenNames> = StackNavigationProp<
-  RootStackParamList,
+  HomeStackParamList,
   ScreenName
 >
 /**
@@ -78,7 +78,7 @@ export type ScreenNavigationProp<ScreenName extends ScreenNames> = StackNavigati
  *
  * const navigation = useNavigation<UseNavigationType>()
  */
-export type UseNavigationType = NavigationProp<RootStackParamList>
+export type UseNavigationType = NavigationProp<HomeStackParamList>
 /**
  * Type helper to access route params
  *
