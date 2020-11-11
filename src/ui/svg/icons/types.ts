@@ -5,3 +5,7 @@ export interface IconInterface {
   color?: ColorsEnum
   testID?: string
 }
+
+export interface BicolorIconInterface extends IconInterface {
+  color2?: ColorsEnum
+}
