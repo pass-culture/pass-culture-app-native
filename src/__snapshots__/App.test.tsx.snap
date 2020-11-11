@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> with mocked RootNavigator should render 1`] = `
+exports[`<App /> with mocked RooTabstNavigator should render 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={

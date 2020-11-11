@@ -20,7 +20,6 @@ export type RootTabParamList = {
 
 const RootTab = createBottomTabNavigator<RootTabParamList>()
 
-// temporary here - wait next commit
 export const RootTabNavigator: React.FC = () => (
   <NavigationContainer onStateChange={onNavigationStateChange}>
     <RootTab.Navigator initialRouteName="HomeNavigator">
