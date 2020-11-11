@@ -31,6 +31,7 @@
     "trigger:staging:deploy": "./scripts/deploy_new_staging_version.sh"
   },
   "dependencies": {
+    "@algolia/client-search": "^4.6.0",
     "@bam.tech/react-native-batch": "^5.2.1",
     "@bam.tech/react-native-config": "^0.13.0",
     "@lingui/react": "^2.9.2",
