@@ -16,6 +16,6 @@ export const MyComponent = () => (
 )
 ```
 
-- run `yarn translation:extract`
+- run `yarn translations:extract`
 - add the French translation in the `src/locales/fr/messages.po` file
 - run `yarn translations:compile`
