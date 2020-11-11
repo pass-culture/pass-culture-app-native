@@ -4,7 +4,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
@@ -21,7 +21,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { signin } from '../api'
 
-type Props = StackScreenProps<RootStackParamList, 'Login'>
+type Props = StackScreenProps<HomeStackParamList, 'Login'>
 
 let INITIAL_IDENTIFIER = ''
 let INITIAL_PASSWORD = ''

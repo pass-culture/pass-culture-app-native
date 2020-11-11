@@ -9,13 +9,13 @@ import { CodePushButton } from 'features/cheatcodes/components/CodePushButton'
 import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
 import { IdCheckButton } from 'features/cheatcodes/components/IdCheckButton'
 import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { SafeContainer } from 'ui/components/SafeContainer'
 import { Spacer } from 'ui/theme'
 
-type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
+type CheatCodesNavigationProp = StackNavigationProp<HomeStackParamList, 'CheatCodes'>
 
 type Props = {
   navigation: CheatCodesNavigationProp

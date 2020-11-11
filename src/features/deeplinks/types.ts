@@ -1,4 +1,4 @@
-import { RouteParams, RootStackParamList } from 'features/home/navigation/HomeNavigator'
+import { RouteParams, HomeStackParamList } from 'features/home/navigation/HomeNavigator'
 
 export interface DeeplinkParts {
   routeName: string
@@ -28,14 +28,14 @@ export type DeepLinksToScreenConfiguration<
 
 export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration<
   DeepLinksToScreenMap,
-  RootStackParamList
+  HomeStackParamList
 > = {
   'mot-de-passe-perdu': {
     screen: 'ReinitializePassword',
     paramConverter: ({
       token,
       expiration_date,
-    }: Record<string, string>): RouteParams<RootStackParamList, 'ReinitializePassword'> => ({
+    }: Record<string, string>): RouteParams<HomeStackParamList, 'ReinitializePassword'> => ({
       token,
       expiration_date: Number(expiration_date),
     }),

@@ -5,7 +5,7 @@ import { Alert, Linking } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -19,7 +19,7 @@ import { ColorsEnum, getSpacing, padding, Spacer, Typo } from 'ui/theme'
 
 const SUPPORT_EMAIL_ADDRESS = 'support@passculture.app'
 
-type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
+type Props = StackScreenProps<HomeStackParamList, 'ResetPasswordEmailSent'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ navigation, route }) => {
   function onBackNavigation() {

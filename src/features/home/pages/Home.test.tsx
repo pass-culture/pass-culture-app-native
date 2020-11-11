@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { render, waitFor, act } from '@testing-library/react-native'
 import React from 'react'
 
-import { RootStack } from 'features/navigation/RootNavigator'
+import { HomeStack } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
 import { flushAllPromises } from 'tests/utils'
 
@@ -63,13 +63,13 @@ describe('Home component', () => {
 async function renderHomeWithoutLoginModal() {
   const renderAPI = render(
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="Home">
-        <RootStack.Screen
+      <HomeStack.Navigator initialRouteName="Home">
+        <HomeStack.Screen
           name="Home"
           component={Home}
           initialParams={{ shouldDisplayLoginModal: false }}
         />
-      </RootStack.Navigator>
+      </HomeStack.Navigator>
     </NavigationContainer>
   )
   await act(async () => {
@@ -81,13 +81,13 @@ async function renderHomeWithoutLoginModal() {
 async function renderHomeWithLoginModal() {
   const renderAPI = render(
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="Home">
-        <RootStack.Screen
+      <HomeStack.Navigator initialRouteName="Home">
+        <HomeStack.Screen
           name="Home"
           component={Home}
           initialParams={{ shouldDisplayLoginModal: true }}
         />
-      </RootStack.Navigator>
+      </HomeStack.Navigator>
     </NavigationContainer>
   )
   await act(async () => {

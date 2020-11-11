@@ -4,7 +4,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { navigationTestProps } from 'tests/navigation'
@@ -19,7 +19,7 @@ beforeEach(() => {
 
 function renderLogin() {
   return render(
-    <Login {...(navigationTestProps as StackScreenProps<RootStackParamList, 'Login'>)} />
+    <Login {...(navigationTestProps as StackScreenProps<HomeStackParamList, 'Login'>)} />
   )
 }
 

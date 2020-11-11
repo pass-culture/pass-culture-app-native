@@ -5,7 +5,7 @@ import { Linking } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
-import { RootStack } from 'features/navigation/RootNavigator'
+import { HomeStack } from 'features/home/navigation/HomeNavigator'
 import { flushAllPromises } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
@@ -51,13 +51,13 @@ describe('<ResetPasswordEmailSent />', () => {
 function renderPage() {
   return render(
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="Home">
-        <RootStack.Screen
+      <HomeStack.Navigator initialRouteName="Home">
+        <HomeStack.Screen
           name="ResetPasswordEmailSent"
           component={ResetPasswordEmailSent}
           initialParams={{ userEmail: 'john.doe@gmail.com' }}
         />
-      </RootStack.Navigator>
+      </HomeStack.Navigator>
     </NavigationContainer>
   )
 }
