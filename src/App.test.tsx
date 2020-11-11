@@ -9,13 +9,13 @@ import { App } from './App'
 jest.mock('./libs/notifications', () => ({
   startBatchNotification: jest.fn(),
 }))
-jest.mock('features/navigation/RootNavigator', () => ({
-  RootNavigator() {
-    return 'Placeholder for RootNavigator'
+jest.mock('features/navigation/RootTabNavigator', () => ({
+  RootTabNavigator() {
+    return 'Placeholder for RootTabNavigator'
   },
 }))
 
-describe('<App /> with mocked RootNavigator', () => {
+describe('<App /> with mocked RooTabstNavigator', () => {
   it('should render', () => {
     const { toJSON } = render(<App />)
 
