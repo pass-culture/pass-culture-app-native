@@ -26,7 +26,7 @@ export type DeepLinksToScreenConfiguration<
   }
 }
 
-export const deeplinkToScreenConfiguration: DeepLinksToScreenConfiguration<
+export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration<
   DeepLinksToScreenMap,
   RootStackParamList
 > = {
@@ -45,4 +45,4 @@ export const deeplinkToScreenConfiguration: DeepLinksToScreenConfiguration<
   },
 }
 
-export type AllowedDeeplinkRoutes = keyof typeof deeplinkToScreenConfiguration
+export type AllowedDeeplinkRoutes = keyof typeof DEEPLINK_TO_SCREEN_CONFIGURATION

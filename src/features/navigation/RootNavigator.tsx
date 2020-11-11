@@ -22,7 +22,7 @@ export type RootStackParamList = {
   ReinitializePassword: { token: string; expiration_date: number }
 }
 
-const RootStack = createStackNavigator<RootStackParamList>()
+export const RootStack = createStackNavigator<RootStackParamList>()
 
 export const RootNavigator: React.FC = function () {
   return (
