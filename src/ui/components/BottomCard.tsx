@@ -24,10 +24,8 @@ export const BottomCard: FunctionComponent = ({ children }) => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <AvoidingKeyboardContainer bottom={keyboardHeight}>
-        <React.Fragment>
-          <Background />
-          <StyledFakeModal>{children}</StyledFakeModal>
-        </React.Fragment>
+        <Background />
+        <StyledFakeModal>{children}</StyledFakeModal>
       </AvoidingKeyboardContainer>
     </TouchableWithoutFeedback>
   )

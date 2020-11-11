@@ -1,5 +1,3 @@
-import { Platform } from 'react-native'
-
 import { env } from 'libs/environment'
 
 import { formatDeeplinkDomain } from './utils'
@@ -7,14 +5,8 @@ import { formatDeeplinkDomain } from './utils'
 describe('Formatting deeplink url', () => {
   afterAll(() => jest.resetAllMocks())
 
-  it('should format properly the deeplink domain for iOS', () => {
-    Platform.OS = 'ios'
+  it('should format properly the deeplink domain', () => {
     const deeplinkUrl = formatDeeplinkDomain()
-    expect(deeplinkUrl).toEqual(`${env.URL_PREFIX}://${env.IOS_APP_ID}/`)
-  })
-  it('should format properly the deeplink domain for Android', () => {
-    Platform.OS = 'android'
-    const deeplinkUrl = formatDeeplinkDomain()
-    expect(deeplinkUrl).toEqual(`${env.URL_PREFIX}://${env.ANDROID_APP_ID}/`)
+    expect(deeplinkUrl).toEqual(`${env.URL_PREFIX}://app.${env.URL_PREFIX}.${env.ENV}/`)
   })
 })
