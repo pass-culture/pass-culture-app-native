@@ -35,7 +35,11 @@ export const RootNavigator: React.FC = function () {
           options={{ headerShown: false }}
         />
         <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
+        <RootStack.Screen
+          name="ReinitializePassword"
+          component={ReinitializePassword}
+          options={{ headerShown: false }}
+        />
         <RootStack.Screen name="IdCheck" component={IdCheck} options={{ headerShown: false }} />
         <RootStack.Screen
           name="AppComponents"
