@@ -6,6 +6,8 @@ import { Button, ScrollView } from 'react-native'
 import { _ } from 'libs/i18n'
 import { Spacer } from 'ui/theme'
 
+import { CheatCodesButton } from '../components/CheatCodesButton'
+
 function Navigation(): JSX.Element {
   const navigation = useNavigation()
   return (
@@ -13,6 +15,7 @@ function Navigation(): JSX.Element {
       <Spacer.Column numberOfSpaces={5} />
       <Button title={_(t`Page Login`)} onPress={() => navigation.navigate('Login')} />
       <Spacer.Column numberOfSpaces={5} />
+      <CheatCodesButton />
     </ScrollView>
   )
 }
