@@ -20,8 +20,6 @@ export function Navigation(): JSX.Element {
     <SafeContainer>
       <ScrollView>
         <Spacer.Column numberOfSpaces={5} />
-        <Button title={_(t`Page Login`)} onPress={() => navigation.navigate('Login')} />
-        <Spacer.Column numberOfSpaces={5} />
         <CheatCodesButton />
         <Spacer.Column numberOfSpaces={5} />
         <Button title={_(t`Page Login`)} onPress={() => navigation.navigate('Login')} />

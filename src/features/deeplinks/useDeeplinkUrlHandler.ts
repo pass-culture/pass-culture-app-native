@@ -4,7 +4,7 @@ import {
   AllowedDeeplinkRoutes,
   DeeplinkEvent,
   DeeplinkParts,
-  deeplinkToScreenConfiguration,
+  DEEPLINK_TO_SCREEN_CONFIGURATION,
 } from './types'
 import { formatDeeplinkDomain } from './utils'
 
@@ -14,9 +14,10 @@ export function decodeDeeplinkParts(url: string): DeeplinkParts {
   const [routeName, searchParams] = route.split('?') as [AllowedDeeplinkRoutes, string]
   const params = searchParams
     ? JSON.parse(
-        '{"' +
-          decodeURI(searchParams).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') +
-          '"}'
+        `{"${decodeURI(searchParams)
+          .replace(/"/g, '\\"')
+          .replace(/&/g, '","')
+          .replace(/=/g, '":"')}"}`
       )
     : {}
 
@@ -31,7 +32,7 @@ export function useOnDeeplinkError() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return (error: string) => {
     // shall we navigate to oops 404 ?
-    navigate(deeplinkToScreenConfiguration['default'].screen)
+    navigate(DEEPLINK_TO_SCREEN_CONFIGURATION['default'].screen)
   }
 }
 
@@ -43,7 +44,7 @@ export function useDeeplinkUrlHandler() {
     try {
       const { routeName, params } = decodeDeeplinkParts(e.url)
 
-      const { screen, paramConverter } = deeplinkToScreenConfiguration[routeName]
+      const { screen, paramConverter } = DEEPLINK_TO_SCREEN_CONFIGURATION[routeName]
       if (!screen) {
         // this error is not displayed to the user but used to trigger the catch branch below
         throw new Error('Unkwnon screen')

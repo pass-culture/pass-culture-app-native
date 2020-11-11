@@ -59,14 +59,14 @@ describe('useDeeplinkUrlHandler', () => {
 })
 
 /** FAKING NAVIGATION BY REDEFINING A LOCAL STACK PARAMLIST */
-type RoutesListForTest = { 'my-route-to-test': 'UniqueTestRoute'; default: 'Home' }
+type DeepLinksToScreenMapForTest = { 'my-route-to-test': 'UniqueTestRoute'; default: 'Home' }
 
 type RootStackParamListForTest = {
   UniqueTestRoute: { param1: string; param2: number; param3: boolean; param4: boolean }
 }
 
 jest.mock('features/deeplinks/types', () => ({
-  deeplinkToScreenConfiguration: {
+  DEEPLINK_TO_SCREEN_CONFIGURATION: {
     'my-route-to-test': {
       screen: 'UniqueTestRoute',
       paramConverter({
@@ -86,7 +86,7 @@ jest.mock('features/deeplinks/types', () => ({
     default: {
       screen: 'Home',
     },
-  } as DeepLinksToScreenConfiguration<RoutesListForTest, RootStackParamListForTest>,
+  } as DeepLinksToScreenConfiguration<DeepLinksToScreenMapForTest, RootStackParamListForTest>,
 }))
 
 /** FAKING NAVIGATION END */
