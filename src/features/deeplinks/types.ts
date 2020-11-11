@@ -1,7 +1,7 @@
 import { RouteParams, RootStackParamList } from 'features/navigation/RootNavigator'
 
 export interface DeeplinkParts {
-  routeName: AllowedDeeplinkRoutes
+  routeName: string
   params: Record<string, string>
 }
 

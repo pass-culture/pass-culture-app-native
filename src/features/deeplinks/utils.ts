@@ -1,5 +1,7 @@
 import { env } from 'libs/environment'
 
-export function formatDeeplinkDomain() {
-  return `${env.URL_PREFIX}://app.${env.URL_PREFIX}.${env.ENV}/`
-}
+/**
+ * WARNING: Avant de modifier cette constante critique, valider avec le backend qui
+ * est à l'origine de ce format
+ */
+export const DEEPLINK_DOMAIN = `${env.URL_PREFIX}://app.${env.URL_PREFIX}.${env.ENV}/`

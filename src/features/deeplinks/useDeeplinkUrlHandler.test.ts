@@ -3,7 +3,7 @@ import { RouteParams } from 'features/navigation/RootNavigator'
 
 import { DeepLinksToScreenConfiguration } from './types'
 import { decodeDeeplinkParts, useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
-import { formatDeeplinkDomain } from './utils'
+import { DEEPLINK_DOMAIN } from './utils'
 
 describe('useDeeplinkUrlHandler', () => {
   describe('Url parts', () => {
@@ -11,8 +11,8 @@ describe('useDeeplinkUrlHandler', () => {
     const uriWithoutParams = 'my-route/test' // slash will be included in the route name
 
     it.each([
-      ['Android', formatDeeplinkDomain() + uri],
-      ['iOS', formatDeeplinkDomain() + uri],
+      ['Android', DEEPLINK_DOMAIN + uri],
+      ['iOS', DEEPLINK_DOMAIN + uri],
     ])('should parse route name and uri params for %s', (_platform, url) => {
       const { routeName, params } = decodeDeeplinkParts(url)
       expect(routeName).toEqual('my-route')
@@ -24,8 +24,8 @@ describe('useDeeplinkUrlHandler', () => {
       })
     })
     it.each([
-      ['Android', formatDeeplinkDomain() + uriWithoutParams],
-      ['iOS', formatDeeplinkDomain() + uriWithoutParams],
+      ['Android', DEEPLINK_DOMAIN + uriWithoutParams],
+      ['iOS', DEEPLINK_DOMAIN + uriWithoutParams],
     ])('should handle url without uri params for %s', (_platform, url) => {
       const { routeName, params } = decodeDeeplinkParts(url)
       expect(routeName).toEqual('my-route/test')
@@ -35,8 +35,7 @@ describe('useDeeplinkUrlHandler', () => {
   describe('Navigation handler', () => {
     it('should redirect to the right component when it exists', () => {
       const handleDeeplinkUrl = useDeeplinkUrlHandler()
-      const url =
-        formatDeeplinkDomain() + 'my-route-to-test?param1=one&param2=2&param3=true&param4=false'
+      const url = DEEPLINK_DOMAIN + 'my-route-to-test?param1=one&param2=2&param3=true&param4=false'
 
       handleDeeplinkUrl({ url })
 
@@ -49,7 +48,7 @@ describe('useDeeplinkUrlHandler', () => {
     })
     it('should redirect to Home when the route is not recognized', () => {
       const handleDeeplinkUrl = useDeeplinkUrlHandler()
-      const url = formatDeeplinkDomain() + 'unknwon-route?param1=one&param2=2'
+      const url = DEEPLINK_DOMAIN + 'unknwon-route?param1=one&param2=2'
 
       handleDeeplinkUrl({ url })
 

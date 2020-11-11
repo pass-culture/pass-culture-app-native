@@ -4,7 +4,7 @@ import React from 'react'
 import { Button, Linking, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { formatDeeplinkDomain } from 'features/deeplinks'
+import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { _ } from 'libs/i18n'
 import { SafeContainer } from 'ui/components/SafeContainer'
 import { Spacer, Typo } from 'ui/theme'
@@ -12,7 +12,7 @@ import { Spacer, Typo } from 'ui/theme'
 import { CheatCodesButton } from '../components/CheatCodesButton'
 
 const MdpDeeplink =
-  formatDeeplinkDomain() + 'mot-de-passe-perdu?token=etjkdfldkfsd&expiration_date=4567894123450'
+  DEEPLINK_DOMAIN + 'mot-de-passe-perdu?token=etjkdfldkfsd&expiration_date=4567894123450'
 
 export function Navigation(): JSX.Element {
   const navigation = useNavigation()
@@ -39,8 +39,6 @@ export function Navigation(): JSX.Element {
     </SafeContainer>
   )
 }
-
-export default Navigation
 
 type Props = { fontSize?: number }
 const LittleDescription = styled(Typo.Caption).attrs<Props>(({ fontSize = 11 }) => ({

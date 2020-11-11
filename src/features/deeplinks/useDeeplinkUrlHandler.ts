@@ -1,17 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
 
-import {
-  AllowedDeeplinkRoutes,
-  DeeplinkEvent,
-  DeeplinkParts,
-  DEEPLINK_TO_SCREEN_CONFIGURATION,
-} from './types'
-import { formatDeeplinkDomain } from './utils'
+import { isAllowedRouteTypeGuard } from './typeGuard'
+import { DeeplinkEvent, DeeplinkParts, DEEPLINK_TO_SCREEN_CONFIGURATION } from './types'
+import { DEEPLINK_DOMAIN } from './utils'
 
 export function decodeDeeplinkParts(url: string): DeeplinkParts {
-  const route = url.replace(formatDeeplinkDomain(), '')
+  const route = url.replace(DEEPLINK_DOMAIN, '')
 
-  const [routeName, searchParams] = route.split('?') as [AllowedDeeplinkRoutes, string]
+  const [routeName, searchParams] = route.split('?')
   const params = searchParams
     ? JSON.parse(
         `{"${decodeURI(searchParams)
@@ -43,6 +39,10 @@ export function useDeeplinkUrlHandler() {
   return (e: DeeplinkEvent) => {
     try {
       const { routeName, params } = decodeDeeplinkParts(e.url)
+
+      if (!isAllowedRouteTypeGuard(routeName)) {
+        throw new Error('Unkwnon route')
+      }
 
       const { screen, paramConverter } = DEEPLINK_TO_SCREEN_CONFIGURATION[routeName]
       if (!screen) {
