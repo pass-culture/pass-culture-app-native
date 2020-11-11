@@ -30,12 +30,25 @@ export const RootNavigator: React.FC = function () {
           name="Home"
           component={Home}
           initialParams={{ shouldDisplayLoginModal: false }}
+          options={{ headerShown: false }}
         />
-        <RootStack.Screen name="Login" component={Login} />
-        <RootStack.Screen name="CheatCodes" component={CheatCodes} />
-        <RootStack.Screen name="AppComponents" component={AppComponents} />
-        <RootStack.Screen name="Navigation" component={Navigation} />
-        <RootStack.Screen name="IdCheck" component={IdCheck} />
+        <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <RootStack.Screen
+          name="CheatCodes"
+          component={CheatCodes}
+          options={{ headerShown: false }}
+        />
+        <RootStack.Screen
+          name="AppComponents"
+          component={AppComponents}
+          options={{ headerShown: false }}
+        />
+        <RootStack.Screen
+          name="Navigation"
+          component={Navigation}
+          options={{ headerShown: false }}
+        />
+        <RootStack.Screen name="IdCheck" component={IdCheck} options={{ headerShown: false }} />
       </RootStack.Navigator>
     </NavigationContainer>
   )
