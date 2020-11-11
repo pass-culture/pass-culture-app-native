@@ -15,6 +15,12 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { SafeContainer } from 'ui/components/SafeContainer'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
+import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
+import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
+import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
+import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
+import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -161,6 +167,30 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Logo size={24} />
           <Text> - Logo </Text>
+        </AlignedText>
+        <AlignedText>
+          <BicolorLogo size={24} />
+          <Text> - BicolorLogo </Text>
+        </AlignedText>
+        <AlignedText>
+          <BicolorSearch size={24} />
+          <Text> - BicolorSearch </Text>
+        </AlignedText>
+        <AlignedText>
+          <BicolorBookings size={24} />
+          <Text> - BicolorBookings </Text>
+        </AlignedText>
+        <AlignedText>
+          <BicolorFavorite size={24} />
+          <Text> - BicolorFavorite </Text>
+        </AlignedText>
+        <AlignedText>
+          <BicolorProfile size={24} />
+          <Text> - BicolorProfile </Text>
+        </AlignedText>
+        <AlignedText>
+          <BicolorSelector width={24} />
+          <Text> - BicolorSelector </Text>
         </AlignedText>
         <AlignedText>
           <UserCircle size={24} />
