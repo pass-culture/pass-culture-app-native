@@ -3,7 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/home/navigation/HomeNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

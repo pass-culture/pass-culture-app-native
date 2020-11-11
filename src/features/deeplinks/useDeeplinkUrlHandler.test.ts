@@ -1,5 +1,5 @@
 import { navigate } from '__mocks__/@react-navigation/native'
-import { RouteParams } from 'features/navigation/RootNavigator'
+import { RouteParams } from 'features/home/navigation/HomeNavigator'
 
 import { DeepLinksToScreenConfiguration } from './types'
 import { decodeDeeplinkParts, useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'

@@ -16,7 +16,7 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
