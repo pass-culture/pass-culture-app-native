@@ -7,8 +7,15 @@ I have:
 - [ ] Made sure the title of my PR follows the convention `[PC-XXX] <summary>`.
 - [ ] Made sure my feature is working on the relevant real / virtual devices.
 - [ ] Written **unit tests** for my feature.
+- [ ] Added new reusable components to the AppComponents page and shared a topic to slack
 - [ ] Added a **screenshot** for UI tickets.
 - [ ] Explained my technical strategy below if feature is complex.
+
+## Screenshots
+
+| iOS - [Phone name ]                         |            Android - [Phone name]            |                        Tablet - [Phone name] |                        Little - [Phone name] |
+| ------------------------------------------- | :------------------------------------------: | -------------------------------------------: | -------------------------------------------: |
+| <img alt="image" src="XXX.png" width="170"> | <img alt="image" src="XXX.png"  width="170"> | <img alt="image" src="XXX.png"  width="170"> | <img alt="image" src="XXX.png"  width="170"> |
 
 ## Deploy hard
 
