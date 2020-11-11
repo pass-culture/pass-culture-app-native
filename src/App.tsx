@@ -2,6 +2,7 @@ import { I18nProvider } from '@lingui/react' //@translations
 import React, { FunctionComponent } from 'react'
 import CodePush from 'react-native-code-push' // @codepush
 import 'react-native-gesture-handler' // @react-navigation
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryCache, ReactQueryCacheProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
@@ -35,7 +36,9 @@ const AppComponent: FunctionComponent = function () {
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
       <I18nProvider language={i18n.language} i18n={i18n}>
-        <RootNavigator />
+        <SafeAreaProvider>
+          <RootNavigator />
+        </SafeAreaProvider>
       </I18nProvider>
     </ReactQueryCacheProvider>
   )
