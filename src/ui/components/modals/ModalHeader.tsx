@@ -50,10 +50,14 @@ const DynamicContainer = styled.View<{
 /* The negative margins are used to compensate for the
   "empty" space of SVG icons. */
 const RightHeaderAction = styled.TouchableOpacity({
+  flex: 0.2,
   marginRight: -4,
+  alignItems: 'flex-end',
 })
 const LeftHeaderAction = styled.TouchableOpacity({
+  flex: 0.2,
   marginLeft: -4,
+  alignItems: 'flex-start',
 })
 
 const Title = styled.Text<{

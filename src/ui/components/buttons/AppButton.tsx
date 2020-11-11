@@ -79,6 +79,8 @@ const Container = styled.TouchableOpacity.attrs(() => ({
   borderColor,
   borderWidth: borderColor ? 2 : 0,
   height: 40,
+  width: '100%',
+  maxWidth: getSpacing(125),
 }))
 
 interface TitleProps {

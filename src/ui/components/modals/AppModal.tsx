@@ -66,4 +66,5 @@ const Container = styled.View({
 
 const Content = styled.View({
   paddingTop: 20,
+  width: '100%',
 })

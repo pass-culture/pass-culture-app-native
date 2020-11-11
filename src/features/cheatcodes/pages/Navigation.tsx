@@ -12,7 +12,7 @@ import { Spacer, Typo } from 'ui/theme'
 import { CheatCodesButton } from '../components/CheatCodesButton'
 
 const MdpDeeplink =
-  formatDeeplinkDomain() + 'mot-de-passe-perdu?token=etjkdfldkfsd&expiration_date=4567894123'
+  formatDeeplinkDomain() + 'mot-de-passe-perdu?token=etjkdfldkfsd&expiration_date=4567894123450'
 
 export function Navigation(): JSX.Element {
   const navigation = useNavigation()
