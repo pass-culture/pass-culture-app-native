@@ -13,7 +13,7 @@ export const useGeolocation = (): GeoCoordinates | null => {
       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
     ])
       .then(() => getPosition(setInitialPosition))
-      .catch((error) => Alert.alert('Error', JSON.stringify(error)))
+      .catch((error) => Alert.alert('Error Permission', JSON.stringify(error)))
   }, [])
 
   return position
