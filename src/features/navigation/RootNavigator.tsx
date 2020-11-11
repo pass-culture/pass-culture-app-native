@@ -1,3 +1,4 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer, NavigationProp, RouteProp } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
@@ -10,6 +11,11 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Home } from 'features/home/pages/Home'
+
+import { Bookings } from '../bookings/pages/Bookings'
+import { Favorites } from '../favorites/pages/Favorites'
+import { Profile } from '../profile/pages/Profile'
+import { Search } from '../search/pages/Search'
 
 import { onNavigationStateChange } from './services'
 
@@ -26,7 +32,7 @@ export type RootStackParamList = {
 
 export const RootStack = createStackNavigator<RootStackParamList>()
 
-export const RootNavigator: React.FC = function () {
+export const HomeNavigator: React.FC = function () {
   return (
     <NavigationContainer onStateChange={onNavigationStateChange}>
       <RootStack.Navigator initialRouteName="Home">
@@ -104,3 +110,26 @@ export type RouteParams<
   StackParamList extends Record<string, unknown>,
   Screename extends keyof StackParamList
 > = Pick<StackParamList, Screename>[Screename]
+
+export type RootTabParamList = {
+  HomeNavigator: undefined
+  Search: undefined
+  Bookings: undefined
+  Favorites: undefined
+  Profile: undefined
+}
+
+const RootTab = createBottomTabNavigator<RootTabParamList>()
+
+// temporary here - wait next commit
+export const RootTabNavigator: React.FC = () => (
+  <NavigationContainer onStateChange={onNavigationStateChange}>
+    <RootTab.Navigator initialRouteName="HomeNavigator">
+      <RootTab.Screen name="HomeNavigator" component={HomeNavigator} />
+      <RootTab.Screen name="Search" component={Search} />
+      <RootTab.Screen name="Bookings" component={Bookings} />
+      <RootTab.Screen name="Favorites" component={Favorites} />
+      <RootTab.Screen name="Profile" component={Profile} />
+    </RootTab.Navigator>
+  </NavigationContainer>
+)
