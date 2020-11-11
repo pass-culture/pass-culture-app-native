@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--ImageView android:layout_width should be "match_parent",
+    otherwise the splash screen will not fill the full width.
+    Be careful about that if you regenerate splash screens using react-native-make.-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:contentDescription="Splashscreen"
+        android:scaleType="fitCenter"
+        android:background="@color/splashprimary"
+        android:src="@drawable/splashscreen"/>
+</RelativeLayout>
