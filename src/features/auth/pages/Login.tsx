@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
 import { Alert, Keyboard } from 'react-native'
@@ -7,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { _ } from 'libs/i18n'
+import { __ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -62,7 +61,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
       <Background />
       <StyledFakeModal>
         <ModalHeader
-          title={_(t`Connecte-toi !`)}
+          title={__`Connecte-toi !`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={onBackNavigation}
           rightIcon={Close}
@@ -74,19 +73,19 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
             <StyledInline>
               <Warning size={24} />
               <Typo.Caption color={ColorsEnum.ERROR}>
-                {_(t`E-mail ou mot de passe incorrect`)}
+                {__`E-mail ou mot de passe incorrect`}
               </Typo.Caption>
             </StyledInline>
           </React.Fragment>
         )}
         <Spacer.Column numberOfSpaces={7} />
         <StyledInput>
-          <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
+          <Typo.Body>{__`Adresse e-mail`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <TextInput
             value={email}
             onChangeText={setEmail}
-            placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
+            placeholder={__/*i18n: email placeholder */ `tonadresse@email.com`}
             keyboardType="email-address"
             autoFocus={true}
             isError={shouldShowErrorMessage}
@@ -95,23 +94,23 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
         </StyledInput>
         <Spacer.Column numberOfSpaces={6} />
         <StyledInput>
-          <Typo.Body>{_(t`Mot de passe`)}</Typo.Body>
+          <Typo.Body>{__`Mot de passe`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
             value={password}
             onChangeText={setPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+            placeholder={__/*i18n: password placeholder */ `Ton mot de passe`}
             isError={shouldShowErrorMessage}
             width="100%"
           />
         </StyledInput>
         <Spacer.Column numberOfSpaces={7} />
         <StyledForgottenPasswordTouchableOpacity onPress={onForgottenPasswordClick}>
-          <Typo.ButtonText>{_(t`Mot de passe oublié ?`)}</Typo.ButtonText>
+          <Typo.ButtonText>{__`Mot de passe oublié ?`}</Typo.ButtonText>
         </StyledForgottenPasswordTouchableOpacity>
         <Spacer.Column numberOfSpaces={8} />
         <StyledSigninButton>
-          <ButtonPrimary title={_(t`Se connecter`)} onPress={handleSignin} />
+          <ButtonPrimary title={__`Se connecter`} onPress={handleSignin} />
         </StyledSigninButton>
       </StyledFakeModal>
     </TouchableWithoutFeedback>
