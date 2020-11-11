@@ -8,7 +8,7 @@ import { Spacer } from 'ui/theme'
 
 import { CheatCodesButton } from '../components/CheatCodesButton'
 
-function Navigation(): JSX.Element {
+export function Navigation(): JSX.Element {
   const navigation = useNavigation()
   return (
     <ScrollView>
@@ -19,5 +19,3 @@ function Navigation(): JSX.Element {
     </ScrollView>
   )
 }
-
-export default Navigation
