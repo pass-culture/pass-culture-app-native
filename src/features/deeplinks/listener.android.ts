@@ -20,5 +20,7 @@ export function useListenDeepLinksEffect() {
         }
       })
       .catch(() => onError(_(t`Impossible d'ouvrir le lien`)))
+    Linking.addEventListener('url', handleDeeplinkUrl)
+    return () => Linking.removeEventListener('url', handleDeeplinkUrl)
   }, [])
 }
