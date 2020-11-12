@@ -1,7 +1,8 @@
 export { ColorsEnum } from 'ui/theme/colors'
 export { getShadow } from './shadow'
 export { padding } from './padding'
-export { getSpacing, getSpacingString, Spacer } from 'ui/theme/spacing'
+export { getSpacing, getSpacingString } from 'ui/theme/spacing.ts'
+export { Spacer } from '../components/spacer/Spacer'
 export { Typo, fontWeight } from 'ui/theme/typography'
 export {
   BORDER_RADIUS,

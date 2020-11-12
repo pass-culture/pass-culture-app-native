@@ -1,16 +1,8 @@
 import React from 'react'
-import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useTabBarHeight } from 'features/navigation/TabBar/useTabBarHeight'
-
-const UNIT_SPACE_DP = 4
-
-export const getSpacing = (numberOfSpaces: number): number =>
-  PixelRatio.roundToNearestPixel(UNIT_SPACE_DP * numberOfSpaces)
-export const getSpacingString = (numberOfSpaces: number): string =>
-  `${getSpacing(numberOfSpaces)}px`
-
+import { getSpacing } from 'ui/theme'
 interface SpacerProps {
   numberOfSpaces: number
 }
