@@ -6,7 +6,7 @@ const formatToFrenchDecimal = (value: number) =>
   `${value.toString().replace('.', ',')} ${EURO_SYMBOL}`
 
 export const getDisplayPrice = (prices: number[] | undefined): string => {
-  if (!prices || prices.length == 0) return ''
+  if (!prices || prices.length === 0) return ''
   if (prices.includes(0)) return 'Gratuit'
 
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))

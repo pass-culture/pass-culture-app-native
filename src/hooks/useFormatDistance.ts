@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
-import { useGeolocation } from 'libs/geolocation'
 import { Geoloc } from 'libs/algolia'
+import { useGeolocation } from 'libs/geolocation'
 
 const EARTH_RADIUS_KM = 6378.137
 

@@ -1,9 +1,8 @@
 import React from 'react'
-import { PixelRatio } from 'react-native'
+import { View, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
-import { _ } from 'libs/i18n'
 import { BORDER_RADIUS, MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
 
 import { ImageCaption } from './ImageCaption'
@@ -12,6 +11,7 @@ import { OfferCaption } from './OfferCaption'
 interface OfferTileProps {
   category: string
   distance?: string
+  date?: string
   name?: string
   isDuo?: boolean
   offerId: string
@@ -33,7 +33,7 @@ export const OfferTile = (props: OfferTileProps) => {
   return (
     <Container>
       <TouchableHighlight imageHeight={imageHeight} onPress={() => handlePressImage(offer.offerId)}>
-        <>
+        <View>
           <Image
             imageHeight={imageHeight}
             imageWidth={imageWidth}
@@ -45,13 +45,13 @@ export const OfferTile = (props: OfferTileProps) => {
             category={offer.category}
             distance={offer.distance}
           />
-        </>
+        </View>
       </TouchableHighlight>
 
       <OfferCaption
         imageWidth={imageWidth}
         name={offer.name}
-        date={'Dès le 12 mars 2020'}
+        date={offer.date}
         isDuo={offer.isDuo}
         price={offer.price}
       />
@@ -69,7 +69,6 @@ const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(
   ({ imageHeight }) => ({
     borderRadius: BORDER_RADIUS,
     height: imageHeight + rowHeight,
-    flex: 1,
   })
 )
 

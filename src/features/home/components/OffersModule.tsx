@@ -5,11 +5,10 @@ import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
+import { useFormatDistance, useFormatPrice, useFormatDates } from 'hooks'
 import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
 import { MAP_CATEGORY_TO_LABEL } from 'libs/algolia/enums'
 import { isErrorWithMessageTypeGuard } from 'libs/typesUtils/typeGuards'
-import { useFormatDistance, useFormatPrice } from 'hooks'
-
 import { Spacer } from 'ui/theme'
 
 type OfferWithOptionalCover = Partial<OffersWithCover> &
@@ -22,6 +21,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
   const { algolia: parameters, display, moduleId } = props
   const formatDistance = useFormatDistance()
   const formatPrice = useFormatPrice()
+  const formatDates = useFormatDates()
 
   const { hits, nbHits } = useFetchAlgolia({
     algoliaParameters: parameters,
@@ -38,6 +38,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
         offerId={item.offer.id}
         distance={formatDistance(item._geoloc)}
         name={item.offer.name}
+        date={formatDates(item.offer.dates)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
         price={formatPrice(item.offer.prices)}

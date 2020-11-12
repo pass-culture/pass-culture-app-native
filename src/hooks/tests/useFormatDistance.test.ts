@@ -1,4 +1,5 @@
 import { EiffelTourCoordinates } from 'libs/geolocation/tests.utils'
+
 import { getHumanizeRelativeDistance } from '../useFormatDistance'
 
 // Distance using https://www.sunearthtools.com/fr/tools/distance.php

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { ImageCaption } from './ImageCaption'
 
-let props = {
+const props = {
   category: 'Musique',
   distance: '1,2km',
   imageWidth: 50,
