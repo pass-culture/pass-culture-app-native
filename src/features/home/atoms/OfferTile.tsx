@@ -3,23 +3,25 @@ import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
-import { AlgoliaHit } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { BORDER_RADIUS, MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
 
 import { ImageCaption } from './ImageCaption'
 import { OfferCaption } from './OfferCaption'
 
-const formatPrice = (price?: number): string => {
-  return price ? `${price} €`.replace('.', ',') : 'Gratuit'
-}
-
 interface OfferTileProps {
-  tile: AlgoliaHit
+  category: string
+  distance?: string
+  name?: string
+  isDuo?: boolean
+  offerId: string
+  price: string
+  thumbUrl?: string
   layout?: Layout
 }
 
-export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: OfferTileProps) => {
+export const OfferTile = (props: OfferTileProps) => {
+  const { layout = 'one-item-medium', ...offer } = props
   const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
   const imageWidth = PixelRatio.roundToNearestPixel(imageHeight * RATIO_ALGOLIA)
 
@@ -30,7 +32,7 @@ export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: Offer
 
   return (
     <Container>
-      <TouchableHighlight imageHeight={imageHeight} onPress={() => handlePressImage(offer.id)}>
+      <TouchableHighlight imageHeight={imageHeight} onPress={() => handlePressImage(offer.offerId)}>
         <>
           <Image
             imageHeight={imageHeight}
@@ -38,7 +40,11 @@ export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: Offer
             source={{ uri: offer.thumbUrl }}
             testID="offerTileImage"
           />
-          <ImageCaption imageWidth={imageWidth} category={offer.category} distance={'1,2km'} />
+          <ImageCaption
+            imageWidth={imageWidth}
+            category={offer.category}
+            distance={offer.distance}
+          />
         </>
       </TouchableHighlight>
 
@@ -47,7 +53,7 @@ export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: Offer
         name={offer.name}
         date={'Dès le 12 mars 2020'}
         isDuo={offer.isDuo}
-        price={formatPrice(offer.priceMin)}
+        price={offer.price}
       />
     </Container>
   )

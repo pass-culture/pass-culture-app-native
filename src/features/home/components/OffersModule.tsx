@@ -7,18 +7,17 @@ import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
 import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
 import { isErrorWithMessageTypeGuard } from 'libs/typesUtils/typeGuards'
+import { useFormatDistance, useFormatPrice } from 'hooks'
 
-import { Spacer } from '../../../ui/theme'
+import { Spacer } from 'ui/theme'
 
 type OfferWithOptionalCover = Partial<OffersWithCover> &
   Pick<Offers, 'algolia' | 'display' | 'moduleId'>
 
 export const OffersModule = (props: OfferWithOptionalCover) => {
-  const {
-    algolia: parameters,
-    display: { minOffers, title, layout },
-    moduleId,
-  } = props
+  const { algolia: parameters, display, moduleId } = props
+  const formatDistance = useFormatDistance()
+  const formatPrice = useFormatPrice()
 
   const { hits, nbHits } = useFetchAlgolia({
     algoliaParameters: parameters,
@@ -29,12 +28,22 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
 
   const renderItem = useCallback(
     ({ item }: { item: Hit<AlgoliaHit> }) => (
-      <OfferTile key={item.objectID} tile={item} layout={layout} />
+      <OfferTile
+        key={item.objectID}
+        category={item.offer.category}
+        offerId={item.offer.id}
+        distance={formatDistance(item._geoloc)}
+        name={item.offer.name}
+        isDuo={item.offer.isDuo}
+        thumbUrl={item.offer.thumbUrl}
+        price={formatPrice(item.offer.prices)}
+        layout={display.layout}
+      />
     ),
-    [layout]
+    [display.layout, formatDistance]
   )
 
-  const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= minOffers
+  const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers
   if (!shouldModuleBeDisplayed) return <React.Fragment></React.Fragment>
 
   const showSeeMore =
@@ -44,7 +53,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
   return (
     <Container>
       <Spacer.Column numberOfSpaces={6} />
-      <ModuleTitle title={title} />
+      <ModuleTitle title={display.title} />
       <Spacer.Column numberOfSpaces={4} />
       <FlatList
         horizontal
