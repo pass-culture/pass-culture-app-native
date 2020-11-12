@@ -53,6 +53,7 @@ export const ReinitializePassword = () => {
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
             value={password}
+            autoFocus
             onChangeText={setPassword}
             placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
             isError={shouldShowPasswordError}
