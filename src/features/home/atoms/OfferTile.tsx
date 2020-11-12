@@ -1,23 +1,14 @@
-import { t } from '@lingui/macro'
 import React from 'react'
-import { Text, View, PixelRatio } from 'react-native'
+import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
 import { AlgoliaHit } from 'libs/algolia'
 import { _ } from 'libs/i18n'
-import {
-  ColorsEnum,
-  Typo,
-  BORDER_RADIUS,
-  MARGIN_DP,
-  GUTTER_DP,
-  LENGTH_M,
-  LENGTH_L,
-  RATIO_ALGOLIA,
-} from 'ui/theme'
+import { BORDER_RADIUS, MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
 
 import { ImageCaption } from './ImageCaption'
+import { OfferCaption } from './OfferCaption'
 
 const formatPrice = (price?: number): string => {
   return price ? `${price} €`.replace('.', ',') : 'Gratuit'
@@ -32,13 +23,15 @@ export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: Offer
   const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
   const imageWidth = PixelRatio.roundToNearestPixel(imageHeight * RATIO_ALGOLIA)
 
+  const handlePressImage = (offerId?: string): void => {
+    // eslint-disable-next-line no-console
+    console.log(`Opening offer ${offerId}...`)
+  }
+
   return (
     <Container>
-      <TouchableHighlight
-        imageHeight={imageHeight}
-        onPress={() => console.log(`Opening offer ${offer.id}...`)} // eslint-disable-line no-console
-      >
-        <View>
+      <TouchableHighlight imageHeight={imageHeight} onPress={() => handlePressImage(offer.id)}>
+        <>
           <Image
             imageHeight={imageHeight}
             imageWidth={imageWidth}
@@ -46,20 +39,16 @@ export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: Offer
             testID="offerTileImage"
           />
           <ImageCaption imageWidth={imageWidth} category={offer.category} distance={'1,2km'} />
-        </View>
+        </>
       </TouchableHighlight>
 
-      <CaptionContainer imageWidth={imageWidth}>
-        <Typo.Caption numberOfLines={1}>{offer.name}</Typo.Caption>
-        <Typo.Caption color={ColorsEnum.GREY_DARK}>
-          <Text>{'Dès le 12 mars 2020'}</Text>
-        </Typo.Caption>
-        <Typo.Caption color={ColorsEnum.GREY_DARK}>
-          {offer.isDuo
-            ? `${formatPrice(offer.priceMin)} - ${_(/*i18n: Duo offer */ t`Duo`)}`
-            : formatPrice(offer.priceMin)}
-        </Typo.Caption>
-      </CaptionContainer>
+      <OfferCaption
+        imageWidth={imageWidth}
+        name={offer.name}
+        date={'Dès le 12 mars 2020'}
+        isDuo={offer.isDuo}
+        price={formatPrice(offer.priceMin)}
+      />
     </Container>
   )
 }
@@ -77,11 +66,6 @@ const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(
     flex: 1,
   })
 )
-
-const CaptionContainer = styled.View<{ imageWidth: number }>(({ imageWidth }) => ({
-  maxWidth: imageWidth,
-  marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
-}))
 
 const Image = styled.Image<{ imageWidth: number; imageHeight: number }>(
   ({ imageWidth, imageHeight }) => ({
