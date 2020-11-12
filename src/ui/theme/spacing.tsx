@@ -1,5 +1,8 @@
+import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
+
+import { useTabBarHeight } from 'features/navigation/TabBar/useTabBarHeight'
 
 const UNIT_SPACE_DP = 4
 
@@ -19,6 +22,14 @@ const ColumnSpacer = styled.View<SpacerProps>(({ numberOfSpaces }) => ({
   height: getSpacing(numberOfSpaces),
 }))
 
+const TabBarSpacer: React.FC = () => {
+  const tabBarHeight = useTabBarHeight()
+  return <TabBarPlaceholder tabBarHeight={tabBarHeight} />
+}
+const TabBarPlaceholder = styled.View<{ tabBarHeight: number }>(({ tabBarHeight }) => ({
+  height: tabBarHeight,
+}))
+
 interface FlexSpacerProps {
   flex?: number
 }
@@ -34,4 +45,5 @@ export const Spacer = {
   Flex: FlexSpacer,
   Row: RowSpacer,
   Column: ColumnSpacer,
+  TabBar: TabBarSpacer,
 }
