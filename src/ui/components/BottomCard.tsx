@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useState } from 'react'
-import { Keyboard, TouchableWithoutFeedback, View } from 'react-native'
+import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
+
+import { AvoidingKeyboardContainer } from './keyboard'
 
 export const BottomCard: FunctionComponent = ({ children }) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -30,15 +32,6 @@ export const BottomCard: FunctionComponent = ({ children }) => {
     </TouchableWithoutFeedback>
   )
 }
-
-interface AvoidingKeyboardContainerProps {
-  keyboardHeight: number
-}
-const AvoidingKeyboardContainer = styled(View)<AvoidingKeyboardContainerProps>(
-  ({ keyboardHeight }) => ({
-    bottom: keyboardHeight,
-  })
-)
 
 const StyledBottomCardContainer = styled.View({
   position: 'absolute',
