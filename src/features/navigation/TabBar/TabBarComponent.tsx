@@ -6,6 +6,7 @@ import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme'
 import { getSpacing, Spacer } from 'ui/theme/spacing'
 
+export const TAB_BAR_COMP_HEIGHT = getSpacing(16)
 const SELECTOR_WIDTH = getSpacing(11)
 const SELECTOR_HEIGHT = computeBicolorSelectorHeight(SELECTOR_WIDTH)
 
@@ -45,7 +46,7 @@ const BicolorSelectorPlaceholder = styled.View({
 })
 const TabComponentContainer = styled.TouchableOpacity({
   marginTop: -getSpacing(1 / 4),
-  height: getSpacing(16),
+  height: TAB_BAR_COMP_HEIGHT,
   flex: 1,
   alignItems: 'center',
 })
