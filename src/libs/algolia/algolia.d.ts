@@ -1,6 +1,6 @@
 interface Offer {
   author?: string | null
-  category?: string
+  category: string
   dateCreated?: number
   dates?: number[]
   description?: string | null

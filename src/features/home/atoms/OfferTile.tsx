@@ -17,6 +17,8 @@ import {
   RATIO_ALGOLIA,
 } from 'ui/theme'
 
+import { ImageCaption } from './ImageCaption'
+
 const formatPrice = (price?: number): string => {
   return price ? `${price} €`.replace('.', ',') : 'Gratuit'
 }
@@ -43,17 +45,7 @@ export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: Offer
             source={{ uri: offer.thumbUrl }}
             testID="offerTileImage"
           />
-          <Row>
-            <TextWrapper>
-              <Typo.Caption color={ColorsEnum.WHITE}>{offer.category}</Typo.Caption>
-            </TextWrapper>
-            <Separator />
-            <TextWrapper>
-              <Typo.Caption color={ColorsEnum.WHITE}>
-                <Text>{'1,2km'}</Text>
-              </Typo.Caption>
-            </TextWrapper>
-          </Row>
+          <ImageCaption imageWidth={imageWidth} category={offer.category} distance={'1,2km'} />
         </View>
       </TouchableHighlight>
 
@@ -73,7 +65,6 @@ export const OfferTile = ({ tile: { offer }, layout = 'one-item-medium' }: Offer
 }
 
 const rowHeight = PixelRatio.roundToNearestPixel(MARGIN_DP)
-const textLineHeight = PixelRatio.roundToNearestPixel(GUTTER_DP)
 
 const Container = styled.View({
   flex: 1,
@@ -100,24 +91,3 @@ const Image = styled.Image<{ imageWidth: number; imageHeight: number }>(
     borderTopRightRadius: BORDER_RADIUS,
   })
 )
-
-const Row = styled.View({
-  flexDirection: 'row',
-  backgroundColor: ColorsEnum.BLACK,
-  height: rowHeight,
-  width: '100%',
-  borderBottomLeftRadius: BORDER_RADIUS,
-  borderBottomRightRadius: BORDER_RADIUS,
-  alignItems: 'center',
-})
-
-const Separator = styled.View({
-  height: textLineHeight,
-  backgroundColor: ColorsEnum.WHITE,
-  width: 1,
-})
-
-const TextWrapper = styled.View({
-  alignItems: 'center',
-  width: '50%',
-})
