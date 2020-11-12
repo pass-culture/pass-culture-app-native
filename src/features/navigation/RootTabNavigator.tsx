@@ -9,6 +9,7 @@ import { Profile } from '../profile/pages/Profile'
 import { Search } from '../search/pages/Search'
 
 import { onNavigationStateChange } from './services'
+import { TabBar } from './TabBar/TabBar'
 
 export type RootTabParamList = {
   HomeNavigator: undefined
@@ -17,12 +18,15 @@ export type RootTabParamList = {
   Favorites: undefined
   Profile: undefined
 }
+export type RootTabRouteName = keyof RootTabParamList
 
 const RootTab = createBottomTabNavigator<RootTabParamList>()
 
 export const RootTabNavigator: React.FC = () => (
   <NavigationContainer onStateChange={onNavigationStateChange}>
-    <RootTab.Navigator initialRouteName="HomeNavigator">
+    <RootTab.Navigator
+      initialRouteName="HomeNavigator"
+      tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
       <RootTab.Screen name="HomeNavigator" component={HomeNavigator} />
       <RootTab.Screen name="Search" component={Search} />
       <RootTab.Screen name="Bookings" component={Bookings} />
