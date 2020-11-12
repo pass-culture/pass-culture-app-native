@@ -79,15 +79,15 @@ export const Home: FunctionComponent = function () {
         </CenterContainer>
         <Spacer.Column numberOfSpaces={6} />
         <Container>
-          {modules.map((module: ProcessedModule, index: number) => {
+          {modules.map((module: ProcessedModule) => {
             if (module instanceof Offers || module instanceof OffersWithCover) {
-              return <OffersModule key={`offer-${index}`} {...module} />
+              return <OffersModule key={module.moduleId} {...module} />
             }
             if (module instanceof ExclusivityPane) {
-              return <ExclusivityModule key={module.offerId} {...module} />
+              return <ExclusivityModule key={module.moduleId} {...module} />
             }
             if (module instanceof BusinessPane) {
-              return <BusinessModule key={`business-module-${index}`} {...module} />
+              return <BusinessModule key={module.moduleId} {...module} />
             }
             return null
           })}
