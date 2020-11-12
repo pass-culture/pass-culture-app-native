@@ -1,2 +1,0 @@
-
-        <RootStack.Screen name="{{PageName}}" component={ {{PageName}} } />$1

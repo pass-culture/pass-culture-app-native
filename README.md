@@ -134,13 +134,6 @@ You can also get the coverage with:
 yarn jest --coverage
 ```
 
-## Automatic generation
-
-You can automatically generate files by running the following commands:
-
-- `yarn plop atom` : generate an empty atom
-- `yarn plop page` : generate an empty page
-
 ## Deploy
 
 ### Deploy to staging
@@ -148,7 +141,6 @@ You can automatically generate files by running the following commands:
 When you want to deploy the current version of master in staging, you can run the following command:
 
 `yarn trigger:staging:deploy`
-
 
 ### Manual deploy for the moment => will be automated by ticket 4558
 
