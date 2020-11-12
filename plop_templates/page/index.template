@@ -1,1 +1,0 @@
-export { {{ PageName }} } from './{{ PageName }}.component';
