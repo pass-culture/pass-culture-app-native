@@ -49,7 +49,7 @@ export const Home: FunctionComponent = function () {
   useListenDeepLinksEffect()
 
   return (
-    <SafeContainer>
+    <SafeContainer noTabBarSpacing>
       <ScrollView>
         {env.ENV !== 'production' && (
           <CheatButtonsContainer>
@@ -94,6 +94,7 @@ export const Home: FunctionComponent = function () {
           <Spacer.Column numberOfSpaces={6} />
         </Container>
         <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
+        <Spacer.TabBar />
       </ScrollView>
     </SafeContainer>
   )

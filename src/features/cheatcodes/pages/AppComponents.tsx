@@ -50,7 +50,7 @@ export const AppComponents: FunctionComponent = () => {
   }, [])
 
   return (
-    <SafeContainer>
+    <SafeContainer noTabBarSpacing>
       <StyledScrollView style={{ backgroundColor: ColorsEnum.GREY_LIGHT }}>
         {/* Typos */}
         <Typo.Title1 color={ColorsEnum.PRIMARY}>Typos</Typo.Title1>
@@ -233,6 +233,7 @@ export const AppComponents: FunctionComponent = () => {
         {/* Create your category */}
         <Typo.Title1 color={ColorsEnum.PRIMARY}>Add components</Typo.Title1>
         <Spacer.Column numberOfSpaces={5} />
+        <Spacer.TabBar />
       </StyledScrollView>
     </SafeContainer>
   )
