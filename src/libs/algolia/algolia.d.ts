@@ -4,7 +4,7 @@ interface Offer {
   dateCreated?: number
   dates?: number[]
   description?: string | null
-  id?: string
+  id: string
   isbn?: string | null
   isDigital?: boolean
   isDuo?: boolean
@@ -42,7 +42,7 @@ interface Venue {
   publicName?: string | null
 }
 
-interface Geoloc {
+export interface Geoloc {
   lat?: number
   lng?: number
 }

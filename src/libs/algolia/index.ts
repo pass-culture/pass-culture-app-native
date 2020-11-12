@@ -1,5 +1,5 @@
 export { parseAlgoliaParameters } from './parseAlgoliaParameters'
-export type { AlgoliaHit } from './algolia.d'
+export type { AlgoliaHit, Geoloc } from './algolia.d'
 export { useFetchAlgolia } from './hooks/useFetchAlgolia'
 export type { UseFetchAlgoliaInterface } from './hooks/useFetchAlgolia'
 export * from './types'
