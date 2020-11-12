@@ -57,7 +57,6 @@ export const ReinitializePassword = () => {
             onChangeText={setPassword}
             placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
             isError={shouldShowPasswordError}
-            width="100%"
           />
         </StyledInput>
         <Spacer.Column numberOfSpaces={6} />
@@ -69,7 +68,6 @@ export const ReinitializePassword = () => {
             onChangeText={setConfirmedPassword}
             placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
             isError={shouldShowConfirmationError}
-            width="100%"
           />
         </StyledInput>
         <Spacer.Column numberOfSpaces={2} />

@@ -1,24 +1,14 @@
 import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getShadow, padding } from 'ui/theme'
+import { ColorsEnum, getShadow, getSpacing, padding } from 'ui/theme'
 
 type Props = {
-  width?: number | string
-  height?: number | string
   isError?: boolean
   isFocus?: boolean
 }
 
-const DEFAULT_INPUT_WIDTH = 320
-const DEFAULT_INPUT_HEIGHT = 40
-
-export const InputContainer = styled.View(function ({
-  width = DEFAULT_INPUT_WIDTH,
-  height = DEFAULT_INPUT_HEIGHT,
-  isError = false,
-  isFocus = false,
-}: Props) {
+export const InputContainer = styled.View(function ({ isError = false, isFocus = false }: Props) {
   const screenWidth = Dimensions.get('screen').width
   const maxWidth = screenWidth * 0.9
 
@@ -30,8 +20,8 @@ export const InputContainer = styled.View(function ({
   }
 
   return {
-    width,
-    height,
+    width: '100%',
+    height: getSpacing(10),
     maxWidth,
     flexDirection: 'row' as const, // for some reason we have an unsolvable type issue without this casting
     alignItems: 'center',
