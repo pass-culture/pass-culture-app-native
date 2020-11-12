@@ -26,127 +26,126 @@ exports[`OfferTile component should render correctly 1`] = `
       Array [
         Object {
           "borderRadius": 8,
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
           "height": 312,
         },
       ]
     }
   >
-    <Image
-      imageHeight={288}
-      imageWidth={192}
-      source={
-        Object {
-          "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
-        }
-      }
-      style={
-        Array [
+    <View>
+      <Image
+        imageHeight={288}
+        imageWidth={192}
+        source={
           Object {
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "height": 288,
-            "width": 192,
-          },
-        ]
-      }
-      testID="offerTileImage"
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#151515",
-            "borderBottomLeftRadius": 8,
-            "borderBottomRightRadius": 8,
-            "flexDirection": "row",
-            "height": 24,
-            "width": 192,
-          },
-        ]
-      }
-      width={192}
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "paddingHorizontal": 8,
-            },
-          ]
-        }
-      >
-        <Text
-          color="#ffffff"
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "fontWeight": "600",
-                "lineHeight": 16,
-              },
-            ]
+            "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
           }
-          testID="categoryImageCaption"
-        >
-          MUSIQUE
-        </Text>
-      </View>
-      <View
+        }
         style={
           Array [
             Object {
-              "backgroundColor": "#ffffff",
-              "height": 16,
-              "width": 1,
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "height": 288,
+              "width": 192,
             },
           ]
         }
+        testID="offerTileImage"
       />
       <View
         style={
           Array [
             Object {
               "alignItems": "center",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "center",
-              "paddingHorizontal": 8,
+              "backgroundColor": "#151515",
+              "borderBottomLeftRadius": 8,
+              "borderBottomRightRadius": 8,
+              "flexDirection": "row",
+              "height": 24,
+              "width": 192,
             },
           ]
         }
+        width={192}
       >
-        <Text
-          color="#ffffff"
+        <View
           style={
             Array [
               Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "fontWeight": "600",
-                "lineHeight": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "paddingHorizontal": 8,
               },
             ]
           }
-          testID="distanceImageCaption"
         >
-          <Text>
-            1,2km
+          <Text
+            color="#ffffff"
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "lineHeight": 16,
+                },
+              ]
+            }
+            testID="categoryImageCaption"
+          >
+            MUSIQUE
           </Text>
-        </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffffff",
+                "height": 16,
+                "width": 1,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "paddingHorizontal": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            color="#ffffff"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "lineHeight": 16,
+                },
+              ]
+            }
+            testID="distanceImageCaption"
+          >
+            <Text>
+              1,2km
+            </Text>
+          </Text>
+        </View>
       </View>
     </View>
   </View>

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { OfferCaption } from './OfferCaption'
 
-let props = {
+const props = {
   name: 'Mensch ! Où sont les Hommes ?',
   distance: '1,2km',
   imageWidth: 50,

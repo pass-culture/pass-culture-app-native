@@ -26,7 +26,7 @@ describe('OffersModule component', () => {
         <OffersModule algolia={props.algolia} display={props.display} moduleId={props.moduleId} />
       )
     )
-    await waitFor(() => OffersModuleComp.getAllByText('MUSIQUE'))
+    await waitFor(() => OffersModuleComp.getAllByText('Musique'))
     expect(OffersModuleComp).toMatchSnapshot()
   })
 })

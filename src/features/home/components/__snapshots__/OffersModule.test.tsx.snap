@@ -356,9 +356,6 @@ exports[`OffersModule component should render correctly 1`] = `
               Array [
                 Object {
                   "borderRadius": 8,
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "height": 312,
                 },
               ]
@@ -395,23 +392,29 @@ exports[`OffersModule component should render correctly 1`] = `
                       "borderBottomRightRadius": 8,
                       "flexDirection": "row",
                       "height": 24,
-                      "width": "100%",
+                      "width": 192,
                     },
                   ]
                 }
+                width={192}
               >
                 <View
                   style={
                     Array [
                       Object {
                         "alignItems": "center",
-                        "width": "50%",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 8,
                       },
                     ]
                   }
                 >
                   <Text
                     color="#ffffff"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
@@ -423,48 +426,9 @@ exports[`OffersModule component should render correctly 1`] = `
                         },
                       ]
                     }
+                    testID="categoryImageCaption"
                   >
-                    MUSIQUE
-                  </Text>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#ffffff",
-                        "height": 16,
-                        "width": 1,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "width": "50%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    color="#ffffff"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "fontWeight": "600",
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    <Text>
-                      1,2km
-                    </Text>
+                    Musique
                   </Text>
                 </View>
               </View>
@@ -510,24 +474,7 @@ exports[`OffersModule component should render correctly 1`] = `
                   },
                 ]
               }
-            >
-              <Text>
-                Dès le 12 mars 2020
-              </Text>
-            </Text>
-            <Text
-              color="#626262"
-              style={
-                Array [
-                  Object {
-                    "color": "#626262",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "fontWeight": "600",
-                    "lineHeight": 16,
-                  },
-                ]
-              }
+              testID="priceIsDuo"
             >
               28 €
             </Text>
@@ -580,9 +527,6 @@ exports[`OffersModule component should render correctly 1`] = `
               Array [
                 Object {
                   "borderRadius": 8,
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "height": 312,
                 },
               ]
@@ -619,23 +563,29 @@ exports[`OffersModule component should render correctly 1`] = `
                       "borderBottomRightRadius": 8,
                       "flexDirection": "row",
                       "height": 24,
-                      "width": "100%",
+                      "width": 192,
                     },
                   ]
                 }
+                width={192}
               >
                 <View
                   style={
                     Array [
                       Object {
                         "alignItems": "center",
-                        "width": "50%",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 8,
                       },
                     ]
                   }
                 >
                   <Text
                     color="#ffffff"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
@@ -647,48 +597,9 @@ exports[`OffersModule component should render correctly 1`] = `
                         },
                       ]
                     }
+                    testID="categoryImageCaption"
                   >
-                    MUSIQUE
-                  </Text>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#ffffff",
-                        "height": 16,
-                        "width": 1,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "width": "50%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    color="#ffffff"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "fontWeight": "600",
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    <Text>
-                      1,2km
-                    </Text>
+                    Musique
                   </Text>
                 </View>
               </View>
@@ -734,24 +645,7 @@ exports[`OffersModule component should render correctly 1`] = `
                   },
                 ]
               }
-            >
-              <Text>
-                Dès le 12 mars 2020
-              </Text>
-            </Text>
-            <Text
-              color="#626262"
-              style={
-                Array [
-                  Object {
-                    "color": "#626262",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "fontWeight": "600",
-                    "lineHeight": 16,
-                  },
-                ]
-              }
+              testID="priceIsDuo"
             >
               23 €
             </Text>
@@ -804,9 +698,6 @@ exports[`OffersModule component should render correctly 1`] = `
               Array [
                 Object {
                   "borderRadius": 8,
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "height": 312,
                 },
               ]
@@ -843,23 +734,29 @@ exports[`OffersModule component should render correctly 1`] = `
                       "borderBottomRightRadius": 8,
                       "flexDirection": "row",
                       "height": 24,
-                      "width": "100%",
+                      "width": 192,
                     },
                   ]
                 }
+                width={192}
               >
                 <View
                   style={
                     Array [
                       Object {
                         "alignItems": "center",
-                        "width": "50%",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 8,
                       },
                     ]
                   }
                 >
                   <Text
                     color="#ffffff"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
@@ -871,48 +768,9 @@ exports[`OffersModule component should render correctly 1`] = `
                         },
                       ]
                     }
+                    testID="categoryImageCaption"
                   >
-                    MUSIQUE
-                  </Text>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#ffffff",
-                        "height": 16,
-                        "width": 1,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "width": "50%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    color="#ffffff"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "fontWeight": "600",
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    <Text>
-                      1,2km
-                    </Text>
+                    Musique
                   </Text>
                 </View>
               </View>
@@ -960,7 +818,7 @@ exports[`OffersModule component should render correctly 1`] = `
               }
             >
               <Text>
-                Dès le 12 mars 2020
+                17 nov 2020
               </Text>
             </Text>
             <Text
@@ -976,6 +834,7 @@ exports[`OffersModule component should render correctly 1`] = `
                   },
                 ]
               }
+              testID="priceIsDuo"
             >
               34 € - Duo
             </Text>
@@ -1028,9 +887,6 @@ exports[`OffersModule component should render correctly 1`] = `
               Array [
                 Object {
                   "borderRadius": 8,
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
                   "height": 312,
                 },
               ]
@@ -1067,23 +923,29 @@ exports[`OffersModule component should render correctly 1`] = `
                       "borderBottomRightRadius": 8,
                       "flexDirection": "row",
                       "height": 24,
-                      "width": "100%",
+                      "width": 192,
                     },
                   ]
                 }
+                width={192}
               >
                 <View
                   style={
                     Array [
                       Object {
                         "alignItems": "center",
-                        "width": "50%",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 8,
                       },
                     ]
                   }
                 >
                   <Text
                     color="#ffffff"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
@@ -1095,48 +957,9 @@ exports[`OffersModule component should render correctly 1`] = `
                         },
                       ]
                     }
+                    testID="categoryImageCaption"
                   >
-                    MUSIQUE
-                  </Text>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#ffffff",
-                        "height": 16,
-                        "width": 1,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "width": "50%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    color="#ffffff"
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "fontWeight": "600",
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    <Text>
-                      1,2km
-                    </Text>
+                    Musique
                   </Text>
                 </View>
               </View>
@@ -1182,24 +1005,7 @@ exports[`OffersModule component should render correctly 1`] = `
                   },
                 ]
               }
-            >
-              <Text>
-                Dès le 12 mars 2020
-              </Text>
-            </Text>
-            <Text
-              color="#626262"
-              style={
-                Array [
-                  Object {
-                    "color": "#626262",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "fontWeight": "600",
-                    "lineHeight": 16,
-                  },
-                ]
-              }
+              testID="priceIsDuo"
             >
               28 €
             </Text>
