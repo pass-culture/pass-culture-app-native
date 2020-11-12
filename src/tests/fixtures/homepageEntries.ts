@@ -15,7 +15,7 @@ export const homepageEntriesAPIResponse = {
         updatedAt: '2020-10-30T10:07:29.549Z',
         environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
         revision: 154,
-        contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepage' } },
+        contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepageNatif' } },
         locale: 'en-US',
       },
       fields: {
@@ -43,7 +43,7 @@ export const homepageEntriesAPIResponse = {
         updatedAt: '2020-10-28T17:32:42.192Z',
         environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
         revision: 1,
-        contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepage' } },
+        contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepageNatif' } },
         locale: 'en-US',
       },
       fields: {
@@ -653,7 +653,7 @@ export const adaptedHomepageEntries: HomepageEntries = {
     updatedAt: '2020-10-30T10:07:29.549Z',
     environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
     revision: 154,
-    contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepage' } },
+    contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'homepageNatif' } },
     locale: 'en-US',
   },
   fields: {

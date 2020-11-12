@@ -3,7 +3,7 @@ export const CONTENT_TYPES = {
   ALGOLIA_PARAMETERS: 'algoliaParameters',
   DISPLAY_PARAMETERS: 'displayParameters',
   EXCLUSIVITY: 'exclusivity',
-  HOMEPAGE: 'homepage',
+  HOMEPAGE_NATIF: 'homepageNatif',
   INFORMATION: 'information',
   BUSINESS: 'business',
 }
@@ -14,7 +14,7 @@ export enum ContentTypes {
   EXCLUSIVITY = 'exclusivity',
   DISPLAY = 'display',
   DISPLAY_PARAMETERS = 'displayParameters',
-  HOMEPAGE = 'homepage',
+  HOMEPAGE_NATIF = 'homepageNatif',
   INFORMATION = 'information',
   BUSINESS = 'business',
 }
@@ -185,8 +185,8 @@ interface ExclusivityFields {
   offerId: string
 }
 
-// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepage/fields
-interface HomepageFields {
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/homepageNatif/fields
+interface HomepageNatifFields {
   title: string
   modules: HomepageModule[]
 }
@@ -217,8 +217,8 @@ interface Image {
 }
 
 interface HomepageEntries {
-  sys: Sys<typeof CONTENT_TYPES.HOMEPAGE>
-  fields: HomepageFields
+  sys: Sys<typeof CONTENT_TYPES.HOMEPAGE_NATIF>
+  fields: HomepageNatifFields
 }
 
 export type {
