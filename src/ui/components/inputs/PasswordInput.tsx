@@ -25,11 +25,7 @@ export function PasswordInput(props: TextInputProps): JSX.Element {
   }
 
   return (
-    <InputContainer
-      isFocus={isFocus}
-      isError={props.isError}
-      width={props.width}
-      height={props.height}>
+    <InputContainer isFocus={isFocus} isError={props.isError}>
       <StyledTextInput
         placeholder={props.placeholder}
         onChangeText={props.onChangeText}

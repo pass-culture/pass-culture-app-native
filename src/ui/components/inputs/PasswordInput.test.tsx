@@ -11,7 +11,7 @@ describe('<PasswordInput />', () => {
   })
 
   it('should render correctly when password is displayed', () => {
-    const instance = render(<PasswordInput width={300} height={50} />)
+    const instance = render(<PasswordInput />)
     const hiddenSnapshot = instance.toJSON()
 
     const eyeSlashIcon = instance.getByTestId('eye-slash')
@@ -23,7 +23,7 @@ describe('<PasswordInput />', () => {
   })
 
   it('should render correctly when password is hidden after it was displayed', () => {
-    const instance = render(<PasswordInput width={300} height={50} />)
+    const instance = render(<PasswordInput />)
 
     const eyeSlashIcon = instance.getByTestId('eye-slash')
     fireEvent.press(eyeSlashIcon)

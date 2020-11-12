@@ -22,7 +22,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
         "shadowColor": "#151515",
         "shadowOpacity": 0.15,
         "shadowRadius": 6,
-        "width": 320,
+        "width": "100%",
       },
     ]
   }
