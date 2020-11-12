@@ -24,4 +24,4 @@ export type iOSShadowOutput = {
   shadowOpacity: string
 }
 
-export function getShadow(shadowInput: iOSShadow): iOSShadowOutput | AndroidShadow
+export function getShadow(shadowInput: iOSShadowInput): iOSShadowOutput | AndroidShadow
