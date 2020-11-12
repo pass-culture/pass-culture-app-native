@@ -9,6 +9,7 @@ import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -34,6 +35,8 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const [shouldShowErrorMessage, setShouldShowErrorMessage] = useState(false)
+
+  const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password)
 
   async function handleSignin() {
     setShouldShowErrorMessage(false)
@@ -109,7 +112,11 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
           <Typo.ButtonText>{_(t`Mot de passe oublié ?`)}</Typo.ButtonText>
         </StyledForgottenPasswordTouchableOpacity>
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary title={_(t`Se connecter`)} onPress={handleSignin} />
+        <ButtonPrimary
+          title={_(t`Se connecter`)}
+          onPress={handleSignin}
+          disabled={shouldDisableLoginButton}
+        />
       </BottomCard>
     </SafeContainer>
   )

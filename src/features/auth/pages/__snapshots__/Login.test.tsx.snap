@@ -1,5 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Login/> should enable login button when both text inputs are filled 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -563,11 +563,13 @@
+                      \\"fontWeight\\": \\"normal\\",
+                      \\"lineHeight\\": 20,
+                    },
+                  ]
+                }
+-             />
++             >
++               email@gmail.com
++             </Text>
+            </TextInput>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={6}
+@@ -679,11 +681,13 @@
+                      \\"fontWeight\\": \\"normal\\",
+                      \\"lineHeight\\": 20,
+                    },
+                  ]
+                }
+-             />
++             >
++               mypassword
++             </Text>
+            </TextInput>
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function onClick]}
+@@ -802,22 +806,22 @@
+            ]
+          }
+        />
+        <View
+          accessible={true}
+-         focusable={false}
++         focusable={true}
+          onClick={[Function onClick]}
+          onResponderGrant={[Function onResponderGrant]}
+          onResponderMove={[Function onResponderMove]}
+          onResponderRelease={[Function onResponderRelease]}
+          onResponderTerminate={[Function onResponderTerminate]}
+          onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+          onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+          style={
+            Object {
+              \\"alignItems\\": \\"center\\",
+-             \\"backgroundColor\\": \\"#ff99be\\",
++             \\"backgroundColor\\": \\"#eb0055\\",
+              \\"borderRadius\\": 24,
+              \\"borderWidth\\": 0,
+              \\"flexDirection\\": \\"row\\",
+              \\"height\\": 40,
+              \\"justifyContent\\": \\"center\\","
+`;
+
 exports[`<Login/> should show error message and error inputs AND not redirect to home page WHEN signin has failed 1`] = `
 "Snapshot Diff:
 - First value

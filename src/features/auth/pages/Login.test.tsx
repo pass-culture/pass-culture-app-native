@@ -61,4 +61,19 @@ describe('<Login/>', () => {
       expect(navigationTestProps.navigation.navigate).not.toBeCalled()
     })
   })
+
+  it('should enable login button when both text inputs are filled', async () => {
+    const { getByPlaceholderText, toJSON } = renderLogin()
+    const disabledButtonSnapshot = toJSON()
+
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
+
+    await waitForExpect(() => {
+      const enabledButtonSnapshot = toJSON()
+      expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
+    })
+  })
 })
