@@ -34,121 +34,119 @@ exports[`OfferTile component should render correctly 1`] = `
       ]
     }
   >
-    <View>
-      <Image
-        imageHeight={288}
-        imageWidth={192}
-        source={
-          Object {
-            "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
-          }
+    <Image
+      imageHeight={288}
+      imageWidth={192}
+      source={
+        Object {
+          "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
         }
+      }
+      style={
+        Array [
+          Object {
+            "borderTopLeftRadius": 8,
+            "borderTopRightRadius": 8,
+            "height": 288,
+            "width": 192,
+          },
+        ]
+      }
+      testID="offerTileImage"
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#151515",
+            "borderBottomLeftRadius": 8,
+            "borderBottomRightRadius": 8,
+            "flexDirection": "row",
+            "height": 24,
+            "width": 192,
+          },
+        ]
+      }
+      width={192}
+    >
+      <View
         style={
           Array [
             Object {
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
-              "height": 288,
-              "width": 192,
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 8,
             },
           ]
         }
-        testID="offerTileImage"
+      >
+        <Text
+          color="#ffffff"
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "fontWeight": "600",
+                "lineHeight": 16,
+              },
+            ]
+          }
+          testID="categoryImageCaption"
+        >
+          MUSIQUE
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#ffffff",
+              "height": 16,
+              "width": 1,
+            },
+          ]
+        }
       />
       <View
         style={
           Array [
             Object {
               "alignItems": "center",
-              "backgroundColor": "#151515",
-              "borderBottomLeftRadius": 8,
-              "borderBottomRightRadius": 8,
-              "flexDirection": "row",
-              "height": 24,
-              "width": 192,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 8,
             },
           ]
         }
-        width={192}
       >
-        <View
+        <Text
+          color="#ffffff"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 8,
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "fontWeight": "600",
+                "lineHeight": 16,
               },
             ]
           }
+          testID="distanceImageCaption"
         >
-          <Text
-            color="#ffffff"
-            numberOfLines={1}
-            style={
-              Array [
-                Object {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "fontWeight": "600",
-                  "lineHeight": 16,
-                },
-              ]
-            }
-            testID="categoryImageCaption"
-          >
-            MUSIQUE
+          <Text>
+            1,2km
           </Text>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "backgroundColor": "#ffffff",
-                "height": 16,
-                "width": 1,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 8,
-              },
-            ]
-          }
-        >
-          <Text
-            color="#ffffff"
-            style={
-              Array [
-                Object {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "fontWeight": "600",
-                  "lineHeight": 16,
-                },
-              ]
-            }
-            testID="distanceImageCaption"
-          >
-            <Text>
-              1,2km
-            </Text>
-          </Text>
-        </View>
+        </Text>
       </View>
     </View>
   </View>
@@ -210,6 +208,7 @@ exports[`OfferTile component should render correctly 1`] = `
           },
         ]
       }
+      testID="priceIsDuo"
     >
       28 €
     </Text>
