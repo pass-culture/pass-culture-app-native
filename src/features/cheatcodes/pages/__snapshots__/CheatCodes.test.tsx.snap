@@ -7,6 +7,7 @@ exports[`CheatCodes component should render correctly 1`] = `
       "top",
     ]
   }
+  marginBottom={80}
   mode="padding"
   style={
     Array [
@@ -14,6 +15,7 @@ exports[`CheatCodes component should render correctly 1`] = `
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "marginBottom": 80,
       },
     ]
   }

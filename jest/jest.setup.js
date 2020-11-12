@@ -12,6 +12,10 @@ jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
   "Invariant Violation: Native module cannot be null." */
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+jest.mock('react-native-safe-area-context', () => ({
+  ...jest.requireActual('react-native-safe-area-context'),
+  useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
+}))
 /* Cf. the corresponding mock in libs/__mocks__ */
 jest.mock('libs/analytics')
 
