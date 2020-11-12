@@ -8,7 +8,7 @@ import { getHomepageEntries, CONTENTFUL_BASE_URL } from './api'
 
 server.use(
   rest.get(
-    `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}/entries?include=2&content_type=homepage&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`,
+    `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}/entries?include=2&content_type=homepageNatif&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`,
     async (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
     }

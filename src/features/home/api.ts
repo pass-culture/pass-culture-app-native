@@ -28,7 +28,7 @@ export async function getHomepageEntries() {
     `${CONTENTFUL_BASE_URL}` +
       `/spaces/${env.CONTENTFUL_SPACE_ID}` +
       `/environments/${env.CONTENTFUL_ENVIRONMENT}` +
-      `/entries?include=${DEPTH_LEVEL}&content_type=homepage&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
+      `/entries?include=${DEPTH_LEVEL}&content_type=homepageNatif&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
   )
   return adaptHomepageEntries(json)
 }
