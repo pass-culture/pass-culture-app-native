@@ -20,6 +20,7 @@ export const homepageEntriesAPIResponse = {
       },
       fields: {
         modules: [
+          { sys: { type: 'Link', linkType: 'Entry', id: 'KiG6rWuQYhHuGIBXZNeB2' } },
           { sys: { type: 'Link', linkType: 'Entry', id: 'GlQb8Zg3n1PoYVmOyVCgW' } },
           { sys: { type: 'Link', linkType: 'Entry', id: '5u3NaFTcu2XR5KgJ1OAg8C' } },
           { sys: { type: 'Link', linkType: 'Entry', id: '1LgDMVOKdH3agA0WG2LFEr' } },
@@ -29,7 +30,6 @@ export const homepageEntriesAPIResponse = {
           { sys: { type: 'Link', linkType: 'Entry', id: '2Fjxhdirgh17ZvdPNZGDP4' } },
           { sys: { type: 'Link', linkType: 'Entry', id: '7c7xq3ulzqO2yDRJLDmths' } },
           { sys: { type: 'Link', linkType: 'Entry', id: '6lk6vCol5Qza2mfdtsTzW' } },
-          { sys: { type: 'Link', linkType: 'Entry', id: 'KiG6rWuQYhHuGIBXZNeB2' } },
         ],
         title: "Page d'accueil de la webappp",
       },
@@ -73,6 +73,25 @@ export const homepageEntriesAPIResponse = {
   ],
   includes: {
     Entry: [
+      {
+        sys: {
+          space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
+          id: 'KiG6rWuQYhHuGIBXZNeB2',
+          type: 'Entry',
+          createdAt: '2020-10-30T10:07:22.489Z',
+          updatedAt: '2020-10-30T10:07:22.489Z',
+          environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
+          revision: 1,
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'exclusivity' } },
+          locale: 'en-US',
+        },
+        fields: {
+          title: 'Exclusitivité du moment',
+          alt: 'Exclusitivité du moment',
+          image: { sys: { type: 'Link', linkType: 'Asset', id: '2qTXOFUocq1HhgB7Wzl23K' } },
+          offerId: 'AE67',
+        },
+      },
       {
         sys: {
           space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
@@ -541,25 +560,6 @@ export const homepageEntriesAPIResponse = {
       {
         sys: {
           space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
-          id: 'KiG6rWuQYhHuGIBXZNeB2',
-          type: 'Entry',
-          createdAt: '2020-10-30T10:07:22.489Z',
-          updatedAt: '2020-10-30T10:07:22.489Z',
-          environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
-          revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'exclusivity' } },
-          locale: 'en-US',
-        },
-        fields: {
-          title: 'Exclusitivité du moment',
-          alt: 'Exclusitivité du moment',
-          image: { sys: { type: 'Link', linkType: 'Asset', id: '2qTXOFUocq1HhgB7Wzl23K' } },
-          offerId: 'AE67',
-        },
-      },
-      {
-        sys: {
-          space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
           id: 'eLESwUjpZNqJyn9haXWGt',
           type: 'Entry',
           createdAt: '2020-10-12T20:40:08.977Z',
@@ -658,6 +658,46 @@ export const adaptedHomepageEntries: HomepageEntries = {
   },
   fields: {
     modules: [
+      {
+        sys: {
+          space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
+          id: 'KiG6rWuQYhHuGIBXZNeB2',
+          type: 'Entry',
+          createdAt: '2020-10-30T10:07:22.489Z',
+          updatedAt: '2020-10-30T10:07:22.489Z',
+          environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
+          revision: 1,
+          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'exclusivity' } },
+          locale: 'en-US',
+        },
+        fields: {
+          title: 'Exclusitivité du moment',
+          alt: 'Exclusitivité du moment',
+          image: {
+            sys: {
+              space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
+              id: '2qTXOFUocq1HhgB7Wzl23K',
+              type: 'Asset',
+              createdAt: '2020-10-28T14:41:35.898Z',
+              updatedAt: '2020-10-28T14:41:35.898Z',
+              environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
+              revision: 1,
+              locale: 'en-US',
+            },
+            fields: {
+              title: 'Image spécial carnaval',
+              file: {
+                url:
+                  '//images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png',
+                details: { size: 128147, image: { width: 596, height: 559 } },
+                fileName: 'image (3).png',
+                contentType: 'image/png',
+              },
+            },
+          },
+          offerId: 'AE67',
+        },
+      },
       {
         sys: {
           space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
@@ -1141,46 +1181,6 @@ export const adaptedHomepageEntries: HomepageEntries = {
               minOffers: 2,
             },
           },
-        },
-      },
-      {
-        sys: {
-          space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
-          id: 'KiG6rWuQYhHuGIBXZNeB2',
-          type: 'Entry',
-          createdAt: '2020-10-30T10:07:22.489Z',
-          updatedAt: '2020-10-30T10:07:22.489Z',
-          environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
-          revision: 1,
-          contentType: { sys: { type: 'Link', linkType: 'ContentType', id: 'exclusivity' } },
-          locale: 'en-US',
-        },
-        fields: {
-          title: 'Exclusitivité du moment',
-          alt: 'Exclusitivité du moment',
-          image: {
-            sys: {
-              space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
-              id: '2qTXOFUocq1HhgB7Wzl23K',
-              type: 'Asset',
-              createdAt: '2020-10-28T14:41:35.898Z',
-              updatedAt: '2020-10-28T14:41:35.898Z',
-              environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
-              revision: 1,
-              locale: 'en-US',
-            },
-            fields: {
-              title: 'Image spécial carnaval',
-              file: {
-                url:
-                  '//images.ctfassets.net/2bg01iqy0isv/2qTXOFUocq1HhgB7Wzl23K/a48ab7bedde13545231c0f843fbcfe10/image__3_.png',
-                details: { size: 128147, image: { width: 596, height: 559 } },
-                fileName: 'image (3).png',
-                contentType: 'image/png',
-              },
-            },
-          },
-          offerId: 'AE67',
         },
       },
     ],
