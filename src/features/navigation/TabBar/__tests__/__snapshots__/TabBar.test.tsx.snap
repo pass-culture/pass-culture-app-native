@@ -6,7 +6,7 @@ exports[`TabBar renders correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#ffffffF8",
+        "backgroundColor": "#fffffff8",
         "borderColor": "#f5f5f5",
         "borderStyle": "solid",
         "borderWidth": 1,
@@ -25,18 +25,16 @@ exports[`TabBar renders correctly 1`] = `
       Array [
         Object {
           "flexDirection": "row",
-          "flexGrow": 1,
-          "width": "100%",
         },
       ]
     }
   >
     <View
-      numberOfSpaces={6}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "width": 24,
+            "width": 16,
           },
         ]
       }
@@ -867,11 +865,11 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
-      numberOfSpaces={6}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "width": 24,
+            "width": 16,
           },
         ]
       }
@@ -882,8 +880,6 @@ exports[`TabBar renders correctly 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "green",
-          "flexGrow": 1,
           "height": 10,
         },
       ]

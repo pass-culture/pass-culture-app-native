@@ -15,7 +15,7 @@ jest.mock('features/navigation/RootTabNavigator', () => ({
   },
 }))
 
-describe('<App /> with mocked RooTabstNavigator', () => {
+describe('<App /> with mocked RootTabNavigator', () => {
   it('should render', () => {
     const { toJSON } = render(<App />)
 

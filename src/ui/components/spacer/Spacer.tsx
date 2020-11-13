@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useTabBarHeight } from 'features/navigation/TabBar/useTabBarHeight'
-import { getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme/spacing'
+
 interface SpacerProps {
   numberOfSpaces: number
 }
