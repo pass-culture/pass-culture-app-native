@@ -307,94 +307,6 @@ exports[`Home component should render correctly without login modal 1`] = `
                             style={
                               Array [
                                 Object {
-                                  "flexDirection": "row",
-                                  "justifyContent": "space-around",
-                                  "width": "100%",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              accessible={true}
-                              focusable={true}
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              style={
-                                Object {
-                                  "borderColor": "#151515",
-                                  "borderWidth": 2,
-                                  "opacity": 1,
-                                  "paddingBottom": 4,
-                                  "paddingLeft": 4,
-                                  "paddingRight": 4,
-                                  "paddingTop": 4,
-                                }
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "fontWeight": "normal",
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Composants
-                              </Text>
-                            </View>
-                            <View
-                              accessible={true}
-                              focusable={true}
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              style={
-                                Object {
-                                  "borderColor": "#151515",
-                                  "borderWidth": 2,
-                                  "opacity": 1,
-                                  "paddingBottom": 4,
-                                  "paddingLeft": 4,
-                                  "paddingRight": 4,
-                                  "paddingTop": 4,
-                                }
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "fontWeight": "normal",
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Navigation
-                              </Text>
-                            </View>
-                          </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
                                   "alignItems": "center",
                                   "flexBasis": 0,
                                   "flexGrow": 1,
@@ -1159,7 +1071,7 @@ exports[`Home component should render modal correctly 1`] = `
 - First value
 + Second value
 
-@@ -767,11 +767,11 @@
+@@ -679,11 +679,11 @@
                             <Modal
                               animationType=\\"slide\\"
                               hardwareAccelerated={false}

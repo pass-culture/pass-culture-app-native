@@ -5,6 +5,7 @@ import { parseBooleanVariables } from './parseBooleanVariables'
 export interface Environment {
   API_BASE_URL: string
   ENV: string
+  CHEAT_BUTTONS_ENABLED: boolean
   FEATURE_FLAG_CHEAT_CODES: boolean
   FEATURE_FLAG_CODE_PUSH: boolean
   FEATURE_FLAG_CODE_PUSH_MANUAL: boolean
