@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Background } from 'ui/svg/Background'
-import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
+import { ColorsEnum, getShadow, getSpacing, Spacer } from 'ui/theme'
 
 export const BottomCard: FunctionComponent = ({ children }) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -25,7 +25,10 @@ export const BottomCard: FunctionComponent = ({ children }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <AvoidingKeyboardContainer keyboardHeight={keyboardHeight}>
         <Background />
-        <StyledBottomCardContainer>{children}</StyledBottomCardContainer>
+        <StyledBottomCardContainer>
+          {children}
+          {keyboardHeight === 0 && <Spacer.TabBar />}
+        </StyledBottomCardContainer>
       </AvoidingKeyboardContainer>
     </TouchableWithoutFeedback>
   )
