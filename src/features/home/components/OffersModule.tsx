@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 import { Alert, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferTile, ModuleTitle } from 'features/home/atoms'
+import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
 import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
 import { useGeolocation } from 'libs/geolocation'
@@ -62,8 +62,8 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
         ListHeaderComponent={() => <Spacer.Row numberOfSpaces={6} />}
         ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
         ListFooterComponent={
-          showSeeMore ? <Spacer.Row numberOfSpaces={6} /> : <Spacer.Row numberOfSpaces={6} />
-        } // TODO: 'See more' design
+          showSeeMore ? <SeeMore layout={display.layout} /> : <Spacer.Row numberOfSpaces={6} />
+        }
         showsHorizontalScrollIndicator={false}
       />
     </Container>
