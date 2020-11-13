@@ -2,11 +2,10 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getSpacing, LENGTH_L, LENGTH_M, Spacer, Typo } from 'ui/theme'
-import { getShadow } from 'ui/theme'
+import { _ } from 'libs/i18n'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ColorsEnum, getSpacing, LENGTH_L, LENGTH_M, Spacer, Typo, getShadow } from 'ui/theme'
 
-import { _ } from '../../../libs/i18n'
-import { ArrowNext } from '../../../ui/svg/icons/ArrowNext'
 import { Layout } from '../contentful'
 interface SeeMoreProps {
   layout?: Layout
@@ -17,18 +16,12 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ layout, onPress }) => {
 
   return (
     <Container containerHeight={containerHeight}>
-      <Spacer.Flex />
-      <Row>
-        <Typo.ButtonText /* place holder */ />
-      </Row>
       <Spacer.Column numberOfSpaces={2} />
       <ClickableArea activeOpacity={1} onPress={onPress}>
         <Row>
           <Spacer.Row numberOfSpaces={16} />
           <RoundContainer onPress={onPress}>
-            <Spacer.Flex />
             <ArrowNext size={56} color={ColorsEnum.PRIMARY} testID={'arrow-next'} />
-            <Spacer.Flex />
           </RoundContainer>
           <Spacer.Row numberOfSpaces={16} />
         </Row>
@@ -39,7 +32,6 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ layout, onPress }) => {
           </Typo.ButtonText>
         </Row>
       </ClickableArea>
-      <Spacer.Flex />
     </Container>
   )
 }
@@ -48,6 +40,7 @@ const Row = styled.View({ flexDirection: 'row' })
 const Container = styled.View<{ containerHeight: number }>(({ containerHeight }) => ({
   height: containerHeight,
   alignItems: 'center',
+  justifyContent: 'center',
 }))
 
 const ClickableArea = styled.TouchableOpacity({
@@ -59,6 +52,7 @@ const RoundContainer = styled.TouchableOpacity({
   borderRadius: getSpacing(8),
   backgroundColor: ColorsEnum.WHITE,
   border: 1,
+  justifyContent: 'center',
   borderColor: ColorsEnum.GREY_LIGHT,
   ...getShadow({
     shadowOffset: {
