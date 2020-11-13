@@ -232,7 +232,7 @@ exports[`TabBar renders correctly 1`] = `
                 "prefix__b",
               ]
             }
-            strokeWidth=".5"
+            strokeWidth={0.5}
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -880,7 +880,7 @@ exports[`TabBar renders correctly 1`] = `
     style={
       Array [
         Object {
-          "height": 10,
+          "height": 5,
         },
       ]
     }
