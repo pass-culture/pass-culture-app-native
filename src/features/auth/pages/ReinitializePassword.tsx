@@ -44,7 +44,7 @@ export const ReinitializePassword = () => {
   }, [])
 
   return (
-    <SafeContainer>
+    <SafeContainer noTabBarSpacing>
       <BottomCard>
         <ModalHeader title={_(t`Ton mot de passe`)} rightIcon={Close} onRightIconPress={onClose} />
         <Spacer.Column numberOfSpaces={6} />

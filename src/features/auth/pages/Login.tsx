@@ -61,7 +61,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
   }
 
   return (
-    <SafeContainer>
+    <SafeContainer noTabBarSpacing>
       <BottomCard>
         <ModalHeader
           title={_(t`Connecte-toi !`)}
