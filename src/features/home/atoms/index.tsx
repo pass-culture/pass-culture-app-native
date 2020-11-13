@@ -1,4 +1,4 @@
 import { ModuleTitle } from './ModuleTitle'
 import { OfferTile } from './OfferTile'
-
-export { OfferTile, ModuleTitle }
+import { SeeMore } from './SeeMore'
+export { OfferTile, ModuleTitle, SeeMore }
