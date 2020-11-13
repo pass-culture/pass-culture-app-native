@@ -93,18 +93,3 @@ export const CATEGORY_CRITERIA = {
     facetFilter: 'INSTRUMENT',
   },
 }
-
-// Map the facetFilter (in algolia) to the label displayed in the front
-export const MAP_CATEGORY_TO_LABEL: { [k: string]: string } = {
-  CINEMA: 'Cinéma',
-  VISITE: 'Visite, exposition',
-  MUSIQUE: 'Musique',
-  SPECTACLE: 'Spectacle',
-  LECON: 'Cours, atelier',
-  LIVRE: 'Livre',
-  FILM: 'Film, série, podcast',
-  PRESSE: 'Presse',
-  JEUX_VIDEO: 'Jeu vidéo',
-  CONFERENCE: 'Conférence, rencontre',
-  INSTRUMENT: 'Instrument',
-}
