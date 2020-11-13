@@ -16,7 +16,7 @@ const SHORT_MONTHS = [
 
 const formatToFrenchDate = (timestamp: number) => {
   const date = new Date(timestamp)
-  const day = date.toLocaleString('fr-FR', { day: 'numeric' })
+  const day = date.getDate()
   const month = SHORT_MONTHS[date.getMonth()]
   const year = date.getFullYear()
   return `${day} ${month} ${year}`
