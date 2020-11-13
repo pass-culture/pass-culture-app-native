@@ -8,43 +8,11 @@ exports[`SeeMore renders correctly 1`] = `
       Object {
         "alignItems": "center",
         "height": 288,
+        "justifyContent": "center",
       },
     ]
   }
 >
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-        },
-      ]
-    }
-  >
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#151515",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    />
-  </View>
   <View
     numberOfSpaces={2}
     style={
@@ -110,6 +78,7 @@ exports[`SeeMore renders correctly 1`] = `
             "borderRadius": 32,
             "borderStyle": "solid",
             "borderWidth": 1,
+            "justifyContent": "center",
             "opacity": 1,
             "shadowColor": "#151515",
             "shadowOpacity": 0.15,
@@ -118,17 +87,6 @@ exports[`SeeMore renders correctly 1`] = `
           }
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
         <RNSVGSvgView
           align="xMidYMid"
           bbHeight={56}
@@ -194,17 +152,6 @@ exports[`SeeMore renders correctly 1`] = `
             </RNSVGGroup>
           </RNSVGGroup>
         </RNSVGSvgView>
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
       </View>
       <View
         numberOfSpaces={16}
@@ -253,16 +200,5 @@ exports[`SeeMore renders correctly 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
 </View>
 `;
