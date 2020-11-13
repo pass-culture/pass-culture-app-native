@@ -10,7 +10,6 @@ module.exports = {
         root: ['./src/'],
         alias: {
           features: './src/features',
-          hooks: './src/hooks',
           libs: './src/libs',
           locales: './src/locales',
           types: './src/types',

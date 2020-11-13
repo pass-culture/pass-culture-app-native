@@ -83,7 +83,6 @@ module.exports = {
       alias: {
         map: [
           ['features', './src/features'],
-          ['hooks', './src/hooks'],
           ['libs', './src/libs'],
           ['locales', './src/locales'],
           ['types', './src/types'],

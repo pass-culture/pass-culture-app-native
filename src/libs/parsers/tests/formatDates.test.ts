@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 
-import { getDisplayDates } from '../useFormatDates'
+import { formatDates } from '../formatDates'
 
-describe('useFormatDates', () => {
+describe('formatDates', () => {
   beforeAll(() => {
     // 1 nov 2020
     mockdate.set(new Date(2020, 10, 1, 10, 0, 0))
@@ -19,7 +19,7 @@ describe('useFormatDates', () => {
     ${[1607205600, -1605205600]} | ${'5 déc 2020'}
     ${[1600205600, 1600205600]}  | ${undefined}
     ${[1600205600, 1605205600]}  | ${'12 nov 2020'}
-  `('getDisplayDates($dates) \t= $expected', ({ dates, expected }) => {
-    expect(getDisplayDates(dates)).toBe(expected)
+  `('formatDates($dates) \t= $expected', ({ dates, expected }) => {
+    expect(formatDates(dates)).toBe(expected)
   })
 })
