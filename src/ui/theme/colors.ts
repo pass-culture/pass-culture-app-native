@@ -15,5 +15,7 @@ export enum ColorsEnum {
   ERROR = '#b60025',
   TRANSPARENT = 'transparent',
 }
-
+export enum UniqueColors {
+  TAB_BAR = '#fffffff8',
+}
 export const ACTIVE_OPACITY = 0.7

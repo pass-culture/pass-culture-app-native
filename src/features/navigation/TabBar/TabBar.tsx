@@ -9,7 +9,7 @@ import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getShadow, getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum, getShadow, getSpacing, Spacer, UniqueColors } from 'ui/theme'
 
 import { RootTabRouteName } from '../RootTabNavigator'
 
@@ -40,57 +40,50 @@ export const TabBar: React.FC<Pick<
 >> = ({ navigation, state }) => {
   const { bottom } = useSafeAreaInsets()
   return (
-    <React.Fragment>
-      <MainContainer>
-        <RowContainer>
-          <Spacer.Row numberOfSpaces={6} />
-          {state.routes.map((route, index) => {
-            const isSelected = state.index === index
-            const routeName = state.routeNames[index]
-            const onPress = () => {
-              if (isSelected) return
-              const event = navigation.emit({
-                type: 'tabPress',
-                target: route.key,
-                canPreventDefault: true,
-              })
-              if (!event.defaultPrevented) {
-                navigation.navigate(route.name)
-              }
+    <MainContainer>
+      <RowContainer>
+        <Spacer.Row numberOfSpaces={4} />
+        {state.routes.map((route, index) => {
+          const isSelected = state.index === index
+          const routeName = state.routeNames[index]
+          const onPress = () => {
+            if (isSelected) return
+            const event = navigation.emit({
+              type: 'tabPress',
+              target: route.key,
+              canPreventDefault: true,
+            })
+            if (!event.defaultPrevented) {
+              navigation.navigate(route.name)
             }
-            return (
-              <TabBarComponent
-                key={`key-tab-nav-${index}-${route.key}`}
-                isSelected={isSelected}
-                bicolorIcon={mapRouteToIcon(routeName)}
-                onPress={onPress}
-                testID={`tab-${routeName}`}
-              />
-            )
-          })}
-
-          <Spacer.Row numberOfSpaces={6} />
-        </RowContainer>
-        <SafeAreaPlaceholder safeHeight={bottom} />
-      </MainContainer>
-    </React.Fragment>
+          }
+          return (
+            <TabBarComponent
+              key={`key-tab-nav-${index}-${route.key}`}
+              isSelected={isSelected}
+              bicolorIcon={mapRouteToIcon(routeName)}
+              onPress={onPress}
+              testID={`tab-${routeName}`}
+            />
+          )
+        })}
+        <Spacer.Row numberOfSpaces={4} />
+      </RowContainer>
+      <SafeAreaPlaceholder safeHeight={bottom} />
+    </MainContainer>
   )
 }
 const RowContainer = styled.View({
   flexDirection: 'row',
-  width: '100%',
-  flexGrow: 1,
 })
 const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight }) => ({
   height: safeHeight,
-  backgroundColor: 'green',
-  flexGrow: 1,
 }))
 const MainContainer = styled.View({
   alignItems: 'center',
   border: getSpacing(1 / 4),
   borderColor: ColorsEnum.GREY_LIGHT,
-  backgroundColor: `${ColorsEnum.WHITE}F8`,
+  backgroundColor: UniqueColors.TAB_BAR,
   width: '100%',
   position: 'absolute',
   bottom: 0,
