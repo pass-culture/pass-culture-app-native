@@ -53,7 +53,7 @@ export const Home: FunctionComponent = function () {
   return (
     <SafeContainer noTabBarSpacing>
       <ScrollView>
-        {env.ENV !== 'production' && (
+        {env.CHEAT_BUTTONS_ENABLED && (
           <CheatButtonsContainer>
             <CheatTouchableOpacity onPress={() => navigation.navigate('AppComponents')}>
               <Typo.Body>{_(t`Composants`)}</Typo.Body>

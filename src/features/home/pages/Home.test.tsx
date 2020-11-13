@@ -13,6 +13,7 @@ jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigatio
 jest.mock('libs/environment', () => ({
   env: {
     FEATURE_FLAG_CODE_PUSH: true,
+    CHEAT_BUTTONS_ENABLED: false,
   },
 }))
 
@@ -44,15 +45,16 @@ describe('Home component', () => {
     expect(() => home.getByText('Check update')).toThrowError()
   })
 
-  it('should have components and navigation buttons when NOT in PROD', async () => {
+  it('should have components and navigation buttons when CHEAT_BUTTONS_ENABLED', async () => {
+    env.CHEAT_BUTTONS_ENABLED = true
     const home = await renderHomeWithoutLoginModal()
 
     expect(() => home.getByText('Composants')).toBeTruthy()
     expect(() => home.getByText('Navigation')).toBeTruthy()
   })
 
-  it('should NOT have components or navigation buttons when in PROD', async () => {
-    env.ENV = 'production'
+  it('should NOT have components or navigation buttons when NOT CHEAT_BUTTONS_ENABLED', async () => {
+    env.CHEAT_BUTTONS_ENABLED = false
     const home = await renderHomeWithoutLoginModal()
 
     expect(() => home.getByText('Composants')).toThrowError()
