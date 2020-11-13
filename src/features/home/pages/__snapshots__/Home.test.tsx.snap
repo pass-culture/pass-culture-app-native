@@ -983,6 +983,9 @@ exports[`Home component should render correctly without login modal 1`] = `
                                         "paddingTop": 20,
                                         "width": "100%",
                                       },
+                                      Object {
+                                        "paddingBottom": 16,
+                                      },
                                     ]
                                   }
                                 >

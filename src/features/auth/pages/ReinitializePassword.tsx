@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/home/navigation/HomeNavigator'
 import { _ } from 'libs/i18n'
-import { BottomCard } from 'ui/components/BottomCard'
+import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -47,44 +47,46 @@ export const ReinitializePassword = () => {
     <SafeContainer noTabBarSpacing>
       <BottomCard>
         <ModalHeader title={_(t`Ton mot de passe`)} rightIcon={Close} onRightIconPress={onClose} />
-        <Spacer.Column numberOfSpaces={6} />
-        <StyledInput>
-          <Typo.Body>{_(t`Nouveau mot de passe`)}</Typo.Body>
+        <BottomCardContentContainer>
+          <Spacer.Column numberOfSpaces={6} />
+          <StyledInput>
+            <Typo.Body>{_(t`Nouveau mot de passe`)}</Typo.Body>
+            <Spacer.Column numberOfSpaces={2} />
+            <PasswordInput
+              value={password}
+              autoFocus
+              onChangeText={setPassword}
+              placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+              isError={shouldShowPasswordError}
+            />
+          </StyledInput>
+          <Spacer.Column numberOfSpaces={6} />
+          <StyledInput>
+            <Typo.Body>{_(t`Confirmer le mot de passe`)}</Typo.Body>
+            <Spacer.Column numberOfSpaces={2} />
+            <PasswordInput
+              value={confirmedPassword}
+              onChangeText={setConfirmedPassword}
+              placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+              isError={shouldShowConfirmationError}
+            />
+          </StyledInput>
           <Spacer.Column numberOfSpaces={2} />
-          <PasswordInput
-            value={password}
-            autoFocus
-            onChangeText={setPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
-            isError={shouldShowPasswordError}
+          {!arePasswordsMatching && (
+            <ErrorLineContainer>
+              <Warning size={24} color={ColorsEnum.ERROR} />
+              <Typo.Caption color={ColorsEnum.ERROR}>
+                {_(t`les mots de passe ne concordent pas`)}
+              </Typo.Caption>
+            </ErrorLineContainer>
+          )}
+          <Spacer.Column numberOfSpaces={6} />
+          <ButtonPrimary
+            title={_(t`Continuer`)}
+            onPress={submitPassword}
+            disabled={!allowSubmission}
           />
-        </StyledInput>
-        <Spacer.Column numberOfSpaces={6} />
-        <StyledInput>
-          <Typo.Body>{_(t`Confirmer le mot de passe`)}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
-          <PasswordInput
-            value={confirmedPassword}
-            onChangeText={setConfirmedPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
-            isError={shouldShowConfirmationError}
-          />
-        </StyledInput>
-        <Spacer.Column numberOfSpaces={2} />
-        {!arePasswordsMatching && (
-          <ErrorLineContainer>
-            <Warning size={24} color={ColorsEnum.ERROR} />
-            <Typo.Caption color={ColorsEnum.ERROR}>
-              {_(t`les mots de passe ne concordent pas`)}
-            </Typo.Caption>
-          </ErrorLineContainer>
-        )}
-        <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary
-          title={_(t`Continuer`)}
-          onPress={submitPassword}
-          disabled={!allowSubmission}
-        />
+        </BottomCardContentContainer>
       </BottomCard>
     </SafeContainer>
   )

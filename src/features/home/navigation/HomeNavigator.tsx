@@ -47,7 +47,11 @@ export const HomeNavigator: React.FC = function () {
       />
       <HomeStack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }} />
       <HomeStack.Screen name="CheatCodes" component={CheatCodes} options={{ headerShown: false }} />
-      <HomeStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
+      <HomeStack.Screen
+        name="ResetPasswordEmailSent"
+        component={ResetPasswordEmailSent}
+        options={{ headerShown: false }}
+      />
     </HomeStack.Navigator>
   )
 }

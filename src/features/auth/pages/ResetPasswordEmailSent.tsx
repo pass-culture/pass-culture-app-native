@@ -7,15 +7,16 @@ import styled from 'styled-components/native'
 
 import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
 import { _ } from 'libs/i18n'
+import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { Background } from 'ui/svg/Background'
+import { SafeContainer } from 'ui/components/SafeContainer'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { ColorsEnum, getSpacing, padding, Spacer, Typo } from 'ui/theme'
+import { padding, Spacer, Typo } from 'ui/theme'
 
 const SUPPORT_EMAIL_ADDRESS = 'support@passculture.app'
 
@@ -40,9 +41,8 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ navigation, r
   }
 
   return (
-    <React.Fragment>
-      <Background />
-      <StyledFakeModal>
+    <SafeContainer noTabBarSpacing>
+      <BottomCard>
         <ModalHeader
           title={_(t`E-mail envoyé !`)}
           leftIcon={ArrowPrevious}
@@ -75,8 +75,8 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ navigation, r
             icon={ExternalSite}
           />
         </ModalContent>
-      </StyledFakeModal>
-    </React.Fragment>
+      </BottomCard>
+    </SafeContainer>
   )
 }
 
@@ -92,18 +92,4 @@ const Description = styled.View({
 
 const CenteredText = styled.Text({
   textAlign: 'center',
-})
-
-const StyledFakeModal = styled.View({
-  position: 'absolute',
-  bottom: 0,
-  flexDirection: 'column',
-  backgroundColor: ColorsEnum.WHITE,
-  justifyContent: 'flex-start',
-  alignItems: 'center',
-  minHeight: 300,
-  width: '100%',
-  borderTopStartRadius: getSpacing(4),
-  borderTopEndRadius: getSpacing(4),
-  padding: getSpacing(5),
 })

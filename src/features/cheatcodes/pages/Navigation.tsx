@@ -10,6 +10,7 @@ import { SafeContainer } from 'ui/components/SafeContainer'
 import { Spacer, Typo } from 'ui/theme'
 
 import { CheatCodesButton } from '../components/CheatCodesButton'
+import { IdCheckButton } from '../components/IdCheckButton'
 
 const MdpDeeplink =
   DEEPLINK_DOMAIN + 'mot-de-passe-perdu?token=etjkdfldkfsd&expiration_date=4567894123450'
@@ -22,8 +23,18 @@ export function Navigation(): JSX.Element {
         <Spacer.Column numberOfSpaces={5} />
         <CheatCodesButton />
         <Spacer.Column numberOfSpaces={5} />
+        <IdCheckButton />
+        <Spacer.Column numberOfSpaces={2} />
         <Button title={_(t`Page Login`)} onPress={() => navigation.navigate('Login')} />
-        <Spacer.Column numberOfSpaces={5} />
+        <Spacer.Column numberOfSpaces={2} />
+        <Button
+          title={'Page Reinitialisation de Mdp: email envoyé'}
+          onPress={() =>
+            // TODO => PC-4356
+            navigation.navigate('ResetPasswordEmailSent', { userEmail: 'jean.dupont@gmail.com' })
+          }
+        />
+        <Spacer.Column numberOfSpaces={2} />
         <Button
           title={_(t`Page Reinitialisation de Mdp`)}
           onPress={() => {

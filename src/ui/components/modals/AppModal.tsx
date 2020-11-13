@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Animated, Easing, Modal, Platform, TouchableOpacity, ViewProps } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
@@ -25,25 +26,28 @@ export const AppModal: FunctionComponent<Props> = ({
   rightIcon,
   onRightIconPress,
   children,
-}) => (
-  <React.Fragment>
-    <OverlayComponent visible={visible} />
-    <Modal animationType="slide" statusBarTranslucent transparent={true} visible={visible}>
-      <ClicAwayArea activeOpacity={1} onPress={onRightIconPress}>
-        <Container activeOpacity={1}>
-          <ModalHeader
-            title={title}
-            leftIcon={leftIcon}
-            onLeftIconPress={onLeftIconPress}
-            rightIcon={rightIcon}
-            onRightIconPress={onRightIconPress}
-          />
-          <Content>{children}</Content>
-        </Container>
-      </ClicAwayArea>
-    </Modal>
-  </React.Fragment>
-)
+}) => {
+  const { bottom } = useSafeAreaInsets()
+  return (
+    <React.Fragment>
+      <OverlayComponent visible={visible} />
+      <Modal animationType="slide" statusBarTranslucent transparent={true} visible={visible}>
+        <ClicAwayArea activeOpacity={1} onPress={onRightIconPress}>
+          <Container activeOpacity={1}>
+            <ModalHeader
+              title={title}
+              leftIcon={leftIcon}
+              onLeftIconPress={onLeftIconPress}
+              rightIcon={rightIcon}
+              onRightIconPress={onRightIconPress}
+            />
+            <Content style={{ paddingBottom: bottom }}>{children}</Content>
+          </Container>
+        </ClicAwayArea>
+      </Modal>
+    </React.Fragment>
+  )
+}
 
 const ClicAwayArea = styled(TouchableOpacity)({
   flexGrow: 1,

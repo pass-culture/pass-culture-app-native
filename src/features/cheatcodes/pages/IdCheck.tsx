@@ -4,6 +4,7 @@ import { StyleSheet, Text } from 'react-native'
 import { WebView } from 'react-native-webview'
 
 import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import { SafeContainer } from 'ui/components/SafeContainer'
 
 const ID_CHECK_URL = 'https://id-check-front-dev.passculture.app/'
 
@@ -15,12 +16,14 @@ type Props = {
 
 export const IdCheck: React.FC<Props> = function () {
   return (
-    <WebView
-      source={{ uri: ID_CHECK_URL }}
-      style={styles.webview}
-      startInLoadingState={true}
-      renderLoading={() => <Text>Loading...</Text>}
-    />
+    <SafeContainer>
+      <WebView
+        source={{ uri: ID_CHECK_URL }}
+        style={styles.webview}
+        startInLoadingState={true}
+        renderLoading={() => <Text>Loading...</Text>}
+      />
+    </SafeContainer>
   )
 }
 
