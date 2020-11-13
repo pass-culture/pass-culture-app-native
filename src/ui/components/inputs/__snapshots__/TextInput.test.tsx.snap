@@ -33,13 +33,19 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
     onChangeText={[Function]}
     onFocus={[Function]}
     placeholder="placeholder"
+    placeholderTextColor="#626262"
     rejectResponderTermination={true}
     style={
       Array [
         Object {
+          "color": "#151515",
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "fontWeight": "normal",
+          "lineHeight": 20,
           "paddingBottom": 0,
           "paddingLeft": 0,
           "paddingRight": 0,
@@ -48,22 +54,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
       ]
     }
     underlineColorAndroid="transparent"
-  >
-    <Text
-      color="#151515"
-      style={
-        Array [
-          Object {
-            "color": "#151515",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "fontWeight": "normal",
-            "lineHeight": 20,
-          },
-        ]
-      }
-    />
-  </TextInput>
+  />
 </View>
 `;
 
