@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { useFormatDistance, useFormatPrice, useFormatDates } from 'hooks'
+import { useFormatDistance, useFormatDates } from 'hooks'
 import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
-import { parseCategory } from 'libs/parsers'
+import { parseCategory, getDisplayPrice } from 'libs/parsers'
 import { isErrorWithMessageTypeGuard } from 'libs/typesUtils/typeGuards'
 import { Spacer } from 'ui/theme'
 
@@ -17,7 +17,6 @@ type OfferWithOptionalCover = Partial<OffersWithCover> &
 export const OffersModule = (props: OfferWithOptionalCover) => {
   const { algolia: parameters, display, moduleId } = props
   const formatDistance = useFormatDistance()
-  const formatPrice = useFormatPrice()
   const formatDates = useFormatDates()
 
   const { hits, nbHits } = useFetchAlgolia({
@@ -38,7 +37,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
         date={formatDates(item.offer.dates)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
-        price={formatPrice(item.offer.prices)}
+        price={getDisplayPrice(item.offer.prices)}
         layout={display.layout}
       />
     ),

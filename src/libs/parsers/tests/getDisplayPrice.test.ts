@@ -1,6 +1,6 @@
-import { getDisplayPrice } from '../useFormatPrice'
+import { getDisplayPrice } from '../getDisplayPrice'
 
-describe('useFormatPrice', () => {
+describe('getDisplayPrice', () => {
   it.each`
     prices         | expected
     ${undefined}   | ${''}
