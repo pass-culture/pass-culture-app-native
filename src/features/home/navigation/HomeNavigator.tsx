@@ -2,14 +2,15 @@ import { RouteProp, NavigationProp } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 
-import { Login } from '../../auth/pages/Login'
-import { ReinitializePassword } from '../../auth/pages/ReinitializePassword'
-import { ResetPasswordEmailSent } from '../../auth/pages/ResetPasswordEmailSent'
-import { AppComponents } from '../../cheatcodes/pages/AppComponents'
-import { CheatCodes } from '../../cheatcodes/pages/CheatCodes'
-import { IdCheck } from '../../cheatcodes/pages/IdCheck'
-import { Navigation } from '../../cheatcodes/pages/Navigation'
-import { Home } from '../pages/Home'
+import { Login } from 'features/auth/pages/Login'
+import { ReinitializePassword } from 'features/auth/pages/ReinitializePassword'
+import { ResetPasswordEmailSent } from 'features/auth/pages/ResetPasswordEmailSent'
+import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
+import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
+import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
+import { Navigation } from 'features/cheatcodes/pages/Navigation'
+import { Home } from 'features/home/pages/Home'
+import { Offer } from 'features/offer'
 
 export type HomeStackParamList = {
   AppComponents: undefined
@@ -20,6 +21,7 @@ export type HomeStackParamList = {
   Login?: { userId: string }
   ReinitializePassword: { token: string; expiration_date: number }
   ResetPasswordEmailSent: { userEmail: string }
+  Offer: { offerId: string }
 }
 
 export const HomeStack = createStackNavigator<HomeStackParamList>()
@@ -34,6 +36,7 @@ export const HomeNavigator: React.FC = function () {
         options={{ headerShown: false }}
       />
       <HomeStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+      <HomeStack.Screen name="Offer" component={Offer} />
       <HomeStack.Screen
         name="ReinitializePassword"
         component={ReinitializePassword}

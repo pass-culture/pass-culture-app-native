@@ -1,6 +1,8 @@
 import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
+
 import { ExclusivityModule } from './ExclusivityModule'
 
 const props = {
@@ -17,14 +19,9 @@ describe('ExclusivityModule component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  /**
-   * Temporary test. We have to adapt it with navigation once implemented
-   * TODO: change the way this test is made using navigation mock when possible
-   */
   it('should navigate to the offer when clicking on the image', async () => {
-    global.console = { ...global.console, log: jest.fn() }
     const { getByTestId } = render(<ExclusivityModule {...props} />)
     fireEvent.press(getByTestId('imageExclu'))
-    expect(console.log).toHaveBeenCalledWith('Opening offer AZBE...') // eslint-disable-line no-console
+    expect(navigate).toHaveBeenCalledWith('Offer', { offerId: 'AZBE' })
   })
 })
