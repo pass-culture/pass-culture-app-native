@@ -18,6 +18,7 @@ import {
 } from 'features/home/contentful'
 import { UseNavigationType, UseRouteType } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
+import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
 import { SafeContainer } from 'ui/components/SafeContainer'
@@ -31,6 +32,7 @@ import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 export const Home: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Home'>>()
+  const position = useGeolocation()
 
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const { data: modules = [] } = useHomepageModules()
@@ -81,7 +83,7 @@ export const Home: FunctionComponent = function () {
         <Container>
           {modules.map((module: ProcessedModule) => {
             if (module instanceof Offers || module instanceof OffersWithCover) {
-              return <OffersModule key={module.moduleId} {...module} />
+              return <OffersModule key={module.moduleId} {...module} position={position} />
             }
             if (module instanceof ExclusivityPane) {
               return <ExclusivityModule key={module.moduleId} {...module} />

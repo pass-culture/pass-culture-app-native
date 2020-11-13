@@ -23,7 +23,12 @@ describe('OffersModule component', () => {
   it('should render correctly', async () => {
     const OffersModuleComp = render(
       reactQueryProviderHOC(
-        <OffersModule algolia={props.algolia} display={props.display} moduleId={props.moduleId} />
+        <OffersModule
+          algolia={props.algolia}
+          display={props.display}
+          moduleId={props.moduleId}
+          position={null}
+        />
       )
     )
     await waitFor(() => OffersModuleComp.getAllByText('Musique'))

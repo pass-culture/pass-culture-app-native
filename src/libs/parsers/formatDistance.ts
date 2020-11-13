@@ -1,7 +1,6 @@
-import { useCallback } from 'react'
+import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { Geoloc } from 'libs/algolia'
-import { useGeolocation } from 'libs/geolocation'
 
 const EARTH_RADIUS_KM = 6378.137
 
@@ -43,14 +42,11 @@ export const humanizeDistance = (distance: number) => {
   return `${distanceKm > 900 ? '900+' : distanceKm} km`
 }
 
-export const useFormatDistance = (): ((coords: Geoloc) => string | undefined) => {
-  const position = useGeolocation()
+export const formatDistance = (
+  coords: Geoloc,
+  position: GeoCoordinates | null
+): string | undefined => {
+  if (!position) return
 
-  return useCallback(
-    (coords: Geoloc) =>
-      position
-        ? getHumanizeRelativeDistance(coords.lat, coords.lng, position.latitude, position.longitude)
-        : undefined,
-    [position]
-  )
+  return getHumanizeRelativeDistance(coords.lat, coords.lng, position.latitude, position.longitude)
 }
