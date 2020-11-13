@@ -77,7 +77,7 @@ const RowContainer = styled.View({
   flexDirection: 'row',
 })
 const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight }) => ({
-  height: safeHeight,
+  height: 0.5 * safeHeight,
 }))
 const MainContainer = styled.View({
   alignItems: 'center',
