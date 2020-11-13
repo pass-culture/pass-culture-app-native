@@ -14,6 +14,7 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { SafeContainer } from 'ui/components/SafeContainer'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
@@ -151,6 +152,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <ArrowPrevious size={24} />
           <Text> - ArrowPrevious </Text>
+        </AlignedText>
+        <AlignedText>
+          <ArrowNext size={24} />
+          <Text> - ArrowNext </Text>
         </AlignedText>
         <AlignedText>
           <Close size={24} />
