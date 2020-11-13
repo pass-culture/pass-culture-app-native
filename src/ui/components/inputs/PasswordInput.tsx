@@ -3,12 +3,15 @@ import styled from 'styled-components/native'
 
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
-import { ColorsEnum, Typo } from 'ui/theme'
 
+import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
-import { TextInputProps } from './TextInput'
+import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
 export function PasswordInput(props: TextInputProps): JSX.Element {
+  const nativeProps = getRNTextInputProps(props)
+  const customProps = getCustomTextInputProps(props)
+
   const [shouldHidePassword, setShouldHidePassword] = useState(true)
   const [isFocus, setIsFocus] = useState(false)
 
@@ -25,16 +28,13 @@ export function PasswordInput(props: TextInputProps): JSX.Element {
   }
 
   return (
-    <InputContainer isFocus={isFocus} isError={props.isError}>
-      <StyledTextInput
-        placeholder={props.placeholder}
-        onChangeText={props.onChangeText}
-        secureTextEntry={shouldHidePassword}
-        autoFocus={props.autoFocus}
+    <InputContainer isFocus={isFocus} isError={customProps.isError}>
+      <StyledBaseTextInput
+        {...nativeProps}
         onFocus={onFocus}
-        onBlur={onBlur}>
-        <Typo.Body color={ColorsEnum.BLACK}>{props.value}</Typo.Body>
-      </StyledTextInput>
+        onBlur={onBlur}
+        secureTextEntry={shouldHidePassword}
+      />
       <IconTouchableOpacity onPress={togglePasswordDisplay}>
         {shouldHidePassword ? (
           <EyeSlash testID="eye-slash" size="100%" />
@@ -46,9 +46,8 @@ export function PasswordInput(props: TextInputProps): JSX.Element {
   )
 }
 
-const StyledTextInput = styled.TextInput({
+const StyledBaseTextInput = styled(BaseTextInput)({
   flex: 0.9,
-  padding: 0,
 })
 
 const IconTouchableOpacity = styled.TouchableOpacity({

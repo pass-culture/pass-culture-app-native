@@ -5,37 +5,31 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -564,11 +564,13 @@
-                      \\"fontWeight\\": \\"normal\\",
-                      \\"lineHeight\\": 20,
-                    },
-                  ]
-                }
--             />
-+             >
-+               email@gmail.com
-+             </Text>
-            </TextInput>
+@@ -557,10 +557,11 @@
+                  },
+                ]
+              }
+              textContentType=\\"emailAddress\\"
+              underlineColorAndroid=\\"transparent\\"
++             value=\\"email@gmail.com\\"
+            />
           </View>
         </View>
         <View
           numberOfSpaces={6}
-@@ -679,11 +681,13 @@
-                      \\"fontWeight\\": \\"normal\\",
-                      \\"lineHeight\\": 20,
-                    },
-                  ]
-                }
--             />
-+             >
-+               mypassword
-+             </Text>
-            </TextInput>
+@@ -664,10 +665,11 @@
+                  },
+                ]
+              }
+              textContentType=\\"password\\"
+              underlineColorAndroid=\\"transparent\\"
++             value=\\"mypassword\\"
+            />
             <View
               accessible={true}
               focusable={true}
               onClick={[Function onClick]}
-@@ -802,22 +806,22 @@
+@@ -786,22 +788,22 @@
             ]
           }
         />
@@ -179,7 +173,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
                   \\"borderWidth\\": 1,
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
-@@ -617,18 +697,18 @@
+@@ -609,18 +689,18 @@
                 },
               ]
             }

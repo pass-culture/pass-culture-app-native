@@ -1,23 +1,13 @@
 import React, { useState } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
-import styled from 'styled-components/native'
 
-import { ColorsEnum, Typo } from 'ui/theme'
-
+import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
-
-type UsedTextInputProps = Pick<
-  React.ComponentProps<typeof RNTextInput>,
-  'onChangeText' | 'placeholder' | 'value' | 'autoFocus' | 'keyboardType'
->
-
-type CustomProps = {
-  isError?: boolean
-}
-
-export type TextInputProps = UsedTextInputProps & CustomProps
+import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
 export function TextInput(props: TextInputProps): JSX.Element {
+  const nativeProps = getRNTextInputProps(props)
+  const customProps = getCustomTextInputProps(props)
+
   const [isFocus, setIsFocus] = useState(false)
 
   function onFocus() {
@@ -29,21 +19,8 @@ export function TextInput(props: TextInputProps): JSX.Element {
   }
 
   return (
-    <InputContainer isFocus={isFocus} isError={props.isError}>
-      <StyledTextInput
-        placeholder={props.placeholder}
-        onChangeText={props.onChangeText}
-        keyboardType={props.keyboardType}
-        autoFocus={props.autoFocus}
-        onFocus={onFocus}
-        onBlur={onBlur}>
-        <Typo.Body color={ColorsEnum.BLACK}>{props.value}</Typo.Body>
-      </StyledTextInput>
+    <InputContainer isFocus={isFocus} isError={customProps.isError}>
+      <BaseTextInput {...nativeProps} onFocus={onFocus} onBlur={onBlur} />
     </InputContainer>
   )
 }
-
-const StyledTextInput = styled.TextInput({
-  flex: 1,
-  padding: 0,
-})

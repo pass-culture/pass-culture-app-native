@@ -90,6 +90,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
             onChangeText={setEmail}
             placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
             keyboardType="email-address"
+            textContentType="emailAddress"
             autoFocus={true}
             isError={shouldShowErrorMessage}
           />
@@ -103,6 +104,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
             onChangeText={setPassword}
             placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
             isError={shouldShowErrorMessage}
+            textContentType="password"
           />
         </StyledInput>
         <Spacer.Column numberOfSpaces={7} />
