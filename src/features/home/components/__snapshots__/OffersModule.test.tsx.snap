@@ -817,9 +817,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 ]
               }
             >
-              <Text>
-                17 nov 2020
-              </Text>
+              17 nov 2020
             </Text>
             <Text
               color="#626262"

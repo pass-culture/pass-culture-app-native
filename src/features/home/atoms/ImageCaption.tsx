@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, PixelRatio } from 'react-native'
+import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsEnum, Typo, BORDER_RADIUS, MARGIN_DP, GUTTER_DP } from 'ui/theme'
@@ -23,7 +23,7 @@ export const ImageCaption = ({ category, imageWidth, distance }: ImageCaptionPro
           <Separator />
           <TextWrapper>
             <Typo.Caption color={ColorsEnum.WHITE} testID="distanceImageCaption">
-              <Text>{distance}</Text>
+              {distance}
             </Typo.Caption>
           </TextWrapper>
         </React.Fragment>

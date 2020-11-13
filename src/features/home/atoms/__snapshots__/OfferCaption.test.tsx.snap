@@ -42,9 +42,7 @@ exports[`OfferCaption component should render correctly 1`] = `
       ]
     }
   >
-    <Text>
-      Dès le 2 mars 2020
-    </Text>
+    Dès le 2 mars 2020
   </Text>
   <Text
     color="#626262"

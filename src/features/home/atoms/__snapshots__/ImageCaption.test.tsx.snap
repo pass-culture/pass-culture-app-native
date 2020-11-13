@@ -90,9 +90,7 @@ exports[`ImageCaption component should render correctly 1`] = `
       }
       testID="distanceImageCaption"
     >
-      <Text>
-        1,2km
-      </Text>
+      1,2km
     </Text>
   </View>
 </View>
