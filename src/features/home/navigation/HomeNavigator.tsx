@@ -43,13 +43,9 @@ export const HomeNavigator: React.FC = function () {
         options={{ headerShown: false }}
       />
       <HomeStack.Screen name="IdCheck" component={IdCheck} options={{ headerShown: false }} />
-      <HomeStack.Screen
-        name="AppComponents"
-        component={AppComponents}
-        options={{ headerShown: false }}
-      />
-      <HomeStack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }} />
-      <HomeStack.Screen name="CheatCodes" component={CheatCodes} options={{ headerShown: false }} />
+      <HomeStack.Screen name="AppComponents" component={AppComponents} />
+      <HomeStack.Screen name="Navigation" component={Navigation} />
+      <HomeStack.Screen name="CheatCodes" component={CheatCodes} />
       <HomeStack.Screen
         name="ResetPasswordEmailSent"
         component={ResetPasswordEmailSent}
