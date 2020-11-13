@@ -785,16 +785,14 @@ exports[`Home component should render correctly without login modal 1`] = `
                               onResponderTerminationRequest={[Function]}
                               onStartShouldSetResponder={[Function]}
                               style={
-                                Array [
-                                  Object {
-                                    "backgroundColor": "rgba(0, 0, 0, 0.5)",
-                                    "flexBasis": 0,
-                                    "flexDirection": "column",
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "justifyContent": "flex-end",
-                                  },
-                                ]
+                                Object {
+                                  "flexDirection": "column",
+                                  "flexGrow": 1,
+                                  "height": "100%",
+                                  "justifyContent": "flex-end",
+                                  "opacity": 1,
+                                  "width": "100%",
+                                }
                               }
                             >
                               <View
@@ -808,22 +806,20 @@ exports[`Home component should render correctly without login modal 1`] = `
                                 onResponderTerminationRequest={[Function]}
                                 onStartShouldSetResponder={[Function]}
                                 style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "backgroundColor": "#ffffff",
-                                      "borderTopEndRadius": 16,
-                                      "borderTopStartRadius": 16,
-                                      "flexDirection": "column",
-                                      "justifyContent": "flex-start",
-                                      "minHeight": 300,
-                                      "paddingBottom": 20,
-                                      "paddingLeft": 20,
-                                      "paddingRight": 20,
-                                      "paddingTop": 20,
-                                      "width": "100%",
-                                    },
-                                  ]
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "#ffffff",
+                                    "borderTopEndRadius": 16,
+                                    "borderTopStartRadius": 16,
+                                    "flexDirection": "column",
+                                    "justifyContent": "flex-start",
+                                    "opacity": 1,
+                                    "paddingBottom": 20,
+                                    "paddingLeft": 20,
+                                    "paddingRight": 20,
+                                    "paddingTop": 20,
+                                    "width": "100%",
+                                  }
                                 }
                               >
                                 <View
@@ -982,6 +978,8 @@ exports[`Home component should render correctly without login modal 1`] = `
                                   style={
                                     Array [
                                       Object {
+                                        "alignItems": "center",
+                                        "maxWidth": 500,
                                         "paddingTop": 20,
                                         "width": "100%",
                                       },
