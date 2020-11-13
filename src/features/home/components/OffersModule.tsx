@@ -7,15 +7,12 @@ import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
 import { useFormatDistance, useFormatPrice, useFormatDates } from 'hooks'
 import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
-import { MAP_CATEGORY_TO_LABEL } from 'libs/algolia/enums'
+import { parseCategory } from 'libs/parsers'
 import { isErrorWithMessageTypeGuard } from 'libs/typesUtils/typeGuards'
 import { Spacer } from 'ui/theme'
 
 type OfferWithOptionalCover = Partial<OffersWithCover> &
   Pick<Offers, 'algolia' | 'display' | 'moduleId'>
-
-const formatCategory = (category: string): string =>
-  category in MAP_CATEGORY_TO_LABEL ? MAP_CATEGORY_TO_LABEL[category] : 'No category'
 
 export const OffersModule = (props: OfferWithOptionalCover) => {
   const { algolia: parameters, display, moduleId } = props
@@ -34,7 +31,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
     ({ item }: { item: Hit<AlgoliaHit> }) => (
       <OfferTile
         key={item.objectID}
-        category={formatCategory(item.offer.category)}
+        category={parseCategory(item.offer.category, item.offer.label)}
         offerId={item.offer.id}
         distance={formatDistance(item._geoloc)}
         name={item.offer.name}

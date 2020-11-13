@@ -7,7 +7,7 @@ import { OfferTile } from './OfferTile'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
 const props = {
-  category: offer.category,
+  category: offer.category || '',
   distance: '1,2km',
   date: 'Dès le 12 mars 2020',
   name: offer.name,
