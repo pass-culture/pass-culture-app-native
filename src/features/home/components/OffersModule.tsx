@@ -5,10 +5,9 @@ import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { useFormatDates } from 'hooks'
 import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
 import { useGeolocation } from 'libs/geolocation'
-import { formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
+import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { isErrorWithMessageTypeGuard } from 'libs/typesUtils/typeGuards'
 import { Spacer } from 'ui/theme'
 
@@ -17,7 +16,6 @@ type OfferWithOptionalCover = Partial<OffersWithCover> &
 
 export const OffersModule = (props: OfferWithOptionalCover) => {
   const { algolia: parameters, display, moduleId } = props
-  const formatDates = useFormatDates()
 
   const { hits, nbHits } = useFetchAlgolia({
     algoliaParameters: parameters,
