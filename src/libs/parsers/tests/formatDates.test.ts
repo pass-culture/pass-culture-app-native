@@ -2,24 +2,30 @@ import mockdate from 'mockdate'
 
 import { formatDates } from '../formatDates'
 
+const Oct5 = new Date(2020, 9, 5)
+const Nov1 = new Date(2020, 10, 1)
+const Nov12 = new Date(2020, 10, 12)
+const Dec5 = new Date(2020, 11, 5)
+
 describe('formatDates', () => {
   beforeAll(() => {
-    // 1 nov 2020
-    mockdate.set(new Date(2020, 10, 1, 10, 0, 0))
+    mockdate.set(Nov1)
   })
 
   it.each`
-    dates                        | expected
-    ${undefined}                 | ${undefined}
-    ${[]}                        | ${undefined}
-    ${[1605205600]}              | ${'12 nov 2020'}
-    ${[1605205600, 1605205600]}  | ${'12 nov 2020'}
-    ${[1607205600]}              | ${'5 déc 2020'}
-    ${[1607205600, 1605205600]}  | ${'Dès le 12 nov 2020'}
-    ${[1607205600, -1605205600]} | ${'5 déc 2020'}
-    ${[1600205600, 1600205600]}  | ${undefined}
-    ${[1600205600, 1605205600]}  | ${'12 nov 2020'}
+    dates             | expected
+    ${undefined}      | ${undefined}
+    ${[]}             | ${undefined}
+    ${[Nov12]}        | ${'12 nov 2020'}
+    ${[Nov12, Nov12]} | ${'12 nov 2020'}
+    ${[Dec5]}         | ${'5 déc 2020'}
+    ${[Dec5, Nov12]}  | ${'Dès le 12 nov 2020'}
+    ${[Dec5, -Nov12]} | ${'5 déc 2020'}
+    ${[Oct5, Oct5]}   | ${undefined}
+    ${[Oct5, Nov12]}  | ${'12 nov 2020'}
   `('formatDates($dates) \t= $expected', ({ dates, expected }) => {
-    expect(formatDates(dates)).toBe(expected)
+    const timestampsInSeconds =
+      dates && dates.map((date: Date) => Math.floor(date.valueOf() / 1000))
+    expect(formatDates(timestampsInSeconds)).toBe(expected)
   })
 })
