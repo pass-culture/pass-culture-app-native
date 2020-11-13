@@ -141,9 +141,7 @@ exports[`OfferTile component should render correctly 1`] = `
             }
             testID="distanceImageCaption"
           >
-            <Text>
-              1,2km
-            </Text>
+            1,2km
           </Text>
         </View>
       </View>
@@ -190,9 +188,7 @@ exports[`OfferTile component should render correctly 1`] = `
         ]
       }
     >
-      <Text>
-        Dès le 12 mars 2020
-      </Text>
+      Dès le 12 mars 2020
     </Text>
     <Text
       color="#626262"

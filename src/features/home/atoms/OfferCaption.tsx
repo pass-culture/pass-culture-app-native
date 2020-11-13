@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { Text, PixelRatio } from 'react-native'
+import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -17,11 +17,7 @@ interface OfferCaptionProps {
 export const OfferCaption = ({ imageWidth, name, date, isDuo, price }: OfferCaptionProps) => (
   <CaptionContainer imageWidth={imageWidth}>
     <Typo.Caption numberOfLines={1}>{name}</Typo.Caption>
-    {date && (
-      <Typo.Caption color={ColorsEnum.GREY_DARK}>
-        <Text>{date}</Text>
-      </Typo.Caption>
-    )}
+    {date && <Typo.Caption color={ColorsEnum.GREY_DARK}>{date}</Typo.Caption>}
     <Typo.Caption color={ColorsEnum.GREY_DARK} testID="priceIsDuo">
       {isDuo ? `${price} - ${_(/*i18n: Duo offer */ t`Duo`)}` : price}
     </Typo.Caption>
