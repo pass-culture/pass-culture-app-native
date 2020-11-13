@@ -1,11 +1,11 @@
 import { EiffelTourCoordinates } from 'libs/geolocation/tests.utils'
 
-import { getHumanizeRelativeDistance } from '../useFormatDistance'
+import { getHumanizeRelativeDistance, formatDistance } from '../formatDistance'
 
 // Distance using https://www.sunearthtools.com/fr/tools/distance.php
 // Center (EiffelTourCoordinates): {latitude: 48.85, longitude: 2.29 }
 
-describe('useFormatDistance', () => {
+describe('formatDistance', () => {
   it.each`
     lat      | lng       | actualDistance | expected
     ${48.85} | ${2.2901} | ${7.3}         | ${'7 m'}
@@ -24,5 +24,11 @@ describe('useFormatDistance', () => {
         EiffelTourCoordinates.longitude
       )
     ).toBe(expected)
+  })
+
+  it("should return undefined if we can't have the user's position", () => {
+    const coords = { lat: 48.85, lng: 2.29 }
+    const position = null
+    expect(formatDistance(coords, position)).toBeUndefined()
   })
 })

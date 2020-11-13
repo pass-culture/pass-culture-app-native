@@ -5,18 +5,18 @@ import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { useFormatDistance, useFormatDates } from 'hooks'
+import { useFormatDates } from 'hooks'
 import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
-import { parseCategory, getDisplayPrice } from 'libs/parsers'
+import { useGeolocation } from 'libs/geolocation'
+import { formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { isErrorWithMessageTypeGuard } from 'libs/typesUtils/typeGuards'
 import { Spacer } from 'ui/theme'
 
 type OfferWithOptionalCover = Partial<OffersWithCover> &
-  Pick<Offers, 'algolia' | 'display' | 'moduleId'>
+  Pick<Offers, 'algolia' | 'display' | 'moduleId'> & { position: ReturnType<typeof useGeolocation> }
 
 export const OffersModule = (props: OfferWithOptionalCover) => {
   const { algolia: parameters, display, moduleId } = props
-  const formatDistance = useFormatDistance()
   const formatDates = useFormatDates()
 
   const { hits, nbHits } = useFetchAlgolia({
@@ -32,7 +32,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
         key={item.objectID}
         category={parseCategory(item.offer.category, item.offer.label)}
         offerId={item.offer.id}
-        distance={formatDistance(item._geoloc)}
+        distance={formatDistance(item._geoloc, props.position)}
         name={item.offer.name}
         date={formatDates(item.offer.dates)}
         isDuo={item.offer.isDuo}
@@ -41,7 +41,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
         layout={display.layout}
       />
     ),
-    [display.layout, formatDistance]
+    [display.layout, props.position]
   )
 
   const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers
