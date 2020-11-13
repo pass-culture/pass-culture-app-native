@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -42,6 +42,7 @@ export const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dis
       </Description>
 
       <ButtonPrimary title={_(t`S'inscrire`)} onPress={goToSignUp} />
+      <Spacer.Column numberOfSpaces={3} />
       <ButtonTertiary title={_(t`Se connecter`)} onPress={goToLogin} />
     </AppModal>
   )

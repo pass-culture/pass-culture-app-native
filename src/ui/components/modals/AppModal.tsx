@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
+import { UniqueColors } from 'ui/theme/colors'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -87,7 +88,7 @@ const AnimatedOverlay = styled(Animated.View)<{ opacity: Animated.Value }>({
   width: '100%',
   flexDirection: 'column',
   justifyContent: 'flex-end',
-  backgroundColor: `rgba(0, 0, 0, 0.5)`,
+  backgroundColor: UniqueColors.GREY_OVERLAY,
 })
 
 const Container = styled(TouchableOpacity)({

@@ -1063,6 +1063,16 @@ exports[`Home component should render correctly without login modal 1`] = `
                                     </Text>
                                   </View>
                                   <View
+                                    numberOfSpaces={3}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "height": 12,
+                                        },
+                                      ]
+                                    }
+                                  />
+                                  <View
                                     accessible={true}
                                     focusable={true}
                                     onClick={[Function]}
