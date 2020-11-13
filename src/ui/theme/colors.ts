@@ -17,5 +17,6 @@ export enum ColorsEnum {
 }
 export enum UniqueColors {
   TAB_BAR = '#fffffff8',
+  GREY_OVERLAY = '#00000080',
 }
 export const ACTIVE_OPACITY = 0.7
