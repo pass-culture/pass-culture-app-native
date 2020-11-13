@@ -56,3 +56,11 @@ const StyledBottomCardContainer = styled.View({
     shadowOpacity: 0.15,
   }),
 })
+
+export const BottomCardContentContainer = styled.View({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  width: '100%',
+  maxWidth: getSpacing(125),
+})
