@@ -24,6 +24,7 @@ export interface AppButtonProps extends BaseButtonProps {
   textSize?: number
   backgroundColor?: ColorsEnum
   borderColor?: ColorsEnum
+  buttonHeight?: 'small' | 'tall'
 }
 
 type Only<TestedType, StandardType> = TestedType &
@@ -40,7 +41,8 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
       backgroundColor={props.backgroundColor}
       borderColor={props.borderColor}
       onPress={pressHandler}
-      onLongPress={longPressHandler}>
+      onLongPress={longPressHandler}
+      buttonHeight={props.buttonHeight ?? 'small'}>
       {props.isLoading ? (
         <Logo testID="button-isloading-icon" color={props.loadingIconColor} size={props.iconSize} />
       ) : (
@@ -65,11 +67,12 @@ export const AppButton = memo(_AppButton)
 interface ContainerProps {
   backgroundColor?: ColorsEnum
   borderColor?: ColorsEnum
+  buttonHeight: 'small' | 'tall'
 }
 
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
-}))<ContainerProps>(({ backgroundColor, borderColor }) => ({
+}))<ContainerProps>(({ backgroundColor, borderColor, buttonHeight }) => ({
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
@@ -78,7 +81,7 @@ const Container = styled.TouchableOpacity.attrs(() => ({
   backgroundColor,
   borderColor,
   borderWidth: borderColor ? 2 : 0,
-  height: 40,
+  height: buttonHeight === 'tall' ? getSpacing(12) : getSpacing(10),
   width: '100%',
   maxWidth: getSpacing(125),
 }))
