@@ -24,7 +24,13 @@ const codePushOptionsAuto = {
   checkFrequency: CodePush.CheckFrequency.ON_APP_START,
 }
 
-const queryCache = new QueryCache()
+const queryCache = new QueryCache({
+  defaultConfig: {
+    queries: {
+      useErrorBoundary: true,
+    },
+  },
+})
 
 if (__DEV__ && process.env.JEST !== 'true') {
   addPlugin(queryCache)
