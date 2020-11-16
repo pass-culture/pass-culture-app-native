@@ -31,7 +31,7 @@ msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
 
 #. Welcome title message
-#: src/features/home/pages/Home.tsx:57
+#: src/features/home/pages/Home.tsx:59
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
@@ -43,7 +43,7 @@ msgstr "Réservations"
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/home/pages/Home.tsx:42
+#: src/features/home/pages/Home.tsx:44
 #: src/features/profile/pages/Profile.tsx:16
 msgid "Composants"
 msgstr "Composants"
@@ -120,7 +120,7 @@ msgstr "Mot de passe"
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
-#: src/features/home/pages/Home.tsx:45
+#: src/features/home/pages/Home.tsx:47
 #: src/features/profile/pages/Profile.tsx:20
 msgid "Navigation"
 msgstr "Navigation"
@@ -133,6 +133,10 @@ msgstr "Nouveau mot de passe"
 msgid "Offer"
 msgstr "Offer"
 
+#: src/features/errors/pages/RetryBoundary.tsx:25
+msgid "Oops !"
+msgstr "Oops !"
+
 #: src/features/cheatcodes/pages/Navigation.tsx:22
 msgid "Page Login"
 msgstr "Page Login"
@@ -144,6 +148,10 @@ msgstr "Page Reinitialisation de Mdp"
 #: src/features/profile/pages/Profile.tsx:12
 msgid "Profile"
 msgstr "Profil"
+
+#: src/features/errors/pages/RetryBoundary.tsx:45
+msgid "Réessayer"
+msgstr "Réessayer"
 
 #: src/features/auth/pages/ResetPasswordEmailSent.tsx:57
 msgid "S'il n'arrive pas tu peux :"
@@ -174,9 +182,13 @@ msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
 #. Welcome body message
-#: src/features/home/pages/Home.tsx:61
+#: src/features/home/pages/Home.tsx:63
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
+
+#: src/features/errors/pages/RetryBoundary.tsx:33
+msgid "Une erreur s’est produite pendant le chargement."
+msgstr "Une erreur s’est produite pendant le chargement."
 
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
