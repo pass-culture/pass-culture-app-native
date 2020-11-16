@@ -9,6 +9,7 @@ export const BicolorFavorite: React.FC<BicolorIconInterface> = ({
   size = 32,
   color,
   color2,
+  thin = false,
   testID,
 }) => {
   return (
@@ -25,7 +26,7 @@ export const BicolorFavorite: React.FC<BicolorIconInterface> = ({
           fill="url(#prefix__a)"
           fillRule="nonzero"
           stroke="url(#prefix__a)"
-          strokeWidth={0.5}
+          strokeWidth={thin ? 0 : 0.5}
           transform="translate(9 10)"
         />
         <Path d="M0 0h44v44H0z" />

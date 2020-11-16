@@ -9,6 +9,7 @@ export const BicolorBookings: React.FC<BicolorIconInterface> = ({
   size = 32,
   color,
   color2,
+  thin = false,
   testID,
 }) => {
   return (
@@ -24,7 +25,7 @@ export const BicolorBookings: React.FC<BicolorIconInterface> = ({
         </LinearGradient>
       </Defs>
       <G fill="none" fillRule="evenodd">
-        <G fillRule="nonzero" strokeWidth={0.5}>
+        <G fillRule="nonzero" strokeWidth={thin ? 0 : 0.5}>
           <Path
             fill="url(#prefix__a)"
             stroke="url(#prefix__a)"
@@ -32,7 +33,7 @@ export const BicolorBookings: React.FC<BicolorIconInterface> = ({
             transform="translate(7.708 11)"
           />
           <Path
-            fill="#8C0077"
+            fill="url(#prefix__b)"
             stroke="url(#prefix__b)"
             d="M17.792 5c.253 0 .462.248.495.57l.005.09v9.68c0 .365-.224.66-.5.66-.253 0-.463-.248-.496-.57l-.004-.09V5.66c0-.365.224-.66.5-.66z"
             transform="translate(7.708 11)"

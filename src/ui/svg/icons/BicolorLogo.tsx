@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import type { BicolorIconInterface } from './types'
 
-export const BicolorLogo: React.FC<BicolorIconInterface & { thin?: boolean }> = ({
+export const BicolorLogo: React.FC<BicolorIconInterface> = ({
   size = 32,
   color,
   color2,

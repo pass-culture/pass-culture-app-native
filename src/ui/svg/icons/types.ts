@@ -8,4 +8,5 @@ export interface IconInterface {
 
 export interface BicolorIconInterface extends IconInterface {
   color2?: ColorsEnum
+  thin?: boolean
 }
