@@ -20,7 +20,7 @@ export type HomeStackParamList = {
   IdCheck: undefined
   Login?: { userId: string }
   ReinitializePassword: { token: string; expiration_date: number }
-  ResetPasswordEmailSent: { userEmail: string }
+  ResetPasswordEmailSent: { email: string }
   Offer: { offerId: string }
 }
 
