@@ -6,7 +6,15 @@ export type CustomTextInputProps = {
 
 export type RNTextInputProps = Pick<
   React.ComponentProps<typeof RNTextInput>,
-  'onChangeText' | 'placeholder' | 'value' | 'autoFocus' | 'keyboardType' | 'textContentType'
+  | 'onChangeText'
+  | 'placeholder'
+  | 'value'
+  | 'autoFocus'
+  | 'keyboardType'
+  | 'textContentType'
+  | 'secureTextEntry'
+  | 'onFocus'
+  | 'onBlur'
 >
 
 export type TextInputProps = CustomTextInputProps & RNTextInputProps
