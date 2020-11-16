@@ -44,6 +44,7 @@ msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
 #: src/features/home/pages/Home.tsx:42
+#: src/features/profile/pages/Profile.tsx:16
 msgid "Composants"
 msgstr "Composants"
 
@@ -79,6 +80,10 @@ msgstr "E-mail envoyé !"
 #: src/features/auth/pages/Login.tsx:68
 msgid "E-mail ou mot de passe incorrect"
 msgstr "E-mail ou mot de passe incorrect"
+
+#: src/features/home/atoms/SeeMore.tsx:21
+msgid "En voir plus"
+msgstr "En voir plus"
 
 #. Authentication error message
 #: src/libs/fetch.ts:75
@@ -116,12 +121,17 @@ msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
 #: src/features/home/pages/Home.tsx:45
+#: src/features/profile/pages/Profile.tsx:20
 msgid "Navigation"
 msgstr "Navigation"
 
 #: src/features/auth/pages/ReinitializePassword.tsx:41
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
+
+#: src/features/offer/pages/Offer.tsx:8
+msgid "Offer"
+msgstr "Offer"
 
 #: src/features/cheatcodes/pages/Navigation.tsx:22
 msgid "Page Login"
@@ -131,7 +141,7 @@ msgstr "Page Login"
 msgid "Page Reinitialisation de Mdp"
 msgstr "Page Reinitialisation de Mdp"
 
-#: src/features/profile/pages/Profile.tsx:8
+#: src/features/profile/pages/Profile.tsx:12
 msgid "Profile"
 msgstr "Profil"
 
@@ -151,11 +161,6 @@ msgstr "Se connecter"
 #: src/features/search/pages/Search.tsx:8
 msgid "Search"
 msgstr "Recherche"
-
-#. See more
-#: src/features/home/components/SeeMore.tsx:28
-msgid "See more"
-msgstr "En voir plus"
 
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:23
 msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
