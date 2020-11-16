@@ -17,7 +17,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
         </View>
         <View
           numberOfSpaces={6}
-@@ -676,10 +677,11 @@
+@@ -681,10 +682,11 @@
                   },
                 ]
               }
@@ -29,7 +29,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
               accessible={true}
               focusable={true}
               onClick={[Function onClick]}
-@@ -798,22 +800,22 @@
+@@ -803,22 +805,22 @@
             ]
           }
         />
