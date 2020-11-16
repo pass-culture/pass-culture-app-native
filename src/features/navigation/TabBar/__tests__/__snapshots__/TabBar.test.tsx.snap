@@ -13,6 +13,10 @@ exports[`TabBar renders correctly 1`] = `
         "bottom": 0,
         "position": "absolute",
         "shadowColor": "#151515",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
         "shadowOpacity": 0.2,
         "shadowRadius": 4,
         "width": "100%",
