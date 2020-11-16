@@ -55,7 +55,7 @@ function renderPage() {
         <HomeStack.Screen
           name="ResetPasswordEmailSent"
           component={ResetPasswordEmailSent}
-          initialParams={{ userEmail: 'john.doe@gmail.com' }}
+          initialParams={{ email: 'john.doe@gmail.com' }}
         />
       </HomeStack.Navigator>
     </NavigationContainer>
