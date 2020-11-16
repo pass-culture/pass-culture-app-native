@@ -1,5 +1,5 @@
 import { I18nProvider } from '@lingui/react' //@translations
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import CodePush from 'react-native-code-push' // @codepush
 import 'react-native-gesture-handler' // @react-navigation
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -12,6 +12,7 @@ import { i18n } from 'libs/i18n' //@translations
 import 'libs/sentry'
 import { useStartBatchNotification } from 'libs/notifications'
 import { useHideSplashScreen } from 'libs/splashscreen'
+import { SnackBar } from 'ui/components/snackBar/SnackBar'
 
 const codePushOptionsManual = {
   updateDialog: true,
@@ -40,11 +41,23 @@ const AppComponent: FunctionComponent = function () {
   useStartBatchNotification()
   useHideSplashScreen()
 
+  const [isToasterVisible, setToasterVisible] = useState(true)
+
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
       <I18nProvider language={i18n.language} i18n={i18n}>
         <SafeAreaProvider>
-          <RootTabNavigator />
+          <React.Fragment>
+            <SnackBar
+              visible={isToasterVisible}
+              message={'my message'}
+              backgroundColor={'green'}
+              color={'white'}
+              animationDuration={1000}
+              onClose={() => setToasterVisible(false)}
+            />
+            <RootTabNavigator />
+          </React.Fragment>
         </SafeAreaProvider>
       </I18nProvider>
     </ReactQueryCacheProvider>
