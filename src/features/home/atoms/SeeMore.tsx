@@ -27,9 +27,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ layout, onPress }) => {
         </Row>
         <Spacer.Column numberOfSpaces={2} />
         <Row>
-          <Typo.ButtonText color={ColorsEnum.PRIMARY}>
-            {_(/*i18n: See more */ t`See more`)}
-          </Typo.ButtonText>
+          <Typo.ButtonText color={ColorsEnum.PRIMARY}>{_(t`En voir plus`)}</Typo.ButtonText>
         </Row>
       </ClickableArea>
     </Container>
