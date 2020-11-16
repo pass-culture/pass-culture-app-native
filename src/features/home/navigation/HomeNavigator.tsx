@@ -2,6 +2,7 @@ import { RouteProp, NavigationProp } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 
+import { ForgottenPassword } from 'features/auth/pages/ForgottenPassword'
 import { Login } from 'features/auth/pages/Login'
 import { ReinitializePassword } from 'features/auth/pages/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/pages/ResetPasswordEmailSent'
@@ -20,6 +21,7 @@ export type HomeStackParamList = {
   IdCheck: undefined
   Login?: { userId: string }
   ReinitializePassword: { token: string; expiration_date: number }
+  ForgottenPassword: undefined
   ResetPasswordEmailSent: { email: string }
   Offer: { offerId: string }
 }
@@ -49,6 +51,11 @@ export const HomeNavigator: React.FC = function () {
       <HomeStack.Screen
         name="ResetPasswordEmailSent"
         component={ResetPasswordEmailSent}
+        options={{ headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="ForgottenPassword"
+        component={ForgottenPassword}
         options={{ headerShown: false }}
       />
     </HomeStack.Navigator>

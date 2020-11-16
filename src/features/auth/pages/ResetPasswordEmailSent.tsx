@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
-import { Alert, Linking } from 'react-native'
+import { Linking } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
@@ -24,7 +24,7 @@ type Props = StackScreenProps<HomeStackParamList, 'ResetPasswordEmailSent'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ navigation, route }) => {
   function onBackNavigation() {
-    Alert.alert('TODO => PC-4356')
+    navigation.navigate('ForgottenPassword')
   }
 
   async function contactSupport() {

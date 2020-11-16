@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
-import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
@@ -57,7 +56,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
   }
 
   function onForgottenPasswordClick() {
-    Alert.alert('TO DO')
+    props.navigation.navigate('ForgottenPassword')
   }
 
   return (

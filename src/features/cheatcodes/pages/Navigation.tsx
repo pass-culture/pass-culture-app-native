@@ -28,14 +28,6 @@ export function Navigation(): JSX.Element {
         <Button title={_(t`Page Login`)} onPress={() => navigation.navigate('Login')} />
         <Spacer.Column numberOfSpaces={2} />
         <Button
-          title={'Page Reinitialisation de Mdp: email envoyé'}
-          onPress={() =>
-            // TODO => PC-4356
-            navigation.navigate('ResetPasswordEmailSent', { userEmail: 'jean.dupont@gmail.com' })
-          }
-        />
-        <Spacer.Column numberOfSpaces={2} />
-        <Button
           title={_(t`Page Reinitialisation de Mdp`)}
           onPress={() => {
             if (Linking.canOpenURL(MdpDeeplink)) {
