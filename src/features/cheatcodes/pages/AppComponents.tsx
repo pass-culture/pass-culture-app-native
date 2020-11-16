@@ -12,6 +12,7 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SafeContainer } from 'ui/components/SafeContainer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -146,6 +147,9 @@ export const AppComponents: FunctionComponent = () => {
         </AppModal>
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4>Modal - Progressive</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Title4>Modal Header</Typo.Title4>
+        <ColoredModalHeader title="My modal header" leftIcon={ArrowPrevious} rightIcon={Close} />
         <Spacer.Column numberOfSpaces={5} />
         {/* Icons */}
         <Typo.Title1 color={ColorsEnum.PRIMARY}>Icons</Typo.Title1>
@@ -248,6 +252,14 @@ const AlignedText = styled(View)({
   flexDirection: 'row',
   alignItems: 'center',
 })
+
+const ColoredModalHeader = styled(ModalHeader).attrs({
+  customStyles: {
+    container: {
+      backgroundColor: ColorsEnum.PRIMARY_DISABLED,
+    },
+  },
+})``
 
 const StyledScrollView = styled(ScrollView)({
   padding: getSpacing(5),
