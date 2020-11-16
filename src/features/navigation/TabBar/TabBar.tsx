@@ -15,16 +15,12 @@ import { RootTabRouteName } from '../RootTabNavigator'
 
 import { TabBarComponent } from './TabBarComponent'
 
-const BicolorLogoAbstraction = ({ testID, color, color2, size }: BicolorIconInterface) => (
-  <BicolorLogo {...{ testID, color, color2, size }} thin={color === ColorsEnum.GREY_DARK} />
-)
-
 const mapRouteToIcon = (
   route: RootTabRouteName | string
 ): ((props: BicolorIconInterface) => React.ReactNode) => {
   switch (route) {
     case 'HomeNavigator':
-      return BicolorLogoAbstraction
+      return BicolorLogo
     case 'Search':
       return BicolorSearch
     case 'Bookings':

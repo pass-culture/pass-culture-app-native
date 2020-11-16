@@ -34,6 +34,7 @@ export const TabBarComponent: React.FC<TabComponentInterface> = ({
       {bicolorIcon({
         color: isSelected ? undefined : ColorsEnum.GREY_DARK,
         size: getSpacing(11),
+        thin: !isSelected,
       })}
       <Spacer.Flex />
       {isSelected && <BicolorSelectorPlaceholder />}
