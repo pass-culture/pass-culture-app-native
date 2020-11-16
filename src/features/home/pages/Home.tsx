@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
+import { withErrorBoundary } from 'react-error-boundary'
 import { ScrollView, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
+import { RetryBoundary } from 'features/errors'
 import { useHomepageModules } from 'features/home/api'
 import { BusinessModule } from 'features/home/components/BusinessModule'
 import { ExclusivityModule } from 'features/home/components/ExclusivityModule'
@@ -29,7 +31,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 
-export const Home: FunctionComponent = function () {
+const HomeComponent: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Home'>>()
   const position = useGeolocation()
@@ -136,4 +138,8 @@ const CheatTouchableOpacity = styled(TouchableOpacity)({
   borderColor: ColorsEnum.BLACK,
   borderWidth: 2,
   padding: getSpacing(1),
+})
+
+export const Home = withErrorBoundary(HomeComponent, {
+  FallbackComponent: RetryBoundary,
 })
