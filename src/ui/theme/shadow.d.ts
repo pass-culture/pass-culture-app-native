@@ -15,10 +15,7 @@ export type iOSShadowInput = {
 }
 
 export type iOSShadowOutput = {
-  shadowOffset: {
-    width: string
-    height: string
-  }
+  shadowOffset: string
   shadowRadius: number
   shadowColor: ColorsEnum
   shadowOpacity: string
