@@ -6,10 +6,7 @@ import { iOSShadowInput, iOSShadowOutput } from './shadow.d'
 */
 export function getShadow(shadowInput: iOSShadowInput): iOSShadowOutput {
   return {
-    shadowOffset: {
-      width: shadowInput.shadowOffset.width.toString(),
-      height: shadowInput.shadowOffset.height.toString(),
-    },
+    shadowOffset: `${shadowInput.shadowOffset.width}px ${shadowInput.shadowOffset.height}px`,
     shadowRadius: shadowInput.shadowRadius,
     shadowColor: shadowInput.shadowColor,
     shadowOpacity: shadowInput.shadowOpacity.toString(),
