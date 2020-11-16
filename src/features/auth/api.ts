@@ -2,7 +2,7 @@ import { useQuery } from 'react-query'
 
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { get, post } from 'libs/fetch'
+import { EmptyResponse, get, post } from 'libs/fetch'
 import { saveRefreshToken } from 'libs/keychain'
 import { saveAccessToken } from 'libs/storage'
 
@@ -45,4 +45,16 @@ export function useCurrentUser() {
     },
   })
   return { email, isFetching, refetch, error, isError }
+}
+
+export type PasswordResetBody = {
+  email: string
+}
+
+export async function requestPasswordReset(email: PasswordResetBody): Promise<EmptyResponse> {
+  const body = email
+  const response = await post<EmptyResponse>('/native/v1/request_password_reset', {
+    body,
+  })
+  return response
 }
