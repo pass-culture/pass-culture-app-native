@@ -90,7 +90,7 @@ const MainContainer = styled.View({
   ...getShadow({
     shadowOffset: {
       width: 0,
-      height: getSpacing(2),
+      height: getSpacing(1 / 4),
     },
     shadowRadius: getSpacing(1),
     shadowColor: ColorsEnum.BLACK,

@@ -81,8 +81,12 @@ exports[`SeeMore renders correctly 1`] = `
             "justifyContent": "center",
             "opacity": 1,
             "shadowColor": "#151515",
+            "shadowOffset": Object {
+              "height": 8,
+              "width": 0,
+            },
             "shadowOpacity": 0.15,
-            "shadowRadius": 4,
+            "shadowRadius": 12,
             "width": 64,
           }
         }

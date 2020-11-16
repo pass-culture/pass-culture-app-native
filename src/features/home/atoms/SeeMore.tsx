@@ -57,9 +57,9 @@ const RoundContainer = styled.TouchableOpacity({
   ...getShadow({
     shadowOffset: {
       width: 0,
-      height: -getSpacing(2),
+      height: getSpacing(2),
     },
-    shadowRadius: getSpacing(1),
+    shadowRadius: getSpacing(3),
     shadowColor: ColorsEnum.BLACK,
     shadowOpacity: 0.15,
   }),
