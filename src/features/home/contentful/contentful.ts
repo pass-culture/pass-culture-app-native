@@ -175,6 +175,7 @@ interface BusinessFields {
   secondLine?: string
   image: Image
   url?: string
+  targetNotConnectedUsersOnly?: boolean
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivity/fields

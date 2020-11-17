@@ -52,7 +52,14 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
     }
 
     if (contentType === CONTENT_TYPES.BUSINESS) {
-      const { firstLine, secondLine, url, image } = fields as BusinessFields
+      const {
+        firstLine,
+        secondLine,
+        url,
+        image,
+        targetNotConnectedUsersOnly,
+      } = fields as BusinessFields
+
       return new BusinessPane({
         firstLine,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -60,6 +67,7 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
         secondLine,
         url,
         moduleId,
+        targetNotConnectedUsersOnly,
       })
     }
 
