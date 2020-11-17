@@ -1,10 +1,9 @@
 import { Range } from '../../typesUtils/typeHelpers'
 
-import { MILLISECONDS_IN_A_DAY } from './time'
-
 export const DAYS_IN_A_WEEK = 7
 export const SATURDAY_INDEX_IN_A_WEEK = 6
 export const SUNDAY_INDEX_IN_A_WEEK = 0
+const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000
 
 export const getDatesFromTimeRangeAndDate = (date: Date, timeRange: Range<number>): Range<Date> => {
   const beginningDatetime = getDateAtGivenTime(date, timeRange[0])
