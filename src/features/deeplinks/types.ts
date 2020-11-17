@@ -1,5 +1,7 @@
 import { RouteParams, HomeStackParamList } from 'features/home/navigation/HomeNavigator'
 
+import { RootTabParamList } from '../navigation/RootTabNavigator'
+
 export interface DeeplinkParts {
   routeName: string
   params: Record<string, string>
@@ -11,6 +13,9 @@ export interface DeeplinkEvent {
 
 type DeepLinksToScreenMap = {
   'mot-de-passe-perdu': 'ReinitializePassword'
+  profil: 'Profile'
+  favoris: 'Favorites'
+  recherche: 'Search'
   default: 'Home'
 }
 
@@ -28,7 +33,7 @@ export type DeepLinksToScreenConfiguration<
 
 export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration<
   DeepLinksToScreenMap,
-  HomeStackParamList
+  RootTabParamList & HomeStackParamList
 > = {
   'mot-de-passe-perdu': {
     screen: 'ReinitializePassword',
@@ -39,6 +44,15 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration<
       token,
       expiration_date: Number(expiration_date),
     }),
+  },
+  profil: {
+    screen: 'Profile',
+  },
+  favoris: {
+    screen: 'Favorites',
+  },
+  recherche: {
+    screen: 'Search',
   },
   default: {
     screen: 'Home',
