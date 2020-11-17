@@ -12,9 +12,9 @@ I have:
 
 ## Screenshots
 
-| \*iOS - [Phone name]                        |           \*Android - [Phone name]           |                        Tablet - [Phone name] |                        Little - [Phone name] |
-| ------------------------------------------- | :------------------------------------------: | -------------------------------------------: | -------------------------------------------: |
-| <img alt="image" src="XXX.png" width="170"> | <img alt="image" src="XXX.png"  width="170"> | <img alt="image" src="XXX.png"  width="170"> | <img alt="image" src="XXX.png"  width="170"> |
+| \*iOS - [Phone name] | \*Android - [Phone name] | Tablet - [Phone name] | Little - [Phone name] |
+| -------------------- | :----------------------: | --------------------: | --------------------: |
+|                      |                          |                       |                       |
 
 ## Deploy hard
 
