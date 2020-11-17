@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-raw-text */
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, { FunctionComponent, useCallback, useContext, useState } from 'react'
 import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -15,6 +15,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SafeContainer } from 'ui/components/SafeContainer'
+import { SnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
@@ -23,6 +24,7 @@ import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
+import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -51,9 +53,23 @@ export const AppComponents: FunctionComponent = () => {
     setTimeout(() => setButtonIsLoading(false), 3000)
   }, [])
 
+  const { displaySnackBar, hideSnackBar } = useContext(SnackBarContext)
+  const popupSnackBar = useCallback(
+    () =>
+      displaySnackBar({
+        message: 'Ton mot de passe est modifié, tu peux à nouveau de te connecter',
+        backgroundColor: ColorsEnum.ACCENT,
+        color: ColorsEnum.WHITE,
+        icon: Warning,
+        timeout: 5000,
+        onClose: hideSnackBar,
+      }),
+    []
+  )
+
   return (
     <SafeContainer noTabBarSpacing>
-      <StyledScrollView style={{ backgroundColor: ColorsEnum.GREY_LIGHT }}>
+      <StyledScrollView>
         {/* Typos */}
         <Typo.Title1 color={ColorsEnum.PRIMARY}>Typos</Typo.Title1>
 
@@ -162,6 +178,10 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - ArrowNext </Text>
         </AlignedText>
         <AlignedText>
+          <Check size={24} />
+          <Text> - Check </Text>
+        </AlignedText>
+        <AlignedText>
           <Close size={24} />
           <Text> - Close </Text>
         </AlignedText>
@@ -239,8 +259,15 @@ export const AppComponents: FunctionComponent = () => {
         <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={5} />
 
+        {/* SnackBar */}
+        <Typo.Title1 color={ColorsEnum.PRIMARY}>SnackBar</Typo.Title1>
+        <TouchableOpacity onPress={popupSnackBar}>
+          <Typo.Title4 color={ColorsEnum.TERTIARY}>Popup SnackBar</Typo.Title4>
+        </TouchableOpacity>
+        <Spacer.Column numberOfSpaces={5} />
+
         {/* Create your category */}
-        <Typo.Title1 color={ColorsEnum.PRIMARY}>Add components</Typo.Title1>
+        <Typo.Title1 color={ColorsEnum.PRIMARY}>Your components</Typo.Title1>
         <Spacer.Column numberOfSpaces={5} />
         <Spacer.TabBar />
       </StyledScrollView>
@@ -263,6 +290,7 @@ const ColoredModalHeader = styled(ModalHeader).attrs({
 
 const StyledScrollView = styled(ScrollView)({
   padding: getSpacing(5),
+  backgroundColor: ColorsEnum.GREY_LIGHT,
 })
 
 function doNothingFn() {

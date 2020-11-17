@@ -1,5 +1,5 @@
 import { I18nProvider } from '@lingui/react' //@translations
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import CodePush from 'react-native-code-push' // @codepush
 import 'react-native-gesture-handler' // @react-navigation
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -12,9 +12,7 @@ import { i18n } from 'libs/i18n' //@translations
 import 'libs/sentry'
 import { useStartBatchNotification } from 'libs/notifications'
 import { useHideSplashScreen } from 'libs/splashscreen'
-import { SnackBar } from 'ui/components/snackBar/SnackBar'
-import { Check } from 'ui/svg/icons/Check'
-import { ColorsEnum } from 'ui/theme'
+import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 const codePushOptionsManual = {
   updateDialog: true,
@@ -43,30 +41,13 @@ const AppComponent: FunctionComponent = function () {
   useStartBatchNotification()
   useHideSplashScreen()
 
-  const [isToasterVisible, setToasterVisible] = useState(true)
-
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
       <I18nProvider language={i18n.language} i18n={i18n}>
         <SafeAreaProvider>
-          <React.Fragment>
-            <SnackBar
-              visible={isToasterVisible}
-              message={'Ton mot de passe a été modifié !'}
-              icon={Check}
-              onClose={() => {
-                setToasterVisible(false)
-                setTimeout(() => {
-                  setToasterVisible(true)
-                }, 10000)
-              }}
-              timeout={3000}
-              backgroundColor={ColorsEnum.GREEN_VALID}
-              color={ColorsEnum.WHITE}
-              animationDuration={1000}
-            />
+          <SnackBarProvider>
             <RootTabNavigator />
-          </React.Fragment>
+          </SnackBarProvider>
         </SafeAreaProvider>
       </I18nProvider>
     </ReactQueryCacheProvider>
