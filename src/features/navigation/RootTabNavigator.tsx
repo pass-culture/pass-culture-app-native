@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
+import { StatusBar, Platform } from 'react-native'
 
 import { Bookings } from '../bookings/pages/Bookings'
 import { Favorites } from '../favorites/pages/Favorites'
@@ -19,6 +20,11 @@ export type RootTabParamList = {
   Profile: undefined
 }
 export type RootTabRouteName = keyof RootTabParamList
+
+StatusBar.setBarStyle('light-content')
+if (Platform.OS === 'android') {
+  StatusBar.setTranslucent(true)
+}
 
 const RootTab = createBottomTabNavigator<RootTabParamList>()
 
