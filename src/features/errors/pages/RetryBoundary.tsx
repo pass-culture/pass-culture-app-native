@@ -12,12 +12,10 @@ import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const RetryBoundary = ({ resetErrorBoundary }: FallbackProps) => {
-  StatusBar.setBarStyle('light-content', true)
   const queryCache = useQueryCache()
 
   const handleRetry = () => {
     queryCache.resetErrorBoundaries()
-    StatusBar.setBarStyle('dark-content', true)
     resetErrorBoundary()
   }
 
