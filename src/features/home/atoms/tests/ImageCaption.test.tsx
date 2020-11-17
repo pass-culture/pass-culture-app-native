@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import { ImageCaption } from './ImageCaption'
+import { ImageCaption } from '../ImageCaption'
 
 const props = {
   category: 'Musique',

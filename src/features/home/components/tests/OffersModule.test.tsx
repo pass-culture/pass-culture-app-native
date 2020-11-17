@@ -5,9 +5,8 @@ import React from 'react'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
-import { AlgoliaParametersFields, DisplayParametersFields } from '../contentful/contentful'
-
-import { OffersModule } from './OffersModule'
+import { AlgoliaParametersFields, DisplayParametersFields } from '../../contentful/contentful'
+import { OffersModule } from '../OffersModule'
 
 mockdate.set(new Date(2020, 10, 16))
 

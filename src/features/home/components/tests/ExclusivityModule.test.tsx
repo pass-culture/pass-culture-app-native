@@ -3,7 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 
-import { ExclusivityModule } from './ExclusivityModule'
+import { ExclusivityModule } from '../ExclusivityModule'
 
 const props = {
   alt: "Image d'Adèle",
