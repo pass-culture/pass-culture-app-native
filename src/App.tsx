@@ -6,6 +6,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryCache, ReactQueryCacheProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
+import './wdyr'
+
 import { RootTabNavigator } from 'features/navigation/RootTabNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
