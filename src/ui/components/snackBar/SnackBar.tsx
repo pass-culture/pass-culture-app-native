@@ -5,6 +5,7 @@ import React, {
   RefObject,
   useCallback,
   useState,
+  memo,
 } from 'react'
 import { Dimensions, GestureResponderEvent, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
@@ -59,22 +60,22 @@ const _SnackBar = (props: SnackBarProps) => {
 
   // Visibility effect
   useEffect(() => {
-    if (props.visible && !isVisible) {
+    const shouldDisplay = props.visible && !isVisible
+    const shouldHide = !props.visible && isVisible
+
+    if (shouldDisplay) {
       triggerApparitionAnimation()
     }
-    if (!props.visible && isVisible) {
+    if (shouldHide) {
       triggerVanishAnimation()
     }
-  }, [props.visible])
-
-  // Timeout effect
-  useEffect(() => {
-    if (!props.timeout) {
+    // Timeout section
+    if (!props.timeout || !props.onClose || shouldHide) {
       return
     }
     const timeout = setTimeout(props.onClose, props.timeout)
     return () => clearTimeout(timeout)
-  }, [props.onClose, props.timeout])
+  }, [props.visible])
 
   const { top } = useSafeAreaInsets()
 
@@ -85,7 +86,6 @@ const _SnackBar = (props: SnackBarProps) => {
       easing="ease"
       duration={animationDuration}
       ref={containerRef}>
-      {/* <StatusBar hidden /> */}
       <SnackBarContainer isVisible={isVisible}>
         <React.Fragment>
           <ContentContainer testID="toasterContainer">
@@ -101,7 +101,7 @@ const _SnackBar = (props: SnackBarProps) => {
   )
 }
 
-export const SnackBar = _SnackBar
+export const SnackBar = memo(_SnackBar)
 
 const AnimatedContainer = styled(AnimatableView)<{ backgroundColor: string; marginTop: number }>(
   ({ marginTop = 0 }) => ({
