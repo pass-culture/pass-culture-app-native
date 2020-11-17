@@ -6,19 +6,10 @@ import { ScrollView, TouchableOpacity } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
+import { useIsLoggedIn } from 'features/auth/api'
 import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { RetryBoundary } from 'features/errors'
 import { useHomepageModules } from 'features/home/api'
-import { BusinessModule } from 'features/home/components/BusinessModule'
-import { ExclusivityModule } from 'features/home/components/ExclusivityModule'
-import { OffersModule } from 'features/home/components/OffersModule'
-import {
-  BusinessPane,
-  ExclusivityPane,
-  Offers,
-  OffersWithCover,
-  ProcessedModule,
-} from 'features/home/contentful'
 import { UseNavigationType, UseRouteType } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
 import { useGeolocation } from 'libs/geolocation'
@@ -30,17 +21,19 @@ import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
+import { HomeBody } from '../components/HomeBody'
 import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 
 const statusBarHeight = getStatusBarHeight(true)
 
-const HomeComponent: FunctionComponent = function () {
+export const HomeComponent: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Home'>>()
+  const { data: modules = [] } = useHomepageModules()
   const position = useGeolocation()
+  const { data: connected = false } = useIsLoggedIn()
 
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
-  const { data: modules = [] } = useHomepageModules()
 
   function hideSignInModal() {
     navigation.setParams({ shouldDisplayLoginModal: false })
@@ -85,21 +78,9 @@ const HomeComponent: FunctionComponent = function () {
           </Typo.Body>
         </CenterContainer>
         <Spacer.Column numberOfSpaces={6} />
-        <Container>
-          {modules.map((module: ProcessedModule) => {
-            if (module instanceof Offers || module instanceof OffersWithCover) {
-              return <OffersModule key={module.moduleId} {...module} position={position} />
-            }
-            if (module instanceof ExclusivityPane) {
-              return <ExclusivityModule key={module.moduleId} {...module} />
-            }
-            if (module instanceof BusinessPane) {
-              return <BusinessModule key={module.moduleId} {...module} />
-            }
-            return null
-          })}
-          <Spacer.Column numberOfSpaces={6} />
-        </Container>
+
+        <HomeBody modules={modules} connected={connected} position={position} />
+
         <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
         <Spacer.TabBar />
       </SafeContainer>
@@ -110,11 +91,6 @@ const HomeComponent: FunctionComponent = function () {
 const CenterContainer = styled.View({
   flex: 1,
   alignItems: 'center',
-})
-
-const Container = styled.View({
-  flex: 1,
-  alignItems: 'flex-start',
 })
 
 const HeaderBackgroundWrapper = styled.View({

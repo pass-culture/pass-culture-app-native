@@ -6,7 +6,7 @@ import { HomeStack } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
 import { flushAllPromises } from 'tests/utils'
 
-import { Home } from './Home'
+import { HomeComponent } from './Home'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
@@ -16,6 +16,8 @@ jest.mock('libs/environment', () => ({
     CHEAT_BUTTONS_ENABLED: false,
   },
 }))
+
+jest.mock('features/auth/api', () => ({ useIsLoggedIn: jest.fn(() => ({ data: false })) }))
 
 describe('Home component', () => {
   it('should render correctly without login modal', async () => {
@@ -68,7 +70,7 @@ async function renderHomeWithoutLoginModal() {
       <HomeStack.Navigator initialRouteName="Home">
         <HomeStack.Screen
           name="Home"
-          component={Home}
+          component={HomeComponent}
           initialParams={{ shouldDisplayLoginModal: false }}
         />
       </HomeStack.Navigator>
@@ -86,7 +88,7 @@ async function renderHomeWithLoginModal() {
       <HomeStack.Navigator initialRouteName="Home">
         <HomeStack.Screen
           name="Home"
-          component={Home}
+          component={HomeComponent}
           initialParams={{ shouldDisplayLoginModal: true }}
         />
       </HomeStack.Navigator>
