@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState } from 'react'
-import { Keyboard, TouchableWithoutFeedback } from 'react-native'
+import { Keyboard } from 'react-native'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getShadow, getSpacing, Spacer } from 'ui/theme'
 
 import { AvoidingKeyboardContainer } from './keyboard'
@@ -25,16 +25,19 @@ export const BottomCard: FunctionComponent = ({ children }) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <AvoidingKeyboardContainer keyboardHeight={keyboardHeight}>
-        <Background />
+      <StyledAvoidingKeyboardContainer keyboardHeight={keyboardHeight}>
         <StyledBottomCardContainer>
           {children}
           {keyboardHeight === 0 && <Spacer.TabBar />}
         </StyledBottomCardContainer>
-      </AvoidingKeyboardContainer>
+      </StyledAvoidingKeyboardContainer>
     </TouchableWithoutFeedback>
   )
 }
+
+const StyledAvoidingKeyboardContainer = styled(AvoidingKeyboardContainer)({
+  height: '100%',
+})
 
 const StyledBottomCardContainer = styled.View({
   position: 'absolute',

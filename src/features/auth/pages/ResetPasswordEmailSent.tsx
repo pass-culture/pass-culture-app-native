@@ -12,6 +12,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SafeContainer } from 'ui/components/SafeContainer'
+import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
@@ -42,6 +43,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ navigation, r
 
   return (
     <SafeContainer noTabBarSpacing>
+      <Background />
       <BottomCard>
         <ModalHeader
           title={_(t`E-mail envoyé !`)}
