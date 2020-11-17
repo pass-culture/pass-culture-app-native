@@ -53,25 +53,25 @@ const HomeComponent: FunctionComponent = function () {
   useListenDeepLinksEffect()
 
   return (
-    <SafeContainer noTabBarSpacing>
-      <ScrollView>
-        {env.CHEAT_BUTTONS_ENABLED && (
-          <CheatButtonsContainer>
-            <CheatTouchableOpacity onPress={() => navigation.navigate('AppComponents')}>
-              <Typo.Body>{_(t`Composants`)}</Typo.Body>
-            </CheatTouchableOpacity>
-            <CheatTouchableOpacity onPress={() => navigation.navigate('Navigation')}>
-              <Typo.Body>{_(t`Navigation`)}</Typo.Body>
-            </CheatTouchableOpacity>
-          </CheatButtonsContainer>
-        )}
+    <ScrollView>
+      {env.CHEAT_BUTTONS_ENABLED && (
+        <CheatButtonsContainer>
+          <CheatTouchableOpacity onPress={() => navigation.navigate('AppComponents')}>
+            <Typo.Body>{_(t`Composants`)}</Typo.Body>
+          </CheatTouchableOpacity>
+          <CheatTouchableOpacity onPress={() => navigation.navigate('Navigation')}>
+            <Typo.Body>{_(t`Navigation`)}</Typo.Body>
+          </CheatTouchableOpacity>
+        </CheatButtonsContainer>
+      )}
+      <HeaderBackgroundWrapper>
+        <HeaderBackground />
+        <UserProfileContainer onPress={showSignInModal}>
+          <UserCircle size={32} color={ColorsEnum.WHITE} />
+        </UserProfileContainer>
+      </HeaderBackgroundWrapper>
+      <SafeContainer>
         <CenterContainer>
-          <HeaderBackgroundWrapper>
-            <HeaderBackground />
-            <UserProfileContainer onPress={showSignInModal}>
-              <UserCircle size={32} color={ColorsEnum.WHITE} />
-            </UserProfileContainer>
-          </HeaderBackgroundWrapper>
           <Spacer.Column numberOfSpaces={8} />
           <Typo.Title1 color={ColorsEnum.WHITE}>
             {_(/*i18n: Welcome title message */ t`Bienvenue !`)}
@@ -99,8 +99,8 @@ const HomeComponent: FunctionComponent = function () {
         </Container>
         <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
         <Spacer.TabBar />
-      </ScrollView>
-    </SafeContainer>
+      </SafeContainer>
+    </ScrollView>
   )
 }
 
@@ -131,7 +131,7 @@ const UserProfileContainer = styled.TouchableOpacity.attrs({
 })({
   position: 'absolute',
   right: 24,
-  top: 20,
+  top: 50,
 })
 
 const CheatTouchableOpacity = styled(TouchableOpacity)({
