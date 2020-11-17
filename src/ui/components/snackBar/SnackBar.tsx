@@ -1,10 +1,19 @@
-import React, { useState, useRef, useEffect, RefObject, useCallback } from 'react'
-import { StatusBar, Text, TouchableOpacity, ViewProps, ViewStyle } from 'react-native'
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  RefObject,
+  useCallback,
+  FunctionComponent,
+} from 'react'
+import { StatusBar, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
+import { Close } from 'ui/svg/icons/Close'
+import { IconInterface } from 'ui/svg/icons/types'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 import { ZIndexes } from 'ui/theme/layers'
 
 type RefType = RefObject<
@@ -17,34 +26,40 @@ type RefType = RefObject<
 export type PropsType = {
   visible: boolean
   message: string
+  icon: FunctionComponent<IconInterface>
   onClose: () => void
-  backgroundColor: string
-  color: string
+  timeout: number
+  backgroundColor: ColorsEnum
+  color: ColorsEnum
   animationDuration: number
 }
 
 export const SnackBar = (props: PropsType) => {
-  const [isVisible, setVisible] = useState(false)
+  const Icon = props.icon
   const containerRef: RefType = useRef(null)
 
-  const triggerVanishAnimation = useCallback(async () => {
-    containerRef?.current?.fadeOutUp(350)
-    setVisible(false)
-  }, [])
-  const triggerApparitionAnimation = useCallback(async () => {
-    setVisible(true)
-    containerRef?.current?.fadeInDown(350)
-  }, [])
+  const triggerVanishAnimation = useCallback(
+    async () => containerRef?.current?.fadeOutUp(props.animationDuration),
+    []
+  )
+  const triggerApparitionAnimation = useCallback(
+    async () => containerRef?.current?.fadeInDown(props.animationDuration),
+    []
+  )
 
   useEffect(() => {
-    if (props.visible && !isVisible) {
+    if (props.visible) {
       triggerApparitionAnimation()
     }
-    if (!props.visible && isVisible) {
+    if (!props.visible) {
       triggerVanishAnimation()
     }
   }, [props.visible])
+
+  useEffect(() => void setTimeout(props.onClose, props.timeout), [props.onClose, props.timeout])
+
   const { top } = useSafeAreaInsets()
+
   return (
     <AnimatedContainer
       backgroundColor={props.backgroundColor}
@@ -53,28 +68,46 @@ export const SnackBar = (props: PropsType) => {
       duration={props.animationDuration}
       ref={containerRef}>
       <StatusBar hidden />
-      {isVisible && (
+      <SnackBarContainer>
         <ContentContainer testID="toasterContainer">
-          <TouchableOpacity onPress={props.onClose}>
-            <Text>{props.message}</Text>
-          </TouchableOpacity>
+          <Icon size={20} color={props.color} />
+          <Text color={props.color}>{props.message}</Text>
         </ContentContainer>
-      )}
+        <CloseIconContainer onPress={props.onClose}>
+          <Close size={24} color={props.color} />
+        </CloseIconContainer>
+      </SnackBarContainer>
     </AnimatedContainer>
   )
 }
 const AnimatedContainer = styled(AnimatableView)<{ backgroundColor: string; marginTop: number }>(
-  ({ backgroundColor, marginTop = 0 }) => ({
+  ({ marginTop = 0 }) => ({
     position: 'absolute',
     top: marginTop,
     left: 0,
     right: 0,
-    backgroundColor,
     zIndex: ZIndexes.SNACK_BAR,
   })
 )
 
-const ContentContainer = styled.View({
+const SnackBarContainer = styled.View({
   flexDirection: 'row',
-  padding: getSpacing(4),
+  alignItems: 'center',
+})
+
+const ContentContainer = styled.View({
+  flexGrow: 1,
+  flexDirection: 'row',
+  alignItems: 'center',
+  padding: getSpacing(2),
+  marginLeft: getSpacing(1),
+})
+
+const Text = styled.Text<{ color: string }>(({ color }) => ({
+  color,
+  marginLeft: getSpacing(1),
+}))
+
+const CloseIconContainer = styled.TouchableOpacity({
+  paddingHorizontal: 10,
 })
