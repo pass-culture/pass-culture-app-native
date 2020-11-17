@@ -7,7 +7,7 @@ import * as BatchLocalLib from 'libs/notifications'
 import { App } from './App'
 
 jest.mock('./libs/notifications', () => ({
-  startBatchNotification: jest.fn(),
+  useStartBatchNotification: jest.fn(),
 }))
 jest.mock('features/navigation/RootTabNavigator', () => ({
   RootTabNavigator() {
@@ -25,7 +25,7 @@ describe('<App /> with mocked RootTabNavigator', () => {
   it('should call startBatchNotification() to optin to notifications', () => {
     render(<App />)
 
-    expect(BatchLocalLib.startBatchNotification).toHaveBeenCalled()
+    expect(BatchLocalLib.useStartBatchNotification).toHaveBeenCalled()
   })
 
   it('should call SplashScreen.hide() after 500ms', () => {

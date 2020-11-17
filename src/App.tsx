@@ -10,7 +10,7 @@ import { RootTabNavigator } from 'features/navigation/RootTabNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
 import 'libs/sentry'
-import { startBatchNotification } from 'libs/notifications'
+import { useStartBatchNotification } from 'libs/notifications'
 import { useHideSplashScreen } from 'libs/splashscreen'
 
 const codePushOptionsManual = {
@@ -31,8 +31,7 @@ if (__DEV__ && process.env.JEST !== 'true') {
 }
 
 const AppComponent: FunctionComponent = function () {
-  startBatchNotification()
-
+  useStartBatchNotification()
   useHideSplashScreen()
 
   return (

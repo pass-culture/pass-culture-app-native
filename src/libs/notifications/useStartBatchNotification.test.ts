@@ -1,15 +1,16 @@
 import { Batch, BatchPush } from '@bam.tech/react-native-batch'
+import { renderHook } from '@testing-library/react-hooks'
 
-import { startBatchNotification } from './startBatchNotification'
+import { useStartBatchNotification } from './useStartBatchNotification'
 
 describe('startBatchNotification', () => {
   it('should call Batch.start', () => {
-    startBatchNotification()
+    renderHook(useStartBatchNotification)
     expect(Batch.start).toHaveBeenCalledTimes(1)
   })
 
   it('should call BatchPush.registerForRemoteNotifications', () => {
-    startBatchNotification()
+    renderHook(useStartBatchNotification)
     expect(BatchPush.registerForRemoteNotifications).toHaveBeenCalled()
   })
 })
