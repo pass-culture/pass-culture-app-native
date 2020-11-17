@@ -13,7 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/auth/pages/Login.tsx:74
+#: src/features/auth/pages/ForgottenPassword.tsx:56
+#: src/features/auth/pages/Login.tsx:73
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
@@ -52,7 +53,7 @@ msgstr "Composants"
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
-#: src/features/auth/pages/Login.tsx:62
+#: src/features/auth/pages/Login.tsx:61
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
@@ -77,7 +78,7 @@ msgstr "Duo"
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
-#: src/features/auth/pages/Login.tsx:68
+#: src/features/auth/pages/Login.tsx:67
 msgid "E-mail ou mot de passe incorrect"
 msgstr "E-mail ou mot de passe incorrect"
 
@@ -86,7 +87,7 @@ msgid "En voir plus"
 msgstr "En voir plus"
 
 #. Authentication error message
-#: src/libs/fetch.ts:75
+#: src/libs/fetch.ts:78
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
 
@@ -112,11 +113,15 @@ msgstr "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes 
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/auth/pages/Login.tsx:80
+#: src/features/auth/pages/Login.tsx:79
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
-#: src/features/auth/pages/Login.tsx:86
+#: src/features/auth/pages/ForgottenPassword.tsx:47
+msgid "Mot de passe oublié"
+msgstr "Mot de passe oublié"
+
+#: src/features/auth/pages/Login.tsx:85
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
@@ -133,7 +138,7 @@ msgstr "Nouveau mot de passe"
 msgid "Offer"
 msgstr "Offer"
 
-#: src/features/errors/pages/RetryBoundary.tsx:25
+#: src/features/errors/pages/RetryBoundary.tsx:28
 msgid "Oops !"
 msgstr "Oops !"
 
@@ -141,7 +146,7 @@ msgstr "Oops !"
 msgid "Page Login"
 msgstr "Page Login"
 
-#: src/features/cheatcodes/pages/Navigation.tsx:28
+#: src/features/cheatcodes/pages/Navigation.tsx:24
 msgid "Page Reinitialisation de Mdp"
 msgstr "Page Reinitialisation de Mdp"
 
@@ -161,7 +166,11 @@ msgstr "S'il n'arrive pas tu peux :"
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
-#: src/features/auth/pages/Login.tsx:89
+#: src/features/auth/pages/ForgottenPassword.tsx:51
+msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
+msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
+
+#: src/features/auth/pages/Login.tsx:88
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:29
 msgid "Se connecter"
 msgstr "Se connecter"
@@ -174,7 +183,7 @@ msgstr "Recherche"
 msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 msgstr "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 
-#: src/features/auth/pages/Login.tsx:82
+#: src/features/auth/pages/Login.tsx:81
 #: src/features/auth/pages/ReinitializePassword.tsx:37
 #: src/features/auth/pages/ReinitializePassword.tsx:43
 #: src/features/auth/pages/ReinitializePassword.tsx:49
@@ -186,9 +195,13 @@ msgstr "Ton mot de passe"
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
 
-#: src/features/errors/pages/RetryBoundary.tsx:33
-msgid "Une erreur s’est produite pendant le chargement."
-msgstr "Une erreur s’est produite pendant le chargement."
+#: src/features/errors/pages/RetryBoundary.tsx:35
+msgid "Une erreur s'est produite pendant le chargement."
+msgstr "Une erreur s'est produite pendant le chargement."
+
+#: src/features/auth/pages/ForgottenPassword.tsx:61
+msgid "Valider"
+msgstr "Valider"
 
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
@@ -198,16 +211,17 @@ msgstr "Bienvenue à Pass Culture"
 msgid "les mots de passe ne concordent pas"
 msgstr "les mots de passe ne concordent pas"
 
-#: src/features/cheatcodes/pages/Navigation.tsx:33
+#: src/features/cheatcodes/pages/Navigation.tsx:29
 msgid "simulate email deeplink clic with:"
 msgstr "simulate email deeplink clic with:"
 
 #. email placeholder
-#: src/features/auth/pages/Login.tsx:76
+#: src/features/auth/pages/ForgottenPassword.tsx:58
+#: src/features/auth/pages/Login.tsx:75
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
 #: src/libs/fetch.ts:49
-#: src/libs/fetch.ts:67
+#: src/libs/fetch.ts:70
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"
