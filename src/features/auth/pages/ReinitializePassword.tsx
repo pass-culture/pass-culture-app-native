@@ -67,7 +67,7 @@ export const ReinitializePassword = () => {
             <PasswordInput
               value={confirmedPassword}
               onChangeText={setConfirmedPassword}
-              placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+              placeholder={_(/*i18n: password placeholder */ t`Confirmer le mot de passe`)}
               isError={shouldShowConfirmationError}
             />
           </StyledInput>
@@ -75,7 +75,7 @@ export const ReinitializePassword = () => {
           {displayNotMatchingError && (
             <ErrorLineContainer>
               <Warning size={24} color={ColorsEnum.ERROR} />
-              <Typo.Caption color={ColorsEnum.ERROR}>
+              <Typo.Caption testID="not-matching-error" color={ColorsEnum.ERROR}>
                 {_(t`les mots de passe ne concordent pas`)}
               </Typo.Caption>
             </ErrorLineContainer>
