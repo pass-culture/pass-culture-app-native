@@ -7,23 +7,29 @@ import { getAccessToken } from './storage'
 
 export type RequestCredentials = 'omit' | 'same-origin' | 'include' | undefined
 
-export async function post<Body>(url: string, request: RequestInit): Promise<Body> {
+export async function post<ResponseBody>(url: string, request: RequestInit): Promise<ResponseBody> {
   request.method = 'POST'
   request.body = JSON.stringify(request.body)
-  return makeRequest<Body>(env.API_BASE_URL + url, request)
+  return makeRequest<ResponseBody>(env.API_BASE_URL + url, request)
 }
 
-export async function get<Body>(url: string, request: RequestInit = {}): Promise<Body> {
+export async function get<ResponseBody>(
+  url: string,
+  request: RequestInit = {}
+): Promise<ResponseBody> {
   request.method = 'GET'
-  return makeRequest<Body>(env.API_BASE_URL + url, request)
+  return makeRequest<ResponseBody>(env.API_BASE_URL + url, request)
 }
 
-export async function getExternal<Body>(url: string, request: RequestInit = {}): Promise<Body> {
+export async function getExternal<ResponseBody>(
+  url: string,
+  request: RequestInit = {}
+): Promise<ResponseBody> {
   request.method = 'GET'
-  return makeExternalRequest<Body>(url, request)
+  return makeExternalRequest<ResponseBody>(url, request)
 }
 
-async function makeRequest<Body>(url: string, request: RequestInit): Promise<Body> {
+async function makeRequest<ResponseBody>(url: string, request: RequestInit): Promise<ResponseBody> {
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -51,7 +57,10 @@ async function makeRequest<Body>(url: string, request: RequestInit): Promise<Bod
   return json
 }
 
-async function makeExternalRequest<Body>(url: string, request: RequestInit): Promise<Body> {
+async function makeExternalRequest<ResponseBody>(
+  url: string,
+  request: RequestInit
+): Promise<ResponseBody> {
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
