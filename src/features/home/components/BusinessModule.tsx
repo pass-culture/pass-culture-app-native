@@ -33,7 +33,9 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
                   <IdeaIcon />
                 </IconContainer>
                 <TextContainer>
-                  <Typo.ButtonText color={ColorsEnum.WHITE}>{firstLine}</Typo.ButtonText>
+                  <Typo.ButtonText color={ColorsEnum.WHITE} testID="firstLine">
+                    {firstLine}
+                  </Typo.ButtonText>
                   <Typo.Body numberOfLines={2} color={ColorsEnum.WHITE}>
                     {secondLine}
                   </Typo.Body>
