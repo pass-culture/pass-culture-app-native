@@ -33,9 +33,9 @@ type RefType = RefObject<
 
 export type SnackBarProps = {
   visible: boolean
-  message?: string
-  icon?: FunctionComponent<IconInterface>
-  onClose?: () => void
+  message: string
+  icon: FunctionComponent<IconInterface> | undefined
+  onClose: (() => void) | undefined
   timeout?: number
   backgroundColor: ColorsEnum
   color: ColorsEnum
@@ -70,10 +70,10 @@ const _SnackBar = (props: SnackBarProps) => {
     const shouldHide = !props.visible && isVisible
 
     if (shouldDisplay) {
-      return void triggerApparitionAnimation()
+      triggerApparitionAnimation()
     }
     if (shouldHide) {
-      return void triggerVanishAnimation()
+      triggerVanishAnimation()
     }
     // Timeout section
     if (!props.timeout || !props.onClose || shouldHide) {
