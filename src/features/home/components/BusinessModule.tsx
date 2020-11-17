@@ -24,7 +24,6 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
     <View>
       <Spacer.Column numberOfSpaces={6} />
       <Row>
-        {/** Explicitly defining Margin component for easier use for other components, with spacers */}
         <Spacer.Row numberOfSpaces={6} />
         <TouchableHighlight onPress={openUrl}>
           <ImageContainer>
@@ -39,7 +38,9 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
                     {secondLine}
                   </Typo.Body>
                 </TextContainer>
-                <NextArrowIcon />
+                <IconContainer>
+                  <NextArrowIcon />
+                </IconContainer>
               </Container>
             </ImageBackground>
           </ImageContainer>
@@ -89,4 +90,6 @@ const TextContainer = styled.View({
 const IconContainer = styled.View({
   width: 56,
   height: 56,
+  justifyContent: 'center',
+  alignItems: 'center',
 })
