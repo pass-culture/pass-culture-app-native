@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -565,10 +565,11 @@
+@@ -564,10 +564,11 @@
                   },
                 ]
               }
@@ -17,7 +17,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
         </View>
         <View
           numberOfSpaces={6}
-@@ -681,10 +682,11 @@
+@@ -679,10 +680,11 @@
                   },
                 ]
               }
@@ -29,7 +29,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
               accessible={true}
               focusable={true}
               onClick={[Function onClick]}
-@@ -803,22 +805,22 @@
+@@ -801,22 +803,22 @@
             ]
           }
         />
@@ -173,7 +173,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
                   \\"borderWidth\\": 1,
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
-@@ -617,18 +697,18 @@
+@@ -616,18 +696,18 @@
                 },
               ]
             }
