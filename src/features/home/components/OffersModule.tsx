@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search'
 import React, { useCallback } from 'react'
-import { Alert, FlatList } from 'react-native'
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
@@ -8,7 +8,6 @@ import { Offers, OffersWithCover } from 'features/home/contentful'
 import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
-import { isErrorWithMessageTypeGuard } from 'libs/typesUtils/typeGuards'
 import { Spacer } from 'ui/theme'
 
 type OfferWithOptionalCover = Partial<OffersWithCover> &
@@ -19,8 +18,6 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
 
   const { hits, nbHits } = useFetchAlgolia({
     algoliaParameters: parameters,
-    onError: (error: unknown) =>
-      Alert.alert('Error', isErrorWithMessageTypeGuard(error) ? error.message : 'algolia-error'),
     cacheKey: `module-${moduleId}`,
   })
 
