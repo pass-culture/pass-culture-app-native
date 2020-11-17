@@ -27,8 +27,8 @@ export const ReinitializePassword = () => {
   const [confirmedPassword, setConfirmedPassword] = useState('')
   const [shouldShowConfirmationError] = useState(false)
 
-  const arePasswordsMatching = confirmedPassword === password
-  const allowSubmission = password.length > 0 && arePasswordsMatching
+  const allowSubmission = password.length > 0 && confirmedPassword === password
+  const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
 
   function onClose() {
     navigation.navigate('Home', { shouldDisplayLoginModal: false })
@@ -72,7 +72,7 @@ export const ReinitializePassword = () => {
             />
           </StyledInput>
           <Spacer.Column numberOfSpaces={2} />
-          {!arePasswordsMatching && (
+          {displayNotMatchingError && (
             <ErrorLineContainer>
               <Warning size={24} color={ColorsEnum.ERROR} />
               <Typo.Caption color={ColorsEnum.ERROR}>
