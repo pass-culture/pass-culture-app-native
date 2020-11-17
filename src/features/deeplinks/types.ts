@@ -16,6 +16,7 @@ type DeepLinksToScreenMap = {
   profil: 'Profile'
   favoris: 'Favorites'
   recherche: 'Search'
+  login: 'Login'
   default: 'Home'
 }
 
@@ -53,6 +54,9 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration<
   },
   recherche: {
     screen: 'Search',
+  },
+  login: {
+    screen: 'Login',
   },
   default: {
     screen: 'Home',
