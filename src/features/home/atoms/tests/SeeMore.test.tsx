@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { SeeMore } from './SeeMore'
+import { SeeMore } from '../SeeMore'
 
 const onPress = jest.fn()
 describe('SeeMore', () => {

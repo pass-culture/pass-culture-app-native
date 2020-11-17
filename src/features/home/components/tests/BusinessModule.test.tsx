@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { BusinessModule } from './BusinessModule'
+import { BusinessModule } from '../BusinessModule'
 
 const props = {
   firstLine: 'firstLine',

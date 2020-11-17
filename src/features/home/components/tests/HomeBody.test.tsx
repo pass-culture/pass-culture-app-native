@@ -3,9 +3,8 @@ import React from 'react'
 
 import { adaptedHomepageEntries } from 'tests/fixtures/homepageEntries'
 
-import { BusinessFields, BusinessPane, processHomepageEntries } from '../contentful'
-
-import { HomeBody } from './HomeBody'
+import { BusinessFields, BusinessPane, processHomepageEntries } from '../../contentful'
+import { HomeBody } from '../HomeBody'
 
 const businessModules = adaptedHomepageEntries.fields.modules
   .filter((m) => 'targetNotConnectedUsersOnly' in m.fields)

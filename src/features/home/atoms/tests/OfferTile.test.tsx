@@ -1,9 +1,8 @@
 import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
-import { mockedAlgoliaResponse } from '../../../libs/algolia/mockedResponses/mockedAlgoliaResponse'
-
-import { OfferTile } from './OfferTile'
+import { mockedAlgoliaResponse } from '../../../../libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { OfferTile } from '../OfferTile'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
 const props = {

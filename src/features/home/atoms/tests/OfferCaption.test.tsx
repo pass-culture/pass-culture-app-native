@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import { OfferCaption } from './OfferCaption'
+import { OfferCaption } from '../OfferCaption'
 
 const props = {
   name: 'Mensch ! Où sont les Hommes ?',

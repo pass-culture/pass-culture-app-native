@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import { ModuleTitle } from './ModuleTitle'
+import { ModuleTitle } from '../ModuleTitle'
 
 describe('ModuleTitle component', () => {
   afterAll(() => jest.resetAllMocks())
