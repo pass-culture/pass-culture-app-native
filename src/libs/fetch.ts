@@ -7,10 +7,18 @@ import { getAccessToken } from './storage'
 
 export type RequestCredentials = 'omit' | 'same-origin' | 'include' | undefined
 
-export async function post<ResponseBody>(url: string, request: RequestInit): Promise<ResponseBody> {
+export type EmptyResponse = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [K in any]: never
+}
+
+export async function post<ResponseBody>(
+  url: string,
+  request: RequestInit
+): Promise<ResponseBody | EmptyResponse> {
   request.method = 'POST'
   request.body = JSON.stringify(request.body)
-  return makeRequest<ResponseBody>(env.API_BASE_URL + url, request)
+  return makeRequest<ResponseBody | EmptyResponse>(env.API_BASE_URL + url, request)
 }
 
 export async function get<ResponseBody>(
@@ -29,7 +37,10 @@ export async function getExternal<ResponseBody>(
   return makeExternalRequest<ResponseBody>(url, request)
 }
 
-async function makeRequest<ResponseBody>(url: string, request: RequestInit): Promise<ResponseBody> {
+async function makeRequest<ResponseBody>(
+  url: string,
+  request: RequestInit
+): Promise<ResponseBody | EmptyResponse> {
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -53,7 +64,11 @@ async function makeRequest<ResponseBody>(url: string, request: RequestInit): Pro
     throw new Error(_(t`Échec de la requête ${url}, code: ${response.status}`))
   }
 
-  const json = await response.json()
+  if (response.status === 204) {
+    return {}
+  }
+
+  const json = response.json()
   return json
 }
 
