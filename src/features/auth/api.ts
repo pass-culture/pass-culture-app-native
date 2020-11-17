@@ -58,3 +58,18 @@ export async function requestPasswordReset(email: PasswordResetBody): Promise<Em
   })
   return response
 }
+
+export function useIsLoggedIn() {
+  return useQuery<boolean>(
+    'currentUser',
+    async function () {
+      try {
+        const json = await get<CurrentUserResponse>('/native/v1/protected')
+        return !!json.logged_in_as
+      } catch (error) {
+        return false
+      }
+    },
+    { retry: false }
+  )
+}
