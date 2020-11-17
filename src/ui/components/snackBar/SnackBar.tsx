@@ -7,14 +7,20 @@ import React, {
   useState,
   memo,
 } from 'react'
-import { Dimensions, GestureResponderEvent, ViewProps, ViewStyle } from 'react-native'
+import {
+  Dimensions,
+  GestureResponderEvent,
+  TouchableOpacity,
+  ViewProps,
+  ViewStyle,
+} from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { Close } from 'ui/svg/icons/Close'
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme'
 import { ZIndexes } from 'ui/theme/layers'
 
@@ -41,7 +47,7 @@ const _SnackBar = (props: SnackBarProps) => {
   const animationDuration = props.animationDuration || 500
 
   const containerRef: RefType = useRef(null)
-  const [isVisible, setVisible] = useState(false)
+  const [isVisible, setVisible] = useState(props.visible)
 
   const triggerVanishAnimation = useCallback(
     async () =>
@@ -64,10 +70,10 @@ const _SnackBar = (props: SnackBarProps) => {
     const shouldHide = !props.visible && isVisible
 
     if (shouldDisplay) {
-      triggerApparitionAnimation()
+      return void triggerApparitionAnimation()
     }
     if (shouldHide) {
-      triggerVanishAnimation()
+      return void triggerVanishAnimation()
     }
     // Timeout section
     if (!props.timeout || !props.onClose || shouldHide) {
@@ -92,9 +98,9 @@ const _SnackBar = (props: SnackBarProps) => {
             {Icon && <Icon size={22} color={props.color} />}
             <Text color={props.color}>{props.message}</Text>
           </ContentContainer>
-          <CloseIconContainer onPress={onClose}>
+          <TouchableOpacity onPress={onClose}>
             <Close size={24} color={props.color} />
-          </CloseIconContainer>
+          </TouchableOpacity>
         </React.Fragment>
       </SnackBarContainer>
     </AnimatedContainer>
@@ -129,12 +135,10 @@ const ContentContainer = styled.View({
   marginLeft: getSpacing(1),
 })
 
-const Text = styled.Text<{ color: string }>(({ color }) => ({
+const Text = styled(Typo.Body)<{ color: string }>(({ color }) => ({
   color,
   marginLeft: getSpacing(1),
   flexGrow: 0,
-  maxWidth: Dimensions.get('window').width - 80,
+  maxWidth: Dimensions.get('window').width - getSpacing(20),
   flexWrap: 'wrap',
 }))
-
-const CloseIconContainer = styled.TouchableOpacity({})

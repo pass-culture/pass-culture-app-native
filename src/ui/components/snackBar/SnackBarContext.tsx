@@ -1,4 +1,4 @@
-import React, { createContext, FunctionComponent, useCallback, useRef, useState } from 'react'
+import React, { createContext, FunctionComponent, useRef, useState } from 'react'
 
 import { ColorsEnum } from 'ui/theme'
 
@@ -27,11 +27,8 @@ export const SnackBarProvider: FunctionComponent = ({ children }) => {
     color: ColorsEnum.WHITE,
   })
 
-  const popup = useCallback(
-    (settings: SnackBarSettings) => setSnackBarProps({ ...settings, visible: true }),
-    []
-  )
-  const hide = useCallback(() => setSnackBarProps((props) => ({ ...props, visible: false })), [])
+  const popup = (settings: SnackBarSettings) => setSnackBarProps({ ...settings, visible: true })
+  const hide = () => setSnackBarProps((props) => ({ ...props, visible: false }))
 
   const snackBarToolsRef = useRef<SnackBarContextValue>({
     displaySnackBar: popup,
