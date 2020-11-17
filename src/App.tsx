@@ -13,6 +13,8 @@ import 'libs/sentry'
 import { useStartBatchNotification } from 'libs/notifications'
 import { useHideSplashScreen } from 'libs/splashscreen'
 import { SnackBar } from 'ui/components/snackBar/SnackBar'
+import { Check } from 'ui/svg/icons/Check'
+import { ColorsEnum } from 'ui/theme'
 
 const codePushOptionsManual = {
   updateDialog: true,
@@ -50,11 +52,18 @@ const AppComponent: FunctionComponent = function () {
           <React.Fragment>
             <SnackBar
               visible={isToasterVisible}
-              message={'my message'}
-              backgroundColor={'green'}
-              color={'white'}
+              message={'Ton mot de passe a été modifié !'}
+              icon={Check}
+              onClose={() => {
+                setToasterVisible(false)
+                setTimeout(() => {
+                  setToasterVisible(true)
+                }, 10000)
+              }}
+              timeout={3000}
+              backgroundColor={ColorsEnum.GREEN_VALID}
+              color={ColorsEnum.WHITE}
               animationDuration={1000}
-              onClose={() => setToasterVisible(false)}
             />
             <RootTabNavigator />
           </React.Fragment>
