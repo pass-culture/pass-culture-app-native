@@ -53,15 +53,33 @@ export const AppComponents: FunctionComponent = () => {
     setTimeout(() => setButtonIsLoading(false), 3000)
   }, [])
 
-  const { displaySnackBar, hideSnackBar } = useContext(SnackBarContext)
-  const popupSnackBar = useCallback(
+  const {
+    displaySuccessSnackBar,
+    displayInfosSnackBar,
+    displayDangerSnackBar,
+    hideSnackBar,
+  } = useContext(SnackBarContext)
+  const popupSnackBarSuccess = useCallback(
     () =>
-      displaySnackBar({
-        message: 'Ton mot de passe est modifié, tu peux à nouveau de te connecter',
-        backgroundColor: ColorsEnum.ACCENT,
-        color: ColorsEnum.WHITE,
-        icon: Warning,
-        // timeout: 5000,
+      displaySuccessSnackBar({
+        message: 'Ton mot de passe est modifié, attends 5 secondes !!!',
+        onClose: hideSnackBar,
+        timeout: 5000,
+      }),
+    []
+  )
+  const popupSnackBarInfos = useCallback(
+    () =>
+      displayInfosSnackBar({
+        message: 'This is a warning !!!',
+        onClose: hideSnackBar,
+      }),
+    []
+  )
+  const popupSnackBarDanger = useCallback(
+    () =>
+      displayDangerSnackBar({
+        message: 'You are in danger my friend !!!',
         onClose: hideSnackBar,
       }),
     []
@@ -261,8 +279,18 @@ export const AppComponents: FunctionComponent = () => {
 
         {/* SnackBar */}
         <Typo.Title1 color={ColorsEnum.PRIMARY}>SnackBar</Typo.Title1>
-        <TouchableOpacity onPress={popupSnackBar}>
-          <Typo.Title4 color={ColorsEnum.TERTIARY}>Popup SnackBar</Typo.Title4>
+        <TouchableOpacity onPress={popupSnackBarSuccess}>
+          <Typo.Title4 color={ColorsEnum.GREEN_VALID}>
+            Popup Sucess SnackBar for 5 seconds
+          </Typo.Title4>
+        </TouchableOpacity>
+        <Spacer.Column numberOfSpaces={1} />
+        <TouchableOpacity onPress={popupSnackBarInfos}>
+          <Typo.Title4 color={ColorsEnum.ACCENT}>Popup Information SnackBar</Typo.Title4>
+        </TouchableOpacity>
+        <Spacer.Column numberOfSpaces={1} />
+        <TouchableOpacity onPress={popupSnackBarDanger}>
+          <Typo.Title4 color={ColorsEnum.ERROR}>Popup Danger SnackBar</Typo.Title4>
         </TouchableOpacity>
         <Spacer.Column numberOfSpaces={5} />
 
@@ -289,7 +317,7 @@ const ColoredModalHeader = styled(ModalHeader).attrs({
 })``
 
 const StyledScrollView = styled(ScrollView)({
-  padding: getSpacing(5),
+  paddingHorizontal: getSpacing(5),
   backgroundColor: ColorsEnum.GREY_LIGHT,
 })
 
