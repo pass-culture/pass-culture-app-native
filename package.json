@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "@algolia/client-search": "^4.6.0",
-    "@babel/preset-react": "^7.12.5",
     "@bam.tech/react-native-batch": "^5.2.1",
     "@bam.tech/react-native-config": "^0.13.0",
     "@lingui/react": "^2.9.2",
@@ -45,7 +44,6 @@
     "@sentry/react-native": "^1.8.2",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/styled-components": "^5.1.4",
-    "@welldone-software/why-did-you-render": "^6.0.0-rc.1",
     "algoliasearch": "^4.6.0",
     "appcenter-cli": "^2.7.2",
     "babel-core": "^6.26.3",
@@ -76,6 +74,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
+    "@babel/preset-react": "^7.12.5",
     "@babel/runtime": "^7.8.4",
     "@lingui/cli": "^2.9.2",
     "@lingui/macro": "^2.9.2",
@@ -94,6 +93,7 @@
     "@types/recompose": "^0.30.7",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
+    "@welldone-software/why-did-you-render": "^6.0.0-rc.1",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-macros": "^2.8.0",

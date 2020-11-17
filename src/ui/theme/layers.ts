@@ -1,3 +1,3 @@
 export enum ZIndexes {
-  SNACK_BAR = 1000,
+  SNACK_BAR = 50,
 }

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { env } from 'libs/environment'
 
-if (env.ENABLE_WHY_DID_YOU_RENDER === 'development') {
+if (env.ENABLE_WHY_DID_YOU_RENDER) {
   whyDidYouRender(React, {
     trackAllPureComponents: true,
     titleColor: 'white',

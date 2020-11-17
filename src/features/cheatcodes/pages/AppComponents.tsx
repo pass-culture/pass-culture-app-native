@@ -61,7 +61,7 @@ export const AppComponents: FunctionComponent = () => {
         backgroundColor: ColorsEnum.ACCENT,
         color: ColorsEnum.WHITE,
         icon: Warning,
-        timeout: 5000,
+        // timeout: 5000,
         onClose: hideSnackBar,
       }),
     []
