@@ -7,3 +7,5 @@ export const useNavigation = () => ({
   reset,
   goBack,
 })
+
+export const useRoute = jest.fn()
