@@ -66,24 +66,28 @@ export class BusinessPane {
   secondLine: string | undefined
   url: string | undefined
   moduleId: string
+  targetNotConnectedUsersOnly: boolean | undefined
   constructor({
     firstLine,
     image,
     secondLine,
     url,
     moduleId,
+    targetNotConnectedUsersOnly,
   }: {
     firstLine: string | undefined
     image: string
     secondLine: string | undefined
     url: string | undefined
     moduleId: string
+    targetNotConnectedUsersOnly: boolean | undefined
   }) {
     this.firstLine = firstLine
     this.image = image
     this.secondLine = secondLine
     this.url = url
     this.moduleId = moduleId
+    this.targetNotConnectedUsersOnly = targetNotConnectedUsersOnly
   }
 }
 
