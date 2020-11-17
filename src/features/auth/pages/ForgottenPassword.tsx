@@ -13,6 +13,7 @@ import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SafeContainer } from 'ui/components/SafeContainer'
+import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -44,6 +45,7 @@ export const ForgottenPassword: FunctionComponent<Props> = ({ navigation }) => {
 
   return (
     <SafeContainer noTabBarSpacing>
+      <Background />
       <BottomCard>
         <ModalHeader
           title={_(t`Mot de passe oublié`)}

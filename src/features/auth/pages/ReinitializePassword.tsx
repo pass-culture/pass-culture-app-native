@@ -10,6 +10,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SafeContainer } from 'ui/components/SafeContainer'
+import { Background } from 'ui/svg/Background'
 import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -45,6 +46,7 @@ export const ReinitializePassword = () => {
 
   return (
     <SafeContainer noTabBarSpacing>
+      <Background />
       <BottomCard>
         <ModalHeader title={_(t`Ton mot de passe`)} rightIcon={Close} onRightIconPress={onClose} />
         <BottomCardContentContainer>

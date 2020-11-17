@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
 import { AppButton } from 'ui/components/buttons/AppButton'
-import { BackgroundSvg } from 'ui/svg/Background'
+import { Background } from 'ui/svg/Background'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -20,9 +20,7 @@ export const RetryBoundary = ({ resetErrorBoundary }: FallbackProps) => {
 
   return (
     <Container>
-      <BackgroundWrapper>
-        <BackgroundSvg />
-      </BackgroundWrapper>
+      <Background />
       <Spacer.Flex />
 
       <BrokenConnection />
@@ -63,14 +61,6 @@ export const RetryBoundary = ({ resetErrorBoundary }: FallbackProps) => {
 const Container = styled.View({
   flex: 1,
   alignItems: 'center',
-})
-
-const BackgroundWrapper = styled.View({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  height: '100%',
-  width: '100%',
 })
 
 const Row = styled.View({ flexDirection: 'row' })

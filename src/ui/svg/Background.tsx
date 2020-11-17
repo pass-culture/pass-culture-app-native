@@ -1,14 +1,26 @@
-import * as React from 'react'
+import React, { memo } from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-export const Background = styled(BackgroundSvg)({
+export const Background = memo(NotMemoizedBackground)
+
+function NotMemoizedBackground() {
+  return (
+    <BackgroundContainer>
+      <BackgroundSvg />
+    </BackgroundContainer>
+  )
+}
+
+const BackgroundContainer = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
+  width: '100%',
+  height: '100%',
 })
 
-export function BackgroundSvg() {
+function BackgroundSvg() {
   return (
     <Svg width="100%" height="100%" viewBox="0 0 375 667" preserveAspectRatio="none">
       <Defs>

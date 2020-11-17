@@ -5,55 +5,55 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -564,10 +564,11 @@
-                  },
+@@ -581,10 +581,11 @@
+                      },
+                    ]
+                  }
+                  textContentType=\\"emailAddress\\"
+                  underlineColorAndroid=\\"transparent\\"
++                 value=\\"email@gmail.com\\"
+                />
+              </View>
+            </View>
+            <View
+              numberOfSpaces={6}
+@@ -696,10 +697,11 @@
+                      },
+                    ]
+                  }
+                  textContentType=\\"password\\"
+                  underlineColorAndroid=\\"transparent\\"
++                 value=\\"mypassword\\"
+                />
+                <View
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function onClick]}
+@@ -818,22 +820,22 @@
                 ]
               }
-              textContentType=\\"emailAddress\\"
-              underlineColorAndroid=\\"transparent\\"
-+             value=\\"email@gmail.com\\"
-            />
-          </View>
-        </View>
-        <View
-          numberOfSpaces={6}
-@@ -679,10 +680,11 @@
-                  },
-                ]
-              }
-              textContentType=\\"password\\"
-              underlineColorAndroid=\\"transparent\\"
-+             value=\\"mypassword\\"
             />
             <View
               accessible={true}
-              focusable={true}
+-             focusable={false}
++             focusable={true}
               onClick={[Function onClick]}
-@@ -801,22 +803,22 @@
-            ]
-          }
-        />
-        <View
-          accessible={true}
--         focusable={false}
-+         focusable={true}
-          onClick={[Function onClick]}
-          onResponderGrant={[Function onResponderGrant]}
-          onResponderMove={[Function onResponderMove]}
-          onResponderRelease={[Function onResponderRelease]}
-          onResponderTerminate={[Function onResponderTerminate]}
-          onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-          onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-          style={
-            Object {
-              \\"alignItems\\": \\"center\\",
--             \\"backgroundColor\\": \\"#ff99be\\",
-+             \\"backgroundColor\\": \\"#eb0055\\",
-              \\"borderRadius\\": 24,
-              \\"borderWidth\\": 0,
-              \\"flexDirection\\": \\"row\\",
-              \\"height\\": 40,
-              \\"justifyContent\\": \\"center\\","
+              onResponderGrant={[Function onResponderGrant]}
+              onResponderMove={[Function onResponderMove]}
+              onResponderRelease={[Function onResponderRelease]}
+              onResponderTerminate={[Function onResponderTerminate]}
+              onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+              onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+              style={
+                Object {
+                  \\"alignItems\\": \\"center\\",
+-                 \\"backgroundColor\\": \\"#ff99be\\",
++                 \\"backgroundColor\\": \\"#eb0055\\",
+                  \\"borderRadius\\": 24,
+                  \\"borderWidth\\": 0,
+                  \\"flexDirection\\": \\"row\\",
+                  \\"height\\": 40,
+                  \\"justifyContent\\": \\"center\\","
 `;
 
 exports[`<Login/> should show error message and error inputs AND not redirect to home page WHEN signin has failed 1`] = `
@@ -61,137 +61,137 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
 - First value
 + Second value
 
-@@ -457,10 +457,90 @@
-              </RNSVGGroup>
-            </RNSVGSvgView>
-          </View>
-        </View>
-        <View
-+         numberOfSpaces={5}
-+         style={
-+           Array [
-+             Object {
-+               \\"height\\": 20,
-+             },
-+           ]
-+         }
-+       />
-+       <View
-+         style={
-+           Array [
-+             Object {
-+               \\"alignItems\\": \\"center\\",
-+               \\"display\\": \\"flex\\",
-+               \\"flexDirection\\": \\"row\\",
-+               \\"justifyContent\\": \\"space-around\\",
-+               \\"maxWidth\\": 500,
-+             },
-+           ]
-+         }
-+       >
-+         <RNSVGSvgView
-+           align=\\"xMidYMid\\"
-+           bbHeight={24}
-+           bbWidth={24}
-+           focusable={false}
-+           height={24}
-+           meetOrSlice={0}
-+           minX={0}
-+           minY={0}
-+           style={
-+             Array [
-+               Object {
-+                 \\"backgroundColor\\": \\"transparent\\",
-+                 \\"borderWidth\\": 0,
-+               },
-+               Object {
-+                 \\"flex\\": 0,
-+                 \\"height\\": 24,
-+                 \\"width\\": 24,
-+               },
-+             ]
-+           }
-+           vbHeight={24}
-+           vbWidth={24}
-+           width={24}
-+         >
-+           <RNSVGGroup>
-+             <RNSVGPath
-+               d=\\"M12 4.5a7.5 7.5 0 015.95 12.066.38.38 0 11-.604-.465 6.737 6.737 0 10-2.724 2.106.382.382 0 01.297.703A7.5 7.5 0 1112 4.5zm.118 3.779c.254 0 .463.143.496.33l.004.05v4.527c0 .21-.223.381-.5.381-.253 0-.462-.143-.495-.33l-.005-.051V8.66c0-.21.224-.381.5-.381zm.39 6.995a.508.508 0 10-1.015-.003.508.508 0 001.015.003\\"
-+               fill={4290117669}
-+               fillRule={0}
-+               propList={
+@@ -474,10 +474,90 @@
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </View>
+            <View
++             numberOfSpaces={5}
++             style={
++               Array [
++                 Object {
++                   \\"height\\": 20,
++                 },
++               ]
++             }
++           />
++           <View
++             style={
++               Array [
++                 Object {
++                   \\"alignItems\\": \\"center\\",
++                   \\"display\\": \\"flex\\",
++                   \\"flexDirection\\": \\"row\\",
++                   \\"justifyContent\\": \\"space-around\\",
++                   \\"maxWidth\\": 500,
++                 },
++               ]
++             }
++           >
++             <RNSVGSvgView
++               align=\\"xMidYMid\\"
++               bbHeight={24}
++               bbWidth={24}
++               focusable={false}
++               height={24}
++               meetOrSlice={0}
++               minX={0}
++               minY={0}
++               style={
 +                 Array [
-+                   \\"fill\\",
-+                   \\"fillRule\\",
++                   Object {
++                     \\"backgroundColor\\": \\"transparent\\",
++                     \\"borderWidth\\": 0,
++                   },
++                   Object {
++                     \\"flex\\": 0,
++                     \\"height\\": 24,
++                     \\"width\\": 24,
++                   },
 +                 ]
 +               }
-+             />
-+           </RNSVGGroup>
-+         </RNSVGSvgView>
-+         <Text
-+           color=\\"#b60025\\"
-+           style={
-+             Array [
-+               Object {
-+                 \\"color\\": \\"#b60025\\",
-+                 \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+                 \\"fontSize\\": 12,
-+                 \\"fontWeight\\": \\"600\\",
-+                 \\"lineHeight\\": 16,
-+               },
-+             ]
-+           }
-+         >
-+           E-mail ou mot de passe incorrect
-+         </Text>
-+       </View>
-+       <View
-          numberOfSpaces={7}
-          style={
-            Array [
-              Object {
-                \\"height\\": 28,
-@@ -505,18 +585,18 @@
-                },
-              ]
-            }
-          />
-          <View
--           isError={false}
-+           isError={true}
-            isFocus={false}
-            style={
-              Array [
-                Object {
-                  \\"alignItems\\": \\"center\\",
-                  \\"backgroundColor\\": \\"#ffffff\\",
--                 \\"borderColor\\": \\"#c7c7cc\\",
-+                 \\"borderColor\\": \\"#b60025\\",
-                  \\"borderRadius\\": 22,
-                  \\"borderStyle\\": \\"solid\\",
-                  \\"borderWidth\\": 1,
-                  \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,
-@@ -616,18 +696,18 @@
-                },
-              ]
-            }
-          />
-          <View
--           isError={false}
-+           isError={true}
-            isFocus={false}
-            style={
-              Array [
-                Object {
-                  \\"alignItems\\": \\"center\\",
-                  \\"backgroundColor\\": \\"#ffffff\\",
--                 \\"borderColor\\": \\"#c7c7cc\\",
-+                 \\"borderColor\\": \\"#b60025\\",
-                  \\"borderRadius\\": 22,
-                  \\"borderStyle\\": \\"solid\\",
-                  \\"borderWidth\\": 1,
-                  \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,"
++               vbHeight={24}
++               vbWidth={24}
++               width={24}
++             >
++               <RNSVGGroup>
++                 <RNSVGPath
++                   d=\\"M12 4.5a7.5 7.5 0 015.95 12.066.38.38 0 11-.604-.465 6.737 6.737 0 10-2.724 2.106.382.382 0 01.297.703A7.5 7.5 0 1112 4.5zm.118 3.779c.254 0 .463.143.496.33l.004.05v4.527c0 .21-.223.381-.5.381-.253 0-.462-.143-.495-.33l-.005-.051V8.66c0-.21.224-.381.5-.381zm.39 6.995a.508.508 0 10-1.015-.003.508.508 0 001.015.003\\"
++                   fill={4290117669}
++                   fillRule={0}
++                   propList={
++                     Array [
++                       \\"fill\\",
++                       \\"fillRule\\",
++                     ]
++                   }
++                 />
++               </RNSVGGroup>
++             </RNSVGSvgView>
++             <Text
++               color=\\"#b60025\\"
++               style={
++                 Array [
++                   Object {
++                     \\"color\\": \\"#b60025\\",
++                     \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++                     \\"fontSize\\": 12,
++                     \\"fontWeight\\": \\"600\\",
++                     \\"lineHeight\\": 16,
++                   },
++                 ]
++               }
++             >
++               E-mail ou mot de passe incorrect
++             </Text>
++           </View>
++           <View
+              numberOfSpaces={7}
+              style={
+                Array [
+                  Object {
+                    \\"height\\": 28,
+@@ -522,18 +602,18 @@
+                    },
+                  ]
+                }
+              />
+              <View
+-               isError={false}
++               isError={true}
+                isFocus={false}
+                style={
+                  Array [
+                    Object {
+                      \\"alignItems\\": \\"center\\",
+                      \\"backgroundColor\\": \\"#ffffff\\",
+-                     \\"borderColor\\": \\"#c7c7cc\\",
++                     \\"borderColor\\": \\"#b60025\\",
+                      \\"borderRadius\\": 22,
+                      \\"borderStyle\\": \\"solid\\",
+                      \\"borderWidth\\": 1,
+                      \\"flexDirection\\": \\"row\\",
+                      \\"height\\": 40,
+@@ -633,18 +713,18 @@
+                    },
+                  ]
+                }
+              />
+              <View
+-               isError={false}
++               isError={true}
+                isFocus={false}
+                style={
+                  Array [
+                    Object {
+                      \\"alignItems\\": \\"center\\",
+                      \\"backgroundColor\\": \\"#ffffff\\",
+-                     \\"borderColor\\": \\"#c7c7cc\\",
++                     \\"borderColor\\": \\"#b60025\\",
+                      \\"borderRadius\\": 22,
+                      \\"borderStyle\\": \\"solid\\",
+                      \\"borderWidth\\": 1,
+                      \\"flexDirection\\": \\"row\\",
+                      \\"height\\": 40,"
 `;
