@@ -32,6 +32,7 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Logo } from 'ui/svg/icons/Logo'
+import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -248,6 +249,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Warning size={24} />
           <Text> - Warning </Text>
+        </AlignedText>
+        <AlignedText>
+          <SadFace size={24} />
+          <Text> - SadFace </Text>
         </AlignedText>
         <Spacer.Column numberOfSpaces={1} />
 
