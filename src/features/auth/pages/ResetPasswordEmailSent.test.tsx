@@ -32,7 +32,7 @@ describe('<ResetPasswordEmailSent />', () => {
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
-      expect(Linking.openURL).toHaveBeenCalledWith('mailto:support@passculture.app')
+      expect(Linking.openURL).toHaveBeenCalledWith('mailto:support@test.passculture.app')
     })
   })
 

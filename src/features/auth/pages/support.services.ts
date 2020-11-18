@@ -1,9 +1,9 @@
 import { Linking } from 'react-native'
 
-const SUPPORT_EMAIL_ADDRESS = 'support@passculture.app'
+import { env } from 'libs/environment'
 
 export async function contactSupport() {
-  const url = `mailto:${SUPPORT_EMAIL_ADDRESS}`
+  const url = `mailto:${env.SUPPORT_EMAIL_ADDRESS}`
   const canOpen = await Linking.canOpenURL(url)
   if (canOpen) {
     Linking.openURL(url)

@@ -47,6 +47,7 @@ jest.mock('libs/environment', () => ({
     URL_PREFIX: 'passculture',
     IOS_APP_ID: 'app.ios',
     ANDROID_APP_ID: 'app.android',
+    SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
   },
 }))
 
