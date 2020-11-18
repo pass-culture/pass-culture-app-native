@@ -6,6 +6,7 @@ import { ForgottenPassword } from 'features/auth/pages/ForgottenPassword'
 import { Login } from 'features/auth/pages/Login'
 import { ReinitializePassword } from 'features/auth/pages/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/pages/ResetPasswordEmailSent'
+import { ResetPasswordExpiredLink } from 'features/auth/pages/ResetPasswordExpiredLink'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -19,10 +20,11 @@ export type HomeStackParamList = {
   CheatCodes: undefined
   Home: { shouldDisplayLoginModal: boolean }
   IdCheck: undefined
-  Login?: { userId: string }
+  Login: undefined
   ReinitializePassword: { token: string; expiration_date: number }
   ForgottenPassword: undefined
   ResetPasswordEmailSent: { email: string }
+  ResetPasswordExpiredLink: { email: string }
   Offer: { offerId: string }
 }
 
@@ -56,6 +58,11 @@ export const HomeNavigator: React.FC = function () {
       <HomeStack.Screen
         name="ForgottenPassword"
         component={ForgottenPassword}
+        options={{ headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="ResetPasswordExpiredLink"
+        component={ResetPasswordExpiredLink}
         options={{ headerShown: false }}
       />
     </HomeStack.Navigator>

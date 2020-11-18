@@ -10,6 +10,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -146,6 +147,13 @@ export const AppComponents: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonTertiary title="Disabled" onPress={onButtonPress} icon={Close} disabled />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonTertiaryWhite
+          title="White tertiary button"
+          icon={Close}
+          isLoading={buttonIsLoading}
+          onPress={onTriggerFakeLoading}
+        />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: Quaternary */}
         <Typo.Title4>Button - Theme Quaternary</Typo.Title4>
