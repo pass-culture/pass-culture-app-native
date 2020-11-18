@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
-import { Linking } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
@@ -19,22 +18,13 @@ import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { padding, Spacer, Typo } from 'ui/theme'
 
-const SUPPORT_EMAIL_ADDRESS = 'support@passculture.app'
+import { contactSupport } from './support.services'
 
 type Props = StackScreenProps<HomeStackParamList, 'ResetPasswordEmailSent'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ navigation, route }) => {
   function onBackNavigation() {
     navigation.navigate('ForgottenPassword')
-  }
-
-  async function contactSupport() {
-    const url = `mailto:${SUPPORT_EMAIL_ADDRESS}`
-    const canOpen = await Linking.canOpenURL(url)
-
-    if (canOpen) {
-      Linking.openURL(url)
-    }
   }
 
   function onClose() {

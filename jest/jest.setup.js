@@ -12,10 +12,25 @@ jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
   "Invariant Violation: Native module cannot be null." */
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
 
+/* Alerts cannot be opened in node.js environment */
+jest.mock('react-native/Libraries/Alert/Alert', () => ({
+  alert: jest.fn(),
+}))
+
+/* Links cannot be opened in node.js environment */
+jest.mock('react-native/Libraries/Linking/Linking', () => ({
+  addEventListener: jest.fn(),
+  canOpenURL: jest.fn().mockResolvedValue(true),
+  getInitialURL: jest.fn(),
+  openURL: jest.fn(),
+  removeEventListener: jest.fn(),
+}))
+
 jest.mock('react-native-safe-area-context', () => ({
   ...jest.requireActual('react-native-safe-area-context'),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
 /* Cf. the corresponding mock in libs/__mocks__ */
 jest.mock('libs/analytics')
 

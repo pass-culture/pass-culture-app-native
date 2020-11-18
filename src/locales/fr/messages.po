@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/features/auth/pages/ForgottenPassword.tsx:56
-#: src/features/auth/pages/Login.tsx:73
+#: src/features/auth/pages/Login.tsx:75
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
@@ -40,32 +40,38 @@ msgstr "Bienvenue !"
 msgid "Bookings"
 msgstr "Réservations"
 
-#: src/features/auth/pages/ResetPasswordEmailSent.tsx:48
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:50
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
+
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:51
+msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
+msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
 #: src/features/home/pages/Home.tsx:44
 #: src/features/profile/pages/Profile.tsx:16
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/pages/ReinitializePassword.tsx:47
+#: src/features/auth/pages/ReinitializePassword.tsx:49
+#: src/features/auth/pages/ReinitializePassword.tsx:51
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
-#: src/features/auth/pages/Login.tsx:61
+#: src/features/auth/pages/Login.tsx:63
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
-#: src/features/auth/pages/ResetPasswordEmailSent.tsx:61
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:63
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
-#: src/features/auth/pages/ResetPasswordEmailSent.tsx:58
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:60
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:58
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
-#: src/features/auth/pages/ReinitializePassword.tsx:59
+#: src/features/auth/pages/ReinitializePassword.tsx:61
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -74,11 +80,11 @@ msgstr "Continuer"
 msgid "Duo"
 msgstr "Duo"
 
-#: src/features/auth/pages/ResetPasswordEmailSent.tsx:45
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:47
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
-#: src/features/auth/pages/Login.tsx:67
+#: src/features/auth/pages/Login.tsx:69
 msgid "E-mail ou mot de passe incorrect"
 msgstr "E-mail ou mot de passe incorrect"
 
@@ -105,15 +111,19 @@ msgstr "Impossible d'ouvrir le lien"
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
-#: src/features/auth/pages/ResetPasswordEmailSent.tsx:53
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:55
 msgid "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
+
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:49
+msgid "Le lien est expiré !"
+msgstr "Le lien est expiré !"
 
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:20
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/auth/pages/Login.tsx:79
+#: src/features/auth/pages/Login.tsx:81
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -121,7 +131,7 @@ msgstr "Mot de passe"
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
-#: src/features/auth/pages/Login.tsx:85
+#: src/features/auth/pages/Login.tsx:87
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
@@ -130,7 +140,7 @@ msgstr "Mot de passe oublié ?"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/auth/pages/ReinitializePassword.tsx:41
+#: src/features/auth/pages/ReinitializePassword.tsx:43
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
@@ -142,23 +152,27 @@ msgstr "Offer"
 msgid "Oops !"
 msgstr "Oops !"
 
-#: src/features/cheatcodes/pages/Navigation.tsx:22
-msgid "Page Login"
-msgstr "Page Login"
-
-#: src/features/cheatcodes/pages/Navigation.tsx:24
-msgid "Page Reinitialisation de Mdp"
-msgstr "Page Reinitialisation de Mdp"
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:47
+msgid "Oups"
+msgstr "Oups"
 
 #: src/features/profile/pages/Profile.tsx:12
 msgid "Profile"
 msgstr "Profil"
 
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:62
+msgid "Retourner à l'accueil"
+msgstr "Retourner à l'accueil"
+
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:60
+msgid "Renvoyer l'email"
+msgstr "Renvoyer l'email"
+
 #: src/features/errors/pages/RetryBoundary.tsx:45
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/auth/pages/ResetPasswordEmailSent.tsx:57
+#: src/features/auth/pages/ResetPasswordEmailSent.tsx:59
 msgid "S'il n'arrive pas tu peux :"
 msgstr "S'il n'arrive pas tu peux :"
 
@@ -170,7 +184,7 @@ msgstr "S'inscrire"
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
-#: src/features/auth/pages/Login.tsx:88
+#: src/features/auth/pages/Login.tsx:90
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:29
 msgid "Se connecter"
 msgstr "Se connecter"
@@ -179,14 +193,17 @@ msgstr "Se connecter"
 msgid "Search"
 msgstr "Recherche"
 
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:55
+msgid "Si tu as besoin d’aide n’hésite pas à :"
+msgstr "Si tu as besoin d’aide n’hésite pas à :"
+
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:23
 msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 msgstr "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 
-#: src/features/auth/pages/Login.tsx:81
-#: src/features/auth/pages/ReinitializePassword.tsx:37
-#: src/features/auth/pages/ReinitializePassword.tsx:43
-#: src/features/auth/pages/ReinitializePassword.tsx:49
+#: src/features/auth/pages/Login.tsx:83
+#: src/features/auth/pages/ReinitializePassword.tsx:39
+#: src/features/auth/pages/ReinitializePassword.tsx:45
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
@@ -207,17 +224,13 @@ msgstr "Valider"
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/pages/ReinitializePassword.tsx:55
+#: src/features/auth/pages/ReinitializePassword.tsx:57
 msgid "les mots de passe ne concordent pas"
 msgstr "les mots de passe ne concordent pas"
 
-#: src/features/cheatcodes/pages/Navigation.tsx:29
-msgid "simulate email deeplink clic with:"
-msgstr "simulate email deeplink clic with:"
-
 #. email placeholder
 #: src/features/auth/pages/ForgottenPassword.tsx:58
-#: src/features/auth/pages/Login.tsx:75
+#: src/features/auth/pages/Login.tsx:77
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 

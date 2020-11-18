@@ -816,6 +816,22 @@ exports[`OffersModule component should render correctly 1`] = `
                   },
                 ]
               }
+            >
+              17 nov 2020
+            </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "lineHeight": 16,
+                  },
+                ]
+              }
               testID="priceIsDuo"
             >
               34 € - Duo
