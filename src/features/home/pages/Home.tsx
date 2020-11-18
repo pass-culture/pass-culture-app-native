@@ -3,6 +3,7 @@ import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/nativ
 import React, { FunctionComponent } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { ScrollView, TouchableOpacity } from 'react-native'
+import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
@@ -30,6 +31,8 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
+
+const statusBarHeight = getStatusBarHeight(true)
 
 const HomeComponent: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
@@ -131,7 +134,7 @@ const UserProfileContainer = styled.TouchableOpacity.attrs({
 })({
   position: 'absolute',
   right: 24,
-  top: 50,
+  top: getSpacing(3) + statusBarHeight,
 })
 
 const CheatTouchableOpacity = styled(TouchableOpacity)({
