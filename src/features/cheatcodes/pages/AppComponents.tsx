@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-raw-text */
+import { useFocusEffect } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useContext, useState } from 'react'
 import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -53,17 +54,11 @@ export const AppComponents: FunctionComponent = () => {
     setTimeout(() => setButtonIsLoading(false), 3000)
   }, [])
 
-  const {
-    displaySuccessSnackBar,
-    displayInfosSnackBar,
-    displayDangerSnackBar,
-    hideSnackBar,
-  } = useContext(SnackBarContext)
+  const { displaySuccessSnackBar, displayInfosSnackBar, hideSnackBar } = useContext(SnackBarContext)
   const popupSnackBarSuccess = useCallback(
     () =>
       displaySuccessSnackBar({
         message: 'Ton mot de passe est modifié, attends 5 secondes !!!',
-        onClose: hideSnackBar,
         timeout: 5000,
       }),
     []
@@ -76,14 +71,13 @@ export const AppComponents: FunctionComponent = () => {
       }),
     []
   )
-  const popupSnackBarDanger = useCallback(
-    () =>
-      displayDangerSnackBar({
-        message: 'You are in danger my friend !!!',
-        onClose: hideSnackBar,
-      }),
-    []
-  )
+
+  useFocusEffect(() => {
+    displaySuccessSnackBar({
+      message: 'Welcome sur App Components !!!',
+      timeout: 3000,
+    })
+  })
 
   return (
     <SafeContainer noTabBarSpacing>
@@ -287,10 +281,6 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <TouchableOpacity onPress={popupSnackBarInfos}>
           <Typo.Title4 color={ColorsEnum.ACCENT}>Popup Information SnackBar</Typo.Title4>
-        </TouchableOpacity>
-        <Spacer.Column numberOfSpaces={1} />
-        <TouchableOpacity onPress={popupSnackBarDanger}>
-          <Typo.Title4 color={ColorsEnum.ERROR}>Popup Danger SnackBar</Typo.Title4>
         </TouchableOpacity>
         <Spacer.Column numberOfSpaces={5} />
 

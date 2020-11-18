@@ -8,9 +8,11 @@ import React, {
   memo,
 } from 'react'
 import {
+  Animated,
   Dimensions,
   GestureResponderEvent,
   TouchableOpacity,
+  View,
   ViewProps,
   ViewStyle,
 } from 'react-native'
@@ -35,11 +37,13 @@ export type SnackBarProps = {
   visible: boolean
   message: string
   icon: FunctionComponent<IconInterface> | undefined
-  onClose: (() => void) | undefined
+  onClose?: () => void
   timeout?: number
   backgroundColor: ColorsEnum
+  progressBarColor: ColorsEnum
   color: ColorsEnum
   animationDuration?: number
+  refresher: number
 }
 
 const _SnackBar = (props: SnackBarProps) => {
@@ -47,17 +51,35 @@ const _SnackBar = (props: SnackBarProps) => {
   const animationDuration = props.animationDuration || 500
 
   const containerRef: RefType = useRef(null)
+  const progressBarContainerRef: RefType = useRef(null)
+  const [progressBarWidth] = useState(new Animated.Value(0))
   const [isVisible, setVisible] = useState(props.visible)
 
-  const triggerVanishAnimation = useCallback(
-    async () =>
-      containerRef?.current?.fadeOutUp(animationDuration).then(() => void setVisible(false)),
-    []
-  )
-  const triggerApparitionAnimation = useCallback(async () => {
+  function animateProgressBarWidth() {
+    props.timeout &&
+      Animated.timing(progressBarWidth, {
+        toValue: Dimensions.get('screen').width,
+        duration: props.timeout,
+        useNativeDriver: false,
+      }).start()
+  }
+  function resetProgressBarWidth() {
+    progressBarWidth.setValue(0)
+  }
+  async function triggerApparitionAnimation() {
     setVisible(true)
-    containerRef?.current?.fadeInDown(animationDuration)
-  }, [])
+    progressBarContainerRef?.current?.fadeInDown(animationDuration)
+    containerRef?.current?.fadeInDown(animationDuration).then(() => {
+      animateProgressBarWidth()
+    })
+  }
+  async function triggerVanishAnimation() {
+    progressBarContainerRef?.current?.fadeOutUp(animationDuration)
+    containerRef?.current?.fadeOutUp(animationDuration).then(() => {
+      setVisible(false)
+      resetProgressBarWidth()
+    })
+  }
 
   const onClose = useCallback((e: GestureResponderEvent) => {
     e.stopPropagation()
@@ -66,6 +88,10 @@ const _SnackBar = (props: SnackBarProps) => {
 
   // Visibility effect
   useEffect(() => {
+    if (props.refresher === 0) {
+      return
+    }
+
     const shouldDisplay = props.visible && !isVisible
     const shouldHide = !props.visible && isVisible
 
@@ -75,50 +101,64 @@ const _SnackBar = (props: SnackBarProps) => {
     if (shouldHide) {
       triggerVanishAnimation()
     }
-    // Timeout section
+    if (props.visible && isVisible) {
+      // the snackbar is still visible but props have been changed
+      resetProgressBarWidth()
+      animateProgressBarWidth()
+    }
+    // Timeout section: We want to reset the timer when props are changed
     if (!props.timeout || !props.onClose || shouldHide) {
       return
     }
     const timeout = setTimeout(props.onClose, props.timeout)
     return () => clearTimeout(timeout)
-  }, [props.visible])
+  }, [props.refresher])
 
   const { top } = useSafeAreaInsets()
 
   return (
-    <AnimatedContainer
-      backgroundColor={props.backgroundColor}
-      marginTop={top}
-      easing="ease"
-      duration={animationDuration}
-      ref={containerRef}>
-      <SnackBarContainer isVisible={isVisible}>
-        <React.Fragment>
-          <ContentContainer testID="toasterContainer">
-            {Icon && <Icon size={22} color={props.color} />}
-            <Text color={props.color}>{props.message}</Text>
-          </ContentContainer>
-          <TouchableOpacity onPress={onClose}>
-            <Close size={24} color={props.color} />
-          </TouchableOpacity>
-        </React.Fragment>
-      </SnackBarContainer>
-    </AnimatedContainer>
+    <RootContainer marginTop={top}>
+      <ColoredAnimatableView
+        backgroundColor={props.backgroundColor}
+        easing="ease"
+        duration={animationDuration}
+        ref={containerRef}>
+        <SnackBarContainer isVisible={isVisible}>
+          <React.Fragment>
+            <ContentContainer testID="toasterContainer">
+              {Icon && <Icon size={22} color={props.color} />}
+              <Text color={props.color}>{props.message}</Text>
+            </ContentContainer>
+            <TouchableOpacity onPress={onClose}>
+              <Close size={24} color={props.color} />
+            </TouchableOpacity>
+          </React.Fragment>
+        </SnackBarContainer>
+      </ColoredAnimatableView>
+      <AnimatableView easing="ease" duration={animationDuration} ref={progressBarContainerRef}>
+        <ProgressBar
+          backgroundColor={props.progressBarColor}
+          width={progressBarWidth}
+          isVisible={isVisible && !!props?.timeout}
+        />
+      </AnimatableView>
+    </RootContainer>
   )
 }
 
 export const SnackBar = memo(_SnackBar)
 
-const AnimatedContainer = styled(AnimatableView)<{ backgroundColor: string; marginTop: number }>(
-  ({ marginTop = 0 }) => ({
-    position: 'absolute',
-    marginTop,
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: ZIndexes.SNACK_BAR,
-  })
-)
+const RootContainer = styled(View)<{ marginTop: number }>(({ marginTop = 0 }) => ({
+  position: 'absolute',
+  marginTop,
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: ZIndexes.SNACK_BAR,
+}))
+
+// Troobleshoot Animated types issue with forwaded 'backgroundColor' prop
+const ColoredAnimatableView = styled(AnimatableView)<{ backgroundColor: ColorsEnum }>``
 
 const SnackBarContainer = styled.View<{ isVisible: boolean }>(({ isVisible }) => ({
   flexDirection: 'row',
@@ -137,8 +177,22 @@ const ContentContainer = styled.View({
 
 const Text = styled(Typo.Body)<{ color: string }>(({ color }) => ({
   color,
-  marginLeft: getSpacing(1),
+  marginLeft: getSpacing(3),
   flexGrow: 0,
   maxWidth: Dimensions.get('window').width - getSpacing(20),
   flexWrap: 'wrap',
+}))
+
+const ProgressBar = styled(Animated.View)<{
+  backgroundColor: ColorsEnum
+  isVisible: boolean
+  width: Animated.Value
+}>(({ backgroundColor, isVisible, width }) => ({
+  display: isVisible ? 'flex' : 'none',
+  height: 4,
+  backgroundColor: backgroundColor,
+  // We Ts-ignore to avoid typescript error due to not supported Animated Css/Styles types
+  // The alternative is to use inline style
+  /* @ts-ignore */
+  width: width._value,
 }))
