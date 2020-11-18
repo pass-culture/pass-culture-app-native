@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 import { FallbackProps } from 'react-error-boundary'
-import { StatusBar } from 'react-native'
 import { useQueryCache } from 'react-query'
 import styled from 'styled-components/native'
 

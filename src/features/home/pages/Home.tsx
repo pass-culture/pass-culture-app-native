@@ -69,10 +69,10 @@ const HomeComponent: FunctionComponent = function () {
       )}
       <HeaderBackgroundWrapper>
         <HeaderBackground />
-        <UserProfileContainer onPress={showSignInModal}>
-          <UserCircle size={32} color={ColorsEnum.WHITE} />
-        </UserProfileContainer>
       </HeaderBackgroundWrapper>
+      <UserProfileContainer onPress={showSignInModal}>
+        <UserCircle size={32} color={ColorsEnum.WHITE} />
+      </UserProfileContainer>
       <SafeContainer>
         <CenterContainer>
           <Spacer.Column numberOfSpaces={8} />
@@ -121,6 +121,7 @@ const HeaderBackgroundWrapper = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
+  zIndex: 0,
 })
 
 const CheatButtonsContainer = styled.View({
@@ -135,6 +136,7 @@ const UserProfileContainer = styled.TouchableOpacity.attrs({
   position: 'absolute',
   right: 24,
   top: getSpacing(3) + statusBarHeight,
+  zIndex: 1,
 })
 
 const CheatTouchableOpacity = styled(TouchableOpacity)({
