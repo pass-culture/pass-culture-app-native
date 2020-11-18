@@ -4,7 +4,10 @@ import React from 'react'
 import { Alert, ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import {
+  HomeStackParamList,
+  navigateToHomeWithoutModal,
+} from 'features/home/navigation/HomeNavigator'
 import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -30,10 +33,6 @@ export function ResetPasswordExpiredLink(props: Props) {
       .catch((error) => {
         Alert.alert(error.message)
       })
-  }
-
-  function goBackToHome() {
-    props.navigation.navigate('Home', { shouldDisplayLoginModal: false })
   }
 
   return (
@@ -64,7 +63,10 @@ export function ResetPasswordExpiredLink(props: Props) {
             onPress={resendEmailForResetPassword}
           />
           <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiaryWhite title={_(t`Retourner à l'accueil`)} onPress={goBackToHome} />
+          <ButtonTertiaryWhite
+            title={_(t`Retourner à l'accueil`)}
+            onPress={navigateToHomeWithoutModal}
+          />
         </StyledView>
       </ScrollView>
       <Spacer.TabBar />

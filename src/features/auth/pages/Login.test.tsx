@@ -4,7 +4,10 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import {
+  HomeStackParamList,
+  navigateToHomeWithoutModal,
+} from 'features/home/navigation/HomeNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { navigationTestProps } from 'tests/navigation'
@@ -12,6 +15,8 @@ import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
 
 import { Login } from './Login'
+
+jest.mock('features/home/navigation/HomeNavigator')
 
 beforeEach(() => {
   jest.resetAllMocks()
@@ -32,10 +37,7 @@ describe('<Login/>', () => {
 
     await waitForExpect(() => {
       expect(analytics.logLogin).toBeCalledTimes(1)
-      expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
-      expect(navigationTestProps.navigation.navigate).toHaveBeenCalledWith('Home', {
-        shouldDisplayLoginModal: false,
-      })
+      expect(navigateToHomeWithoutModal).toBeCalledTimes(1)
     })
   })
 
@@ -58,7 +60,7 @@ describe('<Login/>', () => {
       const errorSnapshot = toJSON()
       expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
       expect(analytics.logLogin).not.toBeCalled()
-      expect(navigationTestProps.navigation.navigate).not.toBeCalled()
+      expect(navigateToHomeWithoutModal).not.toBeCalled()
     })
   })
 

@@ -12,6 +12,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Home } from 'features/home/pages/Home'
+import { navigationRef } from 'features/navigation/RootTabNavigator'
 import { Offer } from 'features/offer'
 
 export type HomeStackParamList = {
@@ -109,3 +110,13 @@ export type RouteParams<
   StackParamList extends Record<string, unknown>,
   Screename extends keyof StackParamList
 > = Pick<StackParamList, Screename>[Screename]
+
+export function navigateToHomeWithoutModal() {
+  if (navigationRef.current) {
+    const navigation = (navigationRef.current as unknown) as StackNavigationProp<
+      HomeStackParamList,
+      'Home'
+    >
+    navigation.navigate('Home', { shouldDisplayLoginModal: false })
+  }
+}

@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
 import React from 'react'
 import { StatusBar, Platform } from 'react-native'
 
@@ -29,8 +29,10 @@ if (Platform.OS === 'android') {
 
 const RootTab = createBottomTabNavigator<RootTabParamList>()
 
+export const navigationRef = React.createRef<NavigationContainerRef>()
+
 export const RootTabNavigator: React.FC = () => (
-  <NavigationContainer onStateChange={onNavigationStateChange}>
+  <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef}>
     <RootTab.Navigator
       initialRouteName="HomeNavigator"
       tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>

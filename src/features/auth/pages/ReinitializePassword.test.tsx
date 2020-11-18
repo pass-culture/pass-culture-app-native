@@ -6,6 +6,8 @@ import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
+jest.mock('features/home/navigation/HomeNavigator')
+
 describe('ReinitializePassword Page', () => {
   beforeAll(() => {
     useRoute.mockImplementation(() => ({
