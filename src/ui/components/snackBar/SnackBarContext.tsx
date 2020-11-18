@@ -1,19 +1,20 @@
 import React, { createContext, FunctionComponent, useRef, useState } from 'react'
 
 import { Check } from 'ui/svg/icons/Check'
-import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum } from 'ui/theme'
 
 import { SnackBar, SnackBarProps } from './SnackBar'
 
-export type SnackBarSettings = Omit<SnackBarProps, 'visible'>
-export type SnackBarHelperSettings = Omit<SnackBarSettings, 'icon' | 'color' | 'backgroundColor'>
+export type SnackBarSettings = Omit<SnackBarProps, 'visible' | 'refresher'>
+export type SnackBarHelperSettings = Omit<
+  SnackBarSettings,
+  'icon' | 'color' | 'backgroundColor' | 'progressBarColor'
+>
 
 interface SnackBarContextValue {
   displaySuccessSnackBar: (props: SnackBarHelperSettings) => void
   displayInfosSnackBar: (props: SnackBarHelperSettings) => void
-  displayDangerSnackBar: (props: SnackBarHelperSettings) => void
   hideSnackBar: () => void
 }
 
@@ -22,8 +23,6 @@ export const SnackBarContext = createContext<SnackBarContextValue>({
   displaySuccessSnackBar() {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   displayInfosSnackBar() {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  displayDangerSnackBar() {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   hideSnackBar() {},
 })
@@ -35,11 +34,15 @@ export const SnackBarProvider: FunctionComponent = ({ children }) => {
     onClose: undefined,
     icon: undefined,
     backgroundColor: ColorsEnum.TRANSPARENT,
+    progressBarColor: ColorsEnum.TRANSPARENT,
     color: ColorsEnum.WHITE,
+    refresher: 0,
   })
 
-  const popup = (settings: SnackBarSettings) => setSnackBarProps({ ...settings, visible: true })
-  const hide = () => setSnackBarProps((props) => ({ ...props, visible: false }))
+  const popup = (settings: SnackBarSettings) =>
+    setSnackBarProps({ ...settings, visible: true, refresher: new Date().getTime() })
+  const hide = () =>
+    setSnackBarProps((props) => ({ ...props, visible: false, refresher: new Date().getTime() }))
 
   const snackBarToolsRef = useRef<SnackBarContextValue>({
     hideSnackBar: hide,
@@ -48,6 +51,7 @@ export const SnackBarProvider: FunctionComponent = ({ children }) => {
         ...settings,
         icon: Check,
         backgroundColor: ColorsEnum.GREEN_VALID,
+        progressBarColor: ColorsEnum.GREEN_LIGHT,
         color: ColorsEnum.WHITE,
       })
     },
@@ -56,14 +60,7 @@ export const SnackBarProvider: FunctionComponent = ({ children }) => {
         ...settings,
         icon: Warning,
         backgroundColor: ColorsEnum.ACCENT,
-        color: ColorsEnum.WHITE,
-      })
-    },
-    displayDangerSnackBar(settings) {
-      popup({
-        ...settings,
-        icon: Close,
-        backgroundColor: ColorsEnum.ERROR,
+        progressBarColor: ColorsEnum.WHITE,
         color: ColorsEnum.WHITE,
       })
     },
@@ -79,7 +76,9 @@ export const SnackBarProvider: FunctionComponent = ({ children }) => {
           onClose={snackBarProps.onClose || hide}
           timeout={snackBarProps.timeout}
           backgroundColor={snackBarProps.backgroundColor}
+          progressBarColor={snackBarProps.progressBarColor}
           color={snackBarProps.color}
+          refresher={snackBarProps.refresher}
         />
         {children}
       </SnackBarContext.Provider>
