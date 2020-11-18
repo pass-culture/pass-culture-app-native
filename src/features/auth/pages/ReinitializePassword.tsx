@@ -3,7 +3,11 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType, UseRouteType } from 'features/home/navigation/HomeNavigator'
+import {
+  navigateToHomeWithoutModal,
+  UseNavigationType,
+  UseRouteType,
+} from 'features/home/navigation/HomeNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -32,8 +36,9 @@ export const ReinitializePassword = () => {
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
 
   function onClose() {
-    navigation.navigate('Home', { shouldDisplayLoginModal: false })
+    navigateToHomeWithoutModal()
   }
+
   function submitPassword() {
     // TODO: call submit function using the 'token' params
   }

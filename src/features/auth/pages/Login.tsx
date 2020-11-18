@@ -3,7 +3,10 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import {
+  HomeStackParamList,
+  navigateToHomeWithoutModal,
+} from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
@@ -42,7 +45,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
     setShouldShowErrorMessage(false)
     const isSigninSuccessful = await signin({ email, password })
     if (isSigninSuccessful) {
-      props.navigation.navigate('Home', { shouldDisplayLoginModal: false })
+      navigateToHomeWithoutModal()
     } else {
       setShouldShowErrorMessage(true)
     }
@@ -53,7 +56,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
   }
 
   function onClose() {
-    props.navigation.navigate('Home', { shouldDisplayLoginModal: false })
+    navigateToHomeWithoutModal()
   }
 
   function onForgottenPasswordClick() {

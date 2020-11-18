@@ -4,7 +4,10 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import {
+  HomeStackParamList,
+  navigateToHomeWithoutModal,
+} from 'features/home/navigation/HomeNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -28,7 +31,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ navigation, r
   }
 
   function onClose() {
-    navigation.navigate('Home', { shouldDisplayLoginModal: false })
+    navigateToHomeWithoutModal()
   }
 
   return (
