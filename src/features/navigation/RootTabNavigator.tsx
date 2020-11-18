@@ -24,6 +24,7 @@ export type RootTabRouteName = keyof RootTabParamList
 StatusBar.setBarStyle('light-content')
 if (Platform.OS === 'android') {
   StatusBar.setTranslucent(true)
+  StatusBar.setBackgroundColor('transparent', false)
 }
 
 const RootTab = createBottomTabNavigator<RootTabParamList>()
