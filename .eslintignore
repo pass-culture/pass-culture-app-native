@@ -5,3 +5,5 @@ rn-cli.config.js
 android
 ios
 __mocks__
+# swagger-codegen files are auto generated
+src/libs/swagger-codegen

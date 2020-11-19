@@ -39,7 +39,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
 
   async function handleSignin() {
     setShouldShowErrorMessage(false)
-    const isSigninSuccessful = await signin({ email, password })
+    const isSigninSuccessful = await signin({ identifier: email, password })
     if (isSigninSuccessful) {
       props.navigation.navigate('Home', { shouldDisplayLoginModal: false })
     } else {
