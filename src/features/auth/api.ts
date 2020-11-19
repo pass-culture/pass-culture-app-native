@@ -59,6 +59,7 @@ export async function requestPasswordReset(email: PasswordResetBody): Promise<Em
   return response
 }
 
+// TODO(antoineg): This is a temporary hook. Will be removed with PC-5294
 export function useIsLoggedIn() {
   return useQuery<boolean>(
     'currentUser',
