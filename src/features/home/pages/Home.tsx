@@ -19,6 +19,7 @@ import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { ZIndexes } from 'ui/theme/layers'
 
 import { HomeBody } from '../components/HomeBody'
 import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
@@ -102,6 +103,8 @@ const CheatButtonsContainer = styled.View({
   width: '100%',
   flexDirection: 'row',
   justifyContent: 'space-around',
+  zIndex: ZIndexes.HomeCheatButton,
+  top: 20,
 })
 
 const UserProfileContainer = styled.TouchableOpacity.attrs({

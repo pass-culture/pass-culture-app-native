@@ -5,12 +5,7 @@ import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum } from 'ui/theme'
 
 import { SnackBar, SnackBarProps } from './SnackBar'
-
-export type SnackBarSettings = Omit<SnackBarProps, 'visible' | 'refresher'>
-export type SnackBarHelperSettings = Omit<
-  SnackBarSettings,
-  'icon' | 'color' | 'backgroundColor' | 'progressBarColor'
->
+import { SnackBarHelperSettings, SnackBarSettings } from './types'
 
 interface SnackBarContextValue {
   displaySuccessSnackBar: (props: SnackBarHelperSettings) => void

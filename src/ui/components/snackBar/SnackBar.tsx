@@ -10,14 +10,13 @@ import React, {
 import {
   Animated,
   Dimensions,
-  GestureResponderEvent,
+  StatusBar,
   TouchableOpacity,
   View,
   ViewProps,
   ViewStyle,
 } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { Close } from 'ui/svg/icons/Close'
@@ -81,14 +80,11 @@ const _SnackBar = (props: SnackBarProps) => {
     })
   }
 
-  const onClose = useCallback((e: GestureResponderEvent) => {
-    e.stopPropagation()
-    props.onClose?.()
-  }, [])
+  const onClose = useCallback(() => props.onClose?.(), [])
 
   // Visibility effect
   useEffect(() => {
-    if (props.refresher === 0) {
+    if (props.refresher <= 0) {
       return
     }
 
@@ -114,22 +110,24 @@ const _SnackBar = (props: SnackBarProps) => {
     return () => clearTimeout(timeout)
   }, [props.refresher])
 
-  const { top } = useSafeAreaInsets()
-
   return (
-    <RootContainer marginTop={top}>
+    <RootContainer>
+      {isVisible && <StatusBar hidden />}
       <ColoredAnimatableView
+        testID="snackbar-view"
         backgroundColor={props.backgroundColor}
         easing="ease"
         duration={animationDuration}
         ref={containerRef}>
-        <SnackBarContainer isVisible={isVisible}>
+        <SnackBarContainer isVisible={isVisible} testID="snackbar-container">
           <React.Fragment>
-            <ContentContainer testID="toasterContainer">
-              {Icon && <Icon size={22} color={props.color} />}
-              <Text color={props.color}>{props.message}</Text>
+            <ContentContainer testID="snackbar-content">
+              {Icon && <Icon testID="snackbar-icon" size={22} color={props.color} />}
+              <Text testID="snackbar-message" color={props.color}>
+                {props.message}
+              </Text>
             </ContentContainer>
-            <TouchableOpacity onPress={onClose}>
+            <TouchableOpacity testID="snackbar-close" onPress={onClose}>
               <Close size={24} color={props.color} />
             </TouchableOpacity>
           </React.Fragment>
@@ -137,6 +135,7 @@ const _SnackBar = (props: SnackBarProps) => {
       </ColoredAnimatableView>
       <AnimatableView easing="ease" duration={animationDuration} ref={progressBarContainerRef}>
         <ProgressBar
+          testID="snackbar-progressbar"
           backgroundColor={props.progressBarColor}
           width={progressBarWidth}
           isVisible={isVisible && !!props?.timeout}
@@ -148,14 +147,13 @@ const _SnackBar = (props: SnackBarProps) => {
 
 export const SnackBar = memo(_SnackBar)
 
-const RootContainer = styled(View)<{ marginTop: number }>(({ marginTop = 0 }) => ({
+const RootContainer = styled(View)({
   position: 'absolute',
-  marginTop,
   top: 0,
   left: 0,
   right: 0,
   zIndex: ZIndexes.SNACK_BAR,
-}))
+})
 
 // Troobleshoot Animated types issue with forwaded 'backgroundColor' prop
 const ColoredAnimatableView = styled(AnimatableView)<{ backgroundColor: ColorsEnum }>``
