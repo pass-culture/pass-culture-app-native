@@ -12,6 +12,7 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
+import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -268,6 +269,8 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title1 color={ColorsEnum.PRIMARY}>Inputs</Typo.Title1>
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input</Typo.Title4>
         <TextInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
+        <Spacer.Column numberOfSpaces={1} />
+        <InputRule title={'A security rule'} icon={Close} color={ColorsEnum.ERROR} />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input - Email</Typo.Title4>
         <TextInput
