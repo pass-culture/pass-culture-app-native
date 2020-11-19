@@ -1,6 +1,6 @@
 {
   "name": "PassCulture",
-  "version": "1.110.0",
+  "version": "1.110.1",
   "build": "1000300",
   "private": true,
   "engines": {
@@ -171,7 +171,7 @@
       ]
     }
   },
-  "exports":{
+  "exports": {
     ".": "./index.js",
     "./jsx-dev-runtime": "./jsx-dev-runtime.js",
     "./jsx-runtime": "./jsx-runtime.js",
