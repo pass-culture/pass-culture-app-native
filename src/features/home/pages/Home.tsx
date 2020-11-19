@@ -6,7 +6,6 @@ import { ScrollView, TouchableOpacity } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
-import { useIsLoggedIn } from 'features/auth/api'
 import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { RetryBoundary } from 'features/errors'
 import { useHomepageModules } from 'features/home/api'
@@ -31,7 +30,6 @@ export const HomeComponent: FunctionComponent = function () {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { data: modules = [] } = useHomepageModules()
   const position = useGeolocation()
-  const { data: connected = false } = useIsLoggedIn()
 
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
 
@@ -79,7 +77,7 @@ export const HomeComponent: FunctionComponent = function () {
         </CenterContainer>
         <Spacer.Column numberOfSpaces={6} />
 
-        <HomeBody modules={modules} connected={connected} position={position} />
+        <HomeBody modules={modules} position={position} />
 
         <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
         <Spacer.TabBar />

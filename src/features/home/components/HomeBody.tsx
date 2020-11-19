@@ -2,6 +2,7 @@ import React from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
+import { useIsLoggedIn } from 'features/auth/api'
 import { BusinessModule, ExclusivityModule, OffersModule } from 'features/home/components'
 import {
   BusinessPane,
@@ -14,11 +15,27 @@ import { Spacer } from 'ui/theme'
 
 interface HomeBodyProps {
   modules: ProcessedModule[]
-  connected: boolean
   position: GeoCoordinates | null
 }
 
-export const HomeBody = function ({ modules, connected, position }: HomeBodyProps) {
+export const showBusinessModule = (
+  targetNotConnectedUsersOnly: boolean | undefined,
+  connected: boolean
+): boolean => {
+  // Target both type of users
+  if (targetNotConnectedUsersOnly === undefined) return true
+
+  // Target only NON connected users
+  if (!connected && targetNotConnectedUsersOnly) return true
+
+  // Target only connected users
+  if (connected && !targetNotConnectedUsersOnly) return true
+  return false
+}
+
+export const HomeBody = function ({ modules, position }: HomeBodyProps) {
+  const { data: connected = false } = useIsLoggedIn()
+
   return (
     <Container>
       {modules.map((module: ProcessedModule) => {
@@ -29,13 +46,7 @@ export const HomeBody = function ({ modules, connected, position }: HomeBodyProp
           return <ExclusivityModule key={module.moduleId} {...module} />
         }
         if (module instanceof BusinessPane) {
-          if (module.targetNotConnectedUsersOnly === undefined) {
-            return <BusinessModule key={module.moduleId} {...module} />
-          }
-          if (module.targetNotConnectedUsersOnly && !connected) {
-            return <BusinessModule key={module.moduleId} {...module} />
-          }
-          if (!module.targetNotConnectedUsersOnly && connected) {
+          if (showBusinessModule(module.targetNotConnectedUsersOnly, connected)) {
             return <BusinessModule key={module.moduleId} {...module} />
           }
         }
