@@ -1,5 +1,6 @@
 import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { ColorsEnum } from 'ui/theme'
@@ -17,9 +18,11 @@ describe('ReinitializePassword Page', () => {
       },
     }))
   })
+
   afterAll(() => {
     jest.resetAllMocks()
   })
+
   it('should enable the submit button when passwords are equals and filled', async () => {
     const { getByPlaceholderText, getByTestId } = render(<ReinitializePassword />)
 
@@ -37,6 +40,7 @@ describe('ReinitializePassword Page', () => {
       expect(background).toEqual(ColorsEnum.PRIMARY)
     })
   })
+
   it('should display the matching error when the passwords dont match', async () => {
     const { getByPlaceholderText, getByTestId } = render(<ReinitializePassword />)
 
@@ -52,6 +56,20 @@ describe('ReinitializePassword Page', () => {
     await waitFor(async () => {
       const color = notMatchingErrorText.props.style[0].color
       expect(color).toEqual(ColorsEnum.ERROR)
+    })
+  })
+
+  it('should validate PasswordSecurityRules when password is correct', async () => {
+    const { toJSON, getByPlaceholderText } = render(<ReinitializePassword />)
+
+    const notValidatedRulesSnapshot = toJSON()
+
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
+
+    await waitForExpect(() => {
+      const validatedRulesSnapshot = toJSON()
+      expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
     })
   })
 })

@@ -3,6 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
 import {
   navigateToHomeWithoutModal,
   UseNavigationType,
@@ -67,6 +68,7 @@ export const ReinitializePassword = () => {
               isError={shouldShowPasswordError}
             />
           </StyledInput>
+          <PasswordSecurityRules password={password} />
           <Spacer.Column numberOfSpaces={6} />
           <StyledInput>
             <Typo.Body>{_(t`Confirmer le mot de passe`)}</Typo.Body>
