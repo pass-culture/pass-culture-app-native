@@ -8,6 +8,7 @@ import { addPlugin } from 'react-query-native-devtools'
 
 import './why-did-you-render'
 
+import { AuthWrapper } from 'features/auth/AuthContext'
 import { RootTabNavigator } from 'features/navigation/RootTabNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
@@ -45,13 +46,15 @@ const AppComponent: FunctionComponent = function () {
 
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
-      <I18nProvider language={i18n.language} i18n={i18n}>
-        <SafeAreaProvider>
-          <SnackBarProvider>
-            <RootTabNavigator />
-          </SnackBarProvider>
-        </SafeAreaProvider>
-      </I18nProvider>
+      <AuthWrapper>
+        <I18nProvider language={i18n.language} i18n={i18n}>
+          <SafeAreaProvider>
+            <SnackBarProvider>
+              <RootTabNavigator />
+            </SnackBarProvider>
+          </SafeAreaProvider>
+        </I18nProvider>
+      </AuthWrapper>
     </ReactQueryCacheProvider>
   )
 }
