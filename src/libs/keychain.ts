@@ -17,6 +17,14 @@ export async function saveRefreshToken(
   }
 }
 
+export async function clearRefreshToken(username: string): Promise<void> {
+  try {
+    await Keychain.setGenericPassword(username, '')
+  } catch (error) {
+    throw Error(_(t`Keychain non accessible`))
+  }
+}
+
 export async function getRefreshToken(): Promise<string | null> {
   try {
     const credentials = await Keychain.getGenericPassword()
