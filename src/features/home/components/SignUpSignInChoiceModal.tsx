@@ -20,6 +20,7 @@ export const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dis
 
   function goToSignUp() {
     dismissModal()
+    navigate('Signup')
   }
 
   function goToLogin() {
