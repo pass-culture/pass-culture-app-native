@@ -148,7 +148,6 @@ describe('SnackBar Component', () => {
       rerender(renderHelperSnackBar(false, { message: 'message' }, refresher))
 
       const container = getByTestId('snackbar-container')
-      // console.log(container.props.style[0])
       await waitFor(() => {
         expect(container.props.style[0].display).toEqual('none')
       })

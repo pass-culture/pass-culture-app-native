@@ -15,8 +15,8 @@ export function useListenDeepLinksEffect() {
       .then((url) => {
         if (url) {
           handleDeeplinkUrl({ url })
-        } else {
-          onError(_(t`Impossible d'ouvrir le lien`))
+        } else if (url !== null) {
+          onError(_(t`Impossible d'ouvrir le lien: `) + url)
         }
       })
       .catch(() => onError(_(t`Impossible d'ouvrir le lien`)))
