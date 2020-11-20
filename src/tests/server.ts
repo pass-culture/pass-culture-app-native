@@ -1,8 +1,13 @@
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
-import { CurrentUserResponse, PasswordResetBody } from 'features/auth/api'
-import { SigninBody, SigninResponse } from 'features/auth/AuthContext'
+import {
+  CurrentUserResponse,
+  PasswordResetBody,
+  ResetPasswordBody,
+  SigninBody,
+  SigninResponse,
+} from 'features/auth/api.types'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 
@@ -21,6 +26,12 @@ export const server = setupServer(
   ),
   rest.post<PasswordResetBody, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/request_password_reset',
+    (req, res, ctx) => {
+      return res(ctx.status(204))
+    }
+  ),
+  rest.post<ResetPasswordBody, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/reset_password',
     (req, res, ctx) => {
       return res(ctx.status(204))
     }

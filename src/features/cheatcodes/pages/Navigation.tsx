@@ -13,7 +13,7 @@ import { CheatCodesButton } from '../components/CheatCodesButton'
 import { IdCheckButton } from '../components/IdCheckButton'
 
 const MdpDeeplink =
-  DEEPLINK_DOMAIN + 'mot-de-passe-perdu?token=etjkdfldkfsd&expiration_date=4567894123450'
+  DEEPLINK_DOMAIN + 'mot-de-passe-perdu?token=etjkdfldkfsd&expiration_timestamp=4567894123450'
 const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 
 export function Navigation(): JSX.Element {

@@ -40,10 +40,10 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration<
     screen: 'ReinitializePassword',
     paramConverter: ({
       token,
-      expiration_date,
+      expiration_timestamp,
     }: Record<string, string>): RouteParams<HomeStackParamList, 'ReinitializePassword'> => ({
       token,
-      expiration_date: Number(expiration_date),
+      expiration_timestamp: Number(expiration_timestamp),
     }),
   },
   profil: {

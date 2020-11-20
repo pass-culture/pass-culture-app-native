@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
@@ -15,18 +15,21 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SafeContainer } from 'ui/components/SafeContainer'
+import { SnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { Background } from 'ui/svg/Background'
 import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { useResetPassword } from '../api'
+
 const MILLISECONDS_IN_A_SECOND = 1000
 
 export const ReinitializePassword = () => {
-  const {
-    params: { expiration_date },
-  } = useRoute<UseRouteType<'ReinitializePassword'>>()
+  const { params } = useRoute<UseRouteType<'ReinitializePassword'>>()
   const navigation = useNavigation<UseNavigationType>()
+
+  const { displaySuccessSnackBar } = useContext(SnackBarContext)
 
   const [password, setPassword] = useState('')
   const [shouldShowPasswordError] = useState(false)
@@ -36,16 +39,23 @@ export const ReinitializePassword = () => {
   const allowSubmission = password.length > 0 && confirmedPassword === password
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
 
-  function onClose() {
-    navigateToHomeWithoutModal()
-  }
+  const [resetPassword, { isLoading }] = useResetPassword(() => {
+    displaySuccessSnackBar({
+      message: _(t`Ton mot de passe a été modifié !`),
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+    navigation.navigate('Login')
+  })
 
   function submitPassword() {
-    // TODO: call submit function using the 'token' params
+    resetPassword({
+      new_password: password,
+      reset_password_token: params.token,
+    })
   }
 
   useEffect(() => {
-    if (expiration_date * MILLISECONDS_IN_A_SECOND < new Date().getTime()) {
+    if (params.expiration_timestamp * MILLISECONDS_IN_A_SECOND < new Date().getTime()) {
       navigation.navigate('Login')
     }
   }, [])
@@ -54,7 +64,11 @@ export const ReinitializePassword = () => {
     <SafeContainer noTabBarSpacing>
       <Background />
       <BottomCard>
-        <ModalHeader title={_(t`Ton mot de passe`)} rightIcon={Close} onRightIconPress={onClose} />
+        <ModalHeader
+          title={_(t`Ton mot de passe`)}
+          rightIcon={Close}
+          onRightIconPress={navigateToHomeWithoutModal}
+        />
         <BottomCardContentContainer>
           <Spacer.Column numberOfSpaces={6} />
           <StyledInput>
@@ -94,6 +108,7 @@ export const ReinitializePassword = () => {
             title={_(t`Continuer`)}
             onPress={submitPassword}
             disabled={!allowSubmission}
+            isLoading={isLoading}
           />
         </BottomCardContentContainer>
       </BottomCard>

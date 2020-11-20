@@ -2,7 +2,7 @@ import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute, useNavigation } from '__mocks__/@react-navigation/native'
 import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
@@ -14,7 +14,7 @@ describe('ReinitializePassword Page', () => {
     useRoute.mockImplementation(() => ({
       params: {
         token: 'reerereskjlmkdlsf',
-        expiration_date: 45465546445,
+        expiration_timestamp: 45465546445,
       },
     }))
   })
@@ -58,7 +58,6 @@ describe('ReinitializePassword Page', () => {
       expect(color).toEqual(ColorsEnum.ERROR)
     })
   })
-
   it('should validate PasswordSecurityRules when password is correct', async () => {
     const { toJSON, getByPlaceholderText } = render(<ReinitializePassword />)
 
@@ -71,5 +70,21 @@ describe('ReinitializePassword Page', () => {
       const validatedRulesSnapshot = toJSON()
       expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
     })
+  })
+  it('should redirect to login page WHEN password is reset', async () => {
+    const { navigate } = useNavigation()
+    navigate.mockReset()
+
+    const { findByText } = render(<ReinitializePassword />)
+
+    const continueButton = await findByText('Continuer')
+    fireEvent.press(continueButton)
+
+    await waitFor(() => {
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('Login')
+    })
+
+    navigate.mockRestore()
   })
 })
