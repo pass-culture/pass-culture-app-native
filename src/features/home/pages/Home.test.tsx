@@ -17,7 +17,9 @@ jest.mock('libs/environment', () => ({
   },
 }))
 
-jest.mock('features/auth/api', () => ({ useIsLoggedIn: jest.fn(() => ({ data: false })) }))
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ loggedIn: false })),
+}))
 
 describe('Home component', () => {
   it('should render correctly without login modal', async () => {
