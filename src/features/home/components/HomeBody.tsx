@@ -2,7 +2,7 @@ import React from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
-import { useIsLoggedIn } from 'features/auth/api'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessModule, ExclusivityModule, OffersModule } from 'features/home/components'
 import {
   BusinessPane,
@@ -34,8 +34,7 @@ export const showBusinessModule = (
 }
 
 export const HomeBody = function ({ modules, position }: HomeBodyProps) {
-  const { data: connected = false } = useIsLoggedIn()
-
+  const { loggedIn } = useAuthContext()
   return (
     <Container>
       {modules.map((module: ProcessedModule) => {
@@ -46,7 +45,7 @@ export const HomeBody = function ({ modules, position }: HomeBodyProps) {
           return <ExclusivityModule key={module.moduleId} {...module} />
         }
         if (module instanceof BusinessPane) {
-          if (showBusinessModule(module.targetNotConnectedUsersOnly, connected)) {
+          if (showBusinessModule(module.targetNotConnectedUsersOnly, loggedIn)) {
             return <BusinessModule key={module.moduleId} {...module} />
           }
         }

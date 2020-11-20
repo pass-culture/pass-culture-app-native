@@ -62,20 +62,3 @@ export async function requestPasswordReset(email: PasswordResetBody): Promise<Em
   })
   return response
 }
-
-// TODO(antoineg): This is a temporary hook. Will be removed with PC-5294
-export function useIsLoggedIn() {
-  return useQuery<boolean>(
-    'currentUser',
-    async function () {
-      try {
-        await get<CurrentUserResponse>('/native/v1/protected')
-        return true
-      } catch (err) {
-        if (err instanceof NotAuthenticatedError) return false
-        throw err
-      }
-    },
-    { retry: false }
-  )
-}
