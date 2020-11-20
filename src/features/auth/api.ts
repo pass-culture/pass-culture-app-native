@@ -2,9 +2,7 @@ import { useQuery } from 'react-query'
 
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { EmptyResponse, get, post } from 'libs/fetch'
-import { saveRefreshToken } from 'libs/keychain'
-import { saveAccessToken } from 'libs/storage'
+import { EmptyResponse, get, NotAuthenticatedError, post } from 'libs/fetch'
 
 export type SigninBody = {
   email: string
@@ -16,19 +14,20 @@ export type SigninResponse = {
   refresh_token: string
 }
 
-export async function signin({ email, password }: SigninBody): Promise<boolean> {
+export async function signin({
+  email,
+  password,
+}: SigninBody): Promise<{ access_token: string; refresh_token: string } | undefined> {
   const body = { identifier: email, password }
   try {
     const { access_token, refresh_token } = await post<SigninResponse>('/native/v1/signin', {
       body,
       credentials: 'omit',
     })
-    await saveRefreshToken(email, refresh_token)
-    await saveAccessToken(access_token)
     await analytics.logLogin({ method: env.API_BASE_URL })
-    return true
+    return { access_token, refresh_token }
   } catch (error) {
-    return false
+    return
   }
 }
 
@@ -37,14 +36,19 @@ export type CurrentUserResponse = {
 }
 
 export function useCurrentUser() {
-  const { data: email, isFetching, refetch, error, isError } = useQuery<string>({
-    querykey: 'currentUser',
-    queryFn: async function () {
-      const json = await get<CurrentUserResponse>('/native/v1/protected')
-      return json.logged_in_as
+  return useQuery<string | undefined>(
+    'currentUser',
+    async function () {
+      try {
+        const json = await get<CurrentUserResponse>('/native/v1/protected')
+        return json.logged_in_as
+      } catch (err) {
+        if (err instanceof NotAuthenticatedError) return undefined
+        throw err
+      }
     },
-  })
-  return { email, isFetching, refetch, error, isError }
+    { retry: false }
+  )
 }
 
 export type PasswordResetBody = {
@@ -65,10 +69,11 @@ export function useIsLoggedIn() {
     'currentUser',
     async function () {
       try {
-        const json = await get<CurrentUserResponse>('/native/v1/protected')
-        return !!json.logged_in_as
-      } catch (error) {
-        return false
+        await get<CurrentUserResponse>('/native/v1/protected')
+        return true
+      } catch (err) {
+        if (err instanceof NotAuthenticatedError) return false
+        throw err
       }
     },
     { retry: false }
