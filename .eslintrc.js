@@ -30,6 +30,10 @@ module.exports = {
         name: 'styled-components',
         message: 'Use styled-components/native instead',
       },
+      {
+        name: 'react-content-loader',
+        message: 'use react-content-loader/native instead',
+      },
     ],
     strict: ['error', 'global'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
