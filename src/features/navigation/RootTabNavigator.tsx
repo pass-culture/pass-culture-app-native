@@ -43,7 +43,7 @@ export const RootTabNavigator: React.FC = () => {
         tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
         <RootTab.Screen name="HomeNavigator" component={HomeNavigator} />
         <RootTab.Screen name="Search" component={Search} />
-        {authContext.loggedIn && <RootTab.Screen name="Bookings" component={Bookings} />}
+        {authContext.isLoggedIn && <RootTab.Screen name="Bookings" component={Bookings} />}
         <RootTab.Screen name="Favorites" component={Favorites} />
         <RootTab.Screen name="Profile" component={Profile} />
       </RootTab.Navigator>

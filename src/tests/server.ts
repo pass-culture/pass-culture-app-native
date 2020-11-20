@@ -1,12 +1,8 @@
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
-import {
-  CurrentUserResponse,
-  PasswordResetBody,
-  SigninBody,
-  SigninResponse,
-} from 'features/auth/api'
+import { CurrentUserResponse, PasswordResetBody } from 'features/auth/api'
+import { SigninBody, SigninResponse } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 

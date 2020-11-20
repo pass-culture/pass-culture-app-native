@@ -34,7 +34,7 @@ export const showBusinessModule = (
 }
 
 export const HomeBody = function ({ modules, position }: HomeBodyProps) {
-  const { loggedIn } = useAuthContext()
+  const { isLoggedIn } = useAuthContext()
   return (
     <Container>
       {modules.map((module: ProcessedModule) => {
@@ -45,7 +45,7 @@ export const HomeBody = function ({ modules, position }: HomeBodyProps) {
           return <ExclusivityModule key={module.moduleId} {...module} />
         }
         if (module instanceof BusinessPane) {
-          if (showBusinessModule(module.targetNotConnectedUsersOnly, loggedIn)) {
+          if (showBusinessModule(module.targetNotConnectedUsersOnly, isLoggedIn)) {
             return <BusinessModule key={module.moduleId} {...module} />
           }
         }

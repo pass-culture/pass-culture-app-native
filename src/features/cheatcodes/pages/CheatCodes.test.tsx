@@ -12,6 +12,10 @@ beforeAll(() => {
   BatchUser.getInstallationID.mockImplementation(() => Promise.resolve(installationID))
 })
 
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
+}))
+
 describe('CheatCodes component', () => {
   const navigation = {
     dispatch: jest.fn(),
@@ -24,7 +28,7 @@ describe('CheatCodes component', () => {
       await flushAllPromises()
     })
 
-    expect(instance).toMatchSnapshot()
+    expect(instance.toJSON()).toMatchSnapshot()
   })
 
   it('should call installationID and display it', async () => {

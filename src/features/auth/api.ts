@@ -1,35 +1,6 @@
 import { useQuery } from 'react-query'
 
-import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { EmptyResponse, get, NotAuthenticatedError, post } from 'libs/fetch'
-
-export type SigninBody = {
-  email: string
-  password: string
-}
-
-export type SigninResponse = {
-  access_token: string
-  refresh_token: string
-}
-
-export async function signin({
-  email,
-  password,
-}: SigninBody): Promise<{ access_token: string; refresh_token: string } | undefined> {
-  const body = { identifier: email, password }
-  try {
-    const { access_token, refresh_token } = await post<SigninResponse>('/native/v1/signin', {
-      body,
-      credentials: 'omit',
-    })
-    await analytics.logLogin({ method: env.API_BASE_URL })
-    return { access_token, refresh_token }
-  } catch (error) {
-    return
-  }
-}
 
 export type CurrentUserResponse = {
   logged_in_as: string

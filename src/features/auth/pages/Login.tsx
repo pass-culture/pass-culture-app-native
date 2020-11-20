@@ -3,6 +3,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { useSignIn } from 'features/auth/AuthContext'
 import {
   HomeStackParamList,
   navigateToHomeWithoutModal,
@@ -22,8 +23,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useAuthContext } from '../AuthContext'
-
 type Props = StackScreenProps<HomeStackParamList, 'Login'>
 
 let INITIAL_IDENTIFIER = ''
@@ -38,7 +37,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const [shouldShowErrorMessage, setShouldShowErrorMessage] = useState(false)
-  const { signIn } = useAuthContext()
+  const signIn = useSignIn()
 
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password)
 

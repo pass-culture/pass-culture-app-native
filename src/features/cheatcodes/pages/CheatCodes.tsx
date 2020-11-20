@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { CodePushButton } from 'features/cheatcodes/components/CodePushButton'
 import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
+import { LogoutButton } from 'features/cheatcodes/components/LogoutButton'
 import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
 import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
@@ -30,8 +31,11 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   return (
     <SafeContainer>
       <Container>
+        <Spacer.Flex />
         <CrashTestButton />
         <NavigateHomeButton />
+        <LogoutButton />
+        <Spacer.Flex />
         <Text>{batchInstallationId}</Text>
         <Spacer.Flex />
         {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
@@ -42,7 +46,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
 
 async function getBatchInstallationID() {
   try {
-    return BatchUser.getInstallationID()
+    return await BatchUser.getInstallationID()
   } catch (e) {
     Alert.alert(
       'Batch error',

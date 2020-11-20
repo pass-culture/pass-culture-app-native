@@ -1,18 +1,24 @@
 import React, { useContext, useState } from 'react'
 
+import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
+import { post } from 'libs/fetch'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { saveAccessToken, clearAccessToken } from 'libs/storage'
 
-import { signin } from './api'
-
-interface SignInBody {
+export type SigninBody = {
   email: string
   password: string
 }
 
+export type SigninResponse = {
+  access_token: string
+  refresh_token: string
+}
+
 export interface IAuthContext {
-  loggedIn: boolean
-  signIn: (data: SignInBody) => Promise<boolean>
+  isLoggedIn: boolean
+  signIn: (data: SigninBody) => Promise<boolean>
   signOut: (email: string) => Promise<void>
 }
 
@@ -25,26 +31,43 @@ export function useAuthContext(): IAuthContext {
 }
 
 export const AuthWrapper = ({ children }: { children: Element }) => {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false)
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
-  const signIn = async ({ email, password }: SignInBody) => {
-    const response = await signin({ email, password })
-    if (response) {
+  const signIn = async ({ email, password }: SigninBody) => {
+    const body = { identifier: email, password }
+    try {
+      const response = await post<SigninResponse>('/native/v1/signin', {
+        body,
+        credentials: 'omit',
+      })
+      if (!response) return false
       await saveRefreshToken(email, response.refresh_token)
       await saveAccessToken(response.access_token)
-      setLoggedIn(true)
+      await analytics.logLogin({ method: env.API_BASE_URL })
+      setIsLoggedIn(true)
       return true
+    } catch (error) {
+      return false
     }
-    return false
   }
 
   const signOut = async (email: string) => {
     await clearAccessToken()
     await clearRefreshToken(email)
-    setLoggedIn(false)
+    setIsLoggedIn(false)
   }
 
   return (
-    <AuthContext.Provider value={{ loggedIn, signIn, signOut }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ isLoggedIn, signIn, signOut }}>{children}</AuthContext.Provider>
   )
+}
+
+export function useSignIn(): IAuthContext['signIn'] {
+  const authContext = useAuthContext()
+  return authContext.signIn
+}
+
+export function useSignOut(): IAuthContext['signOut'] {
+  const authContext = useAuthContext()
+  return authContext.signOut
 }
