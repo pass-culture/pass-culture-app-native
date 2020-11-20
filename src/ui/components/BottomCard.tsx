@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
-import { Keyboard, View } from 'react-native'
+import { Keyboard, Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -22,12 +22,17 @@ export const BottomCard: FunctionComponent = ({ children }) => {
     },
   })
 
+  let displaySpacer = true
+  if (Platform.OS === 'ios') {
+    displaySpacer = keyboardHeight <= 0
+  }
+
   return (
     <StyledTouchableWithoutFeedback>
       <AvoidingKeyboardContainer keyboardHeight={keyboardHeight}>
         <StyledBottomCardContainer>
           {children}
-          {keyboardHeight === 0 && <Spacer.TabBar />}
+          {displaySpacer && <Spacer.TabBar />}
         </StyledBottomCardContainer>
       </AvoidingKeyboardContainer>
     </StyledTouchableWithoutFeedback>
@@ -38,11 +43,14 @@ const StyledTouchableWithoutFeedback = styled(View).attrs({
   onPress: Keyboard.dismiss,
 })({
   position: 'absolute',
-  width: '100%',
   bottom: 0,
+  width: '100%',
 })
 
 const StyledBottomCardContainer = styled.View({
+  position: 'absolute',
+  bottom: 0,
+  width: '100%',
   flexDirection: 'column',
   alignItems: 'center',
   padding: getSpacing(6),
