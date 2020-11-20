@@ -40,7 +40,6 @@ exports[`ImageCaption component should render correctly 1`] = `
             "color": "#ffffff",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
-            "fontWeight": "600",
             "lineHeight": 16,
           },
         ]
@@ -83,7 +82,6 @@ exports[`ImageCaption component should render correctly 1`] = `
             "color": "#ffffff",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
-            "fontWeight": "600",
             "lineHeight": 16,
           },
         ]

@@ -19,7 +19,6 @@ exports[`ModuleTitle component should render correctly 1`] = `
           "color": "#151515",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 20,
-          "fontWeight": "bold",
           "lineHeight": 24,
         },
       ]

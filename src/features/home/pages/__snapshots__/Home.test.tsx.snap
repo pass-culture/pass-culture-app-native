@@ -613,7 +613,6 @@ exports[`Home component should render correctly without login modal 1`] = `
                                     "color": "#ffffff",
                                     "fontFamily": "Montserrat-ExtraBoldItalic",
                                     "fontSize": 28,
-                                    "fontWeight": "800",
                                     "lineHeight": 34,
                                   },
                                 ]
@@ -639,7 +638,6 @@ exports[`Home component should render correctly without login modal 1`] = `
                                     "color": "#ffffff",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
-                                    "fontWeight": "normal",
                                     "lineHeight": 20,
                                   },
                                 ]
@@ -790,7 +788,6 @@ exports[`Home component should render correctly without login modal 1`] = `
                                             "color": "#151515",
                                             "fontFamily": "Montserrat-Medium",
                                             "fontSize": 18,
-                                            "fontWeight": "500",
                                             "lineHeight": 22,
                                           },
                                         ]
@@ -920,7 +917,6 @@ exports[`Home component should render correctly without login modal 1`] = `
                                             "color": "#151515",
                                             "fontFamily": "Montserrat-Regular",
                                             "fontSize": 15,
-                                            "fontWeight": "normal",
                                             "lineHeight": 20,
                                           },
                                         ]
@@ -1073,7 +1069,7 @@ exports[`Home component should render modal correctly 1`] = `
 - First value
 + Second value
 
-@@ -681,11 +681,11 @@
+@@ -679,11 +679,11 @@
                             <Modal
                               animationType=\\"slide\\"
                               hardwareAccelerated={false}

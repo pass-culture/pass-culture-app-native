@@ -221,7 +221,6 @@ exports[`BusinessModule component should render correctly 1`] = `
                       "color": "#ffffff",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
-                      "fontWeight": "normal",
                       "lineHeight": 20,
                     },
                   ]

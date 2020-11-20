@@ -20,7 +20,6 @@ exports[`OfferCaption component should render correctly 1`] = `
           "color": "#151515",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
-          "fontWeight": "600",
           "lineHeight": 16,
         },
       ]
@@ -36,7 +35,6 @@ exports[`OfferCaption component should render correctly 1`] = `
           "color": "#626262",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
-          "fontWeight": "600",
           "lineHeight": 16,
         },
       ]
@@ -52,7 +50,6 @@ exports[`OfferCaption component should render correctly 1`] = `
           "color": "#626262",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
-          "fontWeight": "600",
           "lineHeight": 16,
         },
       ]
