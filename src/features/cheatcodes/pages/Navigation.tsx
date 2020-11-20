@@ -14,6 +14,7 @@ import { IdCheckButton } from '../components/IdCheckButton'
 
 const MdpDeeplink =
   DEEPLINK_DOMAIN + 'mot-de-passe-perdu?token=etjkdfldkfsd&expiration_date=4567894123450'
+const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 
 export function Navigation(): JSX.Element {
   const navigation = useNavigation()
@@ -71,6 +72,24 @@ export function Navigation(): JSX.Element {
             <Text>Simulation email deeplink :</Text>
             <Link>
               <Text>{MdpDeeplink}</Text>
+            </Link>
+          </Row>
+          <Spacer.Column numberOfSpaces={2} />
+          <Row>
+            <ButtonPrimary
+              title={'Mauvais lien de deeplink'}
+              onPress={() => {
+                if (Linking.canOpenURL(BadDeeplink)) {
+                  Linking.openURL(BadDeeplink)
+                }
+              }}
+            />
+          </Row>
+          <Spacer.Column numberOfSpaces={2} />
+          <Row>
+            <Text>Simulation mauvais deeplink :</Text>
+            <Link>
+              <Text>{BadDeeplink}</Text>
             </Link>
           </Row>
           <Spacer.Column numberOfSpaces={5} />

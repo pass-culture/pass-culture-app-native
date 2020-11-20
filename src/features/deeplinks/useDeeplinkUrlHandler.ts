@@ -1,4 +1,9 @@
+import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
+import { useContext } from 'react'
+
+import { _ } from 'libs/i18n'
+import { SnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { isAllowedRouteTypeGuard } from './typeGuard'
 import { DeeplinkEvent, DeeplinkParts, DEEPLINK_TO_SCREEN_CONFIGURATION } from './types'
@@ -22,12 +27,15 @@ export function decodeDeeplinkParts(url: string): DeeplinkParts {
 
 export function useOnDeeplinkError() {
   const { navigate } = useNavigation()
+  const { displayInfosSnackBar } = useContext(SnackBarContext)
 
   // TODO: remove this comment when decided about deeplink errors behavior
   // See https://passculture.atlassian.net/browse/PC-5165
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return (error: string) => {
-    // shall we navigate to oops 404 ?
+    displayInfosSnackBar({
+      message: _(t`Le lien est incorrect`),
+    })
     navigate(DEEPLINK_TO_SCREEN_CONFIGURATION['default'].screen)
   }
 }
