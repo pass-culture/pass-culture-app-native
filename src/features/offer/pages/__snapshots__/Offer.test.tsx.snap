@@ -312,7 +312,6 @@ exports[`<Offer /> should match snapshot 1`] = `
                               "color": "#151515",
                               "fontFamily": "Montserrat-Medium",
                               "fontSize": 38,
-                              "fontWeight": "500",
                               "lineHeight": 48,
                             },
                           ]
@@ -327,7 +326,6 @@ exports[`<Offer /> should match snapshot 1`] = `
                               "color": "#151515",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
-                              "fontWeight": "600",
                               "lineHeight": 16,
                             },
                           ]

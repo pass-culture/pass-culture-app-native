@@ -3,7 +3,7 @@ export { getShadow } from './shadow'
 export { padding } from './padding'
 export { getSpacing, getSpacingString } from './spacing'
 export { Spacer } from '../components/spacer/Spacer'
-export { Typo, fontWeight } from 'ui/theme/typography'
+export { Typo } from 'ui/theme/typography'
 export {
   BORDER_RADIUS,
   MARGIN_DP,

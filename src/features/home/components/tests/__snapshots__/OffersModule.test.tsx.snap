@@ -40,7 +40,6 @@ exports[`OffersModule component should render correctly 1`] = `
             "color": "#151515",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 20,
-            "fontWeight": "bold",
             "lineHeight": 24,
           },
         ]
@@ -421,7 +420,6 @@ exports[`OffersModule component should render correctly 1`] = `
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "fontWeight": "600",
                           "lineHeight": 16,
                         },
                       ]
@@ -453,7 +451,6 @@ exports[`OffersModule component should render correctly 1`] = `
                     "color": "#151515",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "fontWeight": "600",
                     "lineHeight": 16,
                   },
                 ]
@@ -469,7 +466,6 @@ exports[`OffersModule component should render correctly 1`] = `
                     "color": "#626262",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "fontWeight": "600",
                     "lineHeight": 16,
                   },
                 ]
@@ -592,7 +588,6 @@ exports[`OffersModule component should render correctly 1`] = `
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "fontWeight": "600",
                           "lineHeight": 16,
                         },
                       ]
@@ -624,7 +619,6 @@ exports[`OffersModule component should render correctly 1`] = `
                     "color": "#151515",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "fontWeight": "600",
                     "lineHeight": 16,
                   },
                 ]
@@ -640,7 +634,6 @@ exports[`OffersModule component should render correctly 1`] = `
                     "color": "#626262",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "fontWeight": "600",
                     "lineHeight": 16,
                   },
                 ]
@@ -763,7 +756,6 @@ exports[`OffersModule component should render correctly 1`] = `
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "fontWeight": "600",
                           "lineHeight": 16,
                         },
                       ]
@@ -795,7 +787,6 @@ exports[`OffersModule component should render correctly 1`] = `
                     "color": "#151515",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "fontWeight": "600",
                     "lineHeight": 16,
                   },
                 ]
@@ -811,7 +802,6 @@ exports[`OffersModule component should render correctly 1`] = `
                     "color": "#626262",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "fontWeight": "600",
                     "lineHeight": 16,
                   },
                 ]
@@ -827,7 +817,6 @@ exports[`OffersModule component should render correctly 1`] = `
                     "color": "#626262",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "fontWeight": "600",
                     "lineHeight": 16,
                   },
                 ]
@@ -950,7 +939,6 @@ exports[`OffersModule component should render correctly 1`] = `
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
-                          "fontWeight": "600",
                           "lineHeight": 16,
                         },
                       ]
@@ -982,7 +970,6 @@ exports[`OffersModule component should render correctly 1`] = `
                     "color": "#151515",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "fontWeight": "600",
                     "lineHeight": 16,
                   },
                 ]
@@ -998,7 +985,6 @@ exports[`OffersModule component should render correctly 1`] = `
                     "color": "#626262",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
-                    "fontWeight": "600",
                     "lineHeight": 16,
                   },
                 ]

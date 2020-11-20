@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -581,10 +581,11 @@
+@@ -578,10 +578,11 @@
                     },
                   ]
                 }
@@ -17,7 +17,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
           </View>
           <View
             numberOfSpaces={6}
-@@ -696,10 +697,11 @@
+@@ -691,10 +692,11 @@
                     },
                   ]
                 }
@@ -29,7 +29,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 accessible={true}
                 focusable={true}
                 onClick={[Function onClick]}
-@@ -818,22 +820,22 @@
+@@ -813,22 +815,22 @@
               ]
             }
           />
@@ -61,7 +61,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
 - First value
 + Second value
 
-@@ -474,10 +474,90 @@
+@@ -473,10 +473,89 @@
                 </RNSVGGroup>
               </RNSVGSvgView>
             </View>
@@ -137,7 +137,6 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
 +                   \\"color\\": \\"#b60025\\",
 +                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 +                   \\"fontSize\\": 12,
-+                   \\"fontWeight\\": \\"600\\",
 +                   \\"lineHeight\\": 16,
 +                 },
 +               ]
@@ -152,7 +151,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
               Array [
                 Object {
                   \\"height\\": 28,
-@@ -522,18 +602,18 @@
+@@ -520,18 +599,18 @@
                   },
                 ]
               }
@@ -173,7 +172,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
                     \\"borderWidth\\": 1,
                     \\"flexDirection\\": \\"row\\",
                     \\"height\\": 40,
-@@ -633,18 +713,18 @@
+@@ -629,18 +708,18 @@
                   },
                 ]
               }

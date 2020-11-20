@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getSpacing, fontWeight } from 'ui/theme'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 
 import { RNTextInputProps } from './types'
 
@@ -29,6 +29,5 @@ const StyledTextInput = styled(TextInput).attrs({
   padding: 0,
   color: ColorsEnum.BLACK,
   fontFamily: 'Montserrat-Regular',
-  fontWeight: fontWeight.NORMAL,
   fontSize: getSpacing(3.75),
 })

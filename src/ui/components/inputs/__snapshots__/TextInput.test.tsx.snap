@@ -48,7 +48,6 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
           "flexShrink": 1,
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
-          "fontWeight": "normal",
           "paddingBottom": 0,
           "paddingLeft": 0,
           "paddingRight": 0,
