@@ -22,7 +22,7 @@ export type HomeStackParamList = {
   Home: { shouldDisplayLoginModal: boolean }
   IdCheck: undefined
   Login: undefined
-  ReinitializePassword: { token: string; expiration_date: number }
+  ReinitializePassword: { token: string; expiration_timestamp: number }
   ForgottenPassword: undefined
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
@@ -76,7 +76,7 @@ export type ScreenNames = keyof HomeStackParamList
  * Type helper for useRoute
  *
  * const {
- *  params: { token, expiration_date },
+ *  params: { token, expiration_timestamp },
  * } = useRoute<UseRouteType<'ReinitializePassword'>>()
  */
 export type UseRouteType<ScreenName extends ScreenNames> = RouteProp<HomeStackParamList, ScreenName>

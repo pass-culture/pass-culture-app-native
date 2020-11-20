@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 
+import { SigninBody, SigninResponse } from 'features/auth/api.types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { post } from 'libs/fetch'
@@ -7,16 +8,6 @@ import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { saveAccessToken, clearAccessToken } from 'libs/storage'
 
 import { useCurrentUser } from './api'
-
-export type SigninBody = {
-  email: string
-  password: string
-}
-
-export type SigninResponse = {
-  access_token: string
-  refresh_token: string
-}
 
 export interface IAuthContext {
   isLoggedIn: boolean

@@ -7,6 +7,8 @@ import { ColorsEnum } from 'ui/theme'
 import { SnackBar, SnackBarProps } from './SnackBar'
 import { SnackBarHelperSettings, SnackBarSettings } from './types'
 
+export const SNACK_BAR_TIME_OUT = 5000
+
 interface SnackBarContextValue {
   displaySuccessSnackBar: (props: SnackBarHelperSettings) => void
   displayInfosSnackBar: (props: SnackBarHelperSettings) => void
