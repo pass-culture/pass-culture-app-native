@@ -22,7 +22,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { signin } from '../api'
+import { useAuthContext } from '../AuthContext'
 
 type Props = StackScreenProps<HomeStackParamList, 'Login'>
 
@@ -38,12 +38,13 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const [shouldShowErrorMessage, setShouldShowErrorMessage] = useState(false)
+  const { signIn } = useAuthContext()
 
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password)
 
   async function handleSignin() {
     setShouldShowErrorMessage(false)
-    const isSigninSuccessful = await signin({ email, password })
+    const isSigninSuccessful = await signIn({ email, password })
     if (isSigninSuccessful) {
       navigateToHomeWithoutModal()
     } else {
