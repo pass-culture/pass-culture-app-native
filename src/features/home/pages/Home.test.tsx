@@ -18,7 +18,7 @@ jest.mock('libs/environment', () => ({
 }))
 
 jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ loggedIn: false })),
+  useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
 }))
 
 describe('Home component', () => {

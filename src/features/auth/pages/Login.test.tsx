@@ -8,11 +8,12 @@ import {
   HomeStackParamList,
   navigateToHomeWithoutModal,
 } from 'features/home/navigation/HomeNavigator'
-import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { navigationTestProps } from 'tests/navigation'
 import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
+
+import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
 
@@ -22,21 +23,26 @@ beforeEach(() => {
   jest.resetAllMocks()
 })
 
+const mockSignIn = jest.fn()
+
 function renderLogin() {
   return render(
-    <Login {...(navigationTestProps as StackScreenProps<HomeStackParamList, 'Login'>)} />
+    <AuthContext.Provider value={{ isLoggedIn: true, signIn: mockSignIn, signOut: jest.fn() }}>
+      <Login {...(navigationTestProps as StackScreenProps<HomeStackParamList, 'Login'>)} />
+    </AuthContext.Provider>
   )
 }
 
 describe('<Login/>', () => {
   it('should redirect to home page WHEN signin is successful', async () => {
     const { findByText } = renderLogin()
+    mockSignIn.mockImplementationOnce(() => true)
 
     const connexionButton = await findByText('Se connecter')
     fireEvent.press(connexionButton)
 
     await waitForExpect(() => {
-      expect(analytics.logLogin).toBeCalledTimes(1)
+      expect(mockSignIn).toBeCalledTimes(1)
       expect(navigateToHomeWithoutModal).toBeCalledTimes(1)
     })
   })
@@ -59,7 +65,6 @@ describe('<Login/>', () => {
     await waitForExpect(() => {
       const errorSnapshot = toJSON()
       expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
-      expect(analytics.logLogin).not.toBeCalled()
       expect(navigateToHomeWithoutModal).not.toBeCalled()
     })
   })
