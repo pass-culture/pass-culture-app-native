@@ -72,7 +72,7 @@ export function useIsLoggedIn() {
   )
 }
 
-export function useResetPassword(onSuccess: () => void) {
+export function useResetPasswordMutation(onSuccess: () => void) {
   return useMutation(
     (body: ResetPasswordBody) => post<EmptyResponse>('/native/v1/reset_password', { body }),
     {

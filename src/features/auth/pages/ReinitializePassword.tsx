@@ -21,7 +21,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useResetPassword } from '../api'
+import { useResetPasswordMutation } from '../api'
 
 const MILLISECONDS_IN_A_SECOND = 1000
 
@@ -39,7 +39,7 @@ export const ReinitializePassword = () => {
   const allowSubmission = password.length > 0 && confirmedPassword === password
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
 
-  const [resetPassword, { isLoading }] = useResetPassword(() => {
+  const [resetPassword, { isLoading }] = useResetPasswordMutation(() => {
     displaySuccessSnackBar({
       message: _(t`Ton mot de passe a été modifié !`),
       timeout: SNACK_BAR_TIME_OUT,
