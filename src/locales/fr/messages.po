@@ -13,6 +13,26 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/auth/components/PasswordSecurityRules.tsx:18
+msgid "1 Caractère spécial (!@#$%^&*...)"
+msgstr "1 Caractère spécial (!@#$%^&*...)"
+
+#: src/features/auth/components/PasswordSecurityRules.tsx:17
+msgid "1 Chiffre"
+msgstr "1 Chiffre"
+
+#: src/features/auth/components/PasswordSecurityRules.tsx:15
+msgid "1 Majuscule"
+msgstr "1 Majuscule"
+
+#: src/features/auth/components/PasswordSecurityRules.tsx:16
+msgid "1 Minuscule"
+msgstr "1 Minuscule"
+
+#: src/features/auth/components/PasswordSecurityRules.tsx:14
+msgid "12 Caractères"
+msgstr "12 Caractères"
+
 #: src/features/auth/pages/ForgottenPassword.tsx:59
 #: src/features/auth/pages/Login.tsx:76
 msgid "Adresse e-mail"
@@ -44,7 +64,7 @@ msgstr "Réservations"
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:49
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:40
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
@@ -53,8 +73,8 @@ msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/pages/ReinitializePassword.tsx:50
 #: src/features/auth/pages/ReinitializePassword.tsx:52
+#: src/features/auth/pages/ReinitializePassword.tsx:54
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
@@ -67,11 +87,11 @@ msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
 #: src/features/auth/pages/ResetPasswordEmailSent.tsx:42
-#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:54
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:45
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
-#: src/features/auth/pages/ReinitializePassword.tsx:62
+#: src/features/auth/pages/ReinitializePassword.tsx:64
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -115,7 +135,7 @@ msgstr "Keychain non accessible"
 msgid "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
 
-#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:47
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:38
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
@@ -144,7 +164,7 @@ msgstr "Mot de passe oublié ?"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/auth/pages/ReinitializePassword.tsx:44
+#: src/features/auth/pages/ReinitializePassword.tsx:45
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
@@ -156,7 +176,7 @@ msgstr "Offer"
 msgid "Oops !"
 msgstr "Oops !"
 
-#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:45
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:37
 msgid "Oups"
 msgstr "Oups"
 
@@ -164,11 +184,11 @@ msgstr "Oups"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:56
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:47
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
-#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:58
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:49
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
@@ -197,7 +217,7 @@ msgstr "Se connecter"
 msgid "Search"
 msgstr "Recherche"
 
-#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:52
+#: src/features/auth/pages/ResetPasswordExpiredLink.tsx:43
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
@@ -206,8 +226,8 @@ msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’o
 msgstr "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 
 #: src/features/auth/pages/Login.tsx:84
-#: src/features/auth/pages/ReinitializePassword.tsx:40
-#: src/features/auth/pages/ReinitializePassword.tsx:46
+#: src/features/auth/pages/ReinitializePassword.tsx:41
+#: src/features/auth/pages/ReinitializePassword.tsx:47
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
@@ -228,7 +248,7 @@ msgstr "Valider"
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/pages/ReinitializePassword.tsx:58
+#: src/features/auth/pages/ReinitializePassword.tsx:60
 msgid "les mots de passe ne concordent pas"
 msgstr "les mots de passe ne concordent pas"
 
