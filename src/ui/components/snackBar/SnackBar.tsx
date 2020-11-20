@@ -7,16 +7,9 @@ import React, {
   useState,
   memo,
 } from 'react'
-import {
-  Animated,
-  Dimensions,
-  StatusBar,
-  TouchableOpacity,
-  View,
-  ViewProps,
-  ViewStyle,
-} from 'react-native'
+import { Animated, Dimensions, TouchableOpacity, View, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { Close } from 'ui/svg/icons/Close'
@@ -110,16 +103,17 @@ const _SnackBar = (props: SnackBarProps) => {
     return () => clearTimeout(timeout)
   }, [props.refresher])
 
+  const { top } = useSafeAreaInsets()
+
   return (
     <RootContainer>
-      {isVisible && <StatusBar hidden />}
       <ColoredAnimatableView
         testID="snackbar-view"
         backgroundColor={props.backgroundColor}
         easing="ease"
         duration={animationDuration}
         ref={containerRef}>
-        <SnackBarContainer isVisible={isVisible} testID="snackbar-container">
+        <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
           <React.Fragment>
             <ContentContainer testID="snackbar-content">
               {Icon && <Icon testID="snackbar-icon" size={22} color={props.color} />}
@@ -158,13 +152,16 @@ const RootContainer = styled(View)({
 // Troobleshoot Animated types issue with forwaded 'backgroundColor' prop
 const ColoredAnimatableView = styled(AnimatableView)<{ backgroundColor: ColorsEnum }>``
 
-const SnackBarContainer = styled.View<{ isVisible: boolean }>(({ isVisible }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  padding: getSpacing(2),
-  flexGrow: 0,
-  display: isVisible ? 'flex' : 'none',
-}))
+const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>(
+  ({ isVisible, marginTop }) => ({
+    marginTop,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: getSpacing(2),
+    flexGrow: 0,
+    display: isVisible ? 'flex' : 'none',
+  })
+)
 
 const ContentContainer = styled.View({
   flex: 1,
