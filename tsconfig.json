@@ -18,7 +18,8 @@
     "noImplicitThis": true,
     "resolveJsonModule": true,
     "target": "esnext",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false // to avoid swagger-codegen constructor initalization error (false is the default value for this option)
   },
   "exclude": [
     "node_modules",
@@ -28,6 +29,6 @@
     "react-native.config.js",
     "rn-cli.config.js",
     "__mocks__/**",
-    "coverage/**",
+    "coverage/**"
   ]
 }
