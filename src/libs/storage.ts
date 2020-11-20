@@ -17,6 +17,14 @@ export async function saveAccessToken(accessToken: string | undefined): Promise<
   await saveString(ACCESS_TOKEN_STORAGE_KEY, accessToken)
 }
 
+export async function clearAccessToken(): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY)
+  } catch (error) {
+    onAsyncStorageError(error)
+  }
+}
+
 async function readString(storageKey: string): Promise<string | null> {
   try {
     return AsyncStorage.getItem(storageKey)
