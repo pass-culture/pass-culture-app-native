@@ -3,7 +3,10 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
+import {
+  isPasswordCorrect,
+  PasswordSecurityRules,
+} from 'features/auth/components/PasswordSecurityRules'
 import {
   navigateToHomeWithoutModal,
   UseRouteType,
@@ -35,7 +38,8 @@ export const ReinitializePassword = () => {
   const [confirmedPassword, setConfirmedPassword] = useState('')
   const [shouldShowConfirmationError] = useState(false)
 
-  const allowSubmission = password.length > 0 && confirmedPassword === password
+  const allowSubmission = isPasswordCorrect(password) && confirmedPassword === password
+
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
 
   const { mutate: resetPassword, isLoading } = useResetPasswordMutation(() => {
