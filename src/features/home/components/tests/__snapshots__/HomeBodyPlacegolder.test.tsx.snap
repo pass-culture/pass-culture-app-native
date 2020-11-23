@@ -1,0 +1,1535 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeBodyPlaceholder matches snapshot 1`] = `
+Array [
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "width": 24,
+          },
+        ]
+      }
+    />
+    <View>
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup>
+          <RNSVGRect
+            height={16}
+            rx={2}
+            ry={2}
+            width={160}
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={312}
+                rx={8}
+                ry={8}
+                width={192}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  320,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={153.60000000000002}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  340,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={57.599999999999994}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={312}
+                rx={8}
+                ry={8}
+                width={192}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  320,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={153.60000000000002}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  340,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={57.599999999999994}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={312}
+                rx={8}
+                ry={8}
+                width={192}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  320,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={153.60000000000002}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  340,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={57.599999999999994}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "width": 24,
+          },
+        ]
+      }
+    />
+    <View>
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup>
+          <RNSVGRect
+            height={16}
+            rx={2}
+            ry={2}
+            width={160}
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={240}
+                rx={8}
+                ry={8}
+                width={144}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  248,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={115.2}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  268,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={43.199999999999996}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={240}
+                rx={8}
+                ry={8}
+                width={144}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  248,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={115.2}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  268,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={43.199999999999996}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={240}
+                rx={8}
+                ry={8}
+                width={144}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  248,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={115.2}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  268,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={43.199999999999996}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={240}
+                rx={8}
+                ry={8}
+                width={144}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  248,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={115.2}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  268,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={43.199999999999996}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+    testID="HomeBodyPlaceholder-testID"
+  >
+    <RNSVGSvgView
+      bbHeight="100%"
+      bbWidth="100%"
+      focusable={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <RNSVGGroup>
+        <RNSVGRect
+          height={234}
+          rx={8}
+          ry={8}
+          width={702}
+          x={0}
+          y={0}
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>,
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "width": 24,
+          },
+        ]
+      }
+    />
+    <View>
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup>
+          <RNSVGRect
+            height={16}
+            rx={2}
+            ry={2}
+            width={160}
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={240}
+                rx={8}
+                ry={8}
+                width={144}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  248,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={115.2}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  268,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={43.199999999999996}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={240}
+                rx={8}
+                ry={8}
+                width={144}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  248,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={115.2}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  268,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={43.199999999999996}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={240}
+                rx={8}
+                ry={8}
+                width={144}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  248,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={115.2}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  268,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={43.199999999999996}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={240}
+                rx={8}
+                ry={8}
+                width={144}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  248,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={115.2}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  268,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={43.199999999999996}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "width": 24,
+          },
+        ]
+      }
+    />
+    <View>
+      <RNSVGSvgView
+        bbHeight="100%"
+        bbWidth="100%"
+        focusable={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RNSVGGroup>
+          <RNSVGRect
+            height={16}
+            rx={2}
+            ry={2}
+            width={160}
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={312}
+                rx={8}
+                ry={8}
+                width={192}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  320,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={153.60000000000002}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  340,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={57.599999999999994}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={312}
+                rx={8}
+                ry={8}
+                width={192}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  320,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={153.60000000000002}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  340,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={57.599999999999994}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <RNSVGSvgView
+          bbHeight="100%"
+          bbWidth="100%"
+          focusable={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGRect
+                height={312}
+                rx={8}
+                ry={8}
+                width={192}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  320,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={153.60000000000002}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  0,
+                  340,
+                ]
+              }
+            >
+              <RNSVGRect
+                height={12}
+                rx={2}
+                ry={2}
+                width={57.599999999999994}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;

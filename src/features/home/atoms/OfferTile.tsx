@@ -23,7 +23,7 @@ interface OfferTileProps {
 export const OfferTile = (props: OfferTileProps) => {
   const { layout = 'one-item-medium', ...offer } = props
   const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
-  const imageWidth = PixelRatio.roundToNearestPixel(imageHeight * RATIO_ALGOLIA)
+  const imageWidth = imageHeight * RATIO_ALGOLIA
 
   const handlePressImage = (offerId?: string): void => {
     // eslint-disable-next-line no-console
