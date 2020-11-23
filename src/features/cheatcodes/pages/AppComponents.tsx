@@ -97,6 +97,7 @@ export const AppComponents: FunctionComponent = () => {
 
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
+  const [inputText, setInputText] = useState('')
 
   const onTriggerFakeLoading = useCallback(() => {
     setButtonIsLoading(true)
@@ -330,9 +331,13 @@ export const AppComponents: FunctionComponent = () => {
 
       <Section visible={sectionsVisibility.inputs}>
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input</Typo.Title4>
-        <TextInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
+        <TextInput value={inputText} onChangeText={setInputText} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
-        <InputRule title={'A security rule'} icon={Close} color={ColorsEnum.ERROR} />
+        <InputRule
+          title={'12 Caractères'}
+          icon={inputText.length >= 12 ? Check : Close}
+          color={inputText.length >= 12 ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
+        />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input - Email</Typo.Title4>
         <TextInput
