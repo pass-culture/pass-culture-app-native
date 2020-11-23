@@ -27,7 +27,8 @@
     "translations:extract": "lingui extract --clean",
     "translations:compile": "lingui compile",
     "version:testing": "./scripts/update_testing_version.sh",
-    "trigger:staging:deploy": "./scripts/deploy_new_staging_version.sh"
+    "trigger:staging:deploy": "./scripts/deploy_new_staging_version.sh",
+    "genclient": "./scripts/generate_api_client.sh"
   },
   "dependencies": {
     "@algolia/client-search": "^4.6.0",
