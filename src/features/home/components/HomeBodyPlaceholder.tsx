@@ -5,7 +5,6 @@ import { G, Rect } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import {
-  BORDER_RADIUS,
   ColorsEnum,
   getSpacing,
   LENGTH_L,
@@ -15,6 +14,7 @@ import {
   RATIO_BUSINESS,
   Spacer,
 } from 'ui/theme'
+import { BorderRadiusEnum } from 'ui/theme/grid'
 
 enum TileSize {
   M = LENGTH_M,
@@ -94,7 +94,12 @@ const OfferTilePlaceholder = ({ size }: { size: TileSize }) => {
 }
 
 const BasePlaceholder = ({ height, width }: { height: number; width: number }) => (
-  <Rect rx={BORDER_RADIUS} ry={BORDER_RADIUS} height={height} width={width} />
+  <Rect
+    rx={BorderRadiusEnum.BORDER_RADIUS}
+    ry={BorderRadiusEnum.BORDER_RADIUS}
+    height={height}
+    width={width}
+  />
 )
 const TextPlaceholder = ({ width, height }: { width: number; height?: number }) => (
   <Rect rx={2} ry={2} height={height ?? getSpacing(3)} width={width} />
@@ -110,7 +115,12 @@ const BusinessModulePlaceholder = () => {
       speed={1}
       backgroundColor={ColorsEnum.GREY_MEDIUM}
       foregroundColor={ColorsEnum.GREY_LIGHT}>
-      <Rect rx={BORDER_RADIUS} ry={BORDER_RADIUS} width={width} height={height} />
+      <Rect
+        rx={BorderRadiusEnum.BORDER_RADIUS}
+        ry={BorderRadiusEnum.BORDER_RADIUS}
+        width={width}
+        height={height}
+      />
     </ContentLoader>
   )
 }

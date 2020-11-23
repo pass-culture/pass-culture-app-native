@@ -11,7 +11,6 @@ export type CustomCheckBoxProps = {
 }
 
 export function CheckBoxInput({ isChecked, setIsChecked }: CustomCheckBoxProps): JSX.Element {
-
   function setToggleCheckBox() {
     setIsChecked(!isChecked)
   }

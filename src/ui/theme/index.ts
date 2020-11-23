@@ -5,7 +5,6 @@ export { getSpacing, getSpacingString } from './spacing'
 export { Spacer } from '../components/spacer/Spacer'
 export { Typo } from 'ui/theme/typography'
 export {
-  BORDER_RADIUS,
   MARGIN_DP,
   GUTTER_DP,
   LENGTH_S,
