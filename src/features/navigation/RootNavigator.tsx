@@ -7,6 +7,7 @@ import {
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 
+import { ChoosePassword } from 'features/auth/pages/ChoosePassword'
 import { ForgottenPassword } from 'features/auth/pages/ForgottenPassword'
 import { Login } from 'features/auth/pages/Login'
 import { ReinitializePassword } from 'features/auth/pages/ReinitializePassword'
@@ -33,6 +34,7 @@ export type RootStackParamList = {
   ResetPasswordEmailSent: { email: string }
   ForgottenPassword: undefined
   ResetPasswordExpiredLink: { email: string }
+  ChoosePassword: undefined
 }
 
 export const RootStack = createStackNavigator<RootStackParamList>()
@@ -53,6 +55,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
         <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
         <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
+        <RootStack.Screen name="ChoosePassword" component={ChoosePassword} />
       </RootStack.Navigator>
     </NavigationContainer>
   )

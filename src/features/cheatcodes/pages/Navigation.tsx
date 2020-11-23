@@ -92,6 +92,12 @@ export function Navigation(): JSX.Element {
           </Link>
         </Row>
         <Spacer.Column numberOfSpaces={5} />
+        <Row>
+          <ButtonPrimary
+            title={'Choix du mdp (inscr.)'}
+            onPress={() => navigation.navigate('ChoosePassword')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
