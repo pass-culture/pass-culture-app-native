@@ -15,7 +15,9 @@ export function useCurrentUser() {
         return json.logged_in_as
       } catch (err) {
         if (err instanceof NotAuthenticatedError) return undefined
-        throw err
+        // We don't throw an error as it is not caught on this page
+        // For instance, we can receive a status 422 if the access token is invalid
+        return undefined
       }
     },
     { retry: false }
