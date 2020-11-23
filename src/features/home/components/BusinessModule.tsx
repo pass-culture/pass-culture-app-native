@@ -5,16 +5,8 @@ import styled from 'styled-components/native'
 import { IdeaIcon } from 'features/home/assets/IdeaIcon'
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
-import {
-  Typo,
-  ColorsEnum,
-  getSpacing,
-  BORDER_RADIUS,
-  MARGIN_DP,
-  LENGTH_S,
-  RATIO_BUSINESS,
-  Spacer,
-} from 'ui/theme'
+import { Typo, ColorsEnum, getSpacing, MARGIN_DP, LENGTH_S, RATIO_BUSINESS, Spacer } from 'ui/theme'
+import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPane) => {
   const openUrl = () => {
@@ -61,11 +53,11 @@ const Row = styled.View({
 })
 
 const TouchableHighlight = styled.TouchableHighlight({
-  borderRadius: BORDER_RADIUS,
+  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
 })
 
 const ImageContainer = styled.View({
-  borderRadius: BORDER_RADIUS,
+  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
   overflow: 'hidden',
   maxHeight: LENGTH_S,
 })

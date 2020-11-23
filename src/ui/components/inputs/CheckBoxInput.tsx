@@ -5,7 +5,13 @@ import styled from 'styled-components/native'
 import { CheckBoxMark } from 'ui/svg/icons/CheckBoxTMark'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
-export function CheckBoxInput({ isChecked, setIsChecked }): JSX.Element {
+export type CustomCheckBoxProps = {
+  isChecked: boolean
+  setIsChecked: (b: boolean) => void
+}
+
+export function CheckBoxInput({ isChecked, setIsChecked }: CustomCheckBoxProps): JSX.Element {
+
   function setToggleCheckBox() {
     setIsChecked(!isChecked)
   }

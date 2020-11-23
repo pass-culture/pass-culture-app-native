@@ -5,7 +5,8 @@ import styled from 'styled-components/native'
 
 import { ExclusivityPane } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { BORDER_RADIUS, MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer } from 'ui/theme'
+import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer } from 'ui/theme'
+import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
   const navigation = useNavigation<UseNavigationType>()
@@ -41,12 +42,12 @@ const ImageContainer = styled.View({
 })
 
 const TouchableHighlight = styled.TouchableHighlight({
-  borderRadius: BORDER_RADIUS,
+  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
   maxHeight: LENGTH_XL,
 })
 
 const Image = styled.Image({
   height: imageHeight,
-  borderRadius: BORDER_RADIUS,
+  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
   maxHeight: LENGTH_XL,
 })
