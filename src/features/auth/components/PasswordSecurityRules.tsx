@@ -16,28 +16,46 @@ const LOWERCASE_REGEX = /[a-z]+/
 const NUMBER_REGEX = /[0-9]+/
 const SPECIAL_CHARACTER_REGEX = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/
 
+export function isPasswordCorrect(password: string) {
+  return (
+    isLongEnough(password) &&
+    containsCapital(password) &&
+    containsLowercase(password) &&
+    containsNumber(password) &&
+    containsSpecialCharacter(password)
+  )
+}
+
+function isLongEnough(password: string): boolean {
+  return password.length >= PASSWORD_MIN_LENGTH
+}
+
+function containsCapital(password: string): boolean {
+  return password.match(CAPITAL_REGEX) ? true : false
+}
+
+function containsLowercase(password: string): boolean {
+  return password.match(LOWERCASE_REGEX) ? true : false
+}
+
+function containsNumber(password: string): boolean {
+  return password.match(NUMBER_REGEX) ? true : false
+}
+
+function containsSpecialCharacter(password: string): boolean {
+  return password.match(SPECIAL_CHARACTER_REGEX) ? true : false
+}
+
 export const PasswordSecurityRules: FunctionComponent<Props> = ({ password }) => {
   return (
     <RulesContainer>
-      <PasswordRule
-        title={_(t`12 Caractères`)}
-        isValidated={password.length >= PASSWORD_MIN_LENGTH}
-      />
-      <PasswordRule
-        title={_(t`1 Majuscule`)}
-        isValidated={password.match(CAPITAL_REGEX) ? true : false}
-      />
-      <PasswordRule
-        title={_(t`1 Minuscule`)}
-        isValidated={password.match(LOWERCASE_REGEX) ? true : false}
-      />
-      <PasswordRule
-        title={_(t`1 Chiffre`)}
-        isValidated={password.match(NUMBER_REGEX) ? true : false}
-      />
+      <PasswordRule title={_(t`12 Caractères`)} isValidated={isLongEnough(password)} />
+      <PasswordRule title={_(t`1 Majuscule`)} isValidated={containsCapital(password)} />
+      <PasswordRule title={_(t`1 Minuscule`)} isValidated={containsLowercase(password)} />
+      <PasswordRule title={_(t`1 Chiffre`)} isValidated={containsNumber(password)} />
       <PasswordRule
         title={_(t`1 Caractère spécial (!@#$%^&*...)`)}
-        isValidated={password.match(SPECIAL_CHARACTER_REGEX) ? true : false}
+        isValidated={containsSpecialCharacter(password)}
       />
     </RulesContainer>
   )
