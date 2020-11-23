@@ -23,17 +23,17 @@ enum TileSize {
 
 export const HomeBodyPlaceholder = () => (
   <React.Fragment>
-    <OfferModulePlaceholder size={LENGTH_L} numberOfTiles={3} />
+    <OfferModulePlaceholder size={LENGTH_L} numberOfTiles={4} />
     <Spacer.Column numberOfSpaces={6} />
-    <OfferModulePlaceholder size={LENGTH_M} numberOfTiles={4} />
+    <OfferModulePlaceholder size={LENGTH_M} numberOfTiles={5} />
     <Spacer.Column numberOfSpaces={6} />
     <CenterContainer testID="HomeBodyPlaceholder-testID">
       <BusinessModulePlaceholder />
     </CenterContainer>
     <Spacer.Column numberOfSpaces={6} />
-    <OfferModulePlaceholder size={LENGTH_M} numberOfTiles={4} />
+    <OfferModulePlaceholder size={LENGTH_M} numberOfTiles={5} />
     <Spacer.Column numberOfSpaces={6} />
-    <OfferModulePlaceholder size={LENGTH_L} numberOfTiles={3} />
+    <OfferModulePlaceholder size={LENGTH_L} numberOfTiles={4} />
   </React.Fragment>
 )
 const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }> = ({
@@ -65,7 +65,7 @@ const ModuleTitlePlaceholder = () => (
     width={getSpacing(40)}
     speed={1}
     backgroundColor={ColorsEnum.GREY_MEDIUM}
-    foregroundColor={ColorsEnum.WHITE}>
+    foregroundColor={ColorsEnum.GREY_LIGHT}>
     <Rect rx={2} ry={2} width={getSpacing(40)} height={getSpacing(4)} />
   </ContentLoader>
 )
@@ -79,7 +79,7 @@ const OfferTilePlaceholder = ({ size }: { size: TileSize }) => {
       width={width}
       speed={1}
       backgroundColor={ColorsEnum.GREY_MEDIUM}
-      foregroundColor={ColorsEnum.WHITE}>
+      foregroundColor={ColorsEnum.GREY_LIGHT}>
       <G>
         <BasePlaceholder height={height} width={width} />
       </G>
@@ -109,7 +109,7 @@ const BusinessModulePlaceholder = () => {
       width={width}
       speed={1}
       backgroundColor={ColorsEnum.GREY_MEDIUM}
-      foregroundColor={ColorsEnum.WHITE}>
+      foregroundColor={ColorsEnum.GREY_LIGHT}>
       <Rect rx={BORDER_RADIUS} ry={BORDER_RADIUS} width={width} height={height} />
     </ContentLoader>
   )
