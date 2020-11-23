@@ -24,7 +24,7 @@ describe('ReinitializePassword Page', () => {
     jest.resetAllMocks()
   })
 
-  it('should enable the submit button when passwords are equals and filled', async () => {
+  it('should enable the submit button when passwords are equals and filled and password is correct', async () => {
     const { getByPlaceholderText, getByTestId } = render(
       reactQueryProviderHOC(<ReinitializePassword />)
     )
@@ -32,8 +32,8 @@ describe('ReinitializePassword Page', () => {
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    fireEvent.changeText(passwordInput, '123456')
-    fireEvent.changeText(confirmationInput, '123456')
+    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
     // assuming there's only one button in this page
     const continueButton = getByTestId('button-container')
