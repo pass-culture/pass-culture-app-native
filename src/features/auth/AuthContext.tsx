@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { post } from 'libs/fetch'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { saveAccessToken, clearAccessToken } from 'libs/storage'
+
+import { useCurrentUser } from './api'
 
 export type SigninBody = {
   email: string
@@ -32,6 +34,16 @@ export function useAuthContext(): IAuthContext {
 
 export const AuthWrapper = ({ children }: { children: Element }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const { data: email, isError } = useCurrentUser()
+
+  useEffect(() => {
+    if (email) {
+      setIsLoggedIn(true)
+    }
+    if (isError) {
+      setIsLoggedIn(false)
+    }
+  }, [email, isError])
 
   const signIn = async ({ email, password }: SigninBody) => {
     const body = { identifier: email, password }
