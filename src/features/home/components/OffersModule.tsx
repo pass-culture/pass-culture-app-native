@@ -10,6 +10,8 @@ import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { Spacer } from 'ui/theme'
 
+import { Cover } from '../atoms/Cover'
+
 type OfferWithOptionalCover = Partial<OffersWithCover> &
   Pick<Offers, 'algolia' | 'display' | 'moduleId'> & { position: ReturnType<typeof useGeolocation> }
 
@@ -46,6 +48,17 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
 
+  const renderHeaderCover = () =>
+    props.cover ? (
+      <Row>
+        <Spacer.Row numberOfSpaces={6} />
+        <Cover layout={display.layout} uri={props.cover} />
+        <Spacer.Row numberOfSpaces={6} />
+      </Row>
+    ) : (
+      <Spacer.Row numberOfSpaces={6} />
+    )
+
   return (
     <Container>
       <Spacer.Column numberOfSpaces={6} />
@@ -56,7 +69,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
         data={hits}
         renderItem={renderItem}
         keyExtractor={(item) => item.objectID}
-        ListHeaderComponent={() => <Spacer.Row numberOfSpaces={6} />}
+        ListHeaderComponent={renderHeaderCover}
         ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
         ListFooterComponent={
           showSeeMore ? <SeeMore layout={display.layout} /> : <Spacer.Row numberOfSpaces={6} />
@@ -68,3 +81,4 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
 }
 
 const Container = styled.View({ flex: 1 })
+const Row = styled.View({ flexDirection: 'row' })
