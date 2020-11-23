@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { ScrollView, TouchableOpacity } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
@@ -22,6 +22,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { ZIndexes } from 'ui/theme/layers'
 
 import { HomeBody } from '../components/HomeBody'
+import { HomeBodyPlaceholder } from '../components/HomeBodyPlaceholder'
 import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 
 const statusBarHeight = getStatusBarHeight(true)
@@ -31,13 +32,21 @@ export const HomeComponent: FunctionComponent = function () {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { data: modules = [] } = useHomepageModules()
   const position = useGeolocation()
-
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
 
   function hideSignInModal() {
     navigation.setParams({ shouldDisplayLoginModal: false })
     hideModal()
   }
+
+  // (giregm) TMP Fake loading - to be removed in ticket 5001
+  const [isLoading, setIsLoading] = useState(true)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
 
   useFocusEffect(() => {
     if (params.shouldDisplayLoginModal) {
@@ -46,7 +55,6 @@ export const HomeComponent: FunctionComponent = function () {
   })
 
   useListenDeepLinksEffect()
-
   return (
     <ScrollView>
       {env.CHEAT_BUTTONS_ENABLED && (
@@ -77,9 +85,7 @@ export const HomeComponent: FunctionComponent = function () {
           </Typo.Body>
         </CenterContainer>
         <Spacer.Column numberOfSpaces={6} />
-
-        <HomeBody modules={modules} position={position} />
-
+        {isLoading ? <HomeBodyPlaceholder /> : <HomeBody modules={modules} position={position} />}
         <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
         <Spacer.TabBar />
       </SafeContainer>
