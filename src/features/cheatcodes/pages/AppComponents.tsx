@@ -10,6 +10,7 @@ import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { PartialDateInput, DatePartType } from 'ui/components/inputs/PartialDateInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -95,6 +96,7 @@ export const AppComponents: FunctionComponent = () => {
   }
 
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
+  const [_partialDate, setPartialDate] = useState('')
 
   const onTriggerFakeLoading = useCallback(() => {
     setButtonIsLoading(true)
@@ -352,6 +354,14 @@ export const AppComponents: FunctionComponent = () => {
           <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Title4 color={ColorsEnum.TERTIARY}>Partial Date Input</Typo.Title4>
+          <Spacer.Column numberOfSpaces={1} />
+          <PartialDateInput
+            identifier={DatePartType.DAY}
+            isValid={_partialDate.length === 4}
+            maxLength={4}
+            onChangeValue={setPartialDate}
+            placeholder="YYYY"
+          />
         </Section>
         <Spacer.Column numberOfSpaces={5} />
 
@@ -407,13 +417,3 @@ function doNothingFn() {
 const Section = styled.View<{ visible: boolean }>(({ visible }) => ({
   display: visible ? 'flex' : 'none',
 }))
-
-const Title: FunctionComponent<{ color: ColorsEnum; onPress: () => void }> = (props) => {
-  return (
-    <TouchableOpacity>
-      <Typo.Title1 color={props.color} onPress={props.onPress}>
-        {props.children}
-      </Typo.Title1>
-    </TouchableOpacity>
-  )
-}
