@@ -47,7 +47,9 @@ async function makeRequest<ResponseBody>(
   }
   if (request.credentials !== 'omit') {
     const accessToken = await getAccessToken()
-    headers['Authorization'] = `Bearer ${accessToken}`
+    if (accessToken) {
+      headers['Authorization'] = `Bearer ${accessToken}`
+    }
   }
 
   const config = {
