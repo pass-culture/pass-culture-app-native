@@ -49,7 +49,6 @@ export const Signup: FunctionComponent<Props> = ({ navigation }) => {
           onRightIconPress={onClose}
         />
         <ModalContent>
-          <Spacer.Column numberOfSpaces={4} />
           <StyledInput>
             <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
             <Spacer.Column numberOfSpaces={2} />
@@ -65,7 +64,9 @@ export const Signup: FunctionComponent<Props> = ({ navigation }) => {
           <Spacer.Column numberOfSpaces={4} />
           <StyledCheckBox>
             <CheckBoxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
-            <CheckBoxText>{_(t`Reçois nos recommandations`)}</CheckBoxText>
+            <CheckBoxText>
+              {_(t`Reçois nos recommandations culturelles à proximité de chez toi par e-mail.`)}
+            </CheckBoxText>
           </StyledCheckBox>
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary

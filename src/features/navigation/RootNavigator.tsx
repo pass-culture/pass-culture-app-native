@@ -33,6 +33,7 @@ export type RootStackParamList = {
   AppComponents: undefined
   Navigation: undefined
   CheatCodes: undefined
+  Signup: undefined
   ResetPasswordEmailSent: { email: string }
   ForgottenPassword: undefined
   ResetPasswordExpiredLink: { email: string }

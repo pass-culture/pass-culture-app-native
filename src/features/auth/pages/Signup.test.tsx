@@ -44,8 +44,6 @@ describe('<Signup />', () => {
 
 function renderPage() {
   return render(
-    <Signup
-      {...(navigationTestProps as StackScreenProps<HomeStackParamList, 'Signup'>)}
-    />
+    <Signup {...(navigationTestProps as StackScreenProps<HomeStackParamList, 'Signup'>)} />
   )
 }

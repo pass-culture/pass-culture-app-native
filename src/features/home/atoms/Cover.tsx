@@ -4,15 +4,8 @@ import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
 import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
-import {
-  BORDER_RADIUS,
-  LENGTH_M,
-  LENGTH_L,
-  RATIO_ALGOLIA,
-  MARGIN_DP,
-  ColorsEnum,
-  getSpacing,
-} from 'ui/theme'
+import { LENGTH_M, LENGTH_L, RATIO_ALGOLIA, MARGIN_DP, ColorsEnum, getSpacing } from 'ui/theme'
+import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface CoverProps {
   layout: Layout
@@ -47,7 +40,7 @@ const Container = styled.View<{ imageWidth: number; imageHeight: number }>(
 const Image = styled.Image({
   height: '100%',
   width: '100%',
-  borderRadius: BORDER_RADIUS,
+  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
 })
 
 const ArrowsContainer = styled.View({
