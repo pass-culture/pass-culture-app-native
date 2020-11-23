@@ -1,5 +1,6 @@
 import { PixelRatio } from 'react-native'
 
+// TODO: créer un enum
 export const BORDER_RADIUS = 8
 
 // Horizontal constants
