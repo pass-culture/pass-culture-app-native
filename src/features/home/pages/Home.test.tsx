@@ -27,6 +27,14 @@ describe('Home component', () => {
   afterEach(() => {
     jest.clearAllTimers()
   })
+  it('should render placehodler loader for 3s', async () => {
+    const home = await homeRenderer(false, true)
+    expect(home.queryByTestId('HomeBodyPlaceholder-testID')).toBeTruthy()
+    jest.advanceTimersByTime(2900)
+    expect(home.queryByTestId('HomeBodyPlaceholder-testID')).toBeTruthy()
+    act(() => jest.advanceTimersByTime(100))
+    expect(home.queryByTestId('HomeBodyPlaceholder-testID')).toBeFalsy()
+  })
   it('should render correctly without login modal', async () => {
     const home = await homeRenderer(false, false)
 
