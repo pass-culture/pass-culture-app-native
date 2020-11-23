@@ -3,7 +3,8 @@ import { View, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
-import { BORDER_RADIUS, MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
+import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
+import { BorderRadiusEnum } from 'ui/theme/grid'
 
 import { ImageCaption } from './ImageCaption'
 import { OfferCaption } from './OfferCaption'
@@ -67,7 +68,7 @@ const Container = styled.View({
 
 const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(
   ({ imageHeight }) => ({
-    borderRadius: BORDER_RADIUS,
+    borderRadius: BorderRadiusEnum.BORDER_RADIUS,
     height: imageHeight + rowHeight,
   })
 )
@@ -76,7 +77,7 @@ const Image = styled.Image<{ imageWidth: number; imageHeight: number }>(
   ({ imageWidth, imageHeight }) => ({
     height: imageHeight,
     width: imageWidth,
-    borderTopLeftRadius: BORDER_RADIUS,
-    borderTopRightRadius: BORDER_RADIUS,
+    borderTopLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
+    borderTopRightRadius: BorderRadiusEnum.BORDER_RADIUS,
   })
 )

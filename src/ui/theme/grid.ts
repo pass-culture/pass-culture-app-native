@@ -1,7 +1,11 @@
 import { PixelRatio } from 'react-native'
 
-// TODO: créer un enum
-export const BORDER_RADIUS = 8
+import { getSpacing } from 'ui/theme/spacing'
+
+export enum BorderRadiusEnum {
+  BORDER_RADIUS = 8,
+  CHECKBOX_RADIUS = getSpacing(1),
+}
 
 // Horizontal constants
 export const MARGIN_DP = 24

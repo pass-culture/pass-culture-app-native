@@ -2,7 +2,8 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, Typo, BORDER_RADIUS, MARGIN_DP, GUTTER_DP } from 'ui/theme'
+import { ColorsEnum, Typo, MARGIN_DP, GUTTER_DP } from 'ui/theme'
+import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface ImageCaptionProps {
   category: string
@@ -40,8 +41,8 @@ const Row = styled.View<{ width: number }>(({ width }) => ({
   backgroundColor: ColorsEnum.BLACK,
   height: rowHeight,
   width,
-  borderBottomLeftRadius: BORDER_RADIUS,
-  borderBottomRightRadius: BORDER_RADIUS,
+  borderBottomLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
+  borderBottomRightRadius: BorderRadiusEnum.BORDER_RADIUS,
   alignItems: 'center',
 }))
 
