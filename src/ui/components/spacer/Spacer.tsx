@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useTabBarHeight } from 'features/navigation/TabBar/useTabBarHeight'
 import { getSpacing } from 'ui/theme/spacing'
+
+import { useCustomSafeInsets } from '../../theme/useCustomSafeInsets'
 
 interface SpacerProps {
   numberOfSpaces: number
@@ -16,11 +17,19 @@ const ColumnSpacer = styled.View<SpacerProps>(({ numberOfSpaces }) => ({
 }))
 
 const TabBarSpacer: React.FC = () => {
-  const tabBarHeight = useTabBarHeight()
-  return <TabBarPlaceholder tabBarHeight={tabBarHeight} />
+  const { tabBarHeight } = useCustomSafeInsets()
+  return <CustomHeightSpacer customHeight={tabBarHeight} />
 }
-const TabBarPlaceholder = styled.View<{ tabBarHeight: number }>(({ tabBarHeight }) => ({
-  height: tabBarHeight,
+const TopScreenSpacer: React.FC = () => {
+  const { top } = useCustomSafeInsets()
+  return <CustomHeightSpacer customHeight={top} />
+}
+const BottomScreenSpacer: React.FC = () => {
+  const { bottom } = useCustomSafeInsets()
+  return <CustomHeightSpacer customHeight={bottom} />
+}
+const CustomHeightSpacer = styled.View<{ customHeight: number }>(({ customHeight }) => ({
+  height: customHeight,
 }))
 
 interface FlexSpacerProps {
@@ -38,5 +47,7 @@ export const Spacer = {
   Flex: FlexSpacer,
   Row: RowSpacer,
   Column: ColumnSpacer,
+  TopScreen: TopScreenSpacer,
   TabBar: TabBarSpacer,
+  BottomScreen: BottomScreenSpacer,
 }
