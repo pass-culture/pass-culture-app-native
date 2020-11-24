@@ -1,32 +1,18 @@
 import { t } from '@lingui/macro'
 
-import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 
-import { getAccessToken } from './storage'
-
 export type RequestCredentials = 'omit' | 'same-origin' | 'include' | undefined
+
+export type Headers = {
+  Accept?: string
+  'Content-Type'?: string
+  Authorization?: string
+}
 
 export type EmptyResponse = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [K in any]: never
-}
-
-export async function post<ResponseBody>(
-  url: string,
-  request: RequestInit
-): Promise<ResponseBody | EmptyResponse> {
-  request.method = 'POST'
-  request.body = JSON.stringify(request.body)
-  return makeRequest<ResponseBody | EmptyResponse>(env.API_BASE_URL + url, request)
-}
-
-export async function get<ResponseBody>(
-  url: string,
-  request: RequestInit = {}
-): Promise<ResponseBody> {
-  request.method = 'GET'
-  return makeRequest<ResponseBody>(env.API_BASE_URL + url, request)
 }
 
 export async function getExternal<ResponseBody>(
@@ -37,55 +23,18 @@ export async function getExternal<ResponseBody>(
   return makeExternalRequest<ResponseBody>(url, request)
 }
 
-async function makeRequest<ResponseBody>(
-  url: string,
-  request: RequestInit
-): Promise<ResponseBody | EmptyResponse> {
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  }
-  if (request.credentials !== 'omit') {
-    const accessToken = await getAccessToken()
-    if (accessToken) {
-      headers['Authorization'] = `Bearer ${accessToken}`
-    }
-  }
-
-  const config = {
-    ...request,
-    headers,
-  }
-
-  const response = await fetch(url, config)
-
-  if (response.status === 401) {
-    throw new NotAuthenticatedError()
-  }
-  if (!response.ok) {
-    throw new Error(_(t`Échec de la requête ${url}, code: ${response.status}`))
-  }
-
-  if (response.status === 204) {
-    return {}
-  }
-
-  const json = response.json()
-  return json
-}
-
 async function makeExternalRequest<ResponseBody>(
   url: string,
   request: RequestInit
 ): Promise<ResponseBody> {
-  const headers: Record<string, string> = {
+  const headers: Headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
   }
 
   const config = {
     ...request,
-    headers,
+    headers: headers as HeadersInit_,
   }
 
   const response = await fetch(url, config)
@@ -93,6 +42,7 @@ async function makeExternalRequest<ResponseBody>(
   if (response.status === 401) {
     throw new NotAuthenticatedError()
   }
+
   if (!response.ok) {
     throw new Error(_(t`Échec de la requête ${url}, code: ${response.status}`))
   }

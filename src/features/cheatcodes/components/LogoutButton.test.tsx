@@ -9,12 +9,6 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
-jest.mock('features/auth/api', () => ({
-  useCurrentUser: jest.fn(() => ({
-    data: 'user@example.com',
-  })),
-}))
-
 const mockSignOut = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ signOut: mockSignOut, isLoggedIn: true })),

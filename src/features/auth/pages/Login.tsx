@@ -39,7 +39,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
 
   async function handleSignin() {
     setShouldShowErrorMessage(false)
-    const isSigninSuccessful = await signIn({ email, password })
+    const isSigninSuccessful = await signIn({ identifier: email, password })
     if (isSigninSuccessful) {
       navigateToHomeWithoutModal()
     } else {

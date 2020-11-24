@@ -1,18 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 
-import { SigninBody, SigninResponse } from 'features/auth/api.types'
+import { api } from 'api/api'
+import { SigninRequest } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { post } from 'libs/fetch'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
-import { saveAccessToken, clearAccessToken } from 'libs/storage'
-
-import { useCurrentUser } from './api'
+import { saveAccessToken, clearAccessToken, getAccessToken } from 'libs/storage'
 
 export interface IAuthContext {
   isLoggedIn: boolean
-  signIn: (data: SigninBody) => Promise<boolean>
-  signOut: (email: string) => Promise<void>
+  signIn: (data: SigninRequest) => Promise<boolean>
+  signOut: () => Promise<void>
 }
 
 export const AuthContext = React.createContext<IAuthContext | undefined>(undefined)
@@ -25,26 +23,18 @@ export function useAuthContext(): IAuthContext {
 
 export const AuthWrapper = ({ children }: { children: Element }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-  const { data: email, isError } = useCurrentUser()
 
   useEffect(() => {
-    if (email) {
-      setIsLoggedIn(true)
-    }
-    if (isError) {
-      setIsLoggedIn(false)
-    }
-  }, [email, isError])
+    getAccessToken().then((accessToken) => {
+      setIsLoggedIn(!!accessToken)
+    })
+  }, [])
 
-  const signIn = async ({ email, password }: SigninBody) => {
-    const body = { identifier: email, password }
+  const signIn = async (body: SigninRequest) => {
     try {
-      const response = await post<SigninResponse>('/native/v1/signin', {
-        body,
-        credentials: 'omit',
-      })
+      const response = await api.nativeV1SigninPost(body, { credentials: 'omit' })
       if (!response) return false
-      await saveRefreshToken(email, response.refresh_token)
+      await saveRefreshToken(response.refresh_token)
       await saveAccessToken(response.access_token)
       await analytics.logLogin({ method: env.API_BASE_URL })
       setIsLoggedIn(true)
@@ -54,9 +44,9 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
     }
   }
 
-  const signOut = async (email: string) => {
+  const signOut = async () => {
     await clearAccessToken()
-    await clearRefreshToken(email)
+    await clearRefreshToken()
     setIsLoggedIn(false)
   }
 
