@@ -5,17 +5,14 @@ import React from 'react'
 import { Alert, Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import {
-  HomeStackParamList,
-  navigateToHomeWithoutModal,
-} from 'features/home/navigation/HomeNavigator'
+import { RootStackParamList, navigateToHomeWithoutModal } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { navigationTestProps } from 'tests/navigation'
 import { server } from 'tests/server'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
-jest.mock('features/home/navigation/HomeNavigator')
+jest.mock('features/navigation/RootNavigator')
 
 beforeEach(() => {
   jest.resetAllMocks()
@@ -26,7 +23,7 @@ const navigationProps = { ...navigationTestProps, route: { params: { email: 'tes
 function renderResetPasswordExpiredLink() {
   return render(
     <ResetPasswordExpiredLink
-      {...(navigationProps as StackScreenProps<HomeStackParamList, 'ResetPasswordExpiredLink'>)}
+      {...(navigationProps as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>)}
     />
   )
 }

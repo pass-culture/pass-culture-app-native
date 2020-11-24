@@ -4,7 +4,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { ForgottenPassword } from 'features/auth/pages/ForgottenPassword'
-import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { navigationTestProps } from 'tests/navigation'
 
 beforeEach(() => {
@@ -63,7 +63,7 @@ describe('<ForgottenPassword />', () => {
 function renderPage() {
   return render(
     <ForgottenPassword
-      {...(navigationTestProps as StackScreenProps<HomeStackParamList, 'ForgottenPassword'>)}
+      {...(navigationTestProps as StackScreenProps<RootStackParamList, 'ForgottenPassword'>)}
     />
   )
 }

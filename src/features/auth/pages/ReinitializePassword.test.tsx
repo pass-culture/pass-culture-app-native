@@ -8,7 +8,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
-jest.mock('features/home/navigation/HomeNavigator')
+jest.mock('features/navigation/RootNavigator')
 
 describe('ReinitializePassword Page', () => {
   beforeAll(() => {

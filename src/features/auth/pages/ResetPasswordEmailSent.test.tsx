@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { Linking } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
-import { HomeStack } from 'features/home/navigation/HomeNavigator'
 import { flushAllPromises } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
@@ -48,16 +48,20 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 })
 
+const TestStack = createStackNavigator<{
+  Home: undefined
+  ResetPasswordEmailSent: { email: string }
+}>()
 function renderPage() {
   return render(
     <NavigationContainer>
-      <HomeStack.Navigator initialRouteName="Home">
-        <HomeStack.Screen
+      <TestStack.Navigator initialRouteName="Home">
+        <TestStack.Screen
           name="ResetPasswordEmailSent"
           component={ResetPasswordEmailSent}
           initialParams={{ email: 'john.doe@gmail.com' }}
         />
-      </HomeStack.Navigator>
+      </TestStack.Navigator>
     </NavigationContainer>
   )
 }

@@ -4,10 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import {
-  HomeStackParamList,
-  navigateToHomeWithoutModal,
-} from 'features/home/navigation/HomeNavigator'
+import { navigateToHomeWithoutModal, RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,7 +20,7 @@ import { padding, Spacer, Typo } from 'ui/theme'
 
 import { contactSupport } from './support.services'
 
-type Props = StackScreenProps<HomeStackParamList, 'ResetPasswordEmailSent'>
+type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ navigation, route }) => {
   function onBackNavigation() {

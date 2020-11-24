@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { act, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { HomeStack } from 'features/home/navigation/HomeNavigator'
+import { RootStack } from 'features/navigation/RootNavigator'
 import { flushAllPromises } from 'tests/utils'
 
 import { Offer } from './Offer'
@@ -20,9 +20,9 @@ describe('<Offer />', () => {
 async function renderOfferPage() {
   const wrapper = render(
     <NavigationContainer>
-      <HomeStack.Navigator initialRouteName="Offer">
-        <HomeStack.Screen name="Offer" component={Offer} initialParams={{ offerId: 'ABCDE' }} />
-      </HomeStack.Navigator>
+      <RootStack.Navigator initialRouteName="Offer">
+        <RootStack.Screen name="Offer" component={Offer} initialParams={{ offerId: 'ABCDE' }} />
+      </RootStack.Navigator>
     </NavigationContainer>
   )
   await act(async () => {

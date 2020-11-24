@@ -27,7 +27,7 @@ if (Platform.OS === 'android') {
   StatusBar.setBackgroundColor('transparent', false)
 }
 
-const Tab = createBottomTabNavigator<TabParamList>()
+export const Tab = createBottomTabNavigator<TabParamList>()
 
 export const TabNavigator: React.FC = () => {
   const authContext = useAuthContext()

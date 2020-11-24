@@ -4,7 +4,7 @@ import { Dimensions, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExclusivityPane } from 'features/home/contentful'
-import { UseNavigationType } from 'features/home/navigation/HomeNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { BORDER_RADIUS, MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer } from 'ui/theme'
 
 export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
