@@ -12,7 +12,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Home } from 'features/home/pages/Home'
-import { navigationRef } from 'features/navigation/RootTabNavigator'
+import { navigationRef } from 'features/navigation/RootNavigator'
 import { Offer } from 'features/offer'
 
 export type HomeStackParamList = {
