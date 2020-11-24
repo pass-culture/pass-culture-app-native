@@ -164,7 +164,7 @@ describe('DateInput Component', () => {
       fireEvent.changeText(getByPlaceholderText('MM'), month)
       fireEvent.changeText(getByPlaceholderText('YYYY'), year)
 
-      expect(onChangeValue).toBeCalledWith(null)
+      expect(onChangeValue).toBeCalledWith(null, true)
       expect(onChangeValue).not.toBeCalledWith(`${year}-${month}-${day}`)
     })
     it('should return a YYYY-MM-DD date when the 3 fields are filled properly', () => {
@@ -175,7 +175,7 @@ describe('DateInput Component', () => {
       fireEvent.changeText(getByPlaceholderText('MM'), '07')
       fireEvent.changeText(getByPlaceholderText('YYYY'), '1991')
 
-      expect(onChangeValue).toBeCalledWith(`1991-07-16`)
+      expect(onChangeValue).toBeCalledWith(`1991-07-16`, true)
     })
   })
   describe('isValidDate', () => {

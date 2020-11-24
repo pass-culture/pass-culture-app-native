@@ -2,6 +2,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
 
+/**
+ * Hook used to adapt useSafeAreaInsets to the applications needs
+ * We only want to use 50% of what the libs calls a safe bottom inset
+ * We compute the total height of the navbar here aswell
+ */
 export const useCustomSafeInsets = () => {
   const { bottom, top } = useSafeAreaInsets()
   return {

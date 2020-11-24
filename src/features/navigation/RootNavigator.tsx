@@ -13,6 +13,7 @@ import { Login } from 'features/auth/pages/Login'
 import { ReinitializePassword } from 'features/auth/pages/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/pages/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/ResetPasswordExpiredLink'
+import { SetBirthday } from 'features/auth/pages/SetBirthday'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -35,6 +36,7 @@ export type RootStackParamList = {
   ForgottenPassword: undefined
   ResetPasswordExpiredLink: { email: string }
   ChoosePassword: undefined
+  SetBirthday: undefined
 }
 
 export const RootStack = createStackNavigator<RootStackParamList>()
@@ -56,6 +58,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
         <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
         <RootStack.Screen name="ChoosePassword" component={ChoosePassword} />
+        <RootStack.Screen name="SetBirthday" component={SetBirthday} />
       </RootStack.Navigator>
     </NavigationContainer>
   )
@@ -102,7 +105,7 @@ export type UseNavigationType = NavigationProp<AllNavParamList>
 export type RouteParams<
   StackParamList extends Record<string, unknown>,
   Screename extends keyof StackParamList
-> = Pick<StackParamList, Screename>[Screename]
+  > = Pick<StackParamList, Screename>[Screename]
 
 export function navigateToHomeWithoutModal() {
   if (navigationRef.current) {

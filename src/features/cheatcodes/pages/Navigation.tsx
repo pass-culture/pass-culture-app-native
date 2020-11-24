@@ -5,6 +5,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
+import { UseNavigationType } from 'features/home/navigation/HomeNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { padding, Spacer } from 'ui/theme'
 
@@ -16,7 +17,7 @@ const MdpDeeplink =
 const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 
 export function Navigation(): JSX.Element {
-  const navigation = useNavigation()
+  const navigation = useNavigation<UseNavigationType>()
   return (
     <ScrollView>
       <Spacer.TopScreen />
@@ -42,6 +43,13 @@ export function Navigation(): JSX.Element {
                 Linking.openURL(MdpDeeplink)
               }
             }}
+          />
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+        <Row half>
+          <ButtonPrimary
+            title={'Set Birthday'}
+            onPress={() => navigation.navigate('SetBirthday')}
           />
         </Row>
         <Row>
