@@ -9,7 +9,7 @@ import { addPlugin } from 'react-query-native-devtools'
 import './why-did-you-render'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
-import { RootTabNavigator } from 'features/navigation/RootTabNavigator'
+import { RootNavigator } from 'features/navigation/RootTabNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
 import 'libs/sentry'
@@ -51,7 +51,7 @@ const AppComponent: FunctionComponent = function () {
         <I18nProvider language={i18n.language} i18n={i18n}>
           <SafeAreaProvider>
             <SnackBarProvider>
-              <RootTabNavigator />
+              <RootNavigator />
             </SnackBarProvider>
           </SafeAreaProvider>
         </I18nProvider>
