@@ -4,6 +4,7 @@ import React from 'react'
 import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
+import { api } from 'api/api'
 import { navigateToHomeWithoutModal, RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -13,8 +14,6 @@ import { Email } from 'ui/svg/icons/Email'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-import { requestPasswordReset } from '../api'
-
 import { contactSupport } from './support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
@@ -22,7 +21,8 @@ type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 export function ResetPasswordExpiredLink(props: Props) {
   async function resendEmailForResetPassword() {
     const { email } = props.route.params
-    await requestPasswordReset({ email })
+    await api
+      .nativeV1RequestPasswordResetPost({ email })
       .then(() => {
         props.navigation.navigate('ResetPasswordEmailSent', { email })
       })

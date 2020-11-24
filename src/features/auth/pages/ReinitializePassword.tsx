@@ -20,7 +20,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useResetPasswordMutation } from '../api'
+import { useResetPasswordMutation } from '../mutations'
 
 const MILLISECONDS_IN_A_SECOND = 1000
 

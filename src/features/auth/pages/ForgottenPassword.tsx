@@ -4,7 +4,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
-import { requestPasswordReset } from 'features/auth/api'
+import { api } from 'api/api'
 import { navigateToHomeWithoutModal, RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
@@ -33,7 +33,8 @@ export const ForgottenPassword: FunctionComponent<Props> = ({ navigation }) => {
   }
 
   async function validateEmail() {
-    await requestPasswordReset({ email })
+    await api
+      .nativeV1RequestPasswordResetPost({ email })
       .then(() => {
         navigation.navigate('ResetPasswordEmailSent', { email })
       })

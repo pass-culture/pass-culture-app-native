@@ -9,11 +9,11 @@ describe('saveRefreshToken()', () => {
   it('should call setGenericPassword from Keychain', async () => {
     expect.assertions(2)
 
-    await saveRefreshToken('user@example.com', 'fake_access_token')
+    await saveRefreshToken('fake_access_token')
 
     expect(Keychain.setGenericPassword).toHaveBeenCalledTimes(1)
     expect(Keychain.setGenericPassword).toHaveBeenCalledWith(
-      'user@example.com',
+      'PASSCULTURE_REFRESH_TOKEN',
       'fake_access_token'
     )
   })
@@ -21,7 +21,7 @@ describe('saveRefreshToken()', () => {
   it('should throws if access token is undefined', async () => {
     expect.assertions(2)
 
-    await expect(saveRefreshToken('user@example.com', undefined)).rejects.toEqual(
+    await expect(saveRefreshToken(undefined)).rejects.toEqual(
       Error('Aucun refresh token à sauvegarder')
     )
     expect(Keychain.setGenericPassword).not.toHaveBeenCalled()
@@ -33,7 +33,7 @@ describe('saveRefreshToken()', () => {
       throw Error()
     })
 
-    await expect(saveRefreshToken('user@example.com', 'fake_access_token')).rejects.toEqual(
+    await expect(saveRefreshToken('fake_access_token')).rejects.toEqual(
       Error('Keychain non accessible')
     )
   })
