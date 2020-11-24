@@ -34,14 +34,25 @@ Add ANDROID to your current PATH env var, by adding theses line in your .bashrc:
 `export ANDROID_HOME=$HOME/tools/sdk export PATH=$PATH:$ANDROID_HOME/tools export PATH=$PATH:$ANDROID_HOME/platform-tools`
 
 ## Installation
+Verify if `jq` (dependency required for parsing then inserting `CFBundleVersion` in `Ìnfo.plist`) is installed : 
+```bash
+which jq
+````
 
+If not found, install it :
+```bash
+brew install jq
+```
+
+Then :
 ```bash
 git clone <repo_url>
 cd pass-culture-app-native
 bundle install
 yarn
 bundle exec pod repo update
-cd ios && bundle exec pod install && cd ..
+cd ios
+bundle exec pod install
 ```
 
 ### Run the app
