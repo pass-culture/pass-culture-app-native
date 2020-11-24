@@ -48,7 +48,7 @@ describe('PartialDateInput Component', () => {
           placeholder="PP"
         />
       )
-      const validationBar = getByTestId('datepart-bar')
+      const validationBar = getByTestId('datepart-bar-day')
 
       const { backgroundColor, height } = validationBar.props.style[0]
 
@@ -70,7 +70,7 @@ describe('PartialDateInput Component', () => {
       const input = getByPlaceholderText('PP')
       fireEvent.changeText(input, '10')
 
-      const validationBar = getByTestId('datepart-bar')
+      const validationBar = getByTestId('datepart-bar-day')
       const { backgroundColor } = validationBar.props.style[0]
 
       expect(backgroundColor).toEqual(ColorsEnum.ERROR)
@@ -90,7 +90,7 @@ describe('PartialDateInput Component', () => {
       const input = getByPlaceholderText('PP')
       fireEvent.changeText(input, '10')
 
-      const validationBar = getByTestId('datepart-bar')
+      const validationBar = getByTestId('datepart-bar-day')
       const { backgroundColor } = validationBar.props.style[0]
 
       expect(backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
@@ -110,7 +110,7 @@ describe('PartialDateInput Component', () => {
       const input = getByPlaceholderText('PP')
       fireEvent(input, 'focus')
 
-      const validationBar = getByTestId('datepart-bar')
+      const validationBar = getByTestId('datepart-bar-day')
       const { backgroundColor } = validationBar.props.style[0]
 
       expect(backgroundColor).toEqual(ColorsEnum.PRIMARY)

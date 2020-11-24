@@ -10,6 +10,7 @@ import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { DateInput } from 'ui/components/inputs/DateInput'
 import { PartialDateInput, DatePartType } from 'ui/components/inputs/PartialDateInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
@@ -362,6 +363,10 @@ export const AppComponents: FunctionComponent = () => {
             onChangeValue={setPartialDate}
             placeholder="YYYY"
           />
+          <Spacer.Column numberOfSpaces={1} />
+          <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>
+          <Spacer.Column numberOfSpaces={1} />
+          <DateInput />
         </Section>
         <Spacer.Column numberOfSpaces={5} />
 

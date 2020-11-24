@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, Spacer } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export enum DatePartType {
   DAY = 'day',
@@ -47,7 +47,7 @@ export const PartialDateInput: FunctionComponent<PartialDateInputProps> = (props
       />
       <Spacer.Column numberOfSpaces={1} />
       <ValidationBar
-        testID="datepart-bar"
+        testID={`datepart-bar-${props.identifier}`}
         isValid={props.isValid}
         isEmpty={value.length === 0}
         isFocused={isFocused}
@@ -58,6 +58,7 @@ export const PartialDateInput: FunctionComponent<PartialDateInputProps> = (props
 
 const Container = styled.View({
   alignItems: 'center',
+  margin: getSpacing(1),
 })
 
 const StyledInput = styled.TextInput<{ lengthByChar: number }>(({ lengthByChar }) => ({
@@ -76,24 +77,17 @@ interface ValidationBarProps {
 }
 
 const ValidationBar = styled.View.attrs<ValidationBarProps>(({ isEmpty, isFocused, isValid }) => {
+  let backgroundColor = ColorsEnum.ERROR
+  // 'else if' is important
   if (isFocused) {
-    return { backgroundColor: ColorsEnum.PRIMARY }
-  }
-
-  if (isEmpty) {
-    return { backgroundColor: ColorsEnum.GREY_MEDIUM }
-  }
-
-  let backgroundColor
-  if (isValid) {
+    backgroundColor = ColorsEnum.PRIMARY
+  } else if (isEmpty) {
+    backgroundColor = ColorsEnum.GREY_MEDIUM
+  } else if (isValid) {
     backgroundColor = ColorsEnum.GREEN_VALID
-  } else if (isValid === false) {
-    backgroundColor = ColorsEnum.ERROR
   }
 
-  return {
-    backgroundColor,
-  }
+  return { backgroundColor }
 })<ValidationBarProps>(({ backgroundColor }) => ({
   backgroundColor,
   height: 5,
