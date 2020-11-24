@@ -20,7 +20,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
 
   const { hits, nbHits } = useFetchAlgolia({
     algoliaParameters: parameters,
-    cacheKey: `module-${moduleId}`,
+    moduleId,
   })
 
   const renderItem = useCallback(
