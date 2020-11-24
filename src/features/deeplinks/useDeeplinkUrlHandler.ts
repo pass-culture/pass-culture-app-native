@@ -29,8 +29,6 @@ export function useOnDeeplinkError() {
   const { navigate } = useNavigation()
   const { displayInfosSnackBar } = useContext(SnackBarContext)
 
-  // TODO: remove this comment when decided about deeplink errors behavior
-  // See https://passculture.atlassian.net/browse/PC-5165
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return (error: string) => {
     displayInfosSnackBar({

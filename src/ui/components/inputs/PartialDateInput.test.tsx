@@ -11,7 +11,6 @@ describe('PartialDateInput Component', () => {
     const { getByPlaceholderText } = render(
       <PartialDateInput
         identifier={DatePartType.DAY}
-        maxLength={2}
         onChangeValue={onChangeValue}
         placeholder="PP"
       />
@@ -42,7 +41,6 @@ describe('PartialDateInput Component', () => {
       const { getByTestId } = render(
         <PartialDateInput
           identifier={DatePartType.DAY}
-          maxLength={2}
           onChangeValue={onChangeValue}
           placeholder="PP"
         />
@@ -60,7 +58,6 @@ describe('PartialDateInput Component', () => {
         <PartialDateInput
           identifier={DatePartType.DAY}
           isValid={false}
-          maxLength={2}
           onChangeValue={onChangeValue}
           placeholder="PP"
         />
@@ -80,7 +77,6 @@ describe('PartialDateInput Component', () => {
         <PartialDateInput
           identifier={DatePartType.DAY}
           isValid
-          maxLength={2}
           onChangeValue={onChangeValue}
           placeholder="PP"
         />
@@ -100,7 +96,6 @@ describe('PartialDateInput Component', () => {
         <PartialDateInput
           identifier={DatePartType.DAY}
           isValid
-          maxLength={2}
           onChangeValue={onChangeValue}
           placeholder="PP"
         />
