@@ -52,6 +52,7 @@
     "i18n-js": "^3.5.1",
     "jsc-android": "^241213.1.0",
     "patch-package": "^6.2.0",
+    "portable-fetch": "^3.0.0",
     "react": "16.13.1",
     "react-content-loader": "^5.1.4",
     "react-native": "0.63.3",
@@ -72,7 +73,8 @@
     "react-query": "3.1.1",
     "recompose": "^0.30.0",
     "styled-components": "^5.2.0",
-    "typesafe-actions": "^5.1.0"
+    "typesafe-actions": "^5.1.0",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

@@ -11,8 +11,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the file manually.
  */
-import * as url from "url";
-import * as portableFetch from "portable-fetch";
+import url from "url";
+import portableFetch from "portable-fetch";
+
+import { getAuthenticationHeaders, handleGeneratedApiResponse } from "api/helpers";
+import { EmptyResponse } from 'libs/fetch'
+
 import { Configuration } from "./configuration";
 
 const BASE_PATH = "/".replace(/\/+$/, "");
@@ -29,7 +33,6 @@ export const COLLECTION_FORMATS = {
 };
 
 /**
- *
  * @export
  * @interface FetchAPI
  */
@@ -38,7 +41,6 @@ export interface FetchAPI {
 }
 
 /**
- *
  * @export
  * @interface FetchArgs
  */
@@ -48,12 +50,11 @@ export interface FetchArgs {
 }
 
 /**
- *
  * @export
  * @class BaseAPI
  */
 export class BaseAPI {
-    protected configuration: Configuration;
+    protected configuration?: Configuration;
     constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected fetch: FetchAPI = portableFetch) {
         if (configuration) {
             this.configuration = configuration;
@@ -63,13 +64,12 @@ export class BaseAPI {
 };
 
 /**
- *
  * @export
  * @class RequiredError
  * @extends {Error}
  */
 export class RequiredError extends Error {
-    name: "RequiredError"
+    name = "RequiredError"
     constructor(public field: string, msg?: string) {
         super(msg);
     }
@@ -165,11 +165,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nativeV1RefreshAccessTokenPost(options: any = {}): FetchArgs {
+        async nativeV1RefreshAccessTokenPost(options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/refresh_access_token`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -187,11 +187,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options: any = {}): FetchArgs {
+        async nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/request_password_reset`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
             localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -212,11 +212,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nativeV1ResetPasswordPost(body?: ResetPasswordRequest, options: any = {}): FetchArgs {
+        async nativeV1ResetPasswordPost(body?: ResetPasswordRequest, options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/reset_password`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
             localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -237,11 +237,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nativeV1SigninPost(body?: SigninRequest, options: any = {}): FetchArgs {
+        async nativeV1SigninPost(body?: SigninRequest, options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/signin`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
             localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -269,15 +269,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nativeV1RefreshAccessTokenPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<RefreshResponse> {
-            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).nativeV1RefreshAccessTokenPost(options);
+        async nativeV1RefreshAccessTokenPost(options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<RefreshResponse>> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1RefreshAccessTokenPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
+                    return handleGeneratedApiResponse(response)
                 });
             };
         },
@@ -288,15 +284,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).nativeV1RequestPasswordResetPost(body, options);
+        async nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<EmptyResponse>> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1RequestPasswordResetPost(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response;
-                    } else {
-                        throw response;
-                    }
+                    return handleGeneratedApiResponse(response)
                 });
             };
         },
@@ -307,15 +299,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nativeV1ResetPasswordPost(body?: ResetPasswordRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).nativeV1ResetPasswordPost(body, options);
+        async nativeV1ResetPasswordPost(body?: ResetPasswordRequest, options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<EmptyResponse>> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1ResetPasswordPost(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response;
-                    } else {
-                        throw response;
-                    }
+                    return handleGeneratedApiResponse(response)
                 });
             };
         },
@@ -326,68 +314,17 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nativeV1SigninPost(body?: SigninRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SigninResponse> {
-            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).nativeV1SigninPost(body, options);
+        async nativeV1SigninPost(body?: SigninRequest, options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<SigninResponse>> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1SigninPost(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
+                    return handleGeneratedApiResponse(response)
                 });
             };
         },
     }
 };
 
-/**
- * DefaultApi - factory interface
- * @export
- */
-export const DefaultApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
-    return {
-        /**
-         * 
-         * @summary refresh <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        nativeV1RefreshAccessTokenPost(options?: any) {
-            return DefaultApiFp(configuration).nativeV1RefreshAccessTokenPost(options)(fetch, basePath);
-        },
-        /**
-         * 
-         * @summary password_reset_request <POST>
-         * @param {PasswordResetRequestRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options?: any) {
-            return DefaultApiFp(configuration).nativeV1RequestPasswordResetPost(body, options)(fetch, basePath);
-        },
-        /**
-         * 
-         * @summary reset_password <POST>
-         * @param {ResetPasswordRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        nativeV1ResetPasswordPost(body?: ResetPasswordRequest, options?: any) {
-            return DefaultApiFp(configuration).nativeV1ResetPasswordPost(body, options)(fetch, basePath);
-        },
-        /**
-         * 
-         * @summary signin <POST>
-         * @param {SigninRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        nativeV1SigninPost(body?: SigninRequest, options?: any) {
-            return DefaultApiFp(configuration).nativeV1SigninPost(body, options)(fetch, basePath);
-        },
-    };
-};
 /**
  * DefaultApi - object-oriented interface
  * @export
@@ -402,8 +339,9 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public nativeV1RefreshAccessTokenPost(options?: any) {
-        return DefaultApiFp(this.configuration).nativeV1RefreshAccessTokenPost(options)(this.fetch, this.basePath);
+    public async nativeV1RefreshAccessTokenPost(options?: any) {
+        const clientEndpoint = await DefaultApiFp(this.configuration).nativeV1RefreshAccessTokenPost(options)
+        return clientEndpoint(this.fetch, this.basePath);
     }
     /**
      * 
@@ -413,8 +351,9 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options?: any) {
-        return DefaultApiFp(this.configuration).nativeV1RequestPasswordResetPost(body, options)(this.fetch, this.basePath);
+    public async nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options?: any) {
+        const clientEndpoint = await DefaultApiFp(this.configuration).nativeV1RequestPasswordResetPost(body, options)
+        return clientEndpoint(this.fetch, this.basePath);
     }
     /**
      * 
@@ -424,8 +363,9 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public nativeV1ResetPasswordPost(body?: ResetPasswordRequest, options?: any) {
-        return DefaultApiFp(this.configuration).nativeV1ResetPasswordPost(body, options)(this.fetch, this.basePath);
+    public async nativeV1ResetPasswordPost(body?: ResetPasswordRequest, options?: any) {
+        const clientEndpoint = await DefaultApiFp(this.configuration).nativeV1ResetPasswordPost(body, options)
+        return clientEndpoint(this.fetch, this.basePath);
     }
     /**
      * 
@@ -435,7 +375,8 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public nativeV1SigninPost(body?: SigninRequest, options?: any) {
-        return DefaultApiFp(this.configuration).nativeV1SigninPost(body, options)(this.fetch, this.basePath);
+    public async nativeV1SigninPost(body?: SigninRequest, options?: any) {
+        const clientEndpoint = await DefaultApiFp(this.configuration).nativeV1SigninPost(body, options)
+        return clientEndpoint(this.fetch, this.basePath);
     }
 }

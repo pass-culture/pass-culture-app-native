@@ -9,6 +9,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.js', '.ios.js', '.android.js'],
         root: ['./src/'],
         alias: {
+          api: './src/api',
           features: './src/features',
           libs: './src/libs',
           locales: './src/locales',
