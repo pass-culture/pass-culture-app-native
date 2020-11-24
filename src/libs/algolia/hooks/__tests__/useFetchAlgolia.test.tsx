@@ -19,7 +19,7 @@ const mockOnError = jest.fn()
 const props: UseFetchAlgoliaInterface = {
   algoliaParameters: { hitsPerPage: 10, title: 'param title' },
   extraParameters: { page: 0 },
-  cacheKey: 'cacheKey',
+  moduleId: 'moduleId',
   onSuccess: mockOnSuccess,
   onError: mockOnError,
 }
