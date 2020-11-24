@@ -11,12 +11,11 @@ import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getShadow, getSpacing, Spacer, UniqueColors } from 'ui/theme'
 
-import { RootTabRouteName } from '../RootTabNavigator'
-
 import { TabBarComponent } from './TabBarComponent'
+import { TabRouteName } from './TabNavigator'
 
 const mapRouteToIcon = (
-  route: RootTabRouteName | string
+  route: TabRouteName | string
 ): ((props: BicolorIconInterface) => React.ReactNode) => {
   switch (route) {
     case 'HomeNavigator':
