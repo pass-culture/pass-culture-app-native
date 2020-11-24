@@ -21,6 +21,10 @@ jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
 }))
 
+jest.mock('./useShowSkeleton', () => ({
+  useShowSkeleton: jest.fn(() => false),
+}))
+
 describe('Home component', () => {
   beforeAll(() => {
     jest.useFakeTimers()
@@ -28,24 +32,16 @@ describe('Home component', () => {
   afterEach(() => {
     jest.clearAllTimers()
   })
-  it('should render placehodler loader for 3s', async () => {
-    const home = await homeRenderer(false, true)
-    expect(home.queryByTestId('HomeBodyPlaceholder-testID')).toBeTruthy()
-    jest.advanceTimersByTime(2900)
-    expect(home.queryByTestId('HomeBodyPlaceholder-testID')).toBeTruthy()
-    act(() => jest.advanceTimersByTime(100))
-    expect(home.queryByTestId('HomeBodyPlaceholder-testID')).toBeFalsy()
-  })
   it('should render correctly without login modal', async () => {
-    const home = await homeRenderer(false, false)
+    const home = await homeRenderer(false)
 
     expect(home).toMatchSnapshot()
     home.unmount()
   })
 
   it('should render modal correctly', async () => {
-    const homeWithLoginModal = await homeRenderer(true, false)
-    const homeWithoutLoginModal = await homeRenderer(false, false)
+    const homeWithLoginModal = await homeRenderer(true)
+    const homeWithoutLoginModal = await homeRenderer(false)
 
     expect(homeWithoutLoginModal).toMatchDiffSnapshot(homeWithLoginModal)
     homeWithLoginModal.unmount()
@@ -53,7 +49,7 @@ describe('Home component', () => {
   })
 
   it('should have a welcome message', async () => {
-    const { getByText, unmount } = await homeRenderer(false, false)
+    const { getByText, unmount } = await homeRenderer(false)
 
     const welcomeText = getByText('Bienvenue !')
     expect(welcomeText.props.children).toBe('Bienvenue !')
@@ -62,7 +58,7 @@ describe('Home component', () => {
 
   it('should not have code push button', async () => {
     env.FEATURE_FLAG_CODE_PUSH_MANUAL = false
-    const home = await homeRenderer(false, false)
+    const home = await homeRenderer(false)
 
     expect(() => home.getByText('Check update')).toThrowError()
     home.unmount()
@@ -70,7 +66,7 @@ describe('Home component', () => {
 
   it('should have components and navigation buttons when CHEAT_BUTTONS_ENABLED', async () => {
     env.CHEAT_BUTTONS_ENABLED = true
-    const home = await homeRenderer(false, false)
+    const home = await homeRenderer(false)
 
     expect(() => home.getByText('Composants')).toBeTruthy()
     expect(() => home.getByText('Navigation')).toBeTruthy()
@@ -79,7 +75,7 @@ describe('Home component', () => {
 
   it('should NOT have components or navigation buttons when NOT CHEAT_BUTTONS_ENABLED', async () => {
     env.CHEAT_BUTTONS_ENABLED = false
-    const home = await homeRenderer(false, false)
+    const home = await homeRenderer(false)
 
     expect(() => home.getByText('Composants')).toThrowError()
     expect(() => home.getByText('Navigation')).toThrowError()
@@ -87,7 +83,7 @@ describe('Home component', () => {
   })
 })
 
-async function homeRenderer(withModal: boolean, withLoadingPlaceholder: boolean) {
+async function homeRenderer(withModal: boolean) {
   const renderAPI = render(
     reactQueryProviderHOC(
       <NavigationContainer>
@@ -102,9 +98,6 @@ async function homeRenderer(withModal: boolean, withLoadingPlaceholder: boolean)
     )
   )
   await act(async () => {
-    if (!withLoadingPlaceholder) {
-      jest.advanceTimersByTime(3000)
-    }
     await flushAllPromises()
   })
   return renderAPI

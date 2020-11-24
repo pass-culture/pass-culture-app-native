@@ -657,27 +657,38 @@ exports[`Home component should render correctly without login modal 1`] = `
                             }
                           />
                           <View
+                            isLoading={false}
                             style={
                               Array [
                                 Object {
-                                  "alignItems": "flex-start",
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
+                                  "overflow": "hidden",
                                 },
                               ]
                             }
                           >
                             <View
-                              numberOfSpaces={6}
                               style={
                                 Array [
                                   Object {
-                                    "height": 24,
+                                    "alignItems": "flex-start",
+                                    "flexBasis": 0,
+                                    "flexGrow": 1,
+                                    "flexShrink": 1,
                                   },
                                 ]
                               }
-                            />
+                            >
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                            </View>
                           </View>
                           <Modal
                             animationType="slide"
@@ -1069,7 +1080,7 @@ exports[`Home component should render modal correctly 1`] = `
 - First value
 + Second value
 
-@@ -679,11 +679,11 @@
+@@ -690,11 +690,11 @@
                             <Modal
                               animationType=\\"slide\\"
                               hardwareAccelerated={false}
