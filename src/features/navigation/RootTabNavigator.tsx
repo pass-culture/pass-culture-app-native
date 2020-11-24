@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import { StatusBar, Platform } from 'react-native'
 
@@ -37,16 +38,30 @@ export const RootTabNavigator: React.FC = () => {
   const authContext = useAuthContext()
 
   return (
+    <RootTab.Navigator
+      initialRouteName="HomeNavigator"
+      tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
+      <RootTab.Screen name="HomeNavigator" component={HomeNavigator} />
+      <RootTab.Screen name="Search" component={Search} />
+      {authContext.isLoggedIn && <RootTab.Screen name="Bookings" component={Bookings} />}
+      <RootTab.Screen name="Favorites" component={Favorites} />
+      <RootTab.Screen name="Profile" component={Profile} />
+    </RootTab.Navigator>
+  )
+}
+
+export type RootStackParamList = {
+  TabNavigator: undefined
+}
+
+const RootStack = createStackNavigator<RootStackParamList>()
+
+export const RootNavigator: React.FC = () => {
+  return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef}>
-      <RootTab.Navigator
-        initialRouteName="HomeNavigator"
-        tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
-        <RootTab.Screen name="HomeNavigator" component={HomeNavigator} />
-        <RootTab.Screen name="Search" component={Search} />
-        {authContext.isLoggedIn && <RootTab.Screen name="Bookings" component={Bookings} />}
-        <RootTab.Screen name="Favorites" component={Favorites} />
-        <RootTab.Screen name="Profile" component={Profile} />
-      </RootTab.Navigator>
+      <RootStack.Navigator initialRouteName="TabNavigator" screenOptions={{ headerShown: false }}>
+        <RootStack.Screen name="TabNavigator" component={RootTabNavigator} />
+      </RootStack.Navigator>
     </NavigationContainer>
   )
 }
