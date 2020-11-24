@@ -14,7 +14,6 @@ import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { SafeContainer } from 'ui/components/SafeContainer'
 import { SnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { Background } from 'ui/svg/Background'
 import { Close } from 'ui/svg/icons/Close'
@@ -61,7 +60,7 @@ export const ReinitializePassword = () => {
   }, [])
 
   return (
-    <SafeContainer noTabBarSpacing>
+    <React.Fragment>
       <Background />
       <BottomCard>
         <ModalHeader
@@ -112,7 +111,7 @@ export const ReinitializePassword = () => {
           />
         </BottomCardContentContainer>
       </BottomCard>
-    </SafeContainer>
+    </React.Fragment>
   )
 }
 

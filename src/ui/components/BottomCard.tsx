@@ -22,17 +22,12 @@ export const BottomCard: FunctionComponent = ({ children }) => {
     },
   })
 
-  let displaySpacer = true
-  if (Platform.OS === 'ios') {
-    displaySpacer = keyboardHeight <= 0
-  }
-
   return (
     <StyledTouchableWithoutFeedback>
       <AvoidingKeyboardContainer keyboardHeight={keyboardHeight}>
         <StyledBottomCardContainer>
           {children}
-          {displaySpacer && <Spacer.TabBar />}
+          <Spacer.BottomScreen />
         </StyledBottomCardContainer>
       </AvoidingKeyboardContainer>
     </StyledTouchableWithoutFeedback>

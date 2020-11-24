@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { SafeContainer } from 'ui/components/SafeContainer'
 import { padding, Spacer } from 'ui/theme'
 
 import { CheatCodesButton } from '../components/CheatCodesButton'
@@ -19,83 +18,83 @@ const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 export function Navigation(): JSX.Element {
   const navigation = useNavigation()
   return (
-    <SafeContainer noTabBarSpacing>
-      <ScrollView>
-        <StyledContainer>
-          <Spacer.Column numberOfSpaces={2} />
-          <Row half>
-            <CheatCodesButton />
-          </Row>
-          <Spacer.Column numberOfSpaces={2} />
-          <Row half>
-            <IdCheckButton />
-          </Row>
-          <Spacer.Column numberOfSpaces={2} />
-          <Row half>
-            <ButtonPrimary title={'Login'} onPress={() => navigation.navigate('Login')} />
-          </Row>
-          <Spacer.Column numberOfSpaces={2} />
-          <Row half>
-            <ButtonPrimary
-              title={'Reset Mdp'}
-              onPress={() => {
-                if (Linking.canOpenURL(MdpDeeplink)) {
-                  Linking.openURL(MdpDeeplink)
-                }
-              }}
-            />
-          </Row>
-          <Row>
-            <ButtonPrimary
-              title={'Reset Mdp : email envoyé'}
-              onPress={() =>
-                // TODO => PC-4356
-                navigation.navigate('ResetPasswordEmailSent', {
-                  email: 'jean.dupont@gmail.com',
-                })
+    <ScrollView>
+      <Spacer.TopScreen />
+      <StyledContainer>
+        <Spacer.Column numberOfSpaces={2} />
+        <Row half>
+          <CheatCodesButton />
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+        <Row half>
+          <IdCheckButton />
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+        <Row half>
+          <ButtonPrimary title={'Login'} onPress={() => navigation.navigate('Login')} />
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+        <Row half>
+          <ButtonPrimary
+            title={'Reset Mdp'}
+            onPress={() => {
+              if (Linking.canOpenURL(MdpDeeplink)) {
+                Linking.openURL(MdpDeeplink)
               }
-            />
-          </Row>
-          <Spacer.Column numberOfSpaces={2} />
-          <Row>
-            <ButtonPrimary
-              title={'Reset Mdp : lien expiré'}
-              onPress={() =>
-                navigation.navigate('ResetPasswordExpiredLink', {
-                  email: 'jean.dupont@gmail.com',
-                })
+            }}
+          />
+        </Row>
+        <Row>
+          <ButtonPrimary
+            title={'Reset Mdp : email envoyé'}
+            onPress={() =>
+              // TODO => PC-4356
+              navigation.navigate('ResetPasswordEmailSent', {
+                email: 'jean.dupont@gmail.com',
+              })
+            }
+          />
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+        <Row>
+          <ButtonPrimary
+            title={'Reset Mdp : lien expiré'}
+            onPress={() =>
+              navigation.navigate('ResetPasswordExpiredLink', {
+                email: 'jean.dupont@gmail.com',
+              })
+            }
+          />
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+        <Row>
+          <Text>Simulation email deeplink :</Text>
+          <Link>
+            <Text>{MdpDeeplink}</Text>
+          </Link>
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+        <Row>
+          <ButtonPrimary
+            title={'Mauvais lien de deeplink'}
+            onPress={() => {
+              if (Linking.canOpenURL(BadDeeplink)) {
+                Linking.openURL(BadDeeplink)
               }
-            />
-          </Row>
-          <Spacer.Column numberOfSpaces={2} />
-          <Row>
-            <Text>Simulation email deeplink :</Text>
-            <Link>
-              <Text>{MdpDeeplink}</Text>
-            </Link>
-          </Row>
-          <Spacer.Column numberOfSpaces={2} />
-          <Row>
-            <ButtonPrimary
-              title={'Mauvais lien de deeplink'}
-              onPress={() => {
-                if (Linking.canOpenURL(BadDeeplink)) {
-                  Linking.openURL(BadDeeplink)
-                }
-              }}
-            />
-          </Row>
-          <Spacer.Column numberOfSpaces={2} />
-          <Row>
-            <Text>Simulation mauvais deeplink :</Text>
-            <Link>
-              <Text>{BadDeeplink}</Text>
-            </Link>
-          </Row>
-          <Spacer.Column numberOfSpaces={5} />
-        </StyledContainer>
-      </ScrollView>
-    </SafeContainer>
+            }}
+          />
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+        <Row>
+          <Text>Simulation mauvais deeplink :</Text>
+          <Link>
+            <Text>{BadDeeplink}</Text>
+          </Link>
+        </Row>
+        <Spacer.Column numberOfSpaces={5} />
+      </StyledContainer>
+      <Spacer.BottomScreen />
+    </ScrollView>
   )
 }
 

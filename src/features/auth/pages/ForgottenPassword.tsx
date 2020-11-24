@@ -12,7 +12,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { SafeContainer } from 'ui/components/SafeContainer'
 import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
@@ -44,7 +43,7 @@ export const ForgottenPassword: FunctionComponent<Props> = ({ navigation }) => {
   }
 
   return (
-    <SafeContainer noTabBarSpacing>
+    <React.Fragment>
       <Background />
       <BottomCard>
         <ModalHeader
@@ -83,7 +82,7 @@ export const ForgottenPassword: FunctionComponent<Props> = ({ navigation }) => {
           />
         </ModalContent>
       </BottomCard>
-    </SafeContainer>
+    </React.Fragment>
   )
 }
 

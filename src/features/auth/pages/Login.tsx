@@ -13,7 +13,6 @@ import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { SafeContainer } from 'ui/components/SafeContainer'
 import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
@@ -61,7 +60,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
   }
 
   return (
-    <SafeContainer noTabBarSpacing>
+    <React.Fragment>
       <Background />
       <BottomCard>
         <ModalHeader
@@ -119,7 +118,7 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
           disabled={shouldDisableLoginButton}
         />
       </BottomCard>
-    </SafeContainer>
+    </React.Fragment>
   )
 }
 

@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SafeContainer } from 'ui/components/SafeContainer'
 import { Background } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -14,7 +13,7 @@ type Props = {
 
 export const GenericInfoPage: FunctionComponent<Props> = (props) => {
   return (
-    <SafeContainer noTabBarSpacing>
+    <React.Fragment>
       <Background />
       <ScrollView contentContainerStyle={scrollViewContentContainerStyle}>
         <Spacer.Column numberOfSpaces={18} />
@@ -23,9 +22,9 @@ export const GenericInfoPage: FunctionComponent<Props> = (props) => {
         <StyledTitle2>{props.title}</StyledTitle2>
         <Spacer.Column numberOfSpaces={5} />
         {props.children}
+        <Spacer.BottomScreen />
       </ScrollView>
-      <Spacer.TabBar />
-    </SafeContainer>
+    </React.Fragment>
   )
 }
 
