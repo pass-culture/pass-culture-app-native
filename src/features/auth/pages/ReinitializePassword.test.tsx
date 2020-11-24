@@ -3,6 +3,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute, useNavigation } from '__mocks__/@react-navigation/native'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
@@ -24,7 +25,9 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should enable the submit button when passwords are equals and filled', async () => {
-    const { getByPlaceholderText, getByTestId } = render(<ReinitializePassword />)
+    const { getByPlaceholderText, getByTestId } = render(
+      reactQueryProviderHOC(<ReinitializePassword />)
+    )
 
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
@@ -42,7 +45,9 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should display the matching error when the passwords dont match', async () => {
-    const { getByPlaceholderText, getByTestId } = render(<ReinitializePassword />)
+    const { getByPlaceholderText, getByTestId } = render(
+      reactQueryProviderHOC(<ReinitializePassword />)
+    )
 
     const passwordInput = getByPlaceholderText('Ton mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
@@ -59,7 +64,7 @@ describe('ReinitializePassword Page', () => {
     })
   })
   it('should validate PasswordSecurityRules when password is correct', async () => {
-    const { toJSON, getByPlaceholderText } = render(<ReinitializePassword />)
+    const { toJSON, getByPlaceholderText } = render(reactQueryProviderHOC(<ReinitializePassword />))
 
     const notValidatedRulesSnapshot = toJSON()
 
@@ -75,7 +80,7 @@ describe('ReinitializePassword Page', () => {
     const { navigate } = useNavigation()
     navigate.mockReset()
 
-    const { findByText } = render(<ReinitializePassword />)
+    const { findByText } = render(reactQueryProviderHOC(<ReinitializePassword />))
 
     const continueButton = await findByText('Continuer')
     fireEvent.press(continueButton)

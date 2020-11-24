@@ -39,7 +39,7 @@ export const ReinitializePassword = () => {
   const allowSubmission = password.length > 0 && confirmedPassword === password
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
 
-  const [resetPassword, { isLoading }] = useResetPasswordMutation(() => {
+  const { mutate: resetPassword, isLoading } = useResetPasswordMutation(() => {
     displaySuccessSnackBar({
       message: _(t`Ton mot de passe a été modifié !`),
       timeout: SNACK_BAR_TIME_OUT,
