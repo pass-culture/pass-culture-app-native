@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { DatePartType, PartialDateInput } from './PartialDateInput'
 
 interface DateInputProps {
-  onChangeValue?: (value: string | null) => void
+  onChangeValue?: (value: string | null, isComplete: boolean) => void
 }
 
 export const CurrentYear = new Date().getFullYear()
@@ -60,9 +60,10 @@ export const DateInput: FunctionComponent<DateInputProps> = (props) => {
   // notify parent effect
   useEffect(() => {
     if (isValid && isMonthValid && isDayValid && isYearValid) {
-      props.onChangeValue?.(`${year}-${month}-${day}`)
+      props.onChangeValue?.(`${year}-${month}-${day}`, isComplete)
     } else {
-      props.onChangeValue?.(null)
+      const date = `${year}${month}${day}`
+      date.length > 0 && props.onChangeValue?.(null, isComplete)
     }
   }, [day, month, year])
 
