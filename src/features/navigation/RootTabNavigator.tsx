@@ -1,6 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import { StatusBar, Platform } from 'react-native'
 
@@ -12,7 +10,6 @@ import { HomeNavigator } from '../home/navigation/HomeNavigator'
 import { Profile } from '../profile/pages/Profile'
 import { Search } from '../search/pages/Search'
 
-import { onNavigationStateChange } from './services'
 import { TabBar } from './TabBar/TabBar'
 
 export type RootTabParamList = {
@@ -32,8 +29,6 @@ if (Platform.OS === 'android') {
 
 const RootTab = createBottomTabNavigator<RootTabParamList>()
 
-export const navigationRef = React.createRef<NavigationContainerRef>()
-
 export const RootTabNavigator: React.FC = () => {
   const authContext = useAuthContext()
 
@@ -47,21 +42,5 @@ export const RootTabNavigator: React.FC = () => {
       <RootTab.Screen name="Favorites" component={Favorites} />
       <RootTab.Screen name="Profile" component={Profile} />
     </RootTab.Navigator>
-  )
-}
-
-export type RootStackParamList = {
-  TabNavigator: undefined
-}
-
-const RootStack = createStackNavigator<RootStackParamList>()
-
-export const RootNavigator: React.FC = () => {
-  return (
-    <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef}>
-      <RootStack.Navigator initialRouteName="TabNavigator" screenOptions={{ headerShown: false }}>
-        <RootStack.Screen name="TabNavigator" component={RootTabNavigator} />
-      </RootStack.Navigator>
-    </NavigationContainer>
   )
 }

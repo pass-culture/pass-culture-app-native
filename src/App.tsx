@@ -9,7 +9,7 @@ import { addPlugin } from 'react-query-native-devtools'
 import './why-did-you-render'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
-import { RootNavigator } from 'features/navigation/RootTabNavigator'
+import { RootNavigator } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { i18n } from 'libs/i18n' //@translations
 import 'libs/sentry'

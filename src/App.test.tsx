@@ -9,9 +9,9 @@ import { App } from './App'
 jest.mock('./libs/notifications', () => ({
   useStartBatchNotification: jest.fn(),
 }))
-jest.mock('features/navigation/RootTabNavigator', () => ({
-  RootTabNavigator() {
-    return 'Placeholder for RootTabNavigator'
+jest.mock('features/navigation/RootNavigator', () => ({
+  RootNavigator() {
+    return 'Placeholder for RootNavigator'
   },
 }))
 
