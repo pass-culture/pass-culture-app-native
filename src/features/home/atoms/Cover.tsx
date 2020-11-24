@@ -59,4 +59,5 @@ const ArrowsContainer = styled.View({
 
 const ArrowMarginContainer = styled.View({
   marginRight: getSpacing(-6),
+  marginTop: getSpacing(7),
 })
