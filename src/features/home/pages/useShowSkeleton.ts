@@ -5,7 +5,7 @@ import { DEFAULT_SPLASHSCREEN_DELAY } from 'libs/splashscreen'
 
 export const ANIMATION_DELAY = 700 // Time for the skeleton animation to finish
 
-const hasFetchedSubmodules = (queryCache: QueryCache): boolean => {
+export const hasFetchedSubmodules = (queryCache: QueryCache): boolean => {
   const algoliaModules = queryCache.findAll(['algoliaModule'])
   if (algoliaModules.length === 0) return false
   return algoliaModules.every((q) => !q.state.isFetching)

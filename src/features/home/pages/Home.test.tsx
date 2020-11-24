@@ -26,12 +26,6 @@ jest.mock('./useShowSkeleton', () => ({
 }))
 
 describe('Home component', () => {
-  beforeAll(() => {
-    jest.useFakeTimers()
-  })
-  afterEach(() => {
-    jest.clearAllTimers()
-  })
   it('should render correctly without login modal', async () => {
     const home = await homeRenderer(false)
 
