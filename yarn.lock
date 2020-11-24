@@ -9759,10 +9759,10 @@ react-query-native-devtools@^0.3.2:
   resolved "https://registry.yarnpkg.com/react-query-native-devtools/-/react-query-native-devtools-0.3.2.tgz#967471d08f786896f8afda223b04c8e2785eb200"
   integrity sha512-N3Qeb4iRAqscY6O1TnQ2+Lh/c8kmzmVVX4NlDHf5U2VCvhkX9kbF0J+nr1B7Ji8ahimON+sMLV0zVmH8QDc/dg==
 
-react-query@^2.23.1:
-  version "2.23.1"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-2.23.1.tgz#7d676f56d3c6e96b4de4d0b178baf6bb6a0ec272"
-  integrity sha512-qIma0Kvr//LWgWFah7RcntvD4FurXXdQaQeIfqhCWKdhihhe3Xs5BHsljAP68jo719/+xhWxL3I96SvrU4gGHA==
+react-query@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.1.1.tgz#343fcefc2a190332f6bfffd340fbee91b6037e2f"
+  integrity sha512-9BxfcIj8qYKcyhe/x40y4SQPTgtMEdWKDHMQDi2ZsBEV9vOuLIJekiyxPE5kxuWmFmhHSH9zs3iuuhyPQpKcvA==
   dependencies:
     "@babel/runtime" "^7.5.5"
 

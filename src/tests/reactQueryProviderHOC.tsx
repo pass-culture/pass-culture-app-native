@@ -1,10 +1,7 @@
 import React from 'react'
-import { QueryCache, ReactQueryCacheProvider } from 'react-query'
+import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
 
-export const reactQueryProviderHOC = (
-  component: React.ReactNode,
-  defaultQueryCache?: QueryCache
-) => {
-  const queryCache = defaultQueryCache ?? new QueryCache()
-  return <ReactQueryCacheProvider queryCache={queryCache}>{component}</ReactQueryCacheProvider>
+export const reactQueryProviderHOC = (component: React.ReactNode) => {
+  const queryClient = new QueryClient({ cache: new QueryCache() })
+  return <QueryClientProvider client={queryClient}>{component}</QueryClientProvider>
 }

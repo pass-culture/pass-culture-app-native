@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 import { FallbackProps } from 'react-error-boundary'
-import { useQueryCache } from 'react-query'
+import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -11,10 +11,10 @@ import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const RetryBoundary = ({ resetErrorBoundary }: FallbackProps) => {
-  const queryCache = useQueryCache()
+  const { reset } = useQueryErrorResetBoundary()
 
   const handleRetry = () => {
-    queryCache.resetErrorBoundaries()
+    reset()
     resetErrorBoundary()
   }
 

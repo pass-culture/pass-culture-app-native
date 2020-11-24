@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import CodePush from 'react-native-code-push' // @codepush
 import 'react-native-gesture-handler' // @react-navigation
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { QueryCache, ReactQueryCacheProvider } from 'react-query'
+import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
 import './why-did-you-render'
@@ -27,25 +27,26 @@ const codePushOptionsAuto = {
   installMode: CodePush.InstallMode.ON_NEXT_RESTART,
   checkFrequency: CodePush.CheckFrequency.ON_APP_START,
 }
+const queryCache = new QueryCache()
 
-const queryCache = new QueryCache({
-  defaultConfig: {
+if (__DEV__ && process.env.JEST !== 'true') {
+  addPlugin(queryCache)
+}
+const queryClient = new QueryClient({
+  cache: queryCache,
+  defaultOptions: {
     queries: {
       useErrorBoundary: true,
     },
   },
 })
 
-if (__DEV__ && process.env.JEST !== 'true') {
-  addPlugin(queryCache)
-}
-
 const AppComponent: FunctionComponent = function () {
   useStartBatchNotification()
   useHideSplashScreen()
 
   return (
-    <ReactQueryCacheProvider queryCache={queryCache}>
+    <QueryClientProvider client={queryClient}>
       <AuthWrapper>
         <I18nProvider language={i18n.language} i18n={i18n}>
           <SafeAreaProvider>
@@ -55,7 +56,7 @@ const AppComponent: FunctionComponent = function () {
           </SafeAreaProvider>
         </I18nProvider>
       </AuthWrapper>
-    </ReactQueryCacheProvider>
+    </QueryClientProvider>
   )
 }
 
