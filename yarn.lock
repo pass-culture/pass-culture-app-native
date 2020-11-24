@@ -9746,7 +9746,7 @@ react-native@0.63.3:
     use-subscription "^1.0.0"
     whatwg-fetch "^3.0.0"
 
-react-query-native-devtools@^0.3.2:
+react-query-native-devtools@0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/react-query-native-devtools/-/react-query-native-devtools-0.3.2.tgz#967471d08f786896f8afda223b04c8e2785eb200"
   integrity sha512-N3Qeb4iRAqscY6O1TnQ2+Lh/c8kmzmVVX4NlDHf5U2VCvhkX9kbF0J+nr1B7Ji8ahimON+sMLV0zVmH8QDc/dg==
