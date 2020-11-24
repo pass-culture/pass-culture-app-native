@@ -45,9 +45,10 @@ export const DateInput: FunctionComponent<DateInputProps> = (props) => {
   // PartialDateValidator will be injected in the next PR
   const { day: dayValidator, month: monthValidator, year: yearValidator } = PartialDateValidator
 
-  const isDayValid = dayValidator.validate(Number(day))
-  const isMonthValid = monthValidator.validate(Number(month))
-  const isYearValid = yearValidator.validate(Number(year))
+  const isDayValid = dayValidator.validate(Number(day)) && dayValidator.hasRightLength(day)
+  const isMonthValid =
+    monthValidator.validate(Number(month)) && monthValidator.hasRightLength(month)
+  const isYearValid = yearValidator.validate(Number(year)) && yearValidator.hasRightLength(year)
 
   const isComplete =
     dayValidator.hasRightLength(day) &&

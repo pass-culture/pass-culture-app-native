@@ -46,6 +46,15 @@ describe('DateInput Component', () => {
   })
   describe('input validation', () => {
     describe('Day validation', () => {
+      it('should render as error when the day length is incorrect', () => {
+        const { getByPlaceholderText, getByTestId } = render(<DateInput />)
+        const validationBar = getByTestId('datepart-bar-day')
+        const day = getByPlaceholderText('JJ')
+
+        fireEvent.changeText(day, '1')
+        const backgroundColor = validationBar.props.style[0].backgroundColor
+        expect(backgroundColor).toEqual(ColorsEnum.ERROR)
+      })
       it('should render as error when the day is not in the range [1, 31]', () => {
         const { getByPlaceholderText, getByTestId } = render(<DateInput />)
         const validationBar = getByTestId('datepart-bar-day')
@@ -70,6 +79,15 @@ describe('DateInput Component', () => {
       })
     })
     describe('Month validation', () => {
+      it('should render as error when the month length is incorrect', () => {
+        const { getByPlaceholderText, getByTestId } = render(<DateInput />)
+        const validationBar = getByTestId('datepart-bar-month')
+        const month = getByPlaceholderText('MM')
+
+        fireEvent.changeText(month, '1')
+        const backgroundColor = validationBar.props.style[0].backgroundColor
+        expect(backgroundColor).toEqual(ColorsEnum.ERROR)
+      })
       it('should render as error when the month is not in the range [1, 12]', () => {
         const { getByPlaceholderText, getByTestId } = render(<DateInput />)
         const validationBar = getByTestId('datepart-bar-month')
@@ -97,6 +115,15 @@ describe('DateInput Component', () => {
       })
     })
     describe('Year validation', () => {
+      it('should render as error when the year length is incorrect', () => {
+        const { getByPlaceholderText, getByTestId } = render(<DateInput />)
+        const validationBar = getByTestId('datepart-bar-year')
+        const year = getByPlaceholderText('YYYY')
+
+        fireEvent.changeText(year, '1')
+        const backgroundColor = validationBar.props.style[0].backgroundColor
+        expect(backgroundColor).toEqual(ColorsEnum.ERROR)
+      })
       it('should render as error when the year is not in the right range', () => {
         const { getByPlaceholderText, getByTestId } = render(<DateInput />)
         const validationBar = getByTestId('datepart-bar-year')
@@ -129,20 +156,17 @@ describe('DateInput Component', () => {
       ['31', '06', '2005'],
       ['31', '09', '2005'],
       ['31', '11', '2005'],
-    ])(
-      'should return null right value but invalid date (DD-MM-YYYY) %s-%s-%s',
-      (day, month, year) => {
-        const onChangeValue = jest.fn()
-        const { getByPlaceholderText } = render(<DateInput onChangeValue={onChangeValue} />)
+    ])('should return null for these invalid dates (DD-MM-YYYY) %s-%s-%s', (day, month, year) => {
+      const onChangeValue = jest.fn()
+      const { getByPlaceholderText } = render(<DateInput onChangeValue={onChangeValue} />)
 
-        fireEvent.changeText(getByPlaceholderText('JJ'), day)
-        fireEvent.changeText(getByPlaceholderText('MM'), month)
-        fireEvent.changeText(getByPlaceholderText('YYYY'), year)
+      fireEvent.changeText(getByPlaceholderText('JJ'), day)
+      fireEvent.changeText(getByPlaceholderText('MM'), month)
+      fireEvent.changeText(getByPlaceholderText('YYYY'), year)
 
-        expect(onChangeValue).toBeCalledWith(null)
-        expect(onChangeValue).not.toBeCalledWith(`${year}-${month}-${day}`)
-      }
-    )
+      expect(onChangeValue).toBeCalledWith(null)
+      expect(onChangeValue).not.toBeCalledWith(`${year}-${month}-${day}`)
+    })
     it('should return a YYYY-MM-DD date when the 3 fields are filled properly', () => {
       const onChangeValue = jest.fn()
       const { getByPlaceholderText } = render(<DateInput onChangeValue={onChangeValue} />)
