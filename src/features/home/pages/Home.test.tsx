@@ -4,9 +4,8 @@ import React from 'react'
 
 import { HomeStack } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
-
-import { reactQueryProviderHOC } from '../../../tests/reactQueryProviderHOC'
 
 import { HomeComponent } from './Home'
 

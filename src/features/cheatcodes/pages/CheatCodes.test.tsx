@@ -2,9 +2,8 @@ import { act, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
-
-import { reactQueryProviderHOC } from '../../../tests/reactQueryProviderHOC'
 
 import { CheatCodes } from './CheatCodes'
 
