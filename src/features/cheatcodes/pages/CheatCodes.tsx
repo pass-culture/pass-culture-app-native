@@ -12,7 +12,6 @@ import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeB
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
-import { SafeContainer } from 'ui/components/SafeContainer'
 import { Spacer } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
@@ -29,18 +28,18 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   }, [])
 
   return (
-    <SafeContainer>
-      <Container>
-        <Spacer.Flex />
-        <CrashTestButton />
-        <NavigateHomeButton />
-        <LogoutButton />
-        <Spacer.Flex />
-        <Text>{batchInstallationId}</Text>
-        <Spacer.Flex />
-        {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
-      </Container>
-    </SafeContainer>
+    <Container>
+      <Spacer.TopScreen />
+      <Spacer.Flex />
+      <CrashTestButton />
+      <NavigateHomeButton />
+      <LogoutButton />
+      <Spacer.Flex />
+      <Text>{batchInstallationId}</Text>
+      <Spacer.Flex />
+      {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
+      <Spacer.BottomScreen />
+    </Container>
   )
 }
 

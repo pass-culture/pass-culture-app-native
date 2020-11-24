@@ -74,6 +74,16 @@ exports[`Home component should render correctly without login modal 1`] = `
             <RCTScrollView>
               <View>
                 <View
+                  customHeight={16}
+                  style={
+                    Array [
+                      Object {
+                        "height": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
                   style={
                     Array [
                       Object {
@@ -353,21 +363,85 @@ exports[`Home component should render correctly without login modal 1`] = `
                     </RNSVGGroup>
                   </RNSVGSvgView>
                 </View>
-                <RNCSafeAreaView
-                  edges={
-                    Array [
-                      "top",
-                    ]
-                  }
-                  marginBottom={72}
-                  mode="padding"
+                <View
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "marginBottom": 72,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    numberOfSpaces={8}
+                    style={
+                      Array [
+                        Object {
+                          "height": 32,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-ExtraBoldItalic",
+                          "fontSize": 28,
+                          "lineHeight": 34,
+                        },
+                      ]
+                    }
+                  >
+                    Bienvenue !
+                  </Text>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      Array [
+                        Object {
+                          "height": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    color="#ffffff"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Toute la culture dans votre main
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    Array [
+                      Object {
+                        "height": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  isLoading={false}
+                  style={
+                    Array [
+                      Object {
+                        "overflow": "hidden",
                       },
                     ]
                   }
@@ -376,7 +450,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
+                          "alignItems": "flex-start",
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -385,110 +459,48 @@ exports[`Home component should render correctly without login modal 1`] = `
                     }
                   >
                     <View
-                      numberOfSpaces={8}
+                      numberOfSpaces={6}
                       style={
                         Array [
                           Object {
-                            "height": 32,
+                            "height": 24,
                           },
                         ]
                       }
                     />
-                    <Text
-                      color="#ffffff"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-ExtraBoldItalic",
-                            "fontSize": 28,
-                            "lineHeight": 34,
-                          },
-                        ]
-                      }
-                    >
-                      Bienvenue !
-                    </Text>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        Array [
-                          Object {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      color="#ffffff"
-                      style={
-                        Array [
-                          Object {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Toute la culture dans votre main
-                    </Text>
                   </View>
+                </View>
+                <Modal
+                  animationType="slide"
+                  hardwareAccelerated={false}
+                  statusBarTranslucent={true}
+                  transparent={true}
+                  visible={false}
+                >
                   <View
-                    numberOfSpaces={6}
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
-                          "height": 24,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    isLoading={false}
-                    style={
-                      Array [
-                        Object {
-                          "overflow": "hidden",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "flex-start",
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
+                      Object {
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "height": "100%",
+                        "justifyContent": "flex-end",
+                        "opacity": 1,
+                        "width": "100%",
                       }
-                    >
-                      <View
-                        numberOfSpaces={6}
-                        style={
-                          Array [
-                            Object {
-                              "height": 24,
-                            },
-                          ]
-                        }
-                      />
-                    </View>
-                  </View>
-                  <Modal
-                    animationType="slide"
-                    hardwareAccelerated={false}
-                    statusBarTranslucent={true}
-                    transparent={true}
-                    visible={false}
+                    }
                   >
                     <View
                       accessible={true}
-                      focusable={true}
+                      focusable={false}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -498,204 +510,193 @@ exports[`Home component should render correctly without login modal 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderTopEndRadius": 16,
+                          "borderTopStartRadius": 16,
                           "flexDirection": "column",
-                          "flexGrow": 1,
-                          "height": "100%",
-                          "justifyContent": "flex-end",
+                          "justifyContent": "flex-start",
                           "opacity": 1,
+                          "paddingBottom": 20,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 20,
                           "width": "100%",
                         }
                       }
                     >
                       <View
-                        accessible={true}
-                        focusable={false}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
                         style={
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderTopEndRadius": 16,
-                            "borderTopStartRadius": 16,
-                            "flexDirection": "column",
-                            "justifyContent": "flex-start",
-                            "opacity": 1,
-                            "paddingBottom": 20,
-                            "paddingLeft": 20,
-                            "paddingRight": 20,
-                            "paddingTop": 20,
-                            "width": "100%",
-                          }
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
+                          ]
                         }
                       >
                         <View
+                          accessible={true}
+                          focusable={false}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "alignItems": "flex-start",
+                              "flexBasis": 0,
+                              "flexGrow": 0.2,
+                              "flexShrink": 1,
+                              "marginLeft": -4,
+                              "opacity": 1,
+                            }
+                          }
+                          testID="leftIconButton"
+                        />
+                        <Text
                           style={
                             Array [
                               Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                                "width": "100%",
+                                "flexBasis": 0,
+                                "flexGrow": 0.6,
+                                "flexShrink": 1,
+                                "textAlign": "center",
                               },
                             ]
                           }
                         >
-                          <View
-                            accessible={true}
-                            focusable={false}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              Object {
-                                "alignItems": "flex-start",
-                                "flexBasis": 0,
-                                "flexGrow": 0.2,
-                                "flexShrink": 1,
-                                "marginLeft": -4,
-                                "opacity": 1,
-                              }
-                            }
-                            testID="leftIconButton"
-                          />
                           <Text
+                            numberOfLines={2}
                             style={
                               Array [
                                 Object {
-                                  "flexBasis": 0,
-                                  "flexGrow": 0.6,
-                                  "flexShrink": 1,
-                                  "textAlign": "center",
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 18,
+                                  "lineHeight": 22,
                                 },
                               ]
                             }
                           >
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 18,
-                                    "lineHeight": 22,
-                                  },
-                                ]
-                              }
-                            >
-                              Le pass Culture est accessible à tous !
-                            </Text>
+                            Le pass Culture est accessible à tous !
                           </Text>
-                          <View
-                            accessible={true}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              Object {
-                                "alignItems": "flex-end",
-                                "flexBasis": 0,
-                                "flexGrow": 0.2,
-                                "flexShrink": 1,
-                                "marginRight": -4,
-                                "opacity": 1,
-                              }
+                        </Text>
+                        <View
+                          accessible={true}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "alignItems": "flex-end",
+                              "flexBasis": 0,
+                              "flexGrow": 0.2,
+                              "flexShrink": 1,
+                              "marginRight": -4,
+                              "opacity": 1,
                             }
-                            testID="rightIconButton"
+                          }
+                          testID="rightIconButton"
+                        >
+                          <RNSVGSvgView
+                            align="xMidYMid"
+                            bbHeight={32}
+                            bbWidth={32}
+                            focusable={false}
+                            height={32}
+                            meetOrSlice={0}
+                            minX={0}
+                            minY={0}
+                            style={
+                              Array [
+                                Object {
+                                  "backgroundColor": "transparent",
+                                  "borderWidth": 0,
+                                },
+                                Object {
+                                  "flex": 0,
+                                  "height": 32,
+                                  "width": 32,
+                                },
+                              ]
+                            }
+                            testID="rightIcon"
+                            vbHeight={32}
+                            vbWidth={32}
+                            width={32}
                           >
-                            <RNSVGSvgView
-                              align="xMidYMid"
-                              bbHeight={32}
-                              bbWidth={32}
-                              focusable={false}
-                              height={32}
-                              meetOrSlice={0}
-                              minX={0}
-                              minY={0}
-                              style={
-                                Array [
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                    "borderWidth": 0,
-                                  },
-                                  Object {
-                                    "flex": 0,
-                                    "height": 32,
-                                    "width": 32,
-                                  },
-                                ]
-                              }
-                              testID="rightIcon"
-                              vbHeight={32}
-                              vbWidth={32}
-                              width={32}
-                            >
-                              <RNSVGGroup>
+                            <RNSVGGroup>
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  Array [
+                                    "fill",
+                                  ]
+                                }
+                              >
                                 <RNSVGGroup
-                                  fill={null}
+                                  fill={4279571733}
                                   propList={
                                     Array [
                                       "fill",
                                     ]
                                   }
                                 >
-                                  <RNSVGGroup
-                                    fill={4279571733}
-                                    propList={
-                                      Array [
-                                        "fill",
-                                      ]
-                                    }
-                                  >
+                                  <RNSVGGroup>
                                     <RNSVGGroup>
-                                      <RNSVGGroup>
-                                        <RNSVGPath
-                                          d="M23.3 8.225c.302-.29.804-.301 1.12-.025.318.276.33.735.028 1.024l-5.322 5.11c-1.166 1.12-1.166 2.879 0 3.998l5.322 5.11c.302.29.29.749-.027 1.025-.317.276-.819.265-1.12-.025l-5.323-5.11c-1.749-1.68-1.749-4.318 0-5.997zm-14.6 0l5.322 5.11c1.749 1.679 1.749 4.318 0 5.997L8.7 24.442c-.302.29-.804.3-1.12.025-.318-.276-.33-.735-.028-1.025l5.322-5.11c1.166-1.12 1.166-2.878 0-3.998l-5.322-5.11c-.302-.29-.29-.748.027-1.024s.819-.265 1.12.025z"
-                                          matrix={
-                                            Array [
-                                              -1,
-                                              0,
-                                              0,
-                                              1,
-                                              32,
-                                              0,
-                                            ]
-                                          }
-                                        />
-                                      </RNSVGGroup>
+                                      <RNSVGPath
+                                        d="M23.3 8.225c.302-.29.804-.301 1.12-.025.318.276.33.735.028 1.024l-5.322 5.11c-1.166 1.12-1.166 2.879 0 3.998l5.322 5.11c.302.29.29.749-.027 1.025-.317.276-.819.265-1.12-.025l-5.323-5.11c-1.749-1.68-1.749-4.318 0-5.997zm-14.6 0l5.322 5.11c1.749 1.679 1.749 4.318 0 5.997L8.7 24.442c-.302.29-.804.3-1.12.025-.318-.276-.33-.735-.028-1.025l5.322-5.11c1.166-1.12 1.166-2.878 0-3.998l-5.322-5.11c-.302-.29-.29-.748.027-1.024s.819-.265 1.12.025z"
+                                        matrix={
+                                          Array [
+                                            -1,
+                                            0,
+                                            0,
+                                            1,
+                                            32,
+                                            0,
+                                          ]
+                                        }
+                                      />
                                     </RNSVGGroup>
                                   </RNSVGGroup>
                                 </RNSVGGroup>
                               </RNSVGGroup>
-                            </RNSVGSvgView>
-                          </View>
+                            </RNSVGGroup>
+                          </RNSVGSvgView>
                         </View>
-                        <View
+                      </View>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "maxWidth": 500,
+                              "paddingTop": 20,
+                              "width": "100%",
+                            },
+                            Object {
+                              "paddingBottom": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
                           style={
                             Array [
                               Object {
-                                "alignItems": "center",
-                                "maxWidth": 500,
-                                "paddingTop": 20,
-                                "width": "100%",
-                              },
-                              Object {
-                                "paddingBottom": 16,
+                                "paddingBottom": 30,
+                                "textAlign": "center",
                               },
                             ]
                           }
@@ -704,152 +705,141 @@ exports[`Home component should render correctly without login modal 1`] = `
                             style={
                               Array [
                                 Object {
-                                  "paddingBottom": 30,
-                                  "textAlign": "center",
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
                                 },
                               ]
                             }
                           >
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application.
-                            </Text>
+                            Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application.
                           </Text>
-                          <View
-                            accessible={true}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              Object {
-                                "alignItems": "center",
-                                "backgroundColor": "#eb0055",
-                                "borderRadius": 24,
-                                "borderWidth": 0,
-                                "flexDirection": "row",
-                                "height": 40,
-                                "justifyContent": "center",
-                                "maxWidth": 500,
-                                "opacity": 1,
-                                "paddingBottom": 2,
-                                "paddingLeft": 2,
-                                "paddingRight": 2,
-                                "paddingTop": 2,
-                                "width": "100%",
-                              }
+                        </Text>
+                        <View
+                          accessible={true}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "backgroundColor": "#eb0055",
+                              "borderRadius": 24,
+                              "borderWidth": 0,
+                              "flexDirection": "row",
+                              "height": 40,
+                              "justifyContent": "center",
+                              "maxWidth": 500,
+                              "opacity": 1,
+                              "paddingBottom": 2,
+                              "paddingLeft": 2,
+                              "paddingRight": 2,
+                              "paddingTop": 2,
+                              "width": "100%",
                             }
-                            testID="button-container"
-                          >
-                            <Text
-                              numberOfLines={1}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#ffffff",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                    "marginLeft": 5,
-                                    "maxWidth": 650,
-                                  },
-                                ]
-                              }
-                              testID="button-title"
-                              textColor="#ffffff"
-                            >
-                              S'inscrire
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={3}
+                          }
+                          testID="button-container"
+                        >
+                          <Text
+                            numberOfLines={1}
                             style={
                               Array [
                                 Object {
-                                  "height": 12,
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "marginLeft": 5,
+                                  "maxWidth": 650,
                                 },
                               ]
                             }
-                          />
-                          <View
-                            accessible={true}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              Object {
-                                "alignItems": "center",
-                                "backgroundColor": "transparent",
-                                "borderRadius": 24,
-                                "borderWidth": 0,
-                                "flexDirection": "row",
-                                "height": 40,
-                                "justifyContent": "center",
-                                "maxWidth": 500,
-                                "opacity": 1,
-                                "paddingBottom": 2,
-                                "paddingLeft": 2,
-                                "paddingRight": 2,
-                                "paddingTop": 2,
-                                "width": "100%",
-                              }
-                            }
-                            testID="button-container"
+                            testID="button-title"
+                            textColor="#ffffff"
                           >
-                            <Text
-                              numberOfLines={1}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#eb0055",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                    "marginLeft": 5,
-                                    "maxWidth": 650,
-                                  },
-                                ]
-                              }
-                              testID="button-title"
-                              textColor="#eb0055"
-                            >
-                              Se connecter
-                            </Text>
-                          </View>
+                            S'inscrire
+                          </Text>
+                        </View>
+                        <View
+                          numberOfSpaces={3}
+                          style={
+                            Array [
+                              Object {
+                                "height": 12,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          accessible={true}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderRadius": 24,
+                              "borderWidth": 0,
+                              "flexDirection": "row",
+                              "height": 40,
+                              "justifyContent": "center",
+                              "maxWidth": 500,
+                              "opacity": 1,
+                              "paddingBottom": 2,
+                              "paddingLeft": 2,
+                              "paddingRight": 2,
+                              "paddingTop": 2,
+                              "width": "100%",
+                            }
+                          }
+                          testID="button-container"
+                        >
+                          <Text
+                            numberOfLines={1}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#eb0055",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "marginLeft": 5,
+                                  "maxWidth": 650,
+                                },
+                              ]
+                            }
+                            testID="button-title"
+                            textColor="#eb0055"
+                          >
+                            Se connecter
+                          </Text>
                         </View>
                       </View>
                     </View>
-                  </Modal>
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "height": 72,
-                        },
-                      ]
-                    }
-                    tabBarHeight={72}
-                  />
-                </RNCSafeAreaView>
+                  </View>
+                </Modal>
+                <View
+                  customHeight={72}
+                  style={
+                    Array [
+                      Object {
+                        "height": 72,
+                      },
+                    ]
+                  }
+                />
               </View>
             </RCTScrollView>
           </View>
@@ -954,17 +944,17 @@ exports[`Home component should render modal correctly 1`] = `
 - First value
 + Second value
 
-@@ -479,11 +479,11 @@
-                    <Modal
-                      animationType=\\"slide\\"
-                      hardwareAccelerated={false}
-                      statusBarTranslucent={true}
-                      transparent={true}
--                     visible={false}
-+                     visible={true}
-                    >
-                      <View
-                        accessible={true}
-                        focusable={true}
-                        onClick={[Function onClick]}"
+@@ -470,11 +470,11 @@
+                  <Modal
+                    animationType=\\"slide\\"
+                    hardwareAccelerated={false}
+                    statusBarTranslucent={true}
+                    transparent={true}
+-                   visible={false}
++                   visible={true}
+                  >
+                    <View
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function onClick]}"
 `;

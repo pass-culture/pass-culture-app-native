@@ -14,7 +14,6 @@ import { env } from 'libs/environment'
 import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
-import { SafeContainer } from 'ui/components/SafeContainer'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -51,6 +50,7 @@ export const HomeComponent: FunctionComponent = function () {
   useListenDeepLinksEffect()
   return (
     <ScrollView>
+      <Spacer.TopScreen />
       {env.CHEAT_BUTTONS_ENABLED && (
         <CheatButtonsContainer>
           <CheatTouchableOpacity onPress={() => navigation.navigate('AppComponents')}>
@@ -67,25 +67,24 @@ export const HomeComponent: FunctionComponent = function () {
       <UserProfileContainer onPress={showSignInModal}>
         <UserCircle size={32} color={ColorsEnum.WHITE} />
       </UserProfileContainer>
-      <SafeContainer>
-        <CenterContainer>
-          <Spacer.Column numberOfSpaces={8} />
-          <Typo.Title1 color={ColorsEnum.WHITE}>
-            {_(/*i18n: Welcome title message */ t`Bienvenue !`)}
-          </Typo.Title1>
-          <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body color={ColorsEnum.WHITE}>
-            {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
-          </Typo.Body>
-        </CenterContainer>
-        <Spacer.Column numberOfSpaces={6} />
-        {showSkeleton ? <HomeBodyPlaceholder /> : null}
-        <HomeBodyLoadingContainer isLoading={showSkeleton}>
-          <HomeBody modules={modules} position={position} />
-        </HomeBodyLoadingContainer>
-        <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
-        <Spacer.TabBar />
-      </SafeContainer>
+
+      <CenterContainer>
+        <Spacer.Column numberOfSpaces={8} />
+        <Typo.Title1 color={ColorsEnum.WHITE}>
+          {_(/*i18n: Welcome title message */ t`Bienvenue !`)}
+        </Typo.Title1>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Body color={ColorsEnum.WHITE}>
+          {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
+        </Typo.Body>
+      </CenterContainer>
+      <Spacer.Column numberOfSpaces={6} />
+      {showSkeleton ? <HomeBodyPlaceholder /> : null}
+      <HomeBodyLoadingContainer isLoading={showSkeleton}>
+        <HomeBody modules={modules} position={position} />
+      </HomeBodyLoadingContainer>
+      <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
+      <Spacer.TabBar />
     </ScrollView>
   )
 }

@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -578,10 +578,11 @@
+@@ -560,10 +560,11 @@
                     },
                   ]
                 }
@@ -17,7 +17,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
           </View>
           <View
             numberOfSpaces={6}
-@@ -691,10 +692,11 @@
+@@ -673,10 +674,11 @@
                     },
                   ]
                 }
@@ -29,7 +29,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 accessible={true}
                 focusable={true}
                 onClick={[Function onClick]}
-@@ -813,22 +815,22 @@
+@@ -795,22 +797,22 @@
               ]
             }
           />
@@ -61,7 +61,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
 - First value
 + Second value
 
-@@ -473,10 +473,89 @@
+@@ -455,10 +455,89 @@
                 </RNSVGGroup>
               </RNSVGSvgView>
             </View>
@@ -151,7 +151,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
               Array [
                 Object {
                   \\"height\\": 28,
-@@ -520,18 +599,18 @@
+@@ -502,18 +581,18 @@
                   },
                 ]
               }
@@ -172,7 +172,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
                     \\"borderWidth\\": 1,
                     \\"flexDirection\\": \\"row\\",
                     \\"height\\": 40,
-@@ -629,18 +708,18 @@
+@@ -611,18 +690,18 @@
                   },
                 ]
               }

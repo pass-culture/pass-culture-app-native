@@ -1,25 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IdCheck component should render correctly 1`] = `
-<RNCSafeAreaView
-  edges={
-    Array [
-      "top",
-    ]
-  }
-  marginBottom={72}
-  mode="padding"
-  style={
-    Array [
-      Object {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "marginBottom": 72,
-      },
-    ]
-  }
->
+Array [
+  <View
+    customHeight={16}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />,
   <View
     style={
       Array [
@@ -71,6 +63,16 @@ exports[`IdCheck component should render correctly 1`] = `
     <Text>
       Loading...
     </Text>
-  </View>
-</RNCSafeAreaView>
+  </View>,
+  <View
+    customHeight={8}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />,
+]
 `;
