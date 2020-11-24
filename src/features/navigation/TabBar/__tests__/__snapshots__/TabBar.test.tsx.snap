@@ -896,7 +896,7 @@ exports[`TabBar renders correctly 1`] = `
     />
   </View>
   <View
-    safeHeight={10}
+    safeHeight={5}
     style={
       Array [
         Object {

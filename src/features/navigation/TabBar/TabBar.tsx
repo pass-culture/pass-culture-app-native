@@ -1,6 +1,5 @@
 import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React from 'react'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
@@ -10,6 +9,8 @@ import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getShadow, getSpacing, Spacer, UniqueColors } from 'ui/theme'
+
+import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
 import { TabBarComponent } from './TabBarComponent'
 import { TabRouteName } from './TabNavigator'
@@ -37,7 +38,7 @@ export const TabBar: React.FC<Pick<
   BottomTabBarProps<BottomTabBarOptions>,
   'state' | 'navigation'
 >> = ({ navigation, state }) => {
-  const { bottom } = useSafeAreaInsets()
+  const { bottom } = useCustomSafeInsets()
   return (
     <MainContainer>
       <RowContainer>
@@ -76,7 +77,7 @@ const RowContainer = styled.View({
   flexDirection: 'row',
 })
 const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight }) => ({
-  height: 0.5 * safeHeight,
+  height: safeHeight,
 }))
 const MainContainer = styled.View({
   alignItems: 'center',
