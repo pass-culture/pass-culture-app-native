@@ -2,8 +2,12 @@
 // tslint:disable
 {{>licenseInfo}}
 
-import * as url from "url";
-import * as portableFetch from "portable-fetch";
+import url from "url";
+import portableFetch from "portable-fetch";
+
+import { getAuthenticationHeaders, handleGeneratedApiResponse } from "api/helpers";
+import { EmptyResponse } from 'libs/fetch'
+
 import { Configuration } from "./configuration";
 
 const BASE_PATH = "{{{basePath}}}".replace(/\/+$/, "");
@@ -20,7 +24,6 @@ export const COLLECTION_FORMATS = {
 };
 
 /**
- *
  * @export
  * @interface FetchAPI
  */
@@ -29,7 +32,6 @@ export interface FetchAPI {
 }
 
 /**
- *
  * @export
  * @interface FetchArgs
  */
@@ -39,12 +41,11 @@ export interface FetchArgs {
 }
 
 /**
- *
  * @export
  * @class BaseAPI
  */
 export class BaseAPI {
-    protected configuration: Configuration;
+    protected configuration?: Configuration;
     constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected fetch: FetchAPI = portableFetch) {
         if (configuration) {
             this.configuration = configuration;
@@ -54,13 +55,12 @@ export class BaseAPI {
 };
 
 /**
- *
  * @export
  * @class RequiredError
  * @extends {Error}
  */
 export class RequiredError extends Error {
-    name: "RequiredError"
+    name = "RequiredError"
     constructor(public field: string, msg?: string) {
         super(msg);
     }
@@ -89,7 +89,7 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options: any = {}): FetchArgs {
+        async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options: any = {}): Promise<FetchArgs> {
     {{#allParams}}
     {{#required}}
             // verify required parameter '{{paramName}}' is not null or undefined
@@ -102,7 +102,7 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
                 .replace(`{${"{{baseName}}"}}`, encodeURIComponent(String({{paramName}}))){{/pathParams}};
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: '{{httpMethod}}' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
     {{#hasFormParams}}
             const localVarFormParams = new url.URLSearchParams();
@@ -250,15 +250,11 @@ export const {{classname}}Fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Response{{/returnType}}> {
-            const localVarFetchArgs = {{classname}}FetchParamCreator(configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options);
+        async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}EmptyResponse{{/returnType}}>> {
+            const localVarFetchArgs = await {{classname}}FetchParamCreator(configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response{{#returnType}}.json(){{/returnType}};
-                    } else {
-                        throw response;
-                    }
+                    return handleGeneratedApiResponse(response)
                 });
             };
         },
@@ -266,31 +262,6 @@ export const {{classname}}Fp = function(configuration?: Configuration) {
     }
 };
 
-/**
- * {{classname}} - factory interface{{#description}}
- * {{&description}}{{/description}}
- * @export
- */
-export const {{classname}}Factory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
-    return {
-    {{#operation}}
-        /**
-         * {{&notes}}
-         {{#summary}}
-         * @summary {{&summary}}
-         {{/summary}}
-         {{#allParams}}
-         * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
-         {{/allParams}}
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any) {
-            return {{classname}}Fp(configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options)(fetch, basePath);
-        },
-    {{/operation}}
-    };
-};
 {{#withInterfaces}}
 /**
  * {{classname}} - interface{{#description}}
@@ -344,8 +315,9 @@ export class {{classname}} extends BaseAPI {
      * @throws {RequiredError}
      * @memberof {{classname}}
      */
-    public {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any) {
-        return {{classname}}Fp(this.configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options)(this.fetch, this.basePath);
+    public async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any) {
+        const clientEndpoint = await {{classname}}Fp(this.configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options)
+        return clientEndpoint(this.fetch, this.basePath);
     }
     {{/operation}}
 }
