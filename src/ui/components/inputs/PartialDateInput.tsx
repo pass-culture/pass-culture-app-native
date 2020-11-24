@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { forwardRef, useState } from 'react'
+import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -9,15 +10,17 @@ export enum DatePartType {
   YEAR = 'year',
 }
 
-interface PartialDateInputProps {
+interface PartialDateInputProps extends React.ComponentPropsWithRef<typeof TextInput> {
   identifier: DatePartType
   isValid?: boolean
-  maxLength: number
   onChangeValue: (value: string, identifier: DatePartType) => void
   placeholder: string
 }
 
-export const PartialDateInput: FunctionComponent<PartialDateInputProps> = (props) => {
+export const _PartialDateInput: React.ForwardRefRenderFunction<TextInput, PartialDateInputProps> = (
+  props,
+  forwardedRef
+) => {
   const [value, setValue] = useState<string>('')
   const [isFocused, setFocused] = useState(false)
 
@@ -36,14 +39,15 @@ export const PartialDateInput: FunctionComponent<PartialDateInputProps> = (props
     <Container>
       <StyledInput
         keyboardType="number-pad"
-        maxLength={props.maxLength}
+        maxLength={props.placeholder.length}
         onChangeText={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
         placeholder={props.placeholder}
         value={value}
         selectTextOnFocus
-        lengthByChar={props.maxLength}
+        numberOfChar={props.placeholder.length}
+        ref={forwardedRef}
       />
       <Spacer.Column numberOfSpaces={1} />
       <ValidationBar
@@ -56,18 +60,23 @@ export const PartialDateInput: FunctionComponent<PartialDateInputProps> = (props
   )
 }
 
+export const PartialDateInput = forwardRef<TextInput, PartialDateInputProps>(_PartialDateInput)
+
 const Container = styled.View({
   alignItems: 'center',
   margin: getSpacing(1),
 })
 
-const StyledInput = styled.TextInput<{ lengthByChar: number }>(({ lengthByChar }) => ({
-  textAlign: 'center',
-  fontSize: 18,
-  lineHeight: '22px',
-  paddingHorizontal: 10,
-  minWidth: lengthByChar * 18,
-}))
+// using styled.TextInput triggers a typescript error on the 'ref' property
+const StyledInput = styled(TextInput)<{ numberOfChar: number }>(
+  ({ numberOfChar: lengthByChar }) => ({
+    textAlign: 'center',
+    fontSize: 18,
+    lineHeight: '22px',
+    paddingHorizontal: 10,
+    minWidth: lengthByChar * 18,
+  })
+)
 
 interface ValidationBarProps {
   backgroundColor?: ColorsEnum
@@ -77,17 +86,17 @@ interface ValidationBarProps {
 }
 
 const ValidationBar = styled.View.attrs<ValidationBarProps>(({ isEmpty, isFocused, isValid }) => {
-  let backgroundColor = ColorsEnum.ERROR
-  // 'else if' is important
   if (isFocused) {
-    backgroundColor = ColorsEnum.PRIMARY
-  } else if (isEmpty) {
-    backgroundColor = ColorsEnum.GREY_MEDIUM
-  } else if (isValid) {
-    backgroundColor = ColorsEnum.GREEN_VALID
+    return { backgroundColor: ColorsEnum.PRIMARY }
+  }
+  if (isEmpty) {
+    return { backgroundColor: ColorsEnum.GREY_MEDIUM }
+  }
+  if (isValid) {
+    return { backgroundColor: ColorsEnum.GREEN_VALID }
   }
 
-  return { backgroundColor }
+  return { backgroundColor: ColorsEnum.ERROR }
 })<ValidationBarProps>(({ backgroundColor }) => ({
   backgroundColor,
   height: 5,

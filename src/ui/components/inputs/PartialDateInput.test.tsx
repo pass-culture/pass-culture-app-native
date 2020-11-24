@@ -6,7 +6,7 @@ import { ColorsEnum } from 'ui/theme'
 import { PartialDateInput, DatePartType } from './PartialDateInput'
 
 describe('PartialDateInput Component', () => {
-  it('should called onChangeValue when the value is modified', () => {
+  it('should call onChangeValue when the value is modified', () => {
     const onChangeValue = jest.fn()
     const { getByPlaceholderText } = render(
       <PartialDateInput
@@ -21,19 +21,18 @@ describe('PartialDateInput Component', () => {
     fireEvent.changeText(input, '10')
     expect(onChangeValue).toBeCalledWith('10', 'day')
   })
-  it('has a maxlength', () => {
+  it('has a maxlength of the placeholder length', () => {
     const onChangeValue = jest.fn()
     const { getByPlaceholderText } = render(
       <PartialDateInput
         identifier={DatePartType.DAY}
-        maxLength={5}
         onChangeValue={onChangeValue}
         placeholder="PP"
       />
     )
     const input = getByPlaceholderText('PP')
 
-    expect(input.props.maxLength).toEqual(5)
+    expect(input.props.maxLength).toEqual(2)
   })
   describe('Bar behavior', () => {
     afterEach(() => jest.restoreAllMocks())
