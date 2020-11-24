@@ -4,10 +4,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import {
-  HomeStackParamList,
-  navigateToHomeWithoutModal,
-} from 'features/home/navigation/HomeNavigator'
+import { AllNavParamList, navigateToHomeWithoutModal } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { navigationTestProps } from 'tests/navigation'
 import { server } from 'tests/server'
@@ -17,7 +14,7 @@ import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
 
-jest.mock('features/home/navigation/HomeNavigator')
+jest.mock('features/navigation/RootNavigator')
 
 beforeEach(() => {
   jest.resetAllMocks()
@@ -28,7 +25,9 @@ const mockSignIn = jest.fn()
 function renderLogin() {
   return render(
     <AuthContext.Provider value={{ isLoggedIn: true, signIn: mockSignIn, signOut: jest.fn() }}>
-      <Login {...(navigationTestProps as StackScreenProps<HomeStackParamList, 'Login'>)} />
+      <Login
+        {...((navigationTestProps as unknown) as StackScreenProps<AllNavParamList, 'Login'>)}
+      />
     </AuthContext.Provider>
   )
 }

@@ -3,11 +3,11 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<HomeStackParamList, 'Offer'>
+type Props = StackScreenProps<RootStackParamList, 'Offer'>
 
 export const Offer: FunctionComponent<Props> = ({ route }: Props) => (
   <Container>

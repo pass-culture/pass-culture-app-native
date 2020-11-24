@@ -4,10 +4,7 @@ import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/AuthContext'
-import {
-  HomeStackParamList,
-  navigateToHomeWithoutModal,
-} from 'features/home/navigation/HomeNavigator'
+import { AllNavParamList, navigateToHomeWithoutModal } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
@@ -23,7 +20,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<HomeStackParamList, 'Login'>
+type Props = StackScreenProps<AllNavParamList, 'Login'>
 
 let INITIAL_IDENTIFIER = ''
 let INITIAL_PASSWORD = ''

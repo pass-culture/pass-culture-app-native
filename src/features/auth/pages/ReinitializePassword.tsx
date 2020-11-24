@@ -6,9 +6,9 @@ import styled from 'styled-components/native'
 import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
 import {
   navigateToHomeWithoutModal,
-  UseNavigationType,
   UseRouteType,
-} from 'features/home/navigation/HomeNavigator'
+  UseNavigationType,
+} from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

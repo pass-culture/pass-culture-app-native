@@ -1,8 +1,8 @@
 import { StackScreenProps } from '@react-navigation/stack'
 
-import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 
-export const navigationTestProps: StackScreenProps<HomeStackParamList> = {
+export const navigationTestProps: StackScreenProps<RootStackParamList> = {
   route: {
     key: '',
     name: '',

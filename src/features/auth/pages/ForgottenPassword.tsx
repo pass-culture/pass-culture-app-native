@@ -5,10 +5,7 @@ import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
 import { requestPasswordReset } from 'features/auth/api'
-import {
-  HomeStackParamList,
-  navigateToHomeWithoutModal,
-} from 'features/home/navigation/HomeNavigator'
+import { navigateToHomeWithoutModal, RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -21,7 +18,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<HomeStackParamList, 'ForgottenPassword'>
+type Props = StackScreenProps<RootStackParamList, 'ForgottenPassword'>
 
 export const ForgottenPassword: FunctionComponent<Props> = ({ navigation }) => {
   const [email, setEmail] = useState('')

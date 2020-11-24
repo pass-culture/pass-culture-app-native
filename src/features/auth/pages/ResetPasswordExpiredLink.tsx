@@ -4,10 +4,7 @@ import React from 'react'
 import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  HomeStackParamList,
-  navigateToHomeWithoutModal,
-} from 'features/home/navigation/HomeNavigator'
+import { navigateToHomeWithoutModal, RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -20,7 +17,7 @@ import { requestPasswordReset } from '../api'
 
 import { contactSupport } from './support.services'
 
-type Props = StackScreenProps<HomeStackParamList, 'ResetPasswordExpiredLink'>
+type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 export function ResetPasswordExpiredLink(props: Props) {
   async function resendEmailForResetPassword() {

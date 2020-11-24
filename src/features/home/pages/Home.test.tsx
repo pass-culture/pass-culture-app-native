@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { render, act } from '@testing-library/react-native'
 import React from 'react'
 
-import { HomeStack } from 'features/home/navigation/HomeNavigator'
+import { Tab } from 'features/navigation/TabBar/TabNavigator'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
@@ -81,13 +81,13 @@ async function homeRenderer(withModal: boolean) {
   const renderAPI = render(
     reactQueryProviderHOC(
       <NavigationContainer>
-        <HomeStack.Navigator initialRouteName="Home">
-          <HomeStack.Screen
+        <Tab.Navigator initialRouteName="Home">
+          <Tab.Screen
             name="Home"
             component={HomeComponent}
             initialParams={{ shouldDisplayLoginModal: withModal }}
           />
-        </HomeStack.Navigator>
+        </Tab.Navigator>
       </NavigationContainer>
     )
   )
