@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { ScrollView, TouchableOpacity } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
@@ -25,6 +25,8 @@ import { HomeBody } from '../components/HomeBody'
 import { HomeBodyPlaceholder } from '../components/HomeBodyPlaceholder'
 import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 
+import { useShowSkeleton } from './useShowSkeleton'
+
 const statusBarHeight = getStatusBarHeight(true)
 
 export const HomeComponent: FunctionComponent = function () {
@@ -33,20 +35,12 @@ export const HomeComponent: FunctionComponent = function () {
   const { data: modules = [] } = useHomepageModules()
   const position = useGeolocation()
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
+  const showSkeleton = useShowSkeleton()
 
   function hideSignInModal() {
     navigation.setParams({ shouldDisplayLoginModal: false })
     hideModal()
   }
-
-  // (giregm) TMP Fake loading - to be removed in ticket 5001
-  const [isLoading, setIsLoading] = useState(true)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
-    return () => clearTimeout(timer)
-  }, [])
 
   useFocusEffect(() => {
     if (params.shouldDisplayLoginModal) {
@@ -85,7 +79,10 @@ export const HomeComponent: FunctionComponent = function () {
           </Typo.Body>
         </CenterContainer>
         <Spacer.Column numberOfSpaces={6} />
-        {isLoading ? <HomeBodyPlaceholder /> : <HomeBody modules={modules} position={position} />}
+        {showSkeleton ? <HomeBodyPlaceholder /> : null}
+        <HomeBodyLoadingContainer isLoading={showSkeleton}>
+          <HomeBody modules={modules} position={position} />
+        </HomeBodyLoadingContainer>
         <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
         <Spacer.TabBar />
       </SafeContainer>
@@ -104,6 +101,11 @@ const HeaderBackgroundWrapper = styled.View({
   left: 0,
   zIndex: 0,
 })
+
+const HomeBodyLoadingContainer = styled.View<{ isLoading: boolean }>(({ isLoading }) => ({
+  height: isLoading ? 0 : undefined,
+  overflow: 'hidden',
+}))
 
 const CheatButtonsContainer = styled.View({
   width: '100%',
@@ -128,6 +130,6 @@ const CheatTouchableOpacity = styled(TouchableOpacity)({
   padding: getSpacing(1),
 })
 
-export const Home = withErrorBoundary(HomeComponent, {
+export const Home = withErrorBoundary(React.memo(HomeComponent), {
   FallbackComponent: RetryBoundary,
 })
