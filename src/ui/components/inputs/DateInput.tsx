@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DatePartType, PartialDateInput } from './PartialDateInput'
@@ -13,12 +14,15 @@ export const Youngest = CurrentYear - 13
 
 const PartialDateValidator = {
   [DatePartType.DAY]: {
+    hasRightLength: (input: string) => input.length === 2,
     validate: (input: number) => input >= 1 && input <= 31,
   },
   [DatePartType.MONTH]: {
+    hasRightLength: (input: string) => input.length === 2,
     validate: (input: number) => input >= 1 && input <= 12,
   },
   [DatePartType.YEAR]: {
+    hasRightLength: (input: string) => input.length === 4,
     validate: (input: number) => input >= Oldest && input <= Youngest,
   },
 }
@@ -31,16 +35,28 @@ export function isValidDate(year: number, month: number, day: number) {
 }
 
 export const DateInput: FunctionComponent<DateInputProps> = (props) => {
+  const monthInputRef = useRef<TextInput>(null)
+  const yearInputRef = useRef<TextInput>(null)
+
   const [day, setDay] = useState('')
   const [month, setMonth] = useState('')
   const [year, setYear] = useState('')
 
   // PartialDateValidator will be injected in the next PR
-  const isDayValid = PartialDateValidator.day.validate(Number(day))
-  const isMonthValid = PartialDateValidator.month.validate(Number(month))
-  const isYearValid = PartialDateValidator.year.validate(Number(year))
+  const { day: dayValidator, month: monthValidator, year: yearValidator } = PartialDateValidator
+
+  const isDayValid = dayValidator.validate(Number(day))
+  const isMonthValid = monthValidator.validate(Number(month))
+  const isYearValid = yearValidator.validate(Number(year))
+
+  const isComplete =
+    dayValidator.hasRightLength(day) &&
+    monthValidator.hasRightLength(month) &&
+    yearValidator.hasRightLength(year)
+
   const isValid = isValidDate(Number(year), Number(month), Number(day))
 
+  // notify parent effect
   useEffect(() => {
     if (isValid && isMonthValid && isDayValid && isYearValid) {
       props.onChangeValue?.(`${year}-${month}-${day}`)
@@ -49,28 +65,44 @@ export const DateInput: FunctionComponent<DateInputProps> = (props) => {
     }
   }, [day, month, year])
 
+  // blur and focus next input effect
+  useEffect(() => {
+    if (dayValidator.hasRightLength(day)) {
+      monthInputRef?.current?.focus()
+    }
+  }, [day])
+  useEffect(() => {
+    if (monthValidator.hasRightLength(month)) {
+      yearInputRef?.current?.focus()
+    }
+  }, [month])
+  useEffect(() => {
+    if (yearValidator.hasRightLength(year)) {
+      yearInputRef?.current?.blur()
+    }
+  }, [year])
+
   return (
     <Container>
       <PartialDateInput
         identifier={DatePartType.DAY}
         isValid={isDayValid}
-        maxLength={2}
         onChangeValue={setDay}
         placeholder="JJ"
       />
       <PartialDateInput
         identifier={DatePartType.MONTH}
-        isValid={isMonthValid && isValid}
-        maxLength={2}
+        isValid={(!isComplete && isMonthValid) || (isComplete && isValid)}
         onChangeValue={setMonth}
         placeholder="MM"
+        ref={monthInputRef}
       />
       <PartialDateInput
         identifier={DatePartType.YEAR}
         isValid={isYearValid}
-        maxLength={4}
         onChangeValue={setYear}
         placeholder="YYYY"
+        ref={yearInputRef}
       />
     </Container>
   )

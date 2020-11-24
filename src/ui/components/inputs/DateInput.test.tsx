@@ -7,14 +7,41 @@ import { DateInput, isValidDate, Oldest, Youngest } from './DateInput'
 
 describe('DateInput Component', () => {
   describe('blur/focus behavior', () => {
-    it('should focus the month input when the 2-digit day input is fulfilled', () => {
-      // NEXT PR
+    it('should blur the day input when the 2-digit day input is fulfilled', async () => {
+      const { getByPlaceholderText, getByTestId } = render(<DateInput />)
+      const day = getByPlaceholderText('JJ')
+      const dayBar = getByTestId('datepart-bar-day')
+
+      fireEvent.changeText(day, '01')
+
+      // valid
+      expect(dayBar.props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
     })
-    it('should focus the year input when the 2-digit month input is fulfilled', () => {
-      // NEXT PR
+    it('should blur the month input when the 2-digit month input is fulfilled', () => {
+      const { getByPlaceholderText, getByTestId } = render(<DateInput />)
+      const day = getByPlaceholderText('JJ')
+      const month = getByPlaceholderText('MM')
+      const monthBar = getByTestId('datepart-bar-month')
+
+      fireEvent.changeText(day, '01')
+      fireEvent.changeText(month, '01')
+
+      // valid
+      expect(monthBar.props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
     })
     it('should blur the year input when the 4-digit year is fulfilled', () => {
-      // NEXT PR
+      const { getByPlaceholderText, getByTestId } = render(<DateInput />)
+      const day = getByPlaceholderText('JJ')
+      const month = getByPlaceholderText('MM')
+      const year = getByPlaceholderText('YYYY')
+      const yearBar = getByTestId('datepart-bar-year')
+
+      fireEvent.changeText(day, '01')
+      fireEvent.changeText(month, '01')
+      fireEvent.changeText(year, '2004')
+
+      // valid
+      expect(yearBar.props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
     })
   })
   describe('input validation', () => {
@@ -62,11 +89,9 @@ describe('DateInput Component', () => {
         const validationBar = getByTestId('datepart-bar-month')
         const day = getByPlaceholderText('JJ')
         const month = getByPlaceholderText('MM')
-        const year = getByPlaceholderText('YYYY')
 
         fireEvent.changeText(day, '01')
         fireEvent.changeText(month, '01')
-        fireEvent.changeText(year, '2005')
         const backgroundColor = validationBar.props.style[0].backgroundColor
         expect(backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
       })
