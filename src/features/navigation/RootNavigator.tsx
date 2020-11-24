@@ -1,5 +1,10 @@
-import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import {
+  NavigationContainer,
+  NavigationContainerRef,
+  NavigationProp,
+  RouteProp,
+} from '@react-navigation/native'
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 
 import { ForgottenPassword } from 'features/auth/pages/ForgottenPassword'
@@ -14,7 +19,7 @@ import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Offer } from 'features/offer'
 
 import { onNavigationStateChange } from './services'
-import { TabNavigator } from './TabBar/TabNavigator'
+import { TabNavigator, TabParamList } from './TabBar/TabNavigator'
 
 export type RootStackParamList = {
   TabNavigator: undefined
@@ -30,7 +35,7 @@ export type RootStackParamList = {
   ResetPasswordExpiredLink: { email: string }
 }
 
-const RootStack = createStackNavigator<RootStackParamList>()
+export const RootStack = createStackNavigator<RootStackParamList>()
 export const navigationRef = React.createRef<NavigationContainerRef>()
 
 export const RootNavigator: React.FC = () => {
@@ -67,4 +72,57 @@ export const RootNavigator: React.FC = () => {
       </RootStack.Navigator>
     </NavigationContainer>
   )
+}
+
+export type AllNavParamList = RootStackParamList & TabParamList
+
+/** Type helper to share screen names */
+type ScreenNames = keyof AllNavParamList
+/**
+ * Type helper for useRoute
+ *
+ * const {
+ *  params: { token, expiration_timestamp },
+ * } = useRoute<UseRouteType<'ReinitializePassword'>>()
+ */
+export type UseRouteType<ScreenName extends ScreenNames> = RouteProp<AllNavParamList, ScreenName>
+/**
+ * Type helper for navigation prop
+ *
+ * type Props = {
+ *   navigation: ScreenNavigationProp<'Home'>
+ * }
+ */
+export type ScreenNavigationProp<ScreenName extends ScreenNames> = StackNavigationProp<
+  AllNavParamList,
+  ScreenName
+>
+/**
+ * Type helper for useNavigation
+ *
+ * const navigation = useNavigation<UseNavigationType>()
+ */
+export type UseNavigationType = NavigationProp<AllNavParamList>
+/**
+ * Type helper to access route params
+ *
+ * export type MyStackParamList = {
+ *   Login?: { userId: string }
+ * }
+ *
+ * RouteParams<'Login', MyStackParamList>  // will return ({ userId: string } | undefined)
+ */
+export type RouteParams<
+  StackParamList extends Record<string, unknown>,
+  Screename extends keyof StackParamList
+> = Pick<StackParamList, Screename>[Screename]
+
+export function navigateToHomeWithoutModal() {
+  if (navigationRef.current) {
+    const navigation = (navigationRef.current as unknown) as StackNavigationProp<
+      AllNavParamList,
+      'Home'
+    >
+    navigation.navigate('Home', { shouldDisplayLoginModal: false })
+  }
 }

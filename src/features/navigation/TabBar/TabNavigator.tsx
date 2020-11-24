@@ -6,14 +6,14 @@ import { useAuthContext } from 'features/auth/AuthContext'
 
 import { Bookings } from '../../bookings/pages/Bookings'
 import { Favorites } from '../../favorites/pages/Favorites'
-import { HomeNavigator } from '../../home/navigation/HomeNavigator'
+import { Home } from '../../home/pages/Home'
 import { Profile } from '../../profile/pages/Profile'
 import { Search } from '../../search/pages/Search'
 
 import { TabBar } from './TabBar'
 
 export type TabParamList = {
-  HomeNavigator: undefined
+  Home: { shouldDisplayLoginModal: boolean }
   Search: undefined
   Bookings: undefined
   Favorites: undefined
@@ -34,9 +34,9 @@ export const TabNavigator: React.FC = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="HomeNavigator"
+      initialRouteName="Home"
       tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
-      <Tab.Screen name="HomeNavigator" component={HomeNavigator} />
+      <Tab.Screen name="Home" component={Home} initialParams={{ shouldDisplayLoginModal: false }} />
       <Tab.Screen name="Search" component={Search} />
       {authContext.isLoggedIn && <Tab.Screen name="Bookings" component={Bookings} />}
       <Tab.Screen name="Favorites" component={Favorites} />
