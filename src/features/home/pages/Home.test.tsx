@@ -6,6 +6,8 @@ import { HomeStack } from 'features/home/navigation/HomeNavigator'
 import { env } from 'libs/environment'
 import { flushAllPromises } from 'tests/utils'
 
+import { reactQueryProviderHOC } from '../../../tests/reactQueryProviderHOC'
+
 import { HomeComponent } from './Home'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
@@ -88,15 +90,17 @@ describe('Home component', () => {
 
 async function homeRenderer(withModal: boolean, withLoadingPlaceholder: boolean) {
   const renderAPI = render(
-    <NavigationContainer>
-      <HomeStack.Navigator initialRouteName="Home">
-        <HomeStack.Screen
-          name="Home"
-          component={HomeComponent}
-          initialParams={{ shouldDisplayLoginModal: withModal }}
-        />
-      </HomeStack.Navigator>
-    </NavigationContainer>
+    reactQueryProviderHOC(
+      <NavigationContainer>
+        <HomeStack.Navigator initialRouteName="Home">
+          <HomeStack.Screen
+            name="Home"
+            component={HomeComponent}
+            initialParams={{ shouldDisplayLoginModal: withModal }}
+          />
+        </HomeStack.Navigator>
+      </NavigationContainer>
+    )
   )
   await act(async () => {
     if (!withLoadingPlaceholder) {

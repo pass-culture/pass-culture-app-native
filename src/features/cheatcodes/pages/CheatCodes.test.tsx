@@ -4,6 +4,8 @@ import React from 'react'
 import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
 import { flushAllPromises } from 'tests/utils'
 
+import { reactQueryProviderHOC } from '../../../tests/reactQueryProviderHOC'
+
 import { CheatCodes } from './CheatCodes'
 
 const installationID = 'installationID'
@@ -22,7 +24,7 @@ describe('CheatCodes component', () => {
   } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
   it('should render correctly', async () => {
-    const instance = render(<CheatCodes navigation={navigation} />)
+    const instance = render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
 
     await act(async () => {
       await flushAllPromises()
@@ -32,7 +34,7 @@ describe('CheatCodes component', () => {
   })
 
   it('should call installationID and display it', async () => {
-    const { queryByText } = render(<CheatCodes navigation={navigation} />)
+    const { queryByText } = render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
 
     await act(async () => {
       await flushAllPromises()
