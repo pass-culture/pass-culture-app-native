@@ -1,12 +1,17 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
+import { useNavigation } from '__mocks__/@react-navigation/native'
 import { ChoosePassword } from 'features/auth/pages/ChoosePassword'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { navigationTestProps } from 'tests/navigation'
 import { ColorsEnum } from 'ui/theme'
 
 describe('ChoosePassword Page', () => {
   it('should enable the submit button when password is correct', async () => {
-    const { getByPlaceholderText, getByTestId } = render(<ChoosePassword />)
+    const { getByPlaceholderText, getByTestId } = renderChoosePassword()
 
     const continueButton = getByTestId('button-container')
 
@@ -23,8 +28,41 @@ describe('ChoosePassword Page', () => {
     })
   })
 
-  // TODO: PC-4910 password submission should redirect to birth date form
-  // TODO: PC-4913 arrow previous click should redirect to email form
+  it('should navigate to SetBirthday page when submit password', async () => {
+    const { getByPlaceholderText, findByText } = renderChoosePassword()
+
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+
+    const continueButton = await findByText('Continuer')
+    fireEvent.press(continueButton)
+
+    await waitForExpect(() => {
+      expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
+      expect(navigationTestProps.navigation.navigate).toHaveBeenCalledWith('SetBirthday')
+    })
+  })
+
+  it('should navigate to previous page when clicking on leftIcon', () => {
+    const { goBack } = useNavigation()
+    goBack.mockReset()
+
+    const { getByTestId } = renderChoosePassword()
+    const leftIcon = getByTestId('leftIcon')
+    fireEvent.press(leftIcon)
+
+    expect(goBack).toBeCalledTimes(1)
+    goBack.mockRestore()
+  })
+
   // TODO: PC-5430 gestion du storage de l'email & password
   // TODO: PC-4936 right icon click = abandon registration
 })
+
+function renderChoosePassword() {
+  return render(
+    <ChoosePassword
+      {...(navigationTestProps as StackScreenProps<RootStackParamList, 'ChoosePassword'>)}
+    />
+  )
+}

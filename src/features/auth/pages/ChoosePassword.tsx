@@ -1,5 +1,7 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
+import React, { FunctionComponent, useState } from 'react'
 import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,6 +9,7 @@ import {
   isPasswordCorrect,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -17,8 +20,11 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const ChoosePassword = () => {
+type Props = StackScreenProps<RootStackParamList, 'ChoosePassword'>
+
+export const ChoosePassword: FunctionComponent<Props> = ({ navigation }) => {
   const [password, setPassword] = useState('')
+  const { goBack } = useNavigation()
 
   // TODO: PC-5430 gestion du storage de l'email (props ? navigation params ?) & transmission password
 
@@ -27,11 +33,7 @@ export const ChoosePassword = () => {
   }
 
   function submitPassword() {
-    Alert.alert('TODO: PC-4910 birth date form')
-  }
-
-  function onBackNavigation() {
-    Alert.alert('TODO: PC-4913 email form')
+    navigation.navigate('SetBirthday')
   }
 
   return (
@@ -43,7 +45,7 @@ export const ChoosePassword = () => {
           rightIcon={Close}
           onRightIconPress={onClose}
           leftIcon={ArrowPrevious}
-          onLeftIconPress={onBackNavigation}
+          onLeftIconPress={goBack}
         />
         <BottomCardContentContainer>
           <Spacer.Column numberOfSpaces={6} />
