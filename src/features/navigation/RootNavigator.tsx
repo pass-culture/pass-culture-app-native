@@ -43,32 +43,16 @@ export const RootNavigator: React.FC = () => {
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef}>
       <RootStack.Navigator initialRouteName="TabNavigator" screenOptions={{ headerShown: false }}>
         <RootStack.Screen name="TabNavigator" component={TabNavigator} />
-        <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <RootStack.Screen name="Offer" component={Offer} />
-        <RootStack.Screen
-          name="ReinitializePassword"
-          component={ReinitializePassword}
-          options={{ headerShown: false }}
-        />
-        <RootStack.Screen name="IdCheck" component={IdCheck} options={{ headerShown: false }} />
+        <RootStack.Screen name="Login" component={Login} />
+        <RootStack.Screen name="Offer" component={Offer} options={{ headerShown: true }} />
+        <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
+        <RootStack.Screen name="IdCheck" component={IdCheck} />
         <RootStack.Screen name="AppComponents" component={AppComponents} />
         <RootStack.Screen name="Navigation" component={Navigation} />
         <RootStack.Screen name="CheatCodes" component={CheatCodes} />
-        <RootStack.Screen
-          name="ResetPasswordEmailSent"
-          component={ResetPasswordEmailSent}
-          options={{ headerShown: false }}
-        />
-        <RootStack.Screen
-          name="ForgottenPassword"
-          component={ForgottenPassword}
-          options={{ headerShown: false }}
-        />
-        <RootStack.Screen
-          name="ResetPasswordExpiredLink"
-          component={ResetPasswordExpiredLink}
-          options={{ headerShown: false }}
-        />
+        <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
+        <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
+        <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
       </RootStack.Navigator>
     </NavigationContainer>
   )
