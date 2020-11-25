@@ -1,9 +1,9 @@
 import { SearchResponse, Hit } from '@algolia/client-search'
 import { useState } from 'react'
+import { GeoCoordinates } from 'react-native-geolocation-service'
 import { useQuery } from 'react-query'
 
 import { AlgoliaParametersFields } from 'features/home/contentful'
-import { useGeolocation } from 'libs/geolocation'
 
 import { AlgoliaHit } from '../algolia'
 import { fetchAlgolia } from '../fetchAlgolia'
@@ -16,6 +16,7 @@ export interface UseFetchAlgoliaInterface {
   onSuccess?: (data: SearchResponse<AlgoliaHit> | undefined) => void
   onError?: (error: unknown) => void
   moduleId: string
+  geolocation: GeoCoordinates | null
 }
 
 export const useFetchAlgolia = ({
@@ -24,11 +25,14 @@ export const useFetchAlgolia = ({
   onSuccess,
   moduleId,
   onError,
+  geolocation,
 }: UseFetchAlgoliaInterface) => {
-  const geolocation = useGeolocation()
   const [hits, setHits] = useState<Hit<AlgoliaHit>[]>([])
   const [nbHits, setNbHits] = useState(0)
-  const parsedParameters = parseAlgoliaParameters({ geolocation, parameters: algoliaParameters })
+  const parsedParameters = parseAlgoliaParameters({
+    geolocation,
+    parameters: algoliaParameters,
+  })
 
   const { data, error, isLoading, isError } = useQuery<SearchResponse<AlgoliaHit> | undefined>(
     ['algoliaModule', moduleId],
