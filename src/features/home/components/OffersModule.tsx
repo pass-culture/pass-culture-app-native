@@ -16,10 +16,11 @@ type OfferWithOptionalCover = Partial<OffersWithCover> &
   Pick<Offers, 'algolia' | 'display' | 'moduleId'> & { position: ReturnType<typeof useGeolocation> }
 
 export const OffersModule = (props: OfferWithOptionalCover) => {
-  const { algolia: parameters, display, moduleId } = props
+  const { algolia: parameters, display, moduleId, position } = props
 
   const { hits, nbHits } = useFetchAlgolia({
     algoliaParameters: parameters,
+    geolocation: position,
     moduleId,
   })
 
@@ -29,7 +30,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
         key={item.objectID}
         category={parseCategory(item.offer.category, item.offer.label)}
         offerId={item.offer.id}
-        distance={formatDistance(item._geoloc, props.position)}
+        distance={formatDistance(item._geoloc, position)}
         name={item.offer.name}
         date={formatDates(item.offer.dates)}
         isDuo={item.offer.isDuo}
@@ -38,7 +39,7 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
         layout={display.layout}
       />
     ),
-    [display.layout, props.position]
+    [display.layout, position]
   )
 
   const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers

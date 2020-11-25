@@ -22,6 +22,7 @@ const props: UseFetchAlgoliaInterface = {
   moduleId: 'moduleId',
   onSuccess: mockOnSuccess,
   onError: mockOnError,
+  geolocation: null,
 }
 
 describe('useFetchAlgolia', () => {
