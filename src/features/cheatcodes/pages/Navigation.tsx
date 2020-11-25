@@ -5,7 +5,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
-import { UseNavigationType } from 'features/home/navigation/HomeNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { padding, Spacer } from 'ui/theme'
 

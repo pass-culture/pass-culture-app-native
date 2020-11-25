@@ -105,7 +105,7 @@ export type UseNavigationType = NavigationProp<AllNavParamList>
 export type RouteParams<
   StackParamList extends Record<string, unknown>,
   Screename extends keyof StackParamList
-  > = Pick<StackParamList, Screename>[Screename]
+> = Pick<StackParamList, Screename>[Screename]
 
 export function navigateToHomeWithoutModal() {
   if (navigationRef.current) {
