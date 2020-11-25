@@ -3,21 +3,20 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { CheckBoxInput } from 'ui/components/inputs/CheckBoxInput'
+import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { SafeContainer } from 'ui/components/SafeContainer'
 import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<HomeStackParamList, 'Signup'>
+type Props = StackScreenProps<AllNavParamList, 'Signup'>
 
 export const Signup: FunctionComponent<Props> = ({ navigation }) => {
   const [email, setEmail] = useState('')
@@ -30,15 +29,17 @@ export const Signup: FunctionComponent<Props> = ({ navigation }) => {
   }
 
   function onClose() {
+    // TODO: PC-4936
     return
   }
 
   async function validateEmail() {
+    // TODO: PC-5310
     return
   }
 
   return (
-    <SafeContainer noTabBarSpacing>
+    <React.Fragment>
       <Background />
       <BottomCard>
         <ModalHeader
@@ -63,7 +64,7 @@ export const Signup: FunctionComponent<Props> = ({ navigation }) => {
           </StyledInput>
           <Spacer.Column numberOfSpaces={4} />
           <StyledCheckBox>
-            <CheckBoxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
+            <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
             <CheckBoxText>
               {_(t`Reçois nos recommandations culturelles à proximité de chez toi par e-mail.`)}
             </CheckBoxText>
@@ -72,11 +73,12 @@ export const Signup: FunctionComponent<Props> = ({ navigation }) => {
           <ButtonPrimary
             title={_(t`Continuer`)}
             onPress={validateEmail}
+            isLoading={false}
             disabled={shouldDisableValidateButton}
           />
         </ModalContent>
       </BottomCard>
-    </SafeContainer>
+    </React.Fragment>
   )
 }
 

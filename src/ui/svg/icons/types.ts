@@ -1,16 +1,17 @@
 import { ColorsEnum } from 'ui/theme'
 
-export interface IconInterface {
-  size?: number | string
+interface IconSharedProperties {
   color?: ColorsEnum
   testID?: string
 }
 
-export interface RectangleIconInterface {
+export interface IconInterface extends IconSharedProperties {
+  size?: number | string
+}
+
+export interface RectangleIconInterface extends IconSharedProperties {
   width?: number | string
   height?: number | string
-  color?: ColorsEnum
-  testID?: string
 }
 
 export interface BicolorIconInterface extends IconInterface {
