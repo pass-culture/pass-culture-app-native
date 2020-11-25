@@ -12,7 +12,6 @@
  * Do not edit the file manually.
  */
 import url from "url";
-import portableFetch from "portable-fetch";
 
 import { getAuthenticationHeaders, handleGeneratedApiResponse } from "api/helpers";
 import { EmptyResponse } from 'libs/fetch'
@@ -55,7 +54,7 @@ export interface FetchArgs {
  */
 export class BaseAPI {
     protected configuration?: Configuration;
-    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected fetch: FetchAPI = portableFetch) {
+    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH) {
         if (configuration) {
             this.configuration = configuration;
             this.basePath = configuration.basePath || this.basePath;
@@ -153,7 +152,8 @@ export interface SigninResponse {
      * @memberof SigninResponse
      */
     refresh_token: string;
-}/**
+}
+/**
  * DefaultApi - fetch parameter creator
  * @export
  */
@@ -257,6 +257,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
     }
 };
+
 /**
  * DefaultApi - functional programming interface
  * @export
@@ -269,13 +270,10 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nativeV1RefreshAccessTokenPost(options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<RefreshResponse>> {
+        async nativeV1RefreshAccessTokenPost(basePath: string, options?: any): Promise<RefreshResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1RefreshAccessTokenPost(options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    return handleGeneratedApiResponse(response)
-                });
-            };
+            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            return handleGeneratedApiResponse(response)
         },
         /**
          * 
@@ -284,13 +282,10 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<EmptyResponse>> {
+        async nativeV1RequestPasswordResetPost(basePath: string, body?: PasswordResetRequestRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1RequestPasswordResetPost(body, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    return handleGeneratedApiResponse(response)
-                });
-            };
+            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            return handleGeneratedApiResponse(response)
         },
         /**
          * 
@@ -299,13 +294,10 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nativeV1ResetPasswordPost(body?: ResetPasswordRequest, options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<EmptyResponse>> {
+        async nativeV1ResetPasswordPost(basePath: string, body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1ResetPasswordPost(body, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    return handleGeneratedApiResponse(response)
-                });
-            };
+            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            return handleGeneratedApiResponse(response)
         },
         /**
          * 
@@ -314,13 +306,10 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nativeV1SigninPost(body?: SigninRequest, options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<SigninResponse>> {
+        async nativeV1SigninPost(basePath: string, body?: SigninRequest, options?: any): Promise<SigninResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1SigninPost(body, options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    return handleGeneratedApiResponse(response)
-                });
-            };
+            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            return handleGeneratedApiResponse(response)
         },
     }
 };
@@ -340,8 +329,8 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async nativeV1RefreshAccessTokenPost(options?: any) {
-        const clientEndpoint = await DefaultApiFp(this.configuration).nativeV1RefreshAccessTokenPost(options)
-        return clientEndpoint(this.fetch, this.basePath);
+        const functionalApi = DefaultApiFp(this.configuration)
+        return functionalApi.nativeV1RefreshAccessTokenPost(this.basePath, options)
     }
     /**
      * 
@@ -352,8 +341,8 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options?: any) {
-        const clientEndpoint = await DefaultApiFp(this.configuration).nativeV1RequestPasswordResetPost(body, options)
-        return clientEndpoint(this.fetch, this.basePath);
+        const functionalApi = DefaultApiFp(this.configuration)
+        return functionalApi.nativeV1RequestPasswordResetPost(this.basePath, body, options)
     }
     /**
      * 
@@ -364,8 +353,8 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async nativeV1ResetPasswordPost(body?: ResetPasswordRequest, options?: any) {
-        const clientEndpoint = await DefaultApiFp(this.configuration).nativeV1ResetPasswordPost(body, options)
-        return clientEndpoint(this.fetch, this.basePath);
+        const functionalApi = DefaultApiFp(this.configuration)
+        return functionalApi.nativeV1ResetPasswordPost(this.basePath, body, options)
     }
     /**
      * 
@@ -376,7 +365,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async nativeV1SigninPost(body?: SigninRequest, options?: any) {
-        const clientEndpoint = await DefaultApiFp(this.configuration).nativeV1SigninPost(body, options)
-        return clientEndpoint(this.fetch, this.basePath);
+        const functionalApi = DefaultApiFp(this.configuration)
+        return functionalApi.nativeV1SigninPost(this.basePath, body, options)
     }
 }
