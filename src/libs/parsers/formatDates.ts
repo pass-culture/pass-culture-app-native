@@ -1,23 +1,23 @@
 // javascript Date can't find them...
-const SHORT_MONTHS = [
-  'janv',
-  'févr',
+const MONTHS = [
+  'janvier',
+  'février',
   'mars',
-  'avr',
+  'avril',
   'mai',
   'juin',
-  'juil',
+  'juillet',
   'août',
-  'sept',
-  'oct',
-  'nov',
-  'déc',
+  'septembre',
+  'octobre',
+  'novembre',
+  'décembre',
 ]
 
 const formatToFrenchDate = (timestamp: number) => {
   const date = new Date(timestamp)
   const day = date.getDate()
-  const month = SHORT_MONTHS[date.getMonth()]
+  const month = MONTHS[date.getMonth()]
   const year = date.getFullYear()
   return `${day} ${month} ${year}`
 }

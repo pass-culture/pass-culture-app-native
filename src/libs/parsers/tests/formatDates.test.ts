@@ -16,13 +16,13 @@ describe('formatDates', () => {
     dates             | expected
     ${undefined}      | ${undefined}
     ${[]}             | ${undefined}
-    ${[Nov12]}        | ${'12 nov 2020'}
-    ${[Nov12, Nov12]} | ${'12 nov 2020'}
-    ${[Dec5]}         | ${'5 déc 2020'}
-    ${[Dec5, Nov12]}  | ${'Dès le 12 nov 2020'}
-    ${[Dec5, -Nov12]} | ${'5 déc 2020'}
+    ${[Nov12]}        | ${'12 novembre 2020'}
+    ${[Nov12, Nov12]} | ${'12 novembre 2020'}
+    ${[Dec5]}         | ${'5 décembre 2020'}
+    ${[Dec5, Nov12]}  | ${'Dès le 12 novembre 2020'}
+    ${[Dec5, -Nov12]} | ${'5 décembre 2020'}
     ${[Oct5, Oct5]}   | ${undefined}
-    ${[Oct5, Nov12]}  | ${'12 nov 2020'}
+    ${[Oct5, Nov12]}  | ${'12 novembre 2020'}
   `('formatDates($dates) \t= $expected', ({ dates, expected }) => {
     const timestampsInSeconds =
       dates && dates.map((date: Date) => Math.floor(date.valueOf() / 1000))
