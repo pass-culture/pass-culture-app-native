@@ -1,20 +1,18 @@
-import { StackScreenProps } from '@react-navigation/stack'
+import { renderHook } from '@testing-library/react-hooks'
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
+import { useNavigation } from '__mocks__/@react-navigation/native'
 import { Signup } from 'features/auth/pages/Signup'
-import { AllNavParamList } from 'features/navigation/RootNavigator'
-import { navigationTestProps } from 'tests/navigation'
 import { ColorsEnum } from 'ui/theme'
 
 beforeEach(() => {
   jest.resetAllMocks()
 })
 
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-
 describe('<Signup />', () => {
+  afterEach(() => jest.resetAllMocks())
+
   it('should display disabled validate button when email input is not filled', async () => {
     const { getByTestId } = renderPage()
 
@@ -33,39 +31,54 @@ describe('<Signup />', () => {
   })
 
   it('should redirect to SignUpSignInChoiceModal when clicking on ArrowPrevious icon', async () => {
+    const {
+      result: {
+        current: { navigate },
+      },
+    } = renderHook(() => useNavigation())
+    navigate.mockReset()
     const { getByTestId } = renderPage()
 
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
 
-    await waitForExpect(() => {
-      expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
-      expect(navigationTestProps.navigation.navigate).toHaveBeenCalledWith('Home', {
-        shouldDisplayLoginModal: true,
-      })
+    expect(navigate).toBeCalledWith('Home', {
+      shouldDisplayLoginModal: true,
     })
   })
 
-  it('should navigate to ChoosePassword page when submit email', async () => {
-    const { getByPlaceholderText, findByText } = renderPage()
+  it('should redirect to ChoosePassword on valid email', () => {
+    const {
+      result: {
+        current: { navigate },
+      },
+    } = renderHook(() => useNavigation())
+    navigate.mockReset()
+
+    const { getByText, getByPlaceholderText, queryByText } = renderPage()
 
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
-    const continueButton = await findByText('Continuer')
+    const continueButton = getByText('Continuer')
     fireEvent.press(continueButton)
 
-    await waitForExpect(() => {
-      expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
-      expect(navigationTestProps.navigation.navigate).toHaveBeenCalledWith('ChoosePassword')
-    })
+    expect(navigate).toBeCalledWith('ChoosePassword')
+    expect(queryByText("Format de l'e-mail incorrect")).toBeFalsy()
+  })
+  it('should reject email', () => {
+    const { getByText, getByPlaceholderText, queryByText } = renderPage()
+
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'john.doe')
+
+    const continueButton = getByText('Continuer')
+    fireEvent.press(continueButton)
+
+    expect(queryByText("Format de l'e-mail incorrect")).toBeTruthy()
   })
 })
 
 function renderPage() {
-  return render(
-    <Signup
-      {...((navigationTestProps as unknown) as StackScreenProps<AllNavParamList, 'Signup'>)}
-    />
-  )
+  return render(<Signup />)
 }
