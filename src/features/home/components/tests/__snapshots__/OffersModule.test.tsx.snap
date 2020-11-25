@@ -26,14 +26,13 @@ exports[`OffersModule component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "height": 24,
           "marginHorizontal": 24,
         },
       ]
     }
   >
     <Text
-      numberOfLines={1}
+      numberOfLines={2}
       style={
         Array [
           Object {

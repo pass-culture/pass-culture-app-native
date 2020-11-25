@@ -13,6 +13,6 @@ describe('ModuleTitle component', () => {
 
   it('should have an ellipsis', () => {
     const { getByTestId } = render(<ModuleTitle title="Pour bien commencer" />)
-    expect(getByTestId('moduleTitle').parent?.props.numberOfLines).toEqual(1)
+    expect(getByTestId('moduleTitle').parent?.props.numberOfLines).toEqual(2)
   })
 })
