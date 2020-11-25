@@ -45,6 +45,21 @@ describe('<Signup />', () => {
       })
     })
   })
+
+  it('should navigate to ChoosePassword page when submit email', async () => {
+    const { getByPlaceholderText, findByText } = renderPage()
+
+    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+
+    const continueButton = await findByText('Continuer')
+    fireEvent.press(continueButton)
+
+    await waitForExpect(() => {
+      expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
+      expect(navigationTestProps.navigation.navigate).toHaveBeenCalledWith('ChoosePassword')
+    })
+  })
 })
 
 function renderPage() {
