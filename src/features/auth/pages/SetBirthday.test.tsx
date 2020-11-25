@@ -22,7 +22,7 @@ describe('SetBirthday Page', () => {
     expect(goBack).toBeCalledTimes(1)
     goBack.mockRestore()
   })
-  it('should keep disabled the button "Continuer" when the date is not correct', () => {
+  it('should keep disabled the button "Continuer" when the date is not complete', () => {
     const { getByPlaceholderText, getByTestId } = render(<SetBirthday />)
 
     const day = getByPlaceholderText('JJ')
@@ -53,7 +53,7 @@ describe('SetBirthday Page', () => {
     getByText('La date choisie est incorrecte')
   })
   it('should enable the button "Continuer" when the date is correct', () => {
-    const { getByText, getByPlaceholderText, queryByText } = render(<SetBirthday />)
+    const { getByText, getByPlaceholderText, queryByText, getByTestId } = render(<SetBirthday />)
 
     const day = getByPlaceholderText('JJ')
     const month = getByPlaceholderText('MM')
@@ -66,7 +66,8 @@ describe('SetBirthday Page', () => {
     const continueButton = getByText('Continuer')
     fireEvent.press(continueButton)
 
-    const error = queryByText('La date choisie est incorrecte')
-    expect(error).toBeFalsy()
+    const buttonContainer = getByTestId('button-container')
+    expect(buttonContainer.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+    expect(queryByText('La date choisie est incorrecte')).toBeFalsy()
   })
 })
