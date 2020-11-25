@@ -4,5 +4,5 @@ export const getPosition = (setInitialPosition: (coordinates: GeoCoordinates) =>
   AgonTukGeolocation.getCurrentPosition(
     (position) => setInitialPosition(position.coords),
     undefined,
-    { enableHighAccuracy: false, timeout: 20000, maximumAge: 10000 }
+    { enableHighAccuracy: false, timeout: 20000, maximumAge: 10000, showLocationDialog: false }
   )
