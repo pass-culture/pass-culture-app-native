@@ -52,7 +52,6 @@
     "i18n-js": "^3.5.1",
     "jsc-android": "^241213.1.0",
     "patch-package": "^6.2.0",
-    "portable-fetch": "^3.0.0",
     "react": "16.13.1",
     "react-content-loader": "^5.1.4",
     "react-native": "0.63.3",

@@ -3,7 +3,6 @@
 {{>licenseInfo}}
 
 import url from "url";
-import portableFetch from "portable-fetch";
 
 import { getAuthenticationHeaders, handleGeneratedApiResponse } from "api/helpers";
 import { EmptyResponse } from 'libs/fetch'
@@ -46,7 +45,7 @@ export interface FetchArgs {
  */
 export class BaseAPI {
     protected configuration?: Configuration;
-    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected fetch: FetchAPI = portableFetch) {
+    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH) {
         if (configuration) {
             this.configuration = configuration;
             this.basePath = configuration.basePath || this.basePath;
@@ -70,6 +69,7 @@ export class RequiredError extends Error {
 {{#model}}{{#isEnum}}{{>modelEnum}}{{/isEnum}}{{^isEnum}}{{>modelGeneric}}{{/isEnum}}{{/model}}
 {{/models}}
 {{#apiInfo}}{{#apis}}{{#operations}}
+
 /**
  * {{classname}} - fetch parameter creator{{#description}}
  * {{&description}}{{/description}}
@@ -231,6 +231,7 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
     {{/operation}}
     }
 };
+
 /**
  * {{classname}} - functional programming interface{{#description}}
  * {{{description}}}{{/description}}
@@ -250,13 +251,10 @@ export const {{classname}}Fp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any): Promise<(fetch?: FetchAPI, basePath?: string) => Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}EmptyResponse{{/returnType}}>> {
+        async {{nickname}}(basePath: string, {{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any): Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}EmptyResponse{{/returnType}}> {
             const localVarFetchArgs = await {{classname}}FetchParamCreator(configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    return handleGeneratedApiResponse(response)
-                });
-            };
+            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            return handleGeneratedApiResponse(response)
         },
     {{/operation}}
     }
@@ -316,8 +314,8 @@ export class {{classname}} extends BaseAPI {
      * @memberof {{classname}}
      */
     public async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any) {
-        const clientEndpoint = await {{classname}}Fp(this.configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options)
-        return clientEndpoint(this.fetch, this.basePath);
+        const functionalApi = {{classname}}Fp(this.configuration)
+        return functionalApi.{{nickname}}(this.basePath, {{#allParams}}{{paramName}}, {{/allParams}}options)
     }
     {{/operation}}
 }
