@@ -6,7 +6,7 @@ import { Typo, MARGIN_DP } from 'ui/theme'
 
 export const ModuleTitle = ({ title }: { title: string }) => (
   <Container>
-    <Typo.Title3 numberOfLines={1} testID="moduleTitle">
+    <Typo.Title3 numberOfLines={2} testID="moduleTitle">
       {title}
     </Typo.Title3>
   </Container>
@@ -14,5 +14,4 @@ export const ModuleTitle = ({ title }: { title: string }) => (
 
 const Container = styled.View({
   marginHorizontal: PixelRatio.roundToNearestPixel(MARGIN_DP),
-  height: PixelRatio.roundToNearestPixel(MARGIN_DP),
 })
