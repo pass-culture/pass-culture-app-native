@@ -35,7 +35,7 @@ export const Signup: FunctionComponent<Props> = ({ navigation }) => {
 
   async function validateEmail() {
     // TODO: PC-5310
-    return
+    navigation.navigate('ChoosePassword')
   }
 
   return (
