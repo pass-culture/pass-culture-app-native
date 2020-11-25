@@ -1,25 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SetBirthday Page should render properly 1`] = `
-<RNCSafeAreaView
-  edges={
-    Array [
-      "top",
-    ]
-  }
-  marginBottom={0}
-  mode="padding"
-  style={
-    Array [
-      Object {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "marginBottom": 0,
-      },
-    ]
-  }
->
+Array [
   <View
     style={
       Array [
@@ -210,7 +192,7 @@ exports[`SetBirthday Page should render properly 1`] = `
         </RNSVGGroup>
       </RNSVGGroup>
     </RNSVGSvgView>
-  </View>
+  </View>,
   <View
     onPress={[Function]}
     style={
@@ -763,17 +745,17 @@ exports[`SetBirthday Page should render properly 1`] = `
           </View>
         </View>
         <View
+          customHeight={8}
           style={
             Array [
               Object {
-                "height": 72,
+                "height": 8,
               },
             ]
           }
-          tabBarHeight={72}
         />
       </View>
     </View>
-  </View>
-</RNCSafeAreaView>
+  </View>,
+]
 `;

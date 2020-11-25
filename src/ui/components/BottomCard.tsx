@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
-import { Keyboard, Platform, View } from 'react-native'
+import { Keyboard, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
