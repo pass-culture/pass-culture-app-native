@@ -152,6 +152,42 @@ export interface SigninResponse {
      * @memberof SigninResponse
      */
     refresh_token: string;
+}/**
+ * 
+ * @export
+ * @interface ValidateEmailRequest
+ */
+export interface ValidateEmailRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidateEmailRequest
+     */
+    email_validation_token: string;
+}/**
+ * 
+ * @export
+ * @interface ValidateEmailResponse
+ */
+export interface ValidateEmailResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidateEmailResponse
+     */
+    access_token: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidateEmailResponse
+     */
+    id_check_token?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidateEmailResponse
+     */
+    refresh_token: string;
 }
 /**
  * DefaultApi - fetch parameter creator
@@ -255,6 +291,31 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary validate_email <POST>
+         * @param {ValidateEmailRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async nativeV1ValidateEmailPost(body?: ValidateEmailRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/validate_email`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"ValidateEmailRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -308,6 +369,18 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1SigninPost(basePath: string, body?: SigninRequest, options?: any): Promise<SigninResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1SigninPost(body, options);
+            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary validate_email <POST>
+         * @param {ValidateEmailRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async nativeV1ValidateEmailPost(basePath: string, body?: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1ValidateEmailPost(body, options);
             const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
@@ -367,5 +440,17 @@ export class DefaultApi extends BaseAPI {
     public async nativeV1SigninPost(body?: SigninRequest, options?: any) {
         const functionalApi = DefaultApiFp(this.configuration)
         return functionalApi.nativeV1SigninPost(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary validate_email <POST>
+     * @param {ValidateEmailRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async nativeV1ValidateEmailPost(body?: ValidateEmailRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this.configuration)
+        return functionalApi.nativeV1ValidateEmailPost(this.basePath, body, options)
     }
 }
