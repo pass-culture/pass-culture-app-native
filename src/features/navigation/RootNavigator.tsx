@@ -3,6 +3,7 @@ import {
   NavigationContainerRef,
   NavigationProp,
   RouteProp,
+  Theme,
 } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
@@ -20,6 +21,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Offer } from 'features/offer'
+import { ColorsEnum } from 'ui/theme'
 
 import { onNavigationStateChange } from './services'
 import { TabNavigator, TabParamList } from './TabBar/TabNavigator'
@@ -44,9 +46,11 @@ export type RootStackParamList = {
 export const RootStack = createStackNavigator<RootStackParamList>()
 export const navigationRef = React.createRef<NavigationContainerRef>()
 
+const theme = { colors: { background: ColorsEnum.WHITE } } as Theme
+
 export const RootNavigator: React.FC = () => {
   return (
-    <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef}>
+    <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
       <RootStack.Navigator initialRouteName="TabNavigator" screenOptions={{ headerShown: false }}>
         <RootStack.Screen name="TabNavigator" component={TabNavigator} />
         <RootStack.Screen name="Login" component={Login} />
