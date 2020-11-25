@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { RectangleIconInterface } from './types'
 
-export const CheckBoxMark: React.FunctionComponent<RectangleIconInterface> = ({
+export const CheckboxMark: React.FunctionComponent<RectangleIconInterface> = ({
   width = 16,
   height = 11,
   color = ColorsEnum.WHITE,

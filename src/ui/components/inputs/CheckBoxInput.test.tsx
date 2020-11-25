@@ -1,23 +1,27 @@
+// eslint-disable-next-line import/no-unresolved
 import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import { CheckBoxInput } from 'ui/components/inputs/CheckBoxInput'
+import { ColorsEnum } from 'ui/theme'
 
-const NotCheckedCheckBoxInput = <CheckBoxInput isChecked={false} setIsChecked={doNothingFn} />
-const CheckedCheckBoxInput = <CheckBoxInput isChecked={false} setIsChecked={doNothingFn} />
+import { CheckboxInput } from './CheckboxInput'
 
-describe('<CheckBoxInput />', () => {
+const NotCheckedCheckboxInput = <CheckboxInput isChecked={false} setIsChecked={doNothingFn} />
+const CheckedCheckboxInput = <CheckboxInput isChecked={true} setIsChecked={doNothingFn} />
+
+describe('<CheckboxInput />', () => {
   it('should render correctly when not checked', () => {
-    const instance = render(NotCheckedCheckBoxInput)
+    const { getByTestId } = render(NotCheckedCheckboxInput)
 
-    expect(instance).toMatchSnapshot()
+    const renderedCheckbox = getByTestId('checkbox')
+    expect(renderedCheckbox.props.style.backgroundColor).toEqual(ColorsEnum.WHITE)
   })
 
   it('should render correctly when checked', () => {
-    const notCheckedInstance = render(NotCheckedCheckBoxInput)
-    const checkedInstance = render(CheckedCheckBoxInput)
+    const { getByTestId } = render(CheckedCheckboxInput)
 
-    expect(notCheckedInstance).toMatchDiffSnapshot(checkedInstance)
+    const checkboxMark = getByTestId('checkbox-mark')
+    expect(checkboxMark).toBeTruthy()
   })
 })
 

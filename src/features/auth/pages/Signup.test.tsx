@@ -4,8 +4,9 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { Signup } from 'features/auth/pages/Signup'
-import { HomeStackParamList } from 'features/home/navigation/HomeNavigator'
+import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { navigationTestProps } from 'tests/navigation'
+import { ColorsEnum } from 'ui/theme'
 
 beforeEach(() => {
   jest.resetAllMocks()
@@ -14,17 +15,21 @@ beforeEach(() => {
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
 describe('<Signup />', () => {
+  it('should display disabled validate button when email input is not filled', async () => {
+    const { getByTestId } = renderPage()
+
+    const button = getByTestId('button-container')
+    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
+  })
+
   it('should enable validate button when email input is filled', async () => {
-    const { getByPlaceholderText, toJSON } = renderPage()
-    const disabledButtonSnapshot = toJSON()
+    const { getByTestId, getByPlaceholderText } = renderPage()
 
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
-    await waitForExpect(() => {
-      const enabledButtonSnapshot = toJSON()
-      expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
-    })
+    const button = getByTestId('button-container')
+    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
   })
 
   it('should redirect to SignUpSignInChoiceModal when clicking on ArrowPrevious icon', async () => {
@@ -44,6 +49,8 @@ describe('<Signup />', () => {
 
 function renderPage() {
   return render(
-    <Signup {...(navigationTestProps as StackScreenProps<HomeStackParamList, 'Signup'>)} />
+    <Signup
+      {...((navigationTestProps as unknown) as StackScreenProps<AllNavParamList, 'Signup'>)}
+    />
   )
 }

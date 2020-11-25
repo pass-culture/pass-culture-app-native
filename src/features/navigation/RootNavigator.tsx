@@ -13,8 +13,8 @@ import { Login } from 'features/auth/pages/Login'
 import { ReinitializePassword } from 'features/auth/pages/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/pages/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/pages/ResetPasswordExpiredLink'
-import { Signup } from 'features/auth/pages/Signup'
 import { SetBirthday } from 'features/auth/pages/SetBirthday'
+import { Signup } from 'features/auth/pages/Signup'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -58,7 +58,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="CheatCodes" component={CheatCodes} />
         <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
         <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
-        <RootStack.Screen name="Signup" component={Signup} options={{ headerShown: false }} />
+        <RootStack.Screen name="Signup" component={Signup} />
         <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
         <RootStack.Screen name="ChoosePassword" component={ChoosePassword} />
         <RootStack.Screen name="SetBirthday" component={SetBirthday} />
