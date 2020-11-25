@@ -1,4 +1,4 @@
 import CoordinatesView from './components/CoordinatesView'
 import { useGeolocation } from './useGeolocation'
-
-export { CoordinatesView, useGeolocation }
+import { useRequestGeolocPermission } from './useRequestGeolocPermission'
+export { CoordinatesView, useGeolocation, useRequestGeolocPermission }
