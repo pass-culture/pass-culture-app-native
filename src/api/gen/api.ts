@@ -153,6 +153,24 @@ export interface SigninResponse {
      */
     refresh_token: string;
 }/**
+ *
+ * @export
+ * @interface UserProfileResponse
+ */
+export interface UserProfileResponse {
+    /**
+     *
+     * @type {string}
+     * @memberof UserProfileResponse
+     */
+    email: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserProfileResponse
+     */
+    first_name?: string;
+}/**
  * 
  * @export
  * @interface ValidateEmailRequest
@@ -195,6 +213,27 @@ export interface ValidateEmailResponse {
  */
 export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         *
+         * @summary get_user_profile <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async nativeV1MeGet(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/me`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary refresh <POST>
@@ -326,6 +365,17 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
 export const DefaultApiFp = function(configuration?: Configuration) {
     return {
         /**
+         *
+         * @summary get_user_profile <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async nativeV1MeGet(basePath: string, options?: any): Promise<UserProfileResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1MeGet(options);
+            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
          * 
          * @summary refresh <POST>
          * @param {*} [options] Override http request option.
@@ -394,6 +444,17 @@ export const DefaultApiFp = function(configuration?: Configuration) {
  * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
+    /**
+     *
+     * @summary get_user_profile <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async nativeV1MeGet(options?: any) {
+        const functionalApi = DefaultApiFp(this.configuration)
+        return functionalApi.nativeV1MeGet(this.basePath, options)
+    }
     /**
      * 
      * @summary refresh <POST>
