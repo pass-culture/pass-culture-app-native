@@ -7,47 +7,49 @@ import { BusinessModule, ExclusivityModule, OffersModule } from 'features/home/c
 import {
   BusinessPane,
   ExclusivityPane,
-  Offers,
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
 import { Spacer } from 'ui/theme'
+
+import { useHomeAlgoliaModules } from '../pages/useHomeAlgoliaModules'
+
+import { getModulesToDisplay, getOfferModules } from './HomeBody.utils'
+import { isOfferModuleTypeguard } from './typeguards'
 
 interface HomeBodyProps {
   modules: ProcessedModule[]
   position: GeoCoordinates | null
 }
 
-export const showBusinessModule = (
-  targetNotConnectedUsersOnly: boolean | undefined,
-  connected: boolean
-): boolean => {
-  // Target both type of users
-  if (targetNotConnectedUsersOnly === undefined) return true
-
-  // Target only NON connected users
-  if (!connected && targetNotConnectedUsersOnly) return true
-
-  // Target only connected users
-  if (connected && !targetNotConnectedUsersOnly) return true
-  return false
-}
-
 export const HomeBody = function ({ modules, position }: HomeBodyProps) {
   const { isLoggedIn } = useAuthContext()
+  const algoliaModules = useHomeAlgoliaModules(getOfferModules(modules), position)
+  const displayModules = getModulesToDisplay(modules, algoliaModules, isLoggedIn)
+
   return (
     <Container>
-      {modules.map((module: ProcessedModule) => {
-        if (module instanceof Offers || module instanceof OffersWithCover) {
-          return <OffersModule key={module.moduleId} {...module} position={position} />
+      {displayModules.map((module: ProcessedModule, index: number) => {
+        if (isOfferModuleTypeguard(module)) {
+          const { hits, nbHits } = algoliaModules[module.moduleId]
+          return (
+            <OffersModule
+              key={module.moduleId}
+              algolia={module.algolia}
+              display={module.display}
+              position={position}
+              hits={hits}
+              nbHits={nbHits}
+              cover={module instanceof OffersWithCover ? module.cover : null}
+              index={index}
+            />
+          )
         }
         if (module instanceof ExclusivityPane) {
           return <ExclusivityModule key={module.moduleId} {...module} />
         }
         if (module instanceof BusinessPane) {
-          if (showBusinessModule(module.targetNotConnectedUsersOnly, isLoggedIn)) {
-            return <BusinessModule key={module.moduleId} {...module} />
-          }
+          return <BusinessModule key={module.moduleId} {...module} />
         }
         return null
       })}

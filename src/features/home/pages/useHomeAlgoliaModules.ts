@@ -1,3 +1,4 @@
+import { SearchResponse } from '@algolia/client-search'
 import { useState } from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 import { useQueries } from 'react-query'
@@ -7,8 +8,6 @@ import { AlgoliaHit, FetchAlgoliaParameters, parseAlgoliaParameters } from 'libs
 import { fetchAlgolia } from 'libs/algolia/fetchAlgolia'
 
 import { AlgoliaModuleResponse } from '../components/HomeBody.utils'
-
-import { SearchResponse } from '@algolia/client-search'
 
 const isAlgoliaModule = (
   response: unknown

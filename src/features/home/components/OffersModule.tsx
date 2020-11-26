@@ -4,25 +4,26 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
-import { Offers, OffersWithCover } from 'features/home/contentful'
-import { AlgoliaHit, useFetchAlgolia } from 'libs/algolia'
+import { AlgoliaParametersFields, DisplayParametersFields } from 'features/home/contentful'
+import { AlgoliaHit } from 'libs/algolia'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
-import { Spacer } from 'ui/theme'
+import { ColorsEnum, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'
 
-type OfferWithOptionalCover = Partial<OffersWithCover> &
-  Pick<Offers, 'algolia' | 'display' | 'moduleId'> & { position: ReturnType<typeof useGeolocation> }
+type OffersModuleProps = {
+  algolia: AlgoliaParametersFields
+  display: DisplayParametersFields
+  position: ReturnType<typeof useGeolocation>
+  hits: Hit<AlgoliaHit>[]
+  nbHits: number
+  cover: string | null
+  index: number
+}
 
-export const OffersModule = (props: OfferWithOptionalCover) => {
-  const { algolia: parameters, display, moduleId, position } = props
-
-  const { hits, nbHits } = useFetchAlgolia({
-    algoliaParameters: parameters,
-    geolocation: position,
-    moduleId,
-  })
+export const OffersModule = (props: OffersModuleProps) => {
+  const { hits, nbHits, display, algolia: parameters, position, index } = props
 
   const renderItem = useCallback(
     ({ item }: { item: Hit<AlgoliaHit> }) => (
@@ -63,7 +64,10 @@ export const OffersModule = (props: OfferWithOptionalCover) => {
   return (
     <Container>
       <Spacer.Column numberOfSpaces={6} />
-      <ModuleTitle title={display.title} />
+      <ModuleTitle
+        title={display.title}
+        color={index === 0 ? ColorsEnum.WHITE : ColorsEnum.BLACK}
+      />
       <Spacer.Column numberOfSpaces={4} />
       <FlatList
         horizontal
