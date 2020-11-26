@@ -4,6 +4,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { useNavigationMock } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/pages/ForgottenPassword'
+import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 beforeEach(() => {
   jest.resetAllMocks()
@@ -51,6 +52,34 @@ describe('<ForgottenPassword />', () => {
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toHaveBeenCalledWith('Login')
+    })
+  })
+  describe('Email Validation', () => {
+    afterEach(() => jest.resetAllMocks())
+    it('should redirect to ResetPasswordEmailSent on valid email', () => {
+      const isEmailValid = jest.spyOn(emailCheck, 'isEmailValid')
+
+      const { getByText, getByPlaceholderText, queryByText } = renderPage()
+
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+
+      const continueButton = getByText('Valider')
+      fireEvent.press(continueButton)
+
+      expect(isEmailValid).toReturnWith(true)
+      expect(queryByText("Format de l'e-mail incorrect")).toBeFalsy()
+    })
+    it('should reject email', () => {
+      const { getByText, getByPlaceholderText, queryByText } = renderPage()
+
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'john.doe')
+
+      const continueButton = getByText('Valider')
+      fireEvent.press(continueButton)
+
+      expect(queryByText("Format de l'e-mail incorrect")).toBeTruthy()
     })
   })
 })

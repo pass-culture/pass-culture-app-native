@@ -5,11 +5,8 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import {
-  NavigateToHomeWithoutModalOptions,
-  RootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator'
+import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

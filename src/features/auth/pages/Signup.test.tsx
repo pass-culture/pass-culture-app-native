@@ -5,10 +5,6 @@ import { useNavigationMock } from '__mocks__/@react-navigation/native'
 import { Signup } from 'features/auth/pages/Signup'
 import { ColorsEnum } from 'ui/theme'
 
-beforeEach(() => {
-  jest.resetAllMocks()
-})
-
 describe('<Signup />', () => {
   afterEach(() => jest.resetAllMocks())
 
@@ -31,7 +27,6 @@ describe('<Signup />', () => {
 
   it('should redirect to SignUpSignInChoiceModal when clicking on ArrowPrevious icon', async () => {
     const { navigate } = useNavigationMock()
-    navigate.mockReset()
     const { getByTestId } = renderPage()
 
     const leftIcon = getByTestId('leftIcon')
@@ -42,31 +37,32 @@ describe('<Signup />', () => {
     })
   })
 
-  it('should redirect to ChoosePassword on valid email', () => {
-    const { navigate } = useNavigationMock()
-    navigate.mockReset()
+  describe('Email Validation', () => {
+    it('should redirect to ChoosePassword on valid email', () => {
+      const { navigate } = useNavigationMock()
 
-    const { getByText, getByPlaceholderText, queryByText } = renderPage()
+      const { getByText, getByPlaceholderText, queryByText } = renderPage()
 
-    const emailInput = getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
-    const continueButton = getByText('Continuer')
-    fireEvent.press(continueButton)
+      const continueButton = getByText('Continuer')
+      fireEvent.press(continueButton)
 
-    expect(navigate).toBeCalledWith('ChoosePassword')
-    expect(queryByText("Format de l'e-mail incorrect")).toBeFalsy()
-  })
-  it('should reject email', () => {
-    const { getByText, getByPlaceholderText, queryByText } = renderPage()
+      expect(navigate).toBeCalledWith('ChoosePassword')
+      expect(queryByText("Format de l'e-mail incorrect")).toBeFalsy()
+    })
+    it('should reject email', () => {
+      const { getByText, getByPlaceholderText, queryByText } = renderPage()
 
-    const emailInput = getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'john.doe')
+      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'john.doe')
 
-    const continueButton = getByText('Continuer')
-    fireEvent.press(continueButton)
+      const continueButton = getByText('Continuer')
+      fireEvent.press(continueButton)
 
-    expect(queryByText("Format de l'e-mail incorrect")).toBeTruthy()
+      expect(queryByText("Format de l'e-mail incorrect")).toBeTruthy()
+    })
   })
 })
 

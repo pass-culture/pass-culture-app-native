@@ -21,7 +21,6 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export const Signup: FunctionComponent = () => {
   const [email, setEmail] = useState('')
   const [hasError, setHasError] = useState(false)
-
   const [isNewsletterChecked, setIsNewsletterChecked] = useState(false)
 
   const navigation = useNavigation<UseNavigationType>()
