@@ -43,7 +43,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should display the matching error when the passwords dont match', async () => {
-    const { getByPlaceholderText, getByTestId } = render(
+    const { getByPlaceholderText, getByText } = render(
       reactQueryProviderHOC(<ReinitializePassword />)
     )
 
@@ -54,7 +54,7 @@ describe('ReinitializePassword Page', () => {
     fireEvent.changeText(confirmationInput, '123456--')
 
     // assuming there's only one button in this page
-    const notMatchingErrorText = getByTestId('not-matching-error')
+    const notMatchingErrorText = getByText('les mots de passe ne concordent pas')
 
     await waitFor(async () => {
       const color = notMatchingErrorText.props.style[0].color

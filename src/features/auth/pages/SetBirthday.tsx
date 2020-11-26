@@ -8,12 +8,12 @@ import { _ } from 'libs/i18n'
 import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { DateInput } from 'ui/components/inputs/DateInput'
+import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { Warning } from 'ui/svg/icons/Warning'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 interface State {
   date: string | null
@@ -51,18 +51,11 @@ export const SetBirthday: FunctionComponent = () => {
         <BottomCardContentContainer>
           <DateInputContainer>
             <DateInput onChangeValue={onChangeValue} />
-            {state.hasError && (
-              <React.Fragment>
-                <Spacer.Column numberOfSpaces={5} />
-                <StyledInline>
-                  <Warning size={24} />
-                  <Spacer.Row numberOfSpaces={1} />
-                  <Typo.Caption color={ColorsEnum.ERROR}>
-                    {_(t`La date choisie est incorrecte`)}
-                  </Typo.Caption>
-                </StyledInline>
-              </React.Fragment>
-            )}
+            <InputError
+              visible={state.hasError}
+              messageId="La date choisie est incorrecte"
+              numberOfSpacesTop={5}
+            />
           </DateInputContainer>
           <ButtonPrimary title={_(t`Continuer`)} onPress={onSubmit} disabled={!state.isComplete} />
         </BottomCardContentContainer>
@@ -75,12 +68,4 @@ const DateInputContainer = styled.View({
   marginVertical: getSpacing(10),
   alignItems: 'center',
   width: '100%',
-})
-
-const StyledInline = styled.View({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-  maxWidth: getSpacing(125),
 })
