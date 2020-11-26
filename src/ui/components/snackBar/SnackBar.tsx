@@ -186,8 +186,6 @@ const ProgressBar = styled(Animated.View)<{
   display: isVisible ? 'flex' : 'none',
   height: 4,
   backgroundColor: backgroundColor,
-  // We Ts-ignore to avoid typescript error due to not supported Animated Css/Styles types
-  // The alternative is to use inline style
-  /* @ts-ignore */
-  width: width._value,
+  // @ts-ignore: avoid typescript error due to not supported Animated Css/Styles types
+  width: width._value /* The alternative is to use inline style */,
 }))

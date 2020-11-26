@@ -17,6 +17,13 @@ module.exports = {
     },
   },
   rules: {
+    '@typescript-eslint/ban-ts-comment': [
+      2, // error
+      {
+        'ts-ignore': 'allow-with-description',
+        minimumDescriptionLength: 5,
+      },
+    ],
     // not ideal, but progamatically necessary sometimes
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
