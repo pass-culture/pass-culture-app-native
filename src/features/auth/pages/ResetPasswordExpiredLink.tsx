@@ -1,11 +1,13 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { navigateToHomeWithoutModal, RootStackParamList } from 'features/navigation/RootNavigator'
+import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -19,12 +21,18 @@ import { contactSupport } from './support.services'
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 export function ResetPasswordExpiredLink(props: Props) {
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  function goToHomeWithoutModal() {
+    navigate('Home', NavigateToHomeWithoutModalOptions)
+  }
+
   async function resendEmailForResetPassword() {
     const { email } = props.route.params
     await api
       .nativeV1RequestPasswordResetPost({ email })
       .then(() => {
-        props.navigation.navigate('ResetPasswordEmailSent', { email })
+        navigate('ResetPasswordEmailSent', { email })
       })
       .catch((error) => {
         Alert.alert(error.message)
@@ -48,10 +56,7 @@ export function ResetPasswordExpiredLink(props: Props) {
       <Spacer.Column numberOfSpaces={4} />
       <ButtonPrimaryWhite title={_(t`Renvoyer l'email`)} onPress={resendEmailForResetPassword} />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite
-        title={_(t`Retourner à l'accueil`)}
-        onPress={navigateToHomeWithoutModal}
-      />
+      <ButtonTertiaryWhite title={_(t`Retourner à l'accueil`)} onPress={goToHomeWithoutModal} />
     </GenericInfoPage>
   )
 }

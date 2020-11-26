@@ -1,10 +1,15 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { navigateToHomeWithoutModal, RootStackParamList } from 'features/navigation/RootNavigator'
+import {
+  NavigateToHomeWithoutModalOptions,
+  RootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -21,13 +26,15 @@ import { contactSupport } from './support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
-export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ navigation, route }) => {
+export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
+  const { navigate } = useNavigation<UseNavigationType>()
+
   function onBackNavigation() {
-    navigation.navigate('ForgottenPassword')
+    navigate('ForgottenPassword')
   }
 
   function onClose() {
-    navigateToHomeWithoutModal()
+    navigate('Home', NavigateToHomeWithoutModalOptions)
   }
 
   return (

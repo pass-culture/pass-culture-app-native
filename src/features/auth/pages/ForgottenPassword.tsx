@@ -1,11 +1,12 @@
 import { t } from '@lingui/macro'
-import { StackScreenProps } from '@react-navigation/stack'
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
 import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { navigateToHomeWithoutModal, RootStackParamList } from 'features/navigation/RootNavigator'
+import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -17,26 +18,26 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<RootStackParamList, 'ForgottenPassword'>
-
-export const ForgottenPassword: FunctionComponent<Props> = ({ navigation }) => {
+export const ForgottenPassword: FunctionComponent = () => {
   const [email, setEmail] = useState('')
 
   const shouldDisableValidateButton = isValueEmpty(email)
 
+  const { navigate } = useNavigation<UseNavigationType>()
+
   function onBackNavigation() {
-    navigation.navigate('Login')
+    navigate('Login')
   }
 
   function onClose() {
-    navigateToHomeWithoutModal()
+    navigate('Home', NavigateToHomeWithoutModalOptions)
   }
 
   async function validateEmail() {
     await api
       .nativeV1RequestPasswordResetPost({ email })
       .then(() => {
-        navigation.navigate('ResetPasswordEmailSent', { email })
+        navigate('ResetPasswordEmailSent', { email })
       })
       .catch((err) => {
         Alert.alert(err.message)
