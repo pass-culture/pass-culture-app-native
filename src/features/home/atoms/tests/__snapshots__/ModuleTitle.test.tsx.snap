@@ -11,6 +11,7 @@ exports[`ModuleTitle component should render correctly 1`] = `
   }
 >
   <Text
+    color="#151515"
     numberOfLines={2}
     style={
       Array [
