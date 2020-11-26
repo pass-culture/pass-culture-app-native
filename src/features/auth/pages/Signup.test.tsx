@@ -1,8 +1,7 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { useNavigation } from '__mocks__/@react-navigation/native'
+import { useNavigationMock } from '__mocks__/@react-navigation/native'
 import { Signup } from 'features/auth/pages/Signup'
 import { ColorsEnum } from 'ui/theme'
 
@@ -31,11 +30,7 @@ describe('<Signup />', () => {
   })
 
   it('should redirect to SignUpSignInChoiceModal when clicking on ArrowPrevious icon', async () => {
-    const {
-      result: {
-        current: { navigate },
-      },
-    } = renderHook(() => useNavigation())
+    const { navigate } = useNavigationMock()
     navigate.mockReset()
     const { getByTestId } = renderPage()
 
@@ -48,11 +43,7 @@ describe('<Signup />', () => {
   })
 
   it('should redirect to ChoosePassword on valid email', () => {
-    const {
-      result: {
-        current: { navigate },
-      },
-    } = renderHook(() => useNavigation())
+    const { navigate } = useNavigationMock()
     navigate.mockReset()
 
     const { getByText, getByPlaceholderText, queryByText } = renderPage()

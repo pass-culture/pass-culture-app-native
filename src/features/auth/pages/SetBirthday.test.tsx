@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { useNavigation } from '__mocks__/@react-navigation/native'
+import { useNavigationMock } from '__mocks__/@react-navigation/native'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
@@ -12,7 +12,7 @@ describe('SetBirthday Page', () => {
     expect(toJSON()).toMatchSnapshot()
   })
   it('should navigate to the previous when back navigation triggered', () => {
-    const { goBack } = useNavigation()
+    const { goBack } = useNavigationMock()
     goBack.mockReset()
 
     const { getByTestId } = render(<SetBirthday />)

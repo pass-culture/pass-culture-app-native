@@ -113,13 +113,3 @@ export type RouteParams<
   StackParamList extends Record<string, unknown>,
   Screename extends keyof StackParamList
 > = Pick<StackParamList, Screename>[Screename]
-
-export function navigateToHomeWithoutModal() {
-  if (navigationRef.current) {
-    const navigation = (navigationRef.current as unknown) as StackNavigationProp<
-      AllNavParamList,
-      'Home'
-    >
-    navigation.navigate('Home', { shouldDisplayLoginModal: false })
-  }
-}

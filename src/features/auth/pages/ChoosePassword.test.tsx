@@ -3,7 +3,7 @@ import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { useNavigation } from '__mocks__/@react-navigation/native'
+import { useNavigationMock } from '__mocks__/@react-navigation/native'
 import { ChoosePassword } from 'features/auth/pages/ChoosePassword'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { navigationTestProps } from 'tests/navigation'
@@ -44,7 +44,7 @@ describe('ChoosePassword Page', () => {
   })
 
   it('should navigate to previous page when clicking on leftIcon', () => {
-    const { goBack } = useNavigation()
+    const { goBack } = useNavigationMock()
     goBack.mockReset()
 
     const { getByTestId } = renderChoosePassword()

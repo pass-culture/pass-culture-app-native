@@ -7,11 +7,8 @@ import {
   isPasswordCorrect,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
-import {
-  navigateToHomeWithoutModal,
-  UseRouteType,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator'
+import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
+import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -29,7 +26,7 @@ const MILLISECONDS_IN_A_SECOND = 1000
 
 export const ReinitializePassword = () => {
   const { params } = useRoute<UseRouteType<'ReinitializePassword'>>()
-  const navigation = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const { displaySuccessSnackBar } = useContext(SnackBarContext)
 
@@ -47,7 +44,7 @@ export const ReinitializePassword = () => {
       message: _(t`Ton mot de passe a été modifié !`),
       timeout: SNACK_BAR_TIME_OUT,
     })
-    navigation.navigate('Login')
+    navigate('Login')
   })
 
   function submitPassword() {
@@ -57,9 +54,13 @@ export const ReinitializePassword = () => {
     })
   }
 
+  function goToHomeWithoutModal() {
+    navigate('Home', NavigateToHomeWithoutModalOptions)
+  }
+
   useEffect(() => {
     if (params.expiration_timestamp * MILLISECONDS_IN_A_SECOND < new Date().getTime()) {
-      navigation.navigate('Login')
+      navigate('Login')
     }
   }, [])
 
@@ -70,7 +71,7 @@ export const ReinitializePassword = () => {
         <ModalHeader
           title={_(t`Ton mot de passe`)}
           rightIcon={Close}
-          onRightIconPress={navigateToHomeWithoutModal}
+          onRightIconPress={goToHomeWithoutModal}
         />
         <BottomCardContentContainer>
           <Spacer.Column numberOfSpaces={6} />

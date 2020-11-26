@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
-import { StackScreenProps } from '@react-navigation/stack'
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/AuthContext'
-import { AllNavParamList, navigateToHomeWithoutModal } from 'features/navigation/RootNavigator'
+import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
@@ -19,8 +20,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<AllNavParamList, 'Login'>
-
 let INITIAL_IDENTIFIER = ''
 let INITIAL_PASSWORD = ''
 
@@ -29,7 +28,7 @@ if (__DEV__) {
   INITIAL_PASSWORD = env.SIGNIN_PASSWORD
 }
 
-export const Login: FunctionComponent<Props> = function (props: Props) {
+export const Login: FunctionComponent = function () {
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const [shouldShowErrorMessage, setShouldShowErrorMessage] = useState(false)
@@ -37,26 +36,28 @@ export const Login: FunctionComponent<Props> = function (props: Props) {
 
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password)
 
+  const { navigate } = useNavigation<UseNavigationType>()
+
   async function handleSignin() {
     setShouldShowErrorMessage(false)
     const isSigninSuccessful = await signIn({ identifier: email, password })
     if (isSigninSuccessful) {
-      navigateToHomeWithoutModal()
+      navigate('Home', NavigateToHomeWithoutModalOptions)
     } else {
       setShouldShowErrorMessage(true)
     }
   }
 
   function onBackNavigation() {
-    props.navigation.navigate('Home', { shouldDisplayLoginModal: true })
+    navigate('Home', { shouldDisplayLoginModal: true })
   }
 
   function onClose() {
-    navigateToHomeWithoutModal()
+    navigate('Home', NavigateToHomeWithoutModalOptions)
   }
 
   function onForgottenPasswordClick() {
-    props.navigation.navigate('ForgottenPassword')
+    navigate('ForgottenPassword')
   }
 
   return (

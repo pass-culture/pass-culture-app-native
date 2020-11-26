@@ -1,12 +1,10 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import { render, fireEvent, act } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { AllNavParamList, navigateToHomeWithoutModal } from 'features/navigation/RootNavigator'
+import { useNavigationMock } from '__mocks__/@react-navigation/native'
 import { env } from 'libs/environment'
-import { navigationTestProps } from 'tests/navigation'
 import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
 
@@ -14,26 +12,22 @@ import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
 
-jest.mock('features/navigation/RootNavigator')
-
-beforeEach(() => {
-  jest.resetAllMocks()
-})
-
 const mockSignIn = jest.fn()
 
 function renderLogin() {
   return render(
     <AuthContext.Provider value={{ isLoggedIn: true, signIn: mockSignIn, signOut: jest.fn() }}>
-      <Login
-        {...((navigationTestProps as unknown) as StackScreenProps<AllNavParamList, 'Login'>)}
-      />
+      <Login />
     </AuthContext.Provider>
   )
 }
 
 describe('<Login/>', () => {
+  beforeEach(() => jest.resetAllMocks())
+
   it('should redirect to home page WHEN signin is successful', async () => {
+    const { navigate } = useNavigationMock()
+
     const { findByText } = renderLogin()
     mockSignIn.mockImplementationOnce(() => true)
 
@@ -42,7 +36,7 @@ describe('<Login/>', () => {
 
     await waitForExpect(() => {
       expect(mockSignIn).toBeCalledTimes(1)
-      expect(navigateToHomeWithoutModal).toBeCalledTimes(1)
+      expect(navigate).toBeCalledTimes(1)
     })
   })
 
@@ -52,6 +46,9 @@ describe('<Login/>', () => {
         res(ctx.status(401))
       )
     )
+
+    const { navigate } = useNavigationMock()
+
     const { findByText, toJSON } = renderLogin()
     const notErrorSnapshot = toJSON()
 
@@ -64,7 +61,7 @@ describe('<Login/>', () => {
     await waitForExpect(() => {
       const errorSnapshot = toJSON()
       expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
-      expect(navigateToHomeWithoutModal).not.toBeCalled()
+      expect(navigate).not.toBeCalled()
     })
   })
 

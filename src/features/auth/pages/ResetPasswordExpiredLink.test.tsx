@@ -5,20 +5,18 @@ import React from 'react'
 import { Alert, Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import { RootStackParamList, navigateToHomeWithoutModal } from 'features/navigation/RootNavigator'
+import { useNavigationMock } from '__mocks__/@react-navigation/native'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { navigationTestProps } from 'tests/navigation'
 import { server } from 'tests/server'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
-
-jest.mock('features/navigation/RootNavigator')
 
 beforeEach(() => {
   jest.resetAllMocks()
 })
 
-const navigationProps = { ...navigationTestProps, route: { params: { email: 'test@email.com' } } }
+const navigationProps = { route: { params: { email: 'test@email.com' } } }
 
 function renderResetPasswordExpiredLink() {
   return render(
@@ -30,13 +28,14 @@ function renderResetPasswordExpiredLink() {
 
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
+    const { navigate } = useNavigationMock()
     const { findByText } = renderResetPasswordExpiredLink()
 
     const button = await findByText("Retourner à l'accueil")
     fireEvent.press(button)
 
     await waitForExpect(() => {
-      expect(navigateToHomeWithoutModal).toBeCalledTimes(1)
+      expect(navigate).toBeCalledTimes(1)
     })
   })
 
@@ -52,14 +51,15 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
+    const { navigate } = useNavigationMock()
     const { findByText } = renderResetPasswordExpiredLink()
 
     const button = await findByText("Renvoyer l'email")
     fireEvent.press(button)
 
     await waitForExpect(() => {
-      expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
-      expect(navigationTestProps.navigation.navigate).toBeCalledWith('ResetPasswordEmailSent', {
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toBeCalledWith('ResetPasswordEmailSent', {
         email: 'test@email.com',
       })
     })
@@ -71,13 +71,15 @@ describe('<ResetPasswordExpiredLink/>', () => {
         res(ctx.status(403))
       )
     )
+    const { navigate } = useNavigationMock()
+
     const { findByText } = renderResetPasswordExpiredLink()
 
     const button = await findByText("Renvoyer l'email")
     fireEvent.press(button)
 
     await waitForExpect(() => {
-      expect(navigationTestProps.navigation.navigate).not.toBeCalled()
+      expect(navigate).not.toBeCalled()
       expect(Alert.alert).toBeCalledTimes(1)
     })
   })

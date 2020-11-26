@@ -2,13 +2,11 @@ import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { useRoute, useNavigation } from '__mocks__/@react-navigation/native'
+import { useRoute, useNavigationMock } from '__mocks__/@react-navigation/native'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
-
-jest.mock('features/navigation/RootNavigator')
 
 describe('ReinitializePassword Page', () => {
   beforeAll(() => {
@@ -77,7 +75,7 @@ describe('ReinitializePassword Page', () => {
     })
   })
   it('should redirect to login page WHEN password is reset', async () => {
-    const { navigate } = useNavigation()
+    const { navigate } = useNavigationMock()
     navigate.mockReset()
 
     const { findByText } = render(reactQueryProviderHOC(<ReinitializePassword />))
