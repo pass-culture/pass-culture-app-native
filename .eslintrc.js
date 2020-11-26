@@ -17,6 +17,12 @@ module.exports = {
     },
   },
   rules: {
+    // not ideal, but progamatically necessary sometimes
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+    ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
@@ -109,7 +115,6 @@ module.exports = {
     {
       files: ['**/*.ts', '**/*.tsx', '**/*.test.ts', '**/*.test.tsx'],
       rules: {
-        '@typescript-eslint/no-unused-vars': 'error',
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/ban-ts-comment': 'warn',
         '@typescript-eslint/explicit-function-return-type': 'off',
@@ -123,11 +128,6 @@ module.exports = {
         ],
         '@typescript-eslint/no-use-before-define': 'off', // Clean Code : caller before callee
         '@typescript-eslint/no-var-requires': 'off', // ES6 imports are more readable
-        // not ideal, but progamatically necessary sometimes
-        '@typescript-eslint/no-unused-vars': [
-          'error',
-          { argsIgnorePattern: '_', varsIgnorePattern: '_' },
-        ],
         // we want interface names to start with "I"
         '@typescript-eslint/naming-convention': [
           'error',
