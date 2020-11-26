@@ -11,14 +11,14 @@ import { _ } from 'libs/i18n'
 import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
+import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { Warning } from 'ui/svg/icons/Warning'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 let INITIAL_IDENTIFIER = ''
 let INITIAL_PASSWORD = ''
@@ -71,17 +71,11 @@ export const Login: FunctionComponent = function () {
           rightIcon={Close}
           onRightIconPress={onClose}
         />
-        {shouldShowErrorMessage && (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={5} />
-            <StyledInline>
-              <Warning size={24} />
-              <Typo.Caption color={ColorsEnum.ERROR}>
-                {_(t`E-mail ou mot de passe incorrect`)}
-              </Typo.Caption>
-            </StyledInline>
-          </React.Fragment>
-        )}
+        <InputError
+          visible={shouldShowErrorMessage}
+          messageId="E-mail ou mot de passe incorrect"
+          numberOfSpacesTop={5}
+        />
         <Spacer.Column numberOfSpaces={7} />
         <StyledInput>
           <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
@@ -128,14 +122,6 @@ const StyledInput = styled.View({
   flexDirection: 'column',
   alignItems: 'flex-start',
   width: '100%',
-  maxWidth: getSpacing(125),
-})
-
-const StyledInline = styled.View({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  alignItems: 'center',
   maxWidth: getSpacing(125),
 })
 

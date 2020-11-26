@@ -12,13 +12,13 @@ import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigat
 import { _ } from 'libs/i18n'
 import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { Background } from 'ui/svg/Background'
 import { Close } from 'ui/svg/icons/Close'
-import { Warning } from 'ui/svg/icons/Warning'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useResetPasswordMutation } from '../mutations'
 
@@ -99,14 +99,11 @@ export const ReinitializePassword = () => {
             />
           </StyledInput>
           <Spacer.Column numberOfSpaces={2} />
-          {displayNotMatchingError && (
-            <ErrorLineContainer>
-              <Warning size={24} color={ColorsEnum.ERROR} />
-              <Typo.Caption testID="not-matching-error" color={ColorsEnum.ERROR}>
-                {_(t`les mots de passe ne concordent pas`)}
-              </Typo.Caption>
-            </ErrorLineContainer>
-          )}
+          <InputError
+            visible={displayNotMatchingError}
+            messageId="les mots de passe ne concordent pas"
+            numberOfSpacesTop={0}
+          />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
             title={_(t`Continuer`)}
@@ -126,11 +123,4 @@ const StyledInput = styled.View({
   alignItems: 'flex-start',
   width: '100%',
   maxWidth: getSpacing(125),
-})
-
-const ErrorLineContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-  width: '100%',
 })

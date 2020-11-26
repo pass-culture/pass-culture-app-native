@@ -12,13 +12,13 @@ import { BottomCard } from 'ui/components/BottomCard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
+import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { Warning } from 'ui/svg/icons/Warning'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ForgottenPassword: FunctionComponent = () => {
   const [email, setEmail] = useState('')
@@ -34,6 +34,13 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   function onClose() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
+  }
+
+  function onChangeEmail(email: string) {
+    if (hasError) {
+      setHasError(false)
+    }
+    setEmail(email)
   }
 
   async function validateEmail() {
@@ -76,24 +83,17 @@ export const ForgottenPassword: FunctionComponent = () => {
             <Spacer.Column numberOfSpaces={2} />
             <TextInput
               value={email}
-              onChangeText={setEmail}
+              onChangeText={onChangeEmail}
               placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
               keyboardType="email-address"
               textContentType="emailAddress"
               autoFocus={true}
             />
-            {hasError && (
-              <React.Fragment>
-                <Spacer.Column numberOfSpaces={1} />
-                <StyledInline>
-                  <Warning size={24} />
-                  <Spacer.Row numberOfSpaces={1} />
-                  <Typo.Caption color={ColorsEnum.ERROR}>
-                    {_(t`Format de l'e-mail incorrect`)}
-                  </Typo.Caption>
-                </StyledInline>
-              </React.Fragment>
-            )}
+            <InputError
+              visible={hasError}
+              messageId="Format de l'e-mail incorrect"
+              numberOfSpacesTop={1}
+            />
           </StyledInput>
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
@@ -122,13 +122,5 @@ const StyledInput = styled.View({
   flexDirection: 'column',
   alignItems: 'flex-start',
   width: '100%',
-  maxWidth: getSpacing(125),
-})
-
-const StyledInline = styled.View({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  alignItems: 'center',
   maxWidth: getSpacing(125),
 })
