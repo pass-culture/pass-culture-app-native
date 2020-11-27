@@ -56,7 +56,6 @@ export function Navigation(): JSX.Element {
           <ButtonPrimary
             title={'Reset Mdp : email envoyé'}
             onPress={() =>
-              // TODO => PC-4356
               navigation.navigate('ResetPasswordEmailSent', {
                 email: 'jean.dupont@gmail.com',
               })
@@ -103,7 +102,7 @@ export function Navigation(): JSX.Element {
         <Row>
           <ButtonPrimary
             title={'Choix du mdp (inscr.)'}
-            onPress={() => navigation.navigate('ChoosePassword')}
+            onPress={() => navigation.navigate('SetPassword')}
           />
         </Row>
       </StyledContainer>

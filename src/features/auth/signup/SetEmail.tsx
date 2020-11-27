@@ -18,7 +18,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const Signup: FunctionComponent = () => {
+export const SetEmail: FunctionComponent = () => {
   const [email, setEmail] = useState('')
   const [hasError, setHasError] = useState(false)
   const [isNewsletterChecked, setIsNewsletterChecked] = useState(false)
@@ -45,7 +45,7 @@ export const Signup: FunctionComponent = () => {
 
   async function validateEmail() {
     if (isEmailValid(email)) {
-      navigation.navigate('ChoosePassword')
+      navigation.navigate('SetPassword')
     } else {
       setHasError(true)
     }

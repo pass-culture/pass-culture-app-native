@@ -20,9 +20,9 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<RootStackParamList, 'ChoosePassword'>
+type Props = StackScreenProps<RootStackParamList, 'SetPassword'>
 
-export const ChoosePassword: FunctionComponent<Props> = ({ navigation }) => {
+export const SetPassword: FunctionComponent<Props> = ({ navigation }) => {
   const [password, setPassword] = useState('')
   const { goBack } = useNavigation()
 

@@ -337,6 +337,7 @@ export const AppComponents: FunctionComponent = () => {
           title={'12 Caractères'}
           icon={inputText.length >= 12 ? Check : Close}
           color={inputText.length >= 12 ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
+          iconSize={16}
         />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input - Email</Typo.Title4>

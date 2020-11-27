@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
 import React, { FC, Fragment } from 'react'
-import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
 import { Warning } from 'ui/svg/icons/Warning'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer } from 'ui/theme'
+
+import { InputRule } from './rules/InputRule'
 
 interface Props {
   messageId: string
@@ -16,19 +17,13 @@ export const InputError: FC<Props> = (props) => {
   return props.visible ? (
     <Fragment>
       <Spacer.Column testID="input-error-top-spacer" numberOfSpaces={props.numberOfSpacesTop} />
-      <StyledInline>
-        <Warning size={24} />
-        <Spacer.Row numberOfSpaces={1} />
-        <Typo.Caption color={ColorsEnum.ERROR}>{_(t`${props.messageId}`)}</Typo.Caption>
-      </StyledInline>
+      <InputRule
+        title={_(t`${props.messageId}`)}
+        color={ColorsEnum.ERROR}
+        icon={Warning}
+        testIdSuffix="warn"
+        iconSize={24}
+      />
     </Fragment>
   ) : null
 }
-
-const StyledInline = styled.View({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-  maxWidth: getSpacing(125),
-})

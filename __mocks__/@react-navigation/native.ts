@@ -10,14 +10,4 @@ export const useNavigation = () => ({
   goBack,
 })
 
-export const useNavigationMock = () => {
-  const {
-    result: {
-      current
-    },
-  } = renderHook(() => useNavigation())
-
-  return current
-}
-
 export const useRoute = jest.fn()

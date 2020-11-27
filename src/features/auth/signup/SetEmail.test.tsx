@@ -1,11 +1,11 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { useNavigationMock } from '__mocks__/@react-navigation/native'
-import { Signup } from 'features/auth/pages/Signup'
+import { navigate } from '__mocks__/@react-navigation/native'
+import { SetEmail } from 'features/auth/signup/SetEmail'
 import { ColorsEnum } from 'ui/theme'
 
-describe('<Signup />', () => {
+describe('<SetEmail />', () => {
   afterEach(() => jest.resetAllMocks())
 
   it('should display disabled validate button when email input is not filled', async () => {
@@ -26,7 +26,6 @@ describe('<Signup />', () => {
   })
 
   it('should redirect to SignUpSignInChoiceModal when clicking on ArrowPrevious icon', async () => {
-    const { navigate } = useNavigationMock()
     const { getByTestId } = renderPage()
 
     const leftIcon = getByTestId('leftIcon')
@@ -38,9 +37,7 @@ describe('<Signup />', () => {
   })
 
   describe('Email Validation', () => {
-    it('should redirect to ChoosePassword on valid email', () => {
-      const { navigate } = useNavigationMock()
-
+    it('should redirect to SetPassword on valid email', () => {
       const { getByText, getByPlaceholderText, queryByText } = renderPage()
 
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -49,7 +46,7 @@ describe('<Signup />', () => {
       const continueButton = getByText('Continuer')
       fireEvent.press(continueButton)
 
-      expect(navigate).toBeCalledWith('ChoosePassword')
+      expect(navigate).toBeCalledWith('SetPassword')
       expect(queryByText("Format de l'e-mail incorrect")).toBeFalsy()
     })
     it('should reject email', () => {
@@ -67,5 +64,5 @@ describe('<Signup />', () => {
 })
 
 function renderPage() {
-  return render(<Signup />)
+  return render(<SetEmail />)
 }
