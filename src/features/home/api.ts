@@ -1,6 +1,9 @@
 import resolveResponse from 'contentful-resolve-response'
 import { useQuery } from 'react-query'
 
+import { api } from 'api/api'
+import { UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import {
   EntryCollection,
   EntryFields,
@@ -37,4 +40,12 @@ export function useHomepageModules() {
   return useQuery<ProcessedModule[]>('homepageModules', async () =>
     processHomepageEntries(await getHomepageEntries())
   )
+}
+
+export function useUserProfileInfo() {
+  const { isLoggedIn } = useAuthContext()
+
+  return useQuery<UserProfileResponse>('userProfile', () => api.nativeV1MeGet(), {
+    enabled: isLoggedIn,
+  })
 }
