@@ -1,7 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { RouteParams } from 'features/navigation/RootNavigator'
 
 import { DeepLinksToScreenConfiguration } from './types'
 import { decodeDeeplinkParts, useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
@@ -25,6 +24,7 @@ describe('useDeeplinkUrlHandler', () => {
         param4: 'false',
       })
     })
+
     it.each([
       ['Android', DEEPLINK_DOMAIN + uriWithoutParams],
       ['iOS', DEEPLINK_DOMAIN + uriWithoutParams],
@@ -34,6 +34,7 @@ describe('useDeeplinkUrlHandler', () => {
       expect(params).toEqual({})
     })
   })
+
   describe('Navigation handler', () => {
     it('should redirect to the right component when it exists', () => {
       const {
@@ -51,6 +52,7 @@ describe('useDeeplinkUrlHandler', () => {
         param4: false,
       })
     })
+
     it('should redirect to Home when the route is not recognized', () => {
       const {
         result: { current: handleDeeplinkUrl },
@@ -69,28 +71,24 @@ type DeepLinksToScreenMapForTest = { 'my-route-to-test': 'UniqueTestRoute'; defa
 
 type RootStackParamListForTest = {
   UniqueTestRoute: { param1: string; param2: number; param3: boolean; param4: boolean }
+  Home: undefined
 }
 
-jest.mock('features/deeplinks/types', () => ({
+jest.mock('features/deeplinks/routing', () => ({
   DEEPLINK_TO_SCREEN_CONFIGURATION: {
-    'my-route-to-test': {
-      screen: 'UniqueTestRoute',
-      paramConverter({
-        param1,
-        param2,
-        param3,
-        param4,
-      }: Record<string, string>): RouteParams<RootStackParamListForTest, 'UniqueTestRoute'> {
-        return {
-          param1,
-          param2: Number(param2),
-          param3: param3 === 'true',
-          param4: param4 === 'true',
-        }
-      },
+    'my-route-to-test': function (params: Record<string, string>) {
+      return {
+        screen: 'UniqueTestRoute',
+        params: {
+          param1: params.param1,
+          param2: Number(params.param2),
+          param3: params.param3 === 'true',
+          param4: params.param4 === 'true',
+        },
+      }
     },
-    default: {
-      screen: 'Home',
+    default: function () {
+      return { screen: 'Home' }
     },
   } as DeepLinksToScreenConfiguration<DeepLinksToScreenMapForTest, RootStackParamListForTest>,
 }))
