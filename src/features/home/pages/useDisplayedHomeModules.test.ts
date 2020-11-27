@@ -9,10 +9,10 @@ import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoli
 
 import {
   showBusinessModule,
-  AlgoliaModuleResponse,
   getOfferModules,
   getModulesToDisplay,
-} from '../HomeBody.utils'
+} from './useDisplayedHomeModules.utils'
+import { AlgoliaModuleResponse } from './useHomeAlgoliaModules'
 
 const nbHits = 2
 const hits = mockedAlgoliaResponse.hits.slice(0, nbHits)
@@ -64,7 +64,7 @@ const excluModule = new ExclusivityPane({
   offerId: 'ABCD',
 })
 
-describe('HomeBody.utils', () => {
+describe('useDisplayedHomeModules.utils', () => {
   describe('showBusinessModule()', () => {
     it.each`
       targetNotConnectedUsersOnly | connected | showModule

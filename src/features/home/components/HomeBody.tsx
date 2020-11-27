@@ -1,8 +1,6 @@
 import React from 'react'
-import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
 import { BusinessModule, ExclusivityModule, OffersModule } from 'features/home/components'
 import {
   BusinessPane,
@@ -10,26 +8,23 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
+import { useGeolocation } from 'libs/geolocation'
 import { Spacer } from 'ui/theme'
 
-import { useHomeAlgoliaModules } from '../pages/useHomeAlgoliaModules'
-
-import { getModulesToDisplay, getOfferModules } from './HomeBody.utils'
-import { isOfferModuleTypeguard } from './typeguards'
+import { AlgoliaModuleResponse } from '../pages/useHomeAlgoliaModules'
+import { isOfferModuleTypeguard } from '../typeguards'
 
 interface HomeBodyProps {
   modules: ProcessedModule[]
-  position: GeoCoordinates | null
+  algoliaModules: AlgoliaModuleResponse
 }
 
-export const HomeBody = function ({ modules, position }: HomeBodyProps) {
-  const { isLoggedIn } = useAuthContext()
-  const algoliaModules = useHomeAlgoliaModules(getOfferModules(modules), position)
-  const displayModules = getModulesToDisplay(modules, algoliaModules, isLoggedIn)
+export const HomeBody = function ({ modules, algoliaModules }: HomeBodyProps) {
+  const position = useGeolocation()
 
   return (
     <Container>
-      {displayModules
+      {modules
         .map((module: ProcessedModule, index: number) => {
           if (isOfferModuleTypeguard(module)) {
             const { hits, nbHits } = algoliaModules[module.moduleId]

@@ -30,7 +30,7 @@ describe('useHomeAlgoliaModules', () => {
 
   it('calls fetchAlgolia with params and returns data', async () => {
     const { result, waitForNextUpdate } = renderHook(
-      () => useHomeAlgoliaModules(offerModules, null),
+      () => useHomeAlgoliaModules(offerModules),
       // eslint-disable-next-line react/display-name
       { wrapper: ({ children }) => reactQueryProviderHOC(children) }
     )
