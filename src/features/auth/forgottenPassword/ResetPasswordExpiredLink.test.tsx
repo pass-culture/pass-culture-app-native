@@ -66,7 +66,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
   it('should NOT redirect to reset password link sent page WHEN clicking on resend email and response is failure', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/request_password_reset', async (req, res, ctx) =>
-        res(ctx.status(403))
+        res.once(ctx.status(403))
       )
     )
 

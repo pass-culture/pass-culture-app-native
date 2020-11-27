@@ -12,6 +12,10 @@ import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
 
+server.use(
+  rest.post(env.API_BASE_URL + '/native/v1/signin', async (req, res, ctx) => res(ctx.status(401)))
+)
+
 const mockSignIn = jest.fn()
 
 function renderLogin() {
@@ -39,12 +43,6 @@ describe('<Login/>', () => {
   })
 
   it('should show error message and error inputs AND not redirect to home page WHEN signin has failed', async () => {
-    server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/signin', async (req, res, ctx) =>
-        res(ctx.status(401))
-      )
-    )
-
     const { findByText, toJSON } = renderLogin()
     const notErrorSnapshot = toJSON()
 
