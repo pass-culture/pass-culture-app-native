@@ -8,7 +8,7 @@ import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { RetryBoundary } from 'features/errors'
-import { useHomepageModules } from 'features/home/api'
+import { useHomepageModules, useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { useGeolocation } from 'libs/geolocation'
@@ -35,7 +35,6 @@ export const HomeComponent: FunctionComponent = function () {
   const position = useGeolocation()
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const showSkeleton = useShowSkeleton()
-
   function hideSignInModal() {
     navigation.setParams({ shouldDisplayLoginModal: false })
     hideModal()
