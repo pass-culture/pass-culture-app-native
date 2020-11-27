@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { useNavigationMock } from '__mocks__/@react-navigation/native'
+import { goBack } from '__mocks__/@react-navigation/native'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
@@ -12,15 +12,11 @@ describe('SetBirthday Page', () => {
     expect(toJSON()).toMatchSnapshot()
   })
   it('should navigate to the previous when back navigation triggered', () => {
-    const { goBack } = useNavigationMock()
-    goBack.mockReset()
-
     const { getByTestId } = render(<SetBirthday />)
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
 
     expect(goBack).toBeCalledTimes(1)
-    goBack.mockRestore()
   })
   it('should keep disabled the button "Continuer" when the date is not complete', () => {
     const { getByPlaceholderText, getByTestId } = render(<SetBirthday />)

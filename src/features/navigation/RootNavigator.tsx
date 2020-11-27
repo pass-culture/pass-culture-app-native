@@ -8,14 +8,14 @@ import {
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 
-import { ChoosePassword } from 'features/auth/pages/ChoosePassword'
-import { ForgottenPassword } from 'features/auth/pages/ForgottenPassword'
-import { Login } from 'features/auth/pages/Login'
-import { ReinitializePassword } from 'features/auth/pages/ReinitializePassword'
-import { ResetPasswordEmailSent } from 'features/auth/pages/ResetPasswordEmailSent'
-import { ResetPasswordExpiredLink } from 'features/auth/pages/ResetPasswordExpiredLink'
-import { SetBirthday } from 'features/auth/pages/SetBirthday'
-import { Signup } from 'features/auth/pages/Signup'
+import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
+import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
+import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
+import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
+import { Login } from 'features/auth/login/Login'
+import { SetBirthday } from 'features/auth/signup/SetBirthday'
+import { SetEmail } from 'features/auth/signup/SetEmail'
+import { SetPassword } from 'features/auth/signup/SetPassword'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -35,11 +35,11 @@ export type RootStackParamList = {
   AppComponents: undefined
   Navigation: undefined
   CheatCodes: undefined
-  Signup: undefined
+  SetEmail: undefined
   ResetPasswordEmailSent: { email: string }
   ForgottenPassword: undefined
   ResetPasswordExpiredLink: { email: string }
-  ChoosePassword: undefined
+  SetPassword: undefined
   SetBirthday: undefined
 }
 
@@ -62,9 +62,9 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="CheatCodes" component={CheatCodes} />
         <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
         <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
-        <RootStack.Screen name="Signup" component={Signup} />
+        <RootStack.Screen name="SetEmail" component={SetEmail} />
         <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
-        <RootStack.Screen name="ChoosePassword" component={ChoosePassword} />
+        <RootStack.Screen name="SetPassword" component={SetPassword} />
         <RootStack.Screen name="SetBirthday" component={SetBirthday} />
       </RootStack.Navigator>
     </NavigationContainer>

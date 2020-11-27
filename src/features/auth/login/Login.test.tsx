@@ -3,7 +3,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { useNavigationMock } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { env } from 'libs/environment'
 import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
@@ -26,8 +26,6 @@ describe('<Login/>', () => {
   beforeEach(() => jest.resetAllMocks())
 
   it('should redirect to home page WHEN signin is successful', async () => {
-    const { navigate } = useNavigationMock()
-
     const { findByText } = renderLogin()
     mockSignIn.mockImplementationOnce(() => true)
 
@@ -46,8 +44,6 @@ describe('<Login/>', () => {
         res(ctx.status(401))
       )
     )
-
-    const { navigate } = useNavigationMock()
 
     const { findByText, toJSON } = renderLogin()
     const notErrorSnapshot = toJSON()

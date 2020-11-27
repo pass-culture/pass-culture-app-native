@@ -2,8 +2,8 @@ import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { useNavigationMock } from '__mocks__/@react-navigation/native'
-import { ForgottenPassword } from 'features/auth/pages/ForgottenPassword'
+import { navigate } from '__mocks__/@react-navigation/native'
+import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 beforeEach(() => {
@@ -25,7 +25,6 @@ describe('<ForgottenPassword />', () => {
   })
 
   it('should redirect to ResetPasswordEmailSent when password reset request is successful', async () => {
-    const { navigate } = useNavigationMock()
     const { getByPlaceholderText, findByText } = renderPage()
 
     const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -43,7 +42,6 @@ describe('<ForgottenPassword />', () => {
   })
 
   it('should redirect to Login when clicking on ArrowPrevious icon', async () => {
-    const { navigate } = useNavigationMock()
     const { getByTestId } = renderPage()
 
     const leftIcon = getByTestId('leftIcon')

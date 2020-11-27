@@ -15,6 +15,7 @@ export const PasswordRule: FunctionComponent<Props> = ({ title, isValidated }) =
     <InputRule
       title={title}
       icon={isValidated ? Check : Close}
+      iconSize={16}
       testIdSuffix={isValidated ? 'check' : 'close'}
       color={isValidated ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
     />

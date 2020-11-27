@@ -3,13 +3,13 @@ import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { useNavigationMock } from '__mocks__/@react-navigation/native'
-import { ChoosePassword } from 'features/auth/pages/ChoosePassword'
+import { goBack } from '__mocks__/@react-navigation/native'
+import { SetPassword } from 'features/auth/signup/SetPassword'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { navigationTestProps } from 'tests/navigation'
 import { ColorsEnum } from 'ui/theme'
 
-describe('ChoosePassword Page', () => {
+describe('SetPassword Page', () => {
   it('should enable the submit button when password is correct', async () => {
     const { getByPlaceholderText, getByTestId } = renderChoosePassword()
 
@@ -44,15 +44,11 @@ describe('ChoosePassword Page', () => {
   })
 
   it('should navigate to previous page when clicking on leftIcon', () => {
-    const { goBack } = useNavigationMock()
-    goBack.mockReset()
-
     const { getByTestId } = renderChoosePassword()
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
 
     expect(goBack).toBeCalledTimes(1)
-    goBack.mockRestore()
   })
 
   // TODO: PC-5430 gestion du storage de l'email & password
@@ -61,8 +57,8 @@ describe('ChoosePassword Page', () => {
 
 function renderChoosePassword() {
   return render(
-    <ChoosePassword
-      {...(navigationTestProps as StackScreenProps<RootStackParamList, 'ChoosePassword'>)}
+    <SetPassword
+      {...(navigationTestProps as StackScreenProps<RootStackParamList, 'SetPassword'>)}
     />
   )
 }

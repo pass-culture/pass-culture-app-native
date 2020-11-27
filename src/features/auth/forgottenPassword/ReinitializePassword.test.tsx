@@ -2,7 +2,7 @@ import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { useRoute, useNavigationMock } from '__mocks__/@react-navigation/native'
+import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { ColorsEnum } from 'ui/theme'
 
@@ -75,9 +75,6 @@ describe('ReinitializePassword Page', () => {
     })
   })
   it('should redirect to login page WHEN password is reset', async () => {
-    const { navigate } = useNavigationMock()
-    navigate.mockReset()
-
     const { findByText } = render(reactQueryProviderHOC(<ReinitializePassword />))
 
     const continueButton = await findByText('Continuer')
@@ -87,7 +84,5 @@ describe('ReinitializePassword Page', () => {
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toHaveBeenCalledWith('Login')
     })
-
-    navigate.mockRestore()
   })
 })

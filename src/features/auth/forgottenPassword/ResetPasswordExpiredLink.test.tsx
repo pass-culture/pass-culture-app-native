@@ -5,7 +5,7 @@ import React from 'react'
 import { Alert, Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import { useNavigationMock } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { server } from 'tests/server'
@@ -28,7 +28,6 @@ function renderResetPasswordExpiredLink() {
 
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { navigate } = useNavigationMock()
     const { findByText } = renderResetPasswordExpiredLink()
 
     const button = await findByText("Retourner à l'accueil")
@@ -51,7 +50,6 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
-    const { navigate } = useNavigationMock()
     const { findByText } = renderResetPasswordExpiredLink()
 
     const button = await findByText("Renvoyer l'email")
@@ -71,7 +69,6 @@ describe('<ResetPasswordExpiredLink/>', () => {
         res(ctx.status(403))
       )
     )
-    const { navigate } = useNavigationMock()
 
     const { findByText } = renderResetPasswordExpiredLink()
 
