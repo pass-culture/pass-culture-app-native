@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
-import { ScrollView, TouchableOpacity } from 'react-native'
+import { NativeSyntheticEvent, NativeScrollEvent, ScrollView, TouchableOpacity } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
@@ -10,6 +10,7 @@ import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { RetryBoundary } from 'features/errors'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { logAllModulesSeen } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
@@ -27,11 +28,22 @@ import { useShowSkeleton } from './useShowSkeleton'
 
 const statusBarHeight = getStatusBarHeight(true)
 
+export const isCloseToBottom = ({
+  layoutMeasurement,
+  contentOffset,
+  contentSize,
+}: NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']) => {
+  const paddingToBottom = 20
+  return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom
+}
+
 export const HomeComponent: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const showSkeleton = useShowSkeleton()
+
+  const [hasSeenAllModules, setHasSeenAllModules] = useState<boolean>(false)
   const { displayedModules, algoliaModules } = useDisplayedHomeModules()
 
   function hideSignInModal() {
@@ -46,8 +58,21 @@ export const HomeComponent: FunctionComponent = function () {
   })
 
   useListenDeepLinksEffect()
+
+  const checkIfAllModulesHaveBeenSeen = ({
+    nativeEvent,
+  }: NativeSyntheticEvent<NativeScrollEvent>) => {
+    if (!hasSeenAllModules && isCloseToBottom(nativeEvent)) {
+      setHasSeenAllModules(true)
+      logAllModulesSeen(displayedModules.length)
+    }
+  }
+
   return (
-    <ScrollView>
+    <ScrollView
+      testID="homeScrollView"
+      scrollEventThrottle={400}
+      onScroll={checkIfAllModulesHaveBeenSeen}>
       <Spacer.TopScreen />
       {env.CHEAT_BUTTONS_ENABLED && (
         <CheatButtonsContainer>

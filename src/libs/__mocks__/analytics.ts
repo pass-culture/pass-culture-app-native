@@ -5,4 +5,5 @@ type AnalyticsReturn = Partial<FirebaseAnalyticsTypes.Module>
 export const analytics: jest.Mocked<AnalyticsReturn> = {
   logLogin: jest.fn(),
   logScreenView: jest.fn(),
+  logEvent: jest.fn(),
 }
