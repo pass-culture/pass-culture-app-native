@@ -5,8 +5,9 @@ import { useContext } from 'react'
 import { _ } from 'libs/i18n'
 import { SnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
+import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
 import { isAllowedRouteTypeGuard } from './typeGuard'
-import { DeeplinkEvent, DeeplinkParts, DEEPLINK_TO_SCREEN_CONFIGURATION } from './types'
+import { DeeplinkEvent, DeeplinkParts } from './types'
 import { DEEPLINK_DOMAIN } from './utils'
 
 export function decodeDeeplinkParts(url: string): DeeplinkParts {
@@ -25,16 +26,18 @@ export function decodeDeeplinkParts(url: string): DeeplinkParts {
   return { routeName, params }
 }
 
+const DEFAULT_ERROR_MESSAGE = _(t`Le lien est incorrect`)
+
 export function useOnDeeplinkError() {
   const { navigate } = useNavigation()
   const { displayInfosSnackBar } = useContext(SnackBarContext)
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return (error: string) => {
+  return (errorMessage?: string) => {
     displayInfosSnackBar({
-      message: _(t`Le lien est incorrect`),
+      message: errorMessage ? errorMessage : DEFAULT_ERROR_MESSAGE,
     })
-    navigate(DEEPLINK_TO_SCREEN_CONFIGURATION['default'].screen)
+    const configureDefaultScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['default']
+    navigate(configureDefaultScreen().screen)
   }
 }
 
@@ -42,26 +45,25 @@ export function useDeeplinkUrlHandler() {
   const { navigate } = useNavigation()
   const onError = useOnDeeplinkError()
 
-  return (e: DeeplinkEvent) => {
+  return (event: DeeplinkEvent) => {
     try {
-      const { routeName, params } = decodeDeeplinkParts(e.url)
+      const { routeName, params } = decodeDeeplinkParts(event.url)
 
       if (!isAllowedRouteTypeGuard(routeName)) {
-        throw new Error('Unkwnon route')
+        throw new Error('Unknown route')
       }
 
-      const { screen, paramConverter } = DEEPLINK_TO_SCREEN_CONFIGURATION[routeName]
-      if (!screen) {
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION[routeName]
+      const screenConfiguration = configureScreen(params)
+
+      if (!screenConfiguration.screen) {
         // this error is not displayed to the user but used to trigger the catch branch below
-        throw new Error('Unkwnon screen')
+        throw new Error('Unknown screen')
       }
 
-      // convert uri params to match the screen params' type expectations
-      const convertedParams = paramConverter ? paramConverter(params) : params
-
-      navigate(screen, convertedParams)
-    } catch (error) {
-      onError(error.message)
+      navigate(screenConfiguration.screen, screenConfiguration.params)
+    } catch {
+      onError(_(t`Le lien est incorrect: `) + event.url)
     }
   }
 }

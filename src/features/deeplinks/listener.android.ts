@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useEffect } from 'react'
 import { Linking } from 'react-native'
 
@@ -12,14 +11,14 @@ export function useListenDeepLinksEffect() {
 
   useEffect(() => {
     Linking.getInitialURL()
+      .catch(onError)
       .then((url) => {
         if (url) {
           handleDeeplinkUrl({ url })
-        } else if (url !== null) {
-          onError(_(t`Impossible d'ouvrir le lien: `) + url)
+        } else {
+          onError()
         }
       })
-      .catch(() => onError(_(t`Impossible d'ouvrir le lien`)))
     Linking.addEventListener('url', handleDeeplinkUrl)
     return () => Linking.removeEventListener('url', handleDeeplinkUrl)
   }, [])
