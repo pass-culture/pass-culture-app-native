@@ -1,13 +1,18 @@
 import { SearchResponse } from '@algolia/client-search'
 import { useState } from 'react'
-import { GeoCoordinates } from 'react-native-geolocation-service'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { AlgoliaHit, FetchAlgoliaParameters, parseAlgoliaParameters } from 'libs/algolia'
+import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
 import { fetchAlgolia } from 'libs/algolia/fetchAlgolia'
+import { useGeolocation } from 'libs/geolocation'
 
-import { AlgoliaModuleResponse } from '../components/HomeBody.utils'
+export type AlgoliaModuleResponse = {
+  [moduleId: string]: {
+    hits: AlgoliaHit[]
+    nbHits: number
+  }
+}
 
 const isAlgoliaModule = (
   response: unknown
@@ -22,36 +27,35 @@ const isAlgoliaModule = (
 }
 
 export const useHomeAlgoliaModules = (
-  offerModules: Array<Offers | OffersWithCover>,
-  position: GeoCoordinates | null
+  offerModules: Array<Offers | OffersWithCover>
 ): AlgoliaModuleResponse => {
+  const geolocation = useGeolocation()
   const [algoliaModules, setAlgoliaModules] = useState<AlgoliaModuleResponse>({})
+
   useQueries(
-    offerModules.map((module) => {
-      const parsedParameters = parseAlgoliaParameters({
-        geolocation: position,
-        parameters: module.algolia,
-      })
+    offerModules.map(({ algolia, moduleId }) => {
+      const parsedParameters = parseAlgoliaParameters({ geolocation, parameters: algolia })
+
       const fetchModule = async () => {
         if (!parsedParameters) return undefined
-        const response = await fetchAlgolia<AlgoliaHit>({
-          ...parsedParameters,
-        } as FetchAlgoliaParameters)
-        return { moduleId: module.moduleId, ...response }
+        const response = await fetchAlgolia<AlgoliaHit>(parsedParameters)
+        return { moduleId: moduleId, ...response }
       }
 
       return {
-        queryKey: ['algoliaModule', module.moduleId],
+        queryKey: ['algoliaModule', moduleId],
         queryFn: fetchModule,
         onSuccess: (data) => {
-          if (!isAlgoliaModule(data)) return
-          setAlgoliaModules({
-            ...algoliaModules,
-            [data.moduleId]: { hits: data.hits, nbHits: data.nbHits },
-          })
+          if (isAlgoliaModule(data)) {
+            setAlgoliaModules((prevAlgoliaModules) => ({
+              ...prevAlgoliaModules,
+              [data.moduleId]: { hits: data.hits, nbHits: data.nbHits },
+            }))
+          }
         },
       }
     })
   )
+
   return algoliaModules
 }

@@ -5,17 +5,10 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
-import { AlgoliaHit } from 'libs/algolia'
 
-import { isArrayOfOfferTypeguard } from './typeguards'
+import { isArrayOfOfferTypeguard } from '../typeguards'
 
-export type AlgoliaModuleResponse = {
-  [moduleId: string]: {
-    /*  module: ProcessedModule */
-    hits: AlgoliaHit[]
-    nbHits: number
-  }
-}
+import { AlgoliaModuleResponse } from './useHomeAlgoliaModules'
 
 export const showBusinessModule = (
   targetNotConnectedUsersOnly: boolean | undefined,

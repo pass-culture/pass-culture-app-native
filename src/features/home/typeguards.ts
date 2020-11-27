@@ -1,4 +1,4 @@
-import { Offers, OffersWithCover, ProcessedModule } from '../contentful'
+import { Offers, OffersWithCover, ProcessedModule } from './contentful'
 
 export const isOfferModuleTypeguard = (
   module: ProcessedModule

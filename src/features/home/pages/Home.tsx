@@ -8,10 +8,9 @@ import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { RetryBoundary } from 'features/errors'
-import { useHomepageModules } from 'features/home/api'
+import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -31,10 +30,10 @@ const statusBarHeight = getStatusBarHeight(true)
 export const HomeComponent: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { data: modules = [] } = useHomepageModules()
-  const position = useGeolocation()
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const showSkeleton = useShowSkeleton()
+  const { displayedModules, algoliaModules } = useDisplayedHomeModules()
+
   function hideSignInModal() {
     navigation.setParams({ shouldDisplayLoginModal: false })
     hideModal()
@@ -78,10 +77,12 @@ export const HomeComponent: FunctionComponent = function () {
         </Typo.Body>
       </CenterContainer>
       <Spacer.Column numberOfSpaces={6} />
+
       {showSkeleton ? <HomeBodyPlaceholder /> : null}
       <HomeBodyLoadingContainer isLoading={showSkeleton}>
-        <HomeBody modules={modules} position={position} />
+        <HomeBody modules={displayedModules} algoliaModules={algoliaModules} />
       </HomeBodyLoadingContainer>
+
       <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
       <Spacer.TabBar />
     </ScrollView>
