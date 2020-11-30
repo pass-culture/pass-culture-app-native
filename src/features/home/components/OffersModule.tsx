@@ -62,8 +62,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     )
 
   return (
-    <Container>
-      <Spacer.Column numberOfSpaces={6} />
+    <React.Fragment>
       <ModuleTitle
         title={display.title}
         color={index === 0 ? ColorsEnum.WHITE : ColorsEnum.BLACK}
@@ -81,9 +80,8 @@ export const OffersModule = (props: OffersModuleProps) => {
         }
         showsHorizontalScrollIndicator={false}
       />
-    </Container>
+    </React.Fragment>
   )
 }
 
-const Container = styled.View({ flex: 1 })
 const Row = styled.View({ flexDirection: 'row' })

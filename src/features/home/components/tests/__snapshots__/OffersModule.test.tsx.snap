@@ -1,27 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OffersModule component should render correctly - with black title 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
-  }
->
-  <View
-    numberOfSpaces={6}
-    style={
-      Array [
-        Object {
-          "height": 24,
-        },
-      ]
-    }
-  />
+Array [
   <View
     style={
       Array [
@@ -46,7 +26,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
       }
       testID="moduleTitle"
     />
-  </View>
+  </View>,
   <View
     numberOfSpaces={4}
     style={
@@ -56,7 +36,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
         },
       ]
     }
-  />
+  />,
   <RCTScrollView
     ItemSeparatorComponent={[Function]}
     ListFooterComponent={
@@ -1011,6 +991,6 @@ exports[`OffersModule component should render correctly - with black title 1`] =
         />
       </View>
     </View>
-  </RCTScrollView>
-</View>
+  </RCTScrollView>,
+]
 `;

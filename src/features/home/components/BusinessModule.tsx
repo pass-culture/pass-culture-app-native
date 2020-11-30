@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dimensions, PixelRatio, View, Linking } from 'react-native'
+import { Dimensions, PixelRatio, Linking } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IdeaIcon } from 'features/home/assets/IdeaIcon'
@@ -13,35 +13,32 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
     url && Linking.openURL(url)
   }
   return (
-    <View>
-      <Spacer.Column numberOfSpaces={6} />
-      <Row>
-        <Spacer.Row numberOfSpaces={6} />
-        <TouchableHighlight onPress={openUrl}>
-          <ImageContainer>
-            <ImageBackground source={{ uri: image }} testID="imageBusiness">
-              <Container>
-                <IconContainer>
-                  <IdeaIcon />
-                </IconContainer>
-                <TextContainer>
-                  <Typo.ButtonText color={ColorsEnum.WHITE} testID="firstLine">
-                    {firstLine}
-                  </Typo.ButtonText>
-                  <Typo.Body numberOfLines={2} color={ColorsEnum.WHITE}>
-                    {secondLine}
-                  </Typo.Body>
-                </TextContainer>
-                <IconContainer>
-                  <NextArrowIcon />
-                </IconContainer>
-              </Container>
-            </ImageBackground>
-          </ImageContainer>
-        </TouchableHighlight>
-        <Spacer.Row numberOfSpaces={6} />
-      </Row>
-    </View>
+    <Row>
+      <Spacer.Row numberOfSpaces={6} />
+      <TouchableHighlight onPress={openUrl}>
+        <ImageContainer>
+          <ImageBackground source={{ uri: image }} testID="imageBusiness">
+            <Container>
+              <IconContainer>
+                <IdeaIcon />
+              </IconContainer>
+              <TextContainer>
+                <Typo.ButtonText color={ColorsEnum.WHITE} testID="firstLine">
+                  {firstLine}
+                </Typo.ButtonText>
+                <Typo.Body numberOfLines={2} color={ColorsEnum.WHITE}>
+                  {secondLine}
+                </Typo.Body>
+              </TextContainer>
+              <IconContainer>
+                <NextArrowIcon />
+              </IconContainer>
+            </Container>
+          </ImageBackground>
+        </ImageContainer>
+      </TouchableHighlight>
+      <Spacer.Row numberOfSpaces={6} />
+    </Row>
   )
 }
 

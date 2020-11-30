@@ -29,30 +29,37 @@ export const HomeBody = function ({ modules, position }: HomeBodyProps) {
 
   return (
     <Container>
-      {displayModules.map((module: ProcessedModule, index: number) => {
-        if (isOfferModuleTypeguard(module)) {
-          const { hits, nbHits } = algoliaModules[module.moduleId]
-          return (
-            <OffersModule
-              key={module.moduleId}
-              algolia={module.algolia}
-              display={module.display}
-              position={position}
-              hits={hits}
-              nbHits={nbHits}
-              cover={module instanceof OffersWithCover ? module.cover : null}
-              index={index}
-            />
-          )
-        }
-        if (module instanceof ExclusivityPane) {
-          return <ExclusivityModule key={module.moduleId} {...module} />
-        }
-        if (module instanceof BusinessPane) {
-          return <BusinessModule key={module.moduleId} {...module} />
-        }
-        return null
-      })}
+      {displayModules
+        .map((module: ProcessedModule, index: number) => {
+          if (isOfferModuleTypeguard(module)) {
+            const { hits, nbHits } = algoliaModules[module.moduleId]
+            return (
+              <OffersModule
+                key={module.moduleId}
+                algolia={module.algolia}
+                display={module.display}
+                position={position}
+                hits={hits}
+                nbHits={nbHits}
+                cover={module instanceof OffersWithCover ? module.cover : null}
+                index={index}
+              />
+            )
+          }
+          if (module instanceof ExclusivityPane) {
+            return <ExclusivityModule key={module.moduleId} {...module} />
+          }
+          if (module instanceof BusinessPane) {
+            return <BusinessModule key={module.moduleId} {...module} />
+          }
+          return null
+        })
+        .map((children) => (
+          <React.Fragment key={children?.key}>
+            {children}
+            <Spacer.Column numberOfSpaces={6} />
+          </React.Fragment>
+        ))}
       <Spacer.Column numberOfSpaces={6} />
     </Container>
   )
