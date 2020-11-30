@@ -9,7 +9,7 @@ export const HeaderBackground: React.FC = (): JSX.Element => {
     <Svg
       preserveAspectRatio="none"
       width={Dimensions.get('screen').width + getSpacing(1)}
-      height={getSpacing(88)}
+      height={getSpacing(70)}
       viewBox={`0 0 375 352`}>
       <Defs>
         <LinearGradient id="prefix__b" x1="34.782%" x2="88.023%" y1="5.945%" y2="111.119%">
