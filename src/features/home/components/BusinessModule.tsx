@@ -1,25 +1,50 @@
-import React from 'react'
+import { t } from '@lingui/macro'
+import React, { useEffect, useState } from 'react'
 import { Dimensions, PixelRatio, Linking } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useUserProfileInfo } from 'features/home/api'
 import { IdeaIcon } from 'features/home/assets/IdeaIcon'
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
+import { _ } from 'libs/i18n'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Typo, ColorsEnum, getSpacing, MARGIN_DP, LENGTH_S, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-import { useUserProfileInfo } from '../api'
+import { fillUrlEmail, shouldUrlBeFilled } from './BusinessModule.utils'
 
 export const BusinessModule = ({ firstLine, secondLine, leftIcon, image, url }: BusinessPane) => {
-  const { data: profileData, isLoading: isProfileDataLoading } = useUserProfileInfo()
+  const [shouldRedirect, setShouldRedirect] = useState(false)
 
-  const openUrl = () => {
-    url && Linking.openURL(url)
+  const { data: profileData, isLoading: isProfileDataLoading } = useUserProfileInfo()
+  const { displayInfosSnackBar } = useSnackBarContext()
+
+  const openUrl = (finalUrl: string) => {
+    setShouldRedirect(false)
+    Linking.openURL(finalUrl)
   }
+
+  useEffect(() => {
+    if (!url || !shouldRedirect) return
+    if (!shouldUrlBeFilled(url)) {
+      openUrl(url)
+      return
+    }
+    if (profileData) {
+      openUrl(fillUrlEmail(url, profileData.email))
+      return
+    }
+    if (isProfileDataLoading) {
+      displayInfosSnackBar({ message: _(t`Redirection en cours`) })
+      return
+    }
+  }, [url, profileData, shouldRedirect])
+
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <TouchableHighlight onPress={openUrl}>
+      <TouchableHighlight onPress={() => setShouldRedirect(true)}>
         <ImageContainer>
           <ImageBackground source={{ uri: image }} testID="imageBusiness">
             <Container>
