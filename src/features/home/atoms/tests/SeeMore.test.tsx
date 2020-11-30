@@ -9,7 +9,7 @@ describe('SeeMore', () => {
     jest.clearAllMocks()
   })
   it('renders correctly', () => {
-    const seeMore = render(<SeeMore />)
+    const seeMore = render(<SeeMore onPress={onPress} />)
     expect(seeMore).toMatchSnapshot()
   })
   it('calls onPress when clicking the arrow', () => {

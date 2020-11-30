@@ -6,6 +6,7 @@ export enum AnalyticsEvent {
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
   CONSULT_OFFER = 'ConsultOffer',
+  SEE_MORE_CLICKED = 'SeeMoreClicked',
 }
 
 export const logAllModulesSeen = async (numberOfModules: number) =>
@@ -16,3 +17,6 @@ export const logAllTilesSeen = async (moduleName: string, numberOfTiles: number)
 
 export const logConsultOffer = async (offerId: string) =>
   await analytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId })
+
+export const logClickSeeMore = async (moduleName: string) =>
+  await analytics.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName })

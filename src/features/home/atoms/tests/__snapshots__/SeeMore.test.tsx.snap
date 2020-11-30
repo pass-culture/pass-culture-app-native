@@ -25,7 +25,7 @@ exports[`SeeMore renders correctly 1`] = `
   />
   <View
     accessible={true}
-    focusable={false}
+    focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -61,7 +61,7 @@ exports[`SeeMore renders correctly 1`] = `
       />
       <View
         accessible={true}
-        focusable={false}
+        focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
