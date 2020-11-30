@@ -9,3 +9,4 @@ export const analytics: jest.Mocked<AnalyticsReturn> = {
 }
 
 export const logAllModulesSeen = jest.fn()
+export const logAllTilesSeen = jest.fn()

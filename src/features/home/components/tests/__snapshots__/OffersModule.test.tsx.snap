@@ -25,7 +25,9 @@ Array [
         ]
       }
       testID="moduleTitle"
-    />
+    >
+      Module title
+    </Text>
   </View>,
   <View
     numberOfSpaces={4}
@@ -285,6 +287,7 @@ Array [
     scrollEventThrottle={50}
     showsHorizontalScrollIndicator={false}
     stickyHeaderIndices={Array []}
+    testID="offersModuleList"
     updateCellsBatchingPeriod={50}
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}
