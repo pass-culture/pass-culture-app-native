@@ -8,7 +8,7 @@ import { BusinessPane } from 'features/home/contentful'
 import { Typo, ColorsEnum, getSpacing, MARGIN_DP, LENGTH_S, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPane) => {
+export const BusinessModule = ({ firstLine, secondLine, leftIcon, image, url }: BusinessPane) => {
   const openUrl = () => {
     url && Linking.openURL(url)
   }
@@ -20,7 +20,7 @@ export const BusinessModule = ({ firstLine, secondLine, image, url }: BusinessPa
           <ImageBackground source={{ uri: image }} testID="imageBusiness">
             <Container>
               <IconContainer>
-                <IdeaIcon />
+                {leftIcon ? <Image source={{ uri: leftIcon }} /> : <IdeaIcon />}
               </IconContainer>
               <TextContainer>
                 <Typo.ButtonText color={ColorsEnum.WHITE} testID="firstLine">
@@ -59,6 +59,12 @@ const ImageContainer = styled.View({
   maxHeight: LENGTH_S,
 })
 
+const Image = styled.Image({
+  width: getSpacing(14),
+  height: getSpacing(14),
+  tintColor: ColorsEnum.WHITE,
+})
+
 const ImageBackground = styled.ImageBackground({
   height: imageHeight,
   width: imageWidth,
@@ -79,8 +85,8 @@ const TextContainer = styled.View({
 })
 
 const IconContainer = styled.View({
-  width: 56,
-  height: 56,
+  width: getSpacing(14),
+  height: getSpacing(14),
   justifyContent: 'center',
   alignItems: 'center',
 })

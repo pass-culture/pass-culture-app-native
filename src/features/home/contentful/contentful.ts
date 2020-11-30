@@ -173,6 +173,7 @@ interface BusinessFields {
   title: string
   firstLine?: string
   secondLine?: string
+  leftIcon?: Image
   image: Image
   url?: string
   targetNotConnectedUsersOnly?: boolean

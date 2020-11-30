@@ -11,12 +11,23 @@ const props = {
   url: 'url',
   moduleId: 'module-id',
   targetNotConnectedUsersOnly: undefined,
+  leftIcon: undefined,
 }
 describe('BusinessModule component', () => {
   afterAll(() => jest.resetAllMocks())
 
-  it('should render correctly', () => {
+  it('should render correctly - with leftIcon = Idea by default', () => {
     const { toJSON } = render(<BusinessModule {...props} />)
+    expect(toJSON()).toMatchSnapshot()
+  })
+
+  it('should render correctly - with leftIcon provided', () => {
+    const { toJSON } = render(
+      <BusinessModule
+        {...props}
+        leftIcon="https://images.ctfassets.net/2bg01iqy0isv/1Sh2Ter3f4GgW9m926jqB5/83adbbd38e399d0089ff7b8f0efadf4c/Europe.png"
+      />
+    )
     expect(toJSON()).toMatchSnapshot()
   })
 

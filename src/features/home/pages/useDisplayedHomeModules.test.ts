@@ -52,6 +52,7 @@ const connectedBusinessModule = new BusinessPane({
   moduleId: 'businessPane-id',
   image: 'uri_to_image',
   firstLine: undefined,
+  leftIcon: undefined,
   secondLine: undefined,
   url: undefined,
   targetNotConnectedUsersOnly: false,
