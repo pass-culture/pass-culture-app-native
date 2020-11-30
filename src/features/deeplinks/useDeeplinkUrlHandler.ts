@@ -1,9 +1,8 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import { useContext } from 'react'
 
 import { _ } from 'libs/i18n'
-import { SnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
 import { isAllowedRouteTypeGuard } from './typeGuard'
@@ -30,7 +29,7 @@ const DEFAULT_ERROR_MESSAGE = _(t`Le lien est incorrect`)
 
 export function useOnDeeplinkError() {
   const { navigate } = useNavigation()
-  const { displayInfosSnackBar } = useContext(SnackBarContext)
+  const { displayInfosSnackBar } = useSnackBarContext()
 
   return (errorMessage?: string) => {
     displayInfosSnackBar({

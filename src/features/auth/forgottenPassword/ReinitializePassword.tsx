@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import {
@@ -15,7 +15,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { SnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Background } from 'ui/svg/Background'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -28,7 +28,7 @@ export const ReinitializePassword = () => {
   const { params } = useRoute<UseRouteType<'ReinitializePassword'>>()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { displaySuccessSnackBar } = useContext(SnackBarContext)
+  const { displaySuccessSnackBar } = useSnackBarContext()
 
   const [password, setPassword] = useState('')
   const [shouldShowPasswordError] = useState(false)
