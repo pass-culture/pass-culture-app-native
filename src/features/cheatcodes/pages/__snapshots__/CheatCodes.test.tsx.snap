@@ -193,20 +193,6 @@ exports[`CheatCodes component should render correctly 1`] = `
       ]
     }
   />
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#151515",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 20,
-          "lineHeight": 24,
-        },
-      ]
-    }
-  >
-    no profile data
-  </Text>
   <View
     style={
       Array [
