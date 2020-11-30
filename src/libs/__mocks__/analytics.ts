@@ -7,3 +7,5 @@ export const analytics: jest.Mocked<AnalyticsReturn> = {
   logScreenView: jest.fn(),
   logEvent: jest.fn(),
 }
+
+export const logAllModulesSeen = jest.fn()
