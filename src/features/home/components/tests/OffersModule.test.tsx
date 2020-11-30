@@ -1,9 +1,9 @@
-import { render, act } from '@testing-library/react-native'
+import { act, fireEvent, render } from '@testing-library/react-native'
 import mockdate from 'mockdate'
 import React from 'react'
 
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
-import { logAllTilesSeen } from 'libs/analytics'
+import { logAllTilesSeen, logClickSeeMore } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
@@ -89,5 +89,18 @@ describe('OffersModule component - Analytics', () => {
     })
 
     expect(logAllTilesSeen).toHaveBeenCalledWith('Algolia title', props.nbHits)
+  })
+
+  it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', async () => {
+    const component = render(
+      reactQueryProviderHOC(<OffersModule {...props} nbHits={10} index={1} />)
+    )
+
+    await act(async () => {
+      fireEvent.press(component.getByText('En voir plus'))
+      await flushAllPromises()
+    })
+
+    expect(logClickSeeMore).toHaveBeenCalledWith('Module title')
   })
 })

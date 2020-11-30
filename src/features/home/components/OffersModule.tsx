@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { AlgoliaParametersFields, DisplayParametersFields, Layout } from 'features/home/contentful'
 import { AlgoliaHit } from 'libs/algolia'
-import { logAllTilesSeen } from 'libs/analytics'
+import { logAllTilesSeen, logClickSeeMore } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { ColorsEnum, Spacer } from 'ui/theme'
@@ -36,12 +36,12 @@ const renderHeaderCover = (cover: string | null, layout: Layout) =>
     <Spacer.Row numberOfSpaces={6} />
   )
 
-const renderSeeMore = (showSeeMore: boolean, layout: Layout) =>
+const renderSeeMore = (showSeeMore: boolean, layout: Layout, moduleName: string) =>
   showSeeMore ? (
     <Row>
       {/* Gutter: 16px */}
       <Spacer.Row numberOfSpaces={4} />
-      <SeeMore layout={layout} />
+      <SeeMore layout={layout} onPress={() => logClickSeeMore(moduleName)} />
       {/* Margin: 24px */}
       <Spacer.Row numberOfSpaces={6} />
     </Row>
@@ -78,10 +78,11 @@ export const OffersModule = (props: OffersModuleProps) => {
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
 
+  const moduleName = display.title || parameters.title
   const logAllTilesSeenOnEndReached = () => {
     if (!hasSeenAllTiles) {
       setHasSeenAllTiles(true)
-      logAllTilesSeen(display.title || parameters.title, hits.length)
+      logAllTilesSeen(moduleName, hits.length)
     }
   }
 
@@ -100,7 +101,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         keyExtractor={(item) => item.objectID}
         ListHeaderComponent={renderHeaderCover(props.cover, display.layout)}
         ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
-        ListFooterComponent={renderSeeMore(showSeeMore, display.layout)}
+        ListFooterComponent={renderSeeMore(showSeeMore, display.layout, moduleName)}
         showsHorizontalScrollIndicator={false}
         onEndReached={logAllTilesSeenOnEndReached}
         onEndReachedThreshold={showSeeMore ? 0.6 : 0.1} // We remove the margin
