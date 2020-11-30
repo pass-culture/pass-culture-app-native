@@ -1,11 +1,12 @@
 import { Hit } from '@algolia/client-search'
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
-import { AlgoliaParametersFields, DisplayParametersFields } from 'features/home/contentful'
+import { AlgoliaParametersFields, DisplayParametersFields, Layout } from 'features/home/contentful'
 import { AlgoliaHit } from 'libs/algolia'
+import { logAllTilesSeen } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { ColorsEnum, Spacer } from 'ui/theme'
@@ -22,8 +23,35 @@ type OffersModuleProps = {
   index: number
 }
 
+const renderHeaderCover = (cover: string | null, layout: Layout) =>
+  cover ? (
+    <Row>
+      {/* Margin: 24px */}
+      <Spacer.Row numberOfSpaces={6} />
+      <Cover layout={layout} uri={cover} />
+      {/* Gutter: 16px */}
+      <Spacer.Row numberOfSpaces={4} />
+    </Row>
+  ) : (
+    <Spacer.Row numberOfSpaces={6} />
+  )
+
+const renderSeeMore = (showSeeMore: boolean, layout: Layout) =>
+  showSeeMore ? (
+    <Row>
+      {/* Gutter: 16px */}
+      <Spacer.Row numberOfSpaces={4} />
+      <SeeMore layout={layout} />
+      {/* Margin: 24px */}
+      <Spacer.Row numberOfSpaces={6} />
+    </Row>
+  ) : (
+    <Spacer.Row numberOfSpaces={6} />
+  )
+
 export const OffersModule = (props: OffersModuleProps) => {
   const { hits, nbHits, display, algolia: parameters, position, index } = props
+  const [hasSeenAllTiles, setHasSeenAllTiles] = useState<boolean>(false)
 
   const renderItem = useCallback(
     ({ item }: { item: Hit<AlgoliaHit> }) => (
@@ -50,16 +78,12 @@ export const OffersModule = (props: OffersModuleProps) => {
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
 
-  const renderHeaderCover = () =>
-    props.cover ? (
-      <Row>
-        <Spacer.Row numberOfSpaces={6} />
-        <Cover layout={display.layout} uri={props.cover} />
-        <Spacer.Row numberOfSpaces={6} />
-      </Row>
-    ) : (
-      <Spacer.Row numberOfSpaces={6} />
-    )
+  const checkIfAllTilesHaveBeenSeen = () => {
+    if (!hasSeenAllTiles) {
+      setHasSeenAllTiles(true)
+      logAllTilesSeen(display.title, hits.length)
+    }
+  }
 
   return (
     <React.Fragment>
@@ -73,12 +97,12 @@ export const OffersModule = (props: OffersModuleProps) => {
         data={hits}
         renderItem={renderItem}
         keyExtractor={(item) => item.objectID}
-        ListHeaderComponent={renderHeaderCover}
+        ListHeaderComponent={renderHeaderCover(props.cover, display.layout)}
         ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
-        ListFooterComponent={
-          showSeeMore ? <SeeMore layout={display.layout} /> : <Spacer.Row numberOfSpaces={6} />
-        }
+        ListFooterComponent={renderSeeMore(showSeeMore, display.layout)}
         showsHorizontalScrollIndicator={false}
+        onEndReached={checkIfAllTilesHaveBeenSeen}
+        onEndReachedThreshold={showSeeMore ? 0.6 : 0.1} // We remove the margin
       />
     </React.Fragment>
   )
