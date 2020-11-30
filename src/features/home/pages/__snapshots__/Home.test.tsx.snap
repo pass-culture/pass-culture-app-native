@@ -101,10 +101,10 @@ exports[`Home component should render correctly without login modal 1`] = `
                 >
                   <RNSVGSvgView
                     align="none"
-                    bbHeight={352}
+                    bbHeight={280}
                     bbWidth={754}
                     focusable={false}
-                    height={352}
+                    height={280}
                     meetOrSlice={0}
                     minX={0}
                     minY={0}
@@ -116,7 +116,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                         },
                         Object {
                           "flex": 0,
-                          "height": 352,
+                          "height": 280,
                           "width": 754,
                         },
                       ]
