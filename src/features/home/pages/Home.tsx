@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { RetryBoundary } from 'features/errors'
+import { useUserProfileInfo } from 'features/home/api'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { logAllModulesSeen } from 'libs/analytics'
@@ -40,6 +41,7 @@ export const isCloseToBottom = ({
 export const HomeComponent: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Home'>>()
+  const { data: userInfos } = useUserProfileInfo()
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const showSkeleton = useShowSkeleton()
 
@@ -94,7 +96,11 @@ export const HomeComponent: FunctionComponent = function () {
       <CenterContainer>
         <Spacer.Column numberOfSpaces={8} />
         <Typo.Title1 color={ColorsEnum.WHITE}>
-          {_(/*i18n: Welcome title message */ t`Bienvenue !`)}
+          {_(
+            /*i18n: Welcome title message */ t`${
+              userInfos?.first_name ? 'Bonjour' : 'Bienvenue !'
+            } ${userInfos?.first_name}`
+          )}
         </Typo.Title1>
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Body color={ColorsEnum.WHITE}>

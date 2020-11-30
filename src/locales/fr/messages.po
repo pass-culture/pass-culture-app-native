@@ -40,7 +40,7 @@ msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
 #. Error message on Batch get installation ID
-#: src/features/cheatcodes/pages/CheatCodes.tsx:47
+#: src/features/cheatcodes/pages/CheatCodes.tsx:54
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
@@ -51,11 +51,6 @@ msgstr "Aucun access token à sauvegarder"
 #: src/libs/keychain.ts:17
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
-
-#. Welcome title message
-#: src/features/home/pages/Home.tsx:62
-msgid "Bienvenue !"
-msgstr "Bienvenue !"
 
 #: src/features/bookings/pages/Bookings.tsx:8
 msgid "Bookings"
@@ -69,7 +64,7 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/home/pages/Home.tsx:46
+#: src/features/home/pages/Home.tsx:48
 #: src/features/profile/pages/Profile.tsx:16
 msgid "Composants"
 msgstr "Composants"
@@ -93,9 +88,9 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:71
-#: src/features/auth/signup/ChoosePassword.tsx:39
 #: src/features/auth/signup/SetBirthday.tsx:37
 #: src/features/auth/signup/SetEmail.tsx:75
+#: src/features/auth/signup/SetPassword.tsx:39
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -152,7 +147,7 @@ msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
 #: src/features/auth/login/Login.tsx:76
-#: src/features/auth/signup/ChoosePassword.tsx:33
+#: src/features/auth/signup/SetPassword.tsx:33
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -164,7 +159,7 @@ msgstr "Mot de passe oublié"
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
-#: src/features/home/pages/Home.tsx:49
+#: src/features/home/pages/Home.tsx:51
 #: src/features/profile/pages/Profile.tsx:20
 msgid "Navigation"
 msgstr "Navigation"
@@ -245,8 +240,8 @@ msgstr "Ton email"
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:53
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:59
 #: src/features/auth/login/Login.tsx:78
-#: src/features/auth/signup/ChoosePassword.tsx:29
-#: src/features/auth/signup/ChoosePassword.tsx:35
+#: src/features/auth/signup/SetPassword.tsx:29
+#: src/features/auth/signup/SetPassword.tsx:35
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
@@ -255,7 +250,7 @@ msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
 #. Welcome body message
-#: src/features/home/pages/Home.tsx:66
+#: src/features/home/pages/Home.tsx:69
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
 
@@ -278,9 +273,14 @@ msgstr "Bienvenue à Pass Culture"
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
-#: src/ui/components/inputs/InputError.tsx:11
+#: src/ui/components/inputs/InputError.tsx:10
 msgid "{0}"
 msgstr "{0}"
+
+#. Welcome title message
+#: src/features/home/pages/Home.tsx:65
+msgid "{0} {1}"
+msgstr "{0} {1}"
 
 #: src/api/helpers.ts:37
 msgid "Échec de la requête {0}, code: {1}"

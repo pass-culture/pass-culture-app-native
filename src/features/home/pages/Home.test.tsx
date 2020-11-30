@@ -3,6 +3,7 @@ import { render, act } from '@testing-library/react-native'
 import React from 'react'
 import { NativeScrollEvent } from 'react-native'
 
+import { useUserProfileInfo } from 'features/home/api'
 import { Tab } from 'features/navigation/TabBar/TabNavigator'
 import { logAllModulesSeen } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -10,6 +11,12 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
 import { HomeComponent, isCloseToBottom } from './Home'
+
+const useUserProfileInfoMock = useUserProfileInfo as jest.Mock
+
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({ data: undefined })),
+}))
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('libs/environment', () => ({
@@ -59,6 +66,17 @@ describe('Home component', () => {
     unmount()
   })
 
+  it('should have a personalized welcome message when user is logged in', async () => {
+    useUserProfileInfoMock.mockImplementationOnce(() => ({
+      data: { email: 'email@domain.ext', first_name: 'Jean' },
+    }))
+
+    const { getByText, unmount } = await homeRenderer(false)
+
+    const welcomeText = getByText('Bonjour Jean')
+    expect(welcomeText.props.children).toBe('Bonjour Jean')
+    unmount()
+  })
   it('should not have code push button', async () => {
     env.FEATURE_FLAG_CODE_PUSH_MANUAL = false
     const home = await homeRenderer(false)
