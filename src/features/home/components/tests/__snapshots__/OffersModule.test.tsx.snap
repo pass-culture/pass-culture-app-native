@@ -44,7 +44,11 @@ Array [
         numberOfSpaces={6}
       />
     }
-    ListHeaderComponent={[Function]}
+    ListHeaderComponent={
+      <Styled(View)
+        numberOfSpaces={6}
+      />
+    }
     data={
       Array [
         Object {
@@ -269,7 +273,8 @@ Array [
     keyExtractor={[Function]}
     maxToRenderPerBatch={10}
     onContentSizeChange={[Function]}
-    onEndReachedThreshold={2}
+    onEndReached={[Function]}
+    onEndReachedThreshold={0.1}
     onLayout={[Function]}
     onMomentumScrollEnd={[Function]}
     onScroll={[Function]}
