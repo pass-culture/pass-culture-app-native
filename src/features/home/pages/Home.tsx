@@ -96,11 +96,9 @@ export const HomeComponent: FunctionComponent = function () {
       <CenterContainer>
         <Spacer.Column numberOfSpaces={8} />
         <StyledTitle1 color={ColorsEnum.WHITE} numberOfLines={2}>
-          {_(
-            /*i18n: Welcome title message */ t`${
-              userInfos?.first_name ? 'Bonjour' : 'Bienvenue !'
-            } ${userInfos?.first_name}`
-          )}
+          {userInfos?.first_name
+            ? _(/*i18n: Hello title message */ t`Bonjour ${userInfos?.first_name}`)
+            : _(/*i18n: Welcome title message */ t`Bienvenue !`)}
         </StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Body color={ColorsEnum.WHITE}>
