@@ -1,4 +1,5 @@
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
+import { NavigationState } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { act, render } from '@testing-library/react-native'
 import React from 'react'
@@ -6,12 +7,22 @@ import React from 'react'
 import { analytics } from 'libs/analytics'
 import { flushAllPromises } from 'tests/utils'
 
-import { onNavigationStateChange } from './services'
+import { state1, state2, state3 } from './navigationStateSnapshots'
+import { getScreenName, onNavigationStateChange } from './services'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-
-beforeEach(() => {
-  jest.resetAllMocks()
+describe('getScreenName', () => {
+  it.each`
+    stateName   | state     | screenName
+    ${'state1'} | ${state1} | ${'Search'}
+    ${'state2'} | ${state2} | ${'Login'}
+    ${'state3'} | ${state3} | ${'Home'}
+  `(
+    'getScreenName($stateName) should be $screenName',
+    ({ state, screenName }: { state: NavigationState; screenName: string }) => {
+      expect(getScreenName(state)).toEqual(screenName)
+    }
+  )
 })
 
 describe('onNavigationStateChange()', () => {
