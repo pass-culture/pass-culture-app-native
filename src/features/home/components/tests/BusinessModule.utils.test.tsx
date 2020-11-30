@@ -1,6 +1,22 @@
-import { fillUrlEmail } from '../BusinessModule.utils'
+import { fillUrlEmail, shouldUrlBeFilled } from '../BusinessModule.utils'
 
 describe('BusinessModule.utils', () => {
+  describe('shouldUrlBeFilled', () => {
+    it.each`
+      url                                                 | expected_result
+      ${'https://url/?email={email}'}                     | ${true}
+      ${'https://url/?email={email}&flavor=chocolate'}    | ${true}
+      ${'passculture://app.passculture.testing/?{email}'} | ${true}
+      ${'https://url/?email=email'}                       | ${false}
+      ${'https://url/?{password}={passwordemail}'}        | ${false}
+      ${''}                                               | ${false}
+    `(
+      'should return $expected_result when url is $url',
+      ({ url, expected_result }: { url: string; expected_result: boolean }) => {
+        expect(shouldUrlBeFilled(url)).toBe(expected_result)
+      }
+    )
+  })
   describe('fillEmail', () => {
     it.each`
       url                                                      | email                     | expected_result
