@@ -391,6 +391,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                   />
                   <Text
                     color="#ffffff"
+                    numberOfLines={2}
                     style={
                       Array [
                         Object {
@@ -398,6 +399,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
                           "lineHeight": 34,
+                          "textAlign": "center",
                         },
                       ]
                     }
@@ -948,7 +950,7 @@ exports[`Home component should render modal correctly 1`] = `
 - First value
 + Second value
 
-@@ -474,11 +474,11 @@
+@@ -476,11 +476,11 @@
                   <Modal
                     animationType=\\"slide\\"
                     hardwareAccelerated={false}

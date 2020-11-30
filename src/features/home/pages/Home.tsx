@@ -95,13 +95,13 @@ export const HomeComponent: FunctionComponent = function () {
 
       <CenterContainer>
         <Spacer.Column numberOfSpaces={8} />
-        <Typo.Title1 color={ColorsEnum.WHITE}>
+        <StyledTitle1 color={ColorsEnum.WHITE} numberOfLines={2}>
           {_(
             /*i18n: Welcome title message */ t`${
               userInfos?.first_name ? 'Bonjour' : 'Bienvenue !'
             } ${userInfos?.first_name}`
           )}
-        </Typo.Title1>
+        </StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Body color={ColorsEnum.WHITE}>
           {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
@@ -119,6 +119,10 @@ export const HomeComponent: FunctionComponent = function () {
     </ScrollView>
   )
 }
+
+const StyledTitle1 = styled(Typo.Title1)({
+  textAlign: 'center',
+})
 
 const CenterContainer = styled.View({
   flex: 1,
