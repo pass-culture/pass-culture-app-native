@@ -8,7 +8,11 @@ import { BusinessPane } from 'features/home/contentful'
 import { Typo, ColorsEnum, getSpacing, MARGIN_DP, LENGTH_S, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
+import { useUserProfileInfo } from '../api'
+
 export const BusinessModule = ({ firstLine, secondLine, leftIcon, image, url }: BusinessPane) => {
+  const { data: profileData, isLoading: isProfileDataLoading } = useUserProfileInfo()
+
   const openUrl = () => {
     url && Linking.openURL(url)
   }
