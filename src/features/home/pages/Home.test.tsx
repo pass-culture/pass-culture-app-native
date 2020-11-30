@@ -86,7 +86,7 @@ describe('Home component', () => {
   })
 })
 
-describe('Home component - Firebase', () => {
+describe('Home component - Analytics', () => {
   const nativeEventMiddle = {
     layoutMeasurement: { height: 1000 },
     contentOffset: { y: 400 }, // how far did we scroll
@@ -120,7 +120,6 @@ describe('Home component - Firebase', () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
     })
 
-    // Fails => Why ?
     expect(logAllModulesSeen).toHaveBeenCalledWith(0)
   })
 

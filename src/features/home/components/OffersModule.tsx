@@ -78,7 +78,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
 
-  const checkIfAllTilesHaveBeenSeen = () => {
+  const logAllTilesSeenOnEndReached = () => {
     if (!hasSeenAllTiles) {
       setHasSeenAllTiles(true)
       logAllTilesSeen(display.title, hits.length)
@@ -93,6 +93,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       />
       <Spacer.Column numberOfSpaces={4} />
       <FlatList
+        testID="offersModuleList"
         horizontal
         data={hits}
         renderItem={renderItem}
@@ -101,7 +102,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
         ListFooterComponent={renderSeeMore(showSeeMore, display.layout)}
         showsHorizontalScrollIndicator={false}
-        onEndReached={checkIfAllTilesHaveBeenSeen}
+        onEndReached={logAllTilesSeenOnEndReached}
         onEndReachedThreshold={showSeeMore ? 0.6 : 0.1} // We remove the margin
       />
     </React.Fragment>
