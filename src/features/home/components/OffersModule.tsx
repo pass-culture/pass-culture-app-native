@@ -81,7 +81,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const logAllTilesSeenOnEndReached = () => {
     if (!hasSeenAllTiles) {
       setHasSeenAllTiles(true)
-      logAllTilesSeen(display.title, hits.length)
+      logAllTilesSeen(display.title || parameters.title, hits.length)
     }
   }
 

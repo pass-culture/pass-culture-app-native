@@ -69,4 +69,25 @@ describe('OffersModule component - Analytics', () => {
     flatList.props.onEndReached()
     expect(logAllTilesSeen).toHaveBeenCalledTimes(1)
   })
+
+  it('should trigger logEvent "AllTilesSeen" with algolia title if no display.title', async () => {
+    const component = render(
+      reactQueryProviderHOC(
+        <OffersModule
+          {...props}
+          algolia={{ ...props.algolia, title: 'Algolia title' }}
+          display={{ ...props.display, title: '' }}
+          index={1}
+        />
+      )
+    )
+    const flatList = component.getByTestId('offersModuleList')
+
+    await act(async () => {
+      await flatList.props.onEndReached()
+      await flushAllPromises()
+    })
+
+    expect(logAllTilesSeen).toHaveBeenCalledWith('Algolia title', props.nbHits)
+  })
 })
