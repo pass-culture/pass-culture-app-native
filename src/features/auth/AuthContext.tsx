@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { SigninRequest } from 'api/gen'
@@ -23,6 +24,7 @@ export function useAuthContext(): IAuthContext {
 
 export const AuthWrapper = ({ children }: { children: Element }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const queryClient = useQueryClient()
 
   useEffect(() => {
     getAccessToken().then((accessToken) => {
@@ -47,6 +49,7 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
   const signOut = async () => {
     await clearAccessToken()
     await clearRefreshToken()
+    await queryClient.removeQueries('userProfile')
     setIsLoggedIn(false)
   }
 
