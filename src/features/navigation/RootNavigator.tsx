@@ -51,7 +51,10 @@ const theme = { colors: { background: ColorsEnum.WHITE } } as Theme
 export const RootNavigator: React.FC = () => {
   return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
-      <RootStack.Navigator initialRouteName="TabNavigator" screenOptions={{ headerShown: false }}>
+      <RootStack.Navigator
+        initialRouteName="TabNavigator"
+        headerMode="screen"
+        screenOptions={{ headerShown: false }}>
         <RootStack.Screen name="TabNavigator" component={TabNavigator} />
         <RootStack.Screen name="Login" component={Login} />
         <RootStack.Screen name="Offer" component={Offer} options={{ headerShown: true }} />
