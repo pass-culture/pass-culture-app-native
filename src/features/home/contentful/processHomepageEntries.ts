@@ -55,6 +55,7 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
       const {
         firstLine,
         secondLine,
+        leftIcon,
         url,
         image,
         targetNotConnectedUsersOnly,
@@ -65,6 +66,7 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         image: buildImageUrl(image)!,
         secondLine,
+        leftIcon: (leftIcon && buildImageUrl(leftIcon)) || undefined,
         url,
         moduleId,
         targetNotConnectedUsersOnly,

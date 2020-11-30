@@ -63,6 +63,7 @@ export class ExclusivityPane {
 export class BusinessPane {
   firstLine: string | undefined
   image: string
+  leftIcon: string | undefined
   secondLine: string | undefined
   url: string | undefined
   moduleId: string
@@ -70,6 +71,7 @@ export class BusinessPane {
   constructor({
     firstLine,
     image,
+    leftIcon,
     secondLine,
     url,
     moduleId,
@@ -77,6 +79,7 @@ export class BusinessPane {
   }: {
     firstLine: string | undefined
     image: string
+    leftIcon: string | undefined
     secondLine: string | undefined
     url: string | undefined
     moduleId: string
@@ -84,6 +87,7 @@ export class BusinessPane {
   }) {
     this.firstLine = firstLine
     this.image = image
+    this.leftIcon = leftIcon
     this.secondLine = secondLine
     this.url = url
     this.moduleId = moduleId
