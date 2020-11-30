@@ -15,3 +15,7 @@ export function onNavigationStateChange(state: NavigationState | undefined): voi
     analytics.logScreenView({ screen_name: currentRoute.name })
   }
 }
+
+export const getScreenName = (state: NavigationState): string => {
+  return 'tmp'
+}
