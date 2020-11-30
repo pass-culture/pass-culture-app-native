@@ -2,7 +2,6 @@ import { renderHook } from '@testing-library/react-hooks'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 
-import { DeepLinksToScreenConfiguration } from './types'
 import { decodeDeeplinkParts, useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
 import { DEEPLINK_DOMAIN } from './utils'
 
@@ -66,14 +65,7 @@ describe('useDeeplinkUrlHandler', () => {
   })
 })
 
-/** FAKING NAVIGATION BY REDEFINING A LOCAL STACK PARAMLIST */
-type DeepLinksToScreenMapForTest = { 'my-route-to-test': 'UniqueTestRoute'; default: 'Home' }
-
-type RootStackParamListForTest = {
-  UniqueTestRoute: { param1: string; param2: number; param3: boolean; param4: boolean }
-  Home: undefined
-}
-
+/** FAKING DEEPLINKS ROUTING */
 jest.mock('features/deeplinks/routing', () => ({
   DEEPLINK_TO_SCREEN_CONFIGURATION: {
     'my-route-to-test': function (params: Record<string, string>) {
@@ -90,7 +82,6 @@ jest.mock('features/deeplinks/routing', () => ({
     default: function () {
       return { screen: 'Home' }
     },
-  } as DeepLinksToScreenConfiguration<DeepLinksToScreenMapForTest, RootStackParamListForTest>,
+  },
 }))
-
-/** FAKING NAVIGATION END */
+/** FAKING DEEPLINKS ROUTING END */

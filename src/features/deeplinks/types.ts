@@ -1,4 +1,4 @@
-import { RouteParams } from 'features/navigation/RootNavigator'
+import { RouteParams, AllNavParamList } from 'features/navigation/RootNavigator'
 
 export interface DeeplinkParts {
   routeName: string
@@ -9,25 +9,25 @@ export interface DeeplinkEvent {
   url: string
 }
 
-export type DeepLinksToScreenMap = {
-  default: 'Home'
-  favoris: 'Favorites'
-  login: 'Login'
-  'mot-de-passe-perdu': 'ReinitializePassword'
-  profil: 'Profile'
-  recherche: 'Search'
+type SerializedParams = Record<string, string>
+
+type ScreenConfiguration<ScreenName extends keyof AllNavParamList> = {
+  screen: ScreenName
+  params: RouteParams<AllNavParamList, ScreenName>
 }
 
-export type AllowedDeeplinkRoutes = keyof DeepLinksToScreenMap
+export type AllowedDeeplinkRoutes = keyof DeepLinksToScreenConfiguration
 
-export type DeepLinksToScreenConfiguration<
-  Routes extends Record<string, string>, // 2nd string targets ScreenNames
-  StackParamList extends Record<string, unknown> // unknow targets any screen params type
-> = {
-  [routename in keyof Routes]: (
-    params?: Record<string, string>
-  ) => {
-    screen: keyof StackParamList
-    params?: RouteParams<StackParamList, keyof StackParamList>
-  }
+export type DeepLinksToScreenConfiguration = {
+  default: (params?: SerializedParams) => ScreenConfiguration<'Home'>
+  favoris: (params?: SerializedParams) => ScreenConfiguration<'Favorites'>
+  login: (params?: SerializedParams) => ScreenConfiguration<'Login'>
+  'mot-de-passe-perdu': (
+    params?: SerializedParams
+  ) =>
+    | ScreenConfiguration<'ReinitializePassword'>
+    | ScreenConfiguration<'ResetPasswordExpiredLink'>
+    | ScreenConfiguration<'Home'>
+  profil: (params?: SerializedParams) => ScreenConfiguration<'Profile'>
+  recherche: (params?: SerializedParams) => ScreenConfiguration<'Search'>
 }

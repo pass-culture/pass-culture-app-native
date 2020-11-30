@@ -1,18 +1,24 @@
-import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { isTimestampExpired } from 'libs/dates'
 
-import { DeepLinksToScreenConfiguration, DeepLinksToScreenMap } from './types'
+import { DeepLinksToScreenConfiguration } from './types'
 
-export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration<
-  DeepLinksToScreenMap,
-  AllNavParamList
-> = {
+export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = {
+  default: function () {
+    return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
+  },
+  favoris: function () {
+    return { screen: 'Favorites', params: undefined }
+  },
+  login: function () {
+    return { screen: 'Login', params: undefined }
+  },
   'mot-de-passe-perdu': function (params) {
-    if (params && params.token && params.expiration_timestamp) {
+    if (params && params.token && params.email && params.expiration_timestamp) {
       const parsedExpirationTimestamp = Number(params.expiration_timestamp)
       if (isTimestampExpired(parsedExpirationTimestamp)) {
         return {
           screen: 'ResetPasswordExpiredLink',
+          params: { email: params.email },
         }
       }
       return {
@@ -23,21 +29,12 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration<
         },
       }
     }
-    return { screen: 'Home' }
+    return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
   },
   profil: function () {
-    return { screen: 'Profile' }
-  },
-  favoris: function () {
-    return { screen: 'Favorites' }
+    return { screen: 'Profile', params: undefined }
   },
   recherche: function () {
-    return { screen: 'Search' }
-  },
-  login: function () {
-    return { screen: 'Login' }
-  },
-  default: function () {
-    return { screen: 'Home' }
+    return { screen: 'Search', params: undefined }
   },
 }
