@@ -2,8 +2,10 @@ import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 import { Linking } from 'react-native'
 
+import { reactQueryProviderHOC } from '../../../../tests/reactQueryProviderHOC'
+import { useAuthContext } from '../../../auth/AuthContext'
 import { BusinessModule } from '../BusinessModule'
-
+jest.mock('features/auth/AuthContext')
 const props = {
   firstLine: 'firstLine',
   secondLine: 'secondLine',
@@ -13,7 +15,10 @@ const props = {
   targetNotConnectedUsersOnly: undefined,
   leftIcon: undefined,
 }
+
+const mockUseAuthContext = useAuthContext as jest.Mock
 describe('BusinessModule component', () => {
+  afterEach(() => jest.clearAllMocks())
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly - with leftIcon = Idea by default', () => {
@@ -32,7 +37,7 @@ describe('BusinessModule component', () => {
   })
 
   it('should open url when clicking on the image', async () => {
-    const { getByTestId } = render(<BusinessModule {...props} />)
+    const { getByTestId } = render(reactQueryProviderHOC(<BusinessModule {...props} />))
     const openUrlSpy = jest.spyOn(Linking, 'openURL')
     fireEvent.press(getByTestId('imageBusiness'))
     expect(openUrlSpy).toHaveBeenCalledWith('url')

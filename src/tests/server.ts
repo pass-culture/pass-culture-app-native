@@ -6,6 +6,7 @@ import {
   ResetPasswordRequest,
   SigninRequest,
   SigninResponse,
+  UserProfileResponse,
 } from 'api/gen'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -31,5 +32,8 @@ export const server = setupServer(
     (req, res, ctx) => {
       return res(ctx.status(204))
     }
+  ),
+  rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) =>
+    res(ctx.status(200), ctx.json({ email: 'email@domain.ext', first_name: 'Jean' }))
   )
 )
