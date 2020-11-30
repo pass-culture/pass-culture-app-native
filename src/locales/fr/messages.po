@@ -34,13 +34,13 @@ msgid "12 Caractères"
 msgstr "12 Caractères"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:75
-#: src/features/auth/login/Login.tsx:70
+#: src/features/auth/login/Login.tsx:69
 #: src/features/auth/signup/SetEmail.tsx:62
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
 #. Error message on Batch get installation ID
-#: src/features/cheatcodes/pages/CheatCodes.tsx:54
+#: src/features/cheatcodes/pages/CheatCodes.tsx:49
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
@@ -51,6 +51,16 @@ msgstr "Aucun access token à sauvegarder"
 #: src/libs/keychain.ts:17
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
+
+#. Welcome title message
+#: src/features/home/pages/Home.tsx:75
+msgid "Bienvenue !"
+msgstr "Bienvenue !"
+
+#. Hello title message
+#: src/features/home/pages/Home.tsx:74
+msgid "Bonjour {0}"
+msgstr "Bonjour {0}"
 
 #: src/features/bookings/pages/Bookings.tsx:8
 msgid "Bookings"
@@ -64,7 +74,7 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/home/pages/Home.tsx:48
+#: src/features/home/pages/Home.tsx:58
 #: src/features/profile/pages/Profile.tsx:16
 msgid "Composants"
 msgstr "Composants"
@@ -74,7 +84,7 @@ msgstr "Composants"
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
-#: src/features/auth/login/Login.tsx:66
+#: src/features/auth/login/Login.tsx:65
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
@@ -116,14 +126,6 @@ msgstr "Erreur d'authentification"
 msgid "Favorites"
 msgstr "Favoris"
 
-#: src/features/deeplinks/listener.android.ts:19
-msgid "Impossible d'ouvrir le lien"
-msgstr "Impossible d'ouvrir le lien"
-
-#: src/features/deeplinks/listener.android.ts:16
-msgid "Impossible d'ouvrir le lien:"
-msgstr "Impossible d'ouvrir le lien:"
-
 #: src/libs/keychain.ts:23
 #: src/libs/keychain.ts:33
 #: src/libs/keychain.ts:47
@@ -138,15 +140,19 @@ msgstr "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes 
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
-#: src/features/deeplinks/useDeeplinkUrlHandler.ts:26
+#: src/features/deeplinks/useDeeplinkUrlHandler.ts:20
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
+
+#: src/features/deeplinks/useDeeplinkUrlHandler.ts:50
+msgid "Le lien est incorrect:"
+msgstr "Le lien est incorrect:"
 
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:21
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/auth/login/Login.tsx:76
+#: src/features/auth/login/Login.tsx:75
 #: src/features/auth/signup/SetPassword.tsx:33
 msgid "Mot de passe"
 msgstr "Mot de passe"
@@ -155,11 +161,11 @@ msgstr "Mot de passe"
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
-#: src/features/auth/login/Login.tsx:82
+#: src/features/auth/login/Login.tsx:81
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
-#: src/features/home/pages/Home.tsx:51
+#: src/features/home/pages/Home.tsx:61
 #: src/features/profile/pages/Profile.tsx:20
 msgid "Navigation"
 msgstr "Navigation"
@@ -212,7 +218,7 @@ msgstr "S'inscrire"
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
-#: src/features/auth/login/Login.tsx:85
+#: src/features/auth/login/Login.tsx:84
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:30
 msgid "Se connecter"
 msgstr "Se connecter"
@@ -239,7 +245,7 @@ msgstr "Ton email"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:53
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:59
-#: src/features/auth/login/Login.tsx:78
+#: src/features/auth/login/Login.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:29
 #: src/features/auth/signup/SetPassword.tsx:35
 msgid "Ton mot de passe"
@@ -250,7 +256,7 @@ msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
 #. Welcome body message
-#: src/features/home/pages/Home.tsx:69
+#: src/features/home/pages/Home.tsx:79
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
 
@@ -268,7 +274,7 @@ msgstr "Bienvenue à Pass Culture"
 
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:77
-#: src/features/auth/login/Login.tsx:72
+#: src/features/auth/login/Login.tsx:71
 #: src/features/auth/signup/SetEmail.tsx:64
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
@@ -276,11 +282,6 @@ msgstr "tonadresse@email.com"
 #: src/ui/components/inputs/InputError.tsx:10
 msgid "{0}"
 msgstr "{0}"
-
-#. Welcome title message
-#: src/features/home/pages/Home.tsx:65
-msgid "{0} {1}"
-msgstr "{0} {1}"
 
 #: src/api/helpers.ts:37
 msgid "Échec de la requête {0}, code: {1}"
