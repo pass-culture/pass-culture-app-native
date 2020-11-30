@@ -1,4 +1,4 @@
-import React, { createContext, FunctionComponent, useRef, useState } from 'react'
+import React, { createContext, FunctionComponent, useContext, useRef, useState } from 'react'
 
 import { Check } from 'ui/svg/icons/Check'
 import { Warning } from 'ui/svg/icons/Warning'
@@ -15,7 +15,7 @@ interface SnackBarContextValue {
   hideSnackBar: () => void
 }
 
-export const SnackBarContext = createContext<SnackBarContextValue>({
+const SnackBarContext = createContext<SnackBarContextValue>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   displaySuccessSnackBar() {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -81,4 +81,8 @@ export const SnackBarProvider: FunctionComponent = ({ children }) => {
       </SnackBarContext.Provider>
     </React.Fragment>
   )
+}
+
+export function useSnackBarContext(): SnackBarContextValue {
+  return useContext(SnackBarContext)
 }

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-raw-text */
-import React, { FunctionComponent, useCallback, useContext, useState } from 'react'
+import React, { FunctionComponent, useCallback, useState } from 'react'
 import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -18,7 +18,7 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { SnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
@@ -104,7 +104,7 @@ export const AppComponents: FunctionComponent = () => {
     setTimeout(() => setButtonIsLoading(false), 3000)
   }, [])
 
-  const { displaySuccessSnackBar, displayInfosSnackBar, hideSnackBar } = useContext(SnackBarContext)
+  const { displaySuccessSnackBar, displayInfosSnackBar, hideSnackBar } = useSnackBarContext()
   const popupSnackBarSuccess = useCallback(
     () =>
       displaySuccessSnackBar({
