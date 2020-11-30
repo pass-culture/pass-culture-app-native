@@ -1,13 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { render, act } from '@testing-library/react-native'
 import React from 'react'
+import { NativeScrollEvent } from 'react-native'
 
 import { Tab } from 'features/navigation/TabBar/TabNavigator'
+import { logAllModulesSeen } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
-import { HomeComponent } from './Home'
+import { HomeComponent, isCloseToBottom } from './Home'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('libs/environment', () => ({
@@ -23,6 +25,13 @@ jest.mock('features/auth/AuthContext', () => ({
 
 jest.mock('./useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
+}))
+
+jest.mock('features/home/pages/useDisplayedHomeModules', () => ({
+  useDisplayedHomeModules: jest.fn(() => ({
+    displayedModules: [],
+    algoliaModules: {},
+  })),
 }))
 
 describe('Home component', () => {
@@ -74,6 +83,73 @@ describe('Home component', () => {
     expect(() => home.getByText('Composants')).toThrowError()
     expect(() => home.getByText('Navigation')).toThrowError()
     home.unmount()
+  })
+})
+
+describe('Home component - Firebase', () => {
+  const nativeEventMiddle = {
+    layoutMeasurement: { height: 1000 },
+    contentOffset: { y: 400 }, // how far did we scroll
+    contentSize: { height: 1600 },
+  }
+  const nativeEventBottom = {
+    layoutMeasurement: { height: 1000 },
+    contentOffset: { y: 900 },
+    contentSize: { height: 1600 },
+  }
+  it('event should not be close to bottom', () => {
+    expect(isCloseToBottom((nativeEventMiddle as unknown) as NativeScrollEvent)).toBeFalsy()
+  })
+  it('event should be close to bottom', () => {
+    expect(isCloseToBottom((nativeEventBottom as unknown) as NativeScrollEvent)).toBeTruthy()
+  })
+
+  it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
+    const home = await homeRenderer(false)
+    const scrollView = home.getByTestId('homeScrollView')
+    await act(async () => {
+      await flushAllPromises()
+    })
+
+    await act(async () => {
+      await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+    })
+    expect(logAllModulesSeen).not.toHaveBeenCalled()
+
+    await act(async () => {
+      await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+    })
+
+    // Fails => Why ?
+    expect(logAllModulesSeen).toHaveBeenCalledWith(0)
+  })
+
+  it('should trigger logEvent "AllModulesSeen" only once', async () => {
+    const home = await homeRenderer(false)
+    const scrollView = home.getByTestId('homeScrollView')
+
+    await act(async () => {
+      await flushAllPromises()
+    })
+
+    await act(async () => {
+      // 1st scroll to bottom => trigger
+      await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+      await flushAllPromises()
+    })
+    expect(logAllModulesSeen).toHaveBeenCalledWith(0)
+
+    // @ts-ignore: logAllModulesSeen is the mock function but is seen as the real function
+    logAllModulesSeen.mockClear()
+
+    await act(async () => {
+      // 2nd scroll to bottom => NOT trigger
+      await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+      await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+      await flushAllPromises()
+    })
+
+    expect(logAllModulesSeen).not.toHaveBeenCalled()
   })
 })
 
