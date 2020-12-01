@@ -173,6 +173,7 @@ exports[`OfferTile component should render correctly 1`] = `
     </Text>
     <Text
       color="#626262"
+      numberOfLines={1}
       style={
         Array [
           Object {
