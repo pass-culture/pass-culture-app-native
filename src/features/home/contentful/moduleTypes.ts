@@ -61,6 +61,7 @@ export class ExclusivityPane {
 }
 
 export class BusinessPane {
+  title: string
   firstLine: string | undefined
   image: string
   leftIcon: string | undefined
@@ -69,6 +70,7 @@ export class BusinessPane {
   moduleId: string
   targetNotConnectedUsersOnly: boolean | undefined
   constructor({
+    title,
     firstLine,
     image,
     leftIcon,
@@ -77,6 +79,7 @@ export class BusinessPane {
     moduleId,
     targetNotConnectedUsersOnly,
   }: {
+    title: string
     firstLine: string | undefined
     image: string
     leftIcon: string | undefined
@@ -85,6 +88,7 @@ export class BusinessPane {
     moduleId: string
     targetNotConnectedUsersOnly: boolean | undefined
   }) {
+    this.title = title
     this.firstLine = firstLine
     this.image = image
     this.leftIcon = leftIcon

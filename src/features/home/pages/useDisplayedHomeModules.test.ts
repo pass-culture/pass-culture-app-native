@@ -49,6 +49,7 @@ const notInAlgoliaModules = new Offers({
 const offerModules: ProcessedModule[] = [visibleOfferModule, hiddenOfferModule, emptyHits]
 
 const connectedBusinessModule = new BusinessPane({
+  title: 'module title',
   moduleId: 'businessPane-id',
   image: 'uri_to_image',
   firstLine: undefined,

@@ -7,6 +7,7 @@ import waitForExpect from 'wait-for-expect'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import * as HomeAPI from 'features/home/api'
+import { logClickBusinessBlock } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -25,6 +26,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 const props: BusinessPane = {
+  title: 'Title of module',
   firstLine: 'firstLine',
   secondLine: 'secondLine',
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
@@ -51,6 +53,12 @@ describe('BusinessModule component', () => {
         'https://images.ctfassets.net/2bg01iqy0isv/1Sh2Ter3f4GgW9m926jqB5/83adbbd38e399d0089ff7b8f0efadf4c/Europe.png',
     })
     expect(toJSON()).toMatchSnapshot()
+  })
+
+  it('should log "BusinessBlockClicked" when clicking on the image', () => {
+    const { getByTestId } = renderModule(props)
+    fireEvent.press(getByTestId('imageBusiness'))
+    expect(logClickBusinessBlock).toHaveBeenCalledWith(props.title)
   })
 
   it('should open url when clicking on the image', () => {

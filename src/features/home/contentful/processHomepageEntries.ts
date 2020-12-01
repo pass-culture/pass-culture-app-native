@@ -53,6 +53,7 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
 
     if (contentType === CONTENT_TYPES.BUSINESS) {
       const {
+        title,
         firstLine,
         secondLine,
         leftIcon,
@@ -62,6 +63,7 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
       } = fields as BusinessFields
 
       return new BusinessPane({
+        title,
         firstLine,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         image: buildImageUrl(image)!,

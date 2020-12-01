@@ -74,6 +74,7 @@ Array [
     "moduleId": "K2yYJkeX30OoepIooo2Um",
     "secondLine": "En répondant à notre rapide questionnaire",
     "targetNotConnectedUsersOnly": undefined,
+    "title": "Donne ton avis sur le pass !",
     "url": "https://passculture.typeform.com/to/PYl2WwKC?email={email}",
   },
   BusinessPane {
@@ -83,6 +84,7 @@ Array [
     "moduleId": "24FUVnnPPJ9v7JHkO7eaXK",
     "secondLine": "Consulte notre FAQ !",
     "targetNotConnectedUsersOnly": true,
+    "title": "FAQ pass Culture",
     "url": "https://aide.passculture.app/fr/",
   },
   BusinessPane {
@@ -92,6 +94,7 @@ Array [
     "moduleId": "24FUVnnPPJ9v7JHkO7eaID",
     "secondLine": "Si tu as 18 ans, bénéficie de 300 €.",
     "targetNotConnectedUsersOnly": false,
+    "title": "Crée un compte !",
     "url": "https://aide.passculture.app/fr/",
   },
   Offers {
