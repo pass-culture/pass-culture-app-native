@@ -11,5 +11,6 @@ export const analytics: jest.Mocked<AnalyticsReturn> = {
 export const logAllModulesSeen = jest.fn()
 export const logAllTilesSeen = jest.fn()
 export const logConsultOffer = jest.fn()
+export const logClickExclusivityBlock = jest.fn()
 export const logClickSeeMore = jest.fn()
 export const logClickBusinessBlock = jest.fn()

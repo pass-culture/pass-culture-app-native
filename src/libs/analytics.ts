@@ -8,6 +8,7 @@ export enum AnalyticsEvent {
   CONSULT_OFFER = 'ConsultOffer',
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
+  EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
 }
 
 export const logAllModulesSeen = async (numberOfModules: number) =>
@@ -18,6 +19,9 @@ export const logAllTilesSeen = async (moduleName: string, numberOfTiles: number)
 
 export const logConsultOffer = async (offerId: string) =>
   await analytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId })
+
+export const logClickExclusivityBlock = async (offerId: string) =>
+  await analytics.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })
 
 export const logClickSeeMore = async (moduleName: string) =>
   await analytics.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName })

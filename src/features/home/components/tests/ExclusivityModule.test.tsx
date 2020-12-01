@@ -2,6 +2,7 @@ import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { logClickExclusivityBlock } from 'libs/analytics'
 
 import { ExclusivityModule } from '../ExclusivityModule'
 
@@ -11,6 +12,7 @@ const props = {
   offerId: 'AZBE',
   moduleId: 'module-id',
 }
+
 describe('ExclusivityModule component', () => {
   afterAll(() => jest.resetAllMocks())
 
@@ -19,9 +21,14 @@ describe('ExclusivityModule component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should navigate to the offer when clicking on the image', async () => {
+  it('should navigate to the offer when clicking on the image', () => {
     const { getByTestId } = render(<ExclusivityModule {...props} />)
     fireEvent.press(getByTestId('imageExclu'))
     expect(navigate).toHaveBeenCalledWith('Offer', { offerId: 'AZBE' })
+  })
+  it('should log a click event when clicking on the image', () => {
+    const { getByTestId } = render(<ExclusivityModule {...props} />)
+    fireEvent.press(getByTestId('imageExclu'))
+    expect(logClickExclusivityBlock).toHaveBeenCalledWith('AZBE')
   })
 })

@@ -5,17 +5,22 @@ import styled from 'styled-components/native'
 
 import { ExclusivityPane } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { logClickExclusivityBlock } from 'libs/analytics'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
-  const navigation = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
       <ImageContainer>
-        <TouchableHighlight onPress={() => navigation.navigate('Offer', { offerId })}>
+        <TouchableHighlight
+          onPress={() => {
+            navigate('Offer', { offerId })
+            logClickExclusivityBlock(offerId)
+          }}>
           <Image
             source={{ uri: image }}
             accessible={!!alt}
