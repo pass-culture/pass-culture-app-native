@@ -1,7 +1,10 @@
 import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
-import { mockedAlgoliaResponse } from '../../../../libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { navigate } from '__mocks__/@react-navigation/native'
+import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { logConsultOffer } from 'libs/analytics'
+
 import { OfferTile } from '../OfferTile'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
@@ -24,15 +27,14 @@ describe('OfferTile component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  /**
-   * Temporary test. We have to adapt it with navigation once implemented
-   * TODO: change the way this test is made using navigation mock when possible
-   */
-
   it('should navigate to the offer when clicking on the image', async () => {
-    global.console = { ...global.console, log: jest.fn() }
     const { getByTestId } = render(<OfferTile {...props} />)
     fireEvent.press(getByTestId('offerTileImage'))
-    expect(console.log).toHaveBeenCalledWith('Opening offer AGHYQ...') // eslint-disable-line no-console
+    expect(navigate).toHaveBeenCalledWith('Offer', { offerId: 'AGHYQ' })
+  })
+  it('Analytics - should log ConsultOffer that user opened the offer', async () => {
+    const { getByTestId } = render(<OfferTile {...props} />)
+    fireEvent.press(getByTestId('offerTileImage'))
+    expect(logConsultOffer).toHaveBeenCalledWith('AGHYQ')
   })
 })

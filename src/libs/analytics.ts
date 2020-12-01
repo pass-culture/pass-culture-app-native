@@ -5,6 +5,7 @@ export const analytics = firebaseAnalyticsModule()
 export enum AnalyticsEvent {
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
+  CONSULT_OFFER = 'ConsultOffer',
 }
 
 export const logAllModulesSeen = async (numberOfModules: number) =>
@@ -12,3 +13,6 @@ export const logAllModulesSeen = async (numberOfModules: number) =>
 
 export const logAllTilesSeen = async (moduleName: string, numberOfTiles: number) =>
   await analytics.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
+
+export const logConsultOffer = async (offerId: string) =>
+  await analytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId })
