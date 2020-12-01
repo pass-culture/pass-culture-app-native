@@ -1,3 +1,4 @@
+import { RefAttributes } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
 export type CustomTextInputProps = {
@@ -15,7 +16,11 @@ export type RNTextInputProps = Pick<
   | 'secureTextEntry'
   | 'onFocus'
   | 'onBlur'
->
+  | 'maxLength'
+  | 'selectTextOnFocus'
+  | 'onKeyPress'
+> &
+  RefAttributes<RNTextInput>
 
 export type TextInputProps = CustomTextInputProps & RNTextInputProps
 

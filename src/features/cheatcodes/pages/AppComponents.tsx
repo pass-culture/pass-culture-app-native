@@ -361,7 +361,7 @@ export const AppComponents: FunctionComponent = () => {
           isValid={_partialDate.length === 4}
           maxLength={4}
           onChangeValue={setPartialDate}
-          placeholder="YYYY"
+          placeholder="AAAA"
         />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>

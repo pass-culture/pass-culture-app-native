@@ -515,10 +515,23 @@ Array [
                   onChangeText={[Function]}
                   onFocus={[Function]}
                   placeholder="JJ"
+                  placeholderTextColor="#626262"
                   rejectResponderTermination={true}
                   selectTextOnFocus={true}
                   style={
                     Array [
+                      Object {
+                        "color": "#151515",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
                       Object {
                         "fontSize": 18,
                         "lineHeight": 22,
@@ -580,11 +593,25 @@ Array [
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
+                  onKeyPress={[Function]}
                   placeholder="MM"
+                  placeholderTextColor="#626262"
                   rejectResponderTermination={true}
                   selectTextOnFocus={true}
                   style={
                     Array [
+                      Object {
+                        "color": "#151515",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
                       Object {
                         "fontSize": 18,
                         "lineHeight": 22,
@@ -646,11 +673,25 @@ Array [
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
-                  placeholder="YYYY"
+                  onKeyPress={[Function]}
+                  placeholder="AAAA"
+                  placeholderTextColor="#626262"
                   rejectResponderTermination={true}
                   selectTextOnFocus={true}
                   style={
                     Array [
+                      Object {
+                        "color": "#151515",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
                       Object {
                         "fontSize": 18,
                         "lineHeight": 22,

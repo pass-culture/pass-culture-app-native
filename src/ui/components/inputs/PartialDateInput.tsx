@@ -4,6 +4,8 @@ import styled from 'styled-components/native'
 
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
+import { BaseTextInput } from './BaseTextInput'
+
 export enum DatePartType {
   DAY = 'day',
   MONTH = 'month',
@@ -48,6 +50,7 @@ export const _PartialDateInput: React.ForwardRefRenderFunction<TextInput, Partia
         selectTextOnFocus
         numberOfChar={props.placeholder.length}
         ref={forwardedRef}
+        onKeyPress={props.onKeyPress}
       />
       <Spacer.Column numberOfSpaces={1} />
       <ValidationBar
@@ -68,7 +71,7 @@ const Container = styled.View({
 })
 
 // using styled.TextInput triggers a typescript error on the 'ref' property
-const StyledInput = styled(TextInput)<{ numberOfChar: number }>(
+const StyledInput = styled(BaseTextInput)<{ numberOfChar: number }>(
   ({ numberOfChar: lengthByChar }) => ({
     textAlign: 'center',
     fontSize: 18,
