@@ -7,6 +7,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { IdeaIcon } from 'features/home/assets/IdeaIcon'
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
+import { logClickBusinessBlock } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Typo, ColorsEnum, getSpacing, MARGIN_DP, LENGTH_S, RATIO_BUSINESS, Spacer } from 'ui/theme'
@@ -14,7 +15,8 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 import { fillUrlEmail, shouldUrlBeFilled } from './BusinessModule.utils'
 
-export const BusinessModule = ({ firstLine, secondLine, leftIcon, image, url }: BusinessPane) => {
+export const BusinessModule = (businessPane: BusinessPane) => {
+  const { title, firstLine, secondLine, leftIcon, image, url } = businessPane
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const { data: profileData, isLoading: isProfileDataLoading } = useUserProfileInfo()
@@ -22,6 +24,7 @@ export const BusinessModule = ({ firstLine, secondLine, leftIcon, image, url }: 
 
   const openUrl = (finalUrl: string) => {
     setShouldRedirect(false)
+    logClickBusinessBlock(title)
     Linking.openURL(finalUrl)
   }
 
