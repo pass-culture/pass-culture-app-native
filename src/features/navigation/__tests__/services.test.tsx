@@ -8,8 +8,8 @@ import React from 'react'
 import { analytics } from 'libs/analytics'
 import { flushAllPromises } from 'tests/utils'
 
-import { state1, state2, state3 } from './navigationStateSnapshots'
-import { getScreenName, onNavigationStateChange } from './services'
+import { state1, state2, state3 } from '../mocks/navigationStateSnapshots'
+import { getScreenName, onNavigationStateChange } from '../services'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
