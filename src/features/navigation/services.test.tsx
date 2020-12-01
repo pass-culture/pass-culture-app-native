@@ -1,3 +1,4 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
 import { NavigationState } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -50,11 +51,11 @@ describe('onNavigationStateChange()', () => {
     expect(analytics.logScreenView).toHaveBeenCalledWith({ screen_name: 'Screen1' })
     unmount()
   })
-  it('should log screen name when navigating to a stack navigator', async () => {
+  it('should log screen name when navigating to a nested stack navigator', async () => {
     const { unmount } = navigationRender()
 
     await act(async () => {
-      navigate('Stack2')
+      navigate('NestedStackNavigator')
       await flushAllPromises()
     })
 
@@ -70,7 +71,7 @@ describe('onNavigationStateChange()', () => {
     expect(analytics.logScreenView).toHaveBeenCalledWith({ screen_name: 'Screen4' })
 
     await act(async () => {
-      navigate('Stack3')
+      navigate('NestedTabNavigator')
       await flushAllPromises()
     })
 
@@ -92,37 +93,37 @@ describe('onNavigationStateChange()', () => {
 type StackParamList = {
   Screen1: undefined
   Screen2: undefined
-  Stack2: undefined
+  NestedStackNavigator: undefined
 }
 type StackParamList2 = {
   Screen3: undefined
   Screen4: undefined
-  Stack3: undefined
+  NestedTabNavigator: undefined
 }
-type StackParamList3 = {
+type TabParamList = {
   Screen5: undefined
   Screen6: undefined
 }
 const Stack = createStackNavigator<StackParamList>()
 const Stack2 = createStackNavigator<StackParamList2>()
-const Stack3 = createStackNavigator<StackParamList3>()
+const TabNavigator = createBottomTabNavigator<TabParamList>()
 
 const navigationRef = React.createRef<NavigationContainerRef>()
 
 function navigate(name: string) {
   navigationRef.current?.navigate(name)
 }
-const Stack3Navigator = () => (
-  <Stack3.Navigator>
-    <Stack3.Screen name="Screen5" component={Screen} />
-    <Stack3.Screen name="Screen6" component={Screen} />
-  </Stack3.Navigator>
+const NestedTabNavigator = () => (
+  <TabNavigator.Navigator>
+    <TabNavigator.Screen name="Screen5" component={Screen} />
+    <TabNavigator.Screen name="Screen6" component={Screen} />
+  </TabNavigator.Navigator>
 )
-const Stack2Navigator = () => (
+const NestedStackNavigator = () => (
   <Stack2.Navigator>
     <Stack2.Screen name="Screen3" component={Screen} />
     <Stack2.Screen name="Screen4" component={Screen} />
-    <Stack2.Screen name="Stack3" component={Stack3Navigator} />
+    <Stack2.Screen name="NestedTabNavigator" component={NestedTabNavigator} />
   </Stack2.Navigator>
 )
 function navigationRender() {
@@ -131,7 +132,7 @@ function navigationRender() {
       <Stack.Navigator initialRouteName="Screen1">
         <Stack.Screen name="Screen1" component={Screen} />
         <Stack.Screen name="Screen2" component={Screen} />
-        <Stack.Screen name="Stack2" component={Stack2Navigator} />
+        <Stack.Screen name="NestedStackNavigator" component={NestedStackNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   )
