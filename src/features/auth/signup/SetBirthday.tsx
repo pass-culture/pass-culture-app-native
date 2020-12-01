@@ -31,11 +31,11 @@ export const SetBirthday: FunctionComponent = () => {
   const { goBack } = useNavigation<UseNavigationType>()
 
   function onChangeValue(value: string | null, isComplete: boolean) {
-    setState((_state) => ({ ..._state, date: value, isComplete }))
-  }
-
-  function onSubmit() {
-    setState((_state) => ({ ..._state, hasError: _state.date === null }))
+    setState({
+      date: value,
+      isComplete,
+      hasError: isComplete && value === null,
+    })
   }
 
   return (
@@ -57,7 +57,7 @@ export const SetBirthday: FunctionComponent = () => {
               numberOfSpacesTop={5}
             />
           </DateInputContainer>
-          <ButtonPrimary title={_(t`Continuer`)} onPress={onSubmit} disabled={!state.isComplete} />
+          <ButtonPrimary title={_(t`Continuer`)} disabled={!state.isComplete} />
         </BottomCardContentContainer>
       </BottomCard>
     </React.Fragment>

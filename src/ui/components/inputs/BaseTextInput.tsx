@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useRef } from 'react'
+import React, { forwardRef, ForwardRefRenderFunction, useEffect, useRef } from 'react'
 import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,20 +7,41 @@ import { ColorsEnum, getSpacing } from 'ui/theme'
 
 import { RNTextInputProps } from './types'
 
-export function BaseTextInput(props: RNTextInputProps) {
+export const _BaseTextInput: ForwardRefRenderFunction<TextInput, RNTextInputProps> = (
+  props,
+  forwardedRef
+) => {
   const inputRef = useRef<TextInput>(null)
-
-  // Following code block is required to solve this bug :
-  // text input of type password (with secureTextEntry set to True) has not the
-  // correct fontFamily despite the style
+  /**
+   * Following code block is required to solve this bug :
+   * text input of type password (with secureTextEntry set to True) has not the
+   * correct fontFamily despite the style
+   */
   useEffect(() => {
     if (inputRef && inputRef.current) {
       inputRef.current.setNativeProps({ style: { fontFamily: 'Montserrat-Regular' } })
     }
   }, [inputRef.current, props.secureTextEntry])
 
-  return <StyledTextInput {...props} ref={inputRef} />
+  return (
+    <StyledTextInput
+      {...props}
+      placeholder={props.placeholder || ''}
+      ref={(ref) => {
+        if (ref) {
+          /* @ts-ignore Conflicts between types */
+          inputRef.current = ref
+          if (forwardedRef) {
+            /* @ts-ignore Conflicts between types */
+            forwardedRef.current = ref
+          }
+        }
+      }}
+    />
+  )
 }
+
+export const BaseTextInput = forwardRef<TextInput, RNTextInputProps>(_BaseTextInput)
 
 const StyledTextInput = styled(TextInput).attrs({
   placeholderTextColor: ColorsEnum.GREY_DARK,

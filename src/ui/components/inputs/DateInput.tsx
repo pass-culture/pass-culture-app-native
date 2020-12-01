@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import { TextInput } from 'react-native'
+import { NativeSyntheticEvent, TextInput, TextInputKeyPressEventData } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DatePartType, PartialDateInput } from './PartialDateInput'
@@ -35,6 +35,7 @@ export function isValidDate(year: number, month: number, day: number) {
 }
 
 export const DateInput: FunctionComponent<DateInputProps> = (props) => {
+  const dayInputRef = useRef<TextInput>(null)
   const monthInputRef = useRef<TextInput>(null)
   const yearInputRef = useRef<TextInput>(null)
 
@@ -78,11 +79,23 @@ export const DateInput: FunctionComponent<DateInputProps> = (props) => {
       yearInputRef?.current?.focus()
     }
   }, [month])
-  useEffect(() => {
-    if (yearValidator.hasRightLength(year)) {
-      yearInputRef?.current?.blur()
+
+  /** focus previous input after deleting all the content: only for month and year */
+  function handleBackSpace(
+    e: NativeSyntheticEvent<TextInputKeyPressEventData>,
+    identifier: DatePartType
+  ) {
+    if (e.nativeEvent.key !== 'Backspace') {
+      return
     }
-  }, [year])
+
+    if (identifier === DatePartType.MONTH && month.length <= 1) {
+      dayInputRef?.current?.focus()
+    }
+    if (identifier === DatePartType.YEAR && year.length <= 1) {
+      monthInputRef?.current?.focus()
+    }
+  }
 
   return (
     <Container>
@@ -91,6 +104,7 @@ export const DateInput: FunctionComponent<DateInputProps> = (props) => {
         isValid={isDayValid}
         onChangeValue={setDay}
         placeholder="JJ"
+        ref={dayInputRef}
       />
       <PartialDateInput
         identifier={DatePartType.MONTH}
@@ -98,13 +112,19 @@ export const DateInput: FunctionComponent<DateInputProps> = (props) => {
         onChangeValue={setMonth}
         placeholder="MM"
         ref={monthInputRef}
+        onKeyPress={(e: NativeSyntheticEvent<TextInputKeyPressEventData>) =>
+          handleBackSpace(e, DatePartType.MONTH)
+        }
       />
       <PartialDateInput
         identifier={DatePartType.YEAR}
         isValid={isYearValid}
         onChangeValue={setYear}
-        placeholder="YYYY"
+        placeholder="AAAA"
         ref={yearInputRef}
+        onKeyPress={(e: NativeSyntheticEvent<TextInputKeyPressEventData>) =>
+          handleBackSpace(e, DatePartType.YEAR)
+        }
       />
     </Container>
   )

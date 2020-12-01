@@ -23,7 +23,7 @@ describe('SetBirthday Page', () => {
 
     const day = getByPlaceholderText('JJ')
     const month = getByPlaceholderText('MM')
-    const year = getByPlaceholderText('YYYY')
+    const year = getByPlaceholderText('AAAA')
 
     fireEvent.changeText(day, '1')
     fireEvent.changeText(month, '1')
@@ -37,7 +37,7 @@ describe('SetBirthday Page', () => {
 
     const day = getByPlaceholderText('JJ')
     const month = getByPlaceholderText('MM')
-    const year = getByPlaceholderText('YYYY')
+    const year = getByPlaceholderText('AAAA')
 
     fireEvent.changeText(day, '29')
     fireEvent.changeText(month, '02')
@@ -53,7 +53,7 @@ describe('SetBirthday Page', () => {
 
     const day = getByPlaceholderText('JJ')
     const month = getByPlaceholderText('MM')
-    const year = getByPlaceholderText('YYYY')
+    const year = getByPlaceholderText('AAAA')
 
     fireEvent.changeText(day, '16')
     fireEvent.changeText(month, '01')
