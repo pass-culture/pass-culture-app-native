@@ -2,20 +2,17 @@ import { NavigationState } from '@react-navigation/native'
 
 import { analytics } from 'libs/analytics'
 
+type NavigationRouteType = Exclude<NavigationState['routes'][0]['state'], undefined>
 export function onNavigationStateChange(state: NavigationState | undefined): void {
   if (!state || !state.routes) {
     return
   }
-
-  const { routes } = state
-
-  const currentRoute = routes.length > 0 ? routes[routes.length - 1] : undefined
-
-  if (currentRoute) {
-    analytics.logScreenView({ screen_name: currentRoute.name })
-  }
+  const screenName = getScreenName(state)
+  analytics.logScreenView({ screen_name: screenName })
 }
 
-export const getScreenName = (state: NavigationState): string => {
-  return 'tmp'
+export const getScreenName = (state: NavigationRouteType): string => {
+  const route = state.routes[state.index ?? 0]
+  if (route?.state === undefined) return route.name
+  return getScreenName(route.state)
 }
