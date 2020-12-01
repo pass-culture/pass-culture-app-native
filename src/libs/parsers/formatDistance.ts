@@ -14,7 +14,7 @@ export const getHumanizeRelativeDistance = (
   if (!userLat || !userLng || !venueLat || !venueLng) return
 
   const distanceInMeters = computeDistanceInMeters(venueLat, venueLng, userLat, userLng)
-  return humanizeDistance(distanceInMeters)
+  return humanizeDistance(distanceInMeters).replace('.', ',')
 }
 
 export const computeDistanceInMeters = (latA: number, lngA: number, latB: number, lngB: number) => {
