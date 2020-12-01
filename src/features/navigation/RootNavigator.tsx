@@ -16,6 +16,7 @@ import { Login } from 'features/auth/login/Login'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
+import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -42,6 +43,7 @@ export type RootStackParamList = {
   ResetPasswordExpiredLink: { email: string }
   SetPassword: undefined
   SetBirthday: undefined
+  SignupConfirmationEmailSent: { email: string }
 }
 
 export const RootStack = createStackNavigator<RootStackParamList>()
@@ -73,6 +75,10 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
         <RootStack.Screen name="SetPassword" component={SetPassword} />
         <RootStack.Screen name="SetBirthday" component={SetBirthday} />
+        <RootStack.Screen
+          name="SignupConfirmationEmailSent"
+          component={SignupConfirmationEmailSent}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   )

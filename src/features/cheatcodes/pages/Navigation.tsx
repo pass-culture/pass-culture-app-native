@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Linking, ScrollView } from 'react-native'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
@@ -12,8 +11,6 @@ import { padding, Spacer } from 'ui/theme'
 import { CheatCodesButton } from '../components/CheatCodesButton'
 import { IdCheckButton } from '../components/IdCheckButton'
 
-const MdpDeeplink =
-  DEEPLINK_DOMAIN + 'mot-de-passe-perdu?token=etjkdfldkfsd&expiration_timestamp=4567894123450'
 const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 
 export function Navigation(): JSX.Element {
@@ -22,34 +19,29 @@ export function Navigation(): JSX.Element {
     <ScrollView>
       <Spacer.TopScreen />
       <StyledContainer>
-        <Spacer.Column numberOfSpaces={2} />
         <Row half>
           <CheatCodesButton />
         </Row>
-        <Spacer.Column numberOfSpaces={2} />
         <Row half>
           <IdCheckButton />
         </Row>
-        <Spacer.Column numberOfSpaces={2} />
         <Row half>
           <ButtonPrimary title={'Login'} onPress={() => navigation.navigate('Login')} />
         </Row>
-        <Spacer.Column numberOfSpaces={2} />
-        <Row half>
-          <ButtonPrimary
-            title={'Reset Mdp'}
-            onPress={() => {
-              if (Linking.canOpenURL(MdpDeeplink)) {
-                Linking.openURL(MdpDeeplink)
-              }
-            }}
-          />
-        </Row>
-        <Spacer.Column numberOfSpaces={2} />
         <Row half>
           <ButtonPrimary
             title={'Set Birthday'}
             onPress={() => navigation.navigate('SetBirthday')}
+          />
+        </Row>
+        <Row>
+          <ButtonPrimary
+            title={'Signup : email envoyé'}
+            onPress={() =>
+              navigation.navigate('SignupConfirmationEmailSent', {
+                email: 'jean.dupont@gmail.com',
+              })
+            }
           />
         </Row>
         <Row>
@@ -62,28 +54,9 @@ export function Navigation(): JSX.Element {
             }
           />
         </Row>
-        <Spacer.Column numberOfSpaces={2} />
         <Row>
           <ButtonPrimary
-            title={'Reset Mdp : lien expiré'}
-            onPress={() =>
-              navigation.navigate('ResetPasswordExpiredLink', {
-                email: 'jean.dupont@gmail.com',
-              })
-            }
-          />
-        </Row>
-        <Spacer.Column numberOfSpaces={2} />
-        <Row>
-          <Text>Simulation email deeplink :</Text>
-          <Link>
-            <Text>{MdpDeeplink}</Text>
-          </Link>
-        </Row>
-        <Spacer.Column numberOfSpaces={2} />
-        <Row>
-          <ButtonPrimary
-            title={'Mauvais lien de deeplink'}
+            title={'Mauvais deeplink unknown'}
             onPress={() => {
               if (Linking.canOpenURL(BadDeeplink)) {
                 Linking.openURL(BadDeeplink)
@@ -91,14 +64,9 @@ export function Navigation(): JSX.Element {
             }}
           />
         </Row>
-        <Spacer.Column numberOfSpaces={2} />
         <Row>
-          <Text>Simulation mauvais deeplink :</Text>
-          <Link>
-            <Text>{BadDeeplink}</Text>
-          </Link>
+          <CenteredText>{BadDeeplink}</CenteredText>
         </Row>
-        <Spacer.Column numberOfSpaces={5} />
         <Row>
           <ButtonPrimary
             title={'Choix du mdp (inscr.)'}
@@ -122,8 +90,8 @@ const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
   ...padding(2, 1),
 }))
 
-const Link = styled.TouchableOpacity({
+const CenteredText = styled.Text({
   width: '100%',
   textAlign: 'center',
-  fontSize: 11,
+  fontSize: 13,
 })
