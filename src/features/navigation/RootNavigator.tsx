@@ -6,7 +6,7 @@ import {
   Theme,
 } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
@@ -21,6 +21,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Offer } from 'features/offer'
+import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
 import { onNavigationStateChange } from './services'
@@ -49,6 +50,9 @@ export const navigationRef = React.createRef<NavigationContainerRef>()
 const theme = { colors: { background: ColorsEnum.WHITE } } as Theme
 
 export const RootNavigator: React.FC = () => {
+  useEffect(() => {
+    analytics.logScreenView({ screen_name: 'Home' })
+  }, [])
   return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
       <RootStack.Navigator
