@@ -1,8 +1,11 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { logConsultOffer } from 'libs/analytics'
 import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -22,18 +25,19 @@ interface OfferTileProps {
 }
 
 export const OfferTile = (props: OfferTileProps) => {
+  const navigation = useNavigation<UseNavigationType>()
   const { layout = 'one-item-medium', ...offer } = props
   const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
   const imageWidth = imageHeight * RATIO_ALGOLIA
 
-  const handlePressImage = (offerId?: string): void => {
-    // eslint-disable-next-line no-console
-    console.log(`Opening offer ${offerId}...`)
+  function handlePressOffer() {
+    navigation.navigate('Offer', { offerId: offer.offerId })
+    logConsultOffer(offer.offerId)
   }
 
   return (
     <Container>
-      <TouchableHighlight imageHeight={imageHeight} onPress={() => handlePressImage(offer.offerId)}>
+      <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer}>
         <View>
           <Image
             imageHeight={imageHeight}
@@ -62,9 +66,7 @@ export const OfferTile = (props: OfferTileProps) => {
 
 const rowHeight = PixelRatio.roundToNearestPixel(MARGIN_DP)
 
-const Container = styled.View({
-  flex: 1,
-})
+const Container = styled.View({ flex: 1 })
 
 const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(
   ({ imageHeight }) => ({
