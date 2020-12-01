@@ -18,7 +18,7 @@ export async function saveRefreshToken(refreshToken: string | undefined): Promis
 
 export async function clearRefreshToken(): Promise<void> {
   try {
-    await Keychain.setGenericPassword(REFRESH_TOKEN_KEY, '')
+    await Keychain.resetGenericPassword()
   } catch (error) {
     throw Error(_(t`Keychain non accessible`))
   }
