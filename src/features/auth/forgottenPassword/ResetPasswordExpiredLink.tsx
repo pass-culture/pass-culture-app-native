@@ -16,7 +16,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-import { contactSupport } from './support.services'
+import { contactSupport } from '../support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
