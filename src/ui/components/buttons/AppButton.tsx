@@ -14,6 +14,7 @@ export interface BaseButtonProps {
   icon?: FunctionComponent<IconInterface>
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
+  testIdSuffix?: string
 }
 
 export interface AppButtonProps extends BaseButtonProps {
@@ -49,7 +50,7 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
         <Fragment>
           {Icon && <Icon testID="button-icon" color={props.iconColor} size={props.iconSize} />}
           <Title
-            testID="button-title"
+            testID={`button-title-${props.testIdSuffix}`}
             textColor={props.textColor}
             textSize={props.textSize}
             numberOfLines={1}>

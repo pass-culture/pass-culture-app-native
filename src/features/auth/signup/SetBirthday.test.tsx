@@ -66,4 +66,14 @@ describe('SetBirthday Page', () => {
     expect(buttonContainer.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     expect(queryByText('La date choisie est incorrecte')).toBeFalsy()
   })
+  it('should display a information modal when clicking "Pourquoi" link', () => {
+    const { getByTestId } = render(<SetBirthday />)
+    const birthdayModal = getByTestId('modal-birthday-information')
+    expect(birthdayModal.props.visible).toBeFalsy()
+
+    const whyBirthdayLink = getByTestId('button-title-why-link')
+    fireEvent.press(whyBirthdayLink)
+
+    expect(birthdayModal.props.visible).toBeTruthy()
+  })
 })

@@ -243,7 +243,7 @@ export const AppComponents: FunctionComponent = () => {
           onLeftIconPress={hideBasicModal}
           rightIcon={Close}
           onRightIconPress={hideBasicModal}>
-          <Text>An simple content</Text>
+          <Text>A simple content</Text>
         </AppModal>
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4>Modal - Progressive</Typo.Title4>
