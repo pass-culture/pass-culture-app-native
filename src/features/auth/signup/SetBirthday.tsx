@@ -8,12 +8,16 @@ import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { DateInput } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
+import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { useModal } from 'ui/components/modals/useModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface State {
   date: string | null
@@ -28,6 +32,12 @@ export const SetBirthday: FunctionComponent = () => {
     isComplete: false,
   })
 
+  const {
+    visible: informationModalVisible,
+    showModal: showInformationModal,
+    hideModal: hideInformationModal,
+  } = useModal(false)
+
   const { goBack } = useNavigation<UseNavigationType>()
 
   function onChangeValue(value: string | null, isComplete: boolean) {
@@ -36,6 +46,10 @@ export const SetBirthday: FunctionComponent = () => {
       isComplete,
       hasError: isComplete && value === null,
     })
+  }
+
+  function onLinkClick() {
+    showInformationModal()
   }
 
   return (
@@ -47,6 +61,7 @@ export const SetBirthday: FunctionComponent = () => {
         rightIcon={Close}
       />
       <BottomCardContentContainer>
+        <ButtonTertiary title={_(t`Pourquoi ?`)} onPress={onLinkClick} testIdSuffix={'why-link'} />
         <DateInputContainer>
           <DateInput onChangeValue={onChangeValue} />
           <InputError
@@ -57,9 +72,28 @@ export const SetBirthday: FunctionComponent = () => {
         </DateInputContainer>
         <ButtonPrimary title={_(t`Continuer`)} disabled={!state.isComplete} />
       </BottomCardContentContainer>
+      <AppInformationModal
+        title="Pourquoi ?"
+        visible={informationModalVisible}
+        onCloseIconPress={hideInformationModal}
+        testIdSuffix="birthday-information">
+        <React.Fragment>
+          <BirthdayCake />
+          <Spacer.Column numberOfSpaces={2} />
+          <StyledBody>
+            {_(t`L’application pass Culture est accessible à tous.
+       Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 €
+        proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`)}
+          </StyledBody>
+        </React.Fragment>
+      </AppInformationModal>
     </BottomContentPage>
   )
 }
+
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
+})
 
 const DateInputContainer = styled.View({
   marginVertical: getSpacing(10),
