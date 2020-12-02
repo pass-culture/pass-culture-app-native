@@ -399,6 +399,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                           "fontFamily": "Montserrat-ExtraBoldItalic",
                           "fontSize": 28,
                           "lineHeight": 34,
+                          "marginHorizontal": 32,
                           "textAlign": "center",
                         },
                       ]
@@ -950,7 +951,7 @@ exports[`Home component should render modal correctly 1`] = `
 - First value
 + Second value
 
-@@ -476,11 +476,11 @@
+@@ -477,11 +477,11 @@
                   <Modal
                     animationType=\\"slide\\"
                     hardwareAccelerated={false}

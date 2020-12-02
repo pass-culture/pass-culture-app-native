@@ -120,6 +120,7 @@ export const HomeComponent: FunctionComponent = function () {
 
 const StyledTitle1 = styled(Typo.Title1)({
   textAlign: 'center',
+  marginHorizontal: getSpacing(8),
 })
 
 const CenterContainer = styled.View({
