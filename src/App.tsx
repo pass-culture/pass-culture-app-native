@@ -11,7 +11,7 @@ import './why-did-you-render'
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { useRequestGeolocPermission } from 'libs/geolocation'
+import { GeolocationWrapper, useRequestGeolocPermission } from 'libs/geolocation'
 import { i18n } from 'libs/i18n' //@translations
 import 'libs/sentry'
 import { useStartBatchNotification } from 'libs/notifications'
@@ -49,15 +49,17 @@ const AppComponent: FunctionComponent = function () {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthWrapper>
-        <I18nProvider language={i18n.language} i18n={i18n}>
-          <SafeAreaProvider>
-            <SnackBarProvider>
-              <RootNavigator />
-            </SnackBarProvider>
-          </SafeAreaProvider>
-        </I18nProvider>
-      </AuthWrapper>
+      <GeolocationWrapper>
+        <AuthWrapper>
+          <I18nProvider language={i18n.language} i18n={i18n}>
+            <SafeAreaProvider>
+              <SnackBarProvider>
+                <RootNavigator />
+              </SnackBarProvider>
+            </SafeAreaProvider>
+          </I18nProvider>
+        </AuthWrapper>
+      </GeolocationWrapper>
     </QueryClientProvider>
   )
 }
