@@ -4,7 +4,6 @@ import { Geoloc } from 'libs/algolia'
 
 const EARTH_RADIUS_KM = 6378.137
 
-// Most functions are taken from the code of the browser
 export const getHumanizeRelativeDistance = (
   userLat?: number,
   userLng?: number,
@@ -18,7 +17,6 @@ export const getHumanizeRelativeDistance = (
 }
 
 export const computeDistanceInMeters = (latA: number, lngA: number, latB: number, lngB: number) => {
-  // Some basic math
   const newLat = (latB * Math.PI) / 180 - (latA * Math.PI) / 180
   const newLng = (lngB * Math.PI) / 180 - (lngA * Math.PI) / 180
   const a =
