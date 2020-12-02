@@ -1,1 +1,1 @@
-export const useRequestGeolocPermission: () => void
+export const useRequestGeolocPermission: () => boolean

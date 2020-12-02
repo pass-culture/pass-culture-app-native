@@ -11,7 +11,7 @@ import './why-did-you-render'
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { GeolocationWrapper, useRequestGeolocPermission } from 'libs/geolocation'
+import { GeolocationWrapper } from 'libs/geolocation'
 import { i18n } from 'libs/i18n' //@translations
 import 'libs/sentry'
 import { useStartBatchNotification } from 'libs/notifications'
@@ -44,7 +44,6 @@ const queryClient = new QueryClient({
 
 const AppComponent: FunctionComponent = function () {
   useStartBatchNotification()
-  useRequestGeolocPermission()
   useHideSplashScreen()
 
   return (
