@@ -8,7 +8,14 @@ import { Offers } from '../contentful'
 
 import { useHomeAlgoliaModules } from './useHomeAlgoliaModules'
 
-const mockFetchAlgolia = jest.fn().mockResolvedValue({ hits: ['data'], nbHits: 10 })
+const mockFetchAlgolia = jest.fn().mockResolvedValue({
+  hits: [
+    { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },
+    { objectID: '2', offer: { thumbUrl: 'http://to-image-two' } },
+    { objectID: '3', offer: { thumbUrl: undefined } },
+  ],
+  nbHits: 10,
+})
 
 jest.mock('libs/algolia/fetchAlgolia', () => ({
   fetchAlgolia: (arg: FetchAlgoliaParameters) => mockFetchAlgolia(arg),
@@ -46,6 +53,13 @@ describe('useHomeAlgoliaModules', () => {
       await waitForNextUpdate()
     })
 
-    expect(result.current['algoliaModuleShown']).toEqual({ hits: ['data'], nbHits: 10 })
+    const { hits, nbHits } = result.current['algoliaModuleShown']
+    expect(nbHits).toEqual(10)
+    expect(hits).toEqual([
+      { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },
+      { objectID: '2', offer: { thumbUrl: 'http://to-image-two' } },
+    ])
+    // All offer have an image to be displayed on the homepage
+    expect(hits.find((hit) => !hit.offer.thumbUrl)).toBeUndefined()
   })
 })
