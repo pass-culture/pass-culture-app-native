@@ -49,7 +49,10 @@ export const useHomeAlgoliaModules = (
           if (isAlgoliaModule(data)) {
             setAlgoliaModules((prevAlgoliaModules) => ({
               ...prevAlgoliaModules,
-              [data.moduleId]: { hits: data.hits, nbHits: data.nbHits },
+              [data.moduleId]: {
+                hits: data.hits.filter((hit) => !!hit.offer.thumbUrl),
+                nbHits: data.nbHits,
+              },
             }))
           }
         },
