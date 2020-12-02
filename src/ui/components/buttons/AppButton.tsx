@@ -35,10 +35,14 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
   const Icon = props.icon
   const pressHandler = props.disabled || props.isLoading ? undefined : props.onPress
   const longPressHandler = props.disabled || props.isLoading ? undefined : props.onLongPress
+  const titleTestID = props.testIdSuffix ? `button-title-${props.testIdSuffix}` : 'button-title'
+  const containerTestID = props.testIdSuffix
+    ? `button-container-${props.testIdSuffix}`
+    : 'button-container'
 
   return (
     <Container
-      testID="button-container"
+      testID={containerTestID}
       backgroundColor={props.backgroundColor}
       borderColor={props.borderColor}
       onPress={pressHandler}
@@ -50,7 +54,7 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
         <Fragment>
           {Icon && <Icon testID="button-icon" color={props.iconColor} size={props.iconSize} />}
           <Title
-            testID={`button-title-${props.testIdSuffix}`}
+            testID={titleTestID}
             textColor={props.textColor}
             textSize={props.textSize}
             numberOfLines={1}>

@@ -43,6 +43,7 @@ const StyledTouchableWithoutFeedback = styled(View).attrs({
 })
 
 const StyledBottomCardContainer = styled.View({
+  zIndex: 40,
   position: 'absolute',
   bottom: 0,
   width: '100%',

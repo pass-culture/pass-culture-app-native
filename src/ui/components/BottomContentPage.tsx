@@ -41,6 +41,7 @@ export const BottomContentPage: FC = (props) => {
 const Container = styled(View).attrs({
   onPress: Keyboard.dismiss,
 })({
+  zIndex: 41,
   position: 'absolute',
   bottom: 0,
   width: '100%',

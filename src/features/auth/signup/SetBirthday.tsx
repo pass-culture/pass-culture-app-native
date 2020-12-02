@@ -48,30 +48,36 @@ export const SetBirthday: FunctionComponent = () => {
     })
   }
 
-  function onLinkClick() {
-    showInformationModal()
-  }
-
   return (
-    <BottomContentPage>
-      <ModalHeader
-        title={_(t`Ton anniversaire`)}
-        leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
-        rightIcon={Close}
-      />
-      <BottomCardContentContainer>
-        <ButtonTertiary title={_(t`Pourquoi ?`)} onPress={onLinkClick} testIdSuffix={'why-link'} />
-        <DateInputContainer>
-          <DateInput onChangeValue={onChangeValue} />
-          <InputError
-            visible={state.hasError}
-            messageId="La date choisie est incorrecte"
-            numberOfSpacesTop={5}
+    <React.Fragment>
+      <BottomContentPage>
+        <ModalHeader
+          title={_(t`Ton anniversaire`)}
+          leftIcon={ArrowPrevious}
+          onLeftIconPress={goBack}
+          rightIcon={Close}
+        />
+        <BottomCardContentContainer>
+          <ButtonTertiary
+            title={_(t`Pourquoi ?`)}
+            onPress={showInformationModal}
+            testIdSuffix={'why-link'}
           />
-        </DateInputContainer>
-        <ButtonPrimary title={_(t`Continuer`)} disabled={!state.isComplete} />
-      </BottomCardContentContainer>
+          <DateInputContainer>
+            <DateInput onChangeValue={onChangeValue} />
+            <InputError
+              visible={state.hasError}
+              messageId="La date choisie est incorrecte"
+              numberOfSpacesTop={5}
+            />
+          </DateInputContainer>
+          <ButtonPrimary
+            title={_(t`Continuer`)}
+            disabled={!state.isComplete}
+            testIdSuffix={'validate-birthday'}
+          />
+        </BottomCardContentContainer>
+      </BottomContentPage>
       <AppInformationModal
         title="Pourquoi ?"
         visible={informationModalVisible}
@@ -82,12 +88,12 @@ export const SetBirthday: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={2} />
           <StyledBody>
             {_(t`L’application pass Culture est accessible à tous.
-       Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 €
-        proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`)}
+         Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 €
+          proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`)}
           </StyledBody>
         </React.Fragment>
       </AppInformationModal>
-    </BottomContentPage>
+    </React.Fragment>
   )
 }
 

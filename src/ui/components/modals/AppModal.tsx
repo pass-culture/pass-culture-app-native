@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Animated, Easing, Modal, Platform, TouchableOpacity, ViewProps } from 'react-native'
+import React, { FunctionComponent } from 'react'
+import { Modal, TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
+import { ModalOverlay } from 'ui/components/modals/ModalOverlay'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
-import { UniqueColors } from 'ui/theme/colors'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -30,7 +30,7 @@ export const AppModal: FunctionComponent<Props> = ({
   const { bottom } = useSafeAreaInsets()
   return (
     <React.Fragment>
-      <OverlayComponent visible={visible} />
+      <ModalOverlay visible={visible} />
       <Modal animationType="slide" statusBarTranslucent transparent={true} visible={visible}>
         <ClicAwayArea activeOpacity={1} onPress={onRightIconPress}>
           <Container activeOpacity={1}>
@@ -55,44 +55,6 @@ const ClicAwayArea = styled(TouchableOpacity)({
   justifyContent: 'flex-end',
   height: '100%',
   width: '100%',
-})
-
-const OverlayComponent: FunctionComponent<ViewProps & { visible: boolean }> = (props) => {
-  const [opacity] = useState(new Animated.Value(0))
-  const [isDisplayed, setIsDisplayed] = useState(props.visible)
-
-  useEffect(() => {
-    if (props.visible) {
-      setIsDisplayed(true)
-      Animated.timing(opacity, {
-        duration: 300,
-        toValue: 1,
-        easing: Easing.linear,
-        useNativeDriver: Platform.OS == 'android',
-      }).start()
-    }
-
-    if (!props.visible) {
-      Animated.timing(opacity, {
-        duration: 300,
-        toValue: 0,
-        useNativeDriver: Platform.OS == 'android',
-      }).start(() => setIsDisplayed(false))
-    }
-  }, [props.visible])
-
-  return isDisplayed ? <AnimatedOverlay opacity={opacity} /> : null
-}
-
-const AnimatedOverlay = styled(Animated.View)<{ opacity: Animated.Value }>({
-  flex: 1,
-  position: 'absolute',
-  top: 0,
-  height: '100%',
-  width: '100%',
-  flexDirection: 'column',
-  justifyContent: 'flex-end',
-  backgroundColor: UniqueColors.GREY_OVERLAY,
 })
 
 const Container = styled(TouchableOpacity)({

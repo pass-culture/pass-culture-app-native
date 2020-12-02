@@ -29,7 +29,7 @@ describe('SetBirthday Page', () => {
     fireEvent.changeText(month, '1')
     fireEvent.changeText(year, '1')
 
-    const button = getByTestId('button-container')
+    const button = getByTestId('button-container-validate-birthday')
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
   })
   it('should display the error message when the date is not correct', () => {
@@ -62,18 +62,17 @@ describe('SetBirthday Page', () => {
     const continueButton = getByText('Continuer')
     fireEvent.press(continueButton)
 
-    const buttonContainer = getByTestId('button-container')
+    const buttonContainer = getByTestId('button-container-validate-birthday')
     expect(buttonContainer.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     expect(queryByText('La date choisie est incorrecte')).toBeFalsy()
   })
   it('should display a information modal when clicking "Pourquoi" link', () => {
     const { getByTestId } = render(<SetBirthday />)
-    const birthdayModal = getByTestId('modal-birthday-information')
-    expect(birthdayModal.props.visible).toBeFalsy()
 
     const whyBirthdayLink = getByTestId('button-title-why-link')
     fireEvent.press(whyBirthdayLink)
 
+    const birthdayModal = getByTestId('modal-birthday-information')
     expect(birthdayModal.props.visible).toBeTruthy()
   })
 })
