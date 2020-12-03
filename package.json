@@ -1,6 +1,6 @@
 {
   "name": "PassCulture",
-  "version": "1.111.2",
+  "version": "1.112.0",
   "build": "1000300",
   "private": true,
   "engines": {
