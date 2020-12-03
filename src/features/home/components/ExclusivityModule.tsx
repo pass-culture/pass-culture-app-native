@@ -18,7 +18,7 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
       <ImageContainer>
         <TouchableHighlight
           onPress={() => {
-            navigate('Offer', { offerId })
+            navigate('Offer', { id: offerId })
             logClickExclusivityBlock(offerId)
           }}>
           <Image

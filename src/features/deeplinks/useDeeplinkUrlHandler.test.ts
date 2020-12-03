@@ -32,6 +32,12 @@ describe('useDeeplinkUrlHandler', () => {
       expect(routeName).toEqual('my-route/test')
       expect(params).toEqual({})
     })
+
+    it("doesn't take into account the trailing slash", () => {
+      const { routeName, params } = decodeDeeplinkParts('passculture/offer/?id=ABCDE')
+      expect(routeName).toEqual('passculture/offer')
+      expect(params).toEqual({ id: 'ABCDE' })
+    })
   })
 
   describe('Navigation handler', () => {

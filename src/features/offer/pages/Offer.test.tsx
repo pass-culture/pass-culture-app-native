@@ -21,7 +21,7 @@ async function renderOfferPage() {
   const wrapper = render(
     <NavigationContainer>
       <RootStack.Navigator initialRouteName="Offer">
-        <RootStack.Screen name="Offer" component={Offer} initialParams={{ offerId: 'ABCDE' }} />
+        <RootStack.Screen name="Offer" component={Offer} initialParams={{ id: 'ABCDE' }} />
       </RootStack.Navigator>
     </NavigationContainer>
   )

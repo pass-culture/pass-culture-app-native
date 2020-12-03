@@ -22,7 +22,7 @@ export function decodeDeeplinkParts(url: string): DeeplinkParts {
       )
     : {}
 
-  return { routeName, params }
+  return { routeName: routeName.replace(/\/$/, ''), params }
 }
 
 const DEFAULT_ERROR_MESSAGE = _(t`Le lien est incorrect`)

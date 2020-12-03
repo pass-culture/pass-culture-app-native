@@ -13,7 +13,7 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => (
   <Container>
     <Spacer.Flex />
     <Typo.Hero>{_(t`Offer`)}</Typo.Hero>
-    <Typo.Caption testID="offerId">{route.params.offerId}</Typo.Caption>
+    <Typo.Caption testID="offerId">{route.params.id}</Typo.Caption>
     <Spacer.Flex />
   </Container>
 )
