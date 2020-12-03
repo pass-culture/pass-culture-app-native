@@ -79,4 +79,12 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
       expect(configureScreen.params).toBe(undefined)
     })
   })
+
+  describe('link offer', () => {
+    it('should return Offer page with offer id as params', () => {
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['offer']({ id: 'ABCDE' })
+      expect(configureScreen.screen).toBe('Offer')
+      expect(configureScreen.params).toEqual({ id: 'ABCDE' })
+    })
+  })
 })

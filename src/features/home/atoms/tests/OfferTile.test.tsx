@@ -30,7 +30,7 @@ describe('OfferTile component', () => {
   it('should navigate to the offer when clicking on the image', async () => {
     const { getByTestId } = render(<OfferTile {...props} />)
     fireEvent.press(getByTestId('offerTileImage'))
-    expect(navigate).toHaveBeenCalledWith('Offer', { offerId: 'AGHYQ' })
+    expect(navigate).toHaveBeenCalledWith('Offer', { id: 'AGHYQ' })
   })
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     const { getByTestId } = render(<OfferTile {...props} />)

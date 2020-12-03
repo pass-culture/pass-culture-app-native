@@ -24,7 +24,7 @@ describe('ExclusivityModule component', () => {
   it('should navigate to the offer when clicking on the image', () => {
     const { getByTestId } = render(<ExclusivityModule {...props} />)
     fireEvent.press(getByTestId('imageExclu'))
-    expect(navigate).toHaveBeenCalledWith('Offer', { offerId: 'AZBE' })
+    expect(navigate).toHaveBeenCalledWith('Offer', { id: 'AZBE' })
   })
   it('should log a click event when clicking on the image', () => {
     const { getByTestId } = render(<ExclusivityModule {...props} />)
