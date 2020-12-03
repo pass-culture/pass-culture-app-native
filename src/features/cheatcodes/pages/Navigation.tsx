@@ -32,7 +32,13 @@ export function Navigation(): JSX.Element {
         <Row half>
           <ButtonPrimary
             title={'Set Birthday'}
-            onPress={() => navigation.navigate('SetBirthday')}
+            onPress={() =>
+              navigation.navigate('SetBirthday', {
+                email: 'jonh.doe@exmaple.com',
+                isNewsletterChecked: false,
+                password: 'user@AZERTY123',
+              })
+            }
           />
         </Row>
         <Row>
@@ -67,7 +73,12 @@ export function Navigation(): JSX.Element {
         <Row>
           <ButtonPrimary
             title={'Choix du mdp (inscr.)'}
-            onPress={() => navigation.navigate('SetPassword')}
+            onPress={() =>
+              navigation.navigate('SetPassword', {
+                email: 'jonh.doe@exmaple.com',
+                isNewsletterChecked: false,
+              })
+            }
           />
         </Row>
       </StyledContainer>

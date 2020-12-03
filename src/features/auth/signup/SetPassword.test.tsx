@@ -3,10 +3,10 @@ import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { navigationTestProps } from 'tests/navigation'
 import { ColorsEnum } from 'ui/theme'
 
 describe('SetPassword Page', () => {
@@ -38,8 +38,12 @@ describe('SetPassword Page', () => {
     fireEvent.press(continueButton)
 
     await waitForExpect(() => {
-      expect(navigationTestProps.navigation.navigate).toBeCalledTimes(1)
-      expect(navigationTestProps.navigation.navigate).toHaveBeenCalledWith('SetBirthday')
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('SetBirthday', {
+        email: 'john.doe@example.com',
+        isNewsletterChecked: true,
+        password: 'user@AZERTY123',
+      })
     })
   })
 
@@ -51,14 +55,12 @@ describe('SetPassword Page', () => {
     expect(goBack).toBeCalledTimes(1)
   })
 
-  // TODO: PC-5430 gestion du storage de l'email & password
   // TODO: PC-4936 right icon click = abandon registration
 })
 
 function renderChoosePassword() {
-  return render(
-    <SetPassword
-      {...(navigationTestProps as StackScreenProps<RootStackParamList, 'SetPassword'>)}
-    />
-  )
+  const navigationProps = {
+    route: { params: { email: 'john.doe@example.com', isNewsletterChecked: true } },
+  } as StackScreenProps<RootStackParamList, 'SetPassword'>
+  return render(<SetPassword {...navigationProps} />)
 }
