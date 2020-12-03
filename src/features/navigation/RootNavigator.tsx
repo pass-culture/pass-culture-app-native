@@ -31,7 +31,12 @@ import { onNavigationStateChange } from './services'
 import { TabNavigator, TabParamList } from './TabBar/TabNavigator'
 
 export type RootStackParamList = {
-  AcceptCgu: undefined
+  AcceptCgu: {
+    email: string
+    isNewsletterChecked: boolean
+    password: string
+    birthday: string | null
+  }
   AppComponents: undefined
   CheatCodes: undefined
   ForgottenPassword: undefined
@@ -42,9 +47,9 @@ export type RootStackParamList = {
   ReinitializePassword: { token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
-  SetBirthday: undefined
+  SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: undefined
-  SetPassword: undefined
+  SetPassword: { email: string; isNewsletterChecked: boolean }
   SignupConfirmationEmailSent: { email: string }
   TabNavigator: undefined
 }

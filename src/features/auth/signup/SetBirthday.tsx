@@ -1,9 +1,10 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -25,7 +26,9 @@ interface State {
   isComplete: boolean
 }
 
-export const SetBirthday: FunctionComponent = () => {
+type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
+
+export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const [state, setState] = useState<State>({
     date: '',
     hasError: false,
@@ -39,6 +42,9 @@ export const SetBirthday: FunctionComponent = () => {
   } = useModal(false)
 
   const { goBack, navigate } = useNavigation<UseNavigationType>()
+  const email = route.params.email
+  const isNewsletterChecked = route.params.isNewsletterChecked
+  const password = route.params.password
 
   function onChangeValue(value: string | null, isComplete: boolean) {
     setState({
@@ -49,7 +55,12 @@ export const SetBirthday: FunctionComponent = () => {
   }
 
   function goToCguAcceptance() {
-    navigate('AcceptCgu')
+    navigate('AcceptCgu', {
+      email: email,
+      isNewsletterChecked: isNewsletterChecked,
+      password: password,
+      birthday: state.date,
+    })
   }
 
   return (

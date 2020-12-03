@@ -22,18 +22,18 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SetPassword'>
 
-export const SetPassword: FunctionComponent<Props> = ({ navigation }) => {
+export const SetPassword: FunctionComponent<Props> = ({ route }) => {
   const [password, setPassword] = useState('')
-  const { goBack } = useNavigation()
-
-  // TODO: PC-5430 gestion du storage de l'email (props ? navigation params ?) & transmission password
+  const { goBack, navigate } = useNavigation()
+  const email = route.params.email
+  const isNewsletterChecked = route.params.isNewsletterChecked
 
   function onClose() {
     Alert.alert('TODO: PC-4936 abandon registration')
   }
 
   function submitPassword() {
-    navigation.navigate('SetBirthday')
+    navigate('SetBirthday', { email, isNewsletterChecked, password })
   }
 
   return (

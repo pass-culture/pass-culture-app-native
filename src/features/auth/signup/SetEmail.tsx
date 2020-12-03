@@ -44,7 +44,7 @@ export const SetEmail: FunctionComponent = () => {
 
   async function validateEmail() {
     if (isEmailValid(email)) {
-      navigation.navigate('SetPassword')
+      navigation.navigate(`SetPassword`, { email, isNewsletterChecked })
     } else {
       setHasError(true)
     }

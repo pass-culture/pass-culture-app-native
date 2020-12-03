@@ -37,7 +37,7 @@ describe('<SetEmail />', () => {
   })
 
   describe('Email Validation', () => {
-    it('should redirect to SetPassword on valid email', () => {
+    it('should redirect to SetPassword on valid email with email and newsletter params', () => {
       const { getByText, getByPlaceholderText, queryByText } = renderPage()
 
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -46,7 +46,11 @@ describe('<SetEmail />', () => {
       const continueButton = getByText('Continuer')
       fireEvent.press(continueButton)
 
-      expect(navigate).toBeCalledWith('SetPassword')
+      expect(navigate).toBeCalledWith('SetPassword', {
+        email: 'john.doe@gmail.com',
+        isNewsletterChecked: false,
+      })
+
       expect(queryByText("Format de l'e-mail incorrect")).toBeFalsy()
     })
     it('should reject email', () => {
