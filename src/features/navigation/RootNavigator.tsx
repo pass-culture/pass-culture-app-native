@@ -31,7 +31,7 @@ import { TabNavigator, TabParamList } from './TabBar/TabNavigator'
 export type RootStackParamList = {
   TabNavigator: undefined
   Login: undefined
-  Offer: { offerId: string }
+  Offer: { id: string }
   ReinitializePassword: { token: string; expiration_timestamp: number }
   IdCheck: undefined
   AppComponents: undefined

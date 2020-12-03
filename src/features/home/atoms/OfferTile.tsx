@@ -31,7 +31,7 @@ export const OfferTile = (props: OfferTileProps) => {
   const imageWidth = imageHeight * RATIO_ALGOLIA
 
   function handlePressOffer() {
-    navigation.navigate('Offer', { offerId: offer.offerId })
+    navigation.navigate('Offer', { id: offer.offerId })
     logConsultOffer(offer.offerId)
   }
 

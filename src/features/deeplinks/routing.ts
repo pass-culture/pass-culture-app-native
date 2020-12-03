@@ -31,6 +31,9 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     }
     return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
   },
+  offer: function (params) {
+    return { screen: 'Offer', params: { id: params ? params.id : '' } }
+  },
   profil: function () {
     return { screen: 'Profile', params: undefined }
   },
