@@ -38,7 +38,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
   return (
     <BottomContentPage>
       <ModalHeader
-        title={_(t`Confirme ton e-mail`)}
+        title={_(t`Confirme ton e\u2011mail`)}
         leftIcon={ArrowPrevious}
         onLeftIconPress={onBackNavigation}
         rightIcon={Close}
