@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { _ } from 'libs/i18n'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
+import { handleDeeplinkAnalytics } from './analytics'
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
 import { isAllowedRouteTypeGuard } from './typeGuard'
 import { DeeplinkEvent, DeeplinkParts } from './types'
@@ -53,14 +54,15 @@ export function useDeeplinkUrlHandler() {
       }
 
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION[routeName]
-      const screenConfiguration = configureScreen(params)
+      const { screen, params: screenParams } = configureScreen(params)
 
-      if (!screenConfiguration.screen) {
+      if (!screen) {
         // this error is not displayed to the user but used to trigger the catch branch below
         throw new Error('Unknown screen')
       }
 
-      navigate(screenConfiguration.screen, screenConfiguration.params)
+      handleDeeplinkAnalytics(screen, screenParams)
+      navigate(screen, screenParams)
     } catch {
       onError(_(t`Le lien est incorrect: `) + event.url)
     }
