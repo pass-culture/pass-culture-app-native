@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
+import { PlacePointer } from 'ui/svg/icons/PlacePointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { OfferIconCaptions } from '../components/OfferIconCaptions'
@@ -25,6 +26,8 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
       </MarginContainer>
       <Spacer.Column numberOfSpaces={2} />
       <OfferIconCaptions algoliaHit={algoliaHit} />
+
+      <PlacePointer size={16} />
       <Spacer.Flex />
     </Container>
   )
