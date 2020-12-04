@@ -22,6 +22,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Offer } from 'features/offer'
+import { AlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
@@ -31,7 +32,7 @@ import { TabNavigator, TabParamList } from './TabBar/TabNavigator'
 export type RootStackParamList = {
   TabNavigator: undefined
   Login: undefined
-  Offer: { id: string }
+  Offer: { id: string; algoliaHit?: AlgoliaHit }
   ReinitializePassword: { token: string; expiration_timestamp: number }
   IdCheck: undefined
   AppComponents: undefined

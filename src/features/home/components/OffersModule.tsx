@@ -66,6 +66,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         thumbUrl={item.offer.thumbUrl}
         price={getDisplayPrice(item.offer.prices)}
         layout={display.layout}
+        algoliaHit={item}
       />
     ),
     [display.layout, position]

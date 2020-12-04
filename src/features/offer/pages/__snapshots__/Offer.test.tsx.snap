@@ -334,6 +334,18 @@ exports[`<Offer /> should match snapshot 1`] = `
                       >
                         ABCDE
                       </Text>
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "color": "#151515",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      />
                       <View
                         style={
                           Array [
