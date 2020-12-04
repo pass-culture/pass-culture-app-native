@@ -14,6 +14,7 @@ type Props = StackScreenProps<RootStackParamList, 'Offer'>
 
 export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
   const { id, algoliaHit } = route.params
+  const placeName = algoliaHit?.venue.publicName || algoliaHit?.venue.name
 
   return (
     <Container>
@@ -26,7 +27,18 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
       </MarginContainer>
       <Spacer.Column numberOfSpaces={2} />
       <OfferIconCaptions algoliaHit={algoliaHit} />
-      {algoliaHit?.offer.isDigital ? <React.Fragment /> : <PlacePointer size={16} />}
+
+      {algoliaHit?.offer.isDigital ? (
+        <React.Fragment />
+      ) : (
+        <PlaceContainer>
+          <StyledView>
+            <PlacePointer size={16} />
+            <StyledText numberOfLines={1}>{`${placeName}, `}</StyledText>
+          </StyledView>
+          <Typo.Caption numberOfLines={1}>{algoliaHit?.venue.city}</Typo.Caption>
+        </PlaceContainer>
+      )}
       <Spacer.Flex />
     </Container>
   )
@@ -39,4 +51,21 @@ const MarginContainer = styled.View({
   flex: 1,
   alignItems: 'center',
   marginHorizontal: getSpacing(6),
+})
+
+const PlaceContainer = styled.View({
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+  marginHorizontal: getSpacing(6),
+})
+
+const StyledText = styled(Typo.Caption)({
+  flexShrink: 1,
+})
+
+const StyledView = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
 })
