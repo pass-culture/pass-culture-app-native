@@ -16,6 +16,7 @@ const userProfileApiMock = jest.fn()
 const userProfileAPIResponse: UserProfileResponse = {
   email: 'email@domain.ext',
   first_name: 'Jean',
+  is_beneficiary: true,
 }
 server.use(
   rest.get(
