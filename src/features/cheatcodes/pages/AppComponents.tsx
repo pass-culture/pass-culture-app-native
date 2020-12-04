@@ -39,6 +39,8 @@ import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { ExternalLink } from '../../offer/components/ExternalLink'
+
 function onButtonPress() {
   Alert.alert('you pressed it')
 }
@@ -50,6 +52,7 @@ interface SectionsVisibility {
   icons: boolean
   inputs: boolean
   snackbars: boolean
+  components: boolean
 }
 
 type AllowedSection = keyof SectionsVisibility
@@ -68,6 +71,7 @@ export const AppComponents: FunctionComponent = () => {
     icons: false,
     inputs: false,
     snackbars: false,
+    components: false,
   })
 
   const toggleSectionVisibility = useCallback(
@@ -93,6 +97,9 @@ export const AppComponents: FunctionComponent = () => {
   }
   function toggleSnackbars() {
     toggleSectionVisibility('snackbars')
+  }
+  function toggleComponents() {
+    toggleSectionVisibility('components')
   }
 
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
@@ -389,7 +396,12 @@ export const AppComponents: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={5} />
 
       {/* Create your category */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY}>Your components</Typo.Title1>
+      <Typo.Title1 color={ColorsEnum.PRIMARY} onPress={toggleComponents}>
+        Your components
+      </Typo.Title1>
+      <Section visible={sectionsVisibility.components}>
+        <ExternalLink url="https://google.com" />
+      </Section>
       <Spacer.Column numberOfSpaces={5} />
       <Spacer.BottomScreen />
     </StyledScrollView>
