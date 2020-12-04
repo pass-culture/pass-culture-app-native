@@ -4,7 +4,11 @@ import React from 'react'
 
 import { RootStack } from 'features/navigation/RootNavigator'
 import { AlgoliaHit } from 'libs/algolia'
-import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import {
+  mockedAlgoliaResponse,
+  digitalAlgoliaOffer,
+  physicalAlgoliaOffer,
+} from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { flushAllPromises } from 'tests/utils'
 
 import { Offer } from './Offer'
@@ -13,10 +17,16 @@ jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigatio
 const defaultAlgoliaHit: AlgoliaHit = mockedAlgoliaResponse.hits[0]
 
 describe('<Offer />', () => {
-  it('should match snapshot', async () => {
-    const { toJSON, getByTestId } = await renderOfferPage()
+  it('should match snapshot for physical offer', async () => {
+    const { toJSON, getByTestId } = await renderOfferPage(physicalAlgoliaOffer)
     expect(toJSON()).toMatchSnapshot()
     expect(getByTestId('offerId').props.children).toBe('ABCDE')
+  })
+
+  it('should match snapshot for digital offer', async () => {
+    const { toJSON: toJSONDigital } = await renderOfferPage(digitalAlgoliaOffer)
+    const { toJSON: toJSONPhysical } = await renderOfferPage(physicalAlgoliaOffer)
+    expect(toJSONDigital()).toMatchDiffSnapshot(toJSONPhysical())
   })
 })
 
