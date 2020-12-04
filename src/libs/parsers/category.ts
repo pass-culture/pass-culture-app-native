@@ -1,5 +1,9 @@
+import { AlgoliaCategory } from 'libs/algolia'
+import { Category } from 'ui/svg/icons/categories'
+import { ColorsEnum } from 'ui/theme'
+
 // Map the facetFilter (in algolia) to the label displayed in the front
-const MAP_CATEGORY_TO_LABEL: { [k: string]: string } = {
+const MAP_CATEGORY_TO_LABEL: { [k in AlgoliaCategory]: string } = {
   CINEMA: 'Cinéma',
   VISITE: 'Visite, exposition',
   MUSIQUE: 'Musique',
@@ -13,7 +17,31 @@ const MAP_CATEGORY_TO_LABEL: { [k: string]: string } = {
   INSTRUMENT: 'Instrument',
 }
 
-export const parseCategory = (category: string | null, label?: string): string => {
+export const parseCategory = (category: AlgoliaCategory | null, label?: string): string => {
   if (category && category in MAP_CATEGORY_TO_LABEL) return MAP_CATEGORY_TO_LABEL[category]
   return label || ''
+}
+
+// Map the facetFilter (in algolia) to the category Icon
+export const MAP_CATEGORY_TO_ICON: {
+  [k in AlgoliaCategory]: React.ElementType<{ size: number; color: ColorsEnum }>
+} = {
+  CINEMA: Category.Cinéma,
+  VISITE: Category.Exposition,
+  MUSIQUE: Category.Musique,
+  SPECTACLE: Category.Spectacles,
+  LECON: Category.Atelier,
+  LIVRE: Category.Livres,
+  FILM: Category.Streaming,
+  PRESSE: Category.Presse,
+  JEUX_VIDEO: Category.JeuxVidéos,
+  CONFERENCE: Category.Conférence,
+  INSTRUMENT: Category.Instrument,
+}
+
+export const mapCategoryToIcon = (
+  category: AlgoliaCategory | null
+): React.ElementType<{ size: number; color: ColorsEnum }> => {
+  if (category && category in MAP_CATEGORY_TO_ICON) return MAP_CATEGORY_TO_ICON[category]
+  return Category.OeuvreDArt
 }

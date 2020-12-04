@@ -1,6 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { AlgoliaHit } from '../algolia'
+import { AlgoliaCategory } from '../algolia.d'
 
 /**
  * _highlightResult(s) are commented due to
@@ -15,7 +16,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         author: null,
-        category: 'MUSIQUE',
+        category: AlgoliaCategory.MUSIQUE,
         dateCreated: 1604358109.991316,
         dates: [],
         description:
@@ -91,7 +92,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         author: 'Catherine Mater',
-        category: 'MUSIQUE',
+        category: AlgoliaCategory.MUSIQUE,
         dateCreated: 1604358109.991316,
         dates: [],
         description:
@@ -161,7 +162,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         author: null,
-        category: 'MUSIQUE',
+        category: AlgoliaCategory.MUSIQUE,
         dateCreated: 1604358109.991255,
         dates: [1605643200.0],
         description: null,
@@ -220,7 +221,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         author: null,
-        category: 'MUSIQUE',
+        category: AlgoliaCategory.MUSIQUE,
         dateCreated: 1604358109.991316,
         dates: [],
         description:

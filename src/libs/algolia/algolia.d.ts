@@ -1,6 +1,20 @@
+export enum AlgoliaCategory {
+  CINEMA = 'CINEMA',
+  VISITE = 'VISITE',
+  MUSIQUE = 'MUSIQUE',
+  SPECTACLE = 'SPECTACLE',
+  LECON = 'LECON',
+  LIVRE = 'LIVRE',
+  FILM = 'FILM',
+  PRESSE = 'PRESSE',
+  JEUX_VIDEO = 'JEUX_VIDEO',
+  CONFERENCE = 'CONFERENCE',
+  INSTRUMENT = 'INSTRUMENT',
+}
+
 interface Offer {
   author?: string | null
-  category: string | null
+  category: AlgoliaCategory | null
   dateCreated?: number
   dates?: number[]
   description?: string | null
