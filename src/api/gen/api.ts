@@ -77,6 +77,42 @@ export class RequiredError extends Error {
 /**
  * 
  * @export
+ * @interface AccountRequest
+ */
+export interface AccountRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
+    birthdate: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
+    email: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof AccountRequest
+     */
+    hasAllowedRecommendations: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
+    password: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
+    token: string;
+}/**
+ * 
+ * @export
  * @interface PasswordResetRequestRequest
  */
 export interface PasswordResetRequestRequest {
@@ -153,23 +189,29 @@ export interface SigninResponse {
      */
     refresh_token: string;
 }/**
- *
+ * 
  * @export
  * @interface UserProfileResponse
  */
 export interface UserProfileResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof UserProfileResponse
      */
     email: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof UserProfileResponse
      */
     first_name?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserProfileResponse
+     */
+    is_beneficiary: boolean;
 }/**
  * 
  * @export
@@ -214,7 +256,32 @@ export interface ValidateEmailResponse {
 export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         *
+         * 
+         * @summary create_account <POST>
+         * @param {AccountRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async nativeV1AccountPost(body?: AccountRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/account`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary get_user_profile <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -365,7 +432,19 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
 export const DefaultApiFp = function(configuration?: Configuration) {
     return {
         /**
-         *
+         * 
+         * @summary create_account <POST>
+         * @param {AccountRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async nativeV1AccountPost(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1AccountPost(body, options);
+            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary get_user_profile <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -445,7 +524,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
  */
 export class DefaultApi extends BaseAPI {
     /**
-     *
+     * 
+     * @summary create_account <POST>
+     * @param {AccountRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async nativeV1AccountPost(body?: AccountRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this.configuration)
+        return functionalApi.nativeV1AccountPost(this.basePath, body, options)
+    }
+    /**
+     * 
      * @summary get_user_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
