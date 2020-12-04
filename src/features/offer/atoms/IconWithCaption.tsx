@@ -10,9 +10,13 @@ interface IconWithCaptionProps {
 
 export const IconWithCaption = ({ Icon, caption }: IconWithCaptionProps) => (
   <Container>
-    <Icon size={getSpacing(12)} color={ColorsEnum.GREY_DARK} />
-    <Typo.Caption>{caption}</Typo.Caption>
+    <IconContainer>
+      <Icon size={getSpacing(10)} color={ColorsEnum.GREY_DARK} />
+    </IconContainer>
+    <Caption>{caption}</Caption>
   </Container>
 )
 
 const Container = styled.View({ flex: 1, alignItems: 'center' })
+const IconContainer = styled.View({ padding: getSpacing(1) })
+const Caption = styled(Typo.Caption)({ textAlign: 'center' })
