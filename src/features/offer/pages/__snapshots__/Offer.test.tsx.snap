@@ -290,6 +290,7 @@ exports[`<Offer /> should match snapshot 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
+                            "paddingHorizontal": 24,
                           },
                         ]
                       }
@@ -335,6 +336,24 @@ exports[`<Offer /> should match snapshot 1`] = `
                         ABCDE
                       </Text>
                       <Text
+                        adjustsFontSizeToFit={true}
+                        numberOfLines={3}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#151515",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 20,
+                              "lineHeight": 24,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                        testID="offerTitle"
+                      >
+                        Mensch ! Où sont les Hommes ?
+                      </Text>
+                      <Text
                         style={
                           Array [
                             Object {
@@ -345,7 +364,9 @@ exports[`<Offer /> should match snapshot 1`] = `
                             },
                           ]
                         }
-                      />
+                      >
+                        MUSIQUE
+                      </Text>
                       <View
                         style={
                           Array [
