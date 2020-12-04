@@ -26,8 +26,7 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
       </MarginContainer>
       <Spacer.Column numberOfSpaces={2} />
       <OfferIconCaptions algoliaHit={algoliaHit} />
-
-      <PlacePointer size={16} />
+      {algoliaHit?.offer.isDigital ? <React.Fragment /> : <PlacePointer size={16} />}
       <Spacer.Flex />
     </Container>
   )

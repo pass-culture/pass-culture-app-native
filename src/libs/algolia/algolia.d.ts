@@ -50,9 +50,9 @@ interface Offerer {
 }
 
 interface Venue {
-  city?: string
-  departementCode?: string
-  name?: string
+  city?: string | null
+  departementCode?: string | null
+  name?: string | null
   publicName?: string | null
 }
 
