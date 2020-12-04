@@ -17,6 +17,7 @@ const props = {
   offerId: offer.id,
   price: '28 €',
   thumbUrl: offer.thumbUrl,
+  algoliaHit: mockedAlgoliaResponse.hits[0],
 }
 
 describe('OfferTile component', () => {
@@ -30,7 +31,7 @@ describe('OfferTile component', () => {
   it('should navigate to the offer when clicking on the image', async () => {
     const { getByTestId } = render(<OfferTile {...props} />)
     fireEvent.press(getByTestId('offerTileImage'))
-    expect(navigate).toHaveBeenCalledWith('Offer', { id: 'AGHYQ' })
+    expect(navigate).toHaveBeenCalledWith('Offer', { id: 'AGHYQ', algoliaHit: props.algoliaHit })
   })
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     const { getByTestId } = render(<OfferTile {...props} />)
