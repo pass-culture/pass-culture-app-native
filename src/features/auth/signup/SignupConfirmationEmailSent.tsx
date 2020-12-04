@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
-import { Alert } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
@@ -24,12 +23,7 @@ import { contactSupport } from '../support.services'
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
 export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  function onBackNavigation() {
-    // TODO(PC-4931)
-    Alert.alert("TO DO PC-4931 : redirection vers la page 'Accepter les CGUs'")
-  }
+  const { navigate, goBack } = useNavigation<UseNavigationType>()
 
   function onClose() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
@@ -40,7 +34,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
       <ModalHeader
         title={_(t`Confirme ton e\u2011mail`)}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={onBackNavigation}
+        onLeftIconPress={goBack}
         rightIcon={Close}
         onRightIconPress={onClose}
       />

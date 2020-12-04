@@ -24,6 +24,8 @@ export interface Environment {
   ALGOLIA_INDEX_NAME: string
   ENABLE_WHY_DID_YOU_RENDER: boolean
   SUPPORT_EMAIL_ADDRESS: string
+  CGU_LINK: string
+  PRIVACY_POLICY_LINK: string
 }
 
 export const env = parseBooleanVariables(Config) as Environment

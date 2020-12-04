@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { goBack } from '__mocks__/@react-navigation/native'
+import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
@@ -11,7 +11,7 @@ describe('SetBirthday Page', () => {
     const { toJSON } = render(<SetBirthday />)
     expect(toJSON()).toMatchSnapshot()
   })
-  it('should navigate to the previous when back navigation triggered', () => {
+  it('should navigate to the previous page on back navigation', () => {
     const { getByTestId } = render(<SetBirthday />)
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
@@ -65,6 +65,7 @@ describe('SetBirthday Page', () => {
     const buttonContainer = getByTestId('button-container-validate-birthday')
     expect(buttonContainer.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     expect(queryByText('La date choisie est incorrecte')).toBeFalsy()
+    expect(navigate).toBeCalledWith('AcceptCgu')
   })
   it('should display a information modal when clicking "Pourquoi" link', () => {
     const { getByTestId } = render(<SetBirthday />)

@@ -1,11 +1,11 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
-import { Alert, Linking } from 'react-native'
+import { Linking } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
-import { useNavigation } from '__mocks__/@react-navigation/native'
+import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
@@ -18,12 +18,11 @@ describe('<SignupConfirmationEmailSent />', () => {
     fireEvent.press(leftIconButton)
 
     await waitForExpect(() => {
-      expect(Alert.alert).toHaveBeenCalledTimes(1)
+      expect(goBack).toHaveBeenCalledTimes(1)
     })
   })
 
   it('should go to home page when clicking on right icon', async () => {
-    const { navigate } = useNavigation()
     const { findByTestId } = renderPage()
 
     const rightIconButton = await findByTestId('rightIconButton')

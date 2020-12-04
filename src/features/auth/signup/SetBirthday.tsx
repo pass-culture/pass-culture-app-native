@@ -38,7 +38,7 @@ export const SetBirthday: FunctionComponent = () => {
     hideModal: hideInformationModal,
   } = useModal(false)
 
-  const { goBack } = useNavigation<UseNavigationType>()
+  const { goBack, navigate } = useNavigation<UseNavigationType>()
 
   function onChangeValue(value: string | null, isComplete: boolean) {
     setState({
@@ -46,6 +46,10 @@ export const SetBirthday: FunctionComponent = () => {
       isComplete,
       hasError: isComplete && value === null,
     })
+  }
+
+  function goToCguAcceptance() {
+    navigate('AcceptCgu')
   }
 
   return (
@@ -75,6 +79,7 @@ export const SetBirthday: FunctionComponent = () => {
             title={_(t`Continuer`)}
             disabled={!state.isComplete}
             testIdSuffix={'validate-birthday'}
+            onPress={goToCguAcceptance}
           />
         </BottomCardContentContainer>
       </BottomContentPage>

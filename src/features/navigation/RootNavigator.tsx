@@ -13,6 +13,7 @@ import { ReinitializePassword } from 'features/auth/forgottenPassword/Reinitiali
 import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
 import { Login } from 'features/auth/login/Login'
+import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
@@ -30,21 +31,22 @@ import { onNavigationStateChange } from './services'
 import { TabNavigator, TabParamList } from './TabBar/TabNavigator'
 
 export type RootStackParamList = {
-  TabNavigator: undefined
+  AcceptCgu: undefined
+  AppComponents: undefined
+  CheatCodes: undefined
+  ForgottenPassword: undefined
   Login: undefined
+  IdCheck: undefined
+  Navigation: undefined
   Offer: { id: string; algoliaHit?: AlgoliaHit }
   ReinitializePassword: { token: string; expiration_timestamp: number }
-  IdCheck: undefined
-  AppComponents: undefined
-  Navigation: undefined
-  CheatCodes: undefined
-  SetEmail: undefined
   ResetPasswordEmailSent: { email: string }
-  ForgottenPassword: undefined
   ResetPasswordExpiredLink: { email: string }
-  SetPassword: undefined
   SetBirthday: undefined
+  SetEmail: undefined
+  SetPassword: undefined
   SignupConfirmationEmailSent: { email: string }
+  TabNavigator: undefined
 }
 
 export const RootStack = createStackNavigator<RootStackParamList>()
@@ -73,9 +75,10 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
         <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
         <RootStack.Screen name="SetEmail" component={SetEmail} />
-        <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
         <RootStack.Screen name="SetPassword" component={SetPassword} />
         <RootStack.Screen name="SetBirthday" component={SetBirthday} />
+        <RootStack.Screen name="AcceptCgu" component={AcceptCgu} />
+        <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
         <RootStack.Screen
           name="SignupConfirmationEmailSent"
           component={SignupConfirmationEmailSent}

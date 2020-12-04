@@ -12,6 +12,7 @@ import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { CtaText } from 'ui/components/buttons/CtaText'
 import { DateInput } from 'ui/components/inputs/DateInput'
 import { PartialDateInput, DatePartType } from 'ui/components/inputs/PartialDateInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
@@ -224,6 +225,17 @@ export const AppComponents: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
+
+        {/* Cta text */}
+        <Typo.Title4>Cta - Text</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <CtaText
+          title="Politique de confidentialité"
+          icon={ExternalSite}
+          color={ColorsEnum.PRIMARY}
+          iconSize={20}
+          onPress={onTriggerFakeLoading}
+        />
       </Section>
       <Spacer.Column numberOfSpaces={5} />
 
