@@ -7,6 +7,8 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { OfferCategory } from '../atoms/OfferCategory'
+
 type Props = StackScreenProps<RootStackParamList, 'Offer'>
 
 export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
@@ -20,8 +22,10 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
       <Title testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
         {algoliaHit?.offer.name}
       </Title>
-
-      <Typo.Caption>{algoliaHit?.offer.category}</Typo.Caption>
+      <OfferCategory
+        category={algoliaHit?.offer.category || null}
+        label={algoliaHit?.offer.label}
+      />
       <Spacer.Flex />
     </Container>
   )
