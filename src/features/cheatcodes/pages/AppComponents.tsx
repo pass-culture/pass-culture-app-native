@@ -4,6 +4,8 @@ import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { AlgoliaCategory } from 'libs/algolia'
+import { mapCategoryToIcon } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
@@ -249,6 +251,7 @@ export const AppComponents: FunctionComponent = () => {
       </Typo.Title1>
 
       <Section visible={sectionsVisibility.icons}>
+        <CategoryIcons />
         <AlignedText>
           <ArrowPrevious size={24} />
           <Text> - ArrowPrevious </Text>
@@ -421,3 +424,21 @@ function doNothingFn() {
 const Section = styled.View<{ visible: boolean }>(({ visible }) => ({
   display: visible ? 'flex' : 'none',
 }))
+
+const CategoryIcons = () => {
+  return (
+    <React.Fragment>
+      <Text>{'Categories'}</Text>
+      {[...Object.keys(AlgoliaCategory), null].map((category: string | null) => {
+        const Icon = mapCategoryToIcon(category as AlgoliaCategory | null)
+        return (
+          <AlignedText key={category || "OEUVRE D'ART"}>
+            <Icon size={24} color={ColorsEnum.GREY_DARK} />
+            <Text> - {category || "OEUVRE D'ART"} </Text>
+          </AlignedText>
+        )
+      })}
+      <Text>{'\n'}</Text>
+    </React.Fragment>
+  )
+}
