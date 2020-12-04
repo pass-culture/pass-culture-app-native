@@ -8,14 +8,13 @@ import { api } from 'api/api'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import { BottomCard } from 'ui/components/BottomCard'
+import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -59,51 +58,48 @@ export const ForgottenPassword: FunctionComponent = () => {
   }
 
   return (
-    <React.Fragment>
-      <Background />
-      <BottomCard>
-        <ModalHeader
-          title={_(t`Mot de passe oublié`)}
-          leftIcon={ArrowPrevious}
-          onLeftIconPress={onBackNavigation}
-          rightIcon={Close}
-          onRightIconPress={onClose}
-        />
-        <ModalContent>
-          <CenteredText>
-            <Typo.Body>
-              {_(
-                t`Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !`
-              )}
-            </Typo.Body>
-          </CenteredText>
-          <Spacer.Column numberOfSpaces={4} />
-          <StyledInput>
-            <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
-            <Spacer.Column numberOfSpaces={2} />
-            <TextInput
-              value={email}
-              onChangeText={onChangeEmail}
-              placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
-              keyboardType="email-address"
-              textContentType="emailAddress"
-              autoFocus={true}
-            />
-            <InputError
-              visible={hasError}
-              messageId="Format de l'e-mail incorrect"
-              numberOfSpacesTop={1}
-            />
-          </StyledInput>
-          <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary
-            title={_(t`Valider`)}
-            onPress={validateEmail}
-            disabled={shouldDisableValidateButton}
+    <BottomContentPage>
+      <ModalHeader
+        title={_(t`Mot de passe oublié`)}
+        leftIcon={ArrowPrevious}
+        onLeftIconPress={onBackNavigation}
+        rightIcon={Close}
+        onRightIconPress={onClose}
+      />
+      <ModalContent>
+        <CenteredText>
+          <Typo.Body>
+            {_(
+              t`Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !`
+            )}
+          </Typo.Body>
+        </CenteredText>
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledInput>
+          <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+          <TextInput
+            value={email}
+            onChangeText={onChangeEmail}
+            placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
+            keyboardType="email-address"
+            textContentType="emailAddress"
+            autoFocus={true}
           />
-        </ModalContent>
-      </BottomCard>
-    </React.Fragment>
+          <InputError
+            visible={hasError}
+            messageId="Format de l'e-mail incorrect"
+            numberOfSpacesTop={1}
+          />
+        </StyledInput>
+        <Spacer.Column numberOfSpaces={6} />
+        <ButtonPrimary
+          title={_(t`Valider`)}
+          onPress={validateEmail}
+          disabled={shouldDisableValidateButton}
+        />
+      </ModalContent>
+    </BottomContentPage>
   )
 }
 

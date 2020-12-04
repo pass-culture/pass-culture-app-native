@@ -5,12 +5,12 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard'
+import { BottomCardContentContainer } from 'ui/components/BottomCard'
+import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { DateInput } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { Background } from 'ui/svg/Background'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing } from 'ui/theme'
@@ -39,28 +39,25 @@ export const SetBirthday: FunctionComponent = () => {
   }
 
   return (
-    <React.Fragment>
-      <Background />
-      <BottomCard>
-        <ModalHeader
-          title={_(t`Ton anniversaire`)}
-          leftIcon={ArrowPrevious}
-          onLeftIconPress={goBack}
-          rightIcon={Close}
-        />
-        <BottomCardContentContainer>
-          <DateInputContainer>
-            <DateInput onChangeValue={onChangeValue} />
-            <InputError
-              visible={state.hasError}
-              messageId="La date choisie est incorrecte"
-              numberOfSpacesTop={5}
-            />
-          </DateInputContainer>
-          <ButtonPrimary title={_(t`Continuer`)} disabled={!state.isComplete} />
-        </BottomCardContentContainer>
-      </BottomCard>
-    </React.Fragment>
+    <BottomContentPage>
+      <ModalHeader
+        title={_(t`Ton anniversaire`)}
+        leftIcon={ArrowPrevious}
+        onLeftIconPress={goBack}
+        rightIcon={Close}
+      />
+      <BottomCardContentContainer>
+        <DateInputContainer>
+          <DateInput onChangeValue={onChangeValue} />
+          <InputError
+            visible={state.hasError}
+            messageId="La date choisie est incorrecte"
+            numberOfSpacesTop={5}
+          />
+        </DateInputContainer>
+        <ButtonPrimary title={_(t`Continuer`)} disabled={!state.isComplete} />
+      </BottomCardContentContainer>
+    </BottomContentPage>
   )
 }
 

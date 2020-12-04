@@ -62,7 +62,7 @@ export function useDeeplinkUrlHandler() {
 
       navigate(screenConfiguration.screen, screenConfiguration.params)
     } catch {
-      onError(_(t`Le lien est incorrect: `) + event.url)
+      onError(_(t`${DEFAULT_ERROR_MESSAGE}: `) + event.url)
     }
   }
 }

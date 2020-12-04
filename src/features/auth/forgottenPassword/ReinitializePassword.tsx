@@ -10,13 +10,13 @@ import {
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import { BottomCard, BottomCardContentContainer } from 'ui/components/BottomCard'
+import { BottomCardContentContainer } from 'ui/components/BottomCard'
+import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Background } from 'ui/svg/Background'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -65,55 +65,52 @@ export const ReinitializePassword = () => {
   }, [])
 
   return (
-    <React.Fragment>
-      <Background />
-      <BottomCard>
-        <ModalHeader
-          title={_(t`Ton mot de passe`)}
-          rightIcon={Close}
-          onRightIconPress={goToHomeWithoutModal}
-        />
-        <BottomCardContentContainer>
-          <Spacer.Column numberOfSpaces={6} />
-          <StyledInput>
-            <Typo.Body>{_(t`Nouveau mot de passe`)}</Typo.Body>
-            <Spacer.Column numberOfSpaces={2} />
-            <PasswordInput
-              value={password}
-              autoFocus
-              onChangeText={setPassword}
-              placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
-              isError={shouldShowPasswordError}
-            />
-          </StyledInput>
-          <PasswordSecurityRules password={password} />
-          <Spacer.Column numberOfSpaces={6} />
-          <StyledInput>
-            <Typo.Body>{_(t`Confirmer le mot de passe`)}</Typo.Body>
-            <Spacer.Column numberOfSpaces={2} />
-            <PasswordInput
-              value={confirmedPassword}
-              onChangeText={setConfirmedPassword}
-              placeholder={_(/*i18n: password placeholder */ t`Confirmer le mot de passe`)}
-              isError={shouldShowConfirmationError}
-            />
-          </StyledInput>
+    <BottomContentPage>
+      <ModalHeader
+        title={_(t`Ton mot de passe`)}
+        rightIcon={Close}
+        onRightIconPress={goToHomeWithoutModal}
+      />
+      <BottomCardContentContainer>
+        <Spacer.Column numberOfSpaces={6} />
+        <StyledInput>
+          <Typo.Body>{_(t`Nouveau mot de passe`)}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
-          <InputError
-            visible={displayNotMatchingError}
-            messageId="les mots de passe ne concordent pas"
-            numberOfSpacesTop={0}
+          <PasswordInput
+            value={password}
+            autoFocus
+            onChangeText={setPassword}
+            placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+            isError={shouldShowPasswordError}
           />
-          <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary
-            title={_(t`Continuer`)}
-            onPress={submitPassword}
-            disabled={!allowSubmission}
-            isLoading={isLoading}
+        </StyledInput>
+        <PasswordSecurityRules password={password} />
+        <Spacer.Column numberOfSpaces={6} />
+        <StyledInput>
+          <Typo.Body>{_(t`Confirmer le mot de passe`)}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+          <PasswordInput
+            value={confirmedPassword}
+            onChangeText={setConfirmedPassword}
+            placeholder={_(/*i18n: password placeholder */ t`Confirmer le mot de passe`)}
+            isError={shouldShowConfirmationError}
           />
-        </BottomCardContentContainer>
-      </BottomCard>
-    </React.Fragment>
+        </StyledInput>
+        <Spacer.Column numberOfSpaces={2} />
+        <InputError
+          visible={displayNotMatchingError}
+          messageId="les mots de passe ne concordent pas"
+          numberOfSpacesTop={0}
+        />
+        <Spacer.Column numberOfSpaces={6} />
+        <ButtonPrimary
+          title={_(t`Continuer`)}
+          onPress={submitPassword}
+          disabled={!allowSubmission}
+          isLoading={isLoading}
+        />
+      </BottomCardContentContainer>
+    </BottomContentPage>
   )
 }
 
