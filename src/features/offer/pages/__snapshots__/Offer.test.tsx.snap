@@ -5,7 +5,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 - First value
 + Second value
 
-@@ -344,23 +344,153 @@
+@@ -344,23 +344,143 @@
                                 },
                               ]
                             }
@@ -34,7 +34,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 +                               \\"flexWrap\\": \\"wrap\\",
 +                               \\"justifyContent\\": \\"center\\",
 +                               \\"marginHorizontal\\": 24,
-+                             },
+                              },
 +                           ]
 +                         }
 +                       >
@@ -71,7 +71,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 +                                   Object {
 +                                     \\"backgroundColor\\": \\"transparent\\",
 +                                     \\"borderWidth\\": 0,
-                                    },
++                                   },
 +                                   Object {
 +                                     \\"flex\\": 0,
 +                                     \\"height\\": 16,
@@ -103,16 +103,6 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 +                                     <RNSVGGroup>
 +                                       <RNSVGPath
 +                                         d=\\"M7.812 3l.164.005.118.002c.538.021 1.064.165 1.544.425l.12.068c1.393.894 1.949 2.648 1.315 4.19l-2.396 4.994c-.104.193-.307.316-.53.316-.242 0-.46-.144-.542-.34L4.97 7.833c-.942-2.12.41-4.622 2.679-4.828.109-.007.218-.007.327 0zM8 4.667c-.92 0-1.667.746-1.667 1.666C6.333 7.253 7.08 8 8 8s1.667-.746 1.667-1.667c0-.92-.747-1.666-1.667-1.666z\\"
-+                                         matrix={
-+                                           Array [
-+                                             1,
-+                                             0,
-+                                             0,
-+                                             1,
-+                                             0,
-+                                             0,
-+                                           ]
-+                                         }
                                         />
 +                                     </RNSVGGroup>
 +                                   </RNSVGGroup>
@@ -160,7 +150,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                           style={
                             Array [
                               Object {
-@@ -446,11 +576,11 @@
+@@ -446,11 +566,11 @@
                                       \\"fill\\",
                                     ]
                                   }
@@ -173,7 +163,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               </RNSVGSvgView>
                             </View>
                             <Text
-@@ -464,11 +594,11 @@
+@@ -464,11 +584,11 @@
                                     \\"textAlign\\": \\"center\\",
                                   },
                                 ]
@@ -186,7 +176,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                           <View
                             style={
                               Array [
-@@ -537,11 +667,11 @@
+@@ -537,11 +657,11 @@
                                       \\"fill\\",
                                     ]
                                   }
@@ -199,7 +189,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               </RNSVGSvgView>
                             </View>
                             <Text
-@@ -555,11 +685,11 @@
+@@ -555,11 +675,11 @@
                                     \\"textAlign\\": \\"center\\",
                                   },
                                 ]
@@ -212,7 +202,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                           <View
                             style={
                               Array [
-@@ -628,11 +758,11 @@
+@@ -628,11 +748,11 @@
                                       \\"fill\\",
                                     ]
                                   }
@@ -225,7 +215,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               </RNSVGSvgView>
                             </View>
                             <Text
-@@ -646,11 +776,11 @@
+@@ -646,11 +766,11 @@
                                     \\"textAlign\\": \\"center\\",
                                   },
                                 ]
@@ -680,16 +670,6 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                     <RNSVGGroup>
                                       <RNSVGPath
                                         d="M7.812 3l.164.005.118.002c.538.021 1.064.165 1.544.425l.12.068c1.393.894 1.949 2.648 1.315 4.19l-2.396 4.994c-.104.193-.307.316-.53.316-.242 0-.46-.144-.542-.34L4.97 7.833c-.942-2.12.41-4.622 2.679-4.828.109-.007.218-.007.327 0zM8 4.667c-.92 0-1.667.746-1.667 1.666C6.333 7.253 7.08 8 8 8s1.667-.746 1.667-1.667c0-.92-.747-1.666-1.667-1.666z"
-                                        matrix={
-                                          Array [
-                                            1,
-                                            0,
-                                            0,
-                                            1,
-                                            0,
-                                            0,
-                                          ]
-                                        }
                                       />
                                     </RNSVGGroup>
                                   </RNSVGGroup>
