@@ -1,12 +1,13 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useState } from 'react'
-import { Dimensions, PixelRatio, Linking } from 'react-native'
+import { Dimensions, PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { IdeaIcon } from 'features/home/assets/IdeaIcon'
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
+import { openExternalUrl } from 'features/navigation/helpers'
 import { logClickBusinessBlock } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -25,7 +26,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
   const openUrl = (finalUrl: string) => {
     setShouldRedirect(false)
     logClickBusinessBlock(title)
-    Linking.openURL(finalUrl)
+    openExternalUrl(finalUrl)
   }
 
   useEffect(() => {
