@@ -1,6 +1,6 @@
 import { AlgoliaCategory } from 'libs/algolia'
 import { Category } from 'ui/svg/icons/categories'
-import { ColorsEnum } from 'ui/theme'
+import { IconInterface } from 'ui/svg/icons/types'
 
 // Map the facetFilter (in algolia) to the label displayed in the front
 const MAP_CATEGORY_TO_LABEL: { [k in AlgoliaCategory]: string } = {
@@ -24,7 +24,7 @@ export const parseCategory = (category: AlgoliaCategory | null, label?: string):
 
 // Map the facetFilter (in algolia) to the category Icon
 export const MAP_CATEGORY_TO_ICON: {
-  [k in AlgoliaCategory]: React.ElementType<{ size: number; color: ColorsEnum }>
+  [k in AlgoliaCategory]: React.ElementType<IconInterface>
 } = {
   CINEMA: Category.Cinema,
   VISITE: Category.Exposition,
@@ -41,7 +41,7 @@ export const MAP_CATEGORY_TO_ICON: {
 
 export const mapCategoryToIcon = (
   category: AlgoliaCategory | null
-): React.ElementType<{ size: number; color: ColorsEnum }> => {
+): React.ElementType<IconInterface> => {
   if (category && category in MAP_CATEGORY_TO_ICON) return MAP_CATEGORY_TO_ICON[category]
   return Category.Artwork
 }

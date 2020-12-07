@@ -34,6 +34,9 @@ export const server = setupServer(
     }
   ),
   rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) =>
-    res(ctx.status(200), ctx.json({ email: 'email@domain.ext', first_name: 'Jean' }))
+    res(
+      ctx.status(200),
+      ctx.json({ email: 'email@domain.ext', first_name: 'Jean', is_beneficiary: true })
+    )
   )
 )

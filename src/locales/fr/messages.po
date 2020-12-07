@@ -40,7 +40,7 @@ msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
 #. Error message on Batch get installation ID
-#: src/features/cheatcodes/pages/CheatCodes.tsx:49
+#: src/features/cheatcodes/pages/CheatCodes.tsx:54
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
@@ -81,8 +81,8 @@ msgid "Composants"
 msgstr "Composants"
 
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:29
-msgid "Confirme ton e-mail"
-msgstr "Confirme ton e-mail"
+msgid "Confirme ton e\\u2011mail"
+msgstr "Confirme ton e\\u2011mail"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:62
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:64
@@ -148,7 +148,7 @@ msgstr "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes 
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
-#: src/features/deeplinks/useDeeplinkUrlHandler.ts:19
+#: src/features/deeplinks/useDeeplinkUrlHandler.ts:20
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
 
@@ -178,7 +178,7 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/pages/Offer.tsx:8
+#: src/features/offer/pages/Offer.tsx:10
 msgid "Offer"
 msgstr "Offer"
 
@@ -295,9 +295,13 @@ msgstr "tonadresse@email.com"
 msgid "{0}"
 msgstr "{0}"
 
-#: src/features/deeplinks/useDeeplinkUrlHandler.ts:49
+#: src/features/deeplinks/useDeeplinkUrlHandler.ts:51
 msgid "{DEFAULT_ERROR_MESSAGE}:"
 msgstr "{DEFAULT_ERROR_MESSAGE}:"
+
+#: src/features/offer/components/OfferIconCaptions.tsx:18
+msgid "À deux !"
+msgstr "À deux !"
 
 #: src/api/helpers.ts:37
 msgid "Échec de la requête {0}, code: {1}"
