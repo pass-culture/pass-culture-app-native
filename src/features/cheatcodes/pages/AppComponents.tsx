@@ -33,6 +33,7 @@ import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
+import { Digital } from 'ui/svg/icons/Digital'
 import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Eye } from 'ui/svg/icons/Eye'
@@ -338,6 +339,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <PlacePointer size={24} />
           <Text> - PlacePointer </Text>
+        </AlignedText>
+        <AlignedText>
+          <Digital size={24} />
+          <Text> - Digital </Text>
         </AlignedText>
       </Section>
       <Spacer.Column numberOfSpaces={5} />

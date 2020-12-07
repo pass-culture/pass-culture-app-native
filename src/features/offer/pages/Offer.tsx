@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { PlaceCaption } from 'features/offer/atoms/PlaceCaption'
 import { _ } from 'libs/i18n'
+import { Digital } from 'ui/svg/icons/Digital'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { OfferIconCaptions } from '../components/OfferIconCaptions'
@@ -27,7 +28,7 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
       </MarginContainer>
       <Spacer.Column numberOfSpaces={2} />
       {algoliaHit?.offer.isDigital ? (
-        <React.Fragment />
+        <Digital />
       ) : (
         <PlaceCaption placeName={placeName} city={algoliaHit?.venue.city} />
       )}
