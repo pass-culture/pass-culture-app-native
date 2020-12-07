@@ -10,15 +10,18 @@ import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
 import { LogoutButton } from 'features/cheatcodes/components/LogoutButton'
 import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { parseDescription } from 'features/offer/services/parseDescription'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
 
 type Props = {
   navigation: CheatCodesNavigationProp
 }
+
+const someOfferDescription = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. https://www.google.com/search?q=pass+culture&oq=pass+culture&aqs=chrome.0.0i433j0l2j69i60l3j69i65l2.1136j0j7&sourceid=chrome&ie=UTF-8 Amet justo donec enim diam vulputate.`
 
 export const CheatCodes: FunctionComponent<Props> = function () {
   const [batchInstallationId, setBatchInstallationId] = useState('none')
@@ -36,9 +39,11 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <Spacer.Flex />
       <Text>{batchInstallationId}</Text>
       <Spacer.Flex />
+      <Typo.Body>{someOfferDescription}</Typo.Body>
+      <Spacer.Flex />
+      <Typo.Body>{parseDescription(someOfferDescription)}</Typo.Body>
       <Spacer.Flex />
       {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
-
       <Spacer.BottomScreen />
     </Container>
   )
@@ -61,4 +66,5 @@ async function getBatchInstallationID() {
 const Container = styled.View({
   flex: 1,
   alignItems: 'center',
+  marginHorizontal: getSpacing(6),
 })

@@ -1,4 +1,7 @@
-import { customFindUrlChunks } from '../parseDescription'
+import React from 'react'
+
+import { ExternalLink } from '../../components/ExternalLink'
+import { customFindUrlChunks, parseDescription } from '../parseDescription'
 const description1 = `PRESSE / ILS EN PARLENT !
 « Drôle, intelligente, intéressante, intéressée, chaleureuse et humble » Libération
 « Irrésistible ! » Elle
@@ -33,5 +36,17 @@ describe('customFindUrlChunks', () => {
       searchWords: [],
     })
     expect(highlightedChunks2.length).toBe(5)
+  })
+})
+
+describe('parseDescription', () => {
+  it('transforms a description into an array of strings or <ExternalLink/>', () => {
+    const parsedDescription = parseDescription(description1)
+    expect(parsedDescription.length).toBe(2)
+    expect(parsedDescription[0]).toEqual(description1WithoutUrl)
+    expect(typeof parsedDescription[1]).toBe('object')
+    expect(JSON.stringify(parsedDescription[1])).toBe(
+      JSON.stringify(<ExternalLink key="external-link-1" url="https://fauxliencritique.com/" />)
+    )
   })
 })
