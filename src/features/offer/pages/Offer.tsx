@@ -34,9 +34,11 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
         <PlaceContainer>
           <StyledView>
             <PlacePointer size={16} />
-            <StyledText numberOfLines={1}>{`${placeName}, `}</StyledText>
+            {placeName && <StyledText numberOfLines={1}>{`${placeName}, `}</StyledText>}
           </StyledView>
-          <Typo.Caption numberOfLines={1}>{algoliaHit?.venue.city}</Typo.Caption>
+          {algoliaHit?.venue.city && (
+            <CityText numberOfLines={1}>{algoliaHit?.venue.city}</CityText>
+          )}
         </PlaceContainer>
       )}
       <Spacer.Flex />
@@ -63,7 +65,10 @@ const PlaceContainer = styled.View({
 
 const StyledText = styled(Typo.Caption)({
   flexShrink: 1,
+  textTransform: 'capitalize',
 })
+
+const CityText = styled(Typo.Caption)({ textTransform: 'capitalize' })
 
 const StyledView = styled.View({
   flexDirection: 'row',
