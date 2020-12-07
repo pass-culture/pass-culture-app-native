@@ -38,8 +38,8 @@ import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Logo } from 'ui/svg/icons/Logo'
-import { PlacePointer } from 'ui/svg/icons/PlacePointer'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Warning } from 'ui/svg/icons/Warning'
@@ -337,8 +337,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - SadFace </Text>
         </AlignedText>
         <AlignedText>
-          <PlacePointer size={24} />
-          <Text> - PlacePointer </Text>
+          <LocationPointer size={24} />
+          <Text> - LocationPointer </Text>
         </AlignedText>
         <AlignedText>
           <Digital size={24} />

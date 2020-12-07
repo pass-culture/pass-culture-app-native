@@ -472,7 +472,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               ]
                             }
                           >
-                            FRANCE TELEVISIONS,
+                            FRANCE TELEVISIONS, 
                           </Text>
                         </View>
                         <Text
