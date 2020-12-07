@@ -1,15 +1,15 @@
+import { Artwork } from './Artwork'
 import { Atelier } from './Atelier'
+import { Book } from './Book'
 import { Cinema } from './Cinema'
 import { Conference } from './Conference'
 import { Exposition } from './Exposition'
 import { Instrument } from './Instrument'
-import { VideoGames } from './VideoGames'
-import { Book } from './Book'
 import { Musique } from './Musique'
-import { Artwork } from './Artwork'
 import { Presse } from './Presse'
 import { Spectacles } from './Spectacles'
 import { Streaming } from './Streaming'
+import { VideoGames } from './VideoGames'
 
 export const Category = {
   Atelier: Atelier,
