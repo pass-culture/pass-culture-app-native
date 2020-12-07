@@ -5,13 +5,14 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export const ExternalSite: React.FunctionComponent<IconInterface> = ({
+export const ExternalSite: React.FunctionComponent<IconInterface & { inText?: boolean }> = ({
   size = 32,
   color = ColorsEnum.BLACK,
+  inText = false,
   testID,
 }) => (
   <Svg width={size} height={size} viewBox="0 0 32 32" testID={testID}>
-    <G fill="none" fillRule="evenodd">
+    <G fill="none" fillRule="evenodd" transform={inText ? 'translate(0 6)' : ''}>
       <G fill={color}>
         <G>
           <G>
