@@ -83,7 +83,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               </RNSVGSvgView>
                             </View>
                             <Text
-@@ -636,23 +636,143 @@
+@@ -636,23 +636,153 @@
                                     \\"textAlign\\": \\"center\\",
                                   },
                                 ]
@@ -99,7 +99,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               Array [
                                 Object {
                                   \\"width\\": 24,
-                                },
++                               },
 +                             ]
 +                           }
 +                         />
@@ -123,72 +123,82 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 +                               Object {
 +                                 \\"alignItems\\": \\"center\\",
 +                                 \\"flexDirection\\": \\"row\\",
-+                               },
+                                },
 +                             ]
 +                           }
 +                         >
-+                           <RNSVGSvgView
-+                             align=\\"xMidYMid\\"
-+                             bbHeight={16}
-+                             bbWidth={16}
-+                             focusable={false}
-+                             height={16}
-+                             meetOrSlice={0}
-+                             minX={0}
-+                             minY={0}
++                           <View
 +                             style={
 +                               Array [
 +                                 Object {
-+                                   \\"backgroundColor\\": \\"transparent\\",
-+                                   \\"borderWidth\\": 0,
-+                                 },
-+                                 Object {
-+                                   \\"flex\\": 0,
-+                                   \\"height\\": 16,
-+                                   \\"width\\": 16,
++                                   \\"marginRight\\": 4,
 +                                 },
 +                               ]
 +                             }
-+                             vbHeight={16}
-+                             vbWidth={16}
-+                             width={16}
 +                           >
-+                             <RNSVGGroup>
-+                               <RNSVGGroup
-+                                 fill={null}
-+                                 propList={
-+                                   Array [
-+                                     \\"fill\\",
-+                                   ]
-+                                 }
-+                               >
++                             <RNSVGSvgView
++                               align=\\"xMidYMid\\"
++                               bbHeight={16}
++                               bbWidth={16}
++                               focusable={false}
++                               height={16}
++                               meetOrSlice={0}
++                               minX={0}
++                               minY={0}
++                               style={
++                                 Array [
++                                   Object {
++                                     \\"backgroundColor\\": \\"transparent\\",
++                                     \\"borderWidth\\": 0,
++                                   },
++                                   Object {
++                                     \\"flex\\": 0,
++                                     \\"height\\": 16,
++                                     \\"width\\": 16,
++                                   },
++                                 ]
++                               }
++                               vbHeight={16}
++                               vbWidth={16}
++                               width={16}
++                             >
++                               <RNSVGGroup>
 +                                 <RNSVGGroup
-+                                   fill={4293591125}
++                                   fill={null}
 +                                   propList={
 +                                     Array [
 +                                       \\"fill\\",
-                                      ]
-                                    }
++                                     ]
++                                   }
 +                                 >
-+                                   <RNSVGGroup>
-+                                     <RNSVGPath
-+                                       d=\\"M7.812 3l.164.005.118.002c.538.021 1.064.165 1.544.425l.12.068c1.393.894 1.949 2.648 1.315 4.19l-2.396 4.994c-.104.193-.307.316-.53.316-.242 0-.46-.144-.542-.34L4.97 7.833c-.942-2.12.41-4.622 2.679-4.828.109-.007.218-.007.327 0zM8 4.667c-.92 0-1.667.746-1.667 1.666C6.333 7.253 7.08 8 8 8s1.667-.746 1.667-1.667c0-.92-.747-1.666-1.667-1.666z\\"
-+                                       matrix={
-+                                         Array [
-+                                           1,
-+                                           0,
-+                                           0,
-+                                           1,
-+                                           0,
-+                                           0,
-+                                         ]
-+                                       }
-                                      />
++                                   <RNSVGGroup
++                                     fill={4293591125}
++                                     propList={
++                                       Array [
++                                         \\"fill\\",
+                                        ]
+                                      }
++                                   >
++                                     <RNSVGGroup>
++                                       <RNSVGPath
++                                         d=\\"M7.812 3l.164.005.118.002c.538.021 1.064.165 1.544.425l.12.068c1.393.894 1.949 2.648 1.315 4.19l-2.396 4.994c-.104.193-.307.316-.53.316-.242 0-.46-.144-.542-.34L4.97 7.833c-.942-2.12.41-4.622 2.679-4.828.109-.007.218-.007.327 0zM8 4.667c-.92 0-1.667.746-1.667 1.666C6.333 7.253 7.08 8 8 8s1.667-.746 1.667-1.667c0-.92-.747-1.666-1.667-1.666z\\"
++                                         matrix={
++                                           Array [
++                                             1,
++                                             0,
++                                             0,
++                                             1,
++                                             0,
++                                             0,
++                                           ]
++                                         }
+                                        />
++                                     </RNSVGGroup>
 +                                   </RNSVGGroup>
 +                                 </RNSVGGroup>
 +                               </RNSVGGroup>
-+                             </RNSVGGroup>
-+                           </RNSVGSvgView>
++                             </RNSVGSvgView>
++                           </View>
 +                           <Text
 +                             numberOfLines={1}
 +                             style={
@@ -908,68 +918,78 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             ]
                           }
                         >
-                          <RNSVGSvgView
-                            align="xMidYMid"
-                            bbHeight={16}
-                            bbWidth={16}
-                            focusable={false}
-                            height={16}
-                            meetOrSlice={0}
-                            minX={0}
-                            minY={0}
+                          <View
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "transparent",
-                                  "borderWidth": 0,
-                                },
-                                Object {
-                                  "flex": 0,
-                                  "height": 16,
-                                  "width": 16,
+                                  "marginRight": 4,
                                 },
                               ]
                             }
-                            vbHeight={16}
-                            vbWidth={16}
-                            width={16}
                           >
-                            <RNSVGGroup>
-                              <RNSVGGroup
-                                fill={null}
-                                propList={
-                                  Array [
-                                    "fill",
-                                  ]
-                                }
-                              >
+                            <RNSVGSvgView
+                              align="xMidYMid"
+                              bbHeight={16}
+                              bbWidth={16}
+                              focusable={false}
+                              height={16}
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                Array [
+                                  Object {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  Object {
+                                    "flex": 0,
+                                    "height": 16,
+                                    "width": 16,
+                                  },
+                                ]
+                              }
+                              vbHeight={16}
+                              vbWidth={16}
+                              width={16}
+                            >
+                              <RNSVGGroup>
                                 <RNSVGGroup
-                                  fill={4293591125}
+                                  fill={null}
                                   propList={
                                     Array [
                                       "fill",
                                     ]
                                   }
                                 >
-                                  <RNSVGGroup>
-                                    <RNSVGPath
-                                      d="M7.812 3l.164.005.118.002c.538.021 1.064.165 1.544.425l.12.068c1.393.894 1.949 2.648 1.315 4.19l-2.396 4.994c-.104.193-.307.316-.53.316-.242 0-.46-.144-.542-.34L4.97 7.833c-.942-2.12.41-4.622 2.679-4.828.109-.007.218-.007.327 0zM8 4.667c-.92 0-1.667.746-1.667 1.666C6.333 7.253 7.08 8 8 8s1.667-.746 1.667-1.667c0-.92-.747-1.666-1.667-1.666z"
-                                      matrix={
-                                        Array [
-                                          1,
-                                          0,
-                                          0,
-                                          1,
-                                          0,
-                                          0,
-                                        ]
-                                      }
-                                    />
+                                  <RNSVGGroup
+                                    fill={4293591125}
+                                    propList={
+                                      Array [
+                                        "fill",
+                                      ]
+                                    }
+                                  >
+                                    <RNSVGGroup>
+                                      <RNSVGPath
+                                        d="M7.812 3l.164.005.118.002c.538.021 1.064.165 1.544.425l.12.068c1.393.894 1.949 2.648 1.315 4.19l-2.396 4.994c-.104.193-.307.316-.53.316-.242 0-.46-.144-.542-.34L4.97 7.833c-.942-2.12.41-4.622 2.679-4.828.109-.007.218-.007.327 0zM8 4.667c-.92 0-1.667.746-1.667 1.666C6.333 7.253 7.08 8 8 8s1.667-.746 1.667-1.667c0-.92-.747-1.666-1.667-1.666z"
+                                        matrix={
+                                          Array [
+                                            1,
+                                            0,
+                                            0,
+                                            1,
+                                            0,
+                                            0,
+                                          ]
+                                        }
+                                      />
+                                    </RNSVGGroup>
                                   </RNSVGGroup>
                                 </RNSVGGroup>
                               </RNSVGGroup>
-                            </RNSVGGroup>
-                          </RNSVGSvgView>
+                            </RNSVGSvgView>
+                          </View>
                           <Text
                             numberOfLines={1}
                             style={

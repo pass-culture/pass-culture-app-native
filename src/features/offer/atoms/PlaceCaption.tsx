@@ -13,7 +13,10 @@ export const PlaceCaption: FunctionComponent<Props> = ({ placeName, city }: Prop
   return (
     <PlaceContainer>
       <StyledView>
-        <PlacePointer size={16} />
+        <IconContainer>
+          <PlacePointer size={16} />
+        </IconContainer>
+
         {placeName && <StyledText numberOfLines={1}>{`${placeName}, `}</StyledText>}
       </StyledView>
       {city && <CityText numberOfLines={1}>{city}</CityText>}
@@ -27,6 +30,10 @@ const PlaceContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
   marginHorizontal: getSpacing(6),
+})
+
+const IconContainer = styled.View({
+  marginRight: getSpacing(1),
 })
 
 const StyledText = styled(Typo.Caption)({
