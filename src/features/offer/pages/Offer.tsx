@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { PlaceCaption } from 'features/offer/atoms/PlaceCaption'
 import { _ } from 'libs/i18n'
-import { Digital } from 'ui/svg/icons/Digital'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { OfferIconCaptions } from '../components/OfferIconCaptions'
@@ -16,6 +15,7 @@ type Props = StackScreenProps<RootStackParamList, 'Offer'>
 export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
   const { id, algoliaHit } = route.params
   const placeName = algoliaHit?.venue.publicName || algoliaHit?.venue.name
+  const digitalPlaceName = algoliaHit?.offerer.name
 
   return (
     <Container>
@@ -28,7 +28,7 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
       </MarginContainer>
       <Spacer.Column numberOfSpaces={2} />
       {algoliaHit?.offer.isDigital ? (
-        <Digital />
+        <PlaceCaption placeName={digitalPlaceName} where={_(t`en ligne`)} isDigital />
       ) : (
         <PlaceCaption placeName={placeName} where={algoliaHit?.venue.city} isDigital={false} />
       )}

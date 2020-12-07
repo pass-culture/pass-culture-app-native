@@ -66,8 +66,12 @@ msgstr "Bonjour {0}"
 msgid "Bookings"
 msgstr "Réservations"
 
+#: src/features/auth/signup/AcceptCgu.tsx:24
+msgid "CGU & Données"
+msgstr "CGU & Données"
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:30
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:27
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
@@ -80,7 +84,11 @@ msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:29
+#: src/features/auth/signup/AcceptCgu.tsx:29
+msgid "Conditions Générales d'Utilisation"
+msgstr "Conditions Générales d'Utilisation"
+
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:24
 msgid "Confirme ton e\\u2011mail"
 msgstr "Confirme ton e\\u2011mail"
 
@@ -94,18 +102,20 @@ msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:43
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:47
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:42
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:40
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:51
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:44
+#: src/features/auth/signup/AcceptCgu.tsx:40
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:39
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:69
-#: src/features/auth/signup/SetBirthday.tsx:36
+#: src/features/auth/signup/AcceptCgu.tsx:42
+#: src/features/auth/signup/SetBirthday.tsx:46
 #: src/features/auth/signup/SetEmail.tsx:72
 #: src/features/auth/signup/SetPassword.tsx:37
 msgid "Continuer"
@@ -119,6 +129,10 @@ msgstr "Duo"
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:27
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
+
+#: src/features/auth/signup/AcceptCgu.tsx:28
+msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
+msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
 #: src/features/home/atoms/SeeMore.tsx:21
 msgid "En voir plus"
@@ -140,7 +154,7 @@ msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:37
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
 msgid "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
 
@@ -155,6 +169,10 @@ msgstr "Le lien est incorrect"
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:21
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
+
+#: src/features/auth/signup/SetBirthday.tsx:54
+msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/auth/login/Login.tsx:73
 #: src/features/auth/signup/SetPassword.tsx:31
@@ -178,7 +196,7 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/pages/Offer.tsx:10
+#: src/features/offer/pages/Offer.tsx:13
 msgid "Offer"
 msgstr "Offer"
 
@@ -190,11 +208,23 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
+#: src/features/auth/signup/AcceptCgu.tsx:32
+msgid "Politique de confidentialité."
+msgstr "Politique de confidentialité."
+
+#: src/features/auth/signup/AcceptCgu.tsx:37
+msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
+msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
+
+#: src/features/auth/signup/SetBirthday.tsx:41
+msgid "Pourquoi ?"
+msgstr "Pourquoi ?"
+
 #: src/features/profile/pages/Profile.tsx:12
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/home/components/BusinessModule.tsx:36
+#: src/features/home/components/BusinessModule.tsx:37
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
@@ -235,7 +265,7 @@ msgstr "Se connecter"
 msgid "Search"
 msgstr "Recherche"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:36
 msgid "Si l'e-mail n'arrive pas ou si le lien est expiré :"
 msgstr "Si l'e-mail n'arrive pas ou si le lien est expiré :"
 
@@ -247,7 +277,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 msgstr "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 
-#: src/features/auth/signup/SetBirthday.tsx:30
+#: src/features/auth/signup/SetBirthday.tsx:39
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
@@ -283,6 +313,14 @@ msgstr "Valider"
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
+
+#: src/features/auth/signup/AcceptCgu.tsx:31
+msgid "ainsi que notre"
+msgstr "ainsi que notre"
+
+#: src/features/offer/pages/Offer.tsx:21
+msgid "en ligne"
+msgstr "en ligne"
 
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:74

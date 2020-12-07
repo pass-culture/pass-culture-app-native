@@ -11,19 +11,21 @@ type Props = {
   isDigital: boolean
 }
 
-export const PlaceCaption: FunctionComponent<Props> = ({ placeName, where, isDigital }: Props) => {
-  return (
-    <PlaceContainer>
-      <StyledView>
-        <IconContainer>
-          {isDigital ? <Digital size={16} /> : <PlacePointer size={16} />}
-        </IconContainer>
-        {placeName && <StyledText numberOfLines={1}>{`${placeName}, `}</StyledText>}
-      </StyledView>
-      {where && <CityText numberOfLines={1}>{where}</CityText>}
-    </PlaceContainer>
-  )
-}
+export const PlaceCaption: FunctionComponent<Props> = ({ placeName, where, isDigital }: Props) => (
+  <PlaceContainer>
+    <StyledView>
+      <IconContainer>
+        {isDigital ? <Digital size={16} /> : <PlacePointer size={16} />}
+      </IconContainer>
+      {placeName && <StyledText numberOfLines={1}>{`${placeName}, `}</StyledText>}
+    </StyledView>
+    {where && (
+      <WhereText numberOfLines={1} isDigital={isDigital}>
+        {where}
+      </WhereText>
+    )}
+  </PlaceContainer>
+)
 
 const PlaceContainer = styled.View({
   justifyContent: 'center',
@@ -42,7 +44,9 @@ const StyledText = styled(Typo.Caption)({
   textTransform: 'capitalize',
 })
 
-const CityText = styled(Typo.Caption)({ textTransform: 'capitalize' })
+const WhereText = styled(Typo.Caption)<{ isDigital: boolean }>(({ isDigital }) => ({
+  textTransform: isDigital ? 'none' : 'capitalize',
+}))
 
 const StyledView = styled.View({
   flexDirection: 'row',
