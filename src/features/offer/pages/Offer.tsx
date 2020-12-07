@@ -26,13 +26,13 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
         </Title>
       </MarginContainer>
       <Spacer.Column numberOfSpaces={2} />
-      <OfferIconCaptions algoliaHit={algoliaHit} />
-
       {algoliaHit?.offer.isDigital ? (
         <React.Fragment />
       ) : (
         <PlaceCaption placeName={placeName} city={algoliaHit?.venue.city} />
       )}
+      <Spacer.Column numberOfSpaces={2} />
+      <OfferIconCaptions algoliaHit={algoliaHit} />
       <Spacer.Flex />
     </Container>
   )
