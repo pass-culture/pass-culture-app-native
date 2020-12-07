@@ -1,33 +1,37 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 
 import { Digital } from 'ui/svg/icons/Digital'
-import { PlacePointer } from 'ui/svg/icons/PlacePointer'
 import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
-  placeName?: string | null
+  locationName?: string | null
   where?: string | null
   isDigital: boolean
 }
 
-export const PlaceCaption: FunctionComponent<Props> = ({ placeName, where, isDigital }: Props) => (
-  <PlaceContainer>
+export const LocationCaption: FunctionComponent<Props> = ({
+  locationName,
+  where,
+  isDigital,
+}: Props) => (
+  <LocationContainer>
     <StyledView>
       <IconContainer>
-        {isDigital ? <Digital size={16} /> : <PlacePointer size={16} />}
+        {isDigital ? <Digital size={16} /> : <LocationPointer size={16} />}
       </IconContainer>
-      {placeName && <StyledText numberOfLines={1}>{`${placeName}, `}</StyledText>}
+      {locationName && <StyledText numberOfLines={1}>{`${locationName}, `}</StyledText>}
     </StyledView>
     {where && (
       <WhereText numberOfLines={1} isDigital={isDigital}>
         {where}
       </WhereText>
     )}
-  </PlaceContainer>
+  </LocationContainer>
 )
 
-const PlaceContainer = styled.View({
+const LocationContainer = styled.View({
   justifyContent: 'center',
   alignItems: 'center',
   flexWrap: 'wrap',
