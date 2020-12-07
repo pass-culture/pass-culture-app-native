@@ -4,8 +4,8 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { PlaceCaption } from 'features/offer/atoms/PlaceCaption'
 import { _ } from 'libs/i18n'
-import { PlacePointer } from 'ui/svg/icons/PlacePointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { OfferIconCaptions } from '../components/OfferIconCaptions'
@@ -31,15 +31,7 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
       {algoliaHit?.offer.isDigital ? (
         <React.Fragment />
       ) : (
-        <PlaceContainer>
-          <StyledView>
-            <PlacePointer size={16} />
-            {placeName && <StyledText numberOfLines={1}>{`${placeName}, `}</StyledText>}
-          </StyledView>
-          {algoliaHit?.venue.city && (
-            <CityText numberOfLines={1}>{algoliaHit?.venue.city}</CityText>
-          )}
-        </PlaceContainer>
+        <PlaceCaption placeName={placeName} city={algoliaHit?.venue.city} />
       )}
       <Spacer.Flex />
     </Container>
@@ -53,24 +45,4 @@ const MarginContainer = styled.View({
   flex: 1,
   alignItems: 'center',
   marginHorizontal: getSpacing(6),
-})
-
-const PlaceContainer = styled.View({
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexWrap: 'wrap',
-  flexDirection: 'row',
-  marginHorizontal: getSpacing(6),
-})
-
-const StyledText = styled(Typo.Caption)({
-  flexShrink: 1,
-  textTransform: 'capitalize',
-})
-
-const CityText = styled(Typo.Caption)({ textTransform: 'capitalize' })
-
-const StyledView = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
 })
