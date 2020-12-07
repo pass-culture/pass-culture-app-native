@@ -1,13 +1,7 @@
 import React from 'react'
 
 import { ExternalLink } from '../../../features/offer/components/ExternalLink'
-import { customFindUrlChunks, parseDescription } from '../parseDescription'
-const description1 = `PRESSE / ILS EN PARLENT !
-« Drôle, intelligente, intéressante, intéressée, chaleureuse et humble » Libération
-« Irrésistible ! » Elle
-« Intelligent et revigorant » Le Parisien
-« Hilarant » Vanity Fair 
-Voir plus de critiques en suivant le lien suivant : https://fauxliencritique.com/`
+import { customFindUrlChunks, highlightLinks } from '../highlightLinks'
 
 const description1WithoutUrl = `PRESSE / ILS EN PARLENT !
 « Drôle, intelligente, intéressante, intéressée, chaleureuse et humble » Libération
@@ -16,12 +10,15 @@ const description1WithoutUrl = `PRESSE / ILS EN PARLENT !
 « Hilarant » Vanity Fair 
 Voir plus de critiques en suivant le lien suivant : `
 
+const description1 = description1WithoutUrl + 'https://fauxliencritique.com/'
+
 const description2 = `https://www.google.com/ Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 https://www.google.com/ Lorem ipsum dolor sit amet, consectetur http://another-wronglyplacedurl.extension_is_6_car_max elit. 
 http://www.google.com/ Lorem ipsum dolor sit amet, consecteturhttps://wrongly-placed.urladipiscing elit. 
 some text here as well http://www.google.com/?key=valeu&key2=value2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 
 https://www.google.com/`
+
 describe('customFindUrlChunks', () => {
   it('finds url chunks and mark them as highlited', () => {
     const highlightedChunks1 = customFindUrlChunks({
@@ -39,9 +36,9 @@ describe('customFindUrlChunks', () => {
   })
 })
 
-describe('parseDescription', () => {
+describe('highlightLinks', () => {
   it('transforms a description into an array of strings or <ExternalLink/>', () => {
-    const parsedDescription = parseDescription(description1)
+    const parsedDescription = highlightLinks(description1)
     expect(parsedDescription.length).toBe(2)
     expect(parsedDescription[0]).toEqual(description1WithoutUrl)
     expect(typeof parsedDescription[1]).toBe('object')
