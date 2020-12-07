@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Linking, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
+import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { padding, Spacer } from 'ui/theme'
@@ -57,11 +58,7 @@ export function Navigation(): JSX.Element {
         <Row>
           <ButtonPrimary
             title={'Mauvais deeplink unknown'}
-            onPress={() => {
-              if (Linking.canOpenURL(BadDeeplink)) {
-                Linking.openURL(BadDeeplink)
-              }
-            }}
+            onPress={() => openExternalUrl(BadDeeplink)}
           />
         </Row>
         <Row>

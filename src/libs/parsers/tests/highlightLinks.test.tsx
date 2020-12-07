@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { ExternalLink } from '../../../features/offer/components/ExternalLink'
+import { ExternalLink } from 'ui/components/buttons/ExternalLink'
+
 import { customFindUrlChunks, highlightLinks } from '../highlightLinks'
 
 const description1WithoutUrl = `PRESSE / ILS EN PARLENT !
