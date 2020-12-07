@@ -37,7 +37,11 @@ export const parseDescription = (description: string): ParsedDescription => {
     findChunks: customFindUrlChunks,
     textToHighlight: description,
   })
-  return chunks.map(({ start, end, highlight }) =>
-    highlight ? <ExternalLink url={description.slice(start, end)} /> : description.slice(start, end)
+  return chunks.map(({ start, end, highlight }, index) =>
+    highlight ? (
+      <ExternalLink key={`external-link-${index}`} url={description.slice(start, end)} />
+    ) : (
+      description.slice(start, end)
+    )
   )
 }
