@@ -1,25 +1,26 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { Digital } from 'ui/svg/icons/Digital'
 import { PlacePointer } from 'ui/svg/icons/PlacePointer'
 import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   placeName?: string | null
-  city?: string | null
+  where?: string | null
+  isDigital: boolean
 }
 
-export const PlaceCaption: FunctionComponent<Props> = ({ placeName, city }: Props) => {
+export const PlaceCaption: FunctionComponent<Props> = ({ placeName, where, isDigital }: Props) => {
   return (
     <PlaceContainer>
       <StyledView>
         <IconContainer>
-          <PlacePointer size={16} />
+          {isDigital ? <Digital size={16} /> : <PlacePointer size={16} />}
         </IconContainer>
-
         {placeName && <StyledText numberOfLines={1}>{`${placeName}, `}</StyledText>}
       </StyledView>
-      {city && <CityText numberOfLines={1}>{city}</CityText>}
+      {where && <CityText numberOfLines={1}>{where}</CityText>}
     </PlaceContainer>
   )
 }
