@@ -12,7 +12,7 @@ import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeB
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
-import { parseDescription } from 'libs/parsers/parseDescription'
+import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
@@ -28,7 +28,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   useEffect(() => {
     getBatchInstallationID().then(setBatchInstallationId)
   }, [])
-
+  const ParsedDescription = highlightLinks(someOfferDescription)
   return (
     <Container>
       <Spacer.TopScreen />
@@ -41,7 +41,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <Spacer.Flex />
       <Typo.Body>{someOfferDescription}</Typo.Body>
       <Spacer.Flex />
-      <Typo.Body>{parseDescription(someOfferDescription)}</Typo.Body>
+      <Typo.Body>{ParsedDescription}</Typo.Body>
       <Spacer.Flex />
       {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
       <Spacer.BottomScreen />

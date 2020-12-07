@@ -31,7 +31,7 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
   return chunks
 }
 
-export const parseDescription = (description: string): ParsedDescription => {
+export const highlightLinks = (description: string): ParsedDescription => {
   const chunks = findAll({
     searchWords: [],
     findChunks: customFindUrlChunks,

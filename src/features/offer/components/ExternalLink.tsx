@@ -18,9 +18,7 @@ export const ExternalLink: React.FC<Props> = ({ url }) => (
 )
 
 const openExternalLink = (url: string) => {
-  try {
+  if (Linking.canOpenURL(url)) {
     Linking.openURL(url)
-  } catch (e) {
-    /** ignore error */
   }
 }
