@@ -36,5 +36,5 @@ const Title = styled(Typo.Title3)({ textAlign: 'center' })
 const MarginContainer = styled.View({
   flex: 1,
   alignItems: 'center',
-  paddingHorizontal: getSpacing(6),
+  marginHorizontal: getSpacing(6),
 })
