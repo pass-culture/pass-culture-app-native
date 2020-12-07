@@ -26,16 +26,16 @@ export const parseCategory = (category: AlgoliaCategory | null, label?: string):
 export const MAP_CATEGORY_TO_ICON: {
   [k in AlgoliaCategory]: React.ElementType<{ size: number; color: ColorsEnum }>
 } = {
-  CINEMA: Category.Cinéma,
+  CINEMA: Category.Cinema,
   VISITE: Category.Exposition,
   MUSIQUE: Category.Musique,
   SPECTACLE: Category.Spectacles,
   LECON: Category.Atelier,
-  LIVRE: Category.Livres,
+  LIVRE: Category.Book,
   FILM: Category.Streaming,
   PRESSE: Category.Presse,
-  JEUX_VIDEO: Category.JeuxVidéos,
-  CONFERENCE: Category.Conférence,
+  JEUX_VIDEO: Category.VideoGames,
+  CONFERENCE: Category.Conference,
   INSTRUMENT: Category.Instrument,
 }
 
@@ -43,5 +43,5 @@ export const mapCategoryToIcon = (
   category: AlgoliaCategory | null
 ): React.ElementType<{ size: number; color: ColorsEnum }> => {
   if (category && category in MAP_CATEGORY_TO_ICON) return MAP_CATEGORY_TO_ICON[category]
-  return Category.OeuvreDArt
+  return Category.Artwork
 }
