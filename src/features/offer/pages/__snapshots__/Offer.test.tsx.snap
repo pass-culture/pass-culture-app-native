@@ -83,7 +83,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               </RNSVGSvgView>
                             </View>
                             <Text
-@@ -636,23 +636,141 @@
+@@ -636,23 +636,143 @@
                                     \\"textAlign\\": \\"center\\",
                                   },
                                 ]
@@ -99,7 +99,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               Array [
                                 Object {
                                   \\"width\\": 24,
-+                               },
+                                },
 +                             ]
 +                           }
 +                         />
@@ -141,7 +141,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 +                                 Object {
 +                                   \\"backgroundColor\\": \\"transparent\\",
 +                                   \\"borderWidth\\": 0,
-                                  },
++                                 },
 +                                 Object {
 +                                   \\"flex\\": 0,
 +                                   \\"height\\": 16,
@@ -167,8 +167,8 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 +                                   propList={
 +                                     Array [
 +                                       \\"fill\\",
-+                                     ]
-+                                   }
+                                      ]
+                                    }
 +                                 >
 +                                   <RNSVGGroup>
 +                                     <RNSVGPath
@@ -181,8 +181,8 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 +                                           1,
 +                                           0,
 +                                           0,
-                                          ]
-                                        }
++                                         ]
++                                       }
                                       />
 +                                   </RNSVGGroup>
 +                                 </RNSVGGroup>
@@ -199,6 +199,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 +                                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 +                                   \\"fontSize\\": 12,
 +                                   \\"lineHeight\\": 16,
++                                   \\"textTransform\\": \\"capitalize\\",
 +                                 },
 +                               ]
 +                             }
@@ -215,6 +216,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
 +                                 \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 +                                 \\"fontSize\\": 12,
 +                                 \\"lineHeight\\": 16,
++                                 \\"textTransform\\": \\"capitalize\\",
 +                               },
 +                             ]
 +                           }
@@ -978,6 +980,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
                                   "lineHeight": 16,
+                                  "textTransform": "capitalize",
                                 },
                               ]
                             }
@@ -994,6 +997,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
                                 "lineHeight": 16,
+                                "textTransform": "capitalize",
                               },
                             ]
                           }
