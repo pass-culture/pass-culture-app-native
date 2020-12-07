@@ -30,7 +30,7 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
       {algoliaHit?.offer.isDigital ? (
         <Digital />
       ) : (
-        <PlaceCaption placeName={placeName} city={algoliaHit?.venue.city} />
+        <PlaceCaption placeName={placeName} where={algoliaHit?.venue.city} isDigital={false} />
       )}
       <Spacer.Column numberOfSpaces={2} />
       <OfferIconCaptions algoliaHit={algoliaHit} />
