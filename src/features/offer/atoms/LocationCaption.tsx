@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
-import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 
 import { Digital } from 'ui/svg/icons/Digital'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
@@ -19,7 +19,7 @@ export const LocationCaption: FunctionComponent<Props> = ({
   <LocationContainer>
     <StyledView>
       <IconContainer>
-        {isDigital ? <Digital size={16} /> : <LocationPointer size={16} />}
+        {isDigital ? <Digital size={getSpacing(4)} /> : <LocationPointer size={getSpacing(4)} />}
       </IconContainer>
       {locationName && <StyledText numberOfLines={1}>{`${locationName}, `}</StyledText>}
     </StyledView>
