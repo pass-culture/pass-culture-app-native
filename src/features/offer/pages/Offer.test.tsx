@@ -29,9 +29,8 @@ describe('<Offer />', () => {
   })
 
   it('should match snapshot for digital offer', async () => {
-    const { toJSON: toJSONDigital } = await renderOfferPage(digitalAlgoliaOffer)
-    const { toJSON: toJSONPhysical } = await renderOfferPage(physicalAlgoliaOffer)
-    expect(toJSONDigital()).toMatchDiffSnapshot(toJSONPhysical())
+    const { toJSON } = await renderOfferPage(digitalAlgoliaOffer)
+    expect(toJSON()).toMatchSnapshot()
   })
 })
 
