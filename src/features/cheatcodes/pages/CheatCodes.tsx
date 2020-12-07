@@ -10,9 +10,9 @@ import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
 import { LogoutButton } from 'features/cheatcodes/components/LogoutButton'
 import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { parseDescription } from 'features/offer/services/parseDescription'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
+import { parseDescription } from 'libs/parsers/parseDescription'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>

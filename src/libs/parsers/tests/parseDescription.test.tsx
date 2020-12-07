@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ExternalLink } from '../../components/ExternalLink'
+import { ExternalLink } from '../../../features/offer/components/ExternalLink'
 import { customFindUrlChunks, parseDescription } from '../parseDescription'
 const description1 = `PRESSE / ILS EN PARLENT !
 « Drôle, intelligente, intéressante, intéressée, chaleureuse et humble » Libération
