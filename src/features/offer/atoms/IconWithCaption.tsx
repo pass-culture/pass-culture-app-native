@@ -1,17 +1,19 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 interface IconWithCaptionProps {
-  Icon: React.ElementType<{ size: number; color: ColorsEnum }>
+  Icon: React.ElementType<IconInterface>
   caption: string
+  testID?: string
 }
 
-export const IconWithCaption = ({ Icon, caption }: IconWithCaptionProps) => (
+export const IconWithCaption = ({ Icon, caption, testID }: IconWithCaptionProps) => (
   <Container>
     <IconContainer>
-      <Icon size={getSpacing(10)} color={ColorsEnum.GREY_DARK} />
+      <Icon size={getSpacing(10)} color={ColorsEnum.GREY_DARK} testID={testID} />
     </IconContainer>
     <Caption>{caption}</Caption>
   </Container>

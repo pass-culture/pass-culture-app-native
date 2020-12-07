@@ -9,12 +9,17 @@ import {
   digitalAlgoliaOffer,
   physicalAlgoliaOffer,
 } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
 import { Offer } from './Offer'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 const defaultAlgoliaHit: AlgoliaHit = mockedAlgoliaResponse.hits[0]
+
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
 
 describe('<Offer />', () => {
   it('should match snapshot for physical offer', async () => {
@@ -32,15 +37,17 @@ describe('<Offer />', () => {
 
 async function renderOfferPage(algoliaHit?: AlgoliaHit) {
   const wrapper = render(
-    <NavigationContainer>
-      <RootStack.Navigator initialRouteName="Offer">
-        <RootStack.Screen
-          name="Offer"
-          component={Offer}
-          initialParams={{ id: 'ABCDE', algoliaHit: algoliaHit ?? defaultAlgoliaHit }}
-        />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    reactQueryProviderHOC(
+      <NavigationContainer>
+        <RootStack.Navigator initialRouteName="Offer">
+          <RootStack.Screen
+            name="Offer"
+            component={Offer}
+            initialParams={{ id: 'ABCDE', algoliaHit: algoliaHit ?? defaultAlgoliaHit }}
+          />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    )
   )
   await act(async () => {
     await flushAllPromises()
