@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-raw-text */
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -131,9 +132,12 @@ export const AppComponents: FunctionComponent = () => {
     []
   )
 
+  const { goBack } = useNavigation()
+
   return (
     <StyledScrollView>
       <Spacer.TopScreen />
+      <ModalHeader title="App components" leftIcon={ArrowPrevious} onLeftIconPress={goBack} />
       {/* Typos */}
       <Typo.Title1 color={ColorsEnum.PRIMARY} onPress={toggleTypos}>
         Typos
