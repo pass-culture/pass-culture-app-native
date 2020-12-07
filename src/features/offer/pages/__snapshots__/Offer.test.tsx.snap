@@ -324,10 +324,6 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
                               "marginHorizontal": 24,
                             },
                           ]
@@ -897,10 +893,6 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
                               "marginHorizontal": 24,
                             },
                           ]
