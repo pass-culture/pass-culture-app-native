@@ -12,23 +12,26 @@ export const OfferHeader = () => {
   const { goBack } = useNavigation()
 
   return (
-    <Row>
-      <Spacer.Row numberOfSpaces={6} />
-      <HeaderIcon iconName="back" onPress={goBack} />
-      <RightIcons>
-        <HeaderIcon iconName="share" onPress={() => null} />
-        {isLoggedIn && (
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={3} />
-            <HeaderIcon iconName="favorite" onPress={() => null} />
-          </React.Fragment>
-        )}
-      </RightIcons>
-      <Spacer.Row numberOfSpaces={6} />
-    </Row>
+    <HeaderContainer>
+      <Spacer.TopScreen />
+      <Row>
+        <Spacer.Row numberOfSpaces={6} />
+        <HeaderIcon iconName="back" onPress={goBack} />
+        <RightIcons>
+          <HeaderIcon iconName="share" onPress={() => null} />
+          {isLoggedIn && (
+            <React.Fragment>
+              <Spacer.Row numberOfSpaces={3} />
+              <HeaderIcon iconName="favorite" onPress={() => null} />
+            </React.Fragment>
+          )}
+        </RightIcons>
+        <Spacer.Row numberOfSpaces={6} />
+      </Row>
+    </HeaderContainer>
   )
 }
-
+const HeaderContainer = styled.View({ position: 'absolute', top: 0, width: '100%' })
 const Row = styled.View({ flex: 1, flexDirection: 'row' })
 const RightIcons = styled.View({
   flex: 1,
