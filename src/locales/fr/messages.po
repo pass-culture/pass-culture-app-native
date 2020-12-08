@@ -196,10 +196,6 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/pages/Offer.tsx:13
-msgid "Offer"
-msgstr "Offer"
-
 #: src/features/errors/pages/RetryBoundary.tsx:23
 msgid "Oops !"
 msgstr "Oops !"
@@ -318,7 +314,7 @@ msgstr "Bienvenue à Pass Culture"
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
-#: src/features/offer/pages/Offer.tsx:21
+#: src/features/offer/pages/Offer.tsx:17
 msgid "en ligne"
 msgstr "en ligne"
 
