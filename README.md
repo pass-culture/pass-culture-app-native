@@ -34,17 +34,21 @@ Add ANDROID to your current PATH env var, by adding theses line in your .bashrc:
 `export ANDROID_HOME=$HOME/tools/sdk export PATH=$PATH:$ANDROID_HOME/tools export PATH=$PATH:$ANDROID_HOME/platform-tools`
 
 ## Installation
-Verify if `jq` (dependency required for parsing then inserting `CFBundleVersion` in `Ìnfo.plist`) is installed : 
+
+Verify if `jq` (dependency required for parsing then inserting `CFBundleVersion` in `Ìnfo.plist`) is installed :
+
 ```bash
 which jq
-````
+```
 
 If not found, install it :
+
 ```bash
 brew install jq
 ```
 
 Then :
+
 ```bash
 git clone <repo_url>
 cd pass-culture-app-native
@@ -145,69 +149,35 @@ You can also get the coverage with:
 yarn jest --coverage
 ```
 
-## Deploy
-
-### Deploy to staging
-
-When you want to deploy the current version of master in staging, you can run the following command:
-
-`yarn trigger:staging:deploy`
-
-### Manual deploy for the moment => will be automated by ticket 4558
-
-You can find the testing app at:
+## Deploy to AppCenter
 
 - https://appcenter.ms/orgs/pass-Culture/apps/passculture-<ENV:testing|staging>-ios
 - https://appcenter.ms/orgs/pass-Culture/apps/passculture-<ENV:testing|staging>-android
 
-#### Soft deploy
+### Soft deploy (Code Push)
 
-Pre-requisites :
-
-- run `appcenter login` and connectwith your passculture email address
-- get CODEPUSH_KEY_ANDROID, put it in `.env.{ENV}`
-- comment lines 75 and 77 (git status and check_environment) of scripts/deploy, as you will have local changes since deploy is manual for the moment
-
-Then run:
-
-```
-./scripts/deploy.sh -o android
-```
-
-> Only android working for the moment
-
-> Default env is testing, no need to specify it in the command
-
-#### Hard deploy (if I modified native code)
-
-Pre-requisites:
-
-- get testing.keystore file, put it in `android/keystores` folder
-- get the keystore password, put it in `android/keystores/{ENV}.keystore.properties`
-- get the Appcenter API token, you will be asked for it
-- comment lines 75 and 77 (git status and check_environment) of scripts/deploy, as you will have local changes since deploy is manual for the moment
-
-To deploy in testing environment, just run
-
-```
-./scripts/deploy.sh -t hard -o android
-```
-
-> Only android working for the moment
-
-> Default env is testing, no need to specify it in the command
-
-### CodePush
-
-Most of the time, on staging, you didn't change anything in the native code. If you changed only javascript code, you can run:
-
-```
-./scripts/deploy.sh
-```
-
-Then the build should be faster as only the javascript code have been published.
+Most of the time, on testing, you didn't change anything in the native code. If you changed only javascript code, deploy will be **automatic** on CircleCI (deploy-soft-testing job).
+Then the build is faster as only the javascript code is published.
 
 To download updates from the application, just open it and click on the "check update" button.
+
+### Hard deploy
+
+If I modified native code, I need to hard deploy:
+
+- `git checkout master`
+- `git pull`
+- `yarn version:<env>` (this will create a commit with a tag)
+- then run `git push --follow-tags`
+  You can then check you job on CircleCI.
+
+### Deploy to staging
+
+We do it once a week at the end of an iteration.
+
+When you want to deploy the current version of master in staging, you can run the following command:
+
+`yarn trigger:staging:deploy`
 
 ## Troubleshooting
 
