@@ -23,7 +23,7 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
     <Container>
       <OfferHero imageUrl={algoliaHit?.offer.thumbUrl || ''} />
       <OfferHeader />
-      <Spacer.Column numberOfSpaces={8} />
+      <Spacer.Column numberOfSpaces={4} />
       {algoliaHit?.offer.isDigital ? (
         <LocationCaption locationName={digitalLocationName} where={_(t`en ligne`)} isDigital />
       ) : (

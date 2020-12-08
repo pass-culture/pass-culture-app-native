@@ -14,6 +14,7 @@ export const OfferHeader = () => {
   return (
     <HeaderContainer>
       <Spacer.TopScreen />
+      <Spacer.Column numberOfSpaces={4} />
       <Row>
         <Spacer.Row numberOfSpaces={6} />
         <HeaderIcon iconName="back" onPress={goBack} />

@@ -28,6 +28,6 @@ export const OfferHero: React.FC<Props> = ({ imageUrl }) => {
 const screenWidth = Dimensions.get('window').width
 
 const Image = styled.Image<{ extraHeight: number }>(({ extraHeight }) => ({
-  height: getSpacing(78) + extraHeight,
+  height: getSpacing(76) + extraHeight,
   width: screenWidth,
 }))
