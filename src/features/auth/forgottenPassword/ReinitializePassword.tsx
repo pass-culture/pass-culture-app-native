@@ -49,8 +49,8 @@ export const ReinitializePassword = () => {
 
   function submitPassword() {
     resetPassword({
-      new_password: password,
-      reset_password_token: params.token,
+      newPassword: password,
+      resetPasswordToken: params.token,
     })
   }
 

@@ -68,7 +68,7 @@ describe('Home component', () => {
 
   it('should have a personalized welcome message when user is logged in', async () => {
     useUserProfileInfoMock.mockImplementationOnce(() => ({
-      data: { email: 'email@domain.ext', first_name: 'Jean' },
+      data: { email: 'email@domain.ext', firstName: 'Jean' },
     }))
 
     const { getByText, unmount } = await homeRenderer(false)

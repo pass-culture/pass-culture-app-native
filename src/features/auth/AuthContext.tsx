@@ -37,8 +37,8 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
     try {
       const response = await api.nativeV1SigninPost(body, { credentials: 'omit' })
       if (!response) return false
-      await saveRefreshToken(response.refresh_token)
-      await saveAccessToken(response.access_token)
+      await saveRefreshToken(response.refreshToken)
+      await saveAccessToken(response.accessToken)
       await analytics.logLogin({ method: env.API_BASE_URL })
       setIsLoggedIn(true)
       return true
