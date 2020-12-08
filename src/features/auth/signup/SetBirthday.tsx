@@ -11,6 +11,7 @@ import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ExternalLink } from 'ui/components/buttons/ExternalLink'
 import { DateInput } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -19,7 +20,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface State {
   date: string | null
@@ -120,6 +121,23 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               numberOfSpacesTop={5}
             />
           </DateInputContainer>
+          <Paragraphe>
+            <Typo.Body>{_(t`Ce site est protégé par reCAPTCHA Google.`)}</Typo.Body>
+            <ExternalLink
+              text={_(t`La Charte des Données Personnelles`)}
+              url={'https://policies.google.com/privacy'}
+              color={ColorsEnum.PRIMARY}
+            />
+            <Spacer.Row numberOfSpaces={1} />
+            <Typo.Body>{_(/*i18n: signup birthday page reCAPTCHA */ t`et les`)}</Typo.Body>
+            <ExternalLink
+              text={_(t`Conditions Générales d'Utilisation`)}
+              url={'https://policies.google.com/terms'}
+              color={ColorsEnum.PRIMARY}
+            />
+            <Spacer.Row numberOfSpaces={1} />
+            <Typo.Body>{_(/*i18n: signup birthday page reCAPTCHA */ t` s'appliquent.`)}</Typo.Body>
+          </Paragraphe>
           <ButtonPrimary
             title={_(t`Continuer`)}
             disabled={!isComplete}
@@ -147,12 +165,21 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   )
 }
 
+const Paragraphe = styled.Text({
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  alignSelf: 'center',
+  justifyContent: 'center',
+  textAlign: 'center',
+  marginVertical: getSpacing(8),
+})
+
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
 const DateInputContainer = styled.View({
-  marginVertical: getSpacing(10),
+  marginTop: getSpacing(10),
   alignItems: 'center',
   width: '100%',
 })
