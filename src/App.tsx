@@ -24,10 +24,23 @@ const codePushOptionsManual = {
   checkFrequency: CodePush.CheckFrequency.MANUAL,
 }
 
-const codePushOptionsAuto = {
+const codePushOptionsAutoNextRestart = {
   installMode: CodePush.InstallMode.ON_NEXT_RESTART,
   checkFrequency: CodePush.CheckFrequency.ON_APP_START,
 }
+
+const codePushOptionsAutoImmediate = {
+  installMode: CodePush.InstallMode.IMMEDIATE,
+  checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME,
+}
+
+/* We want a different code push behaviour on prod and testing
+  Testing: download updates as often as possible and restart the app immediately 
+  Prod: download update at start and install it at next restart
+*/
+const codePushOptionsAuto =
+  env.ENV === 'testing' ? codePushOptionsAutoImmediate : codePushOptionsAutoNextRestart
+
 const queryCache = new QueryCache()
 
 if (__DEV__ && process.env.JEST !== 'true') {
