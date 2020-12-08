@@ -45,7 +45,8 @@ export const AccordionItem = ({ title, children, defaultOpen = false }: IAccordi
           </Animated.View>
         </TitleContainer>
       </TouchableWithoutFeedback>
-      <Animated.View style={[{ overflow: 'hidden', height: bodyHeight }]}>
+      {/* eslint-disable-next-line react-native/no-inline-styles */}
+      <Animated.View style={{ overflow: 'hidden', height: bodyHeight }}>
         <BodyContainer onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}>
           {children}
         </BodyContainer>
