@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/offer/components/OfferIconCaptions.tsx:14
+msgid "/ place"
+msgstr "/ place"
+
 #: src/features/auth/components/PasswordSecurityRules.tsx:40
 msgid "1 Caractère spécial (!@#$%^&*...)"
 msgstr "1 Caractère spécial (!@#$%^&*...)"
@@ -66,7 +70,7 @@ msgstr "Bonjour {0}"
 msgid "Bookings"
 msgstr "Réservations"
 
-#: src/features/auth/signup/AcceptCgu.tsx:24
+#: src/features/auth/signup/AcceptCgu.tsx:47
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
@@ -84,7 +88,7 @@ msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/signup/AcceptCgu.tsx:29
+#: src/features/auth/signup/AcceptCgu.tsx:52
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -108,16 +112,16 @@ msgstr "Consulter mes e-mails"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:40
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:51
-#: src/features/auth/signup/AcceptCgu.tsx:40
+#: src/features/auth/signup/AcceptCgu.tsx:63
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:39
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:69
-#: src/features/auth/signup/AcceptCgu.tsx:42
-#: src/features/auth/signup/SetBirthday.tsx:46
+#: src/features/auth/signup/AcceptCgu.tsx:65
+#: src/features/auth/signup/SetBirthday.tsx:54
 #: src/features/auth/signup/SetEmail.tsx:72
-#: src/features/auth/signup/SetPassword.tsx:37
+#: src/features/auth/signup/SetPassword.tsx:38
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -130,7 +134,7 @@ msgstr "Duo"
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
-#: src/features/auth/signup/AcceptCgu.tsx:28
+#: src/features/auth/signup/AcceptCgu.tsx:51
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
@@ -170,12 +174,12 @@ msgstr "Le lien est incorrect"
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/auth/signup/SetBirthday.tsx:54
+#: src/features/auth/signup/SetBirthday.tsx:62
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/auth/login/Login.tsx:73
-#: src/features/auth/signup/SetPassword.tsx:31
+#: src/features/auth/signup/SetPassword.tsx:32
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -204,15 +208,15 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/auth/signup/AcceptCgu.tsx:32
+#: src/features/auth/signup/AcceptCgu.tsx:55
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
-#: src/features/auth/signup/AcceptCgu.tsx:37
+#: src/features/auth/signup/AcceptCgu.tsx:60
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
-#: src/features/auth/signup/SetBirthday.tsx:41
+#: src/features/auth/signup/SetBirthday.tsx:49
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -273,7 +277,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 msgstr "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 
-#: src/features/auth/signup/SetBirthday.tsx:39
+#: src/features/auth/signup/SetBirthday.tsx:47
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
@@ -284,8 +288,8 @@ msgstr "Ton email"
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
 #: src/features/auth/login/Login.tsx:75
-#: src/features/auth/signup/SetPassword.tsx:27
-#: src/features/auth/signup/SetPassword.tsx:33
+#: src/features/auth/signup/SetPassword.tsx:28
+#: src/features/auth/signup/SetPassword.tsx:34
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
@@ -310,11 +314,11 @@ msgstr "Valider"
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/signup/AcceptCgu.tsx:31
+#: src/features/auth/signup/AcceptCgu.tsx:54
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
-#: src/features/offer/pages/Offer.tsx:17
+#: src/features/offer/pages/Offer.tsx:18
 msgid "en ligne"
 msgstr "en ligne"
 
@@ -333,7 +337,7 @@ msgstr "{0}"
 msgid "{DEFAULT_ERROR_MESSAGE}:"
 msgstr "{DEFAULT_ERROR_MESSAGE}:"
 
-#: src/features/offer/components/OfferIconCaptions.tsx:18
+#: src/features/offer/components/OfferIconCaptions.tsx:22
 msgid "À deux !"
 msgstr "À deux !"
 

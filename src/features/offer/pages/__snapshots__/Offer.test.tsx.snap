@@ -2831,7 +2831,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                 ]
                               }
                             >
-                              9 € /place
+                              9 € / place
                             </Text>
                           </View>
                           <View
