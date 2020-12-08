@@ -3,8 +3,7 @@ import { Dimensions, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Rectangle } from 'ui/svg/Rectangle'
-import { getShadow } from 'ui/theme'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -16,19 +15,17 @@ export const OfferHero: React.FC<Props> = ({ imageUrl }) => {
   const { top } = useCustomSafeInsets()
   return (
     <HeroContainer>
-      <React.Fragment>
-        <BlurImage
-          extraHeight={top}
-          blurRadius={Platform.OS === 'android' ? 5 : 20}
-          resizeMode={'cover'}
-          source={{ uri: imageUrl }}
-        />
-        {/** Add 1 pixel to avoid 1 white pixel on androids */}
-        <Rectangle size={screenWidth + 1} />
-        <ImageContainer>
-          <Image source={{ uri: imageUrl }} />
-        </ImageContainer>
-      </React.Fragment>
+      <BlurImage
+        extraHeight={top}
+        blurRadius={Platform.OS === 'android' ? 5 : 20}
+        resizeMode={'cover'}
+        source={{ uri: imageUrl }}
+      />
+      {/** Add 1 pixel to avoid 1 white pixel on androids */}
+      <Rectangle size={screenWidth + 1} />
+      <ImageContainer>
+        <Image source={{ uri: imageUrl }} />
+      </ImageContainer>
       <Spacer.Column numberOfSpaces={20} />
     </HeroContainer>
   )
