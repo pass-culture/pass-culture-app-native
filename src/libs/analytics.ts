@@ -18,8 +18,8 @@ export const logAllModulesSeen = async (numberOfModules: number) =>
 export const logAllTilesSeen = async (moduleName: string, numberOfTiles: number) =>
   await analytics.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
 
-export const logConsultOffer = async (offerId: string) =>
-  await analytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId })
+export const logConsultOffer = async (offerId: string, moduleName: string) =>
+  await analytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId, moduleName })
 
 export const logClickExclusivityBlock = async (offerId: string) =>
   await analytics.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })
