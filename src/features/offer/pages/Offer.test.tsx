@@ -23,9 +23,8 @@ jest.mock('features/auth/AuthContext', () => ({
 
 describe('<Offer />', () => {
   it('should match snapshot for physical offer', async () => {
-    const { toJSON, getByTestId } = await renderOfferPage(physicalAlgoliaOffer)
+    const { toJSON } = await renderOfferPage(physicalAlgoliaOffer)
     expect(toJSON()).toMatchSnapshot()
-    expect(getByTestId('offerId').props.children).toBe('ABCDE')
   })
 
   it('should match snapshot for digital offer', async () => {

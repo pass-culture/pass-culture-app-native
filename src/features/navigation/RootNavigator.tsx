@@ -66,7 +66,7 @@ export const RootNavigator: React.FC = () => {
         screenOptions={{ headerShown: false }}>
         <RootStack.Screen name="TabNavigator" component={TabNavigator} />
         <RootStack.Screen name="Login" component={Login} />
-        <RootStack.Screen name="Offer" component={Offer} options={{ headerShown: true }} />
+        <RootStack.Screen name="Offer" component={Offer} />
         <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
         <RootStack.Screen name="IdCheck" component={IdCheck} />
         <RootStack.Screen name="AppComponents" component={AppComponents} />
