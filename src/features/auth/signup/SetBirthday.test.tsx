@@ -1,6 +1,8 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
+import { Linking } from 'react-native'
+import waitForExpect from 'wait-for-expect'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
@@ -82,6 +84,32 @@ describe('SetBirthday Page', () => {
 
     const birthdayModal = getByTestId('modal-birthday-information')
     expect(birthdayModal.props.visible).toBeTruthy()
+  })
+
+  it('should redirect to the "reCAPTCHA privacy" page', async () => {
+    jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
+
+    const { findByText } = renderSetBirthday()
+
+    const link = await findByText('La Charte des Données Personnelles')
+    fireEvent.press(link)
+
+    await waitForExpect(() => {
+      expect(Linking.openURL).toHaveBeenCalledWith('https://policies.google.com/privacy')
+    })
+  })
+
+  it('should redirect to the "reCAPTCHA terms" page', async () => {
+    jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
+
+    const { findByText } = renderSetBirthday()
+
+    const link = await findByText("Conditions Générales d'Utilisation")
+    fireEvent.press(link)
+
+    await waitForExpect(() => {
+      expect(Linking.openURL).toHaveBeenCalledWith('https://policies.google.com/terms')
+    })
   })
 })
 

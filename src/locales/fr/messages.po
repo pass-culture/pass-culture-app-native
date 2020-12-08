@@ -74,6 +74,10 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
+#: src/features/auth/signup/SetBirthday.tsx:56
+msgid "Ce site est protégé par reCAPTCHA Google."
+msgstr "Ce site est protégé par reCAPTCHA Google."
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:30
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:27
 msgid "Clique sur le lien reçu à l'adresse :"
@@ -89,6 +93,7 @@ msgid "Composants"
 msgstr "Composants"
 
 #: src/features/auth/signup/AcceptCgu.tsx:52
+#: src/features/auth/signup/SetBirthday.tsx:60
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -119,14 +124,14 @@ msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:69
 #: src/features/auth/signup/AcceptCgu.tsx:65
-#: src/features/auth/signup/SetBirthday.tsx:54
+#: src/features/auth/signup/SetBirthday.tsx:64
 #: src/features/auth/signup/SetEmail.tsx:72
 #: src/features/auth/signup/SetPassword.tsx:38
 msgid "Continuer"
 msgstr "Continuer"
 
 #. Duo offer
-#: src/features/home/atoms/OfferCaption.tsx:13
+#: src/features/home/atoms/OfferCaption.tsx:15
 msgid "Duo"
 msgstr "Duo"
 
@@ -167,6 +172,10 @@ msgstr "Keychain non accessible"
 msgid "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
 
+#: src/features/auth/signup/SetBirthday.tsx:57
+msgid "La Charte des Données Personnelles"
+msgstr "La Charte des Données Personnelles"
+
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:44
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
@@ -179,7 +188,7 @@ msgstr "Le lien est incorrect"
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/auth/signup/SetBirthday.tsx:62
+#: src/features/auth/signup/SetBirthday.tsx:72
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
@@ -229,7 +238,7 @@ msgstr "Politique de confidentialité."
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
-#: src/features/auth/signup/SetBirthday.tsx:49
+#: src/features/auth/signup/SetBirthday.tsx:50
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -294,7 +303,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 msgstr "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 
-#: src/features/auth/signup/SetBirthday.tsx:47
+#: src/features/auth/signup/SetBirthday.tsx:48
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
@@ -338,6 +347,14 @@ msgstr "ainsi que notre"
 #: src/features/offer/pages/Offer.tsx:18
 msgid "en ligne"
 msgstr "en ligne"
+
+#: src/features/auth/signup/SetBirthday.tsx:59
+msgid "et les"
+msgstr "et les"
+
+#: src/features/auth/signup/SetBirthday.tsx:62
+msgid "s'appliquent."
+msgstr "s'appliquent."
 
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:74
