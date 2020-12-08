@@ -61,6 +61,8 @@ describe('SetBirthday Page', () => {
     fireEvent.changeText(month, '01')
     fireEvent.changeText(year, '1995')
 
+    fireEvent(year, 'blur')
+
     const continueButton = getByText('Continuer')
     fireEvent.press(continueButton)
 

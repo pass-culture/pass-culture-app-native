@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
+import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
@@ -23,17 +24,17 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface State {
   date: string | null
   hasError: boolean
-  isComplete: boolean
 }
 
 type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
 
 export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
+  const keyboardHeightRef = useRef(0)
   const [state, setState] = useState<State>({
     date: '',
     hasError: false,
-    isComplete: false,
   })
+  const [isComplete, setIsComplete] = useState(false)
 
   const {
     visible: informationModalVisible,
@@ -45,13 +46,17 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked
   const password = route.params.password
+  const canNavigateToCguRef = useRef(false)
 
-  function onChangeValue(value: string | null, isComplete: boolean) {
+  function onChangeValue(value: string | null, _isComplete: boolean) {
     setState({
       date: value,
-      isComplete,
-      hasError: isComplete && value === null,
+      hasError: _isComplete && value === null,
     })
+    // avoid blinking effect on primary button when typing the date
+    if (_isComplete !== isComplete) {
+      setIsComplete(_isComplete)
+    }
   }
 
   function goToCguAcceptance() {
@@ -63,9 +68,38 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     })
   }
 
+  /**
+   * It's a trick to bypass the unexpected keyboard behavior on the next page:
+   *
+   *   Actually the view starts in a top position but without the keyboard displayed
+   *   and animates itself to reach the bottom position.
+   *
+   * To fix:
+   * If the keyboard is already down, we just navigate.
+   * Otherwise, we trigger the keyboard dismissing which will result in:
+   * - a call to onKeyboardDismiss()
+   * - and a navigation to the next screen
+   */
+  function animateBeforeNavigation() {
+    if (keyboardHeightRef.current === 0) {
+      return goToCguAcceptance()
+    }
+
+    canNavigateToCguRef.current = true
+    Keyboard.dismiss()
+  }
+
+  const onKeyboardDismiss = useCallback(() => {
+    if (canNavigateToCguRef.current || state.date) {
+      goToCguAcceptance()
+    }
+  }, [])
+
   return (
     <React.Fragment>
-      <BottomContentPage>
+      <BottomContentPage
+        keyboardHeightRef={keyboardHeightRef}
+        onKeyboardDismiss={onKeyboardDismiss}>
         <ModalHeader
           title={_(t`Ton anniversaire`)}
           leftIcon={ArrowPrevious}
@@ -88,9 +122,9 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           </DateInputContainer>
           <ButtonPrimary
             title={_(t`Continuer`)}
-            disabled={!state.isComplete}
+            disabled={!isComplete}
             testIdSuffix={'validate-birthday'}
-            onPress={goToCguAcceptance}
+            onPress={animateBeforeNavigation}
           />
         </BottomCardContentContainer>
       </BottomContentPage>
