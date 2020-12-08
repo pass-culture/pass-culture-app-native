@@ -6,13 +6,15 @@ import styled from 'styled-components/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { _ } from 'libs/i18n'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { OfferHeader } from '../components/OfferHeader'
-import { OfferHero } from '../components/OfferHero'
-import { OfferIconCaptions } from '../components/OfferIconCaptions'
+import { AccordionItem, OfferHeader, OfferHero, OfferIconCaptions } from '../components'
 
 type Props = StackScreenProps<RootStackParamList, 'Offer'>
+
+const withdrawalsDetails =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ' +
+  'eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
 
 export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
   const { algoliaHit } = route.params
@@ -35,20 +37,35 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
       )}
       <Spacer.Column numberOfSpaces={2} />
       <MarginContainer>
-        <Title testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
+        <OfferTitle testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
           {algoliaHit?.offer.name}
-        </Title>
+        </OfferTitle>
       </MarginContainer>
       <Spacer.Column numberOfSpaces={2} />
       <OfferIconCaptions algoliaHit={algoliaHit} />
+      <Spacer.Column numberOfSpaces={2} />
+      <Divider />
+      <SectionTitle>{_(t`Où ?`)}</SectionTitle>
+      <Divider />
+      <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
+      <Divider />
+      <AccordionItem title={_(t`Modalités de retrait`)}>
+        <Typo.Body>{withdrawalsDetails}</Typo.Body>
+      </AccordionItem>
       <Spacer.Flex />
     </Container>
   )
 }
 
 const Container = styled.ScrollView({})
-const Title = styled(Typo.Title3)({ textAlign: 'center' })
+const OfferTitle = styled(Typo.Title3)({ textAlign: 'center' })
+const SectionTitle = styled(Typo.Title4)({ padding: getSpacing(6) })
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
+})
+
+const Divider = styled.View({
+  height: getSpacing(2),
+  backgroundColor: ColorsEnum.GREY_LIGHT,
 })
