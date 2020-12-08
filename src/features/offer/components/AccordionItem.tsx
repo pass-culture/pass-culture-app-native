@@ -23,7 +23,7 @@ export const AccordionItem = ({ title, children, defaultOpen = false }: IAccordi
 
   const arrowAngle = animatedController.interpolate({
     inputRange: [0, 1],
-    outputRange: [`${(3 / 2) * Math.PI}rad`, `${Math.PI / 2}rad`],
+    outputRange: [`${Math.PI / 2}rad`, `${(3 * Math.PI) / 2}rad`],
   })
 
   const toggleListItem = () => {
