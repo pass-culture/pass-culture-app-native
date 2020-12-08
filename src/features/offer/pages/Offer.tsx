@@ -9,6 +9,7 @@ import { _ } from 'libs/i18n'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { OfferHeader } from '../components/OfferHeader'
+import { OfferHero } from '../components/OfferHero'
 import { OfferIconCaptions } from '../components/OfferIconCaptions'
 
 type Props = StackScreenProps<RootStackParamList, 'Offer'>
@@ -20,7 +21,7 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
 
   return (
     <Container>
-      <Spacer.TopScreen />
+      <OfferHero imageUrl={algoliaHit?.offer.thumbUrl || ''} />
       <OfferHeader />
       <Spacer.Column numberOfSpaces={8} />
       {algoliaHit?.offer.isDigital ? (
