@@ -2373,6 +2373,11 @@
   dependencies:
     "@types/react" "*"
 
+"@types/refresh-fetch@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@types/refresh-fetch/-/refresh-fetch-0.6.1.tgz#7677f8095bcff0e4c2065319469a187d854b92ea"
+  integrity sha512-i/3Fbbkm1+3SSbZh+AjveKmlFkVLAoF82WzRCX6T6xkr9bPmmWlO38OQu1jSNPfqBGN5zdbG9SPdKDqdV/BcEg==
+
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
@@ -9937,6 +9942,13 @@ recursive-fs@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/recursive-fs/-/recursive-fs-2.1.0.tgz#1e20cf7836b292ed81208c4817550a58ad0e15ff"
   integrity sha512-oed3YruYsD52Mi16s/07eYblQOLi5dTtxpIJNdfCEJ7S5v8dDgVcycar0pRWf4IBuPMIkoctC8RTqGJzIKMNAQ==
+
+refresh-fetch@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/refresh-fetch/-/refresh-fetch-0.7.0.tgz#f7522ac69ff7eda4c0389f9006e8e2a40f7cecfa"
+  integrity sha512-8Zp9hXQ0+IrSntTof9WX1bNG4Sb+YtNJp/osiqZfVBE9dpvIjG3ft2qmhFY0bUotvhNJJVlkkN++WXXZ1vvIvw==
+  dependencies:
+    lodash "^4.17.19"
 
 regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
