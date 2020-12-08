@@ -8,25 +8,21 @@ import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { _ } from 'libs/i18n'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { OfferHeader } from '../components/OfferHeader'
 import { OfferIconCaptions } from '../components/OfferIconCaptions'
 
 type Props = StackScreenProps<RootStackParamList, 'Offer'>
 
 export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
-  const { id, algoliaHit } = route.params
+  const { algoliaHit } = route.params
   const locationName = algoliaHit?.venue.publicName || algoliaHit?.venue.name
   const digitalLocationName = algoliaHit?.offerer.name
 
   return (
     <Container>
-      <Typo.Hero>{_(t`Offer`)}</Typo.Hero>
-      <Typo.Caption testID="offerId">{id}</Typo.Caption>
-      <MarginContainer>
-        <Title testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
-          {algoliaHit?.offer.name}
-        </Title>
-      </MarginContainer>
-      <Spacer.Column numberOfSpaces={2} />
+      <Spacer.TopScreen />
+      <OfferHeader />
+      <Spacer.Column numberOfSpaces={8} />
       {algoliaHit?.offer.isDigital ? (
         <LocationCaption locationName={digitalLocationName} where={_(t`en ligne`)} isDigital />
       ) : (
@@ -37,13 +33,19 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
         />
       )}
       <Spacer.Column numberOfSpaces={2} />
+      <MarginContainer>
+        <Title testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
+          {algoliaHit?.offer.name}
+        </Title>
+      </MarginContainer>
+      <Spacer.Column numberOfSpaces={2} />
       <OfferIconCaptions algoliaHit={algoliaHit} />
       <Spacer.Flex />
     </Container>
   )
 }
 
-const Container = styled.View({ alignItems: 'center' })
+const Container = styled.ScrollView({})
 const Title = styled(Typo.Title3)({ textAlign: 'center' })
 
 const MarginContainer = styled.View({
