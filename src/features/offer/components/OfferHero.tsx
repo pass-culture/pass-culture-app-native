@@ -24,7 +24,7 @@ export const OfferHero: React.FC<Props> = ({ imageUrl }) => {
       {/** Add 1 pixel to avoid 1 white pixel on androids */}
       <Rectangle size={screenWidth + 1} />
       <ImageContainer>
-        <Image source={{ uri: imageUrl }} />
+        <Image resizeMode="cover" source={{ uri: imageUrl }} />
       </ImageContainer>
       <Spacer.Column numberOfSpaces={20} />
     </HeroContainer>
