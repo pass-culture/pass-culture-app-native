@@ -1,9 +1,11 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useSignUp } from 'features/auth/AuthContext'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { BottomCardContentContainer, BottomContentPage } from 'ui/components/BottomContentPage'
@@ -18,12 +20,25 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { contactSupport } from '../support.services'
 
-export const AcceptCgu: FC = () => {
-  const { goBack, navigate } = useNavigation<UseNavigationType>()
+type Props = StackScreenProps<RootStackParamList, 'AcceptCgu'>
 
-  function subscribe() {
-    // TODO: PC-5436
-    navigate('SignupConfirmationEmailSent', { email: '' })
+export const AcceptCgu: FC<Props> = ({ route }) => {
+  const { goBack, navigate } = useNavigation<UseNavigationType>()
+  const signUp = useSignUp()
+  const email = route.params.email
+  const isNewsletterChecked = route.params.isNewsletterChecked
+  const password = route.params.password
+  const birthday = route.params.birthday
+
+  async function subscribe() {
+    await signUp({
+      password: password,
+      birthdate: birthday,
+      hasAllowedRecommendations: isNewsletterChecked,
+      token: 'ABCDEF',
+      email: email,
+    })
+    navigate('SignupConfirmationEmailSent', { email: email })
   }
 
   return (

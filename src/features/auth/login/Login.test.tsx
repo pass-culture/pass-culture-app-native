@@ -20,7 +20,8 @@ const mockSignIn = jest.fn()
 
 function renderLogin() {
   return render(
-    <AuthContext.Provider value={{ isLoggedIn: true, signIn: mockSignIn, signOut: jest.fn() }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn: true, signIn: mockSignIn, signUp: jest.fn(), signOut: jest.fn() }}>
       <Login />
     </AuthContext.Provider>
   )

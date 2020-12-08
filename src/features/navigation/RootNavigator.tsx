@@ -35,7 +35,7 @@ export type RootStackParamList = {
     email: string
     isNewsletterChecked: boolean
     password: string
-    birthday: string | null
+    birthday: string
   }
   AppComponents: undefined
   CheatCodes: undefined
