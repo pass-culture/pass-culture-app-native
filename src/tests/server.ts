@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import {
-  PasswordResetRequestRequest,
+  RequestPasswordResetRequest,
   ResetPasswordRequest,
   SigninRequest,
   SigninResponse,
@@ -17,11 +17,11 @@ export const server = setupServer(
     (req, res, ctx) => {
       return res(
         ctx.status(200),
-        ctx.json({ access_token: 'access_token', refresh_token: 'refresh_token' })
+        ctx.json({ accessToken: 'access_token', refreshToken: 'refresh_token' })
       )
     }
   ),
-  rest.post<PasswordResetRequestRequest, EmptyResponse>(
+  rest.post<RequestPasswordResetRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/request_password_reset',
     (req, res, ctx) => {
       return res(ctx.status(204))
@@ -36,7 +36,7 @@ export const server = setupServer(
   rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) =>
     res(
       ctx.status(200),
-      ctx.json({ email: 'email@domain.ext', first_name: 'Jean', is_beneficiary: true })
+      ctx.json({ email: 'email@domain.ext', firstName: 'Jean', isBeneficiary: true })
     )
   )
 )

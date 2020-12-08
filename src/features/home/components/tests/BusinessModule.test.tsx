@@ -84,7 +84,7 @@ describe('BusinessModule component', () => {
     homeAPISpy.mockImplementation(() => {
       return {
         isLoading: false,
-        data: { email: 'email2@domain.ext', first_name: 'Jean' },
+        data: { email: 'email2@domain.ext', firstName: 'Jean' },
       } as UseQueryResult<UserProfileResponse>
     })
 

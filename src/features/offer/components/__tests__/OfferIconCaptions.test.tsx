@@ -22,8 +22,8 @@ jest.mock('features/auth/AuthContext', () => ({
 
 const userProfileAPIResponse: UserProfileResponse = {
   email: 'email@domain.ext',
-  first_name: 'Jean',
-  is_beneficiary: true,
+  firstName: 'Jean',
+  isBeneficiary: true,
 }
 
 describe('<OfferIconCaptions />', () => {
@@ -66,10 +66,7 @@ async function renderOfferIconCaptions({
 } = {}) {
   server.use(
     rest.get(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-      res.once(
-        ctx.status(200),
-        ctx.json({ ...userProfileAPIResponse, is_beneficiary: isBeneficiary })
-      )
+      res.once(ctx.status(200), ctx.json({ ...userProfileAPIResponse, isBeneficiary }))
     )
   )
   const wrapper = render(

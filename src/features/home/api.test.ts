@@ -15,8 +15,8 @@ const mockedUseAuthContext = useAuthContext as jest.Mock
 const userProfileApiMock = jest.fn()
 const userProfileAPIResponse: UserProfileResponse = {
   email: 'email@domain.ext',
-  first_name: 'Jean',
-  is_beneficiary: true,
+  firstName: 'Jean',
+  isBeneficiary: true,
 }
 server.use(
   rest.get(

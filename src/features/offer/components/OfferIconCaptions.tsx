@@ -23,7 +23,7 @@ export const OfferIconCaptions = ({ algoliaHit }: { algoliaHit: AlgoliaHit | und
         category={algoliaHit?.offer.category || null}
         label={algoliaHit?.offer.label}
       />
-      {algoliaHit.offer.isDuo && profileInfo?.is_beneficiary && (
+      {algoliaHit.offer.isDuo && profileInfo?.isBeneficiary && (
         <React.Fragment>
           <Separator />
           <IconWithCaption testID="iconDuo" Icon={Duo} caption={_(t`À deux !`)} />
@@ -35,7 +35,7 @@ export const OfferIconCaptions = ({ algoliaHit }: { algoliaHit: AlgoliaHit | und
         Icon={Euro}
         caption={getDisplayPrice(
           algoliaHit?.offer.prices,
-          algoliaHit.offer.isDuo && profileInfo?.is_beneficiary
+          algoliaHit.offer.isDuo && profileInfo?.isBeneficiary
         )}
       />
       <Spacer.Row numberOfSpaces={6} />
