@@ -47,6 +47,14 @@ module.exports = {
         name: 'react-content-loader',
         message: 'use react-content-loader/native instead',
       },
+      {
+        name: 'ui/theme/shadow.ios',
+        message: 'use ui/theme instead',
+      },
+      {
+        name: 'ui/theme/shadow.android',
+        message: 'use ui/theme instead',
+      },
     ],
     strict: ['error', 'global'],
     'no-console': ['error', { allow: ['warn', 'error'] }],

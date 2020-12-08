@@ -13,7 +13,6 @@ interface SeeMoreProps {
 }
 export const SeeMore: React.FC<SeeMoreProps> = ({ layout, onPress }) => {
   const containerHeight = layout && layout === 'two-items' ? LENGTH_M : LENGTH_L
-
   return (
     <Container containerHeight={containerHeight}>
       <Spacer.Column numberOfSpaces={2} />
