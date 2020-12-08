@@ -422,6 +422,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             }
                           >
                             <Image
+                              resizeMode="cover"
                               source={
                                 Object {
                                   "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/5AZQ",
@@ -1701,6 +1702,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             }
                           >
                             <Image
+                              resizeMode="cover"
                               source={
                                 Object {
                                   "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/ZEWA",
