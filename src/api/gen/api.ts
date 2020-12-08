@@ -113,18 +113,6 @@ export interface AccountRequest {
 }/**
  * 
  * @export
- * @interface PasswordResetRequestRequest
- */
-export interface PasswordResetRequestRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof PasswordResetRequestRequest
-     */
-    email: string;
-}/**
- * 
- * @export
  * @interface RefreshResponse
  */
 export interface RefreshResponse {
@@ -133,7 +121,19 @@ export interface RefreshResponse {
      * @type {string}
      * @memberof RefreshResponse
      */
-    access_token: string;
+    accessToken: string;
+}/**
+ * 
+ * @export
+ * @interface RequestPasswordResetRequest
+ */
+export interface RequestPasswordResetRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof RequestPasswordResetRequest
+     */
+    email: string;
 }/**
  * 
  * @export
@@ -145,13 +145,13 @@ export interface ResetPasswordRequest {
      * @type {string}
      * @memberof ResetPasswordRequest
      */
-    new_password: string;
+    newPassword: string;
     /**
      * 
      * @type {string}
      * @memberof ResetPasswordRequest
      */
-    reset_password_token: string;
+    resetPasswordToken: string;
 }/**
  * 
  * @export
@@ -181,13 +181,13 @@ export interface SigninResponse {
      * @type {string}
      * @memberof SigninResponse
      */
-    access_token: string;
+    accessToken: string;
     /**
      * 
      * @type {string}
      * @memberof SigninResponse
      */
-    refresh_token: string;
+    refreshToken: string;
 }/**
  * 
  * @export
@@ -205,13 +205,13 @@ export interface UserProfileResponse {
      * @type {string}
      * @memberof UserProfileResponse
      */
-    first_name?: string;
+    firstName?: string;
     /**
      * 
      * @type {boolean}
      * @memberof UserProfileResponse
      */
-    is_beneficiary: boolean;
+    isBeneficiary: boolean;
 }/**
  * 
  * @export
@@ -223,7 +223,7 @@ export interface ValidateEmailRequest {
      * @type {string}
      * @memberof ValidateEmailRequest
      */
-    email_validation_token: string;
+    emailValidationToken: string;
 }/**
  * 
  * @export
@@ -235,19 +235,19 @@ export interface ValidateEmailResponse {
      * @type {string}
      * @memberof ValidateEmailResponse
      */
-    access_token: string;
+    accessToken: string;
     /**
      * 
      * @type {string}
      * @memberof ValidateEmailResponse
      */
-    id_check_token?: string;
+    idCheckToken?: string;
     /**
      * 
      * @type {string}
      * @memberof ValidateEmailResponse
      */
-    refresh_token: string;
+    refreshToken: string;
 }
 /**
  * DefaultApi - fetch parameter creator
@@ -324,12 +324,12 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary password_reset_request <POST>
-         * @param {PasswordResetRequestRequest} [body] 
+         * @summary request_password_reset <POST>
+         * @param {RequestPasswordResetRequest} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options: any = {}): Promise<FetchArgs> {
+        async nativeV1RequestPasswordResetPost(body?: RequestPasswordResetRequest, options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/request_password_reset`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
@@ -340,7 +340,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"PasswordResetRequestRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"RequestPasswordResetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
             return {
                 url: url.format(localVarUrlObj),
@@ -467,12 +467,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary password_reset_request <POST>
-         * @param {PasswordResetRequestRequest} [body] 
+         * @summary request_password_reset <POST>
+         * @param {RequestPasswordResetRequest} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nativeV1RequestPasswordResetPost(basePath: string, body?: PasswordResetRequestRequest, options?: any): Promise<EmptyResponse> {
+        async nativeV1RequestPasswordResetPost(basePath: string, body?: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1RequestPasswordResetPost(body, options);
             const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
@@ -559,13 +559,13 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
-     * @summary password_reset_request <POST>
-     * @param {PasswordResetRequestRequest} [body] 
+     * @summary request_password_reset <POST>
+     * @param {RequestPasswordResetRequest} [body] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public async nativeV1RequestPasswordResetPost(body?: PasswordResetRequestRequest, options?: any) {
+    public async nativeV1RequestPasswordResetPost(body?: RequestPasswordResetRequest, options?: any) {
         const functionalApi = DefaultApiFp(this.configuration)
         return functionalApi.nativeV1RequestPasswordResetPost(this.basePath, body, options)
     }
