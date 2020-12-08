@@ -102,6 +102,115 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
     </Text>
   </View>
   <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#c7c7cc",
+          "marginHorizontal": 8,
+          "width": 1,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "paddingBottom": 4,
+            "paddingLeft": 4,
+            "paddingRight": 4,
+            "paddingTop": 4,
+          },
+        ]
+      }
+    >
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight={40}
+        bbWidth={40}
+        focusable={false}
+        height={40}
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 40,
+              "width": 40,
+            },
+          ]
+        }
+        testID="iconEuro"
+        vbHeight={40}
+        vbWidth={40}
+        width={40}
+      >
+        <RNSVGGroup>
+          <RNSVGGroup
+            fill={null}
+            fillRule={0}
+            propList={
+              Array [
+                "fill",
+                "fillRule",
+              ]
+            }
+          >
+            <RNSVGGroup
+              fill={4284637794}
+              fillRule={1}
+              propList={
+                Array [
+                  "fill",
+                  "fillRule",
+                ]
+              }
+            >
+              <RNSVGGroup>
+                <RNSVGPath
+                  d="M21.414 9.583c3.847 0 7.319 2.347 8.904 5.983.173.398.005.867-.38 1.051-.39.186-.851.006-1.026-.396-1.338-3.068-4.261-5.045-7.498-5.045-3.782 0-6.97 2.669-7.936 6.306h11.314c.46 0 .833.374.833.834 0 .418-.31.77-.734.827l-.099.006-11.59.001c-.016.212-.023.426-.023.642 0 .346.02.688.057 1.024h11.556c.46 0 .833.373.833.833 0 .419-.31.77-.734.828l-.099.006H13.588c1.081 3.44 4.178 5.924 7.826 5.924 3.17 0 6.043-1.895 7.418-4.868.185-.398.649-.567 1.035-.372.381.192.54.666.357 1.059-1.63 3.523-5.042 5.774-8.81 5.774-4.51 0-8.303-3.186-9.434-7.517H9.792c-.46 0-.834-.373-.834-.834 0-.418.31-.77.735-.827l.099-.006h1.893c-.032-.337-.049-.679-.049-1.024 0-.216.007-.43.02-.642H9.791c-.46 0-.834-.374-.834-.834 0-.418.31-.77.735-.827l.099-.006h2.096c1.002-4.525 4.885-7.9 9.526-7.9z"
+                />
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      28 €
+    </Text>
+  </View>
+  <View
     numberOfSpaces={6}
     style={
       Array [

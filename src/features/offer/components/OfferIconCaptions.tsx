@@ -5,7 +5,9 @@ import styled from 'styled-components/native'
 import { useUserProfileInfo } from 'features/home/api'
 import { AlgoliaHit } from 'libs/algolia'
 import { _ } from 'libs/i18n'
+import { getDisplayPrice } from 'libs/parsers'
 import { Duo } from 'ui/svg/icons/Duo'
+import { Euro } from 'ui/svg/icons/Euro'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { IconWithCaption, OfferCategory } from '../atoms'
@@ -27,6 +29,15 @@ export const OfferIconCaptions = ({ algoliaHit }: { algoliaHit: AlgoliaHit | und
           <IconWithCaption testID="iconDuo" Icon={Duo} caption={_(t`À deux !`)} />
         </React.Fragment>
       )}
+      <Separator />
+      <IconWithCaption
+        testID="iconEuro"
+        Icon={Euro}
+        caption={getDisplayPrice(
+          algoliaHit?.offer.prices,
+          algoliaHit.offer.isDuo && profileInfo?.is_beneficiary
+        )}
+      />
       <Spacer.Row numberOfSpaces={6} />
     </Row>
   )
