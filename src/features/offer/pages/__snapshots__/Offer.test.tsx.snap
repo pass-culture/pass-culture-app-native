@@ -290,110 +290,165 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                       }
                     >
                       <View>
-                        <Image
-                          blurRadius={20}
-                          extraHeight={16}
-                          resizeMode="cover"
-                          source={
-                            Object {
-                              "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/5AZQ",
-                            }
-                          }
+                        <View
                           style={
                             Array [
                               Object {
-                                "height": 328,
-                                "width": 750,
+                                "alignItems": "center",
                               },
                             ]
                           }
-                        />
-                        <RNSVGSvgView
-                          align="none"
-                          bbHeight={8}
-                          bbWidth={751}
-                          focusable={false}
-                          height={8}
-                          meetOrSlice={0}
-                          minX={0}
-                          minY={0}
-                          style={
-                            Array [
-                              Object {
-                                "backgroundColor": "transparent",
-                                "borderWidth": 0,
-                              },
-                              Object {
-                                "flex": 0,
-                                "height": 8,
-                                "width": 751,
-                              },
-                            ]
-                          }
-                          vbHeight={8}
-                          vbWidth={375}
-                          width={751}
                         >
-                          <RNSVGGroup>
-                            <RNSVGDefs>
-                              <RNSVGLinearGradient
-                                gradient={
-                                  Array [
-                                    0,
-                                    -1376171,
-                                    1,
-                                    -13500266,
-                                  ]
-                                }
-                                gradientTransform={null}
-                                gradientUnits={0}
-                                name="prefix__a"
-                                x1="0%"
-                                x2="100%"
-                                y1="49.977%"
-                                y2="50.023%"
-                              />
-                            </RNSVGDefs>
-                            <RNSVGGroup
-                              fill={null}
-                              propList={
-                                Array [
-                                  "fill",
-                                ]
+                          <Image
+                            blurRadius={20}
+                            extraHeight={16}
+                            resizeMode="cover"
+                            source={
+                              Object {
+                                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/5AZQ",
                               }
-                            >
+                            }
+                            style={
+                              Array [
+                                Object {
+                                  "height": 320,
+                                  "width": 750,
+                                },
+                              ]
+                            }
+                          />
+                          <RNSVGSvgView
+                            align="none"
+                            bbHeight={8}
+                            bbWidth={751}
+                            focusable={false}
+                            height={8}
+                            meetOrSlice={0}
+                            minX={0}
+                            minY={0}
+                            style={
+                              Array [
+                                Object {
+                                  "backgroundColor": "transparent",
+                                  "borderWidth": 0,
+                                },
+                                Object {
+                                  "flex": 0,
+                                  "height": 8,
+                                  "width": 751,
+                                },
+                              ]
+                            }
+                            vbHeight={8}
+                            vbWidth={375}
+                            width={751}
+                          >
+                            <RNSVGGroup>
+                              <RNSVGDefs>
+                                <RNSVGLinearGradient
+                                  gradient={
+                                    Array [
+                                      0,
+                                      -1376171,
+                                      1,
+                                      -13500266,
+                                    ]
+                                  }
+                                  gradientTransform={null}
+                                  gradientUnits={0}
+                                  name="prefix__a"
+                                  x1="0%"
+                                  x2="100%"
+                                  y1="49.977%"
+                                  y2="50.023%"
+                                />
+                              </RNSVGDefs>
                               <RNSVGGroup
-                                matrix={
-                                  Array [
-                                    1,
-                                    0,
-                                    0,
-                                    1,
-                                    0,
-                                    -309,
-                                  ]
-                                }
+                                fill={null}
                                 propList={
                                   Array [
-                                    "stroke",
-                                    "strokeWidth",
+                                    "fill",
                                   ]
                                 }
-                                stroke={
-                                  Array [
-                                    1,
-                                    "prefix__a",
-                                  ]
-                                }
-                                strokeWidth={8}
                               >
-                                <RNSVGPath
-                                  d="M4 313H371V314H4z"
-                                />
+                                <RNSVGGroup
+                                  matrix={
+                                    Array [
+                                      1,
+                                      0,
+                                      0,
+                                      1,
+                                      0,
+                                      -309,
+                                    ]
+                                  }
+                                  propList={
+                                    Array [
+                                      "stroke",
+                                      "strokeWidth",
+                                    ]
+                                  }
+                                  stroke={
+                                    Array [
+                                      1,
+                                      "prefix__a",
+                                    ]
+                                  }
+                                  strokeWidth={8}
+                                >
+                                  <RNSVGPath
+                                    d="M4 313H371V314H4z"
+                                  />
+                                </RNSVGGroup>
                               </RNSVGGroup>
                             </RNSVGGroup>
-                          </RNSVGGroup>
-                        </RNSVGSvgView>
+                          </RNSVGSvgView>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "borderRadius": 8,
+                                  "bottom": 0,
+                                  "position": "absolute",
+                                  "shadowColor": "#151515",
+                                  "shadowOffset": Object {
+                                    "height": 8,
+                                    "width": 0,
+                                  },
+                                  "shadowOpacity": 0.2,
+                                  "shadowRadius": 12,
+                                },
+                              ]
+                            }
+                          >
+                            <Image
+                              source={
+                                Object {
+                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/5AZQ",
+                                }
+                              }
+                              style={
+                                Array [
+                                  Object {
+                                    "borderRadius": 8,
+                                    "height": 316,
+                                    "width": 212,
+                                  },
+                                ]
+                              }
+                            />
+                          </View>
+                          <View
+                            numberOfSpaces={20}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 80,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
                         <View
                           style={
                             Array [
@@ -407,6 +462,16 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                         >
                           <View
                             customHeight={16}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 16,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            numberOfSpaces={4}
                             style={
                               Array [
                                 Object {
@@ -777,11 +842,11 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                           </View>
                         </View>
                         <View
-                          numberOfSpaces={8}
+                          numberOfSpaces={4}
                           style={
                             Array [
                               Object {
-                                "height": 32,
+                                "height": 16,
                               },
                             ]
                           }
@@ -1504,110 +1569,165 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                       }
                     >
                       <View>
-                        <Image
-                          blurRadius={20}
-                          extraHeight={16}
-                          resizeMode="cover"
-                          source={
-                            Object {
-                              "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/ZEWA",
-                            }
-                          }
+                        <View
                           style={
                             Array [
                               Object {
-                                "height": 328,
-                                "width": 750,
+                                "alignItems": "center",
                               },
                             ]
                           }
-                        />
-                        <RNSVGSvgView
-                          align="none"
-                          bbHeight={8}
-                          bbWidth={751}
-                          focusable={false}
-                          height={8}
-                          meetOrSlice={0}
-                          minX={0}
-                          minY={0}
-                          style={
-                            Array [
-                              Object {
-                                "backgroundColor": "transparent",
-                                "borderWidth": 0,
-                              },
-                              Object {
-                                "flex": 0,
-                                "height": 8,
-                                "width": 751,
-                              },
-                            ]
-                          }
-                          vbHeight={8}
-                          vbWidth={375}
-                          width={751}
                         >
-                          <RNSVGGroup>
-                            <RNSVGDefs>
-                              <RNSVGLinearGradient
-                                gradient={
-                                  Array [
-                                    0,
-                                    -1376171,
-                                    1,
-                                    -13500266,
-                                  ]
-                                }
-                                gradientTransform={null}
-                                gradientUnits={0}
-                                name="prefix__a"
-                                x1="0%"
-                                x2="100%"
-                                y1="49.977%"
-                                y2="50.023%"
-                              />
-                            </RNSVGDefs>
-                            <RNSVGGroup
-                              fill={null}
-                              propList={
-                                Array [
-                                  "fill",
-                                ]
+                          <Image
+                            blurRadius={20}
+                            extraHeight={16}
+                            resizeMode="cover"
+                            source={
+                              Object {
+                                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/ZEWA",
                               }
-                            >
+                            }
+                            style={
+                              Array [
+                                Object {
+                                  "height": 320,
+                                  "width": 750,
+                                },
+                              ]
+                            }
+                          />
+                          <RNSVGSvgView
+                            align="none"
+                            bbHeight={8}
+                            bbWidth={751}
+                            focusable={false}
+                            height={8}
+                            meetOrSlice={0}
+                            minX={0}
+                            minY={0}
+                            style={
+                              Array [
+                                Object {
+                                  "backgroundColor": "transparent",
+                                  "borderWidth": 0,
+                                },
+                                Object {
+                                  "flex": 0,
+                                  "height": 8,
+                                  "width": 751,
+                                },
+                              ]
+                            }
+                            vbHeight={8}
+                            vbWidth={375}
+                            width={751}
+                          >
+                            <RNSVGGroup>
+                              <RNSVGDefs>
+                                <RNSVGLinearGradient
+                                  gradient={
+                                    Array [
+                                      0,
+                                      -1376171,
+                                      1,
+                                      -13500266,
+                                    ]
+                                  }
+                                  gradientTransform={null}
+                                  gradientUnits={0}
+                                  name="prefix__a"
+                                  x1="0%"
+                                  x2="100%"
+                                  y1="49.977%"
+                                  y2="50.023%"
+                                />
+                              </RNSVGDefs>
                               <RNSVGGroup
-                                matrix={
-                                  Array [
-                                    1,
-                                    0,
-                                    0,
-                                    1,
-                                    0,
-                                    -309,
-                                  ]
-                                }
+                                fill={null}
                                 propList={
                                   Array [
-                                    "stroke",
-                                    "strokeWidth",
+                                    "fill",
                                   ]
                                 }
-                                stroke={
-                                  Array [
-                                    1,
-                                    "prefix__a",
-                                  ]
-                                }
-                                strokeWidth={8}
                               >
-                                <RNSVGPath
-                                  d="M4 313H371V314H4z"
-                                />
+                                <RNSVGGroup
+                                  matrix={
+                                    Array [
+                                      1,
+                                      0,
+                                      0,
+                                      1,
+                                      0,
+                                      -309,
+                                    ]
+                                  }
+                                  propList={
+                                    Array [
+                                      "stroke",
+                                      "strokeWidth",
+                                    ]
+                                  }
+                                  stroke={
+                                    Array [
+                                      1,
+                                      "prefix__a",
+                                    ]
+                                  }
+                                  strokeWidth={8}
+                                >
+                                  <RNSVGPath
+                                    d="M4 313H371V314H4z"
+                                  />
+                                </RNSVGGroup>
                               </RNSVGGroup>
                             </RNSVGGroup>
-                          </RNSVGGroup>
-                        </RNSVGSvgView>
+                          </RNSVGSvgView>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "borderRadius": 8,
+                                  "bottom": 0,
+                                  "position": "absolute",
+                                  "shadowColor": "#151515",
+                                  "shadowOffset": Object {
+                                    "height": 8,
+                                    "width": 0,
+                                  },
+                                  "shadowOpacity": 0.2,
+                                  "shadowRadius": 12,
+                                },
+                              ]
+                            }
+                          >
+                            <Image
+                              source={
+                                Object {
+                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/ZEWA",
+                                }
+                              }
+                              style={
+                                Array [
+                                  Object {
+                                    "borderRadius": 8,
+                                    "height": 316,
+                                    "width": 212,
+                                  },
+                                ]
+                              }
+                            />
+                          </View>
+                          <View
+                            numberOfSpaces={20}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 80,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
                         <View
                           style={
                             Array [
@@ -1621,6 +1741,16 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                         >
                           <View
                             customHeight={16}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 16,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            numberOfSpaces={4}
                             style={
                               Array [
                                 Object {
@@ -1991,11 +2121,11 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                           </View>
                         </View>
                         <View
-                          numberOfSpaces={8}
+                          numberOfSpaces={4}
                           style={
                             Array [
                               Object {
-                                "height": 32,
+                                "height": 16,
                               },
                             ]
                           }
