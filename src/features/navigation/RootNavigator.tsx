@@ -24,7 +24,7 @@ import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Offer } from 'features/offer'
 import { AlgoliaHit } from 'libs/algolia'
-import { analytics } from 'libs/analytics'
+import { logScreenView } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
 import { onNavigationStateChange } from './services'
@@ -61,7 +61,7 @@ const theme = { colors: { background: ColorsEnum.WHITE } } as Theme
 
 export const RootNavigator: React.FC = () => {
   useEffect(() => {
-    analytics.logScreenView({ screen_name: 'Home' })
+    logScreenView('Home')
   }, [])
   return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>

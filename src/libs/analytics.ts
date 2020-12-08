@@ -2,7 +2,8 @@ import firebaseAnalyticsModule from '@react-native-firebase/analytics'
 
 export const analytics = firebaseAnalyticsModule()
 
-export enum AnalyticsEvent {
+enum AnalyticsEvent {
+  SCREEN_VIEW = 'screen_view',
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
   CONSULT_OFFER = 'ConsultOffer',
@@ -10,6 +11,14 @@ export enum AnalyticsEvent {
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
+}
+
+export const logScreenView = async (screenName: string) => {
+  // 1. We log an event screen_view so that Firebase knows the screen of the user
+  await analytics.logScreenView({ screen_name: screenName, screen_class: screenName })
+  // 2. We also log an event screen_view_<screen> to help with funnels.
+  // See https://blog.theodo.com/2018/01/building-google-analytics-funnel-firebase-react-native/
+  await analytics.logEvent(`${AnalyticsEvent.SCREEN_VIEW}_${screenName.toLowerCase()}`)
 }
 
 export const logAllModulesSeen = async (numberOfModules: number) =>

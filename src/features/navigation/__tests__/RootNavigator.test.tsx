@@ -2,10 +2,10 @@ import { render } from '@testing-library/react-native'
 import React from 'react'
 import { act } from 'react-test-renderer'
 
-import { analytics } from 'libs/analytics'
+import { logScreenView } from 'libs/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { flushAllPromises } from 'tests/utils'
 
-import { reactQueryProviderHOC } from '../../../tests/reactQueryProviderHOC'
-import { flushAllPromises } from '../../../tests/utils'
 import { RootNavigator } from '../RootNavigator'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
@@ -23,8 +23,8 @@ describe('RootNavigator', () => {
     await act(async () => {
       await flushAllPromises()
     })
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith({ screen_name: 'Home' })
+    expect(logScreenView).toHaveBeenCalledTimes(1)
+    expect(logScreenView).toHaveBeenCalledWith('Home')
     unmount()
   })
 })
