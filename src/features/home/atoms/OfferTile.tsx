@@ -24,17 +24,18 @@ interface OfferTileProps {
   thumbUrl?: string
   layout?: Layout
   algoliaHit: AlgoliaHit
+  moduleName: string
 }
 
 export const OfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { layout = 'one-item-medium', algoliaHit, ...offer } = props
+  const { layout = 'one-item-medium', algoliaHit, moduleName, ...offer } = props
   const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
   const imageWidth = imageHeight * RATIO_ALGOLIA
 
   function handlePressOffer() {
     navigation.navigate('Offer', { id: offer.offerId, algoliaHit })
-    logConsultOffer(offer.offerId)
+    logConsultOffer(offer.offerId, moduleName)
   }
 
   return (

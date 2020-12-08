@@ -1,6 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { logConsultOffer, logConsultOfferFromDeeplink } from 'libs/analytics'
 
 import { useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
@@ -16,7 +15,6 @@ describe('useDeeplinkUrlHandler Analytics', () => {
 
     handleDeeplinkUrl({ url })
 
-    expect(navigate).toHaveBeenCalledWith('Offer', { id: 'ABCDE' })
     expect(logConsultOffer).not.toHaveBeenCalled()
     expect(logConsultOfferFromDeeplink).toHaveBeenCalledWith('ABCDE')
   })

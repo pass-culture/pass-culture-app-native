@@ -18,6 +18,7 @@ const props = {
   price: '28 €',
   thumbUrl: offer.thumbUrl,
   algoliaHit: mockedAlgoliaResponse.hits[0],
+  moduleName: 'Module Name',
 }
 
 describe('OfferTile component', () => {
@@ -36,6 +37,6 @@ describe('OfferTile component', () => {
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     const { getByTestId } = render(<OfferTile {...props} />)
     fireEvent.press(getByTestId('offerTileImage'))
-    expect(logConsultOffer).toHaveBeenCalledWith('AGHYQ')
+    expect(logConsultOffer).toHaveBeenCalledWith('AGHYQ', 'Module Name')
   })
 })

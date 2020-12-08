@@ -52,6 +52,7 @@ const renderSeeMore = (showSeeMore: boolean, layout: Layout, moduleName: string)
 export const OffersModule = (props: OffersModuleProps) => {
   const { hits, nbHits, display, algolia: parameters, position, index } = props
   const [hasSeenAllTiles, setHasSeenAllTiles] = useState<boolean>(false)
+  const moduleName = display.title || parameters.title
 
   const renderItem = useCallback(
     ({ item }: { item: Hit<AlgoliaHit> }) => (
@@ -67,6 +68,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         price={getDisplayPrice(item.offer.prices)}
         layout={display.layout}
         algoliaHit={item}
+        moduleName={moduleName}
       />
     ),
     [display.layout, position]
@@ -79,7 +81,6 @@ export const OffersModule = (props: OffersModuleProps) => {
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
 
-  const moduleName = display.title || parameters.title
   const logAllTilesSeenOnEndReached = () => {
     if (!hasSeenAllTiles) {
       setHasSeenAllTiles(true)
