@@ -7,6 +7,8 @@ import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
 import { CheatCodesButton } from '../components/CheatCodesButton'
@@ -19,6 +21,11 @@ export function Navigation(): JSX.Element {
   return (
     <ScrollView>
       <Spacer.TopScreen />
+      <ModalHeader
+        title="Navigation"
+        leftIcon={ArrowPrevious}
+        onLeftIconPress={navigation.goBack}
+      />
       <StyledContainer>
         <Row half>
           <CheatCodesButton />
