@@ -74,6 +74,7 @@
     "react-native-webview": "^10.10.0",
     "react-query": "3.1.1",
     "recompose": "^0.30.0",
+    "refresh-fetch": "^0.7.0",
     "styled-components": "^5.2.0",
     "typesafe-actions": "^5.1.0",
     "url": "^0.11.0"
@@ -97,6 +98,7 @@
     "@types/react-native": "^0.63.23",
     "@types/react-test-renderer": "^16.9.2",
     "@types/recompose": "^0.30.7",
+    "@types/refresh-fetch": "^0.6.1",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
     "@typescript-eslint/parser": "^4.8.2",
     "@welldone-software/why-did-you-render": "^6.0.0-rc.1",
