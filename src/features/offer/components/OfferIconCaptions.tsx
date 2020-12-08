@@ -14,6 +14,11 @@ import { IconWithCaption, OfferCategory } from '../atoms'
 
 export const OfferIconCaptions = ({ algoliaHit }: { algoliaHit: AlgoliaHit | undefined }) => {
   const { data: profileInfo } = useUserProfileInfo()
+  const displayPriceDuoPrecision = algoliaHit?.offer.isDuo && profileInfo?.is_beneficiary
+  const displayedPrice = `${getDisplayPrice(algoliaHit?.offer.prices)}${
+    displayPriceDuoPrecision ? ` ${_(t`/ place`)}` : ''
+  }`
+
   if (!algoliaHit) return <React.Fragment />
 
   return (
@@ -23,21 +28,14 @@ export const OfferIconCaptions = ({ algoliaHit }: { algoliaHit: AlgoliaHit | und
         category={algoliaHit?.offer.category || null}
         label={algoliaHit?.offer.label}
       />
-      {algoliaHit.offer.isDuo && profileInfo?.isBeneficiary && (
+      {algoliaHit.offer.isDuo && profileInfo?.is_beneficiary && (
         <React.Fragment>
           <Separator />
           <IconWithCaption testID="iconDuo" Icon={Duo} caption={_(t`À deux !`)} />
         </React.Fragment>
       )}
       <Separator />
-      <IconWithCaption
-        testID="iconEuro"
-        Icon={Euro}
-        caption={getDisplayPrice(
-          algoliaHit?.offer.prices,
-          algoliaHit.offer.isDuo && profileInfo?.isBeneficiary
-        )}
-      />
+      <IconWithCaption testID="iconEuro" Icon={Euro} caption={displayedPrice} />
       <Spacer.Row numberOfSpaces={6} />
     </Row>
   )
