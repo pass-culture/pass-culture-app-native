@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, MutableRefObject, useEffect, useState } from 'react'
 import { Keyboard, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -8,20 +8,33 @@ import { ColorsEnum, getShadow, getSpacing, Spacer } from 'ui/theme'
 
 import { AvoidingKeyboardContainer } from './keyboard'
 
-export const BottomContentPage: FC = (props) => {
+interface Props {
+  onKeyboardDismiss?: () => void
+  // used to communicate the keyboard height to the parent without triggering a rerendering
+  keyboardHeightRef?: MutableRefObject<number>
+}
+
+export const BottomContentPage: FC<Props> = (props) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useKeyboardEvents({
     onBeforeShow(data) {
-      if (data.keyboardShown) {
-        setKeyboardHeight(data.keyboardHeight)
-      }
+      setKeyboardHeight(data.keyboardHeight)
     },
-    onBeforeHide(data) {
-      if (!data.keyboardShown) {
-        setKeyboardHeight(0)
-      }
+    onBeforeHide() {
+      setKeyboardHeight(0)
+      props.onKeyboardDismiss?.()
     },
   })
+
+  // effect that informs the parent that the keyboard height has changed
+  // the parent won't rerender
+  useEffect(() => {
+    if (!props.keyboardHeightRef) {
+      return
+    }
+
+    props.keyboardHeightRef.current = keyboardHeight
+  }, [keyboardHeight])
 
   return (
     <React.Fragment>
