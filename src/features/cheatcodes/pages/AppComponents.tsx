@@ -5,6 +5,7 @@ import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { ExternalLink } from 'features/offer/components/ExternalLink'
 import { AlgoliaCategory } from 'libs/algolia'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -43,6 +44,7 @@ import { Logo } from 'ui/svg/icons/Logo'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Warning } from 'ui/svg/icons/Warning'
+import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 function onButtonPress() {
@@ -416,7 +418,16 @@ export const AppComponents: FunctionComponent = () => {
         Your components
       </Typo.Title1>
       <Section visible={sectionsVisibility.components}>
-        <ExternalLink url="https://google.com" />
+        <AlignedText>
+          <Text>
+            <ExternalLink url="https://google.com" />
+            <Text> - ExternalLink </Text>
+          </Text>
+        </AlignedText>
+        <AlignedText>
+          <Rectangle />
+          <Text> - Rectangle </Text>
+        </AlignedText>
       </Section>
       <Spacer.Column numberOfSpaces={5} />
       <Spacer.BottomScreen />
