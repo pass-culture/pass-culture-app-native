@@ -5,7 +5,6 @@ import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { ExternalLink } from 'features/offer/components/ExternalLink'
 import { AlgoliaCategory } from 'libs/algolia'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
