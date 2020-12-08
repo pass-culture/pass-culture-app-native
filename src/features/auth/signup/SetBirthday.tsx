@@ -59,7 +59,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       email: email,
       isNewsletterChecked: isNewsletterChecked,
       password: password,
-      birthday: state.date,
+      birthday: state.date ? state.date : '',
     })
   }
 

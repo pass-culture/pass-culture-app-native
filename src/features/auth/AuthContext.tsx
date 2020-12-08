@@ -2,15 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { SigninRequest } from 'api/gen'
+import { AccountRequest, SigninRequest } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
-import { saveAccessToken, clearAccessToken, getAccessToken } from 'libs/storage'
+import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
 
 export interface IAuthContext {
   isLoggedIn: boolean
   signIn: (data: SigninRequest) => Promise<boolean>
+  signUp: (data: AccountRequest) => Promise<boolean>
   signOut: () => Promise<void>
 }
 
@@ -46,6 +47,15 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
     }
   }
 
+  const signUp = async (body: AccountRequest) => {
+    try {
+      const response = await api.nativeV1AccountPost(body, { credentials: 'omit' })
+      return !!response
+    } catch (error) {
+      return false
+    }
+  }
+
   const signOut = async () => {
     await clearAccessToken()
     await clearRefreshToken()
@@ -54,7 +64,9 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, signIn, signOut }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ isLoggedIn, signIn, signUp, signOut }}>
+      {children}
+    </AuthContext.Provider>
   )
 }
 
@@ -66,4 +78,9 @@ export function useSignIn(): IAuthContext['signIn'] {
 export function useSignOut(): IAuthContext['signOut'] {
   const authContext = useAuthContext()
   return authContext.signOut
+}
+
+export function useSignUp(): IAuthContext['signUp'] {
+  const authContext = useAuthContext()
+  return authContext.signUp
 }
