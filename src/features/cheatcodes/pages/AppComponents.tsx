@@ -5,6 +5,7 @@ import { ScrollView, View, Text, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { AccordionItem } from 'features/offer/components'
 import { AlgoliaCategory } from 'libs/algolia'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -50,62 +51,12 @@ function onButtonPress() {
   Alert.alert('you pressed it')
 }
 
-interface SectionsVisibility {
-  typos: boolean
-  buttons: boolean
-  modals: boolean
-  icons: boolean
-  inputs: boolean
-  snackbars: boolean
-  components: boolean
-}
-
-type AllowedSection = keyof SectionsVisibility
-
 export const AppComponents: FunctionComponent = () => {
   const {
     visible: basicModalVisible,
     showModal: showBasicModal,
     hideModal: hideBasicModal,
   } = useModal(false)
-
-  const [sectionsVisibility, setSectionsVisibility] = useState<SectionsVisibility>({
-    typos: false,
-    buttons: false,
-    modals: false,
-    icons: false,
-    inputs: false,
-    snackbars: false,
-    components: false,
-  })
-
-  const toggleSectionVisibility = useCallback(
-    (section: AllowedSection) =>
-      setSectionsVisibility((config) => ({ ...config, [section]: !config[section] })),
-    []
-  )
-
-  function toggleTypos() {
-    toggleSectionVisibility('typos')
-  }
-  function toggleButtons() {
-    toggleSectionVisibility('buttons')
-  }
-  function toggleModals() {
-    toggleSectionVisibility('modals')
-  }
-  function toggleIcons() {
-    toggleSectionVisibility('icons')
-  }
-  function toggleInputs() {
-    toggleSectionVisibility('inputs')
-  }
-  function toggleSnackbars() {
-    toggleSectionVisibility('snackbars')
-  }
-  function toggleComponents() {
-    toggleSectionVisibility('components')
-  }
 
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
@@ -140,12 +91,9 @@ export const AppComponents: FunctionComponent = () => {
     <StyledScrollView>
       <Spacer.TopScreen />
       <ModalHeader title="App components" leftIcon={ArrowPrevious} onLeftIconPress={goBack} />
-      {/* Typos */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY} onPress={toggleTypos}>
-        Typos
-      </Typo.Title1>
 
-      <Section visible={sectionsVisibility.typos}>
+      {/* Typos */}
+      <AccordionItem title="Typos">
         <Typo.Hero>Hero</Typo.Hero>
         <Typo.Title1>Title 1</Typo.Title1>
         <Typo.Title2>Title 2</Typo.Title2>
@@ -154,14 +102,12 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Body>This is a body</Typo.Body>
         <Typo.ButtonText>This is a button text</Typo.ButtonText>
         <Typo.Caption>This is a caption</Typo.Caption>
-      </Section>
-      <Spacer.Column numberOfSpaces={5} />
+      </AccordionItem>
+
+      <Divider />
 
       {/* Buttons */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY} onPress={toggleButtons}>
-        Buttons
-      </Typo.Title1>
-      <Section visible={sectionsVisibility.buttons}>
+      <AccordionItem title="Buttons">
         {/* Buttons: Primary */}
         <Typo.Title4>Button - Theme Primary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
@@ -229,15 +175,12 @@ export const AppComponents: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
-      </Section>
-      <Spacer.Column numberOfSpaces={5} />
+      </AccordionItem>
+
+      <Divider />
 
       {/* Modals */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY} onPress={toggleModals}>
-        Modals
-      </Typo.Title1>
-
-      <Section visible={sectionsVisibility.modals}>
+      <AccordionItem title="Modals">
         <TouchableOpacity onPress={showBasicModal}>
           <Typo.Title4 color={ColorsEnum.TERTIARY}>Modal - Basic</Typo.Title4>
         </TouchableOpacity>
@@ -255,15 +198,12 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4>Modal Header</Typo.Title4>
         <ColoredModalHeader title="My modal header" leftIcon={ArrowPrevious} rightIcon={Close} />
-      </Section>
-      <Spacer.Column numberOfSpaces={5} />
+      </AccordionItem>
+
+      <Divider />
 
       {/* Icons */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY} onPress={toggleIcons}>
-        Icons
-      </Typo.Title1>
-
-      <Section visible={sectionsVisibility.icons}>
+      <AccordionItem title="Icons">
         <CategoryIcons />
         <AlignedText>
           <ArrowPrevious size={24} />
@@ -345,15 +285,12 @@ export const AppComponents: FunctionComponent = () => {
           <Digital size={24} />
           <Text> - Digital </Text>
         </AlignedText>
-      </Section>
-      <Spacer.Column numberOfSpaces={5} />
+      </AccordionItem>
+
+      <Divider />
 
       {/* Inputs */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY} onPress={toggleInputs}>
-        Inputs
-      </Typo.Title1>
-
-      <Section visible={sectionsVisibility.inputs}>
+      <AccordionItem title="Inputs">
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input</Typo.Title4>
         <TextInput value={inputText} onChangeText={setInputText} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
@@ -391,15 +328,12 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <DateInput />
-      </Section>
-      <Spacer.Column numberOfSpaces={5} />
+      </AccordionItem>
+
+      <Divider />
 
       {/* SnackBar */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY} onPress={toggleSnackbars}>
-        SnackBar
-      </Typo.Title1>
-
-      <Section visible={sectionsVisibility.snackbars}>
+      <AccordionItem title="SnackBar">
         <TouchableOpacity onPress={popupSnackBarSuccess}>
           <Typo.Title4 color={ColorsEnum.GREEN_VALID}>
             Popup Sucess SnackBar for 5 seconds
@@ -409,14 +343,12 @@ export const AppComponents: FunctionComponent = () => {
         <TouchableOpacity onPress={popupSnackBarInfos}>
           <Typo.Title4 color={ColorsEnum.ACCENT}>Popup Information SnackBar</Typo.Title4>
         </TouchableOpacity>
-      </Section>
-      <Spacer.Column numberOfSpaces={5} />
+      </AccordionItem>
 
-      {/* Create your category */}
-      <Typo.Title1 color={ColorsEnum.PRIMARY} onPress={toggleComponents}>
-        Your components
-      </Typo.Title1>
-      <Section visible={sectionsVisibility.components}>
+      <Divider />
+
+      {/* Your components */}
+      <AccordionItem title="Your components">
         <AlignedText>
           <Text>
             <ExternalLink url="https://google.com" />
@@ -427,8 +359,8 @@ export const AppComponents: FunctionComponent = () => {
           <Rectangle />
           <Text> - Rectangle </Text>
         </AlignedText>
-      </Section>
-      <Spacer.Column numberOfSpaces={5} />
+      </AccordionItem>
+
       <Spacer.BottomScreen />
     </StyledScrollView>
   )
@@ -448,17 +380,17 @@ const ColoredModalHeader = styled(ModalHeader).attrs({
 })``
 
 const StyledScrollView = styled(ScrollView)({
-  paddingHorizontal: getSpacing(5),
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: ColorsEnum.WHITE,
 })
 
 function doNothingFn() {
   /* do nothing */
 }
 
-const Section = styled.View<{ visible: boolean }>(({ visible }) => ({
-  display: visible ? 'flex' : 'none',
-}))
+const Divider = styled.View({
+  height: getSpacing(2),
+  backgroundColor: ColorsEnum.GREY_LIGHT,
+})
 
 const CategoryIcons = () => {
   return (
