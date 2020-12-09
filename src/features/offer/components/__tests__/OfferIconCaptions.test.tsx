@@ -74,19 +74,8 @@ describe('<OfferIconCaptions />', () => {
     ${'noPrice'} | ${true}  | ${false}    | ${''}
   `('should show right price', async ({ price, duo, beneficiary, expectedDisplayedPrice }) => {
     let algoliaOffer: AlgoliaHit = freeNotDuoAlgoliaOffer
-    switch (price) {
-      case '7':
-        algoliaOffer = sevenEuroNotDuoAlgoliaOffer
-        break
-      case 'free':
-        algoliaOffer = freeNotDuoAlgoliaOffer
-        break
-      case 'noPrice':
-        algoliaOffer = noPriceNotDuoAlgoliaOffer
-        break
-      default:
-        break
-    }
+    if (price === '7') algoliaOffer = sevenEuroNotDuoAlgoliaOffer
+    if (price === 'noPrice') algoliaOffer = noPriceNotDuoAlgoliaOffer
     if (duo) {
       algoliaOffer = {
         ...algoliaOffer,
