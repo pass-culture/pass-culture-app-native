@@ -1,8 +1,11 @@
 import { t } from '@lingui/macro'
+import { configureRefreshFetch } from 'refresh-fetch'
 
+import { api } from 'api/api'
 import { Headers, NotAuthenticatedError } from 'libs/fetch'
 import { _ } from 'libs/i18n'
-import { getAccessToken } from 'libs/storage'
+import { getRefreshToken } from 'libs/keychain'
+import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
   const accessToken = await getAccessToken()
@@ -22,14 +25,37 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     return {}
   }
 
-  if (response.status === 401) {
-    throw new NotAuthenticatedError()
-  }
-
-  if (!response.ok) {
-    throw new Error(_(t`Échec de la requête ${response.url}, code: ${response.status}`))
-  }
-
   const json = await response.json()
   return json
 }
+
+const shouldRefreshToken = (response: Response) => {
+  console.warn('SHOULD REFRESH TOKEN')
+  return response.status === 401
+}
+
+export const refreshToken = async () => {
+  console.warn('REFRESH TOKEN')
+  const refreshToken = await getRefreshToken()
+  try {
+    const response = await api.nativeV1RefreshAccessTokenPost({
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    })
+    await clearAccessToken()
+    await saveAccessToken(response.accessToken)
+  } catch (err) {
+    throw new NotAuthenticatedError()
+  }
+}
+
+export const refreshFetch = configureRefreshFetch({
+  fetch: (url: string, options = {}) => {
+    return fetch(url, options).then((response) =>
+      response.ok ? response : Promise.reject(response)
+    )
+  },
+  shouldRefreshToken,
+  refreshToken,
+})
