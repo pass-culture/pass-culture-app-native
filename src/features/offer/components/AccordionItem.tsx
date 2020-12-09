@@ -40,14 +40,16 @@ export const AccordionItem = ({ title, children, defaultOpen = false }: IAccordi
       <TouchableWithoutFeedback onPress={toggleListItem}>
         <TitleContainer>
           <Typo.Title4>{title}</Typo.Title4>
-          <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }}>
+          <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
             <ArrowNext size={getSpacing(6)} />
           </Animated.View>
         </TitleContainer>
       </TouchableWithoutFeedback>
       {/* eslint-disable-next-line react-native/no-inline-styles */}
-      <Animated.View style={{ overflow: 'hidden', height: bodyHeight }}>
-        <BodyContainer onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}>
+      <Animated.View style={{ overflow: 'hidden', height: bodyHeight }} testID="accordionBody">
+        <BodyContainer
+          testID="accordionBodyContainer"
+          onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}>
           {children}
         </BodyContainer>
       </Animated.View>

@@ -1373,11 +1373,12 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               Object {
                                 "transform": Array [
                                   Object {
-                                    "rotateZ": "4.71238898038469rad",
+                                    "rotateZ": "1.5707963267948966rad",
                                   },
                                 ],
                               }
                             }
+                            testID="accordionArrow"
                           >
                             <RNSVGSvgView
                               align="xMidYMid"
@@ -1452,6 +1453,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               "overflow": "hidden",
                             }
                           }
+                          testID="accordionBody"
                         >
                           <View
                             onLayout={[Function]}
@@ -1466,6 +1468,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                 },
                               ]
                             }
+                            testID="accordionBodyContainer"
                           >
                             <Text
                               style={
@@ -2960,11 +2963,12 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                               Object {
                                 "transform": Array [
                                   Object {
-                                    "rotateZ": "4.71238898038469rad",
+                                    "rotateZ": "1.5707963267948966rad",
                                   },
                                 ],
                               }
                             }
+                            testID="accordionArrow"
                           >
                             <RNSVGSvgView
                               align="xMidYMid"
@@ -3039,6 +3043,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                               "overflow": "hidden",
                             }
                           }
+                          testID="accordionBody"
                         >
                           <View
                             onLayout={[Function]}
@@ -3053,6 +3058,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                 },
                               ]
                             }
+                            testID="accordionBodyContainer"
                           >
                             <Text
                               style={
