@@ -2,9 +2,11 @@ import { BatchUser } from '@bam.tech/react-native-batch'
 import { t } from '@lingui/macro'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Text, Alert } from 'react-native'
+import { Text, Alert, Button } from 'react-native'
 import styled from 'styled-components/native'
 
+import { api } from 'api/api'
+import { refreshToken } from 'api/helpers'
 import { CodePushButton } from 'features/cheatcodes/components/CodePushButton'
 import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
 import { LogoutButton } from 'features/cheatcodes/components/LogoutButton'
@@ -13,6 +15,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { clearAccessToken } from 'libs/storage'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
@@ -25,10 +28,17 @@ const someOfferDescription = `Lorem ipsum dolor sit amet, consectetur adipiscing
 
 export const CheatCodes: FunctionComponent<Props> = function () {
   const [batchInstallationId, setBatchInstallationId] = useState('none')
+  const [userEmail, setUserEmail] = useState('')
   useEffect(() => {
     getBatchInstallationID().then(setBatchInstallationId)
   }, [])
   const ParsedDescription = highlightLinks(someOfferDescription)
+
+  async function fetchMe() {
+    const response = await api.nativeV1MeGet()
+    setUserEmail(response.email)
+  }
+
   return (
     <Container>
       <Spacer.TopScreen />
@@ -36,6 +46,10 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <CrashTestButton />
       <NavigateHomeButton />
       <LogoutButton />
+      <Spacer.Flex />
+      <Button title="clear access token" onPress={clearAccessToken} />
+      <Button title="/ME" onPress={fetchMe} />
+      <Text>{userEmail}</Text>
       <Spacer.Flex />
       <Text>{batchInstallationId}</Text>
       <Spacer.Flex />
