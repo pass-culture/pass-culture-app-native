@@ -23,7 +23,10 @@ export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
 
   return (
     <Container>
-      <OfferHero imageUrl={algoliaHit?.offer.thumbUrl || ''} />
+      <OfferHero
+        category={algoliaHit?.offer.category}
+        imageUrl={algoliaHit?.offer.thumbUrl || ''}
+      />
       <OfferHeader />
       <Spacer.Column numberOfSpaces={4} />
       {algoliaHit?.offer.isDigital ? (

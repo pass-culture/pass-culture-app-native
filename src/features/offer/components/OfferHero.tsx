@@ -2,21 +2,23 @@ import React from 'react'
 import { Dimensions, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AlgoliaCategory } from 'libs/algolia'
+import { mapCategoryToIcon } from 'libs/parsers'
+import { OfferBackPlaceholder } from 'ui/svg/OfferBackPlaceholder'
 import { OfferPlaceholder } from 'ui/svg/OfferPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-import { OfferBackPlaceholder } from '../../../ui/svg/OfferBackPlaceholder'
-
 interface Props {
   imageUrl: string
+  category?: AlgoliaCategory | null
 }
 
-export const OfferHero: React.FC<Props> = ({ imageUrl }) => {
+export const OfferHero: React.FC<Props> = ({ imageUrl, category }) => {
   const { top } = useCustomSafeInsets()
-
+  const CategoryIcon = mapCategoryToIcon(category || null)
   return (
     <HeroContainer>
       {imageUrl ? (
@@ -38,7 +40,18 @@ export const OfferHero: React.FC<Props> = ({ imageUrl }) => {
         {imageUrl ? (
           <Image resizeMode="cover" source={{ uri: imageUrl }} />
         ) : (
-          <OfferPlaceholder testID="offerPlaceholder" width={imageWidth} height={imageHeight} />
+          <React.Fragment>
+            <OfferPlaceholder testID="offerPlaceholder" width={imageWidth} height={imageHeight} />
+            <CategoryIconContainer>
+              <Spacer.Flex />
+              <CategoryIcon
+                testID="categoryIcon"
+                size={getSpacing(24)}
+                color={ColorsEnum.GREY_MEDIUM}
+              />
+              <Spacer.Flex />
+            </CategoryIconContainer>
+          </React.Fragment>
         )}
       </ImageContainer>
       <Spacer.Column numberOfSpaces={20} />
@@ -54,6 +67,12 @@ const imageHeight = getSpacing(79)
 const screenWidth = Dimensions.get('window').width + 1
 
 const HeroContainer = styled.View({ alignItems: 'center' })
+const CategoryIconContainer = styled.View({
+  height: '100%',
+  width: '100%',
+  position: 'absolute',
+  alignItems: 'center',
+})
 const BlurImage = styled.Image<{ extraHeight: number }>(({ extraHeight }) => ({
   height: blurImageHeight + extraHeight,
   width: screenWidth,
