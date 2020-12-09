@@ -7,8 +7,9 @@ export const NavigateToHomeWithoutModalOptions: RouteParams<TabParamList, 'Home'
   shouldDisplayLoginModal: false,
 }
 
-export function openExternalUrl(url: string) {
-  if (Linking.canOpenURL(url)) {
+export async function openExternalUrl(url: string) {
+  const canOpen = await Linking.canOpenURL(url)
+  if (canOpen) {
     Linking.openURL(url)
   }
 }

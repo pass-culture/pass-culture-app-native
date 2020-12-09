@@ -18,6 +18,7 @@ import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
+import { SignupEmailValidation } from 'features/auth/signup/SignupEmailValidation'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -30,6 +31,12 @@ import { ColorsEnum } from 'ui/theme'
 import { onNavigationStateChange } from './services'
 import { TabNavigator, TabParamList } from './TabBar/TabNavigator'
 
+/**
+ * WARNING !
+ * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
+ * If a deeplink handler indexes the screen with params you are changing,
+ * please update the deeplink handler in consequence.
+ */
 export type RootStackParamList = {
   AcceptCgu: {
     email: string
@@ -51,6 +58,7 @@ export type RootStackParamList = {
   SetEmail: undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
   SignupConfirmationEmailSent: { email: string }
+  SignupEmailValidation: { token: string; expiration_timestamp: number }
   TabNavigator: undefined
 }
 
@@ -83,6 +91,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="SetPassword" component={SetPassword} />
         <RootStack.Screen name="SetBirthday" component={SetBirthday} />
         <RootStack.Screen name="AcceptCgu" component={AcceptCgu} />
+        <RootStack.Screen name="SignupEmailValidation" component={SignupEmailValidation} />
         <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
         <RootStack.Screen
           name="SignupConfirmationEmailSent"

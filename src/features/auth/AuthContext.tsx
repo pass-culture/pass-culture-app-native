@@ -2,9 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { AccountRequest, SigninRequest } from 'api/gen'
+import { AccountRequest, SigninRequest, SigninResponse } from 'api/gen'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
 
@@ -23,6 +22,19 @@ export function useAuthContext(): IAuthContext {
   return authContext!
 }
 
+export type LoginRoutineMethod = 'fromLogin' | 'fromSignup'
+
+/**
+ * Executes the minimal set of instructions required to proceed to the login
+ * @param {SigninResponse} response
+ * @param {LoginRoutineMethod} method The process that triggered the login routine
+ */
+export async function loginRoutine(response: SigninResponse, method: LoginRoutineMethod) {
+  await saveRefreshToken(response.refreshToken)
+  await saveAccessToken(response.accessToken)
+  await analytics.logLogin({ method })
+}
+
 export const AuthWrapper = ({ children }: { children: Element }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
   const queryClient = useQueryClient()
@@ -37,9 +49,8 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
     try {
       const response = await api.nativeV1SigninPost(body, { credentials: 'omit' })
       if (!response) return false
-      await saveRefreshToken(response.refreshToken)
-      await saveAccessToken(response.accessToken)
-      await analytics.logLogin({ method: env.API_BASE_URL })
+
+      await loginRoutine(response, 'fromLogin')
       setIsLoggedIn(true)
       return true
     } catch (error) {

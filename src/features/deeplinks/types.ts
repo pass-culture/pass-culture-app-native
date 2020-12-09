@@ -20,6 +20,7 @@ export type AllowedDeeplinkRoutes = keyof DeepLinksToScreenConfiguration
 
 export type DeepLinksToScreenConfiguration = {
   default: (params?: SerializedParams) => ScreenConfiguration<'Home'>
+  'email-confirmation': (params?: SerializedParams) => ScreenConfiguration<'SignupEmailValidation'>
   favoris: (params?: SerializedParams) => ScreenConfiguration<'Favorites'>
   login: (params?: SerializedParams) => ScreenConfiguration<'Login'>
   'set-email': (params?: SerializedParams) => ScreenConfiguration<'SetEmail'>

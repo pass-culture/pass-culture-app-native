@@ -50,29 +50,3 @@ jest.mock('libs/environment', () => ({
     SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
   },
 }))
-
-const originalWarn = console.warn.bind(console.warn)
-console.warn = function (message) {
-  const messagesToIgnore = [
-    /* React Native is not a real css environment. One of the things it doesn't support is nesting and actually selectors in general
-    Source : https://github.com/styled-components/styled-components/issues/989#issuecomment-314946541 */
-    'Node of type rule not supported as an inline style',
-  ]
-  for (messageToIgnore of messagesToIgnore) {
-    if (message.includes(messagesToIgnore)) {
-      return
-    }
-  }
-  originalWarn(message)
-}
-
-const originalError = console.error.bind(console.error)
-console.error = function (message) {
-  const messagesToIgnore = ['dummy-error']
-  for (messageToIgnore of messagesToIgnore) {
-    if (message.includes(messagesToIgnore)) {
-      return
-    }
-  }
-  originalError(message)
-}

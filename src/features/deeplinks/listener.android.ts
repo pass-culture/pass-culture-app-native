@@ -13,6 +13,12 @@ export function useListenDeepLinksEffect() {
     Linking.getInitialURL()
       .catch(onError)
       .then((url) => {
+        if (url === null) {
+          // Android/iOS can return null when opening the app from certains places
+          // in this case, it's not en error, just ignore it.
+          return
+        }
+
         if (url) {
           handleDeeplinkUrl({ url })
         } else {
