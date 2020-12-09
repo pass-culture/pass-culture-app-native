@@ -78,6 +78,7 @@ exports[`OfferCategory renders correctly 1`] = `
         },
       ]
     }
+    testID="caption-undefined"
   >
     Livre ou carte lecture
   </Text>

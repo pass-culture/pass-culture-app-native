@@ -1131,6 +1131,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                   },
                                 ]
                               }
+                              testID="caption-undefined"
                             >
                               Film
                             </Text>
@@ -1240,6 +1241,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                   },
                                 ]
                               }
+                              testID="caption-iconEuro"
                             >
                               Gratuit
                             </Text>
@@ -2628,6 +2630,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   },
                                 ]
                               }
+                              testID="caption-undefined"
                             >
                               Spectacle
                             </Text>
@@ -2721,6 +2724,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   },
                                 ]
                               }
+                              testID="caption-iconDuo"
                             >
                               À deux !
                             </Text>
@@ -2830,6 +2834,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   },
                                 ]
                               }
+                              testID="caption-iconEuro"
                             >
                               9 € / place
                             </Text>

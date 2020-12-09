@@ -97,6 +97,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
           },
         ]
       }
+      testID="caption-undefined"
     >
       Abonnements concerts
     </Text>
@@ -206,6 +207,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
           },
         ]
       }
+      testID="caption-iconEuro"
     >
       28 €
     </Text>

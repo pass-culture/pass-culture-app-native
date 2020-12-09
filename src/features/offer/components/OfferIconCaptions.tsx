@@ -14,8 +14,13 @@ import { IconWithCaption, OfferCategory } from '../atoms'
 
 export const OfferIconCaptions = ({ algoliaHit }: { algoliaHit: AlgoliaHit | undefined }) => {
   const { data: profileInfo } = useUserProfileInfo()
-  const displayPriceDuoPrecision = algoliaHit?.offer.isDuo && profileInfo?.is_beneficiary
-  const displayedPrice = `${getDisplayPrice(algoliaHit?.offer.prices)}${
+  const priceWithoutDuoMention = getDisplayPrice(algoliaHit?.offer.prices)
+  const displayPriceDuoPrecision =
+    algoliaHit?.offer.isDuo &&
+    profileInfo?.isBeneficiary &&
+    priceWithoutDuoMention !== 'Gratuit' &&
+    priceWithoutDuoMention !== ''
+  const displayedPrice = `${priceWithoutDuoMention}${
     displayPriceDuoPrecision ? ` ${_(t`/ place`)}` : ''
   }`
 
@@ -28,7 +33,7 @@ export const OfferIconCaptions = ({ algoliaHit }: { algoliaHit: AlgoliaHit | und
         category={algoliaHit?.offer.category || null}
         label={algoliaHit?.offer.label}
       />
-      {algoliaHit.offer.isDuo && profileInfo?.is_beneficiary && (
+      {algoliaHit.offer.isDuo && profileInfo?.isBeneficiary && (
         <React.Fragment>
           <Separator />
           <IconWithCaption testID="iconDuo" Icon={Duo} caption={_(t`À deux !`)} />
