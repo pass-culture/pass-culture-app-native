@@ -52,6 +52,8 @@
     "highlight-words-core": "^1.2.2",
     "i18n-js": "^3.5.1",
     "jsc-android": "^241213.1.0",
+    "lottie-ios": "^3.1.9",
+    "lottie-react-native": "^3.5.0",
     "patch-package": "^6.2.0",
     "react": "16.13.1",
     "react-content-loader": "^5.1.4",

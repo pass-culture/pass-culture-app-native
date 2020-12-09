@@ -60,6 +60,17 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row>
           <ButtonPrimary
+            title={'Signup : Validate Email'}
+            onPress={() =>
+              navigation.navigate('SignupEmailValidation', {
+                token: 'whichTokenDoYouWantReally',
+                expiration_timestamp: 456789123,
+              })
+            }
+          />
+        </Row>
+        <Row>
+          <ButtonPrimary
             title={'Reset Mdp : email envoyé'}
             onPress={() =>
               navigation.navigate('ResetPasswordEmailSent', {

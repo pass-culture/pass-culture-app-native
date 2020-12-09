@@ -64,7 +64,7 @@ describe('AcceptCgu Page', () => {
 
     const { findByText } = renderAcceptCGU()
 
-    const contactSupportButton = await findByText('Continuer')
+    const contactSupportButton = await findByText('Accepter et s’inscrire')
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {

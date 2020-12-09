@@ -76,7 +76,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
         </Paragraphe>
         <ButtonTertiary title={_(t`Contacter le support`)} onPress={contactSupport} icon={Email} />
         <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary title={_(t`Continuer`)} onPress={subscribe} />
+        <ButtonPrimary title={_(t`Accepter et s’inscrire`)} onPress={subscribe} />
       </BottomCardContentContainer>
     </BottomContentPage>
   )

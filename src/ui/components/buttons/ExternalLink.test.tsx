@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { Linking } from 'react-native'
+import waitForExpect from 'wait-for-expect'
 
 import { ExternalLink } from './ExternalLink'
 
@@ -11,8 +12,10 @@ describe('ExternalLink', () => {
   it('should open given url when text clicked', () => {
     const { getByText } = render(<ExternalLink url={someUrl} />)
     fireEvent.press(getByText(someUrl))
-    expect(openUrlSpy).toHaveBeenCalledWith(someUrl)
-    expect(openUrlSpy).toHaveBeenCalledTimes(1)
+    waitForExpect(() => {
+      expect(openUrlSpy).toHaveBeenCalledWith(someUrl)
+      expect(openUrlSpy).toHaveBeenCalledTimes(1)
+    })
     openUrlSpy.mockClear()
   })
   it('should open given url when text clicked and text not matching url', () => {

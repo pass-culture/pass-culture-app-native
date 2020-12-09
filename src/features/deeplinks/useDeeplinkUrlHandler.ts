@@ -64,7 +64,7 @@ export function useDeeplinkUrlHandler() {
       handleDeeplinkAnalytics(screen, screenParams)
       navigate(screen, screenParams)
     } catch {
-      onError(_(t`${DEFAULT_ERROR_MESSAGE}: `) + event.url)
+      onError(DEFAULT_ERROR_MESSAGE + ' : ' + event.url)
     }
   }
 }
