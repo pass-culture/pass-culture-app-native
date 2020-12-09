@@ -5,6 +5,7 @@ import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
+import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
@@ -41,6 +42,12 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     visible: informationModalVisible,
     showModal: showInformationModal,
     hideModal: hideInformationModal,
+  } = useModal(false)
+
+  const {
+    visible: fullPageModalVisible,
+    showModal: showFullPageModal,
+    hideModal: hideFullPageModal,
   } = useModal(false)
 
   const { goBack, navigate } = useNavigation<UseNavigationType>()
@@ -106,6 +113,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
           rightIcon={Close}
+          onRightIconPress={showFullPageModal}
         />
         <BottomCardContentContainer>
           <ButtonTertiary
@@ -161,6 +169,11 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           </StyledBody>
         </React.Fragment>
       </AppInformationModal>
+      <QuitSignupModal
+        visible={fullPageModalVisible}
+        resume={hideFullPageModal}
+        testIdSuffix="birthday-information"
+      />
     </React.Fragment>
   )
 }
