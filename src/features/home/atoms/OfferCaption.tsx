@@ -11,22 +11,27 @@ interface OfferCaptionProps {
   name?: string
   date?: string
   isDuo?: boolean
+  isBeneficiary?: boolean
   price: string
 }
 
-export const OfferCaption = ({ imageWidth, name, date, isDuo, price }: OfferCaptionProps) => (
-  <CaptionContainer imageWidth={imageWidth}>
-    <Typo.Caption numberOfLines={1}>{name}</Typo.Caption>
-    {date && (
-      <Typo.Caption numberOfLines={1} color={ColorsEnum.GREY_DARK}>
-        {date}
+export const OfferCaption = (props: OfferCaptionProps) => {
+  const { imageWidth, name, date, isDuo, isBeneficiary, price } = props
+
+  return (
+    <CaptionContainer imageWidth={imageWidth}>
+      <Typo.Caption numberOfLines={1}>{name}</Typo.Caption>
+      {date && (
+        <Typo.Caption numberOfLines={1} color={ColorsEnum.GREY_DARK}>
+          {date}
+        </Typo.Caption>
+      )}
+      <Typo.Caption color={ColorsEnum.GREY_DARK} testID="priceIsDuo">
+        {isDuo && isBeneficiary ? `${price} - ${_(/*i18n: Duo offer */ t`Duo`)}` : price}
       </Typo.Caption>
-    )}
-    <Typo.Caption color={ColorsEnum.GREY_DARK} testID="priceIsDuo">
-      {isDuo ? `${price} - ${_(/*i18n: Duo offer */ t`Duo`)}` : price}
-    </Typo.Caption>
-  </CaptionContainer>
-)
+    </CaptionContainer>
+  )
+}
 
 const CaptionContainer = styled.View<{ imageWidth: number }>(({ imageWidth }) => ({
   maxWidth: imageWidth,
