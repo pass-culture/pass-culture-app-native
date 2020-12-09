@@ -8,22 +8,28 @@ import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
+import { OfferBackPlaceholder } from '../../../ui/svg/OfferBackPlaceholder'
+
 interface Props {
   imageUrl: string
 }
 
 export const OfferHero: React.FC<Props> = ({ imageUrl }) => {
   const { top } = useCustomSafeInsets()
+
   return (
     <HeroContainer>
-      <BlurImage
-        extraHeight={top}
-        blurRadius={Platform.OS === 'android' ? 5 : 20}
-        resizeMode={'cover'}
-        source={{ uri: imageUrl }}
-      />
-      {/** Add 1 pixel to avoid 1 white pixel on androids */}
-      <Rectangle size={screenWidth + 1} />
+      {imageUrl ? (
+        <BlurImage
+          extraHeight={top}
+          blurRadius={Platform.OS === 'android' ? 5 : 20}
+          resizeMode={'cover'}
+          source={{ uri: imageUrl }}
+        />
+      ) : (
+        <OfferBackPlaceholder width={screenWidth} height={blurImageHeight + top} />
+      )}
+      <Rectangle size={screenWidth} />
       <ImageContainer>
         {imageUrl ? (
           <Image resizeMode="cover" source={{ uri: imageUrl }} />
@@ -35,13 +41,17 @@ export const OfferHero: React.FC<Props> = ({ imageUrl }) => {
     </HeroContainer>
   )
 }
+const blurImageHeight = getSpacing(76)
+
 const imageWidth = getSpacing(53)
 const imageHeight = getSpacing(79)
-const screenWidth = Dimensions.get('window').width
+
+/** Add 1 pixel to avoid 1 white pixel on androids */
+const screenWidth = Dimensions.get('window').width + 1
 
 const HeroContainer = styled.View({ alignItems: 'center' })
 const BlurImage = styled.Image<{ extraHeight: number }>(({ extraHeight }) => ({
-  height: getSpacing(76) + extraHeight,
+  height: blurImageHeight + extraHeight,
   width: screenWidth,
 }))
 const ImageContainer = styled.View({
