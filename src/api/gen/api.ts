@@ -13,7 +13,7 @@
  */
 import url from "url";
 
-import { getAuthenticationHeaders, handleGeneratedApiResponse } from "api/helpers";
+import { getAuthenticationHeaders, handleGeneratedApiResponse, refreshFetch } from "api/helpers";
 import { EmptyResponse } from 'libs/fetch'
 
 import { Configuration } from "./configuration";
@@ -440,7 +440,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1AccountPost(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1AccountPost(body, options);
-            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -451,7 +451,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1MeGet(basePath: string, options?: any): Promise<UserProfileResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1MeGet(options);
-            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -462,7 +462,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1RefreshAccessTokenPost(basePath: string, options?: any): Promise<RefreshResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1RefreshAccessTokenPost(options);
-            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -474,7 +474,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1RequestPasswordResetPost(basePath: string, body?: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1RequestPasswordResetPost(body, options);
-            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -486,7 +486,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1ResetPasswordPost(basePath: string, body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1ResetPasswordPost(body, options);
-            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -498,7 +498,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1SigninPost(basePath: string, body?: SigninRequest, options?: any): Promise<SigninResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1SigninPost(body, options);
-            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -510,7 +510,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1ValidateEmailPost(basePath: string, body?: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1ValidateEmailPost(body, options);
-            const response = await fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
     }
