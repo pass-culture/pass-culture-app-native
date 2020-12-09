@@ -15,12 +15,12 @@ const getPricePerPlace = (prices: number[]): string => {
 
 export const getDisplayPrice = (prices: number[] | undefined): string => {
   if (!prices || prices.length === 0) return ''
-  if (prices.includes(0)) return 'Gratuit'
+  if (prices.includes(0)) return _(t`Gratuit`)
   return getPricePerPlace(prices)
 }
 
 export const getDisplayPriceWithDuoMention = (prices: number[] | undefined): string => {
   if (!prices || prices.length === 0) return ''
-  if (prices.includes(0)) return 'Gratuit'
+  if (prices.includes(0)) return _(t`Gratuit`)
   return `${getPricePerPlace(prices)} ${_(t`/ place`)}`
 }

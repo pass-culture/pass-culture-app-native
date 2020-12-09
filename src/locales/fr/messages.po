@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/offer/components/OfferIconCaptions.tsx:14
+#: src/libs/parsers/getDisplayPrice.ts:23
 msgid "/ place"
 msgstr "/ place"
 
@@ -151,6 +151,11 @@ msgstr "Erreur d'authentification"
 msgid "Favorites"
 msgstr "Favoris"
 
+#: src/libs/parsers/getDisplayPrice.ts:15
+#: src/libs/parsers/getDisplayPrice.ts:22
+msgid "Gratuit"
+msgstr "Gratuit"
+
 #: src/libs/keychain.ts:23
 #: src/libs/keychain.ts:33
 #: src/libs/keychain.ts:47
@@ -177,6 +182,10 @@ msgstr "Le pass Culture est accessible à tous !"
 #: src/features/auth/signup/SetBirthday.tsx:62
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+
+#: src/features/offer/pages/Offer.tsx:33
+msgid "Modalités de retrait"
+msgstr "Modalités de retrait"
 
 #: src/features/auth/login/Login.tsx:73
 #: src/features/auth/signup/SetPassword.tsx:32
@@ -208,6 +217,10 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
+#: src/features/offer/pages/Offer.tsx:29
+msgid "Où ?"
+msgstr "Où ?"
+
 #: src/features/auth/signup/AcceptCgu.tsx:55
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
@@ -223,6 +236,10 @@ msgstr "Pourquoi ?"
 #: src/features/profile/pages/Profile.tsx:12
 msgid "Profile"
 msgstr "Profil"
+
+#: src/features/offer/pages/Offer.tsx:31
+msgid "Quand ?"
+msgstr "Quand ?"
 
 #: src/features/home/components/BusinessModule.tsx:37
 msgid "Redirection en cours"
@@ -337,7 +354,7 @@ msgstr "{0}"
 msgid "{DEFAULT_ERROR_MESSAGE}:"
 msgstr "{DEFAULT_ERROR_MESSAGE}:"
 
-#: src/features/offer/components/OfferIconCaptions.tsx:22
+#: src/features/offer/components/OfferIconCaptions.tsx:23
 msgid "À deux !"
 msgstr "À deux !"
 
