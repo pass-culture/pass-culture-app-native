@@ -427,3 +427,21 @@ export const digitalAlgoliaOffer = {
     venue: { name: { value: 'Offre numérique', matchLevel: 'none', matchedWords: [] } },
   },
 }
+
+export const freeNotDuoAlgoliaOffer = digitalAlgoliaOffer
+
+export const noPriceNotDuoAlgoliaOffer = {
+  ...freeNotDuoAlgoliaOffer,
+  offer: {
+    ...freeNotDuoAlgoliaOffer.offer,
+    prices: [],
+  },
+}
+
+export const sevenEuroNotDuoAlgoliaOffer = {
+  ...freeNotDuoAlgoliaOffer,
+  offer: {
+    ...freeNotDuoAlgoliaOffer.offer,
+    prices: [7],
+  },
+}

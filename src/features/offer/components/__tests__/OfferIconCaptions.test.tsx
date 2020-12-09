@@ -5,7 +5,12 @@ import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
-import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import {
+  mockedAlgoliaResponse,
+  freeNotDuoAlgoliaOffer,
+  noPriceNotDuoAlgoliaOffer,
+  sevenEuroNotDuoAlgoliaOffer,
+} from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -55,6 +60,52 @@ describe('<OfferIconCaptions />', () => {
       component.unmount()
     }
   )
+
+  it.each`
+    price        | duo      | beneficiary | expectedDisplayedPrice
+    ${'7'}       | ${false} | ${true}     | ${'7 €'}
+    ${'7'}       | ${true}  | ${true}     | ${'7 € / place'}
+    ${'7'}       | ${true}  | ${false}    | ${'7 €'}
+    ${'free'}    | ${false} | ${true}     | ${'Gratuit'}
+    ${'free'}    | ${true}  | ${true}     | ${'Gratuit'}
+    ${'free'}    | ${true}  | ${false}    | ${'Gratuit'}
+    ${'noPrice'} | ${false} | ${true}     | ${''}
+    ${'noPrice'} | ${true}  | ${true}     | ${''}
+    ${'noPrice'} | ${true}  | ${false}    | ${''}
+  `('should show right price', async ({ price, duo, beneficiary, expectedDisplayedPrice }) => {
+    let algoliaOffer: AlgoliaHit = freeNotDuoAlgoliaOffer
+    switch (price) {
+      case '7':
+        algoliaOffer = sevenEuroNotDuoAlgoliaOffer
+        break
+      case 'free':
+        algoliaOffer = freeNotDuoAlgoliaOffer
+        break
+      case 'noPrice':
+        algoliaOffer = noPriceNotDuoAlgoliaOffer
+        break
+      default:
+        break
+    }
+    if (duo) {
+      algoliaOffer = {
+        ...algoliaOffer,
+        offer: {
+          ...algoliaOffer.offer,
+          isDuo: true,
+        },
+      }
+    }
+    const component = await renderOfferIconCaptions({
+      algoliaHit: algoliaOffer,
+      isBeneficiary: beneficiary,
+    })
+    await waitForExpect(() => {
+      const euro = component.getByTestId('caption-iconEuro')
+      expect(euro.props.children).toEqual(expectedDisplayedPrice)
+    })
+    component.unmount()
+  })
 })
 
 async function renderOfferIconCaptions({

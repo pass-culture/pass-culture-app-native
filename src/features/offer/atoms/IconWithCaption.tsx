@@ -15,7 +15,7 @@ export const IconWithCaption = ({ Icon, caption, testID }: IconWithCaptionProps)
     <IconContainer>
       <Icon size={getSpacing(10)} color={ColorsEnum.GREY_DARK} testID={testID} />
     </IconContainer>
-    <Caption>{caption}</Caption>
+    <Caption testID={`caption-${testID}`}>{caption}</Caption>
   </Container>
 )
 
