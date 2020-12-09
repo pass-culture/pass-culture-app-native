@@ -2,6 +2,7 @@ import React from 'react'
 import { Dimensions, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { OfferPlaceholder } from 'ui/svg/OfferPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
@@ -24,12 +25,18 @@ export const OfferHero: React.FC<Props> = ({ imageUrl }) => {
       {/** Add 1 pixel to avoid 1 white pixel on androids */}
       <Rectangle size={screenWidth + 1} />
       <ImageContainer>
-        <Image resizeMode="cover" source={{ uri: imageUrl }} />
+        {imageUrl ? (
+          <Image resizeMode="cover" source={{ uri: imageUrl }} />
+        ) : (
+          <OfferPlaceholder width={imageWidth} height={imageHeight} />
+        )}
       </ImageContainer>
       <Spacer.Column numberOfSpaces={20} />
     </HeroContainer>
   )
 }
+const imageWidth = getSpacing(53)
+const imageHeight = getSpacing(79)
 const screenWidth = Dimensions.get('window').width
 
 const HeroContainer = styled.View({ alignItems: 'center' })
@@ -53,6 +60,6 @@ const ImageContainer = styled.View({
 })
 const Image = styled.Image({
   borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-  height: getSpacing(79),
-  width: getSpacing(53),
+  height: imageHeight,
+  width: imageWidth,
 })
