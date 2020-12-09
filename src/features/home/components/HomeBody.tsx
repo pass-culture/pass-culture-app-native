@@ -11,6 +11,7 @@ import {
 import { useGeolocation } from 'libs/geolocation'
 import { Spacer } from 'ui/theme'
 
+import { useUserProfileInfo } from '../api'
 import { AlgoliaModuleResponse } from '../pages/useHomeAlgoliaModules'
 import { isOfferModuleTypeguard } from '../typeguards'
 
@@ -21,6 +22,7 @@ interface HomeBodyProps {
 
 export const HomeBody = function ({ modules, algoliaModules }: HomeBodyProps) {
   const position = useGeolocation()
+  const { data: profile } = useUserProfileInfo()
 
   return (
     <Container>
@@ -33,6 +35,7 @@ export const HomeBody = function ({ modules, algoliaModules }: HomeBodyProps) {
                 key={module.moduleId}
                 algolia={module.algolia}
                 display={module.display}
+                isBeneficiary={profile?.isBeneficiary}
                 position={position}
                 hits={hits}
                 nbHits={nbHits}

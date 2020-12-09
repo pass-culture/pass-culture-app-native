@@ -16,6 +16,7 @@ import { Cover } from '../atoms/Cover'
 type OffersModuleProps = {
   algolia: AlgoliaParametersFields
   display: DisplayParametersFields
+  isBeneficiary?: boolean
   position: ReturnType<typeof useGeolocation>
   hits: Hit<AlgoliaHit>[]
   nbHits: number
@@ -50,7 +51,7 @@ const renderSeeMore = (showSeeMore: boolean, layout: Layout, moduleName: string)
   )
 
 export const OffersModule = (props: OffersModuleProps) => {
-  const { hits, nbHits, display, algolia: parameters, position, index } = props
+  const { hits, nbHits, display, algolia: parameters, position, index, isBeneficiary } = props
   const [hasSeenAllTiles, setHasSeenAllTiles] = useState<boolean>(false)
   const moduleName = display.title || parameters.title
 
@@ -67,6 +68,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         thumbUrl={item.offer.thumbUrl}
         price={getDisplayPrice(item.offer.prices)}
         layout={display.layout}
+        isBeneficiary={isBeneficiary}
         algoliaHit={item}
         moduleName={moduleName}
       />

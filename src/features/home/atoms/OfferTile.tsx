@@ -23,13 +23,14 @@ interface OfferTileProps {
   price: string
   thumbUrl?: string
   layout?: Layout
+  isBeneficiary?: boolean
   algoliaHit: AlgoliaHit
   moduleName: string
 }
 
 export const OfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { layout = 'one-item-medium', algoliaHit, moduleName, ...offer } = props
+  const { layout = 'one-item-medium', algoliaHit, moduleName, isBeneficiary, ...offer } = props
   const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
   const imageWidth = imageHeight * RATIO_ALGOLIA
 
@@ -61,6 +62,7 @@ export const OfferTile = (props: OfferTileProps) => {
         name={offer.name}
         date={offer.date}
         isDuo={offer.isDuo}
+        isBeneficiary={isBeneficiary}
         price={offer.price}
       />
     </Container>
