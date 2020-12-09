@@ -44,6 +44,7 @@ import { Logo } from 'ui/svg/icons/Logo'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Warning } from 'ui/svg/icons/Warning'
+import { OfferBackPlaceholder } from 'ui/svg/OfferBackPlaceholder'
 import { OfferPlaceholder } from 'ui/svg/OfferPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -363,6 +364,11 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <OfferPlaceholder />
           <Text> - OfferPlaceholder </Text>
+        </AlignedText>
+
+        <AlignedText>
+          <OfferBackPlaceholder />
+          <Text> - OfferBackPlaceholder </Text>
         </AlignedText>
       </AccordionItem>
 
