@@ -27,14 +27,18 @@ export const OfferHero: React.FC<Props> = ({ imageUrl }) => {
           source={{ uri: imageUrl }}
         />
       ) : (
-        <OfferBackPlaceholder width={screenWidth} height={blurImageHeight + top} />
+        <OfferBackPlaceholder
+          testID="offerBackPlaceholder"
+          width={screenWidth}
+          height={blurImageHeight + top}
+        />
       )}
       <Rectangle size={screenWidth} />
       <ImageContainer>
         {imageUrl ? (
           <Image resizeMode="cover" source={{ uri: imageUrl }} />
         ) : (
-          <OfferPlaceholder width={imageWidth} height={imageHeight} />
+          <OfferPlaceholder testID="offerPlaceholder" width={imageWidth} height={imageHeight} />
         )}
       </ImageContainer>
       <Spacer.Column numberOfSpaces={20} />
