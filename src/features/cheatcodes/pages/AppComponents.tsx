@@ -44,6 +44,7 @@ import { Logo } from 'ui/svg/icons/Logo'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Warning } from 'ui/svg/icons/Warning'
+import { OfferPlaceholder } from 'ui/svg/OfferPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -359,8 +360,13 @@ export const AppComponents: FunctionComponent = () => {
           <Rectangle />
           <Text> - Rectangle </Text>
         </AlignedText>
+        <AlignedText>
+          <OfferPlaceholder />
+          <Text> - OfferPlaceholder </Text>
+        </AlignedText>
       </AccordionItem>
 
+      <Spacer.Column numberOfSpaces={5} />
       <Spacer.BottomScreen />
     </StyledScrollView>
   )
