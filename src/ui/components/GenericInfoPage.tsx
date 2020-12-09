@@ -32,10 +32,8 @@ const scrollViewContentContainerStyle: ViewStyle = {
   flexDirection: 'column',
   flexGrow: 1,
   justifyContent: 'center',
-  alignSelf: 'center',
   alignItems: 'center',
-  width: '90%',
-  maxWidth: getSpacing(125),
+  paddingHorizontal: getSpacing(4),
 }
 
 const StyledTitle2 = styled(Typo.Title2).attrs({
