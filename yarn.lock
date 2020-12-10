@@ -2845,10 +2845,10 @@ anymatch@^3.0.3, anymatch@~3.1.1:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-appcenter-cli@^2.7.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/appcenter-cli/-/appcenter-cli-2.7.2.tgz#4e7cebbb442e9940c551b2f42ec00cbebe122fd8"
-  integrity sha512-KrOKbZAxP7GJwWHKhTBKIZq2GYzzD/FLDecASBEvAx7HNmsQ/iT0QQpRbQUfSwOFem0pL29qNqXhaQwHD7vyOw==
+appcenter-cli@2.7.3:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/appcenter-cli/-/appcenter-cli-2.7.3.tgz#70bc176acc291f718b2e90ebccf445e4af38a213"
+  integrity sha512-bcWNJ9GLY3soAr5EskZyJ7CUn7ZTx7O3c6rHhL7LYuKzfiDlUoTID43cwO7mnUHc7wsjb5slXAbhUDs+wNUEzA==
   dependencies:
     abort-controller "3.0.0"
     appcenter-file-upload-client "0.0.24"
