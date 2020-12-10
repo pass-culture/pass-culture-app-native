@@ -63,6 +63,13 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
       expect(configureScreen.params).toBe(undefined)
     })
   })
+  describe('link setEmail', () => {
+    it('should return SetEmail page when no params are passed', () => {
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['set-email']()
+      expect(configureScreen.screen).toBe('SetEmail')
+      expect(configureScreen.params).toBe(undefined)
+    })
+  })
 
   describe('link profil', () => {
     it('should return Profile page when no params are passed', () => {
