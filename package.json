@@ -49,6 +49,7 @@
     "appcenter-cli": "2.7.3",
     "babel-core": "^6.26.3",
     "contentful-resolve-response": "^1.2.2",
+    "hi-base32": "^0.5.0",
     "highlight-words-core": "^1.2.2",
     "i18n-js": "^3.5.1",
     "jsc-android": "^241213.1.0",
