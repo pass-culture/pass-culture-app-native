@@ -192,7 +192,7 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:33
+#: src/features/offer/pages/Offer.tsx:36
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -226,7 +226,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/offer/pages/Offer.tsx:29
+#: src/features/offer/pages/Offer.tsx:32
 msgid "Où ?"
 msgstr "Où ?"
 
@@ -246,7 +246,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:31
+#: src/features/offer/pages/Offer.tsx:34
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -336,6 +336,10 @@ msgstr "Une erreur s'est produite pendant le chargement."
 msgid "Valider"
 msgstr "Valider"
 
+#: src/features/offer/atoms/OfferSeeMore.tsx:10
+msgid "Voir plus d'informations"
+msgstr "Voir plus d'informations"
+
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
@@ -344,7 +348,7 @@ msgstr "Bienvenue à Pass Culture"
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
-#: src/features/offer/pages/Offer.tsx:18
+#: src/features/offer/pages/Offer.tsx:19
 msgid "en ligne"
 msgstr "en ligne"
 
@@ -362,6 +366,10 @@ msgstr "s'appliquent."
 #: src/features/auth/signup/SetEmail.tsx:61
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
+
+#: src/features/offer/atoms/OfferSeeMore.tsx:10
+msgid "voir plus"
+msgstr "voir plus"
 
 #: src/ui/components/inputs/InputError.tsx:10
 msgid "{0}"
