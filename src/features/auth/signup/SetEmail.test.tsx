@@ -64,6 +64,16 @@ describe('<SetEmail />', () => {
 
       expect(queryByText("Format de l'e-mail incorrect")).toBeTruthy()
     })
+
+    it('should open quit signup modal', () => {
+      const { getByTestId, queryByText } = renderPage()
+
+      const rightIcon = getByTestId('rightIcon')
+      fireEvent.press(rightIcon)
+
+      const title = queryByText("Es-tu sûr de vouloir abandonner l'inscription ?")
+      expect(title).toBeTruthy()
+    })
   })
 })
 
