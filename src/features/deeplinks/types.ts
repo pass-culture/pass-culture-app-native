@@ -22,6 +22,7 @@ export type DeepLinksToScreenConfiguration = {
   default: (params?: SerializedParams) => ScreenConfiguration<'Home'>
   favoris: (params?: SerializedParams) => ScreenConfiguration<'Favorites'>
   login: (params?: SerializedParams) => ScreenConfiguration<'Login'>
+  'set-email': (params?: SerializedParams) => ScreenConfiguration<'SetEmail'>
   'mot-de-passe-perdu': (
     params?: SerializedParams
   ) =>

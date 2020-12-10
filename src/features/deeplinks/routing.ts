@@ -12,6 +12,9 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   login: function () {
     return { screen: 'Login', params: undefined }
   },
+  'set-email': function () {
+    return { screen: 'SetEmail', params: undefined }
+  },
   'mot-de-passe-perdu': function (params) {
     if (params && params.token && params.email && params.expiration_timestamp) {
       const parsedExpirationTimestamp = Number(params.expiration_timestamp)
