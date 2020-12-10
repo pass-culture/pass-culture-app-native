@@ -4,7 +4,7 @@
 
 import url from "url";
 
-import { getAuthenticationHeaders, handleGeneratedApiResponse, refreshFetch } from "api/helpers";
+import { getAuthenticationHeaders, handleGeneratedApiResponse, getValidTokenAndFetch } from "api/helpers";
 import { EmptyResponse } from 'libs/fetch'
 
 import { Configuration } from "./configuration";
@@ -253,7 +253,7 @@ export const {{classname}}Fp = function(configuration?: Configuration) {
          */
         async {{nickname}}(basePath: string, {{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any): Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}EmptyResponse{{/returnType}}> {
             const localVarFetchArgs = await {{classname}}FetchParamCreator(configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options);
-            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await getValidTokenAndFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
     {{/operation}}

@@ -56,3 +56,11 @@ export class NotAuthenticatedError extends Error {
     super(_(/*i18n: Authentication error message */ t`Erreur d'authentification`))
   }
 }
+
+export class FailedToRefreshAccessTokenError extends Error {
+  constructor() {
+    super(
+      _(/*i18n: Authentication error message */ t`Erreur lors de la récupération du token d'accès`)
+    )
+  }
+}

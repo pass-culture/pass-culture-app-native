@@ -6,7 +6,6 @@ import { Text, Alert, Button } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { refreshToken } from 'api/helpers'
 import { CodePushButton } from 'features/cheatcodes/components/CodePushButton'
 import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
 import { LogoutButton } from 'features/cheatcodes/components/LogoutButton'
@@ -15,7 +14,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { clearAccessToken } from 'libs/storage'
+import { saveAccessToken } from 'libs/storage'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
@@ -23,6 +22,12 @@ type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCo
 type Props = {
   navigation: CheatCodesNavigationProp
 }
+
+const oldAccesstoken =
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDc1OTE1MzUsIm5iZiI6MTYwNzU5MTUzNSwianRpIjoiNjM' +
+  'xNzU4MGItYjU0ZS00YzdhLWExZTAtYWJlNjdkMTI5NTljIiwiZXhwIjoxNjA3NTkxNTk1LCJpZGVudGl0eSI6InBjdGVzd' +
+  'C5qZXVuZTkzLmhhcy1ib29rZWQtc29tZUBidG14LmZyIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.hvQDl6h' +
+  '_RCkrxrsWIlAFqszwE9AN3Q_SV1W_mAu_fS0'
 
 const someOfferDescription = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. https://www.google.com/search?q=pass+culture&oq=pass+culture&aqs=chrome.0.0i433j0l2j69i60l3j69i65l2.1136j0j7&sourceid=chrome&ie=UTF-8 Amet justo donec enim diam vulputate.`
 
@@ -39,6 +44,10 @@ export const CheatCodes: FunctionComponent<Props> = function () {
     setUserEmail(response.email)
   }
 
+  async function invalidateToken() {
+    await saveAccessToken(oldAccesstoken)
+  }
+
   return (
     <Container>
       <Spacer.TopScreen />
@@ -47,7 +56,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <NavigateHomeButton />
       <LogoutButton />
       <Spacer.Flex />
-      <Button title="clear access token" onPress={clearAccessToken} />
+      <Button title="Invalider l'access token" onPress={invalidateToken} />
       <Button title="/ME" onPress={fetchMe} />
       <Text>{userEmail}</Text>
       <Spacer.Flex />

@@ -13,7 +13,7 @@
  */
 import url from "url";
 
-import { getAuthenticationHeaders, handleGeneratedApiResponse, refreshFetch } from "api/helpers";
+import { getAuthenticationHeaders, handleGeneratedApiResponse, getValidTokenAndFetch } from "api/helpers";
 import { EmptyResponse } from 'libs/fetch'
 
 import { Configuration } from "./configuration";
@@ -110,6 +110,36 @@ export interface AccountRequest {
      * @memberof AccountRequest
      */
     token: string;
+}/**
+ * 
+ * @export
+ * @interface OfferResponse
+ */
+export interface OfferResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof OfferResponse
+     */
+    id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferResponse
+     */
+    imageUrl?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferResponse
+     */
+    isDuo: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferResponse
+     */
+    name: string;
 }/**
  * 
  * @export
@@ -303,6 +333,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary get_offer <GET>
+         * @param {string} offer_id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async nativeV1OfferOfferIdGet(offer_id: string, options: any = {}): Promise<FetchArgs> {
+            // verify required parameter 'offer_id' is not null or undefined
+            if (offer_id === null || offer_id === undefined) {
+                throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling nativeV1OfferOfferIdGet.');
+            }
+            const localVarPath = `/native/v1/offer/{offer_id}`
+                .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary refresh <POST>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -440,7 +497,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1AccountPost(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1AccountPost(body, options);
-            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await getValidTokenAndFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -451,7 +508,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1MeGet(basePath: string, options?: any): Promise<UserProfileResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1MeGet(options);
-            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await getValidTokenAndFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary get_offer <GET>
+         * @param {string} offer_id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async nativeV1OfferOfferIdGet(basePath: string, offer_id: string, options?: any): Promise<OfferResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1OfferOfferIdGet(offer_id, options);
+            const response = await getValidTokenAndFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -462,7 +531,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1RefreshAccessTokenPost(basePath: string, options?: any): Promise<RefreshResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1RefreshAccessTokenPost(options);
-            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await getValidTokenAndFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -474,7 +543,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1RequestPasswordResetPost(basePath: string, body?: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1RequestPasswordResetPost(body, options);
-            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await getValidTokenAndFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -486,7 +555,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1ResetPasswordPost(basePath: string, body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1ResetPasswordPost(body, options);
-            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await getValidTokenAndFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -498,7 +567,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1SigninPost(basePath: string, body?: SigninRequest, options?: any): Promise<SigninResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1SigninPost(body, options);
-            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await getValidTokenAndFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -510,7 +579,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async nativeV1ValidateEmailPost(basePath: string, body?: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).nativeV1ValidateEmailPost(body, options);
-            const response = await refreshFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await getValidTokenAndFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
             return handleGeneratedApiResponse(response)
         },
     }
@@ -546,6 +615,18 @@ export class DefaultApi extends BaseAPI {
         const functionalApi = DefaultApiFp(this.configuration)
         return functionalApi.nativeV1MeGet(this.basePath, options)
     }
+    /**
+     * 
+     * @summary get_offer <GET>
+     * @param {string} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async nativeV1OfferOfferIdGet(offer_id: string, options?: any) {
+        const functionalApi = DefaultApiFp(this.configuration)
+        return functionalApi.nativeV1OfferOfferIdGet(this.basePath, offer_id, options)
+    } 
     /**
      * 
      * @summary refresh <POST>
