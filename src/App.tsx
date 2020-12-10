@@ -50,6 +50,7 @@ const queryClient = new QueryClient({
   cache: queryCache,
   defaultOptions: {
     queries: {
+      retry: 0,
       useErrorBoundary: true,
     },
   },
