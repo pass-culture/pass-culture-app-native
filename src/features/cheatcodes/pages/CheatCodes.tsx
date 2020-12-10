@@ -66,7 +66,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <Spacer.Flex />
       <Typo.Body>{ParsedDescription}</Typo.Body>
       <Spacer.Flex />
-      {env.FEATURE_FLAG_CODE_PUSH_MANUAL && <CodePushButton />}
+      {(env.FEATURE_FLAG_CODE_PUSH_MANUAL || env.ENV === 'testing') && <CodePushButton />}
       <Spacer.BottomScreen />
     </Container>
   )

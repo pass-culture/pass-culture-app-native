@@ -434,6 +434,54 @@ exports[`CheatCodes component should render correctly 1`] = `
     }
   />
   <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#c7c7cc",
+        "borderBottomLeftRadius": 5,
+        "borderColor": "#ffffff",
+        "borderRightWidth": 0,
+        "borderTopLeftRadius": 5,
+        "borderWidth": 1,
+        "bottom": 20,
+        "opacity": 1,
+        "padding": 10,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+    testID="container"
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 12,
+        }
+      }
+    >
+      Check update
+    </Text>
+    <Text
+      numberOfLines={3}
+      style={
+        Object {
+          "fontSize": 8,
+          "maxWidth": 150,
+        }
+      }
+    >
+      label (decription)
+    </Text>
+  </View>
+  <View
     customHeight={8}
     style={
       Array [
