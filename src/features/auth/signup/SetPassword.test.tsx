@@ -55,7 +55,15 @@ describe('SetPassword Page', () => {
     expect(goBack).toBeCalledTimes(1)
   })
 
-  // TODO: PC-4936 right icon click = abandon registration
+  it('should open quit signup modal', () => {
+    const { getByTestId, queryByText } = renderChoosePassword()
+
+    const rightIcon = getByTestId('rightIcon')
+    fireEvent.press(rightIcon)
+
+    const title = queryByText("Es-tu sûr de vouloir abandonner l'inscription ?")
+    expect(title).toBeTruthy()
+  })
 })
 
 function renderChoosePassword() {
