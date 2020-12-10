@@ -46,7 +46,7 @@
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/styled-components": "^5.1.4",
     "algoliasearch": "^4.6.0",
-    "appcenter-cli": "^2.7.2",
+    "appcenter-cli": "2.7.3",
     "babel-core": "^6.26.3",
     "contentful-resolve-response": "^1.2.2",
     "highlight-words-core": "^1.2.2",
