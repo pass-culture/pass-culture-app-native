@@ -1,15 +1,22 @@
 import React from 'react'
+import { Animated, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { Share } from 'ui/svg/icons/Share'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 
 interface HeaderIconProps {
   iconName: 'back' | 'share' | 'favorite'
   onPress: () => void
+  animationState: {
+    iconBackgroundColor: Animated.AnimatedInterpolation
+    iconBorderColor: Animated.AnimatedInterpolation
+    transition: Animated.AnimatedInterpolation
+  }
 }
 
 const getIcon = (iconName: HeaderIconProps['iconName']): React.ElementType<IconInterface> => {
@@ -18,17 +25,32 @@ const getIcon = (iconName: HeaderIconProps['iconName']): React.ElementType<IconI
   return BicolorFavorite
 }
 
-export const HeaderIcon = ({ iconName, onPress }: HeaderIconProps) => {
+export const HeaderIcon = ({ iconName, onPress, animationState }: HeaderIconProps) => {
   const Icon = getIcon(iconName)
 
   return (
-    <RoundContainer onPress={onPress} activeOpacity={0.5}>
-      <Icon size={getSpacing(8)} color={ColorsEnum.BLACK} testID={`icon-${iconName}`} />
-    </RoundContainer>
+    <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
+      <RoundContainer
+        testID="headerIconRoundContainer"
+        animationState={animationState}
+        style={{
+          borderColor: animationState.iconBorderColor,
+          backgroundColor: animationState.iconBackgroundColor,
+        }}>
+        <AnimatedIcon
+          Icon={Icon}
+          size={getSpacing(8)}
+          initialColor={ColorsEnum.BLACK}
+          testID={`icon-${iconName}`}
+          transition={animationState.transition}
+          finalColor={ColorsEnum.WHITE}
+        />
+      </RoundContainer>
+    </TouchableOpacity>
   )
 }
 
-const RoundContainer = styled.TouchableOpacity({
+const RoundContainer = styled(Animated.View)<Pick<HeaderIconProps, 'animationState'>>(() => ({
   width: getSpacing(10),
   aspectRatio: '1',
   borderRadius: getSpacing(10),
@@ -37,13 +59,4 @@ const RoundContainer = styled.TouchableOpacity({
   justifyContent: 'center',
   alignItems: 'center',
   borderColor: ColorsEnum.GREY_LIGHT,
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(1 / 4),
-    },
-    shadowRadius: getSpacing(1 / 4),
-    shadowColor: ColorsEnum.BLACK,
-    shadowOpacity: 0.15,
-  }),
-})
+}))
