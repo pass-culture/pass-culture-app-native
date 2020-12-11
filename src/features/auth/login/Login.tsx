@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
+import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/AuthContext'
@@ -38,6 +39,7 @@ export const Login: FunctionComponent = function () {
   const { navigate } = useNavigation<UseNavigationType>()
 
   async function handleSignin() {
+    Keyboard.dismiss()
     setShouldShowErrorMessage(false)
     const isSigninSuccessful = await signIn({ identifier: email, password })
     if (isSigninSuccessful) {
