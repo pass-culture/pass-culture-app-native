@@ -7,7 +7,7 @@ describe('RetryBoundary component', () => {
   it('should render', () => {
     const resetErrorBoundary = jest.fn()
     const component = render(
-      <RetryBoundary error={new Error('Error')} resetErrorBoundary={resetErrorBoundary} />
+      <RetryBoundary error={new Error('error')} resetErrorBoundary={resetErrorBoundary} />
     )
     expect(component.toJSON()).toMatchSnapshot()
   })

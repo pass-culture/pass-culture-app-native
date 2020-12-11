@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
-import { Keyboard } from 'react-native'
+import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
@@ -55,6 +55,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const isNewsletterChecked = route.params.isNewsletterChecked
   const password = route.params.password
   const canNavigateToCguRef = useRef(false)
+  const keepOnButtonEnabled = isComplete && state.date
 
   function onChangeValue(value: string | null, _isComplete: boolean) {
     setState({
@@ -89,7 +90,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
    * - and a navigation to the next screen
    */
   function animateBeforeNavigation() {
-    if (keyboardHeightRef.current === 0) {
+    if (keyboardHeightRef.current === 0 && state.date) {
       return goToCguAcceptance()
     }
 
@@ -98,10 +99,19 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   }
 
   const onKeyboardDismiss = useCallback(() => {
-    if (canNavigateToCguRef.current || state.date) {
+    if (informationModalVisible) {
+      // quits if the keyboard is dismissed because the modal is displayed
+      return
+    }
+    if (canNavigateToCguRef.current && state.date) {
       goToCguAcceptance()
     }
-  }, [])
+  }, [informationModalVisible, state.date])
+
+  useFocusEffect(() => {
+    // reset this variable eeach time the screen is focused to force a navigation to the next screen
+    canNavigateToCguRef.current = false
+  })
 
   return (
     <React.Fragment>
@@ -116,42 +126,46 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           onRightIconPress={showFullPageModal}
         />
         <BottomCardContentContainer>
-          <ButtonTertiary
-            title={_(t`Pourquoi ?`)}
-            onPress={showInformationModal}
-            testIdSuffix={'why-link'}
-          />
-          <DateInputContainer>
-            <DateInput onChangeValue={onChangeValue} />
-            <InputError
-              visible={state.hasError}
-              messageId="La date choisie est incorrecte"
-              numberOfSpacesTop={5}
+          <TouchableOpacityFullWidth onPress={Keyboard.dismiss}>
+            <ButtonTertiary
+              title={_(t`Pourquoi ?`)}
+              onPress={showInformationModal}
+              testIdSuffix={'why-link'}
             />
-          </DateInputContainer>
-          <Paragraphe>
-            <Typo.Body>{_(t`Ce site est protégé par reCAPTCHA Google.`)}</Typo.Body>
-            <ExternalLink
-              text={_(t`La Charte des Données Personnelles`)}
-              url={'https://policies.google.com/privacy'}
-              color={ColorsEnum.PRIMARY}
+            <DateInputContainer>
+              <DateInput onChangeValue={onChangeValue} />
+              <InputError
+                visible={state.hasError}
+                messageId="La date choisie est incorrecte"
+                numberOfSpacesTop={5}
+              />
+            </DateInputContainer>
+            <Paragraphe>
+              <Typo.Body>{_(t`Ce site est protégé par reCAPTCHA Google.`)}</Typo.Body>
+              <ExternalLink
+                text={_(t`La Charte des Données Personnelles`)}
+                url={'https://policies.google.com/privacy'}
+                color={ColorsEnum.PRIMARY}
+              />
+              <Spacer.Row numberOfSpaces={1} />
+              <Typo.Body>{_(/*i18n: signup birthday page reCAPTCHA */ t`et les`)}</Typo.Body>
+              <ExternalLink
+                text={_(t`Conditions Générales d'Utilisation`)}
+                url={'https://policies.google.com/terms'}
+                color={ColorsEnum.PRIMARY}
+              />
+              <Spacer.Row numberOfSpaces={1} />
+              <Typo.Body>
+                {_(/*i18n: signup birthday page reCAPTCHA */ t` s'appliquent.`)}
+              </Typo.Body>
+            </Paragraphe>
+            <ButtonPrimary
+              title={_(t`Continuer`)}
+              disabled={!keepOnButtonEnabled}
+              testIdSuffix={'validate-birthday'}
+              onPress={animateBeforeNavigation}
             />
-            <Spacer.Row numberOfSpaces={1} />
-            <Typo.Body>{_(/*i18n: signup birthday page reCAPTCHA */ t`et les`)}</Typo.Body>
-            <ExternalLink
-              text={_(t`Conditions Générales d'Utilisation`)}
-              url={'https://policies.google.com/terms'}
-              color={ColorsEnum.PRIMARY}
-            />
-            <Spacer.Row numberOfSpaces={1} />
-            <Typo.Body>{_(/*i18n: signup birthday page reCAPTCHA */ t` s'appliquent.`)}</Typo.Body>
-          </Paragraphe>
-          <ButtonPrimary
-            title={_(t`Continuer`)}
-            disabled={!isComplete}
-            testIdSuffix={'validate-birthday'}
-            onPress={animateBeforeNavigation}
-          />
+          </TouchableOpacityFullWidth>
         </BottomCardContentContainer>
       </BottomContentPage>
       <AppInformationModal
@@ -177,6 +191,10 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     </React.Fragment>
   )
 }
+
+const TouchableOpacityFullWidth = styled(TouchableOpacity)({
+  width: '100%',
+})
 
 const Paragraphe = styled.Text({
   flexWrap: 'wrap',
