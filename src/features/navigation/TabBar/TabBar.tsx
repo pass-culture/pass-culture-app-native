@@ -2,6 +2,7 @@ import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/AuthContext'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
@@ -33,12 +34,12 @@ const mapRouteToIcon = (
       return BicolorLogo
   }
 }
-
 export const TabBar: React.FC<Pick<
   BottomTabBarProps<BottomTabBarOptions>,
   'state' | 'navigation'
 >> = ({ navigation, state }) => {
   const { bottom } = useCustomSafeInsets()
+  const authContext = useAuthContext()
   return (
     <MainContainer>
       <RowContainer>
@@ -48,13 +49,19 @@ export const TabBar: React.FC<Pick<
           const routeName = state.routeNames[index]
           const onPress = () => {
             if (isSelected) return
-            const event = navigation.emit({
-              type: 'tabPress',
-              target: route.key,
-              canPreventDefault: true,
-            })
-            if (!event.defaultPrevented) {
-              navigation.navigate(route.name)
+
+            const shouldNavigateLoggedIn = !route.key.includes('Profile') || authContext.isLoggedIn
+            if (shouldNavigateLoggedIn) {
+              const event = navigation.emit({
+                type: 'tabPress',
+                target: route.key,
+                canPreventDefault: true,
+              })
+              if (!event.defaultPrevented) {
+                navigation.navigate(route.name)
+              }
+            } else {
+              navigation.navigate('Home', { shouldDisplayLoginModal: true })
             }
           }
           return (
