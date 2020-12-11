@@ -5,16 +5,16 @@ import { IconInterface } from 'ui/svg/icons/types'
 // Map the facetFilter (in algolia) to the label displayed in the front
 const MAP_CATEGORY_TO_LABEL: { [k in AlgoliaCategory]: string } = {
   CINEMA: 'Cinéma',
-  VISITE: 'Visite, exposition',
+  VISITE: 'Visite',
   MUSIQUE: 'Musique',
   SPECTACLE: 'Spectacle',
-  LECON: 'Cours, atelier',
+  LECON: 'Cours',
   LIVRE: 'Livre',
-  FILM: 'Film, série, podcast',
+  FILM: 'Films',
   PRESSE: 'Presse',
-  JEUX_VIDEO: 'Jeu vidéo',
-  CONFERENCE: 'Conférence, rencontre',
-  INSTRUMENT: 'Instrument',
+  JEUX_VIDEO: 'Jeux',
+  CONFERENCE: 'Rencontre',
+  INSTRUMENT: 'Musique',
 }
 
 export const parseCategory = (category: AlgoliaCategory | null, label?: string): string => {

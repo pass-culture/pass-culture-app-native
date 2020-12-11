@@ -59,7 +59,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     ({ item }: { item: Hit<AlgoliaHit> }) => (
       <OfferTile
         key={item.objectID}
-        category={parseCategory(item.offer.category, item.offer.label)}
+        category={parseCategory(item.offer.category)}
         offerId={item.offer.id}
         distance={formatDistance(item._geoloc, position)}
         name={item.offer.name}
