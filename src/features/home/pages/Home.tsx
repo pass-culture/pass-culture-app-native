@@ -89,7 +89,7 @@ export const HomeComponent: FunctionComponent = function () {
       <HeaderBackgroundWrapper>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
-      <UserProfileContainer onPress={showSignInModal}>
+      <UserProfileContainer onPress={() => navigation.navigate('Profile')}>
         <UserCircle size={32} color={ColorsEnum.WHITE} />
       </UserProfileContainer>
 
