@@ -51,6 +51,7 @@ export const _PartialDateInput: React.ForwardRefRenderFunction<TextInput, Partia
         numberOfChar={props.placeholder.length}
         ref={forwardedRef}
         onKeyPress={props.onKeyPress}
+        blurOnSubmit
       />
       <Spacer.Column numberOfSpaces={1} />
       <ValidationBar

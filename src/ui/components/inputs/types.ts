@@ -19,6 +19,7 @@ export type RNTextInputProps = Pick<
   | 'maxLength'
   | 'selectTextOnFocus'
   | 'onKeyPress'
+  | 'blurOnSubmit'
 > &
   RefAttributes<RNTextInput>
 
