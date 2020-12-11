@@ -2,6 +2,9 @@ import { AlgoliaCategory } from 'libs/algolia'
 import { Category } from 'ui/svg/icons/categories'
 import { IconInterface } from 'ui/svg/icons/types'
 
+// All offers without category are the 'Art' ones
+const DEFAULT_CATEGORY = 'Art'
+
 // Map the facetFilter (in algolia) to the label displayed in the front
 const MAP_CATEGORY_TO_LABEL: { [k in AlgoliaCategory]: string } = {
   CINEMA: 'Cinéma',
@@ -17,9 +20,9 @@ const MAP_CATEGORY_TO_LABEL: { [k in AlgoliaCategory]: string } = {
   INSTRUMENT: 'Musique',
 }
 
-export const parseCategory = (category: AlgoliaCategory | null, label?: string): string => {
+export const parseCategory = (category: AlgoliaCategory | null): string => {
   if (category && category in MAP_CATEGORY_TO_LABEL) return MAP_CATEGORY_TO_LABEL[category]
-  return label || ''
+  return DEFAULT_CATEGORY || ''
 }
 
 // Map the facetFilter (in algolia) to the category Icon
