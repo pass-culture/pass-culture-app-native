@@ -27,6 +27,16 @@ interface JWTToken {
   type: string
 }
 
+// HOT FIX waiting for a better strategy
+const NotAuthenticatedCalls = [
+  'native/v1/account',
+  'native/v1/refresh_access_token',
+  'native/v1/request_password_reset',
+  'native/v1/reset_password',
+  'native/v1/signin',
+  'native/v1/validate_email',
+]
+
 /**
  * For each http calls to the api, retrieves the access token and fetchs.
  * Ignores native/v1/refresh_access_token.
@@ -41,8 +51,10 @@ export const getValidTokenAndFetch = async (
   options: RequestInit
 ): Promise<Response> => {
   // dont ask a new token for this specific api call
-  if (url.includes('native/v1/refresh_access_token')) {
-    return await fetch(url, options)
+  for (const apiRoute of NotAuthenticatedCalls) {
+    if (url.includes(apiRoute)) {
+      return await fetch(url, options)
+    }
   }
 
   // @ts-ignore
