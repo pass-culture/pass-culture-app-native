@@ -3,7 +3,15 @@ import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-nav
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
+import { useAuthContext } from 'features/auth/AuthContext'
+
 import { TabBar } from '../TabBar'
+
+const mockedUseAuthContext = useAuthContext as jest.Mock
+
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
 
 const state: TabNavigationState<Record<string, Record<string, unknown> | undefined>> = {
   history: [
@@ -83,5 +91,21 @@ describe('TabBar', () => {
 
     expect(navigation.emit).not.toHaveBeenCalled()
     expect(navigation.navigate).not.toHaveBeenCalled()
+  })
+  it('navigates to HomePage with SignUpSignInChoiceModal visible on Profile tab click if not logged in', async () => {
+    mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
+    const tabBar = render(<TabBar state={state} navigation={navigation} />)
+
+    const profileTab = tabBar.getByTestId('tab-Profile')
+    fireEvent.press(profileTab)
+    expect(navigation.navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: true })
+  })
+  it('navigates to Profile on Profile tab click if logged in', async () => {
+    mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+    const tabBar = render(<TabBar state={state} navigation={navigation} />)
+
+    const profileTab = tabBar.getByTestId('tab-Profile')
+    fireEvent.press(profileTab)
+    expect(navigation.navigate).toHaveBeenCalledWith('Profile')
   })
 })
