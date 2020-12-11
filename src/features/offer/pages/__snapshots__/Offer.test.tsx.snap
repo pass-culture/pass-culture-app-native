@@ -1269,11 +1269,178 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                           />
                         </View>
                         <View
-                          numberOfSpaces={2}
+                          numberOfSpaces={6}
                           style={
                             Array [
                               Object {
-                                "height": 8,
+                                "height": 24,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "alignItems": "center",
+                                "paddingHorizontal": 24,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            numberOfLines={8}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "overflow": "hidden",
+                                },
+                              ]
+                            }
+                            testID="offerPartialDescriptionBody"
+                          >
+                            Ainsi la personne avec qui elle avait confessé qu’elle allait goûter, avec qui elle vous avait supplié de la laisser goûter, cette personne, raison avouée par la nécessité, ce n’était pas elle, c’était une autre, c’était encore autre chose ! Autre chose, quoi ? Une autre, qui ?
+                          </Text>
+                          <View
+                            numberOfSpaces={2}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 8,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            description="Ainsi la personne avec qui elle avait confessé qu’elle allait goûter, avec qui elle vous avait supplié de la laisser goûter, cette personne, raison avouée par la nécessité, ce n’était pas elle, c’était une autre, c’était encore autre chose ! Autre chose, quoi ? Une autre, qui ?"
+                            style={
+                              Array [
+                                Object {
+                                  "alignSelf": "flex-end",
+                                },
+                              ]
+                            }
+                            testID="offerSeeMoreContainer"
+                          >
+                            <View
+                              accessible={true}
+                              focusable={false}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "opacity": 1,
+                                }
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                voir plus
+                              </Text>
+                              <View
+                                numberOfSpaces={1}
+                                style={
+                                  Array [
+                                    Object {
+                                      "width": 4,
+                                    },
+                                  ]
+                                }
+                              />
+                              <RNSVGSvgView
+                                align="xMidYMid"
+                                bbHeight={24}
+                                bbWidth={24}
+                                focusable={false}
+                                height={24}
+                                meetOrSlice={0}
+                                minX={0}
+                                minY={0}
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "transparent",
+                                      "borderWidth": 0,
+                                    },
+                                    Object {
+                                      "flex": 0,
+                                      "height": 24,
+                                      "width": 24,
+                                    },
+                                  ]
+                                }
+                                vbHeight={53}
+                                vbWidth={52}
+                                width={24}
+                              >
+                                <RNSVGGroup>
+                                  <RNSVGGroup
+                                    fill={null}
+                                    propList={
+                                      Array [
+                                        "fill",
+                                      ]
+                                    }
+                                  >
+                                    <RNSVGGroup
+                                      fill={4279571733}
+                                      propList={
+                                        Array [
+                                          "fill",
+                                        ]
+                                      }
+                                    >
+                                      <RNSVGGroup>
+                                        <RNSVGGroup>
+                                          <RNSVGPath
+                                            d="M14.528 31.633c-.49.45-1.265.431-1.732-.041-.466-.472-.447-1.22.042-1.669l8.636-7.928c2.838-2.605 7.297-2.605 10.135 0l8.636 7.928c.49.45.509 1.197.042 1.669-.466.472-1.241.49-1.731.04l-8.636-7.927c-1.892-1.737-4.865-1.737-6.757 0l-8.635 7.928z"
+                                            matrix={
+                                              Array [
+                                                6.123233995736766e-17,
+                                                1,
+                                                -1,
+                                                6.123233995736766e-17,
+                                                52.54200000000003,
+                                                0.4580000000000837,
+                                              ]
+                                            }
+                                          />
+                                        </RNSVGGroup>
+                                      </RNSVGGroup>
+                                    </RNSVGGroup>
+                                  </RNSVGGroup>
+                                </RNSVGGroup>
+                              </RNSVGSvgView>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          numberOfSpaces={4}
+                          style={
+                            Array [
+                              Object {
+                                "height": 16,
                               },
                             ]
                           }
@@ -2873,11 +3040,178 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                           />
                         </View>
                         <View
-                          numberOfSpaces={2}
+                          numberOfSpaces={6}
                           style={
                             Array [
                               Object {
-                                "height": 8,
+                                "height": 24,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "alignItems": "center",
+                                "paddingHorizontal": 24,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            numberOfLines={8}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "overflow": "hidden",
+                                },
+                              ]
+                            }
+                            testID="offerPartialDescriptionBody"
+                          >
+                            D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.
+                          </Text>
+                          <View
+                            numberOfSpaces={2}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 8,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            description="D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort."
+                            style={
+                              Array [
+                                Object {
+                                  "alignSelf": "flex-end",
+                                },
+                              ]
+                            }
+                            testID="offerSeeMoreContainer"
+                          >
+                            <View
+                              accessible={true}
+                              focusable={false}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "opacity": 1,
+                                }
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                voir plus
+                              </Text>
+                              <View
+                                numberOfSpaces={1}
+                                style={
+                                  Array [
+                                    Object {
+                                      "width": 4,
+                                    },
+                                  ]
+                                }
+                              />
+                              <RNSVGSvgView
+                                align="xMidYMid"
+                                bbHeight={24}
+                                bbWidth={24}
+                                focusable={false}
+                                height={24}
+                                meetOrSlice={0}
+                                minX={0}
+                                minY={0}
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "transparent",
+                                      "borderWidth": 0,
+                                    },
+                                    Object {
+                                      "flex": 0,
+                                      "height": 24,
+                                      "width": 24,
+                                    },
+                                  ]
+                                }
+                                vbHeight={53}
+                                vbWidth={52}
+                                width={24}
+                              >
+                                <RNSVGGroup>
+                                  <RNSVGGroup
+                                    fill={null}
+                                    propList={
+                                      Array [
+                                        "fill",
+                                      ]
+                                    }
+                                  >
+                                    <RNSVGGroup
+                                      fill={4279571733}
+                                      propList={
+                                        Array [
+                                          "fill",
+                                        ]
+                                      }
+                                    >
+                                      <RNSVGGroup>
+                                        <RNSVGGroup>
+                                          <RNSVGPath
+                                            d="M14.528 31.633c-.49.45-1.265.431-1.732-.041-.466-.472-.447-1.22.042-1.669l8.636-7.928c2.838-2.605 7.297-2.605 10.135 0l8.636 7.928c.49.45.509 1.197.042 1.669-.466.472-1.241.49-1.731.04l-8.636-7.927c-1.892-1.737-4.865-1.737-6.757 0l-8.635 7.928z"
+                                            matrix={
+                                              Array [
+                                                6.123233995736766e-17,
+                                                1,
+                                                -1,
+                                                6.123233995736766e-17,
+                                                52.54200000000003,
+                                                0.4580000000000837,
+                                              ]
+                                            }
+                                          />
+                                        </RNSVGGroup>
+                                      </RNSVGGroup>
+                                    </RNSVGGroup>
+                                  </RNSVGGroup>
+                                </RNSVGGroup>
+                              </RNSVGSvgView>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          numberOfSpaces={4}
+                          style={
+                            Array [
+                              Object {
+                                "height": 16,
                               },
                             ]
                           }
