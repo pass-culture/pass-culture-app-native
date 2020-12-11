@@ -29,7 +29,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 accessible={true}
                 focusable={true}
                 onClick={[Function onClick]}
-@@ -794,22 +796,22 @@
+@@ -803,22 +805,22 @@
               ]
             }
           />
