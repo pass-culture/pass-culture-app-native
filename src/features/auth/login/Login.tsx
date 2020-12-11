@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
-import { Keyboard } from 'react-native'
+import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/AuthContext'
@@ -102,9 +102,11 @@ export const Login: FunctionComponent = function () {
         />
       </StyledInput>
       <Spacer.Column numberOfSpaces={7} />
-      <StyledForgottenPasswordTouchableOpacity onPress={onForgottenPasswordClick}>
-        <Typo.ButtonText>{_(t`Mot de passe oublié ?`)}</Typo.ButtonText>
-      </StyledForgottenPasswordTouchableOpacity>
+      <ForgottenPasswordContainer>
+        <TouchableOpacity onPress={onForgottenPasswordClick}>
+          <Typo.ButtonText>{_(t`Mot de passe oublié ?`)}</Typo.ButtonText>
+        </TouchableOpacity>
+      </ForgottenPasswordContainer>
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimary
         title={_(t`Se connecter`)}
@@ -123,7 +125,7 @@ const StyledInput = styled.View({
   maxWidth: getSpacing(125),
 })
 
-const StyledForgottenPasswordTouchableOpacity = styled.TouchableOpacity({
+const ForgottenPasswordContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'flex-end',
   width: '100%',
