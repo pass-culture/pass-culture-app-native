@@ -10,6 +10,7 @@ import { _ } from 'libs/i18n'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { AccordionItem, OfferHeader, OfferHero, OfferIconCaptions } from '../components'
+import { OfferPartialDescription } from '../components/OfferPartialDescription'
 import { useOffer } from '../hooks/useOffer'
 import { dehumanizeId } from '../services/dehumanizeId'
 
@@ -63,7 +64,9 @@ export const Offer: FunctionComponent = () => {
         category={category}
         label={offerResponse.category.label}
       />
-      <Spacer.Column numberOfSpaces={2} />
+      <Spacer.Column numberOfSpaces={6} />
+      <OfferPartialDescription description={offerResponse.description || ''} />
+      <Spacer.Column numberOfSpaces={4} />
       <Divider />
       <SectionTitle>{_(t`Où ?`)}</SectionTitle>
       <Divider />
