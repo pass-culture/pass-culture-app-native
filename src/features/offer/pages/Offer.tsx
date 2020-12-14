@@ -5,10 +5,10 @@ import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
+import { AlgoliaCategory } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { AlgoliaCategory } from '../../../libs/algolia'
 import { AccordionItem, OfferHeader, OfferHero, OfferIconCaptions } from '../components'
 import { useOffer } from '../hooks/useOffer'
 import { dehumanizeId } from '../services/dehumanizeId'
@@ -17,7 +17,7 @@ const withdrawalsDetails =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ' +
   'eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
 
-// remove once PC-5814 is done
+// TODO: remove once PC-5814 is done
 const isCategoryAlgoliaCategoryTypeGuard = (category: string): category is AlgoliaCategory =>
   category in AlgoliaCategory
 
@@ -30,7 +30,7 @@ export const Offer: FunctionComponent = () => {
   const digitalLocationName = offerResponse.venue.offerer.name
   const locationName = offerResponse.venue.publicName || offerResponse.venue.name
 
-  // category api will change in PC-5814 (refacto then)
+  // TODO: category api will change in PC-5814 (refacto then)
   const categoryValue = offerResponse.category.value.split('.')[1] || offerResponse.category.value
   const category: AlgoliaCategory | null = isCategoryAlgoliaCategoryTypeGuard(categoryValue)
     ? categoryValue
