@@ -69,6 +69,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
               text={_(t`Conditions Générales d'Utilisation`)}
               url={env.CGU_LINK}
               color={ColorsEnum.PRIMARY}
+              testID="external-link-cgu"
             />
             <Spacer.Row numberOfSpaces={1} />
             <Typo.Body>{_(t` ainsi que notre `)}</Typo.Body>
@@ -76,6 +77,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
               text={_(t`Politique de confidentialité.`)}
               color={ColorsEnum.PRIMARY}
               url={env.PRIVACY_POLICY_LINK}
+              testID="external-link-privacy-policy"
             />
           </Paragraphe>
           <Spacer.Column numberOfSpaces={5} />
