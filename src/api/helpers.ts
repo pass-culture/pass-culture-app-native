@@ -96,7 +96,7 @@ export const refreshAccessToken = async (): Promise<string | null> => {
     throw new FailedToRefreshAccessTokenError()
   }
 
-  const response = await api.nativeV1RefreshAccessTokenPost({
+  const response = await api.postnativev1refreshAccessToken({
     headers: {
       Authorization: `Bearer ${refreshToken}`,
     },

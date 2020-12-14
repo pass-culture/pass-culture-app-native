@@ -45,7 +45,7 @@ export function useHomepageModules() {
 export function useUserProfileInfo() {
   const { isLoggedIn } = useAuthContext()
 
-  return useQuery<UserProfileResponse>('userProfile', () => api.nativeV1MeGet(), {
+  return useQuery<UserProfileResponse>('userProfile', () => api.getnativev1me(), {
     enabled: isLoggedIn,
   })
 }

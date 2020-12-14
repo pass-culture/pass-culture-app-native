@@ -45,7 +45,7 @@ export const ForgottenPassword: FunctionComponent = () => {
   async function validateEmail() {
     if (isEmailValid(email)) {
       await api
-        .nativeV1RequestPasswordResetPost({ email })
+        .postnativev1requestPasswordReset({ email })
         .then(() => {
           navigate('ResetPasswordEmailSent', { email })
         })

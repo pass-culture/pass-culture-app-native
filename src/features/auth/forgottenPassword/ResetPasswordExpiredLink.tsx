@@ -30,7 +30,7 @@ export function ResetPasswordExpiredLink(props: Props) {
   async function resendEmailForResetPassword() {
     const { email } = props.route.params
     await api
-      .nativeV1RequestPasswordResetPost({ email })
+      .postnativev1requestPasswordReset({ email })
       .then(() => {
         navigate('ResetPasswordEmailSent', { email })
       })
