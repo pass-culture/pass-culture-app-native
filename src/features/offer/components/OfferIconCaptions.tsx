@@ -2,8 +2,9 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { OfferResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaCategory } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
 import { Duo } from 'ui/svg/icons/Duo'
@@ -12,23 +13,23 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { IconWithCaption, OfferCategory } from '../atoms'
 
-export const OfferIconCaptions = ({ algoliaHit }: { algoliaHit: AlgoliaHit | undefined }) => {
+type Props = { category: AlgoliaCategory | null; label: string } & Pick<
+  OfferResponse,
+  'bookableStocks' | 'isDuo'
+>
+export const OfferIconCaptions: React.FC<Props> = ({ isDuo, bookableStocks, category, label }) => {
   const { data: profileInfo } = useUserProfileInfo()
+  const prices = bookableStocks.map((stock) => stock.price)
   const price =
-    algoliaHit?.offer.isDuo && profileInfo?.isBeneficiary
-      ? getDisplayPriceWithDuoMention(algoliaHit?.offer.prices)
-      : getDisplayPrice(algoliaHit?.offer.prices)
-
-  if (!algoliaHit) return <React.Fragment />
+    isDuo && profileInfo?.isBeneficiary
+      ? getDisplayPriceWithDuoMention(prices)
+      : getDisplayPrice(prices)
 
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <OfferCategory
-        category={algoliaHit?.offer.category || null}
-        label={algoliaHit?.offer.label}
-      />
-      {algoliaHit.offer.isDuo && profileInfo?.isBeneficiary && (
+      <OfferCategory category={category} label={label} />
+      {isDuo && profileInfo?.isBeneficiary && (
         <React.Fragment>
           <Separator />
           <IconWithCaption testID="iconDuo" Icon={Duo} caption={_(t`À deux !`)} />
