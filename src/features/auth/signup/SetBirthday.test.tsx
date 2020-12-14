@@ -91,9 +91,9 @@ describe('SetBirthday Page', () => {
   it('should redirect to the "reCAPTCHA privacy" page', async () => {
     jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
 
-    const { findByText } = renderSetBirthday()
+    const { getByTestId } = renderSetBirthday()
 
-    const link = await findByText('La Charte des Données Personnelles')
+    const link = await getByTestId('external-link-google-data-privacy')
     fireEvent.press(link)
 
     await waitForExpect(() => {
@@ -104,9 +104,9 @@ describe('SetBirthday Page', () => {
   it('should redirect to the "reCAPTCHA terms" page', async () => {
     jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
 
-    const { findByText } = renderSetBirthday()
+    const { getByTestId } = renderSetBirthday()
 
-    const link = await findByText("Conditions Générales d'Utilisation")
+    const link = await getByTestId('external-link-google-cgu')
     fireEvent.press(link)
 
     await waitForExpect(() => {

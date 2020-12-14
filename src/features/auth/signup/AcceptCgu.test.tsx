@@ -37,9 +37,9 @@ describe('AcceptCgu Page', () => {
   it('should redirect to the "CGU" page', async () => {
     jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
 
-    const { findByText } = renderAcceptCGU()
+    const { getByTestId } = renderAcceptCGU()
 
-    const link = await findByText("Conditions Générales d'Utilisation")
+    const link = await getByTestId('external-link-cgu')
     fireEvent.press(link)
 
     await waitForExpect(() => {
@@ -49,9 +49,9 @@ describe('AcceptCgu Page', () => {
   it('should redirect to the "Politique de confidentialité" page', async () => {
     jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
 
-    const { findByText } = renderAcceptCGU()
+    const { getByTestId } = renderAcceptCGU()
 
-    const link = await findByText('Politique de confidentialité.')
+    const link = await getByTestId('external-link-privacy-policy')
     fireEvent.press(link)
 
     await waitForExpect(() => {

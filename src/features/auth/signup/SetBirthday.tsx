@@ -146,6 +146,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
                 text={_(t`La Charte des Données Personnelles`)}
                 url={'https://policies.google.com/privacy'}
                 color={ColorsEnum.PRIMARY}
+                testID="external-link-google-data-privacy"
               />
               <Spacer.Row numberOfSpaces={1} />
               <Typo.Body>{_(/*i18n: signup birthday page reCAPTCHA */ t`et les`)}</Typo.Body>
@@ -153,6 +154,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
                 text={_(t`Conditions Générales d'Utilisation`)}
                 url={'https://policies.google.com/terms'}
                 color={ColorsEnum.PRIMARY}
+                testID="external-link-google-cgu"
               />
               <Spacer.Row numberOfSpaces={1} />
               <Typo.Body>
