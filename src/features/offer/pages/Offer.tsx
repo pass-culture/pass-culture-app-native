@@ -1,51 +1,68 @@
 import { t } from '@lingui/macro'
-import { StackScreenProps } from '@react-navigation/stack'
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { _ } from 'libs/i18n'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { AlgoliaCategory } from '../../../libs/algolia'
 import { AccordionItem, OfferHeader, OfferHero, OfferIconCaptions } from '../components'
-
-type Props = StackScreenProps<RootStackParamList, 'Offer'>
+import { useOffer } from '../hooks/useOffer'
+import { dehumanizeId } from '../services/dehumanizeId'
 
 const withdrawalsDetails =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ' +
   'eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
 
-export const Offer: FunctionComponent<Props> = ({ route }: Props) => {
-  const { algoliaHit } = route.params
-  const locationName = algoliaHit?.venue.publicName || algoliaHit?.venue.name
-  const digitalLocationName = algoliaHit?.offerer.name
+// remove once PC-5814 is done
+const isCategoryAlgoliaCategoryTypeGuard = (category: string): category is AlgoliaCategory =>
+  category in AlgoliaCategory
+
+export const Offer: FunctionComponent = () => {
+  const {
+    params: { id },
+  } = useRoute<UseRouteType<'Offer'>>()
+  const { data: offerResponse } = useOffer({ offerId: dehumanizeId(id) })
+  if (!offerResponse) return <React.Fragment></React.Fragment>
+  const digitalLocationName = offerResponse.venue.offerer.name
+  const locationName = offerResponse.venue.publicName || offerResponse.venue.name
+
+  // category api will change in PC-5814 (refacto then)
+  const categoryValue = offerResponse.category.value.split('.')[1] || offerResponse.category.value
+  const category: AlgoliaCategory | null = isCategoryAlgoliaCategoryTypeGuard(categoryValue)
+    ? categoryValue
+    : null
 
   return (
-    <Container>
-      <OfferHero
-        category={algoliaHit?.offer.category}
-        imageUrl={algoliaHit?.offer.thumbUrl || ''}
-      />
+    <Container testID="offer-container">
+      <OfferHero category={category} imageUrl={offerResponse.imageUrl || ''} />
       <OfferHeader />
       <Spacer.Column numberOfSpaces={4} />
-      {algoliaHit?.offer.isDigital ? (
+      {offerResponse.isDigital ? (
         <LocationCaption locationName={digitalLocationName} where={_(t`en ligne`)} isDigital />
       ) : (
         <LocationCaption
           locationName={locationName}
-          where={algoliaHit?.venue.city}
+          where={offerResponse.venue.city}
           isDigital={false}
         />
       )}
       <Spacer.Column numberOfSpaces={2} />
       <MarginContainer>
         <OfferTitle testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
-          {algoliaHit?.offer.name}
+          {offerResponse.name}
         </OfferTitle>
       </MarginContainer>
       <Spacer.Column numberOfSpaces={2} />
-      <OfferIconCaptions algoliaHit={algoliaHit} />
+      <OfferIconCaptions
+        isDuo={offerResponse.isDuo}
+        bookableStocks={offerResponse.bookableStocks}
+        category={category}
+        label={offerResponse.category.label}
+      />
       <Spacer.Column numberOfSpaces={2} />
       <Divider />
       <SectionTitle>{_(t`Où ?`)}</SectionTitle>
