@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { AlgoliaHit } from 'libs/algolia'
 import { logConsultOffer } from 'libs/analytics'
 import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
@@ -24,18 +23,17 @@ interface OfferTileProps {
   thumbUrl?: string
   layout?: Layout
   isBeneficiary?: boolean
-  algoliaHit: AlgoliaHit
   moduleName: string
 }
 
 export const OfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { layout = 'one-item-medium', algoliaHit, moduleName, isBeneficiary, ...offer } = props
+  const { layout = 'one-item-medium', moduleName, isBeneficiary, ...offer } = props
   const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
   const imageWidth = imageHeight * RATIO_ALGOLIA
 
   function handlePressOffer() {
-    navigation.navigate('Offer', { id: offer.offerId, algoliaHit })
+    navigation.navigate('Offer', { id: offer.offerId })
     logConsultOffer(offer.offerId, moduleName)
   }
 

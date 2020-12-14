@@ -69,7 +69,6 @@ export const OffersModule = (props: OffersModuleProps) => {
         price={getDisplayPrice(item.offer.prices)}
         layout={display.layout}
         isBeneficiary={isBeneficiary}
-        algoliaHit={item}
         moduleName={moduleName}
       />
     ),
