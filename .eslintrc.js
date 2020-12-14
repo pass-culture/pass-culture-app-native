@@ -55,6 +55,7 @@ module.exports = {
         name: 'ui/theme/shadow.android',
         message: 'use ui/theme instead',
       },
+      { name: 'msw/lib/types', message: 'use msw instead' },
     ],
     strict: ['error', 'global'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
