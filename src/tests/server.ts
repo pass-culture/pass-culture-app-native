@@ -2,15 +2,16 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import {
+  OfferResponse,
   RequestPasswordResetRequest,
   ResetPasswordRequest,
   SigninRequest,
   SigninResponse,
   UserProfileResponse,
 } from 'api/gen'
+import { offerResponseSnap } from 'features/offer/hooks/snaps/offerResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
-
 export const server = setupServer(
   rest.post<SigninRequest, SigninResponse>(
     env.API_BASE_URL + '/native/v1/signin',
@@ -38,5 +39,9 @@ export const server = setupServer(
       ctx.status(200),
       ctx.json({ email: 'email@domain.ext', firstName: 'Jean', isBeneficiary: true })
     )
+  ),
+  rest.get<OfferResponse>(
+    env.API_BASE_URL + '/native/v1/offer/' + offerResponseSnap.id,
+    (req, res, ctx) => res(ctx.status(200), ctx.json(offerResponseSnap))
   )
 )
