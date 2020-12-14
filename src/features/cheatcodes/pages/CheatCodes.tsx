@@ -40,7 +40,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   const ParsedDescription = highlightLinks(someOfferDescription)
 
   async function fetchMe() {
-    const response = await api.nativeV1MeGet()
+    const response = await api.getnativev1me()
     setUserEmail(response.email)
   }
 

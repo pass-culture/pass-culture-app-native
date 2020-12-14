@@ -47,7 +47,7 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
 
   const signIn = async (body: SigninRequest) => {
     try {
-      const response = await api.nativeV1SigninPost(body, { credentials: 'omit' })
+      const response = await api.postnativev1signin(body, { credentials: 'omit' })
       if (!response) return false
 
       await loginRoutine(response, 'fromLogin')
@@ -60,7 +60,7 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
 
   const signUp = async (body: AccountRequest) => {
     try {
-      const response = await api.nativeV1AccountPost(body, { credentials: 'omit' })
+      const response = await api.postnativev1account(body, { credentials: 'omit' })
       return !!response
     } catch (error) {
       return false
