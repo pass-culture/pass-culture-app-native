@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
+import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
@@ -22,11 +23,14 @@ const withdrawalsDetails =
 const isCategoryAlgoliaCategoryTypeGuard = (category: string): category is AlgoliaCategory =>
   category in AlgoliaCategory
 
+const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 export const Offer: FunctionComponent = () => {
   const {
     params: { id },
   } = useRoute<UseRouteType<'Offer'>>()
   const { data: offerResponse } = useOffer({ offerId: dehumanizeId(id) })
+  const headerScroll = useRef(new Animated.Value(0)).current
+
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const digitalLocationName = offerResponse.venue.offerer.name
   const locationName = offerResponse.venue.publicName || offerResponse.venue.name
@@ -37,46 +41,58 @@ export const Offer: FunctionComponent = () => {
     ? categoryValue
     : null
 
+  const headerTransition = headerScroll.interpolate({
+    inputRange: [0, HEIGHT_END_OF_TRANSITION],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  })
   return (
-    <Container testID="offer-container">
-      <OfferHero category={category} imageUrl={offerResponse.imageUrl || ''} />
-      <OfferHeader />
-      <Spacer.Column numberOfSpaces={4} />
-      {offerResponse.isDigital ? (
-        <LocationCaption locationName={digitalLocationName} where={_(t`en ligne`)} isDigital />
-      ) : (
-        <LocationCaption
-          locationName={locationName}
-          where={offerResponse.venue.city}
-          isDigital={false}
+    <React.Fragment>
+      <Container
+        testID="offer-container"
+        scrollEventThrottle={32}
+        onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
+          useNativeDriver: false,
+        })}>
+        <OfferHero category={category} imageUrl={offerResponse.imageUrl || ''} />
+        <Spacer.Column numberOfSpaces={4} />
+        {offerResponse.isDigital ? (
+          <LocationCaption locationName={digitalLocationName} where={_(t`en ligne`)} isDigital />
+        ) : (
+          <LocationCaption
+            locationName={locationName}
+            where={offerResponse.venue.city}
+            isDigital={false}
+          />
+        )}
+        <Spacer.Column numberOfSpaces={2} />
+        <MarginContainer>
+          <OfferTitle testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
+            {offerResponse.name}
+          </OfferTitle>
+        </MarginContainer>
+        <Spacer.Column numberOfSpaces={2} />
+        <OfferIconCaptions
+          isDuo={offerResponse.isDuo}
+          bookableStocks={offerResponse.bookableStocks}
+          category={category}
+          label={offerResponse.category.label}
         />
-      )}
-      <Spacer.Column numberOfSpaces={2} />
-      <MarginContainer>
-        <OfferTitle testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
-          {offerResponse.name}
-        </OfferTitle>
-      </MarginContainer>
-      <Spacer.Column numberOfSpaces={2} />
-      <OfferIconCaptions
-        isDuo={offerResponse.isDuo}
-        bookableStocks={offerResponse.bookableStocks}
-        category={category}
-        label={offerResponse.category.label}
-      />
-      <Spacer.Column numberOfSpaces={6} />
-      <OfferPartialDescription description={offerResponse.description || ''} />
-      <Spacer.Column numberOfSpaces={4} />
-      <Divider />
-      <SectionTitle>{_(t`Où ?`)}</SectionTitle>
-      <Divider />
-      <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
-      <Divider />
-      <AccordionItem title={_(t`Modalités de retrait`)}>
-        <Typo.Body>{withdrawalsDetails}</Typo.Body>
-      </AccordionItem>
-      <Spacer.Flex />
-    </Container>
+        <Spacer.Column numberOfSpaces={6} />
+        <OfferPartialDescription description={offerResponse.description || ''} />
+        <Spacer.Column numberOfSpaces={4} />
+        <Divider />
+        <SectionTitle>{_(t`Où ?`)}</SectionTitle>
+        <Divider />
+        <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
+        <Divider />
+        <AccordionItem title={_(t`Modalités de retrait`)}>
+          <Typo.Body>{withdrawalsDetails}</Typo.Body>
+        </AccordionItem>
+        <Spacer.Flex />
+      </Container>
+      <OfferHeader offerName={offerResponse.name} headerTransition={headerTransition} />
+    </React.Fragment>
   )
 }
 
