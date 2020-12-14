@@ -1,5 +1,6 @@
 import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
+import { Animated } from 'react-native'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -39,9 +40,10 @@ describe('<OfferHeader />', () => {
 
 async function renderOfferHeader(isLoggedIn: boolean) {
   mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
-  const wrapper = render(<OfferHeader />)
+  const animatedValue = new Animated.Value(0)
+  const wrapper = render(<OfferHeader headerTransition={animatedValue} />)
   await act(async () => {
     await flushAllPromises()
   })
-  return wrapper
+  return { ...wrapper, animatedValue }
 }
