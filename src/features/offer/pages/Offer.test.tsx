@@ -42,7 +42,7 @@ describe('<Offer />', () => {
   })
 })
 
-async function renderOfferPage(id: string, waitForData?: boolean) {
+async function renderOfferPage(id: string) {
   const wrapper = render(
     reactQueryProviderHOC(
       <NavigationContainer>
@@ -55,10 +55,10 @@ async function renderOfferPage(id: string, waitForData?: boolean) {
   await act(async () => {
     await flushAllPromises()
   })
-  if (waitForData || waitForData === undefined) {
-    await waitForExpect(() => {
-      expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
-    })
-  }
+
+  await waitForExpect(() => {
+    expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
+  })
+
   return wrapper
 }
