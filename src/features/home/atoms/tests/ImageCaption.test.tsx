@@ -13,13 +13,8 @@ describe('ImageCaption component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    const { toJSON } = render(<ImageCaption {...props} />)
+    const { toJSON, queryByTestId } = render(<ImageCaption {...props} />)
     expect(toJSON()).toMatchSnapshot()
-  })
-
-  it('should have an ellipsis', () => {
-    const { getByTestId, queryByTestId } = render(<ImageCaption {...props} />)
-    expect(getByTestId('categoryImageCaption').parent?.props.numberOfLines).toEqual(1)
     expect(queryByTestId('distanceImageCaption')).toBeTruthy()
   })
 

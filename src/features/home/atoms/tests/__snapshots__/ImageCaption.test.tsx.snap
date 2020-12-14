@@ -26,14 +26,13 @@ exports[`ImageCaption component should render correctly 1`] = `
           "flexGrow": 1,
           "flexShrink": 1,
           "justifyContent": "center",
-          "paddingHorizontal": 8,
+          "paddingHorizontal": 4,
         },
       ]
     }
   >
     <Text
       color="#ffffff"
-      numberOfLines={1}
       style={
         Array [
           Object {
@@ -69,7 +68,7 @@ exports[`ImageCaption component should render correctly 1`] = `
           "flexGrow": 1,
           "flexShrink": 1,
           "justifyContent": "center",
-          "paddingHorizontal": 8,
+          "paddingHorizontal": 4,
         },
       ]
     }
