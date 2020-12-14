@@ -3,14 +3,8 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { UserProfileResponse } from 'api/gen'
-import { AlgoliaHit } from 'libs/algolia'
-import {
-  mockedAlgoliaResponse,
-  freeNotDuoAlgoliaOffer,
-  noPriceNotDuoAlgoliaOffer,
-  sevenEuroNotDuoAlgoliaOffer,
-} from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { OfferResponse, UserProfileResponse } from 'api/gen'
+import { AlgoliaCategory } from 'libs/algolia'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -18,8 +12,16 @@ import { flushAllPromises } from 'tests/utils'
 
 import { OfferIconCaptions } from '../OfferIconCaptions'
 
-const notDuoOffer: AlgoliaHit = mockedAlgoliaResponse.hits[0]
-const duoOffer: AlgoliaHit = mockedAlgoliaResponse.hits[2]
+const defaultBookableStocks: OfferResponse['bookableStocks'] = [
+  { id: 1, price: 28.0, beginningDatetime: new Date('2021-01-04T13:30:00') },
+]
+const freeBookableStocks: OfferResponse['bookableStocks'] = [
+  { id: 1, price: 0, beginningDatetime: new Date('2021-01-04T13:30:00') },
+]
+const sevenEurosBookableStocks: OfferResponse['bookableStocks'] = [
+  { id: 1, price: 7, beginningDatetime: new Date('2021-01-04T13:30:00') },
+]
+const noStocks: OfferResponse['bookableStocks'] = []
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -33,7 +35,7 @@ const userProfileAPIResponse: UserProfileResponse = {
 
 describe('<OfferIconCaptions />', () => {
   it('should match snapshot', async () => {
-    const { toJSON } = await renderOfferIconCaptions()
+    const { toJSON } = await renderOfferIconCaptions({})
     expect(toJSON()).toMatchSnapshot()
   })
 
@@ -47,7 +49,7 @@ describe('<OfferIconCaptions />', () => {
     'should $show Icon isDuo for Duo=$duo offers for beneficiary=$beneficiary users',
     async ({ show, duo, beneficiary }) => {
       const component = await renderOfferIconCaptions({
-        algoliaHit: duo ? duoOffer : notDuoOffer,
+        isDuo: duo,
         isBeneficiary: beneficiary,
       })
       await waitForExpect(() => {
@@ -73,20 +75,13 @@ describe('<OfferIconCaptions />', () => {
     ${'noPrice'} | ${true}  | ${true}     | ${''}
     ${'noPrice'} | ${true}  | ${false}    | ${''}
   `('should show right price', async ({ price, duo, beneficiary, expectedDisplayedPrice }) => {
-    let algoliaOffer: AlgoliaHit = freeNotDuoAlgoliaOffer
-    if (price === '7') algoliaOffer = sevenEuroNotDuoAlgoliaOffer
-    if (price === 'noPrice') algoliaOffer = noPriceNotDuoAlgoliaOffer
-    if (duo) {
-      algoliaOffer = {
-        ...algoliaOffer,
-        offer: {
-          ...algoliaOffer.offer,
-          isDuo: true,
-        },
-      }
-    }
+    let bookableStocks: OfferResponse['bookableStocks'] = freeBookableStocks
+    if (price === '7') bookableStocks = sevenEurosBookableStocks
+    if (price === 'noPrice') bookableStocks = noStocks
+
     const component = await renderOfferIconCaptions({
-      algoliaHit: algoliaOffer,
+      isDuo: duo,
+      bookableStocks,
       isBeneficiary: beneficiary,
     })
     await waitForExpect(() => {
@@ -98,19 +93,28 @@ describe('<OfferIconCaptions />', () => {
 })
 
 async function renderOfferIconCaptions({
-  algoliaHit,
+  isDuo = false,
   isBeneficiary = true,
+  bookableStocks,
 }: {
-  algoliaHit?: AlgoliaHit
+  bookableStocks?: OfferResponse['bookableStocks']
+  isDuo?: boolean
   isBeneficiary?: boolean
-} = {}) {
+}) {
   server.use(
     rest.get(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
       res.once(ctx.status(200), ctx.json({ ...userProfileAPIResponse, isBeneficiary }))
     )
   )
   const wrapper = render(
-    reactQueryProviderHOC(<OfferIconCaptions algoliaHit={algoliaHit ?? notDuoOffer} />)
+    reactQueryProviderHOC(
+      <OfferIconCaptions
+        bookableStocks={bookableStocks ?? defaultBookableStocks}
+        isDuo={isDuo}
+        label="Abonnements concerts"
+        category={AlgoliaCategory.MUSIQUE}
+      />
+    )
   )
   await act(async () => {
     await flushAllPromises()
