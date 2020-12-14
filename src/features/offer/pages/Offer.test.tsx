@@ -1,7 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { act, render } from '@testing-library/react-native'
+import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
+import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse } from 'api/gen'
@@ -40,8 +41,18 @@ describe('<Offer />', () => {
     const { toJSON } = await renderOfferPage('AGH2K')
     expect(toJSON()).toMatchSnapshot()
   })
+  it('animates on scroll', async () => {
+    const { getByTestId } = await renderOfferPage('AHD3A')
+    expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
+    const scrollContainer = getByTestId('offer-container')
+    await act(async () => await fireEvent.scroll(scrollContainer, scrollEvent))
+    expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1)
+  })
 })
-
+const scrollEvent: NativeSyntheticEvent<NativeScrollEvent> = {
+  // @ts-ignore : partial event is enough
+  nativeEvent: { contentOffset: { y: 200 } },
+}
 async function renderOfferPage(id: string) {
   const wrapper = render(
     reactQueryProviderHOC(
@@ -52,6 +63,7 @@ async function renderOfferPage(id: string) {
       </NavigationContainer>
     )
   )
+
   await act(async () => {
     await flushAllPromises()
   })
