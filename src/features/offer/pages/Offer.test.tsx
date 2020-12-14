@@ -1,48 +1,53 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { act, render } from '@testing-library/react-native'
+import { rest } from 'msw/'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
+import { OfferResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
-import { AlgoliaHit } from 'libs/algolia'
-import {
-  mockedAlgoliaResponse,
-  digitalAlgoliaOffer,
-  physicalAlgoliaOffer,
-} from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
+
+import { offerDigitalResponseSnap, offerDuoReponseSnap } from '../hooks/snaps/offerResponseSnap'
 
 import { Offer } from './Offer'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-const defaultAlgoliaHit: AlgoliaHit = mockedAlgoliaResponse.hits[0]
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
-
+server.use(
+  rest.get<OfferResponse>(
+    env.API_BASE_URL + '/native/v1/offer/' + offerDuoReponseSnap.id,
+    (req, res, ctx) => res.once(ctx.status(200), ctx.json(offerDuoReponseSnap))
+  ),
+  rest.get<OfferResponse>(
+    env.API_BASE_URL + '/native/v1/offer/' + offerDigitalResponseSnap.id,
+    (req, res, ctx) => res.once(ctx.status(200), ctx.json(offerDigitalResponseSnap))
+  )
+)
 describe('<Offer />', () => {
   it('should match snapshot for physical offer', async () => {
-    const { toJSON } = await renderOfferPage(physicalAlgoliaOffer)
+    const { toJSON } = await renderOfferPage('AGH2M')
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should match snapshot for digital offer', async () => {
-    const { toJSON } = await renderOfferPage(digitalAlgoliaOffer)
+    const { toJSON } = await renderOfferPage('AGH2K')
     expect(toJSON()).toMatchSnapshot()
   })
 })
 
-async function renderOfferPage(algoliaHit?: AlgoliaHit) {
+async function renderOfferPage(id: string, waitForData?: boolean) {
   const wrapper = render(
     reactQueryProviderHOC(
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Offer">
-          <RootStack.Screen
-            name="Offer"
-            component={Offer}
-            initialParams={{ id: 'ABCDE', algoliaHit: algoliaHit ?? defaultAlgoliaHit }}
-          />
+          <RootStack.Screen name="Offer" component={Offer} initialParams={{ id }} />
         </RootStack.Navigator>
       </NavigationContainer>
     )
@@ -50,5 +55,10 @@ async function renderOfferPage(algoliaHit?: AlgoliaHit) {
   await act(async () => {
     await flushAllPromises()
   })
+  if (waitForData || waitForData === undefined) {
+    await waitForExpect(() => {
+      expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
+    })
+  }
   return wrapper
 }
