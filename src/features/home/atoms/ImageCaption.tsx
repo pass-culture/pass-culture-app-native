@@ -2,7 +2,7 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, Typo, MARGIN_DP, GUTTER_DP } from 'ui/theme'
+import { ColorsEnum, Typo, MARGIN_DP, GUTTER_DP, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface ImageCaptionProps {
@@ -15,7 +15,7 @@ export const ImageCaption = ({ category, imageWidth, distance }: ImageCaptionPro
   return (
     <Row width={imageWidth}>
       <TextWrapper>
-        <Typo.Caption color={ColorsEnum.WHITE} numberOfLines={1} testID="categoryImageCaption">
+        <Typo.Caption color={ColorsEnum.WHITE} testID="categoryImageCaption">
           {category}
         </Typo.Caption>
       </TextWrapper>
@@ -55,6 +55,6 @@ const Separator = styled.View({
 const TextWrapper = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
-  paddingHorizontal: 8,
+  paddingHorizontal: getSpacing(1),
   flex: 1,
 })
