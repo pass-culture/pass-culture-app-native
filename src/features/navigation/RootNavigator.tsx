@@ -24,7 +24,6 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Offer } from 'features/offer'
-import { AlgoliaHit } from 'libs/algolia'
 import { logScreenView } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
@@ -50,7 +49,7 @@ export type RootStackParamList = {
   Login: undefined
   IdCheck: undefined
   Navigation: undefined
-  Offer: { id: string; algoliaHit?: AlgoliaHit }
+  Offer: { id: string }
   ReinitializePassword: { token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
