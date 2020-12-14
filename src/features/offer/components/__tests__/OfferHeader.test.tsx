@@ -18,16 +18,16 @@ describe('<OfferHeader />', () => {
 
   it('should render the correct icons - loggedIn', async () => {
     const offerHeader = await renderOfferHeader(true)
-    expect(offerHeader.queryByTestId(/icon-back/)).toBeTruthy()
-    expect(offerHeader.queryByTestId(/icon-share/)).toBeTruthy()
-    expect(offerHeader.queryByTestId(/icon-favorite/)).toBeTruthy()
+    expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
+    expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
+    expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
   })
 
   it('should render the correct icons - not loggedIn', async () => {
     const offerHeader = await renderOfferHeader(false)
-    expect(offerHeader.queryByTestId(/icon-back/)).toBeTruthy()
-    expect(offerHeader.queryByTestId(/icon-share/)).toBeTruthy()
-    expect(offerHeader.queryByTestId(/icon-favorite/)).toBeNull()
+    expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
+    expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
+    expect(offerHeader.queryByTestId('icon-favorite')).toBeNull()
   })
 
   it('should goBack when we press on the back buttton', async () => {
