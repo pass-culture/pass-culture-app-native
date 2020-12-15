@@ -12,7 +12,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
 
-import { offerResponseSnap } from '../hooks/snaps/offerResponseSnap'
+import { offerResponseSnap } from '../api/snaps/offerResponseSnap'
 import { dehumanizeId } from '../services/dehumanizeId'
 
 import { Offer } from './Offer'
