@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
+import { TextInput as RNTextInput } from 'react-native'
 
 import { TextInput } from './TextInput'
 
@@ -20,6 +21,13 @@ describe('<TextInput />', () => {
     fireEvent(input, 'focus')
 
     expect(notFocusedInstance).toMatchDiffSnapshot(focusedInstance)
+  })
+
+  it('should render ref correctly', () => {
+    const myRef = React.createRef<RNTextInput>()
+    render(<TextInput placeholder="placeholder" onChangeText={doNothingFn} ref={myRef} />)
+
+    expect(myRef.current).toBeTruthy()
   })
 
   it('should render correctly when in error', () => {
