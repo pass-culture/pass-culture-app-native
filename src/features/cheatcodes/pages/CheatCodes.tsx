@@ -13,8 +13,9 @@ import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeB
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
+import { clearRefreshToken } from 'libs/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { saveAccessToken } from 'libs/storage'
+import { saveAccessToken, clearAccessToken } from 'libs/storage'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
@@ -40,12 +41,21 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   const ParsedDescription = highlightLinks(someOfferDescription)
 
   async function fetchMe() {
-    const response = await api.getnativev1me()
-    setUserEmail(response.email)
+    try {
+      const response = await api.getnativev1me()
+      setUserEmail(response.email)
+    } catch {
+      //
+    }
   }
 
-  async function invalidateToken() {
+  async function setOldToken() {
     await saveAccessToken(oldAccesstoken)
+  }
+
+  async function invalidateBothTokens() {
+    await clearAccessToken()
+    await clearRefreshToken()
   }
 
   return (
@@ -56,7 +66,9 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <NavigateHomeButton />
       <LogoutButton />
       <Spacer.Flex />
-      <Button title="Invalider l'access token" onPress={invalidateToken} />
+      <Button title="Utiliser un ancien token" onPress={setOldToken} />
+      <Button title="Invalider l'access token" onPress={clearAccessToken} />
+      <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
       <Button title="/ME" onPress={fetchMe} />
       <Text>{userEmail}</Text>
       <Spacer.Flex />
