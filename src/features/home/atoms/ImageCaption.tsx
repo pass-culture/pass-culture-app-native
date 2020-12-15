@@ -15,7 +15,7 @@ export const ImageCaption = ({ category, imageWidth, distance }: ImageCaptionPro
   return (
     <Row width={imageWidth}>
       <TextWrapper>
-        <Typo.Caption color={ColorsEnum.WHITE} testID="categoryImageCaption">
+        <Typo.Caption color={ColorsEnum.WHITE} numberOfLines={1} testID="categoryImageCaption">
           {category}
         </Typo.Caption>
       </TextWrapper>
