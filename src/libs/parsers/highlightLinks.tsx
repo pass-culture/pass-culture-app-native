@@ -1,7 +1,7 @@
 import { Chunk, findAll, FindChunksArgs } from 'highlight-words-core'
 import React from 'react'
 
-import { ExternalLink } from 'ui/components/buttons/ExternalLink'
+import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 
 type ParsedDescription = Array<string | React.ReactNode>
 

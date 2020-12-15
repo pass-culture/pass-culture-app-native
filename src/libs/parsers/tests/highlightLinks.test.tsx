@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ExternalLink } from 'ui/components/buttons/ExternalLink'
+import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 
 import { customFindUrlChunks, highlightLinks } from '../highlightLinks'
 
