@@ -72,7 +72,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         moduleName={moduleName}
       />
     ),
-    [display.layout, position]
+    [display.layout, position, isBeneficiary]
   )
 
   const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers
