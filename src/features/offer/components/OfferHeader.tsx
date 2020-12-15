@@ -4,17 +4,18 @@ import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { ColorsEnum, Spacer } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { HeaderIcon } from '../atoms'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
+  offerName: string
 }
 /**
  * @param headerTransition should be between animated between 0 and 1
  */
-export const OfferHeader: React.FC<Props> = ({ headerTransition }) => {
+export const OfferHeader: React.FC<Props> = ({ headerTransition, offerName }) => {
   const { isLoggedIn } = useAuthContext()
   const { goBack } = useNavigation()
 
@@ -26,7 +27,7 @@ export const OfferHeader: React.FC<Props> = ({ headerTransition }) => {
   const iconBorderColor = headerTransition.interpolate({
     inputRange: [0, 1],
     outputRange: [ColorsEnum.GREY_LIGHT, 'rgba(255, 255, 255, 0)'],
-    easing: Easing.bezier(0, 0.75, 0, 0.75),
+    easing: Easing.bezier(0, 1, 0, 1),
   })
   const headerBackgroundColor = headerTransition.interpolate({
     inputRange: [0, 1],
@@ -36,35 +37,48 @@ export const OfferHeader: React.FC<Props> = ({ headerTransition }) => {
   return (
     <HeaderContainer style={{ backgroundColor: headerBackgroundColor }}>
       <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={2} />
       <Row>
         <Spacer.Row numberOfSpaces={6} />
         <HeaderIcon
-          animationState={{ iconBackgroundColor, iconBorderColor, transition: headerTransition }}
+          animationState={{
+            iconBackgroundColor,
+            iconBorderColor,
+            transition: headerTransition,
+          }}
           iconName="back"
           onPress={goBack}
         />
-        <RightIcons>
-          <HeaderIcon
-            animationState={{ iconBackgroundColor, iconBorderColor, transition: headerTransition }}
-            iconName="share"
-            onPress={() => null}
-          />
-          {isLoggedIn && (
-            <React.Fragment>
-              <Spacer.Row numberOfSpaces={3} />
-              <HeaderIcon
-                animationState={{
-                  iconBackgroundColor,
-                  iconBorderColor,
-                  transition: headerTransition,
-                }}
-                iconName="favorite"
-                onPress={() => null}
-              />
-            </React.Fragment>
-          )}
-        </RightIcons>
+        {isLoggedIn && <Spacer.Row testID="headerIconPlaceholder" numberOfSpaces={10} />}
+        <Spacer.Flex />
+        <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
+          <Typo.Body color={ColorsEnum.WHITE}>{offerName}</Typo.Body>
+        </Title>
+        <Spacer.Flex />
+        <HeaderIcon
+          animationState={{
+            iconBackgroundColor,
+            iconBorderColor,
+            transition: headerTransition,
+          }}
+          iconName="share"
+          onPress={() => null}
+        />
+        {isLoggedIn && (
+          <React.Fragment>
+            <Spacer.Row numberOfSpaces={3} />
+            <HeaderIcon
+              animationState={{
+                iconBackgroundColor,
+                iconBorderColor,
+                transition: headerTransition,
+              }}
+              iconName="favorite"
+              onPress={() => null}
+            />
+          </React.Fragment>
+        )}
+
         <Spacer.Row numberOfSpaces={6} />
       </Row>
       <Spacer.Column numberOfSpaces={2} />
@@ -76,9 +90,12 @@ const HeaderContainer = styled(Animated.View)({
   top: 0,
   width: '100%',
 })
-const Row = styled.View({ flex: 1, flexDirection: 'row' })
-const RightIcons = styled.View({
+const Row = styled.View({
   flex: 1,
   flexDirection: 'row',
-  justifyContent: 'flex-end',
+  alignItems: 'center',
+})
+const Title = styled(Animated.Text).attrs({ numberOfLines: 2 })({
+  flexShrink: 1,
+  textAlign: 'center',
 })
