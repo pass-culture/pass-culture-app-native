@@ -1,10 +1,4 @@
-import {
-  NavigationContainer,
-  NavigationContainerRef,
-  NavigationProp,
-  RouteProp,
-  Theme,
-} from '@react-navigation/native'
+import { NavigationContainer, NavigationProp, RouteProp, Theme } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 import React, { useEffect } from 'react'
 
@@ -27,6 +21,7 @@ import { Offer } from 'features/offer'
 import { logScreenView } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
+import { navigationRef } from './navigationRef'
 import { onNavigationStateChange } from './services'
 import { TabNavigator, TabParamList } from './TabBar/TabNavigator'
 
@@ -62,7 +57,6 @@ export type RootStackParamList = {
 }
 
 export const RootStack = createStackNavigator<RootStackParamList>()
-export const navigationRef = React.createRef<NavigationContainerRef>()
 
 const theme = { colors: { background: ColorsEnum.WHITE } } as Theme
 

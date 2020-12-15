@@ -3,10 +3,15 @@ import { t } from '@lingui/macro'
 import jwtDecode from 'jwt-decode'
 
 import { api } from 'api/api'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { _ } from 'libs/i18n'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
+
+export function navigateToLogin() {
+  setTimeout(() => void navigationRef.current?.navigate('Login'), 0)
+}
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
   const accessToken = await getAccessToken()
@@ -47,10 +52,7 @@ const NotAuthenticatedCalls = [
  * on error (401): try to refresh the access token
  * on error (other): propagates error
  */
-export const getValidTokenAndFetch = async (
-  url: string,
-  options: RequestInit
-): Promise<Response> => {
+export const safeFetch = async (url: string, options: RequestInit): Promise<Response> => {
   // dont ask a new token for this specific api call
   for (const apiRoute of NotAuthenticatedCalls) {
     if (url.includes(apiRoute)) {
@@ -69,14 +71,18 @@ export const getValidTokenAndFetch = async (
       throw new Error('Token expired')
     }
   } catch (error) {
-    const newAccessToken = await refreshAccessToken()
+    try {
+      const newAccessToken = await refreshAccessToken()
 
-    options = {
-      ...options,
-      headers: {
-        ...options.headers,
-        Authorization: `Bearer ${newAccessToken}`,
-      },
+      options = {
+        ...options,
+        headers: {
+          ...options.headers,
+          Authorization: `Bearer ${newAccessToken}`,
+        },
+      }
+    } catch (error) {
+      return Promise.reject(navigateToLogin())
     }
   }
 
@@ -106,8 +112,6 @@ export const refreshAccessToken = async (): Promise<string | null> => {
   if (!response) {
     await clearRefreshToken()
     await clearAccessToken()
-    // assumes that error will be catched by an error boundary in order
-    // to redirect the user to the login page
     throw new FailedToRefreshAccessTokenError()
   }
 

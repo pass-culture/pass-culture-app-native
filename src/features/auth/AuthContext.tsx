@@ -14,12 +14,15 @@ export interface IAuthContext {
   signOut: () => Promise<void>
 }
 
-export const AuthContext = React.createContext<IAuthContext | undefined>(undefined)
+export const AuthContext = React.createContext<IAuthContext>({
+  isLoggedIn: false,
+  signIn: () => Promise.resolve(false),
+  signUp: () => Promise.resolve(false),
+  signOut: () => Promise.resolve(),
+})
 
 export function useAuthContext(): IAuthContext {
-  const authContext = useContext(AuthContext)
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return authContext!
+  return useContext(AuthContext)
 }
 
 export type LoginRoutineMethod = 'fromLogin' | 'fromSignup'
