@@ -1,6 +1,7 @@
 import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { Animated } from 'react-native'
+import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -36,12 +37,26 @@ describe('<OfferHeader />', () => {
     fireEvent.press(getByTestId('icon-back'))
     expect(goBack).toHaveBeenCalledTimes(1)
   })
+  it('should render a placeholder only if the user is connected', async () => {
+    const connectedHeader = await renderOfferHeader(true)
+    expect(connectedHeader.queryByTestId('headerIconPlaceholder')).toBeTruthy()
+    const disconnectedHeader = await renderOfferHeader(false)
+    expect(disconnectedHeader.queryByTestId('headerIconPlaceholder')).toBeFalsy()
+  })
+  it('should fully display the title at the end of the animation', async () => {
+    const { animatedValue, getByTestId } = await renderOfferHeader(true)
+    expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
+    Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
+    await waitForExpect(() => expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1))
+  })
 })
 
 async function renderOfferHeader(isLoggedIn: boolean) {
   mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
   const animatedValue = new Animated.Value(0)
-  const wrapper = render(<OfferHeader headerTransition={animatedValue} />)
+  const wrapper = render(
+    <OfferHeader offerName="Some very nice offer" headerTransition={animatedValue} />
+  )
   await act(async () => {
     await flushAllPromises()
   })

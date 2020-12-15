@@ -54,11 +54,11 @@ export const OfferHero: React.FC<Props> = ({ imageUrl, category }) => {
           </React.Fragment>
         )}
       </ImageContainer>
-      <Spacer.Column numberOfSpaces={20} />
+      <Spacer.Column numberOfSpaces={18} />
     </HeroContainer>
   )
 }
-const blurImageHeight = getSpacing(76)
+const blurImageHeight = getSpacing(74)
 
 const imageWidth = getSpacing(53)
 const imageHeight = getSpacing(79)
