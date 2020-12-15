@@ -55,6 +55,7 @@ const Separator = styled.View({
 const TextWrapper = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
-  paddingHorizontal: getSpacing(1),
+  // So all categories are entirely visibles on homepage offer tiles
+  paddingHorizontal: getSpacing(0.5),
   flex: 1,
 })
