@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-raw-text */
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useState } from 'react'
-import { ScrollView, View, Text, Alert } from 'react-native'
+import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -24,6 +24,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { StepDots } from 'ui/components/StepDots'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
@@ -53,6 +54,8 @@ function onButtonPress() {
   Alert.alert('you pressed it')
 }
 
+const NUMBER_OF_STEPS = 4
+
 export const AppComponents: FunctionComponent = () => {
   const {
     visible: basicModalVisible,
@@ -63,6 +66,7 @@ export const AppComponents: FunctionComponent = () => {
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
   const [inputText, setInputText] = useState('')
+  const [currentStep, setCurrentStep] = useState(1)
 
   const onTriggerFakeLoading = useCallback(() => {
     setButtonIsLoading(true)
@@ -369,6 +373,23 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <OfferBackPlaceholder />
           <Text> - OfferBackPlaceholder </Text>
+        </AlignedText>
+
+        <AlignedText>
+          <StepDots numberOfSteps={NUMBER_OF_STEPS} currentStep={currentStep} />
+          <Text> - Steps </Text>
+        </AlignedText>
+
+        <AlignedText>
+          <Button
+            title="Back"
+            onPress={() => setCurrentStep((step) => (step === 1 ? step : step - 1))}
+          />
+          <Spacer.Column numberOfSpaces={2} />
+          <Button
+            title="Next"
+            onPress={() => setCurrentStep((step) => (step === NUMBER_OF_STEPS ? step : step + 1))}
+          />
         </AlignedText>
       </AccordionItem>
 
