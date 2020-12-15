@@ -11,9 +11,9 @@ import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { useOffer } from '../api/useOffer'
 import { AccordionItem, OfferHeader, OfferHero, OfferIconCaptions } from '../components'
 import { OfferPartialDescription } from '../components/OfferPartialDescription'
-import { useOffer } from '../hooks/useOffer'
 import { dehumanizeId } from '../services/dehumanizeId'
 
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)

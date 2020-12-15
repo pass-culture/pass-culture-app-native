@@ -9,7 +9,7 @@ import {
   SigninResponse,
   UserProfileResponse,
 } from 'api/gen'
-import { offerResponseSnap } from 'features/offer/hooks/snaps/offerResponseSnap'
+import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 export const server = setupServer(
