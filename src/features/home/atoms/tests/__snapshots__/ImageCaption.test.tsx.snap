@@ -26,7 +26,7 @@ exports[`ImageCaption component should render correctly 1`] = `
           "flexGrow": 1,
           "flexShrink": 1,
           "justifyContent": "center",
-          "paddingHorizontal": 4,
+          "paddingHorizontal": 2,
         },
       ]
     }
@@ -69,7 +69,7 @@ exports[`ImageCaption component should render correctly 1`] = `
           "flexGrow": 1,
           "flexShrink": 1,
           "justifyContent": "center",
-          "paddingHorizontal": 4,
+          "paddingHorizontal": 2,
         },
       ]
     }
