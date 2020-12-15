@@ -401,6 +401,7 @@ Array [
                 >
                   <Text
                     color="#ffffff"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
@@ -568,6 +569,7 @@ Array [
                 >
                   <Text
                     color="#ffffff"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
@@ -735,6 +737,7 @@ Array [
                 >
                   <Text
                     color="#ffffff"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
@@ -918,6 +921,7 @@ Array [
                 >
                   <Text
                     color="#ffffff"
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {

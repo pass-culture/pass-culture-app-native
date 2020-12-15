@@ -33,6 +33,7 @@ exports[`ImageCaption component should render correctly 1`] = `
   >
     <Text
       color="#ffffff"
+      numberOfLines={1}
       style={
         Array [
           Object {
