@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
+import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
@@ -28,6 +29,8 @@ export const SetEmail: FunctionComponent = () => {
 
   const shouldDisableValidateButton = isValueEmpty(email)
 
+  const emailInput = useRef<RNTextInput | null>(null)
+
   const {
     visible: fullPageModalVisible,
     showModal: showFullPageModal,
@@ -53,6 +56,11 @@ export const SetEmail: FunctionComponent = () => {
     }
   }
 
+  function showQuitSignupModal() {
+    emailInput.current && emailInput.current.blur()
+    showFullPageModal()
+  }
+
   return (
     <React.Fragment>
       <BottomContentPage>
@@ -61,7 +69,7 @@ export const SetEmail: FunctionComponent = () => {
           leftIcon={ArrowPrevious}
           onLeftIconPress={onBackNavigation}
           rightIcon={Close}
-          onRightIconPress={showFullPageModal}
+          onRightIconPress={showQuitSignupModal}
         />
         <ModalContent>
           <StyledInput>
@@ -74,6 +82,7 @@ export const SetEmail: FunctionComponent = () => {
               keyboardType="email-address"
               textContentType="emailAddress"
               autoFocus={true}
+              ref={emailInput}
             />
             <InputError
               visible={hasError}

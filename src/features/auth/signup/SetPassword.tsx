@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
+import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -29,6 +30,8 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked
 
+  const passwordInput = useRef<RNTextInput | null>(null)
+
   const {
     visible: fullPageModalVisible,
     showModal: showFullPageModal,
@@ -39,13 +42,18 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
     navigate('SetBirthday', { email, isNewsletterChecked, password })
   }
 
+  function showQuitSignupModal() {
+    passwordInput.current && passwordInput.current.blur()
+    showFullPageModal()
+  }
+
   return (
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
           title={_(t`Ton mot de passe`)}
           rightIcon={Close}
-          onRightIconPress={showFullPageModal}
+          onRightIconPress={showQuitSignupModal}
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
         />
@@ -59,6 +67,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
               autoFocus
               onChangeText={setPassword}
               placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+              ref={passwordInput}
             />
           </StyledInput>
           <PasswordSecurityRules password={password} />
