@@ -1,6 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
 
-import { OfferResponse } from 'api/gen'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { offerResponseSnap, offerAdaptedResponseSnap } from '../snaps/offerResponseSnap'

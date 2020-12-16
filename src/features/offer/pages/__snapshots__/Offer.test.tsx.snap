@@ -1154,6 +1154,37 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           >
                             Où ?
                           </Text>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 16,
+                                  "marginTop": -8,
+                                },
+                              ]
+                            }
+                          >
+                            Adresse
+                          </Text>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "paddingTop": 4,
+                                  "textTransform": "capitalize",
+                                },
+                              ]
+                            }
+                          >
+                            PATHE BEAUGRENELLE, 2 RUE LAMENNAIS 75008 PARIS 8
+                          </Text>
                         </View>
                         <View
                           style={
@@ -3235,6 +3266,37 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             }
                           >
                             Où ?
+                          </Text>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 16,
+                                  "marginTop": -8,
+                                },
+                              ]
+                            }
+                          >
+                            Adresse
+                          </Text>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "paddingTop": 4,
+                                  "textTransform": "capitalize",
+                                },
+                              ]
+                            }
+                          >
+                            PATHE BEAUGRENELLE, 2 RUE LAMENNAIS 75008 PARIS 8
                           </Text>
                         </View>
                         <View

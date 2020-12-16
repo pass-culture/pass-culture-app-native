@@ -79,6 +79,8 @@ export const Offer: FunctionComponent = () => {
 
         <Section visible={true} margin={true}>
           <SectionTitle>{_(t`Où ?`)}</SectionTitle>
+          <StyledCaption>{_(t`Adresse`)}</StyledCaption>
+          <StyledAddress>{offerResponse.fullAddress}</StyledAddress>
         </Section>
 
         <Section visible={shouldDisplayWhenBlock} margin={true}>
@@ -120,6 +122,15 @@ const Container = styled.ScrollView({})
 const OfferTitle = styled(Typo.Title3)({ textAlign: 'center' })
 const SectionTitle = styled(Typo.Title4)({ paddingVertical: getSpacing(6) })
 const SectionBody = styled(Typo.Body)({ marginTop: -getSpacing(2), paddingBottom: getSpacing(6) })
+
+const StyledAddress = styled(Typo.Body)({
+  textTransform: 'capitalize',
+  paddingTop: getSpacing(1),
+})
+
+const StyledCaption = styled(Typo.Caption)({
+  marginTop: -getSpacing(2),
+})
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
