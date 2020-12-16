@@ -18,6 +18,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -77,6 +78,10 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
             onPress={submitPassword}
             disabled={!isPasswordCorrect(password)}
           />
+          <Spacer.Column numberOfSpaces={5} />
+          <StyledStepDots>
+            <StepDots numberOfSteps={4} currentStep={2} />
+          </StyledStepDots>
         </BottomCardContentContainer>
       </BottomContentPage>
       <QuitSignupModal
@@ -95,3 +100,5 @@ const StyledInput = styled.View({
   width: '100%',
   maxWidth: getSpacing(125),
 })
+
+const StyledStepDots = styled.View({ width: '100%', alignItems: 'center' })

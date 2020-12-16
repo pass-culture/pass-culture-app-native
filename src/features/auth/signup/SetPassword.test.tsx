@@ -64,6 +64,13 @@ describe('SetPassword Page', () => {
     const title = queryByText("Es-tu sûr de vouloir abandonner l'inscription ?")
     expect(title).toBeTruthy()
   })
+
+  it('should display 4 step dots with the second one as current step', () => {
+    const { getAllByTestId } = renderChoosePassword()
+    const dots = getAllByTestId('dot-icon')
+    expect(dots.length).toBe(4)
+    expect(dots[1].props.fill).toEqual(ColorsEnum.PRIMARY)
+  })
 })
 
 function renderChoosePassword() {

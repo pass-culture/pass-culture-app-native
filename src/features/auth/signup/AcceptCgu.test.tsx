@@ -8,6 +8,7 @@ import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/AuthContext'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
+import { ColorsEnum } from 'ui/theme'
 
 import { AcceptCgu } from './AcceptCgu'
 
@@ -89,6 +90,13 @@ describe('AcceptCgu Page', () => {
 
     const title = queryByText("Es-tu sûr de vouloir abandonner l'inscription ?")
     expect(title).toBeTruthy()
+  })
+
+  it('should display 4 step dots with the last one as current step', () => {
+    const { getAllByTestId } = renderAcceptCGU()
+    const dots = getAllByTestId('dot-icon')
+    expect(dots.length).toBe(4)
+    expect(dots[3].props.fill).toEqual(ColorsEnum.PRIMARY)
   })
 })
 

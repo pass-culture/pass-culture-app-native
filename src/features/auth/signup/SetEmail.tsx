@@ -16,6 +16,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -104,6 +105,8 @@ export const SetEmail: FunctionComponent = () => {
             isLoading={false}
             disabled={shouldDisableValidateButton}
           />
+          <Spacer.Column numberOfSpaces={5} />
+          <StepDots numberOfSteps={4} currentStep={1} />
         </ModalContent>
       </BottomContentPage>
       <QuitSignupModal

@@ -36,6 +36,13 @@ describe('<SetEmail />', () => {
     })
   })
 
+  it('should display 4 step dots with the first one as current step', () => {
+    const { getAllByTestId } = renderPage()
+    const dots = getAllByTestId('dot-icon')
+    expect(dots.length).toBe(4)
+    expect(dots[0].props.fill).toEqual(ColorsEnum.PRIMARY)
+  })
+
   describe('Email Validation', () => {
     it('should redirect to SetPassword on valid email with email and newsletter params', () => {
       const { getByText, getByPlaceholderText, queryByText } = renderPage()

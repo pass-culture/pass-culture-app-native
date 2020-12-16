@@ -113,6 +113,13 @@ describe('SetBirthday Page', () => {
       expect(Linking.openURL).toHaveBeenCalledWith('https://policies.google.com/terms')
     })
   })
+
+  it('should display 4 step dots with the third one as current step', () => {
+    const { getAllByTestId } = renderSetBirthday()
+    const dots = getAllByTestId('dot-icon')
+    expect(dots.length).toBe(4)
+    expect(dots[2].props.fill).toEqual(ColorsEnum.PRIMARY)
+  })
 })
 
 function renderSetBirthday() {
