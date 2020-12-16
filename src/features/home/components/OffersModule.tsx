@@ -54,24 +54,26 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { hits, nbHits, display, algolia: parameters, position, index, isBeneficiary } = props
   const [hasSeenAllTiles, setHasSeenAllTiles] = useState<boolean>(false)
   const moduleName = display.title || parameters.title
-
   const renderItem = useCallback(
-    ({ item }: { item: Hit<AlgoliaHit> }) => (
-      <OfferTile
-        key={item.objectID}
-        category={parseCategory(item.offer.category)}
-        offerId={item.offer.id}
-        distance={formatDistance(item._geoloc, position)}
-        name={item.offer.name}
-        date={formatDates(item.offer.dates)}
-        isDuo={item.offer.isDuo}
-        thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
-        layout={display.layout}
-        isBeneficiary={isBeneficiary}
-        moduleName={moduleName}
-      />
-    ),
+    ({ item }: { item: Hit<AlgoliaHit> }) => {
+      const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+      return (
+        <OfferTile
+          key={item.objectID}
+          category={parseCategory(item.offer.category)}
+          offerId={item.offer.id}
+          distance={formatDistance(item._geoloc, position)}
+          name={item.offer.name}
+          date={formatDates(timestampsInMillis)}
+          isDuo={item.offer.isDuo}
+          thumbUrl={item.offer.thumbUrl}
+          price={getDisplayPrice(item.offer.prices)}
+          layout={display.layout}
+          isBeneficiary={isBeneficiary}
+          moduleName={moduleName}
+        />
+      )
+    },
     [display.layout, position, isBeneficiary]
   )
 

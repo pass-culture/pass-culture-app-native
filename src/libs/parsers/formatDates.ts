@@ -40,14 +40,13 @@ export const getUniqueSortedTimestamps = (
   )
   return uniqueTimestamps.sort()
 }
+/**
+ * @param timestampsInMillis: array of timestamps
+ */
+export const formatDates = (timestampsInMillis?: number[]): string | undefined => {
+  const uniqueSortedTimestamps = getUniqueSortedTimestamps(timestampsInMillis, true)
+  if (!uniqueSortedTimestamps || uniqueSortedTimestamps.length === 0) return
 
-export const formatDates = (dates?: number[]): string | undefined => {
-  if (!dates || dates.length === 0) return
-
-  const uniqueDates = Array.from(
-    new Set(dates.map((p) => 1000 * p).filter((p) => p > new Date().valueOf()))
-  )
-  if (uniqueDates.length === 0) return
-  if (uniqueDates.length === 1) return formatToFrenchDate(uniqueDates[0])
-  return `Dès le ${formatToFrenchDate(uniqueDates.sort()[0])}`
+  if (uniqueSortedTimestamps.length === 1) return formatToFrenchDate(uniqueSortedTimestamps[0])
+  return `Dès le ${formatToFrenchDate(uniqueSortedTimestamps.sort()[0])}`
 }
