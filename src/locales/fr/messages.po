@@ -150,6 +150,11 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
+#. Dates (dates will always be in french)
+#: src/libs/parsers/formatDates.ts:57
+msgid "Du {0} au {1}"
+msgstr "Du {0} au {1}"
+
 #. Duo offer
 #: src/features/home/atoms/OfferCaption.tsx:15
 msgid "Duo"
@@ -221,7 +226,7 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:60
+#: src/features/offer/pages/Offer.tsx:52
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -255,7 +260,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/offer/pages/Offer.tsx:56
+#: src/features/offer/pages/Offer.tsx:48
 msgid "Où ?"
 msgstr "Où ?"
 
@@ -275,7 +280,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:58
+#: src/features/offer/pages/Offer.tsx:50
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -377,7 +382,7 @@ msgstr "Bienvenue à Pass Culture"
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
-#: src/features/offer/pages/Offer.tsx:43
+#: src/features/offer/pages/Offer.tsx:35
 msgid "en ligne"
 msgstr "en ligne"
 
@@ -410,7 +415,7 @@ msgstr "{0}"
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/api/helpers.ts:114
+#: src/api/helpers.ts:113
 msgid "Échec de la requête {0}, code: {1}"
 msgstr "Échec de la requête {0}, code: {1}"
 
