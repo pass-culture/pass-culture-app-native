@@ -40,7 +40,7 @@ export const StepDots: FunctionComponent<Props> = (props) => {
               testID="dot-icon"
             />
           </DotContainer>
-          {index !== lastStepIndex ? <Spacer.Row numberOfSpaces={1} /> : null}
+          {index !== lastStepIndex ? <Spacer.Row numberOfSpaces={2} /> : null}
         </React.Fragment>
       ))}
     </StepsContainer>
