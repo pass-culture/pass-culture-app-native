@@ -52,7 +52,11 @@ export const formatDates = (timestampsInMillis?: number[]): string | undefined =
   if (!uniqueSortedTimestamps || uniqueSortedTimestamps.length === 0) return
 
   if (uniqueSortedTimestamps.length === 1) return formatToFrenchDate(uniqueSortedTimestamps[0])
-  return `Dès le ${formatToFrenchDate(uniqueSortedTimestamps.sort()[0])}`
+  return _(
+    /*i18n: Date (date will always be in french)*/ t`Dès le ${formatToFrenchDate(
+      uniqueSortedTimestamps.sort()[0]
+    )}`
+  )
 }
 
 export const formatDatePeriod = (dates: Date[] | undefined): string | undefined => {

@@ -160,6 +160,11 @@ msgstr "Du {0} au {1}"
 msgid "Duo"
 msgstr "Duo"
 
+#. Date (date will always be in french)
+#: src/libs/parsers/formatDates.ts:47
+msgid "Dès le {0}"
+msgstr "Dès le {0}"
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:27
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
