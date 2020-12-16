@@ -2,6 +2,8 @@ import { AlgoliaCategory } from 'libs/algolia'
 import { Category } from 'ui/svg/icons/categories'
 import { IconInterface } from 'ui/svg/icons/types'
 
+import { CategoryNameEnum } from '../../api/gen'
+
 // All offers without category are the 'Art' ones
 const DEFAULT_CATEGORY = 'Art'
 
@@ -27,7 +29,7 @@ export const parseCategory = (category: AlgoliaCategory | null): string => {
 
 // Map the facetFilter (in algolia) to the category Icon
 export const MAP_CATEGORY_TO_ICON: {
-  [k in AlgoliaCategory]: React.ElementType<IconInterface>
+  [k in CategoryNameEnum | AlgoliaCategory]: React.ElementType<IconInterface>
 } = {
   CINEMA: Category.Cinema,
   VISITE: Category.Exposition,
@@ -43,7 +45,7 @@ export const MAP_CATEGORY_TO_ICON: {
 }
 
 export const mapCategoryToIcon = (
-  category: AlgoliaCategory | null
+  category: AlgoliaCategory | CategoryNameEnum | null
 ): React.ElementType<IconInterface> => {
   if (category && category in MAP_CATEGORY_TO_ICON) return MAP_CATEGORY_TO_ICON[category]
   return Category.Artwork

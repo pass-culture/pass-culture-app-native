@@ -3,8 +3,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { OfferResponse, UserProfileResponse } from 'api/gen'
-import { AlgoliaCategory } from 'libs/algolia'
+import { CategoryNameEnum, OfferResponse, UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -112,7 +111,7 @@ async function renderOfferIconCaptions({
         bookableStocks={bookableStocks ?? defaultBookableStocks}
         isDuo={isDuo}
         label="Abonnements concerts"
-        category={AlgoliaCategory.MUSIQUE}
+        category={CategoryNameEnum.MUSIQUE}
       />
     )
   )
