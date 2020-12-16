@@ -6,20 +6,6 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   default: function () {
     return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
   },
-  'email-confirmation': function (params) {
-    const parsedExpirationTimestamp = Number(params?.expiration_timestamp)
-    if (isTimestampExpired(parsedExpirationTimestamp) || !params?.token) {
-      throw new Error('To be implemented in https://passculture.atlassian.net/browse/PC-5139 ')
-    }
-
-    return {
-      screen: 'SignupEmailValidation',
-      params: {
-        token: params.token,
-        expiration_timestamp: parsedExpirationTimestamp,
-      },
-    }
-  },
   favoris: function () {
     return { screen: 'Favorites', params: undefined }
   },
@@ -56,5 +42,18 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   },
   recherche: function () {
     return { screen: 'Search', params: undefined }
+  },
+  'signup-confirmation': function (params) {
+    if (params && params.token && params.email && params.expiration_timestamp) {
+      return {
+        screen: 'AfterSignupEmailValidationBuffer',
+        params: {
+          email: params.email,
+          token: params.token,
+          expirationTimestamp: Number(params.expiration_timestamp),
+        },
+      }
+    }
+    return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
   },
 }

@@ -8,11 +8,12 @@ import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPas
 import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
 import { Login } from 'features/auth/login/Login'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
+import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
-import { SignupEmailValidation } from 'features/auth/signup/SignupEmailValidation'
+import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -38,6 +39,7 @@ export type RootStackParamList = {
     password: string
     birthday: string
   }
+  AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }
   AppComponents: undefined
   CheatCodes: undefined
   ForgottenPassword: undefined
@@ -52,7 +54,7 @@ export type RootStackParamList = {
   SetEmail: undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
   SignupConfirmationEmailSent: { email: string }
-  SignupEmailValidation: { token: string; expiration_timestamp: number }
+  SignupConfirmationExpiredLink: { email: string }
   TabNavigator: undefined
 }
 
@@ -84,11 +86,18 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="SetPassword" component={SetPassword} />
         <RootStack.Screen name="SetBirthday" component={SetBirthday} />
         <RootStack.Screen name="AcceptCgu" component={AcceptCgu} />
-        <RootStack.Screen name="SignupEmailValidation" component={SignupEmailValidation} />
+        <RootStack.Screen
+          name="AfterSignupEmailValidationBuffer"
+          component={AfterSignupEmailValidationBuffer}
+        />
         <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
         <RootStack.Screen
           name="SignupConfirmationEmailSent"
           component={SignupConfirmationEmailSent}
+        />
+        <RootStack.Screen
+          name="SignupConfirmationExpiredLink"
+          component={SignupConfirmationExpiredLink}
         />
       </RootStack.Navigator>
     </NavigationContainer>

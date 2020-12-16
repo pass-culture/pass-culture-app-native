@@ -62,9 +62,10 @@ export function Navigation(): JSX.Element {
           <ButtonPrimary
             title={'Signup : Validate Email'}
             onPress={() =>
-              navigation.navigate('SignupEmailValidation', {
+              navigation.navigate('AfterSignupEmailValidationBuffer', {
                 token: 'whichTokenDoYouWantReally',
-                expiration_timestamp: 456789123,
+                expirationTimestamp: 456789123,
+                email: 'john@wick.com',
               })
             }
           />
