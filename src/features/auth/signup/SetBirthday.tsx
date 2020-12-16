@@ -110,7 +110,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   }, [informationModalVisible, state.date])
 
   useFocusEffect(() => {
-    // reset this variable eeach time the screen is focused to force a navigation to the next screen
+    // reset this variable each time the screen is focused to prevent automatic navigation to the next screen
     canNavigateToCguRef.current = false
   })
 
@@ -142,9 +142,13 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               />
             </DateInputContainer>
             <Paragraphe>
-              <Typo.Body>{_(t`Ce site est protégé par reCAPTCHA Google.`)}</Typo.Body>
+              <Typo.Body>
+                {_(
+                  /*i18n: signup birthday page reCAPTCHA */ t`Ce site est protégé par reCAPTCHA Google. La`
+                )}
+              </Typo.Body>
               <ExternalLink
-                text={_(t`La Charte des Données Personnelles`)}
+                text={_(t`Charte des Données Personnelles`)}
                 url={'https://policies.google.com/privacy'}
                 color={ColorsEnum.PRIMARY}
                 testID="external-link-google-data-privacy"

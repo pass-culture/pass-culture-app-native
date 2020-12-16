@@ -3,8 +3,8 @@ import { Text } from 'react-native'
 
 import { openExternalUrl } from 'features/navigation/helpers'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   url: string
@@ -20,8 +20,9 @@ export const ExternalLink: React.FC<Props> = ({ url, text, color, testID }) => {
 
   return (
     <Typo.ButtonText color={color} onPress={() => openExternalUrl(url)} testID={testID}>
+      <Spacer.Row numberOfSpaces={1} />
       <Text>
-        <ExternalSite inText color={color} testID="externalSiteIcon" size={getSpacing(6)} />
+        <ExternalLinkSite color={color} testID="externalSiteIcon" />
         {firstWord}
       </Text>
       {remainingWords}
