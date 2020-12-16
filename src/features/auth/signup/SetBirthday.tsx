@@ -18,6 +18,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { Close } from 'ui/svg/icons/Close'
@@ -167,6 +168,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               testIdSuffix={'validate-birthday'}
               onPress={animateBeforeNavigation}
             />
+            <Spacer.Column numberOfSpaces={5} />
+            <StepDots numberOfSteps={4} currentStep={3} />
           </TouchableOpacityFullWidth>
         </BottomCardContentContainer>
       </BottomContentPage>
@@ -196,6 +199,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
 
 const TouchableOpacityFullWidth = styled(TouchableOpacity)({
   width: '100%',
+  alignItems: 'center',
 })
 
 const Paragraphe = styled.Text({
