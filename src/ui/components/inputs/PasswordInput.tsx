@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
+import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Eye } from 'ui/svg/icons/Eye'
@@ -8,7 +9,10 @@ import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
-export function PasswordInput(props: TextInputProps): JSX.Element {
+export const _PartialPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
+  props,
+  forwardedRef
+) => {
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomTextInputProps(props)
 
@@ -34,6 +38,7 @@ export function PasswordInput(props: TextInputProps): JSX.Element {
         onFocus={onFocus}
         onBlur={onBlur}
         secureTextEntry={shouldHidePassword}
+        ref={forwardedRef}
       />
       <IconTouchableOpacity onPress={togglePasswordDisplay}>
         {shouldHidePassword ? (
@@ -45,6 +50,8 @@ export function PasswordInput(props: TextInputProps): JSX.Element {
     </InputContainer>
   )
 }
+
+export const PasswordInput = forwardRef<RNTextInput, TextInputProps>(_PartialPasswordInput)
 
 const StyledBaseTextInput = styled(BaseTextInput)({
   flex: 0.9,
