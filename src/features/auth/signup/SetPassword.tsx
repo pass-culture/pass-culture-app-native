@@ -65,7 +65,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
             <Spacer.Column numberOfSpaces={2} />
             <PasswordInput
               value={password}
-              autoFocus
+              autoFocus={true}
               onChangeText={setPassword}
               placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
               ref={passwordInput}

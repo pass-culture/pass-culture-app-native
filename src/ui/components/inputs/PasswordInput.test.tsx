@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
+import { TextInput as RNTextInput } from 'react-native'
 
 import { PasswordInput } from './PasswordInput'
 
@@ -36,5 +37,12 @@ describe('<PasswordInput />', () => {
     const hiddenPasswordSnapshot = instance.toJSON()
 
     expect(hiddenPasswordSnapshot).toMatchDiffSnapshot(displayPasswordSnapshot)
+  })
+
+  it('should render ref correctly', () => {
+    const myRef = React.createRef<RNTextInput>()
+    render(<PasswordInput ref={myRef} />)
+
+    expect(myRef.current).toBeTruthy()
   })
 })
