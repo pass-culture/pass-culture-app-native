@@ -111,11 +111,60 @@ export interface AccountRequest {
      */
     token: string;
 }/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum CategoryNameEnum {
+    CINEMA = 'CINEMA',
+    CONFERENCE = 'CONFERENCE',
+    INSTRUMENT = 'INSTRUMENT',
+    JEUXVIDEO = 'JEUX_VIDEO',
+    FILM = 'FILM',
+    LECON = 'LECON',
+    LIVRE = 'LIVRE',
+    MUSIQUE = 'MUSIQUE',
+    PRESSE = 'PRESSE',
+    SPECTACLE = 'SPECTACLE',
+    VISITE = 'VISITE'
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum CategoryType {
+    Event = 'Event',
+    Thing = 'Thing'
+}/**
+ * 
+ * @export
+ * @interface Coordinates
+ */
+export interface Coordinates {
+    /**
+     * 
+     * @type {number}
+     * @memberof Coordinates
+     */
+    latitude?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Coordinates
+     */
+    longitude?: number;
+}/**
  * 
  * @export
  * @interface OfferCategoryResponse
  */
 export interface OfferCategoryResponse {
+    /**
+     * 
+     * @type {CategoryType}
+     * @memberof OfferCategoryResponse
+     */
+    categoryType: CategoryType;
     /**
      * 
      * @type {string}
@@ -124,10 +173,10 @@ export interface OfferCategoryResponse {
     label: string;
     /**
      * 
-     * @type {string}
+     * @type {CategoryNameEnum}
      * @memberof OfferCategoryResponse
      */
-    value: string;
+    name: CategoryNameEnum;
 }/**
  * 
  * @export
@@ -248,6 +297,12 @@ export interface OfferVenueResponse {
      * @memberof OfferVenueResponse
      */
     city?: string;
+    /**
+     * 
+     * @type {Coordinates}
+     * @memberof OfferVenueResponse
+     */
+    coordinates: Coordinates;
     /**
      * 
      * @type {number}
