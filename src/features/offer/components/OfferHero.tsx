@@ -2,7 +2,7 @@ import React from 'react'
 import { Dimensions, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { AlgoliaCategory } from 'libs/algolia'
+import { CategoryNameEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { OfferBackPlaceholder } from 'ui/svg/OfferBackPlaceholder'
 import { OfferPlaceholder } from 'ui/svg/OfferPlaceholder'
@@ -13,7 +13,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface Props {
   imageUrl: string
-  category?: AlgoliaCategory | null
+  category?: CategoryNameEnum | null
 }
 
 export const OfferHero: React.FC<Props> = ({ imageUrl, category }) => {

@@ -2,9 +2,8 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { CategoryNameEnum, OfferResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
-import { AlgoliaCategory } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
 import { Duo } from 'ui/svg/icons/Duo'
@@ -13,7 +12,7 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { IconWithCaption, OfferCategory } from '../atoms'
 
-type Props = { category: AlgoliaCategory | null; label: string } & Pick<
+type Props = { category: CategoryNameEnum | null; label: string } & Pick<
   OfferResponse,
   'bookableStocks' | 'isDuo'
 >

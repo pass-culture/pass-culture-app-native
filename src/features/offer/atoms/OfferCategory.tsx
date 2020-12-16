@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { AlgoliaCategory } from 'libs/algolia'
+import { CategoryNameEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
 
 import { IconWithCaption } from './IconWithCaption'
 
 interface OfferCategoryProps {
-  category: AlgoliaCategory | null
+  category: CategoryNameEnum | null
   label?: string
 }
 

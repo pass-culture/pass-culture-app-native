@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
-import { AlgoliaCategory } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -19,10 +18,6 @@ const withdrawalsDetails =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ' +
   'eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
 
-// TODO: remove once PC-5814 is done
-const isCategoryAlgoliaCategoryTypeGuard = (category: string): category is AlgoliaCategory =>
-  category in AlgoliaCategory
-
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 export const Offer: FunctionComponent = () => {
   const {
@@ -34,12 +29,6 @@ export const Offer: FunctionComponent = () => {
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const digitalLocationName = offerResponse.venue.offerer.name
   const locationName = offerResponse.venue.publicName || offerResponse.venue.name
-
-  // TODO: category api will change in PC-5814 (refacto then)
-  const categoryValue = offerResponse.category.value.split('.')[1] || offerResponse.category.value
-  const category: AlgoliaCategory | null = isCategoryAlgoliaCategoryTypeGuard(categoryValue)
-    ? categoryValue
-    : null
 
   const headerTransition = headerScroll.interpolate({
     inputRange: [0, HEIGHT_END_OF_TRANSITION],
@@ -54,7 +43,7 @@ export const Offer: FunctionComponent = () => {
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
           useNativeDriver: false,
         })}>
-        <OfferHero category={category} imageUrl={offerResponse.imageUrl || ''} />
+        <OfferHero category={offerResponse.category.name} imageUrl={offerResponse.imageUrl || ''} />
         <Spacer.Column numberOfSpaces={4} />
         {offerResponse.isDigital ? (
           <LocationCaption locationName={digitalLocationName} where={_(t`en ligne`)} isDigital />
@@ -75,7 +64,7 @@ export const Offer: FunctionComponent = () => {
         <OfferIconCaptions
           isDuo={offerResponse.isDuo}
           bookableStocks={offerResponse.bookableStocks}
-          category={category}
+          category={offerResponse.category.name}
           label={offerResponse.category.label}
         />
         <Spacer.Column numberOfSpaces={6} />
