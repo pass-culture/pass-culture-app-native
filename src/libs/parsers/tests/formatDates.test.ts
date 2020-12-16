@@ -24,8 +24,7 @@ describe('formatDates', () => {
     ${[Oct5, Oct5]}   | ${undefined}
     ${[Oct5, Nov12]}  | ${'12 novembre 2020'}
   `('formatDates($dates) \t= $expected', ({ dates, expected }) => {
-    const timestampsInSeconds =
-      dates && dates.map((date: Date) => Math.floor(date.valueOf() / 1000))
+    const timestampsInSeconds = dates && dates.map((date: Date) => date.valueOf())
     expect(formatDates(timestampsInSeconds)).toBe(expected)
   })
 })
