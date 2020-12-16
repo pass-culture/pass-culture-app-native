@@ -22,6 +22,25 @@ const formatToFrenchDate = (timestamp: number) => {
   return `${day} ${month} ${year}`
 }
 
+/**
+ * @param timestamps: Array of timestamps in millisecond
+ * @param onlyFuture: if true, only future Dates will be preserved
+ */
+export const getUniqueSortedTimestamps = (
+  timestamps: number[] | undefined,
+  onlyFuture?: boolean
+): number[] | undefined => {
+  if (!timestamps || timestamps.length === 0) return
+  const uniqueTimestamps = Array.from(
+    new Set(
+      timestamps
+        .map((timestamp) => timestamp)
+        .filter((timestamp) => !onlyFuture || timestamp >= new Date().valueOf())
+    )
+  )
+  return uniqueTimestamps.sort()
+}
+
 export const formatDates = (dates?: number[]): string | undefined => {
   if (!dates || dates.length === 0) return
 
