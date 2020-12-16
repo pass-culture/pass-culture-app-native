@@ -2,12 +2,13 @@
 import { t } from '@lingui/macro'
 import jwtDecode from 'jwt-decode'
 
-import { api } from 'api/api'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { _ } from 'libs/i18n'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
+
+import { DefaultApi } from './gen'
 
 export function navigateToLogin() {
   setTimeout(() => void navigationRef.current?.navigate('Login'), 0)
@@ -52,7 +53,11 @@ const NotAuthenticatedCalls = [
  * on error (401): try to refresh the access token
  * on error (other): propagates error
  */
-export const safeFetch = async (url: string, options: RequestInit): Promise<Response> => {
+export const safeFetch = async (
+  url: string,
+  options: RequestInit,
+  api: DefaultApi
+): Promise<Response> => {
   // dont ask a new token for this specific api call
   for (const apiRoute of NotAuthenticatedCalls) {
     if (url.includes(apiRoute)) {
@@ -72,7 +77,7 @@ export const safeFetch = async (url: string, options: RequestInit): Promise<Resp
     }
   } catch (error) {
     try {
-      const newAccessToken = await refreshAccessToken()
+      const newAccessToken = await refreshAccessToken(api)
 
       options = {
         ...options,
@@ -95,7 +100,7 @@ export const safeFetch = async (url: string, options: RequestInit): Promise<Resp
  * - on error (422): propagates error
  * - on error (other): throws an exception
  */
-export const refreshAccessToken = async (): Promise<string | null> => {
+export const refreshAccessToken = async (api: DefaultApi): Promise<string | null> => {
   const refreshToken = await getRefreshToken()
 
   // if not connected, we also redirect to the login page
