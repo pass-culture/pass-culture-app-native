@@ -1,3 +1,7 @@
+import { t } from '@lingui/macro'
+
+import { _ } from '../i18n'
+
 // javascript Date can't find them...
 const MONTHS = [
   'janvier',
@@ -49,4 +53,18 @@ export const formatDates = (timestampsInMillis?: number[]): string | undefined =
 
   if (uniqueSortedTimestamps.length === 1) return formatToFrenchDate(uniqueSortedTimestamps[0])
   return `Dès le ${formatToFrenchDate(uniqueSortedTimestamps.sort()[0])}`
+}
+
+export const formatDatePeriod = (dates: Date[] | undefined): string | undefined => {
+  const timestamps = dates?.map((date) => date.valueOf())
+  const uniqueSortedTimestamps = getUniqueSortedTimestamps(timestamps, false)
+  if (!uniqueSortedTimestamps || uniqueSortedTimestamps.length === 0) return
+
+  if (uniqueSortedTimestamps.length === 1) return formatToFrenchDate(uniqueSortedTimestamps[0])
+  const len = uniqueSortedTimestamps.length
+  return _(
+    /*i18n: Dates (dates will always be in french) */ t`Du ${formatToFrenchDate(
+      uniqueSortedTimestamps[0]
+    )} au ${formatToFrenchDate(uniqueSortedTimestamps[len - 1])}`
+  )
 }
