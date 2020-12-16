@@ -679,7 +679,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
  * DefaultApi - functional programming interface
  * @export
  */
-export const DefaultApiFp = function(configuration?: Configuration) {
+export const DefaultApiFp = function(api: DefaultApi, configuration?: Configuration) {
     return {
         /**
          * 
@@ -689,7 +689,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async getnativev1me(basePath: string, options?: any): Promise<UserProfileResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1me(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -701,7 +701,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async getnativev1offerofferId(basePath: string, offer_id: string, options?: any): Promise<OfferResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1offerofferId(offer_id, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -713,7 +713,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async postnativev1account(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1account(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -724,7 +724,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async postnativev1refreshAccessToken(basePath: string, options?: any): Promise<RefreshResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1refreshAccessToken(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -736,7 +736,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async postnativev1requestPasswordReset(basePath: string, body?: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1requestPasswordReset(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -748,7 +748,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async postnativev1resetPassword(basePath: string, body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resetPassword(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -760,7 +760,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async postnativev1signin(basePath: string, body?: SigninRequest, options?: any): Promise<SigninResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1signin(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
         /**
@@ -772,7 +772,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async postnativev1validateEmail(basePath: string, body?: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1validateEmail(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options)
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
     }
@@ -793,7 +793,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async getnativev1me(options?: any) {
-        const functionalApi = DefaultApiFp(this.configuration)
+        const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1me(this.basePath, options)
     }
     /**
@@ -805,7 +805,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async getnativev1offerofferId(offer_id: string, options?: any) {
-        const functionalApi = DefaultApiFp(this.configuration)
+        const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1offerofferId(this.basePath, offer_id, options)
     }
     /**
@@ -817,7 +817,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async postnativev1account(body?: AccountRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this.configuration)
+        const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1account(this.basePath, body, options)
     }
     /**
@@ -828,7 +828,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async postnativev1refreshAccessToken(options?: any) {
-        const functionalApi = DefaultApiFp(this.configuration)
+        const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1refreshAccessToken(this.basePath, options)
     }
     /**
@@ -840,7 +840,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this.configuration)
+        const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1requestPasswordReset(this.basePath, body, options)
     }
     /**
@@ -852,7 +852,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async postnativev1resetPassword(body?: ResetPasswordRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this.configuration)
+        const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1resetPassword(this.basePath, body, options)
     }
     /**
@@ -864,7 +864,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async postnativev1signin(body?: SigninRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this.configuration)
+        const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1signin(this.basePath, body, options)
     }
     /**
@@ -876,7 +876,7 @@ export class DefaultApi extends BaseAPI {
      * @memberof DefaultApi
      */
     public async postnativev1validateEmail(body?: ValidateEmailRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this.configuration)
+        const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1validateEmail(this.basePath, body, options)
     }
 }
