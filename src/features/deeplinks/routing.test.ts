@@ -40,6 +40,37 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
     })
   })
 
+  describe('link signup-confirmation', () => {
+    it('should return Home page when no params are passed', () => {
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['signup-confirmation']()
+      expect(configureScreen.screen).toBe('Home')
+      expect(configureScreen.params).toEqual({ shouldDisplayLoginModal: false })
+    })
+
+    it.each`
+      params
+      ${{ tok: '', expiration_timestamp: '', email: '' }}
+      ${{ token: '', expiration_time: '', email: '' }}
+      ${{ token: '', expiration_timestamp: '', em: '' }}
+    `('should return Home page when params are invalid', ({ params }) => {
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['signup-confirmation'](params)
+      expect(configureScreen.screen).toBe('Home')
+      expect(configureScreen.params).toEqual({ shouldDisplayLoginModal: false })
+    })
+
+    it('should return AfterSignupEmailValidationBuffer when all params are present', () => {
+      const params = { token: 'token', expiration_timestamp: '11111', email: 'test@gmail.com' }
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['signup-confirmation'](params)
+
+      expect(configureScreen.screen).toBe('AfterSignupEmailValidationBuffer')
+      expect(configureScreen.params).toEqual({
+        email: params.email,
+        expirationTimestamp: 11111,
+        token: params.token,
+      })
+    })
+  })
+
   describe('link default', () => {
     it('should return Home page when no params are passed', () => {
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['default']()
