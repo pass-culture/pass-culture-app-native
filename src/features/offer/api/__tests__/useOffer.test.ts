@@ -23,7 +23,7 @@ describe('useOffer', () => {
   it('adaptOfferResponse - should add full address', () => {
     //@ts-ignore beginningDatetime is a string corresponding to a Date
     expect(adaptOfferResponse(offerResponseSnap).fullAddress).toEqual(
-      'PATHE BEAUGRENELLE, 2 RUE LAMENNAIS 75008 PARIS 8'
+      'PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8'
     )
     const offerWithoutAddress = {
       ...offerResponseSnap,
@@ -45,7 +45,7 @@ describe('useOffer', () => {
     }
     //@ts-ignore beginningDatetime is a string corresponding to a Date
     expect(adaptOfferResponse(offerWithPublicName).fullAddress).toEqual(
-      'Ciné Pathé, 2 RUE LAMENNAIS 75008 PARIS 8'
+      'Ciné Pathé, 2 RUE LAMENNAIS, 75008 PARIS 8'
     )
   })
 })

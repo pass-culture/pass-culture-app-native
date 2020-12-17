@@ -15,7 +15,7 @@ export const adaptOfferResponse = (offerApiResponse: OfferResponse): OfferAdapte
   const locationName = offerApiResponse.venue.publicName || offerApiResponse.venue.name
   const addressSecondPart = `${offerApiResponse.venue.postalCode} ${offerApiResponse.venue.city}`
   const fullAddress = offerApiResponse.venue.address
-    ? `${locationName}, ${offerApiResponse.venue.address} ${addressSecondPart}`
+    ? `${locationName}, ${offerApiResponse.venue.address}, ${addressSecondPart}`
     : `${locationName}, ${addressSecondPart}`
   return {
     ...offerApiResponse,

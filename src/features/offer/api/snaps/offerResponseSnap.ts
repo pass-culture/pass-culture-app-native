@@ -30,5 +30,5 @@ export const offerResponseSnap: OfferResponse = {
 
 export const offerAdaptedResponseSnap = {
   ...offerResponseSnap,
-  fullAddress: 'PATHE BEAUGRENELLE, 2 RUE LAMENNAIS 75008 PARIS 8',
+  fullAddress: 'PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8',
 }
