@@ -11,17 +11,34 @@ interface UseOfferInterface {
   offerId: number | null
 }
 
-export const adaptOfferResponse = (offerApiResponse: OfferResponse): OfferAdaptedResponse => {
-  const locationName = offerApiResponse.venue.publicName || offerApiResponse.venue.name
-  const addressSecondPart = `${offerApiResponse.venue.postalCode} ${offerApiResponse.venue.city}`
-  const fullAddress = offerApiResponse.venue.address
-    ? `${locationName}, ${offerApiResponse.venue.address}, ${addressSecondPart}`
-    : `${locationName}, ${addressSecondPart}`
-  return {
-    ...offerApiResponse,
-    fullAddress,
+const isNotEmpty = (text: string | undefined) => text !== undefined && text !== ''
+
+export const formatFullAddress = (
+  publicName: string | undefined,
+  name: string,
+  address: string | undefined,
+  postalCode: string | undefined,
+  city: string | undefined
+) => {
+  let fullAddress = `${publicName || name}`
+  if (isNotEmpty(address) && isNotEmpty(city)) fullAddress = fullAddress.concat(`, ${address}`)
+  if (isNotEmpty(city)) {
+    if (isNotEmpty(postalCode)) fullAddress = fullAddress.concat(`, ${postalCode} ${city}`)
+    else fullAddress = fullAddress.concat(`, ${city}`)
   }
+  return fullAddress
 }
+
+const adaptOfferResponse = (offerApiResponse: OfferResponse): OfferAdaptedResponse => ({
+  ...offerApiResponse,
+  fullAddress: formatFullAddress(
+    offerApiResponse.venue.publicName,
+    offerApiResponse.venue.name,
+    offerApiResponse.venue.address,
+    offerApiResponse.venue.postalCode,
+    offerApiResponse.venue.city
+  ),
+})
 
 const getOfferById = async (offerId: string) => {
   const offerApiResponse = await api.getnativev1offerofferId(offerId.toString())
