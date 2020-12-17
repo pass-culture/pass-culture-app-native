@@ -1,0 +1,21 @@
+import { render } from '@testing-library/react-native'
+import React from 'react'
+
+import { ValidationMark } from '../ValidationMark'
+
+describe('ValidationMark', () => {
+  it('should display the validIcon when isValid is true', () => {
+    const { queryByTestId } = render(
+      <ValidationMark invalidTestID="invalidTestId" validtestID="validTestId" isValid={true} />
+    )
+    expect(queryByTestId('invalidTestId')).toBeFalsy()
+    expect(queryByTestId('validTestId')).toBeTruthy()
+  })
+  it('should displat the invalidIcon when isValid is false', () => {
+    const { queryByTestId } = render(
+      <ValidationMark invalidTestID="invalidTestId" validtestID="validTestId" isValid={false} />
+    )
+    expect(queryByTestId('invalidTestId')).toBeTruthy()
+    expect(queryByTestId('validTestId')).toBeFalsy()
+  })
+})
