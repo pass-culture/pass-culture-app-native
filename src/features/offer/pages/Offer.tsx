@@ -82,18 +82,19 @@ export const Offer: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={4} />
         <Divider />
         <SectionTitle>{_(t`Où ?`)}</SectionTitle>
-        <Divider />
         {shouldDisplayWhenBlock && (
-          <MarginContainer>
-            <Spacer.Column numberOfSpaces={6} />
-            <Typo.Title4>{_(t`Quand ?`)}</Typo.Title4>
-            <Spacer.Column numberOfSpaces={4} />
-            <Typo.Body>{formatDatePeriod(dates)}</Typo.Body>
-            <Spacer.Column numberOfSpaces={6} />
-          </MarginContainer>
+          <React.Fragment>
+            <Divider />
+            <MarginContainer>
+              <Spacer.Column numberOfSpaces={6} />
+              <Typo.Title4>{_(t`Quand ?`)}</Typo.Title4>
+              <Spacer.Column numberOfSpaces={4} />
+              <Typo.Body>{formatDatePeriod(dates)}</Typo.Body>
+              <Spacer.Column numberOfSpaces={6} />
+            </MarginContainer>
+          </React.Fragment>
         )}
         <Divider />
-
         <AccordionItem title={_(t`Modalités de retrait`)}>
           <Typo.Body>{withdrawalsDetails}</Typo.Body>
         </AccordionItem>

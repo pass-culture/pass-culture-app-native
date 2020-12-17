@@ -36,11 +36,7 @@ export const getUniqueSortedTimestamps = (
 ): number[] | undefined => {
   if (!timestamps || timestamps.length === 0) return
   const uniqueTimestamps = Array.from(
-    new Set(
-      timestamps
-        .map((timestamp) => timestamp)
-        .filter((timestamp) => !onlyFuture || timestamp >= new Date().valueOf())
-    )
+    new Set(timestamps.filter((timestamp) => !onlyFuture || timestamp >= new Date().valueOf()))
   )
   return uniqueTimestamps.sort()
 }
@@ -54,7 +50,7 @@ export const formatDates = (timestampsInMillis?: number[]): string | undefined =
   if (uniqueSortedTimestamps.length === 1) return formatToFrenchDate(uniqueSortedTimestamps[0])
   return _(
     /*i18n: Date (date will always be in french)*/ t`Dès le ${formatToFrenchDate(
-      uniqueSortedTimestamps.sort()[0]
+      uniqueSortedTimestamps[0]
     )}`
   )
 }

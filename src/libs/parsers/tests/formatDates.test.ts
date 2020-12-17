@@ -52,15 +52,25 @@ describe('getUniqueSortedTimestamps', () => {
     mockdate.set(Nov1)
   })
   it.each`
-    timestamps                                                                            | onlyFuture | uniqueSortedTimestamps
-    ${[]}                                                                                 | ${false}   | ${undefined}
-    ${[Nov1.getTime(), Nov12.getTime(), Oct5.getTime()]}                                  | ${false}   | ${[Oct5.getTime(), Nov1.getTime(), Nov12.getTime()]}
-    ${[Nov1.getTime(), Nov12.getTime(), Oct5.getTime()]}                                  | ${true}    | ${[Nov1.getTime(), Nov12.getTime()]}
-    ${[Nov1.getTime(), Nov12.getTime(), Oct5.getTime(), Nov1.getTime(), Nov12.getTime()]} | ${false}   | ${[Oct5.getTime(), Nov1.getTime(), Nov12.getTime()]}
-    ${[Nov1.getTime(), Nov12.getTime(), Oct5.getTime(), Nov12.getTime(), Oct5.getTime()]} | ${true}    | ${[Nov1.getTime(), Nov12.getTime()]}
+    dates                               | onlyFuture | uniqueSortedDates
+    ${[]}                               | ${false}   | ${undefined}
+    ${[Nov1, Nov12, Oct5]}              | ${false}   | ${[Oct5, Nov1, Nov12]}
+    ${[Nov1, Nov12, Oct5]}              | ${true}    | ${[Nov1, Nov12]}
+    ${[Nov1, Nov12, Oct5, Nov1, Nov12]} | ${false}   | ${[Oct5, Nov1, Nov12]}
+    ${[Nov1, Nov12, Oct5, Nov12, Oct5]} | ${true}    | ${[Nov1, Nov12]}
   `(
-    'getUniqueSortedTimestamps($timestamps) with onlyFuture:$onlyFuture option returns $uniqueSortedTimestamps',
-    ({ timestamps, onlyFuture, uniqueSortedTimestamps }) => {
+    'getUniqueSortedTimestamps($dates) with onlyFuture:$onlyFuture option returns $uniqueSortedDates',
+    ({
+      dates,
+      onlyFuture,
+      uniqueSortedDates,
+    }: {
+      dates: Date[]
+      onlyFuture: boolean
+      uniqueSortedDates: Date[] | undefined
+    }) => {
+      const timestamps = dates.map((date) => date.valueOf())
+      const uniqueSortedTimestamps = uniqueSortedDates?.map((date) => date.valueOf())
       expect(getUniqueSortedTimestamps(timestamps, onlyFuture)).toEqual(uniqueSortedTimestamps)
     }
   )
