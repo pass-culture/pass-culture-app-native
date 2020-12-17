@@ -40,11 +40,17 @@ import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
+import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
+import { HandicapMental } from 'ui/svg/icons/HandicapMental'
+import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
+import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Logo } from 'ui/svg/icons/Logo'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
+import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
 import { OfferBackPlaceholder } from 'ui/svg/OfferBackPlaceholder'
 import { OfferPlaceholder } from 'ui/svg/OfferPlaceholder'
@@ -295,6 +301,30 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <OrderPrice size={24} />
           <Text> - OrderPrice </Text>
+        </AlignedText>
+        <AlignedText>
+          <HandicapVisual size={24} />
+          <Text> - HandicapVisual </Text>
+        </AlignedText>
+        <AlignedText>
+          <HandicapMental size={24} />
+          <Text> - HandicapMental </Text>
+        </AlignedText>
+        <AlignedText>
+          <HandicapMotor size={24} />
+          <Text> - HandicapMotor </Text>
+        </AlignedText>
+        <AlignedText>
+          <HandicapAudio size={24} />
+          <Text> - HandicapAudio </Text>
+        </AlignedText>
+        <AlignedText>
+          <Validate size={24} />
+          <Text> - Validate </Text>
+        </AlignedText>
+        <AlignedText>
+          <Invalidate size={24} />
+          <Text> - Invalidate </Text>
         </AlignedText>
       </AccordionItem>
 
