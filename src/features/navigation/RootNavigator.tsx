@@ -18,7 +18,7 @@ import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
-import { Offer } from 'features/offer'
+import { Offer, OfferDescription } from 'features/offer'
 import { logScreenView } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
@@ -47,6 +47,7 @@ export type RootStackParamList = {
   IdCheck: undefined
   Navigation: undefined
   Offer: { id: string }
+  OfferDescription: { id: string }
   ReinitializePassword: { token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
@@ -75,6 +76,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="TabNavigator" component={TabNavigator} />
         <RootStack.Screen name="Login" component={Login} />
         <RootStack.Screen name="Offer" component={Offer} />
+        <RootStack.Screen name="OfferDescription" component={OfferDescription} />
         <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
         <RootStack.Screen name="IdCheck" component={IdCheck} />
         <RootStack.Screen name="AppComponents" component={AppComponents} />
