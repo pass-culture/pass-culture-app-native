@@ -32,9 +32,10 @@ const LottieContainer = styled(LottieView)({
   height: 150,
 })
 
-const LoadingText = styled(Typo.Title2).attrs({
+const LoadingText = styled(Typo.Body).attrs({
   color: ColorsEnum.WHITE,
 })({
+  top: -16,
   textAlign: 'center',
   fontSize: 15,
 })
