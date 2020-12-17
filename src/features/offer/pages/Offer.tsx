@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef } from 'react'
-import { Animated, View } from 'react-native'
+import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -12,11 +12,15 @@ import { formatDatePeriod } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useOffer } from '../api/useOffer'
-import { AccordionItem, OfferHeader, OfferHero, OfferIconCaptions } from '../components'
+import {
+  AccordionItem,
+  OfferHeader,
+  OfferHero,
+  OfferIconCaptions,
+  OfferWhereSection,
+} from '../components'
 import { OfferPartialDescription } from '../components/OfferPartialDescription'
 import { dehumanizeId } from '../services/dehumanizeId'
-
-import { useDistance } from './useDistance'
 
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 export const Offer: FunctionComponent = () => {
@@ -30,7 +34,6 @@ export const Offer: FunctionComponent = () => {
     lat: offerResponse?.venue?.coordinates?.latitude,
     lng: offerResponse?.venue?.coordinates?.longitude,
   }
-  const distanceToOffer = useDistance(offerPosition)
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const digitalLocationName = offerResponse.venue.offerer.name
@@ -85,19 +88,7 @@ export const Offer: FunctionComponent = () => {
         <OfferPartialDescription description={offerResponse.description || ''} />
         <Spacer.Column numberOfSpaces={4} />
 
-        {(offerResponse.fullAddress || distanceToOffer) && (
-          <Section visible={true} margin={true}>
-            <SectionTitle>{_(t`Où ?`)}</SectionTitle>
-            <StyledCaption>{_(t`Adresse`)}</StyledCaption>
-            <StyledAddress>{offerResponse.fullAddress}</StyledAddress>
-            {distanceToOffer && (
-              <View>
-                <StyledCaption>{_(t`Distance`)}</StyledCaption>
-                <StyledDistance>{distanceToOffer}</StyledDistance>
-              </View>
-            )}
-          </Section>
-        )}
+        <OfferWhereSection address={offerResponse.fullAddress} offerPosition={offerPosition} />
 
         <Section visible={shouldDisplayWhenBlock} margin={true}>
           <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
@@ -138,19 +129,6 @@ const Container = styled.ScrollView({})
 const OfferTitle = styled(Typo.Title3)({ textAlign: 'center' })
 const SectionTitle = styled(Typo.Title4)({ paddingVertical: getSpacing(6) })
 const SectionBody = styled(Typo.Body)({ marginTop: -getSpacing(2), paddingBottom: getSpacing(6) })
-
-const StyledAddress = styled(Typo.Body)({
-  textTransform: 'capitalize',
-  paddingTop: getSpacing(1),
-})
-
-const StyledDistance = styled(Typo.Body)({
-  paddingTop: getSpacing(1),
-})
-
-const StyledCaption = styled(Typo.Caption)({
-  marginTop: -getSpacing(2),
-})
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
