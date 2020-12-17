@@ -3,8 +3,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
+import { Spacer } from 'ui/components/spacer/Spacer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { Typo, getSpacing, ColorsEnum } from 'ui/theme'
+import { Typo, ColorsEnum } from 'ui/theme'
 
 import { useDistance } from './useDistance'
 
@@ -20,58 +21,48 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition }) =
   const distanceToOffer = useDistance(offerPosition)
   if (!distanceToOffer && !address) return null
   return (
-    <Section>
+    <React.Fragment>
+      <Spacer.Column numberOfSpaces={6} />
       <Typo.Title4>{_(t`Où ?`)}</Typo.Title4>
       {address && (
         <React.Fragment>
-          <StyledCaption>{_(t`Adresse`)}</StyledCaption>
+          <Spacer.Column numberOfSpaces={4} />
+          <Typo.Caption>{_(t`Adresse`)}</Typo.Caption>
+          <Spacer.Column numberOfSpaces={1} />
           <StyledAddress>{address}</StyledAddress>
         </React.Fragment>
       )}
       {distanceToOffer && (
         <React.Fragment>
-          <StyledCaption>{_(t`Distance`)}</StyledCaption>
-          <StyledDistance>{distanceToOffer}</StyledDistance>
+          <Spacer.Column numberOfSpaces={4} />
+          <Typo.Caption>{_(t`Distance`)}</Typo.Caption>
+          <Spacer.Column numberOfSpaces={1} />
+          <Typo.Body>{distanceToOffer}</Typo.Body>
         </React.Fragment>
       )}
+      <Spacer.Column numberOfSpaces={4} />
       <Separator />
+      <Spacer.Column numberOfSpaces={6} />
       <StyledView>
         <LocationPointer color={ColorsEnum.BLACK} size={24} />
-        <StyledText>{_(t`Voir l'itinéraire`)}</StyledText>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.ButtonText>{_(t`Voir l'itinéraire`)}</Typo.ButtonText>
       </StyledView>
-    </Section>
+      <Spacer.Column numberOfSpaces={6} />
+    </React.Fragment>
   )
 }
 
-const Section = styled.View({
-  paddingVertical: getSpacing(6),
-})
-
 const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
-  paddingTop: getSpacing(1),
-})
-
-const StyledDistance = styled(Typo.Body)({
-  paddingTop: getSpacing(1),
-})
-
-const StyledCaption = styled(Typo.Caption)({
-  paddingTop: getSpacing(4),
 })
 
 const Separator = styled.View({
   height: 1,
   backgroundColor: ColorsEnum.GREY_MEDIUM,
-  marginTop: getSpacing(4),
 })
 
 const StyledView = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingTop: getSpacing(6),
-})
-
-const StyledText = styled(Typo.ButtonText)({
-  paddingLeft: getSpacing(1),
 })

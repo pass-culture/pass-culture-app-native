@@ -3187,180 +3187,253 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           }
                         >
                           <View
+                            numberOfSpaces={6}
                             style={
                               Array [
                                 Object {
-                                  "paddingVertical": 24,
+                                  "height": 24,
+                                },
+                              ]
+                            }
+                          />
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 18,
+                                  "lineHeight": 22,
                                 },
                               ]
                             }
                           >
-                            <Text
+                            Où ?
+                          </Text>
+                          <View
+                            numberOfSpaces={4}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 16,
+                                },
+                              ]
+                            }
+                          />
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 16,
+                                },
+                              ]
+                            }
+                          >
+                            Adresse
+                          </Text>
+                          <View
+                            numberOfSpaces={1}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 4,
+                                },
+                              ]
+                            }
+                          />
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "textTransform": "capitalize",
+                                },
+                              ]
+                            }
+                          >
+                            PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8
+                          </Text>
+                          <View
+                            numberOfSpaces={4}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 16,
+                                },
+                              ]
+                            }
+                          />
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 16,
+                                },
+                              ]
+                            }
+                          >
+                            Distance
+                          </Text>
+                          <View
+                            numberOfSpaces={1}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 4,
+                                },
+                              ]
+                            }
+                          />
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                          >
+                            900+ km
+                          </Text>
+                          <View
+                            numberOfSpaces={4}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 16,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "backgroundColor": "#c7c7cc",
+                                  "height": 1,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            numberOfSpaces={6}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 24,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                },
+                              ]
+                            }
+                          >
+                            <RNSVGSvgView
+                              align="xMidYMid"
+                              bbHeight={24}
+                              bbWidth={24}
+                              focusable={false}
+                              height={24}
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 18,
-                                    "lineHeight": 22,
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  Object {
+                                    "flex": 0,
+                                    "height": 24,
+                                    "width": 24,
                                   },
                                 ]
                               }
+                              vbHeight={16}
+                              vbWidth={16}
+                              width={24}
                             >
-                              Où ?
-                            </Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                    "paddingTop": 16,
-                                  },
-                                ]
-                              }
-                            >
-                              Adresse
-                            </Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                    "paddingTop": 4,
-                                    "textTransform": "capitalize",
-                                  },
-                                ]
-                              }
-                            >
-                              PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8
-                            </Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                    "paddingTop": 16,
-                                  },
-                                ]
-                              }
-                            >
-                              Distance
-                            </Text>
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                    "paddingTop": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              900+ km
-                            </Text>
-                            <View
-                              style={
-                                Array [
-                                  Object {
-                                    "backgroundColor": "#c7c7cc",
-                                    "height": 1,
-                                    "marginTop": 16,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "row",
-                                    "paddingTop": 24,
-                                  },
-                                ]
-                              }
-                            >
-                              <RNSVGSvgView
-                                align="xMidYMid"
-                                bbHeight={24}
-                                bbWidth={24}
-                                focusable={false}
-                                height={24}
-                                meetOrSlice={0}
-                                minX={0}
-                                minY={0}
-                                style={
-                                  Array [
-                                    Object {
-                                      "backgroundColor": "transparent",
-                                      "borderWidth": 0,
-                                    },
-                                    Object {
-                                      "flex": 0,
-                                      "height": 24,
-                                      "width": 24,
-                                    },
-                                  ]
-                                }
-                                vbHeight={16}
-                                vbWidth={16}
-                                width={24}
-                              >
-                                <RNSVGGroup>
+                              <RNSVGGroup>
+                                <RNSVGGroup
+                                  fill={null}
+                                  propList={
+                                    Array [
+                                      "fill",
+                                    ]
+                                  }
+                                >
                                   <RNSVGGroup
-                                    fill={null}
+                                    fill={4279571733}
                                     propList={
                                       Array [
                                         "fill",
                                       ]
                                     }
                                   >
-                                    <RNSVGGroup
-                                      fill={4279571733}
-                                      propList={
-                                        Array [
-                                          "fill",
-                                        ]
-                                      }
-                                    >
-                                      <RNSVGGroup>
-                                        <RNSVGPath
-                                          d="M7.812 3l.164.005.118.002c.538.021 1.064.165 1.544.425l.12.068c1.393.894 1.949 2.648 1.315 4.19l-2.396 4.994c-.104.193-.307.316-.53.316-.242 0-.46-.144-.542-.34L4.97 7.833c-.942-2.12.41-4.622 2.679-4.828.109-.007.218-.007.327 0zM8 4.667c-.92 0-1.667.746-1.667 1.666C6.333 7.253 7.08 8 8 8s1.667-.746 1.667-1.667c0-.92-.747-1.666-1.667-1.666z"
-                                        />
-                                      </RNSVGGroup>
+                                    <RNSVGGroup>
+                                      <RNSVGPath
+                                        d="M7.812 3l.164.005.118.002c.538.021 1.064.165 1.544.425l.12.068c1.393.894 1.949 2.648 1.315 4.19l-2.396 4.994c-.104.193-.307.316-.53.316-.242 0-.46-.144-.542-.34L4.97 7.833c-.942-2.12.41-4.622 2.679-4.828.109-.007.218-.007.327 0zM8 4.667c-.92 0-1.667.746-1.667 1.666C6.333 7.253 7.08 8 8 8s1.667-.746 1.667-1.667c0-.92-.747-1.666-1.667-1.666z"
+                                      />
                                     </RNSVGGroup>
                                   </RNSVGGroup>
                                 </RNSVGGroup>
-                              </RNSVGSvgView>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                      "paddingLeft": 4,
-                                    },
-                                  ]
-                                }
-                              >
-                                Voir l'itinéraire
-                              </Text>
-                            </View>
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                            <View
+                              numberOfSpaces={1}
+                              style={
+                                Array [
+                                  Object {
+                                    "height": 4,
+                                  },
+                                ]
+                              }
+                            />
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              Voir l'itinéraire
+                            </Text>
                           </View>
+                          <View
+                            numberOfSpaces={6}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 24,
+                                },
+                              ]
+                            }
+                          />
                         </View>
                         <View
                           style={
