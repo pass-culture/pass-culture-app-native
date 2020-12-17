@@ -4,7 +4,8 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
-import { Typo, getSpacing } from 'ui/theme'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { Typo, getSpacing, ColorsEnum } from 'ui/theme'
 
 import { useDistance } from './useDistance'
 
@@ -34,6 +35,11 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition }) =
           <StyledDistance>{distanceToOffer}</StyledDistance>
         </View>
       )}
+      <Separator />
+      <StyledView>
+        <LocationPointer color={ColorsEnum.BLACK} size={24} />
+        <StyledText>{_(t`Voir l'itinéraire`)}</StyledText>
+      </StyledView>
     </Section>
   )
 }
@@ -53,4 +59,20 @@ const StyledDistance = styled(Typo.Body)({
 
 const StyledCaption = styled(Typo.Caption)({
   paddingTop: getSpacing(4),
+})
+
+const Separator = styled.View({
+  height: 1,
+  backgroundColor: ColorsEnum.GREY_MEDIUM,
+  marginTop: getSpacing(4),
+})
+
+const StyledView = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+  paddingTop: getSpacing(6),
+})
+
+const StyledText = styled(Typo.ButtonText)({
+  paddingLeft: getSpacing(1),
 })
