@@ -11,5 +11,3 @@ export function useGeolocation(): ReturnType<typeof actualUseGeolocation> {
     altitudeAccuracy: null,
   }
 }
-
-export default useGeolocation

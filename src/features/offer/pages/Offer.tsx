@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef } from 'react'
-import { Animated } from 'react-native'
+import { Animated, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -16,6 +16,8 @@ import { AccordionItem, OfferHeader, OfferHero, OfferIconCaptions } from '../com
 import { OfferPartialDescription } from '../components/OfferPartialDescription'
 import { dehumanizeId } from '../services/dehumanizeId'
 
+import { useDistance } from './useDistance'
+
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 export const Offer: FunctionComponent = () => {
   const {
@@ -23,6 +25,12 @@ export const Offer: FunctionComponent = () => {
   } = useRoute<UseRouteType<'Offer'>>()
   const { data: offerResponse } = useOffer({ offerId: dehumanizeId(id) })
   const headerScroll = useRef(new Animated.Value(0)).current
+
+  const offerPosition = {
+    lat: offerResponse?.venue?.coordinates?.latitude,
+    lng: offerResponse?.venue?.coordinates?.longitude,
+  }
+  const distanceToOffer = useDistance(offerPosition)
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const digitalLocationName = offerResponse.venue.offerer.name
@@ -81,6 +89,12 @@ export const Offer: FunctionComponent = () => {
           <SectionTitle>{_(t`Où ?`)}</SectionTitle>
           <StyledCaption>{_(t`Adresse`)}</StyledCaption>
           <StyledAddress>{offerResponse.fullAddress}</StyledAddress>
+          {distanceToOffer && (
+            <View>
+              <StyledCaption>{_(t`Distance`)}</StyledCaption>
+              <StyledDistance>{distanceToOffer}</StyledDistance>
+            </View>
+          )}
         </Section>
 
         <Section visible={shouldDisplayWhenBlock} margin={true}>
@@ -125,6 +139,10 @@ const SectionBody = styled(Typo.Body)({ marginTop: -getSpacing(2), paddingBottom
 
 const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
+  paddingTop: getSpacing(1),
+})
+
+const StyledDistance = styled(Typo.Body)({
   paddingTop: getSpacing(1),
 })
 
