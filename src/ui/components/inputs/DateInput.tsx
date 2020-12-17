@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { NativeSyntheticEvent, TextInput, TextInputKeyPressEventData } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -6,6 +6,10 @@ import { DatePartType, PartialDateInput } from './PartialDateInput'
 
 interface DateInputProps {
   onChangeValue?: (value: string | null, isComplete: boolean) => void
+}
+
+export interface DateInputRef {
+  clearFocuses: () => void
 }
 
 export const CurrentYear = new Date().getFullYear()
@@ -34,7 +38,10 @@ export function isValidDate(year: number, month: number, day: number) {
     : false
 }
 
-export const DateInput: FunctionComponent<DateInputProps> = (props) => {
+const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputProps> = (
+  props,
+  forwardedRef
+) => {
   const dayInputRef = useRef<TextInput>(null)
   const monthInputRef = useRef<TextInput>(null)
   const yearInputRef = useRef<TextInput>(null)
@@ -57,6 +64,14 @@ export const DateInput: FunctionComponent<DateInputProps> = (props) => {
     yearValidator.hasRightLength(year)
 
   const isValid = isValidDate(Number(year), Number(month), Number(day))
+
+  useImperativeHandle(forwardedRef, () => ({
+    clearFocuses() {
+      dayInputRef?.current?.blur()
+      monthInputRef?.current?.blur()
+      yearInputRef?.current?.blur()
+    },
+  }))
 
   // notify parent effect
   useEffect(() => {
@@ -129,6 +144,8 @@ export const DateInput: FunctionComponent<DateInputProps> = (props) => {
     </Container>
   )
 }
+
+export const DateInput = forwardRef<DateInputRef, DateInputProps>(WithRefDateInput)
 
 const Container = styled.View({
   flexDirection: 'row',

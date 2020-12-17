@@ -5,7 +5,7 @@ import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
-export const _PartialTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
+const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
   props,
   forwardedRef
 ) => {
@@ -29,4 +29,4 @@ export const _PartialTextInput: React.ForwardRefRenderFunction<RNTextInput, Text
   )
 }
 
-export const TextInput = forwardRef<RNTextInput, TextInputProps>(_PartialTextInput)
+export const TextInput = forwardRef<RNTextInput, TextInputProps>(WithRefTextInput)

@@ -13,7 +13,7 @@ import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
-import { DateInput } from 'ui/components/inputs/DateInput'
+import { DateInput, DateInputRef } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -57,6 +57,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const password = route.params.password
   const canNavigateToCguRef = useRef(false)
   const keepOnButtonEnabled = isComplete && state.date
+
+  const dateInputRef = useRef<DateInputRef>(null)
 
   function onChangeValue(value: string | null, _isComplete: boolean) {
     setState({
@@ -114,6 +116,11 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     canNavigateToCguRef.current = false
   })
 
+  function showQuitSignupModal() {
+    dateInputRef.current && dateInputRef.current.clearFocuses()
+    showFullPageModal()
+  }
+
   return (
     <React.Fragment>
       <BottomContentPage
@@ -124,7 +131,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
           rightIcon={Close}
-          onRightIconPress={showFullPageModal}
+          onRightIconPress={showQuitSignupModal}
         />
         <BottomCardContentContainer>
           <TouchableOpacityFullWidth onPress={Keyboard.dismiss}>
@@ -134,7 +141,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               testIdSuffix={'why-link'}
             />
             <DateInputContainer>
-              <DateInput onChangeValue={onChangeValue} />
+              <DateInput onChangeValue={onChangeValue} ref={dateInputRef} />
               <InputError
                 visible={state.hasError}
                 messageId="La date choisie est incorrecte"
