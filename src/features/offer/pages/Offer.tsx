@@ -4,9 +4,11 @@ import React, { FunctionComponent, useRef } from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CategoryType } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { _ } from 'libs/i18n'
+import { formatDatePeriod } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { AccordionItem, OfferHeader, OfferHero, OfferIconCaptions } from '../components'
@@ -29,12 +31,20 @@ export const Offer: FunctionComponent = () => {
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const digitalLocationName = offerResponse.venue.offerer.name
   const locationName = offerResponse.venue.publicName || offerResponse.venue.name
+  const dates = offerResponse.bookableStocks.reduce<Date[]>(
+    (accumulator, stock) =>
+      stock.beginningDatetime ? [...accumulator, stock.beginningDatetime] : accumulator,
+    []
+  )
+  const shouldDisplayWhenBlock =
+    offerResponse.category.categoryType === CategoryType.Event && dates.length > 0
 
   const headerTransition = headerScroll.interpolate({
     inputRange: [0, HEIGHT_END_OF_TRANSITION],
     outputRange: [0, 1],
     extrapolate: 'clamp',
   })
+
   return (
     <React.Fragment>
       <Container
@@ -73,8 +83,17 @@ export const Offer: FunctionComponent = () => {
         <Divider />
         <SectionTitle>{_(t`Où ?`)}</SectionTitle>
         <Divider />
-        <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
+        {shouldDisplayWhenBlock && (
+          <MarginContainer>
+            <Spacer.Column numberOfSpaces={6} />
+            <Typo.Title4>{_(t`Quand ?`)}</Typo.Title4>
+            <Spacer.Column numberOfSpaces={4} />
+            <Typo.Body>{formatDatePeriod(dates)}</Typo.Body>
+            <Spacer.Column numberOfSpaces={6} />
+          </MarginContainer>
+        )}
         <Divider />
+
         <AccordionItem title={_(t`Modalités de retrait`)}>
           <Typo.Body>{withdrawalsDetails}</Typo.Body>
         </AccordionItem>
