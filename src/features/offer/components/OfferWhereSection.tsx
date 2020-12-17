@@ -43,11 +43,13 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition }) =
       <Spacer.Column numberOfSpaces={4} />
       <Separator />
       <Spacer.Column numberOfSpaces={6} />
-      <StyledView>
-        <LocationPointer color={ColorsEnum.BLACK} size={24} />
-        <Spacer.Column numberOfSpaces={1} />
-        <Typo.ButtonText>{_(t`Voir l'itinéraire`)}</Typo.ButtonText>
-      </StyledView>
+      {offerPosition.lat !== undefined && offerPosition.lng !== undefined && (
+        <StyledView>
+          <LocationPointer color={ColorsEnum.BLACK} size={24} />
+          <Spacer.Column numberOfSpaces={1} />
+          <Typo.ButtonText>{_(t`Voir l'itinéraire`)}</Typo.ButtonText>
+        </StyledView>
+      )}
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
