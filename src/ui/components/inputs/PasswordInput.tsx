@@ -9,7 +9,7 @@ import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
-export const _PartialPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
+const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
   props,
   forwardedRef
 ) => {
@@ -51,7 +51,7 @@ export const _PartialPasswordInput: React.ForwardRefRenderFunction<RNTextInput, 
   )
 }
 
-export const PasswordInput = forwardRef<RNTextInput, TextInputProps>(_PartialPasswordInput)
+export const PasswordInput = forwardRef<RNTextInput, TextInputProps>(WithRefPasswordInput)
 
 const StyledBaseTextInput = styled(BaseTextInput)({
   flex: 0.9,

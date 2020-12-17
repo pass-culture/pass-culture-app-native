@@ -3,9 +3,18 @@ import React from 'react'
 
 import { ColorsEnum } from 'ui/theme'
 
-import { DateInput, isValidDate, Oldest, Youngest } from './DateInput'
+import { DateInput, DateInputRef, isValidDate, Oldest, Youngest } from './DateInput'
 
 describe('DateInput Component', () => {
+  it('should render ref and give access to clearFocuses function', () => {
+    // given
+    const myRef = React.createRef<DateInputRef>()
+    render(<DateInput ref={myRef} />)
+
+    expect(myRef.current).toBeTruthy()
+    expect(myRef.current && myRef.current.clearFocuses).toBeTruthy()
+  })
+
   describe('blur/focus behavior', () => {
     it('should blur the day input when the 2-digit day input is fulfilled', async () => {
       const { getByPlaceholderText, getByTestId } = render(<DateInput />)

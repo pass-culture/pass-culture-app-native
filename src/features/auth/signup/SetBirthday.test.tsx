@@ -120,6 +120,15 @@ describe('SetBirthday Page', () => {
     expect(dots.length).toBe(4)
     expect(dots[2].props.fill).toEqual(ColorsEnum.PRIMARY)
   })
+
+  it('should call clear focuses', () => {
+    const { getByTestId, getByText } = renderSetBirthday()
+    const quitSignupModalButton = getByTestId('rightIconButton')
+
+    fireEvent.press(quitSignupModalButton)
+
+    expect(getByText("Continuer l'inscription")).toBeTruthy()
+  })
 })
 
 function renderSetBirthday() {
