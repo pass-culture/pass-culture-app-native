@@ -44,7 +44,7 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition }) =
 }
 
 const Section = styled.View({
-  padding: getSpacing(6),
+  paddingVertical: getSpacing(6),
 })
 
 const StyledAddress = styled(Typo.Body)({
