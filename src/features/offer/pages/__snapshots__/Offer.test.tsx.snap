@@ -832,7 +832,17 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                   >
                                     <RNSVGGroup
                                       fill={4284637794}
-                                      fillRule={1}
+                                      fillRule={0}
+                                      matrix={
+                                        Array [
+                                          1,
+                                          0,
+                                          0,
+                                          1,
+                                          -4,
+                                          -3,
+                                        ]
+                                      }
                                       propList={
                                         Array [
                                           "fill",
@@ -2912,7 +2922,17 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   >
                                     <RNSVGGroup
                                       fill={4284637794}
-                                      fillRule={1}
+                                      fillRule={0}
+                                      matrix={
+                                        Array [
+                                          1,
+                                          0,
+                                          0,
+                                          1,
+                                          -4,
+                                          -3,
+                                        ]
+                                      }
                                       propList={
                                         Array [
                                           "fill",

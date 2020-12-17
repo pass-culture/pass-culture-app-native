@@ -42,6 +42,7 @@ import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Logo } from 'ui/svg/icons/Logo'
+import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Warning } from 'ui/svg/icons/Warning'
@@ -290,6 +291,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Digital size={24} />
           <Text> - Digital </Text>
+        </AlignedText>
+        <AlignedText>
+          <OrderPrice size={24} />
+          <Text> - OrderPrice </Text>
         </AlignedText>
       </AccordionItem>
 
