@@ -19,7 +19,7 @@ type Props = {
 
 export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition }) => {
   const distanceToOffer = useDistance(offerPosition)
-  if (!distanceToOffer && !address) return null
+  if (distanceToOffer === undefined && address === null) return null
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
