@@ -45,6 +45,10 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
+#: src/features/offer/components/OfferWhereSection.tsx:16
+msgid "Adresse"
+msgstr "Adresse"
+
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:72
 #: src/features/auth/login/Login.tsx:69
 #: src/features/auth/signup/SetEmail.tsx:65
@@ -150,6 +154,10 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
+#: src/features/offer/components/OfferWhereSection.tsx:20
+msgid "Distance"
+msgstr "Distance>>>>>>> :globe_with_meridians: (PC-5679) add forgotten translations"
+
 #. Dates (dates will always be in french)
 #: src/libs/parsers/formatDates.ts:56
 msgid "Du {0} au {1}"
@@ -231,7 +239,7 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:60
+#: src/features/offer/pages/Offer.tsx:63
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -263,9 +271,9 @@ msgstr "Oops !"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:43
 msgid "Oups"
-msgstr "Oups"
+msgstr "Oups<<<<<<< HEAD"
 
-#: src/features/offer/pages/Offer.tsx:51
+#: src/features/offer/components/OfferWhereSection.tsx:14
 msgid "Où ?"
 msgstr "Où ?"
 
@@ -285,7 +293,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:55
+#: src/features/offer/pages/Offer.tsx:58
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -375,6 +383,10 @@ msgstr "Une erreur s'est produite pendant le chargement."
 msgid "Valider"
 msgstr "Valider"
 
+#: src/features/offer/components/OfferWhereSection.tsx:26
+msgid "Voir l'itinéraire"
+msgstr "Voir l'itinéraire"
+
 #: src/features/offer/atoms/OfferSeeMore.tsx:10
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
@@ -385,9 +397,9 @@ msgstr "Bienvenue à Pass Culture"
 
 #: src/features/auth/signup/AcceptCgu.tsx:62
 msgid "ainsi que notre"
-msgstr "ainsi que notre"
+msgstr "ainsi que notre<<<<<<< HEAD"
 
-#: src/features/offer/pages/Offer.tsx:37
+#: src/features/offer/pages/Offer.tsx:42
 msgid "en ligne"
 msgstr "en ligne"
 
