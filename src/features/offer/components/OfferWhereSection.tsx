@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -24,16 +23,16 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition }) =
     <Section>
       <Typo.Title4>{_(t`Où ?`)}</Typo.Title4>
       {address && (
-        <View>
+        <React.Fragment>
           <StyledCaption>{_(t`Adresse`)}</StyledCaption>
           <StyledAddress>{address}</StyledAddress>
-        </View>
+        </React.Fragment>
       )}
       {distanceToOffer && (
-        <View>
+        <React.Fragment>
           <StyledCaption>{_(t`Distance`)}</StyledCaption>
           <StyledDistance>{distanceToOffer}</StyledDistance>
-        </View>
+        </React.Fragment>
       )}
       <Separator />
       <StyledView>
