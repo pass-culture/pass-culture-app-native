@@ -16,10 +16,6 @@ import { OfferPartialDescription } from '../components/OfferPartialDescription'
 import { useOffer } from '../hooks/useOffer'
 import { dehumanizeId } from '../services/dehumanizeId'
 
-const withdrawalsDetails =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ' +
-  'eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 export const Offer: FunctionComponent = () => {
   const {
@@ -80,34 +76,50 @@ export const Offer: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={6} />
         <OfferPartialDescription description={offerResponse.description || ''} />
         <Spacer.Column numberOfSpaces={4} />
-        <Divider />
-        <SectionTitle>{_(t`Où ?`)}</SectionTitle>
-        {shouldDisplayWhenBlock && (
-          <React.Fragment>
-            <Divider />
-            <MarginContainer>
-              <Spacer.Column numberOfSpaces={6} />
-              <Typo.Title4>{_(t`Quand ?`)}</Typo.Title4>
-              <Spacer.Column numberOfSpaces={4} />
-              <Typo.Body>{formatDatePeriod(dates)}</Typo.Body>
-              <Spacer.Column numberOfSpaces={6} />
-            </MarginContainer>
-          </React.Fragment>
-        )}
-        <Divider />
-        <AccordionItem title={_(t`Modalités de retrait`)}>
-          <Typo.Body>{withdrawalsDetails}</Typo.Body>
-        </AccordionItem>
-        <Spacer.Flex />
+
+        <Section visible={true} margin={true}>
+          <SectionTitle>{_(t`Où ?`)}</SectionTitle>
+        </Section>
+
+        <Section visible={shouldDisplayWhenBlock} margin={true}>
+          <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
+          <SectionBody>{formatDatePeriod(dates)}</SectionBody>
+        </Section>
+
+        <Section visible={!!offerResponse.withdrawalDetails}>
+          <AccordionItem title={_(t`Modalités de retrait`)}>
+            <Typo.Body>{offerResponse.withdrawalDetails}</Typo.Body>
+          </AccordionItem>
+        </Section>
+
+        <Spacer.Column numberOfSpaces={32} />
       </Container>
       <OfferHeader offerName={offerResponse.name} headerTransition={headerTransition} />
     </React.Fragment>
   )
 }
 
+interface SectionProps {
+  visible: boolean
+  children: Element
+  margin?: boolean
+}
+
+const Section = ({ visible, children, margin = false }: SectionProps) => {
+  if (!visible) return <React.Fragment></React.Fragment>
+
+  return (
+    <React.Fragment>
+      <Divider />
+      {margin ? <MarginContainer>{children}</MarginContainer> : children}
+    </React.Fragment>
+  )
+}
+
 const Container = styled.ScrollView({})
 const OfferTitle = styled(Typo.Title3)({ textAlign: 'center' })
-const SectionTitle = styled(Typo.Title4)({ padding: getSpacing(6) })
+const SectionTitle = styled(Typo.Title4)({ paddingVertical: getSpacing(6) })
+const SectionBody = styled(Typo.Body)({ marginTop: -getSpacing(2), paddingBottom: getSpacing(6) })
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
