@@ -4,12 +4,12 @@ import React from 'react'
 import { OfferSeeMore } from '../OfferSeeMore'
 describe('OfferSeeMore', () => {
   it('displays the short wording when no props are precised', () => {
-    const { queryByText } = render(<OfferSeeMore />)
+    const { queryByText } = render(<OfferSeeMore id="id" />)
     expect(queryByText("Voir plus d'informations")).toBeFalsy()
     expect(queryByText('voir plus')).toBeTruthy()
   })
   it('displays the long wording when precised', () => {
-    const { queryByText } = render(<OfferSeeMore longWording />)
+    const { queryByText } = render(<OfferSeeMore id="id" longWording />)
     expect(queryByText('voir plus')).toBeFalsy()
     expect(queryByText("Voir plus d'informations")).toBeTruthy()
   })
