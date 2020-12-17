@@ -17,6 +17,6 @@ describe('useOffer', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => !result.current.isLoading)
-    expect(result.current.data).toEqual(offerResponseSnap)
+    expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offerResponseSnap))
   })
 })
