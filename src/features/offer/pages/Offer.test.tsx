@@ -49,6 +49,23 @@ describe('<Offer />', () => {
     await act(async () => await fireEvent.scroll(scrollContainer, scrollEvent))
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1)
   })
+
+  it('should not show distance and go to button', async () => {
+    const wrapper = await renderOfferPage({
+      venue: {
+        id: 1664,
+        address: '2 RUE LAMENNAIS',
+        city: 'PARIS 8',
+        offerer: { name: 'PATHE BEAUGRENELLE' },
+        name: 'PATHE BEAUGRENELLE',
+        postalCode: '75008',
+        publicName: undefined,
+        coordinates: {},
+      },
+    })
+    expect(wrapper.queryByText("Voir l'itinéraire")).toBeFalsy()
+    expect(wrapper.queryByText('Distance')).toBeFalsy()
+  })
 })
 
 const scrollEvent: NativeSyntheticEvent<NativeScrollEvent> = {
