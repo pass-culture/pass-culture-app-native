@@ -180,6 +180,78 @@ export interface OfferCategoryResponse {
 }/**
  * 
  * @export
+ * @interface OfferExtraData
+ */
+export interface OfferExtraData {
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    author?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OfferExtraData
+     */
+    durationMinutes?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    isbn?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    musicSubType?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    musicType?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    performer?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    showSubType?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    showType?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    speaker?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    stageDirector?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferExtraData
+     */
+    visa?: string;
+}/**
+ * 
+ * @export
  * @interface OfferOffererResponse
  */
 export interface OfferOffererResponse {
@@ -213,6 +285,12 @@ export interface OfferResponse {
      * @memberof OfferResponse
      */
     description?: string;
+    /**
+     * 
+     * @type {OfferExtraData}
+     * @memberof OfferResponse
+     */
+    extraData?: OfferExtraData;
     /**
      * 
      * @type {number}
