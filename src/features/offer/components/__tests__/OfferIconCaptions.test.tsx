@@ -84,7 +84,7 @@ describe('<OfferIconCaptions />', () => {
       isBeneficiary: beneficiary,
     })
     await waitForExpect(() => {
-      const euro = component.getByTestId('caption-iconEuro')
+      const euro = component.getByTestId('caption-iconPrice')
       expect(euro.props.children).toEqual(expectedDisplayedPrice)
     })
     component.unmount()
