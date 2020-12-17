@@ -308,7 +308,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             resizeMode="cover"
                             source={
                               Object {
-                                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZA",
+                                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
                               }
                             }
                             style={
@@ -428,7 +428,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               resizeMode="cover"
                               source={
                                 Object {
-                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZA",
+                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
                                 }
                               }
                               style={
@@ -577,7 +577,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                 ]
                               }
                             >
-                              Théâtre Balboa, 
+                              PATHE BEAUGRENELLE, 
                             </Text>
                           </View>
                           <Text
@@ -633,7 +633,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             }
                             testID="offerTitle"
                           >
-                            Dormons peu soupons bien
+                            Sous les étoiles de Paris - VF
                           </Text>
                         </View>
                         <View
@@ -725,7 +725,17 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                   }
                                 >
                                   <RNSVGPath
-                                    d="M131 40c5.86 0 10.634 4.64 10.98 10.453l.02.676.497 79.388c.03 4.971-3.24 9.192-7.752 10.59l-.433.121.08.397.028.407v6.772c0 4.156-6.088 6.955-10.615 7.181l-.581.015H59c-5.984 0-10.7-4.69-10.889-9.992l-.003-.38-.08-.4-.028-.408V51.148c0-5.916 4.557-10.776 10.329-11.128L59 40h72zm-2.552 101.6l-69.024.112c-2.807 0-5.254 1.857-5.317 3.868-.063 2.042 1.82 4.14 4.374 4.394L59 150h64.224c.765 0 2.439-.405 3.778-.983.51-.22.937-.448 1.246-.657l.168-.132.004-6.196.007-.205.021-.227zM69.718 46H59c-2.576 0-4.717 2.016-4.974 4.62l-.026.528v85.808l.348-.162c1.364-.61 2.864-.98 4.408-1.064l.663-.018 10.299-.016V46zM131 46H75.718v89.687l55.773-.087c2.602-.005 4.74-1.995 4.982-4.531l.023-.514L136 51.148c0-2.676-1.98-4.86-4.491-5.122L131 46zm-9.14 39.765c1.656 0 3 1.343 3 3 0 1.519-1.13 2.774-2.594 2.973l-.407.027h-32c-1.657 0-3-1.343-3-3 0-1.519 1.129-2.774 2.593-2.972l.407-.028h32zm0-15.763c1.656 0 3 1.343 3 3 0 1.518-1.13 2.774-2.594 2.972l-.407.028h-32c-1.657 0-3-1.344-3-3 0-1.52 1.129-2.774 2.593-2.973l.407-.027h32z"
+                                    d="M134.192 45.413c5.868-1.572 11.9 1.91 13.472 7.778l2.07 7.728c1.573 5.868-1.91 11.9-7.777 13.472L72.5 93l70.19.005c6.144-.386 11.476 4.084 12.243 10.297L155 104l-.007 40.203c-.417 6.142-5.544 10.845-11.453 10.82l-.66-.023H126c-1.657 0-3-1.343-3-3 0-1.519 1.129-2.774 2.593-2.973L126 149l17.068.006c2.895.182 5.416-1.87 5.871-4.505L149 144l.007-39.797c-.197-2.893-2.56-5.126-5.558-5.212l-.569.009-85.948-.006c-2.895-.182-5.416 1.87-5.871 4.505L51 104l-.007 39.797c.197 2.893 2.56 5.126 5.558 5.212l.569-.009H110c1.657 0 3 1.343 3 3 0 1.519-1.129 2.774-2.593 2.973L110 155l-52.692-.006c-6.143.386-11.475-4.084-12.242-10.297L45 144l.007-40.203c.207-3.05 1.576-5.746 3.625-7.683-2.468-1.403-4.395-3.756-5.188-6.715l-2.07-7.727c-1.573-5.868 1.91-11.9 7.778-13.472zm-58.926 22l-24.561 6.582c-2.668.715-4.25 3.456-3.536 6.124l2.07 7.727c.715 2.668 3.457 4.25 6.125 3.536l6.2-1.661 13.702-22.307zm25.355-6.793l-17.607 4.718-13.703 22.306 15.513-4.157 15.797-22.867zm22.677-6.076l-15.3 4.1c-.01.332-.09.665-.244.979l-.194.332-14.784 21.402 15.23-4.08c.02-.307.1-.612.24-.902l.195-.332 14.857-21.5zm18.57.2c-.714-2.667-3.456-4.25-6.123-3.535l-4.503 1.206-15.805 22.87 24.967-6.69c2.595-.695 4.164-3.31 3.588-5.907l-.053-.216z"
+                                    matrix={
+                                      Array [
+                                        1,
+                                        0,
+                                        0,
+                                        1,
+                                        -8,
+                                        -8,
+                                      ]
+                                    }
                                   />
                                 </RNSVGGroup>
                               </RNSVGSvgView>
@@ -744,7 +754,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               }
                               testID="caption-undefined"
                             >
-                              Livre ou carte lecture
+                              Cinéma
                             </Text>
                           </View>
                           <View
@@ -854,7 +864,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               }
                               testID="caption-iconEuro"
                             >
-                              
+                              5 €
                             </Text>
                           </View>
                           <View
@@ -903,7 +913,71 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             }
                             testID="offerPartialDescriptionBody"
                           >
-                            Ainsi la personne avec qui elle avait confessé qu’elle allait goûter, avec qui elle vous avait supplié de la laisser goûter, cette personne, raison avouée par la nécessité, ce n’était pas elle, c’était une autre, c’était encore autre chose ! Autre chose, quoi ? Une autre, qui ?
+                            Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
+Tous les détails du film sur AlloCiné: 
+                            <Text
+                              onPress={[Function]}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                numberOfSpaces={1}
+                                style={
+                                  Array [
+                                    Object {
+                                      "width": 4,
+                                    },
+                                  ]
+                                }
+                              />
+                              <Text>
+                                <RNSVGSvgView
+                                  bbHeight={16}
+                                  bbWidth={15}
+                                  focusable={false}
+                                  height={16}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "backgroundColor": "transparent",
+                                        "borderWidth": 0,
+                                      },
+                                      Object {
+                                        "flex": 0,
+                                        "height": 16,
+                                        "width": 15,
+                                      },
+                                    ]
+                                  }
+                                  testID="externalSiteIcon"
+                                  width={15}
+                                >
+                                  <RNSVGGroup>
+                                    <RNSVGPath
+                                      d="M6.55 3.625c.335.005.503.181.503.53 0 .35-.168.526-.504.53H1.008v9.546h9.068V8.398c0-.354.168-.53.504-.53.335 0 .503.176.503.53v6.363c0 .293-.225.53-.503.53H.504a.518.518 0 01-.504-.53V4.155c0-.293.226-.53.504-.53h6.045zM10.024.126l.092.003 3.338.4a.524.524 0 01.45.472l.383 3.493a.53.53 0 01-.45.593.517.517 0 01-.567-.471l-.268-2.436-6.565 6.872a.496.496 0 01-.724 0 .554.554 0 010-.758l6.526-6.832L10 1.193a.526.526 0 01-.452-.496L9.55.6a.518.518 0 01.567-.471z"
+                                      fill={4279571733}
+                                      fillRule={0}
+                                      propList={
+                                        Array [
+                                          "fill",
+                                          "fillRule",
+                                        ]
+                                      }
+                                    />
+                                  </RNSVGGroup>
+                                </RNSVGSvgView>
+                                
+                              </Text>
+                               http://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html
+                            </Text>
                           </Text>
                           <View
                             numberOfSpaces={2}
@@ -916,7 +990,8 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             }
                           />
                           <View
-                            description="Ainsi la personne avec qui elle avait confessé qu’elle allait goûter, avec qui elle vous avait supplié de la laisser goûter, cette personne, raison avouée par la nécessité, ce n’était pas elle, c’était une autre, c’était encore autre chose ! Autre chose, quoi ? Une autre, qui ?"
+                            description="Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
+Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
                             style={
                               Array [
                                 Object {
@@ -1078,6 +1153,57 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             }
                           >
                             Où ?
+                          </Text>
+                        </View>
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "#f5f5f5",
+                                "height": 8,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "marginHorizontal": 24,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 18,
+                                  "lineHeight": 22,
+                                  "paddingVertical": 24,
+                                },
+                              ]
+                            }
+                          >
+                            Quand ?
+                          </Text>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                  "marginTop": -8,
+                                  "paddingBottom": 24,
+                                },
+                              ]
+                            }
+                          >
+                            Du 3 janvier 2021 au 4 janvier 2021
                           </Text>
                         </View>
                         <View
@@ -1394,7 +1520,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               ]
                             }
                           >
-                            Dormons peu soupons bien
+                            Sous les étoiles de Paris - VF
                           </Text>
                         </Text>
                         <View
@@ -2184,7 +2310,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             resizeMode="cover"
                             source={
                               Object {
-                                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZQ",
+                                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
                               }
                             }
                             style={
@@ -2304,7 +2430,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                               resizeMode="cover"
                               source={
                                 Object {
-                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZQ",
+                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
                                 }
                               }
                               style={
@@ -2439,7 +2565,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                 ]
                               }
                             >
-                              Espace des Gnoux, 
+                              PATHE BEAUGRENELLE, 
                             </Text>
                           </View>
                           <Text
@@ -2457,7 +2583,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                               ]
                             }
                           >
-                            Cayenne
+                            PARIS 8
                           </Text>
                         </View>
                         <View
@@ -2495,7 +2621,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             }
                             testID="offerTitle"
                           >
-                            I want something more
+                            Sous les étoiles de Paris - VF
                           </Text>
                         </View>
                         <View
@@ -2587,15 +2713,15 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   }
                                 >
                                   <RNSVGPath
-                                    d="M66.72 123.64c8.13 0 14.72 6.59 14.72 14.72s-6.59 14.72-14.72 14.72S52 146.49 52 138.36s6.59-14.72 14.72-14.72zm0 6c-4.816 0-8.72 3.904-8.72 8.72 0 4.816 3.904 8.72 8.72 8.72 4.816 0 8.72-3.904 8.72-8.72 0-4.816-3.904-8.72-8.72-8.72zm70.225-89.705c2.494 1.918 4.038 4.803 4.266 7.921l.029.784v65.228c.027.36.04.725.04 1.092 0 8.13-6.59 14.72-14.72 14.72s-14.72-6.59-14.72-14.72 6.59-14.72 14.72-14.72c3.246 0 6.246 1.05 8.68 2.83V48.646c-.003-1.55-.724-3.01-1.952-3.954-1.075-.827-2.432-1.176-3.78-.98l-.575.117L84.98 54.897c-2.014.542-3.461 2.27-3.673 4.307l-.027.516V112c0 1.657-1.343 3-3 3-1.519 0-2.774-1.129-2.973-2.593L75.28 112V59.718c.003-4.734 3.03-8.907 7.505-10.42l.682-.207 43.968-11.072c3.296-.869 6.808-.161 9.51 1.916zM126.56 106.24c-4.816 0-8.72 3.904-8.72 8.72 0 4.816 3.904 8.72 8.72 8.72 4.676 0 8.492-3.68 8.71-8.302l-.003-.01-.027-.408v-.84c-.422-4.422-4.147-7.88-8.68-7.88z"
+                                    d="M134.192 45.413c5.868-1.572 11.9 1.91 13.472 7.778l2.07 7.728c1.573 5.868-1.91 11.9-7.777 13.472L72.5 93l70.19.005c6.144-.386 11.476 4.084 12.243 10.297L155 104l-.007 40.203c-.417 6.142-5.544 10.845-11.453 10.82l-.66-.023H126c-1.657 0-3-1.343-3-3 0-1.519 1.129-2.774 2.593-2.973L126 149l17.068.006c2.895.182 5.416-1.87 5.871-4.505L149 144l.007-39.797c-.197-2.893-2.56-5.126-5.558-5.212l-.569.009-85.948-.006c-2.895-.182-5.416 1.87-5.871 4.505L51 104l-.007 39.797c.197 2.893 2.56 5.126 5.558 5.212l.569-.009H110c1.657 0 3 1.343 3 3 0 1.519-1.129 2.774-2.593 2.973L110 155l-52.692-.006c-6.143.386-11.475-4.084-12.242-10.297L45 144l.007-40.203c.207-3.05 1.576-5.746 3.625-7.683-2.468-1.403-4.395-3.756-5.188-6.715l-2.07-7.727c-1.573-5.868 1.91-11.9 7.778-13.472zm-58.926 22l-24.561 6.582c-2.668.715-4.25 3.456-3.536 6.124l2.07 7.727c.715 2.668 3.457 4.25 6.125 3.536l6.2-1.661 13.702-22.307zm25.355-6.793l-17.607 4.718-13.703 22.306 15.513-4.157 15.797-22.867zm22.677-6.076l-15.3 4.1c-.01.332-.09.665-.244.979l-.194.332-14.784 21.402 15.23-4.08c.02-.307.1-.612.24-.902l.195-.332 14.857-21.5zm18.57.2c-.714-2.667-3.456-4.25-6.123-3.535l-4.503 1.206-15.805 22.87 24.967-6.69c2.595-.695 4.164-3.31 3.588-5.907l-.053-.216z"
                                     matrix={
                                       Array [
                                         1,
                                         0,
                                         0,
                                         1,
-                                        -10,
-                                        0,
+                                        -8,
+                                        -8,
                                       ]
                                     }
                                   />
@@ -2616,7 +2742,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                               }
                               testID="caption-undefined"
                             >
-                              Abonnements concerts
+                              Cinéma
                             </Text>
                           </View>
                           <View
@@ -2869,7 +2995,71 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             }
                             testID="offerPartialDescriptionBody"
                           >
-                            D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.
+                            Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
+Tous les détails du film sur AlloCiné: 
+                            <Text
+                              onPress={[Function]}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                numberOfSpaces={1}
+                                style={
+                                  Array [
+                                    Object {
+                                      "width": 4,
+                                    },
+                                  ]
+                                }
+                              />
+                              <Text>
+                                <RNSVGSvgView
+                                  bbHeight={16}
+                                  bbWidth={15}
+                                  focusable={false}
+                                  height={16}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "backgroundColor": "transparent",
+                                        "borderWidth": 0,
+                                      },
+                                      Object {
+                                        "flex": 0,
+                                        "height": 16,
+                                        "width": 15,
+                                      },
+                                    ]
+                                  }
+                                  testID="externalSiteIcon"
+                                  width={15}
+                                >
+                                  <RNSVGGroup>
+                                    <RNSVGPath
+                                      d="M6.55 3.625c.335.005.503.181.503.53 0 .35-.168.526-.504.53H1.008v9.546h9.068V8.398c0-.354.168-.53.504-.53.335 0 .503.176.503.53v6.363c0 .293-.225.53-.503.53H.504a.518.518 0 01-.504-.53V4.155c0-.293.226-.53.504-.53h6.045zM10.024.126l.092.003 3.338.4a.524.524 0 01.45.472l.383 3.493a.53.53 0 01-.45.593.517.517 0 01-.567-.471l-.268-2.436-6.565 6.872a.496.496 0 01-.724 0 .554.554 0 010-.758l6.526-6.832L10 1.193a.526.526 0 01-.452-.496L9.55.6a.518.518 0 01.567-.471z"
+                                      fill={4279571733}
+                                      fillRule={0}
+                                      propList={
+                                        Array [
+                                          "fill",
+                                          "fillRule",
+                                        ]
+                                      }
+                                    />
+                                  </RNSVGGroup>
+                                </RNSVGSvgView>
+                                
+                              </Text>
+                               http://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html
+                            </Text>
                           </Text>
                           <View
                             numberOfSpaces={2}
@@ -2882,7 +3072,8 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             }
                           />
                           <View
-                            description="D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort."
+                            description="Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
+Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
                             style={
                               Array [
                                 Object {
@@ -3411,7 +3602,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                               ]
                             }
                           >
-                            I want something more
+                            Sous les étoiles de Paris - VF
                           </Text>
                         </Text>
                         <View
