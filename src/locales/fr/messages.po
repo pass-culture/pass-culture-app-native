@@ -151,7 +151,7 @@ msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
 #. Dates (dates will always be in french)
-#: src/libs/parsers/formatDates.ts:57
+#: src/libs/parsers/formatDates.ts:56
 msgid "Du {0} au {1}"
 msgstr "Du {0} au {1}"
 
@@ -161,7 +161,7 @@ msgid "Duo"
 msgstr "Duo"
 
 #. Date (date will always be in french)
-#: src/libs/parsers/formatDates.ts:47
+#: src/libs/parsers/formatDates.ts:45
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
@@ -231,7 +231,7 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:52
+#: src/features/offer/pages/Offer.tsx:60
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -265,7 +265,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/offer/pages/Offer.tsx:48
+#: src/features/offer/pages/Offer.tsx:51
 msgid "Où ?"
 msgstr "Où ?"
 
@@ -285,7 +285,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:50
+#: src/features/offer/pages/Offer.tsx:55
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -387,7 +387,7 @@ msgstr "Bienvenue à Pass Culture"
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
-#: src/features/offer/pages/Offer.tsx:35
+#: src/features/offer/pages/Offer.tsx:37
 msgid "en ligne"
 msgstr "en ligne"
 
