@@ -85,17 +85,19 @@ export const Offer: FunctionComponent = () => {
         <OfferPartialDescription description={offerResponse.description || ''} />
         <Spacer.Column numberOfSpaces={4} />
 
-        <Section visible={true} margin={true}>
-          <SectionTitle>{_(t`Où ?`)}</SectionTitle>
-          <StyledCaption>{_(t`Adresse`)}</StyledCaption>
-          <StyledAddress>{offerResponse.fullAddress}</StyledAddress>
-          {distanceToOffer && (
-            <View>
-              <StyledCaption>{_(t`Distance`)}</StyledCaption>
-              <StyledDistance>{distanceToOffer}</StyledDistance>
-            </View>
-          )}
-        </Section>
+        {(offerResponse.fullAddress || distanceToOffer) && (
+          <Section visible={true} margin={true}>
+            <SectionTitle>{_(t`Où ?`)}</SectionTitle>
+            <StyledCaption>{_(t`Adresse`)}</StyledCaption>
+            <StyledAddress>{offerResponse.fullAddress}</StyledAddress>
+            {distanceToOffer && (
+              <View>
+                <StyledCaption>{_(t`Distance`)}</StyledCaption>
+                <StyledDistance>{distanceToOffer}</StyledDistance>
+              </View>
+            )}
+          </Section>
+        )}
 
         <Section visible={shouldDisplayWhenBlock} margin={true}>
           <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
