@@ -93,7 +93,7 @@ export const Offer: FunctionComponent = () => {
           label={offerResponse.category.label}
         />
         <Spacer.Column numberOfSpaces={6} />
-        <OfferPartialDescription description={offerResponse.description || ''} />
+        <OfferPartialDescription description={offerResponse.description || ''} id={id} />
         <Spacer.Column numberOfSpaces={4} />
 
         <Section visible={!offerResponse.isDigital} margin={true}>
@@ -123,7 +123,7 @@ export const Offer: FunctionComponent = () => {
         </Section>
         <Spacer.Column numberOfSpaces={32} />
       </Container>
-      <OfferHeader offerName={offerResponse.name} headerTransition={headerTransition} />
+      <OfferHeader title={offerResponse.name} headerTransition={headerTransition} />
     </React.Fragment>
   )
 }

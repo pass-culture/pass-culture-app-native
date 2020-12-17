@@ -10,12 +10,14 @@ import { HeaderIcon } from '../atoms'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
-  offerName: string
+  title: string
+  showRightIcons?: boolean
 }
 /**
  * @param headerTransition should be between animated between 0 and 1
  */
-export const OfferHeader: React.FC<Props> = ({ headerTransition, offerName }) => {
+export const OfferHeader: React.FC<Props> = (props) => {
+  const { headerTransition, title, showRightIcons = true } = props
   const { isLoggedIn } = useAuthContext()
   const { goBack } = useNavigation()
 
@@ -34,27 +36,11 @@ export const OfferHeader: React.FC<Props> = ({ headerTransition, offerName }) =>
     outputRange: ['rgba(255, 255, 255, 0)', ColorsEnum.PRIMARY],
   })
 
-  return (
-    <HeaderContainer style={{ backgroundColor: headerBackgroundColor }}>
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={2} />
-      <Row>
-        <Spacer.Row numberOfSpaces={6} />
-        <HeaderIcon
-          animationState={{
-            iconBackgroundColor,
-            iconBorderColor,
-            transition: headerTransition,
-          }}
-          iconName="back"
-          onPress={goBack}
-        />
-        {isLoggedIn && <Spacer.Row testID="headerIconPlaceholder" numberOfSpaces={10} />}
-        <Spacer.Flex />
-        <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
-          <Typo.Body color={ColorsEnum.WHITE}>{offerName}</Typo.Body>
-        </Title>
-        <Spacer.Flex />
+  const RightIcons = () => {
+    if (!showRightIcons) return <Spacer.Row numberOfSpaces={isLoggedIn ? 20 : 10} />
+
+    return (
+      <React.Fragment>
         <HeaderIcon
           animationState={{
             iconBackgroundColor,
@@ -78,6 +64,33 @@ export const OfferHeader: React.FC<Props> = ({ headerTransition, offerName }) =>
             />
           </React.Fragment>
         )}
+      </React.Fragment>
+    )
+  }
+
+  return (
+    <HeaderContainer style={{ backgroundColor: headerBackgroundColor }}>
+      <Spacer.TopScreen />
+      <Spacer.Column numberOfSpaces={2} />
+      <Row>
+        <Spacer.Row numberOfSpaces={6} />
+        <HeaderIcon
+          animationState={{
+            iconBackgroundColor,
+            iconBorderColor,
+            transition: headerTransition,
+          }}
+          iconName="back"
+          onPress={goBack}
+        />
+        {isLoggedIn && <Spacer.Row testID="headerIconPlaceholder" numberOfSpaces={10} />}
+        <Spacer.Flex />
+        <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
+          <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
+        </Title>
+
+        <Spacer.Flex />
+        <RightIcons />
 
         <Spacer.Row numberOfSpaces={6} />
       </Row>
@@ -85,6 +98,7 @@ export const OfferHeader: React.FC<Props> = ({ headerTransition, offerName }) =>
     </HeaderContainer>
   )
 }
+
 const HeaderContainer = styled(Animated.View)({
   position: 'absolute',
   top: 0,

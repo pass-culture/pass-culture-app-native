@@ -55,7 +55,7 @@ async function renderOfferHeader(isLoggedIn: boolean) {
   mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
-    <OfferHeader offerName="Some very nice offer" headerTransition={animatedValue} />
+    <OfferHeader title="Some very nice offer" headerTransition={animatedValue} />
   )
   await act(async () => {
     await flushAllPromises()

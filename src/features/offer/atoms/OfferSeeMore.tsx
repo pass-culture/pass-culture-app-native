@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -7,11 +8,14 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
+  id: string
   longWording?: boolean
 }
-export const OfferSeeMore: React.FC<Props> = ({ longWording = false }) => {
+export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
+  const { navigate } = useNavigation()
+
   return (
-    <PressableContainer>
+    <PressableContainer onPress={() => navigate('OfferDescription', { id })}>
       <Typo.ButtonText>
         {longWording ? _(t`Voir plus d'informations`) : _(t`voir plus`)}
       </Typo.ButtonText>
