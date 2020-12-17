@@ -1055,53 +1055,11 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             ]
                           }
                         />
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#151515",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 18,
-                                "lineHeight": 22,
-                                "paddingBottom": 24,
-                                "paddingLeft": 24,
-                                "paddingRight": 24,
-                                "paddingTop": 24,
-                              },
-                            ]
-                          }
-                        >
-                          Où ?
-                        </Text>
                         <View
                           style={
                             Array [
                               Object {
-                                "backgroundColor": "#f5f5f5",
-                                "height": 8,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                                "paddingBottom": 16,
-                                "paddingHorizontal": 24,
-                                "paddingTop": 24,
+                                "marginHorizontal": 24,
                               },
                             ]
                           }
@@ -1114,137 +1072,20 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                   "fontFamily": "Montserrat-Medium",
                                   "fontSize": 18,
                                   "lineHeight": 22,
+                                  "paddingVertical": 24,
                                 },
                               ]
                             }
                           >
-                            Modalités de retrait
+                            Où ?
                           </Text>
-                          <View
-                            style={
-                              Object {
-                                "transform": Array [
-                                  Object {
-                                    "rotateZ": "1.5707963267948966rad",
-                                  },
-                                ],
-                              }
-                            }
-                            testID="accordionArrow"
-                          >
-                            <RNSVGSvgView
-                              align="xMidYMid"
-                              bbHeight={24}
-                              bbWidth={24}
-                              focusable={false}
-                              height={24}
-                              meetOrSlice={0}
-                              minX={0}
-                              minY={0}
-                              style={
-                                Array [
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                    "borderWidth": 0,
-                                  },
-                                  Object {
-                                    "flex": 0,
-                                    "height": 24,
-                                    "width": 24,
-                                  },
-                                ]
-                              }
-                              vbHeight={53}
-                              vbWidth={52}
-                              width={24}
-                            >
-                              <RNSVGGroup>
-                                <RNSVGGroup
-                                  fill={null}
-                                  propList={
-                                    Array [
-                                      "fill",
-                                    ]
-                                  }
-                                >
-                                  <RNSVGGroup
-                                    fill={4279571733}
-                                    propList={
-                                      Array [
-                                        "fill",
-                                      ]
-                                    }
-                                  >
-                                    <RNSVGGroup>
-                                      <RNSVGGroup>
-                                        <RNSVGPath
-                                          d="M14.528 31.633c-.49.45-1.265.431-1.732-.041-.466-.472-.447-1.22.042-1.669l8.636-7.928c2.838-2.605 7.297-2.605 10.135 0l8.636 7.928c.49.45.509 1.197.042 1.669-.466.472-1.241.49-1.731.04l-8.636-7.927c-1.892-1.737-4.865-1.737-6.757 0l-8.635 7.928z"
-                                          matrix={
-                                            Array [
-                                              6.123233995736766e-17,
-                                              1,
-                                              -1,
-                                              6.123233995736766e-17,
-                                              52.54200000000003,
-                                              0.4580000000000837,
-                                            ]
-                                          }
-                                        />
-                                      </RNSVGGroup>
-                                    </RNSVGGroup>
-                                  </RNSVGGroup>
-                                </RNSVGGroup>
-                              </RNSVGGroup>
-                            </RNSVGSvgView>
-                          </View>
                         </View>
                         <View
-                          style={
-                            Object {
-                              "height": 0,
-                              "overflow": "hidden",
-                            }
-                          }
-                          testID="accordionBody"
-                        >
-                          <View
-                            onLayout={[Function]}
-                            style={
-                              Array [
-                                Object {
-                                  "bottom": 0,
-                                  "paddingBottom": 24,
-                                  "paddingHorizontal": 24,
-                                  "paddingTop": 0,
-                                  "position": "absolute",
-                                },
-                              ]
-                            }
-                            testID="accordionBodyContainer"
-                          >
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                            </Text>
-                          </View>
-                        </View>
-                        <View
+                          numberOfSpaces={32}
                           style={
                             Array [
                               Object {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
+                                "height": 128,
                               },
                             ]
                           }
@@ -3180,24 +3021,31 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             ]
                           }
                         />
-                        <Text
+                        <View
                           style={
                             Array [
                               Object {
-                                "color": "#151515",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 18,
-                                "lineHeight": 22,
-                                "paddingBottom": 24,
-                                "paddingLeft": 24,
-                                "paddingRight": 24,
-                                "paddingTop": 24,
+                                "marginHorizontal": 24,
                               },
                             ]
                           }
                         >
-                          Où ?
-                        </Text>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 18,
+                                  "lineHeight": 22,
+                                  "paddingVertical": 24,
+                                },
+                              ]
+                            }
+                          >
+                            Où ?
+                          </Text>
+                        </View>
                         <View
                           style={
                             Array [
@@ -3217,16 +3065,6 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             ]
                           }
                         >
-                          <View
-                            numberOfSpaces={6}
-                            style={
-                              Array [
-                                Object {
-                                  "height": 24,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             style={
                               Array [
@@ -3235,22 +3073,13 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   "fontFamily": "Montserrat-Medium",
                                   "fontSize": 18,
                                   "lineHeight": 22,
+                                  "paddingVertical": 24,
                                 },
                               ]
                             }
                           >
                             Quand ?
                           </Text>
-                          <View
-                            numberOfSpaces={4}
-                            style={
-                              Array [
-                                Object {
-                                  "height": 16,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             style={
                               Array [
@@ -3259,195 +3088,21 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
                                   "lineHeight": 20,
+                                  "marginTop": -8,
+                                  "paddingBottom": 24,
                                 },
                               ]
                             }
                           >
                             Du 3 janvier 2021 au 4 janvier 2021
                           </Text>
-                          <View
-                            numberOfSpaces={6}
-                            style={
-                              Array [
-                                Object {
-                                  "height": 24,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <View
+                          numberOfSpaces={32}
                           style={
                             Array [
                               Object {
-                                "backgroundColor": "#f5f5f5",
-                                "height": 8,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                                "paddingBottom": 16,
-                                "paddingHorizontal": 24,
-                                "paddingTop": 24,
-                              },
-                            ]
-                          }
-                        >
-                          <Text
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#151515",
-                                  "fontFamily": "Montserrat-Medium",
-                                  "fontSize": 18,
-                                  "lineHeight": 22,
-                                },
-                              ]
-                            }
-                          >
-                            Modalités de retrait
-                          </Text>
-                          <View
-                            style={
-                              Object {
-                                "transform": Array [
-                                  Object {
-                                    "rotateZ": "1.5707963267948966rad",
-                                  },
-                                ],
-                              }
-                            }
-                            testID="accordionArrow"
-                          >
-                            <RNSVGSvgView
-                              align="xMidYMid"
-                              bbHeight={24}
-                              bbWidth={24}
-                              focusable={false}
-                              height={24}
-                              meetOrSlice={0}
-                              minX={0}
-                              minY={0}
-                              style={
-                                Array [
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                    "borderWidth": 0,
-                                  },
-                                  Object {
-                                    "flex": 0,
-                                    "height": 24,
-                                    "width": 24,
-                                  },
-                                ]
-                              }
-                              vbHeight={53}
-                              vbWidth={52}
-                              width={24}
-                            >
-                              <RNSVGGroup>
-                                <RNSVGGroup
-                                  fill={null}
-                                  propList={
-                                    Array [
-                                      "fill",
-                                    ]
-                                  }
-                                >
-                                  <RNSVGGroup
-                                    fill={4279571733}
-                                    propList={
-                                      Array [
-                                        "fill",
-                                      ]
-                                    }
-                                  >
-                                    <RNSVGGroup>
-                                      <RNSVGGroup>
-                                        <RNSVGPath
-                                          d="M14.528 31.633c-.49.45-1.265.431-1.732-.041-.466-.472-.447-1.22.042-1.669l8.636-7.928c2.838-2.605 7.297-2.605 10.135 0l8.636 7.928c.49.45.509 1.197.042 1.669-.466.472-1.241.49-1.731.04l-8.636-7.927c-1.892-1.737-4.865-1.737-6.757 0l-8.635 7.928z"
-                                          matrix={
-                                            Array [
-                                              6.123233995736766e-17,
-                                              1,
-                                              -1,
-                                              6.123233995736766e-17,
-                                              52.54200000000003,
-                                              0.4580000000000837,
-                                            ]
-                                          }
-                                        />
-                                      </RNSVGGroup>
-                                    </RNSVGGroup>
-                                  </RNSVGGroup>
-                                </RNSVGGroup>
-                              </RNSVGGroup>
-                            </RNSVGSvgView>
-                          </View>
-                        </View>
-                        <View
-                          style={
-                            Object {
-                              "height": 0,
-                              "overflow": "hidden",
-                            }
-                          }
-                          testID="accordionBody"
-                        >
-                          <View
-                            onLayout={[Function]}
-                            style={
-                              Array [
-                                Object {
-                                  "bottom": 0,
-                                  "paddingBottom": 24,
-                                  "paddingHorizontal": 24,
-                                  "paddingTop": 0,
-                                  "position": "absolute",
-                                },
-                              ]
-                            }
-                            testID="accordionBodyContainer"
-                          >
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                            </Text>
-                          </View>
-                        </View>
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
+                                "height": 128,
                               },
                             ]
                           }

@@ -13,6 +13,7 @@ import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
 
 import { offerDigitalResponseSnap, offerDuoReponseSnap } from '../hooks/snaps/offerResponseSnap'
+import { dehumanizeId } from '../services/dehumanizeId'
 
 import { Offer } from './Offer'
 
@@ -21,16 +22,7 @@ jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigatio
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
-server.use(
-  rest.get<OfferResponse>(
-    env.API_BASE_URL + '/native/v1/offer/' + offerDuoReponseSnap.id,
-    (req, res, ctx) => res.once(ctx.status(200), ctx.json(offerDuoReponseSnap))
-  ),
-  rest.get<OfferResponse>(
-    env.API_BASE_URL + '/native/v1/offer/' + offerDigitalResponseSnap.id,
-    (req, res, ctx) => res.once(ctx.status(200), ctx.json(offerDigitalResponseSnap))
-  )
-)
+
 describe('<Offer />', () => {
   it('should match snapshot for physical offer', async () => {
     const { toJSON } = await renderOfferPage('AGH2M')
@@ -41,6 +33,13 @@ describe('<Offer />', () => {
     const { toJSON } = await renderOfferPage('AGH2K')
     expect(toJSON()).toMatchSnapshot()
   })
+  it('should show withdrawalDetails', async () => {
+    let wrapper = await renderOfferPage('AGH2K', { withdrawalDetails: 'How to withdraw' })
+    expect(wrapper.queryByText('Modalités de retrait')).toBeTruthy()
+
+    wrapper = await renderOfferPage('AGH2K', { withdrawalDetails: undefined })
+    expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
+  })
   it('animates on scroll', async () => {
     const { getByTestId } = await renderOfferPage('AHD3A')
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
@@ -49,11 +48,24 @@ describe('<Offer />', () => {
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1)
   })
 })
+
 const scrollEvent: NativeSyntheticEvent<NativeScrollEvent> = {
   // @ts-ignore : partial event is enough
   nativeEvent: { contentOffset: { y: 200 } },
 }
-async function renderOfferPage(id: string) {
+
+async function renderOfferPage(id: string, extraOffer?: Partial<OfferResponse>) {
+  const offerId = dehumanizeId(id)
+  const baseResponse =
+    offerId === offerDuoReponseSnap.id ? offerDuoReponseSnap : offerDigitalResponseSnap
+  const offerResponse = { ...baseResponse, ...extraOffer }
+
+  server.use(
+    rest.get<OfferResponse>(env.API_BASE_URL + '/native/v1/offer/' + offerId, (req, res, ctx) =>
+      res.once(ctx.status(200), ctx.json(offerResponse))
+    )
+  )
+
   const wrapper = render(
     reactQueryProviderHOC(
       <NavigationContainer>
