@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { offerResponseSnap, offerAdaptedResponseSnap } from '../snaps/offerResponseSnap'
-import { useOffer, adaptOfferResponse } from '../useOffer'
+import { useOffer, formatFullAddress } from '../useOffer'
 
 describe('useOffer', () => {
   it('should not call the API if offerId is null', () => {
@@ -20,32 +20,34 @@ describe('useOffer', () => {
     expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offerAdaptedResponseSnap))
   })
 
-  it('adaptOfferResponse - should add full address', () => {
-    //@ts-ignore beginningDatetime is a string corresponding to a Date
-    expect(adaptOfferResponse(offerResponseSnap).fullAddress).toEqual(
-      'PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8'
-    )
-    const offerWithoutAddress = {
-      ...offerResponseSnap,
-      venue: {
-        ...offerResponseSnap.venue,
-        address: undefined,
-      },
+  it.each`
+    publicName              | name            | address               | postalCode   | city         | expectedResult
+    ${undefined}            | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 2 rue des champs, 75015 Paris'}
+    ${undefined}            | ${'Ciné Pathé'} | ${undefined}          | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 75015 Paris'}
+    ${undefined}            | ${'Ciné Pathé'} | ${undefined}          | ${undefined} | ${'Paris'}   | ${'Ciné Pathé, Paris'}
+    ${undefined}            | ${'Ciné Pathé'} | ${undefined}          | ${undefined} | ${undefined} | ${'Ciné Pathé'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${undefined}          | ${'75015'}   | ${'Paris'}   | ${'Pathé beaugrenelle, 75015 Paris'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${undefined}          | ${'75015'}   | ${undefined} | ${'Pathé beaugrenelle'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${undefined}          | ${undefined} | ${'Paris'}   | ${'Pathé beaugrenelle, Paris'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${undefined} | ${'Paris'}   | ${'Pathé beaugrenelle, 2 rue des champs, Paris'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${undefined} | ${undefined} | ${'Pathé beaugrenelle'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${undefined} | ${'Pathé beaugrenelle'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${undefined} | ${'Paris'}   | ${'Pathé beaugrenelle, 2 rue des champs, Paris'}
+    ${''}                   | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 2 rue des champs, 75015 Paris'}
+    ${''}                   | ${'Ciné Pathé'} | ${''}                 | ${'75015'}   | ${'Paris'}   | ${'Ciné Pathé, 75015 Paris'}
+    ${''}                   | ${'Ciné Pathé'} | ${''}                 | ${''}        | ${'Paris'}   | ${'Ciné Pathé, Paris'}
+    ${''}                   | ${'Ciné Pathé'} | ${''}                 | ${''}        | ${''}        | ${'Ciné Pathé'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${''}                 | ${'75015'}   | ${'Paris'}   | ${'Pathé beaugrenelle, 75015 Paris'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${''}                 | ${'75015'}   | ${''}        | ${'Pathé beaugrenelle'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${''}                 | ${''}        | ${'Paris'}   | ${'Pathé beaugrenelle, Paris'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${''}        | ${'Paris'}   | ${'Pathé beaugrenelle, 2 rue des champs, Paris'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${''}        | ${''}        | ${'Pathé beaugrenelle'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${'75015'}   | ${''}        | ${'Pathé beaugrenelle'}
+    ${'Pathé beaugrenelle'} | ${'Ciné Pathé'} | ${'2 rue des champs'} | ${''}        | ${'Paris'}   | ${'Pathé beaugrenelle, 2 rue des champs, Paris'}
+  `(
+    'should format correctly full address',
+    ({ publicName, name, address, postalCode, city, expectedResult }) => {
+      expect(formatFullAddress(publicName, name, address, postalCode, city)).toEqual(expectedResult)
     }
-    //@ts-ignore beginningDatetime is a string corresponding to a Date
-    expect(adaptOfferResponse(offerWithoutAddress).fullAddress).toEqual(
-      'PATHE BEAUGRENELLE, 75008 PARIS 8'
-    )
-    const offerWithPublicName = {
-      ...offerResponseSnap,
-      venue: {
-        ...offerResponseSnap.venue,
-        publicName: 'Ciné Pathé',
-      },
-    }
-    //@ts-ignore beginningDatetime is a string corresponding to a Date
-    expect(adaptOfferResponse(offerWithPublicName).fullAddress).toEqual(
-      'Ciné Pathé, 2 RUE LAMENNAIS, 75008 PARIS 8'
-    )
-  })
+  )
 })
