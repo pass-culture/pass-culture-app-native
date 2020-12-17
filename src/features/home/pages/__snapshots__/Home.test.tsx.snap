@@ -720,7 +720,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                               ]
                             }
                           >
-                            Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application.
+                            Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.
                           </Text>
                         </Text>
                         <View

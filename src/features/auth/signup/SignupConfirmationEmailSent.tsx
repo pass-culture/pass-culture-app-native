@@ -45,11 +45,11 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
             <Typo.Body>
-              {_(t`L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !`)}
+              {_(t`L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !`)}
             </Typo.Body>
           </CenteredText>
           <CenteredText>
-            <Typo.Body>{_(t`Si l'e-mail n'arrive pas ou si le lien est expiré : `)}</Typo.Body>
+            <Typo.Body>{_(t`Si l'e-mail n'arrive pas, tu peux : `)}</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <ButtonTertiary
