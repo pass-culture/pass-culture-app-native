@@ -88,9 +88,9 @@ export const Offer: FunctionComponent = () => {
         <OfferPartialDescription description={offerResponse.description || ''} />
         <Spacer.Column numberOfSpaces={4} />
 
-        {!offerResponse.isDigital && (
+        <Section visible={!offerResponse.isDigital} margin={true}>
           <OfferWhereSection address={offerResponse.fullAddress} offerPosition={offerPosition} />
-        )}
+        </Section>
 
         <Section visible={shouldDisplayWhenBlock} margin={true}>
           <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
