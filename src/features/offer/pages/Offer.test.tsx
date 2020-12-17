@@ -17,6 +17,8 @@ import { dehumanizeId } from '../services/dehumanizeId'
 
 import { Offer } from './Offer'
 
+jest.mock('libs/geolocation')
+
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
 jest.mock('features/auth/AuthContext', () => ({

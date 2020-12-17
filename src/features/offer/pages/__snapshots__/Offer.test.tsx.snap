@@ -1185,6 +1185,38 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           >
                             PATHE BEAUGRENELLE, 2 RUE LAMENNAIS 75008 PARIS 8
                           </Text>
+                          <View>
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                    "paddingTop": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              Distance
+                            </Text>
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Regular",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                    "paddingTop": 4,
+                                  },
+                                ]
+                              }
+                            >
+                              900+ km
+                            </Text>
+                          </View>
                         </View>
                         <View
                           style={
