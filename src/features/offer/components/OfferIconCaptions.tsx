@@ -7,7 +7,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { _ } from 'libs/i18n'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
 import { Duo } from 'ui/svg/icons/Duo'
-import { Euro } from 'ui/svg/icons/Euro'
+import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { IconWithCaption, OfferCategory } from '../atoms'
@@ -35,7 +35,7 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, bookableStocks, cate
         </React.Fragment>
       )}
       <Separator />
-      <IconWithCaption testID="iconEuro" Icon={Euro} caption={price} />
+      <IconWithCaption testID="iconPrice" Icon={OrderPrice} caption={price} />
       <Spacer.Row numberOfSpaces={6} />
     </Row>
   )
