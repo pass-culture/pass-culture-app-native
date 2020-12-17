@@ -208,8 +208,8 @@ msgstr "Keychain non accessible"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
-msgid "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
-msgstr "L'e-mail peut prendre jusqu'à 24h pour arriver. Pense à vérifier tes spams !"
+msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
+msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:44
 msgid "Le lien est expiré !"
@@ -309,10 +309,6 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:39
-msgid "S'il n'arrive pas tu peux :"
-msgstr "S'il n'arrive pas tu peux :"
-
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:28
 msgid "S'inscrire"
 msgstr "S'inscrire"
@@ -330,17 +326,18 @@ msgstr "Se connecter"
 msgid "Search"
 msgstr "Recherche"
 
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:39
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:36
-msgid "Si l'e-mail n'arrive pas ou si le lien est expiré :"
-msgstr "Si l'e-mail n'arrive pas ou si le lien est expiré :"
+msgid "Si l'e-mail n'arrive pas, tu peux :"
+msgstr "Si l'e-mail n'arrive pas, tu peux :"
+
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:24
+msgid "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:49
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
-
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:24
-msgid "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
-msgstr "Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application."
 
 #: src/features/auth/signup/SetBirthday.tsx:90
 msgid "Ton anniversaire"

@@ -37,7 +37,7 @@ export const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dis
       <Description>
         <Typo.Body>
           {_(
-            t`Si tu es dans l’année de tes 18 ans, le Ministère de la Culture t’offre également 300€ à dépenser dans l’application.`
+            t`Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`
           )}
         </Typo.Body>
       </Description>
