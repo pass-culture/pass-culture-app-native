@@ -404,6 +404,8 @@ PODS:
     - React
   - RNKeychain (6.2.0):
     - React
+  - RNLaunchNavigator (1.0.8):
+    - React
   - RNLocalize (1.4.1):
     - React
   - RNReanimated (1.13.1):
@@ -487,6 +489,7 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNKeychain (from `../node_modules/react-native-keychain`)
+  - RNLaunchNavigator (from `../node_modules/react-native-launch-navigator`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -609,6 +612,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNKeychain:
     :path: "../node_modules/react-native-keychain"
+  RNLaunchNavigator:
+    :path: "../node_modules/react-native-launch-navigator"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
   RNReanimated:
@@ -689,6 +694,7 @@ SPEC CHECKSUMS:
   RNFBApp: e0fc0113eecc07f440f17639c9b7c59ea90bc583
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
+  RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
   RNLocalize: 49634a6a605dcdeb319e9c42a5c2f1aec508694b
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
   RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
