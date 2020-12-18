@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef } from 'react'
+import { withErrorBoundary } from 'react-error-boundary'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
+import { RetryBoundary } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { _ } from 'libs/i18n'
@@ -32,7 +34,7 @@ const tmpHandicapAccessibilityDate = {
 }
 
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
-export const Offer: FunctionComponent = () => {
+const OfferComponent: FunctionComponent = () => {
   const {
     params: { id },
   } = useRoute<UseRouteType<'Offer'>>()
@@ -158,4 +160,8 @@ const MarginContainer = styled.View({
 const Divider = styled.View({
   height: getSpacing(2),
   backgroundColor: ColorsEnum.GREY_LIGHT,
+})
+
+export const Offer = withErrorBoundary(React.memo(OfferComponent), {
+  FallbackComponent: RetryBoundary,
 })
