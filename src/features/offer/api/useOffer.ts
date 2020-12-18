@@ -21,11 +21,10 @@ export const formatFullAddress = (
   city: string | undefined
 ) => {
   let fullAddress = `${publicName || name}`
-  if (isNotEmpty(address) && isNotEmpty(city)) fullAddress = fullAddress.concat(`, ${address}`)
-  if (isNotEmpty(city)) {
-    if (isNotEmpty(postalCode)) fullAddress = fullAddress.concat(`, ${postalCode} ${city}`)
-    else fullAddress = fullAddress.concat(`, ${city}`)
-  }
+  if (isNotEmpty(address)) fullAddress = fullAddress.concat(`, ${address}`)
+  if (isNotEmpty(postalCode) || isNotEmpty(city)) fullAddress = fullAddress.concat(',')
+  if (isNotEmpty(postalCode)) fullAddress = fullAddress.concat(` ${postalCode}`)
+  if (isNotEmpty(city)) fullAddress = fullAddress.concat(` ${city}`)
   return fullAddress
 }
 
