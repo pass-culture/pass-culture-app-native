@@ -1429,7 +1429,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     style={
                                       Array [
                                         Object {
-                                          "bottom": -12,
+                                          "bottom": -16,
                                           "position": "absolute",
                                         },
                                       ]
@@ -1437,10 +1437,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   >
                                     <RNSVGSvgView
                                       align="xMidYMid"
-                                      bbHeight={24}
-                                      bbWidth={24}
+                                      bbHeight={32}
+                                      bbWidth={32}
                                       focusable={false}
-                                      height={24}
+                                      height={32}
                                       meetOrSlice={0}
                                       minX={0}
                                       minY={0}
@@ -1452,15 +1452,15 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                           Object {
                                             "flex": 0,
-                                            "height": 24,
-                                            "width": 24,
+                                            "height": 32,
+                                            "width": 32,
                                           },
                                         ]
                                       }
                                       testID="validTestId"
                                       vbHeight={38}
                                       vbWidth={38}
-                                      width={24}
+                                      width={32}
                                     >
                                       <RNSVGGroup>
                                         <RNSVGCircle
@@ -1630,7 +1630,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     style={
                                       Array [
                                         Object {
-                                          "bottom": -12,
+                                          "bottom": -16,
                                           "position": "absolute",
                                         },
                                       ]
@@ -1638,10 +1638,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   >
                                     <RNSVGSvgView
                                       align="xMidYMid"
-                                      bbHeight={24}
-                                      bbWidth={24}
+                                      bbHeight={32}
+                                      bbWidth={32}
                                       focusable={false}
-                                      height={24}
+                                      height={32}
                                       meetOrSlice={0}
                                       minX={0}
                                       minY={0}
@@ -1653,15 +1653,15 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                           Object {
                                             "flex": 0,
-                                            "height": 24,
-                                            "width": 24,
+                                            "height": 32,
+                                            "width": 32,
                                           },
                                         ]
                                       }
                                       testID="invalidTestId"
                                       vbHeight={38}
                                       vbWidth={38}
-                                      width={24}
+                                      width={32}
                                     >
                                       <RNSVGGroup>
                                         <RNSVGGroup>
@@ -1833,7 +1833,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     style={
                                       Array [
                                         Object {
-                                          "bottom": -12,
+                                          "bottom": -16,
                                           "position": "absolute",
                                         },
                                       ]
@@ -1841,10 +1841,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   >
                                     <RNSVGSvgView
                                       align="xMidYMid"
-                                      bbHeight={24}
-                                      bbWidth={24}
+                                      bbHeight={32}
+                                      bbWidth={32}
                                       focusable={false}
-                                      height={24}
+                                      height={32}
                                       meetOrSlice={0}
                                       minX={0}
                                       minY={0}
@@ -1856,15 +1856,15 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                           Object {
                                             "flex": 0,
-                                            "height": 24,
-                                            "width": 24,
+                                            "height": 32,
+                                            "width": 32,
                                           },
                                         ]
                                       }
                                       testID="validTestId"
                                       vbHeight={38}
                                       vbWidth={38}
-                                      width={24}
+                                      width={32}
                                     >
                                       <RNSVGGroup>
                                         <RNSVGCircle
@@ -2034,7 +2034,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     style={
                                       Array [
                                         Object {
-                                          "bottom": -12,
+                                          "bottom": -16,
                                           "position": "absolute",
                                         },
                                       ]
@@ -2042,10 +2042,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   >
                                     <RNSVGSvgView
                                       align="xMidYMid"
-                                      bbHeight={24}
-                                      bbWidth={24}
+                                      bbHeight={32}
+                                      bbWidth={32}
                                       focusable={false}
-                                      height={24}
+                                      height={32}
                                       meetOrSlice={0}
                                       minX={0}
                                       minY={0}
@@ -2057,15 +2057,15 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                           Object {
                                             "flex": 0,
-                                            "height": 24,
-                                            "width": 24,
+                                            "height": 32,
+                                            "width": 32,
                                           },
                                         ]
                                       }
                                       testID="invalidTestId"
                                       vbHeight={38}
                                       vbWidth={38}
-                                      width={24}
+                                      width={32}
                                     >
                                       <RNSVGGroup>
                                         <RNSVGGroup>
@@ -4712,7 +4712,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     style={
                                       Array [
                                         Object {
-                                          "bottom": -12,
+                                          "bottom": -16,
                                           "position": "absolute",
                                         },
                                       ]
@@ -4720,10 +4720,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   >
                                     <RNSVGSvgView
                                       align="xMidYMid"
-                                      bbHeight={24}
-                                      bbWidth={24}
+                                      bbHeight={32}
+                                      bbWidth={32}
                                       focusable={false}
-                                      height={24}
+                                      height={32}
                                       meetOrSlice={0}
                                       minX={0}
                                       minY={0}
@@ -4735,15 +4735,15 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                           Object {
                                             "flex": 0,
-                                            "height": 24,
-                                            "width": 24,
+                                            "height": 32,
+                                            "width": 32,
                                           },
                                         ]
                                       }
                                       testID="validTestId"
                                       vbHeight={38}
                                       vbWidth={38}
-                                      width={24}
+                                      width={32}
                                     >
                                       <RNSVGGroup>
                                         <RNSVGCircle
@@ -4913,7 +4913,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     style={
                                       Array [
                                         Object {
-                                          "bottom": -12,
+                                          "bottom": -16,
                                           "position": "absolute",
                                         },
                                       ]
@@ -4921,10 +4921,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   >
                                     <RNSVGSvgView
                                       align="xMidYMid"
-                                      bbHeight={24}
-                                      bbWidth={24}
+                                      bbHeight={32}
+                                      bbWidth={32}
                                       focusable={false}
-                                      height={24}
+                                      height={32}
                                       meetOrSlice={0}
                                       minX={0}
                                       minY={0}
@@ -4936,15 +4936,15 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                           Object {
                                             "flex": 0,
-                                            "height": 24,
-                                            "width": 24,
+                                            "height": 32,
+                                            "width": 32,
                                           },
                                         ]
                                       }
                                       testID="invalidTestId"
                                       vbHeight={38}
                                       vbWidth={38}
-                                      width={24}
+                                      width={32}
                                     >
                                       <RNSVGGroup>
                                         <RNSVGGroup>
@@ -5116,7 +5116,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     style={
                                       Array [
                                         Object {
-                                          "bottom": -12,
+                                          "bottom": -16,
                                           "position": "absolute",
                                         },
                                       ]
@@ -5124,10 +5124,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   >
                                     <RNSVGSvgView
                                       align="xMidYMid"
-                                      bbHeight={24}
-                                      bbWidth={24}
+                                      bbHeight={32}
+                                      bbWidth={32}
                                       focusable={false}
-                                      height={24}
+                                      height={32}
                                       meetOrSlice={0}
                                       minX={0}
                                       minY={0}
@@ -5139,15 +5139,15 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                           Object {
                                             "flex": 0,
-                                            "height": 24,
-                                            "width": 24,
+                                            "height": 32,
+                                            "width": 32,
                                           },
                                         ]
                                       }
                                       testID="validTestId"
                                       vbHeight={38}
                                       vbWidth={38}
-                                      width={24}
+                                      width={32}
                                     >
                                       <RNSVGGroup>
                                         <RNSVGCircle
@@ -5317,7 +5317,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     style={
                                       Array [
                                         Object {
-                                          "bottom": -12,
+                                          "bottom": -16,
                                           "position": "absolute",
                                         },
                                       ]
@@ -5325,10 +5325,10 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   >
                                     <RNSVGSvgView
                                       align="xMidYMid"
-                                      bbHeight={24}
-                                      bbWidth={24}
+                                      bbHeight={32}
+                                      bbWidth={32}
                                       focusable={false}
-                                      height={24}
+                                      height={32}
                                       meetOrSlice={0}
                                       minX={0}
                                       minY={0}
@@ -5340,15 +5340,15 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                           Object {
                                             "flex": 0,
-                                            "height": 24,
-                                            "width": 24,
+                                            "height": 32,
+                                            "width": 32,
                                           },
                                         ]
                                       }
                                       testID="invalidTestId"
                                       vbHeight={38}
                                       vbWidth={38}
-                                      width={24}
+                                      width={32}
                                     >
                                       <RNSVGGroup>
                                         <RNSVGGroup>

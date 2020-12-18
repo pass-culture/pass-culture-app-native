@@ -23,6 +23,7 @@ import {
 } from '../components'
 import { dehumanizeId } from '../services/dehumanizeId'
 
+// TODO: remove and use API data in PC-5804
 const tmpHandicapAccessibilityDate = {
   visualDisability: true,
   mentalDisability: false,
@@ -53,8 +54,6 @@ export const Offer: FunctionComponent = () => {
   )
   const shouldDisplayWhenBlock =
     offerResponse.category.categoryType === CategoryType.Event && dates.length > 0
-  const shouldDisplayAccessibilityBlock =
-    Object.values(tmpHandicapAccessibilityDate).filter(Boolean).length > 0
   const headerTransition = headerScroll.interpolate({
     inputRange: [0, HEIGHT_END_OF_TRANSITION],
     outputRange: [0, 1],
@@ -112,7 +111,7 @@ export const Offer: FunctionComponent = () => {
           </AccordionItem>
         </Section>
 
-        <Section visible={shouldDisplayAccessibilityBlock}>
+        <Section visible={Object.values(tmpHandicapAccessibilityDate).some(Boolean)}>
           <AccordionItem title={_(t`Accessibilité`)}>
             <AccessibilityBlock
               visualDisability={tmpHandicapAccessibilityDate.visualDisability}
