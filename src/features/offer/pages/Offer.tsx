@@ -18,9 +18,17 @@ import {
   OfferHero,
   OfferIconCaptions,
   OfferWhereSection,
+  AccessibilityBlock,
+  OfferPartialDescription,
 } from '../components'
-import { OfferPartialDescription } from '../components/OfferPartialDescription'
 import { dehumanizeId } from '../services/dehumanizeId'
+
+const tmpHandicapAccessibilityDate = {
+  visualDisability: true,
+  mentalDisability: false,
+  motorDisability: true,
+  audioDisability: false,
+}
 
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 export const Offer: FunctionComponent = () => {
@@ -45,7 +53,8 @@ export const Offer: FunctionComponent = () => {
   )
   const shouldDisplayWhenBlock =
     offerResponse.category.categoryType === CategoryType.Event && dates.length > 0
-
+  const shouldDisplayAccessibilityBlock =
+    Object.values(tmpHandicapAccessibilityDate).filter(Boolean).length > 0
   const headerTransition = headerScroll.interpolate({
     inputRange: [0, HEIGHT_END_OF_TRANSITION],
     outputRange: [0, 1],
@@ -103,6 +112,16 @@ export const Offer: FunctionComponent = () => {
           </AccordionItem>
         </Section>
 
+        <Section visible={shouldDisplayAccessibilityBlock}>
+          <AccordionItem title={_(t`Accessibilité`)}>
+            <AccessibilityBlock
+              visualDisability={tmpHandicapAccessibilityDate.visualDisability}
+              audioDisability={tmpHandicapAccessibilityDate.audioDisability}
+              mentalDisability={tmpHandicapAccessibilityDate.mentalDisability}
+              motorDisability={tmpHandicapAccessibilityDate.motorDisability}
+            />
+          </AccordionItem>
+        </Section>
         <Spacer.Column numberOfSpaces={32} />
       </Container>
       <OfferHeader offerName={offerResponse.name} headerTransition={headerTransition} />
