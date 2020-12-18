@@ -5,7 +5,7 @@ import { env } from 'libs/environment'
 import { version } from '../../../package.json'
 
 // Disable Sentry when executing tests. See Packgage.json script 'test:unit'
-if (process.env.JEST !== 'true') {
+if (process.env.JEST !== 'true' && !__DEV__) {
   Sentry.init({
     dsn: env.SENTRY_DSN,
     environment: env.ENV,
