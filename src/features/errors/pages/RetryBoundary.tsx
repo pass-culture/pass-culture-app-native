@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
@@ -8,10 +9,14 @@ import { _ } from 'libs/i18n'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const RetryBoundary = ({ resetErrorBoundary }: FallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
+  const { canGoBack, goBack } = useNavigation()
+  const { top } = useCustomSafeInsets()
 
   const handleRetry = () => {
     reset()
@@ -22,7 +27,11 @@ export const RetryBoundary = ({ resetErrorBoundary }: FallbackProps) => {
     <Container>
       <Background />
       <Spacer.Flex />
-
+      {canGoBack() && (
+        <HeaderContainer onPress={goBack} top={top + 14}>
+          <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
+        </HeaderContainer>
+      )}
       <BrokenConnection />
       <Spacer.Column numberOfSpaces={2} />
 
@@ -71,3 +80,9 @@ const TextContainer = styled.View({ maxWidth: getSpacing(88) })
 const CenteredText = styled.Text({
   textAlign: 'center',
 })
+
+const HeaderContainer = styled.TouchableOpacity<{ top: number }>(({ top }) => ({
+  position: 'absolute',
+  top,
+  left: getSpacing(6),
+}))
