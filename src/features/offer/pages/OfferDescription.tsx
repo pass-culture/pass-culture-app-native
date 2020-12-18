@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
+import { withErrorBoundary } from 'react-error-boundary'
 import { Animated, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferExtraData, OfferResponse } from 'api/gen'
+import { RetryBoundary } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
@@ -99,7 +101,7 @@ const renderExtraData = ({ item }: { item: Item }) => {
   )
 }
 
-export const OfferDescription = () => {
+const OfferDescriptionComponent = () => {
   const { params } = useRoute<UseRouteType<'OfferDescription'>>()
   const { data: offerResponse } = useOffer({ offerId: dehumanizeId(params.id) })
   const { description = '', extraData = {} } = offerResponse || {}
@@ -132,3 +134,7 @@ const MarginContainer = styled.View({ marginHorizontal: getSpacing(6) })
 const Header = () => <Spacer.Column numberOfSpaces={6} />
 const Separator = () => <Spacer.Column numberOfSpaces={4} />
 const Footer = () => <Spacer.Column numberOfSpaces={32} />
+
+export const OfferDescription = withErrorBoundary(React.memo(OfferDescriptionComponent), {
+  FallbackComponent: RetryBoundary,
+})
