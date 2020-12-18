@@ -285,6 +285,11 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                     <RCTScrollView
                       onScroll={[Function]}
                       scrollEventThrottle={32}
+                      scrollIndicatorInsets={
+                        Object {
+                          "right": 1,
+                        }
+                      }
                       style={
                         Array [
                           Object {},
@@ -3220,6 +3225,11 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                     <RCTScrollView
                       onScroll={[Function]}
                       scrollEventThrottle={32}
+                      scrollIndicatorInsets={
+                        Object {
+                          "right": 1,
+                        }
+                      }
                       style={
                         Array [
                           Object {},

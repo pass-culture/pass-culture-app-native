@@ -65,6 +65,7 @@ export const Offer: FunctionComponent = () => {
       <Container
         testID="offer-container"
         scrollEventThrottle={32}
+        scrollIndicatorInsets={{ right: 1 }}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
           useNativeDriver: false,
         })}>
