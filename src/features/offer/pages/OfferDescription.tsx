@@ -15,7 +15,7 @@ import { OfferHeader } from '../components'
 import { dehumanizeId } from '../services/dehumanizeId'
 
 type ExtraDataKeys = keyof Required<OfferExtraData>
-type ExtendedKeys = ExtraDataKeys | 'description'
+export type ExtendedKeys = ExtraDataKeys | 'description'
 
 type Item = { key: ExtraDataKeys; value: string } | { key: 'description'; value: ParsedDescription }
 
@@ -54,23 +54,24 @@ const KEY_ORDER: { [k in ExtendedKeys]: number } = {
 const sortExtraData = (itemA: Item, itemB: Item): number =>
   KEY_ORDER[itemA.key] - KEY_ORDER[itemB.key]
 
-const formatValue = (key: ExtraDataKeys, value: string | number): string => {
+export const formatValue = (key: ExtraDataKeys, value: string | number): string => {
   if (key === 'durationMinutes') {
     const hours = Math.floor(+value / 60)
     const minutes = +value - 60 * hours
-    return hours ? `${hours}h${minutes}` : `${minutes}m`
+    return hours ? `${hours}h${minutes > 0 ? minutes : ''}` : `${minutes}m`
   }
   return value.toString()
 }
 
-const isExtendedKey = (key: string): key is ExtraDataKeys => key in EXTRA_DATA_KEY_MAPPING
+const isExtraDataKey = (key: string): key is ExtraDataKeys => key in EXTRA_DATA_KEY_MAPPING
 
-const getContentFromOffer = (offerResponse: OfferResponse | undefined): Item[] => {
-  const { description = '', extraData = {} } = offerResponse || {}
-
-  const hits: Item[] = Object.entries(extraData)
+export const getContentFromOffer = (
+  extraData: OfferResponse['extraData'],
+  description: string
+): Item[] => {
+  const hits: Item[] = Object.entries(extraData || {})
     .map(([key, value]) => {
-      if (key && isExtendedKey(key) && (typeof value === 'string' || typeof value === 'number')) {
+      if (key && isExtraDataKey(key) && (typeof value === 'string' || typeof value === 'number')) {
         return { key, value: formatValue(key, value) }
       }
       return undefined
@@ -86,7 +87,6 @@ const getContentFromOffer = (offerResponse: OfferResponse | undefined): Item[] =
 
 const renderExtraData = ({ item }: { item: Item }) => {
   const { key, value } = item
-  if (!value) return <React.Fragment key={key}></React.Fragment>
   const caption = key in EXTRA_DATA_KEY_MAPPING ? EXTRA_DATA_KEY_MAPPING[key] : key
   const upperCaseCaption = caption.slice(0, 1).toUpperCase() + caption.slice(1)
 
@@ -102,6 +102,7 @@ const renderExtraData = ({ item }: { item: Item }) => {
 export const OfferDescription = () => {
   const { params } = useRoute<UseRouteType<'OfferDescription'>>()
   const { data: offerResponse } = useOffer({ offerId: dehumanizeId(params.id) })
+  const { description = '', extraData = {} } = offerResponse || {}
 
   return (
     <React.Fragment>
@@ -109,7 +110,8 @@ export const OfferDescription = () => {
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={14} />
         <FlatList
-          data={getContentFromOffer(offerResponse)}
+          testID="offer-description-list"
+          data={getContentFromOffer(extraData, description)}
           renderItem={renderExtraData}
           ListHeaderComponent={Header}
           ItemSeparatorComponent={Separator}
