@@ -20,7 +20,7 @@ type ExtendedKeys = ExtraDataKeys | 'description'
 type Item = { key: ExtraDataKeys; value: string } | { key: 'description'; value: ParsedDescription }
 
 const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
-  description: _(t`description`),
+  description: _(t`en détail`),
   author: _(t`auteur`),
   durationMinutes: _(t`durée`),
   isbn: _(t`ISBN`),

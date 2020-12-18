@@ -45,7 +45,7 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/components/OfferWhereSection.tsx:15
+#: src/features/offer/components/OfferWhereSection.tsx:18
 msgid "Adresse"
 msgstr "Adresse"
 
@@ -87,7 +87,7 @@ msgid "CGU & Données"
 msgstr "CGU & Données"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:101
+#: src/features/auth/signup/SetBirthday.tsx:106
 msgid "Ce site est protégé par reCAPTCHA Google. La"
 msgstr "Ce site est protégé par reCAPTCHA Google. La"
 
@@ -95,7 +95,7 @@ msgstr "Ce site est protégé par reCAPTCHA Google. La"
 msgid "Chargement en cours..."
 msgstr "Chargement en cours..."
 
-#: src/features/auth/signup/SetBirthday.tsx:103
+#: src/features/auth/signup/SetBirthday.tsx:108
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
@@ -114,7 +114,7 @@ msgid "Composants"
 msgstr "Composants"
 
 #: src/features/auth/signup/AcceptCgu.tsx:60
-#: src/features/auth/signup/SetBirthday.tsx:106
+#: src/features/auth/signup/SetBirthday.tsx:111
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -144,7 +144,7 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:69
-#: src/features/auth/signup/SetBirthday.tsx:112
+#: src/features/auth/signup/SetBirthday.tsx:117
 #: src/features/auth/signup/SetEmail.tsx:78
 #: src/features/auth/signup/SetPassword.tsx:44
 msgid "Continuer"
@@ -154,7 +154,7 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/offer/components/OfferWhereSection.tsx:19
+#: src/features/offer/components/OfferWhereSection.tsx:24
 msgid "Distance"
 msgstr "Distance"
 
@@ -208,6 +208,10 @@ msgstr "Favoris"
 msgid "Gratuit"
 msgstr "Gratuit"
 
+#: src/features/offer/pages/OfferDescription.tsx:16
+msgid "ISBN"
+msgstr "ISBN"
+
 #: src/libs/keychain.ts:23
 #: src/libs/keychain.ts:33
 #: src/libs/keychain.ts:47
@@ -235,7 +239,7 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 
-#: src/features/auth/signup/SetBirthday.tsx:123
+#: src/features/auth/signup/SetBirthday.tsx:128
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
@@ -273,7 +277,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/offer/components/OfferWhereSection.tsx:13
+#: src/features/offer/components/OfferWhereSection.tsx:15
 msgid "Où ?"
 msgstr "Où ?"
 
@@ -285,7 +289,7 @@ msgstr "Politique de confidentialité."
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
-#: src/features/auth/signup/SetBirthday.tsx:93
+#: src/features/auth/signup/SetBirthday.tsx:98
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -347,7 +351,7 @@ msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 30
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/auth/signup/SetBirthday.tsx:90
+#: src/features/auth/signup/SetBirthday.tsx:95
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
@@ -376,15 +380,19 @@ msgstr "Toute la culture dans votre main"
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
+#: src/features/offer/pages/OfferDescription.tsx:25
+msgid "VISA"
+msgstr "VISA"
+
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:78
 msgid "Valider"
 msgstr "Valider"
 
-#: src/features/offer/components/OfferWhereSection.tsx:25
+#: src/features/offer/components/OfferWhereSection.tsx:34
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/atoms/OfferSeeMore.tsx:10
+#: src/features/offer/atoms/OfferSeeMore.tsx:12
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
@@ -396,19 +404,55 @@ msgstr "Bienvenue à Pass Culture"
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
+#: src/features/offer/pages/OfferDescription.tsx:14
+msgid "auteur"
+msgstr "auteur"
+
+#: src/features/offer/pages/OfferDescription.tsx:15
+msgid "durée"
+msgstr "durée"
+
+#: src/features/offer/pages/OfferDescription.tsx:13
+msgid "en détail"
+msgstr "en détail"
+
 #: src/features/offer/pages/Offer.tsx:42
 msgid "en ligne"
 msgstr "en ligne"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:105
+#: src/features/auth/signup/SetBirthday.tsx:110
 msgid "et les"
 msgstr "et les"
 
+#: src/features/offer/pages/OfferDescription.tsx:18
+msgid "genre"
+msgstr "genre"
+
+#: src/features/offer/pages/OfferDescription.tsx:19
+msgid "interprète"
+msgstr "interprète"
+
+#: src/features/offer/pages/OfferDescription.tsx:24
+msgid "intervenant"
+msgstr "intervenant"
+
+#: src/features/offer/pages/OfferDescription.tsx:23
+msgid "metteur en scène"
+msgstr "metteur en scène"
+
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:109
+#: src/features/auth/signup/SetBirthday.tsx:114
 msgid "s'appliquent."
 msgstr "s'appliquent."
+
+#: src/features/offer/pages/OfferDescription.tsx:17
+msgid "sous genre"
+msgstr "sous genre"
+
+#: src/features/offer/pages/OfferDescription.tsx:21
+msgid "sous type"
+msgstr "sous type"
 
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:74
@@ -417,7 +461,11 @@ msgstr "s'appliquent."
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
-#: src/features/offer/atoms/OfferSeeMore.tsx:10
+#: src/features/offer/pages/OfferDescription.tsx:22
+msgid "type"
+msgstr "type"
+
+#: src/features/offer/atoms/OfferSeeMore.tsx:12
 msgid "voir plus"
 msgstr "voir plus"
 
