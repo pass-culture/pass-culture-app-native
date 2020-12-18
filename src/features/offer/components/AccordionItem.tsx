@@ -69,6 +69,7 @@ const TitleContainer = styled.View({
 const BodyContainer = styled.View({
   position: 'absolute',
   bottom: 0,
+  width: '100%',
   paddingBottom: getSpacing(6),
   paddingHorizontal: getSpacing(6),
   paddingTop: 0,
