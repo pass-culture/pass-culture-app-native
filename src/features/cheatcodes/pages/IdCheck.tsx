@@ -1,28 +1,27 @@
-import { StackNavigationProp } from '@react-navigation/stack'
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { WebView } from 'react-native-webview'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { env } from 'libs/environment'
+import { LoadingPage } from 'ui/components/LoadingPage'
 import { Spacer } from 'ui/theme'
 
-const ID_CHECK_URL = 'https://id-check-front-dev.passculture.app/'
+type Props = StackScreenProps<RootStackParamList, 'IdCheck'>
 
-type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'IdCheck'>
-
-type Props = {
-  navigation: CheatCodesNavigationProp
-}
-
-export const IdCheck: React.FC<Props> = function () {
+export const IdCheck: React.FC<Props> = function (props) {
+  const { email, licenceToken } = props.route.params
+  const uri = `${env.ID_CHECK_URL}/?email=${email}&licence_token=${licenceToken}`
   return (
     <React.Fragment>
       <Spacer.TopScreen />
       <WebView
-        source={{ uri: ID_CHECK_URL }}
+        testID="idcheck-webview"
+        source={{ uri }}
         style={styles.webview}
         startInLoadingState={true}
-        renderLoading={() => <Text>Loading...</Text>}
+        renderLoading={() => <LoadingPage />}
       />
       <Spacer.BottomScreen />
     </React.Fragment>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`IdCheck component should render correctly 1`] = `
+exports[`<IdCheck /> should render correctly 1`] = `
 Array [
   <View
     customHeight={16}
@@ -39,7 +39,7 @@ Array [
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "uri": "https://id-check-front-dev.passculture.app/",
+          "uri": "https://id-check-unit-tests/?email=john@wick.com&licence_token=XxLicenceTokenxX",
         }
       }
       startInLoadingState={true}
@@ -58,11 +58,10 @@ Array [
           },
         ]
       }
+      testID="idcheck-webview"
       useSharedProcessPool={true}
     />
-    <Text>
-      Loading...
-    </Text>
+    LoadingPageMock
   </View>,
   <View
     customHeight={8}

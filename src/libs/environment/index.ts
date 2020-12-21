@@ -26,6 +26,7 @@ export interface Environment {
   SUPPORT_EMAIL_ADDRESS: string
   CGU_LINK: string
   PRIVACY_POLICY_LINK: string
+  ID_CHECK_URL: string
 }
 
 export const env = parseBooleanVariables(Config) as Environment

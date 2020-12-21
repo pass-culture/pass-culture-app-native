@@ -43,20 +43,16 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
   describe('when timestamp is NOT expired', () => {
     it('should redirect to Home when the user is not "éligible"', async () => {
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
+      const response: ValidateEmailResponse = {
+        accessToken: 'access_token',
+        idCheckToken: (null as unknown) as undefined, // actual value returned is `null`, conflicting with the typing
+        refreshToken: 'refresh_token',
+      }
       server.use(
-        // not eligible user call
+        // NOT eligible user call
         rest.post<ValidateEmailRequest, ValidateEmailResponse>(
           env.API_BASE_URL + '/native/v1/validate_email',
-          (_req, res, ctx) =>
-            res.once(
-              ctx.status(200),
-              // @ts-ignore due to conflict between idCheckToken defined as string|undefined but expected null
-              ctx.json({
-                accessToken: 'access_token',
-                idCheckToken: null,
-                refreshToken: 'refresh_token',
-              })
-            )
+          (_req, res, ctx) => res.once(ctx.status(200), ctx.json(response))
         )
       )
 
@@ -67,6 +63,35 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         expect(loginRoutine).toBeCalledTimes(1)
         expect(navigate).toBeCalledTimes(1)
         expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
+      })
+      loginRoutine.mockRestore()
+    })
+
+    it('should open Id-Check app when the user is "éligible"', async () => {
+      jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
+      const response: ValidateEmailResponse = {
+        accessToken: 'access_token',
+        idCheckToken: 'XxLicenceTokenxX',
+        refreshToken: 'refresh_token',
+      }
+      // eligible user call
+      server.use(
+        rest.post<ValidateEmailRequest, ValidateEmailResponse>(
+          env.API_BASE_URL + '/native/v1/validate_email',
+          (_req, res, ctx) => res.once(ctx.status(200), ctx.json(response))
+        )
+      )
+
+      renderPage()
+      const loginRoutine = jest.spyOn(Auth, 'loginRoutine')
+
+      await waitFor(() => {
+        expect(loginRoutine).toBeCalledTimes(1)
+        expect(navigate).toBeCalledTimes(1)
+        expect(navigate).toHaveBeenCalledWith('IdCheck', {
+          email: 'john@wick.com',
+          licenceToken: 'XxLicenceTokenxX',
+        })
       })
       loginRoutine.mockRestore()
     })

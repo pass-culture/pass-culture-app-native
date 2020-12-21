@@ -12,7 +12,6 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
 import { CheatCodesButton } from '../components/CheatCodesButton'
-import { IdCheckButton } from '../components/IdCheckButton'
 
 const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 
@@ -31,9 +30,6 @@ export function Navigation(): JSX.Element {
           <CheatCodesButton />
         </Row>
         <Row half>
-          <IdCheckButton />
-        </Row>
-        <Row half>
           <ButtonPrimary title={'Login'} onPress={() => navigation.navigate('Login')} />
         </Row>
         <Row half>
@@ -48,7 +44,7 @@ export function Navigation(): JSX.Element {
             }
           />
         </Row>
-        <Row>
+        <Row half>
           <ButtonPrimary
             title={'Signup : email envoyé'}
             onPress={() =>
