@@ -3,9 +3,10 @@ import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -23,6 +24,16 @@ jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigatio
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
+
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(
+    () =>
+      ({
+        isLoading: false,
+        data: { email: 'email2@domain.ext', firstName: 'Jean', isBeneficiary: true },
+      } as UseQueryResult<UserProfileResponse>)
+  ),
 }))
 
 describe('<Offer />', () => {
