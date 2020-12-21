@@ -114,7 +114,11 @@ const OfferComponent: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={4} />
 
         <Section visible={!offerResponse.isDigital} margin={true}>
-          <OfferWhereSection address={offerResponse.fullAddress} offerPosition={offerPosition} />
+          <OfferWhereSection
+            address={offerResponse.fullAddress}
+            offerPosition={offerPosition}
+            offerId={offerResponse.id}
+          />
         </Section>
 
         <Section visible={shouldDisplayWhenBlock} margin={true}>
