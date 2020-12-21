@@ -1738,12 +1738,12 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "width": 8,
+                                        "width": 16,
                                       },
                                     ]
                                   }
                                   testID="textContainer"
-                                  width={8}
+                                  width={16}
                                 >
                                   <Text
                                     numberOfLines={2}
@@ -1941,12 +1941,12 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "width": 8,
+                                        "width": 16,
                                       },
                                     ]
                                   }
                                   testID="textContainer"
-                                  width={8}
+                                  width={16}
                                 >
                                   <Text
                                     numberOfLines={2}
@@ -2142,12 +2142,12 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "width": 8,
+                                        "width": 16,
                                       },
                                     ]
                                   }
                                   testID="textContainer"
-                                  width={8}
+                                  width={16}
                                 >
                                   <Text
                                     numberOfLines={2}
@@ -2345,12 +2345,12 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "width": 8,
+                                        "width": 16,
                                       },
                                     ]
                                   }
                                   testID="textContainer"
-                                  width={8}
+                                  width={16}
                                 >
                                   <Text
                                     numberOfLines={2}
@@ -5255,12 +5255,12 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "width": 8,
+                                        "width": 16,
                                       },
                                     ]
                                   }
                                   testID="textContainer"
-                                  width={8}
+                                  width={16}
                                 >
                                   <Text
                                     numberOfLines={2}
@@ -5458,12 +5458,12 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "width": 8,
+                                        "width": 16,
                                       },
                                     ]
                                   }
                                   testID="textContainer"
-                                  width={8}
+                                  width={16}
                                 >
                                   <Text
                                     numberOfLines={2}
@@ -5659,12 +5659,12 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "width": 8,
+                                        "width": 16,
                                       },
                                     ]
                                   }
                                   testID="textContainer"
-                                  width={8}
+                                  width={16}
                                 >
                                   <Text
                                     numberOfLines={2}
@@ -5862,12 +5862,12 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "width": 8,
+                                        "width": 16,
                                       },
                                     ]
                                   }
                                   testID="textContainer"
-                                  width={8}
+                                  width={16}
                                 >
                                   <Text
                                     numberOfLines={2}

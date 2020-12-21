@@ -22,25 +22,25 @@ export const AccessibilityBlock: React.FC<Props> = ({
       <AccessibilityAtom
         handicap={HandicapCategory.VISUAL}
         isAccessible={visualDisability}
-        sideSpace={getSpacing(2)}
+        sideSpace={getSpacing(4)}
       />
       <Spacer.Row numberOfSpaces={4} />
       <AccessibilityAtom
         handicap={HandicapCategory.MENTAL}
         isAccessible={mentalDisability}
-        sideSpace={getSpacing(2)}
+        sideSpace={getSpacing(4)}
       />
       <Spacer.Row numberOfSpaces={4} />
       <AccessibilityAtom
         handicap={HandicapCategory.MOTOR}
         isAccessible={motorDisability}
-        sideSpace={getSpacing(2)}
+        sideSpace={getSpacing(4)}
       />
       <Spacer.Row numberOfSpaces={4} />
       <AccessibilityAtom
         handicap={HandicapCategory.AUDIO}
         isAccessible={audioDisability}
-        sideSpace={getSpacing(2)}
+        sideSpace={getSpacing(4)}
       />
     </Row>
   )
