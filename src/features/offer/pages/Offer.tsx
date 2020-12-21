@@ -9,7 +9,7 @@ import { CategoryType } from 'api/gen'
 import { RetryBoundary } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
-import { logConsultAccessibility } from 'libs/analytics'
+import { logConsultAccessibility, logConsultWithdrawal } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -111,7 +111,9 @@ const OfferComponent: FunctionComponent = () => {
         </Section>
 
         <Section visible={!!offerResponse.withdrawalDetails}>
-          <AccordionItem title={_(t`Modalités de retrait`)}>
+          <AccordionItem
+            title={_(t`Modalités de retrait`)}
+            onOpenOnce={() => logConsultWithdrawal(offerResponse.id)}>
             <Typo.Body>
               {offerResponse.withdrawalDetails && highlightLinks(offerResponse.withdrawalDetails)}
             </Typo.Body>

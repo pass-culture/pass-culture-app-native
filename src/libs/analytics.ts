@@ -12,6 +12,7 @@ enum AnalyticsEvent {
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccesibilityModalities',
+  CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
 }
 
 export const logScreenView = async (screenName: string) => {
@@ -45,5 +46,10 @@ export const logConsultOfferFromDeeplink = async (offerId: string) =>
 
 export const logConsultAccessibility = async (offerId: number) =>
   await analytics.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, {
+    offerId: offerId.toString(),
+  })
+
+export const logConsultWithdrawal = async (offerId: number) =>
+  await analytics.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, {
     offerId: offerId.toString(),
   })
