@@ -2,8 +2,7 @@ import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
-import { Animated } from 'react-native'
-import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
+import { Animated, Dimensions, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -15,11 +14,12 @@ import { isCloseToBottom } from 'libs/analytics.utils'
 import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, MARGIN_DP, Spacer, Typo } from 'ui/theme'
 
 import { useOffer } from '../api/useOffer'
 import {
   AccordionItem,
+  CallToAction,
   OfferHeader,
   OfferHero,
   OfferIconCaptions,
@@ -145,8 +145,14 @@ const OfferComponent: FunctionComponent = () => {
             />
           </AccordionItem>
         </Section>
+
         <Spacer.Column numberOfSpaces={32} />
       </Container>
+
+      <CallToActionContainer>
+        <CallToAction />
+      </CallToActionContainer>
+
       <OfferHeader
         title={offerResponse.name}
         headerTransition={headerTransition}
@@ -185,6 +191,14 @@ const MarginContainer = styled.View({
 const Divider = styled.View({
   height: getSpacing(2),
   backgroundColor: ColorsEnum.GREY_LIGHT,
+})
+
+const ctaWidth = Dimensions.get('window').width - 2 * MARGIN_DP
+
+const CallToActionContainer = styled.View({
+  width: ctaWidth,
+  marginHorizontal: getSpacing(6),
+  marginBottom: getSpacing(8),
 })
 
 export const Offer = withErrorBoundary(React.memo(OfferComponent), {
