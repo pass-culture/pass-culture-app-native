@@ -17,6 +17,7 @@ enum AnalyticsEvent {
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
   SHARE_OFFER = 'Share',
+  WHY_ANNIVERSARY_CLICKED = 'SignUp-whyAnniversary',
 }
 
 export const logScreenView = async (screenName: string) => {
@@ -65,3 +66,6 @@ export const logConsultWholeOffer = async (offerId: number) =>
 
 export const logConsultItinerary = async (offerId: number) =>
   await analytics.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId })
+
+export const logClickWhyAnniversary = async () =>
+  await analytics.logEvent(AnalyticsEvent.WHY_ANNIVERSARY_CLICKED)
