@@ -9,7 +9,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
-import { logConsultAccessibility } from 'libs/analytics'
+import { logConsultAccessibility, logConsultWithdrawal } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -98,6 +98,17 @@ describe('<Offer />', () => {
       trigger(getByText('Accessibilité'))
       trigger(getByText('Accessibilité'))
       expect(logConsultAccessibility).toHaveBeenCalledTimes(1)
+    })
+    it('should log ConsultWithdrawalModalities once when opening accessibility modalities', async () => {
+      const { getByText } = await renderOfferPage()
+
+      trigger(getByText('Modalités de retrait'))
+      expect(logConsultWithdrawal).toHaveBeenCalledTimes(1)
+      expect(logConsultWithdrawal).toHaveBeenCalledWith(offerId)
+
+      trigger(getByText('Modalités de retrait'))
+      trigger(getByText('Modalités de retrait'))
+      expect(logConsultWithdrawal).toHaveBeenCalledTimes(1)
     })
   })
 })
