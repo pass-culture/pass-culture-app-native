@@ -4555,13 +4555,21 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             }
                           />
                           <View
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
                             style={
-                              Array [
-                                Object {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                },
-                              ]
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "opacity": 1,
+                              }
                             }
                           >
                             <RNSVGSvgView

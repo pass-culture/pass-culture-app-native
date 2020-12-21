@@ -49,7 +49,7 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/components/OfferWhereSection.tsx:18
+#: src/features/offer/components/OfferWhereSection.tsx:20
 msgid "Adresse"
 msgstr "Adresse"
 
@@ -168,7 +168,7 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/offer/components/OfferWhereSection.tsx:24
+#: src/features/offer/components/OfferWhereSection.tsx:26
 msgid "Distance"
 msgstr "Distance"
 
@@ -313,7 +313,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/offer/components/OfferWhereSection.tsx:15
+#: src/features/offer/components/OfferWhereSection.tsx:17
 msgid "Où ?"
 msgstr "Où ?"
 
@@ -427,7 +427,7 @@ msgstr "VISA"
 msgid "Valider"
 msgstr "Valider"
 
-#: src/features/offer/components/OfferWhereSection.tsx:34
+#: src/features/offer/components/OfferWhereSection.tsx:42
 #: src/features/offer/services/useItinerary.ts:44
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
