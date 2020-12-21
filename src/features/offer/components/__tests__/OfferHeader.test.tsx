@@ -5,6 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { logShareOffer } from 'libs/analytics'
 import { flushAllPromises } from 'tests/utils'
 
 import { OfferHeader } from '../OfferHeader'
@@ -49,13 +50,28 @@ describe('<OfferHeader />', () => {
     Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
     await waitForExpect(() => expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1))
   })
+
+  describe('<OfferHeader /> - Analytics', () => {
+    it('should log ShareOffer once when clicking on the Share button', async () => {
+      const { getByTestId } = await renderOfferHeader(true)
+
+      fireEvent.press(getByTestId('icon-share'))
+      expect(logShareOffer).toHaveBeenCalledTimes(1)
+      expect(logShareOffer).toHaveBeenCalledWith(offerId)
+
+      fireEvent.press(getByTestId('icon-share'))
+      fireEvent.press(getByTestId('icon-share'))
+      expect(logShareOffer).toHaveBeenCalledTimes(1)
+    })
+  })
 })
 
+const offerId = 30
 async function renderOfferHeader(isLoggedIn: boolean) {
   mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
-    <OfferHeader title="Some very nice offer" headerTransition={animatedValue} />
+    <OfferHeader title="Some very nice offer" headerTransition={animatedValue} offerId={offerId} />
   )
   await act(async () => {
     await flushAllPromises()
