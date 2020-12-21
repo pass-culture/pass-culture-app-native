@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react-native'
+import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
-import { canGoBack } from '__mocks__/@react-navigation/native'
+import { canGoBack, goBack } from '__mocks__/@react-navigation/native'
 
 import { RetryBoundary } from '../RetryBoundary'
 
@@ -16,10 +16,12 @@ describe('RetryBoundary component', () => {
 
   it('should have back arrow if possible', () => {
     canGoBack.mockImplementation(() => true)
-    const { queryByTestId } = render(
+    const { getByTestId, queryByTestId } = render(
       <RetryBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />
     )
     expect(queryByTestId('backArrow')).toBeTruthy()
+    fireEvent.press(getByTestId('backArrow'))
+    expect(goBack).toHaveBeenCalled()
   })
   it('should not have back arrow if impossible', () => {
     canGoBack.mockImplementation(() => false)
