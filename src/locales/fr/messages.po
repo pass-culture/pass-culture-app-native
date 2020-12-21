@@ -45,12 +45,16 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
+#: src/features/offer/pages/Offer.tsx:79
+msgid "Accessibilité"
+msgstr "Accessibilité"
+
 #: src/features/offer/components/OfferWhereSection.tsx:18
 msgid "Adresse"
 msgstr "Adresse"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:72
-#: src/features/auth/login/Login.tsx:69
+#: src/features/auth/login/Login.tsx:75
 #: src/features/auth/signup/SetEmail.tsx:65
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
@@ -86,6 +90,10 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:51
+msgid "Ce lien de validation n'est plus valide"
+msgstr "Ce lien de validation n'est plus valide"
+
 #. signup birthday page reCAPTCHA
 #: src/features/auth/signup/SetBirthday.tsx:106
 msgid "Ce site est protégé par reCAPTCHA Google. La"
@@ -105,6 +113,7 @@ msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:38
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
@@ -127,7 +136,7 @@ msgstr "Confirme ton e\\u2011mail"
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
-#: src/features/auth/login/Login.tsx:65
+#: src/features/auth/login/Login.tsx:71
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
@@ -140,6 +149,7 @@ msgstr "Consulter mes e-mails"
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:51
 #: src/features/auth/signup/AcceptCgu.tsx:71
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:39
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:43
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -208,7 +218,23 @@ msgstr "Favoris"
 msgid "Gratuit"
 msgstr "Gratuit"
 
-#: src/features/offer/pages/OfferDescription.tsx:16
+#: src/features/offer/atoms/AccessibilityAtom.service.ts:17
+msgid "Handicap auditif"
+msgstr "Handicap auditif"
+
+#: src/features/offer/atoms/AccessibilityAtom.service.ts:13
+msgid "Handicap mental"
+msgstr "Handicap mental"
+
+#: src/features/offer/atoms/AccessibilityAtom.service.ts:15
+msgid "Handicap moteur"
+msgstr "Handicap moteur"
+
+#: src/features/offer/atoms/AccessibilityAtom.service.ts:11
+msgid "Handicap visuel"
+msgstr "Handicap visuel"
+
+#: src/features/offer/pages/OfferDescription.tsx:18
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -224,6 +250,7 @@ msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:44
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:36
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
@@ -243,11 +270,11 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:65
+#: src/features/offer/pages/Offer.tsx:73
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
-#: src/features/auth/login/Login.tsx:75
+#: src/features/auth/login/Login.tsx:81
 #: src/features/auth/signup/SetPassword.tsx:38
 msgid "Mot de passe"
 msgstr "Mot de passe"
@@ -256,7 +283,7 @@ msgstr "Mot de passe"
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
-#: src/features/auth/login/Login.tsx:82
+#: src/features/auth/login/Login.tsx:88
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
@@ -269,11 +296,12 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/errors/pages/RetryBoundary.tsx:23
+#: src/features/errors/pages/RetryBoundary.tsx:30
 msgid "Oops !"
 msgstr "Oops !"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:43
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:35
 msgid "Oups"
 msgstr "Oups"
 
@@ -297,7 +325,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:60
+#: src/features/offer/pages/Offer.tsx:68
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -306,10 +334,12 @@ msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:53
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:45
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:55
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
@@ -317,7 +347,7 @@ msgstr "Retourner à l'accueil"
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/errors/pages/RetryBoundary.tsx:40
+#: src/features/errors/pages/RetryBoundary.tsx:47
 msgid "Réessayer"
 msgstr "Réessayer"
 
@@ -329,7 +359,7 @@ msgstr "S'inscrire"
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
-#: src/features/auth/login/Login.tsx:86
+#: src/features/auth/login/Login.tsx:92
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:30
 msgid "Se connecter"
 msgstr "Se connecter"
@@ -348,6 +378,7 @@ msgid "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300
 msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:49
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:41
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
@@ -361,7 +392,7 @@ msgstr "Ton email"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
-#: src/features/auth/login/Login.tsx:77
+#: src/features/auth/login/Login.tsx:83
 #: src/features/auth/signup/SetPassword.tsx:34
 #: src/features/auth/signup/SetPassword.tsx:40
 msgid "Ton mot de passe"
@@ -376,11 +407,11 @@ msgstr "Ton mot de passe a été modifié !"
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
 
-#: src/features/errors/pages/RetryBoundary.tsx:30
+#: src/features/errors/pages/RetryBoundary.tsx:37
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
-#: src/features/offer/pages/OfferDescription.tsx:25
+#: src/features/offer/pages/OfferDescription.tsx:27
 msgid "VISA"
 msgstr "VISA"
 
@@ -404,19 +435,19 @@ msgstr "Bienvenue à Pass Culture"
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
-#: src/features/offer/pages/OfferDescription.tsx:14
+#: src/features/offer/pages/OfferDescription.tsx:16
 msgid "auteur"
 msgstr "auteur"
 
-#: src/features/offer/pages/OfferDescription.tsx:15
+#: src/features/offer/pages/OfferDescription.tsx:17
 msgid "durée"
 msgstr "durée"
 
-#: src/features/offer/pages/OfferDescription.tsx:13
+#: src/features/offer/pages/OfferDescription.tsx:15
 msgid "en détail"
 msgstr "en détail"
 
-#: src/features/offer/pages/Offer.tsx:42
+#: src/features/offer/pages/Offer.tsx:50
 msgid "en ligne"
 msgstr "en ligne"
 
@@ -425,19 +456,20 @@ msgstr "en ligne"
 msgid "et les"
 msgstr "et les"
 
-#: src/features/offer/pages/OfferDescription.tsx:18
+#: src/features/offer/pages/OfferDescription.tsx:20
+#: src/features/offer/pages/OfferDescription.tsx:24
 msgid "genre"
 msgstr "genre"
 
-#: src/features/offer/pages/OfferDescription.tsx:19
+#: src/features/offer/pages/OfferDescription.tsx:21
 msgid "interprète"
 msgstr "interprète"
 
-#: src/features/offer/pages/OfferDescription.tsx:24
+#: src/features/offer/pages/OfferDescription.tsx:26
 msgid "intervenant"
 msgstr "intervenant"
 
-#: src/features/offer/pages/OfferDescription.tsx:23
+#: src/features/offer/pages/OfferDescription.tsx:25
 msgid "metteur en scène"
 msgstr "metteur en scène"
 
@@ -446,24 +478,17 @@ msgstr "metteur en scène"
 msgid "s'appliquent."
 msgstr "s'appliquent."
 
-#: src/features/offer/pages/OfferDescription.tsx:17
+#: src/features/offer/pages/OfferDescription.tsx:19
+#: src/features/offer/pages/OfferDescription.tsx:23
 msgid "sous genre"
 msgstr "sous genre"
 
-#: src/features/offer/pages/OfferDescription.tsx:21
-msgid "sous type"
-msgstr "sous type"
-
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:74
-#: src/features/auth/login/Login.tsx:71
+#: src/features/auth/login/Login.tsx:77
 #: src/features/auth/signup/SetEmail.tsx:67
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
-
-#: src/features/offer/pages/OfferDescription.tsx:22
-msgid "type"
-msgstr "type"
 
 #: src/features/offer/atoms/OfferSeeMore.tsx:12
 msgid "voir plus"
