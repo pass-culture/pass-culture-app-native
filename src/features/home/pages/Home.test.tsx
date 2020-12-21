@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { render, act } from '@testing-library/react-native'
 import React from 'react'
-import { NativeScrollEvent } from 'react-native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { Tab } from 'features/navigation/TabBar/TabNavigator'
@@ -10,7 +9,7 @@ import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
-import { HomeComponent, isCloseToBottom } from './Home'
+import { HomeComponent } from './Home'
 
 const useUserProfileInfoMock = useUserProfileInfo as jest.Mock
 
@@ -115,12 +114,6 @@ describe('Home component - Analytics', () => {
     contentOffset: { y: 900 },
     contentSize: { height: 1600 },
   }
-  it('event should not be close to bottom', () => {
-    expect(isCloseToBottom((nativeEventMiddle as unknown) as NativeScrollEvent)).toBeFalsy()
-  })
-  it('event should be close to bottom', () => {
-    expect(isCloseToBottom((nativeEventBottom as unknown) as NativeScrollEvent)).toBeTruthy()
-  })
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
     const home = await homeRenderer(false)
