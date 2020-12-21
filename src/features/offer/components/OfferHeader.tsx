@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
+import { logShareOffer } from 'libs/analytics'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { HeaderIcon } from '../atoms'
@@ -11,15 +12,17 @@ import { HeaderIcon } from '../atoms'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
+  offerId?: number
   showRightIcons?: boolean
 }
 /**
  * @param headerTransition should be between animated between 0 and 1
  */
 export const OfferHeader: React.FC<Props> = (props) => {
-  const { headerTransition, title, showRightIcons = true } = props
+  const { headerTransition, offerId, title, showRightIcons = true } = props
   const { isLoggedIn } = useAuthContext()
   const { goBack } = useNavigation()
+  const hasShared = useRef<boolean>(false)
 
   const iconBackgroundColor = headerTransition.interpolate({
     inputRange: [0, 1],
@@ -36,6 +39,13 @@ export const OfferHeader: React.FC<Props> = (props) => {
     outputRange: ['rgba(255, 255, 255, 0)', ColorsEnum.PRIMARY],
   })
 
+  const onPressShare = () => {
+    if (!hasShared.current) {
+      hasShared.current = true
+      if (offerId) logShareOffer(offerId)
+    }
+  }
+
   const RightIcons = () => {
     if (!showRightIcons) return <Spacer.Row numberOfSpaces={isLoggedIn ? 20 : 10} />
 
@@ -48,7 +58,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             transition: headerTransition,
           }}
           iconName="share"
-          onPress={() => null}
+          onPress={onPressShare}
         />
         {isLoggedIn && (
           <React.Fragment>
