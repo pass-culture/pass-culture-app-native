@@ -134,7 +134,11 @@ const OfferComponent: FunctionComponent = () => {
         </Section>
         <Spacer.Column numberOfSpaces={32} />
       </Container>
-      <OfferHeader title={offerResponse.name} headerTransition={headerTransition} />
+      <OfferHeader
+        title={offerResponse.name}
+        headerTransition={headerTransition}
+        offerId={offerResponse.id}
+      />
     </React.Fragment>
   )
 }

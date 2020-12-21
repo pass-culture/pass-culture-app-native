@@ -13,6 +13,7 @@ enum AnalyticsEvent {
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccesibilityModalities',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
+  SHARE_OFFER = 'Share',
 }
 
 export const logScreenView = async (screenName: string) => {
@@ -45,11 +46,10 @@ export const logConsultOfferFromDeeplink = async (offerId: string) =>
   await analytics.logEvent(AnalyticsEvent.DEEPLINK_CONSULT_OFFER, { offerId })
 
 export const logConsultAccessibility = async (offerId: number) =>
-  await analytics.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, {
-    offerId: offerId.toString(),
-  })
+  await analytics.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId })
 
 export const logConsultWithdrawal = async (offerId: number) =>
-  await analytics.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, {
-    offerId: offerId.toString(),
-  })
+  await analytics.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, { offerId })
+
+export const logShareOffer = async (offerId: number) =>
+  await analytics.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId })
