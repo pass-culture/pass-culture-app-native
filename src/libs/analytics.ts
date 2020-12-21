@@ -11,6 +11,7 @@ enum AnalyticsEvent {
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
+  CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccesibilityModalities',
 }
 
 export const logScreenView = async (screenName: string) => {
@@ -41,3 +42,8 @@ export const logClickBusinessBlock = async (moduleName: string) =>
 
 export const logConsultOfferFromDeeplink = async (offerId: string) =>
   await analytics.logEvent(AnalyticsEvent.DEEPLINK_CONSULT_OFFER, { offerId })
+
+export const logConsultAccessibility = async (offerId: number) =>
+  await analytics.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, {
+    offerId: offerId.toString(),
+  })
