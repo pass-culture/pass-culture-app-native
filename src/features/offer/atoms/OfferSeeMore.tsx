@@ -24,7 +24,7 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
   }
 
   return (
-    <PressableContainer onPress={onPressSeeMore}>
+    <PressableContainer testID="description-details-button" onPress={onPressSeeMore}>
       <Typo.ButtonText>
         {longWording ? _(t`Voir plus d'informations`) : _(t`voir plus`)}
       </Typo.ButtonText>
