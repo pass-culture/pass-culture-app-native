@@ -1,0 +1,102 @@
+diff --git a/node_modules/react-native-launch-navigator/enum.ts b/node_modules/react-native-launch-navigator/enum.ts
+new file mode 100644
+index 0000000..bf3c8e1
+--- /dev/null
++++ b/node_modules/react-native-launch-navigator/enum.ts
+@@ -0,0 +1,21 @@
++export enum AppEnum {
++  APPLE_MAPS = "apple_maps",
++  GOOGLE_MAPS = "google_maps",
++  WAZE = "waze",
++  CITYMAPPER = "citymapper",
++  NAVIGON = "navigon",
++  TRANSIT_APP = "transit_app",
++  YANDEX = "yandex",
++  UBER = "uber",
++  TOMTOM = "tomtom",
++  BING_MAPS = "bing_maps",
++  SYGIC = "sygic",
++  HERE_MAPS = "here_maps",
++  MOOVIT = "moovit",
++  LYFT = "lyft",
++  MAPS_ME = "maps_me",
++  CABIFY = "cabify",
++  BAIDU = "baidu",
++  TAXIS_99 = "taxis_99",
++  GAODE = "gaode"
++}
+\ No newline at end of file
+diff --git a/node_modules/react-native-launch-navigator/index.d.ts b/node_modules/react-native-launch-navigator/index.d.ts
+index ae97e78..9268a3a 100644
+--- a/node_modules/react-native-launch-navigator/index.d.ts
++++ b/node_modules/react-native-launch-navigator/index.d.ts
+@@ -2,6 +2,7 @@
+ // Project: https://github.com/dpa99c/react-native-launch-navigator
+ // Definitions by: Dave Alden <https://github.com/dpa99c>
+ // Usage: import { LaunchNavigator, LaunchNavigatorOptions } from 'react-native-launch-navigator';
++import { AppEnum } from './enum'
+ 
+ export interface LaunchNavigatorOptions {
+ 
+@@ -10,7 +11,7 @@ export interface LaunchNavigatorOptions {
+      * Specify using LaunchNavigator.APP constants.
+      * e.g. `LaunchNavigator.APP.GOOGLE_MAPS`.
+      */
+-    app?: string;
++    app?: AppEnum;
+ 
+     /**
+      * nickname to display in app for destination. e.g. "Bob's House".
+@@ -59,7 +60,7 @@ export interface LaunchNavigatorOptions {
+     enableGeocoding?: boolean;
+ }
+ 
+-export interface LaunchNavigator {
++export interface LaunchNavigatorType {
+ 
+     /**
+      * Supported platforms
+@@ -69,7 +70,27 @@ export interface LaunchNavigator {
+     /**
+      * string constants, used to identify apps in native code
+      */
+-    APP: any;
++    APP:  {
++        APPLE_MAPS : AppEnum.APPLE_MAPS,
++        GOOGLE_MAPS : AppEnum.GOOGLE_MAPS,
++        WAZE : AppEnum.WAZE,
++        CITYMAPPER : AppEnum.CITYMAPPER,
++        NAVIGON : AppEnum.NAVIGON,
++        TRANSIT_APP : AppEnum.TRANSIT_APP,
++        YANDEX : AppEnum.YANDEX,
++        UBER : AppEnum.UBER,
++        TOMTOM : AppEnum.TOMTOM,
++        BING_MAPS : AppEnum.BING_MAPS,
++        SYGIC : AppEnum.SYGIC,
++        HERE_MAPS : AppEnum.HERE_MAPS,
++        MOOVIT : AppEnum.MOOVIT,
++        LYFT : AppEnum.LYFT,
++        MAPS_ME : AppEnum.MAPS_ME,
++        CABIFY : AppEnum.CABIFY,
++        BAIDU : AppEnum.BAIDU,
++        TAXIS_99 : AppEnum.TAXIS_99,
++        GAODE : AppEnum.GAODE
++    }; 
+ 
+     /**
+      * All possible transport modes
+@@ -114,7 +135,7 @@ export interface LaunchNavigator {
+      * Returns a list indicating which apps are installed and available on the current device.
+      * @return {object} - a key/value object where the key is the app name as a constant in `LaunchNavigator.APP` and the value is a boolean indicating whether the app is available.
+      */
+-    getAvailableApps: () => object;
++    getAvailableApps: () => Promise<Record<AppEnum, boolean>>;
+ 
+     /**
+      * Returns the display name of the specified app.
+@@ -216,3 +237,5 @@ export interface LaunchNavigator {
+         enabled: boolean
+     ) => void;
+ }
++declare const LaunchNavigator: LaunchNavigatorType;
++export default LaunchNavigator;
