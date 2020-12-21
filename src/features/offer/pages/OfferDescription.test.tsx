@@ -86,10 +86,11 @@ async function renderOfferDescription(
   extraOffer?: Pick<OfferResponse, 'extraData' | 'description'>
 ) {
   const humanizedOfferId = 'AHD3A'
-  const offerId = dehumanizeId(humanizedOfferId)?.toString()
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const offerId = dehumanizeId(humanizedOfferId)!
 
   server.use(
-    rest.get<OfferResponse>(env.API_BASE_URL + '/native/v1/offer/' + offerId, (req, res, ctx) =>
+    rest.get<OfferResponse>(env.API_BASE_URL + `/native/v1/offer/${offerId}`, (req, res, ctx) =>
       res.once(ctx.status(200), ctx.json({ ...offerResponseSnap, ...extraOffer }))
     )
   )
@@ -101,7 +102,7 @@ async function renderOfferDescription(
           <RootStack.Screen
             name="OfferDescription"
             component={OfferDescription}
-            initialParams={{ id: humanizedOfferId }}
+            initialParams={{ id: offerId }}
           />
         </RootStack.Navigator>
       </NavigationContainer>
