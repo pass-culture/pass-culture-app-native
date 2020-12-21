@@ -4,10 +4,12 @@ import { rest } from 'msw/'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { UseQueryResult } from 'react-query'
+import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
+import { logConsultAccessibility } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -77,6 +79,27 @@ describe('<Offer />', () => {
     expect(wrapper.queryByText("Voir l'itinéraire")).toBeFalsy()
     expect(wrapper.queryByText('Distance')).toBeFalsy()
   })
+  describe('Analytics', () => {
+    beforeAll(() => jest.useFakeTimers())
+    const trigger = (component: ReactTestInstance) => {
+      act(() => {
+        fireEvent.press(component)
+        jest.advanceTimersByTime(300)
+      })
+    }
+
+    it('should log ConsultAccesibilityModalities once when opening accessibility modalities', async () => {
+      const { getByText } = await renderOfferPage()
+
+      trigger(getByText('Accessibilité'))
+      expect(logConsultAccessibility).toHaveBeenCalledTimes(1)
+      expect(logConsultAccessibility).toHaveBeenCalledWith(offerId)
+
+      trigger(getByText('Accessibilité'))
+      trigger(getByText('Accessibilité'))
+      expect(logConsultAccessibility).toHaveBeenCalledTimes(1)
+    })
+  })
 })
 
 const scrollEvent: NativeSyntheticEvent<NativeScrollEvent> = {
@@ -84,12 +107,12 @@ const scrollEvent: NativeSyntheticEvent<NativeScrollEvent> = {
   nativeEvent: { contentOffset: { y: 200 } },
 }
 
-async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
-  const humanizedOfferId = 'AHD3A'
-  const offerId = dehumanizeId(humanizedOfferId)?.toString()
+const humanizedOfferId = 'AHD3A'
+const offerId = dehumanizeId(humanizedOfferId)
 
+async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
   server.use(
-    rest.get<OfferResponse>(env.API_BASE_URL + '/native/v1/offer/' + offerId, (req, res, ctx) =>
+    rest.get<OfferResponse>(env.API_BASE_URL + `/native/v1/offer/${offerId}`, (req, res, ctx) =>
       res.once(ctx.status(200), ctx.json({ ...offerResponseSnap, ...extraOffer }))
     )
   )
