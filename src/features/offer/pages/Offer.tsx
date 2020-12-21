@@ -1,15 +1,17 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { Animated } from 'react-native'
+import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
 import { RetryBoundary } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
-import { logConsultAccessibility, logConsultWithdrawal } from 'libs/analytics'
+import { logConsultAccessibility, logConsultWithdrawal, logConsultAllOffer } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics.utils'
 import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -42,6 +44,7 @@ const OfferComponent: FunctionComponent = () => {
   } = useRoute<UseRouteType<'Offer'>>()
   const { data: offerResponse } = useOffer({ offerId: dehumanizeId(id) })
   const headerScroll = useRef(new Animated.Value(0)).current
+  const [hasSeenAllPage, setHasSeenAllPage] = useState<boolean>(false)
 
   const offerPosition = {
     lat: offerResponse?.venue?.coordinates?.latitude,
@@ -64,6 +67,13 @@ const OfferComponent: FunctionComponent = () => {
     extrapolate: 'clamp',
   })
 
+  const checkIfAllPageHaveBeenSeen = ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => {
+    if (!hasSeenAllPage && isCloseToBottom(nativeEvent)) {
+      setHasSeenAllPage(true)
+      logConsultAllOffer(offerResponse.id)
+    }
+  }
+
   return (
     <React.Fragment>
       <Container
@@ -72,6 +82,8 @@ const OfferComponent: FunctionComponent = () => {
         scrollIndicatorInsets={{ right: 1 }}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
           useNativeDriver: false,
+          listener: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) =>
+            checkIfAllPageHaveBeenSeen({ nativeEvent }),
         })}>
         <OfferHero category={offerResponse.category.name} imageUrl={offerResponse.imageUrl || ''} />
         <Spacer.Column numberOfSpaces={4} />
