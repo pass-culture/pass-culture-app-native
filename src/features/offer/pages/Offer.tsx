@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { Animated } from 'react-native'
 import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
@@ -44,7 +44,7 @@ const OfferComponent: FunctionComponent = () => {
   } = useRoute<UseRouteType<'Offer'>>()
   const { data: offerResponse } = useOffer({ offerId: dehumanizeId(id) })
   const headerScroll = useRef(new Animated.Value(0)).current
-  const [hasSeenAllPage, setHasSeenAllPage] = useState<boolean>(false)
+  const hasSeenAllPage = useRef<boolean>(false)
 
   const offerPosition = {
     lat: offerResponse?.venue?.coordinates?.latitude,
@@ -68,8 +68,8 @@ const OfferComponent: FunctionComponent = () => {
   })
 
   const checkIfAllPageHaveBeenSeen = ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => {
-    if (!hasSeenAllPage && isCloseToBottom(nativeEvent)) {
-      setHasSeenAllPage(true)
+    if (!hasSeenAllPage.current && isCloseToBottom(nativeEvent)) {
+      hasSeenAllPage.current = true
       logConsultAllOffer(offerResponse.id)
     }
   }
