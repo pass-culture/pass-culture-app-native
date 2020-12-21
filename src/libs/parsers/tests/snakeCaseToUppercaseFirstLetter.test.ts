@@ -1,4 +1,4 @@
-import { formatSnakeCase } from '../formatSnakeCase'
+import { snakeCaseToUppercaseFirstLetter } from '../snakeCaseToUppercaseFirstLetter'
 
 describe('formatSnakeCase', () => {
   it.each`
@@ -7,6 +7,6 @@ describe('formatSnakeCase', () => {
     ${'snake'}               | ${'Snake'}
     ${'snake_case_but_long'} | ${'Snake case but long'}
   `('should transform "$inputString" in "$expected"', ({ inputString, expected }) => {
-    expect(formatSnakeCase(inputString)).toBe(expected)
+    expect(snakeCaseToUppercaseFirstLetter(inputString)).toBe(expected)
   })
 })
