@@ -136,7 +136,7 @@ describe('<Offer />', () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       })
 
-      expect(logConsultAllOffer).toHaveBeenCalledWith(offerResponseSnap.id)
+      expect(logConsultAllOffer).toHaveBeenCalledWith(offerId)
     })
 
     it('should trigger logEvent "ConsultAllOffer" only once', async () => {
@@ -146,7 +146,7 @@ describe('<Offer />', () => {
         // 1st scroll to bottom => trigger
         await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       })
-      expect(logConsultAllOffer).toHaveBeenCalledWith(offerResponseSnap.id)
+      expect(logConsultAllOffer).toHaveBeenCalledWith(offerId)
 
       // @ts-ignore: logConsultAllOffer is the mock function but is seen as the real function
       logConsultAllOffer.mockClear()
