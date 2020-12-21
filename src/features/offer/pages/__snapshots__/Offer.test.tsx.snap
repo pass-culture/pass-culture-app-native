@@ -2388,6 +2388,69 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                     </RCTScrollView>
                     <View
                       style={
+                        Array [
+                          Object {
+                            "marginBottom": 32,
+                            "marginHorizontal": 24,
+                            "width": 702,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#eb0055",
+                            "borderColor": "#ffffff",
+                            "borderRadius": 24,
+                            "borderWidth": 2,
+                            "flexDirection": "row",
+                            "height": 48,
+                            "justifyContent": "center",
+                            "maxWidth": 500,
+                            "opacity": 1,
+                            "paddingBottom": 2,
+                            "paddingLeft": 2,
+                            "paddingRight": 2,
+                            "paddingTop": 2,
+                            "width": "100%",
+                          }
+                        }
+                        testID="button-container"
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            Array [
+                              Object {
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                                "marginLeft": 5,
+                                "maxWidth": 650,
+                              },
+                            ]
+                          }
+                          testID="button-title"
+                          textColor="#ffffff"
+                        >
+                          Voir les disponibilités
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      style={
                         Object {
                           "backgroundColor": "rgba(255, 255, 255, 0)",
                           "position": "absolute",
@@ -5912,6 +5975,69 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                         />
                       </View>
                     </RCTScrollView>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "marginBottom": 32,
+                            "marginHorizontal": 24,
+                            "width": 702,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#eb0055",
+                            "borderColor": "#ffffff",
+                            "borderRadius": 24,
+                            "borderWidth": 2,
+                            "flexDirection": "row",
+                            "height": 48,
+                            "justifyContent": "center",
+                            "maxWidth": 500,
+                            "opacity": 1,
+                            "paddingBottom": 2,
+                            "paddingLeft": 2,
+                            "paddingRight": 2,
+                            "paddingTop": 2,
+                            "width": "100%",
+                          }
+                        }
+                        testID="button-container"
+                      >
+                        <Text
+                          numberOfLines={1}
+                          style={
+                            Array [
+                              Object {
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                                "marginLeft": 5,
+                                "maxWidth": 650,
+                              },
+                            ]
+                          }
+                          testID="button-title"
+                          textColor="#ffffff"
+                        >
+                          Voir les disponibilités
+                        </Text>
+                      </View>
+                    </View>
                     <View
                       style={
                         Object {
