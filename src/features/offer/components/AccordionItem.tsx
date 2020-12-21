@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { TouchableWithoutFeedback, Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -9,12 +9,19 @@ interface IAccordionItemProps {
   title: string
   children: Element
   defaultOpen?: boolean
+  onOpenOnce?: () => void
 }
 
-export const AccordionItem = ({ title, children, defaultOpen = false }: IAccordionItemProps) => {
+export const AccordionItem = ({
+  title,
+  children,
+  defaultOpen = false,
+  onOpenOnce,
+}: IAccordionItemProps) => {
   const [open, setOpen] = useState(defaultOpen)
   const animatedController = useRef(new Animated.Value(0)).current
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
+  const hasBeenOpened = useRef<boolean>(false)
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
@@ -34,6 +41,13 @@ export const AccordionItem = ({ title, children, defaultOpen = false }: IAccordi
       useNativeDriver: false,
     }).start(() => setOpen((prevOpen) => !prevOpen))
   }
+
+  useEffect(() => {
+    if (open && !hasBeenOpened.current) {
+      hasBeenOpened.current = true
+      if (onOpenOnce) onOpenOnce()
+    }
+  }, [open])
 
   return (
     <React.Fragment>

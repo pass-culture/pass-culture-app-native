@@ -9,6 +9,7 @@ import { CategoryType } from 'api/gen'
 import { RetryBoundary } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
+import { logConsultAccessibility } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -118,7 +119,9 @@ const OfferComponent: FunctionComponent = () => {
         </Section>
 
         <Section visible={Object.values(tmpHandicapAccessibilityDate).some(Boolean)}>
-          <AccordionItem title={_(t`Accessibilité`)}>
+          <AccordionItem
+            title={_(t`Accessibilité`)}
+            onOpenOnce={() => logConsultAccessibility(offerResponse.id)}>
             <AccessibilityBlock
               visualDisability={tmpHandicapAccessibilityDate.visualDisability}
               audioDisability={tmpHandicapAccessibilityDate.audioDisability}
