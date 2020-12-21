@@ -6,6 +6,7 @@ import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface BaseButtonProps {
   title: string
@@ -81,7 +82,7 @@ const Container = styled.TouchableOpacity.attrs(() => ({
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
-  borderRadius: 24,
+  borderRadius: BorderRadiusEnum.BUTTON,
   padding: 2,
   backgroundColor,
   borderColor,

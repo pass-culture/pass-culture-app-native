@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
-import { Animated, Dimensions, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
+import { Animated, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -14,7 +14,7 @@ import { isCloseToBottom } from 'libs/analytics.utils'
 import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { ColorsEnum, getSpacing, MARGIN_DP, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useOffer } from '../api/useOffer'
 import {
@@ -193,10 +193,7 @@ const Divider = styled.View({
   backgroundColor: ColorsEnum.GREY_LIGHT,
 })
 
-const ctaWidth = Dimensions.get('window').width - 2 * MARGIN_DP
-
 const CallToActionContainer = styled.View({
-  width: ctaWidth,
   marginHorizontal: getSpacing(6),
   marginBottom: getSpacing(8),
 })
