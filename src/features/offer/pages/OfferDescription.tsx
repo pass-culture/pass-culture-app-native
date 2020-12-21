@@ -30,8 +30,8 @@ const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
   musicType: _(t`genre`),
   performer: _(t`interprète`),
   // 'photoCredit', _(t`crédit photo`), TODO(#5727) update schema and add this field
-  showSubType: _(t`sous type`),
-  showType: _(t`type`),
+  showSubType: _(t`sous genre`),
+  showType: _(t`genre`),
   stageDirector: _(t`metteur en scène`),
   speaker: _(t`intervenant`),
   visa: _(t`VISA`),
