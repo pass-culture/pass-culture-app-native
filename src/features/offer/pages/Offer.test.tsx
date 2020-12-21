@@ -8,7 +8,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
-import { logConsultAccessibility, logConsultWithdrawal, logConsultAllOffer } from 'libs/analytics'
+import { logConsultAccessibility, logConsultWithdrawal, logConsultWholeOffer } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -130,13 +130,13 @@ describe('<Offer />', () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
         // await flushAllPromises()
       })
-      expect(logConsultAllOffer).not.toHaveBeenCalled()
+      expect(logConsultWholeOffer).not.toHaveBeenCalled()
 
       await act(async () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       })
 
-      expect(logConsultAllOffer).toHaveBeenCalledWith(offerId)
+      expect(logConsultWholeOffer).toHaveBeenCalledWith(offerId)
     })
 
     it('should trigger logEvent "ConsultAllOffer" only once', async () => {
@@ -146,10 +146,10 @@ describe('<Offer />', () => {
         // 1st scroll to bottom => trigger
         await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       })
-      expect(logConsultAllOffer).toHaveBeenCalledWith(offerId)
+      expect(logConsultWholeOffer).toHaveBeenCalledWith(offerId)
 
-      // @ts-ignore: logConsultAllOffer is the mock function but is seen as the real function
-      logConsultAllOffer.mockClear()
+      // @ts-ignore: logConsultWholeOffer is the mock function but is seen as the real function
+      logConsultWholeOffer.mockClear()
 
       await act(async () => {
         // 2nd scroll to bottom => NOT trigger
@@ -157,7 +157,7 @@ describe('<Offer />', () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       })
 
-      expect(logConsultAllOffer).not.toHaveBeenCalled()
+      expect(logConsultWholeOffer).not.toHaveBeenCalled()
     })
   })
 })

@@ -15,7 +15,7 @@ enum AnalyticsEvent {
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
   SHARE_OFFER = 'Share',
-  CONSULT_ALL_OFFER = 'ConsultAllOffer',
+  CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
 }
 
 export const logScreenView = async (screenName: string) => {
@@ -59,6 +59,6 @@ export const logShareOffer = async (offerId: number) =>
 export const logConsultDescriptionDetails = async (offerId: number) =>
   await analytics.logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId })
 
-export const logConsultAllOffer = async (offerId: number) => {
-  return await analytics.logEvent(AnalyticsEvent.CONSULT_ALL_OFFER, { offerId })
+export const logConsultWholeOffer = async (offerId: number) => {
+  return await analytics.logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId })
 }
