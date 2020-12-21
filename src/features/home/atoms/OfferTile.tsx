@@ -18,7 +18,7 @@ interface OfferTileProps {
   date?: string
   name?: string
   isDuo?: boolean
-  offerId: string
+  offerId: number
   price: string
   thumbUrl?: string
   layout?: Layout

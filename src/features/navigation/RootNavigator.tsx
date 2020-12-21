@@ -46,8 +46,8 @@ export type RootStackParamList = {
   Login: undefined
   IdCheck: { email: string; licenceToken: string }
   Navigation: undefined
-  Offer: { id: string }
-  OfferDescription: { id: string }
+  Offer: { id: number }
+  OfferDescription: { id: number }
   ReinitializePassword: { token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }

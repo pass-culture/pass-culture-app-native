@@ -7,7 +7,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { OfferSeeMore } from '../atoms/OfferSeeMore'
 
 interface Props {
-  id: string
+  id: number
   description?: string
 }
 

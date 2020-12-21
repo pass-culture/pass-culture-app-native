@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { AlgoliaParametersFields, DisplayParametersFields, Layout } from 'features/home/contentful'
+import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { AlgoliaHit } from 'libs/algolia'
 import { logAllTilesSeen, logClickSeeMore } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -57,11 +58,13 @@ export const OffersModule = (props: OffersModuleProps) => {
   const renderItem = useCallback(
     ({ item }: { item: Hit<AlgoliaHit> }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+      const offerId = dehumanizeId(item.offer.id)
+      if (!offerId) return <React.Fragment />
       return (
         <OfferTile
           key={item.objectID}
           category={parseCategory(item.offer.category)}
-          offerId={item.offer.id}
+          offerId={offerId}
           distance={formatDistance(item._geoloc, position)}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}

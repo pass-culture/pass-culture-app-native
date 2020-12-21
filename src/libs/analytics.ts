@@ -33,10 +33,10 @@ export const logAllModulesSeen = async (numberOfModules: number) =>
 export const logAllTilesSeen = async (moduleName: string, numberOfTiles: number) =>
   await analytics.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
 
-export const logConsultOffer = async (offerId: string, moduleName: string) =>
+export const logConsultOffer = async (offerId: number, moduleName: string) =>
   await analytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId, moduleName })
 
-export const logClickExclusivityBlock = async (offerId: string) =>
+export const logClickExclusivityBlock = async (offerId: number) =>
   await analytics.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })
 
 export const logClickSeeMore = async (moduleName: string) =>
@@ -45,7 +45,7 @@ export const logClickSeeMore = async (moduleName: string) =>
 export const logClickBusinessBlock = async (moduleName: string) =>
   await analytics.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName })
 
-export const logConsultOfferFromDeeplink = async (offerId: string) =>
+export const logConsultOfferFromDeeplink = async (offerId: number) =>
   await analytics.logEvent(AnalyticsEvent.DEEPLINK_CONSULT_OFFER, { offerId })
 
 export const logConsultAccessibility = async (offerId: number) =>
