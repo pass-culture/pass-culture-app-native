@@ -1031,6 +1031,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "opacity": 1,
                                 }
                               }
+                              testID="description-details-button"
                             >
                               <Text
                                 style={
@@ -4280,6 +4281,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "opacity": 1,
                                 }
                               }
+                              testID="description-details-button"
                             >
                               <Text
                                 style={
