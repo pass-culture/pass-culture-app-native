@@ -15,8 +15,8 @@ enum AnalyticsEvent {
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
-  SHARE_OFFER = 'Share',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
+  SHARE_OFFER = 'Share',
 }
 
 export const logScreenView = async (screenName: string) => {

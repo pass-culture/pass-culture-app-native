@@ -2,19 +2,22 @@ import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { logConsultOffer } from 'libs/analytics'
 
 import { OfferTile } from '../OfferTile'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const offerId = dehumanizeId(offer.id)!
 const props = {
   category: offer.category || '',
   distance: '1,2km',
   date: 'Dès le 12 mars 2020',
   name: offer.name,
   isDuo: offer.isDuo,
-  offerId: offer.id,
+  offerId,
   price: '28 €',
   thumbUrl: offer.thumbUrl,
   algoliaHit: mockedAlgoliaResponse.hits[0],
@@ -32,11 +35,11 @@ describe('OfferTile component', () => {
   it('should navigate to the offer when clicking on the image', async () => {
     const { getByTestId } = render(<OfferTile {...props} />)
     fireEvent.press(getByTestId('offerTileImage'))
-    expect(navigate).toHaveBeenCalledWith('Offer', { id: 'AGHYQ' })
+    expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId })
   })
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     const { getByTestId } = render(<OfferTile {...props} />)
     fireEvent.press(getByTestId('offerTileImage'))
-    expect(logConsultOffer).toHaveBeenCalledWith('AGHYQ', 'Module Name')
+    expect(logConsultOffer).toHaveBeenCalledWith(offerId, 'Module Name')
   })
 })

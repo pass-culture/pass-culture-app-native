@@ -171,7 +171,8 @@ const scrollEvent = {
 }
 
 const humanizedOfferId = 'AHD3A'
-const offerId = dehumanizeId(humanizedOfferId)
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const offerId = dehumanizeId(humanizedOfferId)!
 
 async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
   server.use(
@@ -184,11 +185,7 @@ async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) 
     reactQueryProviderHOC(
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Offer">
-          <RootStack.Screen
-            name="Offer"
-            component={Offer}
-            initialParams={{ id: humanizedOfferId }}
-          />
+          <RootStack.Screen name="Offer" component={Offer} initialParams={{ id: offerId }} />
         </RootStack.Navigator>
       </NavigationContainer>
     )

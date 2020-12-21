@@ -11,11 +11,11 @@ describe('useDeeplinkUrlHandler Analytics', () => {
       result: { current: handleDeeplinkUrl },
     } = renderHook(useDeeplinkUrlHandler)
 
-    const url = DEEPLINK_DOMAIN + 'offer/?id=ABCDE'
+    const url = DEEPLINK_DOMAIN + 'offer/?id=1234'
 
     handleDeeplinkUrl({ url })
 
     expect(logConsultOffer).not.toHaveBeenCalled()
-    expect(logConsultOfferFromDeeplink).toHaveBeenCalledWith('ABCDE')
+    expect(logConsultOfferFromDeeplink).toHaveBeenCalledWith(1234)
   })
 })
