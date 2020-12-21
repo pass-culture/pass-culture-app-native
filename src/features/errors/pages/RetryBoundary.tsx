@@ -28,7 +28,7 @@ export const RetryBoundary = ({ resetErrorBoundary }: FallbackProps) => {
       <Background />
       <Spacer.Flex />
       {canGoBack() && (
-        <HeaderContainer onPress={goBack} top={top + 14} testID="backArrow">
+        <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
           <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
         </HeaderContainer>
       )}
