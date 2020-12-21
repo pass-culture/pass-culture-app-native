@@ -44,11 +44,11 @@ export function AfterSignupEmailValidationBuffer() {
       { accessToken: response.accessToken, refreshToken: response.refreshToken },
       'fromSignup'
     )
-    if (response.idCheckToken === null) {
+    if (response.idCheckToken) {
+      delayedNavigate('IdCheck', { email: params.email, licenceToken: response.idCheckToken })
+    } else {
       delayedNavigate('Home', { shouldDisplayLoginModal: false })
-      return
     }
-    // TO DO : proceed to IdCheck
   }
 
   function onEmailValidationFailure() {

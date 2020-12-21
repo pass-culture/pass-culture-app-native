@@ -45,7 +45,7 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/Offer.tsx:79
+#: src/features/offer/pages/Offer.tsx:82
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
@@ -90,7 +90,7 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:51
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:63
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
@@ -244,6 +244,10 @@ msgstr "ISBN"
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:52
+msgid "L'application de vérification d'identité n'a pas pu être ouverte. Veuillez réessayer."
+msgstr "L'application de vérification d'identité n'a pas pu être ouverte. Veuillez réessayer."
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
@@ -270,7 +274,7 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:73
+#: src/features/offer/pages/Offer.tsx:74
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -325,7 +329,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:68
+#: src/features/offer/pages/Offer.tsx:69
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -447,7 +451,7 @@ msgstr "durée"
 msgid "en détail"
 msgstr "en détail"
 
-#: src/features/offer/pages/Offer.tsx:50
+#: src/features/offer/pages/Offer.tsx:51
 msgid "en ligne"
 msgstr "en ligne"
 

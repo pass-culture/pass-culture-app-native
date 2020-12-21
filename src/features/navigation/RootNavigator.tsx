@@ -44,7 +44,7 @@ export type RootStackParamList = {
   CheatCodes: undefined
   ForgottenPassword: undefined
   Login: undefined
-  IdCheck: undefined
+  IdCheck: { email: string; licenceToken: string }
   Navigation: undefined
   Offer: { id: string }
   OfferDescription: { id: string }
