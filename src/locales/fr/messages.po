@@ -90,7 +90,7 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:63
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:52
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
@@ -238,7 +238,7 @@ msgstr "Handicap moteur"
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
-#: src/features/offer/pages/OfferDescription.tsx:18
+#: src/features/offer/pages/OfferDescription.tsx:17
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -247,10 +247,6 @@ msgstr "ISBN"
 #: src/libs/keychain.ts:47
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
-
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:52
-msgid "L'application de vérification d'identité n'a pas pu être ouverte. Veuillez réessayer."
-msgstr "L'application de vérification d'identité n'a pas pu être ouverte. Veuillez réessayer."
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
@@ -419,7 +415,7 @@ msgstr "Toute la culture dans votre main"
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
-#: src/features/offer/pages/OfferDescription.tsx:27
+#: src/features/offer/pages/OfferDescription.tsx:26
 msgid "VISA"
 msgstr "VISA"
 
@@ -427,12 +423,16 @@ msgstr "VISA"
 msgid "Valider"
 msgstr "Valider"
 
-#: src/features/offer/components/OfferWhereSection.tsx:42
+#: src/features/offer/components/OfferWhereSection.tsx:44
 #: src/features/offer/services/useItinerary.ts:44
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/atoms/OfferSeeMore.tsx:12
+#: src/features/offer/components/CallToAction.tsx:7
+msgid "Voir les disponibilités"
+msgstr "Voir les disponibilités"
+
+#: src/features/offer/atoms/OfferSeeMore.tsx:17
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
@@ -444,15 +444,15 @@ msgstr "Bienvenue à Pass Culture"
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
-#: src/features/offer/pages/OfferDescription.tsx:16
+#: src/features/offer/pages/OfferDescription.tsx:15
 msgid "auteur"
 msgstr "auteur"
 
-#: src/features/offer/pages/OfferDescription.tsx:17
+#: src/features/offer/pages/OfferDescription.tsx:16
 msgid "durée"
 msgstr "durée"
 
-#: src/features/offer/pages/OfferDescription.tsx:15
+#: src/features/offer/pages/OfferDescription.tsx:14
 msgid "en détail"
 msgstr "en détail"
 
@@ -465,20 +465,20 @@ msgstr "en ligne"
 msgid "et les"
 msgstr "et les"
 
-#: src/features/offer/pages/OfferDescription.tsx:20
-#: src/features/offer/pages/OfferDescription.tsx:24
+#: src/features/offer/pages/OfferDescription.tsx:19
+#: src/features/offer/pages/OfferDescription.tsx:23
 msgid "genre"
 msgstr "genre"
 
-#: src/features/offer/pages/OfferDescription.tsx:21
+#: src/features/offer/pages/OfferDescription.tsx:20
 msgid "interprète"
 msgstr "interprète"
 
-#: src/features/offer/pages/OfferDescription.tsx:26
+#: src/features/offer/pages/OfferDescription.tsx:25
 msgid "intervenant"
 msgstr "intervenant"
 
-#: src/features/offer/pages/OfferDescription.tsx:25
+#: src/features/offer/pages/OfferDescription.tsx:24
 msgid "metteur en scène"
 msgstr "metteur en scène"
 
@@ -487,8 +487,8 @@ msgstr "metteur en scène"
 msgid "s'appliquent."
 msgstr "s'appliquent."
 
-#: src/features/offer/pages/OfferDescription.tsx:19
-#: src/features/offer/pages/OfferDescription.tsx:23
+#: src/features/offer/pages/OfferDescription.tsx:18
+#: src/features/offer/pages/OfferDescription.tsx:22
 msgid "sous genre"
 msgstr "sous genre"
 
@@ -499,7 +499,7 @@ msgstr "sous genre"
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
-#: src/features/offer/atoms/OfferSeeMore.tsx:12
+#: src/features/offer/atoms/OfferSeeMore.tsx:17
 msgid "voir plus"
 msgstr "voir plus"
 
