@@ -25,7 +25,7 @@ export const offerResponseSnap: OfferResponse = {
     publicName: undefined,
     coordinates: { latitude: 20, longitude: 2 },
   },
-  withdrawalDetails: undefined,
+  withdrawalDetails: 'How to withdraw, https://test.com',
 }
 
 export const offerAdaptedResponseSnap = {

@@ -9,6 +9,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
+import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useOffer } from '../api/useOffer'
@@ -107,7 +108,9 @@ export const Offer: FunctionComponent = () => {
 
         <Section visible={!!offerResponse.withdrawalDetails}>
           <AccordionItem title={_(t`Modalités de retrait`)}>
-            <Typo.Body>{offerResponse.withdrawalDetails}</Typo.Body>
+            <Typo.Body>
+              {offerResponse.withdrawalDetails && highlightLinks(offerResponse.withdrawalDetails)}
+            </Typo.Body>
           </AccordionItem>
         </Section>
 
