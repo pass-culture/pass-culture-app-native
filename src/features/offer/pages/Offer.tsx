@@ -27,7 +27,6 @@ import {
   AccessibilityBlock,
   OfferPartialDescription,
 } from '../components'
-import { dehumanizeId } from '../services/dehumanizeId'
 
 // TODO: remove and use API data in PC-5804
 const tmpHandicapAccessibilityDate = {
@@ -39,10 +38,8 @@ const tmpHandicapAccessibilityDate = {
 
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 const OfferComponent: FunctionComponent = () => {
-  const {
-    params: { id },
-  } = useRoute<UseRouteType<'Offer'>>()
-  const { data: offerResponse } = useOffer({ offerId: dehumanizeId(id) })
+  const { params } = useRoute<UseRouteType<'Offer'>>()
+  const { data: offerResponse } = useOffer({ offerId: params.id })
   const headerScroll = useRef(new Animated.Value(0)).current
   const hasSeenAllPage = useRef<boolean>(false)
 
@@ -110,7 +107,7 @@ const OfferComponent: FunctionComponent = () => {
           label={offerResponse.category.label}
         />
         <Spacer.Column numberOfSpaces={6} />
-        <OfferPartialDescription description={offerResponse.description || ''} id={id} />
+        <OfferPartialDescription description={offerResponse.description || ''} id={params.id} />
         <Spacer.Column numberOfSpaces={4} />
 
         <Section visible={!offerResponse.isDigital} margin={true}>

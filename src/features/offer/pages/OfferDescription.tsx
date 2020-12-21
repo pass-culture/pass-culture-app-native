@@ -14,7 +14,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useOffer } from '../api/useOffer'
 import { OfferHeader } from '../components'
-import { dehumanizeId } from '../services/dehumanizeId'
 
 type ExtraDataKeys = keyof Required<OfferExtraData>
 export type ExtendedKeys = ExtraDataKeys | 'description'
@@ -103,7 +102,7 @@ const renderExtraData = ({ item }: { item: Item }) => {
 
 const OfferDescriptionComponent = () => {
   const { params } = useRoute<UseRouteType<'OfferDescription'>>()
-  const { data: offerResponse } = useOffer({ offerId: dehumanizeId(params.id) })
+  const { data: offerResponse } = useOffer({ offerId: params.id })
   const { description = '', extraData = {} } = offerResponse || {}
 
   return (

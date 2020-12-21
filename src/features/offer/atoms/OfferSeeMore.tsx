@@ -8,18 +8,15 @@ import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { dehumanizeId } from '../services/dehumanizeId'
-
 interface Props {
-  id: string
+  id: number
   longWording?: boolean
 }
 export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
   const { navigate } = useNavigation()
 
   const onPressSeeMore = () => {
-    const offerId = dehumanizeId(id)
-    if (offerId) logConsultDescriptionDetails(offerId)
+    logConsultDescriptionDetails(id)
     navigate('OfferDescription', { id })
   }
 
