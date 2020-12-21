@@ -107,6 +107,10 @@ msgstr "Chargement en cours..."
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
+#: src/features/offer/services/useItinerary.ts:44
+msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
+msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:30
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:27
 msgid "Clique sur le lien reçu à l'adresse :"
@@ -424,6 +428,7 @@ msgid "Valider"
 msgstr "Valider"
 
 #: src/features/offer/components/OfferWhereSection.tsx:34
+#: src/features/offer/services/useItinerary.ts:44
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
