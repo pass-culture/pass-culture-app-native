@@ -7,6 +7,8 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo, ColorsEnum } from 'ui/theme'
 
+import { useItinerary } from '../services/useItinerary'
+
 import { useDistance } from './useDistance'
 
 type Props = {
@@ -19,6 +21,7 @@ type Props = {
 
 export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition }) => {
   const distanceToOffer = useDistance(offerPosition)
+  const { availableApps, navigateTo } = useItinerary()
   if (distanceToOffer === undefined && address === null) return null
   return (
     <React.Fragment>
@@ -43,13 +46,19 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition }) =
       <Spacer.Column numberOfSpaces={4} />
       <Separator />
       <Spacer.Column numberOfSpaces={6} />
-      {offerPosition.lat !== undefined && offerPosition.lng !== undefined && (
-        <StyledView>
-          <LocationPointer color={ColorsEnum.BLACK} size={24} />
-          <Spacer.Row numberOfSpaces={1} />
-          <Typo.ButtonText>{_(t`Voir l'itinéraire`)}</Typo.ButtonText>
-        </StyledView>
-      )}
+      {offerPosition.lat !== undefined &&
+        offerPosition.lng !== undefined &&
+        availableApps !== undefined && (
+          <TouchableContainer
+            onPress={() => {
+              if (!offerPosition.lat || !offerPosition.lng) return
+              navigateTo({ latitude: offerPosition.lat, longitude: offerPosition.lng })
+            }}>
+            <LocationPointer color={ColorsEnum.BLACK} size={24} />
+            <Spacer.Row numberOfSpaces={1} />
+            <Typo.ButtonText>{_(t`Voir l'itinéraire`)}</Typo.ButtonText>
+          </TouchableContainer>
+        )}
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
@@ -64,7 +73,7 @@ const Separator = styled.View({
   backgroundColor: ColorsEnum.GREY_MEDIUM,
 })
 
-const StyledView = styled.View({
+const TouchableContainer = styled.TouchableOpacity({
   flexDirection: 'row',
   alignItems: 'center',
 })
