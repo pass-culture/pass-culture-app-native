@@ -5,7 +5,7 @@ import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/AuthContext'
-import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
+import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
@@ -36,7 +36,8 @@ export const Login: FunctionComponent = function () {
 
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password)
 
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack, navigate } = useNavigation<UseNavigationType>()
+  const previousRoute = usePreviousRoute()
 
   async function handleSignin() {
     Keyboard.dismiss()
@@ -50,7 +51,11 @@ export const Login: FunctionComponent = function () {
   }
 
   function onBackNavigation() {
-    navigate('Home', { shouldDisplayLoginModal: true })
+    if (previousRoute?.name == 'ReinitializePassword') {
+      goBack()
+    } else {
+      navigate('Home', { shouldDisplayLoginModal: true })
+    }
   }
 
   function onClose() {
