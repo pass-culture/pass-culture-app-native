@@ -1229,6 +1229,235 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               ]
                             }
                           >
+                            Modalités de retrait
+                          </Text>
+                          <View
+                            style={
+                              Object {
+                                "transform": Array [
+                                  Object {
+                                    "rotateZ": "1.5707963267948966rad",
+                                  },
+                                ],
+                              }
+                            }
+                            testID="accordionArrow"
+                          >
+                            <RNSVGSvgView
+                              align="xMidYMid"
+                              bbHeight={24}
+                              bbWidth={24}
+                              focusable={false}
+                              height={24}
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                Array [
+                                  Object {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  Object {
+                                    "flex": 0,
+                                    "height": 24,
+                                    "width": 24,
+                                  },
+                                ]
+                              }
+                              vbHeight={53}
+                              vbWidth={52}
+                              width={24}
+                            >
+                              <RNSVGGroup>
+                                <RNSVGGroup
+                                  fill={null}
+                                  propList={
+                                    Array [
+                                      "fill",
+                                    ]
+                                  }
+                                >
+                                  <RNSVGGroup
+                                    fill={4279571733}
+                                    propList={
+                                      Array [
+                                        "fill",
+                                      ]
+                                    }
+                                  >
+                                    <RNSVGGroup>
+                                      <RNSVGGroup>
+                                        <RNSVGPath
+                                          d="M14.528 31.633c-.49.45-1.265.431-1.732-.041-.466-.472-.447-1.22.042-1.669l8.636-7.928c2.838-2.605 7.297-2.605 10.135 0l8.636 7.928c.49.45.509 1.197.042 1.669-.466.472-1.241.49-1.731.04l-8.636-7.927c-1.892-1.737-4.865-1.737-6.757 0l-8.635 7.928z"
+                                          matrix={
+                                            Array [
+                                              6.123233995736766e-17,
+                                              1,
+                                              -1,
+                                              6.123233995736766e-17,
+                                              52.54200000000003,
+                                              0.4580000000000837,
+                                            ]
+                                          }
+                                        />
+                                      </RNSVGGroup>
+                                    </RNSVGGroup>
+                                  </RNSVGGroup>
+                                </RNSVGGroup>
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            Object {
+                              "height": 0,
+                              "overflow": "hidden",
+                            }
+                          }
+                          testID="accordionBody"
+                        >
+                          <View
+                            onLayout={[Function]}
+                            style={
+                              Array [
+                                Object {
+                                  "bottom": 0,
+                                  "paddingBottom": 24,
+                                  "paddingHorizontal": 24,
+                                  "paddingTop": 0,
+                                  "position": "absolute",
+                                  "width": "100%",
+                                },
+                              ]
+                            }
+                            testID="accordionBodyContainer"
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Regular",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              How to withdraw, 
+                              <Text
+                                onPress={[Function]}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  numberOfSpaces={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "width": 4,
+                                      },
+                                    ]
+                                  }
+                                />
+                                <Text>
+                                  <RNSVGSvgView
+                                    bbHeight={16}
+                                    bbWidth={15}
+                                    focusable={false}
+                                    height={16}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "backgroundColor": "transparent",
+                                          "borderWidth": 0,
+                                        },
+                                        Object {
+                                          "flex": 0,
+                                          "height": 16,
+                                          "width": 15,
+                                        },
+                                      ]
+                                    }
+                                    testID="externalSiteIcon"
+                                    width={15}
+                                  >
+                                    <RNSVGGroup>
+                                      <RNSVGPath
+                                        d="M6.55 3.625c.335.005.503.181.503.53 0 .35-.168.526-.504.53H1.008v9.546h9.068V8.398c0-.354.168-.53.504-.53.335 0 .503.176.503.53v6.363c0 .293-.225.53-.503.53H.504a.518.518 0 01-.504-.53V4.155c0-.293.226-.53.504-.53h6.045zM10.024.126l.092.003 3.338.4a.524.524 0 01.45.472l.383 3.493a.53.53 0 01-.45.593.517.517 0 01-.567-.471l-.268-2.436-6.565 6.872a.496.496 0 01-.724 0 .554.554 0 010-.758l6.526-6.832L10 1.193a.526.526 0 01-.452-.496L9.55.6a.518.518 0 01.567-.471z"
+                                        fill={4279571733}
+                                        fillRule={0}
+                                        propList={
+                                          Array [
+                                            "fill",
+                                            "fillRule",
+                                          ]
+                                        }
+                                      />
+                                    </RNSVGGroup>
+                                  </RNSVGSvgView>
+                                  
+                                </Text>
+                                 https://test.com
+                              </Text>
+                            </Text>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "#f5f5f5",
+                                "height": 8,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          accessible={true}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Array [
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "justifyContent": "space-between",
+                                "paddingBottom": 16,
+                                "paddingHorizontal": 24,
+                                "paddingTop": 24,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 18,
+                                  "lineHeight": 22,
+                                },
+                              ]
+                            }
+                          >
                             Accessibilité
                           </Text>
                           <View
@@ -4471,6 +4700,235 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           >
                             Du 3 janvier 2021 au 4 janvier 2021
                           </Text>
+                        </View>
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "#f5f5f5",
+                                "height": 8,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          accessible={true}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Array [
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "justifyContent": "space-between",
+                                "paddingBottom": 16,
+                                "paddingHorizontal": 24,
+                                "paddingTop": 24,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#151515",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 18,
+                                  "lineHeight": 22,
+                                },
+                              ]
+                            }
+                          >
+                            Modalités de retrait
+                          </Text>
+                          <View
+                            style={
+                              Object {
+                                "transform": Array [
+                                  Object {
+                                    "rotateZ": "1.5707963267948966rad",
+                                  },
+                                ],
+                              }
+                            }
+                            testID="accordionArrow"
+                          >
+                            <RNSVGSvgView
+                              align="xMidYMid"
+                              bbHeight={24}
+                              bbWidth={24}
+                              focusable={false}
+                              height={24}
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                Array [
+                                  Object {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  Object {
+                                    "flex": 0,
+                                    "height": 24,
+                                    "width": 24,
+                                  },
+                                ]
+                              }
+                              vbHeight={53}
+                              vbWidth={52}
+                              width={24}
+                            >
+                              <RNSVGGroup>
+                                <RNSVGGroup
+                                  fill={null}
+                                  propList={
+                                    Array [
+                                      "fill",
+                                    ]
+                                  }
+                                >
+                                  <RNSVGGroup
+                                    fill={4279571733}
+                                    propList={
+                                      Array [
+                                        "fill",
+                                      ]
+                                    }
+                                  >
+                                    <RNSVGGroup>
+                                      <RNSVGGroup>
+                                        <RNSVGPath
+                                          d="M14.528 31.633c-.49.45-1.265.431-1.732-.041-.466-.472-.447-1.22.042-1.669l8.636-7.928c2.838-2.605 7.297-2.605 10.135 0l8.636 7.928c.49.45.509 1.197.042 1.669-.466.472-1.241.49-1.731.04l-8.636-7.927c-1.892-1.737-4.865-1.737-6.757 0l-8.635 7.928z"
+                                          matrix={
+                                            Array [
+                                              6.123233995736766e-17,
+                                              1,
+                                              -1,
+                                              6.123233995736766e-17,
+                                              52.54200000000003,
+                                              0.4580000000000837,
+                                            ]
+                                          }
+                                        />
+                                      </RNSVGGroup>
+                                    </RNSVGGroup>
+                                  </RNSVGGroup>
+                                </RNSVGGroup>
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            Object {
+                              "height": 0,
+                              "overflow": "hidden",
+                            }
+                          }
+                          testID="accordionBody"
+                        >
+                          <View
+                            onLayout={[Function]}
+                            style={
+                              Array [
+                                Object {
+                                  "bottom": 0,
+                                  "paddingBottom": 24,
+                                  "paddingHorizontal": 24,
+                                  "paddingTop": 0,
+                                  "position": "absolute",
+                                  "width": "100%",
+                                },
+                              ]
+                            }
+                            testID="accordionBodyContainer"
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Regular",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              How to withdraw, 
+                              <Text
+                                onPress={[Function]}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  numberOfSpaces={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "width": 4,
+                                      },
+                                    ]
+                                  }
+                                />
+                                <Text>
+                                  <RNSVGSvgView
+                                    bbHeight={16}
+                                    bbWidth={15}
+                                    focusable={false}
+                                    height={16}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "backgroundColor": "transparent",
+                                          "borderWidth": 0,
+                                        },
+                                        Object {
+                                          "flex": 0,
+                                          "height": 16,
+                                          "width": 15,
+                                        },
+                                      ]
+                                    }
+                                    testID="externalSiteIcon"
+                                    width={15}
+                                  >
+                                    <RNSVGGroup>
+                                      <RNSVGPath
+                                        d="M6.55 3.625c.335.005.503.181.503.53 0 .35-.168.526-.504.53H1.008v9.546h9.068V8.398c0-.354.168-.53.504-.53.335 0 .503.176.503.53v6.363c0 .293-.225.53-.503.53H.504a.518.518 0 01-.504-.53V4.155c0-.293.226-.53.504-.53h6.045zM10.024.126l.092.003 3.338.4a.524.524 0 01.45.472l.383 3.493a.53.53 0 01-.45.593.517.517 0 01-.567-.471l-.268-2.436-6.565 6.872a.496.496 0 01-.724 0 .554.554 0 010-.758l6.526-6.832L10 1.193a.526.526 0 01-.452-.496L9.55.6a.518.518 0 01.567-.471z"
+                                        fill={4279571733}
+                                        fillRule={0}
+                                        propList={
+                                          Array [
+                                            "fill",
+                                            "fillRule",
+                                          ]
+                                        }
+                                      />
+                                    </RNSVGGroup>
+                                  </RNSVGSvgView>
+                                  
+                                </Text>
+                                 https://test.com
+                              </Text>
+                            </Text>
+                          </View>
                         </View>
                         <View
                           style={
