@@ -6,6 +6,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { logClickWhyAnniversary } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
@@ -128,6 +129,18 @@ describe('SetBirthday Page', () => {
     fireEvent.press(quitSignupModalButton)
 
     expect(getByText("Continuer l'inscription")).toBeTruthy()
+  })
+
+  describe('SetBirthday - analytics', () => {
+    it('should log Signup-whyAnniversary when clicking "Pourquoi" link', () => {
+      jest.clearAllMocks()
+      const { getByTestId } = renderSetBirthday()
+
+      const whyBirthdayLink = getByTestId('button-title-why-link')
+      fireEvent.press(whyBirthdayLink)
+
+      expect(logClickWhyAnniversary).toHaveBeenCalledTimes(1)
+    })
   })
 })
 

@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { logClickWhyAnniversary } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -121,6 +122,11 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     showFullPageModal()
   }
 
+  function onPressWhy() {
+    logClickWhyAnniversary()
+    showInformationModal()
+  }
+
   return (
     <React.Fragment>
       <BottomContentPage
@@ -137,7 +143,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           <TouchableOpacityFullWidth onPress={Keyboard.dismiss}>
             <ButtonTertiary
               title={_(t`Pourquoi ?`)}
-              onPress={showInformationModal}
+              onPress={onPressWhy}
               testIdSuffix={'why-link'}
             />
             <DateInputContainer>
