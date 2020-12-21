@@ -3,6 +3,7 @@ import { PixelRatio } from 'react-native'
 import { getSpacing } from 'ui/theme/spacing'
 
 export enum BorderRadiusEnum {
+  BUTTON = 24,
   BORDER_RADIUS = 8,
   CHECKBOX_RADIUS = getSpacing(1),
 }

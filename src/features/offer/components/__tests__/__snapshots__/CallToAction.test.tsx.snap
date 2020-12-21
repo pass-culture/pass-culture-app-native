@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CallToAction /> shows both placeholders when url is empty 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "borderRadius": 24,
+      "justifyContent": "center",
+      "opacity": 1,
+      "overflow": "hidden",
+    }
+  }
+>
+  <RNSVGSvgView
+    align="none"
+    bbHeight={48}
+    bbWidth="100%"
+    focusable={false}
+    height={48}
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Object {
+          "flex": 0,
+          "height": 48,
+          "width": "100%",
+        },
+      ]
+    }
+    vbHeight={8}
+    vbWidth={375}
+    width="100%"
+  >
+    <RNSVGGroup>
+      <RNSVGDefs>
+        <RNSVGLinearGradient
+          gradient={
+            Array [
+              0,
+              -1376171,
+              1,
+              -13500266,
+            ]
+          }
+          gradientTransform={null}
+          gradientUnits={0}
+          name="prefix__a"
+          x1="0%"
+          x2="100%"
+          y1="49.977%"
+          y2="50.023%"
+        />
+      </RNSVGDefs>
+      <RNSVGGroup
+        fill={null}
+        propList={
+          Array [
+            "fill",
+          ]
+        }
+      >
+        <RNSVGGroup
+          matrix={
+            Array [
+              1,
+              0,
+              0,
+              1,
+              0,
+              -309,
+            ]
+          }
+          propList={
+            Array [
+              "stroke",
+              "strokeWidth",
+            ]
+          }
+          stroke={
+            Array [
+              1,
+              "prefix__a",
+            ]
+          }
+          strokeWidth={8}
+        >
+          <RNSVGPath
+            d="M4 313H371V314H4z"
+          />
+        </RNSVGGroup>
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#ffffff",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "paddingBottom": 20,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 20,
+          "position": "absolute",
+        },
+      ]
+    }
+  >
+    Voir les disponibilités
+  </Text>
+</View>
+`;

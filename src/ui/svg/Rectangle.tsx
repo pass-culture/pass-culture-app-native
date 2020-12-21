@@ -5,11 +5,15 @@ import { ColorsEnum, getSpacing } from '../theme'
 
 import { IconInterface } from './icons/types'
 
-export const Rectangle: React.FC<Omit<IconInterface, 'color'>> = ({ size = 32, testID }) => {
+export const Rectangle: React.FC<Omit<IconInterface, 'color'> & { height?: number }> = ({
+  size = 32,
+  height = getSpacing(2),
+  testID,
+}) => {
   return (
     <Svg
       width={size}
-      height={getSpacing(2)}
+      height={height}
       viewBox="0 0 375 8"
       preserveAspectRatio="none"
       testID={testID}>
