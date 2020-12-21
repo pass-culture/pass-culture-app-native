@@ -2,14 +2,13 @@ import { NavigationContainer } from '@react-navigation/native'
 import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { UseQueryResult } from 'react-query'
 import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
-import { logConsultAccessibility, logConsultWithdrawal } from 'libs/analytics'
+import { logConsultAccessibility, logConsultWithdrawal, logConsultAllOffer } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -79,6 +78,7 @@ describe('<Offer />', () => {
     expect(wrapper.queryByText("Voir l'itinéraire")).toBeFalsy()
     expect(wrapper.queryByText('Distance')).toBeFalsy()
   })
+
   describe('Analytics', () => {
     beforeAll(() => jest.useFakeTimers())
     const trigger = (component: ReactTestInstance) => {
@@ -110,12 +110,64 @@ describe('<Offer />', () => {
       trigger(getByText('Modalités de retrait'))
       expect(logConsultWithdrawal).toHaveBeenCalledTimes(1)
     })
+
+    const nativeEventMiddle = {
+      layoutMeasurement: { height: 1000 },
+      contentOffset: { y: 400 }, // how far did we scroll
+      contentSize: { height: 1600 },
+    }
+    const nativeEventBottom = {
+      layoutMeasurement: { height: 1000 },
+      contentOffset: { y: 900 },
+      contentSize: { height: 1600 },
+    }
+
+    it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
+      const offerPage = await renderOfferPage()
+      const scrollView = offerPage.getByTestId('offer-container')
+
+      await act(async () => {
+        await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        // await flushAllPromises()
+      })
+      expect(logConsultAllOffer).not.toHaveBeenCalled()
+
+      await act(async () => {
+        await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+      })
+
+      expect(logConsultAllOffer).toHaveBeenCalledWith(offerResponseSnap.id)
+    })
+
+    it('should trigger logEvent "ConsultAllOffer" only once', async () => {
+      const offerPage = await renderOfferPage()
+      const scrollView = offerPage.getByTestId('offer-container')
+      await act(async () => {
+        // 1st scroll to bottom => trigger
+        await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+      })
+      expect(logConsultAllOffer).toHaveBeenCalledWith(offerResponseSnap.id)
+
+      // @ts-ignore: logConsultAllOffer is the mock function but is seen as the real function
+      logConsultAllOffer.mockClear()
+
+      await act(async () => {
+        // 2nd scroll to bottom => NOT trigger
+        await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+        await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+      })
+
+      expect(logConsultAllOffer).not.toHaveBeenCalled()
+    })
   })
 })
 
-const scrollEvent: NativeSyntheticEvent<NativeScrollEvent> = {
-  // @ts-ignore : partial event is enough
-  nativeEvent: { contentOffset: { y: 200 } },
+const scrollEvent = {
+  nativeEvent: {
+    contentOffset: { y: 200 },
+    layoutMeasurement: { height: 1000 },
+    contentSize: { height: 1600 },
+  },
 }
 
 const humanizedOfferId = 'AHD3A'
