@@ -6,7 +6,7 @@ import { AppEnum } from 'react-native-launch-navigator/enum'
 
 import { Coordinates } from 'api/gen'
 import { _ } from 'libs/i18n'
-import { formatSnakeCase } from 'libs/parsers/formatSnakeCase'
+import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
 
 export const useItinerary = () => {
   const [availableApps, setAvailableApps] = useState<AppEnum[] | undefined>(undefined)
@@ -38,7 +38,7 @@ export const useItinerary = () => {
       _(t`Voir l'itinéraire`),
       _(t`Choisissez l'application pour vous rendre sur le lieu de l'offre :`),
       availableApps.map((app) => ({
-        text: formatSnakeCase(app),
+        text: snakeCaseToUppercaseFirstLetter(app),
         onPress: () => navigateToWithApp(coordinates, app),
       }))
     )

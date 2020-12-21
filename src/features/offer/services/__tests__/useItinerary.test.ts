@@ -14,15 +14,13 @@ describe('useItinerary', () => {
   it('returns availableApps', async () => {
     const { result, waitFor } = renderHook(useItinerary)
     await waitFor(() => !!result.current.availableApps)
-    expect(JSON.stringify(result.current.availableApps)).toBe(
-      JSON.stringify(['google_maps', 'waze'])
-    )
+    expect(result.current.availableApps).toStrictEqual(['google_maps', 'waze'])
   })
   it('returns default availableApps in case of an error', async () => {
     getAvailableApps.mockImplementationOnce(() => Promise.reject(new Error('dummyError')))
     const { result, waitFor } = renderHook(useItinerary)
     await waitFor(() => !!result.current.availableApps)
-    expect(JSON.stringify(result.current.availableApps)).toBe(JSON.stringify([]))
+    expect(result.current.availableApps).toStrictEqual([])
   })
   it('navigates with the right app if there is only one available app', async () => {
     getAvailableApps.mockImplementationOnce(() =>

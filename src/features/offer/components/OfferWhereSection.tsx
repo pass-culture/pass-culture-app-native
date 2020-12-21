@@ -43,21 +43,24 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition }) =
           <Typo.Body>{distanceToOffer}</Typo.Body>
         </React.Fragment>
       )}
-      <Spacer.Column numberOfSpaces={4} />
-      <Separator />
-      <Spacer.Column numberOfSpaces={6} />
+
       {offerPosition.lat !== undefined &&
         offerPosition.lng !== undefined &&
         availableApps !== undefined && (
-          <TouchableContainer
-            onPress={() => {
-              if (!offerPosition.lat || !offerPosition.lng) return
-              navigateTo({ latitude: offerPosition.lat, longitude: offerPosition.lng })
-            }}>
-            <LocationPointer color={ColorsEnum.BLACK} size={24} />
-            <Spacer.Row numberOfSpaces={1} />
-            <Typo.ButtonText>{_(t`Voir l'itinéraire`)}</Typo.ButtonText>
-          </TouchableContainer>
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <Separator />
+            <Spacer.Column numberOfSpaces={6} />
+            <TouchableContainer
+              onPress={() => {
+                if (!offerPosition.lat || !offerPosition.lng) return
+                navigateTo({ latitude: offerPosition.lat, longitude: offerPosition.lng })
+              }}>
+              <LocationPointer color={ColorsEnum.BLACK} size={24} />
+              <Spacer.Row numberOfSpaces={1} />
+              <Typo.ButtonText>{_(t`Voir l'itinéraire`)}</Typo.ButtonText>
+            </TouchableContainer>
+          </React.Fragment>
         )}
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
