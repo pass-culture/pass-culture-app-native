@@ -12,6 +12,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { logAllModulesSeen } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
@@ -28,15 +29,6 @@ import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 import { useShowSkeleton } from './useShowSkeleton'
 
 const statusBarHeight = getStatusBarHeight(true)
-
-export const isCloseToBottom = ({
-  layoutMeasurement,
-  contentOffset,
-  contentSize,
-}: NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']) => {
-  const paddingToBottom = 20
-  return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom
-}
 
 export const HomeComponent: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
