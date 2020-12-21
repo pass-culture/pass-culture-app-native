@@ -3,9 +3,12 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { logConsultDescriptionDetails } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+
+import { dehumanizeId } from '../services/dehumanizeId'
 
 interface Props {
   id: string
@@ -14,8 +17,14 @@ interface Props {
 export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
   const { navigate } = useNavigation()
 
+  const onPressSeeMore = () => {
+    const offerId = dehumanizeId(id)
+    if (offerId) logConsultDescriptionDetails(offerId)
+    navigate('OfferDescription', { id })
+  }
+
   return (
-    <PressableContainer onPress={() => navigate('OfferDescription', { id })}>
+    <PressableContainer onPress={onPressSeeMore}>
       <Typo.ButtonText>
         {longWording ? _(t`Voir plus d'informations`) : _(t`voir plus`)}
       </Typo.ButtonText>
