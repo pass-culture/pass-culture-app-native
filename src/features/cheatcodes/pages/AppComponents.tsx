@@ -5,7 +5,7 @@ import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { AccordionItem } from 'features/offer/components'
+import { AccordionItem, CallToAction } from 'features/offer/components'
 import { AlgoliaCategory } from 'libs/algolia'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -188,6 +188,7 @@ export const AppComponents: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
+        <CallToAction />
       </AccordionItem>
 
       <Divider />

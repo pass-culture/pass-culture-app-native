@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CallToAction /> shows both placeholders when url is empty 1`] = `
+exports[`<CallToAction /> should render 1`] = `
 <View
   accessible={true}
   focusable={true}

@@ -2392,7 +2392,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           Object {
                             "marginBottom": 32,
                             "marginHorizontal": 24,
-                            "width": 702,
                           },
                         ]
                       }
@@ -2410,24 +2409,99 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                         style={
                           Object {
                             "alignItems": "center",
-                            "backgroundColor": "#eb0055",
-                            "borderColor": "#ffffff",
                             "borderRadius": 24,
-                            "borderWidth": 2,
-                            "flexDirection": "row",
-                            "height": 48,
                             "justifyContent": "center",
-                            "maxWidth": 500,
                             "opacity": 1,
-                            "paddingBottom": 2,
-                            "paddingLeft": 2,
-                            "paddingRight": 2,
-                            "paddingTop": 2,
-                            "width": "100%",
+                            "overflow": "hidden",
                           }
                         }
-                        testID="button-container"
                       >
+                        <RNSVGSvgView
+                          align="none"
+                          bbHeight={48}
+                          bbWidth="100%"
+                          focusable={false}
+                          height={48}
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              Object {
+                                "flex": 0,
+                                "height": 48,
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                          vbHeight={8}
+                          vbWidth={375}
+                          width="100%"
+                        >
+                          <RNSVGGroup>
+                            <RNSVGDefs>
+                              <RNSVGLinearGradient
+                                gradient={
+                                  Array [
+                                    0,
+                                    -1376171,
+                                    1,
+                                    -13500266,
+                                  ]
+                                }
+                                gradientTransform={null}
+                                gradientUnits={0}
+                                name="prefix__a"
+                                x1="0%"
+                                x2="100%"
+                                y1="49.977%"
+                                y2="50.023%"
+                              />
+                            </RNSVGDefs>
+                            <RNSVGGroup
+                              fill={null}
+                              propList={
+                                Array [
+                                  "fill",
+                                ]
+                              }
+                            >
+                              <RNSVGGroup
+                                matrix={
+                                  Array [
+                                    1,
+                                    0,
+                                    0,
+                                    1,
+                                    0,
+                                    -309,
+                                  ]
+                                }
+                                propList={
+                                  Array [
+                                    "stroke",
+                                    "strokeWidth",
+                                  ]
+                                }
+                                stroke={
+                                  Array [
+                                    1,
+                                    "prefix__a",
+                                  ]
+                                }
+                                strokeWidth={8}
+                              >
+                                <RNSVGPath
+                                  d="M4 313H371V314H4z"
+                                />
+                              </RNSVGGroup>
+                            </RNSVGGroup>
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
                         <Text
                           numberOfLines={1}
                           style={
@@ -2437,13 +2511,14 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,
                                 "lineHeight": 20,
-                                "marginLeft": 5,
-                                "maxWidth": 650,
+                                "paddingBottom": 20,
+                                "paddingLeft": 20,
+                                "paddingRight": 20,
+                                "paddingTop": 20,
+                                "position": "absolute",
                               },
                             ]
                           }
-                          testID="button-title"
-                          textColor="#ffffff"
                         >
                           Voir les disponibilités
                         </Text>
@@ -5981,7 +6056,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           Object {
                             "marginBottom": 32,
                             "marginHorizontal": 24,
-                            "width": 702,
                           },
                         ]
                       }
@@ -5999,24 +6073,99 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                         style={
                           Object {
                             "alignItems": "center",
-                            "backgroundColor": "#eb0055",
-                            "borderColor": "#ffffff",
                             "borderRadius": 24,
-                            "borderWidth": 2,
-                            "flexDirection": "row",
-                            "height": 48,
                             "justifyContent": "center",
-                            "maxWidth": 500,
                             "opacity": 1,
-                            "paddingBottom": 2,
-                            "paddingLeft": 2,
-                            "paddingRight": 2,
-                            "paddingTop": 2,
-                            "width": "100%",
+                            "overflow": "hidden",
                           }
                         }
-                        testID="button-container"
                       >
+                        <RNSVGSvgView
+                          align="none"
+                          bbHeight={48}
+                          bbWidth="100%"
+                          focusable={false}
+                          height={48}
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              Object {
+                                "flex": 0,
+                                "height": 48,
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                          vbHeight={8}
+                          vbWidth={375}
+                          width="100%"
+                        >
+                          <RNSVGGroup>
+                            <RNSVGDefs>
+                              <RNSVGLinearGradient
+                                gradient={
+                                  Array [
+                                    0,
+                                    -1376171,
+                                    1,
+                                    -13500266,
+                                  ]
+                                }
+                                gradientTransform={null}
+                                gradientUnits={0}
+                                name="prefix__a"
+                                x1="0%"
+                                x2="100%"
+                                y1="49.977%"
+                                y2="50.023%"
+                              />
+                            </RNSVGDefs>
+                            <RNSVGGroup
+                              fill={null}
+                              propList={
+                                Array [
+                                  "fill",
+                                ]
+                              }
+                            >
+                              <RNSVGGroup
+                                matrix={
+                                  Array [
+                                    1,
+                                    0,
+                                    0,
+                                    1,
+                                    0,
+                                    -309,
+                                  ]
+                                }
+                                propList={
+                                  Array [
+                                    "stroke",
+                                    "strokeWidth",
+                                  ]
+                                }
+                                stroke={
+                                  Array [
+                                    1,
+                                    "prefix__a",
+                                  ]
+                                }
+                                strokeWidth={8}
+                              >
+                                <RNSVGPath
+                                  d="M4 313H371V314H4z"
+                                />
+                              </RNSVGGroup>
+                            </RNSVGGroup>
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
                         <Text
                           numberOfLines={1}
                           style={
@@ -6026,13 +6175,14 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,
                                 "lineHeight": 20,
-                                "marginLeft": 5,
-                                "maxWidth": 650,
+                                "paddingBottom": 20,
+                                "paddingLeft": 20,
+                                "paddingRight": 20,
+                                "paddingTop": 20,
+                                "position": "absolute",
                               },
                             ]
                           }
-                          testID="button-title"
-                          textColor="#ffffff"
                         >
                           Voir les disponibilités
                         </Text>
