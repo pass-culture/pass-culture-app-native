@@ -10,7 +10,7 @@ import { CategoryType } from 'api/gen'
 import { RetryBoundary } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
-import { logConsultAccessibility, logConsultWithdrawal, logConsultAllOffer } from 'libs/analytics'
+import { logConsultAccessibility, logConsultWithdrawal, logConsultWholeOffer } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
 import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
@@ -70,7 +70,7 @@ const OfferComponent: FunctionComponent = () => {
   const checkIfAllPageHaveBeenSeen = ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => {
     if (!hasSeenAllPage.current && isCloseToBottom(nativeEvent)) {
       hasSeenAllPage.current = true
-      logConsultAllOffer(offerResponse.id)
+      logConsultWholeOffer(offerResponse.id)
     }
   }
 
