@@ -8,6 +8,11 @@ import { analytics } from 'libs/analytics'
 const resumeMock = jest.fn()
 
 describe('QuitSignupModal', () => {
+  beforeEach(() => {
+    // @ts-ignore: logCancelSignup is the mock function but is seen as the real function
+    analytics.logCancelSignup.mockClear()
+  })
+
   it('should not display the modal when visible is false', () => {
     const { queryByText } = renderQuitSignupModal(false)
 
@@ -41,9 +46,7 @@ describe('QuitSignupModal', () => {
   })
 
   describe('QuitSignupModal - Analytics', () => {
-    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
-      // @ts-ignore: logCancelSignup is the mock function but is seen as the real function
-      analytics.logCancelSignup.mockClear()
+    it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
       const { getByText } = renderQuitSignupModal(true)
 
       const abandonButton = getByText("Abandonner l'inscription")
