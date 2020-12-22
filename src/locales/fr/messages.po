@@ -45,11 +45,11 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/Offer.tsx:82
+#: src/features/offer/pages/Offer.tsx:91
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/components/OfferWhereSection.tsx:20
+#: src/features/offer/components/OfferWhereSection.tsx:28
 msgid "Adresse"
 msgstr "Adresse"
 
@@ -64,6 +64,10 @@ msgstr "Adresse e-mail"
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
+#: src/features/offer/services/useItinerary.ts:57
+msgid "Annuler"
+msgstr "Annuler"
+
 #: src/libs/storage.ts:23
 msgid "Aucun access token à sauvegarder"
 msgstr "Aucun access token à sauvegarder"
@@ -73,12 +77,12 @@ msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
 
 #. Welcome title message
-#: src/features/home/pages/Home.tsx:75
+#: src/features/home/pages/Home.tsx:72
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
 #. Hello title message
-#: src/features/home/pages/Home.tsx:74
+#: src/features/home/pages/Home.tsx:71
 msgid "Bonjour {0}"
 msgstr "Bonjour {0}"
 
@@ -95,7 +99,7 @@ msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:106
+#: src/features/auth/signup/SetBirthday.tsx:111
 msgid "Ce site est protégé par reCAPTCHA Google. La"
 msgstr "Ce site est protégé par reCAPTCHA Google. La"
 
@@ -103,11 +107,11 @@ msgstr "Ce site est protégé par reCAPTCHA Google. La"
 msgid "Chargement en cours..."
 msgstr "Chargement en cours..."
 
-#: src/features/auth/signup/SetBirthday.tsx:108
+#: src/features/auth/signup/SetBirthday.tsx:113
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
-#: src/features/offer/services/useItinerary.ts:44
+#: src/features/offer/services/useItinerary.ts:58
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
@@ -121,13 +125,13 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/home/pages/Home.tsx:58
+#: src/features/home/pages/Home.tsx:55
 #: src/features/profile/pages/Profile.tsx:16
 msgid "Composants"
 msgstr "Composants"
 
 #: src/features/auth/signup/AcceptCgu.tsx:60
-#: src/features/auth/signup/SetBirthday.tsx:111
+#: src/features/auth/signup/SetBirthday.tsx:116
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -145,20 +149,20 @@ msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:43
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:42
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:40
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:40
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:51
 #: src/features/auth/signup/AcceptCgu.tsx:71
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:39
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:37
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:43
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:69
-#: src/features/auth/signup/SetBirthday.tsx:117
+#: src/features/auth/signup/SetBirthday.tsx:122
 #: src/features/auth/signup/SetEmail.tsx:78
 #: src/features/auth/signup/SetPassword.tsx:44
 msgid "Continuer"
@@ -168,7 +172,7 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/offer/components/OfferWhereSection.tsx:26
+#: src/features/offer/components/OfferWhereSection.tsx:34
 msgid "Distance"
 msgstr "Distance"
 
@@ -270,11 +274,11 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 
-#: src/features/auth/signup/SetBirthday.tsx:128
+#: src/features/auth/signup/SetBirthday.tsx:133
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:74
+#: src/features/offer/pages/Offer.tsx:83
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -291,7 +295,7 @@ msgstr "Mot de passe oublié"
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
-#: src/features/home/pages/Home.tsx:61
+#: src/features/home/pages/Home.tsx:58
 #: src/features/profile/pages/Profile.tsx:20
 msgid "Navigation"
 msgstr "Navigation"
@@ -309,7 +313,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/offer/components/OfferWhereSection.tsx:17
+#: src/features/offer/components/OfferWhereSection.tsx:25
 msgid "Où ?"
 msgstr "Où ?"
 
@@ -321,7 +325,7 @@ msgstr "Politique de confidentialité."
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
-#: src/features/auth/signup/SetBirthday.tsx:98
+#: src/features/auth/signup/SetBirthday.tsx:103
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -329,7 +333,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:69
+#: src/features/offer/pages/Offer.tsx:78
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -386,7 +390,7 @@ msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 30
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/auth/signup/SetBirthday.tsx:95
+#: src/features/auth/signup/SetBirthday.tsx:100
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
@@ -407,7 +411,7 @@ msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
 #. Welcome body message
-#: src/features/home/pages/Home.tsx:79
+#: src/features/home/pages/Home.tsx:76
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
 
@@ -423,12 +427,12 @@ msgstr "VISA"
 msgid "Valider"
 msgstr "Valider"
 
-#: src/features/offer/components/OfferWhereSection.tsx:44
-#: src/features/offer/services/useItinerary.ts:44
+#: src/features/offer/components/OfferWhereSection.tsx:46
+#: src/features/offer/services/useItinerary.ts:58
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/components/CallToAction.tsx:7
+#: src/features/offer/components/CallToAction.tsx:12
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
@@ -456,12 +460,12 @@ msgstr "durée"
 msgid "en détail"
 msgstr "en détail"
 
-#: src/features/offer/pages/Offer.tsx:51
+#: src/features/offer/pages/Offer.tsx:60
 msgid "en ligne"
 msgstr "en ligne"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:110
+#: src/features/auth/signup/SetBirthday.tsx:115
 msgid "et les"
 msgstr "et les"
 
@@ -483,7 +487,7 @@ msgid "metteur en scène"
 msgstr "metteur en scène"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:114
+#: src/features/auth/signup/SetBirthday.tsx:119
 msgid "s'appliquent."
 msgstr "s'appliquent."
 

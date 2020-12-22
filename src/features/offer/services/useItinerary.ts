@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useEffect, useState } from 'react'
-import { Alert, Linking } from 'react-native'
+import { Alert, AlertButton, Linking, Platform } from 'react-native'
 import LN from 'react-native-launch-navigator'
 import { AppEnum } from 'react-native-launch-navigator/enum'
 
@@ -44,13 +44,15 @@ export const useItinerary = () => {
       navigateToWithApp(coordinates, availableApps[0])
       return
     }
+    const alertButtons: AlertButton[] = availableApps.map((app) => ({
+      text: snakeCaseToUppercaseFirstLetter(app),
+      onPress: () => navigateToWithApp(coordinates, app),
+    }))
+    if (Platform.OS === 'ios') alertButtons.push({ text: _(t`Annuler`), style: 'cancel' })
     Alert.alert(
       _(t`Voir l'itinéraire`),
       _(t`Choisissez l'application pour vous rendre sur le lieu de l'offre :`),
-      availableApps.map((app) => ({
-        text: snakeCaseToUppercaseFirstLetter(app),
-        onPress: () => navigateToWithApp(coordinates, app),
-      })),
+      alertButtons,
       { cancelable: true }
     )
   }

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { Alert, Linking } from 'react-native'
+import { Alert, Linking, Platform } from 'react-native'
 
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
 
@@ -35,6 +35,7 @@ describe('useItinerary', () => {
     getAvailableApps.mockImplementationOnce(() =>
       Promise.resolve({ sygic: true, google_maps: false, waze: true, citymapper: false })
     )
+    Platform.OS = 'android'
     const { result, waitFor } = renderHook(useItinerary)
     await waitFor(() => !!result.current.availableApps)
     result.current.navigateTo({ latitude: 48.85837, longitude: 2.294481 })
@@ -55,6 +56,25 @@ describe('useItinerary', () => {
     // @ts-ignore: same reason
     wazeAlertButton.onPress()
     expect(navigate).toHaveBeenCalledWith([48.85837, 2.294481], { app: 'waze' })
+  })
+  it('should add a cancel button for iOS devices', async () => {
+    getAvailableApps.mockImplementationOnce(() =>
+      Promise.resolve({ sygic: true, google_maps: false, waze: true, citymapper: false })
+    )
+    Platform.OS = 'ios'
+    const { result, waitFor } = renderHook(useItinerary)
+    await waitFor(() => !!result.current.availableApps)
+    result.current.navigateTo({ latitude: 48.85837, longitude: 2.294481 })
+    expect(alertMock).toHaveBeenCalledWith(
+      "Voir l'itinéraire",
+      "Choisissez l'application pour vous rendre sur le lieu de l'offre :",
+      [
+        { text: 'Sygic', onPress: expect.any(Function) },
+        { text: 'Waze', onPress: expect.any(Function) },
+        { text: 'Annuler', style: 'cancel' },
+      ],
+      { cancelable: true }
+    )
   })
   it('should filter out not explicitely compatible apps', async () => {
     getAvailableApps.mockImplementationOnce(() =>
