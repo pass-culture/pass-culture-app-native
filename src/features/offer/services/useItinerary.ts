@@ -6,13 +6,15 @@ import { AppEnum } from 'react-native-launch-navigator/enum'
 
 import { Coordinates } from 'api/gen'
 import { _ } from 'libs/i18n'
+import { getOpenStreetMapUrl } from 'libs/parsers/getOpenStreetMapUrl'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
-
-import { getOpenStreetMapUrl } from '../../../libs/parsers/getOpenStreetMapUrl'
 
 const appEnumTypeGuard = (app: string): app is AppEnum =>
   Object.values(AppEnum).includes(app as AppEnum)
-
+enum BackupSolution {
+  OPEN_STREET_MAP,
+  SNACKBAR_ERROR,
+}
 export const useItinerary = () => {
   const [availableApps, setAvailableApps] = useState<AppEnum[] | undefined>(undefined)
   const getApps = async () => {
@@ -31,23 +33,33 @@ export const useItinerary = () => {
     const openStreetMapUrl = getOpenStreetMapUrl(coordinates)
     if (Linking.canOpenURL(openStreetMapUrl)) Linking.openURL(openStreetMapUrl)
   }
-  const navigateToWithApp = async (coordinates: Required<Coordinates>, app: AppEnum) => {
+  const navigateToWithApp = async (
+    coordinates: Required<Coordinates>,
+    app: AppEnum,
+    backupSolution: BackupSolution
+  ) => {
     try {
       await LN.navigate([coordinates.latitude, coordinates.longitude], { app })
     } catch (e: unknown) {
-      /** */
+      switch (backupSolution) {
+        case BackupSolution.OPEN_STREET_MAP:
+          navigateWithOpenStreetMap(coordinates)
+          return
+        case BackupSolution.SNACKBAR_ERROR:
+          return
+      }
     }
   }
   const navigateTo = (coordinates: Required<Coordinates>) => {
     if (availableApps === undefined) return
     if (availableApps.length === 0) navigateWithOpenStreetMap(coordinates)
     if (availableApps.length === 1) {
-      navigateToWithApp(coordinates, availableApps[0])
+      navigateToWithApp(coordinates, availableApps[0], BackupSolution.OPEN_STREET_MAP)
       return
     }
     const alertButtons: AlertButton[] = availableApps.map((app) => ({
       text: snakeCaseToUppercaseFirstLetter(app),
-      onPress: () => navigateToWithApp(coordinates, app),
+      onPress: () => navigateToWithApp(coordinates, app, BackupSolution.SNACKBAR_ERROR),
     }))
     if (Platform.OS === 'ios') alertButtons.push({ text: _(t`Annuler`), style: 'cancel' })
     Alert.alert(
