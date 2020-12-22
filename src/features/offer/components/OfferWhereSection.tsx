@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { Coordinates } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { Spacer } from 'ui/components/spacer/Spacer'
@@ -15,15 +16,12 @@ import { useDistance } from './useDistance'
 type Props = {
   address: string | null
   offerId: number
-  offerPosition: {
-    lat?: number
-    lng?: number
-  }
+  offerCoordinates: Coordinates
 }
 
-export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition, offerId }) => {
-  const { lat, lng } = offerPosition
-  const distanceToOffer = useDistance(offerPosition)
+export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, offerId }) => {
+  const { latitude: lat, longitude: lng } = offerCoordinates
+  const distanceToOffer = useDistance({ lat, lng })
   const { availableApps, navigateTo } = useItinerary()
   if (distanceToOffer === undefined && address === null) return null
 

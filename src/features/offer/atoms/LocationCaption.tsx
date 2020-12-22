@@ -1,35 +1,38 @@
+import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { OfferVenueResponse } from 'api/gen'
+import { _ } from 'libs/i18n'
 import { Digital } from 'ui/svg/icons/Digital'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
-  locationName?: string | null
-  where?: string | null
+  venue: OfferVenueResponse
   isDigital: boolean
 }
 
-export const LocationCaption: FunctionComponent<Props> = ({
-  locationName,
-  where,
-  isDigital,
-}: Props) => (
-  <LocationContainer>
-    <StyledView>
-      <IconContainer>
-        {isDigital ? <Digital size={getSpacing(4)} /> : <LocationPointer size={getSpacing(4)} />}
-      </IconContainer>
-      {locationName && <StyledText numberOfLines={1}>{`${locationName}, `}</StyledText>}
-    </StyledView>
-    {where && (
-      <WhereText numberOfLines={1} isDigital={isDigital}>
-        {where}
-      </WhereText>
-    )}
-  </LocationContainer>
-)
+export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: Props) => {
+  const locationName = isDigital ? venue.offerer.name : venue.publicName || venue.name
+  const where = isDigital ? _(t`en ligne`) : venue.city
+
+  return (
+    <LocationContainer>
+      <StyledView>
+        <IconContainer>
+          {isDigital ? <Digital size={getSpacing(4)} /> : <LocationPointer size={getSpacing(4)} />}
+        </IconContainer>
+        {locationName && <StyledText numberOfLines={1}>{`${locationName}, `}</StyledText>}
+      </StyledView>
+      {where && (
+        <WhereText numberOfLines={1} isDigital={isDigital}>
+          {where}
+        </WhereText>
+      )}
+    </LocationContainer>
+  )
+}
 
 const LocationContainer = styled.View({
   justifyContent: 'center',

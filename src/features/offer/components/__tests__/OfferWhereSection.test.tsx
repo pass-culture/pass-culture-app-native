@@ -14,7 +14,11 @@ describe('OfferWhereSection', () => {
   describe('Analytics', () => {
     it('should log ConsultLocationItinerary when clicking on "voir l\'itinéraire"', () => {
       const { getByText } = render(
-        <OfferWhereSection address="Address" offerPosition={{ lat: 2, lng: 4 }} offerId={30} />
+        <OfferWhereSection
+          address="Address"
+          offerCoordinates={{ latitude: 2, longitude: 4 }}
+          offerId={30}
+        />
       )
       act(() => {
         fireEvent.press(getByText("Voir l'itinéraire"))
