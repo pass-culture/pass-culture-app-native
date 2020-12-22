@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { logShareOffer } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { flushAllPromises } from 'tests/utils'
 
 import { OfferHeader } from '../OfferHeader'
@@ -56,12 +56,12 @@ describe('<OfferHeader />', () => {
       const { getByTestId } = await renderOfferHeader(true)
 
       fireEvent.press(getByTestId('icon-share'))
-      expect(logShareOffer).toHaveBeenCalledTimes(1)
-      expect(logShareOffer).toHaveBeenCalledWith(offerId)
+      expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
+      expect(analytics.logShareOffer).toHaveBeenCalledWith(offerId)
 
       fireEvent.press(getByTestId('icon-share'))
       fireEvent.press(getByTestId('icon-share'))
-      expect(logShareOffer).toHaveBeenCalledTimes(1)
+      expect(analytics.logShareOffer).toHaveBeenCalledTimes(1)
     })
   })
 })

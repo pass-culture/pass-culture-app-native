@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { ExclusivityPane } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
-import { logClickExclusivityBlock } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -17,7 +17,7 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
     const id = dehumanizeId(offerId)
     if (typeof id === 'number') {
       navigate('Offer', { id })
-      logClickExclusivityBlock(id)
+      analytics.logClickExclusivityBlock(id)
     }
   }
 

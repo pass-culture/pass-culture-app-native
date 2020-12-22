@@ -7,7 +7,7 @@ import waitForExpect from 'wait-for-expect'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import * as HomeAPI from 'features/home/api'
-import { logClickBusinessBlock } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -58,7 +58,7 @@ describe('BusinessModule component', () => {
   it('should log "BusinessBlockClicked" when clicking on the image', () => {
     const { getByTestId } = renderModule(props)
     fireEvent.press(getByTestId('imageBusiness'))
-    expect(logClickBusinessBlock).toHaveBeenCalledWith(props.title)
+    expect(analytics.logClickBusinessBlock).toHaveBeenCalledWith(props.title)
   })
 
   it('should open url when clicking on the image', () => {

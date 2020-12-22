@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { act } from 'react-test-renderer'
 
-import { logConsultItinerary } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 
 import { OfferWhereSection } from '../OfferWhereSection'
 
@@ -19,8 +19,8 @@ describe('OfferWhereSection', () => {
       act(() => {
         fireEvent.press(getByText("Voir l'itinéraire"))
       })
-      expect(logConsultItinerary).toHaveBeenCalledTimes(1)
-      expect(logConsultItinerary).toHaveBeenCalledWith(30)
+      expect(analytics.logConsultItinerary).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultItinerary).toHaveBeenCalledWith(30)
     })
   })
 })

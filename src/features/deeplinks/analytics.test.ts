@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 
-import { logConsultOffer, logConsultOfferFromDeeplink } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 
 import { useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
 import { DEEPLINK_DOMAIN } from './utils'
@@ -15,7 +15,7 @@ describe('useDeeplinkUrlHandler Analytics', () => {
 
     handleDeeplinkUrl({ url })
 
-    expect(logConsultOffer).not.toHaveBeenCalled()
-    expect(logConsultOfferFromDeeplink).toHaveBeenCalledWith(1234)
+    expect(analytics.logConsultOffer).not.toHaveBeenCalled()
+    expect(analytics.logConsultOfferFromDeeplink).toHaveBeenCalledWith(1234)
   })
 })

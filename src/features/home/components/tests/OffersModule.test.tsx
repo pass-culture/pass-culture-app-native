@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
-import { logAllTilesSeen, logClickSeeMore } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
@@ -51,7 +51,7 @@ describe('OffersModule component - Analytics', () => {
       await flushAllPromises()
     })
 
-    expect(logAllTilesSeen).toHaveBeenCalledWith(props.display.title, props.nbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, props.nbHits)
   })
 
   it('should trigger logEvent "AllTilesSeen" only once', async () => {
@@ -63,11 +63,11 @@ describe('OffersModule component - Analytics', () => {
       await flatList.props.onEndReached()
       await flushAllPromises()
     })
-    expect(logAllTilesSeen).toHaveBeenCalledWith(props.display.title, props.nbHits)
-    expect(logAllTilesSeen).toHaveBeenCalledTimes(1)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, props.nbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
 
     flatList.props.onEndReached()
-    expect(logAllTilesSeen).toHaveBeenCalledTimes(1)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
   })
 
   it('should trigger logEvent "AllTilesSeen" with algolia title if no display.title', async () => {
@@ -88,7 +88,7 @@ describe('OffersModule component - Analytics', () => {
       await flushAllPromises()
     })
 
-    expect(logAllTilesSeen).toHaveBeenCalledWith('Algolia title', props.nbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith('Algolia title', props.nbHits)
   })
 
   it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', async () => {
@@ -101,6 +101,6 @@ describe('OffersModule component - Analytics', () => {
       await flushAllPromises()
     })
 
-    expect(logClickSeeMore).toHaveBeenCalledWith('Module title')
+    expect(analytics.logClickSeeMore).toHaveBeenCalledWith('Module title')
   })
 })

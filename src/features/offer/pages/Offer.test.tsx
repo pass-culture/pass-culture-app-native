@@ -8,7 +8,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
-import { logConsultAccessibility, logConsultWithdrawal, logConsultWholeOffer } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -92,23 +92,23 @@ describe('<Offer />', () => {
       const { getByText } = await renderOfferPage()
 
       trigger(getByText('Accessibilité'))
-      expect(logConsultAccessibility).toHaveBeenCalledTimes(1)
-      expect(logConsultAccessibility).toHaveBeenCalledWith(offerId)
+      expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultAccessibility).toHaveBeenCalledWith(offerId)
 
       trigger(getByText('Accessibilité'))
       trigger(getByText('Accessibilité'))
-      expect(logConsultAccessibility).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
     })
     it('should log ConsultWithdrawalModalities once when opening accessibility modalities', async () => {
       const { getByText } = await renderOfferPage()
 
       trigger(getByText('Modalités de retrait'))
-      expect(logConsultWithdrawal).toHaveBeenCalledTimes(1)
-      expect(logConsultWithdrawal).toHaveBeenCalledWith(offerId)
+      expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultWithdrawal).toHaveBeenCalledWith(offerId)
 
       trigger(getByText('Modalités de retrait'))
       trigger(getByText('Modalités de retrait'))
-      expect(logConsultWithdrawal).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
     })
 
     const nativeEventMiddle = {
@@ -130,13 +130,13 @@ describe('<Offer />', () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
         // await flushAllPromises()
       })
-      expect(logConsultWholeOffer).not.toHaveBeenCalled()
+      expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
 
       await act(async () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       })
 
-      expect(logConsultWholeOffer).toHaveBeenCalledWith(offerId)
+      expect(analytics.logConsultWholeOffer).toHaveBeenCalledWith(offerId)
     })
 
     it('should trigger logEvent "ConsultAllOffer" only once', async () => {
@@ -146,10 +146,10 @@ describe('<Offer />', () => {
         // 1st scroll to bottom => trigger
         await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       })
-      expect(logConsultWholeOffer).toHaveBeenCalledWith(offerId)
+      expect(analytics.logConsultWholeOffer).toHaveBeenCalledWith(offerId)
 
       // @ts-ignore: logConsultWholeOffer is the mock function but is seen as the real function
-      logConsultWholeOffer.mockClear()
+      analytics.logConsultWholeOffer.mockClear()
 
       await act(async () => {
         // 2nd scroll to bottom => NOT trigger
@@ -157,7 +157,7 @@ describe('<Offer />', () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       })
 
-      expect(logConsultWholeOffer).not.toHaveBeenCalled()
+      expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
     })
   })
 })

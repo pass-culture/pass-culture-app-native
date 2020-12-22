@@ -4,7 +4,7 @@ import React from 'react'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { Tab } from 'features/navigation/TabBar/TabNavigator'
-import { logAllModulesSeen } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
@@ -125,13 +125,13 @@ describe('Home component - Analytics', () => {
     await act(async () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
     })
-    expect(logAllModulesSeen).not.toHaveBeenCalled()
+    expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
 
     await act(async () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
     })
 
-    expect(logAllModulesSeen).toHaveBeenCalledWith(0)
+    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(0)
   })
 
   it('should trigger logEvent "AllModulesSeen" only once', async () => {
@@ -147,10 +147,10 @@ describe('Home component - Analytics', () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       await flushAllPromises()
     })
-    expect(logAllModulesSeen).toHaveBeenCalledWith(0)
+    expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(0)
 
     // @ts-ignore: logAllModulesSeen is the mock function but is seen as the real function
-    logAllModulesSeen.mockClear()
+    analytics.logAllModulesSeen.mockClear()
 
     await act(async () => {
       // 2nd scroll to bottom => NOT trigger
@@ -159,7 +159,7 @@ describe('Home component - Analytics', () => {
       await flushAllPromises()
     })
 
-    expect(logAllModulesSeen).not.toHaveBeenCalled()
+    expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
   })
 })
 

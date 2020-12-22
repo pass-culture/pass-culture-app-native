@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { logClickWhyAnniversary } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
@@ -133,13 +133,14 @@ describe('SetBirthday Page', () => {
 
   describe('SetBirthday - analytics', () => {
     it('should log Signup-whyAnniversary when clicking "Pourquoi" link', () => {
-      jest.clearAllMocks()
+      // @ts-ignore: logClickWhyAnniversary is the mock function but is seen as the real function
+      analytics.logClickWhyAnniversary.mockClear()
       const { getByTestId } = renderSetBirthday()
 
       const whyBirthdayLink = getByTestId('button-title-why-link')
       fireEvent.press(whyBirthdayLink)
 
-      expect(logClickWhyAnniversary).toHaveBeenCalledTimes(1)
+      expect(analytics.logClickWhyAnniversary).toHaveBeenCalledTimes(1)
     })
   })
 })

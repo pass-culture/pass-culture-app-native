@@ -4,7 +4,7 @@ import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { logShareOffer } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { HeaderIcon } from '../atoms'
@@ -42,7 +42,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const onPressShare = () => {
     if (!hasShared.current) {
       hasShared.current = true
-      if (offerId) logShareOffer(offerId)
+      if (offerId) analytics.logShareOffer(offerId)
     }
   }
 

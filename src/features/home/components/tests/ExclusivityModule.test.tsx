@@ -3,7 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
-import { logClickExclusivityBlock } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 
 import { ExclusivityModule } from '../ExclusivityModule'
 
@@ -34,6 +34,6 @@ describe('ExclusivityModule component', () => {
   it('should log a click event when clicking on the image', () => {
     const { getByTestId } = render(<ExclusivityModule {...props} />)
     fireEvent.press(getByTestId('imageExclu'))
-    expect(logClickExclusivityBlock).toHaveBeenCalledWith(id)
+    expect(analytics.logClickExclusivityBlock).toHaveBeenCalledWith(id)
   })
 })
