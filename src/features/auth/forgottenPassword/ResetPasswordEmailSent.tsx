@@ -59,8 +59,8 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             onPress={contactSupport}
             icon={Email}
           />
-          <Spacer.Column numberOfSpaces={6} />
         </Description>
+        <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           title={_(t`Consulter mes e-mails`)}
           onPress={openInbox}

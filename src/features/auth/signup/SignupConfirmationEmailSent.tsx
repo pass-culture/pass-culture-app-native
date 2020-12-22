@@ -48,17 +48,15 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
               {_(t`L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !`)}
             </Typo.Body>
           </CenteredText>
-          <CenteredText>
-            <Typo.Body>{_(t`Si l'e-mail n'arrive pas, tu peux : `)}</Typo.Body>
-          </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
+          <Typo.Body>{_(t`Si l'e-mail n'arrive pas, tu peux : `)}</Typo.Body>
           <ButtonTertiary
             title={_(t`Contacter le support`)}
             onPress={contactSupport}
             icon={Email}
           />
         </Description>
-        <Spacer.Column numberOfSpaces={7} />
+        <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           title={_(t`Consulter mes e-mails`)}
           onPress={openInbox}
