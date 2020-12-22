@@ -65,6 +65,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           key={item.objectID}
           category={parseCategory(item.offer.category)}
           offerId={offerId}
+          description={item.offer.description || ''}
           distance={formatDistance(item._geoloc, position)}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}

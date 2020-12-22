@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import { api } from 'api/api'
 import { OfferResponse } from 'api/gen'
 
-interface OfferAdaptedResponse extends OfferResponse {
+export interface OfferAdaptedResponse extends OfferResponse {
   fullAddress: string | null
 }
 
