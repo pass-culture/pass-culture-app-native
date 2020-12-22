@@ -38,13 +38,6 @@ const OfferComponent: FunctionComponent = () => {
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
 
-  const offerPosition = {
-    lat: venue?.coordinates?.latitude,
-    lng: venue?.coordinates?.longitude,
-  }
-
-  const digitalLocationName = venue.offerer.name
-  const locationName = venue.publicName || venue.name
   const dates = offerResponse.bookableStocks.reduce<Date[]>(
     (accumulator, stock) =>
       stock.beginningDatetime ? [...accumulator, stock.beginningDatetime] : accumulator,
@@ -77,11 +70,7 @@ const OfferComponent: FunctionComponent = () => {
         })}>
         <OfferHero category={category.name} imageUrl={offerResponse.imageUrl || ''} />
         <Spacer.Column numberOfSpaces={4} />
-        {offerResponse.isDigital ? (
-          <LocationCaption locationName={digitalLocationName} where={_(t`en ligne`)} isDigital />
-        ) : (
-          <LocationCaption locationName={locationName} where={venue.city} isDigital={false} />
-        )}
+        <LocationCaption venue={venue} isDigital={offerResponse.isDigital} />
         <Spacer.Column numberOfSpaces={2} />
         <MarginContainer>
           <OfferTitle testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
@@ -102,7 +91,7 @@ const OfferComponent: FunctionComponent = () => {
         <Section visible={!offerResponse.isDigital} margin={true}>
           <OfferWhereSection
             address={offerResponse.fullAddress}
-            offerPosition={offerPosition}
+            offerCoordinates={venue.coordinates}
             offerId={offerResponse.id}
           />
         </Section>
