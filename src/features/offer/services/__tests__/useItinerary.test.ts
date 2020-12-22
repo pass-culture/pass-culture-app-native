@@ -1,12 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { Alert } from 'react-native'
+import { Alert, Linking } from 'react-native'
 
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
 
 import { useItinerary } from '../useItinerary'
 
 const alertMock = jest.spyOn(Alert, 'alert')
-
+jest.spyOn(Linking, 'openURL')
 describe('useItinerary', () => {
   afterEach(() => {
     jest.clearAllMocks()
@@ -69,5 +69,21 @@ describe('useItinerary', () => {
     const { result, waitFor } = renderHook(useItinerary)
     await waitFor(() => !!result.current.availableApps)
     expect(result.current.availableApps).toStrictEqual(['sygic', 'waze'])
+  })
+  it('should open an openStreetMapUrl if no app is available', async () => {
+    getAvailableApps.mockImplementationOnce(() =>
+      Promise.resolve({
+        sygic: false,
+        google_maps: false,
+        waze: false,
+        citymapper: false,
+      })
+    )
+    const { result, waitFor } = renderHook(useItinerary)
+    await waitFor(() => !!result.current.availableApps)
+    result.current.navigateTo({ latitude: 48.85837, longitude: 2.294481 })
+    expect(Linking.openURL).toHaveBeenCalledWith(
+      'https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=%3B48.85837%2C2.294481#map=16/48.85837/2.294481'
+    )
   })
 })
