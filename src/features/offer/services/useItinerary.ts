@@ -8,6 +8,7 @@ import { Coordinates } from 'api/gen'
 import { _ } from 'libs/i18n'
 import { getOpenStreetMapUrl } from 'libs/parsers/getOpenStreetMapUrl'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 const appEnumTypeGuard = (app: string): app is AppEnum =>
   Object.values(AppEnum).includes(app as AppEnum)
@@ -17,6 +18,7 @@ enum BackupSolution {
 }
 export const useItinerary = () => {
   const [availableApps, setAvailableApps] = useState<AppEnum[] | undefined>(undefined)
+  const { displayInfosSnackBar } = useSnackBarContext()
   const getApps = async () => {
     try {
       const appsAvailability = await LN.getAvailableApps()
@@ -46,6 +48,12 @@ export const useItinerary = () => {
           navigateWithOpenStreetMap(coordinates)
           return
         case BackupSolution.SNACKBAR_ERROR:
+          displayInfosSnackBar({
+            message: _(
+              t`Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.`
+            ),
+            timeout: 10000,
+          })
           return
       }
     }
