@@ -6,12 +6,6 @@ import { offerResponseSnap, offerAdaptedResponseSnap } from '../snaps/offerRespo
 import { useOffer, formatFullAddress } from '../useOffer'
 
 describe('useOffer', () => {
-  it('should not call the API if offerId is null', () => {
-    const { result } = renderHook(() => useOffer({ offerId: null }), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-    expect(result.current.isLoading).toBeFalsy()
-  })
   it('should call API otherwise', async () => {
     const { result, waitFor } = renderHook(() => useOffer({ offerId: offerResponseSnap.id }), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),

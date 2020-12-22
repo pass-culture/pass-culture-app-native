@@ -111,7 +111,7 @@ const OfferComponent: FunctionComponent = () => {
           </AccordionItem>
         </Section>
 
-        <Section visible={Object.values(accessibility).some(Boolean)}>
+        <Section visible={Object.values(accessibility).some((value) => value !== undefined)}>
           <AccordionItem
             title={_(t`Accessibilité`)}
             onOpenOnce={() => analytics.logConsultAccessibility(offerResponse.id)}>

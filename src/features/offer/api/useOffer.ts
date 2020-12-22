@@ -7,10 +7,6 @@ interface OfferAdaptedResponse extends OfferResponse {
   fullAddress: string | null
 }
 
-interface UseOfferInterface {
-  offerId: number | null
-}
-
 const isNotEmpty = (text: string | undefined) => text !== undefined && text !== ''
 
 export const formatFullAddress = (
@@ -44,11 +40,5 @@ const getOfferById = async (offerId: number) => {
   return adaptOfferResponse(offerApiResponse)
 }
 
-export const useOffer = ({ offerId }: UseOfferInterface) => {
-  return useQuery<OfferAdaptedResponse>(
-    ['offer', offerId],
-    //@ts-ignore: Query is enabled only if offerId is truthy
-    () => getOfferById(offerId),
-    { enabled: typeof offerId === 'number' }
-  )
-}
+export const useOffer = ({ offerId }: { offerId: number }) =>
+  useQuery<OfferAdaptedResponse>(['offer', offerId], () => getOfferById(offerId))
