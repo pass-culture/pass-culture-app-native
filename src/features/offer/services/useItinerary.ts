@@ -27,6 +27,10 @@ export const useItinerary = () => {
       setAvailableApps([])
     }
   }
+  const navigateWithOpenStreetMap = (coordinates: Required<Coordinates>) => {
+    const openStreetMapUrl = getOpenStreetMapUrl(coordinates)
+    if (Linking.canOpenURL(openStreetMapUrl)) Linking.openURL(openStreetMapUrl)
+  }
   const navigateToWithApp = async (coordinates: Required<Coordinates>, app: AppEnum) => {
     try {
       await LN.navigate([coordinates.latitude, coordinates.longitude], { app })
@@ -36,10 +40,7 @@ export const useItinerary = () => {
   }
   const navigateTo = (coordinates: Required<Coordinates>) => {
     if (availableApps === undefined) return
-    if (availableApps.length === 0) {
-      const openStreetMapUrl = getOpenStreetMapUrl(coordinates)
-      if (Linking.canOpenURL(openStreetMapUrl)) Linking.openURL(openStreetMapUrl)
-    }
+    if (availableApps.length === 0) navigateWithOpenStreetMap(coordinates)
     if (availableApps.length === 1) {
       navigateToWithApp(coordinates, availableApps[0])
       return
