@@ -1,12 +1,14 @@
 import { t } from '@lingui/macro'
 import { useEffect, useState } from 'react'
-import { Alert } from 'react-native'
+import { Alert, Linking } from 'react-native'
 import LN from 'react-native-launch-navigator'
 import { AppEnum } from 'react-native-launch-navigator/enum'
 
 import { Coordinates } from 'api/gen'
 import { _ } from 'libs/i18n'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
+
+import { parseOpenStreetMapUrl } from '../../../libs/parsers/parseOpenStreetMapUrl'
 
 const appEnumTypeGuard = (app: string): app is AppEnum =>
   Object.values(AppEnum).includes(app as AppEnum)
@@ -33,7 +35,11 @@ export const useItinerary = () => {
     }
   }
   const navigateTo = (coordinates: Required<Coordinates>) => {
-    if (!availableApps) return
+    if (availableApps === undefined) return
+    if (availableApps.length === 0) {
+      const openStreetMapUrl = parseOpenStreetMapUrl(coordinates)
+      if (Linking.canOpenURL(openStreetMapUrl)) Linking.openURL(openStreetMapUrl)
+    }
     if (availableApps.length === 1) {
       navigateToWithApp(coordinates, availableApps[0])
       return
