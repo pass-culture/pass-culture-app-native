@@ -156,6 +156,36 @@ export interface Coordinates {
 }/**
  * 
  * @export
+ * @interface OfferAccessibilityResponse
+ */
+export interface OfferAccessibilityResponse {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferAccessibilityResponse
+     */
+    audioDisability?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferAccessibilityResponse
+     */
+    mentalDisability?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferAccessibilityResponse
+     */
+    motorDisability?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferAccessibilityResponse
+     */
+    visualDisability?: boolean;
+}/**
+ * 
+ * @export
  * @interface OfferCategoryResponse
  */
 export interface OfferCategoryResponse {
@@ -176,7 +206,7 @@ export interface OfferCategoryResponse {
      * @type {CategoryNameEnum}
      * @memberof OfferCategoryResponse
      */
-    name: CategoryNameEnum;
+    name?: CategoryNameEnum;
 }/**
  * 
  * @export
@@ -267,6 +297,12 @@ export interface OfferOffererResponse {
  * @interface OfferResponse
  */
 export interface OfferResponse {
+    /**
+     * 
+     * @type {OfferAccessibilityResponse}
+     * @memberof OfferResponse
+     */
+    accessibility: OfferAccessibilityResponse;
     /**
      * 
      * @type {Array<OfferStockResponse>}
@@ -580,11 +616,11 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary get_offer <GET>
-         * @param {string} offer_id 
+         * @param {number} offer_id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getnativev1offerofferId(offer_id: string, options: any = {}): Promise<FetchArgs> {
+        async getnativev1offerofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
             // verify required parameter 'offer_id' is not null or undefined
             if (offer_id === null || offer_id === undefined) {
                 throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling getnativev1offerofferId.');
@@ -773,11 +809,11 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         /**
          * 
          * @summary get_offer <GET>
-         * @param {string} offer_id 
+         * @param {number} offer_id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getnativev1offerofferId(basePath: string, offer_id: string, options?: any): Promise<OfferResponse> {
+        async getnativev1offerofferId(basePath: string, offer_id: number, options?: any): Promise<OfferResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1offerofferId(offer_id, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
@@ -877,12 +913,12 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @summary get_offer <GET>
-     * @param {string} offer_id 
+     * @param {number} offer_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public async getnativev1offerofferId(offer_id: string, options?: any) {
+    public async getnativev1offerofferId(offer_id: number, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1offerofferId(this.basePath, offer_id, options)
     }
