@@ -25,3 +25,13 @@ export function usePreviousRoute(): Route<string> | null {
     return null
   })
 }
+
+export function useCurrentRoute(): Route<string> | null {
+  return useNavigationState((state) => {
+    const numberOfRoutes = state.routes.length
+    if (numberOfRoutes > 0) {
+      return state.routes[numberOfRoutes - 1]
+    }
+    return null
+  })
+}
