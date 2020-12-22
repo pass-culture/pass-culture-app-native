@@ -2,7 +2,8 @@ import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
+import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
+import { analytics } from 'libs/analytics'
 
 const resumeMock = jest.fn()
 
@@ -38,9 +39,23 @@ describe('QuitSignupModal', () => {
 
     expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
   })
+
+  describe('QuitSignupModal - Analytics', () => {
+    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
+      // @ts-ignore: logCancelSignup is the mock function but is seen as the real function
+      analytics.logCancelSignup.mockClear()
+      const { getByText } = renderQuitSignupModal(true)
+
+      const abandonButton = getByText("Abandonner l'inscription")
+      fireEvent.press(abandonButton)
+
+      expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
+      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Birthday')
+    })
+  })
 })
 
 function renderQuitSignupModal(visible: boolean) {
-  const props = { visible: visible, resume: resumeMock }
+  const props = { visible: visible, resume: resumeMock, signupStep: SignupSteps.Birthday }
   return render(<QuitSignupModal {...props} />)
 }

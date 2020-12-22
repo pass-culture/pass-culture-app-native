@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -14,16 +15,30 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, Typo } from 'ui/theme'
 
+export enum SignupSteps {
+  Email = 'Email',
+  Password = 'Password',
+  Birthday = 'Birthday',
+  CGU = 'CGU',
+}
+
 interface Props {
   visible: boolean
+  signupStep: SignupSteps
   resume: () => void
   testIdSuffix?: string
 }
 
-export const QuitSignupModal: FunctionComponent<Props> = ({ visible, resume, testIdSuffix }) => {
+export const QuitSignupModal: FunctionComponent<Props> = ({
+  visible,
+  resume,
+  testIdSuffix,
+  signupStep,
+}) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   function quitSignup() {
+    analytics.logCancelSignup(signupStep)
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
 

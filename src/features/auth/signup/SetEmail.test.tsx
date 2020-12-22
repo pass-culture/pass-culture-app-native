@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SetEmail } from 'features/auth/signup/SetEmail'
+import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
 describe('<SetEmail />', () => {
@@ -80,6 +81,21 @@ describe('<SetEmail />', () => {
 
       const title = queryByText("Es-tu sûr de vouloir abandonner l'inscription ?")
       expect(title).toBeTruthy()
+    })
+  })
+
+  describe('<SetEmail /> - Analytics', () => {
+    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
+      const { getByTestId, getByText } = renderPage()
+
+      const rightIcon = getByTestId('rightIcon')
+      fireEvent.press(rightIcon)
+
+      const abandonButton = getByText("Abandonner l'inscription")
+      fireEvent.press(abandonButton)
+
+      expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
+      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Email')
     })
   })
 })

@@ -9,7 +9,7 @@ import {
   isPasswordCorrect,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
-import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
+import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
@@ -88,6 +88,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
         testIdSuffix="password-quit-signup"
+        signupStep={SignupSteps.Password}
       />
     </React.Fragment>
   )

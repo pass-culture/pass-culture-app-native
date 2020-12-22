@@ -7,6 +7,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
 describe('SetPassword Page', () => {
@@ -70,6 +71,21 @@ describe('SetPassword Page', () => {
     const dots = getAllByTestId('dot-icon')
     expect(dots.length).toBe(4)
     expect(dots[1].props.fill).toEqual(ColorsEnum.PRIMARY)
+  })
+
+  describe('<SetPassword /> - Analytics', () => {
+    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
+      const { getByTestId, getByText } = renderChoosePassword()
+
+      const rightIcon = getByTestId('rightIcon')
+      fireEvent.press(rightIcon)
+
+      const abandonButton = getByText("Abandonner l'inscription")
+      fireEvent.press(abandonButton)
+
+      expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
+      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')
+    })
   })
 })
 

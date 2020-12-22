@@ -18,6 +18,7 @@ enum AnalyticsEvent {
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
   SHARE_OFFER = 'Share',
   WHY_ANNIVERSARY_CLICKED = 'SignUp-whyAnniversary',
+  CANCEL_SIGNUP = 'SignUp-cancelSignUp',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -70,6 +71,9 @@ const logConsultItinerary = async (offerId: number) =>
 const logClickWhyAnniversary = async () =>
   await firebaseAnalytics.logEvent(AnalyticsEvent.WHY_ANNIVERSARY_CLICKED)
 
+const logCancelSignup = async (pageName: string) =>
+  await firebaseAnalytics.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName })
+
 export const analytics = {
   logScreenView,
   logAllModulesSeen,
@@ -86,4 +90,5 @@ export const analytics = {
   logConsultWholeOffer,
   logConsultWithdrawal,
   logShareOffer,
+  logCancelSignup,
 }

@@ -7,6 +7,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/AuthContext'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ColorsEnum } from 'ui/theme'
 
@@ -97,6 +98,21 @@ describe('AcceptCgu Page', () => {
     const dots = getAllByTestId('dot-icon')
     expect(dots.length).toBe(4)
     expect(dots[3].props.fill).toEqual(ColorsEnum.PRIMARY)
+  })
+
+  describe('<AcceptCgu /> - Analytics', () => {
+    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
+      const { getByTestId, getByText } = renderAcceptCGU()
+
+      const rightIcon = getByTestId('rightIcon')
+      fireEvent.press(rightIcon)
+
+      const abandonButton = getByText("Abandonner l'inscription")
+      fireEvent.press(abandonButton)
+
+      expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
+      expect(analytics.logCancelSignup).toHaveBeenCalledWith('CGU')
+    })
   })
 })
 
