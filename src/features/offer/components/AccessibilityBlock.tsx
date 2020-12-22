@@ -1,17 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer } from '../../../ui/theme'
+import { OfferAccessibilityResponse } from 'api/gen'
+import { getSpacing, Spacer } from 'ui/theme'
+
 import { AccessibilityAtom, HandicapCategory } from '../atoms/AccessibilityAtom'
 
-interface Props {
-  visualDisability?: boolean
-  mentalDisability?: boolean
-  motorDisability?: boolean
-  audioDisability?: boolean
-}
-
-export const AccessibilityBlock: React.FC<Props> = ({
+export const AccessibilityBlock: React.FC<OfferAccessibilityResponse> = ({
   visualDisability = false,
   audioDisability = false,
   mentalDisability = false,
