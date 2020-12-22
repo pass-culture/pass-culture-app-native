@@ -208,7 +208,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       <QuitSignupModal
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
-        testIdSuffix="birthday-information"
+        testIdSuffix="birthday-quit-signup"
       />
     </React.Fragment>
   )

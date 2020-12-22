@@ -112,7 +112,7 @@ export const SetEmail: FunctionComponent = () => {
       <QuitSignupModal
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
-        testIdSuffix="birthday-information"
+        testIdSuffix="email-quit-signup"
       />
     </React.Fragment>
   )
