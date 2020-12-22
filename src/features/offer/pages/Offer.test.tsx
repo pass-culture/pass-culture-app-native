@@ -54,6 +54,23 @@ describe('<Offer />', () => {
     wrapper = await renderOfferPage({ withdrawalDetails: undefined })
     expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
   })
+  it('should show accessibilityDetails', async () => {
+    let wrapper = await renderOfferPage()
+    expect(wrapper.queryByText('Accessibilité')).toBeTruthy()
+
+    wrapper = await renderOfferPage({ accessibility: { visualDisability: false } })
+    expect(wrapper.queryByText('Accessibilité')).toBeTruthy()
+
+    wrapper = await renderOfferPage({ accessibility: {} })
+    expect(wrapper.queryByText('Accessibilité')).toBeFalsy()
+  })
+  it('should show withdrawalDetails', async () => {
+    let wrapper = await renderOfferPage({ withdrawalDetails: 'How to withdraw' })
+    expect(wrapper.queryByText('Modalités de retrait')).toBeTruthy()
+
+    wrapper = await renderOfferPage({ withdrawalDetails: undefined })
+    expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
+  })
   it('animates on scroll', async () => {
     const { getByTestId } = await renderOfferPage()
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
