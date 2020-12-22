@@ -1,6 +1,6 @@
 import { NavigationState } from '@react-navigation/native'
 
-import { logScreenView } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 
 type NavigationRouteType = Exclude<NavigationState['routes'][0]['state'], undefined>
 export function onNavigationStateChange(state: NavigationState | undefined): void {
@@ -8,7 +8,7 @@ export function onNavigationStateChange(state: NavigationState | undefined): voi
     return
   }
   const screenName = getScreenName(state)
-  logScreenView(screenName)
+  analytics.logScreenView(screenName)
 }
 
 export const getScreenName = (state: NavigationRouteType): string => {

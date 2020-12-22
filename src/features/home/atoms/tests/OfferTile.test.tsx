@@ -4,7 +4,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
-import { logConsultOffer } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 
 import { OfferTile } from '../OfferTile'
 
@@ -40,6 +40,6 @@ describe('OfferTile component', () => {
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     const { getByTestId } = render(<OfferTile {...props} />)
     fireEvent.press(getByTestId('offerTileImage'))
-    expect(logConsultOffer).toHaveBeenCalledWith(offerId, 'Module Name')
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith(offerId, 'Module Name')
   })
 })

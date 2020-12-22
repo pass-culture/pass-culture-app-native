@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { logConsultDescriptionDetails } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 
 import { dehumanizeId } from '../../services/dehumanizeId'
 import { OfferSeeMore } from '../OfferSeeMore'
@@ -26,11 +26,11 @@ describe('OfferSeeMore', () => {
       const { getByTestId } = render(<OfferSeeMore id={offerId} longWording />)
 
       fireEvent.press(getByTestId('description-details-button'))
-      expect(logConsultDescriptionDetails).toHaveBeenCalledTimes(1)
-      expect(logConsultDescriptionDetails).toHaveBeenCalledWith(offerId)
+      expect(analytics.logConsultDescriptionDetails).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultDescriptionDetails).toHaveBeenCalledWith(offerId)
 
       fireEvent.press(getByTestId('description-details-button'))
-      expect(logConsultDescriptionDetails).toHaveBeenCalledTimes(2)
+      expect(analytics.logConsultDescriptionDetails).toHaveBeenCalledTimes(2)
     })
   })
 })

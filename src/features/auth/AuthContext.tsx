@@ -3,7 +3,7 @@ import { useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { AccountRequest, SigninRequest, SigninResponse } from 'api/gen'
-import { analytics } from 'libs/analytics'
+import { firebaseAnalytics } from 'libs/analytics'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
 
@@ -35,7 +35,7 @@ export type LoginRoutineMethod = 'fromLogin' | 'fromSignup'
 export async function loginRoutine(response: SigninResponse, method: LoginRoutineMethod) {
   await saveRefreshToken(response.refreshToken)
   await saveAccessToken(response.accessToken)
-  await analytics.logLogin({ method })
+  await firebaseAnalytics.logLogin({ method })
 }
 
 export const AuthWrapper = ({ children }: { children: Element }) => {

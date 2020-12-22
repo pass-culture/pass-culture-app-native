@@ -7,7 +7,7 @@ import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { AlgoliaParametersFields, DisplayParametersFields, Layout } from 'features/home/contentful'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { AlgoliaHit } from 'libs/algolia'
-import { logAllTilesSeen, logClickSeeMore } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { ColorsEnum, Spacer } from 'ui/theme'
@@ -43,7 +43,7 @@ const renderSeeMore = (showSeeMore: boolean, layout: Layout, moduleName: string)
     <Row>
       {/* Gutter: 16px */}
       <Spacer.Row numberOfSpaces={4} />
-      <SeeMore layout={layout} onPress={() => logClickSeeMore(moduleName)} />
+      <SeeMore layout={layout} onPress={() => analytics.logClickSeeMore(moduleName)} />
       {/* Margin: 24px */}
       <Spacer.Row numberOfSpaces={6} />
     </Row>
@@ -90,7 +90,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const logAllTilesSeenOnEndReached = () => {
     if (!hasSeenAllTiles) {
       setHasSeenAllTiles(true)
-      logAllTilesSeen(moduleName, hits.length)
+      analytics.logAllTilesSeen(moduleName, hits.length)
     }
   }
 

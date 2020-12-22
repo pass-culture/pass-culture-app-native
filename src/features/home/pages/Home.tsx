@@ -11,7 +11,7 @@ import { RetryBoundary } from 'features/errors'
 import { useUserProfileInfo } from 'features/home/api'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { logAllModulesSeen } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
@@ -58,7 +58,7 @@ export const HomeComponent: FunctionComponent = function () {
   }: NativeSyntheticEvent<NativeScrollEvent>) => {
     if (!hasSeenAllModules && isCloseToBottom(nativeEvent)) {
       setHasSeenAllModules(true)
-      logAllModulesSeen(displayedModules.length)
+      analytics.logAllModulesSeen(displayedModules.length)
     }
   }
 

@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
-import { logClickWhyAnniversary } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -123,7 +123,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   }
 
   function onPressWhy() {
-    logClickWhyAnniversary()
+    analytics.logClickWhyAnniversary()
     showInformationModal()
   }
 

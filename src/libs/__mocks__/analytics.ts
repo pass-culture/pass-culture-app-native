@@ -2,24 +2,26 @@ import { FirebaseAnalyticsTypes } from '@react-native-firebase/analytics'
 
 type AnalyticsReturn = Partial<FirebaseAnalyticsTypes.Module>
 
-export const analytics: jest.Mocked<AnalyticsReturn> = {
+export const firebaseAnalytics: jest.Mocked<AnalyticsReturn> = {
   logEvent: jest.fn(),
   logLogin: jest.fn(),
   logScreenView: jest.fn(),
 }
 
-export const logScreenView = jest.fn()
-export const logAllModulesSeen = jest.fn()
-export const logAllTilesSeen = jest.fn()
-export const logConsultOffer = jest.fn()
-export const logClickExclusivityBlock = jest.fn()
-export const logClickSeeMore = jest.fn()
-export const logClickBusinessBlock = jest.fn()
-export const logConsultOfferFromDeeplink = jest.fn()
-export const logConsultAccessibility = jest.fn()
-export const logConsultWithdrawal = jest.fn()
-export const logConsultDescriptionDetails = jest.fn()
-export const logConsultItinerary = jest.fn()
-export const logShareOffer = jest.fn()
-export const logConsultWholeOffer = jest.fn()
-export const logClickWhyAnniversary = jest.fn()
+export const analytics = {
+  logScreenView: jest.fn(),
+  logAllModulesSeen: jest.fn(),
+  logAllTilesSeen: jest.fn(),
+  logConsultOffer: jest.fn(),
+  logClickExclusivityBlock: jest.fn(),
+  logClickSeeMore: jest.fn(),
+  logClickBusinessBlock: jest.fn(),
+  logClickWhyAnniversary: jest.fn(),
+  logConsultOfferFromDeeplink: jest.fn(),
+  logConsultAccessibility: jest.fn(),
+  logConsultWithdrawal: jest.fn(),
+  logConsultDescriptionDetails: jest.fn(),
+  logConsultItinerary: jest.fn(),
+  logShareOffer: jest.fn(),
+  logConsultWholeOffer: jest.fn(),
+}

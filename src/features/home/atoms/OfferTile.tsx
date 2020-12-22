@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { logConsultOffer } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -34,7 +34,7 @@ export const OfferTile = (props: OfferTileProps) => {
 
   function handlePressOffer() {
     navigation.navigate('Offer', { id: offer.offerId })
-    logConsultOffer(offer.offerId, moduleName)
+    analytics.logConsultOffer(offer.offerId, moduleName)
   }
 
   return (

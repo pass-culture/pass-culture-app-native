@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { logConsultItinerary } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
@@ -29,7 +29,7 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerPosition, off
 
   const handleOpenNavigation = () => {
     if (!lat || !lng) return
-    logConsultItinerary(offerId)
+    analytics.logConsultItinerary(offerId)
     navigateTo({ latitude: lat, longitude: lng })
   }
 

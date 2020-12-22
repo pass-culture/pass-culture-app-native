@@ -8,7 +8,7 @@ import { IdeaIcon } from 'features/home/assets/IdeaIcon'
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
 import { openExternalUrl } from 'features/navigation/helpers'
-import { logClickBusinessBlock } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Typo, ColorsEnum, getSpacing, MARGIN_DP, LENGTH_S, RATIO_BUSINESS, Spacer } from 'ui/theme'
@@ -25,7 +25,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
 
   const openUrl = (finalUrl: string) => {
     setShouldRedirect(false)
-    logClickBusinessBlock(title)
+    analytics.logClickBusinessBlock(title)
     openExternalUrl(finalUrl)
   }
 

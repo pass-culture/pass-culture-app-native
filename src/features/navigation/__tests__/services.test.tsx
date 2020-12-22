@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { act, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { logScreenView } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { flushAllPromises } from 'tests/utils'
 
 import { state1, state2, state3 } from '../mocks/navigationStateSnapshots'
@@ -39,16 +39,16 @@ describe('onNavigationStateChange()', () => {
       await flushAllPromises()
     })
 
-    expect(logScreenView).toBeCalledTimes(1)
-    expect(logScreenView).toHaveBeenCalledWith('Screen2')
+    expect(analytics.logScreenView).toBeCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen2')
 
     await act(async () => {
       navigate('Screen1')
       await flushAllPromises()
     })
 
-    expect(logScreenView).toBeCalledTimes(2)
-    expect(logScreenView).toHaveBeenCalledWith('Screen1')
+    expect(analytics.logScreenView).toBeCalledTimes(2)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen1')
     unmount()
   })
   it('should log screen name when navigating to a nested stack navigator', async () => {
@@ -59,32 +59,32 @@ describe('onNavigationStateChange()', () => {
       await flushAllPromises()
     })
 
-    expect(logScreenView).toBeCalledTimes(1)
-    expect(logScreenView).toHaveBeenCalledWith('Screen3')
+    expect(analytics.logScreenView).toBeCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen3')
 
     await act(async () => {
       navigate('Screen4')
       await flushAllPromises()
     })
 
-    expect(logScreenView).toBeCalledTimes(2)
-    expect(logScreenView).toHaveBeenCalledWith('Screen4')
+    expect(analytics.logScreenView).toBeCalledTimes(2)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen4')
 
     await act(async () => {
       navigate('NestedTabNavigator')
       await flushAllPromises()
     })
 
-    expect(logScreenView).toBeCalledTimes(3)
-    expect(logScreenView).toHaveBeenCalledWith('Screen5')
+    expect(analytics.logScreenView).toBeCalledTimes(3)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen5')
 
     await act(async () => {
       navigate('Screen6')
       await flushAllPromises()
     })
 
-    expect(logScreenView).toBeCalledTimes(4)
-    expect(logScreenView).toHaveBeenCalledWith('Screen6')
+    expect(analytics.logScreenView).toBeCalledTimes(4)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('Screen6')
 
     unmount()
   })

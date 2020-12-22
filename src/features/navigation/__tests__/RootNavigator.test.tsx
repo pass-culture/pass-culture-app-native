@@ -2,7 +2,7 @@ import { render } from '@testing-library/react-native'
 import React from 'react'
 import { act } from 'react-test-renderer'
 
-import { logScreenView } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
@@ -23,8 +23,8 @@ describe('RootNavigator', () => {
     await act(async () => {
       await flushAllPromises()
     })
-    expect(logScreenView).toHaveBeenCalledTimes(1)
-    expect(logScreenView).toHaveBeenCalledWith('Home')
+    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('Home')
     unmount()
   })
 })
