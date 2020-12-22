@@ -142,6 +142,19 @@ describe('SetBirthday Page', () => {
 
       expect(analytics.logClickWhyAnniversary).toHaveBeenCalledTimes(1)
     })
+
+    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
+      const { getByTestId, getByText } = renderSetBirthday()
+
+      const rightIcon = getByTestId('rightIcon')
+      fireEvent.press(rightIcon)
+
+      const abandonButton = getByText("Abandonner l'inscription")
+      fireEvent.press(abandonButton)
+
+      expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
+      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Birthday')
+    })
   })
 })
 

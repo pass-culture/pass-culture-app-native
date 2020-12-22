@@ -5,7 +5,7 @@ import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
+import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
@@ -209,6 +209,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
         testIdSuffix="birthday-quit-signup"
+        signupStep={SignupSteps.Birthday}
       />
     </React.Fragment>
   )

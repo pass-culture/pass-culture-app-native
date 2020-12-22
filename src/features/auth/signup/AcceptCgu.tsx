@@ -5,7 +5,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { useSignUp } from 'features/auth/AuthContext'
-import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
+import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
@@ -106,6 +106,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
         testIdSuffix="cgu-quit-signup"
+        signupStep={SignupSteps.CGU}
       />
     </React.Fragment>
   )

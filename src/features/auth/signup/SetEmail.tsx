@@ -4,7 +4,7 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { QuitSignupModal } from 'features/auth/signup/QuitSignupModal'
+import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -113,6 +113,7 @@ export const SetEmail: FunctionComponent = () => {
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
         testIdSuffix="email-quit-signup"
+        signupStep={SignupSteps.Email}
       />
     </React.Fragment>
   )
