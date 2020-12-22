@@ -1,35 +1,83 @@
-import { StackScreenProps } from '@react-navigation/stack'
-import { render } from '@testing-library/react-native'
+import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import { act, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
+import { Text } from 'react-native'
 
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 
-const navigationProps = {
-  route: {
-    params: {
-      email: 'john@wick.com',
-      licenceToken: 'XxLicenceTokenxX',
-    },
-  },
-} as StackScreenProps<RootStackParamList, 'IdCheck'>
+jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
 jest.mock('ui/components/LoadingPage', () => ({
   LoadingPage: () => 'LoadingPageMock',
 }))
 
 describe('<IdCheck />', () => {
-  it('should render correctly', () => {
-    const instance = render(<IdCheck {...navigationProps} />)
-    expect(instance).toMatchSnapshot()
+  it('should render correctly', async () => {
+    const instance = renderIdCheckWithNavigation()
+    await waitFor(() => {
+      expect(instance).toMatchSnapshot()
+    })
   })
 
-  it('should display web page with correct url', () => {
-    const { getByTestId } = render(<IdCheck {...navigationProps} />)
+  it('should display web page with correct url', async () => {
+    const { getByTestId } = renderIdCheckWithNavigation()
     const webview = getByTestId('idcheck-webview')
-    expect(webview.props.source.uri).toEqual(
-      env.ID_CHECK_URL + '/?email=john@wick.com&licence_token=XxLicenceTokenxX'
-    )
+
+    await waitFor(() => {
+      expect(webview.props.source.uri).toEqual(
+        env.ID_CHECK_URL + '/?email=john@wick.com&licence_token=XxLicenceTokenxX'
+      )
+    })
+  })
+
+  it('should not display webview when navigating to another screen', async () => {
+    const { queryByTestId, getByText } = renderIdCheckWithNavigation()
+    act(() => {
+      navigate('NotIdCheck')
+    })
+
+    await waitFor(() => {
+      const webview = queryByTestId('idcheck-webview')
+      expect(webview).toBeFalsy()
+
+      const notWebviewText = getByText('NotIdCheck Page')
+      expect(notWebviewText).toBeTruthy()
+    })
   })
 })
+
+type StackParamList = {
+  IdCheck: RootStackParamList['IdCheck']
+  NotIdCheck: undefined
+}
+
+const Stack = createStackNavigator<StackParamList>()
+
+const navigationRef = React.createRef<NavigationContainerRef>()
+
+function navigate(name: string) {
+  navigationRef.current?.navigate(name)
+}
+
+const NotIdCheck = () => <Text>NotIdCheck Page</Text>
+
+function renderIdCheckWithNavigation() {
+  return render(
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator initialRouteName="IdCheck">
+        <Stack.Screen
+          name="IdCheck"
+          component={IdCheck}
+          initialParams={{
+            email: 'john@wick.com',
+            licenceToken: 'XxLicenceTokenxX',
+          }}
+        />
+        <Stack.Screen name="NotIdCheck" component={NotIdCheck} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
