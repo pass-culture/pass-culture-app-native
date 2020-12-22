@@ -85,7 +85,7 @@ describe('<SetEmail />', () => {
   })
 
   describe('<SetEmail /> - Analytics', () => {
-    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
+    it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
       const { getByTestId, getByText } = renderPage()
 
       const rightIcon = getByTestId('rightIcon')

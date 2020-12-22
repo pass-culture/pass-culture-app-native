@@ -12,6 +12,10 @@ import { ColorsEnum } from 'ui/theme'
 import { SetBirthday } from './SetBirthday'
 
 describe('SetBirthday Page', () => {
+  beforeEach(() => {
+    // @ts-ignore: logClickWhyAnniversary is the mock function but is seen as the real function
+    analytics.logClickWhyAnniversary.mockClear()
+  })
   it('should render properly', () => {
     const { toJSON } = renderSetBirthday()
     expect(toJSON()).toMatchSnapshot()
@@ -132,9 +136,7 @@ describe('SetBirthday Page', () => {
   })
 
   describe('SetBirthday - analytics', () => {
-    it('should log Signup-whyAnniversary when clicking "Pourquoi" link', () => {
-      // @ts-ignore: logClickWhyAnniversary is the mock function but is seen as the real function
-      analytics.logClickWhyAnniversary.mockClear()
+    it('should log WhyAnniversary when clicking "Pourquoi" link', () => {
       const { getByTestId } = renderSetBirthday()
 
       const whyBirthdayLink = getByTestId('button-title-why-link')
@@ -143,7 +145,7 @@ describe('SetBirthday Page', () => {
       expect(analytics.logClickWhyAnniversary).toHaveBeenCalledTimes(1)
     })
 
-    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
+    it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
       const { getByTestId, getByText } = renderSetBirthday()
 
       const rightIcon = getByTestId('rightIcon')

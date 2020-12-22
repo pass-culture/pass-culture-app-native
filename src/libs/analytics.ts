@@ -2,6 +2,7 @@ import firebaseAnalyticsModule from '@react-native-firebase/analytics'
 
 export const firebaseAnalytics = firebaseAnalyticsModule()
 
+// Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores
 enum AnalyticsEvent {
   SCREEN_VIEW = 'screen_view',
   ALL_MODULES_SEEN = 'AllModulesSeen',
@@ -17,8 +18,8 @@ enum AnalyticsEvent {
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
   SHARE_OFFER = 'Share',
-  WHY_ANNIVERSARY_CLICKED = 'SignUp-whyAnniversary',
-  CANCEL_SIGNUP = 'SignUp-cancelSignUp',
+  WHY_ANNIVERSARY_CLICKED = 'WhyAnniversary',
+  CANCEL_SIGNUP = 'CancelSignup',
 }
 
 const logScreenView = async (screenName: string) => {

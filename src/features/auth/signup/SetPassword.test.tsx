@@ -74,7 +74,7 @@ describe('SetPassword Page', () => {
   })
 
   describe('<SetPassword /> - Analytics', () => {
-    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
+    it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
       const { getByTestId, getByText } = renderChoosePassword()
 
       const rightIcon = getByTestId('rightIcon')

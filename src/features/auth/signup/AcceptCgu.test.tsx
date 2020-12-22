@@ -101,7 +101,7 @@ describe('AcceptCgu Page', () => {
   })
 
   describe('<AcceptCgu /> - Analytics', () => {
-    it('should log SignUp-cancelSignUp when clicking on "Abandonner l\'inscription"', () => {
+    it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
       const { getByTestId, getByText } = renderAcceptCGU()
 
       const rightIcon = getByTestId('rightIcon')
