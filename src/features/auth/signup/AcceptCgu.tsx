@@ -105,7 +105,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
       <QuitSignupModal
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
-        testIdSuffix="birthday-information"
+        testIdSuffix="cgu-quit-signup"
       />
     </React.Fragment>
   )

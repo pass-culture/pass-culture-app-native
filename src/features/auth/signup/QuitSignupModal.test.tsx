@@ -33,8 +33,8 @@ describe('QuitSignupModal', () => {
   it('should go back to homepage when clicking on "Abandonner l\'inscription"', () => {
     const { getByText } = renderQuitSignupModal(true)
 
-    const resumeButton = getByText("Abandonner l'inscription")
-    fireEvent.press(resumeButton)
+    const abandonButton = getByText("Abandonner l'inscription")
+    fireEvent.press(abandonButton)
 
     expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
   })

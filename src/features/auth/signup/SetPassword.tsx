@@ -87,7 +87,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
       <QuitSignupModal
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
-        testIdSuffix="birthday-information"
+        testIdSuffix="password-quit-signup"
       />
     </React.Fragment>
   )
