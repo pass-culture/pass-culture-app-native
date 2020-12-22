@@ -8,14 +8,18 @@ import { Coordinates } from 'api/gen'
 import { _ } from 'libs/i18n'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
 
+const appEnumTypeGuard = (app: string): app is AppEnum =>
+  Object.values(AppEnum).includes(app as AppEnum)
+
 export const useItinerary = () => {
   const [availableApps, setAvailableApps] = useState<AppEnum[] | undefined>(undefined)
   const getApps = async () => {
     try {
       const appsAvailability = await LN.getAvailableApps()
-
-      const appsKeys: AppEnum[] = Object.keys(appsAvailability) as AppEnum[]
-      const apps = appsKeys.filter((key) => appsAvailability[key])
+      const appsKeys = Object.keys(appsAvailability)
+      const apps = appsKeys.filter(
+        (appKey): appKey is AppEnum => appEnumTypeGuard(appKey) && appsAvailability[appKey]
+      )
       setAvailableApps(apps)
     } catch (e: unknown) {
       setAvailableApps([])
@@ -40,7 +44,8 @@ export const useItinerary = () => {
       availableApps.map((app) => ({
         text: snakeCaseToUppercaseFirstLetter(app),
         onPress: () => navigateToWithApp(coordinates, app),
-      }))
+      })),
+      { cancelable: true }
     )
   }
   useEffect(() => {

@@ -44,7 +44,8 @@ describe('useItinerary', () => {
       [
         { text: 'Sygic', onPress: expect.any(Function) },
         { text: 'Waze', onPress: expect.any(Function) },
-      ]
+      ],
+      { cancelable: true }
     )
 
     // @ts-ignore: precedent expect garanties what follows
@@ -54,5 +55,19 @@ describe('useItinerary', () => {
     // @ts-ignore: same reason
     wazeAlertButton.onPress()
     expect(navigate).toHaveBeenCalledWith([48.85837, 2.294481], { app: 'waze' })
+  })
+  it('should filter out not explicitely compatible apps', async () => {
+    getAvailableApps.mockImplementationOnce(() =>
+      Promise.resolve({
+        sygic: true,
+        google_maps: false,
+        waze: true,
+        citymapper: false,
+        'com.somenavapp.pro': true,
+      })
+    )
+    const { result, waitFor } = renderHook(useItinerary)
+    await waitFor(() => !!result.current.availableApps)
+    expect(result.current.availableApps).toStrictEqual(['sygic', 'waze'])
   })
 })
