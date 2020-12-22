@@ -38,6 +38,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   afterEach(() => {
     navigate.mockRestore()
+    mockDisplayInfosSnackBar.mockClear()
   })
 
   describe('when timestamp is NOT expired', () => {
@@ -61,6 +62,10 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
+        expect(mockDisplayInfosSnackBar).toHaveBeenCalledTimes(1)
+        expect(mockDisplayInfosSnackBar).toHaveBeenCalledWith({
+          message: 'Ton compte est maintenant activé !',
+        })
         expect(navigate).toBeCalledTimes(1)
         expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
       })

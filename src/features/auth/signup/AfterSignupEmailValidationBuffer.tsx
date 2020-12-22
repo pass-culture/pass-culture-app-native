@@ -47,6 +47,9 @@ export function AfterSignupEmailValidationBuffer() {
     if (response.idCheckToken) {
       delayedNavigate('IdCheck', { email: params.email, licenceToken: response.idCheckToken })
     } else {
+      displayInfosSnackBar({
+        message: _(t`Ton compte est maintenant activé !`),
+      })
       delayedNavigate('Home', { shouldDisplayLoginModal: false })
     }
   }
