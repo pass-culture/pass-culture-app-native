@@ -292,7 +292,9 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                       }
                       style={
                         Array [
-                          Object {},
+                          Object {
+                            "overflow": "visible",
+                          },
                         ]
                       }
                       testID="offer-container"
@@ -3600,7 +3602,9 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                       }
                       style={
                         Array [
-                          Object {},
+                          Object {
+                            "overflow": "visible",
+                          },
                         ]
                       }
                       testID="offer-container"

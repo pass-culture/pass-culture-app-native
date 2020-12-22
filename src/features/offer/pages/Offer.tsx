@@ -152,7 +152,7 @@ const Section = ({ visible, children, margin = false }: SectionProps) => {
   )
 }
 
-const Container = styled.ScrollView({})
+const Container = styled.ScrollView({ overflow: 'visible' })
 const OfferTitle = styled(Typo.Title3)({ textAlign: 'center' })
 const SectionTitle = styled(Typo.Title4)({ paddingVertical: getSpacing(6) })
 const SectionBody = styled(Typo.Body)({ marginTop: -getSpacing(2), paddingBottom: getSpacing(6) })
