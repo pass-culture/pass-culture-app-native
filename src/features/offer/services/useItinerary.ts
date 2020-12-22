@@ -8,7 +8,7 @@ import { Coordinates } from 'api/gen'
 import { _ } from 'libs/i18n'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
 
-import { parseOpenStreetMapUrl } from '../../../libs/parsers/parseOpenStreetMapUrl'
+import { getOpenStreetMapUrl } from '../../../libs/parsers/getOpenStreetMapUrl'
 
 const appEnumTypeGuard = (app: string): app is AppEnum =>
   Object.values(AppEnum).includes(app as AppEnum)
@@ -37,7 +37,7 @@ export const useItinerary = () => {
   const navigateTo = (coordinates: Required<Coordinates>) => {
     if (availableApps === undefined) return
     if (availableApps.length === 0) {
-      const openStreetMapUrl = parseOpenStreetMapUrl(coordinates)
+      const openStreetMapUrl = getOpenStreetMapUrl(coordinates)
       if (Linking.canOpenURL(openStreetMapUrl)) Linking.openURL(openStreetMapUrl)
     }
     if (availableApps.length === 1) {
