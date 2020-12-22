@@ -5,17 +5,17 @@ import { getSpacing, Spacer } from '../../../ui/theme'
 import { AccessibilityAtom, HandicapCategory } from '../atoms/AccessibilityAtom'
 
 interface Props {
-  visualDisability: boolean
-  mentalDisability: boolean
-  motorDisability: boolean
-  audioDisability: boolean
+  visualDisability?: boolean
+  mentalDisability?: boolean
+  motorDisability?: boolean
+  audioDisability?: boolean
 }
 
 export const AccessibilityBlock: React.FC<Props> = ({
-  visualDisability,
-  audioDisability,
-  mentalDisability,
-  motorDisability,
+  visualDisability = false,
+  audioDisability = false,
+  mentalDisability = false,
+  motorDisability = false,
 }) => {
   return (
     <Row>

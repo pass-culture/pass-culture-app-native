@@ -28,14 +28,6 @@ import {
   OfferPartialDescription,
 } from '../components'
 
-// TODO: remove and use API data in PC-5804
-const tmpHandicapAccessibilityDate = {
-  visualDisability: true,
-  mentalDisability: false,
-  motorDisability: true,
-  audioDisability: false,
-}
-
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 const OfferComponent: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Offer'>>()
@@ -43,21 +35,22 @@ const OfferComponent: FunctionComponent = () => {
   const headerScroll = useRef(new Animated.Value(0)).current
   const hasSeenAllPage = useRef<boolean>(false)
 
+  if (!offerResponse) return <React.Fragment></React.Fragment>
+  const { accessibility, category, venue } = offerResponse
+
   const offerPosition = {
-    lat: offerResponse?.venue?.coordinates?.latitude,
-    lng: offerResponse?.venue?.coordinates?.longitude,
+    lat: venue?.coordinates?.latitude,
+    lng: venue?.coordinates?.longitude,
   }
 
-  if (!offerResponse) return <React.Fragment></React.Fragment>
-  const digitalLocationName = offerResponse.venue.offerer.name
-  const locationName = offerResponse.venue.publicName || offerResponse.venue.name
+  const digitalLocationName = venue.offerer.name
+  const locationName = venue.publicName || venue.name
   const dates = offerResponse.bookableStocks.reduce<Date[]>(
     (accumulator, stock) =>
       stock.beginningDatetime ? [...accumulator, stock.beginningDatetime] : accumulator,
     []
   )
-  const shouldDisplayWhenBlock =
-    offerResponse.category.categoryType === CategoryType.Event && dates.length > 0
+  const shouldDisplayWhenBlock = category.categoryType === CategoryType.Event && dates.length > 0
   const headerTransition = headerScroll.interpolate({
     inputRange: [0, HEIGHT_END_OF_TRANSITION],
     outputRange: [0, 1],
@@ -82,16 +75,12 @@ const OfferComponent: FunctionComponent = () => {
           listener: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) =>
             checkIfAllPageHaveBeenSeen({ nativeEvent }),
         })}>
-        <OfferHero category={offerResponse.category.name} imageUrl={offerResponse.imageUrl || ''} />
+        <OfferHero category={category.name} imageUrl={offerResponse.imageUrl || ''} />
         <Spacer.Column numberOfSpaces={4} />
         {offerResponse.isDigital ? (
           <LocationCaption locationName={digitalLocationName} where={_(t`en ligne`)} isDigital />
         ) : (
-          <LocationCaption
-            locationName={locationName}
-            where={offerResponse.venue.city}
-            isDigital={false}
-          />
+          <LocationCaption locationName={locationName} where={venue.city} isDigital={false} />
         )}
         <Spacer.Column numberOfSpaces={2} />
         <MarginContainer>
@@ -103,8 +92,8 @@ const OfferComponent: FunctionComponent = () => {
         <OfferIconCaptions
           isDuo={offerResponse.isDuo}
           bookableStocks={offerResponse.bookableStocks}
-          category={offerResponse.category.name}
-          label={offerResponse.category.label}
+          category={category.name || null}
+          label={category.label}
         />
         <Spacer.Column numberOfSpaces={6} />
         <OfferPartialDescription description={offerResponse.description || ''} id={params.id} />
@@ -133,16 +122,11 @@ const OfferComponent: FunctionComponent = () => {
           </AccordionItem>
         </Section>
 
-        <Section visible={Object.values(tmpHandicapAccessibilityDate).some(Boolean)}>
+        <Section visible={Object.values(accessibility).some(Boolean)}>
           <AccordionItem
             title={_(t`Accessibilité`)}
             onOpenOnce={() => analytics.logConsultAccessibility(offerResponse.id)}>
-            <AccessibilityBlock
-              visualDisability={tmpHandicapAccessibilityDate.visualDisability}
-              audioDisability={tmpHandicapAccessibilityDate.audioDisability}
-              mentalDisability={tmpHandicapAccessibilityDate.mentalDisability}
-              motorDisability={tmpHandicapAccessibilityDate.motorDisability}
-            />
+            <AccessibilityBlock {...accessibility} />
           </AccordionItem>
         </Section>
 

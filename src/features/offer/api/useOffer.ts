@@ -39,8 +39,8 @@ const adaptOfferResponse = (offerApiResponse: OfferResponse): OfferAdaptedRespon
   ),
 })
 
-const getOfferById = async (offerId: string) => {
-  const offerApiResponse = await api.getnativev1offerofferId(offerId.toString())
+const getOfferById = async (offerId: number) => {
+  const offerApiResponse = await api.getnativev1offerofferId(offerId)
   return adaptOfferResponse(offerApiResponse)
 }
 
@@ -48,7 +48,7 @@ export const useOffer = ({ offerId }: UseOfferInterface) => {
   return useQuery<OfferAdaptedResponse>(
     ['offer', offerId],
     //@ts-ignore: Query is enabled only if offerId is truthy
-    () => getOfferById(offerId.toString()),
-    { enabled: !!offerId }
+    () => getOfferById(offerId),
+    { enabled: typeof offerId === 'number' }
   )
 }
