@@ -1692,34 +1692,36 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                         ]
                                       }
-                                      testID="validTestId"
+                                      testID="invalidTestId"
                                       vbHeight={38}
                                       vbWidth={38}
                                       width={32}
                                     >
                                       <RNSVGGroup>
-                                        <RNSVGCircle
-                                          cx={19}
-                                          cy={19}
-                                          fill={4294967295}
-                                          propList={
-                                            Array [
-                                              "fill",
-                                            ]
-                                          }
-                                          r={10}
-                                        />
-                                        <RNSVGPath
-                                          d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm7.005 7.19a.99.99 0 00-1.399.055l-7.315 7.922-3.106-3.36-.078-.075a.99.99 0 00-1.375 1.419l3.833 4.146.082.079a.99.99 0 001.372-.08l8.041-8.708.07-.083a.99.99 0 00-.125-1.315z"
-                                          fill={4279601231}
-                                          fillRule={0}
-                                          propList={
-                                            Array [
-                                              "fill",
-                                              "fillRule",
-                                            ]
-                                          }
-                                        />
+                                        <RNSVGGroup>
+                                          <RNSVGCircle
+                                            cx={19}
+                                            cy={19}
+                                            fill={4294967295}
+                                            propList={
+                                              Array [
+                                                "fill",
+                                              ]
+                                            }
+                                            r={10}
+                                          />
+                                          <RNSVGPath
+                                            d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm5.023 6a.99.99 0 00-1.398.06L19 17.14l-3.625-3.954a.99.99 0 00-1.528 1.254l.07.084 3.74 4.081-3.74 4.081-.07.084a.99.99 0 001.528 1.254L19 20.068l3.625 3.955a.989.989 0 001.528-1.254l-.07-.084-3.741-4.081 3.742-4.081.068-.084a.987.987 0 00-.13-1.314z"
+                                            fill={4284637794}
+                                            fillRule={1}
+                                            propList={
+                                              Array [
+                                                "fill",
+                                                "fillRule",
+                                              ]
+                                            }
+                                          />
+                                        </RNSVGGroup>
                                       </RNSVGGroup>
                                     </RNSVGSvgView>
                                   </View>
@@ -1893,36 +1895,34 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                         ]
                                       }
-                                      testID="invalidTestId"
+                                      testID="validTestId"
                                       vbHeight={38}
                                       vbWidth={38}
                                       width={32}
                                     >
                                       <RNSVGGroup>
-                                        <RNSVGGroup>
-                                          <RNSVGCircle
-                                            cx={19}
-                                            cy={19}
-                                            fill={4294967295}
-                                            propList={
-                                              Array [
-                                                "fill",
-                                              ]
-                                            }
-                                            r={10}
-                                          />
-                                          <RNSVGPath
-                                            d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm5.023 6a.99.99 0 00-1.398.06L19 17.14l-3.625-3.954a.99.99 0 00-1.528 1.254l.07.084 3.74 4.081-3.74 4.081-.07.084a.99.99 0 001.528 1.254L19 20.068l3.625 3.955a.989.989 0 001.528-1.254l-.07-.084-3.741-4.081 3.742-4.081.068-.084a.987.987 0 00-.13-1.314z"
-                                            fill={4284637794}
-                                            fillRule={1}
-                                            propList={
-                                              Array [
-                                                "fill",
-                                                "fillRule",
-                                              ]
-                                            }
-                                          />
-                                        </RNSVGGroup>
+                                        <RNSVGCircle
+                                          cx={19}
+                                          cy={19}
+                                          fill={4294967295}
+                                          propList={
+                                            Array [
+                                              "fill",
+                                            ]
+                                          }
+                                          r={10}
+                                        />
+                                        <RNSVGPath
+                                          d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm7.005 7.19a.99.99 0 00-1.399.055l-7.315 7.922-3.106-3.36-.078-.075a.99.99 0 00-1.375 1.419l3.833 4.146.082.079a.99.99 0 001.372-.08l8.041-8.708.07-.083a.99.99 0 00-.125-1.315z"
+                                          fill={4279601231}
+                                          fillRule={0}
+                                          propList={
+                                            Array [
+                                              "fill",
+                                              "fillRule",
+                                            ]
+                                          }
+                                        />
                                       </RNSVGGroup>
                                     </RNSVGSvgView>
                                   </View>
@@ -2096,34 +2096,36 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                         ]
                                       }
-                                      testID="validTestId"
+                                      testID="invalidTestId"
                                       vbHeight={38}
                                       vbWidth={38}
                                       width={32}
                                     >
                                       <RNSVGGroup>
-                                        <RNSVGCircle
-                                          cx={19}
-                                          cy={19}
-                                          fill={4294967295}
-                                          propList={
-                                            Array [
-                                              "fill",
-                                            ]
-                                          }
-                                          r={10}
-                                        />
-                                        <RNSVGPath
-                                          d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm7.005 7.19a.99.99 0 00-1.399.055l-7.315 7.922-3.106-3.36-.078-.075a.99.99 0 00-1.375 1.419l3.833 4.146.082.079a.99.99 0 001.372-.08l8.041-8.708.07-.083a.99.99 0 00-.125-1.315z"
-                                          fill={4279601231}
-                                          fillRule={0}
-                                          propList={
-                                            Array [
-                                              "fill",
-                                              "fillRule",
-                                            ]
-                                          }
-                                        />
+                                        <RNSVGGroup>
+                                          <RNSVGCircle
+                                            cx={19}
+                                            cy={19}
+                                            fill={4294967295}
+                                            propList={
+                                              Array [
+                                                "fill",
+                                              ]
+                                            }
+                                            r={10}
+                                          />
+                                          <RNSVGPath
+                                            d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm5.023 6a.99.99 0 00-1.398.06L19 17.14l-3.625-3.954a.99.99 0 00-1.528 1.254l.07.084 3.74 4.081-3.74 4.081-.07.084a.99.99 0 001.528 1.254L19 20.068l3.625 3.955a.989.989 0 001.528-1.254l-.07-.084-3.741-4.081 3.742-4.081.068-.084a.987.987 0 00-.13-1.314z"
+                                            fill={4284637794}
+                                            fillRule={1}
+                                            propList={
+                                              Array [
+                                                "fill",
+                                                "fillRule",
+                                              ]
+                                            }
+                                          />
+                                        </RNSVGGroup>
                                       </RNSVGGroup>
                                     </RNSVGSvgView>
                                   </View>
@@ -2297,36 +2299,34 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                         ]
                                       }
-                                      testID="invalidTestId"
+                                      testID="validTestId"
                                       vbHeight={38}
                                       vbWidth={38}
                                       width={32}
                                     >
                                       <RNSVGGroup>
-                                        <RNSVGGroup>
-                                          <RNSVGCircle
-                                            cx={19}
-                                            cy={19}
-                                            fill={4294967295}
-                                            propList={
-                                              Array [
-                                                "fill",
-                                              ]
-                                            }
-                                            r={10}
-                                          />
-                                          <RNSVGPath
-                                            d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm5.023 6a.99.99 0 00-1.398.06L19 17.14l-3.625-3.954a.99.99 0 00-1.528 1.254l.07.084 3.74 4.081-3.74 4.081-.07.084a.99.99 0 001.528 1.254L19 20.068l3.625 3.955a.989.989 0 001.528-1.254l-.07-.084-3.741-4.081 3.742-4.081.068-.084a.987.987 0 00-.13-1.314z"
-                                            fill={4284637794}
-                                            fillRule={1}
-                                            propList={
-                                              Array [
-                                                "fill",
-                                                "fillRule",
-                                              ]
-                                            }
-                                          />
-                                        </RNSVGGroup>
+                                        <RNSVGCircle
+                                          cx={19}
+                                          cy={19}
+                                          fill={4294967295}
+                                          propList={
+                                            Array [
+                                              "fill",
+                                            ]
+                                          }
+                                          r={10}
+                                        />
+                                        <RNSVGPath
+                                          d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm7.005 7.19a.99.99 0 00-1.399.055l-7.315 7.922-3.106-3.36-.078-.075a.99.99 0 00-1.375 1.419l3.833 4.146.082.079a.99.99 0 001.372-.08l8.041-8.708.07-.083a.99.99 0 00-.125-1.315z"
+                                          fill={4279601231}
+                                          fillRule={0}
+                                          propList={
+                                            Array [
+                                              "fill",
+                                              "fillRule",
+                                            ]
+                                          }
+                                        />
                                       </RNSVGGroup>
                                     </RNSVGSvgView>
                                   </View>
@@ -5356,34 +5356,36 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                         ]
                                       }
-                                      testID="validTestId"
+                                      testID="invalidTestId"
                                       vbHeight={38}
                                       vbWidth={38}
                                       width={32}
                                     >
                                       <RNSVGGroup>
-                                        <RNSVGCircle
-                                          cx={19}
-                                          cy={19}
-                                          fill={4294967295}
-                                          propList={
-                                            Array [
-                                              "fill",
-                                            ]
-                                          }
-                                          r={10}
-                                        />
-                                        <RNSVGPath
-                                          d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm7.005 7.19a.99.99 0 00-1.399.055l-7.315 7.922-3.106-3.36-.078-.075a.99.99 0 00-1.375 1.419l3.833 4.146.082.079a.99.99 0 001.372-.08l8.041-8.708.07-.083a.99.99 0 00-.125-1.315z"
-                                          fill={4279601231}
-                                          fillRule={0}
-                                          propList={
-                                            Array [
-                                              "fill",
-                                              "fillRule",
-                                            ]
-                                          }
-                                        />
+                                        <RNSVGGroup>
+                                          <RNSVGCircle
+                                            cx={19}
+                                            cy={19}
+                                            fill={4294967295}
+                                            propList={
+                                              Array [
+                                                "fill",
+                                              ]
+                                            }
+                                            r={10}
+                                          />
+                                          <RNSVGPath
+                                            d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm5.023 6a.99.99 0 00-1.398.06L19 17.14l-3.625-3.954a.99.99 0 00-1.528 1.254l.07.084 3.74 4.081-3.74 4.081-.07.084a.99.99 0 001.528 1.254L19 20.068l3.625 3.955a.989.989 0 001.528-1.254l-.07-.084-3.741-4.081 3.742-4.081.068-.084a.987.987 0 00-.13-1.314z"
+                                            fill={4284637794}
+                                            fillRule={1}
+                                            propList={
+                                              Array [
+                                                "fill",
+                                                "fillRule",
+                                              ]
+                                            }
+                                          />
+                                        </RNSVGGroup>
                                       </RNSVGGroup>
                                     </RNSVGSvgView>
                                   </View>
@@ -5557,36 +5559,34 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                         ]
                                       }
-                                      testID="invalidTestId"
+                                      testID="validTestId"
                                       vbHeight={38}
                                       vbWidth={38}
                                       width={32}
                                     >
                                       <RNSVGGroup>
-                                        <RNSVGGroup>
-                                          <RNSVGCircle
-                                            cx={19}
-                                            cy={19}
-                                            fill={4294967295}
-                                            propList={
-                                              Array [
-                                                "fill",
-                                              ]
-                                            }
-                                            r={10}
-                                          />
-                                          <RNSVGPath
-                                            d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm5.023 6a.99.99 0 00-1.398.06L19 17.14l-3.625-3.954a.99.99 0 00-1.528 1.254l.07.084 3.74 4.081-3.74 4.081-.07.084a.99.99 0 001.528 1.254L19 20.068l3.625 3.955a.989.989 0 001.528-1.254l-.07-.084-3.741-4.081 3.742-4.081.068-.084a.987.987 0 00-.13-1.314z"
-                                            fill={4284637794}
-                                            fillRule={1}
-                                            propList={
-                                              Array [
-                                                "fill",
-                                                "fillRule",
-                                              ]
-                                            }
-                                          />
-                                        </RNSVGGroup>
+                                        <RNSVGCircle
+                                          cx={19}
+                                          cy={19}
+                                          fill={4294967295}
+                                          propList={
+                                            Array [
+                                              "fill",
+                                            ]
+                                          }
+                                          r={10}
+                                        />
+                                        <RNSVGPath
+                                          d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm7.005 7.19a.99.99 0 00-1.399.055l-7.315 7.922-3.106-3.36-.078-.075a.99.99 0 00-1.375 1.419l3.833 4.146.082.079a.99.99 0 001.372-.08l8.041-8.708.07-.083a.99.99 0 00-.125-1.315z"
+                                          fill={4279601231}
+                                          fillRule={0}
+                                          propList={
+                                            Array [
+                                              "fill",
+                                              "fillRule",
+                                            ]
+                                          }
+                                        />
                                       </RNSVGGroup>
                                     </RNSVGSvgView>
                                   </View>
@@ -5760,34 +5760,36 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                         ]
                                       }
-                                      testID="validTestId"
+                                      testID="invalidTestId"
                                       vbHeight={38}
                                       vbWidth={38}
                                       width={32}
                                     >
                                       <RNSVGGroup>
-                                        <RNSVGCircle
-                                          cx={19}
-                                          cy={19}
-                                          fill={4294967295}
-                                          propList={
-                                            Array [
-                                              "fill",
-                                            ]
-                                          }
-                                          r={10}
-                                        />
-                                        <RNSVGPath
-                                          d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm7.005 7.19a.99.99 0 00-1.399.055l-7.315 7.922-3.106-3.36-.078-.075a.99.99 0 00-1.375 1.419l3.833 4.146.082.079a.99.99 0 001.372-.08l8.041-8.708.07-.083a.99.99 0 00-.125-1.315z"
-                                          fill={4279601231}
-                                          fillRule={0}
-                                          propList={
-                                            Array [
-                                              "fill",
-                                              "fillRule",
-                                            ]
-                                          }
-                                        />
+                                        <RNSVGGroup>
+                                          <RNSVGCircle
+                                            cx={19}
+                                            cy={19}
+                                            fill={4294967295}
+                                            propList={
+                                              Array [
+                                                "fill",
+                                              ]
+                                            }
+                                            r={10}
+                                          />
+                                          <RNSVGPath
+                                            d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm5.023 6a.99.99 0 00-1.398.06L19 17.14l-3.625-3.954a.99.99 0 00-1.528 1.254l.07.084 3.74 4.081-3.74 4.081-.07.084a.99.99 0 001.528 1.254L19 20.068l3.625 3.955a.989.989 0 001.528-1.254l-.07-.084-3.741-4.081 3.742-4.081.068-.084a.987.987 0 00-.13-1.314z"
+                                            fill={4284637794}
+                                            fillRule={1}
+                                            propList={
+                                              Array [
+                                                "fill",
+                                                "fillRule",
+                                              ]
+                                            }
+                                          />
+                                        </RNSVGGroup>
                                       </RNSVGGroup>
                                     </RNSVGSvgView>
                                   </View>
@@ -5961,36 +5963,34 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           },
                                         ]
                                       }
-                                      testID="invalidTestId"
+                                      testID="validTestId"
                                       vbHeight={38}
                                       vbWidth={38}
                                       width={32}
                                     >
                                       <RNSVGGroup>
-                                        <RNSVGGroup>
-                                          <RNSVGCircle
-                                            cx={19}
-                                            cy={19}
-                                            fill={4294967295}
-                                            propList={
-                                              Array [
-                                                "fill",
-                                              ]
-                                            }
-                                            r={10}
-                                          />
-                                          <RNSVGPath
-                                            d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm5.023 6a.99.99 0 00-1.398.06L19 17.14l-3.625-3.954a.99.99 0 00-1.528 1.254l.07.084 3.74 4.081-3.74 4.081-.07.084a.99.99 0 001.528 1.254L19 20.068l3.625 3.955a.989.989 0 001.528-1.254l-.07-.084-3.741-4.081 3.742-4.081.068-.084a.987.987 0 00-.13-1.314z"
-                                            fill={4284637794}
-                                            fillRule={1}
-                                            propList={
-                                              Array [
-                                                "fill",
-                                                "fillRule",
-                                              ]
-                                            }
-                                          />
-                                        </RNSVGGroup>
+                                        <RNSVGCircle
+                                          cx={19}
+                                          cy={19}
+                                          fill={4294967295}
+                                          propList={
+                                            Array [
+                                              "fill",
+                                            ]
+                                          }
+                                          r={10}
+                                        />
+                                        <RNSVGPath
+                                          d="M19 7.125c6.558 0 11.875 5.317 11.875 11.875S25.558 30.875 19 30.875 7.125 25.558 7.125 19 12.442 7.125 19 7.125zm7.005 7.19a.99.99 0 00-1.399.055l-7.315 7.922-3.106-3.36-.078-.075a.99.99 0 00-1.375 1.419l3.833 4.146.082.079a.99.99 0 001.372-.08l8.041-8.708.07-.083a.99.99 0 00-.125-1.315z"
+                                          fill={4279601231}
+                                          fillRule={0}
+                                          propList={
+                                            Array [
+                                              "fill",
+                                              "fillRule",
+                                            ]
+                                          }
+                                        />
                                       </RNSVGGroup>
                                     </RNSVGSvgView>
                                   </View>
