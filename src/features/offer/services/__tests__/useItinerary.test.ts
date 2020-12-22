@@ -3,11 +3,22 @@ import { Alert, Linking, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { useItinerary } from '../useItinerary'
 
 const alertMock = jest.spyOn(Alert, 'alert')
 jest.spyOn(Linking, 'openURL')
+
+const mockDisplayInfosSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    displayInfosSnackBar: jest.fn((props: SnackBarHelperSettings) =>
+      mockDisplayInfosSnackBar(props)
+    ),
+  }),
+}))
+
 describe('useItinerary', () => {
   afterEach(() => {
     jest.clearAllMocks()
@@ -124,6 +135,41 @@ describe('useItinerary', () => {
       expect(Linking.openURL).toHaveBeenCalledWith(
         'https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=%3B48.85837%2C2.294481#map=16/48.85837/2.294481'
       )
+    )
+  })
+  it('should display an information snackbar if the lib failed and to open the chosen navigation app', async () => {
+    getAvailableApps.mockImplementationOnce(() =>
+      Promise.resolve({
+        sygic: true,
+        google_maps: false,
+        waze: true,
+        citymapper: false,
+      })
+    )
+    navigate.mockImplementationOnce(() => Promise.reject(new Error('dummyError')))
+    Platform.OS = 'android'
+    const { result, waitFor } = renderHook(useItinerary)
+    await waitFor(() => !!result.current.availableApps)
+    result.current.navigateTo({ latitude: 48.85837, longitude: 2.294481 })
+    expect(alertMock).toHaveBeenCalledWith(
+      "Voir l'itinéraire",
+      "Choisissez l'application pour vous rendre sur le lieu de l'offre :",
+      [
+        { text: 'Sygic', onPress: expect.any(Function) },
+        { text: 'Waze', onPress: expect.any(Function) },
+      ],
+      { cancelable: true }
+    )
+    // @ts-ignore: precedent assertion garanties next line
+    const { onPress: onWazePress } = alertMock.mock.calls[0][2][1]
+    // @ts-ignore: same reason
+    onWazePress()
+    await waitForExpect(() =>
+      expect(mockDisplayInfosSnackBar).toHaveBeenCalledWith({
+        message:
+          'Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.',
+        timeout: 10000,
+      })
     )
   })
 })
