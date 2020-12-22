@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { Alert, Linking, Platform } from 'react-native'
+import waitForExpect from 'wait-for-expect'
 
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
 
@@ -104,6 +105,25 @@ describe('useItinerary', () => {
     result.current.navigateTo({ latitude: 48.85837, longitude: 2.294481 })
     expect(Linking.openURL).toHaveBeenCalledWith(
       'https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=%3B48.85837%2C2.294481#map=16/48.85837/2.294481'
+    )
+  })
+  it('should navigate with openStreetMap if the lib failed and only one application was available', async () => {
+    getAvailableApps.mockImplementationOnce(() =>
+      Promise.resolve({
+        sygic: true,
+        google_maps: false,
+        waze: false,
+        citymapper: false,
+      })
+    )
+    navigate.mockImplementationOnce(() => Promise.reject(new Error('dummyError')))
+    const { result, waitFor } = renderHook(useItinerary)
+    await waitFor(() => !!result.current.availableApps)
+    result.current.navigateTo({ latitude: 48.85837, longitude: 2.294481 })
+    await waitForExpect(() =>
+      expect(Linking.openURL).toHaveBeenCalledWith(
+        'https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=%3B48.85837%2C2.294481#map=16/48.85837/2.294481'
+      )
     )
   })
 })
