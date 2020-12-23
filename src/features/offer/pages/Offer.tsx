@@ -88,17 +88,17 @@ const OfferComponent: FunctionComponent = () => {
         <OfferPartialDescription description={offerResponse.description || ''} id={params.id} />
         <Spacer.Column numberOfSpaces={4} />
 
+        <Section visible={shouldDisplayWhenBlock} margin={true}>
+          <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
+          <SectionBody>{formatDatePeriod(dates)}</SectionBody>
+        </Section>
+
         <Section visible={!offerResponse.isDigital} margin={true}>
           <OfferWhereSection
             address={offerResponse.fullAddress}
             offerCoordinates={venue.coordinates}
             offerId={offerResponse.id}
           />
-        </Section>
-
-        <Section visible={shouldDisplayWhenBlock} margin={true}>
-          <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
-          <SectionBody>{formatDatePeriod(dates)}</SectionBody>
         </Section>
 
         <Section visible={!!offerResponse.withdrawalDetails}>
