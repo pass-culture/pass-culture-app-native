@@ -37,7 +37,7 @@ msgstr "1 Minuscule"
 msgid "12 Caractères"
 msgstr "12 Caractères"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:27
+#: src/features/auth/signup/QuitSignupModal.tsx:36
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
@@ -45,9 +45,17 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/Offer.tsx:91
+#: src/features/offer/pages/Offer.tsx:78
 msgid "Accessibilité"
 msgstr "Accessibilité"
+
+#: src/features/offer/services/useCtaWording.ts:12
+msgid "Accéder à l'offre"
+msgstr "Accéder à l'offre"
+
+#: src/features/offer/services/useCtaWording.ts:11
+msgid "Accéder à la billetterie externe"
+msgstr "Accéder à la billetterie externe"
 
 #: src/features/offer/components/OfferWhereSection.tsx:28
 msgid "Adresse"
@@ -64,7 +72,7 @@ msgstr "Adresse e-mail"
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
-#: src/features/offer/services/useItinerary.ts:57
+#: src/features/offer/services/useItinerary.ts:76
 msgid "Annuler"
 msgstr "Annuler"
 
@@ -94,7 +102,7 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:52
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:55
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
@@ -111,7 +119,7 @@ msgstr "Chargement en cours..."
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
-#: src/features/offer/services/useItinerary.ts:58
+#: src/features/offer/services/useItinerary.ts:77
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
@@ -168,7 +176,7 @@ msgstr "Contacter le support"
 msgid "Continuer"
 msgstr "Continuer"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:25
+#: src/features/auth/signup/QuitSignupModal.tsx:34
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
@@ -213,7 +221,7 @@ msgstr "Erreur d'authentification"
 msgid "Erreur lors de la récupération du token d'accès"
 msgstr "Erreur lors de la récupération du token d'accès"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:20
+#: src/features/auth/signup/QuitSignupModal.tsx:29
 msgid "Es-tu sûr de vouloir abandonner l'inscription ?"
 msgstr "Es-tu sûr de vouloir abandonner l'inscription ?"
 
@@ -270,7 +278,7 @@ msgstr "Le lien est incorrect"
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:22
+#: src/features/auth/signup/QuitSignupModal.tsx:31
 msgid "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 
@@ -278,7 +286,7 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:83
+#: src/features/offer/pages/Offer.tsx:70
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -333,7 +341,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:78
+#: src/features/offer/pages/Offer.tsx:61
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -394,6 +402,10 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:47
+msgid "Ton compte est maintenant activé !"
+msgstr "Ton compte est maintenant activé !"
+
 #: src/features/auth/signup/SetEmail.tsx:62
 msgid "Ton email"
 msgstr "Ton email"
@@ -419,6 +431,10 @@ msgstr "Toute la culture dans votre main"
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
+#: src/features/offer/services/useItinerary.ts:55
+msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
+msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
+
 #: src/features/offer/pages/OfferDescription.tsx:26
 msgid "VISA"
 msgstr "VISA"
@@ -428,11 +444,11 @@ msgid "Valider"
 msgstr "Valider"
 
 #: src/features/offer/components/OfferWhereSection.tsx:46
-#: src/features/offer/services/useItinerary.ts:58
+#: src/features/offer/services/useItinerary.ts:77
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/components/CallToAction.tsx:12
+#: src/features/offer/services/useCtaWording.ts:13
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
@@ -460,7 +476,7 @@ msgstr "durée"
 msgid "en détail"
 msgstr "en détail"
 
-#: src/features/offer/pages/Offer.tsx:60
+#: src/features/offer/atoms/LocationCaption.tsx:10
 msgid "en ligne"
 msgstr "en ligne"
 
@@ -511,7 +527,7 @@ msgstr "voir plus"
 msgid "{0}"
 msgstr "{0}"
 
-#: src/features/offer/components/OfferIconCaptions.tsx:22
+#: src/features/offer/components/OfferIconCaptions.tsx:25
 msgid "À deux !"
 msgstr "À deux !"
 
