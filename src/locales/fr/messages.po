@@ -102,7 +102,7 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:55
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:58
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
@@ -325,6 +325,10 @@ msgstr "Oups"
 msgid "Où ?"
 msgstr "Où ?"
 
+#: src/features/auth/signup/VerifyEligibility.tsx:20
+msgid "Plus que quelques étapes !"
+msgstr "Plus que quelques étapes !"
+
 #: src/features/auth/signup/AcceptCgu.tsx:63
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
@@ -332,6 +336,10 @@ msgstr "Politique de confidentialité."
 #: src/features/auth/signup/AcceptCgu.tsx:68
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
+
+#: src/features/auth/signup/VerifyEligibility.tsx:22
+msgid "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte  par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
+msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte  par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
 #: src/features/auth/signup/SetBirthday.tsx:103
 msgid "Pourquoi ?"
@@ -356,6 +364,7 @@ msgstr "Renvoyer l'email"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:55
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
+#: src/features/auth/signup/VerifyEligibility.tsx:28
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
@@ -402,7 +411,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:47
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:50
 msgid "Ton compte est maintenant activé !"
 msgstr "Ton compte est maintenant activé !"
 
@@ -455,6 +464,10 @@ msgstr "Voir les disponibilités"
 #: src/features/offer/atoms/OfferSeeMore.tsx:17
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
+
+#: src/features/auth/signup/VerifyEligibility.tsx:26
+msgid "Vérifier mon éligibilité"
+msgstr "Vérifier mon éligibilité"
 
 #: src/libs/i18n.test.ts:8
 msgid "Welcome to Pass Culture"

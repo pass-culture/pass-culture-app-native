@@ -8,18 +8,20 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   icon: FunctionComponent<IconInterface>
+  iconSize?: number
   title: string
 }
 
 export const GenericInfoPage: FunctionComponent<Props> = (props) => {
+  const { icon: Icon, iconSize = getSpacing(25), title } = props
   return (
     <React.Fragment>
       <Background />
       <ScrollView contentContainerStyle={scrollViewContentContainerStyle}>
         <Spacer.Column numberOfSpaces={18} />
-        <props.icon color={ColorsEnum.WHITE} size={100} />
+        <Icon color={ColorsEnum.WHITE} size={iconSize} />
         <Spacer.Column numberOfSpaces={9} />
-        <StyledTitle2>{props.title}</StyledTitle2>
+        <StyledTitle2>{title}</StyledTitle2>
         <Spacer.Column numberOfSpaces={5} />
         {props.children}
         <Spacer.BottomScreen />

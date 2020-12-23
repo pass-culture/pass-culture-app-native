@@ -97,6 +97,17 @@ export function Navigation(): JSX.Element {
             }
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'Vérifier éligibilité'}
+            onPress={() =>
+              navigation.navigate('VerifyEligibility', {
+                email: 'jean.dupont@gmail.com',
+                licenceToken: 'xXLicenceTokenXx',
+              })
+            }
+          />
+        </Row>
         <Row>
           <NavigationButton
             title={'Mauvais deeplink unknown'}

@@ -14,6 +14,7 @@ import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
+import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
@@ -57,6 +58,7 @@ export type RootStackParamList = {
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: undefined
+  VerifyEligibility: { email: string; licenceToken: string }
 }
 
 export const RootStack = createStackNavigator<RootStackParamList>()
@@ -101,6 +103,7 @@ export const RootNavigator: React.FC = () => {
           name="SignupConfirmationExpiredLink"
           component={SignupConfirmationExpiredLink}
         />
+        <RootStack.Screen name="VerifyEligibility" component={VerifyEligibility} />
       </RootStack.Navigator>
     </NavigationContainer>
   )
