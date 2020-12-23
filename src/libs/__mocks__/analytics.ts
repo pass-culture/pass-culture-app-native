@@ -25,4 +25,5 @@ export const analytics = {
   logShareOffer: jest.fn(),
   logConsultWholeOffer: jest.fn(),
   logCancelSignup: jest.fn(),
+  logOfferSeenDuration: jest.fn(),
 }
