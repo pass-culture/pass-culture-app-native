@@ -1,18 +1,24 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
+import { CategoryType } from 'api/gen'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-export const CallToAction = () => {
+import { useCtaWording } from '../services/useCtaWording'
+
+interface Props {
+  categoryType: CategoryType
+}
+
+export const CallToAction: React.FC<Props> = ({ categoryType }) => {
+  const wording = useCtaWording({ categoryType })
   return (
     <Container onPress={() => null}>
       <Rectangle height={getSpacing(12)} size="100%" />
-      <Title numberOfLines={1}>{_(t`Voir les disponibilités`)}</Title>
+      <Title numberOfLines={1}>{wording}</Title>
     </Container>
   )
 }
