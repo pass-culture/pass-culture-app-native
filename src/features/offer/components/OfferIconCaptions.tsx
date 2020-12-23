@@ -18,12 +18,15 @@ type Props = { category: CategoryNameEnum | null; label: string } & Pick<
 >
 export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, label }) => {
   const { data: profileInfo } = useUserProfileInfo()
-  const prices = stocks.map((stock) => stock.price)
+  const bookableStocks = stocks.filter((stock) => stock.isBookable)
+  const prices =
+    bookableStocks.length > 0
+      ? bookableStocks.map((stock) => stock.price)
+      : stocks.map((stock) => stock.price)
   const price =
     isDuo && profileInfo?.isBeneficiary
       ? getDisplayPriceWithDuoMention(prices)
       : getDisplayPrice(prices)
-
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />

@@ -20,6 +20,14 @@ const freeBookableStocks: OfferResponse['stocks'] = [
 const sevenEurosBookableStocks: OfferResponse['stocks'] = [
   { id: 1, price: 7, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: true },
 ]
+const severalStocks: OfferResponse['stocks'] = [
+  { id: 1, price: 7, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: true },
+  { id: 2, price: 2, beginningDatetime: new Date('2021-01-03T13:30:00'), isBookable: false },
+]
+const noBookableStocks: OfferResponse['stocks'] = [
+  { id: 1, price: 7, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: false },
+  { id: 2, price: 9, beginningDatetime: new Date('2021-01-03T13:30:00'), isBookable: false },
+]
 const noStocks: OfferResponse['stocks'] = []
 
 jest.mock('features/auth/AuthContext', () => ({
@@ -63,21 +71,24 @@ describe('<OfferIconCaptions />', () => {
   )
 
   it.each`
-    price        | duo      | beneficiary | expectedDisplayedPrice
-    ${'7'}       | ${false} | ${true}     | ${'7 €'}
-    ${'7'}       | ${true}  | ${true}     | ${'7 € / place'}
-    ${'7'}       | ${true}  | ${false}    | ${'7 €'}
-    ${'free'}    | ${false} | ${true}     | ${'Gratuit'}
-    ${'free'}    | ${true}  | ${true}     | ${'Gratuit'}
-    ${'free'}    | ${true}  | ${false}    | ${'Gratuit'}
-    ${'noPrice'} | ${false} | ${true}     | ${''}
-    ${'noPrice'} | ${true}  | ${true}     | ${''}
-    ${'noPrice'} | ${true}  | ${false}    | ${''}
+    price                 | duo      | beneficiary | expectedDisplayedPrice
+    ${'7'}                | ${false} | ${true}     | ${'7 €'}
+    ${'7'}                | ${true}  | ${true}     | ${'7 € / place'}
+    ${'7'}                | ${true}  | ${false}    | ${'7 €'}
+    ${'free'}             | ${false} | ${true}     | ${'Gratuit'}
+    ${'free'}             | ${true}  | ${true}     | ${'Gratuit'}
+    ${'free'}             | ${true}  | ${false}    | ${'Gratuit'}
+    ${'noPrice'}          | ${false} | ${true}     | ${''}
+    ${'noPrice'}          | ${true}  | ${true}     | ${''}
+    ${'noPrice'}          | ${true}  | ${false}    | ${''}
+    ${'severalStocks'}    | ${true}  | ${false}    | ${'7 €'}
+    ${'noBookableStocks'} | ${true}  | ${false}    | ${'Dès 7 €'}
   `('should show right price', async ({ price, duo, beneficiary, expectedDisplayedPrice }) => {
     let stocks: OfferResponse['stocks'] = freeBookableStocks
     if (price === '7') stocks = sevenEurosBookableStocks
     if (price === 'noPrice') stocks = noStocks
-
+    if (price === 'severalStocks') stocks = severalStocks
+    if (price == 'noBookableStocks') stocks = noBookableStocks
     const component = await renderOfferIconCaptions({
       isDuo: duo,
       stocks,
