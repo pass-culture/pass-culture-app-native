@@ -305,12 +305,6 @@ export interface OfferResponse {
     accessibility: OfferAccessibilityResponse;
     /**
      * 
-     * @type {Array<OfferStockResponse>}
-     * @memberof OfferResponse
-     */
-    bookableStocks: Array<OfferStockResponse>;
-    /**
-     * 
      * @type {OfferCategoryResponse}
      * @memberof OfferResponse
      */
@@ -359,6 +353,12 @@ export interface OfferResponse {
     name: string;
     /**
      * 
+     * @type {Array<OfferStockResponse>}
+     * @memberof OfferResponse
+     */
+    stocks: Array<OfferStockResponse>;
+    /**
+     * 
      * @type {OfferVenueResponse}
      * @memberof OfferResponse
      */
@@ -387,6 +387,12 @@ export interface OfferStockResponse {
      * @memberof OfferStockResponse
      */
     id: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferStockResponse
+     */
+    isBookable: boolean;
     /**
      * 
      * @type {number}

@@ -38,7 +38,7 @@ const OfferComponent: FunctionComponent = () => {
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
 
-  const dates = offerResponse.bookableStocks.reduce<Date[]>(
+  const dates = offerResponse.stocks.reduce<Date[]>(
     (accumulator, stock) =>
       stock.beginningDatetime ? [...accumulator, stock.beginningDatetime] : accumulator,
     []
@@ -80,7 +80,7 @@ const OfferComponent: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={2} />
         <OfferIconCaptions
           isDuo={offerResponse.isDuo}
-          bookableStocks={offerResponse.bookableStocks}
+          stocks={offerResponse.stocks}
           category={category.name || null}
           label={category.label}
         />

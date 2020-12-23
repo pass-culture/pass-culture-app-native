@@ -15,9 +15,9 @@ export const offerResponseSnap: OfferResponse = {
   isDuo: true,
   name: 'Sous les étoiles de Paris - VF',
   category: { label: 'Cinéma', categoryType: CategoryType.Event, name: CategoryNameEnum.CINEMA },
-  bookableStocks: [
-    { id: 118929, beginningDatetime: new Date('2021-01-04T13:30:00'), price: 5 },
-    { id: 118928, beginningDatetime: new Date('2021-01-03T18:00:00'), price: 5 },
+  stocks: [
+    { id: 118929, beginningDatetime: new Date('2021-01-04T13:30:00'), price: 5, isBookable: true },
+    { id: 118928, beginningDatetime: new Date('2021-01-03T18:00:00'), price: 5, isBookable: true },
   ],
   imageUrl:
     'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS',

@@ -14,11 +14,11 @@ import { IconWithCaption, OfferCategory } from '../atoms'
 
 type Props = { category: CategoryNameEnum | null; label: string } & Pick<
   OfferResponse,
-  'bookableStocks' | 'isDuo'
+  'stocks' | 'isDuo'
 >
-export const OfferIconCaptions: React.FC<Props> = ({ isDuo, bookableStocks, category, label }) => {
+export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, label }) => {
   const { data: profileInfo } = useUserProfileInfo()
-  const prices = bookableStocks.map((stock) => stock.price)
+  const prices = stocks.map((stock) => stock.price)
   const price =
     isDuo && profileInfo?.isBeneficiary
       ? getDisplayPriceWithDuoMention(prices)

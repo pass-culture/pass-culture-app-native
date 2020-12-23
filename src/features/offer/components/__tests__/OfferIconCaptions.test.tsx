@@ -11,16 +11,16 @@ import { flushAllPromises } from 'tests/utils'
 
 import { OfferIconCaptions } from '../OfferIconCaptions'
 
-const defaultBookableStocks: OfferResponse['bookableStocks'] = [
-  { id: 1, price: 28.0, beginningDatetime: new Date('2021-01-04T13:30:00') },
+const defaultBookableStocks: OfferResponse['stocks'] = [
+  { id: 1, price: 28.0, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: true },
 ]
-const freeBookableStocks: OfferResponse['bookableStocks'] = [
-  { id: 1, price: 0, beginningDatetime: new Date('2021-01-04T13:30:00') },
+const freeBookableStocks: OfferResponse['stocks'] = [
+  { id: 1, price: 0, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: true },
 ]
-const sevenEurosBookableStocks: OfferResponse['bookableStocks'] = [
-  { id: 1, price: 7, beginningDatetime: new Date('2021-01-04T13:30:00') },
+const sevenEurosBookableStocks: OfferResponse['stocks'] = [
+  { id: 1, price: 7, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: true },
 ]
-const noStocks: OfferResponse['bookableStocks'] = []
+const noStocks: OfferResponse['stocks'] = []
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -74,13 +74,13 @@ describe('<OfferIconCaptions />', () => {
     ${'noPrice'} | ${true}  | ${true}     | ${''}
     ${'noPrice'} | ${true}  | ${false}    | ${''}
   `('should show right price', async ({ price, duo, beneficiary, expectedDisplayedPrice }) => {
-    let bookableStocks: OfferResponse['bookableStocks'] = freeBookableStocks
-    if (price === '7') bookableStocks = sevenEurosBookableStocks
-    if (price === 'noPrice') bookableStocks = noStocks
+    let stocks: OfferResponse['stocks'] = freeBookableStocks
+    if (price === '7') stocks = sevenEurosBookableStocks
+    if (price === 'noPrice') stocks = noStocks
 
     const component = await renderOfferIconCaptions({
       isDuo: duo,
-      bookableStocks,
+      stocks,
       isBeneficiary: beneficiary,
     })
     await waitForExpect(() => {
@@ -94,9 +94,9 @@ describe('<OfferIconCaptions />', () => {
 async function renderOfferIconCaptions({
   isDuo = false,
   isBeneficiary = true,
-  bookableStocks,
+  stocks,
 }: {
-  bookableStocks?: OfferResponse['bookableStocks']
+  stocks?: OfferResponse['stocks']
   isDuo?: boolean
   isBeneficiary?: boolean
 }) {
@@ -108,7 +108,7 @@ async function renderOfferIconCaptions({
   const wrapper = render(
     reactQueryProviderHOC(
       <OfferIconCaptions
-        bookableStocks={bookableStocks ?? defaultBookableStocks}
+        stocks={stocks ?? defaultBookableStocks}
         isDuo={isDuo}
         label="Abonnements concerts"
         category={CategoryNameEnum.MUSIQUE}
