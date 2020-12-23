@@ -1,11 +1,13 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
-import { Alert, Linking } from 'react-native'
+import { Alert } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+
+import { contactSupport } from '../support.services'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
 
@@ -45,7 +47,8 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     fireEvent.press(button)
 
     await waitForExpect(() => {
-      expect(Linking.openURL).toBeCalledTimes(1)
+      expect(contactSupport.forSignupConfirmationExpiredLink).toBeCalledTimes(1)
+      expect(contactSupport.forSignupConfirmationExpiredLink).toBeCalledWith('test@email.com')
     })
   })
 

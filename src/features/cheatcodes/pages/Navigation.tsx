@@ -30,10 +30,10 @@ export function Navigation(): JSX.Element {
           <CheatCodesButton />
         </Row>
         <Row half>
-          <ButtonPrimary title={'Login'} onPress={() => navigation.navigate('Login')} />
+          <NavigationButton title={'Login'} onPress={() => navigation.navigate('Login')} />
         </Row>
         <Row half>
-          <ButtonPrimary
+          <NavigationButton
             title={'Set Birthday'}
             onPress={() =>
               navigation.navigate('SetBirthday', {
@@ -45,7 +45,18 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
-          <ButtonPrimary
+          <NavigationButton
+            title={'Signup choix mdp'}
+            onPress={() =>
+              navigation.navigate('SetPassword', {
+                email: 'jonh.doe@exmaple.com',
+                isNewsletterChecked: false,
+              })
+            }
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={'Signup : email envoyé'}
             onPress={() =>
               navigation.navigate('SignupConfirmationEmailSent', {
@@ -54,8 +65,18 @@ export function Navigation(): JSX.Element {
             }
           />
         </Row>
-        <Row>
-          <ButtonPrimary
+        <Row half>
+          <NavigationButton
+            title={'Reset mdp lien expiré'}
+            onPress={() =>
+              navigation.navigate('ResetPasswordExpiredLink', {
+                email: 'john@wick.com',
+              })
+            }
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={'Signup : Validate Email'}
             onPress={() =>
               navigation.navigate('AfterSignupEmailValidationBuffer', {
@@ -66,9 +87,9 @@ export function Navigation(): JSX.Element {
             }
           />
         </Row>
-        <Row>
-          <ButtonPrimary
-            title={'Reset Mdp : email envoyé'}
+        <Row half>
+          <NavigationButton
+            title={'Reset mdp email envoyé'}
             onPress={() =>
               navigation.navigate('ResetPasswordEmailSent', {
                 email: 'jean.dupont@gmail.com',
@@ -77,7 +98,7 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row>
-          <ButtonPrimary
+          <NavigationButton
             title={'Mauvais deeplink unknown'}
             onPress={() => openExternalUrl(BadDeeplink)}
           />
@@ -85,22 +106,15 @@ export function Navigation(): JSX.Element {
         <Row>
           <CenteredText>{BadDeeplink}</CenteredText>
         </Row>
-        <Row>
-          <ButtonPrimary
-            title={'Choix du mdp (inscr.)'}
-            onPress={() =>
-              navigation.navigate('SetPassword', {
-                email: 'jonh.doe@exmaple.com',
-                isNewsletterChecked: false,
-              })
-            }
-          />
-        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
   )
 }
+
+const NavigationButton = styled(ButtonPrimary).attrs({
+  textSize: 11.5,
+})({})
 
 const StyledContainer = styled.View({
   display: 'flex',
@@ -110,7 +124,7 @@ const StyledContainer = styled.View({
 
 const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
   width: half ? '50%' : '100%',
-  ...padding(2, 1),
+  ...padding(2, 0.5),
 }))
 
 const CenteredText = styled.Text({

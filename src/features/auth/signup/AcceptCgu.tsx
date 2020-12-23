@@ -92,7 +92,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
             </Paragraphe>
             <ButtonTertiary
               title={_(t`Contacter le support`)}
-              onPress={contactSupport}
+              onPress={contactSupport.forGenericQuestion}
               icon={Email}
             />
             <Spacer.Column numberOfSpaces={6} />

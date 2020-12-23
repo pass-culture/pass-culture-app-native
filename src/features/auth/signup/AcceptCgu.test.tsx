@@ -11,6 +11,8 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ColorsEnum } from 'ui/theme'
 
+import { contactSupport } from '../support.services'
+
 import { AcceptCgu } from './AcceptCgu'
 
 const mockSignUp = jest.fn()
@@ -25,15 +27,13 @@ describe('AcceptCgu Page', () => {
   })
 
   it('should open mail app when clicking on contact support button', async () => {
-    jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
-
     const { findByText } = renderAcceptCGU()
 
     const contactSupportButton = await findByText('Contacter le support')
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
-      expect(Linking.openURL).toHaveBeenCalledWith('mailto:support@test.passculture.app')
+      expect(contactSupport.forGenericQuestion).toBeCalledTimes(1)
     })
   })
   it('should redirect to the "CGU" page', async () => {

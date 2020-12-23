@@ -52,7 +52,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           <Typo.Body>{_(t`Si l'e-mail n'arrive pas, tu peux : `)}</Typo.Body>
           <ButtonTertiary
             title={_(t`Contacter le support`)}
-            onPress={contactSupport}
+            onPress={() => contactSupport.forSignupConfirmationEmailNotReceived(route.params.email)}
             icon={Email}
           />
         </Description>

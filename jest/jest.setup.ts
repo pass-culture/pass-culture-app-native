@@ -36,6 +36,8 @@ jest.mock('jwt-decode', () => () => ({
   exp: 3454545353,
 }))
 
+jest.mock('features/auth/support.services')
+
 /* Cf. the corresponding mock in libs/__mocks__ */
 jest.mock('libs/analytics')
 

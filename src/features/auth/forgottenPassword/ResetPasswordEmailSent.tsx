@@ -56,7 +56,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
           <Typo.Body>{_(t`Si l'e-mail n'arrive pas, tu peux : `)}</Typo.Body>
           <ButtonTertiary
             title={_(t`Contacter le support`)}
-            onPress={contactSupport}
+            onPress={() => contactSupport.forResetPasswordEmailNotReceived(route.params.email)}
             icon={Email}
           />
         </Description>
