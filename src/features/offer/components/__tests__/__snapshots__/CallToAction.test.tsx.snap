@@ -108,6 +108,7 @@ exports[`<CallToAction /> should render 1`] = `
     </RNSVGGroup>
   </RNSVGSvgView>
   <Text
+    adjustsFontSizeToFit={true}
     numberOfLines={1}
     style={
       Array [

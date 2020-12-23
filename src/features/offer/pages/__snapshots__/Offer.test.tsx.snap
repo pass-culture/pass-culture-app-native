@@ -2505,6 +2505,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           </RNSVGGroup>
                         </RNSVGSvgView>
                         <Text
+                          adjustsFontSizeToFit={true}
                           numberOfLines={1}
                           style={
                             Array [
@@ -6171,6 +6172,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           </RNSVGGroup>
                         </RNSVGSvgView>
                         <Text
+                          adjustsFontSizeToFit={true}
                           numberOfLines={1}
                           style={
                             Array [

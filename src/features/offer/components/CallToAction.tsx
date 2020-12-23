@@ -18,7 +18,9 @@ export const CallToAction: React.FC<Props> = ({ categoryType }) => {
   return (
     <Container onPress={() => null}>
       <Rectangle height={getSpacing(12)} size="100%" />
-      <Title numberOfLines={1}>{wording}</Title>
+      <Title adjustsFontSizeToFit numberOfLines={1}>
+        {wording}
+      </Title>
     </Container>
   )
 }
