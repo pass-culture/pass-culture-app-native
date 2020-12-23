@@ -2,13 +2,15 @@ import { StackScreenProps } from '@react-navigation/stack'
 import { render, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
-import { Alert, Linking } from 'react-native'
+import { Alert } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { server } from 'tests/server'
+
+import { contactSupport } from '../support.services'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
@@ -45,7 +47,8 @@ describe('<ResetPasswordExpiredLink/>', () => {
     fireEvent.press(button)
 
     await waitForExpect(() => {
-      expect(Linking.openURL).toBeCalledTimes(1)
+      expect(contactSupport.forResetPasswordExpiredLink).toBeCalledTimes(1)
+      expect(contactSupport.forResetPasswordExpiredLink).toBeCalledWith('test@email.com')
     })
   })
 

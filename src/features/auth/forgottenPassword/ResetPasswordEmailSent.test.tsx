@@ -2,11 +2,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
-import { Linking } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
 import { flushAllPromises } from 'tests/utils'
+
+import { contactSupport } from '../support.services'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
@@ -24,15 +25,16 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 
   it('should open mail app when clicking on contact support button', async () => {
-    jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
-
     const { findByText } = renderPage()
 
     const contactSupportButton = await findByText('Contacter le support')
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
-      expect(Linking.openURL).toHaveBeenCalledWith('mailto:support@test.passculture.app')
+      expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledTimes(1)
+      expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledWith(
+        'john.doe@gmail.com'
+      )
     })
   })
 

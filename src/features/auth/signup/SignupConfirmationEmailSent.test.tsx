@@ -1,12 +1,13 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
-import { Linking } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+
+import { contactSupport } from '../support.services'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
 
@@ -35,15 +36,16 @@ describe('<SignupConfirmationEmailSent />', () => {
   })
 
   it('should open mail app when clicking on contact support button', async () => {
-    jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
-
     const { findByText } = renderPage()
 
     const contactSupportButton = await findByText('Contacter le support')
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
-      expect(Linking.openURL).toHaveBeenCalledWith('mailto:support@test.passculture.app')
+      expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledTimes(1)
+      expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledWith(
+        'john.doe@gmail.com'
+      )
     })
   })
 

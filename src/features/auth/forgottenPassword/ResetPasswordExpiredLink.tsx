@@ -50,7 +50,7 @@ export function ResetPasswordExpiredLink(props: Props) {
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite
         title={_(t`Contacter le support`)}
-        onPress={contactSupport}
+        onPress={() => contactSupport.forResetPasswordExpiredLink(props.route.params.email)}
         icon={Email}
       />
       <Spacer.Column numberOfSpaces={4} />
