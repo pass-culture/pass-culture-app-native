@@ -125,7 +125,7 @@ exports[`<CallToAction /> should render 1`] = `
       ]
     }
   >
-    Voir les disponibilités
+    Wording to display
   </Text>
 </View>
 `;

@@ -5,6 +5,7 @@ import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { CategoryType } from 'api/gen'
 import { AccordionItem, CallToAction } from 'features/offer/components'
 import { AlgoliaCategory } from 'libs/algolia'
 import { mapCategoryToIcon } from 'libs/parsers'
@@ -188,7 +189,7 @@ export const AppComponents: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
-        <CallToAction />
+        <CallToAction categoryType={CategoryType.Event} />
       </AccordionItem>
 
       <Divider />

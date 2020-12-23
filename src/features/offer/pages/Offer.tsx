@@ -123,7 +123,7 @@ const OfferComponent: FunctionComponent = () => {
       </Container>
 
       <CallToActionContainer>
-        <CallToAction />
+        <CallToAction categoryType={offerResponse.category.categoryType} />
       </CallToActionContainer>
 
       <OfferHeader
