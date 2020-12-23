@@ -16,6 +16,7 @@ export interface BaseButtonProps {
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
   testIdSuffix?: string
+  textSize?: number
 }
 
 export interface AppButtonProps extends BaseButtonProps {
@@ -23,7 +24,6 @@ export interface AppButtonProps extends BaseButtonProps {
   iconColor?: ColorsEnum
   iconSize?: number
   textColor?: ColorsEnum
-  textSize?: number
   backgroundColor?: ColorsEnum
   borderColor?: ColorsEnum
   buttonHeight?: 'small' | 'tall'
