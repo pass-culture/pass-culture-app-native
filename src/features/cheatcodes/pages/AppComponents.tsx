@@ -45,6 +45,7 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
+import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Logo } from 'ui/svg/icons/Logo'
@@ -291,6 +292,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <SadFace size={24} />
           <Text> - SadFace </Text>
+        </AlignedText>
+        <AlignedText>
+          <HappyFaceStars size={40} />
+          <Text> - HappyFaceStars </Text>
         </AlignedText>
         <AlignedText>
           <LocationPointer size={24} />
