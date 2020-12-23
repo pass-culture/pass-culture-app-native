@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useRef, useEffect } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { Animated, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
@@ -34,6 +34,15 @@ const OfferComponent: FunctionComponent = () => {
   const { data: offerResponse } = useOffer({ offerId: params.id })
   const headerScroll = useRef(new Animated.Value(0)).current
   const hasSeenAllPage = useRef<boolean>(false)
+
+  useEffect(() => {
+    const startTime = new Date()
+    return () => {
+      const endTime = new Date()
+      const durationOnPageInSeconds = (endTime.getTime() - startTime.getTime()) / 1000
+      analytics.logOfferSeenDuration(params.id, durationOnPageInSeconds)
+    }
+  }, [])
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse

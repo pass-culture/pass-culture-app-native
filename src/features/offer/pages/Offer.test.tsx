@@ -97,7 +97,13 @@ describe('<Offer />', () => {
   })
 
   describe('Analytics', () => {
-    beforeAll(() => jest.useFakeTimers())
+    beforeAll(() => {
+      jest.useFakeTimers()
+    })
+    beforeEach(() => {
+      jest.clearAllMocks()
+    })
+
     const trigger = (component: ReactTestInstance) => {
       act(() => {
         fireEvent.press(component)
@@ -175,6 +181,15 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
+    })
+
+    it('should trigger logOfferSeenDuration', async () => {
+      const offerPage = await renderOfferPage()
+      expect(analytics.logOfferSeenDuration).not.toHaveBeenCalled()
+      await act(async () => {
+        await offerPage.unmount()
+      })
+      expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
     })
   })
 })
