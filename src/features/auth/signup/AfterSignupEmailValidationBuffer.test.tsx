@@ -72,7 +72,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       loginRoutine.mockRestore()
     })
 
-    it('should open Id-Check app when the user is "éligible"', async () => {
+    it('should redirect to Verify Eligibility when the user is "éligible"', async () => {
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       const response: ValidateEmailResponse = {
         accessToken: 'access_token',
@@ -93,7 +93,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
         expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('IdCheck', {
+        expect(navigate).toHaveBeenCalledWith('VerifyEligibility', {
           email: 'john@wick.com',
           licenceToken: 'XxLicenceTokenxX',
         })
