@@ -7,11 +7,8 @@ import { IconInterface } from './types'
 
 const VIEWBOX_RATIO = 176 / 280
 
-export const HappyFaceStars = ({
-  color = ColorsEnum.GREY_DARK,
-  size = 32,
-  testID,
-}: IconInterface) => {
+export const HappyFaceStars = (props: IconInterface) => {
+  const { color = ColorsEnum.GREY_DARK, size = 32, testID = HappyFaceStars.name } = props
   const height = typeof size === 'number' ? size * VIEWBOX_RATIO : size
   return (
     <Svg width={size} height={height} testID={testID} viewBox="0 0 280 176">

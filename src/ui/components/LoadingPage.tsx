@@ -12,7 +12,7 @@ export const LoadingPage: FunctionComponent = () => {
   return (
     <Container>
       <Background />
-      <StyledLottieView source={LoadingAnimation} autoPlay loop />
+      <StyledLottieView testID="Loading-Animation" source={LoadingAnimation} autoPlay loop />
       <LoadingText>{_(t`Chargement en cours...`)}</LoadingText>
     </Container>
   )
