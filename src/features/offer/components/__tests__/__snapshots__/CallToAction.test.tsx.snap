@@ -77,92 +77,12 @@ exports[`<CallToAction /> should render not disabled 1`] = `
     }
   }
 >
-  <RNSVGSvgView
-    align="none"
-    bbHeight={48}
-    bbWidth="100%"
-    focusable={false}
+  <View
     height={48}
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 48,
-          "width": "100%",
-        },
-      ]
-    }
-    vbHeight={8}
-    vbWidth={375}
     width="100%"
   >
-    <RNSVGGroup>
-      <RNSVGDefs>
-        <RNSVGLinearGradient
-          gradient={
-            Array [
-              0,
-              -1376171,
-              1,
-              -13500266,
-            ]
-          }
-          gradientTransform={null}
-          gradientUnits={0}
-          name="prefix__a"
-          x1="0%"
-          x2="100%"
-          y1="49.977%"
-          y2="50.023%"
-        />
-      </RNSVGDefs>
-      <RNSVGGroup
-        fill={null}
-        propList={
-          Array [
-            "fill",
-          ]
-        }
-      >
-        <RNSVGGroup
-          matrix={
-            Array [
-              1,
-              0,
-              0,
-              1,
-              0,
-              -309,
-            ]
-          }
-          propList={
-            Array [
-              "stroke",
-              "strokeWidth",
-            ]
-          }
-          stroke={
-            Array [
-              1,
-              "prefix__a",
-            ]
-          }
-          strokeWidth={8}
-        >
-          <RNSVGPath
-            d="M4 313H371V314H4z"
-          />
-        </RNSVGGroup>
-      </RNSVGGroup>
-    </RNSVGGroup>
-  </RNSVGSvgView>
+    undefined-SVG-Mock
+  </View>
   <Text
     adjustsFontSizeToFit={true}
     numberOfLines={1}
