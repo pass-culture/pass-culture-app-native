@@ -10,10 +10,6 @@ import { env } from 'libs/environment'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
-jest.mock('ui/components/LoadingPage', () => ({
-  LoadingPage: () => 'LoadingPageMock',
-}))
-
 describe('<IdCheck />', () => {
   it('should render correctly', async () => {
     const instance = renderIdCheckWithNavigation()
@@ -42,7 +38,6 @@ describe('<IdCheck />', () => {
     await waitFor(() => {
       const webview = queryByTestId('idcheck-webview')
       expect(webview).toBeFalsy()
-
       const notWebviewText = getByText('NotIdCheck Page')
       expect(notWebviewText).toBeTruthy()
     })
