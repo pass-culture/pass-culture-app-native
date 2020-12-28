@@ -91,71 +91,13 @@ exports[`SeeMore renders correctly 1`] = `
           }
         }
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={56}
-          bbWidth={56}
-          focusable={false}
+        <View
           height={56}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "flex": 0,
-                "height": 56,
-                "width": 56,
-              },
-            ]
-          }
           testID="arrow-next"
-          vbHeight={53}
-          vbWidth={52}
           width={56}
         >
-          <RNSVGGroup>
-            <RNSVGGroup
-              fill={null}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-            >
-              <RNSVGGroup
-                fill={4293591125}
-                propList={
-                  Array [
-                    "fill",
-                  ]
-                }
-              >
-                <RNSVGGroup>
-                  <RNSVGGroup>
-                    <RNSVGPath
-                      d="M14.528 31.633c-.49.45-1.265.431-1.732-.041-.466-.472-.447-1.22.042-1.669l8.636-7.928c2.838-2.605 7.297-2.605 10.135 0l8.636 7.928c.49.45.509 1.197.042 1.669-.466.472-1.241.49-1.731.04l-8.636-7.927c-1.892-1.737-4.865-1.737-6.757 0l-8.635 7.928z"
-                      matrix={
-                        Array [
-                          6.123233995736766e-17,
-                          1,
-                          -1,
-                          6.123233995736766e-17,
-                          52.54200000000003,
-                          0.4580000000000837,
-                        ]
-                      }
-                    />
-                  </RNSVGGroup>
-                </RNSVGGroup>
-              </RNSVGGroup>
-            </RNSVGGroup>
-          </RNSVGGroup>
-        </RNSVGSvgView>
+          arrow-next-SVG-Mock
+        </View>
       </View>
       <View
         numberOfSpaces={16}

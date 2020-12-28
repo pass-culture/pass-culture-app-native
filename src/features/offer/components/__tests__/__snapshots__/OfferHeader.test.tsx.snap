@@ -113,71 +113,13 @@ exports[`<OfferHeader /> should render correctly 1`] = `
             }
             testID="initial-icon-container"
           >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight={32}
-              bbWidth={32}
-              focusable={false}
+            <View
               height={32}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  Object {
-                    "flex": 0,
-                    "height": 32,
-                    "width": 32,
-                  },
-                ]
-              }
               testID="icon-back"
-              vbHeight={32}
-              vbWidth={32}
               width={32}
             >
-              <RNSVGGroup>
-                <RNSVGGroup
-                  fill={null}
-                  propList={
-                    Array [
-                      "fill",
-                    ]
-                  }
-                >
-                  <RNSVGGroup
-                    fill={4279571733}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGGroup>
-                      <RNSVGGroup>
-                        <RNSVGPath
-                          d="M8.94 19.466c-.301.277-.778.266-1.065-.025-.287-.29-.276-.75.026-1.027l5.314-4.878c1.746-1.603 4.49-1.603 6.237 0l5.314 4.878c.302.277.313.737.026 1.027-.287.29-.764.302-1.065.025l-5.315-4.878c-1.164-1.069-2.993-1.069-4.158 0L8.94 19.466z"
-                          matrix={
-                            Array [
-                              -6.123233995736766e-17,
-                              1,
-                              1,
-                              6.123233995736766e-17,
-                              -0.3329999999999984,
-                              -0.3329999999999984,
-                            ]
-                          }
-                        />
-                      </RNSVGGroup>
-                    </RNSVGGroup>
-                  </RNSVGGroup>
-                </RNSVGGroup>
-              </RNSVGGroup>
-            </RNSVGSvgView>
+              icon-back-SVG-Mock
+            </View>
           </View>
           <View
             style={
@@ -188,71 +130,13 @@ exports[`<OfferHeader /> should render correctly 1`] = `
             }
             testID="final-icon-container"
           >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight={32}
-              bbWidth={32}
-              focusable={false}
+            <View
               height={32}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  Object {
-                    "flex": 0,
-                    "height": 32,
-                    "width": 32,
-                  },
-                ]
-              }
               testID="final-icon-back"
-              vbHeight={32}
-              vbWidth={32}
               width={32}
             >
-              <RNSVGGroup>
-                <RNSVGGroup
-                  fill={null}
-                  propList={
-                    Array [
-                      "fill",
-                    ]
-                  }
-                >
-                  <RNSVGGroup
-                    fill={4294967295}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGGroup>
-                      <RNSVGGroup>
-                        <RNSVGPath
-                          d="M8.94 19.466c-.301.277-.778.266-1.065-.025-.287-.29-.276-.75.026-1.027l5.314-4.878c1.746-1.603 4.49-1.603 6.237 0l5.314 4.878c.302.277.313.737.026 1.027-.287.29-.764.302-1.065.025l-5.315-4.878c-1.164-1.069-2.993-1.069-4.158 0L8.94 19.466z"
-                          matrix={
-                            Array [
-                              -6.123233995736766e-17,
-                              1,
-                              1,
-                              6.123233995736766e-17,
-                              -0.3329999999999984,
-                              -0.3329999999999984,
-                            ]
-                          }
-                        />
-                      </RNSVGGroup>
-                    </RNSVGGroup>
-                  </RNSVGGroup>
-                </RNSVGGroup>
-              </RNSVGGroup>
-            </RNSVGSvgView>
+              final-icon-back-SVG-Mock
+            </View>
           </View>
         </View>
       </View>
@@ -376,47 +260,14 @@ exports[`<OfferHeader /> should render correctly 1`] = `
             }
             testID="initial-icon-container"
           >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight={32}
-              bbWidth={32}
+            <View
               fill="#151515"
-              focusable={false}
               height={32}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  Object {
-                    "flex": 0,
-                    "height": 32,
-                    "width": 32,
-                  },
-                ]
-              }
               testID="icon-share"
-              vbHeight={40}
-              vbWidth={40}
               width={32}
             >
-              <RNSVGGroup
-                fill={4279571733}
-                propList={
-                  Array [
-                    "fill",
-                  ]
-                }
-              >
-                <RNSVGPath
-                  d="M15.773 15.2c.346 0 .625.28.625.624 0 .317-.235.578-.54.62l-.085.005h-3.481c-.54 0-.983.41-1.037.936l-.005.106v11.625c0 .54.41.983.935 1.036l.107.006h15c.539 0 .983-.41 1.036-.935l.005-.107V17.491c0-.539-.41-.983-.935-1.036l-.106-.006h-3.034c-.345 0-.625-.28-.625-.625 0-.316.235-.577.54-.619l.085-.006h3.034c1.218 0 2.215.952 2.287 2.153l.004.14v11.624c0 1.219-.951 2.215-2.152 2.288l-.14.004h-15c-1.218 0-2.215-.951-2.287-2.152l-.004-.14V17.491c0-1.218.951-2.215 2.152-2.287l.14-.005h3.481zm4.065-8.532l.029.003c.024.003.049.008.073.013l.018.005c.024.007.049.015.073.025l.025.011c.05.023.097.053.14.09l.007.006.059.06 4.651 5.315c.228.26.201.655-.058.882-.237.207-.584.204-.816.006l-.066-.065-3.557-4.064v14.71c0 .345-.28.625-.625.625-.316 0-.578-.236-.619-.54l-.006-.085V8.955l-3.556 4.064c-.227.26-.622.286-.882.059-.236-.207-.28-.552-.114-.808l.055-.074 4.652-5.316.028-.03.03-.029.008-.006c.02-.017.034-.027.049-.037l-.056.043c.028-.024.057-.046.088-.064.014-.01.03-.017.045-.025s.03-.014.046-.02l.028-.011c.021-.007.043-.014.065-.019l.052-.01.039-.003h.095z"
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
+              icon-share-SVG-Mock
+            </View>
           </View>
           <View
             style={
@@ -427,47 +278,14 @@ exports[`<OfferHeader /> should render correctly 1`] = `
             }
             testID="final-icon-container"
           >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight={32}
-              bbWidth={32}
+            <View
               fill="#ffffff"
-              focusable={false}
               height={32}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  Object {
-                    "flex": 0,
-                    "height": 32,
-                    "width": 32,
-                  },
-                ]
-              }
               testID="final-icon-share"
-              vbHeight={40}
-              vbWidth={40}
               width={32}
             >
-              <RNSVGGroup
-                fill={4294967295}
-                propList={
-                  Array [
-                    "fill",
-                  ]
-                }
-              >
-                <RNSVGPath
-                  d="M15.773 15.2c.346 0 .625.28.625.624 0 .317-.235.578-.54.62l-.085.005h-3.481c-.54 0-.983.41-1.037.936l-.005.106v11.625c0 .54.41.983.935 1.036l.107.006h15c.539 0 .983-.41 1.036-.935l.005-.107V17.491c0-.539-.41-.983-.935-1.036l-.106-.006h-3.034c-.345 0-.625-.28-.625-.625 0-.316.235-.577.54-.619l.085-.006h3.034c1.218 0 2.215.952 2.287 2.153l.004.14v11.624c0 1.219-.951 2.215-2.152 2.288l-.14.004h-15c-1.218 0-2.215-.951-2.287-2.152l-.004-.14V17.491c0-1.218.951-2.215 2.152-2.287l.14-.005h3.481zm4.065-8.532l.029.003c.024.003.049.008.073.013l.018.005c.024.007.049.015.073.025l.025.011c.05.023.097.053.14.09l.007.006.059.06 4.651 5.315c.228.26.201.655-.058.882-.237.207-.584.204-.816.006l-.066-.065-3.557-4.064v14.71c0 .345-.28.625-.625.625-.316 0-.578-.236-.619-.54l-.006-.085V8.955l-3.556 4.064c-.227.26-.622.286-.882.059-.236-.207-.28-.552-.114-.808l.055-.074 4.652-5.316.028-.03.03-.029.008-.006c.02-.017.034-.027.049-.037l-.056.043c.028-.024.057-.046.088-.064.014-.01.03-.017.045-.025s.03-.014.046-.02l.028-.011c.021-.007.043-.014.065-.019l.052-.01.039-.003h.095z"
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
+              final-icon-share-SVG-Mock
+            </View>
           </View>
         </View>
       </View>
@@ -541,47 +359,14 @@ exports[`<OfferHeader /> should render correctly 1`] = `
             }
             testID="initial-icon-container"
           >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight={32}
-              bbWidth={32}
+            <View
               fill="#151515"
-              focusable={false}
               height={32}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  Object {
-                    "flex": 0,
-                    "height": 32,
-                    "width": 32,
-                  },
-                ]
-              }
               testID="icon-favorite"
-              vbHeight={40}
-              vbWidth={40}
               width={32}
             >
-              <RNSVGGroup
-                fill={4279571733}
-                propList={
-                  Array [
-                    "fill",
-                  ]
-                }
-              >
-                <RNSVGPath
-                  d="M25.562 10.208c3.363 0 6.09 2.726 6.09 6.09 0 .721-.126 1.427-.373 2.103-.793 2.042-1.934 3.93-3.368 5.58-.226.261-.621.289-.882.063-.26-.227-.288-.622-.062-.882 1.34-1.543 2.406-3.306 3.142-5.202.193-.528.293-1.088.293-1.663 0-2.672-2.167-4.839-4.84-4.839-2.674 0-4.84 2.167-4.84 4.84 0 .833-1.25.833-1.25 0 0-2.674-2.166-4.84-4.84-4.84-2.673 0-4.84 2.167-4.84 4.84 0 .574.1 1.134.289 1.65 1.769 4.558 5.362 8.2 9.867 10.023l.145.056.252-.098c.934-.385 1.834-.85 2.69-1.39l.424-.276c.287-.193.675-.116.867.17.193.287.116.675-.17.868-1.2.805-2.488 1.472-3.838 1.983-.111.042-.231.051-.346.028l-.086-.024-.047-.017c-5-1.909-8.985-5.875-10.928-10.881-.243-.665-.37-1.37-.37-2.093 0-3.363 2.728-6.089 6.091-6.089 2.355 0 4.397 1.336 5.41 3.29l.055.11.054-.109c.985-1.9 2.94-3.214 5.21-3.287l.2-.004z"
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
+              icon-favorite-SVG-Mock
+            </View>
           </View>
           <View
             style={
@@ -592,47 +377,14 @@ exports[`<OfferHeader /> should render correctly 1`] = `
             }
             testID="final-icon-container"
           >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight={32}
-              bbWidth={32}
+            <View
               fill="#ffffff"
-              focusable={false}
               height={32}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  Object {
-                    "flex": 0,
-                    "height": 32,
-                    "width": 32,
-                  },
-                ]
-              }
               testID="final-icon-favorite"
-              vbHeight={40}
-              vbWidth={40}
               width={32}
             >
-              <RNSVGGroup
-                fill={4294967295}
-                propList={
-                  Array [
-                    "fill",
-                  ]
-                }
-              >
-                <RNSVGPath
-                  d="M25.562 10.208c3.363 0 6.09 2.726 6.09 6.09 0 .721-.126 1.427-.373 2.103-.793 2.042-1.934 3.93-3.368 5.58-.226.261-.621.289-.882.063-.26-.227-.288-.622-.062-.882 1.34-1.543 2.406-3.306 3.142-5.202.193-.528.293-1.088.293-1.663 0-2.672-2.167-4.839-4.84-4.839-2.674 0-4.84 2.167-4.84 4.84 0 .833-1.25.833-1.25 0 0-2.674-2.166-4.84-4.84-4.84-2.673 0-4.84 2.167-4.84 4.84 0 .574.1 1.134.289 1.65 1.769 4.558 5.362 8.2 9.867 10.023l.145.056.252-.098c.934-.385 1.834-.85 2.69-1.39l.424-.276c.287-.193.675-.116.867.17.193.287.116.675-.17.868-1.2.805-2.488 1.472-3.838 1.983-.111.042-.231.051-.346.028l-.086-.024-.047-.017c-5-1.909-8.985-5.875-10.928-10.881-.243-.665-.37-1.37-.37-2.093 0-3.363 2.728-6.089 6.091-6.089 2.355 0 4.397 1.336 5.41 3.29l.055.11.054-.109c.985-1.9 2.94-3.214 5.21-3.287l.2-.004z"
-                />
-              </RNSVGGroup>
-            </RNSVGSvgView>
+              final-icon-favorite-SVG-Mock
+            </View>
           </View>
         </View>
       </View>

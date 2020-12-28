@@ -15,183 +15,12 @@ Array [
       ]
     }
   >
-    <RNSVGSvgView
-      align="none"
-      bbHeight="100%"
-      bbWidth="100%"
-      focusable={false}
+    <View
       height="100%"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": "100%",
-            "width": "100%",
-          },
-        ]
-      }
-      vbHeight={667}
-      vbWidth={375}
       width="100%"
     >
-      <RNSVGGroup>
-        <RNSVGDefs>
-          <RNSVGLinearGradient
-            gradient={
-              Array [
-                0,
-                -1376171,
-                1,
-                -13500266,
-              ]
-            }
-            gradientTransform={null}
-            gradientUnits={0}
-            name="prefix__b"
-            x1="65.805%"
-            x2="47.731%"
-            y1="26.588%"
-            y2="116.28%"
-          />
-          <RNSVGLinearGradient
-            gradient={
-              Array [
-                0,
-                -1376171,
-                1,
-                -13500266,
-              ]
-            }
-            gradientTransform={null}
-            gradientUnits={0}
-            name="prefix__d"
-            x1="29.678%"
-            x2="32.571%"
-            y1="71.761%"
-            y2="14.036%"
-          />
-          <RNSVGPath
-            d="M0 0h375v667H0z"
-            name="prefix__a"
-          />
-          <RNSVGPath
-            d="M574.848 685.018c44.64 237.462 197.943-58.73 172.765-186.83-25.178-128.1-120.317-395.218-387.196-385.031-266.88 10.187-281.873 242.282-174.83 360.46 107.043 118.179 344.621-26.06 389.26 211.401z"
-            name="prefix__e"
-          />
-        </RNSVGDefs>
-        <RNSVGGroup
-          fill={null}
-          fillRule={0}
-          propList={
-            Array [
-              "fill",
-              "fillRule",
-            ]
-          }
-        >
-          <RNSVGMask
-            fill={4294967295}
-            height="100%"
-            maskContentUnits={1}
-            maskTransform={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            maskUnits={0}
-            name="prefix__c"
-            propList={
-              Array [
-                "fill",
-              ]
-            }
-            width="100%"
-            x="0%"
-            y="0%"
-          >
-            <RNSVGUse
-              height={0}
-              href="prefix__a"
-              width={0}
-              x={0}
-              y={0}
-            />
-          </RNSVGMask>
-          <RNSVGUse
-            fill={
-              Array [
-                1,
-                "prefix__b",
-              ]
-            }
-            height={0}
-            href="prefix__a"
-            matrix={
-              Array [
-                -1,
-                0,
-                0,
-                1,
-                375,
-                0,
-              ]
-            }
-            propList={
-              Array [
-                "fill",
-              ]
-            }
-            width={0}
-            x={0}
-            y={0}
-          />
-          <RNSVGGroup
-            mask="prefix__c"
-          >
-            <RNSVGUse
-              fill={
-                Array [
-                  1,
-                  "prefix__d",
-                ]
-              }
-              height={0}
-              href="prefix__e"
-              matrix={
-                Array [
-                  -0.8660254037844387,
-                  -0.49999999999999994,
-                  0.49999999999999994,
-                  -0.8660254037844387,
-                  247.47746608921344,
-                  990.3613871835053,
-                ]
-              }
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-              width={0}
-              x={0}
-              y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGGroup>
-      </RNSVGGroup>
-    </RNSVGSvgView>
+      undefined-SVG-Mock
+    </View>
   </View>,
   <View
     onPress={[Function]}
@@ -275,71 +104,13 @@ Array [
             }
             testID="leftIconButton"
           >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight={32}
-              bbWidth={32}
-              focusable={false}
+            <View
               height={32}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  Object {
-                    "flex": 0,
-                    "height": 32,
-                    "width": 32,
-                  },
-                ]
-              }
               testID="leftIcon"
-              vbHeight={32}
-              vbWidth={32}
               width={32}
             >
-              <RNSVGGroup>
-                <RNSVGGroup
-                  fill={null}
-                  propList={
-                    Array [
-                      "fill",
-                    ]
-                  }
-                >
-                  <RNSVGGroup
-                    fill={4279571733}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGGroup>
-                      <RNSVGGroup>
-                        <RNSVGPath
-                          d="M8.94 19.466c-.301.277-.778.266-1.065-.025-.287-.29-.276-.75.026-1.027l5.314-4.878c1.746-1.603 4.49-1.603 6.237 0l5.314 4.878c.302.277.313.737.026 1.027-.287.29-.764.302-1.065.025l-5.315-4.878c-1.164-1.069-2.993-1.069-4.158 0L8.94 19.466z"
-                          matrix={
-                            Array [
-                              -6.123233995736766e-17,
-                              1,
-                              1,
-                              6.123233995736766e-17,
-                              -0.3329999999999984,
-                              -0.3329999999999984,
-                            ]
-                          }
-                        />
-                      </RNSVGGroup>
-                    </RNSVGGroup>
-                  </RNSVGGroup>
-                </RNSVGGroup>
-              </RNSVGGroup>
-            </RNSVGSvgView>
+              leftIcon-SVG-Mock
+            </View>
           </View>
           <Text
             style={
@@ -391,71 +162,13 @@ Array [
             }
             testID="rightIconButton"
           >
-            <RNSVGSvgView
-              align="xMidYMid"
-              bbHeight={32}
-              bbWidth={32}
-              focusable={false}
+            <View
               height={32}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                    "borderWidth": 0,
-                  },
-                  Object {
-                    "flex": 0,
-                    "height": 32,
-                    "width": 32,
-                  },
-                ]
-              }
               testID="rightIcon"
-              vbHeight={32}
-              vbWidth={32}
               width={32}
             >
-              <RNSVGGroup>
-                <RNSVGGroup
-                  fill={null}
-                  propList={
-                    Array [
-                      "fill",
-                    ]
-                  }
-                >
-                  <RNSVGGroup
-                    fill={4279571733}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGGroup>
-                      <RNSVGGroup>
-                        <RNSVGPath
-                          d="M23.3 8.225c.302-.29.804-.301 1.12-.025.318.276.33.735.028 1.024l-5.322 5.11c-1.166 1.12-1.166 2.879 0 3.998l5.322 5.11c.302.29.29.749-.027 1.025-.317.276-.819.265-1.12-.025l-5.323-5.11c-1.749-1.68-1.749-4.318 0-5.997zm-14.6 0l5.322 5.11c1.749 1.679 1.749 4.318 0 5.997L8.7 24.442c-.302.29-.804.3-1.12.025-.318-.276-.33-.735-.028-1.025l5.322-5.11c1.166-1.12 1.166-2.878 0-3.998l-5.322-5.11c-.302-.29-.29-.748.027-1.024s.819-.265 1.12.025z"
-                          matrix={
-                            Array [
-                              -1,
-                              0,
-                              0,
-                              1,
-                              32,
-                              0,
-                            ]
-                          }
-                        />
-                      </RNSVGGroup>
-                    </RNSVGGroup>
-                  </RNSVGGroup>
-                </RNSVGGroup>
-              </RNSVGGroup>
-            </RNSVGSvgView>
+              rightIcon-SVG-Mock
+            </View>
           </View>
         </View>
         <View
@@ -858,41 +571,13 @@ Array [
                   }
                 />
                 <Text>
-                  <RNSVGSvgView
-                    bbHeight={16}
-                    bbWidth={15}
-                    focusable={false}
+                  <View
                     height={16}
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "transparent",
-                          "borderWidth": 0,
-                        },
-                        Object {
-                          "flex": 0,
-                          "height": 16,
-                          "width": 15,
-                        },
-                      ]
-                    }
                     testID="externalSiteIcon"
                     width={15}
                   >
-                    <RNSVGGroup>
-                      <RNSVGPath
-                        d="M6.55 3.625c.335.005.503.181.503.53 0 .35-.168.526-.504.53H1.008v9.546h9.068V8.398c0-.354.168-.53.504-.53.335 0 .503.176.503.53v6.363c0 .293-.225.53-.503.53H.504a.518.518 0 01-.504-.53V4.155c0-.293.226-.53.504-.53h6.045zM10.024.126l.092.003 3.338.4a.524.524 0 01.45.472l.383 3.493a.53.53 0 01-.45.593.517.517 0 01-.567-.471l-.268-2.436-6.565 6.872a.496.496 0 01-.724 0 .554.554 0 010-.758l6.526-6.832L10 1.193a.526.526 0 01-.452-.496L9.55.6a.518.518 0 01.567-.471z"
-                        fill={4293591125}
-                        fillRule={0}
-                        propList={
-                          Array [
-                            "fill",
-                            "fillRule",
-                          ]
-                        }
-                      />
-                    </RNSVGGroup>
-                  </RNSVGSvgView>
+                    externalSiteIcon-SVG-Mock
+                  </View>
                    Charte
                 </Text>
                  des Données Personnelles
@@ -947,41 +632,13 @@ Array [
                   }
                 />
                 <Text>
-                  <RNSVGSvgView
-                    bbHeight={16}
-                    bbWidth={15}
-                    focusable={false}
+                  <View
                     height={16}
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "transparent",
-                          "borderWidth": 0,
-                        },
-                        Object {
-                          "flex": 0,
-                          "height": 16,
-                          "width": 15,
-                        },
-                      ]
-                    }
                     testID="externalSiteIcon"
                     width={15}
                   >
-                    <RNSVGGroup>
-                      <RNSVGPath
-                        d="M6.55 3.625c.335.005.503.181.503.53 0 .35-.168.526-.504.53H1.008v9.546h9.068V8.398c0-.354.168-.53.504-.53.335 0 .503.176.503.53v6.363c0 .293-.225.53-.503.53H.504a.518.518 0 01-.504-.53V4.155c0-.293.226-.53.504-.53h6.045zM10.024.126l.092.003 3.338.4a.524.524 0 01.45.472l.383 3.493a.53.53 0 01-.45.593.517.517 0 01-.567-.471l-.268-2.436-6.565 6.872a.496.496 0 01-.724 0 .554.554 0 010-.758l6.526-6.832L10 1.193a.526.526 0 01-.452-.496L9.55.6a.518.518 0 01.567-.471z"
-                        fill={4293591125}
-                        fillRule={0}
-                        propList={
-                          Array [
-                            "fill",
-                            "fillRule",
-                          ]
-                        }
-                      />
-                    </RNSVGGroup>
-                  </RNSVGSvgView>
+                    externalSiteIcon-SVG-Mock
+                  </View>
                    Conditions
                 </Text>
                  Générales d'Utilisation
@@ -1090,80 +747,14 @@ Array [
                   ]
                 }
               >
-                <RNSVGSvgView
-                  align="xMidYMid"
-                  bbHeight={8}
-                  bbWidth={8}
+                <View
                   fill="#15884f"
-                  focusable={false}
                   height={8}
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
                   testID="dot-icon"
-                  vbHeight={8}
-                  vbWidth={8}
                   width={8}
                 >
-                  <RNSVGGroup
-                    fill={4279601231}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGGroup
-                      fill={null}
-                      propList={
-                        Array [
-                          "fill",
-                        ]
-                      }
-                    >
-                      <RNSVGGroup
-                        fill={4279601231}
-                        propList={
-                          Array [
-                            "fill",
-                          ]
-                        }
-                      >
-                        <RNSVGGroup
-                          matrix={
-                            Array [
-                              -1,
-                              -1.2246467991473532e-16,
-                              1.2246467991473532e-16,
-                              -1,
-                              7.999999999999972,
-                              10,
-                            ]
-                          }
-                        >
-                          <RNSVGCircle
-                            cx="4"
-                            cy="6"
-                            r="4"
-                          />
-                        </RNSVGGroup>
-                      </RNSVGGroup>
-                    </RNSVGGroup>
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                  dot-icon-SVG-Mock
+                </View>
               </View>
               <View
                 numberOfSpaces={2}
@@ -1184,80 +775,14 @@ Array [
                   ]
                 }
               >
-                <RNSVGSvgView
-                  align="xMidYMid"
-                  bbHeight={8}
-                  bbWidth={8}
+                <View
                   fill="#15884f"
-                  focusable={false}
                   height={8}
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
                   testID="dot-icon"
-                  vbHeight={8}
-                  vbWidth={8}
                   width={8}
                 >
-                  <RNSVGGroup
-                    fill={4279601231}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGGroup
-                      fill={null}
-                      propList={
-                        Array [
-                          "fill",
-                        ]
-                      }
-                    >
-                      <RNSVGGroup
-                        fill={4279601231}
-                        propList={
-                          Array [
-                            "fill",
-                          ]
-                        }
-                      >
-                        <RNSVGGroup
-                          matrix={
-                            Array [
-                              -1,
-                              -1.2246467991473532e-16,
-                              1.2246467991473532e-16,
-                              -1,
-                              7.999999999999972,
-                              10,
-                            ]
-                          }
-                        >
-                          <RNSVGCircle
-                            cx="4"
-                            cy="6"
-                            r="4"
-                          />
-                        </RNSVGGroup>
-                      </RNSVGGroup>
-                    </RNSVGGroup>
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                  dot-icon-SVG-Mock
+                </View>
               </View>
               <View
                 numberOfSpaces={2}
@@ -1278,80 +803,14 @@ Array [
                   ]
                 }
               >
-                <RNSVGSvgView
-                  align="xMidYMid"
-                  bbHeight={12}
-                  bbWidth={12}
+                <View
                   fill="#eb0055"
-                  focusable={false}
                   height={12}
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 12,
-                        "width": 12,
-                      },
-                    ]
-                  }
                   testID="dot-icon"
-                  vbHeight={8}
-                  vbWidth={8}
                   width={12}
                 >
-                  <RNSVGGroup
-                    fill={4293591125}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGGroup
-                      fill={null}
-                      propList={
-                        Array [
-                          "fill",
-                        ]
-                      }
-                    >
-                      <RNSVGGroup
-                        fill={4293591125}
-                        propList={
-                          Array [
-                            "fill",
-                          ]
-                        }
-                      >
-                        <RNSVGGroup
-                          matrix={
-                            Array [
-                              -1,
-                              -1.2246467991473532e-16,
-                              1.2246467991473532e-16,
-                              -1,
-                              7.999999999999972,
-                              10,
-                            ]
-                          }
-                        >
-                          <RNSVGCircle
-                            cx="4"
-                            cy="6"
-                            r="4"
-                          />
-                        </RNSVGGroup>
-                      </RNSVGGroup>
-                    </RNSVGGroup>
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                  dot-icon-SVG-Mock
+                </View>
               </View>
               <View
                 numberOfSpaces={2}
@@ -1372,80 +831,14 @@ Array [
                   ]
                 }
               >
-                <RNSVGSvgView
-                  align="xMidYMid"
-                  bbHeight={8}
-                  bbWidth={8}
+                <View
                   fill="#c7c7cc"
-                  focusable={false}
                   height={8}
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Object {
-                        "flex": 0,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
                   testID="dot-icon"
-                  vbHeight={8}
-                  vbWidth={8}
                   width={8}
                 >
-                  <RNSVGGroup
-                    fill={4291282892}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGGroup
-                      fill={null}
-                      propList={
-                        Array [
-                          "fill",
-                        ]
-                      }
-                    >
-                      <RNSVGGroup
-                        fill={4291282892}
-                        propList={
-                          Array [
-                            "fill",
-                          ]
-                        }
-                      >
-                        <RNSVGGroup
-                          matrix={
-                            Array [
-                              -1,
-                              -1.2246467991473532e-16,
-                              1.2246467991473532e-16,
-                              -1,
-                              7.999999999999972,
-                              10,
-                            ]
-                          }
-                        >
-                          <RNSVGCircle
-                            cx="4"
-                            cy="6"
-                            r="4"
-                          />
-                        </RNSVGGroup>
-                      </RNSVGGroup>
-                    </RNSVGGroup>
-                  </RNSVGGroup>
-                </RNSVGSvgView>
+                  dot-icon-SVG-Mock
+                </View>
               </View>
             </View>
           </View>
