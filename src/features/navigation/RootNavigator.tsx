@@ -9,6 +9,7 @@ import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetP
 import { Login } from 'features/auth/login/Login'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
+import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
@@ -43,6 +44,7 @@ export type RootStackParamList = {
   AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }
   AppComponents: undefined
   CheatCodes: undefined
+  EligibilityConfirmed: undefined
   ForgottenPassword: undefined
   Login: undefined
   IdCheck: { email: string; licenceToken: string }
@@ -104,6 +106,7 @@ export const RootNavigator: React.FC = () => {
           component={SignupConfirmationExpiredLink}
         />
         <RootStack.Screen name="VerifyEligibility" component={VerifyEligibility} />
+        <RootStack.Screen name="EligibilityConfirmed" component={EligibilityConfirmed} />
       </RootStack.Navigator>
     </NavigationContainer>
   )

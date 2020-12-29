@@ -67,6 +67,10 @@ msgstr "Adresse"
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
+#: src/features/auth/signup/EligibilityConfirmed.tsx:17
+msgid "Aide-nous à en savoir plus sur tes pratiques culturelles !  Ta sélection n'aura pas d'impact sur les offres proposées."
+msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles !  Ta sélection n'aura pas d'impact sur les offres proposées."
+
 #. Error message on Batch get installation ID
 #: src/features/cheatcodes/pages/CheatCodes.tsx:90
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
@@ -111,7 +115,7 @@ msgstr "Ce lien de validation n'est plus valide"
 msgid "Ce site est protégé par reCAPTCHA Google. La"
 msgstr "Ce site est protégé par reCAPTCHA Google. La"
 
-#: src/ui/components/LoadingPage.tsx:12
+#: src/ui/components/LoadingPage.tsx:13
 msgid "Chargement en cours..."
 msgstr "Chargement en cours..."
 
@@ -312,6 +316,10 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
+#: src/features/auth/signup/EligibilityConfirmed.tsx:21
+msgid "On y va !"
+msgstr "On y va !"
+
 #: src/features/errors/pages/RetryBoundary.tsx:30
 msgid "Oops !"
 msgstr "Oops !"
@@ -435,6 +443,10 @@ msgstr "Ton mot de passe a été modifié !"
 #: src/features/home/pages/Home.tsx:76
 msgid "Toute la culture dans votre main"
 msgstr "Toute la culture dans votre main"
+
+#: src/features/auth/signup/EligibilityConfirmed.tsx:15
+msgid "Tu es éligible !"
+msgstr "Tu es éligible !"
 
 #: src/features/errors/pages/RetryBoundary.tsx:37
 msgid "Une erreur s'est produite pendant le chargement."
