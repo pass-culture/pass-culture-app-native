@@ -326,6 +326,7 @@ exports[`<IdCheck /> should render correctly 1`] = `
                             Array [
                               Object {
                                 "height": "100%",
+                                "opacity": 0.99,
                                 "width": "100%",
                               },
                             ],

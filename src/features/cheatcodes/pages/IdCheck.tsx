@@ -50,6 +50,7 @@ export const IdCheck: React.FC<Props> = function (props) {
 const StyledWebview = styled(WebView)({
   height: '100%',
   width: '100%',
+  opacity: 0.99, // DO NOT REMOVE : somehow, this opacity value prevents webview to crash on Android
 })
 
 const LoadingPageContainer = styled.View({
