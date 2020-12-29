@@ -19,10 +19,13 @@ export const IdCheck: React.FC<Props> = function (props) {
   const uri = `${env.ID_CHECK_URL}/?email=${email}&licence_token=${licenceToken}`
 
   function onNavigationStateChange(event: WebViewNavigation) {
-    // For more info, see the termination route of the Id Check web app
-    const shouldCloseWebView = event.url.includes('/end')
-    if (shouldCloseWebView) {
+    // For more info, see the buffer pages (i.e. to exit the webview) of the Id Check web app
+    const isEligibilityProcessAbandonned = event.url.includes('/exit')
+    const isEligibilityProcessFinished = event.url.includes('/end')
+    if (isEligibilityProcessAbandonned) {
       navigation.navigate('Home', { shouldDisplayLoginModal: false })
+    } else if (isEligibilityProcessFinished) {
+      navigation.navigate('EligibilityConfirmed')
     }
   }
 
