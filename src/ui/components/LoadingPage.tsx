@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
+import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
@@ -11,7 +12,7 @@ export const LoadingPage: FunctionComponent = () => {
   return (
     <Container>
       <Background />
-      <LottieContainer source={require('../animations/lottie_loading.json')} autoPlay loop />
+      <StyledLottieView source={LoadingAnimation} autoPlay loop />
       <LoadingText>{_(t`Chargement en cours...`)}</LoadingText>
     </Container>
   )
@@ -27,7 +28,7 @@ const Container = styled.View({
   maxWidth: getSpacing(125),
 })
 
-const LottieContainer = styled(LottieView)({
+const StyledLottieView = styled(LottieView)({
   width: 150,
   height: 150,
 })
