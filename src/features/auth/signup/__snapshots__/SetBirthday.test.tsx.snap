@@ -603,7 +603,7 @@ Array [
                         Object {
                           "fontSize": 18,
                           "lineHeight": 22,
-                          "minWidth": 36,
+                          "minWidth": 40,
                           "paddingHorizontal": 10,
                           "textAlign": "center",
                         },
@@ -684,7 +684,7 @@ Array [
                         Object {
                           "fontSize": 18,
                           "lineHeight": 22,
-                          "minWidth": 36,
+                          "minWidth": 40,
                           "paddingHorizontal": 10,
                           "textAlign": "center",
                         },
@@ -765,7 +765,7 @@ Array [
                         Object {
                           "fontSize": 18,
                           "lineHeight": 22,
-                          "minWidth": 72,
+                          "minWidth": 80,
                           "paddingHorizontal": 10,
                           "textAlign": "center",
                         },
