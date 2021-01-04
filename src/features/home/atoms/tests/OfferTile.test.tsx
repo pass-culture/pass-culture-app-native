@@ -1,11 +1,11 @@
-import { render, fireEvent } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { OfferTile } from '../OfferTile'
 
@@ -14,6 +14,7 @@ const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = dehumanizeId(offer.id)!
 const props = {
   category: offer.category || '',
+  description: offer.description || '',
   distance: '1,2km',
   date: 'Dès le 12 mars 2020',
   name: offer.name,
@@ -21,7 +22,6 @@ const props = {
   offerId,
   price: '28 €',
   thumbUrl: offer.thumbUrl,
-  algoliaHit: mockedAlgoliaResponse.hits[0],
   moduleName: 'Module Name',
 }
 
@@ -42,5 +42,28 @@ describe('OfferTile component', () => {
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.press(getByTestId('offerTileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith(offerId, 'Module Name')
+  })
+
+  it('should prepopulate react-query cache when clicking on offer', async () => {
+    const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
+    fireEvent.press(getByTestId('offerTileImage'))
+
+    const queryHash = JSON.stringify(['offer', offerId])
+    const query = queryCache.get(queryHash)
+    expect(query).not.toBeUndefined()
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    expect(query!.state.data).toStrictEqual({
+      accessibility: {},
+      category: { label: 'MUSIQUE' },
+      description: offer.description,
+      fullAddress: null,
+      id: offerId,
+      imageUrl: props.thumbUrl,
+      isDigital: false,
+      isDuo: false,
+      name: offer.name,
+      stocks: [],
+      venue: { coordinates: {} },
+    })
   })
 })

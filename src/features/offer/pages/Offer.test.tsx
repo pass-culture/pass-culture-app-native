@@ -2,11 +2,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
+import { QueryClient, UseQueryResult } from 'react-query'
 import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
+import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -190,6 +191,50 @@ describe('<Offer />', () => {
         await offerPage.unmount()
       })
       expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('OfferTile to Offer transition', () => {
+    it('should open Offer with prepopulated react-query cache', async () => {
+      const setup = (queryClient: QueryClient) => {
+        queryClient.removeQueries()
+        queryClient.setQueryData(
+          ['offer', offerId],
+          mergeOfferData({
+            category: offerResponseSnap.category.label,
+            description: offerResponseSnap.description,
+            thumbUrl: offerResponseSnap.imageUrl,
+            isDuo: offerResponseSnap.isDuo,
+            name: offerResponseSnap.name,
+            offerId,
+          })
+        )
+      }
+
+      const wrapper = render(
+        reactQueryProviderHOC(
+          <NavigationContainer>
+            <RootStack.Navigator initialRouteName="Offer">
+              <RootStack.Screen name="Offer" component={Offer} initialParams={{ id: offerId }} />
+            </RootStack.Navigator>
+          </NavigationContainer>,
+          setup
+        )
+      )
+
+      const initialSnapshot = wrapper.toJSON()
+      expect(wrapper.queryByText('Accessibilité')).toBeFalsy()
+
+      await act(async () => {
+        await flushAllPromises()
+      })
+
+      await waitForExpect(() => {
+        expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
+      })
+
+      expect(wrapper.toJSON()).toMatchDiffSnapshot(initialSnapshot)
+      expect(wrapper.queryByText('Accessibilité')).toBeTruthy()
     })
   })
 })

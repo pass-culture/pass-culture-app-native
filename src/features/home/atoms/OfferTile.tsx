@@ -35,7 +35,7 @@ type PartialOffer = Pick<
   'category' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId'
 >
 
-const mergeOfferData = (offer: PartialOffer) => (
+export const mergeOfferData = (offer: PartialOffer) => (
   prevData: OfferAdaptedResponse | undefined
 ): OfferAdaptedResponse => ({
   fullAddress: null,
