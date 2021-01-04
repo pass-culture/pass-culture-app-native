@@ -26,7 +26,7 @@ export const useTrackOfferSeenDuration = (offerId: number) => {
       const totalDurationOnPageInSeconds = (endTime.getTime() - startTime.getTime()) / 1000
       const durationWithoutBackgroundTimeInSec =
         totalDurationOnPageInSeconds - timeInBackground.current
-      analytics.logOfferSeenDuration(offerId, durationWithoutBackgroundTimeInSec)
+      analytics.logOfferSeenDuration(offerId, +durationWithoutBackgroundTimeInSec.toFixed(3))
     }
   }, [])
 }
