@@ -43,17 +43,17 @@ msgstr "Abandonner l'inscription"
 
 #: src/features/auth/signup/AcceptCgu.tsx:73
 msgid "Accepter et s’inscrire"
-msgstr "Accepter et s’inscrire"
+msgstr "Accepter et s’inscrire<<<<<<< HEAD"
 
-#: src/features/offer/pages/Offer.tsx:81
+#: src/features/offer/pages/Offer.tsx:83
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/services/useCtaWording.ts:12
+#: src/features/offer/services/useCtaWording.ts:13
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
-#: src/features/offer/services/useCtaWording.ts:11
+#: src/features/offer/services/useCtaWording.ts:12
 msgid "Accéder à la billetterie externe"
 msgstr "Accéder à la billetterie externe"
 
@@ -127,8 +127,8 @@ msgstr "Charte des Données Personnelles"
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:30
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:27
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
@@ -147,7 +147,7 @@ msgstr "Composants"
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:24
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:29
 msgid "Confirme ton e\\u2011mail"
 msgstr "Confirme ton e\\u2011mail"
 
@@ -160,15 +160,15 @@ msgstr "Confirmer le mot de passe"
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:43
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:40
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:48
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:40
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:51
 #: src/features/auth/signup/AcceptCgu.tsx:71
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:37
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:42
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:43
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -203,7 +203,7 @@ msgstr "Duo"
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:27
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:32
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
@@ -264,8 +264,8 @@ msgstr "ISBN"
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:40
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:37
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
@@ -288,9 +288,9 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 
 #: src/features/auth/signup/SetBirthday.tsx:133
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
-msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.<<<<<<< HEAD"
 
-#: src/features/offer/pages/Offer.tsx:73
+#: src/features/offer/pages/Offer.tsx:75
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -315,6 +315,10 @@ msgstr "Navigation"
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:55
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
+
+#: src/features/offer/services/useCtaWording.ts:14
+msgid "Offre expirée"
+msgstr "Offre expirée"
 
 #: src/features/auth/signup/EligibilityConfirmed.tsx:21
 msgid "On y va !"
@@ -355,9 +359,9 @@ msgstr "Pourquoi ?"
 
 #: src/features/profile/pages/Profile.tsx:12
 msgid "Profile"
-msgstr "Profil"
+msgstr "Profil<<<<<<< HEAD"
 
-#: src/features/offer/pages/Offer.tsx:64
+#: src/features/offer/pages/Offer.tsx:66
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -401,8 +405,8 @@ msgstr "Se connecter"
 msgid "Search"
 msgstr "Recherche"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:39
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:36
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
 msgid "Si l'e-mail n'arrive pas, tu peux :"
 msgstr "Si l'e-mail n'arrive pas, tu peux :"
 
@@ -469,7 +473,7 @@ msgstr "Valider"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/services/useCtaWording.ts:13
+#: src/features/offer/services/useCtaWording.ts:14
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
