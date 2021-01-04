@@ -78,7 +78,7 @@ const StyledInput = styled(BaseTextInput)<{ numberOfChar: number }>(
     fontSize: 18,
     lineHeight: '22px',
     paddingHorizontal: 10,
-    minWidth: lengthByChar * 18,
+    minWidth: lengthByChar * 20,
   })
 )
 
