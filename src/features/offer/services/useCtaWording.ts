@@ -9,7 +9,7 @@ import { _ } from 'libs/i18n'
 import { OfferAdaptedResponse } from '../api/useOffer'
 
 interface CtaWordingI {
-  categoryType: CategoryType
+  categoryType: CategoryType | undefined
 }
 
 export const useCtaWording = ({ categoryType }: CtaWordingI) => {

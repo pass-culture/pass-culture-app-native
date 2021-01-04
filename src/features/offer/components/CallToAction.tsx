@@ -1,20 +1,16 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { CategoryType } from 'api/gen'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-import { useCtaWording } from '../services/useCtaWording'
-
 interface Props {
-  categoryType: CategoryType
+  wording: string
 }
 
-export const CallToAction: React.FC<Props> = ({ categoryType }) => {
-  const wording = useCtaWording({ categoryType })
+export const CallToAction: React.FC<Props> = ({ wording }) => {
   return (
     <Container onPress={() => null}>
       <Rectangle height={getSpacing(12)} size="100%" />
