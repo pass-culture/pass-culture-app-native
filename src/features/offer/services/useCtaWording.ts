@@ -19,11 +19,11 @@ export const useCtaWording = ({ offer }: Props) => {
     return offer?.category.categoryType === CategoryType.Event
       ? _(t`Accéder à la billetterie externe`)
       : _(t`Accéder à l'offre`)
-  return _(t`Voir les disponibilités`)
+  return isOfferExpired(offer) ? _(t`Offre expirée`) : _(t`Voir les disponibilités`)
 }
 
-export const isOfferExpired = (offer: OfferAdaptedResponse) =>
-  offer.stocks.every((stock) => {
+export const isOfferExpired = (offer: OfferAdaptedResponse | undefined) =>
+  offer?.stocks.every((stock) => {
     if (!stock.bookingLimitDatetime) return false
     return isTimestampExpired(Math.round(stock.bookingLimitDatetime?.valueOf() / 1000), 0)
   })
