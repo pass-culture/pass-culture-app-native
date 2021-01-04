@@ -1,14 +1,8 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef, useEffect } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
-import {
-  Animated,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
-  AppState,
-  AppStateStatus,
-} from 'react-native'
+import { Animated, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -34,42 +28,15 @@ import {
   OfferPartialDescription,
 } from '../components'
 
+import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
+
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 const OfferComponent: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const { data: offerResponse } = useOffer({ offerId: params.id })
   const headerScroll = useRef(new Animated.Value(0)).current
   const hasSeenAllPage = useRef<boolean>(false)
-
-  const appState = useRef(AppState.currentState)
-  let timeInBackground = useRef(0).current
-  let startTimeBackground = useRef<Date | null>(null).current
-
-  const handleAppStateChange = (nextAppState: AppStateStatus) => {
-    if (appState.current === 'active' && nextAppState.match(/inactive|background/)) {
-      startTimeBackground = new Date()
-    }
-    if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
-      const endTimeBackground = new Date()
-      if (startTimeBackground)
-        timeInBackground +=
-          // @ts-ignore startTimeBackground cannot be null here
-          (endTimeBackground.getTime() - startTimeBackground.getTime()) / 1000
-    }
-    appState.current = nextAppState
-  }
-
-  useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange)
-    const startTime = new Date()
-    return () => {
-      AppState.removeEventListener('change', handleAppStateChange)
-      const endTime = new Date()
-      const totalDurationOnPageInSeconds = (endTime.getTime() - startTime.getTime()) / 1000
-      const durationWithoutBackgroundTimeInSec = totalDurationOnPageInSeconds - timeInBackground
-      analytics.logOfferSeenDuration(params.id, durationWithoutBackgroundTimeInSec)
-    }
-  }, [])
+  useTrackOfferSeenDuration(params.id)
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
