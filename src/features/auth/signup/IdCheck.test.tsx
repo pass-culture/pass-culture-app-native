@@ -4,7 +4,7 @@ import { act, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import { Text } from 'react-native'
 
-import { IdCheck } from 'features/cheatcodes/pages/IdCheck'
+import { IdCheck } from 'features/auth/signup/IdCheck'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 
