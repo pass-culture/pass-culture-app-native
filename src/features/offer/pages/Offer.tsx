@@ -42,19 +42,19 @@ const OfferComponent: FunctionComponent = () => {
   const hasSeenAllPage = useRef<boolean>(false)
 
   const appState = useRef(AppState.currentState)
-  const timeInBackground = useRef(0).current
-  const startTimeBackground = useRef<Date | null>(null).current
+  let timeInBackground = useRef(0).current
+  let startTimeBackground = useRef<Date | null>(null).current
 
   const handleAppStateChange = (nextAppState: AppStateStatus) => {
     if (appState.current === 'active' && nextAppState.match(/inactive|background/)) {
-      startTimeBackground.current = new Date()
+      startTimeBackground = new Date()
     }
     if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
       const endTimeBackground = new Date()
       if (startTimeBackground)
-        timeInBackground.current +=
+        timeInBackground +=
           // @ts-ignore startTimeBackground cannot be null here
-          (endTimeBackground.getTime() - startTimeBackground.current.getTime()) / 1000
+          (endTimeBackground.getTime() - startTimeBackground.getTime()) / 1000
     }
     appState.current = nextAppState
   }
@@ -66,8 +66,7 @@ const OfferComponent: FunctionComponent = () => {
       AppState.removeEventListener('change', handleAppStateChange)
       const endTime = new Date()
       const totalDurationOnPageInSeconds = (endTime.getTime() - startTime.getTime()) / 1000
-      const durationWithoutBackgroundTimeInSec =
-        totalDurationOnPageInSeconds - timeInBackground.current
+      const durationWithoutBackgroundTimeInSec = totalDurationOnPageInSeconds - timeInBackground
       analytics.logOfferSeenDuration(params.id, durationWithoutBackgroundTimeInSec)
     }
   }, [])
