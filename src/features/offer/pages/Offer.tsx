@@ -2,7 +2,13 @@ import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef, useEffect } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
-import { Animated, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
+import {
+  Animated,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+  AppState,
+  AppStateStatus,
+} from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -35,12 +41,34 @@ const OfferComponent: FunctionComponent = () => {
   const headerScroll = useRef(new Animated.Value(0)).current
   const hasSeenAllPage = useRef<boolean>(false)
 
+  const appState = useRef(AppState.currentState)
+  const timeInBackground = useRef(0).current
+  const startTimeBackground = useRef<Date | null>(null).current
+
+  const handleAppStateChange = (nextAppState: AppStateStatus) => {
+    if (appState.current === 'active' && nextAppState.match(/inactive|background/)) {
+      startTimeBackground.current = new Date()
+    }
+    if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
+      const endTimeBackground = new Date()
+      if (startTimeBackground)
+        timeInBackground.current +=
+          // @ts-ignore startTimeBackground cannot be null here
+          (endTimeBackground.getTime() - startTimeBackground.current.getTime()) / 1000
+    }
+    appState.current = nextAppState
+  }
+
   useEffect(() => {
+    AppState.addEventListener('change', handleAppStateChange)
     const startTime = new Date()
     return () => {
+      AppState.removeEventListener('change', handleAppStateChange)
       const endTime = new Date()
-      const durationOnPageInSeconds = (endTime.getTime() - startTime.getTime()) / 1000
-      analytics.logOfferSeenDuration(params.id, durationOnPageInSeconds)
+      const totalDurationOnPageInSeconds = (endTime.getTime() - startTime.getTime()) / 1000
+      const durationWithoutBackgroundTimeInSec =
+        totalDurationOnPageInSeconds - timeInBackground.current
+      analytics.logOfferSeenDuration(params.id, durationWithoutBackgroundTimeInSec)
     }
   }, [])
 
