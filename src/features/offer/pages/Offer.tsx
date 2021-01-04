@@ -27,6 +27,7 @@ import {
   AccessibilityBlock,
   OfferPartialDescription,
 } from '../components'
+import { useCtaWording } from '../services/useCtaWording'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
@@ -37,6 +38,7 @@ const OfferComponent: FunctionComponent = () => {
   const headerScroll = useRef(new Animated.Value(0)).current
   const hasSeenAllPage = useRef<boolean>(false)
   useTrackOfferSeenDuration(params.id)
+  const wording = useCtaWording({ categoryType: offerResponse?.category.categoryType })
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
@@ -126,7 +128,7 @@ const OfferComponent: FunctionComponent = () => {
       </Container>
 
       <CallToActionContainer>
-        <CallToAction categoryType={offerResponse.category.categoryType} />
+        <CallToAction wording={wording} />
       </CallToActionContainer>
 
       <OfferHeader
