@@ -24,3 +24,24 @@ export function isTimestampExpired(
 ): boolean {
   return currentTimestamp() + margin >= timestamp
 }
+
+/**
+ *@param oldDate earliest date.
+ *@param newDate latest date.
+ *@returns the number of full years between oldDate and newDate.
+ */
+export function dateDiffInFullYears(oldDate: Date, newDate: Date) {
+  const yearNew = newDate.getFullYear()
+  const monthNew = newDate.getMonth()
+  const dayNew = newDate.getDate()
+  const yearOld = oldDate.getFullYear()
+  const monthOld = oldDate.getMonth()
+  const dayOld = oldDate.getDate()
+
+  let diffInYears = yearNew - yearOld
+  if (monthOld > monthNew || (monthOld == monthNew && dayOld > dayNew)) {
+    diffInYears--
+  }
+
+  return diffInYears
+}

@@ -1,5 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { fireEvent, render } from '@testing-library/react-native'
+import mockdate from 'mockdate'
 import React from 'react'
 import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
@@ -15,11 +16,15 @@ describe('SetBirthday Page', () => {
   beforeEach(() => {
     // @ts-ignore: logClickWhyAnniversary is the mock function but is seen as the real function
     analytics.logClickWhyAnniversary.mockClear()
+    mockdate.set(new Date('2020-12-01T00:00:00Z'))
+    jest.useFakeTimers()
   })
+
   it('should render properly', () => {
     const { toJSON } = renderSetBirthday()
     expect(toJSON()).toMatchSnapshot()
   })
+
   it('should navigate to the previous page on back navigation', () => {
     const { getByTestId } = renderSetBirthday()
     const leftIcon = getByTestId('leftIcon')
@@ -27,6 +32,7 @@ describe('SetBirthday Page', () => {
 
     expect(goBack).toBeCalledTimes(1)
   })
+
   it('should keep disabled the button "Continuer" when the date is not complete', () => {
     const { getByPlaceholderText, getByTestId } = renderSetBirthday()
 
@@ -41,22 +47,61 @@ describe('SetBirthday Page', () => {
     const button = getByTestId('button-container-validate-birthday')
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
   })
-  it('should display the error message when the date is not correct', () => {
-    const { getByText, getByPlaceholderText } = renderSetBirthday()
+
+  it('should display the error message "date incorrecte" when the date is too old', () => {
+    const { queryByText, getByText, getByPlaceholderText } = renderSetBirthday()
 
     const day = getByPlaceholderText('JJ')
     const month = getByPlaceholderText('MM')
     const year = getByPlaceholderText('AAAA')
 
-    fireEvent.changeText(day, '29')
+    fireEvent.changeText(day, '01')
+    fireEvent.changeText(month, '01')
+    fireEvent.changeText(year, '1899')
+
+    const continueButton = getByText('Continuer')
+    fireEvent.press(continueButton)
+
+    const message = queryByText('La date choisie est incorrecte')
+    expect(message).toBeTruthy()
+  })
+
+  it('should display the error message "date incorrecte" when the date is incorrect', () => {
+    const { queryByText, getByText, getByPlaceholderText } = renderSetBirthday()
+
+    const day = getByPlaceholderText('JJ')
+    const month = getByPlaceholderText('MM')
+    const year = getByPlaceholderText('AAAA')
+
+    fireEvent.changeText(day, '?!')
     fireEvent.changeText(month, '02')
+    fireEvent.changeText(year, '2002')
+
+    const continueButton = getByText('Continuer')
+    fireEvent.press(continueButton)
+
+    const message = queryByText('La date choisie est incorrecte')
+    expect(message).toBeTruthy()
+  })
+
+  it('should display the error message "tu dois avoir 16 ans" when the date is too young', () => {
+    const { queryByText, getByText, getByPlaceholderText } = renderSetBirthday()
+
+    const day = getByPlaceholderText('JJ')
+    const month = getByPlaceholderText('MM')
+    const year = getByPlaceholderText('AAAA')
+
+    fireEvent.changeText(day, '01')
+    fireEvent.changeText(month, '01')
     fireEvent.changeText(year, '2005')
 
     const continueButton = getByText('Continuer')
     fireEvent.press(continueButton)
 
-    getByText('La date choisie est incorrecte')
+    const message = queryByText("Tu dois avoir 16 ans pour t'inscrire")
+    expect(message).toBeTruthy()
   })
+
   it('should enable the button "Continuer" when the date is correct', () => {
     const { getByText, getByPlaceholderText, queryByText, getByTestId } = renderSetBirthday()
 
@@ -83,6 +128,7 @@ describe('SetBirthday Page', () => {
       password: 'password',
     })
   })
+
   it('should display a information modal when clicking "Pourquoi" link', () => {
     const { getByTestId } = renderSetBirthday()
 
@@ -98,7 +144,7 @@ describe('SetBirthday Page', () => {
 
     const { getByTestId } = renderSetBirthday()
 
-    const link = await getByTestId('external-link-google-data-privacy')
+    const link = getByTestId('external-link-google-data-privacy')
     fireEvent.press(link)
 
     await waitForExpect(() => {
@@ -111,7 +157,7 @@ describe('SetBirthday Page', () => {
 
     const { getByTestId } = renderSetBirthday()
 
-    const link = await getByTestId('external-link-google-cgu')
+    const link = getByTestId('external-link-google-cgu')
     fireEvent.press(link)
 
     await waitForExpect(() => {
