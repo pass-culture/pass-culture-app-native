@@ -203,3 +203,19 @@ This might be linked to some missing permission on `/dev/kvm`. Try changing the 
 ### Android: No value has been specified for property 'manifestOutputDirectory'
 
 In Android Studio: File > Settings > Experimental > Gradle -> uncheck "Only sync the active variant" checkbox.
+
+## Documentation
+
+### Dev standards
+
+In doc/ folder you will find `dev standards` on which teams is aligned.
+Standards can of course be improved and new ones can be added.
+
+To do so:
+
+- Create a pull request with the standard modification/addition (use TEMPLATE.md for addition)
+- Ask **all** teams members to read your PR
+
+  | Why: all team is aligned on the way to code, and the best way to do something is shared within all team
+- Make sure you got the approval of every member of the team
+- You can merge :)
