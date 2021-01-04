@@ -38,7 +38,7 @@ const OfferComponent: FunctionComponent = () => {
   const headerScroll = useRef(new Animated.Value(0)).current
   const hasSeenAllPage = useRef<boolean>(false)
   useTrackOfferSeenDuration(params.id)
-  const wording = useCtaWording({ categoryType: offerResponse?.category.categoryType })
+  const wording = useCtaWording({ offer: offerResponse })
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse

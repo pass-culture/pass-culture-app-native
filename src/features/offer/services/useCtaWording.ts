@@ -8,15 +8,15 @@ import { _ } from 'libs/i18n'
 
 import { OfferAdaptedResponse } from '../api/useOffer'
 
-interface CtaWordingI {
-  categoryType: CategoryType | undefined
+interface Props {
+  offer: OfferAdaptedResponse | undefined
 }
 
-export const useCtaWording = ({ categoryType }: CtaWordingI) => {
+export const useCtaWording = ({ offer }: Props) => {
   const { isLoggedIn } = useAuthContext()
   const { data: profileInfo } = useUserProfileInfo()
   if (!isLoggedIn || (profileInfo && !profileInfo.isBeneficiary))
-    return categoryType === CategoryType.Event
+    return offer?.category.categoryType === CategoryType.Event
       ? _(t`Accéder à la billetterie externe`)
       : _(t`Accéder à l'offre`)
   return _(t`Voir les disponibilités`)
