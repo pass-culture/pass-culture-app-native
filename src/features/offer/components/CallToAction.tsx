@@ -1,20 +1,30 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { CategoryType } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
+import { useUserProfileInfo } from 'features/home/api'
+import { useOffer } from 'features/offer/api/useOffer'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-import { useCtaWording } from '../services/useCtaWording'
+import { getCtaWording } from '../services/getCtaWording'
 
 interface Props {
-  categoryType: CategoryType
+  offerId: number
 }
 
-export const CallToAction: React.FC<Props> = ({ categoryType }) => {
-  const wording = useCtaWording({ categoryType })
+export const CallToAction: React.FC<Props> = ({ offerId }) => {
+  const { data: offer } = useOffer({ offerId })
+  const { isLoggedIn } = useAuthContext()
+  const { data: profileInfo } = useUserProfileInfo()
+  const isBeneficiary = profileInfo?.isBeneficiary || false
+
+  if (!offer) return <React.Fragment></React.Fragment>
+  const categoryType = offer.category.categoryType
+  const wording = getCtaWording({ categoryType, isLoggedIn, isBeneficiary })
+
   return (
     <Container onPress={() => null}>
       <Rectangle height={getSpacing(12)} size="100%" />

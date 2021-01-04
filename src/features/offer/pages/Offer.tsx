@@ -126,7 +126,7 @@ const OfferComponent: FunctionComponent = () => {
       </Container>
 
       <CallToActionContainer>
-        <CallToAction categoryType={offerResponse.category.categoryType} />
+        <CallToAction offerId={params.id} />
       </CallToActionContainer>
 
       <OfferHeader

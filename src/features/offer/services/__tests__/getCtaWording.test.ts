@@ -1,16 +1,8 @@
-import { renderHook } from '@testing-library/react-hooks'
-
 import { CategoryType } from 'api/gen'
 
-import { useAuthContext } from '../../../auth/AuthContext'
-import { useUserProfileInfo } from '../../../home/api'
-import { useCtaWording } from '../useCtaWording'
+import { getCtaWording } from '../getCtaWording'
 
-jest.mock('features/auth/AuthContext')
-jest.mock('features/home/api')
-const mockedUseAuthContext = useAuthContext as jest.Mock
-const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
-describe('useCtaWording', () => {
+describe('getCtaWording', () => {
   // Note that isLoggedIn === false => isBeneficiary === false
   it.each`
     isLoggedIn | isBeneficiary | offerCategoryType     | expectedWording
@@ -33,15 +25,12 @@ describe('useCtaWording', () => {
       offerCategoryType: CategoryType
       expectedWording: string
     }) => {
-      mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
-      mockedUseUserProfileInfo.mockImplementationOnce(() =>
-        isLoggedIn ? { data: { isBeneficiary } } : { data: undefined }
-      )
-      const { result, unmount } = renderHook(useCtaWording, {
-        initialProps: { categoryType: offerCategoryType },
+      const result = getCtaWording({
+        categoryType: offerCategoryType,
+        isLoggedIn,
+        isBeneficiary,
       })
-      expect(result.current).toBe(expectedWording)
-      unmount()
+      expect(result).toBe(expectedWording)
     }
   )
 })
