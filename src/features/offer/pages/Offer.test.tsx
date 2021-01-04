@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
+import { AppState } from 'react-native'
 import { QueryClient, UseQueryResult } from 'react-query'
 import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
@@ -187,10 +188,12 @@ describe('<Offer />', () => {
     it('should trigger logOfferSeenDuration', async () => {
       const offerPage = await renderOfferPage()
       expect(analytics.logOfferSeenDuration).not.toHaveBeenCalled()
+      expect(AppState.addEventListener).toHaveBeenCalled()
       await act(async () => {
         await offerPage.unmount()
       })
       expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
+      expect(AppState.removeEventListener).toHaveBeenCalled()
     })
   })
 
