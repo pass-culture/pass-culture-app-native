@@ -5,6 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { OfferTile } from '../OfferTile'
 
@@ -33,12 +34,12 @@ describe('OfferTile component', () => {
   })
 
   it('should navigate to the offer when clicking on the image', async () => {
-    const { getByTestId } = render(<OfferTile {...props} />)
+    const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.press(getByTestId('offerTileImage'))
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId })
   })
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
-    const { getByTestId } = render(<OfferTile {...props} />)
+    const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.press(getByTestId('offerTileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith(offerId, 'Module Name')
   })
