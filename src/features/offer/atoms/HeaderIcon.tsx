@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
+import { Favourite } from 'ui/svg/icons/Favourite'
 import { Share } from 'ui/svg/icons/Share'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
@@ -22,7 +22,7 @@ interface HeaderIconProps {
 const getIcon = (iconName: HeaderIconProps['iconName']): React.ElementType<IconInterface> => {
   if (iconName === 'back') return ArrowPrevious
   if (iconName === 'share') return Share
-  return BicolorFavorite
+  return Favourite
 }
 
 export const HeaderIcon = ({ iconName, onPress, animationState }: HeaderIconProps) => {
