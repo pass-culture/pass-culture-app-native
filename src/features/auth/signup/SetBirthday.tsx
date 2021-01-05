@@ -27,13 +27,33 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
 
+const YOUNGEST_AGE = 16
+const OLDEST_AGE = 120
+
+interface State {
+  date: string | null
+  isDateComplete: boolean
+  isDateValid: boolean
+  isTooYoung: boolean
+  isTooOld: boolean
+}
+
 export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const keyboardHeightRef = useRef(0)
-  const [date, setDate] = useState<string | null>(null)
-  const [isComplete, setIsComplete] = useState(false)
-  const [isValid, setIsValid] = useState(false)
-  const [isTooYoung, setIsTooYoung] = useState(false)
-  const [isTooOld, setIsTooOld] = useState(false)
+  const [state, setState] = useState<State>({
+    date: null,
+    isDateComplete: false,
+    isDateValid: false,
+    isTooYoung: false,
+    isTooOld: false,
+  })
+
+  const now = new Date()
+  const currentYear = now.getUTCFullYear()
+  const minDate = new Date(now)
+  minDate.setFullYear(currentYear - OLDEST_AGE)
+  const maxDate = new Date(now)
+  maxDate.setFullYear(currentYear - YOUNGEST_AGE)
 
   const {
     visible: informationModalVisible,
@@ -52,16 +72,17 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const isNewsletterChecked = route.params.isNewsletterChecked
   const password = route.params.password
   const canNavigateToCguRef = useRef(false)
-  const isReadyToBeSubmitted = isComplete && isValid && !isTooYoung && !isTooOld
 
   const dateInputRef = useRef<DateInputRef>(null)
 
   function onChangeValue(date: string | null, validation: DateValidation) {
-    setDate(date)
-    setIsComplete(validation.isComplete)
-    setIsValid(validation.isValid)
-    setIsTooYoung(validation.isTooYoung)
-    setIsTooOld(validation.isTooOld)
+    setState({
+      date,
+      isDateComplete: validation.isComplete,
+      isDateValid: validation.isValid,
+      isTooYoung: !validation.isDateBelowMax,
+      isTooOld: !validation.isDateAboveMin,
+    })
   }
 
   function goToCguAcceptance() {
@@ -69,7 +90,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       email: email,
       isNewsletterChecked: isNewsletterChecked,
       password: password,
-      birthday: date ? date : '',
+      birthday: state.date ? state.date : '',
     })
   }
 
@@ -86,7 +107,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
    * - and a navigation to the next screen
    */
   function animateBeforeNavigation() {
-    if (keyboardHeightRef.current === 0 && date) {
+    if (keyboardHeightRef.current === 0 && state.date) {
       return goToCguAcceptance()
     }
 
@@ -99,10 +120,10 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       // quits if the keyboard is dismissed because the modal is displayed
       return
     }
-    if (canNavigateToCguRef.current && date) {
+    if (canNavigateToCguRef.current && state.date) {
       goToCguAcceptance()
     }
-  }, [informationModalVisible, date])
+  }, [informationModalVisible, state.date])
 
   useFocusEffect(() => {
     // reset this variable each time the screen is focused to prevent automatic navigation to the next screen
@@ -117,6 +138,22 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   function onPressWhy() {
     analytics.logClickWhyAnniversary()
     showInformationModal()
+  }
+
+  function renderErrorMessages() {
+    if (!state.isDateComplete || state.isDateValid) {
+      return
+    }
+    if (state.isTooYoung && !state.isTooOld) {
+      return (
+        <InputError
+          visible
+          messageId="Tu dois avoir 16 ans pour t'inscrire"
+          numberOfSpacesTop={5}
+        />
+      )
+    }
+    return <InputError visible messageId="La date choisie est incorrecte" numberOfSpacesTop={5} />
   }
 
   return (
@@ -139,17 +176,13 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               testIdSuffix={'why-link'}
             />
             <DateInputContainer>
-              <DateInput onChangeValue={onChangeValue} ref={dateInputRef} />
-              <InputError
-                visible={isComplete && (!isValid || isTooOld)}
-                messageId="La date choisie est incorrecte"
-                numberOfSpacesTop={5}
+              <DateInput
+                onChangeValue={onChangeValue}
+                ref={dateInputRef}
+                minDate={minDate}
+                maxDate={maxDate}
               />
-              <InputError
-                visible={isComplete && isValid && isTooYoung}
-                messageId="Tu dois avoir 16 ans pour t'inscrire"
-                numberOfSpacesTop={5}
-              />
+              {renderErrorMessages()}
             </DateInputContainer>
             <Paragraphe>
               <Typo.Body>
@@ -178,7 +211,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
             </Paragraphe>
             <ButtonPrimary
               title={_(t`Continuer`)}
-              disabled={!isReadyToBeSubmitted}
+              disabled={!state.isDateValid}
               testIdSuffix={'validate-birthday'}
               onPress={animateBeforeNavigation}
             />

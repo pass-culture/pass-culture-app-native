@@ -2,27 +2,27 @@ import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } f
 import { NativeSyntheticEvent, TextInput, TextInputKeyPressEventData } from 'react-native'
 import styled from 'styled-components/native'
 
-import { dateDiffInFullYears } from 'libs/dates'
-
 import { DatePartType, PartialDateInput } from './PartialDateInput'
 
 export interface DateValidation {
   isComplete: boolean
   isValid: boolean
-  isTooOld: boolean
-  isTooYoung: boolean
+  isDateAboveMin: boolean
+  isDateBelowMax: boolean
 }
 
 interface DateInputProps {
   onChangeValue?: (value: string | null, dateValidation: DateValidation) => void
+  minDate?: Date
+  maxDate?: Date
 }
 
 export interface DateInputRef {
   clearFocuses: () => void
 }
 
-const MINIMUM_AGE = 16
-const MAXIMUM_AGE = 120
+const MIN_POSSIBLE_YEAR = 1
+const MAX_POSSIBLE_YEAR = 9999
 
 const DAY_VALIDATOR = {
   hasRightLength: (input: string) => input.length === 2,
@@ -34,7 +34,7 @@ const MONTH_VALIDATOR = {
 }
 const YEAR_VALIDATOR = {
   hasRightLength: (input: string) => input.length === 4,
-  isValid: (input: number) => input >= 1 && input <= 9999,
+  isValid: (input: number) => input >= MIN_POSSIBLE_YEAR && input <= MAX_POSSIBLE_YEAR,
 }
 export const FULL_DATE_VALIDATOR = {
   isValid(date: Date, year: number, month: number, day: number) {
@@ -62,8 +62,8 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   const dateValidation: DateValidation = {
     isComplete: false,
     isValid: false,
-    isTooOld: false,
-    isTooYoung: false,
+    isDateAboveMin: props.minDate ? false : true,
+    isDateBelowMax: props.maxDate ? false : true,
   }
 
   const isDayValid = DAY_VALIDATOR.isValid(Number(day)) && DAY_VALIDATOR.hasRightLength(day)
@@ -71,24 +71,25 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
     MONTH_VALIDATOR.isValid(Number(month)) && MONTH_VALIDATOR.hasRightLength(month)
   const isYearValid = YEAR_VALIDATOR.isValid(Number(year)) && YEAR_VALIDATOR.hasRightLength(year)
 
-  const now = new Date()
   const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)))
   const isDateValid = FULL_DATE_VALIDATOR.isValid(date, Number(year), Number(month), Number(day))
-  const diffInYears = isDateValid ? dateDiffInFullYears(date, now) : null
 
-  dateValidation.isValid = isDateValid && isMonthValid && isDayValid && isYearValid
+  if (isDateValid && props.minDate) {
+    dateValidation.isDateAboveMin = date > props.minDate
+  }
+  if (isDateValid && props.maxDate) {
+    dateValidation.isDateBelowMax = date < props.maxDate
+  }
+
   dateValidation.isComplete =
     DAY_VALIDATOR.hasRightLength(day) &&
     MONTH_VALIDATOR.hasRightLength(month) &&
     YEAR_VALIDATOR.hasRightLength(year)
-  dateValidation.isTooYoung = diffInYears ? diffInYears < MINIMUM_AGE : false
-  dateValidation.isTooOld = diffInYears ? diffInYears > MAXIMUM_AGE : false
-
-  const isReadyToBeSubmitted =
+  dateValidation.isValid =
+    isDateValid &&
     dateValidation.isComplete &&
-    dateValidation.isValid &&
-    !dateValidation.isTooYoung &&
-    !dateValidation.isTooOld
+    dateValidation.isDateAboveMin &&
+    dateValidation.isDateBelowMax
 
   // notify parent effect
   useEffect(() => {
@@ -137,14 +138,14 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
     <Container>
       <PartialDateInput
         identifier={DatePartType.DAY}
-        isValid={(!dateValidation.isComplete && isDayValid) || isReadyToBeSubmitted}
+        isValid={(!dateValidation.isComplete && isDayValid) || dateValidation.isValid}
         onChangeValue={setDay}
         placeholder="JJ"
         ref={dayInputRef}
       />
       <PartialDateInput
         identifier={DatePartType.MONTH}
-        isValid={(!dateValidation.isComplete && isMonthValid) || isReadyToBeSubmitted}
+        isValid={(!dateValidation.isComplete && isMonthValid) || dateValidation.isValid}
         onChangeValue={setMonth}
         placeholder="MM"
         ref={monthInputRef}
@@ -154,7 +155,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
       />
       <PartialDateInput
         identifier={DatePartType.YEAR}
-        isValid={(!dateValidation.isComplete && isYearValid) || isReadyToBeSubmitted}
+        isValid={(!dateValidation.isComplete && isYearValid) || dateValidation.isValid}
         onChangeValue={setYear}
         placeholder="AAAA"
         ref={yearInputRef}
