@@ -51,7 +51,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
                             numberOfSpaces={2}
                             style={
                               Array [
-@@ -713,19 +679,19 @@
+@@ -714,19 +680,19 @@
                                         \\"fill\\",
                                       ]
                                     }
@@ -74,7 +74,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
                                     />
                                   </RNSVGGroup>
                                 </RNSVGSvgView>
-@@ -954,11 +920,11 @@
+@@ -955,11 +921,11 @@
                                     },
                                   ]
                                 }
@@ -87,7 +87,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -1207,65 +1173,14 @@
+@@ -1208,65 +1174,14 @@
                             numberOfSpaces={4}
                             style={
                               Array [
@@ -153,7 +153,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
                               Array [
                                 Object {
                                   \\"backgroundColor\\": \\"#f5f5f5\\",
-@@ -1277,1460 +1192,14 @@
+@@ -1278,1601 +1193,16 @@
                           <View
                             style={
                               Array [
@@ -1605,20 +1605,11 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
 -                                     Handicap auditif
 -                                   </Text>
 -                                 </View>
--                               </View>
+                        </View>
 -                             </View>
 -                           </View>
 -                         </View>
-                          <View
-                            numberOfSpaces={32}
-                            style={
-                              Array [
-                                Object {
-@@ -2739,149 +1208,10 @@
-                              ]
-                            }
-                          />
-                        </View>
+-                       </View>
                       </RCTScrollView>
 -                     <View
 -                       style={
@@ -4143,16 +4134,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             </View>
                           </View>
                         </View>
-                        <View
-                          numberOfSpaces={32}
-                          style={
-                            Array [
-                              Object {
-                                "height": 128,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                     </RCTScrollView>
                     <View
@@ -7811,16 +7792,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             </View>
                           </View>
                         </View>
-                        <View
-                          numberOfSpaces={32}
-                          style={
-                            Array [
-                              Object {
-                                "height": 128,
-                              },
-                            ]
-                          }
-                        />
                       </View>
                     </RCTScrollView>
                     <View
