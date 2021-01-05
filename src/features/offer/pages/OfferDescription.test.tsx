@@ -38,6 +38,7 @@ describe('<OfferDescription />', () => {
     })
     expect(queryByText('En détail')).toBeFalsy()
     expect(queryByText('Durée')).toBeTruthy()
+    expect(queryByText('Author: photo credit author')).toBeTruthy()
   })
 })
 
