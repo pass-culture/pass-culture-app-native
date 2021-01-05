@@ -16,9 +16,12 @@ import { useOffer } from '../api/useOffer'
 import { OfferHeader } from '../components'
 
 type ExtraDataKeys = keyof Required<OfferExtraData>
-export type ExtendedKeys = ExtraDataKeys | 'description'
+export type ExtendedKeys = ExtraDataKeys | 'description' | 'photoCredit'
 
-type Item = { key: ExtraDataKeys; value: string } | { key: 'description'; value: ParsedDescription }
+type Item =
+  | { key: ExtraDataKeys; value: string }
+  | { key: 'description'; value: ParsedDescription }
+  | { key: 'photoCredit'; value: string }
 
 const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
   description: _(t`en détail`),
@@ -28,7 +31,7 @@ const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
   musicSubType: _(t`sous genre`),
   musicType: _(t`genre`),
   performer: _(t`interprète`),
-  // 'photoCredit', _(t`crédit photo`), TODO(#5727) update schema and add this field
+  photoCredit: _(t`crédit photo`),
   showSubType: _(t`sous genre`),
   showType: _(t`genre`),
   stageDirector: _(t`metteur en scène`),
@@ -49,7 +52,7 @@ const KEY_ORDER: { [k in ExtendedKeys]: number } = {
   speaker: 9,
   isbn: 10,
   visa: 11,
-  // 'photoCredit', TODO(#5727) update schema and add this field
+  photoCredit: 12,
 }
 
 const sortExtraData = (itemA: Item, itemB: Item): number =>
@@ -68,7 +71,8 @@ const isExtraDataKey = (key: string): key is ExtraDataKeys => key in EXTRA_DATA_
 
 export const getContentFromOffer = (
   extraData: OfferResponse['extraData'],
-  description: string
+  description: string,
+  photoCredit?: string
 ): Item[] => {
   const hits: Item[] = Object.entries(extraData || {})
     .map(([key, value]) => {
@@ -79,9 +83,8 @@ export const getContentFromOffer = (
     })
     .filter(Boolean) as Item[]
 
-  if (description) {
-    hits.push({ key: 'description', value: highlightLinks(description) })
-  }
+  if (description) hits.push({ key: 'description', value: highlightLinks(description) })
+  if (photoCredit) hits.push({ key: 'photoCredit', value: photoCredit })
 
   return hits.sort(sortExtraData)
 }
@@ -103,7 +106,8 @@ const renderExtraData = ({ item }: { item: Item }) => {
 const OfferDescriptionComponent = () => {
   const { params } = useRoute<UseRouteType<'OfferDescription'>>()
   const { data: offerResponse } = useOffer({ offerId: params.id })
-  const { description = '', extraData = {} } = offerResponse || {}
+  const { description = '', extraData = {}, image } = offerResponse || {}
+  const photoCredit = image?.credit
 
   return (
     <React.Fragment>
@@ -112,7 +116,7 @@ const OfferDescriptionComponent = () => {
         <Spacer.Column numberOfSpaces={14} />
         <FlatList
           testID="offer-description-list"
-          data={getContentFromOffer(extraData, description)}
+          data={getContentFromOffer(extraData, description, photoCredit)}
           renderItem={renderExtraData}
           ListHeaderComponent={Header}
           ItemSeparatorComponent={Separator}
