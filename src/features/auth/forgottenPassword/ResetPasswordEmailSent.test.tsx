@@ -5,6 +5,7 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
+import { analytics } from 'libs/analytics'
 import { flushAllPromises } from 'tests/utils'
 
 import { contactSupport } from '../support.services'
@@ -31,6 +32,7 @@ describe('<ResetPasswordEmailSent />', () => {
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
+      expect(analytics.logContactSupport).toBeCalledTimes(1)
       expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledTimes(1)
       expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledWith(
         'john.doe@gmail.com'

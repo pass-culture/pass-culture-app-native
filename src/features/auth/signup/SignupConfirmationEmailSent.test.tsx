@@ -6,6 +6,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 
 import { contactSupport } from '../support.services'
 
@@ -42,6 +43,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
+      expect(analytics.logContactSupport).toBeCalledTimes(1)
       expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledTimes(1)
       expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledWith(
         'john.doe@gmail.com'

@@ -1,5 +1,7 @@
 import { FirebaseAnalyticsTypes } from '@react-native-firebase/analytics'
 
+import { analytics as actualAnalytics } from '../analytics'
+
 type AnalyticsReturn = Partial<FirebaseAnalyticsTypes.Module>
 
 export const firebaseAnalytics: jest.Mocked<AnalyticsReturn> = {
@@ -8,7 +10,7 @@ export const firebaseAnalytics: jest.Mocked<AnalyticsReturn> = {
   logScreenView: jest.fn(),
 }
 
-export const analytics = {
+export const analytics: typeof actualAnalytics = {
   logScreenView: jest.fn(),
   logAllModulesSeen: jest.fn(),
   logAllTilesSeen: jest.fn(),
@@ -26,4 +28,5 @@ export const analytics = {
   logConsultWholeOffer: jest.fn(),
   logCancelSignup: jest.fn(),
   logOfferSeenDuration: jest.fn(),
+  logContactSupport: jest.fn()
 }

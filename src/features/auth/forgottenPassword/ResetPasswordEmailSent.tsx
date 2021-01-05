@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -33,6 +34,11 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
 
+  function onContactSupport() {
+    analytics.logContactSupport()
+    contactSupport.forResetPasswordEmailNotReceived(route.params.email)
+  }
+
   return (
     <BottomContentPage>
       <ModalHeader
@@ -56,7 +62,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
           <Typo.Body>{_(t`Si l'e-mail n'arrive pas, tu peux : `)}</Typo.Body>
           <ButtonTertiary
             title={_(t`Contacter le support`)}
-            onPress={() => contactSupport.forResetPasswordEmailNotReceived(route.params.email)}
+            onPress={onContactSupport}
             icon={Email}
           />
         </Description>

@@ -4,23 +4,24 @@ export const firebaseAnalytics = firebaseAnalyticsModule()
 
 // Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores
 enum AnalyticsEvent {
-  SCREEN_VIEW = 'screen_view',
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
-  CONSULT_OFFER = 'ConsultOffer',
-  DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
-  SEE_MORE_CLICKED = 'SeeMoreClicked',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
-  EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
+  CANCEL_SIGNUP = 'CancelSignup',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccesibilityModalities',
-  CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
+  CONSULT_OFFER = 'ConsultOffer',
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
+  CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
+  CONTACT_SUPPORT = 'ContactSupport',
+  DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
+  EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
+  OFFER_SEEN_DURATION = 'OfferSeenDuration',
+  SCREEN_VIEW = 'screen_view',
+  SEE_MORE_CLICKED = 'SeeMoreClicked',
   SHARE_OFFER = 'Share',
   WHY_ANNIVERSARY_CLICKED = 'WhyAnniversary',
-  CANCEL_SIGNUP = 'CancelSignup',
-  OFFER_SEEN_DURATION = 'OfferSeenDuration',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -79,6 +80,9 @@ const logCancelSignup = async (pageName: string) =>
 const logOfferSeenDuration = async (offerId: number, duration: number) =>
   await firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
 
+const logContactSupport = async () =>
+  await firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT)
+
 export const analytics = {
   logScreenView,
   logAllModulesSeen,
@@ -97,4 +101,5 @@ export const analytics = {
   logShareOffer,
   logCancelSignup,
   logOfferSeenDuration,
+  logContactSupport,
 }

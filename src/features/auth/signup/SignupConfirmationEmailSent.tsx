@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -27,6 +28,11 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
 
   function onClose() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
+  }
+
+  function onContactSupport() {
+    analytics.logContactSupport()
+    contactSupport.forSignupConfirmationEmailNotReceived(route.params.email)
   }
 
   return (
@@ -52,7 +58,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           <Typo.Body>{_(t`Si l'e-mail n'arrive pas, tu peux : `)}</Typo.Body>
           <ButtonTertiary
             title={_(t`Contacter le support`)}
-            onPress={() => contactSupport.forSignupConfirmationEmailNotReceived(route.params.email)}
+            onPress={onContactSupport}
             icon={Email}
           />
         </Description>
