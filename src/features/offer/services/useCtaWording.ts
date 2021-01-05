@@ -15,6 +15,18 @@ interface Props {
 export const useCtaWording = ({ offer }: Props) => {
   const { isLoggedIn } = useAuthContext()
   const { data: profileInfo } = useUserProfileInfo()
+
+  /* check I have all information to calculate wording
+   * why: avoid flash on CTA wording
+   */
+  if (
+    isLoggedIn === null ||
+    profileInfo === null ||
+    offer?.category.categoryType === null ||
+    offer?.stocks.length === 0
+  )
+    return null
+
   if (!isLoggedIn || (profileInfo && !profileInfo.isBeneficiary))
     return offer?.category.categoryType === CategoryType.Event
       ? _(t`Accéder à la billetterie externe`)
