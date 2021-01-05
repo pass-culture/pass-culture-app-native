@@ -40,7 +40,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
 ): OfferAdaptedResponse => ({
   fullAddress: null,
   description: offer.description,
-  imageUrl: offer.thumbUrl,
+  image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
   isDuo: offer.isDuo || false,
   name: offer.name || '',
   isDigital: false,

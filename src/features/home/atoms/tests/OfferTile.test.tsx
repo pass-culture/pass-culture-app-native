@@ -58,7 +58,7 @@ describe('OfferTile component', () => {
       description: offer.description,
       fullAddress: null,
       id: offerId,
-      imageUrl: props.thumbUrl,
+      image: { url: props.thumbUrl },
       isDigital: false,
       isDuo: false,
       name: offer.name,
