@@ -157,7 +157,7 @@ describe('DateInput Component', () => {
         const validationBar = getByTestId('datepart-bar-year')
         const year = getByPlaceholderText('AAAA')
 
-        fireEvent.changeText(year, '0')
+        fireEvent.changeText(year, '0000')
         let backgroundColor = validationBar.props.style[0].backgroundColor
         expect(backgroundColor).toEqual(ColorsEnum.ERROR)
 
@@ -195,8 +195,8 @@ describe('DateInput Component', () => {
 
       expect(onChangeValue).toBeCalledWith(null, {
         isComplete: true,
-        isTooOld: false,
-        isTooYoung: false,
+        isDateAboveMin: true,
+        isDateBelowMax: true,
         isValid: false,
       })
       expect(onChangeValue).not.toBeCalledWith(`${year}-${month}-${day}`)
@@ -212,8 +212,8 @@ describe('DateInput Component', () => {
 
       expect(onChangeValue).toBeCalledWith('1991-07-16', {
         isComplete: true,
-        isTooOld: false,
-        isTooYoung: false,
+        isDateAboveMin: true,
+        isDateBelowMax: true,
         isValid: true,
       })
     })
@@ -244,6 +244,66 @@ describe('DateInput Component', () => {
     ])('should return true when the date is valid (DD-MM-AAAA) %s-%s-%s', (day, month, year) => {
       const date = new Date(Date.UTC(year, month - 1, day))
       expect(FULL_DATE_VALIDATOR.isValid(date, year, month, day)).toBeTruthy()
+    })
+  })
+
+  describe('with date limits', () => {
+    it('it should not validate a date below min', () => {
+      const onChangeValue = jest.fn()
+      const minDate = new Date('2010-01-02T00:00:00')
+      const { getByPlaceholderText } = render(
+        <DateInput onChangeValue={onChangeValue} minDate={minDate} />
+      )
+
+      fireEvent.changeText(getByPlaceholderText('JJ'), '01')
+      fireEvent.changeText(getByPlaceholderText('MM'), '01')
+      fireEvent.changeText(getByPlaceholderText('AAAA'), '2010')
+
+      expect(onChangeValue).toBeCalledWith(null, {
+        isComplete: true,
+        isDateAboveMin: false,
+        isDateBelowMax: true,
+        isValid: false,
+      })
+    })
+
+    it('it should not validate a date above max', () => {
+      const onChangeValue = jest.fn()
+      const maxDate = new Date('2010-01-01T00:00:00')
+      const { getByPlaceholderText } = render(
+        <DateInput onChangeValue={onChangeValue} maxDate={maxDate} />
+      )
+
+      fireEvent.changeText(getByPlaceholderText('JJ'), '02')
+      fireEvent.changeText(getByPlaceholderText('MM'), '01')
+      fireEvent.changeText(getByPlaceholderText('AAAA'), '2010')
+
+      expect(onChangeValue).toBeCalledWith(null, {
+        isComplete: true,
+        isDateAboveMin: true,
+        isDateBelowMax: false,
+        isValid: false,
+      })
+    })
+
+    it('it should validate a date below max and above min', () => {
+      const onChangeValue = jest.fn()
+      const minDate = new Date('2010-01-01T00:00:00')
+      const maxDate = new Date('2010-02-01T00:00:00')
+      const { getByPlaceholderText } = render(
+        <DateInput onChangeValue={onChangeValue} minDate={minDate} maxDate={maxDate} />
+      )
+
+      fireEvent.changeText(getByPlaceholderText('JJ'), '15')
+      fireEvent.changeText(getByPlaceholderText('MM'), '01')
+      fireEvent.changeText(getByPlaceholderText('AAAA'), '2010')
+
+      expect(onChangeValue).toBeCalledWith('2010-01-15', {
+        isComplete: true,
+        isDateAboveMin: true,
+        isDateBelowMax: true,
+        isValid: true,
+      })
     })
   })
 })
