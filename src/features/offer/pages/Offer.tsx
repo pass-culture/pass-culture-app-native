@@ -68,6 +68,7 @@ const OfferComponent: FunctionComponent = () => {
         testID="offer-container"
         scrollEventThrottle={32}
         scrollIndicatorInsets={{ right: 1 }}
+        bounces={false}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
           useNativeDriver: false,
           listener: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) =>
