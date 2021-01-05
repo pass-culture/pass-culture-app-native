@@ -124,8 +124,6 @@ const OfferComponent: FunctionComponent = () => {
             <AccessibilityBlock {...accessibility} />
           </AccordionItem>
         </Section>
-
-        <Spacer.Column numberOfSpaces={32} />
       </Container>
 
       {wording && (
