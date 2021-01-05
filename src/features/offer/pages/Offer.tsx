@@ -71,7 +71,7 @@ const OfferComponent: FunctionComponent = () => {
           listener: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) =>
             checkIfAllPageHaveBeenSeen({ nativeEvent }),
         })}>
-        <OfferHero category={category.name} imageUrl={offerResponse.imageUrl || ''} />
+        <OfferHero category={category.name} imageUrl={offerResponse.image?.url || ''} />
         <Spacer.Column numberOfSpaces={4} />
         <LocationCaption venue={venue} isDigital={offerResponse.isDigital} />
         <Spacer.Column numberOfSpaces={2} />

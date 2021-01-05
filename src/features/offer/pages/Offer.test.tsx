@@ -206,7 +206,7 @@ describe('<Offer />', () => {
           mergeOfferData({
             category: offerResponseSnap.category.label,
             description: offerResponseSnap.description,
-            thumbUrl: offerResponseSnap.imageUrl,
+            thumbUrl: offerResponseSnap.image?.url,
             isDuo: offerResponseSnap.isDuo,
             name: offerResponseSnap.name,
             offerId,
