@@ -282,6 +282,24 @@ export interface OfferExtraData {
 }/**
  * 
  * @export
+ * @interface OfferImageResponse
+ */
+export interface OfferImageResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferImageResponse
+     */
+    credit?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OfferImageResponse
+     */
+    url: string;
+}/**
+ * 
+ * @export
  * @interface OfferOffererResponse
  */
 export interface OfferOffererResponse {
@@ -317,6 +335,12 @@ export interface OfferResponse {
     description?: string;
     /**
      * 
+     * @type {string}
+     * @memberof OfferResponse
+     */
+    externalTicketOfficeUrl?: string;
+    /**
+     * 
      * @type {OfferExtraData}
      * @memberof OfferResponse
      */
@@ -329,10 +353,10 @@ export interface OfferResponse {
     id: number;
     /**
      * 
-     * @type {string}
+     * @type {OfferImageResponse}
      * @memberof OfferResponse
      */
-    imageUrl?: string;
+    image?: OfferImageResponse;
     /**
      * 
      * @type {boolean}
@@ -381,6 +405,12 @@ export interface OfferStockResponse {
      * @memberof OfferStockResponse
      */
     beginningDatetime?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof OfferStockResponse
+     */
+    bookingLimitDatetime?: Date;
     /**
      * 
      * @type {number}
