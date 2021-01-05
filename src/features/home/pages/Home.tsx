@@ -66,6 +66,7 @@ export const HomeComponent: FunctionComponent = function () {
     <ScrollView
       testID="homeScrollView"
       scrollEventThrottle={400}
+      bounces={false}
       onScroll={checkIfAllModulesHaveBeenSeen}>
       <Spacer.TopScreen />
       {env.CHEAT_BUTTONS_ENABLED && (

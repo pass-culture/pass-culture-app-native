@@ -5,7 +5,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
 - First value
 + Second value
 
-@@ -550,45 +550,11 @@
+@@ -551,45 +551,11 @@
                                       </RNSVGGroup>
                                     </RNSVGGroup>
                                   </RNSVGGroup>
@@ -2049,6 +2049,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                     }
                   >
                     <RCTScrollView
+                      bounces={false}
                       onScroll={[Function]}
                       scrollEventThrottle={32}
                       scrollIndicatorInsets={
@@ -5360,6 +5361,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                     }
                   >
                     <RCTScrollView
+                      bounces={false}
                       onScroll={[Function]}
                       scrollEventThrottle={32}
                       scrollIndicatorInsets={
