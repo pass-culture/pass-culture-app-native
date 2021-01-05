@@ -9,6 +9,7 @@ interface IAccordionItemProps {
   title: string
   children: Element
   defaultOpen?: boolean
+  onOpen?: () => void
   onOpenOnce?: () => void
 }
 
@@ -16,6 +17,7 @@ export const AccordionItem = ({
   title,
   children,
   defaultOpen = false,
+  onOpen,
   onOpenOnce,
 }: IAccordionItemProps) => {
   const [open, setOpen] = useState(defaultOpen)
@@ -43,6 +45,7 @@ export const AccordionItem = ({
   }
 
   useEffect(() => {
+    if (open && onOpen) onOpen()
     if (open && !hasBeenOpened.current) {
       hasBeenOpened.current = true
       if (onOpenOnce) onOpenOnce()

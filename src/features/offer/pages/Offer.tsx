@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
-import { Animated, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
+import { Animated, NativeSyntheticEvent, NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -36,6 +36,7 @@ const OfferComponent: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const { data: offerResponse } = useOffer({ offerId: params.id })
   const headerScroll = useRef(new Animated.Value(0)).current
+  const scrollViewRef = useRef<ScrollView | null>(null)
   const hasSeenAllPage = useRef<boolean>(false)
   useTrackOfferSeenDuration(params.id)
   const wording = useCtaWording({ offer: offerResponse })
@@ -68,6 +69,8 @@ const OfferComponent: FunctionComponent = () => {
         testID="offer-container"
         scrollEventThrottle={32}
         scrollIndicatorInsets={{ right: 1 }}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={scrollViewRef as any}
         bounces={false}
         onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
           useNativeDriver: false,
@@ -120,6 +123,11 @@ const OfferComponent: FunctionComponent = () => {
         <Section visible={Object.values(accessibility).some((value) => value !== undefined)}>
           <AccordionItem
             title={_(t`Accessibilité`)}
+            onOpen={() => {
+              if (scrollViewRef !== null && scrollViewRef.current !== null) {
+                scrollViewRef.current.scrollToEnd()
+              }
+            }}
             onOpenOnce={() => analytics.logConsultAccessibility(offerResponse.id)}>
             <AccessibilityBlock {...accessibility} />
           </AccordionItem>
