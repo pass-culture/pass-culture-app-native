@@ -51,7 +51,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
                             numberOfSpaces={2}
                             style={
                               Array [
-@@ -714,19 +680,19 @@
+@@ -715,19 +681,19 @@
                                         \\"fill\\",
                                       ]
                                     }
@@ -74,7 +74,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
                                     />
                                   </RNSVGGroup>
                                 </RNSVGSvgView>
-@@ -955,11 +921,11 @@
+@@ -960,11 +926,11 @@
                                     },
                                   ]
                                 }
@@ -87,7 +87,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -1208,65 +1174,14 @@
+@@ -1213,65 +1179,14 @@
                             numberOfSpaces={4}
                             style={
                               Array [
@@ -153,7 +153,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
                               Array [
                                 Object {
                                   \\"backgroundColor\\": \\"#f5f5f5\\",
-@@ -1278,1601 +1193,16 @@
+@@ -1283,1601 +1198,16 @@
                           <View
                             style={
                               Array [
@@ -2415,6 +2415,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                           style={
                             Array [
                               Object {
+                                "alignItems": "flex-start",
                                 "flexDirection": "row",
                               },
                             ]
@@ -2527,7 +2528,9 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                               Array [
                                 Object {
                                   "backgroundColor": "#c7c7cc",
+                                  "height": "100%",
                                   "marginHorizontal": 8,
+                                  "maxHeight": 64,
                                   "width": 1,
                                 },
                               ]
@@ -5589,6 +5592,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                           style={
                             Array [
                               Object {
+                                "alignItems": "flex-start",
                                 "flexDirection": "row",
                               },
                             ]
@@ -5701,7 +5705,9 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                               Array [
                                 Object {
                                   "backgroundColor": "#c7c7cc",
+                                  "height": "100%",
                                   "marginHorizontal": 8,
+                                  "maxHeight": 64,
                                   "width": 1,
                                 },
                               ]
@@ -5795,7 +5801,9 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                               Array [
                                 Object {
                                   "backgroundColor": "#c7c7cc",
+                                  "height": "100%",
                                   "marginHorizontal": 8,
+                                  "maxHeight": 64,
                                   "width": 1,
                                 },
                               ]

@@ -5,6 +5,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
   style={
     Array [
       Object {
+        "alignItems": "flex-start",
         "flexDirection": "row",
       },
     ]
@@ -117,7 +118,9 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       Array [
         Object {
           "backgroundColor": "#c7c7cc",
+          "height": "100%",
           "marginHorizontal": 8,
+          "maxHeight": 64,
           "width": 1,
         },
       ]
