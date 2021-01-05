@@ -23,13 +23,14 @@ features
               \
                 |- login.ts ===> caller, adapter
                 |- otherCall.ts
-        |- components ==> composants UI spécifiques à la fonctionalité
+        |- components ==> UI components specific to the feature
           \
             |- Component1.tsx
             |- Component1.test.tsx
             |- ...
-        |- pages ==> pages spécifiques à la fonctionalité
-        |- services ==> utilitaires ou transformation de données
+        |- pages ==> feature specific pages
+        |- services ==> utils or data tranform functions
+        fixturesTests.ts ==> data for testing (API call responses mocks)
     |- register
     |- homepage
     |- search
@@ -44,7 +45,7 @@ libs
 
 ui
 \
- |- components ===> composants 'indépendants'
+ |- components ===> independent components (reusables)
  |- theme
  |- assets
 ```
@@ -52,3 +53,7 @@ ui
 ## Mistakes to avoid
 
 - Do not put component into `ui/components` if it is used only once in the app
+
+## Ressources
+
+- ADR: https://www.notion.so/ADR-sur-la-structure-du-projet-315ca5b83d134d938074855b509f611a
