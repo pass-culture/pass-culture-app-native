@@ -127,9 +127,11 @@ const OfferComponent: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={32} />
       </Container>
 
-      <CallToActionContainer>
-        <CallToAction wording={wording} />
-      </CallToActionContainer>
+      {wording && (
+        <CallToActionContainer>
+          <CallToAction wording={wording} />
+        </CallToActionContainer>
+      )}
 
       <OfferHeader
         title={offerResponse.name}

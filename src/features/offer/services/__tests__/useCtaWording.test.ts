@@ -43,6 +43,9 @@ describe('useCtaWording', () => {
     ${true}    | ${true}       | ${CategoryType.Event} | ${[notExpiredStock]} | ${'Voir les disponibilités'}
     ${true}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${'Voir les disponibilités'}
     ${true}    | ${true}       | ${CategoryType.Thing} | ${[expiredStock]}    | ${'Offre expirée'}
+    ${null}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${null}
+    ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${null}
+    ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${null}
   `(
     'should return $expectedWording if isLoggedIn: $isLoggedIn, isBeneficiary: $isBeneficiary, offerCategoryType: $OfferCategoryType',
     ({
