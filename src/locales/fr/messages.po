@@ -45,7 +45,7 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/Offer.tsx:78
+#: src/features/offer/pages/Offer.tsx:81
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
@@ -290,7 +290,7 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:70
+#: src/features/offer/pages/Offer.tsx:73
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -357,7 +357,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:61
+#: src/features/offer/pages/Offer.tsx:64
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -492,6 +492,10 @@ msgstr "ainsi que notre"
 #: src/features/offer/pages/OfferDescription.tsx:15
 msgid "auteur"
 msgstr "auteur"
+
+#: src/features/offer/pages/OfferDescription.tsx:21
+msgid "crédit photo"
+msgstr "crédit photo"
 
 #: src/features/offer/pages/OfferDescription.tsx:16
 msgid "durée"
