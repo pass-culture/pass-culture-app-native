@@ -208,14 +208,15 @@ In Android Studio: File > Settings > Experimental > Gradle -> uncheck "Only sync
 
 ### Dev standards
 
-In doc/ folder you will find `dev standards` on which teams is aligned.
+In `doc/` folder you will find the `dev standards` the team members follow.
 Standards can of course be improved and new ones can be added.
 
 To do so:
 
-- Create a pull request with the standard modification/addition (use TEMPLATE.md for addition)
-- Ask **all** teams members to read your PR
+1. Create a pull request with the standard modification/addition (use `TEMPLATE.md` for addition)
+2. Ask **all** team members to read your PR
 
-  | Why: all team is aligned on the way to code, and the best way to do something is shared within all team
-- Make sure you got the approval of every member of the team
-- You can merge :)
+--> Why: so that the team is aligned on how to code, and the best way to do something is shared within all members
+
+3. Make sure you got the approval of every member of the team
+4. You can merge :)
