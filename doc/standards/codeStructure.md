@@ -4,6 +4,8 @@
 
 - developers can quickly find what they are looking for in the code
 - avoid code duplication
+- it makes it easier to work on a part of the project without knowing the other parts
+- the project onboarding of a new developer can be done by presenting the `/features` directory
 
 ## Key points
 
