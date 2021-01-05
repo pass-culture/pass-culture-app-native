@@ -318,6 +318,10 @@ Tous les détails du film sur AlloCiné: ",
                               />,
                             ],
                           },
+                          Object {
+                            "key": "photoCredit",
+                            "value": "Author: photo credit author",
+                          },
                         ]
                       }
                       disableVirtualization={false}
@@ -475,7 +479,77 @@ Tous les détails du film sur AlloCiné:
                               </Text>
                             </Text>
                           </View>
+                          <View
+                            numberOfSpaces={4}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 16,
+                                },
+                              ]
+                            }
+                          />
                         </View>
+                        <View
+                          onLayout={[Function]}
+                          style={null}
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "marginHorizontal": 24,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              Crédit photo
+                            </Text>
+                            <View
+                              numberOfSpaces={1}
+                              style={
+                                Array [
+                                  Object {
+                                    "height": 4,
+                                  },
+                                ]
+                              }
+                            />
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#151515",
+                                    "fontFamily": "Montserrat-Regular",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              Author: photo credit author
+                            </Text>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            Object {
+                              "height": 0,
+                            }
+                          }
+                        />
                         <View
                           onLayout={[Function]}
                         >
