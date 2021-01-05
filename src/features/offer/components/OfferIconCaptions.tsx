@@ -44,10 +44,12 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, la
   )
 }
 
-const Row = styled.View({ flexDirection: 'row' })
+const Row = styled.View({ flexDirection: 'row', alignItems: 'flex-start' })
 
 const Separator = styled.View({
   width: 1,
+  height: '100%',
+  maxHeight: getSpacing(16),
   backgroundColor: ColorsEnum.GREY_MEDIUM,
   marginHorizontal: getSpacing(2),
 })
