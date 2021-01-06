@@ -39,7 +39,7 @@ const OfferComponent: FunctionComponent = () => {
   const scrollViewRef = useRef<ScrollView | null>(null)
   const hasSeenAllPage = useRef<boolean>(false)
   useTrackOfferSeenDuration(params.id)
-  const { wording, onPress } = useCtaWordingAndAction({ offer: offerResponse })
+  const { wording, onPress } = useCtaWordingAndAction({ offerId: params.id }) || {}
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
