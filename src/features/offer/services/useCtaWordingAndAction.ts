@@ -23,7 +23,9 @@ export const useCtaWordingAndAction = ({ offer }: Props) => {
     isLoggedIn === null ||
     profileInfo === null ||
     offer?.category.categoryType === null ||
-    offer?.stocks.length === 0
+    offer?.category.categoryType === undefined ||
+    offer?.stocks.length === 0 ||
+    offer?.stocks.length === undefined
   )
     return { wording: null, onPress: undefined }
 
@@ -77,6 +79,9 @@ export const useCtaWordingAndAction = ({ offer }: Props) => {
    */
 
   wording = _(t`Voir les disponibilités`)
+  // $TODO: will be modified in ticket PC-5988
+  // eslint-disable-next-line no-console
+  onPress = () => console.log('Go to booking funnel')
   return { wording, onPress }
 }
 
