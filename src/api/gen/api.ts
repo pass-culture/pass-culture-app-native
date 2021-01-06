@@ -406,12 +406,6 @@ export interface OfferStockResponse {
      */
     beginningDatetime?: Date;
     /**
-     *
-     * @type {Date}
-     * @memberof OfferStockResponse
-     */
-    bookingLimitDatetime?: Date;
-    /**
      * 
      * @type {Date}
      * @memberof OfferStockResponse
