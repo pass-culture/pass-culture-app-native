@@ -84,7 +84,9 @@ export const getContentFromOffer = (
     .filter(Boolean) as Item[]
 
   if (description) hits.push({ key: 'description', value: highlightLinks(description) })
-  if (photoCredit) hits.push({ key: 'photoCredit', value: photoCredit })
+  // TODO(antoinewg, after #6083) remove this hack: photo credit is saved as string "undefined"
+  if (photoCredit && photoCredit !== 'undefined')
+    hits.push({ key: 'photoCredit', value: photoCredit })
 
   return hits.sort(sortExtraData)
 }
