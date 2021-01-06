@@ -1,8 +1,10 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
+import { act } from 'react-test-renderer'
 
 import * as BatchLocalLib from 'libs/notifications'
+import { flushAllPromises } from 'tests/utils'
 
 import { App } from './App'
 
@@ -16,22 +18,20 @@ jest.mock('features/navigation/RootNavigator', () => ({
 }))
 
 describe('<App /> with mocked RootTabNavigator', () => {
-  it('should render', () => {
-    const { toJSON } = render(<App />)
-
+  it('should render', async () => {
+    const { toJSON } = await renderApp()
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should call startBatchNotification() to optin to notifications', () => {
-    render(<App />)
-
+  it('should call startBatchNotification() to optin to notifications', async () => {
+    await renderApp()
     expect(BatchLocalLib.useStartBatchNotification).toHaveBeenCalled()
   })
 
-  it('should call SplashScreen.hide() after 500ms', () => {
+  it('should call SplashScreen.hide() after 500ms', async () => {
     expect.assertions(3)
     jest.useFakeTimers()
-    render(<App />)
+    await renderApp()
 
     expect(SplashScreen.hide).toHaveBeenCalledTimes(0)
 
@@ -42,3 +42,11 @@ describe('<App /> with mocked RootTabNavigator', () => {
     expect(SplashScreen.hide).toHaveBeenCalledTimes(1)
   })
 })
+
+const renderApp = async () => {
+  const wrapper = render(<App />)
+  await act(async () => {
+    await flushAllPromises()
+  })
+  return wrapper
+}
