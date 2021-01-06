@@ -49,11 +49,11 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:27
+#: src/features/offer/services/useCtaWordingAndAction.ts:28
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:26
+#: src/features/offer/services/useCtaWordingAndAction.ts:27
 msgid "Accéder à la billetterie externe"
 msgstr "Accéder à la billetterie externe"
 
@@ -316,12 +316,12 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:36
-#: src/features/offer/services/useCtaWordingAndAction.ts:48
+#: src/features/offer/services/useCtaWordingAndAction.ts:37
+#: src/features/offer/services/useCtaWordingAndAction.ts:49
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:42
+#: src/features/offer/services/useCtaWordingAndAction.ts:43
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
@@ -482,7 +482,7 @@ msgstr "Valider"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:65
+#: src/features/offer/services/useCtaWordingAndAction.ts:66
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
