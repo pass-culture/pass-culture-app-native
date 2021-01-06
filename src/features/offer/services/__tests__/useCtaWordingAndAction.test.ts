@@ -1,97 +1,126 @@
-import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
-import { CategoryType, OfferStockResponse } from 'api/gen'
+import { CategoryType } from 'api/gen'
+import { offerAdaptedResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
+import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 
-import { useAuthContext } from '../../../auth/AuthContext'
-import { useUserProfileInfo } from '../../../home/api'
-import { useCtaWordingAndAction, isOfferExpired, isOfferSoldOut } from '../useCtaWordingAndAction'
+import { getCtaWordingAndAction, isOfferExpired, isOfferSoldOut } from '../useCtaWordingAndAction'
 import {
   expiredOffer,
   notExpiredOffer,
   notExpiredOfferNoLimitDate,
-  expiredStock1,
-  notExpiredStock,
-  soldOutStock,
   soldOutOffer,
   notSoldOutOffer,
+  soldOutStock,
+  expiredStock1,
+  expiredStock2,
 } from '../useCtaWordingAndAction.testsFixtures'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 
-jest.mock('features/auth/AuthContext')
-jest.mock('features/home/api')
-const mockedUseAuthContext = useAuthContext as jest.Mock
-const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
-describe('useCtaWordingAndAction', () => {
-  // Note that isLoggedIn === false => isBeneficiary === false
-  it.each`
-    isLoggedIn | isBeneficiary | offerCategoryType     | stocks               | isActive | externalTicketOfficeUrl | expectedWording                       | expectedOnPress
-    ${false}   | ${false}      | ${CategoryType.Event} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${'Accéder à la billetterie externe'} | ${true}
-    ${true}    | ${false}      | ${CategoryType.Event} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${'Accéder à la billetterie externe'} | ${true}
-    ${false}   | ${false}      | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${'Accéder à la billetterie externe'} | ${true}
-    ${false}   | ${false}      | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${null}                 | ${'Accéder à la billetterie externe'} | ${undefined}
-    ${true}    | ${false}      | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${'Accéder à la billetterie externe'} | ${true}
-    ${false}   | ${false}      | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${"Accéder à l'offre"}                | ${true}
-    ${true}    | ${false}      | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${"Accéder à l'offre"}                | ${true}
-    ${false}   | ${false}      | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${"Accéder à l'offre"}                | ${true}
-    ${true}    | ${false}      | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${"Accéder à l'offre"}                | ${true}
-    ${true}    | ${false}      | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${undefined}            | ${"Accéder à l'offre"}                | ${undefined}
-    ${true}    | ${true}       | ${CategoryType.Event} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${'Voir les disponibilités'}          | ${true}
-    ${true}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${'Voir les disponibilités'}          | ${true}
-    ${true}    | ${true}       | ${CategoryType.Thing} | ${[soldOutStock]}    | ${true}  | ${'https://test.com'}   | ${'Offre épuisée'}                    | ${undefined}
-    ${true}    | ${true}       | ${CategoryType.Event} | ${[soldOutStock]}    | ${true}  | ${'https://test.com'}   | ${'Offre épuisée'}                    | ${undefined}
-    ${true}    | ${true}       | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${'Offre expirée'}                    | ${undefined}
-    ${true}    | ${true}       | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${'Offre expirée'}                    | ${undefined}
-    ${true}    | ${true}       | ${CategoryType.Thing} | ${[soldOutStock]}    | ${false} | ${'https://test.com'}   | ${'Offre expirée'}                    | ${undefined}
-    ${true}    | ${true}       | ${CategoryType.Event} | ${[soldOutStock]}    | ${false} | ${'https://test.com'}   | ${'Offre expirée'}                    | ${undefined}
-    ${null}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${null}                               | ${undefined}
-    ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${null}                               | ${undefined}
-    ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${null}                               | ${undefined}
-  `(
-    'should return $expectedWording if isLoggedIn: $isLoggedIn, isBeneficiary: $isBeneficiary, offerCategoryType: $OfferCategoryType, isActive: $isActive',
-    ({
-      isLoggedIn,
-      isBeneficiary,
-      offerCategoryType,
-      stocks,
-      isActive,
-      externalTicketOfficeUrl,
-      expectedWording,
-      expectedOnPress,
-    }: {
-      isLoggedIn: boolean
-      isBeneficiary: boolean
-      offerCategoryType: CategoryType
-      stocks: OfferStockResponse
-      isActive: boolean
-      externalTicketOfficeUrl: string | undefined
-      expectedWording: string
-      expectedOnPress: (() => void) | undefined
-    }) => {
-      mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
-      mockedUseUserProfileInfo.mockImplementationOnce(() =>
-        isLoggedIn ? { data: { isBeneficiary } } : { data: undefined }
-      )
-      const { result, unmount } = renderHook(useCtaWordingAndAction, {
-        initialProps: {
-          offer: {
-            // @ts-ignore only category and stocks needed for test
-            category: { categoryType: offerCategoryType },
-            // @ts-ignore only category and stocks needed for test
-            stocks: stocks,
-            isActive: isActive,
-            externalTicketOfficeUrl: externalTicketOfficeUrl,
-          },
-        },
-      })
-      expect(result.current.wording).toBe(expectedWording)
-      expectedOnPress === undefined
-        ? expect(result.current.onPress).toBeUndefined()
-        : expect(result.current.onPress).toBeTruthy()
-      unmount()
-    }
-  )
+describe('getCtaWordingAndAction', () => {
+  describe('Non Beneficiary', () => {
+    it.each`
+      type                  | url                     | expected                              | disabled
+      ${CategoryType.Event} | ${undefined}            | ${"Accéder à l'offre"}                | ${true}
+      ${CategoryType.Event} | ${'http://url-externe'} | ${"Accéder à l'offre"}                | ${false}
+      ${CategoryType.Thing} | ${undefined}            | ${'Accéder à la billetterie externe'} | ${true}
+      ${CategoryType.Thing} | ${'http://url-externe'} | ${'Accéder à la billetterie externe'} | ${false}
+    `(
+      'CTA(disabled=$disabled) = "$expected" for categoryType=$type and url=$url',
+      ({ disabled, expected, type, url }) => {
+        const offer = buildOffer({
+          externalTicketOfficeUrl: url,
+          category: { ...baseOffer.category, categoryType: type },
+        })
+
+        const result = getCtaWordingAndAction({
+          isLoggedIn: true,
+          isBeneficiary: false,
+          offer,
+        })
+        const { wording, onPress } = result || {}
+        expect(wording).toEqual(expected)
+        expect(onPress === undefined).toBe(disabled)
+      }
+    )
+  })
+  describe('Beneficiary', () => {
+    const getCta = (
+      partialOffer: Partial<OfferAdaptedResponse>,
+      parameters?: Partial<Parameters<typeof getCtaWordingAndAction>[0]>
+    ) =>
+      getCtaWordingAndAction({
+        isLoggedIn: true,
+        isBeneficiary: true,
+        offer: buildOffer(partialOffer),
+        ...parameters,
+      }) || { wording: '' }
+
+    it('CTA="Offre expirée" if offer is inactive', () => {
+      const { wording, onPress } = getCta({ isActive: false })
+      expect(wording).toEqual('Offre expirée')
+      expect(onPress === undefined).toBeTruthy()
+    })
+
+    it('CTA="Offre épuisée" if offer is sold out', () => {
+      const { wording, onPress } = getCta({ stocks: [soldOutStock] })
+      expect(wording).toEqual('Offre épuisée')
+      expect(onPress === undefined).toBeTruthy()
+    })
+    it('CTA="Offre expirée" if offer is expired', () => {
+      const { wording, onPress } = getCta({ stocks: [expiredStock1, expiredStock2] })
+      expect(wording).toEqual('Offre expirée')
+      expect(onPress === undefined).toBeTruthy()
+    })
+
+    // offer price is 5
+    it.each`
+      type                  | creditThing  | creditEvent  | platform     | expected                     | disabled
+      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'ios'}     | ${'Impossible de réserver'}  | ${true}
+      ${CategoryType.Event} | ${undefined} | ${20}        | ${'ios'}     | ${'Voir les disponibilités'} | ${false}
+      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'android'} | ${'Voir les disponibilités'} | ${false}
+      ${CategoryType.Event} | ${undefined} | ${20}        | ${'android'} | ${'Voir les disponibilités'} | ${false}
+    `(
+      'If credit is enough, only iOS user cannot book on Thing type offers | $type x $platform => $expected',
+      ({ creditEvent, creditThing, disabled, expected, type, platform }) => {
+        const { wording, onPress } = getCta(
+          { category: { ...baseOffer.category, categoryType: type } },
+          { creditEvent, creditThing, platform }
+        )
+        expect(wording).toEqual(expected)
+        expect(onPress === undefined).toBe(disabled)
+      }
+    )
+
+    it.each`
+      type                  | creditThing  | creditEvent  | expected                     | disabled
+      ${CategoryType.Thing} | ${1}         | ${undefined} | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Thing} | ${1}         | ${20}        | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Thing} | ${4.9}       | ${undefined} | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Thing} | ${5.1}       | ${undefined} | ${'Voir les disponibilités'} | ${false}
+      ${CategoryType.Event} | ${undefined} | ${1}         | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Event} | ${20}        | ${1}         | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Event} | ${undefined} | ${4.9}       | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Event} | ${undefined} | ${6}         | ${'Voir les disponibilités'} | ${false}
+    `(
+      'check if Credit is enough for the category | $type | creditThing=$creditThing | creditEvent=$creditEvent => $expected',
+      ({ creditEvent, creditThing, disabled, expected, type }) => {
+        const { wording, onPress } = getCta(
+          { category: { ...baseOffer.category, categoryType: type } },
+          { creditEvent, creditThing, platform: 'android' }
+        )
+        expect(wording).toEqual(expected)
+        expect(onPress === undefined).toBe(disabled)
+      }
+    )
+  })
+  describe.skip('Navigation on success', () => {
+    // TODO
+  })
+  describe.skip('CTA - Analysis', () => {
+    // TODO
+  })
 })
 
 describe('isOfferExpired', () => {
@@ -100,8 +129,8 @@ describe('isOfferExpired', () => {
     ${expiredOffer}               | ${true}
     ${notExpiredOffer}            | ${false}
     ${notExpiredOfferNoLimitDate} | ${false}
-  `('should check offer expiration correctlty', ({ offer, isExpired }) => {
-    expect(isOfferExpired(offer)).toEqual(isExpired)
+  `('should check offer expiration correctly', ({ offer, isExpired }) => {
+    expect(isOfferExpired(offer)).toBe(isExpired)
   })
 })
 
@@ -110,7 +139,12 @@ describe('isOfferSoldOut', () => {
     offer              | isSoldOut
     ${soldOutOffer}    | ${true}
     ${notSoldOutOffer} | ${false}
-  `('should check offer expiration correctlty', ({ offer, isSoldOut }) => {
+  `('should check if offer is sold out correctly', ({ offer, isSoldOut }) => {
     expect(isOfferSoldOut(offer)).toEqual(isSoldOut)
   })
+})
+
+const buildOffer = (partialOffer: Partial<OfferAdaptedResponse>): OfferAdaptedResponse => ({
+  ...baseOffer,
+  ...partialOffer,
 })

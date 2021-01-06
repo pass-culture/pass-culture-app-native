@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { Platform, PlatformOSType } from 'react-native'
 
-import { CategoryType, OfferResponse } from 'api/gen'
+import { CategoryType } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
@@ -16,8 +16,10 @@ const USER_CREDIT_EVENT = 30
 interface Props {
   isLoggedIn: boolean
   isBeneficiary: boolean
-  offer: OfferResponse
+  offer: OfferAdaptedResponse
   platform?: PlatformOSType
+  creditThing?: number
+  creditEvent?: number
 }
 interface ICTAWordingAndAction {
   wording: string
@@ -25,11 +27,13 @@ interface ICTAWordingAndAction {
 }
 
 // Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
-const getCtaWordingAndAction = ({
+export const getCtaWordingAndAction = ({
   isLoggedIn,
   isBeneficiary,
   offer,
   platform = Platform.OS,
+  creditThing = USER_CREDIT_THING,
+  creditEvent = USER_CREDIT_EVENT,
 }: Props): ICTAWordingAndAction | undefined => {
   const { category, externalTicketOfficeUrl } = offer
 
@@ -46,17 +50,17 @@ const getCtaWordingAndAction = ({
 
   // Beneficiary
   if (!offer.isActive) return { wording: _(t`Offre expirée`) }
-  if (isOfferSoldOut(offer.stocks)) return { wording: _(t`Offre épuisée`) }
-  if (isOfferExpired(offer.stocks)) return { wording: _(t`Offre expirée`) }
+  if (isOfferSoldOut(offer)) return { wording: _(t`Offre épuisée`) }
+  if (isOfferExpired(offer)) return { wording: _(t`Offre expirée`) }
 
-  const price = getPrice(offer.stocks)
+  const price = getOfferPrice(offer)
   if (category.categoryType === CategoryType.Thing) {
-    if (price > USER_CREDIT_THING) return { wording: _(t`Crédit insuffisant`) }
+    if (price > creditThing) return { wording: _(t`Crédit insuffisant`) }
     if (price > 0 && platform === 'ios') return { wording: _(t`Impossible de réserver`) }
   }
 
   if (category.categoryType === CategoryType.Event) {
-    if (price > USER_CREDIT_EVENT) return { wording: _(t`Crédit insuffisant`) }
+    if (price > creditEvent) return { wording: _(t`Crédit insuffisant`) }
   }
 
   return {
@@ -91,14 +95,14 @@ export const useCtaWordingAndAction = (props: {
 }
 
 // An offer is expired if all its stock has an expiration date in the past
-export const isOfferExpired = (stocks: OfferAdaptedResponse['stocks']) =>
-  stocks.every(({ bookingLimitDatetime }) =>
+export const isOfferExpired = (offer: OfferAdaptedResponse) =>
+  offer.stocks.every(({ bookingLimitDatetime }) =>
     bookingLimitDatetime ? bookingLimitDatetime < new Date() : false
   )
 
 // An offer is sold out if none of its stock is bookable
-export const isOfferSoldOut = (stocks: OfferAdaptedResponse['stocks']) =>
-  stocks.every(({ isBookable }) => !isBookable)
+export const isOfferSoldOut = (offer: OfferAdaptedResponse) =>
+  offer.stocks.every(({ isBookable }) => !isBookable)
 
-export const getPrice = (stocks: OfferAdaptedResponse['stocks']): number =>
-  Math.min(...stocks.map(({ price }) => price))
+export const getOfferPrice = (offer: OfferAdaptedResponse): number =>
+  Math.min(...offer.stocks.map(({ price }) => price))
