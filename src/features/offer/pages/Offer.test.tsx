@@ -261,7 +261,7 @@ const offerId = dehumanizeId(humanizedOfferId)!
 async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
   server.use(
     rest.get<OfferResponse>(env.API_BASE_URL + `/native/v1/offer/${offerId}`, (req, res, ctx) =>
-      res.once(ctx.status(200), ctx.json({ ...offerResponseSnap, ...extraOffer }))
+      res(ctx.status(200), ctx.json({ ...offerResponseSnap, ...extraOffer }))
     )
   )
 

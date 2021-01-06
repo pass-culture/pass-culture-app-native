@@ -153,7 +153,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
                               Array [
                                 Object {
                                   \\"backgroundColor\\": \\"#f5f5f5\\",
-@@ -1283,1601 +1198,16 @@
+@@ -1283,1602 +1198,16 @@
                           <View
                             style={
                               Array [
@@ -169,10 +169,10 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
 -                               Array [
 -                                 Object {
 -                                   \\"height\\": 24,
--                                 },
--                               ]
--                             }
--                           />
+                                },
+                              ]
+                            }
+                          />
 -                           <Text
 -                             style={
 -                               Array [
@@ -419,7 +419,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
 -                               ]
 -                             }
 -                           />
--                         </View>
+                        </View>
 -                         <View
 -                           style={
 -                             Array [
@@ -1572,10 +1572,10 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
 -                                     Array [
 -                                       Object {
 -                                         \\"height\\": 16,
-                                },
-                              ]
-                            }
-                          />
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
 -                                 <View
 -                                   style={
 -                                     Array [
@@ -1605,7 +1605,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
 -                                     Handicap auditif
 -                                   </Text>
 -                                 </View>
-                        </View>
+-                               </View>
 -                             </View>
 -                           </View>
 -                         </View>
@@ -1620,6 +1620,7 @@ exports[`<Offer /> OfferTile to Offer transition should open Offer with prepopul
 -                           },
 -                         ]
 -                       }
+-                       testID=\\"CTA-button\\"
 -                     >
 -                       <View
 -                         accessible={true}
@@ -4148,6 +4149,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           },
                         ]
                       }
+                      testID="CTA-button"
                     >
                       <View
                         accessible={true}
@@ -7697,6 +7699,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           },
                         ]
                       }
+                      testID="CTA-button"
                     >
                       <View
                         accessible={true}

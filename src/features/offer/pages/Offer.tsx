@@ -135,7 +135,7 @@ const OfferComponent: FunctionComponent = () => {
       </Container>
 
       {wording && (
-        <CallToActionContainer>
+        <CallToActionContainer testID="CTA-button">
           <CallToAction wording={wording} onPress={onPress} />
         </CallToActionContainer>
       )}
