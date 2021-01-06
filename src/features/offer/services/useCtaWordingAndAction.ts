@@ -29,6 +29,8 @@ export const useCtaWordingAndAction = ({ offer }: Props) => {
 
   let wording = null
   let onPress = undefined
+
+  // Non beneficiary
   if (!isLoggedIn || (profileInfo && !profileInfo.isBeneficiary)) {
     wording =
       offer?.category.categoryType === CategoryType.Event
@@ -39,8 +41,37 @@ export const useCtaWordingAndAction = ({ offer }: Props) => {
     onPress = () => console.log('Go to external offer')
     return { wording, onPress }
   }
-  wording = isOfferExpired(offer) ? _(t`Offre expirée`) : _(t`Voir les disponibilités`)
-  onPress = undefined
+
+  // Beneficiary
+
+  // TODO: isOffer active
+
+  // TODO: isOffer bookable
+
+  if (isOfferExpired(offer)) {
+    return {
+      wording: _(t`Offre expirée`),
+      onPress: undefined,
+    }
+  }
+
+  // TODO: check offer type
+
+  /**
+   * Things:
+   * check user things credit
+   * check is free
+   * check platform
+   * end: wording 'Réserver'
+   */
+
+  /**
+   * Events:
+   * check user events credit
+   * end: wording 'Voir les disponibilités'
+   */
+
+  wording = _(t`Voir les disponibilités`)
   return { wording, onPress }
 }
 
