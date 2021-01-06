@@ -8,11 +8,12 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
   wording: string
+  onPress: (() => void) | undefined
 }
 
-export const CallToAction: React.FC<Props> = ({ wording }) => {
+export const CallToAction: React.FC<Props> = ({ wording, onPress }) => {
   return (
-    <Container onPress={() => null}>
+    <Container onPress={onPress}>
       <Rectangle height={getSpacing(12)} size="100%" />
       <Title adjustsFontSizeToFit numberOfLines={1}>
         {wording}
