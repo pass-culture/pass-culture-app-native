@@ -28,7 +28,8 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
 
 const YOUNGEST_AGE = 16
-const OLDEST_AGE = 120
+
+const MIN_DATE = new Date('1900-01-01T00:00:00')
 
 interface State {
   date: string | null
@@ -50,8 +51,6 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
 
   const now = new Date()
   const currentYear = now.getUTCFullYear()
-  const minDate = new Date(now)
-  minDate.setFullYear(currentYear - OLDEST_AGE)
   const maxDate = new Date(now)
   maxDate.setFullYear(currentYear - YOUNGEST_AGE)
 
@@ -179,7 +178,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               <DateInput
                 onChangeValue={onChangeValue}
                 ref={dateInputRef}
-                minDate={minDate}
+                minDate={MIN_DATE}
                 maxDate={maxDate}
               />
               {renderErrorMessages()}

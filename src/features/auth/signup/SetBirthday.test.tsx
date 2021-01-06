@@ -55,8 +55,8 @@ describe('SetBirthday Page', () => {
     const month = getByPlaceholderText('MM')
     const year = getByPlaceholderText('AAAA')
 
-    fireEvent.changeText(day, '01')
-    fireEvent.changeText(month, '01')
+    fireEvent.changeText(day, '31')
+    fireEvent.changeText(month, '12')
     fireEvent.changeText(year, '1899')
 
     const continueButton = getByText('Continuer')
