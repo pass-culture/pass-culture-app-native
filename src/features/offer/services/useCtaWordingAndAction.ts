@@ -46,7 +46,12 @@ export const useCtaWordingAndAction = ({ offer }: Props) => {
 
   // TODO: isOffer active
 
-  // TODO: isOffer bookable
+  if (isOfferSoldOut(offer)) {
+    return {
+      wording: _(t`Offre épuisée`),
+      onPress: undefined,
+    }
+  }
 
   if (isOfferExpired(offer)) {
     return {
@@ -80,3 +85,6 @@ export const isOfferExpired = (offer: OfferAdaptedResponse | undefined) =>
     if (!stock.bookingLimitDatetime) return false
     return isTimestampExpired(Math.round(stock.bookingLimitDatetime?.valueOf() / 1000), 0)
   })
+
+export const isOfferSoldOut = (offer: OfferAdaptedResponse | undefined) =>
+  offer?.stocks.every((stock) => !stock.isBookable)
