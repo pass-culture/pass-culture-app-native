@@ -6,6 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { analytics } from 'libs/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
 import { OfferHeader } from '../OfferHeader'
@@ -71,7 +72,13 @@ async function renderOfferHeader(isLoggedIn: boolean) {
   mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
-    <OfferHeader title="Some very nice offer" headerTransition={animatedValue} offerId={offerId} />
+    reactQueryProviderHOC(
+      <OfferHeader
+        title="Some very nice offer"
+        headerTransition={animatedValue}
+        offerId={offerId}
+      />
+    )
   )
   await act(async () => {
     await flushAllPromises()

@@ -130,6 +130,7 @@ const OfferDescriptionComponent = () => {
         title="Description"
         headerTransition={new Animated.Value(1)}
         showRightIcons={false}
+        offerId={params.id}
       />
     </React.Fragment>
   )

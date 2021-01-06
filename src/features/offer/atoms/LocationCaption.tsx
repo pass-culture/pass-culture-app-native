@@ -13,8 +13,11 @@ type Props = {
   isDigital: boolean
 }
 
+export const getLocationName = (venue: OfferVenueResponse, isDigital: boolean): string =>
+  isDigital ? venue.offerer.name : venue.publicName || venue.name
+
 export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: Props) => {
-  const locationName = isDigital ? venue.offerer.name : venue.publicName || venue.name
+  const locationName = getLocationName(venue, isDigital)
   const where = isDigital ? _(t`en ligne`) : venue.city
 
   return (
