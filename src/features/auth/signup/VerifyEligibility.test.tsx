@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { render, fireEvent, waitFor } from '@testing-library/react-native'
+import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -22,11 +22,9 @@ describe('<VerifyEligibility />', () => {
     const button = await findByText("Retourner à l'accueil")
     fireEvent.press(button)
 
-    await waitFor(() => {
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('Home', {
-        shouldDisplayLoginModal: false,
-      })
+    expect(navigate).toBeCalledTimes(1)
+    expect(navigate).toBeCalledWith('Home', {
+      shouldDisplayLoginModal: false,
     })
   })
 
@@ -36,12 +34,10 @@ describe('<VerifyEligibility />', () => {
     const button = await findByText('Vérifier mon éligibilité')
     fireEvent.press(button)
 
-    await waitFor(() => {
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('IdCheck', {
-        email: 'test@email.com',
-        licenceToken: 'xXLicenceTokenXx',
-      })
+    expect(navigate).toBeCalledTimes(1)
+    expect(navigate).toBeCalledWith('IdCheck', {
+      email: 'test@email.com',
+      licenceToken: 'xXLicenceTokenXx',
     })
   })
 })
