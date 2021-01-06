@@ -190,7 +190,9 @@ export const AppComponents: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
-        <CallToAction wording="CallToAction" />
+        <CallToAction wording="CallToAction" onPress={onButtonPress} />
+        <Spacer.Column numberOfSpaces={1} />
+        <CallToAction wording="Disabled CallToAction" onPress={undefined} />
       </AccordionItem>
 
       <Divider />
