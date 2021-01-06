@@ -1,12 +1,18 @@
-import { act, fireEvent, render } from '@testing-library/react-native'
+import { act, cleanup, fireEvent, render } from '@testing-library/react-native'
+import { rest } from 'msw/'
 import React from 'react'
-import { Animated } from 'react-native'
+import { Animated, Share } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
+import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
 
 import { OfferHeader } from '../OfferHeader'
@@ -15,6 +21,10 @@ jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
 describe('<OfferHeader />', () => {
+  afterEach(async () => {
+    jest.clearAllMocks()
+    await cleanup()
+  })
   it('should render correctly', async () => {
     const { toJSON } = await renderOfferHeader(true)
     expect(toJSON()).toMatchSnapshot()
@@ -52,6 +62,21 @@ describe('<OfferHeader />', () => {
     await waitForExpect(() => expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1))
   })
 
+  it('should call Share with the right arguments', async () => {
+    const share = jest.spyOn(Share, 'share')
+    const { getByTestId } = await renderOfferHeader(true)
+
+    fireEvent.press(getByTestId('icon-share'))
+    expect(share).toHaveBeenCalledTimes(1)
+    const url = 'passculture://app.passculture.testing/offer/?id=116656'
+    const title =
+      'Retrouve Sous les étoiles de Paris - VF chez PATHE BEAUGRENELLE sur le pass Culture'
+    expect(share).toHaveBeenCalledWith(
+      { message: `${title}: ${url}`, title, url },
+      { dialogTitle: title }
+    )
+  })
+
   describe('<OfferHeader /> - Analytics', () => {
     it('should log ShareOffer once when clicking on the Share button', async () => {
       const { getByTestId } = await renderOfferHeader(true)
@@ -67,9 +92,17 @@ describe('<OfferHeader />', () => {
   })
 })
 
-const offerId = 30
+const humanizedOfferId = 'AHD3A'
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const offerId = dehumanizeId(humanizedOfferId)!
+
 async function renderOfferHeader(isLoggedIn: boolean) {
-  mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
+  server.use(
+    rest.get<OfferResponse>(env.API_BASE_URL + `/native/v1/offer/${offerId}`, (req, res, ctx) =>
+      res.once(ctx.status(200), ctx.json(offerResponseSnap))
+    )
+  )
+  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn }))
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
     reactQueryProviderHOC(
