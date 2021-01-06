@@ -13,7 +13,7 @@ interface Props {
 
 export const CallToAction: React.FC<Props> = ({ wording, onPress }) => {
   return (
-    <Container onPress={onPress}>
+    <Container onPress={onPress} disabled={onPress === undefined}>
       <Rectangle height={getSpacing(12)} size="100%" />
       <Title adjustsFontSizeToFit numberOfLines={1}>
         {wording}

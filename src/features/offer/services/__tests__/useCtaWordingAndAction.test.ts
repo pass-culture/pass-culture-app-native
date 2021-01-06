@@ -29,6 +29,14 @@ describe('useCtaWordingAndAction', () => {
     isBookable: true,
   }
 
+  const soldOutStock = {
+    id: 118929,
+    beginningDatetime: new Date('2021-01-01T13:30:00'),
+    bookingLimitDatetime: new Date('2021-01-05T13:30:00'),
+    price: 5,
+    isBookable: false,
+  }
+
   // Note that isLoggedIn === false => isBeneficiary === false
   it.each`
     isLoggedIn | isBeneficiary | offerCategoryType     | stocks               | expectedWording
@@ -42,7 +50,10 @@ describe('useCtaWordingAndAction', () => {
     ${true}    | ${false}      | ${CategoryType.Thing} | ${[expiredStock]}    | ${"Accéder à l'offre"}
     ${true}    | ${true}       | ${CategoryType.Event} | ${[notExpiredStock]} | ${'Voir les disponibilités'}
     ${true}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${'Voir les disponibilités'}
+    ${true}    | ${true}       | ${CategoryType.Thing} | ${[soldOutStock]}    | ${'Offre épuisée'}
+    ${true}    | ${true}       | ${CategoryType.Event} | ${[soldOutStock]}    | ${'Offre épuisée'}
     ${true}    | ${true}       | ${CategoryType.Thing} | ${[expiredStock]}    | ${'Offre expirée'}
+    ${true}    | ${true}       | ${CategoryType.Event} | ${[expiredStock]}    | ${'Offre expirée'}
     ${null}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${null}
     ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${null}
     ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${null}
