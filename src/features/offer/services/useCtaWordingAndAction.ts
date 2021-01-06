@@ -12,7 +12,7 @@ interface Props {
   offer: OfferAdaptedResponse | undefined
 }
 
-export const useCtaWording = ({ offer }: Props) => {
+export const useCtaWordingAndAction = ({ offer }: Props) => {
   const { isLoggedIn } = useAuthContext()
   const { data: profileInfo } = useUserProfileInfo()
 
@@ -25,13 +25,23 @@ export const useCtaWording = ({ offer }: Props) => {
     offer?.category.categoryType === null ||
     offer?.stocks.length === 0
   )
-    return null
+    return { wording: null, onPress: undefined }
 
-  if (!isLoggedIn || (profileInfo && !profileInfo.isBeneficiary))
-    return offer?.category.categoryType === CategoryType.Event
-      ? _(t`Accéder à la billetterie externe`)
-      : _(t`Accéder à l'offre`)
-  return isOfferExpired(offer) ? _(t`Offre expirée`) : _(t`Voir les disponibilités`)
+  let wording = null
+  let onPress = undefined
+  if (!isLoggedIn || (profileInfo && !profileInfo.isBeneficiary)) {
+    wording =
+      offer?.category.categoryType === CategoryType.Event
+        ? _(t`Accéder à la billetterie externe`)
+        : _(t`Accéder à l'offre`)
+    // $TODO: will be modified in ticket PC-6003
+    // eslint-disable-next-line no-console
+    onPress = () => console.log('Go to external offer')
+    return { wording, onPress }
+  }
+  wording = isOfferExpired(offer) ? _(t`Offre expirée`) : _(t`Voir les disponibilités`)
+  onPress = undefined
+  return { wording, onPress }
 }
 
 export const isOfferExpired = (offer: OfferAdaptedResponse | undefined) =>

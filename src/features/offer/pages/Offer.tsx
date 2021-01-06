@@ -27,7 +27,7 @@ import {
   AccessibilityBlock,
   OfferPartialDescription,
 } from '../components'
-import { useCtaWording } from '../services/useCtaWording'
+import { useCtaWordingAndAction } from '../services/useCtaWordingAndAction'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
@@ -39,7 +39,7 @@ const OfferComponent: FunctionComponent = () => {
   const scrollViewRef = useRef<ScrollView | null>(null)
   const hasSeenAllPage = useRef<boolean>(false)
   useTrackOfferSeenDuration(params.id)
-  const wording = useCtaWording({ offer: offerResponse })
+  const { wording, onPress } = useCtaWordingAndAction({ offer: offerResponse })
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
@@ -136,7 +136,7 @@ const OfferComponent: FunctionComponent = () => {
 
       {wording && (
         <CallToActionContainer>
-          <CallToAction wording={wording} />
+          <CallToAction wording={wording} onPress={onPress} />
         </CallToActionContainer>
       )}
 

@@ -5,7 +5,7 @@ import { CategoryType, OfferStockResponse } from 'api/gen'
 
 import { useAuthContext } from '../../../auth/AuthContext'
 import { useUserProfileInfo } from '../../../home/api'
-import { useCtaWording, isOfferExpired } from '../useCtaWording'
+import { useCtaWordingAndAction, isOfferExpired } from '../useCtaWordingAndAction'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 
@@ -13,7 +13,7 @@ jest.mock('features/auth/AuthContext')
 jest.mock('features/home/api')
 const mockedUseAuthContext = useAuthContext as jest.Mock
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
-describe('useCtaWording', () => {
+describe('useCtaWordingAndAction', () => {
   const notExpiredStock = {
     id: 118929,
     beginningDatetime: new Date('2021-01-01T13:30:00'),
@@ -65,7 +65,7 @@ describe('useCtaWording', () => {
       mockedUseUserProfileInfo.mockImplementationOnce(() =>
         isLoggedIn ? { data: { isBeneficiary } } : { data: undefined }
       )
-      const { result, unmount } = renderHook(useCtaWording, {
+      const { result, unmount } = renderHook(useCtaWordingAndAction, {
         initialProps: {
           offer: {
             // @ts-ignore only category and stocks needed for test
@@ -75,7 +75,7 @@ describe('useCtaWording', () => {
           },
         },
       })
-      expect(result.current).toBe(expectedWording)
+      expect(result.current.wording).toBe(expectedWording)
       unmount()
     }
   )
