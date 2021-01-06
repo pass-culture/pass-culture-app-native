@@ -8,7 +8,7 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
   wording: string
-  onPress: (() => void) | undefined
+  onPress: (() => void) | (() => Promise<void>) | undefined
 }
 
 export const CallToAction: React.FC<Props> = ({ wording, onPress }) => {

@@ -3,6 +3,7 @@ import { t } from '@lingui/macro'
 import { CategoryType } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
+import { openExternalUrl } from 'features/navigation/helpers'
 import { isTimestampExpired } from 'libs/dates'
 import { _ } from 'libs/i18n'
 
@@ -38,9 +39,10 @@ export const useCtaWordingAndAction = ({ offer }: Props) => {
       offer?.category.categoryType === CategoryType.Event
         ? _(t`Accéder à la billetterie externe`)
         : _(t`Accéder à l'offre`)
-    // $TODO: will be modified in ticket PC-6003
-    // eslint-disable-next-line no-console
-    onPress = () => console.log('Go to external offer')
+    onPress = offer?.externalTicketOfficeUrl
+      ? // @ts-ignore can't be undefined - checked just above
+        () => openExternalUrl(offer?.externalTicketOfficeUrl)
+      : undefined
     return { wording, onPress }
   }
 

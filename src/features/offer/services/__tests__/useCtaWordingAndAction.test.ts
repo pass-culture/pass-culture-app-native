@@ -26,26 +26,28 @@ const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
 describe('useCtaWordingAndAction', () => {
   // Note that isLoggedIn === false => isBeneficiary === false
   it.each`
-    isLoggedIn | isBeneficiary | offerCategoryType     | stocks               | isActive | expectedWording
-    ${false}   | ${false}      | ${CategoryType.Event} | ${[notExpiredStock]} | ${true}  | ${'Accéder à la billetterie externe'}
-    ${true}    | ${false}      | ${CategoryType.Event} | ${[notExpiredStock]} | ${true}  | ${'Accéder à la billetterie externe'}
-    ${false}   | ${false}      | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${'Accéder à la billetterie externe'}
-    ${true}    | ${false}      | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${'Accéder à la billetterie externe'}
-    ${false}   | ${false}      | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${"Accéder à l'offre"}
-    ${true}    | ${false}      | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${"Accéder à l'offre"}
-    ${false}   | ${false}      | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${"Accéder à l'offre"}
-    ${true}    | ${false}      | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${"Accéder à l'offre"}
-    ${true}    | ${true}       | ${CategoryType.Event} | ${[notExpiredStock]} | ${true}  | ${'Voir les disponibilités'}
-    ${true}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${'Voir les disponibilités'}
-    ${true}    | ${true}       | ${CategoryType.Thing} | ${[soldOutStock]}    | ${true}  | ${'Offre épuisée'}
-    ${true}    | ${true}       | ${CategoryType.Event} | ${[soldOutStock]}    | ${true}  | ${'Offre épuisée'}
-    ${true}    | ${true}       | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${'Offre expirée'}
-    ${true}    | ${true}       | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${'Offre expirée'}
-    ${true}    | ${true}       | ${CategoryType.Thing} | ${[soldOutStock]}    | ${false} | ${'Offre expirée'}
-    ${true}    | ${true}       | ${CategoryType.Event} | ${[soldOutStock]}    | ${false} | ${'Offre expirée'}
-    ${null}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${null}
-    ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${true}  | ${null}
-    ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${true}  | ${null}
+    isLoggedIn | isBeneficiary | offerCategoryType     | stocks               | isActive | externalTicketOfficeUrl | expectedWording                       | expectedOnPress
+    ${false}   | ${false}      | ${CategoryType.Event} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${'Accéder à la billetterie externe'} | ${true}
+    ${true}    | ${false}      | ${CategoryType.Event} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${'Accéder à la billetterie externe'} | ${true}
+    ${false}   | ${false}      | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${'Accéder à la billetterie externe'} | ${true}
+    ${false}   | ${false}      | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${null}                 | ${'Accéder à la billetterie externe'} | ${undefined}
+    ${true}    | ${false}      | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${'Accéder à la billetterie externe'} | ${true}
+    ${false}   | ${false}      | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${"Accéder à l'offre"}                | ${true}
+    ${true}    | ${false}      | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${"Accéder à l'offre"}                | ${true}
+    ${false}   | ${false}      | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${"Accéder à l'offre"}                | ${true}
+    ${true}    | ${false}      | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${"Accéder à l'offre"}                | ${true}
+    ${true}    | ${false}      | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${undefined}            | ${"Accéder à l'offre"}                | ${undefined}
+    ${true}    | ${true}       | ${CategoryType.Event} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${'Voir les disponibilités'}          | ${true}
+    ${true}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${'Voir les disponibilités'}          | ${true}
+    ${true}    | ${true}       | ${CategoryType.Thing} | ${[soldOutStock]}    | ${true}  | ${'https://test.com'}   | ${'Offre épuisée'}                    | ${undefined}
+    ${true}    | ${true}       | ${CategoryType.Event} | ${[soldOutStock]}    | ${true}  | ${'https://test.com'}   | ${'Offre épuisée'}                    | ${undefined}
+    ${true}    | ${true}       | ${CategoryType.Thing} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${'Offre expirée'}                    | ${undefined}
+    ${true}    | ${true}       | ${CategoryType.Event} | ${[expiredStock1]}   | ${true}  | ${'https://test.com'}   | ${'Offre expirée'}                    | ${undefined}
+    ${true}    | ${true}       | ${CategoryType.Thing} | ${[soldOutStock]}    | ${false} | ${'https://test.com'}   | ${'Offre expirée'}                    | ${undefined}
+    ${true}    | ${true}       | ${CategoryType.Event} | ${[soldOutStock]}    | ${false} | ${'https://test.com'}   | ${'Offre expirée'}                    | ${undefined}
+    ${null}    | ${true}       | ${CategoryType.Thing} | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${null}                               | ${undefined}
+    ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${null}                               | ${undefined}
+    ${true}    | ${true}       | ${null}               | ${[notExpiredStock]} | ${true}  | ${'https://test.com'}   | ${null}                               | ${undefined}
   `(
     'should return $expectedWording if isLoggedIn: $isLoggedIn, isBeneficiary: $isBeneficiary, offerCategoryType: $OfferCategoryType, isActive: $isActive',
     ({
@@ -54,14 +56,18 @@ describe('useCtaWordingAndAction', () => {
       offerCategoryType,
       stocks,
       isActive,
+      externalTicketOfficeUrl,
       expectedWording,
+      expectedOnPress,
     }: {
       isLoggedIn: boolean
       isBeneficiary: boolean
       offerCategoryType: CategoryType
       stocks: OfferStockResponse
       isActive: boolean
+      externalTicketOfficeUrl: string | undefined
       expectedWording: string
+      expectedOnPress: (() => void) | undefined
     }) => {
       mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn }))
       mockedUseUserProfileInfo.mockImplementationOnce(() =>
@@ -75,10 +81,14 @@ describe('useCtaWordingAndAction', () => {
             // @ts-ignore only category and stocks needed for test
             stocks: stocks,
             isActive: isActive,
+            externalTicketOfficeUrl: externalTicketOfficeUrl,
           },
         },
       })
       expect(result.current.wording).toBe(expectedWording)
+      expectedOnPress === undefined
+        ? expect(result.current.onPress).toBeUndefined()
+        : expect(result.current.onPress).toBeTruthy()
       unmount()
     }
   )
