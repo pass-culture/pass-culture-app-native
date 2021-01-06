@@ -1,4 +1,4 @@
-import { act, cleanup, fireEvent, render } from '@testing-library/react-native'
+import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
 import { Animated, Share } from 'react-native'
@@ -66,7 +66,9 @@ describe('<OfferHeader />', () => {
     const share = jest.spyOn(Share, 'share')
     const { getByTestId } = await renderOfferHeader(true)
 
-    fireEvent.press(getByTestId('icon-share'))
+    act(() => {
+      fireEvent.press(getByTestId('icon-share'))
+    })
     expect(share).toHaveBeenCalledTimes(1)
     const url = 'passculture://app.passculture.testing/offer/?id=116656'
     const title =
@@ -99,7 +101,7 @@ const offerId = dehumanizeId(humanizedOfferId)!
 async function renderOfferHeader(isLoggedIn: boolean) {
   server.use(
     rest.get<OfferResponse>(env.API_BASE_URL + `/native/v1/offer/${offerId}`, (req, res, ctx) =>
-      res.once(ctx.status(200), ctx.json(offerResponseSnap))
+      res(ctx.status(200), ctx.json(offerResponseSnap))
     )
   )
   mockUseAuthContext.mockImplementation(() => ({ isLoggedIn }))
@@ -116,5 +118,6 @@ async function renderOfferHeader(isLoggedIn: boolean) {
   await act(async () => {
     await flushAllPromises()
   })
+  await waitFor(() => wrapper.getByTestId('offerHeaderName'))
   return { ...wrapper, animatedValue }
 }
