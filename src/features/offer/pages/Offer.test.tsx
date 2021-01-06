@@ -29,6 +29,10 @@ jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+jest.mock('features/offer/services/useItinerary', () => ({
+  useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
+}))
+
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(
     () =>
