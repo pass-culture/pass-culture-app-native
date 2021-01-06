@@ -75,10 +75,10 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   const isDateValid = FULL_DATE_VALIDATOR.isValid(date, Number(year), Number(month), Number(day))
 
   if (isDateValid && props.minDate) {
-    dateValidation.isDateAboveMin = date > props.minDate
+    dateValidation.isDateAboveMin = date >= props.minDate
   }
   if (isDateValid && props.maxDate) {
-    dateValidation.isDateBelowMax = date < props.maxDate
+    dateValidation.isDateBelowMax = date <= props.maxDate
   }
 
   dateValidation.isComplete =

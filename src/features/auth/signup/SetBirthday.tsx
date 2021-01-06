@@ -29,7 +29,7 @@ type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
 
 const YOUNGEST_AGE = 16
 
-const MIN_DATE = new Date('1900-01-01T00:00:00')
+const MIN_DATE = new Date('1900-01-01T00:00:00Z')
 
 interface State {
   date: string | null
