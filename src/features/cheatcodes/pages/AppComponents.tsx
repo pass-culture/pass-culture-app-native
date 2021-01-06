@@ -40,6 +40,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
+import { Favourite } from 'ui/svg/icons/Favourite'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
@@ -331,6 +332,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Invalidate size={24} />
           <Text> - Invalidate </Text>
+        </AlignedText>
+        <AlignedText>
+          <Favourite size={24} />
+          <Text> - Favourite </Text>
         </AlignedText>
       </AccordionItem>
 
