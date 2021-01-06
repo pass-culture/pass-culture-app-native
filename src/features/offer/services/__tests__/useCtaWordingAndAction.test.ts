@@ -5,7 +5,7 @@ import { CategoryType, OfferStockResponse } from 'api/gen'
 
 import { useAuthContext } from '../../../auth/AuthContext'
 import { useUserProfileInfo } from '../../../home/api'
-import { useCtaWordingAndAction, isOfferExpired } from '../useCtaWordingAndAction'
+import { useCtaWordingAndAction, isOfferExpired, isOfferSoldOut } from '../useCtaWordingAndAction'
 import {
   expiredOffer,
   notExpiredOffer,
@@ -13,6 +13,8 @@ import {
   expiredStock1,
   notExpiredStock,
   soldOutStock,
+  soldOutOffer,
+  notSoldOutOffer,
 } from '../useCtaWordingAndAction.testsFixtures'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
@@ -85,5 +87,15 @@ describe('isOfferExpired', () => {
     ${notExpiredOfferNoLimitDate} | ${false}
   `('should check offer expiration correctlty', ({ offer, isExpired }) => {
     expect(isOfferExpired(offer)).toEqual(isExpired)
+  })
+})
+
+describe('isOfferSoldOut', () => {
+  it.each`
+    offer              | isSoldOut
+    ${soldOutOffer}    | ${true}
+    ${notSoldOutOffer} | ${false}
+  `('should check offer expiration correctlty', ({ offer, isSoldOut }) => {
+    expect(isOfferSoldOut(offer)).toEqual(isSoldOut)
   })
 })
