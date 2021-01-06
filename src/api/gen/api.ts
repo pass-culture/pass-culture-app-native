@@ -358,6 +358,12 @@ export interface OfferResponse {
      */
     image?: OfferImageResponse;
     /**
+     *
+     * @type {boolean}
+     * @memberof OfferResponse
+     */
+    isActive: boolean;
+    /**
      * 
      * @type {boolean}
      * @memberof OfferResponse
