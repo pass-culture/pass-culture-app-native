@@ -1,4 +1,4 @@
-import { act, render } from '@testing-library/react-native'
+import { render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -7,7 +7,6 @@ import { CategoryNameEnum, OfferResponse, UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises } from 'tests/utils'
 
 import { OfferIconCaptions } from '../OfferIconCaptions'
 
@@ -66,7 +65,6 @@ describe('<OfferIconCaptions />', () => {
           expect(component.queryByText(/À deux !/)).toBeNull()
         }
       })
-      component.unmount()
     }
   )
 
@@ -88,7 +86,7 @@ describe('<OfferIconCaptions />', () => {
     if (price === '7') stocks = sevenEurosBookableStocks
     if (price === 'noPrice') stocks = noStocks
     if (price === 'severalStocks') stocks = severalStocks
-    if (price == 'noBookableStocks') stocks = noBookableStocks
+    if (price === 'noBookableStocks') stocks = noBookableStocks
     const component = await renderOfferIconCaptions({
       isDuo: duo,
       stocks,
@@ -98,7 +96,6 @@ describe('<OfferIconCaptions />', () => {
       const euro = component.getByTestId('caption-iconPrice')
       expect(euro.props.children).toEqual(expectedDisplayedPrice)
     })
-    component.unmount()
   })
 })
 
@@ -126,8 +123,8 @@ async function renderOfferIconCaptions({
       />
     )
   )
-  await act(async () => {
-    await flushAllPromises()
+  await waitFor(() => {
+    expect(wrapper.queryByTestId('iconPrice')).toBeTruthy()
   })
   return wrapper
 }

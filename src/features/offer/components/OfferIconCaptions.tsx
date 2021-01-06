@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum, OfferResponse } from 'api/gen'
@@ -18,20 +18,22 @@ type Props = { category: CategoryNameEnum | null; label: string } & Pick<
 >
 export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, label }) => {
   const { data: profileInfo } = useUserProfileInfo()
+  if (!profileInfo) return <Fragment></Fragment>
+
   const bookableStocks = stocks.filter((stock) => stock.isBookable)
   const prices =
     bookableStocks.length > 0
       ? bookableStocks.map((stock) => stock.price)
       : stocks.map((stock) => stock.price)
   const price =
-    isDuo && profileInfo?.isBeneficiary
+    isDuo && profileInfo.isBeneficiary
       ? getDisplayPriceWithDuoMention(prices)
       : getDisplayPrice(prices)
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
       <OfferCategory category={category} label={label} />
-      {isDuo && profileInfo?.isBeneficiary && (
+      {isDuo && profileInfo.isBeneficiary && (
         <React.Fragment>
           <Separator />
           <IconWithCaption testID="iconDuo" Icon={Duo} caption={_(t`À deux !`)} />
