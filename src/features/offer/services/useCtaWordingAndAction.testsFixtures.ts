@@ -1,4 +1,4 @@
-export const notExpiredStock = {
+const notExpiredStock = {
   id: 118929,
   beginningDatetime: new Date('2021-01-01T13:30:00'),
   bookingLimitDatetime: new Date('2021-01-05T13:30:00'),
@@ -20,7 +20,7 @@ export const expiredStock1 = {
   price: 5,
   isBookable: true,
 }
-const expiredStock2 = {
+export const expiredStock2 = {
   id: 118928,
   beginningDatetime: new Date('2021-01-02T18:00:00'),
   bookingLimitDatetime: new Date('2021-01-03T13:30:00'),

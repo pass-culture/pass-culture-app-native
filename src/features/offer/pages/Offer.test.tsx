@@ -281,6 +281,7 @@ async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) 
 
   await waitForExpect(() => {
     expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
+    expect(wrapper.queryByTestId('CTA-button')).toBeTruthy()
   })
 
   return wrapper
