@@ -46,7 +46,12 @@ export const useCtaWordingAndAction = ({ offer }: Props) => {
 
   // Beneficiary
 
-  // TODO: isOffer active
+  if (isOfferDeactivated(offer)) {
+    return {
+      wording: _(t`Offre expirée`),
+      onPress: undefined,
+    }
+  }
 
   if (isOfferSoldOut(offer)) {
     return {
@@ -93,3 +98,5 @@ export const isOfferExpired = (offer: OfferAdaptedResponse | undefined) =>
 
 export const isOfferSoldOut = (offer: OfferAdaptedResponse | undefined) =>
   offer?.stocks.every((stock) => !stock.isBookable)
+
+export const isOfferDeactivated = (offer: OfferAdaptedResponse | undefined) => !offer?.isActive
