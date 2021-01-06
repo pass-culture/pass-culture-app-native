@@ -11,5 +11,8 @@ global.beforeAll(() => server.listen())
 global.afterAll(() => {
   server.resetHandlers()
   server.close()
+})
+
+global.afterEach(() => {
   queryCache.clear()
 })
