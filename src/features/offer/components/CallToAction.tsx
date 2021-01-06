@@ -12,9 +12,10 @@ interface Props {
 }
 
 export const CallToAction: React.FC<Props> = ({ wording, onPress }) => {
+  const isDisabled = onPress === undefined
   return (
-    <Container onPress={onPress} disabled={onPress === undefined}>
-      <Rectangle height={getSpacing(12)} size="100%" />
+    <Container onPress={onPress} disabled={isDisabled}>
+      {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
       <Title adjustsFontSizeToFit numberOfLines={1}>
         {wording}
       </Title>
@@ -35,4 +36,10 @@ const Title = styled(Typo.ButtonText)({
   position: 'absolute',
   color: ColorsEnum.WHITE,
   padding: getSpacing(5),
+})
+
+const DisabledRectangle = styled.View({
+  width: '100%',
+  height: getSpacing(12),
+  backgroundColor: ColorsEnum.PRIMARY_DISABLED,
 })

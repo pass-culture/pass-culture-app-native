@@ -1,6 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CallToAction /> should render 1`] = `
+exports[`<CallToAction /> should render disabled 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "borderRadius": 24,
+      "justifyContent": "center",
+      "opacity": 1,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ff99be",
+          "height": 48,
+          "width": "100%",
+        },
+      ]
+    }
+  />
+  <Text
+    adjustsFontSizeToFit={true}
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#ffffff",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "paddingBottom": 20,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 20,
+          "position": "absolute",
+        },
+      ]
+    }
+  >
+    Wording to display
+  </Text>
+</View>
+`;
+
+exports[`<CallToAction /> should render not disabled 1`] = `
 <View
   accessible={true}
   focusable={true}
