@@ -8,6 +8,7 @@ import { openExternalUrl } from 'features/navigation/helpers'
 import { _ } from 'libs/i18n'
 
 import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
+
 import { getOfferPrice } from './getOfferPrice'
 
 // TODO (squad profile: dehardcode those numbers)
