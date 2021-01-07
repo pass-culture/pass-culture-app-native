@@ -49,11 +49,11 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:28
+#: src/features/offer/services/useCtaWordingAndAction.ts:18
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:27
+#: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à la billetterie externe"
 msgstr "Accéder à la billetterie externe"
 
@@ -184,6 +184,11 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
+#: src/features/offer/services/useCtaWordingAndAction.ts:34
+#: src/features/offer/services/useCtaWordingAndAction.ts:40
+msgid "Crédit insuffisant"
+msgstr "Crédit insuffisant"
+
 #: src/features/offer/components/OfferWhereSection.tsx:34
 msgid "Distance"
 msgstr "Distance"
@@ -258,6 +263,10 @@ msgstr "Handicap visuel"
 msgid "ISBN"
 msgstr "ISBN"
 
+#: src/features/offer/services/useCtaWordingAndAction.ts:36
+msgid "Impossible de réserver"
+msgstr "Impossible de réserver"
+
 #: src/libs/keychain.ts:23
 #: src/libs/keychain.ts:33
 #: src/libs/keychain.ts:47
@@ -316,12 +325,12 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:37
-#: src/features/offer/services/useCtaWordingAndAction.ts:49
+#: src/features/offer/services/useCtaWordingAndAction.ts:26
+#: src/features/offer/services/useCtaWordingAndAction.ts:30
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:43
+#: src/features/offer/services/useCtaWordingAndAction.ts:28
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
@@ -482,7 +491,7 @@ msgstr "Valider"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:66
+#: src/features/offer/services/useCtaWordingAndAction.ts:43
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
