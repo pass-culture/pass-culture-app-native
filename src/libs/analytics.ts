@@ -18,6 +18,7 @@ enum AnalyticsEvent {
   DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
+  RESEND_EMAIL = 'ResendEmail',
   SCREEN_VIEW = 'screen_view',
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   SHARE_OFFER = 'Share',
@@ -83,23 +84,26 @@ const logOfferSeenDuration = async (offerId: number, duration: number) =>
 const logContactSupport = async () =>
   await firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT)
 
+const logResendEmail = async () => await firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL)
+
 export const analytics = {
-  logScreenView,
   logAllModulesSeen,
   logAllTilesSeen,
-  logConsultOffer,
+  logCancelSignup,
+  logClickBusinessBlock,
   logClickExclusivityBlock,
   logClickSeeMore,
-  logClickBusinessBlock,
   logClickWhyAnniversary,
   logConsultAccessibility,
-  logConsultItinerary,
-  logConsultOfferFromDeeplink,
   logConsultDescriptionDetails,
+  logConsultItinerary,
+  logConsultOffer,
+  logConsultOfferFromDeeplink,
   logConsultWholeOffer,
   logConsultWithdrawal,
-  logShareOffer,
-  logCancelSignup,
-  logOfferSeenDuration,
   logContactSupport,
+  logOfferSeenDuration,
+  logResendEmail,
+  logScreenView,
+  logShareOffer,
 }
