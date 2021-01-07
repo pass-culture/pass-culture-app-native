@@ -1,6 +1,7 @@
 import { render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
+import { QueryClient } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
 import { CategoryNameEnum, OfferResponse, UserProfileResponse } from 'api/gen'
@@ -27,7 +28,7 @@ const noBookableStocks: OfferResponse['stocks'] = [
   { id: 1, price: 7, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: false },
   { id: 2, price: 9, beginningDatetime: new Date('2021-01-03T13:30:00'), isBookable: false },
 ]
-const noStocks: OfferResponse['stocks'] = []
+const noPrice: OfferResponse['stocks'] = []
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -69,29 +70,20 @@ describe('<OfferIconCaptions />', () => {
   )
 
   it.each`
-    price                 | duo      | beneficiary | expectedDisplayedPrice
-    ${'7'}                | ${false} | ${true}     | ${'7 €'}
-    ${'7'}                | ${true}  | ${true}     | ${'7 € / place'}
-    ${'7'}                | ${true}  | ${false}    | ${'7 €'}
-    ${'free'}             | ${false} | ${true}     | ${'Gratuit'}
-    ${'free'}             | ${true}  | ${true}     | ${'Gratuit'}
-    ${'free'}             | ${true}  | ${false}    | ${'Gratuit'}
-    ${'noPrice'}          | ${false} | ${true}     | ${''}
-    ${'noPrice'}          | ${true}  | ${true}     | ${''}
-    ${'noPrice'}          | ${true}  | ${false}    | ${''}
-    ${'severalStocks'}    | ${true}  | ${false}    | ${'7 €'}
-    ${'noBookableStocks'} | ${true}  | ${false}    | ${'Dès 7 €'}
-  `('should show right price', async ({ price, duo, beneficiary, expectedDisplayedPrice }) => {
-    let stocks: OfferResponse['stocks'] = freeBookableStocks
-    if (price === '7') stocks = sevenEurosBookableStocks
-    if (price === 'noPrice') stocks = noStocks
-    if (price === 'severalStocks') stocks = severalStocks
-    if (price === 'noBookableStocks') stocks = noBookableStocks
-    const component = await renderOfferIconCaptions({
-      isDuo: duo,
-      stocks,
-      isBeneficiary: beneficiary,
-    })
+    stocks                      | isDuo    | isBeneficiary | expectedDisplayedPrice
+    ${sevenEurosBookableStocks} | ${false} | ${true}       | ${'7 €'}
+    ${sevenEurosBookableStocks} | ${true}  | ${true}       | ${'7 € / place'}
+    ${sevenEurosBookableStocks} | ${true}  | ${false}      | ${'7 €'}
+    ${freeBookableStocks}       | ${false} | ${true}       | ${'Gratuit'}
+    ${freeBookableStocks}       | ${true}  | ${true}       | ${'Gratuit'}
+    ${freeBookableStocks}       | ${true}  | ${false}      | ${'Gratuit'}
+    ${noPrice}                  | ${false} | ${true}       | ${''}
+    ${noPrice}                  | ${true}  | ${true}       | ${''}
+    ${noPrice}                  | ${true}  | ${false}      | ${''}
+    ${severalStocks}            | ${true}  | ${false}      | ${'7 €'}
+    ${noBookableStocks}         | ${true}  | ${false}      | ${'Dès 7 €'}
+  `('should show right price', async ({ stocks, isDuo, isBeneficiary, expectedDisplayedPrice }) => {
+    const component = await renderOfferIconCaptions({ isDuo, stocks, isBeneficiary })
     await waitForExpect(() => {
       const euro = component.getByTestId('caption-iconPrice')
       expect(euro.props.children).toEqual(expectedDisplayedPrice)
@@ -113,6 +105,10 @@ async function renderOfferIconCaptions({
       res.once(ctx.status(200), ctx.json({ ...userProfileAPIResponse, isBeneficiary }))
     )
   )
+  const setup = (queryClient: QueryClient) => {
+    queryClient.removeQueries()
+  }
+
   const wrapper = render(
     reactQueryProviderHOC(
       <OfferIconCaptions
@@ -120,7 +116,8 @@ async function renderOfferIconCaptions({
         isDuo={isDuo}
         label="Abonnements concerts"
         category={CategoryNameEnum.MUSIQUE}
-      />
+      />,
+      setup
     )
   )
   await waitFor(() => {
