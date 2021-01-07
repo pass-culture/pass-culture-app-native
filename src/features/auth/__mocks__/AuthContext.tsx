@@ -11,4 +11,9 @@ export const useAuthContext = jest.fn(
 
 export const signOut = jest.fn()
 
-export const useSignOut = jest.fn(() => signOut)
+export const useLogoutRoutine = jest.fn(() => signOut)
+
+export const loginRoutine = jest.fn()
+
+export const useLoginRoutine = jest.fn(() => loginRoutine)
+

@@ -10,9 +10,13 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
+import { loginRoutine } from '../__mocks__/AuthContext'
 import * as Auth from '../AuthContext'
 
 import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBuffer'
+
+jest.mock('features/auth/AuthContext')
+const mockLoginRoutine = Auth.useLoginRoutine as jest.Mock
 
 const mockDisplayInfosSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -57,8 +61,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         )
       )
 
+      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
       renderPage()
-      const loginRoutine = jest.spyOn(Auth, 'loginRoutine')
 
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
@@ -87,8 +91,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         )
       )
 
+      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
       renderPage()
-      const loginRoutine = jest.spyOn(Auth, 'loginRoutine')
 
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)

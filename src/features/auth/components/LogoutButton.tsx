@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button } from 'react-native'
 
-import { useAuthContext, useSignOut } from 'features/auth/AuthContext'
+import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 
 export const LogoutButton = () => {
   const { isLoggedIn } = useAuthContext()
-  const signOut = useSignOut()
+  const signOut = useLogoutRoutine()
 
   return (
     <Button

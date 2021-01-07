@@ -9,11 +9,12 @@ import { _ } from 'libs/i18n'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-import { loginRoutine } from '../AuthContext'
+import { useLoginRoutine } from '../AuthContext'
 import { useValidateEmailMutation } from '../mutations'
 
 export function AfterSignupEmailValidationBuffer() {
   const { displayInfosSnackBar } = useSnackBarContext()
+
   const { navigate } = useNavigation<UseNavigationType>()
   const delayedNavigate: typeof navigate = (...args: Parameters<typeof navigate>) => {
     setTimeout(() => {
@@ -23,6 +24,8 @@ export function AfterSignupEmailValidationBuffer() {
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
   useEffect(beforeEmailValidation, [])
+
+  const loginRoutine = useLoginRoutine()
 
   const { mutate: validateEmail } = useValidateEmailMutation(
     onEmailValidationSuccess,
