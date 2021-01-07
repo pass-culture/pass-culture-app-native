@@ -3,6 +3,7 @@ import mockdate from 'mockdate'
 import { CategoryType } from 'api/gen'
 import { offerAdaptedResponseSnap as baseOffer } from 'features/offer/api/snaps/offerResponseSnap'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
+import { analytics } from 'libs/analytics'
 
 import { getCtaWordingAndAction, isOfferExpired, isOfferSoldOut } from '../useCtaWordingAndAction'
 import {
@@ -120,8 +121,24 @@ describe('getCtaWordingAndAction', () => {
   describe.skip('Navigation on success', () => {
     // TODO
   })
-  describe.skip('CTA - Analytics', () => {
-    // TODO
+  describe('CTA - Analytics', () => {
+    it('logs event ClickBookOffer when we click CTA (non beneficiary user)', async () => {
+      const offer = buildOffer({ externalTicketOfficeUrl: 'http://www.google.com' })
+
+      const { onPress } =
+        getCtaWordingAndAction({
+          isLoggedIn: true,
+          isBeneficiary: false,
+          offer,
+        }) || {}
+
+      expect(analytics.logClickBookOffer).toBeCalledTimes(0)
+      expect(onPress).not.toBeUndefined()
+
+      if (onPress) await onPress()
+      expect(analytics.logClickBookOffer).toBeCalledTimes(1)
+      expect(analytics.logClickBookOffer).toBeCalledWith(baseOffer.id)
+    })
   })
 })
 
