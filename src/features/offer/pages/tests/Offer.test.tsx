@@ -37,13 +37,6 @@ describe('<Offer />', () => {
     const { toJSON } = await renderOfferPage({ isDigital: true, isDuo: false })
     expect(toJSON()).toMatchSnapshot()
   })
-  it('should show withdrawalDetails', async () => {
-    let wrapper = await renderOfferPage({ withdrawalDetails: 'How to withdraw' })
-    expect(wrapper.queryByText('Modalités de retrait')).toBeTruthy()
-
-    wrapper = await renderOfferPage({ withdrawalDetails: undefined })
-    expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
-  })
   it('should show accessibilityDetails', async () => {
     let wrapper = await renderOfferPage()
     expect(wrapper.queryByText('Accessibilité')).toBeTruthy()
@@ -55,12 +48,14 @@ describe('<Offer />', () => {
     expect(wrapper.queryByText('Accessibilité')).toBeFalsy()
   })
   it('should show withdrawalDetails', async () => {
-    let wrapper = await renderOfferPage({ withdrawalDetails: 'How to withdraw' })
+    const wrapper = await renderOfferPage({ withdrawalDetails: 'How to withdraw' })
     expect(wrapper.queryByText('Modalités de retrait')).toBeTruthy()
-
-    wrapper = await renderOfferPage({ withdrawalDetails: undefined })
+  })
+  it('should not show withdrawalDetails', async () => {
+    const wrapper = await renderOfferPage({ withdrawalDetails: undefined })
     expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
   })
+
   it('animates on scroll', async () => {
     const { getByTestId } = await renderOfferPage()
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
