@@ -9,6 +9,8 @@ import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
+import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -16,10 +18,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
 
-import { offerResponseSnap } from '../api/snaps/offerResponseSnap'
-import { dehumanizeId } from '../services/dehumanizeId'
-
-import { Offer } from './Offer'
+import { Offer } from '../Offer'
 
 jest.mock('libs/geolocation')
 
