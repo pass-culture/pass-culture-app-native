@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 import { act } from 'react-test-renderer'
 
-import { LogoutButton } from 'features/cheatcodes/components/LogoutButton'
+import { LogoutButton } from 'features/auth/components/LogoutButton'
 import { flushAllPromises } from 'tests/utils'
 
 beforeEach(() => {
