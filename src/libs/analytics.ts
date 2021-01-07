@@ -8,6 +8,7 @@ enum AnalyticsEvent {
   ALL_TILES_SEEN = 'AllTilesSeen',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   CANCEL_SIGNUP = 'CancelSignup',
+  CLICK_BOOK_OFFER = 'ClickBookOffer',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccesibilityModalities',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
   CONSULT_OFFER = 'ConsultOffer',
@@ -84,12 +85,16 @@ const logOfferSeenDuration = async (offerId: number, duration: number) =>
 const logContactSupport = async () =>
   await firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT)
 
+const logClickBookOffer = async (offerId: number) =>
+  await firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
+
 const logResendEmail = async () => await firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL)
 
 export const analytics = {
   logAllModulesSeen,
   logAllTilesSeen,
   logCancelSignup,
+  logClickBookOffer,
   logClickBusinessBlock,
   logClickExclusivityBlock,
   logClickSeeMore,

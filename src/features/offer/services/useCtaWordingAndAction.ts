@@ -5,6 +5,7 @@ import { CategoryType } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 
 import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
@@ -47,7 +48,13 @@ export const getCtaWordingAndAction = ({
         : _(t`Accéder à la billetterie externe`)
 
     if (!externalTicketOfficeUrl) return { wording }
-    return { wording, onPress: () => openExternalUrl(externalTicketOfficeUrl) }
+    return {
+      wording,
+      onPress: async () => {
+        await analytics.logClickBookOffer(offer.id)
+        await openExternalUrl(externalTicketOfficeUrl)
+      },
+    }
   }
 
   // Beneficiary
