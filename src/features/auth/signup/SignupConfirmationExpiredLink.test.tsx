@@ -6,13 +6,14 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 
 import { contactSupport } from '../support.services'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
 
 beforeEach(() => {
-  jest.resetAllMocks()
+  jest.clearAllMocks()
 })
 
 const navigationProps = { route: { params: { email: 'test@email.com' } } }
@@ -58,9 +59,11 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     const button = await findByText("Renvoyer l'email")
     fireEvent.press(button)
 
+    expect(analytics.logResendEmail).toBeCalledTimes(1)
     expect(Alert.alert).toBeCalledTimes(1)
     // TODO :
     // await waitForExpect(() => {
+    //   expect(analytics.logResendEmail).toBeCalledTimes(1)
     //   expect(navigate).toBeCalledTimes(1)
     //   expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
     //     email: 'test@email.com',

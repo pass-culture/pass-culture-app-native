@@ -7,6 +7,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { server } from 'tests/server'
 
@@ -15,7 +16,7 @@ import { contactSupport } from '../support.services'
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
 beforeEach(() => {
-  jest.resetAllMocks()
+  jest.clearAllMocks()
 })
 
 const navigationProps = { route: { params: { email: 'test@email.com' } } }
@@ -59,6 +60,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
     fireEvent.press(button)
 
     await waitForExpect(() => {
+      expect(analytics.logResendEmail).toBeCalledTimes(1)
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toBeCalledWith('ResetPasswordEmailSent', {
         email: 'test@email.com',

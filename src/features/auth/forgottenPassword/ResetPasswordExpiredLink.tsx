@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -29,6 +30,7 @@ export function ResetPasswordExpiredLink(props: Props) {
 
   async function resendEmailForResetPassword() {
     const { email } = props.route.params
+    analytics.logResendEmail()
     await api
       .postnativev1requestPasswordReset({ email })
       .then(() => {
