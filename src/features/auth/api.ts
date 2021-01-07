@@ -1,9 +1,9 @@
 import { api } from 'api/api'
 import { AccountRequest, SigninRequest } from 'api/gen'
-import { loginRoutine, useAuthContext } from 'features/auth/AuthContext'
+import { useLoginRoutine } from 'features/auth/AuthContext'
 
 export function useSignIn(): (data: SigninRequest) => Promise<boolean> {
-  const { setIsLoggedIn } = useAuthContext()
+  const loginRoutine = useLoginRoutine()
 
   return async (body: SigninRequest) => {
     try {
@@ -11,7 +11,6 @@ export function useSignIn(): (data: SigninRequest) => Promise<boolean> {
       if (!response) return false
 
       await loginRoutine(response, 'fromLogin')
-      setIsLoggedIn(true)
       return true
     } catch (error) {
       return false
