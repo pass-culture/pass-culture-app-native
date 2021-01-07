@@ -4,7 +4,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { useSignUp } from 'features/auth/AuthContext'
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
@@ -21,6 +20,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
+import { useSignUp } from '../api'
 import { contactSupport } from '../support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'AcceptCgu'>

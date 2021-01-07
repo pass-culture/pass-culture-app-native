@@ -11,11 +11,14 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ColorsEnum } from 'ui/theme'
 
+import { signUp } from '../__mocks__/api'
+import { useSignUp } from '../api'
 import { contactSupport } from '../support.services'
 
 import { AcceptCgu } from './AcceptCgu'
 
-const mockSignUp = jest.fn()
+jest.mock('features/auth/api')
+const mockSignUp = useSignUp as jest.Mock
 
 describe('AcceptCgu Page', () => {
   it('should navigate to the previous page on back navigation', () => {
@@ -62,7 +65,7 @@ describe('AcceptCgu Page', () => {
   })
 
   it('should call API to create user account ', async () => {
-    mockSignUp.mockImplementationOnce(() => true)
+    mockSignUp.mockImplementationOnce(() => signUp)
 
     const { findByText } = renderAcceptCGU()
 
@@ -70,7 +73,7 @@ describe('AcceptCgu Page', () => {
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
-      expect(mockSignUp).toBeCalledWith({
+      expect(signUp).toBeCalledWith({
         birthdate: '12-2-1995',
         email: 'john.doe@example.com',
         hasAllowedRecommendations: true,
@@ -132,7 +135,6 @@ function renderAcceptCGU() {
       value={{
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
-        signUp: mockSignUp,
         signOut: jest.fn(),
       }}>
       <AcceptCgu {...navigationProps} />
