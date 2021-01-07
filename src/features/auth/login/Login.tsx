@@ -4,7 +4,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSignIn } from 'features/auth/AuthContext'
+import { useSignIn } from 'features/auth/api'
 import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'

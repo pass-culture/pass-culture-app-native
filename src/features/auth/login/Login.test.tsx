@@ -4,11 +4,12 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, goBack } from '__mocks__/@react-navigation/native'
-import { usePreviousRoute } from 'features/navigation/helpers'
+import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
 
+import { useSignIn } from '../api'
 import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
@@ -17,15 +18,16 @@ server.use(
   rest.post(env.API_BASE_URL + '/native/v1/signin', async (req, res, ctx) => res(ctx.status(401)))
 )
 
-const mockSignIn = jest.fn()
-
 jest.mock('features/navigation/helpers')
+jest.mock('features/auth/api')
+
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
+const mockUseSignIn = useSignIn as jest.Mock
 
 function renderLogin() {
   return render(
     <AuthContext.Provider
-      value={{ isLoggedIn: true, signIn: mockSignIn, signUp: jest.fn(), signOut: jest.fn() }}>
+      value={{ isLoggedIn: true, setIsLoggedIn: jest.fn(), signUp: jest.fn(), signOut: jest.fn() }}>
       <Login />
     </AuthContext.Provider>
   )
@@ -38,15 +40,15 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to home page WHEN signin is successful', async () => {
+    mockUseSignIn.mockImplementationOnce(() => () => true)
+
     const { findByText } = renderLogin()
-    mockSignIn.mockImplementationOnce(() => true)
 
     const connexionButton = await findByText('Se connecter')
     fireEvent.press(connexionButton)
 
     await waitForExpect(() => {
-      expect(mockSignIn).toBeCalledTimes(1)
-      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Home', NavigateToHomeWithoutModalOptions)
     })
   })
 
