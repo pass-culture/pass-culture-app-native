@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum, OfferResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { _ } from 'libs/i18n'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
@@ -18,20 +19,22 @@ type Props = { category: CategoryNameEnum | null; label: string } & Pick<
   'stocks' | 'isDuo'
 >
 export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, label }) => {
+  const { isLoggedIn } = useAuthContext()
   const { data: profileInfo } = useUserProfileInfo()
-  if (!profileInfo) return <Fragment></Fragment>
+  if (isLoggedIn && !profileInfo) return <React.Fragment></React.Fragment>
+
+  const { isBeneficiary = false } = profileInfo || {}
+  const showDuo = isDuo && isBeneficiary
 
   const prices = getOfferPrices(stocks)
   const formattedPrice =
-    isDuo && profileInfo.isBeneficiary
-      ? getDisplayPriceWithDuoMention(prices)
-      : getDisplayPrice(prices)
+    isDuo && isBeneficiary ? getDisplayPriceWithDuoMention(prices) : getDisplayPrice(prices)
 
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
       <OfferCategory category={category} label={label} />
-      {isDuo && profileInfo.isBeneficiary && (
+      {showDuo && (
         <React.Fragment>
           <Separator />
           <IconWithCaption testID="iconDuo" Icon={Duo} caption={_(t`À deux !`)} />
