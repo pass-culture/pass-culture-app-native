@@ -1,10 +1,12 @@
 import React from 'react'
 import { Button } from 'react-native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext, useSignOut } from 'features/auth/AuthContext'
 
 export const LogoutButton = () => {
-  const { isLoggedIn, signOut } = useAuthContext()
+  const { isLoggedIn } = useAuthContext()
+  const signOut = useSignOut()
+
   return (
     <Button
       testID="logoutButton"

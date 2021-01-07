@@ -26,8 +26,7 @@ const mockUseSignIn = useSignIn as jest.Mock
 
 function renderLogin() {
   return render(
-    <AuthContext.Provider
-      value={{ isLoggedIn: true, setIsLoggedIn: jest.fn(), signOut: jest.fn() }}>
+    <AuthContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: jest.fn() }}>
       <Login />
     </AuthContext.Provider>
   )
