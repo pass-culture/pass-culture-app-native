@@ -126,7 +126,7 @@ exports[`CheatCodes component should render correctly 1`] = `
       }
     }
     accessible={true}
-    focusable={false}
+    focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

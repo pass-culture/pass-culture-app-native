@@ -11,7 +11,8 @@ beforeEach(() => {
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ signOut: mockSignOut, isLoggedIn: true })),
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+  useSignOut: jest.fn(() => mockSignOut),
 }))
 
 describe('LogoutButton component', () => {

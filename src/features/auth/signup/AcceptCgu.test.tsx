@@ -135,7 +135,6 @@ function renderAcceptCGU() {
       value={{
         isLoggedIn: true,
         setIsLoggedIn: jest.fn(),
-        signOut: jest.fn(),
       }}>
       <AcceptCgu {...navigationProps} />
     </AuthContext.Provider>

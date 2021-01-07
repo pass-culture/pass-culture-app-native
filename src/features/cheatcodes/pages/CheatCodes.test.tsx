@@ -14,9 +14,7 @@ beforeAll(() => {
   BatchUser.getInstallationID.mockImplementation(() => Promise.resolve(installationID))
 })
 
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
-}))
+jest.mock('features/auth/AuthContext')
 
 describe('CheatCodes component', () => {
   const navigation = {
