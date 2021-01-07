@@ -77,6 +77,7 @@ describe('getCtaWordingAndAction', () => {
     // offer price is 5
     it.each`
       type                  | creditThing  | creditEvent  | platform     | expected                     | disabled
+      ${CategoryType.Thing} | ${2}         | ${undefined} | ${'ios'}     | ${'Impossible de réserver'}  | ${true}
       ${CategoryType.Thing} | ${20}        | ${undefined} | ${'ios'}     | ${'Impossible de réserver'}  | ${true}
       ${CategoryType.Event} | ${undefined} | ${20}        | ${'ios'}     | ${'Voir les disponibilités'} | ${false}
       ${CategoryType.Thing} | ${20}        | ${undefined} | ${'android'} | ${'Voir les disponibilités'} | ${false}
@@ -93,6 +94,7 @@ describe('getCtaWordingAndAction', () => {
       }
     )
 
+    // offer price is 5
     it.each`
       type                  | creditThing  | creditEvent  | expected                     | disabled
       ${CategoryType.Thing} | ${1}         | ${undefined} | ${'Crédit insuffisant'}      | ${true}
@@ -118,7 +120,7 @@ describe('getCtaWordingAndAction', () => {
   describe.skip('Navigation on success', () => {
     // TODO
   })
-  describe.skip('CTA - Analysis', () => {
+  describe.skip('CTA - Analytics', () => {
     // TODO
   })
 })

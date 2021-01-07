@@ -8,6 +8,7 @@ import { openExternalUrl } from 'features/navigation/helpers'
 import { _ } from 'libs/i18n'
 
 import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
+import { getOfferPrice } from './getOfferPrice'
 
 // TODO (squad profile: dehardcode those numbers)
 const USER_CREDIT_THING = 30
@@ -53,10 +54,11 @@ export const getCtaWordingAndAction = ({
   if (isOfferSoldOut(offer)) return { wording: _(t`Offre épuisée`) }
   if (isOfferExpired(offer)) return { wording: _(t`Offre expirée`) }
 
-  const price = getOfferPrice(offer)
+  const price = getOfferPrice(offer.stocks)
   if (category.categoryType === CategoryType.Thing) {
-    if (price > creditThing) return { wording: _(t`Crédit insuffisant`) }
+    // We check the platform first so that the user doesn't try to add funds and come back
     if (price > 0 && platform === 'ios') return { wording: _(t`Impossible de réserver`) }
+    if (price > creditThing) return { wording: _(t`Crédit insuffisant`) }
   }
 
   if (category.categoryType === CategoryType.Event) {
@@ -103,6 +105,3 @@ export const isOfferExpired = (offer: OfferAdaptedResponse) =>
 // An offer is sold out if none of its stock is bookable
 export const isOfferSoldOut = (offer: OfferAdaptedResponse) =>
   offer.stocks.every(({ isBookable }) => !isBookable)
-
-export const getOfferPrice = (offer: OfferAdaptedResponse): number =>
-  Math.min(...offer.stocks.map(({ price }) => price))

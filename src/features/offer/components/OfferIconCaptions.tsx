@@ -11,6 +11,7 @@ import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { IconWithCaption, OfferCategory } from '../atoms'
+import { getOfferPrices } from '../services/getOfferPrice'
 
 type Props = { category: CategoryNameEnum | null; label: string } & Pick<
   OfferResponse,
@@ -20,15 +21,12 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, la
   const { data: profileInfo } = useUserProfileInfo()
   if (!profileInfo) return <Fragment></Fragment>
 
-  const bookableStocks = stocks.filter((stock) => stock.isBookable)
-  const prices =
-    bookableStocks.length > 0
-      ? bookableStocks.map((stock) => stock.price)
-      : stocks.map((stock) => stock.price)
-  const price =
+  const prices = getOfferPrices(stocks)
+  const formattedPrice =
     isDuo && profileInfo.isBeneficiary
       ? getDisplayPriceWithDuoMention(prices)
       : getDisplayPrice(prices)
+
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
@@ -40,7 +38,7 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, la
         </React.Fragment>
       )}
       <Separator />
-      <IconWithCaption testID="iconPrice" Icon={OrderPrice} caption={price} />
+      <IconWithCaption testID="iconPrice" Icon={OrderPrice} caption={formattedPrice} />
       <Spacer.Row numberOfSpaces={6} />
     </Row>
   )
