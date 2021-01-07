@@ -1,5 +1,5 @@
 import { api } from 'api/api'
-import { SigninRequest } from 'api/gen'
+import { AccountRequest, SigninRequest } from 'api/gen'
 import { loginRoutine, useAuthContext } from 'features/auth/AuthContext'
 
 export function useSignIn(): (data: SigninRequest) => Promise<boolean> {
@@ -13,6 +13,17 @@ export function useSignIn(): (data: SigninRequest) => Promise<boolean> {
       await loginRoutine(response, 'fromLogin')
       setIsLoggedIn(true)
       return true
+    } catch (error) {
+      return false
+    }
+  }
+}
+
+export function useSignUp(): (data: AccountRequest) => Promise<boolean> {
+  return async (body: AccountRequest) => {
+    try {
+      const response = await api.postnativev1account(body, { credentials: 'omit' })
+      return !!response
     } catch (error) {
       return false
     }

@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
-import { api } from 'api/api'
-import { AccountRequest, SigninResponse } from 'api/gen'
+import { SigninResponse } from 'api/gen'
 import { firebaseAnalytics } from 'libs/analytics'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
@@ -10,14 +9,12 @@ import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
 export interface IAuthContext {
   isLoggedIn: boolean
   setIsLoggedIn: (isLoggedIn: boolean) => void
-  signUp: (data: AccountRequest) => Promise<boolean>
   signOut: () => Promise<void>
 }
 
 export const AuthContext = React.createContext<IAuthContext>({
   isLoggedIn: false,
   setIsLoggedIn: () => void 0,
-  signUp: () => Promise.resolve(false),
   signOut: () => Promise.resolve(),
 })
 
@@ -48,15 +45,6 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
     })
   }, [])
 
-  const signUp = async (body: AccountRequest) => {
-    try {
-      const response = await api.postnativev1account(body, { credentials: 'omit' })
-      return !!response
-    } catch (error) {
-      return false
-    }
-  }
-
   const signOut = async () => {
     await clearAccessToken()
     await clearRefreshToken()
@@ -65,7 +53,7 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, signUp, signOut }}>
+    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )
@@ -74,9 +62,4 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
 export function useSignOut(): IAuthContext['signOut'] {
   const authContext = useAuthContext()
   return authContext.signOut
-}
-
-export function useSignUp(): IAuthContext['signUp'] {
-  const authContext = useAuthContext()
-  return authContext.signUp
 }
