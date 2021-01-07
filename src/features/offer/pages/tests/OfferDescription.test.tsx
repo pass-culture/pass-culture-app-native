@@ -5,6 +5,8 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { OfferResponse } from 'api/gen'
+import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
+import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
@@ -12,15 +14,12 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
 
-import { offerResponseSnap } from '../api/snaps/offerResponseSnap'
-import { dehumanizeId } from '../services/dehumanizeId'
-
 import {
   OfferDescription,
   ExtendedKeys,
   formatValue,
   getContentFromOffer,
-} from './OfferDescription'
+} from '../OfferDescription'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
