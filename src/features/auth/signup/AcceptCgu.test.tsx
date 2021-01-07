@@ -129,7 +129,12 @@ function renderAcceptCGU() {
   } as StackScreenProps<RootStackParamList, 'AcceptCgu'>
   return render(
     <AuthContext.Provider
-      value={{ isLoggedIn: true, signIn: jest.fn(), signUp: mockSignUp, signOut: jest.fn() }}>
+      value={{
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        signUp: mockSignUp,
+        signOut: jest.fn(),
+      }}>
       <AcceptCgu {...navigationProps} />
     </AuthContext.Provider>
   )
