@@ -1,0 +1,1131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepopulated react-query cache 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -425,45 +425,11 @@
+                                  width={16}
+                                >
+                                  undefined-SVG-Mock
+                                </View>
+                              </View>
+-                             <Text
+-                               numberOfLines={1}
+-                               style={
+-                                 Array [
+-                                   Object {
+-                                     \\"color\\": \\"#151515\\",
+-                                     \\"flexShrink\\": 1,
+-                                     \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                     \\"fontSize\\": 12,
+-                                     \\"lineHeight\\": 16,
+-                                     \\"textTransform\\": \\"capitalize\\",
+-                                   },
+-                                 ]
+-                               }
+-                             >
+-                               PATHE BEAUGRENELLE, 
+-                             </Text>
+                            </View>
+-                           <Text
+-                             isDigital={false}
+-                             numberOfLines={1}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                   \\"fontSize\\": 12,
+-                                   \\"lineHeight\\": 16,
+-                                   \\"textTransform\\": \\"capitalize\\",
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             PARIS 8
+-                           </Text>
+                          </View>
+                          <View
+                            numberOfSpaces={2}
+                            style={
+                              Array [
+@@ -700,11 +666,11 @@
+                                    },
+                                  ]
+                                }
+                                testID=\\"caption-iconPrice\\"
+                              >
+-                               5 € / place
++                               
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={6}
+                              style={
+@@ -886,1063 +852,16 @@
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  \\"marginHorizontal\\": 24,
+-                               },
+-                             ]
+-                           }
+-                         >
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
+-                                   \\"fontSize\\": 18,
+-                                   \\"lineHeight\\": 22,
+-                                   \\"paddingVertical\\": 24,
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             Quand ?
+-                           </Text>
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-Regular\\",
+-                                   \\"fontSize\\": 15,
+-                                   \\"lineHeight\\": 20,
+-                                   \\"marginTop\\": -8,
+-                                   \\"paddingBottom\\": 24,
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             Du 3 janvier 2021 au 4 janvier 2021
+-                           </Text>
+-                         </View>
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                                 \\"height\\": 8,
+-                               },
+-                             ]
+-                           }
+-                         />
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"marginHorizontal\\": 24,
+-                               },
+-                             ]
+-                           }
+-                         >
+-                           <View
+-                             numberOfSpaces={6}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"height\\": 24,
+-                                 },
+-                               ]
+-                             }
+-                           />
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
+-                                   \\"fontSize\\": 18,
+-                                   \\"lineHeight\\": 22,
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             Où ?
+-                           </Text>
+-                           <View
+-                             numberOfSpaces={4}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"height\\": 16,
+-                                 },
+-                               ]
+-                             }
+-                           />
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                   \\"fontSize\\": 12,
+-                                   \\"lineHeight\\": 16,
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             Adresse
+-                           </Text>
+-                           <View
+-                             numberOfSpaces={1}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"height\\": 4,
+-                                 },
+-                               ]
+-                             }
+-                           />
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-Regular\\",
+-                                   \\"fontSize\\": 15,
+-                                   \\"lineHeight\\": 20,
+-                                   \\"textTransform\\": \\"capitalize\\",
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8
+-                           </Text>
+-                           <View
+-                             numberOfSpaces={4}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"height\\": 16,
+-                                 },
+-                               ]
+-                             }
+-                           />
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                   \\"fontSize\\": 12,
+-                                   \\"lineHeight\\": 16,
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             Distance
+-                           </Text>
+-                           <View
+-                             numberOfSpaces={1}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"height\\": 4,
+-                                 },
+-                               ]
+-                             }
+-                           />
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-Regular\\",
+-                                   \\"fontSize\\": 15,
+-                                   \\"lineHeight\\": 20,
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             900+ km
+-                           </Text>
+-                           <View
+-                             numberOfSpaces={4}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"height\\": 16,
+-                                 },
+-                               ]
+-                             }
+-                           />
+-                           <View
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"backgroundColor\\": \\"#c7c7cc\\",
+-                                   \\"height\\": 1,
+-                                 },
+-                               ]
+-                             }
+-                           />
+-                           <View
+-                             numberOfSpaces={6}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"height\\": 24,
+                                },
+                              ]
+                            }
+                          />
+-                           <View
+-                             accessible={true}
+-                             focusable={true}
+-                             onClick={[Function onClick]}
+-                             onResponderGrant={[Function onResponderGrant]}
+-                             onResponderMove={[Function onResponderMove]}
+-                             onResponderRelease={[Function onResponderRelease]}
+-                             onResponderTerminate={[Function onResponderTerminate]}
+-                             onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+-                             onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+-                             style={
+-                               Object {
+-                                 \\"alignItems\\": \\"center\\",
+-                                 \\"flexDirection\\": \\"row\\",
+-                                 \\"opacity\\": 1,
+-                               }
+-                             }
+-                           >
+-                             <View
+-                               height={24}
+-                               width={24}
+-                             >
+-                               undefined-SVG-Mock
+                        </View>
+-                             <View
+-                               numberOfSpaces={1}
+-                               style={
+-                                 Array [
+-                                   Object {
+-                                     \\"width\\": 4,
+-                                   },
+-                                 ]
+-                               }
+-                             />
+-                             <Text
+-                               style={
+-                                 Array [
+-                                   Object {
+-                                     \\"color\\": \\"#151515\\",
+-                                     \\"fontFamily\\": \\"Montserrat-Bold\\",
+-                                     \\"fontSize\\": 15,
+-                                     \\"lineHeight\\": 20,
+-                                   },
+-                                 ]
+-                               }
+-                             >
+-                               Voir l'itinéraire
+-                             </Text>
+-                           </View>
+-                           <View
+-                             numberOfSpaces={6}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"height\\": 24,
+-                                 },
+-                               ]
+-                             }
+-                           />
+-                         </View>
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                                 \\"height\\": 8,
+-                               },
+-                             ]
+-                           }
+-                         />
+-                         <View
+-                           accessible={true}
+-                           focusable={true}
+-                           onClick={[Function onClick]}
+-                           onResponderGrant={[Function onResponderGrant]}
+-                           onResponderMove={[Function onResponderMove]}
+-                           onResponderRelease={[Function onResponderRelease]}
+-                           onResponderTerminate={[Function onResponderTerminate]}
+-                           onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+-                           onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"alignItems\\": \\"center\\",
+-                                 \\"flexDirection\\": \\"row\\",
+-                                 \\"justifyContent\\": \\"space-between\\",
+-                                 \\"paddingBottom\\": 16,
+-                                 \\"paddingHorizontal\\": 24,
+-                                 \\"paddingTop\\": 24,
+-                               },
+-                             ]
+-                           }
+-                         >
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
+-                                   \\"fontSize\\": 18,
+-                                   \\"lineHeight\\": 22,
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             Modalités de retrait
+-                           </Text>
+-                           <View
+-                             style={
+-                               Object {
+-                                 \\"transform\\": Array [
+-                                   Object {
+-                                     \\"rotateZ\\": \\"1.5707963267948966rad\\",
+-                                   },
+-                                 ],
+-                               }
+-                             }
+-                             testID=\\"accordionArrow\\"
+-                           >
+-                             <View
+-                               height={24}
+-                               width={24}
+-                             >
+-                               undefined-SVG-Mock
+-                             </View>
+-                           </View>
+-                         </View>
+-                         <View
+-                           style={
+-                             Object {
+-                               \\"height\\": 0,
+-                               \\"overflow\\": \\"hidden\\",
+-                             }
+-                           }
+-                           testID=\\"accordionBody\\"
+-                         >
+-                           <View
+-                             onLayout={[Function onLayout]}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"bottom\\": 0,
+-                                   \\"paddingBottom\\": 24,
+-                                   \\"paddingHorizontal\\": 24,
+-                                   \\"paddingTop\\": 0,
+-                                   \\"position\\": \\"absolute\\",
+-                                   \\"width\\": \\"100%\\",
+-                                 },
+-                               ]
+-                             }
+-                             testID=\\"accordionBodyContainer\\"
+-                           >
+-                             <Text
+-                               style={
+-                                 Array [
+-                                   Object {
+-                                     \\"color\\": \\"#151515\\",
+-                                     \\"fontFamily\\": \\"Montserrat-Regular\\",
+-                                     \\"fontSize\\": 15,
+-                                     \\"lineHeight\\": 20,
+-                                   },
+-                                 ]
+-                               }
+-                             >
+-                               How to withdraw, 
+-                               <Text
+-                                 onPress={[Function onPress]}
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"color\\": \\"#151515\\",
+-                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
+-                                       \\"fontSize\\": 15,
+-                                       \\"lineHeight\\": 20,
+-                                     },
+-                                   ]
+-                                 }
+-                               >
+-                                 <View
+-                                   numberOfSpaces={1}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"width\\": 4,
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
+-                                 <Text>
+-                                   <View
+-                                     height={16}
+-                                     testID=\\"externalSiteIcon\\"
+-                                     width={15}
+-                                   >
+-                                     externalSiteIcon-SVG-Mock
+-                                   </View>
+-                                   
+-                                 </Text>
+-                                  https://test.com
+-                               </Text>
+-                             </Text>
+-                           </View>
+-                         </View>
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                                 \\"height\\": 8,
+-                               },
+-                             ]
+-                           }
+-                         />
+-                         <View
+-                           accessible={true}
+-                           focusable={true}
+-                           onClick={[Function onClick]}
+-                           onResponderGrant={[Function onResponderGrant]}
+-                           onResponderMove={[Function onResponderMove]}
+-                           onResponderRelease={[Function onResponderRelease]}
+-                           onResponderTerminate={[Function onResponderTerminate]}
+-                           onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+-                           onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"alignItems\\": \\"center\\",
+-                                 \\"flexDirection\\": \\"row\\",
+-                                 \\"justifyContent\\": \\"space-between\\",
+-                                 \\"paddingBottom\\": 16,
+-                                 \\"paddingHorizontal\\": 24,
+-                                 \\"paddingTop\\": 24,
+-                               },
+-                             ]
+-                           }
+-                         >
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
+-                                   \\"fontSize\\": 18,
+-                                   \\"lineHeight\\": 22,
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             Accessibilité
+-                           </Text>
+-                           <View
+-                             style={
+-                               Object {
+-                                 \\"transform\\": Array [
+-                                   Object {
+-                                     \\"rotateZ\\": \\"1.5707963267948966rad\\",
+-                                   },
+-                                 ],
+-                               }
+-                             }
+-                             testID=\\"accordionArrow\\"
+-                           >
+-                             <View
+-                               height={24}
+-                               width={24}
+-                             >
+-                               undefined-SVG-Mock
+-                             </View>
+-                           </View>
+-                         </View>
+-                         <View
+-                           style={
+-                             Object {
+-                               \\"height\\": 0,
+-                               \\"overflow\\": \\"hidden\\",
+-                             }
+-                           }
+-                           testID=\\"accordionBody\\"
+-                         >
+-                           <View
+-                             onLayout={[Function onLayout]}
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"bottom\\": 0,
+-                                   \\"paddingBottom\\": 24,
+-                                   \\"paddingHorizontal\\": 24,
+-                                   \\"paddingTop\\": 0,
+-                                   \\"position\\": \\"absolute\\",
+-                                   \\"width\\": \\"100%\\",
+-                                 },
+-                               ]
+-                             }
+-                             testID=\\"accordionBodyContainer\\"
+-                           >
+-                             <View
+-                               style={
+-                                 Array [
+-                                   Object {
+-                                     \\"flexDirection\\": \\"row\\",
+-                                   },
+-                                 ]
+-                               }
+-                             >
+-                               <View
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"flexDirection\\": \\"column\\",
+-                                       \\"flexShrink\\": 1,
+-                                     },
+-                                   ]
+-                                 }
+-                               >
+-                                 <View
+-                                   onLayout={[Function onLayout]}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignItems\\": \\"center\\",
+-                                         \\"aspectRatio\\": 1,
+-                                         \\"borderColor\\": \\"#c7c7cc\\",
+-                                         \\"borderRadius\\": 8,
+-                                         \\"borderWidth\\": 1,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"accessibilityFrame\\"
+-                                 >
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     height={48}
+-                                     width={48}
+-                                   >
+-                                     undefined-SVG-Mock
+-                                   </View>
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"bottom\\": -16,
+-                                           \\"position\\": \\"absolute\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     <View
+-                                       height={32}
+-                                       testID=\\"invalidTestId\\"
+-                                       width={32}
+-                                     >
+-                                       invalidTestId-SVG-Mock
+-                                     </View>
+-                                   </View>
+-                                 </View>
+-                                 <View
+-                                   numberOfSpaces={4}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"height\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
+-                                 <View
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignSelf\\": \\"center\\",
+-                                         \\"width\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"textContainer\\"
+-                                   width={16}
+-                                 >
+-                                   <Text
+-                                     numberOfLines={2}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     Handicap visuel
+-                                   </Text>
+-                                 </View>
+-                               </View>
+-                               <View
+-                                 numberOfSpaces={4}
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"width\\": 16,
+-                                     },
+-                                   ]
+-                                 }
+-                               />
+-                               <View
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"flexDirection\\": \\"column\\",
+-                                       \\"flexShrink\\": 1,
+-                                     },
+-                                   ]
+-                                 }
+-                               >
+-                                 <View
+-                                   onLayout={[Function onLayout]}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignItems\\": \\"center\\",
+-                                         \\"aspectRatio\\": 1,
+-                                         \\"borderColor\\": \\"#c7c7cc\\",
+-                                         \\"borderRadius\\": 8,
+-                                         \\"borderWidth\\": 1,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"accessibilityFrame\\"
+-                                 >
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     height={48}
+-                                     width={48}
+-                                   >
+-                                     undefined-SVG-Mock
+-                                   </View>
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"bottom\\": -16,
+-                                           \\"position\\": \\"absolute\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     <View
+-                                       height={32}
+-                                       testID=\\"validTestId\\"
+-                                       width={32}
+-                                     >
+-                                       validTestId-SVG-Mock
+-                                     </View>
+-                                   </View>
+-                                 </View>
+-                                 <View
+-                                   numberOfSpaces={4}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"height\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
+-                                 <View
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignSelf\\": \\"center\\",
+-                                         \\"width\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"textContainer\\"
+-                                   width={16}
+-                                 >
+-                                   <Text
+-                                     numberOfLines={2}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     Handicap mental
+-                                   </Text>
+-                                 </View>
+-                               </View>
+-                               <View
+-                                 numberOfSpaces={4}
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"width\\": 16,
+-                                     },
+-                                   ]
+-                                 }
+-                               />
+-                               <View
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"flexDirection\\": \\"column\\",
+-                                       \\"flexShrink\\": 1,
+-                                     },
+-                                   ]
+-                                 }
+-                               >
+-                                 <View
+-                                   onLayout={[Function onLayout]}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignItems\\": \\"center\\",
+-                                         \\"aspectRatio\\": 1,
+-                                         \\"borderColor\\": \\"#c7c7cc\\",
+-                                         \\"borderRadius\\": 8,
+-                                         \\"borderWidth\\": 1,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"accessibilityFrame\\"
+-                                 >
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     height={48}
+-                                     width={48}
+-                                   >
+-                                     undefined-SVG-Mock
+-                                   </View>
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"bottom\\": -16,
+-                                           \\"position\\": \\"absolute\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     <View
+-                                       height={32}
+-                                       testID=\\"invalidTestId\\"
+-                                       width={32}
+-                                     >
+-                                       invalidTestId-SVG-Mock
+-                                     </View>
+-                                   </View>
+-                                 </View>
+-                                 <View
+-                                   numberOfSpaces={4}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"height\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
+-                                 <View
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignSelf\\": \\"center\\",
+-                                         \\"width\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"textContainer\\"
+-                                   width={16}
+-                                 >
+-                                   <Text
+-                                     numberOfLines={2}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     Handicap moteur
+-                                   </Text>
+-                                 </View>
+-                               </View>
+-                               <View
+-                                 numberOfSpaces={4}
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"width\\": 16,
+-                                     },
+-                                   ]
+-                                 }
+-                               />
+-                               <View
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"flexDirection\\": \\"column\\",
+-                                       \\"flexShrink\\": 1,
+-                                     },
+-                                   ]
+-                                 }
+-                               >
+-                                 <View
+-                                   onLayout={[Function onLayout]}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignItems\\": \\"center\\",
+-                                         \\"aspectRatio\\": 1,
+-                                         \\"borderColor\\": \\"#c7c7cc\\",
+-                                         \\"borderRadius\\": 8,
+-                                         \\"borderWidth\\": 1,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"accessibilityFrame\\"
+-                                 >
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     height={48}
+-                                     width={48}
+-                                   >
+-                                     undefined-SVG-Mock
+-                                   </View>
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"bottom\\": -16,
+-                                           \\"position\\": \\"absolute\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     <View
+-                                       height={32}
+-                                       testID=\\"validTestId\\"
+-                                       width={32}
+-                                     >
+-                                       validTestId-SVG-Mock
+-                                     </View>
+-                                   </View>
+-                                 </View>
+-                                 <View
+-                                   numberOfSpaces={4}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"height\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
+-                                 <View
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignSelf\\": \\"center\\",
+-                                         \\"width\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"textContainer\\"
+-                                   width={16}
+-                                 >
+-                                   <Text
+-                                     numberOfLines={2}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     Handicap auditif
+-                                   </Text>
+-                                 </View>
+-                               </View>
+-                             </View>
+-                           </View>
+-                         </View>
+-                       </View>
+                      </RCTScrollView>
+-                     <View
+-                       style={
+-                         Array [
+-                           Object {
+-                             \\"marginBottom\\": 32,
+-                             \\"marginHorizontal\\": 24,
+-                           },
+-                         ]
+-                       }
+-                       testID=\\"CTA-button\\"
+-                     >
+-                       <View
+-                         accessible={true}
+-                         focusable={true}
+-                         onClick={[Function onClick]}
+-                         onResponderGrant={[Function onResponderGrant]}
+-                         onResponderMove={[Function onResponderMove]}
+-                         onResponderRelease={[Function onResponderRelease]}
+-                         onResponderTerminate={[Function onResponderTerminate]}
+-                         onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+-                         onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+-                         style={
+-                           Object {
+-                             \\"alignItems\\": \\"center\\",
+-                             \\"borderRadius\\": 24,
+-                             \\"justifyContent\\": \\"center\\",
+-                             \\"opacity\\": 1,
+-                             \\"overflow\\": \\"hidden\\",
+-                           }
+-                         }
+-                       >
+-                         <View
+-                           height={48}
+-                           width=\\"100%\\"
+-                         >
+-                           undefined-SVG-Mock
+-                         </View>
+-                         <Text
+-                           adjustsFontSizeToFit={true}
+-                           numberOfLines={1}
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"color\\": \\"#ffffff\\",
+-                                 \\"fontFamily\\": \\"Montserrat-Bold\\",
+-                                 \\"fontSize\\": 15,
+-                                 \\"lineHeight\\": 20,
+-                                 \\"paddingBottom\\": 20,
+-                                 \\"paddingLeft\\": 20,
+-                                 \\"paddingRight\\": 20,
+-                                 \\"paddingTop\\": 20,
+-                                 \\"position\\": \\"absolute\\",
+-                               },
+-                             ]
+-                           }
+-                         >
+-                           Voir les disponibilités
+-                         </Text>
+-                       </View>
+-                     </View>
+                      <View
+                        style={
+                          Object {
+                            \\"backgroundColor\\": \\"rgba(255, 255, 255, 0)\\",
+                            \\"position\\": \\"absolute\\","
+`;
