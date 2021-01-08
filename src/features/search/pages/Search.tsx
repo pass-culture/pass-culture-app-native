@@ -3,6 +3,7 @@ import React from 'react'
 import { Configure, InstantSearch, connectStats } from 'react-instantsearch-native'
 import styled from 'styled-components/native'
 
+import { CategoryFilter } from 'features/search/components/CategoryFilter'
 import { SearchBox } from 'features/search/components/SearchBox'
 import { InfiniteHits } from 'features/search/components/InfiniteHits'
 import { _ } from 'libs/i18n'
@@ -17,6 +18,11 @@ export const Search: React.FC = () => (
       <Spacer.TopScreen />
       <SearchBox />
       <Configure hitsPerPage={10} />
+      <CategoryFilter
+        attribute="offer.category"
+        operator="or"
+        defaultRefinement={['CINEMA', 'VISITE']}
+      />
       <NumberOfResults />
       <InfiniteHits />
     </Container>
