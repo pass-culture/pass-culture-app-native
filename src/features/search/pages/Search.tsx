@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch'
 import React from 'react'
-import { InstantSearch, connectStats } from 'react-instantsearch-native'
+import { Configure, InstantSearch, connectStats } from 'react-instantsearch-native'
 import styled from 'styled-components/native'
 
 import { SearchBox } from 'features/search/components/SearchBox'
@@ -16,6 +16,7 @@ export const Search: React.FC = () => (
     <Container>
       <Spacer.TopScreen />
       <SearchBox />
+      <Configure hitsPerPage={10} />
       <NumberOfResults />
       <InfiniteHits />
     </Container>
