@@ -87,7 +87,7 @@ export const useCtaWordingAndAction = (props: {
   const { isLoggedIn } = useAuthContext()
   const { data: profileInfo } = useUserProfileInfo()
   const { data: offer } = useOffer({ offerId })
-  if (!offer || !profileInfo) return
+  if (!offer) return
 
   /* check I have all information to calculate wording
    * why: avoid flash on CTA wording
@@ -100,7 +100,7 @@ export const useCtaWordingAndAction = (props: {
   )
     return
 
-  const { isBeneficiary } = profileInfo
+  const { isBeneficiary = false } = profileInfo || {}
   return getCtaWordingAndAction({ isLoggedIn, isBeneficiary, offer })
 }
 
