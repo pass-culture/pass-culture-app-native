@@ -122,7 +122,7 @@ describe('getCtaWordingAndAction', () => {
     // TODO
   })
   describe('CTA - Analytics', () => {
-    it('logs event ClickBookOffer when we click CTA "Réserver" (beneficiary user)', async () => {
+    it('logs event ClickBookOffer when we click CTA "Réserver" (beneficiary user)', () => {
       const offer = buildOffer({
         externalTicketOfficeUrl: 'http://www.google.com',
         category: { ...baseOffer.category, categoryType: CategoryType.Thing },
@@ -139,9 +139,28 @@ describe('getCtaWordingAndAction', () => {
       expect(analytics.logClickBookOffer).toBeCalledTimes(0)
       expect(onPress).not.toBeUndefined()
 
-      if (onPress) await onPress()
+      if (onPress) onPress()
       expect(analytics.logClickBookOffer).toBeCalledTimes(1)
       expect(analytics.logClickBookOffer).toBeCalledWith(baseOffer.id)
+    })
+    it('logs event ConsultAvailableDates when we click CTA "Voir les disponibilités" (beneficiary user)', () => {
+      const offer = buildOffer({
+        category: { ...baseOffer.category, categoryType: CategoryType.Event },
+      })
+
+      const { onPress } =
+        getCtaWordingAndAction({
+          isLoggedIn: true,
+          isBeneficiary: true,
+          offer,
+        }) || {}
+
+      expect(analytics.logConsultAvailableDates).toBeCalledTimes(0)
+      expect(onPress).not.toBeUndefined()
+
+      if (onPress) onPress()
+      expect(analytics.logConsultAvailableDates).toBeCalledTimes(1)
+      expect(analytics.logConsultAvailableDates).toBeCalledWith(baseOffer.id)
     })
   })
 })
