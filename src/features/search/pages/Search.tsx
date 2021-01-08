@@ -1,15 +1,22 @@
 import { t } from '@lingui/macro'
+import algoliasearch from 'algoliasearch'
 import React from 'react'
 import styled from 'styled-components/native'
+import { InstantSearch } from 'react-instantsearch-native'
 
 import { _ } from 'libs/i18n'
+import { env } from 'libs/environment'
 import { Spacer, Typo } from 'ui/theme'
 
 export const Search: React.FC = () => (
   <Container>
-    <Spacer.Flex />
-    <Typo.Hero>{_(t`Search`)}</Typo.Hero>
-    <Spacer.Flex />
+    <InstantSearch
+      searchClient={algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)}
+      indexName={env.ALGOLIA_INDEX_NAME}>
+      <Spacer.Flex />
+      <Typo.Hero>{_(t`Search`)}</Typo.Hero>
+      <Spacer.Flex />
+    </InstantSearch>
   </Container>
 )
 
