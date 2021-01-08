@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 
-import { currentTimestamp, isTimestampExpired } from './dates'
+import { currentTimestamp, dateDiffInFullYears, isTimestampExpired } from './dates'
 
 describe('currentTimestamp()', () => {
   it('should return timestamp corresponding to current time', () => {
@@ -26,5 +26,25 @@ describe('isTimestampExpired()', () => {
   it('should return false if the timestamp has not expired and is not within the "expiration" margin', () => {
     mockdate.set(new Date('2020-06-10T12:54:00Z'))
     expect(isTimestampExpired(timestamp, expirationMargin)).toBe(false)
+  })
+})
+
+describe('dateDiffInFullYears()', () => {
+  it('should return the number of revoluted years between two dates', () => {
+    let oldDate = new Date('2020-06-01T00:00:00Z')
+    let newDate = new Date('2025-06-01T00:00:00Z')
+    expect(dateDiffInFullYears(oldDate, newDate)).toBe(5)
+
+    oldDate = new Date('2020-06-01T00:00:00Z')
+    newDate = new Date('2025-05-01T00:00:00Z')
+    expect(dateDiffInFullYears(oldDate, newDate)).toBe(4)
+
+    oldDate = new Date('2020-06-01T00:00:00Z')
+    newDate = new Date('2025-05-31T00:00:00Z')
+    expect(dateDiffInFullYears(oldDate, newDate)).toBe(4)
+
+    oldDate = new Date('2020-06-01T00:00:00Z')
+    newDate = new Date('2025-05-31T23:59:59Z')
+    expect(dateDiffInFullYears(oldDate, newDate)).toBe(4)
   })
 })

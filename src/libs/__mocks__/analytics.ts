@@ -32,4 +32,6 @@ export const analytics: typeof actualAnalytics = {
   logResendEmail: jest.fn(),
   logScreenView: jest.fn(),
   logShareOffer: jest.fn(),
+  logSignUpBetween14And15Included: jest.fn(),
+  logSignUpLessThanOrEqualTo13: jest.fn()
 }
