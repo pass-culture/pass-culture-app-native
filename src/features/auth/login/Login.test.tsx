@@ -1,13 +1,12 @@
-import { render, fireEvent, act } from '@testing-library/react-native'
+import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, goBack } from '__mocks__/@react-navigation/native'
+import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { server } from 'tests/server'
-import { flushAllPromises } from 'tests/utils'
 
 import { useSignIn } from '../api'
 import { AuthContext } from '../AuthContext'
@@ -39,26 +38,62 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to home page WHEN signin is successful', async () => {
-    mockUseSignIn.mockImplementationOnce(() => () => true)
+    mockUseSignIn.mockImplementationOnce(() => () => {
+      return { isSuccess: true, content: undefined }
+    })
 
     const { findByText } = renderLogin()
 
     const connexionButton = await findByText('Se connecter')
-    fireEvent.press(connexionButton)
+    await act(async () => {
+      fireEvent.press(connexionButton)
+    })
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'Home', NavigateToHomeWithoutModalOptions)
     })
   })
 
+  it(
+    'should redirect to SignupConfirmationEmailSent page' +
+      ' WHEN signin has failed with EMAIL_NOT_VALIDATED code',
+    async () => {
+      mockUseSignIn.mockImplementationOnce(() => () => {
+        return {
+          isSuccess: false,
+          content: {
+            code: 'EMAIL_NOT_VALIDATED',
+            general: ["L'email n'a pas été validé."],
+          },
+        }
+      })
+
+      const { findByText } = renderLogin()
+
+      const connexionButton = await findByText('Se connecter')
+      await act(async () => {
+        fireEvent.press(connexionButton)
+      })
+
+      await waitForExpect(() => {
+        expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
+          email: undefined,
+        })
+      })
+    }
+  )
+
   it('should show error message and error inputs AND not redirect to home page WHEN signin has failed', async () => {
+    mockUseSignIn.mockImplementationOnce(() => () => {
+      return { isSuccess: false, content: undefined }
+    })
+
     const { findByText, toJSON } = renderLogin()
     const notErrorSnapshot = toJSON()
 
     const connexionButton = await findByText('Se connecter')
     await act(async () => {
       fireEvent.press(connexionButton)
-      await flushAllPromises()
     })
 
     await waitForExpect(() => {

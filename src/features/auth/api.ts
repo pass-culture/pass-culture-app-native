@@ -2,18 +2,31 @@ import { api } from 'api/api'
 import { AccountRequest, SigninRequest } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/AuthContext'
 
-export function useSignIn(): (data: SigninRequest) => Promise<boolean> {
+type SignInResponse =
+  | {
+      isSuccess: true
+      content: undefined
+    }
+  | {
+      isSuccess: false
+      content?: {
+        code: 'EMAIL_NOT_VALIDATED'
+        general: string[]
+      }
+    }
+
+export function useSignIn(): (data: SigninRequest) => Promise<SignInResponse> {
   const loginRoutine = useLoginRoutine()
 
   return async (body: SigninRequest) => {
     try {
       const response = await api.postnativev1signin(body, { credentials: 'omit' })
-      if (!response) return false
+      if (!response) return { isSuccess: false }
 
       await loginRoutine(response, 'fromLogin')
-      return true
+      return { isSuccess: true }
     } catch (error) {
-      return false
+      return { isSuccess: false, content: error.content }
     }
   }
 }
