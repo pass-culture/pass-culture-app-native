@@ -21,7 +21,7 @@ describe('<Offer /> - Analytics', () => {
     })
   }
 
-  it('should log ConsultAccesibilityModalities once when opening accessibility modalities', async () => {
+  it('should log ConsultAccessibilityModalities once when opening accessibility modalities', async () => {
     const { getByText } = await renderOfferPage()
 
     trigger(getByText('Accessibilité'))

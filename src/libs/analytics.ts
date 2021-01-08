@@ -9,7 +9,7 @@ enum AnalyticsEvent {
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   CANCEL_SIGNUP = 'CancelSignup',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
-  CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccesibilityModalities',
+  CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
   CONSULT_OFFER = 'ConsultOffer',
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
