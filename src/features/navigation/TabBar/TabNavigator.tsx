@@ -34,7 +34,7 @@ export const TabNavigator: React.FC = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Search"
       tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
       <Tab.Screen name="Home" component={Home} initialParams={{ shouldDisplayLoginModal: false }} />
       <Tab.Screen name="Search" component={Search} />
