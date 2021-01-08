@@ -73,8 +73,9 @@ export const getCtaWordingAndAction = ({
 
     return {
       wording: _(t`Voir les disponibilités`),
-      // TODO 'Go to booking funnel'
-      onPress: () => null,
+      onPress: () => {
+        analytics.logConsultAvailableDates(offer.id)
+      },
     }
   }
   return
