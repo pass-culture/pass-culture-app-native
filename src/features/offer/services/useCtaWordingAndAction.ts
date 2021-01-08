@@ -62,8 +62,8 @@ export const getCtaWordingAndAction = ({
 
     return {
       wording: _(t`Réserver`),
-      onPress: async () => {
-        await analytics.logClickBookOffer(offer.id)
+      onPress: () => {
+        analytics.logClickBookOffer(offer.id)
       },
     }
   }
