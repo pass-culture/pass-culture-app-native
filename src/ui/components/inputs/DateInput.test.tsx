@@ -210,7 +210,7 @@ describe('DateInput Component', () => {
       fireEvent.changeText(getByPlaceholderText('MM'), '07')
       fireEvent.changeText(getByPlaceholderText('AAAA'), '1991')
 
-      expect(onChangeValue).toBeCalledWith('1991-07-16', {
+      expect(onChangeValue).toBeCalledWith(new Date('1991-07-16'), {
         isComplete: true,
         isDateAboveMin: true,
         isDateBelowMax: true,
@@ -259,7 +259,7 @@ describe('DateInput Component', () => {
       fireEvent.changeText(getByPlaceholderText('MM'), '01')
       fireEvent.changeText(getByPlaceholderText('AAAA'), '2010')
 
-      expect(onChangeValue).toBeCalledWith(null, {
+      expect(onChangeValue).toBeCalledWith(new Date('2010-01-01'), {
         isComplete: true,
         isDateAboveMin: false,
         isDateBelowMax: true,
@@ -278,7 +278,7 @@ describe('DateInput Component', () => {
       fireEvent.changeText(getByPlaceholderText('MM'), '01')
       fireEvent.changeText(getByPlaceholderText('AAAA'), '2010')
 
-      expect(onChangeValue).toBeCalledWith(null, {
+      expect(onChangeValue).toBeCalledWith(new Date('2010-01-02'), {
         isComplete: true,
         isDateAboveMin: true,
         isDateBelowMax: false,
@@ -298,7 +298,7 @@ describe('DateInput Component', () => {
       fireEvent.changeText(getByPlaceholderText('MM'), '01')
       fireEvent.changeText(getByPlaceholderText('AAAA'), '2010')
 
-      expect(onChangeValue).toBeCalledWith('2010-01-15', {
+      expect(onChangeValue).toBeCalledWith(new Date('2010-01-15'), {
         isComplete: true,
         isDateAboveMin: true,
         isDateBelowMax: true,

@@ -9,6 +9,7 @@ import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupMod
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
+import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -32,7 +33,7 @@ const YOUNGEST_AGE = 16
 const MIN_DATE = new Date('1900-01-01T00:00:00Z')
 
 interface State {
-  date: string | null
+  date: Date | null
   isDateComplete: boolean
   isDateValid: boolean
   isTooYoung: boolean
@@ -74,7 +75,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
 
   const dateInputRef = useRef<DateInputRef>(null)
 
-  function onChangeValue(date: string | null, validation: DateValidation) {
+  function onChangeValue(date: Date | null, validation: DateValidation) {
     setState({
       date,
       isDateComplete: validation.isComplete,
@@ -85,12 +86,11 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   }
 
   function goToCguAcceptance() {
-    navigate('AcceptCgu', {
-      email: email,
-      isNewsletterChecked: isNewsletterChecked,
-      password: password,
-      birthday: state.date ? state.date : '',
-    })
+    const { date } = state
+    if (date) {
+      const birthday = formatDateToISOStringWithoutTime(date)
+    navigate('AcceptCgu', { email, isNewsletterChecked, password, birthday })
+  }
   }
 
   /**

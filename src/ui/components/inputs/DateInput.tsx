@@ -12,7 +12,7 @@ export interface DateValidation {
 }
 
 interface DateInputProps {
-  onChangeValue?: (value: string | null, dateValidation: DateValidation) => void
+  onChangeValue?: (value: Date | null, dateValidation: DateValidation) => void
   minDate?: Date
   maxDate?: Date
 }
@@ -66,18 +66,20 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
     isDateBelowMax: props.maxDate ? false : true,
   }
 
-  const isDayValid = DAY_VALIDATOR.isValid(Number(day)) && DAY_VALIDATOR.hasRightLength(day)
-  const isMonthValid =
-    MONTH_VALIDATOR.isValid(Number(month)) && MONTH_VALIDATOR.hasRightLength(month)
-  const isYearValid = YEAR_VALIDATOR.isValid(Number(year)) && YEAR_VALIDATOR.hasRightLength(year)
+  const dayNb = Number(day)
+  const monthNb = Number(month)
+  const yearNb = Number(year)
+  const date = new Date(Date.UTC(yearNb, monthNb - 1, dayNb))
 
-  const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)))
-  const isDateValid = FULL_DATE_VALIDATOR.isValid(date, Number(year), Number(month), Number(day))
+  const isDayValid = DAY_VALIDATOR.isValid(dayNb) && DAY_VALIDATOR.hasRightLength(day)
+  const isMonthValid = MONTH_VALIDATOR.isValid(monthNb) && MONTH_VALIDATOR.hasRightLength(month)
+  const isYearValid = YEAR_VALIDATOR.isValid(yearNb) && YEAR_VALIDATOR.hasRightLength(year)
+  const doesDateExists = FULL_DATE_VALIDATOR.isValid(date, yearNb, monthNb, dayNb)
 
-  if (isDateValid && props.minDate) {
+  if (doesDateExists && props.minDate) {
     dateValidation.isDateAboveMin = date >= props.minDate
   }
-  if (isDateValid && props.maxDate) {
+  if (doesDateExists && props.maxDate) {
     dateValidation.isDateBelowMax = date <= props.maxDate
   }
 
@@ -86,15 +88,14 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
     MONTH_VALIDATOR.hasRightLength(month) &&
     YEAR_VALIDATOR.hasRightLength(year)
   dateValidation.isValid =
-    isDateValid &&
+    doesDateExists &&
     dateValidation.isComplete &&
     dateValidation.isDateAboveMin &&
     dateValidation.isDateBelowMax
 
   // notify parent effect
   useEffect(() => {
-    const stringDate = dateValidation.isValid ? `${year}-${month}-${day}` : null
-    props.onChangeValue?.(stringDate, dateValidation)
+    props.onChangeValue?.(doesDateExists ? date : null, dateValidation)
   }, [day, month, year])
 
   useImperativeHandle(forwardedRef, () => ({
