@@ -73,8 +73,8 @@ export const getCtaWordingAndAction = ({
 
     return {
       wording: _(t`Voir les disponibilités`),
-      // eslint-disable-next-line no-console
-      onPress: () => console.log('Go to booking funnel'),
+      // TODO 'Go to booking funnel'
+      onPress: () => null,
     }
   }
   return
