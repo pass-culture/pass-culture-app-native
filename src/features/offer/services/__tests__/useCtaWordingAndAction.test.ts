@@ -80,8 +80,8 @@ describe('getCtaWordingAndAction', () => {
       type                  | creditThing  | creditEvent  | platform     | expected                     | disabled
       ${CategoryType.Thing} | ${2}         | ${undefined} | ${'ios'}     | ${'Impossible de réserver'}  | ${true}
       ${CategoryType.Thing} | ${20}        | ${undefined} | ${'ios'}     | ${'Impossible de réserver'}  | ${true}
+      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'android'} | ${'Réserver'}                | ${false}
       ${CategoryType.Event} | ${undefined} | ${20}        | ${'ios'}     | ${'Voir les disponibilités'} | ${false}
-      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'android'} | ${'Voir les disponibilités'} | ${false}
       ${CategoryType.Event} | ${undefined} | ${20}        | ${'android'} | ${'Voir les disponibilités'} | ${false}
     `(
       'If credit is enough, only iOS user cannot book on Thing type offers | $type x $platform => $expected',
@@ -101,7 +101,7 @@ describe('getCtaWordingAndAction', () => {
       ${CategoryType.Thing} | ${1}         | ${undefined} | ${'Crédit insuffisant'}      | ${true}
       ${CategoryType.Thing} | ${1}         | ${20}        | ${'Crédit insuffisant'}      | ${true}
       ${CategoryType.Thing} | ${4.9}       | ${undefined} | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Thing} | ${5.1}       | ${undefined} | ${'Voir les disponibilités'} | ${false}
+      ${CategoryType.Thing} | ${5.1}       | ${undefined} | ${'Réserver'}                | ${false}
       ${CategoryType.Event} | ${undefined} | ${1}         | ${'Crédit insuffisant'}      | ${true}
       ${CategoryType.Event} | ${20}        | ${1}         | ${'Crédit insuffisant'}      | ${true}
       ${CategoryType.Event} | ${undefined} | ${4.9}       | ${'Crédit insuffisant'}      | ${true}
@@ -122,14 +122,18 @@ describe('getCtaWordingAndAction', () => {
     // TODO
   })
   describe('CTA - Analytics', () => {
-    it('logs event ClickBookOffer when we click CTA (non beneficiary user)', async () => {
-      const offer = buildOffer({ externalTicketOfficeUrl: 'http://www.google.com' })
+    it('logs event ClickBookOffer when we click CTA "Réserver" (beneficiary user)', async () => {
+      const offer = buildOffer({
+        externalTicketOfficeUrl: 'http://www.google.com',
+        category: { ...baseOffer.category, categoryType: CategoryType.Thing },
+      })
 
       const { onPress } =
         getCtaWordingAndAction({
           isLoggedIn: true,
-          isBeneficiary: false,
+          isBeneficiary: true,
           offer,
+          platform: 'android',
         }) || {}
 
       expect(analytics.logClickBookOffer).toBeCalledTimes(0)
