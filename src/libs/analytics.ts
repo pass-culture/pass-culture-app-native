@@ -35,64 +35,63 @@ const logScreenView = async (screenName: string) => {
   await firebaseAnalytics.logEvent(`${AnalyticsEvent.SCREEN_VIEW}_${screenName.toLowerCase()}`)
 }
 
-const logAllModulesSeen = async (numberOfModules: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules })
+const logAllModulesSeen = (numberOfModules: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules })
 
-const logAllTilesSeen = async (moduleName: string, numberOfTiles: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
+const logAllTilesSeen = (moduleName: string, numberOfTiles: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
 
-const logConsultOffer = async (offerId: number, moduleName: string) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId, moduleName })
+const logConsultOffer = (offerId: number, moduleName: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId, moduleName })
 
-const logClickExclusivityBlock = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })
+const logClickExclusivityBlock = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })
 
-const logClickSeeMore = async (moduleName: string) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName })
+const logClickSeeMore = (moduleName: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName })
 
-const logClickBusinessBlock = async (moduleName: string) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName })
+const logClickBusinessBlock = (moduleName: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName })
 
-const logConsultOfferFromDeeplink = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.DEEPLINK_CONSULT_OFFER, { offerId })
+const logConsultOfferFromDeeplink = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.DEEPLINK_CONSULT_OFFER, { offerId })
 
-const logConsultAccessibility = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId })
+const logConsultAccessibility = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId })
 
-const logConsultWithdrawal = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, { offerId })
+const logConsultWithdrawal = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, { offerId })
 
-const logShareOffer = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId })
+const logShareOffer = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId })
 
-const logConsultDescriptionDetails = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId })
+const logConsultDescriptionDetails = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId })
 
-const logConsultWholeOffer = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId })
+const logConsultWholeOffer = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId })
 
-const logConsultItinerary = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId })
+const logConsultItinerary = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId })
 
-const logClickWhyAnniversary = async () =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.WHY_ANNIVERSARY_CLICKED)
+const logClickWhyAnniversary = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.WHY_ANNIVERSARY_CLICKED)
 
-const logCancelSignup = async (pageName: string) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName })
+const logCancelSignup = (pageName: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName })
 
-const logOfferSeenDuration = async (offerId: number, duration: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
+const logOfferSeenDuration = (offerId: number, duration: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
 
-const logContactSupport = async () =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT)
+const logContactSupport = () => firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT)
 
-const logClickBookOffer = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
+const logClickBookOffer = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
 
-const logConsultAvailableDates = async (offerId: number) =>
-  await firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
+const logConsultAvailableDates = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
 
-const logResendEmail = async () => await firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL)
+const logResendEmail = () => firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL)
 
 export const analytics = {
   logAllModulesSeen,
