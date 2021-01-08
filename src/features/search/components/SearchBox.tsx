@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { connectSearchBox } from 'react-instantsearch-native'
 import styled from 'styled-components/native'
+import debounce from 'lodash.debounce'
 
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { getSpacing } from 'ui/theme'
@@ -30,6 +31,17 @@ const StyledInput = styled.View({
   margin: getSpacing(4),
 })
 
-export const SearchBox = connectSearchBox(({ refine, currentRefinement }) => (
-  <SearchBoxComponent onChangeText={(text) => refine(text)} value={currentRefinement} />
-))
+export const SearchBox = connectSearchBox(({ refine, currentRefinement }) => {
+  const [value, setValue] = useState(currentRefinement)
+  const debouncedRefine = useRef(debounce(refine, 400)).current
+
+  return (
+    <SearchBoxComponent
+      onChangeText={(text: string) => {
+        setValue(text)
+        debouncedRefine(text)
+      }}
+      value={value}
+    />
+  )
+})
