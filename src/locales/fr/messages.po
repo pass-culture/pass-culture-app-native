@@ -49,11 +49,11 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:18
+#: src/features/offer/services/useCtaWordingAndAction.ts:29
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:19
+#: src/features/offer/services/useCtaWordingAndAction.ts:30
 msgid "Accéder à la billetterie externe"
 msgstr "Accéder à la billetterie externe"
 
@@ -132,8 +132,8 @@ msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:38
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:40
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
@@ -166,10 +166,10 @@ msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:51
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:53
 #: src/features/auth/signup/AcceptCgu.tsx:71
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:42
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:43
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:45
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -184,8 +184,8 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:34
-#: src/features/offer/services/useCtaWordingAndAction.ts:40
+#: src/features/offer/services/useCtaWordingAndAction.ts:51
+#: src/features/offer/services/useCtaWordingAndAction.ts:61
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
@@ -263,7 +263,7 @@ msgstr "Handicap visuel"
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:36
+#: src/features/offer/services/useCtaWordingAndAction.ts:49
 msgid "Impossible de réserver"
 msgstr "Impossible de réserver"
 
@@ -278,8 +278,8 @@ msgstr "Keychain non accessible"
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:44
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:36
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:38
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
@@ -325,12 +325,12 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:26
-#: src/features/offer/services/useCtaWordingAndAction.ts:30
+#: src/features/offer/services/useCtaWordingAndAction.ts:40
+#: src/features/offer/services/useCtaWordingAndAction.ts:44
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:28
+#: src/features/offer/services/useCtaWordingAndAction.ts:42
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
@@ -342,8 +342,8 @@ msgstr "On y va !"
 msgid "Oops !"
 msgstr "Oops !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:43
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:35
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:45
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:37
 msgid "Oups"
 msgstr "Oups"
 
@@ -383,13 +383,13 @@ msgstr "Quand ?"
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:53
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:45
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:55
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:55
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:57
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:49
 #: src/features/auth/signup/VerifyEligibility.tsx:28
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
@@ -405,6 +405,10 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 #: src/features/errors/pages/RetryBoundary.tsx:47
 msgid "Réessayer"
 msgstr "Réessayer"
+
+#: src/features/offer/services/useCtaWordingAndAction.ts:53
+msgid "Réserver"
+msgstr "Réserver"
 
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:28
 msgid "S'inscrire"
@@ -432,8 +436,8 @@ msgstr "Si l'e-mail n'arrive pas, tu peux :"
 msgid "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:49
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:41
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:51
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:43
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
@@ -491,7 +495,7 @@ msgstr "Valider"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:43
+#: src/features/offer/services/useCtaWordingAndAction.ts:63
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
@@ -578,7 +582,7 @@ msgstr "voir plus"
 msgid "{0}"
 msgstr "{0}"
 
-#: src/features/offer/components/OfferIconCaptions.tsx:27
+#: src/features/offer/components/OfferIconCaptions.tsx:25
 msgid "À deux !"
 msgstr "À deux !"
 
