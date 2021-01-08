@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { dateDiffInFullYears } from 'libs/dates'
 import { _ } from 'libs/i18n'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
@@ -42,6 +43,7 @@ interface State {
 
 export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const keyboardHeightRef = useRef(0)
+  const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
   const [state, setState] = useState<State>({
     date: null,
     isDateComplete: false,
@@ -89,8 +91,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     const { date } = state
     if (date) {
       const birthday = formatDateToISOStringWithoutTime(date)
-    navigate('AcceptCgu', { email, isNewsletterChecked, password, birthday })
-  }
+      navigate('AcceptCgu', { email, isNewsletterChecked, password, birthday })
+    }
   }
 
   /**
@@ -144,6 +146,11 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       return
     }
     if (state.isTooYoung && !state.isTooOld) {
+      if (!wereBirthdayAnalyticsTriggered && state.date) {
+        const age = dateDiffInFullYears(state.date, now)
+        logBirthdayAnalytics(age)
+        setWereBirthdayAnalyticsTriggered(true)
+      }
       return (
         <InputError
           visible
@@ -242,6 +249,14 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       />
     </React.Fragment>
   )
+}
+
+async function logBirthdayAnalytics(age: number) {
+  if (age <= 13) {
+    analytics.logSignUpLessThanOrEqualTo13()
+  } else if (age === 14 || age === 15) {
+    analytics.logSignUpBetween14And15Included()
+  }
 }
 
 const TouchableOpacityFullWidth = styled(TouchableOpacity)({

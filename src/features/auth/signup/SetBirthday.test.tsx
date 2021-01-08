@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { fireEvent, render } from '@testing-library/react-native'
+import { fireEvent, render, RenderAPI } from '@testing-library/react-native'
 import mockdate from 'mockdate'
 import React from 'react'
 import { Linking } from 'react-native'
@@ -14,10 +14,9 @@ import { SetBirthday } from './SetBirthday'
 
 describe('SetBirthday Page', () => {
   beforeEach(() => {
-    // @ts-ignore: logClickWhyAnniversary is the mock function but is seen as the real function
-    analytics.logClickWhyAnniversary.mockClear()
     mockdate.set(new Date('2020-12-01T00:00:00Z'))
     jest.useFakeTimers()
+    jest.clearAllMocks()
   })
 
   it('should render properly', () => {
@@ -34,93 +33,52 @@ describe('SetBirthday Page', () => {
   })
 
   it('should keep disabled the button "Continuer" when the date is not complete', () => {
-    const { getByPlaceholderText, getByTestId } = renderSetBirthday()
+    const renderAPI = renderSetBirthday()
 
-    const day = getByPlaceholderText('JJ')
-    const month = getByPlaceholderText('MM')
-    const year = getByPlaceholderText('AAAA')
+    changeDate(renderAPI, '1', '1', '1')
 
-    fireEvent.changeText(day, '1')
-    fireEvent.changeText(month, '1')
-    fireEvent.changeText(year, '1')
-
-    const button = getByTestId('button-container-validate-birthday')
+    const button = renderAPI.getByTestId('button-container-validate-birthday')
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
   })
 
   it('should display the error message "date incorrecte" when the date is too old', () => {
-    const { queryByText, getByText, getByPlaceholderText } = renderSetBirthday()
+    const renderAPI = renderSetBirthday()
 
-    const day = getByPlaceholderText('JJ')
-    const month = getByPlaceholderText('MM')
-    const year = getByPlaceholderText('AAAA')
+    changeDate(renderAPI, '31', '12', '1889')
 
-    fireEvent.changeText(day, '31')
-    fireEvent.changeText(month, '12')
-    fireEvent.changeText(year, '1899')
-
-    const continueButton = getByText('Continuer')
-    fireEvent.press(continueButton)
-
-    const message = queryByText('La date choisie est incorrecte')
+    const message = renderAPI.queryByText('La date choisie est incorrecte')
     expect(message).toBeTruthy()
   })
 
   it('should display the error message "date incorrecte" when the date is incorrect', () => {
-    const { queryByText, getByText, getByPlaceholderText } = renderSetBirthday()
+    const renderAPI = renderSetBirthday()
 
-    const day = getByPlaceholderText('JJ')
-    const month = getByPlaceholderText('MM')
-    const year = getByPlaceholderText('AAAA')
+    changeDate(renderAPI, '?!', '01', '2002')
 
-    fireEvent.changeText(day, '?!')
-    fireEvent.changeText(month, '02')
-    fireEvent.changeText(year, '2002')
-
-    const continueButton = getByText('Continuer')
-    fireEvent.press(continueButton)
-
-    const message = queryByText('La date choisie est incorrecte')
+    const message = renderAPI.queryByText('La date choisie est incorrecte')
     expect(message).toBeTruthy()
   })
 
   it('should display the error message "tu dois avoir 16 ans" when the date is too young', () => {
-    const { queryByText, getByText, getByPlaceholderText } = renderSetBirthday()
+    const renderAPI = renderSetBirthday()
 
-    const day = getByPlaceholderText('JJ')
-    const month = getByPlaceholderText('MM')
-    const year = getByPlaceholderText('AAAA')
+    changeDate(renderAPI, '01', '01', '2005')
 
-    fireEvent.changeText(day, '01')
-    fireEvent.changeText(month, '01')
-    fireEvent.changeText(year, '2005')
-
-    const continueButton = getByText('Continuer')
-    fireEvent.press(continueButton)
-
-    const message = queryByText("Tu dois avoir 16 ans pour t'inscrire")
+    const message = renderAPI.queryByText("Tu dois avoir 16 ans pour t'inscrire")
     expect(message).toBeTruthy()
   })
 
   it('should enable the button "Continuer" when the date is correct', () => {
-    const { getByText, getByPlaceholderText, queryByText, getByTestId } = renderSetBirthday()
+    const renderAPI = renderSetBirthday()
 
-    const day = getByPlaceholderText('JJ')
-    const month = getByPlaceholderText('MM')
-    const year = getByPlaceholderText('AAAA')
+    changeDate(renderAPI, '16', '01', '1995')
 
-    fireEvent.changeText(day, '16')
-    fireEvent.changeText(month, '01')
-    fireEvent.changeText(year, '1995')
-
-    fireEvent(year, 'blur')
-
-    const continueButton = getByText('Continuer')
+    const continueButton = renderAPI.getByText('Continuer')
     fireEvent.press(continueButton)
 
-    const buttonContainer = getByTestId('button-container-validate-birthday')
+    const buttonContainer = renderAPI.getByTestId('button-container-validate-birthday')
     expect(buttonContainer.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
-    expect(queryByText('La date choisie est incorrecte')).toBeFalsy()
+    expect(renderAPI.queryByText('La date choisie est incorrecte')).toBeFalsy()
     expect(navigate).toBeCalledWith('AcceptCgu', {
       birthday: '1995-01-16',
       email: 'john.doe@example.com',
@@ -203,6 +161,74 @@ describe('SetBirthday Page', () => {
       expect(analytics.logCancelSignup).toHaveBeenCalledTimes(1)
       expect(analytics.logCancelSignup).toHaveBeenCalledWith('Birthday')
     })
+
+    it('should not log any birthday analytics if the user is 16 years old or more', () => {
+      const renderAPI = renderSetBirthday()
+
+      changeDate(renderAPI, '01', '12', '2004')
+      expect(analytics.logSignUpBetween14And15Included).not.toBeCalled()
+      expect(analytics.logSignUpLessThanOrEqualTo13).not.toBeCalled()
+
+      changeDate(renderAPI, '01', '12', '2000')
+      expect(analytics.logSignUpBetween14And15Included).not.toBeCalled()
+      expect(analytics.logSignUpLessThanOrEqualTo13).not.toBeCalled()
+    })
+
+    it('should log between 14 and 15 birthday analytics if the user is 15 years old', () => {
+      const renderAPI = renderSetBirthday()
+
+      changeDate(renderAPI, '01', '12', '2005')
+
+      expect(analytics.logSignUpBetween14And15Included).toBeCalledTimes(1)
+      expect(analytics.logSignUpLessThanOrEqualTo13).not.toBeCalled()
+    })
+
+    it('should log between 14 and 15 birthday analytics if the user is 14 years old', () => {
+      const renderAPI = renderSetBirthday()
+
+      changeDate(renderAPI, '01', '12', '2006')
+
+      expect(analytics.logSignUpBetween14And15Included).toBeCalledTimes(1)
+      expect(analytics.logSignUpLessThanOrEqualTo13).not.toBeCalled()
+    })
+
+    it('should log <= 13 birthday analytics if the user is 13 years old', () => {
+      const renderAPI = renderSetBirthday()
+
+      changeDate(renderAPI, '01', '12', '2007')
+
+      expect(analytics.logSignUpBetween14And15Included).not.toBeCalled()
+      expect(analytics.logSignUpLessThanOrEqualTo13).toBeCalledTimes(1)
+    })
+
+    it('should log <= 13 birthday analytics if the user is less than 13 years old', () => {
+      const renderAPI = renderSetBirthday()
+
+      changeDate(renderAPI, '01', '12', '2010')
+
+      expect(analytics.logSignUpBetween14And15Included).not.toBeCalled()
+      expect(analytics.logSignUpLessThanOrEqualTo13).toBeCalledTimes(1)
+    })
+
+    it('it should not should log between 14 and 15 birthday analytics more than once', () => {
+      const renderAPI = renderSetBirthday()
+
+      changeDate(renderAPI, '01', '12', '2005')
+      expect(analytics.logSignUpBetween14And15Included).toBeCalledTimes(1)
+
+      changeDate(renderAPI, '01', '12', '2006')
+      expect(analytics.logSignUpBetween14And15Included).toBeCalledTimes(1)
+    })
+
+    it('it should not should log <= 13 birthday analytics more than once', () => {
+      const renderAPI = renderSetBirthday()
+
+      changeDate(renderAPI, '01', '12', '2007')
+      expect(analytics.logSignUpLessThanOrEqualTo13).toBeCalledTimes(1)
+
+      changeDate(renderAPI, '01', '12', '2010')
+      expect(analytics.logSignUpLessThanOrEqualTo13).toBeCalledTimes(1)
+    })
   })
 })
 
@@ -213,4 +239,14 @@ function renderSetBirthday() {
     },
   } as StackScreenProps<RootStackParamList, 'SetBirthday'>
   return render(<SetBirthday {...navigationProps} />)
+}
+
+function changeDate(renderAPI: RenderAPI, dayStr: string, monthStr: string, yearStr: string) {
+  const day = renderAPI.getByPlaceholderText('JJ')
+  const month = renderAPI.getByPlaceholderText('MM')
+  const year = renderAPI.getByPlaceholderText('AAAA')
+
+  fireEvent.changeText(day, dayStr)
+  fireEvent.changeText(month, monthStr)
+  fireEvent.changeText(year, yearStr)
 }

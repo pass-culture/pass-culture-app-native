@@ -12,8 +12,8 @@ enum AnalyticsEvent {
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
   CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
-  CONSULT_OFFER = 'ConsultOffer',
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
+  CONSULT_OFFER = 'ConsultOffer',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   CONTACT_SUPPORT = 'ContactSupport',
@@ -24,6 +24,8 @@ enum AnalyticsEvent {
   SCREEN_VIEW = 'screen_view',
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   SHARE_OFFER = 'Share',
+  SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
+  SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   WHY_ANNIVERSARY_CLICKED = 'WhyAnniversary',
 }
 
@@ -93,6 +95,12 @@ const logConsultAvailableDates = (offerId: number) =>
 
 const logResendEmail = () => firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL)
 
+const logSignUpBetween14And15Included = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.SIGN_UP_BETWEEN_14_AND_15_INCLUDED)
+
+const logSignUpLessThanOrEqualTo13 = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.SIGN_UP_LESS_THAN_OR_EQUAL_TO_13)
+
 export const analytics = {
   logAllModulesSeen,
   logAllTilesSeen,
@@ -115,4 +123,6 @@ export const analytics = {
   logResendEmail,
   logScreenView,
   logShareOffer,
+  logSignUpBetween14And15Included,
+  logSignUpLessThanOrEqualTo13,
 }
