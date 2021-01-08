@@ -135,8 +135,24 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   }
 
   if (!response.ok) {
-    throw new Error(_(t`Échec de la requête ${response.url}, code: ${response.status}`))
+    throw new ApiError(
+      response.status,
+      await response.json(),
+      _(t`Échec de la requête ${response.url}, code: ${response.status}`)
+    )
   }
 
   return await response.json()
+}
+
+export class ApiError extends Error {
+  name = 'ApiError'
+  content: string
+  status: number
+
+  constructor(status: number, content: string, message?: string) {
+    super(message)
+    this.content = content
+    this.status = status
+  }
 }
