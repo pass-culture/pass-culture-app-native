@@ -1,6 +1,11 @@
 import mockdate from 'mockdate'
 
-import { formatDatePeriod, formatDates, getUniqueSortedTimestamps } from '../formatDates'
+import {
+  formatDatePeriod,
+  formatDateToISOStringWithoutTime,
+  formatDates,
+  getUniqueSortedTimestamps,
+} from '../formatDates'
 
 const Oct5 = new Date(2020, 9, 5)
 const Nov1 = new Date(2020, 10, 1)
@@ -72,6 +77,22 @@ describe('getUniqueSortedTimestamps', () => {
       const timestamps = dates.map((date) => date.valueOf())
       const uniqueSortedTimestamps = uniqueSortedDates?.map((date) => date.valueOf())
       expect(getUniqueSortedTimestamps(timestamps, onlyFuture)).toEqual(uniqueSortedTimestamps)
+    }
+  )
+})
+
+describe('formatDateToISOStringWithoutTime()', () => {
+  it.each`
+    date                            | expectedISOString
+    ${new Date(666, 6, 6)}          | ${'0666-07-06'}
+    ${new Date(100000, 6, 6)}       | ${'+100000-07-06'}
+    ${new Date(2020, 11, 31)}       | ${'2020-12-31'}
+    ${new Date(2020, 11, 1)}        | ${'2020-12-01'}
+    ${new Date(2020, 11, 1, 9, 30)} | ${'2020-12-01'}
+  `(
+    'should format Date $date to string "$expectedISOString"',
+    ({ date, expectedISOString }: { date: Date; expectedISOString: string }) => {
+      expect(formatDateToISOStringWithoutTime(date)).toEqual(expectedISOString)
     }
   )
 })

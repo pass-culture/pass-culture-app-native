@@ -68,3 +68,8 @@ export const formatDatePeriod = (dates: Date[] | undefined): string | undefined 
     )} au ${formatToFrenchDate(uniqueSortedTimestamps[len - 1])}`
   )
 }
+
+export function formatDateToISOStringWithoutTime(date: Date): string {
+  const ISOString = date.toISOString()
+  return ISOString.substr(0, ISOString.indexOf('T'))
+}
