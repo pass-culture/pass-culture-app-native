@@ -42,10 +42,15 @@ export const Login: FunctionComponent = function () {
   async function handleSignin() {
     Keyboard.dismiss()
     setShouldShowErrorMessage(false)
-    const isSigninSuccessful = await signIn({ identifier: email, password })
-    if (isSigninSuccessful) {
+    const signinResponse = await signIn({ identifier: email, password })
+
+    if (signinResponse.isSuccess) {
       navigate('Home', NavigateToHomeWithoutModalOptions)
     } else {
+      const { code } = signinResponse.content || {}
+      if (code === 'EMAIL_NOT_VALIDATED') {
+        navigate('SignupConfirmationEmailSent', { email })
+      }
       setShouldShowErrorMessage(true)
     }
   }
