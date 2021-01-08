@@ -10,6 +10,7 @@ enum AnalyticsEvent {
   CANCEL_SIGNUP = 'CancelSignup',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
+  CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
   CONSULT_OFFER = 'ConsultOffer',
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
@@ -88,6 +89,9 @@ const logContactSupport = async () =>
 const logClickBookOffer = async (offerId: number) =>
   await firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
 
+const logConsultAvailableDates = async (offerId: number) =>
+  await firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
+
 const logResendEmail = async () => await firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL)
 
 export const analytics = {
@@ -100,6 +104,7 @@ export const analytics = {
   logClickSeeMore,
   logClickWhyAnniversary,
   logConsultAccessibility,
+  logConsultAvailableDates,
   logConsultDescriptionDetails,
   logConsultItinerary,
   logConsultOffer,
