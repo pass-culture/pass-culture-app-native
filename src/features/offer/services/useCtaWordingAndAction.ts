@@ -42,18 +42,10 @@ export const getCtaWordingAndAction = ({
 
   // Non beneficiary
   if (!isLoggedIn || !isBeneficiary) {
-    const wording =
-      category.categoryType === CategoryType.Event
-        ? _(t`Accéder à l'offre`)
-        : _(t`Accéder à la billetterie externe`)
-
-    if (!externalTicketOfficeUrl) return { wording }
+    const isEvent = category.categoryType === CategoryType.Event
     return {
-      wording,
-      onPress: async () => {
-        await analytics.logClickBookOffer(offer.id)
-        await openExternalUrl(externalTicketOfficeUrl)
-      },
+      wording: isEvent ? _(t`Accéder à l'offre`) : _(t`Accéder à la billetterie externe`),
+      onPress: externalTicketOfficeUrl ? () => openExternalUrl(externalTicketOfficeUrl) : undefined,
     }
   }
 
@@ -67,17 +59,25 @@ export const getCtaWordingAndAction = ({
     // We check the platform first so that the user doesn't try to add funds and come back
     if (price > 0 && platform === 'ios') return { wording: _(t`Impossible de réserver`) }
     if (price > creditThing) return { wording: _(t`Crédit insuffisant`) }
+
+    return {
+      wording: _(t`Réserver`),
+      onPress: async () => {
+        await analytics.logClickBookOffer(offer.id)
+      },
+    }
   }
 
   if (category.categoryType === CategoryType.Event) {
     if (price > creditEvent) return { wording: _(t`Crédit insuffisant`) }
-  }
 
-  return {
-    wording: _(t`Voir les disponibilités`),
-    // eslint-disable-next-line no-console
-    onPress: () => console.log('Go to booking funnel'),
+    return {
+      wording: _(t`Voir les disponibilités`),
+      // eslint-disable-next-line no-console
+      onPress: () => console.log('Go to booking funnel'),
+    }
   }
+  return
 }
 
 export const useCtaWordingAndAction = (props: {
