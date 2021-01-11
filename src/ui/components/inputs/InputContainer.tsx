@@ -6,9 +6,14 @@ import { ColorsEnum, getShadow, getSpacing, padding } from 'ui/theme'
 type Props = {
   isError?: boolean
   isFocus?: boolean
+  inputHeight?: 'small' | 'tall'
 }
 
-export const InputContainer = styled.View(function ({ isError = false, isFocus = false }: Props) {
+export const InputContainer = styled.View(function ({
+  isError = false,
+  isFocus = false,
+  inputHeight = 'small',
+}: Props) {
   const screenWidth = Dimensions.get('screen').width
   const maxWidth = screenWidth * 0.9
 
@@ -21,7 +26,7 @@ export const InputContainer = styled.View(function ({ isError = false, isFocus =
 
   return {
     width: '100%',
-    height: getSpacing(10),
+    height: inputHeight === 'tall' ? getSpacing(12) : getSpacing(10),
     maxWidth,
     flexDirection: 'row' as const, // for some reason we have an unsolvable type issue without this casting
     alignItems: 'center',
