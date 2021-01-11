@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { InfiniteHits } from 'features/search/components/InfiniteHits'
+import { SearchHeader } from 'features/search/components/SearchHeader'
 import { _ } from 'libs/i18n'
-import { Spacer } from 'ui/theme'
 
 export const Search: React.FC = () => (
   <Container>
-    <Spacer.TopScreen />
+    <SearchHeader />
     <InfiniteHits />
   </Container>
 )
