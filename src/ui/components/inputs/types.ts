@@ -3,10 +3,16 @@ import { TextInput as RNTextInput } from 'react-native'
 
 export type CustomTextInputProps = {
   isError?: boolean
+  inputHeight?: 'small' | 'tall'
+  LeftIcon?: React.FC
 }
 
 export type RNTextInputProps = Pick<
   React.ComponentProps<typeof RNTextInput>,
+  | 'autoCorrect'
+  | 'clearButtonMode'
+  | 'returnKeyType'
+  | 'selectionColor'
   | 'onChangeText'
   | 'placeholder'
   | 'value'
