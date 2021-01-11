@@ -16,7 +16,7 @@ const shareOffer = async (offer: OfferResponse) => {
   const title = _(t`Retrouve ${name} chez ${locationName} sur le pass Culture`)
   const url = `${DEEPLINK_DOMAIN}offer/?id=${id}`
 
-  await Share.share({ message: `${title}: ${url}`, url, title }, { dialogTitle: title })
+  await Share.share({ message: title, url, title }, { dialogTitle: title })
 }
 
 export const useShareOffer = (offerId: number): (() => Promise<void>) => {
