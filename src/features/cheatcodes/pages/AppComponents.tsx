@@ -19,6 +19,7 @@ import { DateInput } from 'ui/components/inputs/DateInput'
 import { PartialDateInput, DatePartType } from 'ui/components/inputs/PartialDateInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
+import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -402,6 +403,15 @@ export const AppComponents: FunctionComponent = () => {
         <TouchableOpacity onPress={popupSnackBarInfos}>
           <Typo.Title4 color={ColorsEnum.ACCENT}>Popup Information SnackBar</Typo.Title4>
         </TouchableOpacity>
+      </AccordionItem>
+
+      <Divider />
+
+      {/* Search components */}
+      <AccordionItem title="Search components">
+        <SearchInput LeftIcon={() => <MagnifyingGlass />} placeholder="with left icon" />
+        <Spacer.Column numberOfSpaces={1} />
+        <SearchInput placeholder="without left icon" />
       </AccordionItem>
 
       <Divider />
