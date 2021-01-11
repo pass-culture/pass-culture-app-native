@@ -49,6 +49,7 @@ import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Logo } from 'ui/svg/icons/Logo'
+import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
@@ -338,6 +339,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Favourite size={24} />
           <Text> - Favourite </Text>
+        </AlignedText>
+        <AlignedText>
+          <MagnifyingGlass size={24} />
+          <Text> - MagnifyingGlass </Text>
         </AlignedText>
       </AccordionItem>
 
