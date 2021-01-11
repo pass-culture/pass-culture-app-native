@@ -31,16 +31,19 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  if ([FIRApp defaultApp] == nil) {
-    [FIRApp configure];
-  }
+  NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];   
+  NSDictionary *plistConfig = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+  NSString* Env = [plistConfig valueForKey:@"Env"];
 
   // Enable Firebase debug view on testing environment
-  NSString* env = NSProcessInfo.processInfo.environment[@"ENV"];
-  if ([env isEqualToString:@"testing"]) {
+  if ([Env isEqualToString:@"testing"]) {
     NSMutableArray *newArguments = [NSMutableArray arrayWithArray:[[NSProcessInfo processInfo] arguments]];
+    [newArguments addObject:@"-FIRAnalyticsDebugEnabled"];
     [newArguments addObject:@"-FIRDebugEnabled"];
-    [[NSProcessInfo processInfo] setValue:[newArguments copy] forKey:@"arguments"];
+    [[NSProcessInfo processInfo] setValue:[newArguments copy] forKey:@"arguments"]; 
+  }
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
   }
 
   #ifdef FB_SONARKIT_ENABLED
