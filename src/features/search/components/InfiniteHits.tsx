@@ -18,6 +18,7 @@ export const InfiniteHits: React.FC<Props> = ({ hits = mockedAlgoliaResponse.hit
     <FlatList
       data={hits}
       keyExtractor={(item) => item.objectID}
+      ListHeaderComponent={Header}
       ItemSeparatorComponent={Separator}
       renderItem={({ item: hit }) => <Hit hit={hit} />}
     />
@@ -25,7 +26,8 @@ export const InfiniteHits: React.FC<Props> = ({ hits = mockedAlgoliaResponse.hit
 )
 
 const { width } = Dimensions.get('window')
-const Container = styled.View({ flex: 1, width: width - getSpacing(2 * 6) })
+const Container = styled.View({ width: width - getSpacing(2 * 6) })
+const Header = styled.View({ height: getSpacing(2) })
 const Separator = styled.View({
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
