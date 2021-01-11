@@ -34,10 +34,18 @@ static void InitializeFlipper(UIApplication *application) {
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
+
+  // Enable Firebase debug view on testing environment
+  NSString* env = NSProcessInfo.processInfo.environment[@"ENV"];
+  if ([env isEqualToString:@"testing"]) {
+    NSMutableArray *newArguments = [NSMutableArray arrayWithArray:[[NSProcessInfo processInfo] arguments]];
+    [newArguments addObject:@"-FIRDebugEnabled"];
+    [[NSProcessInfo processInfo] setValue:[newArguments copy] forKey:@"arguments"];
+  }
+
   #ifdef FB_SONARKIT_ENABLED
     InitializeFlipper(application);
   #endif
-
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
