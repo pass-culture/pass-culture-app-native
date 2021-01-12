@@ -64,7 +64,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -886,1063 +852,16 @@
+@@ -887,1063 +853,16 @@
                           <View
                             style={
                               Array [

@@ -40,7 +40,7 @@ export const OfferPartialDescription: React.FC<Props> = ({ id, description = '' 
 const OfferSeeMoreContainer = styled.View<{ description: string }>(({ description }) => ({
   alignSelf: description ? 'flex-end' : 'center',
 }))
-const TypoDescription = styled(Typo.Body)({ overflow: 'hidden' })
+const TypoDescription = styled(Typo.Body)({ overflow: 'hidden', width: '100%' })
 const DescriptionContainer = styled.View({
   alignItems: 'center',
   paddingHorizontal: getSpacing(6),
