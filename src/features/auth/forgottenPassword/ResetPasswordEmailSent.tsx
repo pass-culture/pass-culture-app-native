@@ -35,7 +35,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   }
 
   function onContactSupport() {
-    analytics.logContactSupport()
+    analytics.logContactSupportResetPasswordEmailSent()
     contactSupport.forResetPasswordEmailNotReceived(route.params.email)
   }
 

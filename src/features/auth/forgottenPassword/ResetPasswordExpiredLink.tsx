@@ -30,7 +30,7 @@ export function ResetPasswordExpiredLink(props: Props) {
 
   async function resendEmailForResetPassword() {
     const { email } = props.route.params
-    analytics.logResendEmail()
+    analytics.logResendEmailResetPasswordExpiredLink()
     await api
       .postnativev1requestPasswordReset({ email })
       .then(() => {

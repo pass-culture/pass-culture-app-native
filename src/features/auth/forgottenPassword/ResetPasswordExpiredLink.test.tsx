@@ -60,7 +60,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
     fireEvent.press(button)
 
     await waitForExpect(() => {
-      expect(analytics.logResendEmail).toBeCalledTimes(1)
+      expect(analytics.logResendEmailResetPasswordExpiredLink).toBeCalledTimes(1)
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toBeCalledWith('ResetPasswordEmailSent', {
         email: 'test@email.com',

@@ -59,7 +59,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     const button = await findByText("Renvoyer l'email")
     fireEvent.press(button)
 
-    expect(analytics.logResendEmail).toBeCalledTimes(1)
+    expect(analytics.logResendEmailSignupConfirmationExpiredLink).toBeCalledTimes(1)
     expect(Alert.alert).toBeCalledTimes(1)
     // TODO :
     // await waitForExpect(() => {
