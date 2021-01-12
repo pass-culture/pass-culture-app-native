@@ -90,7 +90,7 @@ const OfferComponent: FunctionComponent = () => {
             {offerResponse.name}
           </OfferTitle>
         </MarginContainer>
-        <Spacer.Column numberOfSpaces={2} />
+        <Spacer.Column numberOfSpaces={4} />
         <OfferIconCaptions
           isDuo={offerResponse.isDuo}
           stocks={offerResponse.stocks}

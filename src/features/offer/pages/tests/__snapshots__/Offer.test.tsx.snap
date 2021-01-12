@@ -506,11 +506,11 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                           </Text>
                         </View>
                         <View
-                          numberOfSpaces={2}
+                          numberOfSpaces={4}
                           style={
                             Array [
                               Object {
-                                "height": 8,
+                                "height": 16,
                               },
                             ]
                           }
@@ -2581,11 +2581,11 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                           </Text>
                         </View>
                         <View
-                          numberOfSpaces={2}
+                          numberOfSpaces={4}
                           style={
                             Array [
                               Object {
-                                "height": 8,
+                                "height": 16,
                               },
                             ]
                           }
