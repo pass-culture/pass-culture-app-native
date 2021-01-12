@@ -686,6 +686,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                   "fontSize": 15,
                                   "lineHeight": 20,
                                   "overflow": "hidden",
+                                  "width": "100%",
                                 },
                               ]
                             }
@@ -2822,6 +2823,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   "fontSize": 15,
                                   "lineHeight": 20,
                                   "overflow": "hidden",
+                                  "width": "100%",
                                 },
                               ]
                             }
