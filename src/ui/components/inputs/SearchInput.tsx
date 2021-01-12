@@ -9,16 +9,15 @@ import { Spacer } from '../spacer/Spacer'
 
 import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
-import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
+import { getCustomSearchInputProps, getRNTextInputProps, SearchInputProps } from './types'
 
-const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
+const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInputProps> = (
   props,
   forwardedRef
 ) => {
   const nativeProps = getRNTextInputProps(props)
-  const customProps = getCustomTextInputProps(props)
-  const LeftIcon = props.LeftIcon
-  const RightIcon = props.RightIcon || (() => <Invalidate size={24} />)
+  const customProps = getCustomSearchInputProps(props)
+  const { LeftIcon, RightIcon = () => <Invalidate size={24} /> } = customProps
 
   const [isFocus, setIsFocus] = useState(false)
 
@@ -31,7 +30,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, TextInputP
   }
 
   return (
-    <InputContainer isFocus={isFocus} isError={customProps.isError} inputHeight={props.inputHeight}>
+    <InputContainer isFocus={isFocus} inputHeight={props.inputHeight}>
       {!!LeftIcon && (
         <React.Fragment>
           {/* TODO: show left icon depending on nb of results. This is a temporary way to show both icons */}
@@ -53,4 +52,4 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, TextInputP
   )
 }
 
-export const SearchInput = forwardRef<RNTextInput, TextInputProps>(WithRefSearchInput)
+export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSearchInput)
