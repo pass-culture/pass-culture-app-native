@@ -19,12 +19,14 @@ describe('AccessibilityBlock', () => {
     expect(queryByText('Handicap auditif')).toBeTruthy()
   })
   it('renders only available handicap information', () => {
-    const { queryByText } = render(<AccessibilityBlock
-      audioDisability={undefined}
-      motorDisability={false}
-      mentalDisability={true}
-      visualDisability={false}
-    />)
+    const { queryByText } = render(
+      <AccessibilityBlock
+        audioDisability={undefined}
+        motorDisability={false}
+        mentalDisability={true}
+        visualDisability={false}
+      />
+    )
     expect(queryByText('Handicap visuel')).toBeTruthy()
     expect(queryByText('Handicap moteur')).toBeTruthy()
     expect(queryByText('Handicap mental')).toBeTruthy()
