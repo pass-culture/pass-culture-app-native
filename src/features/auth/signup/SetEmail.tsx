@@ -5,6 +5,7 @@ import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
+import { useBackNavigation } from 'features/navigation/backNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -38,9 +39,7 @@ export const SetEmail: FunctionComponent = () => {
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  function onBackNavigation() {
-    navigation.navigate('Home', { shouldDisplayLoginModal: true })
-  }
+  const complexGoBack = useBackNavigation<'SetEmail'>()
 
   function onChangeEmail(email: string) {
     if (hasError) {
@@ -68,7 +67,7 @@ export const SetEmail: FunctionComponent = () => {
         <ModalHeader
           title={_(t`Ton email`)}
           leftIcon={ArrowPrevious}
-          onLeftIconPress={onBackNavigation}
+          onLeftIconPress={complexGoBack}
           rightIcon={Close}
           onRightIconPress={showQuitSignupModal}
         />

@@ -2,7 +2,7 @@ import { Route, useNavigationState } from '@react-navigation/native'
 import { Linking } from 'react-native'
 
 import { RouteParams } from './RootNavigator'
-import { TabParamList } from './TabBar/TabNavigator'
+import { TabParamList } from './TabBar/types'
 
 export const NavigateToHomeWithoutModalOptions: RouteParams<TabParamList, 'Home'> = {
   shouldDisplayLoginModal: false,

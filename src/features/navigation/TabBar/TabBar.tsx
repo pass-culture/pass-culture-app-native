@@ -14,7 +14,7 @@ import { ColorsEnum, getShadow, getSpacing, Spacer, UniqueColors } from 'ui/them
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
 import { TabBarComponent } from './TabBarComponent'
-import { TabRouteName } from './TabNavigator'
+import { TabRouteName } from './types'
 
 const mapRouteToIcon = (
   route: TabRouteName | string

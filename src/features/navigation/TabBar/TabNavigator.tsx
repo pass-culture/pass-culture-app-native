@@ -11,15 +11,7 @@ import { Profile } from '../../profile/pages/Profile'
 import { Search } from '../../search/pages/Search'
 
 import { TabBar } from './TabBar'
-
-export type TabParamList = {
-  Home: { shouldDisplayLoginModal: boolean }
-  Search: undefined
-  Bookings: undefined
-  Favorites: undefined
-  Profile: undefined
-}
-export type TabRouteName = keyof TabParamList
+import { TabParamList } from './types'
 
 StatusBar.setBarStyle('light-content')
 if (Platform.OS === 'android') {
