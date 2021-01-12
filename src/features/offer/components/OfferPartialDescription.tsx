@@ -22,6 +22,7 @@ export const OfferPartialDescription: React.FC<Props> = ({ id, description = '' 
     <DescriptionContainer>
       {!!description && (
         <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
           <TypoDescription testID="offerPartialDescriptionBody" numberOfLines={8}>
             {highlightLinks(description)}
           </TypoDescription>
