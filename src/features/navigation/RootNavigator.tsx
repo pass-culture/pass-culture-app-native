@@ -16,6 +16,7 @@ import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
+import { ValidateCaptcha } from 'features/auth/signup/ValidateCaptcha'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
@@ -40,6 +41,7 @@ export type RootStackParamList = {
     isNewsletterChecked: boolean
     password: string
     birthday: string
+    reCaptchaToken: string
   }
   AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }
   AppComponents: undefined
@@ -60,6 +62,12 @@ export type RootStackParamList = {
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: undefined
+  ValidateCaptcha: {
+    email: string
+    isNewsletterChecked: boolean
+    password: string
+    birthday: string
+  }
   VerifyEligibility: { email: string; licenceToken: string }
 }
 
@@ -105,6 +113,7 @@ export const RootNavigator: React.FC = () => {
           name="SignupConfirmationExpiredLink"
           component={SignupConfirmationExpiredLink}
         />
+        <RootStack.Screen name="ValidateCaptcha" component={ValidateCaptcha} />
         <RootStack.Screen name="VerifyEligibility" component={VerifyEligibility} />
         <RootStack.Screen name="EligibilityConfirmed" component={EligibilityConfirmed} />
       </RootStack.Navigator>

@@ -16,10 +16,11 @@ import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, Typo } from 'ui/theme'
 
 export enum SignupSteps {
+  Birthday = 'Birthday',
+  Captcha = 'Captcha',
+  CGU = 'CGU',
   Email = 'Email',
   Password = 'Password',
-  Birthday = 'Birthday',
-  CGU = 'CGU',
 }
 
 interface Props {

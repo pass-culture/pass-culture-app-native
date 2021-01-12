@@ -86,11 +86,11 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     })
   }
 
-  function goToCguAcceptance() {
+  function goToValidateCaptcha() {
     const { date } = state
     if (date) {
       const birthday = formatDateToISOStringWithoutTime(date)
-      navigate('AcceptCgu', { email, isNewsletterChecked, password, birthday })
+      navigate('ValidateCaptcha', { email, isNewsletterChecked, password, birthday })
     }
   }
 
@@ -108,7 +108,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
    */
   function animateBeforeNavigation() {
     if (keyboardHeightRef.current === 0 && state.date) {
-      return goToCguAcceptance()
+      return goToValidateCaptcha()
     }
 
     canNavigateToCguRef.current = true
@@ -121,7 +121,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       return
     }
     if (canNavigateToCguRef.current && state.date) {
-      goToCguAcceptance()
+      goToValidateCaptcha()
     }
   }, [informationModalVisible, state.date])
 
