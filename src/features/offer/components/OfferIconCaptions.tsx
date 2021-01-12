@@ -51,8 +51,8 @@ const Row = styled.View({ flexDirection: 'row', alignItems: 'flex-start' })
 
 const Separator = styled.View({
   width: 1,
-  height: '100%',
-  maxHeight: getSpacing(16),
+  height: '92%',
   backgroundColor: ColorsEnum.GREY_MEDIUM,
   marginHorizontal: getSpacing(2),
+  alignSelf: 'center',
 })

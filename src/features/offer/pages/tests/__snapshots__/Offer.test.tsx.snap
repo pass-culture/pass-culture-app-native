@@ -588,10 +588,10 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             style={
                               Array [
                                 Object {
+                                  "alignSelf": "center",
                                   "backgroundColor": "#c7c7cc",
-                                  "height": "100%",
+                                  "height": "92%",
                                   "marginHorizontal": 8,
-                                  "maxHeight": 64,
                                   "width": 1,
                                 },
                               ]
@@ -2663,10 +2663,10 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             style={
                               Array [
                                 Object {
+                                  "alignSelf": "center",
                                   "backgroundColor": "#c7c7cc",
-                                  "height": "100%",
+                                  "height": "92%",
                                   "marginHorizontal": 8,
-                                  "maxHeight": 64,
                                   "width": 1,
                                 },
                               ]
@@ -2726,10 +2726,10 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             style={
                               Array [
                                 Object {
+                                  "alignSelf": "center",
                                   "backgroundColor": "#c7c7cc",
-                                  "height": "100%",
+                                  "height": "92%",
                                   "marginHorizontal": 8,
-                                  "maxHeight": 64,
                                   "width": 1,
                                 },
                               ]
