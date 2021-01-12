@@ -7,36 +7,36 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { AccessibilityAtom, HandicapCategory } from '../atoms/AccessibilityAtom'
 
 export const AccessibilityBlock: React.FC<OfferAccessibilityResponse> = ({
-  visualDisability = false,
-  audioDisability = false,
-  mentalDisability = false,
-  motorDisability = false,
+  visualDisability,
+  audioDisability,
+  mentalDisability,
+  motorDisability,
 }) => {
   return (
     <Row>
-      <AccessibilityAtom
+      {visualDisability !== undefined && <AccessibilityAtom
         handicap={HandicapCategory.VISUAL}
         isAccessible={visualDisability}
         sideSpace={getSpacing(4)}
-      />
+      />}
       <Spacer.Row numberOfSpaces={4} />
-      <AccessibilityAtom
+      {mentalDisability !== undefined && <AccessibilityAtom
         handicap={HandicapCategory.MENTAL}
         isAccessible={mentalDisability}
         sideSpace={getSpacing(4)}
-      />
+      />}
       <Spacer.Row numberOfSpaces={4} />
-      <AccessibilityAtom
+      {motorDisability !== undefined && <AccessibilityAtom
         handicap={HandicapCategory.MOTOR}
         isAccessible={motorDisability}
         sideSpace={getSpacing(4)}
-      />
+      />}
       <Spacer.Row numberOfSpaces={4} />
-      <AccessibilityAtom
+      {audioDisability !== undefined && <AccessibilityAtom
         handicap={HandicapCategory.AUDIO}
         isAccessible={audioDisability}
         sideSpace={getSpacing(4)}
-      />
+      />}
     </Row>
   )
 }
