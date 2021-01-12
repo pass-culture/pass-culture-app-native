@@ -3,6 +3,8 @@ import { TextInput as RNTextInput } from 'react-native'
 
 export type CustomTextInputProps = {
   isError?: boolean
+}
+export type CustomSearchInputProps = {
   inputHeight?: 'small' | 'tall'
   LeftIcon?: React.FC
   RightIcon?: React.FC
@@ -11,7 +13,6 @@ export type CustomTextInputProps = {
 export type RNTextInputProps = Pick<
   React.ComponentProps<typeof RNTextInput>,
   | 'autoCorrect'
-  | 'clearButtonMode'
   | 'returnKeyType'
   | 'selectionColor'
   | 'onChangeText'
@@ -31,11 +32,15 @@ export type RNTextInputProps = Pick<
   RefAttributes<RNTextInput>
 
 export type TextInputProps = CustomTextInputProps & RNTextInputProps
+export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
 export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
-  return {
-    isError: props.isError,
-  }
+  return { isError: props.isError }
+}
+
+export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
+  const { inputHeight, LeftIcon, RightIcon } = props
+  return { inputHeight, LeftIcon, RightIcon }
 }
 
 export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
