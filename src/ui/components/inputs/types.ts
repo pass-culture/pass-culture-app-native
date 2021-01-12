@@ -5,6 +5,7 @@ export type CustomTextInputProps = {
   isError?: boolean
   inputHeight?: 'small' | 'tall'
   LeftIcon?: React.FC
+  RightIcon?: React.FC
 }
 
 export type RNTextInputProps = Pick<

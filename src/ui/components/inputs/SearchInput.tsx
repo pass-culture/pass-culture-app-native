@@ -1,6 +1,7 @@
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
+import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum } from 'ui/theme'
 
 import { Spacer } from '../spacer/Spacer'
@@ -16,6 +17,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, TextInputP
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomTextInputProps(props)
   const LeftIcon = props.LeftIcon
+  const RightIcon = props.RightIcon || (() => <Invalidate size={24} />)
 
   const [isFocus, setIsFocus] = useState(false)
 
@@ -40,11 +42,11 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, TextInputP
         ref={forwardedRef}
         onFocus={onFocus}
         onBlur={onBlur}
-        clearButtonMode={LeftIcon ? 'never' : 'always'}
         autoCorrect={false}
         returnKeyType="search"
         selectionColor={ColorsEnum.GREY_DARK}
       />
+      <RightIcon />
     </InputContainer>
   )
 }
