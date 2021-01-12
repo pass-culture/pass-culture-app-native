@@ -43,7 +43,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
-      expect(analytics.logContactSupport).toBeCalledTimes(1)
+      expect(analytics.logContactSupportSignupConfirmationEmailSent).toBeCalledTimes(1)
       expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledTimes(1)
       expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledWith(
         'john.doe@gmail.com'

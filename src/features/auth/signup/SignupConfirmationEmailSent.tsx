@@ -31,7 +31,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
   }
 
   function onContactSupport() {
-    analytics.logContactSupport()
+    analytics.logContactSupportSignupConfirmationEmailSent()
     contactSupport.forSignupConfirmationEmailNotReceived(route.params.email)
   }
 

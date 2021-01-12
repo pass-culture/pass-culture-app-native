@@ -32,7 +32,7 @@ describe('<ResetPasswordEmailSent />', () => {
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
-      expect(analytics.logContactSupport).toBeCalledTimes(1)
+      expect(analytics.logContactSupportResetPasswordEmailSent).toBeCalledTimes(1)
       expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledTimes(1)
       expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledWith(
         'john.doe@gmail.com'

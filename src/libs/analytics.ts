@@ -16,11 +16,13 @@ enum AnalyticsEvent {
   CONSULT_OFFER = 'ConsultOffer',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
-  CONTACT_SUPPORT = 'ContactSupport',
+  CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT = 'ContactSupportResetPasswordEmailSent',
+  CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'ContactSupportSignupConfirmationEmailSent',
   DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
-  RESEND_EMAIL = 'ResendEmail',
+  RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
+  RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
   SCREEN_VIEW = 'screen_view',
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   SHARE_OFFER = 'Share',
@@ -85,7 +87,11 @@ const logCancelSignup = (pageName: string) =>
 const logOfferSeenDuration = (offerId: number, duration: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
 
-const logContactSupport = () => firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT)
+const logContactSupportResetPasswordEmailSent = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT)
+
+const logContactSupportSignupConfirmationEmailSent = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT)
 
 const logClickBookOffer = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
@@ -93,7 +99,11 @@ const logClickBookOffer = (offerId: number) =>
 const logConsultAvailableDates = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
 
-const logResendEmail = () => firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL)
+const logResendEmailResetPasswordExpiredLink = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK)
+
+const logResendEmailSignupConfirmationExpiredLink = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK)
 
 const logSignUpBetween14And15Included = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.SIGN_UP_BETWEEN_14_AND_15_INCLUDED)
@@ -118,9 +128,11 @@ export const analytics = {
   logConsultOfferFromDeeplink,
   logConsultWholeOffer,
   logConsultWithdrawal,
-  logContactSupport,
+  logContactSupportResetPasswordEmailSent,
+  logContactSupportSignupConfirmationEmailSent,
   logOfferSeenDuration,
-  logResendEmail,
+  logResendEmailResetPasswordExpiredLink,
+  logResendEmailSignupConfirmationExpiredLink,
   logScreenView,
   logShareOffer,
   logSignUpBetween14And15Included,

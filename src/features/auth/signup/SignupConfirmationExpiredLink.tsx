@@ -28,7 +28,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
   }
 
   async function resendEmailForSignupConfirmation() {
-    analytics.logResendEmail()
+    analytics.logResendEmailSignupConfirmationExpiredLink()
     const { email } = props.route.params
     Alert.alert(`TODO : renvoyer email de confirmation à ${email}`)
   }
