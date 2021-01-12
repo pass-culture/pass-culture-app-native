@@ -82,7 +82,11 @@ const OfferComponent: FunctionComponent = () => {
         <LocationCaption venue={venue} isDigital={offerResponse.isDigital} />
         <Spacer.Column numberOfSpaces={2} />
         <MarginContainer>
-          <OfferTitle testID="offerTitle" numberOfLines={3} adjustsFontSizeToFit>
+          <OfferTitle
+            testID="offerTitle"
+            numberOfLines={3}
+            adjustsFontSizeToFit
+            allowFontScaling={false}>
             {offerResponse.name}
           </OfferTitle>
         </MarginContainer>
