@@ -1,19 +1,18 @@
 import React from 'react'
+import { connectInfiniteHits } from 'react-instantsearch-native'
 import { Dimensions, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AlgoliaHit } from 'libs/algolia'
-import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
 import { Hit } from '../atoms/Hit'
 
 interface Props {
-  hits?: AlgoliaHit[]
+  hits: AlgoliaHit[]
 }
 
-// TODO: do not use mockedAlgoliaResponse, but get real hits from Algolia
-export const InfiniteHits: React.FC<Props> = ({ hits = mockedAlgoliaResponse.hits }) => (
+export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
   <Container>
     <FlatList
       data={hits}
@@ -32,3 +31,5 @@ const Separator = styled.View({
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
 })
+
+export const InfiniteHits = connectInfiniteHits(InfiniteHitsComponent)
