@@ -15,7 +15,6 @@ import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
-import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -25,7 +24,7 @@ import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { Close } from 'ui/svg/icons/Close'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
 
@@ -181,6 +180,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               onPress={onPressWhy}
               testIdSuffix={'why-link'}
             />
+            <Spacer.Column numberOfSpaces={10} />
             <DateInputContainer>
               <DateInput
                 onChangeValue={onChangeValue}
@@ -190,31 +190,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               />
               {renderErrorMessages()}
             </DateInputContainer>
-            <Paragraphe>
-              <Typo.Body>
-                {_(
-                  /*i18n: signup birthday page reCAPTCHA */ t`Ce site est protégé par reCAPTCHA Google. La`
-                )}
-              </Typo.Body>
-              <ExternalLink
-                text={_(t`Charte des Données Personnelles`)}
-                url={'https://policies.google.com/privacy'}
-                color={ColorsEnum.PRIMARY}
-                testID="external-link-google-data-privacy"
-              />
-              <Spacer.Row numberOfSpaces={1} />
-              <Typo.Body>{_(/*i18n: signup birthday page reCAPTCHA */ t`et les`)}</Typo.Body>
-              <ExternalLink
-                text={_(t`Conditions Générales d'Utilisation`)}
-                url={'https://policies.google.com/terms'}
-                color={ColorsEnum.PRIMARY}
-                testID="external-link-google-cgu"
-              />
-              <Spacer.Row numberOfSpaces={1} />
-              <Typo.Body>
-                {_(/*i18n: signup birthday page reCAPTCHA */ t` s'appliquent.`)}
-              </Typo.Body>
-            </Paragraphe>
+            <Spacer.Column numberOfSpaces={13.5} />
             <ButtonPrimary
               title={_(t`Continuer`)}
               disabled={!state.isDateValid}
@@ -264,21 +240,11 @@ const TouchableOpacityFullWidth = styled(TouchableOpacity)({
   alignItems: 'center',
 })
 
-const Paragraphe = styled.Text({
-  flexWrap: 'wrap',
-  alignItems: 'center',
-  alignSelf: 'center',
-  justifyContent: 'center',
-  textAlign: 'center',
-  marginVertical: getSpacing(8),
-})
-
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
 const DateInputContainer = styled.View({
-  marginTop: getSpacing(10),
   alignItems: 'center',
   width: '100%',
 })
