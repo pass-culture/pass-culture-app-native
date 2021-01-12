@@ -14,31 +14,25 @@ export const AccessibilityBlock: React.FC<OfferAccessibilityResponse> = ({
 }) => {
   return (
     <Row>
-      {visualDisability !== undefined && <AccessibilityAtom
-        handicap={HandicapCategory.VISUAL}
-        isAccessible={visualDisability}
-        sideSpace={getSpacing(4)}
-      />}
-      <Spacer.Row numberOfSpaces={4} />
-      {mentalDisability !== undefined && <AccessibilityAtom
-        handicap={HandicapCategory.MENTAL}
-        isAccessible={mentalDisability}
-        sideSpace={getSpacing(4)}
-      />}
-      <Spacer.Row numberOfSpaces={4} />
-      {motorDisability !== undefined && <AccessibilityAtom
-        handicap={HandicapCategory.MOTOR}
-        isAccessible={motorDisability}
-        sideSpace={getSpacing(4)}
-      />}
-      <Spacer.Row numberOfSpaces={4} />
-      {audioDisability !== undefined && <AccessibilityAtom
-        handicap={HandicapCategory.AUDIO}
-        isAccessible={audioDisability}
-        sideSpace={getSpacing(4)}
-      />}
+      {renderAccessibilityAtom(visualDisability, HandicapCategory.VISUAL, true)}
+      {renderAccessibilityAtom(mentalDisability, HandicapCategory.MENTAL, true)}
+      {renderAccessibilityAtom(motorDisability, HandicapCategory.MOTOR, true)}
+      {renderAccessibilityAtom(audioDisability, HandicapCategory.AUDIO, false)}
     </Row>
   )
 }
+
+const renderAccessibilityAtom = (
+  disability: boolean | undefined | null,
+  handicap: HandicapCategory,
+  addSpacer: boolean
+) =>
+  disability !== null &&
+  disability !== undefined && (
+    <React.Fragment>
+      <AccessibilityAtom handicap={handicap} isAccessible={disability} sideSpace={getSpacing(4)} />
+      {addSpacer && <Spacer.Row numberOfSpaces={4} />}
+    </React.Fragment>
+  )
 
 const Row = styled.View({ flexDirection: 'row' })
