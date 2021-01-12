@@ -13,3 +13,5 @@ export const useNavigation = () => ({
 export const useRoute = jest.fn()
 
 export const useFocusEffect = () => {}
+
+export const useNavigationState = jest.fn()

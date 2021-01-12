@@ -1,5 +1,5 @@
-import { NavigationContainer, NavigationProp, RouteProp, Theme } from '@react-navigation/native'
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
+import { NavigationContainer, Theme } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 import React, { useEffect } from 'react'
 
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
@@ -25,45 +25,11 @@ import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
-import { navigationRef } from './navigationRef'
-import { onNavigationStateChange } from './services'
-import { TabNavigator, TabParamList } from './TabBar/TabNavigator'
+import { navigationRef } from '../navigationRef'
+import { onNavigationStateChange } from '../services'
+import { TabNavigator } from '../TabBar/TabNavigator'
 
-/**
- * WARNING !
- * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
- * If a deeplink handler indexes the screen with params you are changing,
- * please update the deeplink handler in consequence.
- */
-export type RootStackParamList = {
-  AcceptCgu: {
-    email: string
-    isNewsletterChecked: boolean
-    password: string
-    birthday: string
-  }
-  AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }
-  AppComponents: undefined
-  CheatCodes: undefined
-  EligibilityConfirmed: undefined
-  ForgottenPassword: undefined
-  Login: undefined
-  IdCheck: { email: string; licenceToken: string }
-  Navigation: undefined
-  Offer: { id: number }
-  OfferDescription: { id: number }
-  ReinitializePassword: { token: string; expiration_timestamp: number }
-  ResetPasswordEmailSent: { email: string }
-  ResetPasswordExpiredLink: { email: string }
-  SearchFilter: undefined
-  SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
-  SetEmail: undefined
-  SetPassword: { email: string; isNewsletterChecked: boolean }
-  SignupConfirmationEmailSent: { email: string }
-  SignupConfirmationExpiredLink: { email: string }
-  TabNavigator: undefined
-  VerifyEligibility: { email: string; licenceToken: string }
-}
+import { RootStackParamList } from './types'
 
 export const RootStack = createStackNavigator<RootStackParamList>()
 
@@ -118,46 +84,3 @@ export const RootNavigator: React.FC = () => {
     </NavigationContainer>
   )
 }
-
-export type AllNavParamList = RootStackParamList & TabParamList
-
-/** Type helper to share screen names */
-type ScreenNames = keyof AllNavParamList
-/**
- * Type helper for useRoute
- *
- * const {
- *  params: { token, expiration_timestamp },
- * } = useRoute<UseRouteType<'ReinitializePassword'>>()
- */
-export type UseRouteType<ScreenName extends ScreenNames> = RouteProp<AllNavParamList, ScreenName>
-/**
- * Type helper for navigation prop
- *
- * type Props = {
- *   navigation: ScreenNavigationProp<'Home'>
- * }
- */
-export type ScreenNavigationProp<ScreenName extends ScreenNames> = StackNavigationProp<
-  AllNavParamList,
-  ScreenName
->
-/**
- * Type helper for useNavigation
- *
- * const navigation = useNavigation<UseNavigationType>()
- */
-export type UseNavigationType = NavigationProp<AllNavParamList>
-/**
- * Type helper to access route params
- *
- * export type MyStackParamList = {
- *   Login?: { userId: string }
- * }
- *
- * RouteParams<'Login', MyStackParamList>  // will return ({ userId: string } | undefined)
- */
-export type RouteParams<
-  StackParamList extends Record<string, unknown>,
-  Screename extends keyof StackParamList
-> = Pick<StackParamList, Screename>[Screename]

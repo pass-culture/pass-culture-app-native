@@ -1,12 +1,17 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
 describe('<SetEmail />', () => {
+  beforeEach(() =>
+    useRoute.mockImplementation(() => ({
+      params: {},
+    }))
+  )
   afterEach(() => jest.resetAllMocks())
 
   it('should display disabled validate button when email input is not filled', async () => {
@@ -27,6 +32,16 @@ describe('<SetEmail />', () => {
   })
 
   it('should redirect to SignUpSignInChoiceModal when clicking on ArrowPrevious icon', async () => {
+    useRoute.mockImplementation(() => ({
+      params: {
+        backNavigation: {
+          from: 'Home',
+          params: {
+            shouldDisplayLoginModal: true,
+          },
+        },
+      },
+    }))
     const { getByTestId } = renderPage()
 
     const leftIcon = getByTestId('leftIcon')

@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -16,11 +17,21 @@ interface Props {
 }
 
 export const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dismissModal }) => {
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { params } = useRoute()
 
   function goToSignUp() {
     dismissModal()
-    navigate('SetEmail')
+    navigate('SetEmail', {
+      backNavigation: {
+        from: 'Home',
+        params: {
+          // protect against a potential evolution of the current route params
+          ...params,
+          shouldDisplayLoginModal: true,
+        },
+      },
+    })
   }
 
   function goToLogin() {
