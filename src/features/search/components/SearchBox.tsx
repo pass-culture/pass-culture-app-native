@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 interface Props {
@@ -11,14 +11,12 @@ interface Props {
   value?: string
 }
 
-const getLeftIcon = (currentValue: string, onPress: () => void) => {
-  if (!currentValue) return <MagnifyingGlass />
-  return (
+const getRightIcon = (currentValue: string, onPress: () => void) =>
+  currentValue ? (
     <TouchableOpacity onPress={onPress}>
-      <ArrowPrevious />
+      <Invalidate size={24} />
     </TouchableOpacity>
-  )
-}
+  ) : null
 
 export const SearchBox: React.FC<Props> = ({ onChangeText, value = '' }) => {
   const [currentValue, setCurrentValue] = useState<string>(value)
@@ -37,7 +35,8 @@ export const SearchBox: React.FC<Props> = ({ onChangeText, value = '' }) => {
         placeholder="Chercher par titre, artiste, ..."
         autoFocus={true}
         inputHeight="tall"
-        LeftIcon={() => getLeftIcon(currentValue, resetSearch)}
+        LeftIcon={() => <MagnifyingGlass />}
+        RightIcon={() => getRightIcon(currentValue, resetSearch)}
       />
     </StyledInput>
   )
