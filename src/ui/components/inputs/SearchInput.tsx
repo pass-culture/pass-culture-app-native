@@ -1,6 +1,7 @@
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum } from 'ui/theme'
 
@@ -33,7 +34,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, TextInputP
     <InputContainer isFocus={isFocus} isError={customProps.isError} inputHeight={props.inputHeight}>
       {!!LeftIcon && (
         <React.Fragment>
-          <LeftIcon />
+          {/* TODO: show left icon depending on nb of results. This is a temporary way to show both icons */}
+          {isFocus ? <LeftIcon /> : <ArrowPrevious />}
           <Spacer.Row numberOfSpaces={2} />
         </React.Fragment>
       )}
