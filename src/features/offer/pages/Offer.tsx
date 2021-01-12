@@ -97,7 +97,6 @@ const OfferComponent: FunctionComponent = () => {
           category={category.name || null}
           label={category.label}
         />
-        <Spacer.Column numberOfSpaces={6} />
         <OfferPartialDescription description={offerResponse.description || ''} id={params.id} />
         <Spacer.Column numberOfSpaces={4} />
 

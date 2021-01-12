@@ -658,16 +658,6 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                           />
                         </View>
                         <View
-                          numberOfSpaces={6}
-                          style={
-                            Array [
-                              Object {
-                                "height": 24,
-                              },
-                            ]
-                          }
-                        />
-                        <View
                           style={
                             Array [
                               Object {
@@ -677,6 +667,16 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             ]
                           }
                         >
+                          <View
+                            numberOfSpaces={4}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 16,
+                                },
+                              ]
+                            }
+                          />
                           <Text
                             numberOfLines={8}
                             style={
@@ -2796,16 +2796,6 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                           />
                         </View>
                         <View
-                          numberOfSpaces={6}
-                          style={
-                            Array [
-                              Object {
-                                "height": 24,
-                              },
-                            ]
-                          }
-                        />
-                        <View
                           style={
                             Array [
                               Object {
@@ -2815,6 +2805,16 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             ]
                           }
                         >
+                          <View
+                            numberOfSpaces={4}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 16,
+                                },
+                              ]
+                            }
+                          />
                           <Text
                             numberOfLines={8}
                             style={
