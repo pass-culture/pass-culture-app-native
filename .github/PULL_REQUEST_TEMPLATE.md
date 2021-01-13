@@ -9,6 +9,8 @@ I have:
 - [ ] Written **unit tests** for my feature.
 - [ ] Added new reusable components to the AppComponents page and communicate to the team on slack
 - [ ] Added a **screenshot** for UI tickets.
+- [ ] Attached a **ticket number** for any added TODO/FIXME \
+      (for tech tasks, give the best context about the TODO resolution: what/who/when).
 
 ## Screenshots
 
