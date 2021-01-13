@@ -1,7 +1,7 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React, { useState } from 'react'
 
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
@@ -25,6 +25,7 @@ export const Slider: React.FC<Props> = (props) => {
           {values.length === 2 && `${formatValues(values[0])} - ${formatValues(values[1])}`}
         </Typo.ButtonText>
       )}
+      <Spacer.Column numberOfSpaces={4} />
       <MultiSlider
         values={values}
         allowOverlap={true}
@@ -36,6 +37,7 @@ export const Slider: React.FC<Props> = (props) => {
         unselectedStyle={unselectedStyle}
         markerStyle={markerStyle}
         pressedMarkerStyle={markerStyle}
+        containerStyle={containerStyle}
         onValuesChange={setValues}
       />
     </React.Fragment>
@@ -57,3 +59,4 @@ const markerStyle = {
 const trackStyle = { height: 15, marginTop: -7, borderRadius: BorderRadiusEnum.BUTTON }
 const selectedStyle = { backgroundColor: ColorsEnum.PRIMARY }
 const unselectedStyle = { backgroundColor: ColorsEnum.GREY_MEDIUM }
+const containerStyle = { height: getSpacing(5) }
