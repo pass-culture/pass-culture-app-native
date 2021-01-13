@@ -1,6 +1,6 @@
 import React from 'react'
 import { connectInfiniteHits } from 'react-instantsearch-native'
-import { Dimensions, FlatList } from 'react-native'
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AlgoliaHit } from 'libs/algolia'
@@ -24,8 +24,10 @@ export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
   </Container>
 )
 
-const { width } = Dimensions.get('window')
-const Container = styled.View({ width: width - getSpacing(2 * 6) })
+const Container = styled.View({
+  height: '100%',
+  marginHorizontal: getSpacing(6),
+})
 const Header = styled.View({ height: getSpacing(2) })
 const Separator = styled.View({
   height: 2,
