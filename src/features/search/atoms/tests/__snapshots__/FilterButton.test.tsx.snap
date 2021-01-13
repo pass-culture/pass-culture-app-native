@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterButton component should render correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+      "overflow": "hidden",
+    }
+  }
+  testID="FilterButton"
+>
+  <BVLinearGradient
+    angle={106}
+    colors={
+      Array [
+        4293591125,
+        4291821663,
+      ]
+    }
+    endPoint={
+      Object {
+        "x": 0.5,
+        "y": 1,
+      }
+    }
+    locations={null}
+    startPoint={
+      Object {
+        "x": 0.5,
+        "y": 0,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "height": 40,
+          "overflow": "hidden",
+          "paddingHorizontal": 12,
+        },
+      ]
+    }
+  >
+    <View
+      fill="#ffffff"
+      height={32}
+      width={32}
+    >
+      undefined-SVG-Mock
+    </View>
+    <View
+      numberOfSpaces={1}
+      style={
+        Array [
+          Object {
+            "width": 4,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      Filtrer
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+  </BVLinearGradient>
+</View>
+`;
