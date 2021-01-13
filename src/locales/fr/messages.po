@@ -49,11 +49,11 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:29
+#: src/features/offer/services/useCtaWordingAndAction.ts:21
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:30
+#: src/features/offer/services/useCtaWordingAndAction.ts:21
 msgid "Accéder à la billetterie externe"
 msgstr "Accéder à la billetterie externe"
 
@@ -62,7 +62,7 @@ msgid "Adresse"
 msgstr "Adresse"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:72
-#: src/features/auth/login/Login.tsx:75
+#: src/features/auth/login/Login.tsx:81
 #: src/features/auth/signup/SetEmail.tsx:65
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
@@ -106,12 +106,12 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:58
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:59
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:126
+#: src/features/auth/signup/SetBirthday.tsx:142
 msgid "Ce site est protégé par reCAPTCHA Google. La"
 msgstr "Ce site est protégé par reCAPTCHA Google. La"
 
@@ -119,7 +119,7 @@ msgstr "Ce site est protégé par reCAPTCHA Google. La"
 msgid "Chargement en cours..."
 msgstr "Chargement en cours..."
 
-#: src/features/auth/signup/SetBirthday.tsx:128
+#: src/features/auth/signup/SetBirthday.tsx:144
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
@@ -143,7 +143,7 @@ msgid "Composants"
 msgstr "Composants"
 
 #: src/features/auth/signup/AcceptCgu.tsx:60
-#: src/features/auth/signup/SetBirthday.tsx:131
+#: src/features/auth/signup/SetBirthday.tsx:147
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -156,7 +156,7 @@ msgstr "Confirme ton e\\u2011mail"
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
-#: src/features/auth/login/Login.tsx:71
+#: src/features/auth/login/Login.tsx:77
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
@@ -174,7 +174,7 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:69
-#: src/features/auth/signup/SetBirthday.tsx:137
+#: src/features/auth/signup/SetBirthday.tsx:153
 #: src/features/auth/signup/SetEmail.tsx:78
 #: src/features/auth/signup/SetPassword.tsx:44
 msgid "Continuer"
@@ -184,8 +184,8 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:51
-#: src/features/offer/services/useCtaWordingAndAction.ts:61
+#: src/features/offer/services/useCtaWordingAndAction.ts:38
+#: src/features/offer/services/useCtaWordingAndAction.ts:48
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
@@ -238,6 +238,10 @@ msgstr "Es-tu sûr de vouloir abandonner l'inscription ?"
 msgid "Favorites"
 msgstr "Favoris"
 
+#: src/features/search/atoms/FilterButton.tsx:17
+msgid "Filtrer"
+msgstr "Filtrer"
+
 #: src/libs/parsers/getDisplayPrice.ts:15
 #: src/libs/parsers/getDisplayPrice.ts:22
 msgid "Gratuit"
@@ -263,7 +267,7 @@ msgstr "Handicap visuel"
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:49
+#: src/features/offer/services/useCtaWordingAndAction.ts:36
 msgid "Impossible de réserver"
 msgstr "Impossible de réserver"
 
@@ -295,7 +299,7 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 
-#: src/features/auth/signup/SetBirthday.tsx:148
+#: src/features/auth/signup/SetBirthday.tsx:164
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
@@ -303,7 +307,7 @@ msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
-#: src/features/auth/login/Login.tsx:81
+#: src/features/auth/login/Login.tsx:87
 #: src/features/auth/signup/SetPassword.tsx:38
 msgid "Mot de passe"
 msgstr "Mot de passe"
@@ -312,7 +316,7 @@ msgstr "Mot de passe"
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
-#: src/features/auth/login/Login.tsx:88
+#: src/features/auth/login/Login.tsx:94
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
@@ -325,12 +329,12 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:40
-#: src/features/offer/services/useCtaWordingAndAction.ts:44
+#: src/features/offer/services/useCtaWordingAndAction.ts:27
+#: src/features/offer/services/useCtaWordingAndAction.ts:31
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:42
+#: src/features/offer/services/useCtaWordingAndAction.ts:29
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
@@ -367,7 +371,7 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 msgid "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte  par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte  par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/auth/signup/SetBirthday.tsx:118
+#: src/features/auth/signup/SetBirthday.tsx:134
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -406,7 +410,7 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:53
+#: src/features/offer/services/useCtaWordingAndAction.ts:40
 msgid "Réserver"
 msgstr "Réserver"
 
@@ -418,14 +422,14 @@ msgstr "S'inscrire"
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
-#: src/features/auth/login/Login.tsx:92
+#: src/features/auth/login/Login.tsx:98
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:30
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/pages/Search.tsx:8
-msgid "Search"
-msgstr "Recherche"
+#: src/features/search/pages/SearchFilter.tsx:8
+msgid "SearchFilter"
+msgstr "SearchFilter"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
@@ -441,11 +445,11 @@ msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 30
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/auth/signup/SetBirthday.tsx:115
+#: src/features/auth/signup/SetBirthday.tsx:131
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:50
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:51
 msgid "Ton compte est maintenant activé !"
 msgstr "Ton compte est maintenant activé !"
 
@@ -455,7 +459,7 @@ msgstr "Ton email"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
-#: src/features/auth/login/Login.tsx:83
+#: src/features/auth/login/Login.tsx:89
 #: src/features/auth/signup/SetPassword.tsx:34
 #: src/features/auth/signup/SetPassword.tsx:40
 msgid "Ton mot de passe"
@@ -495,7 +499,7 @@ msgstr "Valider"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:63
+#: src/features/offer/services/useCtaWordingAndAction.ts:50
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
@@ -536,7 +540,7 @@ msgid "en ligne"
 msgstr "en ligne"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:130
+#: src/features/auth/signup/SetBirthday.tsx:146
 msgid "et les"
 msgstr "et les"
 
@@ -558,7 +562,7 @@ msgid "metteur en scène"
 msgstr "metteur en scène"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:134
+#: src/features/auth/signup/SetBirthday.tsx:150
 msgid "s'appliquent."
 msgstr "s'appliquent."
 
@@ -569,7 +573,7 @@ msgstr "sous genre"
 
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:74
-#: src/features/auth/login/Login.tsx:77
+#: src/features/auth/login/Login.tsx:83
 #: src/features/auth/signup/SetEmail.tsx:67
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
@@ -582,7 +586,7 @@ msgstr "voir plus"
 msgid "{0}"
 msgstr "{0}"
 
-#: src/features/offer/components/OfferIconCaptions.tsx:25
+#: src/features/offer/components/OfferIconCaptions.tsx:27
 msgid "À deux !"
 msgstr "À deux !"
 
