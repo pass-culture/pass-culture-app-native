@@ -1,7 +1,12 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Dimensions } from 'react-native'
+import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
+import { mergeOfferData } from 'features/home/atoms/OfferTile'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { AlgoliaHit } from 'libs/algolia'
 import { formatDates, formatDistance, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -23,10 +28,32 @@ const position = {
 
 export const Hit: React.FC<Props> = ({ hit }) => {
   const { offer, _geoloc } = hit
+  const navigation = useNavigation<UseNavigationType>()
+  const queryClient = useQueryClient()
+
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+  const offerId = dehumanizeId(offer.id)
+
+  function handlePressOffer() {
+    // We pre-populate the query-cache with the data from algolia for a smooth transition
+    if (!offerId) return
+    queryClient.setQueryData(
+      ['offer', offerId],
+      mergeOfferData({
+        ...offer,
+        category: parseCategory(offer.category),
+        description: offer.description || '',
+        thumbUrl: offer.thumbUrl,
+        isDuo: offer.isDuo,
+        name: offer.name,
+        offerId,
+      })
+    )
+    navigation.navigate('Offer', { id: offerId })
+  }
 
   return (
-    <Container>
+    <Container onPress={handlePressOffer} testID="offerHit">
       <Row>
         <Image resizeMode="cover" source={{ uri: offer.thumbUrl }} />
         <Column>
@@ -53,7 +80,10 @@ const { width } = Dimensions.get('window')
 const imageWidth = getSpacing(16)
 const imageHeight = getSpacing(24) // ratio 2/3
 
-const Container = styled.View({ marginVertical: getSpacing(4), marginHorizontal: getSpacing(6) })
+const Container = styled.TouchableOpacity({
+  marginVertical: getSpacing(4),
+  marginHorizontal: getSpacing(6),
+})
 const Column = styled.View({ width: width - getSpacing(2 * 6 + 4) - imageWidth })
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
