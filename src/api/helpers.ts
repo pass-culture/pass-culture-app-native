@@ -146,6 +146,8 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
 }
 
 export class ApiError extends Error {
+  name = 'ApiError'
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content: any
   statusCode: number
