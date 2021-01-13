@@ -625,6 +625,7 @@ Tous les détails du film sur AlloCiné:
                                 "borderStyle": "solid",
                                 "borderWidth": 1,
                                 "justifyContent": "center",
+                                "overflow": "hidden",
                                 "width": 40,
                               }
                             }

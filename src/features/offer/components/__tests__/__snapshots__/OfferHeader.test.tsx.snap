@@ -88,6 +88,7 @@ exports[`<OfferHeader /> should render correctly 1`] = `
             "borderStyle": "solid",
             "borderWidth": 1,
             "justifyContent": "center",
+            "overflow": "hidden",
             "width": 40,
           }
         }
@@ -235,6 +236,7 @@ exports[`<OfferHeader /> should render correctly 1`] = `
             "borderStyle": "solid",
             "borderWidth": 1,
             "justifyContent": "center",
+            "overflow": "hidden",
             "width": 40,
           }
         }
@@ -334,6 +336,7 @@ exports[`<OfferHeader /> should render correctly 1`] = `
             "borderStyle": "solid",
             "borderWidth": 1,
             "justifyContent": "center",
+            "overflow": "hidden",
             "width": 40,
           }
         }
