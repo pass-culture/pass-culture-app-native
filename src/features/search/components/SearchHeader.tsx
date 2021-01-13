@@ -28,6 +28,7 @@ export const SearchHeader: React.FC = () => {
 }
 
 const Container = styled.View({
+  alignSelf: 'center',
   height: inputHeight,
   marginTop,
   marginBottom,
