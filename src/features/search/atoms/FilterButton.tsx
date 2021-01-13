@@ -13,7 +13,7 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 export const FilterButton: React.FC = () => {
   const { navigate } = useNavigation()
   return (
-    <Container onPress={() => navigate('SearchFilter')}>
+    <Container onPress={() => navigate('SearchFilter')} testID="FilterButton">
       <StyledLinearGradient colors={[ColorsEnum.PRIMARY, UniqueColors.FILTER_BUTTON]} angle={106}>
         <Filter color={ColorsEnum.WHITE} />
         <Spacer.Row numberOfSpaces={1} />
