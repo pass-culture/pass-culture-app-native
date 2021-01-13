@@ -20,6 +20,7 @@ import { PartialDateInput, DatePartType } from 'ui/components/inputs/PartialDate
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -410,8 +411,13 @@ export const AppComponents: FunctionComponent = () => {
       {/* Search components */}
       <AccordionItem title="Search components">
         <SearchInput LeftIcon={() => <MagnifyingGlass />} placeholder="with left icon" />
-        <Spacer.Column numberOfSpaces={1} />
+        <Spacer.Column numberOfSpaces={4} />
         <SearchInput placeholder="without left icon" />
+        <Spacer.Column numberOfSpaces={4} />
+        <Center>
+          <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n} €`} />
+          <Slider values={[50]} showValues formatValues={(n) => `${n} km`} />
+        </Center>
       </AccordionItem>
 
       <Divider />
@@ -464,6 +470,9 @@ export const AppComponents: FunctionComponent = () => {
 
 const AlignedText = styled(View)({
   flexDirection: 'row',
+  alignItems: 'center',
+})
+const Center = styled(View)({
   alignItems: 'center',
 })
 
