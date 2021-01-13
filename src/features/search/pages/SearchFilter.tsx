@@ -3,9 +3,10 @@ import React from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { Radius, Price } from 'features/search/components'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { Spacer, Typo, ColorsEnum } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element => {
   return (
@@ -15,15 +16,21 @@ const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element 
   )
 }
 
-export const SearchFilter: React.FC = () => {
-  return (
-    <Container>
-      <PageHeader title={_(t`Filtrer`)} rightComponent={rightButton} />
-      <Spacer.Flex />
-      <Typo.Hero>{_(t`SearchFilter`)}</Typo.Hero>
-      <Spacer.Flex />
-    </Container>
-  )
-}
+export const SearchFilter: React.FC = () => (
+  <Container>
+    <PageHeader title={_(t`Filtrer`)} rightComponent={rightButton} />
+    <Spacer.TopScreen />
+    <Radius />
+    <Separator />
+    <Price />
+  </Container>
+)
 
-const Container = styled.View({ flex: 1, alignItems: 'center' })
+const Container = styled.ScrollView({ flex: 1, marginHorizontal: getSpacing(6) })
+const Separator = styled.View({
+  width: '100%',
+  height: 2,
+  backgroundColor: ColorsEnum.GREY_LIGHT,
+  marginVertical: getSpacing(6),
+  alignSelf: 'center',
+})
