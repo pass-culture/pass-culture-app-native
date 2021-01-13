@@ -50,8 +50,9 @@ export const Login: FunctionComponent = function () {
       const { code } = signinResponse.content || {}
       if (code === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
+      } else {
+        setShouldShowErrorMessage(true)
       }
-      setShouldShowErrorMessage(true)
     }
   }
 
