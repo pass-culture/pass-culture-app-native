@@ -3,7 +3,7 @@ import firebaseAnalyticsModule from '@react-native-firebase/analytics'
 export const firebaseAnalytics = firebaseAnalyticsModule()
 
 // Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores
-enum AnalyticsEvent {
+export enum AnalyticsEvent {
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
@@ -16,8 +16,8 @@ enum AnalyticsEvent {
   CONSULT_OFFER = 'ConsultOffer',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
-  CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT = 'ContactSupportResetPasswordEmailSent',
-  CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'ContactSupportSignupConfirmationEmailSent',
+  CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT = 'ContactSupportResetPassword',
+  CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'ContactSupportSignupConfirmation',
   DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
@@ -137,4 +137,25 @@ export const analytics = {
   logShareOffer,
   logSignUpBetween14And15Included,
   logSignUpLessThanOrEqualTo13,
+}
+
+const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']
+
+const FIREBASE_NAME_FORMAT = /^[a-zA-Z][0-9a-zA-Z_]+$/
+
+/* Firebase event naming rules : 
+https://firebase.google.com/docs/reference/cpp/group/event-names#:~:text=Event%20names%20can%20be%20up,and%20should%20not%20be%20used */
+export function validateAnalyticsEvent(eventName: string) {
+  if (eventName.length > 40) {
+    return false
+  }
+  for (const reservedKeyword of RESERVED_PREFIXES) {
+    if (eventName.startsWith(reservedKeyword)) {
+      return false
+    }
+  }
+  if (!eventName.match(FIREBASE_NAME_FORMAT)) {
+    return false
+  }
+  return true
 }
