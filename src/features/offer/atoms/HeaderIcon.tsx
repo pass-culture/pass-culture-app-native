@@ -58,5 +58,6 @@ const RoundContainer = styled(Animated.View)<Pick<HeaderIconProps, 'animationSta
   border: 1,
   justifyContent: 'center',
   alignItems: 'center',
+  overflow: 'hidden',
   borderColor: ColorsEnum.GREY_LIGHT,
 }))
