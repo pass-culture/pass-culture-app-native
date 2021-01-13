@@ -67,7 +67,7 @@ const OfferComponent: FunctionComponent = () => {
     <React.Fragment>
       <Container
         testID="offer-container"
-        scrollEventThrottle={32}
+        scrollEventThrottle={10}
         scrollIndicatorInsets={{ right: 1 }}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={scrollViewRef as any}
