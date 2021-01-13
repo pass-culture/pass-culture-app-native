@@ -5,7 +5,8 @@ import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/api'
-import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
+import { useBackNavigation } from 'features/navigation/backNavigation'
+import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
@@ -36,8 +37,8 @@ export const Login: FunctionComponent = function () {
 
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password)
 
-  const { goBack, navigate } = useNavigation<UseNavigationType>()
-  const previousRoute = usePreviousRoute()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const complexGoBack = useBackNavigation<'Login'>()
 
   async function handleSignin() {
     Keyboard.dismiss()
@@ -56,14 +57,6 @@ export const Login: FunctionComponent = function () {
     }
   }
 
-  function onBackNavigation() {
-    if (previousRoute?.name == 'ReinitializePassword') {
-      goBack()
-    } else {
-      navigate('Home', { shouldDisplayLoginModal: true })
-    }
-  }
-
   function onClose() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
@@ -77,7 +70,7 @@ export const Login: FunctionComponent = function () {
       <ModalHeader
         title={_(t`Connecte-toi !`)}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={onBackNavigation}
+        onLeftIconPress={complexGoBack}
         rightIcon={Close}
         onRightIconPress={onClose}
       />

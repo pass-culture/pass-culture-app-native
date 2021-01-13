@@ -3,7 +3,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { goBack, navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { server } from 'tests/server'
@@ -35,6 +35,9 @@ describe('<Login/>', () => {
   beforeEach(() => {
     jest.clearAllMocks()
     mockUsePreviousRoute.mockReturnValue(null)
+    useRoute.mockImplementation(() => ({
+      params: {},
+    }))
   })
 
   it('should redirect to home page WHEN signin is successful', async () => {
@@ -116,28 +119,5 @@ describe('<Login/>', () => {
       const enabledButtonSnapshot = toJSON()
       expect(disabledButtonSnapshot).toMatchDiffSnapshot(enabledButtonSnapshot)
     })
-  })
-
-  it('should redirect to home page on left arrow press by default', () => {
-    const { getByTestId } = renderLogin()
-
-    const leftIcon = getByTestId('leftIcon')
-    fireEvent.press(leftIcon)
-
-    expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: true })
-  })
-
-  it('should redirect to ReinitializePassword on left arrow press if navigation to login comes from it', () => {
-    mockUsePreviousRoute.mockReturnValueOnce({
-      key: 'ReinitializePassword-key',
-      name: 'ReinitializePassword',
-      params: { expiration_timestamp: 1608312509, token: 'abcdefghijkl' },
-    })
-    const { getByTestId } = renderLogin()
-
-    const leftIcon = getByTestId('leftIcon')
-    fireEvent.press(leftIcon)
-
-    expect(goBack).toBeCalledTimes(1)
   })
 })

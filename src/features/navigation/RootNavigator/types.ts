@@ -21,7 +21,7 @@ export type RootStackParamList = {
   CheatCodes: undefined
   EligibilityConfirmed: undefined
   ForgottenPassword: undefined
-  Login: undefined
+  Login: BackNavigationParams<'Home'> | undefined
   IdCheck: { email: string; licenceToken: string }
   Navigation: undefined
   Offer: { id: number }

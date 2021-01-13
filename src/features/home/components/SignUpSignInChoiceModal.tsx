@@ -36,7 +36,16 @@ export const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dis
 
   function goToLogin() {
     dismissModal()
-    navigate('Login')
+    navigate('Login', {
+      backNavigation: {
+        from: 'Home',
+        params: {
+          // protect against a potential evolution of the current route params
+          ...params,
+          shouldDisplayLoginModal: true,
+        },
+      },
+    })
   }
 
   return (
