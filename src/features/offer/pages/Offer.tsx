@@ -120,7 +120,10 @@ const OfferComponent: FunctionComponent = () => {
           </AccordionItem>
         </Section>
 
-        <Section visible={Object.values(accessibility).some((value) => value !== undefined)}>
+        <Section
+          visible={Object.values(accessibility).some(
+            (value) => value !== undefined && value !== null
+          )}>
           <AccordionItem
             title={_(t`Accessibilité`)}
             onOpen={() => {
