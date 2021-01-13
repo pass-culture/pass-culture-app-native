@@ -21,6 +21,7 @@ import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Offer, OfferDescription } from 'features/offer'
+import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
@@ -54,6 +55,7 @@ export type RootStackParamList = {
   ReinitializePassword: { token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
+  SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
@@ -81,6 +83,11 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="Login" component={Login} />
         <RootStack.Screen name="Offer" component={Offer} />
         <RootStack.Screen name="OfferDescription" component={OfferDescription} />
+        <RootStack.Screen
+          name="SearchFilter"
+          component={SearchFilter}
+          options={{ headerShown: true }}
+        />
         <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
         <RootStack.Screen name="IdCheck" component={IdCheck} />
         <RootStack.Screen name="AppComponents" component={AppComponents} />
