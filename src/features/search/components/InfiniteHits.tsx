@@ -26,12 +26,12 @@ export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
 
 const Container = styled.View({
   height: '100%',
-  marginHorizontal: getSpacing(6),
 })
 const Header = styled.View({ height: getSpacing(2) })
 const Separator = styled.View({
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
+  marginHorizontal: getSpacing(6),
 })
 
 export const InfiniteHits = connectInfiniteHits(InfiniteHitsComponent)
