@@ -156,6 +156,39 @@ export interface Coordinates {
 }/**
  * 
  * @export
+ * @interface Expense
+ */
+export interface Expense {
+    /**
+     * 
+     * @type {number}
+     * @memberof Expense
+     */
+    current: number;
+    /**
+     * 
+     * @type {ExpenseDomain}
+     * @memberof Expense
+     */
+    domain: ExpenseDomain;
+    /**
+     * 
+     * @type {number}
+     * @memberof Expense
+     */
+    max: number;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum ExpenseDomain {
+    All = 'all',
+    Digital = 'digital',
+    Physical = 'physical'
+}/**
+ * 
+ * @export
  * @interface OfferAccessibilityResponse
  */
 export interface OfferAccessibilityResponse {
@@ -358,7 +391,7 @@ export interface OfferResponse {
      */
     image?: OfferImageResponse;
     /**
-     *
+     * 
      * @type {boolean}
      * @memberof OfferResponse
      */
@@ -516,6 +549,18 @@ export interface RequestPasswordResetRequest {
 }/**
  * 
  * @export
+ * @interface ResendEmailValidationRequest
+ */
+export interface ResendEmailValidationRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof ResendEmailValidationRequest
+     */
+    email: string;
+}/**
+ * 
+ * @export
  * @interface ResetPasswordRequest
  */
 export interface ResetPasswordRequest {
@@ -579,6 +624,12 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     email: string;
+    /**
+     * 
+     * @type {Array<Expense>}
+     * @memberof UserProfileResponse
+     */
+    expenses: Array<Expense>;
     /**
      * 
      * @type {string}
@@ -755,6 +806,31 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary resend_email_validation <POST>
+         * @param {ResendEmailValidationRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/resend_email_validation`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"ResendEmailValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary reset_password <POST>
          * @param {ResetPasswordRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -897,6 +973,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary resend_email_validation <POST>
+         * @param {ResendEmailValidationRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1resendEmailValidation(basePath: string, body?: ResendEmailValidationRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resendEmailValidation(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary reset_password <POST>
          * @param {ResetPasswordRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -998,6 +1086,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1requestPasswordReset(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary resend_email_validation <POST>
+     * @param {ResendEmailValidationRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1resendEmailValidation(this.basePath, body, options)
     }
     /**
      * 
