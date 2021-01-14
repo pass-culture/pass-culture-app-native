@@ -12,10 +12,14 @@ interface Props {
   max?: number
   step?: number
 }
+const DEFAULT_MIN = 0
+const DEFAULT_MAX = 100
+const DEFAULT_STEP = 1
+const DEFAULT_VALUES = [DEFAULT_MIN, DEFAULT_MAX]
 
 export const Slider: React.FC<Props> = (props) => {
   const { showValues, formatValues = (s: number) => s } = props
-  const [values, setValues] = useState<number[]>(props.values || [0, 100])
+  const [values, setValues] = useState<number[]>(props.values || DEFAULT_VALUES)
 
   return (
     <React.Fragment>
@@ -29,9 +33,9 @@ export const Slider: React.FC<Props> = (props) => {
       <MultiSlider
         values={values}
         allowOverlap={true}
-        min={props.min || 0}
-        max={props.max || 100}
-        step={props.step || 1}
+        min={props.min || DEFAULT_MIN}
+        max={props.max || DEFAULT_MAX}
+        step={props.step || DEFAULT_STEP}
         trackStyle={trackStyle}
         selectedStyle={selectedStyle}
         unselectedStyle={unselectedStyle}
