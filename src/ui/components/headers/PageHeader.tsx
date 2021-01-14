@@ -17,7 +17,7 @@ export const PageHeader: React.FC<Props> = (props) => {
   const HeaderIconBack = () => {
     return (
       <TouchableOpacity activeOpacity={0.5} onPress={goBack}>
-        <ArrowPrevious color={ColorsEnum.WHITE} />
+        <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
       </TouchableOpacity>
     )
   }

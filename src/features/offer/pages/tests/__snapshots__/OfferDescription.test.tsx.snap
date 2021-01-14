@@ -540,12 +540,14 @@ Tous les détails du film sur AlloCiné:
                     </RCTScrollView>
                     <View
                       style={
-                        Object {
-                          "backgroundColor": "rgba(235, 0, 85, 1)",
-                          "position": "absolute",
-                          "top": 0,
-                          "width": "100%",
-                        }
+                        Array [
+                          Object {
+                            "backgroundColor": "#eb0055",
+                            "position": "absolute",
+                            "top": 0,
+                            "width": "100%",
+                          },
+                        ]
                       }
                     >
                       <View
@@ -582,11 +584,11 @@ Tous les détails du film sur AlloCiné:
                         }
                       >
                         <View
-                          numberOfSpaces={6}
+                          numberOfSpaces={5}
                           style={
                             Array [
                               Object {
-                                "width": 24,
+                                "width": 20,
                               },
                             ]
                           }
@@ -608,75 +610,11 @@ Tous les détails du film sur AlloCiné:
                           }
                         >
                           <View
-                            animationState={
-                              Object {
-                                "iconBackgroundColor": "rgba(255, 255, 255, 0)",
-                                "iconBorderColor": "rgba(255, 255, 255, 0)",
-                                "transition": 1,
-                              }
-                            }
-                            style={
-                              Object {
-                                "alignItems": "center",
-                                "aspectRatio": 1,
-                                "backgroundColor": "rgba(255, 255, 255, 0)",
-                                "borderColor": "rgba(255, 255, 255, 0)",
-                                "borderRadius": 40,
-                                "borderStyle": "solid",
-                                "borderWidth": 1,
-                                "justifyContent": "center",
-                                "overflow": "hidden",
-                                "width": 40,
-                              }
-                            }
-                            testID="headerIconRoundContainer"
+                            height={32}
+                            testID="icon-back"
+                            width={32}
                           >
-                            <View
-                              size={32}
-                              style={
-                                Array [
-                                  Object {
-                                    "height": 32,
-                                    "width": 32,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                style={
-                                  Object {
-                                    "opacity": 0,
-                                    "position": "absolute",
-                                  }
-                                }
-                                testID="initial-icon-container"
-                              >
-                                <View
-                                  height={32}
-                                  testID="icon-back"
-                                  width={32}
-                                >
-                                  icon-back-SVG-Mock
-                                </View>
-                              </View>
-                              <View
-                                style={
-                                  Object {
-                                    "opacity": 1,
-                                    "position": "absolute",
-                                  }
-                                }
-                                testID="final-icon-container"
-                              >
-                                <View
-                                  height={32}
-                                  testID="final-icon-back"
-                                  width={32}
-                                >
-                                  final-icon-back-SVG-Mock
-                                </View>
-                              </View>
-                            </View>
+                            icon-back-SVG-Mock
                           </View>
                         </View>
                         <View
@@ -693,13 +631,13 @@ Tous les détails du film sur AlloCiné:
                         <Text
                           numberOfLines={2}
                           style={
-                            Object {
-                              "flexShrink": 1,
-                              "opacity": 1,
-                              "textAlign": "center",
-                            }
+                            Array [
+                              Object {
+                                "flexShrink": 1,
+                                "textAlign": "center",
+                              },
+                            ]
                           }
-                          testID="offerHeaderName"
                         >
                           <Text
                             color="#ffffff"
@@ -729,21 +667,11 @@ Tous les détails du film sur AlloCiné:
                           }
                         />
                         <View
-                          numberOfSpaces={10}
+                          numberOfSpaces={15}
                           style={
                             Array [
                               Object {
-                                "width": 40,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          numberOfSpaces={6}
-                          style={
-                            Array [
-                              Object {
-                                "width": 24,
+                                "width": 60,
                               },
                             ]
                           }

@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
-import { Animated, FlatList } from 'react-native'
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferExtraData, OfferResponse } from 'api/gen'
@@ -10,10 +10,10 @@ import { RetryBoundary } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useOffer } from '../api/useOffer'
-import { OfferHeader } from '../components'
 
 type ExtraDataKeys = keyof Required<OfferExtraData>
 export type ExtendedKeys = ExtraDataKeys | 'description' | 'photoCredit'
@@ -126,12 +126,7 @@ const OfferDescriptionComponent = () => {
           showsHorizontalScrollIndicator={false}
         />
       </React.Fragment>
-      <OfferHeader
-        title="Description"
-        headerTransition={new Animated.Value(1)}
-        showRightIcons={false}
-        offerId={params.id}
-      />
+      <PageHeader title="Description" />
     </React.Fragment>
   )
 }
