@@ -49,11 +49,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="Login" component={Login} />
         <RootStack.Screen name="Offer" component={Offer} />
         <RootStack.Screen name="OfferDescription" component={OfferDescription} />
-        <RootStack.Screen
-          name="SearchFilter"
-          component={SearchFilter}
-          options={{ headerShown: true }}
-        />
+        <RootStack.Screen name="SearchFilter" component={SearchFilter} />
         <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
         <RootStack.Screen name="IdCheck" component={IdCheck} />
         <RootStack.Screen name="AppComponents" component={AppComponents} />

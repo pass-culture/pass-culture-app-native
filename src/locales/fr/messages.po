@@ -45,7 +45,7 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/Offer.tsx:86
+#: src/features/offer/pages/Offer.tsx:85
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
@@ -239,6 +239,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/FilterButton.tsx:17
+#: src/features/search/pages/SearchFilter.tsx:8
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -303,7 +304,7 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:78
+#: src/features/offer/pages/Offer.tsx:77
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -379,7 +380,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profile"
 
-#: src/features/offer/pages/Offer.tsx:69
+#: src/features/offer/pages/Offer.tsx:68
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -394,7 +395,7 @@ msgstr "Renvoyer l'email"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:57
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:49
-#: src/features/auth/signup/VerifyEligibility.tsx:28
+#: src/features/auth/signup/VerifyEligibility.tsx:27
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
@@ -427,7 +428,7 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/pages/SearchFilter.tsx:8
+#: src/features/search/pages/SearchFilter.tsx:10
 msgid "SearchFilter"
 msgstr "SearchFilter"
 
@@ -507,7 +508,7 @@ msgstr "Voir les disponibilités"
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:26
+#: src/features/auth/signup/VerifyEligibility.tsx:25
 msgid "Vérifier mon éligibilité"
 msgstr "Vérifier mon éligibilité"
 
