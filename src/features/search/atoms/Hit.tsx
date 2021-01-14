@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AlgoliaHit } from 'libs/algolia'
 import { formatDates, formatDistance, getDisplayPrice, parseCategory } from 'libs/parsers'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   hit: AlgoliaHit
@@ -39,8 +39,8 @@ export const Hit: React.FC<Props> = ({ hit }) => {
             </Spacer.Flex>
           </Row>
           <Spacer.Column numberOfSpaces={1} />
-          <Typo.Body>{parseCategory(offer.category)}</Typo.Body>
-          <Typo.Body>{formatDates(timestampsInMillis) || 'Dès le 31 janvier 2021'}</Typo.Body>
+          <Body>{parseCategory(offer.category)}</Body>
+          <Body>{formatDates(timestampsInMillis) || 'Dès le 31 janvier 2021'}</Body>
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>
         </Column>
@@ -58,7 +58,8 @@ const Column = styled.View({ width: width - getSpacing(2 * 6 + 4) - imageWidth }
 const Row = styled.View({ flexDirection: 'row' })
 
 const Name = styled(Typo.ButtonText)({})
-const Distance = styled(Typo.Body)({ textAlign: 'right' })
+const Distance = styled(Typo.Body)({ textAlign: 'right', color: ColorsEnum.GREY_DARK })
+const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
 
 const Image = styled.Image({
   borderRadius: 4,
