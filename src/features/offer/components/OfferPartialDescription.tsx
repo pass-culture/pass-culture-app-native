@@ -18,11 +18,13 @@ export const OfferPartialDescription: React.FC<Props> = ({ id, description = '' 
   const { extraData = {}, image } = offerResponse || {}
   const contentOfferDescription = getContentFromOffer(extraData, description, image?.credit)
 
+  if (contentOfferDescription.length === 0) return null
+
   return (
     <DescriptionContainer>
+      <Spacer.Column numberOfSpaces={4} />
       {!!description && (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
           <TypoDescription testID="offerPartialDescriptionBody" numberOfLines={8}>
             {highlightLinks(description)}
           </TypoDescription>
