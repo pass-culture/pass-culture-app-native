@@ -1,5 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { render, fireEvent } from '@testing-library/react-native'
+import { rest } from 'msw'
 import React from 'react'
 import { Alert } from 'react-native'
 import waitForExpect from 'wait-for-expect'
@@ -7,6 +8,8 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
+import { server } from 'tests/server'
 
 import { contactSupport } from '../support.services'
 
@@ -59,25 +62,21 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     const button = await findByText("Renvoyer l'email")
     fireEvent.press(button)
 
-    expect(analytics.logResendEmailSignupConfirmationExpiredLink).toBeCalledTimes(1)
-    expect(Alert.alert).toBeCalledTimes(1)
-    // TODO :
-    // await waitForExpect(() => {
-    //   expect(analytics.logResendEmail).toBeCalledTimes(1)
-    //   expect(navigate).toBeCalledTimes(1)
-    //   expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
-    //     email: 'test@email.com',
-    //   })
-    // })
+    await waitForExpect(() => {
+      expect(analytics.logResendEmailSignupConfirmationExpiredLink).toBeCalledTimes(1)
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
+        email: 'test@email.com',
+      })
+    })
   })
 
   it('should NOT redirect to signup confirmation email sent page WHEN clicking on resend email and response is failure', async () => {
-    // TODO
-    // server.use(
-    //   rest.post(env.API_BASE_URL + '/native/v1/something', async (req, res, ctx) =>
-    //     res.once(ctx.status(403))
-    //   )
-    // )
+    server.use(
+      rest.post(env.API_BASE_URL + '/native/v1/resend_email_validation', async (req, res, ctx) =>
+        res.once(ctx.status(403))
+      )
+    )
 
     const { findByText } = renderSignupConfirmationExpiredLink()
 

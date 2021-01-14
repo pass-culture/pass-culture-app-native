@@ -5,6 +5,7 @@ import React from 'react'
 import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
+import { api } from 'api/api'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -28,9 +29,17 @@ export function SignupConfirmationExpiredLink(props: Props) {
   }
 
   async function resendEmailForSignupConfirmation() {
-    analytics.logResendEmailSignupConfirmationExpiredLink()
     const { email } = props.route.params
-    Alert.alert(`TODO : renvoyer email de confirmation à ${email}`)
+    analytics.logResendEmailSignupConfirmationExpiredLink()
+    await api
+      .postnativev1resendEmailValidation({ email })
+      .then(() => {
+        navigate('SignupConfirmationEmailSent', { email })
+      })
+      .catch((error) => {
+        // TODO: https://passculture.atlassian.net/browse/PC-5619
+        Alert.alert(error.message)
+      })
   }
 
   return (
