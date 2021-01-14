@@ -6,6 +6,7 @@ import org.devio.rn.splashscreen.SplashScreen; // react-native-splash-screen
 import com.facebook.react.ReactActivityDelegate; //@react-navigation
 import com.facebook.react.ReactRootView; //@react-navigation
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView; //@react-navigation
+import net.zubricky.AndroidKeyboardAdjust.AndroidKeyboardAdjustPackage; // react-native-android-keyboard-adjust
 
 public class MainActivity extends ReactActivity {
     /**
