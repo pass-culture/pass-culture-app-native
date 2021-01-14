@@ -34,6 +34,12 @@ export const server = setupServer(
       return res(ctx.status(204))
     }
   ),
+  rest.post<ResetPasswordRequest, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/resend_email_validation',
+    (req, res, ctx) => {
+      return res(ctx.status(204))
+    }
+  ),
   rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) =>
     res(
       ctx.status(200),
