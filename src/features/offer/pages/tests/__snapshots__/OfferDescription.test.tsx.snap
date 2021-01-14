@@ -618,6 +618,16 @@ Tous les détails du film sur AlloCiné:
                           </View>
                         </View>
                         <View
+                          numberOfSpaces={0}
+                          style={
+                            Array [
+                              Object {
+                                "width": 0,
+                              },
+                            ]
+                          }
+                        />
+                        <View
                           style={
                             Array [
                               Object {
@@ -667,11 +677,21 @@ Tous les détails du film sur AlloCiné:
                           }
                         />
                         <View
-                          numberOfSpaces={15}
+                          numberOfSpaces={10}
                           style={
                             Array [
                               Object {
-                                "width": 60,
+                                "width": 40,
+                              },
+                            ]
+                          }
+                        />
+                        <View
+                          numberOfSpaces={6}
+                          style={
+                            Array [
+                              Object {
+                                "width": 24,
                               },
                             ]
                           }

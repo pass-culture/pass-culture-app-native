@@ -8,11 +8,14 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   title: string
+  rightComponent?: Element
+  rightComponentWidth?: number
 }
 
 export const PageHeader: React.FC<Props> = (props) => {
-  const { title } = props
+  const { title, rightComponent, rightComponentWidth } = props
   const { goBack } = useNavigation()
+  const spaceToAddBeforeTitle = rightComponentWidth ? rightComponentWidth / 6 : 0
 
   const HeaderIconBack = () => {
     return (
@@ -29,12 +32,15 @@ export const PageHeader: React.FC<Props> = (props) => {
       <Row>
         <Spacer.Row numberOfSpaces={5} />
         <HeaderIconBack />
+        <Spacer.Row numberOfSpaces={spaceToAddBeforeTitle} />
         <Spacer.Flex />
         <Title>
           <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
         </Title>
         <Spacer.Flex />
-        <Spacer.Row numberOfSpaces={15} />
+        {rightComponent}
+        {!rightComponent && <Spacer.Row numberOfSpaces={10} />}
+        <Spacer.Row numberOfSpaces={6} />
       </Row>
       <Spacer.Column numberOfSpaces={2} />
     </HeaderContainer>
