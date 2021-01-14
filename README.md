@@ -220,3 +220,12 @@ To do so:
 
 3. Make sure you got the approval of every member of the team
 4. You can merge :)
+
+## Test data
+
+### Accounts
+
+You can use test accounts:
+
+- email: `pctest.jeune93.has-booked-some@btmx.fr`
+- mdp: `user@AZERTY123`
