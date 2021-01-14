@@ -3,6 +3,7 @@ import { connectInfiniteHits } from 'react-instantsearch-native'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
+import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
 import { AlgoliaHit } from 'libs/algolia'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
@@ -18,6 +19,7 @@ export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
       data={hits}
       keyExtractor={(item) => item.objectID}
       ListHeaderComponent={Header}
+      ListFooterComponent={Footer}
       ItemSeparatorComponent={Separator}
       renderItem={({ item: hit }) => <Hit hit={hit} />}
     />
@@ -28,6 +30,7 @@ const Container = styled.View({
   height: '100%',
 })
 const Header = styled.View({ height: getSpacing(2) })
+const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(48) })
 const Separator = styled.View({
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
