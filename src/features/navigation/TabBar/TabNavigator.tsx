@@ -3,12 +3,11 @@ import React from 'react'
 import { StatusBar, Platform } from 'react-native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-
-import { Bookings } from '../../bookings/pages/Bookings'
-import { Favorites } from '../../favorites/pages/Favorites'
-import { Home } from '../../home/pages/Home'
-import { Profile } from '../../profile/pages/Profile'
-import { Search } from '../../search/pages/Search'
+import { Bookings } from 'features/bookings/pages/Bookings'
+import { Favorites } from 'features/favorites/pages/Favorites'
+import { Home } from 'features/home/pages/Home'
+import { Profile } from 'features/profile/pages/Profile'
+import { Search } from 'features/search/pages/Search'
 
 import { TabBar } from './TabBar'
 import { TabParamList } from './types'
