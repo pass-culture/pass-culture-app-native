@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch'
 import React from 'react'
-import { InstantSearch } from 'react-instantsearch-native'
+import { Configure, InstantSearch } from 'react-instantsearch-native'
 import styled from 'styled-components/native'
 
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
@@ -14,6 +14,7 @@ const searchClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARC
 
 export const Search: React.FC = () => (
   <InstantSearch searchClient={searchClient} indexName={env.ALGOLIA_INDEX_NAME}>
+    <Configure hitsPerPage={20} />
     <Container>
       <SearchHeader />
       <InfiniteHits />
