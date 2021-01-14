@@ -1,6 +1,7 @@
 import algoliasearch from 'algoliasearch'
 import React from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-native'
+import { Dimensions, KeyboardAvoidingView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
@@ -12,17 +13,23 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 const searchClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
+const { height } = Dimensions.get('window')
+
 export const Search: React.FC = () => (
   <InstantSearch searchClient={searchClient} indexName={env.ALGOLIA_INDEX_NAME}>
     <Configure hitsPerPage={20} />
     <Container>
-      <SearchHeader />
-      <InfiniteHits />
+      {/* By setting a big negative vertical offset, when we open the keyboard (specifically on Android),
+      the view doesn't move and the navBar and FilterButton remain hidden */}
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={-height}>
+        <SearchHeader />
+        <InfiniteHits />
 
-      <FilterButtonContainer>
-        <FilterButton />
-        <Spacer.BottomScreen />
-      </FilterButtonContainer>
+        <FilterButtonContainer>
+          <FilterButton />
+          <Spacer.BottomScreen />
+        </FilterButtonContainer>
+      </KeyboardAvoidingView>
     </Container>
   </InstantSearch>
 )
