@@ -1,2 +1,2 @@
-export * from './Price'
-export * from './Radius'
+export * from './PriceSlider'
+export * from './RadiusSlider'

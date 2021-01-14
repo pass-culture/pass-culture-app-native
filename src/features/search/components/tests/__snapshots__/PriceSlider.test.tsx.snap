@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Price component should render correctly 1`] = `
+exports[`PriceSlider component should render correctly 1`] = `
 Array [
   <Text
     style={
