@@ -3,7 +3,7 @@ import React from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Radius, Price } from 'features/search/components'
+import { RadiusSlider, PriceSlider } from 'features/search/components'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -20,9 +20,9 @@ export const SearchFilter: React.FC = () => (
   <Container>
     <PageHeader title={_(t`Filtrer`)} rightComponent={rightButton} />
     <Spacer.TopScreen />
-    <Radius />
+    <RadiusSlider />
     <Separator />
-    <Price />
+    <PriceSlider />
   </Container>
 )
 
