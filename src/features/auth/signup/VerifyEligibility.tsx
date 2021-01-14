@@ -33,8 +33,7 @@ export function VerifyEligibility(props: Props) {
       iconSize={getSpacing(65)}>
       <StyledBody>
         {_(
-          t`Pour que tu puisses bénéficier de l’aide financière de 300 € offerte 
-          par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité.`
+          t`Pour que tu puisses bénéficier de l’aide financière de 300 € offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité.`
         )}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />

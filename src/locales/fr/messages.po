@@ -368,8 +368,8 @@ msgid "Pour en savoir plus sur la gestion de tes données personnelles et exerce
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
 #: src/features/auth/signup/VerifyEligibility.tsx:22
-msgid "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte  par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
-msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte  par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
+msgid "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
+msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
 #: src/features/auth/signup/SetBirthday.tsx:134
 msgid "Pourquoi ?"
