@@ -55,7 +55,7 @@ const imageHeight = getSpacing(24) // ratio 2/3
 
 const Container = styled.View({ marginVertical: getSpacing(4), marginHorizontal: getSpacing(6) })
 const Column = styled.View({ width: width - getSpacing(2 * 6 + 4) - imageWidth })
-const Row = styled.View({ flexDirection: 'row' })
+const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
 const Name = styled(Typo.ButtonText)({})
 const Distance = styled(Typo.Body)({ textAlign: 'right', color: ColorsEnum.GREY_DARK })
