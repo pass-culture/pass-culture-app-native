@@ -4,10 +4,10 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
+import { Hit } from 'features/search/atoms/Hit'
+import { NumberOfResults } from 'features/search/atoms/NumberOfResults'
 import { AlgoliaHit } from 'libs/algolia'
 import { ColorsEnum, getSpacing } from 'ui/theme'
-
-import { Hit } from '../atoms/Hit'
 
 interface Props {
   hits: AlgoliaHit[]
@@ -18,7 +18,7 @@ export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
     <FlatList
       data={hits}
       keyExtractor={(item) => item.objectID}
-      ListHeaderComponent={Header}
+      ListHeaderComponent={() => <NumberOfResults nbHits={hits.length} />}
       ListFooterComponent={Footer}
       ItemSeparatorComponent={Separator}
       renderItem={({ item: hit }) => <Hit hit={hit} />}
@@ -26,15 +26,13 @@ export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
   </Container>
 )
 
-const Container = styled.View({
-  height: '100%',
-})
-const Header = styled.View({ height: getSpacing(2) })
+const Container = styled.View({ height: '100%' })
 const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(48) })
 const Separator = styled.View({
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
   marginHorizontal: getSpacing(6),
+  marginVertical: getSpacing(4),
 })
 
 export const InfiniteHits = connectInfiniteHits(InfiniteHitsComponent)
