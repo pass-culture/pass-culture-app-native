@@ -1,15 +1,15 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   title: string
-  rightComponent?: Element
-  rightComponentWidth?: number
+  rightComponent?: (onLayout: (event: LayoutChangeEvent) => void) => JSX.Element
 }
 
 const renderHeaderIconBack = (onPress: () => void) => {
@@ -21,8 +21,9 @@ const renderHeaderIconBack = (onPress: () => void) => {
 }
 
 export const PageHeader: React.FC<Props> = (props) => {
-  const { title, rightComponent, rightComponentWidth } = props
+  const { title, rightComponent } = props
   const { goBack } = useNavigation()
+  const { width: rightComponentWidth, onLayout } = useElementWidth()
   const spaceToAddBeforeTitle = rightComponentWidth ? rightComponentWidth / 6 : 0
 
   return (
@@ -38,7 +39,7 @@ export const PageHeader: React.FC<Props> = (props) => {
           <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
         </Title>
         <Spacer.Flex />
-        {rightComponent}
+        {rightComponent && rightComponent(onLayout)}
         {!rightComponent && <Spacer.Row numberOfSpaces={10} />}
         <Spacer.Row numberOfSpaces={6} />
       </Row>
