@@ -23,9 +23,9 @@ describe('getCtaWordingAndAction', () => {
   describe('Non Beneficiary', () => {
     it.each`
       type                  | url                     | expected                              | disabled
-      ${CategoryType.Event} | ${undefined}            | ${"Accéder à l'offre"}                | ${true}
+      ${CategoryType.Event} | ${undefined}            | ${undefined}                          | ${true}
       ${CategoryType.Event} | ${'http://url-externe'} | ${"Accéder à l'offre"}                | ${false}
-      ${CategoryType.Thing} | ${undefined}            | ${'Accéder à la billetterie externe'} | ${true}
+      ${CategoryType.Thing} | ${undefined}            | ${undefined}                          | ${true}
       ${CategoryType.Thing} | ${'http://url-externe'} | ${'Accéder à la billetterie externe'} | ${false}
     `(
       'CTA(disabled=$disabled) = "$expected" for categoryType=$type and url=$url',
