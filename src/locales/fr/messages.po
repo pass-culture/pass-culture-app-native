@@ -49,11 +49,11 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:21
+#: src/features/offer/services/useCtaWordingAndAction.ts:23
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:21
+#: src/features/offer/services/useCtaWordingAndAction.ts:23
 msgid "Accéder à la billetterie externe"
 msgstr "Accéder à la billetterie externe"
 
@@ -132,8 +132,8 @@ msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:40
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:49
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:49
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
@@ -166,10 +166,10 @@ msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:53
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
 #: src/features/auth/signup/AcceptCgu.tsx:71
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:42
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:45
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:54
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -184,8 +184,8 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:38
-#: src/features/offer/services/useCtaWordingAndAction.ts:48
+#: src/features/offer/services/useCtaWordingAndAction.ts:40
+#: src/features/offer/services/useCtaWordingAndAction.ts:50
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
@@ -239,7 +239,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/FilterButton.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:8
+#: src/features/search/pages/SearchFilter.tsx:23
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -268,7 +268,7 @@ msgstr "Handicap visuel"
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:36
+#: src/features/offer/services/useCtaWordingAndAction.ts:38
 msgid "Impossible de réserver"
 msgstr "Impossible de réserver"
 
@@ -283,8 +283,8 @@ msgstr "Keychain non accessible"
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:38
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:47
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
@@ -330,12 +330,12 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:27
-#: src/features/offer/services/useCtaWordingAndAction.ts:31
+#: src/features/offer/services/useCtaWordingAndAction.ts:29
+#: src/features/offer/services/useCtaWordingAndAction.ts:33
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:29
+#: src/features/offer/services/useCtaWordingAndAction.ts:31
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
@@ -347,8 +347,8 @@ msgstr "On y va !"
 msgid "Oops !"
 msgstr "Oops !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:45
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:37
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:46
 msgid "Oups"
 msgstr "Oups"
 
@@ -376,6 +376,10 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offe
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
+#: src/features/search/components/PriceSlider.tsx:8
+msgid "Prix"
+msgstr "Prix"
+
 #: src/features/profile/pages/Profile.tsx:12
 msgid "Profile"
 msgstr "Profile"
@@ -384,17 +388,21 @@ msgstr "Profile"
 msgid "Quand ?"
 msgstr "Quand ?"
 
+#: src/features/search/components/RadiusSlider.tsx:8
+msgid "Rayon"
+msgstr "Rayon"
+
 #: src/features/home/components/BusinessModule.tsx:37
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:55
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:56
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:57
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:49
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:58
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:58
 #: src/features/auth/signup/VerifyEligibility.tsx:27
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
@@ -411,7 +419,11 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:40
+#: src/features/search/pages/SearchFilter.tsx:10
+msgid "Réinitialiser"
+msgstr "Réinitialiser"
+
+#: src/features/offer/services/useCtaWordingAndAction.ts:42
 msgid "Réserver"
 msgstr "Réserver"
 
@@ -428,10 +440,6 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/pages/SearchFilter.tsx:10
-msgid "SearchFilter"
-msgstr "SearchFilter"
-
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
 msgid "Si l'e-mail n'arrive pas, tu peux :"
@@ -441,8 +449,8 @@ msgstr "Si l'e-mail n'arrive pas, tu peux :"
 msgid "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:51
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:43
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:52
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
@@ -500,7 +508,7 @@ msgstr "Valider"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:50
+#: src/features/offer/services/useCtaWordingAndAction.ts:52
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
@@ -586,6 +594,14 @@ msgstr "voir plus"
 #: src/ui/components/inputs/InputError.tsx:10
 msgid "{0}"
 msgstr "{0}"
+
+#: src/features/search/atoms/NumberOfResults.tsx:8
+msgid "{nbHits} résultat"
+msgstr "{nbHits} résultat"
+
+#: src/features/search/atoms/NumberOfResults.tsx:9
+msgid "{nbHits} résultats"
+msgstr "{nbHits} résultats"
 
 #: src/features/offer/components/OfferIconCaptions.tsx:27
 msgid "À deux !"
