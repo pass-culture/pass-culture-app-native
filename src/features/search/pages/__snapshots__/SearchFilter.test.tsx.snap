@@ -2,182 +2,6 @@
 
 exports[`<SearchFilter /> should render 1`] = `
 Array [
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#eb0055",
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
-        },
-      ]
-    }
-  >
-    <View
-      customHeight={16}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    >
-      <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "width": 20,
-            },
-          ]
-        }
-      />
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-      >
-        <View
-          height={32}
-          testID="icon-back"
-          width={32}
-        >
-          icon-back-SVG-Mock
-        </View>
-      </View>
-      <View
-        numberOfSpaces={0}
-        style={
-          Array [
-            Object {
-              "width": 0,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-      <Text
-        numberOfLines={2}
-        style={
-          Array [
-            Object {
-              "flexShrink": 1,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        <Text
-          color="#ffffff"
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Filtrer
-        </Text>
-      </Text>
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        onLayout={[Function]}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Réinitialiser
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "width": 24,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-  </View>,
   <RCTScrollView
     style={
       Array [
@@ -792,5 +616,181 @@ Array [
       </View>
     </View>
   </RCTScrollView>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#eb0055",
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "width": 20,
+            },
+          ]
+        }
+      />
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          height={32}
+          testID="icon-back"
+          width={32}
+        >
+          icon-back-SVG-Mock
+        </View>
+      </View>
+      <View
+        numberOfSpaces={0}
+        style={
+          Array [
+            Object {
+              "width": 0,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={2}
+        style={
+          Array [
+            Object {
+              "flexShrink": 1,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        <Text
+          color="#ffffff"
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Filtrer
+        </Text>
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <Text
+        color="#ffffff"
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Réinitialiser
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "width": 24,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>,
 ]
 `;

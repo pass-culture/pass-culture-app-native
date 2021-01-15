@@ -18,14 +18,16 @@ const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element 
 
 export const SearchFilter: React.FC = () => (
   <React.Fragment>
+    <React.Fragment>
+      <Container>
+        <Spacer.TopScreen />
+        <Spacer.Column numberOfSpaces={16} />
+        <RadiusSlider />
+        <Separator />
+        <PriceSlider />
+      </Container>
+    </React.Fragment>
     <PageHeader title={_(t`Filtrer`)} rightComponent={rightButton} />
-    <Container>
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={16} />
-      <RadiusSlider />
-      <Separator />
-      <PriceSlider />
-    </Container>
   </React.Fragment>
 )
 
