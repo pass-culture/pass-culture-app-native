@@ -9,11 +9,11 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { Hit } from '../Hit'
 
 const hit = mockedAlgoliaResponse.hits[0]
-const offer = hit.offer
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const offerId = dehumanizeId(hit.offer.id)!
 
 describe('Hit component', () => {
   it('should navigate to the offer when clicking on the hit', async () => {
-    const offerId = dehumanizeId(offer.id)!
     const { getByTestId } = render(reactQueryProviderHOC(<Hit hit={hit} />))
     fireEvent.press(getByTestId('offerHit'))
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId })

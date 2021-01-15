@@ -17,13 +17,16 @@ const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element 
 }
 
 export const SearchFilter: React.FC = () => (
-  <Container>
+  <React.Fragment>
     <PageHeader title={_(t`Filtrer`)} rightComponent={rightButton} />
-    <Spacer.TopScreen />
-    <RadiusSlider />
-    <Separator />
-    <PriceSlider />
-  </Container>
+    <Container>
+      <Spacer.TopScreen />
+      <Spacer.Column numberOfSpaces={16} />
+      <RadiusSlider />
+      <Separator />
+      <PriceSlider />
+    </Container>
+  </React.Fragment>
 )
 
 const Container = styled.ScrollView({ flex: 1, marginHorizontal: getSpacing(6) })
