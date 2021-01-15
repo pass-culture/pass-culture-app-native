@@ -12,18 +12,18 @@ interface Props {
   rightComponentWidth?: number
 }
 
+const renderHeaderIconBack = (onPress: () => void) => {
+  return (
+    <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
+      <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
+    </TouchableOpacity>
+  )
+}
+
 export const PageHeader: React.FC<Props> = (props) => {
   const { title, rightComponent, rightComponentWidth } = props
   const { goBack } = useNavigation()
   const spaceToAddBeforeTitle = rightComponentWidth ? rightComponentWidth / 6 : 0
-
-  const HeaderIconBack = () => {
-    return (
-      <TouchableOpacity activeOpacity={0.5} onPress={goBack}>
-        <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
-      </TouchableOpacity>
-    )
-  }
 
   return (
     <HeaderContainer>
@@ -31,7 +31,7 @@ export const PageHeader: React.FC<Props> = (props) => {
       <Spacer.Column numberOfSpaces={2} />
       <Row>
         <Spacer.Row numberOfSpaces={5} />
-        <HeaderIconBack />
+        {renderHeaderIconBack(goBack)}
         <Spacer.Row numberOfSpaces={spaceToAddBeforeTitle} />
         <Spacer.Flex />
         <Title>
