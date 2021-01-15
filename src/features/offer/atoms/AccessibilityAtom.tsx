@@ -70,6 +70,7 @@ const Text = styled(Typo.Caption)({
 const TextContainer = styled.View<{ width: number }>(({ width }) => ({
   width,
   alignSelf: 'center',
+  paddingHorizontal: getSpacing(2),
 }))
 const ValidationContainer = styled.View({
   position: 'absolute',
