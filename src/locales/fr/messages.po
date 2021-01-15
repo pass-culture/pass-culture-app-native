@@ -45,7 +45,7 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/Offer.tsx:86
+#: src/features/offer/pages/Offer.tsx:85
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
@@ -62,8 +62,8 @@ msgid "Adresse"
 msgstr "Adresse"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:72
-#: src/features/auth/login/Login.tsx:81
-#: src/features/auth/signup/SetEmail.tsx:65
+#: src/features/auth/login/Login.tsx:74
+#: src/features/auth/signup/SetEmail.tsx:64
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
@@ -156,7 +156,7 @@ msgstr "Confirme ton e\\u2011mail"
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
-#: src/features/auth/login/Login.tsx:77
+#: src/features/auth/login/Login.tsx:70
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
@@ -175,7 +175,7 @@ msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:69
 #: src/features/auth/signup/SetBirthday.tsx:153
-#: src/features/auth/signup/SetEmail.tsx:78
+#: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:44
 msgid "Continuer"
 msgstr "Continuer"
@@ -291,7 +291,7 @@ msgstr "Le lien est expiré !"
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
 
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:21
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:32
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
@@ -303,11 +303,11 @@ msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:78
+#: src/features/offer/pages/Offer.tsx:77
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
-#: src/features/auth/login/Login.tsx:87
+#: src/features/auth/login/Login.tsx:80
 #: src/features/auth/signup/SetPassword.tsx:38
 msgid "Mot de passe"
 msgstr "Mot de passe"
@@ -316,7 +316,7 @@ msgstr "Mot de passe"
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
-#: src/features/auth/login/Login.tsx:94
+#: src/features/auth/login/Login.tsx:87
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
@@ -379,7 +379,7 @@ msgstr "Pourquoi ?"
 msgid "Profile"
 msgstr "Profile"
 
-#: src/features/offer/pages/Offer.tsx:69
+#: src/features/offer/pages/Offer.tsx:68
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -402,7 +402,7 @@ msgstr "Retourner à l'accueil"
 msgid "Retrouve {name} chez {locationName} sur le pass Culture"
 msgstr "Retrouve {name} chez {locationName} sur le pass Culture"
 
-#: src/features/auth/signup/SetEmail.tsx:74
+#: src/features/auth/signup/SetEmail.tsx:73
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
@@ -414,7 +414,7 @@ msgstr "Réessayer"
 msgid "Réserver"
 msgstr "Réserver"
 
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:28
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:39
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
@@ -422,8 +422,8 @@ msgstr "S'inscrire"
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
-#: src/features/auth/login/Login.tsx:98
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:30
+#: src/features/auth/login/Login.tsx:91
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:41
 msgid "Se connecter"
 msgstr "Se connecter"
 
@@ -436,7 +436,7 @@ msgstr "SearchFilter"
 msgid "Si l'e-mail n'arrive pas, tu peux :"
 msgstr "Si l'e-mail n'arrive pas, tu peux :"
 
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:24
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:35
 msgid "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
@@ -453,13 +453,13 @@ msgstr "Ton anniversaire"
 msgid "Ton compte est maintenant activé !"
 msgstr "Ton compte est maintenant activé !"
 
-#: src/features/auth/signup/SetEmail.tsx:62
+#: src/features/auth/signup/SetEmail.tsx:61
 msgid "Ton email"
 msgstr "Ton email"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
-#: src/features/auth/login/Login.tsx:89
+#: src/features/auth/login/Login.tsx:82
 #: src/features/auth/signup/SetPassword.tsx:34
 #: src/features/auth/signup/SetPassword.tsx:40
 msgid "Ton mot de passe"
@@ -471,8 +471,8 @@ msgstr "Ton mot de passe a été modifié !"
 
 #. Welcome body message
 #: src/features/home/pages/Home.tsx:76
-msgid "Toute la culture dans votre main"
-msgstr "Toute la culture dans votre main"
+msgid "Toute la culture dans ta main"
+msgstr "Toute la culture dans ta main"
 
 #: src/features/auth/signup/EligibilityConfirmed.tsx:15
 msgid "Tu es éligible !"
@@ -573,8 +573,8 @@ msgstr "sous genre"
 
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:74
-#: src/features/auth/login/Login.tsx:83
-#: src/features/auth/signup/SetEmail.tsx:67
+#: src/features/auth/login/Login.tsx:76
+#: src/features/auth/signup/SetEmail.tsx:66
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 

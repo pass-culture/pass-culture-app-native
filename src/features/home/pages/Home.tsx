@@ -95,7 +95,7 @@ export const HomeComponent: FunctionComponent = function () {
         </StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Body color={ColorsEnum.WHITE}>
-          {_(/*i18n: Welcome body message */ t`Toute la culture dans votre main`)}
+          {_(/*i18n: Welcome body message */ t`Toute la culture dans ta main`)}
         </Typo.Body>
       </CenterContainer>
       <Spacer.Column numberOfSpaces={6} />
