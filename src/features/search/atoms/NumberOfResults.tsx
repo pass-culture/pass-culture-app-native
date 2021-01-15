@@ -21,6 +21,6 @@ export const NumberOfResults: React.FC<{ nbHits: number }> = ({ nbHits }) => {
 
 const Container = styled.View({
   margin: getSpacing(6),
-  marginBottom: getSpacing(0),
+  marginBottom: getSpacing(4),
 })
 const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
