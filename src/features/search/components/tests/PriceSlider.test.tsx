@@ -4,9 +4,8 @@ import React from 'react'
 import { PriceSlider } from '../PriceSlider'
 
 describe('PriceSlider component', () => {
-  it('should render correctly', () => {
-    const { toJSON, queryByText } = render(<PriceSlider />)
-    expect(toJSON()).toMatchSnapshot()
+  it('should render initial price range correctly', () => {
+    const { queryByText } = render(<PriceSlider />)
     expect(queryByText('0 € - 300 €')).toBeTruthy()
   })
 })

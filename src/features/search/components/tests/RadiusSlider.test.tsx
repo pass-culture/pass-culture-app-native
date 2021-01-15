@@ -4,9 +4,8 @@ import React from 'react'
 import { RadiusSlider } from '../RadiusSlider'
 
 describe('RadiusSlider component', () => {
-  it('should render correctly', () => {
-    const { toJSON, queryByText } = render(<RadiusSlider />)
-    expect(toJSON()).toMatchSnapshot()
+  it('should render initial radius range correctly', () => {
+    const { queryByText } = render(<RadiusSlider />)
     expect(queryByText('100 km')).toBeTruthy()
   })
 })
