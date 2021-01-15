@@ -27,7 +27,7 @@ export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
 )
 
 const Container = styled.View({ height: '100%' })
-const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(48) })
+const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(52) })
 const Separator = styled.View({
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
