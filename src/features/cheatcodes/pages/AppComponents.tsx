@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { AccordionItem, CallToAction } from 'features/offer/components'
+import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { AlgoliaCategory } from 'libs/algolia'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -419,6 +420,11 @@ export const AppComponents: FunctionComponent = () => {
           <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n} €`} />
           <Slider values={[50]} showValues formatValues={(n) => `${n} km`} />
         </Center>
+        <RowWrap>
+          <Label label="Cinéma" />
+          <Label label="Musique" />
+          <Label label="Exposition" />
+        </RowWrap>
       </AccordionItem>
 
       <Divider />
@@ -485,6 +491,11 @@ const ColoredModalHeader = styled(ModalHeader).attrs({
   },
 })``
 
+const RowWrap = styled.View({
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+})
+
 const StyledScrollView = styled(ScrollView)({
   backgroundColor: ColorsEnum.WHITE,
 })
@@ -514,4 +525,9 @@ const CategoryIcons = () => {
       <Text>{'\n'}</Text>
     </React.Fragment>
   )
+}
+
+const Label: React.FC<{ label: string }> = ({ label }) => {
+  const [selected, setSelected] = useState<boolean>(false)
+  return <SelectionLabel label={label} selected={selected} onPress={() => setSelected((p) => !p)} />
 }
