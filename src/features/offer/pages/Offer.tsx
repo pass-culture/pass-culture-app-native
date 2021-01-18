@@ -140,10 +140,12 @@ const OfferComponent: FunctionComponent = () => {
         </Section>
       </Container>
 
-      {wording && (
+      {wording ? (
         <CallToActionContainer testID="CTA-button">
           <CallToAction wording={wording} onPress={onPress} />
         </CallToActionContainer>
+      ) : (
+        <Spacer.Column numberOfSpaces={10} />
       )}
 
       <OfferHeader
