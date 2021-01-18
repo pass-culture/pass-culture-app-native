@@ -4,6 +4,8 @@ import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
+import { SignUpSignInChoiceModal } from 'features/home/components/SignUpSignInChoiceModal'
+import { useModal } from 'ui/components/modals/useModal'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { HeaderIcon } from '../atoms'
@@ -13,14 +15,14 @@ interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
   offerId: number
-  showRightIcons?: boolean
 }
 /**
  * @param headerTransition should be between animated between 0 and 1
  */
 export const OfferHeader: React.FC<Props> = (props) => {
-  const { headerTransition, offerId, title, showRightIcons = true } = props
+  const { headerTransition, offerId, title } = props
   const { isLoggedIn } = useAuthContext()
+  const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const { goBack } = useNavigation()
   const shareOffer = useShareOffer(offerId)
 
@@ -39,66 +41,40 @@ export const OfferHeader: React.FC<Props> = (props) => {
     outputRange: ['rgba(255, 255, 255, 0)', ColorsEnum.PRIMARY],
   })
 
-  const RightIcons = () => {
-    if (!showRightIcons) return <Spacer.Row numberOfSpaces={isLoggedIn ? 20 : 10} />
+  const animationState = { iconBackgroundColor, iconBorderColor, transition: headerTransition }
 
-    return (
-      <React.Fragment>
-        <HeaderIcon
-          animationState={{
-            iconBackgroundColor,
-            iconBorderColor,
-            transition: headerTransition,
-          }}
-          iconName="share"
-          onPress={shareOffer}
-        />
-        {isLoggedIn && (
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={3} />
-            <HeaderIcon
-              animationState={{
-                iconBackgroundColor,
-                iconBorderColor,
-                transition: headerTransition,
-              }}
-              iconName="favorite"
-              onPress={() => null}
-            />
-          </React.Fragment>
-        )}
-      </React.Fragment>
-    )
+  const pressFavorite = () => {
+    if (!isLoggedIn) {
+      showSignInModal()
+    }
   }
 
   return (
-    <HeaderContainer style={{ backgroundColor: headerBackgroundColor }}>
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={2} />
-      <Row>
-        <Spacer.Row numberOfSpaces={6} />
-        <HeaderIcon
-          animationState={{
-            iconBackgroundColor,
-            iconBorderColor,
-            transition: headerTransition,
-          }}
-          iconName="back"
-          onPress={goBack}
-        />
-        {isLoggedIn && <Spacer.Row testID="headerIconPlaceholder" numberOfSpaces={10} />}
-        <Spacer.Flex />
-        <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
-          <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
-        </Title>
+    <React.Fragment>
+      <HeaderContainer style={{ backgroundColor: headerBackgroundColor }}>
+        <Spacer.TopScreen />
+        <Spacer.Column numberOfSpaces={2} />
+        <Row>
+          <Spacer.Row numberOfSpaces={6} />
+          <HeaderIcon animationState={animationState} iconName="back" onPress={goBack} />
+          <Spacer.Row numberOfSpaces={3} />
+          <Spacer.Row testID="leftShareIconPlaceholder" numberOfSpaces={10} />
+          <Spacer.Flex />
 
-        <Spacer.Flex />
-        <RightIcons />
+          <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
+            <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
+          </Title>
 
-        <Spacer.Row numberOfSpaces={6} />
-      </Row>
-      <Spacer.Column numberOfSpaces={2} />
-    </HeaderContainer>
+          <Spacer.Flex />
+          <HeaderIcon animationState={animationState} iconName="share" onPress={shareOffer} />
+          <Spacer.Row numberOfSpaces={3} />
+          <HeaderIcon animationState={animationState} iconName="favorite" onPress={pressFavorite} />
+          <Spacer.Row numberOfSpaces={6} />
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+      </HeaderContainer>
+      <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideModal} />
+    </React.Fragment>
   )
 }
 
