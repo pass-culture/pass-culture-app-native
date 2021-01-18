@@ -195,61 +195,545 @@ Array [
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderRadius": 24,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              }
-            }
-            testID="button-container-why-link"
-          >
-            <Text
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 5,
-                    "maxWidth": 650,
-                  },
-                ]
-              }
-              testID="button-title-why-link"
-              textColor="#eb0055"
-            >
-              Pourquoi ?
-            </Text>
-          </View>
-          <View
-            style={
               Array [
                 Object {
                   "alignItems": "center",
-                  "marginTop": 40,
                   "width": "100%",
                 },
               ]
             }
           >
             <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="button-container-why-link"
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": 650,
+                    },
+                  ]
+                }
+                testID="button-title-why-link"
+                textColor="#eb0055"
+              >
+                Pourquoi ?
+              </Text>
+            </View>
+            <View
               style={
                 Array [
                   Object {
                     "alignItems": "center",
+                    "marginTop": 40,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "marginBottom": 4,
+                        "marginLeft": 4,
+                        "marginRight": 4,
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    allowFontScaling={true}
+                    blurOnSubmit={true}
+                    keyboardType="number-pad"
+                    maxLength={2}
+                    numberOfChar={2}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="JJ"
+                    placeholderTextColor="#626262"
+                    rejectResponderTermination={true}
+                    selectTextOnFocus={true}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                        Object {
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "minWidth": 40,
+                          "paddingHorizontal": 10,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    backgroundColor="#c7c7cc"
+                    isEmpty={true}
+                    isFocused={false}
+                    isValid={false}
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#c7c7cc",
+                          "borderRadius": 22,
+                          "height": 5,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    testID="datepart-bar-day"
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "marginBottom": 4,
+                        "marginLeft": 4,
+                        "marginRight": 4,
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    allowFontScaling={true}
+                    blurOnSubmit={true}
+                    keyboardType="number-pad"
+                    maxLength={2}
+                    numberOfChar={2}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    placeholder="MM"
+                    placeholderTextColor="#626262"
+                    rejectResponderTermination={true}
+                    selectTextOnFocus={true}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                        Object {
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "minWidth": 40,
+                          "paddingHorizontal": 10,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    backgroundColor="#c7c7cc"
+                    isEmpty={true}
+                    isFocused={false}
+                    isValid={false}
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#c7c7cc",
+                          "borderRadius": 22,
+                          "height": 5,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    testID="datepart-bar-month"
+                  />
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "marginBottom": 4,
+                        "marginLeft": 4,
+                        "marginRight": 4,
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    allowFontScaling={true}
+                    blurOnSubmit={true}
+                    keyboardType="number-pad"
+                    maxLength={4}
+                    numberOfChar={4}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    placeholder="AAAA"
+                    placeholderTextColor="#626262"
+                    rejectResponderTermination={true}
+                    selectTextOnFocus={true}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#151515",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                        Object {
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "minWidth": 80,
+                          "paddingHorizontal": 10,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      Array [
+                        Object {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    backgroundColor="#c7c7cc"
+                    isEmpty={true}
+                    isFocused={false}
+                    isValid={false}
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#c7c7cc",
+                          "borderRadius": 22,
+                          "height": 5,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    testID="datepart-bar-year"
+                  />
+                </View>
+              </View>
+            </View>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                    "marginVertical": 32,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Ce site est protégé par reCAPTCHA Google. La
+              </Text>
+              <Text
+                color="#eb0055"
+                onPress={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                testID="external-link-google-data-privacy"
+              >
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text>
+                  <View
+                    height={16}
+                    testID="externalSiteIcon"
+                    width={15}
+                  >
+                    externalSiteIcon-SVG-Mock
+                  </View>
+                   Charte
+                </Text>
+                 des Données Personnelles
+              </Text>
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                et les
+              </Text>
+              <Text
+                color="#eb0055"
+                onPress={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                testID="external-link-google-cgu"
+              >
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text>
+                  <View
+                    height={16}
+                    testID="externalSiteIcon"
+                    width={15}
+                  >
+                    externalSiteIcon-SVG-Mock
+                  </View>
+                   Conditions
+                </Text>
+                 Générales d'Utilisation
+              </Text>
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                s'appliquent.
+              </Text>
+            </Text>
+            <View
+              accessible={true}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ff99be",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="button-container-validate-birthday"
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": 650,
+                    },
+                  ]
+                }
+                testID="button-title-validate-birthday"
+                textColor="#ffffff"
+              >
+                Continuer
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
                     "flexDirection": "row",
                   },
                 ]
@@ -259,567 +743,103 @@ Array [
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "marginBottom": 4,
-                      "marginLeft": 4,
-                      "marginRight": 4,
-                      "marginTop": 4,
+                      "alignSelf": "center",
                     },
                   ]
                 }
               >
-                <TextInput
-                  allowFontScaling={true}
-                  blurOnSubmit={true}
-                  keyboardType="number-pad"
-                  maxLength={2}
-                  numberOfChar={2}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="JJ"
-                  placeholderTextColor="#626262"
-                  rejectResponderTermination={true}
-                  selectTextOnFocus={true}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                      Object {
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "minWidth": 40,
-                        "paddingHorizontal": 10,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                  underlineColorAndroid="transparent"
-                  value=""
-                />
                 <View
-                  numberOfSpaces={1}
-                  style={
-                    Array [
-                      Object {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  backgroundColor="#c7c7cc"
-                  isEmpty={true}
-                  isFocused={false}
-                  isValid={false}
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#c7c7cc",
-                        "borderRadius": 22,
-                        "height": 5,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                  testID="datepart-bar-day"
-                />
+                  fill="#15884f"
+                  height={8}
+                  testID="dot-icon"
+                  width={8}
+                >
+                  dot-icon-SVG-Mock
+                </View>
               </View>
               <View
+                numberOfSpaces={2}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "marginBottom": 4,
-                      "marginLeft": 4,
-                      "marginRight": 4,
-                      "marginTop": 4,
-                    },
-                  ]
-                }
-              >
-                <TextInput
-                  allowFontScaling={true}
-                  blurOnSubmit={true}
-                  keyboardType="number-pad"
-                  maxLength={2}
-                  numberOfChar={2}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  placeholder="MM"
-                  placeholderTextColor="#626262"
-                  rejectResponderTermination={true}
-                  selectTextOnFocus={true}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                      Object {
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "minWidth": 40,
-                        "paddingHorizontal": 10,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                  underlineColorAndroid="transparent"
-                  value=""
-                />
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    Array [
-                      Object {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  backgroundColor="#c7c7cc"
-                  isEmpty={true}
-                  isFocused={false}
-                  isValid={false}
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#c7c7cc",
-                        "borderRadius": 22,
-                        "height": 5,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                  testID="datepart-bar-month"
-                />
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "marginBottom": 4,
-                      "marginLeft": 4,
-                      "marginRight": 4,
-                      "marginTop": 4,
-                    },
-                  ]
-                }
-              >
-                <TextInput
-                  allowFontScaling={true}
-                  blurOnSubmit={true}
-                  keyboardType="number-pad"
-                  maxLength={4}
-                  numberOfChar={4}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  placeholder="AAAA"
-                  placeholderTextColor="#626262"
-                  rejectResponderTermination={true}
-                  selectTextOnFocus={true}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                      Object {
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "minWidth": 80,
-                        "paddingHorizontal": 10,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                  underlineColorAndroid="transparent"
-                  value=""
-                />
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    Array [
-                      Object {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  backgroundColor="#c7c7cc"
-                  isEmpty={true}
-                  isFocused={false}
-                  isValid={false}
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#c7c7cc",
-                        "borderRadius": 22,
-                        "height": 5,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                  testID="datepart-bar-year"
-                />
-              </View>
-            </View>
-          </View>
-          <Text
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "marginVertical": 32,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Ce site est protégé par reCAPTCHA Google. La
-            </Text>
-            <Text
-              color="#eb0055"
-              onPress={[Function]}
-              style={
-                Array [
-                  Object {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-              testID="external-link-google-data-privacy"
-            >
-              <View
-                numberOfSpaces={1}
-                style={
-                  Array [
-                    Object {
-                      "width": 4,
+                      "width": 8,
                     },
                   ]
                 }
               />
-              <Text>
-                <View
-                  height={16}
-                  testID="externalSiteIcon"
-                  width={15}
-                >
-                  externalSiteIcon-SVG-Mock
-                </View>
-                 Charte
-              </Text>
-               des Données Personnelles
-            </Text>
-            <View
-              numberOfSpaces={1}
-              style={
-                Array [
-                  Object {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              et les
-            </Text>
-            <Text
-              color="#eb0055"
-              onPress={[Function]}
-              style={
-                Array [
-                  Object {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-              testID="external-link-google-cgu"
-            >
               <View
-                numberOfSpaces={1}
                 style={
                   Array [
                     Object {
-                      "width": 4,
+                      "alignSelf": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#15884f"
+                  height={8}
+                  testID="dot-icon"
+                  width={8}
+                >
+                  dot-icon-SVG-Mock
+                </View>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
                     },
                   ]
                 }
               />
-              <Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignSelf": "center",
+                    },
+                  ]
+                }
+              >
                 <View
-                  height={16}
-                  testID="externalSiteIcon"
-                  width={15}
+                  fill="#eb0055"
+                  height={12}
+                  testID="dot-icon"
+                  width={12}
                 >
-                  externalSiteIcon-SVG-Mock
+                  dot-icon-SVG-Mock
                 </View>
-                 Conditions
-              </Text>
-               Générales d'Utilisation
-            </Text>
-            <View
-              numberOfSpaces={1}
-              style={
-                Array [
-                  Object {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              s'appliquent.
-            </Text>
-          </Text>
-          <View
-            accessible={true}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#ff99be",
-                "borderRadius": 24,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              }
-            }
-            testID="button-container-validate-birthday"
-          >
-            <Text
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 5,
-                    "maxWidth": 650,
-                  },
-                ]
-              }
-              testID="button-title-validate-birthday"
-              textColor="#ffffff"
-            >
-              Continuer
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={5}
-            style={
-              Array [
-                Object {
-                  "height": 20,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "display": "flex",
-                  "flexDirection": "row",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                fill="#15884f"
-                height={8}
-                testID="dot-icon"
-                width={8}
-              >
-                dot-icon-SVG-Mock
               </View>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                  },
-                ]
-              }
-            >
               <View
-                fill="#15884f"
-                height={8}
-                testID="dot-icon"
-                width={8}
-              >
-                dot-icon-SVG-Mock
-              </View>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                  },
-                ]
-              }
-            >
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
               <View
-                fill="#eb0055"
-                height={12}
-                testID="dot-icon"
-                width={12}
+                style={
+                  Array [
+                    Object {
+                      "alignSelf": "center",
+                    },
+                  ]
+                }
               >
-                dot-icon-SVG-Mock
-              </View>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                fill="#c7c7cc"
-                height={8}
-                testID="dot-icon"
-                width={8}
-              >
-                dot-icon-SVG-Mock
+                <View
+                  fill="#c7c7cc"
+                  height={8}
+                  testID="dot-icon"
+                  width={8}
+                >
+                  dot-icon-SVG-Mock
+                </View>
               </View>
             </View>
           </View>
