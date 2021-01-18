@@ -77,6 +77,16 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={'Account confirmation lien expiré'}
+            onPress={() =>
+              navigation.navigate('SignupConfirmationExpiredLink', {
+                email: 'john@wick.com',
+              })
+            }
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={'Signup : Validate Email'}
             onPress={() =>
               navigation.navigate('AfterSignupEmailValidationBuffer', {

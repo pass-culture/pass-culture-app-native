@@ -38,6 +38,7 @@ const NotAuthenticatedCalls = [
   'native/v1/account',
   'native/v1/refresh_access_token',
   'native/v1/request_password_reset',
+  'native/v1/resend_email_validation',
   'native/v1/reset_password',
   'native/v1/signin',
   'native/v1/validate_email',
