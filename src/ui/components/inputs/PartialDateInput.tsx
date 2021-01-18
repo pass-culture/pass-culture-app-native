@@ -40,18 +40,19 @@ export const _PartialDateInput: React.ForwardRefRenderFunction<TextInput, Partia
   return (
     <Container>
       <StyledInput
+        autoFocus={props.autoFocus}
+        blurOnSubmit
         keyboardType="number-pad"
         maxLength={props.placeholder.length}
+        numberOfChar={props.placeholder.length}
+        onBlur={onBlur}
         onChangeText={onChange}
         onFocus={onFocus}
-        onBlur={onBlur}
-        placeholder={props.placeholder}
-        value={value}
-        selectTextOnFocus
-        numberOfChar={props.placeholder.length}
-        ref={forwardedRef}
         onKeyPress={props.onKeyPress}
-        blurOnSubmit
+        placeholder={props.placeholder}
+        ref={forwardedRef}
+        selectTextOnFocus
+        value={value}
       />
       <Spacer.Column numberOfSpaces={1} />
       <ValidationBar

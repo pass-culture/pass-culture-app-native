@@ -12,6 +12,7 @@ export interface DateValidation {
 }
 
 interface DateInputProps {
+  autoFocus?: boolean
   onChangeValue?: (value: Date | null, dateValidation: DateValidation) => void
   minDate?: Date
   maxDate?: Date
@@ -138,6 +139,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   return (
     <Container>
       <PartialDateInput
+        autoFocus={props.autoFocus}
         identifier={DatePartType.DAY}
         isValid={(!dateValidation.isComplete && isDayValid) || dateValidation.isValid}
         onChangeValue={setDay}

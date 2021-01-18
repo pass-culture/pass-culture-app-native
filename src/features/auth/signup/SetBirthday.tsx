@@ -184,6 +184,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               />
               <DateInputContainer>
                 <DateInput
+                  autoFocus={true}
                   onChangeValue={onChangeValue}
                   ref={dateInputRef}
                   minDate={MIN_DATE}
