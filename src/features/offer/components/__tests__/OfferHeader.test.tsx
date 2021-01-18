@@ -68,6 +68,14 @@ describe('<OfferHeader />', () => {
     expect(share).toHaveBeenCalledWith({ message: title, title, url }, { dialogTitle: title })
   })
 
+  it('should display SignIn modal when pressing Favorite - not logged in users', async () => {
+    const { getByTestId, queryByText } = await renderOfferHeader(false)
+    act(() => {
+      fireEvent.press(getByTestId('icon-favorite'))
+    })
+    expect(queryByText(/Si tu as 18 ans/)).toBeTruthy()
+  })
+
   describe('<OfferHeader /> - Analytics', () => {
     it('should log ShareOffer once when clicking on the Share button', async () => {
       const { getByTestId } = await renderOfferHeader(true)
