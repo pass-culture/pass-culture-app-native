@@ -1,27 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const SelectionLabel: React.FC<{ label: string }> = ({ label }) => {
-  const [selected, setSelected] = useState<boolean>(false)
-  return (
-    <TouchableOpacity
-      selected={selected}
-      onPress={() => setSelected((prevSelected) => !prevSelected)}>
-      {selected ? (
-        <IconContainer>
-          <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
-        </IconContainer>
-      ) : (
-        <Spacer.Row numberOfSpaces={5} />
-      )}
-      <Label color={selected ? ColorsEnum.WHITE : ColorsEnum.BLACK}>{label}</Label>
-      <Spacer.Row numberOfSpaces={selected ? 2 : 5} />
-    </TouchableOpacity>
-  )
+interface Props {
+  label: string
+  selected: boolean
+  onPress: (text: string) => void
 }
+
+export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => (
+  <TouchableOpacity selected={selected} onPress={() => onPress(label)}>
+    {selected ? (
+      <IconContainer>
+        <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
+      </IconContainer>
+    ) : (
+      <Spacer.Row numberOfSpaces={5} />
+    )}
+    <Label color={selected ? ColorsEnum.WHITE : ColorsEnum.BLACK}>{label}</Label>
+    <Spacer.Row numberOfSpaces={selected ? 2 : 5} />
+  </TouchableOpacity>
+)
 
 const IconContainer = styled.View({
   width: getSpacing(8),

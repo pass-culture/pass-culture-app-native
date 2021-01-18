@@ -6,7 +6,7 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface IAccordionItemProps {
-  title: string
+  title: Element | string
   children: Element
   defaultOpen?: boolean
   onOpen?: () => void
