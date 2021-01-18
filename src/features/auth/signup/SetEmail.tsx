@@ -122,12 +122,12 @@ const ModalContent = styled.View({
   paddingTop: getSpacing(7),
   alignItems: 'center',
   width: '100%',
+  maxWidth: getSpacing(125),
 })
 
 const CheckBoxText = styled(Typo.Body)({
   alignSelf: 'center',
-  paddingLeft: getSpacing(4),
-  paddingRight: getSpacing(20),
+  ...padding(0, 8, 0, 4),
 })
 
 const StyledCheckBox = styled.View({
@@ -142,5 +142,4 @@ const StyledInput = styled.View({
   flexDirection: 'column',
   alignItems: 'flex-start',
   width: '100%',
-  maxWidth: getSpacing(125),
 })
