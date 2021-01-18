@@ -667,7 +667,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"alignSelf\\": \\"center\\",
--                                         \\"paddingHorizontal\\": 8,
+-                                         \\"paddingHorizontal\\": 4,
 -                                         \\"width\\": 16,
 -                                       },
 -                                     ]
@@ -790,7 +790,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"alignSelf\\": \\"center\\",
--                                         \\"paddingHorizontal\\": 8,
+-                                         \\"paddingHorizontal\\": 4,
 -                                         \\"width\\": 16,
 -                                       },
 -                                     ]
@@ -913,7 +913,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"alignSelf\\": \\"center\\",
--                                         \\"paddingHorizontal\\": 8,
+-                                         \\"paddingHorizontal\\": 4,
 -                                         \\"width\\": 16,
 -                                       },
 -                                     ]
@@ -1036,7 +1036,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"alignSelf\\": \\"center\\",
--                                         \\"paddingHorizontal\\": 8,
+-                                         \\"paddingHorizontal\\": 4,
 -                                         \\"width\\": 16,
 -                                       },
 -                                     ]
