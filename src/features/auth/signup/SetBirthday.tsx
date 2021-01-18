@@ -175,8 +175,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           onRightIconPress={showQuitSignupModal}
         />
         <BottomCardContentContainer>
-          <TouchableOpacityFullWidth onPress={Keyboard.dismiss}>
-            <React.Fragment>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <InnerContainer>
               <ButtonTertiary
                 title={_(t`Pourquoi ?`)}
                 onPress={onPressWhy}
@@ -224,8 +224,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               />
               <Spacer.Column numberOfSpaces={5} />
               <StepDots numberOfSteps={4} currentStep={3} />
-            </React.Fragment>
-          </TouchableOpacityFullWidth>
+            </InnerContainer>
+          </TouchableWithoutFeedback>
         </BottomCardContentContainer>
       </BottomContentPage>
       <AppInformationModal
@@ -261,7 +261,7 @@ async function logBirthdayAnalytics(age: number) {
   }
 }
 
-const TouchableOpacityFullWidth = styled(TouchableWithoutFeedback)({
+const InnerContainer = styled.View({
   width: '100%',
   alignItems: 'center',
 })
