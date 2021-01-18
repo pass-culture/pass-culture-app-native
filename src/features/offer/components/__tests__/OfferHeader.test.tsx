@@ -1,13 +1,12 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
 import { Animated, Share } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
+import { useRoute, goBack } from '__mocks__/@react-navigation/native'
 import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { Tab } from 'features/navigation/TabBar/TabNavigator'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
@@ -21,13 +20,16 @@ import { OfferHeader } from '../OfferHeader'
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-
 describe('<OfferHeader />', () => {
   afterEach(async () => {
     jest.clearAllMocks()
     await cleanup()
   })
+  beforeEach(() =>
+    useRoute.mockImplementation(() => ({
+      params: {},
+    }))
+  )
   it('should render correctly', async () => {
     const { toJSON } = await renderOfferHeader(true)
     expect(toJSON()).toMatchSnapshot()
@@ -47,6 +49,11 @@ describe('<OfferHeader />', () => {
     expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
   })
 
+  it('should goBack when we press on the back button', async () => {
+    const { getByTestId } = await renderOfferHeader(true)
+    fireEvent.press(getByTestId('icon-back'))
+    expect(goBack).toBeCalledTimes(1)
+  })
   it('should fully display the title at the end of the animation', async () => {
     const { animatedValue, getByTestId } = await renderOfferHeader(true)
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
@@ -105,19 +112,11 @@ async function renderOfferHeader(isLoggedIn: boolean) {
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
     reactQueryProviderHOC(
-      <NavigationContainer>
-        <Tab.Navigator initialRouteName="Home">
-          <Tab.Screen name="Home">
-            {() => (
-              <OfferHeader
-                title="Some very nice offer"
-                headerTransition={animatedValue}
-                offerId={offerId}
-              />
-            )}
-          </Tab.Screen>
-        </Tab.Navigator>
-      </NavigationContainer>
+      <OfferHeader
+        title="Some very nice offer"
+        headerTransition={animatedValue}
+        offerId={offerId}
+      />
     )
   )
   await act(async () => {
