@@ -289,6 +289,7 @@ Array [
                 >
                   <TextInput
                     allowFontScaling={true}
+                    autoFocus={true}
                     blurOnSubmit={true}
                     keyboardType="number-pad"
                     maxLength={2}
