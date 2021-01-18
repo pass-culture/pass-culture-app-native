@@ -1197,7 +1197,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 8,
+                                        "paddingHorizontal": 4,
                                         "width": 16,
                                       },
                                     ]
@@ -1320,7 +1320,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 8,
+                                        "paddingHorizontal": 4,
                                         "width": 16,
                                       },
                                     ]
@@ -1443,7 +1443,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 8,
+                                        "paddingHorizontal": 4,
                                         "width": 16,
                                       },
                                     ]
@@ -1566,7 +1566,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 8,
+                                        "paddingHorizontal": 4,
                                         "width": 16,
                                       },
                                     ]
@@ -3572,7 +3572,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 8,
+                                        "paddingHorizontal": 4,
                                         "width": 16,
                                       },
                                     ]
@@ -3695,7 +3695,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 8,
+                                        "paddingHorizontal": 4,
                                         "width": 16,
                                       },
                                     ]
@@ -3818,7 +3818,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 8,
+                                        "paddingHorizontal": 4,
                                         "width": 16,
                                       },
                                     ]
@@ -3941,7 +3941,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 8,
+                                        "paddingHorizontal": 4,
                                         "width": 16,
                                       },
                                     ]
