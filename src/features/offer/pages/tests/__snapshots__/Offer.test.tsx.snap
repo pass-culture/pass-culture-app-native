@@ -1799,6 +1799,16 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           </View>
                         </View>
                         <View
+                          numberOfSpaces={3}
+                          style={
+                            Array [
+                              Object {
+                                "width": 12,
+                              },
+                            ]
+                          }
+                        />
+                        <View
                           numberOfSpaces={10}
                           style={
                             Array [
@@ -1807,7 +1817,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               },
                             ]
                           }
-                          testID="headerIconPlaceholder"
+                          testID="leftShareIconPlaceholder"
                         />
                         <View
                           style={
@@ -2070,6 +2080,308 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                         }
                       />
                     </View>
+                    <Modal
+                      animationType="slide"
+                      hardwareAccelerated={false}
+                      statusBarTranslucent={true}
+                      transparent={true}
+                      visible={false}
+                    >
+                      <View
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "flexDirection": "column",
+                            "flexGrow": 1,
+                            "height": "100%",
+                            "justifyContent": "flex-end",
+                            "opacity": 1,
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View
+                          accessible={true}
+                          focusable={false}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderTopEndRadius": 16,
+                              "borderTopStartRadius": 16,
+                              "flexDirection": "column",
+                              "justifyContent": "flex-start",
+                              "opacity": 1,
+                              "paddingBottom": 20,
+                              "paddingLeft": 20,
+                              "paddingRight": 20,
+                              "paddingTop": 20,
+                              "width": "100%",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                  "width": "100%",
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              accessible={true}
+                              focusable={false}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "flex-start",
+                                  "flexBasis": 0,
+                                  "flexGrow": 0.2,
+                                  "flexShrink": 1,
+                                  "marginLeft": -4,
+                                  "opacity": 1,
+                                }
+                              }
+                              testID="leftIconButton"
+                            />
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "flexBasis": 0,
+                                    "flexGrow": 0.6,
+                                    "flexShrink": 1,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                    },
+                                  ]
+                                }
+                              >
+                                Le pass Culture est accessible à tous !
+                              </Text>
+                            </Text>
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "flex-end",
+                                  "flexBasis": 0,
+                                  "flexGrow": 0.2,
+                                  "flexShrink": 1,
+                                  "marginRight": -4,
+                                  "opacity": 1,
+                                }
+                              }
+                              testID="rightIconButton"
+                            >
+                              <View
+                                height={32}
+                                testID="rightIcon"
+                                width={32}
+                              >
+                                rightIcon-SVG-Mock
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "maxWidth": 500,
+                                  "paddingTop": 20,
+                                  "width": "100%",
+                                },
+                                Object {
+                                  "paddingBottom": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "paddingBottom": 30,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.
+                              </Text>
+                            </Text>
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "#eb0055",
+                                  "borderRadius": 24,
+                                  "borderWidth": 0,
+                                  "flexDirection": "row",
+                                  "height": 40,
+                                  "justifyContent": "center",
+                                  "maxWidth": 500,
+                                  "opacity": 1,
+                                  "paddingBottom": 2,
+                                  "paddingLeft": 2,
+                                  "paddingRight": 2,
+                                  "paddingTop": 2,
+                                  "width": "100%",
+                                }
+                              }
+                              testID="button-container"
+                            >
+                              <Text
+                                numberOfLines={1}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#ffffff",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                      "marginLeft": 5,
+                                      "maxWidth": 650,
+                                    },
+                                  ]
+                                }
+                                testID="button-title"
+                                textColor="#ffffff"
+                              >
+                                S'inscrire
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={3}
+                              style={
+                                Array [
+                                  Object {
+                                    "height": 12,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "transparent",
+                                  "borderRadius": 24,
+                                  "borderWidth": 0,
+                                  "flexDirection": "row",
+                                  "height": 40,
+                                  "justifyContent": "center",
+                                  "maxWidth": 500,
+                                  "opacity": 1,
+                                  "paddingBottom": 2,
+                                  "paddingLeft": 2,
+                                  "paddingRight": 2,
+                                  "paddingTop": 2,
+                                  "width": "100%",
+                                }
+                              }
+                              testID="button-container"
+                            >
+                              <Text
+                                numberOfLines={1}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#eb0055",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                      "marginLeft": 5,
+                                      "maxWidth": 650,
+                                    },
+                                  ]
+                                }
+                                testID="button-title"
+                                textColor="#eb0055"
+                              >
+                                Se connecter
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </Modal>
                   </View>
                 </View>
               </View>
@@ -4174,6 +4486,16 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           </View>
                         </View>
                         <View
+                          numberOfSpaces={3}
+                          style={
+                            Array [
+                              Object {
+                                "width": 12,
+                              },
+                            ]
+                          }
+                        />
+                        <View
                           numberOfSpaces={10}
                           style={
                             Array [
@@ -4182,7 +4504,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               },
                             ]
                           }
-                          testID="headerIconPlaceholder"
+                          testID="leftShareIconPlaceholder"
                         />
                         <View
                           style={
@@ -4445,6 +4767,308 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                         }
                       />
                     </View>
+                    <Modal
+                      animationType="slide"
+                      hardwareAccelerated={false}
+                      statusBarTranslucent={true}
+                      transparent={true}
+                      visible={false}
+                    >
+                      <View
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "flexDirection": "column",
+                            "flexGrow": 1,
+                            "height": "100%",
+                            "justifyContent": "flex-end",
+                            "opacity": 1,
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View
+                          accessible={true}
+                          focusable={false}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderTopEndRadius": 16,
+                              "borderTopStartRadius": 16,
+                              "flexDirection": "column",
+                              "justifyContent": "flex-start",
+                              "opacity": 1,
+                              "paddingBottom": 20,
+                              "paddingLeft": 20,
+                              "paddingRight": 20,
+                              "paddingTop": 20,
+                              "width": "100%",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                  "width": "100%",
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              accessible={true}
+                              focusable={false}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "flex-start",
+                                  "flexBasis": 0,
+                                  "flexGrow": 0.2,
+                                  "flexShrink": 1,
+                                  "marginLeft": -4,
+                                  "opacity": 1,
+                                }
+                              }
+                              testID="leftIconButton"
+                            />
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "flexBasis": 0,
+                                    "flexGrow": 0.6,
+                                    "flexShrink": 1,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                    },
+                                  ]
+                                }
+                              >
+                                Le pass Culture est accessible à tous !
+                              </Text>
+                            </Text>
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "flex-end",
+                                  "flexBasis": 0,
+                                  "flexGrow": 0.2,
+                                  "flexShrink": 1,
+                                  "marginRight": -4,
+                                  "opacity": 1,
+                                }
+                              }
+                              testID="rightIconButton"
+                            >
+                              <View
+                                height={32}
+                                testID="rightIcon"
+                                width={32}
+                              >
+                                rightIcon-SVG-Mock
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "maxWidth": 500,
+                                  "paddingTop": 20,
+                                  "width": "100%",
+                                },
+                                Object {
+                                  "paddingBottom": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "paddingBottom": 30,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.
+                              </Text>
+                            </Text>
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "#eb0055",
+                                  "borderRadius": 24,
+                                  "borderWidth": 0,
+                                  "flexDirection": "row",
+                                  "height": 40,
+                                  "justifyContent": "center",
+                                  "maxWidth": 500,
+                                  "opacity": 1,
+                                  "paddingBottom": 2,
+                                  "paddingLeft": 2,
+                                  "paddingRight": 2,
+                                  "paddingTop": 2,
+                                  "width": "100%",
+                                }
+                              }
+                              testID="button-container"
+                            >
+                              <Text
+                                numberOfLines={1}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#ffffff",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                      "marginLeft": 5,
+                                      "maxWidth": 650,
+                                    },
+                                  ]
+                                }
+                                testID="button-title"
+                                textColor="#ffffff"
+                              >
+                                S'inscrire
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={3}
+                              style={
+                                Array [
+                                  Object {
+                                    "height": 12,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "transparent",
+                                  "borderRadius": 24,
+                                  "borderWidth": 0,
+                                  "flexDirection": "row",
+                                  "height": 40,
+                                  "justifyContent": "center",
+                                  "maxWidth": 500,
+                                  "opacity": 1,
+                                  "paddingBottom": 2,
+                                  "paddingLeft": 2,
+                                  "paddingRight": 2,
+                                  "paddingTop": 2,
+                                  "width": "100%",
+                                }
+                              }
+                              testID="button-container"
+                            >
+                              <Text
+                                numberOfLines={1}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#eb0055",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                      "marginLeft": 5,
+                                      "maxWidth": 650,
+                                    },
+                                  ]
+                                }
+                                testID="button-title"
+                                textColor="#eb0055"
+                              >
+                                Se connecter
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </Modal>
                   </View>
                 </View>
               </View>
