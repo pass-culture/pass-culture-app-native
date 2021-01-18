@@ -3,7 +3,7 @@ import React from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { RadiusSlider, PriceSlider } from 'features/search/components'
+import { CategorySection, RadiusSlider, PriceSlider } from 'features/search/components'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -24,6 +24,8 @@ export const SearchFilter: React.FC = () => (
         <Spacer.Column numberOfSpaces={16} />
         <RadiusSlider />
         <Separator />
+        <CategorySection />
+        <Separator />
         <PriceSlider />
       </Container>
     </React.Fragment>
@@ -31,7 +33,7 @@ export const SearchFilter: React.FC = () => (
   </React.Fragment>
 )
 
-const Container = styled.ScrollView({ flex: 1, marginHorizontal: getSpacing(6) })
+const Container = styled.ScrollView({ flex: 1 })
 const Separator = styled.View({
   width: '100%',
   height: 2,
