@@ -79,12 +79,13 @@ export const ForgottenPassword: FunctionComponent = () => {
           <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <TextInput
-            value={email}
+            autoCapitalize="none"
+            autoFocus={true}
+            keyboardType="email-address"
             onChangeText={onChangeEmail}
             placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
-            keyboardType="email-address"
             textContentType="emailAddress"
-            autoFocus={true}
+            value={email}
           />
           <InputError
             visible={hasError}

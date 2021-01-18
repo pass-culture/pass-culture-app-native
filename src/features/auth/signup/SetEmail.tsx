@@ -20,7 +20,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
 
 export const SetEmail: FunctionComponent = () => {
   const [email, setEmail] = useState('')
@@ -76,13 +76,14 @@ export const SetEmail: FunctionComponent = () => {
             <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
             <Spacer.Column numberOfSpaces={2} />
             <TextInput
-              value={email}
+              autoCapitalize="none"
+              autoFocus={true}
+              keyboardType="email-address"
               onChangeText={onChangeEmail}
               placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
-              keyboardType="email-address"
-              textContentType="emailAddress"
-              autoFocus={true}
               ref={emailInput}
+              textContentType="emailAddress"
+              value={email}
             />
             <InputError
               visible={hasError}

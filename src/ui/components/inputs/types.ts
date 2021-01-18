@@ -4,6 +4,7 @@ import { TextInput as RNTextInput } from 'react-native'
 export type CustomTextInputProps = {
   isError?: boolean
 }
+
 export type CustomSearchInputProps = {
   inputHeight?: 'small' | 'tall'
   LeftIcon?: React.FC
@@ -12,26 +13,28 @@ export type CustomSearchInputProps = {
 
 export type RNTextInputProps = Pick<
   React.ComponentProps<typeof RNTextInput>,
+  | 'autoCapitalize'
   | 'autoCorrect'
-  | 'returnKeyType'
-  | 'selectionColor'
-  | 'onChangeText'
-  | 'placeholder'
-  | 'value'
   | 'autoFocus'
-  | 'keyboardType'
-  | 'textContentType'
-  | 'secureTextEntry'
-  | 'onFocus'
-  | 'onBlur'
-  | 'maxLength'
-  | 'selectTextOnFocus'
-  | 'onKeyPress'
   | 'blurOnSubmit'
+  | 'keyboardType'
+  | 'maxLength'
+  | 'onBlur'
+  | 'onChangeText'
+  | 'onFocus'
+  | 'onKeyPress'
+  | 'placeholder'
+  | 'returnKeyType'
+  | 'secureTextEntry'
+  | 'selectionColor'
+  | 'selectTextOnFocus'
+  | 'textContentType'
+  | 'value'
 > &
   RefAttributes<RNTextInput>
 
 export type TextInputProps = CustomTextInputProps & RNTextInputProps
+
 export type SearchInputProps = CustomSearchInputProps & RNTextInputProps
 
 export function getCustomTextInputProps(props: TextInputProps): CustomTextInputProps {
@@ -45,11 +48,22 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
 
 export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
   return {
-    onChangeText: props.onChangeText,
-    placeholder: props.placeholder,
-    value: props.value,
+    autoCapitalize: props.autoCapitalize,
+    autoCorrect: props.autoCorrect,
     autoFocus: props.autoFocus,
+    blurOnSubmit: props.blurOnSubmit,
     keyboardType: props.keyboardType,
+    maxLength: props.maxLength,
+    onBlur: props.onBlur,
+    onChangeText: props.onChangeText,
+    onFocus: props.onFocus,
+    onKeyPress: props.onKeyPress,
+    placeholder: props.placeholder,
+    returnKeyType: props.returnKeyType,
+    secureTextEntry: props.secureTextEntry,
+    selectionColor: props.selectionColor,
+    selectTextOnFocus: props.selectTextOnFocus,
     textContentType: props.textContentType,
+    value: props.value,
   }
 }

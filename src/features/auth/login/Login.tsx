@@ -84,13 +84,14 @@ export const Login: FunctionComponent = function () {
         <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
         <Spacer.Column numberOfSpaces={2} />
         <TextInput
-          value={email}
-          onChangeText={setEmail}
-          placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
-          keyboardType="email-address"
-          textContentType="emailAddress"
+          autoCapitalize="none"
           autoFocus={true}
           isError={shouldShowErrorMessage}
+          keyboardType="email-address"
+          onChangeText={setEmail}
+          placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
+          textContentType="emailAddress"
+          value={email}
         />
       </StyledInput>
       <Spacer.Column numberOfSpaces={6} />

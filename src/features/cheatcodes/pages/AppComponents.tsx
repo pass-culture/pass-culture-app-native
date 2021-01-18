@@ -364,10 +364,11 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input - Email</Typo.Title4>
         <TextInput
-          value=""
+          autoCapitalize="none"
+          keyboardType="email-address"
           onChangeText={doNothingFn}
           placeholder={'Placeholder'}
-          keyboardType="email-address"
+          value=""
         />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input - Error</Typo.Title4>
