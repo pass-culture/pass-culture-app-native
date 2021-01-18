@@ -8,11 +8,11 @@ export const TitleWithCount: React.FC<{ title: string; count: number }> = ({
   count = 0,
   title,
 }) => {
+  const countString = ` (${count})`
   return (
     <Typo.Title4>
       {title}
-      {/* eslint-disable-next-line react-native/no-raw-text */}
-      {count > 0 && <RedTitle>{` (${count})`}</RedTitle>}
+      {count > 0 && <RedTitle>{countString}</RedTitle>}
     </Typo.Title4>
   )
 }
