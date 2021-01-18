@@ -21,7 +21,7 @@ export const AccordionItem = ({
   onOpenOnce,
 }: IAccordionItemProps) => {
   const [open, setOpen] = useState(defaultOpen)
-  const animatedController = useRef(new Animated.Value(0)).current
+  const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
   const hasBeenOpened = useRef<boolean>(false)
 
