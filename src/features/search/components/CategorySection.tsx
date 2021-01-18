@@ -26,7 +26,7 @@ const initialMapping = categories.reduce(
 export const CategorySection: React.FC = () => {
   const [selectedMapping, setSelectedMappping] = useState<SelectedMapping>(initialMapping)
 
-  const onPress = (label: string) => {
+  const onPress = (label: string) => () => {
     setSelectedMappping((prevMapping) => ({ ...prevMapping, [label]: !prevMapping[label] }))
   }
 
@@ -42,7 +42,12 @@ export const CategorySection: React.FC = () => {
         }>
         <BodyContainer>
           {Object.entries(selectedMapping).map(([label, selected]) => (
-            <SelectionLabel key={label} label={label} selected={selected} onPress={onPress} />
+            <SelectionLabel
+              key={label}
+              label={label}
+              selected={selected}
+              onPress={onPress(label)}
+            />
           ))}
         </BodyContainer>
       </AccordionItem>

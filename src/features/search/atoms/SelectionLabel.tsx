@@ -7,11 +7,11 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 interface Props {
   label: string
   selected: boolean
-  onPress: (text: string) => void
+  onPress: () => void
 }
 
 export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => (
-  <TouchableOpacity selected={selected} onPress={() => onPress(label)}>
+  <TouchableOpacity selected={selected} onPress={onPress}>
     {selected ? (
       <IconContainer>
         <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
