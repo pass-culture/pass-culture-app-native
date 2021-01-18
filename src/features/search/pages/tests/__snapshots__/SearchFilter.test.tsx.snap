@@ -93,7 +93,7 @@ Array [
                   "position": "relative",
                 },
                 Object {
-                  "height": 20,
+                  "height": 32,
                 },
               ]
             }
@@ -105,7 +105,7 @@ Array [
                     "flexDirection": "row",
                   },
                   Object {
-                    "width": 280,
+                    "width": 654,
                   },
                 ]
               }
@@ -127,7 +127,7 @@ Array [
                       "backgroundColor": "#eb0055",
                     },
                     Object {
-                      "width": 280,
+                      "width": 654,
                     },
                   ]
                 }
@@ -166,7 +166,7 @@ Array [
                       "width": 48,
                     },
                     Object {
-                      "left": 256,
+                      "left": 630,
                       "top": -24,
                     },
                     undefined,
@@ -326,7 +326,7 @@ Array [
                   "position": "relative",
                 },
                 Object {
-                  "height": 20,
+                  "height": 32,
                 },
               ]
             }
@@ -338,7 +338,7 @@ Array [
                     "flexDirection": "row",
                   },
                   Object {
-                    "width": 280,
+                    "width": 654,
                   },
                 ]
               }
@@ -394,7 +394,7 @@ Array [
                       "backgroundColor": "#eb0055",
                     },
                     Object {
-                      "width": 280,
+                      "width": 654,
                     },
                   ]
                 }

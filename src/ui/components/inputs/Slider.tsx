@@ -1,5 +1,6 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React, { useState } from 'react'
+import { Dimensions } from 'react-native'
 
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
@@ -16,6 +17,8 @@ const DEFAULT_MIN = 0
 const DEFAULT_MAX = 100
 const DEFAULT_STEP = 1
 const DEFAULT_VALUES = [DEFAULT_MIN, DEFAULT_MAX]
+
+const { width } = Dimensions.get('window')
 
 export const Slider: React.FC<Props> = (props) => {
   const { showValues, formatValues = (s: number) => s } = props
@@ -43,6 +46,7 @@ export const Slider: React.FC<Props> = (props) => {
         pressedMarkerStyle={markerStyle}
         containerStyle={containerStyle}
         onValuesChange={setValues}
+        sliderLength={width - getSpacing(2 * 2 * 6)}
       />
     </React.Fragment>
   )
@@ -63,4 +67,4 @@ const markerStyle = {
 const trackStyle = { height: 15, marginTop: -7, borderRadius: BorderRadiusEnum.BUTTON }
 const selectedStyle = { backgroundColor: ColorsEnum.PRIMARY }
 const unselectedStyle = { backgroundColor: ColorsEnum.GREY_MEDIUM }
-const containerStyle = { height: getSpacing(5) }
+const containerStyle = { height: getSpacing(8) }
