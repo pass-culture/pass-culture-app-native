@@ -92,7 +92,7 @@ describe('AcceptCgu Page', () => {
     const rightIcon = getByTestId('rightIcon')
     fireEvent.press(rightIcon)
 
-    const title = queryByText("Es-tu sûr de vouloir abandonner l'inscription ?")
+    const title = queryByText("Veux-tu abandonner l'inscription ?")
     expect(title).toBeTruthy()
   })
 

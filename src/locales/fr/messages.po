@@ -230,10 +230,6 @@ msgstr "Erreur d'authentification"
 msgid "Erreur lors de la récupération du token d'accès"
 msgstr "Erreur lors de la récupération du token d'accès"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:29
-msgid "Es-tu sûr de vouloir abandonner l'inscription ?"
-msgstr "Es-tu sûr de vouloir abandonner l'inscription ?"
-
 #: src/features/favorites/pages/Favorites.tsx:8
 msgid "Favorites"
 msgstr "Favoris"
@@ -297,8 +293,8 @@ msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
 #: src/features/auth/signup/QuitSignupModal.tsx:31
-msgid "Les informations que tu as enregistrées ne seront pas enregistrées"
-msgstr "Les informations que tu as enregistrées ne seront pas enregistrées"
+msgid "Les informations que tu as renseignés ne seront pas enregistrées"
+msgstr "Les informations que tu as renseignés ne seront pas enregistrées"
 
 #: src/features/auth/signup/SetBirthday.tsx:164
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
@@ -463,8 +459,8 @@ msgid "Ton compte est maintenant activé !"
 msgstr "Ton compte est maintenant activé !"
 
 #: src/features/auth/signup/SetEmail.tsx:61
-msgid "Ton email"
-msgstr "Ton email"
+msgid "Ton e-mail"
+msgstr "Ton e-mail"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
@@ -502,6 +498,10 @@ msgstr "VISA"
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:78
 msgid "Valider"
 msgstr "Valider"
+
+#: src/features/auth/signup/QuitSignupModal.tsx:29
+msgid "Veux-tu abandonner l'inscription ?"
+msgstr "Veux-tu abandonner l'inscription ?"
 
 #: src/features/offer/components/OfferWhereSection.tsx:46
 #: src/features/offer/services/useItinerary.ts:77
