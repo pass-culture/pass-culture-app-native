@@ -65,7 +65,7 @@ export const SetEmail: FunctionComponent = () => {
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
-          title={_(t`Ton email`)}
+          title={_(t`Ton e-mail`)}
           leftIcon={ArrowPrevious}
           onLeftIconPress={complexGoBack}
           rightIcon={Close}
