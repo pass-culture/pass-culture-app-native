@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
-import { Keyboard, TouchableOpacity } from 'react-native'
+import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
@@ -176,53 +176,55 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
         />
         <BottomCardContentContainer>
           <TouchableOpacityFullWidth onPress={Keyboard.dismiss}>
-            <ButtonTertiary
-              title={_(t`Pourquoi ?`)}
-              onPress={onPressWhy}
-              testIdSuffix={'why-link'}
-            />
-            <DateInputContainer>
-              <DateInput
-                onChangeValue={onChangeValue}
-                ref={dateInputRef}
-                minDate={MIN_DATE}
-                maxDate={maxDate}
+            <React.Fragment>
+              <ButtonTertiary
+                title={_(t`Pourquoi ?`)}
+                onPress={onPressWhy}
+                testIdSuffix={'why-link'}
               />
-              {renderErrorMessages()}
-            </DateInputContainer>
-            <Paragraphe>
-              <Typo.Body>
-                {_(
-                  /*i18n: signup birthday page reCAPTCHA */ t`Ce site est protégé par reCAPTCHA Google. La`
-                )}
-              </Typo.Body>
-              <ExternalLink
-                text={_(t`Charte des Données Personnelles`)}
-                url={'https://policies.google.com/privacy'}
-                color={ColorsEnum.PRIMARY}
-                testID="external-link-google-data-privacy"
+              <DateInputContainer>
+                <DateInput
+                  onChangeValue={onChangeValue}
+                  ref={dateInputRef}
+                  minDate={MIN_DATE}
+                  maxDate={maxDate}
+                />
+                {renderErrorMessages()}
+              </DateInputContainer>
+              <Paragraphe>
+                <Typo.Body>
+                  {_(
+                    /*i18n: signup birthday page reCAPTCHA */ t`Ce site est protégé par reCAPTCHA Google. La`
+                  )}
+                </Typo.Body>
+                <ExternalLink
+                  text={_(t`Charte des Données Personnelles`)}
+                  url={'https://policies.google.com/privacy'}
+                  color={ColorsEnum.PRIMARY}
+                  testID="external-link-google-data-privacy"
+                />
+                <Spacer.Row numberOfSpaces={1} />
+                <Typo.Body>{_(/*i18n: signup birthday page reCAPTCHA */ t`et les`)}</Typo.Body>
+                <ExternalLink
+                  text={_(t`Conditions Générales d'Utilisation`)}
+                  url={'https://policies.google.com/terms'}
+                  color={ColorsEnum.PRIMARY}
+                  testID="external-link-google-cgu"
+                />
+                <Spacer.Row numberOfSpaces={1} />
+                <Typo.Body>
+                  {_(/*i18n: signup birthday page reCAPTCHA */ t` s'appliquent.`)}
+                </Typo.Body>
+              </Paragraphe>
+              <ButtonPrimary
+                title={_(t`Continuer`)}
+                disabled={!state.isDateValid}
+                testIdSuffix={'validate-birthday'}
+                onPress={animateBeforeNavigation}
               />
-              <Spacer.Row numberOfSpaces={1} />
-              <Typo.Body>{_(/*i18n: signup birthday page reCAPTCHA */ t`et les`)}</Typo.Body>
-              <ExternalLink
-                text={_(t`Conditions Générales d'Utilisation`)}
-                url={'https://policies.google.com/terms'}
-                color={ColorsEnum.PRIMARY}
-                testID="external-link-google-cgu"
-              />
-              <Spacer.Row numberOfSpaces={1} />
-              <Typo.Body>
-                {_(/*i18n: signup birthday page reCAPTCHA */ t` s'appliquent.`)}
-              </Typo.Body>
-            </Paragraphe>
-            <ButtonPrimary
-              title={_(t`Continuer`)}
-              disabled={!state.isDateValid}
-              testIdSuffix={'validate-birthday'}
-              onPress={animateBeforeNavigation}
-            />
-            <Spacer.Column numberOfSpaces={5} />
-            <StepDots numberOfSteps={4} currentStep={3} />
+              <Spacer.Column numberOfSpaces={5} />
+              <StepDots numberOfSteps={4} currentStep={3} />
+            </React.Fragment>
           </TouchableOpacityFullWidth>
         </BottomCardContentContainer>
       </BottomContentPage>
@@ -259,7 +261,7 @@ async function logBirthdayAnalytics(age: number) {
   }
 }
 
-const TouchableOpacityFullWidth = styled(TouchableOpacity)({
+const TouchableOpacityFullWidth = styled(TouchableWithoutFeedback)({
   width: '100%',
   alignItems: 'center',
 })
