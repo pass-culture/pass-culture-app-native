@@ -322,7 +322,20 @@ Array [
               ]
             }
           >
-            Catégories
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                  },
+                ]
+              }
+            >
+              Catégories
+            </Text>
           </Text>
           <View
             style={
@@ -373,7 +386,6 @@ Array [
               style={
                 Array [
                   Object {
-                    "display": "flex",
                     "flexDirection": "row",
                     "flexWrap": "wrap",
                     "marginBottom": -12,
@@ -384,7 +396,7 @@ Array [
             >
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -394,16 +406,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -411,7 +437,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -419,10 +444,20 @@ Array [
                 >
                   Cinéma
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -432,16 +467,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -449,7 +498,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -457,10 +505,20 @@ Array [
                 >
                   Visites, expositions
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -470,16 +528,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -487,7 +559,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -495,10 +566,20 @@ Array [
                 >
                   Musique
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -508,16 +589,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -525,7 +620,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -533,10 +627,20 @@ Array [
                 >
                   Spectacles
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -546,16 +650,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -563,7 +681,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -571,10 +688,20 @@ Array [
                 >
                   Cours, ateliers
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -584,16 +711,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -601,7 +742,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -609,10 +749,20 @@ Array [
                 >
                   Livres
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -622,16 +772,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -639,7 +803,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -647,10 +810,20 @@ Array [
                 >
                   Films, séries, podcasts
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -660,16 +833,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -677,7 +864,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -685,10 +871,20 @@ Array [
                 >
                   Presse
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -698,16 +894,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -715,7 +925,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -723,10 +932,20 @@ Array [
                 >
                   Jeux vidéos
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -736,16 +955,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -753,7 +986,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -761,10 +993,20 @@ Array [
                 >
                   Conférences, rencontres
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
               <View
                 accessible={true}
-                focusable={false}
+                focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -774,16 +1016,30 @@ Array [
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
                     "borderColor": "#c7c7cc",
-                    "borderRadius": 24,
+                    "borderRadius": 40,
                     "borderWidth": 2,
+                    "flexDirection": "row",
                     "marginBottom": 12,
                     "marginRight": 12,
                     "opacity": 1,
                   }
                 }
               >
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
                 <Text
+                  color="#151515"
                   style={
                     Array [
                       Object {
@@ -791,7 +1047,6 @@ Array [
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "paddingHorizontal": 16,
                         "paddingVertical": 10,
                       },
                     ]
@@ -799,6 +1054,16 @@ Array [
                 >
                   Instruments de musique
                 </Text>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
               </View>
             </View>
           </View>
