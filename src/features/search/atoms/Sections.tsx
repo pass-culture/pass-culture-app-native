@@ -7,10 +7,11 @@ export const CenteredSection: React.FC<{ title: string; children: Element }> = (
   title,
   children,
 }) => (
-  <React.Fragment>
+  <Container>
     <Typo.Title4>{title}</Typo.Title4>
     <Center>{children}</Center>
-  </React.Fragment>
+  </Container>
 )
 
+const Container = styled.View({ marginHorizontal: getSpacing(6) })
 const Center = styled.View({ alignItems: 'center', marginTop: getSpacing(4) })
