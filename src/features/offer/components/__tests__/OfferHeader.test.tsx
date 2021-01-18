@@ -1,12 +1,13 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
 import { Animated, Share } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
-import { goBack } from '__mocks__/@react-navigation/native'
 import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { Tab } from 'features/navigation/TabBar/TabNavigator'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
@@ -20,6 +21,8 @@ import { OfferHeader } from '../OfferHeader'
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
+jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+
 describe('<OfferHeader />', () => {
   afterEach(async () => {
     jest.clearAllMocks()
@@ -30,31 +33,20 @@ describe('<OfferHeader />', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should render the correct icons - loggedIn', async () => {
+  it('should render all the icons - loggedIn', async () => {
     const offerHeader = await renderOfferHeader(true)
     expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
     expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
     expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
   })
 
-  it('should render the correct icons - not loggedIn', async () => {
+  it('should render all the icons - not loggedIn', async () => {
     const offerHeader = await renderOfferHeader(false)
     expect(offerHeader.queryByTestId('icon-back')).toBeTruthy()
     expect(offerHeader.queryByTestId('icon-share')).toBeTruthy()
-    expect(offerHeader.queryByTestId('icon-favorite')).toBeNull()
+    expect(offerHeader.queryByTestId('icon-favorite')).toBeTruthy()
   })
 
-  it('should goBack when we press on the back buttton', async () => {
-    const { getByTestId } = await renderOfferHeader(true)
-    fireEvent.press(getByTestId('icon-back'))
-    expect(goBack).toHaveBeenCalledTimes(1)
-  })
-  it('should render a placeholder only if the user is connected', async () => {
-    const connectedHeader = await renderOfferHeader(true)
-    expect(connectedHeader.queryByTestId('headerIconPlaceholder')).toBeTruthy()
-    const disconnectedHeader = await renderOfferHeader(false)
-    expect(disconnectedHeader.queryByTestId('headerIconPlaceholder')).toBeFalsy()
-  })
   it('should fully display the title at the end of the animation', async () => {
     const { animatedValue, getByTestId } = await renderOfferHeader(true)
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
@@ -105,11 +97,19 @@ async function renderOfferHeader(isLoggedIn: boolean) {
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
     reactQueryProviderHOC(
-      <OfferHeader
-        title="Some very nice offer"
-        headerTransition={animatedValue}
-        offerId={offerId}
-      />
+      <NavigationContainer>
+        <Tab.Navigator initialRouteName="Home">
+          <Tab.Screen name="Home">
+            {() => (
+              <OfferHeader
+                title="Some very nice offer"
+                headerTransition={animatedValue}
+                offerId={offerId}
+              />
+            )}
+          </Tab.Screen>
+        </Tab.Navigator>
+      </NavigationContainer>
     )
   )
   await act(async () => {
