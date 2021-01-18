@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { AccordionItem, CallToAction } from 'features/offer/components'
+import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { AlgoliaCategory } from 'libs/algolia'
 import { mapCategoryToIcon } from 'libs/parsers'
@@ -419,6 +420,8 @@ export const AppComponents: FunctionComponent = () => {
         <Center>
           <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n} €`} />
           <Slider values={[50]} showValues formatValues={(n) => `${n} km`} />
+          <Spacer.Column numberOfSpaces={4} />
+          <FilterSwitch />
         </Center>
         <RowWrap>
           <Label label="Cinéma" />
