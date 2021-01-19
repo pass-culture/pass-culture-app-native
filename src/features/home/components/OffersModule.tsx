@@ -1,12 +1,14 @@
 import { Hit } from '@algolia/client-search'
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
 import { AlgoliaParametersFields, DisplayParametersFields, Layout } from 'features/home/contentful'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
@@ -38,12 +40,12 @@ const renderHeaderCover = (cover: string | null, layout: Layout) =>
     <Spacer.Row numberOfSpaces={6} />
   )
 
-const renderSeeMore = (showSeeMore: boolean, layout: Layout, moduleName: string) =>
+const renderSeeMore = (showSeeMore: boolean, layout: Layout, onPressSeeMore: () => void) =>
   showSeeMore ? (
     <Row>
       {/* Gutter: 16px */}
       <Spacer.Row numberOfSpaces={4} />
-      <SeeMore layout={layout} onPress={() => analytics.logClickSeeMore(moduleName)} />
+      <SeeMore layout={layout} onPress={onPressSeeMore} />
       {/* Margin: 24px */}
       <Spacer.Row numberOfSpaces={6} />
     </Row>
@@ -54,6 +56,8 @@ const renderSeeMore = (showSeeMore: boolean, layout: Layout, moduleName: string)
 export const OffersModule = (props: OffersModuleProps) => {
   const { hits, nbHits, display, algolia: parameters, position, index, isBeneficiary } = props
   const [hasSeenAllTiles, setHasSeenAllTiles] = useState<boolean>(false)
+  const { navigate } = useNavigation<UseNavigationType>()
+
   const moduleName = display.title || parameters.title
   const renderItem = useCallback(
     ({ item }: { item: Hit<AlgoliaHit> }) => {
@@ -95,6 +99,13 @@ export const OffersModule = (props: OffersModuleProps) => {
     }
   }
 
+  const onPressSeeMore = () => {
+    analytics.logClickSeeMore(moduleName)
+    navigate('Search', {
+      parameters: parseAlgoliaParameters({ geolocation: position, parameters }),
+    })
+  }
+
   return (
     <React.Fragment>
       <ModuleTitle
@@ -110,7 +121,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         keyExtractor={(item) => item.objectID}
         ListHeaderComponent={renderHeaderCover(props.cover, display.layout)}
         ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
-        ListFooterComponent={renderSeeMore(showSeeMore, display.layout, moduleName)}
+        ListFooterComponent={renderSeeMore(showSeeMore, display.layout, onPressSeeMore)}
         showsHorizontalScrollIndicator={false}
         onEndReached={logAllTilesSeenOnEndReached}
         onEndReachedThreshold={showSeeMore ? 0.6 : 0.1} // We remove the margin

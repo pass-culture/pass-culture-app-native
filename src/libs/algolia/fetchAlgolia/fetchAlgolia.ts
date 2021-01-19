@@ -1,6 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 import algoliasearch from 'algoliasearch'
 
+import { SearchState } from 'features/search/pages/SearchWrapper'
 import { env } from 'libs/environment'
 
 import { RADIUS_FILTERS } from '../enums'
