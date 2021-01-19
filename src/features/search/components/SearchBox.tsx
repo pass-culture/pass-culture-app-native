@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import debounce from 'lodash.debounce'
+import React, { useRef, useState } from 'react'
 import { connectSearchBox } from 'react-instantsearch-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -6,6 +7,8 @@ import styled from 'styled-components/native'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+
+const SEARCH_DEBOUNCE_MS = 400
 
 interface Props {
   refine: (text: string) => void
@@ -21,9 +24,10 @@ const getRightIcon = (currentValue: string, onPress: () => void) =>
 
 const SearchBoxComponent: React.FC<Props> = ({ refine, value = '' }) => {
   const [currentValue, setCurrentValue] = useState<string>(value)
+  const debouncedRefine = useRef(debounce(refine, SEARCH_DEBOUNCE_MS)).current
 
   const handleChangeText = (newValue: string) => {
-    refine(newValue)
+    debouncedRefine(newValue)
     setCurrentValue(newValue)
   }
   const resetSearch = () => handleChangeText('')
