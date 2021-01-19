@@ -1,0 +1,27 @@
+import { render } from '@testing-library/react-native'
+import React from 'react'
+
+import { ColorsEnum } from 'ui/theme'
+
+import { SearchResults } from '../SearchResultsButton'
+
+describe('<SearchResultsButton />', () => {
+  it.each`
+    nbHits  | expected                         | disabled
+    ${0}    | ${'Aucun résultat'}              | ${true}
+    ${1}    | ${'Afficher 1 résultat'}         | ${false}
+    ${50}   | ${'Afficher les 50 résultats'}   | ${false}
+    ${999}  | ${'Afficher les 999 résultats'}  | ${false}
+    ${1200} | ${'Afficher les 999+ résultats'} | ${false}
+  `(
+    'should display the correct translation ($expected) and be disabled=$disabled',
+    ({ nbHits, expected, disabled }) => {
+      const { getByTestId } = render(<SearchResults nbHits={nbHits} />)
+      expect(getByTestId('button-title')).toBeTruthy()
+      expect(getByTestId('button-title').children[0]).toBe(expected)
+
+      const expectedColor = disabled ? ColorsEnum.PRIMARY_DISABLED : ColorsEnum.PRIMARY
+      expect(getByTestId('button-container').props.style.backgroundColor).toBe(expectedColor)
+    }
+  )
+})

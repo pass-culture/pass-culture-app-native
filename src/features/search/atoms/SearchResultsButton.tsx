@@ -13,7 +13,9 @@ const formatNbHits = (nbHits: number) => {
   return _(t`Afficher les ${nbHits} résultats`)
 }
 
-export const SearchResultsButton = connectStats(({ nbHits }) => {
+export const SearchResults: React.FC<{ nbHits: number }> = ({ nbHits }) => {
   const { goBack } = useNavigation()
   return <ButtonPrimary title={formatNbHits(nbHits)} disabled={nbHits === 0} onPress={goBack} />
-})
+}
+
+export const SearchResultsButton = connectStats(SearchResults)
