@@ -1,8 +1,12 @@
 import { render } from '@testing-library/react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import Geolocation from 'react-native-geolocation-service'
 import SplashScreen from 'react-native-splash-screen'
 import { act } from 'react-test-renderer'
+import waitForExpect from 'wait-for-expect'
 
+import { BaseRetryBoundary } from 'features/errors'
 import * as BatchLocalLib from 'libs/notifications'
 import { flushAllPromises } from 'tests/utils'
 
@@ -28,6 +32,34 @@ describe('<App /> with mocked RootTabNavigator', () => {
     expect(BatchLocalLib.useStartBatchNotification).toHaveBeenCalled()
   })
 
+  it('should render Oops page when get current position raise error', async () => {
+    // TODO (PC-6360) : console error displayed in DEV mode even if caught by ErrorBoundary
+    jest.spyOn(Geolocation, 'getCurrentPosition').mockImplementationOnce(() => {
+      throw new Error()
+    })
+
+    const { getByText } = await renderApp()
+
+    await waitForExpect(() => {
+      expect(getByText('Oops !')).toBeTruthy()
+    })
+  })
+})
+
+describe('ErrorBoundary', () => {
+  it('should display custom error page when children raise error', () => {
+    // TODO (PC-6360) : console error displayed in DEV mode even if caught by ErrorBoundary
+    const { getByText } = renderErrorBoundary()
+
+    expect(getByText('Oops !')).toBeTruthy()
+  })
+})
+
+describe('<App /> with mocked RootTabNavigator and fake timers', () => {
+  afterEach(() => {
+    jest.useRealTimers()
+  })
+
   it('should call SplashScreen.hide() after 500ms', async () => {
     expect.assertions(3)
     jest.useFakeTimers()
@@ -49,4 +81,19 @@ const renderApp = async () => {
     await flushAllPromises()
   })
   return wrapper
+}
+
+function ComponentWithError() {
+  useEffect(() => {
+    throw new Error()
+  }, [])
+  return <React.Fragment />
+}
+
+const renderErrorBoundary = () => {
+  return render(
+    <ErrorBoundary FallbackComponent={BaseRetryBoundary}>
+      <ComponentWithError />
+    </ErrorBoundary>
+  )
 }

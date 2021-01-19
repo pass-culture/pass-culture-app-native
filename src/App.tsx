@@ -1,5 +1,6 @@
 import { I18nProvider } from '@lingui/react' //@translations
 import React, { FunctionComponent } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import CodePush from 'react-native-code-push' // @codepush
 import 'react-native-gesture-handler' // @react-navigation
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -9,6 +10,7 @@ import { addPlugin } from 'react-query-native-devtools'
 import './why-did-you-render'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
+import { BaseRetryBoundary } from 'features/errors/pages/BaseRetryBoundary'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { env } from 'libs/environment'
@@ -63,19 +65,21 @@ const AppComponent: FunctionComponent = function () {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GeolocationWrapper>
-        <AuthWrapper>
-          <SearchWrapper>
-            <I18nProvider language={i18n.language} i18n={i18n}>
-              <SafeAreaProvider>
-                <SnackBarProvider>
-                  <RootNavigator />
-                </SnackBarProvider>
-              </SafeAreaProvider>
-            </I18nProvider>
-          </SearchWrapper>
-        </AuthWrapper>
-      </GeolocationWrapper>
+      <ErrorBoundary FallbackComponent={BaseRetryBoundary}>
+        <GeolocationWrapper>
+          <AuthWrapper>
+            <SearchWrapper>
+              <I18nProvider language={i18n.language} i18n={i18n}>
+                <SafeAreaProvider>
+                  <SnackBarProvider>
+                    <RootNavigator />
+                  </SnackBarProvider>
+                </SafeAreaProvider>
+              </I18nProvider>
+            </SearchWrapper>
+          </AuthWrapper>
+        </GeolocationWrapper>
+      </ErrorBoundary>
     </QueryClientProvider>
   )
 }

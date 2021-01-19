@@ -6,7 +6,7 @@ import { Animated, NativeSyntheticEvent, NativeScrollEvent, ScrollView } from 'r
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
-import { RetryBoundary } from 'features/errors'
+import { RetryBoundaryWithNavigation } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { analytics } from 'libs/analytics'
@@ -194,5 +194,5 @@ const CallToActionContainer = styled.View({
 })
 
 export const Offer = withErrorBoundary(React.memo(OfferComponent), {
-  FallbackComponent: RetryBoundary,
+  FallbackComponent: RetryBoundaryWithNavigation,
 })
