@@ -3,20 +3,21 @@ import React from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategorySection, RadiusSlider, PriceSlider } from 'features/search/components'
+import {
+  CategorySection,
+  RadiusSlider,
+  PriceSlider,
+  SectionWithSwitch,
+} from 'features/search/components'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { SectionWithSwitch } from '../components/SectionWithSwitch'
-
-const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element => {
-  return (
-    <Typo.ButtonText onLayout={onLayout} color={ColorsEnum.WHITE}>
-      {_(t`Réinitialiser`)}
-    </Typo.ButtonText>
-  )
-}
+const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element => (
+  <Typo.ButtonText onLayout={onLayout} color={ColorsEnum.WHITE}>
+    {_(t`Réinitialiser`)}
+  </Typo.ButtonText>
+)
 
 export const SearchFilter: React.FC = () => (
   <React.Fragment>

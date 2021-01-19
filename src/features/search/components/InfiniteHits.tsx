@@ -4,8 +4,7 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
-import { Hit } from 'features/search/atoms/Hit'
-import { NumberOfResults } from 'features/search/atoms/NumberOfResults'
+import { Hit, NumberOfResults } from 'features/search/atoms'
 import { AlgoliaHit } from 'libs/algolia'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 

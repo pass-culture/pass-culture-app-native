@@ -4,10 +4,9 @@ import { Configure, InstantSearch } from 'react-instantsearch-native'
 import styled from 'styled-components/native'
 
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
-import { FilterButton } from 'features/search/atoms/FilterButton'
-import { InfiniteHits } from 'features/search/components/InfiniteHits'
-import { SearchHeader } from 'features/search/components/SearchHeader'
-import { env } from 'libs/environment'
+import { FilterButton } from 'features/search/atoms'
+import { InfiniteHits, SearchHeader } from 'features/search/components'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 import { getSpacing, Spacer } from 'ui/theme'
 

@@ -1,3 +1,7 @@
 export * from './CategorySection'
+export * from './InfiniteHits'
 export * from './PriceSlider'
 export * from './RadiusSlider'
+export * from './SearchBox'
+export * from './SearchHeader'
+export * from './SectionWithSwitch'

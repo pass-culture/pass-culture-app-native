@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { SearchBox } from 'features/search/components'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-
-import { SearchBox } from './SearchBox'
 
 const inputHeight = getSpacing(12)
 const marginTop = getSpacing(2)
