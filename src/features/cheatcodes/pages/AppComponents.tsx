@@ -29,6 +29,7 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
+import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
@@ -352,6 +353,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Info size={24} />
           <Text> - Info </Text>
+        </AlignedText>
+        <AlignedText>
+          <AroundMe size={24} />
+          <Text> - AroundMe </Text>
         </AlignedText>
       </AccordionItem>
 
