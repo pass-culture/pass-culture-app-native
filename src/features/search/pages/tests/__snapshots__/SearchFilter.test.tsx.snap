@@ -66,47 +66,46 @@ Array [
             ]
           }
         >
-          <RNGestureHandlerButton
-            collapsable={false}
-            onGestureEvent={[Function]}
-            onGestureHandlerEvent={[Function]}
-            onGestureHandlerStateChange={[Function]}
-            onHandlerStateChange={[Function]}
-            rippleColor={0}
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "opacity": 1,
+              }
+            }
           >
-            <View
-              accessible={true}
+            <Text
               style={
-                Object {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "opacity": 1,
-                }
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
               }
             >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Autour de moi
-              </Text>
-              <View
-                height={24}
-                width={24}
-              >
-                undefined-SVG-Mock
-              </View>
+              Autour de moi
+            </Text>
+            <View
+              height={24}
+              width={24}
+            >
+              undefined-SVG-Mock
             </View>
-          </RNGestureHandlerButton>
+          </View>
           <View
             numberOfSpaces={2}
             style={

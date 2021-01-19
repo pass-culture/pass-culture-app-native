@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Section } from 'features/search/atoms/Sections'
 import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -24,14 +25,13 @@ const getLocationChoiceName = (locationChoice: LocationChoice) => {
   }
 }
 
-const renderLocationContent = (locationChoice: LocationChoice) => {
+const renderLocationContent = (locationChoice: LocationChoice, onPress: () => void) => {
   return (
     <React.Fragment>
-      <LocationContentContainer>
+      <LocationContentContainer onPress={onPress}>
         <Typo.ButtonText>{getLocationChoiceName(locationChoice)}</Typo.ButtonText>
         <ArrowNext size={24} />
       </LocationContentContainer>
-
       {locationChoice === LocationChoice.LOCALIZED && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
@@ -45,16 +45,18 @@ const renderLocationContent = (locationChoice: LocationChoice) => {
 }
 
 export const LocationSection: React.FC = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
+  const onPress = () => navigate('LocationFilter')
   return (
     <React.Fragment>
       <Section title={_(t`Localisation`)}>
-        {renderLocationContent(LocationChoice.LOCALIZED)}
+        {renderLocationContent(LocationChoice.LOCALIZED, onPress)}
       </Section>
     </React.Fragment>
   )
 }
 
-const LocationContentContainer = styled(TouchableOpacity)({
+const LocationContentContainer = styled.TouchableOpacity({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
