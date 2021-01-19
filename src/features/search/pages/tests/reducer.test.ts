@@ -1,4 +1,5 @@
 import { Action, initialSearchState, MAX_PRICE, searchReducer, SearchState } from '../reducer'
+
 describe('Search reducer', () => {
   const state = initialSearchState
   it('should handle INIT', () => {
