@@ -17,7 +17,7 @@ export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
     <FlatList
       data={hits}
       keyExtractor={(item) => item.objectID}
-      ListHeaderComponent={() => <NumberOfResults nbHits={hits.length} />}
+      ListHeaderComponent={NumberOfResults}
       ListFooterComponent={Footer}
       ItemSeparatorComponent={Separator}
       renderItem={({ item: hit }) => <Hit hit={hit} />}

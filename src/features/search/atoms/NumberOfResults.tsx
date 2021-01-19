@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { connectStats } from 'react-instantsearch-native'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -10,7 +11,7 @@ const formatNbHits = (nbHits: number) => {
   return _(t`${nbHits} résultats`)
 }
 
-export const NumberOfResults: React.FC<{ nbHits: number }> = ({ nbHits }) => {
+export const NumberOfResultsComponent: React.FC<{ nbHits: number }> = ({ nbHits }) => {
   if (!nbHits) return <React.Fragment></React.Fragment>
   return (
     <Container>
@@ -24,3 +25,5 @@ const Container = styled.View({
   marginBottom: getSpacing(4),
 })
 const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+
+export const NumberOfResults = connectStats(NumberOfResultsComponent)
