@@ -10,14 +10,14 @@ import { FetchAlgoliaParameters } from '../types'
 import { buildFacetFilters } from './fetchAlgolia.facetFilters'
 import { buildNumericFilters } from './fetchAlgolia.numericFilters'
 
-export const fetchAlgolia = <T>({
+const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
+
+export const buildSearchParameters = ({
   aroundRadius = RADIUS_FILTERS.DEFAULT_RADIUS_IN_KILOMETERS,
   beginningDatetime = null,
   date = null,
   endingDatetime = null,
   geolocation = null,
-  hitsPerPage = null,
-  keywords = '',
   offerCategories = [],
   offerIsDuo = false,
   offerIsFree = false,
@@ -27,32 +27,35 @@ export const fetchAlgolia = <T>({
     isEvent: false,
     isThing: false,
   },
-  page = 0,
   priceRange = null,
-  sortBy = '',
   searchAround = false,
   timeRange = null,
   tags = [],
+}: SearchState) => ({
+  ...buildFacetFilters({ offerCategories, offerTypes, offerIsDuo, tags }),
+  ...buildNumericFilters({
+    beginningDatetime,
+    date,
+    endingDatetime,
+    offerIsFree,
+    offerIsNew,
+    priceRange,
+    timeRange,
+  }),
+  ...buildGeolocationParameter({ aroundRadius, geolocation, searchAround }),
+})
+
+export const fetchAlgolia = <T>({
+  keywords = '',
+  sortBy = '',
+  page = 0,
+  hitsPerPage = null,
+  ...parameters
 }: FetchAlgoliaParameters): Readonly<Promise<SearchResponse<T>>> => {
-  const searchParameters = {
-    page,
-    ...buildFacetFilters({ offerCategories, offerTypes, offerIsDuo, tags }),
-    ...buildNumericFilters({
-      beginningDatetime,
-      date,
-      endingDatetime,
-      offerIsFree,
-      offerIsNew,
-      priceRange,
-      timeRange,
-    }),
-    ...buildGeolocationParameter({ aroundRadius, geolocation, searchAround }),
-    ...buildHitsPerPage(hitsPerPage),
-  }
-  const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
+  const searchParameters = buildSearchParameters(parameters)
   const index = client.initIndex(env.ALGOLIA_INDEX_NAME + sortBy)
 
-  return index.search<T>(keywords, searchParameters)
+  return index.search<T>(keywords, { page, ...buildHitsPerPage(hitsPerPage), ...searchParameters })
 }
 
 const buildHitsPerPage = (hitsPerPage: FetchAlgoliaParameters['hitsPerPage']) =>
