@@ -15,11 +15,15 @@ import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element => (
-  <Typo.ButtonText onLayout={onLayout} color={ColorsEnum.WHITE}>
-    {_(t`Réinitialiser`)}
-  </Typo.ButtonText>
-)
+import { LocationSection } from '../components/LocationSection'
+
+const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element => {
+  return (
+    <Typo.ButtonText onLayout={onLayout} color={ColorsEnum.WHITE}>
+      {_(t`Réinitialiser`)}
+    </Typo.ButtonText>
+  )
+}
 
 export const SearchFilter: React.FC = () => (
   <React.Fragment>
@@ -27,6 +31,8 @@ export const SearchFilter: React.FC = () => (
       <Container>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
+        <LocationSection />
+        <Spacer.Column numberOfSpaces={6} />
         <RadiusSlider />
         <Spacer.Column numberOfSpaces={6} />
         <Separator />
