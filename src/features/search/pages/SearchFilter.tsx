@@ -3,6 +3,7 @@ import React from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SearchResultsButton } from 'features/search/atoms'
 import {
   CategorySection,
   RadiusSlider,
@@ -48,10 +49,14 @@ export const SearchFilter: React.FC = () => (
           title={_(t`Heure`)}
           subtitle={_(t`Seules les offres Sorties seront affichées`)}
         />
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={30} />
       </Container>
     </React.Fragment>
     <PageHeader title={_(t`Filtrer`)} rightComponent={rightButton} />
+    <SearchResultsButtonContainer>
+      <SearchResultsButton />
+      <Spacer.BottomScreen />
+    </SearchResultsButtonContainer>
   </React.Fragment>
 )
 
@@ -64,3 +69,9 @@ const Separator = styled.View<{ marginVertical?: number }>(({ marginVertical = 0
   marginHorizontal: getSpacing(6),
   marginVertical: marginVertical,
 }))
+const SearchResultsButtonContainer = styled.View({
+  width: '100%',
+  position: 'absolute',
+  bottom: getSpacing(6),
+  paddingHorizontal: getSpacing(6),
+})
