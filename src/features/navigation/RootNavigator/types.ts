@@ -29,6 +29,7 @@ export type RootStackParamList = {
   ReinitializePassword: { token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
+  LocationFilter: undefined
   SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: BackNavigationParams<'Home'> | undefined
