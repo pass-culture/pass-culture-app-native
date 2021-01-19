@@ -10,9 +10,11 @@ import { ColorsEnum, getSpacing } from 'ui/theme'
 
 interface Props {
   hits: AlgoliaHit[]
+  hasMore: boolean
+  refineNext: () => void
 }
 
-export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
+export const InfiniteHitsComponent: React.FC<Props> = ({ hits, hasMore, refineNext }) => (
   <Container>
     <FlatList
       data={hits}
@@ -21,6 +23,7 @@ export const InfiniteHitsComponent: React.FC<Props> = ({ hits }) => (
       ListFooterComponent={Footer}
       ItemSeparatorComponent={Separator}
       renderItem={({ item: hit }) => <Hit hit={hit} />}
+      onEndReached={() => hasMore && refineNext()}
     />
   </Container>
 )
