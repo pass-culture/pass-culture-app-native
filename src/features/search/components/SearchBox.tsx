@@ -1,9 +1,11 @@
+import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useRef, useState } from 'react'
 import { connectSearchBox } from 'react-instantsearch-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { _ } from 'libs/i18n'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -37,7 +39,7 @@ const SearchBoxComponent: React.FC<Props> = ({ refine, value = '' }) => {
       <SearchInput
         value={currentValue}
         onChangeText={handleChangeText}
-        placeholder="Chercher par titre, artiste, ..."
+        placeholder={_(t`Chercher par titre, artiste...`)}
         autoFocus={false}
         inputHeight="tall"
         LeftIcon={() => <MagnifyingGlass />}
