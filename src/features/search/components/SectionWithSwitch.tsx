@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { _ } from 'libs/i18n'
-
 import { FilterSwitch } from '../atoms/FilterSwitch'
 import { InlineSection } from '../atoms/Sections'
 
