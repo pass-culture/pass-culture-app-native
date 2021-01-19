@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connectSearchBox } from 'react-instantsearch-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -7,7 +8,7 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 interface Props {
-  onChangeText?: (text: string) => void
+  refine: (text: string) => void
   value?: string
 }
 
@@ -18,14 +19,14 @@ const getRightIcon = (currentValue: string, onPress: () => void) =>
     </TouchableOpacity>
   ) : null
 
-export const SearchBox: React.FC<Props> = ({ onChangeText, value = '' }) => {
+const SearchBoxComponent: React.FC<Props> = ({ refine, value = '' }) => {
   const [currentValue, setCurrentValue] = useState<string>(value)
 
   const handleChangeText = (newValue: string) => {
-    onChangeText && onChangeText(newValue)
+    refine(newValue)
     setCurrentValue(newValue)
   }
-  const resetSearch = () => setCurrentValue(value)
+  const resetSearch = () => handleChangeText('')
 
   return (
     <StyledInput>
@@ -42,6 +43,6 @@ export const SearchBox: React.FC<Props> = ({ onChangeText, value = '' }) => {
   )
 }
 
-const StyledInput = styled.View({
-  width: '100%',
-})
+const StyledInput = styled.View({ width: '100%' })
+
+export const SearchBox = connectSearchBox(SearchBoxComponent)
