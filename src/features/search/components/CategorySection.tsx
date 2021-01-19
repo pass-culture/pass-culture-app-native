@@ -1,46 +1,37 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { AccordionItem } from 'features/offer/components'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
 import { getSpacing } from 'ui/theme'
 
-interface SelectedMapping {
-  [label: string]: boolean
-}
-
 // First we filter out the 'All' category
 const categories = Object.values(CATEGORY_CRITERIA).filter((category) => !!category.facetFilter)
-const initialMapping = categories.reduce(
-  (previousValue: SelectedMapping, currentValue) => ({
-    ...previousValue,
-    [currentValue.label]: false,
-  }),
-  {}
-)
 
 export const CategorySection: React.FC = () => {
-  const [selectedMapping, setSelectedMappping] = useState<SelectedMapping>(initialMapping)
+  const { searchState, dispatch } = useSearch()
+  const { offerCategories } = searchState
 
   const onPress = (label: string) => () => {
-    setSelectedMappping((prevMapping) => ({ ...prevMapping, [label]: !prevMapping[label] }))
+    dispatch({ type: 'CATEGORIES', payload: label })
   }
 
   return (
     <AccordionItem
       defaultOpen={true}
-      title={
-        <TitleWithCount
-          title={_(t`Catégories`)}
-          count={Object.values(selectedMapping).filter(Boolean).length}
-        />
-      }>
+      title={<TitleWithCount title={_(t`Catégories`)} count={offerCategories.length} />}>
       <BodyContainer>
-        {Object.entries(selectedMapping).map(([label, selected]) => (
-          <SelectionLabel key={label} label={label} selected={selected} onPress={onPress(label)} />
+        {categories.map(({ label, facetFilter }) => (
+          <SelectionLabel
+            key={label}
+            label={label}
+            selected={offerCategories.includes(facetFilter)}
+            onPress={onPress(facetFilter)}
+          />
         ))}
       </BodyContainer>
     </AccordionItem>
