@@ -1930,11 +1930,11 @@ Array [
         </Text>
       </View>
       <View
-        numberOfSpaces={6}
+        numberOfSpaces={30}
         style={
           Array [
             Object {
-              "height": 24,
+              "height": 120,
             },
           ]
         }
@@ -2108,6 +2108,79 @@ Array [
     </View>
     <View
       numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "bottom": 24,
+          "paddingHorizontal": 24,
+          "position": "absolute",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="button-container"
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 5,
+              "maxWidth": 650,
+            },
+          ]
+        }
+        testID="button-title"
+        textColor="#ffffff"
+      >
+        Afficher les 2 résultats
+      </Text>
+    </View>
+    <View
+      customHeight={8}
       style={
         Array [
           Object {
