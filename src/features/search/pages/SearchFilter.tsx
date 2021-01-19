@@ -8,6 +8,8 @@ import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { SectionWithSwitch } from '../components/SectionWithSwitch'
+
 const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element => {
   return (
     <Typo.ButtonText onLayout={onLayout} color={ColorsEnum.WHITE}>
@@ -29,6 +31,23 @@ export const SearchFilter: React.FC = () => (
         <Separator />
         <Spacer.Column numberOfSpaces={6} />
         <PriceSlider />
+        <Separator />
+        <SectionWithSwitch title={_(t`Uniquement les offres gratuites`)} />
+        <Separator />
+        <SectionWithSwitch title={_(t`Uniquement les offres duo`)} />
+        <Separator />
+        <SectionWithSwitch title={_(t`Uniquement les nouveautés`)} />
+        <Separator />
+        <SectionWithSwitch
+          title={_(t`Date`)}
+          subtitle={_(t`Seules les offres Sorties seront affichées`)}
+        />
+        <Spacer.Column numberOfSpaces={6} />
+        <Separator />
+        <SectionWithSwitch
+          title={_(t`Heure`)}
+          subtitle={_(t`Seules les offres Sorties seront affichées`)}
+        />
         <Spacer.Column numberOfSpaces={6} />
       </Container>
     </React.Fragment>
