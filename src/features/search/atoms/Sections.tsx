@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
 
 export const CenteredSection: React.FC<{ title: string; children: Element }> = ({
   title,
@@ -24,14 +24,19 @@ export const InlineSection: React.FC<{ title: string; subtitle?: string; childre
   <SectionContainer>
     <InlineSectionTitleContainer>
       <StyledTitle numberOfLines={2}>{title}</StyledTitle>
+      <Spacer.Row numberOfSpaces={7} />
       {children}
     </InlineSectionTitleContainer>
-    <StyledSubtitle>{subtitle}</StyledSubtitle>
+    {subtitle && (
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Caption color={ColorsEnum.GREY_DARK}>{subtitle}</Typo.Caption>
+      </React.Fragment>
+    )}
   </SectionContainer>
 )
 
 const SectionContainer = styled.View({
-  marginTop: getSpacing(4),
   marginHorizontal: getSpacing(6),
 })
 
@@ -40,7 +45,4 @@ const InlineSectionTitleContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledTitle = styled(Typo.Title4)({ flex: 1, marginRight: getSpacing(7) })
-const StyledSubtitle = styled(Typo.Caption).attrs({
-  color: ColorsEnum.GREY_DARK,
-})({ marginTop: getSpacing(2) })
+const StyledTitle = styled(Typo.Title4)({ flex: 1 })

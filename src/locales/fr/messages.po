@@ -243,7 +243,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/FilterButton.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:40
+#: src/features/search/pages/SearchFilter.tsx:39
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -268,7 +268,7 @@ msgstr "Handicap moteur"
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
-#: src/features/search/pages/SearchFilter.tsx:36
+#: src/features/search/pages/SearchFilter.tsx:35
 msgid "Heure"
 msgstr "Heure"
 
@@ -449,7 +449,7 @@ msgid "Se connecter"
 msgstr "Se connecter"
 
 #: src/features/search/pages/SearchFilter.tsx:33
-#: src/features/search/pages/SearchFilter.tsx:36
+#: src/features/search/pages/SearchFilter.tsx:35
 msgid "Seules les offres Sorties seront affichées"
 msgstr "Seules les offres Sorties seront affichées"
 

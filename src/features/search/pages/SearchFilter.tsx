@@ -31,19 +31,18 @@ export const SearchFilter: React.FC = () => (
         <Separator />
         <Spacer.Column numberOfSpaces={6} />
         <PriceSlider />
-        <Separator />
+        <Separator marginVertical={getSpacing(6)} />
         <SectionWithSwitch title={_(t`Uniquement les offres gratuites`)} />
-        <Separator />
+        <Separator marginVertical={getSpacing(6)} />
         <SectionWithSwitch title={_(t`Uniquement les offres duo`)} />
-        <Separator />
+        <Separator marginVertical={getSpacing(6)} />
         <SectionWithSwitch title={_(t`Uniquement les nouveautés`)} />
-        <Separator />
+        <Separator marginVertical={getSpacing(6)} />
         <SectionWithSwitch
           title={_(t`Date`)}
           subtitle={_(t`Seules les offres Sorties seront affichées`)}
         />
-        <Spacer.Column numberOfSpaces={6} />
-        <Separator />
+        <Separator marginVertical={getSpacing(6)} />
         <SectionWithSwitch
           title={_(t`Heure`)}
           subtitle={_(t`Seules les offres Sorties seront affichées`)}
@@ -56,10 +55,11 @@ export const SearchFilter: React.FC = () => (
 )
 
 const Container = styled.ScrollView({ flex: 1 })
-const Separator = styled.View({
+const Separator = styled.View<{ marginVertical?: number }>(({ marginVertical = 0 }) => ({
   width: '100%',
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
   alignSelf: 'center',
   marginHorizontal: getSpacing(6),
-})
+  marginVertical: marginVertical,
+}))
