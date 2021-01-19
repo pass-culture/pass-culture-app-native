@@ -55,6 +55,116 @@ Array [
             ]
           }
         >
+          Localisation
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "marginTop": 16,
+              },
+            ]
+          }
+        >
+          <RNGestureHandlerButton
+            collapsable={false}
+            onGestureEvent={[Function]}
+            onGestureHandlerEvent={[Function]}
+            onGestureHandlerStateChange={[Function]}
+            onHandlerStateChange={[Function]}
+            rippleColor={0}
+          >
+            <View
+              accessible={true}
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Autour de moi
+              </Text>
+              <View
+                height={24}
+                width={24}
+              >
+                undefined-SVG-Mock
+              </View>
+            </View>
+          </RNGestureHandlerButton>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            color="#626262"
+            style={
+              Array [
+                Object {
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Seules les offres Sorties et Physiques seront affichés
+          </Text>
+        </View>
+      </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+              },
+            ]
+          }
+        >
           Rayon
         </Text>
         <View

@@ -13,8 +13,12 @@ export const CenteredSection: React.FC<{ title: string; children: Element }> = (
   </Container>
 )
 
-const Container = styled.View({ marginHorizontal: getSpacing(6) })
-const Center = styled.View({ alignItems: 'center', marginTop: getSpacing(4) })
+export const Section: React.FC<{ title: string; children: Element }> = ({ title, children }) => (
+  <Container>
+    <Typo.Title4>{title}</Typo.Title4>
+    <Content>{children}</Content>
+  </Container>
+)
 
 export const InlineSection: React.FC<{ title: string; subtitle?: string; children: Element }> = ({
   title,
@@ -35,6 +39,10 @@ export const InlineSection: React.FC<{ title: string; subtitle?: string; childre
     )}
   </SectionContainer>
 )
+
+const Container = styled.View({ marginHorizontal: getSpacing(6) })
+const Center = styled.View({ alignItems: 'center', marginTop: getSpacing(4) })
+const Content = styled.View({ marginTop: getSpacing(4) })
 
 const SectionContainer = styled.View({
   marginHorizontal: getSpacing(6),
