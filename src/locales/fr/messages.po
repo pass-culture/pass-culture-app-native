@@ -106,12 +106,16 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
+#: src/features/search/components/CategorySection.tsx:18
+msgid "Catégories"
+msgstr "Catégories"
+
 #: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:59
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:142
+#: src/features/auth/signup/SetBirthday.tsx:143
 msgid "Ce site est protégé par reCAPTCHA Google. La"
 msgstr "Ce site est protégé par reCAPTCHA Google. La"
 
@@ -119,7 +123,7 @@ msgstr "Ce site est protégé par reCAPTCHA Google. La"
 msgid "Chargement en cours..."
 msgstr "Chargement en cours..."
 
-#: src/features/auth/signup/SetBirthday.tsx:144
+#: src/features/auth/signup/SetBirthday.tsx:145
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
@@ -143,7 +147,7 @@ msgid "Composants"
 msgstr "Composants"
 
 #: src/features/auth/signup/AcceptCgu.tsx:60
-#: src/features/auth/signup/SetBirthday.tsx:147
+#: src/features/auth/signup/SetBirthday.tsx:148
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -174,7 +178,7 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:69
-#: src/features/auth/signup/SetBirthday.tsx:153
+#: src/features/auth/signup/SetBirthday.tsx:154
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:44
 msgid "Continuer"
@@ -188,6 +192,10 @@ msgstr "Continuer l'inscription"
 #: src/features/offer/services/useCtaWordingAndAction.ts:50
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
+
+#: src/features/search/pages/SearchFilter.tsx:33
+msgid "Date"
+msgstr "Date"
 
 #: src/features/offer/components/OfferWhereSection.tsx:34
 msgid "Distance"
@@ -235,7 +243,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/FilterButton.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:23
+#: src/features/search/pages/SearchFilter.tsx:40
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -259,6 +267,10 @@ msgstr "Handicap moteur"
 #: src/features/offer/atoms/AccessibilityAtom.service.ts:11
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
+
+#: src/features/search/pages/SearchFilter.tsx:36
+msgid "Heure"
+msgstr "Heure"
 
 #: src/features/offer/pages/OfferDescription.tsx:17
 msgid "ISBN"
@@ -296,7 +308,7 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "Les informations que tu as renseignés ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignés ne seront pas enregistrées"
 
-#: src/features/auth/signup/SetBirthday.tsx:164
+#: src/features/auth/signup/SetBirthday.tsx:166
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
@@ -368,7 +380,7 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 msgid "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/auth/signup/SetBirthday.tsx:134
+#: src/features/auth/signup/SetBirthday.tsx:135
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -415,7 +427,7 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/search/pages/SearchFilter.tsx:10
+#: src/features/search/pages/SearchFilter.tsx:11
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
@@ -435,6 +447,11 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:41
 msgid "Se connecter"
 msgstr "Se connecter"
+
+#: src/features/search/pages/SearchFilter.tsx:33
+#: src/features/search/pages/SearchFilter.tsx:36
+msgid "Seules les offres Sorties seront affichées"
+msgstr "Seules les offres Sorties seront affichées"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
@@ -490,6 +507,18 @@ msgstr "Une erreur s'est produite pendant le chargement."
 #: src/features/offer/services/useItinerary.ts:55
 msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
+
+#: src/features/search/pages/SearchFilter.tsx:31
+msgid "Uniquement les nouveautés"
+msgstr "Uniquement les nouveautés"
+
+#: src/features/search/pages/SearchFilter.tsx:29
+msgid "Uniquement les offres duo"
+msgstr "Uniquement les offres duo"
+
+#: src/features/search/pages/SearchFilter.tsx:27
+msgid "Uniquement les offres gratuites"
+msgstr "Uniquement les offres gratuites"
 
 #: src/features/offer/pages/OfferDescription.tsx:26
 msgid "VISA"
@@ -549,7 +578,7 @@ msgid "en ligne"
 msgstr "en ligne"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:146
+#: src/features/auth/signup/SetBirthday.tsx:147
 msgid "et les"
 msgstr "et les"
 
@@ -571,7 +600,7 @@ msgid "metteur en scène"
 msgstr "metteur en scène"
 
 #. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:150
+#: src/features/auth/signup/SetBirthday.tsx:151
 msgid "s'appliquent."
 msgstr "s'appliquent."
 
@@ -607,7 +636,7 @@ msgstr "{nbHits} résultats"
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/api/helpers.ts:113
+#: src/api/helpers.ts:114
 msgid "Échec de la requête {0}, code: {1}"
 msgstr "Échec de la requête {0}, code: {1}"
 
