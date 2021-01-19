@@ -1,23 +1,35 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import { Info } from 'ui/svg/icons/Info'
 import { ColorsEnum, Spacer, getSpacing, Typo } from 'ui/theme'
 
-export const Banner: React.FC = () => (
+export enum BannerType {
+  INFO = 'info',
+}
+
+type Props = {
+  title: string
+  type: BannerType
+}
+
+const renderIcon = (type: BannerType) => {
+  switch (type) {
+    case BannerType.INFO:
+      return <Info size={32} />
+    default:
+      return <Info size={32} />
+  }
+}
+
+export const Banner: React.FC<Props> = ({ title, type }) => (
   <Background>
     <Spacer.Row numberOfSpaces={3} />
-    <Info size={32} />
+    {renderIcon(type)}
     <Spacer.Row numberOfSpaces={3} />
     <TextContainer>
-      <Typo.Caption color={ColorsEnum.GREY_DARK}>
-        {_(
-          t`Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation`
-        )}
-      </Typo.Caption>
+      <Typo.Caption color={ColorsEnum.GREY_DARK}>{title}</Typo.Caption>
     </TextContainer>
     <Spacer.Row numberOfSpaces={5} />
   </Background>
