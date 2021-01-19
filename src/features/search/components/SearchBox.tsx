@@ -33,7 +33,7 @@ export const SearchBox: React.FC<Props> = ({ onChangeText, value = '' }) => {
         value={currentValue}
         onChangeText={handleChangeText}
         placeholder="Chercher par titre, artiste, ..."
-        autoFocus={true}
+        autoFocus={false}
         inputHeight="tall"
         LeftIcon={() => <MagnifyingGlass />}
         RightIcon={() => getRightIcon(currentValue, resetSearch)}
