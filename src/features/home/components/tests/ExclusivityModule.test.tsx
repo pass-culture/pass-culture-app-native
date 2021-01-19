@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics'
 import { ExclusivityModule } from '../ExclusivityModule'
 
 const offerId = 'AZBE'
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const id = dehumanizeId(offerId)
 
 const props = {
