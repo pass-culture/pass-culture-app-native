@@ -50,6 +50,7 @@ import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
+import { Info } from 'ui/svg/icons/Info'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Logo } from 'ui/svg/icons/Logo'
@@ -347,6 +348,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <MagnifyingGlass size={24} />
           <Text> - MagnifyingGlass </Text>
+        </AlignedText>
+        <AlignedText>
+          <Info size={24} />
+          <Text> - Info </Text>
         </AlignedText>
       </AccordionItem>
 
