@@ -18,10 +18,11 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   'mot-de-passe-perdu': function (params) {
     if (params && params.token && params.email && params.expiration_timestamp) {
       const parsedExpirationTimestamp = Number(params.expiration_timestamp)
+      const parsedEmail = decodeURIComponent(params.email)
       if (isTimestampExpired(parsedExpirationTimestamp)) {
         return {
           screen: 'ResetPasswordExpiredLink',
-          params: { email: params.email },
+          params: { email: parsedEmail },
         }
       }
       return {
@@ -45,10 +46,11 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   },
   'signup-confirmation': function (params) {
     if (params && params.token && params.email && params.expiration_timestamp) {
+      const parsedEmail = decodeURIComponent(params.email)
       return {
         screen: 'AfterSignupEmailValidationBuffer',
         params: {
-          email: params.email,
+          email: parsedEmail,
           token: params.token,
           expirationTimestamp: Number(params.expiration_timestamp),
         },
