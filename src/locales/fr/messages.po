@@ -67,6 +67,18 @@ msgstr "Adresse"
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
+#: src/features/search/atoms/SearchResultsButton.tsx:13
+msgid "Afficher les 999+ résultats"
+msgstr "Afficher les 999+ résultats"
+
+#: src/features/search/atoms/SearchResultsButton.tsx:14
+msgid "Afficher les {nbHits} résultats"
+msgstr "Afficher les {nbHits} résultats"
+
+#: src/features/search/atoms/SearchResultsButton.tsx:11
+msgid "Afficher {nbHits} résultat"
+msgstr "Afficher {nbHits} résultat"
+
 #: src/features/auth/signup/EligibilityConfirmed.tsx:17
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles !  Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles !  Ta sélection n'aura pas d'impact sur les offres proposées."
@@ -87,6 +99,10 @@ msgstr "Aucun access token à sauvegarder"
 #: src/libs/keychain.ts:17
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
+
+#: src/features/search/atoms/SearchResultsButton.tsx:9
+msgid "Aucun résultat"
+msgstr "Aucun résultat"
 
 #. Welcome title message
 #: src/features/home/pages/Home.tsx:72
@@ -197,7 +213,7 @@ msgstr "Continuer l'inscription"
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
-#: src/features/search/pages/SearchFilter.tsx:30
+#: src/features/search/pages/SearchFilter.tsx:31
 msgid "Date"
 msgstr "Date"
 
@@ -247,7 +263,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/FilterButton.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:36
+#: src/features/search/pages/SearchFilter.tsx:37
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -272,7 +288,7 @@ msgstr "Handicap moteur"
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
-#: src/features/search/pages/SearchFilter.tsx:32
+#: src/features/search/pages/SearchFilter.tsx:33
 msgid "Heure"
 msgstr "Heure"
 
@@ -431,7 +447,7 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/search/pages/SearchFilter.tsx:9
+#: src/features/search/pages/SearchFilter.tsx:10
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
@@ -452,8 +468,8 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/pages/SearchFilter.tsx:30
-#: src/features/search/pages/SearchFilter.tsx:32
+#: src/features/search/pages/SearchFilter.tsx:31
+#: src/features/search/pages/SearchFilter.tsx:33
 msgid "Seules les offres Sorties seront affichées"
 msgstr "Seules les offres Sorties seront affichées"
 
@@ -512,15 +528,15 @@ msgstr "Une erreur s'est produite pendant le chargement."
 msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 
-#: src/features/search/pages/SearchFilter.tsx:28
+#: src/features/search/pages/SearchFilter.tsx:29
 msgid "Uniquement les nouveautés"
 msgstr "Uniquement les nouveautés"
 
-#: src/features/search/pages/SearchFilter.tsx:26
+#: src/features/search/pages/SearchFilter.tsx:27
 msgid "Uniquement les offres duo"
 msgstr "Uniquement les offres duo"
 
-#: src/features/search/pages/SearchFilter.tsx:24
+#: src/features/search/pages/SearchFilter.tsx:25
 msgid "Uniquement les offres gratuites"
 msgstr "Uniquement les offres gratuites"
 
