@@ -10,6 +10,7 @@ import './why-did-you-render'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { RootNavigator } from 'features/navigation/RootNavigator'
+import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { env } from 'libs/environment'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { i18n } from 'libs/i18n' //@translations
@@ -64,13 +65,15 @@ const AppComponent: FunctionComponent = function () {
     <QueryClientProvider client={queryClient}>
       <GeolocationWrapper>
         <AuthWrapper>
-          <I18nProvider language={i18n.language} i18n={i18n}>
-            <SafeAreaProvider>
-              <SnackBarProvider>
-                <RootNavigator />
-              </SnackBarProvider>
-            </SafeAreaProvider>
-          </I18nProvider>
+          <SearchWrapper>
+            <I18nProvider language={i18n.language} i18n={i18n}>
+              <SafeAreaProvider>
+                <SnackBarProvider>
+                  <RootNavigator />
+                </SnackBarProvider>
+              </SafeAreaProvider>
+            </I18nProvider>
+          </SearchWrapper>
         </AuthWrapper>
       </GeolocationWrapper>
     </QueryClientProvider>
