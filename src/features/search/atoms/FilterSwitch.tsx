@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Switch } from 'react-native'
 
-import { _ } from 'libs/i18n'
 import { ColorsEnum } from 'ui/theme'
 
-import { useFilterSwitch } from './useFilterSwitch'
-
 export const FilterSwitch: React.FC = () => {
-  const { isEnabled, toggleSwitch } = useFilterSwitch()
+  const [isEnabled, setIsEnabled] = useState(false)
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState)
+
+  const trackColor = { false: ColorsEnum.GREY_MEDIUM, true: ColorsEnum.GREEN_VALID }
+
   return (
-    <React.Fragment>
-      <Switch
-        trackColor={{ false: ColorsEnum.GREY_MEDIUM, true: ColorsEnum.GREEN_VALID }}
-        thumbColor={ColorsEnum.WHITE}
-        ios_backgroundColor={ColorsEnum.GREY_MEDIUM}
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
-    </React.Fragment>
+    <Switch
+      trackColor={trackColor}
+      thumbColor={ColorsEnum.WHITE}
+      ios_backgroundColor={ColorsEnum.GREY_MEDIUM}
+      onValueChange={toggleSwitch}
+      value={isEnabled}
+    />
   )
 }
