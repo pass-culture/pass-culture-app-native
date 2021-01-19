@@ -23,10 +23,13 @@ export const SearchFilter: React.FC = () => (
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
         <RadiusSlider />
+        <Spacer.Column numberOfSpaces={6} />
         <Separator />
         <CategorySection />
         <Separator />
+        <Spacer.Column numberOfSpaces={6} />
         <PriceSlider />
+        <Spacer.Column numberOfSpaces={6} />
       </Container>
     </React.Fragment>
     <PageHeader title={_(t`Filtrer`)} rightComponent={rightButton} />
@@ -38,6 +41,6 @@ const Separator = styled.View({
   width: '100%',
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
-  marginVertical: getSpacing(6),
   alignSelf: 'center',
+  marginHorizontal: getSpacing(6),
 })

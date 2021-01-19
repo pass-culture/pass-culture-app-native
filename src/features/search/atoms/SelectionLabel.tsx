@@ -38,6 +38,4 @@ const TouchableOpacity = styled.TouchableOpacity<{ selected: boolean }>(({ selec
   marginRight: getSpacing(3),
   backgroundColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.WHITE,
 }))
-const Label = styled(Typo.ButtonText)({
-  paddingVertical: getSpacing(2.5),
-})
+const Label = styled(Typo.ButtonText)({ paddingVertical: getSpacing(2.5) })

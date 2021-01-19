@@ -31,34 +31,23 @@ export const CategorySection: React.FC = () => {
   }
 
   return (
-    <AccordionContainer>
-      <AccordionItem
-        defaultOpen={true}
-        title={
-          <TitleWithCount
-            title={_(t`Catégories`)}
-            count={Object.values(selectedMapping).filter(Boolean).length}
-          />
-        }>
-        <BodyContainer>
-          {Object.entries(selectedMapping).map(([label, selected]) => (
-            <SelectionLabel
-              key={label}
-              label={label}
-              selected={selected}
-              onPress={onPress(label)}
-            />
-          ))}
-        </BodyContainer>
-      </AccordionItem>
-    </AccordionContainer>
+    <AccordionItem
+      defaultOpen={true}
+      title={
+        <TitleWithCount
+          title={_(t`Catégories`)}
+          count={Object.values(selectedMapping).filter(Boolean).length}
+        />
+      }>
+      <BodyContainer>
+        {Object.entries(selectedMapping).map(([label, selected]) => (
+          <SelectionLabel key={label} label={label} selected={selected} onPress={onPress(label)} />
+        ))}
+      </BodyContainer>
+    </AccordionItem>
   )
 }
 
-const AccordionContainer = styled.View({
-  marginBottom: -getSpacing(4),
-  marginTop: -getSpacing(6),
-})
 const BodyContainer = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
