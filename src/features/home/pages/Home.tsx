@@ -7,7 +7,7 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
-import { RetryBoundary } from 'features/errors'
+import { RetryBoundaryWithNavigation } from 'features/errors'
 import { useUserProfileInfo } from 'features/home/api'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -157,5 +157,5 @@ const CheatTouchableOpacity = styled(TouchableOpacity)({
 })
 
 export const Home = withErrorBoundary(React.memo(HomeComponent), {
-  FallbackComponent: RetryBoundary,
+  FallbackComponent: RetryBoundaryWithNavigation,
 })

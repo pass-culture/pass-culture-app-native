@@ -6,7 +6,7 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferExtraData, OfferResponse } from 'api/gen'
-import { RetryBoundary } from 'features/errors'
+import { RetryBoundaryWithNavigation } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
@@ -137,5 +137,5 @@ const Separator = () => <Spacer.Column numberOfSpaces={4} />
 const Footer = () => <Spacer.Column numberOfSpaces={32} />
 
 export const OfferDescription = withErrorBoundary(React.memo(OfferDescriptionComponent), {
-  FallbackComponent: RetryBoundary,
+  FallbackComponent: RetryBoundaryWithNavigation,
 })

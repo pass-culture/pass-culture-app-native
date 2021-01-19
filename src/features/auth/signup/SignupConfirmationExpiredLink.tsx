@@ -31,13 +31,12 @@ export function SignupConfirmationExpiredLink(props: Props) {
   async function resendEmailForSignupConfirmation() {
     const { email } = props.route.params
     analytics.logResendEmailSignupConfirmationExpiredLink()
-    await api
+    api
       .postnativev1resendEmailValidation({ email })
       .then(() => {
         navigate('SignupConfirmationEmailSent', { email })
       })
       .catch((error) => {
-        // TODO: https://passculture.atlassian.net/browse/PC-5619
         Alert.alert(error.message)
       })
   }

@@ -37,7 +37,6 @@ export function ResetPasswordExpiredLink(props: Props) {
         navigate('ResetPasswordEmailSent', { email })
       })
       .catch((error) => {
-        // TODO: https://passculture.atlassian.net/browse/PC-5619
         Alert.alert(error.message)
       })
   }

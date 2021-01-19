@@ -14,7 +14,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-export const RetryBoundary = ({ resetErrorBoundary }: FallbackProps) => {
+export const RetryBoundaryWithNavigation = ({ resetErrorBoundary }: FallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
   const { canGoBack, goBack } = useNavigation<UseNavigationType>()
   const { top } = useCustomSafeInsets()
