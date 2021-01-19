@@ -5,6 +5,8 @@ export type SearchState = Omit<
   'hitsPerPage' | 'page' | 'sortBy' | 'keywords'
 >
 
+export const MAX_PRICE = 300
+
 export const initialSearchState: SearchState = {
   aroundRadius: null,
   offerCategories: [],
@@ -32,12 +34,18 @@ export type Action =
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
   | { type: 'CATEGORIES'; payload: string }
 
-export const searchReducer = (state: SearchState, action: Action) => {
+export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
     case 'INIT':
       return initialSearchState
     case 'INIT_FROM_SEE_MORE':
-      return { ...state, ...action.payload }
+      return {
+        ...state,
+        ...action.payload,
+        priceRange: action.payload.priceRange
+          ? [action.payload.priceRange[0], Math.min(action.payload.priceRange[1], MAX_PRICE)]
+          : state.priceRange,
+      }
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
     case 'CATEGORIES':

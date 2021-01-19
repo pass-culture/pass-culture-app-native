@@ -1,4 +1,4 @@
-import { Action, initialSearchState, searchReducer, SearchState } from '../reducer'
+import { Action, initialSearchState, MAX_PRICE, searchReducer, SearchState } from '../reducer'
 describe('Search reducer', () => {
   const state = initialSearchState
   it('should handle INIT', () => {
@@ -24,6 +24,21 @@ describe('Search reducer', () => {
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       ...parameters,
+    })
+  })
+  it('should handle INIT_FROM_SEE_MORE - MAX_PRICE', () => {
+    const parameters = {
+      offerCategories: ['CINEMA', 'MUSIQUE'],
+      priceRange: [30, 500],
+    }
+    const action: Action = {
+      type: 'INIT_FROM_SEE_MORE',
+      payload: parameters as Partial<SearchState>,
+    }
+    expect(searchReducer(state, action)).toStrictEqual({
+      ...initialSearchState,
+      offerCategories: ['CINEMA', 'MUSIQUE'],
+      priceRange: [30, MAX_PRICE],
     })
   })
 
