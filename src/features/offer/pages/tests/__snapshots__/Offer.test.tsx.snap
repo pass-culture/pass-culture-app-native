@@ -1197,16 +1197,20 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 4,
+                                        "flexDirection": "row",
+                                        "flexWrap": "wrap",
+                                        "justifyContent": "center",
+                                        "marginHorizontal": 8,
                                         "width": 16,
                                       },
                                     ]
                                   }
-                                  testID="textContainer"
+                                  testID="Handicap visuel"
                                   width={16}
                                 >
                                   <Text
-                                    numberOfLines={2}
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1219,7 +1223,39 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    Handicap visuel
+                                    Handicap
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    visuel
                                   </Text>
                                 </View>
                               </View>
@@ -1320,16 +1356,20 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 4,
+                                        "flexDirection": "row",
+                                        "flexWrap": "wrap",
+                                        "justifyContent": "center",
+                                        "marginHorizontal": 8,
                                         "width": 16,
                                       },
                                     ]
                                   }
-                                  testID="textContainer"
+                                  testID="Handicap mental"
                                   width={16}
                                 >
                                   <Text
-                                    numberOfLines={2}
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1342,7 +1382,39 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    Handicap mental
+                                    Handicap
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    mental
                                   </Text>
                                 </View>
                               </View>
@@ -1443,16 +1515,20 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 4,
+                                        "flexDirection": "row",
+                                        "flexWrap": "wrap",
+                                        "justifyContent": "center",
+                                        "marginHorizontal": 8,
                                         "width": 16,
                                       },
                                     ]
                                   }
-                                  testID="textContainer"
+                                  testID="Handicap moteur"
                                   width={16}
                                 >
                                   <Text
-                                    numberOfLines={2}
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1465,7 +1541,39 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    Handicap moteur
+                                    Handicap
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    moteur
                                   </Text>
                                 </View>
                               </View>
@@ -1566,16 +1674,20 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 4,
+                                        "flexDirection": "row",
+                                        "flexWrap": "wrap",
+                                        "justifyContent": "center",
+                                        "marginHorizontal": 8,
                                         "width": 16,
                                       },
                                     ]
                                   }
-                                  testID="textContainer"
+                                  testID="Handicap auditif"
                                   width={16}
                                 >
                                   <Text
-                                    numberOfLines={2}
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1588,7 +1700,39 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    Handicap auditif
+                                    Handicap
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    auditif
                                   </Text>
                                 </View>
                               </View>
@@ -3884,16 +4028,20 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 4,
+                                        "flexDirection": "row",
+                                        "flexWrap": "wrap",
+                                        "justifyContent": "center",
+                                        "marginHorizontal": 8,
                                         "width": 16,
                                       },
                                     ]
                                   }
-                                  testID="textContainer"
+                                  testID="Handicap visuel"
                                   width={16}
                                 >
                                   <Text
-                                    numberOfLines={2}
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -3906,7 +4054,39 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    Handicap visuel
+                                    Handicap
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    visuel
                                   </Text>
                                 </View>
                               </View>
@@ -4007,16 +4187,20 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 4,
+                                        "flexDirection": "row",
+                                        "flexWrap": "wrap",
+                                        "justifyContent": "center",
+                                        "marginHorizontal": 8,
                                         "width": 16,
                                       },
                                     ]
                                   }
-                                  testID="textContainer"
+                                  testID="Handicap mental"
                                   width={16}
                                 >
                                   <Text
-                                    numberOfLines={2}
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -4029,7 +4213,39 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    Handicap mental
+                                    Handicap
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    mental
                                   </Text>
                                 </View>
                               </View>
@@ -4130,16 +4346,20 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 4,
+                                        "flexDirection": "row",
+                                        "flexWrap": "wrap",
+                                        "justifyContent": "center",
+                                        "marginHorizontal": 8,
                                         "width": 16,
                                       },
                                     ]
                                   }
-                                  testID="textContainer"
+                                  testID="Handicap moteur"
                                   width={16}
                                 >
                                   <Text
-                                    numberOfLines={2}
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -4152,7 +4372,39 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    Handicap moteur
+                                    Handicap
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    moteur
                                   </Text>
                                 </View>
                               </View>
@@ -4253,16 +4505,20 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Array [
                                       Object {
                                         "alignSelf": "center",
-                                        "paddingHorizontal": 4,
+                                        "flexDirection": "row",
+                                        "flexWrap": "wrap",
+                                        "justifyContent": "center",
+                                        "marginHorizontal": 8,
                                         "width": 16,
                                       },
                                     ]
                                   }
-                                  testID="textContainer"
+                                  testID="Handicap auditif"
                                   width={16}
                                 >
                                   <Text
-                                    numberOfLines={2}
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -4275,7 +4531,39 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    Handicap auditif
+                                    Handicap
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    auditif
                                   </Text>
                                 </View>
                               </View>
