@@ -24,6 +24,7 @@ const searchClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARC
 export const SearchWrapper = ({ children }: { children: Element }) => {
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
   const [debouncedSearchState, setDebouncedSearchState] = useState<SearchState>(searchState)
+  const { showResults, ...parameters } = debouncedSearchState
 
   useEffect(() => {
     const handler = setTimeout(() => setDebouncedSearchState(searchState), SEARCH_DEBOUNCE_MS)
@@ -34,7 +35,7 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
     <SearchContext.Provider value={{ searchState, dispatch }}>
       <InstantSearch searchClient={searchClient} indexName={env.ALGOLIA_INDEX_NAME}>
         <Configure hitsPerPage={20} />
-        {searchState && <Configure {...buildSearchParameters(debouncedSearchState)} />}
+        {searchState && <Configure {...buildSearchParameters(parameters)} />}
         {children}
       </InstantSearch>
     </SearchContext.Provider>

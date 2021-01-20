@@ -27,6 +27,7 @@ export const initialSearchState: SearchState = {
   geolocation: null,
   date: null,
   timeRange: null,
+  showResults: false,
 }
 
 export type Action =
@@ -35,11 +36,14 @@ export type Action =
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
   | { type: 'CATEGORIES'; payload: string }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
+  | { type: 'SHOW_RESULTS'; payload: boolean }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
     case 'INIT':
       return initialSearchState
+    case 'SHOW_RESULTS':
+      return { ...state, showResults: action.payload }
     case 'INIT_FROM_SEE_MORE':
       return {
         ...state,
