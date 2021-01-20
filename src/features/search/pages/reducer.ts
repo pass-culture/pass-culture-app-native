@@ -33,6 +33,7 @@ export type Action =
   | { type: 'INIT_FROM_SEE_MORE'; payload: Partial<SearchState> }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
   | { type: 'CATEGORIES'; payload: string }
+  | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -56,6 +57,11 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         }
       } else {
         return { ...state, offerCategories: [...state.offerCategories, action.payload] }
+      }
+    case 'OFFER_TYPE':
+      return {
+        ...state,
+        offerTypes: { ...state.offerTypes, [action.payload]: !state.offerTypes[action.payload] },
       }
     default:
       return state
