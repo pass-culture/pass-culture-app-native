@@ -104,6 +104,10 @@ msgstr "Aucun refresh token à sauvegarder"
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
 
+#: src/features/search/components/locationChoice.utils.tsx:11
+msgid "Autour de moi"
+msgstr "Autour de moi"
+
 #. Welcome title message
 #: src/features/home/pages/Home.tsx:72
 msgid "Bienvenue !"
@@ -213,7 +217,7 @@ msgstr "Continuer l'inscription"
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
-#: src/features/search/pages/SearchFilter.tsx:31
+#: src/features/search/pages/SearchFilter.tsx:36
 msgid "Date"
 msgstr "Date"
 
@@ -263,7 +267,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/FilterButton.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:37
+#: src/features/search/pages/SearchFilter.tsx:42
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -288,7 +292,7 @@ msgstr "Handicap moteur"
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
-#: src/features/search/pages/SearchFilter.tsx:33
+#: src/features/search/pages/SearchFilter.tsx:38
 msgid "Heure"
 msgstr "Heure"
 
@@ -327,6 +331,11 @@ msgstr "Le pass Culture est accessible à tous !"
 #: src/features/auth/signup/QuitSignupModal.tsx:31
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
+
+#: src/features/search/components/LocationSection.tsx:30
+#: src/features/search/pages/LocationFilter.tsx:18
+msgid "Localisation"
+msgstr "Localisation"
 
 #: src/features/auth/signup/SetBirthday.tsx:166
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
@@ -383,6 +392,11 @@ msgstr "Oups"
 #: src/features/offer/components/OfferWhereSection.tsx:25
 msgid "Où ?"
 msgstr "Où ?"
+
+#: src/features/search/components/locationChoice.utils.tsx:13
+#: src/features/search/components/locationChoice.utils.tsx:15
+msgid "Partout"
+msgstr "Partout"
 
 #: src/features/auth/signup/VerifyEligibility.tsx:20
 msgid "Plus que quelques étapes !"
@@ -447,7 +461,7 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/search/pages/SearchFilter.tsx:10
+#: src/features/search/pages/SearchFilter.tsx:12
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
@@ -468,8 +482,16 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/pages/SearchFilter.tsx:31
-#: src/features/search/pages/SearchFilter.tsx:33
+#: src/features/search/pages/LocationFilter.tsx:13
+msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
+msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
+
+#: src/features/search/components/LocationSection.tsx:20
+msgid "Seules les offres Sorties et Physiques seront affichés"
+msgstr "Seules les offres Sorties et Physiques seront affichés"
+
+#: src/features/search/pages/SearchFilter.tsx:36
+#: src/features/search/pages/SearchFilter.tsx:38
 msgid "Seules les offres Sorties seront affichées"
 msgstr "Seules les offres Sorties seront affichées"
 
@@ -528,15 +550,15 @@ msgstr "Une erreur s'est produite pendant le chargement."
 msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 
-#: src/features/search/pages/SearchFilter.tsx:29
+#: src/features/search/pages/SearchFilter.tsx:34
 msgid "Uniquement les nouveautés"
 msgstr "Uniquement les nouveautés"
 
-#: src/features/search/pages/SearchFilter.tsx:27
+#: src/features/search/pages/SearchFilter.tsx:32
 msgid "Uniquement les offres duo"
 msgstr "Uniquement les offres duo"
 
-#: src/features/search/pages/SearchFilter.tsx:25
+#: src/features/search/pages/SearchFilter.tsx:30
 msgid "Uniquement les offres gratuites"
 msgstr "Uniquement les offres gratuites"
 
