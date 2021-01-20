@@ -42,6 +42,7 @@ import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Email } from 'ui/svg/icons/Email'
+import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
@@ -357,6 +358,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <AroundMe size={24} />
           <Text> - AroundMe </Text>
+        </AlignedText>
+        <AlignedText>
+          <Everywhere size={24} />
+          <Text> - Everywhere </Text>
         </AlignedText>
       </AccordionItem>
 
