@@ -2,11 +2,14 @@ import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useRef, useState } from 'react'
 import { connectSearchBox } from 'react-instantsearch-native'
+import { TextInput as RNTextInput } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { _ } from 'libs/i18n'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
@@ -17,38 +20,62 @@ interface Props {
   value?: string
 }
 
-const getRightIcon = (currentValue: string, onPress: () => void) =>
-  currentValue ? (
-    <TouchableOpacity onPress={onPress}>
+const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack }) => {
+  const { searchState } = useSearch()
+  if (searchState.showResults)
+    return (
+      <ArrowPreviousContainer onPress={onPressArrowBack}>
+        <ArrowPrevious />
+      </ArrowPreviousContainer>
+    )
+  return <MagnifyingGlass />
+}
+
+const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (props) =>
+  props.currentValue.length > 0 ? (
+    <TouchableOpacity onPress={props.onPress}>
       <Invalidate size={24} />
     </TouchableOpacity>
   ) : null
 
-const SearchBoxComponent: React.FC<Props> = ({ refine, value = '' }) => {
+const SearchBoxComponent: React.FC<Props> = (props) => {
+  const { refine, value = '' } = props
   const [currentValue, setCurrentValue] = useState<string>(value)
   const debouncedRefine = useRef(debounce(refine, SEARCH_DEBOUNCE_MS)).current
+  const searchInputRef = useRef<RNTextInput | null>(null)
+  const { dispatch } = useSearch()
 
   const handleChangeText = (newValue: string) => {
     debouncedRefine(newValue)
     setCurrentValue(newValue)
   }
-  const resetSearch = () => handleChangeText('')
+  const resetSearch = () => {
+    handleChangeText('')
+    searchInputRef.current && searchInputRef.current.focus()
+  }
+  const onPressArrowBack = () => {
+    handleChangeText('')
+    dispatch({ type: 'SHOW_RESULTS', payload: false })
+  }
 
   return (
     <StyledInput>
       <SearchInput
+        ref={searchInputRef}
         value={currentValue}
         onChangeText={handleChangeText}
         placeholder={_(t`Chercher par titre, artiste...`)}
         autoFocus={false}
         inputHeight="tall"
-        LeftIcon={() => <MagnifyingGlass />}
-        RightIcon={() => getRightIcon(currentValue, resetSearch)}
+        LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
+        RightIcon={() => <RightIcon currentValue={currentValue} onPress={resetSearch} />}
+        onBlur={() => dispatch({ type: 'SHOW_RESULTS', payload: true })}
       />
     </StyledInput>
   )
 }
 
 const StyledInput = styled.View({ width: '100%' })
+const ArrowPreviousContainer = styled.TouchableOpacity({})
 
 export const SearchBox = connectSearchBox(SearchBoxComponent)

@@ -35,7 +35,7 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
     <SearchContext.Provider value={{ searchState, dispatch }}>
       <InstantSearch searchClient={searchClient} indexName={env.ALGOLIA_INDEX_NAME}>
         <Configure hitsPerPage={20} />
-        {searchState && <Configure {...buildSearchParameters(parameters)} />}
+        {showResults && <Configure {...buildSearchParameters(parameters)} />}
         {children}
       </InstantSearch>
     </SearchContext.Provider>
