@@ -35,7 +35,8 @@ export const LocationSection: React.FC = () => {
   const onPress = () => navigate('LocationFilter')
   return (
     <React.Fragment>
-      <Section title={_(t`Localisation`)}>
+      {/* Count to change when we will connect Location to searchState */}
+      <Section title={_(t`Localisation`)} count={1}>
         {renderLocationContent(LocationChoiceType.LOCALIZED, onPress)}
       </Section>
     </React.Fragment>

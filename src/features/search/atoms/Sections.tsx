@@ -3,6 +3,8 @@ import styled from 'styled-components/native'
 
 import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
 
+import { TitleWithCount } from './TitleWithCount'
+
 export const CenteredSection: React.FC<{ title: string; children: Element }> = ({
   title,
   children,
@@ -13,9 +15,13 @@ export const CenteredSection: React.FC<{ title: string; children: Element }> = (
   </Container>
 )
 
-export const Section: React.FC<{ title: string; children: Element }> = ({ title, children }) => (
+export const Section: React.FC<{ title: string; count: number; children: Element }> = ({
+  title,
+  count,
+  children,
+}) => (
   <Container>
-    <Typo.Title4>{title}</Typo.Title4>
+    <TitleWithCount title={title} count={count} />
     <Content>{children}</Content>
   </Container>
 )
