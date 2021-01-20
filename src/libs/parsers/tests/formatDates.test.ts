@@ -5,6 +5,7 @@ import {
   formatDateToISOStringWithoutTime,
   formatDates,
   getUniqueSortedTimestamps,
+  formatToCompleteFrenchDate,
 } from '../formatDates'
 
 const Oct5 = new Date(2020, 9, 5)
@@ -93,6 +94,24 @@ describe('formatDateToISOStringWithoutTime()', () => {
     'should format Date $date to string "$expectedISOString"',
     ({ date, expectedISOString }: { date: Date; expectedISOString: string }) => {
       expect(formatDateToISOStringWithoutTime(date)).toEqual(expectedISOString)
+    }
+  )
+})
+
+describe('formatToCompleteFrenchDate()', () => {
+  it.each`
+    date             | expectedString
+    ${1578788130000} | ${'Dimanche 12 janvier 2020'}
+    ${1578874530000} | ${'Lundi 13 janvier 2020'}
+    ${1560813330000} | ${'Mardi 18 juin 2019'}
+    ${1582071330000} | ${'Mercredi 19 février 2020'}
+    ${1582762530000} | ${'Jeudi 27 février 2020'}
+    ${1585268130000} | ${'Vendredi 27 mars 2020'}
+    ${1587770130000} | ${'Samedi 25 avril 2020'}
+  `(
+    'should format Date $date to string "$expectedString"',
+    ({ date, expectedString }: { date: number; expectedString: string }) => {
+      expect(formatToCompleteFrenchDate(date)).toEqual(expectedString)
     }
   )
 })

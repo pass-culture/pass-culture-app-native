@@ -18,6 +18,14 @@ const MONTHS = [
   'décembre',
 ]
 
+const DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+
+export const formatToCompleteFrenchDate = (timestamp: number) => {
+  const date = new Date(timestamp)
+  const weekDay = DAYS[date.getDay()]
+  return `${weekDay} ${formatToFrenchDate(timestamp)}`
+}
+
 const formatToFrenchDate = (timestamp: number) => {
   const date = new Date(timestamp)
   const day = date.getDate()
