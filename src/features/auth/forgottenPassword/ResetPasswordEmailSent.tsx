@@ -5,6 +5,7 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
+import { useBackNavigation } from 'features/navigation/backNavigation'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -25,10 +26,7 @@ type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-
-  function onBackNavigation() {
-    navigate('ForgottenPassword')
-  }
+  const complexGoBack = useBackNavigation<'ResetPasswordEmailSent'>()
 
   function onClose() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
@@ -44,7 +42,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
       <ModalHeader
         title={_(t`E-mail envoyé !`)}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={onBackNavigation}
+        onLeftIconPress={complexGoBack}
         rightIcon={Close}
         onRightIconPress={onClose}
       />
