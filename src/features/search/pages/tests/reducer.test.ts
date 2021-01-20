@@ -60,8 +60,22 @@ describe('Search reducer', () => {
     newState = searchReducer(newState, { type: 'CATEGORIES', payload: 'CINEMA' })
     expect(newState).toStrictEqual({ ...state, offerCategories: ['JEUX_VIDEO', 'CINEMA'] })
 
-    // Remove JEUX_VIDEO
+    // 3. Remove JEUX_VIDEO
     newState = searchReducer(newState, { type: 'CATEGORIES', payload: 'JEUX_VIDEO' })
     expect(newState).toStrictEqual({ ...state, offerCategories: ['CINEMA'] })
+  })
+
+  it('should handle OFFER_TYPE', () => {
+    // 1. Add isDigital
+    let newState = searchReducer(state, { type: 'OFFER_TYPE', payload: 'isDigital' })
+    expect(newState.offerTypes).toStrictEqual({ isDigital: true, isThing: false, isEvent: false })
+
+    // 2. Add isThing
+    newState = searchReducer(newState, { type: 'OFFER_TYPE', payload: 'isThing' })
+    expect(newState.offerTypes).toStrictEqual({ isDigital: true, isThing: true, isEvent: false })
+
+    // 3. Remove isDigital
+    newState = searchReducer(newState, { type: 'OFFER_TYPE', payload: 'isDigital' })
+    expect(newState.offerTypes).toStrictEqual({ isDigital: false, isThing: true, isEvent: false })
   })
 })
