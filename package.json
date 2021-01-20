@@ -37,6 +37,7 @@
     "@lingui/react": "^2.9.2",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-community/async-storage": "^1.7.1",
+    "@react-native-community/datetimepicker": "^3.0.9",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-native-firebase/analytics": "^7.6.8",
     "@react-native-firebase/app": "^8.4.6",
