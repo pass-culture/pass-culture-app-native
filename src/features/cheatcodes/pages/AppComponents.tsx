@@ -415,8 +415,6 @@ export const AppComponents: FunctionComponent = () => {
       <AccordionItem title="Search components">
         <SearchInput LeftIcon={() => <MagnifyingGlass />} placeholder="with left icon" />
         <Spacer.Column numberOfSpaces={4} />
-        <SearchInput placeholder="without left icon" />
-        <Spacer.Column numberOfSpaces={4} />
         <Center>
           <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n} €`} />
           <Slider values={[50]} showValues formatValues={(n) => `${n} km`} />
