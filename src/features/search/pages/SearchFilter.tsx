@@ -1,11 +1,11 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SearchResultsButton } from 'features/search/atoms'
+import { SearchResultsButton, ReinitializeFiltersButton } from 'features/search/atoms'
 import {
   CategorySection,
+  LocationSection,
   OfferTypeSection,
   PriceSlider,
   RadiusSlider,
@@ -13,17 +13,7 @@ import {
 } from 'features/search/components'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
-import { LocationSection } from '../components/LocationSection'
-
-const rightButton = (onLayout: (event: LayoutChangeEvent) => void): JSX.Element => {
-  return (
-    <Typo.ButtonText onLayout={onLayout} color={ColorsEnum.WHITE}>
-      {_(t`Réinitialiser`)}
-    </Typo.ButtonText>
-  )
-}
+import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => (
   <React.Fragment>
@@ -61,7 +51,7 @@ export const SearchFilter: React.FC = () => (
         <Spacer.Column numberOfSpaces={30} />
       </Container>
     </React.Fragment>
-    <PageHeader title={_(t`Filtrer`)} rightComponent={rightButton} />
+    <PageHeader title={_(t`Filtrer`)} RightComponent={ReinitializeFiltersButton} />
     <SearchResultsButtonContainer>
       <SearchResultsButton />
       <Spacer.BottomScreen />
