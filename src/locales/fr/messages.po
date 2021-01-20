@@ -143,7 +143,7 @@ msgstr "Chargement en cours..."
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
-#: src/features/search/components/SearchBox.tsx:24
+#: src/features/search/components/SearchBox.tsx:44
 msgid "Chercher par titre, artiste..."
 msgstr "Chercher par titre, artiste..."
 
@@ -300,6 +300,10 @@ msgstr "ISBN"
 msgid "Impossible de réserver"
 msgstr "Impossible de réserver"
 
+#: src/features/search/pages/Search.tsx:45
+msgid "Je cherche"
+msgstr "Je cherche"
+
 #: src/libs/keychain.ts:23
 #: src/libs/keychain.ts:33
 #: src/libs/keychain.ts:47
@@ -379,6 +383,10 @@ msgstr "Oops !"
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:46
 msgid "Oups"
 msgstr "Oups"
+
+#: src/features/search/pages/Search.tsx:47
+msgid "Où"
+msgstr "Où"
 
 #: src/features/offer/components/OfferWhereSection.tsx:25
 msgid "Où ?"
