@@ -6,12 +6,20 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   text: string
+  onPress?: () => void
 }
 
-export const DateFilterButton: React.FC<Props> = ({ text }: Props) => {
+export const DateFilterButton: React.FC<Props> = ({ text, onPress }: Props) => {
   const [isSelected, setIsSelected] = useState(false)
 
-  const selectButton = () => setIsSelected(!isSelected)
+  const selectButton = () => {
+    if (onPress) {
+      onPress()
+      setIsSelected(true)
+    } else {
+      setIsSelected(!isSelected)
+    }
+  }
   const color = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
 
   return (
