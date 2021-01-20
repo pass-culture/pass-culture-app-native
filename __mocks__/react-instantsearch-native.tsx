@@ -96,10 +96,13 @@ const fakeHits = [
 ]
 
 const connectStats = (Component) => () => <Component nbHits={fakeHits.length} />
+const InstantSearch = ({ children }) => <React.Fragment>{children}</React.Fragment>
+const Configure = () => <React.Fragment />
 
-module.exports = mockReactInstantSearch
 module.exports = {
   // @ts-ignore : the error is "Spread types may only be created from object types". Well the mock works anyway.
   ...mockReactInstantSearch,
   connectStats,
+  InstantSearch,
+  Configure,
 }
