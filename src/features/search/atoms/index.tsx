@@ -1,6 +1,7 @@
 export * from './FilterButton'
 export * from './Hit'
 export * from './NumberOfResults'
+export * from './ReinitializeFiltersButton'
 export * from './SearchResultsButton'
 export * from './Sections'
 export * from './SelectionLabel'

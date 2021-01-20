@@ -12,8 +12,7 @@ const formatEuro = (price: number) => `${price} €`
 
 export const PriceSlider: React.FC = () => {
   const { searchState, dispatch } = useSearch()
-  const { priceRange } = searchState || {}
-  const [min, max] = priceRange || [0, MAX_PRICE]
+  const values = searchState.priceRange ?? [0, MAX_PRICE]
 
   const onValuesChange = (newValues: number[]) => {
     dispatch({ type: 'PRICE_RANGE', payload: newValues as Range<number> })
@@ -23,7 +22,7 @@ export const PriceSlider: React.FC = () => {
     <CenteredSection title={_(t`Prix`)}>
       <Slider
         showValues={true}
-        values={[min, max]}
+        values={values}
         max={MAX_PRICE}
         formatValues={formatEuro}
         onValuesChange={onValuesChange}
