@@ -1,7 +1,8 @@
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
+import { Text } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
@@ -16,19 +17,39 @@ jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigatio
 
 describe('<ResetPasswordEmailSent />', () => {
   it('should match snapshot', async () => {
-    const instance = renderPage()
+    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
+    expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
+    const renderAPI = await renderInitialPage('PreviousScreen')
 
     await act(async () => {
-      await flushAllPromises()
+      navigationRef.current?.navigate('ResetPasswordEmailSent')
     })
+    const leftIcon = renderAPI.getByTestId('leftIcon')
+    fireEvent.press(leftIcon)
 
-    expect(instance).toMatchSnapshot()
+    await waitForExpect(() => {
+      expect(renderAPI.queryByText('PreviousScreenText')).toBeTruthy()
+    })
+  })
+
+  it('should redirect to Home when clicking on Close icon', async () => {
+    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
+
+    const rightIcon = renderAPI.getByTestId('rightIcon')
+    fireEvent.press(rightIcon)
+
+    await waitForExpect(() => {
+      expect(renderAPI.queryByText('HomeText')).toBeTruthy()
+    })
   })
 
   it('should open mail app when clicking on contact support button', async () => {
-    const { findByText } = renderPage()
+    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
 
-    const contactSupportButton = await findByText('Contacter le support')
+    const contactSupportButton = renderAPI.getByText('Contacter le support')
     fireEvent.press(contactSupportButton)
 
     await waitForExpect(() => {
@@ -41,9 +62,9 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 
   it('should open mail app when clicking on check email button', async () => {
-    const { findByText } = renderPage()
+    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
 
-    const checkEmailsButton = await findByText('Consulter mes e-mails')
+    const checkEmailsButton = renderAPI.getByText('Consulter mes e-mails')
     fireEvent.press(checkEmailsButton)
 
     await waitForExpect(() => {
@@ -52,14 +73,26 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 })
 
-const TestStack = createStackNavigator<{
+const navigationRef = React.createRef<NavigationContainerRef>()
+
+type StackParams = {
   Home: undefined
+  PreviousScreen: undefined
   ResetPasswordEmailSent: { email: string }
-}>()
-function renderPage() {
-  return render(
-    <NavigationContainer>
-      <TestStack.Navigator initialRouteName="Home">
+}
+
+const TestStack = createStackNavigator<StackParams>()
+
+const Home = () => <Text>HomeText</Text>
+
+const PreviousScreen = () => <Text>PreviousScreenText</Text>
+
+async function renderInitialPage(initialScreenName: keyof StackParams) {
+  const renderAPI = render(
+    <NavigationContainer ref={navigationRef}>
+      <TestStack.Navigator initialRouteName={initialScreenName}>
+        <TestStack.Screen name="Home" component={Home} />
+        <TestStack.Screen name="PreviousScreen" component={PreviousScreen} />
         <TestStack.Screen
           name="ResetPasswordEmailSent"
           component={ResetPasswordEmailSent}
@@ -68,4 +101,8 @@ function renderPage() {
       </TestStack.Navigator>
     </NavigationContainer>
   )
+  await act(async () => {
+    await flushAllPromises()
+  })
+  return renderAPI
 }
