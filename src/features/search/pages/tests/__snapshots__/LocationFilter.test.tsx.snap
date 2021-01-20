@@ -23,11 +23,21 @@ Array [
     }
   />,
   <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />,
+  <View
     style={
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#ecf0f1",
+          "backgroundColor": "#f5f5f5",
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "row",
@@ -98,6 +108,112 @@ Array [
         ]
       }
     />
+  </View>,
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "marginHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <View
+      height={48}
+      width={48}
+    >
+      undefined-SVG-Mock
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      Autour de moi
+    </Text>
+  </View>,
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "marginHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <View
+      height={48}
+      width={48}
+    >
+      undefined-SVG-Mock
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      Partout
+    </Text>
   </View>,
   <View
     style={
