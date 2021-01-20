@@ -325,8 +325,8 @@ msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
 #: src/features/auth/signup/QuitSignupModal.tsx:31
-msgid "Les informations que tu as renseignés ne seront pas enregistrées"
-msgstr "Les informations que tu as renseignés ne seront pas enregistrées"
+msgid "Les informations que tu as renseignées ne seront pas enregistrées"
+msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
 #: src/features/auth/signup/SetBirthday.tsx:166
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
