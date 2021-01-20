@@ -6,8 +6,9 @@ import styled from 'styled-components/native'
 import { SearchResultsButton } from 'features/search/atoms'
 import {
   CategorySection,
-  RadiusSlider,
+  OfferTypeSection,
   PriceSlider,
+  RadiusSlider,
   SectionWithSwitch,
 } from 'features/search/components'
 import { _ } from 'libs/i18n'
@@ -30,6 +31,8 @@ export const SearchFilter: React.FC = () => (
         <Spacer.Column numberOfSpaces={6} />
         <Separator />
         <CategorySection />
+        <Separator />
+        <OfferTypeSection />
         <Separator />
         <Spacer.Column numberOfSpaces={6} />
         <PriceSlider />
