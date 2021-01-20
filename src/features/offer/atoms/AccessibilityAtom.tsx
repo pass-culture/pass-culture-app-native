@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
-import { LayoutChangeEvent } from 'react-native'
+import React from 'react'
 import styled from 'styled-components/native'
 
+import { ValidationMark } from 'ui/components/ValidationMark'
+import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
-
-import { _ } from '../../../libs/i18n'
-import { ValidationMark } from '../../../ui/components/ValidationMark'
 
 import { getIconAndWording } from './AccessibilityAtom.service'
 
@@ -16,6 +14,24 @@ export enum HandicapCategory {
   'MOTOR',
   'AUDIO',
 }
+
+const HandicapText: React.FC<{ wording: string; width: number }> = ({ wording, width }) => {
+  // There's always two words in the handicap wordings, but we still make sure we only show 2 words
+  const [firstWord, secondWord, ..._otherWords] = wording.split(' ')
+
+  return (
+    <TextContainer testID={wording} width={width}>
+      <Text numberOfLines={1} adjustsFontSizeToFit={true}>
+        {firstWord}
+      </Text>
+      <Text> </Text>
+      <Text numberOfLines={1} adjustsFontSizeToFit={true}>
+        {secondWord}
+      </Text>
+    </TextContainer>
+  )
+}
+
 interface Props {
   handicap: HandicapCategory
   isAccessible: boolean
@@ -24,14 +40,11 @@ interface Props {
 
 export const AccessibilityAtom: React.FC<Props> = ({ handicap, isAccessible, sideSpace }) => {
   const { Icon, wording } = getIconAndWording(handicap)
-  const [width, setWidth] = useState<number | undefined>(undefined)
+  const { width, onLayout } = useElementWidth()
+
   return (
     <Container>
-      <Frame
-        testID="accessibilityFrame"
-        onLayout={(event: LayoutChangeEvent) => {
-          setWidth(event.nativeEvent.layout.width)
-        }}>
+      <Frame testID="accessibilityFrame" onLayout={onLayout}>
         <Spacer.Flex />
         <Icon size={getSpacing(12)} />
         <Spacer.Flex />
@@ -45,9 +58,7 @@ export const AccessibilityAtom: React.FC<Props> = ({ handicap, isAccessible, sid
         </ValidationContainer>
       </Frame>
       <Spacer.Column numberOfSpaces={4} />
-      <TextContainer testID="textContainer" width={(width ?? 0) + sideSpace}>
-        <Text numberOfLines={2}>{wording}</Text>
-      </TextContainer>
+      <HandicapText wording={wording} width={(width ?? 0) + sideSpace} />
     </Container>
   )
 }
@@ -64,13 +75,14 @@ const Container = styled.View({
   flexDirection: 'column',
   flexShrink: 1,
 })
-const Text = styled(Typo.Caption)({
-  textAlign: 'center',
-})
+const Text = styled(Typo.Caption)({ textAlign: 'center' })
 const TextContainer = styled.View<{ width: number }>(({ width }) => ({
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
   width,
   alignSelf: 'center',
-  paddingHorizontal: getSpacing(1),
+  marginHorizontal: getSpacing(2),
 }))
 const ValidationContainer = styled.View({
   position: 'absolute',

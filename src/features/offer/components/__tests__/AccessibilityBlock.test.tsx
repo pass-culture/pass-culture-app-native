@@ -5,7 +5,7 @@ import { AccessibilityBlock } from '../AccessibilityBlock'
 
 describe('AccessibilityBlock', () => {
   it('renders all handicap information', () => {
-    const { queryByText } = render(
+    const { queryByTestId } = render(
       <AccessibilityBlock
         audioDisability={true}
         motorDisability={false}
@@ -13,13 +13,13 @@ describe('AccessibilityBlock', () => {
         visualDisability={false}
       />
     )
-    expect(queryByText('Handicap visuel')).toBeTruthy()
-    expect(queryByText('Handicap moteur')).toBeTruthy()
-    expect(queryByText('Handicap mental')).toBeTruthy()
-    expect(queryByText('Handicap auditif')).toBeTruthy()
+    expect(queryByTestId('Handicap visuel')).toBeTruthy()
+    expect(queryByTestId('Handicap moteur')).toBeTruthy()
+    expect(queryByTestId('Handicap mental')).toBeTruthy()
+    expect(queryByTestId('Handicap auditif')).toBeTruthy()
   })
   it('renders only available handicap information', () => {
-    const { queryByText } = render(
+    const { queryByTestId } = render(
       <AccessibilityBlock
         audioDisability={undefined}
         motorDisability={false}
@@ -27,9 +27,9 @@ describe('AccessibilityBlock', () => {
         visualDisability={false}
       />
     )
-    expect(queryByText('Handicap visuel')).toBeTruthy()
-    expect(queryByText('Handicap moteur')).toBeTruthy()
-    expect(queryByText('Handicap mental')).toBeTruthy()
-    expect(queryByText('Handicap auditif')).toBeNull()
+    expect(queryByTestId('Handicap visuel')).toBeTruthy()
+    expect(queryByTestId('Handicap moteur')).toBeTruthy()
+    expect(queryByTestId('Handicap mental')).toBeTruthy()
+    expect(queryByTestId('Handicap auditif')).toBeNull()
   })
 })

@@ -53,7 +53,7 @@ describe('AccessibilityAtom', () => {
     const { getByTestId } = render(
       <AccessibilityAtom sideSpace={10} handicap={HandicapCategory.MENTAL} isAccessible={false} />
     )
-    const textContainer = getByTestId('textContainer')
+    const textContainer = getByTestId('Handicap mental')
     expect(textContainer.props.style[0].width).toEqual(10)
 
     const accessibilityFrame = getByTestId('accessibilityFrame')

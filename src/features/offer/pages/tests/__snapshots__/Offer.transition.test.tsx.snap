@@ -64,7 +64,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -888,1067 +854,26 @@
+@@ -888,1211 +854,26 @@
                           <View
                             style={
                               Array [
@@ -299,7 +299,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               width={24}
 -                             >
 -                               undefined-SVG-Mock
-                        </View>
+-                             </View>
 -                             <View
 -                               numberOfSpaces={1}
 -                               style={
@@ -651,7 +651,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       invalidTestId-SVG-Mock
 -                                     </View>
 -                                   </View>
--                                 </View>
+                        </View>
 -                                 <View
 -                                   numberOfSpaces={4}
 -                                   style={
@@ -667,16 +667,20 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"alignSelf\\": \\"center\\",
--                                         \\"paddingHorizontal\\": 4,
+-                                         \\"flexDirection\\": \\"row\\",
+-                                         \\"flexWrap\\": \\"wrap\\",
+-                                         \\"justifyContent\\": \\"center\\",
+-                                         \\"marginHorizontal\\": 8,
 -                                         \\"width\\": 16,
 -                                       },
 -                                     ]
 -                                   }
--                                   testID=\\"textContainer\\"
+-                                   testID=\\"Handicap visuel\\"
 -                                   width={16}
 -                                 >
 -                                   <Text
--                                     numberOfLines={2}
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
 -                                         Object {
@@ -689,7 +693,39 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       ]
 -                                     }
 -                                   >
--                                     Handicap visuel
+-                                     Handicap
+-                                   </Text>
+-                                   <Text
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                      
+-                                   </Text>
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     visuel
 -                                   </Text>
 -                                 </View>
 -                               </View>
@@ -790,16 +826,20 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"alignSelf\\": \\"center\\",
--                                         \\"paddingHorizontal\\": 4,
+-                                         \\"flexDirection\\": \\"row\\",
+-                                         \\"flexWrap\\": \\"wrap\\",
+-                                         \\"justifyContent\\": \\"center\\",
+-                                         \\"marginHorizontal\\": 8,
 -                                         \\"width\\": 16,
 -                                       },
 -                                     ]
 -                                   }
--                                   testID=\\"textContainer\\"
+-                                   testID=\\"Handicap mental\\"
 -                                   width={16}
 -                                 >
 -                                   <Text
--                                     numberOfLines={2}
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
 -                                         Object {
@@ -812,7 +852,39 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       ]
 -                                     }
 -                                   >
--                                     Handicap mental
+-                                     Handicap
+-                                   </Text>
+-                                   <Text
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                      
+-                                   </Text>
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     mental
 -                                   </Text>
 -                                 </View>
 -                               </View>
@@ -913,16 +985,20 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"alignSelf\\": \\"center\\",
--                                         \\"paddingHorizontal\\": 4,
+-                                         \\"flexDirection\\": \\"row\\",
+-                                         \\"flexWrap\\": \\"wrap\\",
+-                                         \\"justifyContent\\": \\"center\\",
+-                                         \\"marginHorizontal\\": 8,
 -                                         \\"width\\": 16,
 -                                       },
 -                                     ]
 -                                   }
--                                   testID=\\"textContainer\\"
+-                                   testID=\\"Handicap moteur\\"
 -                                   width={16}
 -                                 >
 -                                   <Text
--                                     numberOfLines={2}
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
 -                                         Object {
@@ -935,15 +1011,49 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       ]
 -                                     }
 -                                   >
--                                     Handicap moteur
+-                                     Handicap
+-                                   </Text>
+-                                   <Text
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                      
+-                                   </Text>
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     moteur
 -                                   </Text>
 -                                 </View>
 -                               </View>
--                               <View
++                     </RCTScrollView>
+                      <View
 -                                 numberOfSpaces={4}
--                                 style={
--                                   Array [
--                                     Object {
++                       numberOfSpaces={10}
+                        style={
+                          Array [
+                            Object {
 -                                       \\"width\\": 16,
 -                                     },
 -                                   ]
@@ -974,12 +1084,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   }
 -                                   testID=\\"accessibilityFrame\\"
 -                                 >
-+                     </RCTScrollView>
-                      <View
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
 -                                           \\"flexBasis\\": 0,
 -                                           \\"flexGrow\\": 1,
 -                                           \\"flexShrink\\": 1,
@@ -1000,11 +1108,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"flexBasis\\": 0,
 -                                           \\"flexGrow\\": 1,
 -                                           \\"flexShrink\\": 1,
-+                             \\"height\\": 40,
-                            },
-                          ]
-                        }
-                      />
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
 -                                   <View
 -                                     style={
 -                                       Array [
@@ -1030,25 +1137,30 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"height\\": 16,
--                                       },
--                                     ]
--                                   }
--                                 />
++                             \\"height\\": 40,
+                            },
+                          ]
+                        }
+                      />
 -                                 <View
 -                                   style={
 -                                     Array [
 -                                       Object {
 -                                         \\"alignSelf\\": \\"center\\",
--                                         \\"paddingHorizontal\\": 4,
+-                                         \\"flexDirection\\": \\"row\\",
+-                                         \\"flexWrap\\": \\"wrap\\",
+-                                         \\"justifyContent\\": \\"center\\",
+-                                         \\"marginHorizontal\\": 8,
 -                                         \\"width\\": 16,
 -                                       },
 -                                     ]
 -                                   }
--                                   testID=\\"textContainer\\"
+-                                   testID=\\"Handicap auditif\\"
 -                                   width={16}
 -                                 >
 -                                   <Text
--                                     numberOfLines={2}
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
 -                                         Object {
@@ -1061,7 +1173,39 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       ]
 -                                     }
 -                                   >
--                                     Handicap auditif
+-                                     Handicap
+-                                   </Text>
+-                                   <Text
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                      
+-                                   </Text>
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     auditif
 -                                   </Text>
 -                                 </View>
 -                               </View>
