@@ -1,5 +1,5 @@
 import algoliasearch from 'algoliasearch'
-import React, { useContext, useReducer } from 'react'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-native'
 
 import {
@@ -11,6 +11,8 @@ import {
 import { buildSearchParameters } from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { env } from 'libs/environment'
 
+const SEARCH_DEBOUNCE_MS = 400
+
 export interface ISearchContext {
   searchState: SearchState
   dispatch: React.Dispatch<Action>
@@ -21,12 +23,18 @@ const searchClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARC
 
 export const SearchWrapper = ({ children }: { children: Element }) => {
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
+  const [debouncedSearchState, setDebouncedSearchState] = useState<SearchState>(searchState)
+
+  useEffect(() => {
+    const handler = setTimeout(() => setDebouncedSearchState(searchState), SEARCH_DEBOUNCE_MS)
+    return () => clearTimeout(handler)
+  }, [searchState])
 
   return (
     <SearchContext.Provider value={{ searchState, dispatch }}>
       <InstantSearch searchClient={searchClient} indexName={env.ALGOLIA_INDEX_NAME}>
         <Configure hitsPerPage={20} />
-        {searchState && <Configure {...buildSearchParameters(searchState)} />}
+        {searchState && <Configure {...buildSearchParameters(debouncedSearchState)} />}
         {children}
       </InstantSearch>
     </SearchContext.Provider>
