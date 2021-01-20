@@ -120,47 +120,68 @@ Array [
     }
   />,
   <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "row",
-          "marginHorizontal": 24,
-        },
-      ]
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginHorizontal": 24,
+        "opacity": 1,
+      }
     }
   >
     <View
-      height={48}
-      width={48}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
     >
-      undefined-SVG-Mock
+      <View
+        height={48}
+        width={48}
+      >
+        undefined-SVG-Mock
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+      <Text
+        color="#151515"
+        style={
+          Array [
+            Object {
+              "color": "#151515",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Autour de moi
+      </Text>
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#151515",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      Autour de moi
-    </Text>
   </View>,
   <View
     numberOfSpaces={4}
@@ -173,47 +194,68 @@ Array [
     }
   />,
   <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "row",
-          "marginHorizontal": 24,
-        },
-      ]
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginHorizontal": 24,
+        "opacity": 1,
+      }
     }
   >
     <View
-      height={48}
-      width={48}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
     >
-      undefined-SVG-Mock
+      <View
+        height={48}
+        width={48}
+      >
+        undefined-SVG-Mock
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+      <Text
+        color="#151515"
+        style={
+          Array [
+            Object {
+              "color": "#151515",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Partout
+      </Text>
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#151515",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      Partout
-    </Text>
   </View>,
   <View
     style={

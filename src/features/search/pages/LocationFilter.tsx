@@ -4,11 +4,10 @@ import React from 'react'
 import { _ } from 'libs/i18n'
 import { Banner, BannerType } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { AroundMe } from 'ui/svg/icons/AroundMe'
-import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { Spacer } from 'ui/theme'
 
 import { LocationChoice } from '../components/LocationChoice'
+import { LocationChoiceType } from '../locationChoice.types'
 
 export const LocationFilter: React.FC = () => (
   <React.Fragment>
@@ -22,9 +21,9 @@ export const LocationFilter: React.FC = () => (
       type={BannerType.INFO}
     />
     <Spacer.Column numberOfSpaces={6} />
-    <LocationChoice text={_(t`Autour de moi`)} icon={<AroundMe size={48} />} />
+    <LocationChoice type={LocationChoiceType.LOCALIZED} />
     <Spacer.Column numberOfSpaces={4} />
-    <LocationChoice text={_(t`Partout`)} icon={<Everywhere size={48} />} />
+    <LocationChoice type={LocationChoiceType.EVERYWHERE} />
     <PageHeader title={_(t`Localisation`)} />
   </React.Fragment>
 )
