@@ -61,7 +61,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
 - First value
 + Second value
 
-@@ -167,10 +167,65 @@
+@@ -167,10 +167,56 @@
                 rightIcon-SVG-Mock
               </View>
             </View>
@@ -95,31 +95,22 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
 +           >
 +             rule-icon-warn-SVG-Mock
 +           </View>
-+           <View
++           <Text
++             color=\\"#b60025\\"
 +             style={
 +               Array [
 +                 Object {
-+                   \\"paddingLeft\\": 8,
++                   \\"color\\": \\"#b60025\\",
++                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++                   \\"fontSize\\": 12,
++                   \\"lineHeight\\": 16,
++                   \\"paddingLeft\\": 4,
 +                 },
 +               ]
 +             }
 +           >
-+             <Text
-+               color=\\"#b60025\\"
-+               style={
-+                 Array [
-+                   Object {
-+                     \\"color\\": \\"#b60025\\",
-+                     \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+                     \\"fontSize\\": 12,
-+                     \\"lineHeight\\": 16,
-+                   },
-+                 ]
-+               }
-+             >
-+               E-mail ou mot de passe incorrect
-+             </Text>
-+           </View>
++             E-mail ou mot de passe incorrect
++           </Text>
 +         </View>
 +         <View
             numberOfSpaces={7}
@@ -127,7 +118,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
               Array [
                 Object {
                   \\"height\\": 28,
-@@ -214,18 +269,18 @@
+@@ -214,18 +260,18 @@
                   },
                 ]
               }
@@ -148,7 +139,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
                     \\"borderWidth\\": 1,
                     \\"flexDirection\\": \\"row\\",
                     \\"height\\": 40,
-@@ -323,18 +378,18 @@
+@@ -323,18 +369,18 @@
                   },
                 ]
               }

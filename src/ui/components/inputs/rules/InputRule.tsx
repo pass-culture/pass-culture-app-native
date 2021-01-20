@@ -15,21 +15,19 @@ type Props = {
 export const InputRule: FunctionComponent<Props> = (props) => {
   const Icon = props.icon
   return (
-    <AlignedText>
+    <StyledView>
       <Icon testID={`rule-icon-${props.testIdSuffix}`} color={props.color} size={props.iconSize} />
-      <TextContainer>
-        <Typo.Caption color={props.color}>{props.title}</Typo.Caption>
-      </TextContainer>
-    </AlignedText>
+      <StyledTypoCaption color={props.color}>{props.title}</StyledTypoCaption>
+    </StyledView>
   )
 }
 
-const AlignedText = styled.View({
+const StyledView = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
   maxWidth: getSpacing(125),
 })
 
-const TextContainer = styled.View({
-  paddingLeft: getSpacing(2),
+const StyledTypoCaption = styled(Typo.Caption)({
+  paddingLeft: getSpacing(1),
 })
