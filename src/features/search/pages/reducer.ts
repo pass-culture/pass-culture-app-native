@@ -1,11 +1,12 @@
 import { FetchAlgoliaParameters } from 'libs/algolia'
 
-export type SearchState = Omit<
+import { clampPrice, addOrRemove } from './reducer.helpers'
+
+export type SearchParameters = Omit<
   FetchAlgoliaParameters,
   'hitsPerPage' | 'page' | 'sortBy' | 'keywords'
 >
-
-export const MAX_PRICE = 300
+export type SearchState = SearchParameters & { showResults: boolean }
 
 export const initialSearchState: SearchState = {
   aroundRadius: null,
@@ -43,20 +44,14 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return {
         ...state,
         ...action.payload,
-        priceRange: action.payload.priceRange
-          ? [action.payload.priceRange[0], Math.min(action.payload.priceRange[1], MAX_PRICE)]
-          : state.priceRange,
+        priceRange: clampPrice(action.payload.priceRange),
       }
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
     case 'CATEGORIES':
-      if (state.offerCategories.includes(action.payload)) {
-        return {
-          ...state,
-          offerCategories: state.offerCategories.filter((category) => category !== action.payload),
-        }
-      } else {
-        return { ...state, offerCategories: [...state.offerCategories, action.payload] }
+      return {
+        ...state,
+        offerCategories: addOrRemove(state.offerCategories, action.payload),
       }
     case 'OFFER_TYPE':
       return {

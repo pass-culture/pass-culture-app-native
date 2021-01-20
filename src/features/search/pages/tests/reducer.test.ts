@@ -1,4 +1,5 @@
-import { Action, initialSearchState, MAX_PRICE, searchReducer, SearchState } from '../reducer'
+import { Action, initialSearchState, searchReducer, SearchState } from '../reducer'
+import { MAX_PRICE } from '../reducer.helpers'
 
 describe('Search reducer', () => {
   const state = initialSearchState
@@ -25,6 +26,7 @@ describe('Search reducer', () => {
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       ...parameters,
+      priceRange: [0, 300],
     })
   })
   it('should handle INIT_FROM_SEE_MORE - MAX_PRICE', () => {
