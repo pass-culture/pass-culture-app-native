@@ -5,34 +5,20 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Section } from 'features/search/atoms/Sections'
+import { getLocationChoiceName } from 'features/search/components/locationChoice.utils'
+import { LocationChoiceType } from 'features/search/locationChoice.types'
 import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, ColorsEnum } from 'ui/theme'
 
-export enum LocationChoice {
-  LOCALIZED = 'LOCALIZED',
-  EVERYWHERE = 'EVERYWHERE',
-}
-
-const getLocationChoiceName = (locationChoice: LocationChoice) => {
-  switch (locationChoice) {
-    case LocationChoice.LOCALIZED:
-      return _(t`Autour de moi`)
-    case LocationChoice.EVERYWHERE:
-      return _(t`Partout`)
-    default:
-      return _(t`Partout`)
-  }
-}
-
-const renderLocationContent = (locationChoice: LocationChoice, onPress: () => void) => {
+const renderLocationContent = (locationChoice: LocationChoiceType, onPress: () => void) => {
   return (
     <React.Fragment>
       <LocationContentContainer onPress={onPress}>
         <Typo.ButtonText>{getLocationChoiceName(locationChoice)}</Typo.ButtonText>
         <ArrowNext size={24} />
       </LocationContentContainer>
-      {locationChoice === LocationChoice.LOCALIZED && (
+      {locationChoice === LocationChoiceType.LOCALIZED && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
@@ -50,7 +36,7 @@ export const LocationSection: React.FC = () => {
   return (
     <React.Fragment>
       <Section title={_(t`Localisation`)}>
-        {renderLocationContent(LocationChoice.LOCALIZED, onPress)}
+        {renderLocationContent(LocationChoiceType.LOCALIZED, onPress)}
       </Section>
     </React.Fragment>
   )
