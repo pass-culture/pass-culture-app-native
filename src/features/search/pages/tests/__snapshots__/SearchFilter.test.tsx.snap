@@ -2511,22 +2511,42 @@ Array [
           ]
         }
       />
-      <Text
-        color="#ffffff"
+      <View
         onLayout={[Function]}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
       >
-        Réinitialiser
-      </Text>
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            color="#ffffff"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Réinitialiser
+          </Text>
+        </View>
+      </View>
       <View
         numberOfSpaces={6}
         style={
