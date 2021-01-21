@@ -140,13 +140,13 @@ describe('SetBirthday Page', () => {
   })
 
   describe('SetBirthday - analytics', () => {
-    it('should log WhyAnniversary when clicking "Pourquoi" link', () => {
+    it('should log ConsultModalWhyAnniversary when clicking "Pourquoi" link', () => {
       const { getByTestId } = renderSetBirthday()
 
       const whyBirthdayLink = getByTestId('button-title-why-link')
       fireEvent.press(whyBirthdayLink)
 
-      expect(analytics.logClickWhyAnniversary).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)
     })
 
     it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {

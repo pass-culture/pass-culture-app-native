@@ -137,7 +137,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   }
 
   function onPressWhy() {
-    analytics.logClickWhyAnniversary()
+    analytics.logConsultWhyAnniversary()
     showInformationModal()
   }
 
