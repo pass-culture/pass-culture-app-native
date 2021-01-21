@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
   title: string
@@ -15,7 +16,7 @@ interface Props {
 const HeaderIconBack: React.FC = () => {
   const { goBack } = useNavigation()
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={goBack}>
+    <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={goBack}>
       <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
     </TouchableOpacity>
   )
