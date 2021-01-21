@@ -65,7 +65,7 @@ Array [
               ]
             }
           >
-             (1)
+             (1)
           </Text>
         </Text>
         <View
@@ -1195,6 +1195,16 @@ Array [
         </View>
       </View>
       <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
         style={
           Array [
             Object {
@@ -1501,6 +1511,16 @@ Array [
           </View>
         </View>
       </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
       <View
         style={
           Array [
@@ -1931,7 +1951,20 @@ Array [
               ]
             }
           >
-            Uniquement les offres gratuites
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                  },
+                ]
+              }
+            >
+              Uniquement les offres gratuites
+            </Text>
           </Text>
           <View
             numberOfSpaces={7}
@@ -2017,7 +2050,20 @@ Array [
               ]
             }
           >
-            Uniquement les offres duo
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                  },
+                ]
+              }
+            >
+              Uniquement les offres duo
+            </Text>
           </Text>
           <View
             numberOfSpaces={7}
@@ -2103,7 +2149,20 @@ Array [
               ]
             }
           >
-            Uniquement les nouveautés
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                  },
+                ]
+              }
+            >
+              Uniquement les nouveautés
+            </Text>
           </Text>
           <View
             numberOfSpaces={7}
@@ -2189,7 +2248,20 @@ Array [
               ]
             }
           >
-            Date
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                  },
+                ]
+              }
+            >
+              Date
+            </Text>
           </Text>
           <View
             numberOfSpaces={7}
@@ -2300,7 +2372,20 @@ Array [
               ]
             }
           >
-            Heure
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                  },
+                ]
+              }
+            >
+              Heure
+            </Text>
           </Text>
           <View
             numberOfSpaces={7}

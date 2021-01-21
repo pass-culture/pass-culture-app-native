@@ -8,7 +8,7 @@ export const TitleWithCount: React.FC<{ title: string; count: number }> = ({
   count = 0,
   title,
 }) => {
-  const countString = ` (${count})`
+  const countString = `\xa0(${count})`
   return (
     <Typo.Title4>
       {title}

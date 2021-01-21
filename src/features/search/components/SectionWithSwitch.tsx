@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FilterSwitch, InlineSection } from 'features/search/atoms'
+import { FilterSwitch, InlineSection, TitleWithCount } from 'features/search/atoms'
 
 interface Props {
   active?: boolean
@@ -12,7 +12,7 @@ interface Props {
 export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
   const { title, subtitle, active = false, toggle = () => null } = props
   return (
-    <InlineSection title={title} subtitle={subtitle}>
+    <InlineSection title={<TitleWithCount title={title} count={+active} />} subtitle={subtitle}>
       <FilterSwitch active={active} toggle={toggle} />
     </InlineSection>
   )

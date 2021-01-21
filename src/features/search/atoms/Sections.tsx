@@ -27,11 +27,11 @@ export const Section: React.FC<{ title: string; count: number; children: Element
   </Container>
 )
 
-export const InlineSection: React.FC<{ title: string; subtitle?: string; children: Element }> = ({
-  title,
-  subtitle,
-  children,
-}) => (
+export const InlineSection: React.FC<{
+  title: Element | string
+  subtitle?: string
+  children: Element
+}> = ({ title, subtitle, children }) => (
   <SectionContainer>
     <InlineSectionTitleContainer>
       <StyledTitle numberOfLines={2}>{title}</StyledTitle>
