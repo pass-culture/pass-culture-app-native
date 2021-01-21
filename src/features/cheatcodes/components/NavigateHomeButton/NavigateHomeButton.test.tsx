@@ -9,6 +9,6 @@ describe('NavigateHomeButton', () => {
   it('calls navigate to Home when pressed', () => {
     const { getByText } = render(<NavigateHomeButton />)
     fireEvent.press(getByText("Naviguer vers la page d'accueil"))
-    expect(navigate).toHaveBeenCalledWith('Home')
+    expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
   })
 })

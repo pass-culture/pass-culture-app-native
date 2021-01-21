@@ -5,6 +5,7 @@ import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
@@ -15,7 +16,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const RetryBoundary = ({ resetErrorBoundary }: FallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
-  const { canGoBack, goBack } = useNavigation()
+  const { canGoBack, goBack } = useNavigation<UseNavigationType>()
   const { top } = useCustomSafeInsets()
 
   const handleRetry = () => {

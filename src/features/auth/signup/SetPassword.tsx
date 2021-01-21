@@ -10,7 +10,7 @@ import {
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -27,7 +27,7 @@ type Props = StackScreenProps<RootStackParamList, 'SetPassword'>
 
 export const SetPassword: FunctionComponent<Props> = ({ route }) => {
   const [password, setPassword] = useState('')
-  const { goBack, navigate } = useNavigation()
+  const { goBack, navigate } = useNavigation<UseNavigationType>()
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked
 

@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -13,7 +14,7 @@ interface Props {
   longWording?: boolean
 }
 export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const onPressSeeMore = () => {
     analytics.logConsultDescriptionDetails(id)

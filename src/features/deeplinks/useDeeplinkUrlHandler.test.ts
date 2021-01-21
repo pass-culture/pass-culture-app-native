@@ -41,6 +41,9 @@ describe('useDeeplinkUrlHandler', () => {
   })
 
   describe('Navigation handler', () => {
+    afterEach(() => {
+      navigate.mockClear()
+    })
     it('should redirect to the right component when it exists', () => {
       const {
         result: { current: handleDeeplinkUrl },
@@ -66,7 +69,7 @@ describe('useDeeplinkUrlHandler', () => {
 
       handleDeeplinkUrl({ url })
 
-      expect(navigate).toHaveBeenCalledWith('Home')
+      expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
     })
   })
 })
@@ -86,7 +89,7 @@ jest.mock('features/deeplinks/routing', () => ({
       }
     },
     default: function () {
-      return { screen: 'Home' }
+      return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
     },
   },
 }))

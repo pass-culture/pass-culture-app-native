@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { connectStats } from 'react-instantsearch-native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
@@ -14,7 +15,7 @@ const formatNbHits = (nbHits: number) => {
 }
 
 export const SearchResultsButtonComponent: React.FC<{ nbHits: number }> = ({ nbHits }) => {
-  const { goBack } = useNavigation()
+  const { goBack } = useNavigation<UseNavigationType>()
   return <ButtonPrimary title={formatNbHits(nbHits)} disabled={nbHits === 0} onPress={goBack} />
 }
 

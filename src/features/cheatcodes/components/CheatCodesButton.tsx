@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export const CheatCodesButton: React.FC = () => {
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
   return <ButtonPrimary title="CheatCodes" onPress={() => navigate('CheatCodes')} />
 }

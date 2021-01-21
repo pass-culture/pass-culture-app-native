@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -29,20 +30,20 @@ export function decodeDeeplinkParts(url: string): DeeplinkParts {
 const DEFAULT_ERROR_MESSAGE = _(t`Le lien est incorrect`)
 
 export function useOnDeeplinkError() {
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { displayInfosSnackBar } = useSnackBarContext()
 
   return (errorMessage?: string) => {
     displayInfosSnackBar({
       message: errorMessage ? errorMessage : DEFAULT_ERROR_MESSAGE,
     })
-    const configureDefaultScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['default']
-    navigate(configureDefaultScreen().screen)
+    const { screen, params } = DEEPLINK_TO_SCREEN_CONFIGURATION['default']()
+    navigate(screen, params)
   }
 }
 
 export function useDeeplinkUrlHandler() {
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
   const onError = useOnDeeplinkError()
 
   return (event: DeeplinkEvent) => {
