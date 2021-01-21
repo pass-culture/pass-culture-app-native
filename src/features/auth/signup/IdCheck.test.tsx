@@ -24,7 +24,7 @@ describe('<IdCheck />', () => {
 
     await waitFor(() => {
       expect(webview.props.source.uri).toEqual(
-        env.ID_CHECK_URL + '/?email=john@wick.com&licence_token=XxLicenceTokenxX'
+        env.ID_CHECK_URL + '/?email=john%2B1%40wick.com&licence_token=XxLicenceTokenxX'
       )
     })
   })
@@ -67,7 +67,7 @@ function renderIdCheckWithNavigation() {
           name="IdCheck"
           component={IdCheck}
           initialParams={{
-            email: 'john@wick.com',
+            email: 'john+1@wick.com',
             licenceToken: 'XxLicenceTokenxX',
           }}
         />
