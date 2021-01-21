@@ -16,7 +16,8 @@ export const IdCheck: React.FC<Props> = function (props) {
   const navigation = useNavigation<UseNavigationType>()
 
   const { email, licenceToken } = props.route.params
-  const uri = `${env.ID_CHECK_URL}/?email=${email}&licence_token=${licenceToken}`
+  const encodedEmail = encodeURIComponent(email)
+  const uri = `${env.ID_CHECK_URL}/?email=${encodedEmail}&licence_token=${licenceToken}`
 
   function onNavigationStateChange(event: WebViewNavigation) {
     // For more info, see the buffer pages (i.e. to exit the webview) of the Id Check web app
