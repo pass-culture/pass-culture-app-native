@@ -38,6 +38,7 @@ export type Action =
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
   | { type: 'SHOW_RESULTS'; payload: boolean }
   | { type: 'TOGGLE_OFFER_FREE' }
+  | { type: 'TOGGLE_OFFER_DUO' }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -65,6 +66,8 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       }
     case 'TOGGLE_OFFER_FREE':
       return { ...state, offerIsFree: !state.offerIsFree }
+    case 'TOGGLE_OFFER_DUO':
+      return { ...state, offerIsDuo: !state.offerIsDuo }
     default:
       return state
   }

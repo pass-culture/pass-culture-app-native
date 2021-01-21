@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { SearchResultsButton, ReinitializeFiltersButton } from 'features/search/atoms'
 import {
   CategorySection,
+  DuoOfferSection,
   FreeOfferSection,
   LocationSection,
   OfferTypeSection,
@@ -38,7 +39,7 @@ export const SearchFilter: React.FC = () => (
         <Separator marginVertical={getSpacing(6)} />
         <FreeOfferSection />
         <Separator marginVertical={getSpacing(6)} />
-        <SectionWithSwitch title={_(t`Uniquement les offres duo`)} />
+        <DuoOfferSection />
         <Separator marginVertical={getSpacing(6)} />
         <SectionWithSwitch title={_(t`Uniquement les nouveautés`)} />
         <Separator marginVertical={getSpacing(6)} />
