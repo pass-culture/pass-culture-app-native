@@ -5,7 +5,7 @@ import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
 
 import { TitleWithCount } from './TitleWithCount'
 
-export const CenteredSection: React.FC<{ title: string; children: Element }> = ({
+export const CenteredSection: React.FC<{ title: Element | string; children: Element }> = ({
   title,
   children,
 }) => (

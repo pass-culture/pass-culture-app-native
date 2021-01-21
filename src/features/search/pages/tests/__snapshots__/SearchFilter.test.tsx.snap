@@ -1566,7 +1566,20 @@ Array [
             ]
           }
         >
-          Prix
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                },
+              ]
+            }
+          >
+            Prix
+          </Text>
         </Text>
         <View
           style={
