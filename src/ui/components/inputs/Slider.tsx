@@ -1,5 +1,5 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
-import React, { useState } from 'react'
+import React from 'react'
 import { Dimensions } from 'react-native'
 
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -22,17 +22,11 @@ const DEFAULT_VALUES = [DEFAULT_MIN, DEFAULT_MAX]
 const { width } = Dimensions.get('window')
 
 export const Slider: React.FC<Props> = (props) => {
-  const { showValues, formatValues = (s: number) => s } = props
-  const [values, setValues] = useState<number[]>(props.values || DEFAULT_VALUES)
-
-  const onValuesChange = (newValues: number[]) => {
-    if (props.onValuesChange) props.onValuesChange(newValues)
-    setValues(newValues)
-  }
+  const { formatValues = (s: number) => s, values = DEFAULT_VALUES } = props
 
   return (
     <React.Fragment>
-      {showValues && (
+      {props.showValues && (
         <Typo.ButtonText>
           {values.length === 1 && formatValues(values[0])}
           {values.length === 2 && `${formatValues(values[0])} - ${formatValues(values[1])}`}
@@ -51,7 +45,7 @@ export const Slider: React.FC<Props> = (props) => {
         markerStyle={markerStyle}
         pressedMarkerStyle={markerStyle}
         containerStyle={containerStyle}
-        onValuesChange={onValuesChange}
+        onValuesChange={props.onValuesChange}
         sliderLength={width - getSpacing(2 * 2 * 6)}
       />
     </React.Fragment>
