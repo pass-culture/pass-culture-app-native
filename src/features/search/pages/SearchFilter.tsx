@@ -8,6 +8,7 @@ import {
   DuoOfferSection,
   FreeOfferSection,
   LocationSection,
+  NewOfferSection,
   OfferTypeSection,
   PriceSlider,
   RadiusSlider,
@@ -41,7 +42,7 @@ export const SearchFilter: React.FC = () => (
         <Separator marginVertical={getSpacing(6)} />
         <DuoOfferSection />
         <Separator marginVertical={getSpacing(6)} />
-        <SectionWithSwitch title={_(t`Uniquement les nouveautés`)} />
+        <NewOfferSection />
         <Separator marginVertical={getSpacing(6)} />
         <SectionWithSwitch
           title={_(t`Date`)}
