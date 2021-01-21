@@ -10,6 +10,7 @@ import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { AlgoliaCategory } from 'libs/algolia'
 import { mapCategoryToIcon } from 'libs/parsers'
+import { Banner, BannerType } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
@@ -443,6 +444,15 @@ export const AppComponents: FunctionComponent = () => {
           <Label label="Musique" />
           <Label label="Exposition" />
         </RowWrap>
+      </AccordionItem>
+
+      <Divider />
+
+      {/* Banner components */}
+      <AccordionItem title="Banners">
+        <AlignedText>
+          <Banner title="Je suis une bannière" type={BannerType.INFO} />
+        </AlignedText>
       </AccordionItem>
 
       <Divider />

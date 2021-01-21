@@ -10,6 +10,7 @@ import { LocationChoiceType } from 'features/search/locationChoice.types'
 import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, ColorsEnum } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const renderLocationContent = (locationChoice: LocationChoiceType, onPress: () => void) => {
   return (
@@ -22,7 +23,7 @@ const renderLocationContent = (locationChoice: LocationChoiceType, onPress: () =
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
-            {_(t`Seules les offres Sorties et Physiques seront affichés`)}
+            {_(t`Seules les offres Sorties et Physiques seront affichées`)}
           </Typo.Caption>
         </React.Fragment>
       )}
@@ -33,17 +34,17 @@ const renderLocationContent = (locationChoice: LocationChoiceType, onPress: () =
 export const LocationSection: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const onPress = () => navigate('LocationFilter')
+  // TODO: PC-6394 Count to change when we will connect Location to searchState
   return (
-    <React.Fragment>
-      {/* Count to change when we will connect Location to searchState */}
-      <Section title={_(t`Localisation`)} count={1}>
-        {renderLocationContent(LocationChoiceType.LOCALIZED, onPress)}
-      </Section>
-    </React.Fragment>
+    <Section title={_(t`Localisation`)} count={1}>
+      {renderLocationContent(LocationChoiceType.LOCALIZED, onPress)}
+    </Section>
   )
 }
 
-const LocationContentContainer = styled.TouchableOpacity({
+const LocationContentContainer = styled.TouchableOpacity.attrs(() => ({
+  activeOpacity: ACTIVE_OPACITY,
+}))({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',

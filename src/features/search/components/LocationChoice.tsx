@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -9,6 +9,7 @@ import {
 import { LocationChoiceType } from 'features/search/locationChoice.types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type Props = {
   type: LocationChoiceType
@@ -39,7 +40,9 @@ const FirstPart = styled(View)({
   alignItems: 'center',
 })
 
-const Container = styled(TouchableOpacity)({
+const Container = styled.TouchableOpacity.attrs(() => ({
+  activeOpacity: ACTIVE_OPACITY,
+}))({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

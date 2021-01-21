@@ -22,7 +22,8 @@ export const Section: React.FC<{ title: string; count: number; children: Element
 }) => (
   <Container>
     <TitleWithCount title={title} count={count} />
-    <Content>{children}</Content>
+    <Spacer.Column numberOfSpaces={4} />
+    {children}
   </Container>
 )
 
@@ -48,7 +49,6 @@ export const InlineSection: React.FC<{ title: string; subtitle?: string; childre
 
 const Container = styled.View({ marginHorizontal: getSpacing(6) })
 const Center = styled.View({ alignItems: 'center', marginTop: getSpacing(4) })
-const Content = styled.View({ marginTop: getSpacing(4) })
 
 const SectionContainer = styled.View({
   marginHorizontal: getSpacing(6),
