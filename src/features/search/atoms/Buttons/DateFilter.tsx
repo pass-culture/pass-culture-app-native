@@ -9,7 +9,7 @@ interface Props {
   onPress?: () => void
 }
 
-export const DateFilterButton: React.FC<Props> = ({ text, onPress }: Props) => {
+export const DateFilter: React.FC<Props> = ({ text, onPress }: Props) => {
   const [isSelected, setIsSelected] = useState(false)
 
   const selectButton = () => {

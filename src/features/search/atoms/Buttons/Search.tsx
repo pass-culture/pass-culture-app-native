@@ -9,7 +9,7 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-export const SearchButton: React.FC = () => {
+export const Search: React.FC = () => {
   const { dispatch } = useSearch()
 
   const onPress = () => {

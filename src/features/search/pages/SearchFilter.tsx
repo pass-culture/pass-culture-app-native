@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { SearchResultsButton, ReinitializeFiltersButton } from 'features/search/atoms'
+import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
 import { LocationSection, SectionWithSwitch, CalendarPicker } from 'features/search/components'
 import Section from 'features/search/sections'
 import { _ } from 'libs/i18n'
@@ -71,12 +71,12 @@ export const SearchFilter: React.FC = () => (
       </Container>
     </React.Fragment>
 
-    <PageHeader title={_(t`Filtrer`)} RightComponent={ReinitializeFiltersButton} />
+    <PageHeader title={_(t`Filtrer`)} RightComponent={ReinitializeFilters} />
 
-    <SearchResultsButtonContainer>
-      <SearchResultsButton />
+    <ShowResultsContainer>
+      <ShowResults />
       <Spacer.BottomScreen />
-    </SearchResultsButtonContainer>
+    </ShowResultsContainer>
   </React.Fragment>
 )
 
@@ -89,7 +89,7 @@ const Separator = styled.View<{ marginVertical?: number }>(({ marginVertical = 0
   marginHorizontal: getSpacing(6),
   marginVertical: marginVertical,
 }))
-const SearchResultsButtonContainer = styled.View({
+const ShowResultsContainer = styled.View({
   width: '100%',
   position: 'absolute',
   bottom: getSpacing(6),

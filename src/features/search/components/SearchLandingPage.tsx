@@ -4,7 +4,7 @@ import { Dimensions, ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
-import { SearchButton } from 'features/search/atoms/SearchButton'
+import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { _ } from 'libs/i18n'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
