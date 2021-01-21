@@ -17,7 +17,7 @@ const OFFER_TYPES: Array<[OfferType, string]> = [
   ['isThing', _(t`Offre physique`)],
 ]
 
-export const OfferTypeSection: React.FC = () => {
+export const OfferType: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const { offerTypes } = searchState
 

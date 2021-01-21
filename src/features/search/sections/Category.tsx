@@ -12,7 +12,7 @@ import { getSpacing } from 'ui/theme'
 // First we filter out the 'All' category
 const categories = Object.values(CATEGORY_CRITERIA).filter((category) => !!category.facetFilter)
 
-export const CategorySection: React.FC = () => {
+export const Category: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const { offerCategories } = searchState
 

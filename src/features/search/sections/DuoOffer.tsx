@@ -5,17 +5,17 @@ import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { _ } from 'libs/i18n'
 
-export const FreeOfferSection: React.FC = () => {
+export const DuoOffer: React.FC = () => {
   const { searchState, dispatch } = useSearch()
 
   const toggle = () => {
-    dispatch({ type: 'TOGGLE_OFFER_FREE' })
+    dispatch({ type: 'TOGGLE_OFFER_DUO' })
   }
 
   return (
     <SectionWithSwitch
-      title={_(t`Uniquement les offres gratuites`)}
-      active={searchState.offerIsFree}
+      title={_(t`Uniquement les offres duo`)}
+      active={searchState.offerIsDuo}
       toggle={toggle}
     />
   )

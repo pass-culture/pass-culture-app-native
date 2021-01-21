@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import { RadiusSlider } from '../RadiusSlider'
+import { Radius } from '../Radius'
 
-describe('RadiusSlider component', () => {
+describe('Radius component', () => {
   it('should render initial radius range correctly', () => {
-    const { queryByText } = render(<RadiusSlider />)
+    const { queryByText } = render(<Radius />)
     expect(queryByText('100 km')).toBeTruthy()
   })
 })
