@@ -25,7 +25,7 @@ export const DateFilterModal: FunctionComponent<Props> = ({
   onChange,
 }) => {
   return (
-    <AppModal visible={visible} title={''} rightIcon={Close} onRightIconPress={dismissModal}>
+    <AppModal visible={visible} title="" rightIcon={Close} onRightIconPress={dismissModal}>
       <Container>
         <DateTimePicker
           testID="dateTimePicker"

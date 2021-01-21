@@ -18,7 +18,7 @@ export const CalendarPicker: React.FC = () => {
   const [show, setShow] = useState<boolean>(false)
   const [isSelected, setIsSelected] = useState<boolean>(false)
 
-  const onChange = (event: Event, selectedDate: Date | undefined) => {
+  const onChange = (_event: Event, selectedDate: Date | undefined) => {
     const chosenDate = selectedDate || date
     setShow(Platform.OS === 'ios')
     setDate(chosenDate)
@@ -32,12 +32,10 @@ export const CalendarPicker: React.FC = () => {
 
   const showDatepicker = () => {
     showMode('date')
-    showDateFilterModal()
+    showModal()
   }
 
-  const { visible: dateFilterModalVisible, showModal: showDateFilterModal, hideModal } = useModal(
-    false
-  )
+  const { visible, showModal, hideModal } = useModal(false)
 
   const renderDatePicker = (): JSX.Element | undefined => {
     if (!show) return
@@ -56,7 +54,7 @@ export const CalendarPicker: React.FC = () => {
     } else {
       return (
         <DateFilterModal
-          visible={dateFilterModalVisible}
+          visible={visible}
           dismissModal={hideModal}
           mode={mode}
           onChange={onChange}
