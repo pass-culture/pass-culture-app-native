@@ -4,7 +4,7 @@ import React from 'react'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
-import { ReinitializeFiltersButton } from '../ReinitializeFiltersButton'
+import { ReinitializeFilters } from '../ReinitializeFilters'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
@@ -14,9 +14,9 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
     dispatch: mockDispatch,
   }),
 }))
-describe('<ReinitializeFiltersButton />', () => {
+describe('<ReinitializeFilters />', () => {
   it('should dispatch INIT when clicking on Réinitialiser', () => {
-    const { getByText } = render(reactQueryProviderHOC(<ReinitializeFiltersButton />))
+    const { getByText } = render(reactQueryProviderHOC(<ReinitializeFilters />))
     fireEvent.press(getByText('Réinitialiser'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT' })
   })

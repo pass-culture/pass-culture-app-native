@@ -5,12 +5,11 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DateFilterModal } from 'features/offer/components/DateFilterModal'
+import { DateFilter } from 'features/search/atoms/Buttons'
 import { _ } from 'libs/i18n'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { useModal } from 'ui/components/modals/useModal'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
-import { DateFilterButton } from '../atoms/DateFilterButton'
 
 export const CalendarPicker: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date(Date.now()))
@@ -68,7 +67,7 @@ export const CalendarPicker: React.FC = () => {
 
   return (
     <React.Fragment>
-      <DateFilterButton text={_(t`Date précise`)} onPress={showDatepicker} />
+      <DateFilter text={_(t`Date précise`)} onPress={showDatepicker} />
       {isSelected && (
         <ChosenDateContainer>
           <Typo.Body color={ColorsEnum.BLACK}>

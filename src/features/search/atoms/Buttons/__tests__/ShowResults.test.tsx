@@ -3,9 +3,9 @@ import React from 'react'
 
 import { ColorsEnum } from 'ui/theme'
 
-import { ShowResultsButtonComponent } from '../ShowResultsButton'
+import { ShowResultsComponent } from '../ShowResults'
 
-describe('<SearchResultsButton />', () => {
+describe('<ShowResults />', () => {
   it.each`
     nbHits  | expected                         | disabled
     ${0}    | ${'Aucun résultat'}              | ${true}
@@ -16,7 +16,7 @@ describe('<SearchResultsButton />', () => {
   `(
     'should display the correct translation ($expected) and be disabled=$disabled',
     ({ nbHits, expected, disabled }) => {
-      const { getByTestId } = render(<ShowResultsButtonComponent nbHits={nbHits} />)
+      const { getByTestId } = render(<ShowResultsComponent nbHits={nbHits} />)
       expect(getByTestId('button-title')).toBeTruthy()
       expect(getByTestId('button-title').children[0]).toBe(expected)
 

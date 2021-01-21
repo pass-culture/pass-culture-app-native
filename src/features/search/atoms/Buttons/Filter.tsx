@@ -6,17 +6,17 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import { Filter } from 'ui/svg/icons/Filter'
+import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
 import { ColorsEnum, UniqueColors, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-export const FilterButton: React.FC = () => {
+export const Filter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
     <Container onPress={() => navigate('SearchFilter')} testID="FilterButton">
       <StyledLinearGradient colors={[ColorsEnum.PRIMARY, UniqueColors.FILTER_BUTTON]} angle={106}>
-        <Filter color={ColorsEnum.WHITE} />
+        <FilterIcon color={ColorsEnum.WHITE} />
         <Spacer.Row numberOfSpaces={1} />
         <Title>{_(t`Filtrer`)}</Title>
         <Spacer.Row numberOfSpaces={2} />

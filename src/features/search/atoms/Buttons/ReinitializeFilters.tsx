@@ -7,7 +7,7 @@ import { _ } from 'libs/i18n'
 import { ColorsEnum, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-export const ReinitializeFiltersButton = () => {
+export const ReinitializeFilters = () => {
   const { dispatch } = useSearch()
 
   const reinitializeFilters = () => {

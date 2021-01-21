@@ -14,7 +14,7 @@ const formatNbHits = (nbHits: number) => {
   return _(t`Afficher les ${nbHits} résultats`)
 }
 
-export const ShowResultsButtonComponent: React.FC<{ nbHits: number }> = ({ nbHits }) => {
+export const ShowResultsComponent: React.FC<{ nbHits: number }> = ({ nbHits }) => {
   const { goBack } = useNavigation<UseNavigationType>()
   return (
     <ButtonPrimary
@@ -26,4 +26,4 @@ export const ShowResultsButtonComponent: React.FC<{ nbHits: number }> = ({ nbHit
   )
 }
 
-export const SearchResultsButton = connectStats(ShowResultsButtonComponent)
+export const ShowResults = connectStats(ShowResultsComponent)
