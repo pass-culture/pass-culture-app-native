@@ -17,10 +17,12 @@ type Props = {
 
 export const LocationChoice: React.FC<Props> = ({ type }) => {
   const [isSelected, setIsSelected] = useState<boolean>(false)
+  const iconColor2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
+  const LocationChoiceIcon = getLocationChoiceIcon(type)
   return (
     <Container onPress={() => setIsSelected(!isSelected)}>
       <FirstPart>
-        {getLocationChoiceIcon(type, isSelected)}
+        <LocationChoiceIcon size={48} color2={iconColor2} />
         <Spacer.Row numberOfSpaces={2} />
         <Typo.ButtonText color={isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
           {getLocationChoiceName(type)}
