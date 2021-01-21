@@ -15,6 +15,7 @@ export enum AnalyticsEvent {
   CONSULT_ITINERARY = 'ConsultLocationItinerary',
   CONSULT_OFFER = 'ConsultOffer',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
+  CONSULT_WHY_ANNIVERSARY = 'ConsultModalWhyAnniversary',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT = 'ContactSupportResetPassword',
   CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'ContactSupportSignupConfirmation',
@@ -28,7 +29,6 @@ export enum AnalyticsEvent {
   SHARE_OFFER = 'Share',
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
-  WHY_ANNIVERSARY_CLICKED = 'WhyAnniversary',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -78,8 +78,8 @@ const logConsultWholeOffer = (offerId: number) =>
 const logConsultItinerary = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId })
 
-const logClickWhyAnniversary = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.WHY_ANNIVERSARY_CLICKED)
+const logConsultWhyAnniversary = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY)
 
 const logCancelSignup = (pageName: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName })
@@ -119,7 +119,6 @@ export const analytics = {
   logClickBusinessBlock,
   logClickExclusivityBlock,
   logClickSeeMore,
-  logClickWhyAnniversary,
   logConsultAccessibility,
   logConsultAvailableDates,
   logConsultDescriptionDetails,
@@ -127,6 +126,7 @@ export const analytics = {
   logConsultOffer,
   logConsultOfferFromDeeplink,
   logConsultWholeOffer,
+  logConsultWhyAnniversary,
   logConsultWithdrawal,
   logContactSupportResetPasswordEmailSent,
   logContactSupportSignupConfirmationEmailSent,
