@@ -1,15 +1,19 @@
 import React from 'react'
 
-import { FilterSwitch } from '../atoms/FilterSwitch'
-import { InlineSection } from '../atoms/Sections'
+import { FilterSwitch, InlineSection } from 'features/search/atoms'
 
 interface Props {
+  active?: boolean
   title: string
   subtitle?: string
+  toggle?: () => void
 }
 
-export const SectionWithSwitch: React.FC<Props> = ({ title, subtitle }: Props) => (
-  <InlineSection title={title} subtitle={subtitle}>
-    <FilterSwitch />
-  </InlineSection>
-)
+export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
+  const { title, subtitle, active = false, toggle = () => null } = props
+  return (
+    <InlineSection title={title} subtitle={subtitle}>
+      <FilterSwitch active={active} toggle={toggle} />
+    </InlineSection>
+  )
+}

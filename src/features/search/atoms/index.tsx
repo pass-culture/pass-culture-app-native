@@ -1,4 +1,5 @@
 export * from './FilterButton'
+export * from './FilterSwitch'
 export * from './Hit'
 export * from './NumberOfResults'
 export * from './ReinitializeFiltersButton'

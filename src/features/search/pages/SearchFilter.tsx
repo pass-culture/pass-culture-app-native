@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { SearchResultsButton, ReinitializeFiltersButton } from 'features/search/atoms'
 import {
   CategorySection,
+  FreeOfferSection,
   LocationSection,
   OfferTypeSection,
   PriceSlider,
@@ -28,13 +29,15 @@ export const SearchFilter: React.FC = () => (
         <Spacer.Column numberOfSpaces={6} />
         <Separator />
         <CategorySection />
+        <Spacer.Column numberOfSpaces={2} />
         <Separator />
         <OfferTypeSection />
+        <Spacer.Column numberOfSpaces={2} />
         <Separator />
         <Spacer.Column numberOfSpaces={6} />
         <PriceSlider />
         <Separator marginVertical={getSpacing(6)} />
-        <SectionWithSwitch title={_(t`Uniquement les offres gratuites`)} />
+        <FreeOfferSection />
         <Separator marginVertical={getSpacing(6)} />
         <SectionWithSwitch title={_(t`Uniquement les offres duo`)} />
         <Separator marginVertical={getSpacing(6)} />
