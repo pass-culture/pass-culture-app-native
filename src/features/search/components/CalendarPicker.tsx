@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import DateTimePicker from '@react-native-community/datetimepicker'
 import React, { useState } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
@@ -38,6 +39,33 @@ export const CalendarPicker: React.FC = () => {
     false
   )
 
+  const renderDatePicker = (): JSX.Element | undefined => {
+    if (!show) return
+
+    if (Platform.OS === 'android') {
+      return (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          is24Hour={true}
+          display="spinner"
+          onChange={onChange}
+        />
+      )
+    } else {
+      return (
+        <DateFilterModal
+          visible={dateFilterModalVisible}
+          dismissModal={hideModal}
+          mode={mode}
+          onChange={onChange}
+          date={date}
+        />
+      )
+    }
+  }
+
   return (
     <React.Fragment>
       <DateFilterButton text={_(t`Date précise`)} onPress={showDatepicker} />
@@ -48,15 +76,7 @@ export const CalendarPicker: React.FC = () => {
           </Typo.Body>
         </ChosenDateContainer>
       )}
-      {show && (
-        <DateFilterModal
-          visible={dateFilterModalVisible}
-          dismissModal={hideModal}
-          mode={mode}
-          onChange={onChange}
-          date={date}
-        />
-      )}
+      {renderDatePicker()}
     </React.Fragment>
   )
 }
