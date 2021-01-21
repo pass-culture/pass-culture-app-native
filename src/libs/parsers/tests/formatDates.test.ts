@@ -100,14 +100,14 @@ describe('formatDateToISOStringWithoutTime()', () => {
 
 describe('formatToCompleteFrenchDate()', () => {
   it.each`
-    date             | expectedString
-    ${1578788130000} | ${'Dimanche 12 janvier 2020'}
-    ${1578874530000} | ${'Lundi 13 janvier 2020'}
-    ${1560813330000} | ${'Mardi 18 juin 2019'}
-    ${1582071330000} | ${'Mercredi 19 février 2020'}
-    ${1582762530000} | ${'Jeudi 27 février 2020'}
-    ${1585268130000} | ${'Vendredi 27 mars 2020'}
-    ${1587770130000} | ${'Samedi 25 avril 2020'}
+    date                     | expectedString
+    ${new Date(2020, 0, 12)} | ${'Dimanche 12 janvier 2020'}
+    ${new Date(2020, 0, 13)} | ${'Lundi 13 janvier 2020'}
+    ${new Date(2019, 5, 18)} | ${'Mardi 18 juin 2019'}
+    ${new Date(2020, 1, 19)} | ${'Mercredi 19 février 2020'}
+    ${new Date(2020, 1, 27)} | ${'Jeudi 27 février 2020'}
+    ${new Date(2020, 2, 27)} | ${'Vendredi 27 mars 2020'}
+    ${new Date(2020, 3, 25)} | ${'Samedi 25 avril 2020'}
   `(
     'should format Date $date to string "$expectedString"',
     ({ date, expectedString }: { date: number; expectedString: string }) => {
