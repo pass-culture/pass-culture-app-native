@@ -10,6 +10,7 @@ import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { AlgoliaHit } from 'libs/algolia'
 import { formatDates, formatDistance, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
   hit: AlgoliaHit
@@ -80,9 +81,10 @@ const { width } = Dimensions.get('window')
 const imageWidth = getSpacing(16)
 const imageHeight = getSpacing(24) // ratio 2/3
 
-const Container = styled.TouchableOpacity({
-  marginHorizontal: getSpacing(6),
-})
+const Container = styled.TouchableOpacity.attrs(() => ({
+  activeOpacity: ACTIVE_OPACITY,
+}))({ marginHorizontal: getSpacing(6) })
+
 const Column = styled.View({ width: width - getSpacing(2 * 6 + 4) - imageWidth })
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
