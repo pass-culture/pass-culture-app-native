@@ -1,5 +1,6 @@
 export * from './CategorySection'
 export * from './InfiniteHits'
+export * from './FreeOfferSection'
 export * from './LocationSection'
 export * from './OfferTypeSection'
 export * from './PriceSlider'
