@@ -5,7 +5,7 @@ import { LocationChoiceType } from 'features/search/locationChoice.types'
 import { _ } from 'libs/i18n'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
-import { ColorsEnum } from 'ui/theme'
+import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 export const getLocationChoiceName = (locationChoice: LocationChoiceType): string => {
   switch (locationChoice) {
@@ -19,15 +19,14 @@ export const getLocationChoiceName = (locationChoice: LocationChoiceType): strin
 }
 
 export const getLocationChoiceIcon = (
-  locationChoice: LocationChoiceType,
-  selected: boolean
-): JSX.Element => {
+  locationChoice: LocationChoiceType
+): React.FC<BicolorIconInterface> => {
   switch (locationChoice) {
     case LocationChoiceType.LOCALIZED:
-      return <AroundMe size={48} color2={selected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY} />
+      return AroundMe
     case LocationChoiceType.EVERYWHERE:
-      return <Everywhere size={48} color2={selected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY} />
+      return Everywhere
     default:
-      return <AroundMe size={48} color2={selected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY} />
+      return AroundMe
   }
 }
