@@ -46,7 +46,7 @@ export const CalendarPicker: React.FC = () => {
         <DateTimePicker
           testID="dateTimePicker"
           value={currentDate}
-          mode={'date'}
+          mode="date"
           is24Hour={true}
           display="spinner"
           onChange={onChange}
@@ -57,7 +57,7 @@ export const CalendarPicker: React.FC = () => {
         <DateFilterModal
           visible={visible}
           dismissModal={hideModal}
-          mode={'date'}
+          mode="date"
           onChange={onChange}
           date={currentDate}
           onValidate={onValidate}
