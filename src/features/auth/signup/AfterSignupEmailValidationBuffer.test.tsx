@@ -66,12 +66,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
-        expect(mockDisplayInfosSnackBar).toHaveBeenCalledTimes(1)
-        expect(mockDisplayInfosSnackBar).toHaveBeenCalledWith({
-          message: 'Ton compte est maintenant activé !',
-        })
         expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
+        expect(navigate).toHaveBeenCalledWith('AccountCreated')
       })
       loginRoutine.mockRestore()
     })
@@ -106,10 +102,13 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should redirect to Home with a snackbar message on error', async () => {
+      // TODO(PC-6360): ignore warning displayed by react-query's useMutation onError callback.
+      // Note : it appears next to impossible to hide this warnibg by acting on the console object alone.
+      // The only solution probably lies in mocking partially or completely react-query.
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       server.use(
         rest.post(env.API_BASE_URL + '/native/v1/validate_email', (_req, res, ctx) =>
-          res(ctx.status(400))
+          res(ctx.status(400), ctx.json({}))
         )
       )
 
