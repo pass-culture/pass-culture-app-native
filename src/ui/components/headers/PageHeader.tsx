@@ -3,6 +3,7 @@ import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -14,7 +15,7 @@ interface Props {
 }
 
 const HeaderIconBack: React.FC = () => {
-  const { goBack } = useNavigation()
+  const { goBack } = useNavigation<UseNavigationType>()
   return (
     <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={goBack}>
       <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />

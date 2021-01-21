@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { SignUpSignInChoiceModal } from 'features/home/components/SignUpSignInChoiceModal'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useModal } from 'ui/components/modals/useModal'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
@@ -23,7 +24,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { headerTransition, offerId, title } = props
   const { isLoggedIn } = useAuthContext()
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
-  const { goBack } = useNavigation()
+  const { goBack } = useNavigation<UseNavigationType>()
   const shareOffer = useShareOffer(offerId)
 
   const iconBackgroundColor = headerTransition.interpolate({

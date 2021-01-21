@@ -5,6 +5,7 @@ import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
 import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
@@ -109,7 +110,7 @@ export const AppComponents: FunctionComponent = () => {
     []
   )
 
-  const { goBack } = useNavigation()
+  const { goBack } = useNavigation<UseNavigationType>()
 
   return (
     <StyledScrollView>

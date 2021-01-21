@@ -4,6 +4,7 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { Filter } from 'ui/svg/icons/Filter'
 import { ColorsEnum, UniqueColors, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -11,7 +12,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const FilterButton: React.FC = () => {
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
   return (
     <Container onPress={() => navigate('SearchFilter')} testID="FilterButton">
       <StyledLinearGradient colors={[ColorsEnum.PRIMARY, UniqueColors.FILTER_BUTTON]} angle={106}>

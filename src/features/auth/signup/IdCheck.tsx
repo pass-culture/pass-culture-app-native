@@ -5,7 +5,7 @@ import { WebView, WebViewNavigation } from 'react-native-webview'
 import styled from 'styled-components/native'
 
 import { useCurrentRoute } from 'features/navigation/helpers'
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
@@ -13,7 +13,7 @@ type Props = StackScreenProps<RootStackParamList, 'IdCheck'>
 
 export const IdCheck: React.FC<Props> = function (props) {
   const currentRoute = useCurrentRoute()
-  const navigation = useNavigation()
+  const navigation = useNavigation<UseNavigationType>()
 
   const { email, licenceToken } = props.route.params
   const uri = `${env.ID_CHECK_URL}/?email=${email}&licence_token=${licenceToken}`
