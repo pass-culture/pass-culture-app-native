@@ -10,12 +10,11 @@ import {
   PriceSlider,
   RadiusSlider,
   SectionWithSwitch,
+  CalendarPicker,
 } from 'features/search/components'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
-
-import { CalendarPicker } from '../components/CalendarPicker'
 
 export const SearchFilter: React.FC = () => (
   <React.Fragment>
