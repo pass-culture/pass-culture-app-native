@@ -6,8 +6,7 @@ import { View } from 'react-native'
 import { initialSearchState } from '../reducer'
 import { SearchFilter } from '../SearchFilter'
 
-jest.mock('@react-native-community/datetimepicker', () => jest.fn())
-// @ts-ignore: solution find on the github repo to the issue #216
+// @ts-ignore: solution find on the github repo to the issue https://github.com/react-native-datetimepicker/datetimepicker/issues/216
 RNDateTimePicker.mockImplementation((props) => <View testID={props.testID} />)
 
 const mockSearchState = initialSearchState
