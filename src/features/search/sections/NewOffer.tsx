@@ -5,7 +5,7 @@ import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { _ } from 'libs/i18n'
 
-export const NewOfferSection: React.FC = () => {
+export const NewOffer: React.FC = () => {
   const { searchState, dispatch } = useSearch()
 
   const toggle = () => {

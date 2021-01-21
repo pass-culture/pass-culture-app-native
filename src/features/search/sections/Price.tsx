@@ -10,7 +10,7 @@ import { Slider } from 'ui/components/inputs/Slider'
 
 const formatEuro = (price: number) => `${price} €`
 
-export const PriceSlider: React.FC = () => {
+export const Price: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const values = searchState.priceRange ?? [0, MAX_PRICE]
   const count = +(values[0] > 0 || values[1] < MAX_PRICE)

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 
-import { PriceSlider } from '../PriceSlider'
+import { Price } from '../Price'
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
@@ -13,9 +13,9 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-describe('PriceSlider component', () => {
+describe('Price component', () => {
   it('should render initial price range correctly', () => {
-    const { queryByText } = render(<PriceSlider />)
+    const { queryByText } = render(<Price />)
     expect(queryByText('0 € - 300 €')).toBeTruthy()
   })
 })
