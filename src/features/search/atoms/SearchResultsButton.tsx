@@ -16,7 +16,14 @@ const formatNbHits = (nbHits: number) => {
 
 export const SearchResultsButtonComponent: React.FC<{ nbHits: number }> = ({ nbHits }) => {
   const { goBack } = useNavigation<UseNavigationType>()
-  return <ButtonPrimary title={formatNbHits(nbHits)} disabled={nbHits === 0} onPress={goBack} />
+  return (
+    <ButtonPrimary
+      title={formatNbHits(nbHits)}
+      disabled={nbHits === 0}
+      onPress={goBack}
+      adjustsFontSizeToFit={true}
+    />
+  )
 }
 
 export const SearchResultsButton = connectStats(SearchResultsButtonComponent)

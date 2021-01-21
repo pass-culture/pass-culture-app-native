@@ -234,6 +234,7 @@ Array [
               testID="button-container-why-link"
             >
               <Text
+                adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
                   Array [
@@ -700,6 +701,7 @@ Array [
               testID="button-container-validate-birthday"
             >
               <Text
+                adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
                   Array [

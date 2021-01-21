@@ -192,6 +192,7 @@ exports[`RetryBoundary component should render 1`] = `
         testID="button-container"
       >
         <Text
+          adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
             Array [

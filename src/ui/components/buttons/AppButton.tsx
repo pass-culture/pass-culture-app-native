@@ -9,6 +9,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface BaseButtonProps {
+  adjustsFontSizeToFit?: boolean
   title: string
   disabled?: boolean
   isLoading?: boolean
@@ -58,6 +59,7 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
             testID={titleTestID}
             textColor={props.textColor}
             textSize={props.textSize}
+            adjustsFontSizeToFit={props.adjustsFontSizeToFit ?? false}
             numberOfLines={1}>
             {props.title}
           </Title>

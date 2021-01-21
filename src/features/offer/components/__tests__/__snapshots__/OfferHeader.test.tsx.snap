@@ -644,6 +644,7 @@ Array [
             testID="button-container"
           >
             <Text
+              adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
                 Array [
@@ -704,6 +705,7 @@ Array [
             testID="button-container"
           >
             <Text
+              adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
                 Array [

@@ -2443,6 +2443,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               testID="button-container"
                             >
                               <Text
+                                adjustsFontSizeToFit={false}
                                 numberOfLines={1}
                                 style={
                                   Array [
@@ -2503,6 +2504,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               testID="button-container"
                             >
                               <Text
+                                adjustsFontSizeToFit={false}
                                 numberOfLines={1}
                                 style={
                                   Array [
@@ -5274,6 +5276,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               testID="button-container"
                             >
                               <Text
+                                adjustsFontSizeToFit={false}
                                 numberOfLines={1}
                                 style={
                                   Array [
@@ -5334,6 +5337,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               testID="button-container"
                             >
                               <Text
+                                adjustsFontSizeToFit={false}
                                 numberOfLines={1}
                                 style={
                                   Array [

@@ -2612,6 +2612,7 @@ Array [
       testID="button-container"
     >
       <Text
+        adjustsFontSizeToFit={true}
         numberOfLines={1}
         style={
           Array [

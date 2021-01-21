@@ -463,6 +463,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                           testID="button-container"
                         >
                           <Text
+                            adjustsFontSizeToFit={false}
                             numberOfLines={1}
                             style={
                               Array [
@@ -523,6 +524,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                           testID="button-container"
                         >
                           <Text
+                            adjustsFontSizeToFit={false}
                             numberOfLines={1}
                             style={
                               Array [
