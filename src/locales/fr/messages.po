@@ -67,15 +67,15 @@ msgstr "Adresse"
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
-#: src/features/search/atoms/SearchResultsButton.tsx:13
+#: src/features/search/atoms/ShowResultsButton.tsx:13
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
-#: src/features/search/atoms/SearchResultsButton.tsx:14
+#: src/features/search/atoms/ShowResultsButton.tsx:14
 msgid "Afficher les {nbHits} résultats"
 msgstr "Afficher les {nbHits} résultats"
 
-#: src/features/search/atoms/SearchResultsButton.tsx:11
+#: src/features/search/atoms/ShowResultsButton.tsx:11
 msgid "Afficher {nbHits} résultat"
 msgstr "Afficher {nbHits} résultat"
 
@@ -101,7 +101,7 @@ msgstr "Aucun access token à sauvegarder"
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
 
-#: src/features/search/atoms/SearchResultsButton.tsx:9
+#: src/features/search/atoms/ShowResultsButton.tsx:9
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
 
@@ -148,7 +148,7 @@ msgstr "Chargement en cours..."
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
-#: src/features/search/components/SearchBox.tsx:44
+#: src/features/search/components/SearchBox.tsx:45
 msgid "Chercher par titre, artiste..."
 msgstr "Chercher par titre, artiste..."
 
@@ -222,12 +222,16 @@ msgstr "Crédit insuffisant"
 msgid "Date"
 msgstr "Date"
 
+#: src/features/search/components/CalendarPicker.tsx:41
+msgid "Date précise"
+msgstr "Date précise"
+
 #: src/features/offer/components/OfferWhereSection.tsx:34
 msgid "Distance"
 msgstr "Distance"
 
 #. Dates (dates will always be in french)
-#: src/libs/parsers/formatDates.ts:56
+#: src/libs/parsers/formatDates.ts:62
 msgid "Du {0} au {1}"
 msgstr "Du {0} au {1}"
 
@@ -237,7 +241,7 @@ msgid "Duo"
 msgstr "Duo"
 
 #. Date (date will always be in french)
-#: src/libs/parsers/formatDates.ts:45
+#: src/libs/parsers/formatDates.ts:51
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
@@ -268,7 +272,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/FilterButton.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:38
+#: src/features/search/pages/SearchFilter.tsx:39
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -293,7 +297,7 @@ msgstr "Handicap moteur"
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
-#: src/features/search/pages/SearchFilter.tsx:34
+#: src/features/search/pages/SearchFilter.tsx:35
 msgid "Heure"
 msgstr "Heure"
 
@@ -305,7 +309,7 @@ msgstr "ISBN"
 msgid "Impossible de réserver"
 msgstr "Impossible de réserver"
 
-#: src/features/search/pages/Search.tsx:46
+#: src/features/search/components/SearchLandingPage.tsx:16
 msgid "Je cherche"
 msgstr "Je cherche"
 
@@ -403,7 +407,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/search/pages/Search.tsx:48
+#: src/features/search/components/SearchLandingPage.tsx:19
 msgid "Où"
 msgstr "Où"
 
@@ -436,7 +440,7 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offe
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
-#: src/features/search/components/PriceSlider.tsx:16
+#: src/features/search/components/PriceSlider.tsx:15
 msgid "Prix"
 msgstr "Prix"
 
@@ -451,6 +455,10 @@ msgstr "Quand ?"
 #: src/features/search/components/RadiusSlider.tsx:8
 msgid "Rayon"
 msgstr "Rayon"
+
+#: src/features/search/atoms/SearchButton.tsx:18
+msgid "Rechercher"
+msgstr "Rechercher"
 
 #: src/features/home/components/BusinessModule.tsx:37
 msgid "Redirection en cours"
@@ -479,7 +487,7 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/search/atoms/ReinitializeFiltersButton.tsx:13
+#: src/features/search/atoms/ReinitializeFiltersButton.tsx:14
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
@@ -509,7 +517,7 @@ msgid "Seules les offres Sorties et Physiques seront affichées pour une recherc
 msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 
 #: src/features/search/pages/SearchFilter.tsx:32
-#: src/features/search/pages/SearchFilter.tsx:34
+#: src/features/search/pages/SearchFilter.tsx:35
 msgid "Seules les offres Sorties seront affichées"
 msgstr "Seules les offres Sorties seront affichées"
 
@@ -595,6 +603,10 @@ msgstr "VISA"
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:78
 msgid "Valider"
 msgstr "Valider"
+
+#: src/features/offer/components/DateFilterModal.tsx:16
+msgid "Valider la date"
+msgstr "Valider la date"
 
 #: src/features/auth/signup/QuitSignupModal.tsx:29
 msgid "Veux-tu abandonner l'inscription ?"
