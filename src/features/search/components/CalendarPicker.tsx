@@ -14,7 +14,6 @@ import { DateFilterButton } from '../atoms/DateFilterButton'
 
 export const CalendarPicker: React.FC = () => {
   const [date, setDate] = useState(new Date(Date.now()))
-  const [mode, setMode] = useState<'time' | 'date' | undefined>('date')
   const [show, setShow] = useState<boolean>(false)
   const [isSelected, setIsSelected] = useState<boolean>(false)
 
@@ -24,14 +23,13 @@ export const CalendarPicker: React.FC = () => {
     setDate(chosenDate)
   }
 
-  const showMode = (currentMode: 'time' | 'date' | undefined) => {
+  const showMode = () => {
     setShow(true)
-    setMode(currentMode)
     setIsSelected(true)
   }
 
   const showDatepicker = () => {
-    showMode('date')
+    showMode()
     showModal()
   }
 
@@ -45,7 +43,7 @@ export const CalendarPicker: React.FC = () => {
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          mode={mode}
+          mode={'date'}
           is24Hour={true}
           display="spinner"
           onChange={onChange}
@@ -56,7 +54,7 @@ export const CalendarPicker: React.FC = () => {
         <DateFilterModal
           visible={visible}
           dismissModal={hideModal}
-          mode={mode}
+          mode={'date'}
           onChange={onChange}
           date={date}
         />
