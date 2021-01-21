@@ -15,6 +15,7 @@ interface Props {
   date: Date
   mode: 'time' | 'date' | undefined
   onChange: (event: Event, selectedDate: Date | undefined) => void
+  onValidate: () => void
 }
 
 export const DateFilterModal: FunctionComponent<Props> = ({
@@ -23,6 +24,7 @@ export const DateFilterModal: FunctionComponent<Props> = ({
   date,
   mode,
   onChange,
+  onValidate,
 }) => {
   return (
     <AppModal visible={visible} title="" rightIcon={Close} onRightIconPress={dismissModal}>
@@ -37,7 +39,7 @@ export const DateFilterModal: FunctionComponent<Props> = ({
         />
       </Container>
       <Spacer.Column numberOfSpaces={2} />
-      <ButtonPrimary title={_(t`Valider la date`)} onPress={dismissModal} />
+      <ButtonPrimary title={_(t`Valider la date`)} onPress={onValidate} />
     </AppModal>
   )
 }
