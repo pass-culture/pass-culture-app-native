@@ -332,7 +332,7 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
-#: src/features/search/components/LocationSection.tsx:30
+#: src/features/search/components/LocationSection.tsx:29
 #: src/features/search/pages/LocationFilter.tsx:18
 msgid "Localisation"
 msgstr "Localisation"
@@ -482,13 +482,13 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Se connecter"
 msgstr "Se connecter"
 
+#: src/features/search/components/LocationSection.tsx:20
+msgid "Seules les offres Sorties et Physiques seront affichées"
+msgstr "Seules les offres Sorties et Physiques seront affichées"
+
 #: src/features/search/pages/LocationFilter.tsx:13
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
-
-#: src/features/search/components/LocationSection.tsx:20
-msgid "Seules les offres Sorties et Physiques seront affichés"
-msgstr "Seules les offres Sorties et Physiques seront affichés"
 
 #: src/features/search/pages/SearchFilter.tsx:36
 #: src/features/search/pages/SearchFilter.tsx:38

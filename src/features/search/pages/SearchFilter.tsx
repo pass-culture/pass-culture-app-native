@@ -32,7 +32,7 @@ export const SearchFilter: React.FC = () => (
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
         <LocationSection />
-        <Spacer.Column numberOfSpaces={6} />
+        <Separator marginVertical={getSpacing(6)} />
         <RadiusSlider />
         <Spacer.Column numberOfSpaces={6} />
         <Separator />
