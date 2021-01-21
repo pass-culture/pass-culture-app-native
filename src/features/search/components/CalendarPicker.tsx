@@ -13,27 +13,30 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { DateFilterButton } from '../atoms/DateFilterButton'
 
 export const CalendarPicker: React.FC = () => {
-  const [date, setDate] = useState(new Date(Date.now()))
+  const [currentDate, setCurrentDate] = useState(new Date(Date.now()))
   const [show, setShow] = useState<boolean>(false)
+  const [selectedDate, setSelectedDate] = useState(new Date(Date.now()))
   const [isSelected, setIsSelected] = useState<boolean>(false)
 
-  const onChange = (_event: Event, selectedDate: Date | undefined) => {
-    const chosenDate = selectedDate || date
-    setShow(Platform.OS === 'ios')
-    setDate(chosenDate)
-  }
+  const { visible, showModal, hideModal } = useModal(false)
 
-  const showMode = () => {
-    setShow(true)
-    setIsSelected(true)
+  const onChange = (_event: Event, selectedDate: Date | undefined) => {
+    const chosenDate = selectedDate || currentDate
+    //ANDROID --- Datepicker doesn't work on multiple click without the following line
+    setShow(Platform.OS === 'ios')
+    setCurrentDate(chosenDate)
   }
 
   const showDatepicker = () => {
-    showMode()
+    setShow(true)
+    setIsSelected(true)
     showModal()
   }
 
-  const { visible, showModal, hideModal } = useModal(false)
+  const onValidate = () => {
+    setSelectedDate(currentDate)
+    hideModal()
+  }
 
   const renderDatePicker = (): JSX.Element | undefined => {
     if (!show) return
@@ -42,7 +45,7 @@ export const CalendarPicker: React.FC = () => {
       return (
         <DateTimePicker
           testID="dateTimePicker"
-          value={date}
+          value={currentDate}
           mode={'date'}
           is24Hour={true}
           display="spinner"
@@ -56,7 +59,8 @@ export const CalendarPicker: React.FC = () => {
           dismissModal={hideModal}
           mode={'date'}
           onChange={onChange}
-          date={date}
+          date={currentDate}
+          onValidate={onValidate}
         />
       )
     }
@@ -68,7 +72,7 @@ export const CalendarPicker: React.FC = () => {
       {isSelected && (
         <ChosenDateContainer>
           <Typo.Body color={ColorsEnum.BLACK}>
-            {formatToCompleteFrenchDate(date.getTime())}
+            {formatToCompleteFrenchDate(selectedDate.getTime())}
           </Typo.Body>
         </ChosenDateContainer>
       )}
