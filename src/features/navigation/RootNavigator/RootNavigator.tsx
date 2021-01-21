@@ -8,6 +8,7 @@ import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPas
 import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
 import { Login } from 'features/auth/login/Login'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
+import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
 import { IdCheck } from 'features/auth/signup/IdCheck'
@@ -46,28 +47,29 @@ export const RootNavigator: React.FC = () => {
         initialRouteName="TabNavigator"
         headerMode="screen"
         screenOptions={{ headerShown: false }}>
-        <RootStack.Screen name="TabNavigator" component={TabNavigator} />
-        <RootStack.Screen name="Login" component={Login} />
-        <RootStack.Screen name="Offer" component={Offer} />
-        <RootStack.Screen name="OfferDescription" component={OfferDescription} />
-        <RootStack.Screen name="SearchFilter" component={SearchFilter} />
-        <RootStack.Screen name="LocationFilter" component={LocationFilter} />
-        <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
-        <RootStack.Screen name="IdCheck" component={IdCheck} />
-        <RootStack.Screen name="AppComponents" component={AppComponents} />
-        <RootStack.Screen name="Navigation" component={Navigation} />
-        <RootStack.Screen name="CheatCodes" component={CheatCodes} />
-        <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
-        <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
-        <RootStack.Screen name="SetEmail" component={SetEmail} />
-        <RootStack.Screen name="SetPassword" component={SetPassword} />
-        <RootStack.Screen name="SetBirthday" component={SetBirthday} />
         <RootStack.Screen name="AcceptCgu" component={AcceptCgu} />
+        <RootStack.Screen name="AccountCreated" component={AccountCreated} />
         <RootStack.Screen
           name="AfterSignupEmailValidationBuffer"
           component={AfterSignupEmailValidationBuffer}
         />
+        <RootStack.Screen name="AppComponents" component={AppComponents} />
+        <RootStack.Screen name="CheatCodes" component={CheatCodes} />
+        <RootStack.Screen name="EligibilityConfirmed" component={EligibilityConfirmed} />
+        <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
+        <RootStack.Screen name="IdCheck" component={IdCheck} />
+        <RootStack.Screen name="LocationFilter" component={LocationFilter} />
+        <RootStack.Screen name="Login" component={Login} />
+        <RootStack.Screen name="Navigation" component={Navigation} />
+        <RootStack.Screen name="Offer" component={Offer} />
+        <RootStack.Screen name="OfferDescription" component={OfferDescription} />
+        <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
+        <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
         <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
+        <RootStack.Screen name="SearchFilter" component={SearchFilter} />
+        <RootStack.Screen name="SetBirthday" component={SetBirthday} />
+        <RootStack.Screen name="SetEmail" component={SetEmail} />
+        <RootStack.Screen name="SetPassword" component={SetPassword} />
         <RootStack.Screen
           name="SignupConfirmationEmailSent"
           component={SignupConfirmationEmailSent}
@@ -76,8 +78,8 @@ export const RootNavigator: React.FC = () => {
           name="SignupConfirmationExpiredLink"
           component={SignupConfirmationExpiredLink}
         />
+        <RootStack.Screen name="TabNavigator" component={TabNavigator} />
         <RootStack.Screen name="VerifyEligibility" component={VerifyEligibility} />
-        <RootStack.Screen name="EligibilityConfirmed" component={EligibilityConfirmed} />
       </RootStack.Navigator>
     </NavigationContainer>
   )

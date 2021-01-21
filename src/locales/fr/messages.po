@@ -79,6 +79,7 @@ msgstr "Afficher les {nbHits} résultats"
 msgid "Afficher {nbHits} résultat"
 msgstr "Afficher {nbHits} résultat"
 
+#: src/features/auth/signup/AccountCreated.tsx:17
 #: src/features/auth/signup/EligibilityConfirmed.tsx:17
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles !  Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles !  Ta sélection n'aura pas d'impact sur les offres proposées."
@@ -104,7 +105,7 @@ msgstr "Aucun refresh token à sauvegarder"
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
 
-#: src/features/search/components/locationChoice.utils.tsx:11
+#: src/features/search/components/locationChoice.utils.tsx:9
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
@@ -130,7 +131,7 @@ msgstr "CGU & Données"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:59
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:56
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
@@ -155,7 +156,7 @@ msgstr "Chercher par titre, artiste..."
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:34
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
@@ -188,12 +189,12 @@ msgstr "Confirmer le mot de passe"
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:48
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:47
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
 #: src/features/auth/signup/AcceptCgu.tsx:71
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:42
@@ -217,7 +218,7 @@ msgstr "Continuer l'inscription"
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
-#: src/features/search/pages/SearchFilter.tsx:36
+#: src/features/search/pages/SearchFilter.tsx:38
 msgid "Date"
 msgstr "Date"
 
@@ -240,7 +241,7 @@ msgstr "Duo"
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:32
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:31
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
@@ -267,7 +268,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/FilterButton.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:42
+#: src/features/search/pages/SearchFilter.tsx:44
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -292,7 +293,7 @@ msgstr "Handicap moteur"
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
-#: src/features/search/pages/SearchFilter.tsx:38
+#: src/features/search/pages/SearchFilter.tsx:40
 msgid "Heure"
 msgstr "Heure"
 
@@ -304,7 +305,7 @@ msgstr "ISBN"
 msgid "Impossible de réserver"
 msgstr "Impossible de réserver"
 
-#: src/features/search/pages/Search.tsx:45
+#: src/features/search/pages/Search.tsx:46
 msgid "Je cherche"
 msgstr "Je cherche"
 
@@ -314,7 +315,7 @@ msgstr "Je cherche"
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:40
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:39
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:37
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
@@ -336,7 +337,7 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
-#: src/features/search/components/LocationSection.tsx:29
+#: src/features/search/components/LocationSection.tsx:30
 #: src/features/search/pages/LocationFilter.tsx:18
 msgid "Localisation"
 msgstr "Localisation"
@@ -376,10 +377,19 @@ msgstr "Nouveau mot de passe"
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
+#: src/features/search/components/OfferTypeSection.tsx:10
+msgid "Offre numérique"
+msgstr "Offre numérique"
+
+#: src/features/search/components/OfferTypeSection.tsx:12
+msgid "Offre physique"
+msgstr "Offre physique"
+
 #: src/features/offer/services/useCtaWordingAndAction.ts:31
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
+#: src/features/auth/signup/AccountCreated.tsx:21
 #: src/features/auth/signup/EligibilityConfirmed.tsx:21
 msgid "On y va !"
 msgstr "On y va !"
@@ -393,7 +403,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/search/pages/Search.tsx:47
+#: src/features/search/pages/Search.tsx:48
 msgid "Où"
 msgstr "Où"
 
@@ -401,8 +411,8 @@ msgstr "Où"
 msgid "Où ?"
 msgstr "Où ?"
 
+#: src/features/search/components/locationChoice.utils.tsx:11
 #: src/features/search/components/locationChoice.utils.tsx:13
-#: src/features/search/components/locationChoice.utils.tsx:15
 msgid "Partout"
 msgstr "Partout"
 
@@ -490,7 +500,7 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/components/LocationSection.tsx:20
+#: src/features/search/components/LocationSection.tsx:21
 msgid "Seules les offres Sorties et Physiques seront affichées"
 msgstr "Seules les offres Sorties et Physiques seront affichées"
 
@@ -498,12 +508,12 @@ msgstr "Seules les offres Sorties et Physiques seront affichées"
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 
-#: src/features/search/pages/SearchFilter.tsx:36
 #: src/features/search/pages/SearchFilter.tsx:38
+#: src/features/search/pages/SearchFilter.tsx:40
 msgid "Seules les offres Sorties seront affichées"
 msgstr "Seules les offres Sorties seront affichées"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:43
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
 msgid "Si l'e-mail n'arrive pas, tu peux :"
 msgstr "Si l'e-mail n'arrive pas, tu peux :"
@@ -517,13 +527,17 @@ msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 30
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
+#: src/features/search/components/OfferTypeSection.tsx:11
+msgid "Sorties"
+msgstr "Sorties"
+
 #: src/features/auth/signup/SetBirthday.tsx:131
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:51
-msgid "Ton compte est maintenant activé !"
-msgstr "Ton compte est maintenant activé !"
+#: src/features/auth/signup/AccountCreated.tsx:15
+msgid "Ton compte a été activé !"
+msgstr "Ton compte a été activé !"
 
 #: src/features/auth/signup/SetEmail.tsx:61
 msgid "Ton e-mail"
@@ -550,6 +564,10 @@ msgstr "Toute la culture dans ta main"
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
+#: src/features/search/components/OfferTypeSection.tsx:20
+msgid "Type d'offre"
+msgstr "Type d'offre"
+
 #: src/features/errors/pages/RetryBoundary.tsx:37
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
@@ -558,15 +576,15 @@ msgstr "Une erreur s'est produite pendant le chargement."
 msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 
-#: src/features/search/pages/SearchFilter.tsx:34
+#: src/features/search/pages/SearchFilter.tsx:36
 msgid "Uniquement les nouveautés"
 msgstr "Uniquement les nouveautés"
 
-#: src/features/search/pages/SearchFilter.tsx:32
+#: src/features/search/pages/SearchFilter.tsx:34
 msgid "Uniquement les offres duo"
 msgstr "Uniquement les offres duo"
 
-#: src/features/search/pages/SearchFilter.tsx:30
+#: src/features/search/pages/SearchFilter.tsx:32
 msgid "Uniquement les offres gratuites"
 msgstr "Uniquement les offres gratuites"
 

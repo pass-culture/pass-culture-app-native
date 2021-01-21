@@ -16,13 +16,14 @@ export type RootStackParamList = {
     password: string
     birthday: string
   }
+  AccountCreated: undefined
   AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }
   AppComponents: undefined
   CheatCodes: undefined
   EligibilityConfirmed: undefined
   ForgottenPassword: undefined
-  Login: BackNavigationParams<'Home'> | undefined
   IdCheck: { email: string; licenceToken: string }
+  Login: BackNavigationParams<'Home'> | undefined
   Navigation: undefined
   Offer: { id: number }
   OfferDescription: { id: number }

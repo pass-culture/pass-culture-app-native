@@ -99,6 +99,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={'Account Created'}
+            onPress={() => navigation.navigate('AccountCreated')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={'Reset mdp email envoyé'}
             onPress={() =>
               navigation.navigate('ResetPasswordEmailSent', {
