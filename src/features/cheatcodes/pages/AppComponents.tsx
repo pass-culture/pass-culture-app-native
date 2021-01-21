@@ -436,7 +436,8 @@ export const AppComponents: FunctionComponent = () => {
           <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n} €`} />
           <Slider values={[50]} showValues formatValues={(n) => `${n} km`} />
           <Spacer.Column numberOfSpaces={4} />
-          <FilterSwitch />
+          <ExampleSwitch />
+          <Spacer.Column numberOfSpaces={4} />
         </Center>
         <RowWrap>
           <Label label="Cinéma" />
@@ -557,4 +558,8 @@ const CategoryIcons = () => {
 const Label: React.FC<{ label: string }> = ({ label }) => {
   const [selected, setSelected] = useState<boolean>(false)
   return <SelectionLabel label={label} selected={selected} onPress={() => setSelected((p) => !p)} />
+}
+const ExampleSwitch: React.FC = () => {
+  const [active, setActive] = useState<boolean>(false)
+  return <FilterSwitch active={active} toggle={() => setActive((prevActive) => !prevActive)} />
 }
