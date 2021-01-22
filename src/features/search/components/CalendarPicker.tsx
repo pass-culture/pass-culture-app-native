@@ -67,19 +67,17 @@ export const CalendarPicker: React.FC = () => {
 
   return (
     <React.Fragment>
-      <DateFilter text={_(t`Date précise`)} onPress={showDatepicker} />
-      {isSelected && (
-        <ChosenDateContainer>
+      <ChosenDateContainer>
+        <DateFilter text={_(t`Date précise`)} onPress={showDatepicker} />
+        {isSelected && (
           <Typo.Body color={ColorsEnum.BLACK}>
             {formatToCompleteFrenchDate(selectedDate.getTime())}
           </Typo.Body>
-        </ChosenDateContainer>
-      )}
+        )}
+      </ChosenDateContainer>
       {renderDatePicker()}
     </React.Fragment>
   )
 }
 
-const ChosenDateContainer = styled.View({
-  marginHorizontal: getSpacing(6),
-})
+const ChosenDateContainer = styled.View({ marginHorizontal: getSpacing(6) })

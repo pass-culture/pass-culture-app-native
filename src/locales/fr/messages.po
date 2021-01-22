@@ -67,15 +67,15 @@ msgstr "Adresse"
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
-#: src/features/search/atoms/ShowResultsButton.tsx:13
+#: src/features/search/atoms/Buttons/ShowResults.tsx:13
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
-#: src/features/search/atoms/ShowResultsButton.tsx:14
+#: src/features/search/atoms/Buttons/ShowResults.tsx:14
 msgid "Afficher les {nbHits} résultats"
 msgstr "Afficher les {nbHits} résultats"
 
-#: src/features/search/atoms/ShowResultsButton.tsx:11
+#: src/features/search/atoms/Buttons/ShowResults.tsx:11
 msgid "Afficher {nbHits} résultat"
 msgstr "Afficher {nbHits} résultat"
 
@@ -101,9 +101,13 @@ msgstr "Aucun access token à sauvegarder"
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
 
-#: src/features/search/atoms/ShowResultsButton.tsx:9
+#: src/features/search/atoms/Buttons/ShowResults.tsx:9
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
+
+#: src/features/search/sections/OfferDate.tsx:10
+msgid "Aujourd'hui"
+msgstr "Aujourd'hui"
 
 #: src/features/search/components/locationChoice.utils.tsx:9
 msgid "Autour de moi"
@@ -127,7 +131,7 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
-#: src/features/search/components/CategorySection.tsx:18
+#: src/features/search/sections/Category.tsx:18
 msgid "Catégories"
 msgstr "Catégories"
 
@@ -139,6 +143,14 @@ msgstr "Ce lien de validation n'est plus valide"
 #: src/features/auth/signup/SetBirthday.tsx:143
 msgid "Ce site est protégé par reCAPTCHA Google. La"
 msgstr "Ce site est protégé par reCAPTCHA Google. La"
+
+#: src/features/search/sections/OfferDate.tsx:12
+msgid "Ce week-end"
+msgstr "Ce week-end"
+
+#: src/features/search/sections/OfferDate.tsx:11
+msgid "Cette semaine"
+msgstr "Cette semaine"
 
 #: src/ui/components/LoadingPage.tsx:13
 msgid "Chargement en cours..."
@@ -218,11 +230,15 @@ msgstr "Continuer l'inscription"
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
-#: src/features/search/pages/SearchFilter.tsx:32
+#: src/features/search/pages/SearchFilter.tsx:53
 msgid "Date"
 msgstr "Date"
 
-#: src/features/search/components/CalendarPicker.tsx:41
+#: src/features/search/sections/OfferDate.tsx:9
+msgid "Date de l'offre"
+msgstr "Date de l'offre"
+
+#: src/features/search/components/CalendarPicker.tsx:45
 msgid "Date précise"
 msgstr "Date précise"
 
@@ -271,8 +287,8 @@ msgstr "Erreur lors de la récupération du token d'accès"
 msgid "Favorites"
 msgstr "Favoris"
 
-#: src/features/search/atoms/FilterButton.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:39
+#: src/features/search/atoms/Buttons/Filter.tsx:17
+#: src/features/search/pages/SearchFilter.tsx:67
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -297,7 +313,7 @@ msgstr "Handicap moteur"
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
-#: src/features/search/pages/SearchFilter.tsx:35
+#: src/features/search/pages/SearchFilter.tsx:61
 msgid "Heure"
 msgstr "Heure"
 
@@ -381,11 +397,11 @@ msgstr "Nouveau mot de passe"
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
-#: src/features/search/components/OfferTypeSection.tsx:10
+#: src/features/search/sections/OfferType.tsx:10
 msgid "Offre numérique"
 msgstr "Offre numérique"
 
-#: src/features/search/components/OfferTypeSection.tsx:12
+#: src/features/search/sections/OfferType.tsx:12
 msgid "Offre physique"
 msgstr "Offre physique"
 
@@ -440,7 +456,7 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offe
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
-#: src/features/search/components/PriceSlider.tsx:15
+#: src/features/search/sections/Price.tsx:17
 msgid "Prix"
 msgstr "Prix"
 
@@ -452,11 +468,11 @@ msgstr "Profile"
 msgid "Quand ?"
 msgstr "Quand ?"
 
-#: src/features/search/components/RadiusSlider.tsx:8
+#: src/features/search/sections/Radius.tsx:8
 msgid "Rayon"
 msgstr "Rayon"
 
-#: src/features/search/atoms/SearchButton.tsx:18
+#: src/features/search/atoms/Buttons/Search.tsx:18
 msgid "Rechercher"
 msgstr "Rechercher"
 
@@ -487,7 +503,7 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/search/atoms/ReinitializeFiltersButton.tsx:14
+#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx:14
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
@@ -516,8 +532,8 @@ msgstr "Seules les offres Sorties et Physiques seront affichées"
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 
-#: src/features/search/pages/SearchFilter.tsx:32
-#: src/features/search/pages/SearchFilter.tsx:35
+#: src/features/search/pages/SearchFilter.tsx:53
+#: src/features/search/pages/SearchFilter.tsx:61
 msgid "Seules les offres Sorties seront affichées"
 msgstr "Seules les offres Sorties seront affichées"
 
@@ -535,7 +551,7 @@ msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 30
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/search/components/OfferTypeSection.tsx:11
+#: src/features/search/sections/OfferType.tsx:11
 msgid "Sorties"
 msgstr "Sorties"
 
@@ -572,7 +588,7 @@ msgstr "Toute la culture dans ta main"
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/search/components/OfferTypeSection.tsx:20
+#: src/features/search/sections/OfferType.tsx:20
 msgid "Type d'offre"
 msgstr "Type d'offre"
 
@@ -584,15 +600,15 @@ msgstr "Une erreur s'est produite pendant le chargement."
 msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 
-#: src/features/search/pages/SearchFilter.tsx:30
+#: src/features/search/sections/NewOffer.tsx:11
 msgid "Uniquement les nouveautés"
 msgstr "Uniquement les nouveautés"
 
-#: src/features/search/pages/SearchFilter.tsx:28
+#: src/features/search/sections/DuoOffer.tsx:11
 msgid "Uniquement les offres duo"
 msgstr "Uniquement les offres duo"
 
-#: src/features/search/pages/SearchFilter.tsx:26
+#: src/features/search/sections/FreeOffer.tsx:11
 msgid "Uniquement les offres gratuites"
 msgstr "Uniquement les offres gratuites"
 

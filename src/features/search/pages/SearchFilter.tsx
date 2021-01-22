@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
-import { LocationSection, SectionWithSwitch, CalendarPicker } from 'features/search/components'
+import { LocationSection, SectionWithSwitch } from 'features/search/components'
 import Section from 'features/search/sections'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -57,8 +57,10 @@ export const SearchFilter: React.FC = () => (
           title={_(t`Date`)}
           subtitle={_(t`Seules les offres Sorties seront affichées`)}
         />
-        {/* TODO (#6262): Date de l'offre */}
-        <CalendarPicker />
+        <Separator marginVertical={getSpacing(6)} />
+
+        {/* Date de l'offre */}
+        <Section.OfferDate />
         <Separator marginVertical={getSpacing(6)} />
 
         {/* Heure */}
