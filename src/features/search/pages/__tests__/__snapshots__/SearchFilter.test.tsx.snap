@@ -2025,6 +2025,7 @@ Array [
                 },
               ]
             }
+            testID="filterSwitch"
             thumbTintColor="#ffffff"
             tintColor="#c7c7cc"
             value={false}
@@ -2124,6 +2125,7 @@ Array [
                 },
               ]
             }
+            testID="filterSwitch"
             thumbTintColor="#ffffff"
             tintColor="#c7c7cc"
             value={false}
@@ -2223,6 +2225,7 @@ Array [
                 },
               ]
             }
+            testID="filterSwitch"
             thumbTintColor="#ffffff"
             tintColor="#c7c7cc"
             value={false}
@@ -2322,6 +2325,7 @@ Array [
                 },
               ]
             }
+            testID="filterSwitch"
             thumbTintColor="#ffffff"
             tintColor="#c7c7cc"
             value={false}
@@ -2446,6 +2450,7 @@ Array [
                 },
               ]
             }
+            testID="filterSwitch"
             thumbTintColor="#ffffff"
             tintColor="#c7c7cc"
             value={false}

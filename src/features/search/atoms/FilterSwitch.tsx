@@ -10,6 +10,7 @@ interface Props {
 
 export const FilterSwitch: React.FC<Props> = ({ active, toggle }) => (
   <Switch
+    testID="filterSwitch"
     trackColor={trackColor}
     thumbColor={ColorsEnum.WHITE}
     ios_backgroundColor={ColorsEnum.GREY_MEDIUM}
