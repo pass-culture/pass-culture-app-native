@@ -1,4 +1,5 @@
 import { FetchAlgoliaParameters } from 'libs/algolia'
+import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 
 import { clampPrice, addOrRemove } from './reducer.helpers'
 
@@ -40,6 +41,7 @@ export type Action =
   | { type: 'TOGGLE_OFFER_FREE' }
   | { type: 'TOGGLE_OFFER_DUO' }
   | { type: 'TOGGLE_OFFER_NEW' }
+  | { type: 'TOGGLE_DATE' }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -71,6 +73,16 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return { ...state, offerIsDuo: !state.offerIsDuo }
     case 'TOGGLE_OFFER_NEW':
       return { ...state, offerIsNew: !state.offerIsNew }
+    case 'TOGGLE_DATE':
+      return {
+        ...state,
+        date: state.date
+          ? null
+          : {
+              option: DATE_FILTER_OPTIONS.TODAY,
+              selectedDate: new Date(),
+            },
+      }
     default:
       return state
   }

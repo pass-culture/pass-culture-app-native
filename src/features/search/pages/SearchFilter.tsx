@@ -53,10 +53,7 @@ export const SearchFilter: React.FC = () => (
         <Separator marginVertical={getSpacing(6)} />
 
         {/* Date */}
-        <SectionWithSwitch
-          title={_(t`Date`)}
-          subtitle={_(t`Seules les offres Sorties seront affichées`)}
-        />
+        <Section.Date />
         <Separator marginVertical={getSpacing(6)} />
 
         {/* Date de l'offre */}
