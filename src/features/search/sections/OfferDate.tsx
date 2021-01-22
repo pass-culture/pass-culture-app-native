@@ -29,7 +29,7 @@ export const OfferDate: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Container>
+      <Container testID="offerDateContainer">
         <Typo.Title4>{_(t`Date de l'offre`)}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
         <DateFilter
