@@ -183,11 +183,20 @@ Array [
           Rayon
         </Text>
         <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "marginTop": 16,
               },
             ]
           }
@@ -1582,11 +1591,20 @@ Array [
           </Text>
         </Text>
         <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "marginTop": 16,
               },
             ]
           }
@@ -2335,61 +2353,6 @@ Array [
           Seules les offres Sorties seront affichées
         </Text>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginHorizontal": 24,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          color="#151515"
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Date précise
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={1}
-        style={
-          Array [
-            Object {
-              "height": 4,
-            },
-          ]
-        }
-      />
       <View
         marginVertical={24}
         style={

@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import DateTimePicker from '@react-native-community/datetimepicker'
-import React, { FunctionComponent } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -9,30 +9,32 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer } from 'ui/theme'
 
-interface Props {
-  visible: boolean
-  dismissModal: () => void
-  date: Date
-  mode: 'time' | 'date' | undefined
-  onChange: (event: Event, selectedDate: Date | undefined) => void
-  onValidate: () => void
-}
+import { Props } from './CalendarPicker.d'
 
-export const DateFilterModal: FunctionComponent<Props> = ({
+export const CalendarPicker: React.FC<Props> = ({
+  setSelectedDate,
+  selectedDate,
   visible,
-  dismissModal,
-  date,
-  mode,
-  onChange,
-  onValidate,
+  hideCalendar,
 }) => {
+  const [currentDate, setCurrentDate] = useState<Date>(selectedDate)
+
+  const onChange = (_event: Event, newDate: Date | undefined) => {
+    setCurrentDate(newDate || currentDate)
+  }
+
+  const onValidate = () => {
+    setSelectedDate(currentDate)
+    hideCalendar()
+  }
+
   return (
-    <AppModal visible={visible} title="" rightIcon={Close} onRightIconPress={dismissModal}>
+    <AppModal visible={visible} title="" rightIcon={Close} onRightIconPress={hideCalendar}>
       <Container>
         <DateTimePicker
           testID="dateTimePicker"
-          value={date}
-          mode={mode}
+          value={currentDate}
+          mode="date"
           is24Hour={true}
           display="spinner"
           onChange={onChange}
