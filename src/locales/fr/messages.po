@@ -81,8 +81,8 @@ msgstr "Afficher {nbHits} résultat"
 
 #: src/features/auth/signup/AccountCreated.tsx:17
 #: src/features/auth/signup/EligibilityConfirmed.tsx:17
-msgid "Aide-nous à en savoir plus sur tes pratiques culturelles !  Ta sélection n'aura pas d'impact sur les offres proposées."
-msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles !  Ta sélection n'aura pas d'impact sur les offres proposées."
+msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
+msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
 #. Error message on Batch get installation ID
 #: src/features/cheatcodes/pages/CheatCodes.tsx:90

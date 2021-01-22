@@ -21,7 +21,7 @@ export function AccountCreated() {
     <GenericInfoPage title={_(t`Ton compte a été activé !`)} animation={IlluminatedSmileyAnimation}>
       <StyledBody>
         {_(
-          t`Aide-nous à en savoir plus sur tes pratiques culturelles ! 
+          t`Aide-nous à en savoir plus sur tes pratiques culturelles !
           Ta sélection n'aura pas d'impact sur les offres proposées.`
         )}
       </StyledBody>
