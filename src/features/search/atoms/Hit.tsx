@@ -9,6 +9,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { useDistance } from 'features/offer/components/useDistance'
 import { AlgoliaHit } from 'libs/algolia'
+import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -27,6 +28,7 @@ export const Hit: React.FC<Props> = ({ hit }) => {
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = dehumanizeId(offer.id)
+  const categoryLabel = CATEGORY_CRITERIA[offer.category || 'ALL'].label
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from algolia for a smooth transition
@@ -67,7 +69,7 @@ export const Hit: React.FC<Props> = ({ hit }) => {
             )}
           </Row>
           <Spacer.Column numberOfSpaces={1} />
-          <Body>{parseCategory(offer.category)}</Body>
+          <Body>{categoryLabel}</Body>
           <Body>{formatDates(timestampsInMillis) || 'Dès le 31 janvier 2021'}</Body>
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>

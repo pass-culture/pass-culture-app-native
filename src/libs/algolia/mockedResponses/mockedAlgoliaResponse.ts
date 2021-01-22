@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { AlgoliaHit } from '../algolia'
-import { AlgoliaCategory } from '../algolia.d'
+import { CategoryNameEnum } from 'api/gen'
+import { AlgoliaHit } from 'libs/algolia'
 
 /**
  * _highlightResult(s) are commented due to
@@ -16,7 +16,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         author: null,
-        category: AlgoliaCategory.MUSIQUE,
+        category: CategoryNameEnum.MUSIQUE,
         dateCreated: 1604358109.991316,
         dates: [],
         description:
@@ -92,7 +92,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         author: 'Catherine Mater',
-        category: AlgoliaCategory.MUSIQUE,
+        category: CategoryNameEnum.MUSIQUE,
         dateCreated: 1604358109.991316,
         dates: [],
         description:
@@ -162,7 +162,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         author: null,
-        category: AlgoliaCategory.MUSIQUE,
+        category: CategoryNameEnum.MUSIQUE,
         dateCreated: 1604358109.991255,
         dates: [1605643200.0],
         description: null,
@@ -221,7 +221,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
     {
       offer: {
         author: null,
-        category: AlgoliaCategory.MUSIQUE,
+        category: CategoryNameEnum.MUSIQUE,
         dateCreated: 1604358109.991316,
         dates: [],
         description:
@@ -301,7 +301,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
 export const physicalAlgoliaOffer = {
   offer: {
     author: 'Collectif MAD & Galapiat Cirque',
-    category: AlgoliaCategory.SPECTACLE,
+    category: CategoryNameEnum.SPECTACLE,
     dateCreated: 1600175450.867247,
     dates: [1612465203, 1612551603, 1612638003],
     description:
@@ -374,7 +374,7 @@ export const physicalAlgoliaOffer = {
 export const digitalAlgoliaOffer = {
   offer: {
     author: null,
-    category: AlgoliaCategory.FILM,
+    category: CategoryNameEnum.FILM,
     dateCreated: 1605790850.352651,
     dates: [],
     description:
