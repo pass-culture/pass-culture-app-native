@@ -73,7 +73,10 @@ export const SearchFilter: React.FC = () => {
             title={_(t`Heure`)}
             subtitle={_(t`Seules les offres Sorties seront affichées`)}
           />
-          {/* TODO (#6420): Créneau horaire */}
+          <Separator marginVertical={getSpacing(6)} />
+
+          {/*Créneau horaire */}
+          <Section.TimeSlot />
           <Spacer.Column numberOfSpaces={30} />
         </Container>
       </React.Fragment>

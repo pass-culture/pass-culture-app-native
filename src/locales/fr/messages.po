@@ -160,10 +160,6 @@ msgstr "Chargement en cours..."
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
-#: src/features/search/components/SearchBox.tsx:45
-msgid "Titre, artiste..."
-msgstr "Titre, artiste..."
-
 #: src/features/offer/services/useItinerary.ts:77
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
@@ -173,8 +169,8 @@ msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:49
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:49
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:48
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
@@ -207,10 +203,10 @@ msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:53
 #: src/features/auth/signup/AcceptCgu.tsx:71
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:42
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:54
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:53
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -228,7 +224,11 @@ msgstr "Continuer l'inscription"
 #: src/features/offer/services/useCtaWordingAndAction.ts:40
 #: src/features/offer/services/useCtaWordingAndAction.ts:50
 msgid "Crédit insuffisant"
-msgstr "Crédit insuffisant"
+msgstr "Crédit insuffisant<<<<<<< HEAD"
+
+#: src/features/search/sections/TimeSlot.tsx:16
+msgid "Créneau horaire"
+msgstr "Créneau horaire"
 
 #: src/features/search/sections/Date.tsx:11
 msgid "Date"
@@ -288,7 +288,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/Buttons/Filter.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:72
+#: src/features/search/pages/SearchFilter.tsx:76
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -311,9 +311,9 @@ msgstr "Handicap moteur"
 
 #: src/features/offer/atoms/AccessibilityAtom.service.ts:11
 msgid "Handicap visuel"
-msgstr "Handicap visuel"
+msgstr "Handicap visuel<<<<<<< HEAD"
 
-#: src/features/search/pages/SearchFilter.tsx:66
+#: src/features/search/pages/SearchFilter.tsx:67
 msgid "Heure"
 msgstr "Heure"
 
@@ -340,8 +340,8 @@ msgstr "Keychain non accessible"
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:47
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:46
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
@@ -414,12 +414,13 @@ msgstr "Offre épuisée"
 msgid "On y va !"
 msgstr "On y va !"
 
-#: src/features/errors/pages/RetryBoundary.tsx:30
+#: src/features/errors/pages/BaseRetryBoundary.tsx:22
+#: src/features/errors/pages/RetryBoundaryWithNavigation.tsx:30
 msgid "Oops !"
 msgstr "Oops !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:46
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:45
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:45
 msgid "Oups"
 msgstr "Oups"
 
@@ -480,13 +481,13 @@ msgstr "Rechercher"
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:56
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:55
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:55
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:58
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:58
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:57
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:57
 #: src/features/auth/signup/VerifyEligibility.tsx:27
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
@@ -499,11 +500,12 @@ msgstr "Retrouve {name} chez {locationName} sur le pass Culture"
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/errors/pages/RetryBoundary.tsx:47
+#: src/features/errors/pages/BaseRetryBoundary.tsx:39
+#: src/features/errors/pages/RetryBoundaryWithNavigation.tsx:47
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx:14
+#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx:15
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
@@ -530,9 +532,9 @@ msgstr "Seules les offres Sorties et Physiques seront affichées"
 
 #: src/features/search/pages/LocationFilter.tsx:13
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
-msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
+msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation<<<<<<< HEAD"
 
-#: src/features/search/pages/SearchFilter.tsx:66
+#: src/features/search/pages/SearchFilter.tsx:67
 #: src/features/search/sections/Date.tsx:11
 msgid "Seules les offres Sorties seront affichées"
 msgstr "Seules les offres Sorties seront affichées"
@@ -546,14 +548,18 @@ msgstr "Si l'e-mail n'arrive pas, tu peux :"
 msgid "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:52
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:51
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:51
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
 #: src/features/search/sections/OfferType.tsx:11
 msgid "Sorties"
 msgstr "Sorties"
+
+#: src/features/search/components/SearchBox.tsx:45
+msgid "Titre, artiste..."
+msgstr "Titre, artiste..."
 
 #: src/features/auth/signup/SetBirthday.tsx:131
 msgid "Ton anniversaire"
@@ -592,7 +598,8 @@ msgstr "Tu es éligible !"
 msgid "Type d'offre"
 msgstr "Type d'offre"
 
-#: src/features/errors/pages/RetryBoundary.tsx:37
+#: src/features/errors/pages/BaseRetryBoundary.tsx:29
+#: src/features/errors/pages/RetryBoundaryWithNavigation.tsx:37
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
