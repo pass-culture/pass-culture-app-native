@@ -35,6 +35,7 @@ export type Action =
   | { type: 'INIT' }
   | { type: 'INIT_FROM_SEE_MORE'; payload: Partial<SearchState> }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
+  | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
   | { type: 'CATEGORIES'; payload: string }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
   | { type: 'SHOW_RESULTS'; payload: boolean }
@@ -59,6 +60,8 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       }
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
+    case 'TIME_RANGE':
+      return { ...state, timeRange: action.payload }
     case 'CATEGORIES':
       return {
         ...state,
