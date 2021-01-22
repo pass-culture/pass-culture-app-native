@@ -23,6 +23,7 @@ export const CalendarPicker: React.FC = () => {
     const chosenDate = selectedDate || currentDate
     //ANDROID --- Datepicker doesn't work on multiple click without the following line
     setShow(Platform.OS === 'ios')
+    if (Platform.OS === 'android') setSelectedDate(currentDate)
     setCurrentDate(chosenDate)
   }
 
