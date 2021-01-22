@@ -12,6 +12,7 @@ export const ReinitializeFilters = () => {
 
   const reinitializeFilters = () => {
     dispatch({ type: 'INIT' })
+    dispatch({ type: 'SHOW_RESULTS', payload: true })
   }
 
   return (
