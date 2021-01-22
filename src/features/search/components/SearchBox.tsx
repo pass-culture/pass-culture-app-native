@@ -69,7 +69,7 @@ const SearchBoxComponent: React.FC<Props> = (props) => {
         inputHeight="tall"
         LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
         RightIcon={() => <RightIcon currentValue={currentValue} onPress={resetSearch} />}
-        onBlur={() => dispatch({ type: 'SHOW_RESULTS', payload: true })}
+        onSubmitEditing={() => dispatch({ type: 'SHOW_RESULTS', payload: true })}
       />
     </StyledInput>
   )

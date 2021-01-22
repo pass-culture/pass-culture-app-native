@@ -23,6 +23,7 @@ export type RNTextInputProps = Pick<
   | 'onChangeText'
   | 'onFocus'
   | 'onKeyPress'
+  | 'onSubmitEditing'
   | 'placeholder'
   | 'returnKeyType'
   | 'secureTextEntry'
@@ -58,6 +59,7 @@ export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
     onChangeText: props.onChangeText,
     onFocus: props.onFocus,
     onKeyPress: props.onKeyPress,
+    onSubmitEditing: props.onSubmitEditing,
     placeholder: props.placeholder,
     returnKeyType: props.returnKeyType,
     secureTextEntry: props.secureTextEntry,
