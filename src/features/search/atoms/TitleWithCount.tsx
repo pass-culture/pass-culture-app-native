@@ -4,11 +4,13 @@ import styled from 'styled-components/native'
 
 import { ColorsEnum, Typo } from 'ui/theme'
 
+const NON_BREAKING_SPACE = '\xa0'
+
 export const TitleWithCount: React.FC<{ title: string; count: number }> = ({
   count = 0,
   title,
 }) => {
-  const countString = `\xa0(${count})`
+  const countString = `${NON_BREAKING_SPACE}(${count})`
   return (
     <Typo.Title4>
       {title}
