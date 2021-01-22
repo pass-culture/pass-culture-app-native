@@ -42,6 +42,8 @@ export type Action =
   | { type: 'TOGGLE_OFFER_DUO' }
   | { type: 'TOGGLE_OFFER_NEW' }
   | { type: 'TOGGLE_DATE' }
+  | { type: 'SELECT_DATE_FILTER_OPTION'; payload: DATE_FILTER_OPTIONS }
+  | { type: 'SELECT_DATE'; payload: Date }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -74,15 +76,20 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'TOGGLE_OFFER_NEW':
       return { ...state, offerIsNew: !state.offerIsNew }
     case 'TOGGLE_DATE':
+      if (state.date) return { ...state, date: null }
       return {
         ...state,
-        date: state.date
-          ? null
-          : {
-              option: DATE_FILTER_OPTIONS.TODAY,
-              selectedDate: new Date(),
-            },
+        date: {
+          option: DATE_FILTER_OPTIONS.TODAY,
+          selectedDate: new Date(),
+        },
       }
+    case 'SELECT_DATE_FILTER_OPTION':
+      if (!state.date) return state
+      return { ...state, date: { ...state.date, option: action.payload } }
+    case 'SELECT_DATE':
+      if (!state.date) return state
+      return { ...state, date: { ...state.date, selectedDate: action.payload } }
     default:
       return state
   }

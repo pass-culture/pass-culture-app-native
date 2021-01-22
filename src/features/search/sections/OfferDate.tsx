@@ -1,20 +1,75 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useState } from 'react'
+import styled from 'styled-components/native'
 
-import { Section } from 'features/search/atoms'
 import { DateFilter } from 'features/search/atoms/Buttons'
 import { CalendarPicker } from 'features/search/components'
+import { useSearch } from 'features/search/pages/SearchWrapper'
+import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
+import { formatToCompleteFrenchDate } from 'libs/parsers'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const OfferDate: React.FC = () => {
+  const { searchState, dispatch } = useSearch()
+  const [showTimePicker, setShowTimePicker] = useState<boolean>(false)
+
+  if (!searchState.date) return <React.Fragment />
+
+  const { option, selectedDate } = searchState.date
+
+  const selectDateFilterOption = (payload: DATE_FILTER_OPTIONS) => () => {
+    dispatch({ type: 'SELECT_DATE_FILTER_OPTION', payload })
+    if (payload === DATE_FILTER_OPTIONS.USER_PICK) {
+      setShowTimePicker(true)
+    }
+  }
+
+  const setSelectedDate = (payload: Date) => dispatch({ type: 'SELECT_DATE', payload })
+
   return (
     <React.Fragment>
-      <Section title={_(t`Date de l'offre`)} count={0}>
-        <DateFilter text={_(t`Aujourd'hui`)} />
-        <DateFilter text={_(t`Cette semaine`)} />
-        <DateFilter text={_(t`Ce week-end`)} />
-      </Section>
-      <CalendarPicker />
+      <Container>
+        <Typo.Title4>{_(t`Date de l'offre`)}</Typo.Title4>
+        <Spacer.Column numberOfSpaces={4} />
+        <DateFilter
+          text={_(t`Aujourd'hui`)}
+          isSelected={option === DATE_FILTER_OPTIONS.TODAY}
+          onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.TODAY)}
+        />
+        <Spacer.Column numberOfSpaces={4} />
+        <DateFilter
+          text={_(t`Cette semaine`)}
+          isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK}
+          onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK)}
+        />
+        <Spacer.Column numberOfSpaces={4} />
+        <DateFilter
+          text={_(t`Ce week-end`)}
+          isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK_END}
+          onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)}
+        />
+        <Spacer.Column numberOfSpaces={4} />
+        <DateFilter
+          text={_(t`Date précise`)}
+          isSelected={option === DATE_FILTER_OPTIONS.USER_PICK}
+          onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
+        />
+        {option === DATE_FILTER_OPTIONS.USER_PICK && (
+          <Typo.Body color={ColorsEnum.BLACK}>
+            {formatToCompleteFrenchDate(selectedDate.getTime())}
+          </Typo.Body>
+        )}
+      </Container>
+
+      <CalendarPicker
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+        visible={showTimePicker}
+        hideCalendar={() => setShowTimePicker(false)}
+      />
     </React.Fragment>
   )
 }
+
+const Container = styled.View({ marginHorizontal: getSpacing(6) })

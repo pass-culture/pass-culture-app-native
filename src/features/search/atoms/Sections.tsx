@@ -9,10 +9,11 @@ export const CenteredSection: React.FC<{ title: Element | string; children: Elem
   title,
   children,
 }) => (
-  <Container>
+  <MarginHorizontalContainer>
     <Typo.Title4>{title}</Typo.Title4>
+    <Spacer.Column numberOfSpaces={4} />
     <Center>{children}</Center>
-  </Container>
+  </MarginHorizontalContainer>
 )
 
 export const Section: React.FC<{ title: string; count: number; children: Element }> = ({
@@ -20,11 +21,11 @@ export const Section: React.FC<{ title: string; count: number; children: Element
   count,
   children,
 }) => (
-  <Container>
+  <MarginHorizontalContainer>
     <TitleWithCount title={title} count={count} />
     <Spacer.Column numberOfSpaces={4} />
     {children}
-  </Container>
+  </MarginHorizontalContainer>
 )
 
 export const InlineSection: React.FC<{
@@ -32,7 +33,7 @@ export const InlineSection: React.FC<{
   subtitle?: string
   children: Element
 }> = ({ title, subtitle, children }) => (
-  <SectionContainer>
+  <MarginHorizontalContainer>
     <InlineSectionTitleContainer>
       <StyledTitle numberOfLines={2}>{title}</StyledTitle>
       <Spacer.Row numberOfSpaces={7} />
@@ -44,15 +45,11 @@ export const InlineSection: React.FC<{
         <Typo.Caption color={ColorsEnum.GREY_DARK}>{subtitle}</Typo.Caption>
       </React.Fragment>
     )}
-  </SectionContainer>
+  </MarginHorizontalContainer>
 )
 
-const Container = styled.View({ marginHorizontal: getSpacing(6) })
-const Center = styled.View({ alignItems: 'center', marginTop: getSpacing(4) })
-
-const SectionContainer = styled.View({
-  marginHorizontal: getSpacing(6),
-})
+const Center = styled.View({ alignItems: 'center' })
+const MarginHorizontalContainer = styled.View({ marginHorizontal: getSpacing(6) })
 
 const InlineSectionTitleContainer = styled.View({
   flexDirection: 'row',
