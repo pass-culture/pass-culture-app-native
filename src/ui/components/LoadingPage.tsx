@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { _ } from 'libs/i18n'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Background } from 'ui/svg/Background'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, Typo } from 'ui/theme'
 
 export const LoadingPage: FunctionComponent = () => {
   return (
@@ -25,7 +25,6 @@ const Container = styled.View({
   alignSelf: 'center',
   alignItems: 'center',
   width: '100%',
-  maxWidth: getSpacing(125),
 })
 
 const StyledLottieView = styled(LottieView)({
