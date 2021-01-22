@@ -5,11 +5,11 @@ import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { CategoryNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
 import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
-import { AlgoliaCategory } from 'libs/algolia'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { Banner, BannerType } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -557,12 +557,12 @@ const CategoryIcons = () => {
   return (
     <React.Fragment>
       <Text>{'Categories'}</Text>
-      {[...Object.keys(AlgoliaCategory), null].map((category: string | null) => {
-        const Icon = mapCategoryToIcon(category as AlgoliaCategory | null)
+      {[...Object.keys(CategoryNameEnum), null].map((category: string | null) => {
+        const Icon = mapCategoryToIcon(category as CategoryNameEnum | null)
         return (
-          <AlignedText key={category || "OEUVRE D'ART"}>
+          <AlignedText key={category || "ŒUVRE D'ART"}>
             <Icon size={24} color={ColorsEnum.GREY_DARK} />
-            <Text> - {category || "OEUVRE D'ART"} </Text>
+            <Text> - {category || "ŒUVRE D'ART"} </Text>
           </AlignedText>
         )
       })}

@@ -1,20 +1,8 @@
-export enum AlgoliaCategory {
-  CINEMA = 'CINEMA',
-  VISITE = 'VISITE',
-  MUSIQUE = 'MUSIQUE',
-  SPECTACLE = 'SPECTACLE',
-  LECON = 'LECON',
-  LIVRE = 'LIVRE',
-  FILM = 'FILM',
-  PRESSE = 'PRESSE',
-  JEUX_VIDEO = 'JEUX_VIDEO',
-  CONFERENCE = 'CONFERENCE',
-  INSTRUMENT = 'INSTRUMENT',
-}
+import { CategoryNameEnum } from 'api/gen'
 
 interface Offer {
   author?: string | null
-  category: AlgoliaCategory | null
+  category: CategoryNameEnum | null
   dateCreated?: number
   dates?: number[]
   description?: string | null

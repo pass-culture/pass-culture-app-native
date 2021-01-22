@@ -1,3 +1,5 @@
+import { CategoryNameEnum } from 'api/gen'
+
 const GEOLOCATION_CRITERIA = {
   EVERYWHERE: {
     label: 'Partout',
@@ -31,65 +33,79 @@ export const GEOLOCATED_CRITERIA = {
   ...SORT_CRITERIA,
 }
 
-export const CATEGORY_CRITERIA = {
+type CategoryCriteria = {
+  ALL: {
+    label: string
+    icon: string
+    facetFilter: ''
+  }
+} & {
+  [category in CategoryNameEnum]: {
+    label: string
+    icon: string
+    facetFilter: CategoryNameEnum
+  }
+}
+
+export const CATEGORY_CRITERIA: CategoryCriteria = {
   ALL: {
     label: 'Toutes les catégories',
     icon: 'ico-all',
     facetFilter: '',
   },
-  CINEMA: {
+  [CategoryNameEnum.CINEMA]: {
     label: 'Cinéma',
     icon: 'ico-cinema',
-    facetFilter: 'CINEMA',
+    facetFilter: CategoryNameEnum.CINEMA,
   },
-  EXHIBITION: {
+  [CategoryNameEnum.VISITE]: {
     label: 'Visites, expositions',
     icon: 'ico-exposition',
-    facetFilter: 'VISITE',
+    facetFilter: CategoryNameEnum.VISITE,
   },
-  MUSIC: {
+  [CategoryNameEnum.MUSIQUE]: {
     label: 'Musique',
     icon: 'ico-music',
-    facetFilter: 'MUSIQUE',
+    facetFilter: CategoryNameEnum.MUSIQUE,
   },
-  SHOW: {
+  [CategoryNameEnum.SPECTACLE]: {
     label: 'Spectacles',
     icon: 'ico-show',
-    facetFilter: 'SPECTACLE',
+    facetFilter: CategoryNameEnum.SPECTACLE,
   },
-  LESSON: {
+  [CategoryNameEnum.LECON]: {
     label: 'Cours, ateliers',
     icon: 'ico-arts',
-    facetFilter: 'LECON',
+    facetFilter: CategoryNameEnum.LECON,
   },
-  BOOK: {
+  [CategoryNameEnum.LIVRE]: {
     label: 'Livres',
     icon: 'ico-books',
-    facetFilter: 'LIVRE',
+    facetFilter: CategoryNameEnum.LIVRE,
   },
-  FILM: {
+  [CategoryNameEnum.FILM]: {
     label: 'Films, séries, podcasts',
     icon: 'ico-movie',
-    facetFilter: 'FILM',
+    facetFilter: CategoryNameEnum.FILM,
   },
-  PRESS: {
+  [CategoryNameEnum.PRESSE]: {
     label: 'Presse',
     icon: 'ico-newspaper',
-    facetFilter: 'PRESSE',
+    facetFilter: CategoryNameEnum.PRESSE,
   },
-  VIDEO_GAME: {
+  [CategoryNameEnum.JEUXVIDEO]: {
     label: 'Jeux vidéos',
     icon: 'ico-video-game',
-    facetFilter: 'JEUX_VIDEO',
+    facetFilter: CategoryNameEnum.JEUXVIDEO,
   },
-  CONFERENCE: {
+  [CategoryNameEnum.CONFERENCE]: {
     label: 'Conférences, rencontres',
     icon: 'ico-conference',
-    facetFilter: 'CONFERENCE',
+    facetFilter: CategoryNameEnum.CONFERENCE,
   },
-  INSTRUMENT: {
+  [CategoryNameEnum.INSTRUMENT]: {
     label: 'Instruments de musique',
     icon: 'ico-instrument',
-    facetFilter: 'INSTRUMENT',
+    facetFilter: CategoryNameEnum.INSTRUMENT,
   },
 }

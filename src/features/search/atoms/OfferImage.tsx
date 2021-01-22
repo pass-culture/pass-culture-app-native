@@ -2,13 +2,13 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { AlgoliaCategory } from 'libs/algolia'
+import { CategoryNameEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
 
 interface Props {
   imageUrl: string | undefined
-  category?: AlgoliaCategory | null
+  category?: CategoryNameEnum | null
 }
 
 export const OfferImage: React.FC<Props> = ({ category, imageUrl }) => {
