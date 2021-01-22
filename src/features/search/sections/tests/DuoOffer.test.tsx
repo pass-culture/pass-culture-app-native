@@ -1,14 +1,12 @@
-import { fireEvent, render } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
-import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 
 import { DuoOffer } from '../DuoOffer'
 
 let mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
-const date = { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: new Date() }
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
