@@ -13,6 +13,8 @@ import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
+import { OfferImage } from './OfferImage'
+
 interface Props {
   hit: AlgoliaHit
 }
@@ -47,7 +49,8 @@ export const Hit: React.FC<Props> = ({ hit }) => {
   return (
     <Container onPress={handlePressOffer} testID="offerHit">
       <Row>
-        <Image resizeMode="cover" source={{ uri: offer.thumbUrl }} />
+        <OfferImage imageUrl={offer.thumbUrl} category={hit.offer.category} />
+        <Spacer.Row numberOfSpaces={4} />
         <Column>
           <Row>
             {distanceToOffer ? (
@@ -76,7 +79,6 @@ export const Hit: React.FC<Props> = ({ hit }) => {
 
 const { width } = Dimensions.get('window')
 const imageWidth = getSpacing(16)
-const imageHeight = getSpacing(24) // ratio 2/3
 
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
@@ -88,10 +90,3 @@ const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 const Name = styled(Typo.ButtonText)({})
 const Distance = styled(Typo.Body)({ textAlign: 'right', color: ColorsEnum.GREY_DARK })
 const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
-
-const Image = styled.Image({
-  borderRadius: 4,
-  height: imageHeight,
-  width: imageWidth,
-  marginRight: getSpacing(4),
-})
