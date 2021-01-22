@@ -11,7 +11,7 @@ import { getSpacing } from 'ui/theme'
 
 type OfferType = keyof SearchState['offerTypes']
 
-const OFFER_TYPES: Array<[OfferType, string]> = [
+export const OFFER_TYPES: Array<[OfferType, string]> = [
   ['isDigital', _(t`Offre numérique`)],
   ['isEvent', _(t`Sorties`)],
   ['isThing', _(t`Offre physique`)],
