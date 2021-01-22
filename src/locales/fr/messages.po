@@ -230,7 +230,7 @@ msgstr "Continuer l'inscription"
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
-#: src/features/search/pages/SearchFilter.tsx:53
+#: src/features/search/sections/Date.tsx:11
 msgid "Date"
 msgstr "Date"
 
@@ -532,8 +532,8 @@ msgstr "Seules les offres Sorties et Physiques seront affichées"
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 
-#: src/features/search/pages/SearchFilter.tsx:53
 #: src/features/search/pages/SearchFilter.tsx:61
+#: src/features/search/sections/Date.tsx:11
 msgid "Seules les offres Sorties seront affichées"
 msgstr "Seules les offres Sorties seront affichées"
 
