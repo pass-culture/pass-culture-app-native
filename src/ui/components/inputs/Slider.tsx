@@ -1,6 +1,6 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React from 'react'
-import { Dimensions } from 'react-native'
+import { Dimensions, View } from 'react-native'
 
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
@@ -33,21 +33,23 @@ export const Slider: React.FC<Props> = (props) => {
         </Typo.ButtonText>
       )}
       <Spacer.Column numberOfSpaces={4} />
-      <MultiSlider
-        values={values}
-        allowOverlap={true}
-        min={props.min || DEFAULT_MIN}
-        max={props.max || DEFAULT_MAX}
-        step={props.step || DEFAULT_STEP}
-        trackStyle={trackStyle}
-        selectedStyle={selectedStyle}
-        unselectedStyle={unselectedStyle}
-        markerStyle={markerStyle}
-        pressedMarkerStyle={markerStyle}
-        containerStyle={containerStyle}
-        onValuesChange={props.onValuesChange}
-        sliderLength={width - getSpacing(2 * 2 * 6)}
-      />
+      <View testID="slider">
+        <MultiSlider
+          values={values}
+          allowOverlap={true}
+          min={props.min || DEFAULT_MIN}
+          max={props.max || DEFAULT_MAX}
+          step={props.step || DEFAULT_STEP}
+          trackStyle={trackStyle}
+          selectedStyle={selectedStyle}
+          unselectedStyle={unselectedStyle}
+          markerStyle={markerStyle}
+          pressedMarkerStyle={markerStyle}
+          containerStyle={containerStyle}
+          onValuesChange={props.onValuesChange}
+          sliderLength={width - getSpacing(2 * 2 * 6)}
+        />
+      </View>
     </React.Fragment>
   )
 }
