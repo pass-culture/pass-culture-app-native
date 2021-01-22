@@ -1,6 +1,6 @@
 {
   "name": "PassCulture",
-  "version": "1.118.2",
+  "version": "1.118.3",
   "build": "1000300",
   "private": true,
   "engines": {
@@ -28,6 +28,7 @@
     "translations:compile": "lingui compile",
     "version:testing": "./scripts/update_testing_version.sh",
     "trigger:staging:deploy": "./scripts/deploy_new_staging_version.sh",
+    "trigger:testing:deploy": "./scripts/deploy_new_testing_version.sh",
     "generate:api:client": "./scripts/generate_api_client.sh"
   },
   "dependencies": {
