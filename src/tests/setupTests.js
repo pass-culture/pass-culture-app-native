@@ -3,6 +3,7 @@ import { toMatchDiffSnapshot } from 'snapshot-diff'
 import { server } from 'tests/server'
 
 import { queryCache } from './reactQueryProviderHOC'
+import { flushAllPromises } from './utils'
 
 global.expect.extend({ toMatchDiffSnapshot })
 
@@ -13,6 +14,7 @@ global.afterAll(() => {
   server.close()
 })
 
-global.afterEach(() => {
+global.afterEach(async () => {
   queryCache.clear()
+  await flushAllPromises()
 })
