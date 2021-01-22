@@ -37,5 +37,4 @@ export const DateFilter: React.FC<Props> = ({ text, onPress }: Props) => {
 const ButtonContainer = styled.TouchableOpacity({
   flexDirection: 'row',
   justifyContent: 'space-between',
-  marginHorizontal: getSpacing(6),
 })
