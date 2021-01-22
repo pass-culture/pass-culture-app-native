@@ -354,7 +354,6 @@ exports[`<IdCheck /> should render correctly 1`] = `
                                 "flexDirection": "column",
                                 "flexGrow": 1,
                                 "justifyContent": "center",
-                                "maxWidth": 500,
                                 "width": "100%",
                               },
                             ]
