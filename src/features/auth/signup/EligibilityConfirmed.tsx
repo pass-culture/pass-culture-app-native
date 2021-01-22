@@ -21,7 +21,7 @@ export function EligibilityConfirmed() {
     <GenericInfoPage title={_(t`Tu es éligible !`)} animation={IlluminatedSmileyAnimation}>
       <StyledBody>
         {_(
-          t`Aide-nous à en savoir plus sur tes pratiques culturelles ! 
+          t`Aide-nous à en savoir plus sur tes pratiques culturelles !
           Ta sélection n'aura pas d'impact sur les offres proposées.`
         )}
       </StyledBody>
