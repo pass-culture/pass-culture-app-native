@@ -7,11 +7,14 @@ check_branch(){
 
   if [[ "$CURRENT_BRANCH" != "master" ]];
   then
-    warn "Wrong branch, checkout master to deploy to staging"
+    echo "Wrong branch, checkout master to deploy to staging"
+    exit 1
   fi
 }
 
 check_branch
+
+git pull
 
 yarn version --minor
 git push --follow-tags
