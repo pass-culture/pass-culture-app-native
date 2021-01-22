@@ -7,8 +7,9 @@ import styled from 'styled-components/native'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
+import { useDistance } from 'features/offer/components/useDistance'
 import { AlgoliaHit } from 'libs/algolia'
-import { formatDates, formatDistance, getDisplayPrice, parseCategory } from 'libs/parsers'
+import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -16,21 +17,11 @@ interface Props {
   hit: AlgoliaHit
 }
 
-// TODO: get real position from useGeolocation. This corresponds to Eiffel tower
-const position = {
-  latitude: 48.85,
-  longitude: 2.29,
-  accuracy: 1,
-  altitude: null,
-  heading: null,
-  speed: null,
-  altitudeAccuracy: null,
-}
-
 export const Hit: React.FC<Props> = ({ hit }) => {
   const { offer, _geoloc } = hit
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
+  const distanceToOffer = useDistance(_geoloc)
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = dehumanizeId(offer.id)
@@ -59,12 +50,18 @@ export const Hit: React.FC<Props> = ({ hit }) => {
         <Image resizeMode="cover" source={{ uri: offer.thumbUrl }} />
         <Column>
           <Row>
-            <Spacer.Flex flex={0.7}>
+            {distanceToOffer ? (
+              <React.Fragment>
+                <Spacer.Flex flex={0.7}>
+                  <Name numberOfLines={2}>{offer.name}</Name>
+                </Spacer.Flex>
+                <Spacer.Flex flex={0.3}>
+                  <Distance>{distanceToOffer}</Distance>
+                </Spacer.Flex>
+              </React.Fragment>
+            ) : (
               <Name numberOfLines={2}>{offer.name}</Name>
-            </Spacer.Flex>
-            <Spacer.Flex flex={0.3}>
-              <Distance>{formatDistance(_geoloc, position)}</Distance>
-            </Spacer.Flex>
+            )}
           </Row>
           <Spacer.Column numberOfSpaces={1} />
           <Body>{parseCategory(offer.category)}</Body>
