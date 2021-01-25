@@ -224,9 +224,9 @@ msgstr "Continuer l'inscription"
 #: src/features/offer/services/useCtaWordingAndAction.ts:40
 #: src/features/offer/services/useCtaWordingAndAction.ts:50
 msgid "Crédit insuffisant"
-msgstr "Crédit insuffisant<<<<<<< HEAD"
+msgstr "Crédit insuffisant"
 
-#: src/features/search/sections/TimeSlot.tsx:16
+#: src/features/search/sections/TimeSlot.tsx:17
 msgid "Créneau horaire"
 msgstr "Créneau horaire"
 
@@ -288,7 +288,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/Buttons/Filter.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:76
+#: src/features/search/pages/SearchFilter.tsx:79
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -311,7 +311,7 @@ msgstr "Handicap moteur"
 
 #: src/features/offer/atoms/AccessibilityAtom.service.ts:11
 msgid "Handicap visuel"
-msgstr "Handicap visuel<<<<<<< HEAD"
+msgstr "Handicap visuel"
 
 #: src/features/search/sections/Hour.tsx:11
 msgid "Heure"
@@ -532,7 +532,7 @@ msgstr "Seules les offres Sorties et Physiques seront affichées"
 
 #: src/features/search/pages/LocationFilter.tsx:13
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
-msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation<<<<<<< HEAD"
+msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 
 #: src/features/search/sections/Date.tsx:11
 #: src/features/search/sections/Hour.tsx:11
