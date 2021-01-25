@@ -2,6 +2,7 @@ import { Category } from './Category'
 import { Date } from './Date'
 import { DuoOffer } from './DuoOffer'
 import { FreeOffer } from './FreeOffer'
+import { Hour } from './Hour'
 import { NewOffer } from './NewOffer'
 import { OfferDate } from './OfferDate'
 import { OfferType } from './OfferType'
@@ -12,6 +13,7 @@ import { TimeSlot } from './TimeSlot'
 export default {
   Category,
   Date,
+  Hour,
   DuoOffer,
   FreeOffer,
   NewOffer,

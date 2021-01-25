@@ -4,7 +4,7 @@ import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
-import { LocationSection, SectionWithSwitch } from 'features/search/components'
+import { LocationSection } from 'features/search/components'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
 import { _ } from 'libs/i18n'
@@ -69,10 +69,7 @@ export const SearchFilter: React.FC = () => {
           )}
 
           {/* Heure */}
-          <SectionWithSwitch
-            title={_(t`Heure`)}
-            subtitle={_(t`Seules les offres Sorties seront affichées`)}
-          />
+          <Section.Hour />
           <Separator marginVertical={getSpacing(6)} />
 
           {/*Créneau horaire */}
