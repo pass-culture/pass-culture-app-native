@@ -67,10 +67,12 @@ platform :ios do
   end
 
   lane :add_device do |options|
-    register_device(
-      name: options[:name],
-      udid: options[:udid],
-    )
+    if not options[:no_register] then
+      register_device(
+        name: options[:name],
+        udid: options[:udid],
+      )
+    end
     generate_certificates
   end
 end
