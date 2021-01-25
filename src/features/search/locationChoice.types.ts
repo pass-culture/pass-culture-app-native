@@ -1,4 +1,4 @@
 export enum LocationChoiceType {
-  LOCALIZED = 'LOCALIZED',
+  AROUND_ME = 'AROUND_ME',
   EVERYWHERE = 'EVERYWHERE',
 }

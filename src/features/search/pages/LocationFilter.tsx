@@ -21,7 +21,7 @@ export const LocationFilter: React.FC = () => (
       type={BannerType.INFO}
     />
     <Spacer.Column numberOfSpaces={6} />
-    <LocationChoice type={LocationChoiceType.LOCALIZED} />
+    <LocationChoice type={LocationChoiceType.AROUND_ME} />
     <Spacer.Column numberOfSpaces={4} />
     <LocationChoice type={LocationChoiceType.EVERYWHERE} />
     <PageHeader title={_(t`Localisation`)} />
