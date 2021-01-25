@@ -149,8 +149,8 @@ msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
 #: src/features/search/components/SearchBox.tsx:45
-msgid "Chercher par titre, artiste..."
-msgstr "Chercher par titre, artiste..."
+msgid "Titre, artiste..."
+msgstr "Titre, artiste..."
 
 #: src/features/offer/services/useItinerary.ts:77
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"

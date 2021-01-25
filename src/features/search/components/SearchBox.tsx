@@ -64,7 +64,7 @@ const SearchBoxComponent: React.FC<Props> = (props) => {
         ref={searchInputRef}
         value={currentValue}
         onChangeText={handleChangeText}
-        placeholder={_(t`Chercher par titre, artiste...`)}
+        placeholder={_(t`Titre, artiste...`)}
         autoFocus={false}
         inputHeight="tall"
         LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
