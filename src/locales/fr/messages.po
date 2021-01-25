@@ -313,7 +313,7 @@ msgstr "Handicap moteur"
 msgid "Handicap visuel"
 msgstr "Handicap visuel<<<<<<< HEAD"
 
-#: src/features/search/pages/SearchFilter.tsx:67
+#: src/features/search/sections/Hour.tsx:11
 msgid "Heure"
 msgstr "Heure"
 
@@ -534,8 +534,8 @@ msgstr "Seules les offres Sorties et Physiques seront affichées"
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation<<<<<<< HEAD"
 
-#: src/features/search/pages/SearchFilter.tsx:67
 #: src/features/search/sections/Date.tsx:11
+#: src/features/search/sections/Hour.tsx:11
 msgid "Seules les offres Sorties seront affichées"
 msgstr "Seules les offres Sorties seront affichées"
 

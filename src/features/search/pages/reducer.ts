@@ -43,6 +43,7 @@ export type Action =
   | { type: 'TOGGLE_OFFER_DUO' }
   | { type: 'TOGGLE_OFFER_NEW' }
   | { type: 'TOGGLE_DATE' }
+  | { type: 'TOGGLE_HOUR' }
   | { type: 'SELECT_DATE_FILTER_OPTION'; payload: DATE_FILTER_OPTIONS }
   | { type: 'SELECT_DATE'; payload: Date }
 
@@ -86,6 +87,12 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
           option: DATE_FILTER_OPTIONS.TODAY,
           selectedDate: new Date(),
         },
+      }
+    case 'TOGGLE_HOUR':
+      if (state.timeRange) return { ...state, timeRange: null }
+      return {
+        ...state,
+        timeRange: [8, 24],
       }
     case 'SELECT_DATE_FILTER_OPTION':
       if (!state.date) return state
