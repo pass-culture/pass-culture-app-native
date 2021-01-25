@@ -7,7 +7,7 @@ import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { Props } from './CalendarPicker.d'
 
@@ -38,6 +38,7 @@ export const CalendarPicker: React.FC<Props> = ({
           is24Hour={true}
           display="spinner"
           onChange={onChange}
+          textColor={ColorsEnum.BLACK}
         />
       </Container>
       <Spacer.Column numberOfSpaces={2} />
