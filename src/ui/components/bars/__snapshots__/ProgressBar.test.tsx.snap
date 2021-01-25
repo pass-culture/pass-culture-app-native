@@ -10,7 +10,9 @@ exports[`ProgressBar should render properly 1`] = `
         "flexDirection": "row",
         "flexGrow": 1,
         "flexShrink": 1,
+        "height": 40,
         "justifyContent": "center",
+        "maxHeight": 40,
       },
     ]
   }

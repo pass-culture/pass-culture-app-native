@@ -12,6 +12,8 @@ import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { Banner, BannerType } from 'ui/components/Banner'
+import { CreditCeiling } from 'ui/components/bars/CreditCeiling'
+import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
@@ -29,7 +31,6 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { ProgressBar } from 'ui/components/ProgressBar'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
@@ -458,7 +459,7 @@ export const AppComponents: FunctionComponent = () => {
       <Divider />
 
       {/* Your components */}
-      <AccordionItem title="Your components">
+      <AccordionItem title="Your components" defaultOpen>
         <AlignedText>
           <Text>
             <ExternalLink url="https://google.com" />
@@ -504,6 +505,16 @@ export const AppComponents: FunctionComponent = () => {
           <RowWrap>
             <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={Close} />
             <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Close} />
+          </RowWrap>
+        </View>
+        <Spacer.Column numberOfSpaces={2} />
+        <Text> Credit Ceiling (max=200) </Text>
+        <View>
+          <Spacer.Column numberOfSpaces={2} />
+          <RowWrap>
+            <CreditCeiling amount={0} max={200} type={'all'} depositVersion={1} />
+            <CreditCeiling amount={155} max={200} type={'physical'} depositVersion={1} />
+            <CreditCeiling amount={200} max={200} type={'digital'} depositVersion={2} />
           </RowWrap>
         </View>
       </AccordionItem>
