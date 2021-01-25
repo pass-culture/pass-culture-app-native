@@ -31,6 +31,8 @@ export const initialSearchState: SearchState = {
   showResults: false,
 }
 
+export const DEFAULT_TIME_RANGE = [8, 24]
+
 export type Action =
   | { type: 'INIT' }
   | { type: 'INIT_FROM_SEE_MORE'; payload: Partial<SearchState> }

@@ -17,9 +17,9 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 
 describe('TimeSlot component', () => {
   it('should render initial timeSlot range correctly', () => {
-    expect(render(<TimeSlot />).queryByText('8 h - 24 h')).toBeTruthy()
+    expect(render(<TimeSlot />).queryByText('8h - 24h')).toBeTruthy()
     mockSearchState = { ...initialSearchState, timeRange: [6, 20] }
-    expect(render(<TimeSlot />).queryByText('6 h - 20 h')).toBeTruthy()
+    expect(render(<TimeSlot />).queryByText('6h - 20h')).toBeTruthy()
   })
   it('should dispatch TIME_RANGE onPress', () => {
     const { getByTestId } = render(<TimeSlot />)
