@@ -141,7 +141,7 @@ describe('Search reducer', () => {
     })
     expect(newState.date?.option).toStrictEqual(DATE_FILTER_OPTIONS.CURRENT_WEEK)
 
-    // 4. We pick the 'Cette semaine'
+    // 4. We pick the 'Ce week-end'
     newState = searchReducer(newState, {
       type: 'SELECT_DATE_FILTER_OPTION',
       payload: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
