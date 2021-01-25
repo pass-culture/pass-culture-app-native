@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme'
 
-interface ProgressBarProps {
+export interface ProgressBarProps {
   progress: number
   color: ColorsEnum
   icon: FunctionComponent<IconInterface>
@@ -31,6 +31,8 @@ const Container = styled.View({
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
+  height: 40,
+  maxHeight: 40,
 })
 
 const IconContainer = styled.View<{ backgroundColor: string }>(({ backgroundColor }) => ({
