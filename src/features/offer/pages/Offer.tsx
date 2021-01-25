@@ -39,7 +39,7 @@ const OfferComponent: FunctionComponent = () => {
   const scrollViewRef = useRef<ScrollView | null>(null)
   const hasSeenAllPage = useRef<boolean>(false)
   useTrackOfferSeenDuration(params.id)
-  const { wording, onPress } = useCtaWordingAndAction({ offerId: params.id }) || {}
+  const { wording, onPress, isExternal } = useCtaWordingAndAction({ offerId: params.id }) || {}
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
@@ -142,7 +142,7 @@ const OfferComponent: FunctionComponent = () => {
 
       {wording ? (
         <CallToActionContainer testID="CTA-button">
-          <CallToAction wording={wording} onPress={onPress} />
+          <CallToAction wording={wording} onPress={onPress} isExternal={isExternal} />
         </CallToActionContainer>
       ) : (
         <Spacer.Column numberOfSpaces={10} />

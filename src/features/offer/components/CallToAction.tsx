@@ -1,22 +1,35 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { Rectangle } from 'ui/svg/Rectangle'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
-  wording: Element | string
+  wording: string
   onPress: (() => void) | (() => Promise<void>) | undefined
+  isExternal?: boolean
 }
 
-export const CallToAction: React.FC<Props> = ({ wording, onPress }) => {
+export const CallToAction: React.FC<Props> = ({ wording, onPress, isExternal = false }) => {
   const isDisabled = onPress === undefined
+
   return (
     <Container onPress={onPress} disabled={isDisabled}>
       {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
       <Title adjustsFontSizeToFit numberOfLines={1}>
+        {isExternal && (
+          <IconContainer>
+            <Spacer.Column numberOfSpaces={4} />
+            <ExternalLinkSite
+              color={ColorsEnum.WHITE}
+              height={getSpacing(5)}
+              width={getSpacing(5)}
+            />
+          </IconContainer>
+        )}
         {wording}
       </Title>
     </Container>
@@ -43,3 +56,5 @@ const DisabledRectangle = styled.View({
   height: getSpacing(12),
   backgroundColor: ColorsEnum.PRIMARY_DISABLED,
 })
+
+const IconContainer = styled.View({ width: getSpacing(3), height: getSpacing(3) })
