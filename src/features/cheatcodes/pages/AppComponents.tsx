@@ -29,6 +29,7 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { ProgressBar } from 'ui/components/ProgressBar'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
@@ -495,6 +496,21 @@ export const AppComponents: FunctionComponent = () => {
             onPress={() => setCurrentStep((step) => (step === NUMBER_OF_STEPS ? step : step + 1))}
           />
         </AlignedText>
+        <View>
+          <Spacer.Column numberOfSpaces={1} />
+          <Text> Progress bars </Text>
+          <Spacer.Column numberOfSpaces={3} />
+          <RowWrap>
+            <ProgressBar progress={0} color={ColorsEnum.GREEN_VALID} icon={Close} />
+            <ProgressBar progress={0.3} color={ColorsEnum.PRIMARY_DARK} icon={Close} />
+            <ProgressBar progress={1} color={ColorsEnum.SECONDARY} icon={Close} />
+          </RowWrap>
+          <Spacer.Column numberOfSpaces={1} />
+          <RowWrap>
+            <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={Close} />
+            <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Close} />
+          </RowWrap>
+        </View>
       </AccordionItem>
 
       <Spacer.Column numberOfSpaces={5} />
