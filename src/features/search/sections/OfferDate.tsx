@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { DateFilter } from 'features/search/atoms/Buttons'
@@ -9,6 +10,7 @@ import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const OfferDate: React.FC = () => {
   const { searchState, dispatch } = useSearch()
@@ -56,9 +58,11 @@ export const OfferDate: React.FC = () => {
           onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
         />
         {option === DATE_FILTER_OPTIONS.USER_PICK && (
-          <Typo.Body color={ColorsEnum.BLACK}>
-            {formatToCompleteFrenchDate(selectedDate.getTime())}
-          </Typo.Body>
+          <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={() => setShowTimePicker(true)}>
+            <Typo.Body color={ColorsEnum.BLACK}>
+              {formatToCompleteFrenchDate(selectedDate.getTime())}
+            </Typo.Body>
+          </TouchableOpacity>
         )}
       </Container>
 
