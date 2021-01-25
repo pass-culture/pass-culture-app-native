@@ -11,6 +11,12 @@ interface AlgoliaDate {
   selectedDate: Date
 }
 
+export enum LocationType {
+  AROUND_ME = 'AROUND_ME',
+  EVERYWHERE = 'EVERYWHERE',
+  PLACE = 'PLACE',
+}
+
 /**
  * See Algolia doc on numericFilters and facetFilters
  *
@@ -34,7 +40,7 @@ export interface ParsedAlgoliaParameters {
   beginningDatetime: Date | null
   endingDatetime: Date | null
   priceRange: Range<number> | null
-  searchAround: boolean
+  searchAround: LocationType | null
   geolocation: AlgoliaGeolocation | null
 }
 

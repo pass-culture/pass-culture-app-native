@@ -1,17 +1,17 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { LocationChoiceType } from 'features/search/locationChoice.types'
+import { LocationType } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
-export const getLocationChoiceName = (locationChoice: LocationChoiceType): string => {
+export const getLocationChoiceName = (locationChoice: LocationType): string => {
   switch (locationChoice) {
-    case LocationChoiceType.AROUND_ME:
+    case LocationType.AROUND_ME:
       return _(t`Autour de moi`)
-    case LocationChoiceType.EVERYWHERE:
+    case LocationType.EVERYWHERE:
       return _(t`Partout`)
     default:
       return _(t`Partout`)
@@ -19,12 +19,12 @@ export const getLocationChoiceName = (locationChoice: LocationChoiceType): strin
 }
 
 export const getLocationChoiceIcon = (
-  locationChoice: LocationChoiceType
+  locationChoice: LocationType
 ): React.FC<BicolorIconInterface> => {
   switch (locationChoice) {
-    case LocationChoiceType.AROUND_ME:
+    case LocationType.AROUND_ME:
       return AroundMe
-    case LocationChoiceType.EVERYWHERE:
+    case LocationType.EVERYWHERE:
       return Everywhere
     default:
       return AroundMe

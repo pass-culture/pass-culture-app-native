@@ -6,20 +6,20 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Section } from 'features/search/atoms/Sections'
 import { getLocationChoiceName } from 'features/search/components/locationChoice.utils'
-import { LocationChoiceType } from 'features/search/locationChoice.types'
+import { LocationType } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-const renderLocationContent = (locationChoice: LocationChoiceType, onPress: () => void) => {
+const renderLocationContent = (locationChoice: LocationType, onPress: () => void) => {
   return (
     <React.Fragment>
       <LocationContentContainer onPress={onPress}>
         <Typo.ButtonText>{getLocationChoiceName(locationChoice)}</Typo.ButtonText>
         <ArrowNext size={24} />
       </LocationContentContainer>
-      {locationChoice === LocationChoiceType.AROUND_ME && (
+      {locationChoice === LocationType.AROUND_ME && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
@@ -37,7 +37,7 @@ export const LocationSection: React.FC = () => {
   // TODO: PC-6394 Count to change when we will connect Location to searchState
   return (
     <Section title={_(t`Localisation`)} count={1}>
-      {renderLocationContent(LocationChoiceType.AROUND_ME, onPress)}
+      {renderLocationContent(LocationType.AROUND_ME, onPress)}
     </Section>
   )
 }
