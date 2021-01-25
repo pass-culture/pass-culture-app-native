@@ -117,6 +117,28 @@ describe('getCtaWordingAndAction', () => {
         expect(onPress === undefined).toBe(disabled)
       }
     )
+
+    // offer price is 5
+    it.each`
+      creditThing | expected                          | disabled
+      ${1}        | ${'Crédit numérique insuffisant'} | ${true}
+      ${1}        | ${'Crédit numérique insuffisant'} | ${true}
+      ${4.9}      | ${'Crédit numérique insuffisant'} | ${true}
+      ${5.1}      | ${'Réserver'}                     | ${false}
+    `(
+      'check if Credit is enough for digital offers | creditThing=$creditThing => $expected',
+      ({ creditThing, disabled, expected }) => {
+        const { wording, onPress } = getCta(
+          {
+            isDigital: true,
+            category: { ...baseOffer.category, categoryType: CategoryType.Thing },
+          },
+          { creditThing, platform: 'android' }
+        )
+        expect(wording).toEqual(expected)
+        expect(onPress === undefined).toBe(disabled)
+      }
+    )
   })
   describe.skip('Navigation on success', () => {
     // TODO
