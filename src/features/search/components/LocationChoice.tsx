@@ -6,13 +6,13 @@ import {
   getLocationChoiceName,
   getLocationChoiceIcon,
 } from 'features/search/components/locationChoice.utils'
-import { LocationChoiceType } from 'features/search/locationChoice.types'
+import { LocationType } from 'libs/algolia'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type Props = {
-  type: LocationChoiceType
+  type: LocationType
 }
 
 export const LocationChoice: React.FC<Props> = ({ type }) => {

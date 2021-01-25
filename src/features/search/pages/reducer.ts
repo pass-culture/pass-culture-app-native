@@ -24,7 +24,7 @@ export const initialSearchState: SearchState = {
   beginningDatetime: null,
   endingDatetime: null,
   priceRange: null,
-  searchAround: false,
+  searchAround: null,
   geolocation: null,
   date: null,
   timeRange: null,
