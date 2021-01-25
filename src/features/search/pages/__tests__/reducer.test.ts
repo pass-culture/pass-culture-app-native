@@ -63,6 +63,13 @@ describe('Search reducer', () => {
       priceRange: [30, 200],
     })
   })
+  it('should handle TIME_RANGE', () => {
+    const action: Action = { type: 'TIME_RANGE', payload: [10, 24] as SearchState['timeRange'] }
+    expect(searchReducer(state, action)).toStrictEqual({
+      ...initialSearchState,
+      timeRange: [10, 24],
+    })
+  })
 
   it('should handle CATEGORIES', () => {
     // 1. Add JEUX_VIDEO
@@ -154,6 +161,12 @@ describe('Search reducer', () => {
       payload: DATE_FILTER_OPTIONS.USER_PICK,
     })
     expect(newState.date?.option).toStrictEqual(DATE_FILTER_OPTIONS.USER_PICK)
+  })
+  it('should handle TOGGLE_HOUR', () => {
+    let newState = searchReducer(state, { type: 'TOGGLE_HOUR' })
+    expect(newState.timeRange).toStrictEqual([8, 24])
+    newState = searchReducer(newState, { type: 'TOGGLE_HOUR' })
+    expect(newState.timeRange).toBeNull()
   })
 
   it('should handle SELECT_DATE', () => {
