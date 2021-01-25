@@ -29,6 +29,7 @@ export const Hit: React.FC<Props> = ({ hit }) => {
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = dehumanizeId(offer.id)
   const categoryLabel = CATEGORY_CRITERIA[offer.category || 'ALL'].label
+  const formattedDate = formatDates(timestampsInMillis)
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from algolia for a smooth transition
@@ -70,7 +71,7 @@ export const Hit: React.FC<Props> = ({ hit }) => {
           </Row>
           <Spacer.Column numberOfSpaces={1} />
           <Body>{categoryLabel}</Body>
-          <Body>{formatDates(timestampsInMillis) || 'Dès le 31 janvier 2021'}</Body>
+          {formattedDate && <Body>{formattedDate}</Body>}
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>
         </Column>
