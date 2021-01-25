@@ -9,7 +9,7 @@ import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 export const getLocationChoiceName = (locationChoice: LocationChoiceType): string => {
   switch (locationChoice) {
-    case LocationChoiceType.LOCALIZED:
+    case LocationChoiceType.AROUND_ME:
       return _(t`Autour de moi`)
     case LocationChoiceType.EVERYWHERE:
       return _(t`Partout`)
@@ -22,7 +22,7 @@ export const getLocationChoiceIcon = (
   locationChoice: LocationChoiceType
 ): React.FC<BicolorIconInterface> => {
   switch (locationChoice) {
-    case LocationChoiceType.LOCALIZED:
+    case LocationChoiceType.AROUND_ME:
       return AroundMe
     case LocationChoiceType.EVERYWHERE:
       return Everywhere

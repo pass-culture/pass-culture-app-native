@@ -19,7 +19,7 @@ const renderLocationContent = (locationChoice: LocationChoiceType, onPress: () =
         <Typo.ButtonText>{getLocationChoiceName(locationChoice)}</Typo.ButtonText>
         <ArrowNext size={24} />
       </LocationContentContainer>
-      {locationChoice === LocationChoiceType.LOCALIZED && (
+      {locationChoice === LocationChoiceType.AROUND_ME && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
@@ -37,7 +37,7 @@ export const LocationSection: React.FC = () => {
   // TODO: PC-6394 Count to change when we will connect Location to searchState
   return (
     <Section title={_(t`Localisation`)} count={1}>
-      {renderLocationContent(LocationChoiceType.LOCALIZED, onPress)}
+      {renderLocationContent(LocationChoiceType.AROUND_ME, onPress)}
     </Section>
   )
 }
