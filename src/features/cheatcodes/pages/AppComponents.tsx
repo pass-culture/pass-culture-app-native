@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { CategoryNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
+import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { mapCategoryToIcon } from 'libs/parsers'
@@ -43,6 +44,7 @@ import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { Check } from 'ui/svg/icons/Check'
+import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Email } from 'ui/svg/icons/Email'
@@ -245,6 +247,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Check size={24} />
           <Text> - Check </Text>
+        </AlignedText>
+        <AlignedText>
+          <Clock size={24} />
+          <Text> - Clock </Text>
         </AlignedText>
         <AlignedText>
           <Close size={24} />
@@ -459,7 +465,7 @@ export const AppComponents: FunctionComponent = () => {
       <Divider />
 
       {/* Your components */}
-      <AccordionItem title="Your components" defaultOpen>
+      <AccordionItem title="Your components">
         <AlignedText>
           <Text>
             <ExternalLink url="https://google.com" />
@@ -516,6 +522,11 @@ export const AppComponents: FunctionComponent = () => {
             <CreditCeiling amount={155} max={200} type={'physical'} depositVersion={1} />
             <CreditCeiling amount={200} max={200} type={'digital'} depositVersion={2} />
           </RowWrap>
+        </View>
+        <View>
+          <Text>Badge trop jeune </Text>
+          <Spacer.Column numberOfSpaces={2} />
+          <YoungerBadge />
         </View>
       </AccordionItem>
 

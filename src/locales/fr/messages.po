@@ -105,7 +105,7 @@ msgstr "Aucun refresh token à sauvegarder"
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
 
-#: src/features/search/sections/OfferDate.tsx:28
+#: src/features/search/sections/OfferDate.tsx:30
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
 
@@ -144,11 +144,11 @@ msgstr "Ce lien de validation n'est plus valide"
 msgid "Ce site est protégé par reCAPTCHA Google. La"
 msgstr "Ce site est protégé par reCAPTCHA Google. La"
 
-#: src/features/search/sections/OfferDate.tsx:32
+#: src/features/search/sections/OfferDate.tsx:34
 msgid "Ce week-end"
 msgstr "Ce week-end"
 
-#: src/features/search/sections/OfferDate.tsx:30
+#: src/features/search/sections/OfferDate.tsx:32
 msgid "Cette semaine"
 msgstr "Cette semaine"
 
@@ -234,11 +234,11 @@ msgstr "Créneau horaire"
 msgid "Date"
 msgstr "Date"
 
-#: src/features/search/sections/OfferDate.tsx:26
+#: src/features/search/sections/OfferDate.tsx:28
 msgid "Date de l'offre"
 msgstr "Date de l'offre"
 
-#: src/features/search/sections/OfferDate.tsx:34
+#: src/features/search/sections/OfferDate.tsx:36
 msgid "Date précise"
 msgstr "Date précise"
 
@@ -436,6 +436,10 @@ msgstr "Où ?"
 #: src/features/search/components/locationChoice.utils.tsx:13
 msgid "Partout"
 msgstr "Partout"
+
+#: src/features/profile/components/YoungerBadge.tsx:14
+msgid "Patience ! L’année de tes 18 ans tu bénéficieras de 300€ offerts à dépenser sur l’application."
+msgstr "Patience ! L’année de tes 18 ans tu bénéficieras de 300€ offerts à dépenser sur l’application."
 
 #: src/features/auth/signup/VerifyEligibility.tsx:20
 msgid "Plus que quelques étapes !"
