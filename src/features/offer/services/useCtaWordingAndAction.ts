@@ -60,7 +60,10 @@ export const getCtaWordingAndAction = ({
   if (category.categoryType === CategoryType.Thing) {
     // We check the platform first so that the user doesn't try to add funds and come back
     if (price > 0 && platform === 'ios') return { wording: _(t`Impossible de réserver`) }
-    if (price > creditThing) return { wording: _(t`Crédit insuffisant`) }
+    if (price > creditThing) {
+      if (offer.isDigital) return { wording: _(t`Crédit numérique insuffisant`) }
+      return { wording: _(t`Crédit insuffisant`) }
+    }
 
     return {
       wording: _(t`Réserver`),

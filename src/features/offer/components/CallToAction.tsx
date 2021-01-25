@@ -7,7 +7,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
-  wording: string
+  wording: Element | string
   onPress: (() => void) | (() => Promise<void>) | undefined
 }
 
