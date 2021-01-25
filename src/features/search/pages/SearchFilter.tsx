@@ -70,14 +70,15 @@ export const SearchFilter: React.FC = () => {
 
           {/* Heure */}
           <Section.Hour />
-          <Separator marginVertical={getSpacing(6)} />
 
           {/*Créneau horaire */}
           {!!searchState.timeRange && (
             <React.Fragment>
+              <Separator marginVertical={getSpacing(6)} />
               <Section.TimeSlot />
             </React.Fragment>
           )}
+
           <Spacer.Column numberOfSpaces={30} />
         </Container>
       </React.Fragment>
