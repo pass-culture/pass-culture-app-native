@@ -45,6 +45,7 @@ describe('<Offer  /> - OfferTile to Offer transition', () => {
         ['offer', offerId],
         mergeOfferData({
           category: offerResponseSnap.category.label,
+          categoryName: offerResponseSnap.category.name || null,
           description: offerResponseSnap.description,
           thumbUrl: offerResponseSnap.image?.url,
           isDuo: offerResponseSnap.isDuo,

@@ -14,6 +14,7 @@ const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = dehumanizeId(offer.id)!
 const props = {
   category: offer.category || '',
+  categoryName: offer.category,
   description: offer.description || '',
   distance: '1,2km',
   date: 'Dès le 12 mars 2020',
@@ -54,7 +55,7 @@ describe('OfferTile component', () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(query!.state.data).toStrictEqual({
       accessibility: {},
-      category: { label: 'MUSIQUE' },
+      category: { label: 'MUSIQUE', name: 'MUSIQUE' },
       description: offer.description,
       fullAddress: null,
       id: offerId,

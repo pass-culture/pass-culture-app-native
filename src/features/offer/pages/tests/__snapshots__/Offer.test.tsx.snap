@@ -340,6 +340,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                 Object {
                                   "borderRadius": 8,
                                   "bottom": 0,
+                                  "height": 316,
                                   "position": "absolute",
                                   "shadowColor": "#151515",
                                   "shadowOffset": Object {
@@ -348,6 +349,7 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                   },
                                   "shadowOpacity": 0.2,
                                   "shadowRadius": 12,
+                                  "width": 212,
                                 },
                               ]
                             }
@@ -2880,6 +2882,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                 Object {
                                   "borderRadius": 8,
                                   "bottom": 0,
+                                  "height": 316,
                                   "position": "absolute",
                                   "shadowColor": "#151515",
                                   "shadowOffset": Object {
@@ -2888,6 +2891,7 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                   },
                                   "shadowOpacity": 0.2,
                                   "shadowRadius": 12,
+                                  "width": 212,
                                 },
                               ]
                             }

@@ -4,7 +4,7 @@ import { View, PixelRatio } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { CategoryNameEnum, OfferResponse } from 'api/gen'
 import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
@@ -17,6 +17,7 @@ import { OfferCaption } from './OfferCaption'
 
 interface OfferTileProps {
   category: string
+  categoryName: CategoryNameEnum | null
   description?: string
   distance?: string
   date?: string
@@ -32,7 +33,7 @@ interface OfferTileProps {
 
 type PartialOffer = Pick<
   OfferTileProps,
-  'category' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId'
+  'category' | 'categoryName' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId'
 >
 
 export const mergeOfferData = (offer: PartialOffer) => (
@@ -47,7 +48,10 @@ export const mergeOfferData = (offer: PartialOffer) => (
   id: offer.offerId,
   stocks: [],
   accessibility: {},
-  category: { label: offer.category } as OfferResponse['category'],
+  category: {
+    label: offer.category,
+    name: offer.categoryName || undefined,
+  } as OfferResponse['category'],
   venue: { coordinates: {} } as OfferResponse['venue'],
   isActive: true,
   ...(prevData || {}),
