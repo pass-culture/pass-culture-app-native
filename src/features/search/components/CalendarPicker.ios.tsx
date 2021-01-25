@@ -39,6 +39,7 @@ export const CalendarPicker: React.FC<Props> = ({
           display="spinner"
           onChange={onChange}
           textColor={ColorsEnum.BLACK}
+          locale="fr-FR"
         />
       </Container>
       <Spacer.Column numberOfSpaces={2} />
