@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
@@ -87,13 +88,13 @@ export const SearchFilter: React.FC = () => {
   )
 }
 
+const { width } = Dimensions.get('window')
 const Container = styled.ScrollView({ flex: 1 })
 const Separator = styled.View<{ marginVertical?: number }>(({ marginVertical = 0 }) => ({
-  width: '100%',
+  width: width - getSpacing(2 * 6),
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
   alignSelf: 'center',
-  marginHorizontal: getSpacing(6),
   marginVertical: marginVertical,
 }))
 const ShowResultsContainer = styled.View({
