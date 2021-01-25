@@ -25,9 +25,9 @@ interface Props {
   creditEvent?: number
 }
 interface ICTAWordingAndAction {
-  wording: string | undefined
+  isExternal?: boolean
+  wording?: string
   onPress?: () => void
-  shouldHideCTA?: boolean
 }
 
 // Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
@@ -45,8 +45,10 @@ export const getCtaWordingAndAction = ({
   if (!isLoggedIn || !isBeneficiary) {
     const isEvent = category.categoryType === CategoryType.Event
     if (!externalTicketOfficeUrl) return { wording: undefined }
+
     return {
-      wording: isEvent ? _(t`Accéder à l'offre`) : _(t`Accéder à la billetterie externe`),
+      isExternal: !isEvent,
+      wording: isEvent ? _(t`Accéder à l'offre`) : _(t`Accéder à la billetterie`),
       onPress: () => openExternalUrl(externalTicketOfficeUrl),
     }
   }

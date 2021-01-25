@@ -22,14 +22,14 @@ mockdate.set(new Date('2021-01-04T00:00:00Z'))
 describe('getCtaWordingAndAction', () => {
   describe('Non Beneficiary', () => {
     it.each`
-      type                  | url                     | expected                              | disabled
-      ${CategoryType.Event} | ${undefined}            | ${undefined}                          | ${true}
-      ${CategoryType.Event} | ${'http://url-externe'} | ${"Accéder à l'offre"}                | ${false}
-      ${CategoryType.Thing} | ${undefined}            | ${undefined}                          | ${true}
-      ${CategoryType.Thing} | ${'http://url-externe'} | ${'Accéder à la billetterie externe'} | ${false}
+      type                  | url                     | expected                      | disabled | isExternal
+      ${CategoryType.Event} | ${undefined}            | ${undefined}                  | ${true}  | ${undefined}
+      ${CategoryType.Event} | ${'http://url-externe'} | ${"Accéder à l'offre"}        | ${false} | ${false}
+      ${CategoryType.Thing} | ${undefined}            | ${undefined}                  | ${true}  | ${undefined}
+      ${CategoryType.Thing} | ${'http://url-externe'} | ${'Accéder à la billetterie'} | ${false} | ${true}
     `(
       'CTA(disabled=$disabled) = "$expected" for categoryType=$type and url=$url',
-      ({ disabled, expected, type, url }) => {
+      ({ disabled, expected, type, url, isExternal }) => {
         const offer = buildOffer({
           externalTicketOfficeUrl: url,
           category: { ...baseOffer.category, categoryType: type },
@@ -43,6 +43,7 @@ describe('getCtaWordingAndAction', () => {
         const { wording, onPress } = result || {}
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
+        expect(result?.isExternal).toEqual(isExternal)
       }
     )
   })

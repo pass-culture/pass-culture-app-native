@@ -54,8 +54,8 @@ msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
 #: src/features/offer/services/useCtaWordingAndAction.ts:23
-msgid "Accéder à la billetterie externe"
-msgstr "Accéder à la billetterie externe"
+msgid "Accéder à la billetterie"
+msgstr "Accéder à la billetterie"
 
 #: src/features/offer/components/OfferWhereSection.tsx:28
 msgid "Adresse"
