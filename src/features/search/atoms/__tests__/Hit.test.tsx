@@ -22,12 +22,12 @@ describe('Hit component', () => {
     fireEvent.press(getByTestId('offerHit'))
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId })
   })
-  it('should show distance if geolocation enabled', async () => {
+  it('should show distance if geolocation enabled', () => {
     mockDistance = '10 km'
     const { queryByText } = render(reactQueryProviderHOC(<Hit hit={hit} />))
     expect(queryByText('10 km')).toBeTruthy()
   })
-  it('offer name should take full space if no geolocation', async () => {
+  it('offer name should take full space if no geolocation', () => {
     mockDistance = '10 km'
     const withDistanceSnapshot = render(reactQueryProviderHOC(<Hit hit={hit} />)).toJSON()
 
