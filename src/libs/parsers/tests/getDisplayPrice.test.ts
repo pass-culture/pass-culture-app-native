@@ -10,8 +10,9 @@ describe('getDisplayPrice', () => {
     ${[1]}         | ${'1 €'}
     ${[2.0]}       | ${'2 €'}
     ${[3.45]}      | ${'3,45 €'}
+    ${[3.5]}       | ${'3,50 €'}
     ${[5.6, 3.0]}  | ${'Dès 3 €'}
-    ${[-3.0, 5.6]} | ${'5,6 €'}
+    ${[-3.0, 5.6]} | ${'5,60 €'}
     ${[8, 8]}      | ${'8 €'}
   `('getDisplayPrice($prices) \t= $expected', ({ prices, expected }) => {
     expect(getDisplayPrice(prices)).toBe(expected)
@@ -27,7 +28,7 @@ describe('getDisplayPrice', () => {
     ${[2.0]}       | ${'2 € / place'}
     ${[3.45]}      | ${'3,45 € / place'}
     ${[5.6, 3.0]}  | ${'Dès 3 € / place'}
-    ${[-3.0, 5.6]} | ${'5,6 € / place'}
+    ${[-3.0, 5.6]} | ${'5,60 € / place'}
     ${[8, 8]}      | ${'8 € / place'}
   `('getDisplayPriceWithDuoMention($prices) \t= $expected', ({ prices, expected }) => {
     expect(getDisplayPriceWithDuoMention(prices)).toBe(expected)
