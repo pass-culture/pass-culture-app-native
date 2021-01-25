@@ -39,6 +39,7 @@ export const Hit: React.FC<Props> = ({ hit }) => {
       mergeOfferData({
         ...offer,
         category: parseCategory(offer.category),
+        categoryName: offer.category,
         description: offer.description || '',
         thumbUrl: offer.thumbUrl,
         isDuo: offer.isDuo,
@@ -52,7 +53,7 @@ export const Hit: React.FC<Props> = ({ hit }) => {
   return (
     <Container onPress={handlePressOffer} testID="offerHit">
       <Row>
-        <OfferImage imageUrl={offer.thumbUrl} category={hit.offer.category} />
+        <OfferImage imageUrl={offer.thumbUrl} categoryName={hit.offer.category} />
         <Spacer.Row numberOfSpaces={4} />
         <Column>
           <Row>

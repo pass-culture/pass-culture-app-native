@@ -66,7 +66,6 @@ import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
 import { OfferBackPlaceholder } from 'ui/svg/OfferBackPlaceholder'
-import { OfferPlaceholder } from 'ui/svg/OfferPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -469,10 +468,6 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Rectangle />
           <Text> - Rectangle </Text>
-        </AlignedText>
-        <AlignedText>
-          <OfferPlaceholder />
-          <Text> - OfferPlaceholder </Text>
         </AlignedText>
 
         <AlignedText>

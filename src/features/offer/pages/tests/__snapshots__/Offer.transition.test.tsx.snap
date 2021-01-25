@@ -5,7 +5,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 - First value
 + Second value
 
-@@ -425,45 +425,11 @@
+@@ -427,45 +427,11 @@
                                   width={16}
                                 >
                                   undefined-SVG-Mock
@@ -51,7 +51,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             numberOfSpaces={2}
                             style={
                               Array [
-@@ -701,11 +667,11 @@
+@@ -703,11 +669,11 @@
                                     },
                                   ]
                                 }
@@ -64,7 +64,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -888,1211 +854,26 @@
+@@ -890,1211 +856,26 @@
                           <View
                             style={
                               Array [
