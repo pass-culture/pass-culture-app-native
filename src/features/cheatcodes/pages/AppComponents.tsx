@@ -11,6 +11,7 @@ import { AccordionItem, CallToAction } from 'features/offer/components'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
+import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { Banner, BannerType } from 'ui/components/Banner'
 import { CreditCeiling } from 'ui/components/bars/CreditCeiling'
@@ -577,12 +578,19 @@ const CategoryIcons = () => {
   return (
     <React.Fragment>
       <Text>{'Categories'}</Text>
-      {[...Object.keys(CategoryNameEnum), null].map((category: string | null) => {
+      {[...Object.values(CategoryNameEnum), null].map((category: string | null) => {
         const Icon = mapCategoryToIcon(category as CategoryNameEnum | null)
+        const BicolorIcon =
+          category && category in CATEGORY_CRITERIA
+            ? CATEGORY_CRITERIA[category as CategoryNameEnum].icon
+            : CATEGORY_CRITERIA['ALL'].icon
+
         return (
           <AlignedText key={category || "ŒUVRE D'ART"}>
             <Icon size={24} color={ColorsEnum.GREY_DARK} />
-            <Text> - {category || "ŒUVRE D'ART"} </Text>
+            <BicolorIcon size={24} color={ColorsEnum.PRIMARY} color2={ColorsEnum.PRIMARY} />
+            <BicolorIcon size={24} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
+            <Text> - {category || "ŒUVRE D'ART / TOUTES"} </Text>
           </AlignedText>
         )
       })}
