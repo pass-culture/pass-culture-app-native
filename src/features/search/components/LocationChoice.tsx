@@ -28,20 +28,23 @@ export const LocationChoice: React.FC<Props> = ({ type }) => {
   const isSelected = searchState.searchAround === type
   const iconColor2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
   const LocationChoiceIcon = getLocationChoiceIcon(type)
+
   const onPress = () => {
     if (type === LocationType.AROUND_ME && position === null) {
       // TODO: implement modale to invit to active geoloc
     } else {
       dispatch({ type: 'LOCATION_TYPE', payload: type })
-      const location =
-        position === null ? null : { latitude: position.latitude, longitude: position.longitude }
+      const location = position
+        ? { latitude: position.latitude, longitude: position.longitude }
+        : null
       const payload = type === LocationType.EVERYWHERE ? null : location
       dispatch({ type: 'SET_LOCATION', payload: payload })
     }
     goBack()
   }
+
   return (
-    <Container onPress={onPress}>
+    <Container onPress={onPress} testID="locationChoice">
       <FirstPart>
         <LocationChoiceIcon size={48} color2={iconColor2} />
         <Spacer.Row numberOfSpaces={2} />
