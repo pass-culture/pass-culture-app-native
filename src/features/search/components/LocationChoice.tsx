@@ -10,6 +10,7 @@ import {
 } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'libs/algolia'
 import { useGeolocation } from 'libs/geolocation'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -18,9 +19,10 @@ import { useSearch } from '../pages/SearchWrapper'
 
 type Props = {
   type: LocationType
+  arrowNext?: boolean
 }
 
-export const LocationChoice: React.FC<Props> = ({ type }) => {
+export const LocationChoice: React.FC<Props> = ({ type, arrowNext = false }) => {
   const { searchState, dispatch } = useSearch()
   const position = useGeolocation()
   const { goBack } = useNavigation<UseNavigationType>()
@@ -52,10 +54,15 @@ export const LocationChoice: React.FC<Props> = ({ type }) => {
           {getLocationChoiceName(type)}
         </Typo.ButtonText>
       </FirstPart>
-      {isSelected && (
-        <IconContainer>
-          <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />
-        </IconContainer>
+      <Spacer.Flex />
+      {isSelected && <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />}
+      {arrowNext ? (
+        <React.Fragment>
+          <Spacer.Row numberOfSpaces={2} />
+          <ArrowNext />
+        </React.Fragment>
+      ) : (
+        <Spacer.Row numberOfSpaces={10} />
       )}
     </Container>
   )
@@ -74,8 +81,4 @@ const Container = styled.TouchableOpacity.attrs(() => ({
   alignItems: 'center',
   justifyContent: 'space-between',
   marginHorizontal: getSpacing(6),
-})
-
-const IconContainer = styled.View({
-  paddingRight: getSpacing(10),
 })
