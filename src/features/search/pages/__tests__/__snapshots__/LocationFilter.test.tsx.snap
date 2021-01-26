@@ -180,9 +180,132 @@ Array [
           ]
         }
       >
+        Choisir un lieu
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <View
+      height={32}
+      width={32}
+    >
+      undefined-SVG-Mock
+    </View>
+  </View>,
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginHorizontal": 24,
+        "opacity": 1,
+      }
+    }
+    testID="locationChoice"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        height={48}
+        width={48}
+      >
+        undefined-SVG-Mock
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+      <Text
+        color="#151515"
+        style={
+          Array [
+            Object {
+              "color": "#151515",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
         Autour de moi
       </Text>
     </View>
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "width": 40,
+          },
+        ]
+      }
+    />
   </View>,
   <View
     numberOfSpaces={4}
@@ -262,19 +385,30 @@ Array [
       style={
         Array [
           Object {
-            "paddingRight": 40,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
           },
         ]
       }
+    />
+    <View
+      height={32}
+      testID="validateIcon"
+      width={32}
     >
-      <View
-        height={32}
-        testID="validateIcon"
-        width={32}
-      >
-        validateIcon-SVG-Mock
-      </View>
+      validateIcon-SVG-Mock
     </View>
+    <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "width": 40,
+          },
+        ]
+      }
+    />
   </View>,
   <View
     style={

@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/libs/parsers/getDisplayPrice.ts:23
+#: src/libs/parsers/getDisplayPrice.ts:27
 msgid "/ place"
 msgstr "/ place"
 
@@ -49,11 +49,11 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:23
+#: src/features/offer/services/useCtaWordingAndAction.ts:24
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:23
+#: src/features/offer/services/useCtaWordingAndAction.ts:24
 msgid "Accéder à la billetterie"
 msgstr "Accéder à la billetterie"
 
@@ -109,7 +109,8 @@ msgstr "Aucun résultat"
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
 
-#: src/features/search/components/locationChoice.utils.tsx:9
+#: src/features/search/components/SearchLandingPage.tsx:35
+#: src/features/search/components/locationChoice.utils.tsx:10
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
@@ -131,6 +132,7 @@ msgstr "Réservations"
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
+#: src/features/search/pages/Categories.tsx:58
 #: src/features/search/sections/Category.tsx:18
 msgid "Catégories"
 msgstr "Catégories"
@@ -159,6 +161,15 @@ msgstr "Chargement en cours..."
 #: src/features/auth/signup/SetBirthday.tsx:145
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
+
+#: src/features/search/components/locationChoice.utils.tsx:14
+#: src/features/search/pages/LocationPicker.tsx:26
+msgid "Choisir un lieu"
+msgstr "Choisir un lieu"
+
+#: src/features/search/pages/LocationPicker.tsx:24
+msgid "Choisir un lieu..."
+msgstr "Choisir un lieu..."
 
 #: src/features/offer/services/useItinerary.ts:77
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
@@ -221,10 +232,14 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:40
-#: src/features/offer/services/useCtaWordingAndAction.ts:50
+#: src/features/offer/services/useCtaWordingAndAction.ts:43
+#: src/features/offer/services/useCtaWordingAndAction.ts:54
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
+
+#: src/features/offer/services/useCtaWordingAndAction.ts:42
+msgid "Crédit numérique insuffisant"
+msgstr "Crédit numérique insuffisant"
 
 #: src/features/search/sections/TimeSlot.tsx:17
 msgid "Créneau horaire"
@@ -292,8 +307,8 @@ msgstr "Favoris"
 msgid "Filtrer"
 msgstr "Filtrer"
 
-#: src/libs/parsers/getDisplayPrice.ts:15
-#: src/libs/parsers/getDisplayPrice.ts:22
+#: src/libs/parsers/getDisplayPrice.ts:19
+#: src/libs/parsers/getDisplayPrice.ts:26
 msgid "Gratuit"
 msgstr "Gratuit"
 
@@ -321,11 +336,11 @@ msgstr "Heure"
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:38
+#: src/features/offer/services/useCtaWordingAndAction.ts:39
 msgid "Impossible de réserver"
 msgstr "Impossible de réserver"
 
-#: src/features/search/components/SearchLandingPage.tsx:16
+#: src/features/search/components/SearchLandingPage.tsx:25
 msgid "Je cherche"
 msgstr "Je cherche"
 
@@ -358,7 +373,7 @@ msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
 #: src/features/search/components/LocationSection.tsx:30
-#: src/features/search/pages/LocationFilter.tsx:18
+#: src/features/search/pages/LocationFilter.tsx:24
 msgid "Localisation"
 msgstr "Localisation"
 
@@ -392,8 +407,8 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:29
-#: src/features/offer/services/useCtaWordingAndAction.ts:33
+#: src/features/offer/services/useCtaWordingAndAction.ts:30
+#: src/features/offer/services/useCtaWordingAndAction.ts:34
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
@@ -405,7 +420,7 @@ msgstr "Offre numérique"
 msgid "Offre physique"
 msgstr "Offre physique"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:31
+#: src/features/offer/services/useCtaWordingAndAction.ts:32
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
@@ -424,7 +439,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/search/components/SearchLandingPage.tsx:19
+#: src/features/search/components/SearchLandingPage.tsx:33
 msgid "Où"
 msgstr "Où"
 
@@ -432,8 +447,8 @@ msgstr "Où"
 msgid "Où ?"
 msgstr "Où ?"
 
-#: src/features/search/components/locationChoice.utils.tsx:11
-#: src/features/search/components/locationChoice.utils.tsx:13
+#: src/features/search/components/locationChoice.utils.tsx:12
+#: src/features/search/components/locationChoice.utils.tsx:16
 msgid "Partout"
 msgstr "Partout"
 
@@ -513,7 +528,7 @@ msgstr "Réessayer"
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:42
+#: src/features/offer/services/useCtaWordingAndAction.ts:46
 msgid "Réserver"
 msgstr "Réserver"
 
@@ -534,7 +549,7 @@ msgstr "Se connecter"
 msgid "Seules les offres Sorties et Physiques seront affichées"
 msgstr "Seules les offres Sorties et Physiques seront affichées"
 
-#: src/features/search/pages/LocationFilter.tsx:13
+#: src/features/search/pages/LocationFilter.tsx:10
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 
@@ -561,7 +576,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Sorties"
 msgstr "Sorties"
 
-#: src/features/search/components/SearchBox.tsx:45
+#: src/features/search/components/SearchBox.tsx:46
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
@@ -644,7 +659,7 @@ msgstr "Veux-tu abandonner l'inscription ?"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:52
+#: src/features/offer/services/useCtaWordingAndAction.ts:56
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
