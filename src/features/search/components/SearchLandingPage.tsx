@@ -1,8 +1,10 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Dimensions, ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
@@ -11,8 +13,6 @@ import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { useNavigation } from '@react-navigation/native'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 
 const { width } = Dimensions.get('window')
 
