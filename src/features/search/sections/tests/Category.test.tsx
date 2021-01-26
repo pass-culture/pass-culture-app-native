@@ -27,11 +27,11 @@ describe('Category component', () => {
       }
     })
   })
-  it('should dispatch CATEGORIES with correct facetFilter', () => {
+  it('should dispatch TOGGLE_CATEGORY with correct facetFilter', () => {
     const { getByText } = render(<Category />)
     fireEvent.press(getByText(CATEGORY_CRITERIA.CINEMA.label))
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'CATEGORIES',
+      type: 'TOGGLE_CATEGORY',
       payload: CATEGORY_CRITERIA.CINEMA.facetFilter,
     })
   })
