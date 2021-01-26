@@ -22,6 +22,7 @@ import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Offer, OfferDescription } from 'features/offer'
+import { Categories as SearchCategories } from 'features/search/pages/Categories'
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { analytics } from 'libs/analytics'
@@ -58,6 +59,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="EligibilityConfirmed" component={EligibilityConfirmed} />
         <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
         <RootStack.Screen name="IdCheck" component={IdCheck} />
+        <RootStack.Screen name="SearchCategories" component={SearchCategories} />
         <RootStack.Screen name="LocationFilter" component={LocationFilter} />
         <RootStack.Screen name="Login" component={Login} />
         <RootStack.Screen name="Navigation" component={Navigation} />

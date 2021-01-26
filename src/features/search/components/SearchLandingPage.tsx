@@ -11,10 +11,13 @@ import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { useNavigation } from '@react-navigation/native'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 
 const { width } = Dimensions.get('window')
 
 export const SearchLandingPage: React.FC = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const CategoryIcon = CATEGORY_CRITERIA['ALL'].icon
 
   return (
@@ -22,7 +25,7 @@ export const SearchLandingPage: React.FC = () => {
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.Flex />
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigate('SearchCategories')}>
           <Typo.Body color={ColorsEnum.GREY_DARK}>{_(t`Je cherche`)}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <BicolorIconLabel title={_(t`Toutes les catégories`)} Icon={CategoryIcon} />

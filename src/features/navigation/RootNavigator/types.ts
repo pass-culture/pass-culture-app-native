@@ -31,6 +31,7 @@ export type RootStackParamList = {
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LocationFilter: undefined
+  SearchCategories: undefined
   SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
   SetEmail: BackNavigationParams<'Home'> | undefined
