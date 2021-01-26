@@ -13,20 +13,28 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const ALL = 'ALL'
-const DEBOUNCED_GO_BACK = 400
+export const DEBOUNCED_CALLBACK = 500
+
+export const useSelectCategory = (callback: () => void) => {
+  const { searchState, dispatch } = useSearch()
+  const debouncedCallback = useRef(debounce(callback, DEBOUNCED_CALLBACK)).current
+
+  return {
+    isCategorySelected: (category: string) => {
+      const [selectedCategory] = [...searchState.offerCategories, ALL]
+      return selectedCategory === category
+    },
+    selectCategory: (category: string) => () => {
+      const payload = category === ALL ? [] : [category]
+      dispatch({ type: 'SET_CATEGORY', payload })
+      debouncedCallback()
+    },
+  }
+}
 
 export const Categories: React.FC = () => {
   const { goBack } = useNavigation()
-  const { searchState, dispatch } = useSearch()
-  const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_GO_BACK)).current
-
-  const [selectedCategory] = [...searchState.offerCategories, ALL]
-
-  const selectCategory = (category: string) => {
-    const payload = category === ALL ? [] : [category]
-    dispatch({ type: 'SET_CATEGORY', payload })
-    debouncedGoBack()
-  }
+  const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
 
   return (
     <React.Fragment>
@@ -36,12 +44,12 @@ export const Categories: React.FC = () => {
           <Spacer.Column numberOfSpaces={16} />
 
           {Object.entries(CATEGORY_CRITERIA).map(([category, { label, icon: Icon }]) => {
-            const isSelected = selectedCategory === category
+            const isSelected = isCategorySelected(category)
             const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
             const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
 
             return (
-              <LabelContainer key={category} onPress={() => selectCategory(category)}>
+              <LabelContainer key={category} onPress={selectCategory(category)} testID={category}>
                 <Spacer.Row numberOfSpaces={4} />
                 <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={color2} />
                 <Spacer.Row numberOfSpaces={2} />
