@@ -1,5 +1,6 @@
 import mockdate from 'mockdate'
 
+import { LocationType } from 'libs/algolia'
 import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 
 import { Action, initialSearchState, searchReducer, SearchState } from '../reducer'
@@ -178,5 +179,27 @@ describe('Search reducer', () => {
     newState = searchReducer(newState, { type: 'TOGGLE_DATE' })
     newState = searchReducer(newState, { type: 'SELECT_DATE', payload: Tomorrow })
     expect(newState.date?.selectedDate).toStrictEqual(Tomorrow)
+  })
+
+  it('should handle LOCATION_TYPE', () => {
+    const newState = searchReducer(state, {
+      type: 'LOCATION_TYPE',
+      payload: LocationType.AROUND_ME,
+    })
+    expect(newState.searchAround).toEqual(LocationType.AROUND_ME)
+  })
+
+  it('should handle SET_LOCATION', () => {
+    let newState = searchReducer(state, {
+      type: 'SET_LOCATION',
+      payload: null,
+    })
+    expect(newState.geolocation).toBeNull()
+    const location = { latitude: 2.32, longitude: 48.1 }
+    newState = searchReducer(state, {
+      type: 'SET_LOCATION',
+      payload: location,
+    })
+    expect(newState.geolocation).toEqual(location)
   })
 })
