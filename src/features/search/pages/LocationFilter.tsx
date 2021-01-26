@@ -22,6 +22,8 @@ export const LocationFilter: React.FC = () => {
         type={BannerType.INFO}
       />
       <Spacer.Column numberOfSpaces={6} />
+      <LocationChoice type={LocationType.PLACE} arrowNext={true} />
+      <Spacer.Column numberOfSpaces={4} />
       <LocationChoice type={LocationType.AROUND_ME} />
       <Spacer.Column numberOfSpaces={4} />
       <LocationChoice type={LocationType.EVERYWHERE} />
