@@ -5,23 +5,37 @@ import styled from 'styled-components/native'
 
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
+import { AroundMe } from 'ui/svg/icons/AroundMe'
+import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const { width } = Dimensions.get('window')
 
 export const SearchLandingPage: React.FC = () => {
-  const { searchState } = useSearch()
+  const CategoryIcon = CATEGORY_CRITERIA['ALL'].icon
+
   return (
     <React.Fragment>
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.Flex />
-        <Typo.Hero>{_(t`Je cherche`)}</Typo.Hero>
-        <Typo.Caption>{searchState.offerCategories.join('\n')}</Typo.Caption>
+
+        <TouchableOpacity>
+          <Typo.Body color={ColorsEnum.GREY_DARK}>{_(t`Je cherche`)}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+          <BicolorIconLabel title={_(t`Toutes les catégories`)} Icon={CategoryIcon} />
+        </TouchableOpacity>
+
         <Separator />
-        <Typo.Hero>{_(t`Où`)}</Typo.Hero>
-        <Typo.Caption>{searchState.searchAround}</Typo.Caption>
+
+        <TouchableOpacity>
+          <Typo.Body color={ColorsEnum.GREY_DARK}>{_(t`Où`)}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+          <BicolorIconLabel title={_(t`Autour de moi`)} Icon={AroundMe} />
+        </TouchableOpacity>
+
         <Spacer.Flex flex={2} />
       </ScrollView>
       <SearchButtonContainer>
@@ -37,7 +51,7 @@ const Separator = styled.View({
   height: 2,
   width: width - getSpacing(2 * 6),
   backgroundColor: ColorsEnum.GREY_LIGHT,
-  marginVertical: getSpacing(4),
+  marginVertical: getSpacing(8),
 })
 const SearchButtonContainer = styled.View({
   alignSelf: 'center',
@@ -45,3 +59,21 @@ const SearchButtonContainer = styled.View({
   bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
   width: width - getSpacing(2 * 6),
 })
+
+const TouchableOpacity = styled.TouchableOpacity.attrs({
+  activeOpacity: ACTIVE_OPACITY,
+})({ alignItems: 'center' })
+
+const BicolorIconLabel: React.FC<{
+  title: string
+  Icon: React.FC<BicolorIconInterface>
+}> = ({ title, Icon }) => {
+  return (
+    <Container>
+      <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
+      <Typo.Title3>{title}</Typo.Title3>
+    </Container>
+  )
+}
+
+const Container = styled.View({ flexDirection: 'row', alignItems: 'center' })
