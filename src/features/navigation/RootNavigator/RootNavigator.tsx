@@ -24,6 +24,7 @@ import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { Offer, OfferDescription } from 'features/offer'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
 import { LocationFilter } from 'features/search/pages/LocationFilter'
+import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
@@ -61,6 +62,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="IdCheck" component={IdCheck} />
         <RootStack.Screen name="SearchCategories" component={SearchCategories} />
         <RootStack.Screen name="LocationFilter" component={LocationFilter} />
+        <RootStack.Screen name="LocationPicker" component={LocationPicker} />
         <RootStack.Screen name="Login" component={Login} />
         <RootStack.Screen name="Navigation" component={Navigation} />
         <RootStack.Screen name="Offer" component={Offer} />

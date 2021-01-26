@@ -7,7 +7,7 @@ export type CustomTextInputProps = {
 
 export type CustomSearchInputProps = {
   inputHeight?: 'small' | 'tall'
-  LeftIcon: React.FC
+  LeftIcon?: React.FC
   RightIcon?: React.FC
 }
 
