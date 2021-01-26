@@ -1,12 +1,15 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import {
   getLocationChoiceName,
   getLocationChoiceIcon,
 } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'libs/algolia'
+import { useGeolocation } from 'libs/geolocation'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -19,10 +22,24 @@ type Props = {
 
 export const LocationChoice: React.FC<Props> = ({ type }) => {
   const { searchState, dispatch } = useSearch()
+  const position = useGeolocation()
+  const { goBack } = useNavigation<UseNavigationType>()
+
   const isSelected = searchState.searchAround === type
   const iconColor2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
   const LocationChoiceIcon = getLocationChoiceIcon(type)
-  const onPress = () => dispatch({ type: 'LOCATION_TYPE', payload: type })
+  const onPress = () => {
+    if (type === LocationType.AROUND_ME && position === null) {
+      // TODO: implement modale to invit to active geoloc
+    } else {
+      dispatch({ type: 'LOCATION_TYPE', payload: type })
+      const location =
+        position === null ? null : { latitude: position.latitude, longitude: position.longitude }
+      const payload = type === LocationType.EVERYWHERE ? null : location
+      dispatch({ type: 'SET_LOCATION', payload: payload })
+    }
+    goBack()
+  }
   return (
     <Container onPress={onPress}>
       <FirstPart>
