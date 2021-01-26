@@ -48,7 +48,7 @@ const ProgressBarContainer = styled.View({
   overflow: 'hidden',
   flex: 1,
   borderWidth: 2,
-  borderColor: ColorsEnum.GREY_LIGHT,
+  borderColor: ColorsEnum.GREY_MEDIUM,
   borderRadius: 20,
   height: 20,
   left: -10,

@@ -35,8 +35,9 @@ const Container = styled.View({
 
 const IconContainer = styled.View({
   flex: 0.1,
+  minWidth: 48,
+  maxWidth: 48,
 })
 const TextContainer = styled.View({
   flex: 0.85,
-  marginLeft: getSpacing(4),
 })

@@ -55,7 +55,7 @@ exports[`CreditCeiling should render properly 1`] = `
       style={
         Array [
           Object {
-            "borderColor": "#f5f5f5",
+            "borderColor": "#c7c7cc",
             "borderRadius": 20,
             "borderWidth": 2,
             "flexBasis": 0,
