@@ -3,6 +3,8 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 import { AlgoliaParametersFields } from 'features/home/contentful'
 import { parseAlgoliaParameters } from 'libs/algolia'
 
+import { LocationType } from '../types'
+
 describe('src | components | parseAlgoliaParameters', () => {
   it('should return default parameters when no parameters are provided', () => {
     // given
@@ -24,7 +26,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -51,7 +53,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -78,7 +80,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
     })
   })
@@ -105,7 +107,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -132,7 +134,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -159,7 +161,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: true,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -186,7 +188,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: true, isEvent: false, isThing: false },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -213,7 +215,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: true, isThing: false },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -240,7 +242,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: true },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -269,7 +271,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: true, isEvent: true, isThing: true },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -296,7 +298,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [50, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -323,7 +325,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [0, 300],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -351,7 +353,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [50, 300],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -378,7 +380,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       offerIsNew: false,
       offerTypes: { isDigital: false, isEvent: false, isThing: false },
       priceRange: [0, 500],
-      searchAround: false,
+      searchAround: LocationType.EVERYWHERE,
       tags: [],
     })
   })
@@ -411,7 +413,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         offerIsNew: false,
         offerTypes: { isDigital: false, isEvent: false, isThing: false },
         priceRange: [0, 500],
-        searchAround: true,
+        searchAround: LocationType.AROUND_ME,
         tags: [],
       })
     })
@@ -439,7 +441,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         offerIsNew: false,
         offerTypes: { isDigital: false, isEvent: false, isThing: false },
         priceRange: [0, 500],
-        searchAround: true,
+        searchAround: LocationType.AROUND_ME,
         tags: [],
       })
     })
@@ -504,7 +506,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         offerIsNew: false,
         offerTypes: { isDigital: false, isEvent: false, isThing: false },
         priceRange: [0, 500],
-        searchAround: false,
+        searchAround: LocationType.EVERYWHERE,
         tags: [],
       })
     })
@@ -533,7 +535,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         offerIsNew: false,
         offerTypes: { isDigital: false, isEvent: false, isThing: false },
         priceRange: [0, 500],
-        searchAround: false,
+        searchAround: LocationType.EVERYWHERE,
         tags: [],
       })
     })
@@ -565,7 +567,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         offerIsNew: false,
         offerTypes: { isDigital: false, isEvent: false, isThing: false },
         priceRange: [0, 500],
-        searchAround: false,
+        searchAround: LocationType.EVERYWHERE,
         tags: [],
       })
     })
