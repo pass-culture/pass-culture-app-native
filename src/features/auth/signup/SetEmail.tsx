@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -61,6 +61,9 @@ export const SetEmail: FunctionComponent = () => {
     showFullPageModal()
   }
 
+  useEffect(() => {
+    // throw new Error('test crash')
+  }, [])
   return (
     <React.Fragment>
       <BottomContentPage>

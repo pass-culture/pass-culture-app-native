@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useState, createElement } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -17,6 +17,7 @@ const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 
 export function Navigation(): JSX.Element {
   const navigation = useNavigation<UseNavigationType>()
+  const [renderedError, setRenderedError] = useState(undefined)
   return (
     <ScrollView>
       <Spacer.TopScreen />
@@ -135,6 +136,17 @@ export function Navigation(): JSX.Element {
             title={'Mauvais deeplink unknown'}
             onPress={() => openExternalUrl(BadDeeplink)}
           />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={'Erreur inconnue'}
+            onPress={() => {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              setRenderedError(createElement(CenteredText, { children: CenteredText }))
+            }}
+          />
+          {renderedError}
         </Row>
         <Row>
           <CenteredText>{BadDeeplink}</CenteredText>
