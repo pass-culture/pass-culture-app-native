@@ -4,7 +4,6 @@ import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
-import { LocationSection } from 'features/search/components'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
 import { _ } from 'libs/i18n'
@@ -21,7 +20,7 @@ export const SearchFilter: React.FC = () => {
           <Spacer.Column numberOfSpaces={16} />
 
           {/* Localisation */}
-          <LocationSection />
+          <Section.LocationSection />
           <Separator marginVertical={getSpacing(6)} />
 
           {/* Rayon */}
