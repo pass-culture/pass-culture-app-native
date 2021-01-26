@@ -1,6 +1,5 @@
 export { CalendarPicker } from './CalendarPicker'
 export * from './InfiniteHits'
-export * from './LocationSection'
 export * from './SearchBox'
 export * from './SearchHeader'
 export * from './SearchLandingPage'
