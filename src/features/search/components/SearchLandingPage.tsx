@@ -37,7 +37,7 @@ export const SearchLandingPage: React.FC = () => {
 
         <Separator />
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigate('LocationFilter')}>
           <Typo.Body color={ColorsEnum.GREY_DARK}>{_(t`Où`)}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <BicolorIconLabel title={_(t`Autour de moi`)} Icon={AroundMe} />
