@@ -112,7 +112,6 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'SET_LOCATION':
       return {
         ...state,
-        searchAround: LocationType.AROUND_ME,
         geolocation: action.payload,
       }
     default:
