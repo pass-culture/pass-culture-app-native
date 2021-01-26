@@ -38,7 +38,6 @@ export const LocationSection: React.FC = () => {
   const { searchState } = useSearch()
 
   const onPress = () => navigate('LocationFilter')
-  // TODO: PC-6394 Count to change when we will connect Location to searchState
   return (
     <Section title={_(t`Localisation`)} count={1}>
       {renderLocationContent(searchState.searchAround, onPress)}

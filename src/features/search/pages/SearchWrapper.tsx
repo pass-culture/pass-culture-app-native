@@ -8,6 +8,7 @@ import {
   searchReducer,
   SearchState,
 } from 'features/search/pages/reducer'
+import { LocationType } from 'libs/algolia'
 import { buildSearchParameters } from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { env } from 'libs/environment'
 import { useGeolocation } from 'libs/geolocation'
@@ -36,6 +37,7 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
   useEffect(() => {
     if (position !== null) {
       const geoloc = { latitude: position.latitude, longitude: position.longitude }
+      dispatch({ type: 'LOCATION_TYPE', payload: LocationType.AROUND_ME })
       dispatch({ type: 'SET_LOCATION', payload: geoloc })
     }
   }, [!position])
