@@ -56,6 +56,7 @@ const SearchBoxComponent: React.FC<Props> = (props) => {
   const onPressArrowBack = () => {
     handleChangeText('')
     dispatch({ type: 'SHOW_RESULTS', payload: false })
+    dispatch({ type: 'INIT' })
   }
 
   return (
