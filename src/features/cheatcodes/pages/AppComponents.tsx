@@ -498,7 +498,7 @@ export const AppComponents: FunctionComponent = () => {
             onPress={() => setCurrentStep((step) => (step === NUMBER_OF_STEPS ? step : step + 1))}
           />
         </AlignedText>
-        <View>
+        <GreyView>
           <Spacer.Column numberOfSpaces={1} />
           <Text> Progress bars </Text>
           <Spacer.Column numberOfSpaces={3} />
@@ -512,17 +512,17 @@ export const AppComponents: FunctionComponent = () => {
             <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={Close} />
             <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Close} />
           </RowWrap>
-        </View>
+        </GreyView>
         <Spacer.Column numberOfSpaces={2} />
         <Text> Credit Ceiling (max=200) </Text>
-        <View>
+        <GreyView>
           <Spacer.Column numberOfSpaces={2} />
           <RowWrap>
             <CreditCeiling amount={0} max={200} type={'all'} depositVersion={1} />
             <CreditCeiling amount={155} max={200} type={'physical'} depositVersion={1} />
             <CreditCeiling amount={200} max={200} type={'digital'} depositVersion={2} />
           </RowWrap>
-        </View>
+        </GreyView>
         <View>
           <Text>Badge trop jeune </Text>
           <Spacer.Column numberOfSpaces={2} />
@@ -542,6 +542,9 @@ const AlignedText = styled(View)({
 })
 const Center = styled(View)({
   alignItems: 'center',
+})
+const GreyView = styled.View({
+  backgroundColor: ColorsEnum.GREY_LIGHT,
 })
 
 const ColoredModalHeader = styled(ModalHeader).attrs({
