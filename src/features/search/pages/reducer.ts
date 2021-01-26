@@ -38,9 +38,10 @@ export type Action =
   | { type: 'INIT_FROM_SEE_MORE'; payload: Partial<SearchState> }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
-  | { type: 'CATEGORIES'; payload: string }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
   | { type: 'SHOW_RESULTS'; payload: boolean }
+  | { type: 'SET_CATEGORY'; payload: SearchState['offerCategories'] }
+  | { type: 'TOGGLE_CATEGORY'; payload: string }
   | { type: 'TOGGLE_OFFER_FREE' }
   | { type: 'TOGGLE_OFFER_DUO' }
   | { type: 'TOGGLE_OFFER_NEW' }
@@ -67,11 +68,13 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return { ...state, priceRange: action.payload }
     case 'TIME_RANGE':
       return { ...state, timeRange: action.payload }
-    case 'CATEGORIES':
+    case 'TOGGLE_CATEGORY':
       return {
         ...state,
         offerCategories: addOrRemove(state.offerCategories, action.payload),
       }
+    case 'SET_CATEGORY':
+      return { ...state, offerCategories: action.payload }
     case 'OFFER_TYPE':
       return {
         ...state,

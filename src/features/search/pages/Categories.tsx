@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -8,10 +9,18 @@ import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { Validate } from 'ui/svg/icons/Validate'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
+
+const ALL = 'ALL'
 
 export const Categories: React.FC = () => {
-  const { searchState } = useSearch()
-  const [selectedCategory] = [...searchState.offerCategories, 'All']
+  const { searchState, dispatch } = useSearch()
+  const [selectedCategory] = [...searchState.offerCategories, ALL]
+
+  const selectCategory = (category: string) => {
+    const payload = category === ALL ? [] : [category]
+    dispatch({ type: 'SET_CATEGORY', payload })
+  }
 
   return (
     <React.Fragment>
@@ -26,7 +35,7 @@ export const Categories: React.FC = () => {
             const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
 
             return (
-              <LabelContainer key={category}>
+              <LabelContainer key={category} onPress={() => selectCategory(category)}>
                 <Spacer.Row numberOfSpaces={4} />
                 <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={color2} />
                 <Spacer.Row numberOfSpaces={2} />
@@ -48,7 +57,10 @@ export const Categories: React.FC = () => {
 }
 
 const Container = styled.ScrollView({ flex: 1 })
-const LabelContainer = styled.View({
+
+const LabelContainer = styled.TouchableOpacity.attrs({
+  activeOpacity: ACTIVE_OPACITY,
+})({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: getSpacing(4),

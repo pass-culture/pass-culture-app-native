@@ -17,7 +17,7 @@ export const Category: React.FC = () => {
   const { offerCategories } = searchState
 
   const onPress = (label: string) => () => {
-    dispatch({ type: 'CATEGORIES', payload: label })
+    dispatch({ type: 'TOGGLE_CATEGORY', payload: label })
   }
 
   return (

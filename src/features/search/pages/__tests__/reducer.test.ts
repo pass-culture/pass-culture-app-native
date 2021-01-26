@@ -72,17 +72,17 @@ describe('Search reducer', () => {
     })
   })
 
-  it('should handle CATEGORIES', () => {
+  it('should handle TOGGLE_CATEGORY', () => {
     // 1. Add JEUX_VIDEO
-    let newState = searchReducer(state, { type: 'CATEGORIES', payload: 'JEUX_VIDEO' })
+    let newState = searchReducer(state, { type: 'TOGGLE_CATEGORY', payload: 'JEUX_VIDEO' })
     expect(newState).toStrictEqual({ ...state, offerCategories: ['JEUX_VIDEO'] })
 
     // 2. Add CINEMA
-    newState = searchReducer(newState, { type: 'CATEGORIES', payload: 'CINEMA' })
+    newState = searchReducer(newState, { type: 'TOGGLE_CATEGORY', payload: 'CINEMA' })
     expect(newState).toStrictEqual({ ...state, offerCategories: ['JEUX_VIDEO', 'CINEMA'] })
 
     // 3. Remove JEUX_VIDEO
-    newState = searchReducer(newState, { type: 'CATEGORIES', payload: 'JEUX_VIDEO' })
+    newState = searchReducer(newState, { type: 'TOGGLE_CATEGORY', payload: 'JEUX_VIDEO' })
     expect(newState).toStrictEqual({ ...state, offerCategories: ['CINEMA'] })
   })
 
