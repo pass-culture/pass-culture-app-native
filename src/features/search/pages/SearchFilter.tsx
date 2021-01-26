@@ -20,7 +20,7 @@ export const SearchFilter: React.FC = () => {
           <Spacer.Column numberOfSpaces={16} />
 
           {/* Localisation */}
-          <Section.LocationSection />
+          <Section.Location />
           <Separator marginVertical={getSpacing(6)} />
 
           {/* Rayon */}

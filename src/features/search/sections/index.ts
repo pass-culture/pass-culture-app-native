@@ -3,7 +3,7 @@ import { Date } from './Date'
 import { DuoOffer } from './DuoOffer'
 import { FreeOffer } from './FreeOffer'
 import { Hour } from './Hour'
-import { LocationSection } from './LocationSection'
+import { Location } from './Location'
 import { NewOffer } from './NewOffer'
 import { OfferDate } from './OfferDate'
 import { OfferType } from './OfferType'
@@ -23,5 +23,5 @@ export default {
   Price,
   TimeSlot,
   Radius,
-  LocationSection,
+  Location,
 }

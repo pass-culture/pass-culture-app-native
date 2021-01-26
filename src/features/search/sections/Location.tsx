@@ -33,7 +33,7 @@ const renderLocationContent = (locationChoice: LocationType, onPress: () => void
   )
 }
 
-export const LocationSection: React.FC = () => {
+export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useSearch()
 
