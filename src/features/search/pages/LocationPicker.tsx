@@ -1,14 +1,20 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
-import { TouchableOpacity } from 'react-native'
+import debounce from 'lodash.debounce'
+import React, { useEffect, useRef, useState } from 'react'
+import { FlatList, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { REGEX_STARTING_WITH_NUMBERS } from 'libs/adresse/buildPlaceLabel'
+import { fetchPlaces } from 'libs/adresse/fetchPlaces'
+import { SuggestedPlace } from 'libs/adresse/types'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
+
+const SEARCH_DEBOUNCE_MS = 500
 
 const RightIcon: React.FC<{ value: string; onPress: () => void }> = (props) =>
   props.value.length > 0 ? (
@@ -17,11 +23,39 @@ const RightIcon: React.FC<{ value: string; onPress: () => void }> = (props) =>
     </TouchableOpacity>
   ) : null
 
+const keyExtractor = (place: SuggestedPlace) =>
+  `${place.geolocation.latitude}-${place.geolocation.longitude}`
+
+const renderItem = ({ item: place }: { item: SuggestedPlace }) => (
+  <ItemContainer>
+    <Typo.ButtonText>{place.name.short}</Typo.ButtonText>
+    <Spacer.Row numberOfSpaces={1} />
+    <Typo.Body>
+      {REGEX_STARTING_WITH_NUMBERS.test(place.name.short)
+        ? place.extraData.city
+        : place.extraData.department}
+    </Typo.Body>
+  </ItemContainer>
+)
+
 export const LocationPicker: React.FC = () => {
+  const [places, setPlaces] = useState<SuggestedPlace[]>([])
   const [value, setValue] = useState<string>('')
+  const [debouncedValue, setDebouncedValue] = useState<string>(value)
+  const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
+
+  useEffect(() => {
+    if (debouncedValue.length > 0) fetchPlaces({ query: debouncedValue }).then(setPlaces)
+  }, [debouncedValue])
 
   const resetSearch = () => {
     setValue('')
+    setDebouncedValue('')
+  }
+
+  const onChangeText = (newValue: string) => {
+    setValue(newValue)
+    debouncedSetValue(newValue)
   }
 
   return (
@@ -32,16 +66,37 @@ export const LocationPicker: React.FC = () => {
         <Spacer.Column numberOfSpaces={4} />
         <SearchInput
           value={value}
-          onChangeText={setValue}
+          onChangeText={onChangeText}
           placeholder={_(t`Choisir un lieu...`)}
           autoFocus={true}
           inputHeight="tall"
           RightIcon={() => <RightIcon value={value} onPress={resetSearch} />}
         />
       </StyledInput>
+      <Spacer.Column numberOfSpaces={4} />
+      <FlatList
+        data={places}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        ListEmptyComponent={React.Fragment}
+        ItemSeparatorComponent={Separator}
+      />
       <PageHeader title={_(t`Choisir un lieu`)} />
     </React.Fragment>
   )
 }
 
 const StyledInput = styled.View({ width: '100%', marginHorizontal: getSpacing(6) })
+const ItemContainer = styled.TouchableOpacity.attrs({
+  activeOpacity: ACTIVE_OPACITY,
+})({
+  flexDirection: 'row',
+  marginHorizontal: getSpacing(6),
+  paddingVertical: getSpacing(4),
+  alignItems: 'center',
+})
+const Separator = styled.View({
+  height: 2,
+  backgroundColor: ColorsEnum.GREY_LIGHT,
+  marginHorizontal: getSpacing(6),
+})
