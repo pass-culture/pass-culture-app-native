@@ -54,7 +54,7 @@ export const LocationChoice: React.FC<Props> = ({ type }) => {
       </FirstPart>
       {isSelected && (
         <IconContainer>
-          <Validate color={ColorsEnum.PRIMARY} />
+          <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />
         </IconContainer>
       )}
     </Container>

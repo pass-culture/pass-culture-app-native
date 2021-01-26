@@ -78,7 +78,9 @@ const buildGeolocationParameter = ({
       return {
         aroundLatLng: `${latitude}, ${longitude}`,
         aroundRadius:
-          searchAround && radiusIsPositive ? aroundRadiusInMeters : RADIUS_FILTERS.UNLIMITED_RADIUS,
+          searchAround !== LocationType.EVERYWHERE && radiusIsPositive
+            ? aroundRadiusInMeters
+            : RADIUS_FILTERS.UNLIMITED_RADIUS,
       }
     }
   }
@@ -86,7 +88,8 @@ const buildGeolocationParameter = ({
 }
 
 const computeRadiusInMeters = (aroundRadius: number | null, searchAround: LocationType): number => {
-  if (searchAround && aroundRadius === 0) return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
+  if (searchAround !== LocationType.EVERYWHERE && aroundRadius === 0)
+    return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
   if (aroundRadius === null) return -1
   return aroundRadius * 1000
 }

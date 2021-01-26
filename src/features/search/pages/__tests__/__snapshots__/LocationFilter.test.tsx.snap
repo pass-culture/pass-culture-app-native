@@ -139,6 +139,7 @@ Array [
         "opacity": 1,
       }
     }
+    testID="locationChoice"
   >
     <View
       style={
@@ -213,6 +214,7 @@ Array [
         "opacity": 1,
       }
     }
+    testID="locationChoice"
   >
     <View
       style={
@@ -241,11 +243,11 @@ Array [
         }
       />
       <Text
-        color="#151515"
+        color="#eb0055"
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#eb0055",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -255,6 +257,23 @@ Array [
       >
         Partout
       </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "paddingRight": 40,
+          },
+        ]
+      }
+    >
+      <View
+        height={32}
+        testID="validateIcon"
+        width={32}
+      >
+        validateIcon-SVG-Mock
+      </View>
     </View>
   </View>,
   <View
