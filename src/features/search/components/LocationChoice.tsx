@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -11,16 +11,20 @@ import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
+import { useSearch } from '../pages/SearchWrapper'
+
 type Props = {
   type: LocationType
 }
 
 export const LocationChoice: React.FC<Props> = ({ type }) => {
-  const [isSelected, setIsSelected] = useState<boolean>(false)
+  const { searchState, dispatch } = useSearch()
+  const isSelected = searchState.searchAround === type
   const iconColor2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
   const LocationChoiceIcon = getLocationChoiceIcon(type)
+  const onPress = () => dispatch({ type: 'LOCATION_TYPE', payload: type })
   return (
-    <Container onPress={() => setIsSelected(!isSelected)}>
+    <Container onPress={onPress}>
       <FirstPart>
         <LocationChoiceIcon size={48} color2={iconColor2} />
         <Spacer.Row numberOfSpaces={2} />

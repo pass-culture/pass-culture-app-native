@@ -109,7 +109,7 @@ Array [
               ]
             }
           >
-            Autour de moi
+            Partout
           </Text>
           <View
             height={24}
@@ -118,31 +118,6 @@ Array [
             undefined-SVG-Mock
           </View>
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "height": 8,
-              },
-            ]
-          }
-        />
-        <Text
-          color="#626262"
-          style={
-            Array [
-              Object {
-                "color": "#626262",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
-          }
-        >
-          Seules les offres Sorties et Physiques seront affichées
-        </Text>
       </View>
       <View
         marginVertical={24}

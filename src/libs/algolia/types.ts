@@ -4,7 +4,7 @@ import { Range } from '../typesUtils/typeHelpers'
 
 import { DATE_FILTER_OPTIONS } from './enums/filtersEnums'
 
-type AlgoliaGeolocation = Pick<GeoCoordinates, 'longitude' | 'latitude'>
+export type AlgoliaGeolocation = Pick<GeoCoordinates, 'longitude' | 'latitude'>
 
 interface AlgoliaDate {
   option: DATE_FILTER_OPTIONS
@@ -40,7 +40,7 @@ export interface ParsedAlgoliaParameters {
   beginningDatetime: Date | null
   endingDatetime: Date | null
   priceRange: Range<number> | null
-  searchAround: LocationType | null
+  searchAround: LocationType
   geolocation: AlgoliaGeolocation | null
 }
 

@@ -12,6 +12,8 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
+import { useSearch } from '../pages/SearchWrapper'
+
 const renderLocationContent = (locationChoice: LocationType, onPress: () => void) => {
   return (
     <React.Fragment>
@@ -33,11 +35,13 @@ const renderLocationContent = (locationChoice: LocationType, onPress: () => void
 
 export const LocationSection: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { searchState } = useSearch()
+
   const onPress = () => navigate('LocationFilter')
   // TODO: PC-6394 Count to change when we will connect Location to searchState
   return (
     <Section title={_(t`Localisation`)} count={1}>
-      {renderLocationContent(LocationType.AROUND_ME, onPress)}
+      {renderLocationContent(searchState.searchAround, onPress)}
     </Section>
   )
 }

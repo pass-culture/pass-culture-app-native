@@ -10,6 +10,7 @@ import {
 } from 'features/search/pages/reducer'
 import { buildSearchParameters } from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { env } from 'libs/environment'
+import { useGeolocation } from 'libs/geolocation'
 
 const SEARCH_DEBOUNCE_MS = 400
 
@@ -22,6 +23,7 @@ export const SearchContext = React.createContext<ISearchContext | null>(null)
 const searchClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
 export const SearchWrapper = ({ children }: { children: Element }) => {
+  const position = useGeolocation()
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
   const [debouncedSearchState, setDebouncedSearchState] = useState<SearchState>(searchState)
   const { showResults, ...parameters } = debouncedSearchState
@@ -30,6 +32,13 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
     const handler = setTimeout(() => setDebouncedSearchState(searchState), SEARCH_DEBOUNCE_MS)
     return () => clearTimeout(handler)
   }, [searchState])
+
+  useEffect(() => {
+    if (position !== null) {
+      const geoloc = { latitude: position.latitude, longitude: position.longitude }
+      dispatch({ type: 'SET_LOCATION', payload: geoloc })
+    }
+  }, [!position])
 
   return (
     <SearchContext.Provider value={{ searchState, dispatch }}>

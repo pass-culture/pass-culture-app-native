@@ -1,4 +1,4 @@
-import { FetchAlgoliaParameters } from 'libs/algolia'
+import { FetchAlgoliaParameters, LocationType, AlgoliaGeolocation } from 'libs/algolia'
 import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 
 import { clampPrice, addOrRemove } from './reducer.helpers'
@@ -24,7 +24,7 @@ export const initialSearchState: SearchState = {
   beginningDatetime: null,
   endingDatetime: null,
   priceRange: null,
-  searchAround: null,
+  searchAround: LocationType.EVERYWHERE,
   geolocation: null,
   date: null,
   timeRange: null,
@@ -48,6 +48,8 @@ export type Action =
   | { type: 'TOGGLE_HOUR' }
   | { type: 'SELECT_DATE_FILTER_OPTION'; payload: DATE_FILTER_OPTIONS }
   | { type: 'SELECT_DATE'; payload: Date }
+  | { type: 'LOCATION_TYPE'; payload: LocationType }
+  | { type: 'SET_LOCATION'; payload: AlgoliaGeolocation | null }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -102,6 +104,17 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'SELECT_DATE':
       if (!state.date) return state
       return { ...state, date: { ...state.date, selectedDate: action.payload } }
+    case 'LOCATION_TYPE':
+      return {
+        ...state,
+        searchAround: action.payload,
+      }
+    case 'SET_LOCATION':
+      return {
+        ...state,
+        searchAround: LocationType.AROUND_ME,
+        geolocation: action.payload,
+      }
     default:
       return state
   }
