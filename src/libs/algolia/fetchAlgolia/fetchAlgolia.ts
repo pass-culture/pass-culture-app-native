@@ -5,7 +5,7 @@ import { SearchParameters } from 'features/search/pages/reducer'
 import { RADIUS_FILTERS } from 'libs/algolia/enums'
 import { buildFacetFilters } from 'libs/algolia/fetchAlgolia/fetchAlgolia.facetFilters'
 import { buildNumericFilters } from 'libs/algolia/fetchAlgolia/fetchAlgolia.numericFilters'
-import { FetchAlgoliaParameters } from 'libs/algolia/types'
+import { FetchAlgoliaParameters, LocationType } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 
 const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
@@ -26,7 +26,7 @@ export const buildSearchParameters = ({
     isThing: false,
   },
   priceRange = null,
-  searchAround = false,
+  searchAround = LocationType.EVERYWHERE,
   timeRange = null,
   tags = [],
 }: SearchParameters) => ({
@@ -85,7 +85,7 @@ const buildGeolocationParameter = ({
   return undefined
 }
 
-const computeRadiusInMeters = (aroundRadius: number | null, searchAround: boolean): number => {
+const computeRadiusInMeters = (aroundRadius: number | null, searchAround: LocationType): number => {
   if (searchAround && aroundRadius === 0) return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
   if (aroundRadius === null) return -1
   return aroundRadius * 1000

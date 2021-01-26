@@ -3,7 +3,7 @@ import algoliasearch from 'algoliasearch'
 import { Range } from '../../typesUtils/typeHelpers'
 import { DATE_FILTER_OPTIONS } from '../enums/filtersEnums'
 import { fetchAlgolia } from '../fetchAlgolia'
-import { FetchAlgoliaParameters } from '../types'
+import { FetchAlgoliaParameters, LocationType } from '../types'
 
 const mockGetFromDate = jest.fn()
 const mockGetLastOfDate = jest.fn()
@@ -148,7 +148,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         geolocation: geolocation,
         keywords: keywords,
-        searchAround: false,
+        searchAround: LocationType.EVERYWHERE,
       } as FetchAlgoliaParameters)
 
       // then
@@ -172,7 +172,7 @@ describe('fetchAlgolia', () => {
         aroundRadius: 15,
         geolocation: geolocation,
         keywords: keywords,
-        searchAround: true,
+        searchAround: LocationType.AROUND_ME,
       } as FetchAlgoliaParameters)
 
       // then
@@ -196,7 +196,7 @@ describe('fetchAlgolia', () => {
         aroundRadius: 0,
         geolocation: geolocation,
         keywords: keywords,
-        searchAround: true,
+        searchAround: LocationType.AROUND_ME,
       } as FetchAlgoliaParameters)
 
       // then
@@ -220,7 +220,7 @@ describe('fetchAlgolia', () => {
         aroundRadius: -1,
         geolocation: geolocation,
         keywords: keywords,
-        searchAround: true,
+        searchAround: LocationType.AROUND_ME,
       } as FetchAlgoliaParameters)
 
       // then

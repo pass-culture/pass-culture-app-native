@@ -3,7 +3,7 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 import { AlgoliaParametersFields } from 'features/home/contentful'
 
 import { CATEGORY_CRITERIA } from './enums/criteriaEnums'
-import { ParsedAlgoliaParameters } from './types'
+import { LocationType, ParsedAlgoliaParameters } from './types'
 
 export const parseAlgoliaParameters = ({
   geolocation,
@@ -48,7 +48,7 @@ export const parseAlgoliaParameters = ({
       isThing: parameters.isThing || false,
     },
     priceRange: _buildPriceRange({ priceMin, priceMax }),
-    searchAround: parameters.isGeolocated || false,
+    searchAround: isGeolocated ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
     tags: parameters.tags || [],
   }
 }
