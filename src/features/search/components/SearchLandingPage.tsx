@@ -4,9 +4,11 @@ import React from 'react'
 import { Dimensions, ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CategoryNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
@@ -18,7 +20,9 @@ const { width } = Dimensions.get('window')
 
 export const SearchLandingPage: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const CategoryIcon = CATEGORY_CRITERIA['ALL'].icon
+  const { searchState } = useSearch()
+  const [selectedCategory] = searchState.offerCategories
+  const { icon: Icon, label } = CATEGORY_CRITERIA[(selectedCategory as CategoryNameEnum) || 'ALL']
 
   return (
     <React.Fragment>
@@ -28,7 +32,7 @@ export const SearchLandingPage: React.FC = () => {
         <TouchableOpacity onPress={() => navigate('SearchCategories')}>
           <Typo.Body color={ColorsEnum.GREY_DARK}>{_(t`Je cherche`)}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
-          <BicolorIconLabel title={_(t`Toutes les catégories`)} Icon={CategoryIcon} />
+          <BicolorIconLabel title={label} Icon={Icon} />
         </TouchableOpacity>
 
         <Separator />
