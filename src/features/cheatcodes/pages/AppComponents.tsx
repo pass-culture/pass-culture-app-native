@@ -40,6 +40,7 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
+import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
@@ -372,6 +373,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Everywhere size={24} />
           <Text> - Everywhere </Text>
+        </AlignedText>
+        <AlignedText>
+          <BicolorLocationPointer size={24} />
+          <Text> - BicolorLocationPointer </Text>
         </AlignedText>
       </AccordionItem>
 
