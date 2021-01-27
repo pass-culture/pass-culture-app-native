@@ -3,7 +3,7 @@
 export interface Properties {
   label: string
   score: number
-  housenumber: string
+  housenumber?: string
   id: string
   type: 'locality' | 'municipality' | 'housenumber' | 'street'
   name: string
@@ -11,10 +11,11 @@ export interface Properties {
   citycode: string
   x: number
   y: number
+  population?: number
   city: string
   context: string
   importance: number
-  street: string
+  street?: string
 }
 
 export interface SuggestedPlace {

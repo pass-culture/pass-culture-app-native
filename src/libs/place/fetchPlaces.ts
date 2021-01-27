@@ -10,29 +10,30 @@ interface Props {
   limit?: number
 }
 
+export const buildSuggestedPlaces = (
+  suggestedPlaces: FeatureCollection<Point, Properties>
+): SuggestedPlace[] =>
+  suggestedPlaces.features.map(({ geometry, properties }) => {
+    const { city, context, name, type } = properties
+    const detailedPlace = type === 'street' || type === 'housenumber'
+    const [, department] = context.replace(/\s+/g, '').split(',') // department number, department name, region
+    const [longitude, latitude] = geometry.coordinates
+
+    return {
+      name: {
+        long: detailedPlace ? `${name}, ${city}` : city,
+        short: detailedPlace ? name : city,
+      },
+      extraData: {
+        city,
+        department: department || '',
+      },
+      geolocation: { longitude, latitude },
+    }
+  })
+
 export const fetchPlaces = ({ query, limit = 20 }: Props) =>
   fetch(`${API_ADRESSE_URL}/?limit=${limit}&q=${query}`)
     .then((response) => response.json())
-    .then((suggestedPlaces: FeatureCollection<Point, Properties>): SuggestedPlace[] => {
-      return suggestedPlaces.features.map(({ geometry, properties }) => {
-        const { city, context, name, type } = properties
-        const detailedPlace = type === 'street' || type === 'housenumber'
-        const [, department] = context.replace(/\s+/g, '').split(',') // department number, department name, region
-        const [longitude, latitude] = geometry.coordinates
-
-        return {
-          name: {
-            long: detailedPlace ? `${name}, ${city}` : city,
-            short: detailedPlace ? name : city,
-          },
-          extraData: {
-            city,
-            department: department || '',
-          },
-          geolocation: { longitude, latitude },
-        }
-      })
-    })
-    .catch(() => {
-      return []
-    })
+    .then(buildSuggestedPlaces)
+    .catch(() => [])
