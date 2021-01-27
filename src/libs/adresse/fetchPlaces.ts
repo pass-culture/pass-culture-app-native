@@ -17,7 +17,7 @@ export const fetchPlaces = ({ query, limit = 20 }: Props) =>
       return suggestedPlaces.features.map(({ geometry, properties }) => {
         const { city, context, name, type } = properties
         const detailedPlace = type === 'street' || type === 'housenumber'
-        const [, department] = context.replace(/\s+/g, '').split(',') //  n° de département, nom de département et de région
+        const [, department] = context.replace(/\s+/g, '').split(',') // department number, department name, region
         const [longitude, latitude] = geometry.coordinates
 
         return {

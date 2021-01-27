@@ -52,7 +52,7 @@ describe('LocationFilter component', () => {
     expect(mockDispatch).not.toHaveBeenCalled()
   })
 
-  it('should not dispatch actions on click (position=YES, type=EVERYWHERE)', () => {
+  it('should dispatch actions on click (position=YES, type=EVERYWHERE)', () => {
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-everywhere'))
     expect(mockDispatch).toHaveBeenCalledWith({
@@ -65,7 +65,7 @@ describe('LocationFilter component', () => {
     })
   })
 
-  it('should not dispatch actions on click (position=NO, type=EVERYWHERE)', () => {
+  it('should dispatch actions on click (position=NO, type=EVERYWHERE)', () => {
     useGeolocationMock.mockImplementationOnce(() => null)
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-everywhere'))
