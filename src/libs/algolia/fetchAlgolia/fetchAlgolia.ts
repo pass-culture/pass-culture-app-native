@@ -26,7 +26,7 @@ export const buildSearchParameters = ({
     isThing: false,
   },
   priceRange = null,
-  searchAround = LocationType.EVERYWHERE,
+  locationType = LocationType.EVERYWHERE,
   timeRange = null,
   tags = [],
 }: SearchParameters) => ({
@@ -40,7 +40,7 @@ export const buildSearchParameters = ({
     priceRange,
     timeRange,
   }),
-  ...buildGeolocationParameter({ aroundRadius, geolocation, searchAround }),
+  ...buildGeolocationParameter({ aroundRadius, geolocation, locationType }),
 })
 
 export const fetchAlgolia = <T>({
@@ -62,8 +62,8 @@ const buildHitsPerPage = (hitsPerPage: FetchAlgoliaParameters['hitsPerPage']) =>
 const buildGeolocationParameter = ({
   aroundRadius,
   geolocation,
-  searchAround,
-}: Pick<FetchAlgoliaParameters, 'aroundRadius' | 'geolocation' | 'searchAround'>):
+  locationType,
+}: Pick<FetchAlgoliaParameters, 'aroundRadius' | 'geolocation' | 'locationType'>):
   | {
       aroundLatLng: string
       aroundRadius: 'all' | number
@@ -72,13 +72,13 @@ const buildGeolocationParameter = ({
   if (geolocation) {
     const { longitude, latitude } = geolocation
     if (latitude && longitude) {
-      const aroundRadiusInMeters = computeRadiusInMeters(aroundRadius, searchAround)
+      const aroundRadiusInMeters = computeRadiusInMeters(aroundRadius, locationType)
       const radiusIsPositive = aroundRadiusInMeters > 0
 
       return {
         aroundLatLng: `${latitude}, ${longitude}`,
         aroundRadius:
-          searchAround !== LocationType.EVERYWHERE && radiusIsPositive
+          locationType !== LocationType.EVERYWHERE && radiusIsPositive
             ? aroundRadiusInMeters
             : RADIUS_FILTERS.UNLIMITED_RADIUS,
       }
@@ -87,8 +87,8 @@ const buildGeolocationParameter = ({
   return undefined
 }
 
-const computeRadiusInMeters = (aroundRadius: number | null, searchAround: LocationType): number => {
-  if (searchAround !== LocationType.EVERYWHERE && aroundRadius === 0)
+const computeRadiusInMeters = (aroundRadius: number | null, locationType: LocationType): number => {
+  if (locationType !== LocationType.EVERYWHERE && aroundRadius === 0)
     return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
   if (aroundRadius === null) return -1
   return aroundRadius * 1000

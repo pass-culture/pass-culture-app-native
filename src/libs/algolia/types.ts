@@ -42,7 +42,7 @@ export interface ParsedAlgoliaParameters {
   beginningDatetime: Date | null
   endingDatetime: Date | null
   priceRange: Range<number> | null
-  searchAround: LocationType
+  locationType: LocationType
   geolocation: AlgoliaGeolocation | null
   place?: SuggestedPlace | null
 }

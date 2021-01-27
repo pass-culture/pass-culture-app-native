@@ -14,7 +14,7 @@ export const useLocationChoice = (
   locationType: LocationType
 ): { Icon: React.FC<BicolorIconInterface>; label: string; isSelected: boolean } => {
   const { searchState } = useSearch()
-  const isSelected = locationType === searchState.searchAround
+  const isSelected = locationType === searchState.locationType
 
   if (locationType === LocationType.EVERYWHERE)
     return { Icon: Everywhere, label: _(t`Partout`), isSelected }

@@ -48,7 +48,7 @@ export const parseAlgoliaParameters = ({
       isThing: parameters.isThing || false,
     },
     priceRange: _buildPriceRange({ priceMin, priceMax }),
-    searchAround: isGeolocated ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
+    locationType: isGeolocated ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
     tags: parameters.tags || [],
   }
 }
