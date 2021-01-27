@@ -32,8 +32,9 @@ export const InlineSection: React.FC<{
   title: Element | string
   subtitle?: string
   children: Element
-}> = ({ title, subtitle, children }) => (
-  <MarginHorizontalContainer>
+  testID?: string
+}> = ({ title, subtitle, children, testID }) => (
+  <MarginHorizontalContainer testID={testID}>
     <InlineSectionTitleContainer>
       <StyledTitle numberOfLines={2}>{title}</StyledTitle>
       <Spacer.Row numberOfSpaces={7} />

@@ -3,6 +3,8 @@ import { render } from '@testing-library/react-native'
 import React from 'react'
 import { View } from 'react-native'
 
+import { useUserProfileInfo } from 'features/home/api'
+
 import { initialSearchState } from '../reducer'
 import { SearchFilter } from '../SearchFilter'
 
@@ -16,9 +18,21 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
     dispatch: jest.fn(),
   }),
 }))
+
+const useUserProfileInfoMock = useUserProfileInfo as jest.Mock
+
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
+}))
+
 describe('SearchFilter component', () => {
   it('should render correctly', () => {
     const { toJSON } = render(<SearchFilter />)
     expect(toJSON()).toMatchSnapshot()
+  })
+  it('should not render Duo filter if user not beneficiary', () => {
+    useUserProfileInfoMock.mockImplementationOnce(() => ({ data: { isBeneficiary: false } }))
+    const { queryByTestId } = render(<SearchFilter />)
+    expect(queryByTestId('duoFilter')).toBeNull()
   })
 })

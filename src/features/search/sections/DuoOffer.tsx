@@ -14,6 +14,7 @@ export const DuoOffer: React.FC = () => {
 
   return (
     <SectionWithSwitch
+      testID="duoFilter"
       title={_(t`Uniquement les offres duo`)}
       active={searchState.offerIsDuo}
       toggle={toggle}

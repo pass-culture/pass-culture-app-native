@@ -2022,6 +2022,7 @@ Array [
             },
           ]
         }
+        testID="duoFilter"
       >
         <View
           style={
