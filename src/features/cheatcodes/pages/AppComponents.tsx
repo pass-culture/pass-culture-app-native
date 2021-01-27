@@ -65,6 +65,7 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Logo } from 'ui/svg/icons/Logo'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
@@ -379,6 +380,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <BicolorLocationPointer size={24} />
           <Text> - BicolorLocationPointer </Text>
+        </AlignedText>
+        <AlignedText>
+          <NoOffer size={24} />
+          <Text> - NoOffer </Text>
         </AlignedText>
       </AccordionItem>
 
