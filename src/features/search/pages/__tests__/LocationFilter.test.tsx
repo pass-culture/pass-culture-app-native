@@ -2,7 +2,6 @@ import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
-import { LocationType } from 'libs/algolia'
 import { useGeolocation } from 'libs/geolocation'
 
 import { LocationFilter } from '../LocationFilter'
@@ -36,11 +35,7 @@ describe('LocationFilter component', () => {
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'LOCATION_TYPE',
-      payload: LocationType.AROUND_ME,
-    })
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_POSITION',
+      type: 'LOCATION_AROUND_ME',
       payload: { latitude: 2, longitude: 40 },
     })
   })
@@ -55,27 +50,13 @@ describe('LocationFilter component', () => {
   it('should dispatch actions on click (position=YES, type=EVERYWHERE)', () => {
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-everywhere'))
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'LOCATION_TYPE',
-      payload: LocationType.EVERYWHERE,
-    })
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_POSITION',
-      payload: null,
-    })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'LOCATION_EVERYWHERE' })
   })
 
   it('should dispatch actions on click (position=NO, type=EVERYWHERE)', () => {
     useGeolocationMock.mockImplementationOnce(() => null)
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-everywhere'))
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'LOCATION_TYPE',
-      payload: LocationType.EVERYWHERE,
-    })
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_POSITION',
-      payload: null,
-    })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'LOCATION_EVERYWHERE' })
   })
 })

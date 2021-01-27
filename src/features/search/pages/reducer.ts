@@ -51,9 +51,9 @@ export type Action =
   | { type: 'TOGGLE_HOUR' }
   | { type: 'SELECT_DATE_FILTER_OPTION'; payload: DATE_FILTER_OPTIONS }
   | { type: 'SELECT_DATE'; payload: Date }
-  | { type: 'LOCATION_TYPE'; payload: LocationType }
-  | { type: 'SET_POSITION'; payload: AlgoliaGeolocation | null }
-  | { type: 'SET_PLACE'; payload: SuggestedPlace | null }
+  | { type: 'LOCATION_AROUND_ME'; payload: AlgoliaGeolocation }
+  | { type: 'LOCATION_EVERYWHERE' }
+  | { type: 'LOCATION_PLACE'; payload: SuggestedPlace }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -110,12 +110,27 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
     case 'SELECT_DATE':
       if (!state.date) return state
       return { ...state, date: { ...state.date, selectedDate: action.payload } }
-    case 'LOCATION_TYPE':
-      return { ...state, locationType: action.payload }
-    case 'SET_POSITION':
-      return { ...state, geolocation: action.payload }
-    case 'SET_PLACE':
-      return { ...state, place: action.payload }
+    case 'LOCATION_AROUND_ME':
+      return {
+        ...state,
+        locationType: LocationType.AROUND_ME,
+        geolocation: action.payload,
+        place: null,
+      }
+    case 'LOCATION_EVERYWHERE':
+      return {
+        ...state,
+        locationType: LocationType.EVERYWHERE,
+        geolocation: null,
+        place: null,
+      }
+    case 'LOCATION_PLACE':
+      return {
+        ...state,
+        locationType: LocationType.PLACE,
+        geolocation: action.payload.geolocation,
+        place: action.payload,
+      }
     default:
       return state
   }
