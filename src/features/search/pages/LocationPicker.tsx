@@ -23,13 +23,13 @@ const RightIcon: React.FC<{ value: string; onPress: () => void }> = (props) =>
     </TouchableOpacity>
   ) : null
 
-const keyExtractor = ({ geolocation, name }: SuggestedPlace) => {
+export const keyExtractor = ({ geolocation, name }: SuggestedPlace) => {
   if (geolocation) return `${geolocation.latitude}-${geolocation.longitude}`
   return `${name.short}-${name.long}`
 }
 
 const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => (
-  <ItemContainer onPress={onPress}>
+  <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
     <Typo.ButtonText>{place.name.short}</Typo.ButtonText>
     <Spacer.Row numberOfSpaces={1} />
     <Typo.Body>
@@ -43,8 +43,6 @@ const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ pl
 export const LocationPicker: React.FC = () => {
   const [places, setPlaces] = useState<SuggestedPlace[]>([])
   const [value, setValue] = useState<string>('')
-  const { dispatch } = useSearch()
-  const { goBack } = useNavigation()
   const [debouncedValue, setDebouncedValue] = useState<string>(value)
   const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
 
@@ -60,13 +58,6 @@ export const LocationPicker: React.FC = () => {
   const onChangeText = (newValue: string) => {
     setValue(newValue)
     debouncedSetValue(newValue)
-  }
-
-  const onPickPlace = (place: SuggestedPlace) => () => {
-    if (place.geolocation) {
-      dispatch({ type: 'LOCATION_PLACE', payload: place })
-    }
-    goBack()
   }
 
   return (
@@ -85,15 +76,31 @@ export const LocationPicker: React.FC = () => {
         />
       </StyledInput>
       <Spacer.Column numberOfSpaces={4} />
-      <FlatList
-        data={places}
-        keyExtractor={keyExtractor}
-        renderItem={({ item: place }) => <PlaceHit place={place} onPress={onPickPlace(place)} />}
-        ListEmptyComponent={React.Fragment}
-        ItemSeparatorComponent={Separator}
-      />
+      <SuggestedPlaces places={places} />
       <PageHeader title={_(t`Choisir un lieu`)} />
     </React.Fragment>
+  )
+}
+
+export const SuggestedPlaces: React.FC<{ places: SuggestedPlace[] }> = ({ places }) => {
+  const { goBack } = useNavigation()
+  const { dispatch } = useSearch()
+
+  const onPickPlace = (place: SuggestedPlace) => () => {
+    if (place.geolocation) {
+      dispatch({ type: 'LOCATION_PLACE', payload: place })
+    }
+    goBack()
+  }
+
+  return (
+    <FlatList
+      data={places}
+      keyExtractor={keyExtractor}
+      renderItem={({ item: place }) => <PlaceHit place={place} onPress={onPickPlace(place)} />}
+      ListEmptyComponent={React.Fragment}
+      ItemSeparatorComponent={Separator}
+    />
   )
 }
 
