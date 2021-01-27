@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { LocationType } from 'libs/algolia'
 
@@ -29,5 +30,10 @@ describe('Location section', () => {
   it('should have count in title when searching Place', () => {
     mockSearchState = { ...mockSearchState, locationType: LocationType.PLACE }
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
+  })
+
+  it('should navigate to the offer when clicking on the hit', () => {
+    fireEvent.press(render(<Location />).getByTestId('changeLocation'))
+    expect(navigate).toHaveBeenCalledWith('LocationFilter')
   })
 })
