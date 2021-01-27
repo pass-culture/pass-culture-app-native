@@ -27,7 +27,7 @@ export interface SuggestedPlace {
     department: string
   }
   geolocation: {
-    longitude: number | ''
-    latitude: number | ''
-  }
+    longitude: number
+    latitude: number
+  } | null
 }
