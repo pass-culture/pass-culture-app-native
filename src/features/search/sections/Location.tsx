@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Section } from 'features/search/atoms/Sections'
-import { getLocationChoiceName } from 'features/search/components/locationChoice.utils'
+import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -14,14 +14,20 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { useSearch } from '../pages/SearchWrapper'
 
-const renderLocationContent = (locationChoice: LocationType, onPress: () => void) => {
+export const Location: React.FC = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { searchState } = useSearch()
+  const locationType = searchState.searchAround
+  const count = searchState.searchAround !== LocationType.EVERYWHERE ? 1 : 0
+  const { label } = useLocationChoice(searchState.searchAround)
+
   return (
-    <React.Fragment>
-      <LocationContentContainer onPress={onPress}>
-        <Typo.ButtonText>{getLocationChoiceName(locationChoice)}</Typo.ButtonText>
+    <Section title={_(t`Localisation`)} count={count}>
+      <LocationContentContainer onPress={() => navigate('LocationFilter')}>
+        <Typo.ButtonText>{label}</Typo.ButtonText>
         <ArrowNext size={24} />
       </LocationContentContainer>
-      {locationChoice === LocationType.AROUND_ME && (
+      {locationType === LocationType.AROUND_ME && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
@@ -29,19 +35,6 @@ const renderLocationContent = (locationChoice: LocationType, onPress: () => void
           </Typo.Caption>
         </React.Fragment>
       )}
-    </React.Fragment>
-  )
-}
-
-export const Location: React.FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
-
-  const onPress = () => navigate('LocationFilter')
-  const count = searchState.searchAround !== LocationType.EVERYWHERE ? 1 : 0
-  return (
-    <Section title={_(t`Localisation`)} count={count}>
-      {renderLocationContent(searchState.searchAround, onPress)}
     </Section>
   )
 }

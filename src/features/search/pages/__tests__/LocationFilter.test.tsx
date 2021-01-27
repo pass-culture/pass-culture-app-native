@@ -40,7 +40,7 @@ describe('LocationFilter component', () => {
       payload: LocationType.AROUND_ME,
     })
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_LOCATION',
+      type: 'SET_POSITION',
       payload: { latitude: 2, longitude: 40 },
     })
   })
@@ -60,7 +60,7 @@ describe('LocationFilter component', () => {
       payload: LocationType.EVERYWHERE,
     })
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_LOCATION',
+      type: 'SET_POSITION',
       payload: null,
     })
   })
@@ -74,7 +74,7 @@ describe('LocationFilter component', () => {
       payload: LocationType.EVERYWHERE,
     })
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_LOCATION',
+      type: 'SET_POSITION',
       payload: null,
     })
   })

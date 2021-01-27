@@ -33,17 +33,19 @@ export const LocationFilter: React.FC = () => {
       // TODO: implement modale to invit to active geoloc
     } else {
       dispatch({
-        type: 'SET_LOCATION',
+        type: 'SET_POSITION',
         payload: { latitude: position.latitude, longitude: position.longitude },
       })
       dispatch({ type: 'LOCATION_TYPE', payload: LocationType.AROUND_ME })
+      dispatch({ type: 'SET_PLACE', payload: null })
     }
     debouncedGoBack()
   }
 
   const onPressEverywhere = () => {
     dispatch({ type: 'LOCATION_TYPE', payload: LocationType.EVERYWHERE })
-    dispatch({ type: 'SET_LOCATION', payload: null })
+    dispatch({ type: 'SET_POSITION', payload: null })
+    dispatch({ type: 'SET_PLACE', payload: null })
     debouncedGoBack()
   }
 
@@ -61,16 +63,20 @@ export const LocationFilter: React.FC = () => {
       <Spacer.Column numberOfSpaces={6} />
       <LocationChoice
         testID="pickPlace"
-        type={LocationType.PLACE}
+        locationType={LocationType.PLACE}
         arrowNext={true}
         onPress={onPressPickPlace}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <LocationChoice testID="aroundMe" type={LocationType.AROUND_ME} onPress={onPressAroundMe} />
+      <LocationChoice
+        testID="aroundMe"
+        locationType={LocationType.AROUND_ME}
+        onPress={onPressAroundMe}
+      />
       <Spacer.Column numberOfSpaces={4} />
       <LocationChoice
         testID="everywhere"
-        type={LocationType.EVERYWHERE}
+        locationType={LocationType.EVERYWHERE}
         onPress={onPressEverywhere}
       />
       <PageHeader title={_(t`Localisation`)} />

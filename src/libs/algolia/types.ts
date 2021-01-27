@@ -1,5 +1,7 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
+import { SuggestedPlace } from 'libs/adresse/types'
+
 import { Range } from '../typesUtils/typeHelpers'
 
 import { DATE_FILTER_OPTIONS } from './enums/filtersEnums'
@@ -42,6 +44,7 @@ export interface ParsedAlgoliaParameters {
   priceRange: Range<number> | null
   searchAround: LocationType
   geolocation: AlgoliaGeolocation | null
+  place?: SuggestedPlace | null
 }
 
 export interface ExtraAlgoliaParameters {
