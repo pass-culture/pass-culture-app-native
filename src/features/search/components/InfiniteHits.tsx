@@ -12,41 +12,29 @@ interface Props {
   hits: AlgoliaHit[]
   hasMore: boolean
   refineNext: () => void
-  setIsScrolling: (value: boolean) => void
+  handleIsScrolling: (value: boolean) => () => void
 }
 
 export const InfiniteHitsComponent: React.FC<Props> = ({
   hits,
   hasMore,
   refineNext,
-  setIsScrolling,
-}) => {
-  let timeoutID: NodeJS.Timeout
-  const handleIsScrolling = (value: boolean) => () => {
-    if (value === false) {
-      timeoutID = setTimeout(() => setIsScrolling(false), 1000)
-    } else {
-      if (timeoutID) clearTimeout(timeoutID)
-      setIsScrolling(true)
-    }
-  }
-
-  return (
-    <Container>
-      <FlatList
-        data={hits}
-        keyExtractor={(item) => item.objectID}
-        ListHeaderComponent={NumberOfResults}
-        ListFooterComponent={Footer}
-        ItemSeparatorComponent={Separator}
-        renderItem={({ item: hit }) => <Hit hit={hit} />}
-        onEndReached={() => hasMore && refineNext()}
-        onScrollEndDrag={handleIsScrolling(false)}
-        onScrollBeginDrag={handleIsScrolling(true)}
-      />
-    </Container>
-  )
-}
+  handleIsScrolling,
+}) => (
+  <Container>
+    <FlatList
+      data={hits}
+      keyExtractor={(item) => item.objectID}
+      ListHeaderComponent={NumberOfResults}
+      ListFooterComponent={Footer}
+      ItemSeparatorComponent={Separator}
+      renderItem={({ item: hit }) => <Hit hit={hit} />}
+      onEndReached={() => hasMore && refineNext()}
+      onScrollEndDrag={handleIsScrolling(false)}
+      onScrollBeginDrag={handleIsScrolling(true)}
+    />
+  </Container>
+)
 
 const Container = styled.View({ height: '100%' })
 const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(52) })
