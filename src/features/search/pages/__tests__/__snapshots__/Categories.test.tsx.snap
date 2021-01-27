@@ -1,0 +1,1299 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories component should match diff snapshot when new category is selected 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -76,15 +76,15 @@
+                },
+              ]
+            }
+          />
+          <Text
+-           color=\\"#151515\\"
++           color=\\"#eb0055\\"
+            style={
+              Array [
+                Object {
+-                 \\"color\\": \\"#151515\\",
++                 \\"color\\": \\"#eb0055\\",
+                  \\"fontFamily\\": \\"Montserrat-Bold\\",
+                  \\"fontSize\\": 15,
+                  \\"lineHeight\\": 20,
+                },
+              ]
+@@ -101,10 +101,16 @@
+                  \\"flexShrink\\": 1,
+                },
+              ]
+            }
+          />
++         <View
++           height={32}
++           width={32}
++         >
++           undefined-SVG-Mock
++         </View>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {
+@@ -159,15 +165,15 @@
+                },
+              ]
+            }
+          />
+          <Text
+-           color=\\"#eb0055\\"
++           color=\\"#151515\\"
+            style={
+              Array [
+                Object {
+-                 \\"color\\": \\"#eb0055\\",
++                 \\"color\\": \\"#151515\\",
+                  \\"fontFamily\\": \\"Montserrat-Bold\\",
+                  \\"fontSize\\": 15,
+                  \\"lineHeight\\": 20,
+                },
+              ]
+@@ -184,16 +190,10 @@
+                  \\"flexShrink\\": 1,
+                },
+              ]
+            }
+          />
+-         <View
+-           height={32}
+-           width={32}
+-         >
+-           undefined-SVG-Mock
+-         </View>
+          <View
+            numberOfSpaces={6}
+            style={
+              Array [
+                Object {"
+`;
+
+exports[`Categories component should render correctly 1`] = `
+Array [
+  <RCTScrollView
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View>
+      <View
+        customHeight={16}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={16}
+        style={
+          Array [
+            Object {
+              "height": 64,
+            },
+          ]
+        }
+      />
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="ALL"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#eb0055"
+          style={
+            Array [
+              Object {
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Toutes les catégories
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          height={32}
+          width={32}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="CINEMA"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Cinéma
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="VISITE"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Visites, expositions
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="MUSIQUE"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Musique
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="SPECTACLE"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Spectacles
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="LECON"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Cours, ateliers
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="LIVRE"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Livres
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="FILM"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Films, séries, podcasts
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="PRESSE"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Presse
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="JEUX_VIDEO"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Jeux vidéos
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="CONFERENCE"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Conférences, rencontres
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="INSTRUMENT"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Instruments de musique
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        numberOfSpaces={30}
+        style={
+          Array [
+            Object {
+              "height": 120,
+            },
+          ]
+        }
+      />
+    </View>
+  </RCTScrollView>,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#eb0055",
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "width": 20,
+            },
+          ]
+        }
+      />
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          height={32}
+          testID="icon-back"
+          width={32}
+        >
+          icon-back-SVG-Mock
+        </View>
+      </View>
+      <View
+        numberOfSpaces={0}
+        style={
+          Array [
+            Object {
+              "width": 0,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={2}
+        style={
+          Array [
+            Object {
+              "flexShrink": 1,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        <Text
+          color="#ffffff"
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Catégories
+        </Text>
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={10}
+        style={
+          Array [
+            Object {
+              "width": 40,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "width": 24,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
