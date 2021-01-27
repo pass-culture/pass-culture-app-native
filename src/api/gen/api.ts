@@ -176,7 +176,7 @@ export interface Expense {
      * @type {number}
      * @memberof Expense
      */
-    max: number;
+    limit: number;
 }/**
  * An enumeration.
  * @export
@@ -620,6 +620,18 @@ export interface SigninResponse {
 export interface UserProfileResponse {
     /**
      * 
+     * @type {Date}
+     * @memberof UserProfileResponse
+     */
+    dateOfBirth?: Date;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserProfileResponse
+     */
+    depositVersion?: number;
+    /**
+     * 
      * @type {string}
      * @memberof UserProfileResponse
      */
@@ -641,7 +653,31 @@ export interface UserProfileResponse {
      * @type {boolean}
      * @memberof UserProfileResponse
      */
+    hasAllowedRecommendations: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserProfileResponse
+     */
     isBeneficiary: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfileResponse
+     */
+    lastName?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfileResponse
+     */
+    phoneNumber?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfileResponse
+     */
+    pseudo?: string;
 }/**
  * 
  * @export
