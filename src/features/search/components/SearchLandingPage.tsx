@@ -11,10 +11,11 @@ import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
-import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
+
+import { getLocationChoiceIcon, getLocationChoiceName } from './locationChoice.utils'
 
 const { width } = Dimensions.get('window')
 
@@ -40,7 +41,10 @@ export const SearchLandingPage: React.FC = () => {
         <TouchableOpacity onPress={() => navigate('LocationFilter')}>
           <Typo.Body color={ColorsEnum.GREY_DARK}>{_(t`Où`)}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
-          <BicolorIconLabel title={_(t`Autour de moi`)} Icon={AroundMe} />
+          <BicolorIconLabel
+            title={getLocationChoiceName(searchState.searchAround)}
+            Icon={getLocationChoiceIcon(searchState.searchAround)}
+          />
         </TouchableOpacity>
 
         <Spacer.Flex flex={2} />
