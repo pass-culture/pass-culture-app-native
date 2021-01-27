@@ -1,4 +1,4 @@
-// Voir https://geo.api.gouv.fr/adresse pour plus d'infos
+// See https://geo.api.gouv.fr/adresse for more info
 
 export interface Properties {
   label: string
@@ -9,8 +9,8 @@ export interface Properties {
   name: string
   postcode: string
   citycode: string
-  x: number // coordonnées en projection légale
-  y: number // coordonnées en projection légale
+  x: number
+  y: number
   city: string
   context: string
   importance: number
