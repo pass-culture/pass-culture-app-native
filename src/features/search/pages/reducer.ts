@@ -1,3 +1,4 @@
+import { SuggestedPlace } from 'libs/adresse/types'
 import { FetchAlgoliaParameters, LocationType, AlgoliaGeolocation } from 'libs/algolia'
 import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 
@@ -29,6 +30,7 @@ export const initialSearchState: SearchState = {
   date: null,
   timeRange: null,
   showResults: false,
+  place: null,
 }
 
 export const DEFAULT_TIME_RANGE = [8, 24]
@@ -50,7 +52,8 @@ export type Action =
   | { type: 'SELECT_DATE_FILTER_OPTION'; payload: DATE_FILTER_OPTIONS }
   | { type: 'SELECT_DATE'; payload: Date }
   | { type: 'LOCATION_TYPE'; payload: LocationType }
-  | { type: 'SET_LOCATION'; payload: AlgoliaGeolocation | null }
+  | { type: 'SET_POSITION'; payload: AlgoliaGeolocation | null }
+  | { type: 'SET_PLACE'; payload: SuggestedPlace | null }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -108,15 +111,11 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       if (!state.date) return state
       return { ...state, date: { ...state.date, selectedDate: action.payload } }
     case 'LOCATION_TYPE':
-      return {
-        ...state,
-        searchAround: action.payload,
-      }
-    case 'SET_LOCATION':
-      return {
-        ...state,
-        geolocation: action.payload,
-      }
+      return { ...state, searchAround: action.payload }
+    case 'SET_POSITION':
+      return { ...state, geolocation: action.payload }
+    case 'SET_PLACE':
+      return { ...state, place: action.payload }
     default:
       return state
   }

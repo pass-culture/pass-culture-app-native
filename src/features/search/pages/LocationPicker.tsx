@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { FlatList, TouchableOpacity } from 'react-native'
@@ -8,15 +9,13 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { REGEX_STARTING_WITH_NUMBERS } from 'libs/adresse/buildPlaceLabel'
 import { fetchPlaces } from 'libs/adresse/fetchPlaces'
 import { SuggestedPlace } from 'libs/adresse/types'
+import { LocationType } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
-import { LocationType } from 'libs/algolia'
-import { goBack } from '__mocks__/@react-navigation/native'
-import { useNavigation } from '@react-navigation/native'
 
 const SEARCH_DEBOUNCE_MS = 500
 
@@ -69,7 +68,8 @@ export const LocationPicker: React.FC = () => {
   const onPickPlace = (place: SuggestedPlace) => () => {
     if (place.geolocation) {
       dispatch({ type: 'LOCATION_TYPE', payload: LocationType.PLACE })
-      dispatch({ type: 'SET_LOCATION', payload: place.geolocation })
+      dispatch({ type: 'SET_POSITION', payload: place.geolocation })
+      dispatch({ type: 'SET_PLACE', payload: place })
     }
     goBack()
   }

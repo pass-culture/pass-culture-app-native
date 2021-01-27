@@ -2,39 +2,32 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  getLocationChoiceName,
-  getLocationChoiceIcon,
-} from 'features/search/components/locationChoice.utils'
+import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'libs/algolia'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-import { useSearch } from '../pages/SearchWrapper'
-
 type Props = {
-  type: LocationType
+  locationType: LocationType
   testID: string
   onPress?: () => void
   arrowNext?: boolean
 }
 
-export const LocationChoice: React.FC<Props> = ({ type, onPress, arrowNext = false, testID }) => {
-  const { searchState } = useSearch()
-
-  const isSelected = type === searchState.searchAround
+export const LocationChoice: React.FC<Props> = (props) => {
+  const { locationType, onPress, arrowNext = false, testID } = props
+  const { Icon, label, isSelected } = useLocationChoice(locationType)
   const iconColor2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
-  const LocationChoiceIcon = getLocationChoiceIcon(type)
 
   return (
     <Container onPress={onPress} testID={`locationChoice-${testID}`}>
       <FirstPart>
-        <LocationChoiceIcon size={48} color2={iconColor2} />
+        <Icon size={48} color2={iconColor2} />
         <Spacer.Row numberOfSpaces={2} />
         <Typo.ButtonText color={isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
-          {getLocationChoiceName(type)}
+          {label}
         </Typo.ButtonText>
       </FirstPart>
       <Spacer.Flex />

@@ -189,15 +189,15 @@ describe('Search reducer', () => {
     expect(newState.searchAround).toEqual(LocationType.AROUND_ME)
   })
 
-  it('should handle SET_LOCATION', () => {
+  it('should handle SET_POSITION', () => {
     let newState = searchReducer(state, {
-      type: 'SET_LOCATION',
+      type: 'SET_POSITION',
       payload: null,
     })
     expect(newState.geolocation).toBeNull()
     const location = { latitude: 2.32, longitude: 48.1 }
     newState = searchReducer(state, {
-      type: 'SET_LOCATION',
+      type: 'SET_POSITION',
       payload: location,
     })
     expect(newState.geolocation).toEqual(location)
