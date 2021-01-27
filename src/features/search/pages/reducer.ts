@@ -1,6 +1,6 @@
-import { SuggestedPlace } from 'libs/adresse/types'
 import { FetchAlgoliaParameters, LocationType, AlgoliaGeolocation } from 'libs/algolia'
 import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
+import { SuggestedPlace } from 'libs/place'
 
 import { clampPrice, addOrRemove } from './reducer.helpers'
 

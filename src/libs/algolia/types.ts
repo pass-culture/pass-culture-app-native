@@ -1,10 +1,8 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { SuggestedPlace } from 'libs/adresse/types'
-
-import { Range } from '../typesUtils/typeHelpers'
-
-import { DATE_FILTER_OPTIONS } from './enums/filtersEnums'
+import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums/filtersEnums'
+import { SuggestedPlace } from 'libs/place'
+import { Range } from 'libs/typesUtils/typeHelpers'
 
 export type AlgoliaGeolocation = Pick<GeoCoordinates, 'longitude' | 'latitude'>
 
