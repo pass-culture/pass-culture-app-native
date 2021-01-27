@@ -17,12 +17,11 @@ import { useSearch } from '../pages/SearchWrapper'
 export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useSearch()
-  const locationType = searchState.searchAround
-  const count = searchState.searchAround !== LocationType.EVERYWHERE ? 1 : 0
-  const { label } = useLocationChoice(searchState.searchAround)
+  const locationType = searchState.locationType
+  const { label } = useLocationChoice(locationType)
 
   return (
-    <Section title={_(t`Localisation`)} count={count}>
+    <Section title={_(t`Localisation`)} count={+(locationType !== LocationType.EVERYWHERE)}>
       <LocationContentContainer onPress={() => navigate('LocationFilter')}>
         <Typo.ButtonText>{label}</Typo.ButtonText>
         <ArrowNext size={24} />

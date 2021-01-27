@@ -25,7 +25,7 @@ export const initialSearchState: SearchState = {
   beginningDatetime: null,
   endingDatetime: null,
   priceRange: null,
-  searchAround: LocationType.EVERYWHERE,
+  locationType: LocationType.EVERYWHERE,
   geolocation: null,
   date: null,
   timeRange: null,
@@ -111,7 +111,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       if (!state.date) return state
       return { ...state, date: { ...state.date, selectedDate: action.payload } }
     case 'LOCATION_TYPE':
-      return { ...state, searchAround: action.payload }
+      return { ...state, locationType: action.payload }
     case 'SET_POSITION':
       return { ...state, geolocation: action.payload }
     case 'SET_PLACE':

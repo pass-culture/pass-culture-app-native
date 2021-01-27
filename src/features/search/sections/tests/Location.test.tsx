@@ -22,12 +22,12 @@ describe('Location section', () => {
   })
 
   it('should have count in title when searching Around me', () => {
-    mockSearchState = { ...mockSearchState, searchAround: LocationType.AROUND_ME }
+    mockSearchState = { ...mockSearchState, locationType: LocationType.AROUND_ME }
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 
   it('should have count in title when searching Place', () => {
-    mockSearchState = { ...mockSearchState, searchAround: LocationType.PLACE }
+    mockSearchState = { ...mockSearchState, locationType: LocationType.PLACE }
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 })

@@ -186,7 +186,7 @@ describe('Search reducer', () => {
       type: 'LOCATION_TYPE',
       payload: LocationType.AROUND_ME,
     })
-    expect(newState.searchAround).toEqual(LocationType.AROUND_ME)
+    expect(newState.locationType).toEqual(LocationType.AROUND_ME)
   })
 
   it('should handle SET_POSITION', () => {

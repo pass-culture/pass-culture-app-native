@@ -23,7 +23,7 @@ export const SearchLandingPage: React.FC = () => {
   const { searchState } = useSearch()
   const [selectedCategory] = searchState.offerCategories
   const { icon: Icon, label } = CATEGORY_CRITERIA[(selectedCategory as CategoryNameEnum) || 'ALL']
-  const { Icon: LocationIcon, label: locationLabel } = useLocationChoice(searchState.searchAround)
+  const { Icon: LocationIcon, label: locationLabel } = useLocationChoice(searchState.locationType)
 
   return (
     <React.Fragment>

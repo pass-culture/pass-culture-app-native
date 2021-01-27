@@ -148,7 +148,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         geolocation: geolocation,
         keywords: keywords,
-        searchAround: LocationType.EVERYWHERE,
+        locationType: LocationType.EVERYWHERE,
       } as FetchAlgoliaParameters)
 
       // then
@@ -172,7 +172,7 @@ describe('fetchAlgolia', () => {
         aroundRadius: 15,
         geolocation: geolocation,
         keywords: keywords,
-        searchAround: LocationType.AROUND_ME,
+        locationType: LocationType.AROUND_ME,
       } as FetchAlgoliaParameters)
 
       // then
@@ -196,7 +196,7 @@ describe('fetchAlgolia', () => {
         aroundRadius: 0,
         geolocation: geolocation,
         keywords: keywords,
-        searchAround: LocationType.AROUND_ME,
+        locationType: LocationType.AROUND_ME,
       } as FetchAlgoliaParameters)
 
       // then
@@ -220,7 +220,7 @@ describe('fetchAlgolia', () => {
         aroundRadius: -1,
         geolocation: geolocation,
         keywords: keywords,
-        searchAround: LocationType.AROUND_ME,
+        locationType: LocationType.AROUND_ME,
       } as FetchAlgoliaParameters)
 
       // then
