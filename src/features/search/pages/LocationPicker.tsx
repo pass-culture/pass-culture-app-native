@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FlatList, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useSearch } from 'features/search/pages/SearchWrapper'
 import { REGEX_STARTING_WITH_NUMBERS } from 'libs/adresse/buildPlaceLabel'
 import { fetchPlaces } from 'libs/adresse/fetchPlaces'
 import { SuggestedPlace } from 'libs/adresse/types'
@@ -13,6 +14,9 @@ import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
+import { LocationType } from 'libs/algolia'
+import { goBack } from '__mocks__/@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 
 const SEARCH_DEBOUNCE_MS = 500
 
@@ -23,11 +27,13 @@ const RightIcon: React.FC<{ value: string; onPress: () => void }> = (props) =>
     </TouchableOpacity>
   ) : null
 
-const keyExtractor = (place: SuggestedPlace) =>
-  `${place.geolocation.latitude}-${place.geolocation.longitude}`
+const keyExtractor = ({ geolocation, name }: SuggestedPlace) => {
+  if (geolocation) return `${geolocation.latitude}-${geolocation.longitude}`
+  return `${name.short}-${name.long}`
+}
 
-const renderItem = ({ item: place }: { item: SuggestedPlace }) => (
-  <ItemContainer>
+const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => (
+  <ItemContainer onPress={onPress}>
     <Typo.ButtonText>{place.name.short}</Typo.ButtonText>
     <Spacer.Row numberOfSpaces={1} />
     <Typo.Body>
@@ -41,6 +47,8 @@ const renderItem = ({ item: place }: { item: SuggestedPlace }) => (
 export const LocationPicker: React.FC = () => {
   const [places, setPlaces] = useState<SuggestedPlace[]>([])
   const [value, setValue] = useState<string>('')
+  const { dispatch } = useSearch()
+  const { goBack } = useNavigation()
   const [debouncedValue, setDebouncedValue] = useState<string>(value)
   const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
 
@@ -56,6 +64,14 @@ export const LocationPicker: React.FC = () => {
   const onChangeText = (newValue: string) => {
     setValue(newValue)
     debouncedSetValue(newValue)
+  }
+
+  const onPickPlace = (place: SuggestedPlace) => () => {
+    if (place.geolocation) {
+      dispatch({ type: 'LOCATION_TYPE', payload: LocationType.PLACE })
+      dispatch({ type: 'SET_LOCATION', payload: place.geolocation })
+    }
+    goBack()
   }
 
   return (
@@ -77,7 +93,7 @@ export const LocationPicker: React.FC = () => {
       <FlatList
         data={places}
         keyExtractor={keyExtractor}
-        renderItem={renderItem}
+        renderItem={({ item: place }) => <PlaceHit place={place} onPress={onPickPlace(place)} />}
         ListEmptyComponent={React.Fragment}
         ItemSeparatorComponent={Separator}
       />

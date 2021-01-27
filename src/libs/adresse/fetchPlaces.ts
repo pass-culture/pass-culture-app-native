@@ -20,6 +20,11 @@ export const fetchPlaces = ({ query, limit = 20 }: Props) =>
         const [, department] = context.replace(/\s+/g, '').split(',') // department number, department name, region
         const [longitude, latitude] = geometry.coordinates
 
+        const geolocation =
+          typeof longitude === 'number' && typeof latitude === 'number'
+            ? { longitude, latitude }
+            : null
+
         return {
           name: {
             long: detailedPlace ? `${name}, ${city}` : city,
@@ -29,10 +34,7 @@ export const fetchPlaces = ({ query, limit = 20 }: Props) =>
             city,
             department: department || '',
           },
-          geolocation: {
-            longitude: longitude || '',
-            latitude: latitude || '',
-          },
+          geolocation,
         }
       })
     })
