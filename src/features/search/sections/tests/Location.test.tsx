@@ -1,0 +1,33 @@
+import { render } from '@testing-library/react-native'
+import React from 'react'
+
+import { initialSearchState } from 'features/search/pages/reducer'
+import { LocationType } from 'libs/algolia'
+
+import { Location } from '../Location'
+
+let mockSearchState = initialSearchState
+
+jest.mock('features/search/pages/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+  }),
+}))
+
+describe('Location section', () => {
+  const countString = '\xa0(1)'
+
+  it('should not have count in title', () => {
+    expect(render(<Location />).queryByText(countString)).toBeNull()
+  })
+
+  it('should have count in title when searching Around me', () => {
+    mockSearchState = { ...mockSearchState, searchAround: LocationType.AROUND_ME }
+    expect(render(<Location />).queryByText(countString)).toBeTruthy()
+  })
+
+  it('should have count in title when searching Place', () => {
+    mockSearchState = { ...mockSearchState, searchAround: LocationType.PLACE }
+    expect(render(<Location />).queryByText(countString)).toBeTruthy()
+  })
+})
