@@ -39,6 +39,7 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
       const geoloc = { latitude: position.latitude, longitude: position.longitude }
       dispatch({ type: 'LOCATION_TYPE', payload: LocationType.AROUND_ME })
       dispatch({ type: 'SET_POSITION', payload: geoloc })
+      dispatch({ type: 'SET_PLACE', payload: null })
     }
   }, [!position])
 
