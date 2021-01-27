@@ -22,7 +22,7 @@ export const Location: React.FC = () => {
 
   return (
     <Section title={_(t`Localisation`)} count={+(locationType !== LocationType.EVERYWHERE)}>
-      <LocationContentContainer onPress={() => navigate('LocationFilter')}>
+      <LocationContentContainer testID="changeLocation" onPress={() => navigate('LocationFilter')}>
         <Typo.ButtonText>{label}</Typo.ButtonText>
         <ArrowNext size={24} />
       </LocationContentContainer>
