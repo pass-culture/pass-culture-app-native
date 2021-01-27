@@ -2,7 +2,7 @@ import { decode } from 'hi-base32'
 
 export const dehumanizeId = (humanId: string) => {
   try {
-    return byteArrayToInt(decode.asBytes(humanId.replace('8', 'O').replace('9', 'I')))
+    return byteArrayToInt(decode.asBytes(humanId.replace(/8/g, 'O').replace(/9/g, 'I')))
   } catch {
     return null
   }

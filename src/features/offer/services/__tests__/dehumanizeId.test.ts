@@ -13,6 +13,7 @@ describe('dehumanizeId', () => {
     ${'AHD3G'}  | ${116659}
     ${'AHD3C'}  | ${116657}
     ${'AGHYA'}  | ${102272}
+    ${'A98K8'}  | ${138407}
   `(
     'a given humanizedId: $humanizedId becomes a dehumanizedId: $dehumanizedId',
     ({ dehumanizedId, humanizedId }: HumToDehumTest) => {
