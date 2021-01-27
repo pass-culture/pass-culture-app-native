@@ -56,17 +56,6 @@ Array [
           }
         >
           Localisation
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#eb0055",
-                },
-              ]
-            }
-          >
-             (1)
-          </Text>
         </Text>
         <View
           numberOfSpaces={4}

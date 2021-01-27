@@ -38,8 +38,9 @@ export const Location: React.FC = () => {
   const { searchState } = useSearch()
 
   const onPress = () => navigate('LocationFilter')
+  const count = searchState.searchAround !== LocationType.EVERYWHERE ? 1 : 0
   return (
-    <Section title={_(t`Localisation`)} count={1}>
+    <Section title={_(t`Localisation`)} count={count}>
       {renderLocationContent(searchState.searchAround, onPress)}
     </Section>
   )
