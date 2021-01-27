@@ -85,11 +85,30 @@ describe('getCtaWordingAndAction', () => {
       ${CategoryType.Event} | ${undefined} | ${20}        | ${'ios'}     | ${'Voir les disponibilités'} | ${false}
       ${CategoryType.Event} | ${undefined} | ${20}        | ${'android'} | ${'Voir les disponibilités'} | ${false}
     `(
-      'If credit is enough, only iOS user cannot book on Thing type offers | $type x $platform => $expected',
+      'If credit is enough, only iOS user cannot book on Thing type offers | $type x $platform => $expected - digital offers',
       ({ creditEvent, creditThing, disabled, expected, type, platform }) => {
         const { wording, onPress } = getCta(
-          { category: { ...baseOffer.category, categoryType: type } },
+          { category: { ...baseOffer.category, categoryType: type }, isDigital: true },
           { creditEvent, creditThing, platform }
+        )
+        expect(wording).toEqual(expected)
+        expect(onPress === undefined).toBe(disabled)
+      }
+    )
+
+    // offer price is 5
+    it.each`
+      type                  | creditThing | creditEvent  | isDigital | expected                    | disabled
+      ${CategoryType.Thing} | ${2}        | ${undefined} | ${true}   | ${'Impossible de réserver'} | ${true}
+      ${CategoryType.Thing} | ${20}       | ${undefined} | ${true}   | ${'Impossible de réserver'} | ${true}
+      ${CategoryType.Thing} | ${2}        | ${undefined} | ${false}  | ${'Crédit insuffisant'}     | ${true}
+      ${CategoryType.Thing} | ${20}       | ${undefined} | ${false}  | ${'Réserver'}               | ${false}
+    `(
+      'iOS users cannot book digital Thing type offers | $type x $isDigital => $expected',
+      ({ creditEvent, creditThing, disabled, expected, type, isDigital }) => {
+        const { wording, onPress } = getCta(
+          { category: { ...baseOffer.category, categoryType: type }, isDigital },
+          { creditEvent, creditThing, platform: 'ios' }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
