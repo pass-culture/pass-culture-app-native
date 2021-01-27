@@ -80,4 +80,25 @@ describe('OfferDate component', () => {
     mockSearchState.date = { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: Tomorrow }
     expect(render(<OfferDate />).getByText('Lundi 2 novembre 2020')).toBeTruthy()
   })
+
+  it('should hide and show the CalendarPicker', () => {
+    mockSearchState.date = { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: Today }
+    const { getByTestId, toJSON } = render(<OfferDate />)
+
+    fireEvent.press(getByTestId('pickedDate'))
+
+    const withCalendar = toJSON()
+    if (Array.isArray(withCalendar)) {
+      expect(withCalendar.includes('CalendarPicker')).toBeTruthy()
+      expect(withCalendar.includes('NoCalendar')).toBeFalsy()
+    }
+
+    fireEvent.press(getByTestId('pickedDate'))
+
+    const withoutCalendar = toJSON()
+    if (Array.isArray(withoutCalendar)) {
+      expect(withoutCalendar.includes('CalendarPicker')).toBeTruthy()
+      expect(withoutCalendar.includes('NoCalendar')).toBeFalsy()
+    }
+  })
 })
