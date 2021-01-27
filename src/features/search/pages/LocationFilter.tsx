@@ -33,19 +33,15 @@ export const LocationFilter: React.FC = () => {
       // TODO: implement modale to invit to active geoloc
     } else {
       dispatch({
-        type: 'SET_POSITION',
+        type: 'LOCATION_AROUND_ME',
         payload: { latitude: position.latitude, longitude: position.longitude },
       })
-      dispatch({ type: 'LOCATION_TYPE', payload: LocationType.AROUND_ME })
-      dispatch({ type: 'SET_PLACE', payload: null })
     }
     debouncedGoBack()
   }
 
   const onPressEverywhere = () => {
-    dispatch({ type: 'LOCATION_TYPE', payload: LocationType.EVERYWHERE })
-    dispatch({ type: 'SET_POSITION', payload: null })
-    dispatch({ type: 'SET_PLACE', payload: null })
+    dispatch({ type: 'LOCATION_EVERYWHERE' })
     debouncedGoBack()
   }
 

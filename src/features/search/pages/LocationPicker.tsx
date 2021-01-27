@@ -6,7 +6,6 @@ import { FlatList, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSearch } from 'features/search/pages/SearchWrapper'
-import { LocationType } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { fetchPlaces, REGEX_STARTING_WITH_NUMBERS, SuggestedPlace } from 'libs/place'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -65,9 +64,7 @@ export const LocationPicker: React.FC = () => {
 
   const onPickPlace = (place: SuggestedPlace) => () => {
     if (place.geolocation) {
-      dispatch({ type: 'LOCATION_TYPE', payload: LocationType.PLACE })
-      dispatch({ type: 'SET_POSITION', payload: place.geolocation })
-      dispatch({ type: 'SET_PLACE', payload: place })
+      dispatch({ type: 'LOCATION_PLACE', payload: place })
     }
     goBack()
   }
