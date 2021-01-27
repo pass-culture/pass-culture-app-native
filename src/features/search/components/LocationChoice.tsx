@@ -16,11 +16,12 @@ import { useSearch } from '../pages/SearchWrapper'
 
 type Props = {
   type: LocationType
+  testID: string
   onPress?: () => void
   arrowNext?: boolean
 }
 
-export const LocationChoice: React.FC<Props> = ({ type, onPress, arrowNext = false }) => {
+export const LocationChoice: React.FC<Props> = ({ type, onPress, arrowNext = false, testID }) => {
   const { searchState } = useSearch()
 
   const isSelected = type === searchState.searchAround
@@ -28,7 +29,7 @@ export const LocationChoice: React.FC<Props> = ({ type, onPress, arrowNext = fal
   const LocationChoiceIcon = getLocationChoiceIcon(type)
 
   return (
-    <Container onPress={onPress} testID="locationChoice">
+    <Container onPress={onPress} testID={`locationChoice-${testID}`}>
       <FirstPart>
         <LocationChoiceIcon size={48} color2={iconColor2} />
         <Spacer.Row numberOfSpaces={2} />

@@ -139,7 +139,7 @@ Array [
         "opacity": 1,
       }
     }
-    testID="locationChoice"
+    testID="locationChoice-pickPlace"
   >
     <View
       style={
@@ -241,7 +241,7 @@ Array [
         "opacity": 1,
       }
     }
-    testID="locationChoice"
+    testID="locationChoice-aroundMe"
   >
     <View
       style={
@@ -337,7 +337,7 @@ Array [
         "opacity": 1,
       }
     }
-    testID="locationChoice"
+    testID="locationChoice-everywhere"
   >
     <View
       style={
