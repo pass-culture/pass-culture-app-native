@@ -130,6 +130,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('EligibilityConfirmed')}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'Tutorials'}
+            onPress={() => navigation.navigate('FirstTutorial')}
+          />
+        </Row>
         <Row>
           <NavigationButton
             title={'Mauvais deeplink unknown'}

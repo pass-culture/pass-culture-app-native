@@ -26,6 +26,7 @@ import { Categories as SearchCategories } from 'features/search/pages/Categories
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
+import { FirstTutorial } from 'features/tutorials/pages/FirstTutorial'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
 
@@ -84,6 +85,7 @@ export const RootNavigator: React.FC = () => {
         />
         <RootStack.Screen name="TabNavigator" component={TabNavigator} />
         <RootStack.Screen name="VerifyEligibility" component={VerifyEligibility} />
+        <RootStack.Screen name="FirstTutorial" component={FirstTutorial} />
       </RootStack.Navigator>
     </NavigationContainer>
   )
