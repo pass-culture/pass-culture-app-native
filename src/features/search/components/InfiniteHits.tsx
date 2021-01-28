@@ -8,6 +8,8 @@ import { Hit, NumberOfResults } from 'features/search/atoms'
 import { AlgoliaHit } from 'libs/algolia'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
+import { NoSearchResult } from '../atoms/NoSearchResult'
+
 interface Props {
   hits: AlgoliaHit[]
   hasMore: boolean
@@ -32,6 +34,7 @@ export const InfiniteHitsComponent: React.FC<Props> = ({
       onEndReached={() => hasMore && refineNext()}
       onScrollEndDrag={handleIsScrolling(false)}
       onScrollBeginDrag={handleIsScrolling(true)}
+      ListEmptyComponent={NoSearchResult}
     />
   </Container>
 )
