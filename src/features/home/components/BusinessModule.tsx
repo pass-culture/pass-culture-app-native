@@ -18,6 +18,7 @@ import { fillUrlEmail, shouldUrlBeFilled } from './BusinessModule.utils'
 
 export const BusinessModule = (businessPane: BusinessPane) => {
   const { title, firstLine, secondLine, leftIcon, image, url } = businessPane
+
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const { data: profileData, isLoading: isProfileDataLoading } = useUserProfileInfo()

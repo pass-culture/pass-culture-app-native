@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
-import { UserProfileResponse } from 'api/gen'
+import { ExpenseDomain, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
 import { homepageEntriesAPIResponse, adaptedHomepageEntries } from 'tests/fixtures/homepageEntries'
@@ -14,10 +14,19 @@ const mockedUseAuthContext = useAuthContext as jest.Mock
 
 const userProfileApiMock = jest.fn()
 const userProfileAPIResponse: UserProfileResponse = {
-  expenses: [],
+  expenses: [
+    {
+      current: 89,
+      domain: ExpenseDomain.All,
+      limit: 200,
+    },
+  ],
   email: 'email@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,
+  hasAllowedRecommendations: true,
+  isEligible: true,
+  needsToFillCulturalSurvey: true,
 }
 server.use(
   rest.get(

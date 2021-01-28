@@ -176,7 +176,7 @@ export interface Expense {
      * @type {number}
      * @memberof Expense
      */
-    max: number;
+    limit: number;
 }/**
  * An enumeration.
  * @export
@@ -186,6 +186,18 @@ export enum ExpenseDomain {
     All = 'all',
     Digital = 'digital',
     Physical = 'physical'
+}/**
+ * 
+ * @export
+ * @interface GetIdCheckTokenResponse
+ */
+export interface GetIdCheckTokenResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetIdCheckTokenResponse
+     */
+    token?: string;
 }/**
  * 
  * @export
@@ -620,6 +632,18 @@ export interface SigninResponse {
 export interface UserProfileResponse {
     /**
      * 
+     * @type {Date}
+     * @memberof UserProfileResponse
+     */
+    dateOfBirth?: Date;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserProfileResponse
+     */
+    depositVersion?: number;
+    /**
+     * 
      * @type {string}
      * @memberof UserProfileResponse
      */
@@ -641,7 +665,55 @@ export interface UserProfileResponse {
      * @type {boolean}
      * @memberof UserProfileResponse
      */
+    hasAllowedRecommendations: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserProfileResponse
+     */
     isBeneficiary: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserProfileResponse
+     */
+    isEligible: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfileResponse
+     */
+    lastName?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserProfileResponse
+     */
+    needsToFillCulturalSurvey: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfileResponse
+     */
+    phoneNumber?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfileResponse
+     */
+    pseudo?: string;
+}/**
+ * 
+ * @export
+ * @interface UserProfileUpdateRequest
+ */
+export interface UserProfileUpdateRequest {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserProfileUpdateRequest
+     */
+    hasAllowedRecommendations?: boolean;
 }/**
  * 
  * @export
@@ -687,6 +759,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
+         * @summary get_id_check_token <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1idCheckToken(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/id_check_token`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary get_user_profile <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -697,6 +791,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
@@ -752,6 +847,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary update_user_profile <POST>
+         * @param {UserProfileUpdateRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1profile(body?: UserProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/profile`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"UserProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
             return {
                 url: url.format(localVarUrlObj),
@@ -915,6 +1036,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     return {
         /**
          * 
+         * @summary get_id_check_token <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1idCheckToken(basePath: string, options?: any): Promise<GetIdCheckTokenResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1idCheckToken(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary get_user_profile <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -945,6 +1077,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async postnativev1account(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1account(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary update_user_profile <POST>
+         * @param {UserProfileUpdateRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1profile(basePath: string, body?: UserProfileUpdateRequest, options?: any): Promise<UserProfileResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1profile(body, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -1031,6 +1175,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
 export class DefaultApi extends BaseAPI {
     /**
      * 
+     * @summary get_id_check_token <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1idCheckToken(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1idCheckToken(this.basePath, options)
+    }
+    /**
+     * 
      * @summary get_user_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1063,6 +1218,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1account(body?: AccountRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1account(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary update_user_profile <POST>
+     * @param {UserProfileUpdateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1profile(body?: UserProfileUpdateRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1profile(this.basePath, body, options)
     }
     /**
      * 

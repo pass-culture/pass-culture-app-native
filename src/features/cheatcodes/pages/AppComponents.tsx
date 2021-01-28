@@ -535,7 +535,10 @@ export const AppComponents: FunctionComponent = () => {
           <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
         </AlignedText>
       </AccordionItem>
-
+    </StyledScrollView>
+  )
+  return (
+    <StyledScrollView>
       {/* Your components */}
       <AccordionItem title="Your components">
         <AlignedText>
