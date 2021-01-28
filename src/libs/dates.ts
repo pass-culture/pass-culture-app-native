@@ -45,3 +45,15 @@ export function dateDiffInFullYears(oldDate: Date, newDate: Date) {
 
   return diffInYears
 }
+
+/**
+ * Formats an iso date to a slashed french date.
+ * @param ISODate a string date in the ISO 8601 format %Y-%m-%dT%H:%M:%S
+ */
+export const formatToSlashedFrenchDate = (ISODate: string) => {
+  const date = new Date(ISODate)
+  const day = ('0' + date.getDate()).slice(-2)
+  const month = ('0' + (date.getMonth() + 1)).slice(-2)
+  const year = date.getFullYear()
+  return `${day}/${month}/${year}`
+}

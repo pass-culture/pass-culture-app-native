@@ -1,6 +1,11 @@
 import mockdate from 'mockdate'
 
-import { currentTimestamp, dateDiffInFullYears, isTimestampExpired } from './dates'
+import {
+  currentTimestamp,
+  dateDiffInFullYears,
+  formatToSlashedFrenchDate,
+  isTimestampExpired,
+} from './dates'
 
 describe('currentTimestamp()', () => {
   it('should return timestamp corresponding to current time', () => {
@@ -46,5 +51,11 @@ describe('dateDiffInFullYears()', () => {
     oldDate = new Date('2020-06-01T00:00:00Z')
     newDate = new Date('2025-05-31T23:59:59Z')
     expect(dateDiffInFullYears(oldDate, newDate)).toBe(4)
+  })
+})
+
+describe('formatToSlashedFrenchDate()', () => {
+  it('should return the date in the slashed format', () => {
+    expect(formatToSlashedFrenchDate('2020-06-01T00:00:00Z')).toBe('01/06/2020')
   })
 })

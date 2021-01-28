@@ -8,7 +8,7 @@ import styled from 'styled-components/native'
 import { CategoryNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
-import { YoungerBadge } from 'features/profile/components/YoungerBadge'
+import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
@@ -79,6 +79,7 @@ function onButtonPress() {
 }
 
 const NUMBER_OF_STEPS = 4
+const THIS_YEAR = new Date().getFullYear()
 
 export const AppComponents: FunctionComponent = () => {
   const {
@@ -91,6 +92,7 @@ export const AppComponents: FunctionComponent = () => {
   const [_partialDate, setPartialDate] = useState('')
   const [inputText, setInputText] = useState('')
   const [currentStep, setCurrentStep] = useState(1)
+  const [year, setYear] = useState(THIS_YEAR - 18)
 
   const onTriggerFakeLoading = useCallback(() => {
     setButtonIsLoading(true)
@@ -529,11 +531,19 @@ export const AppComponents: FunctionComponent = () => {
             <CreditCeiling amount={200} max={200} type={'digital'} depositVersion={2} />
           </RowWrap>
         </GreyView>
-        <View>
-          <Text>Badge trop jeune </Text>
+        <AlignedText>
+          <NonBeneficiaryHeader email="john@doe.com" dateOfBirth={`${year}-01-28T01:32:15`} />
+        </AlignedText>
+        <AlignedText>
+          <Text>Date de naissance: {year}-01-28</Text>
+        </AlignedText>
+        <AlignedText>
+          <Button title="-1 an" onPress={() => setYear((year) => year + 1)} />
           <Spacer.Column numberOfSpaces={2} />
-          <YoungerBadge />
-        </View>
+          <Text>{THIS_YEAR - year} ans</Text>
+          <Spacer.Column numberOfSpaces={2} />
+          <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
+        </AlignedText>
       </AccordionItem>
 
       <Spacer.Column numberOfSpaces={5} />
