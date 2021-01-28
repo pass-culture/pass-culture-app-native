@@ -236,6 +236,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:154
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:44
+#: src/features/tutorials/components/GenericTutorial.tsx:45
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -374,6 +375,10 @@ msgstr "Le lien est expiré !"
 #: src/features/deeplinks/useDeeplinkUrlHandler.ts:20
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
+
+#: src/features/tutorials/pages/FirstTutorial.tsx:8
+msgid "Le pass Culture"
+msgstr "Le pass Culture"
 
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:32
 msgid "Le pass Culture est accessible à tous !"
@@ -641,6 +646,10 @@ msgstr "Ton mot de passe"
 msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
+#: src/features/tutorials/components/GenericTutorial.tsx:29
+msgid "Tout passer"
+msgstr "Tout passer"
+
 #. Welcome body message
 #: src/features/home/pages/Home.tsx:76
 msgid "Toute la culture dans ta main"
@@ -651,8 +660,8 @@ msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:21
-msgid "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
-msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
+msgid "Tu es éligible jusqu'au\\u00a0"
+msgstr "Tu es éligible jusqu'au\\u00a0"
 
 #: src/features/search/sections/OfferType.tsx:20
 msgid "Type d'offre"
@@ -724,6 +733,10 @@ msgstr "ainsi que notre"
 msgid "auteur"
 msgstr "auteur"
 
+#: src/features/tutorials/pages/FirstTutorial.tsx:8
+msgid "c'est..."
+msgstr "c'est..."
+
 #: src/features/search/atoms/NoSearchResult.tsx:41
 msgid "autour de chez toi"
 msgstr "autour de chez toi"
@@ -786,6 +799,10 @@ msgstr "sous genre"
 #: src/features/auth/signup/SetEmail.tsx:66
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
+
+#: src/features/tutorials/pages/FirstTutorial.tsx:8
+msgid "une initiative financée par le Ministère de la Culture."
+msgstr "une initiative financée par le Ministère de la Culture."
 
 #: src/features/offer/atoms/OfferSeeMore.tsx:17
 msgid "voir plus"

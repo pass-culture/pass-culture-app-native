@@ -1,5 +1,6 @@
 import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
+import { Alert } from 'react-native'
 
 import { FirstTutorial } from 'features/tutorials/pages/FirstTutorial'
 
@@ -20,5 +21,14 @@ describe('FirstTutorial page', () => {
     expect(navigate).toBeCalledWith('Home', {
       shouldDisplayLoginModal: false,
     })
+  })
+
+  it('should show alert when clicking next button', () => {
+    const { getByText } = render(<FirstTutorial />)
+
+    const nextButton = getByText('Continuer')
+    fireEvent.press(nextButton)
+
+    expect(Alert.alert).toBeCalled()
   })
 })
