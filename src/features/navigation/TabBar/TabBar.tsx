@@ -9,6 +9,7 @@ import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getShadow, getSpacing, Spacer, UniqueColors } from 'ui/theme'
 
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
@@ -30,6 +31,9 @@ const mapRouteToIcon = (
       return BicolorFavorite
     case 'Profile':
       return BicolorProfile
+    // TODO: ticket 6311: remove the cheat area
+    case 'CheatArea':
+      return Warning
     default:
       return BicolorLogo
   }

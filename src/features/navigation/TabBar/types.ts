@@ -8,4 +8,6 @@ export type TabParamList = {
   Bookings: undefined
   Favorites: undefined
   Profile: undefined
+  // TODO: ticket 6311: remove the cheat area
+  CheatArea: undefined
 }
