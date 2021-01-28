@@ -4,7 +4,7 @@ import React from 'react'
 import { QueryClient } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { CategoryNameEnum, OfferResponse, UserProfileResponse } from 'api/gen'
+import { CategoryNameEnum, ExpenseDomain, OfferResponse, UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -35,10 +35,19 @@ jest.mock('features/auth/AuthContext', () => ({
 }))
 
 const userProfileAPIResponse: UserProfileResponse = {
-  expenses: [],
   email: 'email@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,
+  expenses: [
+    {
+      current: 89,
+      domain: ExpenseDomain.All,
+      limit: 200,
+    },
+  ],
+  hasAllowedRecommendations: true,
+  isEligible: true,
+  needsToFillCulturalSurvey: true,
 }
 
 describe('<OfferIconCaptions />', () => {

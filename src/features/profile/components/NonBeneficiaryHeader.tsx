@@ -1,11 +1,16 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren } from 'react'
 import { Dimensions, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useGetIdCheckToken } from 'features/auth/api'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { dateDiffInFullYears, formatToSlashedFrenchDate } from 'libs/dates'
 import { _ } from 'libs/i18n'
+import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
+import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { computeEligibilityExpiracy } from '../utils'
@@ -18,10 +23,15 @@ interface NonBeneficiaryHeaderProps {
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
+  const { navigate } = useNavigation<UseNavigationType>()
   const age = dateDiffInFullYears(new Date(props.dateOfBirth), new Date())
   const expiracyDate = formatToSlashedFrenchDate(
     computeEligibilityExpiracy(props.dateOfBirth).toISOString()
   )
+
+  const shouldLoadIdCheckToken = age === 18
+  const { data } = useGetIdCheckToken(shouldLoadIdCheckToken)
+  const licenceToken = data?.token || ''
 
   let body = null
   switch (true) {
@@ -33,6 +43,13 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
         <View testID="18-view">
           <Typo.Caption>{_(t`Tu es éligible jusqu'au\u00a0${expiracyDate}`)}</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
+          <ModuleBanner
+            onPress={() => navigate('IdCheck', { email: props.email, licenceToken })}
+            leftIcon={<ThumbUp size={68} />}
+            title={_(t`Profite de 300\u00a0€\u00a0`)}
+            subTitle={_(t`à dépenser dans l'application`)}
+            testID="18-banner"
+          />
         </View>
       )
       break

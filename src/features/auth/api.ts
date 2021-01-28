@@ -1,6 +1,8 @@
+import { useQuery } from 'react-query'
+
 import { api } from 'api/api'
-import { AccountRequest, SigninRequest } from 'api/gen'
-import { useLoginRoutine } from 'features/auth/AuthContext'
+import { AccountRequest, GetIdCheckTokenResponse, SigninRequest } from 'api/gen'
+import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
 
 type SignInResponse =
   | {
@@ -40,4 +42,14 @@ export function useSignUp(): (data: AccountRequest) => Promise<boolean> {
       return false
     }
   }
+}
+
+export function useGetIdCheckToken(queryCondition?: boolean) {
+  queryCondition = queryCondition ?? true
+
+  const { isLoggedIn } = useAuthContext()
+
+  return useQuery<GetIdCheckTokenResponse>('idCheckToken', () => api.getnativev1idCheckToken(), {
+    enabled: queryCondition && isLoggedIn,
+  })
 }
