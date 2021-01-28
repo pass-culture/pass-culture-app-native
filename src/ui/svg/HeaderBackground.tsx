@@ -4,11 +4,15 @@ import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-nativ
 
 import { getSpacing } from '../theme'
 
-export const HeaderBackground: React.FC = (): JSX.Element => {
+interface HeaderBackgroundProps {
+  width?: number | string
+}
+
+export const HeaderBackground: React.FC<HeaderBackgroundProps> = (props): JSX.Element => {
   return (
     <Svg
       preserveAspectRatio="none"
-      width={Dimensions.get('screen').width + getSpacing(1)}
+      width={props.width || defaultWidth}
       height={getSpacing(70)}
       viewBox={`0 0 375 352`}>
       <Defs>
@@ -36,3 +40,5 @@ export const HeaderBackground: React.FC = (): JSX.Element => {
     </Svg>
   )
 }
+
+const defaultWidth = Dimensions.get('screen').width + getSpacing(1)

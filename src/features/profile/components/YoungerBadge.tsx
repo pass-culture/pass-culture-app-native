@@ -8,7 +8,7 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 export function YoungerBadge() {
   return (
-    <Container>
+    <Container testID="younger-badge">
       <IconContainer>
         <Clock size={48} />
       </IconContainer>
