@@ -9,6 +9,7 @@ import { CategoryNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
+import { SectionRow } from 'features/profile/components/SectionRow'
 import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
@@ -472,6 +473,64 @@ export const AppComponents: FunctionComponent = () => {
 
       <Divider />
 
+      {/* Profile components */}
+      <AccordionItem title="Profile components">
+        <GreyView>
+          <Spacer.Column numberOfSpaces={1} />
+          <Text> Progress bars </Text>
+          <Spacer.Column numberOfSpaces={3} />
+          <RowWrap>
+            <ProgressBar progress={0} color={ColorsEnum.GREEN_VALID} icon={Close} />
+            <ProgressBar progress={0.3} color={ColorsEnum.PRIMARY_DARK} icon={Close} />
+            <ProgressBar progress={1} color={ColorsEnum.SECONDARY} icon={Close} />
+          </RowWrap>
+          <Spacer.Column numberOfSpaces={1} />
+          <RowWrap>
+            <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={Close} />
+            <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Close} />
+          </RowWrap>
+        </GreyView>
+        <Spacer.Column numberOfSpaces={2} />
+        <Text> Credit Ceiling (max=200) </Text>
+        <GreyView>
+          <Spacer.Column numberOfSpaces={2} />
+          <RowWrap>
+            <CreditCeiling amount={0} max={200} type={'all'} depositVersion={1} />
+            <CreditCeiling amount={155} max={200} type={'physical'} depositVersion={1} />
+            <CreditCeiling amount={200} max={200} type={'digital'} depositVersion={2} />
+          </RowWrap>
+        </GreyView>
+        <FlexView>
+          <Text>Section Row </Text>
+          <SectionRow
+            type="navigable"
+            title="navigable"
+            icon={Close}
+            onPress={() => Alert.alert('gooo !!!')}
+          />
+          <SectionRow type="clickable" title="with CTA" icon={Close} cta={<ExampleSwitch />} />
+          <SectionRow
+            type="clickable"
+            title="just clickable"
+            icon={Close}
+            onPress={() => Alert.alert('clicked')}
+          />
+        </FlexView>
+        <View>
+          <NonBeneficiaryHeader email="john@doe.com" dateOfBirth={`${year}-01-28T01:32:15`} />
+        </View>
+        <AlignedText>
+          <Text>Date de naissance: {year}-01-28</Text>
+        </AlignedText>
+        <AlignedText>
+          <Button title="-1 an" onPress={() => setYear((year) => year + 1)} />
+          <Spacer.Column numberOfSpaces={2} />
+          <Text>{THIS_YEAR - year} ans</Text>
+          <Spacer.Column numberOfSpaces={2} />
+          <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
+        </AlignedText>
+      </AccordionItem>
+
       {/* Your components */}
       <AccordionItem title="Your components">
         <AlignedText>
@@ -506,46 +565,7 @@ export const AppComponents: FunctionComponent = () => {
             onPress={() => setCurrentStep((step) => (step === NUMBER_OF_STEPS ? step : step + 1))}
           />
         </AlignedText>
-        <GreyView>
-          <Spacer.Column numberOfSpaces={1} />
-          <Text> Progress bars </Text>
-          <Spacer.Column numberOfSpaces={3} />
-          <RowWrap>
-            <ProgressBar progress={0} color={ColorsEnum.GREEN_VALID} icon={Close} />
-            <ProgressBar progress={0.3} color={ColorsEnum.PRIMARY_DARK} icon={Close} />
-            <ProgressBar progress={1} color={ColorsEnum.SECONDARY} icon={Close} />
-          </RowWrap>
-          <Spacer.Column numberOfSpaces={1} />
-          <RowWrap>
-            <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={Close} />
-            <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Close} />
-          </RowWrap>
-        </GreyView>
-        <Spacer.Column numberOfSpaces={2} />
-        <Text> Credit Ceiling (max=200) </Text>
-        <GreyView>
-          <Spacer.Column numberOfSpaces={2} />
-          <RowWrap>
-            <CreditCeiling amount={0} max={200} type={'all'} depositVersion={1} />
-            <CreditCeiling amount={155} max={200} type={'physical'} depositVersion={1} />
-            <CreditCeiling amount={200} max={200} type={'digital'} depositVersion={2} />
-          </RowWrap>
-        </GreyView>
-        <AlignedText>
-          <NonBeneficiaryHeader email="john@doe.com" dateOfBirth={`${year}-01-28T01:32:15`} />
-        </AlignedText>
-        <AlignedText>
-          <Text>Date de naissance: {year}-01-28</Text>
-        </AlignedText>
-        <AlignedText>
-          <Button title="-1 an" onPress={() => setYear((year) => year + 1)} />
-          <Spacer.Column numberOfSpaces={2} />
-          <Text>{THIS_YEAR - year} ans</Text>
-          <Spacer.Column numberOfSpaces={2} />
-          <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
-        </AlignedText>
       </AccordionItem>
-
       <Spacer.Column numberOfSpaces={5} />
       <Spacer.BottomScreen />
     </StyledScrollView>
@@ -561,6 +581,9 @@ const Center = styled(View)({
 })
 const GreyView = styled.View({
   backgroundColor: ColorsEnum.GREY_LIGHT,
+})
+const FlexView = styled.View({
+  flex: 1,
 })
 
 const ColoredModalHeader = styled(ModalHeader).attrs({
