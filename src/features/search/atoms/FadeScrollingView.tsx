@@ -10,7 +10,7 @@ export const useDebouncedScrolling = () => {
         if (timeoutID) clearTimeout(timeoutID)
         setIsScrolling(true)
       } else {
-        timeoutID = setTimeout(() => setIsScrolling(false), 1000)
+        timeoutID = setTimeout(() => setIsScrolling(false), 500)
       }
     },
     []
