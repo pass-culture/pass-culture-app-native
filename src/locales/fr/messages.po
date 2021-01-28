@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/search/atoms/NoSearchResult.tsx:35
+msgid "\""
+msgstr "\""
+
 #: src/libs/parsers/getDisplayPrice.ts:27
 msgid "/ place"
 msgstr "/ place"
@@ -384,6 +388,10 @@ msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
+#: src/features/search/atoms/NoSearchResult.tsx:39
+msgid "Modifie ta recherche ou découvre toutes les offres"
+msgstr "Modifie ta recherche ou découvre toutes les offres"
+
 #: src/features/auth/login/Login.tsx:80
 #: src/features/auth/signup/SetPassword.tsx:38
 msgid "Mot de passe"
@@ -438,6 +446,10 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
+#: src/features/search/atoms/NoSearchResult.tsx:32
+msgid "Oups !"
+msgstr "Oups !"
+
 #: src/features/search/components/SearchLandingPage.tsx:34
 msgid "Où"
 msgstr "Où"
@@ -449,6 +461,10 @@ msgstr "Où ?"
 #: src/features/search/components/locationChoice.utils.tsx:13
 msgid "Partout"
 msgstr "Partout"
+
+#: src/features/search/atoms/NoSearchResult.tsx:34
+msgid "Pas de résultat trouvé"
+msgstr "Pas de résultat trouvé"
 
 #: src/features/profile/components/YoungerBadge.tsx:14
 msgid "Patience ! L’année de tes 18 ans tu bénéficieras de 300€ offerts à dépenser sur l’application."
@@ -578,7 +594,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Sorties"
 msgstr "Sorties"
 
-#: src/features/search/components/SearchBox.tsx:46
+#: src/features/search/components/SearchBox.tsx:38
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
@@ -689,6 +705,10 @@ msgstr "ainsi que notre"
 msgid "auteur"
 msgstr "auteur"
 
+#: src/features/search/atoms/NoSearchResult.tsx:41
+msgid "autour de chez toi"
+msgstr "autour de chez toi"
+
 #: src/features/offer/pages/OfferDescription.tsx:21
 msgid "crédit photo"
 msgstr "crédit photo"
@@ -726,6 +746,10 @@ msgstr "intervenant"
 #: src/features/offer/pages/OfferDescription.tsx:24
 msgid "metteur en scène"
 msgstr "metteur en scène"
+
+#: src/features/search/atoms/NoSearchResult.tsx:35
+msgid "pour \""
+msgstr "pour \""
 
 #. signup birthday page reCAPTCHA
 #: src/features/auth/signup/SetBirthday.tsx:151
