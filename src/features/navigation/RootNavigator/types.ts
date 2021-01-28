@@ -42,6 +42,7 @@ export type RootStackParamList = {
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: undefined
   VerifyEligibility: { email: string; licenceToken: string }
+  FirstTutorial: undefined
 }
 
 export type AllNavParamList = RootStackParamList & TabParamList
