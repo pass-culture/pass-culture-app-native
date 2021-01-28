@@ -1,0 +1,362 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FirstTutorial page should display animation 1`] = `
+Array [
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "flex-end",
+          "paddingTop": 24,
+          "width": "40%",
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="button-container"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#626262",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 5,
+              "maxWidth": 650,
+            },
+          ]
+        }
+        testID="button-title"
+        textColor="#626262"
+      >
+        Tout passer
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+  >
+    <View>
+      undefined-Lottie-Mock
+    </View>
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#151515"
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "display": "flex",
+            "fontFamily": "Montserrat-ExtraBoldItalic",
+            "fontSize": 28,
+            "lineHeight": 34,
+          },
+        ]
+      }
+    >
+      Le pass Culture
+    </Text>
+    <Text
+      color="#151515"
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-MediumItalic",
+            "fontSize": 24,
+            "lineHeight": 28,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      c'est...
+    </Text>
+    <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#151515"
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "flexDirection": "column",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+            "width": "60%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      une initiative financée par le Ministère de la Culture.
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+    </Text>
+    <View
+      numberOfSpaces={15}
+      style={
+        Array [
+          Object {
+            "height": 60,
+          },
+        ]
+      }
+    />
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="button-container"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 5,
+              "maxWidth": 650,
+            },
+          ]
+        }
+        testID="button-title"
+        textColor="#ffffff"
+      >
+        Continuer
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
+        }
+      >
+        <View
+          fill="#eb0055"
+          height={12}
+          testID="dot-icon"
+          width={12}
+        >
+          dot-icon-SVG-Mock
+        </View>
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
+        }
+      >
+        <View
+          fill="#c7c7cc"
+          height={8}
+          testID="dot-icon"
+          width={8}
+        >
+          dot-icon-SVG-Mock
+        </View>
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
+        }
+      >
+        <View
+          fill="#c7c7cc"
+          height={8}
+          testID="dot-icon"
+          width={8}
+        >
+          dot-icon-SVG-Mock
+        </View>
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "width": 8,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
+        }
+      >
+        <View
+          fill="#c7c7cc"
+          height={8}
+          testID="dot-icon"
+          width={8}
+        >
+          dot-icon-SVG-Mock
+        </View>
+      </View>
+    </View>
+  </View>,
+]
+`;
