@@ -139,31 +139,8 @@ exports[`Search component should render correctly 1`] = `
             ]
           }
           underlineColorAndroid="transparent"
-          value="query"
+          value=""
         />
-        <View
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            undefined-SVG-Mock
-          </View>
-        </View>
       </View>
     </View>
   </View>
