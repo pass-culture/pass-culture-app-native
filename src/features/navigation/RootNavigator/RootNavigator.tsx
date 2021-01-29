@@ -28,6 +28,10 @@ export const RootNavigator: React.FC = () => {
     analytics.logScreenView('Home')
   }, [])
 
+  // TODO: check if should display tutorial
+  // eslint-disable-next-line no-constant-condition
+  const initialRouteName = true ? 'FirstTutorial' : 'TabNavigator'
+
   const screens = useMemo(
     () =>
       routes
@@ -40,7 +44,7 @@ export const RootNavigator: React.FC = () => {
   return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
       <RootStack.Navigator
-        initialRouteName="TabNavigator"
+        initialRouteName={initialRouteName}
         headerMode="screen"
         screenOptions={{ headerShown: false }}>
         {screens}
