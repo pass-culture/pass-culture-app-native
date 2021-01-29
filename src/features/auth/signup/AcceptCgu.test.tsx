@@ -1,5 +1,6 @@
+import * as netInfoModule from '@react-native-community/netinfo'
 import { StackScreenProps } from '@react-navigation/stack'
-import { fireEvent, render, waitFor } from '@testing-library/react-native'
+import { act, fireEvent, render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import { Linking } from 'react-native'
@@ -21,8 +22,23 @@ import { contactSupport } from '../support.services'
 
 import { AcceptCgu } from './AcceptCgu'
 
+afterEach(jest.clearAllMocks)
+
+function simulateNoNetwork() {
+  jest.spyOn(netInfoModule, 'useNetInfo').mockReturnValue({
+    isConnected: false,
+  } as netInfoModule.NetInfoState)
+}
+
+function simulateConnectedNetwork() {
+  jest.spyOn(netInfoModule, 'useNetInfo').mockReturnValue({
+    isConnected: true,
+  } as netInfoModule.NetInfoState)
+}
+
 describe('AcceptCgu Page', () => {
   it('should navigate to the previous page on back navigation', () => {
+    simulateConnectedNetwork()
     const { getByTestId } = renderAcceptCGU()
     const leftIcon = getByTestId('leftIcon')
     fireEvent.press(leftIcon)
@@ -31,6 +47,7 @@ describe('AcceptCgu Page', () => {
   })
 
   it('should open mail app when clicking on contact support button', async () => {
+    simulateConnectedNetwork()
     const { findByText } = renderAcceptCGU()
 
     const contactSupportButton = await findByText('Contacter le support')
@@ -40,24 +57,28 @@ describe('AcceptCgu Page', () => {
       expect(contactSupport.forGenericQuestion).toBeCalledTimes(1)
     })
   })
+
   it('should redirect to the "CGU" page', async () => {
+    simulateConnectedNetwork()
     jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
 
     const { getByTestId } = renderAcceptCGU()
 
-    const link = await getByTestId('external-link-cgu')
+    const link = getByTestId('external-link-cgu')
     fireEvent.press(link)
 
     await waitForExpect(() => {
       expect(Linking.openURL).toHaveBeenCalledWith(env.CGU_LINK)
     })
   })
+
   it('should redirect to the "Politique de confidentialité" page', async () => {
+    simulateConnectedNetwork()
     jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
 
     const { getByTestId } = renderAcceptCGU()
 
-    const link = await getByTestId('external-link-privacy-policy')
+    const link = getByTestId('external-link-privacy-policy')
     fireEvent.press(link)
 
     await waitForExpect(() => {
@@ -65,7 +86,32 @@ describe('AcceptCgu Page', () => {
     })
   })
 
-  it('should call API to create user account ', async () => {
+  it("should NOT open reCAPTCHA challenge's modal when there is no network", async () => {
+    simulateNoNetwork()
+    const renderAPI = renderAcceptCGU()
+    const recaptchaWebviewModal = renderAPI.getByTestId('recaptcha-webview-modal')
+    expect(recaptchaWebviewModal.props.visible).toBeFalsy()
+
+    fireEvent.press(renderAPI.getByText('Accepter et s’inscrire'))
+
+    expect(recaptchaWebviewModal.props.visible).toBeFalsy()
+    expect(renderAPI.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
+  })
+
+  it("should open reCAPTCHA challenge's modal when pressing on signup button", () => {
+    simulateConnectedNetwork()
+    const renderAPI = renderAcceptCGU()
+    const recaptchaWebviewModal = renderAPI.getByTestId('recaptcha-webview-modal')
+
+    expect(recaptchaWebviewModal.props.visible).toBeFalsy()
+
+    fireEvent.press(renderAPI.getByText('Accepter et s’inscrire'))
+
+    expect(recaptchaWebviewModal.props.visible).toBeTruthy()
+  })
+
+  it('should call API to create user account when reCAPTCHA challenge is successful', async () => {
+    simulateConnectedNetwork()
     const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
     server.use(
       rest.post<AccountRequest, EmptyResponse>(
@@ -73,10 +119,14 @@ describe('AcceptCgu Page', () => {
         (_req, res, ctx) => res.once(ctx.status(200), ctx.json({}))
       )
     )
-    const { findByText } = renderAcceptCGU()
+    const renderAPI = renderAcceptCGU()
+    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
-    const contactSupportButton = await findByText('Accepter et s’inscrire')
-    fireEvent.press(contactSupportButton)
+    act(() => {
+      recaptchaWebview.props.onMessage({
+        nativeEvent: { data: '{ "message": "success", "token": "fakeToken" }' },
+      })
+    })
 
     await waitFor(() => {
       expect(postnativev1accountSpy).toBeCalledWith(
@@ -85,7 +135,7 @@ describe('AcceptCgu Page', () => {
           email: 'john.doe@example.com',
           hasAllowedRecommendations: true,
           password: 'password',
-          token: 'ABCDEF',
+          token: 'fakeToken',
         },
         { credentials: 'omit' }
       )
@@ -95,7 +145,48 @@ describe('AcceptCgu Page', () => {
     })
   })
 
+  it('should NOT call API to create user account when reCAPTCHA challenge was failed', async () => {
+    simulateConnectedNetwork()
+    const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
+    const renderAPI = renderAcceptCGU()
+    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+
+    act(() => {
+      recaptchaWebview.props.onMessage({
+        nativeEvent: { data: '{ "message": "error", "error": "someError" }' },
+      })
+    })
+
+    await waitFor(() => {
+      expect(
+        renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
+      ).toBeTruthy()
+      expect(postnativev1accountSpy).not.toBeCalled()
+      expect(navigate).not.toBeCalled()
+    })
+  })
+
+  it('should NOT call API to create user account when reCAPTCHA token has expired', async () => {
+    simulateConnectedNetwork()
+    const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
+    const renderAPI = renderAcceptCGU()
+    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+
+    act(() => {
+      recaptchaWebview.props.onMessage({
+        nativeEvent: { data: '{ "message": "expire" }' },
+      })
+    })
+
+    await waitFor(() => {
+      expect(renderAPI.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeTruthy()
+      expect(postnativev1accountSpy).not.toBeCalled()
+      expect(navigate).not.toBeCalled()
+    })
+  })
+
   it('should open quit signup modal', () => {
+    simulateConnectedNetwork()
     const { getByTestId, queryByText } = renderAcceptCGU()
 
     const rightIcon = getByTestId('rightIcon')
@@ -106,6 +197,7 @@ describe('AcceptCgu Page', () => {
   })
 
   it('should display 4 step dots with the last one as current step', () => {
+    simulateConnectedNetwork()
     const { getAllByTestId } = renderAcceptCGU()
     const dots = getAllByTestId('dot-icon')
     expect(dots.length).toBe(4)
@@ -114,6 +206,7 @@ describe('AcceptCgu Page', () => {
 
   describe('<AcceptCgu /> - Analytics', () => {
     it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
+      simulateConnectedNetwork()
       const { getByTestId, getByText } = renderAcceptCGU()
 
       const rightIcon = getByTestId('rightIcon')
