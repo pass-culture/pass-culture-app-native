@@ -5,10 +5,16 @@ export const useRequestGeolocPermission = () => {
   const [permissionGranted, setPermissionGranted] = useState<boolean>(false)
 
   useEffect(() => {
-    Geolocation.requestAuthorization('whenInUse').then((value) => {
-      if (value === 'granted') setPermissionGranted(true)
+    requestGeolocPermission().then((granted) => {
+      if (granted) setPermissionGranted(true)
     })
   }, [])
 
   return permissionGranted
 }
+
+export const requestGeolocPermission = (): Promise<boolean> =>
+  Geolocation.requestAuthorization('whenInUse').then((value) => {
+    if (value === 'granted') return true
+    return false
+  })
