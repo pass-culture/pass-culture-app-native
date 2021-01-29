@@ -13,8 +13,8 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 export function EligibilityConfirmed() {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  function goToHomeWithoutModal() {
-    navigate('Home', { shouldDisplayLoginModal: false })
+  function goToCulturalSurvey() {
+    navigate('CulturalSurvey')
   }
 
   return (
@@ -26,7 +26,7 @@ export function EligibilityConfirmed() {
         )}
       </StyledBody>
       <Spacer.Column numberOfSpaces={15} />
-      <ButtonPrimaryWhite title={_(t`On y va !`)} onPress={goToHomeWithoutModal} />
+      <ButtonPrimaryWhite title={_(t`On y va !`)} onPress={goToCulturalSurvey} />
     </GenericInfoPage>
   )
 }

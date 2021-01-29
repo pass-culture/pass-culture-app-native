@@ -15,15 +15,13 @@ describe('<AccountCreated />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should redirect to home page WHEN go back to home button is clicked', async () => {
+  it('should redirect to cultural survey page WHEN "On y va !" button is clicked', async () => {
     const renderAPI = render(<AccountCreated />)
 
     const button = await renderAPI.findByText('On y va !')
     fireEvent.press(button)
 
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('Home', {
-      shouldDisplayLoginModal: false,
-    })
+    expect(navigate).toBeCalledWith('CulturalSurvey')
   })
 })
