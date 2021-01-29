@@ -109,8 +109,7 @@ msgstr "Aucun résultat"
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
 
-#: src/features/search/components/SearchLandingPage.tsx:35
-#: src/features/search/components/locationChoice.utils.tsx:10
+#: src/features/search/components/locationChoice.utils.tsx:15
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
@@ -162,12 +161,12 @@ msgstr "Chargement en cours..."
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
-#: src/features/search/components/locationChoice.utils.tsx:14
-#: src/features/search/pages/LocationPicker.tsx:26
+#: src/features/search/components/locationChoice.utils.tsx:17
+#: src/features/search/pages/LocationPicker.tsx:59
 msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
-#: src/features/search/pages/LocationPicker.tsx:24
+#: src/features/search/pages/LocationPicker.tsx:55
 msgid "Choisir un lieu..."
 msgstr "Choisir un lieu..."
 
@@ -302,8 +301,8 @@ msgstr "Erreur lors de la récupération du token d'accès"
 msgid "Favorites"
 msgstr "Favoris"
 
-#: src/features/search/atoms/Buttons/Filter.tsx:17
-#: src/features/search/pages/SearchFilter.tsx:79
+#: src/features/search/atoms/Buttons/Filter.tsx:21
+#: src/features/search/pages/SearchFilter.tsx:82
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -340,7 +339,7 @@ msgstr "ISBN"
 msgid "Impossible de réserver"
 msgstr "Impossible de réserver"
 
-#: src/features/search/components/SearchLandingPage.tsx:25
+#: src/features/search/components/SearchLandingPage.tsx:26
 msgid "Je cherche"
 msgstr "Je cherche"
 
@@ -372,8 +371,8 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
-#: src/features/search/components/LocationSection.tsx:30
-#: src/features/search/pages/LocationFilter.tsx:24
+#: src/features/search/pages/LocationFilter.tsx:51
+#: src/features/search/sections/Location.tsx:18
 msgid "Localisation"
 msgstr "Localisation"
 
@@ -439,7 +438,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/search/components/SearchLandingPage.tsx:33
+#: src/features/search/components/SearchLandingPage.tsx:34
 msgid "Où"
 msgstr "Où"
 
@@ -447,8 +446,7 @@ msgstr "Où"
 msgid "Où ?"
 msgstr "Où ?"
 
-#: src/features/search/components/locationChoice.utils.tsx:12
-#: src/features/search/components/locationChoice.utils.tsx:16
+#: src/features/search/components/locationChoice.utils.tsx:13
 msgid "Partout"
 msgstr "Partout"
 
@@ -479,6 +477,10 @@ msgstr "Pourquoi ?"
 #: src/features/search/sections/Price.tsx:17
 msgid "Prix"
 msgstr "Prix"
+
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:32
+msgid "Profil"
+msgstr "Profil"
 
 #: src/features/profile/pages/Profile.tsx:12
 msgid "Profile"
@@ -545,11 +547,11 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/components/LocationSection.tsx:21
+#: src/features/search/sections/Location.tsx:26
 msgid "Seules les offres Sorties et Physiques seront affichées"
 msgstr "Seules les offres Sorties et Physiques seront affichées"
 
-#: src/features/search/pages/LocationFilter.tsx:10
+#: src/features/search/pages/LocationFilter.tsx:44
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 
@@ -612,6 +614,10 @@ msgstr "Toute la culture dans ta main"
 #: src/features/auth/signup/EligibilityConfirmed.tsx:15
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
+
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:21
+msgid "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
+msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 
 #: src/features/search/sections/OfferType.tsx:20
 msgid "Type d'offre"
