@@ -21,6 +21,7 @@ export type RootStackParamList = {
   AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }
   AppComponents: undefined
   CheatCodes: undefined
+  CulturalSurvey: undefined
   EligibilityConfirmed: undefined
   ForgottenPassword: undefined
   IdCheck: { email: string; licenceToken: string }
