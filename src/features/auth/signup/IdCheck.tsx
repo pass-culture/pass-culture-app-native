@@ -30,28 +30,26 @@ export const IdCheck: React.FC<Props> = function (props) {
     }
   }
 
-  if (currentRoute?.name === 'IdCheck') {
-    return (
-      <StyledWebview
-        testID="idcheck-webview"
-        source={{ uri }}
-        startInLoadingState={true}
-        renderLoading={() => (
-          <LoadingPageContainer>
-            <LoadingPage />
-          </LoadingPageContainer>
-        )}
-        onNavigationStateChange={onNavigationStateChange}
-      />
-    )
-  }
-  return null
+  if (currentRoute?.name !== 'IdCheck') return null
+  return (
+    <StyledWebview
+      testID="idcheck-webview"
+      source={{ uri }}
+      startInLoadingState={true}
+      renderLoading={() => (
+        <LoadingPageContainer>
+          <LoadingPage />
+        </LoadingPageContainer>
+      )}
+      onNavigationStateChange={onNavigationStateChange}
+    />
+  )
 }
 
 const StyledWebview = styled(WebView)({
   height: '100%',
   width: '100%',
-  opacity: 0.99, // DO NOT REMOVE : somehow, this opacity value prevents webview to crash on Android
+  opacity: 0.99, // DO NOT REMOVE : this opacity value prevents webview to crash on Android. See https://github.com/react-native-webview/react-native-webview/issues/429
 })
 
 const LoadingPageContainer = styled.View({

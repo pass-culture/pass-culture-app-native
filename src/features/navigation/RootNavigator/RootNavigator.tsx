@@ -21,6 +21,7 @@ import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
+import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial'
 import { Offer, OfferDescription } from 'features/offer'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
@@ -63,6 +64,7 @@ export const RootNavigator: React.FC = () => {
         />
         <RootStack.Screen name="AppComponents" component={AppComponents} />
         <RootStack.Screen name="CheatCodes" component={CheatCodes} />
+        <RootStack.Screen name="CulturalSurvey" component={CulturalSurvey} />
         <RootStack.Screen name="EligibilityConfirmed" component={EligibilityConfirmed} />
         <RootStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
         <RootStack.Screen name="IdCheck" component={IdCheck} />
