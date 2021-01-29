@@ -320,6 +320,8 @@ PODS:
     - React
   - react-native-geolocation-service (5.0.0):
     - React
+  - react-native-get-random-values (1.5.1):
+    - React-Core
   - react-native-safe-area-context (3.1.8):
     - React-Core
   - react-native-sensitive-info (5.5.8):
@@ -473,6 +475,7 @@ DEPENDENCIES:
   - "react-native-config (from `../node_modules/@bam.tech/react-native-config`)"
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
+  - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-sensitive-info (from `../node_modules/react-native-sensitive-info`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
@@ -578,6 +581,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-flipper"
   react-native-geolocation-service:
     :path: "../node_modules/react-native-geolocation-service"
+  react-native-get-random-values:
+    :path: "../node_modules/react-native-get-random-values"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-sensitive-info:
@@ -684,6 +689,7 @@ SPEC CHECKSUMS:
   react-native-config: 056581a0891d0269428219c45c696dd91c6f9eee
   react-native-flipper: 7936453fec474d5360a14cf6ac035bd689611ffd
   react-native-geolocation-service: 141e33bdb179bcba10b216ee13962611e21f2be4
+  react-native-get-random-values: 41f0c91ac0da870e47b307e07752e9e54bc2dc7e
   react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
   react-native-sensitive-info: 400c6e3d27945e15c8cddb5b4b92233c85ee06f8
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865

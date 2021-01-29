@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import CodePush from 'react-native-code-push' // @codepush
 import 'react-native-gesture-handler' // @react-navigation
+import 'react-native-get-random-values' // required for `uuid` module to work
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
