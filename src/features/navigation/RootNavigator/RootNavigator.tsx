@@ -44,10 +44,15 @@ export const RootNavigator: React.FC = () => {
   useEffect(() => {
     analytics.logScreenView('Home')
   }, [])
+
+  // TODO: check if should display tutorial
+  // eslint-disable-next-line no-constant-condition
+  const initialRouteName = true ? 'FirstTutorial' : 'TabNavigator'
+
   return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
       <RootStack.Navigator
-        initialRouteName="TabNavigator"
+        initialRouteName={initialRouteName}
         headerMode="screen"
         screenOptions={{ headerShown: false }}>
         <RootStack.Screen name="AcceptCgu" component={AcceptCgu} />

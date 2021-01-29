@@ -1,13 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FirstTutorial page should display animation 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexGrow": 1,
+      },
+    ]
+  }
+>
+  <View
+    flex={1}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
   <View
     style={
       Array [
         Object {
           "alignSelf": "flex-end",
-          "paddingTop": 24,
           "width": "40%",
         },
       ]
@@ -64,125 +84,118 @@ Array [
         Tout passer
       </Text>
     </View>
-  </View>,
+  </View>
   <View
+    flex={2}
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "paddingBottom": 24,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View>
+    undefined-Lottie-Mock
+  </View>
+  <View
+    flex={0.8}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.8,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    color="#151515"
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "display": "flex",
+          "fontFamily": "Montserrat-ExtraBoldItalic",
+          "fontSize": 28,
+          "lineHeight": 34,
         },
       ]
     }
   >
-    <View>
-      undefined-Lottie-Mock
-    </View>
-    <View
-      numberOfSpaces={9}
-      style={
-        Array [
-          Object {
-            "height": 36,
-          },
-        ]
-      }
-    />
-    <Text
-      color="#151515"
-      style={
-        Array [
-          Object {
-            "color": "#151515",
-            "display": "flex",
-            "fontFamily": "Montserrat-ExtraBoldItalic",
-            "fontSize": 28,
-            "lineHeight": 34,
-          },
-        ]
-      }
-    >
-      Le pass Culture
-    </Text>
-    <Text
-      color="#151515"
-      style={
-        Array [
-          Object {
-            "color": "#151515",
-            "fontFamily": "Montserrat-MediumItalic",
-            "fontSize": 24,
-            "lineHeight": 28,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      c'est...
-    </Text>
-    <View
-      numberOfSpaces={10}
-      style={
-        Array [
-          Object {
-            "height": 40,
-          },
-        ]
-      }
-    />
-    <Text
-      color="#151515"
-      style={
-        Array [
-          Object {
-            "color": "#151515",
-            "flexDirection": "column",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "textAlign": "center",
-            "width": "60%",
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-      une initiative financée par le Ministère de la Culture.
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-    </Text>
-    <View
-      numberOfSpaces={15}
-      style={
-        Array [
-          Object {
-            "height": 60,
-          },
-        ]
-      }
-    />
+    Le pass Culture
+  </Text>
+  <Text
+    color="#151515"
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "fontFamily": "Montserrat-MediumItalic",
+          "fontSize": 24,
+          "lineHeight": 28,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    c'est...
+  </Text>
+  <View
+    flex={0.8}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.8,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    color="#151515"
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "flexDirection": "column",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "textAlign": "center",
+          "width": "60%",
+        },
+      ]
+    }
+  >
+    une initiative financée par le Ministère de la Culture.
+  </Text>
+  <View
+    flex={2}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "paddingHorizontal": 24,
+          "width": "100%",
+        },
+      ]
+    }
+  >
     <View
       accessible={true}
       focusable={true}
@@ -234,12 +247,53 @@ Array [
         Continuer
       </Text>
     </View>
+  </View>
+  <View
+    flex={0.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
     <View
-      numberOfSpaces={6}
       style={
         Array [
           Object {
-            "height": 24,
+            "alignSelf": "center",
+          },
+        ]
+      }
+    >
+      <View
+        fill="#eb0055"
+        height={12}
+        testID="dot-icon"
+        width={12}
+      >
+        dot-icon-SVG-Mock
+      </View>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
           },
         ]
       }
@@ -248,115 +302,88 @@ Array [
       style={
         Array [
           Object {
-            "display": "flex",
-            "flexDirection": "row",
+            "alignSelf": "center",
           },
         ]
       }
     >
       <View
-        style={
-          Array [
-            Object {
-              "alignSelf": "center",
-            },
-          ]
-        }
+        fill="#c7c7cc"
+        height={8}
+        testID="dot-icon"
+        width={8}
       >
-        <View
-          fill="#eb0055"
-          height={12}
-          testID="dot-icon"
-          width={12}
-        >
-          dot-icon-SVG-Mock
-        </View>
-      </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "width": 8,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "alignSelf": "center",
-            },
-          ]
-        }
-      >
-        <View
-          fill="#c7c7cc"
-          height={8}
-          testID="dot-icon"
-          width={8}
-        >
-          dot-icon-SVG-Mock
-        </View>
-      </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "width": 8,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "alignSelf": "center",
-            },
-          ]
-        }
-      >
-        <View
-          fill="#c7c7cc"
-          height={8}
-          testID="dot-icon"
-          width={8}
-        >
-          dot-icon-SVG-Mock
-        </View>
-      </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "width": 8,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "alignSelf": "center",
-            },
-          ]
-        }
-      >
-        <View
-          fill="#c7c7cc"
-          height={8}
-          testID="dot-icon"
-          width={8}
-        >
-          dot-icon-SVG-Mock
-        </View>
+        dot-icon-SVG-Mock
       </View>
     </View>
-  </View>,
-]
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+          },
+        ]
+      }
+    >
+      <View
+        fill="#c7c7cc"
+        height={8}
+        testID="dot-icon"
+        width={8}
+      >
+        dot-icon-SVG-Mock
+      </View>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+          },
+        ]
+      }
+    >
+      <View
+        fill="#c7c7cc"
+        height={8}
+        testID="dot-icon"
+        width={8}
+      >
+        dot-icon-SVG-Mock
+      </View>
+    </View>
+  </View>
+  <View
+    flex={1}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+</View>
 `;
