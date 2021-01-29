@@ -8,7 +8,7 @@ export type SearchParameters = Omit<
   FetchAlgoliaParameters,
   'hitsPerPage' | 'page' | 'sortBy' | 'keywords'
 >
-export type SearchState = SearchParameters & { showResults: boolean }
+export type SearchState = SearchParameters & { showResults: boolean; query: string }
 
 export const initialSearchState: SearchState = {
   aroundRadius: null,
@@ -31,6 +31,7 @@ export const initialSearchState: SearchState = {
   timeRange: null,
   showResults: false,
   place: null,
+  query: '',
 }
 
 export const DEFAULT_TIME_RANGE = [8, 24]
@@ -54,6 +55,7 @@ export type Action =
   | { type: 'LOCATION_AROUND_ME'; payload: AlgoliaGeolocation }
   | { type: 'LOCATION_EVERYWHERE' }
   | { type: 'LOCATION_PLACE'; payload: SuggestedPlace }
+  | { type: 'SET_QUERY'; payload: string }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -130,6 +132,11 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
         locationType: LocationType.PLACE,
         geolocation: action.payload.geolocation,
         place: action.payload,
+      }
+    case 'SET_QUERY':
+      return {
+        ...state,
+        query: action.payload,
       }
     default:
       return state

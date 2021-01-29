@@ -28,6 +28,8 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
   const [debouncedSearchState, setDebouncedSearchState] = useState<SearchState>(searchState)
   const { showResults, ...parameters } = debouncedSearchState
 
+  const query = debouncedSearchState.query
+
   useEffect(() => {
     const handler = setTimeout(() => setDebouncedSearchState(searchState), SEARCH_DEBOUNCE_MS)
     return () => clearTimeout(handler)
@@ -44,7 +46,7 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
     <SearchContext.Provider value={{ searchState, dispatch }}>
       <InstantSearch searchClient={searchClient} indexName={env.ALGOLIA_INDEX_NAME}>
         <Configure hitsPerPage={20} />
-        {showResults && <Configure {...buildSearchParameters(parameters)} />}
+        {showResults && <Configure {...buildSearchParameters(parameters)} query={query} />}
         {children}
       </InstantSearch>
     </SearchContext.Provider>
