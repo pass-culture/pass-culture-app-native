@@ -18,9 +18,7 @@ describe('FirstTutorial page', () => {
     const skipTutorials = getByText('Tout passer')
     fireEvent.press(skipTutorials)
 
-    expect(navigate).toBeCalledWith('Home', {
-      shouldDisplayLoginModal: false,
-    })
+    expect(navigate).toBeCalledWith('TabNavigator')
   })
 
   it('should show alert when clicking next button', () => {

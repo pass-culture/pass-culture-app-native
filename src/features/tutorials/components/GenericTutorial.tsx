@@ -35,7 +35,7 @@ export const GenericTutorial: FunctionComponent<Props> = (props) => {
   }, [])
 
   function goToHomeWithoutModal() {
-    navigate('Home', { shouldDisplayLoginModal: false })
+    navigate('TabNavigator')
   }
 
   function goToNextTutorial() {
