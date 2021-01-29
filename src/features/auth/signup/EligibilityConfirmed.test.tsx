@@ -10,15 +10,13 @@ beforeEach(() => {
 })
 
 describe('<EligibilityConfirmed />', () => {
-  it('should redirect to home page WHEN go back to home button is clicked', async () => {
+  it('should redirect to cultural survey page WHEN "On y va !" button is clicked', async () => {
     const { findByText } = render(<EligibilityConfirmed />)
 
     const button = await findByText('On y va !')
     fireEvent.press(button)
 
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('Home', {
-      shouldDisplayLoginModal: false,
-    })
+    expect(navigate).toBeCalledWith('CulturalSurvey')
   })
 })
