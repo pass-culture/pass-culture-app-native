@@ -25,8 +25,10 @@ export interface Environment {
   SENTRY_DSN: string
   SIGNIN_IDENTIFIER: string
   SIGNIN_PASSWORD: string
+  SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string
   URL_PREFIX: string
+  WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
 }
 

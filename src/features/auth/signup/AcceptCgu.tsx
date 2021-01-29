@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FC } from 'react'
-import { useQuery } from 'react-query'
+import React, { FC, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
@@ -10,10 +10,12 @@ import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
+import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomCardContentContainer, BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
+import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
@@ -30,39 +32,84 @@ type Props = StackScreenProps<RootStackParamList, 'AcceptCgu'>
 export const AcceptCgu: FC<Props> = ({ route }) => {
   const { goBack, navigate } = useNavigation<UseNavigationType>()
   const signUp = useSignUp()
-  const email = route.params.email
-  const isNewsletterChecked = route.params.isNewsletterChecked
-  const password = route.params.password
-  const birthday = route.params.birthday
-
+  const networkInfo = useNetInfo()
   const {
     visible: fullPageModalVisible,
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  const { refetch: subscribeQuery, isFetching } = useQuery('subscribe', subscribe, {
-    cacheTime: 0,
-    enabled: false,
-  })
+  const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
+  const [isFetching, setIsFetching] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  async function subscribe() {
-    const signupResponse = await signUp({
-      password: password,
-      birthdate: birthday,
-      hasAllowedRecommendations: isNewsletterChecked,
-      token: 'ABCDEF',
-      email: email,
-    })
-    if (!signupResponse?.isSuccess) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', subscribeQuery)
+  useEffect(() => {
+    if (!networkInfo.isConnected) {
+      setErrorMessage(_(t`Hors connexion : en attente du réseau.`))
+      setIsDoingReCaptchaChallenge(false)
     } else {
-      navigate('SignupConfirmationEmailSent', { email: email })
+      setErrorMessage(null)
+    }
+  }, [networkInfo.isConnected])
+
+  async function subscribe(token: string) {
+    try {
+      setIsFetching(true)
+      const { birthday, email, isNewsletterChecked, password } = route.params
+      const signupResponse = await signUp({
+        birthdate: birthday,
+        email,
+        hasAllowedRecommendations: isNewsletterChecked,
+        password,
+        token,
+      })
+      if (!signupResponse?.isSuccess) {
+        throw new AsyncError('NETWORK_REQUEST_FAILED')
+      }
+      navigate('SignupConfirmationEmailSent', { email })
+    } catch (_error) {
+      setIsFetching(false)
+      setErrorMessage(_(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`))
     }
   }
+
+  function openReCaptchaChallenge() {
+    if (!networkInfo.isConnected) {
+      return
+    }
+    setIsDoingReCaptchaChallenge(true)
+    setErrorMessage(null)
+  }
+
+  function onReCaptchaClose() {
+    setIsDoingReCaptchaChallenge(false)
+  }
+
+  function onReCaptchaError(_error: string) {
+    setIsDoingReCaptchaChallenge(false)
+    setErrorMessage(_(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`))
+  }
+
+  function onReCaptchaExpire() {
+    setIsDoingReCaptchaChallenge(false)
+    setErrorMessage(_(t`Le token reCAPTCHA a expiré, tu peux réessayer.`))
+  }
+
+  function onReCaptchaSuccess(token: string) {
+    setIsDoingReCaptchaChallenge(false)
+    subscribe(token)
+  }
+
   return (
     <React.Fragment>
       <BottomContentPage>
+        <ReCaptcha
+          onClose={onReCaptchaClose}
+          onError={onReCaptchaError}
+          onExpire={onReCaptchaExpire}
+          onSuccess={onReCaptchaSuccess}
+          isVisible={isDoingReCaptchaChallenge}
+        />
         <ModalHeader
           title={_(t`CGU & Données`)}
           leftIcon={ArrowPrevious}
@@ -108,9 +155,11 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
             <Spacer.Column numberOfSpaces={6} />
             <ButtonPrimary
               title={_(t`Accepter et s’inscrire`)}
-              onPress={() => subscribeQuery()}
-              disabled={isFetching}
+              onPress={openReCaptchaChallenge}
+              isLoading={isDoingReCaptchaChallenge || isFetching}
+              disabled={isDoingReCaptchaChallenge || isFetching || !networkInfo.isConnected}
             />
+            {errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
             <Spacer.Column numberOfSpaces={5} />
             <StepDots numberOfSteps={4} currentStep={4} />
           </CardContent>
