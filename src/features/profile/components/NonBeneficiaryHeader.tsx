@@ -31,7 +31,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     case age === 18:
       body = (
         <View testID="18-view">
-          <Typo.Caption>{_(t`Tu es éligible jusqu'au\u00a0`) + expiracyDate}</Typo.Caption>
+          <Typo.Caption>{_(t`Tu es éligible jusqu'au\u00a0${expiracyDate}`)}</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
         </View>
       )
