@@ -5,7 +5,7 @@ import React, { useRef } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { LocationType } from 'libs/algolia'
-import { useGeolocation } from 'libs/geolocation'
+import { useGeolocation, requestGeolocPermission } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { Banner, BannerType } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -28,9 +28,11 @@ export const LocationFilter: React.FC = () => {
     navigate('LocationPicker')
   }
 
-  const onPressAroundMe = () => {
+  const onPressAroundMe = async () => {
     if (position === null) {
-      // TODO: implement modale to invit to active geoloc
+      const permissionGranted = await requestGeolocPermission()
+      console.log(permissionGranted)
+      // TODO: setPosition dans le contexte
     } else {
       dispatch({
         type: 'LOCATION_AROUND_ME',

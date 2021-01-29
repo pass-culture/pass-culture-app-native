@@ -5,18 +5,24 @@ export const useRequestGeolocPermission = () => {
   const [permissionGranted, setPermissionGranted] = useState<boolean>(false)
 
   useEffect(() => {
-    PermissionsAndroid.requestMultiple([
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
-    ]).then((permissions) => {
-      if (
-        permissions[PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION] === 'granted' ||
-        permissions[PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION] === 'granted'
-      ) {
-        setPermissionGranted(true)
-      }
+    requestGeolocPermission().then((granted) => {
+      if (granted) setPermissionGranted(true)
     })
   }, [])
 
   return permissionGranted
+}
+
+export const requestGeolocPermission = async (): Promise<boolean> => {
+  const permissions = await PermissionsAndroid.requestMultiple([
+    PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+  ])
+  if (
+    permissions[PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION] === 'granted' ||
+    permissions[PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION] === 'granted'
+  ) {
+    return true
+  }
+  return false
 }
