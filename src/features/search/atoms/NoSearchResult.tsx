@@ -39,7 +39,7 @@ export const NoSearchResult: React.FC = () => {
       <DescriptionErrorTextContainer>
         <DescriptionErrorText>{_(t`Pas de résultat trouvé`) + ' '}</DescriptionErrorText>
         {debouncedQuery && (
-          <DescriptionErrorText>{_(t`pour "`) + debouncedQuery + _(t`"`)}</DescriptionErrorText>
+          <DescriptionErrorText>{_(t`pour`) + ` "${debouncedQuery}"`}</DescriptionErrorText>
         )}
       </DescriptionErrorTextContainer>
       <DescriptionErrorTextContainer>
