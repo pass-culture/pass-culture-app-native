@@ -4,6 +4,7 @@ export const Batch = {
 
 export const BatchUser = {
   getInstallationID: jest.fn(),
+  editor: jest.fn(),
 }
 
 export const BatchPush = {

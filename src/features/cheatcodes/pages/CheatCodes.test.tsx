@@ -12,6 +12,11 @@ const installationID = 'installationID'
 
 beforeAll(() => {
   BatchUser.getInstallationID.mockImplementation(() => Promise.resolve(installationID))
+  BatchUser.editor.mockImplementation(() => ({
+    setIdentifier: () => ({
+      save: jest.fn(),
+    }),
+  }))
 })
 
 jest.mock('features/auth/AuthContext')
