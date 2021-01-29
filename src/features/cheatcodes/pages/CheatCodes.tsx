@@ -37,6 +37,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   const [userEmail, setUserEmail] = useState('')
   useEffect(() => {
     getBatchInstallationID().then(setBatchInstallationId)
+    BatchUser.editor().setIdentifier('alainn').save()
   }, [])
   const ParsedDescription = highlightLinks(someOfferDescription)
 
