@@ -2,9 +2,9 @@ import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 import { Alert } from 'react-native'
 
-import { FirstTutorial } from 'features/tutorials/pages/FirstTutorial'
+import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial'
 
-import { navigate } from '../../../../__mocks__/@react-navigation/native'
+import { navigate } from '../../../../../__mocks__/@react-navigation/native'
 
 describe('FirstTutorial page', () => {
   it('should display animation', async () => {
