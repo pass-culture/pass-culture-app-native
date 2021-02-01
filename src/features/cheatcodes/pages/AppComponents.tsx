@@ -5,17 +5,18 @@ import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen'
+import { CategoryNameEnum, Expense, ExpenseDomain } from 'api/gen/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
+import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SectionRow } from 'features/profile/components/SectionRow'
+import { ExpenseV2 } from 'features/profile/components/types'
 import { FilterSwitch } from 'features/search/atoms/FilterSwitch'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { Banner, BannerType } from 'ui/components/Banner'
-import { CreditCeiling } from 'ui/components/bars/CreditCeiling'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -67,6 +68,10 @@ import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Logo } from 'ui/svg/icons/Logo'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
+import { OfferDigital } from 'ui/svg/icons/OfferDigital'
+import { OfferOutings } from 'ui/svg/icons/OfferOutings'
+import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
+import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
@@ -82,6 +87,17 @@ function onButtonPress() {
 
 const NUMBER_OF_STEPS = 4
 const THIS_YEAR = new Date().getFullYear()
+
+const expenses_v1: Array<Expense> = [
+  { current: 100, domain: ExpenseDomain.All, limit: 200 },
+  { current: 70, domain: ExpenseDomain.Digital, limit: 100 },
+  { current: 70, domain: ExpenseDomain.Physical, limit: 200 },
+]
+
+const expenses_v2: Array<ExpenseV2> = [
+  { current: 153, domain: ExpenseDomain.All, limit: 200 },
+  { current: 30, domain: ExpenseDomain.Digital, limit: 100 },
+]
 
 export const AppComponents: FunctionComponent = () => {
   const {
@@ -386,6 +402,22 @@ export const AppComponents: FunctionComponent = () => {
           <NoOffer size={24} />
           <Text> - NoOffer </Text>
         </AlignedText>
+        <AlignedText>
+          <OfferDigital size={24} />
+          <Text> - OfferDigital </Text>
+        </AlignedText>
+        <AlignedText>
+          <OfferPhysical size={24} />
+          <Text> - OfferPhysical </Text>
+        </AlignedText>
+        <AlignedText>
+          <OfferOutings size={24} />
+          <Text> - OfferOutings </Text>
+        </AlignedText>
+        <AlignedText>
+          <OfferOutingsPhysical size={24} />
+          <Text> - OfferOutingsPhysical </Text>
+        </AlignedText>
       </AccordionItem>
 
       <Divider />
@@ -495,16 +527,7 @@ export const AppComponents: FunctionComponent = () => {
             <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Close} />
           </RowWrap>
         </GreyView>
-        <Spacer.Column numberOfSpaces={2} />
-        <Text> Credit Ceiling (max=200) </Text>
-        <GreyView>
-          <Spacer.Column numberOfSpaces={2} />
-          <RowWrap>
-            <CreditCeiling amount={0} max={200} type={'all'} depositVersion={1} />
-            <CreditCeiling amount={155} max={200} type={'physical'} depositVersion={1} />
-            <CreditCeiling amount={200} max={200} type={'digital'} depositVersion={2} />
-          </RowWrap>
-        </GreyView>
+        <Spacer.Column numberOfSpaces={4} />
         <FlexView>
           <Text>Section Row </Text>
           <SectionRow
@@ -534,11 +557,17 @@ export const AppComponents: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={2} />
           <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
         </AlignedText>
+
+        <Spacer.Column numberOfSpaces={4} />
+        <View>
+          <BeneficiaryCeilings depositVersion={1} expenses={expenses_v1} />
+          <Spacer.Column numberOfSpaces={4} />
+          <BeneficiaryCeilings depositVersion={2} expenses={expenses_v2} />
+        </View>
       </AccordionItem>
-    </StyledScrollView>
-  )
-  return (
-    <StyledScrollView>
+
+      <Divider />
+
       {/* Your components */}
       <AccordionItem title="Your components">
         <AlignedText>

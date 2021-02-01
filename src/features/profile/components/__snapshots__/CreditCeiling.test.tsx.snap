@@ -9,6 +9,7 @@ exports[`CreditCeiling should render properly 1`] = `
         "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
+        "paddingHorizontal": 8,
       },
     ]
   }
@@ -23,7 +24,6 @@ exports[`CreditCeiling should render properly 1`] = `
           "flexGrow": 1,
           "flexShrink": 1,
           "height": 40,
-          "justifyContent": "center",
           "maxHeight": 40,
         },
       ]
@@ -37,6 +37,7 @@ exports[`CreditCeiling should render properly 1`] = `
             "backgroundColor": "#320096",
             "borderRadius": 32,
             "height": 32,
+            "position": "absolute",
             "width": 32,
             "zIndex": 2,
           },
@@ -63,8 +64,8 @@ exports[`CreditCeiling should render properly 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "height": 20,
-            "left": -10,
             "overflow": "hidden",
+            "position": "relative",
             "zIndex": 1,
           },
         ]
