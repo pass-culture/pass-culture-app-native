@@ -1,2 +1,5 @@
-export const useRequestGeolocPermission: () => boolean
-export const requestGeolocPermission: () => Promise<boolean>
+export const useRequestGeolocPermission: (
+  setPermissionGranted: (granted: boolean) => void
+) => {
+  requestPermissionRoutine: () => void
+}
