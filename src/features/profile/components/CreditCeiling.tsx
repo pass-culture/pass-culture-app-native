@@ -2,24 +2,17 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { Expense, ExpenseDomain } from 'api/gen/api'
+import { getSpacing, Typo } from 'ui/theme'
 
-import { ProgressBar } from './ProgressBar'
-import { CreditCeilingMapV1, CreditCeilingMapV2 } from './types'
+import { ProgressBar } from '../../../ui/components/bars/ProgressBar'
+
+import { CreditCeilingMapV1, CreditCeilingMapV2, ExpenseTypeAndVersion, ExpenseV2 } from './types'
 
 type CreditCeilingProps = {
   amount: number
   max: number
-} & (
-  | {
-      type: keyof typeof CreditCeilingMapV1
-      depositVersion: 1
-    }
-  | {
-      type: keyof typeof CreditCeilingMapV2
-      depositVersion: 2
-    }
-)
+} & ExpenseTypeAndVersion
 
 export function CreditCeiling(props: CreditCeilingProps) {
   let ceilingConfig = null
@@ -46,9 +39,26 @@ export function CreditCeiling(props: CreditCeilingProps) {
   )
 }
 
+export function getCreditCeilingProps(depositVersion: 1 | 2, expense: Expense | ExpenseV2) {
+  let localProps: ExpenseTypeAndVersion
+  if (depositVersion === 1) {
+    localProps = {
+      type: expense.domain as ExpenseDomain,
+      depositVersion: depositVersion,
+    }
+  } else {
+    localProps = {
+      type: expense.domain as ExpenseV2['domain'],
+      depositVersion: depositVersion,
+    }
+  }
+  return localProps
+}
+
 const Container = styled.View({
   flex: 1,
   flexDirection: 'column',
+  paddingHorizontal: getSpacing(2),
 })
 
 const Amount = styled(Typo.Title4)``

@@ -10058,6 +10058,14 @@ react-native-code-push@^6.2.0:
     semver "^7.3.2"
     xcode "3.0.1"
 
+react-native-dash@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/react-native-dash/-/react-native-dash-0.0.11.tgz#cf1b0108e4660217cf0300b872231a5cadb9c4a8"
+  integrity sha512-edgspmVtGVYxOhGs8STCj7+VyQYUR1RkiGHkWDGwiQkEEIFrxWLa3D9ZIrLsm3LKU4XGQ2iEqCv9fJQSeTyAJA==
+  dependencies:
+    prop-types "^15.5.10"
+    react-native-measureme "0.0.2"
+
 react-native-email-link@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/react-native-email-link/-/react-native-email-link-1.10.0.tgz#e724a528d49c8f4d8525615501dc4c791ae1026b"
@@ -10119,6 +10127,11 @@ react-native-localize@^1.3.2:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-1.4.1.tgz#031bd2089f09cc16ee7daee03019684dda60c275"
   integrity sha512-g1L1au6GtCd0Ci6lQ8JVPYgl7uvEtKY2jeVghJcV6qQEN9+qACyqjOIR8pskUyI+qcSj1z4/nZh3IFxDVu1drw==
+
+react-native-measureme@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-measureme/-/react-native-measureme-0.0.2.tgz#7f54eeb0813d461ef6c49d921e42e253d649c47a"
+  integrity sha512-m7Td7w1pVdIf7a3ejN7K/67AU+TtkZqTt9/ieKamirLRI3fjLToupmOKDtIOU3Y56oKojzTKz1lBbYSPN28HWA==
 
 react-native-reanimated@^1.7.0:
   version "1.13.1"

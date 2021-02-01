@@ -29,7 +29,6 @@ export const ProgressBar = memo(ProgressBarComponent)
 const Container = styled.View({
   flex: 1,
   flexDirection: 'row',
-  justifyContent: 'center',
   alignItems: 'center',
   height: 40,
   maxHeight: 40,
@@ -41,6 +40,7 @@ const IconContainer = styled.View<{ backgroundColor: string }>(({ backgroundColo
   borderRadius: 32,
   backgroundColor,
   zIndex: 2,
+  position: 'absolute',
 }))
 
 const ProgressBarContainer = styled.View({
@@ -51,8 +51,8 @@ const ProgressBarContainer = styled.View({
   borderColor: ColorsEnum.GREY_MEDIUM,
   borderRadius: 20,
   height: 20,
-  left: -10,
   zIndex: 1,
+  position: 'relative',
 })
 
 const Bar = styled.View<{ backgroundColor: string; progress: number }>(
