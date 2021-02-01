@@ -45,7 +45,7 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/Offer.tsx:85
+#: src/features/offer/pages/Offer.tsx:89
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
@@ -397,7 +397,7 @@ msgstr "Localisation"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/offer/pages/Offer.tsx:77
+#: src/features/offer/pages/Offer.tsx:81
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -515,7 +515,7 @@ msgstr "Prix"
 msgid "Profil"
 msgstr "Profil"
 
-#: src/features/offer/pages/Offer.tsx:68
+#: src/features/offer/pages/Offer.tsx:72
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -555,7 +555,7 @@ msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx:15
+#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx:21
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
@@ -733,13 +733,13 @@ msgstr "ainsi que notre"
 msgid "auteur"
 msgstr "auteur"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:8
-msgid "c'est..."
-msgstr "c'est..."
-
 #: src/features/search/atoms/NoSearchResult.tsx:41
 msgid "autour de chez toi"
 msgstr "autour de chez toi"
+
+#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:8
+msgid "c'est..."
+msgstr "c'est..."
 
 #: src/features/offer/pages/OfferDescription.tsx:21
 msgid "crédit photo"
