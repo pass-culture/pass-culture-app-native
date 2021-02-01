@@ -2,6 +2,7 @@ import { Hit } from '@algolia/client-search'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { FlatList } from 'react-native'
+import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
@@ -10,7 +11,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
-import { useGeolocation } from 'libs/geolocation'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
@@ -20,7 +20,7 @@ type OffersModuleProps = {
   algolia: AlgoliaParametersFields
   display: DisplayParametersFields
   isBeneficiary?: boolean
-  position: ReturnType<typeof useGeolocation>
+  position: GeoCoordinates | null
   hits: Hit<AlgoliaHit>[]
   nbHits: number
   cover: string | null

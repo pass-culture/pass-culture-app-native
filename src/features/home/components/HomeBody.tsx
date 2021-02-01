@@ -21,7 +21,7 @@ interface HomeBodyProps {
 }
 
 export const HomeBody = function ({ modules, algoliaModules }: HomeBodyProps) {
-  const position = useGeolocation()
+  const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
 
   return (

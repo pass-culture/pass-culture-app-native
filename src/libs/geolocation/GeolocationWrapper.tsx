@@ -7,11 +7,17 @@ import { getPosition } from './getPosition'
 
 export interface IGeolocationContext {
   position: GeoCoordinates | null
+  setPosition: (position: GeoCoordinates | null) => void
+  permissionGranted: boolean
 }
 
-export const GeolocationContext = React.createContext<IGeolocationContext>({ position: null })
+export const GeolocationContext = React.createContext<IGeolocationContext>({
+  position: null,
+  setPosition: () => undefined,
+})
 
 export const GeolocationWrapper = ({ children }: { children: Element }) => {
+  const [position, setPosition] = useState<GeoCoordinates | null>(null)
   const [position, setInitialPosition] = useState<GeoCoordinates | null>(null)
   const permissionGranted = useRequestGeolocPermission()
   const permissionGrantedRef = useRef<boolean>(false)
@@ -19,15 +25,17 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   useEffect(() => {
     if (permissionGranted && !permissionGrantedRef.current) {
       permissionGrantedRef.current = true
-      getPosition(setInitialPosition)
+      getPosition(setPosition)
     }
   }, [permissionGranted])
 
-  return <GeolocationContext.Provider value={{ position }}>{children}</GeolocationContext.Provider>
+  return (
+    <GeolocationContext.Provider value={{ position, setPosition }}>
+      {children}
+    </GeolocationContext.Provider>
+  )
 }
 
-export function useGeolocation(): GeoCoordinates | null {
-  const geolocationContext = useContext(GeolocationContext)
-  if (!geolocationContext) return null
-  return geolocationContext.position
+export function useGeolocation(): IGeolocationContext {
+  return useContext(GeolocationContext)
 }
