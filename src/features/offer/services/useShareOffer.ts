@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { useRef } from 'react'
 import { Share } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
