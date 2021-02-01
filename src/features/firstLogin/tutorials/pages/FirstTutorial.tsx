@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { GenericTutorial } from 'features/tutorials/components/GenericTutorial'
+import { GenericTutorial } from 'features/firstLogin/tutorials/components/GenericTutorial'
 import { _ } from 'libs/i18n'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { getSpacing } from 'ui/theme'
@@ -14,7 +14,7 @@ export function FirstTutorial() {
       text={_(t`une initiative financée par le Ministère de la Culture.`)}
       animation={TutorialPassLogo}
       animationSize={getSpacing(60)}
-      endFrame={62}
+      pauseAnimationOnRenderAtFrame={62}
     />
   )
 }

@@ -17,7 +17,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 type Props = {
   animation: AnimationObject
   animationSize: number
-  endFrame?: number
+  pauseAnimationOnRenderAtFrame?: number
   title: string
   subTitle: string
   text: string
@@ -29,8 +29,8 @@ export const GenericTutorial: FunctionComponent<Props> = (props) => {
   const animationRef = useRef<AnimatedLottieView>(null)
 
   useEffect(() => {
-    if (props.endFrame) {
-      animationRef.current?.play(0, 62)
+    if (props.pauseAnimationOnRenderAtFrame) {
+      animationRef.current?.play(0, props.pauseAnimationOnRenderAtFrame)
     }
   }, [])
 
@@ -45,9 +45,9 @@ export const GenericTutorial: FunctionComponent<Props> = (props) => {
   return (
     <Container>
       <Spacer.Flex flex={1} />
-      <Container2>
+      <Header>
         <ButtonTertiaryGreyDark title={_(t`Tout passer`)} onPress={goToHomeWithoutModal} />
-      </Container2>
+      </Header>
       <Spacer.Flex flex={2} />
       <StyledLottieView
         ref={animationRef}
@@ -72,7 +72,7 @@ export const GenericTutorial: FunctionComponent<Props> = (props) => {
   )
 }
 
-const Container2 = styled.View({
+const Header = styled.View({
   alignSelf: 'flex-end',
   width: '40%',
 })

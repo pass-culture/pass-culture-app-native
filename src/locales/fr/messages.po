@@ -236,7 +236,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:154
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:44
-#: src/features/tutorials/components/GenericTutorial.tsx:45
+#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:41
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -376,7 +376,7 @@ msgstr "Le lien est expiré !"
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
 
-#: src/features/tutorials/pages/FirstTutorial.tsx:8
+#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:8
 msgid "Le pass Culture"
 msgstr "Le pass Culture"
 
@@ -646,7 +646,7 @@ msgstr "Ton mot de passe"
 msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
-#: src/features/tutorials/components/GenericTutorial.tsx:29
+#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:30
 msgid "Tout passer"
 msgstr "Tout passer"
 
@@ -660,8 +660,8 @@ msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:21
-msgid "Tu es éligible jusqu'au\\u00a0"
-msgstr "Tu es éligible jusqu'au\\u00a0"
+msgid "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
+msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 
 #: src/features/search/sections/OfferType.tsx:20
 msgid "Type d'offre"
@@ -733,7 +733,7 @@ msgstr "ainsi que notre"
 msgid "auteur"
 msgstr "auteur"
 
-#: src/features/tutorials/pages/FirstTutorial.tsx:8
+#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:8
 msgid "c'est..."
 msgstr "c'est..."
 
@@ -800,7 +800,7 @@ msgstr "sous genre"
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
-#: src/features/tutorials/pages/FirstTutorial.tsx:8
+#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:8
 msgid "une initiative financée par le Ministère de la Culture."
 msgstr "une initiative financée par le Ministère de la Culture."
 
