@@ -13,10 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/search/atoms/NoSearchResult.tsx:35
-msgid "\""
-msgstr "\""
-
 #: src/libs/parsers/getDisplayPrice.ts:27
 msgid "/ place"
 msgstr "/ place"
@@ -88,8 +84,12 @@ msgstr "Afficher {nbHits} résultat"
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
+#: src/features/profile/pages/Profile.tsx:12
+msgid "Aides"
+msgstr "Aides"
+
 #. Error message on Batch get installation ID
-#: src/features/cheatcodes/pages/CheatCodes.tsx:90
+#: src/features/cheatcodes/pages/CheatCodes.tsx:91
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
@@ -116,6 +116,10 @@ msgstr "Aujourd'hui"
 #: src/features/search/components/locationChoice.utils.tsx:15
 msgid "Autour de moi"
 msgstr "Autour de moi"
+
+#: src/features/profile/pages/Profile.tsx:15
+msgid "Autres"
+msgstr "Autres"
 
 #. Welcome title message
 #: src/features/home/pages/Home.tsx:72
@@ -165,6 +169,10 @@ msgstr "Chargement en cours..."
 msgid "Charte des Données Personnelles"
 msgstr "Charte des Données Personnelles"
 
+#: src/features/cheatcodes/pages/CheatMenu.tsx:12
+msgid "Cheater Zone"
+msgstr "Cheater Zone"
+
 #: src/features/search/components/locationChoice.utils.tsx:17
 #: src/features/search/pages/LocationPicker.tsx:59
 msgid "Choisir un lieu"
@@ -188,8 +196,8 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
+#: src/features/cheatcodes/pages/CheatMenu.tsx:16
 #: src/features/home/pages/Home.tsx:55
-#: src/features/profile/pages/Profile.tsx:16
 msgid "Composants"
 msgstr "Composants"
 
@@ -405,8 +413,8 @@ msgstr "Mot de passe oublié"
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
+#: src/features/cheatcodes/pages/CheatMenu.tsx:20
 #: src/features/home/pages/Home.tsx:58
-#: src/features/profile/pages/Profile.tsx:20
 msgid "Navigation"
 msgstr "Navigation"
 
@@ -458,6 +466,10 @@ msgstr "Où"
 msgid "Où ?"
 msgstr "Où ?"
 
+#: src/features/profile/pages/Profile.tsx:9
+msgid "Paramètres du compte"
+msgstr "Paramètres du compte"
+
 #: src/features/search/components/locationChoice.utils.tsx:13
 msgid "Partout"
 msgstr "Partout"
@@ -497,10 +509,6 @@ msgstr "Prix"
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:32
 msgid "Profil"
 msgstr "Profil"
-
-#: src/features/profile/pages/Profile.tsx:12
-msgid "Profile"
-msgstr "Profile"
 
 #: src/features/offer/pages/Offer.tsx:68
 msgid "Quand ?"
@@ -593,6 +601,17 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 #: src/features/search/sections/OfferType.tsx:11
 msgid "Sorties"
 msgstr "Sorties"
+
+#: src/features/profile/pages/Profile.tsx:18
+msgid "Suivre Pass Culture"
+msgstr "Suivre Pass Culture"
+
+#: src/features/profile/pages/Profile.tsx:10
+#: src/features/profile/pages/Profile.tsx:13
+#: src/features/profile/pages/Profile.tsx:16
+#: src/features/profile/pages/Profile.tsx:19
+msgid "Temporary content"
+msgstr "Temporary content"
 
 #: src/features/search/components/SearchBox.tsx:38
 msgid "Titre, artiste..."
@@ -748,8 +767,8 @@ msgid "metteur en scène"
 msgstr "metteur en scène"
 
 #: src/features/search/atoms/NoSearchResult.tsx:35
-msgid "pour \""
-msgstr "pour \""
+msgid "pour"
+msgstr "pour"
 
 #. signup birthday page reCAPTCHA
 #: src/features/auth/signup/SetBirthday.tsx:151
