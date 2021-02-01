@@ -27,6 +27,7 @@ import {
   AccessibilityBlock,
   OfferPartialDescription,
 } from '../components'
+import { useCallbackOnce } from '../services/useCallbackOnce'
 import { useCtaWordingAndAction } from '../services/useCtaWordingAndAction'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
@@ -37,7 +38,12 @@ const OfferComponent: FunctionComponent = () => {
   const { data: offerResponse } = useOffer({ offerId: params.id })
   const headerScroll = useRef(new Animated.Value(0)).current
   const scrollViewRef = useRef<ScrollView | null>(null)
-  const hasSeenAllPage = useRef<boolean>(false)
+
+  const { callbackOnce: logConsultWholeOffer } = useCallbackOnce(() => {
+    if (offerResponse) {
+      analytics.logConsultWholeOffer(offerResponse.id)
+    }
+  })
   useTrackOfferSeenDuration(params.id)
   const { wording, onPress, isExternal } = useCtaWordingAndAction({ offerId: params.id }) || {}
 
@@ -57,9 +63,8 @@ const OfferComponent: FunctionComponent = () => {
   })
 
   const checkIfAllPageHaveBeenSeen = ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => {
-    if (!hasSeenAllPage.current && isCloseToBottom(nativeEvent)) {
-      hasSeenAllPage.current = true
-      analytics.logConsultWholeOffer(offerResponse.id)
+    if (isCloseToBottom(nativeEvent)) {
+      logConsultWholeOffer()
     }
   }
 
