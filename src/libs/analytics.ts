@@ -22,6 +22,7 @@ export enum AnalyticsEvent {
   DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
+  REINITIALIZE_FILTERS = 'ReinitializeFilters',
   RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
   RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
   SCREEN_VIEW = 'screen_view',
@@ -99,6 +100,8 @@ const logClickBookOffer = (offerId: number) =>
 const logConsultAvailableDates = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
 
+const logReinitializeFilters = () => firebaseAnalytics.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS)
+
 const logResendEmailResetPasswordExpiredLink = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK)
 
@@ -131,6 +134,7 @@ export const analytics = {
   logContactSupportResetPasswordEmailSent,
   logContactSupportSignupConfirmationEmailSent,
   logOfferSeenDuration,
+  logReinitializeFilters,
   logResendEmailResetPasswordExpiredLink,
   logResendEmailSignupConfirmationExpiredLink,
   logScreenView,
