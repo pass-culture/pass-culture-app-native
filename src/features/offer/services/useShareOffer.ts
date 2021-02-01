@@ -10,6 +10,8 @@ import { _ } from 'libs/i18n'
 import { useOffer } from '../api/useOffer'
 import { getLocationName } from '../atoms/LocationCaption'
 
+import { useCallbackOnce } from './useCallbackOnce'
+
 const shareOffer = async (offer: OfferResponse) => {
   const { id, isDigital, name, venue } = offer
   const locationName = getLocationName(venue, isDigital)
@@ -20,14 +22,13 @@ const shareOffer = async (offer: OfferResponse) => {
 }
 
 export const useShareOffer = (offerId: number): (() => Promise<void>) => {
-  const hasShared = useRef<boolean>(false)
   const { data: offerResponse } = useOffer({ offerId })
+  const { callbackOnce: logShareOffer } = useCallbackOnce(() => {
+    analytics.logShareOffer(offerId)
+  })
 
   return async () => {
-    if (!hasShared.current) {
-      hasShared.current = true
-      if (offerId) analytics.logShareOffer(offerId)
-    }
+    logShareOffer()
     if (!offerResponse) return
     await shareOffer(offerResponse)
   }
