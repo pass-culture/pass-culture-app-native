@@ -190,6 +190,8 @@ exports[`FirstTutorial page should display animation 1`] = `
     style={
       Array [
         Object {
+          "flexDirection": "row",
+          "justifyContent": "center",
           "paddingHorizontal": 24,
           "width": "100%",
         },
@@ -249,12 +251,12 @@ exports[`FirstTutorial page should display animation 1`] = `
     </View>
   </View>
   <View
-    flex={0.5}
+    flex={0.8}
     style={
       Array [
         Object {
           "flexBasis": 0,
-          "flexGrow": 0.5,
+          "flexGrow": 0.8,
           "flexShrink": 1,
         },
       ]
