@@ -139,7 +139,7 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Erreur inconnue'}
+            title={'Erreur rendering'}
             onPress={() => {
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
@@ -147,6 +147,15 @@ export function Navigation(): JSX.Element {
             }}
           />
           {renderedError}
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={'Erreur requête asynchrone'}
+            onPress={async () => {
+              // eslint-disable-next-line no-console
+              Promise.reject(new Error('fail')).then(console.log, console.error)
+            }}
+          />
         </Row>
         <Row>
           <CenteredText>{BadDeeplink}</CenteredText>

@@ -22,11 +22,15 @@ export function useSignIn(): (data: SigninRequest) => Promise<SignInResponse> {
     try {
       const response = await api.postnativev1signin(body, { credentials: 'omit' })
       if (!response) return { isSuccess: false }
-
       await loginRoutine(response, 'fromLogin')
       return { isSuccess: true }
     } catch (error) {
-      return { isSuccess: false, content: error.content }
+      return {
+        isSuccess: false,
+        content: error.statusCode
+          ? error.content
+          : { code: `OFFLINE`, general: [`Tu n'est pas connecté`] },
+      }
     }
   }
 }
