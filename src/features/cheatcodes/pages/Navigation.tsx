@@ -1,9 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, createElement } from 'react'
 import { ScrollView } from 'react-native'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
+import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -15,9 +17,22 @@ import { CheatCodesButton } from '../components/CheatCodesButton'
 
 const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 
+const MAX_ASYNC_TEST_REQ_COUNT = 3
+
 export function Navigation(): JSX.Element {
   const navigation = useNavigation<UseNavigationType>()
   const [renderedError, setRenderedError] = useState(undefined)
+  const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
+  const { refetch, isFetching } = useQuery('errorAsync', () => errorAsyncQuery(), {
+    cacheTime: 0,
+    enabled: false,
+  })
+  async function errorAsyncQuery() {
+    setAsyncTestReqCount((v) => ++v)
+    if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
+      throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
+    }
+  }
   return (
     <ScrollView>
       <Spacer.TopScreen />
@@ -150,11 +165,13 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Erreur requête asynchrone'}
-            onPress={async () => {
-              // eslint-disable-next-line no-console
-              Promise.reject(new Error('fail')).then(console.log, console.error)
-            }}
+            title={
+              asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT
+                ? `${MAX_ASYNC_TEST_REQ_COUNT} requêtes asynchrones`
+                : 'OK'
+            }
+            disabled={isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
+            onPress={() => refetch()}
           />
         </Row>
         <Row>

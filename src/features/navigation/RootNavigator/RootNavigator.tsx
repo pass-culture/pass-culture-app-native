@@ -76,7 +76,7 @@ const routes: Array<Route> = [
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },
   { name: 'Login', component: Login, withHocsWrapper: withAsyncErrorBoundary },
-  { name: 'Navigation', component: Navigation },
+  { name: 'Navigation', component: Navigation, withHocsWrapper: withAsyncErrorBoundary },
   { name: 'Offer', component: Offer },
   { name: 'OfferDescription', component: OfferDescription },
   { name: 'ReinitializePassword', component: ReinitializePassword },
