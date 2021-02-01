@@ -26,9 +26,7 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
   const position = useGeolocation()
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
   const [debouncedSearchState, setDebouncedSearchState] = useState<SearchState>(searchState)
-  const { showResults, ...parameters } = debouncedSearchState
-
-  const query = debouncedSearchState.query
+  const { showResults, query, ...parameters } = debouncedSearchState
 
   useEffect(() => {
     const handler = setTimeout(() => setDebouncedSearchState(searchState), SEARCH_DEBOUNCE_MS)
