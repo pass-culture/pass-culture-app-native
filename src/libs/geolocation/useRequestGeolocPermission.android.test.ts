@@ -1,7 +1,10 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { Permission, PermissionsAndroid, PermissionStatus, Platform } from 'react-native'
 
+import { flushAllPromises } from 'tests/utils'
+
 import { useRequestGeolocPermission } from './useRequestGeolocPermission.android'
+
+const mockSetPermissionGranted = jest.fn()
 
 describe('useRequestGeolocPermission android', () => {
   beforeAll(() => (Platform.OS = 'android'))
@@ -12,24 +15,29 @@ describe('useRequestGeolocPermission android', () => {
       'android.permission.ACCESS_COARSE_LOCATION': 'granted',
     } as { [key in Permission]: PermissionStatus })
 
-    const { result, waitForNextUpdate } = renderHook(useRequestGeolocPermission)
+    const { requestPermissionRoutine } = useRequestGeolocPermission(mockSetPermissionGranted)
+    requestPermissionRoutine()
     expect(PermissionsAndroid.requestMultiple).toHaveBeenCalledWith([
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
     ])
-    expect(result.current).toBeFalsy()
+    expect(mockSetPermissionGranted).not.toHaveBeenCalled()
 
-    await waitForNextUpdate()
-    expect(result.current).toBeTruthy()
+    await flushAllPromises()
+    expect(mockSetPermissionGranted).toHaveBeenCalledWith(true)
   })
 
-  it('should return false if permission not granted', () => {
+  it('should return false if permission not granted', async () => {
     jest.spyOn(PermissionsAndroid, 'requestMultiple').mockResolvedValue({
       'android.permission.ACCESS_FINE_LOCATION': 'denied',
       'android.permission.ACCESS_COARSE_LOCATION': 'denied',
     } as { [key in Permission]: PermissionStatus })
 
-    const { result } = renderHook(useRequestGeolocPermission)
-    expect(result.current).toBeFalsy()
+    const { requestPermissionRoutine } = useRequestGeolocPermission(mockSetPermissionGranted)
+    requestPermissionRoutine()
+
+    expect(mockSetPermissionGranted).not.toHaveBeenCalled()
+    await flushAllPromises()
+    expect(mockSetPermissionGranted).not.toHaveBeenCalled()
   })
 })
