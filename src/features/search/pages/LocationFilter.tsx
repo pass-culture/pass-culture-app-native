@@ -5,7 +5,8 @@ import React, { useRef } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { LocationType } from 'libs/algolia'
-import { useGeolocation, requestGeolocPermission } from 'libs/geolocation'
+import { useRequestGeolocPermission } from 'libs/geolocation'
+import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { Banner, BannerType } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -19,7 +20,8 @@ const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
-  const { position } = useGeolocation()
+  const { position, setPermissionGranted } = useGeolocation()
+  const { requestPermissionRoutine } = useRequestGeolocPermission(setPermissionGranted)
   const { dispatch } = useSearch()
   const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
 
@@ -30,9 +32,7 @@ export const LocationFilter: React.FC = () => {
 
   const onPressAroundMe = async () => {
     if (position === null) {
-      const permissionGranted = await requestGeolocPermission()
-      console.log(permissionGranted)
-      // TODO: setPosition dans le contexte
+      requestPermissionRoutine()
     } else {
       dispatch({
         type: 'LOCATION_AROUND_ME',

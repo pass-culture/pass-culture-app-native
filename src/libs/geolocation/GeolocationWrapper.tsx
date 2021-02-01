@@ -9,17 +9,21 @@ export interface IGeolocationContext {
   position: GeoCoordinates | null
   setPosition: (position: GeoCoordinates | null) => void
   permissionGranted: boolean
+  setPermissionGranted: (granted: boolean) => void
 }
 
 export const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
   setPosition: () => undefined,
+  permissionGranted: false,
+  setPermissionGranted: () => undefined,
 })
 
 export const GeolocationWrapper = ({ children }: { children: Element }) => {
   const [position, setPosition] = useState<GeoCoordinates | null>(null)
-  const [position, setInitialPosition] = useState<GeoCoordinates | null>(null)
-  const permissionGranted = useRequestGeolocPermission()
+  const [permissionGranted, setPermissionGranted] = useState<boolean>(false)
+  const { requestPermissionRoutine } = useRequestGeolocPermission(setPermissionGranted)
+  requestPermissionRoutine()
   const permissionGrantedRef = useRef<boolean>(false)
 
   useEffect(() => {
@@ -30,7 +34,8 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   }, [permissionGranted])
 
   return (
-    <GeolocationContext.Provider value={{ position, setPosition }}>
+    <GeolocationContext.Provider
+      value={{ position, setPosition, permissionGranted, setPermissionGranted }}>
       {children}
     </GeolocationContext.Provider>
   )
