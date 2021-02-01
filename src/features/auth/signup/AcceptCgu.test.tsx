@@ -9,6 +9,7 @@ import { AuthContext } from 'features/auth/AuthContext'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { ColorsEnum } from 'ui/theme'
 
 import { signUp } from '../__mocks__/api'
@@ -80,9 +81,9 @@ describe('AcceptCgu Page', () => {
         password: 'password',
         token: 'ABCDEF',
       })
-      expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
-        email: 'john.doe@example.com',
-      })
+    })
+    expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
+      email: 'john.doe@example.com',
     })
   })
 
@@ -130,13 +131,16 @@ function renderAcceptCGU() {
       },
     },
   } as StackScreenProps<RootStackParamList, 'AcceptCgu'>
+
   return render(
-    <AuthContext.Provider
-      value={{
-        isLoggedIn: true,
-        setIsLoggedIn: jest.fn(),
-      }}>
-      <AcceptCgu {...navigationProps} />
-    </AuthContext.Provider>
+    reactQueryProviderHOC(
+      <AuthContext.Provider
+        value={{
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+        }}>
+        <AcceptCgu {...navigationProps} />
+      </AuthContext.Provider>
+    )
   )
 }

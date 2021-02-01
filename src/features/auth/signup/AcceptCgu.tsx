@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FC } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
+import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
@@ -26,12 +28,19 @@ import { contactSupport } from '../support.services'
 type Props = StackScreenProps<RootStackParamList, 'AcceptCgu'>
 
 export const AcceptCgu: FC<Props> = ({ route }) => {
+  const isMounted = useRef(false)
   const { goBack, navigate } = useNavigation<UseNavigationType>()
   const signUp = useSignUp()
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked
   const password = route.params.password
   const birthday = route.params.birthday
+  useEffect(() => {
+    isMounted.current = true
+    return () => {
+      isMounted.current = false
+    }
+  }, [])
 
   const {
     visible: fullPageModalVisible,
@@ -39,17 +48,31 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  async function subscribe() {
-    await signUp({
+  const { refetch, isFetching } = useQuery('subscribe', subscribeQuery, {
+    cacheTime: 0,
+    enabled: false,
+    onSuccess: (success) => {
+      if (success) {
+        navigate('SignupConfirmationEmailSent', { email: email })
+      }
+    },
+  })
+  async function subscribeQuery() {
+    const signupResponse = await signUp({
       password: password,
       birthdate: birthday,
       hasAllowedRecommendations: isNewsletterChecked,
       token: 'ABCDEF',
       email: email,
     })
-    navigate('SignupConfirmationEmailSent', { email: email })
+    if (!signupResponse?.isSuccess) {
+      throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
+    }
+    return true
   }
-
+  async function handleSubscribe() {
+    return refetch()
+  }
   return (
     <React.Fragment>
       <BottomContentPage>
@@ -96,7 +119,11 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
               icon={Email}
             />
             <Spacer.Column numberOfSpaces={6} />
-            <ButtonPrimary title={_(t`Accepter et s’inscrire`)} onPress={subscribe} />
+            <ButtonPrimary
+              title={_(t`Accepter et s’inscrire`)}
+              onPress={handleSubscribe}
+              disabled={isFetching}
+            />
             <Spacer.Column numberOfSpaces={5} />
             <StepDots numberOfSteps={4} currentStep={4} />
           </CardContent>

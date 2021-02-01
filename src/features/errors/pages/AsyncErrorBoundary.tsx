@@ -38,7 +38,7 @@ export const AsyncErrorBoundary = ({ resetErrorBoundary, error }: FallbackProps)
     if (error?.retryPromise) {
       return error.retryPromise()
     }
-    return Promise.resolve(true)
+    return null
   }, [reset, resetErrorBoundary, state, error])
 
   return (

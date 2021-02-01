@@ -58,7 +58,7 @@ export const Login: FunctionComponent = function () {
       const { code } = signinResponse?.content || {}
       if (code === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
-      } else if (code === 'OFFLINE') {
+      } else if (code === 'NETWORK_REQUEST_FAILED') {
         throw new Error('Offline')
       }
     }
