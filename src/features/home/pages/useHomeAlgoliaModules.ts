@@ -29,12 +29,15 @@ const isAlgoliaModule = (
 export const useHomeAlgoliaModules = (
   offerModules: Array<Offers | OffersWithCover>
 ): AlgoliaModuleResponse => {
-  const geolocation = useGeolocation()
+  const { position } = useGeolocation()
   const [algoliaModules, setAlgoliaModules] = useState<AlgoliaModuleResponse>({})
 
   useQueries(
     offerModules.map(({ algolia, moduleId }) => {
-      const parsedParameters = parseAlgoliaParameters({ geolocation, parameters: algolia })
+      const parsedParameters = parseAlgoliaParameters({
+        geolocation: position,
+        parameters: algolia,
+      })
 
       const fetchModule = async () => {
         if (!parsedParameters) return undefined

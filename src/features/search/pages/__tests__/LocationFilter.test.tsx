@@ -20,8 +20,13 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 
 jest.mock('libs/geolocation', () => ({
   useGeolocation: jest.fn(() => ({
-    latitude: 2,
-    longitude: 40,
+    position: {
+      latitude: 2,
+      longitude: 40,
+    },
+  })),
+  useRequestGeolocPermission: jest.fn(() => ({
+    requestPermissionRoutine: jest.fn(),
   })),
 }))
 
@@ -46,7 +51,7 @@ describe('LocationFilter component', () => {
   })
 
   it('should not dispatch actions on click (position=NO, type=AROUND_ME)', () => {
-    useGeolocationMock.mockImplementationOnce(() => null)
+    useGeolocationMock.mockImplementationOnce(() => ({ position: null }))
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
     expect(mockDispatch).not.toHaveBeenCalled()
@@ -66,7 +71,7 @@ describe('LocationFilter component', () => {
   })
 
   it('should dispatch actions on click (position=NO, type=EVERYWHERE)', () => {
-    useGeolocationMock.mockImplementationOnce(() => null)
+    useGeolocationMock.mockImplementationOnce(() => ({ position: null }))
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-everywhere'))
     expect(mockDispatch).toHaveBeenCalledWith({

@@ -24,7 +24,7 @@ export const SearchContext = React.createContext<ISearchContext | null>(null)
 const searchClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
 export const SearchWrapper = ({ children }: { children: Element }) => {
-  const position = useGeolocation()
+  const { position } = useGeolocation()
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
   const [debouncedSearchState, setDebouncedSearchState] = useState<SearchState>(searchState)
   const { showResults, ...parameters } = debouncedSearchState

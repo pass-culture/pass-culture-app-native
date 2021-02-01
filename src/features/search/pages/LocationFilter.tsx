@@ -19,7 +19,7 @@ const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
-  const position = useGeolocation()
+  const { position } = useGeolocation()
   const { dispatch } = useSearch()
   const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
 
