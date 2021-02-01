@@ -28,7 +28,7 @@ export const NoSearchResult: React.FC = () => {
       const payload = { latitude: position.latitude, longitude: position.longitude }
       dispatch({ type: 'LOCATION_AROUND_ME', payload })
     } else {
-      // Special case: ask for the user permission to enablee geolocation ?
+      dispatch({ type: 'LOCATION_EVERYWHERE' })
     }
   }
 
