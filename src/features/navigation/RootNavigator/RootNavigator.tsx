@@ -46,7 +46,7 @@ interface Route {
   withHocsWrapper?(component: ComponentType<any>): ComponentType<any>
 }
 
-function withAsyncBoundary(component: ComponentType<any>) {
+function withAsyncErrorBoundary(component: ComponentType<any>) {
   return withErrorBoundary(React.memo(component), {
     FallbackComponent: AsyncErrorBoundary,
   })
@@ -61,17 +61,21 @@ function wrapRoute(route: Route) {
 }
 
 const routes: Array<Route> = [
-  { name: 'AcceptCgu', component: AcceptCgu, withHocsWrapper: withAsyncBoundary },
+  { name: 'AcceptCgu', component: AcceptCgu, withHocsWrapper: withAsyncErrorBoundary },
   { name: 'AccountCreated', component: AccountCreated },
   { name: 'AfterSignupEmailValidationBuffer', component: AfterSignupEmailValidationBuffer },
   { name: 'AppComponents', component: AppComponents },
   { name: 'CheatCodes', component: CheatCodes },
   { name: 'EligibilityConfirmed', component: EligibilityConfirmed },
-  { name: 'ForgottenPassword', component: ForgottenPassword },
+  {
+    name: 'ForgottenPassword',
+    component: ForgottenPassword,
+    withHocsWrapper: withAsyncErrorBoundary,
+  },
   { name: 'IdCheck', component: IdCheck },
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },
-  { name: 'Login', component: Login, withHocsWrapper: withAsyncBoundary },
+  { name: 'Login', component: Login, withHocsWrapper: withAsyncErrorBoundary },
   { name: 'Navigation', component: Navigation },
   { name: 'Offer', component: Offer },
   { name: 'OfferDescription', component: OfferDescription },

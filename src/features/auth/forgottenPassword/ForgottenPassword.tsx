@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
-import { Alert } from 'react-native'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
+import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
@@ -22,11 +23,22 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export const ForgottenPassword: FunctionComponent = () => {
   const [email, setEmail] = useState('')
   const [hasError, setHasError] = useState(false)
-
   const shouldDisableValidateButton = isValueEmpty(email)
-
   const { navigate } = useNavigation<UseNavigationType>()
-
+  const { refetch, isFetching } = useQuery('forgottenPassword', forgottenPasswordQuery, {
+    cacheTime: 0,
+    enabled: false,
+    onSuccess: () => {
+      navigate('ResetPasswordEmailSent', { email })
+    },
+  })
+  async function forgottenPasswordQuery() {
+    try {
+      await api.postnativev1requestPasswordReset({ email })
+    } catch (err) {
+      throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
+    }
+  }
   function onBackNavigation() {
     navigate('Login')
   }
@@ -44,14 +56,7 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   async function validateEmail() {
     if (isEmailValid(email)) {
-      await api
-        .postnativev1requestPasswordReset({ email })
-        .then(() => {
-          navigate('ResetPasswordEmailSent', { email })
-        })
-        .catch((err) => {
-          Alert.alert(err.message)
-        })
+      await refetch()
     } else {
       setHasError(true)
     }
@@ -97,7 +102,7 @@ export const ForgottenPassword: FunctionComponent = () => {
         <ButtonPrimary
           title={_(t`Valider`)}
           onPress={validateEmail}
-          disabled={shouldDisableValidateButton}
+          disabled={shouldDisableValidateButton || isFetching}
         />
       </ModalContent>
     </BottomContentPage>
