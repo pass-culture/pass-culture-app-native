@@ -52,7 +52,6 @@ export const GenericTutorial: FunctionComponent<Props> = (props) => {
       <StyledLottieView
         ref={animationRef}
         source={props.animation}
-        autoPlay
         loop={false}
         size={props.animationSize}
       />
@@ -65,7 +64,7 @@ export const GenericTutorial: FunctionComponent<Props> = (props) => {
       <ButtonContainer>
         <ButtonPrimary title={_(t`Continuer`)} onPress={goToNextTutorial} />
       </ButtonContainer>
-      <Spacer.Flex flex={0.5} />
+      <Spacer.Flex flex={0.8} />
       <StepDots numberOfSteps={4} currentStep={1} />
       <Spacer.Flex flex={1} />
     </Container>
@@ -78,8 +77,10 @@ const Header = styled.View({
 })
 
 const ButtonContainer = styled.View({
-  paddingHorizontal: getSpacing(6),
+  flexDirection: 'row',
   width: '100%',
+  paddingHorizontal: getSpacing(6),
+  justifyContent: 'center',
 })
 
 const StyledLottieView = styled(LottieView)((props: { size: number }) => ({
