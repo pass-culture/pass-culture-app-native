@@ -2,11 +2,11 @@ import { Permission, PermissionsAndroid, PermissionStatus, Platform } from 'reac
 
 import { flushAllPromises } from 'tests/utils'
 
-import { useRequestGeolocPermission } from './useRequestGeolocPermission.android'
+import { requestGeolocPermissionRoutine } from './requestGeolocPermissionRoutine.android'
 
 const mockSetPermissionGranted = jest.fn()
 
-describe('useRequestGeolocPermission android', () => {
+describe('requestGeolocPermissionRoutine android', () => {
   beforeAll(() => (Platform.OS = 'android'))
   afterEach(() => jest.clearAllMocks())
   it('should ask for android permission and return true if granted', async () => {
@@ -15,8 +15,7 @@ describe('useRequestGeolocPermission android', () => {
       'android.permission.ACCESS_COARSE_LOCATION': 'granted',
     } as { [key in Permission]: PermissionStatus })
 
-    const { requestPermissionRoutine } = useRequestGeolocPermission(mockSetPermissionGranted)
-    requestPermissionRoutine()
+    requestGeolocPermissionRoutine(mockSetPermissionGranted)
     expect(PermissionsAndroid.requestMultiple).toHaveBeenCalledWith([
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
@@ -33,8 +32,7 @@ describe('useRequestGeolocPermission android', () => {
       'android.permission.ACCESS_COARSE_LOCATION': 'denied',
     } as { [key in Permission]: PermissionStatus })
 
-    const { requestPermissionRoutine } = useRequestGeolocPermission(mockSetPermissionGranted)
-    requestPermissionRoutine()
+    requestGeolocPermissionRoutine(mockSetPermissionGranted)
 
     expect(mockSetPermissionGranted).not.toHaveBeenCalled()
     await flushAllPromises()

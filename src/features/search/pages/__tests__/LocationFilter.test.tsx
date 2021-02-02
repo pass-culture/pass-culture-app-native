@@ -24,9 +24,7 @@ jest.mock('libs/geolocation', () => ({
       longitude: 40,
     },
   })),
-  useRequestGeolocPermission: jest.fn(() => ({
-    requestPermissionRoutine: jest.fn(),
-  })),
+  requestGeolocPermissionRoutine: jest.fn(),
 }))
 
 describe('LocationFilter component', () => {

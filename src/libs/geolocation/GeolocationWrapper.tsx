@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { useRequestGeolocPermission } from 'libs/geolocation'
+import { requestGeolocPermissionRoutine } from 'libs/geolocation'
 
 import { getPosition } from './getPosition'
 
@@ -22,8 +22,7 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
 export const GeolocationWrapper = ({ children }: { children: Element }) => {
   const [position, setPosition] = useState<GeoCoordinates | null>(null)
   const [permissionGranted, setPermissionGranted] = useState<boolean>(false)
-  const { requestPermissionRoutine } = useRequestGeolocPermission(setPermissionGranted)
-  requestPermissionRoutine()
+  requestGeolocPermissionRoutine(setPermissionGranted)
   const permissionGrantedRef = useRef<boolean>(false)
 
   useEffect(() => {
