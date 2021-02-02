@@ -300,6 +300,7 @@ exports[`<IdCheck /> should render correctly 1`] = `
                         javaScriptEnabled={true}
                         messagingEnabled={false}
                         onContentProcessDidTerminate={[Function]}
+                        onError={[Function]}
                         onHttpError={[Function]}
                         onLoadingError={[Function]}
                         onLoadingFinish={[Function]}
