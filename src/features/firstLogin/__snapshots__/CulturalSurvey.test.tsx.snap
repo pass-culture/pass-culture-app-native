@@ -337,6 +337,7 @@ exports[`<CulturalSurvey /> should render correctly 1`] = `
                         onLoadingProgress={[Function]}
                         onLoadingStart={[Function]}
                         onMessage={[Function]}
+                        onNavigationStateChange={[Function]}
                         onShouldStartLoadWithRequest={[Function]}
                         source={
                           Object {

@@ -31,12 +31,26 @@ describe('<CulturalSurvey />', () => {
     })
   })
 
-  it('should NOT close webview when emitted message is neither "onClose" nor "onSubmit"', async () => {
+  it('should NOT close webview when emitted message is not "onClose"', async () => {
     const renderAPI = renderCulturalSurveyWithNavigation()
 
     act(() => {
       const webview = renderAPI.getByTestId('cultural-survey-webview')
       webview.props.onMessage({ nativeEvent: { data: 'Something Else' } })
+    })
+
+    await waitFor(() => {
+      expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeTruthy()
+      expect(renderAPI.queryByText('Home Page')).toBeFalsy()
+    })
+  })
+
+  it('should NOT close webview when emitted message is "onSubmit"', async () => {
+    const renderAPI = renderCulturalSurveyWithNavigation()
+
+    act(() => {
+      const webview = renderAPI.getByTestId('cultural-survey-webview')
+      webview.props.onMessage({ nativeEvent: { data: 'onSubmit' } })
     })
 
     await waitFor(() => {
@@ -59,12 +73,26 @@ describe('<CulturalSurvey />', () => {
     })
   })
 
-  it('should close webview when emitted message is "onSubmit"', async () => {
+  it('should NOT close webview when navigation state has NOT url containing "app.passculture"', async () => {
     const renderAPI = renderCulturalSurveyWithNavigation()
 
     act(() => {
       const webview = renderAPI.getByTestId('cultural-survey-webview')
-      webview.props.onMessage({ nativeEvent: { data: 'onSubmit' } })
+      webview.props.onNavigationStateChange({ url: 'app.example' })
+    })
+
+    await waitFor(() => {
+      expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeTruthy()
+      expect(renderAPI.queryByText('Home Page')).toBeFalsy()
+    })
+  })
+
+  it('should close webview when navigation state has url containing "app.passculture"', async () => {
+    const renderAPI = renderCulturalSurveyWithNavigation()
+
+    act(() => {
+      const webview = renderAPI.getByTestId('cultural-survey-webview')
+      webview.props.onNavigationStateChange({ url: 'app.passculture-testing' })
     })
 
     await waitFor(() => {
