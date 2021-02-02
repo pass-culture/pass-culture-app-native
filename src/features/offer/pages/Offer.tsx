@@ -39,7 +39,7 @@ const OfferComponent: FunctionComponent = () => {
   const headerScroll = useRef(new Animated.Value(0)).current
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  const { callbackOnce: logConsultWholeOffer } = useCallbackOnce(() => {
+  const logConsultWholeOffer = useCallbackOnce(() => {
     if (offerResponse) {
       analytics.logConsultWholeOffer(offerResponse.id)
     }

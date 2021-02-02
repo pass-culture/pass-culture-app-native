@@ -22,7 +22,7 @@ const shareOffer = async (offer: OfferResponse) => {
 
 export const useShareOffer = (offerId: number): (() => Promise<void>) => {
   const { data: offerResponse } = useOffer({ offerId })
-  const { callbackOnce: logShareOffer } = useCallbackOnce(() => {
+  const logShareOffer = useCallbackOnce(() => {
     analytics.logShareOffer(offerId)
   })
 
