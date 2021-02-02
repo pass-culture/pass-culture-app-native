@@ -27,7 +27,7 @@ export const AccordionItem = ({
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
   // we can't call onOpenOnce if it is not defined
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { callbackOnce: openOnce } = useCallbackOnce(onOpenOnce!)
+  const openOnce = useCallbackOnce(onOpenOnce!)
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
