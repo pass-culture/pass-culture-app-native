@@ -9,7 +9,7 @@ import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 export const NoSearchResult: React.FC = () => {
-  const position = useGeolocation()
+  const { position } = useGeolocation()
   const { dispatch, searchState } = useSearch()
   const query = searchState.query
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
