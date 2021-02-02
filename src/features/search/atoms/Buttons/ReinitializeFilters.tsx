@@ -11,7 +11,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const ReinitializeFilters = () => {
   const { dispatch } = useSearch()
-  const { callbackOnce: logReinitializeFilters } = useCallbackOnce(() => {
+  const logReinitializeFilters = useCallbackOnce(() => {
     analytics.logReinitializeFilters()
   })
   const reinitializeFilters = () => {
