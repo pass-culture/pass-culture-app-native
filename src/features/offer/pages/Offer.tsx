@@ -27,8 +27,8 @@ import {
   AccessibilityBlock,
   OfferPartialDescription,
 } from '../components'
-import { useCallbackOnce } from '../services/useCallbackOnce'
 import { useCtaWordingAndAction } from '../services/useCtaWordingAndAction'
+import { useFunctionOnce } from '../services/useFunctionOnce'
 
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
@@ -39,7 +39,7 @@ const OfferComponent: FunctionComponent = () => {
   const headerScroll = useRef(new Animated.Value(0)).current
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  const logConsultWholeOffer = useCallbackOnce(() => {
+  const logConsultWholeOffer = useFunctionOnce(() => {
     if (offerResponse) {
       analytics.logConsultWholeOffer(offerResponse.id)
     }
