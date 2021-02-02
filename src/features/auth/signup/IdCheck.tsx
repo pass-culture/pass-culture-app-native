@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React from 'react'
+import React, { useRef } from 'react'
 import { WebView, WebViewNavigation } from 'react-native-webview'
 import styled from 'styled-components/native'
 
@@ -14,6 +14,7 @@ type Props = StackScreenProps<RootStackParamList, 'IdCheck'>
 export const IdCheck: React.FC<Props> = function (props) {
   const currentRoute = useCurrentRoute()
   const navigation = useNavigation<UseNavigationType>()
+  const webviewRef = useRef<WebView>(null)
 
   const { email, licenceToken } = props.route.params
   const encodedEmail = encodeURIComponent(email)
@@ -33,6 +34,7 @@ export const IdCheck: React.FC<Props> = function (props) {
   if (currentRoute?.name !== 'IdCheck') return null
   return (
     <StyledWebview
+      ref={webviewRef}
       testID="idcheck-webview"
       source={{ uri }}
       startInLoadingState={true}
@@ -42,6 +44,12 @@ export const IdCheck: React.FC<Props> = function (props) {
         </LoadingPageContainer>
       )}
       onNavigationStateChange={onNavigationStateChange}
+      onError={({ nativeEvent }) => {
+        if (nativeEvent.url.startsWith('mailto:') && nativeEvent.canGoBack) {
+          // Fallback for mailto links when ERR_UNKNOWN_URL_SCHEME error appears
+          webviewRef.current?.goBack()
+        }
+      }}
     />
   )
 }
