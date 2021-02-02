@@ -81,7 +81,11 @@ const routes: Array<Route> = [
   { name: 'OfferDescription', component: OfferDescription },
   { name: 'ReinitializePassword', component: ReinitializePassword },
   { name: 'ResetPasswordEmailSent', component: ResetPasswordEmailSent },
-  { name: 'ResetPasswordExpiredLink', component: ResetPasswordExpiredLink },
+  {
+    name: 'ResetPasswordExpiredLink',
+    component: ResetPasswordExpiredLink,
+    withHocsWrapper: withAsyncErrorBoundary,
+  },
   { name: 'SearchFilter', component: SearchFilter },
   { name: 'SetBirthday', component: SetBirthday },
   { name: 'SetEmail', component: SetEmail },

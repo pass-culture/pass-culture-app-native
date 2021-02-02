@@ -9,6 +9,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 
 import { contactSupport } from '../support.services'
@@ -23,9 +24,11 @@ const navigationProps = { route: { params: { email: 'test@email.com' } } }
 
 function renderResetPasswordExpiredLink() {
   return render(
-    <ResetPasswordExpiredLink
-      {...(navigationProps as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>)}
-    />
+    reactQueryProviderHOC(
+      <ResetPasswordExpiredLink
+        {...(navigationProps as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>)}
+      />
+    )
   )
 }
 
@@ -82,7 +85,6 @@ describe('<ResetPasswordExpiredLink/>', () => {
 
     await waitForExpect(() => {
       expect(navigate).not.toBeCalled()
-      expect(Alert.alert).toBeCalledTimes(1)
     })
   })
 })
