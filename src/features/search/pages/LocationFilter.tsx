@@ -5,7 +5,7 @@ import React, { useRef } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { LocationType } from 'libs/algolia'
-import { requestGeolocPermissionRoutine } from 'libs/geolocation'
+import { requestGeolocPermission } from 'libs/geolocation'
 import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { Banner, BannerType } from 'ui/components/Banner'
@@ -31,7 +31,7 @@ export const LocationFilter: React.FC = () => {
 
   const onPressAroundMe = () => {
     if (position === null) {
-      requestGeolocPermissionRoutine(setPermissionGranted)
+      requestGeolocPermission(setPermissionGranted)
     } else {
       dispatch({
         type: 'LOCATION_AROUND_ME',
