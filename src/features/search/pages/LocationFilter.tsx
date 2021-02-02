@@ -30,7 +30,7 @@ export const LocationFilter: React.FC = () => {
     navigate('LocationPicker')
   }
 
-  const onPressAroundMe = async () => {
+  const onPressAroundMe = () => {
     if (position === null) {
       requestPermissionRoutine()
     } else {
