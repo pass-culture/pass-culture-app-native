@@ -9,7 +9,7 @@ import { _ } from 'libs/i18n'
 import { useOffer } from '../api/useOffer'
 import { getLocationName } from '../atoms/LocationCaption'
 
-import { useCallbackOnce } from './useCallbackOnce'
+import { useFunctionOnce } from './useFunctionOnce'
 
 const shareOffer = async (offer: OfferResponse) => {
   const { id, isDigital, name, venue } = offer
@@ -22,7 +22,7 @@ const shareOffer = async (offer: OfferResponse) => {
 
 export const useShareOffer = (offerId: number): (() => Promise<void>) => {
   const { data: offerResponse } = useOffer({ offerId })
-  const logShareOffer = useCallbackOnce(() => {
+  const logShareOffer = useFunctionOnce(() => {
     analytics.logShareOffer(offerId)
   })
 

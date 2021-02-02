@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Typo } from 'ui/theme'
 
-import { useCallbackOnce } from '../services/useCallbackOnce'
+import { useFunctionOnce } from '../services/useFunctionOnce'
 
 interface IAccordionItemProps {
   title: Element | string
@@ -25,9 +25,7 @@ export const AccordionItem = ({
   const [open, setOpen] = useState(defaultOpen)
   const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
-  // we can't call onOpenOnce if it is not defined
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const openOnce = useCallbackOnce(onOpenOnce!)
+  const openOnce = useFunctionOnce(onOpenOnce)
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
@@ -49,9 +47,9 @@ export const AccordionItem = ({
   }
 
   useEffect(() => {
-    if (open && onOpen) onOpen()
     if (open) {
-      if (onOpenOnce) openOnce()
+      onOpen?.()
+      onOpenOnce && openOnce()
     }
   }, [open])
 
