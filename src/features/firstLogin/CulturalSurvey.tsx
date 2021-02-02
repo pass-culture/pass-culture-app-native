@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { useRef } from 'react'
 import { WebView, WebViewMessageEvent } from 'react-native-webview'
+import { WebViewNavigation } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
@@ -51,7 +52,14 @@ export const CulturalSurvey: React.FC<Props> = function () {
 
   function onMessage(event: WebViewMessageEvent) {
     const message = event.nativeEvent.data
-    if (message === 'onSubmit' || message === 'onClose') {
+    if (message === 'onClose') {
+      navigation.navigate('Home', { shouldDisplayLoginModal: false })
+    }
+  }
+
+  function onNavigationStateChange(event: WebViewNavigation) {
+    const isWebViewRedirectedtoWebapp = event.url.includes('app.passculture')
+    if (isWebViewRedirectedtoWebapp) {
       navigation.navigate('Home', { shouldDisplayLoginModal: false })
     }
   }
@@ -64,6 +72,7 @@ export const CulturalSurvey: React.FC<Props> = function () {
       <StyledWebview
         onLoadEnd={onLoad}
         onMessage={onMessage}
+        onNavigationStateChange={onNavigationStateChange}
         ref={webviewRef}
         source={WEBVIEW_SOURCE}
         testID="cultural-survey-webview"
