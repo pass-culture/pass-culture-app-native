@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { Platform, PlatformOSType } from 'react-native'
 
 import { CategoryType } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -20,7 +19,6 @@ interface Props {
   isLoggedIn: boolean
   isBeneficiary: boolean
   offer: OfferAdaptedResponse
-  platform?: PlatformOSType
   creditThing?: number
   creditEvent?: number
 }
@@ -35,7 +33,6 @@ export const getCtaWordingAndAction = ({
   isLoggedIn,
   isBeneficiary,
   offer,
-  platform = Platform.OS,
   creditThing = USER_CREDIT_THING,
   creditEvent = USER_CREDIT_EVENT,
 }: Props): ICTAWordingAndAction | undefined => {
@@ -60,9 +57,6 @@ export const getCtaWordingAndAction = ({
 
   const price = getOfferPrice(offer.stocks)
   if (category.categoryType === CategoryType.Thing) {
-    // We check the platform first so that the user doesn't try to add funds and come back
-    if (offer.isDigital && price > 0 && platform === 'ios')
-      return { wording: _(t`Impossible de réserver`) }
     if (price > creditThing) {
       if (offer.isDigital) return { wording: _(t`Crédit numérique insuffisant`) }
       return { wording: _(t`Crédit insuffisant`) }
