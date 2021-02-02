@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 
-export const useCallbackOnce = (callback: () => void | undefined) => {
+export const useFunctionOnce = (callback: (() => void) | undefined) => {
   const hasRenderedOnce = useRef<boolean>(false)
 
   return () => {
     if (!hasRenderedOnce.current) {
       hasRenderedOnce.current = true
-      callback()
+      callback?.()
     }
   }
 }

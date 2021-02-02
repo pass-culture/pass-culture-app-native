@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 
-import { useCallbackOnce } from 'features/offer/services/useCallbackOnce'
+import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
@@ -11,7 +11,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const ReinitializeFilters = () => {
   const { dispatch } = useSearch()
-  const logReinitializeFilters = useCallbackOnce(() => {
+  const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters()
   })
   const reinitializeFilters = () => {
