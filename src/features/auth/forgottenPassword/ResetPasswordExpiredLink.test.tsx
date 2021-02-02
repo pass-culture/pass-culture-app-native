@@ -2,7 +2,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import { render, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
-import { Alert } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
