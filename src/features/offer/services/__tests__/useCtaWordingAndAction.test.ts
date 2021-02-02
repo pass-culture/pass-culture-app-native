@@ -78,18 +78,17 @@ describe('getCtaWordingAndAction', () => {
 
     // offer price is 5
     it.each`
-      type                  | creditThing  | creditEvent  | platform     | expected                     | disabled
-      ${CategoryType.Thing} | ${2}         | ${undefined} | ${'ios'}     | ${'Impossible de réserver'}  | ${true}
-      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'ios'}     | ${'Impossible de réserver'}  | ${true}
-      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'android'} | ${'Réserver'}                | ${false}
-      ${CategoryType.Event} | ${undefined} | ${20}        | ${'ios'}     | ${'Voir les disponibilités'} | ${false}
-      ${CategoryType.Event} | ${undefined} | ${20}        | ${'android'} | ${'Voir les disponibilités'} | ${false}
+      type                  | creditThing  | creditEvent  | expected                     | disabled
+      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'Réserver'}                | ${false}
+      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'Réserver'}                | ${false}
+      ${CategoryType.Event} | ${undefined} | ${20}        | ${'Voir les disponibilités'} | ${false}
+      ${CategoryType.Event} | ${undefined} | ${20}        | ${'Voir les disponibilités'} | ${false}
     `(
-      'If credit is enough, only iOS user cannot book on Thing type offers | $type x $platform => $expected - digital offers',
-      ({ creditEvent, creditThing, disabled, expected, type, platform }) => {
+      'If credit is enough, only iOS user cannot book on Thing type offers | $type => $expected - digital offers',
+      ({ creditEvent, creditThing, disabled, expected, type }) => {
         const { wording, onPress } = getCta(
           { category: { ...baseOffer.category, categoryType: type }, isDigital: true },
-          { creditEvent, creditThing, platform }
+          { creditEvent, creditThing }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -98,17 +97,17 @@ describe('getCtaWordingAndAction', () => {
 
     // offer price is 5
     it.each`
-      type                  | creditThing | creditEvent  | isDigital | expected                    | disabled
-      ${CategoryType.Thing} | ${2}        | ${undefined} | ${true}   | ${'Impossible de réserver'} | ${true}
-      ${CategoryType.Thing} | ${20}       | ${undefined} | ${true}   | ${'Impossible de réserver'} | ${true}
-      ${CategoryType.Thing} | ${2}        | ${undefined} | ${false}  | ${'Crédit insuffisant'}     | ${true}
-      ${CategoryType.Thing} | ${20}       | ${undefined} | ${false}  | ${'Réserver'}               | ${false}
+      type                  | creditThing | creditEvent  | isDigital | expected                          | disabled
+      ${CategoryType.Thing} | ${2}        | ${undefined} | ${true}   | ${'Crédit numérique insuffisant'} | ${true}
+      ${CategoryType.Thing} | ${20}       | ${undefined} | ${true}   | ${'Réserver'}                     | ${false}
+      ${CategoryType.Thing} | ${2}        | ${undefined} | ${false}  | ${'Crédit insuffisant'}           | ${true}
+      ${CategoryType.Thing} | ${20}       | ${undefined} | ${false}  | ${'Réserver'}                     | ${false}
     `(
-      'iOS users cannot book digital Thing type offers | $type x $isDigital => $expected',
+      'check is credit is enough | $type x $isDigital => $expected',
       ({ creditEvent, creditThing, disabled, expected, type, isDigital }) => {
         const { wording, onPress } = getCta(
           { category: { ...baseOffer.category, categoryType: type }, isDigital },
-          { creditEvent, creditThing, platform: 'ios' }
+          { creditEvent, creditThing }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -131,7 +130,7 @@ describe('getCtaWordingAndAction', () => {
       ({ creditEvent, creditThing, disabled, expected, type }) => {
         const { wording, onPress } = getCta(
           { category: { ...baseOffer.category, categoryType: type } },
-          { creditEvent, creditThing, platform: 'android' }
+          { creditEvent, creditThing }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -153,7 +152,7 @@ describe('getCtaWordingAndAction', () => {
             isDigital: true,
             category: { ...baseOffer.category, categoryType: CategoryType.Thing },
           },
-          { creditThing, platform: 'android' }
+          { creditThing }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -175,7 +174,6 @@ describe('getCtaWordingAndAction', () => {
           isLoggedIn: true,
           isBeneficiary: true,
           offer,
-          platform: 'android',
         }) || {}
 
       expect(analytics.logClickBookOffer).toBeCalledTimes(0)
