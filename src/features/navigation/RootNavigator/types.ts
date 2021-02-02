@@ -1,5 +1,6 @@
 import { NavigationProp, RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { ComponentType } from 'react'
 
 import { TabParamList } from '../TabBar/types'
 
@@ -99,3 +100,12 @@ export type RouteParams<
   StackParamList extends Record<string, unknown>,
   Screename extends keyof StackParamList
 > = Pick<StackParamList, Screename>[Screename]
+
+/**
+ * Type helper to declare a route
+ */
+export interface Route {
+  name: keyof RootStackParamList
+  component: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
+  withHocsWrapper?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
+}
