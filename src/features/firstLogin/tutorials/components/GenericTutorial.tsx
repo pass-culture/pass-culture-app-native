@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import LottieView from 'lottie-react-native'
 import AnimatedLottieView from 'lottie-react-native'
 import React, { FunctionComponent, useEffect, useRef } from 'react'
-import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -17,10 +16,13 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 type Props = {
   animation: AnimationObject
   animationSize: number
+  buttonCallback: () => void
+  buttonText: string
   pauseAnimationOnRenderAtFrame?: number
-  title: string
+  step: number
   subTitle: string
   text: string
+  title: string
 }
 
 export const GenericTutorial: FunctionComponent<Props> = (props) => {
@@ -36,10 +38,6 @@ export const GenericTutorial: FunctionComponent<Props> = (props) => {
 
   function goToHomeWithoutModal() {
     navigate('TabNavigator')
-  }
-
-  function goToNextTutorial() {
-    Alert.alert('TODO: PC-5960')
   }
 
   return (
@@ -62,10 +60,10 @@ export const GenericTutorial: FunctionComponent<Props> = (props) => {
       <StyledBody>{props.text}</StyledBody>
       <Spacer.Flex flex={2} />
       <ButtonContainer>
-        <ButtonPrimary title={_(t`Continuer`)} onPress={goToNextTutorial} />
+        <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
       </ButtonContainer>
       <Spacer.Flex flex={0.8} />
-      <StepDots numberOfSteps={4} currentStep={1} />
+      <StepDots numberOfSteps={4} currentStep={props.step} />
       <Spacer.Flex flex={1} />
     </Container>
   )
