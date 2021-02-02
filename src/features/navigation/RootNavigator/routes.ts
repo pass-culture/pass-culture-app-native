@@ -17,6 +17,8 @@ import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
+import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
+import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
@@ -33,6 +35,7 @@ const routes: Array<Route> = [
   { name: 'AfterSignupEmailValidationBuffer', component: AfterSignupEmailValidationBuffer },
   { name: 'AppComponents', component: AppComponents },
   { name: 'CheatCodes', component: CheatCodes },
+  { name: 'CulturalSurvey', component: CulturalSurvey },
   { name: 'EligibilityConfirmed', component: EligibilityConfirmed },
   {
     name: 'ForgottenPassword',
@@ -62,6 +65,7 @@ const routes: Array<Route> = [
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
   { name: 'VerifyEligibility', component: VerifyEligibility },
+  { name: 'FirstTutorial', component: FirstTutorial },
 ]
 
 export default routes

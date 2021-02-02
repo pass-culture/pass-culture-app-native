@@ -31,7 +31,6 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
   const isMounted = useRef(false)
   const { goBack, navigate } = useNavigation<UseNavigationType>()
   const signUp = useSignUp()
-  const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked
   const password = route.params.password
   const birthday = route.params.birthday
@@ -52,18 +51,20 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     cacheTime: 0,
     enabled: false,
     onSuccess: (success) => {
+      const email = route.params.email
       if (success) {
-        navigate('SignupConfirmationEmailSent', { email: email })
+        navigate('SignupConfirmationEmailSent', { email })
       }
     },
   })
   async function subscribeQuery() {
+    const email = route.params.email
     const signupResponse = await signUp({
       password: password,
       birthdate: birthday,
       hasAllowedRecommendations: isNewsletterChecked,
       token: 'ABCDEF',
-      email: email,
+      email,
     })
     if (!signupResponse?.isSuccess) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
