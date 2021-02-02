@@ -1,10 +1,8 @@
 import { PermissionsAndroid } from 'react-native'
 
-export const requestGeolocPermissionRoutine = async (
-  setPermissionGranted: (granted: boolean) => void
-) => {
+export const requestGeolocPermissionRoutine = async (onGranted: (granted: boolean) => void) => {
   const granted = await requestGeolocPermission()
-  if (granted) setPermissionGranted(true)
+  if (granted) onGranted(true)
 }
 
 export const requestGeolocPermission = async (): Promise<boolean> => {
