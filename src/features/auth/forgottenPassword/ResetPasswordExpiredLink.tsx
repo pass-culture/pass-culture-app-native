@@ -31,7 +31,7 @@ export function ResetPasswordExpiredLink(props: Props) {
     {
       cacheTime: 0,
       enabled: false,
-      onSuccess: (data) => {
+      onSuccess: () => {
         navigate('ResetPasswordEmailSent', { email })
       },
     }
@@ -39,7 +39,6 @@ export function ResetPasswordExpiredLink(props: Props) {
   function goToHomeWithoutModal() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
-
   async function resetPasswordExpiredLinkQuery() {
     try {
       analytics.logResendEmailResetPasswordExpiredLink()
@@ -51,7 +50,6 @@ export function ResetPasswordExpiredLink(props: Props) {
   async function onSubmit() {
     await refetch()
   }
-
   return (
     <GenericInfoPage title={_(t`Oups`)} icon={SadFace}>
       <StyledBody>{_(t`Le lien est expiré !`)}</StyledBody>
