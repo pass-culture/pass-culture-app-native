@@ -5,8 +5,7 @@ export const requestGeolocPermissionRoutine = async (onGranted: (granted: boolea
   if (granted) onGranted(true)
 }
 
-export const requestGeolocPermission = (): Promise<boolean> =>
-  Geolocation.requestAuthorization('whenInUse').then((value) => {
-    if (value === 'granted') return true
-    return false
-  })
+export const requestGeolocPermission = async (): Promise<boolean> => {
+  const permissionValue = await Geolocation.requestAuthorization('whenInUse')
+  return permissionValue === 'granted'
+}
