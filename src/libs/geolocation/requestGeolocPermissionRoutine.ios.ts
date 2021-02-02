@@ -1,10 +1,8 @@
 import Geolocation from 'react-native-geolocation-service'
 
-export const requestGeolocPermissionRoutine = async (
-  setPermissionGranted: (granted: boolean) => void
-) => {
+export const requestGeolocPermissionRoutine = async (onGranted: (granted: boolean) => void) => {
   const granted = await requestGeolocPermission()
-  if (granted) setPermissionGranted(true)
+  if (granted) onGranted(true)
 }
 
 export const requestGeolocPermission = (): Promise<boolean> =>
