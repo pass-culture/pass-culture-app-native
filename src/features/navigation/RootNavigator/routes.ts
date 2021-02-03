@@ -17,6 +17,7 @@ import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
+import { withAsyncErrorBoundary } from 'features/errors'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial'
 import { ThirdTutorial } from 'features/firstLogin/tutorials/pages/ThirdTutorial'
@@ -27,7 +28,6 @@ import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 
-import { withAsyncErrorBoundary } from './hocs'
 import { Route } from './types'
 
 const routes: Array<Route> = [
