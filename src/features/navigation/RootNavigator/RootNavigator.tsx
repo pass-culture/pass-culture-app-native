@@ -1,5 +1,5 @@
 import { NavigationContainer, Theme } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'
 import React, { useEffect } from 'react'
 
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
@@ -23,6 +23,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial'
+import { SecondTutorial } from 'features/firstLogin/tutorials/pages/SecondTutorial'
 import { ThirdTutorial } from 'features/firstLogin/tutorials/pages/ThirdTutorial'
 import { Offer, OfferDescription } from 'features/offer'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
@@ -93,7 +94,16 @@ export const RootNavigator: React.FC = () => {
         />
         <RootStack.Screen name="TabNavigator" component={TabNavigator} />
         <RootStack.Screen name="VerifyEligibility" component={VerifyEligibility} />
-        <RootStack.Screen name="FirstTutorial" component={FirstTutorial} />
+        <RootStack.Screen
+          name="FirstTutorial"
+          component={FirstTutorial}
+          options={TransitionPresets.SlideFromRightIOS}
+        />
+        <RootStack.Screen
+          name="SecondTutorial"
+          component={SecondTutorial}
+          options={TransitionPresets.SlideFromRightIOS}
+        />
         <RootStack.Screen name="ThirdTutorial" component={ThirdTutorial} />
       </RootStack.Navigator>
     </NavigationContainer>

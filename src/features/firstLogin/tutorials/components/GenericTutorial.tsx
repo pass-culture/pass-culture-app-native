@@ -14,6 +14,7 @@ import { StepDots } from 'ui/components/StepDots'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
+  currentStep?: number
   animation: AnimationObject
   animationSize: number
   buttonCallback: () => void
@@ -25,16 +26,24 @@ type Props = {
   title: string
 }
 
-export const GenericTutorial: FunctionComponent<Props> = (props) => {
+export const GenericTutorial: FunctionComponent<Props> = ({
+  currentStep = 1,
+  animation,
+  animationSize,
+  title,
+  subTitle,
+  text,
+  pauseAnimationOnRenderAtFrame,
+}) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const animationRef = useRef<AnimatedLottieView>(null)
 
   useEffect(() => {
-    if (props.pauseAnimationOnRenderAtFrame) {
-      animationRef.current?.play(0, props.pauseAnimationOnRenderAtFrame)
+    if (pauseAnimationOnRenderAtFrame) {
+      animationRef.current?.play(0, pauseAnimationOnRenderAtFrame)
     }
-  }, [])
+  }, [pauseAnimationOnRenderAtFrame])
 
   function goToHomeWithoutModal() {
     navigate('TabNavigator')
@@ -47,23 +56,18 @@ export const GenericTutorial: FunctionComponent<Props> = (props) => {
         <ButtonTertiaryGreyDark title={_(t`Tout passer`)} onPress={goToHomeWithoutModal} />
       </Header>
       <Spacer.Flex flex={2} />
-      <StyledLottieView
-        ref={animationRef}
-        source={props.animation}
-        loop={false}
-        size={props.animationSize}
-      />
+      <StyledLottieView ref={animationRef} source={animation} loop={false} size={animationSize} />
       <Spacer.Flex flex={0.8} />
-      <StyledTitle>{props.title}</StyledTitle>
-      <StyledSubTitle>{props.subTitle}</StyledSubTitle>
+      <StyledTitle>{title}</StyledTitle>
+      <StyledSubTitle>{subTitle}</StyledSubTitle>
       <Spacer.Flex flex={0.8} />
-      <StyledBody>{props.text}</StyledBody>
+      <StyledBody>{text}</StyledBody>
       <Spacer.Flex flex={2} />
       <ButtonContainer>
         <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
       </ButtonContainer>
       <Spacer.Flex flex={0.8} />
-      <StepDots numberOfSteps={4} currentStep={props.step} />
+      <StepDots numberOfSteps={4} currentStep={currentStep} />
       <Spacer.Flex flex={1} />
     </Container>
   )

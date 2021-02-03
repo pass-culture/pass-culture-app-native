@@ -43,6 +43,7 @@ export type RootStackParamList = {
   TabNavigator: undefined
   VerifyEligibility: { email: string; licenceToken: string }
   FirstTutorial: undefined
+  SecondTutorial: undefined
   ThirdTutorial: undefined
 }
 
