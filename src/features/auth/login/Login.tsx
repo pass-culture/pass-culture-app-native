@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useRef, FunctionComponent, useState, useEffect } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
@@ -31,8 +31,6 @@ if (__DEV__) {
 }
 
 export const Login: FunctionComponent = function () {
-  const isMounted = useRef(false)
-
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const [shouldShowErrorMessage, setShouldShowErrorMessage] = useState(false)
@@ -42,13 +40,6 @@ export const Login: FunctionComponent = function () {
 
   const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation<'Login'>()
-
-  useEffect(() => {
-    isMounted.current = true
-    return () => {
-      isMounted.current = false
-    }
-  }, [])
 
   const signInQuery = async () => {
     const signinResponse = await signIn({ identifier: email, password })
@@ -74,7 +65,7 @@ export const Login: FunctionComponent = function () {
     Keyboard.dismiss()
     setShouldShowErrorMessage(false)
     const { data } = await refetch()
-    if (isMounted.current && !data?.isSuccess) {
+    if (!data?.isSuccess) {
       setShouldShowErrorMessage(true)
     }
   }
