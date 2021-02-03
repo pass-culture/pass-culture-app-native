@@ -1,3 +1,4 @@
+import { renderHook } from '@testing-library/react-hooks'
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
@@ -8,7 +9,6 @@ import { LocationFilter } from '../LocationFilter'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
-const useGeolocationMock = useGeolocation as jest.Mock
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
@@ -18,13 +18,13 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/geolocation', () => ({
-  useGeolocation: jest.fn(() => ({
+  useGeolocation: jest.fn().mockReturnValue({
     position: {
       latitude: 2,
       longitude: 40,
     },
-  })),
-  requestGeolocPermission: jest.fn(),
+    requestGeolocPermission: jest.fn(),
+  }),
 }))
 
 describe('LocationFilter component', () => {
@@ -44,9 +44,12 @@ describe('LocationFilter component', () => {
   })
 
   it('should not dispatch actions on click (position=NO, type=AROUND_ME)', () => {
-    useGeolocationMock.mockImplementationOnce(() => ({ position: null }))
+    const hookResult = renderHook(useGeolocation)
+    hookResult.result.current.position = null
     const { getByTestId } = render(<LocationFilter />)
+
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
+
     expect(mockDispatch).not.toHaveBeenCalled()
   })
 
@@ -57,7 +60,6 @@ describe('LocationFilter component', () => {
   })
 
   it('should dispatch actions on click (position=NO, type=EVERYWHERE)', () => {
-    useGeolocationMock.mockImplementationOnce(() => ({ position: null }))
     const { getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-everywhere'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'LOCATION_EVERYWHERE' })

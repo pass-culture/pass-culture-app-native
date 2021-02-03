@@ -1,10 +1,8 @@
 import { render } from '@testing-library/react-native'
 import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import Geolocation from 'react-native-geolocation-service'
 import SplashScreen from 'react-native-splash-screen'
 import { act } from 'react-test-renderer'
-import waitForExpect from 'wait-for-expect'
 
 import { BaseRetryBoundary } from 'features/errors'
 import * as BatchLocalLib from 'libs/notifications'
@@ -30,19 +28,6 @@ describe('<App /> with mocked RootTabNavigator', () => {
   it('should call startBatchNotification() to optin to notifications', async () => {
     await renderApp()
     expect(BatchLocalLib.useStartBatchNotification).toHaveBeenCalled()
-  })
-
-  it('should render Oops page when get current position raise error', async () => {
-    // TODO (PC-6360) : console error displayed in DEV mode even if caught by ErrorBoundary
-    jest.spyOn(Geolocation, 'getCurrentPosition').mockImplementationOnce(() => {
-      throw new Error()
-    })
-
-    const { getByText } = await renderApp()
-
-    await waitForExpect(() => {
-      expect(getByText('Oops !')).toBeTruthy()
-    })
   })
 })
 
