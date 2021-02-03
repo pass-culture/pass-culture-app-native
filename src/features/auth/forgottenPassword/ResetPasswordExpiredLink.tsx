@@ -43,7 +43,7 @@ export function ResetPasswordExpiredLink(props: Props) {
     try {
       analytics.logResendEmailResetPasswordExpiredLink()
       await api.postnativev1requestPasswordReset({ email })
-    } catch (err) {
+    } catch (_err) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
     }
   }

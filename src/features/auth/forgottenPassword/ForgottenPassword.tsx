@@ -34,6 +34,7 @@ export const ForgottenPassword: FunctionComponent = () => {
       navigate('ResetPasswordEmailSent', { email })
     },
   })
+  
   async function forgottenPasswordQuery() {
     try {
       await api.postnativev1requestPasswordReset({ email })
@@ -41,6 +42,7 @@ export const ForgottenPassword: FunctionComponent = () => {
       throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
     }
   }
+  
   function onBackNavigation() {
     navigate('Login')
   }
