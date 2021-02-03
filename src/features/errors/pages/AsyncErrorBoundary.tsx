@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useNavigation, useNavigationState } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
@@ -29,7 +29,6 @@ interface FallbackProps {
 export const AsyncErrorBoundary = ({ resetErrorBoundary, error }: FallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
   const { canGoBack, goBack } = useNavigation<UseNavigationType>()
-  const state = useNavigationState((state) => state)
   const { top } = useCustomSafeInsets()
 
   const handleRetry = useCallback(() => {
@@ -39,7 +38,7 @@ export const AsyncErrorBoundary = ({ resetErrorBoundary, error }: FallbackProps)
       return error.retryPromise()
     }
     return null
-  }, [reset, resetErrorBoundary, state, error])
+  }, [reset, resetErrorBoundary, error])
 
   return (
     <Container>
