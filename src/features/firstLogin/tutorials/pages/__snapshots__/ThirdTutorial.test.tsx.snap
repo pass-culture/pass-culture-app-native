@@ -1,0 +1,391 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ThirdTutorial /> should display animation 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexGrow": 1,
+      },
+    ]
+  }
+>
+  <View
+    flex={1}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "flex-end",
+          "width": "40%",
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="button-container"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#626262",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 5,
+              "maxWidth": 650,
+            },
+          ]
+        }
+        testID="button-title"
+        textColor="#626262"
+      >
+        Tout passer
+      </Text>
+    </View>
+  </View>
+  <View
+    flex={2}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View>
+    undefined-Lottie-Mock
+  </View>
+  <View
+    flex={0.8}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.8,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    color="#151515"
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "display": "flex",
+          "fontFamily": "Montserrat-ExtraBoldItalic",
+          "fontSize": 28,
+          "lineHeight": 34,
+        },
+      ]
+    }
+  >
+    Toute la culture
+  </Text>
+  <Text
+    color="#151515"
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "fontFamily": "Montserrat-MediumItalic",
+          "fontSize": 24,
+          "lineHeight": 28,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    à portée de main !
+  </Text>
+  <View
+    flex={0.8}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.8,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    color="#151515"
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "flexDirection": "column",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "textAlign": "center",
+          "width": "60%",
+        },
+      ]
+    }
+  >
+    Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.
+  </Text>
+  <View
+    flex={2}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingHorizontal": 24,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#eb0055",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="button-container"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 5,
+              "maxWidth": 650,
+            },
+          ]
+        }
+        testID="button-title"
+        textColor="#ffffff"
+      >
+        Activer la géolocalisation
+      </Text>
+    </View>
+  </View>
+  <View
+    flex={0.8}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.8,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+          },
+        ]
+      }
+    >
+      <View
+        fill="#15884f"
+        height={8}
+        testID="dot-icon"
+        width={8}
+      >
+        dot-icon-SVG-Mock
+      </View>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+          },
+        ]
+      }
+    >
+      <View
+        fill="#15884f"
+        height={8}
+        testID="dot-icon"
+        width={8}
+      >
+        dot-icon-SVG-Mock
+      </View>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+          },
+        ]
+      }
+    >
+      <View
+        fill="#eb0055"
+        height={12}
+        testID="dot-icon"
+        width={12}
+      >
+        dot-icon-SVG-Mock
+      </View>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+          },
+        ]
+      }
+    >
+      <View
+        fill="#c7c7cc"
+        height={8}
+        testID="dot-icon"
+        width={8}
+      >
+        dot-icon-SVG-Mock
+      </View>
+    </View>
+  </View>
+  <View
+    flex={1}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+</View>
+`;
