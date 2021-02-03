@@ -66,7 +66,6 @@ export const GenericTutorial: FunctionComponent<Props> = ({
       <ButtonContainer>
         <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
       </ButtonContainer>
-      <Spacer.Flex flex={0.8} />
       <StepDots numberOfSteps={4} currentStep={currentStep} />
       <Spacer.Flex flex={1} />
     </Container>
@@ -83,6 +82,7 @@ const ButtonContainer = styled.View({
   width: '100%',
   paddingHorizontal: getSpacing(6),
   justifyContent: 'center',
+  marginBottom: getSpacing(8),
 })
 
 const StyledLottieView = styled(LottieView)((props: { size: number }) => ({

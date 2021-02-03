@@ -18,9 +18,7 @@ export function SecondTutorial() {
   }
 
   const onSwipeRight = (gestureState) => {
-    console.log('Coucou !!')
-    console.log(gestureState)
-    navigate('FirstTutorial')
+    Alert.alert('TODO: PC-5961')
   }
 
   return (
