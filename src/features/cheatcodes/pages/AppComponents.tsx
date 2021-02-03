@@ -528,7 +528,7 @@ export const AppComponents: FunctionComponent = () => {
           </RowWrap>
         </GreyView>
         <Spacer.Column numberOfSpaces={4} />
-        <FlexView>
+        <View>
           <Text>Section Row </Text>
           <SectionRow
             type="navigable"
@@ -543,20 +543,23 @@ export const AppComponents: FunctionComponent = () => {
             icon={Close}
             onPress={() => Alert.alert('clicked')}
           />
-        </FlexView>
+        </View>
+        <Spacer.Column numberOfSpaces={4} />
         <View>
           <NonBeneficiaryHeader email="john@doe.com" dateOfBirth={`${year}-01-28T01:32:15`} />
         </View>
-        <AlignedText>
-          <Text>Date de naissance: {year}-01-28</Text>
-        </AlignedText>
-        <AlignedText>
-          <Button title="-1 an" onPress={() => setYear((year) => year + 1)} />
-          <Spacer.Column numberOfSpaces={2} />
-          <Text>{THIS_YEAR - year} ans</Text>
-          <Spacer.Column numberOfSpaces={2} />
-          <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
-        </AlignedText>
+        <View>
+          <AlignedText>
+            <Text>Date de naissance: {year}-01-28</Text>
+          </AlignedText>
+          <AlignedText>
+            <Button title="-1 an" onPress={() => setYear((year) => year + 1)} />
+            <Spacer.Column numberOfSpaces={2} />
+            <Text>{THIS_YEAR - year} ans</Text>
+            <Spacer.Column numberOfSpaces={2} />
+            <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
+          </AlignedText>
+        </View>
 
         <Spacer.Column numberOfSpaces={4} />
         <View>
@@ -618,9 +621,6 @@ const Center = styled(View)({
 })
 const GreyView = styled.View({
   backgroundColor: ColorsEnum.GREY_LIGHT,
-})
-const FlexView = styled.View({
-  flex: 1,
 })
 
 const ColoredModalHeader = styled(ModalHeader).attrs({
