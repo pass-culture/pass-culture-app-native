@@ -1,7 +1,7 @@
 import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
-import { Animated, Share } from 'react-native'
+import { Animated, Share, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute, goBack } from '__mocks__/@react-navigation/native'
@@ -61,7 +61,8 @@ describe('<OfferHeader />', () => {
     await waitForExpect(() => expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1))
   })
 
-  it('should call Share with the right arguments', async () => {
+  it('should call Share with the right arguments on IOS', async () => {
+    Platform.OS = 'ios'
     const share = jest.spyOn(Share, 'share')
     const { getByTestId } = await renderOfferHeader(true)
 
@@ -72,9 +73,31 @@ describe('<OfferHeader />', () => {
     const url = 'passculture://app.passculture.testing/offer/?id=116656'
     const title =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
-    expect(share).toHaveBeenCalledWith({ message: title, title, url }, { dialogTitle: title })
+    expect(share).toHaveBeenCalledWith(
+      { message: title, title, url },
+      { dialogTitle: title, subject: title }
+    )
   })
 
+  it('should call Share with the right arguments on Android', async () => {
+    Platform.OS = 'android'
+    const share = jest.spyOn(Share, 'share')
+    const { getByTestId } = await renderOfferHeader(true)
+
+    act(() => {
+      fireEvent.press(getByTestId('icon-share'))
+    })
+    expect(share).toHaveBeenCalledTimes(1)
+    const url = 'passculture://app.passculture.testing/offer/?id=116656'
+    const title =
+      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
+    const messageWithUrl =
+      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\npassculture://app.passculture.testing/offer/?id=116656'
+    expect(share).toHaveBeenCalledWith(
+      { message: messageWithUrl, title, url },
+      { dialogTitle: title, subject: title }
+    )
+  })
   it('should display SignIn modal when pressing Favorite - not logged in users', async () => {
     const { getByTestId, queryByText } = await renderOfferHeader(false)
     act(() => {
