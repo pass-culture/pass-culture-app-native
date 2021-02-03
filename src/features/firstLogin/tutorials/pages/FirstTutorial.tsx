@@ -14,8 +14,6 @@ export function FirstTutorial() {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const onSwipeLeft = (gestureState) => {
-    console.log('Coucou !!')
-    console.log(gestureState)
     navigate('SecondTutorial')
   }
 
