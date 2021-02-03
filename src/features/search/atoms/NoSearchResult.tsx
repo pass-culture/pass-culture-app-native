@@ -6,7 +6,7 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoSearchResult: React.FC = () => {
   const { position } = useGeolocation()
@@ -34,6 +34,7 @@ export const NoSearchResult: React.FC = () => {
 
   return (
     <Container>
+      <Spacer.Flex />
       <NoOffer size={156} />
       <MainTitle>{_(t`Oups !`)}</MainTitle>
       <DescriptionErrorTextContainer>
@@ -46,15 +47,16 @@ export const NoSearchResult: React.FC = () => {
         <DescriptionErrorText>
           {_(t`Modifie ta recherche ou découvre toutes les offres`) + ' '}
         </DescriptionErrorText>
-        <AroundMeText onPress={handlePressAroundMe}>{_(t`autour de chez toi`)}</AroundMeText>
+        <AroundMeText onPress={handlePressAroundMe}>{_(t`autour de toi`)}</AroundMeText>
       </DescriptionErrorTextContainer>
+      <Spacer.Flex />
     </Container>
   )
 }
 
 const Container = styled.View({
+  flex: 1,
   height: '100%',
-  flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   marginHorizontal: getSpacing(14.5),

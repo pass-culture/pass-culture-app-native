@@ -31,6 +31,8 @@ export const InfiniteHitsComponent: React.FC<Props> = ({
     <Container>
       <FlatList
         data={hits}
+        // eslint-disable-next-line react-native/no-inline-styles
+        contentContainerStyle={{ flexGrow: 1 }}
         keyExtractor={(item) => item.objectID}
         ListHeaderComponent={NumberOfResults}
         ListFooterComponent={Footer}
@@ -39,6 +41,7 @@ export const InfiniteHitsComponent: React.FC<Props> = ({
         onEndReached={() => hasMore && refineNext()}
         onScrollEndDrag={handleIsScrolling(false)}
         onScrollBeginDrag={handleIsScrolling(true)}
+        scrollEnabled={hits.length > 0}
         ListEmptyComponent={NoSearchResult}
       />
     </Container>
