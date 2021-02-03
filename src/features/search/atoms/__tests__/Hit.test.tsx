@@ -3,10 +3,13 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
+import { initialSearchState } from 'features/search/pages/reducer'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { Hit } from '../Hit'
+
+const mockSearchState = initialSearchState
 
 const hit = mockedAlgoliaResponse.hits[0]
 const offerId = dehumanizeId(hit.offer.id)
@@ -14,6 +17,12 @@ const offerId = dehumanizeId(hit.offer.id)
 let mockDistance: string | null = null
 jest.mock('features/offer/components/useDistance', () => ({
   useDistance: () => mockDistance,
+}))
+
+jest.mock('features/search/pages/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+  }),
 }))
 
 describe('Hit component', () => {

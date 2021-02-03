@@ -10,9 +10,12 @@ import { useDistance } from 'features/offer/components/useDistance'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { AlgoliaHit } from 'libs/algolia'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
+import { analytics } from 'libs/analytics'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
+
+import { useSearch } from '../pages/SearchWrapper'
 
 import { OfferImage } from './OfferImage'
 
@@ -25,7 +28,9 @@ export const Hit: React.FC<Props> = ({ hit }) => {
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance(_geoloc)
+  const { searchState } = useSearch()
 
+  const query = searchState.query
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = dehumanizeId(offer.id)
   const categoryLabel = CATEGORY_CRITERIA[offer.category || 'ALL'].label
@@ -47,6 +52,7 @@ export const Hit: React.FC<Props> = ({ hit }) => {
         offerId,
       })
     )
+    analytics.logConsultOffer(offerId, null, query)
     navigation.navigate('Offer', { id: offerId })
   }
 
