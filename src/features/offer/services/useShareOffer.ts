@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { Share } from 'react-native'
+import { Platform, Share } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
@@ -16,8 +16,23 @@ const shareOffer = async (offer: OfferResponse) => {
   const locationName = getLocationName(venue, isDigital)
   const title = _(t`Retrouve "${name}" chez "${locationName}" sur le pass Culture`)
   const url = `${DEEPLINK_DOMAIN}offer/?id=${id}`
+  const message = Platform.OS === 'ios' ? title : title.concat(`\n\n${url}`)
+  const shareContent = {
+    message,
+    // iOs only
+    url,
+    // android only
+    title,
+  }
 
-  await Share.share({ message: title, url, title }, { dialogTitle: title })
+  const shareOptions = {
+    // iOs only
+    subject: title,
+    // android only
+    dialogTitle: title,
+  }
+
+  await Share.share(shareContent, shareOptions)
 }
 
 export const useShareOffer = (offerId: number): (() => Promise<void>) => {
