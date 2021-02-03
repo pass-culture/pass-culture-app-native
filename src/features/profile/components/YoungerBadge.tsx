@@ -24,7 +24,6 @@ export function YoungerBadge() {
 }
 
 const Container = styled.View({
-  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',

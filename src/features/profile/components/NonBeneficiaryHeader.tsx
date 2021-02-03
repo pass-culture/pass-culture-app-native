@@ -59,13 +59,13 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   }
 
   return (
-    <Container>
+    <React.Fragment>
       <HeaderBackgroundWrapper>
         <HeaderBackground width={screenWidth} />
         <Title>{_(t`Profil`)}</Title>
       </HeaderBackgroundWrapper>
       <BodyContainer testID="body-container">{body}</BodyContainer>
-    </Container>
+    </React.Fragment>
   )
 }
 
@@ -73,10 +73,6 @@ export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
 
 /** Add 1 pixel to avoid 1 white pixel on androids */
 const screenWidth = Dimensions.get('window').width + 1
-
-const Container = styled.View({
-  flex: 1,
-})
 
 const HeaderBackgroundWrapper = styled.View({
   maxHeight: getSpacing(16),
@@ -94,5 +90,4 @@ const Title = styled(Typo.Title4)({
 const BodyContainer = styled.View({
   padding: getSpacing(4),
   position: 'relative',
-  flex: 1,
 })
