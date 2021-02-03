@@ -46,9 +46,13 @@ const logAllModulesSeen = (numberOfModules: number) =>
 const logAllTilesSeen = (moduleName: string, numberOfTiles: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
 
-const logConsultOffer = (offerId: number, moduleName: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId, moduleName })
-
+const logConsultOffer = (offerId: number, moduleName: string | null, query?: string | '') => {
+  if (moduleName)
+    return firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId, moduleName })
+  if (query || query === '')
+    return firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_OFFER, { offerId, query })
+  return
+}
 const logClickExclusivityBlock = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })
 
