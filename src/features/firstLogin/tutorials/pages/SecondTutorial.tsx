@@ -10,22 +10,23 @@ import { _ } from 'libs/i18n'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { getSpacing } from 'ui/theme'
 
-export function FirstTutorial() {
+export function SecondTutorial() {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const onSwipeLeft = (gestureState) => {
-    console.log('Coucou !!')
-    console.log(gestureState)
-    navigate('SecondTutorial')
+  function onSwipeLeft() {
+    navigate('FirstTutorial')
   }
 
-  function goToSecondTutorial() {
-    Alert.alert('TODO: PC-5960')
+  const onSwipeRight = (gestureState) => {
+    console.log('Coucou !!')
+    console.log(gestureState)
+    navigate('FirstTutorial')
   }
 
   return (
     <GestureRecognizer
       onSwipeLeft={onSwipeLeft}
+      onSwipeRight={onSwipeRight}
       config={{
         velocityThreshold: 0.03,
         directionalOffsetThreshold: 400,
@@ -35,15 +36,13 @@ export function FirstTutorial() {
         flexGrow: 1,
       }}>
       <GenericTutorial
-        animation={TutorialPassLogo}
-        animationSize={getSpacing(60)}
-        buttonCallback={goToSecondTutorial}
-        buttonText={_(t`Continuer`)}
-        pauseAnimationOnRenderAtFrame={62}
-        step={1}
+        title={_(t`Second tutorial`)}
         subTitle={_(t`c'est...`)}
         text={_(t`une initiative financée par le Ministère de la Culture.`)}
-        title={_(t`Le pass Culture`)}
+        animation={TutorialPassLogo}
+        animationSize={getSpacing(60)}
+        pauseAnimationOnRenderAtFrame={62}
+        currentStep={2}
       />
     </GestureRecognizer>
   )
