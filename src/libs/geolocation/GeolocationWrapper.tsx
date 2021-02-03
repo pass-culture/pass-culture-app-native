@@ -1,28 +1,28 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { requestGeolocPermission } from 'libs/geolocation'
-
 import { getPosition } from './getPosition'
+import { requestGeolocPermission } from './requestGeolocPermission'
 
 export interface IGeolocationContext {
   position: GeoCoordinates | null
   setPosition: (position: GeoCoordinates | null) => void
   permissionGranted: boolean
-  setPermissionGranted: (granted: boolean) => void
+  requestGeolocPermission: () => void
 }
 
 export const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
   setPosition: () => undefined,
   permissionGranted: false,
-  setPermissionGranted: () => undefined,
+  requestGeolocPermission: () => {
+    // nothing
+  },
 })
 
 export const GeolocationWrapper = ({ children }: { children: Element }) => {
   const [position, setPosition] = useState<GeoCoordinates | null>(null)
   const [permissionGranted, setPermissionGranted] = useState<boolean>(false)
-  requestGeolocPermission(setPermissionGranted)
   const permissionGrantedRef = useRef<boolean>(false)
 
   useEffect(() => {
@@ -32,9 +32,18 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
     }
   }, [permissionGranted])
 
+  function contextualRequestGeolocPermission() {
+    requestGeolocPermission(setPermissionGranted)
+  }
+
   return (
     <GeolocationContext.Provider
-      value={{ position, setPosition, permissionGranted, setPermissionGranted }}>
+      value={{
+        position,
+        setPosition,
+        permissionGranted,
+        requestGeolocPermission: contextualRequestGeolocPermission,
+      }}>
       {children}
     </GeolocationContext.Provider>
   )
