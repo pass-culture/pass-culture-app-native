@@ -14,11 +14,13 @@ import { useFunctionOnce } from './useFunctionOnce'
 const shareOffer = async (offer: OfferResponse) => {
   const { id, isDigital, name, venue } = offer
   const locationName = getLocationName(venue, isDigital)
-  const title = _(t`Retrouve "${name}" chez "${locationName}" sur le pass Culture`)
+  const message = _(t`Retrouve "${name}" chez "${locationName}" sur le pass Culture`)
   const url = `${DEEPLINK_DOMAIN}offer/?id=${id}`
-  const message = Platform.OS === 'ios' ? title : title.concat(`\n\n${url}`)
+  // url share content param is only for iOs, so we add url in message for android
+  const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
+  const title = _(t`Je t'invite à découvrir une super offre sur le pass Culture !`)
   const shareContent = {
-    message,
+    message: completeMessage,
     // iOs only
     url,
     // android only
@@ -37,6 +39,7 @@ const shareOffer = async (offer: OfferResponse) => {
 
 export const useShareOffer = (offerId: number): (() => Promise<void>) => {
   const { data: offerResponse } = useOffer({ offerId })
+
   const logShareOffer = useFunctionOnce(() => {
     analytics.logShareOffer(offerId)
   })

@@ -71,10 +71,11 @@ describe('<OfferHeader />', () => {
     })
     expect(share).toHaveBeenCalledTimes(1)
     const url = 'passculture://app.passculture.testing/offer/?id=116656'
-    const title =
+    const message =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
+    const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
     expect(share).toHaveBeenCalledWith(
-      { message: title, title, url },
+      { message, title, url },
       { dialogTitle: title, subject: title }
     )
   })
@@ -89,15 +90,15 @@ describe('<OfferHeader />', () => {
     })
     expect(share).toHaveBeenCalledTimes(1)
     const url = 'passculture://app.passculture.testing/offer/?id=116656'
-    const title =
-      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
     const messageWithUrl =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\npassculture://app.passculture.testing/offer/?id=116656'
+    const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
     expect(share).toHaveBeenCalledWith(
       { message: messageWithUrl, title, url },
       { dialogTitle: title, subject: title }
     )
   })
+
   it('should display SignIn modal when pressing Favorite - not logged in users', async () => {
     const { getByTestId, queryByText } = await renderOfferHeader(false)
     act(() => {
