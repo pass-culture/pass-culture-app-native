@@ -3,12 +3,16 @@ import React from 'react'
 import { Alert } from 'react-native'
 
 import { GenericTutorial } from 'features/firstLogin/tutorials/components/GenericTutorial'
+import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import { getSpacing } from 'ui/theme'
 
 export function ThirdTutorial() {
-  function activateGeolocation() {
+  const { requestGeolocPermission } = useGeolocation()
+
+  function onGeolocationButtonPress() {
+    requestGeolocPermission()
     Alert.alert('TODO: PC-5962')
   }
 
@@ -16,7 +20,7 @@ export function ThirdTutorial() {
     <GenericTutorial
       animation={GeolocationAnimation}
       animationSize={getSpacing(60)}
-      buttonCallback={activateGeolocation}
+      buttonCallback={onGeolocationButtonPress}
       buttonText={_(t`Activer la géolocalisation`)}
       pauseAnimationOnRenderAtFrame={62}
       step={3}
