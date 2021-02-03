@@ -1,47 +1,56 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Alert } from 'react-native'
 import GestureRecognizer from 'react-native-swipe-gestures'
+import styled from 'styled-components/native'
 
 import { GenericTutorial } from 'features/firstLogin/tutorials/components/GenericTutorial'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
+import TutorialOffers from 'ui/animations/tutorial_offers.json'
 import { getSpacing } from 'ui/theme'
 
 export function SecondTutorial() {
   const { navigate } = useNavigation<UseNavigationType>()
 
   function onSwipeLeft() {
+    navigate('ThirdTutorial')
+  }
+
+  const onSwipeRight = () => {
     navigate('FirstTutorial')
   }
 
-  const onSwipeRight = (gestureState) => {
-    Alert.alert('TODO: PC-5961')
+  function goToThirdTutorial() {
+    navigate('ThirdTutorial')
   }
 
   return (
-    <GestureRecognizer
+    <StyledGestureRecognizer
       onSwipeLeft={onSwipeLeft}
       onSwipeRight={onSwipeRight}
       config={{
         velocityThreshold: 0.03,
         directionalOffsetThreshold: 400,
         gestureIsClickThreshold: 0.1,
-      }}
-      style={{
-        flexGrow: 1,
       }}>
       <GenericTutorial
-        title={_(t`Second tutorial`)}
-        subTitle={_(t`c'est...`)}
-        text={_(t`une initiative financée par le Ministère de la Culture.`)}
-        animation={TutorialPassLogo}
+        animation={TutorialOffers}
         animationSize={getSpacing(60)}
+        buttonCallback={goToThirdTutorial}
+        buttonText={_(t`Continuer`)}
         pauseAnimationOnRenderAtFrame={62}
-        currentStep={2}
+        step={2}
+        subTitle={_(t`et si tu es...`)}
+        text={_(
+          t`dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application.`
+        )}
+        title={_(t`Des offres pour tous`)}
       />
-    </GestureRecognizer>
+    </StyledGestureRecognizer>
   )
 }
+
+const StyledGestureRecognizer = styled(GestureRecognizer)({
+  flexGrow: 1,
+})
