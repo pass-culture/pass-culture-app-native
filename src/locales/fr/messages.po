@@ -360,6 +360,10 @@ msgstr "ISBN"
 msgid "Je cherche"
 msgstr "Je cherche"
 
+#: src/features/offer/services/useShareOffer.ts:25
+msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
+msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
+
 #: src/libs/keychain.ts:23
 #: src/libs/keychain.ts:33
 #: src/libs/keychain.ts:47
@@ -551,8 +555,8 @@ msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
 #: src/features/offer/services/useShareOffer.ts:21
-msgid "Retrouve {name} chez {locationName} sur le pass Culture"
-msgstr "Retrouve {name} chez {locationName} sur le pass Culture"
+msgid "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
+msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 
 #: src/features/auth/signup/SetEmail.tsx:73
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
@@ -842,11 +846,11 @@ msgstr "Échec de la requête {0}, code: {1}"
 
 #: src/libs/fetch.ts:30
 msgid "Échec de la requête {url}, code: {0}"
-msgstr "Échec de la requête {url}, code: {0}"
+msgstr "Échec de la requête {url}, code: {0}<<<<<<< HEAD"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:31
 msgid "à dépenser dans l'application"
-msgstr "à dépenser dans l'application"
+msgstr "à dépenser dans l'application=======>>>>>>> :sparkles: (PC-4423) title != message (for mails)"
 
 #: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:12
 msgid "à portée de main !"
