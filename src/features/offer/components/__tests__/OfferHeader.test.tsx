@@ -71,7 +71,7 @@ describe('<OfferHeader />', () => {
     expect(share).toHaveBeenCalledTimes(1)
     const url = 'passculture://app.passculture.testing/offer/?id=116656'
     const title =
-      'Retrouve Sous les étoiles de Paris - VF chez PATHE BEAUGRENELLE sur le pass Culture'
+      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
     expect(share).toHaveBeenCalledWith({ message: title, title, url }, { dialogTitle: title })
   })
 

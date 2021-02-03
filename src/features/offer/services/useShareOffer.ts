@@ -14,7 +14,7 @@ import { useFunctionOnce } from './useFunctionOnce'
 const shareOffer = async (offer: OfferResponse) => {
   const { id, isDigital, name, venue } = offer
   const locationName = getLocationName(venue, isDigital)
-  const title = _(t`Retrouve ${name} chez ${locationName} sur le pass Culture`)
+  const title = _(t`Retrouve "${name}" chez "${locationName}" sur le pass Culture`)
   const url = `${DEEPLINK_DOMAIN}offer/?id=${id}`
 
   await Share.share({ message: title, url, title }, { dialogTitle: title })
