@@ -14,7 +14,6 @@ import { StepDots } from 'ui/components/StepDots'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  currentStep?: number
   animation: AnimationObject
   animationSize: number
   buttonCallback: () => void
@@ -27,9 +26,11 @@ type Props = {
 }
 
 export const GenericTutorial: FunctionComponent<Props> = ({
-  currentStep = 1,
+  step = 1,
   animation,
   animationSize,
+  buttonCallback,
+  buttonText,
   title,
   subTitle,
   text,
@@ -64,9 +65,9 @@ export const GenericTutorial: FunctionComponent<Props> = ({
       <StyledBody>{text}</StyledBody>
       <Spacer.Flex flex={2} />
       <ButtonContainer>
-        <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
+        <ButtonPrimary title={buttonText} onPress={buttonCallback} />
       </ButtonContainer>
-      <StepDots numberOfSteps={4} currentStep={currentStep} />
+      <StepDots numberOfSteps={4} currentStep={step} />
       <Spacer.Flex flex={1} />
     </Container>
   )

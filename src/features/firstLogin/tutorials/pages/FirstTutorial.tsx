@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Alert } from 'react-native'
 import GestureRecognizer from 'react-native-swipe-gestures'
+import styled from 'styled-components/native'
 
 import { GenericTutorial } from 'features/firstLogin/tutorials/components/GenericTutorial'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -13,24 +13,21 @@ import { getSpacing } from 'ui/theme'
 export function FirstTutorial() {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const onSwipeLeft = (gestureState) => {
+  const onSwipeLeft = () => {
     navigate('SecondTutorial')
   }
 
   function goToSecondTutorial() {
-    Alert.alert('TODO: PC-5960')
+    navigate('SecondTutorial')
   }
 
   return (
-    <GestureRecognizer
+    <StyledGestureRecognizer
       onSwipeLeft={onSwipeLeft}
       config={{
         velocityThreshold: 0.03,
         directionalOffsetThreshold: 400,
         gestureIsClickThreshold: 0.1,
-      }}
-      style={{
-        flexGrow: 1,
       }}>
       <GenericTutorial
         animation={TutorialPassLogo}
@@ -43,6 +40,10 @@ export function FirstTutorial() {
         text={_(t`une initiative financée par le Ministère de la Culture.`)}
         title={_(t`Le pass Culture`)}
       />
-    </GestureRecognizer>
+    </StyledGestureRecognizer>
   )
 }
+
+const StyledGestureRecognizer = styled(GestureRecognizer)({
+  flexGrow: 1,
+})

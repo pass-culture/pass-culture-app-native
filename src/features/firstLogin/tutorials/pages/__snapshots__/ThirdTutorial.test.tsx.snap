@@ -192,6 +192,7 @@ exports[`<ThirdTutorial /> should display animation 1`] = `
         Object {
           "flexDirection": "row",
           "justifyContent": "center",
+          "marginBottom": 32,
           "paddingHorizontal": 24,
           "width": "100%",
         },
@@ -250,18 +251,6 @@ exports[`<ThirdTutorial /> should display animation 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    flex={0.8}
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 0.8,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
   <View
     style={
       Array [

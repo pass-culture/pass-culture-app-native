@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FirstTutorial page should display animation 1`] = `
+exports[`SecondTutorial page should display animation 1`] = `
 <View
   config={
     Object {
@@ -22,6 +22,7 @@ exports[`FirstTutorial page should display animation 1`] = `
   onStartShouldSetResponder={[Function]}
   onStartShouldSetResponderCapture={[Function]}
   onSwipeLeft={[Function]}
+  onSwipeRight={[Function]}
   style={
     Array [
       Object {
@@ -155,7 +156,7 @@ exports[`FirstTutorial page should display animation 1`] = `
         ]
       }
     >
-      Le pass Culture
+      Des offres pour tous
     </Text>
     <Text
       color="#151515"
@@ -171,7 +172,7 @@ exports[`FirstTutorial page should display animation 1`] = `
         ]
       }
     >
-      c'est...
+      et si tu es...
     </Text>
     <View
       flex={0.8}
@@ -201,7 +202,7 @@ exports[`FirstTutorial page should display animation 1`] = `
         ]
       }
     >
-      une initiative financée par le Ministère de la Culture.
+      dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application.
     </Text>
     <View
       flex={2}
@@ -300,10 +301,10 @@ exports[`FirstTutorial page should display animation 1`] = `
         }
       >
         <View
-          fill="#eb0055"
-          height={12}
+          fill="#15884f"
+          height={8}
           testID="dot-icon"
-          width={12}
+          width={8}
         >
           dot-icon-SVG-Mock
         </View>
@@ -328,10 +329,10 @@ exports[`FirstTutorial page should display animation 1`] = `
         }
       >
         <View
-          fill="#c7c7cc"
-          height={8}
+          fill="#eb0055"
+          height={12}
           testID="dot-icon"
-          width={8}
+          width={12}
         >
           dot-icon-SVG-Mock
         </View>
