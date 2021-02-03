@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -28,19 +28,12 @@ import { contactSupport } from '../support.services'
 type Props = StackScreenProps<RootStackParamList, 'AcceptCgu'>
 
 export const AcceptCgu: FC<Props> = ({ route }) => {
-  const isMounted = useRef(false)
   const { goBack, navigate } = useNavigation<UseNavigationType>()
   const signUp = useSignUp()
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked
   const password = route.params.password
   const birthday = route.params.birthday
-  useEffect(() => {
-    isMounted.current = true
-    return () => {
-      isMounted.current = false
-    }
-  }, [])
 
   const {
     visible: fullPageModalVisible,
@@ -57,6 +50,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
       }
     },
   })
+
   async function subscribeQuery() {
     const signupResponse = await signUp({
       password: password,
@@ -70,9 +64,11 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     }
     return true
   }
+
   async function handleSubscribe() {
     return refetch()
   }
+
   return (
     <React.Fragment>
       <BottomContentPage>
