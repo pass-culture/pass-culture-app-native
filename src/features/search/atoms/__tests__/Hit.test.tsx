@@ -5,6 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { Hit } from '../Hit'
@@ -29,6 +30,8 @@ describe('Hit component', () => {
   it('should navigate to the offer when clicking on the hit', () => {
     const { getByTestId } = render(reactQueryProviderHOC(<Hit hit={hit} />))
     fireEvent.press(getByTestId('offerHit'))
+    expect(analytics.logConsultOffer).toBeCalledTimes(1)
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith(offerId, null, '')
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId })
   })
   it('should show distance if geolocation enabled', () => {
