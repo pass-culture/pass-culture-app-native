@@ -49,13 +49,21 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:24
+#: src/features/offer/services/useCtaWordingAndAction.ts:23
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:24
+#: src/features/offer/services/useCtaWordingAndAction.ts:23
 msgid "Accéder à la billetterie"
 msgstr "Accéder à la billetterie"
+
+#: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:12
+msgid "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
+msgstr "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
+
+#: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:12
+msgid "Activer la géolocalisation"
+msgstr "Activer la géolocalisation"
 
 #: src/features/offer/components/OfferWhereSection.tsx:28
 msgid "Adresse"
@@ -236,7 +244,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:154
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:44
-#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:41
+#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:12
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -244,12 +252,12 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:43
-#: src/features/offer/services/useCtaWordingAndAction.ts:54
+#: src/features/offer/services/useCtaWordingAndAction.ts:39
+#: src/features/offer/services/useCtaWordingAndAction.ts:50
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:42
+#: src/features/offer/services/useCtaWordingAndAction.ts:38
 msgid "Crédit numérique insuffisant"
 msgstr "Crédit numérique insuffisant"
 
@@ -348,10 +356,6 @@ msgstr "Heure"
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:39
-msgid "Impossible de réserver"
-msgstr "Impossible de réserver"
-
 #: src/features/search/components/SearchLandingPage.tsx:26
 msgid "Je cherche"
 msgstr "Je cherche"
@@ -376,7 +380,7 @@ msgstr "Le lien est expiré !"
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:8
+#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:12
 msgid "Le pass Culture"
 msgstr "Le pass Culture"
 
@@ -388,7 +392,7 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
-#: src/features/search/pages/LocationFilter.tsx:51
+#: src/features/search/pages/LocationFilter.tsx:52
 #: src/features/search/sections/Location.tsx:18
 msgid "Localisation"
 msgstr "Localisation"
@@ -401,7 +405,7 @@ msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
-#: src/features/search/atoms/NoSearchResult.tsx:39
+#: src/features/search/atoms/NoSearchResult.tsx:40
 msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
@@ -427,8 +431,8 @@ msgstr "Navigation"
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:30
-#: src/features/offer/services/useCtaWordingAndAction.ts:34
+#: src/features/offer/services/useCtaWordingAndAction.ts:29
+#: src/features/offer/services/useCtaWordingAndAction.ts:33
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
@@ -440,7 +444,7 @@ msgstr "Offre numérique"
 msgid "Offre physique"
 msgstr "Offre physique"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:32
+#: src/features/offer/services/useCtaWordingAndAction.ts:31
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
@@ -459,7 +463,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/search/atoms/NoSearchResult.tsx:32
+#: src/features/search/atoms/NoSearchResult.tsx:33
 msgid "Oups !"
 msgstr "Oups !"
 
@@ -479,7 +483,7 @@ msgstr "Paramètres du compte"
 msgid "Partout"
 msgstr "Partout"
 
-#: src/features/search/atoms/NoSearchResult.tsx:34
+#: src/features/search/atoms/NoSearchResult.tsx:35
 msgid "Pas de résultat trouvé"
 msgstr "Pas de résultat trouvé"
 
@@ -511,9 +515,13 @@ msgstr "Pourquoi ?"
 msgid "Prix"
 msgstr "Prix"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:32
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:41
 msgid "Profil"
 msgstr "Profil"
+
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:31
+msgid "Profite de 300\\u00a0€\\u00a0"
+msgstr "Profite de 300\\u00a0€\\u00a0"
 
 #: src/features/offer/pages/Offer.tsx:72
 msgid "Quand ?"
@@ -559,7 +567,7 @@ msgstr "Réessayer"
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:46
+#: src/features/offer/services/useCtaWordingAndAction.ts:42
 msgid "Réserver"
 msgstr "Réserver"
 
@@ -580,7 +588,7 @@ msgstr "Se connecter"
 msgid "Seules les offres Sorties et Physiques seront affichées"
 msgstr "Seules les offres Sorties et Physiques seront affichées"
 
-#: src/features/search/pages/LocationFilter.tsx:44
+#: src/features/search/pages/LocationFilter.tsx:45
 msgid "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation"
 
@@ -646,9 +654,13 @@ msgstr "Ton mot de passe"
 msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
-#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:30
+#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:26
 msgid "Tout passer"
 msgstr "Tout passer"
+
+#: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:12
+msgid "Toute la culture"
+msgstr "Toute la culture"
 
 #. Welcome body message
 #: src/features/home/pages/Home.tsx:76
@@ -659,7 +671,7 @@ msgstr "Toute la culture dans ta main"
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:21
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:29
 msgid "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 
@@ -709,7 +721,7 @@ msgstr "Veux-tu abandonner l'inscription ?"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:56
+#: src/features/offer/services/useCtaWordingAndAction.ts:52
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
@@ -733,11 +745,11 @@ msgstr "ainsi que notre"
 msgid "auteur"
 msgstr "auteur"
 
-#: src/features/search/atoms/NoSearchResult.tsx:41
-msgid "autour de chez toi"
-msgstr "autour de chez toi"
+#: src/features/search/atoms/NoSearchResult.tsx:42
+msgid "autour de toi"
+msgstr "autour de toi"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:8
+#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:12
 msgid "c'est..."
 msgstr "c'est..."
 
@@ -779,7 +791,7 @@ msgstr "intervenant"
 msgid "metteur en scène"
 msgstr "metteur en scène"
 
-#: src/features/search/atoms/NoSearchResult.tsx:35
+#: src/features/search/atoms/NoSearchResult.tsx:36
 msgid "pour"
 msgstr "pour"
 
@@ -800,7 +812,7 @@ msgstr "sous genre"
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:8
+#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:12
 msgid "une initiative financée par le Ministère de la Culture."
 msgstr "une initiative financée par le Ministère de la Culture."
 
@@ -831,3 +843,11 @@ msgstr "Échec de la requête {0}, code: {1}"
 #: src/libs/fetch.ts:30
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"
+
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:31
+msgid "à dépenser dans l'application"
+msgstr "à dépenser dans l'application"
+
+#: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:12
+msgid "à portée de main !"
+msgstr "à portée de main !"
