@@ -26,12 +26,14 @@ export function Navigation(): JSX.Element {
     cacheTime: 0,
     enabled: false,
   })
+
   async function errorAsyncQuery() {
     setAsyncTestReqCount((v) => ++v)
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
     }
   }
+
   return (
     <ScrollView>
       <Spacer.TopScreen />
