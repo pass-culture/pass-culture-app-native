@@ -3,21 +3,11 @@ import { ComponentType } from 'react'
 
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
+import '../../../../__mocks__/@react-navigation/stack'
+import '../../../../__mocks__/@react-navigation/bottom-tabs'
 
 import { wrapRoute } from './RootNavigator'
 import { Route } from './types'
-
-jest.mock('@react-navigation/stack', () => {
-  return {
-    createStackNavigator: jest.fn(),
-  }
-})
-
-jest.mock('@react-navigation/bottom-tabs', () => {
-  return {
-    createBottomTabNavigator: jest.fn(),
-  }
-})
 
 describe('RootNavigator utils', () => {
   let hoc: () => ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
