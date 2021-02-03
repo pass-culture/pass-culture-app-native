@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 

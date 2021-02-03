@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useState, useEffect } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
