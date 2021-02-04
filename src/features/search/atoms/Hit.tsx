@@ -52,7 +52,7 @@ export const Hit: React.FC<Props> = ({ hit }) => {
         offerId,
       })
     )
-    analytics.logConsultOffer({ offerId, from: 'SEARCH', query: query || '<empty_query>' })
+    analytics.logConsultOffer({ offerId, from: 'SEARCH', query: query })
     navigation.navigate('Offer', { id: offerId })
   }
 
