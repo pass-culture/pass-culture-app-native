@@ -67,7 +67,7 @@ export const OfferTile = (props: OfferTileProps) => {
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from algolia for a smooth transition
     queryClient.setQueryData(['offer', offer.offerId], mergeOfferData(offer))
-    analytics.logConsultOffer(offer.offerId, moduleName)
+    analytics.logConsultOffer({ offerId: offer.offerId, moduleName })
     navigation.navigate('Offer', { id: offer.offerId })
   }
 

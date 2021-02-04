@@ -42,7 +42,7 @@ describe('OfferTile component', () => {
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.press(getByTestId('offerTileImage'))
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith(offerId, 'Module Name')
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, moduleName: 'Module Name' })
   })
 
   it('should prepopulate react-query cache when clicking on offer', async () => {

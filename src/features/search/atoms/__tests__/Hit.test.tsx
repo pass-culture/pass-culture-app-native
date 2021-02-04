@@ -31,7 +31,10 @@ describe('Hit component', () => {
     const { getByTestId } = render(reactQueryProviderHOC(<Hit hit={hit} />))
     fireEvent.press(getByTestId('offerHit'))
     expect(analytics.logConsultOffer).toBeCalledTimes(1)
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith(offerId, null, '')
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      offerId,
+      query: '<empty_query>',
+    })
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId })
   })
   it('should show distance if geolocation enabled', () => {
