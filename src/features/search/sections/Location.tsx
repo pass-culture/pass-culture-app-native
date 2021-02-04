@@ -6,6 +6,8 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Section } from 'features/search/atoms/Sections'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
+import { SectionTitle } from 'features/search/sections/titles'
+import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { LocationType } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -19,10 +21,16 @@ export const Location: React.FC = () => {
   const { searchState } = useSearch()
   const locationType = searchState.locationType
   const { label } = useLocationChoice(locationType)
+  const logUseFilter = useLogFilterOnce(SectionTitle.Location)
+
+  const onPressChangeLocation = () => {
+    logUseFilter()
+    navigate('LocationFilter')
+  }
 
   return (
-    <Section title={_(t`Localisation`)} count={+(locationType !== LocationType.EVERYWHERE)}>
-      <LocationContentContainer testID="changeLocation" onPress={() => navigate('LocationFilter')}>
+    <Section title={SectionTitle.Location} count={+(locationType !== LocationType.EVERYWHERE)}>
+      <LocationContentContainer testID="changeLocation" onPress={onPressChangeLocation}>
         <Typo.ButtonText>{label}</Typo.ButtonText>
         <ArrowNext size={24} />
       </LocationContentContainer>
