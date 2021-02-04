@@ -144,6 +144,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={'4th Tutorial'}
+            onPress={() => navigation.navigate('FourthTutorial')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={'Cultural Survey'}
             onPress={() => navigation.navigate('CulturalSurvey')}
           />

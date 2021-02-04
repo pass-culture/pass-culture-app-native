@@ -1,20 +1,22 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Alert } from 'react-native'
 
 import { GenericTutorial } from 'features/firstLogin/tutorials/components/GenericTutorial'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import { getSpacing } from 'ui/theme'
 
 export function ThirdTutorial() {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { requestGeolocPermission } = useGeolocation()
 
   async function onGeolocationButtonPress() {
     await requestGeolocPermission({
       onSubmit: () => {
-        Alert.alert('TODO: PC-5962')
+        navigate('FourthTutorial')
       },
     })
   }
