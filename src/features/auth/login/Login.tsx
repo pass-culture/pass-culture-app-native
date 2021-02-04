@@ -41,7 +41,7 @@ export const Login: FunctionComponent = function () {
   const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation<'Login'>()
 
-  const signInQuery = async () => {
+  const handleSignin = async () => {
     const signinResponse = await signIn({ identifier: email, password })
     if (signinResponse?.isSuccess) {
       navigate('Home', NavigateToHomeWithoutModalOptions)
@@ -50,21 +50,21 @@ export const Login: FunctionComponent = function () {
       if (code === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
       } else if (code === 'NETWORK_REQUEST_FAILED') {
-        throw new Error('Offline')
+        throw new Error('NETWORK_REQUEST_FAILED')
       }
     }
     return signinResponse
   }
 
-  const { refetch, isFetching } = useQuery('login', signInQuery, {
+  const { refetch: signInQuery, isFetching } = useQuery('login', handleSignin, {
     cacheTime: 0,
     enabled: false,
   })
 
-  async function handleSignin() {
+  async function onSubmit() {
     Keyboard.dismiss()
     setShouldShowErrorMessage(false)
-    const { data } = await refetch()
+    const { data } = await signInQuery()
     if (!data?.isSuccess) {
       setShouldShowErrorMessage(true)
     }
@@ -128,7 +128,7 @@ export const Login: FunctionComponent = function () {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimary
         title={_(t`Se connecter`)}
-        onPress={handleSignin}
+        onPress={onSubmit}
         disabled={shouldDisableLoginButton || isFetching}
       />
     </BottomContentPage>

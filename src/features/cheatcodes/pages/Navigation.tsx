@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, createElement } from 'react'
 import { ScrollView } from 'react-native'
-import { useQuery } from 'react-query'
+import { useMutation } from 'react-query'
 import styled from 'styled-components/native'
 
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
@@ -22,15 +22,12 @@ export function Navigation(): JSX.Element {
   const navigation = useNavigation<UseNavigationType>()
   const [renderedError, setRenderedError] = useState(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
-  const { refetch, isFetching } = useQuery('errorAsync', () => errorAsyncQuery(), {
-    cacheTime: 0,
-    enabled: false,
-  })
+  const { mutate: errorAsyncQuery, isLoading } = useMutation(errorAsync)
 
-  async function errorAsyncQuery() {
+  async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
+      throw new AsyncError('NETWORK_REQUEST_FAILED', errorAsyncQuery)
     }
   }
 
@@ -192,8 +189,8 @@ export function Navigation(): JSX.Element {
                 ? `${MAX_ASYNC_TEST_REQ_COUNT} erreurs asynchrones`
                 : 'OK'
             }
-            disabled={isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
-            onPress={() => refetch()}
+            disabled={isLoading || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
+            onPress={() => errorAsyncQuery()}
           />
         </Row>
       </StyledContainer>

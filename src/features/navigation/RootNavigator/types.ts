@@ -110,5 +110,7 @@ export type RouteParams<
 export interface Route {
   name: keyof RootStackParamList
   component: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
-  withHocsWrapper?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
+  withHocsWrapper?(
+    component: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
+  ): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 }

@@ -1,6 +1,6 @@
 import { NavigationContainer, Theme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 
 import { analytics } from 'libs/analytics'
 import { ColorsEnum } from 'ui/theme'
@@ -23,6 +23,12 @@ export function wrapRoute(route: Route) {
   return route
 }
 
+const screens = routes
+  .map(wrapRoute)
+  .map((route: Route) => (
+    <RootStack.Screen key={route.name} name={route.name} component={route.component} />
+  ))
+
 export const RootNavigator: React.FC = () => {
   useEffect(() => {
     analytics.logScreenView('Home')
@@ -32,15 +38,6 @@ export const RootNavigator: React.FC = () => {
   // eslint-disable-next-line no-constant-condition
   const initialRouteName = true ? 'FirstTutorial' : 'TabNavigator'
 
-  const screens = useMemo(
-    () =>
-      routes
-        .map(wrapRoute)
-        .map((route: Route) => (
-          <RootStack.Screen key={route.name} name={route.name} component={route.component} />
-        )),
-    [routes]
-  )
   return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
       <RootStack.Navigator

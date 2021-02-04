@@ -8,8 +8,15 @@ import { wrapRoute } from './RootNavigator'
 import { Route } from './types'
 
 jest.mock('@react-navigation/stack', () => {
+  const cb = jest.fn()
   return {
-    createStackNavigator: jest.fn(),
+    createStackNavigator: () => {
+      Object.assign(cb, {
+        Screen: () => null,
+      })
+      cb()
+      return cb
+    },
   }
 })
 
@@ -36,7 +43,7 @@ describe('RootNavigator utils', () => {
     }
   })
   it('should create stack navigator', () => {
-    expect(createStackNavigator).toHaveBeenCalled()
+    expect(createStackNavigator()).toHaveBeenCalled()
   })
   it('should wrap a route when declared with hocs wrapper', () => {
     wrapRoute(routeWithHoc)

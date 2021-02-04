@@ -12,8 +12,8 @@ Which means he also wrap the `RootNavigator` one.
 
 ### ErrorBoundary 
  
-The `ErrorBoundary` will intercept errors coming from warpped components and render a custom error page through its `FallbackComponent` argument.
-In our case, we've defined `BaseRetryBoundary` to be the default error page.
+The `ErrorBoundary` will intercept errors coming from wrapped components and render a custom error page through its `FallbackComponent` argument.
+In our case, we've defined `AsyncErrorBoundary` to be the default error page.
 Every error linked to component life cycle will be caught by the ErrorBoundary when not handle at a lower level.
 This means if you have several `ErrorBoundaries` that wrap a specific component, the error will be handle by the closest one.
 
@@ -94,6 +94,6 @@ export function MyComponent(props: Props) {
 }
 ```
 
-## Ressources
+## Resources
 
 https://fr.reactjs.org/docs/error-boundaries.html

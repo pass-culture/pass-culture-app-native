@@ -1,7 +1,9 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React from 'react'
+import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
+import { MutateFunction } from 'react-query/types/react/types'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -14,37 +16,42 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export class AsyncError extends Error {
-  public retryPromise?: () => Promise<unknown>
-  constructor(message: string, retryPromise?: () => Promise<unknown>) {
+  public retry?: MutateFunction<unknown, unknown, void>
+  constructor(message: string, retry?: MutateFunction<unknown, unknown, void>) {
     super(message)
-    this.retryPromise = retryPromise
+    this.retry = retry
   }
 }
 
-interface FallbackProps {
-  error: AsyncError
+interface AsyncFallbackProps extends FallbackProps {
   resetErrorBoundary: (...args: Array<unknown>) => void
+  error: AsyncError
+  backNavigation?: boolean
 }
 
-export const AsyncErrorBoundary = ({ resetErrorBoundary, error }: FallbackProps) => {
+export const AsyncErrorBoundary = ({
+  resetErrorBoundary,
+  error,
+  backNavigation = true,
+}: AsyncFallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
   const { canGoBack, goBack } = useNavigation<UseNavigationType>()
   const { top } = useCustomSafeInsets()
 
-  const handleRetry = useCallback(() => {
+  const handleRetry = async () => {
     reset()
     resetErrorBoundary()
-    if (error?.retryPromise) {
-      return error.retryPromise()
+    if (error?.retry) {
+      await error.retry()
     }
-    return null
-  }, [reset, resetErrorBoundary, error])
+  }
 
   return (
     <Container>
       <Background />
+      <Spacer.TopScreen />
       <Spacer.Flex />
-      {canGoBack() && (
+      {backNavigation && canGoBack() && (
         <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
           <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
         </HeaderContainer>
@@ -80,6 +87,7 @@ export const AsyncErrorBoundary = ({ resetErrorBoundary, error }: FallbackProps)
         </ButtonContainer>
       </Row>
       <Spacer.Flex />
+      <Spacer.BottomScreen />
     </Container>
   )
 }
@@ -103,3 +111,7 @@ const HeaderContainer = styled.TouchableOpacity<{ top: number }>(({ top }) => ({
   top,
   left: getSpacing(6),
 }))
+
+export const AsyncErrorBoundaryWithoutNavigation = (props: AsyncFallbackProps) => (
+  <AsyncErrorBoundary {...props} backNavigation={false} />
+)

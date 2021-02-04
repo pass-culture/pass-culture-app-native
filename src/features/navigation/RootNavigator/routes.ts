@@ -49,8 +49,12 @@ const routes: Array<Route> = [
   { name: 'LocationPicker', component: LocationPicker },
   { name: 'Login', component: Login, withHocsWrapper: withAsyncErrorBoundary },
   { name: 'Navigation', component: Navigation, withHocsWrapper: withAsyncErrorBoundary },
-  { name: 'Offer', component: Offer },
-  { name: 'OfferDescription', component: OfferDescription },
+  { name: 'Offer', component: Offer, withHocsWrapper: withAsyncErrorBoundary },
+  {
+    name: 'OfferDescription',
+    component: OfferDescription,
+    withHocsWrapper: withAsyncErrorBoundary,
+  },
   { name: 'ReinitializePassword', component: ReinitializePassword },
   { name: 'ResetPasswordEmailSent', component: ResetPasswordEmailSent },
   {

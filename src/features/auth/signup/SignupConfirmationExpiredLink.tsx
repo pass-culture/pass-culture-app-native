@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { useQuery } from 'react-query'
+import { useMutation } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -25,31 +25,28 @@ type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink
 export function SignupConfirmationExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { email } = props.route.params
-  const { refetch, isFetching } = useQuery(
-    'signupConfirmationExpiredLink',
-    signupConfirmationExpiredLinkQuery,
+  const { mutate: signupConfirmationExpiredLinkQuery, isLoading } = useMutation(
+    signupConfirmationExpiredLink,
     {
-      cacheTime: 0,
-      enabled: false,
       onSuccess: () => {
         navigate('SignupConfirmationEmailSent', { email })
       },
     }
   )
+
   function goToHomeWithoutModal() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
-  async function signupConfirmationExpiredLinkQuery() {
+
+  async function signupConfirmationExpiredLink() {
     try {
       analytics.logResendEmailSignupConfirmationExpiredLink()
       await api.postnativev1resendEmailValidation({ email })
-    } catch (err) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
+    } catch (_err) {
+      throw new AsyncError('NETWORK_REQUEST_FAILED', signupConfirmationExpiredLinkQuery)
     }
   }
-  async function onSubmit() {
-    await refetch()
-  }
+
   return (
     <GenericInfoPage title={_(t`Oups`)} icon={SadFace}>
       <StyledBody>{_(t`Le lien est expiré !`)}</StyledBody>
@@ -65,7 +62,11 @@ export function SignupConfirmationExpiredLink(props: Props) {
         icon={Email}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonPrimaryWhite title={_(t`Renvoyer l'email`)} onPress={onSubmit} disabled={isFetching} />
+      <ButtonPrimaryWhite
+        title={_(t`Renvoyer l'email`)}
+        onPress={() => signupConfirmationExpiredLinkQuery()}
+        disabled={isLoading}
+      />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite title={_(t`Retourner à l'accueil`)} onPress={goToHomeWithoutModal} />
     </GenericInfoPage>

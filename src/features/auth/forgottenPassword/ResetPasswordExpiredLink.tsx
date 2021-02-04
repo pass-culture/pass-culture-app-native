@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { useQuery } from 'react-query'
+import { useMutation } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -25,31 +25,23 @@ type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 export function ResetPasswordExpiredLink(props: Props) {
   const { email } = props.route.params
   const { navigate } = useNavigation<UseNavigationType>()
-  const { refetch, isFetching } = useQuery(
-    'resetPasswordExpiredLink',
-    resetPasswordExpiredLinkQuery,
-    {
-      cacheTime: 0,
-      enabled: false,
-      onSuccess: () => {
-        navigate('ResetPasswordEmailSent', { email })
-      },
-    }
-  )
+  const { mutate: resetPasswordEmailQuery, isLoading } = useMutation(resetPasswordExpiredLink, {
+    onSuccess: () => {
+      navigate('ResetPasswordEmailSent', { email })
+    },
+  })
   function goToHomeWithoutModal() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
-  async function resetPasswordExpiredLinkQuery() {
+  async function resetPasswordExpiredLink() {
     try {
       analytics.logResendEmailResetPasswordExpiredLink()
       await api.postnativev1requestPasswordReset({ email })
     } catch (_err) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
+      throw new AsyncError('NETWORK_REQUEST_FAILED', resetPasswordEmailQuery)
     }
   }
-  async function onSubmit() {
-    await refetch()
-  }
+
   return (
     <GenericInfoPage title={_(t`Oups`)} icon={SadFace}>
       <StyledBody>{_(t`Le lien est expiré !`)}</StyledBody>
@@ -65,7 +57,11 @@ export function ResetPasswordExpiredLink(props: Props) {
         icon={Email}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonPrimaryWhite title={_(t`Renvoyer l'email`)} onPress={onSubmit} disabled={isFetching} />
+      <ButtonPrimaryWhite
+        title={_(t`Renvoyer l'email`)}
+        onPress={() => resetPasswordEmailQuery()}
+        disabled={isLoading}
+      />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite title={_(t`Retourner à l'accueil`)} onPress={goToHomeWithoutModal} />
     </GenericInfoPage>

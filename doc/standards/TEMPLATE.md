@@ -6,4 +6,4 @@
 
 ## Mistakes to avoid when following the standard
 
-## Ressources
+## Resources

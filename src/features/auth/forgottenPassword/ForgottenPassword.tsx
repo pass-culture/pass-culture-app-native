@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
-import { useQuery } from 'react-query'
+import { useMutation } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -27,19 +27,17 @@ export const ForgottenPassword: FunctionComponent = () => {
   const shouldDisableValidateButton = isValueEmpty(email)
 
   const { navigate } = useNavigation<UseNavigationType>()
-  const { refetch, isFetching } = useQuery('forgottenPassword', forgottenPasswordQuery, {
-    cacheTime: 0,
-    enabled: false,
+  const { mutate: resetPasswordEmailQuery, isLoading } = useMutation(forgottenPassword, {
     onSuccess: () => {
       navigate('ResetPasswordEmailSent', { email })
     },
   })
 
-  async function forgottenPasswordQuery() {
+  async function forgottenPassword() {
     try {
       await api.postnativev1requestPasswordReset({ email })
-    } catch (err) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', refetch)
+    } catch (_err) {
+      throw new AsyncError('NETWORK_REQUEST_FAILED', resetPasswordEmailQuery)
     }
   }
 
@@ -60,7 +58,7 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   async function validateEmail() {
     if (isEmailValid(email)) {
-      await refetch()
+      await resetPasswordEmailQuery()
     } else {
       setHasError(true)
     }
@@ -106,7 +104,7 @@ export const ForgottenPassword: FunctionComponent = () => {
         <ButtonPrimary
           title={_(t`Valider`)}
           onPress={validateEmail}
-          disabled={shouldDisableValidateButton || isFetching}
+          disabled={shouldDisableValidateButton || isLoading}
         />
       </ModalContent>
     </BottomContentPage>
