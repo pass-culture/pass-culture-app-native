@@ -1,1 +1,1 @@
-export const requestGeolocPermission: (onGranted: (granted: boolean) => void) => () => void
+export const requestGeolocPermission: () => Promise<boolean>

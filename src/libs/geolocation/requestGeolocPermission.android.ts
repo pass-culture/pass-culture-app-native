@@ -1,10 +1,5 @@
 import { PermissionsAndroid } from 'react-native'
 
-export const requestGeolocPermission = async (onGranted: (granted: boolean) => void) => {
-  const granted = await requestGeolocPermissionSystem()
-  if (granted) onGranted(true)
-}
-
 export const requestGeolocPermissionSystem = async (): Promise<boolean> => {
   const permissions = await PermissionsAndroid.requestMultiple([
     PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -18,3 +13,5 @@ export const requestGeolocPermissionSystem = async (): Promise<boolean> => {
   }
   return false
 }
+
+export const requestGeolocPermission = requestGeolocPermissionSystem

@@ -11,9 +11,12 @@ import { getSpacing } from 'ui/theme'
 export function ThirdTutorial() {
   const { requestGeolocPermission } = useGeolocation()
 
-  function onGeolocationButtonPress() {
-    requestGeolocPermission()
-    Alert.alert('TODO: PC-5962')
+  async function onGeolocationButtonPress() {
+    await requestGeolocPermission({
+      onSubmit: () => {
+        Alert.alert('TODO: PC-5962')
+      },
+    })
   }
 
   return (
