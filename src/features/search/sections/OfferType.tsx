@@ -6,6 +6,8 @@ import { AccordionItem } from 'features/offer/components'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
 import { SearchState } from 'features/search/pages/reducer'
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { SectionTitle } from 'features/search/sections/titles'
+import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { _ } from 'libs/i18n'
 import { getSpacing } from 'ui/theme'
 
@@ -18,11 +20,13 @@ export const OFFER_TYPES: Array<[OfferType, string]> = [
 ]
 
 export const OfferType: React.FC = () => {
+  const logUseFilter = useLogFilterOnce(SectionTitle.OfferType)
   const { searchState, dispatch } = useSearch()
   const { offerTypes } = searchState
 
   const onPress = (offerType: OfferType) => () => {
     dispatch({ type: 'OFFER_TYPE', payload: offerType })
+    logUseFilter()
   }
 
   return (
@@ -30,7 +34,7 @@ export const OfferType: React.FC = () => {
       defaultOpen={true}
       title={
         <TitleWithCount
-          title={_(t`Type d'offre`)}
+          title={SectionTitle.OfferType}
           count={+offerTypes['isDigital'] + +offerTypes['isEvent'] + +offerTypes['isThing']}
         />
       }>

@@ -40,6 +40,9 @@ const logScreenView = async (screenName: string) => {
   await firebaseAnalytics.logEvent(`${AnalyticsEvent.SCREEN_VIEW}_${screenName.toLowerCase()}`)
 }
 
+/**
+ * Home
+ */
 const logAllModulesSeen = (numberOfModules: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules })
 
@@ -62,6 +65,9 @@ const logClickSeeMore = (moduleName: string) =>
 const logClickBusinessBlock = (moduleName: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName })
 
+/**
+ * Offer
+ */
 const logConsultOfferFromDeeplink = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.DEEPLINK_CONSULT_OFFER, { offerId })
 
@@ -83,28 +89,29 @@ const logConsultWholeOffer = (offerId: number) =>
 const logConsultItinerary = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId })
 
+const logConsultAvailableDates = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
+
+const logClickBookOffer = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
+
+const logOfferSeenDuration = (offerId: number, duration: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
+
+/**
+ * Sign up
+ */
 const logConsultWhyAnniversary = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY)
 
 const logCancelSignup = (pageName: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName })
 
-const logOfferSeenDuration = (offerId: number, duration: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
-
 const logContactSupportResetPasswordEmailSent = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT)
 
 const logContactSupportSignupConfirmationEmailSent = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT)
-
-const logClickBookOffer = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
-
-const logConsultAvailableDates = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
-
-const logReinitializeFilters = () => firebaseAnalytics.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS)
 
 const logResendEmailResetPasswordExpiredLink = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK)
@@ -117,6 +124,14 @@ const logSignUpBetween14And15Included = () =>
 
 const logSignUpLessThanOrEqualTo13 = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.SIGN_UP_LESS_THAN_OR_EQUAL_TO_13)
+
+/**
+ * Search
+ */
+const logReinitializeFilters = () => firebaseAnalytics.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS)
+
+const logUseFilter = (filter: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.USE_FILTER, { filter })
 
 export const analytics = {
   logAllModulesSeen,
@@ -145,6 +160,7 @@ export const analytics = {
   logShareOffer,
   logSignUpBetween14And15Included,
   logSignUpLessThanOrEqualTo13,
+  logUseFilter,
 }
 
 const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']

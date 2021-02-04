@@ -6,6 +6,8 @@ import styled from 'styled-components/native'
 import { DateFilter } from 'features/search/atoms/Buttons'
 import { CalendarPicker } from 'features/search/components'
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { SectionTitle } from 'features/search/sections/titles'
+import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
@@ -15,6 +17,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 export const OfferDate: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const [showTimePicker, setShowTimePicker] = useState<boolean>(false)
+  const logUseFilter = useLogFilterOnce(SectionTitle.OfferDate)
 
   if (!searchState.date) return <React.Fragment />
 
@@ -25,6 +28,7 @@ export const OfferDate: React.FC = () => {
     if (payload === DATE_FILTER_OPTIONS.USER_PICK) {
       setShowTimePicker(true)
     }
+    logUseFilter()
   }
 
   const setSelectedDate = (payload: Date) => dispatch({ type: 'SELECT_DATE', payload })
@@ -32,7 +36,7 @@ export const OfferDate: React.FC = () => {
   return (
     <React.Fragment>
       <Container testID="offerDateContainer">
-        <Typo.Title4>{_(t`Date de l'offre`)}</Typo.Title4>
+        <Typo.Title4>{SectionTitle.OfferDate}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
         <DateFilter
           text={_(t`Aujourd'hui`)}

@@ -1,12 +1,12 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { AccordionItem } from 'features/offer/components'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { SectionTitle } from 'features/search/sections/titles'
+import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
-import { _ } from 'libs/i18n'
 import { getSpacing } from 'ui/theme'
 
 // First we filter out the 'All' category
@@ -15,15 +15,17 @@ const categories = Object.values(CATEGORY_CRITERIA).filter((category) => !!categ
 export const Category: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const { offerCategories } = searchState
+  const logUseFilter = useLogFilterOnce(SectionTitle.Category)
 
   const onPress = (label: string) => () => {
     dispatch({ type: 'TOGGLE_CATEGORY', payload: label })
+    logUseFilter()
   }
 
   return (
     <AccordionItem
       defaultOpen={true}
-      title={<TitleWithCount title={_(t`Catégories`)} count={offerCategories.length} />}>
+      title={<TitleWithCount title={SectionTitle.Category} count={offerCategories.length} />}>
       <BodyContainer>
         {categories.map(({ label, facetFilter }) => (
           <SelectionLabel
