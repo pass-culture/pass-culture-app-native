@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, createElement } from 'react'
 import { ScrollView } from 'react-native'
-import { useMutation } from 'react-query'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
@@ -22,7 +22,10 @@ export function Navigation(): JSX.Element {
   const navigation = useNavigation<UseNavigationType>()
   const [renderedError, setRenderedError] = useState(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
-  const { mutate: errorAsyncQuery, isLoading } = useMutation(errorAsync)
+  const { refetch: errorAsyncQuery, isFetching } = useQuery('errorAsync', errorAsync, {
+    cacheTime: 0,
+    enabled: false,
+  })
 
   async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)
@@ -189,7 +192,7 @@ export function Navigation(): JSX.Element {
                 ? `${MAX_ASYNC_TEST_REQ_COUNT} erreurs asynchrones`
                 : 'OK'
             }
-            disabled={isLoading || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
+            disabled={isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
             onPress={() => errorAsyncQuery()}
           />
         </Row>

@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FC } from 'react'
-import { useMutation } from 'react-query'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
@@ -41,7 +41,9 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  const { mutate: subscribeQuery, isLoading } = useMutation(subscribe, {
+  const { refetch: subscribeQuery, isFetching } = useQuery('subscribe', subscribe, {
+    cacheTime: 0,
+    enabled: false,
     onSuccess: (success) => {
       if (success) {
         navigate('SignupConfirmationEmailSent', { email: email })
@@ -112,7 +114,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
             <ButtonPrimary
               title={_(t`Accepter et s’inscrire`)}
               onPress={() => subscribeQuery()}
-              disabled={isLoading}
+              disabled={isFetching}
             />
             <Spacer.Column numberOfSpaces={5} />
             <StepDots numberOfSteps={4} currentStep={4} />

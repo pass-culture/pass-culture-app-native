@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { useMutation } from 'react-query'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -25,11 +25,17 @@ type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 export function ResetPasswordExpiredLink(props: Props) {
   const { email } = props.route.params
   const { navigate } = useNavigation<UseNavigationType>()
-  const { mutate: resetPasswordEmailQuery, isLoading } = useMutation(resetPasswordExpiredLink, {
-    onSuccess: () => {
-      navigate('ResetPasswordEmailSent', { email })
-    },
-  })
+  const { refetch: resetPasswordEmailQuery, isFetching } = useQuery(
+    'resetPasswordExpiredLink',
+    resetPasswordExpiredLink,
+    {
+      cacheTime: 0,
+      enabled: false,
+      onSuccess: () => {
+        navigate('ResetPasswordEmailSent', { email })
+      },
+    }
+  )
   function goToHomeWithoutModal() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
@@ -60,7 +66,7 @@ export function ResetPasswordExpiredLink(props: Props) {
       <ButtonPrimaryWhite
         title={_(t`Renvoyer l'email`)}
         onPress={() => resetPasswordEmailQuery()}
-        disabled={isLoading}
+        disabled={isFetching}
       />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite title={_(t`Retourner à l'accueil`)} onPress={goToHomeWithoutModal} />

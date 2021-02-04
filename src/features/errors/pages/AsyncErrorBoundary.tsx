@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
-import { MutateFunction } from 'react-query/types/react/types'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -16,8 +15,8 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export class AsyncError extends Error {
-  public retry?: MutateFunction<unknown, unknown, void>
-  constructor(message: string, retry?: MutateFunction<unknown, unknown, void>) {
+  public retry?: () => Promise<unknown>
+  constructor(message: string, retry?: () => Promise<unknown>) {
     super(message)
     this.retry = retry
   }

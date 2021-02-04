@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
-import { useMutation } from 'react-query'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -27,11 +27,17 @@ export const ForgottenPassword: FunctionComponent = () => {
   const shouldDisableValidateButton = isValueEmpty(email)
 
   const { navigate } = useNavigation<UseNavigationType>()
-  const { mutate: resetPasswordEmailQuery, isLoading } = useMutation(forgottenPassword, {
-    onSuccess: () => {
-      navigate('ResetPasswordEmailSent', { email })
-    },
-  })
+  const { refetch: resetPasswordEmailQuery, isFetching } = useQuery(
+    'forgottenPassword',
+    forgottenPassword,
+    {
+      cacheTime: 0,
+      enabled: false,
+      onSuccess: () => {
+        navigate('ResetPasswordEmailSent', { email })
+      },
+    }
+  )
 
   async function forgottenPassword() {
     try {
@@ -104,7 +110,7 @@ export const ForgottenPassword: FunctionComponent = () => {
         <ButtonPrimary
           title={_(t`Valider`)}
           onPress={validateEmail}
-          disabled={shouldDisableValidateButton || isLoading}
+          disabled={shouldDisableValidateButton || isFetching}
         />
       </ModalContent>
     </BottomContentPage>

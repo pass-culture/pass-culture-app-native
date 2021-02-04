@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { useMutation } from 'react-query'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -25,9 +25,12 @@ type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink
 export function SignupConfirmationExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { email } = props.route.params
-  const { mutate: signupConfirmationExpiredLinkQuery, isLoading } = useMutation(
+  const { refetch: signupConfirmationExpiredLinkQuery, isFetching } = useQuery(
+    'signupConfirmationExpiredLink',
     signupConfirmationExpiredLink,
     {
+      cacheTime: 0,
+      enabled: false,
       onSuccess: () => {
         navigate('SignupConfirmationEmailSent', { email })
       },
@@ -65,7 +68,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
       <ButtonPrimaryWhite
         title={_(t`Renvoyer l'email`)}
         onPress={() => signupConfirmationExpiredLinkQuery()}
-        disabled={isLoading}
+        disabled={isFetching}
       />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite title={_(t`Retourner à l'accueil`)} onPress={goToHomeWithoutModal} />
