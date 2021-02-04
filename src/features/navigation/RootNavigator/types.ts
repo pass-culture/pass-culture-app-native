@@ -33,6 +33,7 @@ export type RootStackParamList = {
   ResetPasswordExpiredLink: { email: string }
   LocationFilter: undefined
   LocationPicker: undefined
+  Profile: undefined
   SearchCategories: undefined
   SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
@@ -41,6 +42,7 @@ export type RootStackParamList = {
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: undefined
+  TemporyProfilePage: undefined
   VerifyEligibility: { email: string; licenceToken: string }
   FirstTutorial: undefined
   SecondTutorial: undefined

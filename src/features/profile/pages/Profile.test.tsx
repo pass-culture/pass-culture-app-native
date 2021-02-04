@@ -1,7 +1,7 @@
 import { render, act } from '@testing-library/react-native'
 import React from 'react'
 
-import { env } from 'libs/environment'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { flushAllPromises } from 'tests/utils'
 
 import { Profile } from './Profile'
@@ -15,18 +15,22 @@ async function renderProfile() {
 }
 
 describe('Profile component', () => {
-  it('should have components and navigation buttons when NOT in PROD', async () => {
-    const profile = await renderProfile()
+  it('should navigate when the personal data row is clicked', async () => {
+    const { getByTestId } = await renderProfile()
 
-    expect(() => profile.getByText('Composants')).toBeTruthy()
-    expect(() => profile.getByText('Navigation')).toBeTruthy()
+    const row = getByTestId('row-personal-data')
+    row.props.onClick()
+
+    // TODO: PC-
+    expect(navigate).toBeCalledWith('TemporyProfilePage')
   })
+  it('should navigate when the password row is clicked', async () => {
+    const { getByTestId } = await renderProfile()
 
-  it('should NOT have components or navigation buttons when in PROD', async () => {
-    env.ENV = 'production'
-    const profile = await renderProfile()
+    const row = getByTestId('row-password')
+    row.props.onClick()
 
-    expect(() => profile.getByText('Composants')).toThrowError()
-    expect(() => profile.getByText('Navigation')).toThrowError()
+    // TODO: PC-
+    expect(navigate).toBeCalledWith('TemporyProfilePage')
   })
 })
