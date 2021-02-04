@@ -38,7 +38,7 @@ export const Location: React.FC = () => {
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
-            {_(t`Seules les offres Sorties et Physiques seront affichées`)}
+            {_(t`Seules les Sorties et offres Physiques seront affichées`)}
           </Typo.Caption>
         </React.Fragment>
       )}
