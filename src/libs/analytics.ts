@@ -46,8 +46,12 @@ const logAllModulesSeen = (numberOfModules: number) =>
 const logAllTilesSeen = (moduleName: string, numberOfTiles: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
 
-const logConsultOffer = (params: { offerId: number; moduleName?: string; query?: string }) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_OFFER, params)
+const logConsultOffer = (params: {
+  offerId: number
+  from: 'SEARCH' | 'HOME'
+  moduleName?: string
+  query?: string
+}) => firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_OFFER, params)
 
 const logClickExclusivityBlock = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })

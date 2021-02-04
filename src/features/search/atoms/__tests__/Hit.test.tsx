@@ -33,6 +33,7 @@ describe('Hit component', () => {
     expect(analytics.logConsultOffer).toBeCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
+      from: 'SEARCH',
       query: '<empty_query>',
     })
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId })
