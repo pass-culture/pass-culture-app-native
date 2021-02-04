@@ -15,7 +15,7 @@ type OfferType = keyof SearchState['offerTypes']
 
 export const OFFER_TYPES: Array<[OfferType, string]> = [
   ['isDigital', _(t`Offre numérique`)],
-  ['isEvent', _(t`Sorties`)],
+  ['isEvent', _(t`Sortie`)],
   ['isThing', _(t`Offre physique`)],
 ]
 

@@ -1464,7 +1464,7 @@ Array [
                   ]
                 }
               >
-                Sorties
+                Sortie
               </Text>
               <View
                 numberOfSpaces={5}
