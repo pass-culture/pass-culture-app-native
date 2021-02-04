@@ -42,6 +42,7 @@ export const InfiniteHitsComponent: React.FC<Props> = ({
     <React.Fragment>
       <Container>
         <FlatList
+          testID="infiniteHitsFlatlist"
           data={hits}
           // eslint-disable-next-line react-native/no-inline-styles
           contentContainerStyle={{ flexGrow: 1 }}
