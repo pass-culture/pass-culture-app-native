@@ -529,6 +529,14 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offe
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
+#: src/features/profile/components/BeneficiaryCeilings.tsx:10
+msgid "Pourquoi les biens numériques sont-ils limités ?"
+msgstr "Pourquoi les biens numériques sont-ils limités ?"
+
+#: src/features/profile/components/BeneficiaryCeilings.tsx:11
+msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
+msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
+
 #: src/features/search/sections/titles.ts:9
 msgid "Prix"
 msgstr "Prix"
@@ -860,10 +868,6 @@ msgstr "{nbHits} résultat"
 #: src/features/search/atoms/NumberOfResults.tsx:10
 msgid "{nbHits} résultats"
 msgstr "{nbHits} résultats"
-
-#: src/features/profile/components/BeneficiaryCeilings.tsx:30
-msgid "{question}"
-msgstr "{question}"
 
 #: src/features/offer/components/OfferIconCaptions.tsx:27
 msgid "À deux !"
