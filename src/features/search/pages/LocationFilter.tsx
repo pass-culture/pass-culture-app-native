@@ -52,7 +52,7 @@ export const LocationFilter: React.FC = () => {
       <Spacer.Column numberOfSpaces={6} />
       <Banner
         title={_(
-          t`Seules les offres Sorties et Physiques seront affichées pour une recherche avec une localisation`
+          t`Seules les Sorties et offres Physiques seront affichées pour une recherche avec une localisation`
         )}
         type={BannerType.INFO}
       />
