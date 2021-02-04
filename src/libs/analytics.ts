@@ -26,6 +26,7 @@ export enum AnalyticsEvent {
   RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
   RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
   SCREEN_VIEW = 'screen_view',
+  SEARCH_SCROLL_TO_PAGE = 'SearchScrollToPage',
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   SHARE_OFFER = 'Share',
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
@@ -134,6 +135,9 @@ const logReinitializeFilters = () => firebaseAnalytics.logEvent(AnalyticsEvent.R
 const logUseFilter = (filter: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.USE_FILTER, { filter })
 
+const logSearchScrollToPage = (page: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page })
+
 export const analytics = {
   logAllModulesSeen,
   logAllTilesSeen,
@@ -158,6 +162,7 @@ export const analytics = {
   logResendEmailResetPasswordExpiredLink,
   logResendEmailSignupConfirmationExpiredLink,
   logScreenView,
+  logSearchScrollToPage,
   logShareOffer,
   logSignUpBetween14And15Included,
   logSignUpLessThanOrEqualTo13,

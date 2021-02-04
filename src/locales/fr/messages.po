@@ -846,11 +846,11 @@ msgstr "Échec de la requête {0}, code: {1}"
 
 #: src/libs/fetch.ts:30
 msgid "Échec de la requête {url}, code: {0}"
-msgstr "Échec de la requête {url}, code: {0}<<<<<<< HEAD"
+msgstr "Échec de la requête {url}, code: {0}"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:31
 msgid "à dépenser dans l'application"
-msgstr "à dépenser dans l'application=======>>>>>>> :sparkles: (PC-4423) title != message (for mails)"
+msgstr "à dépenser dans l'application"
 
 #: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:12
 msgid "à portée de main !"
