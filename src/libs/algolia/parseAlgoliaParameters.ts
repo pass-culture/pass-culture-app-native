@@ -53,7 +53,7 @@ export const parseAlgoliaParameters = ({
   }
 }
 
-const _buildPriceRange = ({ priceMin = 0, priceMax = 500 }): [number, number] => {
+const _buildPriceRange = ({ priceMin = 0, priceMax = 300 }): [number, number] => {
   return [priceMin, priceMax]
 }
 

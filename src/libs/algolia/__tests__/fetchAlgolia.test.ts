@@ -633,7 +633,7 @@ describe('fetchAlgolia', () => {
       // given
       const keywords = 'searched keywords'
       const offerIsFree = true
-      const priceRange: Range<number> = [0, 500]
+      const priceRange: Range<number> = [0, 300]
 
       // when
       fetchAlgolia({
