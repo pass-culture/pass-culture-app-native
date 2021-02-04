@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -9,8 +9,10 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type SectionRowProps = {
   title: string
-  icon: FunctionComponent<IconInterface>
   ctaIconSize?: number
+  icon: FunctionComponent<IconInterface>
+  style?: StyleProp<ViewStyle>
+  testID?: string
 } & (
   | {
       type: 'navigable'
@@ -30,8 +32,8 @@ export function SectionRow(props: SectionRowProps) {
     <TouchableOpacity
       activeOpacity={props.onPress ? ACTIVE_OPACITY : 1}
       onPress={props.onPress}
-      testID="section-row-touchable">
-      <Container>
+      testID={props.testID ? props.testID : 'section-row-touchable'}>
+      <View style={[styles.container, props.style]}>
         <IconContainer>
           <Icon />
         </IconContainer>
@@ -45,15 +47,17 @@ export function SectionRow(props: SectionRowProps) {
             props.cta
           )}
         </CTAContainer>
-      </Container>
+      </View>
     </TouchableOpacity>
   )
 }
 
-const Container = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
 })
 
 const IconContainer = styled.View({

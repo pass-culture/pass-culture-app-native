@@ -92,7 +92,7 @@ msgstr "Afficher {nbHits} résultat"
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
-#: src/features/profile/pages/Profile.tsx:12
+#: src/features/profile/pages/Profile.tsx:19
 msgid "Aides"
 msgstr "Aides"
 
@@ -125,7 +125,7 @@ msgstr "Aujourd'hui"
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
-#: src/features/profile/pages/Profile.tsx:15
+#: src/features/profile/pages/Profile.tsx:22
 msgid "Autres"
 msgstr "Autres"
 
@@ -361,6 +361,10 @@ msgstr "Heure"
 msgid "ISBN"
 msgstr "ISBN"
 
+#: src/features/profile/pages/Profile.tsx:16
+msgid "Informations personnelles"
+msgstr "Informations personnelles"
+
 #: src/features/search/components/SearchLandingPage.tsx:26
 msgid "Je cherche"
 msgstr "Je cherche"
@@ -424,6 +428,7 @@ msgstr "Modifie ta recherche ou découvre toutes les offres"
 
 #: src/features/auth/login/Login.tsx:80
 #: src/features/auth/signup/SetPassword.tsx:38
+#: src/features/profile/pages/Profile.tsx:17
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -488,7 +493,7 @@ msgstr "Où"
 msgid "Où ?"
 msgstr "Où ?"
 
-#: src/features/profile/pages/Profile.tsx:9
+#: src/features/profile/pages/Profile.tsx:15
 msgid "Paramètres du compte"
 msgstr "Paramètres du compte"
 
@@ -628,18 +633,17 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Sorties"
 msgstr "Sorties"
 
-#: src/features/profile/pages/Profile.tsx:18
+#: src/features/profile/pages/Profile.tsx:25
 msgid "Suivre Pass Culture"
 msgstr "Suivre Pass Culture"
 
-#: src/features/profile/pages/Profile.tsx:10
-#: src/features/profile/pages/Profile.tsx:13
-#: src/features/profile/pages/Profile.tsx:16
-#: src/features/profile/pages/Profile.tsx:19
+#: src/features/profile/pages/Profile.tsx:20
+#: src/features/profile/pages/Profile.tsx:23
+#: src/features/profile/pages/Profile.tsx:26
 msgid "Temporary content"
 msgstr "Temporary content"
 
-#: src/features/search/components/SearchBox.tsx:38
+#: src/features/search/components/SearchBox.tsx:43
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 

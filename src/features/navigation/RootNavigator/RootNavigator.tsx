@@ -26,6 +26,8 @@ import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial
 import { SecondTutorial } from 'features/firstLogin/tutorials/pages/SecondTutorial'
 import { ThirdTutorial } from 'features/firstLogin/tutorials/pages/ThirdTutorial'
 import { Offer, OfferDescription } from 'features/offer'
+import { Profile } from 'features/profile/pages/Profile'
+import { TemporyProfilePage } from 'features/profile/pages/TemporyProfilePage'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
@@ -77,6 +79,7 @@ export const RootNavigator: React.FC = () => {
         <RootStack.Screen name="Navigation" component={Navigation} />
         <RootStack.Screen name="Offer" component={Offer} />
         <RootStack.Screen name="OfferDescription" component={OfferDescription} />
+        <RootStack.Screen name="Profile" component={Profile} />
         <RootStack.Screen name="ReinitializePassword" component={ReinitializePassword} />
         <RootStack.Screen name="ResetPasswordEmailSent" component={ResetPasswordEmailSent} />
         <RootStack.Screen name="ResetPasswordExpiredLink" component={ResetPasswordExpiredLink} />
@@ -93,6 +96,7 @@ export const RootNavigator: React.FC = () => {
           component={SignupConfirmationExpiredLink}
         />
         <RootStack.Screen name="TabNavigator" component={TabNavigator} />
+        <RootStack.Screen name="TemporyProfilePage" component={TemporyProfilePage} />
         <RootStack.Screen name="VerifyEligibility" component={VerifyEligibility} />
         <RootStack.Screen
           name="FirstTutorial"
