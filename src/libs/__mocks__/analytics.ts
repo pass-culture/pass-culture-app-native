@@ -38,4 +38,5 @@ export const analytics: typeof actualAnalytics = {
   logSignUpBetween14And15Included: jest.fn(),
   logSignUpLessThanOrEqualTo13: jest.fn(),
   logUseFilter: jest.fn(),
+  logSearchQuery: jest.fn(),
 }

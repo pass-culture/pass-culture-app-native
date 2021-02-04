@@ -31,6 +31,7 @@ export enum AnalyticsEvent {
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
+  SEARCH_QUERY = 'SearchQuery',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -133,6 +134,8 @@ const logReinitializeFilters = () => firebaseAnalytics.logEvent(AnalyticsEvent.R
 
 const logUseFilter = (filter: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.USE_FILTER, { filter })
+const logSearchQuery = (query: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.SEARCH_QUERY, { query })
 
 export const analytics = {
   logAllModulesSeen,
@@ -162,6 +165,7 @@ export const analytics = {
   logSignUpBetween14And15Included,
   logSignUpLessThanOrEqualTo13,
   logUseFilter,
+  logSearchQuery,
 }
 
 const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']

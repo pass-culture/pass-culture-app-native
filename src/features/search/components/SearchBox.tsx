@@ -1,9 +1,14 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import {
+  NativeSyntheticEvent,
+  TextInputSubmitEditingEventData,
+  TouchableOpacity,
+} from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -45,6 +50,11 @@ export const SearchBox: React.FC = () => {
     dispatch({ type: 'INIT' })
   }
 
+  const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+    dispatch({ type: 'SHOW_RESULTS', payload: true })
+    analytics.logSearchQuery(event.nativeEvent.text)
+  }
+
   return (
     <StyledInput>
       <SearchInput
@@ -55,7 +65,7 @@ export const SearchBox: React.FC = () => {
         inputHeight="tall"
         LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
         RightIcon={() => <RightIcon currentValue={query} onPress={resetSearch} />}
-        onSubmitEditing={() => dispatch({ type: 'SHOW_RESULTS', payload: true })}
+        onSubmitEditing={onSubmitQuery}
       />
     </StyledInput>
   )
