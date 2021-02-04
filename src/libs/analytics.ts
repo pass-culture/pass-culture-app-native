@@ -30,6 +30,7 @@ export enum AnalyticsEvent {
   SHARE_OFFER = 'Share',
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
+  USE_FILTER = 'UseFilter',
 }
 
 const logScreenView = async (screenName: string) => {

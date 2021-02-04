@@ -34,12 +34,11 @@ export const initialSearchState: SearchState = {
   query: '',
 }
 
-export const DEFAULT_TIME_RANGE = [8, 24]
-
 export type Action =
   | { type: 'INIT' }
   | { type: 'INIT_FROM_SEE_MORE'; payload: Partial<SearchState> }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
+  | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
   | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
   | { type: 'SHOW_RESULTS'; payload: boolean }
@@ -71,6 +70,8 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       }
     case 'PRICE_RANGE':
       return { ...state, priceRange: action.payload }
+    case 'RADIUS':
+      return { ...state, aroundRadius: action.payload }
     case 'TIME_RANGE':
       return { ...state, timeRange: action.payload }
     case 'TOGGLE_CATEGORY':

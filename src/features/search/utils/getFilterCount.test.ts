@@ -1,5 +1,5 @@
-import { DEFAULT_TIME_RANGE, initialSearchState, SearchState } from 'features/search/pages/reducer'
-import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { initialSearchState, SearchState } from 'features/search/pages/reducer'
+import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { LocationType } from 'libs/algolia'
 import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 
