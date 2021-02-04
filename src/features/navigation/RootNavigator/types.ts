@@ -45,6 +45,7 @@ export type RootStackParamList = {
   FirstTutorial: undefined
   SecondTutorial: undefined
   ThirdTutorial: undefined
+  FourthTutorial: undefined
 }
 
 export type AllNavParamList = RootStackParamList & TabParamList

@@ -1,6 +1,5 @@
 import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import React from 'react'
-import { Alert } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
 import { ThirdTutorial } from 'features/firstLogin/tutorials/pages/ThirdTutorial'
@@ -38,7 +37,7 @@ describe('<ThirdTutorial />', () => {
     fireEvent.press(renderAPI.getByText('Activer la géolocalisation'))
 
     await waitFor(() => {
-      expect(Alert.alert).toBeCalled()
+      expect(navigate).toBeCalledWith('FourthTutorial')
     })
   })
 
@@ -53,7 +52,7 @@ describe('<ThirdTutorial />', () => {
     fireEvent.press(renderAPI.getByText('Activer la géolocalisation'))
 
     await waitFor(() => {
-      expect(Alert.alert).toBeCalled()
+      expect(navigate).toBeCalledWith('FourthTutorial')
     })
   })
 })

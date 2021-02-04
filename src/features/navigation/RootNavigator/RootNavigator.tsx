@@ -23,6 +23,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial'
+import { FourthTutorial } from 'features/firstLogin/tutorials/pages/FourthTutorial'
 import { SecondTutorial } from 'features/firstLogin/tutorials/pages/SecondTutorial'
 import { ThirdTutorial } from 'features/firstLogin/tutorials/pages/ThirdTutorial'
 import { Offer, OfferDescription } from 'features/offer'
@@ -105,6 +106,7 @@ export const RootNavigator: React.FC = () => {
           options={TransitionPresets.SlideFromRightIOS}
         />
         <RootStack.Screen name="ThirdTutorial" component={ThirdTutorial} />
+        <RootStack.Screen name="FourthTutorial" component={FourthTutorial} />
       </RootStack.Navigator>
     </NavigationContainer>
   )
