@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { useSearch } from 'features/search/pages/SearchWrapper'
@@ -11,13 +11,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export const NoSearchResult: React.FC = () => {
   const { position } = useGeolocation()
   const { dispatch, searchState } = useSearch()
-  const query = searchState.query
-  const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
-
-  useEffect(() => {
-    const handler = setTimeout(() => setDebouncedQuery(query), 400)
-    return () => clearTimeout(handler)
-  }, [query])
+  const { query } = searchState
 
   const handlePressAroundMe = () => {
     dispatch({ type: 'INIT' })
@@ -32,16 +26,18 @@ export const NoSearchResult: React.FC = () => {
     }
   }
 
+  const errorMessage =
+    query.length > 0
+      ? _(t`Pas de résultat trouvé pour`) + ` "${query}"`
+      : _(t`Pas de résultat trouvé.`)
+
   return (
     <Container>
       <Spacer.Flex />
       <NoOffer size={156} />
       <MainTitle>{_(t`Oups !`)}</MainTitle>
       <DescriptionErrorTextContainer>
-        <DescriptionErrorText>{_(t`Pas de résultat trouvé`) + ' '}</DescriptionErrorText>
-        {debouncedQuery && (
-          <DescriptionErrorText>{_(t`pour`) + ` "${debouncedQuery}"`}</DescriptionErrorText>
-        )}
+        <DescriptionErrorText>{errorMessage}</DescriptionErrorText>
       </DescriptionErrorTextContainer>
       <DescriptionErrorTextContainer>
         <DescriptionErrorText>

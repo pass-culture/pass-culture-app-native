@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
@@ -36,21 +36,22 @@ const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (prop
 
 export const SearchBox: React.FC = () => {
   const { searchState, dispatch } = useSearch()
-  const query = searchState.query
+  const [query, setQuery] = useState<string>(searchState.query)
 
-  const handleChangeText = (newValue: string) => {
-    dispatch({ type: 'SET_QUERY', payload: newValue })
-  }
   const resetSearch = () => {
-    handleChangeText('')
+    setQuery('')
+    dispatch({ type: 'SET_QUERY', payload: '' })
   }
+
   const onPressArrowBack = () => {
-    handleChangeText('')
+    setQuery('')
+    dispatch({ type: 'SET_QUERY', payload: '' })
     dispatch({ type: 'SHOW_RESULTS', payload: false })
     dispatch({ type: 'INIT' })
   }
 
   const onSubmitQuery = (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
+    dispatch({ type: 'SET_QUERY', payload: query })
     dispatch({ type: 'SHOW_RESULTS', payload: true })
     analytics.logSearchQuery(event.nativeEvent.text)
   }
@@ -59,7 +60,7 @@ export const SearchBox: React.FC = () => {
     <StyledInput>
       <SearchInput
         value={query}
-        onChangeText={handleChangeText}
+        onChangeText={setQuery}
         placeholder={_(t`Titre, artiste...`)}
         autoFocus={false}
         inputHeight="tall"
