@@ -166,6 +166,7 @@ android {
         resValue "string", "app_name", project.env.get("ANDROID_APP_NAME")
         resValue "string", "build_config_package", "com.passculture" // @react-native-config
         resValue "string", "BATCH_API_KEY", project.env.get("BATCH_API_KEY_ANDROID")
+        resValue "string", "universal_link", project.env.get("UNIVERSAL_LINK")
         versionCode (packageJson.build as Integer)
         versionName packageJson.version
         buildConfigField "String", "CODEPUSH_KEY", "\"${project.env.get("CODEPUSH_KEY_ANDROID")}\"" // @codepush
