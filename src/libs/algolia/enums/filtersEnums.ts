@@ -6,7 +6,7 @@ export enum DATE_FILTER_OPTIONS {
 }
 
 export const PRICE_FILTER = {
-  DEFAULT_RANGE: [0, 500],
+  DEFAULT_RANGE: [0, 300],
 }
 
 export const TIME_FILTER = {
