@@ -64,32 +64,22 @@ const buildGeolocationParameter = ({
   geolocation,
   locationType,
 }: Pick<FetchAlgoliaParameters, 'aroundRadius' | 'geolocation' | 'locationType'>):
-  | {
-      aroundLatLng: string
-      aroundRadius: 'all' | number
-    }
+  | { aroundLatLng: string; aroundRadius: 'all' | number }
   | undefined => {
-  if (geolocation) {
-    const { longitude, latitude } = geolocation
-    if (latitude && longitude) {
-      const aroundRadiusInMeters = computeRadiusInMeters(aroundRadius, locationType)
-      const radiusIsPositive = aroundRadiusInMeters > 0
+  if (!geolocation) return
 
-      return {
-        aroundLatLng: `${latitude}, ${longitude}`,
-        aroundRadius:
-          locationType !== LocationType.EVERYWHERE && radiusIsPositive
-            ? aroundRadiusInMeters
-            : RADIUS_FILTERS.UNLIMITED_RADIUS,
-      }
-    }
+  return {
+    aroundLatLng: `${geolocation.latitude}, ${geolocation.longitude}`,
+    aroundRadius: computeAroudRadiusInMeters(aroundRadius, locationType),
   }
-  return undefined
 }
 
-const computeRadiusInMeters = (aroundRadius: number | null, locationType: LocationType): number => {
-  if (locationType !== LocationType.EVERYWHERE && aroundRadius === 0)
-    return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
-  if (aroundRadius === null) return -1
+const computeAroudRadiusInMeters = (
+  aroundRadius: number | null,
+  locationType: LocationType
+): number | 'all' => {
+  if (locationType === LocationType.EVERYWHERE) return RADIUS_FILTERS.UNLIMITED_RADIUS
+  if (aroundRadius === null) return RADIUS_FILTERS.UNLIMITED_RADIUS
+  if (aroundRadius === 0) return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
   return aroundRadius * 1000
 }
