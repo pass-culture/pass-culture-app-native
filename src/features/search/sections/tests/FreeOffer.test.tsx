@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -23,7 +23,7 @@ describe('FreeOffer component', () => {
   })
   it('should dispatch TOGGLE_OFFER_FREE onPress', () => {
     const { getByTestId } = render(<FreeOffer />)
-    getByTestId('filterSwitch').props.onChange({ nativeEvent: { value: true } })
+    fireEvent(getByTestId('filterSwitch'), 'onValueChange', true)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_FREE' })
   })
 
