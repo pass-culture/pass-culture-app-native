@@ -19,7 +19,7 @@ export const Hour: React.FC = () => {
   return (
     <SectionWithSwitch
       title={SectionTitle.Hour}
-      subtitle={_(t`Seules les offres Sorties seront affichées`)}
+      subtitle={_(t`Seules les Sorties seront affichées`)}
       active={!!searchState.timeRange}
       toggle={toggle}
     />
