@@ -16,6 +16,7 @@ import { padding, Spacer } from 'ui/theme'
 import { CheatCodesButton } from '../components/CheatCodesButton'
 
 const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
+const LoginDeeplink = DEEPLINK_DOMAIN + 'login'
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 
 export function Navigation(): JSX.Element {
@@ -188,6 +189,12 @@ export function Navigation(): JSX.Element {
             }
             disabled={isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
             onPress={() => errorAsyncQuery()}
+          />
+        </Row>
+        <Row>
+          <NavigationButton
+            title={'Universal Link'}
+            onPress={() => openExternalUrl(LoginDeeplink)}
           />
         </Row>
       </StyledContainer>
