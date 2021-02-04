@@ -4,18 +4,24 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 import { getPosition } from './getPosition'
 import { requestGeolocPermission } from './requestGeolocPermission'
 
+type RequestGeolocPermissionParams = {
+  onAcceptance?: () => void
+  onRefusal?: () => void
+  onSubmit?: () => void
+}
+
 export interface IGeolocationContext {
   position: GeoCoordinates | null
   setPosition: (position: GeoCoordinates | null) => void
   permissionGranted: boolean
-  requestGeolocPermission: () => void
+  requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
 }
 
 export const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
   setPosition: () => undefined,
   permissionGranted: false,
-  requestGeolocPermission: () => {
+  requestGeolocPermission: async () => {
     // nothing
   },
 })
@@ -32,8 +38,18 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
     }
   }, [permissionGranted])
 
-  function contextualRequestGeolocPermission() {
-    requestGeolocPermission(setPermissionGranted)
+  async function contextualRequestGeolocPermission(params?: RequestGeolocPermissionParams) {
+    const isPermissionGranted = await requestGeolocPermission()
+    setPermissionGranted(isPermissionGranted)
+
+    if (params?.onSubmit) {
+      params.onSubmit()
+    }
+    if (isPermissionGranted && params?.onAcceptance) {
+      params.onAcceptance()
+    } else if (!isPermissionGranted && params?.onRefusal) {
+      params.onRefusal()
+    }
   }
 
   return (

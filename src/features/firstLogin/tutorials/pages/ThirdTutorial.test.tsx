@@ -1,17 +1,12 @@
-import { renderHook } from '@testing-library/react-hooks'
-import { render, fireEvent } from '@testing-library/react-native'
+import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import React from 'react'
+import { Alert } from 'react-native'
+import Geolocation from 'react-native-geolocation-service'
 
 import { ThirdTutorial } from 'features/firstLogin/tutorials/pages/ThirdTutorial'
-import { useGeolocation } from 'libs/geolocation'
+import { GeolocationWrapper } from 'libs/geolocation'
 
 import { navigate } from '../../../../../__mocks__/@react-navigation/native'
-
-jest.mock('libs/geolocation', () => ({
-  useGeolocation: jest.fn().mockReturnValue({
-    requestGeolocPermission: jest.fn(),
-  }),
-}))
 
 beforeEach(() => {
   jest.clearAllMocks()
@@ -32,13 +27,33 @@ describe('<ThirdTutorial />', () => {
     expect(navigate).toBeCalledWith('TabNavigator')
   })
 
-  it('should called requestGeolocPermission when clicking "Activer la géolocalisation" button', () => {
-    const hookResult = renderHook(useGeolocation)
-    const renderAPI = render(<ThirdTutorial />)
+  it('should call Alert.alert when permission is granted', async () => {
+    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('granted')
+    const renderAPI = render(
+      <GeolocationWrapper>
+        <ThirdTutorial />
+      </GeolocationWrapper>
+    )
 
-    const nextButton = renderAPI.getByText('Activer la géolocalisation')
-    fireEvent.press(nextButton)
+    fireEvent.press(renderAPI.getByText('Activer la géolocalisation'))
 
-    expect(hookResult.result.current.requestGeolocPermission).toBeCalled()
+    await waitFor(() => {
+      expect(Alert.alert).toBeCalled()
+    })
+  })
+
+  it('should call Alert.alert when permission is denied', async () => {
+    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('denied')
+    const renderAPI = render(
+      <GeolocationWrapper>
+        <ThirdTutorial />
+      </GeolocationWrapper>
+    )
+
+    fireEvent.press(renderAPI.getByText('Activer la géolocalisation'))
+
+    await waitFor(() => {
+      expect(Alert.alert).toBeCalled()
+    })
   })
 })

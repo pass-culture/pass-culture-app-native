@@ -1,11 +1,7 @@
 import { Platform } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
-import { flushAllPromises } from 'tests/utils'
-
 import { requestGeolocPermission } from './requestGeolocPermission.ios'
-
-const mockSetPermissionGranted = jest.fn()
 
 describe('requestGeolocPermission ios', () => {
   beforeAll(() => (Platform.OS = 'ios'))
@@ -13,21 +9,15 @@ describe('requestGeolocPermission ios', () => {
   it('should ask for ios permission and return true if granted', async () => {
     jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValue('granted')
 
-    requestGeolocPermission(mockSetPermissionGranted)
+    const isPermissionGranted = await requestGeolocPermission()
 
-    expect(Geolocation.requestAuthorization).toHaveBeenCalledWith('whenInUse')
-    expect(mockSetPermissionGranted).not.toHaveBeenCalled()
-
-    await flushAllPromises()
-    expect(mockSetPermissionGranted).toHaveBeenCalledWith(true)
+    expect(isPermissionGranted).toBeTruthy()
   })
   it('should return false if permission not granted', async () => {
     jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValue('denied')
 
-    requestGeolocPermission(mockSetPermissionGranted)
+    const isPermissionGranted = await requestGeolocPermission()
 
-    expect(mockSetPermissionGranted).not.toHaveBeenCalled()
-    await flushAllPromises()
-    expect(mockSetPermissionGranted).not.toHaveBeenCalled()
+    expect(isPermissionGranted).toBeFalsy()
   })
 })

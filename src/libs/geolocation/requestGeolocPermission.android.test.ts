@@ -1,10 +1,6 @@
 import { Permission, PermissionsAndroid, PermissionStatus, Platform } from 'react-native'
 
-import { flushAllPromises } from 'tests/utils'
-
 import { requestGeolocPermission } from './requestGeolocPermission.android'
-
-const mockSetPermissionGranted = jest.fn()
 
 describe('requestGeolocPermission android', () => {
   beforeAll(() => (Platform.OS = 'android'))
@@ -15,15 +11,13 @@ describe('requestGeolocPermission android', () => {
       'android.permission.ACCESS_COARSE_LOCATION': 'granted',
     } as { [key in Permission]: PermissionStatus })
 
-    requestGeolocPermission(mockSetPermissionGranted)
+    const isPermissionGranted = await requestGeolocPermission()
+
     expect(PermissionsAndroid.requestMultiple).toHaveBeenCalledWith([
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
     ])
-    expect(mockSetPermissionGranted).not.toHaveBeenCalled()
-
-    await flushAllPromises()
-    expect(mockSetPermissionGranted).toHaveBeenCalledWith(true)
+    expect(isPermissionGranted).toBeTruthy()
   })
 
   it('should return false if permission not granted', async () => {
@@ -32,10 +26,8 @@ describe('requestGeolocPermission android', () => {
       'android.permission.ACCESS_COARSE_LOCATION': 'denied',
     } as { [key in Permission]: PermissionStatus })
 
-    requestGeolocPermission(mockSetPermissionGranted)
+    const isPermissionGranted = await requestGeolocPermission()
 
-    expect(mockSetPermissionGranted).not.toHaveBeenCalled()
-    await flushAllPromises()
-    expect(mockSetPermissionGranted).not.toHaveBeenCalled()
+    expect(isPermissionGranted).toBeFalsy()
   })
 })
