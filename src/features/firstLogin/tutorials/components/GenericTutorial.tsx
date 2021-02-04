@@ -15,7 +15,6 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   animation: AnimationObject
-  animationSize: number
   buttonCallback: () => void
   buttonText: string
   pauseAnimationOnRenderAtFrame?: number
@@ -25,26 +24,16 @@ type Props = {
   title: string
 }
 
-export const GenericTutorial: FunctionComponent<Props> = ({
-  step = 1,
-  animation,
-  animationSize,
-  buttonCallback,
-  buttonText,
-  title,
-  subTitle,
-  text,
-  pauseAnimationOnRenderAtFrame,
-}) => {
+export const GenericTutorial: FunctionComponent<Props> = (props: Props) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const animationRef = useRef<AnimatedLottieView>(null)
 
   useEffect(() => {
-    if (pauseAnimationOnRenderAtFrame) {
-      animationRef.current?.play(0, pauseAnimationOnRenderAtFrame)
+    if (props.pauseAnimationOnRenderAtFrame) {
+      animationRef.current?.play(0, props.pauseAnimationOnRenderAtFrame)
     }
-  }, [pauseAnimationOnRenderAtFrame])
+  }, [props.pauseAnimationOnRenderAtFrame])
 
   function goToHomeWithoutModal() {
     navigate('TabNavigator')
@@ -57,17 +46,22 @@ export const GenericTutorial: FunctionComponent<Props> = ({
         <ButtonTertiaryGreyDark title={_(t`Tout passer`)} onPress={goToHomeWithoutModal} />
       </Header>
       <Spacer.Flex flex={2} />
-      <StyledLottieView ref={animationRef} source={animation} loop={false} size={animationSize} />
+      <StyledLottieView
+        ref={animationRef}
+        source={props.animation}
+        loop={false}
+        size={getSpacing(60)}
+      />
       <Spacer.Flex flex={0.8} />
-      <StyledTitle>{title}</StyledTitle>
-      <StyledSubTitle>{subTitle}</StyledSubTitle>
+      <StyledTitle>{props.title}</StyledTitle>
+      <StyledSubTitle>{props.subTitle}</StyledSubTitle>
       <Spacer.Flex flex={0.8} />
-      <StyledBody>{text}</StyledBody>
+      <StyledBody>{props.text}</StyledBody>
       <Spacer.Flex flex={2} />
       <ButtonContainer>
-        <ButtonPrimary title={buttonText} onPress={buttonCallback} />
+        <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
       </ButtonContainer>
-      <StepDots numberOfSteps={4} currentStep={step} />
+      <StepDots numberOfSteps={4} currentStep={props.step} />
       <Spacer.Flex flex={1} />
     </Container>
   )

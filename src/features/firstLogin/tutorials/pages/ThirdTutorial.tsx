@@ -7,11 +7,20 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
-import { getSpacing } from 'ui/theme'
+
+import { TutorialSwiper } from '../components/TutorialSwiper'
 
 export function ThirdTutorial() {
   const { navigate } = useNavigation<UseNavigationType>()
   const { requestGeolocPermission } = useGeolocation()
+
+  function onSwipeLeft() {
+    navigate('FourthTutorial')
+  }
+
+  function onSwipeRight() {
+    navigate('SecondTutorial')
+  }
 
   async function onGeolocationButtonPress() {
     await requestGeolocPermission({
@@ -22,18 +31,19 @@ export function ThirdTutorial() {
   }
 
   return (
-    <GenericTutorial
-      animation={GeolocationAnimation}
-      animationSize={getSpacing(60)}
-      buttonCallback={onGeolocationButtonPress}
-      buttonText={_(t`Activer la géolocalisation`)}
-      pauseAnimationOnRenderAtFrame={62}
-      step={3}
-      subTitle={_(t`à portée de main !`)}
-      text={_(
-        t`Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.`
-      )}
-      title={_(t`Toute la culture`)}
-    />
+    <TutorialSwiper onSwipeLeft={onSwipeLeft} onSwipeRight={onSwipeRight}>
+      <GenericTutorial
+        animation={GeolocationAnimation}
+        buttonCallback={onGeolocationButtonPress}
+        buttonText={_(t`Activer la géolocalisation`)}
+        pauseAnimationOnRenderAtFrame={62}
+        step={3}
+        subTitle={_(t`à portée de main !`)}
+        text={_(
+          t`Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.`
+        )}
+        title={_(t`Toute la culture`)}
+      />
+    </TutorialSwiper>
   )
 }

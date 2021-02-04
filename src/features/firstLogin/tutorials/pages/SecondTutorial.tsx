@@ -1,14 +1,13 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import GestureRecognizer from 'react-native-swipe-gestures'
-import styled from 'styled-components/native'
 
 import { GenericTutorial } from 'features/firstLogin/tutorials/components/GenericTutorial'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import TutorialOffers from 'ui/animations/tutorial_offers.json'
-import { getSpacing } from 'ui/theme'
+
+import { TutorialSwiper } from '../components/TutorialSwiper'
 
 export function SecondTutorial() {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -17,27 +16,19 @@ export function SecondTutorial() {
     navigate('ThirdTutorial')
   }
 
-  const onSwipeRight = () => {
+  function onSwipeRight() {
     navigate('FirstTutorial')
   }
 
-  function goToThirdTutorial() {
+  function onButtonPress() {
     navigate('ThirdTutorial')
   }
 
   return (
-    <StyledGestureRecognizer
-      onSwipeLeft={onSwipeLeft}
-      onSwipeRight={onSwipeRight}
-      config={{
-        velocityThreshold: 0.03,
-        directionalOffsetThreshold: 400,
-        gestureIsClickThreshold: 0.1,
-      }}>
+    <TutorialSwiper onSwipeLeft={onSwipeLeft} onSwipeRight={onSwipeRight}>
       <GenericTutorial
         animation={TutorialOffers}
-        animationSize={getSpacing(60)}
-        buttonCallback={goToThirdTutorial}
+        buttonCallback={onButtonPress}
         buttonText={_(t`Continuer`)}
         pauseAnimationOnRenderAtFrame={62}
         step={2}
@@ -47,10 +38,6 @@ export function SecondTutorial() {
         )}
         title={_(t`Des offres pour tous`)}
       />
-    </StyledGestureRecognizer>
+    </TutorialSwiper>
   )
 }
-
-const StyledGestureRecognizer = styled(GestureRecognizer)({
-  flexGrow: 1,
-})

@@ -109,8 +109,16 @@ export const RootNavigator: React.FC = () => {
           component={SecondTutorial}
           options={TransitionPresets.SlideFromRightIOS}
         />
-        <RootStack.Screen name="ThirdTutorial" component={ThirdTutorial} />
-        <RootStack.Screen name="FourthTutorial" component={FourthTutorial} />
+        <RootStack.Screen
+          name="ThirdTutorial"
+          component={ThirdTutorial}
+          options={TransitionPresets.SlideFromRightIOS}
+        />
+        <RootStack.Screen
+          name="FourthTutorial"
+          component={FourthTutorial}
+          options={TransitionPresets.SlideFromRightIOS}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   )
