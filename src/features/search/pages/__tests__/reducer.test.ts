@@ -71,6 +71,12 @@ describe('Search reducer', () => {
       priceRange: [30, 200],
     })
   })
+
+  it('should handle RADIUS', () => {
+    const action: Action = { type: 'RADIUS', payload: 30 }
+    expect(searchReducer(state, action)).toStrictEqual({ ...initialSearchState, aroundRadius: 30 })
+  })
+
   it('should handle TIME_RANGE', () => {
     const action: Action = { type: 'TIME_RANGE', payload: [10, 24] as SearchState['timeRange'] }
     expect(searchReducer(state, action)).toStrictEqual({
