@@ -49,7 +49,6 @@ export interface ExtraAlgoliaParameters {
   date: AlgoliaDate | null
   keywords: string
   page: number
-  sortBy: string
   timeRange: Range<number> | null
 }
 export type FetchAlgoliaParameters = ParsedAlgoliaParameters & Partial<ExtraAlgoliaParameters>

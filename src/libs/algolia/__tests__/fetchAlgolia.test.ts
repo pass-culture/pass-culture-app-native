@@ -287,42 +287,6 @@ describe('fetchAlgolia', () => {
     })
   })
 
-  describe('sorting', () => {
-    it('should fetch with given index when index suffix is provided', () => {
-      // given
-      const keywords = 'searched keywords'
-      const sortBy = '_by_proximity'
-
-      // when
-      fetchAlgolia({
-        keywords: keywords,
-        sortBy: sortBy,
-      } as FetchAlgoliaParameters)
-
-      // then
-      expect(search).toHaveBeenCalledWith(keywords, {
-        page: 0,
-      })
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName_by_proximity')
-    })
-
-    it('should fetch using default index when no index suffix is provided', () => {
-      // given
-      const keywords = 'searched keywords'
-
-      // when
-      fetchAlgolia({
-        keywords: keywords,
-      } as FetchAlgoliaParameters)
-
-      // then
-      expect(search).toHaveBeenCalledWith(keywords, {
-        page: 0,
-      })
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName')
-    })
-  })
-
   describe('offer types', () => {
     afterEach(() => {
       search.mockClear()
@@ -995,7 +959,6 @@ describe('fetchAlgolia', () => {
         isThing: false,
       }
       const page = 2
-      const sortBy = '_by_price'
 
       // when
       fetchAlgolia({
@@ -1004,7 +967,6 @@ describe('fetchAlgolia', () => {
         offerCategories: offerCategories,
         offerTypes: offerTypes,
         page: page,
-        sortBy: sortBy,
       } as FetchAlgoliaParameters)
 
       // then
@@ -1014,49 +976,10 @@ describe('fetchAlgolia', () => {
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
       })
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName_by_price')
+      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName')
     })
 
-    it('should fetch event offers for categories pratique & spectacle around me ordered by price', () => {
-      // given
-      const geolocation = {
-        latitude: 42,
-        longitude: 43,
-      }
-      const keywords = ''
-      const offerCategories = ['PRATIQUE', 'SPECTACLE']
-      const offerIsDuo = false
-      const offerTypes = {
-        isDigital: false,
-        isEvent: true,
-        isThing: false,
-      }
-      const sortBy = '_by_price'
-
-      // when
-      fetchAlgolia({
-        geolocation,
-        keywords,
-        offerCategories,
-        offerIsDuo,
-        offerTypes,
-        sortBy,
-      } as FetchAlgoliaParameters)
-
-      // then
-      expect(search).toHaveBeenCalledWith(keywords, {
-        page: 0,
-        facetFilters: [
-          ['offer.category:PRATIQUE', 'offer.category:SPECTACLE'],
-          ['offer.isEvent:true'],
-        ],
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
-      })
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName_by_price')
-    })
-
-    it('should fetch duo & free event offers for categories pratique & spectacle around me ordered by price', () => {
+    it('should fetch duo & free event offers for categories pratique & spectacle around me', () => {
       // given
       const geolocation = {
         latitude: 42,
@@ -1071,7 +994,6 @@ describe('fetchAlgolia', () => {
         isEvent: true,
         isThing: false,
       }
-      const sortBy = '_by_price'
 
       // when
       fetchAlgolia({
@@ -1081,7 +1003,6 @@ describe('fetchAlgolia', () => {
         offerIsDuo,
         priceRange: priceRange as Range<number>,
         offerTypes,
-        sortBy,
       } as FetchAlgoliaParameters)
 
       // then
@@ -1096,7 +1017,7 @@ describe('fetchAlgolia', () => {
         aroundLatLng: '42, 43',
         aroundRadius: 'all',
       })
-      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName_by_price')
+      expect(mockInitIndex).toHaveBeenCalledWith('algoliaIndexName')
     })
   })
 

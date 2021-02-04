@@ -45,13 +45,12 @@ export const buildSearchParameters = ({
 
 export const fetchAlgolia = <T>({
   keywords = '',
-  sortBy = '',
   page = 0,
   hitsPerPage = null,
   ...parameters
 }: FetchAlgoliaParameters): Readonly<Promise<SearchResponse<T>>> => {
   const searchParameters = buildSearchParameters(parameters)
-  const index = client.initIndex(env.ALGOLIA_INDEX_NAME + sortBy)
+  const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
 
   return index.search<T>(keywords, { page, ...buildHitsPerPage(hitsPerPage), ...searchParameters })
 }
