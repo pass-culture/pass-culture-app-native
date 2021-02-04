@@ -21,8 +21,8 @@ type BeneficiaryCeilingsProps =
     }
 
 const ceilingsQuestions = {
-  v1: 'Pourquoi les biens numériques sont-ils limités ?',
-  v2: 'Pourquoi les biens physiques et numériques sont-ils limités ?',
+  v1: _(t`Pourquoi les biens numériques sont-ils limités ?`),
+  v2: _(t`Pourquoi les biens physiques et numériques sont-ils limités ?`),
 }
 
 export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
@@ -53,7 +53,7 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
       <Spacer.Column numberOfSpaces={6} />
       <Separator dashGap={4} dashLength={1} dashThickness={1} />
       <CeilingsExplanation>
-        <AccordionItem title={<Typo.ButtonText>{_(t`${question}`)}</Typo.ButtonText>}>
+        <AccordionItem title={<Typo.ButtonText>{question}</Typo.ButtonText>}>
           <Typo.Body>
             {_(
               t`Le but du pass Culture est de renforcer vos pratiques culturelles,
