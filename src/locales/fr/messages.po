@@ -328,7 +328,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/Buttons/Filter.tsx:21
-#: src/features/search/pages/SearchFilter.tsx:93
+#: src/features/search/pages/SearchFilter.tsx:94
 msgid "Filtrer"
 msgstr "Filtrer"
 
@@ -617,7 +617,7 @@ msgstr "Seules les Sorties et offres Physiques seront affichées pour une recher
 #: src/features/search/sections/Date.tsx:15
 #: src/features/search/sections/Hour.tsx:15
 msgid "Seules les Sorties seront affichées"
-msgstr "Seules les Sorties seront affichées>>>>>>> (PC-6388) update messages.po"
+msgstr "Seules les Sorties seront affichées"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:43
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
@@ -635,7 +635,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
 #: src/features/search/sections/OfferType.tsx:13
 msgid "Sortie"
-msgstr "Sortie>>>>>>> (PC-6388) update messages.po"
+msgstr "Sortie"
 
 #: src/features/profile/pages/Profile.tsx:25
 msgid "Suivre Pass Culture"
