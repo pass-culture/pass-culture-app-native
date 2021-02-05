@@ -19,10 +19,7 @@ exports[`CreditCeiling should render properly 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "flexBasis": 0,
           "flexDirection": "row",
-          "flexGrow": 1,
-          "flexShrink": 1,
           "height": 40,
           "maxHeight": 40,
         },

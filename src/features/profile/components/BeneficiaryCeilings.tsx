@@ -37,7 +37,7 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
     <Container>
       <Spacer.Column numberOfSpaces={6} />
       <Title>{_(t`Tu peux encore dépenser :`)}</Title>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={5} />
       <CeilingsRow>
         {expenses.map((expense, index: number) => {
           return (
@@ -54,13 +54,13 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
       <Separator dashGap={4} dashLength={1} dashThickness={1} />
       <CeilingsExplanation>
         <AccordionItem title={<Typo.ButtonText>{question}</Typo.ButtonText>}>
-          <Typo.Body>
+          <Description>
             {_(
               t`Le but du pass Culture est de renforcer vos pratiques culturelles,
               mais aussi d'en créer  de nouvelles. Ces plafonds ont été mis en place
               pour favoriser la diversification des pratiques culturelles.`
             )}
-          </Typo.Body>
+          </Description>
         </AccordionItem>
       </CeilingsExplanation>
     </Container>
@@ -85,11 +85,15 @@ const CeilingsRow = styled.View({
 const Separator = styled(Dash)({
   borderRadius: 100,
   overflow: 'hidden',
-  width: '99%', // a 100% width put the first point on the border of the view and a space at the end
+  width: '99%', // a 100% width put the first dot on the border of the view and a space at the end
   alignSelf: 'center',
 })
 
 const CeilingsExplanation = styled.View({
   left: -getSpacing(2),
   paddingRight: getSpacing(1),
+})
+
+const Description = styled(Typo.Body)({
+  textAlign: 'justify',
 })

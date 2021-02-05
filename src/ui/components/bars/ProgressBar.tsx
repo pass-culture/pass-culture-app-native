@@ -27,7 +27,6 @@ function ProgressBarComponent(props: ProgressBarProps) {
 export const ProgressBar = memo(ProgressBarComponent)
 
 const Container = styled.View({
-  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
   height: 40,
