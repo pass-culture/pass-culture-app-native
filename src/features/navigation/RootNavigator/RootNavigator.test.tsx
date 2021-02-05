@@ -8,7 +8,7 @@ import { wrapRoute } from './RootNavigator'
 import { Route } from './types'
 
 jest.mock('@react-navigation/stack', () => {
-  const cb = jest.fn()
+  const callback = jest.fn()
   return {
     TransitionPresets: {},
     createStackNavigator: () => {
