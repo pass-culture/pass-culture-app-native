@@ -109,6 +109,10 @@ msgstr "Annuler"
 msgid "Aucun access token à sauvegarder"
 msgstr "Aucun access token à sauvegarder"
 
+#: src/features/search/pages/SuggestedPlaces.tsx:37
+msgid "Aucun lieu ne correspond à ta recherche"
+msgstr "Aucun lieu ne correspond à ta recherche"
+
 #: src/libs/keychain.ts:17
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
@@ -182,7 +186,7 @@ msgid "Cheater Zone"
 msgstr "Cheater Zone"
 
 #: src/features/search/components/locationChoice.utils.tsx:17
-#: src/features/search/pages/LocationPicker.tsx:58
+#: src/features/search/pages/LocationPicker.tsx:48
 msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
@@ -613,7 +617,7 @@ msgstr "Réserver"
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
-#: src/features/search/pages/LocationPicker.tsx:54
+#: src/features/search/pages/LocationPicker.tsx:44
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
