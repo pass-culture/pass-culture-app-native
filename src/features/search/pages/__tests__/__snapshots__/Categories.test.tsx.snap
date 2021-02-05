@@ -1113,16 +1113,6 @@ Array [
           }
         />
       </View>
-      <View
-        numberOfSpaces={30}
-        style={
-          Array [
-            Object {
-              "height": 120,
-            },
-          ]
-        }
-      />
     </View>
   </RCTScrollView>,
   <View
