@@ -14,21 +14,43 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-export const RetryBoundaryWithNavigation = ({ resetErrorBoundary }: FallbackProps) => {
+export class AsyncError extends Error {
+  public retry?: () => Promise<unknown>
+  constructor(message: string, retry?: () => Promise<unknown>) {
+    super(message)
+    this.retry = retry
+  }
+}
+
+interface AsyncFallbackProps extends FallbackProps {
+  resetErrorBoundary: (...args: Array<unknown>) => void
+  error: AsyncError
+  backNavigation?: boolean
+}
+
+export const AsyncErrorBoundary = ({
+  resetErrorBoundary,
+  error,
+  backNavigation = true,
+}: AsyncFallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
   const { canGoBack, goBack } = useNavigation<UseNavigationType>()
   const { top } = useCustomSafeInsets()
 
-  const handleRetry = () => {
+  const handleRetry = async () => {
     reset()
     resetErrorBoundary()
+    if (error?.retry) {
+      await error.retry()
+    }
   }
 
   return (
     <Container>
       <Background />
+      <Spacer.TopScreen />
       <Spacer.Flex />
-      {canGoBack() && (
+      {backNavigation && canGoBack() && (
         <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
           <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
         </HeaderContainer>
@@ -64,6 +86,7 @@ export const RetryBoundaryWithNavigation = ({ resetErrorBoundary }: FallbackProp
         </ButtonContainer>
       </Row>
       <Spacer.Flex />
+      <Spacer.BottomScreen />
     </Container>
   )
 }
@@ -87,3 +110,7 @@ const HeaderContainer = styled.TouchableOpacity<{ top: number }>(({ top }) => ({
   top,
   left: getSpacing(6),
 }))
+
+export const AsyncErrorBoundaryWithoutNavigation = (props: AsyncFallbackProps) => (
+  <AsyncErrorBoundary {...props} backNavigation={false} />
+)

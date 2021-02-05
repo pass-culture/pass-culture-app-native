@@ -9,7 +9,7 @@ import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
-import { HomeComponent } from './Home'
+import { Home } from './Home'
 
 const useUserProfileInfoMock = useUserProfileInfo as jest.Mock
 
@@ -170,7 +170,7 @@ async function homeRenderer(withModal: boolean) {
         <Tab.Navigator initialRouteName="Home">
           <Tab.Screen
             name="Home"
-            component={HomeComponent}
+            component={Home}
             initialParams={{ shouldDisplayLoginModal: withModal }}
           />
         </Tab.Navigator>

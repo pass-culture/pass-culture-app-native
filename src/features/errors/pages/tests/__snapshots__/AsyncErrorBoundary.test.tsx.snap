@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RetryBoundary component should render 1`] = `
+exports[`AsyncErrorBoundary component should render 1`] = `
 <View
   style={
     Array [
@@ -33,6 +33,16 @@ exports[`RetryBoundary component should render 1`] = `
       undefined-SVG-Mock
     </View>
   </View>
+  <View
+    customHeight={16}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
   <View
     style={
       Array [
@@ -221,6 +231,16 @@ exports[`RetryBoundary component should render 1`] = `
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    customHeight={8}
+    style={
+      Array [
+        Object {
+          "height": 8,
         },
       ]
     }

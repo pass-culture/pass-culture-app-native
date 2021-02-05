@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/api'
@@ -40,20 +41,32 @@ export const Login: FunctionComponent = function () {
   const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation<'Login'>()
 
-  async function handleSignin() {
-    Keyboard.dismiss()
-    setShouldShowErrorMessage(false)
+  const handleSignin = async () => {
     const signinResponse = await signIn({ identifier: email, password })
-
-    if (signinResponse.isSuccess) {
+    if (signinResponse?.isSuccess) {
       navigate('Home', NavigateToHomeWithoutModalOptions)
     } else {
-      const { code } = signinResponse.content || {}
+      const { code } = signinResponse?.content || {}
       if (code === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
-      } else {
-        setShouldShowErrorMessage(true)
+      } else if (code === 'NETWORK_REQUEST_FAILED') {
+        throw new Error('NETWORK_REQUEST_FAILED')
       }
+    }
+    return signinResponse
+  }
+
+  const { refetch: signInQuery, isFetching } = useQuery('login', handleSignin, {
+    cacheTime: 0,
+    enabled: false,
+  })
+
+  async function onSubmit() {
+    Keyboard.dismiss()
+    setShouldShowErrorMessage(false)
+    const { data } = await signInQuery()
+    if (!data?.isSuccess) {
+      setShouldShowErrorMessage(true)
     }
   }
 
@@ -115,8 +128,8 @@ export const Login: FunctionComponent = function () {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimary
         title={_(t`Se connecter`)}
-        onPress={handleSignin}
-        disabled={shouldDisableLoginButton}
+        onPress={onSubmit}
+        disabled={shouldDisableLoginButton || isFetching}
       />
     </BottomContentPage>
   )

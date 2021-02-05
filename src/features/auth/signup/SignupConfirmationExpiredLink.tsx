@@ -2,10 +2,11 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { Alert } from 'react-native'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
+import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -23,22 +24,26 @@ type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink
 
 export function SignupConfirmationExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
-
+  const { email } = props.route.params
+  const { refetch: signupConfirmationExpiredLinkQuery, isFetching } = useQuery(
+    'signupConfirmationExpiredLink',
+    signupConfirmationExpiredLink,
+    {
+      cacheTime: 0,
+      enabled: false,
+    }
+  )
   function goToHomeWithoutModal() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
-
-  async function resendEmailForSignupConfirmation() {
-    const { email } = props.route.params
-    analytics.logResendEmailSignupConfirmationExpiredLink()
-    api
-      .postnativev1resendEmailValidation({ email })
-      .then(() => {
-        navigate('SignupConfirmationEmailSent', { email })
-      })
-      .catch((error) => {
-        Alert.alert(error.message)
-      })
+  async function signupConfirmationExpiredLink() {
+    try {
+      analytics.logResendEmailSignupConfirmationExpiredLink()
+      await api.postnativev1resendEmailValidation({ email })
+      navigate('SignupConfirmationEmailSent', { email })
+    } catch (err) {
+      throw new AsyncError('NETWORK_REQUEST_FAILED', signupConfirmationExpiredLinkQuery)
+    }
   }
 
   return (
@@ -58,7 +63,8 @@ export function SignupConfirmationExpiredLink(props: Props) {
       <Spacer.Column numberOfSpaces={4} />
       <ButtonPrimaryWhite
         title={_(t`Renvoyer l'email`)}
-        onPress={resendEmailForSignupConfirmation}
+        onPress={() => signupConfirmationExpiredLinkQuery()}
+        disabled={isFetching}
       />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite title={_(t`Retourner à l'accueil`)} onPress={goToHomeWithoutModal} />

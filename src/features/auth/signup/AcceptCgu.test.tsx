@@ -1,24 +1,25 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { fireEvent, render } from '@testing-library/react-native'
+import { fireEvent, render, waitFor } from '@testing-library/react-native'
+import { rest } from 'msw'
 import React from 'react'
 import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, goBack } from '__mocks__/@react-navigation/native'
+import { api } from 'api/api'
+import { AccountRequest } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { EmptyResponse } from 'libs/fetch'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { ColorsEnum } from 'ui/theme'
 
-import { signUp } from '../__mocks__/api'
-import { useSignUp } from '../api'
 import { contactSupport } from '../support.services'
 
 import { AcceptCgu } from './AcceptCgu'
-
-jest.mock('features/auth/api')
-const mockSignUp = useSignUp as jest.Mock
 
 describe('AcceptCgu Page', () => {
   it('should navigate to the previous page on back navigation', () => {
@@ -65,21 +66,29 @@ describe('AcceptCgu Page', () => {
   })
 
   it('should call API to create user account ', async () => {
-    mockSignUp.mockImplementationOnce(() => signUp)
-
+    const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
+    server.use(
+      rest.post<AccountRequest, EmptyResponse>(
+        env.API_BASE_URL + '/native/v1/account',
+        (_req, res, ctx) => res.once(ctx.status(200), ctx.json({}))
+      )
+    )
     const { findByText } = renderAcceptCGU()
 
     const contactSupportButton = await findByText('Accepter et s’inscrire')
     fireEvent.press(contactSupportButton)
 
-    await waitForExpect(() => {
-      expect(signUp).toBeCalledWith({
-        birthdate: '12-2-1995',
-        email: 'john.doe@example.com',
-        hasAllowedRecommendations: true,
-        password: 'password',
-        token: 'ABCDEF',
-      })
+    await waitFor(() => {
+      expect(postnativev1accountSpy).toBeCalledWith(
+        {
+          birthdate: '12-2-1995',
+          email: 'john.doe@example.com',
+          hasAllowedRecommendations: true,
+          password: 'password',
+          token: 'ABCDEF',
+        },
+        { credentials: 'omit' }
+      )
       expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
         email: 'john.doe@example.com',
       })
@@ -130,13 +139,16 @@ function renderAcceptCGU() {
       },
     },
   } as StackScreenProps<RootStackParamList, 'AcceptCgu'>
+
   return render(
-    <AuthContext.Provider
-      value={{
-        isLoggedIn: true,
-        setIsLoggedIn: jest.fn(),
-      }}>
-      <AcceptCgu {...navigationProps} />
-    </AuthContext.Provider>
+    reactQueryProviderHOC(
+      <AuthContext.Provider
+        value={{
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+        }}>
+        <AcceptCgu {...navigationProps} />
+      </AuthContext.Provider>
+    )
   )
 }

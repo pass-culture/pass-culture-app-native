@@ -4,7 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import SplashScreen from 'react-native-splash-screen'
 import { act } from 'react-test-renderer'
 
-import { BaseRetryBoundary } from 'features/errors'
+import { AsyncErrorBoundary } from 'features/errors'
 import * as BatchLocalLib from 'libs/notifications'
 import { flushAllPromises } from 'tests/utils'
 
@@ -77,7 +77,7 @@ function ComponentWithError() {
 
 const renderErrorBoundary = () => {
   return render(
-    <ErrorBoundary FallbackComponent={BaseRetryBoundary}>
+    <ErrorBoundary FallbackComponent={AsyncErrorBoundary}>
       <ComponentWithError />
     </ErrorBoundary>
   )
