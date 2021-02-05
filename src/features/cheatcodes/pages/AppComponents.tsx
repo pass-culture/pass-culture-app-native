@@ -516,16 +516,16 @@ export const AppComponents: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={1} />
           <Text> Progress bars </Text>
           <Spacer.Column numberOfSpaces={3} />
-          <RowWrap>
+          <View>
             <ProgressBar progress={0} color={ColorsEnum.GREEN_VALID} icon={Close} />
             <ProgressBar progress={0.3} color={ColorsEnum.PRIMARY_DARK} icon={Close} />
             <ProgressBar progress={1} color={ColorsEnum.SECONDARY} icon={Close} />
-          </RowWrap>
+          </View>
           <Spacer.Column numberOfSpaces={1} />
-          <RowWrap>
+          <View>
             <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={Close} />
             <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Close} />
-          </RowWrap>
+          </View>
         </GreyView>
         <Spacer.Column numberOfSpaces={4} />
         <View>
