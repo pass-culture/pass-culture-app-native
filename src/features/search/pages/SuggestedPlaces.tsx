@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSearch } from 'features/search/pages/SearchWrapper'
@@ -17,13 +17,15 @@ export const keyExtractor = ({ geolocation, name }: SuggestedPlace) => {
 
 const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => (
   <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
-    <Typo.ButtonText>{place.name.short}</Typo.ButtonText>
-    <Spacer.Row numberOfSpaces={1} />
-    <Typo.Body>
-      {REGEX_STARTING_WITH_NUMBERS.test(place.name.short)
-        ? place.extraData.city
-        : place.extraData.department}
-    </Typo.Body>
+    <Text numberOfLines={1}>
+      <Typo.ButtonText>{place.name.short}</Typo.ButtonText>
+      <Spacer.Row numberOfSpaces={1} />
+      <Typo.Body>
+        {REGEX_STARTING_WITH_NUMBERS.test(place.name.short)
+          ? place.extraData.city
+          : place.extraData.department}
+      </Typo.Body>
+    </Text>
   </ItemContainer>
 )
 
