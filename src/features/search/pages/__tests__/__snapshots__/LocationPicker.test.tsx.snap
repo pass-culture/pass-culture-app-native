@@ -13,11 +13,11 @@ Array [
     }
   />,
   <View
-    numberOfSpaces={14}
+    numberOfSpaces={18}
     style={
       Array [
         Object {
-          "height": 56,
+          "height": 72,
         },
       ]
     }
@@ -26,22 +26,11 @@ Array [
     style={
       Array [
         Object {
-          "marginHorizontal": 24,
-          "width": "100%",
+          "alignItems": "center",
         },
       ]
     }
   >
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
     <View
       inputHeight="tall"
       isFocus={false}

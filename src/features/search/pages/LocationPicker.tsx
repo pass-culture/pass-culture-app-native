@@ -63,9 +63,8 @@ export const LocationPicker: React.FC = () => {
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={14} />
+      <Spacer.Column numberOfSpaces={18} />
       <StyledInput>
-        <Spacer.Column numberOfSpaces={4} />
         <SearchInput
           value={value}
           onChangeText={onChangeText}
@@ -104,7 +103,7 @@ export const SuggestedPlaces: React.FC<{ places: SuggestedPlace[] }> = ({ places
   )
 }
 
-const StyledInput = styled.View({ width: '100%', marginHorizontal: getSpacing(6) })
+const StyledInput = styled.View({ alignItems: 'center' })
 const ItemContainer = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
 })({
