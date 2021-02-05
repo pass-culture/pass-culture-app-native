@@ -41,7 +41,7 @@ export const RootNavigator: React.FC = () => {
 
   // TODO: check if should display tutorial
   // eslint-disable-next-line no-constant-condition
-  const initialRouteName = false ? 'FirstTutorial' : 'TabNavigator'
+  const initialRouteName = true ? 'FirstTutorial' : 'TabNavigator'
 
   return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
