@@ -4,6 +4,8 @@ import React from 'react'
 import { View } from 'react-native'
 
 import { useUserProfileInfo } from 'features/home/api'
+import { SectionTitle } from 'features/search/sections/titles'
+import { LocationType } from 'libs/algolia'
 
 import { initialSearchState } from '../reducer'
 import { SearchFilter } from '../SearchFilter'
@@ -27,9 +29,20 @@ jest.mock('features/home/api', () => ({
 
 describe('SearchFilter component', () => {
   it('should render correctly', () => {
+    mockSearchState.locationType = LocationType.AROUND_ME
     const { toJSON } = render(<SearchFilter />)
     expect(toJSON()).toMatchSnapshot()
   })
+
+  it('should not render section Radius if search everywhere', () => {
+    mockSearchState.locationType = LocationType.EVERYWHERE
+    expect(render(<SearchFilter />).queryByText(SectionTitle.Radius)).toBeFalsy()
+    mockSearchState.locationType = LocationType.AROUND_ME
+    expect(render(<SearchFilter />).queryByText(SectionTitle.Radius)).toBeTruthy()
+    mockSearchState.locationType = LocationType.PLACE
+    expect(render(<SearchFilter />).queryByText(SectionTitle.Radius)).toBeTruthy()
+  })
+
   it('should not render Duo filter if user not beneficiary', () => {
     useUserProfileInfoMock.mockImplementationOnce(() => ({ data: { isBeneficiary: false } }))
     const { queryByTestId } = render(<SearchFilter />)
