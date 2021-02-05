@@ -6,17 +6,17 @@ import { notExpiredStock as baseStock } from '../useCtaWordingAndAction.testsFix
 describe('getOfferPrice', () => {
   it('should consider bookable stock first', () => {
     const stocks: OfferStockResponse[] = [
-      { ...baseStock, price: 4, isBookable: false },
-      { ...baseStock, price: 5 }, // selected
-      { ...baseStock, price: 6 },
+      { ...baseStock, price: 400, isBookable: false },
+      { ...baseStock, price: 500 }, // selected
+      { ...baseStock, price: 600 },
     ]
-    expect(getOfferPrice(stocks)).toBe(5)
+    expect(getOfferPrice(stocks)).toBe(500)
   })
   it('should consider all stock if no bookable', () => {
     const stocks: OfferStockResponse[] = [
-      { ...baseStock, price: 4, isBookable: false }, // selected
-      { ...baseStock, price: 5, isBookable: false },
+      { ...baseStock, price: 400, isBookable: false }, // selected
+      { ...baseStock, price: 500, isBookable: false },
     ]
-    expect(getOfferPrice(stocks)).toBe(4)
+    expect(getOfferPrice(stocks)).toBe(400)
   })
 })

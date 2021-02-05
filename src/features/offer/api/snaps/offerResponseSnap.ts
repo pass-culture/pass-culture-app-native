@@ -16,8 +16,18 @@ export const offerResponseSnap: OfferResponse = {
   name: 'Sous les étoiles de Paris - VF',
   category: { label: 'Cinéma', categoryType: CategoryType.Event, name: CategoryNameEnum.CINEMA },
   stocks: [
-    { id: 118929, beginningDatetime: new Date('2021-01-04T13:30:00'), price: 5, isBookable: true },
-    { id: 118928, beginningDatetime: new Date('2021-01-03T18:00:00'), price: 5, isBookable: true },
+    {
+      id: 118929,
+      beginningDatetime: new Date('2021-01-04T13:30:00'),
+      price: 500,
+      isBookable: true,
+    },
+    {
+      id: 118928,
+      beginningDatetime: new Date('2021-01-03T18:00:00'),
+      price: 500,
+      isBookable: true,
+    },
   ],
   image: {
     url:

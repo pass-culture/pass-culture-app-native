@@ -6,14 +6,14 @@ describe('getDisplayPrice', () => {
     ${undefined}   | ${''}
     ${[]}          | ${''}
     ${[0]}         | ${'Gratuit'}
-    ${[0.0, 7]}    | ${'Gratuit'}
-    ${[1]}         | ${'1 €'}
-    ${[2.0]}       | ${'2 €'}
-    ${[3.45]}      | ${'3,45 €'}
-    ${[3.5]}       | ${'3,50 €'}
-    ${[5.6, 3.0]}  | ${'Dès 3 €'}
-    ${[-3.0, 5.6]} | ${'5,60 €'}
-    ${[8, 8]}      | ${'8 €'}
+    ${[0, 700]}    | ${'Gratuit'}
+    ${[100]}       | ${'1 €'}
+    ${[200]}       | ${'2 €'}
+    ${[345]}       | ${'3,45 €'}
+    ${[350]}       | ${'3,50 €'}
+    ${[560, 300]}  | ${'Dès 3 €'}
+    ${[-300, 560]} | ${'5,60 €'}
+    ${[800, 800]}  | ${'8 €'}
   `('getDisplayPrice($prices) \t= $expected', ({ prices, expected }) => {
     expect(getDisplayPrice(prices)).toBe(expected)
   })
@@ -23,13 +23,13 @@ describe('getDisplayPrice', () => {
     ${undefined}   | ${''}
     ${[]}          | ${''}
     ${[0]}         | ${'Gratuit'}
-    ${[0.0, 7]}    | ${'Gratuit'}
-    ${[1]}         | ${'1 € / place'}
-    ${[2.0]}       | ${'2 € / place'}
-    ${[3.45]}      | ${'3,45 € / place'}
-    ${[5.6, 3.0]}  | ${'Dès 3 € / place'}
-    ${[-3.0, 5.6]} | ${'5,60 € / place'}
-    ${[8, 8]}      | ${'8 € / place'}
+    ${[0, 700]}    | ${'Gratuit'}
+    ${[100]}       | ${'1 € / place'}
+    ${[200]}       | ${'2 € / place'}
+    ${[345]}       | ${'3,45 € / place'}
+    ${[560, 300]}  | ${'Dès 3 € / place'}
+    ${[-300, 560]} | ${'5,60 € / place'}
+    ${[800, 800]}  | ${'8 € / place'}
   `('getDisplayPriceWithDuoMention($prices) \t= $expected', ({ prices, expected }) => {
     expect(getDisplayPriceWithDuoMention(prices)).toBe(expected)
   })

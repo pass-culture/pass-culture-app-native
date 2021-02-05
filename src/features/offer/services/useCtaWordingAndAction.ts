@@ -12,8 +12,8 @@ import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
 import { getOfferPrice } from './getOfferPrice'
 
 // TODO (squad profile: dehardcode those numbers)
-const USER_CREDIT_THING = 30
-const USER_CREDIT_EVENT = 30
+const USER_CREDIT_THING = 3000
+const USER_CREDIT_EVENT = 3000
 
 interface Props {
   isLoggedIn: boolean

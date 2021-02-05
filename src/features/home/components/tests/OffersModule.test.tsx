@@ -4,6 +4,7 @@ import React from 'react'
 
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import { convertAlgoliaHitToCents } from 'libs/parsers/pricesConversion'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
@@ -20,7 +21,7 @@ const props = {
     title: 'Module title',
     layout: 'one-item-medium',
   } as DisplayParametersFields,
-  hits: mockedAlgoliaResponse.hits,
+  hits: mockedAlgoliaResponse.hits.map(convertAlgoliaHitToCents),
   nbHits: mockedAlgoliaResponse.nbHits,
   cover: null,
   position: null,
