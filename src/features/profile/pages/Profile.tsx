@@ -6,9 +6,10 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
+import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Lock } from 'ui/svg/icons/Lock'
-import { getSpacing, Typo } from 'ui/theme'
+import { IconInterface } from 'ui/svg/icons/types'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 import { ProfileSection } from '../components/ProfileSection'
 import { SectionRow } from '../components/SectionRow'
@@ -23,7 +24,7 @@ export const Profile: React.FC = () => {
           title={_(t`Informations personnelles`)}
           type="navigable"
           onPress={() => navigate('TemporyProfilePage')}
-          icon={LocationPointerNotFilled}
+          icon={ProfileIcon}
           style={styles.row}
           testID="row-personal-data"
         />
@@ -72,3 +73,5 @@ const Section = styled(ProfileSection).attrs({
 const Row = styled(SectionRow).attrs({
   style: styles.row,
 })``
+
+const ProfileIcon = (props: IconInterface) => <BicolorProfile {...props} color={ColorsEnum.BLACK} />
