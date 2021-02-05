@@ -78,7 +78,7 @@ Array [
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
-        placeholder="Choisir un lieu..."
+        placeholder="Saisir une adresse..."
         placeholderTextColor="#626262"
         rejectResponderTermination={true}
         returnKeyType="search"
