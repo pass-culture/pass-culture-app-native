@@ -43,6 +43,8 @@ export const SuggestedPlaces: React.FC<Props> = ({ places, query, isLoading }) =
     if (place.geolocation) {
       dispatch({ type: 'LOCATION_PLACE', payload: place })
     }
+    // We go straight to Search page (we skip the Location page)
+    goBack()
     goBack()
   }
 

@@ -29,7 +29,7 @@ describe('SuggestedPlaces component', () => {
       type: 'LOCATION_PLACE',
       payload: places[1],
     })
-    expect(goBack).toHaveBeenCalledTimes(1)
+    expect(goBack).toHaveBeenCalledTimes(2)
   })
 
   it('should show empty component only when query is not empty and the results are not loading', () => {
