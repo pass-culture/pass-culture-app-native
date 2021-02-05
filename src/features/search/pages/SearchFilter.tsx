@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import React from 'react'
-import { Dimensions } from 'react-native'
+import React, { useEffect, useRef } from 'react'
+import { Dimensions, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
@@ -15,10 +15,20 @@ export const SearchFilter: React.FC = () => {
   const { searchState } = useSearch()
   const { data: profile } = useUserProfileInfo()
 
+  const scrollViewRef = useRef<ScrollView | null>(null)
+
+  useEffect(() => {
+    if (searchState.date && scrollViewRef !== null) scrollViewRef.current?.scrollToEnd()
+  }, [searchState.date])
+
+  useEffect(() => {
+    if (searchState.timeRange && scrollViewRef !== null) scrollViewRef.current?.scrollToEnd()
+  }, [searchState.timeRange])
+
   return (
     <React.Fragment>
       <React.Fragment>
-        <Container>
+        <Container ref={scrollViewRef as any}>
           <Spacer.TopScreen />
           <Spacer.Column numberOfSpaces={16} />
 

@@ -328,7 +328,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/Buttons/Filter.tsx:21
-#: src/features/search/pages/SearchFilter.tsx:82
+#: src/features/search/pages/SearchFilter.tsx:93
 msgid "Filtrer"
 msgstr "Filtrer"
 
