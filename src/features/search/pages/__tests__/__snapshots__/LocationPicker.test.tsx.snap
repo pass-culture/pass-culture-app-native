@@ -134,7 +134,7 @@ Array [
         "withComponent": [Function],
       }
     }
-    ListEmptyComponent={Symbol(react.fragment)}
+    ListEmptyComponent={[Function]}
     data={Array []}
     disableVirtualization={false}
     getItem={[Function]}
