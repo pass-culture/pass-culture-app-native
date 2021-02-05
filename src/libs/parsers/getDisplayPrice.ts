@@ -1,12 +1,14 @@
 import { t } from '@lingui/macro'
 
 import { _ } from 'libs/i18n'
+import { CENTS_IN_EURO } from 'libs/parsers/pricesConversion'
 
 const EURO_SYMBOL = '€'
 
-const formatToFrenchDecimal = (value: number) => {
+const formatToFrenchDecimal = (cents: number) => {
+  const euros = cents / CENTS_IN_EURO
   // we show 2 decimals if price is not round. Ex: 21,50 €
-  const fixed = value === Math.floor(value) ? value : value.toFixed(2)
+  const fixed = euros === Math.floor(euros) ? euros : euros.toFixed(2)
   return `${fixed.toString().replace('.', ',')} ${EURO_SYMBOL}`
 }
 

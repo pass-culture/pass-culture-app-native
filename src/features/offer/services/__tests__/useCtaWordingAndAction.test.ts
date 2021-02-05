@@ -79,10 +79,10 @@ describe('getCtaWordingAndAction', () => {
     // offer price is 5
     it.each`
       type                  | creditThing  | creditEvent  | expected                     | disabled
-      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'Réserver'}                | ${false}
-      ${CategoryType.Thing} | ${20}        | ${undefined} | ${'Réserver'}                | ${false}
-      ${CategoryType.Event} | ${undefined} | ${20}        | ${'Voir les disponibilités'} | ${false}
-      ${CategoryType.Event} | ${undefined} | ${20}        | ${'Voir les disponibilités'} | ${false}
+      ${CategoryType.Thing} | ${2000}      | ${undefined} | ${'Réserver'}                | ${false}
+      ${CategoryType.Thing} | ${2000}      | ${undefined} | ${'Réserver'}                | ${false}
+      ${CategoryType.Event} | ${undefined} | ${2000}      | ${'Voir les disponibilités'} | ${false}
+      ${CategoryType.Event} | ${undefined} | ${2000}      | ${'Voir les disponibilités'} | ${false}
     `(
       'If credit is enough, only iOS user cannot book on Thing type offers | $type => $expected - digital offers',
       ({ creditEvent, creditThing, disabled, expected, type }) => {
@@ -98,10 +98,10 @@ describe('getCtaWordingAndAction', () => {
     // offer price is 5
     it.each`
       type                  | creditThing | creditEvent  | isDigital | expected                          | disabled
-      ${CategoryType.Thing} | ${2}        | ${undefined} | ${true}   | ${'Crédit numérique insuffisant'} | ${true}
-      ${CategoryType.Thing} | ${20}       | ${undefined} | ${true}   | ${'Réserver'}                     | ${false}
-      ${CategoryType.Thing} | ${2}        | ${undefined} | ${false}  | ${'Crédit insuffisant'}           | ${true}
-      ${CategoryType.Thing} | ${20}       | ${undefined} | ${false}  | ${'Réserver'}                     | ${false}
+      ${CategoryType.Thing} | ${200}      | ${undefined} | ${true}   | ${'Crédit numérique insuffisant'} | ${true}
+      ${CategoryType.Thing} | ${2000}     | ${undefined} | ${true}   | ${'Réserver'}                     | ${false}
+      ${CategoryType.Thing} | ${200}      | ${undefined} | ${false}  | ${'Crédit insuffisant'}           | ${true}
+      ${CategoryType.Thing} | ${2000}     | ${undefined} | ${false}  | ${'Réserver'}                     | ${false}
     `(
       'check is credit is enough | $type x $isDigital => $expected',
       ({ creditEvent, creditThing, disabled, expected, type, isDigital }) => {
@@ -117,14 +117,14 @@ describe('getCtaWordingAndAction', () => {
     // offer price is 5
     it.each`
       type                  | creditThing  | creditEvent  | expected                     | disabled
-      ${CategoryType.Thing} | ${1}         | ${undefined} | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Thing} | ${1}         | ${20}        | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Thing} | ${4.9}       | ${undefined} | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Thing} | ${5.1}       | ${undefined} | ${'Réserver'}                | ${false}
-      ${CategoryType.Event} | ${undefined} | ${1}         | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Event} | ${20}        | ${1}         | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Event} | ${undefined} | ${4.9}       | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Event} | ${undefined} | ${6}         | ${'Voir les disponibilités'} | ${false}
+      ${CategoryType.Thing} | ${100}       | ${undefined} | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Thing} | ${100}       | ${2000}      | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Thing} | ${490}       | ${undefined} | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Thing} | ${510}       | ${undefined} | ${'Réserver'}                | ${false}
+      ${CategoryType.Event} | ${undefined} | ${100}       | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Event} | ${2000}      | ${100}       | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Event} | ${undefined} | ${490}       | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Event} | ${undefined} | ${600}       | ${'Voir les disponibilités'} | ${false}
     `(
       'check if Credit is enough for the category | $type | creditThing=$creditThing | creditEvent=$creditEvent => $expected',
       ({ creditEvent, creditThing, disabled, expected, type }) => {
@@ -140,10 +140,10 @@ describe('getCtaWordingAndAction', () => {
     // offer price is 5
     it.each`
       creditThing | expected                          | disabled
-      ${1}        | ${'Crédit numérique insuffisant'} | ${true}
-      ${1}        | ${'Crédit numérique insuffisant'} | ${true}
-      ${4.9}      | ${'Crédit numérique insuffisant'} | ${true}
-      ${5.1}      | ${'Réserver'}                     | ${false}
+      ${100}      | ${'Crédit numérique insuffisant'} | ${true}
+      ${100}      | ${'Crédit numérique insuffisant'} | ${true}
+      ${490}      | ${'Crédit numérique insuffisant'} | ${true}
+      ${510}      | ${'Réserver'}                     | ${false}
     `(
       'check if Credit is enough for digital offers | creditThing=$creditThing => $expected',
       ({ creditThing, disabled, expected }) => {

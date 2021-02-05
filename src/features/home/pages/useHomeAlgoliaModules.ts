@@ -6,6 +6,7 @@ import { Offers, OffersWithCover } from 'features/home/contentful'
 import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
 import { fetchAlgolia } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
+import { convertAlgoliaHitToCents } from 'libs/parsers/pricesConversion'
 
 export type AlgoliaModuleResponse = {
   [moduleId: string]: {
@@ -53,7 +54,7 @@ export const useHomeAlgoliaModules = (
             setAlgoliaModules((prevAlgoliaModules) => ({
               ...prevAlgoliaModules,
               [data.moduleId]: {
-                hits: data.hits.filter((hit) => !!hit.offer.thumbUrl),
+                hits: data.hits.filter((hit) => !!hit.offer.thumbUrl).map(convertAlgoliaHitToCents),
                 nbHits: data.nbHits,
               },
             }))
