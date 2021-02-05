@@ -12,11 +12,11 @@ jest.mock('@react-navigation/stack', () => {
   return {
     TransitionPresets: {},
     createStackNavigator: () => {
-      Object.assign(cb, {
+      Object.assign(callback, {
         Screen: () => null,
       })
-      cb()
-      return cb
+      callback()
+      return callback
     },
   }
 })
