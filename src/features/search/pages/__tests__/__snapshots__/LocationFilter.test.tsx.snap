@@ -12,404 +12,408 @@ Array [
       ]
     }
   />,
-  <View
-    numberOfSpaces={14}
-    style={
-      Array [
-        Object {
-          "height": 56,
-        },
-      ]
-    }
-  />,
-  <View
-    numberOfSpaces={6}
-    style={
-      Array [
-        Object {
-          "height": 24,
-        },
-      ]
-    }
-  />,
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#f5f5f5",
-          "borderRadius": 4,
-          "display": "flex",
-          "flexDirection": "row",
-          "marginHorizontal": 24,
-          "paddingVertical": 16,
-        },
-      ]
-    }
-  >
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <View
-      height={32}
-      width={32}
-    >
-      undefined-SVG-Mock
-    </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        color="#626262"
+  <RCTScrollView>
+    <View>
+      <View
+        numberOfSpaces={14}
         style={
           Array [
             Object {
-              "color": "#626262",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-      >
-        Seules les Sorties et offres Physiques seront affichées pour une recherche avec une localisation
-      </Text>
-    </View>
-    <View
-      numberOfSpaces={5}
-      style={
-        Array [
-          Object {
-            "width": 20,
-          },
-        ]
-      }
-    />
-  </View>,
-  <View
-    numberOfSpaces={6}
-    style={
-      Array [
-        Object {
-          "height": 24,
-        },
-      ]
-    }
-  />,
-  <View
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "alignItems": "center",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "marginHorizontal": 24,
-        "opacity": 1,
-      }
-    }
-    testID="locationChoice-pickPlace"
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <View
-        height={48}
-        width={48}
-      >
-        undefined-SVG-Mock
-      </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "width": 8,
+              "height": 56,
             },
           ]
         }
       />
-      <Text
-        color="#151515"
+      <View
+        numberOfSpaces={6}
         style={
           Array [
             Object {
-              "color": "#151515",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Choisir un lieu
-      </Text>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <View
-      height={32}
-      width={32}
-    >
-      undefined-SVG-Mock
-    </View>
-  </View>,
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <View
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "alignItems": "center",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "marginHorizontal": 24,
-        "opacity": 1,
-      }
-    }
-    testID="locationChoice-aroundMe"
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <View
-        height={48}
-        width={48}
-      >
-        undefined-SVG-Mock
-      </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "width": 8,
+              "height": 24,
             },
           ]
         }
       />
-      <Text
-        color="#151515"
+      <View
         style={
           Array [
             Object {
-              "color": "#151515",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "alignItems": "center",
+              "backgroundColor": "#f5f5f5",
+              "borderRadius": 4,
+              "display": "flex",
+              "flexDirection": "row",
+              "marginHorizontal": 24,
+              "paddingVertical": 16,
             },
           ]
         }
       >
-        Autour de moi
-      </Text>
-    </View>
-    <View
-      style={
-        Array [
-          Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={10}
-      style={
-        Array [
-          Object {
-            "width": 40,
-          },
-        ]
-      }
-    />
-  </View>,
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />,
-  <View
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "alignItems": "center",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "marginHorizontal": 24,
-        "opacity": 1,
-      }
-    }
-    testID="locationChoice-everywhere"
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <View
-        height={48}
-        width={48}
-      >
-        undefined-SVG-Mock
+        <View
+          numberOfSpaces={3}
+          style={
+            Array [
+              Object {
+                "width": 12,
+              },
+            ]
+          }
+        />
+        <View
+          height={32}
+          width={32}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={3}
+          style={
+            Array [
+              Object {
+                "width": 12,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            color="#626262"
+            style={
+              Array [
+                Object {
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Seules les Sorties et offres Physiques seront affichées pour une recherche avec une localisation
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
       </View>
       <View
-        numberOfSpaces={2}
+        numberOfSpaces={6}
         style={
           Array [
             Object {
-              "width": 8,
+              "height": 24,
             },
           ]
         }
       />
-      <Text
-        color="#eb0055"
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginHorizontal": 24,
+            "opacity": 1,
+          }
+        }
+        testID="locationChoice-pickPlace"
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            height={48}
+            width={48}
+          >
+            undefined-SVG-Mock
+          </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            color="#151515"
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Choisir un lieu
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <View
+          height={32}
+          width={32}
+        >
+          undefined-SVG-Mock
+        </View>
+      </View>
+      <View
+        numberOfSpaces={4}
         style={
           Array [
             Object {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "height": 16,
             },
           ]
         }
+      />
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginHorizontal": 24,
+            "opacity": 1,
+          }
+        }
+        testID="locationChoice-aroundMe"
       >
-        Partout
-      </Text>
-    </View>
-    <View
-      style={
-        Array [
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            height={48}
+            width={48}
+          >
+            undefined-SVG-Mock
+          </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            color="#151515"
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Autour de moi
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={10}
+          style={
+            Array [
+              Object {
+                "width": 40,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
           Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      height={32}
-      testID="validateIcon"
-      width={32}
-    >
-      validateIcon-SVG-Mock
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginHorizontal": 24,
+            "opacity": 1,
+          }
+        }
+        testID="locationChoice-everywhere"
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            height={48}
+            width={48}
+          >
+            undefined-SVG-Mock
+          </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            color="#eb0055"
+            style={
+              Array [
+                Object {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Partout
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          height={32}
+          testID="validateIcon"
+          width={32}
+        >
+          validateIcon-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={10}
+          style={
+            Array [
+              Object {
+                "width": 40,
+              },
+            ]
+          }
+        />
+      </View>
     </View>
-    <View
-      numberOfSpaces={10}
-      style={
-        Array [
-          Object {
-            "width": 40,
-          },
-        ]
-      }
-    />
-  </View>,
+  </RCTScrollView>,
   <View
     style={
       Array [
@@ -511,31 +515,22 @@ Array [
         }
       />
       <Text
-        numberOfLines={2}
+        color="#ffffff"
+        numberOfLines={1}
         style={
           Array [
             Object {
+              "color": "#ffffff",
               "flexShrink": 1,
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
               "textAlign": "center",
             },
           ]
         }
       >
-        <Text
-          color="#ffffff"
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Localisation
-        </Text>
+        Localisation
       </Text>
       <View
         style={

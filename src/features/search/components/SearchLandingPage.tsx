@@ -54,7 +54,11 @@ export const SearchLandingPage: React.FC = () => {
   )
 }
 
-const contentContainerStyle: ViewStyle = { alignItems: 'center', flexGrow: 1 }
+const contentContainerStyle: ViewStyle = {
+  alignItems: 'center',
+  flexGrow: 1,
+  marginHorizontal: getSpacing(6),
+}
 const Separator = styled.View({
   height: 2,
   width: width - getSpacing(2 * 6),
@@ -75,13 +79,14 @@ const TouchableOpacity = styled.TouchableOpacity.attrs({
 const BicolorIconLabel: React.FC<{
   title: string
   Icon: React.FC<BicolorIconInterface>
-}> = ({ title, Icon }) => {
-  return (
-    <Container>
-      <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
-      <Typo.Title3>{title}</Typo.Title3>
-    </Container>
-  )
-}
+}> = ({ title, Icon }) => (
+  <Container>
+    <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
+    <Typo.Title3 numberOfLines={1}>{title}</Typo.Title3>
+  </Container>
+)
 
-const Container = styled.View({ flexDirection: 'row', alignItems: 'center' })
+const Container = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+})

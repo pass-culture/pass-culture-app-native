@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
+import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSearch } from 'features/search/pages/SearchWrapper'
@@ -38,7 +39,7 @@ export const Categories: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Container>
+      <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
 
@@ -52,21 +53,22 @@ export const Categories: React.FC = () => {
               <Spacer.Row numberOfSpaces={4} />
               <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={color2} />
               <Spacer.Row numberOfSpaces={2} />
-              <Typo.ButtonText color={textColor}>{label}</Typo.ButtonText>
+              <Typo.ButtonText numberOfLines={2} color={textColor}>
+                {label}
+              </Typo.ButtonText>
               <Spacer.Flex />
               {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
-              <Spacer.Row numberOfSpaces={6} />
             </LabelContainer>
           )
         })}
-      </Container>
+      </ScrollView>
 
       <PageHeader title={_(t`Catégories`)} />
     </React.Fragment>
   )
 }
 
-const Container = styled.ScrollView({ flex: 1 })
+const contentContainerStyle: ViewStyle = { flexGrow: 1, marginRight: getSpacing(6) }
 
 const LabelContainer = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,

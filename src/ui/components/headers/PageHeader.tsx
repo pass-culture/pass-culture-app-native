@@ -37,9 +37,9 @@ export const PageHeader: React.FC<Props> = (props) => {
         <HeaderIconBack />
         <Spacer.Row numberOfSpaces={spaceToAddBeforeTitle} />
         <Spacer.Flex />
-        <Title>
-          <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
-        </Title>
+
+        <Title color={ColorsEnum.WHITE}>{title}</Title>
+
         <Spacer.Flex />
         {RightComponent ? (
           <View onLayout={onLayout}>
@@ -62,7 +62,7 @@ const HeaderContainer = styled.View({
   backgroundColor: ColorsEnum.PRIMARY,
 })
 
-const Title = styled.Text.attrs({ numberOfLines: 2 })({
+const Title = styled(Typo.Body).attrs({ numberOfLines: 1, color: ColorsEnum.WHITE })({
   flexShrink: 1,
   textAlign: 'center',
 })

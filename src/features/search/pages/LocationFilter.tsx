@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
+import { ScrollView } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { LocationType } from 'libs/algolia'
@@ -48,33 +49,36 @@ export const LocationFilter: React.FC = () => {
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={14} />
-      <Spacer.Column numberOfSpaces={6} />
-      <Banner
-        title={_(
-          t`Seules les Sorties et offres Physiques seront affichées pour une recherche avec une localisation`
-        )}
-        type={BannerType.INFO}
-      />
-      <Spacer.Column numberOfSpaces={6} />
-      <LocationChoice
-        testID="pickPlace"
-        locationType={LocationType.PLACE}
-        arrowNext={true}
-        onPress={onPressPickPlace}
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <LocationChoice
-        testID="aroundMe"
-        locationType={LocationType.AROUND_ME}
-        onPress={onPressAroundMe}
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <LocationChoice
-        testID="everywhere"
-        locationType={LocationType.EVERYWHERE}
-        onPress={onPressEverywhere}
-      />
+      <ScrollView>
+        <Spacer.Column numberOfSpaces={14} />
+        <Spacer.Column numberOfSpaces={6} />
+        <Banner
+          title={_(
+            t`Seules les Sorties et offres Physiques seront affichées pour une recherche avec une localisation`
+          )}
+          type={BannerType.INFO}
+        />
+        <Spacer.Column numberOfSpaces={6} />
+        <LocationChoice
+          testID="pickPlace"
+          locationType={LocationType.PLACE}
+          arrowNext={true}
+          onPress={onPressPickPlace}
+        />
+        <Spacer.Column numberOfSpaces={4} />
+        <LocationChoice
+          testID="aroundMe"
+          locationType={LocationType.AROUND_ME}
+          onPress={onPressAroundMe}
+        />
+        <Spacer.Column numberOfSpaces={4} />
+        <LocationChoice
+          testID="everywhere"
+          locationType={LocationType.EVERYWHERE}
+          onPress={onPressEverywhere}
+        />
+      </ScrollView>
+
       <PageHeader title={_(t`Localisation`)} />
     </React.Fragment>
   )

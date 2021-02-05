@@ -2615,31 +2615,22 @@ Array [
         }
       />
       <Text
-        numberOfLines={2}
+        color="#ffffff"
+        numberOfLines={1}
         style={
           Array [
             Object {
+              "color": "#ffffff",
               "flexShrink": 1,
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
               "textAlign": "center",
             },
           ]
         }
       >
-        <Text
-          color="#ffffff"
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Filtrer
-        </Text>
+        Filtrer
       </Text>
       <View
         style={
