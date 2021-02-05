@@ -7,6 +7,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
+import { LocationType } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -24,12 +25,18 @@ export const SearchFilter: React.FC = () => {
 
           {/* Localisation */}
           <Section.Location />
-          <Separator marginVertical={getSpacing(6)} />
-
-          {/* Rayon */}
-          <Section.Radius />
           <Spacer.Column numberOfSpaces={6} />
           <Separator />
+
+          {/* Rayon */}
+          {searchState.locationType !== LocationType.EVERYWHERE && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={6} />
+              <Section.Radius />
+              <Spacer.Column numberOfSpaces={6} />
+              <Separator />
+            </React.Fragment>
+          )}
 
           {/* Catégories */}
           <Section.Category />
