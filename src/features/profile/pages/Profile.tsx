@@ -6,10 +6,9 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Lock } from 'ui/svg/icons/Lock'
-import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { ProfileSection } from '../components/ProfileSection'
 import { SectionRow } from '../components/SectionRow'
@@ -73,5 +72,3 @@ const Section = styled(ProfileSection).attrs({
 const Row = styled(SectionRow).attrs({
   style: styles.row,
 })``
-
-const ProfileIcon = (props: IconInterface) => <BicolorProfile {...props} color={ColorsEnum.BLACK} />
