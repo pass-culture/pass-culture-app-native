@@ -13,7 +13,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const ALL = 'ALL'
-export const DEBOUNCED_CALLBACK = 500
+export const DEBOUNCED_CALLBACK = 200
 
 export const useSelectCategory = (callback: () => void) => {
   const { searchState, dispatch } = useSearch()
