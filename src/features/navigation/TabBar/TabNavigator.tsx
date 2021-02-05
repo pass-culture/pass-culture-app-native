@@ -5,8 +5,9 @@ import { StatusBar, Platform } from 'react-native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { Bookings } from 'features/bookings/pages/Bookings'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
+import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
-import { Home } from 'features/home/pages/Home'
+import { Home as HomeComponent } from 'features/home/pages/Home'
 import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
 
@@ -20,6 +21,8 @@ if (Platform.OS === 'android') {
 }
 
 export const Tab = createBottomTabNavigator<TabParamList>()
+
+const Home = withAsyncErrorBoundary(HomeComponent)
 
 export const TabNavigator: React.FC = () => {
   const authContext = useAuthContext()

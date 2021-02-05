@@ -1,13 +1,11 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
-import { withErrorBoundary } from 'react-error-boundary'
 import { NativeSyntheticEvent, NativeScrollEvent, ScrollView, TouchableOpacity } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
-import { RetryBoundaryWithNavigation } from 'features/errors'
 import { useUserProfileInfo } from 'features/home/api'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -30,7 +28,7 @@ import { useShowSkeleton } from './useShowSkeleton'
 
 const statusBarHeight = getStatusBarHeight(true)
 
-export const HomeComponent: FunctionComponent = function () {
+export const Home: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { data: userInfos } = useUserProfileInfo()
@@ -154,8 +152,4 @@ const CheatTouchableOpacity = styled(TouchableOpacity)({
   borderColor: ColorsEnum.BLACK,
   borderWidth: 2,
   padding: getSpacing(1),
-})
-
-export const Home = withErrorBoundary(React.memo(HomeComponent), {
-  FallbackComponent: RetryBoundaryWithNavigation,
 })

@@ -11,7 +11,7 @@ import { addPlugin } from 'react-query-native-devtools'
 import './why-did-you-render'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
-import { BaseRetryBoundary } from 'features/errors/pages/BaseRetryBoundary'
+import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { env } from 'libs/environment'
@@ -39,7 +39,7 @@ const codePushOptionsAutoImmediate = {
 }
 
 /* We want a different code push behaviour on prod and testing
-  Testing: download updates as often as possible and restart the app immediately 
+  Testing: download updates as often as possible and restart the app immediately
   Prod: download update at start and install it at next restart
 */
 const codePushOptionsAuto =
@@ -66,7 +66,7 @@ const AppComponent: FunctionComponent = function () {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ErrorBoundary FallbackComponent={BaseRetryBoundary}>
+      <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
         <GeolocationWrapper>
           <AuthWrapper>
             <SearchWrapper>

@@ -6,6 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 
 import { useSignIn } from '../api'
@@ -25,9 +26,11 @@ const mockUseSignIn = useSignIn as jest.Mock
 
 function renderLogin() {
   return render(
-    <AuthContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: jest.fn() }}>
-      <Login />
-    </AuthContext.Provider>
+    reactQueryProviderHOC(
+      <AuthContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: jest.fn() }}>
+        <Login />
+      </AuthContext.Provider>
+    )
   )
 }
 

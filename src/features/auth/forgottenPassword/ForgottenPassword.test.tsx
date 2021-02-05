@@ -4,6 +4,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 beforeEach(() => {
@@ -83,5 +84,5 @@ describe('<ForgottenPassword />', () => {
 })
 
 function renderPage() {
-  return render(<ForgottenPassword />)
+  return render(reactQueryProviderHOC(<ForgottenPassword />))
 }

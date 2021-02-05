@@ -1,12 +1,10 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef } from 'react'
-import { withErrorBoundary } from 'react-error-boundary'
 import { Animated, NativeSyntheticEvent, NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
-import { RetryBoundaryWithNavigation } from 'features/errors'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { analytics } from 'libs/analytics'
@@ -33,7 +31,7 @@ import { useFunctionOnce } from '../services/useFunctionOnce'
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
-const OfferComponent: FunctionComponent = () => {
+export const Offer: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const { data: offerResponse } = useOffer({ offerId: params.id })
   const headerScroll = useRef(new Animated.Value(0)).current
@@ -196,8 +194,4 @@ const Divider = styled.View({
 const CallToActionContainer = styled.View({
   marginHorizontal: getSpacing(6),
   marginBottom: getSpacing(8),
-})
-
-export const Offer = withErrorBoundary(React.memo(OfferComponent), {
-  FallbackComponent: RetryBoundaryWithNavigation,
 })

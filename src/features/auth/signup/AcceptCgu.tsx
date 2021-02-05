@@ -2,9 +2,11 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FC } from 'react'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
+import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
@@ -39,17 +41,25 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     hideModal: hideFullPageModal,
   } = useModal(false)
 
+  const { refetch: subscribeQuery, isFetching } = useQuery('subscribe', subscribe, {
+    cacheTime: 0,
+    enabled: false,
+  })
+
   async function subscribe() {
-    await signUp({
+    const signupResponse = await signUp({
       password: password,
       birthdate: birthday,
       hasAllowedRecommendations: isNewsletterChecked,
       token: 'ABCDEF',
       email: email,
     })
-    navigate('SignupConfirmationEmailSent', { email: email })
+    if (!signupResponse?.isSuccess) {
+      throw new AsyncError('NETWORK_REQUEST_FAILED', subscribeQuery)
+    } else {
+      navigate('SignupConfirmationEmailSent', { email: email })
+    }
   }
-
   return (
     <React.Fragment>
       <BottomContentPage>
@@ -96,7 +106,11 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
               icon={Email}
             />
             <Spacer.Column numberOfSpaces={6} />
-            <ButtonPrimary title={_(t`Accepter et s’inscrire`)} onPress={subscribe} />
+            <ButtonPrimary
+              title={_(t`Accepter et s’inscrire`)}
+              onPress={() => subscribeQuery()}
+              disabled={isFetching}
+            />
             <Spacer.Column numberOfSpaces={5} />
             <StepDots numberOfSteps={4} currentStep={4} />
           </CardContent>
