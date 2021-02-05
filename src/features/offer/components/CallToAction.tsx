@@ -57,4 +57,4 @@ const DisabledRectangle = styled.View({
   backgroundColor: ColorsEnum.PRIMARY_DISABLED,
 })
 
-const IconContainer = styled.View({ width: getSpacing(3), height: getSpacing(3) })
+const IconContainer = styled.View({ width: getSpacing(2.75), height: getSpacing(2.75) })
