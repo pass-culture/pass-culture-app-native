@@ -65,6 +65,7 @@ export const LocationPicker: React.FC = () => {
       </StyledInput>
       <Spacer.Column numberOfSpaces={4} />
       <SuggestedPlaces places={places} query={debouncedValue} isLoading={isLoading} />
+
       <PageHeader title={_(t`Choisir un lieu`)} />
     </React.Fragment>
   )

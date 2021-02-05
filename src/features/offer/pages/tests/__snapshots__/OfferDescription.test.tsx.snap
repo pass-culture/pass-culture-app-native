@@ -639,31 +639,22 @@ Tous les détails du film sur AlloCiné:
                           }
                         />
                         <Text
-                          numberOfLines={2}
+                          color="#ffffff"
+                          numberOfLines={1}
                           style={
                             Array [
                               Object {
+                                "color": "#ffffff",
                                 "flexShrink": 1,
+                                "fontFamily": "Montserrat-Regular",
+                                "fontSize": 15,
+                                "lineHeight": 20,
                                 "textAlign": "center",
                               },
                             ]
                           }
                         >
-                          <Text
-                            color="#ffffff"
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                          >
-                            Description
-                          </Text>
+                          Description
                         </Text>
                         <View
                           style={

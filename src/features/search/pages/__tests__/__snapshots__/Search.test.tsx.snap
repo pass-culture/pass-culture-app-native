@@ -152,6 +152,7 @@ exports[`Search component should render correctly 1`] = `
       Object {
         "alignItems": "center",
         "flexGrow": 1,
+        "marginHorizontal": 24,
       }
     }
   >
@@ -226,6 +227,7 @@ exports[`Search component should render correctly 1`] = `
             undefined-SVG-Mock
           </View>
           <Text
+            numberOfLines={1}
             style={
               Array [
                 Object {
@@ -312,6 +314,7 @@ exports[`Search component should render correctly 1`] = `
             undefined-SVG-Mock
           </View>
           <Text
+            numberOfLines={1}
             style={
               Array [
                 Object {
