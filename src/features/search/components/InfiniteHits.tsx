@@ -56,6 +56,8 @@ export const InfiniteHitsComponent: React.FC<Props> = ({
           onScrollBeginDrag={handleIsScrolling(true)}
           scrollEnabled={hits.length > 0}
           ListEmptyComponent={NoSearchResult}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
         />
       </Container>
       {hits.length > 0 && (
