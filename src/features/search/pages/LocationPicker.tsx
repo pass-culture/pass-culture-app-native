@@ -68,7 +68,7 @@ export const LocationPicker: React.FC = () => {
         <SearchInput
           value={value}
           onChangeText={onChangeText}
-          placeholder={_(t`Choisir un lieu...`)}
+          placeholder={_(t`Saisir une adresse...`)}
           autoFocus={true}
           inputHeight="tall"
           RightIcon={() => <RightIcon value={value} onPress={resetSearch} />}
