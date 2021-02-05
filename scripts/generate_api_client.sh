@@ -2,7 +2,7 @@
 set -e
 
 docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \
-        -i https://pass-culture-api-dev.osc-fr1.scalingo.io/native/v1/openapi.json `# schema location` \
+        -i https://backend.passculture-testing.beta.gouv.fr/native/v1/openapi.json `# schema location` \
         -l typescript-fetch `# client type` \
         -c /local/swagger_codegen/swagger_codegen_config.json `# swagger codegen config` \
         -t /local/swagger_codegen/gen_templates `# templates directory` \
