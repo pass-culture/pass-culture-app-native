@@ -44,6 +44,7 @@ Array [
     />
     <View
       inputHeight="tall"
+      isFocus={false}
       style={
         Array [
           Object {
@@ -85,7 +86,9 @@ Array [
       <TextInput
         allowFontScaling={true}
         autoCorrect={false}
+        onBlur={[Function]}
         onChangeText={[Function]}
+        onFocus={[Function]}
         placeholder="Choisir un lieu..."
         placeholderTextColor="#626262"
         rejectResponderTermination={true}
