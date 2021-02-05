@@ -38,32 +38,28 @@ export const Categories: React.FC = () => {
 
   return (
     <React.Fragment>
-      <React.Fragment>
-        <Container>
-          <Spacer.TopScreen />
-          <Spacer.Column numberOfSpaces={16} />
+      <Container>
+        <Spacer.TopScreen />
+        <Spacer.Column numberOfSpaces={16} />
 
-          {Object.entries(CATEGORY_CRITERIA).map(([category, { label, icon: Icon }]) => {
-            const isSelected = isCategorySelected(category)
-            const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
-            const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
+        {Object.entries(CATEGORY_CRITERIA).map(([category, { label, icon: Icon }]) => {
+          const isSelected = isCategorySelected(category)
+          const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
+          const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
 
-            return (
-              <LabelContainer key={category} onPress={selectCategory(category)} testID={category}>
-                <Spacer.Row numberOfSpaces={4} />
-                <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={color2} />
-                <Spacer.Row numberOfSpaces={2} />
-                <Typo.ButtonText color={textColor}>{label}</Typo.ButtonText>
-                <Spacer.Flex />
-                {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
-                <Spacer.Row numberOfSpaces={6} />
-              </LabelContainer>
-            )
-          })}
-
-          <Spacer.Column numberOfSpaces={30} />
-        </Container>
-      </React.Fragment>
+          return (
+            <LabelContainer key={category} onPress={selectCategory(category)} testID={category}>
+              <Spacer.Row numberOfSpaces={4} />
+              <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={color2} />
+              <Spacer.Row numberOfSpaces={2} />
+              <Typo.ButtonText color={textColor}>{label}</Typo.ButtonText>
+              <Spacer.Flex />
+              {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+              <Spacer.Row numberOfSpaces={6} />
+            </LabelContainer>
+          )
+        })}
+      </Container>
 
       <PageHeader title={_(t`Catégories`)} />
     </React.Fragment>
