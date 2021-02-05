@@ -7,8 +7,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import StarAnimation from 'ui/animations/tutorial_star.json'
 
-import { TutorialSwiper } from '../components/TutorialSwiper'
-
 export function FourthTutorial() {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -21,19 +19,18 @@ export function FourthTutorial() {
   }
 
   return (
-    <TutorialSwiper onSwipeRight={onSwipeRight}>
-      <GenericTutorial
-        animation={StarAnimation}
-        buttonCallback={onButtonPress}
-        buttonText={_(t`Découvrir`)}
-        pauseAnimationOnRenderAtFrame={62}
-        step={4}
-        subTitle={_(t`quotidiennes`)}
-        text={_(
-          t`Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !`
-        )}
-        title={_(t`Des nouveautés`)}
-      />
-    </TutorialSwiper>
+    <GenericTutorial
+      animation={StarAnimation}
+      buttonCallback={onButtonPress}
+      buttonText={_(t`Découvrir`)}
+      pauseAnimationOnRenderAtFrame={62}
+      onSwipeRight={onSwipeRight}
+      step={4}
+      subTitle={_(t`quotidiennes`)}
+      text={_(
+        t`Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !`
+      )}
+      title={_(t`Des nouveautés`)}
+    />
   )
 }
