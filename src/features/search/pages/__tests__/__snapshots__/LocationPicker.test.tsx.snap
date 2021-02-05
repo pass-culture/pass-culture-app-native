@@ -142,6 +142,8 @@ Array [
     horizontal={false}
     initialNumToRender={10}
     keyExtractor={[Function]}
+    keyboardDismissMode="on-drag"
+    keyboardShouldPersistTaps="handled"
     maxToRenderPerBatch={10}
     onContentSizeChange={[Function]}
     onEndReachedThreshold={2}

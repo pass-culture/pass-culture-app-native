@@ -99,6 +99,8 @@ export const SuggestedPlaces: React.FC<{ places: SuggestedPlace[] }> = ({ places
       renderItem={({ item: place }) => <PlaceHit place={place} onPress={onPickPlace(place)} />}
       ListEmptyComponent={React.Fragment}
       ItemSeparatorComponent={Separator}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
     />
   )
 }
