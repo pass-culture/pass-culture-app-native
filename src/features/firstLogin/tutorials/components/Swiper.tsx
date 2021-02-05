@@ -1,6 +1,5 @@
 import React from 'react'
 import GestureRecognizer from 'react-native-swipe-gestures'
-import styled from 'styled-components/native'
 
 const CONFIG = {
   velocityThreshold: 0.03,
@@ -10,14 +9,10 @@ const CONFIG = {
 
 type Props = Omit<GestureRecognizer['props'], 'config'>
 
-export const TutorialSwiper: React.FunctionComponent<Props> = (props) => {
+export const Swiper: React.FunctionComponent<Props> = (props) => {
   return (
-    <StyledGestureRecognizer {...props} config={CONFIG}>
+    <GestureRecognizer {...props} config={CONFIG}>
       {props.children}
-    </StyledGestureRecognizer>
+    </GestureRecognizer>
   )
 }
-
-const StyledGestureRecognizer = styled(GestureRecognizer)({
-  flexGrow: 1,
-})

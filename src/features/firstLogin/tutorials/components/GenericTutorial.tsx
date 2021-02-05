@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import LottieView from 'lottie-react-native'
 import AnimatedLottieView from 'lottie-react-native'
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, { ComponentProps, FunctionComponent, useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -11,7 +11,10 @@ import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
 import { StepDots } from 'ui/components/StepDots'
+import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+
+import { Swiper } from './Swiper'
 
 type Props = {
   animation: AnimationObject
@@ -22,6 +25,8 @@ type Props = {
   subTitle: string
   text: string
   title: string
+  onSwipeLeft?: ComponentProps<typeof Swiper>['onSwipeLeft']
+  onSwipeRight?: ComponentProps<typeof Swiper>['onSwipeRight']
 }
 
 export const GenericTutorial: FunctionComponent<Props> = (props: Props) => {
@@ -40,44 +45,75 @@ export const GenericTutorial: FunctionComponent<Props> = (props: Props) => {
   }
 
   return (
-    <Container>
-      <Spacer.Flex flex={1} />
-      <Header>
-        <ButtonTertiaryGreyDark title={_(t`Tout passer`)} onPress={goToHomeWithoutModal} />
-      </Header>
-      <Spacer.Flex flex={2} />
-      <StyledLottieView
-        ref={animationRef}
-        source={props.animation}
-        loop={false}
-        size={getSpacing(60)}
-      />
-      <Spacer.Flex flex={0.8} />
-      <StyledTitle>{props.title}</StyledTitle>
-      <StyledSubTitle>{props.subTitle}</StyledSubTitle>
-      <Spacer.Flex flex={0.8} />
-      <StyledBody>{props.text}</StyledBody>
-      <Spacer.Flex flex={2} />
-      <ButtonContainer>
-        <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
-      </ButtonContainer>
-      <StepDots numberOfSteps={4} currentStep={props.step} />
-      <Spacer.Flex flex={1} />
-    </Container>
+    <React.Fragment>
+      <Background />
+      <Spacer.TopScreen />
+      <EntireScreen>
+        <ScreenUsableArea>
+          <SkipButton>
+            <ButtonTertiaryGreyDark title={_(t`Tout passer`)} onPress={goToHomeWithoutModal} />
+          </SkipButton>
+          <TopSwiper onSwipeLeft={props.onSwipeLeft} onSwipeRight={props.onSwipeRight}>
+            <Spacer.Flex flex={2} />
+            <StyledLottieView
+              ref={animationRef}
+              source={props.animation}
+              loop={false}
+              size={getSpacing(60)}
+            />
+            <Spacer.Flex flex={1} />
+            <StyledTitle>{props.title}</StyledTitle>
+            <StyledSubTitle>{props.subTitle}</StyledSubTitle>
+            <Spacer.Flex flex={1} />
+            <StyledBody>{props.text}</StyledBody>
+            <Spacer.Flex flex={2} />
+          </TopSwiper>
+          <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
+          <BottomSwiper onSwipeLeft={props.onSwipeLeft} onSwipeRight={props.onSwipeRight}>
+            <Spacer.Column numberOfSpaces={getSpacing(2)} />
+            <StepDots numberOfSteps={4} currentStep={props.step} />
+            <Spacer.Column numberOfSpaces={getSpacing(2)} />
+          </BottomSwiper>
+        </ScreenUsableArea>
+        <Spacer.BottomScreen />
+      </EntireScreen>
+    </React.Fragment>
   )
 }
 
-const Header = styled.View({
-  alignSelf: 'flex-end',
-  width: '40%',
+const EntireScreen = styled.View({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: ColorsEnum.WHITE,
+  flexGrow: 1,
 })
 
-const ButtonContainer = styled.View({
-  flexDirection: 'row',
+const ScreenUsableArea = styled.View({
+  display: 'flex',
+  alignItems: 'center',
+  flexGrow: 1,
   width: '100%',
-  paddingHorizontal: getSpacing(6),
-  justifyContent: 'center',
-  marginBottom: getSpacing(8),
+  paddingTop: getSpacing(5),
+  paddingHorizontal: getSpacing(5),
+  maxWidth: getSpacing(125),
+  maxHeight: getSpacing(225),
+})
+
+const SkipButton = styled.View({
+  alignSelf: 'flex-end',
+})
+
+const TopSwiper = styled(Swiper)({
+  display: 'flex',
+  flexGrow: 1,
+  alignItems: 'center',
+  width: '100%',
+})
+
+const BottomSwiper = styled(Swiper)({
+  alignItems: 'center',
+  width: '100%',
 })
 
 const StyledLottieView = styled(LottieView)((props: { size: number }) => ({
@@ -85,27 +121,14 @@ const StyledLottieView = styled(LottieView)((props: { size: number }) => ({
   height: props.size,
 }))
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.BLACK,
-})({
-  width: '60%',
+const StyledTitle = styled(Typo.Title1)({
   textAlign: 'center',
-  flexDirection: 'column',
 })
 
-const Container = styled.View({
-  alignItems: 'center',
-  flexGrow: 1,
+const StyledSubTitle = styled(Typo.Title2)({
+  textAlign: 'center',
 })
 
-const StyledTitle = styled(Typo.Title1).attrs({
-  color: ColorsEnum.BLACK,
-})({
-  display: 'flex',
-})
-
-const StyledSubTitle = styled(Typo.Title2).attrs({
-  color: ColorsEnum.BLACK,
-})({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
