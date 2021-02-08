@@ -6,7 +6,7 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { _ } from 'libs/i18n'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
-import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
+import { storage } from 'libs/storage'
 
 import { DefaultApi } from './gen'
 
@@ -15,7 +15,7 @@ export function navigateToLogin() {
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
-  const accessToken = await getAccessToken()
+  const accessToken = await storage.readString('access_token')
   const shouldAuthenticate = accessToken && (!options || options.credentials !== 'omit')
   if (shouldAuthenticate) {
     return { Authorization: `Bearer ${accessToken}` }
@@ -117,13 +117,13 @@ export const refreshAccessToken = async (api: DefaultApi): Promise<string | null
 
   if (!response) {
     await clearRefreshToken()
-    await clearAccessToken()
+    await storage.clear('access_token')
     throw new FailedToRefreshAccessTokenError()
   }
 
-  await saveAccessToken(response.accessToken)
+  await storage.saveString('access_token', response.accessToken)
 
-  return await getAccessToken()
+  return await storage.readString('access_token')
 }
 
 // In this case, the following `any` is not that much of a problem in the context of usage
