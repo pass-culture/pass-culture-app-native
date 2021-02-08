@@ -45,14 +45,15 @@ export const RootNavigator: React.FC = () => {
 
   useEffect(() => {
     storage.readObject('has_seen_tutorials').then((hasSeenTutorials) => {
-      if (hasSeenTutorials) {
-        setInitialRouteName('TabNavigator')
-        analytics.logScreenView('Home')
-      } else {
-        setInitialRouteName('FirstTutorial')
-      }
+      setInitialRouteName(hasSeenTutorials ? 'TabNavigator' : 'FirstTutorial')
     })
   }, [])
+
+  useEffect(() => {
+    if (!initialRouteName) return
+    if (initialRouteName === 'TabNavigator') analytics.logScreenView('Home')
+    else analytics.logScreenView(initialRouteName)
+  }, [initialRouteName])
 
   if (!initialRouteName) return null
   return (
