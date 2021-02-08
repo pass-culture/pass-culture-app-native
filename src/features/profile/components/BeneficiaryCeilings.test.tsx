@@ -26,7 +26,9 @@ describe('BeneficiaryCeilings', () => {
     const progressBars = getAllByTestId('progress-bar')
     expect(progressBars.length).toBe(3)
 
-    const ceilingQuestion = getByText('Pourquoi les biens numériques sont-ils limités ?')
+    const ceilingQuestion = getByText(
+      'Pourquoi les biens physiques et numériques sont-ils limités ?'
+    )
     expect(ceilingQuestion).toBeTruthy()
   })
 
@@ -38,9 +40,7 @@ describe('BeneficiaryCeilings', () => {
     const progressBars = getAllByTestId('progress-bar')
     expect(progressBars.length).toBe(2)
 
-    const ceilingQuestion = getByText(
-      'Pourquoi les biens physiques et numériques sont-ils limités ?'
-    )
+    const ceilingQuestion = getByText('Pourquoi les biens numériques sont-ils limités ?')
     expect(ceilingQuestion).toBeTruthy()
   })
 })
