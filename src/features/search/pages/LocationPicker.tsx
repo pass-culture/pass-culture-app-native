@@ -31,12 +31,10 @@ export const LocationPicker: React.FC = () => {
   const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
 
   useEffect(() => {
-    if (debouncedValue.length > 0) {
-      setIsLoading(true)
-      fetchPlaces({ query: debouncedValue })
-        .then(setPlaces)
-        .finally(() => setIsLoading(false))
-    }
+    setIsLoading(true)
+    fetchPlaces({ query: debouncedValue })
+      .then(setPlaces)
+      .finally(() => setIsLoading(false))
   }, [debouncedValue])
 
   const resetSearch = () => {
