@@ -63,7 +63,8 @@ describe('<RootNavigator />', () => {
       await flushAllPromises()
     })
 
-    expect(analytics.logScreenView).toBeCalledTimes(0)
+    expect(analytics.logScreenView).toBeCalledTimes(1)
+    expect(analytics.logScreenView).toBeCalledWith('FirstTutorial')
     expect(renderAPI.queryByText('FirstTutorial screen')).toBeTruthy()
     expect(renderAPI.queryByText('TabNavigator screen')).toBeFalsy()
     renderAPI.unmount()
