@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
@@ -13,6 +14,11 @@ describe('<FourthTutorial />', () => {
   it('should correctly display', () => {
     const renderAPI = render(<FourthTutorial />)
     expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should save has_seen_tutorials in async storage on render', () => {
+    render(<FourthTutorial />)
+    expect(AsyncStorage.setItem).toBeCalledWith('has_seen_tutorials', 'true')
   })
 
   it('should go to home when clicking skip tutorial button', () => {

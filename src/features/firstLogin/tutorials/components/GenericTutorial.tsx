@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
+import { storage } from 'libs/storage'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
@@ -41,6 +42,7 @@ export const GenericTutorial: FunctionComponent<Props> = (props: Props) => {
   }, [props.pauseAnimationOnRenderAtFrame])
 
   function goToHomeWithoutModal() {
+    storage.saveObject('has_seen_tutorials', true)
     navigate('TabNavigator')
   }
 

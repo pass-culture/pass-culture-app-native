@@ -1,8 +1,10 @@
 import { NavigationContainer, Theme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { analytics } from 'libs/analytics'
+import { useHideSplashScreen } from 'libs/splashscreen'
+import { storage } from 'libs/storage'
 import { ColorsEnum } from 'ui/theme'
 
 import { navigationRef } from '../navigationRef'
@@ -35,14 +37,24 @@ const screens = routes
   ))
 
 export const RootNavigator: React.FC = () => {
+  const [initialRouteName, setInitialRouteName] = useState<
+    'TabNavigator' | 'FirstTutorial' | undefined
+  >()
+
+  useHideSplashScreen({ shouldHideSplashScreen: !!initialRouteName })
+
   useEffect(() => {
-    analytics.logScreenView('Home')
+    storage.readObject('has_seen_tutorials').then((hasSeenTutorials) => {
+      if (hasSeenTutorials) {
+        setInitialRouteName('TabNavigator')
+        analytics.logScreenView('Home')
+      } else {
+        setInitialRouteName('FirstTutorial')
+      }
+    })
   }, [])
 
-  // TODO: check if should display tutorial
-  // eslint-disable-next-line no-constant-condition
-  const initialRouteName = true ? 'FirstTutorial' : 'TabNavigator'
-
+  if (!initialRouteName) return null
   return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
       <RootStack.Navigator

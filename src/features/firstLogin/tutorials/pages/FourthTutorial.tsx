@@ -1,14 +1,19 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { GenericTutorial } from 'features/firstLogin/tutorials/components/GenericTutorial'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
+import { storage } from 'libs/storage'
 import StarAnimation from 'ui/animations/tutorial_star.json'
 
 export function FourthTutorial() {
   const { navigate } = useNavigation<UseNavigationType>()
+
+  useEffect(() => {
+    storage.saveObject('has_seen_tutorials', true)
+  }, [])
 
   function onSwipeRight() {
     navigate('ThirdTutorial')

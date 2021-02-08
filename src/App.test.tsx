@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react-native'
 import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import SplashScreen from 'react-native-splash-screen'
 import { act } from 'react-test-renderer'
 
 import { AsyncErrorBoundary } from 'features/errors'
@@ -37,26 +36,6 @@ describe('ErrorBoundary', () => {
     const { getByText } = renderErrorBoundary()
 
     expect(getByText('Oops !')).toBeTruthy()
-  })
-})
-
-describe('<App /> with mocked RootTabNavigator and fake timers', () => {
-  afterEach(() => {
-    jest.useRealTimers()
-  })
-
-  it('should call SplashScreen.hide() after 500ms', async () => {
-    expect.assertions(3)
-    jest.useFakeTimers()
-    await renderApp()
-
-    expect(SplashScreen.hide).toHaveBeenCalledTimes(0)
-
-    jest.advanceTimersByTime(100)
-    expect(SplashScreen.hide).toHaveBeenCalledTimes(0)
-
-    jest.advanceTimersByTime(400)
-    expect(SplashScreen.hide).toHaveBeenCalledTimes(1)
   })
 })
 
