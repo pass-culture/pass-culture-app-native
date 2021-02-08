@@ -4,7 +4,7 @@ import { useQueryClient } from 'react-query'
 import { SigninResponse } from 'api/gen'
 import { firebaseAnalytics } from 'libs/analytics'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
-import { clearAccessToken, getAccessToken, saveAccessToken } from 'libs/storage'
+import { storage } from 'libs/storage'
 
 export interface IAuthContext {
   isLoggedIn: boolean
@@ -24,7 +24,7 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
   useEffect(() => {
-    getAccessToken().then((accessToken) => {
+    storage.readString('access_token').then((accessToken) => {
       setIsLoggedIn(!!accessToken)
     })
   }, [])
@@ -53,7 +53,7 @@ export function useLoginRoutine() {
   const loginRoutine = async (response: SigninResponse, method: LoginRoutineMethod) => {
     setIsLoggedIn(true)
     await saveRefreshToken(response.refreshToken)
-    await saveAccessToken(response.accessToken)
+    await storage.saveString('access_token', response.accessToken)
     firebaseAnalytics.logLogin({ method })
   }
 
@@ -65,7 +65,7 @@ export function useLogoutRoutine(): () => Promise<void> {
   const { clean: cleanProfile } = useCustomQueryClientHelpers('userProfile')
 
   return async () => {
-    await clearAccessToken()
+    await storage.clear('access_token')
     await clearRefreshToken()
     await cleanProfile()
     setIsLoggedIn(false)

@@ -15,7 +15,7 @@ import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { clearRefreshToken } from 'libs/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { saveAccessToken, clearAccessToken } from 'libs/storage'
+import { storage } from 'libs/storage'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
@@ -51,11 +51,11 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   }
 
   async function setOldToken() {
-    await saveAccessToken(oldAccesstoken)
+    await storage.saveString('access_token', oldAccesstoken)
   }
 
   async function invalidateBothTokens() {
-    await clearAccessToken()
+    await storage.clear('access_token')
     await clearRefreshToken()
   }
 

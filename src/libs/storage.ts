@@ -4,28 +4,17 @@ import { Alert } from 'react-native'
 
 import { _ } from 'libs/i18n'
 
-const ACCESS_TOKEN_STORAGE_KEY = 'access_token'
+type StorageKey = 'access_token'
 
-export async function getAccessToken(): Promise<string | null> {
-  return readString(ACCESS_TOKEN_STORAGE_KEY)
+export const storage = {
+  clear,
+  readObject,
+  readString,
+  saveObject,
+  saveString,
 }
 
-export async function saveAccessToken(accessToken: string | undefined): Promise<void> {
-  if (!accessToken) {
-    throw Error(_(t`Aucun access token à sauvegarder`))
-  }
-  await saveString(ACCESS_TOKEN_STORAGE_KEY, accessToken)
-}
-
-export async function clearAccessToken(): Promise<void> {
-  try {
-    await AsyncStorage.removeItem(ACCESS_TOKEN_STORAGE_KEY)
-  } catch (error) {
-    onAsyncStorageError(error)
-  }
-}
-
-async function readString(storageKey: string): Promise<string | null> {
+async function readString(storageKey: StorageKey): Promise<string | null> {
   try {
     return AsyncStorage.getItem(storageKey)
   } catch (error) {
@@ -34,9 +23,42 @@ async function readString(storageKey: string): Promise<string | null> {
   }
 }
 
-async function saveString(storageKey: string, value: string) {
+async function saveString(storageKey: StorageKey, value: string) {
+  if (!value) {
+    throw Error(_(t`Aucune valeur à sauvegarder`))
+  }
   try {
     await AsyncStorage.setItem(storageKey, value)
+  } catch (error) {
+    onAsyncStorageError(error)
+  }
+}
+
+async function readObject(storageKey: StorageKey): Promise<unknown | null> {
+  try {
+    const stringifiedObject = await AsyncStorage.getItem(storageKey)
+    if (stringifiedObject) {
+      return JSON.parse(stringifiedObject)
+    }
+    return null
+  } catch (error) {
+    onAsyncStorageError(error)
+    return null
+  }
+}
+
+async function saveObject(storageKey: StorageKey, value: unknown) {
+  try {
+    const stringifiedValue = JSON.stringify(value)
+    await AsyncStorage.setItem(storageKey, stringifiedValue)
+  } catch (error) {
+    onAsyncStorageError(error)
+  }
+}
+
+async function clear(storageKey: StorageKey): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(storageKey)
   } catch (error) {
     onAsyncStorageError(error)
   }
