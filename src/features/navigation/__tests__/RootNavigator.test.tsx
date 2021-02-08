@@ -4,12 +4,14 @@ import { Text as mockText } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import { act } from 'react-test-renderer'
 
+import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
+import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
-import { RootNavigator } from '../RootNavigator'
+import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/auth/AuthContext', () => ({
@@ -81,5 +83,32 @@ describe('<RootNavigator />', () => {
     jest.advanceTimersByTime(200)
     expect(SplashScreen.hide).toBeCalledTimes(1)
     renderAPI.unmount()
+  })
+})
+
+describe('wrapRoute()', () => {
+  const hoc = jest.fn()
+
+  beforeEach(() => {
+    hoc.mockClear()
+  })
+
+  it('should wrap a route when declared with hocs wrapper', () => {
+    const routeWithHoc: Route = {
+      name: 'AcceptCgu',
+      component: AcceptCgu,
+      hoc,
+    }
+    wrapRoute(routeWithHoc)
+    expect(hoc).toBeCalledWith(AcceptCgu)
+  })
+
+  it('should not wrap a route when not declared with hocs wrapper', () => {
+    const routeWithoutHoc: Route = {
+      name: 'AccountCreated',
+      component: AccountCreated,
+    }
+    wrapRoute(routeWithoutHoc)
+    expect(hoc).not.toBeCalledWith(AccountCreated)
   })
 })
