@@ -2030,29 +2030,71 @@ Array [
               ]
             }
           />
-          <RCTSwitch
-            accessibilityRole="switch"
-            onChange={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            onTintColor="#15884f"
+          <View
             style={
               Array [
                 Object {
-                  "height": 31,
-                  "width": 51,
-                },
-                Object {
-                  "backgroundColor": "#c7c7cc",
-                  "borderRadius": 16,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
-            testID="filterSwitch"
-            thumbTintColor="#ffffff"
-            tintColor="#c7c7cc"
-            value={false}
-          />
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+              testID="filterSwitch"
+            >
+              <View
+                active={false}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#c7c7cc",
+                      "borderRadius": 15,
+                      "height": 30,
+                      "justifyContent": "center",
+                      "marginLeft": 3,
+                      "width": 50,
+                    },
+                  ]
+                }
+                testID="switchBackground"
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 12.5,
+                      "elevation": 1.5,
+                      "height": 25,
+                      "marginLeft": 25,
+                      "shadowColor": "#151515",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 25,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -2130,29 +2172,71 @@ Array [
               ]
             }
           />
-          <RCTSwitch
-            accessibilityRole="switch"
-            onChange={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            onTintColor="#15884f"
+          <View
             style={
               Array [
                 Object {
-                  "height": 31,
-                  "width": 51,
-                },
-                Object {
-                  "backgroundColor": "#c7c7cc",
-                  "borderRadius": 16,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
-            testID="filterSwitch"
-            thumbTintColor="#ffffff"
-            tintColor="#c7c7cc"
-            value={false}
-          />
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+              testID="filterSwitch"
+            >
+              <View
+                active={false}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#c7c7cc",
+                      "borderRadius": 15,
+                      "height": 30,
+                      "justifyContent": "center",
+                      "marginLeft": 3,
+                      "width": 50,
+                    },
+                  ]
+                }
+                testID="switchBackground"
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 12.5,
+                      "elevation": 1.5,
+                      "height": 25,
+                      "marginLeft": 25,
+                      "shadowColor": "#151515",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 25,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -2229,29 +2313,71 @@ Array [
               ]
             }
           />
-          <RCTSwitch
-            accessibilityRole="switch"
-            onChange={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            onTintColor="#15884f"
+          <View
             style={
               Array [
                 Object {
-                  "height": 31,
-                  "width": 51,
-                },
-                Object {
-                  "backgroundColor": "#c7c7cc",
-                  "borderRadius": 16,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
-            testID="filterSwitch"
-            thumbTintColor="#ffffff"
-            tintColor="#c7c7cc"
-            value={false}
-          />
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+              testID="filterSwitch"
+            >
+              <View
+                active={false}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#c7c7cc",
+                      "borderRadius": 15,
+                      "height": 30,
+                      "justifyContent": "center",
+                      "marginLeft": 3,
+                      "width": 50,
+                    },
+                  ]
+                }
+                testID="switchBackground"
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 12.5,
+                      "elevation": 1.5,
+                      "height": 25,
+                      "marginLeft": 25,
+                      "shadowColor": "#151515",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 25,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <View
@@ -2328,29 +2454,71 @@ Array [
               ]
             }
           />
-          <RCTSwitch
-            accessibilityRole="switch"
-            onChange={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            onTintColor="#15884f"
+          <View
             style={
               Array [
                 Object {
-                  "height": 31,
-                  "width": 51,
-                },
-                Object {
-                  "backgroundColor": "#c7c7cc",
-                  "borderRadius": 16,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
-            testID="filterSwitch"
-            thumbTintColor="#ffffff"
-            tintColor="#c7c7cc"
-            value={false}
-          />
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+              testID="filterSwitch"
+            >
+              <View
+                active={false}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#c7c7cc",
+                      "borderRadius": 15,
+                      "height": 30,
+                      "justifyContent": "center",
+                      "marginLeft": 3,
+                      "width": 50,
+                    },
+                  ]
+                }
+                testID="switchBackground"
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 12.5,
+                      "elevation": 1.5,
+                      "height": 25,
+                      "marginLeft": 25,
+                      "shadowColor": "#151515",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 25,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
         </View>
         <View
           numberOfSpaces={2}
@@ -2452,29 +2620,71 @@ Array [
               ]
             }
           />
-          <RCTSwitch
-            accessibilityRole="switch"
-            onChange={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            onTintColor="#15884f"
+          <View
             style={
               Array [
                 Object {
-                  "height": 31,
-                  "width": 51,
-                },
-                Object {
-                  "backgroundColor": "#c7c7cc",
-                  "borderRadius": 16,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
-            testID="filterSwitch"
-            thumbTintColor="#ffffff"
-            tintColor="#c7c7cc"
-            value={false}
-          />
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+              testID="filterSwitch"
+            >
+              <View
+                active={false}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#c7c7cc",
+                      "borderRadius": 15,
+                      "height": 30,
+                      "justifyContent": "center",
+                      "marginLeft": 3,
+                      "width": 50,
+                    },
+                  ]
+                }
+                testID="switchBackground"
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 12.5,
+                      "elevation": 1.5,
+                      "height": 25,
+                      "marginLeft": 25,
+                      "shadowColor": "#151515",
+                      "shadowOffset": Object {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 2.5,
+                      "width": 25,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
         </View>
         <View
           numberOfSpaces={2}
