@@ -21,8 +21,8 @@ type BeneficiaryCeilingsProps =
     }
 
 const ceilingsQuestions = {
-  v1: _(t`Pourquoi les biens numériques sont-ils limités ?`),
-  v2: _(t`Pourquoi les biens physiques et numériques sont-ils limités ?`),
+  v1: _(t`Pourquoi les biens physiques et numériques sont-ils limités ?`),
+  v2: _(t`Pourquoi les biens numériques sont-ils limités ?`),
 }
 
 export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
