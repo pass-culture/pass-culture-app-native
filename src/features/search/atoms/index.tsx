@@ -1,5 +1,4 @@
 export * from './FadeScrollingView'
-export * from './FilterSwitch'
 export * from './Hit'
 export * from './NumberOfResults'
 export * from './NoSearchResult'
