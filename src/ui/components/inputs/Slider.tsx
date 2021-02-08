@@ -1,5 +1,5 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
-import React from 'react'
+import React, { useState } from 'react'
 import { Dimensions, View } from 'react-native'
 
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -12,7 +12,7 @@ interface Props {
   min?: number
   max?: number
   step?: number
-  onValuesChange?: (newValues: number[]) => void
+  onValuesChangeFinish?: (newValues: number[]) => void
 }
 const DEFAULT_MIN = 0
 const DEFAULT_MAX = 100
@@ -22,7 +22,8 @@ const DEFAULT_VALUES = [DEFAULT_MIN, DEFAULT_MAX]
 const { width } = Dimensions.get('window')
 
 export const Slider: React.FC<Props> = (props) => {
-  const { formatValues = (s: number) => s, values = DEFAULT_VALUES } = props
+  const [values, setValues] = useState<number[]>(props.values ?? DEFAULT_VALUES)
+  const { formatValues = (s: number) => s } = props
 
   return (
     <React.Fragment>
@@ -46,7 +47,8 @@ export const Slider: React.FC<Props> = (props) => {
           markerStyle={markerStyle}
           pressedMarkerStyle={markerStyle}
           containerStyle={containerStyle}
-          onValuesChange={props.onValuesChange}
+          onValuesChange={setValues}
+          onValuesChangeFinish={props.onValuesChangeFinish}
           sliderLength={width - getSpacing(2 * 2 * 6)}
         />
       </View>

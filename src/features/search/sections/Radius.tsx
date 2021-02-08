@@ -14,7 +14,7 @@ export const Radius: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const radius = searchState.aroundRadius ?? MAX_RADIUS
 
-  const onValuesChange = (newValues: number[]) => {
+  const onValuesChangeFinish = (newValues: number[]) => {
     dispatch({ type: 'RADIUS', payload: newValues[0] })
     logUseFilter()
   }
@@ -26,7 +26,7 @@ export const Radius: React.FC = () => {
         values={[radius]}
         max={MAX_RADIUS}
         formatValues={formatKm}
-        onValuesChange={onValuesChange}
+        onValuesChangeFinish={onValuesChangeFinish}
       />
     </CenteredSection>
   )

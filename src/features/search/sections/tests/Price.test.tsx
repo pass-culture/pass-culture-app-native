@@ -24,7 +24,7 @@ describe('Price component', () => {
   it('should dispatch PRICE_RANGE onPress', () => {
     const { getByTestId } = render(<Price />)
     const slider = getByTestId('slider').children[0] as ReactTestInstance
-    slider.props.onValuesChange([20, 30])
+    slider.props.onValuesChangeFinish([20, 30])
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'PRICE_RANGE', payload: [20, 30] })
   })
 

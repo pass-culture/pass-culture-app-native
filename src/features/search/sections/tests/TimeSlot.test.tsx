@@ -24,7 +24,7 @@ describe('TimeSlot component', () => {
   it('should dispatch TIME_RANGE onPress', () => {
     const { getByTestId } = render(<TimeSlot />)
     const slider = getByTestId('slider').children[0] as ReactTestInstance
-    slider.props.onValuesChange([5, 22])
+    slider.props.onValuesChangeFinish([5, 22])
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'TIME_RANGE', payload: [5, 22] })
   })
 })

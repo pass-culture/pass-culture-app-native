@@ -40,8 +40,8 @@ describe('Analytics - logUseFilter', () => {
   it('should log UseFilter for sliding the radius', () => {
     const { getByTestId } = render(<Section.Radius />)
     const slider = getByTestId('slider').children[0] as ReactTestInstance
-    slider.props.onValuesChange([50])
-    slider.props.onValuesChange([23])
+    slider.props.onValuesChangeFinish([50])
+    slider.props.onValuesChangeFinish([23])
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Radius)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
@@ -64,8 +64,8 @@ describe('Analytics - logUseFilter', () => {
   it('should log UseFilter once when sliding the price', () => {
     const { getByTestId } = render(<Section.Price />)
     const slider = getByTestId('slider').children[0] as ReactTestInstance
-    slider.props.onValuesChange([20, 300])
-    slider.props.onValuesChange([20, 30])
+    slider.props.onValuesChangeFinish([20, 300])
+    slider.props.onValuesChangeFinish([20, 30])
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Price)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
@@ -121,8 +121,8 @@ describe('Analytics - logUseFilter', () => {
   it('should log UseFilter once when sliding the time range', () => {
     const { getByTestId } = render(<Section.TimeSlot />)
     const slider = getByTestId('slider').children[0] as ReactTestInstance
-    slider.props.onValuesChange([8, 21])
-    slider.props.onValuesChange([18, 21])
+    slider.props.onValuesChangeFinish([8, 21])
+    slider.props.onValuesChangeFinish([18, 21])
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.TimeSlot)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
@@ -135,8 +135,8 @@ describe('Analytics - logUseFilter', () => {
     fireEvent(hourSwitch, 'onValueChange', true)
     fireEvent(hourSwitch, 'onValueChange', false)
 
-    slider.props.onValuesChange([8, 21])
-    slider.props.onValuesChange([18, 21])
+    slider.props.onValuesChangeFinish([8, 21])
+    slider.props.onValuesChangeFinish([18, 21])
 
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour)
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.TimeSlot)
