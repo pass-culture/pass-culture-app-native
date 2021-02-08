@@ -4,7 +4,7 @@ import React from 'react'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/analytics'
 
-import { InfiniteHitsComponent } from '../InfiniteHits'
+import { SearchResultsComponent } from '../SearchResults'
 
 const mockSearchState = initialSearchState
 
@@ -22,13 +22,13 @@ const props = {
   handleIsScrolling: jest.fn(),
   isScrolling: false,
 }
-describe('InfiniteHits component', () => {
+describe('SearchResults component', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
   it('should log SearchScrollToPage when hitting the bottom of the page', () => {
-    const { getByTestId } = render(<InfiniteHitsComponent {...props} />)
-    const flatlist = getByTestId('infiniteHitsFlatlist')
+    const { getByTestId } = render(<SearchResultsComponent {...props} />)
+    const flatlist = getByTestId('searchResultsFlatlist')
     flatlist.props.onEndReached()
     expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(1)
     flatlist.props.onEndReached()
@@ -36,8 +36,8 @@ describe('InfiniteHits component', () => {
   })
 
   it('should not log SearchScrollToPage when hitting the bottom of the page if no more results', () => {
-    const { getByTestId } = render(<InfiniteHitsComponent {...props} hasMore={false} />)
-    const flatlist = getByTestId('infiniteHitsFlatlist')
+    const { getByTestId } = render(<SearchResultsComponent {...props} hasMore={false} />)
+    const flatlist = getByTestId('searchResultsFlatlist')
     flatlist.props.onEndReached()
     expect(analytics.logSearchScrollToPage).not.toHaveBeenCalled()
   })
