@@ -1,11 +1,11 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
+import { useDebounce } from 'use-debounce'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchHeader, SearchLandingPage, SearchResults } from 'features/search/components'
 import { useSearch } from 'features/search/pages/SearchWrapper'
-import { useDebouncedValue } from 'features/search/utils/useDebouncedValue'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 
 export const Search: React.FC = () => {
@@ -13,7 +13,7 @@ export const Search: React.FC = () => {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { searchState, dispatch } = useSearch()
   // 20ms is enough time to fetch the results and preload the page
-  const debouncedShowResults = useDebouncedValue(searchState.showResults, 20)
+  const [debouncedShowResults] = useDebounce(searchState.showResults, 20)
 
   useEffect(() => {
     if (params?.parameters) {
