@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useRef } from 'react'
-import { Dimensions, ScrollView } from 'react-native'
+import React, { useRef } from 'react'
+import { Dimensions, LayoutChangeEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
@@ -12,19 +12,20 @@ import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
+const { height } = Dimensions.get('window')
+
 export const SearchFilter: React.FC = () => {
   const { searchState } = useSearch()
   const { data: profile } = useUserProfileInfo()
 
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  useEffect(() => {
-    if (searchState.date && scrollViewRef !== null) scrollViewRef.current?.scrollToEnd()
-  }, [searchState.date])
-
-  useEffect(() => {
-    if (searchState.timeRange && scrollViewRef !== null) scrollViewRef.current?.scrollToEnd()
-  }, [searchState.timeRange])
+  const onLayoutScrollToEnd = (event: LayoutChangeEvent) => {
+    const { y } = event.nativeEvent.layout
+    if (scrollViewRef.current !== null) {
+      scrollViewRef.current.scrollTo({ y: y - (4 * height) / 5 })
+    }
+  }
 
   return (
     <React.Fragment>
@@ -88,6 +89,7 @@ export const SearchFilter: React.FC = () => {
             <React.Fragment>
               <Section.OfferDate />
               <Separator marginVertical={getSpacing(6)} />
+              <Spacer.Column numberOfSpaces={0} onLayout={onLayoutScrollToEnd} />
             </React.Fragment>
           )}
 
@@ -99,6 +101,7 @@ export const SearchFilter: React.FC = () => {
             <React.Fragment>
               <Separator marginVertical={getSpacing(6)} />
               <Section.TimeSlot />
+              <Spacer.Column numberOfSpaces={0} onLayout={onLayoutScrollToEnd} />
             </React.Fragment>
           )}
 
