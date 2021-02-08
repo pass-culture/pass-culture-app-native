@@ -17,7 +17,7 @@ export const TimeSlot: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const values = searchState.timeRange ?? DEFAULT_TIME_RANGE
 
-  const onValuesChange = (newValues: number[]) => {
+  const onValuesChangeFinish = (newValues: number[]) => {
     dispatch({ type: 'TIME_RANGE', payload: newValues as Range<number> })
     logUseFilter()
   }
@@ -29,7 +29,7 @@ export const TimeSlot: React.FC = () => {
         values={values}
         max={MAX_HOUR}
         formatValues={formatHour}
-        onValuesChange={onValuesChange}
+        onValuesChangeFinish={onValuesChangeFinish}
       />
     </CenteredSection>
   )

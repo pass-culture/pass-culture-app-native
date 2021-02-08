@@ -16,7 +16,7 @@ export const Price: React.FC = () => {
   const values = searchState.priceRange ?? [0, MAX_PRICE]
   const count = +(values[0] > 0 || values[1] < MAX_PRICE)
 
-  const onValuesChange = (newValues: number[]) => {
+  const onValuesChangeFinish = (newValues: number[]) => {
     dispatch({ type: 'PRICE_RANGE', payload: newValues as Range<number> })
     logUseFilter()
   }
@@ -28,7 +28,7 @@ export const Price: React.FC = () => {
         values={values}
         max={MAX_PRICE}
         formatValues={formatEuro}
-        onValuesChange={onValuesChange}
+        onValuesChangeFinish={onValuesChangeFinish}
       />
     </CenteredSection>
   )
