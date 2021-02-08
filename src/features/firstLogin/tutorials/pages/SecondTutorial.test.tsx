@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
@@ -17,6 +18,7 @@ describe('SecondTutorial page', () => {
     const skipTutorials = getByText('Tout passer')
     fireEvent.press(skipTutorials)
 
+    expect(AsyncStorage.setItem).toBeCalledWith('has_seen_tutorials', 'true')
     expect(navigate).toBeCalledWith('TabNavigator')
   })
 

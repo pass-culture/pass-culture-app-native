@@ -1,8 +1,11 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
+import { Text as mockText } from 'react-native'
+import SplashScreen from 'react-native-splash-screen'
 import { act } from 'react-test-renderer'
 
 import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
@@ -15,16 +18,67 @@ jest.mock('features/auth/AuthContext', () => ({
 jest.mock('react-error-boundary', () => ({
   withErrorBoundary: (component: React.ReactNode, _: unknown) => component,
 }))
+jest.mock('features/navigation/TabBar/TabNavigator', () => ({
+  TabNavigator() {
+    const Text = mockText
+    return <Text>TabNavigator screen</Text>
+  },
+}))
+jest.mock('features/firstLogin/tutorials/pages/FirstTutorial', () => ({
+  FirstTutorial() {
+    const Text = mockText
+    return <Text>FirstTutorial screen</Text>
+  },
+}))
 
-describe('RootNavigator', () => {
-  beforeAll(() => jest.useFakeTimers())
-  it('logs once initial screen on mount', async () => {
-    const { unmount } = render(reactQueryProviderHOC(<RootNavigator />))
+describe('<RootNavigator />', () => {
+  beforeEach(() => {
+    jest.useFakeTimers()
+    jest.clearAllMocks()
+  })
+
+  afterEach(() => {
+    jest.useRealTimers()
+    storage.clear('has_seen_tutorials')
+  })
+
+  it('show TabNavigator screen on mount when user has already seen tutorials', async () => {
+    storage.saveObject('has_seen_tutorials', true)
+    const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
     await act(async () => {
       await flushAllPromises()
     })
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-    expect(analytics.logScreenView).toHaveBeenCalledWith('Home')
-    unmount()
+
+    expect(analytics.logScreenView).toBeCalledTimes(1)
+    expect(analytics.logScreenView).toBeCalledWith('Home')
+    expect(renderAPI.queryByText('TabNavigator screen')).toBeTruthy()
+    expect(renderAPI.queryByText('FirstTutorial screen')).toBeFalsy()
+    renderAPI.unmount()
+  })
+
+  it('show FirstTutorial screen on mount when user has NOT seen tutorials', async () => {
+    storage.saveObject('has_seen_tutorials', false)
+    const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
+    await act(async () => {
+      await flushAllPromises()
+    })
+
+    expect(analytics.logScreenView).toBeCalledTimes(0)
+    expect(renderAPI.queryByText('FirstTutorial screen')).toBeTruthy()
+    expect(renderAPI.queryByText('TabNavigator screen')).toBeFalsy()
+    renderAPI.unmount()
+  })
+
+  it('should call SplashScreen.hide() after 200ms', async () => {
+    expect.assertions(2)
+    const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
+    await act(async () => {
+      await flushAllPromises()
+    })
+
+    expect(SplashScreen.hide).toBeCalledTimes(0)
+    jest.advanceTimersByTime(200)
+    expect(SplashScreen.hide).toBeCalledTimes(1)
+    renderAPI.unmount()
   })
 })

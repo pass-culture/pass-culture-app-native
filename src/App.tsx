@@ -19,7 +19,6 @@ import { GeolocationWrapper } from 'libs/geolocation'
 import { i18n } from 'libs/i18n' //@translations
 import 'libs/sentry'
 import { useStartBatchNotification } from 'libs/notifications'
-import { useHideSplashScreen } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 const codePushOptionsManual = {
@@ -62,7 +61,6 @@ const queryClient = new QueryClient({
 
 const AppComponent: FunctionComponent = function () {
   useStartBatchNotification()
-  useHideSplashScreen()
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import Geolocation from 'react-native-geolocation-service'
@@ -23,6 +24,7 @@ describe('<ThirdTutorial />', () => {
     const skipTutorialsButton = renderAPI.getByText('Tout passer')
     fireEvent.press(skipTutorialsButton)
 
+    expect(AsyncStorage.setItem).toBeCalledWith('has_seen_tutorials', 'true')
     expect(navigate).toBeCalledWith('TabNavigator')
   })
 
