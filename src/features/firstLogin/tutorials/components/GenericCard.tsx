@@ -6,12 +6,14 @@ import * as Animatable from 'react-native-animatable'
 import Swiper from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/analytics'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { getSpacing, Typo } from 'ui/theme'
 
 export type CardKey = {
+  name?: string
   key?: number
   swiperRef?: RefObject<Swiper>
 }
@@ -56,12 +58,20 @@ export const useButtonAnimation = (
   }, [ref])
 }
 
+export const useAnalyticsLogScreenView = (props: CardProps) => {
+  useEffect(() => {
+    if (props.name && props.index !== undefined && props.activeIndex === props.index) {
+      analytics.logScreenView(props.name)
+    }
+  }, [props.name, props.index, props.activeIndex])
+}
+
 export const GenericCard: FunctionComponent<CardProps> = (props: CardProps) => {
   const animationRef = useRef<AnimatedLottieView>(null)
   const animatedButtonRef = useRef<Animatable.View & View>(null)
   usePlayAnimation(animationRef, props.pauseAnimationOnRenderAtFrame)
   useButtonAnimation(animatedButtonRef, props.index, props.activeIndex)
-
+  useAnalyticsLogScreenView(props)
   return (
     <GenericCardContainer>
       <Spacer.Flex flex={2} />

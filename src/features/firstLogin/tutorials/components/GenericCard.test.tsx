@@ -5,9 +5,16 @@ import React, { RefObject } from 'react'
 import { View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 
+import { analytics } from 'libs/analytics'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 
-import { CardProps, GenericCard, useButtonAnimation, usePlayAnimation } from './GenericCard'
+import {
+  CardProps,
+  GenericCard,
+  useAnalyticsLogScreenView,
+  useButtonAnimation,
+  usePlayAnimation,
+} from './GenericCard'
 
 describe('<GenericCard />', () => {
   const animation = GeolocationAnimation
@@ -78,6 +85,48 @@ describe('<GenericCard />', () => {
     )
     expect(ref.current.fadeIn).toHaveBeenCalledTimes(0)
     expect(ref.current.fadeOut).toHaveBeenCalledTimes(1)
+  })
+  it('should not log screen view when activeIndex is not index', async () => {
+    const index = 0
+    const activeIndex = 1
+    const tutorialName = 'Tuto'
+    const props: CardProps = {
+      index,
+      activeIndex,
+      name: `${tutorialName}${index + 1}`,
+      buttonText,
+      animation,
+      buttonCallback,
+      pauseAnimationOnRenderAtFrame,
+      subTitle,
+      text,
+      title,
+    }
+    renderHook(() => useAnalyticsLogScreenView(props))
+    expect(analytics.logScreenView).not.toHaveBeenCalledWith(props.name)
+    expect(analytics.logScreenView).not.toHaveBeenCalledTimes(1)
+  })
+  it('should log screen view when activeIndex is index', async () => {
+    const index = 0
+    const activeIndex = index
+    const tutorialName = 'Tuto'
+    const props: CardProps = {
+      index,
+      activeIndex,
+      name: `${tutorialName}${index + 1}`,
+      buttonText,
+      animation,
+      buttonCallback,
+      pauseAnimationOnRenderAtFrame,
+      subTitle,
+      text,
+      title,
+    }
+    renderHook(() => useAnalyticsLogScreenView(props))
+    await waitFor(async () => {
+      expect(analytics.logScreenView).toHaveBeenCalledWith(props.name)
+      expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+    })
   })
 })
 

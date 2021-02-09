@@ -53,7 +53,11 @@ export const GenericTutorial: FunctionComponent<Props> = (props: Props) => {
               }}
               slideWrapperStyle={slideWrapperStyle}>
               {React.Children.toArray(props.children).map((card, index: number) =>
-                cloneElement(card as ReactElement<CardKey>, { key: index, swiperRef: swiperRef })
+                cloneElement(card as ReactElement<CardKey>, {
+                  key: index,
+                  swiperRef: swiperRef,
+                  name: `${props.name}${index + 1}`,
+                })
               )}
             </Swiper>
           </SwiperContainer>
