@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useMemo, ReactNode } from 'react'
 import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
@@ -26,16 +26,15 @@ interface AsyncFallbackProps extends FallbackProps {
   resetErrorBoundary: (...args: Array<unknown>) => void
   error: AsyncError
   backNavigation?: boolean
+  header?: ReactNode
 }
 
-export const AsyncErrorBoundary = ({
+export const AsyncErrorBoundaryWithoutNavigation = ({
   resetErrorBoundary,
   error,
-  backNavigation = true,
+  header,
 }: AsyncFallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
-  const { canGoBack, goBack } = useNavigation<UseNavigationType>()
-  const { top } = useCustomSafeInsets()
 
   const handleRetry = async () => {
     reset()
@@ -50,11 +49,7 @@ export const AsyncErrorBoundary = ({
       <Background />
       <Spacer.TopScreen />
       <Spacer.Flex />
-      {backNavigation && canGoBack() && (
-        <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
-          <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
-        </HeaderContainer>
-      )}
+      {header}
       <BrokenConnection />
       <Spacer.Column numberOfSpaces={2} />
 
@@ -91,6 +86,23 @@ export const AsyncErrorBoundary = ({
   )
 }
 
+export const AsyncErrorBoundary = ({ backNavigation = true, ...rest }: AsyncFallbackProps) => {
+  const { canGoBack, goBack } = useNavigation<UseNavigationType>()
+  const { top } = useCustomSafeInsets()
+
+  const navigation = useMemo(() => {
+    return (
+      backNavigation &&
+      canGoBack() && (
+        <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
+          <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
+        </HeaderContainer>
+      )
+    )
+  }, [backNavigation, canGoBack, goBack])
+  return <AsyncErrorBoundaryWithoutNavigation {...rest} header={navigation} />
+}
+
 const Container = styled.View({
   flex: 1,
   alignItems: 'center',
@@ -110,7 +122,3 @@ const HeaderContainer = styled.TouchableOpacity<{ top: number }>(({ top }) => ({
   top,
   left: getSpacing(6),
 }))
-
-export const AsyncErrorBoundaryWithoutNavigation = (props: AsyncFallbackProps) => (
-  <AsyncErrorBoundary {...props} backNavigation={false} />
-)
