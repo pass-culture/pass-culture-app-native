@@ -8,7 +8,7 @@ import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useDistance } from 'features/offer/components/useDistance'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
-import { AlgoliaHit } from 'libs/algolia'
+import { SearchAlgoliaHit } from 'libs/algolia'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { analytics } from 'libs/analytics'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
@@ -21,7 +21,7 @@ import { useSearch } from '../pages/SearchWrapper'
 import { OfferImage } from './OfferImage'
 
 interface Props {
-  hit: AlgoliaHit
+  hit: SearchAlgoliaHit
 }
 
 export const Hit: React.FC<Props> = ({ hit }) => {
