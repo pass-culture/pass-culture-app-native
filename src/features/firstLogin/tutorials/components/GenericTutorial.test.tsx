@@ -13,6 +13,7 @@ describe('<GenericTutorial />', () => {
   const TestCard = (props: CardKey) => (
     <View>
       <Text>{props.swiperRef ? 'swipeRef exist' : 'swipeRef does not exist'}</Text>
+      <Text>{props.name ? 'name exist' : 'name does not exist'}</Text>
     </View>
   )
   it('should render correctly', () => {
@@ -40,6 +41,14 @@ describe('<GenericTutorial />', () => {
     })
     expect(await getByText('swipeRef exist')).toBeTruthy()
     expect(() => getByText('swipeRef does not exist')).toThrow()
+  })
+  it('should have an automatically set name passed to each children', async () => {
+    const { getByText } = renderGenericTutorialComponent({
+      name: 'Tuto',
+      children: [<TestCard key={undefined} />],
+    })
+    expect(await getByText('name exist')).toBeTruthy()
+    expect(() => getByText('name does not exist')).toThrow()
   })
 })
 
