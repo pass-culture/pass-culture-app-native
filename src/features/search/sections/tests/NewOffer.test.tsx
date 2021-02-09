@@ -17,13 +17,13 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 
 describe('NewOffer component', () => {
   it('should be controlled by searchState.offerIsNew', () => {
-    expect(render(<NewOffer />).getByTestId('filterSwitch').props.value).toBeFalsy()
+    expect(render(<NewOffer />).getByTestId('switchBackground').props.active).toBeFalsy()
     mockSearchState = { ...initialSearchState, offerIsNew: true }
-    expect(render(<NewOffer />).getByTestId('filterSwitch').props.value).toBeTruthy()
+    expect(render(<NewOffer />).getByTestId('switchBackground').props.active).toBeTruthy()
   })
   it('should dispatch TOGGLE_OFFER_NEW onPress', () => {
     const { getByTestId } = render(<NewOffer />)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', true)
+    fireEvent.press(getByTestId('filterSwitch'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_NEW' })
   })
 
