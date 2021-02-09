@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
 import { useSearch } from 'features/search/pages/SearchWrapper'
@@ -11,10 +11,10 @@ export const Date: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const logUseFilter = useLogFilterOnce(SectionTitle.Date)
 
-  const toggle = () => {
+  const toggle = useCallback(() => {
     dispatch({ type: 'TOGGLE_DATE' })
     logUseFilter()
-  }
+  }, [])
 
   return (
     <SectionWithSwitch
