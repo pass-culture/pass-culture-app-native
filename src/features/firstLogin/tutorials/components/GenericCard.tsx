@@ -38,7 +38,7 @@ export const usePlayAnimation = (
     if (pauseAnimationOnRenderAtFrame) {
       ref.current?.play(0, pauseAnimationOnRenderAtFrame)
     }
-  }, [pauseAnimationOnRenderAtFrame])
+  }, [pauseAnimationOnRenderAtFrame, ref])
 }
 
 export const useButtonAnimation = (
@@ -81,7 +81,6 @@ export const GenericCard: FunctionComponent<CardProps> = (props: CardProps) => {
           ref={animationRef}
           source={props.animation}
           loop={false}
-          size={getSpacing(60)}
         />
       </StyledLottieContainer>
       <Spacer.Flex flex={1} />
@@ -108,10 +107,10 @@ const GenericCardContainer = styled.View({
   paddingHorizontal: getSpacing(5),
 })
 
-const StyledLottieView = styled(LottieView)((props: { size: number }) => ({
-  width: props.size,
-  height: props.size,
-}))
+const StyledLottieView = styled(LottieView)({
+  width: getSpacing(60),
+  height: getSpacing(60),
+})
 
 const StyledTitle = styled(Typo.Title1)({
   textAlign: 'center',

@@ -1,11 +1,10 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { fireEvent, render } from '@testing-library/react-native'
 import React, { createRef, RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
 
 import { analytics } from 'libs/analytics'
 
-import { ThirdCard, useOnSubmitThirdCard } from './ThirdCard'
+import { ThirdCard, useRequestGeolocPermissionParameters } from './ThirdCard'
 
 let mockSubmitSpy: () => void
 let mockRootSpy: () => void
@@ -37,15 +36,20 @@ describe('ThirdCard', () => {
     expect(mockRootSpy).toHaveBeenCalled()
     expect(mockSpy).toHaveBeenCalled()
   })
-  it('should trigger analytics logHasActivateGeolocFromTutorial', async () => {
+  it('should trigger analytics on acceptance', () => {
+    const swiperRef = createRef<Swiper>()
+    const action = useRequestGeolocPermissionParameters(swiperRef)
+    action.onAcceptance()
+    expect(analytics.logHasActivateGeolocFromTutorial).toHaveBeenCalledTimes(1)
+  })
+  it('should trigger slide change on submit', () => {
     const ref = {
       current: {
         goToNext: jest.fn(),
       },
     }
-    const spy = jest.spyOn(analytics, 'logHasActivateGeolocFromTutorial')
-    renderHook(useOnSubmitThirdCard((ref as unknown) as RefObject<Swiper>))
-    expect(spy).toBeCalledTimes(1)
+    const action = useRequestGeolocPermissionParameters((ref as unknown) as RefObject<Swiper>)
+    action.onSubmit()
     expect(ref.current.goToNext).toHaveBeenCalledTimes(1)
   })
 })

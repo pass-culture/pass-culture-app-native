@@ -89,7 +89,7 @@ describe('<GenericCard />', () => {
   it('should not log screen view when activeIndex is not index', async () => {
     const index = 0
     const activeIndex = 1
-    const tutorialName = 'Tuto'
+    const tutorialName = 'TestTutorial'
     const props: CardProps = {
       index,
       activeIndex,
@@ -109,7 +109,7 @@ describe('<GenericCard />', () => {
   it('should log screen view when activeIndex is index', async () => {
     const index = 0
     const activeIndex = index
-    const tutorialName = 'Tuto'
+    const tutorialName = 'TestTutorial'
     const props: CardProps = {
       index,
       activeIndex,
@@ -123,10 +123,8 @@ describe('<GenericCard />', () => {
       title,
     }
     renderHook(() => useAnalyticsLogScreenView(props))
-    await waitFor(async () => {
-      expect(analytics.logScreenView).toHaveBeenCalledWith(props.name)
-      expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-    })
+    expect(analytics.logScreenView).toHaveBeenCalledWith(props.name)
+    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
   })
 })
 

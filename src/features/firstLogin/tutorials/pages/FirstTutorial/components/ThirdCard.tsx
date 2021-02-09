@@ -8,21 +8,23 @@ import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 
-export const useOnSubmitThirdCard = (swiperRef?: RefObject<Swiper>) => {
-  return () => {
-    analytics.logHasActivateGeolocFromTutorial()
-    swiperRef?.current?.goToNext()
+export const useRequestGeolocPermissionParameters = (swiperRef?: RefObject<Swiper>) => {
+  return {
+    onSubmit: () => {
+      swiperRef?.current?.goToNext()
+    },
+    onAcceptance: () => {
+      analytics.logHasActivateGeolocFromTutorial()
+    },
   }
 }
 
 export function ThirdCard(props: CardKey) {
   const { requestGeolocPermission } = useGeolocation()
-  const onSubmit = useOnSubmitThirdCard(props.swiperRef)
+  const requestGeolocPermissionParameters = useRequestGeolocPermissionParameters(props.swiperRef)
 
   async function onGeolocationButtonPress() {
-    await requestGeolocPermission({
-      onSubmit: onSubmit,
-    })
+    await requestGeolocPermission(requestGeolocPermissionParameters)
   }
 
   return (
