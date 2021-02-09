@@ -21,7 +21,10 @@ export const SearchResults: React.FC = () => {
 
   if (!data) return <React.Fragment></React.Fragment>
 
-  const hits = data.pages.flatMap((page) => page.hits)
+  const hits: SearchAlgoliaHit[] = []
+  data.pages.forEach((page) => {
+    hits.concat(page.hits)
+  })
   const { nbHits } = data.pages[0]
 
   const onEndReached = () => {
