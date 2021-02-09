@@ -59,7 +59,7 @@ export const fetchAlgolia = <T>({
     page,
     ...buildHitsPerPage(hitsPerPage),
     ...searchParameters,
-    attributesToRetrieve,
+    attributesToRetrieve: attributesToRetrieve ?? ['*'],
     attributesToHighlight: [], // We disable highlighting for performance reasons
   })
 }

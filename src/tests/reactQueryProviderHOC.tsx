@@ -7,7 +7,7 @@ export const reactQueryProviderHOC = (
   component: React.ReactNode,
   setup?: (queryClient: QueryClient) => void
 ) => {
-  const queryClient = new QueryClient({ cache: queryCache })
+  const queryClient = new QueryClient({ queryCache })
   if (setup) setup(queryClient)
   return <QueryClientProvider client={queryClient}>{component}</QueryClientProvider>
 }
