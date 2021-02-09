@@ -10175,10 +10175,10 @@ react-native-svg@^12.1.0:
     css-select "^2.1.0"
     css-tree "^1.0.0-alpha.39"
 
-react-native-web-swiper@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.0.tgz#a32464e10d476e57ed013e3faf31ba81d93591ec"
-  integrity sha512-rcycEqh4uoxEI9/qa6w6Hud8ScAKhGfMjWfK4zoKQDiatoc+3cVNhkMmTE34PRW9n+wtIgRlUbA70aaZBHi4wQ==
+react-native-web-swiper@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.1.tgz#48d53e0ecf86d3fcd49f63ef7894db4beaa3b6f2"
+  integrity sha512-7q8BCdoCt91dw0fXhdTJ5S61NxOARAQX/F3x3sr5DJg9eGG4DoOSqLgJKFJl/7Z5GJasHbvKchC+SxgvtZVZvA==
   dependencies:
     prop-types "^15.6.2"
 

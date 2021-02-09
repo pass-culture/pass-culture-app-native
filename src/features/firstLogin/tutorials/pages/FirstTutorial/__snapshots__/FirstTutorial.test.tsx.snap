@@ -522,7 +522,7 @@ Array [
                     forwardedRef={[Function]}
                     style={
                       Object {
-                        "opacity": 1,
+                        "opacity": 0,
                       }
                     }
                   >
@@ -724,7 +724,7 @@ Array [
                     forwardedRef={[Function]}
                     style={
                       Object {
-                        "opacity": 1,
+                        "opacity": 0,
                       }
                     }
                   >
@@ -926,7 +926,7 @@ Array [
                     forwardedRef={[Function]}
                     style={
                       Object {
-                        "opacity": 1,
+                        "opacity": 0,
                       }
                     }
                   >

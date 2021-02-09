@@ -38,7 +38,8 @@ export function ThirdCard(props: CardKey) {
         t`Active la géolocalisation pour découvrir toutes les offres existantes autour de toi.`
       )}
       title={_(t`Toute la culture`)}
-      {...props}
+      swiperRef={props.swiperRef}
+      name={props.name}
     />
   )
 }

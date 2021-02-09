@@ -20,7 +20,8 @@ export function FirstCard(props: CardKey) {
       subTitle={_(t`c'est...`)}
       text={_(t`une initiative financée par le Ministère de la Culture.`)}
       title={_(t`Le pass Culture`)}
-      {...props}
+      swiperRef={props.swiperRef}
+      name={props.name}
     />
   )
 }

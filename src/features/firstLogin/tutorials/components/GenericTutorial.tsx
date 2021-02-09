@@ -15,7 +15,7 @@ import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 const controlProps = {
-  DotComponent: DotComponent,
+  DotComponent,
   dotsTouchable: true,
   prevPos: false,
   nextPos: false,
