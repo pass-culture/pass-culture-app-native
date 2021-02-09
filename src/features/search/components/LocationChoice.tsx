@@ -26,12 +26,17 @@ export const LocationChoice: React.FC<Props> = (props) => {
       <FirstPart>
         <Icon size={48} color2={iconColor2} />
         <Spacer.Row numberOfSpaces={2} />
-        <Typo.ButtonText color={isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
+        <Typo.ButtonText
+          numberOfLines={2}
+          color={isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
           {label}
         </Typo.ButtonText>
       </FirstPart>
-      <Spacer.Flex />
-      {isSelected && <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />}
+      {isSelected && (
+        <ValidateIconContainer>
+          <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />
+        </ValidateIconContainer>
+      )}
       {arrowNext ? (
         <React.Fragment>
           <Spacer.Row numberOfSpaces={2} />
@@ -47,6 +52,12 @@ export const LocationChoice: React.FC<Props> = (props) => {
 const FirstPart = styled(View)({
   flexDirection: 'row',
   alignItems: 'center',
+  flex: 1,
+})
+
+const ValidateIconContainer = styled.View({
+  width: getSpacing(16),
+  alignItems: 'flex-end',
 })
 
 const Container = styled.TouchableOpacity.attrs(() => ({
