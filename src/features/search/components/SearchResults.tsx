@@ -26,8 +26,9 @@ export const SearchResults: React.FC = () => {
 
   const onEndReached = () => {
     if (hasNextPage) {
+      const [lastPage] = data.pages.slice(-1)
+      if (lastPage.page > 0) analytics.logSearchScrollToPage(lastPage.page)
       fetchNextPage()
-      analytics.logSearchScrollToPage(data.pages.length - 1)
     }
   }
 

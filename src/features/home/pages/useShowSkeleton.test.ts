@@ -10,12 +10,12 @@ jest.mock('react-query', () => ({
   useIsFetching: jest.fn(() => 0).mockImplementationOnce(() => 1),
   useQueryClient: jest
     .fn(() => ({
-      getCache: jest.fn(() => ({
+      getQueryCache: jest.fn(() => ({
         findAll: jest.fn(() => [{ state: { isFetching: false } }]),
       })),
     }))
     .mockImplementationOnce(() => ({
-      getCache: jest.fn(() => ({
+      getQueryCache: jest.fn(() => ({
         findAll: jest.fn(() => [{ state: { isFetching: true } }]),
       })),
     })),

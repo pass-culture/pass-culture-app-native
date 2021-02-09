@@ -50,7 +50,7 @@ if (__DEV__ && process.env.JEST !== 'true') {
   addPlugin(queryCache)
 }
 const queryClient = new QueryClient({
-  cache: queryCache,
+  queryCache,
   defaultOptions: {
     queries: {
       retry: 0,
