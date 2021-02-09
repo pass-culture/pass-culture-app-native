@@ -10047,14 +10047,9 @@ react-native-svg@^12.1.0:
     css-select "^2.1.0"
     css-tree "^1.0.0-alpha.39"
 
-react-native-swipe-gestures@^1.0.5:
-  version "1.0.5"
-  resolved "https://npm.kopaxgroup.com:443/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz#a172cb0f3e7478ccd681fd36b8bfbcdd098bde7c"
-  integrity sha512-Ns7Bn9H/Tyw278+5SQx9oAblDZ7JixyzeOczcBK8dipQk2pD7Djkcfnf1nB/8RErAmMLL9iXgW0QHqiII8AhKw==
-
 react-native-web-swiper@2.2.0:
   version "2.2.0"
-  resolved "https://npm.kopaxgroup.com:443/react-native-web-swiper/-/react-native-web-swiper-2.2.0.tgz#a32464e10d476e57ed013e3faf31ba81d93591ec"
+  resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.0.tgz#a32464e10d476e57ed013e3faf31ba81d93591ec"
   integrity sha512-rcycEqh4uoxEI9/qa6w6Hud8ScAKhGfMjWfK4zoKQDiatoc+3cVNhkMmTE34PRW9n+wtIgRlUbA70aaZBHi4wQ==
   dependencies:
     prop-types "^15.6.2"
