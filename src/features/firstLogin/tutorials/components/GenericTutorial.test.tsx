@@ -16,12 +16,14 @@ describe('<GenericTutorial />', () => {
       <Text>{props.name ? 'name exist' : 'name does not exist'}</Text>
     </View>
   )
+
   it('should render correctly', () => {
     const renderAPI = renderGenericTutorialComponent()
     expect(renderAPI).toMatchSnapshot()
   })
+
   it('should redirect on home, set has_seen_tutorials in storage and run analytics when pressing skip all button', async () => {
-    const name = 'Tuto'
+    const name = 'FirstTutorial'
     const { getByText } = renderGenericTutorialComponent({
       name: name,
       children: [<TestCard key={undefined} />],
@@ -34,9 +36,10 @@ describe('<GenericTutorial />', () => {
       expect(analytics.logHasSkippedTutorial).toHaveBeenCalledWith(`${name}1`)
     })
   })
+
   it('should have a swiperRef passed to each children', async () => {
     const { getByText } = renderGenericTutorialComponent({
-      name: 'Tuto',
+      name: 'FirstTutorial',
       children: [<TestCard key={undefined} />],
     })
     expect(await getByText('swipeRef exist')).toBeTruthy()
@@ -52,6 +55,6 @@ describe('<GenericTutorial />', () => {
   })
 })
 
-function renderGenericTutorialComponent(props: Props = { name: 'Tuto', children: [] }) {
+function renderGenericTutorialComponent(props: Props = { name: 'FirstTutorial', children: [] }) {
   return render(<GenericTutorial {...props} />)
 }

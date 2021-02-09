@@ -9,7 +9,7 @@ import { ThirdCard } from './components/ThirdCard'
 
 export function FirstTutorial() {
   return (
-    <GenericTutorial name="Tuto">
+    <GenericTutorial name="FirstTutorial">
       <FirstCard />
       <SecondCard />
       <ThirdCard />

@@ -14,6 +14,13 @@ import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGrey
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
+const controlProps = {
+  DotComponent: DotComponent,
+  dotsTouchable: true,
+  prevPos: false,
+  nextPos: false,
+}
+
 export type Props = {
   name: string
   children: Array<ReactElement<CardKey>>
@@ -45,15 +52,10 @@ export const GenericTutorial: FunctionComponent<Props> = (props: Props) => {
           <SwiperContainer>
             <Swiper
               ref={swiperRef}
-              controlsProps={{
-                DotComponent: DotComponent,
-                dotsTouchable: true,
-                prevPos: false,
-                nextPos: false,
-              }}
+              controlsProps={controlProps}
               slideWrapperStyle={slideWrapperStyle}>
-              {React.Children.toArray(props.children).map((card, index: number) =>
-                cloneElement(card as ReactElement<CardKey>, {
+              {props.children.map((card, index: number) =>
+                cloneElement(card, {
                   key: index,
                   swiperRef: swiperRef,
                   name: `${props.name}${index + 1}`,

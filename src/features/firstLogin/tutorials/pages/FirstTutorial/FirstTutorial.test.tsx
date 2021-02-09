@@ -4,7 +4,7 @@ import React from 'react'
 import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial/FirstTutorial'
 
 describe('FirstTutorial page', () => {
-  it('should render first tutorial', async () => {
+  it('should render first tutorial', () => {
     const firstTutorial = render(<FirstTutorial />)
     expect(firstTutorial).toMatchSnapshot()
   })
