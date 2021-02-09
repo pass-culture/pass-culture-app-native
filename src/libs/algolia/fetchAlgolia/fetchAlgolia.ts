@@ -10,7 +10,7 @@ import { env } from 'libs/environment'
 
 const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
-export const buildSearchParameters = ({
+const buildSearchParameters = ({
   aroundRadius = RADIUS_FILTERS.DEFAULT_RADIUS_IN_KILOMETERS,
   beginningDatetime = null,
   date = null,
@@ -44,18 +44,22 @@ export const buildSearchParameters = ({
 })
 
 export const fetchAlgolia = <T>({
-  keywords = '',
+  query = '',
   page = 0,
   hitsPerPage = null,
+  attributesToRetrieve,
   ...parameters
-}: FetchAlgoliaParameters): Readonly<Promise<SearchResponse<T>>> => {
+}: FetchAlgoliaParameters & { attributesToRetrieve?: string[] }): Readonly<
+  Promise<SearchResponse<T>>
+> => {
   const searchParameters = buildSearchParameters(parameters)
   const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
 
-  return index.search<T>(keywords, {
+  return index.search<T>(query, {
     page,
     ...buildHitsPerPage(hitsPerPage),
     ...searchParameters,
+    attributesToRetrieve,
     attributesToHighlight: [], // We disable highlighting for performance reasons
   })
 }

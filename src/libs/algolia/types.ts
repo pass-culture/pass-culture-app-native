@@ -47,7 +47,7 @@ export interface ParsedAlgoliaParameters {
 
 export interface ExtraAlgoliaParameters {
   date: AlgoliaDate | null
-  keywords: string
+  query: string
   page: number
   timeRange: Range<number> | null
 }
