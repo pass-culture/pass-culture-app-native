@@ -1,28 +1,21 @@
-import { render, waitFor } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import {
-  DotComponent,
-  DotComponentProps,
-} from 'features/firstLogin/tutorials/components/DotComponent'
+import { DotComponent } from 'features/firstLogin/tutorials/components/DotComponent'
 
 describe('<DotComponent />', () => {
-  it('should render correctly', async () => {
+  it('should render correctly', () => {
     const renderAPI = renderDotComponent()
-    await waitFor(() => {
-      expect(renderAPI).toMatchSnapshot()
-    })
+    expect(renderAPI).toMatchSnapshot()
   })
-  it('renders dot active color', async () => {
+  it('renders dot active color', () => {
     const renderAPI = renderDotComponent({
       isActive: true,
     })
-    await waitFor(() => {
-      expect(renderAPI).toMatchSnapshot()
-    })
+    expect(renderAPI).toMatchSnapshot()
   })
 })
 
-function renderDotComponent(props: DotComponentProps = {}) {
+function renderDotComponent(props = {}) {
   return render(<DotComponent {...props} />)
 }
