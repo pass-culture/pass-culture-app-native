@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { IconInterface } from 'ui/svg/icons/types'
-import { Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type SectionRowProps = {
@@ -34,11 +34,9 @@ export function SectionRow(props: SectionRowProps) {
       onPress={props.onPress}
       testID={props.testID ? props.testID : 'section-row-touchable'}>
       <View style={[styles.container, props.style]}>
-        <IconContainer>
-          <Icon />
-        </IconContainer>
+        <Icon />
         <TitleContainer>
-          <Typo.ButtonText numberOfLines={1}>{props.title}</Typo.ButtonText>
+          <Typo.ButtonText numberOfLines={2}>{props.title}</Typo.ButtonText>
         </TitleContainer>
         <CTAContainer>
           {props.type == 'navigable' ? (
@@ -60,15 +58,12 @@ const styles = StyleSheet.create({
   },
 })
 
-const IconContainer = styled.View({
-  flex: 0.1,
-})
-
 const TitleContainer = styled.View({
-  flex: 0.65,
+  flex: 1,
+  marginHorizontal: getSpacing(1),
+  textAlign: 'left',
 })
 
 const CTAContainer = styled.View({
-  flex: 0.2,
   alignItems: 'flex-end',
 })

@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
   },
   row: {
     paddingVertical: getSpacing(4),
-    marginHorizontal: getSpacing(1),
   },
 })
 
