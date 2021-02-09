@@ -1,5 +1,4 @@
-import React, { useRef } from 'react'
-import { connectInfiniteHits } from 'react-instantsearch-native'
+import React, { useEffect } from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,25 +6,27 @@ import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
 import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { Filter } from 'features/search/atoms/Buttons'
-import { AlgoliaHit } from 'libs/algolia'
+import { SearchAlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { useSearchResults } from '../pages/useSearchResults'
 
-interface Props {
-  hits: AlgoliaHit[]
-  hasMore: boolean
-  refineNext: () => void
-}
+const keyExtractor = (item: SearchAlgoliaHit) => item.objectID
+const renderItem = ({ item: hit }: { item: SearchAlgoliaHit }) => <Hit hit={hit} />
 
-export const SearchResultsComponent: React.FC<Props> = ({ hits, hasMore, refineNext }) => {
+export const SearchResults: React.FC = () => {
   const { isScrolling, handleIsScrolling } = useDebouncedScrolling()
-  const currentPage = useRef<number>(0)
+  const { hasNextPage, fetchNextPage, data } = useSearchResults()
+
+  if (!data) return <React.Fragment></React.Fragment>
+
+  const hits = data.pages.flatMap((page) => page.hits)
+  const { nbHits } = data.pages[0]
 
   const onEndReached = () => {
-    if (hasMore) {
-      currentPage.current += 1
-      refineNext()
-      analytics.logSearchScrollToPage(currentPage.current)
+    if (hasNextPage) {
+      fetchNextPage()
+      analytics.logSearchScrollToPage(data.pages.length - 1)
     }
   }
 
@@ -36,22 +37,22 @@ export const SearchResultsComponent: React.FC<Props> = ({ hits, hasMore, refineN
           testID="searchResultsFlatlist"
           data={hits}
           // eslint-disable-next-line react-native/no-inline-styles
-          contentContainerStyle={{ flexGrow: 1 }}
-          keyExtractor={(item) => item.objectID}
-          ListHeaderComponent={NumberOfResults}
+          contentContainerStyle={contentContainerStyle}
+          keyExtractor={keyExtractor}
+          ListHeaderComponent={<NumberOfResults nbHits={nbHits} />}
           ListFooterComponent={Footer}
           ItemSeparatorComponent={Separator}
-          renderItem={({ item: hit }) => <Hit hit={hit} />}
+          renderItem={renderItem}
           onEndReached={onEndReached}
           onScrollEndDrag={handleIsScrolling(false)}
           onScrollBeginDrag={handleIsScrolling(true)}
-          scrollEnabled={hits.length > 0}
+          scrollEnabled={nbHits > 0}
           ListEmptyComponent={NoSearchResult}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="on-drag"
         />
       </Container>
-      {hits.length > 0 && (
+      {nbHits > 0 && (
         <FilterContainer>
           <FadeScrollingView isScrolling={isScrolling}>
             <Filter />
@@ -63,6 +64,7 @@ export const SearchResultsComponent: React.FC<Props> = ({ hits, hasMore, refineN
   )
 }
 
+const contentContainerStyle = { flexGrow: 1 }
 const Container = styled.View({ height: '100%' })
 const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(52) })
 const Separator = styled.View({
@@ -77,5 +79,3 @@ const FilterContainer = styled.View({
   position: 'absolute',
   bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
 })
-
-export const SearchResults = connectInfiniteHits(SearchResultsComponent)
