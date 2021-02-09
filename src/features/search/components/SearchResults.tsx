@@ -1,3 +1,4 @@
+import flatten from 'lodash.flatten'
 import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
@@ -21,7 +22,7 @@ export const SearchResults: React.FC = () => {
 
   if (!data) return <React.Fragment></React.Fragment>
 
-  const hits = data.pages.flatMap((page) => page.hits)
+  const hits: SearchAlgoliaHit[] = flatten(data.pages.map((page) => page.hits))
   const { nbHits } = data.pages[0]
 
   const onEndReached = () => {
