@@ -15,7 +15,7 @@ export const buildSuggestedPlaces = (
 ): SuggestedPlace[] =>
   suggestedPlaces.features.map(({ geometry, properties }) => {
     const { city, context, name, type } = properties
-    const detailedPlace = type === 'street' || type === 'housenumber'
+    const detailedPlace = type === 'street' || type === 'housenumber' || type === 'locality'
     const [, department] = context.replace(/\s+/g, '').split(',') // department number, department name, region
     const [longitude, latitude] = geometry.coordinates
 
