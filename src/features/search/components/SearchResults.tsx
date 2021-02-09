@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -9,6 +9,7 @@ import { Filter } from 'features/search/atoms/Buttons'
 import { SearchAlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+
 import { useSearchResults } from '../pages/useSearchResults'
 
 const keyExtractor = (item: SearchAlgoliaHit) => item.objectID
