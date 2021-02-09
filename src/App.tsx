@@ -63,23 +63,23 @@ const AppComponent: FunctionComponent = function () {
   useStartBatchNotification()
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-        <GeolocationWrapper>
-          <AuthWrapper>
-            <SearchWrapper>
-              <I18nProvider language={i18n.language} i18n={i18n}>
-                <SafeAreaProvider>
+    <SafeAreaProvider>
+      <QueryClientProvider client={queryClient}>
+        <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+          <GeolocationWrapper>
+            <AuthWrapper>
+              <SearchWrapper>
+                <I18nProvider language={i18n.language} i18n={i18n}>
                   <SnackBarProvider>
                     <RootNavigator />
                   </SnackBarProvider>
-                </SafeAreaProvider>
-              </I18nProvider>
-            </SearchWrapper>
-          </AuthWrapper>
-        </GeolocationWrapper>
-      </ErrorBoundary>
-    </QueryClientProvider>
+                </I18nProvider>
+              </SearchWrapper>
+            </AuthWrapper>
+          </GeolocationWrapper>
+        </ErrorBoundary>
+      </QueryClientProvider>
+    </SafeAreaProvider>
   )
 }
 

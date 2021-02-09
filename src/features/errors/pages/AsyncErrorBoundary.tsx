@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useMemo } from 'react'
+import React, { useMemo, ReactNode } from 'react'
 import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
@@ -26,7 +26,7 @@ interface AsyncFallbackProps extends FallbackProps {
   resetErrorBoundary: (...args: Array<unknown>) => void
   error: AsyncError
   backNavigation?: boolean
-  header?: React.ReactNode
+  header?: ReactNode
 }
 
 export const AsyncErrorBoundaryWithoutNavigation = ({
@@ -86,21 +86,21 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   )
 }
 
-export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
+export const AsyncErrorBoundary = ({ backNavigation = true, ...rest }: AsyncFallbackProps) => {
   const { canGoBack, goBack } = useNavigation<UseNavigationType>()
   const { top } = useCustomSafeInsets()
 
   const navigation = useMemo(() => {
     return (
-      props.backNavigation &&
+      backNavigation &&
       canGoBack() && (
         <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
           <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
         </HeaderContainer>
       )
     )
-  }, [props.backNavigation, canGoBack, goBack])
-  return <AsyncErrorBoundaryWithoutNavigation {...props} header={navigation} />
+  }, [backNavigation, canGoBack, goBack])
+  return <AsyncErrorBoundaryWithoutNavigation {...rest} header={navigation} />
 }
 
 const Container = styled.View({
