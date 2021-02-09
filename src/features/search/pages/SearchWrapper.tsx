@@ -1,6 +1,4 @@
-import algoliasearch from 'algoliasearch'
 import React, { useContext, useEffect, useReducer } from 'react'
-import { Configure, InstantSearch } from 'react-instantsearch-native'
 
 import {
   Action,
@@ -8,8 +6,6 @@ import {
   searchReducer,
   SearchState,
 } from 'features/search/pages/reducer'
-import { buildSearchParameters } from 'libs/algolia/fetchAlgolia/fetchAlgolia'
-import { env } from 'libs/environment'
 import { useGeolocation } from 'libs/geolocation'
 
 export interface ISearchContext {
@@ -18,12 +14,10 @@ export interface ISearchContext {
 }
 
 export const SearchContext = React.createContext<ISearchContext | null>(null)
-const searchClient = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
 export const SearchWrapper = ({ children }: { children: Element }) => {
   const { position } = useGeolocation()
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
-  const { query, ...parameters } = searchState
 
   useEffect(() => {
     if (position !== null) {
@@ -33,13 +27,7 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
   }, [!position])
 
   return (
-    <SearchContext.Provider value={{ searchState, dispatch }}>
-      <InstantSearch searchClient={searchClient} indexName={env.ALGOLIA_INDEX_NAME}>
-        <Configure hitsPerPage={20} />
-        <Configure {...buildSearchParameters(parameters)} query={query} />
-        {children}
-      </InstantSearch>
-    </SearchContext.Provider>
+    <SearchContext.Provider value={{ searchState, dispatch }}>{children}</SearchContext.Provider>
   )
 }
 

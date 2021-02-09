@@ -1,14 +1,15 @@
+import { SearchResponse } from '@algolia/client-search'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
 import { SearchAlgoliaHit } from 'libs/algolia'
-import { useSearch } from './SearchWrapper'
 import { fetchAlgolia } from 'libs/algolia/fetchAlgolia'
-import { SearchResponse } from '@algolia/client-search'
+
 import { SearchParameters } from './reducer'
+import { useSearch } from './SearchWrapper'
 
 export const useSearchResults = () => {
   const { searchState } = useSearch()
-  const { showResults, ...searchParameters } = searchState
+  const { showResults: _showResults, ...searchParameters } = searchState
 
   return useInfiniteQuery<SearchResponse<SearchAlgoliaHit>>(
     ['searchResults', searchParameters],

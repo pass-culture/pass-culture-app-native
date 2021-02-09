@@ -3,9 +3,9 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { useSearchResults } from 'features/search/pages/useSearchResults'
 
 const formatNbHits = (nbHits: number) => {
   if (nbHits === 0) return _(t`Aucun résultat`)
