@@ -20,7 +20,8 @@ export function SecondCard(props: CardKey) {
         t`dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application.`
       )}
       title={_(t`Des offres pour tous`)}
-      {...props}
+      swiperRef={props.swiperRef}
+      name={props.name}
     />
   )
 }

@@ -12,7 +12,7 @@ type DotComponentProps = SwiperProps & {
   isActive?: boolean
 }
 
-// Class typing forced due to https://github.com/reactrondev/react-native-web-swiper/issues/56
+// Class typing forced due to https://github.com/reactrondev/react-native-web-swiper/pull/60
 export class DotComponent extends React.Component<DotComponentProps> {
   render() {
     const { isActive } = this.props

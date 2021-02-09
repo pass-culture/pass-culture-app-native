@@ -24,7 +24,7 @@ describe('<GenericCard />', () => {
   const subTitle = 'Subtitle'
   const text = 'Text'
   const title = 'Title'
-  it('should render correctly', async () => {
+  it('should render correctly', () => {
     const { getByText } = renderGenericCardComponent({
       buttonText,
       animation,
@@ -34,10 +34,10 @@ describe('<GenericCard />', () => {
       text,
       title,
     })
-    expect(await getByText(title)).toBeTruthy()
-    expect(await getByText(subTitle)).toBeTruthy()
-    expect(await getByText(text)).toBeTruthy()
-    const button = await getByText(buttonText)
+    expect(getByText(title)).toBeTruthy()
+    expect(getByText(subTitle)).toBeTruthy()
+    expect(getByText(text)).toBeTruthy()
+    const button = getByText(buttonText)
     expect(button).toBeTruthy()
     fireEvent.press(button)
     expect(buttonCallback).toHaveBeenCalled()

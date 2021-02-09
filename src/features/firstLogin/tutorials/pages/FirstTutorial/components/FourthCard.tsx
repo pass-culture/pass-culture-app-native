@@ -30,7 +30,8 @@ export function FourthCard(props: CardKey) {
         t`Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !`
       )}
       title={_(t`Des nouveautés`)}
-      {...props}
+      swiperRef={props.swiperRef}
+      name={props.name}
     />
   )
 }
