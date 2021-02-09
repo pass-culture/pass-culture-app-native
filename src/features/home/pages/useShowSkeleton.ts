@@ -17,7 +17,7 @@ export const useShowSkeleton = function () {
   const isFetching = useIsFetching()
 
   useEffect(() => {
-    if (hasFetchedSubmodules(queryClient.getCache())) {
+    if (hasFetchedSubmodules(queryClient.getQueryCache())) {
       // minimum delay so that the tiles images are loaded
       setTimeout(() => setShowSkeleton(false), ANIMATION_DELAY + DEFAULT_SPLASHSCREEN_DELAY)
     }
