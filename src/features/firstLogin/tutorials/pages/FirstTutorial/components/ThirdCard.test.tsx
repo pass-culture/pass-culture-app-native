@@ -2,7 +2,6 @@ import { renderHook } from '@testing-library/react-hooks'
 import { fireEvent, render } from '@testing-library/react-native'
 import React, { createRef, RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
-import waitForExpect from 'wait-for-expect'
 
 import { analytics } from 'libs/analytics'
 
@@ -26,23 +25,17 @@ jest.mock('libs/geolocation', () => {
 })
 
 describe('ThirdCard', () => {
-  it('should render third card', async () => {
+  it('should render third card', () => {
     const firstTutorial = render(<ThirdCard />)
     expect(firstTutorial).toMatchSnapshot()
   })
   it('should swipe to next card on button press', async () => {
     const ref = createRef<Swiper>()
-    const { getByText } = render(
-      <Swiper ref={ref}>
-        <ThirdCard swiperRef={ref} />
-      </Swiper>
-    )
+    const { getByText } = render(<ThirdCard swiperRef={ref} />)
     const button = await getByText('Activer la géolocalisation')
     fireEvent.press(button)
-    await waitForExpect(() => {
-      expect(mockRootSpy).toHaveBeenCalled()
-      expect(mockSpy).toHaveBeenCalled()
-    })
+    expect(mockRootSpy).toHaveBeenCalled()
+    expect(mockSpy).toHaveBeenCalled()
   })
   it('should trigger analytics logHasActivateGeolocFromTutorial', async () => {
     const ref = {

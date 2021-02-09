@@ -15,11 +15,9 @@ describe('<GenericTutorial />', () => {
       <Text>{props.swiperRef ? 'swipeRef exist' : 'swipeRef does not exist'}</Text>
     </View>
   )
-  it('should render correctly', async () => {
+  it('should render correctly', () => {
     const renderAPI = renderGenericTutorialComponent()
-    await waitFor(() => {
-      expect(renderAPI).toMatchSnapshot()
-    })
+    expect(renderAPI).toMatchSnapshot()
   })
   it('should redirect on home, set has_seen_tutorials in storage and run analytics when pressing skip all button', async () => {
     const name = 'Tuto'

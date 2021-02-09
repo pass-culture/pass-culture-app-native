@@ -5,16 +5,10 @@ import styled from 'styled-components/native'
 import { Dot } from 'ui/svg/icons/Dot'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
-const DotContainer = styled.View({
-  alignSelf: 'center',
-  marginLeft: getSpacing(2),
-  marginRight: getSpacing(2),
-})
-
 const CURRENT_STEP_SIZE = 12
 const DEFAULT_SIZE = 8
 
-export type DotComponentProps = SwiperProps & {
+type DotComponentProps = SwiperProps & {
   isActive?: boolean
 }
 
@@ -33,3 +27,9 @@ export class DotComponent extends React.Component<DotComponentProps> {
     )
   }
 }
+
+const DotContainer = styled.View({
+  alignSelf: 'center',
+  marginLeft: getSpacing(2),
+  marginRight: getSpacing(2),
+})

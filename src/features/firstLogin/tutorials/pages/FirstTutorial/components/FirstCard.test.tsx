@@ -2,12 +2,11 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { fireEvent, render } from '@testing-library/react-native'
 import React, { createRef } from 'react'
 import Swiper from 'react-native-web-swiper'
-import waitForExpect from 'wait-for-expect'
 
 import { FirstCard } from './FirstCard'
 
 describe('FirstCard', () => {
-  it('should render first card', async () => {
+  it('should render first card', () => {
     const firstTutorial = render(<FirstCard />)
     expect(firstTutorial).toMatchSnapshot()
   })
@@ -23,12 +22,8 @@ describe('FirstCard', () => {
     if (goToNext) {
       const spy = jest.spyOn(goToNext, 'goToNext')
       fireEvent.press(button)
-      await waitForExpect(() => {
-        expect(AsyncStorage.setItem).toBeCalledWith('has_seen_tutorials', 'true')
-        expect(spy).toHaveBeenCalled()
-      })
-    } else {
-      throw Error('Cannot read swiper reference')
+      expect(AsyncStorage.setItem).toBeCalledWith('has_seen_tutorials', 'true')
+      expect(spy).toHaveBeenCalled()
     }
   })
 })

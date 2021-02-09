@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { fireEvent, render, waitFor } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import AnimatedLottieView from 'lottie-react-native'
 import React, { RefObject } from 'react'
 import { View } from 'react-native'
@@ -27,17 +27,15 @@ describe('<GenericCard />', () => {
       text,
       title,
     })
-    await waitFor(async () => {
-      expect(await getByText(title)).toBeTruthy()
-      expect(await getByText(subTitle)).toBeTruthy()
-      expect(await getByText(text)).toBeTruthy()
-      const button = await getByText(buttonText)
-      expect(button).toBeTruthy()
-      fireEvent.press(button)
-      expect(buttonCallback).toHaveBeenCalled()
-    })
+    expect(await getByText(title)).toBeTruthy()
+    expect(await getByText(subTitle)).toBeTruthy()
+    expect(await getByText(text)).toBeTruthy()
+    const button = await getByText(buttonText)
+    expect(button).toBeTruthy()
+    fireEvent.press(button)
+    expect(buttonCallback).toHaveBeenCalled()
   })
-  it('should play animation', async () => {
+  it('should play animation', () => {
     const ref = {
       current: {
         play: jest.fn(),
@@ -51,7 +49,7 @@ describe('<GenericCard />', () => {
     )
     expect(ref.current.play).toHaveBeenCalledTimes(1)
   })
-  it('should animate button with fadeIn when activeIndex is index', async () => {
+  it('should animate button with fadeIn when activeIndex is index', () => {
     const ref = {
       current: {
         fadeIn: jest.fn(),
@@ -66,7 +64,7 @@ describe('<GenericCard />', () => {
     expect(ref.current.fadeIn).toHaveBeenCalledTimes(1)
     expect(ref.current.fadeOut).toHaveBeenCalledTimes(0)
   })
-  it('should animate button with fadeOut when activeIndex is not index', async () => {
+  it('should animate button with fadeOut when activeIndex is not index', () => {
     const ref = {
       current: {
         fadeIn: jest.fn(),
