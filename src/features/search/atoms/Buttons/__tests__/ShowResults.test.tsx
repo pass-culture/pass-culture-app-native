@@ -3,7 +3,15 @@ import React from 'react'
 
 import { ColorsEnum } from 'ui/theme'
 
-import { ShowResultsComponent } from '../ShowResults'
+import { ShowResults } from '../ShowResults'
+
+let mockData = { pages: [{ nbHits: 0 }] }
+jest.mock('features/search/pages/useSearchResults', () => ({
+  useSearchResults: () => ({
+    data: mockData,
+    isFetching: false,
+  }),
+}))
 
 describe('<ShowResults />', () => {
   it.each`
@@ -16,7 +24,8 @@ describe('<ShowResults />', () => {
   `(
     'should display the correct translation ($expected) and be disabled=$disabled',
     ({ nbHits, expected, disabled }) => {
-      const { getByTestId } = render(<ShowResultsComponent nbHits={nbHits} />)
+      mockData = { pages: [{ nbHits }] }
+      const { getByTestId } = render(<ShowResults />)
       expect(getByTestId('button-title')).toBeTruthy()
       expect(getByTestId('button-title').children[0]).toBe(expected)
 

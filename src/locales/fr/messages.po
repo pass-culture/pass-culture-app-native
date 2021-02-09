@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/libs/parsers/getDisplayPrice.ts:27
+#: src/libs/parsers/getDisplayPrice.ts:29
 msgid "/ place"
 msgstr "/ place"
 
@@ -105,10 +105,6 @@ msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 msgid "Annuler"
 msgstr "Annuler"
 
-#: src/libs/storage.ts:23
-msgid "Aucun access token à sauvegarder"
-msgstr "Aucun access token à sauvegarder"
-
 #: src/features/search/pages/SuggestedPlaces.tsx:41
 msgid "Aucun lieu ne correspond à ta recherche"
 msgstr "Aucun lieu ne correspond à ta recherche"
@@ -120,6 +116,10 @@ msgstr "Aucun refresh token à sauvegarder"
 #: src/features/search/atoms/Buttons/ShowResults.tsx:9
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
+
+#: src/libs/storage.ts:35
+msgid "Aucune valeur à sauvegarder"
+msgstr "Aucune valeur à sauvegarder"
 
 #: src/features/search/sections/OfferDate.tsx:34
 msgid "Aujourd'hui"
@@ -186,7 +186,7 @@ msgid "Cheater Zone"
 msgstr "Cheater Zone"
 
 #: src/features/search/components/locationChoice.utils.tsx:17
-#: src/features/search/pages/LocationPicker.tsx:49
+#: src/features/search/pages/LocationPicker.tsx:47
 msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
@@ -278,7 +278,7 @@ msgstr "Date de l'offre"
 msgid "Date précise"
 msgstr "Date précise"
 
-#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:15
+#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:19
 msgid "Des nouveautés"
 msgstr "Des nouveautés"
 
@@ -305,7 +305,7 @@ msgstr "Duo"
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
-#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:15
+#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:19
 msgid "Découvrir"
 msgstr "Découvrir"
 
@@ -336,12 +336,12 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: src/features/search/atoms/Buttons/Filter.tsx:21
-#: src/features/search/pages/SearchFilter.tsx:98
+#: src/features/search/pages/SearchFilter.tsx:97
 msgid "Filtrer"
 msgstr "Filtrer"
 
-#: src/libs/parsers/getDisplayPrice.ts:19
-#: src/libs/parsers/getDisplayPrice.ts:26
+#: src/libs/parsers/getDisplayPrice.ts:21
+#: src/libs/parsers/getDisplayPrice.ts:28
 msgid "Gratuit"
 msgstr "Gratuit"
 
@@ -453,7 +453,7 @@ msgstr "Mot de passe oublié ?"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:15
+#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:19
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 
@@ -615,7 +615,7 @@ msgstr "Réserver"
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
-#: src/features/search/pages/LocationPicker.tsx:44
+#: src/features/search/pages/LocationPicker.tsx:42
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
@@ -628,18 +628,18 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/sections/Location.tsx:33
-msgid "Seules les Sorties et offres Physiques seront affichées"
-msgstr "Seules les Sorties et offres Physiques seront affichées"
-
-#: src/features/search/pages/LocationFilter.tsx:46
-msgid "Seules les Sorties et offres Physiques seront affichées pour une recherche avec une localisation"
-msgstr "Seules les Sorties et offres Physiques seront affichées pour une recherche avec une localisation"
-
 #: src/features/search/sections/Date.tsx:15
 #: src/features/search/sections/Hour.tsx:15
 msgid "Seules les Sorties seront affichées"
 msgstr "Seules les Sorties seront affichées"
+
+#: src/features/search/sections/Location.tsx:33
+msgid "Seules les sorties et offres physiques seront affichées"
+msgstr "Seules les sorties et offres physiques seront affichées"
+
+#: src/features/search/pages/LocationFilter.tsx:46
+msgid "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
+msgstr "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:43
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
@@ -697,7 +697,7 @@ msgstr "Ton mot de passe"
 msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
-#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:31
+#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:33
 msgid "Tout passer"
 msgstr "Tout passer"
 
@@ -849,7 +849,7 @@ msgstr "intervenant"
 msgid "metteur en scène"
 msgstr "metteur en scène"
 
-#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:15
+#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:19
 msgid "quotidiennes"
 msgstr "quotidiennes"
 

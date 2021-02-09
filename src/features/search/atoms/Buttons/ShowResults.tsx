@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
-import { connectStats } from 'react-instantsearch-native'
+import React, { useEffect, useState } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
@@ -14,8 +14,17 @@ const formatNbHits = (nbHits: number) => {
   return _(t`Afficher les ${nbHits} résultats`)
 }
 
-export const ShowResultsComponent: React.FC<{ nbHits: number }> = ({ nbHits }) => {
+export const ShowResults: React.FC = () => {
   const { goBack } = useNavigation<UseNavigationType>()
+  const { data, isFetching } = useSearchResults()
+  const [nbHits, setNbHits] = useState<number>(data ? data.pages[0].nbHits : 0)
+
+  useEffect(() => {
+    if (!isFetching) {
+      setNbHits(data ? data.pages[0].nbHits : 0)
+    }
+  }, [data, isFetching])
+
   return (
     <ButtonPrimary
       title={formatNbHits(nbHits)}
@@ -25,5 +34,3 @@ export const ShowResultsComponent: React.FC<{ nbHits: number }> = ({ nbHits }) =
     />
   )
 }
-
-export const ShowResults = connectStats(ShowResultsComponent)

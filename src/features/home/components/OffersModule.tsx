@@ -53,6 +53,8 @@ const renderSeeMore = (showSeeMore: boolean, layout: Layout, onPressSeeMore: () 
     <Spacer.Row numberOfSpaces={6} />
   )
 
+const keyExtractor = (item: AlgoliaHit) => item.objectID
+
 export const OffersModule = (props: OffersModuleProps) => {
   const { hits, nbHits, display, algolia: parameters, position, index, isBeneficiary } = props
   const [hasSeenAllTiles, setHasSeenAllTiles] = useState<boolean>(false)
@@ -119,9 +121,9 @@ export const OffersModule = (props: OffersModuleProps) => {
         horizontal
         data={hits}
         renderItem={renderItem}
-        keyExtractor={(item) => item.objectID}
+        keyExtractor={keyExtractor}
         ListHeaderComponent={renderHeaderCover(props.cover, display.layout)}
-        ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
+        ItemSeparatorComponent={Separator}
         ListFooterComponent={renderSeeMore(showSeeMore, display.layout, onPressSeeMore)}
         showsHorizontalScrollIndicator={false}
         onEndReached={logAllTilesSeenOnEndReached}
@@ -132,3 +134,4 @@ export const OffersModule = (props: OffersModuleProps) => {
 }
 
 const Row = styled.View({ flexDirection: 'row' })
+const Separator = () => <Spacer.Row numberOfSpaces={4} />

@@ -4,7 +4,7 @@ import { SuggestedPlace } from 'libs/place'
 
 import { clampPrice, addOrRemove } from './reducer.helpers'
 
-export type SearchParameters = Omit<FetchAlgoliaParameters, 'hitsPerPage' | 'page' | 'keywords'>
+export type SearchParameters = Omit<FetchAlgoliaParameters, 'hitsPerPage' | 'page' | 'query'>
 export type SearchState = SearchParameters & { showResults: boolean; query: string }
 
 export const initialSearchState: SearchState = {

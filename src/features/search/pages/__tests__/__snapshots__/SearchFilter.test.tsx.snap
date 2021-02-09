@@ -142,7 +142,7 @@ Array [
             ]
           }
         >
-          Seules les Sorties et offres Physiques seront affichées
+          Seules les sorties et offres physiques seront affichées
         </Text>
       </View>
       <View
@@ -2715,7 +2715,7 @@ Array [
   >
     <View
       accessible={true}
-      focusable={true}
+      focusable={false}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -2726,7 +2726,7 @@ Array [
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#eb0055",
+          "backgroundColor": "#ff99be",
           "borderRadius": 24,
           "borderWidth": 0,
           "flexDirection": "row",
@@ -2761,7 +2761,7 @@ Array [
         testID="button-title"
         textColor="#ffffff"
       >
-        Afficher les 2 résultats
+        Aucun résultat
       </Text>
     </View>
     <View

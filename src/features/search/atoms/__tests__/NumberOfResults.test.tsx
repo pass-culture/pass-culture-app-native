@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import { NumberOfResultsComponent as NumberOfResults } from '../NumberOfResults'
+import { NumberOfResults } from '../NumberOfResults'
 
 describe('NumberOfResults component', () => {
   it('should correctly format the number of hit', () => {

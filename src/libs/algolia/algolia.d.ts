@@ -56,3 +56,13 @@ export interface AlgoliaHit {
   _geoloc: Geoloc
   objectID: string
 }
+
+type PartialOffer = Pick<
+  Offer,
+  'category' | 'dates' | 'id' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'prices'
+>
+export interface SearchAlgoliaHit {
+  offer: PartialOffer
+  objectID: string
+  _geoloc: Geoloc
+}

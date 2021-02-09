@@ -30,7 +30,7 @@ describe('OfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    const { toJSON } = render(<OfferTile {...props} />)
+    const { toJSON } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     expect(toJSON()).toMatchSnapshot()
   })
 

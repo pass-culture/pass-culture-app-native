@@ -1,5 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
+import isEqual from 'lodash.isequal'
+import uniqWith from 'lodash.uniqwith'
 import React from 'react'
 import { FlatList, Text } from 'react-native'
 import styled from 'styled-components/native'
@@ -15,19 +17,23 @@ export const keyExtractor = ({ geolocation, name }: SuggestedPlace) => {
   return `${name.short}-${name.long}`
 }
 
-const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => (
-  <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
-    <Text numberOfLines={1}>
-      <Typo.ButtonText>{place.name.short}</Typo.ButtonText>
-      <Spacer.Row numberOfSpaces={1} />
-      <Typo.Body>
-        {REGEX_STARTING_WITH_NUMBERS.test(place.name.short)
-          ? place.extraData.city
-          : place.extraData.department}
-      </Typo.Body>
-    </Text>
-  </ItemContainer>
-)
+const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => {
+  const placeNameStartsWithNumbers = REGEX_STARTING_WITH_NUMBERS.test(place.name.short)
+
+  return (
+    <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
+      <Text numberOfLines={2}>
+        <Typo.ButtonText>
+          {placeNameStartsWithNumbers ? place.name.short : place.name.long}
+        </Typo.ButtonText>
+        <Spacer.Row numberOfSpaces={1} />
+        <Typo.Body>
+          {placeNameStartsWithNumbers ? place.extraData.city : place.extraData.department}
+        </Typo.Body>
+      </Text>
+    </ItemContainer>
+  )
+}
 
 interface Props {
   places: SuggestedPlace[]
@@ -48,9 +54,11 @@ export const SuggestedPlaces: React.FC<Props> = ({ places, query, isLoading }) =
     goBack()
   }
 
+  const filteredPlaces = uniqWith(places, isEqual)
+
   return (
     <FlatList
-      data={places}
+      data={filteredPlaces}
       keyExtractor={keyExtractor}
       renderItem={({ item: place }) => <PlaceHit place={place} onPress={onPickPlace(place)} />}
       ListEmptyComponent={() => <NoSuggestedPlaces show={query.length > 0 && !isLoading} />}

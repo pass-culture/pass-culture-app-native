@@ -1,3 +1,3 @@
 export { parseAlgoliaParameters } from './parseAlgoliaParameters'
-export type { AlgoliaHit, Geoloc } from './algolia.d'
+export type { AlgoliaHit, SearchAlgoliaHit, Geoloc } from './algolia.d'
 export * from './types'
