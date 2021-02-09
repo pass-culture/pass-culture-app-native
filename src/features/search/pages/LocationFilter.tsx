@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, ViewStyle } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { LocationType } from 'libs/algolia'
@@ -49,7 +49,7 @@ export const LocationFilter: React.FC = () => {
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <ScrollView>
+      <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.Column numberOfSpaces={14} />
         <Spacer.Column numberOfSpaces={6} />
         <Banner
@@ -83,3 +83,5 @@ export const LocationFilter: React.FC = () => {
     </React.Fragment>
   )
 }
+
+const contentContainerStyle: ViewStyle = { flexGrow: 1 }

@@ -12,7 +12,13 @@ Array [
       ]
     }
   />,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "flexGrow": 1,
+      }
+    }
+  >
     <View>
       <View
         numberOfSpaces={14}
@@ -148,7 +154,10 @@ Array [
             Array [
               Object {
                 "alignItems": "center",
+                "flexBasis": 0,
                 "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }
@@ -171,6 +180,7 @@ Array [
           />
           <Text
             color="#151515"
+            numberOfLines={2}
             style={
               Array [
                 Object {
@@ -185,17 +195,6 @@ Array [
             Choisir un lieu
           </Text>
         </View>
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
         <View
           numberOfSpaces={2}
           style={
@@ -250,7 +249,10 @@ Array [
             Array [
               Object {
                 "alignItems": "center",
+                "flexBasis": 0,
                 "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }
@@ -273,6 +275,7 @@ Array [
           />
           <Text
             color="#151515"
+            numberOfLines={2}
             style={
               Array [
                 Object {
@@ -287,17 +290,6 @@ Array [
             Autour de moi
           </Text>
         </View>
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        />
         <View
           numberOfSpaces={10}
           style={
@@ -346,7 +338,10 @@ Array [
             Array [
               Object {
                 "alignItems": "center",
+                "flexBasis": 0,
                 "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }
@@ -369,6 +364,7 @@ Array [
           />
           <Text
             color="#eb0055"
+            numberOfLines={2}
             style={
               Array [
                 Object {
@@ -387,19 +383,19 @@ Array [
           style={
             Array [
               Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
+                "alignItems": "flex-end",
+                "width": 64,
               },
             ]
           }
-        />
-        <View
-          height={32}
-          testID="validateIcon"
-          width={32}
         >
-          validateIcon-SVG-Mock
+          <View
+            height={32}
+            testID="validateIcon"
+            width={32}
+          >
+            validateIcon-SVG-Mock
+          </View>
         </View>
         <View
           numberOfSpaces={10}
