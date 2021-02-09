@@ -3,14 +3,6 @@ import { SearchResponse } from '@algolia/client-search'
 import { CategoryNameEnum } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
 
-/**
- * _highlightResult(s) are commented due to
- * a mismatch between algoliasearch declared types
- * and actual received data
- *
- * this part is commented so we still have the snapshot of it
- */
-
 export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
   hits: [
     {
@@ -57,37 +49,6 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       },
       _geoloc: { lat: 48.94374, lng: 2.48171 },
       objectID: 'AGHYQ',
-      /* _highlightResult: {
-        offer: {
-          description: {
-            value:
-              "Bel astre voyageur, hôte qui nous arrives, Des profondeurs du ciel et qu'on n'attendait pas, Où vas-tu ? Quel dessein pousse vers nous tes pas ? Toi qui vogues au large en cette mer sans rives",
-            matchLevel: 'none',
-            matchedWords: [],
-          },
-          id: { value: 'AGHYQ', matchLevel: 'none', matchedWords: [] },
-          label: { value: 'Abonnements concerts', matchLevel: 'none', matchedWords: [] },
-          musicSubType: { value: '914', matchLevel: 'none', matchedWords: [] },
-          musicType: { value: '900', matchLevel: 'none', matchedWords: [] },
-          name: {
-            value: 'Mensch ! Où sont les Hommes ?',
-            matchLevel: 'none',
-            matchedWords: [],
-          },
-          type: { value: 'Écouter', matchLevel: 'none', matchedWords: [] },
-        },
-        offerer: {
-          name: {
-            value: 'Danse Jazz Dans Tes Bottes',
-            matchLevel: 'none',
-            matchedWords: [],
-          },
-        },
-        venue: {
-          city: { value: 'Aulnay-sous-Bois', matchLevel: 'none', matchedWords: [] },
-          name: { value: 'Michel et son accordéon', matchLevel: 'none', matchedWords: [] },
-        },
-      }, */
     },
     {
       offer: {
@@ -133,31 +94,6 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       },
       _geoloc: { lat: 48.91265, lng: 2.4513 },
       objectID: 'AGHYA',
-      /* _highlightResult: {
-        offer: {
-          author: { value: 'Catherine Mater', matchLevel: 'none', matchedWords: [] },
-          description: {
-            value:
-              "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
-            matchLevel: 'none',
-            matchedWords: [],
-          },
-          id: { value: 'AGHYA', matchLevel: 'none', matchedWords: [] },
-          label: { value: 'Musique', matchLevel: 'none', matchedWords: [] },
-          musicSubType: { value: '914', matchLevel: 'none', matchedWords: [] },
-          musicType: { value: '900', matchLevel: 'none', matchedWords: [] },
-          name: { value: 'I want something more', matchLevel: 'none', matchedWords: [] },
-          performer: { value: 'Frank Despacito', matchLevel: 'none', matchedWords: [] },
-          type: { value: 'Écouter', matchLevel: 'none', matchedWords: [] },
-        },
-        offerer: {
-          name: { value: 'Club Dorothy', matchLevel: 'none', matchedWords: [] },
-        },
-        venue: {
-          city: { value: 'Drancy', matchLevel: 'none', matchedWords: [] },
-          name: { value: 'Maison de la Brique', matchLevel: 'none', matchedWords: [] },
-        },
-      }, */
     },
     {
       offer: {
@@ -202,21 +138,6 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
       objectID: 'AGHWS',
-      /* _highlightResult: {
-        offer: {
-          id: { value: 'AGHWS', matchLevel: 'none', matchedWords: [] },
-          label: { value: 'Concert ou festival', matchLevel: 'none', matchedWords: [] },
-          name: { value: 'Un lit sous une rivière', matchLevel: 'none', matchedWords: [] },
-          type: { value: 'Écouter', matchLevel: 'none', matchedWords: [] },
-        },
-        offerer: {
-          name: { value: 'Théâtre Balboa', matchLevel: 'none', matchedWords: [] },
-        },
-        venue: {
-          city: { value: 'Cayenne', matchLevel: 'none', matchedWords: [] },
-          name: { value: 'Espace des Gnoux', matchLevel: 'none', matchedWords: [] },
-        },
-      }, */
     },
     {
       offer: {
@@ -262,29 +183,6 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
       objectID: 'AGH2M',
-      /* _highlightResult: {
-        offer: {
-          description: {
-            value:
-              "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
-            matchLevel: 'none',
-            matchedWords: [],
-          },
-          id: { value: 'AGH2M', matchLevel: 'none', matchedWords: [] },
-          label: { value: 'Abonnements concerts', matchLevel: 'none', matchedWords: [] },
-          musicSubType: { value: '892', matchLevel: 'none', matchedWords: [] },
-          musicType: { value: '880', matchLevel: 'none', matchedWords: [] },
-          name: { value: 'I want something more', matchLevel: 'none', matchedWords: [] },
-          type: { value: 'Écouter', matchLevel: 'none', matchedWords: [] },
-        },
-        offerer: {
-          name: { value: 'Théâtre Balboa', matchLevel: 'none', matchedWords: [] },
-        },
-        venue: {
-          city: { value: 'Cayenne', matchLevel: 'none', matchedWords: [] },
-          name: { value: 'Espace des Gnoux', matchLevel: 'none', matchedWords: [] },
-        },
-      }, */
     },
   ],
   nbHits: 4,

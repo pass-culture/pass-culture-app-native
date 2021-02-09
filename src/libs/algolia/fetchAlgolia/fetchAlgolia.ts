@@ -52,7 +52,12 @@ export const fetchAlgolia = <T>({
   const searchParameters = buildSearchParameters(parameters)
   const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
 
-  return index.search<T>(keywords, { page, ...buildHitsPerPage(hitsPerPage), ...searchParameters })
+  return index.search<T>(keywords, {
+    page,
+    ...buildHitsPerPage(hitsPerPage),
+    ...searchParameters,
+    attributesToHighlight: [], // We disable highlighting for performance reasons
+  })
 }
 
 const buildHitsPerPage = (hitsPerPage: FetchAlgoliaParameters['hitsPerPage']) =>
