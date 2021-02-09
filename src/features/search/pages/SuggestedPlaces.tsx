@@ -1,5 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
+import isEqual from 'lodash.isequal'
+import uniqWith from 'lodash.uniqwith'
 import React from 'react'
 import { FlatList, Text } from 'react-native'
 import styled from 'styled-components/native'
@@ -52,9 +54,11 @@ export const SuggestedPlaces: React.FC<Props> = ({ places, query, isLoading }) =
     goBack()
   }
 
+  const filteredPlaces = uniqWith(places, isEqual)
+
   return (
     <FlatList
-      data={places}
+      data={filteredPlaces}
       keyExtractor={keyExtractor}
       renderItem={({ item: place }) => <PlaceHit place={place} onPress={onPickPlace(place)} />}
       ListEmptyComponent={() => <NoSuggestedPlaces show={query.length > 0 && !isLoading} />}
