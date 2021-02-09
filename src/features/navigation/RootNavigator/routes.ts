@@ -21,10 +21,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
-import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial'
-import { FourthTutorial } from 'features/firstLogin/tutorials/pages/FourthTutorial'
-import { SecondTutorial } from 'features/firstLogin/tutorials/pages/SecondTutorial'
-import { ThirdTutorial } from 'features/firstLogin/tutorials/pages/ThirdTutorial'
+import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial/FirstTutorial'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { Profile } from 'features/profile/pages/Profile'
@@ -75,17 +72,6 @@ const routes: Array<Route> = [
   { name: 'TemporyProfilePage', component: TemporyProfilePage },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial, options: TransitionPresets.SlideFromRightIOS },
-  {
-    name: 'SecondTutorial',
-    component: SecondTutorial,
-    options: TransitionPresets.SlideFromRightIOS,
-  },
-  { name: 'ThirdTutorial', component: ThirdTutorial, options: TransitionPresets.SlideFromRightIOS },
-  {
-    name: 'FourthTutorial',
-    component: FourthTutorial,
-    options: TransitionPresets.SlideFromRightIOS,
-  },
 ]
 
 export default routes

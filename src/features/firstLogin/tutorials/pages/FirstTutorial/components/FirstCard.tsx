@@ -1,34 +1,26 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { GenericTutorial } from 'features/firstLogin/tutorials/components/GenericTutorial'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { CardKey, GenericCard } from 'features/firstLogin/tutorials/components/GenericCard'
 import { _ } from 'libs/i18n'
+import { storage } from 'libs/storage'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 
-export function FirstTutorial() {
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  function onSwipeLeft() {
-    navigate('SecondTutorial')
-  }
-
+export function FirstCard(props: CardKey) {
   function onButtonPress() {
-    navigate('SecondTutorial')
+    storage.saveObject('has_seen_tutorials', true)
+    props.swiperRef?.current?.goToNext()
   }
-
   return (
-    <GenericTutorial
+    <GenericCard
       animation={TutorialPassLogo}
       buttonCallback={onButtonPress}
       buttonText={_(t`Continuer`)}
       pauseAnimationOnRenderAtFrame={62}
-      onSwipeLeft={onSwipeLeft}
-      step={1}
       subTitle={_(t`c'est...`)}
       text={_(t`une initiative financée par le Ministère de la Culture.`)}
       title={_(t`Le pass Culture`)}
+      {...props}
     />
   )
 }

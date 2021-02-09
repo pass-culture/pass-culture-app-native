@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DotComponent /> renders dot active color 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "marginLeft": 8,
+        "marginRight": 8,
+      },
+    ]
+  }
+>
+  <View
+    fill="#eb0055"
+    height={12}
+    testID="dot-icon"
+    width={12}
+  >
+    dot-icon-SVG-Mock
+  </View>
+</View>
+`;
+
+exports[`<DotComponent /> should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "marginLeft": 8,
+        "marginRight": 8,
+      },
+    ]
+  }
+>
+  <View
+    fill="#c7c7cc"
+    height={8}
+    testID="dot-icon"
+    width={8}
+  >
+    dot-icon-SVG-Mock
+  </View>
+</View>
+`;
