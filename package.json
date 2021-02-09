@@ -82,7 +82,6 @@
     "react-native-sensitive-info": "^5.5.5",
     "react-native-splash-screen": "^3.2.0",
     "react-native-svg": "^12.1.0",
-    "react-native-swipe-gestures": "^1.0.5",
     "react-native-web-swiper": "2.2.0",
     "react-native-webview": "^10.10.0",
     "react-query": "3.1.1",
