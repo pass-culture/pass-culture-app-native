@@ -15,19 +15,23 @@ export const keyExtractor = ({ geolocation, name }: SuggestedPlace) => {
   return `${name.short}-${name.long}`
 }
 
-const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => (
-  <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
-    <Text numberOfLines={1}>
-      <Typo.ButtonText>{place.name.short}</Typo.ButtonText>
-      <Spacer.Row numberOfSpaces={1} />
-      <Typo.Body>
-        {REGEX_STARTING_WITH_NUMBERS.test(place.name.short)
-          ? place.extraData.city
-          : place.extraData.department}
-      </Typo.Body>
-    </Text>
-  </ItemContainer>
-)
+const PlaceHit: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => {
+  const placeNameStartsWithNumbers = REGEX_STARTING_WITH_NUMBERS.test(place.name.short)
+
+  return (
+    <ItemContainer onPress={onPress} testID={keyExtractor(place)}>
+      <Text numberOfLines={2}>
+        <Typo.ButtonText>
+          {placeNameStartsWithNumbers ? place.name.short : place.name.long}
+        </Typo.ButtonText>
+        <Spacer.Row numberOfSpaces={1} />
+        <Typo.Body>
+          {placeNameStartsWithNumbers ? place.extraData.city : place.extraData.department}
+        </Typo.Body>
+      </Text>
+    </ItemContainer>
+  )
+}
 
 interface Props {
   places: SuggestedPlace[]
