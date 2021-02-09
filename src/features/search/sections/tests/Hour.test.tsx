@@ -19,13 +19,13 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 
 describe('Hour component', () => {
   it('should be controlled by searchState.timeRange', () => {
-    expect(render(<HourSection />).getByTestId('filterSwitch').props.value).toBeFalsy()
+    expect(render(<HourSection />).getByTestId('switchBackground').props.active).toBeFalsy()
     mockSearchState = { ...initialSearchState, timeRange }
-    expect(render(<HourSection />).getByTestId('filterSwitch').props.value).toBeTruthy()
+    expect(render(<HourSection />).getByTestId('switchBackground').props.active).toBeTruthy()
   })
   it('should dispatch TOGGLE_HOUR onPress', () => {
     const { getByTestId } = render(<HourSection />)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', true)
+    fireEvent.press(getByTestId('filterSwitch'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_HOUR' })
   })
 

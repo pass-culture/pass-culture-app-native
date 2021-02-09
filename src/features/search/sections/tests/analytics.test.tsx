@@ -72,32 +72,32 @@ describe('Analytics - logUseFilter', () => {
 
   it('should log UseFilter once when changing free offer', () => {
     const { getByTestId } = render(<Section.FreeOffer />)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', true)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', false)
+    fireEvent.press(getByTestId('filterSwitch'))
+    fireEvent.press(getByTestId('filterSwitch'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Free)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
 
   it('should log UseFilter once when changing duo offer', () => {
     const { getByTestId } = render(<Section.DuoOffer />)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', true)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', false)
+    fireEvent.press(getByTestId('filterSwitch'))
+    fireEvent.press(getByTestId('filterSwitch'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Duo)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
 
   it('should log UseFilter once when changing new offer', () => {
     const { getByTestId } = render(<Section.NewOffer />)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', true)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', false)
+    fireEvent.press(getByTestId('filterSwitch'))
+    fireEvent.press(getByTestId('filterSwitch'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.New)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
 
   it('should log UseFilter once when changing date filter', () => {
     const { getByTestId } = render(<Section.Date />)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', true)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', false)
+    fireEvent.press(getByTestId('filterSwitch'))
+    fireEvent.press(getByTestId('filterSwitch'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Date)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
@@ -112,8 +112,8 @@ describe('Analytics - logUseFilter', () => {
   })
   it('should log UseFilter once when changing hour filter', () => {
     const { getByTestId } = render(<Section.Hour />)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', true)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', false)
+    fireEvent.press(getByTestId('filterSwitch'))
+    fireEvent.press(getByTestId('filterSwitch'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
@@ -132,8 +132,8 @@ describe('Analytics - logUseFilter', () => {
     const slider = getByTestId('slider').children[0] as ReactTestInstance
     const hourSwitch = render(<Section.Hour />).getByTestId('filterSwitch')
 
-    fireEvent(hourSwitch, 'onValueChange', true)
-    fireEvent(hourSwitch, 'onValueChange', false)
+    fireEvent.press(hourSwitch)
+    fireEvent.press(hourSwitch)
 
     slider.props.onValuesChangeFinish([8, 21])
     slider.props.onValuesChangeFinish([18, 21])

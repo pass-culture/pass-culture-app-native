@@ -17,13 +17,13 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 
 describe('FreeOffer component', () => {
   it('should be controlled by searchState.offerIsFree', () => {
-    expect(render(<FreeOffer />).getByTestId('filterSwitch').props.value).toBeFalsy()
+    expect(render(<FreeOffer />).getByTestId('switchBackground').props.active).toBeFalsy()
     mockSearchState = { ...initialSearchState, offerIsFree: true }
-    expect(render(<FreeOffer />).getByTestId('filterSwitch').props.value).toBeTruthy()
+    expect(render(<FreeOffer />).getByTestId('switchBackground').props.active).toBeTruthy()
   })
   it('should dispatch TOGGLE_OFFER_FREE onPress', () => {
     const { getByTestId } = render(<FreeOffer />)
-    fireEvent(getByTestId('filterSwitch'), 'onValueChange', true)
+    fireEvent.press(getByTestId('filterSwitch'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_FREE' })
   })
 
