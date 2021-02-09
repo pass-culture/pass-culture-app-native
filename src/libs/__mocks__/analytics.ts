@@ -40,4 +40,6 @@ export const analytics: typeof actualAnalytics = {
   logSignUpLessThanOrEqualTo13: jest.fn(),
   logUseFilter: jest.fn(),
   logSearchQuery: jest.fn(),
+  logHasSkippedTutorial: jest.fn(),
+  logHasActivateGeolocFromTutorial: jest.fn(),
 }

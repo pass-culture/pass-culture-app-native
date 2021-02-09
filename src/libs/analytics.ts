@@ -33,6 +33,8 @@ export enum AnalyticsEvent {
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
   SEARCH_QUERY = 'SearchQuery',
+  HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
+  HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -42,6 +44,15 @@ const logScreenView = async (screenName: string) => {
   // See https://blog.theodo.com/2018/01/building-google-analytics-funnel-firebase-react-native/
   await firebaseAnalytics.logEvent(`${AnalyticsEvent.SCREEN_VIEW}_${screenName.toLowerCase()}`)
 }
+
+/**
+ * First Tutorial
+ */
+const logHasSkippedTutorial = (pageName: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_SKIPPED_TUTORIAL, { pageName })
+
+const logHasActivateGeolocFromTutorial = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL)
 
 /**
  * Home
@@ -142,6 +153,8 @@ const logSearchScrollToPage = (page: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page })
 
 export const analytics = {
+  logHasSkippedTutorial,
+  logHasActivateGeolocFromTutorial,
   logAllModulesSeen,
   logAllTilesSeen,
   logCancelSignup,
@@ -177,7 +190,7 @@ const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']
 
 const FIREBASE_NAME_FORMAT = /^[a-zA-Z][0-9a-zA-Z_]+$/
 
-/* Firebase event naming rules : 
+/* Firebase event naming rules :
 https://firebase.google.com/docs/reference/cpp/group/event-names#:~:text=Event%20names%20can%20be%20up,and%20should%20not%20be%20used */
 export function validateAnalyticsEvent(eventName: string) {
   if (eventName.length > 40) {

@@ -149,20 +149,8 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'1st Tutorial'}
+            title={'First Tutorial'}
             onPress={() => navigation.navigate('FirstTutorial')}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'3rd Tutorial'}
-            onPress={() => navigation.navigate('ThirdTutorial')}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={'4th Tutorial'}
-            onPress={() => navigation.navigate('FourthTutorial')}
           />
         </Row>
         <Row half>
