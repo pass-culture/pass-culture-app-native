@@ -64,12 +64,27 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -890,1211 +856,26 @@
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  \\"marginHorizontal\\": 24,
+@@ -875,61 +841,10 @@
+                                  \\"height\\": 16,
+                                },
+                              ]
+                            }
+                          />
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                                 \\"height\\": 8,
+-                               },
+-                             ]
+-                           }
+-                         />
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"marginHorizontal\\": 24,
 -                               },
 -                             ]
 -                           }
@@ -106,21 +121,17 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             Du 3 janvier 2021 au 4 janvier 2021
 -                           </Text>
 -                         </View>
--                         <View
--                           style={
--                             Array [
--                               Object {
--                                 \\"backgroundColor\\": \\"#f5f5f5\\",
--                                 \\"height\\": 8,
--                               },
--                             ]
--                           }
--                         />
--                         <View
--                           style={
--                             Array [
--                               Object {
--                                 \\"marginHorizontal\\": 24,
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  \\"backgroundColor\\": \\"#f5f5f5\\",
+@@ -941,1170 +856,26 @@
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  \\"marginHorizontal\\": 24,
 -                               },
 -                             ]
 -                           }
@@ -272,10 +283,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               Array [
 -                                 Object {
 -                                   \\"height\\": 24,
-                                },
-                              ]
-                            }
-                          />
+-                                 },
+-                               ]
+-                             }
+-                           />
 -                           <View
 -                             accessible={true}
 -                             focusable={true}
@@ -366,6 +377,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 \\"paddingHorizontal\\": 24,
 -                                 \\"paddingTop\\": 24,
 -                               },
+-                               undefined,
 -                             ]
 -                           }
 -                         >
@@ -374,6 +386,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               Array [
 -                                 Object {
 -                                   \\"color\\": \\"#151515\\",
+-                                   \\"flexBasis\\": 0,
+-                                   \\"flexGrow\\": 0.9,
+-                                   \\"flexShrink\\": 1,
 -                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
 -                                   \\"fontSize\\": 18,
 -                                   \\"lineHeight\\": 22,
@@ -424,6 +439,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"position\\": \\"absolute\\",
 -                                   \\"width\\": \\"100%\\",
 -                                 },
+-                                 undefined,
 -                               ]
 -                             }
 -                             testID=\\"accordionBodyContainer\\"
@@ -509,6 +525,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 \\"paddingHorizontal\\": 24,
 -                                 \\"paddingTop\\": 24,
 -                               },
+-                               undefined,
 -                             ]
 -                           }
 -                         >
@@ -517,11 +534,14 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               Array [
 -                                 Object {
 -                                   \\"color\\": \\"#151515\\",
+-                                   \\"flexBasis\\": 0,
+-                                   \\"flexGrow\\": 0.9,
+-                                   \\"flexShrink\\": 1,
 -                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
 -                                   \\"fontSize\\": 18,
 -                                   \\"lineHeight\\": 22,
--                                 },
--                               ]
+                                },
+                              ]
 -                             }
 -                           >
 -                             Accessibilité
@@ -535,7 +555,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   },
 -                                 ],
 -                               }
--                             }
+                            }
 -                             testID=\\"accordionArrow\\"
 -                           >
 -                             <View
@@ -567,6 +587,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"position\\": \\"absolute\\",
 -                                   \\"width\\": \\"100%\\",
 -                                 },
+-                                 undefined,
 -                               ]
 -                             }
 -                             testID=\\"accordionBodyContainer\\"
@@ -615,13 +636,13 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                         },
 -                                       ]
 -                                     }
--                                   />
+                          />
 -                                   <View
 -                                     height={48}
 -                                     width={48}
 -                                   >
 -                                     undefined-SVG-Mock
--                                   </View>
+                        </View>
 -                                   <View
 -                                     style={
 -                                       Array [
@@ -651,7 +672,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       invalidTestId-SVG-Mock
 -                                     </View>
 -                                   </View>
-                        </View>
+-                                 </View>
 -                                 <View
 -                                   numberOfSpaces={4}
 -                                   style={
@@ -821,7 +842,8 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     ]
 -                                   }
 -                                 />
--                                 <View
++                     </RCTScrollView>
+                      <View
 -                                   style={
 -                                     Array [
 -                                       Object {
@@ -855,9 +877,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Handicap
 -                                   </Text>
 -                                   <Text
--                                     style={
--                                       Array [
--                                         Object {
++                       numberOfSpaces={10}
+                        style={
+                          Array [
+                            Object {
 -                                           \\"color\\": \\"#151515\\",
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
@@ -1047,13 +1070,11 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   </Text>
 -                                 </View>
 -                               </View>
-+                     </RCTScrollView>
-                      <View
+-                               <View
 -                                 numberOfSpaces={4}
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
+-                                 style={
+-                                   Array [
+-                                     Object {
 -                                       \\"width\\": 16,
 -                                     },
 -                                   ]

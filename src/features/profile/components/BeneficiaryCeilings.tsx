@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { StyleSheet } from 'react-native'
 import Dash from 'react-native-dash'
 import styled from 'styled-components/native'
 
@@ -52,17 +53,19 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
       </CeilingsRow>
       <Spacer.Column numberOfSpaces={6} />
       <Separator dashGap={4} dashLength={1} dashThickness={1} />
-      <CeilingsExplanation>
-        <AccordionItem title={<Typo.ButtonText>{question}</Typo.ButtonText>}>
-          <Description>
-            {_(
-              t`Le but du pass Culture est de renforcer vos pratiques culturelles,
-              mais aussi d'en créer  de nouvelles. Ces plafonds ont été mis en place
-              pour favoriser la diversification des pratiques culturelles.`
-            )}
-          </Description>
-        </AccordionItem>
-      </CeilingsExplanation>
+      <AccordionItem
+        title={<Typo.ButtonText>{question}</Typo.ButtonText>}
+        titleStyle={accordionStyle.title}
+        bodyStyle={accordionStyle.body}>
+        <Description>
+          {_(
+            t`Le but du pass Culture est de renforcer vos pratiques culturelles,
+            mais aussi d'en créer  de nouvelles. Ces plafonds ont été mis en place
+            pour favoriser la diversification des pratiques culturelles.`
+          )}
+        </Description>
+      </AccordionItem>
+      <Spacer.Column numberOfSpaces={2} />
     </Container>
   )
 }
@@ -89,9 +92,15 @@ const Separator = styled(Dash)({
   alignSelf: 'center',
 })
 
-const CeilingsExplanation = styled.View({
-  left: -getSpacing(2),
-  paddingRight: getSpacing(1),
+const accordionStyle = StyleSheet.create({
+  title: {
+    paddingHorizontal: getSpacing(4),
+    paddingBottom: getSpacing(4),
+  },
+  body: {
+    paddingHorizontal: getSpacing(4),
+    paddingBottom: getSpacing(4),
+  },
 })
 
 const Description = styled(Typo.Body)({

@@ -1,5 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { TouchableWithoutFeedback, Animated, Easing } from 'react-native'
+import {
+  TouchableWithoutFeedback,
+  Animated,
+  Easing,
+  StyleProp,
+  ViewStyle,
+  View,
+  StyleSheet,
+} from 'react-native'
 import styled from 'styled-components/native'
 
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -13,6 +21,8 @@ interface IAccordionItemProps {
   defaultOpen?: boolean
   onOpen?: () => void
   onOpenOnce?: () => void
+  titleStyle?: StyleProp<ViewStyle>
+  bodyStyle?: StyleProp<ViewStyle>
 }
 
 export const AccordionItem = ({
@@ -21,6 +31,8 @@ export const AccordionItem = ({
   defaultOpen = false,
   onOpen,
   onOpenOnce,
+  titleStyle,
+  bodyStyle,
 }: IAccordionItemProps) => {
   const [open, setOpen] = useState(defaultOpen)
   const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
@@ -56,39 +68,45 @@ export const AccordionItem = ({
   return (
     <React.Fragment>
       <TouchableWithoutFeedback onPress={toggleListItem}>
-        <TitleContainer>
-          <Typo.Title4>{title}</Typo.Title4>
+        <View style={[styles.titleContainer, titleStyle]}>
+          <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
             <ArrowNext size={getSpacing(6)} />
           </Animated.View>
-        </TitleContainer>
+        </View>
       </TouchableWithoutFeedback>
       {/* eslint-disable-next-line react-native/no-inline-styles */}
       <Animated.View style={{ overflow: 'hidden', height: bodyHeight }} testID="accordionBody">
-        <BodyContainer
+        <View
+          style={[styles.bodyContainer, bodyStyle]}
           testID="accordionBodyContainer"
           onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}>
           {children}
-        </BodyContainer>
+        </View>
       </Animated.View>
     </React.Fragment>
   )
 }
 
-const TitleContainer = styled.View({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  paddingBottom: getSpacing(4),
-  paddingHorizontal: getSpacing(6),
-  paddingTop: getSpacing(6),
+const styles = StyleSheet.create({
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingBottom: getSpacing(4),
+    paddingHorizontal: getSpacing(6),
+    paddingTop: getSpacing(6),
+  },
+  bodyContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    paddingBottom: getSpacing(6),
+    paddingHorizontal: getSpacing(6),
+    paddingTop: 0,
+  },
 })
 
-const BodyContainer = styled.View({
-  position: 'absolute',
-  bottom: 0,
-  width: '100%',
-  paddingBottom: getSpacing(6),
-  paddingHorizontal: getSpacing(6),
-  paddingTop: 0,
+const Title = styled(Typo.Title4)({
+  flex: '0.9',
 })
