@@ -5,6 +5,7 @@ import React, { useRef } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useAppStateChange } from 'features/offer/pages/useAppStateChange'
 import { LocationType } from 'libs/algolia'
 import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
@@ -20,9 +21,18 @@ const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
-  const { position, requestGeolocPermission } = useGeolocation()
+  const { position, requestGeolocPermission, checkGeolocPermission } = useGeolocation()
   const { dispatch } = useSearch()
   const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
+
+  const onAppBecomeActive = async () => {
+    await checkGeolocPermission()
+  }
+  const onAppBecomeInactive = async () => {
+    // nothing
+  }
+
+  useAppStateChange(onAppBecomeActive, onAppBecomeInactive)
 
   const onPressPickPlace = () => {
     if (debouncedGoBack) debouncedGoBack.cancel()

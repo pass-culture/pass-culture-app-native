@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
+import { checkGeolocPermission } from './checkGeolocPermission'
 import { getPosition } from './getPosition'
 import { requestGeolocPermission } from './requestGeolocPermission'
 
@@ -15,6 +16,7 @@ export interface IGeolocationContext {
   setPosition: (position: GeoCoordinates | null) => void
   permissionGranted: boolean
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
+  checkGeolocPermission: () => Promise<void>
 }
 
 export const GeolocationContext = React.createContext<IGeolocationContext>({
@@ -22,6 +24,9 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
   setPosition: () => undefined,
   permissionGranted: false,
   requestGeolocPermission: async () => {
+    // nothing
+  },
+  checkGeolocPermission: async () => {
     // nothing
   },
 })
@@ -52,6 +57,11 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
     }
   }
 
+  const contextualCheckPermission = async () => {
+    const isPermissionGranted = await checkGeolocPermission()
+    setPermissionGranted(isPermissionGranted)
+  }
+
   return (
     <GeolocationContext.Provider
       value={{
@@ -59,6 +69,7 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
         setPosition,
         permissionGranted,
         requestGeolocPermission: contextualRequestGeolocPermission,
+        checkGeolocPermission: contextualCheckPermission,
       }}>
       {children}
     </GeolocationContext.Provider>
