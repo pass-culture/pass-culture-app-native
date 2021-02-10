@@ -1,4 +1,4 @@
-import { PermissionsAndroid } from 'react-native'
+import { Linking, PermissionsAndroid } from 'react-native'
 
 export const requestGeolocPermissionSystem = async (): Promise<boolean> => {
   const permissions = await PermissionsAndroid.requestMultiple([
@@ -10,6 +10,11 @@ export const requestGeolocPermissionSystem = async (): Promise<boolean> => {
     permissions[PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION] === 'granted'
   ) {
     return true
+  } else if (
+    permissions[PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION] === 'never_ask_again' ||
+    permissions[PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION] === 'never_ask_again'
+  ) {
+    await Linking.openSettings()
   }
   return false
 }
