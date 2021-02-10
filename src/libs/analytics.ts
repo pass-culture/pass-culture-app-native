@@ -21,6 +21,7 @@ export enum AnalyticsEvent {
   CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'ContactSupportSignupConfirmation',
   DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
+  NO_SEARCH_RESULT = 'NoSearchResult',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
   REINITIALIZE_FILTERS = 'ReinitializeFilters',
   RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
@@ -152,6 +153,9 @@ const logSearchQuery = (query: string) =>
 const logSearchScrollToPage = (page: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page })
 
+const logNoSearchResult = (query: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
+
 export const analytics = {
   logHasSkippedTutorial,
   logHasActivateGeolocFromTutorial,
@@ -173,6 +177,7 @@ export const analytics = {
   logConsultWithdrawal,
   logContactSupportResetPasswordEmailSent,
   logContactSupportSignupConfirmationEmailSent,
+  logNoSearchResult,
   logOfferSeenDuration,
   logReinitializeFilters,
   logResendEmailResetPasswordExpiredLink,
