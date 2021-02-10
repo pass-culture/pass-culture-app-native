@@ -4,10 +4,10 @@ import React from 'react'
 import { ControlComponent, ControlComponentProps } from './ControlComponent'
 
 describe('<ControlComponent />', () => {
-  let onPress: jest.Mock
+  const onPress = jest.fn()
 
   beforeEach(() => {
-    onPress = jest.fn()
+    onPress.mockClear()
   })
 
   it('should render correctly prev by default', () => {
@@ -39,13 +39,13 @@ describe('<ControlComponent />', () => {
     expect(() => renderAPI.getByTestId('arrowPrevious')).toThrowError()
   })
 
-  it('renders trigger onPress when pressed', async () => {
-    const { findByTestId } = renderControlComponent({
+  it('renders trigger onPress when pressed', () => {
+    const { getByTestId } = renderControlComponent({
       onPress,
       title: 'Previous',
       type: 'prev',
     })
-    fireEvent.press(await findByTestId('button'))
+    fireEvent.press(getByTestId('button'))
     expect(onPress).toHaveBeenCalled()
   })
 })
