@@ -180,7 +180,7 @@ Array [
           />
           <Text
             color="#151515"
-            numberOfLines={2}
+            numberOfLines={3}
             style={
               Array [
                 Object {
@@ -275,7 +275,7 @@ Array [
           />
           <Text
             color="#151515"
-            numberOfLines={2}
+            numberOfLines={3}
             style={
               Array [
                 Object {
@@ -364,7 +364,7 @@ Array [
           />
           <Text
             color="#eb0055"
-            numberOfLines={2}
+            numberOfLines={3}
             style={
               Array [
                 Object {

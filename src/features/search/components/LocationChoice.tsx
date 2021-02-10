@@ -27,7 +27,7 @@ export const LocationChoice: React.FC<Props> = (props) => {
         <Icon size={48} color2={iconColor2} />
         <Spacer.Row numberOfSpaces={2} />
         <Typo.ButtonText
-          numberOfLines={2}
+          numberOfLines={3}
           color={isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
           {label}
         </Typo.ButtonText>
