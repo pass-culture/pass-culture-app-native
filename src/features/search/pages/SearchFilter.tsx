@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Dimensions, LayoutChangeEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -14,18 +14,35 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 const { height } = Dimensions.get('window')
 
+const useScrollToEndOnTimeOrDateActivation = () => {
+  const { searchState } = useSearch()
+
+  const scrollViewRef = useRef<ScrollView | null>(null)
+  const shouldScrollRef = useRef<boolean>(false)
+
+  useEffect(() => {
+    shouldScrollRef.current = true
+  }, [!searchState.date])
+
+  useEffect(() => {
+    shouldScrollRef.current = true
+  }, [!searchState.timeRange])
+
+  const scrollToEnd = (event: LayoutChangeEvent) => {
+    const { y } = event.nativeEvent.layout
+    if (scrollViewRef.current !== null && shouldScrollRef.current) {
+      scrollViewRef.current.scrollTo({ y: y - (4 * height) / 5 })
+      shouldScrollRef.current = false
+    }
+  }
+
+  return { scrollViewRef, scrollToEnd }
+}
+
 export const SearchFilter: React.FC = () => {
   const { searchState } = useSearch()
   const { data: profile } = useUserProfileInfo()
-
-  const scrollViewRef = useRef<ScrollView | null>(null)
-
-  const onLayoutScrollToEnd = (event: LayoutChangeEvent) => {
-    const { y } = event.nativeEvent.layout
-    if (scrollViewRef.current !== null) {
-      scrollViewRef.current.scrollTo({ y: y - (4 * height) / 5 })
-    }
-  }
+  const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
 
   return (
     <React.Fragment>
@@ -89,7 +106,7 @@ export const SearchFilter: React.FC = () => {
             <React.Fragment>
               <Section.OfferDate />
               <Separator marginVertical={getSpacing(6)} />
-              <Spacer.Column numberOfSpaces={0} onLayout={onLayoutScrollToEnd} />
+              <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
             </React.Fragment>
           )}
 
@@ -101,7 +118,7 @@ export const SearchFilter: React.FC = () => {
             <React.Fragment>
               <Separator marginVertical={getSpacing(6)} />
               <Section.TimeSlot />
-              <Spacer.Column numberOfSpaces={0} onLayout={onLayoutScrollToEnd} />
+              <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
             </React.Fragment>
           )}
 
