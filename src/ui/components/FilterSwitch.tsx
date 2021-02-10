@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { Animated, Easing, StyleSheet, TouchableOpacity } from 'react-native'
+import { Animated, Easing, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getSpacing } from 'ui/theme'
+import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
@@ -14,9 +14,9 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
   const { toggle, active = false } = props
   const animatedValue = new Animated.Value(active ? 0 : 1)
 
-  const moveToggle = animatedValue.interpolate({
+  const marginLeft = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, 25],
+    outputRange: [0, 28],
   })
 
   useEffect(() => {
@@ -32,14 +32,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
     <FilterSwitchContainer>
       <TouchableOpacity activeOpacity={ACTIVE_OPACITY} testID="filterSwitch" onPress={toggle}>
         <StyledBackgroundColor active={active} testID="switchBackground">
-          <Animated.View
-            style={[
-              styles.toggleWheelStyle,
-              {
-                marginLeft: moveToggle,
-              },
-            ]}
-          />
+          <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
       </TouchableOpacity>
     </FilterSwitchContainer>
@@ -48,30 +41,30 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
 
 const StyledBackgroundColor = styled.View<{ active: boolean }>(({ active }) => ({
   backgroundColor: active ? ColorsEnum.GREEN_VALID : ColorsEnum.GREY_MEDIUM,
-  width: getSpacing(12.5),
-  height: getSpacing(7.5),
-  marginLeft: getSpacing(0.75),
-  borderRadius: getSpacing(3.75),
+  width: getSpacing(14),
+  height: getSpacing(8),
+  marginLeft: getSpacing(1),
+  borderRadius: getSpacing(4),
   justifyContent: 'center',
 }))
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const styles = StyleSheet.create({
-  toggleWheelStyle: {
-    width: getSpacing(6.25),
-    height: getSpacing(6.25),
-    backgroundColor: ColorsEnum.WHITE,
-    borderRadius: getSpacing(3.12),
-    shadowColor: ColorsEnum.BLACK,
+const StyledToggle = styled(Animated.View)({
+  aspectRatio: '1',
+  width: getSpacing(7),
+  height: getSpacing(7),
+  backgroundColor: ColorsEnum.WHITE,
+  borderRadius: getSpacing(7),
+  ...getShadow({
     shadowOffset: {
-      width: getSpacing(0),
+      width: 0,
       height: getSpacing(0.5),
     },
-    shadowOpacity: 0.2,
     shadowRadius: 2.5,
-    elevation: 1.5,
-  },
+    shadowColor: ColorsEnum.BLACK,
+    shadowOpacity: 0.2,
+  }),
 })
 
 export default FilterSwitch

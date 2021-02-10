@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { InlineSection, TitleWithCount } from 'features/search/atoms'
-
-import FilterSwitch from '../../../ui/components/FilterSwitch'
+import FilterSwitch from 'ui/components/FilterSwitch'
 
 interface Props {
   active?: boolean
