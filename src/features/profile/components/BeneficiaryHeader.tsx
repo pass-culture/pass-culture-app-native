@@ -38,7 +38,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
       <HeaderBackgroundWrapper>
         <HeaderBackground width={screenWidth} />
       </HeaderBackgroundWrapper>
-      <Spacer.Column numberOfSpaces={8} />
+      <Spacer.Column numberOfSpaces={12} />
       <UserNameAndCredit>
         {/* eslint-disable-next-line react-native/no-raw-text */}
         <Typo.Title4 color={ColorsEnum.WHITE}>{`${props.firstName} ${props.lastName}`}</Typo.Title4>

@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Expense, ExpenseDomain } from 'api/gen/api'
-import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 import { ProgressBar } from '../../../ui/components/bars/ProgressBar'
 
@@ -27,11 +27,12 @@ export function CreditCeiling(props: CreditCeilingProps) {
   }
   const amountLabel = `${props.amount} €`
   const progress = Number((props.amount / props.max).toFixed(2))
+  const color = props.amount == 0 ? ColorsEnum.GREY_DARK : ceilingConfig.color
 
   return (
     <Container>
-      <ProgressBar progress={progress} color={ceilingConfig.color} icon={ceilingConfig.icon} />
-      <Amount color={ceilingConfig.color}>{amountLabel}</Amount>
+      <ProgressBar progress={progress} color={color} icon={ceilingConfig.icon} />
+      <Amount color={color}>{amountLabel}</Amount>
       <View>
         <Label>{ceilingConfig.label}</Label>
       </View>
@@ -58,7 +59,7 @@ export function getCreditCeilingProps(depositVersion: 1 | 2, expense: Expense | 
 const Container = styled.View({
   flex: 1,
   flexDirection: 'column',
-  paddingHorizontal: getSpacing(2),
+  paddingHorizontal: getSpacing(1),
 })
 
 const Amount = styled(Typo.Title4)``
