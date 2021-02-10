@@ -13,8 +13,10 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { getSpacing, Typo } from 'ui/theme'
 
 export type CardKey = {
-  name?: string
+  activeIndex?: number
+  index?: number
   key?: number
+  name?: string
   swiperRef?: RefObject<Swiper>
 }
 
@@ -26,8 +28,6 @@ export type CardProps = CardKey & {
   subTitle: string
   text: string
   title: string
-  index?: number
-  activeIndex?: number
 }
 
 export const usePlayAnimation = (

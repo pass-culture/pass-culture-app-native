@@ -11,9 +11,13 @@ import StarAnimation from 'ui/animations/tutorial_star.json'
 export function FourthCard(props: CardKey) {
   const { navigate } = useNavigation<UseNavigationType>()
 
+  const { activeIndex, index } = props
+  const isActiveCard = index !== undefined && activeIndex === index
   useEffect(() => {
-    storage.saveObject('has_seen_tutorials', true)
-  }, [])
+    if (isActiveCard) {
+      storage.saveObject('has_seen_tutorials', true)
+    }
+  }, [isActiveCard])
 
   function onButtonPress() {
     navigate('TabNavigator')
