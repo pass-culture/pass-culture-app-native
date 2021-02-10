@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ControlComponent /> renders render next when type is next 1`] = `
+<View
+  accessibilityLabel="Next"
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "height": "100%",
+      "justifyContent": "center",
+      "marginRight": "50%",
+      "opacity": 1,
+      "width": "100%",
+    }
+  }
+  testID="button"
+>
+  <View
+    height={32}
+    testID="arrowNext"
+    width={32}
+  >
+    arrowNext-SVG-Mock
+  </View>
+</View>
+`;
+
+exports[`<ControlComponent /> should render correctly prev by default 1`] = `
+<View
+  accessibilityLabel="Previous"
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "height": "100%",
+      "justifyContent": "center",
+      "marginLeft": "50%",
+      "opacity": 1,
+      "width": "100%",
+    }
+  }
+  testID="button"
+>
+  <View
+    height={32}
+    testID="arrowPrevious"
+    width={32}
+  >
+    arrowPrevious-SVG-Mock
+  </View>
+</View>
+`;
+
+exports[`<ControlComponent /> should render prev when type is prev 1`] = `
+<View
+  accessibilityLabel="Previous"
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "height": "100%",
+      "justifyContent": "center",
+      "marginLeft": "50%",
+      "opacity": 1,
+      "width": "100%",
+    }
+  }
+  testID="button"
+>
+  <View
+    height={32}
+    testID="arrowPrevious"
+    width={32}
+  >
+    arrowPrevious-SVG-Mock
+  </View>
+</View>
+`;
