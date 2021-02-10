@@ -7,20 +7,42 @@ import { navigate } from '__mocks__/@react-navigation/native'
 
 import { FourthCard } from './FourthCard'
 
+const activeCardProps = {
+  index: 0,
+  activeIndex: 0,
+}
+
+const inactiveCardProps = {
+  index: 0,
+  activeIndex: 1,
+}
+
+afterEach(() => {
+  jest.clearAllMocks()
+})
+
 describe('FourthCard', () => {
   it('should render fourth card', () => {
-    const firstTutorial = render(<FourthCard />)
+    const firstTutorial = render(<FourthCard {...activeCardProps} />)
     expect(firstTutorial).toMatchSnapshot()
   })
-  it('should save has_seen_tutorials in async storage on render', () => {
-    render(<FourthCard />)
+
+  it('should save has_seen_tutorials in async storage when card is active', () => {
+    render(<FourthCard {...activeCardProps} />)
     expect(AsyncStorage.setItem).toBeCalledWith('has_seen_tutorials', 'true')
   })
-  it('should swipe to next card on button press', async () => {
+
+  it('should NOT save has_seen_tutorials in async storage when card is NOT active', () => {
+    render(<FourthCard {...inactiveCardProps} />)
+    expect(AsyncStorage.setItem).not.toBeCalled()
+  })
+
+  it('should swipe to next card on button press', () => {
     const ref = createRef<Swiper>()
     const { getByText } = render(<FourthCard swiperRef={ref} />)
-    const button = await getByText('Découvrir')
-    fireEvent.press(button)
+
+    fireEvent.press(getByText('Découvrir'))
+
     expect(navigate).toBeCalledTimes(1)
     expect(navigate).toBeCalledWith('TabNavigator')
   })
