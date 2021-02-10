@@ -6,14 +6,7 @@ import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-import { getIconAndWording } from './AccessibilityAtom.service'
-
-export enum HandicapCategory {
-  'VISUAL',
-  'MENTAL',
-  'MOTOR',
-  'AUDIO',
-}
+import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
 
 const HandicapText: React.FC<{ wording: string; width: number }> = ({ wording, width }) => {
   // There's always two words in the handicap wordings, but we still make sure we only show 2 words
