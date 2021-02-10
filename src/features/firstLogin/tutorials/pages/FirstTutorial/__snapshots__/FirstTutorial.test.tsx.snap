@@ -520,64 +520,8 @@ Array [
                   />
                   <View
                     forwardedRef={[Function]}
-                    style={
-                      Object {
-                        "opacity": 0,
-                      }
-                    }
-                  >
-                    <View
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "alignItems": "center",
-                          "backgroundColor": "#eb0055",
-                          "borderRadius": 24,
-                          "borderWidth": 0,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "justifyContent": "center",
-                          "maxWidth": 500,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "width": "100%",
-                        }
-                      }
-                      testID="button-container"
-                    >
-                      <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
-                              "marginLeft": 5,
-                              "maxWidth": 650,
-                            },
-                          ]
-                        }
-                        testID="button-title"
-                        textColor="#ffffff"
-                      >
-                        Continuer
-                      </Text>
-                    </View>
-                  </View>
+                    style={Object {}}
+                  />
                   <View
                     flex={3}
                     style={
@@ -722,64 +666,8 @@ Array [
                   />
                   <View
                     forwardedRef={[Function]}
-                    style={
-                      Object {
-                        "opacity": 0,
-                      }
-                    }
-                  >
-                    <View
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "alignItems": "center",
-                          "backgroundColor": "#eb0055",
-                          "borderRadius": 24,
-                          "borderWidth": 0,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "justifyContent": "center",
-                          "maxWidth": 500,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "width": "100%",
-                        }
-                      }
-                      testID="button-container"
-                    >
-                      <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
-                              "marginLeft": 5,
-                              "maxWidth": 650,
-                            },
-                          ]
-                        }
-                        testID="button-title"
-                        textColor="#ffffff"
-                      >
-                        Activer la géolocalisation
-                      </Text>
-                    </View>
-                  </View>
+                    style={Object {}}
+                  />
                   <View
                     flex={3}
                     style={
@@ -924,64 +812,8 @@ Array [
                   />
                   <View
                     forwardedRef={[Function]}
-                    style={
-                      Object {
-                        "opacity": 0,
-                      }
-                    }
-                  >
-                    <View
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "alignItems": "center",
-                          "backgroundColor": "#eb0055",
-                          "borderRadius": 24,
-                          "borderWidth": 0,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "justifyContent": "center",
-                          "maxWidth": 500,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "width": "100%",
-                        }
-                      }
-                      testID="button-container"
-                    >
-                      <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
-                              "marginLeft": 5,
-                              "maxWidth": 650,
-                            },
-                          ]
-                        }
-                        testID="button-title"
-                        textColor="#ffffff"
-                      >
-                        Découvrir
-                      </Text>
-                    </View>
-                  </View>
+                    style={Object {}}
+                  />
                   <View
                     flex={3}
                     style={
@@ -1200,15 +1032,25 @@ Array [
                     }
                   >
                     <View
+                      accessible={true}
+                      focusable={false}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         Array [
                           Object {
                             "alignSelf": "center",
-                            "marginLeft": 8,
-                            "marginRight": 8,
+                            "marginLeft": 4,
+                            "marginRight": 4,
                           },
                         ]
                       }
+                      testID="button"
                     >
                       <View
                         fill="#eb0055"
@@ -1220,15 +1062,25 @@ Array [
                       </View>
                     </View>
                     <View
+                      accessible={true}
+                      focusable={false}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         Array [
                           Object {
                             "alignSelf": "center",
-                            "marginLeft": 8,
-                            "marginRight": 8,
+                            "marginLeft": 4,
+                            "marginRight": 4,
                           },
                         ]
                       }
+                      testID="button"
                     >
                       <View
                         fill="#c7c7cc"
@@ -1240,15 +1092,25 @@ Array [
                       </View>
                     </View>
                     <View
+                      accessible={true}
+                      focusable={false}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         Array [
                           Object {
                             "alignSelf": "center",
-                            "marginLeft": 8,
-                            "marginRight": 8,
+                            "marginLeft": 4,
+                            "marginRight": 4,
                           },
                         ]
                       }
+                      testID="button"
                     >
                       <View
                         fill="#c7c7cc"
@@ -1260,15 +1122,25 @@ Array [
                       </View>
                     </View>
                     <View
+                      accessible={true}
+                      focusable={false}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         Array [
                           Object {
                             "alignSelf": "center",
-                            "marginLeft": 8,
-                            "marginRight": 8,
+                            "marginLeft": 4,
+                            "marginRight": 4,
                           },
                         ]
                       }
+                      testID="button"
                     >
                       <View
                         fill="#c7c7cc"
@@ -1314,11 +1186,11 @@ Array [
                     onStartShouldSetResponder={[Function]}
                     style={
                       Object {
-                        "marginRight": "50%",
+                        "marginRight": "70%",
                         "opacity": 1,
                       }
                     }
-                    testID="button"
+                    testID="controlButton"
                   >
                     <View
                       height={32}

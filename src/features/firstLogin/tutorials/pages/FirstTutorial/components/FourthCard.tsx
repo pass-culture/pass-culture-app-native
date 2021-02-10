@@ -36,6 +36,8 @@ export function FourthCard(props: CardKey) {
       title={_(t`Des nouveautés`)}
       swiperRef={props.swiperRef}
       name={props.name}
+      index={props.index}
+      activeIndex={props.activeIndex}
     />
   )
 }

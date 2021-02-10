@@ -22,6 +22,8 @@ export function SecondCard(props: CardKey) {
       title={_(t`Des offres pour tous`)}
       swiperRef={props.swiperRef}
       name={props.name}
+      index={props.index}
+      activeIndex={props.activeIndex}
     />
   )
 }

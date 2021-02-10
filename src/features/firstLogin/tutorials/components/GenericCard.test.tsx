@@ -1,20 +1,12 @@
-import { renderHook } from '@testing-library/react-hooks'
 import { fireEvent, render } from '@testing-library/react-native'
-import AnimatedLottieView from 'lottie-react-native'
-import React, { RefObject } from 'react'
-import { View } from 'react-native'
-import * as Animatable from 'react-native-animatable'
+import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
+import { GenericTutorial } from 'features/firstLogin/tutorials/components/GenericTutorial'
 import { analytics } from 'libs/analytics'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 
-import {
-  CardProps,
-  GenericCard,
-  useAnalyticsLogScreenView,
-  useButtonAnimation,
-  usePlayAnimation,
-} from './GenericCard'
+import { CardProps, didFadeIn, GenericCard } from './GenericCard'
 
 describe('<GenericCard />', () => {
   const animation = GeolocationAnimation
@@ -24,6 +16,10 @@ describe('<GenericCard />', () => {
   const subTitle = 'Subtitle'
   const text = 'Text'
   const title = 'Title'
+  const play = jest.fn()
+  const pause = jest.fn()
+  beforeEach(jest.resetAllMocks)
+
   it('should render correctly', () => {
     const { getByText } = renderGenericCardComponent({
       buttonText,
@@ -42,58 +38,75 @@ describe('<GenericCard />', () => {
     fireEvent.press(button)
     expect(buttonCallback).toHaveBeenCalled()
   })
-  it('should play animation', () => {
-    const ref = {
-      current: {
-        play: jest.fn(),
-      },
-    }
-    renderHook(() =>
-      usePlayAnimation(
-        (ref as unknown) as RefObject<AnimatedLottieView>,
-        pauseAnimationOnRenderAtFrame
-      )
+
+  it('should call card analytics on active index', () => {
+    const { getByTestId } = render(
+      <GenericTutorial name="TestTutorial">
+        <GenericCard
+          buttonText={buttonText}
+          animation={animation}
+          buttonCallback={buttonCallback}
+          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+          subTitle={subTitle}
+          text={text}
+          title={title}
+        />
+        <GenericCard
+          buttonText={buttonText}
+          animation={animation}
+          buttonCallback={buttonCallback}
+          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+          subTitle={subTitle}
+          text={text}
+          title={title}
+        />
+      </GenericTutorial>
     )
-    expect(ref.current.play).toHaveBeenCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('TestTutorial1')
+    expect(analytics.logScreenView).toBeCalledTimes(1)
+    fireEvent.press(getByTestId('controlButton'))
+    expect(analytics.logScreenView).toHaveBeenCalledWith('TestTutorial2')
+    expect(analytics.logScreenView).toBeCalledTimes(2)
   })
-  it('should animate button with fadeIn when activeIndex is index', () => {
-    const ref = {
-      current: {
-        fadeIn: jest.fn(),
-        fadeOut: jest.fn(),
-      },
-    }
-    const index = 0
-    const activeIndex = index
-    renderHook(() =>
-      useButtonAnimation((ref as unknown) as RefObject<Animatable.View & View>, index, activeIndex)
+
+  it('should have a button available on active index', () => {
+    const { getByTestId, queryByText } = render(
+      <GenericTutorial name="TestTutorial">
+        <GenericCard
+          buttonText={'button1'}
+          animation={animation}
+          buttonCallback={buttonCallback}
+          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+          subTitle={subTitle}
+          text={text}
+          title={title}
+        />
+        <GenericCard
+          buttonText={'button2'}
+          animation={animation}
+          buttonCallback={buttonCallback}
+          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+          subTitle={subTitle}
+          text={text}
+          title={title}
+        />
+      </GenericTutorial>
     )
-    expect(ref.current.fadeIn).toHaveBeenCalledTimes(1)
-    expect(ref.current.fadeOut).toHaveBeenCalledTimes(0)
+    expect(queryByText('button1')).toBeTruthy()
+    expect(queryByText('button2')).toBeFalsy()
+    fireEvent.press(getByTestId('controlButton'))
+    expect(queryByText('button2')).toBeTruthy()
+    expect(queryByText('button1')).toBeFalsy()
   })
-  it('should animate button with fadeOut when activeIndex is not index', () => {
-    const ref = {
+
+  it('should pause animation when not on active index', async () => {
+    jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
-        fadeIn: jest.fn(),
-        fadeOut: jest.fn(),
+        play,
+        pause,
       },
-    }
-    const index = 0
-    const activeIndex = 1
-    renderHook(() =>
-      useButtonAnimation((ref as unknown) as RefObject<Animatable.View & View>, index, activeIndex)
-    )
-    expect(ref.current.fadeIn).toHaveBeenCalledTimes(0)
-    expect(ref.current.fadeOut).toHaveBeenCalledTimes(1)
-  })
-  it('should not log screen view when activeIndex is not index', async () => {
-    const index = 0
-    const activeIndex = 1
-    const tutorialName = 'TestTutorial'
-    const props: CardProps = {
-      index,
-      activeIndex,
-      name: `${tutorialName}${index + 1}`,
+    })
+    renderGenericCardComponent({
       buttonText,
       animation,
       buttonCallback,
@@ -101,19 +114,23 @@ describe('<GenericCard />', () => {
       subTitle,
       text,
       title,
-    }
-    renderHook(() => useAnalyticsLogScreenView(props))
-    expect(analytics.logScreenView).not.toHaveBeenCalledWith(props.name)
-    expect(analytics.logScreenView).not.toHaveBeenCalledTimes(1)
+      activeIndex: 0,
+      index: 1,
+    })
+    await waitForExpect(() => {
+      expect(play).not.toBeCalled()
+      expect(pause).toBeCalledTimes(1)
+    })
   })
-  it('should log screen view when activeIndex is index', async () => {
-    const index = 0
-    const activeIndex = index
-    const tutorialName = 'TestTutorial'
-    const props: CardProps = {
-      index,
-      activeIndex,
-      name: `${tutorialName}${index + 1}`,
+
+  it('should play animation when on active index', async () => {
+    jest.spyOn(React, 'useRef').mockReturnValueOnce({
+      current: {
+        play,
+        pause,
+      },
+    })
+    renderGenericCardComponent({
       buttonText,
       animation,
       buttonCallback,
@@ -121,10 +138,66 @@ describe('<GenericCard />', () => {
       subTitle,
       text,
       title,
-    }
-    renderHook(() => useAnalyticsLogScreenView(props))
-    expect(analytics.logScreenView).toHaveBeenCalledWith(props.name)
-    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+      activeIndex: 1,
+      index: 1,
+    })
+    await waitForExpect(() => {
+      expect(play).toBeCalledTimes(1)
+      expect(play).toBeCalledWith(0, pauseAnimationOnRenderAtFrame)
+      expect(pause).not.toBeCalled()
+    })
+  })
+
+  it('should not fade in button when not on active index', async () => {
+    jest.spyOn(React, 'useRef').mockReturnValueOnce({
+      current: {
+        play,
+        pause,
+      },
+    })
+    renderGenericCardComponent({
+      buttonText,
+      animation,
+      buttonCallback,
+      pauseAnimationOnRenderAtFrame,
+      subTitle,
+      text,
+      title,
+      activeIndex: 0,
+      index: 1,
+    })
+    await waitForExpect(() => {
+      expect(didFadeIn).not.toBe(true)
+    })
+  })
+
+  it('should fade in button when on active index', async () => {
+    const fadeIn = jest.fn()
+    jest.spyOn(React, 'useRef').mockReturnValueOnce({
+      current: {
+        play,
+        pause,
+      },
+    })
+    jest.spyOn(React, 'useRef').mockReturnValueOnce({
+      current: {
+        fadeIn,
+      },
+    })
+    renderGenericCardComponent({
+      buttonText,
+      animation,
+      buttonCallback,
+      pauseAnimationOnRenderAtFrame,
+      subTitle,
+      text,
+      title,
+      activeIndex: 1,
+      index: 1,
+    })
+    await waitForExpect(() => {
+      expect(didFadeIn).toBe(true)
+    })
   })
 })
 

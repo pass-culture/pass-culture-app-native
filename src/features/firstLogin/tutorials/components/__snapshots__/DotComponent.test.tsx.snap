@@ -2,15 +2,25 @@
 
 exports[`<DotComponent /> renders dot active color 1`] = `
 <View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Array [
       Object {
         "alignSelf": "center",
-        "marginLeft": 8,
-        "marginRight": 8,
+        "marginLeft": 4,
+        "marginRight": 4,
       },
     ]
   }
+  testID="button"
 >
   <View
     fill="#eb0055"
@@ -25,15 +35,25 @@ exports[`<DotComponent /> renders dot active color 1`] = `
 
 exports[`<DotComponent /> should render correctly 1`] = `
 <View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Array [
       Object {
         "alignSelf": "center",
-        "marginLeft": 8,
-        "marginRight": 8,
+        "marginLeft": 4,
+        "marginRight": 4,
       },
     ]
   }
+  testID="button"
 >
   <View
     fill="#c7c7cc"

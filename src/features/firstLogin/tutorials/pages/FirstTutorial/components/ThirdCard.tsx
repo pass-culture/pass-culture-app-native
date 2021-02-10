@@ -34,6 +34,8 @@ export function ThirdCard(props: CardKey) {
       title={_(t`Toute la culture`)}
       swiperRef={props.swiperRef}
       name={props.name}
+      index={props.index}
+      activeIndex={props.activeIndex}
     />
   )
 }
