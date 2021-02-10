@@ -92,7 +92,7 @@ export const GenericCard: FunctionComponent<CardProps> = (props: CardProps) => {
       <Animatable.View ref={animatedButtonRef}>
         <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
       </Animatable.View>
-      <Spacer.Flex flex={2} />
+      <Spacer.Flex flex={3} />
     </GenericCardContainer>
   )
 }

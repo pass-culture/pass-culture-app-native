@@ -13,10 +13,6 @@ export type ControlComponentProps = {
 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{ type: string }>(({ type }) => ({
   [type === 'prev' ? 'marginLeft' : 'marginRight']: '50%',
-  height: '100%',
-  width: '100%',
-  alignItems: 'center',
-  justifyContent: 'center',
 }))
 
 export const ControlComponent = ({ onPress, title, type }: ControlComponentProps) => {

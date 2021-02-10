@@ -4,6 +4,7 @@ import React, { cloneElement, FunctionComponent, ReactElement, useRef } from 're
 import Swiper from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
+import { ControlComponent } from 'features/firstLogin/tutorials/components/ControlComponent'
 import { DotComponent } from 'features/firstLogin/tutorials/components/DotComponent'
 import { CardKey } from 'features/firstLogin/tutorials/components/GenericCard'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -16,9 +17,8 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 const controlProps = {
   DotComponent,
-  dotsTouchable: true,
-  prevPos: false,
-  nextPos: false,
+  PrevComponent: ControlComponent,
+  NextComponent: ControlComponent,
 }
 
 export type Props = {
