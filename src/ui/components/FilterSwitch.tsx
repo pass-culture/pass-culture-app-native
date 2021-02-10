@@ -22,8 +22,8 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     Animated.timing(animatedValue, {
       toValue: active ? 1 : 0,
-      duration: 300,
-      easing: Easing.linear,
+      duration: 200,
+      easing: Easing.bezier(0, 0.75, 0, 0.75),
       useNativeDriver: false,
     }).start()
   }, [active])
