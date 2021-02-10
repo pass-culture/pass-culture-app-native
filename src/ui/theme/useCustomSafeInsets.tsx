@@ -1,6 +1,6 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
+import { TAB_BAR_COMP_HEIGHT } from './constants'
 
 /**
  * Hook used to adapt useSafeAreaInsets to the applications needs

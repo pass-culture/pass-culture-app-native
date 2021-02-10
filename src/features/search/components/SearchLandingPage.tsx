@@ -6,14 +6,13 @@ import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const { width } = Dimensions.get('window')
