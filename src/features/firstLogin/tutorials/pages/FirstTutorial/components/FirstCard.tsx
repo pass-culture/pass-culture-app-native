@@ -21,6 +21,8 @@ export function FirstCard(props: CardKey) {
       title={_(t`Le pass Culture`)}
       swiperRef={props.swiperRef}
       name={props.name}
+      index={props.index}
+      activeIndex={props.activeIndex}
     />
   )
 }
