@@ -9,7 +9,7 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { getFilterCount } from 'features/search/utils/getFilterCount'
 import { _ } from 'libs/i18n'
 import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
-import { ColorsEnum, UniqueColors, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -20,7 +20,10 @@ export const Filter: React.FC = () => {
 
   return (
     <Container onPress={() => navigate('SearchFilter')} testID="FilterButton">
-      <StyledLinearGradient colors={[ColorsEnum.PRIMARY, UniqueColors.FILTER_BUTTON]} angle={106}>
+      <StyledLinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={['#bf275f', '#5a0d80']}>
         <FilterIcon color={ColorsEnum.WHITE} />
         <Spacer.Row numberOfSpaces={1} />
         <Title>{_(t`Filtrer`)}</Title>
