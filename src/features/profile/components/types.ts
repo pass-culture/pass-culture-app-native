@@ -8,7 +8,7 @@ import { ColorsEnum } from 'ui/theme'
 export const CreditCeilingMapV1 = {
   [ExpenseDomain.All]: {
     label: 'en offres numériques (streaming...)',
-    color: ColorsEnum.GREY_DARK,
+    color: ColorsEnum.PRIMARY,
     icon: OfferDigital,
   },
   [ExpenseDomain.Physical]: {
@@ -48,4 +48,10 @@ export type ExpenseTypeAndVersion =
 
 export type ExpenseV2 = Omit<Expense, 'domain'> & {
   domain: ExpenseDomain.All | ExpenseDomain.Digital
+}
+
+export const ExpenseDomainOrder = {
+  [ExpenseDomain.All]: 1,
+  [ExpenseDomain.Physical]: 2,
+  [ExpenseDomain.Digital]: 3,
 }

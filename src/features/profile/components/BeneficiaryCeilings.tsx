@@ -8,6 +8,7 @@ import { Expense } from 'api/gen'
 import { AccordionItem } from 'features/offer/components'
 import { CreditCeiling, getCreditCeilingProps } from 'features/profile/components/CreditCeiling'
 import { ExpenseV2 } from 'features/profile/components/types'
+import { sortExpenses } from 'features/profile/utils'
 import { _ } from 'libs/i18n'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -31,7 +32,7 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
 
   const expenses =
     props.depositVersion === 1
-      ? (props.expenses as Array<Expense>)
+      ? (sortExpenses(props.expenses) as Array<Expense>)
       : (props.expenses as Array<ExpenseV2>)
 
   return (
@@ -80,7 +81,7 @@ const Title = styled(Typo.Title4)({
 })
 
 const CeilingsRow = styled.View({
-  paddingHorizontal: getSpacing(2),
+  paddingHorizontal: getSpacing(3),
   flexDirection: 'row',
   alignItems: 'flex-start',
 })
@@ -104,5 +105,5 @@ const accordionStyle = StyleSheet.create({
 })
 
 const Description = styled(Typo.Body)({
-  textAlign: 'justify',
+  textAlign: 'left',
 })

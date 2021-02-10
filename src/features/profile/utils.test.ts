@@ -1,4 +1,6 @@
-import { computeEligibilityExpiracy } from './utils'
+import { Expense, ExpenseDomain } from 'api/gen/api'
+
+import { computeEligibilityExpiracy, sortExpenses } from './utils'
 
 describe('computeEligibilityExpiracy', () => {
   it.each([
@@ -9,5 +11,19 @@ describe('computeEligibilityExpiracy', () => {
     const expiracy = computeEligibilityExpiracy(birthday)
 
     expect(expiracy.toISOString()).toEqual(expectedExpiracy)
+  })
+
+  it('should sort expenses in the right order', () => {
+    const expenses: Array<Expense> = [
+      { current: 60, domain: ExpenseDomain.Digital, limit: 100 },
+      { current: 100, domain: ExpenseDomain.All, limit: 200 },
+      { current: 0, domain: ExpenseDomain.Physical, limit: 200 },
+    ]
+
+    expect(sortExpenses(expenses)).toEqual([
+      { current: 100, domain: ExpenseDomain.All, limit: 200 },
+      { current: 0, domain: ExpenseDomain.Physical, limit: 200 },
+      { current: 60, domain: ExpenseDomain.Digital, limit: 100 },
+    ])
   })
 })

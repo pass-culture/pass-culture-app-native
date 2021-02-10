@@ -1,3 +1,8 @@
+import _ from 'lodash'
+
+import { Expense } from 'api/gen/api'
+import { ExpenseDomainOrder } from 'features/profile/components/types'
+
 /**
  * Formats an iso date to a slashed french date.
  * @param ISOBirthday the birthday date into the ISO 8601 format %Y-%m-%dT%H:%M:%S
@@ -10,4 +15,10 @@ export function computeEligibilityExpiracy(ISOBirthday: string) {
   date.setMinutes(59)
   date.setSeconds(59)
   return date
+}
+
+export function sortExpenses(expenses: Expense[]) {
+  return _.sortBy(expenses, function (expense: Expense) {
+    return ExpenseDomainOrder[expense.domain]
+  })
 }

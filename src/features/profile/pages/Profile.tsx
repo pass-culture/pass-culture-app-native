@@ -19,8 +19,8 @@ import { SectionRow } from '../components/SectionRow'
 // TODO(PC-6169) remove this when UserProfileResponse is handled on this page
 const expenses_v1: Array<Expense> = [
   { current: 100, domain: ExpenseDomain.All, limit: 200 },
-  { current: 70, domain: ExpenseDomain.Digital, limit: 100 },
-  { current: 70, domain: ExpenseDomain.Physical, limit: 200 },
+  { current: 0, domain: ExpenseDomain.Physical, limit: 200 },
+  { current: 60, domain: ExpenseDomain.Digital, limit: 100 },
 ]
 
 export const Profile: React.FC = () => {
