@@ -57,11 +57,11 @@ msgstr "Accéder à l'offre"
 msgid "Accéder à la billetterie"
 msgstr "Accéder à la billetterie"
 
-#: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:35
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/ThirdCard.tsx:32
 msgid "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
 msgstr "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
 
-#: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:35
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/ThirdCard.tsx:32
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
@@ -105,7 +105,7 @@ msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 msgid "Annuler"
 msgstr "Annuler"
 
-#: src/features/search/pages/SuggestedPlaces.tsx:41
+#: src/features/search/pages/SuggestedPlaces.tsx:47
 msgid "Aucun lieu ne correspond à ta recherche"
 msgstr "Aucun lieu ne correspond à ta recherche"
 
@@ -244,8 +244,8 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:154
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:44
-#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:15
-#: src/features/firstLogin/tutorials/pages/SecondTutorial.tsx:18
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FirstCard.tsx:13
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -278,11 +278,11 @@ msgstr "Date de l'offre"
 msgid "Date précise"
 msgstr "Date précise"
 
-#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:19
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FourthCard.tsx:16
 msgid "Des nouveautés"
 msgstr "Des nouveautés"
 
-#: src/features/firstLogin/tutorials/pages/SecondTutorial.tsx:18
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
 
@@ -305,7 +305,7 @@ msgstr "Duo"
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
-#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:19
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FourthCard.tsx:16
 msgid "Découvrir"
 msgstr "Découvrir"
 
@@ -405,7 +405,7 @@ msgstr "Le lien est expiré !"
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:15
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FirstCard.tsx:13
 msgid "Le pass Culture"
 msgstr "Le pass Culture"
 
@@ -453,7 +453,7 @@ msgstr "Mot de passe oublié ?"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:19
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FourthCard.tsx:16
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 
@@ -483,7 +483,7 @@ msgstr "Offre épuisée"
 msgid "On y va !"
 msgstr "On y va !"
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:49
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:45
 msgid "Oops !"
 msgstr "Oops !"
 
@@ -599,7 +599,7 @@ msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:66
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:62
 msgid "Réessayer"
 msgstr "Réessayer"
 
@@ -628,11 +628,6 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/sections/Date.tsx:15
-#: src/features/search/sections/Hour.tsx:15
-msgid "Seules les Sorties seront affichées"
-msgstr "Seules les Sorties seront affichées"
-
 #: src/features/search/sections/Location.tsx:33
 msgid "Seules les sorties et offres physiques seront affichées"
 msgstr "Seules les sorties et offres physiques seront affichées"
@@ -640,6 +635,11 @@ msgstr "Seules les sorties et offres physiques seront affichées"
 #: src/features/search/pages/LocationFilter.tsx:46
 msgid "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
+
+#: src/features/search/sections/Date.tsx:15
+#: src/features/search/sections/Hour.tsx:15
+msgid "Seules les sorties seront affichées"
+msgstr "Seules les sorties seront affichées"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:43
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
@@ -697,11 +697,11 @@ msgstr "Ton mot de passe"
 msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
-#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:33
+#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:36
 msgid "Tout passer"
 msgstr "Tout passer"
 
-#: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:35
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/ThirdCard.tsx:32
 msgid "Toute la culture"
 msgstr "Toute la culture"
 
@@ -726,7 +726,7 @@ msgstr "Tu peux encore dépenser :"
 msgid "Type d'offre"
 msgstr "Type d'offre"
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:56
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:52
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
@@ -795,7 +795,7 @@ msgstr "auteur"
 msgid "autour de toi"
 msgstr "autour de toi"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:15
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FirstCard.tsx:13
 msgid "c'est..."
 msgstr "c'est..."
 
@@ -807,7 +807,7 @@ msgstr "crédit photo"
 msgid "crédit valable jusqu'au {creditExpiracyDate}"
 msgstr "crédit valable jusqu'au {creditExpiracyDate}"
 
-#: src/features/firstLogin/tutorials/pages/SecondTutorial.tsx:18
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application."
 msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application."
 
@@ -828,7 +828,7 @@ msgstr "en ligne"
 msgid "et les"
 msgstr "et les"
 
-#: src/features/firstLogin/tutorials/pages/SecondTutorial.tsx:18
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "et si tu es..."
 msgstr "et si tu es..."
 
@@ -849,7 +849,7 @@ msgstr "intervenant"
 msgid "metteur en scène"
 msgstr "metteur en scène"
 
-#: src/features/firstLogin/tutorials/pages/FourthTutorial.tsx:19
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FourthCard.tsx:16
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
@@ -870,7 +870,7 @@ msgstr "sous genre"
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial.tsx:15
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FirstCard.tsx:13
 msgid "une initiative financée par le Ministère de la Culture."
 msgstr "une initiative financée par le Ministère de la Culture."
 
@@ -882,11 +882,11 @@ msgstr "voir plus"
 msgid "{0}"
 msgstr "{0}"
 
-#: src/features/search/atoms/NumberOfResults.tsx:9
+#: src/features/search/atoms/NumberOfResults.tsx:8
 msgid "{nbHits} résultat"
 msgstr "{nbHits} résultat"
 
-#: src/features/search/atoms/NumberOfResults.tsx:10
+#: src/features/search/atoms/NumberOfResults.tsx:9
 msgid "{nbHits} résultats"
 msgstr "{nbHits} résultats"
 
@@ -906,6 +906,6 @@ msgstr "Échec de la requête {url}, code: {0}"
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
-#: src/features/firstLogin/tutorials/pages/ThirdTutorial.tsx:35
+#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/ThirdCard.tsx:32
 msgid "à portée de main !"
 msgstr "à portée de main !"

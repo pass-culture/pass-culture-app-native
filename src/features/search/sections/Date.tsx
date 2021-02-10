@@ -19,7 +19,7 @@ export const Date: React.FC = () => {
   return (
     <SectionWithSwitch
       title={SectionTitle.Date}
-      subtitle={_(t`Seules les Sorties seront affichées`)}
+      subtitle={_(t`Seules les sorties seront affichées`)}
       active={!!searchState.date}
       toggle={toggle}
     />
