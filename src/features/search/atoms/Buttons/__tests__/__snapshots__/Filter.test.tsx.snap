@@ -20,23 +20,22 @@ exports[`Filter component should render correctly 1`] = `
   testID="FilterButton"
 >
   <BVLinearGradient
-    angle={106}
     colors={
       Array [
-        4293591125,
-        4291821663,
+        4290717535,
+        4284091776,
       ]
     }
     endPoint={
       Object {
-        "x": 0.5,
-        "y": 1,
+        "x": 1,
+        "y": 0,
       }
     }
     locations={null}
     startPoint={
       Object {
-        "x": 0.5,
+        "x": 0,
         "y": 0,
       }
     }
