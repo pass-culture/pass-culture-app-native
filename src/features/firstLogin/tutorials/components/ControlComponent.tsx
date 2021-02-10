@@ -12,7 +12,7 @@ export type ControlComponentProps = {
 }
 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{ type: string }>(({ type }) => ({
-  [type === 'prev' ? 'marginLeft' : 'marginRight']: '50%',
+  [type === 'prev' ? 'marginLeft' : 'marginRight']: '70%',
 }))
 
 export const ControlComponent = ({ onPress, title, type }: ControlComponentProps) => {
@@ -21,7 +21,7 @@ export const ControlComponent = ({ onPress, title, type }: ControlComponentProps
       accessibilityLabel={title}
       onPress={onPress}
       type={type}
-      testID="button">
+      testID="controlButton">
       {type === 'prev' ? (
         <ArrowPrevious testID="arrowPrevious" />
       ) : (

@@ -1,6 +1,6 @@
 import AnimatedLottieView from 'lottie-react-native'
 import LottieView from 'lottie-react-native'
-import React, { FunctionComponent, RefObject, useEffect, useRef } from 'react'
+import React, { FunctionComponent, RefObject, useEffect } from 'react'
 import { View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import Swiper from 'react-native-web-swiper'
@@ -30,48 +30,37 @@ export type CardProps = CardKey & {
   title: string
 }
 
-export const usePlayAnimation = (
-  ref: RefObject<AnimatedLottieView>,
-  pauseAnimationOnRenderAtFrame: number
-) => {
-  useEffect(() => {
-    if (pauseAnimationOnRenderAtFrame) {
-      ref.current?.play(0, pauseAnimationOnRenderAtFrame)
-    }
-  }, [pauseAnimationOnRenderAtFrame, ref])
-}
+export let didFadeIn = false
 
-export const useButtonAnimation = (
-  ref: RefObject<Animatable.View & View>,
-  index?: number,
-  activeIndex?: number
-) => {
+export const GenericCard: FunctionComponent<CardProps> = (props: CardProps) => {
+  const animationRef = React.useRef<AnimatedLottieView>(null)
+  const animatedButtonRef = React.useRef<Animatable.View & View>(null)
+
+  didFadeIn = false
   useEffect(() => {
-    const button = ref?.current
-    if (button && button.fadeIn && button.fadeOut) {
-      if (index === activeIndex) {
-        button.fadeIn(800)
-      } else {
-        button.fadeOut(800)
+    if (props.index === props.activeIndex) {
+      animationRef.current?.play(0, props.pauseAnimationOnRenderAtFrame)
+    } else {
+      animationRef.current?.pause()
+    }
+  }, [props.pauseAnimationOnRenderAtFrame, animationRef, props.index, props.activeIndex])
+
+  useEffect(() => {
+    const button = animatedButtonRef?.current
+    if (button?.fadeIn) {
+      if (props.index === props.activeIndex) {
+        button.fadeIn(1000)
+        didFadeIn = true
       }
     }
-  }, [ref])
-}
+  }, [animatedButtonRef])
 
-export const useAnalyticsLogScreenView = (props: CardProps) => {
   useEffect(() => {
     if (props.name && props.index !== undefined && props.activeIndex === props.index) {
       analytics.logScreenView(props.name)
     }
   }, [props.name, props.index, props.activeIndex])
-}
 
-export const GenericCard: FunctionComponent<CardProps> = (props: CardProps) => {
-  const animationRef = useRef<AnimatedLottieView>(null)
-  const animatedButtonRef = useRef<Animatable.View & View>(null)
-  usePlayAnimation(animationRef, props.pauseAnimationOnRenderAtFrame)
-  useButtonAnimation(animatedButtonRef, props.index, props.activeIndex)
-  useAnalyticsLogScreenView(props)
   return (
     <GenericCardContainer>
       <Spacer.Flex flex={2} />
@@ -81,6 +70,7 @@ export const GenericCard: FunctionComponent<CardProps> = (props: CardProps) => {
           ref={animationRef}
           source={props.animation}
           loop={false}
+          resizeMode="contain"
         />
       </StyledLottieContainer>
       <Spacer.Flex flex={1} />
@@ -90,7 +80,9 @@ export const GenericCard: FunctionComponent<CardProps> = (props: CardProps) => {
       <StyledBody>{props.text}</StyledBody>
       <Spacer.Flex flex={2} />
       <Animatable.View ref={animatedButtonRef}>
-        <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
+        {props.activeIndex === props.index && (
+          <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
+        )}
       </Animatable.View>
       <Spacer.Flex flex={3} />
     </GenericCardContainer>

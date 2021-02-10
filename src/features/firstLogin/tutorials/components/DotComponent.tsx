@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
+import { TouchableWithoutFeedback } from 'react-native'
 import { SwiperProps } from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
@@ -9,27 +10,40 @@ const CURRENT_STEP_SIZE = 12
 const DEFAULT_SIZE = 8
 
 type DotComponentProps = SwiperProps & {
-  isActive?: boolean
+  index: number
+  activeIndex: number
+  isActive: boolean
+  onPress?: () => void
 }
 
-// Class typing forced due to https://github.com/reactrondev/react-native-web-swiper/pull/60
-export class DotComponent extends React.Component<DotComponentProps> {
-  render() {
-    const { isActive } = this.props
-    return (
+export function getColor(stepNumber: number, activeIndex: number) {
+  if (stepNumber === activeIndex) {
+    return ColorsEnum.PRIMARY
+  }
+
+  if (stepNumber < activeIndex) {
+    return ColorsEnum.GREEN_VALID
+  }
+
+  return ColorsEnum.GREY_MEDIUM
+}
+
+export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
+  return (
+    <TouchableWithoutFeedback onPress={props.onPress} testID="button">
       <DotContainer>
         <Dot
-          color={isActive ? ColorsEnum.PRIMARY : ColorsEnum.GREY_MEDIUM}
-          size={isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}
+          color={getColor(props.index, props.activeIndex)}
+          size={props.isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}
           testID="dot-icon"
         />
       </DotContainer>
-    )
-  }
+    </TouchableWithoutFeedback>
+  )
 }
 
 const DotContainer = styled.View({
   alignSelf: 'center',
-  marginLeft: getSpacing(2),
-  marginRight: getSpacing(2),
+  marginLeft: getSpacing(1),
+  marginRight: getSpacing(1),
 })

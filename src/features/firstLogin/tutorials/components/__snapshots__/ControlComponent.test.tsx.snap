@@ -14,11 +14,11 @@ exports[`<ControlComponent /> renders render next when type is next 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginRight": "50%",
+      "marginRight": "70%",
       "opacity": 1,
     }
   }
-  testID="button"
+  testID="controlButton"
 >
   <View
     height={32}
@@ -44,11 +44,11 @@ exports[`<ControlComponent /> should render correctly prev by default 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": "50%",
+      "marginLeft": "70%",
       "opacity": 1,
     }
   }
-  testID="button"
+  testID="controlButton"
 >
   <View
     height={32}
@@ -74,11 +74,11 @@ exports[`<ControlComponent /> should render prev when type is prev 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "marginLeft": "50%",
+      "marginLeft": "70%",
       "opacity": 1,
     }
   }
-  testID="button"
+  testID="controlButton"
 >
   <View
     height={32}

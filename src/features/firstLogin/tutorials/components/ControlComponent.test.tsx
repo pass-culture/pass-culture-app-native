@@ -43,7 +43,7 @@ describe('<ControlComponent />', () => {
       title: 'Previous',
       type: 'prev',
     })
-    fireEvent.press(getByTestId('button'))
+    fireEvent.press(getByTestId('controlButton'))
     expect(onPress).toHaveBeenCalled()
   })
 })
