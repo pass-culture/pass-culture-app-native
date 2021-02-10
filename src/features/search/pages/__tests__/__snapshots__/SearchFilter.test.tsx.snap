@@ -2063,11 +2063,11 @@ Array [
                   Array [
                     Object {
                       "backgroundColor": "#c7c7cc",
-                      "borderRadius": 15,
-                      "height": 30,
+                      "borderRadius": 16,
+                      "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 3,
-                      "width": 50,
+                      "marginLeft": 4,
+                      "width": 56,
                     },
                   ]
                 }
@@ -2076,11 +2076,11 @@ Array [
                 <View
                   style={
                     Object {
+                      "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 12.5,
-                      "elevation": 1.5,
-                      "height": 25,
-                      "marginLeft": 25,
+                      "borderRadius": 28,
+                      "height": 28,
+                      "marginLeft": 28,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2088,7 +2088,7 @@ Array [
                       },
                       "shadowOpacity": 0.2,
                       "shadowRadius": 2.5,
-                      "width": 25,
+                      "width": 28,
                     }
                   }
                 />
@@ -2205,11 +2205,11 @@ Array [
                   Array [
                     Object {
                       "backgroundColor": "#c7c7cc",
-                      "borderRadius": 15,
-                      "height": 30,
+                      "borderRadius": 16,
+                      "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 3,
-                      "width": 50,
+                      "marginLeft": 4,
+                      "width": 56,
                     },
                   ]
                 }
@@ -2218,11 +2218,11 @@ Array [
                 <View
                   style={
                     Object {
+                      "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 12.5,
-                      "elevation": 1.5,
-                      "height": 25,
-                      "marginLeft": 25,
+                      "borderRadius": 28,
+                      "height": 28,
+                      "marginLeft": 28,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2230,7 +2230,7 @@ Array [
                       },
                       "shadowOpacity": 0.2,
                       "shadowRadius": 2.5,
-                      "width": 25,
+                      "width": 28,
                     }
                   }
                 />
@@ -2346,11 +2346,11 @@ Array [
                   Array [
                     Object {
                       "backgroundColor": "#c7c7cc",
-                      "borderRadius": 15,
-                      "height": 30,
+                      "borderRadius": 16,
+                      "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 3,
-                      "width": 50,
+                      "marginLeft": 4,
+                      "width": 56,
                     },
                   ]
                 }
@@ -2359,11 +2359,11 @@ Array [
                 <View
                   style={
                     Object {
+                      "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 12.5,
-                      "elevation": 1.5,
-                      "height": 25,
-                      "marginLeft": 25,
+                      "borderRadius": 28,
+                      "height": 28,
+                      "marginLeft": 28,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2371,7 +2371,7 @@ Array [
                       },
                       "shadowOpacity": 0.2,
                       "shadowRadius": 2.5,
-                      "width": 25,
+                      "width": 28,
                     }
                   }
                 />
@@ -2487,11 +2487,11 @@ Array [
                   Array [
                     Object {
                       "backgroundColor": "#c7c7cc",
-                      "borderRadius": 15,
-                      "height": 30,
+                      "borderRadius": 16,
+                      "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 3,
-                      "width": 50,
+                      "marginLeft": 4,
+                      "width": 56,
                     },
                   ]
                 }
@@ -2500,11 +2500,11 @@ Array [
                 <View
                   style={
                     Object {
+                      "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 12.5,
-                      "elevation": 1.5,
-                      "height": 25,
-                      "marginLeft": 25,
+                      "borderRadius": 28,
+                      "height": 28,
+                      "marginLeft": 28,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2512,7 +2512,7 @@ Array [
                       },
                       "shadowOpacity": 0.2,
                       "shadowRadius": 2.5,
-                      "width": 25,
+                      "width": 28,
                     }
                   }
                 />
@@ -2653,11 +2653,11 @@ Array [
                   Array [
                     Object {
                       "backgroundColor": "#c7c7cc",
-                      "borderRadius": 15,
-                      "height": 30,
+                      "borderRadius": 16,
+                      "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 3,
-                      "width": 50,
+                      "marginLeft": 4,
+                      "width": 56,
                     },
                   ]
                 }
@@ -2666,11 +2666,11 @@ Array [
                 <View
                   style={
                     Object {
+                      "aspectRatio": 1,
                       "backgroundColor": "#ffffff",
-                      "borderRadius": 12.5,
-                      "elevation": 1.5,
-                      "height": 25,
-                      "marginLeft": 25,
+                      "borderRadius": 28,
+                      "height": 28,
+                      "marginLeft": 28,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2678,7 +2678,7 @@ Array [
                       },
                       "shadowOpacity": 0.2,
                       "shadowRadius": 2.5,
-                      "width": 25,
+                      "width": 28,
                     }
                   }
                 />
