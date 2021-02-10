@@ -29,6 +29,7 @@ export const analytics: typeof actualAnalytics = {
   logConsultWithdrawal: jest.fn(),
   logContactSupportResetPasswordEmailSent: jest.fn(),
   logContactSupportSignupConfirmationEmailSent: jest.fn(),
+  logNoSearchResult: jest.fn(),
   logOfferSeenDuration: jest.fn(),
   logReinitializeFilters: jest.fn(),
   logResendEmailResetPasswordExpiredLink: jest.fn(),

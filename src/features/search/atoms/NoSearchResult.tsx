@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useSearch } from 'features/search/pages/SearchWrapper'
+import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
@@ -12,6 +13,10 @@ export const NoSearchResult: React.FC = () => {
   const { position } = useGeolocation()
   const { dispatch, searchState } = useSearch()
   const { query } = searchState
+
+  useEffect(() => {
+    analytics.logNoSearchResult(query)
+  }, [query])
 
   const handlePressAroundMe = () => {
     dispatch({ type: 'INIT' })

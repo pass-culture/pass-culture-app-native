@@ -31,7 +31,7 @@ export const Hit: React.FC<Props> = ({ hit }) => {
   const distanceToOffer = useDistance(_geoloc)
   const { searchState } = useSearch()
 
-  const query = searchState.query
+  const { query } = searchState
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = dehumanizeId(offer.id)
   const categoryLabel = CATEGORY_CRITERIA[offer.category || 'ALL'].label
