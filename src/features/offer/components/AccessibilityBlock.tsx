@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 import { OfferAccessibilityResponse } from 'api/gen'
 import { getSpacing, Spacer } from 'ui/theme'
 
-import { AccessibilityAtom, HandicapCategory } from '../atoms/AccessibilityAtom'
+import { AccessibilityAtom } from '../atoms/AccessibilityAtom'
+import { HandicapCategory } from '../atoms/AccessibilityAtom.service'
 
 export const AccessibilityBlock: React.FC<OfferAccessibilityResponse> = ({
   visualDisability,

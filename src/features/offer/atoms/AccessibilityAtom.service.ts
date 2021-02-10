@@ -7,7 +7,12 @@ import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { IconInterface } from 'ui/svg/icons/types'
 
-import { HandicapCategory } from './AccessibilityAtom'
+export enum HandicapCategory {
+  'VISUAL',
+  'MENTAL',
+  'MOTOR',
+  'AUDIO',
+}
 
 export const getIconAndWording = (
   handicap: HandicapCategory
