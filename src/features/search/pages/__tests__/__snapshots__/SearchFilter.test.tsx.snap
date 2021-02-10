@@ -464,6 +464,7 @@ Array [
               "paddingHorizontal": 24,
               "paddingTop": 24,
             },
+            undefined,
           ]
         }
       >
@@ -472,6 +473,9 @@ Array [
             Array [
               Object {
                 "color": "#151515",
+                "flexBasis": 0,
+                "flexGrow": 0.9,
+                "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
                 "lineHeight": 22,
@@ -535,6 +539,7 @@ Array [
                 "position": "absolute",
                 "width": "100%",
               },
+              undefined,
             ]
           }
           testID="accordionBodyContainer"
@@ -1268,6 +1273,7 @@ Array [
               "paddingHorizontal": 24,
               "paddingTop": 24,
             },
+            undefined,
           ]
         }
       >
@@ -1276,6 +1282,9 @@ Array [
             Array [
               Object {
                 "color": "#151515",
+                "flexBasis": 0,
+                "flexGrow": 0.9,
+                "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
                 "lineHeight": 22,
@@ -1339,6 +1348,7 @@ Array [
                 "position": "absolute",
                 "width": "100%",
               },
+              undefined,
             ]
           }
           testID="accordionBodyContainer"
