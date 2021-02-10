@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   NativeSyntheticEvent,
   TextInputSubmitEditingEventData,
@@ -36,7 +36,11 @@ const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (prop
 
 export const SearchBox: React.FC = () => {
   const { searchState, dispatch } = useSearch()
-  const [query, setQuery] = useState<string>(searchState.query)
+  const [query, setQuery] = useState<string>('')
+
+  useEffect(() => {
+    setQuery(searchState.query)
+  }, [searchState.query])
 
   const resetSearch = () => {
     setQuery('')
