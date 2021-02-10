@@ -3,6 +3,7 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
 import { getPosition } from './getPosition'
+import { GeolocPermissionState } from './permissionState.d'
 import { requestGeolocPermission } from './requestGeolocPermission'
 
 type RequestGeolocPermissionParams = {
@@ -14,7 +15,7 @@ type RequestGeolocPermissionParams = {
 export interface IGeolocationContext {
   position: GeoCoordinates | null
   setPosition: (position: GeoCoordinates | null) => void
-  permissionGranted: boolean
+  permissionState: GeolocPermissionState
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   checkGeolocPermission: () => Promise<void>
 }
@@ -22,7 +23,7 @@ export interface IGeolocationContext {
 export const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
   setPosition: () => undefined,
-  permissionGranted: false,
+  permissionState: GeolocPermissionState.DENIED,
   requestGeolocPermission: async () => {
     // nothing
   },
@@ -33,19 +34,22 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
 
 export const GeolocationWrapper = ({ children }: { children: Element }) => {
   const [position, setPosition] = useState<GeoCoordinates | null>(null)
-  const [permissionGranted, setPermissionGranted] = useState<boolean>(false)
-  const permissionGrantedRef = useRef<boolean>(false)
+  const [permissionState, setPermissionState] = useState<GeolocPermissionState>(
+    GeolocPermissionState.DENIED
+  )
+  const permissionStateRef = useRef<boolean>(false)
 
   useEffect(() => {
-    if (permissionGranted && !permissionGrantedRef.current) {
-      permissionGrantedRef.current = true
+    if (permissionState === GeolocPermissionState.GRANTED && !permissionStateRef.current) {
+      permissionStateRef.current = true
       getPosition(setPosition)
     }
-  }, [permissionGranted])
+  }, [permissionState])
 
   async function contextualRequestGeolocPermission(params?: RequestGeolocPermissionParams) {
-    const isPermissionGranted = await requestGeolocPermission()
-    setPermissionGranted(isPermissionGranted)
+    const permissionState = await requestGeolocPermission()
+    setPermissionState(permissionState)
+    const isPermissionGranted = permissionState === GeolocPermissionState.GRANTED
 
     if (params?.onSubmit) {
       params.onSubmit()
@@ -59,7 +63,7 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
 
   const contextualCheckPermission = async () => {
     const isPermissionGranted = await checkGeolocPermission()
-    setPermissionGranted(isPermissionGranted)
+    if (isPermissionGranted) setPermissionState(GeolocPermissionState.GRANTED)
   }
 
   return (
@@ -67,7 +71,7 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
       value={{
         position,
         setPosition,
-        permissionGranted,
+        permissionState,
         requestGeolocPermission: contextualRequestGeolocPermission,
         checkGeolocPermission: contextualCheckPermission,
       }}>
