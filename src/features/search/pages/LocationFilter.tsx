@@ -2,12 +2,12 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
-import { ScrollView, ViewStyle } from 'react-native'
+import { ScrollView, ViewStyle, Linking } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useAppStateChange } from 'features/offer/pages/useAppStateChange'
 import { LocationType } from 'libs/algolia'
-import { useGeolocation } from 'libs/geolocation'
+import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { Banner, BannerType } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -21,7 +21,12 @@ const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
-  const { position, requestGeolocPermission, checkGeolocPermission } = useGeolocation()
+  const {
+    position,
+    permissionState,
+    requestGeolocPermission,
+    checkGeolocPermission,
+  } = useGeolocation()
   const { dispatch } = useSearch()
   const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
 
@@ -39,9 +44,13 @@ export const LocationFilter: React.FC = () => {
     navigate('LocationPicker')
   }
 
-  const onPressAroundMe = () => {
+  const onPressAroundMe = async () => {
     if (position === null) {
-      requestGeolocPermission()
+      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+        Linking.openSettings()
+      } else {
+        await requestGeolocPermission()
+      }
     } else {
       dispatch({
         type: 'LOCATION_AROUND_ME',
