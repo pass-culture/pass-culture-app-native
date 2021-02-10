@@ -377,12 +377,12 @@ Array [
                     </View>
                   </View>
                   <View
-                    flex={2}
+                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 2,
+                          "flexGrow": 3,
                           "flexShrink": 1,
                         },
                       ]
@@ -579,12 +579,12 @@ Array [
                     </View>
                   </View>
                   <View
-                    flex={2}
+                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 2,
+                          "flexGrow": 3,
                           "flexShrink": 1,
                         },
                       ]
@@ -781,12 +781,12 @@ Array [
                     </View>
                   </View>
                   <View
-                    flex={2}
+                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 2,
+                          "flexGrow": 3,
                           "flexShrink": 1,
                         },
                       ]
@@ -983,12 +983,12 @@ Array [
                     </View>
                   </View>
                   <View
-                    flex={2}
+                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 2,
+                          "flexGrow": 3,
                           "flexShrink": 1,
                         },
                       ]
@@ -1300,7 +1300,35 @@ Array [
                       "position": "absolute",
                     }
                   }
-                />
+                >
+                  <View
+                    accessibilityLabel="Next"
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "marginRight": "50%",
+                        "opacity": 1,
+                      }
+                    }
+                    testID="button"
+                  >
+                    <View
+                      height={32}
+                      testID="arrowNext"
+                      width={32}
+                    >
+                      arrowNext-SVG-Mock
+                    </View>
+                  </View>
+                </View>
               </View>
             </View>
           </View>

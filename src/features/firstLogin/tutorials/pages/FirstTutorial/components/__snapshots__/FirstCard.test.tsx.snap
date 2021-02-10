@@ -181,12 +181,12 @@ exports[`FirstCard should render first card 1`] = `
     </View>
   </View>
   <View
-    flex={2}
+    flex={3}
     style={
       Array [
         Object {
           "flexBasis": 0,
-          "flexGrow": 2,
+          "flexGrow": 3,
           "flexShrink": 1,
         },
       ]
