@@ -36,24 +36,31 @@ const screens = routes
     />
   ))
 
+type InitialRouteName = 'TabNavigator' | 'FirstTutorial' | undefined
+
 export const RootNavigator: React.FC = () => {
-  const [initialRouteName, setInitialRouteName] = useState<
-    'TabNavigator' | 'FirstTutorial' | undefined
-  >()
+  const [initialRouteName, setInitialRouteName] = useState<InitialRouteName>()
+
+  function triggerInitialRouteNameAnalytics(routeName: InitialRouteName) {
+    if (!routeName) {
+      return
+    }
+    if (routeName === 'TabNavigator') {
+      analytics.logScreenView('Home')
+    } else {
+      analytics.logScreenView(routeName)
+    }
+  }
 
   useHideSplashScreen({ shouldHideSplashScreen: !!initialRouteName })
 
   useEffect(() => {
     storage.readObject('has_seen_tutorials').then((hasSeenTutorials) => {
-      setInitialRouteName(hasSeenTutorials ? 'TabNavigator' : 'FirstTutorial')
+      const routeName = hasSeenTutorials ? 'TabNavigator' : 'FirstTutorial'
+      setInitialRouteName(routeName)
+      triggerInitialRouteNameAnalytics(routeName)
     })
   }, [])
-
-  useEffect(() => {
-    if (!initialRouteName) return
-    if (initialRouteName === 'TabNavigator') analytics.logScreenView('Home')
-    else analytics.logScreenView(initialRouteName)
-  }, [initialRouteName])
 
   if (!initialRouteName) return null
   return (
