@@ -42,6 +42,7 @@ export const GenericTutorial: FunctionComponent<Props> = (props: Props) => {
   return (
     <React.Fragment>
       <Background />
+      <Spacer.TopScreen />
       <EntireScreen>
         <ScreenUsableArea>
           <SkipButton>
