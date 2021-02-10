@@ -3,13 +3,12 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import { TAB_BAR_COMP_HEIGHT } from 'features/navigation/TabBar/TabBarComponent'
 import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { Filter } from 'features/search/atoms/Buttons'
 import { SearchAlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 import { useSearchResults } from '../pages/useSearchResults'
 

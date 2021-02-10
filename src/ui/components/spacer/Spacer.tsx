@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme/spacing'
-
-import { useCustomSafeInsets } from '../../theme/useCustomSafeInsets'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface SpacerProps {
   numberOfSpaces: number

@@ -3,9 +3,8 @@ import styled from 'styled-components/native'
 
 import { BicolorSelector, computeBicolorSelectorHeight } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, Spacer, getSpacing } from 'ui/theme'
+import { ColorsEnum, Spacer, getSpacing, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
-export const TAB_BAR_COMP_HEIGHT = getSpacing(16)
 const SELECTOR_WIDTH = getSpacing(11)
 const SELECTOR_HEIGHT = computeBicolorSelectorHeight(SELECTOR_WIDTH)
 
