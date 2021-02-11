@@ -82,7 +82,6 @@ const Container = styled(TouchableOpacity)({
 })
 
 const Content = styled.View({
-  paddingTop: getSpacing(5),
   width: '100%',
   alignItems: 'center',
   maxWidth: getSpacing(125),
