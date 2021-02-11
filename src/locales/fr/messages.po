@@ -62,6 +62,7 @@ msgid "Active la géolocalisation pour découvrir toutes les offres existantes a
 msgstr "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
 
 #: src/features/firstLogin/tutorials/pages/FirstTutorial/components/ThirdCard.tsx:32
+#: src/features/search/components/GeolocationActivationModal.tsx:22
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
@@ -381,7 +382,7 @@ msgstr "ISBN"
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
-#: src/features/search/components/SearchLandingPage.tsx:25
+#: src/features/search/components/SearchLandingPage.tsx:44
 msgid "Je cherche"
 msgstr "Je cherche"
 
@@ -400,7 +401,7 @@ msgstr "Keychain non accessible"
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:33
+#: src/features/profile/components/BeneficiaryCeilings.tsx:34
 msgid "Le but du pass Culture est de renforcer vos pratiques culturelles, mais aussi d'en créer  de nouvelles. Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles."
 msgstr "Le but du pass Culture est de renforcer vos pratiques culturelles, mais aussi d'en créer  de nouvelles. Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles."
 
@@ -429,7 +430,7 @@ msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
-#: src/features/search/pages/LocationFilter.tsx:55
+#: src/features/search/pages/LocationFilter.tsx:86
 #: src/features/search/sections/titles.ts:5
 msgid "Localisation"
 msgstr "Localisation"
@@ -508,13 +509,17 @@ msgstr "Oups"
 msgid "Oups !"
 msgstr "Oups !"
 
-#: src/features/search/components/SearchLandingPage.tsx:33
+#: src/features/search/components/SearchLandingPage.tsx:52
 msgid "Où"
 msgstr "Où"
 
 #: src/features/offer/components/OfferWhereSection.tsx:25
 msgid "Où ?"
 msgstr "Où ?"
+
+#: src/features/search/components/GeolocationActivationModal.tsx:9
+msgid "Paramètres de localisation"
+msgstr "Paramètres de localisation"
 
 #: src/features/profile/pages/Profile.tsx:25
 msgid "Paramètres du compte"
@@ -556,11 +561,11 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offe
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:13
+#: src/features/profile/components/BeneficiaryCeilings.tsx:14
 msgid "Pourquoi les biens numériques sont-ils limités ?"
 msgstr "Pourquoi les biens numériques sont-ils limités ?"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:12
+#: src/features/profile/components/BeneficiaryCeilings.tsx:13
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 
@@ -611,6 +616,10 @@ msgstr "Retourner à l'accueil"
 msgid "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 
+#: src/features/search/components/GeolocationActivationModal.tsx:14
+msgid "Retrouve toutes les offres autour de chez toi en activant les données de localisation"
+msgstr "Retrouve toutes les offres autour de chez toi en activant les données de localisation"
+
 #: src/features/auth/signup/SetEmail.tsx:73
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
@@ -648,7 +657,7 @@ msgstr "Se connecter"
 msgid "Seules les sorties et offres physiques seront affichées"
 msgstr "Seules les sorties et offres physiques seront affichées"
 
-#: src/features/search/pages/LocationFilter.tsx:46
+#: src/features/search/pages/LocationFilter.tsx:77
 msgid "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 
@@ -733,7 +742,11 @@ msgstr "Tu es éligible !"
 msgid "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:22
+#: src/features/search/components/GeolocationActivationModal.tsx:19
+msgid "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation"
+msgstr "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation"
+
+#: src/features/profile/components/BeneficiaryCeilings.tsx:23
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
@@ -823,9 +836,9 @@ msgstr "c'est..."
 msgid "crédit photo"
 msgstr "crédit photo"
 
-#: src/features/profile/components/BeneficiaryHeader.tsx:27
-msgid "crédit valable jusqu'au {creditExpiracyDate}"
-msgstr "crédit valable jusqu'au {creditExpiracyDate}"
+#: src/features/profile/components/BeneficiaryHeader.tsx:26
+msgid "crédit valable jusqu'au {0}"
+msgstr "crédit valable jusqu'au {0}"
 
 #: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application."

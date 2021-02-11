@@ -1,7 +1,12 @@
+import { t } from '@lingui/macro'
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
 
+import { _ } from 'libs/i18n'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
+import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   hideGeolocPermissionModal: () => void
@@ -15,15 +20,36 @@ export const GeolocationActivationModal: React.FC<Props> = ({
   onPressGeolocPermissionModalButton,
 }) => (
   <AppInformationModal
-    title="Geoloc"
+    title={_(t`Paramètres de localisation`)}
     visible={isGeolocPermissionModalVisible}
     onCloseIconPress={hideGeolocPermissionModal}
     testIdSuffix="geoloc-permission-modal">
     <React.Fragment>
-      <Text>Je suis la modale</Text>
-      <TouchableOpacity onPress={onPressGeolocPermissionModalButton}>
-        <Text>Ouvrir settings</Text>
-      </TouchableOpacity>
+      <BicolorLocationPointer
+        size={140}
+        color={ColorsEnum.GREY_DARK}
+        color2={ColorsEnum.GREY_DARK}
+      />
+      <Spacer.Column numberOfSpaces={2} />
+      <InformationText>
+        {_(
+          t`Retrouve toutes les offres autour de chez toi en activant les données de localisation`
+        )}
+      </InformationText>
+      <Spacer.Column numberOfSpaces={4} />
+
+      <InformationText>
+        {_(t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation`)}
+      </InformationText>
+      <Spacer.Column numberOfSpaces={6} />
+      <ButtonPrimary
+        title={_(t`Activer la géolocalisation`)}
+        onPress={onPressGeolocPermissionModalButton}
+      />
     </React.Fragment>
   </AppInformationModal>
 )
+
+const InformationText = styled(Typo.Body)({
+  textAlign: 'center',
+})
