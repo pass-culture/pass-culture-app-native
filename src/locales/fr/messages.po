@@ -233,6 +233,10 @@ msgstr "Confirme ton e\\u2011mail"
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
+#: src/features/profile/components/LoggedOutHeader.tsx:26
+msgid "Connecte-toi"
+msgstr "Connecte-toi"
+
 #: src/features/auth/login/Login.tsx:82
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
@@ -386,6 +390,10 @@ msgstr "ISBN"
 #: src/features/profile/pages/Profile.tsx:28
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
+
+#: src/features/profile/components/LoggedOutHeader.tsx:18
+msgid "Inscris-toi pour accéder à toutes les fonctionnalités de l’appication"
+msgstr "Inscris-toi pour accéder à toutes les fonctionnalités de l’appication"
 
 #: src/features/search/components/SearchLandingPage.tsx:25
 msgid "Je cherche"
@@ -582,11 +590,12 @@ msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgid "Prix"
 msgstr "Prix"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:43
+#: src/features/profile/components/LoggedOutHeader.tsx:15
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:42
 msgid "Profil"
 msgstr "Profil"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:31
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:30
 msgid "Profite de 300\\u00a0€\\u00a0"
 msgstr "Profite de 300\\u00a0€\\u00a0"
 
@@ -646,6 +655,7 @@ msgid "Réserver"
 msgstr "Réserver"
 
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:39
+#: src/features/profile/components/LoggedOutHeader.tsx:21
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
@@ -742,11 +752,15 @@ msgstr "Toute la culture"
 msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
 
+#: src/features/profile/components/LoggedOutHeader.tsx:24
+msgid "Tu as déjà un compte ?\\u00a0"
+msgstr "Tu as déjà un compte ?\\u00a0"
+
 #: src/features/auth/signup/EligibilityConfirmed.tsx:15
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:29
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:28
 msgid "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 
@@ -845,8 +859,13 @@ msgid "crédit photo"
 msgstr "crédit photo"
 
 #: src/features/profile/components/BeneficiaryHeader.tsx:26
+<<<<<<< HEAD
 msgid "crédit valable jusqu'au {0}"
 msgstr "crédit valable jusqu'au {0}"
+=======
+msgid "crédit valable jusqu'au {creditExpiracyDate}"
+msgstr "crédit valable jusqu'au {creditExpiracyDate}"
+>>>>>>> (PC-6372) Logged out profile header
 
 #: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application."
@@ -943,7 +962,7 @@ msgstr "Échec de la requête {0}, code: {1}"
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:31
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:30
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
