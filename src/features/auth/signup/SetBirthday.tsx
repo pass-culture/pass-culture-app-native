@@ -234,7 +234,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
         visible={informationModalVisible}
         onCloseIconPress={hideInformationModal}
         testIdSuffix="birthday-information">
-        <React.Fragment>
+        <ModalChildrenContainer>
           <BirthdayCake />
           <Spacer.Column numberOfSpaces={2} />
           <StyledBody>
@@ -242,7 +242,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
          Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 €
           proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`)}
           </StyledBody>
-        </React.Fragment>
+        </ModalChildrenContainer>
       </AppInformationModal>
       <QuitSignupModal
         visible={fullPageModalVisible}
@@ -284,4 +284,8 @@ const DateInputContainer = styled.View({
   marginTop: getSpacing(10),
   alignItems: 'center',
   width: '100%',
+})
+
+const ModalChildrenContainer = styled.View({
+  paddingTop: getSpacing(5),
 })
