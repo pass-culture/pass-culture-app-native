@@ -14,7 +14,7 @@ jest.mock('features/home/api', () => ({
     () =>
       ({
         isLoading: false,
-        data: { email: 'email2@domain.ext', firstName: 'Jean', isBeneficiary: true },
+        data: { email: 'email2@domain.ext', firstName: 'Jean', isBeneficiary: false },
       } as UseQueryResult<UserProfileResponse>)
   ),
 }))
