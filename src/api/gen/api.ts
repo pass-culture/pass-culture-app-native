@@ -111,6 +111,24 @@ export interface AccountRequest {
      */
     token: string;
 }/**
+ * 
+ * @export
+ * @interface BookOfferRequest
+ */
+export interface BookOfferRequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof BookOfferRequest
+     */
+    quantity: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookOfferRequest
+     */
+    stockId: string;
+}/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -656,6 +674,12 @@ export interface UserProfileResponse {
     dateOfBirth?: Date;
     /**
      * 
+     * @type {Date}
+     * @memberof UserProfileResponse
+     */
+    depositExpirationDate?: Date;
+    /**
+     * 
      * @type {number}
      * @memberof UserProfileResponse
      */
@@ -684,6 +708,12 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     hasAllowedRecommendations: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserProfileResponse
+     */
+    id: number;
     /**
      * 
      * @type {boolean}
@@ -865,6 +895,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary book_offer <POST>
+         * @param {BookOfferRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1bookOffer(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/book_offer`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"BookOfferRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
             return {
                 url: url.format(localVarUrlObj),
@@ -1126,6 +1182,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary book_offer <POST>
+         * @param {BookOfferRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1bookOffer(basePath: string, body?: BookOfferRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookOffer(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary change_password <POST>
          * @param {ChangePasswordRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -1274,6 +1342,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1account(body?: AccountRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1account(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary book_offer <POST>
+     * @param {BookOfferRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1bookOffer(body?: BookOfferRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1bookOffer(this.basePath, body, options)
     }
     /**
      * 

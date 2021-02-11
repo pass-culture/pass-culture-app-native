@@ -27,6 +27,7 @@ const userProfileAPIResponse: UserProfileResponse = {
   hasAllowedRecommendations: true,
   isEligible: true,
   needsToFillCulturalSurvey: true,
+  id: 1234,
 }
 server.use(
   rest.get(
