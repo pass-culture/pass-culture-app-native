@@ -36,6 +36,16 @@ Array [
     }
   >
     <View
+      customHeight={16}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
       style={
         Array [
           Object {

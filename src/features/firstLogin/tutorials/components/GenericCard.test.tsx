@@ -99,6 +99,42 @@ describe('<GenericCard />', () => {
     expect(queryByText('button1')).toBeFalsy()
   })
 
+  it('should not have a button when not active index', () => {
+    const { getByTestId, queryByText } = render(
+      <GenericCard
+        buttonText={buttonText}
+        animation={animation}
+        buttonCallback={buttonCallback}
+        pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+        subTitle={subTitle}
+        text={text}
+        title={title}
+        index={2}
+        activeIndex={1}
+      />
+    )
+    expect(queryByText(buttonText)).toBeFalsy()
+    expect(getByTestId('invisible-button-height')).toBeTruthy()
+  })
+
+  it('should have a button and no invisible-button-height when active index', () => {
+    const { queryByTestId, getByText } = render(
+      <GenericCard
+        buttonText={buttonText}
+        animation={animation}
+        buttonCallback={buttonCallback}
+        pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+        subTitle={subTitle}
+        text={text}
+        title={title}
+        index={1}
+        activeIndex={1}
+      />
+    )
+    expect(getByText(buttonText)).toBeTruthy()
+    expect(queryByTestId('invisible-button-height')).toBeFalsy()
+  })
+
   it('should pause animation when not on active index', async () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {

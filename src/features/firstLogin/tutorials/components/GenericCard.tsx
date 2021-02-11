@@ -80,14 +80,20 @@ export const GenericCard: FunctionComponent<CardProps> = (props: CardProps) => {
       <StyledBody>{props.text}</StyledBody>
       <Spacer.Flex flex={2} />
       <Animatable.View ref={animatedButtonRef}>
-        {props.activeIndex === props.index && (
+        {props.activeIndex === props.index ? (
           <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
+        ) : (
+          <InvisibleButtonHeight testID="invisible-button-height" />
         )}
       </Animatable.View>
       <Spacer.Flex flex={3} />
     </GenericCardContainer>
   )
 }
+
+const InvisibleButtonHeight = styled.View({
+  height: getSpacing(12),
+})
 
 const StyledLottieContainer = styled.View({
   flexGrow: 1,
