@@ -1,7 +1,9 @@
 import _ from 'lodash'
 
-import { Expense } from 'api/gen/api'
+import { Expense, ExpenseDomain } from 'api/gen/api'
 import { ExpenseDomainOrder } from 'features/profile/components/types'
+import { ExpenseV2 } from 'features/profile/components/types'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
 /**
  * Formats an iso date to a slashed french date.
@@ -21,4 +23,9 @@ export function sortExpenses(expenses: Expense[]) {
   return _.sortBy(expenses, function (expense: Expense) {
     return ExpenseDomainOrder[expense.domain]
   })
+}
+
+export function computeRemainingCredit(expenses: Expense[] | ExpenseV2[]): number {
+  const allExpense = expenses.find((expense) => expense.domain === ExpenseDomain.All)
+  return allExpense ? convertCentsToEuros(allExpense.limit - allExpense.current) : 0
 }

@@ -55,3 +55,13 @@ export const ExpenseDomainOrder = {
   [ExpenseDomain.Physical]: 2,
   [ExpenseDomain.Digital]: 3,
 }
+
+export type ExpensesAndDepositVersion =
+  | {
+      expenses: Expense[]
+      depositVersion: 1
+    }
+  | {
+      expenses: ExpenseV2[]
+      depositVersion: 2
+    }

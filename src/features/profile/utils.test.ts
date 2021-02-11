@@ -1,6 +1,6 @@
 import { Expense, ExpenseDomain } from 'api/gen/api'
 
-import { computeEligibilityExpiracy, sortExpenses } from './utils'
+import { computeEligibilityExpiracy, computeRemainingCredit, sortExpenses } from './utils'
 
 describe('computeEligibilityExpiracy', () => {
   it.each([
@@ -13,7 +13,7 @@ describe('computeEligibilityExpiracy', () => {
     expect(expiracy.toISOString()).toEqual(expectedExpiracy)
   })
 
-  it('should sort expenses in the right order', () => {
+  it('sortExpenses - should sort expenses in the right order', () => {
     const expenses: Array<Expense> = [
       { current: 60, domain: ExpenseDomain.Digital, limit: 100 },
       { current: 100, domain: ExpenseDomain.All, limit: 200 },
@@ -25,5 +25,14 @@ describe('computeEligibilityExpiracy', () => {
       { current: 0, domain: ExpenseDomain.Physical, limit: 200 },
       { current: 60, domain: ExpenseDomain.Digital, limit: 100 },
     ])
+  })
+
+  it('computeRemainingCredit - should return the right amount according to expenses', () => {
+    const expenses: Array<Expense> = [
+      { current: 600, domain: ExpenseDomain.Digital, limit: 1000 },
+      { current: 1500, domain: ExpenseDomain.All, limit: 2000 },
+      { current: 0, domain: ExpenseDomain.Physical, limit: 2000 },
+    ]
+    expect(computeRemainingCredit(expenses)).toBe(5)
   })
 })

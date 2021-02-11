@@ -10,6 +10,7 @@ import { CreditCeiling, getCreditCeilingProps } from 'features/profile/component
 import { ExpenseV2 } from 'features/profile/components/types'
 import { sortExpenses } from 'features/profile/utils'
 import { _ } from 'libs/i18n'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type BeneficiaryCeilingsProps =
@@ -45,8 +46,8 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
           return (
             <CreditCeiling
               key={index}
-              amount={expense.current}
-              max={expense.limit}
+              amount={convertCentsToEuros(expense.current)}
+              max={convertCentsToEuros(expense.limit)}
               {...getCreditCeilingProps(props.depositVersion, expense)}
             />
           )
