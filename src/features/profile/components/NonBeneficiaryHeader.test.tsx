@@ -39,7 +39,7 @@ describe('NonBeneficiaryHeader', () => {
       <NonBeneficiaryHeader email="john@doe.com" dateOfBirth={birthday} />
     )
 
-    getByTestId('18-view')
+    getByTestId('body-container-18')
 
     const banner = getByTestId('18-banner')
     banner.props.onClick()
@@ -49,14 +49,14 @@ describe('NonBeneficiaryHeader', () => {
       licenceToken: 'thisIsATokenForIdCheck',
     })
   })
-  it('should render the right body for user above 18years old', () => {
+  it('should render the right body for user above 18 years old', () => {
     const today = '2021-02-30T00:00:00'
     const birthday = '2002-01-31T00:00:00'
     mockdate.set(new Date(today))
-    const { getByTestId } = render(
+    const { queryByTestId } = render(
       <NonBeneficiaryHeader email="john@doe.com" dateOfBirth={birthday} />
     )
-    const container = getByTestId('body-container')
-    expect(container.props.children).toBeNull()
+    const container = queryByTestId('body-container')
+    expect(container).toBeNull()
   })
 })
