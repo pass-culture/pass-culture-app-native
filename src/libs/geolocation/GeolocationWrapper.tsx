@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import { Platform } from 'react-native'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
@@ -49,7 +50,11 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   async function contextualRequestGeolocPermission(params?: RequestGeolocPermissionParams) {
     const permissionState = await requestGeolocPermission()
     setPermissionState(permissionState)
-    const isPermissionGranted = permissionState === GeolocPermissionState.GRANTED
+    let isPermissionGranted = permissionState === GeolocPermissionState.GRANTED
+    // TODO: will be removed in ticket PC-6626
+    if (Platform.OS === 'ios') {
+      isPermissionGranted = permissionState
+    }
 
     if (params?.onSubmit) {
       params.onSubmit()

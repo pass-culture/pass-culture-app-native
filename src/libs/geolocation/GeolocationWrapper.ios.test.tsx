@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { waitFor } from '@testing-library/react-native'
 import React from 'react'
+import { Platform } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
 import { GeolocationWrapper, useGeolocation } from 'libs/geolocation'
@@ -14,6 +15,7 @@ const onAcceptance = jest.fn()
 const onRefusal = jest.fn()
 
 describe('useGeolocation()', () => {
+  Platform.OS = 'ios'
   it('should call onAcceptance when requestGeolocPermission returns access is granted', async () => {
     jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('granted')
     const { result } = renderGeolocationHook()
@@ -21,7 +23,7 @@ describe('useGeolocation()', () => {
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
     await waitFor(() => {
-      expect(result.current.permissionGranted).toBeTruthy()
+      expect(result.current.permissionState).toBeTruthy()
       expect(onSubmit).toBeCalled()
       expect(onAcceptance).toBeCalled()
       expect(onRefusal).not.toBeCalled()
@@ -35,7 +37,7 @@ describe('useGeolocation()', () => {
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
     await waitFor(() => {
-      expect(result.current.permissionGranted).toBeFalsy()
+      expect(result.current.permissionState).toBeFalsy()
       expect(onSubmit).toBeCalled()
       expect(onRefusal).toBeCalled()
       expect(onAcceptance).not.toBeCalled()
