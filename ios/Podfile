@@ -19,6 +19,8 @@ target 'PassCulture' do
   # you should disable these next few lines.
   use_flipper!
 
+  pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
+
   post_install do |installer|
     flipper_post_install(installer)
   end
