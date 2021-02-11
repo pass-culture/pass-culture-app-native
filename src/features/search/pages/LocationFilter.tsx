@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
-import { ScrollView, ViewStyle, Linking, TouchableOpacity, Text } from 'react-native'
+import { ScrollView, ViewStyle, Linking } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useAppStateChange } from 'features/offer/pages/useAppStateChange'
@@ -11,10 +11,10 @@ import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { Banner, BannerType } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
+import { GeolocationActivationModal } from '../components/GeolocationActivationModal'
 import { LocationChoice } from '../components/LocationChoice'
 
 import { useSearch } from './SearchWrapper'
@@ -113,18 +113,11 @@ export const LocationFilter: React.FC = () => {
       </ScrollView>
 
       <PageHeader title={_(t`Localisation`)} />
-      <AppInformationModal
-        title="Geoloc"
-        visible={isGeolocPermissionModalVisible}
-        onCloseIconPress={hideGeolocPermissionModal}
-        testIdSuffix="geoloc-permission-modal">
-        <React.Fragment>
-          <Text>Je suis la modale</Text>
-          <TouchableOpacity onPress={onPressGeolocPermissionModalButton}>
-            <Text>Ouvrir settings</Text>
-          </TouchableOpacity>
-        </React.Fragment>
-      </AppInformationModal>
+      <GeolocationActivationModal
+        isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
+        hideGeolocPermissionModal={hideGeolocPermissionModal}
+        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
+      />
     </React.Fragment>
   )
 }
