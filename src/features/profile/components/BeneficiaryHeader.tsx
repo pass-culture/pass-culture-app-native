@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React, { PropsWithChildren } from 'react'
-import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Expense } from 'api/gen/api'
@@ -8,7 +7,7 @@ import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeil
 import { ExpenseV2 } from 'features/profile/components/types'
 import { _ } from 'libs/i18n'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { getSpacing, ColorsEnum, Typo, Spacer } from 'ui/theme'
+import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
 
 type BeneficiaryHeaderProps = {
   firstName?: string
@@ -35,7 +34,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
   return (
     <Container testID={`beneficiary-header-${props.depositVersion}`}>
       <HeaderBackgroundWrapper>
-        <HeaderBackground width={screenWidth} />
+        <HeaderBackground width={ScreenWidth} />
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={12} />
       <UserNameAndCredit>
@@ -56,9 +55,6 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
     </Container>
   )
 }
-
-/** Add 1 pixel to avoid 1 white pixel on androids */
-const screenWidth = Dimensions.get('window').width + 1
 
 const Container = styled.View({
   paddingHorizontal: getSpacing(5.5),

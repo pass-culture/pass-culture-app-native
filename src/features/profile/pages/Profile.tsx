@@ -123,6 +123,7 @@ const Section = styled(ProfileSection).attrs({
 const Row = styled(SectionRow).attrs({
   style: styles.row,
 })``
+
 const BottomSpacing = styled.View({
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(2),
 })

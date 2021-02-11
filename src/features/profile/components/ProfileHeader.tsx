@@ -6,6 +6,7 @@ import { computeRemainingCredit } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 
 import { BeneficiaryHeader } from './BeneficiaryHeader'
+import { LoggedOutHeader } from './LoggedOutHeader'
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
 type ProfileHeaderProps = {
@@ -16,8 +17,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   const { user } = props
 
   if (!user) {
-    // TODO(PC-6372) afficher le header non connecté
-    return null
+    return <LoggedOutHeader />
   }
 
   if (user.isBeneficiary) {

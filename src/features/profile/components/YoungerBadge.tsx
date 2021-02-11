@@ -13,11 +13,11 @@ export function YoungerBadge() {
         <Clock size={48} />
       </IconContainer>
       <TextContainer>
-        <Typo.Body>
+        <Typo.Caption>
           {_(
             t`Patience ! L’année de tes 18 ans tu bénéficieras de 300€ offerts à dépenser sur l’application.`
           )}
-        </Typo.Body>
+        </Typo.Caption>
       </TextContainer>
     </Container>
   )

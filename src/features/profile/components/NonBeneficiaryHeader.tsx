@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren } from 'react'
-import { Dimensions } from 'react-native'
+import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { useGetIdCheckToken } from 'features/auth/api'
@@ -11,7 +11,7 @@ import { _ } from 'libs/i18n'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo, ScreenWidth } from 'ui/theme'
 
 import { computeEligibilityExpiracy } from '../utils'
 
@@ -36,7 +36,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   let body = null
   switch (true) {
     case age > 18:
-      body = null
+      body = <BodyContainer testID="body-container-above-18" padding={1} />
       break
     case age === 18:
       body = (
@@ -65,7 +65,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   return (
     <React.Fragment>
       <HeaderBackgroundWrapper>
-        <HeaderBackground width={screenWidth} />
+        <HeaderBackground width={ScreenWidth} />
         <Title>{_(t`Profil`)}</Title>
       </HeaderBackgroundWrapper>
       {body}
@@ -75,11 +75,8 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
 export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
 
-/** Add 1 pixel to avoid 1 white pixel on androids */
-const screenWidth = Dimensions.get('window').width + 1
-
 const HeaderBackgroundWrapper = styled.View({
-  maxHeight: getSpacing(16),
+  maxHeight: getSpacing(16) + getStatusBarHeight(true),
   overflow: 'hidden',
   position: 'relative',
   alignItems: 'center',
@@ -87,11 +84,13 @@ const HeaderBackgroundWrapper = styled.View({
 
 const Title = styled(Typo.Title4)({
   position: 'absolute',
-  top: getSpacing(8),
+  bottom: getSpacing(3),
   color: ColorsEnum.WHITE,
 })
 
-const BodyContainer = styled.View({
-  padding: getSpacing(4),
+const BodyContainer = styled.View.attrs<{ padding?: number }>(({ padding }) => ({
+  padding,
+}))<{ padding?: number }>(({ padding }) => ({
+  padding: getSpacing(padding || 4),
   position: 'relative',
-})
+}))

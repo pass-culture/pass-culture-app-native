@@ -1,11 +1,11 @@
 import React from 'react'
-import { Dimensions, Platform } from 'react-native'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
 import { OfferBackPlaceholder } from 'ui/svg/OfferBackPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
-import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, getShadow, ScreenWidth } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -30,11 +30,11 @@ export const OfferHero: React.FC<Props> = ({ imageUrl, categoryName }) => {
       ) : (
         <OfferBackPlaceholder
           testID="offerBackPlaceholder"
-          width={screenWidth}
+          width={ScreenWidth}
           height={blurImageHeight + top}
         />
       )}
-      <Rectangle size={screenWidth} />
+      <Rectangle size={ScreenWidth} />
       <ImageContainer>
         {imageUrl ? (
           <Image resizeMode="cover" source={{ uri: imageUrl }} />
@@ -51,13 +51,10 @@ const blurImageHeight = getSpacing(74)
 const imageWidth = getSpacing(53)
 const imageHeight = getSpacing(79)
 
-/** Add 1 pixel to avoid 1 white pixel on androids */
-const screenWidth = Dimensions.get('window').width + 1
-
 const HeroContainer = styled.View({ alignItems: 'center' })
 const BlurImage = styled.Image<{ extraHeight: number }>(({ extraHeight }) => ({
   height: blurImageHeight + extraHeight,
-  width: screenWidth,
+  width: ScreenWidth,
 }))
 const ImageContainer = styled.View({
   position: 'absolute',
