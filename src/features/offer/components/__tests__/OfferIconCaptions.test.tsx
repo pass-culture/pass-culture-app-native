@@ -48,6 +48,7 @@ const userProfileAPIResponse: UserProfileResponse = {
   hasAllowedRecommendations: true,
   isEligible: true,
   needsToFillCulturalSurvey: true,
+  id: 1234,
 }
 
 describe('<OfferIconCaptions />', () => {
