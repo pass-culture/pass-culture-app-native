@@ -36,6 +36,16 @@ Array [
     }
   >
     <View
+      customHeight={16}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
       style={
         Array [
           Object {
@@ -521,7 +531,18 @@ Array [
                   <View
                     forwardedRef={[Function]}
                     style={Object {}}
-                  />
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "height": 48,
+                          },
+                        ]
+                      }
+                      testID="invisible-button-height"
+                    />
+                  </View>
                   <View
                     flex={3}
                     style={
@@ -667,7 +688,18 @@ Array [
                   <View
                     forwardedRef={[Function]}
                     style={Object {}}
-                  />
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "height": 48,
+                          },
+                        ]
+                      }
+                      testID="invisible-button-height"
+                    />
+                  </View>
                   <View
                     flex={3}
                     style={
@@ -813,7 +845,18 @@ Array [
                   <View
                     forwardedRef={[Function]}
                     style={Object {}}
-                  />
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "height": 48,
+                          },
+                        ]
+                      }
+                      testID="invisible-button-height"
+                    />
+                  </View>
                   <View
                     flex={3}
                     style={
