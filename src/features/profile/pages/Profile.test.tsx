@@ -1,10 +1,22 @@
 import { render, act } from '@testing-library/react-native'
 import React from 'react'
+import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { UserProfileResponse } from 'api/gen'
 import { flushAllPromises } from 'tests/utils'
 
 import { Profile } from './Profile'
+
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(
+    () =>
+      ({
+        isLoading: false,
+        data: { email: 'email2@domain.ext', firstName: 'Jean', isBeneficiary: true },
+      } as UseQueryResult<UserProfileResponse>)
+  ),
+}))
 
 async function renderProfile() {
   const wrapper = render(<Profile />)

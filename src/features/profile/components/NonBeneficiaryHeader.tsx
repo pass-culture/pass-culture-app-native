@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren } from 'react'
-import { Dimensions, View } from 'react-native'
+import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGetIdCheckToken } from 'features/auth/api'
@@ -40,7 +40,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
       break
     case age === 18:
       body = (
-        <View testID="18-view">
+        <BodyContainer testID="body-container-18">
           <Typo.Caption>{_(t`Tu es éligible jusqu'au\u00a0${expiracyDate}`)}</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <ModuleBanner
@@ -50,11 +50,15 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
             subTitle={_(t`à dépenser dans l'application`)}
             testID="18-banner"
           />
-        </View>
+        </BodyContainer>
       )
       break
     case age < 18:
-      body = <YoungerBadge />
+      body = (
+        <BodyContainer testID="body-container-under-18">
+          <YoungerBadge />
+        </BodyContainer>
+      )
       break
   }
 
@@ -64,7 +68,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
         <HeaderBackground width={screenWidth} />
         <Title>{_(t`Profil`)}</Title>
       </HeaderBackgroundWrapper>
-      <BodyContainer testID="body-container">{body}</BodyContainer>
+      {body}
     </React.Fragment>
   )
 }

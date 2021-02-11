@@ -5,37 +5,24 @@ import { StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { Expense, ExpenseDomain } from 'api/gen/api'
+import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { BeneficiaryHeader } from 'features/profile/components/BeneficiaryHeader'
 import { _ } from 'libs/i18n'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { getSpacing, Typo } from 'ui/theme'
 
+import { ProfileHeader } from '../components/ProfileHeader'
 import { ProfileSection } from '../components/ProfileSection'
 import { SectionRow } from '../components/SectionRow'
 
-// TODO(PC-6169) remove this when UserProfileResponse is handled on this page
-const expenses_v1: Array<Expense> = [
-  { current: 100, domain: ExpenseDomain.All, limit: 200 },
-  { current: 0, domain: ExpenseDomain.Physical, limit: 200 },
-  { current: 60, domain: ExpenseDomain.Digital, limit: 100 },
-]
-
 export const Profile: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { data: user } = useUserProfileInfo()
 
   return (
     <ScrollView>
-      {/* TODO(PC-6169) display this header dynamically if user is logged in and beneficiary */}
-      <BeneficiaryHeader
-        depositVersion={1}
-        expenses={expenses_v1}
-        firstName={'Rosa'}
-        lastName={'Bonheur'}
-        remainingCredit={150}
-      />
+      <ProfileHeader user={user} />
       <Container>
         <Section title={_(t`Paramètres du compte`)}>
           <Row
@@ -72,7 +59,7 @@ export const Profile: React.FC = () => {
 const Container = styled.View({
   flex: 1,
   flexDirection: 'column',
-  padding: getSpacing(5),
+  paddingHorizontal: getSpacing(5),
 })
 
 const styles = StyleSheet.create({
