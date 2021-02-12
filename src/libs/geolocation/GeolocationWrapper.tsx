@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Platform } from 'react-native'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
+import { useAppStateChange } from 'features/offer/pages/useAppStateChange'
+
 import { checkGeolocPermission } from './checkGeolocPermission'
 import { getPosition } from './getPosition'
 import { GeolocPermissionState } from './permissionState.d'
@@ -70,6 +72,14 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
     const isPermissionGranted = await checkGeolocPermission()
     if (isPermissionGranted) setPermissionState(GeolocPermissionState.GRANTED)
   }
+
+  const onAppBecomeActive = async () => {
+    await contextualCheckPermission()
+  }
+  const onAppBecomeInactive = async () => {
+    // nothing
+  }
+  useAppStateChange(onAppBecomeActive, onAppBecomeInactive)
 
   return (
     <GeolocationContext.Provider
