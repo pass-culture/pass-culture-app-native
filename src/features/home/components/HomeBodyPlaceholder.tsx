@@ -5,7 +5,6 @@ import { G, Rect } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import {
-  ColorsEnum,
   getSpacing,
   LENGTH_L,
   LENGTH_M,
@@ -13,6 +12,7 @@ import {
   RATIO_ALGOLIA,
   RATIO_BUSINESS,
   Spacer,
+  UniqueColors,
 } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -64,8 +64,8 @@ const ModuleTitlePlaceholder = () => (
     height={getSpacing(4)}
     width={getSpacing(40)}
     speed={1}
-    backgroundColor={ColorsEnum.GREY_MEDIUM}
-    foregroundColor={ColorsEnum.GREY_LIGHT}>
+    backgroundColor={UniqueColors.BACKGROUND_COLOR}
+    foregroundColor={UniqueColors.FOREGROUND_COLOR}>
     <Rect rx={2} ry={2} width={getSpacing(40)} height={getSpacing(4)} />
   </ContentLoader>
 )
@@ -78,8 +78,8 @@ const OfferTilePlaceholder = ({ size }: { size: TileSize }) => {
       height={height + getSpacing(10)}
       width={width}
       speed={1}
-      backgroundColor={ColorsEnum.GREY_MEDIUM}
-      foregroundColor={ColorsEnum.GREY_LIGHT}>
+      backgroundColor={UniqueColors.BACKGROUND_COLOR}
+      foregroundColor={UniqueColors.FOREGROUND_COLOR}>
       <G>
         <BasePlaceholder height={height} width={width} />
       </G>
@@ -113,8 +113,8 @@ const BusinessModulePlaceholder = () => {
       height={height}
       width={width}
       speed={1}
-      backgroundColor={ColorsEnum.GREY_MEDIUM}
-      foregroundColor={ColorsEnum.GREY_LIGHT}>
+      backgroundColor={UniqueColors.BACKGROUND_COLOR}
+      foregroundColor={UniqueColors.FOREGROUND_COLOR}>
       <Rect
         rx={BorderRadiusEnum.BORDER_RADIUS}
         ry={BorderRadiusEnum.BORDER_RADIUS}
