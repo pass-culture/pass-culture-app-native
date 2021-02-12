@@ -15,9 +15,9 @@ import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/Async
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { env } from 'libs/environment'
+import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { i18n } from 'libs/i18n' //@translations
-import 'libs/sentry'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -58,6 +58,9 @@ const queryClient = new QueryClient({
     },
   },
 })
+
+// Disable error monitoring in development environment
+errorMonitoring.init({ enabled: !__DEV__ })
 
 const AppComponent: FunctionComponent = function () {
   useStartBatchNotification()

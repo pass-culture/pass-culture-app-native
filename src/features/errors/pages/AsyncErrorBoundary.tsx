@@ -1,11 +1,12 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { errorMonitoring, MonitoringError } from 'libs/errorMonitoring'
 import { _ } from 'libs/i18n'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
@@ -14,10 +15,10 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-export class AsyncError extends Error {
-  public retry?: () => Promise<unknown>
-  constructor(message: string, retry?: () => Promise<unknown>) {
-    super(message)
+export class AsyncError extends MonitoringError {
+  retry?: () => Promise<unknown>
+  constructor(message: string, retry?: () => Promise<unknown>, name = 'AsyncError') {
+    super(message, name)
     this.retry = retry
   }
 }
@@ -35,6 +36,10 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   header,
 }: AsyncFallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
+
+  useEffect(() => {
+    errorMonitoring.captureException(error)
+  }, [error])
 
   const handleRetry = async () => {
     reset()
