@@ -52,11 +52,7 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   async function contextualRequestGeolocPermission(params?: RequestGeolocPermissionParams) {
     const permissionState = await requestGeolocPermission()
     setPermissionState(permissionState)
-    let isPermissionGranted = permissionState === GeolocPermissionState.GRANTED
-    // TODO: will be removed in ticket PC-6626
-    if (Platform.OS === 'ios') {
-      isPermissionGranted = permissionState
-    }
+    const isPermissionGranted = permissionState === GeolocPermissionState.GRANTED
 
     if (params?.onSubmit) {
       params.onSubmit()
