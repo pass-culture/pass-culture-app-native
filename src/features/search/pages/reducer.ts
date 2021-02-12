@@ -33,6 +33,7 @@ export const initialSearchState: SearchState = {
 
 export type Action =
   | { type: 'INIT' }
+  | { type: 'SET_STATE'; payload: Partial<SearchState> }
   | { type: 'INIT_FROM_SEE_MORE'; payload: Partial<SearchState> }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
   | { type: 'RADIUS'; payload: number }
@@ -56,7 +57,9 @@ export type Action =
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
     case 'INIT':
-      return initialSearchState
+      return { ...initialSearchState, showResults: state.showResults }
+    case 'SET_STATE':
+      return { ...initialSearchState, ...action.payload }
     case 'SHOW_RESULTS':
       return { ...state, showResults: action.payload }
     case 'INIT_FROM_SEE_MORE':
