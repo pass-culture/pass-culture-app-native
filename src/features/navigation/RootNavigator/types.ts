@@ -47,9 +47,7 @@ export type RootStackParamList = {
   TemporaryProfilePage: undefined
   VerifyEligibility: { email: string; licenceToken: string }
   FirstTutorial: undefined
-  SecondTutorial: undefined
-  ThirdTutorial: undefined
-  FourthTutorial: undefined
+  EighteenBirthday: undefined
 }
 
 export type AllNavParamList = RootStackParamList & TabParamList
