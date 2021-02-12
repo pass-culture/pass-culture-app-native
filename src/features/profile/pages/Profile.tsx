@@ -28,7 +28,7 @@ export const Profile: React.FC = () => {
           <Row
             title={_(t`Informations personnelles`)}
             type="navigable"
-            onPress={() => navigate('TemporyProfilePage')}
+            onPress={() => navigate('TemporaryProfilePage')}
             icon={ProfileIcon}
             style={styles.row}
             testID="row-personal-data"
@@ -36,7 +36,7 @@ export const Profile: React.FC = () => {
           <Row
             title={_(t`Mot de passe`)}
             type="navigable"
-            onPress={() => navigate('TemporyProfilePage')}
+            onPress={() => navigate('TemporaryProfilePage')}
             icon={Lock}
             style={styles.row}
             testID="row-password"
