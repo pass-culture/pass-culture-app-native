@@ -6,12 +6,10 @@ import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useAppStateChange } from 'features/offer/pages/useAppStateChange'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
-import { useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -25,16 +23,6 @@ export const SearchLandingPage: React.FC = () => {
   const [selectedCategory] = searchState.offerCategories
   const { icon: Icon, label } = CATEGORY_CRITERIA[(selectedCategory as CategoryNameEnum) || 'ALL']
   const { Icon: LocationIcon, label: locationLabel } = useLocationChoice(searchState.locationType)
-  const { checkGeolocPermission } = useGeolocation()
-
-  const onAppBecomeActive = async () => {
-    await checkGeolocPermission()
-  }
-  const onAppBecomeInactive = async () => {
-    // nothing
-  }
-
-  useAppStateChange(onAppBecomeActive, onAppBecomeInactive)
 
   return (
     <React.Fragment>
