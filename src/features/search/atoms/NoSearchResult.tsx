@@ -11,7 +11,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoSearchResult: React.FC = () => {
   const { position } = useGeolocation()
-  const { dispatch, searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { query } = searchState
 
   useEffect(() => {
@@ -20,7 +20,6 @@ export const NoSearchResult: React.FC = () => {
 
   const handlePressAroundMe = () => {
     dispatch({ type: 'INIT' })
-    dispatch({ type: 'SHOW_RESULTS', payload: true })
     dispatch({ type: 'SET_QUERY', payload: '' })
 
     if (position !== null) {

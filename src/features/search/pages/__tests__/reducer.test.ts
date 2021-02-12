@@ -23,8 +23,16 @@ describe('Search reducer', () => {
 
   const state = initialSearchState
   it('should handle INIT', () => {
-    const action: Action = { type: 'INIT' }
-    expect(searchReducer({} as SearchState, action)).toStrictEqual(initialSearchState)
+    let searchState = { showResults: false } as SearchState
+    expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
+      ...initialSearchState,
+      showResults: false,
+    })
+    searchState = { showResults: true } as SearchState
+    expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
+      ...initialSearchState,
+      showResults: true,
+    })
   })
 
   it('should handle INIT_FROM_SEE_MORE', () => {
