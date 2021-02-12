@@ -39,60 +39,75 @@ async function renderProfile() {
 describe('Profile component', () => {
   beforeEach(navigate.mockRestore)
 
-  it('should navigate when the personal data row is clicked', async () => {
-    const { getByTestId } = await renderProfile()
+  describe('user settings section', () => {
+    it('should navigate when the personal data row is clicked', async () => {
+      const { getByTestId } = await renderProfile()
 
-    const row = getByTestId('row-personal-data')
-    fireEvent.press(row)
+      const row = getByTestId('row-personal-data')
+      fireEvent.press(row)
 
-    expect(navigate).toBeCalledWith('TemporaryProfilePage')
+      expect(navigate).toBeCalledWith('TemporaryProfilePage')
+    })
+
+    it('should navigate when the password row is clicked', async () => {
+      const { getByTestId } = await renderProfile()
+
+      const row = getByTestId('row-password')
+      fireEvent.press(row)
+
+      expect(navigate).toBeCalledWith('TemporaryProfilePage')
+    })
   })
 
-  it('should navigate when the password row is clicked', async () => {
-    const { getByTestId } = await renderProfile()
+  describe('help section', () => {
+    it('should navigate when the how-it-works row is clicked', async () => {
+      const { getByTestId } = await renderProfile()
 
-    const row = getByTestId('row-password')
-    fireEvent.press(row)
+      const row = getByTestId('row-how-it-works')
+      fireEvent.press(row)
 
-    expect(navigate).toBeCalledWith('TemporaryProfilePage')
+      expect(navigate).toBeCalledWith('TemporaryProfilePage')
+    })
+
+    it('should navigate when the faq row is clicked', async () => {
+      const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+      const { getByTestId } = await renderProfile()
+
+      const row = getByTestId('row-faq')
+      fireEvent.press(row)
+
+      expect(openExternalUrl).toBeCalledWith('https://aide.passculture.app/fr/')
+    })
   })
 
-  it('should navigate when the how-it-works row is clicked', async () => {
-    const { getByTestId } = await renderProfile()
+  describe('other section', () => {
+    it('should navigate when the accessibility row is clicked', async () => {
+      const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+      const { getByTestId } = await renderProfile()
 
-    const row = getByTestId('row-how-it-works')
-    fireEvent.press(row)
+      const row = getByTestId('row-accessibility')
+      fireEvent.press(row)
 
-    expect(navigate).toBeCalledWith('TemporaryProfilePage')
-  })
+      expect(openExternalUrl).toBeCalledWith('https://pass.culture.fr/accessibilite-de-la-webapp/')
+    })
 
-  it('should navigate when the faq row is clicked', async () => {
-    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
-    const { getByTestId } = await renderProfile()
+    it('should navigate when the legal notices row is clicked', async () => {
+      const { getByTestId } = await renderProfile()
 
-    const row = getByTestId('row-faq')
-    fireEvent.press(row)
+      const row = getByTestId('row-legal-notices')
+      fireEvent.press(row)
 
-    expect(openExternalUrl).toBeCalledWith('https://aide.passculture.app/fr/')
-  })
+      expect(navigate).toBeCalledWith('TemporaryProfilePage')
+    })
 
-  it('should navigate when the accessibility row is clicked', async () => {
-    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
-    const { getByTestId } = await renderProfile()
+    it('should navigate when the confidentiality row is clicked', async () => {
+      const { getByTestId } = await renderProfile()
 
-    const row = getByTestId('row-accessibility')
-    fireEvent.press(row)
+      const row = getByTestId('row-confidentiality')
+      fireEvent.press(row)
 
-    expect(openExternalUrl).toBeCalledWith('https://pass.culture.fr/accessibilite-de-la-webapp/')
-  })
-
-  it('should navigate when the legal notices row is clicked', async () => {
-    const { getByTestId } = await renderProfile()
-
-    const row = getByTestId('row-legal-notices')
-    fireEvent.press(row)
-
-    expect(navigate).toBeCalledWith('TemporaryProfilePage')
+      expect(navigate).toBeCalledWith('TemporaryProfilePage')
+    })
   })
 
   describe('signout section', () => {
