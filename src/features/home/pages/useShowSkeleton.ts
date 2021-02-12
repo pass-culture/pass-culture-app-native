@@ -1,23 +1,16 @@
 import { useEffect, useState } from 'react'
-import { QueryCache, useIsFetching, useQueryClient } from 'react-query'
+import { useIsFetching } from 'react-query'
 
 import { DEFAULT_SPLASHSCREEN_DELAY } from 'libs/splashscreen'
 
 export const ANIMATION_DELAY = 700 // Time for the skeleton animation to finish
 
-export const hasFetchedSubmodules = (queryCache: QueryCache): boolean => {
-  const algoliaModules = queryCache.findAll(['algoliaModule'])
-  if (algoliaModules.length === 0) return false
-  return algoliaModules.every((q) => !q.state.isFetching)
-}
-
 export const useShowSkeleton = function () {
   const [showSkeleton, setShowSkeleton] = useState(true)
-  const queryClient = useQueryClient()
-  const isFetching = useIsFetching()
+  const isFetching = useIsFetching({ queryKey: 'algoliaModule' })
 
   useEffect(() => {
-    if (hasFetchedSubmodules(queryClient.getQueryCache())) {
+    if (isFetching === 0) {
       // minimum delay so that the tiles images are loaded
       setTimeout(() => setShowSkeleton(false), ANIMATION_DELAY + DEFAULT_SPLASHSCREEN_DELAY)
     }
