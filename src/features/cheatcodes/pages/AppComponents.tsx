@@ -76,6 +76,7 @@ import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { SadFace } from 'ui/svg/icons/SadFace'
+import { SignOut } from 'ui/svg/icons/SignOut'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
@@ -427,6 +428,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Confidentiality size={24} />
           <Text> - Confidentiality </Text>
+        </AlignedText>
+        <AlignedText>
+          <SignOut size={24} />
+          <Text> - SignOut </Text>
         </AlignedText>
       </AccordionItem>
 

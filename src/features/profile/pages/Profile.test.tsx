@@ -4,6 +4,7 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { flushAllPromises } from 'tests/utils'
 
@@ -17,6 +18,14 @@ jest.mock('features/home/api', () => ({
         data: { email: 'email2@domain.ext', firstName: 'Jean', isBeneficiary: false },
       } as UseQueryResult<UserProfileResponse>)
   ),
+}))
+
+const mockedUseAuthContext = useAuthContext as jest.Mock
+
+const mockSignOut = jest.fn()
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+  useLogoutRoutine: jest.fn(() => mockSignOut),
 }))
 
 async function renderProfile() {
@@ -86,12 +95,27 @@ describe('Profile component', () => {
     expect(navigate).toBeCalledWith('TemporaryProfilePage')
   })
 
-  it('should navigate when the confidentiality row is clicked', async () => {
-    const { getByTestId } = await renderProfile()
+  describe('signout section', () => {
+    it('should display signout row if the user is connected', async () => {
+      const { getByTestId } = await renderProfile()
+      const row = getByTestId('row-signout')
+      expect(row).toBeTruthy()
+    })
 
-    const row = getByTestId('row-confidentiality')
-    fireEvent.press(row)
+    it('should NOT display signout row if the user is NOT connected', async () => {
+      mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
+      const { queryByTestId } = await renderProfile()
+      const row = queryByTestId('row-signout')
+      expect(row).toBeFalsy()
+    })
 
-    expect(navigate).toBeCalledWith('TemporaryProfilePage')
+    it('should delete the refreshToken from Keychain and clean user profile when pressed', async () => {
+      const { getByTestId } = await renderProfile()
+
+      const row = getByTestId('row-signout')
+      fireEvent.press(row)
+
+      expect(mockSignOut).toHaveBeenCalled()
+    })
   })
 })

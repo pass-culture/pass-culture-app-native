@@ -5,6 +5,7 @@ import { Image, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
+import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -15,6 +16,7 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
+import { SignOut } from 'ui/svg/icons/SignOut'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
@@ -26,6 +28,8 @@ import { SectionRow } from '../components/SectionRow'
 export const Profile: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: user } = useUserProfileInfo()
+  const { isLoggedIn } = useAuthContext()
+  const signOut = useLogoutRoutine()
 
   return (
     <ScrollView>
@@ -96,6 +100,19 @@ export const Profile: React.FC = () => {
         <Section title={_(t`Suivre Pass Culture`)}>
           <Typo.Body>{_(t`Temporary content`)}</Typo.Body>
         </Section>
+        {isLoggedIn && (
+          <Section>
+            <Spacer.Column numberOfSpaces={4} />
+            <SectionRow
+              title={_(t`Déconnexion`)}
+              onPress={signOut}
+              type="clickable"
+              icon={SignOut}
+              testID="row-signout"
+            />
+            <Spacer.Column numberOfSpaces={1} />
+          </Section>
+        )}
         <Section>
           <Spacer.Column numberOfSpaces={4} />
           <Version>{_(t`Version ${Package.version}`)}</Version>

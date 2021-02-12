@@ -6,7 +6,6 @@ import { Text, Alert, Button } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { LogoutButton } from 'features/auth/components/LogoutButton'
 import { CodePushButton } from 'features/cheatcodes/components/CodePushButton'
 import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
 import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
@@ -65,7 +64,6 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <Spacer.Flex />
       <CrashTestButton />
       <NavigateHomeButton />
-      <LogoutButton />
       <Spacer.Flex />
       <Button title="Utiliser un ancien token" onPress={setOldToken} />
       <Button title="Invalider l'access token" onPress={setOldToken} />
