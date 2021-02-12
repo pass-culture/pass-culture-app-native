@@ -5,6 +5,9 @@ import React, { useRef } from 'react'
 import { ScrollView, ViewStyle, Linking } from 'react-native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { GeolocationActivationModal } from 'features/search/components/GeolocationActivationModal'
+import { LocationChoice } from 'features/search/components/LocationChoice'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationType } from 'libs/algolia'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
@@ -13,17 +16,12 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
-import { GeolocationActivationModal } from '../components/GeolocationActivationModal'
-import { LocationChoice } from '../components/LocationChoice'
-
-import { useSearch } from './SearchWrapper'
-
 const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
   const { position, permissionState, requestGeolocPermission } = useGeolocation()
-  const { dispatch } = useSearch()
+  const { dispatch } = useStagedSearch()
   const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
   const {
     visible: isGeolocPermissionModalVisible,

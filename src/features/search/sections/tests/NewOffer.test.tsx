@@ -6,12 +6,12 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { NewOffer } from '../NewOffer'
 
 let mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -24,7 +24,7 @@ describe('NewOffer component', () => {
   it('should dispatch TOGGLE_OFFER_NEW onPress', () => {
     const { getByTestId } = render(<NewOffer />)
     fireEvent.press(getByTestId('filterSwitch'))
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_NEW' })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_NEW' })
   })
 
   it('should have the indicator of the filters in the title', () => {

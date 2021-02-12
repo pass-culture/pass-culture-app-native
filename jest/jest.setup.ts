@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 import 'cross-fetch/polyfill'
 
+import { initialSearchState } from 'features/search/pages/reducer'
+
 /* We disable the following warning, which can be safely ignored as the code
   is not executed on a device :
   "Animated: `useNativeDriver` is not supported because the native animated module is missing.
@@ -62,4 +64,19 @@ jest.mock('libs/environment', () => ({
     SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
     ID_CHECK_URL: 'https://id-check-unit-tests',
   },
+}))
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/pages/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
+  useStagedSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
+  useCommit: () => ({
+    commit: jest.fn(),
+  }),
 }))

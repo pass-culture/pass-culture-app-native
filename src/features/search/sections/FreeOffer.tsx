@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
 
 import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 
 export const FreeOffer: React.FC = () => {
-  const { searchState, dispatch } = useSearch()
+  const { searchState, dispatch } = useStagedSearch()
   const logUseFilter = useLogFilterOnce(SectionTitle.Free)
 
   const toggle = useCallback(() => {

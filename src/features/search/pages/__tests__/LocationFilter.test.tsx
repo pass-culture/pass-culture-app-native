@@ -11,7 +11,7 @@ const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
     dispatch: mockDispatch,
   }),

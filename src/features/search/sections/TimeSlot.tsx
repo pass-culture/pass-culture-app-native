@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CenteredSection } from 'features/search/atoms'
 import { DEFAULT_TIME_RANGE } from 'features/search/pages/reducer.helpers'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { Range } from 'libs/typesUtils/typeHelpers'
@@ -14,7 +14,7 @@ const formatHour = (hour: number) => `${hour}h`
 
 export const TimeSlot: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.TimeSlot)
-  const { searchState, dispatch } = useSearch()
+  const { searchState, dispatch } = useStagedSearch()
   const values = searchState.timeRange ?? DEFAULT_TIME_RANGE
 
   const onValuesChangeFinish = (newValues: number[]) => {

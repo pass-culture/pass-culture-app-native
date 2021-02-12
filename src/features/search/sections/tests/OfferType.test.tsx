@@ -6,12 +6,12 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { OfferType, OFFER_TYPES } from '../OfferType'
 
 let mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -25,7 +25,7 @@ describe('OfferType component', () => {
   it('should dispatch OFFER_TYPE with correct offerType', () => {
     const { getByText } = render(<OfferType />)
     fireEvent.press(getByText('Offre numérique'))
-    expect(mockDispatch).toHaveBeenCalledWith({
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'OFFER_TYPE',
       payload: 'isDigital',
     })

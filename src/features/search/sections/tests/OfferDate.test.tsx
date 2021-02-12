@@ -8,15 +8,15 @@ import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 import { OfferDate } from '../OfferDate'
 
 const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 
 const Today = new Date(2020, 10, 1)
 const Tomorrow = new Date(2020, 10, 2)
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -38,19 +38,19 @@ describe('OfferDate component', () => {
     mockSearchState.date = { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: Today }
     const { getByText } = render(<OfferDate />)
     fireEvent.press(getByText('Cette semaine'))
-    expect(mockDispatch).toHaveBeenCalledWith({
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'SELECT_DATE_FILTER_OPTION',
       payload: DATE_FILTER_OPTIONS.CURRENT_WEEK,
     })
 
     fireEvent.press(getByText('Ce week-end'))
-    expect(mockDispatch).toHaveBeenCalledWith({
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'SELECT_DATE_FILTER_OPTION',
       payload: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
     })
 
     fireEvent.press(getByText('Date précise'))
-    expect(mockDispatch).toHaveBeenCalledWith({
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'SELECT_DATE_FILTER_OPTION',
       payload: DATE_FILTER_OPTIONS.USER_PICK,
     })

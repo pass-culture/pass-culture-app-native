@@ -7,7 +7,7 @@ import { ShowResults } from '../ShowResults'
 
 let mockData = { pages: [{ nbHits: 0 }] }
 jest.mock('features/search/pages/useSearchResults', () => ({
-  useSearchResults: () => ({
+  useStagedSearchResults: () => ({
     data: mockData,
     isFetching: false,
   }),

@@ -6,7 +6,7 @@ import React from 'react'
 import { FlatList, Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { _ } from 'libs/i18n'
 import { REGEX_STARTING_WITH_NUMBERS, SuggestedPlace } from 'libs/place'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -43,7 +43,7 @@ interface Props {
 
 export const SuggestedPlaces: React.FC<Props> = ({ places, query, isLoading }) => {
   const { goBack } = useNavigation()
-  const { dispatch } = useSearch()
+  const { dispatch } = useStagedSearch()
 
   const onPickPlace = (place: SuggestedPlace) => () => {
     if (place.geolocation) {

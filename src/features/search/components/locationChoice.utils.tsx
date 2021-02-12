@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationType } from 'libs/algolia'
 import { _ } from 'libs/i18n'
 import { buildPlaceLabel } from 'libs/place'
@@ -13,7 +13,7 @@ import { BicolorIconInterface } from 'ui/svg/icons/types'
 export const useLocationChoice = (
   locationType: LocationType
 ): { Icon: React.FC<BicolorIconInterface>; label: string; isSelected: boolean } => {
-  const { searchState } = useSearch()
+  const { searchState } = useStagedSearch()
   const isSelected = locationType === searchState.locationType
 
   if (locationType === LocationType.EVERYWHERE)

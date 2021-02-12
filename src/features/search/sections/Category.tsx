@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { AccordionItem } from 'features/offer/components'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
@@ -13,7 +13,7 @@ import { getSpacing } from 'ui/theme'
 const categories = Object.values(CATEGORY_CRITERIA).filter((category) => !!category.facetFilter)
 
 export const Category: React.FC = () => {
-  const { searchState, dispatch } = useSearch()
+  const { searchState, dispatch } = useStagedSearch()
   const { offerCategories } = searchState
   const logUseFilter = useLogFilterOnce(SectionTitle.Category)
 

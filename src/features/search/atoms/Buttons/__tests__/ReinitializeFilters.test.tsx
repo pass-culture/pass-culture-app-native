@@ -8,18 +8,19 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { ReinitializeFilters } from '../ReinitializeFilters'
 
 const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
+
 describe('<ReinitializeFilters />', () => {
   it('should dispatch INIT when clicking on Réinitialiser', () => {
     const { getByText } = render(reactQueryProviderHOC(<ReinitializeFilters />))
     fireEvent.press(getByText('Réinitialiser'))
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT' })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'INIT' })
     expect(analytics.logReinitializeFilters).toBeCalledTimes(1)
   })
 })

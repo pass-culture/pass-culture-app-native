@@ -7,13 +7,13 @@ import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 import { Date as DateSection } from '../Date'
 
 let mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 const date = { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: new Date() }
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -26,7 +26,7 @@ describe('Date component', () => {
   it('should dispatch TOGGLE_DATE onPress', () => {
     const { getByTestId } = render(<DateSection />)
     fireEvent.press(getByTestId('filterSwitch'))
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_DATE' })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_DATE' })
   })
 
   it('should have the indicator of the filters in the title', () => {

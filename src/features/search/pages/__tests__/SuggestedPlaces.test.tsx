@@ -8,12 +8,12 @@ import { buildSuggestedPlaces } from 'libs/place'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 
 const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -25,7 +25,7 @@ describe('SuggestedPlaces component', () => {
     )
 
     fireEvent.press(getByTestId(keyExtractor(places[1])))
-    expect(mockDispatch).toHaveBeenCalledWith({
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'LOCATION_PLACE',
       payload: places[1],
     })

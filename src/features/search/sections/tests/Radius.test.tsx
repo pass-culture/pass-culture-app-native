@@ -7,11 +7,11 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { Radius } from '../Radius'
 
 const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -25,6 +25,6 @@ describe('Radius component', () => {
     const { getByTestId } = render(<Radius />)
     const slider = getByTestId('slider').children[0] as ReactTestInstance
     slider.props.onValuesChangeFinish([80])
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'RADIUS', payload: 80 })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'RADIUS', payload: 80 })
   })
 })
