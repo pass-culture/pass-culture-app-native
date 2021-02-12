@@ -1,19 +1,45 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components/native'
-import { useDebounce } from 'use-debounce'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchHeader, SearchLandingPage, SearchResults } from 'features/search/components'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 
+import { useSearchResults } from './useSearchResults'
+
+const useShowResults = () => {
+  const timer = useRef<NodeJS.Timeout>()
+  const { searchState } = useSearch()
+  const [showResults, setShowResults] = useState<boolean>(searchState.showResults)
+  const { isLoading } = useSearchResults()
+
+  useEffect(() => {
+    if (searchState.showResults) {
+      if (!isLoading) {
+        setShowResults(true)
+      } else {
+        // For most networks, 20ms is enough time to fetch the results fom Algolia
+        // In this case we can avoid displaying the placeholders
+        timer.current = setTimeout(() => {
+          setShowResults(true)
+        }, 20)
+      }
+    } else {
+      setShowResults(false)
+    }
+    return () => timer.current && clearTimeout(timer.current)
+  }, [searchState.showResults, isLoading])
+
+  return showResults
+}
+
 export const Search: React.FC = () => {
   useKeyboardAdjust()
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const { searchState, dispatch } = useSearch()
-  // 20ms is enough time to fetch the results and preload the page
-  const [debouncedShowResults] = useDebounce(searchState.showResults, 20)
+  const { dispatch } = useSearch()
+  const showResults = useShowResults()
 
   useEffect(() => {
     if (params?.parameters) {
@@ -25,7 +51,7 @@ export const Search: React.FC = () => {
   return (
     <Container>
       <SearchHeader />
-      {debouncedShowResults ? <SearchResults /> : <SearchLandingPage />}
+      {showResults ? <SearchResults /> : <SearchLandingPage />}
     </Container>
   )
 }
