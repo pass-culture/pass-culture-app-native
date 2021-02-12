@@ -331,11 +331,11 @@ exports[`TabBar renders correctly 1`] = `
     />
   </View>
   <View
-    safeHeight={5}
+    safeHeight={8}
     style={
       Array [
         Object {
-          "height": 5,
+          "height": 8,
         },
       ]
     }
