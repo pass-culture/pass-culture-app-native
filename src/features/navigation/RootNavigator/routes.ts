@@ -20,10 +20,11 @@ import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { withAsyncErrorBoundary } from 'features/errors'
+import { FirstTutorial } from 'features/firstLogin/achievements/pages/FirstTutorial/FirstTutorial'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
-import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial/FirstTutorial'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
+import { EighteenBirthday } from 'features/profile/achievements/pages/EighteenBirthday'
 import { Profile } from 'features/profile/pages/Profile'
 import { TemporaryProfilePage } from 'features/profile/pages/TemporaryProfilePage'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
@@ -41,6 +42,7 @@ const routes: Array<Route> = [
   { name: 'CheatCodes', component: CheatCodes },
   { name: 'CulturalSurvey', component: CulturalSurvey },
   { name: 'EligibilityConfirmed', component: EligibilityConfirmed },
+  { name: 'EighteenBirthday', component: EighteenBirthday },
   {
     name: 'ForgottenPassword',
     component: ForgottenPassword,

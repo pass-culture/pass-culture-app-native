@@ -190,6 +190,12 @@ export function Navigation(): JSX.Element {
             onPress={() => errorAsyncQuery()}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'Eighteen Birthday'}
+            onPress={() => navigation.navigate('EighteenBirthday')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
