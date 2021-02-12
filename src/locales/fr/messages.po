@@ -46,6 +46,7 @@ msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
 #: src/features/offer/pages/Offer.tsx:87
+#: src/features/profile/pages/Profile.tsx:36
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
@@ -93,7 +94,7 @@ msgstr "Afficher {nbHits} résultat"
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
-#: src/features/profile/pages/Profile.tsx:29
+#: src/features/profile/pages/Profile.tsx:31
 msgid "Aides"
 msgstr "Aides"
 
@@ -130,7 +131,7 @@ msgstr "Aujourd'hui"
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
-#: src/features/profile/pages/Profile.tsx:33
+#: src/features/profile/pages/Profile.tsx:35
 msgid "Autres"
 msgstr "Autres"
 
@@ -205,7 +206,7 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/profile/pages/Profile.tsx:30
+#: src/features/profile/pages/Profile.tsx:32
 msgid "Comment ça marche"
 msgstr "Comment ça marche"
 
@@ -218,6 +219,10 @@ msgstr "Composants"
 #: src/features/auth/signup/SetBirthday.tsx:148
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
+
+#: src/features/profile/pages/Profile.tsx:38
+msgid "Confidentialité"
+msgstr "Confidentialité"
 
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:29
 msgid "Confirme ton e\\u2011mail"
@@ -378,11 +383,11 @@ msgstr "Hors connexion : en attente du réseau."
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/profile/pages/Profile.tsx:26
+#: src/features/profile/pages/Profile.tsx:28
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
-#: src/features/search/components/SearchLandingPage.tsx:44
+#: src/features/search/components/SearchLandingPage.tsx:25
 msgid "Je cherche"
 msgstr "Je cherche"
 
@@ -430,7 +435,7 @@ msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
-#: src/features/search/pages/LocationFilter.tsx:86
+#: src/features/search/pages/LocationFilter.tsx:78
 #: src/features/search/sections/titles.ts:5
 msgid "Localisation"
 msgstr "Localisation"
@@ -438,6 +443,10 @@ msgstr "Localisation"
 #: src/features/auth/signup/SetBirthday.tsx:166
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+
+#: src/features/profile/pages/Profile.tsx:37
+msgid "Mentions légales"
+msgstr "Mentions légales"
 
 #: src/features/offer/pages/Offer.tsx:79
 msgid "Modalités de retrait"
@@ -449,7 +458,7 @@ msgstr "Modifie ta recherche ou découvre toutes les offres"
 
 #: src/features/auth/login/Login.tsx:92
 #: src/features/auth/signup/SetPassword.tsx:38
-#: src/features/profile/pages/Profile.tsx:27
+#: src/features/profile/pages/Profile.tsx:29
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -509,7 +518,7 @@ msgstr "Oups"
 msgid "Oups !"
 msgstr "Oups !"
 
-#: src/features/search/components/SearchLandingPage.tsx:52
+#: src/features/search/components/SearchLandingPage.tsx:33
 msgid "Où"
 msgstr "Où"
 
@@ -521,7 +530,7 @@ msgstr "Où ?"
 msgid "Paramètres de localisation"
 msgstr "Paramètres de localisation"
 
-#: src/features/profile/pages/Profile.tsx:25
+#: src/features/profile/pages/Profile.tsx:27
 msgid "Paramètres du compte"
 msgstr "Paramètres du compte"
 
@@ -585,7 +594,7 @@ msgstr "Profite de 300\\u00a0€\\u00a0"
 msgid "Quand ?"
 msgstr "Quand ?"
 
-#: src/features/profile/pages/Profile.tsx:31
+#: src/features/profile/pages/Profile.tsx:33
 msgid "Questions fréquentes"
 msgstr "Questions fréquentes"
 
@@ -657,7 +666,7 @@ msgstr "Se connecter"
 msgid "Seules les sorties et offres physiques seront affichées"
 msgstr "Seules les sorties et offres physiques seront affichées"
 
-#: src/features/search/pages/LocationFilter.tsx:77
+#: src/features/search/pages/LocationFilter.tsx:69
 msgid "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 
@@ -684,12 +693,11 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Sortie"
 msgstr "Sortie"
 
-#: src/features/profile/pages/Profile.tsx:36
+#: src/features/profile/pages/Profile.tsx:40
 msgid "Suivre Pass Culture"
 msgstr "Suivre Pass Culture"
 
-#: src/features/profile/pages/Profile.tsx:34
-#: src/features/profile/pages/Profile.tsx:37
+#: src/features/profile/pages/Profile.tsx:41
 msgid "Temporary content"
 msgstr "Temporary content"
 

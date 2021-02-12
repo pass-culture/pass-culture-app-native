@@ -50,6 +50,7 @@ import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { Check } from 'ui/svg/icons/Check'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
+import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Email } from 'ui/svg/icons/Email'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
@@ -64,6 +65,7 @@ import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { Info } from 'ui/svg/icons/Info'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Logo } from 'ui/svg/icons/Logo'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -417,6 +419,14 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <OfferOutingsPhysical size={24} />
           <Text> - OfferOutingsPhysical </Text>
+        </AlignedText>
+        <AlignedText>
+          <LegalNotices size={24} />
+          <Text> - LegalNotices </Text>
+        </AlignedText>
+        <AlignedText>
+          <Confidentiality size={24} />
+          <Text> - Confidentiality </Text>
         </AlignedText>
       </AccordionItem>
 
