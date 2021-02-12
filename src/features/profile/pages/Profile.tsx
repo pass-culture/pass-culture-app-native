@@ -9,11 +9,12 @@ import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
+import { Confidentiality } from 'ui/svg/icons/Confidentiality'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
-import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
@@ -60,13 +61,36 @@ export const Profile: React.FC = () => {
             title={_(t`Questions fréquentes`)}
             type="clickable"
             onPress={() => openExternalUrl('https://aide.passculture.app/fr/')}
-            icon={ExternalLinkSiteIcon}
+            icon={ExternalSite}
             style={styles.row}
             testID="row-faq"
           />
         </Section>
         <Section title={_(t`Autres`)}>
-          <Typo.Body>{_(t`Temporary content`)}</Typo.Body>
+          <Row
+            title={_(t`Accessibilité`)}
+            type="clickable"
+            onPress={() => openExternalUrl('https://pass.culture.fr/accessibilite-de-la-webapp/')}
+            icon={ExternalSite}
+            style={styles.row}
+            testID="row-accessibility"
+          />
+          <Row
+            title={_(t`Mentions légales`)}
+            type="navigable"
+            onPress={() => navigate('TemporaryProfilePage')}
+            icon={LegalNotices}
+            style={styles.row}
+            testID="row-legal-notices"
+          />
+          <Row
+            title={_(t`Confidentialité`)}
+            type="navigable"
+            onPress={() => navigate('TemporaryProfilePage')}
+            icon={Confidentiality}
+            style={styles.row}
+            testID="row-confidentiality"
+          />
         </Section>
         <Section title={_(t`Suivre Pass Culture`)}>
           <Typo.Body>{_(t`Temporary content`)}</Typo.Body>
@@ -101,17 +125,4 @@ const Row = styled(SectionRow).attrs({
 })``
 const BottomSpacing = styled.View({
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(2),
-})
-
-const ExternalLinkSiteIcon = (_props: IconInterface) => (
-  <ExternalLinkSiteContainer>
-    <ExternalLinkSite />
-  </ExternalLinkSiteContainer>
-)
-
-const ExternalLinkSiteContainer = styled.View({
-  width: 32,
-  height: 32,
-  justifyContent: 'center',
-  alignItems: 'center',
 })
