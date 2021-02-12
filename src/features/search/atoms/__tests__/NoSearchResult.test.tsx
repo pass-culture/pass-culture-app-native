@@ -38,9 +38,8 @@ describe('NoSearchResult component', () => {
   it('should dispatch the right actions when pressing "autour de toi" - no location', () => {
     const button = render(<NoSearchResult />).getByText('autour de toi')
     fireEvent.press(button)
-    expect(mockDispatch).toHaveBeenCalledTimes(4)
+    expect(mockDispatch).toHaveBeenCalledTimes(3)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT' })
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SHOW_RESULTS', payload: true })
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_QUERY', payload: '' })
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'LOCATION_EVERYWHERE' })
   })
@@ -48,7 +47,7 @@ describe('NoSearchResult component', () => {
     mockPosition = { latitude: 2, longitude: 40 }
     const button = render(<NoSearchResult />).getByText('autour de toi')
     fireEvent.press(button)
-    expect(mockDispatch).toHaveBeenCalledTimes(4)
+    expect(mockDispatch).toHaveBeenCalledTimes(3)
     expect(mockDispatch).toHaveBeenLastCalledWith({
       type: 'LOCATION_AROUND_ME',
       payload: mockPosition,
