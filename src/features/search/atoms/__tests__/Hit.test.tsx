@@ -28,7 +28,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 
 describe('Hit component', () => {
   it('should navigate to the offer when clicking on the hit', () => {
-    const { getByTestId } = render(reactQueryProviderHOC(<Hit hit={hit} />))
+    const { getByTestId } = render(reactQueryProviderHOC(<Hit hit={hit} query="" />))
     fireEvent.press(getByTestId('offerHit'))
     expect(analytics.logConsultOffer).toBeCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -40,15 +40,15 @@ describe('Hit component', () => {
   })
   it('should show distance if geolocation enabled', () => {
     mockDistance = '10 km'
-    const { queryByText } = render(reactQueryProviderHOC(<Hit hit={hit} />))
+    const { queryByText } = render(reactQueryProviderHOC(<Hit hit={hit} query="" />))
     expect(queryByText('10 km')).toBeTruthy()
   })
   it('offer name should take full space if no geolocation', () => {
     mockDistance = '10 km'
-    const withDistanceSnapshot = render(reactQueryProviderHOC(<Hit hit={hit} />)).toJSON()
+    const withDistance = render(reactQueryProviderHOC(<Hit hit={hit} query="" />)).toJSON()
 
     mockDistance = null
-    const withoutDistanceSnapshot = render(reactQueryProviderHOC(<Hit hit={hit} />)).toJSON()
-    expect(withoutDistanceSnapshot).toMatchDiffSnapshot(withDistanceSnapshot)
+    const withoutDistance = render(reactQueryProviderHOC(<Hit hit={hit} query="" />)).toJSON()
+    expect(withoutDistance).toMatchDiffSnapshot(withDistance)
   })
 })
