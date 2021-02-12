@@ -5,13 +5,10 @@ import { SearchAlgoliaHit } from 'libs/algolia'
 import { fetchAlgolia } from 'libs/algolia/fetchAlgolia'
 
 import { SearchParameters } from './reducer'
-import { useSearch } from './SearchWrapper'
+import { useSearch, useStagedSearch } from './SearchWrapper'
 
-export const useSearchResults = () => {
-  const { searchState } = useSearch()
-  const { showResults: _showResults, ...searchParameters } = searchState
-
-  return useInfiniteQuery<SearchResponse<SearchAlgoliaHit>>(
+const useSearchInfiniteQuery = (searchParameters: SearchParameters) =>
+  useInfiniteQuery<SearchResponse<SearchAlgoliaHit>>(
     ['searchResults', searchParameters],
     async (context: QueryFunctionContext<[string, SearchParameters], number>) =>
       await fetchAlgolia<SearchAlgoliaHit>({
@@ -35,4 +32,15 @@ export const useSearchResults = () => {
       getNextPageParam: ({ page, nbPages }) => (page < nbPages ? page + 1 : undefined),
     }
   )
+
+export const useStagedSearchResults = () => {
+  const { searchState } = useStagedSearch()
+  const { showResults: _showResults, ...searchParameters } = searchState
+  return useSearchInfiniteQuery(searchParameters)
+}
+
+export const useSearchResults = () => {
+  const { searchState } = useSearch()
+  const { showResults: _showResults, ...searchParameters } = searchState
+  return useSearchInfiniteQuery(searchParameters)
 }

@@ -3,7 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useSearchResults } from 'features/search/pages/useSearchResults'
+import { useCommit } from 'features/search/pages/SearchWrapper'
+import { useStagedSearchResults } from 'features/search/pages/useSearchResults'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
@@ -16,20 +17,26 @@ const formatNbHits = (nbHits: number) => {
 
 export const ShowResults: React.FC = () => {
   const { goBack } = useNavigation<UseNavigationType>()
-  const { data, isFetching } = useSearchResults()
-  const [nbHits, setNbHits] = useState<number>(data ? data.pages[0].nbHits : 0)
+  const { commit } = useCommit()
+  const { data, isFetching } = useStagedSearchResults()
+  const [nbHits, setNbHits] = useState<number>(data && data.pages ? data.pages[0].nbHits : 0)
 
   useEffect(() => {
     if (!isFetching) {
-      setNbHits(data ? data.pages[0].nbHits : 0)
+      setNbHits(data && data.pages ? data.pages[0].nbHits : 0)
     }
   }, [data, isFetching])
+
+  const onPress = () => {
+    commit()
+    goBack()
+  }
 
   return (
     <ButtonPrimary
       title={formatNbHits(nbHits)}
       disabled={nbHits === 0}
-      onPress={goBack}
+      onPress={onPress}
       adjustsFontSizeToFit={true}
     />
   )
