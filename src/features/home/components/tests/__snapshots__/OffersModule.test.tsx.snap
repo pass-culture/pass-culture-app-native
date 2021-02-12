@@ -40,281 +40,29 @@ Array [
     }
   />,
   <RCTScrollView
-    ItemSeparatorComponent={[Function]}
-    ListFooterComponent={
-      <Styled(View)
-        numberOfSpaces={6}
-      />
-    }
-    ListHeaderComponent={
-      <Styled(View)
-        numberOfSpaces={6}
-      />
-    }
-    data={
-      Array [
-        Object {
-          "_geoloc": Object {
-            "lat": 48.94374,
-            "lng": 2.48171,
-          },
-          "objectID": "AGHYQ",
-          "offer": Object {
-            "author": null,
-            "category": "MUSIQUE",
-            "dateCreated": 1604358109.991316,
-            "dates": Array [],
-            "description": "Bel astre voyageur, hôte qui nous arrives, Des profondeurs du ciel et qu'on n'attendait pas, Où vas-tu ? Quel dessein pousse vers nous tes pas ? Toi qui vogues au large en cette mer sans rives",
-            "id": "AGHYQ",
-            "isDigital": false,
-            "isDuo": false,
-            "isEvent": false,
-            "isThing": true,
-            "isbn": null,
-            "label": "Abonnements concerts",
-            "musicSubType": "914",
-            "musicType": "900",
-            "name": "Mensch ! Où sont les Hommes ?",
-            "performer": null,
-            "priceMax": 2800,
-            "priceMin": 2800,
-            "prices": Array [
-              2800,
-            ],
-            "showSubType": null,
-            "showType": null,
-            "speaker": null,
-            "stageDirector": null,
-            "stocksDateCreated": Array [
-              1604358115.556418,
-            ],
-            "tags": Array [],
-            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
-            "times": Array [],
-            "type": "Écouter",
-            "visa": null,
-            "withdrawalDetails": null,
-          },
-          "offerer": Object {
-            "name": "Danse Jazz Dans Tes Bottes",
-          },
-          "venue": Object {
-            "city": "Aulnay-sous-Bois",
-            "departementCode": "93",
-            "name": "Michel et son accordéon",
-            "publicName": null,
-          },
-        },
-        Object {
-          "_geoloc": Object {
-            "lat": 48.91265,
-            "lng": 2.4513,
-          },
-          "objectID": "AGHYA",
-          "offer": Object {
-            "author": "Catherine Mater",
-            "category": "MUSIQUE",
-            "dateCreated": 1604358109.991316,
-            "dates": Array [],
-            "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
-            "id": "AGHYA",
-            "isDigital": false,
-            "isDuo": false,
-            "isEvent": false,
-            "isThing": true,
-            "isbn": null,
-            "label": "Musique",
-            "musicSubType": "914",
-            "musicType": "900",
-            "name": "I want something more",
-            "performer": "Frank Despacito",
-            "priceMax": 2300,
-            "priceMin": 2300,
-            "prices": Array [
-              2300,
-            ],
-            "showSubType": null,
-            "showType": null,
-            "speaker": null,
-            "stageDirector": null,
-            "stocksDateCreated": Array [
-              1604358115.524528,
-            ],
-            "tags": Array [],
-            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDKQ",
-            "times": Array [],
-            "type": "Écouter",
-            "visa": null,
-            "withdrawalDetails": null,
-          },
-          "offerer": Object {
-            "name": "Club Dorothy",
-          },
-          "venue": Object {
-            "city": "Drancy",
-            "departementCode": "93",
-            "name": "Maison de la Brique",
-            "publicName": null,
-          },
-        },
-        Object {
-          "_geoloc": Object {
-            "lat": 4.90339,
-            "lng": -52.31663,
-          },
-          "objectID": "AGHWS",
-          "offer": Object {
-            "author": null,
-            "category": "MUSIQUE",
-            "dateCreated": 1604358109.991255,
-            "dates": Array [
-              1605643200,
-            ],
-            "description": null,
-            "id": "AGHWS",
-            "isDigital": false,
-            "isDuo": true,
-            "isEvent": true,
-            "isThing": false,
-            "isbn": null,
-            "label": "Concert ou festival",
-            "musicSubType": null,
-            "musicType": null,
-            "name": "Un lit sous une rivière",
-            "performer": null,
-            "priceMax": 3400,
-            "priceMin": 3400,
-            "prices": Array [
-              3400,
-            ],
-            "showSubType": null,
-            "showType": null,
-            "speaker": null,
-            "stageDirector": null,
-            "stocksDateCreated": Array [
-              1604358115.242088,
-            ],
-            "tags": Array [],
-            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDBA",
-            "times": Array [
-              72000,
-            ],
-            "type": "Écouter",
-            "visa": null,
-            "withdrawalDetails": null,
-          },
-          "offerer": Object {
-            "name": "Théâtre Balboa",
-          },
-          "venue": Object {
-            "city": "Cayenne",
-            "departementCode": "973",
-            "name": "Espace des Gnoux",
-            "publicName": null,
-          },
-        },
-        Object {
-          "_geoloc": Object {
-            "lat": 4.90339,
-            "lng": -52.31663,
-          },
-          "objectID": "AGH2M",
-          "offer": Object {
-            "author": null,
-            "category": "MUSIQUE",
-            "dateCreated": 1604358109.991316,
-            "dates": Array [],
-            "description": "D'un coup d'épée, Frappé par un héros, tomber la pointe au coeur! Oui, je disais cela!... Le destin est railleur!... Et voila que je suis tué, par un laquais, d'un coup de bûche! C'est très bien. J'aurai tout manqué, même ma mort.",
-            "id": "AGH2M",
-            "isDigital": false,
-            "isDuo": false,
-            "isEvent": false,
-            "isThing": true,
-            "isbn": null,
-            "label": "Abonnements concerts",
-            "musicSubType": "892",
-            "musicType": "880",
-            "name": "I want something more",
-            "performer": null,
-            "priceMax": 2800,
-            "priceMin": 2800,
-            "prices": Array [
-              2800,
-            ],
-            "showSubType": null,
-            "showType": null,
-            "speaker": null,
-            "stageDirector": null,
-            "stocksDateCreated": Array [
-              1604358115.646641,
-            ],
-            "tags": Array [],
-            "thumbUrl": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZQ",
-            "times": Array [],
-            "type": "Écouter",
-            "visa": null,
-            "withdrawalDetails": null,
-          },
-          "offerer": Object {
-            "name": "Théâtre Balboa",
-          },
-          "venue": Object {
-            "city": "Cayenne",
-            "departementCode": "973",
-            "name": "Espace des Gnoux",
-            "publicName": null,
-          },
-        },
-      ]
-    }
-    disableVirtualization={false}
-    getItem={[Function]}
-    getItemCount={[Function]}
     horizontal={true}
-    initialNumToRender={10}
-    keyExtractor={[Function]}
-    maxToRenderPerBatch={10}
-    onContentSizeChange={[Function]}
-    onEndReached={[Function]}
-    onEndReachedThreshold={0.1}
-    onLayout={[Function]}
-    onMomentumScrollEnd={[Function]}
     onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onScrollEndDrag={[Function]}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={50}
+    scrollEventThrottle={200}
     showsHorizontalScrollIndicator={false}
-    stickyHeaderIndices={Array []}
     testID="offersModuleList"
-    updateCellsBatchingPeriod={50}
-    viewabilityConfigCallbackPairs={Array []}
-    windowSize={21}
   >
     <View>
       <View
-        onLayout={[Function]}
-      >
-        <View
-          numberOfSpaces={6}
-          style={
-            Array [
-              Object {
-                "width": 24,
-              },
-            ]
-          }
-        />
-      </View>
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "width": 24,
+            },
+          ]
+        }
+      />
       <View
-        onLayout={[Function]}
         style={
           Array [
             Object {
               "flexDirection": "row",
             },
-            null,
           ]
         }
       >
@@ -476,13 +224,11 @@ Array [
         />
       </View>
       <View
-        onLayout={[Function]}
         style={
           Array [
             Object {
               "flexDirection": "row",
             },
-            null,
           ]
         }
       >
@@ -644,13 +390,11 @@ Array [
         />
       </View>
       <View
-        onLayout={[Function]}
         style={
           Array [
             Object {
               "flexDirection": "row",
             },
-            null,
           ]
         }
       >
@@ -828,13 +572,11 @@ Array [
         />
       </View>
       <View
-        onLayout={[Function]}
         style={
           Array [
             Object {
               "flexDirection": "row",
             },
-            null,
           ]
         }
       >
@@ -984,21 +726,27 @@ Array [
             </Text>
           </View>
         </View>
-      </View>
-      <View
-        onLayout={[Function]}
-      >
         <View
-          numberOfSpaces={6}
+          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "width": 24,
+                "width": 16,
               },
             ]
           }
         />
       </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "width": 24,
+            },
+          ]
+        }
+      />
     </View>
   </RCTScrollView>,
 ]
