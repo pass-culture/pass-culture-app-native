@@ -1,9 +1,10 @@
-import { render, act } from '@testing-library/react-native'
+import { render, act, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
+import * as NavigationHelpers from 'features/navigation/helpers'
 import { flushAllPromises } from 'tests/utils'
 
 import { Profile } from './Profile'
@@ -27,22 +28,39 @@ async function renderProfile() {
 }
 
 describe('Profile component', () => {
+  beforeEach(navigate.mockRestore)
+
   it('should navigate when the personal data row is clicked', async () => {
     const { getByTestId } = await renderProfile()
 
     const row = getByTestId('row-personal-data')
-    row.props.onClick()
+    fireEvent.press(row)
 
-    // TODO: PC-
     expect(navigate).toBeCalledWith('TemporaryProfilePage')
   })
   it('should navigate when the password row is clicked', async () => {
     const { getByTestId } = await renderProfile()
 
     const row = getByTestId('row-password')
-    row.props.onClick()
+    fireEvent.press(row)
 
-    // TODO: PC-
     expect(navigate).toBeCalledWith('TemporaryProfilePage')
+  })
+  it('should navigate when the how-it-works row is clicked', async () => {
+    const { getByTestId } = await renderProfile()
+
+    const row = getByTestId('row-how-it-works')
+    fireEvent.press(row)
+
+    expect(navigate).toBeCalledWith('TemporaryProfilePage')
+  })
+  it('should navigate when the faq row is clicked', async () => {
+    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+    const { getByTestId } = await renderProfile()
+
+    const row = getByTestId('row-faq')
+    fireEvent.press(row)
+
+    expect(openExternalUrl).toBeCalledWith('https://aide.passculture.app/fr/')
   })
 })
