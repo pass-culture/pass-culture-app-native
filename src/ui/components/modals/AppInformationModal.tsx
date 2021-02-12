@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { ModalOverlay } from 'ui/components/modals/ModalOverlay'
 import { Close } from 'ui/svg/icons/Close'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum, getSpacing, getSpacingString, Spacer } from 'ui/theme'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -58,7 +58,8 @@ const ColoredModalHeader = styled(ModalHeader).attrs({
       fontSize: getSpacing(5),
       fontWeight: 'bold',
       fontStyle: 'normal',
-      lineHeight: getSpacing(6),
+      // @ts-ignore fixing warning 'Expected lineHeight to contains unit'
+      lineHeight: getSpacingString(6),
       color: ColorsEnum.BLACK,
     },
   },
