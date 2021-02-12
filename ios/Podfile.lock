@@ -147,6 +147,8 @@ PODS:
   - OpenSSL-Universal (1.0.2.19):
     - OpenSSL-Universal/Static (= 1.0.2.19)
   - OpenSSL-Universal/Static (1.0.2.19)
+  - Permission-LocationWhenInUse (3.0.0):
+    - RNPermissions
   - PromisesObjC (1.2.11)
   - RCTRequired (0.63.3)
   - RCTTypeSafety (0.63.3):
@@ -416,6 +418,8 @@ PODS:
     - React
   - RNLocalize (1.4.1):
     - React
+  - RNPermissions (3.0.0):
+    - React-Core
   - RNReanimated (1.13.1):
     - React
   - RNScreens (2.11.0):
@@ -462,6 +466,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - lottie-ios (from `../node_modules/lottie-ios`)
   - lottie-react-native (from `../node_modules/lottie-react-native`)
+  - Permission-LocationWhenInUse (from `../node_modules/react-native-permissions/ios/LocationWhenInUse`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -503,6 +508,7 @@ DEPENDENCIES:
   - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNLaunchNavigator (from `../node_modules/react-native-launch-navigator`)
   - RNLocalize (from `../node_modules/react-native-localize`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
@@ -558,6 +564,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/lottie-ios"
   lottie-react-native:
     :path: "../node_modules/lottie-react-native"
+  Permission-LocationWhenInUse:
+    :path: "../node_modules/react-native-permissions/ios/LocationWhenInUse"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -636,6 +644,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-launch-navigator"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -680,6 +690,7 @@ SPEC CHECKSUMS:
   lottie-react-native: 1fb4ce21d6ad37dab8343eaff8719df76035bd93
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
+  Permission-LocationWhenInUse: e2b8c40ce0f3675a521f26787ab47ebb9bace503
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   RCTRequired: 48884c74035a0b5b76dbb7a998bd93bcfc5f2047
   RCTTypeSafety: edf4b618033c2f1c5b7bc3d90d8e085ed95ba2ab
@@ -720,6 +731,7 @@ SPEC CHECKSUMS:
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
   RNLocalize: 49634a6a605dcdeb319e9c42a5c2f1aec508694b
+  RNPermissions: 99dd8d4a30ff13509b949ca63cd1f69edc461775
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
   RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
   RNSentry: cff88174a0b2e0289b2efe5be1abba1f6c54269d
@@ -729,6 +741,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: f65fe6a6f1f21faed9631b688d7a1388fcb34b75
+PODFILE CHECKSUM: 176e46cf97ad4552152a175f3c813dac27cb82dc
 
 COCOAPODS: 1.8.4

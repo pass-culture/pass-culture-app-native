@@ -10022,6 +10022,11 @@ react-native-measureme@0.0.2:
   resolved "https://registry.yarnpkg.com/react-native-measureme/-/react-native-measureme-0.0.2.tgz#7f54eeb0813d461ef6c49d921e42e253d649c47a"
   integrity sha512-m7Td7w1pVdIf7a3ejN7K/67AU+TtkZqTt9/ieKamirLRI3fjLToupmOKDtIOU3Y56oKojzTKz1lBbYSPN28HWA==
 
+react-native-permissions@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.0.0.tgz#d9d107700741d41f8392f202f35a61f481fb0e68"
+  integrity sha512-zBvf+o3NhgKmBk1I06GzZXaDfc9SUyO4M5TMcaCF1pwG1h4sI+XAv3gWSbryl6WnaZQc1zA+g7SocSoYcpJN5g==
+
 react-native-reanimated@^1.7.0:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.1.tgz#c370c32cc4d447ae896cb029bb9c6a2f7608c5b4"
