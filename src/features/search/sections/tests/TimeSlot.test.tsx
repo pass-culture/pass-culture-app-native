@@ -7,11 +7,11 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { TimeSlot } from '../TimeSlot'
 
 let mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -25,6 +25,6 @@ describe('TimeSlot component', () => {
     const { getByTestId } = render(<TimeSlot />)
     const slider = getByTestId('slider').children[0] as ReactTestInstance
     slider.props.onValuesChangeFinish([5, 22])
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'TIME_RANGE', payload: [5, 22] })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TIME_RANGE', payload: [5, 22] })
   })
 })

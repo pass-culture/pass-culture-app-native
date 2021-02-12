@@ -16,9 +16,12 @@ RNDateTimePicker.mockImplementation((props) => <View testID={props.testID} />)
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
     dispatch: jest.fn(),
+  }),
+  useCommit: () => ({
+    commit: jest.fn(),
   }),
 }))
 

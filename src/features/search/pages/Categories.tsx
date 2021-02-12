@@ -5,7 +5,7 @@ import React, { useRef } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -17,7 +17,7 @@ const ALL = 'ALL'
 export const DEBOUNCED_CALLBACK = 200
 
 export const useSelectCategory = (callback: () => void) => {
-  const { searchState, dispatch } = useSearch()
+  const { searchState, dispatch } = useStagedSearch()
   const debouncedCallback = useRef(debounce(callback, DEBOUNCED_CALLBACK)).current
 
   return {

@@ -8,7 +8,7 @@ import { CategoryNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -19,7 +19,7 @@ const { width } = Dimensions.get('window')
 
 export const SearchLandingPage: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
+  const { searchState } = useStagedSearch()
   const [selectedCategory] = searchState.offerCategories
   const { icon: Icon, label } = CATEGORY_CRITERIA[(selectedCategory as CategoryNameEnum) || 'ALL']
   const { Icon: LocationIcon, label: locationLabel } = useLocationChoice(searchState.locationType)

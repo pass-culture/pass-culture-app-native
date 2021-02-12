@@ -6,7 +6,7 @@ export const useFunctionOnce = (callback: (() => void) | undefined) => {
   return () => {
     if (!hasRenderedOnce.current) {
       hasRenderedOnce.current = true
-      callback?.()
+      if (callback) callback()
     }
   }
 }

@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { DateFilter } from 'features/search/atoms/Buttons'
 import { CalendarPicker } from 'features/search/components'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
@@ -15,7 +15,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const OfferDate: React.FC = () => {
-  const { searchState, dispatch } = useSearch()
+  const { searchState, dispatch } = useStagedSearch()
   const [showTimePicker, setShowTimePicker] = useState<boolean>(false)
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferDate)
 

@@ -7,13 +7,13 @@ import { Range } from 'libs/typesUtils/typeHelpers'
 import { Hour as HourSection } from '../Hour'
 
 let mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 const timeRange = [3, 20] as Range<number>
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -26,7 +26,7 @@ describe('Hour component', () => {
   it('should dispatch TOGGLE_HOUR onPress', () => {
     const { getByTestId } = render(<HourSection />)
     fireEvent.press(getByTestId('filterSwitch'))
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_HOUR' })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_HOUR' })
   })
 
   it('should have the indicator of the filters in the title', () => {

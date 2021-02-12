@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
 import { LocationType } from 'libs/algolia'
 import { _ } from 'libs/i18n'
@@ -15,8 +15,7 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 const { height } = Dimensions.get('window')
 
 const useScrollToEndOnTimeOrDateActivation = () => {
-  const { searchState } = useSearch()
-
+  const { searchState } = useStagedSearch()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const shouldScrollRef = useRef<boolean>(false)
 
@@ -40,7 +39,7 @@ const useScrollToEndOnTimeOrDateActivation = () => {
 }
 
 export const SearchFilter: React.FC = () => {
-  const { searchState } = useSearch()
+  const { searchState } = useStagedSearch()
   const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
 

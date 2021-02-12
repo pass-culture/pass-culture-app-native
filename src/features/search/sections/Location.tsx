@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Section } from 'features/search/atoms/Sections'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { LocationType } from 'libs/algolia'
@@ -14,11 +15,9 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-import { useSearch } from '../pages/SearchWrapper'
-
 export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { searchState } = useSearch()
+  const { searchState } = useStagedSearch()
   const locationType = searchState.locationType
   const { label } = useLocationChoice(locationType)
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)

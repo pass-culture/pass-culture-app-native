@@ -7,12 +7,12 @@ import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { Category } from '../Category'
 
 let mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -30,7 +30,7 @@ describe('Category component', () => {
   it('should dispatch TOGGLE_CATEGORY with correct facetFilter', () => {
     const { getByText } = render(<Category />)
     fireEvent.press(getByText(CATEGORY_CRITERIA.CINEMA.label))
-    expect(mockDispatch).toHaveBeenCalledWith({
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
       type: 'TOGGLE_CATEGORY',
       payload: CATEGORY_CRITERIA.CINEMA.facetFilter,
     })

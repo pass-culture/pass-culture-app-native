@@ -7,11 +7,11 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { Price } from '../Price'
 
 let mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockStagedDispatch = jest.fn()
 jest.mock('features/search/pages/SearchWrapper', () => ({
-  useSearch: () => ({
+  useStagedSearch: () => ({
     searchState: mockSearchState,
-    dispatch: mockDispatch,
+    dispatch: mockStagedDispatch,
   }),
 }))
 
@@ -25,7 +25,7 @@ describe('Price component', () => {
     const { getByTestId } = render(<Price />)
     const slider = getByTestId('slider').children[0] as ReactTestInstance
     slider.props.onValuesChangeFinish([20, 30])
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'PRICE_RANGE', payload: [20, 30] })
+    expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'PRICE_RANGE', payload: [20, 30] })
   })
 
   it('should have the indicator of the filters in the title', () => {

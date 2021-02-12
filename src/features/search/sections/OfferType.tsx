@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { AccordionItem } from 'features/offer/components'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
 import { SearchState } from 'features/search/pages/reducer'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { _ } from 'libs/i18n'
@@ -21,7 +21,7 @@ export const OFFER_TYPES: Array<[OfferType, string]> = [
 
 export const OfferType: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferType)
-  const { searchState, dispatch } = useSearch()
+  const { searchState, dispatch } = useStagedSearch()
   const { offerTypes } = searchState
 
   const onPress = (offerType: OfferType) => () => {
