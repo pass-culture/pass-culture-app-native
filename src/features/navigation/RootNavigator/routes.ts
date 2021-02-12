@@ -25,7 +25,7 @@ import { FirstTutorial } from 'features/firstLogin/tutorials/pages/FirstTutorial
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { Profile } from 'features/profile/pages/Profile'
-import { TemporyProfilePage } from 'features/profile/pages/TemporyProfilePage'
+import { TemporaryProfilePage } from 'features/profile/pages/TemporaryProfilePage'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
@@ -69,7 +69,7 @@ const routes: Array<Route> = [
   { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
-  { name: 'TemporyProfilePage', component: TemporyProfilePage },
+  { name: 'TemporaryProfilePage', component: TemporaryProfilePage },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial, options: TransitionPresets.SlideFromRightIOS },
 ]

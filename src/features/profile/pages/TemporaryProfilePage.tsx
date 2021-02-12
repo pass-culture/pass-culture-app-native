@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import { Typo } from 'ui/theme'
 
-export function TemporyProfilePage() {
+export function TemporaryProfilePage() {
   return (
     <View>
       {/* eslint-disable-next-line react-native/no-raw-text */}

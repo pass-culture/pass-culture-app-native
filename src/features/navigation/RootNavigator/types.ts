@@ -44,7 +44,7 @@ export type RootStackParamList = {
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: undefined
-  TemporyProfilePage: undefined
+  TemporaryProfilePage: undefined
   VerifyEligibility: { email: string; licenceToken: string }
   FirstTutorial: undefined
   SecondTutorial: undefined

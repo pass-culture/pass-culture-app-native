@@ -34,7 +34,7 @@ describe('Profile component', () => {
     row.props.onClick()
 
     // TODO: PC-
-    expect(navigate).toBeCalledWith('TemporyProfilePage')
+    expect(navigate).toBeCalledWith('TemporaryProfilePage')
   })
   it('should navigate when the password row is clicked', async () => {
     const { getByTestId } = await renderProfile()
@@ -43,6 +43,6 @@ describe('Profile component', () => {
     row.props.onClick()
 
     // TODO: PC-
-    expect(navigate).toBeCalledWith('TemporyProfilePage')
+    expect(navigate).toBeCalledWith('TemporaryProfilePage')
   })
 })
