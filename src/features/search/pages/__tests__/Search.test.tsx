@@ -2,6 +2,7 @@ import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { initialSearchState } from '../reducer'
 import { Search } from '../Search'
@@ -12,6 +13,13 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: mockDispatch,
+  }),
+  useStagedSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
+  useCommit: () => ({
+    commit: jest.fn(),
   }),
 }))
 
@@ -39,12 +47,12 @@ describe('Search component', () => {
     jest.resetAllMocks()
   })
   it('should render correctly', () => {
-    const { toJSON } = render(<Search />)
+    const { toJSON } = render(reactQueryProviderHOC(<Search />))
     expect(toJSON()).toMatchSnapshot()
   })
   it('should handle coming from "See More" correctly', () => {
     useRoute.mockImplementation(() => ({ params: { parameters } }))
-    render(<Search />)
+    render(reactQueryProviderHOC(<Search />))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT_FROM_SEE_MORE', payload: parameters })
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
