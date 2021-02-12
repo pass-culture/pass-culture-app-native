@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { getFilterCount } from 'features/search/utils/getFilterCount'
 import { _ } from 'libs/i18n'
 import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
@@ -16,10 +16,16 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 export const Filter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useSearch()
+  const { dispatch } = useStagedSearch()
   const filterCount = getFilterCount(searchState)
 
+  const onPress = () => {
+    dispatch({ type: 'SET_STATE', payload: searchState })
+    navigate('SearchFilter')
+  }
+
   return (
-    <Container onPress={() => navigate('SearchFilter')} testID="FilterButton">
+    <Container onPress={onPress} testID="FilterButton">
       <StyledLinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
