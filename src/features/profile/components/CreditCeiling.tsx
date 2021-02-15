@@ -11,7 +11,7 @@ import { CreditCeilingMapV1, CreditCeilingMapV2, ExpenseTypeAndVersion, ExpenseV
 
 type CreditCeilingProps = {
   amount: number
-  max: number
+  limit: number
 } & ExpenseTypeAndVersion
 
 export function CreditCeiling(props: CreditCeilingProps) {
@@ -22,12 +22,12 @@ export function CreditCeiling(props: CreditCeilingProps) {
     ceilingConfig = CreditCeilingMapV2[props.type]
   }
 
-  if (!ceilingConfig || props.max <= 0) {
+  if (!ceilingConfig || props.limit <= 0) {
     return null
   }
   const amountLabel = `${props.amount} €`
-  const progress = Number((props.amount / props.max).toFixed(2))
-  const color = props.amount == 0 ? ColorsEnum.GREY_DARK : ceilingConfig.color
+  const progress = Number((props.amount / props.limit).toFixed(2))
+  const color = props.amount === 0 ? ColorsEnum.GREY_DARK : ceilingConfig.color
 
   return (
     <Container>

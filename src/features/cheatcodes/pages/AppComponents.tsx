@@ -92,14 +92,14 @@ const NUMBER_OF_STEPS = 4
 const THIS_YEAR = new Date().getFullYear()
 
 const expenses_v1: Array<Expense> = [
-  { current: 100, domain: ExpenseDomain.All, limit: 200 },
-  { current: 70, domain: ExpenseDomain.Digital, limit: 100 },
-  { current: 70, domain: ExpenseDomain.Physical, limit: 200 },
+  { current: 100, domain: ExpenseDomain.All, limit: 500 },
+  { current: 50, domain: ExpenseDomain.Digital, limit: 100 },
+  { current: 50, domain: ExpenseDomain.Physical, limit: 200 },
 ]
 
 const expenses_v2: Array<ExpenseV2> = [
-  { current: 153, domain: ExpenseDomain.All, limit: 200 },
-  { current: 30, domain: ExpenseDomain.Digital, limit: 100 },
+  { current: 150, domain: ExpenseDomain.All, limit: 300 },
+  { current: 100, domain: ExpenseDomain.Digital, limit: 200 },
 ]
 
 export const AppComponents: FunctionComponent = () => {
@@ -578,9 +578,9 @@ export const AppComponents: FunctionComponent = () => {
 
         <Spacer.Column numberOfSpaces={4} />
         <View>
-          <BeneficiaryCeilings depositVersion={1} expenses={expenses_v1} />
+          <BeneficiaryCeilings depositVersion={1} expenses={expenses_v1} walletBalance={400} />
           <Spacer.Column numberOfSpaces={4} />
-          <BeneficiaryCeilings depositVersion={2} expenses={expenses_v2} />
+          <BeneficiaryCeilings depositVersion={2} expenses={expenses_v2} walletBalance={150} />
         </View>
       </AccordionItem>
 

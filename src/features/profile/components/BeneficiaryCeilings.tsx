@@ -8,12 +8,14 @@ import { Expense } from 'api/gen'
 import { AccordionItem } from 'features/offer/components'
 import { CreditCeiling, getCreditCeilingProps } from 'features/profile/components/CreditCeiling'
 import { ExpenseV2 } from 'features/profile/components/types'
-import { sortExpenses } from 'features/profile/utils'
+import { computeRemainingCredit, sortExpenses } from 'features/profile/utils'
 import { _ } from 'libs/i18n'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-type BeneficiaryCeilingsProps =
+type BeneficiaryCeilingsProps = {
+  walletBalance: number
+} & (
   | {
       depositVersion: 1
       expenses: Array<Expense>
@@ -22,6 +24,7 @@ type BeneficiaryCeilingsProps =
       depositVersion: 2
       expenses: Array<ExpenseV2>
     }
+)
 
 const ceilingsQuestions = {
   v1: _(t`Pourquoi les biens physiques et numériques sont-ils limités ?`),
@@ -31,10 +34,7 @@ const ceilingsQuestions = {
 export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
   const question = props.depositVersion === 1 ? ceilingsQuestions.v1 : ceilingsQuestions.v2
 
-  const expenses =
-    props.depositVersion === 1
-      ? (sortExpenses(props.expenses) as Array<Expense>)
-      : (props.expenses as Array<ExpenseV2>)
+  const expenses = sortExpenses(props.depositVersion, props.expenses)
 
   return (
     <Container>
@@ -46,8 +46,10 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
           return (
             <CreditCeiling
               key={index}
-              amount={convertCentsToEuros(expense.current)}
-              max={convertCentsToEuros(expense.limit)}
+              amount={convertCentsToEuros(
+                computeRemainingCredit(props.walletBalance, expense.limit, expense.current)
+              )}
+              limit={convertCentsToEuros(expense.limit)}
               {...getCreditCeilingProps(props.depositVersion, expense)}
             />
           )

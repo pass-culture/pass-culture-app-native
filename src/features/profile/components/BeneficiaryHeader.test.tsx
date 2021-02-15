@@ -25,7 +25,7 @@ describe('BeneficiaryHeader', () => {
         expenses={expenses_v1}
         firstName={'Rosa'}
         lastName={'Bonheur'}
-        remainingCredit={150}
+        walletBalance={150}
       />
     )
 
@@ -40,7 +40,7 @@ describe('BeneficiaryHeader', () => {
         expenses={expenses_v2}
         firstName={'Rosa'}
         lastName={'Bonheur'}
-        remainingCredit={150}
+        walletBalance={150}
       />
     )
 

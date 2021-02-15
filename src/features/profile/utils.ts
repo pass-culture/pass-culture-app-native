@@ -1,9 +1,8 @@
 import _ from 'lodash'
 
 import { Expense, ExpenseDomain } from 'api/gen/api'
-import { ExpenseDomainOrder } from 'features/profile/components/types'
+import { ExpenseDomainOrderV1, ExpenseDomainOrderV2 } from 'features/profile/components/types'
 import { ExpenseV2 } from 'features/profile/components/types'
-import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
 /**
  * Formats an iso date to a slashed french date.
@@ -19,13 +18,27 @@ export function computeEligibilityExpiracy(ISOBirthday: string) {
   return date
 }
 
-export function sortExpenses(expenses: Expense[]) {
-  return _.sortBy(expenses, function (expense: Expense) {
-    return ExpenseDomainOrder[expense.domain]
-  })
+export function sortExpenses(depositVersion: 1 | 2, expenses: Expense[] | ExpenseV2[]) {
+  if (depositVersion === 1) {
+    return _.sortBy(expenses, function (expense: Expense) {
+      return ExpenseDomainOrderV1[expense.domain]
+    }) as Expense[]
+  }
+  return _.sortBy(expenses, function (expense: ExpenseV2) {
+    return ExpenseDomainOrderV2[expense.domain]
+  }) as ExpenseV2[]
 }
 
-export function computeRemainingCredit(expenses: Expense[] | ExpenseV2[]): number {
+export function computeWalletBalance(expenses: Expense[] | ExpenseV2[]): number {
   const allExpense = expenses.find((expense) => expense.domain === ExpenseDomain.All)
-  return allExpense ? convertCentsToEuros(allExpense.limit - allExpense.current) : 0
+  return allExpense ? allExpense.limit - allExpense.current : 0
+}
+
+export function computeRemainingCredit(
+  walletBalance: number,
+  domainLimitExpense: number,
+  domainCurrentExpense: number
+): number {
+  const domainRemainingCredit = domainLimitExpense - domainCurrentExpense
+  return Math.min(walletBalance, domainRemainingCredit)
 }
