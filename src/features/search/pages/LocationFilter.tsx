@@ -36,7 +36,9 @@ export const LocationFilter: React.FC = () => {
 
   const onPressAroundMe = async () => {
     if (position === null) {
-      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      const shouldDisplayCustomGeolocRequest =
+        permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
+      if (shouldDisplayCustomGeolocRequest) {
         showGeolocPermissionModal()
       } else {
         await requestGeolocPermission()
