@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 
 import { ColorsEnum } from './colors'
+import { getGrid, Axis } from './grid'
 import { getSpacing, getSpacingString } from './spacing'
 
 interface TextProp {
@@ -18,13 +19,13 @@ const Hero = styled(ColoredText)({
 
 const Title1 = styled(ColoredText)({
   fontFamily: 'Montserrat-ExtraBoldItalic',
-  fontSize: getSpacing(7),
+  fontSize: getSpacing(getGrid({ default: 7, sm: 6 }, Axis.HEIGHT)),
   lineHeight: getSpacingString(8.5),
 })
 
 const Title2 = styled(ColoredText)({
   fontFamily: 'Montserrat-MediumItalic',
-  fontSize: getSpacing(6),
+  fontSize: getSpacing(getGrid({ default: 6, sm: 5.5 }, Axis.HEIGHT)),
   lineHeight: getSpacingString(7),
 })
 

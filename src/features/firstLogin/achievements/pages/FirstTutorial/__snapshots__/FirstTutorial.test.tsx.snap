@@ -54,7 +54,6 @@ Array [
             "flexGrow": 1,
             "maxHeight": 900,
             "maxWidth": 500,
-            "paddingTop": 20,
             "width": "100%",
           },
         ]
@@ -237,6 +236,8 @@ Array [
                         Object {
                           "alignItems": "center",
                           "flexGrow": 1,
+                          "height": "30%",
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -288,12 +289,12 @@ Array [
                     c'est...
                   </Text>
                   <View
-                    flex={1}
+                    flex={0.5}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexGrow": 0.5,
                           "flexShrink": 1,
                         },
                       ]
@@ -327,72 +328,85 @@ Array [
                     }
                   />
                   <View
-                    forwardedRef={[Function]}
-                    style={
-                      Object {
-                        "opacity": 0,
-                      }
-                    }
-                  >
-                    <View
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        Object {
-                          "alignItems": "center",
-                          "backgroundColor": "#eb0055",
-                          "borderRadius": 24,
-                          "borderWidth": 0,
-                          "flexDirection": "row",
-                          "height": 40,
-                          "justifyContent": "center",
-                          "maxWidth": 500,
-                          "opacity": 1,
-                          "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
-                          "paddingTop": 2,
-                          "width": "100%",
-                        }
-                      }
-                      testID="button-container"
-                    >
-                      <Text
-                        adjustsFontSizeToFit={false}
-                        numberOfLines={1}
-                        style={
-                          Array [
-                            Object {
-                              "color": "#ffffff",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
-                              "marginLeft": 5,
-                              "maxWidth": 650,
-                            },
-                          ]
-                        }
-                        testID="button-title"
-                        textColor="#ffffff"
-                      >
-                        Continuer
-                      </Text>
-                    </View>
-                  </View>
-                  <View
-                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 3,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      forwardedRef={[Function]}
+                      style={
+                        Object {
+                          "opacity": 0,
+                        }
+                      }
+                    >
+                      <View
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#eb0055",
+                            "borderRadius": 24,
+                            "borderWidth": 0,
+                            "flexDirection": "row",
+                            "height": 40,
+                            "justifyContent": "center",
+                            "maxWidth": 500,
+                            "opacity": 1,
+                            "paddingBottom": 2,
+                            "paddingLeft": 2,
+                            "paddingRight": 2,
+                            "paddingTop": 2,
+                            "width": "100%",
+                          }
+                        }
+                        testID="button-container"
+                      >
+                        <Text
+                          adjustsFontSizeToFit={false}
+                          numberOfLines={1}
+                          style={
+                            Array [
+                              Object {
+                                "color": "#ffffff",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                                "marginLeft": 5,
+                                "maxWidth": 650,
+                              },
+                            ]
+                          }
+                          testID="button-title"
+                          textColor="#ffffff"
+                        >
+                          Continuer
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    flex={2}
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 2,
                           "flexShrink": 1,
                         },
                       ]
@@ -439,6 +453,8 @@ Array [
                         Object {
                           "alignItems": "center",
                           "flexGrow": 1,
+                          "height": "30%",
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -490,12 +506,12 @@ Array [
                     et si tu es...
                   </Text>
                   <View
-                    flex={1}
+                    flex={0.5}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexGrow": 0.5,
                           "flexShrink": 1,
                         },
                       ]
@@ -529,27 +545,40 @@ Array [
                     }
                   />
                   <View
-                    forwardedRef={[Function]}
-                    style={Object {}}
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "height": 48,
-                          },
-                        ]
-                      }
-                      testID="invisible-button-height"
-                    />
-                  </View>
-                  <View
-                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 3,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      forwardedRef={[Function]}
+                      style={Object {}}
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "height": 48,
+                            },
+                          ]
+                        }
+                        testID="invisible-button-height"
+                      />
+                    </View>
+                  </View>
+                  <View
+                    flex={2}
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 2,
                           "flexShrink": 1,
                         },
                       ]
@@ -596,6 +625,8 @@ Array [
                         Object {
                           "alignItems": "center",
                           "flexGrow": 1,
+                          "height": "30%",
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -647,12 +678,12 @@ Array [
                     à portée de main !
                   </Text>
                   <View
-                    flex={1}
+                    flex={0.5}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexGrow": 0.5,
                           "flexShrink": 1,
                         },
                       ]
@@ -686,27 +717,40 @@ Array [
                     }
                   />
                   <View
-                    forwardedRef={[Function]}
-                    style={Object {}}
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "height": 48,
-                          },
-                        ]
-                      }
-                      testID="invisible-button-height"
-                    />
-                  </View>
-                  <View
-                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 3,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      forwardedRef={[Function]}
+                      style={Object {}}
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "height": 48,
+                            },
+                          ]
+                        }
+                        testID="invisible-button-height"
+                      />
+                    </View>
+                  </View>
+                  <View
+                    flex={2}
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 2,
                           "flexShrink": 1,
                         },
                       ]
@@ -753,6 +797,8 @@ Array [
                         Object {
                           "alignItems": "center",
                           "flexGrow": 1,
+                          "height": "30%",
+                          "justifyContent": "center",
                         },
                       ]
                     }
@@ -804,12 +850,12 @@ Array [
                     quotidiennes
                   </Text>
                   <View
-                    flex={1}
+                    flex={0.5}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexGrow": 0.5,
                           "flexShrink": 1,
                         },
                       ]
@@ -843,27 +889,40 @@ Array [
                     }
                   />
                   <View
-                    forwardedRef={[Function]}
-                    style={Object {}}
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "height": 48,
-                          },
-                        ]
-                      }
-                      testID="invisible-button-height"
-                    />
-                  </View>
-                  <View
-                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 3,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      forwardedRef={[Function]}
+                      style={Object {}}
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "height": 48,
+                            },
+                          ]
+                        }
+                        testID="invisible-button-height"
+                      />
+                    </View>
+                  </View>
+                  <View
+                    flex={2}
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 2,
                           "flexShrink": 1,
                         },
                       ]
@@ -1250,11 +1309,11 @@ Array [
         </View>
       </View>
       <View
-        numberOfSpaces={8}
+        numberOfSpaces={2}
         style={
           Array [
             Object {
-              "height": 32,
+              "height": 8,
             },
           ]
         }

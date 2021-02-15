@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import AnimatedLottieView from 'lottie-react-native'
-import LottieView from 'lottie-react-native'
 import React, { FunctionComponent, RefObject, useEffect } from 'react'
 import { View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
@@ -15,6 +14,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { getSpacing, Typo } from 'ui/theme'
+import { getGrid, Axis } from 'ui/theme/grid'
 
 export type AchievementCardKeyProps = {
   activeIndex?: number
@@ -87,40 +87,49 @@ Those props are provided by the GenericAchievementCard and must be passed down t
 
   return (
     <GenericCardContainer>
-      <Spacer.Flex flex={2} />
+      <Spacer.Flex flex={getGrid({ sm: 1, default: 2 }, Axis.HEIGHT)} />
       <StyledLottieContainer>
         <StyledLottieView
           key={props.activeIndex}
           ref={animationRef}
           source={props.animation}
           loop={false}
-          resizeMode="contain"
         />
       </StyledLottieContainer>
       <Spacer.Flex flex={1} />
       <StyledTitle>{props.title}</StyledTitle>
       <StyledSubTitle>{props.subTitle}</StyledSubTitle>
-      <Spacer.Flex flex={1} />
+      <Spacer.Flex flex={0.5} />
       <StyledBody>{props.text}</StyledBody>
       <Spacer.Flex flex={2} />
-      <Animatable.View ref={animatedButtonRef}>
-        {props.activeIndex === props.index ? (
-          <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
-        ) : (
-          <InvisibleButtonHeight testID="invisible-button-height" />
+      <BottomButtonsContainer>
+        <Animatable.View ref={animatedButtonRef}>
+          {props.activeIndex === props.index ? (
+            <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
+          ) : (
+            <InvisibleButtonHeight testID="invisible-button-height" />
+          )}
+        </Animatable.View>
+        {!props.lastIndex && (
+          <FlexContainer>
+            <ButtonPrimaryWhite title={_(t`Passer`)} onPress={props.skip} />
+          </FlexContainer>
         )}
-      </Animatable.View>
-      {!props.lastIndex ? (
-        <React.Fragment>
-          <Spacer.Flex flex={1} />
-          <ButtonPrimaryWhite title={_(t`Passer`)} onPress={props.skip} />
-        </React.Fragment>
-      ) : (
-        <Spacer.Flex flex={3} />
-      )}
+      </BottomButtonsContainer>
+      <Spacer.Flex flex={2} />
     </GenericCardContainer>
   )
 }
+
+const FlexContainer = styled.View({
+  flex: 1,
+  marginTop: getSpacing(4),
+})
+
+const BottomButtonsContainer = styled.View({
+  flex: 1,
+  justifyContent: 'flex-end',
+})
 
 const InvisibleButtonHeight = styled.View({
   height: getSpacing(12),
@@ -129,6 +138,8 @@ const InvisibleButtonHeight = styled.View({
 const StyledLottieContainer = styled.View({
   flexGrow: 1,
   alignItems: 'center',
+  justifyContent: 'center',
+  height: '30%',
 })
 
 const GenericCardContainer = styled.View({
@@ -136,9 +147,8 @@ const GenericCardContainer = styled.View({
   paddingHorizontal: getSpacing(5),
 })
 
-const StyledLottieView = styled(LottieView)({
-  width: getSpacing(60),
-  height: getSpacing(60),
+const StyledLottieView = styled(AnimatedLottieView)({
+  flexGrow: 1,
 })
 
 const StyledTitle = styled(Typo.Title1)({
