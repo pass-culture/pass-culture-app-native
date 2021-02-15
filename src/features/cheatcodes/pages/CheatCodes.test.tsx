@@ -69,6 +69,6 @@ describe('CheatCodes component', () => {
     })
 
     expect(BatchUser.getInstallationID).toHaveBeenCalled()
-    expect(queryByText(installationID)).toBeTruthy()
+    expect(queryByText(`Batch installation ID: ${installationID}`)).toBeTruthy()
   })
 })
