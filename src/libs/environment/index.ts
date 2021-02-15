@@ -27,7 +27,6 @@ export interface Environment {
   SIGNIN_PASSWORD: string
   SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string
-  UNIVERSAL_LINK: string
   URL_PREFIX: string
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string

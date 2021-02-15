@@ -7,7 +7,6 @@ import waitForExpect from 'wait-for-expect'
 import { useRoute, goBack } from '__mocks__/@react-navigation/native'
 import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
@@ -71,7 +70,7 @@ describe('<OfferHeader />', () => {
       fireEvent.press(getByTestId('icon-share'))
     })
     expect(share).toHaveBeenCalledTimes(1)
-    const url = DEEPLINK_DOMAIN + 'offer/?id=116656'
+    const url = 'passculture://app.passculture.testing/offer/?id=116656'
     const message =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
     const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
@@ -90,10 +89,9 @@ describe('<OfferHeader />', () => {
       fireEvent.press(getByTestId('icon-share'))
     })
     expect(share).toHaveBeenCalledTimes(1)
-    const url = DEEPLINK_DOMAIN + 'offer/?id=116656'
+    const url = 'passculture://app.passculture.testing/offer/?id=116656'
     const messageWithUrl =
-      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
-      url
+      'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\npassculture://app.passculture.testing/offer/?id=116656'
     const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
     expect(share).toHaveBeenCalledWith(
       { message: messageWithUrl, title, url },
