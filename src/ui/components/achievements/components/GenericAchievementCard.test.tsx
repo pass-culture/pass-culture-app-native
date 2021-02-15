@@ -31,6 +31,7 @@ describe('<GenericAchievementCard />', () => {
       title,
       activeIndex: 0,
       index: 0,
+      lastIndex: 0,
     })
     expect(getByText(title)).toBeTruthy()
     expect(getByText(subTitle)).toBeTruthy()
@@ -52,6 +53,7 @@ describe('<GenericAchievementCard />', () => {
       title,
       activeIndex: 0,
       index: 0,
+      lastIndex: 0,
     })
     expect(getByText(title)).toBeTruthy()
     expect(getByText(subTitle)).toBeTruthy()
@@ -75,6 +77,7 @@ describe('<GenericAchievementCard />', () => {
           title={title}
           activeIndex={0}
           index={0}
+          lastIndex={1}
         />
         <GenericAchievementCard
           buttonText={buttonText}
@@ -86,6 +89,7 @@ describe('<GenericAchievementCard />', () => {
           title={title}
           activeIndex={0}
           index={1}
+          lastIndex={1}
         />
       </GenericAchievement>
     )
@@ -123,6 +127,7 @@ describe('<GenericAchievementCard />', () => {
         text={text}
         title={title}
         index={2}
+        lastIndex={2}
         activeIndex={1}
       />
     )
@@ -142,6 +147,7 @@ describe('<GenericAchievementCard />', () => {
         title={title}
         index={1}
         activeIndex={1}
+        lastIndex={1}
       />
     )
     expect(getByText(buttonText)).toBeTruthy()
@@ -166,6 +172,7 @@ describe('<GenericAchievementCard />', () => {
         title={title}
         index={0}
         activeIndex={1}
+        lastIndex={1}
       />
     )
     await waitForExpect(() => {
@@ -192,6 +199,7 @@ describe('<GenericAchievementCard />', () => {
         title={title}
         index={0}
         activeIndex={0}
+        lastIndex={1}
       />
     )
     await waitForExpect(() => {
@@ -219,6 +227,7 @@ describe('<GenericAchievementCard />', () => {
         title={title}
         activeIndex={0}
         index={1}
+        lastIndex={1}
       />
     )
     await waitForExpect(() => {
@@ -250,6 +259,7 @@ describe('<GenericAchievementCard />', () => {
         title={title}
         activeIndex={1}
         index={1}
+        lastIndex={1}
       />
     )
     await waitForExpect(() => {

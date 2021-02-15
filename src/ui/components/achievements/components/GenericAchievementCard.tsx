@@ -44,9 +44,19 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   const animationRef = React.useRef<AnimatedLottieView>(null)
   const animatedButtonRef = React.useRef<Animatable.View & View>(null)
 
-  if (props.index === undefined) {
+  if (props.index === undefined || props.lastIndex === undefined) {
     throw new MonitoringError(
-      'You must use GenericAchievementCard as a children of GenericAchievement'
+      `You must use GenericAchievementCard as a children of GenericAchievement.
+ 
+      You may be missing the following props in your card component:
+
+        swiperRef={props.swiperRef}
+        name={props.name}
+        index={props.index}
+        activeIndex={props.activeIndex}
+        lastIndex={props.lastIndex}
+        
+Those props are provided by the GenericAchievementCard and must be passed down to the GenericAchievementCard from within your custom Card component!`
     )
   }
 

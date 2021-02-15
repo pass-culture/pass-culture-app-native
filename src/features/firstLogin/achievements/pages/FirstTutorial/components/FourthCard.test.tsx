@@ -10,11 +10,13 @@ import { FourthCard } from './FourthCard'
 const activeAchievementCardProps = {
   index: 0,
   activeIndex: 0,
+  lastIndex: 0,
 }
 
 const inactiveAchievementCardProps = {
   index: 0,
   activeIndex: 1,
+  lastIndex: 1,
 }
 
 afterEach(() => {
@@ -39,7 +41,9 @@ describe('FourthCard', () => {
 
   it('should swipe to next card on button press', () => {
     const ref = createRef<Swiper>()
-    const { getByText } = render(<FourthCard activeIndex={0} index={0} swiperRef={ref} />)
+    const { getByText } = render(
+      <FourthCard lastIndex={0} activeIndex={0} index={0} swiperRef={ref} />
+    )
 
     fireEvent.press(getByText('Découvrir'))
 

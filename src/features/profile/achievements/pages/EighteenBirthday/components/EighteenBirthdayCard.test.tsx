@@ -9,7 +9,7 @@ import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 
 describe('EighteenBirthdayCard', () => {
   it('should render eighteen birthday card', () => {
-    const firstTutorial = render(<EighteenBirthdayCard activeIndex={0} index={0} />)
+    const firstTutorial = render(<EighteenBirthdayCard lastIndex={0} activeIndex={0} index={0} />)
     expect(firstTutorial).toMatchSnapshot()
   })
 
@@ -19,6 +19,7 @@ describe('EighteenBirthdayCard', () => {
       <EighteenBirthdayCard
         activeIndex={0}
         index={0}
+        lastIndex={0}
         swiperRef={(ref as unknown) as RefObject<Swiper>}
       />
     )

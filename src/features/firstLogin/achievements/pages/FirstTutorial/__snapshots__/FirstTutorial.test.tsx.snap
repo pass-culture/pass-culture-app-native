@@ -387,68 +387,17 @@ Array [
                     </View>
                   </View>
                   <View
-                    flex={1}
+                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexGrow": 3,
                           "flexShrink": 1,
                         },
                       ]
                     }
                   />
-                  <View
-                    accessible={true}
-                    focusable={false}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 24,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "opacity": 1,
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      }
-                    }
-                    testID="button-container"
-                  >
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 5,
-                            "maxWidth": 650,
-                          },
-                        ]
-                      }
-                      testID="button-title"
-                      textColor="#eb0055"
-                    >
-                      Passer
-                    </Text>
-                  </View>
                 </View>
               </View>
               <View
@@ -595,68 +544,17 @@ Array [
                     />
                   </View>
                   <View
-                    flex={1}
+                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexGrow": 3,
                           "flexShrink": 1,
                         },
                       ]
                     }
                   />
-                  <View
-                    accessible={true}
-                    focusable={false}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 24,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "opacity": 1,
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      }
-                    }
-                    testID="button-container"
-                  >
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 5,
-                            "maxWidth": 650,
-                          },
-                        ]
-                      }
-                      testID="button-title"
-                      textColor="#eb0055"
-                    >
-                      Passer
-                    </Text>
-                  </View>
                 </View>
               </View>
               <View
@@ -803,68 +701,17 @@ Array [
                     />
                   </View>
                   <View
-                    flex={1}
+                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexGrow": 3,
                           "flexShrink": 1,
                         },
                       ]
                     }
                   />
-                  <View
-                    accessible={true}
-                    focusable={false}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 24,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "opacity": 1,
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      }
-                    }
-                    testID="button-container"
-                  >
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 5,
-                            "maxWidth": 650,
-                          },
-                        ]
-                      }
-                      testID="button-title"
-                      textColor="#eb0055"
-                    >
-                      Passer
-                    </Text>
-                  </View>
                 </View>
               </View>
               <View
@@ -1011,68 +858,17 @@ Array [
                     />
                   </View>
                   <View
-                    flex={1}
+                    flex={3}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 1,
+                          "flexGrow": 3,
                           "flexShrink": 1,
                         },
                       ]
                     }
                   />
-                  <View
-                    accessible={true}
-                    focusable={false}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderRadius": 24,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "opacity": 1,
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      }
-                    }
-                    testID="button-container"
-                  >
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#eb0055",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 5,
-                            "maxWidth": 650,
-                          },
-                        ]
-                      }
-                      testID="button-title"
-                      textColor="#eb0055"
-                    >
-                      Passer
-                    </Text>
-                  </View>
                 </View>
               </View>
             </View>
