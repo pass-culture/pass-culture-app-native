@@ -87,7 +87,8 @@ const AppComponent: FunctionComponent = function () {
 }
 
 // @codepush
-const App = env.FEATURE_FLAG_CODE_PUSH
+const useCodePush = env.FEATURE_FLAG_CODE_PUSH && !__DEV__
+const App = useCodePush
   ? CodePush(env.FEATURE_FLAG_CODE_PUSH_MANUAL ? codePushOptionsManual : codePushOptionsAuto)(
       AppComponent
     )
