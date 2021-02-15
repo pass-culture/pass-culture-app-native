@@ -2,10 +2,10 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
-import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
-import { useSignIn } from 'features/auth/api'
+import { api } from 'api/api'
+import { useSignIn, SignInResponseFailure } from 'features/auth/api'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -33,41 +33,49 @@ if (__DEV__) {
 export const Login: FunctionComponent = function () {
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
-  const [shouldShowErrorMessage, setShouldShowErrorMessage] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const signIn = useSignIn()
 
-  const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password)
+  const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
 
   const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation<'Login'>()
 
-  const handleSignin = async () => {
+  async function handleSignin() {
+    setIsLoading(true)
+    setErrorMessage(null)
     const signinResponse = await signIn({ identifier: email, password })
-    if (signinResponse?.isSuccess) {
-      navigate('Home', NavigateToHomeWithoutModalOptions)
+    if (signinResponse.isSuccess) {
+      handleSigninSuccess()
     } else {
-      const { code } = signinResponse?.content || {}
-      if (code === 'EMAIL_NOT_VALIDATED') {
-        navigate('SignupConfirmationEmailSent', { email })
-      } else if (code === 'NETWORK_REQUEST_FAILED') {
-        throw new Error('NETWORK_REQUEST_FAILED')
-      }
+      handleSigninFailure(signinResponse)
     }
-    return signinResponse
   }
-
-  const { refetch: signInQuery, isFetching } = useQuery('login', handleSignin, {
-    cacheTime: 0,
-    enabled: false,
-  })
+  async function handleSigninSuccess() {
+    const userProfile = await api.getnativev1me()
+    if (userProfile.needsToFillCulturalSurvey) {
+      navigate('CulturalSurvey')
+    } else {
+      navigate('Home', NavigateToHomeWithoutModalOptions)
+    }
+  }
+  function handleSigninFailure(response: SignInResponseFailure) {
+    const failureCode = response.content?.code
+    if (failureCode === 'EMAIL_NOT_VALIDATED') {
+      navigate('SignupConfirmationEmailSent', { email })
+    } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
+      setIsLoading(false)
+      setErrorMessage(_(t`Erreur réseau. Tu peux réessayer.`))
+    } else {
+      setIsLoading(false)
+      setErrorMessage(_(t`E-mail ou mot de passe incorrect.`))
+    }
+  }
 
   async function onSubmit() {
     Keyboard.dismiss()
-    setShouldShowErrorMessage(false)
-    const { data } = await signInQuery()
-    if (!data?.isSuccess) {
-      setShouldShowErrorMessage(true)
-    }
+    handleSignin()
   }
 
   function onClose() {
@@ -87,11 +95,7 @@ export const Login: FunctionComponent = function () {
         rightIcon={Close}
         onRightIconPress={onClose}
       />
-      <InputError
-        visible={shouldShowErrorMessage}
-        messageId="E-mail ou mot de passe incorrect"
-        numberOfSpacesTop={5}
-      />
+      {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
       <Spacer.Column numberOfSpaces={7} />
       <StyledInput>
         <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
@@ -99,7 +103,7 @@ export const Login: FunctionComponent = function () {
         <TextInput
           autoCapitalize="none"
           autoFocus={true}
-          isError={shouldShowErrorMessage}
+          isError={!!errorMessage}
           keyboardType="email-address"
           onChangeText={setEmail}
           placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
@@ -115,7 +119,7 @@ export const Login: FunctionComponent = function () {
           value={password}
           onChangeText={setPassword}
           placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
-          isError={shouldShowErrorMessage}
+          isError={!!errorMessage}
           textContentType="password"
         />
       </StyledInput>
@@ -129,7 +133,7 @@ export const Login: FunctionComponent = function () {
       <ButtonPrimary
         title={_(t`Se connecter`)}
         onPress={onSubmit}
-        disabled={shouldDisableLoginButton || isFetching}
+        disabled={shouldDisableLoginButton}
       />
     </BottomContentPage>
   )

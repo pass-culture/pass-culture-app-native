@@ -146,6 +146,10 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   return await response.json()
 }
 
+export function isApiError(error: ApiError | unknown): error is ApiError {
+  return (error as ApiError).name === 'ApiError'
+}
+
 export class ApiError extends Error {
   name = 'ApiError'
 
