@@ -63,7 +63,7 @@ msgid "Active la géolocalisation pour découvrir toutes les offres existantes a
 msgstr "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
 
 #: src/features/firstLogin/achievements/pages/FirstTutorial/components/ThirdCard.tsx:32
-#: src/features/search/components/GeolocationActivationModal.tsx:22
+#: src/features/search/components/GeolocationActivationModal.tsx:25
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
@@ -455,7 +455,7 @@ msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
-#: src/features/search/pages/LocationFilter.tsx:78
+#: src/features/search/pages/LocationFilter.tsx:79
 #: src/features/search/sections/titles.ts:5
 msgid "Localisation"
 msgstr "Localisation"
@@ -546,7 +546,7 @@ msgstr "Où"
 msgid "Où ?"
 msgstr "Où ?"
 
-#: src/features/search/components/GeolocationActivationModal.tsx:9
+#: src/features/search/components/GeolocationActivationModal.tsx:10
 msgid "Paramètres de localisation"
 msgstr "Paramètres de localisation"
 
@@ -650,7 +650,7 @@ msgstr "Retourner à l'accueil"
 msgid "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 
-#: src/features/search/components/GeolocationActivationModal.tsx:14
+#: src/features/search/components/GeolocationActivationModal.tsx:15
 msgid "Retrouve toutes les offres autour de chez toi en activant les données de localisation"
 msgstr "Retrouve toutes les offres autour de chez toi en activant les données de localisation"
 
@@ -692,7 +692,7 @@ msgstr "Se connecter"
 msgid "Seules les sorties et offres physiques seront affichées"
 msgstr "Seules les sorties et offres physiques seront affichées"
 
-#: src/features/search/pages/LocationFilter.tsx:69
+#: src/features/search/pages/LocationFilter.tsx:70
 msgid "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 
@@ -784,9 +784,13 @@ msgstr "Tu es éligible !"
 msgid "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 
-#: src/features/search/components/GeolocationActivationModal.tsx:19
+#: src/features/search/components/GeolocationActivationModal.tsx:21
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation"
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation"
+
+#: src/features/search/components/GeolocationActivationModal.tsx:22
+msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone"
+msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx:23
 msgid "Tu peux encore dépenser :"

@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -39,7 +40,13 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       <Spacer.Column numberOfSpaces={4} />
 
       <InformationText>
-        {_(t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation`)}
+        {Platform.OS === 'android'
+          ? _(
+              t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation`
+            )
+          : _(
+              t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone`
+            )}
       </InformationText>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
