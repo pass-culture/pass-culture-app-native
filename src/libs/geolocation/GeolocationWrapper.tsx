@@ -43,11 +43,6 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   useEffect(() => {
     if (permissionState === GeolocPermissionState.GRANTED) {
       getPosition(setPosition)
-    } else if (
-      permissionState === GeolocPermissionState.NEVER_ASK_AGAIN ||
-      permissionState === GeolocPermissionState.DENIED
-    ) {
-      setPosition(null)
     }
   }, [permissionState])
 
