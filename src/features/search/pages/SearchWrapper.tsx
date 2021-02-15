@@ -26,6 +26,8 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
     if (position !== null) {
       const { latitude, longitude } = position
       stagedDispatch({ type: 'LOCATION_AROUND_ME', payload: { latitude, longitude } })
+    } else {
+      stagedDispatch({ type: 'LOCATION_EVERYWHERE' })
     }
   }, [!position])
 
