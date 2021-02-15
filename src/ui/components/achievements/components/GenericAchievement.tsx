@@ -77,7 +77,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
               )}
             </Swiper>
           </SwiperContainer>
-          <Spacer.Column numberOfSpaces={getSpacing(2)} />
+          <Spacer.Column numberOfSpaces={getSpacing(0.5)} />
         </ScreenUsableArea>
         <Spacer.BottomScreen />
       </EntireScreen>
@@ -107,7 +107,6 @@ const ScreenUsableArea = styled.View({
   alignItems: 'center',
   flexGrow: 1,
   width: '100%',
-  paddingTop: getSpacing(5),
   maxWidth: getSpacing(125),
   maxHeight: getSpacing(225),
 })

@@ -54,7 +54,6 @@ Array [
             "flexGrow": 1,
             "maxHeight": 900,
             "maxWidth": 500,
-            "paddingTop": 20,
             "width": "100%",
           },
         ]
@@ -150,11 +149,11 @@ Array [
         </View>
       </View>
       <View
-        numberOfSpaces={8}
+        numberOfSpaces={2}
         style={
           Array [
             Object {
-              "height": 32,
+              "height": 8,
             },
           ]
         }
