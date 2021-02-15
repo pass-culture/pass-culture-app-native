@@ -11,7 +11,7 @@ import { ThirdCard } from './ThirdCard'
 
 describe('ThirdCard', () => {
   it('should render third card', () => {
-    const firstTutorial = render(<ThirdCard index={0} activeIndex={0} />)
+    const firstTutorial = render(<ThirdCard index={0} activeIndex={0} lastIndex={0} />)
     expect(firstTutorial).toMatchSnapshot()
   })
   it('should not trigger analytics on refusal', async () => {
@@ -20,7 +20,12 @@ describe('ThirdCard', () => {
     const { getByText } = render(
       <GeolocationWrapper>
         <GenericAchievement name="TestAchievement">
-          <ThirdCard swiperRef={(ref as unknown) as RefObject<Swiper>} index={0} activeIndex={0} />
+          <ThirdCard
+            swiperRef={(ref as unknown) as RefObject<Swiper>}
+            index={0}
+            activeIndex={0}
+            lastIndex={0}
+          />
         </GenericAchievement>
       </GeolocationWrapper>
     )
@@ -36,7 +41,12 @@ describe('ThirdCard', () => {
     const { getByText } = render(
       <GeolocationWrapper>
         <GenericAchievement name="TestAchievement">
-          <ThirdCard swiperRef={(ref as unknown) as RefObject<Swiper>} index={0} activeIndex={0} />
+          <ThirdCard
+            swiperRef={(ref as unknown) as RefObject<Swiper>}
+            index={0}
+            activeIndex={0}
+            lastIndex={0}
+          />
         </GenericAchievement>
       </GeolocationWrapper>
     )
@@ -51,7 +61,12 @@ describe('ThirdCard', () => {
     const ref = { current: { goToNext: jest.fn() } }
     const { getByText } = render(
       <GeolocationWrapper>
-        <ThirdCard swiperRef={(ref as unknown) as RefObject<Swiper>} index={0} activeIndex={0} />
+        <ThirdCard
+          lastIndex={0}
+          swiperRef={(ref as unknown) as RefObject<Swiper>}
+          index={0}
+          activeIndex={0}
+        />
       </GeolocationWrapper>
     )
     fireEvent.press(getByText('Activer la géolocalisation'))
