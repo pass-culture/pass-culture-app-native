@@ -1,7 +1,9 @@
+import { BatchUser } from '@bam.tech/react-native-batch'
 import React, { useContext, useEffect, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
+import { decodeAccessToken } from 'api/helpers'
 import { firebaseAnalytics } from 'libs/analytics'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
@@ -9,6 +11,13 @@ import { storage } from 'libs/storage'
 export interface IAuthContext {
   isLoggedIn: boolean
   setIsLoggedIn: (isLoggedIn: boolean) => void
+}
+
+const connectUserToBatchWithAccessTokenId = (accessToken: string) => {
+  const tokenContent = decodeAccessToken(accessToken)
+  if (tokenContent) {
+    BatchUser.editor().setIdentifier(tokenContent.user_claims.user_id.toString()).save()
+  }
 }
 
 export const AuthContext = React.createContext<IAuthContext>({
@@ -26,6 +35,10 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
   useEffect(() => {
     storage.readString('access_token').then((accessToken) => {
       setIsLoggedIn(!!accessToken)
+
+      if (accessToken) {
+        connectUserToBatchWithAccessTokenId(accessToken)
+      }
     })
   }, [])
 
