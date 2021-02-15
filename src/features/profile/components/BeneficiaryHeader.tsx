@@ -6,13 +6,14 @@ import { Expense } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { ExpenseV2 } from 'features/profile/components/types'
 import { _ } from 'libs/i18n'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
 
 type BeneficiaryHeaderProps = {
   firstName?: string
   lastName?: string
-  remainingCredit: number
+  walletBalance: number
   depositExpirationDate?: string
 } & (
   | {
@@ -42,7 +43,9 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
         <Typo.Title4 color={ColorsEnum.WHITE}>{`${props.firstName} ${props.lastName}`}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4.5} />
         {/* eslint-disable-next-line react-native/no-raw-text */}
-        <Typo.Hero color={ColorsEnum.WHITE}>{`${props.remainingCredit} €`}</Typo.Hero>
+        <Typo.Hero color={ColorsEnum.WHITE}>{`${convertCentsToEuros(
+          props.walletBalance
+        )} €`}</Typo.Hero>
         <Spacer.Column numberOfSpaces={2} />
         {props.depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
@@ -51,7 +54,11 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
         )}
         <Spacer.Column numberOfSpaces={6} />
       </UserNameAndCredit>
-      <Ceilings depositVersion={props.depositVersion} expenses={expenses} />
+      <Ceilings
+        depositVersion={props.depositVersion}
+        expenses={expenses}
+        walletBalance={props.walletBalance}
+      />
     </Container>
   )
 }

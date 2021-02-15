@@ -7,9 +7,9 @@ import { ColorsEnum } from 'ui/theme'
 
 export const CreditCeilingMapV1 = {
   [ExpenseDomain.All]: {
-    label: 'en offres numériques (streaming...)',
-    color: ColorsEnum.PRIMARY,
-    icon: OfferDigital,
+    label: 'en sorties (concerts...)',
+    color: ColorsEnum.ACCENT,
+    icon: OfferOutings,
   },
   [ExpenseDomain.Physical]: {
     label: 'en offres physiques (livres...)',
@@ -17,22 +17,22 @@ export const CreditCeilingMapV1 = {
     icon: OfferPhysical,
   },
   [ExpenseDomain.Digital]: {
-    label: 'en sorties (concerts...)',
-    color: ColorsEnum.ACCENT,
-    icon: OfferOutings,
+    label: 'en offres numériques (streaming...)',
+    color: ColorsEnum.PRIMARY,
+    icon: OfferDigital,
   },
 }
 
 export const CreditCeilingMapV2 = {
   [ExpenseDomain.All]: {
-    label: 'en offres numériques (streaming...)',
-    color: ColorsEnum.SECONDARY,
-    icon: OfferDigital,
-  },
-  [ExpenseDomain.Digital]: {
     label: 'en sorties & biens physiques (concerts, livres...)',
     color: ColorsEnum.PRIMARY,
     icon: OfferOutingsPhysical,
+  },
+  [ExpenseDomain.Digital]: {
+    label: 'en offres numériques (streaming...)',
+    color: ColorsEnum.SECONDARY,
+    icon: OfferDigital,
   },
 }
 
@@ -50,10 +50,15 @@ export type ExpenseV2 = Omit<Expense, 'domain'> & {
   domain: ExpenseDomain.All | ExpenseDomain.Digital
 }
 
-export const ExpenseDomainOrder = {
-  [ExpenseDomain.All]: 1,
+export const ExpenseDomainOrderV1 = {
+  [ExpenseDomain.Digital]: 1,
   [ExpenseDomain.Physical]: 2,
-  [ExpenseDomain.Digital]: 3,
+  [ExpenseDomain.All]: 3,
+}
+
+export const ExpenseDomainOrderV2 = {
+  [ExpenseDomain.Digital]: 1,
+  [ExpenseDomain.All]: 2,
 }
 
 export type ExpensesAndDepositVersion =

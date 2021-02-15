@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Expense, UserProfileResponse } from 'api/gen'
 import { ExpensesAndDepositVersion, ExpenseV2 } from 'features/profile/components/types'
-import { computeRemainingCredit } from 'features/profile/utils'
+import { computeWalletBalance } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 
 import { BeneficiaryHeader } from './BeneficiaryHeader'
@@ -30,7 +30,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       <BeneficiaryHeader
         firstName={user.firstName}
         lastName={user.lastName}
-        remainingCredit={computeRemainingCredit(user.expenses)}
+        walletBalance={computeWalletBalance(user.expenses)}
         depositExpirationDate={depositExpirationDate}
         {...getBeneficiaryHeaderProps(depositVersion, user.expenses)}
       />
