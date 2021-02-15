@@ -56,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 \\"justifyContent\\": \\"center\\","
 `;
 
-exports[`<Login/> should show error message and error inputs AND not redirect to home page WHEN signin has failed 1`] = `
+exports[`<Login/> should show error message and error inputs WHEN signin has failed because of network failure 1`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -109,7 +109,113 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
 +               ]
 +             }
 +           >
-+             E-mail ou mot de passe incorrect
++             Erreur réseau. Tu peux réessayer.
++           </Text>
++         </View>
++         <View
+            numberOfSpaces={7}
+            style={
+              Array [
+                Object {
+                  \\"height\\": 28,
+@@ -214,18 +260,18 @@
+                  },
+                ]
+              }
+            />
+            <View
+-             isError={false}
++             isError={true}
+              isFocus={false}
+              style={
+                Array [
+                  Object {
+                    \\"alignItems\\": \\"center\\",
+                    \\"backgroundColor\\": \\"#ffffff\\",
+-                   \\"borderColor\\": \\"#c7c7cc\\",
++                   \\"borderColor\\": \\"#b60025\\",
+                    \\"borderRadius\\": 22,
+                    \\"borderStyle\\": \\"solid\\",
+                    \\"borderWidth\\": 1,
+                    \\"flexDirection\\": \\"row\\",
+                    \\"height\\": 40,
+@@ -323,18 +369,18 @@
+                  },
+                ]
+              }
+            />
+            <View
+-             isError={false}
++             isError={true}
+              isFocus={false}
+              style={
+                Array [
+                  Object {
+                    \\"alignItems\\": \\"center\\",
+                    \\"backgroundColor\\": \\"#ffffff\\",
+-                   \\"borderColor\\": \\"#c7c7cc\\",
++                   \\"borderColor\\": \\"#b60025\\",
+                    \\"borderRadius\\": 22,
+                    \\"borderStyle\\": \\"solid\\",
+                    \\"borderWidth\\": 1,
+                    \\"flexDirection\\": \\"row\\",
+                    \\"height\\": 40,"
+`;
+
+exports[`<Login/> should show error message and error inputs WHEN signin has failed because of wrong credentials 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -167,10 +167,56 @@
+                rightIcon-SVG-Mock
+              </View>
+            </View>
+          </View>
+          <View
++           numberOfSpaces={5}
++           style={
++             Array [
++               Object {
++                 \\"height\\": 20,
++               },
++             ]
++           }
++           testID=\\"input-error-top-spacer\\"
++         />
++         <View
++           style={
++             Array [
++               Object {
++                 \\"alignItems\\": \\"center\\",
++                 \\"flexDirection\\": \\"row\\",
++                 \\"maxWidth\\": 500,
++               },
++             ]
++           }
++         >
++           <View
++             height={24}
++             testID=\\"rule-icon-warn\\"
++             width={24}
++           >
++             rule-icon-warn-SVG-Mock
++           </View>
++           <Text
++             color=\\"#b60025\\"
++             style={
++               Array [
++                 Object {
++                   \\"color\\": \\"#b60025\\",
++                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++                   \\"fontSize\\": 12,
++                   \\"lineHeight\\": 16,
++                   \\"paddingLeft\\": 4,
++                 },
++               ]
++             }
++           >
++             E-mail ou mot de passe incorrect.
 +           </Text>
 +         </View>
 +         <View
