@@ -23,7 +23,7 @@ export async function getAuthenticationHeaders(options?: RequestInit): Promise<H
   return {}
 }
 
-interface JWTToken {
+interface AccessToken {
   exp: number
   fresh: false
   iat: number
@@ -31,6 +31,9 @@ interface JWTToken {
   jti: string
   nbf: number
   type: string
+  user_claims: {
+    user_id: number
+  }
 }
 
 // HOT FIX waiting for a better strategy
@@ -44,6 +47,14 @@ const NotAuthenticatedCalls = [
   'native/v1/validate_email',
   'native/v1/offer',
 ]
+
+export const decodeAccessToken = (token: string) => {
+  try {
+    return jwtDecode<AccessToken>(token)
+  } catch {
+    return null
+  }
+}
 
 /**
  * For each http calls to the api, retrieves the access token and fetchs.
@@ -71,9 +82,11 @@ export const safeFetch = async (
   const token = authorizationHeader?.replace('Bearer ', '')
 
   try {
-    const tokenContent = jwtDecode(token) as JWTToken
+    // TODO: do not call jwtDecode when the token is undefined - modify jest setup so that jwtDecode is however called and returns a value
+    const tokenContent = jwtDecode<AccessToken>(token)
 
     if (tokenContent.exp * 1000 <= new Date().getTime()) {
+      // TODO: do not throw an error
       throw new Error('Token expired')
     }
   } catch (error) {
