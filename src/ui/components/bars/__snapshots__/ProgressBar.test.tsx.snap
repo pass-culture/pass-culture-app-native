@@ -48,6 +48,7 @@ exports[`ProgressBar should render properly 1`] = `
           "flexGrow": 1,
           "flexShrink": 1,
           "height": 20,
+          "marginLeft": 20,
           "overflow": "hidden",
           "position": "relative",
           "zIndex": 1,

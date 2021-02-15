@@ -2,7 +2,7 @@ import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 
 export interface ProgressBarProps {
   progress: number
@@ -43,6 +43,7 @@ const IconContainer = styled.View<{ backgroundColor: string }>(({ backgroundColo
 }))
 
 const ProgressBarContainer = styled.View({
+  marginLeft: getSpacing(5),
   flexDirection: 'row',
   overflow: 'hidden',
   flex: 1,
