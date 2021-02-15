@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Env</key>
+	<string>$(ENV)</string>
 	<key>BatchAPIKey</key>
 	<string>$(BATCH_API_KEY_IOS)</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -31,7 +33,7 @@
 			<string>$(URL_PREFIX)</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>https</string>
+				<string>$(URL_PREFIX)</string>
 			</array>
 		</dict>
 	</array>
@@ -39,28 +41,6 @@
 	<string>$(BUILD)</string>
 	<key>CodePushDeploymentKey</key>
 	<string>$(CODEPUSH_KEY_IOS)</string>
-	<key>Env</key>
-	<string>$(ENV)</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>citymapper</string>
-		<string>comgooglemaps</string>
-		<string>navigon</string>
-		<string>transit</string>
-		<string>waze</string>
-		<string>yandexnavi</string>
-		<string>uber</string>
-		<string>tomtomhome</string>
-		<string>com.sygic.aura</string>
-		<string>here-route</string>
-		<string>moovit</string>
-		<string>lyft</string>
-		<string>mapsme</string>
-		<string>cabify</string>
-		<string>baidumap</string>
-		<string>taxis99</string>
-		<string>iosamap</string>
-	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -86,6 +66,26 @@
 		<string>Montserrat-MediumItalic.ttf</string>
 		<string>Montserrat-Regular.ttf</string>
 		<string>Montserrat-SemiBold.ttf</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>citymapper</string>
+		<string>comgooglemaps</string>
+		<string>navigon</string>
+		<string>transit</string>
+		<string>waze</string>
+		<string>yandexnavi</string>
+		<string>uber</string>
+		<string>tomtomhome</string>
+		<string>com.sygic.aura</string>
+		<string>here-route</string>
+		<string>moovit</string>
+		<string>lyft</string>
+		<string>mapsme</string>
+		<string>cabify</string>
+		<string>baidumap</string>
+		<string>taxis99</string>
+		<string>iosamap</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
