@@ -26,6 +26,7 @@ export function FirstCard(props: AchievementCardKeyProps) {
       name={props.name}
       index={props.index}
       activeIndex={props.activeIndex}
+      lastIndex={props.lastIndex}
     />
   )
 }
