@@ -71,7 +71,11 @@ Once the emulator is up and running, go to your terminal in the project workspac
 ##### Development environment
 
 To run the app on a development environment in order to request a local API, you need to create a `.env.development` file,
-copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address. Then create a
+copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address.
+
+Make sure you also overload the `BATCH_API_KEY_ANDROID` and `BATCH_API_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
+
+Then create a
 `keystores/development.keystore.properties` under `/android` directory with this configuration (required in `build.gradle`):
 
 ```
