@@ -308,7 +308,11 @@ exports[`CheatCodes component should render correctly 1`] = `
     }
   />
   <Text>
+    Batch installation ID: 
     installationID
+  </Text>
+  <Text>
+    User ID: 
   </Text>
   <View
     style={

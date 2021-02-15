@@ -6,6 +6,7 @@ import { Text, Alert, Button } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
+import { decodeAccessToken } from 'api/helpers'
 import { CodePushButton } from 'features/cheatcodes/components/CodePushButton'
 import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
 import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
@@ -31,12 +32,28 @@ const oldAccesstoken =
 
 const someOfferDescription = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. https://www.google.com/search?q=pass+culture&oq=pass+culture&aqs=chrome.0.0i433j0l2j69i60l3j69i65l2.1136j0j7&sourceid=chrome&ie=UTF-8 Amet justo donec enim diam vulputate.`
 
+const getUserId = async () => {
+  const accessToken = await storage.readString('access_token')
+  if (!accessToken) {
+    return null
+  }
+  const tokenContent = decodeAccessToken(accessToken)
+  return tokenContent?.user_claims?.user_id ?? null
+}
+
 export const CheatCodes: FunctionComponent<Props> = function () {
   const [batchInstallationId, setBatchInstallationId] = useState('none')
   const [userEmail, setUserEmail] = useState('')
+  const [userId, setUserId] = useState<null | number>(null)
+
   useEffect(() => {
     getBatchInstallationID().then(setBatchInstallationId)
   }, [])
+
+  useEffect(() => {
+    getUserId().then(setUserId)
+  }, [])
+
   const ParsedDescription = highlightLinks(someOfferDescription)
 
   async function fetchMe() {
@@ -70,7 +87,8 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <Button title="/ME" onPress={fetchMe} />
       <Text>{userEmail}</Text>
       <Spacer.Flex />
-      <Text>{batchInstallationId}</Text>
+      <Text>Batch installation ID: {batchInstallationId}</Text>
+      <Text>User ID: {userId}</Text>
       <Spacer.Flex />
       <Typo.Body>{someOfferDescription}</Typo.Body>
       <Spacer.Flex />
