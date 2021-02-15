@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { Image, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -15,9 +15,10 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
-import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
+import Package from '../../../../package.json'
 import { ProfileHeader } from '../components/ProfileHeader'
 import { ProfileSection } from '../components/ProfileSection'
 import { SectionRow } from '../components/SectionRow'
@@ -95,6 +96,13 @@ export const Profile: React.FC = () => {
         <Section title={_(t`Suivre Pass Culture`)}>
           <Typo.Body>{_(t`Temporary content`)}</Typo.Body>
         </Section>
+        <Section>
+          <Spacer.Column numberOfSpaces={4} />
+          <Version>{_(t`Version ${Package.version}`)}</Version>
+          <Spacer.Column numberOfSpaces={4} />
+          <Image source={require('../../../../assets/images/LogoMinistereCulture.png')} />
+          <Spacer.Column numberOfSpaces={4} />
+        </Section>
       </Container>
       <BottomSpacing />
     </ScrollView>
@@ -126,4 +134,11 @@ const Row = styled(SectionRow).attrs({
 
 const BottomSpacing = styled.View({
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(2),
+})
+
+const Version = styled.Text({
+  fontFamily: 'Montserrat-Medium',
+  fontSize: 12,
+  lineHeight: 16,
+  color: ColorsEnum.GREY_DARK,
 })

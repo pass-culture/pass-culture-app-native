@@ -5,14 +5,14 @@ import styled from 'styled-components/native'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 interface ProfileSectionProps {
-  title: string
+  title?: string
   style?: StyleProp<ViewStyle>
 }
 
 export function ProfileSection(props: PropsWithChildren<ProfileSectionProps>) {
   return (
     <Container style={props.style}>
-      <Title>{props.title}</Title>
+      {props.title && <Title>{props.title}</Title>}
       <Separator />
       {props.children}
     </Container>
