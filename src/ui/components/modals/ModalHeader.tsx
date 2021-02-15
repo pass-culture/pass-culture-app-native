@@ -3,11 +3,11 @@ import { TextStyle, ViewStyle, StyleProp } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { Typo } from 'ui/theme'
+import { ColorsEnum, Typo } from 'ui/theme'
 
 import { isStyleObjectTypeGuard } from '../typeguards'
 
-interface Props {
+export interface ModalHeaderProps {
   title: string
   leftIcon?: FunctionComponent<IconInterface>
   onLeftIconPress?: () => void
@@ -16,7 +16,7 @@ interface Props {
   customStyles?: ModalHeaderStyleClasses
 }
 
-export const ModalHeader: FunctionComponent<Props> = ({
+export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   customStyles,
   title,
   leftIcon: LeftIcon,
@@ -26,13 +26,15 @@ export const ModalHeader: FunctionComponent<Props> = ({
 }) => (
   <DynamicContainer customStyle={customStyles?.container}>
     <LeftHeaderAction onPress={onLeftIconPress} testID="leftIconButton">
-      {LeftIcon && <LeftIcon size={32} testID="leftIcon" />}
+      {LeftIcon && <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />}
     </LeftHeaderAction>
-    <Title customStyle={customStyles?.title}>
-      <Typo.Title4 numberOfLines={2}>{title}</Typo.Title4>
+    <Title customStyle={customStyles?.title} numberOfLines={2}>
+      {title}
     </Title>
     <RightHeaderAction onPress={onRightIconPress} testID="rightIconButton">
-      {RightIcon && <RightIcon size={32} testID="rightIcon" />}
+      {RightIcon && (
+        <RightIcon size={32} testID="rightIcon" color={customStyles?.rightIcon?.color} />
+      )}
     </RightHeaderAction>
   </DynamicContainer>
 )
@@ -60,7 +62,7 @@ const LeftHeaderAction = styled.TouchableOpacity({
   alignItems: 'flex-start',
 })
 
-const Title = styled.Text<{
+const Title = styled(Typo.Title4)<{
   customStyle: StyleProp<ViewStyle>
 }>(({ customStyle }) => ({
   flex: 0.6,
@@ -70,7 +72,11 @@ const Title = styled.Text<{
 
 export interface ModalHeaderStyleClasses {
   container?: ViewStyle
-  leftSide?: ViewStyle
+  leftIcon?: {
+    color?: ColorsEnum
+  }
   title?: TextStyle
-  rightSide?: ViewStyle
+  rightIcon?: {
+    color?: ColorsEnum
+  }
 }

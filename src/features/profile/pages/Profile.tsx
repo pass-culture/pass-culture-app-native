@@ -21,6 +21,7 @@ import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 import Package from '../../../../package.json'
 import { ProfileHeader } from '../components/ProfileHeader'
 import { ProfileSection } from '../components/ProfileSection'
+import { ProfileContainer } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
 export const Profile: React.FC = () => {
@@ -30,7 +31,7 @@ export const Profile: React.FC = () => {
   return (
     <ScrollView>
       <ProfileHeader user={user} />
-      <Container>
+      <ProfileContainer>
         <Section title={_(t`Paramètres du compte`)}>
           <Row
             title={_(t`Informations personnelles`)}
@@ -51,7 +52,7 @@ export const Profile: React.FC = () => {
         </Section>
         <Section title={_(t`Aides`)}>
           <Row
-            title={_(t`Comment ça marche`)}
+            title={_(t`Comment ça marche ?`)}
             type="navigable"
             onPress={() => navigate('TemporaryProfilePage')}
             icon={LifeBuoy}
@@ -103,17 +104,11 @@ export const Profile: React.FC = () => {
           <Image source={require('../../../../assets/images/LogoMinistereCulture.png')} />
           <Spacer.Column numberOfSpaces={4} />
         </Section>
-      </Container>
+      </ProfileContainer>
       <BottomSpacing />
     </ScrollView>
   )
 }
-
-const Container = styled.View({
-  flex: 1,
-  flexDirection: 'column',
-  paddingHorizontal: getSpacing(5),
-})
 
 const styles = StyleSheet.create({
   section: {

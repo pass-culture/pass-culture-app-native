@@ -25,6 +25,7 @@ import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { EighteenBirthday } from 'features/profile/achievements/pages/EighteenBirthday'
+import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { Profile } from 'features/profile/pages/Profile'
 import { TemporaryProfilePage } from 'features/profile/pages/TemporaryProfilePage'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
@@ -48,12 +49,14 @@ const routes: Array<Route> = [
     component: ForgottenPassword,
     hoc: withAsyncErrorBoundary,
   },
+  { name: 'FirstTutorial', component: FirstTutorial, options: TransitionPresets.SlideFromRightIOS },
   { name: 'IdCheck', component: IdCheck },
   { name: 'SearchCategories', component: SearchCategories },
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary },
   { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary },
+  { name: 'NotificationSettings', component: NotificationSettings },
   { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary },
   { name: 'OfferDescription', component: OfferDescription, hoc: withAsyncErrorBoundary },
   { name: 'Profile', component: Profile },
@@ -73,7 +76,6 @@ const routes: Array<Route> = [
   { name: 'TabNavigator', component: TabNavigator },
   { name: 'TemporaryProfilePage', component: TemporaryProfilePage },
   { name: 'VerifyEligibility', component: VerifyEligibility },
-  { name: 'FirstTutorial', component: FirstTutorial, options: TransitionPresets.SlideFromRightIOS },
 ]
 
 export default routes

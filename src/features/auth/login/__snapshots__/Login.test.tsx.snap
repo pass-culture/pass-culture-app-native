@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -272,10 +272,11 @@
+@@ -263,10 +263,11 @@
                     },
                   ]
                 }
@@ -17,7 +17,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
           </View>
           <View
             numberOfSpaces={6}
-@@ -385,10 +386,11 @@
+@@ -376,10 +377,11 @@
                     },
                   ]
                 }
@@ -29,7 +29,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 accessible={true}
                 focusable={true}
                 onClick={[Function onClick]}
-@@ -482,22 +484,22 @@
+@@ -473,22 +475,22 @@
               ]
             }
           />
@@ -61,7 +61,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
 - First value
 + Second value
 
-@@ -167,10 +167,56 @@
+@@ -158,10 +158,56 @@
                 rightIcon-SVG-Mock
               </View>
             </View>
@@ -118,7 +118,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
               Array [
                 Object {
                   \\"height\\": 28,
-@@ -214,18 +260,18 @@
+@@ -205,18 +251,18 @@
                   },
                 ]
               }
@@ -139,7 +139,7 @@ exports[`<Login/> should show error message and error inputs AND not redirect to
                     \\"borderWidth\\": 1,
                     \\"flexDirection\\": \\"row\\",
                     \\"height\\": 40,
-@@ -323,18 +369,18 @@
+@@ -314,18 +360,18 @@
                   },
                 ]
               }

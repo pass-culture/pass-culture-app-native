@@ -23,11 +23,14 @@ export type RootStackParamList = {
   AppComponents: undefined
   CheatCodes: undefined
   CulturalSurvey: undefined
+  EighteenBirthday: undefined
   EligibilityConfirmed: undefined
+  FirstTutorial: undefined
   ForgottenPassword: undefined
   IdCheck: { email: string; licenceToken: string }
   Login: BackNavigationParams<'Home'> | undefined
   Navigation: undefined
+  NotificationSettings: undefined
   Offer: { id: number }
   OfferDescription: { id: number }
   ReinitializePassword: { token: string; expiration_timestamp: number }
@@ -46,8 +49,6 @@ export type RootStackParamList = {
   TabNavigator: undefined
   TemporaryProfilePage: undefined
   VerifyEligibility: { email: string; licenceToken: string }
-  FirstTutorial: undefined
-  EighteenBirthday: undefined
 }
 
 export type AllNavParamList = RootStackParamList & TabParamList
