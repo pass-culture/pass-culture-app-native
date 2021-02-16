@@ -53,11 +53,15 @@ export const Login: FunctionComponent = function () {
     }
   }
   async function handleSigninSuccess() {
-    const userProfile = await api.getnativev1me()
-    if (userProfile.needsToFillCulturalSurvey) {
-      navigate('CulturalSurvey')
-    } else {
-      navigate('Home', NavigateToHomeWithoutModalOptions)
+    try {
+      const userProfile = await api.getnativev1me()
+      if (userProfile.needsToFillCulturalSurvey) {
+        navigate('CulturalSurvey')
+      } else {
+        navigate('Home', NavigateToHomeWithoutModalOptions)
+      }
+    } catch {
+      setErrorMessage(_(t`Il y a eu un problème. Tu peux réessayer plus tard.`))
     }
   }
   function handleSigninFailure(response: SignInResponseFailure) {
@@ -66,7 +70,7 @@ export const Login: FunctionComponent = function () {
       navigate('SignupConfirmationEmailSent', { email })
     } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
       setIsLoading(false)
-      setErrorMessage(_(t`Erreur réseau. Tu peux réessayer.`))
+      setErrorMessage(_(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie.`))
     } else {
       setIsLoading(false)
       setErrorMessage(_(t`E-mail ou mot de passe incorrect.`))

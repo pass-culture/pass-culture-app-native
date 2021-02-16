@@ -21,6 +21,8 @@ const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
 describe('<Login/>', () => {
   beforeEach(() => {
+    simulateSignin200()
+    simulateUserProfileNeedNotFillCulturalSurvey()
     jest.clearAllMocks()
     mockUsePreviousRoute.mockReturnValue(null)
     useRoute.mockImplementation(() => ({
@@ -29,8 +31,6 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to home page WHEN signin is successful', async () => {
-    simulateSignin200()
-    simulateUserProfileNeedNotFillCulturalSurvey()
     const renderAPI = renderLogin()
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
@@ -44,7 +44,6 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to Cultural Survey WHEN signin is successful and user needs to fill cultural survey', async () => {
-    simulateSignin200()
     simulateUserProfileNeedsToFillCulturalSurvey()
     const renderAPI = renderLogin()
 
@@ -103,7 +102,9 @@ describe('<Login/>', () => {
     })
 
     await waitForExpect(() => {
-      expect(renderAPI.queryByText('Erreur réseau. Tu peux réessayer.')).toBeTruthy()
+      expect(
+        renderAPI.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie.')
+      ).toBeTruthy()
     })
     const errorSnapshot = renderAPI.toJSON()
     expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
