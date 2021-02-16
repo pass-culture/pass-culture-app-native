@@ -12,6 +12,7 @@ export function FirstTutorial() {
   function skip() {
     storage.saveObject('has_seen_tutorials', true)
   }
+
   return (
     <GenericAchievement name="FirstTutorial" skip={skip}>
       <FirstCard />

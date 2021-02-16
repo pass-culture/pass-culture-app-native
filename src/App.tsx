@@ -1,4 +1,4 @@
-import { I18nProvider } from '@lingui/react' //@translations
+import { I18nProvider } from '@lingui/react'
 import React, { FunctionComponent } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import CodePush from 'react-native-code-push' // @codepush
@@ -12,6 +12,7 @@ import './why-did-you-render'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
+import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { env } from 'libs/environment'
@@ -75,6 +76,7 @@ const AppComponent: FunctionComponent = function () {
                 <I18nProvider language={i18n.language} i18n={i18n}>
                   <SnackBarProvider>
                     <RootNavigator />
+                    <PrivacyPolicy />
                   </SnackBarProvider>
                 </I18nProvider>
               </SearchWrapper>
