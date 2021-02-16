@@ -33,7 +33,7 @@
 			<string>$(URL_PREFIX)</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>$(URL_PREFIX)</string>
+				<string>https</string>
 			</array>
 		</dict>
 	</array>
