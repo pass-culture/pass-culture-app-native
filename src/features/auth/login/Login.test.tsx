@@ -4,6 +4,7 @@ import { DefaultRequestBodyType } from 'msw/lib/types/utils/handlers/requestHand
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
 import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
@@ -39,6 +40,7 @@ describe('<Login/>', () => {
     })
 
     await waitForExpect(() => {
+      expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
       expect(navigate).toHaveBeenNthCalledWith(1, 'Home', NavigateToHomeWithoutModalOptions)
     })
   })
