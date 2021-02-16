@@ -13,10 +13,14 @@ const formatEuro = (price: number) => `${price} €`
 export const Price: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Price)
   const { searchState, dispatch } = useStagedSearch()
-  const values = searchState.priceRange ?? [0, MAX_PRICE]
+  const priceRange = searchState.priceRange ?? [0, MAX_PRICE]
+  const values = searchState.offerIsFree ? [0, 0] : priceRange
   const count = +(values[0] > 0 || values[1] < MAX_PRICE)
 
   const onValuesChangeFinish = (newValues: number[]) => {
+    const priceRangeIsFree = newValues[0] === 0 && newValues[1] === 0
+    if (priceRangeIsFree && !searchState.offerIsFree) dispatch({ type: 'TOGGLE_OFFER_FREE' })
+    if (!priceRangeIsFree && searchState.offerIsFree) dispatch({ type: 'TOGGLE_OFFER_FREE' })
     dispatch({ type: 'PRICE_RANGE', payload: newValues as Range<number> })
     logUseFilter()
   }
