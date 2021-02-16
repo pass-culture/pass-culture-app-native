@@ -366,8 +366,8 @@ msgid "Handicap auditif"
 msgstr "Handicap auditif"
 
 #: src/features/offer/atoms/AccessibilityAtom.service.ts:19
-msgid "Handicap mental"
-msgstr "Handicap mental"
+msgid "Handicap psychique ou cognitif"
+msgstr "Handicap psychique ou cognitif"
 
 #: src/features/offer/atoms/AccessibilityAtom.service.ts:21
 msgid "Handicap moteur"

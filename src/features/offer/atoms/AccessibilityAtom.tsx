@@ -9,18 +9,21 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
 
 const HandicapText: React.FC<{ wording: string; width: number }> = ({ wording, width }) => {
-  // There's always two words in the handicap wordings, but we still make sure we only show 2 words
-  const [firstWord, secondWord, ..._otherWords] = wording.split(' ')
+  const [firstWord, ...otherWords] = wording.split(' ')
 
   return (
     <TextContainer testID={wording} width={width}>
       <Text numberOfLines={1} adjustsFontSizeToFit={true}>
         {firstWord}
       </Text>
-      <Text> </Text>
-      <Text numberOfLines={1} adjustsFontSizeToFit={true}>
-        {secondWord}
-      </Text>
+      {otherWords.map((word) => (
+        <React.Fragment key={word}>
+          <Text> </Text>
+          <Text numberOfLines={1} adjustsFontSizeToFit={true}>
+            {word}
+          </Text>
+        </React.Fragment>
+      ))}
     </TextContainer>
   )
 }
