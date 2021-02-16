@@ -77,7 +77,6 @@ describe('Home component', () => {
     unmount()
   })
   it('should not have code push button', async () => {
-    env.FEATURE_FLAG_CODE_PUSH_MANUAL = false
     const home = await homeRenderer(false)
 
     expect(() => home.getByText('Check update')).toThrowError()

@@ -6,11 +6,6 @@ import { env } from 'libs/environment'
 interface CodePushContext {
   status: null | CodePush.SyncStatus
 }
-const codePushOptionsManual = {
-  updateDialog: true,
-  installMode: CodePush.InstallMode.IMMEDIATE,
-  checkFrequency: CodePush.CheckFrequency.MANUAL,
-}
 
 const codePushOptionsAuto = {
   installMode: CodePush.InstallMode.IMMEDIATE,
@@ -21,11 +16,7 @@ const codePushOptionsAuto = {
 const shouldWrapWithCodePush = env.FEATURE_FLAG_CODE_PUSH
 
 const CodePushWrapper = (AppComponent: React.Component) =>
-  shouldWrapWithCodePush
-    ? CodePush(env.FEATURE_FLAG_CODE_PUSH_MANUAL ? codePushOptionsManual : codePushOptionsAuto)(
-        AppComponent
-      )
-    : AppComponent
+  shouldWrapWithCodePush ? CodePush(codePushOptionsAuto)(AppComponent) : AppComponent
 
 // @ts-ignore no-param
 const CodePushContext = createContext<CodePushContext>({})
