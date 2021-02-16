@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useRef } from 'react'
 import { StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -31,9 +31,16 @@ export const Profile: React.FC = () => {
   const { data: user } = useUserProfileInfo()
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
+  const scrollViewRef = useRef<ScrollView | null>(null)
+
+  if (!isLoggedIn) {
+    if (scrollViewRef && scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
+    }
+  }
 
   return (
-    <ScrollView>
+    <ScrollView ref={scrollViewRef}>
       <ProfileHeader user={user} />
       <Container>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
