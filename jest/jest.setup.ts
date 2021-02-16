@@ -58,6 +58,7 @@ jest.mock('libs/environment', () => ({
     ALGOLIA_APPLICATION_ID: 'algoliaAppId',
     ALGOLIA_INDEX_NAME: 'algoliaIndexName',
     ALGOLIA_SEARCH_API_KEY: 'algoliaApiKey',
+    UNIVERSAL_LINK: 'app.passculture-testing.beta.gouv.fr',
     URL_PREFIX: 'passculture',
     IOS_APP_ID: 'app.ios',
     ANDROID_APP_ID: 'app.android',
