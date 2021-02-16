@@ -32,6 +32,9 @@ jest.mock('features/firstLogin/achievements/pages/FirstTutorial/FirstTutorial', 
     return <Text>FirstTutorial screen</Text>
   },
 }))
+jest.mock('libs/codepush/CodePushProvider', () => ({
+  useCodePush: jest.fn(() => ({ status: 'UP_TO_DATE' })),
+}))
 
 describe('<RootNavigator />', () => {
   beforeEach(() => {
