@@ -18,6 +18,7 @@ import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfir
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
+import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { FirstTutorial } from 'features/firstLogin/achievements/pages/FirstTutorial/FirstTutorial'
@@ -40,6 +41,7 @@ const routes: Array<Route> = [
   { name: 'AfterSignupEmailValidationBuffer', component: AfterSignupEmailValidationBuffer },
   { name: 'AppComponents', component: AppComponents },
   { name: 'CheatCodes', component: CheatCodes },
+  { name: 'CheatMenu', component: CheatMenu },
   { name: 'CulturalSurvey', component: CulturalSurvey },
   { name: 'EligibilityConfirmed', component: EligibilityConfirmed },
   { name: 'EighteenBirthday', component: EighteenBirthday },
