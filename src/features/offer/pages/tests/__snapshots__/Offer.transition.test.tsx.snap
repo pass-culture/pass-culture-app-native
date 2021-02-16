@@ -64,12 +64,16 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -875,61 +841,10 @@
+@@ -871,63 +837,14 @@
+                            numberOfSpaces={4}
+                            style={
+                              Array [
+                                Object {
                                   \\"height\\": 16,
-                                },
-                              ]
-                            }
-                          />
+-                               },
+-                             ]
+-                           }
+-                         />
 -                         <View
 -                           style={
 -                             Array [
@@ -114,19 +118,17 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"lineHeight\\": 20,
 -                                   \\"marginTop\\": -8,
 -                                   \\"paddingBottom\\": 24,
--                                 },
--                               ]
--                             }
--                           >
--                             Du 3 janvier 2021 au 4 janvier 2021
--                           </Text>
+                                },
+                              ]
+                            }
+                          />
 -                         </View>
                           <View
                             style={
                               Array [
                                 Object {
                                   \\"backgroundColor\\": \\"#f5f5f5\\",
-@@ -941,1234 +856,26 @@
+@@ -939,1234 +856,26 @@
                           <View
                             style={
                               Array [
@@ -251,9 +253,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"fontFamily\\": \\"Montserrat-Regular\\",
 -                                   \\"fontSize\\": 15,
 -                                   \\"lineHeight\\": 20,
--                                 },
--                               ]
--                             }
+                                },
+                              ]
+                            }
 -                           >
 -                             900+ km
 -                           </Text>
@@ -266,7 +268,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 },
 -                               ]
 -                             }
--                           />
+                          />
 -                           <View
 -                             style={
 -                               Array [
@@ -346,7 +348,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               ]
 -                             }
 -                           />
--                         </View>
+                        </View>
 -                         <View
 -                           style={
 -                             Array [
@@ -586,10 +588,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"paddingTop\\": 0,
 -                                   \\"position\\": \\"absolute\\",
 -                                   \\"width\\": \\"100%\\",
-                                },
+-                                 },
 -                                 undefined,
-                              ]
-                            }
+-                               ]
+-                             }
 -                             testID=\\"accordionBodyContainer\\"
 -                           >
 -                             <View
@@ -653,7 +655,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                         },
 -                                       ]
 -                                     }
-                          />
+-                                   />
 -                                   <View
 -                                     style={
 -                                       Array [
@@ -670,7 +672,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       width={32}
 -                                     >
 -                                       invalidTestId-SVG-Mock
-                        </View>
+-                                     </View>
 -                                   </View>
 -                                 </View>
 -                                 <View
@@ -973,8 +975,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   </Text>
 -                                 </View>
 -                               </View>
-+                     </RCTScrollView>
-                      <View
+-                               <View
 -                                 numberOfSpaces={4}
 -                                 style={
 -                                   Array [
@@ -985,10 +986,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 }
 -                               />
 -                               <View
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
+-                                 style={
+-                                   Array [
+-                                     Object {
 -                                       \\"flexDirection\\": \\"column\\",
 -                                       \\"flexShrink\\": 1,
 -                                     },
@@ -1057,7 +1057,8 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     </View>
 -                                   </View>
 -                                 </View>
--                                 <View
++                     </RCTScrollView>
+                      <View
 -                                   numberOfSpaces={4}
 -                                   style={
 -                                     Array [
@@ -1086,9 +1087,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
 -                                     numberOfLines={1}
--                                     style={
--                                       Array [
--                                         Object {
++                       numberOfSpaces={10}
+                        style={
+                          Array [
+                            Object {
 -                                           \\"color\\": \\"#151515\\",
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
