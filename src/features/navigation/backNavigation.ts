@@ -26,8 +26,8 @@ export function useBackNavigation<CurrentScreenName extends ScreenNames>(
 
   return () => {
     if (hasBackNavigationParameter<CurrentScreenName>(currentRouteParams)) {
-      const { from, params } = currentRouteParams.backNavigation
-      navigate(from, params)
+      const { from, params } = currentRouteParams.backNavigation || {}
+      from && navigate(from, params)
     } else {
       if (typeof previousRoute?.name !== 'undefined' && canGoBack()) {
         goBack()

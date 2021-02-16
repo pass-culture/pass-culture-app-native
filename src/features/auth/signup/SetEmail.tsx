@@ -1,12 +1,12 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { useBackNavigation } from 'features/navigation/backNavigation'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -27,6 +27,7 @@ export const SetEmail: FunctionComponent = () => {
   const [hasError, setHasError] = useState(false)
   const [isNewsletterChecked, setIsNewsletterChecked] = useState(false)
 
+  const { params } = useRoute<UseRouteType<'SetEmail'>>()
   const navigation = useNavigation<UseNavigationType>()
 
   const shouldDisableValidateButton = isValueEmpty(email)
@@ -68,7 +69,7 @@ export const SetEmail: FunctionComponent = () => {
           title={_(t`Ton e-mail`)}
           leftIcon={ArrowPrevious}
           onLeftIconPress={complexGoBack}
-          rightIcon={Close}
+          rightIcon={params?.preventCancellation ? undefined : Close}
           onRightIconPress={showQuitSignupModal}
         />
         <ModalContent>

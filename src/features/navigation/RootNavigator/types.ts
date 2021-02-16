@@ -26,7 +26,7 @@ export type RootStackParamList = {
   EligibilityConfirmed: undefined
   ForgottenPassword: undefined
   IdCheck: { email: string; licenceToken: string }
-  Login: BackNavigationParams<'Home'> | undefined
+  Login: ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>) | undefined
   Navigation: undefined
   Offer: { id: number }
   OfferDescription: { id: number }
@@ -39,7 +39,7 @@ export type RootStackParamList = {
   SearchCategories: undefined
   SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
-  SetEmail: BackNavigationParams<'Home'> | undefined
+  SetEmail: ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>) | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
@@ -62,7 +62,7 @@ export type ScreenNames = keyof AllNavParamList
  * }
  */
 export type BackNavigationParams<ScreenName extends ScreenNames> = {
-  backNavigation: {
+  backNavigation?: {
     from: ScreenName
     params: AllNavParamList[ScreenName]
   }

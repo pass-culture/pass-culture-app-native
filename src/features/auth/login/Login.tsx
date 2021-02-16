@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
@@ -8,7 +8,7 @@ import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -39,6 +39,7 @@ export const Login: FunctionComponent = function () {
 
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
 
+  const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation<'Login'>()
 
@@ -96,7 +97,7 @@ export const Login: FunctionComponent = function () {
         title={_(t`Connecte-toi !`)}
         leftIcon={ArrowPrevious}
         onLeftIconPress={complexGoBack}
-        rightIcon={Close}
+        rightIcon={params?.preventCancellation ? undefined : Close}
         onRightIconPress={onClose}
       />
       {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
