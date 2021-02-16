@@ -3,8 +3,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
-import { decodeAccessToken } from 'api/helpers'
 import { firebaseAnalytics } from 'libs/analytics'
+import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
 

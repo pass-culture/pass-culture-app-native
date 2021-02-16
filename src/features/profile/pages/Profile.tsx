@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Image, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -17,6 +17,7 @@ import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
+import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
@@ -117,7 +118,7 @@ export const Profile: React.FC = () => {
           <Spacer.Column numberOfSpaces={4} />
           <Version>{_(t`Version ${Package.version}`)}</Version>
           <Spacer.Column numberOfSpaces={4} />
-          <Image source={require('../../../../assets/images/LogoMinistereCulture.png')} />
+          <LogoMinistere />
           <Spacer.Column numberOfSpaces={4} />
         </Section>
       </Container>
