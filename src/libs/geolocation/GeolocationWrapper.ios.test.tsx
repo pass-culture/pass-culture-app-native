@@ -4,7 +4,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
-import { GeolocationWrapper, useGeolocation } from 'libs/geolocation'
+import { GeolocationWrapper, GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 
 beforeEach(() => {
   jest.clearAllMocks()
@@ -23,7 +23,7 @@ describe('useGeolocation()', () => {
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
     await waitFor(() => {
-      expect(result.current.permissionState).toBeTruthy()
+      expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
       expect(onSubmit).toBeCalled()
       expect(onAcceptance).toBeCalled()
       expect(onRefusal).not.toBeCalled()
@@ -37,7 +37,21 @@ describe('useGeolocation()', () => {
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
     await waitFor(() => {
-      expect(result.current.permissionState).toBeFalsy()
+      expect(result.current.permissionState).toEqual(GeolocPermissionState.DENIED)
+      expect(onSubmit).toBeCalled()
+      expect(onRefusal).toBeCalled()
+      expect(onAcceptance).not.toBeCalled()
+    })
+  })
+
+  it('should call onRefusal when requestGeolocPermission returns access is blocked', async () => {
+    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('restricted')
+    const { result } = renderGeolocationHook()
+
+    result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+
+    await waitFor(() => {
+      expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
       expect(onSubmit).toBeCalled()
       expect(onRefusal).toBeCalled()
       expect(onAcceptance).not.toBeCalled()
