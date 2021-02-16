@@ -27,7 +27,7 @@ describe('<OfferDescription />', () => {
   it('should render', async () => {
     const { toJSON, queryByText } = await renderOfferDescription()
     expect(toJSON()).toMatchSnapshot()
-    expect(queryByText('En détail')).toBeTruthy()
+    expect(queryByText('En détails')).toBeTruthy()
     expect(queryByText('Durée')).toBeFalsy()
   })
   it('should render without description', async () => {
@@ -35,7 +35,7 @@ describe('<OfferDescription />', () => {
       extraData: { durationMinutes: 20 },
       description: '',
     })
-    expect(queryByText('En détail')).toBeFalsy()
+    expect(queryByText('En détails')).toBeFalsy()
     expect(queryByText('Durée')).toBeTruthy()
     expect(queryByText('Author: photo credit author')).toBeTruthy()
   })
