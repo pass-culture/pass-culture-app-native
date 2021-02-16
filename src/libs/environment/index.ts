@@ -17,7 +17,6 @@ export interface Environment {
   ENABLE_WHY_DID_YOU_RENDER: boolean
   ENV: string
   FEATURE_FLAG_CHEAT_CODES: boolean
-  FEATURE_FLAG_CODE_PUSH_MANUAL: boolean
   FEATURE_FLAG_CODE_PUSH: boolean
   ID_CHECK_URL: string
   IOS_APP_ID: string
