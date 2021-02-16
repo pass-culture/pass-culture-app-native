@@ -72,7 +72,7 @@ msgid "Adresse"
 msgstr "Adresse"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:81
-#: src/features/auth/login/Login.tsx:102
+#: src/features/auth/login/Login.tsx:107
 #: src/features/auth/signup/SetEmail.tsx:64
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
@@ -166,11 +166,6 @@ msgstr "Catégories"
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
-#. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:143
-msgid "Ce site est protégé par reCAPTCHA Google. La"
-msgstr "Ce site est protégé par reCAPTCHA Google. La"
-
 #: src/features/search/sections/OfferDate.tsx:38
 msgid "Ce week-end"
 msgstr "Ce week-end"
@@ -182,10 +177,6 @@ msgstr "Cette semaine"
 #: src/ui/components/LoadingPage.tsx:13
 msgid "Chargement en cours..."
 msgstr "Chargement en cours..."
-
-#: src/features/auth/signup/SetBirthday.tsx:145
-msgid "Charte des Données Personnelles"
-msgstr "Charte des Données Personnelles"
 
 #: src/features/cheatcodes/pages/CheatMenu.tsx:12
 msgid "Cheater Zone"
@@ -220,7 +211,6 @@ msgid "Composants"
 msgstr "Composants"
 
 #: src/features/auth/signup/AcceptCgu.tsx:107
-#: src/features/auth/signup/SetBirthday.tsx:148
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -241,7 +231,7 @@ msgstr "Confirmer le mot de passe"
 msgid "Connecte-toi"
 msgstr "Connecte-toi"
 
-#: src/features/auth/login/Login.tsx:98
+#: src/features/auth/login/Login.tsx:103
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
@@ -259,7 +249,7 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:69
-#: src/features/auth/signup/SetBirthday.tsx:154
+#: src/features/auth/signup/SetBirthday.tsx:141
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:44
 #: src/features/firstLogin/achievements/pages/FirstTutorial/components/FirstCard.tsx:11
@@ -331,7 +321,7 @@ msgstr "Découvrir"
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
-#: src/features/auth/login/Login.tsx:82
+#: src/features/auth/login/Login.tsx:87
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
@@ -353,9 +343,9 @@ msgstr "Erreur d'authentification"
 msgid "Erreur lors de la récupération du token d'accès"
 msgstr "Erreur lors de la récupération du token d'accès"
 
-#: src/features/auth/login/Login.tsx:78
-msgid "Erreur réseau. Tu peux réessayer."
-msgstr "Erreur réseau. Tu peux réessayer."
+#: src/features/auth/login/Login.tsx:83
+msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
+msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 
 #: src/features/favorites/pages/Favorites.tsx:8
 msgid "Favorites"
@@ -398,6 +388,10 @@ msgstr "Hors connexion : en attente du réseau."
 #: src/features/offer/pages/OfferDescription.tsx:15
 msgid "ISBN"
 msgstr "ISBN"
+
+#: src/features/auth/login/Login.tsx:71
+msgid "Il y a eu un problème. Tu peux réessayer plus tard."
+msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
 
 #: src/features/profile/pages/Profile.tsx:29
 msgid "Informations personnelles"
@@ -460,7 +454,7 @@ msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 msgid "Localisation"
 msgstr "Localisation"
 
-#: src/features/auth/signup/SetBirthday.tsx:166
+#: src/features/auth/signup/SetBirthday.tsx:153
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
@@ -476,7 +470,7 @@ msgstr "Modalités de retrait"
 msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
-#: src/features/auth/login/Login.tsx:108
+#: src/features/auth/login/Login.tsx:113
 #: src/features/auth/signup/SetPassword.tsx:38
 #: src/features/profile/pages/Profile.tsx:30
 msgid "Mot de passe"
@@ -486,7 +480,7 @@ msgstr "Mot de passe"
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
-#: src/features/auth/login/Login.tsx:115
+#: src/features/auth/login/Login.tsx:120
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
@@ -590,7 +584,7 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 msgid "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 msgstr "Pour que tu puisses bénéficier de l’aide financière de 300 € offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/auth/signup/SetBirthday.tsx:135
+#: src/features/auth/signup/SetBirthday.tsx:134
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -683,7 +677,7 @@ msgstr "Saisir une adresse..."
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
-#: src/features/auth/login/Login.tsx:119
+#: src/features/auth/login/Login.tsx:124
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:41
 msgid "Se connecter"
 msgstr "Se connecter"
@@ -731,7 +725,7 @@ msgstr "Temporary content"
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
-#: src/features/auth/signup/SetBirthday.tsx:131
+#: src/features/auth/signup/SetBirthday.tsx:130
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
@@ -745,7 +739,7 @@ msgstr "Ton e-mail"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
-#: src/features/auth/login/Login.tsx:110
+#: src/features/auth/login/Login.tsx:115
 #: src/features/auth/signup/SetPassword.tsx:34
 #: src/features/auth/signup/SetPassword.tsx:40
 msgid "Ton mot de passe"
@@ -907,17 +901,12 @@ msgid "durée"
 msgstr "durée"
 
 #: src/features/offer/pages/OfferDescription.tsx:12
-msgid "en détail"
-msgstr "en détail"
+msgid "en détails"
+msgstr "en détails"
 
 #: src/features/offer/atoms/LocationCaption.tsx:11
 msgid "en ligne"
 msgstr "en ligne"
-
-#. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:147
-msgid "et les"
-msgstr "et les"
 
 #: src/features/firstLogin/achievements/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "et si tu es..."
@@ -944,11 +933,6 @@ msgstr "metteur en scène"
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
-#. signup birthday page reCAPTCHA
-#: src/features/auth/signup/SetBirthday.tsx:151
-msgid "s'appliquent."
-msgstr "s'appliquent."
-
 #: src/features/offer/pages/OfferDescription.tsx:16
 #: src/features/offer/pages/OfferDescription.tsx:20
 msgid "sous genre"
@@ -956,7 +940,7 @@ msgstr "sous genre"
 
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:83
-#: src/features/auth/login/Login.tsx:104
+#: src/features/auth/login/Login.tsx:109
 #: src/features/auth/signup/SetEmail.tsx:66
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"

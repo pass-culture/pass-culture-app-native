@@ -22,7 +22,7 @@ type Item =
   | { key: 'photoCredit'; value: string }
 
 const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
-  description: _(t`en détail`),
+  description: _(t`en détails`),
   author: _(t`auteur`),
   durationMinutes: _(t`durée`),
   isbn: _(t`ISBN`),

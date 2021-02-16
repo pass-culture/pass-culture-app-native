@@ -388,7 +388,7 @@ Tous les détails du film sur AlloCiné: ",
                                 ]
                               }
                             >
-                              En détail
+                              En détails
                             </Text>
                             <View
                               numberOfSpaces={1}
