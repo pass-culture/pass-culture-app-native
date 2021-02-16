@@ -64,10 +64,10 @@ export function useLoginRoutine() {
    * @param {LoginRoutineMethod} method The process that triggered the login routine
    */
   const loginRoutine = async (response: SigninResponse, method: LoginRoutineMethod) => {
-    setIsLoggedIn(true)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     firebaseAnalytics.logLogin({ method })
+    setIsLoggedIn(true)
   }
 
   return loginRoutine
