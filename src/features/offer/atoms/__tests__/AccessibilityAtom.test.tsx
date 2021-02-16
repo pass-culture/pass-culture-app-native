@@ -15,7 +15,7 @@ describe('getIconAndWording', () => {
     ${HandicapCategory.MOTOR}  | ${HandicapMotor}  | ${'Handicap moteur'}
     ${HandicapCategory.VISUAL} | ${HandicapVisual} | ${'Handicap visuel'}
     ${HandicapCategory.AUDIO}  | ${HandicapAudio}  | ${'Handicap auditif'}
-    ${HandicapCategory.MENTAL} | ${HandicapMental} | ${'Handicap mental'}
+    ${HandicapCategory.MENTAL} | ${HandicapMental} | ${'Handicap psychique ou cognitif'}
   `(
     'should return $expectedIcon and $expectedWording when given $handicapCategory',
     ({
@@ -53,7 +53,7 @@ describe('AccessibilityAtom', () => {
     const { getByTestId } = render(
       <AccessibilityAtom sideSpace={10} handicap={HandicapCategory.MENTAL} isAccessible={false} />
     )
-    const textContainer = getByTestId('Handicap mental')
+    const textContainer = getByTestId('Handicap psychique ou cognitif')
     expect(textContainer.props.style[0].width).toEqual(10)
 
     const accessibilityFrame = getByTestId('accessibilityFrame')

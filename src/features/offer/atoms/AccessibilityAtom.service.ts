@@ -21,7 +21,7 @@ export const getIconAndWording = (
     case HandicapCategory.VISUAL:
       return { Icon: HandicapVisual, wording: _(t`Handicap visuel`) }
     case HandicapCategory.MENTAL:
-      return { Icon: HandicapMental, wording: _(t`Handicap mental`) }
+      return { Icon: HandicapMental, wording: _(t`Handicap psychique ou cognitif`) }
     case HandicapCategory.MOTOR:
       return { Icon: HandicapMotor, wording: _(t`Handicap moteur`) }
     case HandicapCategory.AUDIO:

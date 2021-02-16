@@ -1376,7 +1376,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       },
                                     ]
                                   }
-                                  testID="Handicap mental"
+                                  testID="Handicap psychique ou cognitif"
                                   width={16}
                                 >
                                   <Text
@@ -1426,7 +1426,71 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    mental
+                                    psychique
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    ou
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    cognitif
                                   </Text>
                                 </View>
                               </View>
@@ -4221,7 +4285,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       },
                                     ]
                                   }
-                                  testID="Handicap mental"
+                                  testID="Handicap psychique ou cognitif"
                                   width={16}
                                 >
                                   <Text
@@ -4271,7 +4335,71 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       ]
                                     }
                                   >
-                                    mental
+                                    psychique
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    ou
+                                  </Text>
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                     
+                                  </Text>
+                                  <Text
+                                    adjustsFontSizeToFit={true}
+                                    numberOfLines={1}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#151515",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                          "textAlign": "center",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    cognitif
                                   </Text>
                                 </View>
                               </View>
