@@ -36,23 +36,30 @@ export const Profile: React.FC = () => {
     <ScrollView>
       <ProfileHeader user={user} />
       <Container>
-        <Section title={_(t`Paramètres du compte`)}>
-          <Row
-            title={_(t`Informations personnelles`)}
-            type="navigable"
-            onPress={() => navigate('TemporaryProfilePage')}
-            icon={ProfileIcon}
-            style={styles.row}
-            testID="row-personal-data"
-          />
-          <Row
-            title={_(t`Mot de passe`)}
-            type="navigable"
-            onPress={() => navigate('TemporaryProfilePage')}
-            icon={Lock}
-            style={styles.row}
-            testID="row-password"
-          />
+        <Spacer.Column numberOfSpaces={getSpacing(1)} />
+        <Section
+          title={isLoggedIn ? _(t`Paramètres du compte`) : _(t`Paramètres de l'application`)}>
+          {isLoggedIn && (
+            <React.Fragment>
+              <Row
+                title={_(t`Informations personnelles`)}
+                type="navigable"
+                onPress={() => navigate('TemporaryProfilePage')}
+                icon={ProfileIcon}
+                style={styles.row}
+                testID="row-personal-data"
+              />
+              <Row
+                title={_(t`Mot de passe`)}
+                type="navigable"
+                onPress={() => navigate('TemporaryProfilePage')}
+                icon={Lock}
+                style={styles.row}
+                testID="row-password"
+              />
+            </React.Fragment>
+          )}
+          {/* TODO add geolocalisation switch (PC-6858) and  notification row (PC-6177) */}
         </Section>
         <Section title={_(t`Aides`)}>
           <Row
@@ -157,6 +164,6 @@ const BottomSpacing = styled.View({
 const Version = styled.Text({
   fontFamily: 'Montserrat-Medium',
   fontSize: 12,
-  lineHeight: 16,
+  lineHeight: '16px',
   color: ColorsEnum.GREY_DARK,
 })
