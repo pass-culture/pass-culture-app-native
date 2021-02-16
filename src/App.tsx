@@ -1,7 +1,6 @@
 import { I18nProvider } from '@lingui/react'
 import React, { FunctionComponent } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import CodePush from 'react-native-code-push' // @codepush
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -15,35 +14,12 @@ import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/Async
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
-import { env } from 'libs/environment'
+import CodePushProvider from 'libs/codepush/CodePushProvider'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { i18n } from 'libs/i18n' //@translations
 import { useStartBatchNotification } from 'libs/notifications'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
-
-const codePushOptionsManual = {
-  updateDialog: true,
-  installMode: CodePush.InstallMode.IMMEDIATE,
-  checkFrequency: CodePush.CheckFrequency.MANUAL,
-}
-
-const codePushOptionsAutoNextRestart = {
-  installMode: CodePush.InstallMode.ON_NEXT_RESTART,
-  checkFrequency: CodePush.CheckFrequency.ON_APP_START,
-}
-
-const codePushOptionsAutoImmediate = {
-  installMode: CodePush.InstallMode.IMMEDIATE,
-  checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME,
-}
-
-/* We want a different code push behaviour on prod and testing
-  Testing: download updates as often as possible and restart the app immediately
-  Prod: download update at start and install it at next restart
-*/
-const codePushOptionsAuto =
-  env.ENV === 'testing' ? codePushOptionsAutoImmediate : codePushOptionsAutoNextRestart
 
 const queryCache = new QueryCache()
 
@@ -63,37 +39,31 @@ const queryClient = new QueryClient({
 // Disable error monitoring in development environment
 errorMonitoring.init({ enabled: !__DEV__ })
 
-const AppComponent: FunctionComponent = function () {
+const App: FunctionComponent = function () {
   useStartBatchNotification()
 
   return (
-    <SafeAreaProvider>
-      <QueryClientProvider client={queryClient}>
-        <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-          <GeolocationWrapper>
-            <AuthWrapper>
-              <SearchWrapper>
-                <I18nProvider language={i18n.language} i18n={i18n}>
-                  <SnackBarProvider>
-                    <RootNavigator />
-                    <PrivacyPolicy />
-                  </SnackBarProvider>
-                </I18nProvider>
-              </SearchWrapper>
-            </AuthWrapper>
-          </GeolocationWrapper>
-        </ErrorBoundary>
-      </QueryClientProvider>
-    </SafeAreaProvider>
+    <CodePushProvider>
+      <SafeAreaProvider>
+        <QueryClientProvider client={queryClient}>
+          <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+            <GeolocationWrapper>
+              <AuthWrapper>
+                <SearchWrapper>
+                  <I18nProvider language={i18n.language} i18n={i18n}>
+                    <SnackBarProvider>
+                      <RootNavigator />
+                      <PrivacyPolicy />
+                    </SnackBarProvider>
+                  </I18nProvider>
+                </SearchWrapper>
+              </AuthWrapper>
+            </GeolocationWrapper>
+          </ErrorBoundary>
+        </QueryClientProvider>
+      </SafeAreaProvider>
+    </CodePushProvider>
   )
 }
-
-// @codepush
-const useCodePush = env.FEATURE_FLAG_CODE_PUSH && !__DEV__
-const App = useCodePush
-  ? CodePush(env.FEATURE_FLAG_CODE_PUSH_MANUAL ? codePushOptionsManual : codePushOptionsAuto)(
-      AppComponent
-    )
-  : AppComponent
 
 export { App }

@@ -1,8 +1,10 @@
 import { NavigationContainer, Theme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React, { useEffect, useState } from 'react'
+import CodePush from 'react-native-code-push'
 
 import { analytics } from 'libs/analytics'
+import { useCodePush } from 'libs/codepush/CodePushProvider'
 import { useHideSplashScreen } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { ColorsEnum } from 'ui/theme'
@@ -51,8 +53,11 @@ export const RootNavigator: React.FC = () => {
       analytics.logScreenView(routeName)
     }
   }
+  const { status } = useCodePush()
 
-  useHideSplashScreen({ shouldHideSplashScreen: !!initialRouteName })
+  useHideSplashScreen({
+    shouldHideSplashScreen: !!initialRouteName && status === CodePush.SyncStatus.UP_TO_DATE,
+  })
 
   useEffect(() => {
     storage.readObject('has_seen_tutorials').then((hasSeenTutorials) => {
