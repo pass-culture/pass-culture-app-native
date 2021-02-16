@@ -4,7 +4,7 @@ import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
 import { firebaseAnalytics } from 'libs/analytics'
-import { decodeAccessToken } from 'libs/jwt'
+import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
 
@@ -14,9 +14,9 @@ export interface IAuthContext {
 }
 
 const connectUserToBatchWithAccessTokenId = (accessToken: string) => {
-  const tokenContent = decodeAccessToken(accessToken)
-  if (tokenContent) {
-    BatchUser.editor().setIdentifier(tokenContent.user_claims.user_id.toString()).save()
+  const userId = getUserIdFromAccesstoken(accessToken)
+  if (userId) {
+    BatchUser.editor().setIdentifier(userId.toString()).save()
   }
 }
 
