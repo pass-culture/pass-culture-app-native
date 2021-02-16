@@ -14,13 +14,6 @@ describe('requestGeolocPermission ios', () => {
 
     expect(permissionState).toEqual(GeolocPermissionState.GRANTED)
   })
-  it('should return DENIED if permission denied', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValue('denied')
-
-    const permissionState = await requestGeolocPermission()
-
-    expect(permissionState).toEqual(GeolocPermissionState.DENIED)
-  })
   it('should return NEVER_ASK_AGAIN else', async () => {
     jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValue('restricted')
 

@@ -37,7 +37,7 @@ describe('useGeolocation()', () => {
     result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
 
     await waitFor(() => {
-      expect(result.current.permissionState).toEqual(GeolocPermissionState.DENIED)
+      expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
       expect(onSubmit).toBeCalled()
       expect(onRefusal).toBeCalled()
       expect(onAcceptance).not.toBeCalled()
