@@ -51,7 +51,7 @@ export const Profile: React.FC = () => {
         </Section>
         <Section title={_(t`Aides`)}>
           <Row
-            title={_(t`Comment ça marche`)}
+            title={_(t`Comment ça marche ?`)}
             type="navigable"
             onPress={() => navigate('TemporaryProfilePage')}
             icon={LifeBuoy}

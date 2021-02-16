@@ -46,7 +46,7 @@ msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
 #: src/features/offer/pages/Offer.tsx:87
-#: src/features/profile/pages/Profile.tsx:36
+#: src/features/profile/pages/Profile.tsx:37
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
@@ -58,11 +58,11 @@ msgstr "Accéder à l'offre"
 msgid "Accéder à la billetterie"
 msgstr "Accéder à la billetterie"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/ThirdCard.tsx:32
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/ThirdCard.tsx:32
 msgid "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
 msgstr "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/ThirdCard.tsx:32
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/ThirdCard.tsx:32
 #: src/features/search/components/GeolocationActivationModal.tsx:22
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
@@ -72,20 +72,20 @@ msgid "Adresse"
 msgstr "Adresse"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:81
-#: src/features/auth/login/Login.tsx:86
+#: src/features/auth/login/Login.tsx:102
 #: src/features/auth/signup/SetEmail.tsx:64
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
-#: src/features/search/atoms/Buttons/ShowResults.tsx:13
+#: src/features/search/atoms/Buttons/ShowResults.tsx:14
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
-#: src/features/search/atoms/Buttons/ShowResults.tsx:14
+#: src/features/search/atoms/Buttons/ShowResults.tsx:15
 msgid "Afficher les {nbHits} résultats"
 msgstr "Afficher les {nbHits} résultats"
 
-#: src/features/search/atoms/Buttons/ShowResults.tsx:11
+#: src/features/search/atoms/Buttons/ShowResults.tsx:12
 msgid "Afficher {nbHits} résultat"
 msgstr "Afficher {nbHits} résultat"
 
@@ -94,7 +94,7 @@ msgstr "Afficher {nbHits} résultat"
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
-#: src/features/profile/pages/Profile.tsx:31
+#: src/features/profile/pages/Profile.tsx:32
 msgid "Aides"
 msgstr "Aides"
 
@@ -115,7 +115,7 @@ msgstr "Aucun lieu ne correspond à ta recherche"
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
 
-#: src/features/search/atoms/Buttons/ShowResults.tsx:9
+#: src/features/search/atoms/Buttons/ShowResults.tsx:10
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
 
@@ -131,7 +131,7 @@ msgstr "Aujourd'hui"
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
-#: src/features/profile/pages/Profile.tsx:35
+#: src/features/profile/pages/Profile.tsx:36
 msgid "Autres"
 msgstr "Autres"
 
@@ -144,6 +144,10 @@ msgstr "Bienvenue !"
 #: src/features/home/pages/Home.tsx:69
 msgid "Bonjour {0}"
 msgstr "Bonjour {0}"
+
+#: src/features/profile/achievements/pages/EighteenBirthday/components/EighteenBirthdayCard.tsx:13
+msgid "Bonne nouvelle !"
+msgstr "Bonne nouvelle !"
 
 #: src/features/bookings/pages/Bookings.tsx:8
 msgid "Bookings"
@@ -206,9 +210,9 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/profile/pages/Profile.tsx:32
-msgid "Comment ça marche"
-msgstr "Comment ça marche"
+#: src/features/profile/pages/Profile.tsx:33
+msgid "Comment ça marche ?"
+msgstr "Comment ça marche ?"
 
 #: src/features/cheatcodes/pages/CheatMenu.tsx:16
 #: src/features/home/pages/Home.tsx:53
@@ -220,7 +224,7 @@ msgstr "Composants"
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
-#: src/features/profile/pages/Profile.tsx:38
+#: src/features/profile/pages/Profile.tsx:39
 msgid "Confidentialité"
 msgstr "Confidentialité"
 
@@ -237,7 +241,7 @@ msgstr "Confirmer le mot de passe"
 msgid "Connecte-toi"
 msgstr "Connecte-toi"
 
-#: src/features/auth/login/Login.tsx:82
+#: src/features/auth/login/Login.tsx:98
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
@@ -258,8 +262,8 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:154
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:44
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FirstCard.tsx:11
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/FirstCard.tsx:11
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -292,11 +296,11 @@ msgstr "Date de l'offre"
 msgid "Date précise"
 msgstr "Date précise"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FourthCard.tsx:20
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "Des nouveautés"
 msgstr "Des nouveautés"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
 
@@ -319,13 +323,17 @@ msgstr "Duo"
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FourthCard.tsx:20
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "Découvrir"
 msgstr "Découvrir"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:31
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
+
+#: src/features/auth/login/Login.tsx:82
+msgid "E-mail ou mot de passe incorrect."
+msgstr "E-mail ou mot de passe incorrect."
 
 #: src/features/auth/signup/AcceptCgu.tsx:105
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
@@ -345,11 +353,15 @@ msgstr "Erreur d'authentification"
 msgid "Erreur lors de la récupération du token d'accès"
 msgstr "Erreur lors de la récupération du token d'accès"
 
+#: src/features/auth/login/Login.tsx:78
+msgid "Erreur réseau. Tu peux réessayer."
+msgstr "Erreur réseau. Tu peux réessayer."
+
 #: src/features/favorites/pages/Favorites.tsx:8
 msgid "Favorites"
 msgstr "Favoris"
 
-#: src/features/search/atoms/Buttons/Filter.tsx:21
+#: src/features/search/atoms/Buttons/Filter.tsx:26
 #: src/features/search/pages/SearchFilter.tsx:110
 msgid "Filtrer"
 msgstr "Filtrer"
@@ -387,7 +399,7 @@ msgstr "Hors connexion : en attente du réseau."
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/profile/pages/Profile.tsx:28
+#: src/features/profile/pages/Profile.tsx:29
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
@@ -427,7 +439,7 @@ msgstr "Le lien est expiré !"
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FirstCard.tsx:11
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/FirstCard.tsx:11
 msgid "Le pass Culture"
 msgstr "Le pass Culture"
 
@@ -452,7 +464,7 @@ msgstr "Localisation"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/profile/pages/Profile.tsx:37
+#: src/features/profile/pages/Profile.tsx:38
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
@@ -460,13 +472,13 @@ msgstr "Mentions légales"
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
-#: src/features/search/atoms/NoSearchResult.tsx:41
+#: src/features/search/atoms/NoSearchResult.tsx:40
 msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
-#: src/features/auth/login/Login.tsx:92
+#: src/features/auth/login/Login.tsx:108
 #: src/features/auth/signup/SetPassword.tsx:38
-#: src/features/profile/pages/Profile.tsx:29
+#: src/features/profile/pages/Profile.tsx:30
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -474,7 +486,7 @@ msgstr "Mot de passe"
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
-#: src/features/auth/login/Login.tsx:99
+#: src/features/auth/login/Login.tsx:115
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
@@ -483,7 +495,7 @@ msgstr "Mot de passe oublié ?"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FourthCard.tsx:20
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 
@@ -513,7 +525,7 @@ msgstr "Offre épuisée"
 msgid "On y va !"
 msgstr "On y va !"
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:45
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:49
 msgid "Oops !"
 msgstr "Oops !"
 
@@ -522,7 +534,7 @@ msgstr "Oops !"
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/search/atoms/NoSearchResult.tsx:35
+#: src/features/search/atoms/NoSearchResult.tsx:34
 msgid "Oups !"
 msgstr "Oups !"
 
@@ -538,7 +550,7 @@ msgstr "Où ?"
 msgid "Paramètres de localisation"
 msgstr "Paramètres de localisation"
 
-#: src/features/profile/pages/Profile.tsx:27
+#: src/features/profile/pages/Profile.tsx:28
 msgid "Paramètres du compte"
 msgstr "Paramètres du compte"
 
@@ -546,13 +558,17 @@ msgstr "Paramètres du compte"
 msgid "Partout"
 msgstr "Partout"
 
-#: src/features/search/atoms/NoSearchResult.tsx:30
+#: src/features/search/atoms/NoSearchResult.tsx:29
 msgid "Pas de résultat trouvé pour"
 msgstr "Pas de résultat trouvé pour"
 
-#: src/features/search/atoms/NoSearchResult.tsx:31
+#: src/features/search/atoms/NoSearchResult.tsx:30
 msgid "Pas de résultat trouvé."
 msgstr "Pas de résultat trouvé."
+
+#: src/ui/components/achievements/components/GenericAchievementCard.tsx:70
+msgid "Passer"
+msgstr "Passer"
 
 #: src/features/profile/components/YoungerBadge.tsx:14
 msgid "Patience ! L’année de tes 18 ans tu bénéficieras de 300€ offerts à dépenser sur l’application."
@@ -591,11 +607,11 @@ msgid "Prix"
 msgstr "Prix"
 
 #: src/features/profile/components/LoggedOutHeader.tsx:15
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:42
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:43
 msgid "Profil"
 msgstr "Profil"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:30
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:31
 msgid "Profite de 300\\u00a0€\\u00a0"
 msgstr "Profite de 300\\u00a0€\\u00a0"
 
@@ -603,7 +619,7 @@ msgstr "Profite de 300\\u00a0€\\u00a0"
 msgid "Quand ?"
 msgstr "Quand ?"
 
-#: src/features/profile/pages/Profile.tsx:33
+#: src/features/profile/pages/Profile.tsx:34
 msgid "Questions fréquentes"
 msgstr "Questions fréquentes"
 
@@ -611,7 +627,7 @@ msgstr "Questions fréquentes"
 msgid "Rayon"
 msgstr "Rayon"
 
-#: src/features/search/atoms/Buttons/Search.tsx:18
+#: src/features/search/atoms/Buttons/Search.tsx:22
 msgid "Rechercher"
 msgstr "Rechercher"
 
@@ -642,11 +658,11 @@ msgstr "Retrouve toutes les offres autour de chez toi en activant les données d
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:62
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:66
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx:21
+#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx:20
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
@@ -667,7 +683,7 @@ msgstr "Saisir une adresse..."
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
-#: src/features/auth/login/Login.tsx:103
+#: src/features/auth/login/Login.tsx:119
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:41
 msgid "Se connecter"
 msgstr "Se connecter"
@@ -703,11 +719,11 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Sortie"
 msgstr "Sortie"
 
-#: src/features/profile/pages/Profile.tsx:40
+#: src/features/profile/pages/Profile.tsx:41
 msgid "Suivre Pass Culture"
 msgstr "Suivre Pass Culture"
 
-#: src/features/profile/pages/Profile.tsx:41
+#: src/features/profile/pages/Profile.tsx:42
 msgid "Temporary content"
 msgstr "Temporary content"
 
@@ -729,7 +745,7 @@ msgstr "Ton e-mail"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
-#: src/features/auth/login/Login.tsx:94
+#: src/features/auth/login/Login.tsx:110
 #: src/features/auth/signup/SetPassword.tsx:34
 #: src/features/auth/signup/SetPassword.tsx:40
 msgid "Ton mot de passe"
@@ -739,11 +755,11 @@ msgstr "Ton mot de passe"
 msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
-#: src/features/firstLogin/tutorials/components/GenericTutorial.tsx:37
+#: src/ui/components/achievements/components/GenericAchievement.tsx:51
 msgid "Tout passer"
 msgstr "Tout passer"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/ThirdCard.tsx:32
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/ThirdCard.tsx:32
 msgid "Toute la culture"
 msgstr "Toute la culture"
 
@@ -751,6 +767,10 @@ msgstr "Toute la culture"
 #: src/features/home/pages/Home.tsx:74
 msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
+
+#: src/features/profile/achievements/pages/EighteenBirthday/components/EighteenBirthdayCard.tsx:13
+msgid "Tu as 18 ans..."
+msgstr "Tu as 18 ans..."
 
 #: src/features/profile/components/LoggedOutHeader.tsx:24
 msgid "Tu as déjà un compte ?\\u00a0"
@@ -760,7 +780,7 @@ msgstr "Tu as déjà un compte ?\\u00a0"
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:28
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:29
 msgid "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 
@@ -772,6 +792,10 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations 
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
+#: src/features/profile/achievements/pages/EighteenBirthday/components/EighteenBirthdayCard.tsx:13
+msgid "Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité"
+msgstr "Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité"
+
 #: src/features/search/sections/titles.ts:8
 msgid "Type d'offre"
 msgstr "Type d'offre"
@@ -781,7 +805,7 @@ msgstr "Type d'offre"
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:52
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:56
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
@@ -812,6 +836,14 @@ msgstr "Valider"
 #: src/features/search/components/CalendarPicker.ios.tsx:24
 msgid "Valider la date"
 msgstr "Valider la date"
+
+#: src/features/profile/achievements/pages/EighteenBirthday/components/EighteenBirthdayCard.tsx:13
+msgid "Verifier mon identité"
+msgstr "Verifier mon identité"
+
+#: src/features/profile/pages/Profile.tsx:46
+msgid "Version {0}"
+msgstr "Version {0}"
 
 #: src/features/auth/signup/QuitSignupModal.tsx:29
 msgid "Veux-tu abandonner l'inscription ?"
@@ -846,11 +878,11 @@ msgstr "ainsi que notre"
 msgid "auteur"
 msgstr "auteur"
 
-#: src/features/search/atoms/NoSearchResult.tsx:43
+#: src/features/search/atoms/NoSearchResult.tsx:42
 msgid "autour de toi"
 msgstr "autour de toi"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FirstCard.tsx:11
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/FirstCard.tsx:11
 msgid "c'est..."
 msgstr "c'est..."
 
@@ -858,16 +890,11 @@ msgstr "c'est..."
 msgid "crédit photo"
 msgstr "crédit photo"
 
-#: src/features/profile/components/BeneficiaryHeader.tsx:26
-<<<<<<< HEAD
+#: src/features/profile/components/BeneficiaryHeader.tsx:25
 msgid "crédit valable jusqu'au {0}"
 msgstr "crédit valable jusqu'au {0}"
-=======
-msgid "crédit valable jusqu'au {creditExpiracyDate}"
-msgstr "crédit valable jusqu'au {creditExpiracyDate}"
->>>>>>> (PC-6372) Logged out profile header
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application."
 msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application."
 
@@ -888,7 +915,7 @@ msgstr "en ligne"
 msgid "et les"
 msgstr "et les"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/SecondCard.tsx:11
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "et si tu es..."
 msgstr "et si tu es..."
 
@@ -909,7 +936,7 @@ msgstr "intervenant"
 msgid "metteur en scène"
 msgstr "metteur en scène"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FourthCard.tsx:20
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
@@ -925,12 +952,12 @@ msgstr "sous genre"
 
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:83
-#: src/features/auth/login/Login.tsx:88
+#: src/features/auth/login/Login.tsx:104
 #: src/features/auth/signup/SetEmail.tsx:66
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/FirstCard.tsx:11
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/FirstCard.tsx:11
 msgid "une initiative financée par le Ministère de la Culture."
 msgstr "une initiative financée par le Ministère de la Culture."
 
@@ -962,10 +989,10 @@ msgstr "Échec de la requête {0}, code: {1}"
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:30
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:31
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
-#: src/features/firstLogin/tutorials/pages/FirstTutorial/components/ThirdCard.tsx:32
+#: src/features/firstLogin/achievements/pages/FirstTutorial/components/ThirdCard.tsx:32
 msgid "à portée de main !"
 msgstr "à portée de main !"
