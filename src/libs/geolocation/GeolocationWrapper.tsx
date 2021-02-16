@@ -63,7 +63,11 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
 
   const contextualCheckPermission = async () => {
     const newPermissionState = await checkGeolocPermission()
-    setPermissionState(newPermissionState)
+    if (
+      newPermissionState === GeolocPermissionState.GRANTED ||
+      newPermissionState === GeolocPermissionState.DENIED
+    )
+      setPermissionState(newPermissionState)
   }
 
   const onAppBecomeActive = async () => {
