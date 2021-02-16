@@ -4,7 +4,6 @@ import { StatusBar, Platform } from 'react-native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { Bookings } from 'features/bookings/pages/Bookings'
-import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
@@ -36,8 +35,6 @@ export const TabNavigator: React.FC = () => {
       {authContext.isLoggedIn && <Tab.Screen name="Bookings" component={Bookings} />}
       <Tab.Screen name="Favorites" component={Favorites} />
       <Tab.Screen name="Profile" component={Profile} />
-      {/*  TODO: ticket 6311: remove the cheat area */}
-      <Tab.Screen name="CheatArea" component={CheatMenu} />
     </Tab.Navigator>
   )
 }

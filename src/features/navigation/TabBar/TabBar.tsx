@@ -2,14 +2,12 @@ import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/AuthContext'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getShadow, getSpacing, Spacer, UniqueColors } from 'ui/theme'
 
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
@@ -31,9 +29,6 @@ const mapRouteToIcon = (
       return BicolorFavorite
     case 'Profile':
       return BicolorProfile
-    // TODO: ticket 6311: remove the cheat area
-    case 'CheatArea':
-      return Warning
     default:
       return BicolorLogo
   }
@@ -43,7 +38,6 @@ export const TabBar: React.FC<Pick<
   'state' | 'navigation'
 >> = ({ navigation, state }) => {
   const { bottom } = useCustomSafeInsets()
-  const authContext = useAuthContext()
   return (
     <MainContainer>
       <RowContainer>
@@ -54,18 +48,13 @@ export const TabBar: React.FC<Pick<
           const onPress = () => {
             if (isSelected) return
 
-            const shouldNavigateLoggedIn = !route.key.includes('Profile') || authContext.isLoggedIn
-            if (shouldNavigateLoggedIn) {
-              const event = navigation.emit({
-                type: 'tabPress',
-                target: route.key,
-                canPreventDefault: true,
-              })
-              if (!event.defaultPrevented) {
-                navigation.navigate(route.name)
-              }
-            } else {
-              navigation.navigate('Home', { shouldDisplayLoginModal: true })
+            const event = navigation.emit({
+              type: 'tabPress',
+              target: route.key,
+              canPreventDefault: true,
+            })
+            if (!event.defaultPrevented) {
+              navigation.navigate(route.name)
             }
           }
           return (
