@@ -1,5 +1,5 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dimensions, View } from 'react-native'
 
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -24,6 +24,10 @@ const { width } = Dimensions.get('window')
 export const Slider: React.FC<Props> = (props) => {
   const [values, setValues] = useState<number[]>(props.values ?? DEFAULT_VALUES)
   const { formatValues = (s: number) => s } = props
+
+  useEffect(() => {
+    if (props.values) setValues(props.values)
+  }, [props.values])
 
   return (
     <React.Fragment>
