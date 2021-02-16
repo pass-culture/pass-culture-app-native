@@ -80,7 +80,7 @@ export const Home: FunctionComponent = function () {
       <HeaderBackgroundWrapper>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
-      <UserProfileContainer onPress={() => navigation.navigate('Profile')}>
+      <UserProfileContainer onPress={() => navigation.navigate('CheatMenu')}>
         <UserCircle size={32} color={ColorsEnum.WHITE} />
       </UserProfileContainer>
 
