@@ -10,7 +10,7 @@ describe('FirstTutorial page', () => {
     expect(firstTutorial).toMatchSnapshot()
   })
 
-  it('should set has_seen_tutorials in storage', () => {
+  it('should set has_seen_tutorials in storage on skip', () => {
     const { getByText } = render(<FirstTutorial />)
     fireEvent.press(getByText('Tout passer'))
     expect(AsyncStorage.setItem).toBeCalledWith('has_seen_tutorials', 'true')

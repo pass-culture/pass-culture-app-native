@@ -4,7 +4,7 @@ import { Alert } from 'react-native'
 
 import { _ } from 'libs/i18n'
 
-type StorageKey = 'access_token' | 'has_seen_tutorials'
+type StorageKey = 'access_token' | 'has_seen_tutorials' | 'has_accepted_cookie'
 
 export const storage = {
   clear,
