@@ -864,9 +864,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 },
                               ]
                             }
-                          >
-                            Du 3 janvier 2021 au 4 janvier 2021
-                          </Text>
+                          />
                         </View>
                         <View
                           style={
@@ -3534,9 +3532,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 },
                               ]
                             }
-                          >
-                            Du 3 janvier 2021 au 4 janvier 2021
-                          </Text>
+                          />
                         </View>
                         <View
                           style={

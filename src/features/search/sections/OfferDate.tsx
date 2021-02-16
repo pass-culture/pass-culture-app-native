@@ -67,7 +67,7 @@ export const OfferDate: React.FC = () => {
             activeOpacity={ACTIVE_OPACITY}
             onPress={() => setShowTimePicker(true)}>
             <Typo.Body color={ColorsEnum.BLACK}>
-              {formatToCompleteFrenchDate(selectedDate.getTime())}
+              {formatToCompleteFrenchDate(selectedDate)}
             </Typo.Body>
           </TouchableOpacity>
         )}
