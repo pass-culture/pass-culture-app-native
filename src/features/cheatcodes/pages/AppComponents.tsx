@@ -253,7 +253,7 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title4>Modal - Progressive</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4>Modal Header</Typo.Title4>
-        <ColoredModalHeader title="My modal header" leftIcon={ArrowPrevious} rightIcon={Close} />
+        <ModalHeader title="My modal header" leftIcon={ArrowPrevious} rightIcon={Close} />
       </AccordionItem>
 
       <Divider />
@@ -637,14 +637,6 @@ const Center = styled(View)({
 const GreyView = styled.View({
   backgroundColor: ColorsEnum.GREY_LIGHT,
 })
-
-const ColoredModalHeader = styled(ModalHeader).attrs({
-  customStyles: {
-    container: {
-      backgroundColor: ColorsEnum.PRIMARY_DISABLED,
-    },
-  },
-})``
 
 const RowWrap = styled.View({
   flexWrap: 'wrap',
