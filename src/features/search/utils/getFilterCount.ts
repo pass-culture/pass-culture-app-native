@@ -4,7 +4,7 @@ import { LocationType } from 'libs/algolia'
 
 export const getFilterCount = (searchState: SearchState): number => {
   const { offerTypes } = searchState
-  const values = searchState.priceRange ?? [0, MAX_PRICE]
+  const priceRange = searchState.priceRange ?? [0, MAX_PRICE]
 
   return (
     // Localisation
@@ -14,7 +14,7 @@ export const getFilterCount = (searchState: SearchState): number => {
     // Type d'offre
     (+offerTypes['isDigital'] + +offerTypes['isEvent'] + +offerTypes['isThing']) +
     // Prix
-    +(values[0] > 0 || values[1] < MAX_PRICE) +
+    +(priceRange[0] > 0 || priceRange[1] < MAX_PRICE) +
     // Uniquement les offres gratuites
     +searchState.offerIsFree +
     // Uniquement les offres duo

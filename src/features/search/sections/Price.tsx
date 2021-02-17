@@ -14,8 +14,8 @@ export const Price: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.Price)
   const { searchState, dispatch } = useStagedSearch()
   const priceRange = searchState.priceRange ?? [0, MAX_PRICE]
+  const count = +(priceRange[0] > 0 || priceRange[1] < MAX_PRICE)
   const values = searchState.offerIsFree ? [0, 0] : priceRange
-  const count = +(values[0] > 0 || values[1] < MAX_PRICE)
 
   const onValuesChangeFinish = (newValues: number[]) => {
     const priceRangeIsFree = newValues[0] === 0 && newValues[1] === 0
