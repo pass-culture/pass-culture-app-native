@@ -76,7 +76,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
 
 const HeaderBackgroundWrapper = styled.View({
-  maxHeight: getSpacing(16) + getStatusBarHeight(true),
+  maxHeight: getSpacing(14) + getStatusBarHeight(true),
   overflow: 'hidden',
   position: 'relative',
   alignItems: 'center',
