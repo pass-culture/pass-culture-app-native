@@ -1228,27 +1228,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
                                     }
                                   >
                                     Handicap
-                                  </Text>
-                                  <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
                                   </Text>
                                   <Text
                                     adjustsFontSizeToFit={true}
@@ -1260,6 +1246,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -1387,6 +1374,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -1395,21 +1383,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
-                                  </Text>
-                                  <Text
                                     adjustsFontSizeToFit={true}
                                     numberOfLines={1}
                                     style={
@@ -1419,6 +1392,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -1427,21 +1401,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     psychique
                                   </Text>
                                   <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
-                                  </Text>
-                                  <Text
                                     adjustsFontSizeToFit={true}
                                     numberOfLines={1}
                                     style={
@@ -1451,6 +1410,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -1459,21 +1419,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     ou
                                   </Text>
                                   <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
-                                  </Text>
-                                  <Text
                                     adjustsFontSizeToFit={true}
                                     numberOfLines={1}
                                     style={
@@ -1483,6 +1428,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -1610,27 +1556,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
                                     }
                                   >
                                     Handicap
-                                  </Text>
-                                  <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
                                   </Text>
                                   <Text
                                     adjustsFontSizeToFit={true}
@@ -1642,6 +1574,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -1769,27 +1702,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
                                     }
                                   >
                                     Handicap
-                                  </Text>
-                                  <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
                                   </Text>
                                   <Text
                                     adjustsFontSizeToFit={true}
@@ -1801,6 +1720,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -2049,7 +1969,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           }
                         />
                         <Text
-                          numberOfLines={2}
+                          numberOfLines={1}
                           style={
                             Object {
                               "flexShrink": 1,
@@ -4126,27 +4046,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
                                     }
                                   >
                                     Handicap
-                                  </Text>
-                                  <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
                                   </Text>
                                   <Text
                                     adjustsFontSizeToFit={true}
@@ -4158,6 +4064,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -4285,6 +4192,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -4293,21 +4201,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
-                                  </Text>
-                                  <Text
                                     adjustsFontSizeToFit={true}
                                     numberOfLines={1}
                                     style={
@@ -4317,6 +4210,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -4325,21 +4219,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     psychique
                                   </Text>
                                   <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
-                                  </Text>
-                                  <Text
                                     adjustsFontSizeToFit={true}
                                     numberOfLines={1}
                                     style={
@@ -4349,6 +4228,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -4357,21 +4237,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     ou
                                   </Text>
                                   <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
-                                  </Text>
-                                  <Text
                                     adjustsFontSizeToFit={true}
                                     numberOfLines={1}
                                     style={
@@ -4381,6 +4246,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -4508,27 +4374,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
                                     }
                                   >
                                     Handicap
-                                  </Text>
-                                  <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
                                   </Text>
                                   <Text
                                     adjustsFontSizeToFit={true}
@@ -4540,6 +4392,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -4667,27 +4520,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
                                     }
                                   >
                                     Handicap
-                                  </Text>
-                                  <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#151515",
-                                          "fontFamily": "Montserrat-SemiBold",
-                                          "fontSize": 12,
-                                          "lineHeight": 16,
-                                          "textAlign": "center",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                     
                                   </Text>
                                   <Text
                                     adjustsFontSizeToFit={true}
@@ -4699,6 +4538,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
                                           "lineHeight": 16,
+                                          "paddingHorizontal": 1,
                                           "textAlign": "center",
                                         },
                                       ]
@@ -4947,7 +4787,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           }
                         />
                         <Text
-                          numberOfLines={2}
+                          numberOfLines={1}
                           style={
                             Object {
                               "flexShrink": 1,

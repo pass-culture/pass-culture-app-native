@@ -8,25 +8,15 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
 
-const HandicapText: React.FC<{ wording: string; width: number }> = ({ wording, width }) => {
-  const [firstWord, ...otherWords] = wording.split(' ')
-
-  return (
-    <TextContainer testID={wording} width={width}>
-      <Text numberOfLines={1} adjustsFontSizeToFit={true}>
-        {firstWord}
+const HandicapText: React.FC<{ wording: string; width: number }> = ({ wording, width }) => (
+  <TextContainer testID={wording} width={width}>
+    {wording.split(' ').map((word) => (
+      <Text key={word} numberOfLines={1} adjustsFontSizeToFit={true}>
+        {word}
       </Text>
-      {otherWords.map((word) => (
-        <React.Fragment key={word}>
-          <Text> </Text>
-          <Text numberOfLines={1} adjustsFontSizeToFit={true}>
-            {word}
-          </Text>
-        </React.Fragment>
-      ))}
-    </TextContainer>
-  )
-}
+    ))}
+  </TextContainer>
+)
 
 interface Props {
   handicap: HandicapCategory
@@ -71,7 +61,7 @@ const Container = styled.View({
   flexDirection: 'column',
   flexShrink: 1,
 })
-const Text = styled(Typo.Caption)({ textAlign: 'center' })
+const Text = styled(Typo.Caption)({ textAlign: 'center', paddingHorizontal: 1 })
 const TextContainer = styled.View<{ width: number }>(({ width }) => ({
   flexDirection: 'row',
   flexWrap: 'wrap',
