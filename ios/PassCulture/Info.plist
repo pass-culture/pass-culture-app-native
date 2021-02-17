@@ -57,7 +57,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Cette application a besoin de ta géolocation pour te montrer des offres proche de toi.</string>
+	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>
