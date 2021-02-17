@@ -12,7 +12,7 @@ describe('LoggedOutHeader', () => {
     const signupButton = getByTestId('button-container')
     signupButton.props.onClick()
 
-    expect(navigate).toBeCalledWith('SetEmail', { preventCancellation: true })
+    expect(navigate).toBeCalledWith('SetEmail')
   })
   it('should navigate to the login page', () => {
     const { getByTestId } = render(<LoggedOutHeader />)
@@ -20,6 +20,6 @@ describe('LoggedOutHeader', () => {
     const connectButton = getByTestId('login-button')
     connectButton.props.onClick()
 
-    expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
+    expect(navigate).toBeCalledWith('Login')
   })
 })
