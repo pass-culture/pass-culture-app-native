@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { TextStyle, ViewStyle, StyleProp } from 'react-native'
+import { ViewStyle, TextStyle, StyleProp } from 'react-native'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
@@ -13,6 +13,7 @@ export interface ModalHeaderProps {
   onLeftIconPress?: () => void
   rightIcon?: FunctionComponent<IconInterface>
   onRightIconPress?: () => void
+  boldTitle?: boolean
   customStyles?: ModalHeaderStyleClasses
 }
 
@@ -23,31 +24,33 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   onLeftIconPress,
   rightIcon: RightIcon,
   onRightIconPress,
+  boldTitle = false,
 }) => (
-  <DynamicContainer customStyle={customStyles?.container}>
+  <Container>
     <LeftHeaderAction onPress={onLeftIconPress} testID="leftIconButton">
       {LeftIcon && <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />}
     </LeftHeaderAction>
     <Title customStyle={customStyles?.title} numberOfLines={2}>
-      {title}
+      {boldTitle ? (
+        <Typo.Title3 numberOfLines={2}>{title}</Typo.Title3>
+      ) : (
+        <Typo.Title4 numberOfLines={2}>{title}</Typo.Title4>
+      )}
     </Title>
     <RightHeaderAction onPress={onRightIconPress} testID="rightIconButton">
       {RightIcon && (
         <RightIcon size={32} testID="rightIcon" color={customStyles?.rightIcon?.color} />
       )}
     </RightHeaderAction>
-  </DynamicContainer>
+  </Container>
 )
 
-const DynamicContainer = styled.View<{
-  customStyle: StyleProp<ViewStyle>
-}>(({ customStyle }) => ({
+const Container = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
-  ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
-}))
+})
 
 /* The negative margins are used to compensate for the
   "empty" space of SVG icons. */

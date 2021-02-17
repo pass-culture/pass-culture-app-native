@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { ModalOverlay } from 'ui/components/modals/ModalOverlay'
 import { Close } from 'ui/svg/icons/Close'
-import { ColorsEnum, getSpacing, getSpacingString, Spacer } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -37,10 +37,11 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           <ClicAwayArea activeOpacity={1} onPress={onCloseIconPress}>
             <Spacer.Flex />
             <Container activeOpacity={1}>
-              <ColoredModalHeader
+              <ModalHeader
                 title={title}
                 rightIcon={Close}
                 onRightIconPress={onCloseIconPress}
+                boldTitle
               />
               <Content style={{ paddingBottom: bottom }}>{children}</Content>
             </Container>
@@ -51,19 +52,6 @@ export const AppInformationModal: FunctionComponent<Props> = ({
     </React.Fragment>
   )
 }
-
-const ColoredModalHeader = styled(ModalHeader).attrs({
-  customStyles: {
-    title: {
-      fontSize: getSpacing(5),
-      fontWeight: 'bold',
-      fontStyle: 'normal',
-      // @ts-ignore fixing warning 'Expected lineHeight to contains unit'
-      lineHeight: getSpacingString(6),
-      color: ColorsEnum.BLACK,
-    },
-  },
-})``
 
 const ClicAwayArea = styled(TouchableOpacity)({
   flexGrow: 1,
