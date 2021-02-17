@@ -176,7 +176,7 @@ Array [
         }
       />
       <Text
-        numberOfLines={2}
+        numberOfLines={1}
         style={
           Object {
             "flexShrink": 1,

@@ -128,7 +128,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                               Array [
                                 Object {
                                   \\"backgroundColor\\": \\"#f5f5f5\\",
-@@ -939,1234 +856,26 @@
+@@ -939,1154 +856,26 @@
                           <View
                             style={
                               Array [
@@ -217,10 +217,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               Array [
 -                                 Object {
 -                                   \\"height\\": 16,
--                                 },
--                               ]
--                             }
--                           />
+                                },
+                              ]
+                            }
+                          />
 -                           <Text
 -                             style={
 -                               Array [
@@ -253,9 +253,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"fontFamily\\": \\"Montserrat-Regular\\",
 -                                   \\"fontSize\\": 15,
 -                                   \\"lineHeight\\": 20,
-                                },
-                              ]
-                            }
+-                                 },
+-                               ]
+-                             }
 -                           >
 -                             900+ km
 -                           </Text>
@@ -268,7 +268,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 },
 -                               ]
 -                             }
-                          />
+-                           />
 -                           <View
 -                             style={
 -                               Array [
@@ -312,7 +312,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               width={24}
 -                             >
 -                               undefined-SVG-Mock
--                             </View>
+                        </View>
 -                             <View
 -                               numberOfSpaces={1}
 -                               style={
@@ -348,7 +348,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               ]
 -                             }
 -                           />
-                        </View>
+-                         </View>
 -                         <View
 -                           style={
 -                             Array [
@@ -711,27 +711,13 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
 -                                     }
 -                                   >
 -                                     Handicap
--                                   </Text>
--                                   <Text
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"color\\": \\"#151515\\",
--                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
--                                           \\"fontSize\\": 12,
--                                           \\"lineHeight\\": 16,
--                                           \\"textAlign\\": \\"center\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                      
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
@@ -743,6 +729,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
@@ -870,6 +857,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
@@ -878,21 +866,6 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Handicap
 -                                   </Text>
 -                                   <Text
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"color\\": \\"#151515\\",
--                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
--                                           \\"fontSize\\": 12,
--                                           \\"lineHeight\\": 16,
--                                           \\"textAlign\\": \\"center\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                      
--                                   </Text>
--                                   <Text
 -                                     adjustsFontSizeToFit={true}
 -                                     numberOfLines={1}
 -                                     style={
@@ -902,6 +875,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
@@ -910,21 +884,6 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     psychique
 -                                   </Text>
 -                                   <Text
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"color\\": \\"#151515\\",
--                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
--                                           \\"fontSize\\": 12,
--                                           \\"lineHeight\\": 16,
--                                           \\"textAlign\\": \\"center\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                      
--                                   </Text>
--                                   <Text
 -                                     adjustsFontSizeToFit={true}
 -                                     numberOfLines={1}
 -                                     style={
@@ -934,6 +893,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
@@ -942,21 +902,6 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     ou
 -                                   </Text>
 -                                   <Text
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"color\\": \\"#151515\\",
--                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
--                                           \\"fontSize\\": 12,
--                                           \\"lineHeight\\": 16,
--                                           \\"textAlign\\": \\"center\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                      
--                                   </Text>
--                                   <Text
 -                                     adjustsFontSizeToFit={true}
 -                                     numberOfLines={1}
 -                                     style={
@@ -966,6 +911,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
@@ -1038,10 +984,12 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       ]
 -                                     }
 -                                   />
--                                   <View
--                                     style={
--                                       Array [
--                                         Object {
++                     </RCTScrollView>
+                      <View
++                       numberOfSpaces={10}
+                        style={
+                          Array [
+                            Object {
 -                                           \\"bottom\\": -16,
 -                                           \\"position\\": \\"absolute\\",
 -                                         },
@@ -1057,8 +1005,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     </View>
 -                                   </View>
 -                                 </View>
-+                     </RCTScrollView>
-                      <View
+-                                 <View
 -                                   numberOfSpaces={4}
 -                                   style={
 -                                     Array [
@@ -1087,22 +1034,6 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
 -                                     numberOfLines={1}
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
--                                           \\"color\\": \\"#151515\\",
--                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
--                                           \\"fontSize\\": 12,
--                                           \\"lineHeight\\": 16,
--                                           \\"textAlign\\": \\"center\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                     Handicap
--                                   </Text>
--                                   <Text
 -                                     style={
 -                                       Array [
 -                                         Object {
@@ -1110,12 +1041,13 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
 -                                     }
 -                                   >
--                                      
+-                                     Handicap
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
@@ -1127,6 +1059,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
@@ -1255,27 +1188,13 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
 -                                     }
 -                                   >
 -                                     Handicap
--                                   </Text>
--                                   <Text
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"color\\": \\"#151515\\",
--                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
--                                           \\"fontSize\\": 12,
--                                           \\"lineHeight\\": 16,
--                                           \\"textAlign\\": \\"center\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                      
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
@@ -1287,6 +1206,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
 -                                       ]
