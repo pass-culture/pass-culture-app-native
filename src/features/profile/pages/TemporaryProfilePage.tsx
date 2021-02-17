@@ -1,13 +1,17 @@
 import React from 'react'
-import { View } from 'react-native'
+import styled from 'styled-components/native'
 
-import { Typo } from 'ui/theme'
+import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
 
 export function TemporaryProfilePage() {
   return (
-    <View>
-      {/* eslint-disable-next-line react-native/no-raw-text */}
-      <Typo.Title1>{'Page temporaire'}</Typo.Title1>
-    </View>
+    <Container>
+      <ProfileHeaderWithNavigation title={'Page temporaire'} />
+    </Container>
   )
 }
+
+const Container = styled.View({
+  flex: 1,
+  flexDirection: 'column',
+})
