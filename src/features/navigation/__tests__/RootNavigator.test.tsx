@@ -7,11 +7,14 @@ import { act } from 'react-test-renderer'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { analytics } from 'libs/analytics'
+import { useCodePush } from 'libs/codepush/CodePushProvider'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
 import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
+
+const mockedUseCodePush = useCodePush as jest.Mock
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/auth/AuthContext', () => ({
@@ -85,6 +88,18 @@ describe('<RootNavigator />', () => {
     expect(SplashScreen.hide).toBeCalledTimes(0)
     jest.advanceTimersByTime(200)
     expect(SplashScreen.hide).toBeCalledTimes(1)
+    renderAPI.unmount()
+  })
+  it('should call SplashScreen.hide() after 200ms', async () => {
+    mockedUseCodePush.mockImplementation(() => ({ status: 'OTHER' }))
+    const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
+    await act(async () => {
+      await flushAllPromises()
+    })
+
+    expect(SplashScreen.hide).toBeCalledTimes(0)
+    jest.advanceTimersByTime(200)
+    expect(SplashScreen.hide).not.toBeCalledTimes(1)
     renderAPI.unmount()
   })
 })
