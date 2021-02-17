@@ -13,8 +13,10 @@ import { ColorsEnum, getSpacing, ScreenWidth, Spacer, Typo } from 'ui/theme'
 export function LoggedOutHeader() {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
-    <HeaderBackgroundWrapper>
-      <HeaderBackground width={ScreenWidth} />
+    <Container>
+      <HeaderBackgroundWrapper>
+        <HeaderBackground width={ScreenWidth} />
+      </HeaderBackgroundWrapper>
       <HeaderContent>
         <Typo.Title4 color={ColorsEnum.WHITE}>{_(t`Profil`)}</Typo.Title4>
         <Spacer.Column numberOfSpaces={8} />
@@ -22,40 +24,38 @@ export function LoggedOutHeader() {
           {_(t`Inscris-toi pour accéder à toutes les fonctionnalités de l’appication`)}
         </Description>
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimaryWhite
-          title={_(t`S'inscrire`)}
-          onPress={() => navigate('SetEmail', { preventCancellation: true })}
-        />
+        <ButtonPrimaryWhite title={_(t`S'inscrire`)} onPress={() => navigate('SetEmail')} />
         <Spacer.Column numberOfSpaces={4} />
         <ConnecteToi>
           <Typo.Body color={ColorsEnum.WHITE}>{_(t`Tu as déjà un compte ?\u00a0`)}</Typo.Body>
-          <TouchableOpacity
-            onPress={() => navigate('Login', { preventCancellation: true })}
-            testID="login-button">
+          <TouchableOpacity onPress={() => navigate('Login')} testID="login-button">
             <Typo.ButtonText color={ColorsEnum.WHITE}>{_(t`Connecte-toi`)}</Typo.ButtonText>
           </TouchableOpacity>
         </ConnecteToi>
       </HeaderContent>
-    </HeaderBackgroundWrapper>
+    </Container>
   )
 }
+
+const Container = styled.View({
+  overflow: 'hidden',
+})
+
+const HeaderBackgroundWrapper = styled.View({
+  position: 'absolute',
+})
+
+const HeaderContent = styled.View({
+  alignItems: 'center',
+  padding: getSpacing(5),
+  paddingTop: getSpacing(10),
+  width: '100%',
+})
 
 const ConnecteToi = styled.View({
   flexDirection: 'row',
 })
 
-const HeaderContent = styled.View({
-  position: 'absolute',
-  alignItems: 'center',
-  padding: getSpacing(5),
-  paddingTop: getSpacing(8),
-  width: '100%',
-})
-
 const Description = styled(Typo.Body)({
   textAlign: 'center',
-})
-
-const HeaderBackgroundWrapper = styled.View({
-  maxHeight: getSpacing(73.5),
 })
