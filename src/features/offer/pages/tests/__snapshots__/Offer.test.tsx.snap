@@ -2390,32 +2390,23 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               testID="leftIconButton"
                             />
                             <Text
+                              numberOfLines={2}
                               style={
                                 Array [
                                   Object {
+                                    "color": "#151515",
                                     "flexBasis": 0,
                                     "flexGrow": 0.6,
                                     "flexShrink": 1,
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 18,
+                                    "lineHeight": 22,
                                     "textAlign": "center",
                                   },
                                 ]
                               }
                             >
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Medium",
-                                      "fontSize": 18,
-                                      "lineHeight": 22,
-                                    },
-                                  ]
-                                }
-                              >
-                                Le pass Culture est accessible à tous !
-                              </Text>
+                              Le pass Culture est accessible à tous !
                             </Text>
                             <View
                               accessible={true}
@@ -5299,32 +5290,23 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               testID="leftIconButton"
                             />
                             <Text
+                              numberOfLines={2}
                               style={
                                 Array [
                                   Object {
+                                    "color": "#151515",
                                     "flexBasis": 0,
                                     "flexGrow": 0.6,
                                     "flexShrink": 1,
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 18,
+                                    "lineHeight": 22,
                                     "textAlign": "center",
                                   },
                                 ]
                               }
                             >
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Medium",
-                                      "fontSize": 18,
-                                      "lineHeight": 22,
-                                    },
-                                  ]
-                                }
-                              >
-                                Le pass Culture est accessible à tous !
-                              </Text>
+                              Le pass Culture est accessible à tous !
                             </Text>
                             <View
                               accessible={true}

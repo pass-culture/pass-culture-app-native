@@ -113,32 +113,23 @@ Array [
             </View>
           </View>
           <Text
+            numberOfLines={2}
             style={
               Array [
                 Object {
+                  "color": "#151515",
                   "flexBasis": 0,
                   "flexGrow": 0.6,
                   "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
                   "textAlign": "center",
                 },
               ]
             }
           >
-            <Text
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
-                  },
-                ]
-              }
-            >
-              Ton anniversaire
-            </Text>
+            Ton anniversaire
           </Text>
           <View
             accessible={true}
