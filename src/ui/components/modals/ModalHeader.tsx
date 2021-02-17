@@ -7,7 +7,7 @@ import { ColorsEnum, Typo } from 'ui/theme'
 
 import { isStyleObjectTypeGuard } from '../typeguards'
 
-interface Props {
+export interface ModalHeaderProps {
   title: string
   leftIcon?: FunctionComponent<IconInterface>
   onLeftIconPress?: () => void
@@ -16,7 +16,7 @@ interface Props {
   customStyles?: ModalHeaderStyleClasses
 }
 
-export const ModalHeader: FunctionComponent<Props> = ({
+export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   customStyles,
   title,
   leftIcon: LeftIcon,
