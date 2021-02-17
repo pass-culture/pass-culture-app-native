@@ -125,7 +125,6 @@ export const Profile: React.FC = () => {
               icon={SignOut}
               testID="row-signout"
             />
-            <Spacer.Column numberOfSpaces={1} />
           </Section>
         )}
         <Section>

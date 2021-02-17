@@ -92,5 +92,6 @@ const BodyContainer = styled.View.attrs<{ padding?: number }>(({ padding }) => (
   padding,
 }))<{ padding?: number }>(({ padding }) => ({
   padding: getSpacing(padding || 4),
+  paddingBottom: 0,
   position: 'relative',
 }))
