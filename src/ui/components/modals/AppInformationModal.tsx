@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Modal, Platform, TouchableOpacity } from 'react-native'
+import { Modal, TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
@@ -24,7 +24,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
   testIdSuffix,
 }) => {
   const { bottom } = useSafeAreaInsets()
-  const paddingBottom = Platform.OS === 'ios' ? bottom : getSpacing(3)
+  const paddingBottom = Math.max(bottom, getSpacing(3))
   return (
     <React.Fragment>
       <ModalOverlay visible={visible} />
