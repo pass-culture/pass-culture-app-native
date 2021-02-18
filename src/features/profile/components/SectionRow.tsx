@@ -10,7 +10,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 type SectionRowProps = {
   title: string
   ctaIconSize?: number
-  icon: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
   testID?: string
 } & (
@@ -34,7 +34,7 @@ export function SectionRow(props: SectionRowProps) {
       onPress={props.onPress}
       testID={props.testID ? props.testID : 'section-row-touchable'}>
       <View style={[styles.container, props.style]}>
-        <Icon />
+        {Icon && <Icon />}
         <TitleContainer>
           <Typo.ButtonText numberOfLines={2}>{props.title}</Typo.ButtonText>
         </TitleContainer>
