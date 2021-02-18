@@ -1,6 +1,10 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 
 export function NotificationSettings() {
-  return <View></View>
+  return (
+    <View>
+      <Text>Réglages des notifications</Text>
+    </View>
+  )
 }

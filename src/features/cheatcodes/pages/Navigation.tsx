@@ -203,6 +203,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('EighteenBirthday')}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'Réglages notifications'}
+            onPress={() => navigation.navigate('NotificationSettings')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
