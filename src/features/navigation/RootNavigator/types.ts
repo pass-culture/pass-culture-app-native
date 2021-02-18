@@ -29,6 +29,7 @@ export type RootStackParamList = {
   IdCheck: { email: string; licenceToken: string }
   Login: ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>) | undefined
   Navigation: undefined
+  NotificationSettings: undefined
   Offer: { id: number }
   OfferDescription: { id: number }
   ReinitializePassword: { token: string; expiration_timestamp: number }
