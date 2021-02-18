@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import { Animated, NativeSyntheticEvent, NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
+import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { analytics } from 'libs/analytics'
@@ -36,6 +37,7 @@ export const Offer: FunctionComponent = () => {
   const { data: offerResponse } = useOffer({ offerId: params.id })
   const headerScroll = useRef(new Animated.Value(0)).current
   const scrollViewRef = useRef<ScrollView | null>(null)
+  const [showBookingOfferModal, setShowBookingOfferModal] = useState<boolean>(false)
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     if (offerResponse) {
@@ -64,6 +66,12 @@ export const Offer: FunctionComponent = () => {
     if (isCloseToBottom(nativeEvent)) {
       logConsultWholeOffer()
     }
+  }
+
+  const onPressBooking = () => {
+    if (!onPress) return
+    onPress()
+    setShowBookingOfferModal(true)
   }
 
   return (
@@ -145,11 +153,17 @@ export const Offer: FunctionComponent = () => {
 
       {wording ? (
         <CallToActionContainer testID="CTA-button">
-          <CallToAction wording={wording} onPress={onPress} isExternal={isExternal} />
+          <CallToAction wording={wording} onPress={onPressBooking} isExternal={isExternal} />
         </CallToActionContainer>
       ) : (
         <Spacer.Column numberOfSpaces={10} />
       )}
+
+      <BookingOfferModal
+        visible={showBookingOfferModal}
+        dismissModal={() => setShowBookingOfferModal(false)}
+        offerCategory={offerResponse.category.categoryType}
+      />
 
       <OfferHeader
         title={offerResponse.name}
