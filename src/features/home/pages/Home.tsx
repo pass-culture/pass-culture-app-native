@@ -10,11 +10,13 @@ import { useEligibleCard } from 'features/eighteenBirthday/useEligibleCard'
 import { useUserProfileInfo } from 'features/home/api'
 import { HomeBody, HomeBodyPlaceholder, SignUpSignInChoiceModal } from 'features/home/components'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
+import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { useModal } from 'ui/components/modals/useModal'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
@@ -32,6 +34,7 @@ export const Home: FunctionComponent = function () {
   const { data: userInfos } = useUserProfileInfo()
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const showSkeleton = useShowSkeleton()
+  const availableCredit = useAvailableCredit()
 
   const [hasSeenAllModules, setHasSeenAllModules] = useState<boolean>(false)
   const { displayedModules, algoliaModules } = useDisplayedHomeModules()
@@ -59,6 +62,10 @@ export const Home: FunctionComponent = function () {
       analytics.logAllModulesSeen(displayedModules.length)
     }
   }
+
+  const subtitle = availableCredit
+    ? _(t`Tu as ${formatToFrenchDecimal(availableCredit)} sur ton pass`)
+    : _(t`Toute la culture dans ta main`)
 
   return (
     <ScrollView
@@ -92,9 +99,7 @@ export const Home: FunctionComponent = function () {
             : _(/*i18n: Welcome title message */ t`Bienvenue !`)}
         </StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        <Typo.Body color={ColorsEnum.WHITE}>
-          {_(/*i18n: Welcome body message */ t`Toute la culture dans ta main`)}
-        </Typo.Body>
+        <Typo.Body color={ColorsEnum.WHITE}>{subtitle}</Typo.Body>
       </CenterContainer>
       <Spacer.Column numberOfSpaces={6} />
 
