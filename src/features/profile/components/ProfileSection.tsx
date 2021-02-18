@@ -2,7 +2,9 @@ import React, { PropsWithChildren } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
+
+import { Separator } from './reusables'
 
 interface ProfileSectionProps {
   title?: string
@@ -21,13 +23,6 @@ export function ProfileSection(props: PropsWithChildren<ProfileSectionProps>) {
 
 const Container = styled(View)({
   paddingTop: getSpacing(2),
-})
-
-const Separator = styled.View({
-  width: '100%',
-  height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-  marginTop: getSpacing(2),
 })
 
 const Title = styled(Typo.Body)({
