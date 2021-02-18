@@ -8,6 +8,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
+import { ProfileContainer, Separator } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
 export function NotificationSettings() {
@@ -80,17 +81,4 @@ const SettingExplanation = styled.Text({
   fontSize: 13,
   lineHeight: 16,
   color: ColorsEnum.GREY_DARK,
-})
-
-export const ProfileContainer = styled.View({
-  flex: 1,
-  flexDirection: 'column',
-  paddingHorizontal: getSpacing(5),
-})
-
-export const Separator = styled.View({
-  width: '100%',
-  height: 1,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-  marginTop: getSpacing(2),
 })

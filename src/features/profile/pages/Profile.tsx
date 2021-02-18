@@ -24,6 +24,7 @@ import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 import Package from '../../../../package.json'
 import { ProfileHeader } from '../components/ProfileHeader'
 import { ProfileSection } from '../components/ProfileSection'
+import { ProfileContainer } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
 export const Profile: React.FC = () => {
@@ -42,7 +43,7 @@ export const Profile: React.FC = () => {
   return (
     <ScrollView ref={scrollViewRef}>
       <ProfileHeader user={user} />
-      <Container>
+      <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
         <Section
           title={isLoggedIn ? _(t`Paramètres du compte`) : _(t`Paramètres de l'application`)}>
@@ -134,17 +135,11 @@ export const Profile: React.FC = () => {
           <LogoMinistere />
           <Spacer.Column numberOfSpaces={4} />
         </Section>
-      </Container>
+      </ProfileContainer>
       <BottomSpacing />
     </ScrollView>
   )
 }
-
-const Container = styled.View({
-  flex: 1,
-  flexDirection: 'column',
-  paddingHorizontal: getSpacing(5),
-})
 
 const styles = StyleSheet.create({
   section: {
