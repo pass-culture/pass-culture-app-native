@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
 import { storage } from 'libs/storage'
 
 export function PrivacyPolicy() {
-  const [shouldShowModal, setShouldShowModal] = React.useState(false)
+  const [hasUserMadeCookieChoice, setHasUserMadeCookieChoice] = useState(true)
 
   useEffect(() => {
     storage.readObject('has_accepted_cookie').then((hasAcceptedCookie) => {
       if (hasAcceptedCookie === null) {
-        setShouldShowModal(true)
+        setHasUserMadeCookieChoice(false)
       }
     })
   }, [])
 
   function acceptCookie() {
-    setShouldShowModal(false)
+    setHasUserMadeCookieChoice(true)
     storage.saveObject('has_accepted_cookie', true)
   }
 
-  return shouldShowModal ? <PrivacyPolicyModal visible dismissModal={acceptCookie} /> : null
+  if (hasUserMadeCookieChoice) {
+    return null
+  }
+  return <PrivacyPolicyModal visible dismissModal={acceptCookie} />
 }

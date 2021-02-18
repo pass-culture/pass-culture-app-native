@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PrivacyPolicy page should render privacy policy 1`] = `
+exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
 Array [
   <View
     opacity={1}
