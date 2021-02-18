@@ -5,7 +5,7 @@ import { CENTS_IN_EURO } from 'libs/parsers/pricesConversion'
 
 const EURO_SYMBOL = '€'
 
-const formatToFrenchDecimal = (cents: number) => {
+export const formatToFrenchDecimal = (cents: number) => {
   const euros = cents / CENTS_IN_EURO
   // we show 2 decimals if price is not round. Ex: 21,50 €
   const fixed = euros === Math.floor(euros) ? euros : euros.toFixed(2)
