@@ -1285,8 +1285,8 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                         animationType=\\"slide\\"
                         hardwareAccelerated={false}
                         statusBarTranslucent={true}
-                        transparent={true}
-@@ -2249,11 +1038,11 @@
+                        testID=\\"modal\\"
+@@ -2250,11 +1039,11 @@
                                       \\"lineHeight\\": 48,
                                     },
                                   ]
