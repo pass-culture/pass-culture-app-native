@@ -1,1 +1,0 @@
-export { EighteenBirthday } from './EighteenBirthday'

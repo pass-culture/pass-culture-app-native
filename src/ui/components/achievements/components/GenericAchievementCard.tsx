@@ -122,7 +122,7 @@ Those props are provided by the GenericAchievementCard and must be passed down t
 }
 
 const FlexContainer = styled.View({
-  flex: 1,
+  flexGrow: 1,
   marginTop: getSpacing(4),
 })
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SecondCard should render second card 1`] = `
+exports[`EighteenBirthdayCard should render eighteen birthday card 1`] = `
 <View
   style={
     Array [
@@ -66,7 +66,7 @@ exports[`SecondCard should render second card 1`] = `
       ]
     }
   >
-    Des offres pour tous
+    Bonne nouvelle !
   </Text>
   <Text
     style={
@@ -81,7 +81,7 @@ exports[`SecondCard should render second card 1`] = `
       ]
     }
   >
-    et si tu es...
+    Tu as 18 ans...
   </Text>
   <View
     flex={0.5}
@@ -108,7 +108,7 @@ exports[`SecondCard should render second card 1`] = `
       ]
     }
   >
-    dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application.
+    Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité
   </Text>
   <View
     flex={2}
@@ -138,7 +138,7 @@ exports[`SecondCard should render second card 1`] = `
       forwardedRef={[Function]}
       style={
         Object {
-          "opacity": 0,
+          "opacity": 1,
         }
       }
     >
@@ -190,7 +190,7 @@ exports[`SecondCard should render second card 1`] = `
           testID="button-title"
           textColor="#ffffff"
         >
-          Continuer
+          Verifier mon identité
         </Text>
       </View>
     </View>
@@ -198,9 +198,7 @@ exports[`SecondCard should render second card 1`] = `
       style={
         Array [
           Object {
-            "flexBasis": 0,
             "flexGrow": 1,
-            "flexShrink": 1,
             "marginTop": 16,
           },
         ]

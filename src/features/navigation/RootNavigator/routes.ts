@@ -20,12 +20,12 @@ import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
+import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
-import { FirstTutorial } from 'features/firstLogin/achievements/pages/FirstTutorial/FirstTutorial'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
+import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
-import { EighteenBirthday } from 'features/profile/achievements/pages/EighteenBirthday'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { Profile } from 'features/profile/pages/Profile'
 import { TemporaryProfilePage } from 'features/profile/pages/TemporaryProfilePage'
@@ -45,7 +45,11 @@ const routes: Array<Route> = [
   { name: 'CheatMenu', component: CheatMenu },
   { name: 'CulturalSurvey', component: CulturalSurvey },
   { name: 'EligibilityConfirmed', component: EligibilityConfirmed },
-  { name: 'EighteenBirthday', component: EighteenBirthday },
+  {
+    name: 'EighteenBirthday',
+    component: EighteenBirthday,
+    options: TransitionPresets.SlideFromRightIOS,
+  },
   {
     name: 'ForgottenPassword',
     component: ForgottenPassword,
