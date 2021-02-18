@@ -28,7 +28,7 @@ export function NotificationSettings() {
         <Line>
           <SettingExplanation>
             {_(
-              t`Je veux recevoir les actualités et les meilleures offres du pass Culture par e-mail.`
+              t`Je veux recevoir les actualités et les meilleures offres du pass Culture par e\u2011mail.`
             )}
           </SettingExplanation>
           <Spacer.Column numberOfSpaces={4} />
@@ -42,7 +42,7 @@ export function NotificationSettings() {
               />
             }
           />
-          <Spacer.Column numberOfSpaces={4} />
+          <Spacer.Column numberOfSpaces={3} />
         </Line>
         <Separator />
         <Line>
@@ -62,7 +62,7 @@ export function NotificationSettings() {
               />
             }
           />
-          <Spacer.Column numberOfSpaces={4} />
+          <Spacer.Column numberOfSpaces={3} />
         </Line>
         <Spacer.Flex flex={1} />
         <ButtonPrimary title={_(t`Enregistrer`)} />
@@ -79,6 +79,6 @@ const Line = styled.View({
 const SettingExplanation = styled.Text({
   fontFamily: 'Montserrat-Medium',
   fontSize: 13,
-  lineHeight: 16,
+  lineHeight: '16px',
   color: ColorsEnum.GREY_DARK,
 })
