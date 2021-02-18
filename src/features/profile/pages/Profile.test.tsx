@@ -97,7 +97,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-legal-notices')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('TemporaryProfilePage')
+      expect(navigate).toBeCalledWith('LegalNotices')
     })
 
     it('should navigate when the confidentiality row is clicked', async () => {
