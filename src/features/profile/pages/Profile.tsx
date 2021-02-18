@@ -99,7 +99,7 @@ export const Profile: React.FC = () => {
           <Row
             title={_(t`Mentions légales`)}
             type="navigable"
-            onPress={() => navigate('TemporaryProfilePage')}
+            onPress={() => navigate('LegalNotices')}
             icon={LegalNotices}
             style={styles.row}
             testID="row-legal-notices"

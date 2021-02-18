@@ -307,18 +307,21 @@ msgstr "Des offres pour tous"
 msgid "Distance"
 msgstr "Distance"
 
-#. Dates (dates will always be in french)
-#: src/libs/parsers/formatDates.ts:62
-msgid "Du {0} au {1}"
-msgstr "Du {0} au {1}"
+#: src/libs/parsers/formatDates.ts:66
+#: src/libs/parsers/formatDates.ts:69
+msgid "Du {0} au {formattedEndDate}"
+msgstr "Du {0} au {formattedEndDate}"
+
+#: src/libs/parsers/formatDates.ts:68
+msgid "Du {0} {1} au {formattedEndDate}"
+msgstr "Du {0} {1} au {formattedEndDate}"
 
 #. Duo offer
 #: src/features/home/atoms/OfferCaption.tsx:15
 msgid "Duo"
 msgstr "Duo"
 
-#. Date (date will always be in french)
-#: src/libs/parsers/formatDates.ts:51
+#: src/libs/parsers/formatDates.ts:54
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
@@ -427,8 +430,8 @@ msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
 msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
 
 #: src/features/profile/pages/NotificationSettings.tsx:25
-msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e-mail."
-msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e-mail."
+msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
+msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
 
 #: src/features/profile/pages/NotificationSettings.tsx:34
 msgid "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
@@ -483,6 +486,7 @@ msgstr "Localisation"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
+#: src/features/profile/pages/LegalNotices.tsx:11
 #: src/features/profile/pages/Profile.tsx:54
 msgid "Mentions légales"
 msgstr "Mentions légales"

@@ -35,6 +35,7 @@ export type RootStackParamList = {
   ReinitializePassword: { token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
+  LegalNotices: undefined
   LocationFilter: undefined
   LocationPicker: undefined
   Profile: undefined

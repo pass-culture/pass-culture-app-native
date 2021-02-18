@@ -26,6 +26,7 @@ import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
+import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { Profile } from 'features/profile/pages/Profile'
 import { TemporaryProfilePage } from 'features/profile/pages/TemporaryProfilePage'
@@ -56,7 +57,7 @@ const routes: Array<Route> = [
     hoc: withAsyncErrorBoundary,
   },
   { name: 'IdCheck', component: IdCheck },
-  { name: 'SearchCategories', component: SearchCategories },
+  { name: 'LegalNotices', component: LegalNotices },
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary },
@@ -72,6 +73,7 @@ const routes: Array<Route> = [
     component: ResetPasswordExpiredLink,
     hoc: withAsyncErrorBoundary,
   },
+  { name: 'SearchCategories', component: SearchCategories },
   { name: 'SearchFilter', component: SearchFilter },
   { name: 'SetBirthday', component: SetBirthday },
   { name: 'SetEmail', component: SetEmail },
