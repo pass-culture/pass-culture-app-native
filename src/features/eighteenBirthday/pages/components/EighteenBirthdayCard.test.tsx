@@ -11,7 +11,7 @@ import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/errorMonitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromisesTimes } from 'tests/utils'
+import { superFlushWithAct } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { EighteenBirthdayCard } from './EighteenBirthdayCard'
@@ -29,29 +29,42 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-describe('EighteenBirthdayCard', () => {
+beforeEach(() => {
+  simulateUserMeSuccess()
+  simulateEligibleIdCheckToken()
+})
+
+afterEach(jest.clearAllMocks)
+
+describe('<EighteenBirthdayCard />', () => {
   it('should render eighteen birthday card', async () => {
     jest.useFakeTimers()
     const firstTutorial = await renderEighteenBirthdayCard()
-    jest.advanceTimersByTime(2000)
+
+    act(() => {
+      jest.advanceTimersByTime(2000)
+    })
+    await superFlushWithAct()
 
     expect(firstTutorial).toMatchSnapshot()
     jest.useRealTimers()
   })
 
   it('should go to id check when user is authed', async () => {
-    simulateAuthedUser()
-    simulateIdCheckToken()
     const { getByText } = await renderEighteenBirthdayCard()
 
     fireEvent.press(getByText('Verifier mon identité'))
-    expect(navigate).toBeCalledWith('IdCheck', { email, licenceToken: token })
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('IdCheck', { email, licenceToken: token })
+    })
   })
 
   it('should throw an error when opening id check when not eligible', async () => {
-    simulateAuthedUser()
     simulateNotEligibleIdCheckToken()
     const { getByText } = await renderEighteenBirthdayCard()
+
     await waitForExpect(() => {
       expect(() => fireEvent.press(getByText('Verifier mon identité'))).toThrowError(
         new MonitoringError(
@@ -68,7 +81,11 @@ describe('EighteenBirthdayCard', () => {
     })
 
     fireEvent.press(getByText('Verifier mon identité'))
-    expect(navigate).toBeCalledWith('Login')
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('Login')
+    })
     expect(mockDisplayInfosSnackBar).toBeCalledWith({
       message: `Tu n'es pas connecté !`,
     })
@@ -89,11 +106,11 @@ async function renderEighteenBirthdayCard({ isLoggedIn } = { isLoggedIn: true })
       </AuthContext.Provider>
     )
   )
-  await act(() => flushAllPromisesTimes(10))
+  await superFlushWithAct()
   return renderAPI
 }
 
-function simulateAuthedUser() {
+function simulateUserMeSuccess() {
   server.use(
     rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({ email, firstName } as UserProfileResponse))
@@ -101,7 +118,7 @@ function simulateAuthedUser() {
   )
 }
 
-function simulateIdCheckToken() {
+function simulateEligibleIdCheckToken() {
   server.use(
     rest.get(env.API_BASE_URL + '/native/v1/id_check_token', (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({ token } as GetIdCheckTokenResponse))
@@ -112,7 +129,7 @@ function simulateIdCheckToken() {
 function simulateNotEligibleIdCheckToken() {
   server.use(
     rest.get(env.API_BASE_URL + '/native/v1/id_check_token', (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json({ token: undefined } as GetIdCheckTokenResponse))
+      return res(ctx.status(200), ctx.json({ token: null } as GetIdCheckTokenResponse))
     })
   )
 }
