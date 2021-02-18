@@ -45,8 +45,8 @@ interface Venue {
 }
 
 export interface Geoloc {
-  lat?: number
-  lng?: number
+  lat?: number | null
+  lng?: number | null
 }
 
 export interface AlgoliaHit {

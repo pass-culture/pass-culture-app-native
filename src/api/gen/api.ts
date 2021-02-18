@@ -182,13 +182,31 @@ export interface Coordinates {
      * @type {number}
      * @memberof Coordinates
      */
-    latitude?: number;
+    latitude?: number | null;
     /**
      * 
      * @type {number}
      * @memberof Coordinates
      */
-    longitude?: number;
+    longitude?: number | null;
+}/**
+ * 
+ * @export
+ * @interface CulturalSurveyRequest
+ */
+export interface CulturalSurveyRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof CulturalSurveyRequest
+     */
+    culturalSurveyId?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CulturalSurveyRequest
+     */
+    needsToFillCulturalSurvey: boolean;
 }/**
  * 
  * @export
@@ -233,7 +251,7 @@ export interface GetIdCheckTokenResponse {
      * @type {string}
      * @memberof GetIdCheckTokenResponse
      */
-    token?: string;
+    token?: string | null;
 }/**
  * 
  * @export
@@ -245,25 +263,25 @@ export interface OfferAccessibilityResponse {
      * @type {boolean}
      * @memberof OfferAccessibilityResponse
      */
-    audioDisability?: boolean;
+    audioDisability?: boolean | null;
     /**
      * 
      * @type {boolean}
      * @memberof OfferAccessibilityResponse
      */
-    mentalDisability?: boolean;
+    mentalDisability?: boolean | null;
     /**
      * 
      * @type {boolean}
      * @memberof OfferAccessibilityResponse
      */
-    motorDisability?: boolean;
+    motorDisability?: boolean | null;
     /**
      * 
      * @type {boolean}
      * @memberof OfferAccessibilityResponse
      */
-    visualDisability?: boolean;
+    visualDisability?: boolean | null;
 }/**
  * 
  * @export
@@ -287,7 +305,7 @@ export interface OfferCategoryResponse {
      * @type {CategoryNameEnum}
      * @memberof OfferCategoryResponse
      */
-    name?: CategoryNameEnum;
+    name?: CategoryNameEnum | null;
 }/**
  * 
  * @export
@@ -299,67 +317,67 @@ export interface OfferExtraData {
      * @type {string}
      * @memberof OfferExtraData
      */
-    author?: string;
+    author?: string | null;
     /**
      * 
      * @type {number}
      * @memberof OfferExtraData
      */
-    durationMinutes?: number;
+    durationMinutes?: number | null;
     /**
      * 
      * @type {string}
      * @memberof OfferExtraData
      */
-    isbn?: string;
+    isbn?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferExtraData
      */
-    musicSubType?: string;
+    musicSubType?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferExtraData
      */
-    musicType?: string;
+    musicType?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferExtraData
      */
-    performer?: string;
+    performer?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferExtraData
      */
-    showSubType?: string;
+    showSubType?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferExtraData
      */
-    showType?: string;
+    showType?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferExtraData
      */
-    speaker?: string;
+    speaker?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferExtraData
      */
-    stageDirector?: string;
+    stageDirector?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferExtraData
      */
-    visa?: string;
+    visa?: string | null;
 }/**
  * 
  * @export
@@ -371,7 +389,7 @@ export interface OfferImageResponse {
      * @type {string}
      * @memberof OfferImageResponse
      */
-    credit?: string;
+    credit?: string | null;
     /**
      * 
      * @type {string}
@@ -413,19 +431,19 @@ export interface OfferResponse {
      * @type {string}
      * @memberof OfferResponse
      */
-    description?: string;
+    description?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferResponse
      */
-    externalTicketOfficeUrl?: string;
+    externalTicketOfficeUrl?: string | null;
     /**
      * 
      * @type {OfferExtraData}
      * @memberof OfferResponse
      */
-    extraData?: OfferExtraData;
+    extraData?: OfferExtraData | null;
     /**
      * 
      * @type {number}
@@ -437,7 +455,7 @@ export interface OfferResponse {
      * @type {OfferImageResponse}
      * @memberof OfferResponse
      */
-    image?: OfferImageResponse;
+    image?: OfferImageResponse | null;
     /**
      * 
      * @type {boolean}
@@ -479,7 +497,7 @@ export interface OfferResponse {
      * @type {string}
      * @memberof OfferResponse
      */
-    withdrawalDetails?: string;
+    withdrawalDetails?: string | null;
 }/**
  * 
  * @export
@@ -491,13 +509,19 @@ export interface OfferStockResponse {
      * @type {Date}
      * @memberof OfferStockResponse
      */
-    beginningDatetime?: Date;
+    beginningDatetime?: Date | null;
     /**
      * 
      * @type {Date}
      * @memberof OfferStockResponse
      */
-    bookingLimitDatetime?: Date;
+    bookingLimitDatetime?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof OfferStockResponse
+     */
+    cancellationLimitDatetime?: Date | null;
     /**
      * 
      * @type {number}
@@ -527,13 +551,13 @@ export interface OfferVenueResponse {
      * @type {string}
      * @memberof OfferVenueResponse
      */
-    address?: string;
+    address?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferVenueResponse
      */
-    city?: string;
+    city?: string | null;
     /**
      * 
      * @type {Coordinates}
@@ -563,13 +587,13 @@ export interface OfferVenueResponse {
      * @type {string}
      * @memberof OfferVenueResponse
      */
-    postalCode?: string;
+    postalCode?: string | null;
     /**
      * 
      * @type {string}
      * @memberof OfferVenueResponse
      */
-    publicName?: string;
+    publicName?: string | null;
 }/**
  * 
  * @export
@@ -594,6 +618,12 @@ export interface RequestPasswordResetRequest {
      * @memberof RequestPasswordResetRequest
      */
     email: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RequestPasswordResetRequest
+     */
+    token?: string | null;
 }/**
  * 
  * @export
@@ -671,19 +701,19 @@ export interface UserProfileResponse {
      * @type {Date}
      * @memberof UserProfileResponse
      */
-    dateOfBirth?: Date;
+    dateOfBirth?: Date | null;
     /**
      * 
      * @type {Date}
      * @memberof UserProfileResponse
      */
-    depositExpirationDate?: Date;
+    depositExpirationDate?: Date | null;
     /**
      * 
      * @type {number}
      * @memberof UserProfileResponse
      */
-    depositVersion?: number;
+    depositVersion?: number | null;
     /**
      * 
      * @type {string}
@@ -701,7 +731,7 @@ export interface UserProfileResponse {
      * @type {string}
      * @memberof UserProfileResponse
      */
-    firstName?: string;
+    firstName?: string | null;
     /**
      * 
      * @type {boolean}
@@ -731,7 +761,7 @@ export interface UserProfileResponse {
      * @type {string}
      * @memberof UserProfileResponse
      */
-    lastName?: string;
+    lastName?: string | null;
     /**
      * 
      * @type {boolean}
@@ -743,13 +773,19 @@ export interface UserProfileResponse {
      * @type {string}
      * @memberof UserProfileResponse
      */
-    phoneNumber?: string;
+    phoneNumber?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserProfileResponse
      */
-    pseudo?: string;
+    pseudo?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserProfileResponse
+     */
+    showEligibleCard: boolean;
 }/**
  * 
  * @export
@@ -761,7 +797,7 @@ export interface UserProfileUpdateRequest {
      * @type {boolean}
      * @memberof UserProfileUpdateRequest
      */
-    hasAllowedRecommendations?: boolean;
+    hasAllowedRecommendations?: boolean | null;
 }/**
  * 
  * @export
@@ -791,7 +827,7 @@ export interface ValidateEmailResponse {
      * @type {string}
      * @memberof ValidateEmailResponse
      */
-    idCheckToken?: string;
+    idCheckToken?: string | null;
     /**
      * 
      * @type {string}
@@ -947,6 +983,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"ChangePasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary update_cultural_survey <POST>
+         * @param {CulturalSurveyRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/me/cultural_survey`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"CulturalSurveyRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
             return {
                 url: url.format(localVarUrlObj),
@@ -1206,6 +1268,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary update_cultural_survey <POST>
+         * @param {CulturalSurveyRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1meculturalSurvey(basePath: string, body?: CulturalSurveyRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1meculturalSurvey(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary update_user_profile <POST>
          * @param {UserProfileUpdateRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -1366,6 +1440,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1changePassword(body?: ChangePasswordRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1changePassword(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary update_cultural_survey <POST>
+     * @param {CulturalSurveyRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1meculturalSurvey(this.basePath, body, options)
     }
     /**
      * 

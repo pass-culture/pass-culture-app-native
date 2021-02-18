@@ -48,6 +48,7 @@ const userProfileAPIResponse: UserProfileResponse = {
   hasAllowedRecommendations: true,
   isEligible: true,
   needsToFillCulturalSurvey: true,
+  showEligibleCard: false,
   id: 1234,
 }
 

@@ -7,14 +7,14 @@ export interface OfferAdaptedResponse extends OfferResponse {
   fullAddress: string | null
 }
 
-const isNotEmpty = (text: string | undefined) => text !== undefined && text !== ''
+const isNotEmpty = (text: string | undefined | null) => text !== undefined && text !== ''
 
 export const formatFullAddress = (
-  publicName: string | undefined,
+  publicName: string | undefined | null,
   name: string,
-  address: string | undefined,
-  postalCode: string | undefined,
-  city: string | undefined
+  address: string | undefined | null,
+  postalCode: string | undefined | null,
+  city: string | undefined | null
 ) => {
   let fullAddress = `${publicName || name}`
   if (isNotEmpty(address)) fullAddress = fullAddress.concat(`, ${address}`)

@@ -21,6 +21,7 @@ const userV1: UserProfileResponse = {
   hasAllowedRecommendations: true,
   id: 1234,
   needsToFillCulturalSurvey: true,
+  showEligibleCard: false,
 }
 
 const userV2: UserProfileResponse = {

@@ -41,8 +41,11 @@ export const useItinerary = () => {
     backupSolution: BackupSolution
   ) => {
     try {
+      if (!coordinates.latitude || !coordinates.longitude) {
+        throw Error()
+      }
       await LN.navigate([coordinates.latitude, coordinates.longitude], { app })
-    } catch (e: unknown) {
+    } catch (_error: unknown) {
       switch (backupSolution) {
         case BackupSolution.OPEN_STREET_MAP:
           navigateWithOpenStreetMap(coordinates)

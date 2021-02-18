@@ -11,8 +11,8 @@ import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
 
 type BeneficiaryHeaderProps = {
-  firstName?: string
-  lastName?: string
+  firstName?: string | null
+  lastName?: string | null
   walletBalance: number
   depositExpirationDate?: string
 } & (
