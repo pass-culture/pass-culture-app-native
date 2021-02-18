@@ -1,129 +1,137 @@
-import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-import { act, render, waitFor } from '@testing-library/react-native'
+import { act, render } from '@testing-library/react-native'
 import React from 'react'
-import { Text } from 'react-native'
+import waitForExpect from 'wait-for-expect'
 
-import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { navigate } from '__mocks__/@react-navigation/native'
+import { api } from 'api/api'
+import { useCurrentRoute } from 'features/navigation/helpers'
+import { simulateWebviewMessage, superFlushWithAct } from 'tests/utils'
 
 import { CulturalSurvey } from './CulturalSurvey'
 
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+const mockedUseCurrentRoute = useCurrentRoute as jest.MockedFunction<typeof useCurrentRoute>
+jest.mock('features/navigation/helpers', () => ({
+  useCurrentRoute: jest.fn(),
+}))
+
+beforeEach(() => {
+  mockedUseCurrentRoute.mockReturnValue({ name: 'CulturalSurvey', key: 'key' })
+})
+
+afterEach(jest.clearAllMocks)
 
 describe('<CulturalSurvey />', () => {
   it('should render correctly', async () => {
-    const renderAPI = renderCulturalSurveyWithNavigation()
-    await waitFor(() => {
-      expect(renderAPI).toMatchSnapshot()
-    })
+    const renderAPI = await renderCulturalSurveyWithNavigation()
+    expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should not display webview when navigating to another screen', async () => {
-    const renderAPI = renderCulturalSurveyWithNavigation()
+  it('should not display webview when another screen is displayed', async () => {
+    mockedUseCurrentRoute.mockReturnValue({ name: 'Home', key: 'key' })
+    const renderAPI = await renderCulturalSurveyWithNavigation()
 
-    act(() => {
-      navigate('Home')
-    })
-
-    await waitFor(() => {
-      expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
-      expect(renderAPI.getByText('Home Page')).toBeTruthy()
-    })
+    expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
   })
 
   it('should NOT close webview when emitted message is not "onClose"', async () => {
-    const renderAPI = renderCulturalSurveyWithNavigation()
+    const renderAPI = await renderCulturalSurveyWithNavigation()
 
-    act(() => {
-      const webview = renderAPI.getByTestId('cultural-survey-webview')
-      webview.props.onMessage({ nativeEvent: { data: 'Something Else' } })
+    const webview = renderAPI.getByTestId('cultural-survey-webview')
+    simulateWebviewMessage(webview, '{ "message": "Something else" }')
+    await superFlushWithAct()
+
+    expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeTruthy()
+    expect(navigate).not.toBeCalled()
+  })
+
+  it('should update user profile with userId and NOT close webview when emitted message is "onSubmit"', async () => {
+    const postnativev1meculturalSurveySpy = jest.spyOn(api, 'postnativev1meculturalSurvey')
+    const renderAPI = await renderCulturalSurveyWithNavigation()
+
+    const webview = renderAPI.getByTestId('cultural-survey-webview')
+    simulateWebviewMessage(webview, '{ "message": "onSubmit", "userId": "fakeUserId" }')
+    await superFlushWithAct()
+
+    expect(postnativev1meculturalSurveySpy).toBeCalledWith({
+      culturalSurveyId: 'fakeUserId',
+      needsToFillCulturalSurvey: false,
     })
+    expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeTruthy()
+    expect(navigate).not.toBeCalled()
+  })
 
-    await waitFor(() => {
-      expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeTruthy()
-      expect(renderAPI.queryByText('Home Page')).toBeFalsy()
+  it('should update user profile and close webview when emitted message is "onClose"', async () => {
+    const postnativev1meculturalSurveySpy = jest.spyOn(api, 'postnativev1meculturalSurvey')
+    const renderAPI = await renderCulturalSurveyWithNavigation()
+
+    const webview = renderAPI.getByTestId('cultural-survey-webview')
+    simulateWebviewMessage(webview, '{ "message": "onClose", "userId": "fakeUserId" }')
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('Home', { shouldDisplayLoginModal: false })
+    })
+    expect(postnativev1meculturalSurveySpy).toBeCalledWith({
+      culturalSurveyId: null,
+      needsToFillCulturalSurvey: false,
     })
   })
 
-  it('should NOT close webview when emitted message is "onSubmit"', async () => {
-    const renderAPI = renderCulturalSurveyWithNavigation()
+  it('should NOT update user profile and only close webview when emitted message is "onClose" preceded by "onSubmit"', async () => {
+    const postnativev1meculturalSurveySpy = jest.spyOn(api, 'postnativev1meculturalSurvey')
+    const renderAPI = await renderCulturalSurveyWithNavigation()
 
-    act(() => {
-      const webview = renderAPI.getByTestId('cultural-survey-webview')
-      webview.props.onMessage({ nativeEvent: { data: 'onSubmit' } })
+    const webview = renderAPI.getByTestId('cultural-survey-webview')
+    simulateWebviewMessage(webview, '{ "message": "onSubmit", "userId": "fakeUserId" }')
+    await superFlushWithAct()
+
+    expect(postnativev1meculturalSurveySpy).toHaveBeenNthCalledWith(1, {
+      culturalSurveyId: 'fakeUserId',
+      needsToFillCulturalSurvey: false,
     })
 
-    await waitFor(() => {
-      expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeTruthy()
-      expect(renderAPI.queryByText('Home Page')).toBeFalsy()
+    simulateWebviewMessage(webview, '{ "message": "onClose", "userId": "fakeUserId" }')
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('Home', { shouldDisplayLoginModal: false })
     })
-  })
-
-  it('should close webview when emitted message is "onClose"', async () => {
-    const renderAPI = renderCulturalSurveyWithNavigation()
-
-    act(() => {
-      const webview = renderAPI.getByTestId('cultural-survey-webview')
-      webview.props.onMessage({ nativeEvent: { data: 'onClose' } })
-    })
-
-    await waitFor(() => {
-      expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
-      expect(renderAPI.getByText('Home Page')).toBeTruthy()
+    expect(postnativev1meculturalSurveySpy).toHaveBeenNthCalledWith(1, {
+      culturalSurveyId: 'fakeUserId',
+      needsToFillCulturalSurvey: false,
     })
   })
 
   it('should NOT close webview when navigation state has NOT url containing "app.passculture"', async () => {
-    const renderAPI = renderCulturalSurveyWithNavigation()
+    const renderAPI = await renderCulturalSurveyWithNavigation()
 
     act(() => {
       const webview = renderAPI.getByTestId('cultural-survey-webview')
       webview.props.onNavigationStateChange({ url: 'app.example' })
     })
+    await superFlushWithAct()
 
-    await waitFor(() => {
-      expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeTruthy()
-      expect(renderAPI.queryByText('Home Page')).toBeFalsy()
-    })
+    expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeTruthy()
+    expect(navigate).not.toBeCalled()
   })
 
   it('should close webview when navigation state has url containing "app.passculture"', async () => {
-    const renderAPI = renderCulturalSurveyWithNavigation()
+    const renderAPI = await renderCulturalSurveyWithNavigation()
 
     act(() => {
       const webview = renderAPI.getByTestId('cultural-survey-webview')
       webview.props.onNavigationStateChange({ url: 'app.passculture-testing' })
     })
+    await superFlushWithAct()
 
-    await waitFor(() => {
-      expect(renderAPI.queryByTestId('cultural-survey-webview')).toBeFalsy()
-      expect(renderAPI.getByText('Home Page')).toBeTruthy()
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('Home', { shouldDisplayLoginModal: false })
     })
   })
 })
 
-type StackParamList = {
-  CulturalSurvey: RootStackParamList['CulturalSurvey']
-  Home: undefined
-}
-
-const Stack = createStackNavigator<StackParamList>()
-
-const navigationRef = React.createRef<NavigationContainerRef>()
-
-function navigate(name: string) {
-  navigationRef.current?.navigate(name)
-}
-
-const Home = () => <Text>Home Page</Text>
-
-function renderCulturalSurveyWithNavigation() {
-  return render(
-    <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator initialRouteName="CulturalSurvey">
-        <Stack.Screen name="CulturalSurvey" component={CulturalSurvey} />
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
+async function renderCulturalSurveyWithNavigation() {
+  const renderAPI = render(<CulturalSurvey />)
+  await superFlushWithAct()
+  return renderAPI
 }

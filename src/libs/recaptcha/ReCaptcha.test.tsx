@@ -1,6 +1,7 @@
-import { act, render } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import React from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
+
+import { simulateWebviewMessage } from 'tests/utils'
 
 import { ReCaptcha } from './ReCaptcha'
 
@@ -66,11 +67,3 @@ describe('<ReCaptcha />', () => {
     expect(reCaptchaProps.onLoad).toBeCalled()
   })
 })
-
-function simulateWebviewMessage(webview: ReactTestInstance, payload: string) {
-  act(() => {
-    webview.props.onMessage({
-      nativeEvent: { data: payload },
-    })
-  })
-}

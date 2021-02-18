@@ -1,18 +1,21 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { WebView, WebViewMessageEvent } from 'react-native-webview'
 import { WebViewNavigation } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
+import { api } from 'api/api'
 import { useCurrentRoute } from 'features/navigation/helpers'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { Background } from 'ui/svg/Background'
 import { Spacer } from 'ui/theme'
 
-type Props = StackScreenProps<RootStackParamList, 'CulturalSurvey'>
+type WebViewMessagePayload =
+  | { message: 'onClose'; userId: string }
+  | { message: 'onSubmit'; userId: string }
 
 const WEBVIEW_HTML = `<html>
                         <head>
@@ -23,36 +26,72 @@ const WEBVIEW_HTML = `<html>
                       </html>`
 const WEBVIEW_SOURCE = { html: WEBVIEW_HTML }
 
-export const CulturalSurvey: React.FC<Props> = function () {
+export const CulturalSurvey: React.FC = function () {
+  const [hasSubmitted, setHasSubmitted] = useState(false)
+
   const currentRoute = useCurrentRoute()
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
 
   function onLoad() {
     if (webviewRef.current) {
-      const encodedUUIDv1 = encodeURIComponent(uuidv1())
-      const url = `${env.CULTURAL_SURVEY_TYPEFORM_URL}?userId=${encodedUUIDv1}`
-      // See options object at https://developer.typeform.com/embed/modes/#popup-mode
-      const options = {
-        hideHeaders: false,
-        hideFooter: false,
-        opacity: 100,
-      }
-      const stringifedOptions = JSON.stringify(JSON.stringify(options))
+      const userId = encodeURIComponent(uuidv1())
+      const url = `${env.CULTURAL_SURVEY_TYPEFORM_URL}?userId=${userId}`
       const embedCode = `{
-          const onSubmit = () => window.ReactNativeWebView.postMessage("onSubmit")
-          const onClose = () => window.ReactNativeWebView.postMessage("onClose")
-          const options = Object.assign({}, JSON.parse(${stringifedOptions}), {onSubmit,onClose})
-          const ref = typeformEmbed.makePopup('${url}', options)
-          ref.open()
+          function sendMessagePayload(payload) {
+            window.ReactNativeWebView.postMessage(JSON.stringify(payload));
+          }
+          // See options object at https://developer.typeform.com/embed/modes/#popup-mode
+          const options = {
+            hideHeaders: false,
+            hideFooter: false,
+            opacity: 100,
+            onSubmit() { 
+              sendMessagePayload({ message: "onSubmit", userId: "${userId}" });
+            },
+            onClose() { 
+              sendMessagePayload({ message: "onClose", userId: "${userId}" });
+            },
+          };
+          const ref = typeformEmbed.makePopup("${url}", options);
+          ref.open();
         }`
       webviewRef.current.injectJavaScript(embedCode)
     }
   }
 
-  function onMessage(event: WebViewMessageEvent) {
-    const message = event.nativeEvent.data
-    if (message === 'onClose') {
+  async function onMessage(event: WebViewMessageEvent) {
+    try {
+      const payload: WebViewMessagePayload = JSON.parse(event.nativeEvent.data)
+      const onClose = payload.message === 'onClose'
+      const onSubmit = payload.message === 'onSubmit'
+      if (onClose || onSubmit) {
+        try {
+          if (onClose && !hasSubmitted) {
+            await api.postnativev1meculturalSurvey({
+              culturalSurveyId: null,
+              needsToFillCulturalSurvey: false,
+            })
+          }
+          if (onClose) {
+            navigation.navigate('Home', { shouldDisplayLoginModal: false })
+          }
+          if (onSubmit) {
+            await api.postnativev1meculturalSurvey({
+              culturalSurveyId: payload.userId,
+              needsToFillCulturalSurvey: false,
+            })
+            setHasSubmitted(true)
+          }
+        } catch (error) {
+          throw new MonitoringError(
+            `The user profile could not be updated : typeform with userId ${payload.userId} 
+            following '${payload.message}' action. Cause : ` + error,
+            'UserProfileUpdateDuringCulturalSurvey'
+          )
+        }
+      }
+    } catch (error) {
       navigation.navigate('Home', { shouldDisplayLoginModal: false })
     }
   }
