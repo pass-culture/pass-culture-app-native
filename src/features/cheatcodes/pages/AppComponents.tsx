@@ -79,6 +79,7 @@ import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { Profile } from 'ui/svg/icons/Profile'
+import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
@@ -452,6 +453,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Bell size={24} />
           <Text> - Bell </Text>
+        </AlignedText>
+        <AlignedText>
+          <ProfileDeletion size={24} />
+          <Text> - ProfileDeletion </Text>
         </AlignedText>
       </AccordionItem>
 

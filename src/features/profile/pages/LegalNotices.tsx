@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { _ } from 'libs/i18n'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { getSpacing } from 'ui/theme'
 
 import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
@@ -38,7 +39,7 @@ export function LegalNotices() {
           onPress={() => {
             // TODO: 6206
           }}
-          icon={ExternalSite}
+          icon={ProfileDeletion}
           style={styles.row}
           testID="row-account-deletion"
         />
