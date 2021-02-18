@@ -5,8 +5,7 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
-
-import { isArrayOfOfferTypeguard } from '../typeguards'
+import { isArrayOfOfferTypeguard } from 'features/home/typeguards'
 
 import { AlgoliaModuleResponse } from './useHomeAlgoliaModules'
 
