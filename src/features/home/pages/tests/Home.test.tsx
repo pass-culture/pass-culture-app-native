@@ -14,7 +14,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { flushAllPromises, flushAllPromisesTimes } from 'tests/utils'
 
-import { Home } from './Home'
+import { Home } from '../Home'
 
 jest.mock('libs/environment', () => ({
   env: {
@@ -23,7 +23,7 @@ jest.mock('libs/environment', () => ({
   },
 }))
 
-jest.mock('./useShowSkeleton', () => ({
+jest.mock('features/home/pages/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 

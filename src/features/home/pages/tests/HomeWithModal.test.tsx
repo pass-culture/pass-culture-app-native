@@ -6,7 +6,7 @@ import { Tab } from 'features/navigation/TabBar/TabNavigator'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
-import { Home } from './Home'
+import { Home } from '../Home'
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: undefined })),
@@ -24,7 +24,7 @@ jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
 }))
 
-jest.mock('./useShowSkeleton', () => ({
+jest.mock('features/home/pages/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 
