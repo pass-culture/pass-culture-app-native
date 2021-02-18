@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EighteenBirthdayCard should render eighteen birthday card 1`] = `
+exports[`FirstCard should render first card 1`] = `
 <View
   style={
     Array [
@@ -66,7 +66,7 @@ exports[`EighteenBirthdayCard should render eighteen birthday card 1`] = `
       ]
     }
   >
-    Bonne nouvelle !
+    Le pass Culture
   </Text>
   <Text
     style={
@@ -81,7 +81,7 @@ exports[`EighteenBirthdayCard should render eighteen birthday card 1`] = `
       ]
     }
   >
-    Tu as 18 ans...
+    c'est...
   </Text>
   <View
     flex={0.5}
@@ -108,7 +108,7 @@ exports[`EighteenBirthdayCard should render eighteen birthday card 1`] = `
       ]
     }
   >
-    Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité
+    une initiative financée par le Ministère de la Culture.
   </Text>
   <View
     flex={2}
@@ -190,7 +190,7 @@ exports[`EighteenBirthdayCard should render eighteen birthday card 1`] = `
           testID="button-title"
           textColor="#ffffff"
         >
-          Verifier mon identité
+          Continuer
         </Text>
       </View>
     </View>
@@ -198,9 +198,7 @@ exports[`EighteenBirthdayCard should render eighteen birthday card 1`] = `
       style={
         Array [
           Object {
-            "flexBasis": 0,
             "flexGrow": 1,
-            "flexShrink": 1,
             "marginTop": 16,
           },
         ]

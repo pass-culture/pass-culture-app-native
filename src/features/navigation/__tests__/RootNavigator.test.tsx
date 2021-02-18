@@ -29,7 +29,7 @@ jest.mock('features/navigation/TabBar/TabNavigator', () => ({
     return <Text>TabNavigator screen</Text>
   },
 }))
-jest.mock('features/firstLogin/achievements/pages/FirstTutorial/FirstTutorial', () => ({
+jest.mock('features/firstTutorial/pages/FirstTutorial/FirstTutorial', () => ({
   FirstTutorial() {
     const Text = mockText
     return <Text>FirstTutorial screen</Text>

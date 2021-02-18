@@ -6,6 +6,7 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
+import { useEligibleCard } from 'features/eighteenBirthday/useEligibleCard'
 import { useUserProfileInfo } from 'features/home/api'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -48,6 +49,8 @@ export const Home: FunctionComponent = function () {
       showSignInModal()
     }
   })
+
+  useEligibleCard()
 
   useListenDeepLinksEffect()
 

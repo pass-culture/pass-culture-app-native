@@ -1,32 +1,26 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { render, act } from '@testing-library/react-native'
+import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
-import { useUserProfileInfo } from 'features/home/api'
-import { Tab } from 'features/navigation/TabBar/TabNavigator'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { UserProfileResponse } from 'api/gen'
+import { AuthContext } from 'features/auth/AuthContext'
+import { simulateMustShowEligibleCard } from 'features/eighteenBirthday/useEligibleCard.test'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromises } from 'tests/utils'
+import { server } from 'tests/server'
+import { flushAllPromises, flushAllPromisesTimes } from 'tests/utils'
 
 import { Home } from './Home'
 
-const useUserProfileInfoMock = useUserProfileInfo as jest.Mock
-
-jest.mock('features/home/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({ data: undefined })),
-}))
-
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('libs/environment', () => ({
   env: {
     FEATURE_FLAG_CODE_PUSH: true,
     CHEAT_BUTTONS_ENABLED: false,
   },
-}))
-
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
 }))
 
 jest.mock('./useShowSkeleton', () => ({
@@ -42,23 +36,20 @@ jest.mock('features/home/pages/useDisplayedHomeModules', () => ({
 
 describe('Home component', () => {
   it('should render correctly without login modal', async () => {
-    const home = await homeRenderer(false)
+    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
 
     expect(home).toMatchSnapshot()
     home.unmount()
   })
 
   it('should render modal correctly', async () => {
-    const homeWithLoginModal = await homeRenderer(true)
-    const homeWithoutLoginModal = await homeRenderer(false)
-
-    expect(homeWithoutLoginModal).toMatchDiffSnapshot(homeWithLoginModal)
-    homeWithLoginModal.unmount()
-    homeWithoutLoginModal.unmount()
+    const { getByText, unmount } = await homeRenderer({ isLoggedIn: false, withModal: true })
+    expect(getByText('Se connecter')).toBeTruthy()
+    unmount()
   })
 
   it('should have a welcome message', async () => {
-    const { getByText, unmount } = await homeRenderer(false)
+    const { getByText, unmount } = await homeRenderer({ isLoggedIn: false, withModal: false })
 
     const welcomeText = getByText('Bienvenue !')
     expect(welcomeText.props.children).toBe('Bienvenue !')
@@ -66,40 +57,49 @@ describe('Home component', () => {
   })
 
   it('should have a personalized welcome message when user is logged in', async () => {
-    useUserProfileInfoMock.mockImplementationOnce(() => ({
-      data: { email: 'email@domain.ext', firstName: 'Jean' },
-    }))
-
-    const { getByText, unmount } = await homeRenderer(false)
-
-    const welcomeText = getByText('Bonjour Jean')
-    expect(welcomeText.props.children).toBe('Bonjour Jean')
+    simulateAuthedUser()
+    const { getByText, unmount } = await homeRenderer({ isLoggedIn: true, withModal: false })
+    await waitForExpect(() => {
+      const welcomeText = getByText('Bonjour Jean')
+      expect(welcomeText.props.children).toBe('Bonjour Jean')
+    })
     unmount()
   })
-  it('should not have code push button', async () => {
-    const home = await homeRenderer(false)
 
-    expect(() => home.getByText('Check update')).toThrowError()
+  it('should not have code push button', async () => {
+    const home = await homeRenderer({ withModal: false })
+
+    expect(home.queryByText('Check update')).toBeFalsy()
     home.unmount()
   })
 
   it('should have components and navigation buttons when CHEAT_BUTTONS_ENABLED', async () => {
     env.CHEAT_BUTTONS_ENABLED = true
-    const home = await homeRenderer(false)
+    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
 
-    expect(() => home.getByText('Composants')).toBeTruthy()
-    expect(() => home.getByText('Navigation')).toBeTruthy()
+    expect(home.queryByText('Composants')).toBeTruthy()
+    expect(home.queryByText('Navigation')).toBeTruthy()
     home.unmount()
   })
 
   it('should NOT have components or navigation buttons when NOT CHEAT_BUTTONS_ENABLED', async () => {
     env.CHEAT_BUTTONS_ENABLED = false
-    const home = await homeRenderer(false)
+    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
 
-    expect(() => home.getByText('Composants')).toThrowError()
-    expect(() => home.getByText('Navigation')).toThrowError()
+    expect(home.queryByText('Composants')).toBeFalsy()
+    expect(home.queryByText('Navigation')).toBeFalsy()
     home.unmount()
   })
+  function simulateAuthedUser() {
+    server.use(
+      rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
+        return res(
+          ctx.status(200),
+          ctx.json({ email: 'email@domain.ext', firstName: 'Jean' } as UserProfileResponse)
+        )
+      })
+    )
+  }
 })
 
 describe('Home component - Analytics', () => {
@@ -115,7 +115,7 @@ describe('Home component - Analytics', () => {
   }
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
-    const home = await homeRenderer(false)
+    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
     const scrollView = home.getByTestId('homeScrollView')
     await act(async () => {
       await flushAllPromises()
@@ -134,7 +134,7 @@ describe('Home component - Analytics', () => {
   })
 
   it('should trigger logEvent "AllModulesSeen" only once', async () => {
-    const home = await homeRenderer(false)
+    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
     const scrollView = home.getByTestId('homeScrollView')
 
     await act(async () => {
@@ -162,22 +162,51 @@ describe('Home component - Analytics', () => {
   })
 })
 
-async function homeRenderer(withModal: boolean) {
+describe('Home redirection to EighteenBirthday', () => {
+  beforeEach(async () => {
+    await storage.clear('has_seen_eligible_card')
+  })
+
+  it('should trigger redirection when eligible', async () => {
+    simulateMustShowEligibleCard()
+    await storage.saveObject('has_seen_eligible_card', false)
+    await homeRenderer({ isLoggedIn: true, withModal: false })
+
+    await act(async () => await flushAllPromisesTimes(10))
+
+    expect(navigate).toBeCalledWith('EighteenBirthday')
+  })
+
+  it('should not trigger redirection when not eligible', async () => {
+    await storage.saveObject('has_seen_eligible_card', true)
+    await homeRenderer({ isLoggedIn: true, withModal: false })
+
+    await act(async () => await flushAllPromisesTimes(10))
+
+    expect(navigate).not.toBeCalledWith('EighteenBirthday')
+  })
+})
+
+interface Props {
+  isLoggedIn?: boolean | undefined
+  withModal?: boolean | undefined
+}
+
+async function homeRenderer(
+  { isLoggedIn, withModal }: Props = { isLoggedIn: false, withModal: false }
+) {
+  useRoute.mockReturnValue({
+    params: {
+      shouldDisplayLoginModal: withModal,
+    },
+  })
   const renderAPI = render(
     reactQueryProviderHOC(
-      <NavigationContainer>
-        <Tab.Navigator initialRouteName="Home">
-          <Tab.Screen
-            name="Home"
-            component={Home}
-            initialParams={{ shouldDisplayLoginModal: withModal }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <AuthContext.Provider value={{ isLoggedIn: !!isLoggedIn, setIsLoggedIn: jest.fn() }}>
+        <Home />
+      </AuthContext.Provider>
     )
   )
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await act(async () => await flushAllPromisesTimes(10))
   return renderAPI
 }

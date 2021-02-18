@@ -31,7 +31,12 @@ export const AppModal: FunctionComponent<Props> = ({
   return (
     <React.Fragment>
       <ModalOverlay visible={visible} />
-      <Modal animationType="slide" statusBarTranslucent transparent={true} visible={visible}>
+      <Modal
+        animationType="slide"
+        statusBarTranslucent
+        transparent={true}
+        visible={visible}
+        testID="modal">
         <ClicAwayArea activeOpacity={1} onPress={onRightIconPress}>
           <Container activeOpacity={1}>
             <ModalHeader

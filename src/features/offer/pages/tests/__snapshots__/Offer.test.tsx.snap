@@ -2222,6 +2222,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                       animationType="slide"
                       hardwareAccelerated={false}
                       statusBarTranslucent={true}
+                      testID="modal"
                       transparent={true}
                       visible={false}
                     >
@@ -5040,6 +5041,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                       animationType="slide"
                       hardwareAccelerated={false}
                       statusBarTranslucent={true}
+                      testID="modal"
                       transparent={true}
                       visible={false}
                     >

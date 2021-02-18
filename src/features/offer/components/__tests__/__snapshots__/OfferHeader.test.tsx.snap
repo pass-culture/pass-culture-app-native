@@ -429,6 +429,7 @@ Array [
     animationType="slide"
     hardwareAccelerated={false}
     statusBarTranslucent={true}
+    testID="modal"
     transparent={true}
     visible={false}
   >

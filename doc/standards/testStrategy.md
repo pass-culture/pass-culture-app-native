@@ -1,4 +1,4 @@
-# Testing Startegy
+# Testing Strategy
 
 ## Why
 
@@ -9,7 +9,7 @@
 
 - **Full page test**
 
-```
+```jsx
 it('should render correctly without login modal', async () => {
    const home = await homeRenderer(false)
 
@@ -27,7 +27,7 @@ Why pages' snapshots and not components ones ?
 If I modify a component, snapshot would for sure be modified.
 What I want to know when I modify a component is which pages are impacted. 
 
-```
+```jsx
 it('should render modal correctly', async () => {
     const homeWithLoginModal = await homeRenderer(true)
     const homeWithoutLoginModal = await homeRenderer(false)
@@ -38,7 +38,7 @@ it('should render modal correctly', async () => {
 })
 ```
 
-```
+```jsx
 it('should be hidden when the icon is not provided', () => {
   const { getByTestId } = render(<ModalHeader title="Testing modal header rendering" />)
   const rightIcon = queryByTestId('rightIcon')
@@ -47,7 +47,8 @@ it('should be hidden when the icon is not provided', () => {
 ```
 
 Test with user interactions
-```
+
+```jsx
 it('should display the error message when the date is not correct', () => {
     const { getByText, getByPlaceholderText } = render(<SetBirthday />)
 
@@ -68,7 +69,7 @@ it('should display the error message when the date is not correct', () => {
 
 - **Navigation test**
 
-```
+```jsx
 it('should navigate to the previous when back navigation triggered', () => {
     const { getByTestId } = render(<SetBirthday />)
     const leftIcon = getByTestId('leftIcon')
@@ -78,7 +79,7 @@ it('should navigate to the previous when back navigation triggered', () => {
 })
 ```
 
-```
+```jsx
 it('should redirect to home page WHEN signin is successful', async () => {
     const { findByText } = renderLogin()
     mockSignIn.mockImplementationOnce(() => true)
@@ -95,7 +96,7 @@ it('should redirect to home page WHEN signin is successful', async () => {
 
 - **API calls test**
 
-```
+```jsx
 import { server } from 'tests/server'
 
 server.use(

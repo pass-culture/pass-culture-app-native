@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FirstCard should render first card 1`] = `
+exports[`SecondCard should render second card 1`] = `
 <View
   style={
     Array [
@@ -66,7 +66,7 @@ exports[`FirstCard should render first card 1`] = `
       ]
     }
   >
-    Le pass Culture
+    Des offres pour tous
   </Text>
   <Text
     style={
@@ -81,7 +81,7 @@ exports[`FirstCard should render first card 1`] = `
       ]
     }
   >
-    c'est...
+    et si tu es...
   </Text>
   <View
     flex={0.5}
@@ -108,7 +108,7 @@ exports[`FirstCard should render first card 1`] = `
       ]
     }
   >
-    une initiative financée par le Ministère de la Culture.
+    dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application.
   </Text>
   <View
     flex={2}
@@ -198,9 +198,7 @@ exports[`FirstCard should render first card 1`] = `
       style={
         Array [
           Object {
-            "flexBasis": 0,
             "flexGrow": 1,
-            "flexShrink": 1,
             "marginTop": 16,
           },
         ]
