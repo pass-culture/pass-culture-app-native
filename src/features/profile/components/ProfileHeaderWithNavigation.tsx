@@ -39,6 +39,7 @@ const modalHeaderStyles: ModalHeaderStyleClasses = {
   },
   title: {
     color: ColorsEnum.WHITE,
+    fontSize: 15,
   },
   leftIcon: {
     color: ColorsEnum.WHITE,
