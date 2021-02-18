@@ -11,8 +11,8 @@ import {
   showBusinessModule,
   getOfferModules,
   getModulesToDisplay,
-} from './useDisplayedHomeModules.utils'
-import { AlgoliaModuleResponse } from './useHomeAlgoliaModules'
+} from '../useDisplayedHomeModules.utils'
+import { AlgoliaModuleResponse } from '../useHomeAlgoliaModules'
 
 const nbHits = 2
 const hits = mockedAlgoliaResponse.hits.slice(0, nbHits)

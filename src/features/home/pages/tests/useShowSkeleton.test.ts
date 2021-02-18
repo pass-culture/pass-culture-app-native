@@ -3,7 +3,7 @@ import { act } from '@testing-library/react-native'
 
 import { DEFAULT_SPLASHSCREEN_DELAY } from 'libs/splashscreen'
 
-import { ANIMATION_DELAY, useShowSkeleton } from './useShowSkeleton'
+import { ANIMATION_DELAY, useShowSkeleton } from '../useShowSkeleton'
 
 jest.mock('react-query', () => ({
   useIsFetching: jest.fn(() => 0).mockImplementationOnce(() => 1),

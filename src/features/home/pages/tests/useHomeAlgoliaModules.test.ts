@@ -4,9 +4,8 @@ import { parseAlgoliaParameters } from 'libs/algolia/parseAlgoliaParameters'
 import { FetchAlgoliaParameters } from 'libs/algolia/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
-import { Offers } from '../contentful'
-
-import { useHomeAlgoliaModules } from './useHomeAlgoliaModules'
+import { Offers } from '../../contentful'
+import { useHomeAlgoliaModules } from '../useHomeAlgoliaModules'
 
 const mockFetchAlgolia = jest.fn().mockResolvedValue({
   hits: [
