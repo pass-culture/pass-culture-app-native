@@ -1,12 +1,10 @@
 import { render, act } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
-import { simulateMustShowEligibleCard } from 'features/eighteenBirthday/useEligibleCard.test'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
@@ -34,72 +32,88 @@ jest.mock('features/home/pages/useDisplayedHomeModules', () => ({
   })),
 }))
 
+function simulateAuthenticatedUser(partialUser?: Partial<UserProfileResponse>) {
+  server.use(
+    rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          email: 'email@domain.ext',
+          firstName: 'Jean',
+          depositExpirationDate: '2023-02-16T17:16:04.735235',
+          expenses: [
+            { current: 400, domain: 'all', limit: 50000 },
+            { current: 400, domain: 'digital', limit: 20000 },
+            { current: 0, domain: 'physical', limit: 20000 },
+          ],
+          ...(partialUser || {}),
+        } as UserProfileResponse)
+      )
+    })
+  )
+}
+
 describe('Home component', () => {
   it('should render correctly without login modal', async () => {
     const home = await homeRenderer({ isLoggedIn: false, withModal: false })
-
     expect(home).toMatchSnapshot()
-    home.unmount()
   })
 
   it('should render modal correctly', async () => {
-    const { getByText, unmount } = await homeRenderer({ isLoggedIn: false, withModal: true })
+    const { getByText } = await homeRenderer({ isLoggedIn: false, withModal: true })
     expect(getByText('Se connecter')).toBeTruthy()
-    unmount()
   })
 
   it('should have a welcome message', async () => {
-    const { getByText, unmount } = await homeRenderer({ isLoggedIn: false, withModal: false })
-
+    const { getByText } = await homeRenderer({ isLoggedIn: false, withModal: false })
     const welcomeText = getByText('Bienvenue !')
     expect(welcomeText.props.children).toBe('Bienvenue !')
-    unmount()
   })
 
   it('should have a personalized welcome message when user is logged in', async () => {
-    simulateAuthedUser()
-    const { getByText, unmount } = await homeRenderer({ isLoggedIn: true, withModal: false })
-    await waitForExpect(() => {
-      const welcomeText = getByText('Bonjour Jean')
-      expect(welcomeText.props.children).toBe('Bonjour Jean')
+    const { getByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
+    const welcomeText = getByText('Bonjour Jean')
+    expect(welcomeText.props.children).toBe('Bonjour Jean')
+  })
+
+  it('should show the available credit to the user - remaining', async () => {
+    const { queryByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
+    expect(queryByText('Tu as 496 € sur ton pass')).toBeTruthy()
+  })
+
+  it('should show the available credit to the user - expired', async () => {
+    const { queryByText } = await homeRenderer({
+      isLoggedIn: true,
+      withModal: false,
+      partialUser: { depositExpirationDate: new Date('2020-02-16T17:16:04.735235') },
     })
-    unmount()
+    expect(queryByText('Tu as 496 € sur ton pass')).toBeFalsy()
+    expect(queryByText('Ton crédit est expiré')).toBeTruthy()
+  })
+
+  it('should show the available credit to the user - not logged in', async () => {
+    const { queryByText } = await homeRenderer({ isLoggedIn: false, withModal: false })
+    expect(queryByText('Toute la culture dans ta main')).toBeTruthy()
   })
 
   it('should not have code push button', async () => {
     const home = await homeRenderer({ withModal: false })
-
     expect(home.queryByText('Check update')).toBeFalsy()
-    home.unmount()
   })
 
   it('should have components and navigation buttons when CHEAT_BUTTONS_ENABLED', async () => {
     env.CHEAT_BUTTONS_ENABLED = true
     const home = await homeRenderer({ isLoggedIn: false, withModal: false })
-
     expect(home.queryByText('Composants')).toBeTruthy()
     expect(home.queryByText('Navigation')).toBeTruthy()
-    home.unmount()
   })
 
   it('should NOT have components or navigation buttons when NOT CHEAT_BUTTONS_ENABLED', async () => {
     env.CHEAT_BUTTONS_ENABLED = false
     const home = await homeRenderer({ isLoggedIn: false, withModal: false })
-
     expect(home.queryByText('Composants')).toBeFalsy()
     expect(home.queryByText('Navigation')).toBeFalsy()
-    home.unmount()
   })
-  function simulateAuthedUser() {
-    server.use(
-      rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-        return res(
-          ctx.status(200),
-          ctx.json({ email: 'email@domain.ext', firstName: 'Jean' } as UserProfileResponse)
-        )
-      })
-    )
-  }
 })
 
 describe('Home component - Analytics', () => {
@@ -165,12 +179,16 @@ describe('Home component - Analytics', () => {
 describe('Home redirection to EighteenBirthday', () => {
   beforeEach(async () => {
     await storage.clear('has_seen_eligible_card')
+    jest.clearAllMocks()
   })
 
   it('should trigger redirection when eligible', async () => {
-    simulateMustShowEligibleCard()
     await storage.saveObject('has_seen_eligible_card', false)
-    await homeRenderer({ isLoggedIn: true, withModal: false })
+    await homeRenderer({
+      isLoggedIn: true,
+      withModal: false,
+      partialUser: { showEligibleCard: true },
+    })
 
     await act(async () => await flushAllPromisesTimes(10))
 
@@ -183,6 +201,7 @@ describe('Home redirection to EighteenBirthday', () => {
 
     await act(async () => await flushAllPromisesTimes(10))
 
+    expect(navigate).not.toBeCalled()
     expect(navigate).not.toBeCalledWith('EighteenBirthday')
   })
 })
@@ -190,16 +209,22 @@ describe('Home redirection to EighteenBirthday', () => {
 interface Props {
   isLoggedIn?: boolean | undefined
   withModal?: boolean | undefined
+  partialUser?: Partial<UserProfileResponse>
 }
 
 async function homeRenderer(
-  { isLoggedIn, withModal }: Props = { isLoggedIn: false, withModal: false }
+  { isLoggedIn, withModal, partialUser }: Props = {
+    isLoggedIn: false,
+    withModal: false,
+    partialUser: {},
+  }
 ) {
   useRoute.mockReturnValue({
     params: {
       shouldDisplayLoginModal: withModal,
     },
   })
+  if (isLoggedIn) simulateAuthenticatedUser(partialUser)
   const renderAPI = render(
     reactQueryProviderHOC(
       <AuthContext.Provider value={{ isLoggedIn: !!isLoggedIn, setIsLoggedIn: jest.fn() }}>
