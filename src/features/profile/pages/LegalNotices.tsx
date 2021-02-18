@@ -15,16 +15,34 @@ export function LegalNotices() {
   return (
     <View>
       <ProfileHeaderWithNavigation title={_(t`Mentions légales`)} />
-      <ProfilContainer>
+      <Container>
         <Row
           title={_(t`Conditions Générales d’Utilisation`)}
           type="clickable"
           onPress={() => openExternalUrl('https://pass.culture.fr/cgu/')}
           icon={ExternalSite}
           style={styles.row}
-          testID="row-faq"
+          testID="row-cgu"
         />
-      </ProfilContainer>
+        <Row
+          title={_(t`Charte de protection des données personnelles`)}
+          type="clickable"
+          onPress={() => openExternalUrl('https://pass.culture.fr/donnees-personnelles/')}
+          icon={ExternalSite}
+          style={styles.row}
+          testID="row-data-privacy-chart"
+        />
+        <Row
+          title={_(t`Suppression du compte`)}
+          type="clickable"
+          onPress={() => {
+            // TODO: 6206
+          }}
+          icon={ExternalSite}
+          style={styles.row}
+          testID="row-account-deletion"
+        />
+      </Container>
     </View>
   )
 }
@@ -35,8 +53,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const ProfilContainer = styled.View({
-  flex: 1,
+const Container = styled.View({
   flexDirection: 'column',
   paddingHorizontal: getSpacing(5),
 })
