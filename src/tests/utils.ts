@@ -1,4 +1,5 @@
 import flushPromises from 'flush-promises'
+import { act, ReactTestInstance } from 'react-test-renderer'
 
 export async function flushAllPromises() {
   await flushPromises()
@@ -16,4 +17,18 @@ export async function flushAllPromisesTimes(times: number) {
   for (let i = 0; i < times; i++) {
     await flushAllPromises()
   }
+}
+
+export async function superFlushWithAct() {
+  await act(async () => {
+    await flushAllPromisesTimes(10)
+  })
+}
+
+export function simulateWebviewMessage(webview: ReactTestInstance, message: string) {
+  act(() => {
+    webview.props.onMessage({
+      nativeEvent: { data: message },
+    })
+  })
 }

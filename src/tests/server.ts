@@ -2,6 +2,7 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import {
+  CulturalSurveyRequest,
   OfferResponse,
   RequestPasswordResetRequest,
   ResetPasswordRequest,
@@ -12,6 +13,7 @@ import {
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
+
 export const server = setupServer(
   rest.post<SigninRequest, SigninResponse>(
     env.API_BASE_URL + '/native/v1/signin',
@@ -49,5 +51,11 @@ export const server = setupServer(
   rest.get<OfferResponse>(
     env.API_BASE_URL + '/native/v1/offer/' + offerResponseSnap.id,
     (req, res, ctx) => res(ctx.status(200), ctx.json(offerResponseSnap))
+  ),
+  rest.post<CulturalSurveyRequest, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/me/cultural_survey',
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({}))
+    }
   )
 )
