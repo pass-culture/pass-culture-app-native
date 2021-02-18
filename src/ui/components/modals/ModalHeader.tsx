@@ -30,7 +30,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
   return (
-    <Container>
+    <Container customStyle={customStyles?.container}>
       <LeftHeaderAction onPress={onLeftIconPress} testID="leftIconButton">
         {LeftIcon && <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />}
       </LeftHeaderAction>
@@ -46,12 +46,13 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled.View<{ customStyle: StyleProp<ViewStyle> }>(({ customStyle }) => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
-})
+  ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
+}))
 
 /* The negative margins are used to compensate for the
   "empty" space of SVG icons. */
