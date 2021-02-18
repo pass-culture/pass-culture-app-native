@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { ViewStyle, TextStyle, StyleProp } from 'react-native'
+// eslint-disable-next-line no-restricted-imports
+import { CSSObject } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
@@ -25,25 +27,24 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   rightIcon: RightIcon,
   onRightIconPress,
   boldTitle = false,
-}) => (
-  <Container>
-    <LeftHeaderAction onPress={onLeftIconPress} testID="leftIconButton">
-      {LeftIcon && <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />}
-    </LeftHeaderAction>
-    <Title customStyle={customStyles?.title} numberOfLines={2}>
-      {boldTitle ? (
-        <Typo.Title3 numberOfLines={2}>{title}</Typo.Title3>
-      ) : (
-        <Typo.Title4 numberOfLines={2}>{title}</Typo.Title4>
-      )}
-    </Title>
-    <RightHeaderAction onPress={onRightIconPress} testID="rightIconButton">
-      {RightIcon && (
-        <RightIcon size={32} testID="rightIcon" color={customStyles?.rightIcon?.color} />
-      )}
-    </RightHeaderAction>
-  </Container>
-)
+}) => {
+  const TitleComponent = boldTitle ? BoldTitle : Title
+  return (
+    <Container>
+      <LeftHeaderAction onPress={onLeftIconPress} testID="leftIconButton">
+        {LeftIcon && <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />}
+      </LeftHeaderAction>
+      <TitleComponent customStyle={customStyles?.title} numberOfLines={2}>
+        {title}
+      </TitleComponent>
+      <RightHeaderAction onPress={onRightIconPress} testID="rightIconButton">
+        {RightIcon && (
+          <RightIcon size={32} testID="rightIcon" color={customStyles?.rightIcon?.color} />
+        )}
+      </RightHeaderAction>
+    </Container>
+  )
+}
 
 const Container = styled.View({
   flexDirection: 'row',
@@ -65,13 +66,20 @@ const LeftHeaderAction = styled.TouchableOpacity({
   alignItems: 'flex-start',
 })
 
+const titleStyle = ({ customStyle }: { customStyle: StyleProp<ViewStyle> }) =>
+  ({
+    flex: 0.6,
+    textAlign: 'center',
+    ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
+  } as CSSObject)
+
 const Title = styled(Typo.Title4)<{
   customStyle: StyleProp<ViewStyle>
-}>(({ customStyle }) => ({
-  flex: 0.6,
-  textAlign: 'center',
-  ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
-}))
+}>(titleStyle)
+
+const BoldTitle = styled(Typo.Title3)<{
+  customStyle: StyleProp<ViewStyle>
+}>(titleStyle)
 
 export interface ModalHeaderStyleClasses {
   container?: ViewStyle
