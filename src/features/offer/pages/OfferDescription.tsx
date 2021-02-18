@@ -69,8 +69,8 @@ const isExtraDataKey = (key: string): key is ExtraDataKeys => key in EXTRA_DATA_
 
 export const getContentFromOffer = (
   extraData: OfferResponse['extraData'],
-  description: string,
-  photoCredit?: string
+  description: string | null,
+  photoCredit?: string | null
 ): Item[] => {
   const hits: Item[] = Object.entries(extraData || {})
     .map(([key, value]) => {

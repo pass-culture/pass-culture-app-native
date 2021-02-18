@@ -18,7 +18,7 @@ import { OfferCaption } from './OfferCaption'
 interface OfferTileProps {
   category: string
   categoryName: CategoryNameEnum | null
-  description?: string
+  description?: string | null
   distance?: string
   date?: string
   name?: string

@@ -5,8 +5,8 @@ import { Geoloc } from 'libs/algolia'
 const EARTH_RADIUS_KM = 6378.137
 
 export const getHumanizeRelativeDistance = (
-  userLat?: number,
-  userLng?: number,
+  userLat?: number | null,
+  userLng?: number | null,
   venueLat?: number,
   venueLng?: number
 ): string | undefined => {
