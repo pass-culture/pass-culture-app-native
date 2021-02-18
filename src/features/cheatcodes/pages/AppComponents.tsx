@@ -40,6 +40,7 @@ import { StepDots } from 'ui/components/StepDots'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
@@ -66,7 +67,9 @@ import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { Info } from 'ui/svg/icons/Info'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
+import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
@@ -75,6 +78,7 @@ import { OfferOutings } from 'ui/svg/icons/OfferOutings'
 import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
+import { Profile } from 'ui/svg/icons/Profile'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
@@ -432,6 +436,22 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <SignOut size={24} />
           <Text> - SignOut </Text>
+        </AlignedText>
+        <AlignedText>
+          <Lock size={24} />
+          <Text> - Lock </Text>
+        </AlignedText>
+        <AlignedText>
+          <Profile size={24} />
+          <Text> - Profile </Text>
+        </AlignedText>
+        <AlignedText>
+          <LifeBuoy size={24} />
+          <Text> - LifeBuoy </Text>
+        </AlignedText>
+        <AlignedText>
+          <Bell size={24} />
+          <Text> - Bell </Text>
         </AlignedText>
       </AccordionItem>
 
