@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { useEligibleCard } from 'features/eighteenBirthday/useEligibleCard'
 import { useUserProfileInfo } from 'features/home/api'
+import { HomeBody, HomeBodyPlaceholder, SignUpSignInChoiceModal } from 'features/home/components'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -20,10 +21,6 @@ import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { ZIndexes } from 'ui/theme/layers'
-
-import { HomeBody } from '../components/HomeBody'
-import { HomeBodyPlaceholder } from '../components/HomeBodyPlaceholder'
-import { SignUpSignInChoiceModal } from '../components/SignUpSignInChoiceModal'
 
 import { useShowSkeleton } from './useShowSkeleton'
 

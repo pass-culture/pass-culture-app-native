@@ -1,6 +1,5 @@
 import { useAuthContext } from 'features/auth/AuthContext'
-
-import { useHomepageModules } from '../api'
+import { useHomepageModules } from 'features/home/api'
 
 import { getModulesToDisplay, getOfferModules } from './useDisplayedHomeModules.utils'
 import { useHomeAlgoliaModules } from './useHomeAlgoliaModules'
