@@ -127,6 +127,14 @@ msgstr "Aucune valeur à sauvegarder"
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
 
+#: src/features/profile/pages/NotificationSettings.tsx:37
+msgid "Autoriser les notifications système"
+msgstr "Autoriser les notifications système"
+
+#: src/features/profile/pages/NotificationSettings.tsx:28
+msgid "Autoriser l’envoi d’e-mails"
+msgstr "Autoriser l’envoi d’e-mails"
+
 #: src/features/search/components/locationChoice.utils.tsx:15
 msgid "Autour de moi"
 msgstr "Autour de moi"
@@ -227,7 +235,7 @@ msgstr "Confirme ton e\\u2011mail"
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
-#: src/features/profile/components/LoggedOutHeader.tsx:26
+#: src/features/profile/components/LoggedOutHeader.tsx:28
 msgid "Connecte-toi"
 msgstr "Connecte-toi"
 
@@ -338,6 +346,10 @@ msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgid "En voir plus"
 msgstr "En voir plus"
 
+#: src/features/profile/pages/NotificationSettings.tsx:41
+msgid "Enregistrer"
+msgstr "Enregistrer"
+
 #. Authentication error message
 #: src/libs/fetch.ts:38
 msgid "Erreur d'authentification"
@@ -398,11 +410,11 @@ msgstr "ISBN"
 msgid "Il y a eu un problème. Tu peux réessayer plus tard."
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
 
-#: src/features/profile/pages/Profile.tsx:42
+#: src/features/profile/pages/Profile.tsx:43
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
-#: src/features/profile/components/LoggedOutHeader.tsx:18
+#: src/features/profile/components/LoggedOutHeader.tsx:20
 msgid "Inscris-toi pour accéder à toutes les fonctionnalités de l’appication"
 msgstr "Inscris-toi pour accéder à toutes les fonctionnalités de l’appication"
 
@@ -413,6 +425,14 @@ msgstr "Je cherche"
 #: src/features/offer/services/useShareOffer.ts:25
 msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
 msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
+
+#: src/features/profile/pages/NotificationSettings.tsx:25
+msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e-mail."
+msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e-mail."
+
+#: src/features/profile/pages/NotificationSettings.tsx:34
+msgid "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
+msgstr "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 
 #: src/libs/keychain.ts:23
 #: src/libs/keychain.ts:33
@@ -477,7 +497,7 @@ msgstr "Modifie ta recherche ou découvre toutes les offres"
 
 #: src/features/auth/login/Login.tsx:114
 #: src/features/auth/signup/SetPassword.tsx:38
-#: src/features/profile/pages/Profile.tsx:43
+#: src/features/profile/pages/Profile.tsx:44
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -497,6 +517,10 @@ msgstr "Navigation"
 #: src/features/firstLogin/achievements/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
+
+#: src/features/profile/pages/NotificationSettings.tsx:15
+msgid "Notifications"
+msgstr "Notifications"
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:16
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
@@ -553,7 +577,7 @@ msgstr "Où ?"
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
 
-#: src/features/profile/pages/Profile.tsx:40
+#: src/features/profile/pages/Profile.tsx:41
 msgid "Paramètres de l'application"
 msgstr "Paramètres de l'application"
 
@@ -561,7 +585,7 @@ msgstr "Paramètres de l'application"
 msgid "Paramètres de localisation"
 msgstr "Paramètres de localisation"
 
-#: src/features/profile/pages/Profile.tsx:40
+#: src/features/profile/pages/Profile.tsx:41
 msgid "Paramètres du compte"
 msgstr "Paramètres du compte"
 
@@ -577,7 +601,7 @@ msgstr "Pas de résultat trouvé pour"
 msgid "Pas de résultat trouvé."
 msgstr "Pas de résultat trouvé."
 
-#: src/ui/components/achievements/components/GenericAchievementCard.tsx:70
+#: src/ui/components/achievements/components/GenericAchievementCard.tsx:71
 msgid "Passer"
 msgstr "Passer"
 
@@ -621,7 +645,7 @@ msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgid "Prix"
 msgstr "Prix"
 
-#: src/features/profile/components/LoggedOutHeader.tsx:15
+#: src/features/profile/components/LoggedOutHeader.tsx:17
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:43
 msgid "Profil"
 msgstr "Profil"
@@ -659,6 +683,10 @@ msgstr "Renvoyer l'email"
 msgid "Respect de ta vie privée"
 msgstr "Respect de ta vie privée"
 
+#: src/features/profile/pages/NotificationSettings.tsx:19
+msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
+msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
+
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:61
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:61
 #: src/features/auth/signup/VerifyEligibility.tsx:27
@@ -690,7 +718,7 @@ msgid "Réserver"
 msgstr "Réserver"
 
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:39
-#: src/features/profile/components/LoggedOutHeader.tsx:21
+#: src/features/profile/components/LoggedOutHeader.tsx:23
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
@@ -742,7 +770,6 @@ msgstr "Sortie"
 msgid "Suivre Pass Culture"
 msgstr "Suivre Pass Culture"
 
-#: src/features/profile/pages/Profile.tsx:46
 #: src/features/profile/pages/Profile.tsx:58
 msgid "Temporary content"
 msgstr "Temporary content"
@@ -792,7 +819,7 @@ msgstr "Toute la culture dans ta main"
 msgid "Tu as 18 ans..."
 msgstr "Tu as 18 ans..."
 
-#: src/features/profile/components/LoggedOutHeader.tsx:24
+#: src/features/profile/components/LoggedOutHeader.tsx:26
 msgid "Tu as déjà un compte ?\\u00a0"
 msgstr "Tu as déjà un compte ?\\u00a0"
 
@@ -869,7 +896,7 @@ msgstr "Valider la date"
 msgid "Verifier mon identité"
 msgstr "Verifier mon identité"
 
-#: src/features/profile/pages/Profile.tsx:67
+#: src/features/profile/pages/Profile.tsx:66
 msgid "Version {0}"
 msgstr "Version {0}"
 
