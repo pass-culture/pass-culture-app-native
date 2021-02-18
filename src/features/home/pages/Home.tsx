@@ -63,9 +63,12 @@ export const Home: FunctionComponent = function () {
     }
   }
 
-  const subtitle = availableCredit
-    ? _(t`Tu as ${formatToFrenchDecimal(availableCredit)} sur ton pass`)
-    : _(t`Toute la culture dans ta main`)
+  let subtitle = _(t`Toute la culture dans ta main`)
+  if (availableCredit) {
+    subtitle = availableCredit.isExpired
+      ? _(t`Ton crédit est expiré`)
+      : _(t`Tu as ${formatToFrenchDecimal(availableCredit.amount)} sur ton pass`)
+  }
 
   return (
     <ScrollView
