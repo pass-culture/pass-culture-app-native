@@ -238,6 +238,7 @@ exports[`Home component should render correctly without login modal 1`] = `
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                   "width": "100%",
+                  "zIndex": 1,
                 },
               ]
             }
