@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
 import { ScrollView, ViewStyle, Linking } from 'react-native'
+import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { GeolocationActivationModal } from 'features/search/components/GeolocationActivationModal'
@@ -11,10 +12,10 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationType } from 'libs/algolia'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
-import { Banner, BannerType } from 'ui/components/Banner'
+import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 const DEBOUNCED_CALLBACK = 500
 
@@ -70,12 +71,13 @@ export const LocationFilter: React.FC = () => {
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.Column numberOfSpaces={14} />
         <Spacer.Column numberOfSpaces={6} />
-        <Banner
-          title={_(
-            t`Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation`
-          )}
-          type={BannerType.INFO}
-        />
+        <BannerContainer>
+          <Banner
+            title={_(
+              t`Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation`
+            )}
+          />
+        </BannerContainer>
         <Spacer.Column numberOfSpaces={6} />
         <LocationChoice
           testID="pickPlace"
@@ -108,3 +110,5 @@ export const LocationFilter: React.FC = () => {
 }
 
 const contentContainerStyle: ViewStyle = { flexGrow: 1 }
+
+const BannerContainer = styled.View({ marginHorizontal: getSpacing(6) })
