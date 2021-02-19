@@ -11,7 +11,7 @@ export enum BannerType {
 
 type Props = {
   title: string
-  type: BannerType
+  type?: BannerType
 }
 
 const renderIcon = (type: BannerType) => {
@@ -23,7 +23,7 @@ const renderIcon = (type: BannerType) => {
   }
 }
 
-export const Banner: React.FC<Props> = ({ title, type }) => (
+export const Banner: React.FC<Props> = ({ title, type = BannerType.INFO }) => (
   <Background>
     <Spacer.Row numberOfSpaces={3} />
     {renderIcon(type)}
@@ -38,7 +38,6 @@ export const Banner: React.FC<Props> = ({ title, type }) => (
 const Background = styled(View)({
   display: 'flex',
   backgroundColor: ColorsEnum.GREY_LIGHT,
-  marginHorizontal: getSpacing(6),
   paddingVertical: getSpacing(4),
   alignItems: 'center',
   flexDirection: 'row',
