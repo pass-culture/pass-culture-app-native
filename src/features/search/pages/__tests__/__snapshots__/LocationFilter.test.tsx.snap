@@ -44,78 +44,87 @@ Array [
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#f5f5f5",
-              "borderRadius": 4,
-              "display": "flex",
-              "flexDirection": "row",
               "marginHorizontal": 24,
-              "paddingVertical": 16,
             },
           ]
         }
       >
         <View
-          numberOfSpaces={3}
           style={
             Array [
               Object {
-                "width": 12,
-              },
-            ]
-          }
-        />
-        <View
-          height={32}
-          width={32}
-        >
-          undefined-SVG-Mock
-        </View>
-        <View
-          numberOfSpaces={3}
-          style={
-            Array [
-              Object {
-                "width": 12,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexShrink": 1,
+                "alignItems": "center",
+                "backgroundColor": "#f5f5f5",
+                "borderRadius": 4,
+                "display": "flex",
+                "flexDirection": "row",
+                "paddingVertical": 16,
               },
             ]
           }
         >
-          <Text
-            color="#626262"
+          <View
+            numberOfSpaces={3}
             style={
               Array [
                 Object {
-                  "color": "#626262",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
+                  "width": 12,
+                },
+              ]
+            }
+          />
+          <View
+            height={32}
+            width={32}
+          >
+            undefined-SVG-Mock
+          </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              Array [
+                Object {
+                  "width": 12,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "flexShrink": 1,
                 },
               ]
             }
           >
-            Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation
-          </Text>
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "width": 20,
+                },
+              ]
+            }
+          />
         </View>
-        <View
-          numberOfSpaces={5}
-          style={
-            Array [
-              Object {
-                "width": 20,
-              },
-            ]
-          }
-        />
       </View>
       <View
         numberOfSpaces={6}
