@@ -92,9 +92,10 @@ describe('Home component', () => {
       withModal: false,
       partialUser: { depositExpirationDate: new Date('2020-02-16T17:16:04.735235') },
     })
-    expect(queryByText('Tu as 496 € sur ton pass')).toBeFalsy()
-    await act(flushAllPromises)
-    expect(queryByText('Ton crédit est expiré')).toBeTruthy()
+    await waitForExpect(() => {
+      expect(queryByText('Tu as 496 € sur ton pass')).toBeFalsy()
+      expect(queryByText('Ton crédit est expiré')).toBeTruthy()
+    })
   })
 
   it('should show the available credit to the user - not logged in', async () => {
