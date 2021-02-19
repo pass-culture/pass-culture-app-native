@@ -35,7 +35,7 @@ jest.mock('features/home/pages/useDisplayedHomeModules', () => ({
 function simulateAuthenticatedUser(partialUser?: Partial<UserProfileResponse>) {
   server.use(
     rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-      return res(
+      return res.once(
         ctx.status(200),
         ctx.json({
           email: 'email@domain.ext',
