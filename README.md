@@ -233,3 +233,5 @@ You can use test accounts:
 
 - email: `pctest.jeune97.has-signed-up.v2@example.com`
 - mdp: `user@AZERTY123`
+
+### freeze merge test
