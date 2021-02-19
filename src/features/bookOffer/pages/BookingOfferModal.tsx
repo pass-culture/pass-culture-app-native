@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { CategoryType } from 'api/gen'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
@@ -21,6 +21,10 @@ interface Props {
 
 const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissModal, offerCategory }) => {
   const { bookingState, dispatch } = useBooking()
+
+  useEffect(() => {
+    dispatch({ type: 'INIT', payload: { category: offerCategory } })
+  }, [])
 
   const goToPreviousStep = () => {
     dispatch({ type: 'MODIFY_OPTIONS' })
