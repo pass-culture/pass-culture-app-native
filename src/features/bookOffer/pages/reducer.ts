@@ -1,9 +1,10 @@
 import { CategoryType } from 'api/gen'
 
-enum Step {
+export enum Step {
   DATE,
   HOUR,
   DUO,
+  CONFIRMATION,
 }
 
 export type BookingState = {
@@ -16,12 +17,19 @@ export const initialBookingState: BookingState = {
   step: undefined,
 }
 
-export type Action = { type: 'INIT'; payload: Partial<BookingState> }
+export type Action =
+  | { type: 'INIT'; payload: Partial<BookingState> }
+  | { type: 'VALIDATE_OPTIONS' }
+  | { type: 'MODIFY_OPTIONS' }
 
 export const searchReducer = (state: BookingState, action: Action): BookingState => {
   switch (action.type) {
     case 'INIT':
       return { ...initialBookingState, ...action.payload }
+    case 'VALIDATE_OPTIONS':
+      return { ...state, step: Step.CONFIRMATION }
+    case 'MODIFY_OPTIONS':
+      return { ...state, step: Step.DUO }
     default:
       return state
   }

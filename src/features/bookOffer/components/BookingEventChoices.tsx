@@ -5,11 +5,24 @@ import styled from 'styled-components/native'
 import { BookDateChoice } from 'features/bookOffer/components/BookDateChoice'
 import { BookDuoChoice } from 'features/bookOffer/components/BookDuoChoice'
 import { BookHourChoice } from 'features/bookOffer/components/BookHourChoice'
+import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
+import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { Step } from 'features/bookOffer/pages/reducer'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 export const BookingEventChoices: React.FC = () => {
+  const { bookingState, dispatch } = useBooking()
+
+  const validateOptions = () => {
+    dispatch({ type: 'VALIDATE_OPTIONS' })
+  }
+
+  if (bookingState.step === Step.CONFIRMATION) {
+    return <BookingDetails />
+  }
+
   return (
     <Container>
       <BookDateChoice />
@@ -27,7 +40,7 @@ export const BookingEventChoices: React.FC = () => {
       <BookDuoChoice />
 
       <Spacer.Column numberOfSpaces={6} />
-      <ButtonPrimary title={_(t`Valider ces options`)} />
+      <ButtonPrimary title={_(t`Valider ces options`)} onPress={validateOptions} />
     </Container>
   )
 }
