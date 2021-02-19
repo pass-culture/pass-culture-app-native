@@ -10,6 +10,7 @@ import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { getSpacing } from 'ui/theme'
 
 import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
+import { Separator } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
 export function LegalNotices() {
@@ -25,6 +26,7 @@ export function LegalNotices() {
           style={styles.row}
           testID="row-cgu"
         />
+        <Separator />
         <Row
           title={_(t`Charte de protection des données personnelles`)}
           type="clickable"
@@ -33,6 +35,7 @@ export function LegalNotices() {
           style={styles.row}
           testID="row-data-privacy-chart"
         />
+        <Separator />
         <Row
           title={_(t`Suppression du compte`)}
           type="clickable"
