@@ -7,7 +7,7 @@ import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
-import { BookingInfos } from './BookingInfos'
+import { BookingInformations } from './BookingInformations'
 import { CancellationDetails } from './CancellationDetails'
 
 const disclaimer = _(
@@ -20,7 +20,7 @@ export const BookingDetails: React.FC = () => {
       <Banner title={disclaimer} />
       <Spacer.Column numberOfSpaces={6} />
 
-      <BookingInfos />
+      <BookingInformations />
 
       <Spacer.Column numberOfSpaces={6} />
       <Separator />
