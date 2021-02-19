@@ -6,14 +6,21 @@ import SplashScreen from 'react-native-splash-screen'
 
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
-import { analytics } from 'libs/analytics'
 import { useCodePush } from 'libs/codepush/CodePushProvider'
+import { DEFAULT_SPLASHSCREEN_DELAY } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
 import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
+import { useGetInitialRouteName } from '../RootNavigator/useGetInitialRouteName'
 
+const mockedUseGetInitialRouteName = useGetInitialRouteName as jest.MockedFunction<
+  typeof useGetInitialRouteName
+>
+jest.mock('../RootNavigator/useGetInitialRouteName', () => ({
+  useGetInitialRouteName: jest.fn().mockReturnValue('TabNavigator'),
+}))
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -51,25 +58,19 @@ describe('<RootNavigator />', () => {
     storage.clear('has_seen_tutorials')
   })
 
-  it('show TabNavigator screen on mount when user has already seen tutorials', async () => {
-    storage.saveObject('has_seen_tutorials', true)
-    const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
+  it('show initial screen given by useGetInitialRouteName()', async () => {
+    mockedUseGetInitialRouteName.mockReturnValueOnce('TabNavigator')
+    let renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
     await act(flushAllPromises)
 
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Home')
     expect(renderAPI.queryByText('TabNavigator screen')).toBeTruthy()
-    expect(renderAPI.queryByText('FirstTutorial screen')).toBeFalsy()
     renderAPI.unmount()
-  })
 
-  it('show FirstTutorial screen on mount when user has NOT seen tutorials', async () => {
-    storage.saveObject('has_seen_tutorials', false)
-    const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
+    mockedUseGetInitialRouteName.mockReturnValueOnce('FirstTutorial')
+    renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
     await act(flushAllPromises)
 
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'FirstTutorial')
     expect(renderAPI.queryByText('FirstTutorial screen')).toBeTruthy()
-    expect(renderAPI.queryByText('TabNavigator screen')).toBeFalsy()
     renderAPI.unmount()
   })
 
@@ -153,7 +154,7 @@ describe('wrapRoute()', () => {
 
 async function waitForSplashScreenDelay() {
   act(() => {
-    jest.advanceTimersByTime(200)
+    jest.advanceTimersByTime(DEFAULT_SPLASHSCREEN_DELAY)
   })
   await act(flushAllPromises)
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import SplashScreen from 'react-native-splash-screen'
 
-export const DEFAULT_SPLASHSCREEN_DELAY = 200
+export const DEFAULT_SPLASHSCREEN_DELAY = 500
 
 type Params = {
   delay?: number
