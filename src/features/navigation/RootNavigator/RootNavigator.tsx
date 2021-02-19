@@ -1,13 +1,11 @@
 import { NavigationContainer, Theme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import CodePush from 'react-native-code-push'
 
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
-import { analytics } from 'libs/analytics'
 import { useCodePush } from 'libs/codepush/CodePushProvider'
 import { useHideSplashScreen } from 'libs/splashscreen'
-import { storage } from 'libs/storage'
 import { ColorsEnum } from 'ui/theme'
 
 import { navigationRef } from '../navigationRef'
@@ -15,6 +13,7 @@ import { onNavigationStateChange } from '../services'
 
 import routes from './routes'
 import { RootStackParamList, Route } from './types'
+import { useGetInitialRouteName } from './useGetInitialRouteName'
 
 export const RootStack = createStackNavigator<RootStackParamList>()
 
@@ -39,25 +38,15 @@ const screens = routes
     />
   ))
 
-type InitialRouteName = 'TabNavigator' | 'FirstTutorial' | undefined
-
 export const RootNavigator: React.FC = () => {
-  const [initialRouteName, setInitialRouteName] = useState<InitialRouteName>()
   const { status } = useCodePush()
+  const initialRouteName = useGetInitialRouteName()
 
-  const isAppReadyToStart = !!initialRouteName && status === CodePush.SyncStatus.UP_TO_DATE
+  const isAppReadyToStart = initialRouteName && status === CodePush.SyncStatus.UP_TO_DATE
 
   const { isSplashScreenHidden } = useHideSplashScreen({
     shouldHideSplashScreen: isAppReadyToStart,
   })
-
-  useEffect(() => {
-    storage.readObject('has_seen_tutorials').then((hasSeenTutorials) => {
-      const routeName = hasSeenTutorials ? 'TabNavigator' : 'FirstTutorial'
-      setInitialRouteName(routeName)
-      triggerInitialRouteNameAnalytics(routeName)
-    })
-  }, [])
 
   if (!isAppReadyToStart) return null
   return (
@@ -73,15 +62,4 @@ export const RootNavigator: React.FC = () => {
       {isSplashScreenHidden && <PrivacyPolicy />}
     </NavigationContainer>
   )
-}
-
-function triggerInitialRouteNameAnalytics(routeName: InitialRouteName) {
-  if (!routeName) {
-    return
-  }
-  if (routeName === 'TabNavigator') {
-    analytics.logScreenView('Home')
-  } else {
-    analytics.logScreenView(routeName)
-  }
 }
