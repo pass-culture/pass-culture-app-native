@@ -85,6 +85,7 @@ import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SignOut } from 'ui/svg/icons/SignOut'
+import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
@@ -472,6 +473,8 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <LocationBuilding size={24} />
           <Text> - LocationBuilding </Text>
+          <TicketBooked width={48} height={24} />
+          <Text> - TicketBooked </Text>
         </AlignedText>
       </AccordionItem>
 
