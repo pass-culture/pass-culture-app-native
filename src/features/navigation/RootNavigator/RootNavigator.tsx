@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React, { useEffect, useState } from 'react'
 import CodePush from 'react-native-code-push'
 
+import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { analytics } from 'libs/analytics'
 import { useCodePush } from 'libs/codepush/CodePushProvider'
 import { useHideSplashScreen } from 'libs/splashscreen'
@@ -42,21 +43,12 @@ type InitialRouteName = 'TabNavigator' | 'FirstTutorial' | undefined
 
 export const RootNavigator: React.FC = () => {
   const [initialRouteName, setInitialRouteName] = useState<InitialRouteName>()
-
-  function triggerInitialRouteNameAnalytics(routeName: InitialRouteName) {
-    if (!routeName) {
-      return
-    }
-    if (routeName === 'TabNavigator') {
-      analytics.logScreenView('Home')
-    } else {
-      analytics.logScreenView(routeName)
-    }
-  }
   const { status } = useCodePush()
 
-  useHideSplashScreen({
-    shouldHideSplashScreen: !!initialRouteName && status === CodePush.SyncStatus.UP_TO_DATE,
+  const isAppReadyToStart = !!initialRouteName && status === CodePush.SyncStatus.UP_TO_DATE
+
+  const { isSplashScreenHidden } = useHideSplashScreen({
+    shouldHideSplashScreen: isAppReadyToStart,
   })
 
   useEffect(() => {
@@ -67,7 +59,7 @@ export const RootNavigator: React.FC = () => {
     })
   }, [])
 
-  if (!initialRouteName) return null
+  if (!isAppReadyToStart) return null
   return (
     <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
       <RootStack.Navigator
@@ -76,6 +68,20 @@ export const RootNavigator: React.FC = () => {
         screenOptions={{ headerShown: false }}>
         {screens}
       </RootStack.Navigator>
+      {/* The components below are those for which we do not want 
+      their rendering to happen while the splash is displayed. */}
+      {isSplashScreenHidden && <PrivacyPolicy />}
     </NavigationContainer>
   )
+}
+
+function triggerInitialRouteNameAnalytics(routeName: InitialRouteName) {
+  if (!routeName) {
+    return
+  }
+  if (routeName === 'TabNavigator') {
+    analytics.logScreenView('Home')
+  } else {
+    analytics.logScreenView(routeName)
+  }
 }

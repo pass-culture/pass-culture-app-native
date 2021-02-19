@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react-native'
+import { act, render } from '@testing-library/react-native'
 import React from 'react'
 import { Text as mockText } from 'react-native'
+import CodePush from 'react-native-code-push'
 import SplashScreen from 'react-native-splash-screen'
-import { act } from 'react-test-renderer'
 
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
@@ -13,8 +13,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
 import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
-
-const mockedUseCodePush = useCodePush as jest.Mock
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/auth/AuthContext', () => ({
@@ -35,30 +33,30 @@ jest.mock('features/firstTutorial/pages/FirstTutorial/FirstTutorial', () => ({
     return <Text>FirstTutorial screen</Text>
   },
 }))
+
+const mockedUseCodePush = useCodePush as jest.MockedFunction<typeof useCodePush>
+mockedUseCodePush.mockReturnValue({ status: CodePush.SyncStatus.UP_TO_DATE })
 jest.mock('libs/codepush/CodePushProvider', () => ({
-  useCodePush: jest.fn(() => ({ status: 'UP_TO_DATE' })),
+  useCodePush: jest.fn(),
 }))
 
 describe('<RootNavigator />', () => {
   beforeEach(() => {
     jest.useFakeTimers()
-    jest.clearAllMocks()
   })
 
   afterEach(() => {
     jest.useRealTimers()
+    jest.clearAllMocks()
     storage.clear('has_seen_tutorials')
   })
 
   it('show TabNavigator screen on mount when user has already seen tutorials', async () => {
     storage.saveObject('has_seen_tutorials', true)
     const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await act(flushAllPromises)
 
-    expect(analytics.logScreenView).toBeCalledTimes(1)
-    expect(analytics.logScreenView).toBeCalledWith('Home')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'Home')
     expect(renderAPI.queryByText('TabNavigator screen')).toBeTruthy()
     expect(renderAPI.queryByText('FirstTutorial screen')).toBeFalsy()
     renderAPI.unmount()
@@ -67,12 +65,9 @@ describe('<RootNavigator />', () => {
   it('show FirstTutorial screen on mount when user has NOT seen tutorials', async () => {
     storage.saveObject('has_seen_tutorials', false)
     const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await act(flushAllPromises)
 
-    expect(analytics.logScreenView).toBeCalledTimes(1)
-    expect(analytics.logScreenView).toBeCalledWith('FirstTutorial')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'FirstTutorial')
     expect(renderAPI.queryByText('FirstTutorial screen')).toBeTruthy()
     expect(renderAPI.queryByText('TabNavigator screen')).toBeFalsy()
     renderAPI.unmount()
@@ -81,25 +76,50 @@ describe('<RootNavigator />', () => {
   it('should call SplashScreen.hide() after 200ms', async () => {
     expect.assertions(2)
     const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await act(flushAllPromises)
 
     expect(SplashScreen.hide).toBeCalledTimes(0)
-    jest.advanceTimersByTime(200)
+
+    await waitForSplashScreenDelay()
+
     expect(SplashScreen.hide).toBeCalledTimes(1)
     renderAPI.unmount()
   })
-  it('should call SplashScreen.hide() after 200ms', async () => {
-    mockedUseCodePush.mockImplementation(() => ({ status: 'OTHER' }))
+
+  it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
+    expect.assertions(2)
     const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await act(flushAllPromises)
 
     expect(SplashScreen.hide).toBeCalledTimes(0)
-    jest.advanceTimersByTime(200)
-    expect(SplashScreen.hide).not.toBeCalledTimes(1)
+    const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
+    expect(privacyPolicyTitle).toBeFalsy()
+    renderAPI.unmount()
+  })
+
+  it('should display PrivacyPolicy if splash screen is hidden', async () => {
+    expect.assertions(2)
+    const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
+    await act(flushAllPromises)
+
+    await waitForSplashScreenDelay()
+
+    expect(SplashScreen.hide).toBeCalledTimes(1)
+    const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
+    expect(privacyPolicyTitle).toBeTruthy()
+    renderAPI.unmount()
+  })
+
+  it('should NOT call SplashScreen.hide() if CodePush status is not UP_TO_DATE', async () => {
+    mockedUseCodePush.mockReturnValue({ status: CodePush.SyncStatus.CHECKING_FOR_UPDATE })
+    const renderAPI = render(reactQueryProviderHOC(<RootNavigator />))
+    await act(flushAllPromises)
+
+    expect(SplashScreen.hide).not.toBeCalled()
+
+    await waitForSplashScreenDelay()
+
+    expect(SplashScreen.hide).not.toBeCalled()
     renderAPI.unmount()
   })
 })
@@ -130,3 +150,10 @@ describe('wrapRoute()', () => {
     expect(hoc).not.toBeCalledWith(AccountCreated)
   })
 })
+
+async function waitForSplashScreenDelay() {
+  act(() => {
+    jest.advanceTimersByTime(200)
+  })
+  await act(flushAllPromises)
+}
