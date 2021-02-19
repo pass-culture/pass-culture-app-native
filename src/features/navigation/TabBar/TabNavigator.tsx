@@ -8,6 +8,7 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
 import { Profile } from 'features/profile/pages/Profile'
+import { Calendar } from 'features/search/pages/Calendar'
 import { Search } from 'features/search/pages/Search'
 
 import { TabBar } from './TabBar'
@@ -30,7 +31,11 @@ export const TabNavigator: React.FC = () => {
     <Tab.Navigator
       initialRouteName="Home"
       tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
-      <Tab.Screen name="Home" component={Home} initialParams={{ shouldDisplayLoginModal: false }} />
+      <Tab.Screen
+        name="Home"
+        component={Calendar}
+        initialParams={{ shouldDisplayLoginModal: false }}
+      />
       <Tab.Screen name="Search" component={Search} />
       {authContext.isLoggedIn && <Tab.Screen name="Bookings" component={Bookings} />}
       <Tab.Screen name="Favorites" component={Favorites} />
