@@ -9,6 +9,8 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 
+import { BookingWrapper } from './BookingOfferWrapper'
+
 interface Props {
   visible: boolean
   dismissModal: () => void
@@ -16,22 +18,21 @@ interface Props {
 }
 
 export const BookingOfferModal: React.FC<Props> = ({ visible, dismissModal, offerCategory }) => {
-  if (offerCategory === CategoryType.Thing)
-    return (
-      <AppModal
-        visible={visible}
-        title={_(t`Détails de la réservation`)}
-        leftIcon={ArrowPrevious}
-        onLeftIconPress={dismissModal}
-        rightIcon={Close}
-        onRightIconPress={dismissModal}>
-        <BookingDetails />
-      </AppModal>
-    )
+  const title = offerCategory === CategoryType.Thing ? _(t`Détails de la réservation`) : ''
+  const leftIcon = offerCategory === CategoryType.Thing ? ArrowPrevious : undefined
+  const onLeftIconPress = offerCategory === CategoryType.Thing ? dismissModal : undefined
 
   return (
-    <AppModal visible={visible} title="" rightIcon={Close} onRightIconPress={dismissModal}>
-      <BookingEventChoices />
-    </AppModal>
+    <BookingWrapper>
+      <AppModal
+        visible={visible}
+        title={title}
+        leftIcon={leftIcon}
+        onLeftIconPress={onLeftIconPress}
+        rightIcon={Close}
+        onRightIconPress={dismissModal}>
+        {offerCategory === CategoryType.Thing ? <BookingDetails /> : <BookingEventChoices />}
+      </AppModal>
+    </BookingWrapper>
   )
 }
