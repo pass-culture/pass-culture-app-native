@@ -21,7 +21,7 @@ export function LoggedOutHeader() {
         <Typo.Title4 color={ColorsEnum.WHITE}>{_(t`Profil`)}</Typo.Title4>
         <Spacer.Column numberOfSpaces={8} />
         <Description color={ColorsEnum.WHITE}>
-          {_(t`Inscris-toi pour accéder à toutes les fonctionnalités de l’appication`)}
+          {_(t`Inscris-toi pour accéder à toutes les fonctionnalités de l’application`)}
         </Description>
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimaryWhite title={_(t`S'inscrire`)} onPress={() => navigate('SetEmail')} />
