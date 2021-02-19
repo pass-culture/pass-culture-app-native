@@ -51,6 +51,7 @@ const Container = styled.View<{ customStyle: StyleProp<ViewStyle> }>(({ customSt
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
+  zIndex: 1,
   ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
 }))
 

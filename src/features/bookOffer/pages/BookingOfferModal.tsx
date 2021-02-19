@@ -8,8 +8,10 @@ import { _ } from 'libs/i18n'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
+import { IconInterface } from 'ui/svg/icons/types'
 
-import { BookingWrapper } from './BookingOfferWrapper'
+import { BookingWrapper, useBooking } from './BookingOfferWrapper'
+import { Step } from './reducer'
 
 interface Props {
   visible: boolean
@@ -17,22 +19,38 @@ interface Props {
   offerCategory: CategoryType
 }
 
-export const BookingOfferModal: React.FC<Props> = ({ visible, dismissModal, offerCategory }) => {
-  const title = offerCategory === CategoryType.Thing ? _(t`Détails de la réservation`) : ''
-  const leftIcon = offerCategory === CategoryType.Thing ? ArrowPrevious : undefined
-  const onLeftIconPress = offerCategory === CategoryType.Thing ? dismissModal : undefined
+const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissModal, offerCategory }) => {
+  const { bookingState, dispatch } = useBooking()
+
+  const goToPreviousStep = () => {
+    dispatch({ type: 'MODIFY_OPTIONS' })
+  }
+
+  let title = _(t`Détails de la réservation`)
+  let leftIcon: React.FC<IconInterface> | undefined = ArrowPrevious
+  let onLeftIconPress = offerCategory === CategoryType.Event ? goToPreviousStep : dismissModal
+
+  if (offerCategory === CategoryType.Event && bookingState.step !== Step.CONFIRMATION) {
+    title = ''
+    leftIcon = undefined
+    onLeftIconPress = () => null
+  }
 
   return (
-    <BookingWrapper>
-      <AppModal
-        visible={visible}
-        title={title}
-        leftIcon={leftIcon}
-        onLeftIconPress={onLeftIconPress}
-        rightIcon={Close}
-        onRightIconPress={dismissModal}>
-        {offerCategory === CategoryType.Thing ? <BookingDetails /> : <BookingEventChoices />}
-      </AppModal>
-    </BookingWrapper>
+    <AppModal
+      visible={visible}
+      title={title}
+      leftIcon={leftIcon}
+      onLeftIconPress={onLeftIconPress}
+      rightIcon={Close}
+      onRightIconPress={dismissModal}>
+      {offerCategory === CategoryType.Event ? <BookingEventChoices /> : <BookingDetails />}
+    </AppModal>
   )
 }
+
+export const BookingOfferModal: React.FC<Props> = (props) => (
+  <BookingWrapper>
+    <BookingOfferModalComponent {...props} />
+  </BookingWrapper>
+)
