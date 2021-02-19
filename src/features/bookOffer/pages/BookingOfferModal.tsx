@@ -22,6 +22,7 @@ export const BookingOfferModal: React.FC<Props> = ({ visible, dismissModal, offe
         visible={visible}
         title={_(t`Détails de la réservation`)}
         leftIcon={ArrowPrevious}
+        onLeftIconPress={dismissModal}
         rightIcon={Close}
         onRightIconPress={dismissModal}>
         <BookingDetails />
