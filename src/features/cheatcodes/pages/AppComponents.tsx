@@ -48,6 +48,8 @@ import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
+import { Booking } from 'ui/svg/icons/Booking'
+import { Calendar } from 'ui/svg/icons/Calendar'
 import { Check } from 'ui/svg/icons/Check'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
@@ -68,6 +70,7 @@ import { Info } from 'ui/svg/icons/Info'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
+import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
@@ -457,6 +460,18 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <ProfileDeletion size={24} />
           <Text> - ProfileDeletion </Text>
+        </AlignedText>
+        <AlignedText>
+          <Booking size={24} />
+          <Text> - Booking </Text>
+        </AlignedText>
+        <AlignedText>
+          <Calendar size={24} />
+          <Text> - Calendar </Text>
+        </AlignedText>
+        <AlignedText>
+          <LocationBuilding size={24} />
+          <Text> - LocationBuilding </Text>
         </AlignedText>
       </AccordionItem>
 
