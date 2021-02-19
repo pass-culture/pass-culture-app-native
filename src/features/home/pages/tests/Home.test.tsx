@@ -1,6 +1,7 @@
 import { render, act } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
@@ -72,13 +73,17 @@ describe('Home component', () => {
 
   it('should have a personalized welcome message when user is logged in', async () => {
     const { getByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
-    const welcomeText = getByText('Bonjour Jean')
-    expect(welcomeText.props.children).toBe('Bonjour Jean')
+    await waitForExpect(() => {
+      const welcomeText = getByText('Bonjour Jean')
+      expect(welcomeText.props.children).toBe('Bonjour Jean')
+    })
   })
 
   it('should show the available credit to the user - remaining', async () => {
     const { queryByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
-    expect(queryByText('Tu as 496 € sur ton pass')).toBeTruthy()
+    await waitForExpect(() => {
+      expect(queryByText('Tu as 496 € sur ton pass')).toBeTruthy()
+    })
   })
 
   it('should show the available credit to the user - expired', async () => {
@@ -88,6 +93,7 @@ describe('Home component', () => {
       partialUser: { depositExpirationDate: new Date('2020-02-16T17:16:04.735235') },
     })
     expect(queryByText('Tu as 496 € sur ton pass')).toBeFalsy()
+    await act(flushAllPromises)
     expect(queryByText('Ton crédit est expiré')).toBeTruthy()
   })
 
@@ -192,7 +198,9 @@ describe('Home redirection to EighteenBirthday', () => {
 
     await act(async () => await flushAllPromisesTimes(10))
 
-    expect(navigate).toBeCalledWith('EighteenBirthday')
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('EighteenBirthday')
+    })
   })
 
   it('should not trigger redirection when not eligible', async () => {
