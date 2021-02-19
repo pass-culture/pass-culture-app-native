@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-calendars/src/calendar/day/index.js b/node_modules/react-native-calendars/src/calendar/day/index.js
+index e005388..6d3db3e 100644
+--- a/node_modules/react-native-calendars/src/calendar/day/index.js
++++ b/node_modules/react-native-calendars/src/calendar/day/index.js
+@@ -82,7 +82,7 @@ export default class Day extends Component {
+     const {day} = this.props;
+     const date = xdateToData(day);
+     const Component = this.getDayComponent();
+-    const dayProps = extractComponentProps(Component, this.props);
++    const dayProps = extractComponentProps(Day, this.props);
+
+     return (
+       <Component
