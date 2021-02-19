@@ -1859,13 +1859,14 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                   "width": "100%",
+                                  "zIndex": 1,
                                 },
                               ]
                             }
                           >
                             <View
                               accessible={true}
-                              focusable={false}
+                              focusable={true}
                               onClick={[Function]}
                               onResponderGrant={[Function]}
                               onResponderMove={[Function]}
@@ -1950,20 +1951,222 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               ]
                             }
                           >
-                            <Text
+                            <View
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 38,
-                                    "lineHeight": 48,
+                                    "marginTop": -48,
+                                    "width": "100%",
                                   },
                                 ]
                               }
                             >
-                              Je suis une offre Evenement
-                            </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                    },
+                                  ]
+                                }
+                              >
+                                Date
+                              </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Samedi 12 mai 2021
+                              </Text>
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#f5f5f5",
+                                      "height": 2,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                    },
+                                  ]
+                                }
+                              >
+                                Heure
+                              </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                21:00
+                              </Text>
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#f5f5f5",
+                                      "height": 2,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                    },
+                                  ]
+                                }
+                              >
+                                Nombre de place
+                              </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Duo
+                              </Text>
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                accessible={true}
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                style={
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "#eb0055",
+                                    "borderRadius": 24,
+                                    "borderWidth": 0,
+                                    "flexDirection": "row",
+                                    "height": 40,
+                                    "justifyContent": "center",
+                                    "maxWidth": 500,
+                                    "opacity": 1,
+                                    "paddingBottom": 2,
+                                    "paddingLeft": 2,
+                                    "paddingRight": 2,
+                                    "paddingTop": 2,
+                                    "width": "100%",
+                                  }
+                                }
+                                testID="button-container"
+                              >
+                                <Text
+                                  adjustsFontSizeToFit={false}
+                                  numberOfLines={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#ffffff",
+                                        "fontFamily": "Montserrat-Bold",
+                                        "fontSize": 15,
+                                        "lineHeight": 20,
+                                        "marginLeft": 5,
+                                        "maxWidth": 650,
+                                      },
+                                    ]
+                                  }
+                                  testID="button-title"
+                                  textColor="#ffffff"
+                                >
+                                  Valider ces options
+                                </Text>
+                              </View>
+                            </View>
                           </View>
                         </View>
                       </View>
@@ -2455,6 +2658,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                   "width": "100%",
+                                  "zIndex": 1,
                                 },
                               ]
                             }
@@ -4851,13 +5055,14 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                   "width": "100%",
+                                  "zIndex": 1,
                                 },
                               ]
                             }
                           >
                             <View
                               accessible={true}
-                              focusable={false}
+                              focusable={true}
                               onClick={[Function]}
                               onResponderGrant={[Function]}
                               onResponderMove={[Function]}
@@ -4942,20 +5147,222 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               ]
                             }
                           >
-                            <Text
+                            <View
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 38,
-                                    "lineHeight": 48,
+                                    "marginTop": -48,
+                                    "width": "100%",
                                   },
                                 ]
                               }
                             >
-                              Je suis une offre Evenement
-                            </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                    },
+                                  ]
+                                }
+                              >
+                                Date
+                              </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Samedi 12 mai 2021
+                              </Text>
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#f5f5f5",
+                                      "height": 2,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                    },
+                                  ]
+                                }
+                              >
+                                Heure
+                              </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                21:00
+                              </Text>
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#f5f5f5",
+                                      "height": 2,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Medium",
+                                      "fontSize": 18,
+                                      "lineHeight": 22,
+                                    },
+                                  ]
+                                }
+                              >
+                                Nombre de place
+                              </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Duo
+                              </Text>
+                              <View
+                                numberOfSpaces={6}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 24,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                accessible={true}
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                style={
+                                  Object {
+                                    "alignItems": "center",
+                                    "backgroundColor": "#eb0055",
+                                    "borderRadius": 24,
+                                    "borderWidth": 0,
+                                    "flexDirection": "row",
+                                    "height": 40,
+                                    "justifyContent": "center",
+                                    "maxWidth": 500,
+                                    "opacity": 1,
+                                    "paddingBottom": 2,
+                                    "paddingLeft": 2,
+                                    "paddingRight": 2,
+                                    "paddingTop": 2,
+                                    "width": "100%",
+                                  }
+                                }
+                                testID="button-container"
+                              >
+                                <Text
+                                  adjustsFontSizeToFit={false}
+                                  numberOfLines={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#ffffff",
+                                        "fontFamily": "Montserrat-Bold",
+                                        "fontSize": 15,
+                                        "lineHeight": 20,
+                                        "marginLeft": 5,
+                                        "maxWidth": 650,
+                                      },
+                                    ]
+                                  }
+                                  testID="button-title"
+                                  textColor="#ffffff"
+                                >
+                                  Valider ces options
+                                </Text>
+                              </View>
+                            </View>
                           </View>
                         </View>
                       </View>
@@ -5447,6 +5854,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                   "width": "100%",
+                                  "zIndex": 1,
                                 },
                               ]
                             }

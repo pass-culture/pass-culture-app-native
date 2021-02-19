@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -263,10 +263,11 @@
+@@ -264,10 +264,11 @@
                     },
                   ]
                 }
@@ -17,7 +17,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
           </View>
           <View
             numberOfSpaces={6}
-@@ -376,10 +377,11 @@
+@@ -377,10 +378,11 @@
                     },
                   ]
                 }
@@ -29,7 +29,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 accessible={true}
                 focusable={true}
                 onClick={[Function onClick]}
-@@ -473,22 +475,22 @@
+@@ -474,22 +476,22 @@
               ]
             }
           />
@@ -61,7 +61,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -158,10 +158,56 @@
+@@ -159,10 +159,56 @@
                 rightIcon-SVG-Mock
               </View>
             </View>
@@ -118,7 +118,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               Array [
                 Object {
                   \\"height\\": 28,
-@@ -205,18 +251,18 @@
+@@ -206,18 +252,18 @@
                   },
                 ]
               }
@@ -139,7 +139,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     \\"borderWidth\\": 1,
                     \\"flexDirection\\": \\"row\\",
                     \\"height\\": 40,
-@@ -314,18 +360,18 @@
+@@ -315,18 +361,18 @@
                   },
                 ]
               }
@@ -167,7 +167,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -158,10 +158,56 @@
+@@ -159,10 +159,56 @@
                 rightIcon-SVG-Mock
               </View>
             </View>
@@ -224,7 +224,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               Array [
                 Object {
                   \\"height\\": 28,
-@@ -205,18 +251,18 @@
+@@ -206,18 +252,18 @@
                   },
                 ]
               }
@@ -245,7 +245,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     \\"borderWidth\\": 1,
                     \\"flexDirection\\": \\"row\\",
                     \\"height\\": 40,
-@@ -314,18 +360,18 @@
+@@ -315,18 +361,18 @@
                   },
                 ]
               }

@@ -78,6 +78,7 @@ Array [
                 "flexDirection": "row",
                 "justifyContent": "space-between",
                 "width": "100%",
+                "zIndex": 1,
               },
             ]
           }
