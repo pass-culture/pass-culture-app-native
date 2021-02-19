@@ -30,7 +30,8 @@ export function useAuthContext(): IAuthContext {
 }
 
 export const AuthWrapper = ({ children }: { children: Element }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const [isWaitingForLoggedInState, setIsWaitingForLoggedInState] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     storage.readString('access_token').then((accessToken) => {
@@ -39,6 +40,8 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
       if (accessToken) {
         connectUserToBatchWithAccessTokenId(accessToken)
       }
+
+      setIsWaitingForLoggedInState(false)
     })
   }, [])
 
@@ -48,6 +51,7 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
    * - useLogoutRoutine: when logging out
    * - useLoginRoutine: when applying the logging in (signin or emailValidation)
    */
+  if (isWaitingForLoggedInState) return null
   return (
     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>{children}</AuthContext.Provider>
   )
