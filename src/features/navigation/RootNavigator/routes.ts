@@ -16,6 +16,7 @@ import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
+import { Calendar } from 'features/bookOffer/components/Calendar/Calendar'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
@@ -86,6 +87,8 @@ const routes: Array<Route> = [
   { name: 'TemporaryProfilePage', component: TemporaryProfilePage },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial, options: TransitionPresets.SlideFromRightIOS },
+  // TODO: PC-6693 remove this line
+  { name: 'Calendar', component: Calendar },
 ]
 
 export default routes
