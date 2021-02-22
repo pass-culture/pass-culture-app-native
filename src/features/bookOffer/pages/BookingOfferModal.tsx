@@ -17,13 +17,19 @@ interface Props {
   visible: boolean
   dismissModal: () => void
   offerCategory: CategoryType
+  offerId: number
 }
 
-const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissModal, offerCategory }) => {
+const BookingOfferModalComponent: React.FC<Props> = ({
+  visible,
+  dismissModal,
+  offerCategory,
+  offerId,
+}) => {
   const { bookingState, dispatch } = useBooking()
 
   useEffect(() => {
-    dispatch({ type: 'INIT', payload: { category: offerCategory } })
+    dispatch({ type: 'INIT', payload: { category: offerCategory, offerId } })
   }, [])
 
   const goToPreviousStep = () => {

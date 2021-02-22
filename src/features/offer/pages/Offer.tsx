@@ -163,6 +163,7 @@ export const Offer: FunctionComponent = () => {
         visible={showBookingOfferModal}
         dismissModal={() => setShowBookingOfferModal(false)}
         offerCategory={offerResponse.category.categoryType}
+        offerId={offerResponse.id}
       />
 
       <OfferHeader

@@ -9,11 +9,13 @@ export enum Step {
 
 export type BookingState = {
   category: CategoryType | undefined
+  offerId: number | undefined
   step: Step | undefined
 }
 
 export const initialBookingState: BookingState = {
   category: undefined,
+  offerId: undefined,
   step: undefined,
 }
 
