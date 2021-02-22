@@ -54,7 +54,7 @@ export function NotificationSettings() {
           <Spacer.Column numberOfSpaces={4} />
           <SectionRow
             type="clickable"
-            title={_(t`Autoriser les notifications système`)}
+            title={_(t`Autoriser les notifications marketing`)}
             cta={
               <FilterSwitch
                 active={allowPush}
