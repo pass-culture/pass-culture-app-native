@@ -12,7 +12,11 @@ import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
-export const BookingEventChoices: React.FC = () => {
+interface Props {
+  dismissModal: () => void
+}
+
+export const BookingEventChoices: React.FC<Props> = ({ dismissModal }) => {
   const { bookingState, dispatch } = useBooking()
 
   const validateOptions = () => {
@@ -20,7 +24,7 @@ export const BookingEventChoices: React.FC = () => {
   }
 
   if (bookingState.step === Step.CONFIRMATION) {
-    return <BookingDetails />
+    return <BookingDetails dismissModal={dismissModal} />
   }
 
   return (

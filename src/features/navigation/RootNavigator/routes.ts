@@ -16,6 +16,7 @@ import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
+import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
@@ -44,6 +45,7 @@ const routes: Array<Route> = [
   { name: 'AppComponents', component: AppComponents },
   { name: 'CheatCodes', component: CheatCodes },
   { name: 'CheatMenu', component: CheatMenu },
+  { name: 'BookingConfirmation', component: BookingConfirmation },
   { name: 'CulturalSurvey', component: CulturalSurvey },
   { name: 'EligibilityConfirmed', component: EligibilityConfirmed },
   {
