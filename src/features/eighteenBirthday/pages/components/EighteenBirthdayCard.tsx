@@ -5,7 +5,6 @@ import React from 'react'
 import { useGetIdCheckToken } from 'features/auth/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { MonitoringError } from 'libs/errorMonitoring'
 import { _ } from 'libs/i18n'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
@@ -21,11 +20,10 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
     if (profile && idCheckTokenResponse?.token) {
       navigate('IdCheck', { email: profile.email, licenceToken: idCheckTokenResponse.token })
     } else if (profile && !idCheckTokenResponse?.token) {
-      // TODO: when backend treat non eligible as an error instead of null, change this error handling
-      throw new MonitoringError(
-        _(t`Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !`),
-        'NotEligibleIdCheckError'
-      )
+      // TODO: remove after POs validation this will happen only when POs access this page without auth
+      displayInfosSnackBar({
+        message: _(t`Nous ne pouvons pas vérifier ton identité pour le moment, es tu éligible ?`),
+      })
     } else {
       // TODO: remove after POs validation this will happen only when POs access this page without auth
       navigate('Login')

@@ -8,7 +8,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { GetIdCheckTokenResponse, UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
-import { MonitoringError } from 'libs/errorMonitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { superFlushWithAct } from 'tests/utils'
@@ -63,16 +62,15 @@ describe('<EighteenBirthdayCard />', () => {
   })
 
   it('should throw an error when opening id check when not eligible', async () => {
+    simulateUserMeSuccess()
     simulateNotEligibleIdCheckToken()
     const { getByText } = await renderEighteenBirthdayCard()
 
-    await waitForExpect(() => {
-      expect(() => fireEvent.press(getByText('Verifier mon identité'))).toThrowError(
-        new MonitoringError(
-          'Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !',
-          'NotEligibleIdCheckError'
-        )
-      )
+    fireEvent.press(getByText('Verifier mon identité'))
+    await superFlushWithAct()
+
+    expect(mockDisplayInfosSnackBar).toBeCalledWith({
+      message: `Nous ne pouvons pas vérifier ton identité pour le moment, es tu éligible ?`,
     })
   })
 
