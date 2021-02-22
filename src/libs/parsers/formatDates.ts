@@ -25,7 +25,7 @@ export const formatToCompleteFrenchDate = (date: Date) => {
   return `${weekDay} ${formatToFrenchDate(date)}`
 }
 
-const decompose = (timestamp: number) => {
+export const decomposeDate = (timestamp: number) => {
   const date = new Date(timestamp)
   const day = date.getDate()
   const month = MONTHS[date.getMonth()]
@@ -35,7 +35,7 @@ const decompose = (timestamp: number) => {
 
 const formatToFrenchDate = (date: Date | number | { day: number; month: string; year: number }) => {
   const timestamp = date instanceof Date ? date.getTime() : date
-  const { day, month, year } = typeof timestamp === 'number' ? decompose(timestamp) : timestamp
+  const { day, month, year } = typeof timestamp === 'number' ? decomposeDate(timestamp) : timestamp
   return `${day} ${month} ${year}`
 }
 
@@ -64,8 +64,8 @@ export const formatDatePeriod = (dates: Date[] | undefined): string | undefined 
   if (timestamps.length === 0) return
   if (timestamps.length === 1) return formatToFrenchDate(timestamps[0])
 
-  const first = decompose(timestamps[0])
-  const last = decompose(timestamps.slice(-1)[0])
+  const first = decomposeDate(timestamps[0])
+  const last = decomposeDate(timestamps.slice(-1)[0])
   const formattedEndDate = formatToFrenchDate(last)
 
   if (first.year !== last.year) return _(t`Du ${formatToFrenchDate(first)} au ${formattedEndDate}`)
