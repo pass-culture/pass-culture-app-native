@@ -1,50 +1,80 @@
 import React from 'react'
+import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
+import { useOffer } from 'features/offer/api/useOffer'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useBooking } from '../pages/BookingOfferWrapper'
 
+const { width } = Dimensions.get('window')
+
 export const BookingInformations: React.FC = () => {
   const { bookingState } = useBooking()
+  const { data: offer } = useOffer({ offerId: bookingState.offerId || 0 })
+  if (!offer) return <React.Fragment />
 
-  if (bookingState.category === CategoryType.Event) {
+  const { category, isDigital, fullAddress, name } = offer
+  const address = (
+    <StyledAddress>
+      <Typo.Caption>{fullAddress}</Typo.Caption>
+    </StyledAddress>
+  )
+
+  if (category.categoryType === CategoryType.Event) {
     return (
       <React.Fragment>
-        <Item Icon={Booking} message="Marina Rollman, un spectacle drôle" />
+        <Item Icon={Booking} message={name} />
         <Item Icon={Calendar} message="Samedi 18 mai 2021, 20:30" />
-        <Item Icon={LocationBuilding} message="La Cigale, 120 Bld Rochechouart 75018 Paris" />
+        <Item Icon={LocationBuilding} message={address} />
         <Item Icon={OrderPrice} message="48€" subtext="(24 € x 2 places)" />
+      </React.Fragment>
+    )
+  }
+
+  if (!isDigital) {
+    return (
+      <React.Fragment>
+        <Item Icon={Booking} message={name} />
+        <Item Icon={LocationBuilding} message={address} />
+        <Item Icon={OrderPrice} message="14,99€" />
       </React.Fragment>
     )
   }
 
   return (
     <React.Fragment>
-      <Item Icon={Booking} message="Deezer premium 3/mois" />
+      <Item Icon={Booking} message={name} />
       <Item Icon={OrderPrice} message="14,99€" />
     </React.Fragment>
   )
 }
 
-const Item: React.FC<{ Icon: React.FC<IconInterface>; message: string; subtext?: string }> = ({
-  Icon,
-  message,
-  subtext = '',
-}) => (
+const Item: React.FC<{
+  Icon: React.FC<IconInterface>
+  message: Element | string
+  subtext?: string
+}> = ({ Icon, message, subtext = '' }) => (
   <Row>
     <Icon color={ColorsEnum.GREY_DARK} />
     <Spacer.Row numberOfSpaces={2} />
-    <Typo.Caption>{message}</Typo.Caption>
+    {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
     <Spacer.Row numberOfSpaces={2} />
     <Typo.Caption color={ColorsEnum.GREY_DARK}>{subtext}</Typo.Caption>
   </Row>
 )
 
-const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
+const Row = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+  width: width - getSpacing(4 * 6),
+})
+const StyledAddress = styled(Typo.Body)({
+  textTransform: 'capitalize',
+})
