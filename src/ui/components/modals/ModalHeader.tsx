@@ -58,19 +58,19 @@ const Container = styled.View<{ customStyle: StyleProp<ViewStyle> }>(({ customSt
 /* The negative margins are used to compensate for the
   "empty" space of SVG icons. */
 const RightHeaderAction = styled.TouchableOpacity({
-  flex: 0.2,
+  flex: 0.1,
   marginRight: -4,
   alignItems: 'flex-end',
 })
 const LeftHeaderAction = styled.TouchableOpacity({
-  flex: 0.2,
+  flex: 0.1,
   marginLeft: -4,
   alignItems: 'flex-start',
 })
 
 const titleStyle = ({ customStyle }: { customStyle: StyleProp<ViewStyle> }) =>
   ({
-    flex: 0.6,
+    flex: 0.8,
     textAlign: 'center',
     ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
   } as CSSObject)

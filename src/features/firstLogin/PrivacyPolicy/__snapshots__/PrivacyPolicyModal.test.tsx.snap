@@ -103,7 +103,7 @@ Array [
               Object {
                 "alignItems": "flex-start",
                 "flexBasis": 0,
-                "flexGrow": 0.2,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
                 "marginLeft": -4,
                 "opacity": 1,
@@ -118,7 +118,7 @@ Array [
                 Object {
                   "color": "#151515",
                   "flexBasis": 0,
-                  "flexGrow": 0.6,
+                  "flexGrow": 0.8,
                   "flexShrink": 1,
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -144,7 +144,7 @@ Array [
               Object {
                 "alignItems": "flex-end",
                 "flexBasis": 0,
-                "flexGrow": 0.2,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
                 "marginRight": -4,
                 "opacity": 1,
