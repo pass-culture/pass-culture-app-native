@@ -4,11 +4,11 @@ import { StatusBar, Platform } from 'react-native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { Bookings } from 'features/bookings/pages/Bookings'
+import { Calendar } from 'features/bookOffer/components/Calendar/Calendar'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
 import { Profile } from 'features/profile/pages/Profile'
-import { Calendar } from 'features/search/pages/Calendar'
 import { Search } from 'features/search/pages/Search'
 
 import { TabBar } from './TabBar'
