@@ -6,8 +6,12 @@ import { CallToAction } from '../CallToAction'
 describe('<CallToAction />', () => {
   it('should render not disabled', () => {
     const { toJSON, queryByText } = render(
-      // eslint-disable-next-line no-console
-      <CallToAction wording="Wording to display" onPress={() => console.log('test')} />
+      <CallToAction
+        wording="Wording to display"
+        // eslint-disable-next-line no-console
+        onPress={() => console.log('test')}
+        isDisabled={false}
+      />
     )
     expect(queryByText('Wording to display')).toBeTruthy()
     expect(toJSON()).toMatchSnapshot()
@@ -15,7 +19,7 @@ describe('<CallToAction />', () => {
 
   it('should render disabled', () => {
     const { toJSON, queryByText } = render(
-      <CallToAction wording="Wording to display" onPress={undefined} />
+      <CallToAction wording="Wording to display" onPress={undefined} isDisabled={true} />
     )
     expect(queryByText('Wording to display')).toBeTruthy()
     expect(toJSON()).toMatchSnapshot()
