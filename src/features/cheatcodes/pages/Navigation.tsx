@@ -209,6 +209,9 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('NotificationSettings')}
           />
         </Row>
+        <Row half>
+          <NavigationButton title={'Calendar'} onPress={() => navigation.navigate('Calendar')} />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

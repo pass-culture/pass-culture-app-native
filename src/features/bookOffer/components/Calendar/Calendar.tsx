@@ -37,6 +37,7 @@ const renderDay = (state: string, notAvailable: boolean, selected: boolean, day:
 
 export const Calendar: React.FC = () => (
   <React.Fragment>
+    {/* TODO: PC-6693 remove this line */}
     <Spacer.TopScreen />
     <CalendarList
       hideDayNames={true}
