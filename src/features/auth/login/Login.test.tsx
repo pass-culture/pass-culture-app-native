@@ -1,6 +1,5 @@
 import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
-import { DefaultRequestBodyType } from 'msw/lib/types/utils/handlers/requestHandler'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
@@ -9,6 +8,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
 import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
+import { storage } from 'libs/storage'
 import { server } from 'tests/server'
 import { flushAllPromises, flushAllPromisesTimes } from 'tests/utils'
 
@@ -23,7 +23,10 @@ const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 describe('<Login/>', () => {
   beforeEach(() => {
     simulateSignin200()
-    simulateUserProfileNeedNotFillCulturalSurvey()
+    mockMeApiCall({
+      needsToFillCulturalSurvey: false,
+      showEligibleCard: false,
+    } as UserProfileResponse)
     jest.clearAllMocks()
     mockUsePreviousRoute.mockReturnValue(null)
     useRoute.mockImplementation(() => ({
@@ -31,13 +34,15 @@ describe('<Login/>', () => {
     }))
   })
 
+  afterEach(async () => {
+    await storage.clear('has_seen_eligible_card')
+  })
+
   it('should redirect to home page WHEN signin is successful', async () => {
     const renderAPI = renderLogin()
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await act(flushAllPromises)
 
     await waitForExpect(() => {
       expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
@@ -46,16 +51,48 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to Cultural Survey WHEN signin is successful and user needs to fill cultural survey', async () => {
-    simulateUserProfileNeedsToFillCulturalSurvey()
+    mockMeApiCall({
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: false,
+    } as UserProfileResponse)
     const renderAPI = renderLogin()
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await act(flushAllPromises)
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurvey')
+    })
+  })
+
+  it('should not redirect to EighteenBirthday WHEN signin is successful and user has already seen eligible card and needs to see it', async () => {
+    storage.saveObject('has_seen_eligible_card', true)
+    mockMeApiCall({
+      needsToFillCulturalSurvey: false,
+      showEligibleCard: true,
+    } as UserProfileResponse)
+    const renderAPI = renderLogin()
+
+    fireEvent.press(renderAPI.getByText('Se connecter'))
+    await act(flushAllPromises)
+
+    await waitForExpect(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Home', { shouldDisplayLoginModal: false })
+    })
+  })
+
+  it('should redirect to EighteenBirthday WHEN signin is successful and user has not see eligible card and needs to see it', async () => {
+    mockMeApiCall({
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: true,
+    } as UserProfileResponse)
+    const renderAPI = renderLogin()
+
+    fireEvent.press(renderAPI.getByText('Se connecter'))
+    await act(flushAllPromises)
+
+    await waitForExpect(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
     })
   })
 
@@ -64,9 +101,7 @@ describe('<Login/>', () => {
     const renderAPI = renderLogin()
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await act(flushAllPromises)
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
@@ -99,9 +134,7 @@ describe('<Login/>', () => {
     const notErrorSnapshot = renderAPI.toJSON()
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromises()
-    })
+    await act(flushAllPromises)
 
     await waitForExpect(() => {
       expect(
@@ -137,33 +170,11 @@ function renderLogin() {
   )
 }
 
-function simulateUserProfileNeedNotFillCulturalSurvey() {
+function mockMeApiCall(response: UserProfileResponse) {
   server.use(
-    rest.get<DefaultRequestBodyType, UserProfileResponse>(
-      env.API_BASE_URL + '/native/v1/me',
-      async (req, res, ctx) =>
-        res(
-          ctx.status(200),
-          ctx.json({
-            needsToFillCulturalSurvey: false,
-          } as UserProfileResponse)
-        )
-    )
-  )
-}
-
-function simulateUserProfileNeedsToFillCulturalSurvey() {
-  server.use(
-    rest.get<DefaultRequestBodyType, UserProfileResponse>(
-      env.API_BASE_URL + '/native/v1/me',
-      async (req, res, ctx) =>
-        res(
-          ctx.status(200),
-          ctx.json({
-            needsToFillCulturalSurvey: true,
-          } as UserProfileResponse)
-        )
-    )
+    rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(response))
+    })
   )
 }
 

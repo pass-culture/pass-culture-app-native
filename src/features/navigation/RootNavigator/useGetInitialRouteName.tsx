@@ -5,7 +5,12 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 
-export type InitialRouteName = 'TabNavigator' | 'FirstTutorial' | 'CulturalSurvey' | undefined
+export type InitialRouteName =
+  | 'TabNavigator'
+  | 'FirstTutorial'
+  | 'CulturalSurvey'
+  | 'EighteenBirthday'
+  | undefined
 
 export function useGetInitialRouteName() {
   const [initialRouteName, setInitialRouteName] = useState<InitialRouteName>()
@@ -14,6 +19,12 @@ export function useGetInitialRouteName() {
   async function getInitialRouteName(): Promise<InitialRouteName> {
     if (isLoggedIn) {
       const user = await api.getnativev1me()
+
+      const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
+      if (!hasSeenEligibleCard && user.showEligibleCard) {
+        return 'EighteenBirthday'
+      }
+
       if (user.needsToFillCulturalSurvey) {
         return 'CulturalSurvey'
       }
