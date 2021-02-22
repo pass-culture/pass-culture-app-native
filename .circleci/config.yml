@@ -104,7 +104,7 @@ jobs:
       - checkout
       - run:
           name: Skip job when no tag found
-          command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
+          command: git tag --points-at HEAD | grep -E '^(testing_)?v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - install_node_modules
       - install_ruby_modules
       - run:
@@ -133,7 +133,7 @@ jobs:
       - checkout
       - run:
           name: Skip job when no tag found
-          command: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' || circleci step halt
+          command: git tag --points-at HEAD | grep -E '^(testing_)?v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - add_ssh_keys:
           fingerprints:
             - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
