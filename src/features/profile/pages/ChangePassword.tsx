@@ -5,13 +5,19 @@ import styled from 'styled-components/native'
 import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
+import { ProfileContainer } from '../components/reusables'
 
 export function ChangePassword() {
   const [password, setPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmedPassword, setConfirmedPassword] = useState('')
+
+  const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
 
   return (
     <React.Fragment>
@@ -24,7 +30,7 @@ export function ChangePassword() {
             value={password}
             autoFocus={true}
             onChangeText={setPassword}
-            placeholder={_(/*i18n: password placeholder */ t`F2A2b1E5`)}
+            placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe actuel`)}
           />
         </StyledInput>
         <Spacer.Column numberOfSpaces={5} />
@@ -32,22 +38,28 @@ export function ChangePassword() {
           <Typo.Body>{_(t`Nouveau mot de passe`)}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
-            value={password}
-            onChangeText={setPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Ex: mA2pass!`)}
+            value={newPassword}
+            onChangeText={setNewPassword}
+            placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
           />
-          <PasswordSecurityRules password={password} />
+          <PasswordSecurityRules password={newPassword} />
         </StyledInput>
         <Spacer.Column numberOfSpaces={5} />
         <StyledInput>
-          <Typo.Body>{_(t`Confirmation nouveau mot de passe`)}</Typo.Body>
+          <Typo.Body>{_(t`Confirmer le mot de passe`)}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
-            value={password}
-            onChangeText={setPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Ex: mA2pass!`)}
+            value={confirmedPassword}
+            onChangeText={setConfirmedPassword}
+            placeholder={_(/*i18n: password placeholder */ t`Confirmer le mot de passe`)}
           />
         </StyledInput>
+        <Spacer.Column numberOfSpaces={2} />
+        <InputError
+          visible={displayNotMatchingError}
+          messageId="les mots de passe ne concordent pas"
+          numberOfSpacesTop={0}
+        />
         <Spacer.Flex flex={1} />
         <ButtonPrimary title={_(t`Enregistrer`)} onPress={() => ({})} disabled={false} />
       </Container>
@@ -63,8 +75,6 @@ const StyledInput = styled.View({
   maxWidth: getSpacing(125),
 })
 
-const Container = styled.View({
-  flex: 1,
-  flexDirection: 'column',
+const Container = styled(ProfileContainer)({
   padding: getSpacing(4),
 })

@@ -60,7 +60,7 @@ export const Profile: React.FC = () => {
               <Row
                 title={_(t`Mot de passe`)}
                 type="navigable"
-                onPress={() => navigate('TemporaryProfilePage')}
+                onPress={() => navigate('ChangePassword')}
                 icon={Lock}
                 style={styles.row}
                 testID="row-password"
