@@ -24,9 +24,9 @@ describe('getCtaWordingAndAction', () => {
     it.each`
       type                  | url                     | expected                      | disabled | isExternal
       ${CategoryType.Event} | ${undefined}            | ${undefined}                  | ${true}  | ${undefined}
-      ${CategoryType.Event} | ${'http://url-externe'} | ${"Accéder à l'offre"}        | ${false} | ${false}
+      ${CategoryType.Event} | ${'http://url-externe'} | ${'Accéder à la billetterie'} | ${false} | ${true}
       ${CategoryType.Thing} | ${undefined}            | ${undefined}                  | ${true}  | ${undefined}
-      ${CategoryType.Thing} | ${'http://url-externe'} | ${'Accéder à la billetterie'} | ${false} | ${true}
+      ${CategoryType.Thing} | ${'http://url-externe'} | ${"Accéder à l'offre"}        | ${false} | ${false}
     `(
       'CTA(disabled=$disabled) = "$expected" for categoryType=$type and url=$url',
       ({ disabled, expected, type, url, isExternal }) => {
