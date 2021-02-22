@@ -12,7 +12,7 @@ import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
-  const { goBack, navigate } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   return (
     <GenericInfoPage
@@ -27,7 +27,7 @@ export function BookingConfirmation() {
         )}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite title={_(t`Voir ma réservation`)} onPress={goBack} />
+      <ButtonPrimaryWhite title={_(t`Voir ma réservation`)} onPress={() => navigate('Bookings')} />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite
         title={_(t`Retourner à l'accueil`)}
