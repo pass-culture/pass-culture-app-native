@@ -23,6 +23,7 @@ export type RootStackParamList = {
   AppComponents: undefined
   CheatCodes: undefined
   CheatMenu: undefined
+  BookingConfirmation: undefined
   CulturalSurvey: undefined
   EligibilityConfirmed: undefined
   ForgottenPassword: undefined

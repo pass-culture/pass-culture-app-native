@@ -114,28 +114,27 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             ]
 -                           }
 -                         />
--                         <View
--                           style={
--                             Array [
--                               Object {
++                     </RCTScrollView>
+                      <View
++                       numberOfSpaces={10}
+                        style={
+                          Array [
+                            Object {
 -                                 \\"marginHorizontal\\": 24,
 -                               },
 -                             ]
 -                           }
 -                         >
-+                     </RCTScrollView>
-                      <View
+-                           <View
 -                             numberOfSpaces={6}
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
+-                             style={
+-                               Array [
+-                                 Object {
 -                                   \\"height\\": 24,
-+                             \\"height\\": 40,
-                            },
-                          ]
-                        }
-                      />
+-                                 },
+-                               ]
+-                             }
+-                           />
 -                           <Text
 -                             style={
 -                               Array [
@@ -147,35 +146,20 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 },
 -                               ]
 -                             }
-+                     <Modal
-+                       animationType=\\"slide\\"
-+                       hardwareAccelerated={false}
-+                       statusBarTranslucent={true}
-+                       testID=\\"modal\\"
-+                       transparent={true}
-+                       visible={false}
-                      >
+-                           >
 -                             Où ?
 -                           </Text>
-                        <View
+-                           <View
 -                             numberOfSpaces={4}
-+                         accessible={true}
-+                         focusable={true}
-+                         onClick={[Function onClick]}
-+                         onResponderGrant={[Function onResponderGrant]}
-+                         onResponderMove={[Function onResponderMove]}
-+                         onResponderRelease={[Function onResponderRelease]}
-+                         onResponderTerminate={[Function onResponderTerminate]}
-+                         onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-+                         onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-                          style={
+-                             style={
 -                               Array [
-                            Object {
+-                                 Object {
 -                                   \\"height\\": 16,
--                                 },
--                               ]
--                             }
--                           />
++                             \\"height\\": 40,
+                            },
+                          ]
+                        }
+                      />
 -                           <Text
 -                             style={
 -                               Array [
@@ -211,13 +195,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"textTransform\\": \\"capitalize\\",
 -                                 },
 -                               ]
-+                             \\"flexDirection\\": \\"column\\",
-+                             \\"flexGrow\\": 1,
-+                             \\"height\\": \\"100%\\",
-+                             \\"justifyContent\\": \\"flex-end\\",
-+                             \\"opacity\\": 1,
-+                             \\"width\\": \\"100%\\",
-                            }
+-                             }
 -                           >
 -                             PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8
 -                           </Text>
@@ -242,18 +220,40 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 },
 -                               ]
 -                             }
--                           >
++                     <Modal
++                       animationType=\\"slide\\"
++                       hardwareAccelerated={false}
++                       statusBarTranslucent={true}
++                       testID=\\"modal\\"
++                       transparent={true}
++                       visible={false}
+                      >
 -                             Distance
 -                           </Text>
--                           <View
+                        <View
 -                             numberOfSpaces={1}
--                             style={
++                         accessible={true}
++                         focusable={true}
++                         onClick={[Function onClick]}
++                         onResponderGrant={[Function onResponderGrant]}
++                         onResponderMove={[Function onResponderMove]}
++                         onResponderRelease={[Function onResponderRelease]}
++                         onResponderTerminate={[Function onResponderTerminate]}
++                         onResponderTerminationRequest={[Function onResponderTerminationRequest]}
++                         onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+                          style={
 -                               Array [
--                                 Object {
+                            Object {
 -                                   \\"height\\": 4,
 -                                 },
 -                               ]
--                             }
++                             \\"flexDirection\\": \\"column\\",
++                             \\"flexGrow\\": 1,
++                             \\"height\\": \\"100%\\",
++                             \\"justifyContent\\": \\"flex-end\\",
++                             \\"opacity\\": 1,
++                             \\"width\\": \\"100%\\",
+                            }
 -                           />
 -                           <Text
 -                             style={
@@ -490,20 +490,6 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     \\"fontFamily\\": \\"Montserrat-Regular\\",
 -                                     \\"fontSize\\": 15,
 -                                     \\"lineHeight\\": 20,
--                                   },
--                                 ]
--                               }
--                             >
--                               How to withdraw, 
--                               <Text
--                                 onPress={[Function onPress]}
--                                 style={
--                                   Array [
--                                     Object {
--                                       \\"color\\": \\"#151515\\",
--                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
--                                       \\"fontSize\\": 15,
--                                       \\"lineHeight\\": 20,
 +                                     \\"flexBasis\\": 0,
 +                                     \\"flexGrow\\": 0.6,
 +                                     \\"flexShrink\\": 1,
@@ -515,6 +501,20 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                   ]
                                 }
                               >
+-                               How to withdraw, 
+-                               <Text
+-                                 onPress={[Function onPress]}
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"color\\": \\"#151515\\",
+-                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
+-                                       \\"fontSize\\": 15,
+-                                       \\"lineHeight\\": 20,
+-                                     },
+-                                   ]
+-                                 }
+-                               >
 -                                 <View
 -                                   numberOfSpaces={1}
 -                                   style={
@@ -534,10 +534,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     externalSiteIcon-SVG-Mock
 -                                   </View>
 -                                   
--                                 </Text>
--                                  https://test.com
 +                               Détails de la réservation
                               </Text>
+-                                  https://test.com
+-                               </Text>
 -                             </Text>
 -                           </View>
 -                         </View>
@@ -556,7 +556,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                 focusable={true}
                                 onClick={[Function onClick]}
                                 onResponderGrant={[Function onResponderGrant]}
-@@ -1323,964 +1001,272 @@
+@@ -1323,965 +1001,273 @@
                                 onResponderRelease={[Function onResponderRelease]}
                                 onResponderTerminate={[Function onResponderTerminate]}
                                 onResponderTerminationRequest={[Function onResponderTerminationRequest]}
@@ -699,11 +699,12 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"flexBasis\\": 0,
 -                                           \\"flexGrow\\": 1,
 -                                           \\"flexShrink\\": 1,
--                                         },
--                                       ]
--                                     }
--                                   />
--                                   <View
++                                         \\"width\\": 12,
+                                        },
+                                      ]
+                                    }
+                                  />
+                                  <View
 -                                     height={48}
 -                                     width={48}
 -                                   >
@@ -716,11 +717,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                           \\"flexBasis\\": 0,
 -                                           \\"flexGrow\\": 1,
 -                                           \\"flexShrink\\": 1,
-+                                         \\"width\\": 12,
-                                        },
-                                      ]
-                                    }
-                                  />
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
 -                                   <View
 -                                     style={
 -                                       Array [
@@ -731,16 +731,16 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       ]
 -                                     }
 -                                   >
-                                  <View
+-                                     <View
                                     height={32}
 -                                       testID=\\"invalidTestId\\"
                                     width={32}
                                   >
 -                                       invalidTestId-SVG-Mock
 -                                     </View>
+-                                   </View>
 +                                   undefined-SVG-Mock
                                   </View>
--                                 </View>
                                   <View
 -                                   numberOfSpaces={4}
 +                                   numberOfSpaces={3}
@@ -896,10 +896,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                     width={32}
                                   >
 -                                       validTestId-SVG-Mock
+-                                     </View>
+-                                   </View>
 +                                   undefined-SVG-Mock
                                   </View>
--                                   </View>
--                                 </View>
                                   <View
 -                                   numberOfSpaces={4}
 +                                   numberOfSpaces={2}
@@ -1163,19 +1163,19 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               </View>
                                   <View
 -                                 numberOfSpaces={4}
--                                 style={
--                                   Array [
--                                     Object {
++                                   numberOfSpaces={2}
+                                    style={
+                                      Array [
+                                        Object {
 -                                       \\"width\\": 16,
 -                                     },
 -                                   ]
 -                                 }
 -                               />
 -                               <View
-+                                   numberOfSpaces={2}
-                                    style={
-                                      Array [
-                                        Object {
+-                                 style={
+-                                   Array [
+-                                     Object {
 -                                       \\"flexDirection\\": \\"column\\",
 -                                       \\"flexShrink\\": 1,
 -                                     },
@@ -1303,10 +1303,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                           \\"lineHeight\\": 16,
 -                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
-                                        },
-                                      ]
-                                    }
-                                  >
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
 -                                     auditif
 -                                   </Text>
 -                                 </View>
@@ -1480,10 +1480,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     \\"fontSize\\": 18,
 -                                     \\"lineHeight\\": 22,
 -                                     \\"textAlign\\": \\"center\\",
--                                   },
--                                 ]
--                               }
--                             >
+                                        },
+                                      ]
+                                    }
+                                  >
                                     
                                   </Text>
 -                             <View
@@ -1515,9 +1515,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               >
 -                                 rightIcon-SVG-Mock
 -                               </View>
+-                             </View>
                                 </View>
--                           </View>
--                           <View
+                                <View
 -                             style={
 -                               Array [
 -                                 Object {
@@ -1570,11 +1570,12 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               >
 -                                 Samedi 12 mai 2021
 -                               </Text>
-                                <View
+-                               <View
                                   numberOfSpaces={6}
                                   style={
                                     Array [
                                       Object {
+                                        \\"height\\": 24,
 @@ -2315,88 +1301,16 @@
                                       Object {
                                         \\"color\\": \\"#151515\\",
@@ -1665,19 +1666,6 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                   style={
                                     Array [
                                       Object {
-@@ -2405,11 +1319,11 @@
-                                    ]
-                                  }
-                                />
-                                <View
-                                  accessible={true}
--                                 focusable={true}
-+                                 focusable={false}
-                                  onClick={[Function onClick]}
-                                  onResponderGrant={[Function onResponderGrant]}
-                                  onResponderMove={[Function onResponderMove]}
-                                  onResponderRelease={[Function onResponderRelease]}
-                                  onResponderTerminate={[Function onResponderTerminate]}
 @@ -2451,11 +1365,11 @@
                                       ]
                                     }

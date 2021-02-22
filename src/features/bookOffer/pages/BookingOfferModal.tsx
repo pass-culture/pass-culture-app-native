@@ -48,7 +48,11 @@ const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissModal, of
       onLeftIconPress={onLeftIconPress}
       rightIcon={Close}
       onRightIconPress={dismissModal}>
-      {offerCategory === CategoryType.Event ? <BookingEventChoices /> : <BookingDetails />}
+      {offerCategory === CategoryType.Event ? (
+        <BookingEventChoices dismissModal={dismissModal} />
+      ) : (
+        <BookingDetails dismissModal={dismissModal} />
+      )}
     </AppModal>
   )
 }
