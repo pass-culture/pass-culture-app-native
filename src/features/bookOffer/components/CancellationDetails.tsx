@@ -8,7 +8,7 @@ import { _ } from 'libs/i18n'
 import { decomposeDate } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
 
-const formatDate = (limitDate: Date): string => {
+export const formatDate = (limitDate: Date): string => {
   const limit = new Date(limitDate)
   const { day, month, year } = decomposeDate(limit.getTime())
   return `${day} ${month} ${year}, ${limit.getHours()}h${limit.getMinutes()}`
