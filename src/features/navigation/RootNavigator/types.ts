@@ -21,6 +21,7 @@ export type RootStackParamList = {
   AccountCreated: undefined
   AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }
   AppComponents: undefined
+  ChangePassword: undefined
   CheatCodes: undefined
   CheatMenu: undefined
   BookingConfirmation: undefined

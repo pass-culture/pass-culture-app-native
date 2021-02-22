@@ -28,6 +28,7 @@ import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
+import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { Profile } from 'features/profile/pages/Profile'
@@ -69,6 +70,7 @@ const routes: Array<Route> = [
   { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary },
   { name: 'OfferDescription', component: OfferDescription, hoc: withAsyncErrorBoundary },
   { name: 'Profile', component: Profile },
+  { name: 'ChangePassword', component: ChangePassword },
   { name: 'ReinitializePassword', component: ReinitializePassword },
   { name: 'ResetPasswordEmailSent', component: ResetPasswordEmailSent },
   {
