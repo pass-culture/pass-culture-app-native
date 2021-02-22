@@ -55,7 +55,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-password')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('TemporaryProfilePage')
+      expect(navigate).toBeCalledWith('ChangePassword')
     })
   })
 
