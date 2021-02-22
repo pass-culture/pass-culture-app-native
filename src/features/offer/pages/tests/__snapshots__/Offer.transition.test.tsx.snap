@@ -64,12 +64,15 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -893,1452 +859,495 @@
+@@ -890,1203 +856,26 @@
+                          <View
+                            style={
+                              Array [
                                 Object {
                                   \\"marginHorizontal\\": 24,
-                                },
-                              ]
-                            }
+-                               },
+-                             ]
+-                           }
 -                         >
 -                           <Text
 -                             style={
@@ -99,21 +102,18 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 },
 -                               ]
 -                             }
-                          />
-                        </View>
-+                     </RCTScrollView>
-                      <View
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
+-                           />
+-                         </View>
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
 -                                 \\"backgroundColor\\": \\"#f5f5f5\\",
 -                                 \\"height\\": 8,
-+                             \\"height\\": 40,
-                            },
-                          ]
-                        }
-                      />
+-                               },
+-                             ]
+-                           }
+-                         />
 -                         <View
 -                           style={
 -                             Array [
@@ -122,28 +122,12 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               },
 -                             ]
 -                           }
-+                     <Modal
-+                       animationType=\\"slide\\"
-+                       hardwareAccelerated={false}
-+                       statusBarTranslucent={true}
-+                       testID=\\"modal\\"
-+                       transparent={true}
-+                       visible={false}
-                      >
-                        <View
+-                         >
+-                           <View
 -                             numberOfSpaces={6}
-+                         accessible={true}
-+                         focusable={true}
-+                         onClick={[Function onClick]}
-+                         onResponderGrant={[Function onResponderGrant]}
-+                         onResponderMove={[Function onResponderMove]}
-+                         onResponderRelease={[Function onResponderRelease]}
-+                         onResponderTerminate={[Function onResponderTerminate]}
-+                         onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-+                         onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-                          style={
+-                             style={
 -                               Array [
-                            Object {
+-                                 Object {
 -                                   \\"height\\": 24,
 -                                 },
 -                               ]
@@ -218,10 +202,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               Array [
 -                                 Object {
 -                                   \\"height\\": 16,
--                                 },
--                               ]
--                             }
--                           />
+                                },
+                              ]
+                            }
+                          />
 -                           <Text
 -                             style={
 -                               Array [
@@ -232,13 +216,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"lineHeight\\": 16,
 -                                 },
 -                               ]
-+                             \\"flexDirection\\": \\"column\\",
-+                             \\"flexGrow\\": 1,
-+                             \\"height\\": \\"100%\\",
-+                             \\"justifyContent\\": \\"flex-end\\",
-+                             \\"opacity\\": 1,
-+                             \\"width\\": \\"100%\\",
-                            }
+-                             }
 -                           >
 -                             Distance
 -                           </Text>
@@ -262,11 +240,11 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"lineHeight\\": 20,
 -                                 },
 -                               ]
-                          }
-                        >
+-                             }
+-                           >
 -                             900+ km
 -                           </Text>
-                          <View
+-                           <View
 -                             numberOfSpaces={4}
 -                             style={
 -                               Array [
@@ -297,45 +275,34 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             }
 -                           />
 -                           <View
-                            accessible={true}
+-                             accessible={true}
 -                             focusable={true}
-+                           focusable={false}
-                            onClick={[Function onClick]}
-                            onResponderGrant={[Function onResponderGrant]}
-                            onResponderMove={[Function onResponderMove]}
-                            onResponderRelease={[Function onResponderRelease]}
-                            onResponderTerminate={[Function onResponderTerminate]}
-                            onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-                            onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-                            style={
-                              Object {
-                                \\"alignItems\\": \\"center\\",
+-                             onClick={[Function onClick]}
+-                             onResponderGrant={[Function onResponderGrant]}
+-                             onResponderMove={[Function onResponderMove]}
+-                             onResponderRelease={[Function onResponderRelease]}
+-                             onResponderTerminate={[Function onResponderTerminate]}
+-                             onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+-                             onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+-                             style={
+-                               Object {
+-                                 \\"alignItems\\": \\"center\\",
 -                                 \\"flexDirection\\": \\"row\\",
-+                               \\"backgroundColor\\": \\"#ffffff\\",
-+                               \\"borderTopEndRadius\\": 16,
-+                               \\"borderTopStartRadius\\": 16,
-+                               \\"flexDirection\\": \\"column\\",
-+                               \\"justifyContent\\": \\"flex-start\\",
-                                \\"opacity\\": 1,
-+                               \\"paddingBottom\\": 20,
-+                               \\"paddingLeft\\": 20,
-+                               \\"paddingRight\\": 20,
-+                               \\"paddingTop\\": 20,
-+                               \\"width\\": \\"100%\\",
-                              }
-                            }
-                          >
+-                                 \\"opacity\\": 1,
+-                               }
+-                             }
+-                           >
 -                             <View
 -                               height={24}
 -                               width={24}
 -                             >
 -                               undefined-SVG-Mock
 -                             </View>
-                            <View
+-                             <View
 -                               numberOfSpaces={1}
-                              style={
-                                Array [
-                                  Object {
+-                               style={
+-                                 Array [
+-                                   Object {
 -                                     \\"width\\": 4,
 -                                   },
 -                                 ]
@@ -349,19 +316,14 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     \\"fontFamily\\": \\"Montserrat-Bold\\",
 -                                     \\"fontSize\\": 15,
 -                                     \\"lineHeight\\": 20,
-+                                   \\"alignItems\\": \\"center\\",
-+                                   \\"flexDirection\\": \\"row\\",
-+                                   \\"justifyContent\\": \\"space-between\\",
-+                                   \\"width\\": \\"100%\\",
-+                                   \\"zIndex\\": 1,
-                                  },
-                                ]
-                              }
-                            >
+-                                   },
+-                                 ]
+-                               }
+-                             >
 -                               Voir l'itinéraire
 -                             </Text>
 -                           </View>
-                              <View
+-                           <View
 -                             numberOfSpaces={6}
 -                             style={
 -                               Array [
@@ -371,7 +333,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               ]
 -                             }
 -                           />
--                         </View>
+                        </View>
 -                         <View
 -                           style={
 -                             Array [
@@ -383,18 +345,18 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           }
 -                         />
 -                         <View
-                                accessible={true}
-                                focusable={true}
-                                onClick={[Function onClick]}
-                                onResponderGrant={[Function onResponderGrant]}
-                                onResponderMove={[Function onResponderMove]}
-                                onResponderRelease={[Function onResponderRelease]}
-                                onResponderTerminate={[Function onResponderTerminate]}
-                                onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-                                onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-                                style={
+-                           accessible={true}
+-                           focusable={true}
+-                           onClick={[Function onClick]}
+-                           onResponderGrant={[Function onResponderGrant]}
+-                           onResponderMove={[Function onResponderMove]}
+-                           onResponderRelease={[Function onResponderRelease]}
+-                           onResponderTerminate={[Function onResponderTerminate]}
+-                           onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+-                           onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+-                           style={
 -                             Array [
-                                  Object {
+-                               Object {
 -                                 \\"alignItems\\": \\"center\\",
 -                                 \\"flexDirection\\": \\"row\\",
 -                                 \\"justifyContent\\": \\"space-between\\",
@@ -411,11 +373,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               Array [
 -                                 Object {
 -                                   \\"color\\": \\"#151515\\",
-+                                   \\"alignItems\\": \\"flex-start\\",
-                                    \\"flexBasis\\": 0,
+-                                   \\"flexBasis\\": 0,
 -                                   \\"flexGrow\\": 0.9,
-+                                   \\"flexGrow\\": 0.1,
-                                    \\"flexShrink\\": 1,
+-                                   \\"flexShrink\\": 1,
 -                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
 -                                   \\"fontSize\\": 18,
 -                                   \\"lineHeight\\": 22,
@@ -433,24 +393,17 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     \\"rotateZ\\": \\"1.5707963267948966rad\\",
 -                                   },
 -                                 ],
-+                                   \\"marginLeft\\": -4,
-+                                   \\"opacity\\": 1,
-                                  }
-                                }
+-                               }
+-                             }
 -                             testID=\\"accordionArrow\\"
-+                               testID=\\"leftIconButton\\"
-                              >
-                                <View
+-                           >
+-                             <View
 -                               height={24}
 -                               width={24}
-+                                 height={32}
-+                                 testID=\\"leftIcon\\"
-+                                 width={32}
-                                >
+-                             >
 -                               undefined-SVG-Mock
-+                                 leftIcon-SVG-Mock
-                                </View>
-                              </View>
+-                             </View>
+-                           </View>
 -                         </View>
 -                         <View
 -                           style={
@@ -478,26 +431,18 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             }
 -                             testID=\\"accordionBodyContainer\\"
 -                           >
-                              <Text
-+                               numberOfLines={2}
-                                style={
-                                  Array [
-                                    Object {
-                                      \\"color\\": \\"#151515\\",
+-                             <Text
+-                               style={
+-                                 Array [
+-                                   Object {
+-                                     \\"color\\": \\"#151515\\",
 -                                     \\"fontFamily\\": \\"Montserrat-Regular\\",
 -                                     \\"fontSize\\": 15,
 -                                     \\"lineHeight\\": 20,
-+                                     \\"flexBasis\\": 0,
-+                                     \\"flexGrow\\": 0.8,
-+                                     \\"flexShrink\\": 1,
-+                                     \\"fontFamily\\": \\"Montserrat-Medium\\",
-+                                     \\"fontSize\\": 18,
-+                                     \\"lineHeight\\": 22,
-+                                     \\"textAlign\\": \\"center\\",
-                                    },
-                                  ]
-                                }
-                              >
+-                                   },
+-                                 ]
+-                               }
+-                             >
 -                               How to withdraw, 
 -                               <Text
 -                                 onPress={[Function onPress]}
@@ -534,11 +479,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 </Text>
 -                                  https://test.com
 -                               </Text>
-+                               Détails de la réservation
-                              </Text>
+-                             </Text>
 -                           </View>
 -                         </View>
-                              <View
+-                         <View
 -                           style={
 -                             Array [
 -                               Object {
@@ -548,19 +492,20 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             ]
 -                           }
 -                         />
--                         <View
-                                accessible={true}
-                                focusable={true}
-                                onClick={[Function onClick]}
-                                onResponderGrant={[Function onResponderGrant]}
-                                onResponderMove={[Function onResponderMove]}
-                                onResponderRelease={[Function onResponderRelease]}
-                                onResponderTerminate={[Function onResponderTerminate]}
-                                onResponderTerminationRequest={[Function onResponderTerminationRequest]}
-                                onStartShouldSetResponder={[Function onStartShouldSetResponder]}
-                                style={
++                     </RCTScrollView>
+                      <View
+-                           accessible={true}
+-                           focusable={true}
+-                           onClick={[Function onClick]}
+-                           onResponderGrant={[Function onResponderGrant]}
+-                           onResponderMove={[Function onResponderMove]}
+-                           onResponderRelease={[Function onResponderRelease]}
+-                           onResponderTerminate={[Function onResponderTerminate]}
+-                           onResponderTerminationRequest={[Function onResponderTerminationRequest]}
+-                           onStartShouldSetResponder={[Function onStartShouldSetResponder]}
+-                           style={
 -                             Array [
-                                  Object {
+-                               Object {
 -                                 \\"alignItems\\": \\"center\\",
 -                                 \\"flexDirection\\": \\"row\\",
 -                                 \\"justifyContent\\": \\"space-between\\",
@@ -573,15 +518,14 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           }
 -                         >
 -                           <Text
--                             style={
--                               Array [
--                                 Object {
++                       numberOfSpaces={10}
+                        style={
+                          Array [
+                            Object {
 -                                   \\"color\\": \\"#151515\\",
-+                                   \\"alignItems\\": \\"flex-end\\",
-                                    \\"flexBasis\\": 0,
+-                                   \\"flexBasis\\": 0,
 -                                   \\"flexGrow\\": 0.9,
-+                                   \\"flexGrow\\": 0.1,
-                                    \\"flexShrink\\": 1,
+-                                   \\"flexShrink\\": 1,
 -                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
 -                                   \\"fontSize\\": 18,
 -                                   \\"lineHeight\\": 22,
@@ -599,25 +543,18 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     \\"rotateZ\\": \\"1.5707963267948966rad\\",
 -                                   },
 -                                 ],
-+                                   \\"marginRight\\": -4,
-+                                   \\"opacity\\": 1,
-                                  }
-                                }
+-                               }
+-                             }
 -                             testID=\\"accordionArrow\\"
-+                               testID=\\"rightIconButton\\"
-                              >
-                                <View
+-                           >
+-                             <View
 -                               height={24}
 -                               width={24}
-+                                 height={32}
-+                                 testID=\\"rightIcon\\"
-+                                 width={32}
-                                >
+-                             >
 -                               undefined-SVG-Mock
-+                                 rightIcon-SVG-Mock
-                                </View>
-                              </View>
-                            </View>
+-                             </View>
+-                           </View>
+-                         </View>
 -                         <View
 -                           style={
 -                             Object {
@@ -627,21 +564,18 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           }
 -                           testID=\\"accordionBody\\"
 -                         >
-                            <View
+-                           <View
 -                             onLayout={[Function onLayout]}
-                              style={
-                                Array [
-                                  Object {
+-                             style={
+-                               Array [
+-                                 Object {
 -                                   \\"bottom\\": 0,
 -                                   \\"paddingBottom\\": 24,
 -                                   \\"paddingHorizontal\\": 24,
 -                                   \\"paddingTop\\": 0,
 -                                   \\"position\\": \\"absolute\\",
-+                                   \\"alignItems\\": \\"center\\",
-+                                   \\"maxWidth\\": 500,
-+                                   \\"paddingTop\\": 20,
-                                    \\"width\\": \\"100%\\",
-                                  },
+-                                   \\"width\\": \\"100%\\",
+-                                 },
 -                                 undefined,
 -                               ]
 -                             }
@@ -650,176 +584,12 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             <View
 -                               style={
 -                                 Array [
-                                  Object {
+-                                   Object {
 -                                     \\"flexDirection\\": \\"row\\",
-+                                   \\"paddingBottom\\": 16,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                style={
-                                  Array [
-                                    Object {
--                                       \\"flexDirection\\": \\"column\\",
--                                       \\"flexShrink\\": 1,
-+                                     \\"width\\": \\"100%\\",
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
--                                   onLayout={[Function onLayout]}
-                                  style={
-                                    Array [
-                                      Object {
-                                        \\"alignItems\\": \\"center\\",
--                                         \\"aspectRatio\\": 1,
--                                         \\"borderColor\\": \\"#c7c7cc\\",
--                                         \\"borderRadius\\": 8,
--                                         \\"borderWidth\\": 1,
-+                                       \\"backgroundColor\\": \\"#f5f5f5\\",
-+                                       \\"borderRadius\\": 4,
-+                                       \\"display\\": \\"flex\\",
-+                                       \\"flexDirection\\": \\"row\\",
-+                                       \\"paddingVertical\\": 16,
-                                      },
-                                    ]
-                                  }
--                                   testID=\\"accessibilityFrame\\"
-                                >
-                                  <View
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"flexBasis\\": 0,
--                                           \\"flexGrow\\": 1,
--                                           \\"flexShrink\\": 1,
--                                         },
--                                       ]
--                                     }
--                                   />
--                                   <View
--                                     height={48}
--                                     width={48}
--                                   >
--                                     undefined-SVG-Mock
--                                   </View>
--                                   <View
-+                                   numberOfSpaces={3}
-                                    style={
-                                      Array [
-                                        Object {
--                                           \\"flexBasis\\": 0,
--                                           \\"flexGrow\\": 1,
--                                           \\"flexShrink\\": 1,
-+                                         \\"width\\": 12,
-                                        },
-                                      ]
-                                    }
-                                  />
-                                  <View
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"bottom\\": -16,
--                                           \\"position\\": \\"absolute\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                     <View
-                                    height={32}
--                                       testID=\\"invalidTestId\\"
-                                    width={32}
-                                  >
--                                       invalidTestId-SVG-Mock
--                                     </View>
-+                                   undefined-SVG-Mock
-                                  </View>
--                                 </View>
-                                  <View
--                                   numberOfSpaces={4}
-+                                   numberOfSpaces={3}
-                                    style={
-                                      Array [
-                                        Object {
--                                         \\"height\\": 16,
-+                                         \\"width\\": 12,
-                                        },
-                                      ]
-                                    }
-                                  />
-                                  <View
-                                    style={
-                                      Array [
-                                        Object {
--                                         \\"alignSelf\\": \\"center\\",
--                                         \\"flexDirection\\": \\"row\\",
--                                         \\"flexWrap\\": \\"wrap\\",
--                                         \\"justifyContent\\": \\"center\\",
--                                         \\"marginHorizontal\\": 8,
--                                         \\"width\\": 16,
-+                                         \\"flexShrink\\": 1,
-                                        },
-                                      ]
-                                    }
--                                   testID=\\"Handicap visuel\\"
--                                   width={16}
-                                  >
-                                    <Text
--                                     adjustsFontSizeToFit={true}
--                                     numberOfLines={1}
-+                                     color=\\"#626262\\"
-                                      style={
-                                        Array [
-                                          Object {
--                                           \\"color\\": \\"#151515\\",
--                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
--                                           \\"fontSize\\": 12,
--                                           \\"lineHeight\\": 16,
--                                           \\"paddingHorizontal\\": 1,
--                                           \\"textAlign\\": \\"center\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                     Handicap
--                                   </Text>
--                                   <Text
--                                     adjustsFontSizeToFit={true}
--                                     numberOfLines={1}
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"color\\": \\"#151515\\",
-+                                           \\"color\\": \\"#626262\\",
-                                            \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-                                            \\"fontSize\\": 12,
-                                            \\"lineHeight\\": 16,
--                                           \\"paddingHorizontal\\": 1,
--                                           \\"textAlign\\": \\"center\\",
-                                          },
-                                        ]
-                                      }
-                                    >
--                                     visuel
-+                                     Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.
-                                    </Text>
--                                 </View>
-                                  </View>
-                                  <View
--                                 numberOfSpaces={4}
-+                                   numberOfSpaces={5}
-                                    style={
-                                      Array [
-                                        Object {
--                                       \\"width\\": 16,
-+                                         \\"width\\": 20,
-                                        },
-                                      ]
-                                    }
-                                  />
+-                                   },
+-                                 ]
+-                               }
+-                             >
 -                               <View
 -                                 style={
 -                                   Array [
@@ -861,55 +631,47 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     width={48}
 -                                   >
 -                                     undefined-SVG-Mock
-                                </View>
-                                <View
-+                                 numberOfSpaces={6}
-                                  style={
-                                    Array [
-                                      Object {
+-                                   </View>
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
 -                                           \\"flexBasis\\": 0,
 -                                           \\"flexGrow\\": 1,
 -                                           \\"flexShrink\\": 1,
-+                                       \\"height\\": 24,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <View
-                                  style={
-                                    Array [
-                                      Object {
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
 -                                           \\"bottom\\": -16,
 -                                           \\"position\\": \\"absolute\\",
-+                                       \\"alignItems\\": \\"center\\",
-+                                       \\"flexDirection\\": \\"row\\",
-+                                       \\"width\\": 654,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <View
-                                    height={32}
--                                       testID=\\"validTestId\\"
-                                    width={32}
-                                  >
--                                       validTestId-SVG-Mock
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     <View
+-                                       height={32}
+-                                       testID=\\"invalidTestId\\"
+-                                       width={32}
+-                                     >
+-                                       invalidTestId-SVG-Mock
 -                                     </View>
 -                                   </View>
-+                                   undefined-SVG-Mock
-                                  </View>
-                                  <View
+-                                 </View>
+-                                 <View
 -                                   numberOfSpaces={4}
-+                                   numberOfSpaces={2}
-                                    style={
-                                      Array [
-                                        Object {
+-                                   style={
+-                                     Array [
+-                                       Object {
 -                                         \\"height\\": 16,
-+                                         \\"width\\": 8,
-                                        },
-                                      ]
-                                    }
-                                  />
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
 -                                 <View
 -                                   style={
 -                                     Array [
@@ -923,69 +685,26 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       },
 -                                     ]
 -                                   }
--                                   testID=\\"Handicap psychique ou cognitif\\"
+-                                   testID=\\"Handicap visuel\\"
 -                                   width={16}
 -                                 >
-                                  <Text
--                                     adjustsFontSizeToFit={true}
--                                     numberOfLines={1}
-                                    style={
-                                      Array [
-                                        Object {
-                                          \\"color\\": \\"#151515\\",
-                                          \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-                                          \\"fontSize\\": 12,
-                                          \\"lineHeight\\": 16,
--                                           \\"paddingHorizontal\\": 1,
--                                           \\"textAlign\\": \\"center\\",
-                                        },
-                                      ]
-                                    }
-                                  >
--                                     Handicap
-+                                   Sous les étoiles de Paris - VF
-                                  </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
 -                                     numberOfLines={1}
-+                                 <View
-+                                   numberOfSpaces={2}
-                                    style={
-                                      Array [
-                                        Object {
+-                                     style={
+-                                       Array [
+-                                         Object {
 -                                           \\"color\\": \\"#151515\\",
 -                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                           \\"fontSize\\": 12,
 -                                           \\"lineHeight\\": 16,
 -                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
-+                                         \\"width\\": 8,
-                                        },
-                                      ]
-                                    }
+-                                         },
+-                                       ]
+-                                     }
 -                                   >
--                                     psychique
--                                   </Text>
-+                                 />
-                                  <Text
--                                     adjustsFontSizeToFit={true}
--                                     numberOfLines={1}
-+                                   color=\\"#626262\\"
-                                    style={
-                                      Array [
-                                        Object {
--                                           \\"color\\": \\"#151515\\",
-+                                         \\"color\\": \\"#626262\\",
-                                          \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-                                          \\"fontSize\\": 12,
-                                          \\"lineHeight\\": 16,
--                                           \\"paddingHorizontal\\": 1,
--                                           \\"textAlign\\": \\"center\\",
-                                        },
-                                      ]
-                                    }
-                                  >
--                                     ou
+-                                     Handicap
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
@@ -1003,11 +722,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       ]
 -                                     }
 -                                   >
--                                     cognitif
-+                                   
-                                  </Text>
+-                                     visuel
+-                                   </Text>
 -                                 </View>
-                                </View>
+-                               </View>
 -                               <View
 -                                 numberOfSpaces={4}
 -                                 style={
@@ -1028,161 +746,6 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   ]
 -                                 }
 -                               >
-                                <View
--                                   onLayout={[Function onLayout]}
-                                  style={
-                                    Array [
-                                      Object {
-                                        \\"alignItems\\": \\"center\\",
--                                         \\"aspectRatio\\": 1,
--                                         \\"borderColor\\": \\"#c7c7cc\\",
--                                         \\"borderRadius\\": 8,
--                                         \\"borderWidth\\": 1,
--                                       },
--                                     ]
--                                   }
--                                   testID=\\"accessibilityFrame\\"
--                                 >
--                                   <View
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"flexBasis\\": 0,
--                                           \\"flexGrow\\": 1,
--                                           \\"flexShrink\\": 1,
-+                                       \\"flexDirection\\": \\"row\\",
-+                                       \\"width\\": 654,
-                                      },
-                                    ]
-                                  }
--                                   />
--                                   <View
--                                     height={48}
--                                     width={48}
-                                >
--                                     undefined-SVG-Mock
--                                   </View>
-                                  <View
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"flexBasis\\": 0,
--                                           \\"flexGrow\\": 1,
--                                           \\"flexShrink\\": 1,
--                                         },
--                                       ]
--                                     }
--                                   />
--                                   <View
--                                     style={
--                                       Array [
--                                         Object {
--                                           \\"bottom\\": -16,
--                                           \\"position\\": \\"absolute\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                     <View
-                                    height={32}
--                                       testID=\\"invalidTestId\\"
-                                    width={32}
-                                  >
--                                       invalidTestId-SVG-Mock
--                                     </View>
--                                   </View>
-+                                   undefined-SVG-Mock
-                                  </View>
-                                  <View
--                                   numberOfSpaces={4}
-+                                   numberOfSpaces={2}
-                                    style={
-                                      Array [
-                                        Object {
--                                         \\"height\\": 16,
-+                                         \\"width\\": 8,
-                                        },
-                                      ]
-                                    }
-                                  />
--                                 <View
--                                   style={
--                                     Array [
--                                       Object {
--                                         \\"alignSelf\\": \\"center\\",
--                                         \\"flexDirection\\": \\"row\\",
--                                         \\"flexWrap\\": \\"wrap\\",
--                                         \\"justifyContent\\": \\"center\\",
--                                         \\"marginHorizontal\\": 8,
--                                         \\"width\\": 16,
--                                       },
--                                     ]
--                                   }
--                                   testID=\\"Handicap moteur\\"
--                                   width={16}
--                                 >
-                                  <Text
--                                     adjustsFontSizeToFit={true}
--                                     numberOfLines={1}
-                                    style={
-                                      Array [
-                                        Object {
-                                          \\"color\\": \\"#151515\\",
--                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
--                                           \\"fontSize\\": 12,
--                                           \\"lineHeight\\": 16,
--                                           \\"paddingHorizontal\\": 1,
--                                           \\"textAlign\\": \\"center\\",
-+                                         \\"fontFamily\\": \\"Montserrat-Regular\\",
-+                                         \\"fontSize\\": 15,
-+                                         \\"lineHeight\\": 20,
-+                                         \\"textTransform\\": \\"capitalize\\",
-                                        },
-                                      ]
-                                    }
-                                  >
--                                     Handicap
--                                   </Text>
-                                    <Text
--                                     adjustsFontSizeToFit={true}
--                                     numberOfLines={1}
-                                      style={
-                                        Array [
-                                          Object {
-                                            \\"color\\": \\"#151515\\",
-                                            \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-                                            \\"fontSize\\": 12,
-                                            \\"lineHeight\\": 16,
--                                           \\"paddingHorizontal\\": 1,
--                                           \\"textAlign\\": \\"center\\",
--                                         },
--                                       ]
--                                     }
--                                   >
--                                     moteur
--                                   </Text>
--                                 </View>
--                               </View>
--                               <View
--                                 numberOfSpaces={4}
--                                 style={
--                                   Array [
--                                     Object {
--                                       \\"width\\": 16,
-                                          },
-                                        ]
-                                      }
-                                    />
--                               <View
--                                 style={
--                                   Array [
--                                     Object {
--                                       \\"flexDirection\\": \\"column\\",
--                                       \\"flexShrink\\": 1,
--                                     },
--                                   ]
--                                 }
--                               >
 -                                 <View
 -                                   onLayout={[Function onLayout]}
 -                                   style={
@@ -1209,18 +772,16 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       ]
 -                                     }
 -                                   />
-+                                 </Text>
-                                  <View
+-                                   <View
 -                                     height={48}
 -                                     width={48}
 -                                   >
 -                                     undefined-SVG-Mock
 -                                   </View>
 -                                   <View
-+                                   numberOfSpaces={2}
-                                    style={
-                                      Array [
-                                        Object {
+-                                     style={
+-                                       Array [
+-                                         Object {
 -                                           \\"flexBasis\\": 0,
 -                                           \\"flexGrow\\": 1,
 -                                           \\"flexShrink\\": 1,
@@ -1253,11 +814,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"height\\": 16,
-+                                         \\"width\\": 8,
-                                        },
-                                      ]
-                                    }
-                                  />
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
 -                                 <View
 -                                   style={
 -                                     Array [
@@ -1271,10 +831,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       },
 -                                     ]
 -                                   }
--                                   testID=\\"Handicap auditif\\"
+-                                   testID=\\"Handicap psychique ou cognitif\\"
 -                                   width={16}
 -                                 >
-                                  <Text
+-                                   <Text
 -                                     adjustsFontSizeToFit={true}
 -                                     numberOfLines={1}
 -                                     style={
@@ -1295,15 +855,342 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
 -                                     numberOfLines={1}
-+                                   color=\\"#626262\\"
-                                    style={
-                                      Array [
-                                        Object {
+-                                     style={
+-                                       Array [
+-                                         Object {
 -                                           \\"color\\": \\"#151515\\",
-+                                         \\"color\\": \\"#626262\\",
-                                          \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-                                          \\"fontSize\\": 12,
-                                          \\"lineHeight\\": 16,
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     psychique
+-                                   </Text>
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     ou
+-                                   </Text>
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     cognitif
+-                                   </Text>
+-                                 </View>
+-                               </View>
+-                               <View
+-                                 numberOfSpaces={4}
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"width\\": 16,
+-                                     },
+-                                   ]
+-                                 }
+-                               />
+-                               <View
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"flexDirection\\": \\"column\\",
+-                                       \\"flexShrink\\": 1,
+-                                     },
+-                                   ]
+-                                 }
+-                               >
+-                                 <View
+-                                   onLayout={[Function onLayout]}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignItems\\": \\"center\\",
+-                                         \\"aspectRatio\\": 1,
+-                                         \\"borderColor\\": \\"#c7c7cc\\",
+-                                         \\"borderRadius\\": 8,
+-                                         \\"borderWidth\\": 1,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"accessibilityFrame\\"
+-                                 >
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     height={48}
+-                                     width={48}
+-                                   >
+-                                     undefined-SVG-Mock
+-                                   </View>
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"bottom\\": -16,
+-                                           \\"position\\": \\"absolute\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     <View
+-                                       height={32}
+-                                       testID=\\"invalidTestId\\"
+-                                       width={32}
+-                                     >
+-                                       invalidTestId-SVG-Mock
+-                                     </View>
+-                                   </View>
+-                                 </View>
+-                                 <View
+-                                   numberOfSpaces={4}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"height\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
+-                                 <View
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignSelf\\": \\"center\\",
+-                                         \\"flexDirection\\": \\"row\\",
+-                                         \\"flexWrap\\": \\"wrap\\",
+-                                         \\"justifyContent\\": \\"center\\",
+-                                         \\"marginHorizontal\\": 8,
+-                                         \\"width\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"Handicap moteur\\"
+-                                   width={16}
+-                                 >
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     Handicap
+-                                   </Text>
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     moteur
+-                                   </Text>
+-                                 </View>
+-                               </View>
+-                               <View
+-                                 numberOfSpaces={4}
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"width\\": 16,
+-                                     },
+-                                   ]
+-                                 }
+-                               />
+-                               <View
+-                                 style={
+-                                   Array [
+-                                     Object {
+-                                       \\"flexDirection\\": \\"column\\",
+-                                       \\"flexShrink\\": 1,
+-                                     },
+-                                   ]
+-                                 }
+-                               >
+-                                 <View
+-                                   onLayout={[Function onLayout]}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignItems\\": \\"center\\",
+-                                         \\"aspectRatio\\": 1,
+-                                         \\"borderColor\\": \\"#c7c7cc\\",
+-                                         \\"borderRadius\\": 8,
+-                                         \\"borderWidth\\": 1,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"accessibilityFrame\\"
+-                                 >
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     height={48}
+-                                     width={48}
+-                                   >
+-                                     undefined-SVG-Mock
+-                                   </View>
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"flexBasis\\": 0,
+-                                           \\"flexGrow\\": 1,
+-                                           \\"flexShrink\\": 1,
+-                                         },
+-                                       ]
+-                                     }
+-                                   />
+-                                   <View
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"bottom\\": -16,
+-                                           \\"position\\": \\"absolute\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     <View
+-                                       height={32}
+-                                       testID=\\"validTestId\\"
+-                                       width={32}
+-                                     >
+-                                       validTestId-SVG-Mock
+-                                     </View>
+-                                   </View>
+-                                 </View>
+-                                 <View
+-                                   numberOfSpaces={4}
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"height\\": 16,
++                             \\"height\\": 40,
+                            },
+                          ]
+                        }
+                      />
+-                                 <View
+-                                   style={
+-                                     Array [
+-                                       Object {
+-                                         \\"alignSelf\\": \\"center\\",
+-                                         \\"flexDirection\\": \\"row\\",
+-                                         \\"flexWrap\\": \\"wrap\\",
+-                                         \\"justifyContent\\": \\"center\\",
+-                                         \\"marginHorizontal\\": 8,
+-                                         \\"width\\": 16,
+-                                       },
+-                                     ]
+-                                   }
+-                                   testID=\\"Handicap auditif\\"
+-                                   width={16}
+-                                 >
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
+-                                           \\"paddingHorizontal\\": 1,
+-                                           \\"textAlign\\": \\"center\\",
+-                                         },
+-                                       ]
+-                                     }
+-                                   >
+-                                     Handicap
+-                                   </Text>
+-                                   <Text
+-                                     adjustsFontSizeToFit={true}
+-                                     numberOfLines={1}
+-                                     style={
+-                                       Array [
+-                                         Object {
+-                                           \\"color\\": \\"#151515\\",
+-                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+-                                           \\"fontSize\\": 12,
+-                                           \\"lineHeight\\": 16,
 -                                           \\"paddingHorizontal\\": 1,
 -                                           \\"textAlign\\": \\"center\\",
 -                                         },
@@ -1325,11 +1212,11 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           Object {
 -                             \\"marginBottom\\": 32,
 -                             \\"marginHorizontal\\": 24,
-                                        },
-                                      ]
-                                    }
+-                           },
+-                         ]
+-                       }
 -                       testID=\\"CTA-button\\"
-                                  >
+-                     >
 -                       <View
 -                         accessible={true}
 -                         focusable={true}
@@ -1376,225 +1263,108 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           }
 -                         >
 -                           Voir les disponibilités
-+                                   
-                                  </Text>
-                                </View>
+-                         </Text>
+-                       </View>
 -                     </View>
--                     <Modal
--                       animationType=\\"slide\\"
--                       hardwareAccelerated={false}
--                       statusBarTranslucent={true}
--                       testID=\\"modal\\"
--                       transparent={true}
--                       visible={false}
--                     >
--                       <View
--                         accessible={true}
--                         focusable={true}
--                         onClick={[Function onClick]}
--                         onResponderGrant={[Function onResponderGrant]}
--                         onResponderMove={[Function onResponderMove]}
--                         onResponderRelease={[Function onResponderRelease]}
--                         onResponderTerminate={[Function onResponderTerminate]}
--                         onResponderTerminationRequest={[Function onResponderTerminationRequest]}
--                         onStartShouldSetResponder={[Function onStartShouldSetResponder]}
--                         style={
--                           Object {
--                             \\"flexDirection\\": \\"column\\",
--                             \\"flexGrow\\": 1,
--                             \\"height\\": \\"100%\\",
--                             \\"justifyContent\\": \\"flex-end\\",
--                             \\"opacity\\": 1,
--                             \\"width\\": \\"100%\\",
--                           }
--                         }
--                       >
--                         <View
--                           accessible={true}
--                           focusable={false}
--                           onClick={[Function onClick]}
--                           onResponderGrant={[Function onResponderGrant]}
--                           onResponderMove={[Function onResponderMove]}
--                           onResponderRelease={[Function onResponderRelease]}
--                           onResponderTerminate={[Function onResponderTerminate]}
--                           onResponderTerminationRequest={[Function onResponderTerminationRequest]}
--                           onStartShouldSetResponder={[Function onStartShouldSetResponder]}
--                           style={
--                             Object {
--                               \\"alignItems\\": \\"center\\",
--                               \\"backgroundColor\\": \\"#ffffff\\",
--                               \\"borderTopEndRadius\\": 16,
--                               \\"borderTopStartRadius\\": 16,
--                               \\"flexDirection\\": \\"column\\",
--                               \\"justifyContent\\": \\"flex-start\\",
--                               \\"opacity\\": 1,
--                               \\"paddingBottom\\": 20,
--                               \\"paddingLeft\\": 20,
--                               \\"paddingRight\\": 20,
--                               \\"paddingTop\\": 20,
--                               \\"width\\": \\"100%\\",
--                             }
--                           }
--                         >
-                                <View
-                                  style={
-                                    Array [
-                                      Object {
-                                        \\"alignItems\\": \\"center\\",
-                                        \\"flexDirection\\": \\"row\\",
--                                   \\"justifyContent\\": \\"space-between\\",
--                                   \\"width\\": \\"100%\\",
--                                   \\"zIndex\\": 1,
--                                 },
--                               ]
--                             }
--                           >
--                             <View
--                               accessible={true}
--                               focusable={true}
--                               onClick={[Function onClick]}
--                               onResponderGrant={[Function onResponderGrant]}
--                               onResponderMove={[Function onResponderMove]}
--                               onResponderRelease={[Function onResponderRelease]}
--                               onResponderTerminate={[Function onResponderTerminate]}
--                               onResponderTerminationRequest={[Function onResponderTerminationRequest]}
--                               onStartShouldSetResponder={[Function onStartShouldSetResponder]}
--                               style={
--                                 Object {
--                                   \\"alignItems\\": \\"flex-start\\",
--                                   \\"flexBasis\\": 0,
--                                   \\"flexGrow\\": 0.1,
--                                   \\"flexShrink\\": 1,
--                                   \\"marginLeft\\": -4,
--                                   \\"opacity\\": 1,
--                                 }
--                               }
--                               testID=\\"leftIconButton\\"
--                             />
--                             <Text
--                               numberOfLines={2}
--                               style={
--                                 Array [
--                                   Object {
--                                     \\"color\\": \\"#151515\\",
--                                     \\"flexBasis\\": 0,
--                                     \\"flexGrow\\": 0.8,
--                                     \\"flexShrink\\": 1,
--                                     \\"fontFamily\\": \\"Montserrat-Medium\\",
--                                     \\"fontSize\\": 18,
--                                     \\"lineHeight\\": 22,
--                                     \\"textAlign\\": \\"center\\",
-+                                       \\"width\\": 654,
-                                      },
-                                    ]
--                               }
--                             >
--                               
--                             </Text>
--                             <View
--                               accessible={true}
--                               focusable={true}
--                               onClick={[Function onClick]}
--                               onResponderGrant={[Function onResponderGrant]}
--                               onResponderMove={[Function onResponderMove]}
--                               onResponderRelease={[Function onResponderRelease]}
--                               onResponderTerminate={[Function onResponderTerminate]}
--                               onResponderTerminationRequest={[Function onResponderTerminationRequest]}
--                               onStartShouldSetResponder={[Function onStartShouldSetResponder]}
--                               style={
--                                 Object {
--                                   \\"alignItems\\": \\"flex-end\\",
--                                   \\"flexBasis\\": 0,
--                                   \\"flexGrow\\": 0.1,
--                                   \\"flexShrink\\": 1,
--                                   \\"marginRight\\": -4,
--                                   \\"opacity\\": 1,
+                      <Modal
+                        animationType=\\"slide\\"
+                        hardwareAccelerated={false}
+                        statusBarTranslucent={true}
+                        testID=\\"modal\\"
+@@ -2173,11 +962,19 @@
+                                    \\"marginLeft\\": -4,
+                                    \\"opacity\\": 1,
                                   }
--                               }
--                               testID=\\"rightIconButton\\"
-                                >
-                                  <View
-                                    height={32}
--                                 testID=\\"rightIcon\\"
-                                    width={32}
-                                  >
--                                 rightIcon-SVG-Mock
--                               </View>
--                             </View>
-+                                   undefined-SVG-Mock
-                                  </View>
-                                  <View
-+                                   numberOfSpaces={2}
-                                    style={
-                                      Array [
-                                        Object {
--                                   \\"alignItems\\": \\"center\\",
--                                   \\"maxWidth\\": 500,
--                                   \\"paddingTop\\": 20,
--                                   \\"width\\": \\"100%\\",
-+                                         \\"width\\": 8,
-                                        },
--                                 Object {
--                                   \\"paddingBottom\\": 16,
--                                 },
-                                      ]
-                                    }
--                           >
--                             <View
--                               style={
--                                 Array [
--                                   Object {
+                                }
+                                testID=\\"leftIconButton\\"
+-                             />
++                             >
++                               <View
++                                 height={32}
++                                 testID=\\"leftIcon\\"
++                                 width={32}
++                               >
++                                 leftIcon-SVG-Mock
++                               </View>
++                             </View>
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+@@ -2191,11 +988,11 @@
+                                      \\"textAlign\\": \\"center\\",
+                                    },
+                                  ]
+                                }
+                              >
+-                               
++                               Détails de la réservation
+                              </Text>
+                              <View
+                                accessible={true}
+                                focusable={true}
+                                onClick={[Function onClick]}
+@@ -2243,118 +1040,97 @@
+                            >
+                              <View
+                                style={
+                                  Array [
+                                    Object {
 -                                     \\"marginTop\\": -48,
--                                     \\"width\\": \\"100%\\",
--                                   },
--                                 ]
--                               }
--                             >
-+                                 />
-                                  <Text
-                                    style={
-                                      Array [
-                                        Object {
-                                          \\"color\\": \\"#151515\\",
--                                       \\"fontFamily\\": \\"Montserrat-Medium\\",
--                                       \\"fontSize\\": 18,
--                                       \\"lineHeight\\": 22,
-+                                         \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+                                         \\"fontSize\\": 12,
-+                                         \\"lineHeight\\": 16,
-                                        },
-                                      ]
-                                    }
-                                  >
--                                 Date
-+                                   14,99€
-                                  </Text>
+                                      \\"width\\": \\"100%\\",
+                                    },
+                                  ]
+                                }
+                              >
 -                               <Text
 -                                 style={
 -                                   Array [
 -                                     Object {
 -                                       \\"color\\": \\"#151515\\",
--                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
--                                       \\"fontSize\\": 15,
--                                       \\"lineHeight\\": 20,
+-                                       \\"fontFamily\\": \\"Montserrat-Medium\\",
+-                                       \\"fontSize\\": 18,
+-                                       \\"lineHeight\\": 22,
 -                                     },
 -                                   ]
 -                                 }
 -                               >
+-                                 Date
+-                               </Text>
+-                               <Text
++                               <View
+                                  style={
+                                    Array [
+                                      Object {
+-                                       \\"color\\": \\"#151515\\",
+-                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
+-                                       \\"fontSize\\": 15,
+-                                       \\"lineHeight\\": 20,
++                                       \\"alignItems\\": \\"center\\",
++                                       \\"backgroundColor\\": \\"#f5f5f5\\",
++                                       \\"borderRadius\\": 4,
++                                       \\"display\\": \\"flex\\",
++                                       \\"flexDirection\\": \\"row\\",
++                                       \\"paddingVertical\\": 16,
+                                      },
+                                    ]
+                                  }
+                                >
 -                                 Samedi 12 mai 2021
 -                               </Text>
                                   <View
 -                                 numberOfSpaces={6}
-+                                   numberOfSpaces={2}
++                                   numberOfSpaces={3}
                                     style={
                                       Array [
                                         Object {
 -                                       \\"height\\": 24,
--                                     },
--                                   ]
--                                 }
--                               />
--                               <View
++                                         \\"width\\": 12,
+                                        },
+                                      ]
+                                    }
+                                  />
+                                  <View
 -                                 style={
 -                                   Array [
 -                                     Object {
@@ -1604,19 +1374,25 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   ]
 -                                 }
 -                               />
--                               <View
++                                   height={32}
++                                   width={32}
++                                 >
++                                   undefined-SVG-Mock
++                                 </View>
+                                  <View
 -                                 numberOfSpaces={6}
--                                 style={
--                                   Array [
--                                     Object {
++                                   numberOfSpaces={3}
+                                    style={
+                                      Array [
+                                        Object {
 -                                       \\"height\\": 24,
-+                                         \\"width\\": 8,
++                                         \\"width\\": 12,
                                         },
                                       ]
                                     }
                                   />
-                                  <Text
-+                                   color=\\"#626262\\"
+-                               <Text
++                                 <View
                                     style={
                                       Array [
                                         Object {
@@ -1624,77 +1400,108 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       \\"fontFamily\\": \\"Montserrat-Medium\\",
 -                                       \\"fontSize\\": 18,
 -                                       \\"lineHeight\\": 22,
-+                                         \\"color\\": \\"#626262\\",
-+                                         \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+                                         \\"fontSize\\": 12,
-+                                         \\"lineHeight\\": 16,
++                                         \\"flexShrink\\": 1,
                                         },
                                       ]
                                     }
                                   >
 -                                 Heure
-+                                   
-                                  </Text>
--                               <Text
--                                 style={
--                                   Array [
--                                     Object {
+-                               </Text>
+                                    <Text
++                                     color=\\"#626262\\"
+                                      style={
+                                        Array [
+                                          Object {
 -                                       \\"color\\": \\"#151515\\",
 -                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
 -                                       \\"fontSize\\": 15,
 -                                       \\"lineHeight\\": 20,
--                                     },
--                                   ]
--                                 }
--                               >
++                                           \\"color\\": \\"#626262\\",
++                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++                                           \\"fontSize\\": 12,
++                                           \\"lineHeight\\": 16,
+                                          },
+                                        ]
+                                      }
+                                    >
 -                                 21:00
--                               </Text>
++                                     Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.
+                                    </Text>
++                                 </View>
+                                  <View
+-                                 numberOfSpaces={6}
++                                   numberOfSpaces={5}
+                                    style={
+                                      Array [
+                                        Object {
+-                                       \\"height\\": 24,
++                                         \\"width\\": 20,
+                                        },
+                                      ]
+                                    }
+                                  />
 +                               </View>
                                 <View
-                                  numberOfSpaces={6}
++                                 numberOfSpaces={6}
                                   style={
                                     Array [
                                       Object {
-@@ -2365,38 +1374,10 @@
+-                                       \\"backgroundColor\\": \\"#f5f5f5\\",
+-                                       \\"height\\": 2,
++                                       \\"height\\": 24,
+                                      },
+                                    ]
+                                  }
+                                />
+                                <View
+@@ -2365,38 +1141,30 @@
                                         \\"height\\": 24,
                                       },
                                     ]
                                   }
                                 />
 -                               <Text
--                                 style={
--                                   Array [
--                                     Object {
++                               <View
+                                  style={
+                                    Array [
+                                      Object {
 -                                       \\"color\\": \\"#151515\\",
 -                                       \\"fontFamily\\": \\"Montserrat-Medium\\",
 -                                       \\"fontSize\\": 18,
 -                                       \\"lineHeight\\": 22,
--                                     },
--                                   ]
--                                 }
++                                       \\"backgroundColor\\": \\"#f5f5f5\\",
++                                       \\"height\\": 2,
+                                      },
+                                    ]
+                                  }
 -                               >
 -                                 Nombre de place
 -                               </Text>
 -                               <Text
--                                 style={
--                                   Array [
--                                     Object {
++                               />
++                               <View
++                                 numberOfSpaces={6}
+                                  style={
+                                    Array [
+                                      Object {
 -                                       \\"color\\": \\"#151515\\",
 -                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
 -                                       \\"fontSize\\": 15,
 -                                       \\"lineHeight\\": 20,
--                                     },
--                                   ]
--                                 }
++                                       \\"height\\": 24,
+                                      },
+                                    ]
+                                  }
 -                               >
 -                                 Duo
 -                               </Text>
++                               />
                                 <View
                                   numberOfSpaces={6}
                                   style={
                                     Array [
                                       Object {
-@@ -2451,11 +1432,11 @@
+@@ -2451,11 +1219,11 @@
                                       ]
                                     }
                                     testID=\\"button-title\\"
