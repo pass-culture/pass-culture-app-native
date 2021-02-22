@@ -10,31 +10,29 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 interface Props {
   wording: string
   onPress: (() => void) | (() => Promise<void>) | undefined
+  isDisabled: boolean
   isExternal?: boolean
 }
 
-export const CallToAction: React.FC<Props> = ({ wording, onPress, isExternal = false }) => {
-  const isDisabled = onPress === undefined
-
-  return (
-    <Container onPress={onPress} disabled={isDisabled}>
-      {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
-      <Title adjustsFontSizeToFit numberOfLines={1}>
-        {isExternal && (
-          <IconContainer>
-            <Spacer.Column numberOfSpaces={4} />
-            <ExternalLinkSite
-              color={ColorsEnum.WHITE}
-              height={getSpacing(5)}
-              width={getSpacing(5)}
-            />
-          </IconContainer>
-        )}
-        {wording}
-      </Title>
-    </Container>
-  )
-}
+export const CallToAction: React.FC<Props> = ({
+  wording,
+  onPress,
+  isDisabled,
+  isExternal = false,
+}) => (
+  <Container onPress={onPress} disabled={isDisabled}>
+    {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
+    <Title adjustsFontSizeToFit numberOfLines={1}>
+      {isExternal && (
+        <IconContainer>
+          <Spacer.Column numberOfSpaces={4} />
+          <ExternalLinkSite color={ColorsEnum.WHITE} height={getSpacing(5)} width={getSpacing(5)} />
+        </IconContainer>
+      )}
+      {wording}
+    </Title>
+  </Container>
+)
 
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,

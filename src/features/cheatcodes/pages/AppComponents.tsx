@@ -237,9 +237,9 @@ export const AppComponents: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
-        <CallToAction wording="CallToAction" onPress={onButtonPress} />
+        <CallToAction wording="CallToAction" onPress={onButtonPress} isDisabled={false} />
         <Spacer.Column numberOfSpaces={1} />
-        <CallToAction wording="Disabled CallToAction" onPress={undefined} />
+        <CallToAction wording="Disabled CallToAction" onPress={undefined} isDisabled={false} />
       </AccordionItem>
 
       <Divider />

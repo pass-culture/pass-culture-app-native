@@ -45,7 +45,8 @@ export const Offer: FunctionComponent = () => {
     }
   })
   useTrackOfferSeenDuration(params.id)
-  const { wording, onPress, isExternal } = useCtaWordingAndAction({ offerId: params.id }) || {}
+  const { wording, onPress: onPressCTA, isExternal } =
+    useCtaWordingAndAction({ offerId: params.id }) || {}
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
   const { accessibility, category, venue } = offerResponse
@@ -66,12 +67,6 @@ export const Offer: FunctionComponent = () => {
     if (isCloseToBottom(nativeEvent)) {
       logConsultWholeOffer()
     }
-  }
-
-  const onPressBooking = () => {
-    if (!onPress) return
-    onPress()
-    setShowBookingOfferModal(true)
   }
 
   return (
@@ -153,7 +148,17 @@ export const Offer: FunctionComponent = () => {
 
       {wording ? (
         <CallToActionContainer testID="CTA-button">
-          <CallToAction wording={wording} onPress={onPressBooking} isExternal={isExternal} />
+          <CallToAction
+            wording={wording}
+            onPress={() => {
+              onPressCTA && onPressCTA()
+              if (!isExternal) {
+                setShowBookingOfferModal(true)
+              }
+            }}
+            isExternal={isExternal}
+            isDisabled={onPressCTA === undefined}
+          />
         </CallToActionContainer>
       ) : (
         <Spacer.Column numberOfSpaces={10} />
