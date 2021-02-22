@@ -1,6 +1,5 @@
 export { BusinessModule } from './BusinessModule'
 export { ExclusivityModule } from './ExclusivityModule'
-export { HomeBody } from './HomeBody'
 export { HomeBodyPlaceholder } from './HomeBodyPlaceholder'
 export { OffersModule } from './OffersModule'
 export { SignUpSignInChoiceModal } from './SignUpSignInChoiceModal'
