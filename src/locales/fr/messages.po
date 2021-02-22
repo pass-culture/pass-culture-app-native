@@ -49,7 +49,7 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/Offer.tsx:95
+#: src/features/offer/pages/Offer.tsx:89
 #: src/features/profile/pages/Profile.tsx:53
 msgid "Accessibilité"
 msgstr "Accessibilité"
@@ -76,7 +76,7 @@ msgid "Adresse"
 msgstr "Adresse"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:81
-#: src/features/auth/login/Login.tsx:108
+#: src/features/auth/login/Login.tsx:113
 #: src/features/auth/signup/SetEmail.tsx:65
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
@@ -148,12 +148,12 @@ msgid "Autres"
 msgstr "Autres"
 
 #. Welcome title message
-#: src/features/home/pages/Home.tsx:79
+#: src/features/home/pages/Home.tsx:77
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
 #. Hello title message
-#: src/features/home/pages/Home.tsx:78
+#: src/features/home/pages/Home.tsx:76
 msgid "Bonjour {0}"
 msgstr "Bonjour {0}"
 
@@ -181,6 +181,14 @@ msgstr "Ce lien de validation n'est plus valide"
 #: src/features/search/sections/OfferDate.tsx:38
 msgid "Ce week-end"
 msgstr "Ce week-end"
+
+#: src/features/bookOffer/components/CancellationDetails.tsx:30
+msgid "Cette réservation n’est pas annulable"
+msgstr "Cette réservation n’est pas annulable"
+
+#: src/features/bookOffer/components/CancellationDetails.tsx:31
+msgid "Cette réservation peut être annulée jusqu’au {0}"
+msgstr "Cette réservation peut être annulée jusqu’au {0}"
 
 #: src/features/search/sections/OfferDate.tsx:36
 msgid "Cette semaine"
@@ -222,7 +230,7 @@ msgid "Comment ça marche ?"
 msgstr "Comment ça marche ?"
 
 #: src/features/cheatcodes/pages/CheatMenu.tsx:16
-#: src/features/home/pages/Home.tsx:62
+#: src/features/home/pages/Home.tsx:60
 msgid "Composants"
 msgstr "Composants"
 
@@ -234,7 +242,7 @@ msgstr "Conditions Générales d'Utilisation"
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:6
+#: src/features/bookOffer/components/CancellationDetails.tsx:33
 msgid "Conditions d'annulation"
 msgstr "Conditions d'annulation"
 
@@ -259,7 +267,7 @@ msgstr "Confirmer le mot de passe"
 msgid "Connecte-toi"
 msgstr "Connecte-toi"
 
-#: src/features/auth/login/Login.tsx:104
+#: src/features/auth/login/Login.tsx:109
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
@@ -363,7 +371,7 @@ msgstr "Détails de la réservation"
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
-#: src/features/auth/login/Login.tsx:88
+#: src/features/auth/login/Login.tsx:93
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
@@ -389,7 +397,7 @@ msgstr "Erreur d'authentification"
 msgid "Erreur lors de la récupération du token d'accès"
 msgstr "Erreur lors de la récupération du token d'accès"
 
-#: src/features/auth/login/Login.tsx:84
+#: src/features/auth/login/Login.tsx:89
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 
@@ -440,7 +448,7 @@ msgstr "ISBN"
 msgid "Il te reste encore 140€ à dépenser sur le pass !"
 msgstr "Il te reste encore 140€ à dépenser sur le pass !"
 
-#: src/features/auth/login/Login.tsx:72
+#: src/features/auth/login/Login.tsx:77
 msgid "Il y a eu un problème. Tu peux réessayer plus tard."
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
 
@@ -526,7 +534,7 @@ msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
-#: src/features/offer/pages/Offer.tsx:87
+#: src/features/offer/pages/Offer.tsx:81
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -534,7 +542,7 @@ msgstr "Modalités de retrait"
 msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
-#: src/features/auth/login/Login.tsx:114
+#: src/features/auth/login/Login.tsx:119
 #: src/features/auth/signup/SetPassword.tsx:38
 #: src/features/profile/pages/Profile.tsx:44
 msgid "Mot de passe"
@@ -544,12 +552,12 @@ msgstr "Mot de passe"
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
-#: src/features/auth/login/Login.tsx:121
+#: src/features/auth/login/Login.tsx:126
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
 #: src/features/cheatcodes/pages/CheatMenu.tsx:20
-#: src/features/home/pages/Home.tsx:65
+#: src/features/home/pages/Home.tsx:63
 msgid "Navigation"
 msgstr "Navigation"
 
@@ -701,7 +709,7 @@ msgstr "Profil"
 msgid "Profite de 300\\u00a0€\\u00a0"
 msgstr "Profite de 300\\u00a0€\\u00a0"
 
-#: src/features/offer/pages/Offer.tsx:78
+#: src/features/offer/pages/Offer.tsx:72
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -786,7 +794,7 @@ msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réi
 msgid "Samedi 12 mai 2021"
 msgstr "Samedi 12 mai 2021"
 
-#: src/features/auth/login/Login.tsx:125
+#: src/features/auth/login/Login.tsx:130
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:41
 msgid "Se connecter"
 msgstr "Se connecter"
@@ -846,7 +854,7 @@ msgstr "Ton anniversaire"
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
 
-#: src/features/home/pages/Home.tsx:55
+#: src/features/home/pages/Home.tsx:53
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
@@ -856,7 +864,7 @@ msgstr "Ton e-mail"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
-#: src/features/auth/login/Login.tsx:116
+#: src/features/auth/login/Login.tsx:121
 #: src/features/auth/signup/SetPassword.tsx:34
 #: src/features/auth/signup/SetPassword.tsx:40
 msgid "Ton mot de passe"
@@ -874,7 +882,7 @@ msgstr "Tout passer"
 msgid "Toute la culture"
 msgstr "Toute la culture"
 
-#: src/features/home/pages/Home.tsx:52
+#: src/features/home/pages/Home.tsx:50
 msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
 
@@ -886,7 +894,7 @@ msgstr "Tu as 18 ans..."
 msgid "Tu as déjà un compte ?\\u00a0"
 msgstr "Tu as déjà un compte ?\\u00a0"
 
-#: src/features/home/pages/Home.tsx:56
+#: src/features/home/pages/Home.tsx:54
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
@@ -1080,7 +1088,7 @@ msgstr "sous genre"
 
 #. email placeholder
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:83
-#: src/features/auth/login/Login.tsx:110
+#: src/features/auth/login/Login.tsx:115
 #: src/features/auth/signup/SetEmail.tsx:67
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
