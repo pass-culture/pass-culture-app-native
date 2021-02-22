@@ -29,7 +29,7 @@ const BookingOfferModalComponent: React.FC<Props> = ({
   const { bookingState, dispatch } = useBooking()
 
   useEffect(() => {
-    dispatch({ type: 'INIT', payload: { category: offerCategory, offerId } })
+    dispatch({ type: 'INIT', payload: { offerId } })
   }, [])
 
   const goToPreviousStep = () => {

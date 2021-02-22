@@ -1,5 +1,3 @@
-import { CategoryType } from 'api/gen'
-
 export enum Step {
   DATE,
   HOUR,
@@ -8,14 +6,12 @@ export enum Step {
 }
 
 export type BookingState = {
-  category: CategoryType | undefined
   offerId: number | undefined
   stockId: number | undefined
   step: Step | undefined
 }
 
 export const initialBookingState: BookingState = {
-  category: undefined,
   offerId: undefined,
   stockId: undefined,
   step: undefined,
