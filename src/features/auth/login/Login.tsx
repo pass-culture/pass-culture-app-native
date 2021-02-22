@@ -11,6 +11,7 @@ import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
+import { storage } from 'libs/storage'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
@@ -55,8 +56,12 @@ export const Login: FunctionComponent = function () {
   }
   async function handleSigninSuccess() {
     try {
-      const userProfile = await api.getnativev1me()
-      if (userProfile.needsToFillCulturalSurvey) {
+      const user = await api.getnativev1me()
+      const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
+
+      if (!hasSeenEligibleCard && user.showEligibleCard) {
+        navigate('EighteenBirthday')
+      } else if (user.needsToFillCulturalSurvey) {
         navigate('CulturalSurvey')
       } else {
         navigate('Home', NavigateToHomeWithoutModalOptions)

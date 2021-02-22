@@ -13,6 +13,63 @@ import { superFlushWithAct } from 'tests/utils'
 
 import { InitialRouteName, useGetInitialRouteName } from '../RootNavigator/useGetInitialRouteName'
 
+const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+jest.mock('features/auth/AuthContext')
+
+describe('useGetInitialRouteName()', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
+  afterAll(async () => {
+    await storage.clear('has_seen_tutorials')
+    await storage.clear('has_seen_eligible_card')
+  })
+
+  // prettier-ignore : do not format the following "table" to keep it readable
+  it.each`
+    hasSeenTutorials | hasSeenEligibleCard | isLogged | userProfile                                                      | expectedScreen        | expectedAnalyticsScreen
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false }} | ${'TabNavigator'}     | ${'Home'}
+    ${null}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'CulturalSurvey'}   | ${'CulturalSurvey'}
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'CulturalSurvey'}   | ${'CulturalSurvey'}
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true }}   | ${'CulturalSurvey'}   | ${'CulturalSurvey'}
+    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true }}   | ${'EighteenBirthday'} | ${'EighteenBirthday'}
+    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'TabNavigator'}     | ${'Home'}
+    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true }}  | ${'TabNavigator'}     | ${'Home'}
+    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false }} | ${'FirstTutorial'}    | ${'FirstTutorial'}
+  `(
+    `should return $expectedScreen when 
+      - has_seen_tutorials = $hasSeenTutorials 
+      - has_seen_eligible_card = $hasSeenEligibleCard
+      - isLogged = $isLogged 
+      - user profile = $userProfile`,
+    async ({
+      hasSeenTutorials,
+      hasSeenEligibleCard,
+      isLogged,
+      userProfile,
+      expectedScreen,
+      expectedAnalyticsScreen,
+    }) => {
+      storage.saveObject('has_seen_tutorials', hasSeenTutorials)
+      storage.saveObject('has_seen_eligible_card', hasSeenEligibleCard)
+      mockedUseAuthContext.mockReturnValue({
+        isLoggedIn: isLogged,
+        setIsLoggedIn: jest.fn(),
+      })
+      mockMeApiCall(userProfile as UserProfileResponse)
+
+      const testComponent = await renderUseGetInitialRouteName()
+
+      await waitForExpect(() => {
+        expect(testComponent?.result.current).toEqual(expectedScreen)
+      })
+      expect(analytics.logScreenView).toBeCalledTimes(1)
+      expect(analytics.logScreenView).toBeCalledWith(expectedAnalyticsScreen)
+    }
+  )
+})
+
 async function renderUseGetInitialRouteName() {
   let testComponent: RenderHookResult<unknown, InitialRouteName> | undefined
   await act(async () => {
@@ -23,101 +80,10 @@ async function renderUseGetInitialRouteName() {
   return testComponent
 }
 
-const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-jest.mock('features/auth/AuthContext')
-
-describe('useGetInitialRouteName()', () => {
-  beforeEach(() => {
-    jest.clearAllMocks()
-    mockedUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-    })
-    simulateUserProfileNeedNotToFillCulturalSurvey()
-  })
-  afterEach(async () => {
-    await storage.clear('has_seen_tutorials')
-  })
-
-  it('returns TabNavigator when user has already seen tutorials and need NOT fill survey', async () => {
-    storage.saveObject('has_seen_tutorials', true)
-    const testComponent = await renderUseGetInitialRouteName()
-
-    await waitForExpect(() => {
-      expect(testComponent?.result.current).toEqual('TabNavigator')
-    })
-    expect(analytics.logScreenView).toBeCalledTimes(1)
-    expect(analytics.logScreenView).toBeCalledWith('Home')
-  })
-
-  it('returns CulturalSurvey when user has NOT seen tutorials and needs to fill survey', async () => {
-    simulateUserProfileNeedsToFillCulturalSurvey()
-    storage.saveObject('has_seen_tutorials', false)
-    const testComponent = await renderUseGetInitialRouteName()
-
-    await waitForExpect(() => {
-      expect(testComponent?.result.current).toEqual('CulturalSurvey')
-    })
-    expect(analytics.logScreenView).toBeCalledTimes(1)
-    expect(analytics.logScreenView).toBeCalledWith('CulturalSurvey')
-  })
-
-  it('returns CulturalSurvey when user has seen tutorials and needs to fill survey', async () => {
-    simulateUserProfileNeedsToFillCulturalSurvey()
-    storage.saveObject('has_seen_tutorials', true)
-    const testComponent = await renderUseGetInitialRouteName()
-
-    await waitForExpect(() => {
-      expect(testComponent?.result.current).toEqual('CulturalSurvey')
-    })
-    expect(analytics.logScreenView).toBeCalledTimes(1)
-    expect(analytics.logScreenView).toBeCalledWith('CulturalSurvey')
-  })
-
-  it('should NOT return CulturalSurvey when user is NOT logged in, eventhough the user needs to fill the survey', async () => {
-    simulateUserProfileNeedsToFillCulturalSurvey()
-    storage.saveObject('has_seen_tutorials', true)
-    mockedUseAuthContext.mockReturnValue({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-    })
-    const testComponent = await renderUseGetInitialRouteName()
-
-    await waitForExpect(() => {
-      expect(testComponent?.result.current).toEqual('TabNavigator')
-    })
-  })
-
-  it('returns FirstTutorial when user has NOT seen tutorials and need NOT to fill survey', async () => {
-    storage.saveObject('has_seen_tutorials', false)
-    const testComponent = await renderUseGetInitialRouteName()
-
-    await waitForExpect(() => {
-      expect(testComponent?.result.current).toEqual('FirstTutorial')
-    })
-    expect(analytics.logScreenView).toBeCalledTimes(1)
-    expect(analytics.logScreenView).toBeCalledWith('FirstTutorial')
-  })
-})
-
-function simulateUserProfileNeedsToFillCulturalSurvey() {
+function mockMeApiCall(response: UserProfileResponse) {
   server.use(
     rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({ needsToFillCulturalSurvey: true } as UserProfileResponse)
-      )
-    })
-  )
-}
-
-function simulateUserProfileNeedNotToFillCulturalSurvey() {
-  server.use(
-    rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({ needsToFillCulturalSurvey: false } as UserProfileResponse)
-      )
+      return res(ctx.status(200), ctx.json(response))
     })
   )
 }

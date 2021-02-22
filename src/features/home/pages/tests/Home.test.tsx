@@ -3,12 +3,11 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { flushAllPromises, flushAllPromisesTimes } from 'tests/utils'
@@ -180,38 +179,6 @@ describe('Home component - Analytics', () => {
     })
 
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
-  })
-})
-
-describe('Home redirection to EighteenBirthday', () => {
-  beforeEach(async () => {
-    await storage.clear('has_seen_eligible_card')
-    jest.clearAllMocks()
-  })
-
-  it('should trigger redirection when eligible', async () => {
-    await storage.saveObject('has_seen_eligible_card', false)
-    await homeRenderer({
-      isLoggedIn: true,
-      withModal: false,
-      partialUser: { showEligibleCard: true },
-    })
-
-    await act(async () => await flushAllPromisesTimes(10))
-
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('EighteenBirthday')
-    })
-  })
-
-  it('should not trigger redirection when not eligible', async () => {
-    await storage.saveObject('has_seen_eligible_card', true)
-    await homeRenderer({ isLoggedIn: true, withModal: false })
-
-    await act(async () => await flushAllPromisesTimes(10))
-
-    expect(navigate).not.toBeCalled()
-    expect(navigate).not.toBeCalledWith('EighteenBirthday')
   })
 })
 

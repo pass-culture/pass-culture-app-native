@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EighteenBirthday page should render eighteen birthday 1`] = `
+exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
 Array [
   <View
     style={
