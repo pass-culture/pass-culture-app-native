@@ -1,9 +1,12 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
 import { useOffer } from 'features/offer/api/useOffer'
+import { _ } from 'libs/i18n'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
@@ -32,6 +35,7 @@ export const BookingInformations: React.FC = () => {
       <Typo.Caption>{fullAddress}</Typo.Caption>
     </StyledAddress>
   )
+  const price = stock.price > 0 ? formatToFrenchDecimal(stock.price) : _(t`Gratuit`)
 
   if (category.categoryType === CategoryType.Event) {
     return (
@@ -41,7 +45,7 @@ export const BookingInformations: React.FC = () => {
           <Item Icon={Calendar} message={formatDate(stock.beginningDatetime)} />
         )}
         <Item Icon={LocationBuilding} message={address} />
-        <Item Icon={OrderPrice} message="48€" subtext="(24 € x 2 places)" />
+        <Item Icon={OrderPrice} message={price} subtext="(24 € x 2 places)" />
       </React.Fragment>
     )
   }
@@ -51,7 +55,7 @@ export const BookingInformations: React.FC = () => {
       <React.Fragment>
         <Item Icon={Booking} message={name} />
         <Item Icon={LocationBuilding} message={address} />
-        <Item Icon={OrderPrice} message="14,99€" />
+        <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )
   }
@@ -59,7 +63,7 @@ export const BookingInformations: React.FC = () => {
   return (
     <React.Fragment>
       <Item Icon={Booking} message={name} />
-      <Item Icon={OrderPrice} message="14,99€" />
+      <Item Icon={OrderPrice} message={price} />
     </React.Fragment>
   )
 }
