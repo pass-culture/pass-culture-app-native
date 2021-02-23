@@ -57,7 +57,7 @@ export const RootNavigator: React.FC = () => {
         screenOptions={{ headerShown: false }}>
         {screens}
       </RootStack.Navigator>
-      {/* The components below are those for which we do not want 
+      {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
       {isSplashScreenHidden && <PrivacyPolicy />}
     </NavigationContainer>
