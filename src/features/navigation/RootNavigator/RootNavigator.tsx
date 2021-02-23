@@ -1,29 +1,22 @@
-import { NavigationContainer, Theme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import React from 'react'
-import CodePush from 'react-native-code-push'
+import React, { useEffect, useState } from 'react'
 
+import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
-import { useCodePush } from 'libs/codepush/CodePushProvider'
 import { useHideSplashScreen } from 'libs/splashscreen'
-import { ColorsEnum } from 'ui/theme'
 
 import { navigationRef } from '../navigationRef'
-import { onNavigationStateChange } from '../services'
 
 import routes from './routes'
 import { RootStackParamList, Route } from './types'
-import { useGetInitialRouteName } from './useGetInitialRouteName'
+import { useGetInitialScreenConfig } from './useGetInitialScreenConfig'
 
 export const RootStack = createStackNavigator<RootStackParamList>()
-
-const theme = { colors: { background: ColorsEnum.WHITE } } as Theme
 
 export function wrapRoute(route: Route) {
   if (route.hoc) {
     route.component = route.hoc(route.component)
   }
-
   return route
 }
 
@@ -39,27 +32,37 @@ const screens = routes
   ))
 
 export const RootNavigator: React.FC = () => {
-  const { status } = useCodePush()
-  const initialRouteName = useGetInitialRouteName()
+  const [shouldHideSplashScreen, setShouldHideSplashScreen] = useState(false)
 
-  const isAppReadyToStart = initialRouteName && status === CodePush.SyncStatus.UP_TO_DATE
+  const initialScreenConfig = useGetInitialScreenConfig()
+  const { isSplashScreenHidden } = useHideSplashScreen({ shouldHideSplashScreen })
 
-  const { isSplashScreenHidden } = useHideSplashScreen({
-    shouldHideSplashScreen: isAppReadyToStart,
-  })
+  const isAppReadyToRender = !!initialScreenConfig
 
-  if (!isAppReadyToStart) return null
+  useEffect(() => {
+    if (!initialScreenConfig || !navigationRef.current) {
+      return
+    }
+    const { screen, params } = initialScreenConfig
+    navigationRef.current.navigate(screen, params)
+    setShouldHideSplashScreen(true)
+  }, [initialScreenConfig, navigationRef.current])
+
+  useListenDeepLinksEffect()
+
   return (
-    <NavigationContainer onStateChange={onNavigationStateChange} ref={navigationRef} theme={theme}>
-      <RootStack.Navigator
-        initialRouteName={initialRouteName}
-        headerMode="screen"
-        screenOptions={{ headerShown: false }}>
-        {screens}
-      </RootStack.Navigator>
+    <React.Fragment>
+      {isAppReadyToRender && (
+        <RootStack.Navigator
+          initialRouteName={'TabNavigator'}
+          headerMode="screen"
+          screenOptions={{ headerShown: false }}>
+          {screens}
+        </RootStack.Navigator>
+      )}
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
-      {isSplashScreenHidden && <PrivacyPolicy />}
-    </NavigationContainer>
+      {isAppReadyToRender && isSplashScreenHidden && <PrivacyPolicy />}
+    </React.Fragment>
   )
 }

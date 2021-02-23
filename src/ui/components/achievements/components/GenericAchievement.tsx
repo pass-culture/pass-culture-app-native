@@ -4,6 +4,7 @@ import React, { Children, cloneElement, FunctionComponent, ReactElement, useMemo
 import Swiper from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
@@ -41,7 +42,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
       const index = swiperRef.current.getActiveIndex()
       analytics.logHasSkippedTutorial(`${props.name}${index + 1}`)
     }
-    navigate('TabNavigator')
+    navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
 
   return (

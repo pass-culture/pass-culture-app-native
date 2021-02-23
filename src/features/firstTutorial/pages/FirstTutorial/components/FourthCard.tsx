@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
@@ -23,7 +24,7 @@ export function FourthCard(props: AchievementCardKeyProps) {
   }, [isActiveCard])
 
   function onButtonPress() {
-    navigate('TabNavigator')
+    navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
 
   return (

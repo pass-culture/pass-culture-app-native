@@ -1,3 +1,4 @@
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import * as datesLib from 'libs/dates'
 
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
@@ -6,8 +7,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
   describe('link mot-de-passe-perdu', () => {
     it('should return Home page when no params are passed', () => {
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['mot-de-passe-perdu']()
-      expect(configureScreen.screen).toBe('Home')
-      expect(configureScreen.params).toEqual({ shouldDisplayLoginModal: false })
+      expect(configureScreen).toEqual(homeNavigateConfig)
     })
 
     it.each`
@@ -17,8 +17,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
       ${{ token: '', expiration_timestamp: '', em: '' }}
     `('should return Home page when params are invalid', ({ params }) => {
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['mot-de-passe-perdu'](params)
-      expect(configureScreen.screen).toBe('Home')
-      expect(configureScreen.params).toEqual({ shouldDisplayLoginModal: false })
+      expect(configureScreen).toEqual(homeNavigateConfig)
     })
 
     it('should return ResetPasswordExpiredLink page when expiration_timestamp is expired', () => {
@@ -55,8 +54,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
   describe('link signup-confirmation', () => {
     it('should return Home page when no params are passed', () => {
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['signup-confirmation']()
-      expect(configureScreen.screen).toBe('Home')
-      expect(configureScreen.params).toEqual({ shouldDisplayLoginModal: false })
+      expect(configureScreen).toEqual(homeNavigateConfig)
     })
 
     it.each`
@@ -66,8 +64,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
       ${{ token: '', expiration_timestamp: '', em: '' }}
     `('should return Home page when params are invalid', ({ params }) => {
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['signup-confirmation'](params)
-      expect(configureScreen.screen).toBe('Home')
-      expect(configureScreen.params).toEqual({ shouldDisplayLoginModal: false })
+      expect(configureScreen).toEqual(homeNavigateConfig)
     })
 
     it('should return AfterSignupEmailValidationBuffer when all params are present', () => {
@@ -90,8 +87,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
   describe('link default', () => {
     it('should return Home page when no params are passed', () => {
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['default']()
-      expect(configureScreen.screen).toBe('Home')
-      expect(configureScreen.params).toEqual({ shouldDisplayLoginModal: false })
+      expect(configureScreen).toEqual(homeNavigateConfig)
     })
   })
 

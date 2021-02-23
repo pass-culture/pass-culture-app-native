@@ -8,6 +8,22 @@ export const NavigateToHomeWithoutModalOptions: RouteParams<TabParamList, 'Home'
   shouldDisplayLoginModal: false,
 }
 
+interface HomeNavigateConfig {
+  screen: 'TabNavigator'
+  params: {
+    screen: 'Home'
+    params: RouteParams<TabParamList, 'Home'>
+  }
+}
+
+export const homeNavigateConfig: HomeNavigateConfig = {
+  screen: 'TabNavigator',
+  params: {
+    screen: 'Home',
+    params: { shouldDisplayLoginModal: false },
+  },
+}
+
 export async function openExternalUrl(url: string) {
   const canOpen = await Linking.canOpenURL(url)
   if (canOpen) {

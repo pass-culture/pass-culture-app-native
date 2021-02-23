@@ -11,6 +11,7 @@ import './why-did-you-render'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
+import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
@@ -51,7 +52,9 @@ const App: FunctionComponent = function () {
                 <SearchWrapper>
                   <I18nProvider language={i18n.language} i18n={i18n}>
                     <SnackBarProvider>
-                      <RootNavigator />
+                      <AppNavigationContainer>
+                        <RootNavigator />
+                      </AppNavigationContainer>
                     </SnackBarProvider>
                   </I18nProvider>
                 </SearchWrapper>
