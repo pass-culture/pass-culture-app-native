@@ -41,6 +41,10 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   )
 
   useEffect(() => {
+    contextualCheckPermission()
+  })
+
+  useEffect(() => {
     if (permissionState === GeolocPermissionState.GRANTED) {
       getPosition(setPosition)
     }
@@ -63,11 +67,7 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
 
   const contextualCheckPermission = async () => {
     const newPermissionState = await checkGeolocPermission()
-    if (
-      newPermissionState === GeolocPermissionState.GRANTED ||
-      newPermissionState === GeolocPermissionState.DENIED
-    )
-      setPermissionState(newPermissionState)
+    setPermissionState(newPermissionState)
   }
 
   const onAppBecomeActive = async () => {

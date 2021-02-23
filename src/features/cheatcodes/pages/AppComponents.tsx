@@ -72,6 +72,7 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -473,8 +474,14 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <LocationBuilding size={24} />
           <Text> - LocationBuilding </Text>
-          <TicketBooked width={48} height={24} />
+        </AlignedText>
+        <AlignedText>
+          <TicketBooked width={24} height={24} />
           <Text> - TicketBooked </Text>
+        </AlignedText>
+        <AlignedText>
+          <LocationPointerNotFilled size={24} />
+          <Text> - LocationPointerNotFilled </Text>
         </AlignedText>
       </AccordionItem>
 

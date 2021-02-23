@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useRef } from 'react'
-import { StyleSheet } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
+import { Linking, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -9,11 +9,16 @@ import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { GeolocationActivationModal } from 'features/search/components/GeolocationActivationModal'
+import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { _ } from 'libs/i18n'
+import FilterSwitch from 'ui/components/FilterSwitch'
+import { useModal } from 'ui/components/modals/useModal'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
+import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
@@ -33,6 +38,49 @@ export const Profile: React.FC = () => {
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
+  const {
+    position,
+    permissionState,
+    requestGeolocPermission,
+  } = useGeolocation()
+  const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(position !== null)
+
+  useEffect(() => {
+    if (permissionState === GeolocPermissionState.GRANTED) {
+      setIsGeolocSwitchActive(true)
+    } else {
+      setIsGeolocSwitchActive(false)
+    }
+  }, [permissionState])
+
+  const {
+    visible: isGeolocPermissionModalVisible,
+    showModal: showGeolocPermissionModal,
+    hideModal: hideGeolocPermissionModal,
+  } = useModal(false)
+
+  async function switchGeolocation() {
+    const shouldDisplayCustomGeolocRequest =
+      permissionState === GeolocPermissionState.NEVER_ASK_AGAIN ||
+      permissionState === GeolocPermissionState.GRANTED
+    if (shouldDisplayCustomGeolocRequest) {
+      showGeolocPermissionModal()
+    } else {
+      await requestGeolocPermission({
+        onAcceptance: () => {
+          setIsGeolocSwitchActive(true)
+        },
+        onRefusal: () => {
+          setIsGeolocSwitchActive(false)
+        },
+      })
+    }
+  }
+
+  function onPressGeolocPermissionModalButton() {
+    Linking.openSettings()
+    hideGeolocPermissionModal()
+  }
 
   if (!isLoggedIn) {
     if (scrollViewRef && scrollViewRef.current) {
@@ -67,7 +115,15 @@ export const Profile: React.FC = () => {
               />
             </React.Fragment>
           )}
-          {/* TODO add geolocalisation switch (PC-6858) and  notification row (PC-6177) */}
+          <Spacer.Column numberOfSpaces={4} />
+          <SectionRow
+            type="clickable"
+            title={_(t`Géolocalisation`)}
+            icon={LocationPointerNotFilled}
+            cta={<FilterSwitch active={isGeolocSwitchActive} toggle={switchGeolocation} />}
+          />
+          <Spacer.Column numberOfSpaces={4} />
+          {/* TODO add notification row (PC-6177) */}
         </Section>
         <Section title={_(t`Aides`)}>
           <Row
@@ -135,6 +191,11 @@ export const Profile: React.FC = () => {
           <LogoMinistere />
           <Spacer.Column numberOfSpaces={4} />
         </Section>
+        <GeolocationActivationModal
+          isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
+          hideGeolocPermissionModal={hideGeolocPermissionModal}
+          onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
+        />
       </ProfileContainer>
       <BottomSpacing />
     </ScrollView>
