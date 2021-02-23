@@ -29,7 +29,7 @@ export const Banner: React.FC<Props> = ({ title, type = BannerType.INFO }) => (
     {renderIcon(type)}
     <Spacer.Row numberOfSpaces={3} />
     <TextContainer>
-      <Typo.Caption color={ColorsEnum.GREY_DARK}>{title}</Typo.Caption>
+      <Typo.Caption color={ColorsEnum.BLACK}>{title}</Typo.Caption>
     </TextContainer>
     <Spacer.Row numberOfSpaces={5} />
   </Background>

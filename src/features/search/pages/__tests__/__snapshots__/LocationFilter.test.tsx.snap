@@ -99,11 +99,11 @@ Array [
             }
           >
             <Text
-              color="#626262"
+              color="#151515"
               style={
                 Array [
                   Object {
-                    "color": "#626262",
+                    "color": "#151515",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 16,

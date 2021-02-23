@@ -64,15 +64,12 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -890,1203 +856,26 @@
-                          <View
-                            style={
-                              Array [
+@@ -893,1200 +859,23 @@
                                 Object {
                                   \\"marginHorizontal\\": 24,
--                               },
--                             ]
--                           }
+                                },
+                              ]
+                            }
 -                         >
 -                           <Text
 -                             style={
@@ -102,8 +99,8 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 },
 -                               ]
 -                             }
--                           />
--                         </View>
+                          />
+                        </View>
 -                         <View
 -                           style={
 -                             Array [
@@ -196,16 +193,18 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           >
 -                             PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8
 -                           </Text>
--                           <View
++                     </RCTScrollView>
+                      <View
 -                             numberOfSpaces={4}
--                             style={
--                               Array [
--                                 Object {
++                       numberOfSpaces={10}
+                        style={
+                          Array [
+                            Object {
 -                                   \\"height\\": 16,
-                                },
-                              ]
-                            }
-                          />
+-                                 },
+-                               ]
+-                             }
+-                           />
 -                           <Text
 -                             style={
 -                               Array [
@@ -333,7 +332,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               ]
 -                             }
 -                           />
-                        </View>
+-                         </View>
 -                         <View
 -                           style={
 -                             Array [
@@ -492,8 +491,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             ]
 -                           }
 -                         />
-+                     </RCTScrollView>
-                      <View
+-                         <View
 -                           accessible={true}
 -                           focusable={true}
 -                           onClick={[Function onClick]}
@@ -518,10 +516,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           }
 -                         >
 -                           <Text
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
+-                             style={
+-                               Array [
+-                                 Object {
 -                                   \\"color\\": \\"#151515\\",
 -                                   \\"flexBasis\\": 0,
 -                                   \\"flexGrow\\": 0.9,
@@ -795,9 +792,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                         Object {
 -                                           \\"bottom\\": -16,
 -                                           \\"position\\": \\"absolute\\",
--                                         },
--                                       ]
--                                     }
++                             \\"height\\": 40,
+                            },
+                          ]
+                        }
 -                                   >
 -                                     <View
 -                                       height={32}
@@ -817,7 +815,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       },
 -                                     ]
 -                                   }
--                                 />
+                      />
 -                                 <View
 -                                   style={
 -                                     Array [
@@ -1142,11 +1140,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"height\\": 16,
-+                             \\"height\\": 40,
-                            },
-                          ]
-                        }
-                      />
+-                                       },
+-                                     ]
+-                                   }
+-                                 />
 -                                 <View
 -                                   style={
 -                                     Array [
@@ -1318,9 +1315,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                 }
                               >
 -                               <Text
--                                 style={
--                                   Array [
--                                     Object {
++                               <View
+                                  style={
+                                    Array [
+                                      Object {
 -                                       \\"color\\": \\"#151515\\",
 -                                       \\"fontFamily\\": \\"Montserrat-Medium\\",
 -                                       \\"fontSize\\": 18,
@@ -1332,10 +1330,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 Date
 -                               </Text>
 -                               <Text
-+                               <View
-                                  style={
-                                    Array [
-                                      Object {
+-                                 style={
+-                                   Array [
+-                                     Object {
 -                                       \\"color\\": \\"#151515\\",
 -                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
 -                                       \\"fontSize\\": 15,
@@ -1408,15 +1405,14 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 Heure
 -                               </Text>
                                     <Text
-+                                     color=\\"#626262\\"
++                                     color=\\"#151515\\"
                                       style={
                                         Array [
                                           Object {
--                                       \\"color\\": \\"#151515\\",
+                                            \\"color\\": \\"#151515\\",
 -                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
 -                                       \\"fontSize\\": 15,
 -                                       \\"lineHeight\\": 20,
-+                                           \\"color\\": \\"#626262\\",
 +                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 +                                           \\"fontSize\\": 12,
 +                                           \\"lineHeight\\": 16,
