@@ -5,7 +5,6 @@ import { NativeSyntheticEvent, NativeScrollEvent, ScrollView, TouchableOpacity }
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
-import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { useUserProfileInfo } from 'features/home/api'
 import { HomeBodyPlaceholder, SignUpSignInChoiceModal } from 'features/home/components'
 import { HomeBody } from 'features/home/components/HomeBody'
@@ -49,8 +48,6 @@ export const Home: FunctionComponent = function () {
       showSignInModal()
     }
   })
-
-  useListenDeepLinksEffect()
 
   const checkIfAllModulesHaveBeenSeen = ({
     nativeEvent,

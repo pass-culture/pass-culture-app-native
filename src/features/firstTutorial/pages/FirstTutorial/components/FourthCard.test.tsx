@@ -4,6 +4,7 @@ import React, { createRef } from 'react'
 import Swiper from 'react-native-web-swiper'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { homeNavigateConfig } from 'features/navigation/helpers'
 
 import { FourthCard } from './FourthCard'
 
@@ -48,6 +49,6 @@ describe('FourthCard', () => {
     fireEvent.press(getByText('Découvrir'))
 
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('TabNavigator')
+    expect(navigate).toHaveBeenCalledWith(homeNavigateConfig.screen, homeNavigateConfig.params)
   })
 })

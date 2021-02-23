@@ -3,7 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { StackNavigationOptions } from '@react-navigation/stack/lib/typescript/src/types'
 import { ComponentType } from 'react'
 
-import { TabParamList } from '../TabBar/types'
+import { TabParamList, TabRouteName } from '../TabBar/types'
 
 /**
  * WARNING !
@@ -48,7 +48,10 @@ export type RootStackParamList = {
   SetPassword: { email: string; isNewsletterChecked: boolean }
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
-  TabNavigator: undefined
+  TabNavigator: {
+    screen: TabRouteName
+    params: TabParamList[TabRouteName]
+  }
   TemporaryProfilePage: undefined
   VerifyEligibility: { email: string; licenceToken: string }
   FirstTutorial: undefined

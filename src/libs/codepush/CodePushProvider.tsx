@@ -30,29 +30,27 @@ export const CodePushProvider = CodePushWrapper(
       status: null,
     }
 
-    codePushStatusDidChange(status: CodePush.SyncStatus) {
+    codePushStatusDidChange(nextStatus: CodePush.SyncStatus) {
       /* The other parts of our code rely on the fact that the code push sync status does not change once it is up-to-date */
-      if (
-        status === CodePush.SyncStatus.UP_TO_DATE &&
-        this.state.status !== CodePush.SyncStatus.UP_TO_DATE
-      ) {
+      if (isUpToDate(nextStatus) && !isUpToDate(this.state.status)) {
         this.setState({
-          status,
+          status: nextStatus,
         })
       }
     }
 
     render() {
       return (
-        <CodePushContext.Provider
-          value={{
-            status: this.state.status,
-          }}>
-          {this.props.children}
+        <CodePushContext.Provider value={this.state}>
+          {isUpToDate(this.state.status) && this.props.children}
         </CodePushContext.Provider>
       )
     }
   }
 )
+
+function isUpToDate(status: null | CodePush.SyncStatus) {
+  return status === CodePush.SyncStatus.UP_TO_DATE
+}
 
 export default CodePushProvider

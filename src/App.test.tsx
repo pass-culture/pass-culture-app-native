@@ -20,12 +20,7 @@ jest.mock('features/navigation/RootNavigator', () => ({
   },
 }))
 
-describe('<App /> with mocked RootTabNavigator', () => {
-  it('should render', async () => {
-    const { toJSON } = await renderApp()
-    expect(toJSON()).toMatchSnapshot()
-  })
-
+describe('<App /> with mocked RootNavigator', () => {
   it('should call startBatchNotification() to optin to notifications', async () => {
     await renderApp()
     expect(BatchLocalLib.useStartBatchNotification).toHaveBeenCalled()

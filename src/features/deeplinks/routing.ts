@@ -1,10 +1,11 @@
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import { isTimestampExpired } from 'libs/dates'
 
 import { DeepLinksToScreenConfiguration } from './types'
 
 export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = {
   default: function () {
-    return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
+    return homeNavigateConfig
   },
   favoris: function () {
     return { screen: 'Favorites', params: undefined }
@@ -33,7 +34,7 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
         },
       }
     }
-    return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
+    return homeNavigateConfig
   },
   offer: function (params) {
     return { screen: 'Offer', params: { id: params ? +params.id : 0 } }
@@ -56,6 +57,6 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
         },
       }
     }
-    return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
+    return homeNavigateConfig
   },
 }

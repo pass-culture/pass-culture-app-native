@@ -1,9 +1,11 @@
 import { renderHook } from '@testing-library/react-hooks'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigationRef } from 'features/navigation/navigationRef'
 
 import { decodeDeeplinkParts, useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
 import { DEEPLINK_DOMAIN } from './utils'
+
+jest.mock('features/navigation/navigationRef')
 
 describe('useDeeplinkUrlHandler', () => {
   describe('Url parts', () => {
@@ -42,8 +44,9 @@ describe('useDeeplinkUrlHandler', () => {
 
   describe('Navigation handler', () => {
     afterEach(() => {
-      navigate.mockClear()
+      jest.clearAllMocks()
     })
+
     it('should redirect to the right component when it exists', () => {
       const {
         result: { current: handleDeeplinkUrl },
@@ -53,7 +56,7 @@ describe('useDeeplinkUrlHandler', () => {
 
       handleDeeplinkUrl({ url })
 
-      expect(navigate).toHaveBeenCalledWith('UniqueTestRoute', {
+      expect(navigationRef.current?.navigate).toHaveBeenCalledWith('UniqueTestRoute', {
         param1: 'one',
         param2: 2,
         param3: true,
@@ -69,7 +72,9 @@ describe('useDeeplinkUrlHandler', () => {
 
       handleDeeplinkUrl({ url })
 
-      expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
+      expect(navigationRef.current?.navigate).toHaveBeenCalledWith('Home', {
+        shouldDisplayLoginModal: false,
+      })
     })
   })
 })
