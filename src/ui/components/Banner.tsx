@@ -17,9 +17,9 @@ type Props = {
 const renderIcon = (type: BannerType) => {
   switch (type) {
     case BannerType.INFO:
-      return <Info size={32} />
+      return <Info size={32} color={ColorsEnum.BLACK} />
     default:
-      return <Info size={32} />
+      return <Info size={32} color={ColorsEnum.BLACK} />
   }
 }
 
