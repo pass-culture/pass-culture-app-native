@@ -1,8 +1,10 @@
 import React from 'react'
 import { View } from 'react-native'
-import { CalendarList, LocaleConfig } from 'react-native-calendars'
+import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
 import styled from 'styled-components/native'
 
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
@@ -34,13 +36,22 @@ const renderDay = (bookable: boolean, notBookable: boolean, selected: boolean, d
   return <Typo.Body color={ColorsEnum.GREY_DARK}>{day}</Typo.Body>
 }
 
+const renderArrow = (direction: string) => {
+  if (direction === 'left') return <ArrowPrevious />
+  if (direction === 'right') return <ArrowNext />
+  return <React.Fragment />
+}
+
 export const Calendar: React.FC = () => (
   <React.Fragment>
     {/* TODO: PC-6693 remove this line */}
     <Spacer.TopScreen />
-    <CalendarList
-      hideDayNames={true}
+    <RNCalendar
       firstDay={1}
+      enableSwipeMonths={true}
+      renderHeader={(date) => <MonthHeader date={date} />}
+      hideExtraDays={true}
+      renderArrow={renderArrow}
       dayComponent={({ date }) => {
         const bookable = date.day === 21 || date.day === 3
         // TODO: PC-6695 change hard coded for real data

@@ -27,4 +27,4 @@ export const monthNamesShort = [
   'Déc.',
 ]
 export const dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
-export const dayNamesShort = ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.']
+export const dayNamesShort = ['D', 'L', 'M', 'M', 'J', 'V', 'S']
