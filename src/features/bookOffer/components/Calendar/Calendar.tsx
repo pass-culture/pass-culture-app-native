@@ -17,22 +17,21 @@ LocaleConfig.locales['fr'] = {
 }
 LocaleConfig.defaultLocale = 'fr'
 
-const renderDay = (state: string, notAvailable: boolean, selected: boolean, day: number) => {
-  if (state === 'disabled') return <Typo.Body color={ColorsEnum.GREY_DARK}>{day}</Typo.Body>
+const renderDay = (bookable: boolean, notBookable: boolean, selected: boolean, day: number) => {
+  if (bookable) return <Day color={ColorsEnum.PRIMARY}>{day}</Day>
   if (selected)
     return (
       <SelectedDay>
         <Typo.ButtonText color={ColorsEnum.WHITE}>{day}</Typo.ButtonText>
       </SelectedDay>
     )
-  if (notAvailable)
+  if (notBookable)
     return (
       <DiagonalStripe>
         <Day color={ColorsEnum.GREY_DARK}>{day}</Day>
       </DiagonalStripe>
     )
-  // TODO: PC-6694 change hard coded for real data
-  return <Day color={ColorsEnum.PRIMARY}>{day}</Day>
+  return <Typo.Body color={ColorsEnum.GREY_DARK}>{day}</Typo.Body>
 }
 
 export const Calendar: React.FC = () => (
@@ -42,24 +41,20 @@ export const Calendar: React.FC = () => (
     <CalendarList
       hideDayNames={true}
       firstDay={1}
-      pastScrollRange={0}
-      futureScrollRange={50}
-      scrollEnabled={true}
-      showScrollIndicator={true}
-      renderHeader={(date) => <MonthHeader date={date} />}
-      dayComponent={({ date, state }) => {
+      dayComponent={({ date }) => {
+        const bookable = date.day === 21 || date.day === 3
         // TODO: PC-6695 change hard coded for real data
         const displayPrice = date.day === 20 || date.day === 21 || date.day === 2 || date.day === 3
         // TODO: PC-6716 change hard coded for real data
-        const notAvailable = date.day === 20 || date.day === 2
+        const notBookable = date.day === 20 || date.day === 2
         // TODO: PC-6698 change hard coded for real data
         const selected = date.day === 10 && date.month === 2
         return (
           <View>
-            {renderDay(state, notAvailable, selected, date.day)}
+            {renderDay(bookable, notBookable, selected, date.day)}
             {displayPrice ? (
               // eslint-disable-next-line react-native/no-raw-text
-              <Typo.Caption color={notAvailable ? ColorsEnum.GREY_DARK : ColorsEnum.PRIMARY}>
+              <Typo.Caption color={notBookable ? ColorsEnum.GREY_DARK : ColorsEnum.PRIMARY}>
                 19,90€
               </Typo.Caption>
             ) : (
