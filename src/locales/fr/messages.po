@@ -102,6 +102,10 @@ msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélectio
 msgid "Aides"
 msgstr "Aides"
 
+#: src/features/bookOffer/components/BookingImpossible.tsx:18
+msgid "Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver."
+msgstr "Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver."
+
 #. Error message on Batch get installation ID
 #: src/features/cheatcodes/pages/CheatCodes.tsx:103
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
@@ -148,12 +152,12 @@ msgid "Autres"
 msgstr "Autres"
 
 #. Welcome title message
-#: src/features/home/pages/Home.tsx:77
+#: src/features/home/pages/Home.tsx:78
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
 #. Hello title message
-#: src/features/home/pages/Home.tsx:76
+#: src/features/home/pages/Home.tsx:77
 msgid "Bonjour {0}"
 msgstr "Bonjour {0}"
 
@@ -182,11 +186,11 @@ msgstr "Ce lien de validation n'est plus valide"
 msgid "Ce week-end"
 msgstr "Ce week-end"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:30
+#: src/features/bookOffer/components/CancellationDetails.tsx:31
 msgid "Cette réservation n’est pas annulable"
 msgstr "Cette réservation n’est pas annulable"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:31
+#: src/features/bookOffer/components/CancellationDetails.tsx:32
 msgid "Cette réservation peut être annulée jusqu’au {0}"
 msgstr "Cette réservation peut être annulée jusqu’au {0}"
 
@@ -230,7 +234,7 @@ msgid "Comment ça marche ?"
 msgstr "Comment ça marche ?"
 
 #: src/features/cheatcodes/pages/CheatMenu.tsx:16
-#: src/features/home/pages/Home.tsx:60
+#: src/features/home/pages/Home.tsx:61
 msgid "Composants"
 msgstr "Composants"
 
@@ -242,7 +246,7 @@ msgstr "Conditions Générales d'Utilisation"
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:33
+#: src/features/bookOffer/components/CancellationDetails.tsx:34
 msgid "Conditions d'annulation"
 msgstr "Conditions d'annulation"
 
@@ -311,7 +315,7 @@ msgstr "Crédit numérique insuffisant"
 msgid "Créneau horaire"
 msgstr "Créneau horaire"
 
-#: src/features/bookOffer/components/BookDateChoice.tsx:7
+#: src/features/bookOffer/components/BookDateChoice.tsx:8
 #: src/features/search/sections/titles.ts:13
 msgid "Date"
 msgstr "Date"
@@ -363,7 +367,8 @@ msgstr "Déconnexion"
 msgid "Découvrir"
 msgstr "Découvrir"
 
-#: src/features/bookOffer/pages/BookingOfferModal.tsx:20
+#: src/features/bookOffer/services/useModalContent.tsx:36
+#: src/features/bookOffer/services/useModalContent.tsx:51
 msgid "Détails de la réservation"
 msgstr "Détails de la réservation"
 
@@ -410,6 +415,7 @@ msgstr "Favoris"
 msgid "Filtrer"
 msgstr "Filtrer"
 
+#: src/features/bookOffer/components/BookingInformations.tsx:29
 #: src/libs/parsers/getDisplayPrice.ts:21
 #: src/libs/parsers/getDisplayPrice.ts:28
 msgid "Gratuit"
@@ -516,6 +522,10 @@ msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgid "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 msgstr "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 
+#: src/features/bookOffer/components/BookingImpossible.tsx:14
+msgid "Les conditions générales d'utilisation de l'App Store iOs ne permettent pas de réserver cette offre sur l'application."
+msgstr "Les conditions générales d'utilisation de l'App Store iOs ne permettent pas de réserver cette offre sur l'application."
+
 #: src/features/auth/signup/QuitSignupModal.tsx:31
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
@@ -533,6 +543,10 @@ msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu
 #: src/features/profile/pages/Profile.tsx:54
 msgid "Mentions légales"
 msgstr "Mentions légales"
+
+#: src/features/bookOffer/components/BookingImpossible.tsx:23
+msgid "Mettre en favoris"
+msgstr "Mettre en favoris"
 
 #: src/features/offer/pages/Offer.tsx:81
 msgid "Modalités de retrait"
@@ -557,7 +571,7 @@ msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
 #: src/features/cheatcodes/pages/CheatMenu.tsx:20
-#: src/features/home/pages/Home.tsx:63
+#: src/features/home/pages/Home.tsx:64
 msgid "Navigation"
 msgstr "Navigation"
 
@@ -749,6 +763,10 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
+#: src/features/bookOffer/components/BookingImpossible.tsx:25
+msgid "Retourner à l'offre"
+msgstr "Retourner à l'offre"
+
 #: src/features/offer/services/useShareOffer.ts:21
 msgid "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
@@ -773,6 +791,10 @@ msgstr "Réinitialiser"
 msgid "Réservation confirmée !"
 msgstr "Réservation confirmée !"
 
+#: src/features/bookOffer/services/useModalContent.tsx:29
+msgid "Réservation impossible"
+msgstr "Réservation impossible"
+
 #: src/features/offer/services/useCtaWordingAndAction.ts:42
 msgid "Réserver"
 msgstr "Réserver"
@@ -790,7 +812,7 @@ msgstr "Saisir une adresse..."
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
-#: src/features/bookOffer/components/BookDateChoice.tsx:8
+#: src/features/bookOffer/components/BookDateChoice.tsx:9
 msgid "Samedi 12 mai 2021"
 msgstr "Samedi 12 mai 2021"
 
@@ -854,7 +876,7 @@ msgstr "Ton anniversaire"
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
 
-#: src/features/home/pages/Home.tsx:53
+#: src/features/home/pages/Home.tsx:54
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
@@ -882,7 +904,7 @@ msgstr "Tout passer"
 msgid "Toute la culture"
 msgstr "Toute la culture"
 
-#: src/features/home/pages/Home.tsx:50
+#: src/features/home/pages/Home.tsx:51
 msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
 
@@ -894,7 +916,7 @@ msgstr "Tu as 18 ans..."
 msgid "Tu as déjà un compte ?\\u00a0"
 msgstr "Tu as déjà un compte ?\\u00a0"
 
-#: src/features/home/pages/Home.tsx:54
+#: src/features/home/pages/Home.tsx:55
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
