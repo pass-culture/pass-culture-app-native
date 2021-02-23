@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme/typography'
 
@@ -10,15 +9,5 @@ type Props = {
 }
 export const MonthHeader: React.FC<Props> = ({ date }) => {
   const month = `${monthNames[date.getMonth()]} ${date.getFullYear()}`
-  return (
-    <StyledView>
-      <Typo.Caption>{month}</Typo.Caption>
-    </StyledView>
-  )
+  return <Typo.Caption>{month}</Typo.Caption>
 }
-
-const StyledView = styled.View({
-  display: 'flex',
-  alignItems: 'flex-start',
-  width: '100%',
-})
