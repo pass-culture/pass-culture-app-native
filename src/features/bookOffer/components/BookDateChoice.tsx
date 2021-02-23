@@ -4,7 +4,9 @@ import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
 import { _ } from 'libs/i18n'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+
+import { Calendar } from './Calendar/Calendar'
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -12,8 +14,9 @@ interface Props {
 export const BookDateChoice: React.FC<Props> = ({ stocks }) => {
   return (
     <React.Fragment>
+      <Spacer.Column numberOfSpaces={4} />
       <Typo.Title4>{_(t`Date`)}</Typo.Title4>
-      <Typo.ButtonText>{_(t`Samedi 12 mai 2021`)}</Typo.ButtonText>
+      <Calendar />
       <Typo.Body>{`Dates réservables : ${getDatesByStatus(stocks).bookableDates}`}</Typo.Body>
       <Typo.Body>{`Dates non-réservables : ${
         getDatesByStatus(stocks).notBookableDates

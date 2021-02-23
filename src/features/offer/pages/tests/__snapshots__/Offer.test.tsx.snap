@@ -1916,7 +1916,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 ]
                               }
                             >
-                              
+                              Mes options
                             </Text>
                             <View
                               accessible={true}
@@ -1968,12 +1968,32 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               style={
                                 Array [
                                   Object {
-                                    "marginTop": -48,
+                                    "marginTop": -8,
                                     "width": "100%",
                                   },
                                 ]
                               }
                             >
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#f5f5f5",
+                                      "height": 2,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                numberOfSpaces={4}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 16,
+                                    },
+                                  ]
+                                }
+                              />
                               <Text
                                 style={
                                   Array [
@@ -1987,20 +2007,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 }
                               >
                                 Date
-                              </Text>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Samedi 12 mai 2021
                               </Text>
                               <Text
                                 style={
@@ -2030,6 +2036,1475 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               >
                                 Dates non-réservables : 
                               </Text>
+                              <View
+                                onMoveShouldSetResponder={[Function]}
+                                onMoveShouldSetResponderCapture={[Function]}
+                                onResponderEnd={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderReject={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderStart={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                onStartShouldSetResponderCapture={[Function]}
+                                onSwipe={[Function]}
+                              >
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "backgroundColor": "white",
+                                        "paddingLeft": 5,
+                                        "paddingRight": 5,
+                                      },
+                                      undefined,
+                                    ]
+                                  }
+                                >
+                                  <View
+                                    accessibilityActions={
+                                      Array [
+                                        Object {
+                                          "label": "increment",
+                                          "name": "increment",
+                                        },
+                                        Object {
+                                          "label": "decrement",
+                                          "name": "decrement",
+                                        },
+                                      ]
+                                    }
+                                    accessibilityRole="adjustable"
+                                    accessible={true}
+                                    onAccessibilityAction={[Function]}
+                                  >
+                                    <View
+                                      style={
+                                        Object {
+                                          "alignItems": "center",
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-between",
+                                          "marginTop": 6,
+                                          "paddingLeft": 10,
+                                          "paddingRight": 10,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        accessible={true}
+                                        focusable={true}
+                                        hitSlop={
+                                          Object {
+                                            "bottom": 20,
+                                            "left": 20,
+                                            "right": 20,
+                                            "top": 20,
+                                          }
+                                        }
+                                        onClick={[Function]}
+                                        onResponderGrant={[Function]}
+                                        onResponderMove={[Function]}
+                                        onResponderRelease={[Function]}
+                                        onResponderTerminate={[Function]}
+                                        onResponderTerminationRequest={[Function]}
+                                        onStartShouldSetResponder={[Function]}
+                                        style={
+                                          Object {
+                                            "opacity": 1,
+                                            "padding": 10,
+                                          }
+                                        }
+                                        testID="native.calendar.CHANGE_MONTH_LEFT_ARROW"
+                                      >
+                                        <View
+                                          height={32}
+                                          width={32}
+                                        >
+                                          undefined-SVG-Mock
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "flexDirection": "row",
+                                          }
+                                        }
+                                      >
+                                        <Text
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "#151515",
+                                                "fontFamily": "Montserrat-Regular",
+                                                "fontSize": 15,
+                                                "lineHeight": 20,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Février 2021
+                                        </Text>
+                                      </View>
+                                      <View
+                                        accessible={true}
+                                        focusable={true}
+                                        hitSlop={
+                                          Object {
+                                            "bottom": 20,
+                                            "left": 20,
+                                            "right": 20,
+                                            "top": 20,
+                                          }
+                                        }
+                                        onClick={[Function]}
+                                        onResponderGrant={[Function]}
+                                        onResponderMove={[Function]}
+                                        onResponderRelease={[Function]}
+                                        onResponderTerminate={[Function]}
+                                        onResponderTerminationRequest={[Function]}
+                                        onStartShouldSetResponder={[Function]}
+                                        style={
+                                          Object {
+                                            "opacity": 1,
+                                            "padding": 10,
+                                          }
+                                        }
+                                        testID="native.calendar.CHANGE_MONTH_RIGHT_ARROW"
+                                      >
+                                        <View
+                                          height={32}
+                                          width={32}
+                                        >
+                                          undefined-SVG-Mock
+                                        </View>
+                                      </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                      testID="native.calendar.DAY_NAMES"
+                                    >
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        L
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        M
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        M
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        J
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        V
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        S
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        D
+                                      </Text>
+                                    </View>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "backgroundColor": "white",
+                                      }
+                                    }
+                                  >
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            1
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <BVLinearGradient
+                                            colors={
+                                              Array [
+                                                4294967295,
+                                                4284637794,
+                                                4294967295,
+                                              ]
+                                            }
+                                            endPoint={
+                                              Object {
+                                                "x": 1,
+                                                "y": 1,
+                                              }
+                                            }
+                                            locations={
+                                              Array [
+                                                0.48,
+                                                0.5,
+                                                0.52,
+                                              ]
+                                            }
+                                            startPoint={
+                                              Object {
+                                                "x": 0,
+                                                "y": 0,
+                                              }
+                                            }
+                                          >
+                                            <Text
+                                              color="#626262"
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "color": "#626262",
+                                                    "fontFamily": "Montserrat-Bold",
+                                                    "fontSize": 15,
+                                                    "lineHeight": 20,
+                                                    "textAlign": "center",
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              2
+                                            </Text>
+                                          </BVLinearGradient>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-Bold",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                  "textAlign": "center",
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            3
+                                          </Text>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            4
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            5
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            6
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            7
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            8
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            9
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            10
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <View
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "alignSelf": "center",
+                                                  "backgroundColor": "#eb0055",
+                                                  "borderRadius": 12,
+                                                  "height": 24,
+                                                  "justifyContent": "center",
+                                                  "width": 24,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            <Text
+                                              color="#ffffff"
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "alignSelf": "center",
+                                                    "color": "#ffffff",
+                                                    "fontFamily": "Montserrat-Bold",
+                                                    "fontSize": 15,
+                                                    "lineHeight": 20,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              11
+                                            </Text>
+                                          </View>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            12
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            13
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            14
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            15
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            16
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            17
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            18
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <BVLinearGradient
+                                            colors={
+                                              Array [
+                                                4294967295,
+                                                4284637794,
+                                                4294967295,
+                                              ]
+                                            }
+                                            endPoint={
+                                              Object {
+                                                "x": 1,
+                                                "y": 1,
+                                              }
+                                            }
+                                            locations={
+                                              Array [
+                                                0.48,
+                                                0.5,
+                                                0.52,
+                                              ]
+                                            }
+                                            startPoint={
+                                              Object {
+                                                "x": 0,
+                                                "y": 0,
+                                              }
+                                            }
+                                          >
+                                            <Text
+                                              color="#626262"
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "color": "#626262",
+                                                    "fontFamily": "Montserrat-Bold",
+                                                    "fontSize": 15,
+                                                    "lineHeight": 20,
+                                                    "textAlign": "center",
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              20
+                                            </Text>
+                                          </BVLinearGradient>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-Bold",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                  "textAlign": "center",
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            21
+                                          </Text>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            22
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            23
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            24
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            25
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            26
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            27
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            28
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
                               <View
                                 numberOfSpaces={6}
                                 style={
@@ -5180,7 +6655,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 ]
                               }
                             >
-                              
+                              Mes options
                             </Text>
                             <View
                               accessible={true}
@@ -5232,12 +6707,32 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               style={
                                 Array [
                                   Object {
-                                    "marginTop": -48,
+                                    "marginTop": -8,
                                     "width": "100%",
                                   },
                                 ]
                               }
                             >
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#f5f5f5",
+                                      "height": 2,
+                                    },
+                                  ]
+                                }
+                              />
+                              <View
+                                numberOfSpaces={4}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 16,
+                                    },
+                                  ]
+                                }
+                              />
                               <Text
                                 style={
                                   Array [
@@ -5251,20 +6746,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 }
                               >
                                 Date
-                              </Text>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Samedi 12 mai 2021
                               </Text>
                               <Text
                                 style={
@@ -5294,6 +6775,1475 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               >
                                 Dates non-réservables : 
                               </Text>
+                              <View
+                                onMoveShouldSetResponder={[Function]}
+                                onMoveShouldSetResponderCapture={[Function]}
+                                onResponderEnd={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderReject={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderStart={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                onStartShouldSetResponderCapture={[Function]}
+                                onSwipe={[Function]}
+                              >
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "backgroundColor": "white",
+                                        "paddingLeft": 5,
+                                        "paddingRight": 5,
+                                      },
+                                      undefined,
+                                    ]
+                                  }
+                                >
+                                  <View
+                                    accessibilityActions={
+                                      Array [
+                                        Object {
+                                          "label": "increment",
+                                          "name": "increment",
+                                        },
+                                        Object {
+                                          "label": "decrement",
+                                          "name": "decrement",
+                                        },
+                                      ]
+                                    }
+                                    accessibilityRole="adjustable"
+                                    accessible={true}
+                                    onAccessibilityAction={[Function]}
+                                  >
+                                    <View
+                                      style={
+                                        Object {
+                                          "alignItems": "center",
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-between",
+                                          "marginTop": 6,
+                                          "paddingLeft": 10,
+                                          "paddingRight": 10,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        accessible={true}
+                                        focusable={true}
+                                        hitSlop={
+                                          Object {
+                                            "bottom": 20,
+                                            "left": 20,
+                                            "right": 20,
+                                            "top": 20,
+                                          }
+                                        }
+                                        onClick={[Function]}
+                                        onResponderGrant={[Function]}
+                                        onResponderMove={[Function]}
+                                        onResponderRelease={[Function]}
+                                        onResponderTerminate={[Function]}
+                                        onResponderTerminationRequest={[Function]}
+                                        onStartShouldSetResponder={[Function]}
+                                        style={
+                                          Object {
+                                            "opacity": 1,
+                                            "padding": 10,
+                                          }
+                                        }
+                                        testID="native.calendar.CHANGE_MONTH_LEFT_ARROW"
+                                      >
+                                        <View
+                                          height={32}
+                                          width={32}
+                                        >
+                                          undefined-SVG-Mock
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "flexDirection": "row",
+                                          }
+                                        }
+                                      >
+                                        <Text
+                                          style={
+                                            Array [
+                                              Object {
+                                                "color": "#151515",
+                                                "fontFamily": "Montserrat-Regular",
+                                                "fontSize": 15,
+                                                "lineHeight": 20,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Février 2021
+                                        </Text>
+                                      </View>
+                                      <View
+                                        accessible={true}
+                                        focusable={true}
+                                        hitSlop={
+                                          Object {
+                                            "bottom": 20,
+                                            "left": 20,
+                                            "right": 20,
+                                            "top": 20,
+                                          }
+                                        }
+                                        onClick={[Function]}
+                                        onResponderGrant={[Function]}
+                                        onResponderMove={[Function]}
+                                        onResponderRelease={[Function]}
+                                        onResponderTerminate={[Function]}
+                                        onResponderTerminationRequest={[Function]}
+                                        onStartShouldSetResponder={[Function]}
+                                        style={
+                                          Object {
+                                            "opacity": 1,
+                                            "padding": 10,
+                                          }
+                                        }
+                                        testID="native.calendar.CHANGE_MONTH_RIGHT_ARROW"
+                                      >
+                                        <View
+                                          height={32}
+                                          width={32}
+                                        >
+                                          undefined-SVG-Mock
+                                        </View>
+                                      </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                      testID="native.calendar.DAY_NAMES"
+                                    >
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        L
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        M
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        M
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        J
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        V
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        S
+                                      </Text>
+                                      <Text
+                                        accessibilityLabel=""
+                                        allowFontScaling={false}
+                                        numberOfLines={1}
+                                        style={
+                                          Array [
+                                            Object {
+                                              "color": "#b6c1cd",
+                                              "fontFamily": "System",
+                                              "fontSize": 13,
+                                              "fontWeight": undefined,
+                                              "marginBottom": 7,
+                                              "marginTop": 2,
+                                              "textAlign": "center",
+                                              "width": 32,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        D
+                                      </Text>
+                                    </View>
+                                  </View>
+                                  <View
+                                    style={
+                                      Object {
+                                        "backgroundColor": "white",
+                                      }
+                                    }
+                                  >
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            1
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <BVLinearGradient
+                                            colors={
+                                              Array [
+                                                4294967295,
+                                                4284637794,
+                                                4294967295,
+                                              ]
+                                            }
+                                            endPoint={
+                                              Object {
+                                                "x": 1,
+                                                "y": 1,
+                                              }
+                                            }
+                                            locations={
+                                              Array [
+                                                0.48,
+                                                0.5,
+                                                0.52,
+                                              ]
+                                            }
+                                            startPoint={
+                                              Object {
+                                                "x": 0,
+                                                "y": 0,
+                                              }
+                                            }
+                                          >
+                                            <Text
+                                              color="#626262"
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "color": "#626262",
+                                                    "fontFamily": "Montserrat-Bold",
+                                                    "fontSize": 15,
+                                                    "lineHeight": 20,
+                                                    "textAlign": "center",
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              2
+                                            </Text>
+                                          </BVLinearGradient>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-Bold",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                  "textAlign": "center",
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            3
+                                          </Text>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            4
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            5
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            6
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            7
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            8
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            9
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            10
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <View
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "alignSelf": "center",
+                                                  "backgroundColor": "#eb0055",
+                                                  "borderRadius": 12,
+                                                  "height": 24,
+                                                  "justifyContent": "center",
+                                                  "width": 24,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            <Text
+                                              color="#ffffff"
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "alignSelf": "center",
+                                                    "color": "#ffffff",
+                                                    "fontFamily": "Montserrat-Bold",
+                                                    "fontSize": 15,
+                                                    "lineHeight": 20,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              11
+                                            </Text>
+                                          </View>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            12
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            13
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            14
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            15
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            16
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            17
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            18
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <BVLinearGradient
+                                            colors={
+                                              Array [
+                                                4294967295,
+                                                4284637794,
+                                                4294967295,
+                                              ]
+                                            }
+                                            endPoint={
+                                              Object {
+                                                "x": 1,
+                                                "y": 1,
+                                              }
+                                            }
+                                            locations={
+                                              Array [
+                                                0.48,
+                                                0.5,
+                                                0.52,
+                                              ]
+                                            }
+                                            startPoint={
+                                              Object {
+                                                "x": 0,
+                                                "y": 0,
+                                              }
+                                            }
+                                          >
+                                            <Text
+                                              color="#626262"
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "color": "#626262",
+                                                    "fontFamily": "Montserrat-Bold",
+                                                    "fontSize": 15,
+                                                    "lineHeight": 20,
+                                                    "textAlign": "center",
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              20
+                                            </Text>
+                                          </BVLinearGradient>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-Bold",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                  "textAlign": "center",
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            21
+                                          </Text>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            19,90€
+                                          </Text>
+                                        </View>
+                                      </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            22
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            23
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            24
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            25
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            26
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            27
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View>
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            28
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
                               <View
                                 numberOfSpaces={6}
                                 style={

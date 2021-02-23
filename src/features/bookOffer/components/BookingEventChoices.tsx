@@ -31,6 +31,7 @@ export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) =
 
   return (
     <Container>
+      <Separator />
       <BookDateChoice stocks={stocks} />
 
       <Spacer.Column numberOfSpaces={6} />
@@ -52,7 +53,7 @@ export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) =
   )
 }
 
-const Container = styled.View({ width: '100%', marginTop: -getSpacing(12) })
+const Container = styled.View({ width: '100%', marginTop: -getSpacing(2) })
 const Separator = styled.View({
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
