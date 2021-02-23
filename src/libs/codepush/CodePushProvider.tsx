@@ -31,7 +31,15 @@ export const CodePushProvider = CodePushWrapper(
     }
 
     codePushStatusDidChange(status: CodePush.SyncStatus) {
-      this.setState({ status })
+      /* The other parts of our code rely on the fact that the code push sync status does not change once it is up-to-date */
+      if (
+        status === CodePush.SyncStatus.UP_TO_DATE &&
+        this.state.status !== CodePush.SyncStatus.UP_TO_DATE
+      ) {
+        this.setState({
+          status,
+        })
+      }
     }
 
     render() {
