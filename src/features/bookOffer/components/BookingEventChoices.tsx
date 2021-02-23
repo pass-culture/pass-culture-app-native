@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { OfferStockResponse } from 'api/gen'
 import { BookDateChoice } from 'features/bookOffer/components/BookDateChoice'
 import { BookDuoChoice } from 'features/bookOffer/components/BookDuoChoice'
 import { BookHourChoice } from 'features/bookOffer/components/BookHourChoice'
@@ -14,9 +15,10 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
   dismissModal: () => void
+  stocks: OfferStockResponse[]
 }
 
-export const BookingEventChoices: React.FC<Props> = ({ dismissModal }) => {
+export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) => {
   const { bookingState, dispatch } = useBooking()
 
   const validateOptions = () => {
@@ -29,7 +31,7 @@ export const BookingEventChoices: React.FC<Props> = ({ dismissModal }) => {
 
   return (
     <Container>
-      <BookDateChoice />
+      <BookDateChoice stocks={stocks} />
 
       <Spacer.Column numberOfSpaces={6} />
       <Separator />

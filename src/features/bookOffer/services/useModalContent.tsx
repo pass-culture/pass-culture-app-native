@@ -31,7 +31,7 @@ export const useModalContent = (
   const onLeftIconPress = undefined
 
   if (!offer) return { children, title, leftIcon, onLeftIconPress }
-  const { category, isDigital } = offer
+  const { category, isDigital, stocks } = offer
 
   const goToPreviousStep = () => {
     dispatch({ type: 'MODIFY_OPTIONS' })
@@ -60,7 +60,7 @@ export const useModalContent = (
       title: '',
       leftIcon: undefined,
       onLeftIconPress: undefined,
-      children: <BookingEventChoices dismissModal={dismissModal} />,
+      children: <BookingEventChoices dismissModal={dismissModal} stocks={stocks} />,
     }
   }
 
