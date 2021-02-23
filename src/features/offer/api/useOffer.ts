@@ -36,9 +36,10 @@ const adaptOfferResponse = (offerApiResponse: OfferResponse): OfferAdaptedRespon
 })
 
 const getOfferById = async (offerId: number) => {
+  if (!offerId) return
   const offerApiResponse = await api.getnativev1offerofferId(offerId)
   return adaptOfferResponse(offerApiResponse)
 }
 
 export const useOffer = ({ offerId }: { offerId: number }) =>
-  useQuery<OfferAdaptedResponse>(['offer', offerId], () => getOfferById(offerId))
+  useQuery<OfferAdaptedResponse | undefined>(['offer', offerId], () => getOfferById(offerId))
