@@ -64,31 +64,12 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -871,63 +837,14 @@
-                            numberOfSpaces={4}
+@@ -890,1213 +856,26 @@
+                          <View
                             style={
                               Array [
                                 Object {
-                                  \\"height\\": 16,
--                               },
--                             ]
--                           }
--                         />
--                         <View
--                           style={
--                             Array [
--                               Object {
--                                 \\"backgroundColor\\": \\"#f5f5f5\\",
--                                 \\"height\\": 8,
--                               },
--                             ]
--                           }
--                         />
--                         <View
--                           style={
--                             Array [
--                               Object {
--                                 \\"marginHorizontal\\": 24,
+                                  \\"marginHorizontal\\": 24,
 -                               },
 -                             ]
 -                           }
@@ -118,22 +99,26 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"lineHeight\\": 20,
 -                                   \\"marginTop\\": -8,
 -                                   \\"paddingBottom\\": 24,
-                                },
-                              ]
-                            }
-                          />
+-                                 },
+-                               ]
+-                             }
+-                           />
 -                         </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  \\"backgroundColor\\": \\"#f5f5f5\\",
-@@ -939,1164 +856,26 @@
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  \\"marginHorizontal\\": 24,
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                                 \\"height\\": 8,
+-                               },
+-                             ]
+-                           }
+-                         />
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"marginHorizontal\\": 24,
 -                               },
 -                             ]
 -                           }
@@ -229,9 +214,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                   \\"fontSize\\": 12,
 -                                   \\"lineHeight\\": 16,
-                                },
-                              ]
-                            }
+-                                 },
+-                               ]
+-                             }
 -                           >
 -                             Distance
 -                           </Text>
@@ -244,7 +229,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 },
 -                               ]
 -                             }
-                          />
+-                           />
 -                           <Text
 -                             style={
 -                               Array [
@@ -312,7 +297,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               width={24}
 -                             >
 -                               undefined-SVG-Mock
-                        </View>
+-                             </View>
 -                             <View
 -                               numberOfSpaces={1}
 -                               style={
@@ -400,8 +385,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           >
 -                             Modalités de retrait
 -                           </Text>
-+                     </RCTScrollView>
-                      <View
+-                           <View
 -                             style={
 -                               Object {
 -                                 \\"transform\\": Array [
@@ -432,10 +416,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                         >
 -                           <View
 -                             onLayout={[Function onLayout]}
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
+-                             style={
+-                               Array [
+-                                 Object {
 -                                   \\"bottom\\": 0,
 -                                   \\"paddingBottom\\": 24,
 -                                   \\"paddingHorizontal\\": 24,
@@ -590,7 +573,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"paddingTop\\": 0,
 -                                   \\"position\\": \\"absolute\\",
 -                                   \\"width\\": \\"100%\\",
--                                 },
+                                },
 -                                 undefined,
 -                               ]
 -                             }
@@ -602,8 +585,8 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   Object {
 -                                     \\"flexDirection\\": \\"row\\",
 -                                   },
--                                 ]
--                               }
+                              ]
+                            }
 -                             >
 -                               <View
 -                                 style={
@@ -640,13 +623,13 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                         },
 -                                       ]
 -                                     }
--                                   />
+                          />
 -                                   <View
 -                                     height={48}
 -                                     width={48}
 -                                   >
 -                                     undefined-SVG-Mock
--                                   </View>
+                        </View>
 -                                   <View
 -                                     style={
 -                                       Array [
@@ -929,11 +912,13 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   </Text>
 -                                 </View>
 -                               </View>
--                               <View
++                     </RCTScrollView>
+                      <View
 -                                 numberOfSpaces={4}
--                                 style={
--                                   Array [
--                                     Object {
++                       numberOfSpaces={10}
+                        style={
+                          Array [
+                            Object {
 -                                       \\"width\\": 16,
 -                                     },
 -                                   ]
@@ -1083,11 +1068,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   Array [
 -                                     Object {
 -                                       \\"width\\": 16,
-+                             \\"height\\": 40,
-                            },
-                          ]
-                        }
-                      />
+-                                     },
+-                                   ]
+-                                 }
+-                               />
 -                               <View
 -                                 style={
 -                                   Array [
@@ -1166,10 +1150,11 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"height\\": 16,
--                                       },
--                                     ]
--                                   }
--                                 />
++                             \\"height\\": 40,
+                            },
+                          ]
+                        }
+                      />
 -                                 <View
 -                                   style={
 -                                     Array [
@@ -1295,247 +1280,5 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                         animationType=\\"slide\\"
                         hardwareAccelerated={false}
                         statusBarTranslucent={true}
-                        testID=\\"modal\\"
-@@ -2183,11 +962,19 @@
-                                    \\"marginLeft\\": -4,
-                                    \\"opacity\\": 1,
-                                  }
-                                }
-                                testID=\\"leftIconButton\\"
--                             />
-+                             >
-+                               <View
-+                                 height={32}
-+                                 testID=\\"leftIcon\\"
-+                                 width={32}
-+                               >
-+                                 leftIcon-SVG-Mock
-+                               </View>
-+                             </View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  Array [
-                                    Object {
-@@ -2201,11 +988,11 @@
-                                      \\"textAlign\\": \\"center\\",
-                                    },
-                                  ]
-                                }
-                              >
--                               
-+                               Détails de la réservation
-                              </Text>
-                              <View
-                                accessible={true}
-                                focusable={true}
-                                onClick={[Function onClick]}
-@@ -2253,118 +1040,97 @@
-                            >
-                              <View
-                                style={
-                                  Array [
-                                    Object {
--                                     \\"marginTop\\": -48,
-                                      \\"width\\": \\"100%\\",
-                                    },
-                                  ]
-                                }
-                              >
--                               <Text
-+                               <View
-                                  style={
-                                    Array [
-                                      Object {
--                                       \\"color\\": \\"#151515\\",
--                                       \\"fontFamily\\": \\"Montserrat-Medium\\",
--                                       \\"fontSize\\": 18,
--                                       \\"lineHeight\\": 22,
--                                     },
--                                   ]
--                                 }
--                               >
--                                 Date
--                               </Text>
--                               <Text
--                                 style={
--                                   Array [
--                                     Object {
--                                       \\"color\\": \\"#151515\\",
--                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
--                                       \\"fontSize\\": 15,
--                                       \\"lineHeight\\": 20,
-+                                       \\"alignItems\\": \\"center\\",
-+                                       \\"backgroundColor\\": \\"#f5f5f5\\",
-+                                       \\"borderRadius\\": 4,
-+                                       \\"display\\": \\"flex\\",
-+                                       \\"flexDirection\\": \\"row\\",
-+                                       \\"paddingVertical\\": 16,
-                                      },
-                                    ]
-                                  }
-                                >
--                                 Samedi 12 mai 2021
--                               </Text>
-                                  <View
--                                 numberOfSpaces={6}
-+                                   numberOfSpaces={3}
-                                    style={
-                                      Array [
-                                        Object {
--                                       \\"height\\": 24,
-+                                         \\"width\\": 12,
-                                        },
-                                      ]
-                                    }
-                                  />
-                                  <View
--                                 style={
--                                   Array [
--                                     Object {
--                                       \\"backgroundColor\\": \\"#f5f5f5\\",
--                                       \\"height\\": 2,
--                                     },
--                                   ]
--                                 }
--                               />
-+                                   height={32}
-+                                   width={32}
-+                                 >
-+                                   undefined-SVG-Mock
-+                                 </View>
-                                  <View
--                                 numberOfSpaces={6}
-+                                   numberOfSpaces={3}
-                                    style={
-                                      Array [
-                                        Object {
--                                       \\"height\\": 24,
-+                                         \\"width\\": 12,
-                                        },
-                                      ]
-                                    }
-                                  />
--                               <Text
-+                                 <View
-                                    style={
-                                      Array [
-                                        Object {
--                                       \\"color\\": \\"#151515\\",
--                                       \\"fontFamily\\": \\"Montserrat-Medium\\",
--                                       \\"fontSize\\": 18,
--                                       \\"lineHeight\\": 22,
-+                                         \\"flexShrink\\": 1,
-                                        },
-                                      ]
-                                    }
-                                  >
--                                 Heure
--                               </Text>
-                                    <Text
-+                                     color=\\"#151515\\"
-                                      style={
-                                        Array [
-                                          Object {
-                                            \\"color\\": \\"#151515\\",
--                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
--                                       \\"fontSize\\": 15,
--                                       \\"lineHeight\\": 20,
-+                                           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-+                                           \\"fontSize\\": 12,
-+                                           \\"lineHeight\\": 16,
-                                          },
-                                        ]
-                                      }
-                                    >
--                                 21:00
-+                                     Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.
-                                    </Text>
-+                                 </View>
-                                  <View
--                                 numberOfSpaces={6}
-+                                   numberOfSpaces={5}
-                                    style={
-                                      Array [
-                                        Object {
--                                       \\"height\\": 24,
-+                                         \\"width\\": 20,
-                                        },
-                                      ]
-                                    }
-                                  />
-+                               </View>
-                                <View
-+                                 numberOfSpaces={6}
-                                  style={
-                                    Array [
-                                      Object {
--                                       \\"backgroundColor\\": \\"#f5f5f5\\",
--                                       \\"height\\": 2,
-+                                       \\"height\\": 24,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <View
-@@ -2375,38 +1141,30 @@
-                                        \\"height\\": 24,
-                                      },
-                                    ]
-                                  }
-                                />
--                               <Text
-+                               <View
-                                  style={
-                                    Array [
-                                      Object {
--                                       \\"color\\": \\"#151515\\",
--                                       \\"fontFamily\\": \\"Montserrat-Medium\\",
--                                       \\"fontSize\\": 18,
--                                       \\"lineHeight\\": 22,
-+                                       \\"backgroundColor\\": \\"#f5f5f5\\",
-+                                       \\"height\\": 2,
-                                      },
-                                    ]
-                                  }
--                               >
--                                 Nombre de place
--                               </Text>
--                               <Text
-+                               />
-+                               <View
-+                                 numberOfSpaces={6}
-                                  style={
-                                    Array [
-                                      Object {
--                                       \\"color\\": \\"#151515\\",
--                                       \\"fontFamily\\": \\"Montserrat-Bold\\",
--                                       \\"fontSize\\": 15,
--                                       \\"lineHeight\\": 20,
-+                                       \\"height\\": 24,
-                                      },
-                                    ]
-                                  }
--                               >
--                                 Duo
--                               </Text>
-+                               />
-                                <View
-                                  numberOfSpaces={6}
-                                  style={
-                                    Array [
-                                      Object {
-@@ -2461,11 +1219,11 @@
-                                      ]
-                                    }
-                                    testID=\\"button-title\\"
-                                    textColor=\\"#ffffff\\"
-                                  >
--                                   Valider ces options
-+                                   Confirmer la réservation
-                                  </Text>
-                                </View>
-                              </View>
-                            </View>
-                          </View>"
+                        testID=\\"modal\\""
 `;

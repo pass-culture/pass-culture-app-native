@@ -1876,7 +1876,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           >
                             <View
                               accessible={true}
-                              focusable={true}
+                              focusable={false}
                               onClick={[Function]}
                               onResponderGrant={[Function]}
                               onResponderMove={[Function]}
@@ -5082,7 +5082,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           >
                             <View
                               accessible={true}
-                              focusable={true}
+                              focusable={false}
                               onClick={[Function]}
                               onResponderGrant={[Function]}
                               onResponderMove={[Function]}
