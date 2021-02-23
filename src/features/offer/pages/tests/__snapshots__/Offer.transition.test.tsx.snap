@@ -64,12 +64,34 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -893,1200 +859,23 @@
+@@ -871,63 +837,14 @@
+                            numberOfSpaces={4}
+                            style={
+                              Array [
                                 Object {
-                                  \\"marginHorizontal\\": 24,
-                                },
-                              ]
-                            }
+                                  \\"height\\": 16,
+-                               },
+-                             ]
+-                           }
+-                         />
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                                 \\"height\\": 8,
+-                               },
+-                             ]
+-                           }
+-                         />
+-                         <View
+-                           style={
+-                             Array [
+-                               Object {
+-                                 \\"marginHorizontal\\": 24,
+-                               },
+-                             ]
+-                           }
 -                         >
 -                           <Text
 -                             style={
@@ -96,26 +118,22 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"lineHeight\\": 20,
 -                                   \\"marginTop\\": -8,
 -                                   \\"paddingBottom\\": 24,
--                                 },
--                               ]
--                             }
+                                },
+                              ]
+                            }
                           />
-                        </View>
--                         <View
--                           style={
--                             Array [
--                               Object {
--                                 \\"backgroundColor\\": \\"#f5f5f5\\",
--                                 \\"height\\": 8,
--                               },
--                             ]
--                           }
--                         />
--                         <View
--                           style={
--                             Array [
--                               Object {
--                                 \\"marginHorizontal\\": 24,
+-                         </View>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  \\"backgroundColor\\": \\"#f5f5f5\\",
+@@ -939,1164 +856,26 @@
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  \\"marginHorizontal\\": 24,
 -                               },
 -                             ]
 -                           }
@@ -193,13 +211,11 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           >
 -                             PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS 8
 -                           </Text>
-+                     </RCTScrollView>
-                      <View
+-                           <View
 -                             numberOfSpaces={4}
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
+-                             style={
+-                               Array [
+-                                 Object {
 -                                   \\"height\\": 16,
 -                                 },
 -                               ]
@@ -213,9 +229,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 -                                   \\"fontSize\\": 12,
 -                                   \\"lineHeight\\": 16,
--                                 },
--                               ]
--                             }
+                                },
+                              ]
+                            }
 -                           >
 -                             Distance
 -                           </Text>
@@ -228,7 +244,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 },
 -                               ]
 -                             }
--                           />
+                          />
 -                           <Text
 -                             style={
 -                               Array [
@@ -296,7 +312,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                               width={24}
 -                             >
 -                               undefined-SVG-Mock
--                             </View>
+                        </View>
 -                             <View
 -                               numberOfSpaces={1}
 -                               style={
@@ -384,7 +400,8 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           >
 -                             Modalités de retrait
 -                           </Text>
--                           <View
++                     </RCTScrollView>
+                      <View
 -                             style={
 -                               Object {
 -                                 \\"transform\\": Array [
@@ -415,9 +432,10 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                         >
 -                           <View
 -                             onLayout={[Function onLayout]}
--                             style={
--                               Array [
--                                 Object {
++                       numberOfSpaces={10}
+                        style={
+                          Array [
+                            Object {
 -                                   \\"bottom\\": 0,
 -                                   \\"paddingBottom\\": 24,
 -                                   \\"paddingHorizontal\\": 24,
@@ -687,6 +705,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 >
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -705,6 +724,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -792,10 +812,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                         Object {
 -                                           \\"bottom\\": -16,
 -                                           \\"position\\": \\"absolute\\",
-+                             \\"height\\": 40,
-                            },
-                          ]
-                        }
+-                                         },
+-                                       ]
+-                                     }
 -                                   >
 -                                     <View
 -                                       height={32}
@@ -815,7 +834,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                       },
 -                                     ]
 -                                   }
-                      />
+-                                 />
 -                                 <View
 -                                   style={
 -                                     Array [
@@ -834,6 +853,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 >
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -852,6 +872,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -870,6 +891,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -888,6 +910,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -1016,6 +1039,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 >
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -1034,6 +1058,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -1058,10 +1083,11 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   Array [
 -                                     Object {
 -                                       \\"width\\": 16,
--                                     },
--                                   ]
--                                 }
--                               />
++                             \\"height\\": 40,
+                            },
+                          ]
+                        }
+                      />
 -                               <View
 -                                 style={
 -                                   Array [
@@ -1162,6 +1188,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 >
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -1180,6 +1207,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   </Text>
 -                                   <Text
 -                                     adjustsFontSizeToFit={true}
+-                                     allowFontScaling={false}
 -                                     numberOfLines={1}
 -                                     style={
 -                                       Array [
@@ -1268,7 +1296,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                         hardwareAccelerated={false}
                         statusBarTranslucent={true}
                         testID=\\"modal\\"
-@@ -2173,11 +962,19 @@
+@@ -2183,11 +962,19 @@
                                     \\"marginLeft\\": -4,
                                     \\"opacity\\": 1,
                                   }
@@ -1289,7 +1317,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                 style={
                                   Array [
                                     Object {
-@@ -2191,11 +988,11 @@
+@@ -2201,11 +988,11 @@
                                       \\"textAlign\\": \\"center\\",
                                     },
                                   ]
@@ -1302,7 +1330,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                 accessible={true}
                                 focusable={true}
                                 onClick={[Function onClick]}
-@@ -2243,118 +1040,97 @@
+@@ -2253,118 +1040,97 @@
                             >
                               <View
                                 style={
@@ -1450,7 +1478,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                   }
                                 />
                                 <View
-@@ -2365,38 +1141,30 @@
+@@ -2375,38 +1141,30 @@
                                         \\"height\\": 24,
                                       },
                                     ]
@@ -1497,7 +1525,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                                   style={
                                     Array [
                                       Object {
-@@ -2451,11 +1219,11 @@
+@@ -2461,11 +1219,11 @@
                                       ]
                                     }
                                     testID=\\"button-title\\"
