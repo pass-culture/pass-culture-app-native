@@ -35,9 +35,15 @@ export const BookingInformations: React.FC = () => {
       <Typo.Caption>{fullAddress}</Typo.Caption>
     </StyledAddress>
   )
-  const price = stock.price > 0 ? formatToFrenchDecimal(stock.price) : _(t`Gratuit`)
+  const price =
+    stock.price > 0 ? formatToFrenchDecimal(bookingState.quantity * stock.price) : _(t`Gratuit`)
 
   if (category.categoryType === CategoryType.Event) {
+    const subtext =
+      stock.price > 0 && bookingState.quantity === 2
+        ? _(t`(${formatToFrenchDecimal(stock.price)} x 2 places)`)
+        : undefined
+
     return (
       <React.Fragment>
         <Item Icon={Booking} message={name} />
@@ -45,7 +51,7 @@ export const BookingInformations: React.FC = () => {
           <Item Icon={Calendar} message={formatDate(stock.beginningDatetime)} />
         )}
         <Item Icon={LocationBuilding} message={address} />
-        <Item Icon={OrderPrice} message={price} subtext="(24 € x 2 places)" />
+        <Item Icon={OrderPrice} message={price} subtext={subtext} />
       </React.Fragment>
     )
   }
