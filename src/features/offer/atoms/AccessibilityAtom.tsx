@@ -11,7 +11,7 @@ import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service
 const HandicapText: React.FC<{ wording: string; width: number }> = ({ wording, width }) => (
   <TextContainer testID={wording} width={width}>
     {wording.split(' ').map((word) => (
-      <Text key={word} numberOfLines={1} adjustsFontSizeToFit={true}>
+      <Text key={word} numberOfLines={1} adjustsFontSizeToFit={true} allowFontScaling={false}>
         {word}
       </Text>
     ))}
