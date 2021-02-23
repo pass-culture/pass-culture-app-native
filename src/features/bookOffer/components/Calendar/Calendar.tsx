@@ -24,7 +24,7 @@ const renderDay = (bookable: boolean, notBookable: boolean, selected: boolean, d
   if (selected)
     return (
       <SelectedDay>
-        <Typo.ButtonText color={ColorsEnum.WHITE}>{day}</Typo.ButtonText>
+        <SelectedDayNumber color={ColorsEnum.WHITE}>{day}</SelectedDayNumber>
       </SelectedDay>
     )
   if (notBookable)
@@ -55,11 +55,12 @@ export const Calendar: React.FC = () => (
       dayComponent={({ date }) => {
         const bookable = date.day === 21 || date.day === 3
         // TODO: PC-6695 change hard coded for real data
-        const displayPrice = date.day === 20 || date.day === 21 || date.day === 2 || date.day === 3
+        const displayPrice =
+          date.day === 20 || date.day === 21 || date.day === 2 || date.day === 3 || date.day === 11
         // TODO: PC-6716 change hard coded for real data
         const notBookable = date.day === 20 || date.day === 2
         // TODO: PC-6698 change hard coded for real data
-        const selected = date.day === 10 && date.month === 2
+        const selected = date.day === 11 && date.month === 2
         return (
           <View>
             {renderDay(bookable, notBookable, selected, date.day)}
@@ -84,9 +85,13 @@ const Day = styled(Typo.ButtonText)({
 
 const SelectedDay = styled(View)({
   backgroundColor: ColorsEnum.PRIMARY,
-  borderRadius: 16,
+  borderRadius: getSpacing(3),
   width: getSpacing(6),
   height: getSpacing(6),
-  alignItems: 'center',
+  alignSelf: 'center',
   justifyContent: 'center',
+})
+
+const SelectedDayNumber = styled(Typo.ButtonText)({
+  alignSelf: 'center',
 })
