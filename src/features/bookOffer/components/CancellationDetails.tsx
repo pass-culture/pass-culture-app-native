@@ -11,7 +11,8 @@ import { Spacer, Typo } from 'ui/theme'
 export const formatDate = (limitDate: Date): string => {
   const limit = new Date(limitDate)
   const { day, month, year } = decomposeDate(limit.getTime())
-  return `${day} ${month} ${year}, ${limit.getHours()}h${limit.getMinutes()}`
+  const minutes = limit.getMinutes() === 0 ? '00' : limit.getMinutes()
+  return `${day} ${month} ${year}, ${limit.getHours()}h${minutes}`
 }
 
 export const CancellationDetails: React.FC = () => {
