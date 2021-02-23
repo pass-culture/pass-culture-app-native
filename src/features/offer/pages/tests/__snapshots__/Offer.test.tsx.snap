@@ -2129,20 +2129,37 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               >
                                 Nombre de place
                               </Text>
-                              <Text
+                              <View
+                                accessible={true}
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
                                 style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
+                                  Object {
+                                    "opacity": 1,
+                                  }
                                 }
                               >
-                                Duo
-                              </Text>
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#151515",
+                                        "fontFamily": "Montserrat-Bold",
+                                        "fontSize": 15,
+                                        "lineHeight": 20,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Solo
+                                </Text>
+                              </View>
                               <View
                                 numberOfSpaces={6}
                                 style={
@@ -5363,20 +5380,37 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               >
                                 Nombre de place
                               </Text>
-                              <Text
+                              <View
+                                accessible={true}
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
                                 style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
+                                  Object {
+                                    "opacity": 1,
+                                  }
                                 }
                               >
-                                Duo
-                              </Text>
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#151515",
+                                        "fontFamily": "Montserrat-Bold",
+                                        "fontSize": 15,
+                                        "lineHeight": 20,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Solo
+                                </Text>
+                              </View>
                               <View
                                 numberOfSpaces={6}
                                 style={
