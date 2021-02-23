@@ -43,44 +43,40 @@ const renderArrow = (direction: string) => {
 }
 
 export const Calendar: React.FC = () => (
-  <React.Fragment>
-    {/* TODO: PC-6693 remove this line */}
-    <Spacer.TopScreen />
-    <RNCalendar
-      firstDay={1}
-      enableSwipeMonths={true}
-      renderHeader={(date) => <MonthHeader date={date} />}
-      hideExtraDays={true}
-      renderArrow={renderArrow}
-      dayComponent={({ date }) => {
-        const bookable = date.day === 21 || date.day === 3
-        // TODO: PC-6695 change hard coded for real data
-        const displayPrice =
-          date.day === 20 ||
-          date.day === 21 ||
-          date.day === 2 ||
-          date.day === 3 ||
-          (date.day === 11 && date.month === 2)
-        // TODO: PC-6716 change hard coded for real data
-        const notBookable = date.day === 20 || date.day === 2
-        // TODO: PC-6698 change hard coded for real data
-        const selected = date.day === 11 && date.month === 2
-        return (
-          <View>
-            {renderDay(bookable, notBookable, selected, date.day)}
-            {displayPrice ? (
-              // eslint-disable-next-line react-native/no-raw-text
-              <Typo.Caption color={notBookable ? ColorsEnum.GREY_DARK : ColorsEnum.PRIMARY}>
-                19,90€
-              </Typo.Caption>
-            ) : (
-              <Spacer.Column numberOfSpaces={getSpacing(1)} />
-            )}
-          </View>
-        )
-      }}
-    />
-  </React.Fragment>
+  <RNCalendar
+    firstDay={1}
+    enableSwipeMonths={true}
+    renderHeader={(date) => <MonthHeader date={date} />}
+    hideExtraDays={true}
+    renderArrow={renderArrow}
+    dayComponent={({ date }) => {
+      const bookable = date.day === 21 || date.day === 3
+      // TODO: PC-6695 change hard coded for real data
+      const displayPrice =
+        date.day === 20 ||
+        date.day === 21 ||
+        date.day === 2 ||
+        date.day === 3 ||
+        (date.day === 11 && date.month === 2)
+      // TODO: PC-6716 change hard coded for real data
+      const notBookable = date.day === 20 || date.day === 2
+      // TODO: PC-6698 change hard coded for real data
+      const selected = date.day === 11 && date.month === 2
+      return (
+        <View>
+          {renderDay(bookable, notBookable, selected, date.day)}
+          {displayPrice ? (
+            // eslint-disable-next-line react-native/no-raw-text
+            <Typo.Caption color={notBookable ? ColorsEnum.GREY_DARK : ColorsEnum.PRIMARY}>
+              19,90€
+            </Typo.Caption>
+          ) : (
+            <Spacer.Column numberOfSpaces={getSpacing(1)} />
+          )}
+        </View>
+      )
+    }}
+  />
 )
 
 const Day = styled(Typo.ButtonText)({
