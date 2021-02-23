@@ -9,5 +9,5 @@ type Props = {
 }
 export const MonthHeader: React.FC<Props> = ({ date }) => {
   const month = `${monthNames[date.getMonth()]} ${date.getFullYear()}`
-  return <Typo.Caption>{month}</Typo.Caption>
+  return <Typo.Body>{month}</Typo.Body>
 }
