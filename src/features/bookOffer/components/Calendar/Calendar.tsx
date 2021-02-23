@@ -56,7 +56,11 @@ export const Calendar: React.FC = () => (
         const bookable = date.day === 21 || date.day === 3
         // TODO: PC-6695 change hard coded for real data
         const displayPrice =
-          date.day === 20 || date.day === 21 || date.day === 2 || date.day === 3 || date.day === 11
+          date.day === 20 ||
+          date.day === 21 ||
+          date.day === 2 ||
+          date.day === 3 ||
+          (date.day === 11 && date.month === 2)
         // TODO: PC-6716 change hard coded for real data
         const notBookable = date.day === 20 || date.day === 2
         // TODO: PC-6698 change hard coded for real data
