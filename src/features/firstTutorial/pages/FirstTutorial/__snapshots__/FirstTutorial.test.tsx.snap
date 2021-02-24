@@ -401,12 +401,12 @@ Array [
                     </View>
                   </View>
                   <View
-                    flex={2}
+                    flex={0}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 2,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -573,12 +573,12 @@ Array [
                     </View>
                   </View>
                   <View
-                    flex={2}
+                    flex={0}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 2,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -745,12 +745,12 @@ Array [
                     </View>
                   </View>
                   <View
-                    flex={2}
+                    flex={0}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 2,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -917,12 +917,12 @@ Array [
                     </View>
                   </View>
                   <View
-                    flex={2}
+                    flex={0}
                     style={
                       Array [
                         Object {
                           "flexBasis": 0,
-                          "flexGrow": 2,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
