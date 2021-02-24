@@ -64,46 +64,16 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                             <View
                               numberOfSpaces={6}
                               style={
-@@ -890,1213 +856,26 @@
-                          <View
+@@ -871,63 +837,14 @@
+                            numberOfSpaces={4}
                             style={
                               Array [
                                 Object {
-                                  \\"marginHorizontal\\": 24,
+                                  \\"height\\": 16,
 -                               },
 -                             ]
 -                           }
--                         >
--                           <Text
--                             style={
--                               Array [
--                                 Object {
--                                   \\"color\\": \\"#151515\\",
--                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
--                                   \\"fontSize\\": 18,
--                                   \\"lineHeight\\": 22,
--                                   \\"paddingVertical\\": 24,
-                                },
-                              ]
-                            }
--                           >
--                             Quand ?
--                           </Text>
--                           <Text
--                             style={
--                               Array [
--                                 Object {
--                                   \\"color\\": \\"#151515\\",
--                                   \\"fontFamily\\": \\"Montserrat-Regular\\",
--                                   \\"fontSize\\": 15,
--                                   \\"lineHeight\\": 20,
--                                   \\"marginTop\\": -8,
--                                   \\"paddingBottom\\": 24,
--                                 },
--                               ]
--                             }
-                          />
-                        </View>
+-                         />
 -                         <View
 -                           style={
 -                             Array [
@@ -119,6 +89,51 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             Array [
 -                               Object {
 -                                 \\"marginHorizontal\\": 24,
+-                               },
+-                             ]
+-                           }
+-                         >
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-Medium\\",
+-                                   \\"fontSize\\": 18,
+-                                   \\"lineHeight\\": 22,
+-                                   \\"paddingVertical\\": 24,
+-                                 },
+-                               ]
+-                             }
+-                           >
+-                             Quand ?
+-                           </Text>
+-                           <Text
+-                             style={
+-                               Array [
+-                                 Object {
+-                                   \\"color\\": \\"#151515\\",
+-                                   \\"fontFamily\\": \\"Montserrat-Regular\\",
+-                                   \\"fontSize\\": 15,
+-                                   \\"lineHeight\\": 20,
+-                                   \\"marginTop\\": -8,
+-                                   \\"paddingBottom\\": 24,
+                                },
+                              ]
+                            }
+                          />
+-                         </View>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  \\"backgroundColor\\": \\"#f5f5f5\\",
+@@ -939,1167 +856,26 @@
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  \\"marginHorizontal\\": 24,
 -                               },
 -                             ]
 -                           }
@@ -238,9 +253,9 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                   \\"fontFamily\\": \\"Montserrat-Regular\\",
 -                                   \\"fontSize\\": 15,
 -                                   \\"lineHeight\\": 20,
--                                 },
--                               ]
--                             }
+                                },
+                              ]
+                            }
 -                           >
 -                             900+ km
 -                           </Text>
@@ -263,7 +278,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                 },
 -                               ]
 -                             }
--                           />
+                          />
 -                           <View
 -                             numberOfSpaces={6}
 -                             style={
@@ -322,7 +337,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             >
 -                               Voir l'itinéraire
 -                             </Text>
--                           </View>
+                        </View>
 -                           <View
 -                             numberOfSpaces={6}
 -                             style={
@@ -397,7 +412,8 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                             }
 -                             testID=\\"accordionArrow\\"
 -                           >
--                             <View
++                     </RCTScrollView>
+                      <View
 -                               height={24}
 -                               width={24}
 -                             >
@@ -406,7 +422,8 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           </View>
 -                         </View>
 -                         <View
--                           style={
++                       numberOfSpaces={10}
+                        style={
 -                             Object {
 -                               \\"height\\": 0,
 -                               \\"overflow\\": \\"hidden\\",
@@ -417,8 +434,8 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           <View
 -                             onLayout={[Function onLayout]}
 -                             style={
--                               Array [
--                                 Object {
+                          Array [
+                            Object {
 -                                   \\"bottom\\": 0,
 -                                   \\"paddingBottom\\": 24,
 -                                   \\"paddingHorizontal\\": 24,
@@ -1000,10 +1017,11 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                                     Array [
 -                                       Object {
 -                                         \\"height\\": 16,
--                                       },
--                                     ]
--                                   }
--                                 />
++                             \\"height\\": 40,
+                            },
+                          ]
+                        }
+                      />
 -                                 <View
 -                                   style={
 -                                     Array [
@@ -1212,18 +1230,19 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                           </View>
 -                         </View>
 -                       </View>
-                      </RCTScrollView>
-                      <View
-+                       numberOfSpaces={10}
-                        style={
-                          Array [
-                            Object {
+-                     </RCTScrollView>
+-                     <View
+-                       style={
+-                         Array [
+-                           Object {
 -                             \\"marginBottom\\": 32,
 -                             \\"marginHorizontal\\": 24,
-+                             \\"height\\": 40,
-                            },
-                          ]
-                        }
+-                           },
+-                           Object {
+-                             \\"paddingBottom\\": 8,
+-                           },
+-                         ]
+-                       }
 -                       testID=\\"CTA-button\\"
 -                     >
 -                       <View
@@ -1275,13 +1294,12 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
 -                         </Text>
 -                       </View>
 -                     </View>
-+                     />
                       <Modal
                         animationType=\\"slide\\"
                         hardwareAccelerated={false}
                         statusBarTranslucent={true}
                         testID=\\"modal\\"
-@@ -2299,11 +1078,11 @@
+@@ -2302,11 +1078,11 @@
                                         \\"lineHeight\\": 20,
                                       },
                                     ]

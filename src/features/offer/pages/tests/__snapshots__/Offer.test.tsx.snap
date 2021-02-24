@@ -1752,6 +1752,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             "marginBottom": 32,
                             "marginHorizontal": 24,
                           },
+                          Object {
+                            "paddingBottom": 8,
+                          },
                         ]
                       }
                       testID="CTA-button"
@@ -1956,7 +1959,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "width": "100%",
                                 },
                                 Object {
-                                  "paddingBottom": 16,
+                                  "paddingBottom": 8,
                                 },
                               ]
                             }
@@ -2221,6 +2224,16 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   Valider ces options
                                 </Text>
                               </View>
+                              <View
+                                numberOfSpaces={4}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 16,
+                                    },
+                                  ]
+                                }
+                              />
                             </View>
                           </View>
                         </View>
@@ -2800,7 +2813,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "width": "100%",
                                 },
                                 Object {
-                                  "paddingBottom": 16,
+                                  "paddingBottom": 8,
                                 },
                               ]
                             }
@@ -5003,6 +5016,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             "marginBottom": 32,
                             "marginHorizontal": 24,
                           },
+                          Object {
+                            "paddingBottom": 8,
+                          },
                         ]
                       }
                       testID="CTA-button"
@@ -5207,7 +5223,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "width": "100%",
                                 },
                                 Object {
-                                  "paddingBottom": 16,
+                                  "paddingBottom": 8,
                                 },
                               ]
                             }
@@ -5472,6 +5488,16 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   Valider ces options
                                 </Text>
                               </View>
+                              <View
+                                numberOfSpaces={4}
+                                style={
+                                  Array [
+                                    Object {
+                                      "height": 16,
+                                    },
+                                  ]
+                                }
+                              />
                             </View>
                           </View>
                         </View>
@@ -6051,7 +6077,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   "width": "100%",
                                 },
                                 Object {
-                                  "paddingBottom": 16,
+                                  "paddingBottom": 8,
                                 },
                               ]
                             }
