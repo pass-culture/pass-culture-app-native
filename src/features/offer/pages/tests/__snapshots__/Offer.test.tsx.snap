@@ -2008,34 +2008,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               >
                                 Date
                               </Text>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Dates réservables : 2021-01-04T13:30:00.000Z,2021-01-03T18:00:00.000Z
-                              </Text>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Dates non-réservables : 
-                              </Text>
                               <View
                                 onMoveShouldSetResponder={[Function]}
                                 onMoveShouldSetResponderCapture={[Function]}
@@ -3505,6 +3477,34 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   </View>
                                 </View>
                               </View>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Dates réservables : 2021-01-04T13:30:00.000Z,2021-01-03T18:00:00.000Z
+                              </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Dates non-réservables : 
+                              </Text>
                               <View
                                 numberOfSpaces={6}
                                 style={
@@ -6747,34 +6747,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               >
                                 Date
                               </Text>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Dates réservables : 2021-01-04T13:30:00.000Z,2021-01-03T18:00:00.000Z
-                              </Text>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Dates non-réservables : 
-                              </Text>
                               <View
                                 onMoveShouldSetResponder={[Function]}
                                 onMoveShouldSetResponderCapture={[Function]}
@@ -8244,6 +8216,34 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   </View>
                                 </View>
                               </View>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Dates réservables : 2021-01-04T13:30:00.000Z,2021-01-03T18:00:00.000Z
+                              </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#151515",
+                                      "fontFamily": "Montserrat-Regular",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Dates non-réservables : 
+                              </Text>
                               <View
                                 numberOfSpaces={6}
                                 style={

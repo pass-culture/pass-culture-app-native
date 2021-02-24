@@ -1299,7 +1299,7 @@ exports[`<Offer  /> - OfferTile to Offer transition should open Offer with prepo
                         hardwareAccelerated={false}
                         statusBarTranslucent={true}
                         testID=\\"modal\\"
-@@ -2302,11 +1078,11 @@
+@@ -3777,11 +2553,11 @@
                                         \\"lineHeight\\": 20,
                                       },
                                     ]
