@@ -26,7 +26,7 @@ export const getDatesByStatus = (stocks: OfferStockResponse[]) => {
   const bookableDates: Date[] = []
   const notBookableDates: Date[] = []
 
-  stocks.map((stock) => {
+  stocks.forEach((stock) => {
     const isExpired = stock.bookingLimitDatetime ? stock.bookingLimitDatetime < new Date() : false
     if (stock.beginningDatetime) {
       if (stock.isBookable && !isExpired) {
