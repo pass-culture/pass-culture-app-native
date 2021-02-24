@@ -2,7 +2,10 @@ import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
-import { PasswordSecurityRules } from 'features/auth/components/PasswordSecurityRules'
+import {
+  isPasswordCorrect,
+  PasswordSecurityRules,
+} from 'features/auth/components/PasswordSecurityRules'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -17,7 +20,12 @@ export function ChangePassword() {
   const [newPassword, setNewPassword] = useState('')
   const [confirmedPassword, setConfirmedPassword] = useState('')
 
-  const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
+  const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== newPassword
+
+  const shouldSave =
+    isPasswordCorrect(password) &&
+    isPasswordCorrect(newPassword) &&
+    confirmedPassword === newPassword
 
   return (
     <React.Fragment>
@@ -61,7 +69,7 @@ export function ChangePassword() {
           numberOfSpacesTop={0}
         />
         <Spacer.Flex flex={1} />
-        <ButtonPrimary title={_(t`Enregistrer`)} onPress={() => ({})} disabled={false} />
+        <ButtonPrimary title={_(t`Enregistrer`)} onPress={() => ({})} disabled={!shouldSave} />
       </Container>
     </React.Fragment>
   )
