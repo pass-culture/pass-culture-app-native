@@ -11,6 +11,7 @@ import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
@@ -28,7 +29,21 @@ export function ChangePassword() {
     isPasswordCorrect(newPassword) &&
     confirmedPassword === newPassword
 
-  const { mutate: changePassword, isLoading } = useChangePasswordMutation(() => {})
+  const { displaySuccessSnackBar } = useSnackBarContext()
+  const { mutate: changePassword, isLoading } = useChangePasswordMutation(
+    () => {
+      setCurrentPassword('')
+      setNewPassword('')
+      setConfirmedPassword('')
+      displaySuccessSnackBar({
+        message: _(t`Ton mot de passe a été modifié !`),
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+    () => {
+      // TODO: display snackbar error
+    }
+  )
 
   function submitPassword() {
     changePassword({ currentPassword, newPassword })
