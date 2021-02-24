@@ -14,7 +14,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { getSpacing, Typo } from 'ui/theme'
-import { getGrid, Axis } from 'ui/theme/grid'
+import { Axis, getGrid } from 'ui/theme/grid'
 
 export type AchievementCardKeyProps = {
   activeIndex?: number
@@ -116,14 +116,14 @@ Those props are provided by the GenericAchievementCard and must be passed down t
           </FlexContainer>
         )}
       </BottomButtonsContainer>
-      <Spacer.Flex flex={2} />
+      <Spacer.Flex flex={!props.lastIndex ? 2 : getGrid({ default: 0, sm: 0.25 }, Axis.HEIGHT)} />
     </GenericCardContainer>
   )
 }
 
 const FlexContainer = styled.View({
   flexGrow: 1,
-  marginTop: getSpacing(4),
+  marginTop: getSpacing(getGrid({ default: 4, sm: 2 }, Axis.HEIGHT)),
 })
 
 const BottomButtonsContainer = styled.View({
