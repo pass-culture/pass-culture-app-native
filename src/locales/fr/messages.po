@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/bookOffer/components/BookingInformations.tsx:32
+#: src/features/bookOffer/components/BookingInformations.tsx:31
 msgid "({0} x 2 places)"
 msgstr "({0} x 2 places)"
 
@@ -53,7 +53,7 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/Offer.tsx:89
+#: src/features/offer/pages/Offer.tsx:91
 #: src/features/profile/pages/Profile.tsx:53
 msgid "Accessibilité"
 msgstr "Accessibilité"
@@ -190,11 +190,11 @@ msgstr "Ce lien de validation n'est plus valide"
 msgid "Ce week-end"
 msgstr "Ce week-end"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:31
+#: src/features/bookOffer/components/CancellationDetails.tsx:22
 msgid "Cette réservation n’est pas annulable"
 msgstr "Cette réservation n’est pas annulable"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:32
+#: src/features/bookOffer/components/CancellationDetails.tsx:23
 msgid "Cette réservation peut être annulée jusqu’au {0}"
 msgstr "Cette réservation peut être annulée jusqu’au {0}"
 
@@ -250,7 +250,7 @@ msgstr "Conditions Générales d'Utilisation"
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:34
+#: src/features/bookOffer/components/CancellationDetails.tsx:25
 msgid "Conditions d'annulation"
 msgstr "Conditions d'annulation"
 
@@ -262,7 +262,7 @@ msgstr "Confidentialité"
 msgid "Confirme ton e\\u2011mail"
 msgstr "Confirme ton e\\u2011mail"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:28
+#: src/features/bookOffer/components/BookingDetails.tsx:35
 msgid "Confirmer la réservation"
 msgstr "Confirmer la réservation"
 
@@ -356,7 +356,7 @@ msgid "Du {0} {1} au {formattedEndDate}"
 msgstr "Du {0} {1} au {formattedEndDate}"
 
 #. Duo offer
-#: src/features/bookOffer/components/BookDuoChoice.tsx:18
+#: src/features/bookOffer/components/BookDuoChoice.tsx:17
 #: src/features/home/atoms/OfferCaption.tsx:15
 msgid "Duo"
 msgstr "Duo"
@@ -373,8 +373,8 @@ msgstr "Déconnexion"
 msgid "Découvrir"
 msgstr "Découvrir"
 
-#: src/features/bookOffer/services/useModalContent.tsx:36
-#: src/features/bookOffer/services/useModalContent.tsx:51
+#: src/features/bookOffer/services/useModalContent.tsx:35
+#: src/features/bookOffer/services/useModalContent.tsx:50
 msgid "Détails de la réservation"
 msgstr "Détails de la réservation"
 
@@ -422,7 +422,7 @@ msgstr "Favoris"
 msgid "Filtrer"
 msgstr "Filtrer"
 
-#: src/features/bookOffer/components/BookingInformations.tsx:29
+#: src/features/bookOffer/components/BookingInformations.tsx:28
 #: src/libs/parsers/getDisplayPrice.ts:21
 #: src/libs/parsers/getDisplayPrice.ts:28
 msgid "Gratuit"
@@ -525,7 +525,7 @@ msgstr "Le pass Culture est accessible à tous !"
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
-#: src/features/bookOffer/components/BookingDetails.tsx:11
+#: src/features/bookOffer/components/BookingDetails.tsx:13
 msgid "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 msgstr "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 
@@ -555,7 +555,7 @@ msgstr "Mentions légales"
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
-#: src/features/offer/pages/Offer.tsx:81
+#: src/features/offer/pages/Offer.tsx:83
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -587,7 +587,7 @@ msgstr "Mot de passe oublié ?"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/bookOffer/components/BookDuoChoice.tsx:16
+#: src/features/bookOffer/components/BookDuoChoice.tsx:15
 msgid "Nombre de place"
 msgstr "Nombre de place"
 
@@ -736,7 +736,7 @@ msgstr "Profil"
 msgid "Profite de 300\\u00a0€\\u00a0"
 msgstr "Profite de 300\\u00a0€\\u00a0"
 
-#: src/features/offer/pages/Offer.tsx:72
+#: src/features/offer/pages/Offer.tsx:74
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -804,7 +804,7 @@ msgstr "Réinitialiser"
 msgid "Réservation confirmée !"
 msgstr "Réservation confirmée !"
 
-#: src/features/bookOffer/services/useModalContent.tsx:29
+#: src/features/bookOffer/services/useModalContent.tsx:28
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
 
@@ -861,7 +861,7 @@ msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 30
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/bookOffer/components/BookDuoChoice.tsx:18
+#: src/features/bookOffer/components/BookDuoChoice.tsx:17
 msgid "Solo"
 msgstr "Solo"
 
@@ -1158,6 +1158,10 @@ msgstr "{nbHits} résultat"
 #: src/features/search/atoms/NumberOfResults.tsx:9
 msgid "{nbHits} résultats"
 msgstr "{nbHits} résultats"
+
+#: src/features/bookOffer/components/BookingDetails.tsx:39
+msgid "{price} seront déduits de ton crédit pass Culture"
+msgstr "{price} seront déduits de ton crédit pass Culture"
 
 #: src/features/offer/components/OfferIconCaptions.tsx:27
 msgid "À deux !"
