@@ -19,7 +19,7 @@ export const BookingImpossible: React.FC<Props> = ({ dismissModal }) => (
 
     <Content>
       {_(
-        t`Les conditions générales d'utilisation de l'App Store iOs ne permettent pas de réserver cette offre sur l'application.`
+        t`Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.`
       )}
     </Content>
     <Spacer.Column numberOfSpaces={6} />

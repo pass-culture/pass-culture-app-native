@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/bookOffer/components/BookingInformations.tsx:32
+msgid "({0} x 2 places)"
+msgstr "({0} x 2 places)"
+
 #: src/libs/parsers/getDisplayPrice.ts:29
 msgid "/ place"
 msgstr "/ place"
@@ -264,6 +268,8 @@ msgstr "Confirmer la réservation"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:62
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:64
+#: src/features/profile/pages/ChangePassword.tsx:34
+#: src/features/profile/pages/ChangePassword.tsx:36
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
@@ -350,7 +356,7 @@ msgid "Du {0} {1} au {formattedEndDate}"
 msgstr "Du {0} {1} au {formattedEndDate}"
 
 #. Duo offer
-#: src/features/bookOffer/components/BookDuoChoice.tsx:8
+#: src/features/bookOffer/components/BookDuoChoice.tsx:18
 #: src/features/home/atoms/OfferCaption.tsx:15
 msgid "Duo"
 msgstr "Duo"
@@ -388,6 +394,7 @@ msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgid "En voir plus"
 msgstr "En voir plus"
 
+#: src/features/profile/pages/ChangePassword.tsx:41
 #: src/features/profile/pages/NotificationSettings.tsx:41
 msgid "Enregistrer"
 msgstr "Enregistrer"
@@ -523,8 +530,8 @@ msgid "Les biens acquis ou réservés sur le pass Culture sont destinés à un u
 msgstr "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 
 #: src/features/bookOffer/components/BookingImpossible.tsx:14
-msgid "Les conditions générales d'utilisation de l'App Store iOs ne permettent pas de réserver cette offre sur l'application."
-msgstr "Les conditions générales d'utilisation de l'App Store iOs ne permettent pas de réserver cette offre sur l'application."
+msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
+msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
 #: src/features/auth/signup/QuitSignupModal.tsx:31
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
@@ -558,9 +565,14 @@ msgstr "Modifie ta recherche ou découvre toutes les offres"
 
 #: src/features/auth/login/Login.tsx:119
 #: src/features/auth/signup/SetPassword.tsx:38
+#: src/features/profile/pages/ChangePassword.tsx:18
 #: src/features/profile/pages/Profile.tsx:44
 msgid "Mot de passe"
 msgstr "Mot de passe"
+
+#: src/features/profile/pages/ChangePassword.tsx:21
+msgid "Mot de passe actuel"
+msgstr "Mot de passe actuel"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:72
 msgid "Mot de passe oublié"
@@ -575,7 +587,7 @@ msgstr "Mot de passe oublié ?"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/bookOffer/components/BookDuoChoice.tsx:7
+#: src/features/bookOffer/components/BookDuoChoice.tsx:16
 msgid "Nombre de place"
 msgstr "Nombre de place"
 
@@ -596,6 +608,7 @@ msgid "Nous utilisons des outils pour réaliser des statistiques de navigation e
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:55
+#: src/features/profile/pages/ChangePassword.tsx:27
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
@@ -848,6 +861,10 @@ msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 30
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
+#: src/features/bookOffer/components/BookDuoChoice.tsx:18
+msgid "Solo"
+msgstr "Solo"
+
 #: src/features/search/sections/OfferType.tsx:13
 msgid "Sortie"
 msgstr "Sortie"
@@ -884,17 +901,24 @@ msgstr "Ton crédit est expiré"
 msgid "Ton e-mail"
 msgstr "Ton e-mail"
 
+#. password placeholder
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
 #: src/features/auth/login/Login.tsx:121
 #: src/features/auth/signup/SetPassword.tsx:34
 #: src/features/auth/signup/SetPassword.tsx:40
+#: src/features/profile/pages/ChangePassword.tsx:29
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:31
 msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
+
+#. password placeholder
+#: src/features/profile/pages/ChangePassword.tsx:23
+msgid "Ton mot de passe actuel"
+msgstr "Ton mot de passe actuel"
 
 #: src/ui/components/achievements/components/GenericAchievement.tsx:51
 msgid "Tout passer"
