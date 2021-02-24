@@ -80,7 +80,7 @@ describe('ChangePassword', () => {
       expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
     })
   })
-  it.only('', async () => {
+  it('display success snackbar when the password is updated', async () => {
     server.use(
       rest.post<ChangePasswordRequest, EmptyResponse>(
         env.API_BASE_URL + '/native/v1/change_password',
@@ -107,9 +107,33 @@ describe('ChangePassword', () => {
 
     await waitFor(() => {
       expect(displaySuccessSnackBar).toBeCalledWith({
-        message: 'Ton mot de passe a été modifié !',
+        message: 'Mot de passe modifié',
         timeout: SNACK_BAR_TIME_OUT,
       })
     })
+  })
+  it('display error when the password failed to updated', async () => {
+    server.use(
+      rest.post<ChangePasswordRequest, EmptyResponse>(
+        env.API_BASE_URL + '/native/v1/change_password',
+        (_req, res, ctx) => res.once(ctx.status(400), ctx.json({}))
+      )
+    )
+
+    const { getByPlaceholderText, getByTestId, getByText } = await renderChangePassword()
+
+    const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
+    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
+
+    fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
+    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+
+    // assuming there's only one button in this page
+    const continueButton = getByTestId('button-container')
+    fireEvent.press(continueButton)
+
+    await waitFor(() => getByText('Mot de passe incorrect'))
   })
 })

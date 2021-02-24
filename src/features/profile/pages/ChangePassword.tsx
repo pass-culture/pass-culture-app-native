@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import {
@@ -21,6 +21,7 @@ export function ChangePassword() {
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmedPassword, setConfirmedPassword] = useState('')
+  const [hasError, setHasError] = useState(false)
 
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== newPassword
 
@@ -29,6 +30,13 @@ export function ChangePassword() {
     isPasswordCorrect(newPassword) &&
     confirmedPassword === newPassword
 
+  // on type, reset error field
+  useEffect(() => {
+    if (hasError) {
+      setHasError(false)
+    }
+  }, [currentPassword, newPassword, confirmedPassword])
+
   const { displaySuccessSnackBar } = useSnackBarContext()
   const { mutate: changePassword, isLoading } = useChangePasswordMutation(
     () => {
@@ -36,13 +44,11 @@ export function ChangePassword() {
       setNewPassword('')
       setConfirmedPassword('')
       displaySuccessSnackBar({
-        message: _(t`Ton mot de passe a été modifié !`),
+        message: _(t`Mot de passe modifié`),
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
-    () => {
-      // TODO: display snackbar error
-    }
+    () => setHasError(true)
   )
 
   function submitPassword() {
@@ -62,6 +68,8 @@ export function ChangePassword() {
             onChangeText={setCurrentPassword}
             placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe actuel`)}
           />
+          <Spacer.Column numberOfSpaces={2} />
+          <InputError visible={hasError} messageId="Mot de passe incorrect" numberOfSpacesTop={0} />
         </StyledInput>
         <Spacer.Column numberOfSpaces={5} />
         <StyledInput>
