@@ -34,6 +34,7 @@ export const BookingImpossible: React.FC<Props> = ({ dismissModal }) => (
     <ButtonPrimary title={_(t`Mettre en favoris`)} />
     <Spacer.Column numberOfSpaces={4} />
     <ButtonTertiary title={_(t`Retourner à l'offre`)} onPress={dismissModal} />
+    <Spacer.Column numberOfSpaces={4} />
   </Container>
 )
 
