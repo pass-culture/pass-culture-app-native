@@ -1,9 +1,8 @@
 import { t } from '@lingui/macro'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { CategoryType } from 'api/gen'
-import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
-import { useOffer } from 'features/offer/api/useOffer'
+import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { _ } from 'libs/i18n'
 import { decomposeDate } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
@@ -16,18 +15,9 @@ export const formatDate = (limitDate: Date): string => {
 }
 
 export const CancellationDetails: React.FC = () => {
-  const { bookingState, dispatch } = useBooking()
-  const { data: offer } = useOffer({ offerId: bookingState.offerId || 0 })
-  const { stocks = [] } = offer || {}
+  const offer = useBookingOffer()
+  const stock = useBookingStock()
 
-  useEffect(() => {
-    // This is temporary so that a stock is selected.
-    if (stocks[0] && typeof stocks[0].id === 'number') {
-      dispatch({ type: 'SELECT_STOCK', payload: stocks[0].id })
-    }
-  }, [])
-
-  const stock = stocks.find(({ id }) => id === bookingState.stockId)
   if (!offer || !stock) return <React.Fragment />
 
   const { category, isDigital } = offer

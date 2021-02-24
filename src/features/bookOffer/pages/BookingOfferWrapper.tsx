@@ -6,6 +6,7 @@ import {
   searchReducer,
   BookingState,
 } from 'features/bookOffer/pages/reducer'
+import { useOffer } from 'features/offer/api/useOffer'
 
 export interface IBookingContext {
   bookingState: BookingState
@@ -27,4 +28,16 @@ export const useBooking = (): Pick<IBookingContext, 'bookingState' | 'dispatch'>
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { bookingState, dispatch } = useContext(BookingContext)!
   return { bookingState, dispatch }
+}
+
+export const useBookingOffer = () => {
+  const { bookingState } = useBooking()
+  const { data: offer } = useOffer({ offerId: bookingState.offerId || 0 })
+  return offer
+}
+
+export const useBookingStock = () => {
+  const { bookingState } = useBooking()
+  const offer = useBookingOffer()
+  return offer ? offer.stocks.find(({ id }) => id === bookingState.stockId) : undefined
 }
