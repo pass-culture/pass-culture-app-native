@@ -1,8 +1,8 @@
-/* eslint-disable react-native/no-raw-text */
 import { t } from '@lingui/macro'
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
+import { formatToSlashedFrenchDate } from 'libs/dates'
 import { _ } from 'libs/i18n'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -17,27 +17,40 @@ export const BookDateChoice: React.FC<Props> = ({ stocks }) => {
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Title4>{_(t`Date`)}</Typo.Title4>
       <Calendar />
-      <Typo.Body>{`Dates réservables : ${getDatesByStatus(stocks).bookableDates}`}</Typo.Body>
-      <Typo.Body>{`Dates non-réservables : ${
-        getDatesByStatus(stocks).notBookableDates
-      }`}</Typo.Body>
     </React.Fragment>
   )
 }
 
-export const getDatesByStatus = (stocks: OfferStockResponse[]) => {
-  const bookableDates: Date[] = []
-  const notBookableDates: Date[] = []
+export const getStocksByDate = (
+  stocks: OfferStockResponse[]
+): { [date: string]: OfferStockResponse[] } => {
+  const stockDates: { [date: string]: OfferStockResponse[] } = {}
 
   stocks.forEach((stock) => {
-    const isExpired = stock.bookingLimitDatetime ? stock.bookingLimitDatetime < new Date() : false
-    if (stock.beginningDatetime) {
-      if (stock.isBookable && !isExpired) {
-        bookableDates.push(stock.beginningDatetime)
-      } else {
-        notBookableDates.push(stock.beginningDatetime)
-      }
+    if (stock.beginningDatetime !== null && stock.beginningDatetime !== undefined) {
+      const formattedDate = formatToSlashedFrenchDate(stock.beginningDatetime.toString())
+      stockDates[formattedDate] = stockDates[formattedDate]
+        ? stockDates[formattedDate].concat(stock)
+        : [stock]
     }
   })
-  return { bookableDates, notBookableDates }
+
+  return stockDates
+}
+
+export enum OfferStatus {
+  BOOKABLE = 'BOOKABLE',
+  NOTBOOKABLE = 'NOTBOOKABLE',
+  NOTOFFERED = 'NOTOFFERED',
+}
+
+export const getDateStatusAndPrice = (
+  date: Date,
+  stocksDates: { [date: string]: OfferStockResponse[] }
+): { status: OfferStatus } => {
+  const stocksByDate = stocksDates[formatToSlashedFrenchDate(date.toString())]
+  if (!stocksByDate) return { status: OfferStatus.NOTOFFERED }
+  const OfferIsBookable = stocksByDate.some((stock) => stock.isBookable)
+  if (OfferIsBookable) return { status: OfferStatus.BOOKABLE }
+  return { status: OfferStatus.NOTBOOKABLE }
 }
