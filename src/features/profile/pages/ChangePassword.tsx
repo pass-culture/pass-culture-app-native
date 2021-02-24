@@ -6,6 +6,7 @@ import {
   isPasswordCorrect,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
+import { useChangePasswordMutation } from 'features/auth/mutations'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -16,16 +17,22 @@ import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavi
 import { ProfileContainer } from '../components/reusables'
 
 export function ChangePassword() {
-  const [password, setPassword] = useState('')
+  const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmedPassword, setConfirmedPassword] = useState('')
 
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== newPassword
 
   const shouldSave =
-    isPasswordCorrect(password) &&
+    isPasswordCorrect(currentPassword) &&
     isPasswordCorrect(newPassword) &&
     confirmedPassword === newPassword
+
+  const { mutate: changePassword, isLoading } = useChangePasswordMutation(() => {})
+
+  function submitPassword() {
+    changePassword({ currentPassword, newPassword })
+  }
 
   return (
     <React.Fragment>
@@ -35,9 +42,9 @@ export function ChangePassword() {
           <Typo.Body>{_(t`Mot de passe actuel`)}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
-            value={password}
+            value={currentPassword}
             autoFocus={true}
-            onChangeText={setPassword}
+            onChangeText={setCurrentPassword}
             placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe actuel`)}
           />
         </StyledInput>
@@ -69,7 +76,11 @@ export function ChangePassword() {
           numberOfSpacesTop={0}
         />
         <Spacer.Flex flex={1} />
-        <ButtonPrimary title={_(t`Enregistrer`)} onPress={() => ({})} disabled={!shouldSave} />
+        <ButtonPrimary
+          title={_(t`Enregistrer`)}
+          onPress={submitPassword}
+          disabled={!shouldSave || isLoading}
+        />
       </Container>
     </React.Fragment>
   )
