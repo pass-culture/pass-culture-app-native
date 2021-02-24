@@ -5,13 +5,12 @@ import { Platform } from 'react-native'
 import { CategoryType } from 'api/gen'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
-import { useOffer } from 'features/offer/api/useOffer'
 import { _ } from 'libs/i18n'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { IconInterface } from 'ui/svg/icons/types'
 
 import { BookingImpossible } from '../components/BookingImpossible'
-import { useBooking } from '../pages/BookingOfferWrapper'
+import { useBooking, useBookingOffer } from '../pages/BookingOfferWrapper'
 import { Step } from '../pages/reducer'
 
 export const useModalContent = (
@@ -23,7 +22,7 @@ export const useModalContent = (
   onLeftIconPress: (() => void) | undefined
 } => {
   const { bookingState, dispatch } = useBooking()
-  const { data: offer } = useOffer({ offerId: bookingState.offerId || 0 })
+  const offer = useBookingOffer()
 
   const children = <React.Fragment />
   const title = ''

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 
+import { useOffer } from 'features/offer/api/useOffer'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 
@@ -16,10 +17,18 @@ interface Props {
 const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissModal, offerId }) => {
   const { dispatch } = useBooking()
   const { title, leftIcon, onLeftIconPress, children } = useModalContent(dismissModal)
+  const { data: offer } = useOffer({ offerId })
 
   useEffect(() => {
     dispatch({ type: 'INIT', payload: { offerId } })
   }, [])
+
+  useEffect(() => {
+    // This is temporary so that a stock is selected.
+    if (offer && offer.stocks[0] && typeof offer.stocks[0].id === 'number') {
+      dispatch({ type: 'SELECT_STOCK', payload: offer.stocks[0].id })
+    }
+  }, [offer])
 
   return (
     <AppModal

@@ -4,7 +4,6 @@ import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
-import { useOffer } from 'features/offer/api/useOffer'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Booking } from 'ui/svg/icons/Booking'
@@ -14,7 +13,7 @@ import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useBooking } from '../pages/BookingOfferWrapper'
+import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
 
 import { formatDate } from './CancellationDetails'
 
@@ -22,12 +21,12 @@ const { width } = Dimensions.get('window')
 
 export const BookingInformations: React.FC = () => {
   const { bookingState } = useBooking()
-  const { data: offer } = useOffer({ offerId: bookingState.offerId || 0 })
+  const offer = useBookingOffer()
+  const stock = useBookingStock()
 
   if (!offer) return <React.Fragment />
 
-  const { category, isDigital, fullAddress, name, stocks = [] } = offer
-  const stock = stocks.find(({ id }) => id === bookingState.stockId)
+  const { category, isDigital, fullAddress, name } = offer
   if (!stock) return <React.Fragment />
 
   const address = (
