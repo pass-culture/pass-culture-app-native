@@ -1,4 +1,4 @@
-import { dehumanizeId } from '../dehumanizeId'
+import { dehumanizeId, humanizeId } from '../dehumanizeId'
 
 interface HumToDehumTest {
   humanizedId: string
@@ -18,6 +18,7 @@ describe('dehumanizeId', () => {
     'a given humanizedId: $humanizedId becomes a dehumanizedId: $dehumanizedId',
     ({ dehumanizedId, humanizedId }: HumToDehumTest) => {
       expect(dehumanizeId(humanizedId)).toBe(dehumanizedId)
+      expect(humanizeId(dehumanizedId)).toBe(humanizedId)
     }
   )
 })
