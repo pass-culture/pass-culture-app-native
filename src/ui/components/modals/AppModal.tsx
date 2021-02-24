@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import { Modal, TouchableOpacity } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { ModalOverlay } from 'ui/components/modals/ModalOverlay'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -27,7 +27,7 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
 }) => {
-  const { bottom } = useSafeAreaInsets()
+  const { bottom } = useCustomSafeInsets()
   return (
     <React.Fragment>
       <ModalOverlay visible={visible} />

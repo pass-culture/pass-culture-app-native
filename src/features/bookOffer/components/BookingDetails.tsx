@@ -8,7 +8,7 @@ import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useBooking, useBookingStock } from '../pages/BookingOfferWrapper'
 
@@ -55,7 +55,6 @@ export const BookingDetails: React.FC<Props> = ({ dismissModal }) => {
           navigate('BookingConfirmation')
         }}
       />
-      <Spacer.Column numberOfSpaces={2} />
       {price ? (
         <Caption>{_(t`${price} seront déduits de ton crédit pass Culture`)}</Caption>
       ) : (
@@ -71,5 +70,7 @@ const Separator = styled.View({
   backgroundColor: ColorsEnum.GREY_LIGHT,
 })
 const Caption = styled(Typo.Caption).attrs({ color: ColorsEnum.GREY_DARK })({
+  marginTop: getSpacing(1),
+  marginBottom: -getSpacing(1),
   textAlign: 'center',
 })

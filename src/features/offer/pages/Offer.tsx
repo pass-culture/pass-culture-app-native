@@ -14,6 +14,7 @@ import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { useOffer } from '../api/useOffer'
 import {
@@ -32,7 +33,9 @@ import { useFunctionOnce } from '../services/useFunctionOnce'
 import { useTrackOfferSeenDuration } from './useTrackOfferSeenDuration'
 
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
+
 export const Offer: FunctionComponent = () => {
+  const { bottom } = useCustomSafeInsets()
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const { data: offerResponse } = useOffer({ offerId: params.id })
   const headerScroll = useRef(new Animated.Value(0)).current
@@ -147,7 +150,7 @@ export const Offer: FunctionComponent = () => {
       </Container>
 
       {wording ? (
-        <CallToActionContainer testID="CTA-button">
+        <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
           <CallToAction
             wording={wording}
             onPress={() => {

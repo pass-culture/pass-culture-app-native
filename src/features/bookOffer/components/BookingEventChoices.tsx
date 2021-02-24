@@ -47,6 +47,7 @@ export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) =
 
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary title={_(t`Valider ces options`)} onPress={validateOptions} />
+      <Spacer.Column numberOfSpaces={4} />
     </Container>
   )
 }
