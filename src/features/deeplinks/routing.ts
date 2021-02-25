@@ -3,7 +3,7 @@ import { isTimestampExpired } from 'libs/dates'
 
 import { DeepLinksToScreenConfiguration } from './types'
 
-export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = {
+const config: DeepLinksToScreenConfiguration = {
   default() {
     return homeNavigateConfig
   },
@@ -19,18 +19,17 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   'mot-de-passe-perdu'(params) {
     if (params && params.token && params.email && params.expiration_timestamp) {
       const parsedExpirationTimestamp = Number(params.expiration_timestamp)
-      const parsedEmail = decodeURIComponent(params.email)
       if (isTimestampExpired(parsedExpirationTimestamp)) {
         return {
           screen: 'ResetPasswordExpiredLink',
-          params: { email: parsedEmail },
+          params: { email: params.email },
         }
       }
       return {
         screen: 'ReinitializePassword',
         params: {
           token: params.token,
-          expiration_timestamp: parsedExpirationTimestamp,
+          expiration_timestamp: params.expiration_timestamp,
         },
       }
     }
@@ -47,11 +46,10 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   },
   'signup-confirmation'(params) {
     if (params && params.token && params.email && params.expiration_timestamp) {
-      const parsedEmail = decodeURIComponent(params.email)
       return {
         screen: 'AfterSignupEmailValidationBuffer',
         params: {
-          email: parsedEmail,
+          email: params.email,
           token: params.token,
           expirationTimestamp: Number(params.expiration_timestamp),
         },
@@ -61,11 +59,10 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   },
   'id-check'(params) {
     if (params?.email && params?.licenceToken) {
-      const parsedEmail = decodeURIComponent(params.email)
       return {
         screen: 'IdCheck',
         params: {
-          email: parsedEmail,
+          email: params.email,
           licenceToken: params.licenceToken,
         },
       }
@@ -73,3 +70,21 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     return homeNavigateConfig
   },
 }
+
+function encodeConfigURIParameters(config: DeepLinksToScreenConfiguration) {
+  const finalConfig = {}
+  Object.keys(config).forEach((key) => {
+    finalConfig[key] = (params) => {
+      const screenConfig = config[key](params)
+      if (screenConfig?.params) {
+        const encodedParams = {}
+        Object.keys(screenConfig.params).forEach((name) => {
+          encodedParams[name] = encodeURIComponent(screenConfig.params[name])
+        })
+        screenConfig.params = encodedParams
+      }
+    }
+  })
+  return finalConfig
+}
+export const DEEPLINK_TO_SCREEN_CONFIGURATION = encodeConfigURIParameters(config)
