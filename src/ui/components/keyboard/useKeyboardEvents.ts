@@ -70,3 +70,18 @@ export const useKeyboardEvents = ({ onBeforeShow, onBeforeHide }: UseKeyboardEve
     }
   }, [onBeforeHide, onBeforeShow])
 }
+
+export const useForHeightKeyboardEvents = (setKeyboardHeight: (height: number) => void) => {
+  return useKeyboardEvents({
+    onBeforeShow(data) {
+      if (data.keyboardShown) {
+        setKeyboardHeight(data.keyboardHeight)
+      }
+    },
+    onBeforeHide(data) {
+      if (!data.keyboardShown) {
+        setKeyboardHeight(0)
+      }
+    },
+  })
+}

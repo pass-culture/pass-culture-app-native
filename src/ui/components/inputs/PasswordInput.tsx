@@ -1,5 +1,9 @@
 import React, { forwardRef, useState } from 'react'
-import { TextInput as RNTextInput } from 'react-native'
+import {
+  NativeSyntheticEvent,
+  TextInput as RNTextInput,
+  TextInputFocusEventData,
+} from 'react-native'
 import styled from 'styled-components/native'
 
 import { Eye } from 'ui/svg/icons/Eye'
@@ -23,8 +27,9 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
     setShouldHidePassword(!shouldHidePassword)
   }
 
-  function onFocus() {
+  function onFocus(e: NativeSyntheticEvent<TextInputFocusEventData>) {
     setIsFocus(true)
+    props?.onFocus?.(e)
   }
 
   function onBlur() {
