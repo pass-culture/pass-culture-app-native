@@ -24,12 +24,7 @@ export const server = setupServer(
       )
     }
   ),
-  rest.post<RequestPasswordResetRequest, EmptyResponse>(
-    env.API_BASE_URL + '/native/v1/request_password_reset',
-    (req, res, ctx) => {
-      return res(ctx.status(204))
-    }
-  ),
+  requestPasswordResetSuccess(),
   rest.post<ResetPasswordRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/reset_password',
     (req, res, ctx) => {
@@ -59,3 +54,21 @@ export const server = setupServer(
     }
   )
 )
+
+export function requestPasswordResetSuccess() {
+  return rest.post<RequestPasswordResetRequest, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/request_password_reset',
+    (req, res, ctx) => {
+      return res(ctx.status(204))
+    }
+  )
+}
+
+export function requestPasswordResetFail() {
+  return rest.post<RequestPasswordResetRequest, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/request_password_reset',
+    (req, res, ctx) => {
+      return res(ctx.status(400))
+    }
+  )
+}
