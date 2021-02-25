@@ -29,6 +29,7 @@ jest.mock('features/home/api', () => ({
 
 describe('<Offer />', () => {
   it('should match snapshot for physical offer', async () => {
+    jest.spyOn(Date.prototype, 'toString').mockReturnValueOnce('2021-01-04T13:30:00')
     const { toJSON } = await renderOfferPage({ isDigital: false })
     expect(toJSON()).toMatchSnapshot()
   })
