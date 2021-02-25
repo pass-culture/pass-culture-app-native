@@ -1,14 +1,14 @@
 import { t } from '@lingui/macro'
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useState } from 'react'
-import { useQuery } from 'react-query'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
+import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
@@ -21,27 +21,35 @@ import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ForgottenPassword: FunctionComponent = () => {
-  const [email, setEmail] = useState('')
-  const [hasError, setHasError] = useState(false)
-
-  const shouldDisableValidateButton = isValueEmpty(email)
-
   const { navigate } = useNavigation<UseNavigationType>()
-  const { refetch: resetPasswordEmailQuery, isFetching } = useQuery(
-    'forgottenPassword',
-    forgottenPasswordQuery,
-    {
-      cacheTime: 0,
-      enabled: false,
-    }
-  )
+  const networkInfo = useNetInfo()
 
-  async function forgottenPasswordQuery() {
+  const [email, setEmail] = useState('')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
+  const [isFetching, setIsFetching] = useState(false)
+
+  const shouldDisableValidateButton = isValueEmpty(email) || isFetching
+
+  useEffect(() => {
+    if (!networkInfo.isConnected) {
+      setErrorMessage(_(t`Hors connexion : en attente du réseau.`))
+      setIsDoingReCaptchaChallenge(false)
+    } else {
+      setErrorMessage(null)
+    }
+  }, [networkInfo.isConnected])
+
+  async function requestPasswordReset(token: string) {
     try {
-      await api.postnativev1requestPasswordReset({ email })
+      setIsFetching(true)
+      await api.postnativev1requestPasswordReset({ email, token })
       navigate('ResetPasswordEmailSent', { email })
-    } catch (err) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', resetPasswordEmailQuery)
+    } catch (_error) {
+      setIsFetching(false)
+      setErrorMessage(
+        _(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
+      )
     }
   }
 
@@ -54,22 +62,53 @@ export const ForgottenPassword: FunctionComponent = () => {
   }
 
   function onChangeEmail(email: string) {
-    if (hasError) {
-      setHasError(false)
+    if (errorMessage) {
+      setErrorMessage(null)
     }
     setEmail(email)
   }
 
-  async function validateEmail() {
-    if (isEmailValid(email)) {
-      await resetPasswordEmailQuery()
-    } else {
-      setHasError(true)
+  function openReCaptchaChallenge() {
+    if (!isEmailValid(email)) {
+      setErrorMessage(_(t`Format de l'e-mail incorrect`))
+      return
     }
+    if (!networkInfo.isConnected) {
+      setErrorMessage(_(t`Hors connexion : en attente du réseau.`))
+      return
+    }
+    setIsDoingReCaptchaChallenge(true)
+    setErrorMessage(null)
+  }
+
+  function onReCaptchaClose() {
+    setIsDoingReCaptchaChallenge(false)
+  }
+
+  function onReCaptchaError(_error: string) {
+    setIsDoingReCaptchaChallenge(false)
+    setErrorMessage(_(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`))
+  }
+
+  function onReCaptchaExpire() {
+    setIsDoingReCaptchaChallenge(false)
+    setErrorMessage(_(t`Le token reCAPTCHA a expiré, tu peux réessayer.`))
+  }
+
+  function onReCaptchaSuccess(token: string) {
+    setIsDoingReCaptchaChallenge(false)
+    requestPasswordReset(token)
   }
 
   return (
     <BottomContentPage>
+      <ReCaptcha
+        onClose={onReCaptchaClose}
+        onError={onReCaptchaError}
+        onExpire={onReCaptchaExpire}
+        onSuccess={onReCaptchaSuccess}
+        isVisible={isDoingReCaptchaChallenge}
+      />
       <ModalHeader
         title={_(t`Mot de passe oublié`)}
         leftIcon={ArrowPrevious}
@@ -98,17 +137,14 @@ export const ForgottenPassword: FunctionComponent = () => {
             textContentType="emailAddress"
             value={email}
           />
-          <InputError
-            visible={hasError}
-            messageId="Format de l'e-mail incorrect"
-            numberOfSpacesTop={1}
-          />
+          {errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={1} />}
         </StyledInput>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           title={_(t`Valider`)}
-          onPress={validateEmail}
-          disabled={shouldDisableValidateButton || isFetching}
+          onPress={openReCaptchaChallenge}
+          isLoading={isDoingReCaptchaChallenge || isFetching}
+          disabled={shouldDisableValidateButton}
         />
       </ModalContent>
     </BottomContentPage>
