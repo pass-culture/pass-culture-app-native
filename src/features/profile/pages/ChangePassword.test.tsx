@@ -34,7 +34,7 @@ describe('ChangePassword', () => {
     const { getByPlaceholderText, getByTestId } = await renderChangePassword()
 
     const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
@@ -53,7 +53,7 @@ describe('ChangePassword', () => {
   it('should display the matching error when the passwords dont match', async () => {
     const { getByPlaceholderText, getByText } = await renderChangePassword()
 
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
     fireEvent.changeText(passwordInput, '123456')
@@ -72,7 +72,7 @@ describe('ChangePassword', () => {
 
     const notValidatedRulesSnapshot = toJSON()
 
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     fireEvent.changeText(passwordInput, 'ABCDefgh1234!!!!')
 
     await waitForExpect(() => {
@@ -94,7 +94,7 @@ describe('ChangePassword', () => {
     const { getByPlaceholderText, getByTestId } = await renderChangePassword()
 
     const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
@@ -123,7 +123,7 @@ describe('ChangePassword', () => {
     const { getByPlaceholderText, getByTestId, getByText } = await renderChangePassword()
 
     const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
+    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
