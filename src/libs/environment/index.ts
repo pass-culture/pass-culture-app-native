@@ -21,6 +21,8 @@ export interface Environment {
   ID_CHECK_URL: string
   IOS_APP_ID: string
   PRIVACY_POLICY_LINK: string
+  RECOMMENDATION_ENDPOINT: string
+  RECOMMENDATION_TOKEN: string
   SENTRY_DSN: string
   SIGNIN_IDENTIFIER: string
   SIGNIN_PASSWORD: string
