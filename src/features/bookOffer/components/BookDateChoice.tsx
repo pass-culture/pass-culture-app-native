@@ -16,7 +16,7 @@ export const BookDateChoice: React.FC<Props> = ({ stocks }) => {
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Title4>{_(t`Date`)}</Typo.Title4>
-      <Calendar />
+      <Calendar stocks={stocks} />
     </React.Fragment>
   )
 }

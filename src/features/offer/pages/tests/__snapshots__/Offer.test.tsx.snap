@@ -2299,57 +2299,27 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                         }
                                       >
                                         <View>
-                                          <BVLinearGradient
-                                            colors={
-                                              Array [
-                                                4294967295,
-                                                4284637794,
-                                                4294967295,
-                                              ]
-                                            }
-                                            endPoint={
-                                              Object {
-                                                "x": 1,
-                                                "y": 1,
-                                              }
-                                            }
-                                            locations={
-                                              Array [
-                                                0.48,
-                                                0.5,
-                                                0.52,
-                                              ]
-                                            }
-                                            startPoint={
-                                              Object {
-                                                "x": 0,
-                                                "y": 0,
-                                              }
-                                            }
-                                          >
-                                            <Text
-                                              color="#626262"
-                                              style={
-                                                Array [
-                                                  Object {
-                                                    "color": "#626262",
-                                                    "fontFamily": "Montserrat-Bold",
-                                                    "fontSize": 15,
-                                                    "lineHeight": 20,
-                                                    "textAlign": "center",
-                                                  },
-                                                ]
-                                              }
-                                            >
-                                              2
-                                            </Text>
-                                          </BVLinearGradient>
                                           <Text
                                             color="#626262"
                                             style={
                                               Array [
                                                 Object {
                                                   "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            2
+                                          </Text>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
                                                   "fontFamily": "Montserrat-SemiBold",
                                                   "fontSize": 12,
                                                   "lineHeight": 16,
@@ -2371,15 +2341,14 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       >
                                         <View>
                                           <Text
-                                            color="#eb0055"
+                                            color="#626262"
                                             style={
                                               Array [
                                                 Object {
-                                                  "color": "#eb0055",
-                                                  "fontFamily": "Montserrat-Bold",
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
                                                   "fontSize": 15,
                                                   "lineHeight": 20,
-                                                  "textAlign": "center",
                                                 },
                                               ]
                                             }
@@ -3031,57 +3000,27 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                         }
                                       >
                                         <View>
-                                          <BVLinearGradient
-                                            colors={
-                                              Array [
-                                                4294967295,
-                                                4284637794,
-                                                4294967295,
-                                              ]
-                                            }
-                                            endPoint={
-                                              Object {
-                                                "x": 1,
-                                                "y": 1,
-                                              }
-                                            }
-                                            locations={
-                                              Array [
-                                                0.48,
-                                                0.5,
-                                                0.52,
-                                              ]
-                                            }
-                                            startPoint={
-                                              Object {
-                                                "x": 0,
-                                                "y": 0,
-                                              }
-                                            }
-                                          >
-                                            <Text
-                                              color="#626262"
-                                              style={
-                                                Array [
-                                                  Object {
-                                                    "color": "#626262",
-                                                    "fontFamily": "Montserrat-Bold",
-                                                    "fontSize": 15,
-                                                    "lineHeight": 20,
-                                                    "textAlign": "center",
-                                                  },
-                                                ]
-                                              }
-                                            >
-                                              20
-                                            </Text>
-                                          </BVLinearGradient>
                                           <Text
                                             color="#626262"
                                             style={
                                               Array [
                                                 Object {
                                                   "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            20
+                                          </Text>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
                                                   "fontFamily": "Montserrat-SemiBold",
                                                   "fontSize": 12,
                                                   "lineHeight": 16,
@@ -3103,15 +3042,14 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       >
                                         <View>
                                           <Text
-                                            color="#eb0055"
+                                            color="#626262"
                                             style={
                                               Array [
                                                 Object {
-                                                  "color": "#eb0055",
-                                                  "fontFamily": "Montserrat-Bold",
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
                                                   "fontSize": 15,
                                                   "lineHeight": 20,
-                                                  "textAlign": "center",
                                                 },
                                               ]
                                             }
@@ -3402,34 +3340,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   </View>
                                 </View>
                               </View>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Dates réservables : 2021-01-04T13:30:00.000Z,2021-01-03T18:00:00.000Z
-                              </Text>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Dates non-réservables : 
-                              </Text>
                               <View
                                 numberOfSpaces={6}
                                 style={
@@ -6963,57 +6873,27 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                         }
                                       >
                                         <View>
-                                          <BVLinearGradient
-                                            colors={
-                                              Array [
-                                                4294967295,
-                                                4284637794,
-                                                4294967295,
-                                              ]
-                                            }
-                                            endPoint={
-                                              Object {
-                                                "x": 1,
-                                                "y": 1,
-                                              }
-                                            }
-                                            locations={
-                                              Array [
-                                                0.48,
-                                                0.5,
-                                                0.52,
-                                              ]
-                                            }
-                                            startPoint={
-                                              Object {
-                                                "x": 0,
-                                                "y": 0,
-                                              }
-                                            }
-                                          >
-                                            <Text
-                                              color="#626262"
-                                              style={
-                                                Array [
-                                                  Object {
-                                                    "color": "#626262",
-                                                    "fontFamily": "Montserrat-Bold",
-                                                    "fontSize": 15,
-                                                    "lineHeight": 20,
-                                                    "textAlign": "center",
-                                                  },
-                                                ]
-                                              }
-                                            >
-                                              2
-                                            </Text>
-                                          </BVLinearGradient>
                                           <Text
                                             color="#626262"
                                             style={
                                               Array [
                                                 Object {
                                                   "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            2
+                                          </Text>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
                                                   "fontFamily": "Montserrat-SemiBold",
                                                   "fontSize": 12,
                                                   "lineHeight": 16,
@@ -7035,15 +6915,14 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       >
                                         <View>
                                           <Text
-                                            color="#eb0055"
+                                            color="#626262"
                                             style={
                                               Array [
                                                 Object {
-                                                  "color": "#eb0055",
-                                                  "fontFamily": "Montserrat-Bold",
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
                                                   "fontSize": 15,
                                                   "lineHeight": 20,
-                                                  "textAlign": "center",
                                                 },
                                               ]
                                             }
@@ -7695,57 +7574,27 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                         }
                                       >
                                         <View>
-                                          <BVLinearGradient
-                                            colors={
-                                              Array [
-                                                4294967295,
-                                                4284637794,
-                                                4294967295,
-                                              ]
-                                            }
-                                            endPoint={
-                                              Object {
-                                                "x": 1,
-                                                "y": 1,
-                                              }
-                                            }
-                                            locations={
-                                              Array [
-                                                0.48,
-                                                0.5,
-                                                0.52,
-                                              ]
-                                            }
-                                            startPoint={
-                                              Object {
-                                                "x": 0,
-                                                "y": 0,
-                                              }
-                                            }
-                                          >
-                                            <Text
-                                              color="#626262"
-                                              style={
-                                                Array [
-                                                  Object {
-                                                    "color": "#626262",
-                                                    "fontFamily": "Montserrat-Bold",
-                                                    "fontSize": 15,
-                                                    "lineHeight": 20,
-                                                    "textAlign": "center",
-                                                  },
-                                                ]
-                                              }
-                                            >
-                                              20
-                                            </Text>
-                                          </BVLinearGradient>
                                           <Text
                                             color="#626262"
                                             style={
                                               Array [
                                                 Object {
                                                   "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            20
+                                          </Text>
+                                          <Text
+                                            color="#eb0055"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#eb0055",
                                                   "fontFamily": "Montserrat-SemiBold",
                                                   "fontSize": 12,
                                                   "lineHeight": 16,
@@ -7767,15 +7616,14 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       >
                                         <View>
                                           <Text
-                                            color="#eb0055"
+                                            color="#626262"
                                             style={
                                               Array [
                                                 Object {
-                                                  "color": "#eb0055",
-                                                  "fontFamily": "Montserrat-Bold",
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
                                                   "fontSize": 15,
                                                   "lineHeight": 20,
-                                                  "textAlign": "center",
                                                 },
                                               ]
                                             }
@@ -8066,34 +7914,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   </View>
                                 </View>
                               </View>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Dates réservables : 2021-01-04T13:30:00.000Z,2021-01-03T18:00:00.000Z
-                              </Text>
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#151515",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Dates non-réservables : 
-                              </Text>
                               <View
                                 numberOfSpaces={6}
                                 style={
