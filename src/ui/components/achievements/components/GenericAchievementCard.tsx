@@ -116,7 +116,13 @@ Those props are provided by the GenericAchievementCard and must be passed down t
           </FlexContainer>
         )}
       </BottomButtonsContainer>
-      <Spacer.Flex flex={!props.lastIndex ? 2 : getGrid({ default: 0, sm: 0.25 }, Axis.HEIGHT)} />
+      <Spacer.Flex
+        flex={
+          !props.lastIndex
+            ? getGrid({ default: 1, sm: 0.5 }, Axis.HEIGHT)
+            : getGrid({ default: 1.5, sm: 2 }, Axis.HEIGHT)
+        }
+      />
     </GenericCardContainer>
   )
 }
