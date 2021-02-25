@@ -35,4 +35,7 @@ export type DeepLinksToScreenConfiguration = {
   'signup-confirmation': (
     params?: SerializedParams
   ) => ScreenConfiguration<'AfterSignupEmailValidationBuffer'> | ScreenConfiguration<'TabNavigator'>
+  'id-check': (
+    params?: SerializedParams
+  ) => ScreenConfiguration<'IdCheck'> | ScreenConfiguration<'TabNavigator'>
 }
