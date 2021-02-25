@@ -36,13 +36,13 @@ export const BookingDetails: React.FC<Props> = ({ dismissModal }) => {
   return (
     <Container>
       <Banner title={disclaimer} />
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={4} />
 
       <BookingInformations />
 
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={4} />
       <Separator />
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={4} />
 
       <CancellationDetails />
 
