@@ -8,19 +8,24 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
+import { AlgoliaHit } from 'libs/algolia'
 import { useGeolocation } from 'libs/geolocation'
 import { Spacer } from 'ui/theme'
 
 import { useUserProfileInfo } from '../api'
+import { RecommendationPane } from '../contentful/moduleTypes'
 import { AlgoliaModuleResponse } from '../pages/useHomeAlgoliaModules'
 import { isOfferModuleTypeguard } from '../typeguards'
+
+import { RecommendationModule } from './RecommendationModule'
 
 interface HomeBodyProps {
   modules: ProcessedModule[]
   algoliaModules: AlgoliaModuleResponse
+  recommendedHits: AlgoliaHit[]
 }
 
-export const HomeBody = function ({ modules, algoliaModules }: HomeBodyProps) {
+export const HomeBody = function ({ modules, algoliaModules, recommendedHits }: HomeBodyProps) {
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
 
@@ -41,6 +46,18 @@ export const HomeBody = function ({ modules, algoliaModules }: HomeBodyProps) {
                 nbHits={nbHits}
                 cover={module instanceof OffersWithCover ? module.cover : null}
                 index={index}
+              />
+            )
+          }
+          if (module instanceof RecommendationPane) {
+            return (
+              <RecommendationModule
+                key="recommendation"
+                isBeneficiary={profile?.isBeneficiary}
+                hits={recommendedHits}
+                position={position}
+                index={index}
+                {...module}
               />
             )
           }

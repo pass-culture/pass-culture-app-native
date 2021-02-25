@@ -36,7 +36,7 @@ export const Home: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
 
   const [hasSeenAllModules, setHasSeenAllModules] = useState<boolean>(false)
-  const { displayedModules, algoliaModules } = useDisplayedHomeModules()
+  const { displayedModules, algoliaModules, recommendedHits } = useDisplayedHomeModules()
 
   function hideSignInModal() {
     navigation.setParams({ shouldDisplayLoginModal: false })
@@ -103,7 +103,11 @@ export const Home: FunctionComponent = function () {
 
       {showSkeleton ? <HomeBodyPlaceholder /> : null}
       <HomeBodyLoadingContainer isLoading={showSkeleton}>
-        <HomeBody modules={displayedModules} algoliaModules={algoliaModules} />
+        <HomeBody
+          modules={displayedModules}
+          algoliaModules={algoliaModules}
+          recommendedHits={recommendedHits}
+        />
       </HomeBodyLoadingContainer>
 
       <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
