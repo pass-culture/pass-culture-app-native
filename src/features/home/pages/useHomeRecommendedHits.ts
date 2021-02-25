@@ -1,30 +1,35 @@
+import { GeoCoordinates } from 'react-native-geolocation-service'
 import { useQuery } from 'react-query'
 
 import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { AlgoliaHit } from 'libs/algolia'
 import { fetchAlgoliaHits } from 'libs/algolia/fetchAlgolia'
+import { env } from 'libs/environment'
+import { useGeolocation } from 'libs/geolocation'
 import { convertAlgoliaHitToCents } from 'libs/parsers/pricesConversion'
 
+import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
-
-const recommendedIds = [
-  '145932',
-  '145945',
-  '145926',
-  '145900',
-  '145909',
-  '145929',
-  '145902',
-  '145941',
-  '145906',
-  '145944',
-]
 
 export const useHomeRecommendedHits = (
   _recommendationModule: RecommendationPane | undefined
 ): AlgoliaHit[] => {
-  // TODO (#6272) get the actual ids from the recommendation API
-  const ids = recommendedIds
+  const { position } = useGeolocation()
+  const { data: profile } = useUserProfileInfo()
+  const userId = profile?.id
+
+  const recommendationEndpoint = getRecommendationEndpoint(userId, position)
+
+  const { data: recommendedIds } = useQuery(
+    'recommendationOfferIds',
+    async () => {
+      const response = await fetch(recommendationEndpoint as string)
+      return response.json() as Promise<{ recommended_offers: string[] }>
+    },
+    { enabled: typeof userId === 'number' && !!recommendationEndpoint }
+  )
+
+  const ids = (recommendedIds?.recommended_offers || [])
     .map((id: string) => humanizeId(+id))
     .filter((id) => typeof id === 'string') as string[]
 
@@ -39,4 +44,15 @@ export const useHomeRecommendedHits = (
   return (data?.results as AlgoliaHit[])
     .filter((hit) => hit && hit.offer && !!hit.offer.thumbUrl)
     .map(convertAlgoliaHitToCents)
+}
+
+const getRecommendationEndpoint = (
+  userId: number | undefined,
+  position: GeoCoordinates | null
+): string | undefined => {
+  if (!userId) return undefined
+  const endpoint = `${env.RECOMMENDATION_ENDPOINT}/recommendation/${userId}?token=${env.RECOMMENDATION_TOKEN}`
+
+  if (position) return `${endpoint}&longitude=${position.longitude}&latitude=${position.latitude}`
+  return endpoint
 }
