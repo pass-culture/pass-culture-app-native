@@ -6,6 +6,7 @@ import {
   HomepageModule,
   CONTENT_TYPES,
   Image,
+  RecommendationFields,
 } from './contentful'
 import {
   Offers,
@@ -13,6 +14,7 @@ import {
   ExclusivityPane,
   BusinessPane,
   ProcessedModule,
+  RecommendationPane,
 } from './moduleTypes'
 
 export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModule[] => {
@@ -43,6 +45,12 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
         })
       }
       return new Offers({ algolia, display, moduleId })
+    }
+
+    if (contentType === 'recommendation') {
+      const { displayParameters } = fields as RecommendationFields
+      const { fields: display } = displayParameters
+      return new RecommendationPane({ display })
     }
 
     if (contentType === 'exclusivity') {
