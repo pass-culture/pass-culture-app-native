@@ -6,6 +6,7 @@ export const CONTENT_TYPES = {
   HOMEPAGE_NATIF: 'homepageNatif',
   INFORMATION: 'information',
   BUSINESS: 'business',
+  RECOMMENDATION: 'recommendation',
 }
 
 export enum ContentTypes {
@@ -17,6 +18,7 @@ export enum ContentTypes {
   HOMEPAGE_NATIF = 'homepageNatif',
   INFORMATION = 'information',
   BUSINESS = 'business',
+  RECOMMENDATION = 'recommendation',
 }
 
 export type Layout = 'two-items' | 'one-item-medium'
@@ -141,6 +143,12 @@ interface AlgoliaFields {
   cover?: Cover
 }
 
+// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/recommendation/fields
+interface RecommendationFields {
+  title: string
+  displayParameters: DisplayParameters
+}
+
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algoliaParameters/fields
 interface AlgoliaParametersFields {
   title: string
@@ -197,6 +205,7 @@ type HomepageModule =
   | { sys: Sys<'algolia'>; fields: AlgoliaFields }
   | { sys: Sys<'business'>; fields: BusinessFields }
   | { sys: Sys<'exclusivity'>; fields: ExclusivityFields }
+  | { sys: Sys<'recommendation'>; fields: RecommendationFields }
 
 interface Image {
   sys: Sys<typeof CONTENT_TYPES.INFORMATION>
@@ -237,4 +246,5 @@ export type {
   CoverFields,
   Image,
   HomepageEntries,
+  RecommendationFields,
 }

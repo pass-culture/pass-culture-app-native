@@ -60,6 +60,13 @@ export class ExclusivityPane {
   }
 }
 
+export class RecommendationPane {
+  display: DisplayParametersFields
+  constructor({ display }: { display: DisplayParametersFields }) {
+    this.display = display
+  }
+}
+
 export class BusinessPane {
   title: string
   firstLine: string | undefined
@@ -99,4 +106,9 @@ export class BusinessPane {
   }
 }
 
-export type ProcessedModule = Offers | ExclusivityPane | BusinessPane | OffersWithCover
+export type ProcessedModule =
+  | Offers
+  | ExclusivityPane
+  | BusinessPane
+  | OffersWithCover
+  | RecommendationPane
