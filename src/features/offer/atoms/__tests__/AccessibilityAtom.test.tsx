@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
@@ -37,27 +37,27 @@ describe('getIconAndWording', () => {
 describe('AccessibilityAtom', () => {
   it('should display the validIcon when isValid is true', () => {
     const { queryByTestId } = render(
-      <AccessibilityAtom sideSpace={0} handicap={HandicapCategory.MENTAL} isAccessible={true} />
+      <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={true} />
     )
     expect(queryByTestId('invalidTestId')).toBeFalsy()
     expect(queryByTestId('validTestId')).toBeTruthy()
   })
   it('should displat the invalidIcon when isValid is false', () => {
     const { queryByTestId } = render(
-      <AccessibilityAtom sideSpace={0} handicap={HandicapCategory.MENTAL} isAccessible={false} />
+      <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={false} />
     )
     expect(queryByTestId('invalidTestId')).toBeTruthy()
     expect(queryByTestId('validTestId')).toBeFalsy()
   })
   it('uses sideSpace to overgrow textContainer', async () => {
     const { getByTestId } = render(
-      <AccessibilityAtom sideSpace={10} handicap={HandicapCategory.MENTAL} isAccessible={false} />
+      <AccessibilityAtom
+        rightSpacingValue={10}
+        handicap={HandicapCategory.MENTAL}
+        isAccessible={false}
+      />
     )
-    const textContainer = getByTestId('Handicap psychique ou cognitif')
-    expect(textContainer.props.style[0].width).toEqual(10)
-
-    const accessibilityFrame = getByTestId('accessibilityFrame')
-    fireEvent(accessibilityFrame, 'layout', { nativeEvent: { layout: { width: 25 } } })
-    expect(textContainer.props.style[0].width).toEqual(35)
+    const container = getByTestId('accessibilityAtomContainer')
+    expect(container.props.style[0].marginRight).toEqual(10)
   })
 })
