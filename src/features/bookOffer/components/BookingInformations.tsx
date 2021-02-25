@@ -91,7 +91,9 @@ const Row = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
   width: width - getSpacing(4 * 6),
+  paddingVertical: getSpacing(0.5),
 })
 const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
+  alignItems: 'center',
 })
