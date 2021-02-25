@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { GetObjectsResponse, SearchResponse } from '@algolia/client-search'
 import algoliasearch from 'algoliasearch'
 
 import { SearchParameters } from 'features/search/pages/reducer'
@@ -62,6 +62,13 @@ export const fetchAlgolia = <T>({
     attributesToRetrieve: attributesToRetrieve ?? ['*'],
     attributesToHighlight: [], // We disable highlighting for performance reasons
   })
+}
+
+export const fetchAlgoliaHits = <T>(
+  objectIds: string[]
+): Readonly<Promise<GetObjectsResponse<T>>> => {
+  const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
+  return index.getObjects<T>(objectIds)
 }
 
 const buildHitsPerPage = (hitsPerPage: FetchAlgoliaParameters['hitsPerPage']) =>
