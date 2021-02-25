@@ -100,6 +100,7 @@ describe('useDisplayedHomeModules.utils', () => {
       const connectedModules = getModulesToDisplay(
         [...offerModules, connectedBusinessModule],
         algoliaModules,
+        hits,
         true
       )
       expect(connectedModules).toContain(connectedBusinessModule)
@@ -107,6 +108,7 @@ describe('useDisplayedHomeModules.utils', () => {
       const notConnectedModules = getModulesToDisplay(
         [...offerModules, connectedBusinessModule],
         algoliaModules,
+        hits,
         false
       )
       expect(notConnectedModules).not.toContain(connectedBusinessModule)
@@ -115,6 +117,7 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [excluModule, connectedBusinessModule, ...offerModules],
         algoliaModules,
+        hits,
         false
       )
       expect(displayedModules).toContain(excluModule)
@@ -123,6 +126,7 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [excluModule, connectedBusinessModule, notInAlgoliaModules],
         algoliaModules,
+        hits,
         true
       )
       expect(notInAlgoliaModules).not.toContain(excluModule)
@@ -132,6 +136,7 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [emptyHits, excluModule, connectedBusinessModule],
         algoliaModules,
+        hits,
         true
       )
       expect(displayedModules).not.toContain(emptyHits)
@@ -141,6 +146,7 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [connectedBusinessModule, excluModule, hiddenOfferModule],
         algoliaModules,
+        hits,
         true
       )
       expect(displayedModules).not.toContain(hiddenOfferModule)
@@ -150,6 +156,7 @@ describe('useDisplayedHomeModules.utils', () => {
       const displayedModules = getModulesToDisplay(
         [connectedBusinessModule, excluModule, visibleOfferModule],
         algoliaModules,
+        hits,
         true
       )
       expect(displayedModules).toContain(visibleOfferModule)
