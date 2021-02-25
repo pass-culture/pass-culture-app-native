@@ -1,6 +1,6 @@
 import * as netInfoModule from '@react-native-community/netinfo'
 import { StackScreenProps } from '@react-navigation/stack'
-import { act, fireEvent, render, waitFor } from '@testing-library/react-native'
+import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import { Linking } from 'react-native'
@@ -16,6 +16,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { simulateWebviewMessage } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { contactSupport } from '../support.services'
@@ -122,11 +123,7 @@ describe('AcceptCgu Page', () => {
     const renderAPI = renderAcceptCGU()
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
-    act(() => {
-      recaptchaWebview.props.onMessage({
-        nativeEvent: { data: '{ "message": "success", "token": "fakeToken" }' },
-      })
-    })
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
       expect(postnativev1accountSpy).toBeCalledWith(
@@ -151,11 +148,7 @@ describe('AcceptCgu Page', () => {
     const renderAPI = renderAcceptCGU()
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
-    act(() => {
-      recaptchaWebview.props.onMessage({
-        nativeEvent: { data: '{ "message": "error", "error": "someError" }' },
-      })
-    })
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
 
     await waitFor(() => {
       expect(
@@ -172,11 +165,7 @@ describe('AcceptCgu Page', () => {
     const renderAPI = renderAcceptCGU()
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
-    act(() => {
-      recaptchaWebview.props.onMessage({
-        nativeEvent: { data: '{ "message": "expire" }' },
-      })
-    })
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
     await waitFor(() => {
       expect(renderAPI.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeTruthy()

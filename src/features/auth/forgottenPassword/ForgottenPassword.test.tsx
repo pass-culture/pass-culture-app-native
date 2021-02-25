@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, simulateWebviewMessage } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 beforeEach(() => {
@@ -75,11 +75,7 @@ describe('<ForgottenPassword />', () => {
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    act(() => {
-      recaptchaWebview.props.onMessage({
-        nativeEvent: { data: '{ "message": "success", "token": "fakeToken" }' },
-      })
-    })
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
@@ -95,11 +91,7 @@ describe('<ForgottenPassword />', () => {
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    act(() => {
-      recaptchaWebview.props.onMessage({
-        nativeEvent: { data: '{ "message": "error", "error": "someError" }' },
-      })
-    })
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
 
     await waitForExpect(() => {
       expect(
@@ -118,11 +110,7 @@ describe('<ForgottenPassword />', () => {
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    act(() => {
-      recaptchaWebview.props.onMessage({
-        nativeEvent: { data: '{ "message": "success", "token": "fakeToken" }' },
-      })
-    })
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
     await act(flushAllPromises)
 
     await waitForExpect(() => {
