@@ -1,8 +1,13 @@
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useHomepageModules } from 'features/home/api'
 
-import { getModulesToDisplay, getOfferModules } from './useDisplayedHomeModules.utils'
+import {
+  getModulesToDisplay,
+  getOfferModules,
+  getRecommendationModule,
+} from './useDisplayedHomeModules.utils'
 import { useHomeAlgoliaModules } from './useHomeAlgoliaModules'
+import { useHomeRecommendedHits } from './useHomeRecommendedHits'
 
 export function useDisplayedHomeModules() {
   const { isLoggedIn } = useAuthContext()
@@ -13,7 +18,10 @@ export function useDisplayedHomeModules() {
   // 2. Get the hits and nbHits for each algolia module
   const algoliaModules = useHomeAlgoliaModules(getOfferModules(modules))
 
-  // 3. Reconcile the two and filter the modules that will eventually be displayed
-  const displayedModules = getModulesToDisplay(modules, algoliaModules, isLoggedIn)
-  return { algoliaModules, displayedModules }
+  // 3. Get the offers for the recommended hits
+  const recommendedHits = useHomeRecommendedHits(getRecommendationModule(modules))
+
+  // 4. Reconcile the three and filter the modules that will eventually be displayed
+  const displayedModules = getModulesToDisplay(modules, algoliaModules, recommendedHits, isLoggedIn)
+  return { algoliaModules, displayedModules, recommendedHits }
 }
