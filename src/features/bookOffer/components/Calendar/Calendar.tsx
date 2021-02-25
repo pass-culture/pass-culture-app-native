@@ -30,7 +30,7 @@ const renderDay = (status: OfferStatus, selected: boolean, day: number) => {
         <SelectedDayNumber color={ColorsEnum.WHITE}>{day}</SelectedDayNumber>
       </SelectedDay>
     )
-  if (status === OfferStatus.NOTBOOKABLE)
+  if (status === OfferStatus.NOT_BOOKABLE)
     return (
       <DiagonalStripe>
         <Day color={ColorsEnum.GREY_DARK}>{day}</Day>
@@ -75,7 +75,7 @@ export const Calendar: React.FC<Props> = ({ stocks }) => {
             {displayPrice ? (
               <Typo.Caption
                 color={
-                  dateStatusAndPrice.status === OfferStatus.NOTBOOKABLE
+                  dateStatusAndPrice.status === OfferStatus.NOT_BOOKABLE
                     ? ColorsEnum.GREY_DARK
                     : ColorsEnum.PRIMARY
                   // eslint-disable-next-line react-native/no-raw-text
