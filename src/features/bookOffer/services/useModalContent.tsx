@@ -48,8 +48,8 @@ export const useModalContent = (
 
     return {
       title: _(t`Détails de la réservation`),
-      leftIcon: ArrowPrevious,
-      onLeftIconPress: dismissModal,
+      leftIcon: undefined,
+      onLeftIconPress: undefined,
       children: <BookingDetails dismissModal={dismissModal} />,
     }
   }
