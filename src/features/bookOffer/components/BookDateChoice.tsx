@@ -40,8 +40,8 @@ export const getStocksByDate = (
 
 export enum OfferStatus {
   BOOKABLE = 'BOOKABLE',
-  NOTBOOKABLE = 'NOTBOOKABLE',
-  NOTOFFERED = 'NOTOFFERED',
+  NOT_BOOKABLE = 'NOTBOOKABLE',
+  NOT_OFFERED = 'NOTOFFERED',
 }
 
 export const getDateStatusAndPrice = (
@@ -49,8 +49,8 @@ export const getDateStatusAndPrice = (
   stocksDates: { [date: string]: OfferStockResponse[] }
 ): { status: OfferStatus } => {
   const stocksByDate = stocksDates[formatToSlashedFrenchDate(date.toString())]
-  if (!stocksByDate) return { status: OfferStatus.NOTOFFERED }
-  const OfferIsBookable = stocksByDate.some((stock) => stock.isBookable)
-  if (OfferIsBookable) return { status: OfferStatus.BOOKABLE }
-  return { status: OfferStatus.NOTBOOKABLE }
+  if (!stocksByDate) return { status: OfferStatus.NOT_OFFERED }
+  const offerIsBookable = stocksByDate.some((stock) => stock.isBookable)
+  if (offerIsBookable) return { status: OfferStatus.BOOKABLE }
+  return { status: OfferStatus.NOT_BOOKABLE }
 }
