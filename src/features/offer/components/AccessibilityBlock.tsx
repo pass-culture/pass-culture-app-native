@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferAccessibilityResponse } from 'api/gen'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 import { AccessibilityAtom } from '../atoms/AccessibilityAtom'
 import { HandicapCategory } from '../atoms/AccessibilityAtom.service'
@@ -31,9 +31,15 @@ const renderAccessibilityAtom = (
   disability !== null &&
   disability !== undefined && (
     <React.Fragment>
-      <AccessibilityAtom handicap={handicap} isAccessible={disability} sideSpace={getSpacing(4)} />
-      {addSpacer && <Spacer.Row numberOfSpaces={4} />}
+      <AccessibilityAtom
+        handicap={handicap}
+        isAccessible={disability}
+        rightSpacingValue={addSpacer ? getSpacing(3) : 0}
+      />
     </React.Fragment>
   )
 
-const Row = styled.View({ flexDirection: 'row' })
+const Row = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})

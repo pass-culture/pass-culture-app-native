@@ -1116,22 +1116,25 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 Array [
                                   Object {
                                     "flexDirection": "row",
+                                    "justifyContent": "space-between",
                                   },
                                 ]
                               }
                             >
                               <View
+                                rightSpacingValue={12}
                                 style={
                                   Array [
                                     Object {
                                       "flexDirection": "column",
                                       "flexShrink": 1,
+                                      "marginRight": 12,
                                     },
                                   ]
                                 }
+                                testID="accessibilityAtomContainer"
                               >
                                 <View
-                                  onLayout={[Function]}
                                   style={
                                     Array [
                                       Object {
@@ -1206,22 +1209,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "alignSelf": "center",
-                                        "flexDirection": "row",
-                                        "flexWrap": "wrap",
-                                        "justifyContent": "center",
-                                        "marginHorizontal": 8,
-                                        "width": 16,
+                                        "marginHorizontal": -4,
                                       },
                                     ]
                                   }
                                   testID="Handicap visuel"
-                                  width={16}
                                 >
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1238,9 +1232,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1259,27 +1250,19 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={4}
-                                style={
-                                  Array [
-                                    Object {
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                              />
-                              <View
+                                rightSpacingValue={12}
                                 style={
                                   Array [
                                     Object {
                                       "flexDirection": "column",
                                       "flexShrink": 1,
+                                      "marginRight": 12,
                                     },
                                   ]
                                 }
+                                testID="accessibilityAtomContainer"
                               >
                                 <View
-                                  onLayout={[Function]}
                                   style={
                                     Array [
                                       Object {
@@ -1354,22 +1337,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "alignSelf": "center",
-                                        "flexDirection": "row",
-                                        "flexWrap": "wrap",
-                                        "justifyContent": "center",
-                                        "marginHorizontal": 8,
-                                        "width": 16,
+                                        "marginHorizontal": -4,
                                       },
                                     ]
                                   }
                                   testID="Handicap psychique ou cognitif"
-                                  width={16}
                                 >
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1386,9 +1360,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1405,9 +1376,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     psychique
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1424,9 +1392,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     ou
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1445,27 +1410,19 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={4}
-                                style={
-                                  Array [
-                                    Object {
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                              />
-                              <View
+                                rightSpacingValue={12}
                                 style={
                                   Array [
                                     Object {
                                       "flexDirection": "column",
                                       "flexShrink": 1,
+                                      "marginRight": 12,
                                     },
                                   ]
                                 }
+                                testID="accessibilityAtomContainer"
                               >
                                 <View
-                                  onLayout={[Function]}
                                   style={
                                     Array [
                                       Object {
@@ -1540,22 +1497,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "alignSelf": "center",
-                                        "flexDirection": "row",
-                                        "flexWrap": "wrap",
-                                        "justifyContent": "center",
-                                        "marginHorizontal": 8,
-                                        "width": 16,
+                                        "marginHorizontal": -4,
                                       },
                                     ]
                                   }
                                   testID="Handicap moteur"
-                                  width={16}
                                 >
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1572,9 +1520,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1593,27 +1538,19 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={4}
-                                style={
-                                  Array [
-                                    Object {
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                              />
-                              <View
+                                rightSpacingValue={0}
                                 style={
                                   Array [
                                     Object {
                                       "flexDirection": "column",
                                       "flexShrink": 1,
+                                      "marginRight": 0,
                                     },
                                   ]
                                 }
+                                testID="accessibilityAtomContainer"
                               >
                                 <View
-                                  onLayout={[Function]}
                                   style={
                                     Array [
                                       Object {
@@ -1688,22 +1625,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "alignSelf": "center",
-                                        "flexDirection": "row",
-                                        "flexWrap": "wrap",
-                                        "justifyContent": "center",
-                                        "marginHorizontal": 8,
-                                        "width": 16,
+                                        "marginHorizontal": -4,
                                       },
                                     ]
                                   }
                                   testID="Handicap auditif"
-                                  width={16}
                                 >
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -1720,9 +1648,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -5855,22 +5780,25 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 Array [
                                   Object {
                                     "flexDirection": "row",
+                                    "justifyContent": "space-between",
                                   },
                                 ]
                               }
                             >
                               <View
+                                rightSpacingValue={12}
                                 style={
                                   Array [
                                     Object {
                                       "flexDirection": "column",
                                       "flexShrink": 1,
+                                      "marginRight": 12,
                                     },
                                   ]
                                 }
+                                testID="accessibilityAtomContainer"
                               >
                                 <View
-                                  onLayout={[Function]}
                                   style={
                                     Array [
                                       Object {
@@ -5945,22 +5873,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "alignSelf": "center",
-                                        "flexDirection": "row",
-                                        "flexWrap": "wrap",
-                                        "justifyContent": "center",
-                                        "marginHorizontal": 8,
-                                        "width": 16,
+                                        "marginHorizontal": -4,
                                       },
                                     ]
                                   }
                                   testID="Handicap visuel"
-                                  width={16}
                                 >
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -5977,9 +5896,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -5998,27 +5914,19 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={4}
-                                style={
-                                  Array [
-                                    Object {
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                              />
-                              <View
+                                rightSpacingValue={12}
                                 style={
                                   Array [
                                     Object {
                                       "flexDirection": "column",
                                       "flexShrink": 1,
+                                      "marginRight": 12,
                                     },
                                   ]
                                 }
+                                testID="accessibilityAtomContainer"
                               >
                                 <View
-                                  onLayout={[Function]}
                                   style={
                                     Array [
                                       Object {
@@ -6093,22 +6001,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "alignSelf": "center",
-                                        "flexDirection": "row",
-                                        "flexWrap": "wrap",
-                                        "justifyContent": "center",
-                                        "marginHorizontal": 8,
-                                        "width": 16,
+                                        "marginHorizontal": -4,
                                       },
                                     ]
                                   }
                                   testID="Handicap psychique ou cognitif"
-                                  width={16}
                                 >
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -6125,9 +6024,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -6144,9 +6040,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     psychique
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -6163,9 +6056,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     ou
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -6184,27 +6074,19 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={4}
-                                style={
-                                  Array [
-                                    Object {
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                              />
-                              <View
+                                rightSpacingValue={12}
                                 style={
                                   Array [
                                     Object {
                                       "flexDirection": "column",
                                       "flexShrink": 1,
+                                      "marginRight": 12,
                                     },
                                   ]
                                 }
+                                testID="accessibilityAtomContainer"
                               >
                                 <View
-                                  onLayout={[Function]}
                                   style={
                                     Array [
                                       Object {
@@ -6279,22 +6161,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "alignSelf": "center",
-                                        "flexDirection": "row",
-                                        "flexWrap": "wrap",
-                                        "justifyContent": "center",
-                                        "marginHorizontal": 8,
-                                        "width": 16,
+                                        "marginHorizontal": -4,
                                       },
                                     ]
                                   }
                                   testID="Handicap moteur"
-                                  width={16}
                                 >
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -6311,9 +6184,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -6332,27 +6202,19 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 </View>
                               </View>
                               <View
-                                numberOfSpaces={4}
-                                style={
-                                  Array [
-                                    Object {
-                                      "width": 16,
-                                    },
-                                  ]
-                                }
-                              />
-                              <View
+                                rightSpacingValue={0}
                                 style={
                                   Array [
                                     Object {
                                       "flexDirection": "column",
                                       "flexShrink": 1,
+                                      "marginRight": 0,
                                     },
                                   ]
                                 }
+                                testID="accessibilityAtomContainer"
                               >
                                 <View
-                                  onLayout={[Function]}
                                   style={
                                     Array [
                                       Object {
@@ -6427,22 +6289,13 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "alignSelf": "center",
-                                        "flexDirection": "row",
-                                        "flexWrap": "wrap",
-                                        "justifyContent": "center",
-                                        "marginHorizontal": 8,
-                                        "width": 16,
+                                        "marginHorizontal": -4,
                                       },
                                     ]
                                   }
                                   testID="Handicap auditif"
-                                  width={16}
                                 >
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
@@ -6459,9 +6312,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     Handicap
                                   </Text>
                                   <Text
-                                    adjustsFontSizeToFit={true}
-                                    allowFontScaling={false}
-                                    numberOfLines={1}
                                     style={
                                       Array [
                                         Object {
