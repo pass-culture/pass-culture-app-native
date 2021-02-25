@@ -1,1 +1,1 @@
-export { fetchAlgolia } from './fetchAlgolia'
+export { fetchAlgolia, fetchAlgoliaHits } from './fetchAlgolia'
