@@ -17,6 +17,10 @@ msgstr ""
 msgid "({0} x 2 places)"
 msgstr "({0} x 2 places)"
 
+#: src/features/profile/pages/PersonalData.tsx:27
+msgid "+33 6 12 34 56 78"
+msgstr "+33 6 12 34 56 78"
+
 #: src/libs/parsers/getDisplayPrice.ts:29
 msgid "/ place"
 msgstr "/ place"
@@ -378,6 +382,10 @@ msgstr "Découvrir"
 msgid "Détails de la réservation"
 msgstr "Détails de la réservation"
 
+#: src/features/profile/pages/PersonalData.tsx:19
+msgid "E-mail"
+msgstr "E-mail"
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:31
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
@@ -471,6 +479,7 @@ msgstr "Il te reste encore 140€ à dépenser sur le pass !"
 msgid "Il y a eu un problème. Tu peux réessayer plus tard."
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
 
+#: src/features/profile/pages/PersonalData.tsx:10
 #: src/features/profile/pages/Profile.tsx:43
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
@@ -627,6 +636,10 @@ msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation 
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
+#: src/features/profile/pages/PersonalData.tsx:25
+msgid "Numéro de téléphone"
+msgstr "Numéro de téléphone"
+
 #: src/features/offer/services/useCtaWordingAndAction.ts:29
 #: src/features/offer/services/useCtaWordingAndAction.ts:33
 msgid "Offre expirée"
@@ -751,6 +764,10 @@ msgstr "Profil"
 msgid "Profite de 300\\u00a0€\\u00a0"
 msgstr "Profite de 300\\u00a0€\\u00a0"
 
+#: src/features/profile/pages/PersonalData.tsx:13
+msgid "Prénom et nom"
+msgstr "Prénom et nom"
+
 #: src/features/offer/pages/Offer.tsx:74
 msgid "Quand ?"
 msgstr "Quand ?"
@@ -806,6 +823,14 @@ msgstr "Retrouve toutes les offres autour de chez toi en activant les données d
 #: src/features/auth/signup/SetEmail.tsx:74
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
+
+#: src/features/profile/pages/PersonalData.tsx:15
+msgid "Rosa Bonheur"
+msgstr "Rosa Bonheur"
+
+#: src/features/profile/pages/PersonalData.tsx:21
+msgid "Rosa.bonheur@gmail.com"
+msgstr "Rosa.bonheur@gmail.com"
 
 #: src/features/errors/pages/AsyncErrorBoundary.tsx:66
 msgid "Réessayer"
@@ -1036,7 +1061,7 @@ msgstr "VISA"
 msgid "Valider"
 msgstr "Valider"
 
-#: src/features/bookOffer/components/BookingEventChoices.tsx:38
+#: src/features/bookOffer/components/BookingEventChoices.tsx:51
 msgid "Valider ces options"
 msgstr "Valider ces options"
 

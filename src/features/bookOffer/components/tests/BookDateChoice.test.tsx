@@ -77,11 +77,14 @@ describe('getDateStatusAndPrice()', () => {
         },
       ],
     }
+    const userRemainingCredit = 1000
 
-    expect(getDateStatusAndPrice(dateNotInStocks, stocksByDate)).toStrictEqual({
-      status: OfferStatus.NOT_OFFERED,
-      price: null,
-    })
+    expect(getDateStatusAndPrice(dateNotInStocks, stocksByDate, userRemainingCredit)).toStrictEqual(
+      {
+        status: OfferStatus.NOT_OFFERED,
+        price: null,
+      }
+    )
   })
 
   it('returns bookable status if at least 1 stock is bookable', () => {
@@ -104,8 +107,9 @@ describe('getDateStatusAndPrice()', () => {
         },
       ],
     }
+    const userRemainingCredit = 1000
 
-    expect(getDateStatusAndPrice(dateInStocks, stocksByDate)).toStrictEqual({
+    expect(getDateStatusAndPrice(dateInStocks, stocksByDate, userRemainingCredit)).toStrictEqual({
       status: OfferStatus.BOOKABLE,
       price: '4,50€',
     })
@@ -130,9 +134,40 @@ describe('getDateStatusAndPrice()', () => {
         },
       ],
     }
-    expect(getDateStatusAndPrice(dateInStocks, stocksByDate)).toStrictEqual({
+    const userRemainingCredit = 1000
+
+    expect(getDateStatusAndPrice(dateInStocks, stocksByDate, userRemainingCredit)).toStrictEqual({
       status: OfferStatus.NOT_BOOKABLE,
       price: '0€',
+    })
+  })
+
+  it("returns not bookable status if user doesn't have enough credit", () => {
+    const dateInStocks = new Date('2021-01-01T13:30:00')
+    const stocksByDate = {
+      ['01/01/2021']: [
+        {
+          id: 118929,
+          beginningDatetime: new Date('2021-01-01T13:30:00'),
+          bookingLimitDatetime: new Date('2021-01-05T13:30:00'),
+          price: 1300,
+          isBookable: false,
+        },
+        {
+          id: 118929,
+          beginningDatetime: new Date('2021-01-01T13:30:00'),
+          bookingLimitDatetime: new Date('2021-01-05T13:30:00'),
+          price: 1250,
+          isBookable: true,
+        },
+      ],
+    }
+
+    const userRemainingCredit = 1000
+
+    expect(getDateStatusAndPrice(dateInStocks, stocksByDate, userRemainingCredit)).toStrictEqual({
+      status: OfferStatus.NOT_BOOKABLE,
+      price: '12,50€',
     })
   })
 })

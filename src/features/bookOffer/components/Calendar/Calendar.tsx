@@ -47,10 +47,12 @@ const renderArrow = (direction: string) => {
 
 interface Props {
   stocks: OfferStockResponse[]
+  userRemainingCredit: number | null
 }
 
-export const Calendar: React.FC<Props> = ({ stocks }) => {
+export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
   const stocksDate = getStocksByDate(stocks)
+
   return (
     <RNCalendar
       firstDay={1}
@@ -59,7 +61,11 @@ export const Calendar: React.FC<Props> = ({ stocks }) => {
       hideExtraDays={true}
       renderArrow={renderArrow}
       dayComponent={({ date }) => {
-        const dateStatusAndPrice = getDateStatusAndPrice(new Date(date.timestamp), stocksDate)
+        const dateStatusAndPrice = getDateStatusAndPrice(
+          new Date(date.timestamp),
+          stocksDate,
+          userRemainingCredit
+        )
         // TODO: PC-6698 change hard coded for real data
         const selected = date.day === 11 && date.month === 2
         return (
