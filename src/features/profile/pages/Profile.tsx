@@ -52,7 +52,7 @@ export const Profile: React.FC = () => {
               <Row
                 title={_(t`Informations personnelles`)}
                 type="navigable"
-                onPress={() => navigate('TemporaryProfilePage')}
+                onPress={() => navigate('PersonnalData')}
                 icon={ProfileIcon}
                 style={styles.row}
                 testID="row-personal-data"

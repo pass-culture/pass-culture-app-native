@@ -29,6 +29,7 @@ import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
+import { PersonnalData } from 'features/profile/pages/PersonnalData'
 import { Profile } from 'features/profile/pages/Profile'
 import { TemporaryProfilePage } from 'features/profile/pages/TemporaryProfilePage'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
@@ -67,6 +68,7 @@ const routes: Array<Route> = [
   { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary },
   { name: 'OfferDescription', component: OfferDescription, hoc: withAsyncErrorBoundary },
   { name: 'Profile', component: Profile },
+  { name: 'PersonnalData', component: PersonnalData },
   { name: 'ChangePassword', component: ChangePassword },
   { name: 'ReinitializePassword', component: ReinitializePassword },
   { name: 'ResetPasswordEmailSent', component: ResetPasswordEmailSent },
