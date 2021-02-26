@@ -41,6 +41,7 @@ export type RootStackParamList = {
   LocationFilter: undefined
   LocationPicker: undefined
   Profile: undefined
+  PersonnalData: undefined
   SearchCategories: undefined
   SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
