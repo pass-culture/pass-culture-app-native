@@ -80,6 +80,7 @@ describe('getDateStatusAndPrice()', () => {
 
     expect(getDateStatusAndPrice(dateNotInStocks, stocksByDate)).toStrictEqual({
       status: OfferStatus.NOT_OFFERED,
+      price: null,
     })
   })
 
@@ -98,7 +99,7 @@ describe('getDateStatusAndPrice()', () => {
           id: 118929,
           beginningDatetime: new Date('2021-01-01T13:30:00'),
           bookingLimitDatetime: new Date('2021-01-05T13:30:00'),
-          price: 500,
+          price: 450,
           isBookable: true,
         },
       ],
@@ -106,6 +107,7 @@ describe('getDateStatusAndPrice()', () => {
 
     expect(getDateStatusAndPrice(dateInStocks, stocksByDate)).toStrictEqual({
       status: OfferStatus.BOOKABLE,
+      price: '4,50€',
     })
   })
   it('returns not bookable status if date is in stocks and all stocks are not bookable', () => {
@@ -123,13 +125,14 @@ describe('getDateStatusAndPrice()', () => {
           id: 118929,
           beginningDatetime: new Date('2021-01-01T13:30:00'),
           bookingLimitDatetime: new Date('2021-01-05T13:30:00'),
-          price: 500,
+          price: 0,
           isBookable: false,
         },
       ],
     }
     expect(getDateStatusAndPrice(dateInStocks, stocksByDate)).toStrictEqual({
       status: OfferStatus.NOT_BOOKABLE,
+      price: '0€',
     })
   })
 })
