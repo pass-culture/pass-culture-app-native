@@ -27,15 +27,17 @@ export enum OfferStatus {
 
 export const getDateStatusAndPrice = (
   date: Date,
-  stocksDates: { [date: string]: OfferStockResponse[] }
+  stocksDates: { [date: string]: OfferStockResponse[] },
+  userRemainingCredit: number | null
 ): { status: OfferStatus; price: string | null } => {
   const stocksByDate = stocksDates[formatToSlashedFrenchDate(date.toString())]
   if (!stocksByDate) return { status: OfferStatus.NOT_OFFERED, price: null }
 
   const prices = stocksByDate.map((stock) => stock.price)
-  const price = formatToFrenchDecimal(Math.min(...prices)).replace(' ', '')
+  const price = Math.min(...prices)
   const offerIsBookable = stocksByDate.some((stock) => stock.isBookable)
-
-  if (offerIsBookable) return { status: OfferStatus.BOOKABLE, price }
-  return { status: OfferStatus.NOT_BOOKABLE, price }
+  const hasEnoughCredit = userRemainingCredit ? userRemainingCredit > price : false
+  if (offerIsBookable && hasEnoughCredit)
+    return { status: OfferStatus.BOOKABLE, price: formatToFrenchDecimal(price).replace(' ', '') }
+  return { status: OfferStatus.NOT_BOOKABLE, price: formatToFrenchDecimal(price).replace(' ', '') }
 }
