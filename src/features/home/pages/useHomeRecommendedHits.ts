@@ -12,7 +12,7 @@ import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
 
 export const useHomeRecommendedHits = (
-  _recommendationModule: RecommendationPane | undefined
+  recommendationModule: RecommendationPane | undefined
 ): AlgoliaHit[] => {
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
@@ -26,7 +26,7 @@ export const useHomeRecommendedHits = (
       const response = await fetch(recommendationEndpoint as string)
       return response.json() as Promise<{ recommended_offers: string[] }>
     },
-    { enabled: typeof userId === 'number' && !!recommendationEndpoint }
+    { enabled: !!recommendationModule && typeof userId === 'number' && !!recommendationEndpoint }
   )
 
   const ids = (recommendedIds?.recommended_offers || [])
@@ -46,7 +46,7 @@ export const useHomeRecommendedHits = (
     .map(convertAlgoliaHitToCents)
 }
 
-const getRecommendationEndpoint = (
+export const getRecommendationEndpoint = (
   userId: number | undefined,
   position: GeoCoordinates | null
 ): string | undefined => {
