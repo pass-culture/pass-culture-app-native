@@ -79,7 +79,7 @@ msgstr "Activer la géolocalisation"
 msgid "Adresse"
 msgstr "Adresse"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:81
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:109
 #: src/features/auth/login/Login.tsx:113
 #: src/features/auth/signup/SetEmail.tsx:65
 msgid "Adresse e-mail"
@@ -156,12 +156,12 @@ msgid "Autres"
 msgstr "Autres"
 
 #. Welcome title message
-#: src/features/home/pages/Home.tsx:78
+#: src/features/home/pages/Home.tsx:76
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
 #. Hello title message
-#: src/features/home/pages/Home.tsx:77
+#: src/features/home/pages/Home.tsx:75
 msgid "Bonjour {0}"
 msgstr "Bonjour {0}"
 
@@ -238,7 +238,7 @@ msgid "Comment ça marche ?"
 msgstr "Comment ça marche ?"
 
 #: src/features/cheatcodes/pages/CheatMenu.tsx:16
-#: src/features/home/pages/Home.tsx:61
+#: src/features/home/pages/Home.tsx:59
 msgid "Composants"
 msgstr "Composants"
 
@@ -268,8 +268,8 @@ msgstr "Confirmer la réservation"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:62
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:64
-#: src/features/profile/pages/ChangePassword.tsx:34
-#: src/features/profile/pages/ChangePassword.tsx:36
+#: src/features/profile/pages/ChangePassword.tsx:69
+#: src/features/profile/pages/ChangePassword.tsx:71
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
@@ -321,7 +321,7 @@ msgstr "Crédit numérique insuffisant"
 msgid "Créneau horaire"
 msgstr "Créneau horaire"
 
-#: src/features/bookOffer/components/BookDateChoice.tsx:8
+#: src/features/bookOffer/components/BookDateChoice.tsx:9
 #: src/features/search/sections/titles.ts:13
 msgid "Date"
 msgstr "Date"
@@ -334,7 +334,7 @@ msgstr "Date de l'offre"
 msgid "Date précise"
 msgstr "Date précise"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
+#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:21
 msgid "Des nouveautés"
 msgstr "Des nouveautés"
 
@@ -369,7 +369,7 @@ msgstr "Dès le {0}"
 msgid "Déconnexion"
 msgstr "Déconnexion"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
+#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:21
 msgid "Découvrir"
 msgstr "Découvrir"
 
@@ -394,7 +394,7 @@ msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgid "En voir plus"
 msgstr "En voir plus"
 
-#: src/features/profile/pages/ChangePassword.tsx:41
+#: src/features/profile/pages/ChangePassword.tsx:80
 #: src/features/profile/pages/NotificationSettings.tsx:41
 msgid "Enregistrer"
 msgstr "Enregistrer"
@@ -421,6 +421,10 @@ msgstr "Favoris"
 #: src/features/search/pages/SearchFilter.tsx:110
 msgid "Filtrer"
 msgstr "Filtrer"
+
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:73
+msgid "Format de l'e-mail incorrect"
+msgstr "Format de l'e-mail incorrect"
 
 #: src/features/bookOffer/components/BookingInformations.tsx:28
 #: src/libs/parsers/getDisplayPrice.ts:21
@@ -449,6 +453,8 @@ msgstr "Handicap visuel"
 msgid "Heure"
 msgstr "Heure"
 
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:39
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:77
 #: src/features/auth/signup/AcceptCgu.tsx:44
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
@@ -521,6 +527,7 @@ msgstr "Le pass Culture"
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:92
 #: src/features/auth/signup/AcceptCgu.tsx:90
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
@@ -551,6 +558,10 @@ msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
+#: src/features/bookOffer/services/useModalContent.tsx:43
+msgid "Mes options"
+msgstr "Mes options"
+
 #: src/features/bookOffer/components/BookingImpossible.tsx:23
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
@@ -565,16 +576,20 @@ msgstr "Modifie ta recherche ou découvre toutes les offres"
 
 #: src/features/auth/login/Login.tsx:119
 #: src/features/auth/signup/SetPassword.tsx:38
-#: src/features/profile/pages/ChangePassword.tsx:18
+#: src/features/profile/pages/ChangePassword.tsx:50
 #: src/features/profile/pages/Profile.tsx:44
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
-#: src/features/profile/pages/ChangePassword.tsx:21
+#: src/features/profile/pages/ChangePassword.tsx:54
 msgid "Mot de passe actuel"
 msgstr "Mot de passe actuel"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:72
+#: src/features/profile/pages/ChangePassword.tsx:40
+msgid "Mot de passe modifié"
+msgstr "Mot de passe modifié"
+
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:100
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
@@ -583,7 +598,7 @@ msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
 #: src/features/cheatcodes/pages/CheatMenu.tsx:20
-#: src/features/home/pages/Home.tsx:64
+#: src/features/home/pages/Home.tsx:62
 msgid "Navigation"
 msgstr "Navigation"
 
@@ -591,7 +606,7 @@ msgstr "Navigation"
 msgid "Nombre de place"
 msgstr "Nombre de place"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
+#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:21
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 
@@ -608,7 +623,7 @@ msgid "Nous utilisons des outils pour réaliser des statistiques de navigation e
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:55
-#: src/features/profile/pages/ChangePassword.tsx:27
+#: src/features/profile/pages/ChangePassword.tsx:62
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
@@ -821,13 +836,9 @@ msgstr "S'inscrire"
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:76
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:104
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
-
-#: src/features/bookOffer/components/BookDateChoice.tsx:9
-msgid "Samedi 12 mai 2021"
-msgstr "Samedi 12 mai 2021"
 
 #: src/features/auth/login/Login.tsx:130
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:41
@@ -893,7 +904,7 @@ msgstr "Ton anniversaire"
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
 
-#: src/features/home/pages/Home.tsx:54
+#: src/features/home/pages/Home.tsx:52
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
@@ -901,13 +912,11 @@ msgstr "Ton crédit est expiré"
 msgid "Ton e-mail"
 msgstr "Ton e-mail"
 
-#. password placeholder
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:51
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
 #: src/features/auth/login/Login.tsx:121
 #: src/features/auth/signup/SetPassword.tsx:34
 #: src/features/auth/signup/SetPassword.tsx:40
-#: src/features/profile/pages/ChangePassword.tsx:29
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
@@ -916,11 +925,16 @@ msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
 #. password placeholder
-#: src/features/profile/pages/ChangePassword.tsx:23
+#: src/features/profile/pages/ChangePassword.tsx:56
 msgid "Ton mot de passe actuel"
 msgstr "Ton mot de passe actuel"
 
-#: src/ui/components/achievements/components/GenericAchievement.tsx:51
+#. password placeholder
+#: src/features/profile/pages/ChangePassword.tsx:64
+msgid "Ton nouveau mot de passe"
+msgstr "Ton nouveau mot de passe"
+
+#: src/ui/components/achievements/components/GenericAchievement.tsx:52
 msgid "Tout passer"
 msgstr "Tout passer"
 
@@ -928,7 +942,7 @@ msgstr "Tout passer"
 msgid "Toute la culture"
 msgstr "Toute la culture"
 
-#: src/features/home/pages/Home.tsx:51
+#: src/features/home/pages/Home.tsx:49
 msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
 
@@ -940,7 +954,7 @@ msgstr "Tu as 18 ans..."
 msgid "Tu as déjà un compte ?\\u00a0"
 msgstr "Tu as déjà un compte ?\\u00a0"
 
-#: src/features/home/pages/Home.tsx:55
+#: src/features/home/pages/Home.tsx:53
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
@@ -989,6 +1003,11 @@ msgstr "Type d'offre"
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:55
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:88
+msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
+msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
+
 #: src/features/errors/pages/AsyncErrorBoundary.tsx:56
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
@@ -1013,11 +1032,11 @@ msgstr "Uniquement les offres gratuites"
 msgid "VISA"
 msgstr "VISA"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:87
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:115
 msgid "Valider"
 msgstr "Valider"
 
-#: src/features/bookOffer/components/BookingEventChoices.tsx:37
+#: src/features/bookOffer/components/BookingEventChoices.tsx:38
 msgid "Valider ces options"
 msgstr "Valider ces options"
 
@@ -1123,7 +1142,7 @@ msgstr "intervenant"
 msgid "metteur en scène"
 msgstr "metteur en scène"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
+#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:21
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
@@ -1133,7 +1152,7 @@ msgid "sous genre"
 msgstr "sous genre"
 
 #. email placeholder
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:83
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:111
 #: src/features/auth/login/Login.tsx:115
 #: src/features/auth/signup/SetEmail.tsx:67
 msgid "tonadresse@email.com"

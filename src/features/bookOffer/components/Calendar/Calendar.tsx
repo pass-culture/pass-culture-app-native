@@ -60,32 +60,24 @@ export const Calendar: React.FC<Props> = ({ stocks }) => {
       renderArrow={renderArrow}
       dayComponent={({ date }) => {
         const dateStatusAndPrice = getDateStatusAndPrice(new Date(date.timestamp), stocksDate)
-        // TODO: PC-6695 change hard coded for real data
-        const displayPrice =
-          date.day === 20 ||
-          date.day === 21 ||
-          date.day === 2 ||
-          date.day === 3 ||
-          (date.day === 11 && date.month === 2)
         // TODO: PC-6698 change hard coded for real data
         const selected = date.day === 11 && date.month === 2
         return (
-          <View>
+          <StyledView>
             {renderDay(dateStatusAndPrice.status, selected, date.day)}
-            {displayPrice ? (
+            {dateStatusAndPrice.price ? (
               <Typo.Caption
                 color={
                   dateStatusAndPrice.status === OfferStatus.NOT_BOOKABLE
                     ? ColorsEnum.GREY_DARK
                     : ColorsEnum.PRIMARY
-                  // eslint-disable-next-line react-native/no-raw-text
                 }>
-                19,90€
+                {dateStatusAndPrice.price}
               </Typo.Caption>
             ) : (
               <Spacer.Column numberOfSpaces={getSpacing(1)} />
             )}
-          </View>
+          </StyledView>
         )
       }}
     />
@@ -108,3 +100,5 @@ const SelectedDay = styled(View)({
 const SelectedDayNumber = styled(Typo.ButtonText)({
   alignSelf: 'center',
 })
+
+const StyledView = styled(View)({ alignItems: 'center' })
