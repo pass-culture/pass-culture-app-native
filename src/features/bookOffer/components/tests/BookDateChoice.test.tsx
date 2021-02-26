@@ -6,7 +6,7 @@ import {
   expiredStock2,
 } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
 
-import { getStocksByDate, getDateStatusAndPrice, OfferStatus } from '../BookDateChoice'
+import { getStocksByDate, getDateStatusAndPrice, OfferStatus } from '../../services/utils'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 
