@@ -8,7 +8,7 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { getStocksByDate, OfferStatus, getDateStatusAndPrice } from '../BookDateChoice'
+import { getStocksByDate, OfferStatus, getDateStatusAndPrice } from '../../services/utils'
 
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
 import { DiagonalStripe } from './DiagonalStripe'
