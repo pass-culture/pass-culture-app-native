@@ -46,7 +46,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-personal-data')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('PersonnalData')
+      expect(navigate).toBeCalledWith('PersonalData')
     })
 
     it('should navigate when the password row is clicked', async () => {

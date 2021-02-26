@@ -8,7 +8,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
 import { ProfileContainer, Separator } from '../components/reusables'
 
-export function PersonnalData() {
+export function PersonalData() {
   return (
     <React.Fragment>
       <ProfileHeaderWithNavigation title={_(t`Informations personnelles`)} />
