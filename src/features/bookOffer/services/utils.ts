@@ -23,8 +23,8 @@ export const getStocksByDate = (
 
 export enum OfferStatus {
   BOOKABLE = 'BOOKABLE',
-  NOT_BOOKABLE = 'NOTBOOKABLE',
-  NOT_OFFERED = 'NOTOFFERED',
+  NOT_BOOKABLE = 'NOT_BOOKABLE',
+  NOT_OFFERED = 'NOT_OFFERED',
 }
 
 export const formatToFrenchDecimalWithoutSpace = (cents: number) => {
