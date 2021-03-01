@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppButton Component * inline property should use inline css style when true 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "borderRadius": 0,
+      "borderWidth": 0,
+      "flexDirection": "row",
+      "height": 10,
+      "justifyContent": "center",
+      "marginTop": 0,
+      "maxWidth": 500,
+      "opacity": 1,
+      "paddingBottom": 0,
+      "paddingLeft": 5,
+      "paddingRight": 5,
+      "paddingTop": 0,
+      "width": "auto",
+    }
+  }
+  testID="button-container"
+>
+  <View
+    height={32}
+    testID="button-icon"
+    width={32}
+  >
+    button-icon-SVG-Mock
+  </View>
+  <Text
+    adjustsFontSizeToFit={false}
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 15,
+          "lineHeight": 20,
+          "marginLeft": 5,
+          "maxWidth": 650,
+        },
+      ]
+    }
+    testID="button-title"
+  >
+    Testing inline
+  </Text>
+</View>
+`;

@@ -11,14 +11,24 @@ import {
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
-export function ProfileHeaderWithNavigation(props: Pick<ModalHeaderProps, 'title'>) {
+interface Props extends Pick<ModalHeaderProps, 'title'> {
+  onGoBack?: () => void
+}
+
+export function ProfileHeaderWithNavigation(props: Props) {
   const { goBack } = useNavigation()
+  function onPress() {
+    if (props.onGoBack) {
+      props.onGoBack()
+    }
+    goBack()
+  }
   return (
     <Container>
       <ModalHeader
         title={props.title}
         customStyles={modalHeaderStyles}
-        onLeftIconPress={goBack}
+        onLeftIconPress={onPress}
         leftIcon={ArrowPrevious}
       />
     </Container>

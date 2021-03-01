@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { useSplashScreenContext } from 'libs/splashscreen'
 
 import routes from './routes'
@@ -39,7 +40,7 @@ export const RootNavigator: React.FC = () => {
       </RootStack.Navigator>
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
-      {isSplashScreenHidden && <PrivacyPolicy />}
+      {isSplashScreenHidden && <PrivacyPolicy navigationRef={navigationRef} />}
     </React.Fragment>
   )
 }

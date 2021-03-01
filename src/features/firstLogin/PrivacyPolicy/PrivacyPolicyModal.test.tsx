@@ -1,7 +1,11 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
+import { navigationRef } from 'features/navigation/navigationRef'
+
 import { PrivacyPolicyModal, Props } from './PrivacyPolicyModal'
+
+jest.mock('features/navigation/navigationRef')
 
 const dismissModal = jest.fn()
 const visible = true
@@ -33,6 +37,15 @@ describe('<PrivacyPolicyModal />', () => {
     })
     fireEvent.press(getByText('Continuer'))
     expect(dismissModal).toBeCalledTimes(1)
+  })
+  it('should navigate to ConsentSettings when pressing button with text "Paramètres de confidentialité"', () => {
+    const { getByText } = renderPrivacyModal({
+      dismissModal,
+      visible,
+      navigationRef,
+    })
+    fireEvent.press(getByText('Paramètres de confidentialité'))
+    expect(navigationRef?.current?.navigate).toBeCalled()
   })
 })
 
