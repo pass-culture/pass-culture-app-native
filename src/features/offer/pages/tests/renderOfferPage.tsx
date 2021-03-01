@@ -5,7 +5,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { OfferResponse, UserProfileResponse } from 'api/gen'
+import { Expense, ExpenseDomain, OfferResponse, UserProfileResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
@@ -28,12 +28,23 @@ jest.mock('features/offer/services/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 
+const mockExpenses: Array<Expense> = [
+  { current: 100, domain: ExpenseDomain.All, limit: 500 },
+  { current: 50, domain: ExpenseDomain.Digital, limit: 100 },
+  { current: 50, domain: ExpenseDomain.Physical, limit: 200 },
+]
+
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(
     () =>
       ({
         isLoading: false,
-        data: { email: 'email2@domain.ext', firstName: 'Jean', isBeneficiary: true },
+        data: {
+          email: 'email2@domain.ext',
+          firstName: 'Jean',
+          isBeneficiary: true,
+          expenses: mockExpenses,
+        },
       } as UseQueryResult<UserProfileResponse>)
   ),
 }))

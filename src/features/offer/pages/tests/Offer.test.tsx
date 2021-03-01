@@ -1,31 +1,6 @@
 import { act, fireEvent } from '@testing-library/react-native'
-import { UseQueryResult } from 'react-query'
-
-import { UserProfileResponse } from 'api/gen'
 
 import { renderOfferPage } from './renderOfferPage'
-
-jest.mock('libs/geolocation')
-
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
-
-jest.mock('features/offer/services/useItinerary', () => ({
-  useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
-}))
-
-jest.mock('features/home/api', () => ({
-  useUserProfileInfo: jest.fn(
-    () =>
-      ({
-        isLoading: false,
-        data: { email: 'email2@domain.ext', firstName: 'Jean', isBeneficiary: true },
-      } as UseQueryResult<UserProfileResponse>)
-  ),
-}))
 
 describe('<Offer />', () => {
   it('should match snapshot for physical offer', async () => {
