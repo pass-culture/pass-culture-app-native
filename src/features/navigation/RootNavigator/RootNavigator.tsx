@@ -62,7 +62,27 @@ export const RootNavigator: React.FC = () => {
       )}
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
+<<<<<<< HEAD
       {isAppReadyToRender && isSplashScreenHidden && <PrivacyPolicy />}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+      {isAppReadyToRender && isSplashScreenHidden && <PrivacyPolicy />}
+=======
+<<<<<<< HEAD
+      {isAppReadyToRender && isSplashScreenHidden && navigationRef.current && (
+        <PrivacyPolicy navigationRef={navigationRef} />
+      )}
+=======
+      {isSplashScreenHidden && <PrivacyPolicy />}
+>>>>>>> 9bb5b511... (PC-7224) Fix navigate issue when Navigator is not yet initialized
+>>>>>>> 11dc447b... (PC-7224) Fix navigate issue when Navigator is not yet initialized
+=======
+      {isAppReadyToRender && isSplashScreenHidden && navigationRef.current && (
+        <PrivacyPolicy navigationRef={navigationRef} />
+      )}
+>>>>>>> 64d80e49... (PC-6926) Tutoriels & Typeform - Ecran paramètres de confidentialité
+>>>>>>> 45716c7e... (PC-6926) Tutoriels & Typeform - Ecran paramètres de confidentialité
     </React.Fragment>
   )
 }

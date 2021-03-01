@@ -24,6 +24,7 @@ export type RootStackParamList = {
   ChangePassword: undefined
   CheatCodes: undefined
   CheatMenu: undefined
+  ConsentSettings: { onGoBack?: () => void }
   BookingConfirmation: undefined
   CulturalSurvey: undefined
   EligibilityConfirmed: undefined

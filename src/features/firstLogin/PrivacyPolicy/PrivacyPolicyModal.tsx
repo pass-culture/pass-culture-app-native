@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent } from 'react'
+import { NavigationContainerRef } from '@react-navigation/native'
+import React, { useCallback, useState, FunctionComponent, RefObject } from 'react'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -14,12 +15,26 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 export interface Props {
   visible: boolean
   dismissModal: () => void
+  navigationRef?: RefObject<NavigationContainerRef>
 }
 
-export const PrivacyPolicyModal: FunctionComponent<Props> = ({ visible, dismissModal }) => {
+export const PrivacyPolicyModal: FunctionComponent<Props> = ({
+  navigationRef,
+  visible,
+  dismissModal,
+}) => {
+  const [isVisible, setIsVisible] = useState<boolean>(visible)
+
+  const goToConsentSettings = useCallback(() => {
+    navigationRef?.current?.navigate('ConsentSettings', {
+      onGoBack: () => setIsVisible(true),
+    })
+    setIsVisible(false)
+  }, [navigationRef])
+
   return (
     <AppModal
-      visible={visible}
+      visible={isVisible}
       title={_(t`Respect de ta vie privée`)}
       rightIcon={Close}
       onRightIconPress={dismissModal}>
@@ -46,8 +61,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({ visible, dismissM
       <Spacer.Column numberOfSpaces={2} />
       <ButtonPrimaryWhite
         title={_(t`Paramètres de confidentialité`)}
-        onPress={dismissModal}
-        disabled
+        onPress={goToConsentSettings}
       />
     </AppModal>
   )

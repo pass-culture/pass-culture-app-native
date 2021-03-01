@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import { NavigationContainerRef } from '@react-navigation/native'
+import React, { RefObject, useEffect, useState } from 'react'
 
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
 import { storage } from 'libs/storage'
 
-export function PrivacyPolicy() {
+interface Props {
+  navigationRef?: RefObject<NavigationContainerRef>
+}
+
+export function PrivacyPolicy(props: Props) {
   const [hasUserMadeCookieChoice, setHasUserMadeCookieChoice] = useState(true)
 
   useEffect(() => {
@@ -22,5 +27,7 @@ export function PrivacyPolicy() {
   if (hasUserMadeCookieChoice) {
     return null
   }
-  return <PrivacyPolicyModal visible dismissModal={acceptCookie} />
+  return (
+    <PrivacyPolicyModal visible dismissModal={acceptCookie} navigationRef={props.navigationRef} />
+  )
 }
