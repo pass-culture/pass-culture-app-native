@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { useAppStateChange } from 'features/offer/pages/useAppStateChange'
+import { storage } from 'libs/storage'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
 import { getPosition } from './getPosition'
@@ -20,6 +21,7 @@ export interface IGeolocationContext {
   permissionState: GeolocPermissionState
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   checkGeolocPermission: () => Promise<void>
+  triggerPositionUpdate: () => void
 }
 
 export const GeolocationContext = React.createContext<IGeolocationContext>({
@@ -32,6 +34,7 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
   checkGeolocPermission: async () => {
     // nothing
   },
+  triggerPositionUpdate: () => undefined,
 })
 
 export const GeolocationWrapper = ({ children }: { children: Element }) => {
@@ -39,17 +42,44 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   const [permissionState, setPermissionState] = useState<GeolocPermissionState>(
     GeolocPermissionState.DENIED
   )
+  const [shouldComputePosition, setShouldComputePosition] = useState(0)
 
   useEffect(() => {
-    if (permissionState === GeolocPermissionState.GRANTED) {
-      getPosition(setPosition)
-    }
-  }, [permissionState])
+    contextualCheckPermission()
+  }, [])
 
+  // reset position every time user updates his choice on the app or in his phone settings
+  // if user choice is not consistent with OS permissions, position is set to null
+  useEffect(() => {
+    if (shouldComputePosition === 0) return
+    storage
+      .readObject('has_allowed_geolocation')
+      .then((hasAllowedGeolocation) => {
+        if (permissionState === GeolocPermissionState.GRANTED && Boolean(hasAllowedGeolocation)) {
+          getPosition(setPosition)
+        } else {
+          setPosition(null)
+        }
+      })
+      .catch(() => setPosition(null))
+  }, [shouldComputePosition])
+
+  function triggerPositionUpdate() {
+    setShouldComputePosition((previousValue) => previousValue + 1)
+  }
+
+  async function synchronizePermissionAndPosition(newPermissionState: GeolocPermissionState) {
+    setPermissionState(newPermissionState)
+    triggerPositionUpdate()
+  }
+
+  // this function is used to set OS permissions according to user choice on native geolocation popup
   async function contextualRequestGeolocPermission(params?: RequestGeolocPermissionParams) {
-    const permissionState = await requestGeolocPermission()
-    setPermissionState(permissionState)
-    const isPermissionGranted = permissionState === GeolocPermissionState.GRANTED
+    const newPermissionState = await requestGeolocPermission()
+    const isPermissionGranted = newPermissionState === GeolocPermissionState.GRANTED
+
+    await storage.saveObject('has_allowed_geolocation', isPermissionGranted)
+    synchronizePermissionAndPosition(newPermissionState)
 
     if (params?.onSubmit) {
       params.onSubmit()
@@ -61,13 +91,11 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
     }
   }
 
+  // in case user updates his preferences in his phone settings we check if his local
+  // storage choice is consistent with phone permissions, and update position if not
   const contextualCheckPermission = async () => {
     const newPermissionState = await checkGeolocPermission()
-    if (
-      newPermissionState === GeolocPermissionState.GRANTED ||
-      newPermissionState === GeolocPermissionState.DENIED
-    )
-      setPermissionState(newPermissionState)
+    synchronizePermissionAndPosition(newPermissionState)
   }
 
   const onAppBecomeActive = async () => {
@@ -86,6 +114,7 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
         permissionState,
         requestGeolocPermission: contextualRequestGeolocPermission,
         checkGeolocPermission: contextualCheckPermission,
+        triggerPositionUpdate,
       }}>
       {children}
     </GeolocationContext.Provider>

@@ -9,6 +9,7 @@ type StorageKey =
   | 'has_seen_tutorials'
   | 'has_accepted_cookie'
   | 'has_seen_eligible_card'
+  | 'has_allowed_geolocation'
 
 export const storage = {
   clear,

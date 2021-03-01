@@ -1,1 +1,1 @@
-export const checkGeolocPermission: () => Promise
+export const checkGeolocPermission: () => Promise<GeolocPermissionState>
