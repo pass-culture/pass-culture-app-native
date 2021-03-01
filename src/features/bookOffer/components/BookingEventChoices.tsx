@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ExpenseDomain, OfferStockResponse } from 'api/gen'
+import { OfferStockResponse } from 'api/gen'
 import { BookDateChoice } from 'features/bookOffer/components/BookDateChoice'
 import { BookDuoChoice } from 'features/bookOffer/components/BookDuoChoice'
 import { BookHourChoice } from 'features/bookOffer/components/BookHourChoice'
@@ -10,7 +10,7 @@ import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { useUserProfileInfo } from 'features/home/api'
-import { computeRemainingCredit, computeWalletBalance, sortExpenses } from 'features/profile/utils'
+import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -23,19 +23,9 @@ interface Props {
 export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) => {
   const { bookingState, dispatch } = useBooking()
   const { data: user } = useUserProfileInfo()
+  const remainingCredit = useAvailableCredit()
 
   if (!user) return <React.Fragment />
-  const depositVersion = user.depositVersion && user.depositVersion === 1 ? 1 : 2
-  const expenses = user.expenses
-  const walletBalance = computeWalletBalance(user.expenses)
-
-  const expense = sortExpenses(depositVersion, expenses).find(
-    (expense) => expense.domain === ExpenseDomain.All
-  )
-
-  const remainingCredit = expense
-    ? computeRemainingCredit(walletBalance, expense.limit, expense.current)
-    : null
 
   const validateOptions = () => {
     dispatch({ type: 'VALIDATE_OPTIONS' })
@@ -48,7 +38,10 @@ export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) =
   return (
     <Container>
       <Separator />
-      <BookDateChoice stocks={stocks} userRemainingCredit={remainingCredit} />
+      <BookDateChoice
+        stocks={stocks}
+        userRemainingCredit={remainingCredit ? remainingCredit.amount : null}
+      />
 
       <Spacer.Column numberOfSpaces={6} />
       <Separator />
