@@ -19,6 +19,7 @@ import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { i18n } from 'libs/i18n' //@translations
 import { useStartBatchNotification } from 'libs/notifications'
+import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 const queryCache = new QueryCache()
@@ -52,9 +53,11 @@ const App: FunctionComponent = function () {
                 <SearchWrapper>
                   <I18nProvider language={i18n.language} i18n={i18n}>
                     <SnackBarProvider>
-                      <AppNavigationContainer>
-                        <RootNavigator />
-                      </AppNavigationContainer>
+                      <SplashScreenProvider>
+                        <AppNavigationContainer>
+                          <RootNavigator />
+                        </AppNavigationContainer>
+                      </SplashScreenProvider>
                     </SnackBarProvider>
                   </I18nProvider>
                 </SearchWrapper>

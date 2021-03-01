@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 
-import { navigationRef } from 'features/navigation/navigationRef'
+import { navigate } from '__mocks__/@react-navigation/native'
 
 import { decodeDeeplinkParts, useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
 import { DEEPLINK_DOMAIN } from './utils'
@@ -56,7 +56,7 @@ describe('useDeeplinkUrlHandler', () => {
 
       handleDeeplinkUrl({ url })
 
-      expect(navigationRef.current?.navigate).toHaveBeenCalledWith('UniqueTestRoute', {
+      expect(navigate).toHaveBeenCalledWith('UniqueTestRoute', {
         param1: 'one',
         param2: 2,
         param3: true,
@@ -72,7 +72,7 @@ describe('useDeeplinkUrlHandler', () => {
 
       handleDeeplinkUrl({ url })
 
-      expect(navigationRef.current?.navigate).toHaveBeenCalledWith('Home', {
+      expect(navigate).toHaveBeenCalledWith('Home', {
         shouldDisplayLoginModal: false,
       })
     })
