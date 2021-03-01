@@ -39,6 +39,7 @@ describe('OfferTile component', () => {
     fireEvent.press(getByTestId('offerTileImage'))
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId })
   })
+
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
     fireEvent.press(getByTestId('offerTileImage'))
