@@ -349,7 +349,7 @@ Array [
           />
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -383,7 +383,7 @@ Array [
               style={
                 Array [
                   Object {
-                    "color": "#ff99be",
+                    "color": "#eb0055",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -393,7 +393,7 @@ Array [
                 ]
               }
               testID="button-title"
-              textColor="#ff99be"
+              textColor="#eb0055"
             >
               Paramètres de confidentialité
             </Text>

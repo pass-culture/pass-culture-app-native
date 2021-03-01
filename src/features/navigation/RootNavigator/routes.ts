@@ -27,6 +27,7 @@ import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstT
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
+import { ConsentSettings } from 'features/profile/pages/ConsentSettings'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData'
@@ -46,6 +47,7 @@ const routes: Array<Route> = [
   { name: 'AppComponents', component: AppComponents },
   { name: 'CheatCodes', component: CheatCodes },
   { name: 'CheatMenu', component: CheatMenu },
+  { name: 'ConsentSettings', component: ConsentSettings },
   { name: 'BookingConfirmation', component: BookingConfirmation },
   { name: 'CulturalSurvey', component: CulturalSurvey },
   { name: 'EligibilityConfirmed', component: EligibilityConfirmed },

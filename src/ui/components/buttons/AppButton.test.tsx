@@ -68,4 +68,12 @@ describe('AppButton Component', () => {
       expect(container.props.onLongPress).toBeFalsy()
     })
   })
+  describe('* inline property', () => {
+    it('should use inline css style when true', () => {
+      const renderAPI = render(
+        <AppButton title="Testing inline" loadingIconColor={ColorsEnum.BLACK} icon={Close} inline />
+      )
+      expect(renderAPI).toMatchSnapshot()
+    })
+  })
 })

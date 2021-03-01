@@ -212,6 +212,12 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton title={'Calendar'} onPress={() => navigation.navigate('Calendar')} />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'Réglages cookies'}
+            onPress={() => navigation.navigate('ConsentSettings', { onGoBack: () => null })}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

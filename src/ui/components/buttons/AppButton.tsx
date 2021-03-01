@@ -18,6 +18,7 @@ export interface BaseButtonProps {
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
   testIdSuffix?: string
   textSize?: number
+  inline?: boolean
 }
 
 export interface AppButtonProps extends BaseButtonProps {
@@ -28,6 +29,7 @@ export interface AppButtonProps extends BaseButtonProps {
   backgroundColor?: ColorsEnum
   borderColor?: ColorsEnum
   buttonHeight?: 'small' | 'tall'
+  inline?: boolean
 }
 
 type Only<TestedType, StandardType> = TestedType &
@@ -35,6 +37,7 @@ type Only<TestedType, StandardType> = TestedType &
 
 const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) => {
   const Icon = props.icon
+  const inline = props.inline
   const pressHandler = props.disabled || props.isLoading ? undefined : props.onPress
   const longPressHandler = props.disabled || props.isLoading ? undefined : props.onLongPress
   const titleTestID = props.testIdSuffix ? `button-title-${props.testIdSuffix}` : 'button-title'
@@ -49,7 +52,8 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
       borderColor={props.borderColor}
       onPress={pressHandler}
       onLongPress={longPressHandler}
-      buttonHeight={props.buttonHeight ?? 'small'}>
+      buttonHeight={props.buttonHeight ?? 'small'}
+      inline={inline}>
       {props.isLoading ? (
         <Logo testID="button-isloading-icon" color={props.loadingIconColor} size={props.iconSize} />
       ) : (
@@ -76,22 +80,39 @@ interface ContainerProps {
   backgroundColor?: ColorsEnum
   borderColor?: ColorsEnum
   buttonHeight: 'small' | 'tall'
+  inline?: boolean
 }
 
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
-}))<ContainerProps>(({ backgroundColor, borderColor, buttonHeight }) => ({
+}))<ContainerProps>(({ inline, backgroundColor, borderColor, buttonHeight }) => ({
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
   borderRadius: BorderRadiusEnum.BUTTON,
-  padding: 2,
+  paddingBottom: 2,
+  paddingRight: 2,
+  paddingTop: 2,
+  paddingLeft: 2,
   backgroundColor,
   borderColor,
   borderWidth: borderColor ? 2 : 0,
   height: buttonHeight === 'tall' ? getSpacing(12) : getSpacing(10),
   width: '100%',
   maxWidth: getSpacing(125),
+  ...(inline
+    ? {
+        borderWidth: 0,
+        borderRadius: 0,
+        marginTop: 0,
+        paddingBottom: 0,
+        paddingTop: 0,
+        paddingRight: 5,
+        paddingLeft: 5,
+        width: 'auto',
+        height: 10,
+      }
+    : {}),
 }))
 
 interface TitleProps {
