@@ -2041,7 +2041,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                             ]
                                           }
                                         >
-                                          Février 2021
+                                          Mars 2021
                                         </Text>
                                       </View>
                                       <View
@@ -2722,37 +2722,21 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                             ]
                                           }
                                         >
-                                          <View
+                                          <Text
+                                            color="#626262"
                                             style={
                                               Array [
                                                 Object {
-                                                  "alignSelf": "center",
-                                                  "backgroundColor": "#eb0055",
-                                                  "borderRadius": 12,
-                                                  "height": 24,
-                                                  "justifyContent": "center",
-                                                  "width": 24,
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
                                                 },
                                               ]
                                             }
                                           >
-                                            <Text
-                                              color="#ffffff"
-                                              style={
-                                                Array [
-                                                  Object {
-                                                    "alignSelf": "center",
-                                                    "color": "#ffffff",
-                                                    "fontFamily": "Montserrat-Bold",
-                                                    "fontSize": 15,
-                                                    "lineHeight": 20,
-                                                  },
-                                                ]
-                                              }
-                                            >
-                                              11
-                                            </Text>
-                                          </View>
+                                            11
+                                          </Text>
                                           <View
                                             numberOfSpaces={4}
                                             style={
@@ -3535,6 +3519,177 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           />
                                         </View>
                                       </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View
+                                          style={
+                                            Array [
+                                              Object {
+                                                "alignItems": "center",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            29
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View
+                                          style={
+                                            Array [
+                                              Object {
+                                                "alignItems": "center",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            30
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View
+                                          style={
+                                            Array [
+                                              Object {
+                                                "alignItems": "center",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            31
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "flex": 1,
+                                          }
+                                        }
+                                      />
+                                      <View
+                                        style={
+                                          Object {
+                                            "flex": 1,
+                                          }
+                                        }
+                                      />
+                                      <View
+                                        style={
+                                          Object {
+                                            "flex": 1,
+                                          }
+                                        }
+                                      />
+                                      <View
+                                        style={
+                                          Object {
+                                            "flex": 1,
+                                          }
+                                        }
+                                      />
                                     </View>
                                   </View>
                                 </View>
@@ -6814,7 +6969,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                             ]
                                           }
                                         >
-                                          Février 2021
+                                          Mars 2021
                                         </Text>
                                       </View>
                                       <View
@@ -7495,37 +7650,21 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                             ]
                                           }
                                         >
-                                          <View
+                                          <Text
+                                            color="#626262"
                                             style={
                                               Array [
                                                 Object {
-                                                  "alignSelf": "center",
-                                                  "backgroundColor": "#eb0055",
-                                                  "borderRadius": 12,
-                                                  "height": 24,
-                                                  "justifyContent": "center",
-                                                  "width": 24,
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
                                                 },
                                               ]
                                             }
                                           >
-                                            <Text
-                                              color="#ffffff"
-                                              style={
-                                                Array [
-                                                  Object {
-                                                    "alignSelf": "center",
-                                                    "color": "#ffffff",
-                                                    "fontFamily": "Montserrat-Bold",
-                                                    "fontSize": 15,
-                                                    "lineHeight": 20,
-                                                  },
-                                                ]
-                                              }
-                                            >
-                                              11
-                                            </Text>
-                                          </View>
+                                            11
+                                          </Text>
                                           <View
                                             numberOfSpaces={4}
                                             style={
@@ -8308,6 +8447,177 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           />
                                         </View>
                                       </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        Object {
+                                          "flexDirection": "row",
+                                          "justifyContent": "space-around",
+                                          "marginBottom": 7,
+                                          "marginTop": 7,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View
+                                          style={
+                                            Array [
+                                              Object {
+                                                "alignItems": "center",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            29
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View
+                                          style={
+                                            Array [
+                                              Object {
+                                                "alignItems": "center",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            30
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "alignItems": "center",
+                                            "flex": 1,
+                                          }
+                                        }
+                                      >
+                                        <View
+                                          style={
+                                            Array [
+                                              Object {
+                                                "alignItems": "center",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            color="#626262"
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "color": "#626262",
+                                                  "fontFamily": "Montserrat-Regular",
+                                                  "fontSize": 15,
+                                                  "lineHeight": 20,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            31
+                                          </Text>
+                                          <View
+                                            numberOfSpaces={4}
+                                            style={
+                                              Array [
+                                                Object {
+                                                  "height": 16,
+                                                },
+                                              ]
+                                            }
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          Object {
+                                            "flex": 1,
+                                          }
+                                        }
+                                      />
+                                      <View
+                                        style={
+                                          Object {
+                                            "flex": 1,
+                                          }
+                                        }
+                                      />
+                                      <View
+                                        style={
+                                          Object {
+                                            "flex": 1,
+                                          }
+                                        }
+                                      />
+                                      <View
+                                        style={
+                                          Object {
+                                            "flex": 1,
+                                          }
+                                        }
+                                      />
                                     </View>
                                   </View>
                                 </View>
