@@ -92,6 +92,8 @@ import { Warning } from 'ui/svg/icons/Warning'
 import { OfferBackPlaceholder } from 'ui/svg/OfferBackPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
+import { openExternalUrl } from 'features/navigation/helpers'
 
 function onButtonPress() {
   Alert.alert('you pressed it')
@@ -650,6 +652,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <StepDots numberOfSteps={NUMBER_OF_STEPS} currentStep={currentStep} />
           <Text> - Steps </Text>
+        </AlignedText>
+        <AlignedText>
+          <SocialNetworkCard network="instagram" onPress={() => openExternalUrl('https://google.com')} />
+          <Text> - SocialNetworkCard </Text>
         </AlignedText>
 
         <AlignedText>
