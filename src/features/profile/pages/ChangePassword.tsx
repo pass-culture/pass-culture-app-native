@@ -98,7 +98,7 @@ export function ChangePassword() {
               onChangeText={setNewPassword}
               placeholder={_(/*i18n: password placeholder */ t`Ton nouveau mot de passe`)}
             />
-            <PasswordSecurityRules password={newPassword} />
+            {newPassword.length > 0 && <PasswordSecurityRules password={newPassword} />}
           </StyledInput>
           <Spacer.Column numberOfSpaces={5} />
           <StyledInput>
