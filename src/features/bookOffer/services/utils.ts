@@ -1,4 +1,5 @@
 import { OfferStockResponse } from 'api/gen'
+import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToFrenchDecimal } from 'libs/parsers'
 
@@ -33,11 +34,12 @@ export const getDateStatusAndPrice = (
   const stocksByDate = stocksDates[formatToSlashedFrenchDate(date.toString())]
   if (!stocksByDate) return { status: OfferStatus.NOT_OFFERED, price: null }
 
-  const prices = stocksByDate.map((stock) => stock.price)
-  const price = Math.min(...prices)
+  const price = getOfferPrice(stocksByDate)
   const offerIsBookable = stocksByDate.some((stock) => stock.isBookable)
   const hasEnoughCredit = userRemainingCredit ? userRemainingCredit > price : false
+  const formattedPrice = formatToFrenchDecimal(price).replace(' ', '')
+
   if (offerIsBookable && hasEnoughCredit)
-    return { status: OfferStatus.BOOKABLE, price: formatToFrenchDecimal(price).replace(' ', '') }
-  return { status: OfferStatus.NOT_BOOKABLE, price: formatToFrenchDecimal(price).replace(' ', '') }
+    return { status: OfferStatus.BOOKABLE, price: formattedPrice }
+  return { status: OfferStatus.NOT_BOOKABLE, price: formattedPrice }
 }
