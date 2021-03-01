@@ -10,6 +10,8 @@ import { Home as HomeComponent } from 'features/home/pages/Home'
 import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
 
+import { InitialRoutingScreen } from '../RootNavigator/InitialRoutingScreen'
+
 import { TabBar } from './TabBar'
 import { TabParamList } from './types'
 
@@ -28,8 +30,9 @@ export const TabNavigator: React.FC = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="InitialRoutingScreen"
       tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
+      <Tab.Screen name="InitialRoutingScreen" component={InitialRoutingScreen} />
       <Tab.Screen name="Home" component={Home} initialParams={{ shouldDisplayLoginModal: false }} />
       <Tab.Screen name="Search" component={Search} />
       {authContext.isLoggedIn && <Tab.Screen name="Bookings" component={Bookings} />}

@@ -37,7 +37,7 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     return homeNavigateConfig
   },
   offer: (params) => {
-    return { screen: 'Offer', params: { id: params ? +params.id : 0 } }
+    return { screen: 'Offer', params: { id: params?.id ? Number(params.id) : 0 } }
   },
   profil() {
     return { screen: 'Profile', params: undefined }

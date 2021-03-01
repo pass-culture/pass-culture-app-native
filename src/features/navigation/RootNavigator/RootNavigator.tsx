@@ -1,15 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
-import { useHideSplashScreen } from 'libs/splashscreen'
-
-import { navigationRef } from '../navigationRef'
+import { useSplashScreenContext } from 'libs/splashscreen'
 
 import routes from './routes'
 import { RootStackParamList, Route } from './types'
-import { useGetInitialScreenConfig } from './useGetInitialScreenConfig'
 
 export const RootStack = createStackNavigator<RootStackParamList>()
 
@@ -32,37 +28,18 @@ const screens = routes
   ))
 
 export const RootNavigator: React.FC = () => {
-  const [shouldHideSplashScreen, setShouldHideSplashScreen] = useState(false)
-
-  const initialScreenConfig = useGetInitialScreenConfig()
-  const { isSplashScreenHidden } = useHideSplashScreen({ shouldHideSplashScreen })
-
-  const isAppReadyToRender = !!initialScreenConfig
-
-  useEffect(() => {
-    if (!initialScreenConfig || !navigationRef.current) {
-      return
-    }
-    const { screen, params } = initialScreenConfig
-    navigationRef.current.navigate(screen, params)
-    setShouldHideSplashScreen(true)
-  }, [initialScreenConfig, navigationRef.current])
-
-  useListenDeepLinksEffect()
-
+  const { isSplashScreenHidden } = useSplashScreenContext()
   return (
     <React.Fragment>
-      {isAppReadyToRender && (
-        <RootStack.Navigator
-          initialRouteName={'TabNavigator'}
-          headerMode="screen"
-          screenOptions={{ headerShown: false }}>
-          {screens}
-        </RootStack.Navigator>
-      )}
+      <RootStack.Navigator
+        initialRouteName={'TabNavigator'}
+        headerMode="screen"
+        screenOptions={{ headerShown: false }}>
+        {screens}
+      </RootStack.Navigator>
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
-      {isAppReadyToRender && isSplashScreenHidden && <PrivacyPolicy />}
+      {isSplashScreenHidden && <PrivacyPolicy />}
     </React.Fragment>
   )
 }
