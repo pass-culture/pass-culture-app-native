@@ -1,11 +1,13 @@
-import { render, act, fireEvent } from '@testing-library/react-native'
+import { render, act, fireEvent, waitFor } from '@testing-library/react-native'
 import React from 'react'
+import { GeoCoordinates } from 'react-native-geolocation-service'
 import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import * as NavigationHelpers from 'features/navigation/helpers'
+import { storage } from 'libs/storage'
 import { flushAllPromises } from 'tests/utils'
 
 import { Profile } from './Profile'
@@ -21,23 +23,32 @@ jest.mock('features/home/api', () => ({
 }))
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
-
 const mockSignOut = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
   useLogoutRoutine: jest.fn(() => mockSignOut),
 }))
 
-async function renderProfile() {
-  const wrapper = render(<Profile />)
-  await act(async () => {
-    await flushAllPromises()
-  })
-  return wrapper
-}
+let mockPosition: Pick<GeoCoordinates, 'latitude' | 'longitude'> | null = null
+const mockTriggerPositionUpdate = jest.fn()
+jest.mock('libs/geolocation', () => ({
+  useGeolocation: jest.fn(() => ({
+    position: mockPosition,
+    triggerPositionUpdate: mockTriggerPositionUpdate,
+  })),
+}))
+
+jest.mock('libs/storage', () => ({
+  storage: {
+    saveObject: jest.fn(),
+  },
+}))
 
 describe('Profile component', () => {
-  beforeEach(navigate.mockRestore)
+  beforeEach(() => {
+    navigate.mockRestore()
+    jest.clearAllMocks()
+  })
 
   describe('user settings section', () => {
     it('should navigate when the personal data row is clicked', async () => {
@@ -56,6 +67,39 @@ describe('Profile component', () => {
       fireEvent.press(row)
 
       expect(navigate).toBeCalledWith('ChangePassword')
+    })
+
+    describe('geolocation switch', () => {
+      it('should display switch ON if position not null', async () => {
+        mockPosition = { latitude: 2, longitude: 40 }
+
+        const { getByTestId } = await renderProfile()
+        const geolocSwitch = getByTestId('geolocation-switch-background')
+        expect(geolocSwitch.props.active).toBeTruthy()
+      })
+
+      it('should display switch OFF if position is null', async () => {
+        mockPosition = null
+        const { getByTestId } = await renderProfile()
+        const geolocSwitch = getByTestId('geolocation-switch-background')
+        expect(geolocSwitch.props.active).toBeFalsy()
+      })
+
+      it('should set `has_allowed_geolocation` to FALSE when clicking on ACTIVE switch and call setShouldComputePosition', async () => {
+        // geolocation switch is ON and user wants to switch it OFF
+        jest.spyOn(storage, 'saveObject').mockResolvedValueOnce()
+        mockPosition = { latitude: 2, longitude: 40 }
+
+        const { getByTestId } = await renderProfile()
+        const geolocSwitch = getByTestId('geolocation-switch')
+
+        fireEvent.press(geolocSwitch)
+        expect(storage.saveObject).toHaveBeenCalledWith('has_allowed_geolocation', false)
+
+        await waitFor(() => {
+          expect(mockTriggerPositionUpdate).toHaveBeenCalled()
+        })
+      })
     })
   })
 
@@ -118,13 +162,14 @@ describe('Profile component', () => {
     })
 
     it('should NOT display signout row if the user is NOT connected', async () => {
-      mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
+      mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: false }))
       const { queryByTestId } = await renderProfile()
       const row = queryByTestId('row-signout')
       expect(row).toBeFalsy()
     })
 
     it('should delete the refreshToken from Keychain and clean user profile when pressed', async () => {
+      mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
       const { getByTestId } = await renderProfile()
 
       const row = getByTestId('row-signout')
@@ -134,3 +179,11 @@ describe('Profile component', () => {
     })
   })
 })
+
+async function renderProfile() {
+  const wrapper = render(<Profile />)
+  await act(async () => {
+    await flushAllPromises()
+  })
+  return wrapper
+}

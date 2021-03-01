@@ -8,10 +8,11 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 interface Props {
   toggle: () => void
   active: boolean
+  testID?: string
 }
 
 const FilterSwitch: React.FC<Props> = (props: Props) => {
-  const { toggle, active = false } = props
+  const { toggle, active = false, testID } = props
   const animatedValue = new Animated.Value(active ? 0 : 1)
 
   const marginLeft = animatedValue.interpolate({
@@ -30,8 +31,13 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
 
   return (
     <FilterSwitchContainer>
-      <TouchableOpacity activeOpacity={ACTIVE_OPACITY} testID="filterSwitch" onPress={toggle}>
-        <StyledBackgroundColor active={active} testID="switchBackground">
+      <TouchableOpacity
+        activeOpacity={ACTIVE_OPACITY}
+        testID={testID ? testID : 'filterSwitch'}
+        onPress={toggle}>
+        <StyledBackgroundColor
+          active={active}
+          testID={testID ? `${testID}-background` : 'switchBackground'}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
       </TouchableOpacity>
