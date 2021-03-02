@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
+import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import FilterSwitch from 'ui/components/FilterSwitch'
@@ -20,9 +21,10 @@ type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
 
 export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation()
-  const [isTrackingAllowed, setIsTrackingAllowed] = useState(false)
+  const [isTrackingAllowed, setIsTrackingAllowed] = useState(true)
 
   function save() {
+    storage.saveObject('has_accepted_cookie', isTrackingAllowed)
     goBack()
   }
 
