@@ -1,4 +1,5 @@
 import { BottomTabBarOptions, BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import { Route } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -13,13 +14,13 @@ import { ColorsEnum, getShadow, getSpacing, Spacer, UniqueColors } from 'ui/them
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
 import { TabBarComponent } from './TabBarComponent'
-import { TabRouteName } from './types'
+import { TabRouteName, TabParamList } from './types'
 
 const mapRouteToIcon = (
-  route: TabRouteName | string
+  route: Exclude<TabRouteName, 'InitialRoutingScreen'>
 ): ((props: BicolorIconInterface) => React.ReactNode) => {
   switch (route) {
-    case 'HomeNavigator':
+    case 'Home':
       return BicolorLogo
     case 'Search':
       return BicolorSearch
@@ -29,8 +30,6 @@ const mapRouteToIcon = (
       return BicolorFavorite
     case 'Profile':
       return BicolorProfile
-    default:
-      return BicolorLogo
   }
 }
 export const TabBar: React.FC<Pick<
@@ -38,13 +37,16 @@ export const TabBar: React.FC<Pick<
   'state' | 'navigation'
 >> = ({ navigation, state }) => {
   const { bottom } = useCustomSafeInsets()
+  const routes = state.routes as Route<TabRouteName, TabParamList>[]
   return (
     <MainContainer>
       <RowContainer>
         <Spacer.Row numberOfSpaces={4} />
-        {state.routes.map((route, index) => {
+        {routes.map((route, index) => {
+          if (route.name === 'InitialRoutingScreen') {
+            return null
+          }
           const isSelected = state.index === index
-          const routeName = state.routeNames[index]
           const onPress = () => {
             if (isSelected) return
 
@@ -61,9 +63,9 @@ export const TabBar: React.FC<Pick<
             <TabBarComponent
               key={`key-tab-nav-${index}-${route.key}`}
               isSelected={isSelected}
-              bicolorIcon={mapRouteToIcon(routeName)}
+              bicolorIcon={mapRouteToIcon(route.name)}
               onPress={onPress}
-              testID={`tab-${routeName}`}
+              testID={`tab-${route.name}`}
             />
           )
         })}

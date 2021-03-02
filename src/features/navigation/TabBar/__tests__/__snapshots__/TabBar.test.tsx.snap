@@ -64,14 +64,14 @@ exports[`TabBar renders correctly 1`] = `
           "opacity": 1,
         }
       }
-      testID="tab-HomeNavigator"
+      testID="tab-Home"
     >
       <View
         height={3}
-        testID="selector-tab-HomeNavigator"
+        testID="selector-tab-Home"
         width={44}
       >
-        selector-tab-HomeNavigator-SVG-Mock
+        selector-tab-Home-SVG-Mock
       </View>
       <View
         style={

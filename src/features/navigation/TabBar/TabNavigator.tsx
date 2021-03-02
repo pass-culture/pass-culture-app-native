@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import React from 'react'
+import React, { ComponentType } from 'react'
 import { StatusBar, Platform } from 'react-native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -13,7 +13,7 @@ import { Search } from 'features/search/pages/Search'
 import { InitialRoutingScreen } from '../RootNavigator/InitialRoutingScreen'
 
 import { TabBar } from './TabBar'
-import { TabParamList } from './types'
+import { TabParamList, TabRouteName } from './types'
 
 StatusBar.setBarStyle('light-content')
 if (Platform.OS === 'android') {
@@ -25,6 +25,45 @@ export const Tab = createBottomTabNavigator<TabParamList>()
 
 const Home = withAsyncErrorBoundary(HomeComponent)
 
+export const tabBarRoutes: Array<{
+  name: TabRouteName
+  component: ComponentType
+  params?: TabParamList[TabRouteName]
+  key: string
+}> = [
+  {
+    name: 'Home',
+    component: Home,
+    params: { shouldDisplayLoginModal: false },
+    key: 'Home-key',
+  },
+  {
+    name: 'Search',
+    component: Search,
+    key: 'Search-key',
+  },
+  {
+    name: 'Bookings',
+    component: Bookings,
+    key: 'Bookings-key',
+  },
+  {
+    name: 'Favorites',
+    component: Favorites,
+    key: 'Favorites-key',
+  },
+  {
+    name: 'Profile',
+    component: Profile,
+    key: 'Profile-key',
+  },
+  {
+    name: 'InitialRoutingScreen',
+    component: InitialRoutingScreen,
+    key: 'InitialRoutingScreen-key',
+  },
+]
+
 export const TabNavigator: React.FC = () => {
   const authContext = useAuthContext()
 
@@ -32,12 +71,21 @@ export const TabNavigator: React.FC = () => {
     <Tab.Navigator
       initialRouteName="InitialRoutingScreen"
       tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
-      <Tab.Screen name="InitialRoutingScreen" component={InitialRoutingScreen} />
-      <Tab.Screen name="Home" component={Home} initialParams={{ shouldDisplayLoginModal: false }} />
-      <Tab.Screen name="Search" component={Search} />
-      {authContext.isLoggedIn && <Tab.Screen name="Bookings" component={Bookings} />}
-      <Tab.Screen name="Favorites" component={Favorites} />
-      <Tab.Screen name="Profile" component={Profile} />
+      {tabBarRoutes
+        .filter((route) => {
+          if (route.name === 'Bookings' && !authContext.isLoggedIn) {
+            return false
+          }
+          return true
+        })
+        .map((route) => (
+          <Tab.Screen
+            name={route.name}
+            component={route.component}
+            initialParams={route.params}
+            key={route.key}
+          />
+        ))}
     </Tab.Navigator>
   )
 }
