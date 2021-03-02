@@ -14,6 +14,7 @@ import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/Async
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
+import { ABTestingProvider } from 'libs/ABTesting'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
@@ -45,27 +46,29 @@ const App: FunctionComponent = function () {
 
   return (
     <CodePushProvider>
-      <SafeAreaProvider>
-        <QueryClientProvider client={queryClient}>
-          <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-            <GeolocationWrapper>
-              <AuthWrapper>
-                <SearchWrapper>
-                  <I18nProvider language={i18n.language} i18n={i18n}>
-                    <SnackBarProvider>
-                      <SplashScreenProvider>
-                        <AppNavigationContainer>
-                          <RootNavigator />
-                        </AppNavigationContainer>
-                      </SplashScreenProvider>
-                    </SnackBarProvider>
-                  </I18nProvider>
-                </SearchWrapper>
-              </AuthWrapper>
-            </GeolocationWrapper>
-          </ErrorBoundary>
-        </QueryClientProvider>
-      </SafeAreaProvider>
+      <ABTestingProvider>
+        <SafeAreaProvider>
+          <QueryClientProvider client={queryClient}>
+            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+              <GeolocationWrapper>
+                <AuthWrapper>
+                  <SearchWrapper>
+                    <I18nProvider language={i18n.language} i18n={i18n}>
+                      <SnackBarProvider>
+                        <SplashScreenProvider>
+                          <AppNavigationContainer>
+                            <RootNavigator />
+                          </AppNavigationContainer>
+                        </SplashScreenProvider>
+                      </SnackBarProvider>
+                    </I18nProvider>
+                  </SearchWrapper>
+                </AuthWrapper>
+              </GeolocationWrapper>
+            </ErrorBoundary>
+          </QueryClientProvider>
+        </SafeAreaProvider>
+      </ABTestingProvider>
     </CodePushProvider>
   )
 }
