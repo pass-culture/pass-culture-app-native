@@ -1,11 +1,11 @@
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { SignUpSignInChoiceModal } from 'features/home/components/SignUpSignInChoiceModal'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
@@ -24,8 +24,9 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { headerTransition, offerId, title } = props
   const { isLoggedIn } = useAuthContext()
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
-  const { goBack } = useNavigation<UseNavigationType>()
+  const { goBack, setParams } = useNavigation<UseNavigationType>()
   const shareOffer = useShareOffer(offerId)
+  const { params } = useRoute<UseRouteType<'Offer'>>()
 
   const iconBackgroundColor = headerTransition.interpolate({
     inputRange: [0, 1],
@@ -49,6 +50,17 @@ export const OfferHeader: React.FC<Props> = (props) => {
       showSignInModal()
     }
   }
+
+  function hideSignInModal() {
+    setParams({ shouldDisplayLoginModal: false })
+    hideModal()
+  }
+
+  useFocusEffect(() => {
+    if (params.shouldDisplayLoginModal) {
+      showSignInModal()
+    }
+  })
 
   return (
     <React.Fragment>
@@ -74,7 +86,11 @@ export const OfferHeader: React.FC<Props> = (props) => {
         </Row>
         <Spacer.Column numberOfSpaces={2} />
       </HeaderContainer>
-      <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideModal} />
+      <SignUpSignInChoiceOfferModal
+        visible={signInModalVisible}
+        dismissModal={hideSignInModal}
+        id={params.id}
+      />
     </React.Fragment>
   )
 }

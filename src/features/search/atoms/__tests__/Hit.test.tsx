@@ -36,7 +36,7 @@ describe('Hit component', () => {
       from: 'SEARCH',
       query: '',
     })
-    expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId })
+    expect(navigate).toHaveBeenCalledWith('Offer', { id: offerId, shouldDisplayLoginModal: false })
   })
   it('should show distance if geolocation enabled', () => {
     mockDistance = '10 km'
