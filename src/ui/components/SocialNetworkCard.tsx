@@ -1,26 +1,28 @@
 import React, { memo } from 'react'
-import styled from 'styled-components/native'
-import { Typo, getSpacing } from 'ui/theme'
 import { TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
 
-type SocialNetworkList = 'facebook' | 'instagram' | 'snapchat' | 'twitter'
+import { openExternalUrl } from 'features/navigation/helpers'
+import { Typo, getSpacing } from 'ui/theme'
+
+import { SocialNetwork, SocialNetworkIconsMap } from './socials/types'
 
 interface SocialNetworkCardProps {
-  network: SocialNetworkList
-  onPress: () => void
+  network: SocialNetwork
 }
 
 function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   const { network } = props
+  const { icon: Icon, link } = SocialNetworkIconsMap[network]
   const name = network[0].toUpperCase() + network.slice(1)
 
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity onPress={() => openExternalUrl(link)}>
       <Container>
-        <NetworkIconBox />
-        <Typo.Caption numberOfLines={2}>
-          {name}
-        </Typo.Caption>
+        <NetworkIconBox>
+          <Icon size={24} />
+        </NetworkIconBox>
+        <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
       </Container>
     </TouchableOpacity>
   )
@@ -38,6 +40,6 @@ const Container = styled.View({
 const NetworkIconBox = styled.View({
   width: 32,
   height: 32,
-  backgroundColor: 'green',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  alignItems: 'center',
 })

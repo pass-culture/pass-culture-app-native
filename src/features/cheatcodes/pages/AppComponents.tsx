@@ -36,6 +36,8 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
+import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { StepDots } from 'ui/components/StepDots'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -92,8 +94,6 @@ import { Warning } from 'ui/svg/icons/Warning'
 import { OfferBackPlaceholder } from 'ui/svg/OfferBackPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
-import { openExternalUrl } from 'features/navigation/helpers'
 
 function onButtonPress() {
   Alert.alert('you pressed it')
@@ -271,6 +271,8 @@ export const AppComponents: FunctionComponent = () => {
 
       {/* Icons */}
       <AccordionItem title="Icons">
+        <SocialNetworkIcons />
+        <Spacer.Column numberOfSpaces={4} />
         <CategoryIcons />
         <AlignedText>
           <ArrowPrevious size={24} />
@@ -654,11 +656,6 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Steps </Text>
         </AlignedText>
         <AlignedText>
-          <SocialNetworkCard network="instagram" onPress={() => openExternalUrl('https://google.com')} />
-          <Text> - SocialNetworkCard </Text>
-        </AlignedText>
-
-        <AlignedText>
           <Button
             title="Back"
             onPress={() => setCurrentStep((step) => (step === 1 ? step : step - 1))}
@@ -726,6 +723,24 @@ const CategoryIcons = () => {
         )
       })}
       <Text>{'\n'}</Text>
+    </React.Fragment>
+  )
+}
+
+const SocialNetworkIcons = () => {
+  return (
+    <React.Fragment>
+      <Text>{'Social network'}</Text>
+      <Spacer.Column numberOfSpaces={2} />
+      {Object.keys(SocialNetworkIconsMap).map((network: string | null) => {
+        const net = network as SocialNetwork
+        return (
+          <AlignedText key={network}>
+            <SocialNetworkCard network={net} />
+            <Text> - {network} </Text>
+          </AlignedText>
+        )
+      })}
     </React.Fragment>
   )
 }
