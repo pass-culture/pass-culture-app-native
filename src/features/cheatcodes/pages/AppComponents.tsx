@@ -102,6 +102,7 @@ function onButtonPress() {
 
 const NUMBER_OF_STEPS = 4
 const THIS_YEAR = new Date().getFullYear()
+const ICON_SIZE = getSpacing(6)
 
 const expenses_v1: Array<Expense> = [
   { current: 100, domain: ExpenseDomain.All, limit: 500 },
@@ -276,215 +277,215 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={4} />
         <CategoryIcons />
         <AlignedText>
-          <ArrowPrevious size={24} />
+          <ArrowPrevious size={ICON_SIZE} />
           <Text> - ArrowPrevious </Text>
         </AlignedText>
         <AlignedText>
-          <ArrowNext size={24} />
+          <ArrowNext size={ICON_SIZE} />
           <Text> - ArrowNext </Text>
         </AlignedText>
         <AlignedText>
-          <Check size={24} />
+          <Check size={ICON_SIZE} />
           <Text> - Check </Text>
         </AlignedText>
         <AlignedText>
-          <Clock size={24} />
+          <Clock size={ICON_SIZE} />
           <Text> - Clock </Text>
         </AlignedText>
         <AlignedText>
-          <Close size={24} />
+          <Close size={ICON_SIZE} />
           <Text> - Close </Text>
         </AlignedText>
         <AlignedText>
-          <Eye size={24} />
+          <Eye size={ICON_SIZE} />
           <Text> - Eye </Text>
         </AlignedText>
         <AlignedText>
-          <EyeSlash size={24} />
+          <EyeSlash size={ICON_SIZE} />
           <Text> - EyeSlash </Text>
         </AlignedText>
         <AlignedText>
-          <Logo size={24} />
+          <Logo size={ICON_SIZE} />
           <Text> - Logo </Text>
         </AlignedText>
         <AlignedText>
-          <BicolorLogo size={24} />
+          <BicolorLogo size={ICON_SIZE} />
           <Text> - BicolorLogo </Text>
         </AlignedText>
         <AlignedText>
-          <BicolorSearch size={24} />
+          <BicolorSearch size={ICON_SIZE} />
           <Text> - BicolorSearch </Text>
         </AlignedText>
         <AlignedText>
-          <BicolorBookings size={24} />
+          <BicolorBookings size={ICON_SIZE} />
           <Text> - BicolorBookings </Text>
         </AlignedText>
         <AlignedText>
-          <BicolorFavorite size={24} />
+          <BicolorFavorite size={ICON_SIZE} />
           <Text> - BicolorFavorite </Text>
         </AlignedText>
         <AlignedText>
-          <BicolorProfile size={24} />
+          <BicolorProfile size={ICON_SIZE} />
           <Text> - BicolorProfile </Text>
         </AlignedText>
         <AlignedText>
-          <BicolorSelector width={24} />
+          <BicolorSelector width={ICON_SIZE} />
           <Text> - BicolorSelector </Text>
         </AlignedText>
         <AlignedText>
-          <UserCircle size={24} />
+          <UserCircle size={ICON_SIZE} />
           <Text> - UserCircle </Text>
         </AlignedText>
         <AlignedText>
-          <Email size={24} />
+          <Email size={ICON_SIZE} />
           <Text> - Email </Text>
         </AlignedText>
         <AlignedText>
-          <ExternalSite size={24} />
+          <ExternalSite size={ICON_SIZE} />
           <Text> - External site </Text>
         </AlignedText>
         <AlignedText>
-          <Warning size={24} />
+          <Warning size={ICON_SIZE} />
           <Text> - Warning </Text>
         </AlignedText>
         <AlignedText>
-          <SadFace size={24} />
+          <SadFace size={ICON_SIZE} />
           <Text> - SadFace </Text>
         </AlignedText>
         <AlignedText>
-          <HappyFaceStars size={40} />
+          <HappyFaceStars size={getSpacing(10)} />
           <Text> - HappyFaceStars </Text>
         </AlignedText>
         <AlignedText>
-          <LocationPointer size={24} />
+          <LocationPointer size={ICON_SIZE} />
           <Text> - LocationPointer </Text>
         </AlignedText>
         <AlignedText>
-          <Digital size={24} />
+          <Digital size={ICON_SIZE} />
           <Text> - Digital </Text>
         </AlignedText>
         <AlignedText>
-          <OrderPrice size={24} />
+          <OrderPrice size={ICON_SIZE} />
           <Text> - OrderPrice </Text>
         </AlignedText>
         <AlignedText>
-          <HandicapVisual size={24} />
+          <HandicapVisual size={ICON_SIZE} />
           <Text> - HandicapVisual </Text>
         </AlignedText>
         <AlignedText>
-          <HandicapMental size={24} />
+          <HandicapMental size={ICON_SIZE} />
           <Text> - HandicapMental </Text>
         </AlignedText>
         <AlignedText>
-          <HandicapMotor size={24} />
+          <HandicapMotor size={ICON_SIZE} />
           <Text> - HandicapMotor </Text>
         </AlignedText>
         <AlignedText>
-          <HandicapAudio size={24} />
+          <HandicapAudio size={ICON_SIZE} />
           <Text> - HandicapAudio </Text>
         </AlignedText>
         <AlignedText>
-          <Validate size={24} />
+          <Validate size={ICON_SIZE} />
           <Text> - Validate </Text>
         </AlignedText>
         <AlignedText>
-          <Invalidate size={24} />
+          <Invalidate size={ICON_SIZE} />
           <Text> - Invalidate </Text>
         </AlignedText>
         <AlignedText>
-          <Favourite size={24} />
+          <Favourite size={ICON_SIZE} />
           <Text> - Favourite </Text>
         </AlignedText>
         <AlignedText>
-          <MagnifyingGlass size={24} />
+          <MagnifyingGlass size={ICON_SIZE} />
           <Text> - MagnifyingGlass </Text>
         </AlignedText>
         <AlignedText>
-          <Info size={24} />
+          <Info size={ICON_SIZE} />
           <Text> - Info </Text>
         </AlignedText>
         <AlignedText>
-          <AroundMe size={24} />
+          <AroundMe size={ICON_SIZE} />
           <Text> - AroundMe </Text>
         </AlignedText>
         <AlignedText>
-          <Everywhere size={24} />
+          <Everywhere size={ICON_SIZE} />
           <Text> - Everywhere </Text>
         </AlignedText>
         <AlignedText>
-          <BicolorLocationPointer size={24} />
+          <BicolorLocationPointer size={ICON_SIZE} />
           <Text> - BicolorLocationPointer </Text>
         </AlignedText>
         <AlignedText>
-          <NoOffer size={24} />
+          <NoOffer size={ICON_SIZE} />
           <Text> - NoOffer </Text>
         </AlignedText>
         <AlignedText>
-          <OfferDigital size={24} />
+          <OfferDigital size={ICON_SIZE} />
           <Text> - OfferDigital </Text>
         </AlignedText>
         <AlignedText>
-          <OfferPhysical size={24} />
+          <OfferPhysical size={ICON_SIZE} />
           <Text> - OfferPhysical </Text>
         </AlignedText>
         <AlignedText>
-          <OfferOutings size={24} />
+          <OfferOutings size={ICON_SIZE} />
           <Text> - OfferOutings </Text>
         </AlignedText>
         <AlignedText>
-          <OfferOutingsPhysical size={24} />
+          <OfferOutingsPhysical size={ICON_SIZE} />
           <Text> - OfferOutingsPhysical </Text>
         </AlignedText>
         <AlignedText>
-          <LegalNotices size={24} />
+          <LegalNotices size={ICON_SIZE} />
           <Text> - LegalNotices </Text>
         </AlignedText>
         <AlignedText>
-          <Confidentiality size={24} />
+          <Confidentiality size={ICON_SIZE} />
           <Text> - Confidentiality </Text>
         </AlignedText>
         <AlignedText>
-          <SignOut size={24} />
+          <SignOut size={ICON_SIZE} />
           <Text> - SignOut </Text>
         </AlignedText>
         <AlignedText>
-          <Lock size={24} />
+          <Lock size={ICON_SIZE} />
           <Text> - Lock </Text>
         </AlignedText>
         <AlignedText>
-          <Profile size={24} />
+          <Profile size={ICON_SIZE} />
           <Text> - Profile </Text>
         </AlignedText>
         <AlignedText>
-          <LifeBuoy size={24} />
+          <LifeBuoy size={ICON_SIZE} />
           <Text> - LifeBuoy </Text>
         </AlignedText>
         <AlignedText>
-          <Bell size={24} />
+          <Bell size={ICON_SIZE} />
           <Text> - Bell </Text>
         </AlignedText>
         <AlignedText>
-          <ProfileDeletion size={24} />
+          <ProfileDeletion size={ICON_SIZE} />
           <Text> - ProfileDeletion </Text>
         </AlignedText>
         <AlignedText>
-          <Booking size={24} />
+          <Booking size={ICON_SIZE} />
           <Text> - Booking </Text>
         </AlignedText>
         <AlignedText>
-          <Calendar size={24} />
+          <Calendar size={ICON_SIZE} />
           <Text> - Calendar </Text>
         </AlignedText>
         <AlignedText>
-          <LocationBuilding size={24} />
+          <LocationBuilding size={ICON_SIZE} />
           <Text> - LocationBuilding </Text>
         </AlignedText>
         <AlignedText>
-          <TicketBooked width={24} height={24} />
+          <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
           <Text> - TicketBooked </Text>
         </AlignedText>
         <AlignedText>
-          <LocationPointerNotFilled size={24} />
+          <LocationPointerNotFilled size={ICON_SIZE} />
           <Text> - LocationPointerNotFilled </Text>
         </AlignedText>
       </AccordionItem>
@@ -722,9 +723,13 @@ const CategoryIcons = () => {
 
         return (
           <AlignedText key={category || "ŒUVRE D'ART"}>
-            <Icon size={24} color={ColorsEnum.GREY_DARK} />
-            <BicolorIcon size={24} color={ColorsEnum.PRIMARY} color2={ColorsEnum.PRIMARY} />
-            <BicolorIcon size={24} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
+            <Icon size={ICON_SIZE} color={ColorsEnum.GREY_DARK} />
+            <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.PRIMARY} />
+            <BicolorIcon
+              size={ICON_SIZE}
+              color={ColorsEnum.PRIMARY}
+              color2={ColorsEnum.SECONDARY}
+            />
             <Text> - {category || "ŒUVRE D'ART / TOUTES"} </Text>
           </AlignedText>
         )
