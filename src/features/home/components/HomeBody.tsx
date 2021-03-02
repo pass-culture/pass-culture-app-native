@@ -23,9 +23,11 @@ interface HomeBodyProps {
   modules: ProcessedModule[]
   algoliaModules: AlgoliaModuleResponse
   recommendedHits: AlgoliaHit[]
+  setRecommendationY: (y: number) => void
 }
 
-export const HomeBody = function ({ modules, algoliaModules, recommendedHits }: HomeBodyProps) {
+export const HomeBody = (props: HomeBodyProps) => {
+  const { modules, algoliaModules, recommendedHits, setRecommendationY } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
 
@@ -57,6 +59,7 @@ export const HomeBody = function ({ modules, algoliaModules, recommendedHits }: 
                 hits={recommendedHits}
                 position={position}
                 index={index}
+                setRecommendationY={setRecommendationY}
                 {...module}
               />
             )

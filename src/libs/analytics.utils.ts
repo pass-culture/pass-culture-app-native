@@ -1,18 +1,17 @@
 import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 
+type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
+
 export const isCloseToBottom = ({
   layoutMeasurement,
   contentOffset,
   contentSize,
-}: NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']) => {
-  const paddingToBottom = 20
-  return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom
-}
+  padding = 20,
+}: Props) => layoutMeasurement.height + contentOffset.y >= contentSize.height - padding
 
 export const isCloseToEndHorizontal = ({
   layoutMeasurement,
   contentOffset,
   contentSize,
-  padding,
-}: NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding: number }) =>
-  layoutMeasurement.width + contentOffset.x >= contentSize.width - padding
+  padding = 0,
+}: Props) => layoutMeasurement.width + contentOffset.x >= contentSize.width - padding

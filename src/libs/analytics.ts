@@ -23,6 +23,7 @@ export enum AnalyticsEvent {
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   NO_SEARCH_RESULT = 'NoSearchResult',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
+  RECOMMENDATION_MODULE_SEEN = 'RecommendationModuleSeen',
   REINITIALIZE_FILTERS = 'ReinitializeFilters',
   RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
   RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
@@ -79,6 +80,12 @@ const logClickSeeMore = (moduleName: string) =>
 
 const logClickBusinessBlock = (moduleName: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName })
+
+const logRecommendationModuleSeen = (moduleName: string, numberOfTiles: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.RECOMMENDATION_MODULE_SEEN, {
+    moduleName,
+    numberOfTiles,
+  })
 
 /**
  * Offer
@@ -179,6 +186,7 @@ export const analytics = {
   logContactSupportSignupConfirmationEmailSent,
   logNoSearchResult,
   logOfferSeenDuration,
+  logRecommendationModuleSeen,
   logReinitializeFilters,
   logResendEmailResetPasswordExpiredLink,
   logResendEmailSignupConfirmationExpiredLink,
