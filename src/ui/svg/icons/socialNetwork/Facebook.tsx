@@ -3,7 +3,7 @@ import Svg, { Path, G } from 'react-native-svg'
 
 import { ColorsEnum } from 'ui/theme'
 
-import { IconInterface } from './types'
+import { IconInterface } from '../types'
 
 export const Facebook: React.FunctionComponent<IconInterface> = ({
   size = 32,
