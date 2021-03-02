@@ -44,6 +44,9 @@ jest.mock('features/auth/support.services')
 /* Cf. the corresponding mock in libs/__mocks__ */
 jest.mock('libs/analytics')
 
+/* No need to actually fetch Firebase's A/B testing config in tests */
+jest.mock('libs/ABTesting/ABTesting.services')
+
 /* Flipper only using during manual debbuging */
 jest.mock('react-native-flipper')
 

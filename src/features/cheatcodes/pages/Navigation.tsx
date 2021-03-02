@@ -218,6 +218,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('ConsentSettings', { onGoBack: () => null })}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={'A/B Testing POC'}
+            onPress={() => navigation.navigate('ABTestingPOC')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

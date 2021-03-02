@@ -12,6 +12,7 @@ import { TabParamList, TabRouteName } from '../TabBar/types'
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
+  ABTestingPOC: undefined
   AcceptCgu: {
     email: string
     isNewsletterChecked: boolean

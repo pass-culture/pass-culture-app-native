@@ -16,6 +16,7 @@ import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfir
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { Calendar } from 'features/bookOffer/components/Calendar/Calendar'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
+import { ABTestingPOC } from 'features/cheatcodes/pages/ABTestingPOC'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
@@ -41,6 +42,7 @@ import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Route } from './types'
 
 const routes: Array<Route> = [
+  { name: 'ABTestingPOC', component: ABTestingPOC },
   { name: 'AcceptCgu', component: AcceptCgu, hoc: withAsyncErrorBoundary },
   { name: 'AccountCreated', component: AccountCreated },
   { name: 'AfterSignupEmailValidationBuffer', component: AfterSignupEmailValidationBuffer },

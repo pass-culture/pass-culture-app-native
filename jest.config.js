@@ -7,7 +7,17 @@ module.exports = {
     '^.+\\.(js)$': '<rootDir>/node_modules/babel-jest',
   },
   transformIgnorePatterns: [
-    'node_modules/(?!(jest-)?react-native|@react-navigation|@ptomasroos/react-native-multi-slider|react-navigation|@react-native-community/masked-view|@react-native-firebase/analytics|@react-native-firebase/app|@sentry/react-native|react-native-geolocation-service/async-storage/(?!(lib)))',
+    'node_modules/(?!(jest-)?react-native' +
+      '|@react-navigation' +
+      '|@ptomasroos/react-native-multi-slider' +
+      '|react-navigation' +
+      '|@react-native-community/masked-view' +
+      '|@react-native-firebase/analytics' +
+      '|@react-native-firebase/app' +
+      '|@react-native-firebase/remote-config' +
+      '|@sentry/react-native' +
+      '|react-native-geolocation-service' +
+      '/(?!(lib)))',
   ],
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
   testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/'],
