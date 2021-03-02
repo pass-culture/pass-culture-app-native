@@ -3,7 +3,7 @@ import Svg, { G, Path, Defs, RadialGradient, Stop } from 'react-native-svg'
 
 import { ColorsEnum } from 'ui/theme'
 
-import { IconInterface } from './types'
+import { IconInterface } from '../types'
 
 export const Instagram = ({
   color: _color = ColorsEnum.GREY_DARK,

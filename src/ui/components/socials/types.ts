@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-import { Facebook } from 'ui/svg/icons/Facebook'
-import { Instagram } from 'ui/svg/icons/Instagram'
-import { Snapchat } from 'ui/svg/icons/Snapchat'
-import { Twitter } from 'ui/svg/icons/Twitter'
+import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
+import { Instagram } from 'ui/svg/icons/socialNetwork/Instagram'
+import { Snapchat } from 'ui/svg/icons/socialNetwork/Snapchat'
+import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { IconInterface } from 'ui/svg/icons/types'
 
 export type SocialNetwork = 'facebook' | 'instagram' | 'snapchat' | 'twitter'
