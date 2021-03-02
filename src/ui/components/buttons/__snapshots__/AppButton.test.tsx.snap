@@ -17,7 +17,7 @@ exports[`AppButton Component * inline property should use inline css style when 
       "borderRadius": 0,
       "borderWidth": 0,
       "flexDirection": "row",
-      "height": 10,
+      "height": 15,
       "justifyContent": "center",
       "marginTop": 0,
       "maxWidth": 500,

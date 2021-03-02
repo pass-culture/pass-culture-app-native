@@ -110,7 +110,7 @@ const Container = styled.TouchableOpacity.attrs(() => ({
         paddingRight: 5,
         paddingLeft: 5,
         width: 'auto',
-        height: 10,
+        height: 15,
       }
     : {}),
 }))
