@@ -4434,7 +4434,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 ]
                               }
                             >
-                              Le pass Culture est accessible à tous !
+                              Connecte-toi pour profiter de cette fonctionnalité
                             </Text>
                             <View
                               accessible={true}
@@ -4504,7 +4504,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   ]
                                 }
                               >
-                                Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.
+                                Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
                               </Text>
                             </Text>
                             <View
@@ -9362,7 +9362,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 ]
                               }
                             >
-                              Le pass Culture est accessible à tous !
+                              Connecte-toi pour profiter de cette fonctionnalité
                             </Text>
                             <View
                               accessible={true}
@@ -9432,7 +9432,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   ]
                                 }
                               >
-                                Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.
+                                Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
                               </Text>
                             </Text>
                             <View

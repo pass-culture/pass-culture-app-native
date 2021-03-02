@@ -30,10 +30,13 @@ export type RootStackParamList = {
   EligibilityConfirmed: undefined
   ForgottenPassword: undefined
   IdCheck: { email: string; licenceToken: string }
-  Login: ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>) | undefined
+  Login:
+    | ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>)
+    | ({ preventCancellation?: boolean } & BackNavigationParams<'Offer'>)
+    | undefined
   Navigation: undefined
   NotificationSettings: undefined
-  Offer: { id: number }
+  Offer: { id: number; shouldDisplayLoginModal: boolean }
   OfferDescription: { id: number }
   ReinitializePassword: { token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
@@ -46,7 +49,10 @@ export type RootStackParamList = {
   SearchCategories: undefined
   SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
-  SetEmail: ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>) | undefined
+  SetEmail:
+    | ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>)
+    | ({ preventCancellation?: boolean } & BackNavigationParams<'Offer'>)
+    | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }

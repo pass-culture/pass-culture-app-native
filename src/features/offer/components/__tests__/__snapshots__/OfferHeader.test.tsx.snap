@@ -533,7 +533,7 @@ Array [
               ]
             }
           >
-            Le pass Culture est accessible à tous !
+            Connecte-toi pour profiter de cette fonctionnalité
           </Text>
           <View
             accessible={true}
@@ -603,7 +603,7 @@ Array [
                 ]
               }
             >
-              Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.
+              Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
             </Text>
           </Text>
           <View

@@ -106,7 +106,9 @@ describe('<OfferHeader />', () => {
     act(() => {
       fireEvent.press(getByTestId('icon-favorite'))
     })
-    expect(queryByText(/Si tu as 18 ans/)).toBeTruthy()
+    expect(
+      queryByText(/Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil/)
+    ).toBeTruthy()
   })
 
   describe('<OfferHeader /> - Analytics', () => {
