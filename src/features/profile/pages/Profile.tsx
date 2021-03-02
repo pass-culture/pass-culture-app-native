@@ -10,6 +10,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
+import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
@@ -18,7 +19,7 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 import Package from '../../../../package.json'
@@ -114,7 +115,12 @@ export const Profile: React.FC = () => {
           />
         </Section>
         <Section title={_(t`Suivre Pass Culture`)}>
-          <Typo.Body>{_(t`Temporary content`)}</Typo.Body>
+          <NetworkRow>
+            <SocialNetworkCard network="instagram" />
+            <SocialNetworkCard network="twitter" />
+            <SocialNetworkCard network="snapchat" />
+            <SocialNetworkCard network="facebook" />
+          </NetworkRow>
         </Section>
         {isLoggedIn && (
           <Section>
@@ -160,6 +166,12 @@ const Row = styled(SectionRow).attrs({
 
 const BottomSpacing = styled.View({
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(2),
+})
+
+const NetworkRow = styled.View({
+  flexDirection: 'row',
+  paddingVertical: getSpacing(4),
+  justifyContent: 'space-evenly',
 })
 
 const Version = styled.Text({
