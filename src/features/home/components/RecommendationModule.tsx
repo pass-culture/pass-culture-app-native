@@ -1,5 +1,10 @@
 import React, { useCallback } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, ScrollView } from 'react-native'
+import {
+  LayoutChangeEvent,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  ScrollView,
+} from 'react-native'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
@@ -19,10 +24,11 @@ type RecommendationModuleProps = {
   position: GeoCoordinates | null
   hits: AlgoliaHit[]
   index: number
+  setRecommendationY: (y: number) => void
 }
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const { display, isBeneficiary, position, index } = props
+  const { display, isBeneficiary, position, index, setRecommendationY } = props
 
   const moduleName = display.title
   const hits = props.hits
@@ -35,6 +41,8 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const logHasSeenAllTiles = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
   )
+
+  const onLayout = (event: LayoutChangeEvent) => setRecommendationY(event.nativeEvent.layout.y)
 
   const renderItem = useCallback(
     (hit: AlgoliaHit & { offerId: number }) => {
@@ -89,6 +97,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         {hits.map(renderItem)}
         <Spacer.Row numberOfSpaces={6} />
       </ScrollView>
+      <Spacer.Column numberOfSpaces={0} onLayout={onLayout} />
     </React.Fragment>
   )
 }

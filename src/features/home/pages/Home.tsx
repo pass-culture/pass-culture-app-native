@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useState } from 'react'
+import React, { useState, FunctionComponent, useCallback } from 'react'
 import { NativeSyntheticEvent, NativeScrollEvent, ScrollView, TouchableOpacity } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
@@ -11,6 +11,7 @@ import { HomeBody } from 'features/home/components/HomeBody'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
@@ -23,6 +24,8 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { ZIndexes } from 'ui/theme/layers'
 
+import { RecommendationPane } from '../contentful/moduleTypes'
+
 import { useShowSkeleton } from './useShowSkeleton'
 
 const statusBarHeight = getStatusBarHeight(true)
@@ -34,9 +37,22 @@ export const Home: FunctionComponent = function () {
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const showSkeleton = useShowSkeleton()
   const availableCredit = useAvailableCredit()
-
-  const [hasSeenAllModules, setHasSeenAllModules] = useState<boolean>(false)
+  const [recommendationY, setRecommendationY] = useState<number>(Infinity)
   const { displayedModules, algoliaModules, recommendedHits } = useDisplayedHomeModules()
+
+  const logHasSeenAllModules = useFunctionOnce(() =>
+    analytics.logAllModulesSeen(displayedModules.length)
+  )
+
+  const logHasSeenRecommendationModule = useFunctionOnce(() => {
+    const recommendationModule = displayedModules.find((m) => m instanceof RecommendationPane)
+    if (recommendationModule && recommendedHits.length > 0) {
+      analytics.logRecommendationModuleSeen(
+        (recommendationModule as RecommendationPane).display.title,
+        recommendedHits.length
+      )
+    }
+  })
 
   function hideSignInModal() {
     navigation.setParams({ shouldDisplayLoginModal: false })
@@ -49,15 +65,6 @@ export const Home: FunctionComponent = function () {
     }
   })
 
-  const checkIfAllModulesHaveBeenSeen = ({
-    nativeEvent,
-  }: NativeSyntheticEvent<NativeScrollEvent>) => {
-    if (!hasSeenAllModules && isCloseToBottom(nativeEvent)) {
-      setHasSeenAllModules(true)
-      analytics.logAllModulesSeen(displayedModules.length)
-    }
-  }
-
   let subtitle = _(t`Toute la culture dans ta main`)
   if (availableCredit) {
     subtitle = availableCredit.isExpired
@@ -65,12 +72,21 @@ export const Home: FunctionComponent = function () {
       : _(t`Tu as ${formatToFrenchDecimal(availableCredit.amount)} sur ton pass`)
   }
 
+  const onScroll = useCallback(
+    ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+      if (isCloseToBottom(nativeEvent)) logHasSeenAllModules()
+      const padding = nativeEvent.contentSize.height - recommendationY
+      if (isCloseToBottom({ ...nativeEvent, padding })) logHasSeenRecommendationModule()
+    },
+    [recommendationY]
+  )
+
   return (
     <ScrollView
       testID="homeScrollView"
       scrollEventThrottle={400}
       bounces={false}
-      onScroll={checkIfAllModulesHaveBeenSeen}>
+      onScroll={onScroll}>
       <Spacer.TopScreen />
       {env.CHEAT_BUTTONS_ENABLED && (
         <CheatButtonsContainer>
@@ -107,6 +123,7 @@ export const Home: FunctionComponent = function () {
           modules={displayedModules}
           algoliaModules={algoliaModules}
           recommendedHits={recommendedHits}
+          setRecommendationY={setRecommendationY}
         />
       </HomeBodyLoadingContainer>
 
