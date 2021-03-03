@@ -9,6 +9,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import * as HomeAPI from 'features/home/api'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { superFlushWithAct } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BusinessPane } from '../../contentful'
@@ -66,20 +67,19 @@ describe('BusinessModule component', () => {
     fireEvent.press(getByTestId('imageBusiness'))
     expect(openUrlSpy).toHaveBeenCalledWith('url')
   })
+
   it('should open url with replaced Email when connected and adequate url and display snackbar waiting for email', async () => {
     mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
 
     const { getByTestId } = renderModule({ ...props, url: 'some_url_with_email={email}' })
 
     fireEvent.press(getByTestId('imageBusiness'))
+    await superFlushWithAct(20)
 
-    await waitForExpect(() =>
-      expect(mockDisplayInfosSnackBar).toHaveBeenCalledWith({ message: 'Redirection en cours' })
-    )
-    await waitForExpect(() =>
-      expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
-    )
+    expect(mockDisplayInfosSnackBar).toHaveBeenCalledWith({ message: 'Redirection en cours' })
+    expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
   })
+
   it('should redirect with filled email when required without the snackbar being displayed when email is already okay', async () => {
     homeAPISpy.mockImplementation(() => {
       return {
@@ -97,6 +97,7 @@ describe('BusinessModule component', () => {
     expect(mockDisplayInfosSnackBar).not.toHaveBeenCalled()
     homeAPISpy.mockReset()
   })
+
   it('should not display a snackbar when user profile data is yet to be received but the email is not needed', async () => {
     homeAPISpy.mockImplementation(() => {
       return {

@@ -8,8 +8,8 @@ export async function flushAllPromises() {
 
 /**
   __Warning__ : avoid usage of this function as much as possible.
-  
-  Usecase : when you get the "state update not wrapped in act" warning 
+
+  Usecase : when you get the "state update not wrapped in act" warning
   no matter what you do.
   @param times number of times you want to call `flushAllPromises()`. Increment `times` until the warning disappears.
 */
@@ -19,9 +19,9 @@ export async function flushAllPromisesTimes(times: number) {
   }
 }
 
-export async function superFlushWithAct() {
+export async function superFlushWithAct(times = 10) {
   await act(async () => {
-    await flushAllPromisesTimes(10)
+    await flushAllPromisesTimes(times)
   })
 }
 
