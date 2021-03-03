@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import Dash from 'react-native-dash'
 import styled from 'styled-components/native'
 
@@ -11,7 +10,9 @@ import { ExpenseV2 } from 'features/profile/components/types'
 import { computeRemainingCredit, sortExpenses } from 'features/profile/utils'
 import { _ } from 'libs/i18n'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+
+import { accordionStyle, GreyContainer, Description } from './reusables'
 
 type BeneficiaryCeilingsProps = {
   walletBalance: number
@@ -37,7 +38,7 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
   const expenses = sortExpenses(props.depositVersion, props.expenses)
 
   return (
-    <Container>
+    <GreyContainer>
       <Spacer.Column numberOfSpaces={6} />
       <Title>{_(t`Tu peux encore dépenser :`)}</Title>
       <Spacer.Column numberOfSpaces={5} />
@@ -70,14 +71,9 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
         </Description>
       </AccordionItem>
       <Spacer.Column numberOfSpaces={2} />
-    </Container>
+    </GreyContainer>
   )
 }
-
-const Container = styled.View({
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-  borderRadius: 6,
-})
 
 const Title = styled(Typo.Title4)({
   paddingHorizontal: getSpacing(4),
@@ -94,19 +90,4 @@ const Separator = styled(Dash)({
   overflow: 'hidden',
   width: '99%', // a 100% width put the first dot on the border of the view and a space at the end
   alignSelf: 'center',
-})
-
-const accordionStyle = StyleSheet.create({
-  title: {
-    paddingHorizontal: getSpacing(4),
-    paddingBottom: getSpacing(4),
-  },
-  body: {
-    paddingHorizontal: getSpacing(4),
-    paddingBottom: getSpacing(4),
-  },
-})
-
-const Description = styled(Typo.Body)({
-  textAlign: 'left',
 })

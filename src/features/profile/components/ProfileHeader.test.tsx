@@ -36,13 +36,24 @@ const userV2: UserProfileResponse = {
   ],
 }
 
+const exBeneficiaryUser: UserProfileResponse = {
+  ...userV1,
+  depositExpirationDate: new Date('2020-01-01T00:00:00'),
+}
+
 describe('ProfileHeader', () => {
   it('should display the BeneficiaryHeader version 1 if user is beneficiary and depositVersion = 1', () => {
     const { getByTestId } = render(<ProfileHeader user={userV1} />)
     expect(getByTestId('beneficiary-header-1')).toBeTruthy()
   })
+
   it('should display the BeneficiaryHeader version 2 if user is beneficiary and depositVersion = 2', () => {
     const { getByTestId } = render(<ProfileHeader user={userV2} />)
     expect(getByTestId('beneficiary-header-2')).toBeTruthy()
+  })
+
+  it('should display the ExBeneficiary Header if credit is expired', () => {
+    const { getByTestId } = render(<ProfileHeader user={exBeneficiaryUser} />)
+    expect(getByTestId('ex-beneficiary-header')).toBeTruthy()
   })
 })
