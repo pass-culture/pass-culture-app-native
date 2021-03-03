@@ -177,10 +177,12 @@ export const Profile: React.FC = () => {
         </Section>
         <Section title={_(t`Suivre Pass Culture`)}>
           <NetworkRow>
-            <SocialNetworkCard network="instagram" />
-            <SocialNetworkCard network="twitter" />
-            <SocialNetworkCard network="snapchat" />
-            <SocialNetworkCard network="facebook" />
+            <NetworkRowContainer>
+              <SocialNetworkCard network="instagram" />
+              <SocialNetworkCard network="twitter" />
+              <SocialNetworkCard network="snapchat" />
+              <SocialNetworkCard network="facebook" />
+            </NetworkRowContainer>
           </NetworkRow>
         </Section>
         {isLoggedIn && (
@@ -235,9 +237,16 @@ const BottomSpacing = styled.View({
 })
 
 const NetworkRow = styled.View({
+  width: '100%',
+  margin: 'auto',
+  maxWidth: getSpacing(125),
+})
+
+const NetworkRowContainer = styled.View({
+  flex: 1,
   flexDirection: 'row',
   paddingVertical: getSpacing(4),
-  justifyContent: 'space-evenly',
+  justifyContent: 'space-between',
 })
 
 const Version = styled.Text({
