@@ -17,6 +17,7 @@ export interface ModalHeaderProps {
   onRightIconPress?: () => void
   boldTitle?: boolean
   customStyles?: ModalHeaderStyleClasses
+  numberOfLines?: number
 }
 
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
@@ -27,6 +28,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   rightIcon: RightIcon,
   onRightIconPress,
   boldTitle = false,
+  numberOfLines = 2,
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
   return (
@@ -34,7 +36,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
       <LeftHeaderAction onPress={onLeftIconPress} testID="leftIconButton">
         {LeftIcon && <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />}
       </LeftHeaderAction>
-      <TitleComponent customStyle={customStyles?.title} numberOfLines={2}>
+      <TitleComponent customStyle={customStyles?.title} numberOfLines={numberOfLines}>
         {title}
       </TitleComponent>
       <RightHeaderAction onPress={onRightIconPress} testID="rightIconButton">

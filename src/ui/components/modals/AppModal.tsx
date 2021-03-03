@@ -16,6 +16,7 @@ interface Props {
   onLeftIconPress?: () => void
   rightIcon?: FunctionComponent<IconInterface>
   onRightIconPress?: () => void
+  titleNumberOfLines?: number
 }
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -26,6 +27,7 @@ export const AppModal: FunctionComponent<Props> = ({
   rightIcon,
   onRightIconPress,
   children,
+  titleNumberOfLines,
 }) => {
   const { bottom } = useCustomSafeInsets()
   return (
@@ -45,6 +47,7 @@ export const AppModal: FunctionComponent<Props> = ({
               onLeftIconPress={onLeftIconPress}
               rightIcon={rightIcon}
               onRightIconPress={onRightIconPress}
+              numberOfLines={titleNumberOfLines}
             />
             <Content style={{ paddingBottom: bottom }}>{children}</Content>
           </Container>

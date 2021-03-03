@@ -517,7 +517,7 @@ Array [
             testID="leftIconButton"
           />
           <Text
-            numberOfLines={2}
+            numberOfLines={3}
             style={
               Array [
                 Object {
