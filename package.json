@@ -132,6 +132,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-module-resolver": "^4.0.0",
+    "console-fail-test": "^0.1.5",
     "cross-fetch": "^3.0.4",
     "eslint": "7.14.0",
     "eslint-config-prettier": "^6.12.0",
