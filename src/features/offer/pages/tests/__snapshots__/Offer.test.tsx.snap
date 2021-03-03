@@ -4418,7 +4418,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               testID="leftIconButton"
                             />
                             <Text
-                              numberOfLines={2}
+                              numberOfLines={3}
                               style={
                                 Array [
                                   Object {
@@ -9346,7 +9346,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               testID="leftIconButton"
                             />
                             <Text
-                              numberOfLines={2}
+                              numberOfLines={3}
                               style={
                                 Array [
                                   Object {
