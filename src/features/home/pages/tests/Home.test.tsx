@@ -1,4 +1,4 @@
-import { render, act } from '@testing-library/react-native'
+import { render, act, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -6,6 +6,9 @@ import waitForExpect from 'wait-for-expect'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
+import { ProcessedModule } from 'features/home/contentful'
+import { RecommendationPane } from 'features/home/contentful/moduleTypes'
+import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -25,10 +28,12 @@ jest.mock('features/home/pages/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 
+let mockDisplayedModules: ProcessedModule[] = []
 jest.mock('features/home/pages/useDisplayedHomeModules', () => ({
   useDisplayedHomeModules: jest.fn(() => ({
-    displayedModules: [],
+    displayedModules: mockDisplayedModules,
     algoliaModules: {},
+    recommendedHits: mockedAlgoliaResponse.hits.slice(0, 4),
   })),
 }))
 
@@ -179,6 +184,35 @@ describe('Home component - Analytics', () => {
     })
 
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
+  })
+
+  it('should trigger logEvent "RecommendationModuleSeen" when reaching the recommendation module', async () => {
+    mockDisplayedModules = [
+      new RecommendationPane({
+        display: { title: 'Tes offres recommandées', minOffers: 2, layout: 'one-item-medium' },
+      }),
+    ]
+    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
+    const scrollView = home.getByTestId('homeScrollView')
+    await act(flushAllPromises)
+
+    await waitFor(async () => {
+      await home
+        .getByTestId('recommendationModuleTracker')
+        .props.onLayout({ nativeEvent: { layout: { y: 1500 } } })
+      expect(home.getByTestId('recommendationModuleTracker')).toBeTruthy()
+    })
+
+    await act(async () => {
+      await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+    })
+    expect(analytics.logRecommendationModuleSeen).not.toHaveBeenCalled()
+
+    await act(async () => {
+      await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+    })
+
+    expect(analytics.logRecommendationModuleSeen).toHaveBeenCalledWith('Tes offres recommandées', 4)
   })
 })
 
