@@ -97,7 +97,7 @@ export interface AccountRequest {
      * @type {boolean}
      * @memberof AccountRequest
      */
-    hasAllowedRecommendations: boolean;
+    marketingEmailSubscription?: boolean | null;
     /**
      * 
      * @type {string}
@@ -252,6 +252,42 @@ export interface GetIdCheckTokenResponse {
      * @memberof GetIdCheckTokenResponse
      */
     token?: string | null;
+}/**
+ * 
+ * @export
+ * @interface NotificationSubscriptions
+ */
+export interface NotificationSubscriptions {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof NotificationSubscriptions
+     */
+    marketing_email?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof NotificationSubscriptions
+     */
+    marketing_push?: boolean;
+}/**
+ * 
+ * @export
+ * @interface NotificationSubscriptionsUpdate
+ */
+export interface NotificationSubscriptionsUpdate {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof NotificationSubscriptionsUpdate
+     */
+    marketing_email: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof NotificationSubscriptionsUpdate
+     */
+    marketing_push: boolean;
 }/**
  * 
  * @export
@@ -734,12 +770,6 @@ export interface UserProfileResponse {
     firstName?: string | null;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserProfileResponse
-     */
-    hasAllowedRecommendations: boolean;
-    /**
-     * 
      * @type {number}
      * @memberof UserProfileResponse
      */
@@ -786,6 +816,12 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     showEligibleCard: boolean;
+    /**
+     * 
+     * @type {NotificationSubscriptions}
+     * @memberof UserProfileResponse
+     */
+    subscriptions: NotificationSubscriptions;
 }/**
  * 
  * @export
@@ -794,10 +830,10 @@ export interface UserProfileResponse {
 export interface UserProfileUpdateRequest {
     /**
      * 
-     * @type {boolean}
+     * @type {NotificationSubscriptionsUpdate}
      * @memberof UserProfileUpdateRequest
      */
-    hasAllowedRecommendations?: boolean | null;
+    subscriptions?: NotificationSubscriptionsUpdate | null;
 }/**
  * 
  * @export

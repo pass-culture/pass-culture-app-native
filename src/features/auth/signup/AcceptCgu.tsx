@@ -59,7 +59,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
       const signupResponse = await signUp({
         birthdate: birthday,
         email,
-        hasAllowedRecommendations: isNewsletterChecked,
+        marketingEmailSubscription: isNewsletterChecked,
         password,
         token,
       })

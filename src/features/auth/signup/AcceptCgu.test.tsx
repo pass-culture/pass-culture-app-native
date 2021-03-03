@@ -130,7 +130,7 @@ describe('AcceptCgu Page', () => {
         {
           birthdate: '12-2-1995',
           email: 'john.doe@example.com',
-          hasAllowedRecommendations: true,
+          marketingEmailSubscription: true,
           password: 'password',
           token: 'fakeToken',
         },

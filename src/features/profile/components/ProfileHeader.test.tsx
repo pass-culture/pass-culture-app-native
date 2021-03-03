@@ -18,10 +18,13 @@ const userV1: UserProfileResponse = {
   ],
   isEligible: true,
   lastName: '93 HNMM 2',
-  hasAllowedRecommendations: true,
   id: 1234,
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
+  subscriptions: {
+    marketing_email: true,
+    marketing_push: true,
+  },
 }
 
 const userV2: UserProfileResponse = {
