@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { openExternalUrl } from 'features/navigation/helpers'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing, Spacer } from 'ui/theme'
 
 import { SocialNetwork, SocialNetworkIconsMap } from './socials/types'
 
@@ -22,6 +22,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
         <NetworkIconBox>
           <Icon size={24} />
         </NetworkIconBox>
+        <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
       </Container>
     </TouchableOpacity>
