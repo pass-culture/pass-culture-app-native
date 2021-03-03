@@ -145,6 +145,7 @@
     "flush-promises": "^1.0.2",
     "jest": "^25.1.0",
     "jetifier": "^1.6.5",
+    "json": "^10.0.0",
     "metro-react-native-babel-preset": "0.63.0",
     "mockdate": "^3.0.2",
     "msw": "^0.21.3",
