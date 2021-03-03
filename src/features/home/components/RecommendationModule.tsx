@@ -97,7 +97,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         {hits.map(renderItem)}
         <Spacer.Row numberOfSpaces={6} />
       </ScrollView>
-      <Spacer.Column numberOfSpaces={0} onLayout={onLayout} />
+      <Spacer.Column testID="recommendationModuleTracker" numberOfSpaces={0} onLayout={onLayout} />
     </React.Fragment>
   )
 }
