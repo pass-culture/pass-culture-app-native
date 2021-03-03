@@ -26,6 +26,7 @@
     "translations:add-locale": "lingui add-locale",
     "translations:extract": "lingui extract --clean",
     "translations:compile": "lingui compile",
+    "trigger:production:deploy": "./scripts/deploy_new_production_version.sh",
     "trigger:staging:deploy": "./scripts/deploy_new_staging_version.sh",
     "trigger:testing:deploy": "./scripts/deploy_new_testing_version.sh",
     "generate:api:client": "./scripts/generate_api_client.sh"
