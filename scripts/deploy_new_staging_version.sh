@@ -12,11 +12,19 @@ check_branch(){
   fi
 }
 
+update_app_version(){
+  yarn version --minor
+
+  VERSION=`json -f package.json version`
+  BUILD_NUMBER="${VERSION//./0}"
+  json -I -f package.json -e "this.build=$BUILD_NUMBER"
+}
+
 check_branch
 
 git pull
 
-yarn version --minor
+update_app_version
 git push --follow-tags
 
 git push -f origin HEAD:staging
