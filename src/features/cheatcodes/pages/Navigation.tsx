@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
+import getDistance from 'geolib/es/getDistance'
 import React, { useState, createElement } from 'react'
-import { ScrollView } from 'react-native'
+import { Alert, ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -8,6 +9,7 @@ import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useGeolocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -27,6 +29,8 @@ export function Navigation(): JSX.Element {
     cacheTime: 0,
     enabled: false,
   })
+  const { position } = useGeolocation()
+  const eiffelTowerCoordinates = { latitude: 48.8584, longitude: 2.2945 }
 
   async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)
@@ -222,6 +226,19 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={'A/B Testing POC'}
             onPress={() => navigation.navigate('ABTestingPOC')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={`Distance to Eiffel Tower`}
+            onPress={() => {
+              if (position) {
+                const distance = getDistance(position, eiffelTowerCoordinates)
+                Alert.alert(`${distance / 1000}km`)
+              } else {
+                Alert.alert('Authorize geolocation first')
+              }
+            }}
           />
         </Row>
       </StyledContainer>
