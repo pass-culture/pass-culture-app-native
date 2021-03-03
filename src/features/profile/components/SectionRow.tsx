@@ -13,6 +13,7 @@ type SectionRowProps = {
   icon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
   testID?: string
+  numberOfLines?: number
 } & (
   | {
       type: 'navigable'
@@ -27,7 +28,7 @@ type SectionRowProps = {
 
 export function SectionRow(props: SectionRowProps) {
   const Icon = props.icon
-
+  const numberOfLines = props.numberOfLines || 2
   return (
     <TouchableOpacity
       activeOpacity={props.onPress ? ACTIVE_OPACITY : 1}
@@ -36,7 +37,7 @@ export function SectionRow(props: SectionRowProps) {
       <View style={[styles.container, props.style]}>
         {Icon && <Icon />}
         <TitleContainer>
-          <Typo.ButtonText numberOfLines={2}>{props.title}</Typo.ButtonText>
+          <Typo.ButtonText numberOfLines={numberOfLines}>{props.title}</Typo.ButtonText>
         </TitleContainer>
         <CTAContainer>
           {props.type == 'navigable' ? (

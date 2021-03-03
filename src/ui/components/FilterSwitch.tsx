@@ -49,7 +49,7 @@ const StyledBackgroundColor = styled.View<{ active: boolean }>(({ active }) => (
   backgroundColor: active ? ColorsEnum.GREEN_VALID : ColorsEnum.GREY_MEDIUM,
   width: getSpacing(14),
   height: getSpacing(8),
-  marginLeft: getSpacing(1),
+  marginLeft: getSpacing(5),
   borderRadius: getSpacing(4),
   justifyContent: 'center',
 }))
