@@ -101,6 +101,7 @@ describe('<GenericAchievementCard />', () => {
   })
 
   it('should have a button available on active index', () => {
+    jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
     expect(() =>
       render(
         <GenericAchievementCard
@@ -114,6 +115,7 @@ describe('<GenericAchievementCard />', () => {
         />
       )
     ).toThrowError()
+    jest.clearAllMocks()
   })
 
   it('should not have a button when not active index', () => {

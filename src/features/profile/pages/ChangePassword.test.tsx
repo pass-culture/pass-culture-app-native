@@ -1,4 +1,4 @@
-import { render, act, fireEvent, waitFor } from '@testing-library/react-native'
+import { render, act, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -8,7 +8,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, superFlushWithAct } from 'tests/utils'
 import { displaySuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext.ts'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum } from 'ui/theme'
@@ -44,10 +44,8 @@ describe('ChangePassword', () => {
     // assuming there's only one button in this page
     const continueButton = getByTestId('button-container')
 
-    await waitFor(async () => {
-      const background = continueButton.props.style.backgroundColor
-      expect(background).toEqual(ColorsEnum.PRIMARY)
-    })
+    const background = continueButton.props.style.backgroundColor
+    expect(background).toEqual(ColorsEnum.PRIMARY)
   })
 
   it('should display the matching error when the passwords dont match', async () => {
@@ -62,10 +60,8 @@ describe('ChangePassword', () => {
     // assuming there's only one button in this page
     const notMatchingErrorText = getByText('les mots de passe ne concordent pas')
 
-    await waitFor(async () => {
-      const color = notMatchingErrorText.props.style[0].color
-      expect(color).toEqual(ColorsEnum.ERROR)
-    })
+    const color = notMatchingErrorText.props.style[0].color
+    expect(color).toEqual(ColorsEnum.ERROR)
   })
   it('should validate PasswordSecurityRules when password is correct', async () => {
     const { getByPlaceholderText, toJSON } = await renderChangePassword()
@@ -105,11 +101,11 @@ describe('ChangePassword', () => {
     const continueButton = getByTestId('button-container')
     fireEvent.press(continueButton)
 
-    await waitFor(() => {
-      expect(displaySuccessSnackBar).toBeCalledWith({
-        message: 'Mot de passe modifié',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+    await superFlushWithAct(20)
+
+    expect(displaySuccessSnackBar).toBeCalledWith({
+      message: 'Mot de passe modifié',
+      timeout: SNACK_BAR_TIME_OUT,
     })
   })
   it('display error when the password failed to updated', async () => {
@@ -129,11 +125,14 @@ describe('ChangePassword', () => {
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
     fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    await superFlushWithAct()
 
     // assuming there's only one button in this page
     const continueButton = getByTestId('button-container')
     fireEvent.press(continueButton)
 
-    await waitFor(() => getByText('Mot de passe incorrect'))
+    await superFlushWithAct(20)
+
+    expect(getByText('Mot de passe incorrect')).toBeTruthy()
   })
 })
