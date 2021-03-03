@@ -6,6 +6,7 @@ import { computeWalletBalance } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 
 import { BeneficiaryHeader } from './BeneficiaryHeader'
+import { ExBeneficiaryHeader } from './ExBeneficiaryHeader'
 import { LoggedOutHeader } from './LoggedOutHeader'
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
@@ -25,6 +26,14 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     const depositExpirationDate = user.depositExpirationDate
       ? formatToSlashedFrenchDate(user.depositExpirationDate.toString())
       : undefined
+
+    const isExpired = user.depositExpirationDate
+      ? new Date(user.depositExpirationDate) < new Date()
+      : false
+
+    if (isExpired) {
+      return <ExBeneficiaryHeader depositExpirationDate={depositExpirationDate} />
+    }
 
     return (
       <BeneficiaryHeader
