@@ -24,11 +24,14 @@ const userProfileAPIResponse: UserProfileResponse = {
   email: 'email@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,
-  hasAllowedRecommendations: true,
   isEligible: true,
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
   id: 1234,
+  subscriptions: {
+    marketing_email: true,
+    marketing_push: true,
+  },
 }
 server.use(
   rest.get(

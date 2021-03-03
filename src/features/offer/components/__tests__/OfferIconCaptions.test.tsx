@@ -45,11 +45,14 @@ const userProfileAPIResponse: UserProfileResponse = {
       limit: 200,
     },
   ],
-  hasAllowedRecommendations: true,
   isEligible: true,
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
   id: 1234,
+  subscriptions: {
+    marketing_email: true,
+    marketing_push: true,
+  },
 }
 
 describe('<OfferIconCaptions />', () => {
