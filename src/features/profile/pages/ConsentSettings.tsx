@@ -58,8 +58,9 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         <Separator />
         <Line>
           <SectionRow
+            numberOfLines={3}
             type="clickable"
-            title={_(t`Autoriser l’utilisation de mes donnees de navigation`)}
+            title={_(t`Autoriser l’utilisation de mes données de navigation`)}
             cta={
               <FilterSwitch
                 active={isTrackingAllowed}
