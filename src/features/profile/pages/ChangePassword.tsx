@@ -28,6 +28,7 @@ export function ChangePassword() {
   const [confirmedPassword, setConfirmedPassword] = useState('')
   const [hasError, setHasError] = useState(false)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
+  const [shouldDisplayPasswordRules, setShouldDisplayPasswordRules] = useState(false)
 
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== newPassword
 
@@ -50,16 +51,27 @@ export function ChangePassword() {
       setCurrentPassword('')
       setNewPassword('')
       setConfirmedPassword('')
+      setShouldDisplayPasswordRules(false)
       displaySuccessSnackBar({
         message: _(t`Mot de passe modifié`),
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
-    () => setHasError(true)
+    () => {
+      setHasError(true)
+      setShouldDisplayPasswordRules(false)
+    }
   )
 
   function submitPassword() {
     changePassword({ currentPassword, newPassword })
+  }
+
+  function updateNewPassword(value: string) {
+    if (!shouldDisplayPasswordRules) {
+      setShouldDisplayPasswordRules(true)
+    }
+    setNewPassword(value)
   }
 
   const scrollRef = useRef<ScrollView | null>(null)
@@ -95,10 +107,12 @@ export function ChangePassword() {
             <Spacer.Column numberOfSpaces={2} />
             <PasswordInput
               value={newPassword}
-              onChangeText={setNewPassword}
+              onChangeText={updateNewPassword}
               placeholder={_(/*i18n: password placeholder */ t`Ton nouveau mot de passe`)}
             />
-            {newPassword.length > 0 && <PasswordSecurityRules password={newPassword} />}
+            {shouldDisplayPasswordRules && newPassword.length > 0 && (
+              <PasswordSecurityRules password={newPassword} />
+            )}
           </StyledInput>
           <Spacer.Column numberOfSpaces={5} />
           <StyledInput>
