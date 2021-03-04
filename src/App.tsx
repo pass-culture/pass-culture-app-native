@@ -11,6 +11,7 @@ import './why-did-you-render'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
+import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
@@ -52,17 +53,19 @@ const App: FunctionComponent = function () {
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
               <GeolocationWrapper>
                 <AuthWrapper>
-                  <SearchWrapper>
-                    <I18nProvider language={i18n.language} i18n={i18n}>
-                      <SnackBarProvider>
-                        <SplashScreenProvider>
-                          <AppNavigationContainer>
-                            <RootNavigator />
-                          </AppNavigationContainer>
-                        </SplashScreenProvider>
-                      </SnackBarProvider>
-                    </I18nProvider>
-                  </SearchWrapper>
+                  <FavoritesWrapper>
+                    <SearchWrapper>
+                      <I18nProvider language={i18n.language} i18n={i18n}>
+                        <SnackBarProvider>
+                          <SplashScreenProvider>
+                            <AppNavigationContainer>
+                              <RootNavigator />
+                            </AppNavigationContainer>
+                          </SplashScreenProvider>
+                        </SnackBarProvider>
+                      </I18nProvider>
+                    </SearchWrapper>
+                  </FavoritesWrapper>
                 </AuthWrapper>
               </GeolocationWrapper>
             </ErrorBoundary>

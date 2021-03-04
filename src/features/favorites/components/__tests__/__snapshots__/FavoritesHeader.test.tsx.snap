@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoritesHeader component should render favorites header 1`] = `
+Array [
+  <View
+    height={96}
+    style={
+      Array [
+        Object {
+          "height": 96,
+          "left": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "top": 0,
+          "zIndex": 0,
+        },
+      ]
+    }
+  >
+    <View
+      height={280}
+      width={754}
+    >
+      undefined-SVG-Mock
+    </View>
+  </View>,
+  <View
+    customHeight={16}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "height": 48,
+          "justifyContent": "flex-end",
+          "marginBottom": 24,
+          "marginTop": 8,
+        },
+      ]
+    }
+  >
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 18,
+            "lineHeight": 22,
+          },
+        ]
+      }
+    >
+      Mes favoris
+    </Text>
+  </View>,
+]
+`;

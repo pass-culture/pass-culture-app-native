@@ -33,7 +33,9 @@ export const decomposeDate = (timestamp: number) => {
   return { day, month, year }
 }
 
-const formatToFrenchDate = (date: Date | number | { day: number; month: string; year: number }) => {
+export const formatToFrenchDate = (
+  date: Date | number | { day: number; month: string; year: number }
+) => {
   const timestamp = date instanceof Date ? date.getTime() : date
   const { day, month, year } = typeof timestamp === 'number' ? decomposeDate(timestamp) : timestamp
   return `${day} ${month} ${year}`

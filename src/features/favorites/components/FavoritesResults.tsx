@@ -3,38 +3,38 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
+import { FavoriteResponse } from 'api/gen'
+import { Filter } from 'features/favorites/atoms/Buttons/Filter'
+import { Favorite } from 'features/favorites/atoms/Favorite'
+import { NumberOfResults } from 'features/favorites/atoms/NumberOfResults'
+import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
+import { useFavoritesResults } from 'features/favorites/pages/useFavoritesResults'
 import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
-import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
-import { Filter } from 'features/search/atoms/Buttons'
+import { NoSearchResult } from 'features/search/atoms'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
-import { useSearch } from 'features/search/pages/SearchWrapper'
-import { useSearchResults } from 'features/search/pages/useSearchResults'
-import { SearchAlgoliaHit } from 'libs/algolia'
-import { analytics } from 'libs/analytics'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
-const keyExtractor = (item: SearchAlgoliaHit) => item.objectID
+const keyExtractor = (item: FavoriteResponse) => item.id.toString()
 
-export const SearchResults: React.FC = () => {
-  const flatListRef = useRef<FlatList<SearchAlgoliaHit> | null>(null)
+export const FavoritesResults: React.FC = () => {
+  const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const { isScrolling, handleIsScrolling } = useDebouncedScrolling()
-  const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useSearchResults()
-  const { searchState } = useSearch()
+  const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useFavoritesResults()
+  const favoritesState = useFavoritesState()
 
-  const hits: SearchAlgoliaHit[] = useMemo(() => flatten(data?.pages.map((page) => page.hits)), [
-    data?.pages,
-  ])
-  const { nbHits } = data?.pages[0] || { nbHits: 0 }
+  const favorites: FavoriteResponse[] = useMemo(
+    () => flatten(data?.pages.map((page) => page.favorites)),
+    [data?.pages]
+  )
+  const { nbFavorites } = data?.pages[0] || { nbFavorites: 0 }
 
   useEffect(() => {
     if (flatListRef && flatListRef.current)
       flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
-  }, [nbHits])
+  }, [nbFavorites])
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
-      const [lastPage] = data.pages.slice(-1)
-      if (lastPage.page > 0) analytics.logSearchScrollToPage(lastPage.page)
       fetchNextPage()
     }
   }, [hasNextPage])
@@ -43,15 +43,17 @@ export const SearchResults: React.FC = () => {
   const onScrollBeginDrag = useCallback(() => handleIsScrolling(true), [])
 
   const renderItem = useCallback(
-    ({ item: hit }: { item: SearchAlgoliaHit }) => <Hit hit={hit} query={searchState.query} />,
-    [searchState.query]
+    ({ item: favorite }: { item: FavoriteResponse }) => <Favorite favorite={favorite} />,
+    [favoritesState]
   )
 
-  const ListHeaderComponent = useMemo(() => <NumberOfResults nbHits={nbHits} />, [nbHits])
+  const ListHeaderComponent = useMemo(() => <NumberOfResults nbFavorites={nbFavorites} />, [
+    nbFavorites,
+  ])
   const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
   const ListFooterComponent = useMemo(
     () =>
-      isFetchingNextPage && hits.length < nbHits ? (
+      isFetchingNextPage && favorites.length < nbFavorites ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <ActivityIndicator />
@@ -61,17 +63,17 @@ export const SearchResults: React.FC = () => {
       ) : (
         <Footer />
       ),
-    [isFetchingNextPage, hits.length]
+    [isFetchingNextPage, favorites.length]
   )
 
-  if (isLoading || !data) return <SearchResultsPlaceHolder />
+  if (isLoading || !data) return <FavoritesResultsPlaceHolder />
   return (
     <React.Fragment>
       <Container>
         <FlatList
           ref={flatListRef}
-          testID="searchResultsFlatlist"
-          data={hits}
+          testID="favoritesResultsFlatlist"
+          data={favorites}
           contentContainerStyle={contentContainerStyle}
           keyExtractor={keyExtractor}
           ListHeaderComponent={ListHeaderComponent}
@@ -81,13 +83,13 @@ export const SearchResults: React.FC = () => {
           onEndReached={onEndReached}
           onScrollEndDrag={onScrollEndDrag}
           onScrollBeginDrag={onScrollBeginDrag}
-          scrollEnabled={nbHits > 0}
+          scrollEnabled={nbFavorites > 0}
           ListEmptyComponent={ListEmptyComponent}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="on-drag"
         />
       </Container>
-      {nbHits > 0 && (
+      {nbFavorites > 0 && (
         <FilterContainer>
           <FadeScrollingView isScrolling={isScrolling}>
             <Filter />
@@ -119,7 +121,7 @@ const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => (
   key: index.toString(),
 }))
 
-const SearchResultsPlaceHolder = () => {
+const FavoritesResultsPlaceHolder = () => {
   const renderItem = useCallback(() => <HitPlaceholder />, [])
   const ListHeaderComponent = useMemo(() => <NumberOfResultsPlaceholder />, [])
   const ListFooterComponent = useMemo(() => <Footer />, [])

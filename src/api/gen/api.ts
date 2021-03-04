@@ -243,6 +243,144 @@ export enum ExpenseDomain {
 }/**
  * 
  * @export
+ * @interface FavoriteCategoryResponse
+ */
+export interface FavoriteCategoryResponse {
+    /**
+     * 
+     * @type {CategoryType}
+     * @memberof FavoriteCategoryResponse
+     */
+    categoryType: CategoryType;
+    /**
+     * 
+     * @type {string}
+     * @memberof FavoriteCategoryResponse
+     */
+    label: string;
+    /**
+     * 
+     * @type {CategoryNameEnum}
+     * @memberof FavoriteCategoryResponse
+     */
+    name?: CategoryNameEnum | null;
+}/**
+ * 
+ * @export
+ * @interface FavoriteMediationResponse
+ */
+export interface FavoriteMediationResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof FavoriteMediationResponse
+     */
+    credit?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof FavoriteMediationResponse
+     */
+    url: string;
+}/**
+ * 
+ * @export
+ * @interface FavoriteOfferResponse
+ */
+export interface FavoriteOfferResponse {
+    /**
+     * 
+     * @type {FavoriteCategoryResponse}
+     * @memberof FavoriteOfferResponse
+     */
+    category: FavoriteCategoryResponse;
+    /**
+     * 
+     * @type {Coordinates}
+     * @memberof FavoriteOfferResponse
+     */
+    coordinates: Coordinates;
+    /**
+     * 
+     * @type {Date}
+     * @memberof FavoriteOfferResponse
+     */
+    date?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof FavoriteOfferResponse
+     */
+    externalTicketOfficeUrl?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof FavoriteOfferResponse
+     */
+    id: number;
+    /**
+     * 
+     * @type {FavoriteMediationResponse}
+     * @memberof FavoriteOfferResponse
+     */
+    image?: FavoriteMediationResponse | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof FavoriteOfferResponse
+     */
+    name: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof FavoriteOfferResponse
+     */
+    price?: number | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof FavoriteOfferResponse
+     */
+    startDate?: Date | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof FavoriteOfferResponse
+     */
+    startPrice?: number | null;
+}/**
+ * 
+ * @export
+ * @interface FavoriteRequest
+ */
+export interface FavoriteRequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof FavoriteRequest
+     */
+    offerId: number;
+}/**
+ * 
+ * @export
+ * @interface FavoriteResponse
+ */
+export interface FavoriteResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof FavoriteResponse
+     */
+    id: number;
+    /**
+     * 
+     * @type {FavoriteOfferResponse}
+     * @memberof FavoriteResponse
+     */
+    offer: FavoriteOfferResponse;
+}/**
+ * 
+ * @export
  * @interface GetIdCheckTokenResponse
  */
 export interface GetIdCheckTokenResponse {
@@ -470,6 +608,12 @@ export interface OfferResponse {
     description?: string | null;
     /**
      * 
+     * @type {Array<ExpenseDomain>}
+     * @memberof OfferResponse
+     */
+    expense_domains: Array<ExpenseDomain>;
+    /**
+     * 
      * @type {string}
      * @memberof OfferResponse
      */
@@ -630,6 +774,30 @@ export interface OfferVenueResponse {
      * @memberof OfferVenueResponse
      */
     publicName?: string | null;
+}/**
+ * 
+ * @export
+ * @interface PaginatedFavoritesResponse
+ */
+export interface PaginatedFavoritesResponse {
+    /**
+     * 
+     * @type {Array<FavoriteResponse>}
+     * @memberof PaginatedFavoritesResponse
+     */
+    favorites: Array<FavoriteResponse>;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedFavoritesResponse
+     */
+    nbFavorites: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedFavoritesResponse
+     */
+    page: number;
 }/**
  * 
  * @export
@@ -923,6 +1091,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary get_favorites <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1mefavorites(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/me/favorites`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary get_offer <GET>
          * @param {number} offer_id 
          * @param {*} [options] Override http request option.
@@ -1045,6 +1235,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"CulturalSurveyRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary create_favorite <POST>
+         * @param {FavoriteRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1mefavorites(body?: FavoriteRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/me/favorites`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"FavoriteRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
             return {
                 url: url.format(localVarUrlObj),
@@ -1256,6 +1472,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary get_favorites <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1mefavorites(basePath: string, options?: any): Promise<PaginatedFavoritesResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1mefavorites(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary get_offer <GET>
          * @param {number} offer_id 
          * @param {*} [options] Override http request option.
@@ -1311,6 +1538,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async postnativev1meculturalSurvey(basePath: string, body?: CulturalSurveyRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1meculturalSurvey(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary create_favorite <POST>
+         * @param {FavoriteRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1mefavorites(basePath: string, body?: FavoriteRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1mefavorites(body, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -1431,6 +1670,17 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
+     * @summary get_favorites <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1mefavorites(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1mefavorites(this.basePath, options)
+    }
+    /**
+     * 
      * @summary get_offer <GET>
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
@@ -1488,6 +1738,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1meculturalSurvey(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary create_favorite <POST>
+     * @param {FavoriteRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1mefavorites(body?: FavoriteRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1mefavorites(this.basePath, body, options)
     }
     /**
      * 

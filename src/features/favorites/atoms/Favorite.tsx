@@ -1,64 +1,68 @@
+import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Dimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
+import { FavoriteResponse } from 'api/gen'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useDistance } from 'features/offer/components/useDistance'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
-import { SearchAlgoliaHit } from 'libs/algolia'
+import { OfferImage } from 'features/search/atoms/OfferImage'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
-import { analytics } from 'libs/analytics'
-import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
-import { convertEuroToCents } from 'libs/parsers/pricesConversion'
+import { _ } from 'libs/i18n'
+import { formatToFrenchDate, getDisplayPrice, parseCategory } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-import { OfferImage } from './OfferImage'
-
 interface Props {
-  hit: SearchAlgoliaHit
-  query: string
+  favorite: FavoriteResponse
 }
 
-export const Hit: React.FC<Props> = ({ hit, query }) => {
-  const { offer, _geoloc } = hit
+export const Favorite: React.FC<Props> = ({ favorite }) => {
+  const { offer } = favorite
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
-  const distanceToOffer = useDistance(_geoloc)
+  const distanceToOffer = useDistance({
+    lat: offer.coordinates.latitude,
+    lng: offer.coordinates.longitude,
+  })
 
-  const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-  const offerId = dehumanizeId(offer.id)
-  const categoryLabel = CATEGORY_CRITERIA[offer.category || 'ALL'].label
-  const formattedDate = formatDates(timestampsInMillis)
-  const prices = offer.prices ? offer.prices.map(convertEuroToCents) : undefined
+  const categoryLabel = CATEGORY_CRITERIA[offer.category.name || 'ALL'].label
+  const prices = [offer.price || offer.startPrice || 0]
+  const formattedDate = useMemo(() => {
+    if (offer.date) {
+      return formatToFrenchDate(new Date(offer.date))
+    }
+    if (offer.startDate) {
+      return _(t`Dès le ${formatToFrenchDate(new Date(offer.startDate))}`)
+    }
+    return null
+  }, [offer])
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from algolia for a smooth transition
-    if (!offerId) return
+    if (!offer.id) return
     queryClient.setQueryData(
-      ['offer', offerId],
+      ['offer', offer.id],
       mergeOfferData({
         ...offer,
-        category: parseCategory(offer.category),
-        categoryName: offer.category,
-        description: offer.description || '',
-        thumbUrl: offer.thumbUrl,
-        isDuo: offer.isDuo,
+        category: parseCategory(offer.category.name),
+        categoryName: offer.category.name,
+        description: '',
+        thumbUrl: offer.image?.url,
         name: offer.name,
-        offerId,
+        offerId: offer.id,
       })
     )
-    analytics.logConsultOffer({ offerId, from: 'SEARCH', query: query })
-    navigation.navigate('Offer', { id: offerId, shouldDisplayLoginModal: false })
+    navigation.navigate('Offer', { id: offer.id, shouldDisplayLoginModal: false })
   }
 
   return (
-    <Container onPress={handlePressOffer} testID="offerHit">
+    <Container onPress={handlePressOffer} testID="favorite">
       <Row>
-        <OfferImage imageUrl={offer.thumbUrl} categoryName={hit.offer.category} />
+        <OfferImage imageUrl={offer.image?.url} categoryName={offer.category.name} />
         <Spacer.Row numberOfSpaces={4} />
         <Column>
           <Row>

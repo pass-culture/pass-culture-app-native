@@ -4,13 +4,15 @@ import styled from 'styled-components/native'
 
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Favourite } from 'ui/svg/icons/Favourite'
+import { Favorite } from 'ui/svg/icons/Favorite'
+import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { Share } from 'ui/svg/icons/Share'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
 interface HeaderIconProps {
-  iconName: 'back' | 'share' | 'favorite'
+  iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'
+  initialColor?: ColorsEnum | undefined
   onPress: () => void
   animationState: {
     iconBackgroundColor: Animated.AnimatedInterpolation
@@ -22,10 +24,16 @@ interface HeaderIconProps {
 const getIcon = (iconName: HeaderIconProps['iconName']): React.ElementType<IconInterface> => {
   if (iconName === 'back') return ArrowPrevious
   if (iconName === 'share') return Share
-  return Favourite
+  if (iconName === 'favorite-filled') return FavoriteFilled
+  return Favorite
 }
 
-export const HeaderIcon = ({ iconName, onPress, animationState }: HeaderIconProps) => {
+export const HeaderIcon = ({
+  iconName,
+  onPress,
+  animationState,
+  initialColor,
+}: HeaderIconProps) => {
   const Icon = getIcon(iconName)
 
   return (
@@ -40,7 +48,7 @@ export const HeaderIcon = ({ iconName, onPress, animationState }: HeaderIconProp
         <AnimatedIcon
           Icon={Icon}
           size={getSpacing(8)}
-          initialColor={ColorsEnum.BLACK}
+          initialColor={initialColor || ColorsEnum.BLACK}
           testID={`icon-${iconName}`}
           transition={animationState.transition}
           finalColor={ColorsEnum.WHITE}
