@@ -62,7 +62,7 @@ import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
-import { Favourite } from 'ui/svg/icons/Favourite'
+import { Favorite } from 'ui/svg/icons/Favorite'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
@@ -393,7 +393,7 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Invalidate </Text>
         </AlignedText>
         <AlignedText>
-          <Favourite size={ICON_SIZE} />
+          <Favorite size={ICON_SIZE} />
           <Text> - Favourite </Text>
         </AlignedText>
         <AlignedText>

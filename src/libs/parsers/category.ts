@@ -20,7 +20,7 @@ const MAP_CATEGORY_TO_LABEL: { [k in CategoryNameEnum]: string } = {
   INSTRUMENT: 'Musique',
 }
 
-export const parseCategory = (category: CategoryNameEnum | null): string => {
+export const parseCategory = (category: CategoryNameEnum | null | undefined): string => {
   if (category && category in MAP_CATEGORY_TO_LABEL) return MAP_CATEGORY_TO_LABEL[category]
   return DEFAULT_CATEGORY || ''
 }

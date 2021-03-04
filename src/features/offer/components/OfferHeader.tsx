@@ -1,9 +1,10 @@
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import React from 'react'
-import { Animated, Easing } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Alert, Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
+import { useAddFavorite, useIsFavorite } from 'features/favorites/pages/useFavorites'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -27,6 +28,15 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { goBack, setParams } = useNavigation<UseNavigationType>()
   const shareOffer = useShareOffer(offerId)
   const { params } = useRoute<UseRouteType<'Offer'>>()
+  const remoteIsFavorite = useIsFavorite(offerId)
+  const [isFavorite, setIsFavorite] = useState(remoteIsFavorite)
+  useEffect(() => {
+    setIsFavorite(remoteIsFavorite)
+  }, [remoteIsFavorite])
+  const { mutate: addFavorite } = useAddFavorite(
+    () => setIsFavorite(true),
+    () => Alert.alert('Les favoris ne peuvent pas être retirés pour le moment')
+  )
 
   const iconBackgroundColor = headerTransition.interpolate({
     inputRange: [0, 1],
@@ -48,6 +58,8 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const pressFavorite = () => {
     if (!isLoggedIn) {
       showSignInModal()
+    } else if (!isFavorite) {
+      addFavorite({ offerId })
     }
   }
 
@@ -81,7 +93,12 @@ export const OfferHeader: React.FC<Props> = (props) => {
           <Spacer.Flex />
           <HeaderIcon animationState={animationState} iconName="share" onPress={shareOffer} />
           <Spacer.Row numberOfSpaces={3} />
-          <HeaderIcon animationState={animationState} iconName="favorite" onPress={pressFavorite} />
+          <HeaderIcon
+            animationState={animationState}
+            initialColor={isFavorite ? ColorsEnum.PRIMARY : undefined}
+            iconName={isFavorite ? 'favorite-filled' : 'favorite'}
+            onPress={pressFavorite}
+          />
           <Spacer.Row numberOfSpaces={6} />
         </Row>
         <Spacer.Column numberOfSpaces={2} />

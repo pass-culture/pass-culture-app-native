@@ -1,17 +1,19 @@
 import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react-native'
-import { rest } from 'msw/'
+import { rest } from 'msw'
 import React from 'react'
 import { Animated, Share, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute, goBack } from '__mocks__/@react-navigation/native'
-import { OfferResponse } from 'api/gen'
+import { FavoriteResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/api/snaps/favorisResponseSnap'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
@@ -111,6 +113,20 @@ describe('<OfferHeader />', () => {
     ).toBeTruthy()
   })
 
+  it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
+    const favoriteOfferId = 146193
+    const { getByTestId } = await renderOfferHeader(true, favoriteOfferId)
+    expect(getByTestId('icon-favorite-filled')).toBeTruthy()
+  })
+
+  it('should add favorite when adding an offer in favorite - logged in users', async () => {
+    const { getByTestId } = await renderOfferHeader(true)
+    await act(async () => {
+      fireEvent.press(getByTestId('icon-favorite'))
+      await waitForExpect(() => expect(getByTestId('icon-favorite-filled')).toBeTruthy())
+    })
+  })
+
   describe('<OfferHeader /> - Analytics', () => {
     it('should log ShareOffer once when clicking on the Share button', async () => {
       const { getByTestId } = await renderOfferHeader(true)
@@ -130,21 +146,24 @@ const humanizedOfferId = 'AHD3A'
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const offerId = dehumanizeId(humanizedOfferId)!
 
-async function renderOfferHeader(isLoggedIn: boolean) {
+async function renderOfferHeader(isLoggedIn: boolean, id = offerId) {
   server.use(
-    rest.get<OfferResponse>(env.API_BASE_URL + `/native/v1/offer/${offerId}`, (req, res, ctx) =>
+    rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${offerId}`, (req, res, ctx) =>
       res(ctx.status(200), ctx.json(offerResponseSnap))
+    ),
+    rest.get<Array<FavoriteResponse>>(
+      `${env.API_BASE_URL}/native/v1/me/favorites`,
+      (req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
+    ),
+    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
+      res(ctx.status(204))
     )
   )
   mockUseAuthContext.mockImplementation(() => ({ isLoggedIn }))
   const animatedValue = new Animated.Value(0)
   const wrapper = render(
     reactQueryProviderHOC(
-      <OfferHeader
-        title="Some very nice offer"
-        headerTransition={animatedValue}
-        offerId={offerId}
-      />
+      <OfferHeader title="Some very nice offer" headerTransition={animatedValue} offerId={id} />
     )
   )
   await act(async () => {
