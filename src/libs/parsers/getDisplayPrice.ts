@@ -15,7 +15,8 @@ export const formatToFrenchDecimal = (cents: number) => {
 const getPricePerPlace = (prices: number[]): string => {
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
   if (uniquePrices.length === 1) return `${formatToFrenchDecimal(uniquePrices[0])}`
-  return `Dès ${formatToFrenchDecimal(uniquePrices.sort()[0])}`
+  const sortedPrices = uniquePrices.sort((a, b) => a - b)
+  return `Dès ${formatToFrenchDecimal(sortedPrices[0])}`
 }
 
 export const getDisplayPrice = (prices: number[] | undefined): string => {
