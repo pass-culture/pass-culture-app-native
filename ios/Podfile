@@ -23,6 +23,7 @@ target 'PassCulture' do
 
   permissions_path = '../node_modules/react-native-permissions/ios'
   pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
 
   post_install do |installer|
     flipper_post_install(installer)
