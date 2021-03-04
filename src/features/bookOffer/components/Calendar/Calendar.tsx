@@ -1,12 +1,15 @@
 import React from 'react'
-import { View } from 'react-native'
-import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
+import { View, TouchableOpacity } from 'react-native'
+import { Calendar as RNCalendar, DateObject, LocaleConfig } from 'react-native-calendars'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
+import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { Action } from 'features/bookOffer/pages/reducer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { getStocksByDate, OfferStatus, getDateStatusAndPrice } from '../../services/utils'
 
@@ -22,21 +25,33 @@ LocaleConfig.locales['fr'] = {
 }
 LocaleConfig.defaultLocale = 'fr'
 
-const renderDay = (status: OfferStatus, selected: boolean, day: number) => {
-  if (status === OfferStatus.BOOKABLE) return <Day color={ColorsEnum.PRIMARY}>{day}</Day>
+const renderDay = (
+  status: OfferStatus,
+  selected: boolean,
+  date: DateObject,
+  dispatch: React.Dispatch<Action>
+) => {
   if (selected)
     return (
       <SelectedDay>
-        <SelectedDayNumber color={ColorsEnum.WHITE}>{day}</SelectedDayNumber>
+        <SelectedDayNumber color={ColorsEnum.WHITE}>{date.day}</SelectedDayNumber>
       </SelectedDay>
+    )
+  if (status === OfferStatus.BOOKABLE)
+    return (
+      <TouchableOpacity
+        activeOpacity={ACTIVE_OPACITY}
+        onPress={() => dispatch({ type: 'SELECT_DATE', payload: new Date(date.timestamp) })}>
+        <Day color={ColorsEnum.PRIMARY}>{date.day}</Day>
+      </TouchableOpacity>
     )
   if (status === OfferStatus.NOT_BOOKABLE)
     return (
       <DiagonalStripe>
-        <Day color={ColorsEnum.GREY_DARK}>{day}</Day>
+        <Day color={ColorsEnum.GREY_DARK}>{date.day}</Day>
       </DiagonalStripe>
     )
-  return <Typo.Body color={ColorsEnum.GREY_DARK}>{day}</Typo.Body>
+  return <Typo.Body color={ColorsEnum.GREY_DARK}>{date.day}</Typo.Body>
 }
 
 const renderArrow = (direction: string) => {
@@ -51,6 +66,7 @@ interface Props {
 }
 
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
+  const { bookingState, dispatch } = useBooking()
   const stocksDate = getStocksByDate(stocks)
 
   return (
@@ -66,11 +82,12 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
           stocksDate,
           userRemainingCredit
         )
-        // TODO: PC-6698 change hard coded for real data
-        const selected = date.day === 11 && date.month === 2
+
+        const selected = bookingState.date?.getTime() === new Date(date.timestamp).getTime()
+
         return (
           <StyledView>
-            {renderDay(dateStatusAndPrice.status, selected, date.day)}
+            {renderDay(dateStatusAndPrice.status, selected, date, dispatch)}
             {dateStatusAndPrice.price ? (
               <Typo.Caption
                 color={
