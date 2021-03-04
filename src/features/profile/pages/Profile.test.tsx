@@ -101,6 +101,14 @@ describe('Profile component', () => {
         })
       })
     })
+    it('should navigate when the notifications row is clicked', async () => {
+      const { getByTestId } = await renderProfile()
+
+      const row = getByTestId('row-notifications')
+      fireEvent.press(row)
+
+      expect(navigate).toBeCalledWith('NotificationSettings')
+    })
   })
 
   describe('help section', () => {
