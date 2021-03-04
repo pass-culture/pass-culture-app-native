@@ -16,6 +16,7 @@ import { storage } from 'libs/storage'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { useModal } from 'ui/components/modals/useModal'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
+import { Bell } from 'ui/svg/icons/Bell'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
@@ -129,7 +130,14 @@ export const Profile: React.FC = () => {
             testID="row-geolocation"
           />
           <Spacer.Column numberOfSpaces={4} />
-          {/* TODO add notification row (PC-6177) */}
+          <SectionRow
+            type="navigable"
+            title={_(t`Notifications`)}
+            icon={Bell}
+            onPress={() => navigate('NotificationSettings')}
+            style={styles.row}
+            testID="row-notifications"
+          />
         </Section>
         <Section title={_(t`Aides`)}>
           <Row
