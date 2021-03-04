@@ -37,10 +37,10 @@ const props: BusinessPane = {
   leftIcon: undefined,
 }
 
-const openUrlSpy = jest.spyOn(Linking, 'openURL')
-const homeAPISpy = jest.spyOn(HomeAPI, 'useUserProfileInfo')
 describe('BusinessModule component', () => {
-  afterEach(() => jest.clearAllMocks())
+  const openUrlSpy = jest.spyOn(Linking, 'openURL')
+  const homeAPISpy = jest.spyOn(HomeAPI, 'useUserProfileInfo')
+  beforeEach(() => jest.clearAllMocks())
 
   it('should render correctly - with leftIcon = Idea by default', () => {
     const { toJSON } = renderModule(props)
@@ -62,22 +62,26 @@ describe('BusinessModule component', () => {
     expect(analytics.logClickBusinessBlock).toHaveBeenCalledWith(props.title)
   })
 
-  it('should open url when clicking on the image', () => {
+  it('should open url when clicking on the image', async () => {
     const { getByTestId } = renderModule(props)
     fireEvent.press(getByTestId('imageBusiness'))
-    expect(openUrlSpy).toHaveBeenCalledWith('url')
+
+    await waitForExpect(() => {
+      expect(openUrlSpy).toHaveBeenCalledWith('url')
+    })
   })
 
   it('should open url with replaced Email when connected and adequate url and display snackbar waiting for email', async () => {
     mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
-
     const { getByTestId } = renderModule({ ...props, url: 'some_url_with_email={email}' })
 
     fireEvent.press(getByTestId('imageBusiness'))
     await superFlushWithAct(20)
 
-    expect(mockDisplayInfosSnackBar).toHaveBeenCalledWith({ message: 'Redirection en cours' })
-    expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
+    await waitForExpect(() => {
+      expect(mockDisplayInfosSnackBar).toHaveBeenCalledWith({ message: 'Redirection en cours' })
+      expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
+    })
   })
 
   it('should redirect with filled email when required without the snackbar being displayed when email is already okay', async () => {
