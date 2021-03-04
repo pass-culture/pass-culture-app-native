@@ -33,7 +33,7 @@ export const useModalContent = (
   const { category, isDigital, stocks } = offer
 
   const goToPreviousStep = () => {
-    dispatch({ type: 'MODIFY_OPTIONS' })
+    dispatch({ type: 'MODIFY_OPTIONS', payload: Step.DUO })
   }
 
   if (category.categoryType === CategoryType.Thing) {

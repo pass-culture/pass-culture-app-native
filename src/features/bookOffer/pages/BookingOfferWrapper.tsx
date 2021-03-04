@@ -3,7 +3,7 @@ import React, { useContext, useReducer } from 'react'
 import {
   Action,
   initialBookingState,
-  searchReducer,
+  bookOfferReducer,
   BookingState,
 } from 'features/bookOffer/pages/reducer'
 import { useOffer } from 'features/offer/api/useOffer'
@@ -16,7 +16,7 @@ export interface IBookingContext {
 export const BookingContext = React.createContext<IBookingContext | null>(null)
 
 export const BookingWrapper = ({ children }: { children: Element }) => {
-  const [bookingState, dispatch] = useReducer(searchReducer, initialBookingState)
+  const [bookingState, dispatch] = useReducer(bookOfferReducer, initialBookingState)
 
   return (
     <BookingContext.Provider value={{ bookingState, dispatch }}>{children}</BookingContext.Provider>
