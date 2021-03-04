@@ -4,6 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { useBackNavigation } from 'features/navigation/backNavigation'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
@@ -32,7 +33,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
     <React.Fragment>
       <ProfileHeaderWithNavigation
         title={_(t`Paramètres de confidentialité`)}
-        onGoBack={route.params.onGoBack}
+        onGoBack={route.params?.onGoBack}
       />
       <Spacer.Column numberOfSpaces={6} />
       <ProfileContainer>

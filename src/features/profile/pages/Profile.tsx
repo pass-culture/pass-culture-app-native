@@ -169,7 +169,7 @@ export const Profile: React.FC = () => {
           <Row
             title={_(t`Confidentialité`)}
             type="navigable"
-            onPress={() => navigate('TemporaryProfilePage')}
+            onPress={() => navigate('ConsentSettings')}
             icon={Confidentiality}
             style={styles.row}
             testID="row-confidentiality"
