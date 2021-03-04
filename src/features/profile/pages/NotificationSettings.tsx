@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
+import { checkNotifications } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -15,6 +16,12 @@ import { SectionRow } from '../components/SectionRow'
 export function NotificationSettings() {
   const [allowEmails, setAllowEmails] = useState(false)
   const [allowPush, setAllowPush] = useState(false)
+
+  useEffect(() => {
+    checkNotifications().then((_permissions) => {
+      // do something in the next commit
+    })
+  }, [])
 
   return (
     <React.Fragment>
