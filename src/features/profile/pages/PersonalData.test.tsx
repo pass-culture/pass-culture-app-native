@@ -1,4 +1,4 @@
-import { act, render } from '@testing-library/react-native'
+import { act, render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 
@@ -32,13 +32,14 @@ describe('PersonalData', () => {
       isBeneficiary: true,
       ...mockedIdentity,
     } as UserProfileResponse)
-
-    getByText('Prénom et nom')
-    getByText('Rosa Bonheur')
-    getByText('E-mail')
-    getByText('rosa.bonheur@gmail.com')
-    getByText('Numéro de téléphone')
-    getByText('+33685974563')
+    await waitFor(() => {
+      expect(getByText('Prénom et nom')).toBeTruthy()
+      expect(getByText('Rosa Bonheur')).toBeTruthy()
+      expect(getByText('E-mail')).toBeTruthy()
+      expect(getByText('rosa.bonheur@gmail.com')).toBeTruthy()
+      expect(getByText('Numéro de téléphone')).toBeTruthy()
+      expect(getByText('+33685974563')).toBeTruthy()
+    })
   })
   it('should render for non beneficiary profile', async () => {
     const { getByText, queryByText } = await renderPersonalData({
@@ -46,7 +47,9 @@ describe('PersonalData', () => {
       ...mockedIdentity,
     } as UserProfileResponse)
 
-    getByText('E-mail')
+    await waitFor(() => {
+      expect(getByText('E-mail')).toBeTruthy()
+    })
 
     const name = queryByText('Prénom et nom')
     const phone = queryByText('Numéro de téléphone')

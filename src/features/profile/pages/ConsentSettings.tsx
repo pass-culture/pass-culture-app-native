@@ -4,7 +4,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { useBackNavigation } from 'features/navigation/backNavigation'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'

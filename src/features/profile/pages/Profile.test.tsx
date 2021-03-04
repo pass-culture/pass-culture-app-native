@@ -150,7 +150,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-confidentiality')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('TemporaryProfilePage')
+      expect(navigate).toBeCalledWith('ConsentSettings')
     })
   })
 
