@@ -39,19 +39,27 @@ const renderDay = (
     )
   if (status === OfferStatus.BOOKABLE)
     return (
-      <TouchableOpacity
-        activeOpacity={ACTIVE_OPACITY}
-        onPress={() => dispatch({ type: 'SELECT_DATE', payload: new Date(date.timestamp) })}>
-        <Day color={ColorsEnum.PRIMARY}>{date.day}</Day>
-      </TouchableOpacity>
+      <DayContainer>
+        <TouchableOpacity
+          activeOpacity={ACTIVE_OPACITY}
+          onPress={() => dispatch({ type: 'SELECT_DATE', payload: new Date(date.timestamp) })}>
+          <Day color={ColorsEnum.PRIMARY}>{date.day}</Day>
+        </TouchableOpacity>
+      </DayContainer>
     )
   if (status === OfferStatus.NOT_BOOKABLE)
     return (
-      <DiagonalStripe>
-        <Day color={ColorsEnum.GREY_DARK}>{date.day}</Day>
-      </DiagonalStripe>
+      <DayContainer>
+        <DiagonalStripe>
+          <Day color={ColorsEnum.GREY_DARK}>{date.day}</Day>
+        </DiagonalStripe>
+      </DayContainer>
     )
-  return <Typo.Body color={ColorsEnum.GREY_DARK}>{date.day}</Typo.Body>
+  return (
+    <DayContainer>
+      <Typo.Body color={ColorsEnum.GREY_DARK}>{date.day}</Typo.Body>
+    </DayContainer>
+  )
 }
 
 const renderArrow = (direction: string) => {
@@ -122,6 +130,11 @@ const SelectedDay = styled(View)({
 
 const SelectedDayNumber = styled(Typo.ButtonText)({
   alignSelf: 'center',
+})
+
+const DayContainer = styled(View)({
+  height: getSpacing(6),
+  justifyContent: 'center',
 })
 
 const StyledView = styled(View)({ alignItems: 'center' })
