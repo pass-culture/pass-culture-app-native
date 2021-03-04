@@ -10,23 +10,26 @@ export type BookingState = {
   stockId: number | undefined
   step: Step | undefined
   quantity: 1 | 2
+  date: Date | undefined
 }
 
 export const initialBookingState: BookingState = {
   offerId: undefined,
   stockId: undefined,
-  step: undefined,
+  step: Step.DATE,
   quantity: 1,
+  date: undefined,
 }
 
 export type Action =
   | { type: 'INIT'; payload: Partial<BookingState> }
   | { type: 'VALIDATE_OPTIONS' }
   | { type: 'SELECT_QUANTITY'; payload: 1 | 2 }
-  | { type: 'MODIFY_OPTIONS' }
+  | { type: 'MODIFY_OPTIONS'; payload: Step }
   | { type: 'SELECT_STOCK'; payload: number }
+  | { type: 'SELECT_DATE'; payload: Date }
 
-export const searchReducer = (state: BookingState, action: Action): BookingState => {
+export const bookOfferReducer = (state: BookingState, action: Action): BookingState => {
   switch (action.type) {
     case 'INIT':
       return { ...initialBookingState, ...action.payload }
@@ -37,7 +40,9 @@ export const searchReducer = (state: BookingState, action: Action): BookingState
     case 'SELECT_QUANTITY':
       return { ...state, quantity: action.payload }
     case 'MODIFY_OPTIONS':
-      return { ...state, step: Step.DUO }
+      return { ...state, step: action.payload }
+    case 'SELECT_DATE':
+      return { ...state, step: Step.HOUR, date: action.payload }
     default:
       return state
   }
