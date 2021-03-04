@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -45,25 +46,29 @@ export function NotificationSettings() {
           <Spacer.Column numberOfSpaces={3} />
         </Line>
         <Separator />
-        <Line>
-          <SettingExplanation>
-            {_(
-              t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`
-            )}
-          </SettingExplanation>
-          <Spacer.Column numberOfSpaces={4} />
-          <SectionRow
-            type="clickable"
-            title={_(t`Autoriser les notifications marketing`)}
-            cta={
-              <FilterSwitch
-                active={allowPush}
-                toggle={() => setAllowPush((prevActive) => !prevActive)}
+        {Platform.OS === 'ios' && (
+          <React.Fragment>
+            <Line>
+              <SettingExplanation>
+                {_(
+                  t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`
+                )}
+              </SettingExplanation>
+              <Spacer.Column numberOfSpaces={4} />
+              <SectionRow
+                type="clickable"
+                title={_(t`Autoriser les notifications marketing`)}
+                cta={
+                  <FilterSwitch
+                    active={allowPush}
+                    toggle={() => setAllowPush((prevActive) => !prevActive)}
+                  />
+                }
               />
-            }
-          />
-          <Spacer.Column numberOfSpaces={3} />
-        </Line>
+              <Spacer.Column numberOfSpaces={3} />
+            </Line>
+          </React.Fragment>
+        )}
         <Spacer.Flex flex={1} />
         <ButtonPrimary title={_(t`Enregistrer`)} />
         <Spacer.Column numberOfSpaces={8} />
