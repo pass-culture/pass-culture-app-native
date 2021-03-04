@@ -44,18 +44,22 @@ export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) =
       />
 
       <Spacer.Column numberOfSpaces={6} />
-      <Separator />
-      <Spacer.Column numberOfSpaces={6} />
+      {bookingState.date && (
+        <React.Fragment>
+          <Separator />
+          <Spacer.Column numberOfSpaces={6} />
 
-      <BookHourChoice />
+          <BookHourChoice />
 
-      <Spacer.Column numberOfSpaces={6} />
-      <Separator />
-      <Spacer.Column numberOfSpaces={6} />
+          <Spacer.Column numberOfSpaces={6} />
+          <Separator />
+          <Spacer.Column numberOfSpaces={6} />
 
-      <BookDuoChoice />
+          <BookDuoChoice />
 
-      <Spacer.Column numberOfSpaces={6} />
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
+      )}
       <ButtonPrimary title={_(t`Valider ces options`)} onPress={validateOptions} />
       <Spacer.Column numberOfSpaces={4} />
     </Container>
