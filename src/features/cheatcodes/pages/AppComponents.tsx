@@ -36,6 +36,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarType } from 'ui/components/snackBar/types'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { StepDots } from 'ui/components/StepDots'
@@ -132,24 +133,6 @@ export const AppComponents: FunctionComponent = () => {
     setButtonIsLoading(true)
     setTimeout(() => setButtonIsLoading(false), 3000)
   }, [])
-
-  const { displaySuccessSnackBar, displayInfosSnackBar, hideSnackBar } = useSnackBarContext()
-  const popupSnackBarSuccess = useCallback(
-    () =>
-      displaySuccessSnackBar({
-        message: 'Ton mot de passe est modifié, attends 5 secondes !!!',
-        timeout: 5000,
-      }),
-    []
-  )
-  const popupSnackBarInfos = useCallback(
-    () =>
-      displayInfosSnackBar({
-        message: 'This is a warning !!!',
-        onClose: hideSnackBar,
-      }),
-    []
-  )
 
   const { goBack } = useNavigation<UseNavigationType>()
 
@@ -538,15 +521,7 @@ export const AppComponents: FunctionComponent = () => {
 
       {/* SnackBar */}
       <AccordionItem title="SnackBar">
-        <TouchableOpacity onPress={popupSnackBarSuccess}>
-          <Typo.Title4 color={ColorsEnum.GREEN_VALID}>
-            Popup Sucess SnackBar for 5 seconds
-          </Typo.Title4>
-        </TouchableOpacity>
-        <Spacer.Column numberOfSpaces={1} />
-        <TouchableOpacity onPress={popupSnackBarInfos}>
-          <Typo.Title4 color={ColorsEnum.ACCENT}>Popup Information SnackBar</Typo.Title4>
-        </TouchableOpacity>
+        <SnackBars />
       </AccordionItem>
 
       <Divider />
@@ -764,4 +739,36 @@ const Label: React.FC<{ label: string }> = ({ label }) => {
 const ExampleSwitch: React.FC = () => {
   const [active, setActive] = useState<boolean>(false)
   return <FilterSwitch active={active} toggle={() => setActive((prevActive) => !prevActive)} />
+}
+
+const SnackBars = () => {
+  const { showSnackBar, hideSnackBar } = useSnackBarContext()
+
+  const snackbars = [
+    {
+      title: '✅ Success SnackBar',
+      type: SnackBarType.SUCCESS,
+      message: 'This was a success !!! '.repeat(5),
+      timeout: 5000,
+    },
+    {
+      title: '❌ Error SnackBar',
+      type: SnackBarType.ERROR,
+      message: 'There was an error !',
+      onClose: hideSnackBar,
+    },
+  ]
+
+  return (
+    <React.Fragment>
+      {snackbars.map(({ title, ...settings }) => (
+        <React.Fragment key={title}>
+          <TouchableOpacity onPress={() => showSnackBar(settings)}>
+            <Typo.Title4>{title}</Typo.Title4>
+          </TouchableOpacity>
+          <Spacer.Column numberOfSpaces={1} />
+        </React.Fragment>
+      ))}
+    </React.Fragment>
+  )
 }
