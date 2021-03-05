@@ -124,7 +124,7 @@ export const Profile: React.FC = () => {
               <FilterSwitch
                 active={isGeolocSwitchActive}
                 toggle={switchGeolocation}
-                testID="geolocation-switch"
+                testID="geolocation"
               />
             }
             testID="row-geolocation"
@@ -195,13 +195,13 @@ export const Profile: React.FC = () => {
         </Section>
         {isLoggedIn && (
           <Section>
-            <Spacer.Column numberOfSpaces={4} />
             <SectionRow
               title={_(t`Déconnexion`)}
               onPress={signOut}
               type="clickable"
               icon={SignOut}
               testID="row-signout"
+              style={styles.logoutRow}
             />
           </Section>
         )}
@@ -230,6 +230,9 @@ const styles = StyleSheet.create({
   row: {
     paddingVertical: getSpacing(4),
   },
+  logoutRow: {
+    marginTop: getSpacing(2),
+  },
 })
 
 const Section = styled(ProfileSection).attrs({
@@ -245,6 +248,7 @@ const BottomSpacing = styled.View({
 })
 
 const NetworkRow = styled.View({
+  flex: 1,
   width: '100%',
   margin: 'auto',
   maxWidth: getSpacing(125),
