@@ -12,7 +12,7 @@ import { MonitoringError } from 'libs/errorMonitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { superFlushWithAct } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import { SnackBarHelperSettings, SnackBarType } from 'ui/components/snackBar/types'
 
 import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 
@@ -86,6 +86,7 @@ describe('<EighteenBirthdayCard />', () => {
       expect(navigate).toBeCalledWith('Login')
     })
     expect(mockShowSnackBar).toBeCalledWith({
+      type: SnackBarType.INFO,
       message: `Tu n'es pas connecté !`,
     })
   })

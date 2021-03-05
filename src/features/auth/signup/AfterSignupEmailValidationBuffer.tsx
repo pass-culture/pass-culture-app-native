@@ -8,6 +8,7 @@ import { isTimestampExpired } from 'libs/dates'
 import { _ } from 'libs/i18n'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarType } from 'ui/components/snackBar/types'
 
 import { useLoginRoutine } from '../AuthContext'
 import { useValidateEmailMutation } from '../mutations'
@@ -59,6 +60,7 @@ export function AfterSignupEmailValidationBuffer() {
 
   function onEmailValidationFailure() {
     showSnackBar({
+      type: SnackBarType.INFO,
       message: _(t`Ce lien de validation n'est plus valide`),
     })
     delayedNavigate('Home', { shouldDisplayLoginModal: false })

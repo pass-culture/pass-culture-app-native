@@ -10,7 +10,7 @@ import * as HomeAPI from 'features/home/api'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import { SnackBarHelperSettings, SnackBarType } from 'ui/components/snackBar/types'
 
 import { BusinessPane } from '../../contentful'
 import { BusinessModule } from '../BusinessModule'
@@ -77,7 +77,10 @@ describe('BusinessModule component', () => {
     await superFlushWithAct(20)
 
     await waitForExpect(() => {
-      expect(mockShowSnackBar).toHaveBeenCalledWith({ message: 'Redirection en cours' })
+      expect(mockShowSnackBar).toHaveBeenCalledWith({
+        type: SnackBarType.INFO,
+        message: 'Redirection en cours',
+      })
       expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
     })
   })

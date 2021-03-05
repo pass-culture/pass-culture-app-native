@@ -22,6 +22,13 @@ export const mapSnackBarTypeToStyle = (
         progressBarColor: ColorsEnum.PRIMARY_DISABLED,
         color: ColorsEnum.WHITE,
       }
+    case SnackBarType.INFO:
+      return {
+        icon: Warning,
+        backgroundColor: ColorsEnum.ACCENT,
+        progressBarColor: ColorsEnum.WHITE,
+        color: ColorsEnum.WHITE,
+      }
     default:
       return {
         icon: undefined,

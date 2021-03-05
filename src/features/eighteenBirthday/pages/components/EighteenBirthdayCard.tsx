@@ -10,6 +10,7 @@ import { _ } from 'libs/i18n'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarType } from 'ui/components/snackBar/types'
 
 export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -30,6 +31,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
       // TODO: remove after POs validation this will happen only when POs access this page without auth
       navigate('Login')
       showSnackBar({
+        type: SnackBarType.INFO,
         message: _(t`Tu n'es pas connecté !`),
       })
     }

@@ -8,7 +8,7 @@ import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import { SnackBarHelperSettings, SnackBarType } from 'ui/components/snackBar/types'
 
 import { loginRoutine } from '../__mocks__/AuthContext'
 import * as Auth from '../AuthContext'
@@ -115,6 +115,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       await waitFor(() => {
         expect(mockShowSnackBar).toHaveBeenCalledTimes(1)
         expect(mockShowSnackBar).toHaveBeenCalledWith({
+          type: SnackBarType.INFO,
           message: "Ce lien de validation n'est plus valide",
         })
         expect(navigate).toBeCalledTimes(1)
