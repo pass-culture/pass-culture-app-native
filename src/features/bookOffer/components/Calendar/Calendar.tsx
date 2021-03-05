@@ -12,7 +12,12 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-import { getStocksByDate, OfferStatus, getDateStatusAndPrice } from '../../services/utils'
+import {
+  getStocksByDate,
+  OfferStatus,
+  getDateStatusAndPrice,
+  formatToKeyDate,
+} from '../../services/utils'
 
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
 import { DiagonalStripe } from './DiagonalStripe'
@@ -25,14 +30,6 @@ LocaleConfig.locales['fr'] = {
   dayNamesShort,
 }
 LocaleConfig.defaultLocale = 'fr'
-
-export const formatToKeyDate = (ISODate: string) => {
-  const date = new Date(ISODate)
-  const day = ('0' + date.getDate()).slice(-2)
-  const month = ('0' + (date.getMonth() + 1)).slice(-2)
-  const year = date.getFullYear()
-  return `${year}-${month}-${day}`
-}
 
 const renderDay = (
   status: OfferStatus,
@@ -90,10 +87,10 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
   const stocksDate = getStocksByDate(stocks)
   const debouncedDispatch = useRef(debounce(dispatch, 200)).current
 
-  const markedDates: { [keyDate: string]: { selected: boolean; marked: boolean } } = {}
+  const markedDates: { [keyDate: string]: { selected: boolean } } = {}
   if (bookingState.date) {
-    const keyDate = formatToKeyDate(bookingState.date.toString())
-    markedDates[keyDate] = { selected: true, marked: true }
+    const keyDate = formatToKeyDate(bookingState.date)
+    markedDates[keyDate] = { selected: true }
   }
 
   return (
