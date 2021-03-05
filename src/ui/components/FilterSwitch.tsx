@@ -37,7 +37,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
         onPress={toggle}>
         <StyledBackgroundColor
           active={active}
-          testID={testID ? `${testID}-background` : 'switchBackground'}>
+          testID={testID ? `${testID}-switch-background` : 'switchBackground'}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
       </TouchableOpacity>

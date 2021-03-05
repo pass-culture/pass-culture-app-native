@@ -91,7 +91,7 @@ describe('Profile component', () => {
         mockPosition = { latitude: 2, longitude: 40 }
 
         const { getByTestId } = await renderProfile()
-        const geolocSwitch = getByTestId('geolocation-switch')
+        const geolocSwitch = getByTestId('geolocation')
 
         fireEvent.press(geolocSwitch)
         expect(storage.saveObject).toHaveBeenCalledWith('has_allowed_geolocation', false)

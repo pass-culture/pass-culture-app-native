@@ -1,9 +1,11 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useState } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import React, { useCallback, useState } from 'react'
 import { Platform } from 'react-native'
-import { checkNotifications } from 'react-native-permissions'
+import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
+import { useUserProfileInfo } from 'features/home/api'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import FilterSwitch from 'ui/components/FilterSwitch'
@@ -14,14 +16,32 @@ import { ProfileContainer, Separator } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
 export function NotificationSettings() {
-  const [allowEmails, setAllowEmails] = useState(false)
-  const [allowPush, setAllowPush] = useState(false)
+  const [state, setState] = useState<{
+    allowEmails: boolean
+    pushPermission: PermissionStatus
+    pushSwitchEnabled: boolean
+  }>({
+    allowEmails: false,
+    pushPermission: 'unavailable',
+    pushSwitchEnabled: false,
+  })
 
-  useEffect(() => {
-    checkNotifications().then((_permissions) => {
-      // do something in the next commit
-    })
-  }, [])
+  const { data: user } = useUserProfileInfo()
+
+  useFocusEffect(
+    useCallback(() => {
+      checkNotifications().then((permission) => {
+        const { marketing_email, marketing_push } = user?.subscriptions || {}
+
+        // save values for treatments
+        setState({
+          allowEmails: marketing_email ?? true,
+          pushPermission: permission.status,
+          pushSwitchEnabled: permission.status === 'granted' && Boolean(marketing_push),
+        })
+      })
+    }, [])
+  )
 
   return (
     <React.Fragment>
@@ -45,8 +65,11 @@ export function NotificationSettings() {
             title={_(t`Autoriser l’envoi d’e-mails`)}
             cta={
               <FilterSwitch
-                active={allowEmails}
-                toggle={() => setAllowEmails((prevActive) => !prevActive)}
+                testID="email"
+                active={state.allowEmails}
+                toggle={() =>
+                  setState((prevState) => ({ ...prevState, allowEmails: !prevState.allowEmails }))
+                }
               />
             }
           />
@@ -67,8 +90,14 @@ export function NotificationSettings() {
                 title={_(t`Autoriser les notifications marketing`)}
                 cta={
                   <FilterSwitch
-                    active={allowPush}
-                    toggle={() => setAllowPush((prevActive) => !prevActive)}
+                    testID="push"
+                    active={state.pushSwitchEnabled}
+                    toggle={() =>
+                      setState((prevState) => ({
+                        ...prevState,
+                        pushSwitchEnabled: !prevState.pushSwitchEnabled,
+                      }))
+                    }
                   />
                 }
               />
