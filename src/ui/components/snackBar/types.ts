@@ -9,4 +9,4 @@ export type SnackBarSettings = Omit<SnackBarProps, 'visible' | 'refresher'>
 export type SnackBarHelperSettings = Omit<
   SnackBarSettings,
   'icon' | 'color' | 'backgroundColor' | 'progressBarColor'
-> & { type: SnackBarType }
+> & { type?: SnackBarType }

@@ -9,7 +9,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { flushAllPromises, superFlushWithAct } from 'tests/utils'
-import { displaySuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext.ts'
+import { showSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext.ts'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum } from 'ui/theme'
 
@@ -84,7 +84,7 @@ describe('ChangePassword', () => {
       )
     )
     mockedUseSnackBarContext.mockImplementation(() => ({
-      displaySuccessSnackBar,
+      showSnackBar,
     }))
 
     const { getByPlaceholderText, getByTestId } = await renderChangePassword()
@@ -103,7 +103,7 @@ describe('ChangePassword', () => {
 
     await superFlushWithAct(20)
 
-    expect(displaySuccessSnackBar).toBeCalledWith({
+    expect(showSnackBar).toBeCalledWith({
       message: 'Mot de passe modifié',
       timeout: SNACK_BAR_TIME_OUT,
     })

@@ -4,7 +4,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'
 import { SnackBar, SnackBarProps } from './SnackBar'
-import { SnackBarHelperSettings } from './types'
+import { SnackBarHelperSettings, SnackBarType } from './types'
 
 export const SNACK_BAR_TIME_OUT = 5000
 
@@ -31,7 +31,7 @@ export const SnackBarProvider: FunctionComponent = ({ children }) => {
   })
 
   const showSnackBar = (settings: SnackBarHelperSettings) => {
-    const { type, ...otherSettings } = settings
+    const { type = SnackBarType.SUCCESS, ...otherSettings } = settings
     setSnackBarProps({
       ...mapSnackBarTypeToStyle(type),
       ...otherSettings,

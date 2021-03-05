@@ -28,7 +28,7 @@ export const ReinitializePassword = () => {
   const { params } = useRoute<UseRouteType<'ReinitializePassword'>>()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const { displaySuccessSnackBar } = useSnackBarContext()
+  const { showSnackBar } = useSnackBarContext()
 
   const [password, setPassword] = useState('')
   const [shouldShowPasswordError] = useState(false)
@@ -40,7 +40,7 @@ export const ReinitializePassword = () => {
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
 
   const { mutate: resetPassword, isLoading } = useResetPasswordMutation(() => {
-    displaySuccessSnackBar({
+    showSnackBar({
       message: _(t`Ton mot de passe a été modifié !`),
       timeout: SNACK_BAR_TIME_OUT,
     })

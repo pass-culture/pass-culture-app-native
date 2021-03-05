@@ -17,12 +17,10 @@ import { BusinessModule } from '../BusinessModule'
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
-const mockDisplayInfosSnackBar = jest.fn()
+const mockShowSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    displayInfosSnackBar: jest.fn((props: SnackBarHelperSettings) =>
-      mockDisplayInfosSnackBar(props)
-    ),
+    showSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSnackBar(props)),
   }),
 }))
 
@@ -79,7 +77,7 @@ describe('BusinessModule component', () => {
     await superFlushWithAct(20)
 
     await waitForExpect(() => {
-      expect(mockDisplayInfosSnackBar).toHaveBeenCalledWith({ message: 'Redirection en cours' })
+      expect(mockShowSnackBar).toHaveBeenCalledWith({ message: 'Redirection en cours' })
       expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
     })
   })
@@ -98,7 +96,7 @@ describe('BusinessModule component', () => {
     await waitForExpect(() =>
       expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
-    expect(mockDisplayInfosSnackBar).not.toHaveBeenCalled()
+    expect(mockShowSnackBar).not.toHaveBeenCalled()
     homeAPISpy.mockReset()
   })
 
@@ -114,7 +112,7 @@ describe('BusinessModule component', () => {
 
     fireEvent.press(getByTestId('imageBusiness'))
     await waitForExpect(() => expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_no_email'))
-    expect(mockDisplayInfosSnackBar).not.toHaveBeenCalled()
+    expect(mockShowSnackBar).not.toHaveBeenCalled()
     homeAPISpy.mockReset()
   })
 })

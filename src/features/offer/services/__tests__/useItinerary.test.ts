@@ -10,12 +10,10 @@ import { useItinerary } from '../useItinerary'
 const alertMock = jest.spyOn(Alert, 'alert')
 jest.spyOn(Linking, 'openURL')
 
-const mockDisplayInfosSnackBar = jest.fn()
+const mockShowSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    displayInfosSnackBar: jest.fn((props: SnackBarHelperSettings) =>
-      mockDisplayInfosSnackBar(props)
-    ),
+    showSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSnackBar(props)),
   }),
 }))
 
@@ -165,7 +163,7 @@ describe('useItinerary', () => {
     // @ts-ignore: same reason
     onWazePress()
     await waitForExpect(() =>
-      expect(mockDisplayInfosSnackBar).toHaveBeenCalledWith({
+      expect(mockShowSnackBar).toHaveBeenCalledWith({
         message:
           'Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.',
         timeout: 10000,
