@@ -1,8 +1,8 @@
 export enum Step {
-  DATE,
-  HOUR,
-  DUO,
-  CONFIRMATION,
+  DATE = 'DATE',
+  HOUR = 'HOUR',
+  DUO = 'DUO',
+  CONFIRMATION = 'CONFIRMATION',
 }
 
 export type BookingState = {
@@ -25,7 +25,7 @@ export type Action =
   | { type: 'INIT'; payload: Partial<BookingState> }
   | { type: 'VALIDATE_OPTIONS' }
   | { type: 'SELECT_QUANTITY'; payload: 1 | 2 }
-  | { type: 'MODIFY_OPTIONS'; payload: Step }
+  | { type: 'CHANGE_STEP'; payload: Step }
   | { type: 'SELECT_STOCK'; payload: number }
   | { type: 'SELECT_DATE'; payload: Date }
 
@@ -39,7 +39,7 @@ export const bookOfferReducer = (state: BookingState, action: Action): BookingSt
       return { ...state, stockId: action.payload }
     case 'SELECT_QUANTITY':
       return { ...state, quantity: action.payload }
-    case 'MODIFY_OPTIONS':
+    case 'CHANGE_STEP':
       return { ...state, step: action.payload }
     case 'SELECT_DATE':
       return { ...state, step: Step.HOUR, date: action.payload }
