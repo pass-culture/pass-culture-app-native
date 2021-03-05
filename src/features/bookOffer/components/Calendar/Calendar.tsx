@@ -88,7 +88,7 @@ interface Props {
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
   const { bookingState, dispatch } = useBooking()
   const stocksDate = getStocksByDate(stocks)
-  const debouncedDispatch = useRef(debounce(dispatch, 1000)).current
+  const debouncedDispatch = useRef(debounce(dispatch, 200)).current
 
   const markedDates: { [keyDate: string]: { selected: boolean; marked: boolean } } = {}
   if (bookingState.date) {
