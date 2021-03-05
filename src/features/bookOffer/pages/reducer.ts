@@ -42,7 +42,7 @@ export const bookOfferReducer = (state: BookingState, action: Action): BookingSt
     case 'CHANGE_STEP':
       return { ...state, step: action.payload }
     case 'SELECT_DATE':
-      return { ...state, step: Step.HOUR, date: action.payload }
+      return { ...state, date: action.payload }
     default:
       return state
   }

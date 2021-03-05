@@ -44,7 +44,7 @@ export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) =
       />
 
       <Spacer.Column numberOfSpaces={6} />
-      {bookingState.date && (
+      {bookingState.step === Step.HOUR && (
         <React.Fragment>
           <Separator />
           <Spacer.Column numberOfSpaces={6} />

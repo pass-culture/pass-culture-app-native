@@ -1,11 +1,12 @@
-import React from 'react'
+import debounce from 'lodash.debounce'
+import React, { useRef } from 'react'
 import { View, TouchableOpacity } from 'react-native'
 import { Calendar as RNCalendar, DateObject, LocaleConfig } from 'react-native-calendars'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
-import { Action } from 'features/bookOffer/pages/reducer'
+import { Action, Step } from 'features/bookOffer/pages/reducer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -25,12 +26,25 @@ LocaleConfig.locales['fr'] = {
 }
 LocaleConfig.defaultLocale = 'fr'
 
+export const formatToKeyDate = (ISODate: string) => {
+  const date = new Date(ISODate)
+  const day = ('0' + date.getDate()).slice(-2)
+  const month = ('0' + (date.getMonth() + 1)).slice(-2)
+  const year = date.getFullYear()
+  return `${year}-${month}-${day}`
+}
+
 const renderDay = (
   status: OfferStatus,
   selected: boolean,
   date: DateObject,
+  debouncedDispatch: React.Dispatch<Action>,
   dispatch: React.Dispatch<Action>
 ) => {
+  const selectDate = () => {
+    dispatch({ type: 'SELECT_DATE', payload: new Date(date.timestamp) })
+    debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
+  }
   if (selected)
     return (
       <SelectedDay>
@@ -40,9 +54,7 @@ const renderDay = (
   if (status === OfferStatus.BOOKABLE)
     return (
       <DayContainer>
-        <TouchableOpacity
-          activeOpacity={ACTIVE_OPACITY}
-          onPress={() => dispatch({ type: 'SELECT_DATE', payload: new Date(date.timestamp) })}>
+        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectDate}>
           <Day color={ColorsEnum.PRIMARY}>{date.day}</Day>
         </TouchableOpacity>
       </DayContainer>
@@ -76,6 +88,13 @@ interface Props {
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
   const { bookingState, dispatch } = useBooking()
   const stocksDate = getStocksByDate(stocks)
+  const debouncedDispatch = useRef(debounce(dispatch, 1000)).current
+
+  const markedDates: { [keyDate: string]: { selected: boolean; marked: boolean } } = {}
+  if (bookingState.date) {
+    const keyDate = formatToKeyDate(bookingState.date.toString())
+    markedDates[keyDate] = { selected: true, marked: true }
+  }
 
   return (
     <RNCalendar
@@ -84,18 +103,24 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
       renderHeader={(date) => <MonthHeader date={date} />}
       hideExtraDays={true}
       renderArrow={renderArrow}
-      dayComponent={({ date }) => {
+      markedDates={markedDates}
+      dayComponent={({ date, marking }) => {
         const dateStatusAndPrice = getDateStatusAndPrice(
           new Date(date.timestamp),
           stocksDate,
           userRemainingCredit
         )
 
-        const selected = bookingState.date?.getTime() === new Date(date.timestamp).getTime()
-
         return (
           <StyledView>
-            {renderDay(dateStatusAndPrice.status, selected, date, dispatch)}
+            {renderDay(
+              dateStatusAndPrice.status,
+              // @ts-ignore : problem in the definition of marking in the library : see explanation in https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
+              marking.selected || false,
+              date,
+              debouncedDispatch,
+              dispatch
+            )}
             {dateStatusAndPrice.price ? (
               <Typo.Caption
                 color={
