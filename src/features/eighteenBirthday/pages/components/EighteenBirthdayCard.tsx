@@ -15,7 +15,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: idCheckTokenResponse } = useGetIdCheckToken(true)
   const { data: profile } = useUserProfileInfo()
-  const { displayInfosSnackBar } = useSnackBarContext()
+  const { showSnackBar } = useSnackBarContext()
 
   function onButtonPress() {
     if (profile && idCheckTokenResponse?.token) {
@@ -29,7 +29,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
     } else {
       // TODO: remove after POs validation this will happen only when POs access this page without auth
       navigate('Login')
-      displayInfosSnackBar({
+      showSnackBar({
         message: _(t`Tu n'es pas connecté !`),
       })
     }

@@ -18,7 +18,7 @@ enum BackupSolution {
 }
 export const useItinerary = () => {
   const [availableApps, setAvailableApps] = useState<AppEnum[] | undefined>(undefined)
-  const { displayInfosSnackBar } = useSnackBarContext()
+  const { showSnackBar } = useSnackBarContext()
   const getApps = async () => {
     try {
       const appsAvailability = await LN.getAvailableApps()
@@ -51,7 +51,7 @@ export const useItinerary = () => {
           navigateWithOpenStreetMap(coordinates)
           return
         case BackupSolution.SNACKBAR_ERROR:
-          displayInfosSnackBar({
+          showSnackBar({
             message: _(
               t`Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.`
             ),

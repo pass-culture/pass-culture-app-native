@@ -22,7 +22,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const { data: profileData, isLoading: isProfileDataLoading } = useUserProfileInfo()
-  const { displayInfosSnackBar } = useSnackBarContext()
+  const { showSnackBar } = useSnackBarContext()
 
   const openUrl = (finalUrl: string) => {
     setShouldRedirect(false)
@@ -41,7 +41,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
       return
     }
     if (isProfileDataLoading) {
-      displayInfosSnackBar({ message: _(t`Redirection en cours`) })
+      showSnackBar({ message: _(t`Redirection en cours`) })
       return
     }
   }, [url, profileData, shouldRedirect])

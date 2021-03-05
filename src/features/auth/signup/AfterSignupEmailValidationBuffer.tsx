@@ -13,7 +13,7 @@ import { useLoginRoutine } from '../AuthContext'
 import { useValidateEmailMutation } from '../mutations'
 
 export function AfterSignupEmailValidationBuffer() {
-  const { displayInfosSnackBar } = useSnackBarContext()
+  const { showSnackBar } = useSnackBarContext()
 
   const { navigate } = useNavigation<UseNavigationType>()
   const delayedNavigate: typeof navigate = (...args: Parameters<typeof navigate>) => {
@@ -58,7 +58,7 @@ export function AfterSignupEmailValidationBuffer() {
   }
 
   function onEmailValidationFailure() {
-    displayInfosSnackBar({
+    showSnackBar({
       message: _(t`Ce lien de validation n'est plus valide`),
     })
     delayedNavigate('Home', { shouldDisplayLoginModal: false })

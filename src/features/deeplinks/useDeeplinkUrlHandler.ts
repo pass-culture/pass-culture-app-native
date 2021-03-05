@@ -30,11 +30,11 @@ export function decodeDeeplinkParts(url: string): DeeplinkParts {
 const DEFAULT_ERROR_MESSAGE = _(t`Le lien est incorrect`)
 
 export function useOnDeeplinkError() {
-  const { displayInfosSnackBar } = useSnackBarContext()
+  const { showSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (errorMessage?: string) => {
-    displayInfosSnackBar({
+    showSnackBar({
       message: errorMessage ? errorMessage : DEFAULT_ERROR_MESSAGE,
     })
     const { screen, params } = DEEPLINK_TO_SCREEN_CONFIGURATION['default']()

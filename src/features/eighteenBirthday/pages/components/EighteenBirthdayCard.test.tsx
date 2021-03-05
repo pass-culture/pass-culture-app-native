@@ -19,13 +19,11 @@ import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 const email = 'email@domain.ext'
 const firstName = 'Jean'
 const token = 'XYZT'
-const mockDisplayInfosSnackBar = jest.fn()
+const mockShowSnackBar = jest.fn()
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    displayInfosSnackBar: jest.fn((props: SnackBarHelperSettings) =>
-      mockDisplayInfosSnackBar(props)
-    ),
+    showSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSnackBar(props)),
   }),
 }))
 
@@ -87,7 +85,7 @@ describe('<EighteenBirthdayCard />', () => {
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('Login')
     })
-    expect(mockDisplayInfosSnackBar).toBeCalledWith({
+    expect(mockShowSnackBar).toBeCalledWith({
       message: `Tu n'es pas connecté !`,
     })
   })

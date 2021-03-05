@@ -43,7 +43,7 @@ describe('SnackBar Component', () => {
     it('should render the content container when visible=true', () => {
       const { getByTestId } = render(renderHelperSnackBar(true, { message: 'message' }))
 
-      getByTestId('snackbar-content')
+      getByTestId('snackbar-message')
     })
     it('should not render the empty container when visible=false', () => {
       const { getByTestId } = render(renderHelperSnackBar(false, { message: 'message' }))
