@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarType } from 'ui/components/snackBar/types'
 
 import { handleDeeplinkAnalytics } from './analytics'
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
@@ -35,6 +36,7 @@ export function useOnDeeplinkError() {
 
   return (errorMessage?: string) => {
     showSnackBar({
+      type: SnackBarType.INFO,
       message: errorMessage ? errorMessage : DEFAULT_ERROR_MESSAGE,
     })
     const { screen, params } = DEEPLINK_TO_SCREEN_CONFIGURATION['default']()

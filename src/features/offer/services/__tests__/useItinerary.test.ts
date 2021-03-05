@@ -3,7 +3,7 @@ import { Alert, Linking, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import { SnackBarHelperSettings, SnackBarType } from 'ui/components/snackBar/types'
 
 import { useItinerary } from '../useItinerary'
 
@@ -164,6 +164,7 @@ describe('useItinerary', () => {
     onWazePress()
     await waitForExpect(() =>
       expect(mockShowSnackBar).toHaveBeenCalledWith({
+        type: SnackBarType.INFO,
         message:
           'Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.',
         timeout: 10000,

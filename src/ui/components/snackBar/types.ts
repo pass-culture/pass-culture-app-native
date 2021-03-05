@@ -1,8 +1,9 @@
 import { SnackBarProps } from './SnackBar'
 
 export enum SnackBarType {
-  SUCCESS = 'success',
   ERROR = 'error',
+  INFO = 'info',
+  SUCCESS = 'success',
 }
 
 export type SnackBarSettings = Omit<SnackBarProps, 'visible' | 'refresher'>

@@ -9,13 +9,16 @@ import { _ } from 'libs/i18n'
 import { getOpenStreetMapUrl } from 'libs/parsers/getOpenStreetMapUrl'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarType } from 'ui/components/snackBar/types'
 
 const appEnumTypeGuard = (app: string): app is AppEnum =>
   Object.values(AppEnum).includes(app as AppEnum)
+
 enum BackupSolution {
   OPEN_STREET_MAP,
   SNACKBAR_ERROR,
 }
+
 export const useItinerary = () => {
   const [availableApps, setAvailableApps] = useState<AppEnum[] | undefined>(undefined)
   const { showSnackBar } = useSnackBarContext()
@@ -52,6 +55,7 @@ export const useItinerary = () => {
           return
         case BackupSolution.SNACKBAR_ERROR:
           showSnackBar({
+            type: SnackBarType.INFO,
             message: _(
               t`Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.`
             ),

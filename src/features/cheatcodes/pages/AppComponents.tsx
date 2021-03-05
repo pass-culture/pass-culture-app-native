@@ -757,6 +757,12 @@ const SnackBars = () => {
       message: 'There was an error !',
       onClose: hideSnackBar,
     },
+    {
+      title: 'ℹ️ Info SnackBar',
+      type: SnackBarType.INFO,
+      message: 'Hello, for your information...',
+      timeout: 10000,
+    },
   ]
 
   return (
