@@ -14,8 +14,9 @@ import styled from 'styled-components/native'
 
 import { Close } from 'ui/svg/icons/Close'
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { ZIndexes } from 'ui/theme/layers'
 
 type RefType = RefObject<
@@ -114,17 +115,18 @@ const _SnackBar = (props: SnackBarProps) => {
         duration={animationDuration}
         ref={containerRef}>
         <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
-          <React.Fragment>
-            <ContentContainer testID="snackbar-content">
-              {Icon && <Icon testID="snackbar-icon" size={22} color={props.color} />}
-              <Text testID="snackbar-message" color={props.color}>
-                {props.message}
-              </Text>
-            </ContentContainer>
-            <TouchableOpacity testID="snackbar-close" onPress={onClose}>
-              <Close size={24} color={props.color} />
-            </TouchableOpacity>
-          </React.Fragment>
+          {Icon && <Icon testID="snackbar-icon" size={32} color={props.color} />}
+          <Spacer.Flex flex={1}>
+            <Text testID="snackbar-message" color={props.color}>
+              {props.message}
+            </Text>
+          </Spacer.Flex>
+          <TouchableOpacity
+            testID="snackbar-close"
+            onPress={onClose}
+            activeOpacity={ACTIVE_OPACITY}>
+            <Close size={28} color={props.color} />
+          </TouchableOpacity>
         </SnackBarContainer>
       </ColoredAnimatableView>
       <AnimatableView easing="ease" duration={animationDuration} ref={progressBarContainerRef}>
@@ -157,18 +159,11 @@ const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>
     marginTop,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: getSpacing(2),
-    flexGrow: 0,
+    paddingVertical: getSpacing(2),
+    paddingHorizontal: getSpacing(5),
     display: isVisible ? 'flex' : 'none',
   })
 )
-
-const ContentContainer = styled.View({
-  flex: 1,
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginLeft: getSpacing(1),
-})
 
 const Text = styled(Typo.Body)<{ color: string }>(({ color }) => ({
   color,
