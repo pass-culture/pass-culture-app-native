@@ -28,4 +28,5 @@ const Container = styled(View)({
 const Title = styled(Typo.Body)({
   fontSize: 12,
   fontFamily: 'Montserrat-Medium',
+  paddingBottom: getSpacing(2),
 })
