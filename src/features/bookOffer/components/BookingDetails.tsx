@@ -21,13 +21,9 @@ const disclaimer = _(
   t`Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.`
 )
 
-interface Props {
-  dismissModal: () => void
-}
-
-export const BookingDetails: React.FC<Props> = ({ dismissModal }) => {
+export const BookingDetails: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { bookingState } = useBooking()
+  const { bookingState, dismissModal } = useBooking()
   const stock = useBookingStock()
   const { showErrorSnackBar } = useSnackBarContext()
 

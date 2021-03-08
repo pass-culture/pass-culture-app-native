@@ -16,6 +16,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBooking: jest.fn(() => ({
     dispatch: mockDispatch,
     bookingState: { quantity: 1, step: mockStep },
+    dismissModal: mockDismissModal,
   })),
   useBookingOffer: jest.fn(() => mockOffer),
 }))
@@ -23,9 +24,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', () => {
     const page = render(
-      reactQueryProviderHOC(
-        <BookingOfferModalComponent visible={true} dismissModal={mockDismissModal} offerId={20} />
-      )
+      reactQueryProviderHOC(<BookingOfferModalComponent visible={true} offerId={20} />)
     )
 
     const dismissModalButton = page.getByTestId('rightIconButton')
