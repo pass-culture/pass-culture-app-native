@@ -21,7 +21,7 @@ import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavi
 import { ProfileContainer } from '../components/reusables'
 
 export function ChangePassword() {
-  const { showSnackBar } = useSnackBarContext()
+  const { showSuccessSnackBar } = useSnackBarContext()
 
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
@@ -52,7 +52,7 @@ export function ChangePassword() {
       setNewPassword('')
       setConfirmedPassword('')
       setShouldDisplayPasswordRules(false)
-      showSnackBar({
+      showSuccessSnackBar({
         message: _(t`Mot de passe modifié`),
         timeout: SNACK_BAR_TIME_OUT,
       })

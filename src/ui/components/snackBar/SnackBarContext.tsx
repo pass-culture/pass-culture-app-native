@@ -4,17 +4,21 @@ import { ColorsEnum } from 'ui/theme'
 
 import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'
 import { SnackBar, SnackBarProps } from './SnackBar'
-import { SnackBarHelperSettings, SnackBarType } from './types'
+import { SnackBarHelperSettings, SnackBarSettings, SnackBarType } from './types'
 
 export const SNACK_BAR_TIME_OUT = 5000
 
 interface SnackBarContextValue {
-  showSnackBar: (props: SnackBarHelperSettings) => void
+  showErrorSnackBar: (props: SnackBarHelperSettings) => void
+  showInfoSnackBar: (props: SnackBarHelperSettings) => void
+  showSuccessSnackBar: (props: SnackBarHelperSettings) => void
   hideSnackBar: () => void
 }
 
 const SnackBarContext = createContext<SnackBarContextValue>({
-  showSnackBar: () => null,
+  showErrorSnackBar: () => null,
+  showInfoSnackBar: () => null,
+  showSuccessSnackBar: () => null,
   hideSnackBar: () => null,
 })
 
@@ -30,20 +34,30 @@ export const SnackBarProvider: FunctionComponent = ({ children }) => {
     refresher: 0,
   })
 
-  const showSnackBar = (settings: SnackBarHelperSettings) => {
-    const { type = SnackBarType.SUCCESS, ...otherSettings } = settings
-    setSnackBarProps({
-      ...mapSnackBarTypeToStyle(type),
-      ...otherSettings,
-      visible: true,
-      refresher: new Date().getTime(),
-    })
-  }
+  const showSnackBar = (settings: SnackBarSettings) =>
+    setSnackBarProps({ ...settings, visible: true, refresher: new Date().getTime() })
 
   const hideSnackBar = () =>
     setSnackBarProps((props) => ({ ...props, visible: false, refresher: new Date().getTime() }))
 
-  const snackBarToolsRef = useRef<SnackBarContextValue>({ hideSnackBar, showSnackBar })
+  const snackBarToolsRef = useRef<SnackBarContextValue>({
+    hideSnackBar,
+    showErrorSnackBar: (settings) =>
+      showSnackBar({
+        ...settings,
+        ...mapSnackBarTypeToStyle(SnackBarType.ERROR),
+      }),
+    showInfoSnackBar: (settings) =>
+      showSnackBar({
+        ...settings,
+        ...mapSnackBarTypeToStyle(SnackBarType.INFO),
+      }),
+    showSuccessSnackBar: (settings) =>
+      showSnackBar({
+        ...settings,
+        ...mapSnackBarTypeToStyle(SnackBarType.SUCCESS),
+      }),
+  })
 
   return (
     <React.Fragment>

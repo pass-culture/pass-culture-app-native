@@ -8,7 +8,7 @@ import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { SnackBarHelperSettings, SnackBarType } from 'ui/components/snackBar/types'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { loginRoutine } from '../__mocks__/AuthContext'
 import * as Auth from '../AuthContext'
@@ -18,10 +18,10 @@ import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBu
 jest.mock('features/auth/AuthContext')
 const mockLoginRoutine = Auth.useLoginRoutine as jest.Mock
 
-const mockShowSnackBar = jest.fn()
+const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSnackBar(props)),
+    showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
   }),
 }))
 
@@ -40,7 +40,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   afterEach(() => {
     navigate.mockRestore()
-    mockShowSnackBar.mockClear()
+    mockShowInfoSnackBar.mockClear()
   })
 
   describe('when timestamp is NOT expired', () => {
@@ -113,9 +113,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       renderPage()
 
       await waitFor(() => {
-        expect(mockShowSnackBar).toHaveBeenCalledTimes(1)
-        expect(mockShowSnackBar).toHaveBeenCalledWith({
-          type: SnackBarType.INFO,
+        expect(mockShowInfoSnackBar).toHaveBeenCalledTimes(1)
+        expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
           message: "Ce lien de validation n'est plus valide",
         })
         expect(navigate).toBeCalledTimes(1)
