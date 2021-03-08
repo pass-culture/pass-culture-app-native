@@ -23,11 +23,9 @@ export const BookingWrapper = ({ children }: { children: Element }) => {
   )
 }
 
-export const useBooking = (): Pick<IBookingContext, 'bookingState' | 'dispatch'> => {
-  // The bookingState is initialized so this can't be null
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { bookingState, dispatch } = useContext(BookingContext)!
-  return { bookingState, dispatch }
+export const useBooking = (): IBookingContext => {
+  const bookingContext = useContext(BookingContext)
+  return bookingContext ?? { bookingState: initialBookingState, dispatch: () => null }
 }
 
 export const useBookingOffer = () => {
