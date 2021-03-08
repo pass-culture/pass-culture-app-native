@@ -31,6 +31,8 @@ LocaleConfig.locales['fr'] = {
 }
 LocaleConfig.defaultLocale = 'fr'
 
+const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
+
 const renderDay = (
   status: OfferStatus,
   selected: boolean,
@@ -42,7 +44,6 @@ const renderDay = (
     dispatch({ type: 'SELECT_DATE', payload: new Date(date.timestamp) })
     debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }
-  const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
   if (selected)
     return (
       <SelectedDay>

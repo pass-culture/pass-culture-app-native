@@ -14,11 +14,15 @@ interface Props {
   offerId: number
 }
 
-const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissModal, offerId }) => {
+export const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissModal, offerId }) => {
   const { dispatch } = useBooking()
   const { title, leftIcon, onLeftIconPress, children } = useModalContent(dismissModal)
   const { data: offer } = useOffer({ offerId })
 
+  const onPressRightIcon = () => {
+    dismissModal()
+    dispatch({ type: 'INIT', payload: {} })
+  }
   useEffect(() => {
     dispatch({ type: 'INIT', payload: { offerId } })
   }, [])
@@ -37,7 +41,7 @@ const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissModal, of
       leftIcon={leftIcon}
       onLeftIconPress={onLeftIconPress}
       rightIcon={Close}
-      onRightIconPress={dismissModal}>
+      onRightIconPress={onPressRightIcon}>
       {children}
     </AppModal>
   )
