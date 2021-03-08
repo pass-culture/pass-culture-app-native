@@ -118,7 +118,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-how-it-works')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('TemporaryProfilePage')
+      expect(navigate).toBeCalledWith('FirstTutorial')
     })
 
     it('should navigate when the faq row is clicked', async () => {

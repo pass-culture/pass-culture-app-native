@@ -61,7 +61,6 @@ export type RootStackParamList = {
     screen: TabRouteName
     params: TabParamList[TabRouteName]
   }
-  TemporaryProfilePage: undefined
   VerifyEligibility: { email: string; licenceToken: string }
   FirstTutorial: undefined
   EighteenBirthday: undefined

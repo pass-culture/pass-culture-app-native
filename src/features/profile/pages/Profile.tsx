@@ -143,7 +143,7 @@ export const Profile: React.FC = () => {
           <Row
             title={_(t`Comment ça marche ?`)}
             type="navigable"
-            onPress={() => navigate('TemporaryProfilePage')}
+            onPress={() => navigate('FirstTutorial')}
             icon={LifeBuoy}
             style={styles.row}
             testID="row-how-it-works"
