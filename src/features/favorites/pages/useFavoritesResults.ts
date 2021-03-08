@@ -6,12 +6,12 @@ import { FavoriteResponse } from 'api/gen'
 import { useFavoritesState } from './FavoritesWrapper'
 import { FavoritesParameters } from './reducer'
 
-interface FakePaginatedFavoritesOptions {
+export interface FakePaginatedFavoritesOptions {
   page: number
   favoritesPerPage: number
 }
 
-interface FakePaginatedFavoritesResponse {
+export interface FakePaginatedFavoritesResponse {
   favorites: Array<FavoriteResponse>
   page: number
   nbFavorites: number

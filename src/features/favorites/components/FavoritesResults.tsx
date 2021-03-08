@@ -6,11 +6,11 @@ import styled from 'styled-components/native'
 import { FavoriteResponse } from 'api/gen'
 import { Filter } from 'features/favorites/atoms/Buttons/Filter'
 import { Favorite } from 'features/favorites/atoms/Favorite'
+import { NoFavoritesResult } from 'features/favorites/atoms/NoFavoritesResult'
 import { NumberOfResults } from 'features/favorites/atoms/NumberOfResults'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useFavoritesResults } from 'features/favorites/pages/useFavoritesResults'
 import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
-import { NoSearchResult } from 'features/search/atoms'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
@@ -50,7 +50,7 @@ export const FavoritesResults: React.FC = () => {
   const ListHeaderComponent = useMemo(() => <NumberOfResults nbFavorites={nbFavorites} />, [
     nbFavorites,
   ])
-  const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
+  const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
   const ListFooterComponent = useMemo(
     () =>
       isFetchingNextPage && favorites.length < nbFavorites ? (
@@ -128,7 +128,7 @@ const FavoritesResultsPlaceHolder = () => {
 
   return (
     <React.Fragment>
-      <Container>
+      <Container testID="FavoritesResultsPlaceHolder">
         <FlatList
           data={FAVORITE_LIST_PLACEHOLDER}
           renderItem={renderItem}
