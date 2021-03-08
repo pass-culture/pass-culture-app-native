@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native'
-import getDistance from 'geolib/es/getDistance'
 import React, { useState, createElement } from 'react'
 import { Alert, ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
@@ -9,7 +8,7 @@ import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useGeolocation } from 'libs/geolocation'
+import { useDistance } from 'features/offer/components/useDistance'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -20,17 +19,18 @@ import { CheatCodesButton } from '../components/CheatCodesButton'
 const BadDeeplink = DEEPLINK_DOMAIN + 'unknown'
 const LoginDeeplink = DEEPLINK_DOMAIN + 'login'
 const MAX_ASYNC_TEST_REQ_COUNT = 3
+const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 
 export function Navigation(): JSX.Element {
   const navigation = useNavigation<UseNavigationType>()
   const [renderedError, setRenderedError] = useState(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
+  const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
+
   const { refetch: errorAsyncQuery, isFetching } = useQuery('errorAsync', () => errorAsync(), {
     cacheTime: 0,
     enabled: false,
   })
-  const { position } = useGeolocation()
-  const eiffelTowerCoordinates = { latitude: 48.8584, longitude: 2.2945 }
 
   async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)
@@ -232,12 +232,7 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={`Distance to Eiffel Tower`}
             onPress={() => {
-              if (position) {
-                const distance = getDistance(position, eiffelTowerCoordinates)
-                Alert.alert(`${distance / 1000}km`)
-              } else {
-                Alert.alert('Authorize geolocation first')
-              }
+              Alert.alert(distanceToEiffelTower || 'Authorize geolocation first')
             }}
           />
         </Row>
