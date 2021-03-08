@@ -51,7 +51,10 @@ const renderDay = (
   if (status === OfferStatus.BOOKABLE)
     return (
       <DayContainer>
-        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectDate}>
+        <TouchableOpacity
+          activeOpacity={ACTIVE_OPACITY}
+          onPress={selectDate}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
           <Day color={ColorsEnum.PRIMARY}>{date.day}</Day>
         </TouchableOpacity>
       </DayContainer>
@@ -85,7 +88,7 @@ interface Props {
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
   const { bookingState, dispatch } = useBooking()
   const stocksDate = getStocksByDate(stocks)
-  const debouncedDispatch = useRef(debounce(dispatch, 200)).current
+  const debouncedDispatch = useRef(debounce(dispatch, 500)).current
 
   const markedDates: { [keyDate: string]: { selected: boolean } } = {}
   if (bookingState.date) {
