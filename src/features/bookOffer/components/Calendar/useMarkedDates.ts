@@ -32,7 +32,7 @@ export const useMarkedDates = (
 
   stocks.forEach((stock) => {
     if (stock.beginningDatetime === null || stock.beginningDatetime === undefined) return
-    const key = formatToKeyDate(new Date(stock.beginningDatetime))
+    const key = formatToKeyDate(stock.beginningDatetime)
     const selected = bookingState.date ? formatToKeyDate(bookingState.date) === key : false
     const prev = markedDates[key] || defaultMarking
 
