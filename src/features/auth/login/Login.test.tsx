@@ -81,7 +81,7 @@ describe('<Login/>', () => {
     })
   })
 
-  it('should redirect to EighteenBirthday WHEN signin is successful and user has not see eligible card and needs to see it', async () => {
+  it('should redirect to EighteenBirthday WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: true,

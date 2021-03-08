@@ -57,7 +57,6 @@ describe('ChangePassword', () => {
     fireEvent.changeText(passwordInput, '123456')
     fireEvent.changeText(confirmationInput, '123456--')
 
-    // assuming there's only one button in this page
     const notMatchingErrorText = getByText('les mots de passe ne concordent pas')
 
     const color = notMatchingErrorText.props.style[0].color

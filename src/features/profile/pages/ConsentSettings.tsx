@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { firebaseAnalytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -21,11 +23,35 @@ type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
 
 export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation()
-  const [isTrackingAllowed, setIsTrackingAllowed] = useState(true)
+  const [isTrackingSwitchActive, setIsTrackingSwitchActive] = useState(false)
+  const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true)
+  const previousRoute = usePreviousRoute()
+
+  useEffect(() => {
+    storage.readObject('has_accepted_cookie').then((hasAcceptedCookie) => {
+      if (hasAcceptedCookie === null) {
+        // default user choice is true
+        storage.saveObject('has_accepted_cookie', true)
+        setIsTrackingSwitchActive(true)
+      } else {
+        setIsTrackingSwitchActive(Boolean(hasAcceptedCookie))
+      }
+    })
+  }, [])
+
+  function toggleTrackingSwitch() {
+    setIsTrackingSwitchActive((prevActive) => !prevActive)
+    setIsSaveButtonDisabled((prevValue) => !prevValue)
+  }
 
   function save() {
-    storage.saveObject('has_accepted_cookie', isTrackingAllowed)
-    goBack()
+    storage.saveObject('has_accepted_cookie', isTrackingSwitchActive).then(() => {
+      setIsSaveButtonDisabled((prevValue) => !prevValue)
+      firebaseAnalytics.setAnalyticsCollectionEnabled(isTrackingSwitchActive)
+    })
+    if (previousRoute?.name === 'FirstTutorial') {
+      goBack()
+    }
   }
 
   return (
@@ -61,17 +87,12 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
             numberOfLines={3}
             type="clickable"
             title={_(t`Autoriser l’utilisation de mes données de navigation`)}
-            cta={
-              <FilterSwitch
-                active={isTrackingAllowed}
-                toggle={() => setIsTrackingAllowed((prevActive) => !prevActive)}
-              />
-            }
+            cta={<FilterSwitch active={isTrackingSwitchActive} toggle={toggleTrackingSwitch} />}
           />
           <Spacer.Column numberOfSpaces={3} />
         </Line>
         <Spacer.Flex flex={1} />
-        <ButtonPrimary title={_(t`Enregistrer`)} onPress={save} />
+        <ButtonPrimary title={_(t`Enregistrer`)} onPress={save} disabled={isSaveButtonDisabled} />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
     </React.Fragment>
