@@ -20,7 +20,7 @@ export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }
 
   const onPressRightIcon = () => {
     dismissModal()
-    dispatch({ type: 'INIT', payload: {} })
+    dispatch({ type: 'INIT', payload: { offerId } })
   }
   useEffect(() => {
     dispatch({ type: 'INIT', payload: { offerId } })
