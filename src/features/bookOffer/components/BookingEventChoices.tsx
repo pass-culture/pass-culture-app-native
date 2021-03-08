@@ -43,14 +43,19 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
       />
 
       <Spacer.Column numberOfSpaces={6} />
-      {bookingState.step === Step.HOUR && (
+      {bookingState.step === Step.HOUR ||
+        (bookingState.step === Step.DUO && (
+          <React.Fragment>
+            <Separator />
+            <Spacer.Column numberOfSpaces={6} />
+
+            <BookHourChoice />
+
+            <Spacer.Column numberOfSpaces={6} />
+          </React.Fragment>
+        ))}
+      {bookingState.step === Step.DUO && (
         <React.Fragment>
-          <Separator />
-          <Spacer.Column numberOfSpaces={6} />
-
-          <BookHourChoice />
-
-          <Spacer.Column numberOfSpaces={6} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
 
