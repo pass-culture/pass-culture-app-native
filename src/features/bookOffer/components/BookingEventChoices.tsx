@@ -16,11 +16,10 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
-  dismissModal: () => void
   stocks: OfferStockResponse[]
 }
 
-export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) => {
+export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
   const { bookingState, dispatch } = useBooking()
   const { data: user } = useUserProfileInfo()
   const remainingCredit = useAvailableCredit()
@@ -32,7 +31,7 @@ export const BookingEventChoices: React.FC<Props> = ({ dismissModal, stocks }) =
   }
 
   if (bookingState.step === Step.CONFIRMATION) {
-    return <BookingDetails dismissModal={dismissModal} />
+    return <BookingDetails />
   }
 
   return (

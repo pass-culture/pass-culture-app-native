@@ -13,14 +13,14 @@ import { BookingImpossible } from '../components/BookingImpossible'
 import { useBooking, useBookingOffer } from '../pages/BookingOfferWrapper'
 import { Step } from '../pages/reducer'
 
-export const useModalContent = (
-  dismissModal: () => void
-): {
+interface ModalContent {
   children: Element
   title: string
   leftIcon: React.FC<IconInterface> | undefined
   onLeftIconPress: (() => void) | undefined
-} => {
+}
+
+export const useModalContent = (): ModalContent => {
   const { bookingState, dispatch } = useBooking()
   const offer = useBookingOffer()
 
@@ -42,7 +42,7 @@ export const useModalContent = (
         title: _(t`Réservation impossible`),
         leftIcon: undefined,
         onLeftIconPress: undefined,
-        children: <BookingImpossible dismissModal={dismissModal} />,
+        children: <BookingImpossible />,
       }
     }
 
@@ -50,7 +50,7 @@ export const useModalContent = (
       title: _(t`Détails de la réservation`),
       leftIcon: undefined,
       onLeftIconPress: undefined,
-      children: <BookingDetails dismissModal={dismissModal} />,
+      children: <BookingDetails />,
     }
   }
 
@@ -59,7 +59,7 @@ export const useModalContent = (
       title: _(t`Mes options`),
       leftIcon: undefined,
       onLeftIconPress: undefined,
-      children: <BookingEventChoices dismissModal={dismissModal} stocks={stocks} />,
+      children: <BookingEventChoices stocks={stocks} />,
     }
   }
 
@@ -67,6 +67,6 @@ export const useModalContent = (
     title: _(t`Détails de la réservation`),
     leftIcon: ArrowPrevious,
     onLeftIconPress: goToPreviousStep,
-    children: <BookingDetails dismissModal={dismissModal} />,
+    children: <BookingDetails />,
   }
 }

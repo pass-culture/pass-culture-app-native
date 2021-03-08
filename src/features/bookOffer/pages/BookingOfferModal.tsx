@@ -10,13 +10,12 @@ import { BookingWrapper, useBooking } from './BookingOfferWrapper'
 
 interface Props {
   visible: boolean
-  dismissModal: () => void
   offerId: number
 }
 
-export const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissModal, offerId }) => {
-  const { dispatch } = useBooking()
-  const { title, leftIcon, onLeftIconPress, children } = useModalContent(dismissModal)
+export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }) => {
+  const { dismissModal, dispatch } = useBooking()
+  const { title, leftIcon, onLeftIconPress, children } = useModalContent()
   const { data: offer } = useOffer({ offerId })
 
   const onPressRightIcon = () => {
@@ -47,8 +46,11 @@ export const BookingOfferModalComponent: React.FC<Props> = ({ visible, dismissMo
   )
 }
 
-export const BookingOfferModal: React.FC<Props> = (props) => (
-  <BookingWrapper>
+export const BookingOfferModal: React.FC<Props & { dismissModal: () => void }> = ({
+  dismissModal,
+  ...props
+}) => (
+  <BookingWrapper dismissModal={dismissModal}>
     <BookingOfferModalComponent {...props} />
   </BookingWrapper>
 )

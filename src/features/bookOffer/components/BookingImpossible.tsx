@@ -8,35 +8,37 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-interface Props {
-  dismissModal: () => void
+import { useBooking } from '../pages/BookingOfferWrapper'
+
+export const BookingImpossible: React.FC = () => {
+  const { dismissModal } = useBooking()
+
+  return (
+    <Container>
+      <SadFace size={getSpacing(17)} color={ColorsEnum.GREY_DARK} />
+      <Spacer.Column numberOfSpaces={6} />
+
+      <Content>
+        {_(
+          t`Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.`
+        )}
+      </Content>
+      <Spacer.Column numberOfSpaces={6} />
+      <Content>
+        {_(
+          t`Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver.`
+        )}
+      </Content>
+
+      <Spacer.Column numberOfSpaces={6} />
+
+      <ButtonPrimary title={_(t`Mettre en favoris`)} />
+      <Spacer.Column numberOfSpaces={4} />
+      <ButtonTertiary title={_(t`Retourner à l'offre`)} onPress={dismissModal} />
+      <Spacer.Column numberOfSpaces={4} />
+    </Container>
+  )
 }
-
-export const BookingImpossible: React.FC<Props> = ({ dismissModal }) => (
-  <Container>
-    <SadFace size={getSpacing(17)} color={ColorsEnum.GREY_DARK} />
-    <Spacer.Column numberOfSpaces={6} />
-
-    <Content>
-      {_(
-        t`Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.`
-      )}
-    </Content>
-    <Spacer.Column numberOfSpaces={6} />
-    <Content>
-      {_(
-        t`Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver.`
-      )}
-    </Content>
-
-    <Spacer.Column numberOfSpaces={6} />
-
-    <ButtonPrimary title={_(t`Mettre en favoris`)} />
-    <Spacer.Column numberOfSpaces={4} />
-    <ButtonTertiary title={_(t`Retourner à l'offre`)} onPress={dismissModal} />
-    <Spacer.Column numberOfSpaces={4} />
-  </Container>
-)
 
 const Container = styled.View({
   width: '100%',

@@ -14,9 +14,10 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails } from '../BookingDetails'
 
-const dismissModal = jest.fn()
+const mockDismissModal = jest.fn()
+
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest.fn(() => ({ bookingState: { quantity: 1 } })),
+  useBooking: jest.fn(() => ({ bookingState: { quantity: 1 }, dismissModal: mockDismissModal })),
   useBookingStock: jest.fn(() => ({ price: 2000, id: '123456' })),
   useBookingOffer: jest.fn(() => mockOffer),
 }))
@@ -54,7 +55,7 @@ describe('<BookingDetails />', () => {
     })
 
     await waitForExpect(() => {
-      expect(dismissModal).toHaveBeenCalled()
+      expect(mockDismissModal).toHaveBeenCalled()
       expect(navigate).toHaveBeenCalledWith('BookingConfirmation')
     })
   })
@@ -83,7 +84,7 @@ describe('<BookingDetails />', () => {
 })
 
 const renderBookingDetails = async () => {
-  const renderAPI = render(reactQueryProviderHOC(<BookingDetails dismissModal={dismissModal} />))
+  const renderAPI = render(reactQueryProviderHOC(<BookingDetails />))
 
   await act(flushAllPromises)
 
