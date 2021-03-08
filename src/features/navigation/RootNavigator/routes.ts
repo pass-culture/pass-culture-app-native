@@ -33,7 +33,6 @@ import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData'
 import { Profile } from 'features/profile/pages/Profile'
-import { TemporaryProfilePage } from 'features/profile/pages/TemporaryProfilePage'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
@@ -89,7 +88,6 @@ const routes: Array<Route> = [
   { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
-  { name: 'TemporaryProfilePage', component: TemporaryProfilePage },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },
   // TODO: PC-6693 remove this line
