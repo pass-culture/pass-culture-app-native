@@ -19,7 +19,7 @@ export const BookHourChoice: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4>{_(t`Heure`)}</Typo.Title4>
+      <Typo.Title4 testID="HourStep">{_(t`Heure`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.ButtonText>{_(t`21:00`)}</Typo.ButtonText>
       <TouchableOpacity onPress={goToNextStep}>

@@ -18,7 +18,7 @@ export const BookDuoChoice: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4>{_(t`Nombre de place`)}</Typo.Title4>
+      <Typo.Title4 testID="DuoStep">{_(t`Nombre de place`)}</Typo.Title4>
       <TouchableOpacity
         activeOpacity={ACTIVE_OPACITY}
         onPress={toggleQuantity}
