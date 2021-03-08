@@ -33,7 +33,9 @@ export const DayComponent: React.FC<Props> = ({ status, selected, date }) => {
   if (selected)
     return (
       <SelectedDay>
-        <SelectedDayNumber color={ColorsEnum.WHITE}>{date.day}</SelectedDayNumber>
+        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectDate} hitSlop={hitSlop}>
+          <SelectedDayNumber color={ColorsEnum.WHITE}>{date.day}</SelectedDayNumber>
+        </TouchableOpacity>
       </SelectedDay>
     )
 
