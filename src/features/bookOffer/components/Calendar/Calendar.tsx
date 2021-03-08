@@ -42,6 +42,7 @@ const renderDay = (
     dispatch({ type: 'SELECT_DATE', payload: new Date(date.timestamp) })
     debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }
+  const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
   if (selected)
     return (
       <SelectedDay>
@@ -51,10 +52,7 @@ const renderDay = (
   if (status === OfferStatus.BOOKABLE)
     return (
       <DayContainer>
-        <TouchableOpacity
-          activeOpacity={ACTIVE_OPACITY}
-          onPress={selectDate}
-          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectDate} hitSlop={hitSlop}>
           <Day color={ColorsEnum.PRIMARY}>{date.day}</Day>
         </TouchableOpacity>
       </DayContainer>
