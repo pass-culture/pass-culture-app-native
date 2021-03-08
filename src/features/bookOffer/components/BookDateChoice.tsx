@@ -30,6 +30,7 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
         <TouchableOpacity
           activeOpacity={ACTIVE_OPACITY}
           onPress={() => dispatch({ type: 'CHANGE_STEP', payload: Step.DATE })}>
+          <Spacer.Column numberOfSpaces={2} />
           <Typo.ButtonText>
             {bookingState.date ? formatToCompleteFrenchDate(bookingState.date) : ''}
           </Typo.ButtonText>
