@@ -3,8 +3,10 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -13,13 +15,18 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { navigate } = useNavigation<UseNavigationType>()
+  const credit = useAvailableCredit()
+
+  const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
   return (
     <GenericInfoPage
       title={_(t`Réservation confirmée !`)}
       icon={TicketBooked}
       iconSize={getSpacing(65)}>
-      <StyledBody>{_(t`Il te reste encore 140€ à dépenser sur le pass !`)}</StyledBody>
+      <StyledBody>
+        {_(t`Il te reste encore ${formatToFrenchDecimal(amountLeft)} à dépenser sur le pass !`)}
+      </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
         {_(
