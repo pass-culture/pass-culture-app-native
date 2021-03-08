@@ -17,6 +17,7 @@ interface Props {
   stocks: OfferStockResponse[]
   userRemainingCredit: number | null
 }
+
 export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
   const { bookingState, dispatch } = useBooking()
 
