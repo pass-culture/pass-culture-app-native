@@ -36,7 +36,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarType } from 'ui/components/snackBar/types'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { StepDots } from 'ui/components/StepDots'
@@ -742,24 +741,29 @@ const ExampleSwitch: React.FC = () => {
 }
 
 const SnackBars = () => {
-  const { showSnackBar, hideSnackBar } = useSnackBarContext()
+  const {
+    showInfoSnackBar,
+    showSuccessSnackBar,
+    showErrorSnackBar,
+    hideSnackBar,
+  } = useSnackBarContext()
 
   const snackbars = [
     {
       title: '✅ Success SnackBar',
-      type: SnackBarType.SUCCESS,
+      showSnackBar: showSuccessSnackBar,
       message: 'This was a success !!! '.repeat(5),
       timeout: 5000,
     },
     {
       title: '❌ Error SnackBar',
-      type: SnackBarType.ERROR,
+      showSnackBar: showErrorSnackBar,
       message: 'There was an error !',
       onClose: hideSnackBar,
     },
     {
       title: 'ℹ️ Info SnackBar',
-      type: SnackBarType.INFO,
+      showSnackBar: showInfoSnackBar,
       message: 'Hello, for your information...',
       timeout: 10000,
     },
@@ -767,7 +771,7 @@ const SnackBars = () => {
 
   return (
     <React.Fragment>
-      {snackbars.map(({ title, ...settings }) => (
+      {snackbars.map(({ title, showSnackBar, ...settings }) => (
         <React.Fragment key={title}>
           <TouchableOpacity onPress={() => showSnackBar(settings)}>
             <Typo.Title4>{title}</Typo.Title4>

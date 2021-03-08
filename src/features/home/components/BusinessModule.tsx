@@ -11,7 +11,6 @@ import { openExternalUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarType } from 'ui/components/snackBar/types'
 import { Typo, ColorsEnum, getSpacing, MARGIN_DP, LENGTH_S, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -23,7 +22,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const { data: profileData, isLoading: isProfileDataLoading } = useUserProfileInfo()
-  const { showSnackBar } = useSnackBarContext()
+  const { showInfoSnackBar } = useSnackBarContext()
 
   const openUrl = (finalUrl: string) => {
     setShouldRedirect(false)
@@ -42,7 +41,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
       return
     }
     if (isProfileDataLoading) {
-      showSnackBar({ type: SnackBarType.INFO, message: _(t`Redirection en cours`) })
+      showInfoSnackBar({ message: _(t`Redirection en cours`) })
       return
     }
   }, [url, profileData, shouldRedirect])

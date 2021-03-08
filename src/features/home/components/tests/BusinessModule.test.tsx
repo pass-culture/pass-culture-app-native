@@ -10,17 +10,17 @@ import * as HomeAPI from 'features/home/api'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct } from 'tests/utils'
-import { SnackBarHelperSettings, SnackBarType } from 'ui/components/snackBar/types'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BusinessPane } from '../../contentful'
 import { BusinessModule } from '../BusinessModule'
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
-const mockShowSnackBar = jest.fn()
+const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSnackBar(props)),
+    showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
   }),
 }))
 
@@ -77,8 +77,7 @@ describe('BusinessModule component', () => {
     await superFlushWithAct(20)
 
     await waitForExpect(() => {
-      expect(mockShowSnackBar).toHaveBeenCalledWith({
-        type: SnackBarType.INFO,
+      expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
         message: 'Redirection en cours',
       })
       expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email@domain.ext')
@@ -99,7 +98,7 @@ describe('BusinessModule component', () => {
     await waitForExpect(() =>
       expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
-    expect(mockShowSnackBar).not.toHaveBeenCalled()
+    expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
     homeAPISpy.mockReset()
   })
 
@@ -115,7 +114,7 @@ describe('BusinessModule component', () => {
 
     fireEvent.press(getByTestId('imageBusiness'))
     await waitForExpect(() => expect(openUrlSpy).toHaveBeenCalledWith('some_url_with_no_email'))
-    expect(mockShowSnackBar).not.toHaveBeenCalled()
+    expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
     homeAPISpy.mockReset()
   })
 })

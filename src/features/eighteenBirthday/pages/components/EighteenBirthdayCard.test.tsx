@@ -12,18 +12,18 @@ import { MonitoringError } from 'libs/errorMonitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { superFlushWithAct } from 'tests/utils'
-import { SnackBarHelperSettings, SnackBarType } from 'ui/components/snackBar/types'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 
 const email = 'email@domain.ext'
 const firstName = 'Jean'
 const token = 'XYZT'
-const mockShowSnackBar = jest.fn()
+const mockShowInfoSnackBar = jest.fn()
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSnackBar(props)),
+    showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
   }),
 }))
 
@@ -85,8 +85,7 @@ describe('<EighteenBirthdayCard />', () => {
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('Login')
     })
-    expect(mockShowSnackBar).toBeCalledWith({
-      type: SnackBarType.INFO,
+    expect(mockShowInfoSnackBar).toBeCalledWith({
       message: `Tu n'es pas connecté !`,
     })
   })

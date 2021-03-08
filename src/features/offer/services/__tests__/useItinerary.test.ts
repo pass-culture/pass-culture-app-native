@@ -3,17 +3,17 @@ import { Alert, Linking, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
-import { SnackBarHelperSettings, SnackBarType } from 'ui/components/snackBar/types'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { useItinerary } from '../useItinerary'
 
 const alertMock = jest.spyOn(Alert, 'alert')
 jest.spyOn(Linking, 'openURL')
 
-const mockShowSnackBar = jest.fn()
+const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSnackBar(props)),
+    showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
   }),
 }))
 
@@ -163,8 +163,7 @@ describe('useItinerary', () => {
     // @ts-ignore: same reason
     onWazePress()
     await waitForExpect(() =>
-      expect(mockShowSnackBar).toHaveBeenCalledWith({
-        type: SnackBarType.INFO,
+      expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
         message:
           'Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.',
         timeout: 10000,
