@@ -199,4 +199,33 @@ describe('getDateStatusAndPrice()', () => {
       price: '12,50€',
     })
   })
+
+  it('returns bookable status if price = 0 and credit = 0', () => {
+    const dateInStocks = new Date('2021-01-01T13:30:00')
+    const stocksByDate = {
+      ['01/01/2021']: [
+        {
+          id: 118929,
+          beginningDatetime: new Date('2021-01-01T13:30:00'),
+          bookingLimitDatetime: new Date('2021-01-05T13:30:00'),
+          price: 0,
+          isBookable: false,
+        },
+        {
+          id: 118929,
+          beginningDatetime: new Date('2021-01-01T13:30:00'),
+          bookingLimitDatetime: new Date('2021-01-05T13:30:00'),
+          price: 0,
+          isBookable: true,
+        },
+      ],
+    }
+
+    const userRemainingCredit = 0
+
+    expect(getDateStatusAndPrice(dateInStocks, stocksByDate, userRemainingCredit)).toStrictEqual({
+      status: OfferStatus.BOOKABLE,
+      price: '0€',
+    })
+  })
 })

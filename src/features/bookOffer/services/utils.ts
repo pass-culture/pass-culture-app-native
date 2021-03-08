@@ -36,7 +36,8 @@ export const getDateStatusAndPrice = (
 
   const price = getOfferPrice(stocksByDate)
   const offerIsBookable = stocksByDate.some((stock) => stock.isBookable)
-  const hasEnoughCredit = userRemainingCredit ? userRemainingCredit >= price : false
+  const hasEnoughCredit =
+    typeof userRemainingCredit === 'number' ? userRemainingCredit >= price : false
   const formattedPrice = formatToFrenchDecimal(price).replace(' ', '')
 
   if (offerIsBookable && hasEnoughCredit)
