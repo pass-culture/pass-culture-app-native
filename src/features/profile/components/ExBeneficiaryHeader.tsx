@@ -44,7 +44,7 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
           </Description>
           <Description>
             {_(
-              t`Tu peux toujours découvrir les autres activités culturelles sur l'application
+              t`Tu peux aussi découvrir les autres activités culturelles sur l'application
             mais leur réservation s'effectuera sur les sites de nos partenaires !`
             )}
           </Description>
