@@ -1,24 +1,4 @@
 import { OfferStockResponse } from 'api/gen'
-import { getOfferPrice } from 'features/offer/services/getOfferPrice'
-import { formatToSlashedFrenchDate } from 'libs/dates'
-import { formatToFrenchDecimal } from 'libs/parsers'
-
-export const getStocksByDate = (
-  stocks: OfferStockResponse[]
-): { [date: string]: OfferStockResponse[] } => {
-  const stockDates: { [date: string]: OfferStockResponse[] } = {}
-
-  stocks.forEach((stock) => {
-    if (stock.beginningDatetime !== null && stock.beginningDatetime !== undefined) {
-      const formattedDate = formatToSlashedFrenchDate(stock.beginningDatetime.toString())
-      stockDates[formattedDate] = stockDates[formattedDate]
-        ? stockDates[formattedDate].concat(stock)
-        : [stock]
-    }
-  })
-
-  return stockDates
-}
 
 export enum OfferStatus {
   BOOKABLE = 'BOOKABLE',
@@ -26,28 +6,43 @@ export enum OfferStatus {
   NOT_OFFERED = 'NOT_OFFERED',
 }
 
-export const getDateStatusAndPrice = (
-  date: Date,
-  stocksDates: { [date: string]: OfferStockResponse[] },
-  userRemainingCredit: number | null
-): { status: OfferStatus; price: string | null } => {
-  const stocksByDate = stocksDates[formatToSlashedFrenchDate(date.toString())]
-  if (!stocksByDate) return { status: OfferStatus.NOT_OFFERED, price: null }
-
-  const price = getOfferPrice(stocksByDate)
-  const offerIsBookable = stocksByDate.some((stock) => stock.isBookable)
-  const hasEnoughCredit =
-    typeof userRemainingCredit === 'number' ? userRemainingCredit >= price : false
-  const formattedPrice = formatToFrenchDecimal(price).replace(' ', '')
-
-  if (offerIsBookable && hasEnoughCredit)
-    return { status: OfferStatus.BOOKABLE, price: formattedPrice }
-  return { status: OfferStatus.NOT_BOOKABLE, price: formattedPrice }
-}
-
 export const formatToKeyDate = (date: Date) => {
   const day = ('0' + date.getDate()).slice(-2)
   const month = ('0' + (date.getMonth() + 1)).slice(-2)
   const year = date.getFullYear()
   return `${year}-${month}-${day}`
+}
+
+export const getStatusFromStockAndCredit = (
+  stock: OfferStockResponse,
+  credit: number | null
+): OfferStatus => {
+  const hasEnoughCredit = typeof credit === 'number' ? credit >= stock.price : false
+  const hasStockExpired = stock.bookingLimitDatetime
+    ? stock.bookingLimitDatetime < new Date()
+    : false
+
+  if (stock.isBookable && hasEnoughCredit && !hasStockExpired) return OfferStatus.BOOKABLE
+
+  return OfferStatus.NOT_BOOKABLE
+}
+
+export const getDateStatus = (
+  previousStatus: OfferStatus,
+  stock: OfferStockResponse,
+  credit: number | null
+): OfferStatus =>
+  previousStatus === OfferStatus.BOOKABLE
+    ? OfferStatus.BOOKABLE
+    : getStatusFromStockAndCredit(stock, credit)
+
+export const getDatePrice = (
+  previousPrice: number | null,
+  stock: OfferStockResponse
+): number | null => {
+  const possiblePrices = []
+  if (typeof previousPrice === 'number') possiblePrices.push(previousPrice)
+  if (typeof stock.price === 'number') possiblePrices.push(stock.price)
+
+  return possiblePrices.length > 0 ? Math.min(...possiblePrices) : null
 }

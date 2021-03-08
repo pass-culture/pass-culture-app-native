@@ -4,21 +4,16 @@ import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
-import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { OfferStatus } from 'features/bookOffer/services/utils'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import {
-  getStocksByDate,
-  OfferStatus,
-  getDateStatusAndPrice,
-  formatToKeyDate,
-} from '../../services/utils'
-
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
 import { DayComponent } from './DayComponent'
 import { MonthHeader } from './MonthHeader'
+import { defaultMarking, Marking, useMarkedDates } from './useMarkedDates'
 
 LocaleConfig.locales['fr'] = {
   monthNames,
@@ -40,14 +35,7 @@ interface Props {
 }
 
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
-  const { bookingState } = useBooking()
-  const stocksDate = getStocksByDate(stocks)
-
-  const markedDates: { [keyDate: string]: { selected: boolean } } = {}
-  if (bookingState.date) {
-    const keyDate = formatToKeyDate(bookingState.date)
-    markedDates[keyDate] = { selected: true }
-  }
+  const markedDates = useMarkedDates(stocks, userRemainingCredit)
 
   return (
     <RNCalendar
@@ -57,29 +45,18 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
       hideExtraDays={true}
       renderArrow={renderArrow}
       markedDates={markedDates}
-      dayComponent={({ date, marking }) => {
-        const dateStatusAndPrice = getDateStatusAndPrice(
-          new Date(date.timestamp),
-          stocksDate,
-          userRemainingCredit
-        )
+      dayComponent={({ date, marking = defaultMarking }) => {
+        // problem in the definition of marking in the library:
+        // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
+        const { price, status, selected } = (marking as unknown) as Marking
 
         return (
           <StyledView>
-            <DayComponent
-              status={dateStatusAndPrice.status}
-              // @ts-ignore : problem in the definition of marking in the library: see explanation in https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
-              selected={marking.selected || false}
-              date={date}
-            />
-            {dateStatusAndPrice.price ? (
+            <DayComponent status={status} selected={selected} date={date} />
+            {typeof price === 'number' ? (
               <Typo.Caption
-                color={
-                  dateStatusAndPrice.status === OfferStatus.NOT_BOOKABLE
-                    ? ColorsEnum.GREY_DARK
-                    : ColorsEnum.PRIMARY
-                }>
-                {dateStatusAndPrice.price}
+                color={status === OfferStatus.BOOKABLE ? ColorsEnum.PRIMARY : ColorsEnum.GREY_DARK}>
+                {formatToFrenchDecimal(price).replace(' ', '')}
               </Typo.Caption>
             ) : (
               <Spacer.Column numberOfSpaces={getSpacing(1)} />
