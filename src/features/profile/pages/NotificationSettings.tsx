@@ -54,22 +54,24 @@ export function NotificationSettings() {
         emailTouched: prevState.allowEmails === user?.subscriptions?.marketing_email,
         allowEmails: !prevState.allowEmails,
       })),
-    []
+    [user]
   )
-  const togglePush = useCallback(
-    () =>
-      setState((prevState) => ({
-        ...prevState,
-        pushTouched: prevState.pushSwitchEnabled === user?.subscriptions?.marketing_push,
-        pushSwitchEnabled: !prevState.pushSwitchEnabled,
-      })),
-    []
-  )
+  const togglePush = useCallback(() => {
+    setState((prevState) => ({
+      ...prevState,
+      pushTouched: prevState.pushSwitchEnabled === user?.subscriptions?.marketing_push,
+      pushSwitchEnabled: !prevState.pushSwitchEnabled,
+    }))
+  }, [user])
 
   const allowEmails = state.allowEmails ?? user?.subscriptions?.marketing_email ?? true
 
   const { mutate: updateProfile } = useUpdateProfileMutation(
-    () => void 0, // react-query cached is updated ==> user update will trigger the above effect
+    () => void 0,
+    /**
+     * the mutation code already takes care of updating the react-query cache.
+     * It also updates the user which triggers the checkNotifications effect
+     */
     () => {
       // on error rollback to the last loaded result
       setState((prevState) => ({
@@ -80,7 +82,7 @@ export function NotificationSettings() {
   )
 
   const submitProfile = () => {
-    if (state.allowEmails !== undefined && state.allowEmails !== undefined) {
+    if (state.allowEmails !== undefined && state.pushSwitchEnabled !== undefined) {
       updateProfile({
         subscriptions: {
           marketing_email: state.allowEmails ?? false,
@@ -170,7 +172,7 @@ const getInitialSwitchesState = (
   const { marketing_email, marketing_push } = subscriptions || {}
 
   return {
-    allowEmails: marketing_email ?? true,
+    allowEmails: Boolean(marketing_email),
     pushSwitchEnabled: permission === 'granted' && Boolean(marketing_push),
     emailTouched: false,
     pushTouched: false,

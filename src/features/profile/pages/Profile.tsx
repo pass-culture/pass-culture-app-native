@@ -89,7 +89,7 @@ export const Profile: React.FC = () => {
   }
 
   return (
-    <ScrollView ref={scrollViewRef}>
+    <ScrollView bounces={false} ref={scrollViewRef}>
       <ProfileHeader user={user} />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
