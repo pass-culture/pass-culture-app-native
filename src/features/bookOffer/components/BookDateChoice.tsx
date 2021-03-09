@@ -21,6 +21,12 @@ interface Props {
 export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
   const { bookingState, dispatch } = useBooking()
 
+  const showCalendar = () => {
+    dispatch({ type: 'CHANGE_STEP', payload: Step.DATE })
+    dispatch({ type: 'RESET_QUANTITY' })
+    dispatch({ type: 'RESET_STOCK' })
+  }
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
@@ -28,9 +34,7 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
       {bookingState.step === Step.DATE ? (
         <Calendar stocks={stocks} userRemainingCredit={userRemainingCredit} />
       ) : (
-        <TouchableOpacity
-          activeOpacity={ACTIVE_OPACITY}
-          onPress={() => dispatch({ type: 'CHANGE_STEP', payload: Step.DATE })}>
+        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={showCalendar}>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.ButtonText>
             {bookingState.date ? formatToCompleteFrenchDate(bookingState.date) : ''}

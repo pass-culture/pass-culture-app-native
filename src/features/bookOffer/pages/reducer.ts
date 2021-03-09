@@ -28,6 +28,8 @@ export type Action =
   | { type: 'CHANGE_STEP'; payload: Step }
   | { type: 'SELECT_STOCK'; payload: number }
   | { type: 'SELECT_DATE'; payload: Date }
+  | { type: 'RESET_STOCK' }
+  | { type: 'RESET_QUANTITY' }
 
 export const bookOfferReducer = (state: BookingState, action: Action): BookingState => {
   switch (action.type) {
@@ -37,8 +39,12 @@ export const bookOfferReducer = (state: BookingState, action: Action): BookingSt
       return { ...state, step: Step.CONFIRMATION }
     case 'SELECT_STOCK':
       return { ...state, stockId: action.payload }
+    case 'RESET_STOCK':
+      return { ...state, stockId: undefined }
     case 'SELECT_QUANTITY':
       return { ...state, quantity: action.payload }
+    case 'RESET_QUANTITY':
+      return { ...state, quantity: undefined }
     case 'CHANGE_STEP':
       return { ...state, step: action.payload }
     case 'SELECT_DATE':
