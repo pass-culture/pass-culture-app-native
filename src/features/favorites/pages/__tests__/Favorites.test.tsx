@@ -16,7 +16,7 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
   }),
 }))
 jest.mock('features/auth/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.Mock
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 describe('Favorites component', () => {
   afterEach(async () => {
@@ -25,23 +25,29 @@ describe('Favorites component', () => {
   })
 
   it('should render correctly', () => {
-    const { toJSON } = renderFavorites(true)
+    const { toJSON } = renderFavorites({ isLoggedIn: true })
     expect(toJSON()).toMatchSnapshot()
   })
 
+  it('should show non connected page when not logged in', () => {
+    const { getByText } = renderFavorites({ isLoggedIn: false })
+    expect(getByText('Connecte-toi pour profiter de cette fonctionnalité !')).toBeTruthy()
+  })
+
   it('should trigger data loading when logged in', () => {
-    renderFavorites(true)
+    renderFavorites({ isLoggedIn: true })
     expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
     mockUseAuthContext.mockClear()
   })
 
   it('should show loading when not logged in', () => {
-    renderFavorites(false)
+    renderFavorites({ isLoggedIn: false })
     expect(mockDispatch).not.toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
 })
 
-function renderFavorites(isLoggedIn: boolean) {
-  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn }))
+function renderFavorites({ isLoggedIn }: { isLoggedIn: boolean }) {
+  const setIsLoggedIn = jest.fn()
+  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn, setIsLoggedIn }))
   return render(reactQueryProviderHOC(<Favorites />))
 }
