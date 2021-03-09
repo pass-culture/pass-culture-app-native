@@ -15,15 +15,21 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ProfileContainer, Separator } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
+type State = {
+  allowEmails: boolean | undefined
+  pushPermission: PermissionStatus
+  pushSwitchEnabled: boolean
+  emailTouched: boolean
+  pushTouched: boolean
+}
+
 export function NotificationSettings() {
-  const [state, setState] = useState<{
-    allowEmails: boolean
-    pushPermission: PermissionStatus
-    pushSwitchEnabled: boolean
-  }>({
-    allowEmails: false,
+  const [state, setState] = useState<State>({
+    allowEmails: undefined,
     pushPermission: 'unavailable',
     pushSwitchEnabled: false,
+    emailTouched: false,
+    pushTouched: false,
   })
 
   const { data: user } = useUserProfileInfo()
@@ -38,10 +44,33 @@ export function NotificationSettings() {
           allowEmails: marketing_email ?? true,
           pushPermission: permission.status,
           pushSwitchEnabled: permission.status === 'granted' && Boolean(marketing_push),
+          emailTouched: false,
+          pushTouched: false,
         })
       })
     }, [])
   )
+
+  const toggleEmails = useCallback(
+    () =>
+      setState((prevState) => ({
+        ...prevState,
+        emailTouched: prevState.allowEmails === user?.subscriptions?.marketing_email,
+        allowEmails: !prevState.allowEmails,
+      })),
+    []
+  )
+  const togglePush = useCallback(
+    () =>
+      setState((prevState) => ({
+        ...prevState,
+        pushTouched: prevState.pushSwitchEnabled === user?.subscriptions?.marketing_push,
+        pushSwitchEnabled: !prevState.pushSwitchEnabled,
+      })),
+    []
+  )
+
+  const allowEmails = state.allowEmails ?? user?.subscriptions.marketing_email ?? true
 
   return (
     <React.Fragment>
@@ -64,15 +93,7 @@ export function NotificationSettings() {
           <SectionRow
             type="clickable"
             title={_(t`Autoriser l’envoi d’e-mails`)}
-            cta={
-              <FilterSwitch
-                testID="email"
-                active={state.allowEmails}
-                toggle={() =>
-                  setState((prevState) => ({ ...prevState, allowEmails: !prevState.allowEmails }))
-                }
-              />
-            }
+            cta={<FilterSwitch testID="email" active={allowEmails} toggle={toggleEmails} />}
           />
           <Spacer.Column numberOfSpaces={3} />
         </Line>
@@ -93,12 +114,7 @@ export function NotificationSettings() {
                   <FilterSwitch
                     testID="push"
                     active={state.pushSwitchEnabled}
-                    toggle={() =>
-                      setState((prevState) => ({
-                        ...prevState,
-                        pushSwitchEnabled: !prevState.pushSwitchEnabled,
-                      }))
-                    }
+                    toggle={togglePush}
                   />
                 }
               />
@@ -107,7 +123,10 @@ export function NotificationSettings() {
           </React.Fragment>
         )}
         <Spacer.Flex flex={1} />
-        <ButtonPrimary title={_(t`Enregistrer`)} />
+        <ButtonPrimary
+          title={_(t`Enregistrer`)}
+          disabled={!state.emailTouched && !state.pushTouched}
+        />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
     </React.Fragment>
