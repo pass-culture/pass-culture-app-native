@@ -23,23 +23,23 @@ export const BookingInformations: React.FC = () => {
   const { bookingState } = useBooking()
   const offer = useBookingOffer()
   const stock = useBookingStock()
+  const { quantity } = bookingState
 
   if (!offer) return <React.Fragment />
 
   const { category, isDigital, fullAddress, name } = offer
-  if (!stock) return <React.Fragment />
+  if (!stock || typeof quantity !== 'number') return <React.Fragment />
 
   const address = (
     <StyledAddress>
       <Typo.Caption>{fullAddress}</Typo.Caption>
     </StyledAddress>
   )
-  const price =
-    stock.price > 0 ? formatToFrenchDecimal(bookingState.quantity * stock.price) : _(t`Gratuit`)
+  const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : _(t`Gratuit`)
 
   if (category.categoryType === CategoryType.Event) {
     const subtext =
-      stock.price > 0 && bookingState.quantity === 2
+      stock.price > 0 && quantity === 2
         ? _(t`(${formatToFrenchDecimal(stock.price)} x 2 places)`)
         : undefined
 
