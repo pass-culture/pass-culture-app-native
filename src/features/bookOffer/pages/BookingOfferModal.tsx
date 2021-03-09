@@ -17,12 +17,12 @@ export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }
   const { title, leftIcon, onLeftIconPress, children } = useModalContent()
 
   useEffect(() => {
-    dispatch({ type: 'INIT', payload: { offerId } })
+    dispatch({ type: 'SET_OFFER_ID', payload: offerId })
   }, [])
 
   const onPressRightIcon = () => {
     dismissModal()
-    dispatch({ type: 'INIT', payload: { offerId } })
+    dispatch({ type: 'RESET' })
   }
 
   return (

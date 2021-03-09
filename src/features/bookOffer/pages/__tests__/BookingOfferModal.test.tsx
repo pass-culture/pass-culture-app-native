@@ -30,7 +30,7 @@ describe('<BookingOfferModalComponent />', () => {
     const dismissModalButton = page.getByTestId('rightIconButton')
 
     fireEvent.press(dismissModalButton)
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT', payload: { offerId: 20 } })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
     expect(mockDismissModal).toHaveBeenCalled()
   })
 })

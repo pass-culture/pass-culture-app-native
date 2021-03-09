@@ -22,19 +22,22 @@ export const initialBookingState: BookingState = {
 }
 
 export type Action =
-  | { type: 'INIT'; payload: Partial<BookingState> }
+  | { type: 'SET_OFFER_ID'; payload: number }
   | { type: 'VALIDATE_OPTIONS' }
-  | { type: 'SELECT_QUANTITY'; payload: 1 | 2 }
   | { type: 'CHANGE_STEP'; payload: Step }
-  | { type: 'SELECT_STOCK'; payload: number }
   | { type: 'SELECT_DATE'; payload: Date }
+  | { type: 'SELECT_STOCK'; payload: number }
+  | { type: 'SELECT_QUANTITY'; payload: 1 | 2 }
+  | { type: 'RESET' }
   | { type: 'RESET_STOCK' }
   | { type: 'RESET_QUANTITY' }
 
 export const bookOfferReducer = (state: BookingState, action: Action): BookingState => {
   switch (action.type) {
-    case 'INIT':
-      return { ...initialBookingState, ...action.payload }
+    case 'RESET':
+      return { ...initialBookingState, offerId: state.offerId }
+    case 'SET_OFFER_ID':
+      return { ...initialBookingState, offerId: action.payload }
     case 'VALIDATE_OPTIONS':
       return { ...state, step: Step.CONFIRMATION }
     case 'SELECT_STOCK':
