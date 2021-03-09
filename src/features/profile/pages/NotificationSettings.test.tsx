@@ -39,14 +39,14 @@ describe('NotificationSettings', () => {
 
   it('should display the both switches on ios', async () => {
     Platform.OS = 'ios'
-    const { getByText } = await renderNotificationSettings('granted', {})
+    const { getByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
 
     getByText('Autoriser l’envoi d’e-mails')
     getByText('Autoriser les notifications marketing')
   })
   it('should only display the email switch on android', async () => {
     Platform.OS = 'android'
-    const { getByText } = await renderNotificationSettings('granted', {})
+    const { getByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
 
     getByText('Autoriser l’envoi d’e-mails')
   })
