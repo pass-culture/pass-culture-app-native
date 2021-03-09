@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { _ } from 'libs/i18n'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
 import { ProfileContainer, Separator } from '../components/reusables'
 
 export function PersonalData() {
@@ -16,7 +16,9 @@ export function PersonalData() {
 
   return (
     <React.Fragment>
-      <ProfileHeaderWithNavigation title={_(t`Informations personnelles`)} />
+      <PageHeader title={_(t`Informations personnelles`)} />
+      <Spacer.TopScreen />
+      <Spacer.Column numberOfSpaces={14} />
       <Container>
         {user?.isBeneficiary && (
           <React.Fragment>
@@ -50,7 +52,7 @@ export function PersonalData() {
 }
 
 const Container = styled(ProfileContainer)({
-  padding: getSpacing(4),
+  padding: getSpacing(5.5),
   paddingTop: 0,
 })
 

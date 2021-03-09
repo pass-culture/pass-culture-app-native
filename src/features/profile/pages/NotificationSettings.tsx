@@ -9,9 +9,9 @@ import { useUserProfileInfo } from 'features/home/api'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import FilterSwitch from 'ui/components/FilterSwitch'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
 import { ProfileContainer, Separator } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
@@ -45,8 +45,9 @@ export function NotificationSettings() {
 
   return (
     <React.Fragment>
-      <ProfileHeaderWithNavigation title={_(t`Notifications`)} />
-      <Spacer.Column numberOfSpaces={6} />
+      <PageHeader title={_(t`Notifications`)} />
+      <Spacer.TopScreen />
+      <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
         <Typo.Body color={ColorsEnum.BLACK}>
           {_(t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`)}

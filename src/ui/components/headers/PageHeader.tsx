@@ -12,12 +12,23 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 interface Props {
   title: string
   RightComponent?: React.FC
+  onGoBack?: () => void
 }
 
-const HeaderIconBack: React.FC = () => {
+interface HeaderIconProps {
+  onGoBack?: () => void
+}
+
+const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
   const { goBack } = useNavigation<UseNavigationType>()
+  function onPress() {
+    if (onGoBack) {
+      onGoBack()
+    }
+    goBack()
+  }
   return (
-    <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={goBack}>
+    <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={onPress}>
       <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
     </TouchableOpacity>
   )
@@ -34,7 +45,7 @@ export const PageHeader: React.FC<Props> = (props) => {
       <Spacer.Column numberOfSpaces={2} />
       <Row>
         <Spacer.Row numberOfSpaces={5} />
-        <HeaderIconBack />
+        <HeaderIconBack onGoBack={props.onGoBack} />
         <Spacer.Row numberOfSpaces={spaceToAddBeforeTitle} />
         <Spacer.Flex />
 
