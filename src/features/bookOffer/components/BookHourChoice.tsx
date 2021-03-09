@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { TouchableOpacity } from 'react-native'
 
 import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOfferWrapper'
@@ -25,10 +25,6 @@ export const BookHourChoice: React.FC = () => {
   const filteredStocks = stocks.filter(({ beginningDatetime }) =>
     selectedDate && beginningDatetime ? formatToKeyDate(beginningDatetime) === selectedDate : false
   )
-
-  useEffect(() => {
-    if (filteredStocks.length === 1) selectStock(filteredStocks[0].id)
-  }, [filteredStocks.length])
 
   return (
     <React.Fragment>
