@@ -26,6 +26,7 @@ export const BookingDetails: React.FC = () => {
   const { bookingState, dismissModal } = useBooking()
   const stock = useBookingStock()
   const { showErrorSnackBar } = useSnackBarContext()
+  const { quantity } = bookingState
 
   const { mutate } = useBookOfferMutation({
     onSuccess: () => {
@@ -40,13 +41,11 @@ export const BookingDetails: React.FC = () => {
     },
   })
 
-  if (!stock) return <React.Fragment />
+  if (!stock || typeof quantity !== 'number') return <React.Fragment />
 
-  const price =
-    stock.price > 0 ? formatToFrenchDecimal(bookingState.quantity * stock.price) : undefined
+  const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : undefined
 
-  const onPressBookOffer = () =>
-    mutate({ quantity: bookingState.quantity, stockId: stock.id.toString() })
+  const onPressBookOffer = () => mutate({ quantity, stockId: stock.id.toString() })
 
   return (
     <Container>
