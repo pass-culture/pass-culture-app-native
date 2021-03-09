@@ -34,9 +34,7 @@ jest.mock('features/home/api', () => ({
 
 describe('<BookingEventChoices />', () => {
   it('should display only date step at beginning', () => {
-    const page = render(
-      reactQueryProviderHOC(<BookingEventChoices dismissModal={jest.fn} stocks={[]} />)
-    )
+    const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeFalsy()
     expect(page.queryByTestId('DuoStep')).toBeFalsy()
@@ -53,9 +51,7 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: jest.fn,
     }))
-    const page = render(
-      reactQueryProviderHOC(<BookingEventChoices dismissModal={jest.fn} stocks={[]} />)
-    )
+    const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
     await act(() => flushAllPromises())
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeTruthy()
@@ -73,10 +69,8 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: jest.fn,
     }))
-    const page = render(
-      reactQueryProviderHOC(<BookingEventChoices dismissModal={jest.fn} stocks={[]} />)
-    )
-    await act(() => flushAllPromises())
+    const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+    await act(flushAllPromises)
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeTruthy()
     expect(page.queryByTestId('DuoStep')).toBeTruthy()
