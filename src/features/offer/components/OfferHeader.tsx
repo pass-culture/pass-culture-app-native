@@ -1,13 +1,20 @@
+import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
-import { Alert, Animated, Easing } from 'react-native'
+import React from 'react'
+import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useAddFavorite, useIsFavorite } from 'features/favorites/pages/useFavorites'
+import {
+  useAddFavorite,
+  useFavorite,
+  useRemoveFavorite,
+} from 'features/favorites/pages/useFavorites'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
+import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { HeaderIcon } from '../atoms'
@@ -19,7 +26,7 @@ interface Props {
   offerId: number
 }
 /**
- * @param headerTransition should be between animated between 0 and 1
+ * @param props.headerTransition should be between animated between 0 and 1
  */
 export const OfferHeader: React.FC<Props> = (props) => {
   const { headerTransition, offerId, title } = props
@@ -28,15 +35,39 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { goBack, setParams } = useNavigation<UseNavigationType>()
   const shareOffer = useShareOffer(offerId)
   const { params } = useRoute<UseRouteType<'Offer'>>()
-  const remoteIsFavorite = useIsFavorite(offerId)
-  const [isFavorite, setIsFavorite] = useState(remoteIsFavorite)
-  useEffect(() => {
-    setIsFavorite(remoteIsFavorite)
-  }, [remoteIsFavorite])
-  const { mutate: addFavorite } = useAddFavorite(
-    () => setIsFavorite(true),
-    () => Alert.alert('Les favoris ne peuvent pas être retirés pour le moment')
-  )
+  const favorite = useFavorite({ offerId })
+  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
+
+  const { mutate: addFavorite } = useAddFavorite({
+    onSuccess: () => {
+      showSuccessSnackBar({
+        message: _(t`L'offre a été ajoutée au favoris`),
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+    onError: () => {
+      showErrorSnackBar({
+        message: _(t`L'offre n'a pas été ajoutée au favoris`),
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+  })
+
+  const { mutate: removeFavorite } = useRemoveFavorite({
+    onSuccess: () => {
+      showSuccessSnackBar({
+        message: _(t`L'offre a été retirée des favoris`),
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+
+    onError: () => {
+      showErrorSnackBar({
+        message: _(t`L'offre n'a pas été retirée des favoris`),
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+  })
 
   const iconBackgroundColor = headerTransition.interpolate({
     inputRange: [0, 1],
@@ -58,8 +89,10 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const pressFavorite = () => {
     if (!isLoggedIn) {
       showSignInModal()
-    } else if (!isFavorite) {
+    } else if (!favorite) {
       addFavorite({ offerId })
+    } else if (favorite) {
+      removeFavorite(favorite.id)
     }
   }
 
@@ -95,8 +128,8 @@ export const OfferHeader: React.FC<Props> = (props) => {
           <Spacer.Row numberOfSpaces={3} />
           <HeaderIcon
             animationState={animationState}
-            initialColor={isFavorite ? ColorsEnum.PRIMARY : undefined}
-            iconName={isFavorite ? 'favorite-filled' : 'favorite'}
+            initialColor={favorite ? ColorsEnum.PRIMARY : undefined}
+            iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
           />
           <Spacer.Row numberOfSpaces={6} />
