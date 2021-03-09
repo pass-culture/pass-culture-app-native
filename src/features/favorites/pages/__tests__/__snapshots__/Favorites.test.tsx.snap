@@ -77,58 +77,730 @@ exports[`Favorites component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "flexDirection": "column",
+          "height": "100%",
+        },
+      ]
+    }
+    testID="FavoritesResultsPlaceHolder"
+  >
+    <RCTScrollView
+      ItemSeparatorComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "displayName": "Styled(View)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "height: 2px;",
+              "background-color: #f5f5f5;",
+              "margin-horizontal: 24px;",
+              "margin-vertical: 16px;",
+            ],
+          },
+          "render": [Function],
+          "shouldForwardProp": undefined,
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      ListFooterComponent={<Styled(View) />}
+      ListHeaderComponent={<NumberOfResultsPlaceholder />}
+      contentContainerStyle={
+        Object {
           "flexGrow": 1,
-          "justifyContent": "center",
-          "width": "100%",
+        }
+      }
+      data={
+        Array [
+          Object {
+            "key": "0",
+          },
+          Object {
+            "key": "1",
+          },
+          Object {
+            "key": "2",
+          },
+          Object {
+            "key": "3",
+          },
+          Object {
+            "key": "4",
+          },
+          Object {
+            "key": "5",
+          },
+          Object {
+            "key": "6",
+          },
+          Object {
+            "key": "7",
+          },
+          Object {
+            "key": "8",
+          },
+          Object {
+            "key": "9",
+          },
+          Object {
+            "key": "10",
+          },
+          Object {
+            "key": "11",
+          },
+          Object {
+            "key": "12",
+          },
+          Object {
+            "key": "13",
+          },
+          Object {
+            "key": "14",
+          },
+          Object {
+            "key": "15",
+          },
+          Object {
+            "key": "16",
+          },
+          Object {
+            "key": "17",
+          },
+          Object {
+            "key": "18",
+          },
+          Object {
+            "key": "19",
+          },
+        ]
+      }
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEnabled={false}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              numberOfSpaces={7}
+              style={
+                Array [
+                  Object {
+                    "height": 28,
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "0",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "1",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "2",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "3",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "4",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "5",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "6",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "7",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "8",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            highlighted={false}
+            leadingItem={
+              Object {
+                "key": "9",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f5f5f5",
+                  "height": 2,
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": 0,
+            }
+          }
+        />
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "height": 272,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "bottom": 88,
+          "position": "absolute",
         },
       ]
     }
   >
     <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "height": "100%",
-            "left": 0,
-            "position": "absolute",
-            "top": 0,
-            "width": "100%",
-          },
-        ]
+        Object {
+          "opacity": 1,
+          "overflow": "hidden",
+        }
       }
+      testID="FilterButton"
     >
-      <View
-        height="100%"
-        width="100%"
+      <BVLinearGradient
+        colors={
+          Array [
+            4290717535,
+            4284091776,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 1,
+            "y": 0,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0,
+            "y": 0,
+          }
+        }
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "height": 40,
+              "overflow": "hidden",
+              "paddingHorizontal": 12,
+            },
+          ]
+        }
       >
-        undefined-SVG-Mock
-      </View>
+        <View
+          fill="#ffffff"
+          height={32}
+          width={32}
+        >
+          undefined-SVG-Mock
+        </View>
+        <View
+          numberOfSpaces={1}
+          style={
+            Array [
+              Object {
+                "width": 4,
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Filtrer
+        </Text>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+      </BVLinearGradient>
     </View>
     <View
-      testID="Loading-Animation"
-    >
-      Loading-Animation-Lottie-Mock
-    </View>
-    <Text
-      color="#ffffff"
+      customHeight={8}
       style={
         Array [
           Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "textAlign": "center",
-            "top": -16,
+            "height": 8,
           },
         ]
       }
-    >
-      Chargement en cours...
-    </Text>
+    />
   </View>
 </View>
 `;

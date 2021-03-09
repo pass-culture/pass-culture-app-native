@@ -1,0 +1,305 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotConnectedFavorites component should render not connected favorites 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      height="100%"
+      width="100%"
+    >
+      undefined-SVG-Mock
+    </View>
+  </View>
+  <View
+    customHeight={16}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    height={127}
+    width={197}
+  >
+    undefined-SVG-Mock
+  </View>
+  <View
+    numberOfSpaces={2}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexGrow": 1,
+          "justifyContent": "center",
+          "marginHorizontal": 32,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 18,
+            "lineHeight": 22,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Connecte-toi pour profiter de cette fonctionnalité !
+    </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "maxWidth": 352,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        <Text
+          color="#ffffff"
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 176,
+          },
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 48,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
+        }
+        testID="button-container"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 5,
+                "maxWidth": 650,
+              },
+            ]
+          }
+          testID="button-title"
+          textColor="#eb0055"
+        >
+          S'inscrire
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 48,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
+        }
+        testID="button-container"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 5,
+                "maxWidth": 650,
+              },
+            ]
+          }
+          testID="button-title"
+          textColor="#ffffff"
+        >
+          Se connecter
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    customHeight={8}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
+</View>
+`;
