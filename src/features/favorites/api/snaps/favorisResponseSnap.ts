@@ -1,4 +1,4 @@
-import { FavoriteCategoryResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { FavoriteCategoryResponse, FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 
 // humanizedId AHD3A
 export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
@@ -106,4 +106,27 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       },
     },
   ],
+}
+
+export const addFavoriteJsonResponseSnap: FavoriteResponse = {
+  id: 1000,
+  offer: {
+    id: 10000,
+    name: 'Spectacle de test',
+    category: {
+      categoryType: 'Event',
+      label: 'Spectacle',
+      name: 'SPECTACLE',
+    } as FavoriteCategoryResponse,
+    externalTicketOfficeUrl: null,
+    image: null,
+    coordinates: {
+      latitude: 48.12108,
+      longitude: -1.17896,
+    },
+    price: 0,
+    startPrice: null,
+    date: new Date('2021-04-01T12:00:00'),
+    startDate: null,
+  },
 }

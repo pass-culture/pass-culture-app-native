@@ -30,3 +30,18 @@ export const getDisplayPriceWithDuoMention = (prices: number[] | undefined): str
   if (prices.includes(0)) return _(t`Gratuit`)
   return `${getPricePerPlace(prices)} ${_(t`/ place`)}`
 }
+
+export const getFavoriteDisplayPrice = ({
+  startPrice,
+  price,
+}: {
+  startPrice?: number | undefined | null
+  price?: number | undefined | null
+}): string => {
+  if (price === 0) return _(t`Gratuit`)
+  if (price && price > 0) return formatToFrenchDecimal(price)
+  if (startPrice === 0 || (startPrice && startPrice > 0)) {
+    return `Dès ${formatToFrenchDecimal(startPrice)}`
+  }
+  return ''
+}

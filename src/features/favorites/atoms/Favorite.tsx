@@ -12,7 +12,7 @@ import { useDistance } from 'features/offer/components/useDistance'
 import { OfferImage } from 'features/search/atoms/OfferImage'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
-import { formatToFrenchDate, getDisplayPrice, parseCategory } from 'libs/parsers'
+import { formatToFrenchDate, getFavoriteDisplayPrice, parseCategory } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -22,6 +22,7 @@ interface Props {
 
 export const Favorite: React.FC<Props> = ({ favorite }) => {
   const { offer } = favorite
+  const { price, startPrice } = offer
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance({
@@ -30,7 +31,6 @@ export const Favorite: React.FC<Props> = ({ favorite }) => {
   })
 
   const categoryLabel = CATEGORY_CRITERIA[offer.category.name || 'ALL'].label
-  const prices = [offer.price || offer.startPrice || 0]
   const formattedDate = useMemo(() => {
     if (offer.date) {
       return formatToFrenchDate(new Date(offer.date))
@@ -83,7 +83,7 @@ export const Favorite: React.FC<Props> = ({ favorite }) => {
           <Body>{categoryLabel}</Body>
           {formattedDate && <Body>{formattedDate}</Body>}
           <Spacer.Column numberOfSpaces={1} />
-          <Typo.Caption>{getDisplayPrice(prices)}</Typo.Caption>
+          <Typo.Caption>{getFavoriteDisplayPrice({ startPrice, price })}</Typo.Caption>
         </Column>
       </Row>
     </Container>

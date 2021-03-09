@@ -1,4 +1,8 @@
-import { getDisplayPrice, getDisplayPriceWithDuoMention } from '../getDisplayPrice'
+import {
+  getDisplayPrice,
+  getDisplayPriceWithDuoMention,
+  getFavoriteDisplayPrice,
+} from '../getDisplayPrice'
 
 describe('getDisplayPrice', () => {
   it.each`
@@ -35,4 +39,26 @@ describe('getDisplayPrice', () => {
   `('getDisplayPriceWithDuoMention($prices) \t= $expected', ({ prices, expected }) => {
     expect(getDisplayPriceWithDuoMention(prices)).toBe(expected)
   })
+})
+
+describe('getFavoriteDisplayPrice', () => {
+  it.each`
+    price        | startPrice   | expected
+    ${undefined} | ${undefined} | ${''}
+    ${null}      | ${null}      | ${''}
+    ${0}         | ${null}      | ${'Gratuit'}
+    ${1000}      | ${null}      | ${'10 €'}
+    ${null}      | ${0}         | ${'Dès 0 €'}
+    ${null}      | ${1000}      | ${'Dès 10 €'}
+  `(
+    'getFavoriteDisplayPrice({ price: $price, startPrice: $startPrice }) \t= $expected',
+    ({ price, startPrice, expected }) => {
+      expect(
+        getFavoriteDisplayPrice({
+          price,
+          startPrice,
+        })
+      ).toBe(expected)
+    }
+  )
 })
