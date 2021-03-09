@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import { useRoute } from '@react-navigation/native'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
+import { NotificationSubscriptions } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -25,6 +26,7 @@ type State = {
 }
 
 export function NotificationSettings() {
+  const route = useRoute()
   const [state, setState] = useState<State>({
     allowEmails: undefined,
     pushPermission: 'unavailable',
@@ -35,22 +37,15 @@ export function NotificationSettings() {
 
   const { data: user } = useUserProfileInfo()
 
-  useFocusEffect(
-    useCallback(() => {
-      checkNotifications().then((permission) => {
-        const { marketing_email, marketing_push } = user?.subscriptions || {}
-
-        // save values for treatments
-        setState({
-          allowEmails: marketing_email ?? true,
-          pushPermission: permission.status,
-          pushSwitchEnabled: permission.status === 'granted' && Boolean(marketing_push),
-          emailTouched: false,
-          pushTouched: false,
-        })
+  // refresh state on page focus
+  useEffect(() => {
+    checkNotifications().then((permission) => {
+      setState({
+        pushPermission: permission.status,
+        ...getInitialSwitchesState(permission.status, user?.subscriptions),
       })
-    }, [])
-  )
+    })
+  }, [route.key, user])
 
   const toggleEmails = useCallback(
     () =>
@@ -71,21 +66,16 @@ export function NotificationSettings() {
     []
   )
 
-  const allowEmails = state.allowEmails ?? user?.subscriptions.marketing_email ?? true
+  const allowEmails = state.allowEmails ?? user?.subscriptions?.marketing_email ?? true
 
   const { mutate: updateProfile } = useUpdateProfileMutation(
-    (response) => {
-      setState((prevState) => ({
-        ...prevState,
-        emailTouched: false,
-        pushTouched: false,
-        allowEmails: response?.subscriptions?.marketing_email,
-        pushSwitchEnabled:
-          state.pushPermission === 'granted' && Boolean(response?.subscriptions?.marketing_push),
-      }))
-    },
+    () => void 0, // react-query cached is updated ==> user update will trigger the above effect
     () => {
-      // next commit
+      // on error rollback to the last loaded result
+      setState((prevState) => ({
+        ...prevState, // keep permission state
+        ...getInitialSwitchesState(prevState.pushPermission, user?.subscriptions),
+      }))
     }
   )
 
@@ -172,3 +162,17 @@ const SettingExplanation = styled.Text({
   lineHeight: '16px',
   color: ColorsEnum.GREY_DARK,
 })
+
+const getInitialSwitchesState = (
+  permission: PermissionStatus,
+  subscriptions?: NotificationSubscriptions
+): Omit<State, 'pushPermission'> => {
+  const { marketing_email, marketing_push } = subscriptions || {}
+
+  return {
+    allowEmails: marketing_email ?? true,
+    pushSwitchEnabled: permission === 'granted' && Boolean(marketing_push),
+    emailTouched: false,
+    pushTouched: false,
+  }
+}
