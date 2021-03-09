@@ -4048,7 +4048,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               />
                               <View
                                 accessible={true}
-                                focusable={true}
+                                focusable={false}
                                 onClick={[Function]}
                                 onResponderGrant={[Function]}
                                 onResponderMove={[Function]}
@@ -4059,7 +4059,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 style={
                                   Object {
                                     "alignItems": "center",
-                                    "backgroundColor": "#eb0055",
+                                    "backgroundColor": "#ff99be",
                                     "borderRadius": 24,
                                     "borderWidth": 0,
                                     "flexDirection": "row",
@@ -4094,7 +4094,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="button-title"
                                   textColor="#ffffff"
                                 >
-                                  Valider ces options
+                                  Continuer
                                 </Text>
                               </View>
                               <View
@@ -9185,7 +9185,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               />
                               <View
                                 accessible={true}
-                                focusable={true}
+                                focusable={false}
                                 onClick={[Function]}
                                 onResponderGrant={[Function]}
                                 onResponderMove={[Function]}
@@ -9196,7 +9196,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 style={
                                   Object {
                                     "alignItems": "center",
-                                    "backgroundColor": "#eb0055",
+                                    "backgroundColor": "#ff99be",
                                     "borderRadius": 24,
                                     "borderWidth": 0,
                                     "flexDirection": "row",
@@ -9231,7 +9231,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="button-title"
                                   textColor="#ffffff"
                                 >
-                                  Valider ces options
+                                  Continuer
                                 </Text>
                               </View>
                               <View
