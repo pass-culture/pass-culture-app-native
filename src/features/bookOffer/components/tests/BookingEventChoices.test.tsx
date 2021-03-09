@@ -18,7 +18,7 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
       quantity: 1,
       date: undefined,
     },
-    dispatch: jest.fn,
+    dispatch: jest.fn(),
   })),
   useBookingOffer: jest.fn(() => ({
     id: 1,
@@ -49,10 +49,10 @@ describe('<BookingEventChoices />', () => {
         quantity: 1,
         date: '01/02/2021',
       },
-      dispatch: jest.fn,
+      dispatch: jest.fn(),
     }))
     const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-    await act(() => flushAllPromises())
+    await act(flushAllPromises)
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeTruthy()
     expect(page.queryByTestId('DuoStep')).toBeFalsy()
@@ -67,7 +67,7 @@ describe('<BookingEventChoices />', () => {
         quantity: 1,
         date: '01/02/2021',
       },
-      dispatch: jest.fn,
+      dispatch: jest.fn(),
     }))
     const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
     await act(flushAllPromises)

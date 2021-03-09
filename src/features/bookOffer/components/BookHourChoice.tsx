@@ -32,7 +32,7 @@ export const BookHourChoice: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4>{_(t`Heure`)}</Typo.Title4>
+      <Typo.Title4 testID="HourStep">{_(t`Heure`)}</Typo.Title4>
       {filteredStocks.map((stock) => (
         <TouchableOpacity
           activeOpacity={ACTIVE_OPACITY}
