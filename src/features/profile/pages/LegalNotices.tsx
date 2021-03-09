@@ -1,25 +1,27 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/support.services'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { _ } from 'libs/i18n'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
-import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
 import { Separator } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
 export function LegalNotices() {
   const { data: user } = useUserProfileInfo()
   return (
-    <View>
-      <ProfileHeaderWithNavigation title={_(t`Mentions légales`)} />
+    <React.Fragment>
+      <PageHeader title={_(t`Mentions légales`)} />
+      <Spacer.TopScreen />
+      <Spacer.Column numberOfSpaces={14} />
       <Container>
         <Row
           title={_(t`Conditions Générales d’Utilisation`)}
@@ -52,7 +54,7 @@ export function LegalNotices() {
           </React.Fragment>
         )}
       </Container>
-    </View>
+    </React.Fragment>
   )
 }
 

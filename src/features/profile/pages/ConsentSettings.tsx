@@ -12,10 +12,10 @@ import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import FilterSwitch from 'ui/components/FilterSwitch'
+import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { ProfileHeaderWithNavigation } from '../components/ProfileHeaderWithNavigation'
 import { ProfileContainer, Separator } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
@@ -56,11 +56,9 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
 
   return (
     <React.Fragment>
-      <ProfileHeaderWithNavigation
-        title={_(t`Paramètres de confidentialité`)}
-        onGoBack={route.params?.onGoBack}
-      />
-      <Spacer.Column numberOfSpaces={6} />
+      <PageHeader title={_(t`Paramètres de confidentialité`)} onGoBack={route.params?.onGoBack} />
+      <Spacer.TopScreen />
+      <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
         <Typo.Body color={ColorsEnum.BLACK}>
           {_(
