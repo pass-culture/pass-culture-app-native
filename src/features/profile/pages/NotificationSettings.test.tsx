@@ -8,41 +8,51 @@ import { NotificationsResponse, PermissionStatus } from 'react-native-permission
 import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
-import { useUserProfileInfo } from 'features/home/api'
+import * as HomeApi from 'features/home/api'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises } from 'tests/utils'
 
 import { NotificationSettings } from './NotificationSettings'
 
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-
-const useUserProfileInfoMock = useUserProfileInfo as jest.Mock
+const useUserProfileInfoMock = HomeApi.useUserProfileInfo as jest.Mock
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
 }))
 
-const checkPermissions = jest.spyOn(RNP, 'checkNotifications')
+jest.mock('@react-navigation/native', () => ({
+  ...(jest.requireActual('@react-navigation/native') as Record<string, unknown>),
+  useRoute: jest.fn().mockImplementation(() => ({
+    key: 'ksdqldkmqdmqdq',
+  })),
+}))
+
+const checkNotifications = jest.spyOn(RNP, 'checkNotifications')
 
 describe('NotificationSettings', () => {
+  beforeEach(() => checkNotifications.mockRestore())
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should display the both switches on ios', async () => {
     Platform.OS = 'ios'
-    const { getByText } = await renderNotificationSettings()
+    const { getByText } = await renderNotificationSettings('granted', {})
+
     getByText('Autoriser l’envoi d’e-mails')
     getByText('Autoriser les notifications marketing')
   })
   it('should only display the email switch on android', async () => {
     Platform.OS = 'android'
-    const { getByText } = await renderNotificationSettings()
+    const { getByText } = await renderNotificationSettings('granted', {})
+
     getByText('Autoriser l’envoi d’e-mails')
   })
   describe('Push switch (only iOS)', () => {
-    beforeEach(() => checkPermissions.mockRestore())
-
     it('should display an enabled switch', async () => {
       Platform.OS = 'ios'
-
       const { getByTestId } = await renderNotificationSettings('granted', {
         subscriptions: {
           marketing_email: false,
@@ -85,11 +95,11 @@ const Stack = createStackNavigator<RootStackParamList>()
 const navigationRef = React.createRef<NavigationContainerRef>()
 
 async function renderNotificationSettings(
-  expectedPermission?: NotificationsResponse['status'],
+  expectedPermission: NotificationsResponse['status'],
   user?: UserProfileResponse
 ) {
   expectedPermission &&
-    checkPermissions.mockReturnValue(
+    checkNotifications.mockReturnValue(
       Promise.resolve({
         status: expectedPermission,
         settings: {},
@@ -97,7 +107,7 @@ async function renderNotificationSettings(
     )
 
   user &&
-    useUserProfileInfoMock.mockImplementationOnce(() => ({
+    useUserProfileInfoMock.mockImplementation(() => ({
       data: user,
     }))
 
