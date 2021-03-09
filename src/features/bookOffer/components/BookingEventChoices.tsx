@@ -23,6 +23,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
   const { bookingState, dispatch } = useBooking()
   const { data: user } = useUserProfileInfo()
   const remainingCredit = useAvailableCredit()
+  const { step, quantity } = bookingState
 
   if (!user) return <React.Fragment />
 
