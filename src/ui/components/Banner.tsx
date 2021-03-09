@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Info } from 'ui/svg/icons/Info'
+import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, Spacer, getSpacing, Typo } from 'ui/theme'
 
 export enum BannerType {
@@ -17,9 +17,9 @@ type Props = {
 const renderIcon = (type: BannerType) => {
   switch (type) {
     case BannerType.INFO:
-      return <Info size={32} color={ColorsEnum.BLACK} />
+      return <Warning size={32} color={ColorsEnum.BLACK} />
     default:
-      return <Info size={32} color={ColorsEnum.BLACK} />
+      return <Warning size={32} color={ColorsEnum.BLACK} />
   }
 }
 

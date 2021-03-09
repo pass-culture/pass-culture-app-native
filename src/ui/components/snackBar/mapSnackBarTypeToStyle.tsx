@@ -1,4 +1,5 @@
 import { Check } from 'ui/svg/icons/Check'
+import { Info } from 'ui/svg/icons/Info'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum } from 'ui/theme'
 
@@ -24,7 +25,7 @@ export const mapSnackBarTypeToStyle = (
       }
     case SnackBarType.INFO:
       return {
-        icon: Warning,
+        icon: Info,
         backgroundColor: ColorsEnum.ACCENT,
         progressBarColor: ColorsEnum.WHITE,
         color: ColorsEnum.WHITE,
