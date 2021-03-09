@@ -3,9 +3,8 @@ import { Modal, TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { ModalOverlay } from 'ui/components/modals/ModalOverlay'
 import { Close } from 'ui/svg/icons/Close'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, UniqueColors } from 'ui/theme'
 
 import { ModalHeader } from './ModalHeader'
 
@@ -27,10 +26,9 @@ export const AppInformationModal: FunctionComponent<Props> = ({
   const paddingBottom = Math.max(bottom, getSpacing(3))
   return (
     <React.Fragment>
-      <ModalOverlay visible={visible} />
       {visible && (
         <Modal
-          animationType="slide"
+          animationType="fade"
           statusBarTranslucent
           transparent={true}
           visible={visible}
@@ -60,6 +58,7 @@ const ClicAwayArea = styled(TouchableOpacity)({
   justifyContent: 'flex-end',
   height: '100%',
   width: '100%',
+  backgroundColor: UniqueColors.GREY_OVERLAY,
 })
 
 const Container = styled(TouchableOpacity)({
