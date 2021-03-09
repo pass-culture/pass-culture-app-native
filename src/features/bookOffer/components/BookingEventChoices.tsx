@@ -23,17 +23,18 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
   const { bookingState, dispatch } = useBooking()
   const { data: user } = useUserProfileInfo()
   const remainingCredit = useAvailableCredit()
-  const { step, quantity } = bookingState
+  const { step, quantity, stockId } = bookingState
 
   if (!user) return <React.Fragment />
 
-  const validateOptions = () => {
-    dispatch({ type: 'VALIDATE_OPTIONS' })
-  }
+  const validateOptions = () => dispatch({ type: 'VALIDATE_OPTIONS' })
 
   if (bookingState.step === Step.CONFIRMATION) {
     return <BookingDetails />
   }
+
+  // We only need those 2 informations to book an offer (and thus proceed to the next page)
+  const enabled = typeof stockId === 'number' && typeof quantity === 'number'
 
   return (
     <Container>
@@ -44,7 +45,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
       />
 
       <Spacer.Column numberOfSpaces={6} />
-      {bookingState.step && bookingState.step >= Step.HOUR && (
+      {step && step >= Step.HOUR && (
         <React.Fragment>
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
@@ -54,7 +55,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       )}
-      {bookingState.step && bookingState.step >= Step.DUO && (
+      {step && step >= Step.DUO && (
         <React.Fragment>
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
@@ -64,7 +65,11 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       )}
-      <ButtonPrimary title={_(t`Valider ces options`)} onPress={validateOptions} />
+      <ButtonPrimary
+        title={enabled ? _(t`Valider ces options`) : _(t`Continuer`)}
+        onPress={validateOptions}
+        disabled={!enabled}
+      />
       <Spacer.Column numberOfSpaces={4} />
     </Container>
   )
