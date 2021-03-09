@@ -117,9 +117,18 @@ export const Profile: React.FC = () => {
           )}
           <Spacer.Column numberOfSpaces={4} />
           <SectionRow
+            type="navigable"
+            title={_(t`Notifications`)}
+            icon={Bell}
+            onPress={() => navigate('NotificationSettings')}
+            testID="row-notifications"
+          />
+          <Spacer.Column numberOfSpaces={4} />
+          <SectionRow
             type="clickable"
             title={_(t`Géolocalisation`)}
             icon={LocationPointerNotFilled}
+            style={styles.row}
             cta={
               <FilterSwitch
                 active={isGeolocSwitchActive}
@@ -128,15 +137,6 @@ export const Profile: React.FC = () => {
               />
             }
             testID="row-geolocation"
-          />
-          <Spacer.Column numberOfSpaces={4} />
-          <SectionRow
-            type="navigable"
-            title={_(t`Notifications`)}
-            icon={Bell}
-            onPress={() => navigate('NotificationSettings')}
-            style={styles.row}
-            testID="row-notifications"
           />
         </Section>
         <Section title={_(t`Aides`)}>
@@ -248,14 +248,12 @@ const BottomSpacing = styled.View({
 })
 
 const NetworkRow = styled.View({
-  flex: 1,
   width: '100%',
   margin: 'auto',
   maxWidth: getSpacing(125),
 })
 
 const NetworkRowContainer = styled.View({
-  flex: 1,
   flexDirection: 'row',
   paddingVertical: getSpacing(4),
   justifyContent: 'space-between',
