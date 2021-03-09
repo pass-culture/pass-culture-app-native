@@ -3,28 +3,34 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native'
 
 import { _ } from 'libs/i18n'
+import { Check } from 'ui/svg/icons/Check'
 import { Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-import { useBooking, useBookingOffer } from '../pages/BookingOfferWrapper'
+import { useBooking } from '../pages/BookingOfferWrapper'
 
 export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
-  const offer = useBookingOffer()
 
-  const toggleQuantity = () => {
-    dispatch({ type: 'SELECT_QUANTITY', payload: bookingState.quantity === 1 ? 2 : 1 })
-  }
+  const selectSolo = () => dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
+  const selectDuo = () => dispatch({ type: 'SELECT_QUANTITY', payload: 2 })
 
   return (
     <React.Fragment>
       <Typo.Title4 testID="DuoStep">{_(t`Nombre de place`)}</Typo.Title4>
-      <TouchableOpacity
-        activeOpacity={ACTIVE_OPACITY}
-        onPress={toggleQuantity}
-        disabled={!offer?.isDuo}>
-        <Spacer.Column numberOfSpaces={2} />
-        <Typo.ButtonText>{bookingState.quantity === 1 ? _(t`Solo`) : _(t`Duo`)}</Typo.ButtonText>
+      <Spacer.Column numberOfSpaces={2} />
+      <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectSolo}>
+        <Typo.ButtonText>
+          {_(t`Solo`)}
+          {bookingState.quantity === 1 && <Check />}
+        </Typo.ButtonText>
+      </TouchableOpacity>
+      <Spacer.Column numberOfSpaces={2} />
+      <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectDuo}>
+        <Typo.ButtonText>
+          {_(t`Duo`)}
+          {bookingState.quantity === 2 && <Check />}
+        </Typo.ButtonText>
       </TouchableOpacity>
     </React.Fragment>
   )

@@ -9,7 +9,7 @@ export type BookingState = {
   offerId: number | undefined
   stockId: number | undefined
   step: Step | undefined
-  quantity: 1 | 2
+  quantity: 1 | 2 | undefined
   date: Date | undefined
 }
 
@@ -17,7 +17,7 @@ export const initialBookingState: BookingState = {
   offerId: undefined,
   stockId: undefined,
   step: Step.DATE,
-  quantity: 1,
+  quantity: undefined,
   date: undefined,
 }
 
