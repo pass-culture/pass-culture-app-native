@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Linking, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -65,7 +65,7 @@ export const Profile: React.FC = () => {
     hideModal: hideGeolocPermissionModal,
   } = useModal(false)
 
-  async function switchGeolocation() {
+  const switchGeolocation = useCallback(async () => {
     if (isGeolocSwitchActive) {
       disableGeolocation()
     } else {
@@ -75,7 +75,7 @@ export const Profile: React.FC = () => {
         await requestGeolocPermission()
       }
     }
-  }
+  }, [isGeolocSwitchActive, permissionState])
 
   function onPressGeolocPermissionModalButton() {
     Linking.openSettings()

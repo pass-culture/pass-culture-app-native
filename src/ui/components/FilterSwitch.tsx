@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { Animated, Easing, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -73,4 +73,4 @@ const StyledToggle = styled(Animated.View)({
   }),
 })
 
-export default FilterSwitch
+export default memo(FilterSwitch)
