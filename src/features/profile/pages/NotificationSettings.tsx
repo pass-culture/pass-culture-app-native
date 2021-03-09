@@ -12,6 +12,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { useUpdateProfileMutation } from '../api'
 import { ProfileContainer, Separator } from '../components/reusables'
 import { SectionRow } from '../components/SectionRow'
 
@@ -72,6 +73,33 @@ export function NotificationSettings() {
 
   const allowEmails = state.allowEmails ?? user?.subscriptions.marketing_email ?? true
 
+  const { mutate: updateProfile } = useUpdateProfileMutation(
+    (response) => {
+      setState((prevState) => ({
+        ...prevState,
+        emailTouched: false,
+        pushTouched: false,
+        allowEmails: response?.subscriptions?.marketing_email,
+        pushSwitchEnabled:
+          state.pushPermission === 'granted' && Boolean(response?.subscriptions?.marketing_push),
+      }))
+    },
+    () => {
+      // next commit
+    }
+  )
+
+  const submitProfile = () => {
+    if (state.allowEmails !== undefined && state.allowEmails !== undefined) {
+      updateProfile({
+        subscriptions: {
+          marketing_email: state.allowEmails ?? false,
+          marketing_push: state.pushSwitchEnabled,
+        },
+      })
+    }
+  }
+
   return (
     <React.Fragment>
       <PageHeader title={_(t`Notifications`)} />
@@ -126,6 +154,7 @@ export function NotificationSettings() {
         <ButtonPrimary
           title={_(t`Enregistrer`)}
           disabled={!state.emailTouched && !state.pushTouched}
+          onPress={submitProfile}
         />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
