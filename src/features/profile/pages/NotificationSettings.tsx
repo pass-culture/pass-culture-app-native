@@ -11,6 +11,7 @@ import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useUpdateProfileMutation } from '../api'
@@ -26,6 +27,8 @@ type State = {
 }
 
 export function NotificationSettings() {
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+
   const route = useRoute()
   const [state, setState] = useState<State>({
     allowEmails: undefined,
@@ -66,13 +69,21 @@ export function NotificationSettings() {
 
   const allowEmails = state.allowEmails ?? user?.subscriptions?.marketing_email ?? true
 
-  const { mutate: updateProfile } = useUpdateProfileMutation(
-    () => void 0,
+  const { mutate: updateProfile, isLoading: isUpdating } = useUpdateProfileMutation(
+    () => {
+      showSuccessSnackBar({
+        message: _(t`Le réglage est sauvegardé`),
+        timeout: 5000,
+      })
+    },
     /**
      * the mutation code already takes care of updating the react-query cache.
      * It also updates the user which triggers the checkNotifications effect
      */
     () => {
+      showErrorSnackBar({
+        message: _(t`Une erreur est survenue`),
+      })
       // on error rollback to the last loaded result
       setState((prevState) => ({
         ...prevState, // keep permission state
@@ -145,6 +156,7 @@ export function NotificationSettings() {
         <Spacer.Flex flex={1} />
         <ButtonPrimary
           title={_(t`Enregistrer`)}
+          isLoading={isUpdating}
           disabled={!state.emailTouched && !state.pushTouched}
           onPress={submitProfile}
         />
