@@ -50,8 +50,8 @@ const userProfileAPIResponse: UserProfileResponse = {
   showEligibleCard: false,
   id: 1234,
   subscriptions: {
-    marketing_email: true,
-    marketing_push: true,
+    marketingEmail: true,
+    marketingPush: true,
   },
 }
 

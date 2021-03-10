@@ -54,7 +54,7 @@ export function NotificationSettings() {
     () =>
       setState((prevState) => ({
         ...prevState,
-        emailTouched: prevState.allowEmails === user?.subscriptions?.marketing_email,
+        emailTouched: prevState.allowEmails === user?.subscriptions?.marketingEmail,
         allowEmails: !prevState.allowEmails,
       })),
     [user]
@@ -62,12 +62,12 @@ export function NotificationSettings() {
   const togglePush = useCallback(() => {
     setState((prevState) => ({
       ...prevState,
-      pushTouched: prevState.pushSwitchEnabled === user?.subscriptions?.marketing_push,
+      pushTouched: prevState.pushSwitchEnabled === user?.subscriptions?.marketingPush,
       pushSwitchEnabled: !prevState.pushSwitchEnabled,
     }))
   }, [user])
 
-  const allowEmails = state.allowEmails ?? user?.subscriptions?.marketing_email ?? true
+  const allowEmails = state.allowEmails ?? user?.subscriptions?.marketingEmail ?? true
 
   const { mutate: updateProfile, isLoading: isUpdating } = useUpdateProfileMutation(
     () => {
@@ -96,8 +96,8 @@ export function NotificationSettings() {
     if (state.allowEmails !== undefined && state.pushSwitchEnabled !== undefined) {
       updateProfile({
         subscriptions: {
-          marketing_email: state.allowEmails ?? false,
-          marketing_push: state.pushSwitchEnabled,
+          marketingEmail: state.allowEmails ?? false,
+          marketingPush: state.pushSwitchEnabled,
         },
       })
     }
@@ -181,11 +181,11 @@ const getInitialSwitchesState = (
   permission: PermissionStatus,
   subscriptions?: NotificationSubscriptions
 ): Omit<State, 'pushPermission'> => {
-  const { marketing_email, marketing_push } = subscriptions || {}
+  const { marketingEmail, marketingPush } = subscriptions || {}
 
   return {
-    allowEmails: Boolean(marketing_email),
-    pushSwitchEnabled: permission === 'granted' && Boolean(marketing_push),
+    allowEmails: Boolean(marketingEmail),
+    pushSwitchEnabled: permission === 'granted' && Boolean(marketingPush),
     emailTouched: false,
     pushTouched: false,
   }

@@ -55,8 +55,8 @@ describe('NotificationSettings', () => {
       Platform.OS = 'ios'
       const { getByTestId } = await renderNotificationSettings('granted', {
         subscriptions: {
-          marketing_email: false,
-          marketing_push: true,
+          marketingEmail: false,
+          marketingPush: true,
         },
       } as UserProfileResponse)
 
@@ -71,14 +71,14 @@ describe('NotificationSettings', () => {
       ['limited', true],
       ['granted', false],
     ])(
-      'should display a disabled switch when permission="%s" and marketing_push="%s"',
-      async (permission, marketing_push) => {
+      'should display a disabled switch when permission="%s" and marketingPush="%s"',
+      async (permission, marketingPush) => {
         Platform.OS = 'ios'
 
         const { getByTestId } = await renderNotificationSettings(permission, {
           subscriptions: {
-            marketing_email: false,
-            marketing_push,
+            marketingEmail: false,
+            marketingPush,
           },
         } as UserProfileResponse)
 

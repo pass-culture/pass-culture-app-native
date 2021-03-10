@@ -22,8 +22,8 @@ const userV1: UserProfileResponse = {
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
   subscriptions: {
-    marketing_email: true,
-    marketing_push: true,
+    marketingEmail: true,
+    marketingPush: true,
   },
 }
 
