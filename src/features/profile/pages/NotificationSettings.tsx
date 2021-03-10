@@ -105,7 +105,6 @@ export function NotificationSettings() {
 
   return (
     <React.Fragment>
-      <PageHeader title={_(t`Notifications`)} />
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
@@ -162,6 +161,8 @@ export function NotificationSettings() {
         />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
+
+      <PageHeader title={_(t`Notifications`)} />
     </React.Fragment>
   )
 }
