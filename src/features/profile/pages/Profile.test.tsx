@@ -176,7 +176,7 @@ describe('Profile component', () => {
       expect(row).toBeFalsy()
     })
 
-    it('should delete the refreshToken from Keychain and clean user profile when pressed', async () => {
+    it('should delete the refreshToken, clean user profile and remove user ID from batch when pressed', async () => {
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
       const { getByTestId } = await renderProfile()
 
