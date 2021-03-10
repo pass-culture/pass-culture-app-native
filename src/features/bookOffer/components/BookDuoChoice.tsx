@@ -1,17 +1,17 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
-import { Check } from 'ui/svg/icons/Check'
-import { Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { formatToFrenchDecimal } from 'libs/parsers'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useBooking, useBookingOffer } from '../pages/BookingOfferWrapper'
+import { DuoChoice } from '../atoms/DuoChoice'
+import { useBooking, useBookingStock } from '../pages/BookingOfferWrapper'
 
 export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
-  const offer = useBookingOffer()
+  const stock = useBookingStock()
 
   const selectSolo = () => dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
   const selectDuo = () => dispatch({ type: 'SELECT_QUANTITY', payload: 2 })
@@ -20,23 +20,26 @@ export const BookDuoChoice: React.FC = () => {
     <React.Fragment>
       <Typo.Title4 testID="DuoStep">{_(t`Nombre de place`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
-      <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectSolo}>
-        <Typo.ButtonText>
-          {_(t`Solo`)}
-          {bookingState.quantity === 1 && <Check />}
-        </Typo.ButtonText>
-      </TouchableOpacity>
-      {offer?.isDuo && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={2} />
-          <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={selectDuo}>
-            <Typo.ButtonText>
-              {_(t`Duo`)}
-              {bookingState.quantity === 2 && <Check />}
-            </Typo.ButtonText>
-          </TouchableOpacity>
-        </React.Fragment>
-      )}
+      <DuoChoiceContainer>
+        <DuoChoice
+          price={stock ? formatToFrenchDecimal(stock.price).replace(' ', '') : ''}
+          quantity={1}
+          selected={bookingState.quantity === 1}
+          onPress={selectSolo}
+        />
+        <DuoChoice
+          price={stock ? formatToFrenchDecimal(2 * stock.price).replace(' ', '') : ''}
+          quantity={2}
+          selected={bookingState.quantity === 2}
+          onPress={selectDuo}
+        />
+      </DuoChoiceContainer>
     </React.Fragment>
   )
 }
+
+const DuoChoiceContainer = styled.View({
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginHorizontal: -getSpacing(2),
+})
