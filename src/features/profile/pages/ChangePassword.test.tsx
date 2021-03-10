@@ -1,6 +1,7 @@
 import { render, act, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
 import { ChangePasswordRequest } from 'api/gen'
@@ -107,31 +108,33 @@ describe('ChangePassword', () => {
       timeout: SNACK_BAR_TIME_OUT,
     })
   })
-  it('display error when the password failed to updated', async () => {
+  it.only('display error when the password failed to updated', async () => {
     server.use(
       rest.post<ChangePasswordRequest, EmptyResponse>(
         env.API_BASE_URL + '/native/v1/change_password',
         (_req, res, ctx) => res.once(ctx.status(400), ctx.json({}))
       )
     )
-
-    const { getByPlaceholderText, getByTestId, getByText } = await renderChangePassword()
+    const { getByPlaceholderText, findByTestId, queryByText } = await renderChangePassword()
 
     const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
 
-    fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-    await superFlushWithAct()
+    await fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
+    await fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    await fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
-    // assuming there's only one button in this page
-    const continueButton = getByTestId('button-container')
-    fireEvent.press(continueButton)
-
-    await superFlushWithAct(20)
-
-    expect(getByText('Mot de passe incorrect')).toBeTruthy()
+    let continueButton: ReactTestInstance
+    await act(async () => {
+      await waitForExpect(async () => {
+        // assuming there's only one button in this page
+        continueButton = await findByTestId('button-container')
+      })
+      fireEvent.press(continueButton)
+      await waitForExpect(() => {
+        expect(queryByText('Mot de passe incorrect')).toBeTruthy()
+      })
+    })
   })
 })

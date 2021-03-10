@@ -82,11 +82,13 @@ export const Profile: React.FC = () => {
     hideGeolocPermissionModal()
   }
 
-  if (!isLoggedIn) {
-    if (scrollViewRef && scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
+  useEffect(() => {
+    if (!isLoggedIn) {
+      if (scrollViewRef && scrollViewRef.current) {
+        scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
+      }
     }
-  }
+  }, [isLoggedIn])
 
   return (
     <ScrollView bounces={false} ref={scrollViewRef}>
