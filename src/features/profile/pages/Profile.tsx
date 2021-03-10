@@ -184,7 +184,7 @@ export const Profile: React.FC = () => {
             testID="row-confidentiality"
           />
         </Section>
-        <Section title={_(t`Suivre Pass Culture`)}>
+        <Section title={_(t`Suivre pass Culture`)}>
           <NetworkRow>
             <NetworkRowContainer>
               <SocialNetworkCard network="instagram" />

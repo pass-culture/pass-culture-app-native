@@ -32,8 +32,21 @@ const ceilingsQuestions = {
   v2: _(t`Pourquoi les biens numériques sont-ils limités ?`),
 }
 
+const ceilingsDescription = {
+  v1: _(
+    t`Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles.`
+  ),
+  v2: _(
+    t`Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles.`
+  ),
+}
+
 export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
   const question = props.depositVersion === 1 ? ceilingsQuestions.v1 : ceilingsQuestions.v2
+  const description =
+    _(
+      t`Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\u0020`
+    ) + (props.depositVersion === 1 ? ceilingsDescription.v1 : ceilingsDescription.v2)
 
   const expenses = sortExpenses(props.depositVersion, props.expenses)
 
@@ -62,13 +75,7 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
         title={<Typo.ButtonText>{question}</Typo.ButtonText>}
         titleStyle={accordionStyle.title}
         bodyStyle={accordionStyle.body}>
-        <Description>
-          {_(
-            t`Le but du pass Culture est de renforcer vos pratiques culturelles,
-            mais aussi d'en créer  de nouvelles. Ces plafonds ont été mis en place
-            pour favoriser la diversification des pratiques culturelles.`
-          )}
-        </Description>
+        <Description>{description}</Description>
       </AccordionItem>
       <Spacer.Column numberOfSpaces={2} />
     </GreyContainer>
