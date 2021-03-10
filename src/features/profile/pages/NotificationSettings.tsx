@@ -123,7 +123,7 @@ export function NotificationSettings() {
           <Spacer.Column numberOfSpaces={4} />
           <SectionRow
             type="clickable"
-            title={_(t`Autoriser l’envoi d’e-mails`)}
+            title={_(t`Autoriser l’envoi d’e\u2011mails`)}
             cta={<FilterSwitch testID="email" active={allowEmails} toggle={toggleEmails} />}
           />
           <Spacer.Column numberOfSpaces={3} />
