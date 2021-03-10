@@ -9,7 +9,7 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 interface Props {
   selected: boolean
   onPress: () => void
-  testID: string
+  testID?: string
   children: Element
 }
 
