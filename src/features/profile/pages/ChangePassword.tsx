@@ -78,7 +78,6 @@ export function ChangePassword() {
 
   return (
     <React.Fragment>
-      <PageHeader title={_(t`Mot de passe`)} />
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={20} />
       <StyledScrollView
@@ -139,6 +138,8 @@ export function ChangePassword() {
         </ButtonContainer>
         <Spacer.Column numberOfSpaces={6} />
       </StyledScrollView>
+
+      <PageHeader title={_(t`Mot de passe`)} />
     </React.Fragment>
   )
 }

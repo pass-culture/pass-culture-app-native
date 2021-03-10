@@ -19,7 +19,6 @@ export function LegalNotices() {
   const { data: user } = useUserProfileInfo()
   return (
     <React.Fragment>
-      <PageHeader title={_(t`Mentions légales`)} />
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={14} />
       <Container>
@@ -54,6 +53,8 @@ export function LegalNotices() {
           </React.Fragment>
         )}
       </Container>
+
+      <PageHeader title={_(t`Mentions légales`)} />
     </React.Fragment>
   )
 }

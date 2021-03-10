@@ -56,7 +56,6 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
 
   return (
     <React.Fragment>
-      <PageHeader title={_(t`Paramètres de confidentialité`)} onGoBack={route.params?.onGoBack} />
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
@@ -93,6 +92,8 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         <ButtonPrimary title={_(t`Enregistrer`)} onPress={save} disabled={isSaveButtonDisabled} />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
+
+      <PageHeader title={_(t`Paramètres de confidentialité`)} onGoBack={route.params?.onGoBack} />
     </React.Fragment>
   )
 }

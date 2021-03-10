@@ -23,7 +23,7 @@ const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
   const { goBack } = useNavigation<UseNavigationType>()
   function onPress() {
     if (onGoBack) {
-      onGoBack()
+      return onGoBack()
     }
     goBack()
   }
