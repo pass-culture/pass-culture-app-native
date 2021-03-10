@@ -8,6 +8,13 @@ import { NoFavoritesResult } from '../NoFavoritesResult'
 
 const mockFavoritesState = initialFavoritesState
 const mockDispatch = jest.fn()
+const mockDispatchSearch = jest.fn()
+
+jest.mock('features/search/pages/SearchWrapper', () => ({
+  useSearch: () => ({
+    dispatch: mockDispatchSearch,
+  }),
+}))
 
 jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
   useFavoritesState: () => ({
@@ -27,8 +34,10 @@ describe('NoFavoritesResult component', () => {
   })
 
   it('should navigate to Search when pressing button', () => {
-    const button = render(<NoFavoritesResult />).getByText('Explorer les offres')
+    const renderAPI = render(<NoFavoritesResult />)
+    const button = renderAPI.getByText('Explorer les offres')
     fireEvent.press(button)
     expect(navigate).toBeCalledWith('Search')
+    expect(mockDispatchSearch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
   })
 })

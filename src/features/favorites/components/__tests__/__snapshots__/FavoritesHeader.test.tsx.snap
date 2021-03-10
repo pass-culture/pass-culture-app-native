@@ -3,11 +3,11 @@
 exports[`FavoritesHeader component should render favorites header 1`] = `
 Array [
   <View
-    height={96}
+    height={64}
     style={
       Array [
         Object {
-          "height": 96,
+          "height": 64,
           "left": 0,
           "overflow": "hidden",
           "position": "absolute",
@@ -39,10 +39,10 @@ Array [
       Array [
         Object {
           "alignSelf": "center",
-          "height": 48,
+          "height": 8,
           "justifyContent": "flex-end",
-          "marginBottom": 24,
-          "marginTop": 8,
+          "marginBottom": 8,
+          "marginTop": 32,
         },
       ]
     }
