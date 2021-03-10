@@ -186,9 +186,17 @@ msgstr "Catégories"
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
+#: src/features/profile/components/BeneficiaryCeilings.tsx:18
+msgid "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles."
+msgstr "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles."
+
 #: src/features/search/sections/OfferDate.tsx:38
 msgid "Ce week-end"
 msgstr "Ce week-end"
+
+#: src/features/profile/components/BeneficiaryCeilings.tsx:17
+msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles."
+msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles."
 
 #: src/features/bookOffer/components/CancellationDetails.tsx:22
 msgid "Cette réservation n’est pas annulable"
@@ -538,9 +546,9 @@ msgstr "L'application pass Culture utilise des traceurs susceptibles de réalise
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:32
-msgid "Le but du pass Culture est de renforcer vos pratiques culturelles, mais aussi d'en créer  de nouvelles. Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles."
-msgstr "Le but du pass Culture est de renforcer vos pratiques culturelles, mais aussi d'en créer  de nouvelles. Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles."
+#: src/features/profile/components/BeneficiaryCeilings.tsx:22
+msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\\u0020"
+msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\\u0020"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:50
@@ -949,8 +957,8 @@ msgid "Sortie"
 msgstr "Sortie"
 
 #: src/features/profile/pages/Profile.tsx:105
-msgid "Suivre Pass Culture"
-msgstr "Suivre Pass Culture"
+msgid "Suivre pass Culture"
+msgstr "Suivre pass Culture"
 
 #: src/features/profile/pages/LegalNotices.tsx:26
 msgid "Suppression du compte"
@@ -1055,7 +1063,7 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:21
+#: src/features/profile/components/BeneficiaryCeilings.tsx:26
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
