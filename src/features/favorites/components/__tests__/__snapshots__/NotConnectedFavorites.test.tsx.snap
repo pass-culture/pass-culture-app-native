@@ -61,16 +61,6 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     undefined-SVG-Mock
   </View>
   <View
-    numberOfSpaces={2}
-    style={
-      Array [
-        Object {
-          "height": 8,
-        },
-      ]
-    }
-  />
-  <View
     style={
       Array [
         Object {
@@ -280,6 +270,16 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       </View>
     </View>
   </View>
+  <View
+    numberOfSpaces={12}
+    style={
+      Array [
+        Object {
+          "height": 48,
+        },
+      ]
+    }
+  />
   <View
     style={
       Array [
