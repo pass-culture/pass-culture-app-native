@@ -4,7 +4,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { firebaseAnalytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
@@ -25,7 +24,6 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation()
   const [isTrackingSwitchActive, setIsTrackingSwitchActive] = useState(false)
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true)
-  const previousRoute = usePreviousRoute()
 
   useEffect(() => {
     storage.readObject('has_accepted_cookie').then((hasAcceptedCookie) => {
@@ -49,9 +47,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
       setIsSaveButtonDisabled((prevValue) => !prevValue)
       firebaseAnalytics.setAnalyticsCollectionEnabled(isTrackingSwitchActive)
     })
-    if (previousRoute?.name === 'FirstTutorial') {
-      goBack()
-    }
+    goBack()
   }
 
   return (
