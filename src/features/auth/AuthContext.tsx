@@ -83,6 +83,7 @@ export function useLogoutRoutine(): () => Promise<void> {
   const { clean: cleanProfile } = useCustomQueryClientHelpers('userProfile')
 
   return async () => {
+    BatchUser.editor().setIdentifier(null).save()
     await storage.clear('access_token')
     await clearRefreshToken()
     await cleanProfile()
