@@ -3,7 +3,6 @@ import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import React from 'react'
 
 import { goBack } from '__mocks__/@react-navigation/native'
-import { usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { firebaseAnalytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -14,8 +13,6 @@ import { ConsentSettings } from './ConsentSettings'
 jest.mock('features/navigation/helpers', () => ({
   usePreviousRoute: jest.fn(),
 }))
-
-const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
 describe('ConsentSettings', () => {
   afterEach(() => {
@@ -80,11 +77,7 @@ describe('ConsentSettings', () => {
     })
   })
 
-  it('should go back on press save if coming from FirstTutorial', async () => {
-    mockUsePreviousRoute.mockImplementation(() => ({
-      name: 'FirstTutorial',
-    }))
-
+  it('should go back on press save', async () => {
     const { getByTestId, getByText } = renderConsentSettings()
 
     const toggleButton = getByTestId('filterSwitch')
