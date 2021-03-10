@@ -19,7 +19,11 @@ export const BookHourChoice: React.FC = () => {
 
   const selectStock = (stockId: number) => {
     dispatch({ type: 'SELECT_STOCK', payload: stockId })
-    if (offer?.isDuo) dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+    if (offer?.isDuo) {
+      dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+    } else {
+      dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
+    }
   }
 
   const filteredStocks = stocks.filter(({ beginningDatetime }) =>
