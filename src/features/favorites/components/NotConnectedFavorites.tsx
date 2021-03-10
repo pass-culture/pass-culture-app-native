@@ -19,7 +19,6 @@ export const NotConnectedFavorites = () => {
       <Spacer.TopScreen />
       <Spacer.Flex />
       <CreateAccount color={ColorsEnum.WHITE} />
-      <Spacer.Column numberOfSpaces={2} />
 
       <CenteredContainer>
         <TypoTitle4 color={ColorsEnum.WHITE}>
@@ -57,6 +56,7 @@ export const NotConnectedFavorites = () => {
           />
         </ButtonContainer>
       </Row>
+      <Spacer.Column numberOfSpaces={12} />
       <Spacer.Flex />
       <Spacer.BottomScreen />
     </Container>
