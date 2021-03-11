@@ -1,6 +1,7 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
-import { ColorsEnum, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 import { ChoiceBloc } from './ChoiceBloc'
 
@@ -16,7 +17,7 @@ export const HourChoice: React.FC<Props> = ({ hour, price, selected, onPress, te
   const textColor = selected ? ColorsEnum.WHITE : ColorsEnum.BLACK
   return (
     <ChoiceBloc onPress={onPress} testID={testID} selected={selected}>
-      <React.Fragment>
+      <Container>
         <Typo.ButtonText testID={`${testID}-hour`} color={textColor}>
           {hour}
         </Typo.ButtonText>
@@ -24,7 +25,12 @@ export const HourChoice: React.FC<Props> = ({ hour, price, selected, onPress, te
         <Typo.Caption testID={`${testID}-price`} color={textColor}>
           {price}
         </Typo.Caption>
-      </React.Fragment>
+      </Container>
     </ChoiceBloc>
   )
 }
+
+const Container = styled.View({
+  paddingVertical: getSpacing(5),
+  alignItems: 'center',
+})

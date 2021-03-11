@@ -52,7 +52,6 @@ const ChoiceBorder = styled.View<{ selected: boolean }>(({ selected }) => ({
 const ChoiceContent = styled.View<{ selected: boolean }>(({ selected }) => ({
   backgroundColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.WHITE,
   paddingHorizontal: getSpacing(3.25),
-  paddingVertical: getSpacing(5),
   alignItems: 'center',
   justifyContent: 'center',
 }))
