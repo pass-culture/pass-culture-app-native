@@ -14,7 +14,7 @@ check_branch(){
 
 update_app_version(){
   yarn config set version-commit-hooks false
-  yarn version --minor
+  yarn version --minor --no-git-tag-version
 
   VERSION=`json -f package.json version`
   BUILD_NUMBER="${VERSION//./0}"
@@ -22,6 +22,7 @@ update_app_version(){
 
   git add package.json
   git commit -m "v${VERSION}"
+  git tag "v${VERSION}"
 }
 
 check_branch
