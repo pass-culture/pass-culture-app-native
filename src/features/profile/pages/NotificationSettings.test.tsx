@@ -115,7 +115,7 @@ describe('NotificationSettings', () => {
       })
       await waitForExpect(() => {
         const toggleSwitch = getByTestId('push-switch-background')
-        // expect activated
+        // expect not activated
         expect(toggleSwitch.props.active).toEqual(false)
         expect(toggleSwitch.props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
       })

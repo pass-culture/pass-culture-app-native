@@ -38,7 +38,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
 
       <InformationText>
         {_(
-          t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres  de ton appareil.`
+          t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil.`
         )}
       </InformationText>
       <Spacer.Column numberOfSpaces={6} />
