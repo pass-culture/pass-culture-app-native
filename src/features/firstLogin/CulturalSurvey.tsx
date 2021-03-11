@@ -6,16 +6,19 @@ import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
 import { api } from 'api/api'
+import { UserProfileResponse } from 'api/gen'
+import { useUserProfileInfo } from 'features/home/api'
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/errorMonitoring'
+import { LoadingPage } from 'ui/components/LoadingPage'
 import { Background } from 'ui/svg/Background'
 import { Spacer } from 'ui/theme'
 
 type WebViewMessagePayload =
-  | { message: 'onClose'; userId: string }
-  | { message: 'onSubmit'; userId: string }
+  | { message: 'onClose'; culturalSurveyId: string }
+  | { message: 'onSubmit'; culturalSurveyId: string }
 
 const WEBVIEW_HTML = `<html>
                         <head>
@@ -32,11 +35,12 @@ export const CulturalSurvey: React.FC = function () {
   const currentRoute = useCurrentRoute()
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
+  const { data: user } = useUserProfileInfo()
 
-  function onLoad() {
+  function onWebviewLoadEnd(userPk: UserProfileResponse['id']) {
     if (webviewRef.current) {
-      const userId = encodeURIComponent(uuidv1())
-      const url = `${env.CULTURAL_SURVEY_TYPEFORM_URL}?userId=${userId}`
+      const culturalSurveyId = encodeURIComponent(uuidv1()) // legacy issue : the query param userId is not the actual `user.id`
+      const url = `${env.CULTURAL_SURVEY_TYPEFORM_URL}?userId=${culturalSurveyId}&userPk=${userPk}`
       const embedCode = `{
           function sendMessagePayload(payload) {
             window.ReactNativeWebView.postMessage(JSON.stringify(payload));
@@ -47,10 +51,10 @@ export const CulturalSurvey: React.FC = function () {
             hideFooter: false,
             opacity: 100,
             onSubmit() { 
-              sendMessagePayload({ message: "onSubmit", userId: "${userId}" });
+              sendMessagePayload({ message: "onSubmit", culturalSurveyId: "${culturalSurveyId}" });
             },
             onClose() { 
-              sendMessagePayload({ message: "onClose", userId: "${userId}" });
+              sendMessagePayload({ message: "onClose", culturalSurveyId: "${culturalSurveyId}" });
             },
           };
           const ref = typeformEmbed.makePopup("${url}", options);
@@ -78,14 +82,14 @@ export const CulturalSurvey: React.FC = function () {
           }
           if (onSubmit) {
             await api.postnativev1meculturalSurvey({
-              culturalSurveyId: payload.userId,
+              culturalSurveyId: payload.culturalSurveyId,
               needsToFillCulturalSurvey: false,
             })
             setHasSubmitted(true)
           }
         } catch (error) {
           throw new MonitoringError(
-            `The user profile could not be updated : typeform with userId ${payload.userId} 
+            `The user profile could not be updated : typeform with culturalSurveyId ${payload.culturalSurveyId} 
             following '${payload.message}' action. Cause : ` + error,
             'UserProfileUpdateDuringCulturalSurvey'
           )
@@ -103,13 +107,18 @@ export const CulturalSurvey: React.FC = function () {
     }
   }
 
-  if (currentRoute?.name !== 'CulturalSurvey') return null
+  if (currentRoute?.name !== 'CulturalSurvey') {
+    return null
+  }
+  if (!user) {
+    return <LoadingPage />
+  }
   return (
     <React.Fragment>
       <Background />
       <Spacer.TopScreen />
       <StyledWebview
-        onLoadEnd={onLoad}
+        onLoadEnd={() => onWebviewLoadEnd(user.id)}
         onMessage={onMessage}
         onNavigationStateChange={onNavigationStateChange}
         ref={webviewRef}
