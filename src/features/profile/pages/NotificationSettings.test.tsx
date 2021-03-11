@@ -50,7 +50,7 @@ describe('NotificationSettings', () => {
       queryByText('Autoriser l’envoi d’e\u2011mails')
     })
   })
-  describe('Push switch (only iOS)', () => {
+  describe('Display the push switch properly (only iOS)', () => {
     it('should display an enabled switch', async () => {
       Platform.OS = 'ios'
       const { getByTestId } = await renderNotificationSettings('granted', {
@@ -83,7 +83,48 @@ describe('NotificationSettings', () => {
       }
     )
   })
-  describe('Save button behavior', () => {
+  describe('The transitions of the push switch', () => {
+    it('should enable the switch when permission=="granted" and push previously not allowed', async () => {
+      const { getByTestId } = await renderNotificationSettings('granted', {
+        subscriptions: {
+          marketingEmail: true,
+          marketingPush: false,
+        },
+      } as UserProfileResponse)
+      await waitFor(() => {
+        const toggleSwitch = getByTestId('push')
+        fireEvent.press(toggleSwitch)
+      })
+      await waitForExpect(() => {
+        const toggleSwitch = getByTestId('push-switch-background')
+        // expect activated
+        expect(toggleSwitch.props.active).toEqual(true)
+        expect(toggleSwitch.props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
+      })
+    })
+    it('should disable the switch when permission=="granted" and push previously allowed', async () => {
+      const { getByTestId } = await renderNotificationSettings('granted', {
+        subscriptions: {
+          marketingEmail: true,
+          marketingPush: true,
+        },
+      } as UserProfileResponse)
+      await waitFor(() => {
+        const toggleSwitch = getByTestId('push')
+        fireEvent.press(toggleSwitch)
+      })
+      await waitForExpect(() => {
+        const toggleSwitch = getByTestId('push-switch-background')
+        // expect activated
+        expect(toggleSwitch.props.active).toEqual(false)
+        expect(toggleSwitch.props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+      })
+    })
+    it('should open the modal when permission!="granted" and trying to allow', () => {
+      // NOT implemented yet: next commit
+    })
+  })
+  describe('The behavior of the save button', () => {
     it('should enable the save button when the email switch changed', async () => {
       mockApiUpdateProfile({
         subscriptions: {
@@ -99,8 +140,8 @@ describe('NotificationSettings', () => {
       } as UserProfileResponse)
 
       await waitFor(() => {
-        const toggleButton = getByTestId('email')
-        fireEvent.press(toggleButton)
+        const toggleSwitch = getByTestId('email')
+        fireEvent.press(toggleSwitch)
       })
 
       let saveButton: ReactTestInstance | null = null
@@ -132,8 +173,8 @@ describe('NotificationSettings', () => {
       } as UserProfileResponse)
 
       await waitFor(() => {
-        const toggleButton = getByTestId('push')
-        fireEvent.press(toggleButton)
+        const toggleSwitch = getByTestId('push')
+        fireEvent.press(toggleSwitch)
       })
 
       let saveButton: ReactTestInstance | null = null
