@@ -84,7 +84,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         ]
       }
     >
-
+      
     </Text>
   </View>
   <View
@@ -232,8 +232,10 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       style={
         Object {
           "opacity": 1,
-          "paddingHorizontal": 8,
-          "paddingVertical": 8,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
           "width": "33%",
         }
       }
@@ -243,95 +245,85 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         style={
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#eb0055",
               "borderColor": "#eb0055",
               "borderRadius": 4,
               "borderStyle": "solid",
               "borderWidth": 1,
+              "justifyContent": "center",
               "overflow": "hidden",
+              "paddingHorizontal": 13,
             },
           ]
         }
       >
         <View
-          selected={true}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "justifyContent": "center",
-                "paddingHorizontal": 13,
+                "position": "absolute",
+                "right": 2,
+                "top": 2,
               },
             ]
           }
         >
           <View
-            style={
-              Array [
-                Object {
-                  "position": "absolute",
-                  "right": 2,
-                  "top": 2,
-                },
-              ]
-            }
+            height={24}
+            width={24}
           >
-            <View
-              height={24}
-              width={24}
-            >
-              undefined-SVG-Mock
-            </View>
+            undefined-SVG-Mock
           </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "paddingVertical": 8,
+              },
+            ]
+          }
+        >
           <View
+            fill="#ffffff"
+            height={28}
+            width={28}
+          >
+            undefined-SVG-Mock
+          </View>
+          <Text
+            color="#ffffff"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "paddingVertical": 8,
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                 },
               ]
             }
           >
-            <View
-              fill="#ffffff"
-              height={28}
-              width={28}
-            >
-              undefined-SVG-Mock
-            </View>
-            <Text
-              color="#ffffff"
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Solo
-            </Text>
-            <Text
-              color="#ffffff"
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-              testID="price"
-            >
-              NaN€
-            </Text>
-          </View>
+            Solo
+          </Text>
+          <Text
+            color="#ffffff"
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+            testID="price"
+          >
+            NaN€
+          </Text>
         </View>
       </View>
     </View>
@@ -348,8 +340,10 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       style={
         Object {
           "opacity": 1,
-          "paddingHorizontal": 8,
-          "paddingVertical": 8,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
           "width": "33%",
         }
       }
@@ -359,86 +353,76 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         style={
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
               "borderColor": "#626262",
               "borderRadius": 4,
               "borderStyle": "solid",
               "borderWidth": 1,
+              "justifyContent": "center",
               "overflow": "hidden",
+              "paddingHorizontal": 13,
             },
           ]
         }
       >
         <View
-          selected={false}
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <View
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "justifyContent": "center",
-                "paddingHorizontal": 13,
+                "paddingVertical": 8,
               },
             ]
           }
         >
           <View
-            numberOfSpaces={5}
+            height={28}
+            width={28}
+          >
+            undefined-SVG-Mock
+          </View>
+          <Text
+            color="#151515"
             style={
               Array [
                 Object {
-                  "width": 20,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "paddingVertical": 8,
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                 },
               ]
             }
           >
-            <View
-              height={28}
-              width={43}
-            >
-              undefined-SVG-Mock
-            </View>
-            <Text
-              color="#151515"
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Duo
-            </Text>
-            <Text
-              color="#151515"
-              style={
-                Array [
-                  Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-              testID="price"
-            >
-              NaN€
-            </Text>
-          </View>
+            Duo
+          </Text>
+          <Text
+            color="#151515"
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+            testID="price"
+          >
+            NaN€
+          </Text>
         </View>
       </View>
     </View>

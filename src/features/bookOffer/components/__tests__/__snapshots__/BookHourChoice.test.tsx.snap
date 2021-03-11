@@ -51,8 +51,10 @@ Array [
       style={
         Object {
           "opacity": 1,
-          "paddingHorizontal": 8,
-          "paddingVertical": 8,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
           "width": "33%",
         }
       }
@@ -63,39 +65,39 @@ Array [
         style={
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
               "borderColor": "#626262",
               "borderRadius": 4,
               "borderStyle": "solid",
               "borderWidth": 1,
+              "justifyContent": "center",
               "overflow": "hidden",
+              "paddingHorizontal": 13,
             },
           ]
         }
       >
         <View
-          selected={false}
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <View
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "justifyContent": "center",
-                "paddingHorizontal": 13,
                 "paddingVertical": 20,
               },
             ]
           }
         >
-          <View
-            numberOfSpaces={5}
-            style={
-              Array [
-                Object {
-                  "width": 20,
-                },
-              ]
-            }
-          />
           <Text
             color="#151515"
             style={
@@ -144,8 +146,10 @@ Array [
       style={
         Object {
           "opacity": 1,
-          "paddingHorizontal": 8,
-          "paddingVertical": 8,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
           "width": "33%",
         }
       }
@@ -156,39 +160,39 @@ Array [
         style={
           Array [
             Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
               "borderColor": "#626262",
               "borderRadius": 4,
               "borderStyle": "solid",
               "borderWidth": 1,
+              "justifyContent": "center",
               "overflow": "hidden",
+              "paddingHorizontal": 13,
             },
           ]
         }
       >
         <View
-          selected={false}
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <View
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "justifyContent": "center",
-                "paddingHorizontal": 13,
                 "paddingVertical": 20,
               },
             ]
           }
         >
-          <View
-            numberOfSpaces={5}
-            style={
-              Array [
-                Object {
-                  "width": 20,
-                },
-              ]
-            }
-          />
           <Text
             color="#151515"
             style={
