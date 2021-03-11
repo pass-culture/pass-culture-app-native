@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
-import { Alert, Platform } from 'react-native'
+import { Linking, Platform } from 'react-native'
 import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
@@ -9,9 +9,11 @@ import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
 import { useAppStateChange } from 'features/core/appState'
 import { useUserProfileInfo } from 'features/home/api'
 import { _ } from 'libs/i18n'
+import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { useModal } from 'ui/components/modals/useModal'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -38,6 +40,12 @@ export function NotificationSettings() {
     emailTouched: false,
     pushTouched: false,
   })
+
+  const {
+    visible: isNotificationsModalVisible,
+    showModal: showNotificationsModal,
+    hideModal: hideNotificationsModal,
+  } = useModal(false)
 
   const { data: user } = useUserProfileInfo()
 
@@ -74,9 +82,7 @@ export function NotificationSettings() {
   const togglePush = useCallback(() => {
     setState((prevState) => {
       if (prevState.pushPermission !== 'granted') {
-        // next commit replace with modal
-        Alert.alert('you need to grant this app')
-        // open modal
+        showNotificationsModal()
         return prevState
       }
       return {
@@ -86,6 +92,11 @@ export function NotificationSettings() {
       }
     })
   }, [user])
+
+  const onRequestNotificationPermissionFromModal = () => {
+    hideNotificationsModal()
+    Linking.openSettings()
+  }
 
   const { mutate: updateProfile, isLoading: isUpdating } = useUpdateProfileMutation(
     () => {
@@ -126,6 +137,7 @@ export function NotificationSettings() {
 
   return (
     <React.Fragment>
+      <PageHeader title={_(t`Notifications`)} />
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
@@ -176,8 +188,11 @@ export function NotificationSettings() {
         />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
-
-      <PageHeader title={_(t`Notifications`)} />
+      <PushNotificationsModal
+        visible={isNotificationsModalVisible}
+        onRequestPermission={onRequestNotificationPermissionFromModal}
+        onDismiss={hideNotificationsModal}
+      />
     </React.Fragment>
   )
 }
