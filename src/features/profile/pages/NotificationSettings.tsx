@@ -1,11 +1,12 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
-import { Platform } from 'react-native'
+import { Alert, Platform } from 'react-native'
 import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
-import { NotificationSubscriptions } from 'api/gen'
+import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
+import { useAppStateChange } from 'features/core/appState'
 import { useUserProfileInfo } from 'features/home/api'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -20,8 +21,8 @@ import { SectionRow } from '../components/SectionRow'
 
 type State = {
   allowEmails: boolean | undefined
-  pushPermission: PermissionStatus
-  pushSwitchEnabled: boolean
+  allowPush: boolean | undefined
+  pushPermission: PermissionStatus | undefined
   emailTouched: boolean
   pushTouched: boolean
 }
@@ -32,8 +33,8 @@ export function NotificationSettings() {
   const route = useRoute()
   const [state, setState] = useState<State>({
     allowEmails: undefined,
-    pushPermission: 'unavailable',
-    pushSwitchEnabled: false,
+    allowPush: undefined,
+    pushPermission: undefined,
     emailTouched: false,
     pushTouched: false,
   })
@@ -42,13 +43,24 @@ export function NotificationSettings() {
 
   // refresh state on page focus
   useEffect(() => {
+    refreshPermissionAndStates(user)
+  }, [route.key, user])
+
+  // refresh state when app become active
+  useAppStateChange(
+    () => void refreshPermissionAndStates(user),
+    () => void 0,
+    [user] // refresh app state listener when the user is changed
+  )
+
+  const refreshPermissionAndStates = (newUser: UserProfileResponse | undefined) => {
     checkNotifications().then((permission) => {
       setState({
         pushPermission: permission.status,
-        ...getInitialSwitchesState(permission.status, user?.subscriptions),
+        ...getInitialSwitchesState(newUser?.subscriptions),
       })
     })
-  }, [route.key, user])
+  }
 
   const toggleEmails = useCallback(
     () =>
@@ -60,14 +72,20 @@ export function NotificationSettings() {
     [user]
   )
   const togglePush = useCallback(() => {
-    setState((prevState) => ({
-      ...prevState,
-      pushTouched: prevState.pushSwitchEnabled === user?.subscriptions?.marketingPush,
-      pushSwitchEnabled: !prevState.pushSwitchEnabled,
-    }))
+    setState((prevState) => {
+      if (prevState.pushPermission !== 'granted') {
+        // next commit replace with modal
+        Alert.alert('you need to grant this app')
+        // open modal
+        return prevState
+      }
+      return {
+        ...prevState,
+        pushTouched: prevState.allowPush === user?.subscriptions?.marketingPush,
+        allowPush: !prevState.allowPush,
+      }
+    })
   }, [user])
-
-  const allowEmails = state.allowEmails ?? user?.subscriptions?.marketingEmail ?? true
 
   const { mutate: updateProfile, isLoading: isUpdating } = useUpdateProfileMutation(
     () => {
@@ -87,21 +105,24 @@ export function NotificationSettings() {
       // on error rollback to the last loaded result
       setState((prevState) => ({
         ...prevState, // keep permission state
-        ...getInitialSwitchesState(prevState.pushPermission, user?.subscriptions),
+        ...getInitialSwitchesState(user?.subscriptions),
       }))
     }
   )
 
   const submitProfile = () => {
-    if (state.allowEmails !== undefined && state.pushSwitchEnabled !== undefined) {
+    if (state.allowEmails !== undefined && state.allowPush !== undefined) {
       updateProfile({
         subscriptions: {
-          marketingEmail: state.allowEmails ?? false,
-          marketingPush: state.pushSwitchEnabled,
+          marketingEmail: state.allowEmails,
+          marketingPush: state.allowPush,
         },
       })
     }
   }
+
+  const allowEmails = state.allowEmails ?? user?.subscriptions?.marketingEmail ?? true
+  const pushSwitchEnabled = Boolean(state.pushPermission === 'granted' && state.allowPush)
 
   return (
     <React.Fragment>
@@ -140,13 +161,7 @@ export function NotificationSettings() {
               <SectionRow
                 type="clickable"
                 title={_(t`Autoriser les notifications marketing`)}
-                cta={
-                  <FilterSwitch
-                    testID="push"
-                    active={state.pushSwitchEnabled}
-                    toggle={togglePush}
-                  />
-                }
+                cta={<FilterSwitch testID="push" active={pushSwitchEnabled} toggle={togglePush} />}
               />
               <Spacer.Column numberOfSpaces={3} />
             </Line>
@@ -179,14 +194,13 @@ const SettingExplanation = styled.Text({
 })
 
 const getInitialSwitchesState = (
-  permission: PermissionStatus,
   subscriptions?: NotificationSubscriptions
 ): Omit<State, 'pushPermission'> => {
   const { marketingEmail, marketingPush } = subscriptions || {}
 
   return {
     allowEmails: Boolean(marketingEmail),
-    pushSwitchEnabled: permission === 'granted' && Boolean(marketingPush),
+    allowPush: Boolean(marketingPush),
     emailTouched: false,
     pushTouched: false,
   }

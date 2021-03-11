@@ -1,9 +1,10 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, DependencyList } from 'react'
 import { AppState, AppStateStatus } from 'react-native'
 
 export const useAppStateChange = (
   onAppBecomeActive: () => void,
-  onAppBecomeInactive: () => void
+  onAppBecomeInactive: () => void,
+  deps: DependencyList | undefined = []
 ) => {
   const appState = useRef(AppState.currentState)
   const handleAppStateChange = (nextAppState: AppStateStatus) => {
@@ -21,6 +22,6 @@ export const useAppStateChange = (
     return () => {
       AppState.removeEventListener('change', handleAppStateChange)
     }
-  }, [])
+  }, deps)
   return appState
 }

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { useAppStateChange } from 'features/offer/pages/useAppStateChange'
+import { useAppStateChange } from 'features/core/appState'
 import { storage } from 'libs/storage'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
