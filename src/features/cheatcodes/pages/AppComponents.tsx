@@ -57,6 +57,7 @@ import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Digital } from 'ui/svg/icons/Digital'
+import { DuoPerson } from 'ui/svg/icons/DuoPerson'
 import { Email } from 'ui/svg/icons/Email'
 import { Everywhere } from 'ui/svg/icons/Everywhere'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -437,6 +438,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Profile size={ICON_SIZE} />
           <Text> - Profile </Text>
+        </AlignedText>
+        <AlignedText>
+          <DuoPerson size={ICON_SIZE} />
+          <Text> - DuoPerson </Text>
         </AlignedText>
         <AlignedText>
           <LifeBuoy size={ICON_SIZE} />
