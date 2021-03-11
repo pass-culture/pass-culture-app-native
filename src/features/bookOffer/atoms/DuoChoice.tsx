@@ -1,8 +1,11 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { DuoPerson } from 'ui/svg/icons/DuoPerson'
+import { Profile } from 'ui/svg/icons/Profile'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 import { ChoiceBloc } from './ChoiceBloc'
 
@@ -11,22 +14,30 @@ interface Props {
   price: string
   selected: boolean
   onPress: () => void
-  testID?: string
 }
 
-export const DuoChoice: React.FC<Props> = ({ quantity, price, selected, onPress, testID }) => {
+export const DuoChoice: React.FC<Props> = ({ quantity, price, selected, onPress }) => {
   const textColor = selected ? ColorsEnum.WHITE : ColorsEnum.BLACK
   const title = quantity === 1 ? _(t`Solo`) : _(t`Duo`)
   return (
     <ChoiceBloc onPress={onPress} selected={selected}>
-      <React.Fragment>
-        {/* add icon in next commit */}
+      <Container>
+        {quantity === 1 ? (
+          <Profile color={textColor} size={28} />
+        ) : (
+          <DuoPerson color={textColor} size={28} />
+        )}
         <Typo.ButtonText color={textColor}>{title}</Typo.ButtonText>
 
         <Typo.Caption testID="price" color={textColor}>
           {price}
         </Typo.Caption>
-      </React.Fragment>
+      </Container>
     </ChoiceBloc>
   )
 }
+
+const Container = styled.View({
+  paddingVertical: getSpacing(2),
+  alignItems: 'center',
+})
