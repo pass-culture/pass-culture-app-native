@@ -3,7 +3,6 @@ import { waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -15,8 +14,7 @@ jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { id: mockUserId } })),
 }))
 
-const humanizedIds = mockedAlgoliaResponse.hits.map(({ objectID }) => objectID)
-const ids = humanizedIds.map((id) => dehumanizeId(id)?.toString()) as string[]
+const objectIds = mockedAlgoliaResponse.hits.map(({ objectID }) => objectID)
 
 const mockFetchAlgoliaHits = jest.fn().mockResolvedValue({
   results: mockedAlgoliaResponse.hits,
@@ -31,7 +29,7 @@ describe('useHomeRecommendedHits', () => {
   beforeEach(() => {
     server.use(
       rest.get(endpoint, (_req, res, ctx) =>
-        res(ctx.status(200), ctx.json({ recommended_offers: ids }))
+        res(ctx.status(200), ctx.json({ recommended_offers: objectIds }))
       )
     )
   })
@@ -64,7 +62,7 @@ describe('useHomeRecommendedHits', () => {
     await waitFor(() => {
       expect(result.current).toHaveLength(4)
       expect(mockFetchAlgoliaHits).toHaveBeenCalledTimes(1)
-      expect(mockFetchAlgoliaHits).toHaveBeenCalledWith(humanizedIds)
+      expect(mockFetchAlgoliaHits).toHaveBeenCalledWith(objectIds)
     })
   })
 })

@@ -1,7 +1,6 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 import { useQuery } from 'react-query'
 
-import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { AlgoliaHit } from 'libs/algolia'
 import { fetchAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { env } from 'libs/environment'
@@ -29,9 +28,7 @@ export const useHomeRecommendedHits = (
     { enabled: !!recommendationModule && typeof userId === 'number' && !!recommendationEndpoint }
   )
 
-  const ids = (recommendedIds?.recommended_offers || [])
-    .map((id: string) => humanizeId(+id))
-    .filter((id) => typeof id === 'string') as string[]
+  const ids = recommendedIds?.recommended_offers || []
 
   const { data } = useQuery(
     'recommendationHits',

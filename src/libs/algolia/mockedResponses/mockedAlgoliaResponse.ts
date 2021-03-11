@@ -48,7 +48,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
         publicName: null,
       },
       _geoloc: { lat: 48.94374, lng: 2.48171 },
-      objectID: 'AGHYQ',
+      objectID: '102280',
     },
     {
       offer: {
@@ -93,7 +93,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
         publicName: null,
       },
       _geoloc: { lat: 48.91265, lng: 2.4513 },
-      objectID: 'AGHYA',
+      objectID: '102272',
     },
     {
       offer: {
@@ -137,7 +137,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
         publicName: null,
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
-      objectID: 'AGHWS',
+      objectID: '102249',
     },
     {
       offer: {
@@ -182,7 +182,7 @@ export const mockedAlgoliaResponse: SearchResponse<AlgoliaHit> = {
         publicName: null,
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
-      objectID: 'AGH2M',
+      objectID: '102310',
     },
   ],
   nbHits: 4,
@@ -239,7 +239,7 @@ export const physicalAlgoliaOffer = {
     publicName: 'La Passerelle scène nationale de Saint-Brieuc',
   },
   _geoloc: { lat: 48.51381, lng: -2.76138 },
-  objectID: 'GVZ64',
+  objectID: '3503086',
   _highlightResult: {
     offer: {
       author: { value: 'Collectif MAD & Galapiat Cirque', matchLevel: 'none', matchedWords: [] },
@@ -307,7 +307,7 @@ export const digitalAlgoliaOffer = {
   offerer: { name: 'FRANCE TELEVISIONS' },
   venue: { city: null, departementCode: null, name: 'Offre numérique', publicName: null },
   _geoloc: { lat: 47.158459, lng: 2.409289 },
-  objectID: 'L972Q',
+  objectID: '5914536',
   _highlightResult: {
     offer: {
       description: {
