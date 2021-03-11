@@ -13,6 +13,7 @@ check_branch(){
 }
 
 update_app_version(){
+  yarn config set version-commit-hooks false
   yarn config set version-tag-prefix "testing_v"
   yarn version --patch
   yarn config set version-tag-prefix "v"
@@ -20,6 +21,9 @@ update_app_version(){
   VERSION=`json -f package.json version`
   BUILD_NUMBER="${VERSION//./0}"
   json -I -f package.json -e "this.build=$BUILD_NUMBER"
+
+  git add package.json
+  git commit -m "v${VERSION}"
 }
 
 
