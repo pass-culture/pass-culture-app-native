@@ -24,13 +24,18 @@ describe('BookHourChoice', () => {
   it('should display filtered stocks for selected Date', () => {
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
-    // firstStock correspond to 2021-03-02 stock
+    // firstStock corresponds to 2021-03-02 stock 20h
     const firstStock = page.queryAllByTestId('HourChoice148409')
-    // secondStock correspond to 2021-03-17 stock
+    // secondStock corresponds to 2021-03-17 stock
     const secondStock = page.queryAllByTestId('HourChoice148410')
+    // thirdStock corresponds to 2021-03-02 stock 10h
+    const thirdStock = page.queryAllByTestId('HourChoice148411')
 
     expect(firstStock.length).toBe(1)
     expect(secondStock.length).toBe(0)
+    expect(thirdStock.length).toBe(1)
+
+    expect(page).toMatchSnapshot()
   })
 
   it('should select an item when pressed', async () => {
@@ -51,10 +56,16 @@ describe('BookHourChoice', () => {
   it('should pass formatted hour and price props', () => {
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
-    const hour = page.getByTestId('hour')
-    const price = page.getByTestId('price')
+    const firstHour = page.getByTestId('HourChoice148409-hour')
+    const firstPrice = page.getByTestId('HourChoice148409-price')
 
-    expect(hour.props.children).toBe('20h00')
-    expect(price.props.children).toBe('24€')
+    expect(firstHour.props.children).toBe('20h00')
+    expect(firstPrice.props.children).toBe('24€')
+
+    const secondHour = page.getByTestId('HourChoice148411-hour')
+    const secondPrice = page.getByTestId('HourChoice148411-price')
+
+    expect(secondHour.props.children).toBe('10h00')
+    expect(secondPrice.props.children).toBe('24€')
   })
 })
