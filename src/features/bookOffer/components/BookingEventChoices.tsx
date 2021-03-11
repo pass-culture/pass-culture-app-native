@@ -66,7 +66,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
         </React.Fragment>
       )}
       <ButtonPrimary
-        title={enabled ? _(t`Valider ces options`) : _(t`Continuer`)}
+        title={enabled ? _(t`Valider ces options`) : _(t`Choisir les options`)}
         onPress={validateOptions}
         disabled={!enabled}
       />
