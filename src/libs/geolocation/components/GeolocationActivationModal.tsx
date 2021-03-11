@@ -34,7 +34,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       <Spacer.Column numberOfSpaces={2} />
       <InformationText>
         {_(
-          t`Retrouve toutes les offres autour de chez toi en activant les données de localisation`
+          t`Retrouve toutes les offres autour de chez toi en activant les données de localisation.`
         )}
       </InformationText>
       <Spacer.Column numberOfSpaces={4} />
@@ -42,10 +42,10 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       <InformationText>
         {Platform.OS === 'android'
           ? _(
-              t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation`
+              t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation.`
             )
           : _(
-              t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone`
+              t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone.`
             )}
       </InformationText>
       <Spacer.Column numberOfSpaces={6} />
