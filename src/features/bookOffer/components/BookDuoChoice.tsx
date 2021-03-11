@@ -16,21 +16,23 @@ export const BookDuoChoice: React.FC = () => {
   const selectSolo = () => dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
   const selectDuo = () => dispatch({ type: 'SELECT_QUANTITY', payload: 2 })
 
+  const SINGLE_QUANTITY = 1
+  const DUO_QUANTITY = 2
   return (
     <React.Fragment>
       <Typo.Title4 testID="DuoStep">{_(t`Nombre de place`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       <DuoChoiceContainer>
         <DuoChoice
-          price={stock ? formatToFrenchDecimal(stock.price).replace(' ', '') : ''}
-          quantity={1}
-          selected={bookingState.quantity === 1}
+          price={stock ? formatToFrenchDecimal(SINGLE_QUANTITY * stock.price).replace(' ', '') : ''}
+          quantity={SINGLE_QUANTITY}
+          selected={bookingState.quantity === SINGLE_QUANTITY}
           onPress={selectSolo}
         />
         <DuoChoice
-          price={stock ? formatToFrenchDecimal(2 * stock.price).replace(' ', '') : ''}
-          quantity={2}
-          selected={bookingState.quantity === 2}
+          price={stock ? formatToFrenchDecimal(DUO_QUANTITY * stock.price).replace(' ', '') : ''}
+          quantity={DUO_QUANTITY}
+          selected={bookingState.quantity === DUO_QUANTITY}
           onPress={selectDuo}
         />
       </DuoChoiceContainer>
