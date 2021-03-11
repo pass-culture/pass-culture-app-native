@@ -4,16 +4,22 @@ import {
   InfiniteData,
   InfiniteQueryObserverSuccessResult,
   QueryObserverSuccessResult,
+  UseMutationResult,
 } from 'react-query'
 
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/api/snaps/favorisResponseSnap'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
-import { useFavorites } from 'features/favorites/pages/useFavorites'
+import {
+  FavoriteMutationContext,
+  useFavorites,
+  useRemoveFavorite,
+} from 'features/favorites/pages/useFavorites'
 import {
   FakePaginatedFavoritesResponse,
   useFavoritesResults,
 } from 'features/favorites/pages/useFavoritesResults'
+import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { FavoritesResults } from '../FavoritesResults'
@@ -28,6 +34,7 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
 
 jest.mock('features/favorites/pages/useFavorites')
 const mockUseFavorites = useFavorites as jest.MockedFunction<typeof useFavorites>
+const mockUseRemoveFavorites = useRemoveFavorite as jest.MockedFunction<typeof useRemoveFavorite>
 
 const mockData = {
   nbFavorites: 0,
@@ -138,6 +145,7 @@ describe('FavoritesResults component', () => {
   })
 
   it('should show number of result and filter button', () => {
+    const mutate = jest.fn()
     mockUseFavorites.mockReturnValue({
       data: paginatedFavoritesResponseSnap,
       isFetching: false,
@@ -148,6 +156,9 @@ describe('FavoritesResults component', () => {
       hasNextPage: mockHasNextPage,
       fetchNextPage: mockFetchNextPage,
     } as unknown) as InfiniteQueryObserverSuccessResult<FakePaginatedFavoritesResponse>)
+    mockUseRemoveFavorites.mockReturnValue(({
+      mutate,
+    } as unknown) as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
     const { getByText } = render(reactQueryProviderHOC(<FavoritesResults />))
     const container = getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
     expect(container).toBeTruthy()

@@ -7,7 +7,7 @@ import { EmptyResponse } from 'libs/fetch'
 
 const QUERY_KEY = 'favorites'
 
-interface FavoriteMutationContext {
+export interface FavoriteMutationContext {
   previousFavorites: Array<FavoriteResponse>
 }
 
@@ -62,7 +62,12 @@ export function useRemoveFavorite({ onSuccess, onError, onMutate, onSettled }: R
           onError(error, favoriteId, context)
         }
       },
-      onSettled,
+      onSettled: (data) => {
+        queryClient.invalidateQueries(QUERY_KEY)
+        if (onSettled) {
+          onSettled(data)
+        }
+      },
     }
   )
 }
@@ -72,6 +77,7 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
   return useMutation((body: FavoriteRequest) => api.postnativev1mefavorites(body), {
     onSuccess: (data: FavoriteResponse) => {
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(QUERY_KEY)
+
       if (previousFavorites) {
         queryClient.setQueryData(QUERY_KEY, {
           ...previousFavorites,
@@ -112,7 +118,12 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
         onError(error, { offerId }, context)
       }
     },
-    onSettled,
+    onSettled: (data) => {
+      queryClient.invalidateQueries(QUERY_KEY)
+      if (onSettled) {
+        onSettled(data)
+      }
+    },
   })
 }
 
