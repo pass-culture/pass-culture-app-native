@@ -7,8 +7,8 @@ import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-const inputHeight = getSpacing(2)
-const marginTop = getSpacing(8)
+const inputHeight = getSpacing(8)
+const marginTop = getSpacing(2)
 const marginBottom = getSpacing(2)
 
 export const FavoritesHeader: React.FC = () => {
