@@ -1,7 +1,7 @@
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
-import { api } from 'api/api'
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { useFavorites } from 'features/favorites/pages/useFavorites'
 
 import { useFavoritesState } from './FavoritesWrapper'
 import { FavoritesParameters } from './reducer'
@@ -20,8 +20,11 @@ export interface FakePaginatedFavoritesResponse {
 }
 
 /** Fetch the user's full list of favorites and paginate it for UI concerns */
-export const getPaginatedFavorites = async (options: FakePaginatedFavoritesOptions) => {
-  const { nbFavorites, favorites } = await api.getnativev1mefavorites(options)
+export const getPaginatedFavorites = async (
+  data: PaginatedFavoritesResponse | undefined,
+  options: FakePaginatedFavoritesOptions
+) => {
+  const { nbFavorites, favorites } = data || { nbFavorites: 0, favorites: [] }
   return {
     favorites: favorites.slice(
       options.page * options.favoritesPerPage,
@@ -34,11 +37,14 @@ export const getPaginatedFavorites = async (options: FakePaginatedFavoritesOptio
   }
 }
 
-const useFavoritesInfiniteQuery = (favoritesParameters: FavoritesParameters) =>
+const useFavoritesInfiniteQuery = (
+  data: PaginatedFavoritesResponse | undefined,
+  favoritesParameters: FavoritesParameters
+) =>
   useInfiniteQuery<FakePaginatedFavoritesResponse>(
     ['favoritesResults', favoritesParameters],
     async (context: QueryFunctionContext<[string, FavoritesParameters], number>) =>
-      await getPaginatedFavorites({
+      await getPaginatedFavorites(data, {
         page: context.pageParam || 0,
         favoritesPerPage: 20,
         ...context.queryKey[1],
@@ -49,6 +55,7 @@ const useFavoritesInfiniteQuery = (favoritesParameters: FavoritesParameters) =>
   )
 
 export const useFavoritesResults = () => {
+  const { data } = useFavorites()
   const { showResults: _showResults, ...favoritesParameters } = useFavoritesState()
-  return useFavoritesInfiniteQuery(favoritesParameters)
+  return useFavoritesInfiniteQuery(data, favoritesParameters)
 }

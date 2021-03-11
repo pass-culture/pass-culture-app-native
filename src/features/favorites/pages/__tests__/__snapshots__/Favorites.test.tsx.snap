@@ -49,10 +49,10 @@ exports[`Favorites component should render correctly 1`] = `
       Array [
         Object {
           "alignSelf": "center",
-          "height": 8,
+          "height": 32,
           "justifyContent": "flex-end",
           "marginBottom": 8,
-          "marginTop": 32,
+          "marginTop": 8,
         },
       ]
     }
