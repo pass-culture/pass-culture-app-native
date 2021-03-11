@@ -44,6 +44,14 @@ export const mockOffer: OfferAdaptedResponse = {
       price: 2400,
     },
     {
+      id: 148411,
+      beginningDatetime: new Date('2021-03-02T10:00:00'),
+      bookingLimitDatetime: new Date('2021-03-02T10:00:00'),
+      cancellationLimitDatetime: new Date('2021-03-08T12:14:57.081907'),
+      isBookable: false,
+      price: 2400,
+    },
+    {
       id: 148410,
       beginningDatetime: new Date('2021-03-17T20:00:00'),
       bookingLimitDatetime: new Date('2021-03-17T20:00:00'),

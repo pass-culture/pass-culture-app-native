@@ -53,6 +53,7 @@ export const BookHourChoice: React.FC = () => {
 }
 
 const HourChoiceContainer = styled.View({
+  flexDirection: 'row',
   flexWrap: 'wrap',
   marginHorizontal: -getSpacing(2),
 })

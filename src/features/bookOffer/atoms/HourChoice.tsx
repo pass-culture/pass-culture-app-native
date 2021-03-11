@@ -27,11 +27,11 @@ export const HourChoice: React.FC<Props> = ({ hour, price, selected, onPress, te
           ) : (
             <Spacer.Row numberOfSpaces={5} />
           )}
-          <Typo.ButtonText testID="hour" color={textColor}>
+          <Typo.ButtonText testID={`${testID}-hour`} color={textColor}>
             {hour}
           </Typo.ButtonText>
 
-          <Typo.Caption testID="price" color={textColor}>
+          <Typo.Caption testID={`${testID}-price`} color={textColor}>
             {price}
           </Typo.Caption>
         </HourChoiceContent>
