@@ -120,9 +120,24 @@ describe('NotificationSettings', () => {
         expect(toggleSwitch.props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
       })
     })
-    it('should open the modal when permission!="granted" and trying to allow', () => {
-      // NOT implemented yet: next commit
-    })
+    it.each<PermissionStatus>(['unavailable', 'blocked', 'denied', 'limited'])(
+      'should open the modal when permission!="granted" (==%s) and trying to allow',
+      async (permission) => {
+        const { getByTestId } = await renderNotificationSettings(permission, {
+          subscriptions: {
+            marketingEmail: true,
+            marketingPush: false, // the user push setting doesnt care
+          },
+        } as UserProfileResponse)
+        await waitFor(() => {
+          const toggleSwitch = getByTestId('push')
+          fireEvent.press(toggleSwitch)
+        })
+        await waitForExpect(() => {
+          getByTestId('modal-notifications-permission-modal')
+        })
+      }
+    )
   })
   describe('The behavior of the save button', () => {
     it('should enable the save button when the email switch changed', async () => {
