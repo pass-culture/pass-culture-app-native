@@ -24,6 +24,9 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
     id: 1,
     isDuo: true,
   })),
+  useBookingStock: jest.fn(() => ({
+    price: '12€',
+  })),
 }))
 
 jest.mock('features/home/api', () => ({
@@ -74,5 +77,21 @@ describe('<BookingEventChoices />', () => {
     expect(page.queryByTestId('DateStep')).toBeTruthy()
     expect(page.queryByTestId('HourStep')).toBeTruthy()
     expect(page.queryByTestId('DuoStep')).toBeTruthy()
+  })
+
+  it('should display date step and hour step and duo step on a snapshot', async () => {
+    mockUseBooking.mockImplementationOnce(() => ({
+      bookingState: {
+        offerId: 1,
+        stockId: 1,
+        step: Step.DUO,
+        quantity: 1,
+        date: '01/02/2021',
+      },
+      dispatch: jest.fn(),
+    }))
+    const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+    await act(flushAllPromises)
+    expect(page.toJSON()).toMatchSnapshot()
   })
 })
