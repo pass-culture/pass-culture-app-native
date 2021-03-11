@@ -16,18 +16,16 @@ interface Props {
 export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, children }) => {
   return (
     <ChoiceContainer onPress={onPress} activeOpacity={ACTIVE_OPACITY} testID={testID}>
-      <ChoiceBorder selected={selected}>
-        <ChoiceContent selected={selected}>
-          {selected ? (
-            <IconContainer>
-              <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
-            </IconContainer>
-          ) : (
-            <Spacer.Row numberOfSpaces={5} />
-          )}
-          {children}
-        </ChoiceContent>
-      </ChoiceBorder>
+      <ChoiceContent selected={selected}>
+        {selected ? (
+          <IconContainer>
+            <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
+          </IconContainer>
+        ) : (
+          <Spacer.Row numberOfSpaces={5} />
+        )}
+        {children}
+      </ChoiceContent>
     </ChoiceContainer>
   )
 }
@@ -42,14 +40,11 @@ const ChoiceContainer = styled.TouchableOpacity({
   padding: getSpacing(2),
 })
 
-const ChoiceBorder = styled.View<{ selected: boolean }>(({ selected }) => ({
+const ChoiceContent = styled.View<{ selected: boolean }>(({ selected }) => ({
   borderRadius: BorderRadiusEnum.CHECKBOX_RADIUS,
   border: `solid 1px`,
   borderColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.GREY_DARK,
   overflow: 'hidden',
-}))
-
-const ChoiceContent = styled.View<{ selected: boolean }>(({ selected }) => ({
   backgroundColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.WHITE,
   paddingHorizontal: getSpacing(3.25),
   alignItems: 'center',
