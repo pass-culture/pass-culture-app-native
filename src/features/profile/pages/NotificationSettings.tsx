@@ -6,8 +6,8 @@ import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
-import { useAppStateChange } from 'features/core/appState'
 import { useUserProfileInfo } from 'features/home/api'
+import { useAppStateChange } from 'libs/appState'
 import { _ } from 'libs/i18n'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -56,7 +56,7 @@ export function NotificationSettings() {
 
   // refresh state when app become active
   useAppStateChange(
-    () => void refreshPermissionAndStates(user),
+    () => refreshPermissionAndStates(user),
     () => void 0,
     [user] // refresh app state listener when the user is changed
   )
@@ -137,7 +137,6 @@ export function NotificationSettings() {
 
   return (
     <React.Fragment>
-      <PageHeader title={_(t`Notifications`)} />
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
@@ -188,6 +187,7 @@ export function NotificationSettings() {
         />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
+      <PageHeader title={_(t`Notifications`)} />
       <PushNotificationsModal
         visible={isNotificationsModalVisible}
         onRequestPermission={onRequestNotificationPermissionFromModal}

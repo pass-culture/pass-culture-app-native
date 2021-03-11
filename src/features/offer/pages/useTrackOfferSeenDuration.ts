@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 
-import { useAppStateChange } from 'features/core/appState'
 import { analytics } from 'libs/analytics'
+import { useAppStateChange } from 'libs/appState'
 
 export const useTrackOfferSeenDuration = (offerId: number) => {
   const timeInBackground = useRef(0)
