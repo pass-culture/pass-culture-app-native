@@ -1,12 +1,19 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import { debounce } from 'lodash'
+import React, { useRef } from 'react'
+import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOfferWrapper'
+import {
+  useBooking,
+  useBookingOffer,
+  useBookingStock,
+} from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { HourChoice } from '../atoms/HourChoice'
 import { Step } from '../pages/reducer'
@@ -14,16 +21,23 @@ import { Step } from '../pages/reducer'
 export const BookHourChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
   const { isDuo, stocks = [] } = useBookingOffer() || {}
+  const stock = useBookingStock()
+  const debouncedDispatch = useRef(debounce(dispatch, 500)).current
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
 
   const selectStock = (stockId: number) => {
     dispatch({ type: 'SELECT_STOCK', payload: stockId })
     if (isDuo) {
-      dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+      debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
     } else {
       dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
     }
+  }
+
+  const changeHour = () => {
+    dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
+    dispatch({ type: 'RESET_QUANTITY' })
   }
 
   const filteredStocks = stocks.filter(({ beginningDatetime }) =>
@@ -34,20 +48,28 @@ export const BookHourChoice: React.FC = () => {
     <React.Fragment>
       <Typo.Title4 testID="HourStep">{_(t`Heure`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
-      <HourChoiceContainer>
-        {filteredStocks.map((stock) => {
-          return (
-            <HourChoice
-              key={stock.id}
-              price={formatToFrenchDecimal(stock.price).replace(' ', '')}
-              hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
-              selected={stock.id === bookingState.stockId}
-              onPress={() => selectStock(stock.id)}
-              testID={`HourChoice${stock.id}`}
-            />
-          )
-        })}
-      </HourChoiceContainer>
+      {bookingState.step === Step.HOUR ? (
+        <HourChoiceContainer>
+          {filteredStocks.map((stock) => {
+            return (
+              <HourChoice
+                key={stock.id}
+                price={formatToFrenchDecimal(stock.price).replace(' ', '')}
+                hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
+                selected={stock.id === bookingState.stockId}
+                onPress={() => selectStock(stock.id)}
+                testID={`HourChoice${stock.id}`}
+              />
+            )
+          })}
+        </HourChoiceContainer>
+      ) : (
+        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeHour}>
+          <Typo.ButtonText>
+            {stock && stock.beginningDatetime ? formatHour(stock.beginningDatetime) : ''}
+          </Typo.ButtonText>
+        </TouchableOpacity>
+      )}
     </React.Fragment>
   )
 }

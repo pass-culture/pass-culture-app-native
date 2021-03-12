@@ -143,16 +143,36 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     }
   />
   <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "flexWrap": "wrap",
-          "marginHorizontal": -8,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-  />
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
   <View
     numberOfSpaces={6}
     style={
