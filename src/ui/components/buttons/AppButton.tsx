@@ -10,26 +10,26 @@ import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface BaseButtonProps {
   adjustsFontSizeToFit?: boolean
-  title: string
+  buttonHeight?: 'small' | 'tall'
   disabled?: boolean
-  isLoading?: boolean
   icon?: FunctionComponent<IconInterface>
+  inline?: boolean
+  isLoading?: boolean
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
   testIdSuffix?: string
   textSize?: number
-  inline?: boolean
+  title: string
 }
 
 export interface AppButtonProps extends BaseButtonProps {
-  loadingIconColor: ColorsEnum
-  iconColor?: ColorsEnum
-  iconSize?: number
-  textColor?: ColorsEnum
   backgroundColor?: ColorsEnum
   borderColor?: ColorsEnum
-  buttonHeight?: 'small' | 'tall'
+  iconColor?: ColorsEnum
+  iconSize?: number
   inline?: boolean
+  loadingIconColor: ColorsEnum
+  textColor?: ColorsEnum
 }
 
 type Only<TestedType, StandardType> = TestedType &
