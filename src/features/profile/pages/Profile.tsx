@@ -115,16 +115,16 @@ export const Profile: React.FC = () => {
                 style={styles.row}
                 testID="row-password"
               />
-              <Row
-                type="navigable"
-                title={_(t`Notifications`)}
-                icon={Bell}
-                onPress={() => navigate('NotificationSettings')}
-                style={styles.row}
-                testID="row-notifications"
-              />
             </React.Fragment>
           )}
+          <SectionRow
+            type="navigable"
+            title={_(t`Notifications`)}
+            icon={Bell}
+            onPress={() => navigate('NotificationSettings')}
+            style={styles.row}
+            testID="row-notifications"
+          />
           <SectionRow
             type="clickable"
             title={_(t`Géolocalisation`)}
