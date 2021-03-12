@@ -41,7 +41,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {
       showSuccessSnackBar({
-        message: _(t`L'offre a été ajoutée au favoris`),
+        message: _(t`L'offre a été ajoutée aux favoris`),
         timeout: SNACK_BAR_TIME_OUT,
       })
     },

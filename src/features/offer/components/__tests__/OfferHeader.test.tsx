@@ -160,7 +160,7 @@ describe('<OfferHeader />', () => {
 
     await superFlushWithAct()
     expect(showSuccessSnackBar).toBeCalledWith({
-      message: `L'offre a été ajoutée au favoris`,
+      message: `L'offre a été ajoutée aux favoris`,
       timeout: SNACK_BAR_TIME_OUT,
     })
 
