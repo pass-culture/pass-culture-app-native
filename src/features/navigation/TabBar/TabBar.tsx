@@ -3,8 +3,8 @@ import { Route } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { BicolorFavoriteCount } from 'features/favorites/atoms/BicolorFavoriteCount'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
-import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
@@ -27,7 +27,7 @@ const mapRouteToIcon = (
     case 'Bookings':
       return BicolorBookings
     case 'Favorites':
-      return BicolorFavorite
+      return BicolorFavoriteCount
     case 'Profile':
       return BicolorProfile
   }
