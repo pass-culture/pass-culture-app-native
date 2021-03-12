@@ -140,6 +140,20 @@ describe('NotificationSettings', () => {
     )
   })
   describe('The behavior of the save button', () => {
+    it('should be disabled when and grey for unauthenticated users', async () => {
+      const { getByTestId } = await renderNotificationSettings(
+        'granted',
+        {
+          subscriptions: {},
+        } as UserProfileResponse,
+        false
+      )
+      let saveButton: ReactTestInstance | null = null
+      await waitFor(() => {
+        saveButton = getByTestId('button-container')
+        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+      })
+    })
     it('should enable the save button when the email switch changed', async () => {
       mockApiUpdateProfile({
         subscriptions: {
@@ -147,12 +161,16 @@ describe('NotificationSettings', () => {
           marketingPush: true,
         },
       } as UserProfileResponse)
-      const { getByTestId } = await renderNotificationSettings('granted', {
-        subscriptions: {
-          marketingEmail: true,
-          marketingPush: true,
-        },
-      } as UserProfileResponse)
+      const { getByTestId } = await renderNotificationSettings(
+        'granted',
+        {
+          subscriptions: {
+            marketingEmail: true,
+            marketingPush: true,
+          },
+        } as UserProfileResponse,
+        true
+      )
 
       await waitFor(() => {
         const toggleSwitch = getByTestId('email')
@@ -180,12 +198,16 @@ describe('NotificationSettings', () => {
           marketingPush: true,
         },
       } as UserProfileResponse)
-      const { getByTestId } = await renderNotificationSettings('granted', {
-        subscriptions: {
-          marketingEmail: false,
-          marketingPush: false,
-        },
-      } as UserProfileResponse)
+      const { getByTestId } = await renderNotificationSettings(
+        'granted',
+        {
+          subscriptions: {
+            marketingEmail: false,
+            marketingPush: false,
+          },
+        } as UserProfileResponse,
+        true
+      )
 
       await waitFor(() => {
         const toggleSwitch = getByTestId('push')
@@ -214,9 +236,10 @@ const navigationRef = React.createRef<NavigationContainerRef>()
 
 async function renderNotificationSettings(
   expectedPermission: NotificationsResponse['status'],
-  user?: UserProfileResponse
+  user?: UserProfileResponse,
+  isLoggedIn?: boolean
 ) {
-  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: true } as IAuthContext))
+  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: isLoggedIn ?? true } as IAuthContext))
 
   const checkNotifications = jest.spyOn(RNP, 'checkNotifications')
   checkNotifications.mockResolvedValue({

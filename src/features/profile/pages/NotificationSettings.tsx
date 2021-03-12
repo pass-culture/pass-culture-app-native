@@ -6,10 +6,12 @@ import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAppStateChange } from 'libs/appState'
 import { _ } from 'libs/i18n'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
+import { AppButton } from 'ui/components/buttons/AppButton'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -31,6 +33,7 @@ type State = {
 
 export function NotificationSettings() {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const { isLoggedIn } = useAuthContext()
 
   const route = useRoute()
   const [state, setState] = useState<State>({
@@ -70,16 +73,20 @@ export function NotificationSettings() {
     })
   }
 
-  const toggleEmails = useCallback(
-    () =>
-      setState((prevState) => ({
-        ...prevState,
-        emailTouched: prevState.allowEmails === user?.subscriptions?.marketingEmail,
-        allowEmails: !prevState.allowEmails,
-      })),
-    [user]
-  )
+  const toggleEmails = useCallback(() => {
+    if (!isLoggedIn) {
+      return
+    }
+    setState((prevState) => ({
+      ...prevState,
+      emailTouched: prevState.allowEmails === user?.subscriptions?.marketingEmail,
+      allowEmails: !prevState.allowEmails,
+    }))
+  }, [user, isLoggedIn])
   const togglePush = useCallback(() => {
+    if (!isLoggedIn) {
+      return
+    }
     setState((prevState) => {
       if (prevState.pushPermission !== 'granted') {
         showNotificationsModal()
@@ -91,7 +98,7 @@ export function NotificationSettings() {
         allowPush: !prevState.allowPush,
       }
     })
-  }, [user])
+  }, [user, isLoggedIn])
 
   const onRequestNotificationPermissionFromModal = () => {
     hideNotificationsModal()
@@ -141,7 +148,11 @@ export function NotificationSettings() {
       <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
         <Typo.Body color={ColorsEnum.BLACK}>
-          {_(t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`)}
+          {isLoggedIn
+            ? _(t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`)
+            : _(
+                t`Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture `
+              )}
         </Typo.Body>
         <Spacer.Column numberOfSpaces={4} />
         <Separator />
@@ -179,12 +190,22 @@ export function NotificationSettings() {
           </React.Fragment>
         )}
         <Spacer.Flex flex={1} />
-        <ButtonPrimary
-          title={_(t`Enregistrer`)}
-          isLoading={isUpdating}
-          disabled={!state.emailTouched && !state.pushTouched}
-          onPress={submitProfile}
-        />
+        {isLoggedIn ? (
+          <ButtonPrimary
+            title={_(t`Enregistrer`)}
+            isLoading={isUpdating}
+            disabled={!state.emailTouched && !state.pushTouched}
+            onPress={submitProfile}
+          />
+        ) : (
+          <AppButton
+            title={_(t`Enregistrer`)}
+            loadingIconColor={ColorsEnum.GREY_MEDIUM}
+            backgroundColor={ColorsEnum.GREY_LIGHT}
+            iconColor={ColorsEnum.GREY_DARK}
+            textColor={ColorsEnum.GREY_DARK}
+          />
+        )}
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
       <PageHeader title={_(t`Notifications`)} />
