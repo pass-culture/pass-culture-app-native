@@ -3,6 +3,8 @@ import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-nav
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+
 import { TabBar } from '../TabBar'
 import { tabBarRoutes } from '../TabNavigator'
 
@@ -47,12 +49,12 @@ describe('TabBar', () => {
   })
 
   it('renders correctly', () => {
-    const tabBar = render(<TabBar state={state} navigation={navigation} />)
+    const tabBar = renderTabBar()
     expect(tabBar).toMatchSnapshot()
   })
 
   it('should display the 5 following tabs', () => {
-    const tabBar = render(<TabBar state={state} navigation={navigation} />)
+    const tabBar = renderTabBar()
     expect(tabBar.queryAllByTestId(/^tab-/)).toHaveLength(5)
     expect(tabBar.queryByTestId('tab-Home')).toBeTruthy()
     expect(tabBar.queryByTestId('tab-Search')).toBeTruthy()
@@ -62,17 +64,17 @@ describe('TabBar', () => {
   })
 
   it('should NOT display InitialRoutingScreen tab', () => {
-    const tabBar = render(<TabBar state={state} navigation={navigation} />)
+    const tabBar = renderTabBar()
     expect(tabBar.queryByTestId('tab-InitialRoutingScreen')).toBeFalsy()
   })
 
   it('displays only one selected at a time', () => {
-    const tabBar = render(<TabBar state={state} navigation={navigation} />)
+    const tabBar = renderTabBar()
     expect(tabBar.queryAllByTestId(/selector/)).toHaveLength(1)
   })
 
   it('switches tab when clicked on another tab', () => {
-    const tabBar = render(<TabBar state={state} navigation={navigation} />)
+    const tabBar = renderTabBar()
     expect(tabBar.queryByTestId('selector-tab-Home')).toBeTruthy()
     expect(tabBar.queryByTestId('selector-tab-Search')).toBeFalsy()
 
@@ -81,14 +83,16 @@ describe('TabBar', () => {
 
     expect(navigation.emit).toHaveBeenCalled()
     expect(navigation.navigate).toHaveBeenCalledWith('Search')
-    tabBar.rerender(<TabBar state={{ ...state, index: 1 }} navigation={navigation} />)
+    tabBar.rerender(
+      reactQueryProviderHOC(<TabBar state={{ ...state, index: 1 }} navigation={navigation} />)
+    )
 
     expect(tabBar.queryByTestId('selector-tab-Home')).toBeFalsy()
     expect(tabBar.queryByTestId('selector-tab-Search')).toBeTruthy()
   })
 
   it('does not reset navigation when clicked on selected tab', () => {
-    const tabBar = render(<TabBar state={state} navigation={navigation} />)
+    const tabBar = renderTabBar()
     expect(tabBar.queryByTestId('selector-tab-Home')).toBeTruthy()
 
     const homeTab = tabBar.getByTestId('tab-Home')
@@ -99,11 +103,14 @@ describe('TabBar', () => {
   })
 
   it('navigates to Profile on Profile tab click', () => {
-    const tabBar = render(<TabBar state={state} navigation={navigation} />)
-
+    const tabBar = renderTabBar()
     const profileTab = tabBar.getByTestId('tab-Profile')
     fireEvent.press(profileTab)
 
     expect(navigation.navigate).toHaveBeenCalledWith('Profile')
   })
 })
+
+function renderTabBar() {
+  return render(reactQueryProviderHOC(<TabBar state={state} navigation={navigation} />))
+}
