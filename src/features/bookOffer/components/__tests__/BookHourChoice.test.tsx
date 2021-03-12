@@ -38,17 +38,12 @@ describe('BookHourChoice when hour is already selected', () => {
 
     expect(page).toMatchSnapshot()
 
-    // firstStock correspond to 2021-03-02 stock
-    const selectedHour = page.queryByText('20:00')
+    const selectedHour = page.getByText('20:00')
 
-    if (selectedHour) {
-      act(() => fireEvent.press(selectedHour))
+    act(() => fireEvent.press(selectedHour))
 
-      expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
-      expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_QUANTITY' })
-    } else {
-      throw new Error('should have find firstStock')
-    }
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_QUANTITY' })
   })
 })
 
