@@ -63,7 +63,7 @@ export function useDeeplinkUrlHandler() {
   }
 }
 
-function getScreenFromDeeplink(url: string) {
+export function getScreenFromDeeplink(url: string) {
   const { routeName, params } = decodeDeeplinkParts(url)
 
   if (!isAllowedRouteTypeGuard(routeName)) {
