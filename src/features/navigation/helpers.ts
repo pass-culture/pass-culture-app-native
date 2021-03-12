@@ -1,6 +1,10 @@
 import { Route, useNavigationState } from '@react-navigation/native'
 import { Linking } from 'react-native'
 
+import { DEEPLINK_DOMAIN } from 'features/deeplinks'
+import { getScreenFromDeeplink } from 'features/deeplinks/useDeeplinkUrlHandler'
+
+import { navigationRef } from './navigationRef'
 import { RouteParams } from './RootNavigator'
 import { TabParamList } from './TabBar/types'
 
@@ -25,6 +29,11 @@ export const homeNavigateConfig: HomeNavigateConfig = {
 }
 
 export async function openExternalUrl(url: string) {
+  if (url.match('^' + DEEPLINK_DOMAIN)) {
+    const { screen, params } = getScreenFromDeeplink(url)
+    return navigationRef.current?.navigate(screen, params)
+  }
+
   const canOpen = await Linking.canOpenURL(url)
   if (canOpen) {
     Linking.openURL(url)
