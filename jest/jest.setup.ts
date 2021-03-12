@@ -68,6 +68,8 @@ jest.mock('libs/environment', () => ({
     ID_CHECK_URL: 'https://id-check-unit-tests',
     RECOMMENDATION_ENDPOINT: 'https://recommmendation-endpoint',
     RECOMMENDATION_TOKEN: 'recommmendation-token',
+    CGU_LINK: 'https://passculture.cgu',
+    PRIVACY_POLICY_LINK: 'https://passculture.privacy',
   },
 }))
 
