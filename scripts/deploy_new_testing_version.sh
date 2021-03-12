@@ -22,7 +22,7 @@ update_app_version(){
 
   git add package.json
   git commit -m "v${VERSION}"
-  git tag "testing_v${VERSION}"
+  git tag -a "testing_v${VERSION}" -m "v${VERSION}"
 }
 
 
