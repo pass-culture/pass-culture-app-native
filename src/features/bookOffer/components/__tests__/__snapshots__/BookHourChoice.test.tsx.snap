@@ -231,3 +231,64 @@ Array [
   </View>,
 ]
 `;
+
+exports[`BookHourChoice when hour is already selected should change step to Hour and reset quantity 1`] = `
+Array [
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#151515",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 18,
+          "lineHeight": 22,
+        },
+      ]
+    }
+    testID="HourStep"
+  >
+    Heure
+  </Text>,
+  <View
+    numberOfSpaces={2}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />,
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      20:00
+    </Text>
+  </View>,
+]
+`;
