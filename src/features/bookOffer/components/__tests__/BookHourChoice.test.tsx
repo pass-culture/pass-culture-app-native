@@ -7,18 +7,50 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { BookHourChoice } from '../BookHourChoice'
 const mockStep = Step.HOUR
+const mockDuoStep = Step.DUO
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest.fn(() => ({
-    dispatch: mockDispatch,
-    bookingState: { quantity: 1, step: mockStep, date: new Date('2021-03-02T20:00:00') },
-    dismissModal: mockDismissModal,
+  useBooking: jest
+    .fn(() => ({
+      dispatch: mockDispatch,
+      bookingState: { quantity: 1, step: mockStep, date: new Date('2021-03-02T20:00:00') },
+      dismissModal: mockDismissModal,
+    }))
+    .mockImplementationOnce(() => ({
+      dispatch: mockDispatch,
+      bookingState: { quantity: 1, step: mockDuoStep, date: new Date('2021-03-02T20:00:00') },
+      dismissModal: mockDismissModal,
+    })),
+  useBookingStock: jest.fn(() => ({
+    price: 2000,
+    id: '148409',
+    beginningDatetime: new Date('2021-03-02T20:00:00'),
   })),
   useBookingOffer: jest.fn(() => mockOffer),
 }))
+
+describe('BookHourChoice when hour is already selected', () => {
+  it('should change step to Hour and reset quantity', async () => {
+    const page = render(reactQueryProviderHOC(<BookHourChoice />))
+
+    expect(page).toMatchSnapshot()
+
+    // firstStock correspond to 2021-03-02 stock
+    const selectedHour = page.queryByText('20:00')
+
+    if (selectedHour) {
+      act(() => fireEvent.press(selectedHour))
+
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_QUANTITY' })
+    } else {
+      throw new Error('should have find firstStock')
+    }
+  })
+})
 
 describe('BookHourChoice', () => {
   it('should display filtered stocks for selected Date', () => {
