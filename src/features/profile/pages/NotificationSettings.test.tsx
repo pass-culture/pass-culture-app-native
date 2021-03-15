@@ -144,8 +144,8 @@ describe('NotificationSettings', () => {
     )
   })
   describe('The behavior of the save button', () => {
-    it('should be disabled when and grey for unauthenticated users', async () => {
-      const { getByTestId } = await renderNotificationSettings(
+    it('should not be displayed when for unauthenticated users', async () => {
+      const { queryByTestId } = await renderNotificationSettings(
         'granted',
         {
           subscriptions: {},
@@ -153,9 +153,10 @@ describe('NotificationSettings', () => {
         false
       )
       let saveButton: ReactTestInstance | null = null
+      saveButton = queryByTestId('button-container')
+
       await waitFor(() => {
-        saveButton = getByTestId('button-container')
-        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+        expect(saveButton).toBeFalsy()
       })
     })
     it('should enable the save button when the email switch changed', async () => {

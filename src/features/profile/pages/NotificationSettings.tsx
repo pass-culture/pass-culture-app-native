@@ -11,7 +11,6 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useAppStateChange } from 'libs/appState'
 import { _ } from 'libs/i18n'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
-import { AppButton } from 'ui/components/buttons/AppButton'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -190,20 +189,12 @@ export function NotificationSettings() {
           </React.Fragment>
         )}
         <Spacer.Flex flex={1} />
-        {isLoggedIn ? (
+        {isLoggedIn && (
           <ButtonPrimary
             title={_(t`Enregistrer`)}
             isLoading={isUpdating}
             disabled={!state.emailTouched && !state.pushTouched}
             onPress={submitProfile}
-          />
-        ) : (
-          <AppButton
-            title={_(t`Enregistrer`)}
-            loadingIconColor={ColorsEnum.GREY_MEDIUM}
-            backgroundColor={ColorsEnum.GREY_LIGHT}
-            iconColor={ColorsEnum.GREY_DARK}
-            textColor={ColorsEnum.GREY_DARK}
           />
         )}
         <Spacer.Column numberOfSpaces={8} />
