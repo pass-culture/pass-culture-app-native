@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Linking, Platform } from 'react-native'
 import { checkNotifications, PermissionStatus } from 'react-native-permissions'
@@ -33,6 +33,8 @@ type State = {
 export function NotificationSettings() {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const { isLoggedIn } = useAuthContext()
+
+  const { goBack } = useNavigation()
 
   const route = useRoute()
   const [state, setState] = useState<State>({
@@ -110,6 +112,7 @@ export function NotificationSettings() {
         message: _(t`Le réglage est sauvegardé`),
         timeout: 5000,
       })
+      goBack()
     },
     /**
      * the mutation code already takes care of updating the react-query cache.
