@@ -93,18 +93,29 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
 
   // in case user updates his preferences in his phone settings we check if his local
   // storage choice is consistent with phone permissions, and update position if not
-  const contextualCheckPermission = async () => {
-    const newPermissionState = await checkGeolocPermission()
-    synchronizePermissionAndPosition(newPermissionState)
+  const contextualCheckPermission = async (
+    shouldSynchronize?: (permission: GeolocPermissionState) => boolean
+  ) => {
+    const newPermissionState: GeolocPermissionState = await checkGeolocPermission()
+
+    shouldSynchronize = shouldSynchronize ?? (() => true)
+
+    if (shouldSynchronize(newPermissionState)) {
+      synchronizePermissionAndPosition(newPermissionState)
+    }
   }
 
   const onAppBecomeActive = async () => {
-    await contextualCheckPermission()
+    await contextualCheckPermission((newPermission) => permissionState !== newPermission)
   }
   const onAppBecomeInactive = async () => {
     // nothing
   }
-  useAppStateChange(onAppBecomeActive, onAppBecomeInactive)
+  // WARNING: the reference of contextualCheckPermission() changes between
+  // - the registration of the "onAppBecomeActive" handler in the "useAppStateChange" effect
+  // - and its execution (when app becomes active).
+  // that's why it's very important to add the 'permissionState' to the dependencies of the "useAppStateChange" effect
+  useAppStateChange(onAppBecomeActive, onAppBecomeInactive, [permissionState])
 
   return (
     <GeolocationContext.Provider
