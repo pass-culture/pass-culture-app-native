@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Favorite component offer name should take full space if no geolocation 1`] = `
+exports[`<Favorite /> component offer name should take full space if no geolocation 1`] = `
 "Snapshot Diff:
 - First value
 + Second value
