@@ -108,7 +108,7 @@ We recommend installing the plugin `react-query-native-devtools` to analyze reac
 
 ## Deployment
 
-See doc [here](./doc/deployment.md)
+See doc [here](./doc/deployment/deployment.md)
 
 ## Features
 

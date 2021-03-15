@@ -49,7 +49,20 @@ To deploy to production:
 
 ### Deploy CodePush
 
+#### Stratégie
+
+![img](./codepush-strategy.png)
+
+#### How to
+
 /!\ DO NOT DEPLOY CODEPUSH IOS & ANDROID SIMULTANEOUSLY
 
-- Android: `yarn trigger:production:codepush:android`
-- IOS: `yarn trigger:production:codepush:ios`
+- `git checkout hotfix/vX.X.X` (X.X.X version currently in production)
+- cherry-pick all fix commits
+- git push
+- wait for the CI to be green
+- deploy:
+
+  1. Android: `yarn trigger:production:codepush:android`
+
+  2. When android finished only, IOS: `yarn trigger:production:codepush:ios`
