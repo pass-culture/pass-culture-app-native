@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { act, render } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import { rest } from 'msw/'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
@@ -12,7 +12,7 @@ import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises } from 'tests/utils'
+import { superFlushWithAct } from 'tests/utils'
 
 import { Offer } from '../Offer'
 
@@ -70,9 +70,7 @@ export async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, '
     )
   )
 
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await superFlushWithAct(25)
 
   await waitForExpect(() => {
     expect(wrapper.queryByTestId('offer-container')).toBeTruthy()

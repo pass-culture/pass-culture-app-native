@@ -1,6 +1,7 @@
-import { fireEvent, render, waitFor } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { FavoriteCategoryResponse, FavoriteResponse } from 'api/gen'
@@ -63,7 +64,8 @@ function simulateBackend(options: Options = defaultOptions) {
   server.use(
     rest.delete<EmptyResponse>(
       `${env.API_BASE_URL}/native/v1/me/favorites/${id}`,
-      (req, res, ctx) => (!hasRemoveFavoriteError ? res(ctx.status(204)) : res(ctx.status(422)))
+      (req, res, ctx) =>
+        !hasRemoveFavoriteError ? res(ctx.status(204)) : res(ctx.status(422), ctx.json({}))
     )
   )
 }
@@ -112,11 +114,10 @@ describe('Favorite component', () => {
     simulateBackend()
     mockDistance = '10 km'
     const { getByText } = render(reactQueryProviderHOC(<Favorite favorite={favorite} />))
-
-    const button = await getByText('Supprimer')
-    await fireEvent.press(button)
-    await superFlushWithAct()
-    await waitFor(() => {
+    await superFlushWithAct(15)
+    fireEvent.press(getByText('Supprimer'))
+    await superFlushWithAct(15)
+    await waitForExpect(() => {
       expect(mockShowSuccessSnackBar).toBeCalledWith({
         message: `L'offre a été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
@@ -124,20 +125,22 @@ describe('Favorite component', () => {
       expect(mockShowErrorSnackBar).not.toBeCalled()
     })
   })
-
   it('should fail to delete favorite on button click', async () => {
-    simulateBackend()
+    const id = 0
+    simulateBackend({
+      id,
+      hasRemoveFavoriteError: true,
+    })
     mockDistance = '10 km'
     const { getByText } = render(
       reactQueryProviderHOC(
-        <Favorite favorite={{ ...favorite, id: 0, offer: { ...favorite.offer, id: 0 } }} />
+        <Favorite favorite={{ ...favorite, id, offer: { ...favorite.offer, id } }} />
       )
     )
-
-    const button = await getByText('Supprimer')
-    await fireEvent.press(button)
-    await superFlushWithAct()
-    await waitFor(() => {
+    await superFlushWithAct(20)
+    fireEvent.press(getByText('Supprimer'))
+    await superFlushWithAct(20)
+    await waitForExpect(() => {
       expect(mockShowSuccessSnackBar).not.toBeCalled()
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `L'offre n'a pas été retirée de tes favoris`,

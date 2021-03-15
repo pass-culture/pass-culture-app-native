@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
+import { act } from '@testing-library/react-native'
 import { rest } from 'msw'
 import * as React from 'react'
 import { View } from 'react-native'
@@ -12,6 +13,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 
 import { getPaginatedFavorites, useFavoritesResults } from '../useFavoritesResults'
+
+failTestOnConsole()
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -36,7 +39,7 @@ describe('useFavoritesResults hook', () => {
 
   it('should retrieve favorite data', async () => {
     mockUseAuthContext.mockImplementation(() => ({ isLoggedIn: true, setIsLoggedIn: jest.fn() }))
-    const { result, waitFor } = renderHook(useFavoritesResults, {
+    const { result } = renderHook(useFavoritesResults, {
       wrapper: (props) =>
         reactQueryProviderHOC(
           <FavoritesWrapper>
@@ -45,7 +48,7 @@ describe('useFavoritesResults hook', () => {
         ),
     })
 
-    await waitFor(() => result.current.isSuccess)
+    await act(async () => result.current.isSuccess)
     expect(result.current.isSuccess).toEqual(true)
     expect(result.current.data?.pages[0].nbFavorites).toEqual(
       paginatedFavoritesResponseSnap.nbFavorites
