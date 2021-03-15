@@ -332,7 +332,9 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                             height={8}
                             width={751}
                           >
-                            undefined-SVG-Mock
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
                           </View>
                           <View
                             style={
@@ -429,7 +431,9 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                 height={16}
                                 width={16}
                               >
-                                undefined-SVG-Mock
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                             <Text
@@ -566,7 +570,9 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                 height={40}
                                 width={40}
                               >
-                                undefined-SVG-Mock
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                             <Text
@@ -628,7 +634,9 @@ exports[`<Offer /> should match snapshot for digital offer 1`] = `
                                 testID="iconPrice"
                                 width={40}
                               >
-                                iconPrice-SVG-Mock
+                                <Text>
+                                  iconPrice-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                             <Text
@@ -726,7 +734,9 @@ Tous les détails du film sur AlloCiné:
                                   testID="externalSiteIcon"
                                   width={15}
                                 >
-                                  externalSiteIcon-SVG-Mock
+                                  <Text>
+                                    externalSiteIcon-SVG-Mock
+                                  </Text>
                                 </View>
                                 
                               </Text>
@@ -802,7 +812,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 height={24}
                                 width={24}
                               >
-                                undefined-SVG-Mock
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                           </View>
@@ -933,7 +945,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               height={24}
                               width={24}
                             >
-                              undefined-SVG-Mock
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
                             </View>
                           </View>
                         </View>
@@ -1005,7 +1019,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     testID="externalSiteIcon"
                                     width={15}
                                   >
-                                    externalSiteIcon-SVG-Mock
+                                    <Text>
+                                      externalSiteIcon-SVG-Mock
+                                    </Text>
                                   </View>
                                   
                                 </Text>
@@ -1081,7 +1097,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               height={24}
                               width={24}
                             >
-                              undefined-SVG-Mock
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
                             </View>
                           </View>
                         </View>
@@ -1163,7 +1181,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     height={48}
                                     width={48}
                                   >
-                                    undefined-SVG-Mock
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
                                   </View>
                                   <View
                                     style={
@@ -1191,7 +1211,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       testID="invalidTestId"
                                       width={32}
                                     >
-                                      invalidTestId-SVG-Mock
+                                      <Text>
+                                        invalidTestId-SVG-Mock
+                                      </Text>
                                     </View>
                                   </View>
                                 </View>
@@ -1291,7 +1313,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     height={48}
                                     width={48}
                                   >
-                                    undefined-SVG-Mock
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
                                   </View>
                                   <View
                                     style={
@@ -1319,7 +1343,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       testID="validTestId"
                                       width={32}
                                     >
-                                      validTestId-SVG-Mock
+                                      <Text>
+                                        validTestId-SVG-Mock
+                                      </Text>
                                     </View>
                                   </View>
                                 </View>
@@ -1451,7 +1477,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     height={48}
                                     width={48}
                                   >
-                                    undefined-SVG-Mock
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
                                   </View>
                                   <View
                                     style={
@@ -1479,7 +1507,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       testID="invalidTestId"
                                       width={32}
                                     >
-                                      invalidTestId-SVG-Mock
+                                      <Text>
+                                        invalidTestId-SVG-Mock
+                                      </Text>
                                     </View>
                                   </View>
                                 </View>
@@ -1579,7 +1609,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     height={48}
                                     width={48}
                                   >
-                                    undefined-SVG-Mock
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
                                   </View>
                                   <View
                                     style={
@@ -1607,7 +1639,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       testID="validTestId"
                                       width={32}
                                     >
-                                      validTestId-SVG-Mock
+                                      <Text>
+                                        validTestId-SVG-Mock
+                                      </Text>
                                     </View>
                                   </View>
                                 </View>
@@ -1708,7 +1742,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           height={48}
                           width="100%"
                         >
-                          undefined-SVG-Mock
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
                         </View>
                         <Text
                           adjustsFontSizeToFit={true}
@@ -1870,7 +1906,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 testID="rightIcon"
                                 width={32}
                               >
-                                rightIcon-SVG-Mock
+                                <Text>
+                                  rightIcon-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                           </View>
@@ -2020,7 +2058,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           height={32}
                                           width={32}
                                         >
-                                          undefined-SVG-Mock
+                                          <Text>
+                                            undefined-SVG-Mock
+                                          </Text>
                                         </View>
                                       </View>
                                       <View
@@ -2075,7 +2115,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           height={32}
                                           width={32}
                                         >
-                                          undefined-SVG-Mock
+                                          <Text>
+                                            undefined-SVG-Mock
+                                          </Text>
                                         </View>
                                       </View>
                                     </View>
@@ -4230,7 +4272,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="icon-back"
                                   width={32}
                                 >
-                                  icon-back-SVG-Mock
+                                  <Text>
+                                    icon-back-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                               <View
@@ -4247,7 +4291,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="final-icon-back"
                                   width={32}
                                 >
-                                  final-icon-back-SVG-Mock
+                                  <Text>
+                                    final-icon-back-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                             </View>
@@ -4389,7 +4435,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="icon-share"
                                   width={32}
                                 >
-                                  icon-share-SVG-Mock
+                                  <Text>
+                                    icon-share-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                               <View
@@ -4407,7 +4455,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="final-icon-share"
                                   width={32}
                                 >
-                                  final-icon-share-SVG-Mock
+                                  <Text>
+                                    final-icon-share-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                             </View>
@@ -4489,7 +4539,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="icon-favorite"
                                   width={32}
                                 >
-                                  icon-favorite-SVG-Mock
+                                  <Text>
+                                    icon-favorite-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                               <View
@@ -4507,7 +4559,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="final-icon-favorite"
                                   width={32}
                                 >
-                                  final-icon-favorite-SVG-Mock
+                                  <Text>
+                                    final-icon-favorite-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                             </View>
@@ -4672,7 +4726,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 testID="rightIcon"
                                 width={32}
                               >
-                                rightIcon-SVG-Mock
+                                <Text>
+                                  rightIcon-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                           </View>
@@ -5176,7 +5232,9 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                             height={8}
                             width={751}
                           >
-                            undefined-SVG-Mock
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
                           </View>
                           <View
                             style={
@@ -5273,7 +5331,9 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                 height={16}
                                 width={16}
                               >
-                                undefined-SVG-Mock
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                             <Text
@@ -5410,7 +5470,9 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                 height={40}
                                 width={40}
                               >
-                                undefined-SVG-Mock
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                             <Text
@@ -5473,7 +5535,9 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                 testID="iconDuo"
                                 width={40}
                               >
-                                iconDuo-SVG-Mock
+                                <Text>
+                                  iconDuo-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                             <Text
@@ -5535,7 +5599,9 @@ exports[`<Offer /> should match snapshot for physical offer 1`] = `
                                 testID="iconPrice"
                                 width={40}
                               >
-                                iconPrice-SVG-Mock
+                                <Text>
+                                  iconPrice-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                             <Text
@@ -5633,7 +5699,9 @@ Tous les détails du film sur AlloCiné:
                                   testID="externalSiteIcon"
                                   width={15}
                                 >
-                                  externalSiteIcon-SVG-Mock
+                                  <Text>
+                                    externalSiteIcon-SVG-Mock
+                                  </Text>
                                 </View>
                                 
                               </Text>
@@ -5709,7 +5777,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 height={24}
                                 width={24}
                               >
-                                undefined-SVG-Mock
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                           </View>
@@ -5965,7 +6035,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               height={24}
                               width={24}
                             >
-                              undefined-SVG-Mock
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
                             </View>
                             <View
                               numberOfSpaces={1}
@@ -6070,7 +6142,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               height={24}
                               width={24}
                             >
-                              undefined-SVG-Mock
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
                             </View>
                           </View>
                         </View>
@@ -6142,7 +6216,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     testID="externalSiteIcon"
                                     width={15}
                                   >
-                                    externalSiteIcon-SVG-Mock
+                                    <Text>
+                                      externalSiteIcon-SVG-Mock
+                                    </Text>
                                   </View>
                                   
                                 </Text>
@@ -6218,7 +6294,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                               height={24}
                               width={24}
                             >
-                              undefined-SVG-Mock
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
                             </View>
                           </View>
                         </View>
@@ -6300,7 +6378,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     height={48}
                                     width={48}
                                   >
-                                    undefined-SVG-Mock
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
                                   </View>
                                   <View
                                     style={
@@ -6328,7 +6408,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       testID="invalidTestId"
                                       width={32}
                                     >
-                                      invalidTestId-SVG-Mock
+                                      <Text>
+                                        invalidTestId-SVG-Mock
+                                      </Text>
                                     </View>
                                   </View>
                                 </View>
@@ -6428,7 +6510,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     height={48}
                                     width={48}
                                   >
-                                    undefined-SVG-Mock
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
                                   </View>
                                   <View
                                     style={
@@ -6456,7 +6540,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       testID="validTestId"
                                       width={32}
                                     >
-                                      validTestId-SVG-Mock
+                                      <Text>
+                                        validTestId-SVG-Mock
+                                      </Text>
                                     </View>
                                   </View>
                                 </View>
@@ -6588,7 +6674,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     height={48}
                                     width={48}
                                   >
-                                    undefined-SVG-Mock
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
                                   </View>
                                   <View
                                     style={
@@ -6616,7 +6704,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       testID="invalidTestId"
                                       width={32}
                                     >
-                                      invalidTestId-SVG-Mock
+                                      <Text>
+                                        invalidTestId-SVG-Mock
+                                      </Text>
                                     </View>
                                   </View>
                                 </View>
@@ -6716,7 +6806,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     height={48}
                                     width={48}
                                   >
-                                    undefined-SVG-Mock
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
                                   </View>
                                   <View
                                     style={
@@ -6744,7 +6836,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       testID="validTestId"
                                       width={32}
                                     >
-                                      validTestId-SVG-Mock
+                                      <Text>
+                                        validTestId-SVG-Mock
+                                      </Text>
                                     </View>
                                   </View>
                                 </View>
@@ -6845,7 +6939,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                           height={48}
                           width="100%"
                         >
-                          undefined-SVG-Mock
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
                         </View>
                         <Text
                           adjustsFontSizeToFit={true}
@@ -7007,7 +7103,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 testID="rightIcon"
                                 width={32}
                               >
-                                rightIcon-SVG-Mock
+                                <Text>
+                                  rightIcon-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                           </View>
@@ -7157,7 +7255,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           height={32}
                                           width={32}
                                         >
-                                          undefined-SVG-Mock
+                                          <Text>
+                                            undefined-SVG-Mock
+                                          </Text>
                                         </View>
                                       </View>
                                       <View
@@ -7212,7 +7312,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                           height={32}
                                           width={32}
                                         >
-                                          undefined-SVG-Mock
+                                          <Text>
+                                            undefined-SVG-Mock
+                                          </Text>
                                         </View>
                                       </View>
                                     </View>
@@ -9367,7 +9469,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="icon-back"
                                   width={32}
                                 >
-                                  icon-back-SVG-Mock
+                                  <Text>
+                                    icon-back-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                               <View
@@ -9384,7 +9488,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="final-icon-back"
                                   width={32}
                                 >
-                                  final-icon-back-SVG-Mock
+                                  <Text>
+                                    final-icon-back-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                             </View>
@@ -9526,7 +9632,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="icon-share"
                                   width={32}
                                 >
-                                  icon-share-SVG-Mock
+                                  <Text>
+                                    icon-share-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                               <View
@@ -9544,7 +9652,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="final-icon-share"
                                   width={32}
                                 >
-                                  final-icon-share-SVG-Mock
+                                  <Text>
+                                    final-icon-share-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                             </View>
@@ -9626,7 +9736,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="icon-favorite"
                                   width={32}
                                 >
-                                  icon-favorite-SVG-Mock
+                                  <Text>
+                                    icon-favorite-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                               <View
@@ -9644,7 +9756,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   testID="final-icon-favorite"
                                   width={32}
                                 >
-                                  final-icon-favorite-SVG-Mock
+                                  <Text>
+                                    final-icon-favorite-SVG-Mock
+                                  </Text>
                                 </View>
                               </View>
                             </View>
@@ -9809,7 +9923,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 testID="rightIcon"
                                 width={32}
                               >
-                                rightIcon-SVG-Mock
+                                <Text>
+                                  rightIcon-SVG-Mock
+                                </Text>
                               </View>
                             </View>
                           </View>

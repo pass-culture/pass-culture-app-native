@@ -34,7 +34,9 @@ exports[`Home component should render correctly without login modal 1`] = `
         height={280}
         width={754}
       >
-        undefined-SVG-Mock
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
     </View>
     <View
@@ -61,7 +63,9 @@ exports[`Home component should render correctly without login modal 1`] = `
         height={32}
         width={32}
       >
-        undefined-SVG-Mock
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
     </View>
     <View
@@ -311,7 +315,9 @@ exports[`Home component should render correctly without login modal 1`] = `
                 testID="rightIcon"
                 width={32}
               >
-                rightIcon-SVG-Mock
+                <Text>
+                  rightIcon-SVG-Mock
+                </Text>
               </View>
             </View>
           </View>

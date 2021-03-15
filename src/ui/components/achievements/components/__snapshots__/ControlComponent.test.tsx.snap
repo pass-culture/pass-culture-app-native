@@ -25,7 +25,9 @@ exports[`<ControlComponent /> renders render next when type is next 1`] = `
     testID="arrowNext"
     width={32}
   >
-    arrowNext-SVG-Mock
+    <Text>
+      arrowNext-SVG-Mock
+    </Text>
   </View>
 </View>
 `;
@@ -55,7 +57,9 @@ exports[`<ControlComponent /> should render correctly prev by default 1`] = `
     testID="arrowPrevious"
     width={32}
   >
-    arrowPrevious-SVG-Mock
+    <Text>
+      arrowPrevious-SVG-Mock
+    </Text>
   </View>
 </View>
 `;
@@ -85,7 +89,9 @@ exports[`<ControlComponent /> should render prev when type is prev 1`] = `
     testID="arrowPrevious"
     width={32}
   >
-    arrowPrevious-SVG-Mock
+    <Text>
+      arrowPrevious-SVG-Mock
+    </Text>
   </View>
 </View>
 `;

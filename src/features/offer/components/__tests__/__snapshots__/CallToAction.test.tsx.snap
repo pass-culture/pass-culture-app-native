@@ -81,7 +81,9 @@ exports[`<CallToAction /> should render not disabled 1`] = `
     height={48}
     width="100%"
   >
-    undefined-SVG-Mock
+    <Text>
+      undefined-SVG-Mock
+    </Text>
   </View>
   <Text
     adjustsFontSizeToFit={true}

@@ -46,7 +46,9 @@ exports[`CreditCeiling should render properly 1`] = `
         testID="progress-bar-icon"
         width={32}
       >
-        progress-bar-icon-SVG-Mock
+        <Text>
+          progress-bar-icon-SVG-Mock
+        </Text>
       </View>
     </View>
     <View

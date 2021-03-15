@@ -21,7 +21,7 @@ describe('ProgressBar', () => {
     const expectedProgress = 0.5
     const expectedBackgroundColor = ColorsEnum.PRIMARY
 
-    const { getByTestId } = render(
+    const { getByText, getByTestId } = render(
       <ProgressBar color={expectedBackgroundColor} progress={expectedProgress} icon={Close} />
     )
 
@@ -31,8 +31,7 @@ describe('ProgressBar', () => {
     expect(style.flexGrow).toEqual(expectedProgress)
     expect(style.backgroundColor).toEqual(expectedBackgroundColor)
 
-    const progressBarIcon = getByTestId('progress-bar-icon')
-
-    expect(progressBarIcon.props.children).toEqual('progress-bar-icon-SVG-Mock')
+    const progressBarIcon = getByText('progress-bar-icon-SVG-Mock')
+    expect(progressBarIcon).toBeTruthy()
   })
 })

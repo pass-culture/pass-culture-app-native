@@ -71,7 +71,9 @@ exports[`TabBar renders correctly 1`] = `
         testID="selector-tab-Home"
         width={44}
       >
-        selector-tab-Home-SVG-Mock
+        <Text>
+          selector-tab-Home-SVG-Mock
+        </Text>
       </View>
       <View
         style={
@@ -88,7 +90,9 @@ exports[`TabBar renders correctly 1`] = `
         height={44}
         width={44}
       >
-        undefined-SVG-Mock
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
       <View
         style={
@@ -149,7 +153,9 @@ exports[`TabBar renders correctly 1`] = `
         height={44}
         width={44}
       >
-        undefined-SVG-Mock
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
       <View
         style={
@@ -201,7 +207,9 @@ exports[`TabBar renders correctly 1`] = `
         height={44}
         width={44}
       >
-        undefined-SVG-Mock
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
       <View
         style={
@@ -253,7 +261,9 @@ exports[`TabBar renders correctly 1`] = `
         height={44}
         width={44}
       >
-        undefined-SVG-Mock
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
       <View
         style={
@@ -305,7 +315,9 @@ exports[`TabBar renders correctly 1`] = `
         height={44}
         width={44}
       >
-        undefined-SVG-Mock
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
       <View
         style={

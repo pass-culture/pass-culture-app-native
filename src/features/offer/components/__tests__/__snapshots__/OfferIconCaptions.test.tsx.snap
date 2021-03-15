@@ -50,7 +50,9 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
         height={40}
         width={40}
       >
-        undefined-SVG-Mock
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
     </View>
     <Text
@@ -112,7 +114,9 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
         testID="iconPrice"
         width={40}
       >
-        iconPrice-SVG-Mock
+        <Text>
+          iconPrice-SVG-Mock
+        </Text>
       </View>
     </View>
     <Text

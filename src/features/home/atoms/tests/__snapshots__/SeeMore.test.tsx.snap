@@ -96,7 +96,9 @@ exports[`SeeMore renders correctly 1`] = `
           testID="arrow-next"
           width={56}
         >
-          arrow-next-SVG-Mock
+          <Text>
+            arrow-next-SVG-Mock
+          </Text>
         </View>
       </View>
       <View

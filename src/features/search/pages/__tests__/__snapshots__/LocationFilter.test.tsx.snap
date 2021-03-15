@@ -77,7 +77,9 @@ Array [
             height={32}
             width={32}
           >
-            undefined-SVG-Mock
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
           <View
             numberOfSpaces={3}
@@ -175,7 +177,9 @@ Array [
             height={48}
             width={48}
           >
-            undefined-SVG-Mock
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
           <View
             numberOfSpaces={2}
@@ -218,7 +222,9 @@ Array [
           height={32}
           width={32}
         >
-          undefined-SVG-Mock
+          <Text>
+            undefined-SVG-Mock
+          </Text>
         </View>
       </View>
       <View
@@ -270,7 +276,9 @@ Array [
             height={48}
             width={48}
           >
-            undefined-SVG-Mock
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
           <View
             numberOfSpaces={2}
@@ -359,7 +367,9 @@ Array [
             height={48}
             width={48}
           >
-            undefined-SVG-Mock
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
           <View
             numberOfSpaces={2}
@@ -403,7 +413,9 @@ Array [
             testID="validateIcon"
             width={32}
           >
-            validateIcon-SVG-Mock
+            <Text>
+              validateIcon-SVG-Mock
+            </Text>
           </View>
         </View>
         <View
@@ -495,7 +507,9 @@ Array [
           testID="icon-back"
           width={32}
         >
-          icon-back-SVG-Mock
+          <Text>
+            icon-back-SVG-Mock
+          </Text>
         </View>
       </View>
       <View

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 const mockReactNativeSvg = jest.genMockFromModule('react-native-svg')
 
@@ -11,7 +11,7 @@ const Svg = ({ testID, fill, width, height }) => {
         width={width}
         height={height}
         testID={testID}>  
-        {displayNameForTest}
+        <Text>{displayNameForTest}</Text>
     </View>
 } 
 

@@ -116,7 +116,9 @@ Array [
             height={24}
             width={24}
           >
-            undefined-SVG-Mock
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
         </View>
         <View
@@ -514,7 +516,9 @@ Array [
             height={24}
             width={24}
           >
-            undefined-SVG-Mock
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
         </View>
       </View>
@@ -1323,7 +1327,9 @@ Array [
             height={24}
             width={24}
           >
-            undefined-SVG-Mock
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
         </View>
       </View>
@@ -2810,7 +2816,9 @@ Array [
           testID="icon-back"
           width={32}
         >
-          icon-back-SVG-Mock
+          <Text>
+            icon-back-SVG-Mock
+          </Text>
         </View>
       </View>
       <View

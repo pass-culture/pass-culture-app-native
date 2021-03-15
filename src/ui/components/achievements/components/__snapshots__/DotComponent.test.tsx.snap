@@ -28,7 +28,9 @@ exports[`<DotComponent /> renders dot active color 1`] = `
     testID="dot-icon"
     width={12}
   >
-    dot-icon-SVG-Mock
+    <Text>
+      dot-icon-SVG-Mock
+    </Text>
   </View>
 </View>
 `;
@@ -61,7 +63,9 @@ exports[`<DotComponent /> should render correctly 1`] = `
     testID="dot-icon"
     width={8}
   >
-    dot-icon-SVG-Mock
+    <Text>
+      dot-icon-SVG-Mock
+    </Text>
   </View>
 </View>
 `;
