@@ -31,5 +31,3 @@ git pull
 
 update_app_version
 
-# TODO (PC-7240): build ios 
-./scripts/deploy.sh -o android -t hard -e production

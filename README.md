@@ -183,6 +183,27 @@ When you want to deploy the current version of master in staging, you can run th
 
 `yarn trigger:staging:deploy`
 
+## Deploy to production
+
+### Deploy hard
+
+For the moment production deployment is not available on the CD (coming soon), we do it locally.
+To deploy to production:
+
+- `yarn upgrade:production:version`
+
+/!\ DO NOT DEPLOY IOS & ANDROID SIMULTANEOUSLY
+
+- Android: `yarn trigger:production:deploy:android`
+- IOS: `yarn trigger:production:deploy:ios`
+
+### Deploy CodePush
+
+/!\ DO NOT DEPLOY CODEPUSH IOS & ANDROID SIMULTANEOUSLY
+
+- Android: `yarn trigger:production:codepush:android`
+- IOS: `yarn trigger:production:codepush:ios`
+
 ## Troubleshooting
 
 If you don't know what's happening in your application, you can still access the log with ADB:
