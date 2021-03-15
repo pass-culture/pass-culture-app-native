@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useMemo } from 'react'
-import { Dimensions } from 'react-native'
+import { Alert, Dimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -15,7 +15,9 @@ import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDate, getFavoriteDisplayPrice, parseCategory } from 'libs/parsers'
 import { AppButton } from 'ui/components/buttons/AppButton'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -106,23 +108,36 @@ export const Favorite: React.FC<Props> = ({ favorite }) => {
           <Typo.Caption>{getFavoriteDisplayPrice({ startPrice, price })}</Typo.Caption>
         </Column>
       </Row>
-      <ButtonContainer>
-        <AppButton
-          title={_(t`Supprimer`)}
-          onPress={() => removeFavorite(id)}
-          textColor={ColorsEnum.BLACK}
-          borderColor={ColorsEnum.GREY_MEDIUM}
-          backgroundColor={ColorsEnum.WHITE}
-          loadingIconColor={ColorsEnum.PRIMARY}
-          buttonHeight="tall"
-          disabled={isLoading}
-        />
-      </ButtonContainer>
+      <ButtonsRow>
+        <ButtonContainer>
+          <AppButton
+            title={_(t`Supprimer`)}
+            onPress={() => removeFavorite(id)}
+            textColor={ColorsEnum.BLACK}
+            borderColor={ColorsEnum.GREY_MEDIUM}
+            backgroundColor={ColorsEnum.WHITE}
+            loadingIconColor={ColorsEnum.PRIMARY}
+            buttonHeight="tall"
+            disabled={isLoading}
+          />
+        </ButtonContainer>
+        <ButtonContainer>
+          <ButtonPrimary
+            title={_(t`Réserver`)}
+            onPress={() => {
+              Alert.alert('PC_7023')
+            }}
+            icon={ExternalLinkSite}
+            buttonHeight="tall"
+            disabled={false}
+          />
+        </ButtonContainer>
+      </ButtonsRow>
     </Container>
   )
 }
 
-const { width } = Dimensions.get('window')
+const { width: windowWidth } = Dimensions.get('window')
 const imageWidth = getSpacing(16)
 
 const Container = styled.TouchableOpacity.attrs(() => ({
@@ -131,13 +146,27 @@ const Container = styled.TouchableOpacity.attrs(() => ({
 
 const columnPadding = 4
 const columnMargin = 2 * 6
-const Column = styled.View({ width: width - getSpacing(columnMargin + columnPadding) - imageWidth })
+
+const Column = styled.View({
+  width: windowWidth - getSpacing(columnMargin + columnPadding) - imageWidth,
+})
+
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
+
 const ButtonContainer = styled.View({
-  maxWidth: getSpacing(44),
+  minWidth: getSpacing(35),
+  maxWidth: getSpacing(70),
+  width: '47%',
+})
+
+const ButtonsRow = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
   marginTop: getSpacing(6),
 })
 
 const Name = styled(Typo.ButtonText)({})
+
 const Distance = styled(Typo.Body)({ textAlign: 'right', color: ColorsEnum.GREY_DARK })
+
 const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
