@@ -14,8 +14,6 @@ import { server } from 'tests/server'
 
 import { getPaginatedFavorites, useFavoritesResults } from '../useFavoritesResults'
 
-failTestOnConsole()
-
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 

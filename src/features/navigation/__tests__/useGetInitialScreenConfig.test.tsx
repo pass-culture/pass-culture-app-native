@@ -16,6 +16,8 @@ import {
   useGetInitialScreenConfig,
 } from '../RootNavigator/useGetInitialScreenConfig'
 
+allowConsole({ error: true })
+
 const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('features/auth/AuthContext')
 

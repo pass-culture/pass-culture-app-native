@@ -16,6 +16,8 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 
+allowConsole({ error: true })
+
 const email = 'email@domain.ext'
 const firstName = 'Jean'
 const token = 'XYZT'

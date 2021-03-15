@@ -21,6 +21,8 @@ import {
   getContentFromOffer,
 } from '../OfferDescription'
 
+allowConsole({ error: true })
+
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
 describe('<OfferDescription />', () => {

@@ -8,6 +8,8 @@ import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
+allowConsole({ error: true })
+
 describe('ReinitializePassword Page', () => {
   beforeAll(() => {
     useRoute.mockImplementation(() => ({

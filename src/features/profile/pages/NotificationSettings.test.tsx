@@ -20,6 +20,10 @@ import { ColorsEnum } from 'ui/theme'
 
 import { NotificationSettings } from './NotificationSettings'
 
+allowConsole({
+  error: true,
+})
+
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 

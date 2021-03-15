@@ -14,6 +14,8 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails } from '../BookingDetails'
 
+allowConsole({ error: true })
+
 const mockDismissModal = jest.fn()
 
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({

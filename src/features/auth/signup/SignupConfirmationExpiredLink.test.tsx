@@ -15,6 +15,8 @@ import { contactSupport } from '../support.services'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
 
+allowConsole({ error: true })
+
 beforeEach(() => {
   jest.clearAllMocks()
 })

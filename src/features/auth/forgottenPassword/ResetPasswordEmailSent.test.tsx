@@ -13,6 +13,8 @@ import { contactSupport } from '../support.services'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
+allowConsole({ error: true })
+
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
 describe('<ResetPasswordEmailSent />', () => {

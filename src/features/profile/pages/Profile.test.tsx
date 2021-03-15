@@ -12,6 +12,8 @@ import { flushAllPromises } from 'tests/utils'
 
 import { Profile } from './Profile'
 
+allowConsole({ error: true })
+
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(
     () =>

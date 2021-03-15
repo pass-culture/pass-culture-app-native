@@ -16,6 +16,8 @@ import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
 
+allowConsole({ error: true })
+
 jest.mock('features/navigation/helpers')
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock

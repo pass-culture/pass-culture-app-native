@@ -16,6 +16,8 @@ import { ColorsEnum } from 'ui/theme'
 
 import { ChangePassword } from './ChangePassword'
 
+allowConsole({ error: true })
+
 const mockedUseSnackBarContext = useSnackBarContext as jest.Mock
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
