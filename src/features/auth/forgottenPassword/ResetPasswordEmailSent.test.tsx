@@ -13,8 +13,6 @@ import { contactSupport } from '../support.services'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
-allowConsole({ error: true })
-
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
 describe('<ResetPasswordEmailSent />', () => {
@@ -40,12 +38,11 @@ describe('<ResetPasswordEmailSent />', () => {
   it('should redirect to Home when clicking on Close icon', async () => {
     const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
 
-    const rightIcon = renderAPI.getByTestId('rightIcon')
-    fireEvent.press(rightIcon)
+    await act(async () => renderAPI.queryByTestId('rightIcon'))
+    fireEvent.press(renderAPI.getByTestId('rightIcon'))
 
-    await waitForExpect(() => {
-      expect(renderAPI.queryByText('HomeText')).toBeTruthy()
-    })
+    await act(async () => renderAPI.queryByText('HomeText'))
+    expect(renderAPI.getByText('HomeText')).toBeTruthy()
   })
 
   it('should open mail app when clicking on contact support button', async () => {

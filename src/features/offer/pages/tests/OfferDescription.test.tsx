@@ -12,7 +12,7 @@ import { env } from 'libs/environment'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises } from 'tests/utils'
+import { superFlushWithAct } from 'tests/utils'
 
 import {
   OfferDescription,
@@ -21,25 +21,26 @@ import {
   getContentFromOffer,
 } from '../OfferDescription'
 
-allowConsole({ error: true })
-
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
 describe('<OfferDescription />', () => {
   it('should render', async () => {
-    const { toJSON, queryByText } = await renderOfferDescription()
+    const { toJSON, queryByText, getByText } = await renderOfferDescription()
     expect(toJSON()).toMatchSnapshot()
-    expect(queryByText('En détails')).toBeTruthy()
+    await act(async () => queryByText('En détails'))
+    expect(getByText('En détails')).toBeTruthy()
     expect(queryByText('Durée')).toBeFalsy()
   })
+
   it('should render without description', async () => {
-    const { queryByText } = await renderOfferDescription({
+    const { queryByText, getByText } = await renderOfferDescription({
       extraData: { durationMinutes: 20 },
       description: '',
     })
+    await act(async () => queryByText('Duree'))
     expect(queryByText('En détails')).toBeFalsy()
-    expect(queryByText('Durée')).toBeTruthy()
-    expect(queryByText('Author: photo credit author')).toBeTruthy()
+    expect(getByText('Durée')).toBeTruthy()
+    expect(getByText('Author: photo credit author')).toBeTruthy()
   })
 })
 
@@ -111,9 +112,7 @@ async function renderOfferDescription(
     )
   )
 
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await superFlushWithAct(30)
 
   await waitForExpect(() => {
     expect(wrapper.queryByTestId('offer-description-list')).toBeTruthy()

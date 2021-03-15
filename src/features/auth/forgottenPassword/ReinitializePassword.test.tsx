@@ -8,8 +8,6 @@ import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
-allowConsole({ error: true })
-
 describe('ReinitializePassword Page', () => {
   beforeAll(() => {
     useRoute.mockImplementation(() => ({
@@ -62,6 +60,7 @@ describe('ReinitializePassword Page', () => {
       expect(color).toEqual(ColorsEnum.ERROR)
     })
   })
+
   it('should validate PasswordSecurityRules when password is correct', async () => {
     const { toJSON, getByPlaceholderText } = render(reactQueryProviderHOC(<ReinitializePassword />))
 
@@ -75,11 +74,11 @@ describe('ReinitializePassword Page', () => {
       expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
     })
   })
-  it('should redirect to login page WHEN password is reset', async () => {
-    const { findByText } = render(reactQueryProviderHOC(<ReinitializePassword />))
 
-    const continueButton = await findByText('Continuer')
-    fireEvent.press(continueButton)
+  it('should redirect to login page WHEN password is reset', async () => {
+    const { getByText } = render(reactQueryProviderHOC(<ReinitializePassword />))
+
+    fireEvent.press(getByText('Continuer'))
 
     await waitFor(() => {
       expect(navigate).toBeCalledTimes(1)

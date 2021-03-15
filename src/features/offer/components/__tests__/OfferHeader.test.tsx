@@ -181,7 +181,7 @@ describe('<OfferHeader />', () => {
     // })
   })
 
-  it.only('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
+  it('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
     const { queryByTestId, getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
       hasAddFavoriteError: true,
