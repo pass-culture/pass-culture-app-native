@@ -46,8 +46,10 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   })
 
   useEffect(() => {
-    if (!stock) {
-      dispatch({ type: 'SELECT_STOCK', payload: stocks[0].id })
+    const { id } = stocks[0] || {}
+
+    if (!stock && typeof id === 'number') {
+      dispatch({ type: 'SELECT_STOCK', payload: id })
       dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
     }
   }, [])

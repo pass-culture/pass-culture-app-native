@@ -5,7 +5,9 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { OfferStockResponse } from 'api/gen'
+import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
+import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -17,10 +19,30 @@ import { BookingDetails } from '../BookingDetails'
 allowConsole({ error: true })
 
 const mockDismissModal = jest.fn()
+const mockDispatch = jest.fn()
+
+const mockInitialBookingState = initialBookingState
 
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest.fn(() => ({ bookingState: { quantity: 1 }, dismissModal: mockDismissModal })),
-  useBookingStock: jest.fn(() => ({ price: 2000, id: '123456' })),
+  useBooking: jest
+    .fn(() => ({
+      bookingState: { quantity: 1 } as BookingState,
+      dismissModal: mockDismissModal,
+      dispatch: mockDispatch,
+    }))
+    .mockImplementationOnce(() => ({
+      bookingState: mockInitialBookingState as BookingState,
+      dismissModal: mockDismissModal,
+      dispatch: mockDispatch,
+    })),
+  useBookingStock: jest
+    .fn(() => ({
+      price: 2000,
+      id: '148409',
+      beginningDatetime: new Date('2021-03-02T20:00:00'),
+    }))
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    .mockImplementationOnce(() => {}),
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
@@ -31,22 +53,29 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+const mockStocks = mockOffer.stocks
+const mockDigitalStocks = mockDigitalOffer.stocks
+
 describe('<BookingDetails />', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should render correctly', async () => {
-    const page = await renderBookingDetails()
+  it('should initialize correctly state when offer isDigital', async () => {
+    await renderBookingDetails(mockDigitalStocks)
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148401 })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
+  })
+  it('should render correctly when user has selected options and offer is an event', async () => {
+    const page = await renderBookingDetails(mockStocks)
     expect(page).toMatchSnapshot()
   })
-
   it('should dismiss modal on successfully booking an offer', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/book_offer', (req, res, ctx) => res(ctx.status(204)))
     )
 
-    const page = await renderBookingDetails()
+    const page = await renderBookingDetails(mockStocks)
 
     await act(async () => {
       await fireEvent.press(page.getByText('Confirmer la réservation'))
@@ -69,7 +98,7 @@ describe('<BookingDetails />', () => {
       )
     )
 
-    const page = await renderBookingDetails()
+    const page = await renderBookingDetails(mockStocks)
 
     await act(async () => {
       await fireEvent.press(page.getByText('Confirmer la réservation'))
@@ -85,8 +114,8 @@ describe('<BookingDetails />', () => {
   })
 })
 
-const renderBookingDetails = async () => {
-  const renderAPI = render(reactQueryProviderHOC(<BookingDetails stocks={[]} />))
+const renderBookingDetails = async (stocks: OfferStockResponse[]) => {
+  const renderAPI = render(reactQueryProviderHOC(<BookingDetails stocks={stocks} />))
 
   await act(flushAllPromises)
 
