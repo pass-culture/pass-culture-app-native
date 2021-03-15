@@ -1,4 +1,4 @@
-import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react-native'
+import { act, cleanup, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import { Animated, Share, Platform } from 'react-native'
@@ -19,7 +19,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises, superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct } from 'tests/utils'
 import {
   showSuccessSnackBar,
   showErrorSnackBar,
@@ -29,6 +29,8 @@ import {
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { OfferHeader } from '../OfferHeader'
+
+// failTestOnConsole()
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -54,11 +56,13 @@ describe('<OfferHeader />', () => {
     jest.clearAllMocks()
     await cleanup()
   })
+
   beforeEach(() =>
     useRoute.mockImplementation(() => ({
       params: {},
     }))
   )
+
   it('should render correctly', async () => {
     const { toJSON } = await renderOfferHeader({ isLoggedIn: true })
     expect(toJSON()).toMatchSnapshot()
@@ -83,6 +87,7 @@ describe('<OfferHeader />', () => {
     fireEvent.press(getByTestId('icon-back'))
     expect(goBack).toBeCalledTimes(1)
   })
+
   it('should fully display the title at the end of the animation', async () => {
     const { animatedValue, getByTestId } = await renderOfferHeader({ isLoggedIn: true })
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
@@ -176,7 +181,7 @@ describe('<OfferHeader />', () => {
     // })
   })
 
-  it('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
+  it.only('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
     const { queryByTestId, getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
       hasAddFavoriteError: true,
@@ -190,7 +195,9 @@ describe('<OfferHeader />', () => {
       )?.offer.id
     ).toBe(undefined)
 
+    await act(async () => queryByTestId('icon-favorite'))
     fireEvent.press(getByTestId('icon-favorite'))
+
     await waitForExpect(() => {
       const mutateDataBetween = queryCache.find('favorites')?.state
         ?.data as PaginatedFavoritesResponse
@@ -199,17 +206,18 @@ describe('<OfferHeader />', () => {
           (f: FavoriteResponse) => f.offer.id === addFavoriteJsonResponseSnap.offer.id
         )?.offer.id
       ).toBe(10000)
-      expect(queryByTestId('icon-favorite-filled')).toBeTruthy()
     })
 
-    await superFlushWithAct()
+    expect(queryByTestId('icon-favorite-filled')).toBeTruthy()
+
+    await superFlushWithAct(20)
 
     expect(showErrorSnackBar).toBeCalledWith({
       message: `L'offre n'a pas été ajoutée à tes favoris`,
       timeout: SNACK_BAR_TIME_OUT,
     })
 
-    await superFlushWithAct()
+    await superFlushWithAct(20)
     const mutateDataAfter = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
     expect(
       mutateDataAfter.favorites?.find(
@@ -330,7 +338,7 @@ async function renderOfferHeader(options: Options = defaultOptions) {
     rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
       !hasAddFavoriteError
         ? res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
-        : res(ctx.status(200), ctx.json({}))
+        : res(ctx.status(415), ctx.json({}))
     ),
     rest.delete<EmptyResponse>(
       `${env.API_BASE_URL}/native/v1/me/favorites/${
@@ -352,9 +360,7 @@ async function renderOfferHeader(options: Options = defaultOptions) {
       <OfferHeader title="Some very nice offer" headerTransition={animatedValue} offerId={id} />
     )
   )
-  await act(async () => {
-    await flushAllPromises()
-  })
-  await waitFor(() => wrapper.getByTestId('offerHeaderName'))
+  await superFlushWithAct(20)
+  await act(async () => wrapper.queryByTestId('offerHeaderName'))
   return { ...wrapper, animatedValue }
 }

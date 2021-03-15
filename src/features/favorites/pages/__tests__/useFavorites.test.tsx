@@ -27,21 +27,20 @@ const humanizedOfferId = 'AHD3A'
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const offerId = dehumanizeId(humanizedOfferId)!
 
-function simulateBackend(
-  {
-    id = offerId,
-    hasAddFavoriteError = false,
-    hasRemoveFavoriteError = false,
-  }: {
-    id?: number
-    hasAddFavoriteError?: boolean
-    hasRemoveFavoriteError?: boolean
-  } = {
-    id: offerId,
-    hasAddFavoriteError: false,
-    hasRemoveFavoriteError: false,
-  }
-) {
+interface Options {
+  id?: number
+  hasAddFavoriteError?: boolean
+  hasRemoveFavoriteError?: boolean
+}
+
+const defaultOptions = {
+  id: offerId,
+  hasAddFavoriteError: false,
+  hasRemoveFavoriteError: false,
+}
+
+function simulateBackend(options: Options = defaultOptions) {
+  const { id, hasAddFavoriteError, hasRemoveFavoriteError } = { ...defaultOptions, ...options }
   server.use(
     rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${id}`, (req, res, ctx) =>
       res(ctx.status(200), ctx.json(offerResponseSnap))
@@ -53,13 +52,14 @@ function simulateBackend(
     rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
       !hasAddFavoriteError
         ? res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
-        : res(ctx.status(422))
+        : res(ctx.status(422), ctx.json({}))
     ),
     rest.delete<EmptyResponse>(
       `${env.API_BASE_URL}/native/v1/me/favorites/${
         paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
       }`,
-      (req, res, ctx) => (!hasRemoveFavoriteError ? res(ctx.status(204)) : res(ctx.status(422)))
+      (req, res, ctx) =>
+        !hasRemoveFavoriteError ? res(ctx.status(204)) : res(ctx.status(422), ctx.json({}))
     )
   )
 }

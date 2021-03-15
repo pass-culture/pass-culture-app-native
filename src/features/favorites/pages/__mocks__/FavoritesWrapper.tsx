@@ -7,7 +7,7 @@ import { FavoritesWrapper as ActualFavoritesWrapper } from '../FavoritesWrapper'
 
 export const FavoritesWrapper: typeof ActualFavoritesWrapper = ({ children }) => <View>{children}</View>
 
-export const useFavorites = () => ({
+export const useFavoritesState = () => ({
     favoritesState: initialFavoritesState,
     dispatch: jest.fn(),
 })

@@ -1,6 +1,6 @@
 import { act, fireEvent } from '@testing-library/react-native'
 
-import { renderOfferPage } from './renderOfferPage'
+import { renderOfferPage } from './renderOfferPageTestUtil'
 
 describe('<Offer />', () => {
   it('should match snapshot for physical offer', async () => {

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react-native'
+import { act, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 
@@ -12,11 +12,13 @@ import { superFlushWithAct } from 'tests/utils'
 
 import { BicolorFavoriteCount } from '../BicolorFavoriteCount'
 
+failTestOnConsole()
+
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 describe('BicolorFavoriteCount component', () => {
-  afterEach(jest.resetAllMocks)
+  afterEach(jest.clearAllMocks)
 
   it('should render non connected icon', async () => {
     const { queryByTestId } = await renderBicolorFavoriteCount({ isLoggedIn: false })
@@ -37,6 +39,7 @@ describe('BicolorFavoriteCount component', () => {
         favorites: [],
       },
     })
+    await act(async () => queryByText('99'))
     expect(queryByText('99')).toBeTruthy()
   })
 
@@ -44,6 +47,7 @@ describe('BicolorFavoriteCount component', () => {
     const { queryByText } = await renderBicolorFavoriteCount({
       isLoggedIn: true,
     })
+    await act(async () => queryByText(paginatedFavoritesResponseSnap.nbFavorites.toString()))
     expect(queryByText(paginatedFavoritesResponseSnap.nbFavorites.toString())).toBeTruthy()
   })
 
@@ -56,6 +60,7 @@ describe('BicolorFavoriteCount component', () => {
         favorites: [],
       },
     })
+    await act(async () => queryByText('0'))
     expect(queryByText('0')).toBeTruthy()
   })
 })
@@ -78,8 +83,7 @@ async function renderBicolorFavoriteCount(options: Options = defaultOptions) {
       (req, res, ctx) => res(ctx.status(200), ctx.json(favoritesResponse))
     )
   )
-  const setIsLoggedIn = jest.fn()
-  mockUseAuthContext.mockImplementation(() => ({ isLoggedIn, setIsLoggedIn }))
+  mockUseAuthContext.mockReturnValue({ isLoggedIn, setIsLoggedIn: jest.fn() })
   const renderAPI = render(reactQueryProviderHOC(<BicolorFavoriteCount />))
   await superFlushWithAct(30)
   return renderAPI

@@ -4,7 +4,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { analytics } from 'libs/analytics'
 
-import { offerId, renderOfferPage } from './renderOfferPage'
+import { offerId, renderOfferPage } from './renderOfferPageTestUtil'
 
 describe('<Offer /> - Analytics', () => {
   beforeAll(() => {
