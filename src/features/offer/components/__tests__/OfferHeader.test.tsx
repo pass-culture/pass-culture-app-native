@@ -158,12 +158,6 @@ describe('<OfferHeader />', () => {
       )?.offer.id
     ).toEqual(addFavoriteJsonResponseSnap.offer.id)
 
-    await superFlushWithAct()
-    expect(showSuccessSnackBar).toBeCalledWith({
-      message: `L'offre a été ajoutée aux favoris`,
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-
     /* Flacky test after we encapsulate useQuery within useInfiniteQuery to fetch favorites results,
      * if later a solution can solve this, uncomment
      * Meanwhile, we had to mock useFavorites and cache is not getting updated 100% of times within this test
@@ -211,7 +205,7 @@ describe('<OfferHeader />', () => {
     await superFlushWithAct()
 
     expect(showErrorSnackBar).toBeCalledWith({
-      message: `L'offre n'a pas été ajoutée au favoris`,
+      message: `L'offre n'a pas été ajoutée à tes favoris`,
       timeout: SNACK_BAR_TIME_OUT,
     })
 
@@ -245,7 +239,7 @@ describe('<OfferHeader />', () => {
     ).toBe(undefined)
     await superFlushWithAct()
     expect(showSuccessSnackBar).toBeCalledWith({
-      message: `L'offre a été retirée des favoris`,
+      message: `L'offre a été retirée de tes favoris`,
       timeout: SNACK_BAR_TIME_OUT,
     })
   })
@@ -277,7 +271,7 @@ describe('<OfferHeader />', () => {
     await superFlushWithAct()
 
     expect(showErrorSnackBar).toBeCalledWith({
-      message: `L'offre n'a pas été retirée des favoris`,
+      message: `L'offre n'a pas été retirée de tes favoris`,
       timeout: SNACK_BAR_TIME_OUT,
     })
 
