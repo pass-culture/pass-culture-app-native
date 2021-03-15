@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
+import { Text as MockText } from 'react-native'
 import {
   InfiniteData,
   InfiniteQueryObserverSuccessResult,
@@ -36,6 +37,13 @@ jest.mock('features/favorites/pages/useFavorites')
 const mockUseFavorites = useFavorites as jest.MockedFunction<typeof useFavorites>
 const mockUseRemoveFavorites = useRemoveFavorite as jest.MockedFunction<typeof useRemoveFavorite>
 
+jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
+  BookingOfferModal() {
+    const Text = MockText
+    return <Text>BookingOfferModalMock</Text>
+  },
+}))
+
 const mockData = {
   nbFavorites: 0,
   favorites: [] as Array<FavoriteResponse>,
@@ -69,7 +77,7 @@ describe('FavoritesResults component', () => {
       hasNextPage: mockHasNextPage,
       fetchNextPage: mockFetchNextPage,
     } as unknown) as InfiniteQueryObserverSuccessResult<FakePaginatedFavoritesResponse>)
-    const { getByTestId } = render(<FavoritesResults />)
+    const { getByTestId } = renderFavoritesResults()
     const flatlist = getByTestId('favoritesResultsFlatlist')
 
     mockDataPage.pages.push({
@@ -105,7 +113,7 @@ describe('FavoritesResults component', () => {
       fetchNextPage: mockFetchNextPage,
     } as unknown) as InfiniteQueryObserverSuccessResult<FakePaginatedFavoritesResponse>)
     mockHasNextPage = false
-    const { getByTestId } = render(<FavoritesResults />)
+    const { getByTestId } = renderFavoritesResults()
     const flatlist = getByTestId('favoritesResultsFlatlist')
     flatlist.props.onEndReached()
   })
@@ -121,7 +129,7 @@ describe('FavoritesResults component', () => {
       hasNextPage: mockHasNextPage,
       fetchNextPage: mockFetchNextPage,
     } as unknown) as InfiniteQueryObserverSuccessResult<FakePaginatedFavoritesResponse>)
-    const { getByText, queryByText } = render(<FavoritesResults />)
+    const { getByText, queryByText } = renderFavoritesResults()
     const button = getByText('Explorer les offres')
     const filterButton = queryByText('Filter')
     expect(button).toBeTruthy()
@@ -139,7 +147,7 @@ describe('FavoritesResults component', () => {
       hasNextPage: mockHasNextPage,
       fetchNextPage: mockFetchNextPage,
     } as unknown) as InfiniteQueryObserverSuccessResult<FakePaginatedFavoritesResponse>)
-    const { getByTestId } = render(<FavoritesResults />)
+    const { getByTestId } = renderFavoritesResults()
     const container = getByTestId('FavoritesResultsPlaceHolder')
     expect(container).toBeTruthy()
   })
@@ -166,3 +174,7 @@ describe('FavoritesResults component', () => {
     expect(filterButton).toBeTruthy()
   })
 })
+
+function renderFavoritesResults() {
+  return render(reactQueryProviderHOC(<FavoritesResults />))
+}

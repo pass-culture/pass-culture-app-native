@@ -1,7 +1,9 @@
 import { useUserProfileInfo } from 'features/home/api'
 import { computeWalletBalance } from 'features/profile/utils'
 
-export const useAvailableCredit = (): { amount: number; isExpired: boolean } | undefined => {
+export type Credit = { amount: number; isExpired: boolean }
+
+export const useAvailableCredit = (): Credit | undefined => {
   const { data: user } = useUserProfileInfo()
   if (!user) return undefined
 

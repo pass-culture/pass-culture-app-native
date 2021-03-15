@@ -1,13 +1,15 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useMemo } from 'react'
-import { Alert, Dimensions } from 'react-native'
+import { Dimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/pages/useFavorites'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
+import { Credit } from 'features/home/services/useAvailableCredit'
+import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useDistance } from 'features/offer/components/useDistance'
 import { OfferImage } from 'features/search/atoms/OfferImage'
@@ -22,12 +24,14 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
+  credit: Credit
   favorite: FavoriteResponse
+  setOfferToBook: React.Dispatch<React.SetStateAction<FavoriteOfferResponse | null>>
+  user: UserProfileResponse
 }
 
-export const Favorite: React.FC<Props> = ({ favorite }) => {
-  const { id, offer } = favorite
-  const { price, startPrice } = offer
+export const Favorite: React.FC<Props> = (props) => {
+  const { offer } = props.favorite
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance({
@@ -81,6 +85,39 @@ export const Favorite: React.FC<Props> = ({ favorite }) => {
     navigation.navigate('Offer', { id: offer.id, shouldDisplayLoginModal: false })
   }
 
+  function renderBookingButton() {
+    const isFreeOffer = offer.price === 0
+    const isExBeneficiary = props.user.isBeneficiary && props.credit.isExpired
+    const isNotBeneficiary = !props.user.isBeneficiary
+
+    let shouldBookExternally = false
+    if (isNotBeneficiary || (isExBeneficiary && !isFreeOffer)) {
+      shouldBookExternally = true
+    }
+
+    function bookInApp() {
+      props.setOfferToBook(offer)
+    }
+
+    function bookExternally() {
+      if (offer.externalTicketOfficeUrl) {
+        openExternalUrl(offer.externalTicketOfficeUrl)
+      }
+    }
+
+    if (shouldBookExternally && !offer.externalTicketOfficeUrl) {
+      return null
+    }
+    return (
+      <ButtonPrimary
+        title={_(t`Réserver`)}
+        onPress={shouldBookExternally ? bookExternally : bookInApp}
+        icon={shouldBookExternally ? ExternalLinkSite : undefined}
+        buttonHeight="tall"
+      />
+    )
+  }
+
   return (
     <Container onPress={handlePressOffer} testID="favorite">
       <Row>
@@ -105,14 +142,16 @@ export const Favorite: React.FC<Props> = ({ favorite }) => {
           <Body>{categoryLabel}</Body>
           {formattedDate && <Body>{formattedDate}</Body>}
           <Spacer.Column numberOfSpaces={1} />
-          <Typo.Caption>{getFavoriteDisplayPrice({ startPrice, price })}</Typo.Caption>
+          <Typo.Caption>
+            {getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })}
+          </Typo.Caption>
         </Column>
       </Row>
       <ButtonsRow>
         <ButtonContainer>
           <AppButton
             title={_(t`Supprimer`)}
-            onPress={() => removeFavorite(id)}
+            onPress={() => removeFavorite(props.favorite.id)}
             textColor={ColorsEnum.BLACK}
             borderColor={ColorsEnum.GREY_MEDIUM}
             backgroundColor={ColorsEnum.WHITE}
@@ -121,17 +160,7 @@ export const Favorite: React.FC<Props> = ({ favorite }) => {
             disabled={isLoading}
           />
         </ButtonContainer>
-        <ButtonContainer>
-          <ButtonPrimary
-            title={_(t`Réserver`)}
-            onPress={() => {
-              Alert.alert('PC_7023')
-            }}
-            icon={ExternalLinkSite}
-            buttonHeight="tall"
-            disabled={false}
-          />
-        </ButtonContainer>
+        <ButtonContainer>{renderBookingButton()}</ButtonContainer>
       </ButtonsRow>
     </Container>
   )
@@ -154,7 +183,7 @@ const Column = styled.View({
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
 const ButtonContainer = styled.View({
-  minWidth: getSpacing(35),
+  minWidth: getSpacing(30),
   maxWidth: getSpacing(70),
   width: '47%',
 })

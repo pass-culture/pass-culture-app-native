@@ -1,15 +1,18 @@
 import flatten from 'lodash.flatten'
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { FavoriteResponse } from 'api/gen'
+import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
+import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { Filter } from 'features/favorites/atoms/Buttons/Filter'
 import { Favorite } from 'features/favorites/atoms/Favorite'
 import { NumberOfResults } from 'features/favorites/atoms/NumberOfResults'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useFavoritesResults } from 'features/favorites/pages/useFavoritesResults'
+import { useUserProfileInfo } from 'features/home/api'
+import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -17,10 +20,14 @@ import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
 
 export const FavoritesResults: React.FC = () => {
+  const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
+
   const { isScrolling, handleIsScrolling } = useDebouncedScrolling()
   const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useFavoritesResults()
   const favoritesState = useFavoritesState()
+  const { data: user } = useUserProfileInfo()
+  const credit = useAvailableCredit()
 
   const favorites: FavoriteResponse[] = useMemo(
     () => flatten(data?.pages.map((page) => page.favorites)),
@@ -43,8 +50,15 @@ export const FavoritesResults: React.FC = () => {
   const onScrollBeginDrag = useCallback(() => handleIsScrolling(true), [])
 
   const renderItem = useCallback(
-    ({ item: favorite }: { item: FavoriteResponse }) => <Favorite favorite={favorite} />,
-    [favoritesState]
+    ({ item: favorite }: { item: FavoriteResponse }) => {
+      if (!user || !credit) {
+        return <HitPlaceholder />
+      }
+      return (
+        <Favorite credit={credit} favorite={favorite} user={user} setOfferToBook={setOfferToBook} />
+      )
+    },
+    [credit, favoritesState, user, setOfferToBook]
   )
 
   const ListHeaderComponent = useMemo(() => <NumberOfResults nbFavorites={nbFavorites} />, [
@@ -69,6 +83,13 @@ export const FavoritesResults: React.FC = () => {
   if (isLoading || !data) return <FavoritesResultsPlaceHolder />
   return (
     <React.Fragment>
+      {offerToBook && (
+        <BookingOfferModal
+          visible
+          dismissModal={() => setOfferToBook(null)}
+          offerId={offerToBook.id}
+        />
+      )}
       <Container>
         <FlatList
           ref={flatListRef}
