@@ -10,13 +10,11 @@ import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/na
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
-import { flushAllPromises, flushAllPromisesTimes } from 'tests/utils'
+import { flushAllPromises, superFlushWithAct } from 'tests/utils'
 
 import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
-
-allowConsole({ error: true })
 
 jest.mock('features/navigation/helpers')
 
@@ -117,14 +115,13 @@ describe('<Login/>', () => {
     const renderAPI = renderLogin()
     const notErrorSnapshot = renderAPI.toJSON()
 
+    await act(async () => renderAPI.queryByText('Se connecter'))
     fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(async () => {
-      await flushAllPromisesTimes(6)
-    })
+    await superFlushWithAct()
 
-    await waitForExpect(() => {
-      expect(renderAPI.queryByText('E-mail ou mot de passe incorrect.')).toBeTruthy()
-    })
+    await act(async () => renderAPI.queryByText('E-mail ou mot de passe incorrect.'))
+    expect(renderAPI.getByText('E-mail ou mot de passe incorrect.')).toBeTruthy()
+
     const errorSnapshot = renderAPI.toJSON()
     expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
     expect(navigate).not.toBeCalled()

@@ -16,8 +16,6 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 
-allowConsole({ error: true })
-
 const email = 'email@domain.ext'
 const firstName = 'Jean'
 const token = 'XYZT'
@@ -50,10 +48,10 @@ describe('<EighteenBirthdayCard />', () => {
     jest.useRealTimers()
   })
 
-  // TODO (PC-7003) : fix this test which fail randomly and only in CI
-  it.skip('should go to id check when user is authed', async () => {
-    const { getByText } = await renderEighteenBirthdayCard()
+  it('should go to id check when user is authed', async () => {
+    const { getByText, queryByText } = await renderEighteenBirthdayCard()
 
+    await act(async () => queryByText('Verifier mon identité'))
     fireEvent.press(getByText('Verifier mon identité'))
     await superFlushWithAct()
 
@@ -64,16 +62,14 @@ describe('<EighteenBirthdayCard />', () => {
 
   it('should throw an error when opening id check when not eligible', async () => {
     simulateNotEligibleIdCheckToken()
-    const { getByText } = await renderEighteenBirthdayCard()
-
-    await waitForExpect(() => {
-      expect(() => fireEvent.press(getByText('Verifier mon identité'))).toThrowError(
-        new MonitoringError(
-          'Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !',
-          'NotEligibleIdCheckError'
-        )
+    const { getByText, queryByText } = await renderEighteenBirthdayCard()
+    await act(async () => queryByText('Verifier mon identité'))
+    expect(() => fireEvent.press(getByText('Verifier mon identité'))).toThrowError(
+      new MonitoringError(
+        'Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !',
+        'NotEligibleIdCheckError'
       )
-    })
+    )
   })
 
   it('should go to login check when user is not authed', async () => {

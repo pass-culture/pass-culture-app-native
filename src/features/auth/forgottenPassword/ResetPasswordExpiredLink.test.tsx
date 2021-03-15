@@ -1,8 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { render, fireEvent } from '@testing-library/react-native'
+import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
@@ -14,8 +13,6 @@ import { server } from 'tests/server'
 import { contactSupport } from '../support.services'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
-
-allowConsole({ error: true })
 
 beforeEach(() => {
   jest.clearAllMocks()
@@ -35,35 +32,32 @@ function renderResetPasswordExpiredLink() {
 
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { findByText } = renderResetPasswordExpiredLink()
+    const { getByText } = renderResetPasswordExpiredLink()
 
-    const button = await findByText("Retourner à l'accueil")
-    fireEvent.press(button)
+    fireEvent.press(getByText(`Retourner à l'accueil`))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).toBeCalledTimes(1)
     })
   })
 
   it('should contact support WHEN contact support button is clicked', async () => {
-    const { findByText } = renderResetPasswordExpiredLink()
+    const { getByText } = renderResetPasswordExpiredLink()
 
-    const button = await findByText('Contacter le support')
-    fireEvent.press(button)
+    fireEvent.press(getByText('Contacter le support'))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(contactSupport.forResetPasswordExpiredLink).toBeCalledTimes(1)
       expect(contactSupport.forResetPasswordExpiredLink).toBeCalledWith('test@email.com')
     })
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
-    const { findByText } = renderResetPasswordExpiredLink()
+    const { getByText } = renderResetPasswordExpiredLink()
 
-    const button = await findByText("Renvoyer l'email")
-    fireEvent.press(button)
+    fireEvent.press(getByText(`Renvoyer l'email`))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(analytics.logResendEmailResetPasswordExpiredLink).toBeCalledTimes(1)
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toBeCalledWith('ResetPasswordEmailSent', {
@@ -79,12 +73,11 @@ describe('<ResetPasswordExpiredLink/>', () => {
       )
     )
 
-    const { findByText } = renderResetPasswordExpiredLink()
+    const { getByText } = renderResetPasswordExpiredLink()
 
-    const button = await findByText("Renvoyer l'email")
-    fireEvent.press(button)
+    fireEvent.press(getByText(`Renvoyer l'email`))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).not.toBeCalled()
     })
   })

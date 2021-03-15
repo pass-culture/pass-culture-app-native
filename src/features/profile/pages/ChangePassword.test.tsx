@@ -65,6 +65,7 @@ describe('ChangePassword', () => {
     const color = notMatchingErrorText.props.style[0].color
     expect(color).toEqual(ColorsEnum.ERROR)
   })
+
   it('should validate PasswordSecurityRules when password is correct', async () => {
     const { getByPlaceholderText, toJSON } = await renderChangePassword()
 
@@ -78,6 +79,7 @@ describe('ChangePassword', () => {
       expect(notValidatedRulesSnapshot).toMatchDiffSnapshot(validatedRulesSnapshot)
     })
   })
+
   it('display success snackbar when the password is updated', async () => {
     server.use(
       rest.post<ChangePasswordRequest, EmptyResponse>(
@@ -110,14 +112,15 @@ describe('ChangePassword', () => {
       timeout: SNACK_BAR_TIME_OUT,
     })
   })
-  it.only('display error when the password failed to updated', async () => {
+
+  it('display error when the password failed to updated', async () => {
     server.use(
       rest.post<ChangePasswordRequest, EmptyResponse>(
         env.API_BASE_URL + '/native/v1/change_password',
         (_req, res, ctx) => res.once(ctx.status(400), ctx.json({}))
       )
     )
-    const { getByPlaceholderText, findByTestId, queryByText } = await renderChangePassword()
+    const { getByPlaceholderText, getByTestId, queryByText } = await renderChangePassword()
 
     const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
@@ -131,7 +134,7 @@ describe('ChangePassword', () => {
     await act(async () => {
       await waitForExpect(async () => {
         // assuming there's only one button in this page
-        continueButton = await findByTestId('button-container')
+        continueButton = await getByTestId('button-container')
       })
       fireEvent.press(continueButton)
       await waitForExpect(() => {

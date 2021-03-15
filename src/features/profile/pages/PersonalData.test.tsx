@@ -1,4 +1,4 @@
-import { act, render, waitFor } from '@testing-library/react-native'
+import { act, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 
@@ -10,8 +10,6 @@ import { server } from 'tests/server'
 import { flushAllPromises } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
-
-allowConsole({ error: true })
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 
@@ -30,28 +28,29 @@ describe('PersonalData', () => {
   afterEach(() => jest.clearAllMocks())
 
   it('should render for beneficiary profile', async () => {
-    const { getByText } = await renderPersonalData({
+    const { getByText, queryByText } = await renderPersonalData({
       isBeneficiary: true,
       ...mockedIdentity,
     } as UserProfileResponse)
-    await waitFor(() => {
-      expect(getByText('Prénom et nom')).toBeTruthy()
-      expect(getByText('Rosa Bonheur')).toBeTruthy()
-      expect(getByText('E-mail')).toBeTruthy()
-      expect(getByText('rosa.bonheur@gmail.com')).toBeTruthy()
-      expect(getByText('Numéro de téléphone')).toBeTruthy()
-      expect(getByText('+33685974563')).toBeTruthy()
-    })
+
+    await act(async () => queryByText('Prénom et nom'))
+
+    expect(getByText('Prénom et nom')).toBeTruthy()
+    expect(getByText('Rosa Bonheur')).toBeTruthy()
+    expect(getByText('E-mail')).toBeTruthy()
+    expect(getByText('rosa.bonheur@gmail.com')).toBeTruthy()
+    expect(getByText('Numéro de téléphone')).toBeTruthy()
+    expect(getByText('+33685974563')).toBeTruthy()
   })
+
   it('should render for non beneficiary profile', async () => {
     const { getByText, queryByText } = await renderPersonalData({
       isBeneficiary: false,
       ...mockedIdentity,
     } as UserProfileResponse)
 
-    await waitFor(() => {
-      expect(getByText('E-mail')).toBeTruthy()
-    })
+    await act(async () => queryByText('E-mail'))
+    expect(getByText('E-mail')).toBeTruthy()
 
     const name = queryByText('Prénom et nom')
     const phone = queryByText('Numéro de téléphone')

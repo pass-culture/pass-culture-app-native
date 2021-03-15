@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { render, fireEvent } from '@testing-library/react-native'
+import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -14,8 +14,6 @@ import { server } from 'tests/server'
 import { contactSupport } from '../support.services'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
-
-allowConsole({ error: true })
 
 beforeEach(() => {
   jest.clearAllMocks()
@@ -61,12 +59,11 @@ describe('<SignupConfirmationExpiredLink/>', () => {
   })
 
   it('should redirect to signup confirmation email sent page WHEN clicking on resend email and response is success', async () => {
-    const { findByText } = renderSignupConfirmationExpiredLink()
+    const { getByText } = renderSignupConfirmationExpiredLink()
 
-    const button = await findByText("Renvoyer l'email")
-    fireEvent.press(button)
+    fireEvent.press(getByText(`Renvoyer l'email`))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(analytics.logResendEmailSignupConfirmationExpiredLink).toBeCalledTimes(1)
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
@@ -82,12 +79,11 @@ describe('<SignupConfirmationExpiredLink/>', () => {
       )
     )
 
-    const { findByText } = renderSignupConfirmationExpiredLink()
+    const { getByText } = renderSignupConfirmationExpiredLink()
 
-    const button = await findByText("Renvoyer l'email")
-    fireEvent.press(button)
+    fireEvent.press(getByText(`Renvoyer l'email`))
 
-    await waitForExpect(() => {
+    await waitFor(() => {
       expect(navigate).not.toBeCalled()
     })
   })

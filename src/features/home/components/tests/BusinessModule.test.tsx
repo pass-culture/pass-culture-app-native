@@ -74,7 +74,7 @@ describe('BusinessModule component', () => {
     const { getByTestId } = renderModule({ ...props, url: 'some_url_with_email={email}' })
 
     fireEvent.press(getByTestId('imageBusiness'))
-    await superFlushWithAct(20)
+    await superFlushWithAct(30)
 
     await waitForExpect(() => {
       expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
