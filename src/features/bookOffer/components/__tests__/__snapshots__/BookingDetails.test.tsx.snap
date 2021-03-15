@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BookingDetails /> should render correctly 1`] = `
+exports[`<BookingDetails /> should render correctly when user has selected options and offer is an event 1`] = `
 <View
   style={
     Array [
@@ -187,6 +187,74 @@ exports[`<BookingDetails /> should render correctly 1`] = `
       <Text>
         undefined-SVG-Mock
       </Text>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#151515",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      2 mars 2021, 20h00
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#626262"
+      style={
+        Array [
+          Object {
+            "color": "#626262",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 654,
+        },
+      ]
+    }
+  >
+    <View
+      height={32}
+      width={32}
+    >
+      undefined-SVG-Mock
     </View>
     <View
       numberOfSpaces={2}
