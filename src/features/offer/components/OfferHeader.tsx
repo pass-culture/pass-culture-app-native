@@ -39,15 +39,9 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate: addFavorite } = useAddFavorite({
-    onSuccess: () => {
-      showSuccessSnackBar({
-        message: _(t`L'offre a été ajoutée aux favoris`),
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    },
     onError: () => {
       showErrorSnackBar({
-        message: _(t`L'offre n'a pas été ajoutée au favoris`),
+        message: _(t`L'offre n'a pas été ajoutée à tes favoris`),
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
@@ -56,14 +50,14 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { mutate: removeFavorite } = useRemoveFavorite({
     onSuccess: () => {
       showSuccessSnackBar({
-        message: _(t`L'offre a été retirée des favoris`),
+        message: _(t`L'offre a été retirée de tes favoris`),
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
 
     onError: () => {
       showErrorSnackBar({
-        message: _(t`L'offre n'a pas été retirée des favoris`),
+        message: _(t`L'offre n'a pas été retirée de tes favoris`),
         timeout: SNACK_BAR_TIME_OUT,
       })
     },

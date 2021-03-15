@@ -118,7 +118,7 @@ describe('Favorite component', () => {
     await superFlushWithAct()
     await waitFor(() => {
       expect(mockShowSuccessSnackBar).toBeCalledWith({
-        message: `L'offre a été retirée des favoris`,
+        message: `L'offre a été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
       })
       expect(mockShowErrorSnackBar).not.toBeCalled()
@@ -140,7 +140,7 @@ describe('Favorite component', () => {
     await waitFor(() => {
       expect(mockShowSuccessSnackBar).not.toBeCalled()
       expect(mockShowErrorSnackBar).toBeCalledWith({
-        message: `L'offre n'a pas été retirée des favoris`,
+        message: `L'offre n'a pas été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
       })
     })

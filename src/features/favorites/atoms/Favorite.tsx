@@ -37,14 +37,14 @@ export const Favorite: React.FC<Props> = ({ favorite }) => {
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
     onSuccess: () => {
       showSuccessSnackBar({
-        message: _(t`L'offre a été retirée des favoris`),
+        message: _(t`L'offre a été retirée de tes favoris`),
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
 
     onError: () => {
       showErrorSnackBar({
-        message: _(t`L'offre n'a pas été retirée des favoris`),
+        message: _(t`L'offre n'a pas été retirée de tes favoris`),
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
@@ -110,7 +110,7 @@ export const Favorite: React.FC<Props> = ({ favorite }) => {
         <AppButton
           title={_(t`Supprimer`)}
           onPress={() => removeFavorite(id)}
-          textColor={ColorsEnum.GREY_DARK}
+          textColor={ColorsEnum.BLACK}
           borderColor={ColorsEnum.GREY_MEDIUM}
           backgroundColor={ColorsEnum.WHITE}
           loadingIconColor={ColorsEnum.PRIMARY}
