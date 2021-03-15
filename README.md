@@ -106,6 +106,10 @@ And then, you can run the following command:
 You can install [Flipper](https://fbflipper.com/) that will help you visualize the application's logs and network information.
 We recommend installing the plugin `react-query-native-devtools` to analyze react query. This plugin is available through `Manage Plugins` > `Install Plugins`: `react-query-native-devtools`. This should work without further configuration for both platforms.
 
+## Deployment
+
+See doc [here](./doc/deployment.md)
+
 ## Features
 
 When you generated the repository with [react-native-make](https://github.com/bamlab/react-native-make) the following feature must be present:
@@ -152,57 +156,6 @@ You can also get the coverage with:
 ```bash
 yarn jest --coverage
 ```
-
-## Deploy to AppCenter
-
-- https://appcenter.ms/orgs/pass-Culture/apps/passculture-<ENV:testing|staging>-ios
-- https://appcenter.ms/orgs/pass-Culture/apps/passculture-<ENV:testing|staging>-android
-
-### Soft deploy (Code Push)
-
-Most of the time, on testing, you didn't change anything in the native code. If you changed only javascript code, deploy will be **automatic** on CircleCI (deploy-soft-testing job).
-Then the build is faster as only the javascript code is published.
-
-To download updates from the application, just open it and click on the "check update" button.
-
-### Hard deploy
-
-If I modified native code, I need to hard deploy:
-
-- `git checkout master`
-- `git pull`
-- `yarn version:<env>` (this will create a commit with a tag)
-- then run `git push --follow-tags`
-  You can then check you job on CircleCI.
-
-### Deploy to staging
-
-We do it once a week at the end of an iteration.
-
-When you want to deploy the current version of master in staging, you can run the following command:
-
-`yarn trigger:staging:deploy`
-
-## Deploy to production
-
-### Deploy hard
-
-For the moment production deployment is not available on the CD (coming soon), we do it locally.
-To deploy to production:
-
-- `yarn upgrade:production:version`
-
-/!\ DO NOT DEPLOY IOS & ANDROID SIMULTANEOUSLY
-
-- Android: `yarn trigger:production:deploy:android`
-- IOS: `yarn trigger:production:deploy:ios`
-
-### Deploy CodePush
-
-/!\ DO NOT DEPLOY CODEPUSH IOS & ANDROID SIMULTANEOUSLY
-
-- Android: `yarn trigger:production:codepush:android`
-- IOS: `yarn trigger:production:codepush:ios`
 
 ## Troubleshooting
 
