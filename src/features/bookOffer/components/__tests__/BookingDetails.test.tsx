@@ -7,6 +7,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferStockResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
+import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -34,13 +35,15 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
       dispatch: mockDispatch,
     })),
   useBookingStock: jest
-    .fn(() => ({
-      price: 2000,
-      id: '148409',
-      beginningDatetime: new Date('2021-03-02T20:00:00'),
-    }))
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    .mockImplementationOnce(() => {}),
+    .fn(
+      () =>
+        ({
+          price: 2000,
+          id: 148409,
+          beginningDatetime: new Date('2021-03-02T20:00:00'),
+        } as ReturnType<typeof useBookingStock>)
+    )
+    .mockImplementationOnce(() => undefined),
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
