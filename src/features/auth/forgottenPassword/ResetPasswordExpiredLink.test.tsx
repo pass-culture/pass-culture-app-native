@@ -15,6 +15,8 @@ import { contactSupport } from '../support.services'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
+allowConsole({ error: true })
+
 beforeEach(() => {
   jest.clearAllMocks()
 })

@@ -9,6 +9,8 @@ import * as splashScreenModule from 'libs/splashscreen'
 
 import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
 
+allowConsole({ error: true })
+
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),

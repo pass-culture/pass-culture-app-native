@@ -11,6 +11,8 @@ import { flushAllPromises } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
+allowConsole({ error: true })
+
 const mockedUseAuthContext = useAuthContext as jest.Mock
 
 jest.mock('features/auth/AuthContext', () => ({

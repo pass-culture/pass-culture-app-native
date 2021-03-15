@@ -10,6 +10,8 @@ import { flushAllPromises } from 'tests/utils'
 
 import { App } from './App'
 
+allowConsole({ error: true })
+
 jest.mock('libs/errorMonitoring/services')
 jest.mock('./libs/notifications', () => ({
   useStartBatchNotification: jest.fn(),

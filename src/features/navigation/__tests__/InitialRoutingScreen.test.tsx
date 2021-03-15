@@ -11,8 +11,6 @@ import { homeNavigateConfig } from '../helpers'
 import { InitialRoutingScreen } from '../RootNavigator/InitialRoutingScreen'
 import { useGetInitialScreenConfig } from '../RootNavigator/useGetInitialScreenConfig'
 
-failTestOnConsole()
-
 const mockedUseGetInitialScreenConfig = useGetInitialScreenConfig as jest.MockedFunction<
   typeof useGetInitialScreenConfig
 >

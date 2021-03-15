@@ -8,29 +8,38 @@ import { flushAllPromises } from './utils'
 
 global.expect.extend({ toMatchDiffSnapshot })
 
-global.failTestOnConsole = function ({
-  doNotFailOnDebug = false,
-  doNotFailOnError = false,
-  doNotFailOnLog = false,
-  doNotFailOnWarn = false,
-} = {}) {
+const allowConsoleDefaultConfig = {
+  debug: false,
+  error: false,
+  log: false,
+  warn: false,
+}
+
+let allowConsoleRuntimeConfig = { ...allowConsoleDefaultConfig }
+global.allowConsole = function (config = allowConsoleDefaultConfig) {
+  allowConsoleRuntimeConfig = { ...allowConsoleDefaultConfig, ...config }
+}
+
+global.allowConsole({
+  debug: false,
+  error: false,
+  log: false,
+  warn: false,
+})
+
+global.beforeAll(() => {
+  server.listen()
   consoleFailTestModule.cft({
     testFramework: 'jest',
     spyLibrary: 'jest',
-    console: {
-      debug: doNotFailOnDebug,
-      error: doNotFailOnError,
-      log: doNotFailOnLog,
-      warn: doNotFailOnWarn,
-    },
+    console: allowConsoleRuntimeConfig,
   })
-}
-
-global.beforeAll(() => server.listen())
+})
 
 global.afterAll(() => {
   server.resetHandlers()
   server.close()
+  allowConsoleRuntimeConfig = { ...allowConsoleDefaultConfig }
 })
 
 global.afterEach(async () => {

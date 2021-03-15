@@ -6,6 +6,8 @@ import { analytics } from 'libs/analytics'
 
 import { offerId, renderOfferPage } from './renderOfferPageTestUtil'
 
+allowConsole({ error: true })
+
 describe('<Offer /> - Analytics', () => {
   beforeAll(() => {
     jest.useFakeTimers()

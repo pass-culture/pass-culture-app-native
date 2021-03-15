@@ -1,6 +1,6 @@
-declare function failTestOnConsole(params?: {
-  doNotFailOnDebug: boolean
-  doNotFailOnError: boolean
-  doNotFailOnLog: boolean
-  doNotFailOnWarn: boolean
+declare function allowConsole(params?: {
+  debug?: boolean
+  error?: boolean
+  log?: boolean
+  warn?: boolean
 }): void

@@ -17,6 +17,8 @@ import { flushAllPromises, flushAllPromisesTimes } from 'tests/utils'
 
 import { Home } from '../Home'
 
+allowConsole({ error: true })
+
 jest.mock('libs/environment', () => ({
   env: {
     FEATURE_FLAG_CODE_PUSH: true,

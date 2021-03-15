@@ -12,8 +12,6 @@ import { superFlushWithAct } from 'tests/utils'
 
 import { BicolorFavoriteCount } from '../BicolorFavoriteCount'
 
-failTestOnConsole()
-
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
@@ -27,6 +25,7 @@ describe('BicolorFavoriteCount component', () => {
 
   it('should render connected icon', async () => {
     const { queryByTestId } = await renderBicolorFavoriteCount({ isLoggedIn: true })
+    await act(async () => queryByTestId('bicolor-favorite-count'))
     expect(queryByTestId('bicolor-favorite-count')).toBeTruthy()
   })
 

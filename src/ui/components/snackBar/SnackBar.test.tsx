@@ -8,6 +8,8 @@ import { ColorsEnum } from 'ui/theme'
 import { SnackBar, SnackBarProps } from './SnackBar'
 import { SnackBarHelperSettings } from './types'
 
+allowConsole({ error: true })
+
 const getAnimatedTimingImplementation = () =>
   jest
     .spyOn(RN.Animated, 'timing')

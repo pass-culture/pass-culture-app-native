@@ -2,6 +2,8 @@ import { act, fireEvent } from '@testing-library/react-native'
 
 import { renderOfferPage } from './renderOfferPageTestUtil'
 
+allowConsole({ error: true })
+
 describe('<Offer />', () => {
   it('should match snapshot for physical offer', async () => {
     const { toJSON } = await renderOfferPage({ isDigital: false })
