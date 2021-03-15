@@ -21,7 +21,9 @@ Array [
       height={280}
       width={754}
     >
-      undefined-SVG-Mock
+      <Text>
+        undefined-SVG-Mock
+      </Text>
     </View>
   </View>,
   <View

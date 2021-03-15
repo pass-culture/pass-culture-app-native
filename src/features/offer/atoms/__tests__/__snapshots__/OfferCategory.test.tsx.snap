@@ -30,7 +30,9 @@ exports[`OfferCategory renders correctly 1`] = `
       height={40}
       width={40}
     >
-      undefined-SVG-Mock
+      <Text>
+        undefined-SVG-Mock
+      </Text>
     </View>
   </View>
   <Text

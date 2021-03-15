@@ -30,7 +30,9 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       height="100%"
       width="100%"
     >
-      undefined-SVG-Mock
+      <Text>
+        undefined-SVG-Mock
+      </Text>
     </View>
   </View>
   <View
@@ -58,7 +60,9 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     height={127}
     width={197}
   >
-    undefined-SVG-Mock
+    <Text>
+      undefined-SVG-Mock
+    </Text>
   </View>
   <View
     style={

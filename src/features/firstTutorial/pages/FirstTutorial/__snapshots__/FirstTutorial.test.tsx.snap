@@ -19,7 +19,9 @@ Array [
       height="100%"
       width="100%"
     >
-      undefined-SVG-Mock
+      <Text>
+        undefined-SVG-Mock
+      </Text>
     </View>
   </View>,
   <View
@@ -1160,7 +1162,9 @@ Array [
                         testID="dot-icon"
                         width={12}
                       >
-                        dot-icon-SVG-Mock
+                        <Text>
+                          dot-icon-SVG-Mock
+                        </Text>
                       </View>
                     </View>
                     <View
@@ -1190,7 +1194,9 @@ Array [
                         testID="dot-icon"
                         width={8}
                       >
-                        dot-icon-SVG-Mock
+                        <Text>
+                          dot-icon-SVG-Mock
+                        </Text>
                       </View>
                     </View>
                     <View
@@ -1220,7 +1226,9 @@ Array [
                         testID="dot-icon"
                         width={8}
                       >
-                        dot-icon-SVG-Mock
+                        <Text>
+                          dot-icon-SVG-Mock
+                        </Text>
                       </View>
                     </View>
                     <View
@@ -1250,7 +1258,9 @@ Array [
                         testID="dot-icon"
                         width={8}
                       >
-                        dot-icon-SVG-Mock
+                        <Text>
+                          dot-icon-SVG-Mock
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -1299,7 +1309,9 @@ Array [
                       testID="arrowNext"
                       width={32}
                     >
-                      arrowNext-SVG-Mock
+                      <Text>
+                        arrowNext-SVG-Mock
+                      </Text>
                     </View>
                   </View>
                 </View>

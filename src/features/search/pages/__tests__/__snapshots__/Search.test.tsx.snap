@@ -31,7 +31,9 @@ exports[`Search component should render correctly 1`] = `
       height={280}
       width={754}
     >
-      undefined-SVG-Mock
+      <Text>
+        undefined-SVG-Mock
+      </Text>
     </View>
   </View>
   <View
@@ -101,7 +103,9 @@ exports[`Search component should render correctly 1`] = `
           height={32}
           width={32}
         >
-          undefined-SVG-Mock
+          <Text>
+            undefined-SVG-Mock
+          </Text>
         </View>
         <View
           numberOfSpaces={2}
@@ -224,7 +228,9 @@ exports[`Search component should render correctly 1`] = `
             height={48}
             width={48}
           >
-            undefined-SVG-Mock
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
           <Text
             numberOfLines={1}
@@ -311,7 +317,9 @@ exports[`Search component should render correctly 1`] = `
             height={48}
             width={48}
           >
-            undefined-SVG-Mock
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
           <Text
             numberOfLines={1}
@@ -380,7 +388,9 @@ exports[`Search component should render correctly 1`] = `
         height={48}
         width="100%"
       >
-        undefined-SVG-Mock
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
       <Text
         adjustsFontSizeToFit={true}

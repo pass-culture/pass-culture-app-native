@@ -157,7 +157,9 @@ Array [
               testID="rightIcon"
               width={32}
             >
-              rightIcon-SVG-Mock
+              <Text>
+                rightIcon-SVG-Mock
+              </Text>
             </View>
           </View>
         </View>
@@ -235,7 +237,9 @@ Array [
               testID="button-icon"
               width={15}
             >
-              button-icon-SVG-Mock
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
             </View>
             <Text
               adjustsFontSizeToFit={false}

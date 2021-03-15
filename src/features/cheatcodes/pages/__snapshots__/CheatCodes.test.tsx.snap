@@ -392,7 +392,9 @@ exports[`CheatCodes component should render correctly 1`] = `
           testID="externalSiteIcon"
           width={15}
         >
-          externalSiteIcon-SVG-Mock
+          <Text>
+            externalSiteIcon-SVG-Mock
+          </Text>
         </View>
         
       </Text>

@@ -443,7 +443,9 @@ Tous les détails du film sur AlloCiné:
                                     testID="externalSiteIcon"
                                     width={15}
                                   >
-                                    externalSiteIcon-SVG-Mock
+                                    <Text>
+                                      externalSiteIcon-SVG-Mock
+                                    </Text>
                                   </View>
                                   
                                 </Text>
@@ -614,7 +616,9 @@ Tous les détails du film sur AlloCiné:
                             testID="icon-back"
                             width={32}
                           >
-                            icon-back-SVG-Mock
+                            <Text>
+                              icon-back-SVG-Mock
+                            </Text>
                           </View>
                         </View>
                         <View
