@@ -50,7 +50,7 @@ export const useModalContent = (): ModalContent => {
       title: _(t`Détails de la réservation`),
       leftIcon: undefined,
       onLeftIconPress: undefined,
-      children: <BookingDetails />,
+      children: <BookingDetails stocks={stocks} />,
     }
   }
 
@@ -67,6 +67,6 @@ export const useModalContent = (): ModalContent => {
     title: _(t`Détails de la réservation`),
     leftIcon: ArrowPrevious,
     onLeftIconPress: goToPreviousStep,
-    children: <BookingDetails />,
+    children: <BookingDetails stocks={stocks} />,
   }
 }

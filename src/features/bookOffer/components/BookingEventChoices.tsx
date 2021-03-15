@@ -30,7 +30,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
   const validateOptions = () => dispatch({ type: 'VALIDATE_OPTIONS' })
 
   if (bookingState.step === Step.CONFIRMATION) {
-    return <BookingDetails />
+    return <BookingDetails stocks={stocks} />
   }
 
   // We only need those 2 informations to book an offer (and thus proceed to the next page)

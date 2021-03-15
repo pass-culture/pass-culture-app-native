@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { OfferStockResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -20,10 +21,13 @@ import { CancellationDetails } from './CancellationDetails'
 const disclaimer = _(
   t`Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.`
 )
+interface Props {
+  stocks: OfferStockResponse[]
+}
 
-export const BookingDetails: React.FC = () => {
+export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { bookingState, dismissModal } = useBooking()
+  const { bookingState, dismissModal, dispatch } = useBooking()
   const stock = useBookingStock()
   const { showErrorSnackBar } = useSnackBarContext()
   const { quantity } = bookingState
@@ -40,6 +44,13 @@ export const BookingDetails: React.FC = () => {
       })
     },
   })
+
+  useEffect(() => {
+    if (!stock) {
+      dispatch({ type: 'SELECT_STOCK', payload: stocks[0].id })
+      dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
+    }
+  }, [])
 
   if (!stock || typeof quantity !== 'number') return <React.Fragment />
 

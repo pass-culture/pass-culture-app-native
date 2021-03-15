@@ -84,7 +84,7 @@ describe('<BookingDetails />', () => {
 })
 
 const renderBookingDetails = async () => {
-  const renderAPI = render(reactQueryProviderHOC(<BookingDetails />))
+  const renderAPI = render(reactQueryProviderHOC(<BookingDetails stocks={[]} />))
 
   await act(flushAllPromises)
 
