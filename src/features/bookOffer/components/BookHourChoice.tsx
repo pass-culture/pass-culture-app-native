@@ -59,6 +59,7 @@ export const BookHourChoice: React.FC = () => {
                 selected={stock.id === bookingState.stockId}
                 onPress={() => selectStock(stock.id)}
                 testID={`HourChoice${stock.id}`}
+                  isBookable={stock.isBookable}
               />
             )
           })}
