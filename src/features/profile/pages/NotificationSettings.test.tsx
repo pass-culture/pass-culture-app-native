@@ -192,7 +192,7 @@ describe('NotificationSettings', () => {
 
       await waitFor(() => {
         saveButton = getByTestId('button-container')
-        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
+        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
       })
     })
     it('should enable the save button when the push switch changed', async () => {
@@ -229,7 +229,7 @@ describe('NotificationSettings', () => {
 
       await waitFor(() => {
         saveButton = getByTestId('button-container')
-        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
+        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
       })
     })
   })

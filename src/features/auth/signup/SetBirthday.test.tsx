@@ -36,7 +36,7 @@ describe('SetBirthday Page', () => {
     changeDate(renderAPI, '1', '1', '1')
 
     const button = renderAPI.getByTestId('button-container-validate-birthday')
-    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
+    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
   })
 
   it('should display the error message "date incorrecte" when the date is too old', () => {

@@ -86,7 +86,15 @@ export const Favorite: React.FC<Props> = (props) => {
   }
 
   function renderBookingButton() {
-    const isFreeOffer = offer.price === 0
+    let isFreeOffer = false
+    let hasEnoughCredit = false
+    if (typeof offer.price === 'number') {
+      isFreeOffer = offer.price === 0
+      hasEnoughCredit = props.credit.amount >= offer.price
+    } else if (typeof offer.startPrice === 'number') {
+      isFreeOffer = offer.startPrice === 0
+      hasEnoughCredit = props.credit.amount >= offer.startPrice
+    }
     const isExBeneficiary = props.user.isBeneficiary && props.credit.isExpired
     const isNotBeneficiary = !props.user.isBeneficiary
 
@@ -107,17 +115,22 @@ export const Favorite: React.FC<Props> = (props) => {
 
     if (shouldBookExternally && !offer.externalTicketOfficeUrl) {
       return null
+    } else if (shouldBookExternally) {
+      return (
+        <ButtonPrimary
+          title={_(t`Réserver`)}
+          onPress={bookExternally}
+          icon={ExternalLinkSite}
+          buttonHeight="tall"
+        />
+      )
+    } else if (!isFreeOffer && !hasEnoughCredit) {
+      return <ButtonPrimary title={_(t`Crédit insuffisant`)} buttonHeight="tall" disabled />
     }
-    return (
-      <ButtonPrimary
-        title={_(t`Réserver`)}
-        onPress={shouldBookExternally ? bookExternally : bookInApp}
-        icon={shouldBookExternally ? ExternalLinkSite : undefined}
-        buttonHeight="tall"
-      />
-    )
+    return <ButtonPrimary title={_(t`Réserver`)} onPress={bookInApp} buttonHeight="tall" />
   }
 
+  const buttons = useMemo(renderBookingButton, [offer, props])
   return (
     <Container onPress={handlePressOffer} testID="favorite">
       <Row>
@@ -160,7 +173,7 @@ export const Favorite: React.FC<Props> = (props) => {
             disabled={isLoading}
           />
         </ButtonContainer>
-        <ButtonContainer>{renderBookingButton()}</ButtonContainer>
+        <ButtonContainer>{buttons}</ButtonContainer>
       </ButtonsRow>
     </Container>
   )
