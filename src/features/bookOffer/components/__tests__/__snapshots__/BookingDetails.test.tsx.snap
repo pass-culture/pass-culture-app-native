@@ -254,7 +254,9 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       height={32}
       width={32}
     >
-      undefined-SVG-Mock
+      <Text>
+        undefined-SVG-Mock
+      </Text>
     </View>
     <View
       numberOfSpaces={2}
