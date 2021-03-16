@@ -144,7 +144,7 @@ describe('<OfferHeader />', () => {
     expect(getByTestId('icon-favorite-filled')).toBeTruthy()
   })
 
-  it('should add favorite when adding an offer in favorite - logged in users', async () => {
+  it.skip('should add favorite when adding an offer in favorite - logged in users', async () => {
     const { getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
       id: addFavoriteJsonResponseSnap.offer.id,
@@ -181,7 +181,7 @@ describe('<OfferHeader />', () => {
     // })
   })
 
-  it('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
+  it.skip('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
     const { queryByTestId, getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
       hasAddFavoriteError: true,
@@ -226,7 +226,7 @@ describe('<OfferHeader />', () => {
     ).toBe(undefined)
   })
 
-  it('should remove favorite when pressing filled favorite icon - logged in users', async () => {
+  it.skip('should remove favorite when pressing filled favorite icon - logged in users', async () => {
     const favoriteOfferId = 146193
     const { getByTestId } = await renderOfferHeader({ isLoggedIn: true, id: favoriteOfferId })
 
@@ -252,7 +252,7 @@ describe('<OfferHeader />', () => {
     })
   })
 
-  it('should remove favorite and show error when pressing filled favorite icon, and restore favorite - logged in users', async () => {
+  it.skip('should remove favorite and show error when pressing filled favorite icon, and restore favorite - logged in users', async () => {
     const favoriteOfferId = 146193
     const { queryByTestId, getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
