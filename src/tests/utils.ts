@@ -19,7 +19,7 @@ export async function flushAllPromisesTimes(times: number) {
   }
 }
 
-export async function superFlushWithAct(times = 10) {
+export async function superFlushWithAct(times = 50) {
   await act(async () => {
     await flushAllPromisesTimes(times)
   })

@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { act, render } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -27,9 +27,11 @@ describe('<OfferDescription />', () => {
   it('should render', async () => {
     const { toJSON, queryByText, getByText } = await renderOfferDescription()
     expect(toJSON()).toMatchSnapshot()
-    await act(async () => queryByText('En détails'))
-    expect(getByText('En détails')).toBeTruthy()
-    expect(queryByText('Durée')).toBeFalsy()
+
+    await waitForExpect(() => {
+      expect(getByText('En détails')).toBeTruthy()
+      expect(queryByText('Durée')).toBeFalsy()
+    })
   })
 
   it('should render without description', async () => {
@@ -37,10 +39,12 @@ describe('<OfferDescription />', () => {
       extraData: { durationMinutes: 20 },
       description: '',
     })
-    await act(async () => queryByText('Duree'))
-    expect(queryByText('En détails')).toBeFalsy()
-    expect(getByText('Durée')).toBeTruthy()
-    expect(getByText('Author: photo credit author')).toBeTruthy()
+
+    await waitForExpect(() => {
+      expect(getByText('Durée')).toBeTruthy()
+      expect(getByText('Author: photo credit author')).toBeTruthy()
+      expect(queryByText('En détails')).toBeFalsy()
+    })
   })
 })
 
@@ -111,12 +115,9 @@ async function renderOfferDescription(
       </NavigationContainer>
     )
   )
-
-  await superFlushWithAct(30)
-
+  await superFlushWithAct()
   await waitForExpect(() => {
     expect(wrapper.queryByTestId('offer-description-list')).toBeTruthy()
   })
-
   return wrapper
 }

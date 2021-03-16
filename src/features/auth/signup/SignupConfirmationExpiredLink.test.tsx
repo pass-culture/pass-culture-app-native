@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { render, fireEvent, waitFor } from '@testing-library/react-native'
+import { render, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -10,6 +10,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { superFlushWithAct } from 'tests/utils'
 
 import { contactSupport } from '../support.services'
 
@@ -62,13 +63,14 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     const { getByText } = renderSignupConfirmationExpiredLink()
 
     fireEvent.press(getByText(`Renvoyer l'email`))
+    await superFlushWithAct()
 
-    await waitFor(() => {
-      expect(analytics.logResendEmailSignupConfirmationExpiredLink).toBeCalledTimes(1)
+    await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
-        email: 'test@email.com',
-      })
+    })
+    expect(analytics.logResendEmailSignupConfirmationExpiredLink).toBeCalledTimes(1)
+    expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
+      email: 'test@email.com',
     })
   })
 
@@ -78,12 +80,12 @@ describe('<SignupConfirmationExpiredLink/>', () => {
         res.once(ctx.status(403))
       )
     )
-
     const { getByText } = renderSignupConfirmationExpiredLink()
 
     fireEvent.press(getByText(`Renvoyer l'email`))
+    await superFlushWithAct()
 
-    await waitFor(() => {
+    await waitForExpect(() => {
       expect(navigate).not.toBeCalled()
     })
   })

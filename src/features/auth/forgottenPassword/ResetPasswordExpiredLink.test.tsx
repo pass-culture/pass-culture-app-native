@@ -1,7 +1,8 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { render, fireEvent, waitFor } from '@testing-library/react-native'
+import { render, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
@@ -9,6 +10,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { superFlushWithAct } from 'tests/utils'
 
 import { contactSupport } from '../support.services'
 
@@ -18,51 +20,40 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
-const navigationProps = { route: { params: { email: 'test@email.com' } } }
-
-function renderResetPasswordExpiredLink() {
-  return render(
-    reactQueryProviderHOC(
-      <ResetPasswordExpiredLink
-        {...(navigationProps as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>)}
-      />
-    )
-  )
-}
-
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { getByText } = renderResetPasswordExpiredLink()
+    const { getByText } = await renderResetPasswordExpiredLink()
 
     fireEvent.press(getByText(`Retourner à l'accueil`))
 
-    await waitFor(() => {
+    await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
     })
   })
 
   it('should contact support WHEN contact support button is clicked', async () => {
-    const { getByText } = renderResetPasswordExpiredLink()
+    const { getByText } = await renderResetPasswordExpiredLink()
 
     fireEvent.press(getByText('Contacter le support'))
 
-    await waitFor(() => {
+    await waitForExpect(() => {
       expect(contactSupport.forResetPasswordExpiredLink).toBeCalledTimes(1)
-      expect(contactSupport.forResetPasswordExpiredLink).toBeCalledWith('test@email.com')
     })
+    expect(contactSupport.forResetPasswordExpiredLink).toBeCalledWith('test@email.com')
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
-    const { getByText } = renderResetPasswordExpiredLink()
+    const { getByText } = await renderResetPasswordExpiredLink()
 
     fireEvent.press(getByText(`Renvoyer l'email`))
+    await superFlushWithAct()
 
-    await waitFor(() => {
-      expect(analytics.logResendEmailResetPasswordExpiredLink).toBeCalledTimes(1)
+    await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('ResetPasswordEmailSent', {
-        email: 'test@email.com',
-      })
+    })
+    expect(analytics.logResendEmailResetPasswordExpiredLink).toBeCalledTimes(1)
+    expect(navigate).toBeCalledWith('ResetPasswordEmailSent', {
+      email: 'test@email.com',
     })
   })
 
@@ -72,13 +63,27 @@ describe('<ResetPasswordExpiredLink/>', () => {
         res.once(ctx.status(403))
       )
     )
-
-    const { getByText } = renderResetPasswordExpiredLink()
+    const { getByText } = await renderResetPasswordExpiredLink()
 
     fireEvent.press(getByText(`Renvoyer l'email`))
+    await superFlushWithAct()
 
-    await waitFor(() => {
+    await waitForExpect(() => {
       expect(navigate).not.toBeCalled()
     })
   })
 })
+
+const navigationProps = { route: { params: { email: 'test@email.com' } } }
+
+async function renderResetPasswordExpiredLink() {
+  const renderAPI = render(
+    reactQueryProviderHOC(
+      <ResetPasswordExpiredLink
+        {...(navigationProps as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>)}
+      />
+    )
+  )
+  await superFlushWithAct()
+  return renderAPI
+}

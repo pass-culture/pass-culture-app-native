@@ -115,15 +115,14 @@ describe('<Login/>', () => {
     const renderAPI = renderLogin()
     const notErrorSnapshot = renderAPI.toJSON()
 
-    await act(async () => renderAPI.queryByText('Se connecter'))
     fireEvent.press(renderAPI.getByText('Se connecter'))
     await superFlushWithAct()
 
-    await act(async () => renderAPI.queryByText('E-mail ou mot de passe incorrect.'))
-    expect(renderAPI.getByText('E-mail ou mot de passe incorrect.')).toBeTruthy()
-
-    const errorSnapshot = renderAPI.toJSON()
-    expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
+    await waitForExpect(() => {
+      expect(renderAPI.getByText('E-mail ou mot de passe incorrect.')).toBeTruthy()
+      const errorSnapshot = renderAPI.toJSON()
+      expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
+    })
     expect(navigate).not.toBeCalled()
   })
 

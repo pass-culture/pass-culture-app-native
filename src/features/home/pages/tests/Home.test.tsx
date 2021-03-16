@@ -1,6 +1,7 @@
 import { render, act } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
@@ -75,27 +76,29 @@ describe('Home component', () => {
   })
 
   it('should have a personalized welcome message when user is logged in', async () => {
-    const { queryByText, getByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
-    await act(async () => queryByText('Bonjour Jean'))
-
-    expect(getByText('Bonjour Jean').props.children).toBe('Bonjour Jean')
+    const { getByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
+    await waitForExpect(() => {
+      expect(getByText('Bonjour Jean')).toBeTruthy()
+    })
   })
 
   it('should show the available credit to the user - remaining', async () => {
-    const { queryByText, getByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
-    await act(async () => queryByText('Tu as 496 € sur ton pass'))
-    expect(getByText('Tu as 496 € sur ton pass')).toBeTruthy()
+    const { getByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
+    await waitForExpect(() => {
+      expect(getByText('Tu as 496 € sur ton pass')).toBeTruthy()
+    })
   })
 
   it('should show the available credit to the user - expired', async () => {
-    const { getByText, queryByText } = await homeRenderer({
+    const { queryByText, getByText } = await homeRenderer({
       isLoggedIn: true,
       withModal: false,
       partialUser: { depositExpirationDate: new Date('2020-02-16T17:16:04.735235') },
     })
-    await act(async () => queryByText('Ton crédit est expiré'))
-    expect(queryByText('Tu as 496 € sur ton pass')).toBeFalsy()
-    expect(getByText('Ton crédit est expiré')).toBeTruthy()
+    await waitForExpect(() => {
+      expect(getByText('Ton crédit est expiré')).toBeTruthy()
+      expect(queryByText('Tu as 496 € sur ton pass')).toBeFalsy()
+    })
   })
 
   it('should show the available credit to the user - not logged in', async () => {
@@ -189,16 +192,13 @@ describe('Home component - Analytics', () => {
       }),
     ]
     const home = await homeRenderer({ isLoggedIn: false, withModal: false })
-
     const scrollView = home.getByTestId('homeScrollView')
-    await superFlushWithAct()
 
     await act(async () =>
       home
         .getByTestId('recommendationModuleTracker')
         .props.onLayout({ nativeEvent: { layout: { y: 1500 } } })
     )
-
     expect(home.getByTestId('recommendationModuleTracker')).toBeTruthy()
 
     await act(async () => {
@@ -209,7 +209,6 @@ describe('Home component - Analytics', () => {
     await act(async () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
     })
-
     expect(analytics.logRecommendationModuleSeen).toHaveBeenCalledWith('Tes offres recommandées', 4)
   })
 })
@@ -240,6 +239,6 @@ async function homeRenderer(
       </AuthContext.Provider>
     )
   )
-  await superFlushWithAct()
+  await superFlushWithAct(50)
   return renderAPI
 }
