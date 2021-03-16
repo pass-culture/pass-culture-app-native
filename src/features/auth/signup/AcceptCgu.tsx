@@ -68,8 +68,9 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
       }
       navigate('SignupConfirmationEmailSent', { email })
     } catch (_error) {
-      setIsFetching(false)
       setErrorMessage(_(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`))
+    } finally {
+      setIsFetching(false)
     }
   }
 
