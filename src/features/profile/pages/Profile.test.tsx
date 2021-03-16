@@ -90,16 +90,14 @@ describe('Profile component', () => {
         // geolocation switch is ON and user wants to switch it OFF
         jest.spyOn(storage, 'saveObject').mockResolvedValueOnce()
         mockPosition = { latitude: 2, longitude: 40 }
+        const { getByTestId } = await renderProfile()
 
-        const { getByTestId, queryByTestId } = await renderProfile()
-
-        await act(async () => queryByTestId('geolocation'))
         fireEvent.press(getByTestId('geolocation'))
-        expect(storage.saveObject).toBeCalledWith('has_allowed_geolocation', false)
 
         await waitForExpect(() => {
           expect(mockTriggerPositionUpdate).toHaveBeenCalled()
         })
+        expect(storage.saveObject).toBeCalledWith('has_allowed_geolocation', false)
       })
     })
     it('should navigate when the notifications row is clicked', async () => {

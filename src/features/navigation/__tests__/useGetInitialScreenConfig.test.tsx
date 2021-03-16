@@ -1,6 +1,7 @@
 import { renderHook, RenderHookResult } from '@testing-library/react-hooks'
 import { act } from '@testing-library/react-native'
 import { rest } from 'msw'
+import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -64,7 +65,7 @@ describe('useGetInitialScreenConfig()', () => {
 
       const testComponent = await renderUseGetInitialRouteName()
 
-      await testComponent?.waitFor(() => {
+      await waitForExpect(() => {
         expect(testComponent?.result.current).toEqual({
           screen: expectedScreen,
           params: expectedScreenParams,

@@ -1,13 +1,14 @@
-import { act, render } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises } from 'tests/utils'
+import { superFlushWithAct } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
@@ -28,35 +29,32 @@ describe('PersonalData', () => {
   afterEach(() => jest.clearAllMocks())
 
   it('should render for beneficiary profile', async () => {
-    const { getByText, queryByText } = await renderPersonalData({
+    const { getByText } = await renderPersonalData({
       isBeneficiary: true,
       ...mockedIdentity,
     } as UserProfileResponse)
 
-    await act(async () => queryByText('Prénom et nom'))
-
-    expect(getByText('Prénom et nom')).toBeTruthy()
-    expect(getByText('Rosa Bonheur')).toBeTruthy()
-    expect(getByText('E-mail')).toBeTruthy()
-    expect(getByText('rosa.bonheur@gmail.com')).toBeTruthy()
-    expect(getByText('Numéro de téléphone')).toBeTruthy()
-    expect(getByText('+33685974563')).toBeTruthy()
+    await waitForExpect(() => {
+      expect(getByText('Prénom et nom')).toBeTruthy()
+      expect(getByText('Rosa Bonheur')).toBeTruthy()
+      expect(getByText('E-mail')).toBeTruthy()
+      expect(getByText('rosa.bonheur@gmail.com')).toBeTruthy()
+      expect(getByText('Numéro de téléphone')).toBeTruthy()
+      expect(getByText('+33685974563')).toBeTruthy()
+    })
   })
 
   it('should render for non beneficiary profile', async () => {
-    const { getByText, queryByText } = await renderPersonalData({
+    const { queryByText } = await renderPersonalData({
       isBeneficiary: false,
       ...mockedIdentity,
     } as UserProfileResponse)
 
-    await act(async () => queryByText('E-mail'))
-    expect(getByText('E-mail')).toBeTruthy()
-
-    const name = queryByText('Prénom et nom')
-    const phone = queryByText('Numéro de téléphone')
-
-    expect(name).toBeNull()
-    expect(phone).toBeNull()
+    await waitForExpect(() => {
+      expect(queryByText('E-mail')).toBeTruthy()
+      expect(queryByText('Prénom et nom')).toBeNull()
+      expect(queryByText('Numéro de téléphone')).toBeNull()
+    })
   })
 })
 
@@ -67,9 +65,7 @@ async function renderPersonalData(response: UserProfileResponse) {
   // mock api response based on the given parameters
   mockMeApiCall(response)
   const wrapper = render(reactQueryProviderHOC(<PersonalData />))
-  await act(async () => {
-    await flushAllPromises()
-  })
+  await superFlushWithAct()
   return wrapper
 }
 

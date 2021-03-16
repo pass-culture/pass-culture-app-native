@@ -1,4 +1,4 @@
-import { act, render } from '@testing-library/react-native'
+import { render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -25,13 +25,14 @@ describe('BicolorFavoriteCount component', () => {
   })
 
   it('should render connected icon', async () => {
-    const { queryByTestId, getByTestId } = await renderBicolorFavoriteCount({ isLoggedIn: true })
-    await act(async () => queryByTestId('bicolor-favorite-count'))
-    expect(getByTestId('bicolor-favorite-count')).toBeTruthy()
+    const { getByTestId } = await renderBicolorFavoriteCount({ isLoggedIn: true })
+    await waitForExpect(() => {
+      expect(getByTestId('bicolor-favorite-count')).toBeTruthy()
+    })
   })
 
   it('should show 99+ badge when nbFavorites is greater than or equal to 100', async () => {
-    const { queryByText, getByText } = await renderBicolorFavoriteCount({
+    const { getByText } = await renderBicolorFavoriteCount({
       isLoggedIn: true,
       favoritesResponse: {
         page: 1,
@@ -39,24 +40,22 @@ describe('BicolorFavoriteCount component', () => {
         favorites: [],
       },
     })
-    await act(async () => queryByText('99'))
     await waitForExpect(() => {
       expect(getByText('99')).toBeTruthy()
     })
   })
 
   it('should show nbFavorites within badge', async () => {
-    const { queryByText, getByText } = await renderBicolorFavoriteCount({
+    const { getByText } = await renderBicolorFavoriteCount({
       isLoggedIn: true,
     })
-    await act(async () => queryByText(paginatedFavoritesResponseSnap.nbFavorites.toString()))
     await waitForExpect(() => {
       expect(getByText(paginatedFavoritesResponseSnap.nbFavorites.toString())).toBeTruthy()
     })
   })
 
   it('should show 0 within badge when no favorite', async () => {
-    const { queryByText, getByText } = await renderBicolorFavoriteCount({
+    const { getByText } = await renderBicolorFavoriteCount({
       isLoggedIn: true,
       favoritesResponse: {
         page: 1,
@@ -64,7 +63,6 @@ describe('BicolorFavoriteCount component', () => {
         favorites: [],
       },
     })
-    await act(async () => queryByText('0'))
     await superFlushWithAct()
     await waitForExpect(() => {
       expect(getByText('0')).toBeTruthy()
@@ -92,6 +90,6 @@ async function renderBicolorFavoriteCount(options: Options = defaultOptions) {
   )
   mockUseAuthContext.mockReturnValue({ isLoggedIn, setIsLoggedIn: jest.fn() })
   const renderAPI = render(reactQueryProviderHOC(<BicolorFavoriteCount />))
-  await superFlushWithAct(30)
+  await superFlushWithAct()
   return renderAPI
 }

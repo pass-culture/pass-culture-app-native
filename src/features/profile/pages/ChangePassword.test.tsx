@@ -1,7 +1,6 @@
 import { render, act, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
 import { ChangePasswordRequest } from 'api/gen'
@@ -10,7 +9,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { flushAllPromises, superFlushWithAct } from 'tests/utils'
-import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext.ts'
+import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum } from 'ui/theme'
 
@@ -100,16 +99,17 @@ describe('ChangePassword', () => {
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
     fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    await superFlushWithAct()
 
     // assuming there's only one button in this page
-    const continueButton = getByTestId('button-container')
-    fireEvent.press(continueButton)
+    fireEvent.press(getByTestId('button-container'))
+    await superFlushWithAct()
 
-    await superFlushWithAct(20)
-
-    expect(showSuccessSnackBar).toBeCalledWith({
-      message: 'Mot de passe modifié',
-      timeout: SNACK_BAR_TIME_OUT,
+    await waitForExpect(() => {
+      expect(showSuccessSnackBar).toBeCalledWith({
+        message: 'Mot de passe modifié',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
   })
 
@@ -130,16 +130,13 @@ describe('ChangePassword', () => {
     await fireEvent.changeText(passwordInput, 'user@AZERTY123')
     await fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
-    let continueButton: ReactTestInstance
-    await act(async () => {
-      await waitForExpect(async () => {
-        // assuming there's only one button in this page
-        continueButton = await getByTestId('button-container')
-      })
-      fireEvent.press(continueButton)
-      await waitForExpect(() => {
-        expect(queryByText('Mot de passe incorrect')).toBeTruthy()
-      })
+    // assuming there's only one button in this page
+    const continueButton = getByTestId('button-container')
+    fireEvent.press(continueButton)
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(queryByText('Mot de passe incorrect')).toBeTruthy()
     })
   })
 })
