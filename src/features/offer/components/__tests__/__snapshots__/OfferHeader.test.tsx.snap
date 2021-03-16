@@ -120,7 +120,9 @@ Array [
                 testID="icon-back"
                 width={32}
               >
-                icon-back-SVG-Mock
+                <Text>
+                  icon-back-SVG-Mock
+                </Text>
               </View>
             </View>
             <View
@@ -137,7 +139,9 @@ Array [
                 testID="final-icon-back"
                 width={32}
               >
-                final-icon-back-SVG-Mock
+                <Text>
+                  final-icon-back-SVG-Mock
+                </Text>
               </View>
             </View>
           </View>
@@ -279,7 +283,9 @@ Array [
                 testID="icon-share"
                 width={32}
               >
-                icon-share-SVG-Mock
+                <Text>
+                  icon-share-SVG-Mock
+                </Text>
               </View>
             </View>
             <View
@@ -297,7 +303,9 @@ Array [
                 testID="final-icon-share"
                 width={32}
               >
-                final-icon-share-SVG-Mock
+                <Text>
+                  final-icon-share-SVG-Mock
+                </Text>
               </View>
             </View>
           </View>
@@ -379,7 +387,9 @@ Array [
                 testID="icon-favorite"
                 width={32}
               >
-                icon-favorite-SVG-Mock
+                <Text>
+                  icon-favorite-SVG-Mock
+                </Text>
               </View>
             </View>
             <View
@@ -397,7 +407,9 @@ Array [
                 testID="final-icon-favorite"
                 width={32}
               >
-                final-icon-favorite-SVG-Mock
+                <Text>
+                  final-icon-favorite-SVG-Mock
+                </Text>
               </View>
             </View>
           </View>
@@ -562,7 +574,9 @@ Array [
               testID="rightIcon"
               width={32}
             >
-              rightIcon-SVG-Mock
+              <Text>
+                rightIcon-SVG-Mock
+              </Text>
             </View>
           </View>
         </View>
