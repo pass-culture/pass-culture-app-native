@@ -133,6 +133,207 @@ export interface BookOfferRequest {
  * @export
  * @enum {string}
  */
+export enum BookingCancellationReasons {
+    OFFERER = 'OFFERER',
+    BENEFICIARY = 'BENEFICIARY',
+    EXPIRED = 'EXPIRED'
+}/**
+ * 
+ * @export
+ * @interface BookingOfferExtraData
+ */
+export interface BookingOfferExtraData {
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingOfferExtraData
+     */
+    isbn?: string | null;
+}/**
+ * 
+ * @export
+ * @interface BookingOfferResponse
+ */
+export interface BookingOfferResponse {
+    /**
+     * 
+     * @type {OfferCategoryResponse}
+     * @memberof BookingOfferResponse
+     */
+    category: OfferCategoryResponse;
+    /**
+     * 
+     * @type {BookingOfferExtraData}
+     * @memberof BookingOfferResponse
+     */
+    extraData?: BookingOfferExtraData | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof BookingOfferResponse
+     */
+    id: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BookingOfferResponse
+     */
+    isPermanent: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingOfferResponse
+     */
+    name: string;
+    /**
+     * 
+     * @type {BookingVenueResponse}
+     * @memberof BookingOfferResponse
+     */
+    venue: BookingVenueResponse;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingOfferResponse
+     */
+    withdrawalDetails?: string | null;
+}/**
+ * 
+ * @export
+ * @interface BookingReponse
+ */
+export interface BookingReponse {
+    /**
+     * 
+     * @type {Date}
+     * @memberof BookingReponse
+     */
+    cancellationDate?: Date | null;
+    /**
+     * 
+     * @type {BookingCancellationReasons}
+     * @memberof BookingReponse
+     */
+    cancellationReason?: BookingCancellationReasons | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof BookingReponse
+     */
+    confirmationDate?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof BookingReponse
+     */
+    dateUsed?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof BookingReponse
+     */
+    expirationDate?: Date | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof BookingReponse
+     */
+    id: number;
+    /**
+     * 
+     * @type {BookingStockResponse}
+     * @memberof BookingReponse
+     */
+    stock: BookingStockResponse;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingReponse
+     */
+    token: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof BookingReponse
+     */
+    totalAmount: number;
+}/**
+ * 
+ * @export
+ * @interface BookingStockResponse
+ */
+export interface BookingStockResponse {
+    /**
+     * 
+     * @type {Date}
+     * @memberof BookingStockResponse
+     */
+    beginningDatetime?: Date | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof BookingStockResponse
+     */
+    id: number;
+    /**
+     * 
+     * @type {BookingOfferResponse}
+     * @memberof BookingStockResponse
+     */
+    offer: BookingOfferResponse;
+}/**
+ * 
+ * @export
+ * @interface BookingVenueResponse
+ */
+export interface BookingVenueResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingVenueResponse
+     */
+    city?: string | null;
+    /**
+     * 
+     * @type {Coordinates}
+     * @memberof BookingVenueResponse
+     */
+    coordinates: Coordinates;
+    /**
+     * 
+     * @type {number}
+     * @memberof BookingVenueResponse
+     */
+    id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingVenueResponse
+     */
+    name: string;
+}/**
+ * 
+ * @export
+ * @interface BookingsResponse
+ */
+export interface BookingsResponse {
+    /**
+     * 
+     * @type {Array<BookingReponse>}
+     * @memberof BookingsResponse
+     */
+    ended_bookings: Array<BookingReponse>;
+    /**
+     * 
+     * @type {Array<BookingReponse>}
+     * @memberof BookingsResponse
+     */
+    ongoing_bookings: Array<BookingReponse>;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
 export enum CategoryNameEnum {
     CINEMA = 'CINEMA',
     CONFERENCE = 'CONFERENCE',
@@ -192,6 +393,24 @@ export interface Coordinates {
 }/**
  * 
  * @export
+ * @interface Credit
+ */
+export interface Credit {
+    /**
+     * 
+     * @type {number}
+     * @memberof Credit
+     */
+    initial: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Credit
+     */
+    remaining: number;
+}/**
+ * 
+ * @export
  * @interface CulturalSurveyRequest
  */
 export interface CulturalSurveyRequest {
@@ -207,6 +426,30 @@ export interface CulturalSurveyRequest {
      * @memberof CulturalSurveyRequest
      */
     needsToFillCulturalSurvey: boolean;
+}/**
+ * 
+ * @export
+ * @interface DomainsCredit
+ */
+export interface DomainsCredit {
+    /**
+     * 
+     * @type {Credit}
+     * @memberof DomainsCredit
+     */
+    all: Credit;
+    /**
+     * 
+     * @type {Credit}
+     * @memberof DomainsCredit
+     */
+    digital?: Credit | null;
+    /**
+     * 
+     * @type {Credit}
+     * @memberof DomainsCredit
+     */
+    physical?: Credit | null;
 }/**
  * 
  * @export
@@ -324,6 +567,12 @@ export interface FavoriteOfferResponse {
      * @memberof FavoriteOfferResponse
      */
     image?: FavoriteMediationResponse | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FavoriteOfferResponse
+     */
+    isExpired?: boolean;
     /**
      * 
      * @type {string}
@@ -902,6 +1151,12 @@ export interface UserProfileResponse {
     depositVersion?: number | null;
     /**
      * 
+     * @type {DomainsCredit}
+     * @memberof UserProfileResponse
+     */
+    domainsCredit?: DomainsCredit | null;
+    /**
+     * 
      * @type {string}
      * @memberof UserProfileResponse
      */
@@ -1057,6 +1312,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary get_bookings <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1bookings(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/bookings`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary get_id_check_token <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1182,6 +1459,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          */
         async postnativev1bookOffer(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/book_offer`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"BookOfferRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary book_offer <POST>
+         * @param {BookOfferRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1bookings(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/bookings`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
@@ -1472,6 +1775,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary get_bookings <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1bookings(basePath: string, options?: any): Promise<BookingsResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1bookings(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary get_id_check_token <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1536,6 +1850,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async postnativev1bookOffer(basePath: string, body?: BookOfferRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookOffer(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary book_offer <POST>
+         * @param {BookOfferRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1bookings(basePath: string, body?: BookOfferRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookings(body, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -1682,6 +2008,17 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
+     * @summary get_bookings <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1bookings(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1bookings(this.basePath, options)
+    }
+    /**
+     * 
      * @summary get_id_check_token <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1748,6 +2085,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1bookOffer(body?: BookOfferRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1bookOffer(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary book_offer <POST>
+     * @param {BookOfferRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1bookings(body?: BookOfferRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1bookings(this.basePath, body, options)
     }
     /**
      * 
