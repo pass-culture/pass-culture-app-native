@@ -50,19 +50,28 @@ export const BookHourChoice: React.FC = () => {
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.HOUR ? (
         <HourChoiceContainer>
-          {filteredStocks.map((stock) => {
-            return (
-              <HourChoice
-                key={stock.id}
-                price={formatToFrenchDecimal(stock.price).replace(' ', '')}
-                hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
-                selected={stock.id === bookingState.stockId}
-                onPress={() => selectStock(stock.id)}
-                testID={`HourChoice${stock.id}`}
-                  isBookable={stock.isBookable}
-              />
+          {filteredStocks
+            .filter(
+              (stock) => stock.beginningDatetime !== undefined && stock.beginningDatetime !== null
             )
-          })}
+            .sort(
+              (a, b) =>
+                //@ts-ignore : stocks with no beginningDatetime was filtered
+                new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
+            )
+            .map((stock) => {
+              return (
+                <HourChoice
+                  key={stock.id}
+                  price={formatToFrenchDecimal(stock.price).replace(' ', '')}
+                  hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
+                  selected={stock.id === bookingState.stockId}
+                  onPress={() => selectStock(stock.id)}
+                  testID={`HourChoice${stock.id}`}
+                  isBookable={stock.isBookable}
+                />
+              )
+            })}
         </HourChoiceContainer>
       ) : (
         <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeHour}>
