@@ -1,4 +1,5 @@
 import React from 'react'
+import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
@@ -6,17 +7,40 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
+const LINE_THICKNESS = 1
+const CHOICE_BLOCS_BY_LINE = 3
+const buttonWidth =
+  (Dimensions.get('window').width - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) /
+  CHOICE_BLOCS_BY_LINE
+
+const getStrikeLineAngle = (buttonWidth: number) => {
+  const buttonHeight = getSpacing(20)
+  return (Math.atan2(buttonHeight, buttonWidth + 2) * 180) / Math.PI
+}
+
+const renderStrikeLine = (buttonWidth: number) => <StrikeLine buttonWidth={buttonWidth} />
+
+const getBorderColor = (selected: boolean, disabled?: boolean) => {
+  if (selected) return ColorsEnum.PRIMARY
+  if (disabled) return ColorsEnum.GREY_MEDIUM
+  else return ColorsEnum.GREY_DARK
+}
 interface Props {
   selected: boolean
   onPress: () => void
   testID?: string
   children: Element
+  disabled?: boolean
 }
 
-export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, children }) => {
+export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, children, disabled }) => {
   return (
-    <ChoiceContainer onPress={onPress} activeOpacity={ACTIVE_OPACITY} testID={testID}>
-      <ChoiceContent selected={selected}>
+    <ChoiceContainer
+      onPress={onPress}
+      activeOpacity={ACTIVE_OPACITY}
+      testID={testID}
+      disabled={disabled}>
+      <ChoiceContent selected={selected} disabled={disabled}>
         {selected ? (
           <IconContainer>
             <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
@@ -25,6 +49,7 @@ export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, childre
           <Spacer.Row numberOfSpaces={5} />
         )}
         {children}
+        {disabled && renderStrikeLine(buttonWidth)}
       </ChoiceContent>
     </ChoiceContainer>
   )
@@ -40,13 +65,24 @@ const ChoiceContainer = styled.TouchableOpacity({
   padding: getSpacing(2),
 })
 
-const ChoiceContent = styled.View<{ selected: boolean }>(({ selected }) => ({
-  borderRadius: BorderRadiusEnum.CHECKBOX_RADIUS,
-  border: `solid 1px`,
-  borderColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.GREY_DARK,
-  overflow: 'hidden',
-  backgroundColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.WHITE,
-  paddingHorizontal: getSpacing(3.25),
-  alignItems: 'center',
-  justifyContent: 'center',
-}))
+const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
+  ({ selected, disabled }) => ({
+    borderRadius: BorderRadiusEnum.CHECKBOX_RADIUS,
+    border: `solid 1px`,
+    borderColor: getBorderColor(selected, disabled),
+    overflow: 'hidden',
+    backgroundColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.WHITE,
+    paddingHorizontal: getSpacing(3.25),
+    alignItems: 'center',
+    justifyContent: 'center',
+  })
+)
+
+const StrikeLine = styled.View<{ buttonWidth: number }>`
+  transform: rotate(-${(props) => getStrikeLineAngle(props.buttonWidth)}deg);
+  height: ${LINE_THICKNESS}px;
+  width: ${buttonWidth + getSpacing(6)}px;
+  background-color: ${ColorsEnum.GREY_MEDIUM};
+  border-radius: ${LINE_THICKNESS / 2}px;
+  position: absolute;
+`
