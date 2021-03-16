@@ -10,6 +10,7 @@ import { storage } from 'libs/storage'
 import { DefaultApi } from './gen'
 
 export function navigateToLogin() {
+  // todo remove setTimeout and use https://reactnavigation.org/docs/navigating-without-navigation-prop/#handling-initialization
   setTimeout(() => void navigationRef.current?.navigate('Login'), 0)
 }
 
@@ -87,8 +88,7 @@ export const safeFetch = async (
 /**
  * Calls Api to refresh the access token using the in-keychain stored refresh token
  * - on success: Stores the new access token
- * - on error (422): propagates error
- * - on error (other): throws an exception
+ * - on error : clear storage propagates error
  */
 export const refreshAccessToken = async (api: DefaultApi): Promise<string | null> => {
   const refreshToken = await getRefreshToken()
@@ -97,22 +97,21 @@ export const refreshAccessToken = async (api: DefaultApi): Promise<string | null
   if (refreshToken == null) {
     throw new FailedToRefreshAccessTokenError()
   }
+  try {
+    const response = await api.postnativev1refreshAccessToken({
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    })
 
-  const response = await api.postnativev1refreshAccessToken({
-    headers: {
-      Authorization: `Bearer ${refreshToken}`,
-    },
-  })
+    await storage.saveString('access_token', response.accessToken)
 
-  if (!response) {
+    return await storage.readString('access_token')
+  } catch {
     await clearRefreshToken()
     await storage.clear('access_token')
     throw new FailedToRefreshAccessTokenError()
   }
-
-  await storage.saveString('access_token', response.accessToken)
-
-  return await storage.readString('access_token')
 }
 
 // In this case, the following `any` is not that much of a problem in the context of usage
