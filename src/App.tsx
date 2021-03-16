@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
+import { LogBox } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
@@ -23,6 +24,8 @@ import { i18n } from 'libs/i18n' //@translations
 import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+
+LogBox.ignoreLogs(['Setting a timer'])
 
 const queryCache = new QueryCache()
 
