@@ -17,21 +17,31 @@ Then the build is faster as only the javascript code is published.
 The download and installation of the modification will be automatic when you open the app.
 
 - Troubleshoot:
-  If you don't see your changes, try to check if the codepush was well installed. To do so go to "CheatCodes", and click on the "check update" button. If it displays "no update found" you are up to date, otherwise it will donwload the update and tell you to go to AppCenter download last hard version.
+  If you don't see your changes, try to check if the codepush was correctly downloaded. To do so go to "CheatCodes", and click on the "check update" button.
+  3 possibilities:
+  - it displays "no update found" you are up to date
+  - it shows "New version available on AppCenter" you need to go to hyperurl.co/pc-<testing|staging>
+  - it download the update and restart the app
 
 ### Hard deploy
+
+#### Testing
 
 If I modified native code, I need to hard deploy:
 
 - `yarn trigger:testing:deploy`
+  This will create a tag `testing_vX.X.X` and push it.
+  CircleCI will detect the tag and launch the lanes `deploy-android-testing-hard` & `deploy-ios-testing-hard` (see `.circleci/config.yml` file)
 
-#### Deploy to staging
+#### Staging
 
 We do it once a week at the end of an iteration.
 
 When you want to deploy the current version of master in staging, you can run the following command:
 
-`yarn trigger:staging:deploy`
+- `yarn trigger:staging:deploy`
+  This will create a tag `vX.X.X` and push it on branch `master` & `staging`
+  CircleCI will detect the tag and launch the lanes `deploy-ios-staging` & `deploy-android-staging` (see `.circleci/config.yml` file)
 
 ## Production: Deploy to App Store / Google Play Store
 
