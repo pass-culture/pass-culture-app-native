@@ -1,6 +1,6 @@
 # Testing Strategy
 
-## Why
+Why ?
 
 - Code consistency
 - Tests readability
@@ -18,14 +18,32 @@ it('should render correctly without login modal', async () => {
 })
 ```
 
-You should mock SVG & Lottie animations so snapshot can be more lisible
+If component is using timed function such as animation, snapshot will always differ, it can be worth controlling the time:
+
+```tsx
+it('should render privacy policy', async () => {
+  jest.useFakeTimers()
+  const renderAPI = render(<PrivacyPolicy />)
+  await act(flushAllPromises)
+
+  jest.advanceTimersByTime(1000)
+
+  expect(renderAPI).toMatchSnapshot()
+  jest.useRealTimers()
+})
+```
+
+> SVG & Lottie animations are mocked so snapshot can be more lisible.
+> You can test their existence / non-existence by making queries on either their `testID` or the "mocked" text replacing the actual content of the SVGs / animations.
 
 - **Graphics Component test**
 
-❌ No snapshots tests for component. But you can use diff snapshot for complex style checking.
-Why pages' snapshots and not components ones ?
-If I modify a component, snapshot would for sure be modified.
-What I want to know when I modify a component is which pages are impacted. 
+We do not allow snapshots tests for component, you can still use diff snapshot for complex style checking.
+
+- Why pages' snapshots and not components ones ?
+
+You may not anticipate changes to all screens of the app when you make changes to a component. In such a case, a snapshot failing would be a warning to you : does this screen still displays correctly ?
+Think of it as a poor man's visual testing. 
 
 ```jsx
 it('should render modal correctly', async () => {
@@ -46,7 +64,7 @@ it('should be hidden when the icon is not provided', () => {
 })
 ```
 
-Test with user interactions
+- **Test with user interactions**
 
 ```jsx
 it('should display the error message when the date is not correct', () => {
@@ -67,17 +85,74 @@ it('should display the error message when the date is not correct', () => {
 })
 ```
 
-- **Navigation test**
+## renderAPI
+
+When calling `render`, you will get a `renderAPI` object
+
+### Avoid `console` within tests
+
+These are tips to avoid `console` within your tests.
+
+- Use `queryBy` methods to test the inexistence of an element.
+- Use `getBy` methods when you know it's truthy
+- To avoid `act` warnings:
+  - try to add `await superFlushWithAct()`, and pass a `number` greater than `10` *(default)* to flush more promises
+  - try to use `waitForExpect` each time you anticipate expectations that should be made after the execution of asynchrone actions.
+- To test an expected error, clean it from your test (we already have the test description):
+  - Use `jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)` before each test and `jest.clearAllMocks()` after each test
+  
+If none of those methods works, and your test still fail: 
+
+- ask other developers for help you resolve `console` within your tests
+- if agreed, use at the top of your test `allowConsole({ error: true })`, 
+this will pollute the test log output, but it will pass (aka volkswagen)  
+
+## Test cook book
+
+### Date
+
+> We use `TZ=UTC` environment variable so every serialized date are in UTC to prevent environment conflict.
+
+You can mock the result of `new Date()` as follows:
+
+```tsx
+const Today = new Date(2020, 10, 1)
+
+describe('Favorites reducer', () => {
+  beforeAll(() => {
+    mockdate.set(Today)
+  })
+})
+```
+
+### Authentication with `authContext`
+
+To test as an authenticated person, you can mock `useAuthContext` as follows:
+
+```tsx
+import { useAuthContext } from 'features/auth/AuthContext'
+jest.mock('features/auth/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+// ... and then within each test
+mockUseAuthContext.mockReturnValue({ isLoggedIn, setIsLoggedIn: jest.fn() })
+```
+
+Don't forget to use `afterEach(jest.clearAllMocks)` to clear mocks after each test.
+
+### Navigation
+
+To test our `navigate` call, we can do: 
 
 ```jsx
 it('should navigate to the previous when back navigation triggered', () => {
     const { getByTestId } = render(<SetBirthday />)
-    const leftIcon = getByTestId('leftIcon')
-    fireEvent.press(leftIcon)
+    fireEvent.press(getByTestId('leftIcon'))
 
     expect(goBack).toBeCalledTimes(1)
 })
 ```
+
+If `act` warnings appear, try to use `await superFlushWithAct(times)` or wrap the `expect` around `waitForExpect`: 
 
 ```jsx
 it('should redirect to home page WHEN signin is successful', async () => {
@@ -94,7 +169,30 @@ it('should redirect to home page WHEN signin is successful', async () => {
 })
 ```
 
-- **API calls test**
+#### Mock route params
+
+When the tested component use route params through `useRoute` hook, `params` can be mocked like follow:
+```tsx
+import { useRoute } from '__mocks__/@react-navigation/native'
+
+// later
+useRoute.mockReturnValue({
+  params: {
+    shouldDisplayLoginModal: withModal,
+  },
+})
+```
+
+
+### React Query and API calls
+
+We use the test utility `reactQueryProviderHOC` to bring react-query context within a test, use it around your rendered element:
+
+```jsx
+render(reactQueryProviderHOC(<FooComponent />))
+```
+
+Now that you have the [`react-query`](https://react-query.tanstack.com/) context, you need to mock the backend http responses, you can use [`msw`](https://github.com/mswjs/msw):
 
 ```jsx
 import { server } from 'tests/server'
@@ -107,14 +205,12 @@ server.use(
 )
 
 it('calls the API and returns the data', async () => {
-      const { result, waitFor } = renderHook(useUserProfileInfo, {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
-      await waitFor(() => {
-        return result.current.data !== undefined
-      })
-      expect(result.current.data).toEqual(userProfileAPIResponse)
-      expect(userProfileApiMock).toHaveBeenCalledTimes(1)
+  const { result, waitFor } = renderHook(useUserProfileInfo, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+  await waitFor(() => result.current.data !== undefined)
+  expect(result.current.data).toEqual(userProfileAPIResponse)
+  expect(userProfileApiMock).toHaveBeenCalledTimes(1)
 })
 ```
 
