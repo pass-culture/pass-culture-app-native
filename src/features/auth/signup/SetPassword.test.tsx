@@ -17,7 +17,7 @@ describe('SetPassword Page', () => {
     const continueButton = getByTestId('button-container')
 
     const background = continueButton.props.style.backgroundColor
-    expect(background).toEqual(ColorsEnum.PRIMARY_DISABLED)
+    expect(background).toEqual(ColorsEnum.GREY_LIGHT)
 
     const passwordInput = getByPlaceholderText('Ton mot de passe')
 

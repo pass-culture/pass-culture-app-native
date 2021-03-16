@@ -29,7 +29,7 @@ describe('<ShowResults />', () => {
       expect(getByTestId('button-title')).toBeTruthy()
       expect(getByTestId('button-title').children[0]).toBe(expected)
 
-      const expectedColor = disabled ? ColorsEnum.PRIMARY_DISABLED : ColorsEnum.PRIMARY
+      const expectedColor = disabled ? ColorsEnum.GREY_LIGHT : ColorsEnum.PRIMARY
       expect(getByTestId('button-container').props.style.backgroundColor).toBe(expectedColor)
     }
   )

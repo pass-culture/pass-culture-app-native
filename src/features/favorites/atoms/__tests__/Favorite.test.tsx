@@ -173,14 +173,53 @@ describe('<Favorite /> component - Booking button', () => {
   afterEach(jest.clearAllMocks)
 
   describe('when user is beneficiary', () => {
-    it('they should be able to book in app', () => {
-      const renderAPI = render(reactQueryProviderHOC(<Favorite {...defaultProps} />))
+    it('they should be able to book in app when user has enough credit', async () => {
+      const renderAPI = render(
+        reactQueryProviderHOC(<Favorite {...defaultProps} credit={{ ...credit, amount: 3000 }} />)
+      )
 
       fireEvent.press(renderAPI.getByText('Réserver'))
-
       expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
       expect(openExternalUrl).not.toBeCalled()
       expect(defaultProps.setOfferToBook).toBeCalledWith(favorite.offer)
+
+      const renderAPIStartPrice = render(
+        reactQueryProviderHOC(
+          <Favorite
+            {...defaultProps}
+            credit={{ ...credit, amount: 3000 }}
+            favorite={{ ...favorite, offer: { ...favorite.offer, price: null, startPrice: 2700 } }}
+          />
+        )
+      )
+
+      fireEvent.press(renderAPIStartPrice.getByText('Réserver'))
+      expect(renderAPIStartPrice.queryByText('button-icon-SVG-Mock')).toBeFalsy()
+      expect(openExternalUrl).not.toBeCalled()
+      expect(defaultProps.setOfferToBook).toBeCalledWith({
+        ...favorite.offer,
+        price: null,
+        startPrice: 2700,
+      })
+    })
+
+    it('they should see a not enough credit disabled button when user has not enough credit', async () => {
+      const renderAPI = render(reactQueryProviderHOC(<Favorite {...defaultProps} />))
+
+      expect(renderAPI.queryByText('Réserver')).toBeFalsy()
+      expect(renderAPI.queryByText('Crédit insuffisant')).toBeTruthy()
+
+      const renderAPIStartPrice = render(
+        reactQueryProviderHOC(
+          <Favorite
+            {...defaultProps}
+            favorite={{ ...favorite, offer: { ...favorite.offer, price: null, startPrice: 2700 } }}
+          />
+        )
+      )
+
+      expect(renderAPIStartPrice.queryByText('Réserver')).toBeFalsy()
+      expect(renderAPIStartPrice.queryByText('Crédit insuffisant')).toBeTruthy()
     })
   })
 

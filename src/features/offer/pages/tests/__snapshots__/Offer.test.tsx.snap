@@ -4101,7 +4101,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 style={
                                   Object {
                                     "alignItems": "center",
-                                    "backgroundColor": "#ff99be",
+                                    "backgroundColor": "#f5f5f5",
                                     "borderRadius": 24,
                                     "borderWidth": 0,
                                     "flexDirection": "row",
@@ -4124,7 +4124,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "color": "#ffffff",
+                                        "color": "#626262",
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
@@ -4134,7 +4134,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     ]
                                   }
                                   testID="button-title"
-                                  textColor="#ffffff"
+                                  textColor="#626262"
                                 >
                                   Choisir les options
                                 </Text>
@@ -9298,7 +9298,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 style={
                                   Object {
                                     "alignItems": "center",
-                                    "backgroundColor": "#ff99be",
+                                    "backgroundColor": "#f5f5f5",
                                     "borderRadius": 24,
                                     "borderWidth": 0,
                                     "flexDirection": "row",
@@ -9321,7 +9321,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                   style={
                                     Array [
                                       Object {
-                                        "color": "#ffffff",
+                                        "color": "#626262",
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
@@ -9331,7 +9331,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                     ]
                                   }
                                   testID="button-title"
-                                  textColor="#ffffff"
+                                  textColor="#626262"
                                 >
                                   Choisir les options
                                 </Text>

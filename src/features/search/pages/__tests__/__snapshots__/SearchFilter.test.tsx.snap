@@ -2954,7 +2954,7 @@ Array [
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#ff99be",
+          "backgroundColor": "#f5f5f5",
           "borderRadius": 24,
           "borderWidth": 0,
           "flexDirection": "row",
@@ -2977,7 +2977,7 @@ Array [
         style={
           Array [
             Object {
-              "color": "#ffffff",
+              "color": "#626262",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -2987,7 +2987,7 @@ Array [
           ]
         }
         testID="button-title"
-        textColor="#ffffff"
+        textColor="#626262"
       >
         Aucun résultat
       </Text>

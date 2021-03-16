@@ -18,7 +18,7 @@ describe('<SetEmail />', () => {
     const { getByTestId } = renderPage()
 
     const button = getByTestId('button-container')
-    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
+    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
   })
 
   it('should enable validate button when email input is filled', async () => {
