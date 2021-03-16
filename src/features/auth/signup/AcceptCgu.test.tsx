@@ -97,6 +97,7 @@ describe('AcceptCgu Page', () => {
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
     expect(renderAPI.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
+    expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on signup button", () => {
@@ -139,6 +140,7 @@ describe('AcceptCgu Page', () => {
       expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
         email: 'john.doe@example.com',
       })
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
   })
 
@@ -156,6 +158,7 @@ describe('AcceptCgu Page', () => {
       ).toBeTruthy()
       expect(postnativev1accountSpy).not.toBeCalled()
       expect(navigate).not.toBeCalled()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
   })
 
@@ -171,6 +174,7 @@ describe('AcceptCgu Page', () => {
       expect(renderAPI.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeTruthy()
       expect(postnativev1accountSpy).not.toBeCalled()
       expect(navigate).not.toBeCalled()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
   })
 
