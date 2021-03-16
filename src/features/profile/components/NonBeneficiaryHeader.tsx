@@ -1,17 +1,16 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren } from 'react'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
 import { useGetIdCheckToken } from 'features/auth/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { dateDiffInFullYears, formatToSlashedFrenchDate } from 'libs/dates'
 import { _ } from 'libs/i18n'
+import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
-import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
-import { ColorsEnum, getSpacing, Spacer, Typo, ScreenWidth } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { computeEligibilityExpiracy } from '../utils'
 
@@ -64,29 +63,13 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
   return (
     <React.Fragment>
-      <HeaderBackgroundWrapper>
-        <HeaderBackground width={ScreenWidth} />
-        <Title>{_(t`Profil`)}</Title>
-      </HeaderBackgroundWrapper>
+      <SvgPageHeader title="Profil" />
       {body}
     </React.Fragment>
   )
 }
 
 export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
-
-const HeaderBackgroundWrapper = styled.View({
-  maxHeight: getSpacing(14) + getStatusBarHeight(true),
-  overflow: 'hidden',
-  position: 'relative',
-  alignItems: 'center',
-})
-
-const Title = styled(Typo.Title4)({
-  position: 'absolute',
-  bottom: getSpacing(3),
-  color: ColorsEnum.WHITE,
-})
 
 const BodyContainer = styled.View.attrs<{ padding?: number }>(({ padding }) => ({
   padding,
