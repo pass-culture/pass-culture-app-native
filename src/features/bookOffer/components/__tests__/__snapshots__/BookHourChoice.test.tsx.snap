@@ -58,9 +58,125 @@ Array [
           "width": "33%",
         }
       }
+      testID="HourChoice148411"
+    >
+      <View
+        disabled={true}
+        selected={false}
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderColor": "#c7c7cc",
+              "borderRadius": 4,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingHorizontal": 13,
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={5}
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "paddingVertical": 20,
+              },
+            ]
+          }
+        >
+          <Text
+            color="#626262"
+            style={
+              Array [
+                Object {
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="HourChoice148411-hour"
+          >
+            10h00
+          </Text>
+          <Text
+            color="#626262"
+            style={
+              Array [
+                Object {
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+            testID="HourChoice148411-price"
+          >
+            épuisé
+          </Text>
+        </View>
+        <View
+          buttonWidth={231.33333333333334}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#c7c7cc",
+                "borderRadius": 0.5,
+                "height": 1,
+                "position": "absolute",
+                "transform": Array [
+                  Object {
+                    "rotate": "-18.924644416051237deg",
+                  },
+                ],
+                "width": 255.33333333333334,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+          "width": "33%",
+        }
+      }
       testID="HourChoice148409"
     >
       <View
+        disabled={false}
         selected={false}
         style={
           Array [
@@ -127,101 +243,6 @@ Array [
               ]
             }
             testID="HourChoice148409-price"
-          >
-            24€
-          </Text>
-        </View>
-      </View>
-    </View>
-    <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "width": "33%",
-        }
-      }
-      testID="HourChoice148411"
-    >
-      <View
-        selected={false}
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#626262",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingHorizontal": 13,
-            },
-          ]
-        }
-      >
-        <View
-          numberOfSpaces={5}
-          style={
-            Array [
-              Object {
-                "width": 20,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "paddingVertical": 20,
-              },
-            ]
-          }
-        >
-          <Text
-            color="#151515"
-            style={
-              Array [
-                Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="HourChoice148411-hour"
-          >
-            10h00
-          </Text>
-          <Text
-            color="#151515"
-            style={
-              Array [
-                Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-            testID="HourChoice148411-price"
           >
             24€
           </Text>

@@ -93,6 +93,6 @@ describe('BookHourChoice', () => {
     const secondPrice = page.getByTestId('HourChoice148411-price')
 
     expect(secondHour.props.children).toBe('10h00')
-    expect(secondPrice.props.children).toBe('24€')
+    expect(secondPrice.props.children).toBe('épuisé')
   })
 })
