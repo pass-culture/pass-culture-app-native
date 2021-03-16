@@ -1,6 +1,6 @@
-import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
+import * as RNNavigation from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { act, fireEvent, render, waitFor } from '@testing-library/react-native'
+import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import { Platform } from 'react-native'
@@ -15,7 +15,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, superFlushWithAct } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { NotificationSettings } from './NotificationSettings'
@@ -32,6 +32,9 @@ jest.mock('@react-navigation/native', () => ({
   useRoute: jest.fn().mockImplementation(() => ({
     key: 'ksdqldkmqdmqdq',
   })),
+  useNavigation: jest.fn().mockReturnValue({
+    goBack: jest.fn(),
+  }),
 }))
 
 describe('NotificationSettings', () => {
@@ -42,7 +45,8 @@ describe('NotificationSettings', () => {
   it('should display the both switches on ios', async () => {
     Platform.OS = 'ios'
     const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
-    await waitFor(() => {
+    await superFlushWithAct(10)
+    await waitForExpect(() => {
       queryByText('Autoriser l’envoi d’e\u2011mails')
       queryByText('Autoriser les notifications marketing')
     })
@@ -50,7 +54,8 @@ describe('NotificationSettings', () => {
   it('should only display the email switch on android', async () => {
     Platform.OS = 'android'
     const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
-    await waitFor(() => {
+    await superFlushWithAct(10)
+    await waitForExpect(() => {
       queryByText('Autoriser l’envoi d’e\u2011mails')
     })
   })
@@ -63,6 +68,7 @@ describe('NotificationSettings', () => {
           marketingPush: true,
         },
       } as UserProfileResponse)
+      await superFlushWithAct(10)
       const pushSwitch = getByTestId('push-switch-background')
       await waitForExpect(() => expect(pushSwitch.props.active).toBeTruthy())
     })
@@ -83,6 +89,7 @@ describe('NotificationSettings', () => {
           },
         } as UserProfileResponse)
         const pushSwitch = getByTestId('push-switch-background')
+        await superFlushWithAct(10)
         await waitForExpect(() => expect(pushSwitch.props.active).toBeFalsy())
       }
     )
@@ -95,10 +102,12 @@ describe('NotificationSettings', () => {
           marketingPush: false,
         },
       } as UserProfileResponse)
-      await waitFor(() => {
+      await superFlushWithAct(10)
+      await waitForExpect(() => {
         const toggleSwitch = getByTestId('push')
         fireEvent.press(toggleSwitch)
       })
+      await superFlushWithAct(10)
       await waitForExpect(() => {
         const toggleSwitch = getByTestId('push-switch-background')
         // expect activated
@@ -113,10 +122,12 @@ describe('NotificationSettings', () => {
           marketingPush: true,
         },
       } as UserProfileResponse)
-      await waitFor(() => {
+      await superFlushWithAct(10)
+      await waitForExpect(() => {
         const toggleSwitch = getByTestId('push')
         fireEvent.press(toggleSwitch)
       })
+      await superFlushWithAct(10)
       await waitForExpect(() => {
         const toggleSwitch = getByTestId('push-switch-background')
         // expect not activated
@@ -133,10 +144,12 @@ describe('NotificationSettings', () => {
             marketingPush: false, // the user push setting doesnt care
           },
         } as UserProfileResponse)
-        await waitFor(() => {
+        await superFlushWithAct(10)
+        await waitForExpect(() => {
           const toggleSwitch = getByTestId('push')
           fireEvent.press(toggleSwitch)
         })
+        await superFlushWithAct(10)
         await waitForExpect(() => {
           getByTestId('modal-notifications-permission-modal')
         })
@@ -155,7 +168,8 @@ describe('NotificationSettings', () => {
       let saveButton: ReactTestInstance | null = null
       saveButton = queryByTestId('button-container')
 
-      await waitFor(() => {
+      await superFlushWithAct(10)
+      await waitForExpect(() => {
         expect(saveButton).toBeFalsy()
       })
     })
@@ -177,20 +191,23 @@ describe('NotificationSettings', () => {
         true
       )
 
-      await waitFor(() => {
+      await superFlushWithAct(10)
+      await waitForExpect(() => {
         const toggleSwitch = getByTestId('email')
         fireEvent.press(toggleSwitch)
       })
 
       let saveButton: ReactTestInstance | null = null
-      await waitFor(() => {
+      await superFlushWithAct(10)
+      await waitForExpect(() => {
         saveButton = getByTestId('button-container')
         expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
       })
 
       saveButton && fireEvent.press(saveButton)
 
-      await waitFor(() => {
+      await superFlushWithAct(10)
+      await waitForExpect(() => {
         saveButton = getByTestId('button-container')
         expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
       })
@@ -214,20 +231,23 @@ describe('NotificationSettings', () => {
         true
       )
 
-      await waitFor(() => {
+      await superFlushWithAct(10)
+      await waitForExpect(() => {
         const toggleSwitch = getByTestId('push')
         fireEvent.press(toggleSwitch)
       })
 
+      await superFlushWithAct(10)
       let saveButton: ReactTestInstance | null = null
-      await waitFor(() => {
+      await waitForExpect(() => {
         saveButton = getByTestId('button-container')
         expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
       })
 
       saveButton && fireEvent.press(saveButton)
 
-      await waitFor(() => {
+      await superFlushWithAct(10)
+      await waitForExpect(() => {
         saveButton = getByTestId('button-container')
         expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY_DISABLED)
       })
@@ -237,7 +257,7 @@ describe('NotificationSettings', () => {
 
 const Stack = createStackNavigator<RootStackParamList>()
 
-const navigationRef = React.createRef<NavigationContainerRef>()
+const navigationRef = React.createRef<RNNavigation.NavigationContainerRef>()
 
 async function renderNotificationSettings(
   expectedPermission: NotificationsResponse['status'],
@@ -256,11 +276,11 @@ async function renderNotificationSettings(
 
   const wrapper = render(
     reactQueryProviderHOC(
-      <NavigationContainer ref={navigationRef}>
+      <RNNavigation.NavigationContainer ref={navigationRef}>
         <Stack.Navigator initialRouteName="NotificationSettings">
           <Stack.Screen name="NotificationSettings" component={NotificationSettings} />
         </Stack.Navigator>
-      </NavigationContainer>
+      </RNNavigation.NavigationContainer>
     )
   )
 
