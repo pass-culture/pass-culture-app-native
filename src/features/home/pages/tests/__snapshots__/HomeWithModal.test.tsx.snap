@@ -5,7 +5,7 @@ exports[`Home component modal test should render modal correctly 1`] = `
 - First value
 + Second value
 
-@@ -249,11 +249,11 @@
+@@ -251,11 +251,11 @@
                     animationType=\\"slide\\"
                     hardwareAccelerated={false}
                     statusBarTranslucent={true}

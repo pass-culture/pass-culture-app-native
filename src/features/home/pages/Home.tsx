@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useState, FunctionComponent, useCallback } from 'react'
-import { NativeSyntheticEvent, NativeScrollEvent, ScrollView } from 'react-native'
+import { NativeSyntheticEvent, NativeScrollEvent, ScrollView, Text } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
@@ -18,7 +18,6 @@ import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useModal } from 'ui/components/modals/useModal'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -89,9 +88,9 @@ export const Home: FunctionComponent = function () {
       <HeaderBackgroundWrapper>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
-      <UserProfileContainer onPress={() => navigation.navigate('CheatMenu')}>
-        <UserCircle size={32} color={ColorsEnum.WHITE} />
-      </UserProfileContainer>
+      <CheatCodeButtonContainer onPress={() => navigation.navigate('CheatMenu')}>
+        <Text>{_(t`CheatMenu`)}</Text>
+      </CheatCodeButtonContainer>
 
       <CenterContainer>
         <Spacer.Column numberOfSpaces={8} />
@@ -143,11 +142,13 @@ const HomeBodyLoadingContainer = styled.View<{ isLoading: boolean }>(({ isLoadin
   overflow: 'hidden',
 }))
 
-const UserProfileContainer = styled.TouchableOpacity.attrs({
+const CheatCodeButtonContainer = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
 })({
   position: 'absolute',
-  right: 24,
+  right: getSpacing(2),
   top: getSpacing(3) + statusBarHeight,
   zIndex: 1,
+  border: 1,
+  padding: getSpacing(1),
 })
