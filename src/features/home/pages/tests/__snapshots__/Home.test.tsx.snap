@@ -51,22 +51,24 @@ exports[`Home component should render correctly without login modal 1`] = `
       onStartShouldSetResponder={[Function]}
       style={
         Object {
+          "borderColor": "black",
+          "borderStyle": "solid",
+          "borderWidth": 1,
           "opacity": 1,
+          "paddingBottom": 4,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 4,
           "position": "absolute",
-          "right": 24,
+          "right": 8,
           "top": 32,
           "zIndex": 1,
         }
       }
     >
-      <View
-        height={32}
-        width={32}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
+      <Text>
+        CheatMenu
+      </Text>
     </View>
     <View
       style={
