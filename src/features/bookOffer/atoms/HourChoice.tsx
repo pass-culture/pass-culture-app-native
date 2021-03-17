@@ -7,6 +7,12 @@ import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 import { ChoiceBloc } from './ChoiceBloc'
 
+const getTextColor = (selected: boolean, disabled: boolean) => {
+  if (selected) return ColorsEnum.WHITE
+  if (disabled) return ColorsEnum.GREY_DARK
+  return ColorsEnum.BLACK
+}
+
 interface Props {
   hour: string
   price: string
@@ -24,12 +30,7 @@ export const HourChoice: React.FC<Props> = ({
   testID,
   isBookable,
 }) => {
-  const renderTextColor = (selected: boolean, disabled: boolean) => {
-    if (selected) return ColorsEnum.WHITE
-    if (disabled) return ColorsEnum.GREY_DARK
-    else return ColorsEnum.BLACK
-  }
-  const textColor = renderTextColor(selected, !isBookable)
+  const textColor = getTextColor(selected, !isBookable)
 
   return (
     <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={!isBookable}>
