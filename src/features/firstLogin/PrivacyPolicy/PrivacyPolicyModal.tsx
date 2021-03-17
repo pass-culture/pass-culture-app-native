@@ -16,14 +16,16 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export interface Props {
   visible: boolean
-  dismissModal: () => void
+  onApproval: () => void
+  onRefusal: () => void
   navigationRef?: RefObject<NavigationContainerRef>
 }
 
 export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   navigationRef,
   visible,
-  dismissModal,
+  onApproval,
+  onRefusal,
 }) => {
   const [isVisible, setIsVisible] = useState<boolean>(visible)
 
@@ -43,7 +45,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
       visible={isVisible}
       title={_(t`Respect de ta vie privée`)}
       rightIcon={Close}
-      onRightIconPress={dismissModal}>
+      onRightIconPress={onRefusal}>
       <Description>
         <Typo.Body>
           {_(
@@ -62,7 +64,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
           {_(t`Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil.`)}
         </Typo.Caption>
       </SubDescription>
-      <ButtonPrimary title={_(t`Continuer`)} onPress={dismissModal} />
+      <ButtonPrimary title={_(t`Continuer`)} onPress={onApproval} />
       <Spacer.Column numberOfSpaces={2} />
       <ButtonPrimaryWhite
         title={_(t`Paramètres de confidentialité`)}

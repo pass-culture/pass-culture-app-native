@@ -48,7 +48,7 @@ describe('<PrivacyPolicy />', () => {
     expect(title).toBeFalsy()
   })
 
-  it('should close modal and set has_accepted_cookie to true in storage on dismiss', async () => {
+  it('should close modal and set has_accepted_cookie to true in storage on approval', async () => {
     expect(await storage.readObject('has_accepted_cookie')).toBeNull()
     const renderAPI = render(<PrivacyPolicy />)
     await act(flushAllPromises)
@@ -61,6 +61,22 @@ describe('<PrivacyPolicy />', () => {
     await act(flushAllPromises)
 
     expect(await storage.readObject('has_accepted_cookie')).toBe(true)
+    expect(renderAPI.queryByText('Continuer')).toBeFalsy()
+  })
+
+  it('should close modal and set has_accepted_cookie to false in storage on refusal', async () => {
+    expect(await storage.readObject('has_accepted_cookie')).toBeNull()
+    const renderAPI = render(<PrivacyPolicy />)
+    await act(flushAllPromises)
+
+    expect(await storage.readObject('has_accepted_cookie')).toBeNull()
+    const title = renderAPI.queryByText('Respect de ta vie privée')
+    expect(title).toBeTruthy()
+
+    fireEvent.press(renderAPI.getByTestId('rightIcon'))
+    await act(flushAllPromises)
+
+    expect(await storage.readObject('has_accepted_cookie')).toBe(false)
     expect(renderAPI.queryByText('Continuer')).toBeFalsy()
   })
 })

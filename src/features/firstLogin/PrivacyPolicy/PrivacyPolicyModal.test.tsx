@@ -10,7 +10,8 @@ import { PrivacyPolicyModal, Props } from './PrivacyPolicyModal'
 
 jest.mock('features/navigation/navigationRef')
 
-const dismissModal = jest.fn()
+const onApproval = jest.fn()
+const onRefusal = jest.fn()
 const visible = true
 
 describe('<PrivacyPolicyModal />', () => {
@@ -18,33 +19,39 @@ describe('<PrivacyPolicyModal />', () => {
 
   it('should render correctly', () => {
     const renderAPI = renderPrivacyModal({
-      dismissModal,
+      onRefusal,
+      onApproval,
       visible,
     })
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should close when pressing right header icon "✖"', () => {
+  it('should close and refuse when pressing right header icon "✖"', () => {
     const { getByTestId } = renderPrivacyModal({
-      dismissModal,
+      onRefusal,
+      onApproval,
       visible,
     })
     fireEvent.press(getByTestId('rightIconButton'))
-    expect(dismissModal).toBeCalledTimes(1)
+    expect(onRefusal).toBeCalledTimes(1)
+    expect(onApproval).not.toBeCalled()
   })
 
-  it('should close when pressing button with text "Continuer"', () => {
+  it('should close and approve when pressing button with text "Continuer"', () => {
     const { getByText } = renderPrivacyModal({
-      dismissModal,
+      onRefusal,
+      onApproval,
       visible,
     })
     fireEvent.press(getByText('Continuer'))
-    expect(dismissModal).toBeCalledTimes(1)
+    expect(onApproval).toBeCalledTimes(1)
+    expect(onRefusal).not.toBeCalled()
   })
 
   it('should navigate to ConsentSettings when pressing button with text "Paramètres de confidentialité"', () => {
     const { getByText } = renderPrivacyModal({
-      dismissModal,
+      onRefusal,
+      onApproval,
       visible,
       navigationRef,
     })
@@ -55,7 +62,8 @@ describe('<PrivacyPolicyModal />', () => {
   it('should open cookies policies on click on "Politique des cookies"', async () => {
     const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
     const { getByText } = renderPrivacyModal({
-      dismissModal,
+      onRefusal,
+      onApproval,
       visible,
       navigationRef,
     })
@@ -65,6 +73,6 @@ describe('<PrivacyPolicyModal />', () => {
   })
 })
 
-function renderPrivacyModal(props: Props = { dismissModal, visible }) {
+function renderPrivacyModal(props: Props = { onRefusal, onApproval, visible }) {
   return render(<PrivacyPolicyModal {...props} />)
 }

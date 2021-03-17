@@ -24,10 +24,16 @@ export function PrivacyPolicy(props: Props) {
     storage.saveObject('has_accepted_cookie', true)
   }
 
+  function refuseCookie() {
+    setHasUserMadeCookieChoice(true)
+    storage.saveObject('has_accepted_cookie', false)
+  }
+
   return hasUserMadeCookieChoice ? null : (
     <PrivacyPolicyModal
       visible={true}
-      dismissModal={acceptCookie}
+      onApproval={acceptCookie}
+      onRefusal={refuseCookie}
       navigationRef={props.navigationRef}
     />
   )
