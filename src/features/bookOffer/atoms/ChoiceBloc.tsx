@@ -13,17 +13,14 @@ const buttonWidth =
   (Dimensions.get('window').width - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) /
   CHOICE_BLOCS_BY_LINE
 
-const getStrikeLineAngle = (buttonWidth: number) => {
-  const buttonHeight = getSpacing(20)
-  return (Math.atan2(buttonHeight, buttonWidth + 2) * 180) / Math.PI
-}
+const buttonHeight = getSpacing(20)
 
-const renderStrikeLine = (buttonWidth: number) => <StrikeLine buttonWidth={buttonWidth} />
+const strikeLineAngle = (Math.atan2(buttonHeight, buttonWidth + 2) * 180) / Math.PI
 
 const getBorderColor = (selected: boolean, disabled?: boolean) => {
   if (selected) return ColorsEnum.PRIMARY
   if (disabled) return ColorsEnum.GREY_MEDIUM
-  else return ColorsEnum.GREY_DARK
+  return ColorsEnum.GREY_DARK
 }
 interface Props {
   selected: boolean
@@ -49,7 +46,7 @@ export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, childre
           <Spacer.Row numberOfSpaces={5} />
         )}
         {children}
-        {disabled && renderStrikeLine(buttonWidth)}
+        {disabled && <StrikeLine />}
       </ChoiceContent>
     </ChoiceContainer>
   )
@@ -78,8 +75,8 @@ const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
   })
 )
 
-const StrikeLine = styled.View<{ buttonWidth: number }>`
-  transform: rotate(-${(props) => getStrikeLineAngle(props.buttonWidth)}deg);
+const StrikeLine = styled.View`
+  transform: rotate(-${strikeLineAngle}deg);
   height: ${LINE_THICKNESS}px;
   width: ${buttonWidth + getSpacing(6)}px;
   background-color: ${ColorsEnum.GREY_MEDIUM};

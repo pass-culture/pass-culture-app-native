@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { debounce } from 'lodash'
-import React, { useRef } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -40,8 +40,34 @@ export const BookHourChoice: React.FC = () => {
     dispatch({ type: 'RESET_QUANTITY' })
   }
 
-  const filteredStocks = stocks.filter(({ beginningDatetime }) =>
-    selectedDate && beginningDatetime ? formatToKeyDate(beginningDatetime) === selectedDate : false
+  const filteredStocks = useMemo(
+    () =>
+      stocks
+        .filter(({ beginningDatetime }) =>
+          selectedDate && beginningDatetime
+            ? formatToKeyDate(beginningDatetime) === selectedDate
+            : false
+        )
+        .filter(
+          (stock) => stock.beginningDatetime !== undefined && stock.beginningDatetime !== null
+        )
+        .sort(
+          (a, b) =>
+            //@ts-ignore : stocks with no beginningDatetime was filtered
+            new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
+        )
+        .map((stock) => (
+          <HourChoice
+            key={stock.id}
+            price={formatToFrenchDecimal(stock.price).replace(' ', '')}
+            hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
+            selected={stock.id === bookingState.stockId}
+            onPress={() => selectStock(stock.id)}
+            testID={`HourChoice${stock.id}`}
+            isBookable={stock.isBookable}
+          />
+        )),
+    [stocks, selectedDate, bookingState.stockId]
   )
 
   return (
@@ -49,30 +75,7 @@ export const BookHourChoice: React.FC = () => {
       <Typo.Title4 testID="HourStep">{_(t`Heure`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.HOUR ? (
-        <HourChoiceContainer>
-          {filteredStocks
-            .filter(
-              (stock) => stock.beginningDatetime !== undefined && stock.beginningDatetime !== null
-            )
-            .sort(
-              (a, b) =>
-                //@ts-ignore : stocks with no beginningDatetime was filtered
-                new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
-            )
-            .map((stock) => {
-              return (
-                <HourChoice
-                  key={stock.id}
-                  price={formatToFrenchDecimal(stock.price).replace(' ', '')}
-                  hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
-                  selected={stock.id === bookingState.stockId}
-                  onPress={() => selectStock(stock.id)}
-                  testID={`HourChoice${stock.id}`}
-                  isBookable={stock.isBookable}
-                />
-              )
-            })}
-        </HourChoiceContainer>
+        <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>
       ) : (
         <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeHour}>
           <Typo.ButtonText>
