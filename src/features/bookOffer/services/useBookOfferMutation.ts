@@ -11,7 +11,7 @@ interface Props {
 export const useBookOfferMutation = ({ onSuccess, onError }: Props) => {
   const queryClient = useQueryClient()
 
-  return useMutation((body: BookOfferRequest) => api.postnativev1bookOffer(body), {
+  return useMutation((body: BookOfferRequest) => api.postnativev1bookings(body), {
     onSuccess: () => {
       queryClient.invalidateQueries('userProfile')
       onSuccess()
