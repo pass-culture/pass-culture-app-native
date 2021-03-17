@@ -12,6 +12,7 @@ import {
 } from 'features/favorites/pages/useFavorites'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -39,6 +40,9 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate: addFavorite } = useAddFavorite({
+    onSuccess: () => {
+      analytics.logHasAddedOfferToFavorites(params.from)
+    },
     onError: () => {
       showErrorSnackBar({
         message: _(t`L'offre n'a pas été ajoutée à tes favoris`),

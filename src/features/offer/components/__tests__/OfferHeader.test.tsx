@@ -289,6 +289,24 @@ describe('<OfferHeader />', () => {
     ).toBe(favoriteOfferId)
   })
 
+  it('should add favorite and log analytic event logHasAddedOfferToFavorites with "favorites" as argument - logged in users', async () => {
+    const from = 'favorites'
+    useRoute.mockImplementation(() => ({
+      params: {
+        from,
+      },
+    }))
+    const { getByTestId } = await renderOfferHeader({
+      isLoggedIn: true,
+      id: addFavoriteJsonResponseSnap.offer.id,
+    })
+    fireEvent.press(getByTestId('icon-favorite'))
+    await superFlushWithAct()
+    await waitForExpect(() => {
+      expect(analytics.logHasAddedOfferToFavorites).toBeCalledWith(from)
+    })
+  })
+
   describe('<OfferHeader /> - Analytics', () => {
     it('should log ShareOffer once when clicking on the Share button', async () => {
       const { getByTestId } = await renderOfferHeader({ isLoggedIn: true })

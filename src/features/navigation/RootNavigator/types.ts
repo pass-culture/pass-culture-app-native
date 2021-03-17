@@ -5,6 +5,8 @@ import { ComponentType } from 'react'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
+export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink'
+
 /**
  * WARNING !
  * Deeplink: When updating the screen parameters, pay attention to the deeplink handlers.
@@ -37,7 +39,11 @@ export type RootStackParamList = {
     | undefined
   Navigation: undefined
   NotificationSettings: undefined
-  Offer: { id: number; shouldDisplayLoginModal: boolean }
+  Offer: {
+    id: number
+    shouldDisplayLoginModal: boolean
+    from: Referrals
+  }
   OfferDescription: { id: number }
   ReinitializePassword: { token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }

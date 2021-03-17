@@ -79,6 +79,7 @@ describe('<Favorite /> component', () => {
     const { getByTestId } = renderFavorite()
     fireEvent.press(getByTestId('favorite'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
+      from: 'favorites',
       id: favorite.offer.id,
       shouldDisplayLoginModal: false,
     })
