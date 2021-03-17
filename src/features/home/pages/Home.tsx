@@ -14,6 +14,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
+import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useModal } from 'ui/components/modals/useModal'
@@ -88,9 +89,11 @@ export const Home: FunctionComponent = function () {
       <HeaderBackgroundWrapper>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
-      <CheatCodeButtonContainer onPress={() => navigation.navigate('CheatMenu')}>
-        <Text>{_(t`CheatMenu`)}</Text>
-      </CheatCodeButtonContainer>
+      {env.SHOULD_DISPLAY_CHEAT_MENU && (
+        <CheatCodeButtonContainer onPress={() => navigation.navigate('CheatMenu')}>
+          <Text>{_(t`CheatMenu`)}</Text>
+        </CheatCodeButtonContainer>
+      )}
 
       <CenterContainer>
         <Spacer.Column numberOfSpaces={8} />

@@ -32,6 +32,7 @@ export interface Environment {
   URL_PREFIX: string
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
+  SHOULD_DISPLAY_CHEAT_MENU: boolean
 }
 
 export const env = parseBooleanVariables(Config) as Environment

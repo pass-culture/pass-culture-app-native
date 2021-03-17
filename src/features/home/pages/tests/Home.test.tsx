@@ -20,6 +20,7 @@ import { Home } from '../Home'
 jest.mock('libs/environment', () => ({
   env: {
     FEATURE_FLAG_CODE_PUSH: true,
+    SHOULD_DISPLAY_CHEAT_MENU: false,
   },
 }))
 
@@ -108,6 +109,18 @@ describe('Home component', () => {
   it('should not have code push button', async () => {
     const home = await homeRenderer({ withModal: false })
     expect(home.queryByText('Check update')).toBeFalsy()
+  })
+
+  it('should have CheatMenu button when SHOULD_DISPLAY_CHEAT_MENU=true', async () => {
+    env.SHOULD_DISPLAY_CHEAT_MENU = true
+    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
+    expect(home.queryByText('CheatMenu')).toBeTruthy()
+  })
+
+  it('should NOT have CheatMenu button when NOT SHOULD_DISPLAY_CHEAT_MENU=false', async () => {
+    env.SHOULD_DISPLAY_CHEAT_MENU = false
+    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
+    expect(home.queryByText('CheatMenu')).toBeFalsy()
   })
 })
 
