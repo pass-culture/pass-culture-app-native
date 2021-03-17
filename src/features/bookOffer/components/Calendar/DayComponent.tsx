@@ -26,7 +26,7 @@ export const DayComponent: React.FC<Props> = ({ status, selected, date }) => {
   const debouncedDispatch = useRef(debounce(dispatch, 500)).current
 
   const selectDate = () => {
-    dispatch({ type: 'SELECT_DATE', payload: new Date(date.timestamp) })
+    dispatch({ type: 'SELECT_DATE', payload: new Date(date.year, date.month - 1, date.day) })
     debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }
 
