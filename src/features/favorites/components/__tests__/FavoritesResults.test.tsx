@@ -20,6 +20,7 @@ import {
   FakePaginatedFavoritesResponse,
   useFavoritesResults,
 } from 'features/favorites/pages/useFavoritesResults'
+import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
@@ -41,6 +42,12 @@ jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
   BookingOfferModal() {
     const Text = MockText
     return <Text>BookingOfferModalMock</Text>
+  },
+}))
+
+jest.mock('libs/environment', () => ({
+  env: {
+    SHOULD_DISPLAY_FAVORITES_FILTER: true,
   },
 }))
 
@@ -153,6 +160,7 @@ describe('FavoritesResults component', () => {
   })
 
   it('should show number of result and filter button', () => {
+    env.SHOULD_DISPLAY_FAVORITES_FILTER = true
     const mutate = jest.fn()
     mockUseFavorites.mockReturnValue({
       data: paginatedFavoritesResponseSnap,
@@ -172,6 +180,13 @@ describe('FavoritesResults component', () => {
     expect(container).toBeTruthy()
     const filterButton = getByText('Filtrer')
     expect(filterButton).toBeTruthy()
+  })
+
+  it('should not display filter button', () => {
+    env.SHOULD_DISPLAY_FAVORITES_FILTER = false
+    const { queryByText } = render(reactQueryProviderHOC(<FavoritesResults />))
+    const filterButton = queryByText('Filtrer')
+    expect(filterButton).toBeFalsy()
   })
 })
 

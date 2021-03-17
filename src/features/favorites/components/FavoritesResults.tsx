@@ -15,6 +15,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
+import { env } from 'libs/environment'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
@@ -110,7 +111,7 @@ export const FavoritesResults: React.FC = () => {
           keyboardDismissMode="on-drag"
         />
       </Container>
-      {nbFavorites > 0 && (
+      {env.SHOULD_DISPLAY_FAVORITES_FILTER && nbFavorites > 0 && (
         <FilterContainer>
           <FadeScrollingView isScrolling={isScrolling}>
             <Filter />
@@ -160,10 +161,12 @@ const FavoritesResultsPlaceHolder = () => {
           scrollEnabled={false}
         />
       </Container>
-      <FilterContainer>
-        <Filter />
-        <Spacer.BottomScreen />
-      </FilterContainer>
+      {env.SHOULD_DISPLAY_FAVORITES_FILTER && (
+        <FilterContainer>
+          <Filter />
+          <Spacer.BottomScreen />
+        </FilterContainer>
+      )}
     </React.Fragment>
   )
 }
