@@ -1,7 +1,10 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
+import * as NavigationHelpers from 'features/navigation/helpers'
 import { navigationRef } from 'features/navigation/navigationRef'
+import { env } from 'libs/environment'
+import { superFlushWithAct } from 'tests/utils'
 
 import { PrivacyPolicyModal, Props } from './PrivacyPolicyModal'
 
@@ -38,6 +41,7 @@ describe('<PrivacyPolicyModal />', () => {
     fireEvent.press(getByText('Continuer'))
     expect(dismissModal).toBeCalledTimes(1)
   })
+
   it('should navigate to ConsentSettings when pressing button with text "Paramètres de confidentialité"', () => {
     const { getByText } = renderPrivacyModal({
       dismissModal,
@@ -46,6 +50,18 @@ describe('<PrivacyPolicyModal />', () => {
     })
     fireEvent.press(getByText('Paramètres de confidentialité'))
     expect(navigationRef?.current?.navigate).toBeCalled()
+  })
+
+  it('should open cookies policies on click on "Politique des cookies"', async () => {
+    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+    const { getByText } = renderPrivacyModal({
+      dismissModal,
+      visible,
+      navigationRef,
+    })
+    fireEvent.press(getByText('Politique des cookies'))
+    expect(openExternalUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
+    await superFlushWithAct(1)
   })
 })
 

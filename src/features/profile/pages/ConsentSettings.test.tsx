@@ -1,18 +1,18 @@
+import { Route } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import React from 'react'
 
 import { goBack } from '__mocks__/@react-navigation/native'
+import * as NavigationHelpers from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { firebaseAnalytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
+import { superFlushWithAct } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { ConsentSettings } from './ConsentSettings'
-
-jest.mock('features/navigation/helpers', () => ({
-  usePreviousRoute: jest.fn(),
-}))
 
 describe('ConsentSettings', () => {
   afterEach(() => {
@@ -89,9 +89,23 @@ describe('ConsentSettings', () => {
       expect(goBack).toHaveBeenCalled()
     })
   })
+
+  it('should open cookies policies on click on "Politique des cookies"', async () => {
+    const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
+    const { getByText } = renderConsentSettings()
+
+    fireEvent.press(getByText('Politique des cookies'))
+
+    await superFlushWithAct(1)
+    expect(openExternalUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
+  })
 })
 
 function renderConsentSettings() {
+  jest
+    .spyOn(NavigationHelpers, 'usePreviousRoute')
+    .mockReturnValue((jest.fn() as unknown) as Route<string>)
+
   const onGoBack = jest.fn() as () => void
   const navigationProps = {
     route: {
