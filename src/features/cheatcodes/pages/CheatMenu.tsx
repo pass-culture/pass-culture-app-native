@@ -4,8 +4,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CheatMenu: React.FC = () => {
@@ -13,20 +14,23 @@ export const CheatMenu: React.FC = () => {
 
   return (
     <Container>
+      <Spacer.TopScreen />
+      <ModalHeader
+        title="Cheater Zone"
+        leftIcon={ArrowPrevious}
+        onLeftIconPress={navigation.goBack}
+      />
       <Spacer.Flex />
-      <Typo.Hero>{_(t`Cheater Zone`)}</Typo.Hero>
-      {env.ENV !== 'production' && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={8} />
-          <CheatTouchableOpacity onPress={() => navigation.navigate('AppComponents')}>
-            <Typo.Body>{_(t`Composants`)}</Typo.Body>
-          </CheatTouchableOpacity>
-          <Spacer.Column numberOfSpaces={8} />
-          <CheatTouchableOpacity onPress={() => navigation.navigate('Navigation')}>
-            <Typo.Body>{_(t`Navigation`)}</Typo.Body>
-          </CheatTouchableOpacity>
-        </React.Fragment>
-      )}
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={8} />
+        <CheatTouchableOpacity onPress={() => navigation.navigate('AppComponents')}>
+          <Typo.Body>{_(t`Composants`)}</Typo.Body>
+        </CheatTouchableOpacity>
+        <Spacer.Column numberOfSpaces={8} />
+        <CheatTouchableOpacity onPress={() => navigation.navigate('Navigation')}>
+          <Typo.Body>{_(t`Navigation`)}</Typo.Body>
+        </CheatTouchableOpacity>
+      </React.Fragment>
       <Spacer.Flex />
     </Container>
   )
