@@ -20,7 +20,6 @@ import { Home } from '../Home'
 jest.mock('libs/environment', () => ({
   env: {
     FEATURE_FLAG_CODE_PUSH: true,
-    CHEAT_BUTTONS_ENABLED: false,
   },
 }))
 
@@ -109,20 +108,6 @@ describe('Home component', () => {
   it('should not have code push button', async () => {
     const home = await homeRenderer({ withModal: false })
     expect(home.queryByText('Check update')).toBeFalsy()
-  })
-
-  it('should have components and navigation buttons when CHEAT_BUTTONS_ENABLED', async () => {
-    env.CHEAT_BUTTONS_ENABLED = true
-    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
-    expect(home.queryByText('Composants')).toBeTruthy()
-    expect(home.queryByText('Navigation')).toBeTruthy()
-  })
-
-  it('should NOT have components or navigation buttons when NOT CHEAT_BUTTONS_ENABLED', async () => {
-    env.CHEAT_BUTTONS_ENABLED = false
-    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
-    expect(home.queryByText('Composants')).toBeFalsy()
-    expect(home.queryByText('Navigation')).toBeFalsy()
   })
 })
 
