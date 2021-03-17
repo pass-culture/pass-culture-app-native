@@ -130,7 +130,8 @@ export const Favorite: React.FC<Props> = (props) => {
     return <ButtonPrimary title={_(t`Réserver`)} onPress={bookInApp} buttonHeight="tall" />
   }
 
-  const buttons = useMemo(renderBookingButton, [offer, props])
+  const bookingButton = useMemo(renderBookingButton, [props])
+
   return (
     <Container onPress={handlePressOffer} testID="favorite">
       <Row>
@@ -173,7 +174,7 @@ export const Favorite: React.FC<Props> = (props) => {
             disabled={isLoading}
           />
         </ButtonContainer>
-        <ButtonContainer>{buttons}</ButtonContainer>
+        <ButtonContainer>{bookingButton}</ButtonContainer>
       </ButtonsRow>
     </Container>
   )
