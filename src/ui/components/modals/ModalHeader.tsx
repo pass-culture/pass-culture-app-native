@@ -54,7 +54,7 @@ const Container = styled.View<{ customStyle: StyleProp<ViewStyle> }>(({ customSt
   alignItems: 'center',
   width: '100%',
   zIndex: 1,
-  ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
+  ...(isStyleObjectTypeGuard(customStyle) ? (customStyle as Record<string, unknown>) : {}),
 }))
 
 /* The negative margins are used to compensate for the
@@ -74,7 +74,7 @@ const titleStyle = ({ customStyle }: { customStyle: StyleProp<ViewStyle> }) =>
   ({
     flex: 0.8,
     textAlign: 'center',
-    ...(isStyleObjectTypeGuard(customStyle) ? customStyle : null),
+    ...(isStyleObjectTypeGuard(customStyle) ? (customStyle as Record<string, unknown>) : {}),
   } as CSSObject)
 
 const Title = styled(Typo.Title4)<{

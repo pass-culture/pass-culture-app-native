@@ -37,6 +37,7 @@ export enum AnalyticsEvent {
   SEARCH_QUERY = 'SearchQuery',
   HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
   HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
+  HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -120,6 +121,9 @@ const logClickBookOffer = (offerId: number) =>
 const logOfferSeenDuration = (offerId: number, duration: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
 
+const logHasAddedOfferToFavorites = (from: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, { from })
+
 /**
  * Sign up
  */
@@ -166,6 +170,7 @@ const logNoSearchResult = (query: string) =>
 export const analytics = {
   logHasSkippedTutorial,
   logHasActivateGeolocFromTutorial,
+  logHasAddedOfferToFavorites,
   logAllModulesSeen,
   logAllTilesSeen,
   logCancelSignup,

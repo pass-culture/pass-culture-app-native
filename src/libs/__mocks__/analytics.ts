@@ -45,4 +45,5 @@ export const analytics: typeof actualAnalytics = {
   logSearchQuery: jest.fn(),
   logHasSkippedTutorial: jest.fn(),
   logHasActivateGeolocFromTutorial: jest.fn(),
+  logHasAddedOfferToFavorites: jest.fn(),
 }

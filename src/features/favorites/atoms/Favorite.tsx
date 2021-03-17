@@ -82,7 +82,11 @@ export const Favorite: React.FC<Props> = (props) => {
         offerId: offer.id,
       })
     )
-    navigation.navigate('Offer', { id: offer.id, shouldDisplayLoginModal: false })
+    navigation.navigate('Offer', {
+      id: offer.id,
+      shouldDisplayLoginModal: false,
+      from: 'favorites',
+    })
   }
 
   function renderBookingButton() {
