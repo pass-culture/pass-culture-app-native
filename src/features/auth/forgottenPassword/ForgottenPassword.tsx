@@ -46,10 +46,11 @@ export const ForgottenPassword: FunctionComponent = () => {
       await api.postnativev1requestPasswordReset({ email, token })
       navigate('ResetPasswordEmailSent', { email })
     } catch (_error) {
-      setIsFetching(false)
       setErrorMessage(
         _(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
       )
+    } finally {
+      setIsFetching(false)
     }
   }
 
