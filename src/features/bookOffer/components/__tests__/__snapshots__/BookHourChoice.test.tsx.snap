@@ -133,7 +133,6 @@ Array [
           </Text>
         </View>
         <View
-          buttonWidth={231.33333333333334}
           style={
             Array [
               Object {
