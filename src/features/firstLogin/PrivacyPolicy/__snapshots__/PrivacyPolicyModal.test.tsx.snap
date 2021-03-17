@@ -204,7 +204,7 @@ Array [
           </Text>
           <View
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -247,7 +247,7 @@ Array [
               style={
                 Array [
                   Object {
-                    "color": "#ff99be",
+                    "color": "#eb0055",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 12,
                     "lineHeight": 20,
@@ -257,7 +257,7 @@ Array [
                 ]
               }
               testID="button-title"
-              textColor="#ff99be"
+              textColor="#eb0055"
               textSize={12}
             >
               Politique des cookies

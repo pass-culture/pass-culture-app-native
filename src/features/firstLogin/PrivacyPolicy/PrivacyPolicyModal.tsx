@@ -3,10 +3,12 @@ import { NavigationContainerRef } from '@react-navigation/native'
 import React, { useCallback, useState, FunctionComponent, RefObject } from 'react'
 import styled from 'styled-components/native'
 
+import { openExternalUrl } from 'features/navigation/helpers'
+import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
@@ -32,6 +34,10 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
     setIsVisible(false)
   }, [navigationRef])
 
+  async function openCookiesPolicyExternalUrl() {
+    await openExternalUrl(env.COOKIES_POLICY_LINK)
+  }
+
   return (
     <AppModal
       visible={isVisible}
@@ -45,10 +51,9 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
           )}
         </Typo.Body>
       </Description>
-      <ButtonTertiaryWhite
+      <ButtonTertiary
         title={_(t`Politique des cookies`)}
-        onPress={dismissModal}
-        disabled
+        onPress={openCookiesPolicyExternalUrl}
         icon={ExternalLinkSite}
         textSize={12}
       />

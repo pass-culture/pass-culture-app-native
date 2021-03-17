@@ -70,6 +70,7 @@ jest.mock('libs/environment', () => ({
     RECOMMENDATION_TOKEN: 'recommmendation-token',
     CGU_LINK: 'https://passculture.cgu',
     PRIVACY_POLICY_LINK: 'https://passculture.privacy',
+    COOKIES_POLICY_LINK: 'https://passculture.cookies',
   },
 }))
 

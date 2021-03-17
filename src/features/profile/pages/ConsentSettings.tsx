@@ -4,12 +4,14 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { openExternalUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { firebaseAnalytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
@@ -50,6 +52,10 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
     goBack()
   }
 
+  async function openCookiesPolicyExternalUrl() {
+    await openExternalUrl(env.COOKIES_POLICY_LINK)
+  }
+
   return (
     <React.Fragment>
       <Spacer.TopScreen />
@@ -64,11 +70,11 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         <MoreInformationContainer>
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
             {_(t`Pour plus d'informations, nous t'invitons à consulter notre`)}
-            <ButtonTertiaryWhite
+            <ButtonTertiary
               title={_(t`Politique des cookies`)}
               icon={ExternalLinkSite}
+              onPress={openCookiesPolicyExternalUrl}
               textSize={12}
-              disabled
               inline
             />
           </Typo.Caption>
