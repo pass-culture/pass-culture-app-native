@@ -1,12 +1,12 @@
 import * as netInfoModule from '@react-native-community/netinfo'
-import { act, fireEvent, render } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
-import { flushAllPromises, simulateWebviewMessage } from 'tests/utils'
+import { simulateWebviewMessage, superFlushWithAct } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 beforeEach(() => {
@@ -54,6 +54,7 @@ describe('<ForgottenPassword />', () => {
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
     expect(renderAPI.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
+    expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on validate button", () => {
@@ -76,12 +77,14 @@ describe('<ForgottenPassword />', () => {
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+    await superFlushWithAct()
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
       })
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
   })
 
@@ -92,6 +95,7 @@ describe('<ForgottenPassword />', () => {
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+    await superFlushWithAct()
 
     await waitForExpect(() => {
       expect(
@@ -100,6 +104,7 @@ describe('<ForgottenPassword />', () => {
         )
       ).toBeTruthy()
       expect(navigate).not.toBeCalled()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
   })
 
@@ -111,7 +116,7 @@ describe('<ForgottenPassword />', () => {
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
-    await act(flushAllPromises)
+    await superFlushWithAct()
 
     await waitForExpect(() => {
       expect(
@@ -120,6 +125,7 @@ describe('<ForgottenPassword />', () => {
         )
       ).toBeTruthy()
       expect(navigate).not.toBeCalled()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
   })
 
