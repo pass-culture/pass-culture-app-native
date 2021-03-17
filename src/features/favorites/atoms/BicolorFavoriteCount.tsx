@@ -22,7 +22,8 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   testID,
 }) => {
   const { isLoggedIn } = useAuthContext()
-  const { data } = useFavorites()
+  // const { data } = useFavorites()
+  const data = { nbFavorites: 1000 }
   const scaleAnimation = useRef(new Animated.Value(1))
   useEffect(() => {
     if (data?.nbFavorites) {
@@ -104,5 +105,6 @@ const Count = styled(Typo.Caption).attrs({
   fontSize: 9,
   textAlign: 'center',
   height: 15,
+  bottom: 5,
   paddingRight,
 }))
