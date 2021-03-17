@@ -9,7 +9,6 @@ export interface Environment {
   ANDROID_APP_ID: string
   API_BASE_URL: string
   CGU_LINK: string
-  CHEAT_BUTTONS_ENABLED: boolean
   CONTENTFUL_ACCESS_TOKEN: string
   CONTENTFUL_ENVIRONMENT: string
   CONTENTFUL_SPACE_ID: string

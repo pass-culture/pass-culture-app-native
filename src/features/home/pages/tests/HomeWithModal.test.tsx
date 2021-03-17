@@ -16,7 +16,6 @@ jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigatio
 jest.mock('libs/environment', () => ({
   env: {
     FEATURE_FLAG_CODE_PUSH: true,
-    CHEAT_BUTTONS_ENABLED: false,
   },
 }))
 

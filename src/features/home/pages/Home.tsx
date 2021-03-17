@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useState, FunctionComponent, useCallback } from 'react'
-import { NativeSyntheticEvent, NativeScrollEvent, ScrollView, TouchableOpacity } from 'react-native'
+import { NativeSyntheticEvent, NativeScrollEvent, ScrollView } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
@@ -14,7 +14,6 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
-import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useModal } from 'ui/components/modals/useModal'
@@ -22,7 +21,6 @@ import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { ZIndexes } from 'ui/theme/layers'
 
 import { RecommendationPane } from '../contentful/moduleTypes'
 
@@ -88,16 +86,6 @@ export const Home: FunctionComponent = function () {
       bounces={false}
       onScroll={onScroll}>
       <Spacer.TopScreen />
-      {env.CHEAT_BUTTONS_ENABLED && (
-        <CheatButtonsContainer>
-          <CheatTouchableOpacity onPress={() => navigation.navigate('AppComponents')}>
-            <Typo.Body>{_(t`Composants`)}</Typo.Body>
-          </CheatTouchableOpacity>
-          <CheatTouchableOpacity onPress={() => navigation.navigate('Navigation')}>
-            <Typo.Body>{_(t`Navigation`)}</Typo.Body>
-          </CheatTouchableOpacity>
-        </CheatButtonsContainer>
-      )}
       <HeaderBackgroundWrapper>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
@@ -155,14 +143,6 @@ const HomeBodyLoadingContainer = styled.View<{ isLoading: boolean }>(({ isLoadin
   overflow: 'hidden',
 }))
 
-const CheatButtonsContainer = styled.View({
-  width: '100%',
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  zIndex: ZIndexes.HomeCheatButton,
-  top: 20,
-})
-
 const UserProfileContainer = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
 })({
@@ -170,10 +150,4 @@ const UserProfileContainer = styled.TouchableOpacity.attrs({
   right: 24,
   top: getSpacing(3) + statusBarHeight,
   zIndex: 1,
-})
-
-const CheatTouchableOpacity = styled(TouchableOpacity)({
-  borderColor: ColorsEnum.BLACK,
-  borderWidth: 2,
-  padding: getSpacing(1),
 })
