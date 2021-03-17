@@ -23,7 +23,7 @@ describe('useBookOfferMutation', () => {
 
   it('invalidates userProfile after successfully booking an offer', async () => {
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/book_offer', (req, res, ctx) => res(ctx.status(204)))
+      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
     )
 
     const { result, waitForNextUpdate } = renderHook(
@@ -47,7 +47,7 @@ describe('useBookOfferMutation', () => {
 
   it('does not invalidates userProfile if error on booking an offer', async () => {
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/book_offer', (req, res, ctx) =>
+      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
         res(ctx.status(400), ctx.json({}))
       )
     )

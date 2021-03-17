@@ -75,7 +75,7 @@ describe('<BookingDetails />', () => {
   })
   it('should dismiss modal on successfully booking an offer', async () => {
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/book_offer', (req, res, ctx) => res(ctx.status(204)))
+      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
     )
 
     const page = await renderBookingDetails(mockStocks)
@@ -96,7 +96,7 @@ describe('<BookingDetails />', () => {
 
   it('should show the error snackbar if booking an offer fails', async () => {
     server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/book_offer', (req, res, ctx) =>
+      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
         res(ctx.status(400), ctx.json({}))
       )
     )
