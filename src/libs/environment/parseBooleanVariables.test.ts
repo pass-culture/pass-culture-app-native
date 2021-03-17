@@ -5,7 +5,7 @@ describe('parseBooleanVariables', () => {
     ENV: 'staging',
     API_BASE_URL: 'your-api.com',
     WEBSOCKET_ENDPOINT: 'websocket-endpoint',
-    FEATURE_FLAG_CHEAT_CODES: 'false',
+    SHOULD_DISPLAY_CHEAT_MENU: 'false',
     FEATURE_FLAG_CODE_PUSH: 'true',
     SENTRY_DSN: 'sentry-dsn',
     URL_PREFIX: 'passculture',
@@ -13,7 +13,7 @@ describe('parseBooleanVariables', () => {
   const convertedConfig = parseBooleanVariables(mockedConfig)
 
   it('should generate falsy values for feature flags used with false', () => {
-    expect(convertedConfig.FEATURE_FLAG_CHEAT_CODES).toBeFalsy()
+    expect(convertedConfig.SHOULD_DISPLAY_CHEAT_MENU).toBeFalsy()
   })
   it('should generate truthy values for feature flags used with true', () => {
     expect(convertedConfig.FEATURE_FLAG_CODE_PUSH).toBeTruthy()
