@@ -3,7 +3,7 @@ import React from 'react'
 import { ClippedImage } from 'ui/components/ClippedImage'
 
 interface OnGoingTicketProps {
-  image: string
+  image?: string
 }
 
 export function OnGoingTicket(props: OnGoingTicketProps) {
