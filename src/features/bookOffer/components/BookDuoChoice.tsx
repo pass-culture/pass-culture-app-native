@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
@@ -7,9 +8,11 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { DuoPerson } from 'ui/svg/icons/DuoPerson'
 import { Profile } from 'ui/svg/icons/Profile'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { DuoChoice } from '../atoms/DuoChoice'
 import { useBooking, useBookingStock } from '../pages/BookingOfferWrapper'
+import { Step } from '../pages/reducer'
 
 export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
@@ -23,14 +26,26 @@ export const BookDuoChoice: React.FC = () => {
     onPress: () => dispatch({ type: 'SELECT_QUANTITY', payload: quantity }),
   })
 
+  const changeQuantity = () => {
+    dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+  }
+
   return (
     <React.Fragment>
       <Typo.Title4 testID="DuoStep">{_(t`Nombre de place`)}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
-      <DuoChoiceContainer>
-        <DuoChoice {...getChoiceInfosForQuantity(1)} />
-        <DuoChoice {...getChoiceInfosForQuantity(2)} />
-      </DuoChoiceContainer>
+      {bookingState.step === Step.DUO ? (
+        <DuoChoiceContainer>
+          <DuoChoice {...getChoiceInfosForQuantity(1)} />
+          <DuoChoice {...getChoiceInfosForQuantity(2)} />
+        </DuoChoiceContainer>
+      ) : (
+        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeQuantity}>
+          <Typo.ButtonText>
+            {bookingState.quantity && bookingState.quantity === 1 ? _(t`Solo`) : _(t`Duo`)}
+          </Typo.ButtonText>
+        </TouchableOpacity>
+      )}
     </React.Fragment>
   )
 }
