@@ -32,4 +32,4 @@ git pull
 update_app_version
 git push --follow-tags
 
-git push origin HEAD:staging
+git push -f origin HEAD:staging
