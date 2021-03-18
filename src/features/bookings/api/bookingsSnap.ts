@@ -40,3 +40,8 @@ export const bookingsSnap: BookingsResponse = {
     },
   ],
 }
+
+export const emptyBookingsSnap: BookingsResponse = {
+  ended_bookings: [],
+  ongoing_bookings: [],
+}
