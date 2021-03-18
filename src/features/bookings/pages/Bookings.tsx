@@ -7,6 +7,7 @@ import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useBookings } from '../api'
+import { NoBookingsView } from '../components/NoBookingsView'
 
 export const Bookings: React.FC = () => {
   const { data: bookings } = useBookings()
@@ -18,10 +19,14 @@ export const Bookings: React.FC = () => {
   return (
     <React.Fragment>
       <SvgPageHeader title="Mes réservations" />
-      <Container>
-        <BookingsCount>{bookingsCountLabel}</BookingsCount>
-        <Spacer.Flex />
-      </Container>
+      {onGoingBookingsCount > 0 ? (
+        <Container>
+          <BookingsCount>{bookingsCountLabel}</BookingsCount>
+          <Spacer.Flex />
+        </Container>
+      ) : (
+        <NoBookingsView />
+      )}
     </React.Fragment>
   )
 }
