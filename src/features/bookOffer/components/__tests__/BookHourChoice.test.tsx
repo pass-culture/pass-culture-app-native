@@ -8,8 +8,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { BookHourChoice } from '../BookHourChoice'
 
-allowConsole({ log: true })
-
 const mockStep = Step.HOUR
 const mockDuoStep = Step.DUO
 
