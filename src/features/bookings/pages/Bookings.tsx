@@ -31,7 +31,8 @@ export const Bookings: React.FC = () => {
   )
 }
 
-const getBookingsCountLabel = (plural: boolean) => _(t`réservation${plural ? 's' : ''} en cours`)
+const getBookingsCountLabel = (plural: boolean) =>
+  plural ? _(t`réservations en cours`) : _(t`réservation en cours`)
 
 const Container = styled.View({
   flex: 1,
