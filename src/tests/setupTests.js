@@ -15,9 +15,9 @@ const allowConsoleDefaultConfig = {
   warn: false,
 }
 
-let allowConsoleRuntimeConfig = { ...allowConsoleDefaultConfig }
+let allowConsoleRuntimeConfig = Object.assign({}, allowConsoleDefaultConfig)
 global.allowConsole = function (config = allowConsoleDefaultConfig) {
-  allowConsoleRuntimeConfig = { ...allowConsoleDefaultConfig, ...config }
+  allowConsoleRuntimeConfig = Object.assign({}, allowConsoleDefaultConfig, config)
 }
 
 global.allowConsole({
@@ -39,7 +39,7 @@ global.beforeAll(() => {
 global.afterAll(() => {
   server.resetHandlers()
   server.close()
-  allowConsoleRuntimeConfig = { ...allowConsoleDefaultConfig }
+  allowConsoleRuntimeConfig = Object.assign({}, allowConsoleDefaultConfig)
 })
 
 global.afterEach(async () => {

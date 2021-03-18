@@ -17,6 +17,10 @@ msgstr ""
 msgid "({0} x 2 places)"
 msgstr "({0} x 2 places)"
 
+#: src/features/favorites/atoms/BicolorFavoriteCount.tsx:45
+msgid "+"
+msgstr "+"
+
 #: src/libs/parsers/getDisplayPrice.ts:30
 msgid "/ place"
 msgstr "/ place"
@@ -45,7 +49,7 @@ msgstr "12 Caractères"
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
-#: src/features/auth/signup/AcceptCgu.tsx:120
+#: src/features/auth/signup/AcceptCgu.tsx:122
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
@@ -67,7 +71,7 @@ msgid "Active la géolocalisation pour découvrir toutes les offres existantes a
 msgstr "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:32
-#: src/features/search/components/GeolocationActivationModal.tsx:25
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:25
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
@@ -75,7 +79,7 @@ msgstr "Activer la géolocalisation"
 msgid "Adresse"
 msgstr "Adresse"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:109
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:111
 #: src/features/auth/login/Login.tsx:113
 #: src/features/auth/signup/SetEmail.tsx:65
 msgid "Adresse e-mail"
@@ -135,15 +139,19 @@ msgstr "Aucune valeur à sauvegarder"
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
 
-#: src/features/profile/pages/NotificationSettings.tsx:98
+#: src/libs/notifications/components/PushNotificationsModal.tsx:22
+msgid "Autoriser les notifications"
+msgstr "Autoriser les notifications"
+
+#: src/features/profile/pages/NotificationSettings.tsx:130
 msgid "Autoriser les notifications marketing"
 msgstr "Autoriser les notifications marketing"
 
-#: src/features/profile/pages/NotificationSettings.tsx:88
+#: src/features/profile/pages/NotificationSettings.tsx:120
 msgid "Autoriser l’envoi d’e\\u2011mails"
 msgstr "Autoriser l’envoi d’e\\u2011mails"
 
-#: src/features/profile/pages/ConsentSettings.tsx:65
+#: src/features/profile/pages/ConsentSettings.tsx:77
 msgid "Autoriser l’utilisation de mes données de navigation"
 msgstr "Autoriser l’utilisation de mes données de navigation"
 
@@ -156,12 +164,12 @@ msgid "Autres"
 msgstr "Autres"
 
 #. Welcome title message
-#: src/features/home/pages/Home.tsx:86
+#: src/features/home/pages/Home.tsx:76
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
 #. Hello title message
-#: src/features/home/pages/Home.tsx:85
+#: src/features/home/pages/Home.tsx:75
 msgid "Bonjour {0}"
 msgstr "Bonjour {0}"
 
@@ -169,11 +177,7 @@ msgstr "Bonjour {0}"
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
-#: src/features/bookings/pages/Bookings.tsx:8
-msgid "Bookings"
-msgstr "Réservations"
-
-#: src/features/auth/signup/AcceptCgu.tsx:99
+#: src/features/auth/signup/AcceptCgu.tsx:101
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
@@ -218,9 +222,9 @@ msgstr "Chargement en cours..."
 msgid "Charte de protection des données personnelles"
 msgstr "Charte de protection des données personnelles"
 
-#: src/features/cheatcodes/pages/CheatMenu.tsx:12
-msgid "Cheater Zone"
-msgstr "Cheater Zone"
+#: src/features/home/pages/Home.tsx:69
+msgid "CheatMenu"
+msgstr "CheatMenu"
 
 #: src/features/bookOffer/components/BookingEventChoices.tsx:49
 msgid "Choisir les options"
@@ -249,12 +253,11 @@ msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgid "Comment ça marche ?"
 msgstr "Comment ça marche ?"
 
-#: src/features/cheatcodes/pages/CheatMenu.tsx:16
-#: src/features/home/pages/Home.tsx:69
+#: src/features/cheatcodes/pages/CheatMenu.tsx:18
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/signup/AcceptCgu.tsx:107
+#: src/features/auth/signup/AcceptCgu.tsx:109
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -274,7 +277,7 @@ msgstr "Confidentialité"
 msgid "Confirme ton e\\u2011mail"
 msgstr "Confirme ton e\\u2011mail"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:52
+#: src/features/bookOffer/components/BookingDetails.tsx:59
 msgid "Confirmer la réservation"
 msgstr "Confirmer la réservation"
 
@@ -297,7 +300,7 @@ msgstr "Connecte-toi !"
 msgid "Connecte-toi pour profiter de cette fonctionnalité"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité"
 
-#: src/features/favorites/components/NotConnectedFavorites.tsx:21
+#: src/features/favorites/components/NotConnectedFavorites.tsx:20
 msgid "Connecte-toi pour profiter de cette fonctionnalité !"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité !"
 
@@ -308,7 +311,7 @@ msgstr "Consulter mes e-mails"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:57
-#: src/features/auth/signup/AcceptCgu.tsx:118
+#: src/features/auth/signup/AcceptCgu.tsx:120
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:42
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:57
 msgid "Contacter le support"
@@ -318,7 +321,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:141
 #: src/features/auth/signup/SetEmail.tsx:78
 #: src/features/auth/signup/SetPassword.tsx:44
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:33
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:49
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:11
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:11
 msgid "Continuer"
@@ -328,6 +331,7 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
+#: src/features/favorites/atoms/Favorite.tsx:95
 #: src/features/offer/services/useCtaWordingAndAction.ts:39
 #: src/features/offer/services/useCtaWordingAndAction.ts:50
 msgid "Crédit insuffisant"
@@ -376,12 +380,13 @@ msgid "Du {0} {1} au {formattedEndDate}"
 msgstr "Du {0} {1} au {formattedEndDate}"
 
 #. Duo offer
-#: src/features/bookOffer/components/BookDuoChoice.tsx:27
+#: src/features/bookOffer/components/BookDuoChoice.tsx:19
+#: src/features/bookOffer/components/BookDuoChoice.tsx:35
 #: src/features/home/atoms/OfferCaption.tsx:15
 msgid "Duo"
 msgstr "Duo"
 
-#: src/features/favorites/atoms/Favorite.tsx:31
+#: src/features/favorites/atoms/Favorite.tsx:51
 #: src/libs/parsers/formatDates.ts:54
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
@@ -411,7 +416,7 @@ msgstr "E-mail envoyé !"
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
-#: src/features/auth/signup/AcceptCgu.tsx:105
+#: src/features/auth/signup/AcceptCgu.tsx:107
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
@@ -420,8 +425,8 @@ msgid "En voir plus"
 msgstr "En voir plus"
 
 #: src/features/profile/pages/ChangePassword.tsx:90
-#: src/features/profile/pages/ConsentSettings.tsx:69
-#: src/features/profile/pages/NotificationSettings.tsx:103
+#: src/features/profile/pages/ConsentSettings.tsx:81
+#: src/features/profile/pages/NotificationSettings.tsx:135
 msgid "Enregistrer"
 msgstr "Enregistrer"
 
@@ -443,7 +448,8 @@ msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgid "Erreur. L'offre n'a pas été réservée !"
 msgstr "Erreur. L'offre n'a pas été réservée !"
 
-#: src/features/favorites/components/NoFavoritesResult.tsx:20
+#: src/features/bookings/components/NoBookingsView.tsx:20
+#: src/features/favorites/components/NoFavoritesResult.tsx:31
 msgid "Explorer les offres"
 msgstr "Explorer les offres"
 
@@ -453,13 +459,14 @@ msgstr "Explorer les offres"
 msgid "Filtrer"
 msgstr "Filtrer"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:73
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:75
 msgid "Format de l'e-mail incorrect"
 msgstr "Format de l'e-mail incorrect"
 
 #: src/features/bookOffer/components/BookingInformations.tsx:29
 #: src/libs/parsers/getDisplayPrice.ts:22
 #: src/libs/parsers/getDisplayPrice.ts:29
+#: src/libs/parsers/getDisplayPrice.ts:34
 msgid "Gratuit"
 msgstr "Gratuit"
 
@@ -483,13 +490,13 @@ msgstr "Handicap psychique ou cognitif"
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
-#: src/features/bookOffer/components/BookHourChoice.tsx:26
+#: src/features/bookOffer/components/BookHourChoice.tsx:47
 #: src/features/search/sections/titles.ts:15
 msgid "Heure"
 msgstr "Heure"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:39
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:77
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:79
 #: src/features/auth/signup/AcceptCgu.tsx:44
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
@@ -523,11 +530,11 @@ msgstr "Je cherche"
 msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
 msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
 
-#: src/features/profile/pages/NotificationSettings.tsx:85
+#: src/features/profile/pages/NotificationSettings.tsx:117
 msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
 msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
 
-#: src/features/profile/pages/NotificationSettings.tsx:95
+#: src/features/profile/pages/NotificationSettings.tsx:127
 msgid "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 msgstr "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 
@@ -537,7 +544,7 @@ msgstr "Je veux être alerté des actualités et des meilleures offres du pass C
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
-#: src/features/profile/pages/ConsentSettings.tsx:53
+#: src/features/profile/pages/ConsentSettings.tsx:65
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
@@ -545,6 +552,20 @@ msgstr "L'application pass Culture utilise des traceurs susceptibles de réalise
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:37
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
+
+#: src/features/favorites/atoms/Favorite.tsx:34
+#: src/features/offer/components/OfferHeader.tsx:38
+msgid "L'offre a été retirée de tes favoris"
+msgstr "L'offre a été retirée de tes favoris"
+
+#: src/features/offer/components/OfferHeader.tsx:30
+msgid "L'offre n'a pas été ajoutée à tes favoris"
+msgstr "L'offre n'a pas été ajoutée à tes favoris"
+
+#: src/features/favorites/atoms/Favorite.tsx:40
+#: src/features/offer/components/OfferHeader.tsx:44
+msgid "L'offre n'a pas été retirée de tes favoris"
+msgstr "L'offre n'a pas été retirée de tes favoris"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx:22
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\\u0020"
@@ -567,12 +588,12 @@ msgstr "Le pass Culture"
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/profile/pages/NotificationSettings.tsx:48
+#: src/features/profile/pages/NotificationSettings.tsx:76
 msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:92
-#: src/features/auth/signup/AcceptCgu.tsx:90
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:94
+#: src/features/auth/signup/AcceptCgu.tsx:92
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
@@ -641,7 +662,7 @@ msgstr "Mot de passe actuel"
 msgid "Mot de passe modifié"
 msgstr "Mot de passe modifié"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:100
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:102
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
@@ -649,12 +670,11 @@ msgstr "Mot de passe oublié"
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
-#: src/features/cheatcodes/pages/CheatMenu.tsx:20
-#: src/features/home/pages/Home.tsx:72
+#: src/features/cheatcodes/pages/CheatMenu.tsx:22
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/bookOffer/components/BookDuoChoice.tsx:15
+#: src/features/bookOffer/components/BookDuoChoice.tsx:28
 msgid "Nombre de place"
 msgstr "Nombre de place"
 
@@ -662,8 +682,8 @@ msgstr "Nombre de place"
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 
-#: src/features/profile/pages/NotificationSettings.tsx:107
-#: src/features/profile/pages/Profile.tsx:92
+#: src/features/profile/pages/NotificationSettings.tsx:138
+#: src/features/profile/pages/Profile.tsx:93
 msgid "Notifications"
 msgstr "Notifications"
 
@@ -671,7 +691,7 @@ msgstr "Notifications"
 msgid "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:24
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:40
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
@@ -727,8 +747,8 @@ msgstr "Où"
 msgid "Où ?"
 msgstr "Où ?"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:35
-#: src/features/profile/pages/ConsentSettings.tsx:73
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:51
+#: src/features/profile/pages/ConsentSettings.tsx:85
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
 
@@ -736,9 +756,13 @@ msgstr "Paramètres de confidentialité"
 msgid "Paramètres de l'application"
 msgstr "Paramètres de l'application"
 
-#: src/features/search/components/GeolocationActivationModal.tsx:10
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:10
 msgid "Paramètres de localisation"
 msgstr "Paramètres de localisation"
+
+#: src/libs/notifications/components/PushNotificationsModal.tsx:9
+msgid "Paramètres de notifications"
+msgstr "Paramètres de notifications"
 
 #: src/features/profile/pages/Profile.tsx:88
 msgid "Paramètres du compte"
@@ -768,20 +792,20 @@ msgstr "Patience ! L’année de tes 18 ans tu bénéficieras de 300€ offerts 
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
-#: src/features/auth/signup/AcceptCgu.tsx:110
+#: src/features/auth/signup/AcceptCgu.tsx:112
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:27
-#: src/features/profile/pages/ConsentSettings.tsx:59
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:43
+#: src/features/profile/pages/ConsentSettings.tsx:71
 msgid "Politique des cookies"
 msgstr "Politique des cookies"
 
-#: src/features/auth/signup/AcceptCgu.tsx:115
+#: src/features/auth/signup/AcceptCgu.tsx:117
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
-#: src/features/profile/pages/ConsentSettings.tsx:58
+#: src/features/profile/pages/ConsentSettings.tsx:70
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
@@ -807,11 +831,10 @@ msgstr "Prix"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx:16
 #: src/features/profile/components/LoggedOutHeader.tsx:17
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:43
 msgid "Profil"
 msgstr "Profil"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:31
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:30
 msgid "Profite de 300\\u00a0€\\u00a0"
 msgstr "Profite de 300\\u00a0€\\u00a0"
 
@@ -844,11 +867,15 @@ msgstr "Redirection en cours"
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:21
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:37
 msgid "Respect de ta vie privée"
 msgstr "Respect de ta vie privée"
 
-#: src/features/profile/pages/NotificationSettings.tsx:79
+#: src/libs/notifications/components/PushNotificationsModal.tsx:14
+msgid "Reste informé des actualités du pass Culture en activant les notifications."
+msgstr "Reste informé des actualités du pass Culture en activant les notifications."
+
+#: src/features/profile/pages/NotificationSettings.tsx:110
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
@@ -867,11 +894,11 @@ msgstr "Retourner à l'offre"
 msgid "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 
-#: src/features/search/components/GeolocationActivationModal.tsx:15
-msgid "Retrouve toutes les offres autour de chez toi en activant les données de localisation"
-msgstr "Retrouve toutes les offres autour de chez toi en activant les données de localisation"
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:15
+msgid "Retrouve toutes les offres autour de chez toi en activant les données de localisation."
+msgstr "Retrouve toutes les offres autour de chez toi en activant les données de localisation."
 
-#: src/features/favorites/components/NoFavoritesResult.tsx:16
+#: src/features/favorites/components/NoFavoritesResult.tsx:23
 msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 
@@ -895,11 +922,13 @@ msgstr "Réservation confirmée !"
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
 
+#: src/features/favorites/atoms/Favorite.tsx:92
+#: src/features/favorites/atoms/Favorite.tsx:97
 #: src/features/offer/services/useCtaWordingAndAction.ts:42
 msgid "Réserver"
 msgstr "Réserver"
 
-#: src/features/favorites/components/NotConnectedFavorites.tsx:36
+#: src/features/favorites/components/NotConnectedFavorites.tsx:35
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:39
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:39
 #: src/features/profile/components/LoggedOutHeader.tsx:23
@@ -910,12 +939,12 @@ msgstr "S'inscrire"
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:104
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:106
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
 #: src/features/auth/login/Login.tsx:130
-#: src/features/favorites/components/NotConnectedFavorites.tsx:38
+#: src/features/favorites/components/NotConnectedFavorites.tsx:37
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:41
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:41
 msgid "Se connecter"
@@ -949,6 +978,7 @@ msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx:19
+#: src/features/bookOffer/components/BookDuoChoice.tsx:35
 msgid "Solo"
 msgstr "Solo"
 
@@ -964,6 +994,10 @@ msgstr "Suivre pass Culture"
 msgid "Suppression du compte"
 msgstr "Suppression du compte"
 
+#: src/features/favorites/atoms/Favorite.tsx:126
+msgid "Supprimer"
+msgstr "Supprimer"
+
 #: src/features/search/components/SearchBox.tsx:46
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
@@ -976,12 +1010,12 @@ msgstr "Ton anniversaire"
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
 
-#: src/features/favorites/components/NotConnectedFavorites.tsx:28
+#: src/features/favorites/components/NotConnectedFavorites.tsx:27
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:35
 msgid "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 
-#: src/features/home/pages/Home.tsx:55
+#: src/features/home/pages/Home.tsx:53
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
@@ -1023,7 +1057,7 @@ msgstr "Tout passer"
 msgid "Toute la culture"
 msgstr "Toute la culture"
 
-#: src/features/home/pages/Home.tsx:52
+#: src/features/home/pages/Home.tsx:50
 msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
 
@@ -1035,15 +1069,19 @@ msgstr "Tu as 18 ans..."
 msgid "Tu as déjà un compte ?\\u00a0"
 msgstr "Tu as déjà un compte ?\\u00a0"
 
-#: src/features/home/pages/Home.tsx:56
+#: src/features/home/pages/Home.tsx:54
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
+
+#: src/features/profile/pages/NotificationSettings.tsx:111
+msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
+msgstr "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 
 #: src/features/auth/signup/EligibilityConfirmed.tsx:15
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:29
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:28
 msgid "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 
@@ -1051,13 +1089,21 @@ msgstr "Tu es éligible jusqu'au\\u00a0{expiracyDate}"
 msgid "Tu n'es pas connecté !"
 msgstr "Tu n'es pas connecté !"
 
-#: src/features/search/components/GeolocationActivationModal.tsx:21
-msgid "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation"
-msgstr "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation"
+#: src/features/bookings/components/NoBookingsView.tsx:14
+msgid "Tu n’as pas de réservations en cours. Découvre les offres disponibles  sans attendre !"
+msgstr "Tu n’as pas de réservations en cours. Découvre les offres disponibles  sans attendre !"
 
-#: src/features/search/components/GeolocationActivationModal.tsx:22
-msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone"
-msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone"
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:21
+msgid "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation."
+msgstr "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation."
+
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:22
+msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone."
+msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone."
+
+#: src/libs/notifications/components/PushNotificationsModal.tsx:19
+msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
+msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx:33
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
@@ -1067,7 +1113,7 @@ msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'applica
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:30
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:46
 msgid "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 
@@ -1087,17 +1133,17 @@ msgstr "Tu pourras bénéficier des 300€ offerts par le Ministère de la Cultu
 msgid "Type d'offre"
 msgstr "Type d'offre"
 
-#: src/features/auth/signup/AcceptCgu.tsx:70
-#: src/features/auth/signup/AcceptCgu.tsx:86
+#: src/features/auth/signup/AcceptCgu.tsx:69
+#: src/features/auth/signup/AcceptCgu.tsx:88
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:55
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:88
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:54
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:90
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 
-#: src/features/profile/pages/NotificationSettings.tsx:58
+#: src/features/profile/pages/NotificationSettings.tsx:87
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
 
@@ -1125,7 +1171,7 @@ msgstr "Uniquement les offres gratuites"
 msgid "VISA"
 msgstr "VISA"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:115
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:117
 msgid "Valider"
 msgstr "Valider"
 
@@ -1174,7 +1220,7 @@ msgstr "Vérifier mon éligibilité"
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/signup/AcceptCgu.tsx:109
+#: src/features/auth/signup/AcceptCgu.tsx:111
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
@@ -1243,13 +1289,17 @@ msgstr "metteur en scène"
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
+#: src/features/bookings/pages/Bookings.tsx:22
+msgid "réservation{0} en cours"
+msgstr "réservation{0} en cours"
+
 #: src/features/offer/pages/OfferDescription.tsx:16
 #: src/features/offer/pages/OfferDescription.tsx:20
 msgid "sous genre"
 msgstr "sous genre"
 
 #. email placeholder
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:111
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:113
 #: src/features/auth/login/Login.tsx:115
 #: src/features/auth/signup/SetEmail.tsx:67
 msgid "tonadresse@email.com"
@@ -1263,6 +1313,7 @@ msgstr "une initiative financée par le Ministère de la Culture."
 msgid "voir plus"
 msgstr "voir plus"
 
+#: src/ui/components/headers/SvgPageHeader.tsx:11
 #: src/ui/components/inputs/InputError.tsx:10
 msgid "{0}"
 msgstr "{0}"
@@ -1283,7 +1334,7 @@ msgstr "{nbHits} résultat"
 msgid "{nbHits} résultats"
 msgstr "{nbHits} résultats"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:53
+#: src/features/bookOffer/components/BookingDetails.tsx:60
 msgid "{price} seront déduits de ton crédit pass Culture"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
@@ -1299,10 +1350,14 @@ msgstr "Échec de la requête {0}, code: {1}"
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:31
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:30
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:32
 msgid "à portée de main !"
 msgstr "à portée de main !"
+
+#: src/features/bookOffer/atoms/HourChoice.tsx:23
+msgid "épuisé"
+msgstr "épuisé"
