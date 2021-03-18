@@ -40,7 +40,7 @@ export type RootStackParamList = {
   Offer: { id: number; shouldDisplayLoginModal: boolean }
   OfferDescription: { id: number }
   ReinitializePassword: { token: string; expiration_timestamp: number }
-  ResetPasswordEmailSent: { email: string }
+  ResetPasswordEmailSent: { email: string } & BackNavigationParams<'TabNavigator'>
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
   LocationFilter: undefined
@@ -55,7 +55,7 @@ export type RootStackParamList = {
     | ({ preventCancellation?: boolean } & BackNavigationParams<'Offer'>)
     | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
-  SignupConfirmationEmailSent: { email: string }
+  SignupConfirmationEmailSent: { email: string } & BackNavigationParams<'TabNavigator'>
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: {
     screen: TabRouteName
