@@ -24,6 +24,9 @@ describe('Book Offer reducer', () => {
 
     newState = bookOfferReducer(newState, { type: 'CHANGE_STEP', payload: Step.DUO })
     expect(newState.step).toStrictEqual(Step.DUO)
+
+    newState = bookOfferReducer(newState, { type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
+    expect(newState.step).toStrictEqual(Step.PRE_VALIDATION)
   })
 
   it('should handle SELECT_DATE', () => {
