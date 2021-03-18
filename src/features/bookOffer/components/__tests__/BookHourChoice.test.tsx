@@ -2,28 +2,31 @@ import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { Step } from 'features/bookOffer/pages/reducer'
+import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { BookHourChoice } from '../BookHourChoice'
+
+allowConsole({ log: true })
+
 const mockStep = Step.HOUR
 const mockDuoStep = Step.DUO
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
+const mockUseBooking = useBooking as jest.Mock
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest
-    .fn(() => ({
-      dispatch: mockDispatch,
-      bookingState: { quantity: 1, step: mockStep, date: new Date('2021-03-02T20:00:00') },
-      dismissModal: mockDismissModal,
-    }))
-    .mockImplementationOnce(() => ({
-      dispatch: mockDispatch,
-      bookingState: { quantity: 1, step: mockDuoStep, date: new Date('2021-03-02T20:00:00') },
-      dismissModal: mockDismissModal,
-    })),
+  useBooking: jest.fn(() => ({
+    dispatch: mockDispatch,
+    bookingState: {
+      quantity: 1,
+      step: mockStep,
+      date: new Date('2021-03-02T20:00:00'),
+    } as BookingState,
+    dismissModal: mockDismissModal,
+  })),
   useBookingStock: jest.fn(() => ({
     price: 2000,
     id: '148409',
@@ -33,7 +36,16 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 }))
 
 describe('BookHourChoice when hour is already selected', () => {
-  it('should change step to Hour and reset quantity', async () => {
+  it('should change step to Hour', async () => {
+    mockUseBooking.mockImplementationOnce(() => ({
+      dispatch: mockDispatch,
+      bookingState: {
+        quantity: undefined,
+        step: mockDuoStep,
+        date: new Date('2021-03-02T20:00:00'),
+      } as BookingState,
+      dismissModal: mockDismissModal,
+    }))
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
 
     expect(page).toMatchSnapshot()
@@ -43,7 +55,6 @@ describe('BookHourChoice when hour is already selected', () => {
     act(() => fireEvent.press(selectedHour))
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_QUANTITY' })
   })
 })
 
