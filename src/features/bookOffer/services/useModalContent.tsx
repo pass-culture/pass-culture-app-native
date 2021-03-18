@@ -33,7 +33,7 @@ export const useModalContent = (): ModalContent => {
   const { category, isDigital, stocks } = offer
 
   const goToPreviousStep = () => {
-    dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+    dispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
   }
 
   if (category.categoryType === CategoryType.Thing) {
