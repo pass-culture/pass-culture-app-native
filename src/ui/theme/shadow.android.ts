@@ -1,12 +1,16 @@
 import { Platform } from 'react-native'
 
-import { AndroidShadow, iOSShadowInput } from './shadow.d'
+import { AndroidShadow, ShadowInput } from './shadow.d'
 
-export function getShadow(shadowInput: iOSShadowInput): AndroidShadow | undefined {
+export function getShadow(shadowInput: ShadowInput): AndroidShadow {
   // Elevation is implemented only for Android 5 and above
   if (Platform.Version < 5) {
-    return undefined
+    return {}
   }
-  const elevation = shadowInput.shadowOffset.height * 2
-  return { elevation: elevation.toString() }
+  const elevation = Number(shadowInput.shadowOffset.height) * 2
+  return { elevation: elevation }
+}
+
+export function getNativeShadow(shadowInput: ShadowInput): AndroidShadow | undefined {
+  return getShadow(shadowInput)
 }
