@@ -252,7 +252,7 @@ Array [
 ]
 `;
 
-exports[`BookHourChoice when hour is already selected should change step to Hour and reset quantity 1`] = `
+exports[`BookHourChoice when hour is already selected should change step to Hour 1`] = `
 Array [
   <Text
     style={
