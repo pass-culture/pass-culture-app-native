@@ -1,10 +1,8 @@
-export type AndroidShadow =
-  | {
-      elevation: string
-    }
-  | undefined
+import { ViewStyle } from 'react-native'
 
-export type iOSShadowInput = {
+export type AndroidShadow = Pick<ViewStyle, 'elevation'>
+
+export type ShadowInput = {
   shadowOffset: {
     width: number
     height: number
@@ -21,4 +19,6 @@ export type iOSShadowOutput = {
   shadowOpacity: string
 }
 
-export function getShadow(shadowInput: iOSShadowInput): iOSShadowOutput | AndroidShadow
+export function getShadow(shadowInput: ShadowInput): iOSShadowOutput | AndroidShadow
+
+export function getNativeShadow(shadowInput: ShadowInput): ShadowInput | AndroidShadow

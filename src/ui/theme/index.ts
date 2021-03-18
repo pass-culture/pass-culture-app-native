@@ -1,7 +1,7 @@
 export { ColorsEnum, UniqueColors } from 'ui/theme/colors'
 export * from './constants'
 export * from './dimensions'
-export { getShadow } from './shadow'
+export { getShadow, getNativeShadow } from './shadow'
 export { padding } from './padding'
 export { getSpacing, getSpacingString } from './spacing'
 export { Spacer } from '../components/spacer/Spacer'
