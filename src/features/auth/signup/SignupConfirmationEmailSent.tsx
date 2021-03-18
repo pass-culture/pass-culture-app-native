@@ -26,6 +26,15 @@ type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
 
+  function onGoBack() {
+    const { backNavigation } = route.params
+    if (backNavigation) {
+      navigate(backNavigation.from, backNavigation.params)
+    } else {
+      goBack()
+    }
+  }
+
   function onClose() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
@@ -40,7 +49,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
       <ModalHeader
         title={_(t`Confirme ton e\u2011mail`)}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
+        onLeftIconPress={onGoBack}
         rightIcon={Close}
         onRightIconPress={onClose}
       />

@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
@@ -66,7 +67,12 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       }
-      navigate('SignupConfirmationEmailSent', { email })
+      navigate('SignupConfirmationEmailSent', {
+        email,
+        /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
+        to redo the challenge, so we block the user from going back to ReCAPTCHA screen */
+        backNavigation: { from: homeNavigateConfig.screen, params: homeNavigateConfig.params },
+      })
     } catch (_error) {
       setErrorMessage(_(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`))
     } finally {

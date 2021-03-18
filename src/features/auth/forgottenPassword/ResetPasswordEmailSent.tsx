@@ -28,6 +28,15 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation<'ResetPasswordEmailSent'>()
 
+  function onGoBack() {
+    const { backNavigation } = route.params
+    if (backNavigation) {
+      navigate(backNavigation.from, backNavigation.params)
+    } else {
+      complexGoBack()
+    }
+  }
+
   function onClose() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
   }
@@ -42,7 +51,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
       <ModalHeader
         title={_(t`E-mail envoyé !`)}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={complexGoBack}
+        onLeftIconPress={onGoBack}
         rightIcon={Close}
         onRightIconPress={onClose}
       />

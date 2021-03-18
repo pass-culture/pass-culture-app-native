@@ -5,6 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, superFlushWithAct } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
@@ -72,10 +73,11 @@ describe('<ForgottenPassword />', () => {
 
   it('should redirect to ResetPasswordEmailSent when password reset request is successful', async () => {
     const renderAPI = render(<ForgottenPassword />)
-    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+    fireEvent.press(renderAPI.getByText('Valider'))
+    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
     await superFlushWithAct()
 
@@ -83,6 +85,10 @@ describe('<ForgottenPassword />', () => {
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
+        backNavigation: {
+          from: homeNavigateConfig.screen,
+          params: homeNavigateConfig.params,
+        },
       })
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
@@ -90,10 +96,11 @@ describe('<ForgottenPassword />', () => {
 
   it('should NOT redirect to ResetPasswordEmailSent when reCAPTCHA challenge has failed', async () => {
     const renderAPI = render(<ForgottenPassword />)
-    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+    fireEvent.press(renderAPI.getByText('Valider'))
+    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
     await superFlushWithAct()
 
@@ -111,10 +118,11 @@ describe('<ForgottenPassword />', () => {
   it('should NOT redirect to ResetPasswordEmailSent when reset password request API call has failed', async () => {
     server.use(requestPasswordResetFail())
     const renderAPI = render(<ForgottenPassword />)
-    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+    fireEvent.press(renderAPI.getByText('Valider'))
+    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
     await superFlushWithAct()
 

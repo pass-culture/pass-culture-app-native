@@ -5,7 +5,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
+import { homeNavigateConfig, NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
@@ -44,7 +44,12 @@ export const ForgottenPassword: FunctionComponent = () => {
     try {
       setIsFetching(true)
       await api.postnativev1requestPasswordReset({ email, token })
-      navigate('ResetPasswordEmailSent', { email })
+      navigate('ResetPasswordEmailSent', {
+        email,
+        /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
+        to redo the challenge, so we block the user from going back to ReCAPTCHA screen */
+        backNavigation: { from: homeNavigateConfig.screen, params: homeNavigateConfig.params },
+      })
     } catch (_error) {
       setErrorMessage(
         _(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)

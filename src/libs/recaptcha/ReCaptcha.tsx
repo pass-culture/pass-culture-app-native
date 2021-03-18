@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Modal } from 'react-native'
 import WebView, { WebViewMessageEvent } from 'react-native-webview'
 import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
+import { v1 as uuidv1 } from 'uuid'
 
 import { env } from 'libs/environment'
 
@@ -17,6 +18,7 @@ const WEBVIEW_SOURCE = {
 
 type MessagePayload =
   | { message: 'close' }
+  | { message: 'debug'; log: string }
   | { message: 'error'; error: string }
   | { message: 'expire' }
   | { message: 'load' }
@@ -34,6 +36,13 @@ type Props = {
 export function ReCaptcha(props: Props) {
   const webViewRef = useRef<WebView>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [keyToReCreateWebViewFromScratch, setKeyToReCreateWebViewFromScratch] = useState<
+    string | null
+  >(null)
+
+  useEffect(() => {
+    props.isVisible && setKeyToReCreateWebViewFromScratch(uuidv1())
+  }, [props.isVisible])
 
   function onLoadStart() {
     setIsLoading(true)
@@ -44,6 +53,11 @@ export function ReCaptcha(props: Props) {
     setIsLoading(false)
   }
 
+  function handleClose() {
+    props.onClose()
+    setKeyToReCreateWebViewFromScratch(null)
+  }
+
   function handleMessage(event: WebViewMessageEvent) {
     try {
       const payload: MessagePayload = JSON.parse(event.nativeEvent.data)
@@ -52,6 +66,8 @@ export function ReCaptcha(props: Props) {
       if (payload.message === 'expire') props.onExpire()
       if (payload.message === 'error') props.onError(payload.error)
       if (payload.message === 'success') props.onSuccess(payload.token)
+      // eslint-disable-next-line no-console
+      if (payload.message === 'debug') console.debug(payload.log)
     } catch (error) {
       console.warn(error)
     }
@@ -71,26 +87,32 @@ export function ReCaptcha(props: Props) {
 
   return (
     <Modal
-      onRequestClose={props.onClose}
+      onRequestClose={handleClose}
       testID="recaptcha-webview-modal"
       transparent
       visible={props.isVisible}>
-      <StyledWebview
-        allowsBackForwardNavigationGestures={false}
-        bounces={false}
-        onError={(event) => {
-          const errorMessage = 'WebView error : ' + event.nativeEvent.description
-          props.onError(errorMessage)
-        }}
-        onLoadStart={onLoadStart}
-        onMessage={handleMessage}
-        onNavigationStateChange={handleNavigationStateChange}
-        onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
-        originWhitelist={ORIGIN_WHITELIST}
-        ref={webViewRef}
-        source={WEBVIEW_SOURCE}
-        testID="recaptcha-webview"
-      />
+      {props.isVisible && keyToReCreateWebViewFromScratch ? (
+        <StyledWebview
+          allowsBackForwardNavigationGestures={false}
+          bounces={false}
+          cacheEnabled={false}
+          cacheMode="LOAD_NO_CACHE"
+          incognito={true}
+          key={keyToReCreateWebViewFromScratch}
+          onError={(event) => {
+            const errorMessage = 'WebView error : ' + event.nativeEvent.description
+            props.onError(errorMessage)
+          }}
+          onLoadStart={onLoadStart}
+          onMessage={handleMessage}
+          onNavigationStateChange={handleNavigationStateChange}
+          onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
+          originWhitelist={ORIGIN_WHITELIST}
+          ref={webViewRef}
+          source={WEBVIEW_SOURCE}
+          testID="recaptcha-webview"
+        />
+      ) : null}
     </Modal>
   )
 }
