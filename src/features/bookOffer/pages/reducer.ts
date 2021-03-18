@@ -2,7 +2,8 @@ export enum Step {
   DATE = 1,
   HOUR = 2,
   DUO = 3,
-  CONFIRMATION = 4,
+  PRE_VALIDATION = 4,
+  CONFIRMATION = 5,
 }
 
 export type BookingState = {
