@@ -8,11 +8,11 @@ export const shouldDisplayTabIconPredicate = (
   authContext: IAuthContext,
   user?: UserProfileResponse
 ) => (route: TabRoute): boolean => {
-  // if (
-  //   route.name === 'Bookings' &&
-  //   (!authContext.isLoggedIn || !user?.isBeneficiary || !env.SHOULD_DISPLAY_BOOKINGS_TAB)
-  // ) {
-  //   return false
-  // }
+  if (
+    route.name === 'Bookings' &&
+    (!authContext.isLoggedIn || !user?.isBeneficiary || !env.SHOULD_DISPLAY_BOOKINGS_TAB)
+  ) {
+    return false
+  }
   return true
 }

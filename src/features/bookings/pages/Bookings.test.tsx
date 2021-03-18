@@ -12,7 +12,6 @@ import { superFlushWithAct } from 'tests/utils'
 import { emptyBookingsSnap } from '../api/bookingsSnap'
 
 import { Bookings } from './Bookings'
-allowConsole({ error: true })
 
 describe('Bookings', () => {
   it('should display the right account of ongoing bookings', async () => {

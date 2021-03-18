@@ -36,6 +36,4 @@ export interface Environment {
   SHOULD_DISPLAY_FAVORITES_FILTER: boolean
 }
 
-// TODO: remove it before to push
-Config.SHOULD_DISPLAY_CHEAT_MENU = 'true'
 export const env = parseBooleanVariables(Config) as Environment
