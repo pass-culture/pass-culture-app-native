@@ -9,18 +9,13 @@ import { _ } from 'libs/i18n'
 
 import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
 
-import { getOfferPrice } from './getOfferPrice'
-
-// TODO (squad profile: dehardcode those numbers)
-const USER_CREDIT_THING = 3000
-const USER_CREDIT_EVENT = 3000
+import { useHasEnoughCredit } from './useHasEnoughCredit'
 
 interface Props {
   isLoggedIn: boolean
   isBeneficiary: boolean
   offer: OfferAdaptedResponse
-  creditThing?: number
-  creditEvent?: number
+  hasEnoughCredit: boolean
 }
 interface ICTAWordingAndAction {
   isExternal?: boolean
@@ -33,8 +28,7 @@ export const getCtaWordingAndAction = ({
   isLoggedIn,
   isBeneficiary,
   offer,
-  creditThing = USER_CREDIT_THING,
-  creditEvent = USER_CREDIT_EVENT,
+  hasEnoughCredit,
 }: Props): ICTAWordingAndAction | undefined => {
   const { category, externalTicketOfficeUrl } = offer
 
@@ -55,9 +49,8 @@ export const getCtaWordingAndAction = ({
   if (isOfferSoldOut(offer)) return { wording: _(t`Offre épuisée`) }
   if (isOfferExpired(offer)) return { wording: _(t`Offre expirée`) }
 
-  const price = getOfferPrice(offer.stocks)
   if (category.categoryType === CategoryType.Thing) {
-    if (price > creditThing) {
+    if (!hasEnoughCredit) {
       if (offer.isDigital) return { wording: _(t`Crédit numérique insuffisant`) }
       return { wording: _(t`Crédit insuffisant`) }
     }
@@ -71,7 +64,7 @@ export const getCtaWordingAndAction = ({
   }
 
   if (category.categoryType === CategoryType.Event) {
-    if (price > creditEvent) return { wording: _(t`Crédit insuffisant`) }
+    if (!hasEnoughCredit) return { wording: _(t`Crédit insuffisant`) }
 
     return {
       wording: _(t`Voir les disponibilités`),
@@ -90,6 +83,8 @@ export const useCtaWordingAndAction = (props: {
   const { isLoggedIn } = useAuthContext()
   const { data: profileInfo } = useUserProfileInfo()
   const { data: offer } = useOffer({ offerId })
+  const hasEnoughCredit = useHasEnoughCredit(offerId)
+
   if (!offer) return
 
   /* check I have all information to calculate wording
@@ -104,7 +99,7 @@ export const useCtaWordingAndAction = (props: {
     return
 
   const { isBeneficiary = false } = profileInfo || {}
-  return getCtaWordingAndAction({ isLoggedIn, isBeneficiary, offer })
+  return getCtaWordingAndAction({ isLoggedIn, isBeneficiary, offer, hasEnoughCredit })
 }
 
 // An offer is expired if all its stock has an expiration date in the past

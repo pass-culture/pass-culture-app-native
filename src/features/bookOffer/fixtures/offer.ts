@@ -11,7 +11,6 @@ export const mockOffer: OfferAdaptedResponse = {
   },
   description: null,
   expenseDomains: [ExpenseDomain.All],
-  expense_domains: [ExpenseDomain.All],
   externalTicketOfficeUrl: null,
   extraData: {
     author: null,
@@ -95,7 +94,6 @@ export const mockDigitalOffer: OfferAdaptedResponse = {
   },
   description: null,
   expenseDomains: [ExpenseDomain.All],
-  expense_domains: [ExpenseDomain.All],
   externalTicketOfficeUrl: null,
   extraData: {
     author: null,

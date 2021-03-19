@@ -869,12 +869,6 @@ export interface OfferResponse {
     expenseDomains: Array<ExpenseDomain>;
     /**
      * 
-     * @type {Array<ExpenseDomain>}
-     * @memberof OfferResponse
-     */
-    expense_domains: Array<ExpenseDomain>;
-    /**
-     * 
      * @type {string}
      * @memberof OfferResponse
      */
