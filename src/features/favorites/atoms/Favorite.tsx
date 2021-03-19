@@ -90,50 +90,41 @@ export const Favorite: React.FC<Props> = (props) => {
   }
 
   function renderBookingButton() {
-    let isFreeOffer = false
-    let hasEnoughCredit = false
-    if (typeof offer.price === 'number') {
-      isFreeOffer = offer.price === 0
-      hasEnoughCredit = props.credit.amount >= offer.price
-    } else if (typeof offer.startPrice === 'number') {
-      isFreeOffer = offer.startPrice === 0
-      hasEnoughCredit = props.credit.amount >= offer.startPrice
-    }
-    const isExBeneficiary = props.user.isBeneficiary && props.credit.isExpired
-    const isNotBeneficiary = !props.user.isBeneficiary
+    const isFreeOffer = getIsFreeOffer(offer)
+    const hasEnoughCredit = getHasEnoughCredit(offer, props.credit)
+    const { isBeneficiary } = props.user
 
-    let shouldBookExternally = false
-    if (isNotBeneficiary || (isExBeneficiary && !isFreeOffer)) {
-      shouldBookExternally = true
-    }
-
-    function bookInApp() {
-      props.setOfferToBook(offer)
-    }
-
-    function bookExternally() {
-      if (offer.externalTicketOfficeUrl) {
-        openExternalUrl(offer.externalTicketOfficeUrl)
+    // User is NOT beneficiary
+    if (!isBeneficiary) {
+      if (offer.isExpired || offer.isExhausted) {
+        return null
       }
+      return <BookExternallyButton url={offer.externalTicketOfficeUrl} />
     }
 
-    if (shouldBookExternally && !offer.externalTicketOfficeUrl) {
-      return null
-    } else if (shouldBookExternally) {
-      return (
-        <ButtonPrimary
-          title={_(t`Réserver`)}
-          onPress={bookExternally}
-          icon={ExternalLinkSite}
-          buttonHeight="tall"
-        />
-      )
-    } else if (!isFreeOffer && !hasEnoughCredit) {
+    // User is an ex-beneficiary == beneficiary with expired credit
+    if (isBeneficiary && props.credit.isExpired) {
+      if (offer.isExpired || offer.isExhausted) {
+        return null
+      }
+      if (isFreeOffer) {
+        return <BookInAppButton onPress={() => props.setOfferToBook(offer)} />
+      }
+      return <BookExternallyButton url={offer.externalTicketOfficeUrl} />
+    }
+
+    // User is beneficiary
+    if (offer.isExpired) {
+      return <ButtonPrimary title={_(t`Offre expirée`)} buttonHeight="tall" disabled />
+    }
+    if (offer.isExhausted) {
+      return <ButtonPrimary title={_(t`Offre épuisée`)} buttonHeight="tall" disabled />
+    }
+    if (!isFreeOffer && !hasEnoughCredit) {
       return <ButtonPrimary title={_(t`Crédit insuffisant`)} buttonHeight="tall" disabled />
     }
-    return <ButtonPrimary title={_(t`Réserver`)} onPress={bookInApp} buttonHeight="tall" />
+    return <BookInAppButton onPress={() => props.setOfferToBook(offer)} />
   }
-
   const bookingButton = useMemo(renderBookingButton, [props])
 
   return (
@@ -182,6 +173,40 @@ export const Favorite: React.FC<Props> = (props) => {
       </ButtonsRow>
     </Container>
   )
+}
+
+const BookInAppButton = ({ onPress }: { onPress: () => void }) => (
+  <ButtonPrimary title={_(t`Réserver`)} onPress={onPress} buttonHeight="tall" />
+)
+
+const BookExternallyButton = ({ url }: { url: FavoriteOfferResponse['externalTicketOfficeUrl'] }) =>
+  url ? (
+    <ButtonPrimary
+      title={_(t`Réserver`)}
+      onPress={() => url && openExternalUrl(url)}
+      icon={ExternalLinkSite}
+      buttonHeight="tall"
+    />
+  ) : null
+
+function getIsFreeOffer(offer: FavoriteOfferResponse): boolean {
+  if (typeof offer.price === 'number') {
+    return offer.price === 0
+  }
+  if (typeof offer.startPrice === 'number') {
+    return offer.startPrice === 0
+  }
+  return false
+}
+
+function getHasEnoughCredit(offer: FavoriteOfferResponse, credit: Credit): boolean {
+  if (typeof offer.price === 'number') {
+    return credit.amount >= offer.price
+  }
+  if (typeof offer.startPrice === 'number') {
+    return credit.amount >= offer.startPrice
+  }
+  return false
 }
 
 const { width: windowWidth } = Dimensions.get('window')
