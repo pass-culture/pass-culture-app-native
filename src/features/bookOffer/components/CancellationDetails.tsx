@@ -20,11 +20,11 @@ export const CancellationDetails: React.FC = () => {
 
   if (!offer || !stock) return <React.Fragment />
 
-  const { category, isDigital } = offer
   const { cancellationLimitDatetime: limitDate } = stock
 
+  // We can only cancel for events where the cancellable limit datetime is in the future
   const message =
-    !limitDate || (category.categoryType === CategoryType.Thing && isDigital)
+    !limitDate || limitDate < new Date() || offer.category.categoryType === CategoryType.Thing
       ? _(t`Cette réservation n’est pas annulable`)
       : _(t`Cette réservation peut être annulée jusqu’au ${formatDate(limitDate)}`)
 
