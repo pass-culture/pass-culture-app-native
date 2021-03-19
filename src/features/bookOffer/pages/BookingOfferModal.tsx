@@ -32,7 +32,8 @@ export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }
       leftIcon={leftIcon}
       onLeftIconPress={onLeftIconPress}
       rightIcon={Close}
-      onRightIconPress={onPressRightIcon}>
+      onRightIconPress={onPressRightIcon}
+      isScrollable>
       {children}
     </AppModal>
   )
