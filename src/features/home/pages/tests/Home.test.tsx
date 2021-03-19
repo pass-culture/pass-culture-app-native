@@ -59,6 +59,7 @@ function simulateAuthenticatedUser(partialUser?: Partial<UserProfileResponse>) {
 
 describe('Home component', () => {
   it('should render correctly without login modal', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     const home = await homeRenderer({ isLoggedIn: false, withModal: false })
     expect(home).toMatchSnapshot()
   })
