@@ -7,14 +7,14 @@ import { TabRoute } from '../types'
 
 jest.mock('libs/environment', () => ({
   env: {
-    FEATURE_FLIPPING_ONLY_TESTING: false,
+    FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: false,
   },
 }))
 
 describe('TabNavigator', () => {
   describe('shouldDisplayTabIconPredicate', () => {
     it('should display "Bookings" icon for authenticated and beneficiary users', () => {
-      env.FEATURE_FLIPPING_ONLY_TESTING = true
+      env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
       const shouldDisplayFunction = shouldDisplayTabIconPredicate(
         { isLoggedIn: true } as IAuthContext,
         {
@@ -32,7 +32,7 @@ describe('TabNavigator', () => {
       [false, false],
       [true, true],
     ])('should NOT display "Bookings" icon ', (isLoggedIn, isBeneficiary) => {
-      env.FEATURE_FLIPPING_ONLY_TESTING = false
+      env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
       const shouldDisplayFunction = shouldDisplayTabIconPredicate(
         { isLoggedIn } as IAuthContext,
         {

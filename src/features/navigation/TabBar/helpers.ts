@@ -10,7 +10,9 @@ export const shouldDisplayTabIconPredicate = (
 ) => (route: TabRoute): boolean => {
   if (
     route.name === 'Bookings' &&
-    (!authContext.isLoggedIn || !user?.isBeneficiary || !env.FEATURE_FLIPPING_ONLY_TESTING)
+    (!authContext.isLoggedIn ||
+      !user?.isBeneficiary ||
+      !env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING)
   ) {
     return false
   }
