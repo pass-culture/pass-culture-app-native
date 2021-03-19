@@ -30,7 +30,7 @@ export interface Environment {
   URL_PREFIX: string
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
-  FEATURE_FLIPPING_ONLY_TESTING: boolean
+  FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: boolean
   SHOULD_DISPLAY_FAVORITES_FILTER: boolean
 }
 

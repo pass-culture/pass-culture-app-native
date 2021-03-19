@@ -19,7 +19,7 @@ import { Home } from '../Home'
 
 jest.mock('libs/environment', () => ({
   env: {
-    FEATURE_FLIPPING_ONLY_TESTING: false,
+    FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: false,
   },
 }))
 
@@ -110,14 +110,14 @@ describe('Home component', () => {
     expect(home.queryByText('Check update')).toBeFalsy()
   })
 
-  it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_TESTING=true', async () => {
-    env.FEATURE_FLIPPING_ONLY_TESTING = true
+  it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     const home = await homeRenderer({ isLoggedIn: false, withModal: false })
     expect(home.queryByText('CheatMenu')).toBeTruthy()
   })
 
-  it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_TESTING=false', async () => {
-    env.FEATURE_FLIPPING_ONLY_TESTING = false
+  it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     const home = await homeRenderer({ isLoggedIn: false, withModal: false })
     expect(home.queryByText('CheatMenu')).toBeFalsy()
   })
