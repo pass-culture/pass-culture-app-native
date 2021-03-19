@@ -1,4 +1,4 @@
-import { NavigationProp, RouteProp } from '@react-navigation/native'
+import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { StackNavigationOptions } from '@react-navigation/stack/lib/typescript/src/types'
 import { ComponentType } from 'react'
@@ -112,11 +112,12 @@ export type ScreenNavigationProp<ScreenName extends ScreenNames> = StackNavigati
   ScreenName
 >
 /**
- * Type helper for useNavigation
+ * Type helper for useNavigation in the context of a Stack Navigator
+ * Cf. https://reactnavigation.org/docs/navigation-prop/#navigator-dependent-functions
  *
  * const navigation = useNavigation<UseNavigationType>()
  */
-export type UseNavigationType = NavigationProp<AllNavParamList>
+export type UseNavigationType = StackNavigationProp<AllNavParamList>
 /**
  * Type helper to access route params
  *
