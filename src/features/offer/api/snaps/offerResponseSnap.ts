@@ -1,4 +1,4 @@
-import { CategoryNameEnum, CategoryType, OfferResponse } from 'api/gen'
+import { CategoryNameEnum, CategoryType, ExpenseDomain, OfferResponse } from 'api/gen'
 
 // humanizedId AHD3A
 export const offerResponseSnap: OfferResponse = {
@@ -11,9 +11,10 @@ export const offerResponseSnap: OfferResponse = {
   },
   description:
     'Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…\nTous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html',
+  expenseDomains: [ExpenseDomain.All],
+  expense_domains: [ExpenseDomain.All],
   isDigital: false,
   isDuo: true,
-  expense_domains: [],
   name: 'Sous les étoiles de Paris - VF',
   category: { label: 'Cinéma', categoryType: CategoryType.Event, name: CategoryNameEnum.CINEMA },
   stocks: [

@@ -12,6 +12,7 @@ export const bookingsSnap: BookingsResponse = {
       expirationDate: null,
       totalAmount: 1900,
       token: '352UW4',
+      quantity: 10,
       stock: {
         id: 150230,
         beginningDatetime: new Date('2021-03-15T20:00:00'),

@@ -10,6 +10,7 @@ export const mockOffer: OfferAdaptedResponse = {
     visualDisability: null,
   },
   description: null,
+  expenseDomains: [ExpenseDomain.All],
   expense_domains: [ExpenseDomain.All],
   externalTicketOfficeUrl: null,
   extraData: {
@@ -93,6 +94,7 @@ export const mockDigitalOffer: OfferAdaptedResponse = {
     visualDisability: null,
   },
   description: null,
+  expenseDomains: [ExpenseDomain.All],
   expense_domains: [ExpenseDomain.All],
   externalTicketOfficeUrl: null,
   extraData: {

@@ -47,6 +47,7 @@ export const mergeOfferData = (offer: PartialOffer) => (
   isDigital: false,
   id: offer.offerId,
   stocks: [] as Array<OfferStockResponse>,
+  expenseDomains: [] as Array<ExpenseDomain>,
   expense_domains: [] as Array<ExpenseDomain>,
   accessibility: {},
   category: {
