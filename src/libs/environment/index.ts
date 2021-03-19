@@ -31,7 +31,6 @@ export interface Environment {
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
   FEATURE_FLIPPING_ONLY_TESTING: boolean
-  SHOULD_DISPLAY_BOOKINGS_TAB: boolean
   SHOULD_DISPLAY_FAVORITES_FILTER: boolean
 }
 
