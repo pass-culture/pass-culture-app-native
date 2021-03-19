@@ -38,7 +38,7 @@ export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
           },
           shadowRadius: 2,
           shadowColor: ColorsEnum.BLACK,
-          shadowOpacity: 0.8,
+          shadowOpacity: 0.1,
         }),
       }}>
       <Svg
