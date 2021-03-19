@@ -31,7 +31,7 @@ export interface Environment {
   URL_PREFIX: string
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
-  SHOULD_DISPLAY_CHEAT_MENU: boolean
+  FEATURE_FLIPPING_ONLY_TESTING: boolean
   SHOULD_DISPLAY_BOOKINGS_TAB: boolean
   SHOULD_DISPLAY_FAVORITES_FILTER: boolean
 }
