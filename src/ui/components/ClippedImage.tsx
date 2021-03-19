@@ -1,20 +1,32 @@
-import React, { PropsWithChildren } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import { View } from 'react-native'
 import Svg, { ClipPath, Defs, G, Image, Path, Use, LinearGradient, Stop } from 'react-native-svg'
+import styled from 'styled-components/native'
 
+import { Television } from 'ui/svg/icons/Television'
+import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getNativeShadow } from 'ui/theme'
 
-export function ClippedImage(
-  props: PropsWithChildren<{
-    image?: string
-    clipId: string
-    path: string
-    width?: number
-    height?: number
-  }>
-) {
+export type ClippedImageProps = {
+  clipId: string
+  path: string
+  width?: number
+  height?: number
+} & (
+  | {
+      image: string
+      altIcon?: never
+    }
+  | {
+      image?: never
+      altIcon: FC<IconInterface>
+    }
+)
+
+export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
   const linearGradientId = props.clipId + '_linear'
   const pathId = props.clipId + '_path'
+  const Icon = props.altIcon || Television
 
   return (
     <View
@@ -58,6 +70,22 @@ export function ClippedImage(
           </G>
         )}
       </Svg>
+      {!props.image && Icon && (
+        <IconContainer>
+          <Icon size={48} color={ColorsEnum.GREY_MEDIUM} />
+        </IconContainer>
+      )}
     </View>
   )
 }
+
+const IconContainer = styled.View({
+  position: 'absolute',
+  top: -4,
+  left: -4,
+  justifyContent: 'center',
+  alignItems: 'center',
+  flex: 1,
+  width: '100%',
+  height: '100%',
+})
