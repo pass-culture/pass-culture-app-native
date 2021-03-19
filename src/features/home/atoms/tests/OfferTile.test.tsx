@@ -67,6 +67,7 @@ describe('OfferTile component', () => {
       accessibility: {},
       category: { label: 'MUSIQUE', name: 'MUSIQUE' },
       description: offer.description,
+      expenseDomains: [],
       expense_domains: [],
       fullAddress: null,
       id: offerId,

@@ -129,6 +129,18 @@ export interface BookOfferRequest {
      */
     stockId: string;
 }/**
+ * 
+ * @export
+ * @interface BookOfferResponse
+ */
+export interface BookOfferResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof BookOfferResponse
+     */
+    bookingId: number;
+}/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -239,6 +251,12 @@ export interface BookingReponse {
      * @memberof BookingReponse
      */
     id: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof BookingReponse
+     */
+    quantity: number;
     /**
      * 
      * @type {BookingStockResponse}
@@ -572,6 +590,12 @@ export interface FavoriteOfferResponse {
      * @type {boolean}
      * @memberof FavoriteOfferResponse
      */
+    isExhausted?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FavoriteOfferResponse
+     */
     isExpired?: boolean;
     /**
      * 
@@ -837,6 +861,12 @@ export interface OfferResponse {
      * @memberof OfferResponse
      */
     description?: string | null;
+    /**
+     * 
+     * @type {Array<ExpenseDomain>}
+     * @memberof OfferResponse
+     */
+    expenseDomains: Array<ExpenseDomain>;
     /**
      * 
      * @type {Array<ExpenseDomain>}
@@ -1504,6 +1534,34 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary cancel_booking <POST>
+         * @param {number} booking_id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1bookingsbookingIdcancel(booking_id: number, options: any = {}): Promise<FetchArgs> {
+            // verify required parameter 'booking_id' is not null or undefined
+            if (booking_id === null || booking_id === undefined) {
+                throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdcancel.');
+            }
+            const localVarPath = `/native/v1/bookings/{booking_id}/cancel`
+                .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary change_password <POST>
          * @param {ChangePasswordRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -1848,7 +1906,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postnativev1bookOffer(basePath: string, body?: BookOfferRequest, options?: any): Promise<EmptyResponse> {
+        async postnativev1bookOffer(basePath: string, body?: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookOffer(body, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
@@ -1860,8 +1918,20 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postnativev1bookings(basePath: string, body?: BookOfferRequest, options?: any): Promise<EmptyResponse> {
+        async postnativev1bookings(basePath: string, body?: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookings(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary cancel_booking <POST>
+         * @param {number} booking_id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1bookingsbookingIdcancel(basePath: string, booking_id: number, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookingsbookingIdcancel(booking_id, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -2097,6 +2167,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1bookings(body?: BookOfferRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1bookings(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary cancel_booking <POST>
+     * @param {number} booking_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1bookingsbookingIdcancel(booking_id: number, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1bookingsbookingIdcancel(this.basePath, booking_id, options)
     }
     /**
      * 
