@@ -596,7 +596,11 @@ export const AppComponents: FunctionComponent = () => {
         </View>
         <Spacer.Column numberOfSpaces={4} />
         <View>
-          <NonBeneficiaryHeader email="john@doe.com" dateOfBirth={`${year}-01-28T01:32:15`} />
+          <NonBeneficiaryHeader
+            email="john@doe.com"
+            eligibilityStartDatetime={`${year + 18}-01-28T00:00Z`}
+            eligibilityEndDatetime={`${year + 19}-01-28T00:00Z`}
+          />
         </View>
         <View>
           <AlignedText>

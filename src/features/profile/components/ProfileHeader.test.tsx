@@ -8,7 +8,7 @@ const userV1: UserProfileResponse = {
   email: 'email2@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,
-  dateOfBirth: new Date('2003-01-01T00:00:00'),
+  dateOfBirth: '2003-01-01',
   depositExpirationDate: new Date('2023-02-09T11:17:14.786670'),
   depositVersion: 1,
   expenses: [
@@ -16,7 +16,6 @@ const userV1: UserProfileResponse = {
     { current: 0, domain: ExpenseDomain.Digital, limit: 10000 },
     { current: 0, domain: ExpenseDomain.Physical, limit: 10000 },
   ],
-  isEligible: true,
   lastName: '93 HNMM 2',
   id: 1234,
   needsToFillCulturalSurvey: true,

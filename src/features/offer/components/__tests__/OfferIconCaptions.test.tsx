@@ -45,7 +45,6 @@ const userProfileAPIResponse: UserProfileResponse = {
       limit: 200,
     },
   ],
-  isEligible: true,
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
   id: 1234,

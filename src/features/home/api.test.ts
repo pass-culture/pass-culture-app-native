@@ -24,7 +24,6 @@ const userProfileAPIResponse: UserProfileResponse = {
   email: 'email@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,
-  isEligible: true,
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
   id: 1234,
