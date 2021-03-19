@@ -89,7 +89,7 @@ export const Home: FunctionComponent = function () {
       <HeaderBackgroundWrapper>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
-      {env.SHOULD_DISPLAY_CHEAT_MENU && (
+      {env.FEATURE_FLIPPING_ONLY_TESTING && (
         <CheatCodeButtonContainer onPress={() => navigation.navigate('CheatMenu')}>
           <Text>{_(t`CheatMenu`)}</Text>
         </CheatCodeButtonContainer>
