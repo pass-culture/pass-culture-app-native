@@ -11,8 +11,10 @@ export const hasEnoughCredit = (
 ): boolean =>
   domains.every((domain) => {
     const credit = domainsCredit[domain]
-    if (!credit) return true
-    return price === 0 || price <= credit.remaining
+    if (!credit) {
+      return true
+    }
+    return price <= credit.remaining
   })
 
 export const useHasEnoughCredit = (offerId: number): boolean => {
