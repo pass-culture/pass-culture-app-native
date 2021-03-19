@@ -29,7 +29,7 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
   titleNumberOfLines,
-  isScrollable,
+  isScrollable = false,
 }) => {
   const { bottom } = useCustomSafeInsets()
   const scrollViewRef = useRef<ScrollView | null>(null)
