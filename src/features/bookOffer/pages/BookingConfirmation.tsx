@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -34,7 +35,12 @@ export function BookingConfirmation() {
         )}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite title={_(t`Voir ma réservation`)} onPress={() => navigate('Bookings')} />
+      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
+        <ButtonPrimaryWhite
+          title={_(t`Voir ma réservation`)}
+          onPress={() => navigate('Bookings')}
+        />
+      )}
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite
         title={_(t`Retourner à l'accueil`)}
