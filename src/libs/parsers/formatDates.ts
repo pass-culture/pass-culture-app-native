@@ -72,7 +72,8 @@ export const formatDatePeriod = (dates: Date[] | undefined): string | undefined 
 
   if (first.year !== last.year) return _(t`Du ${formatToFrenchDate(first)} au ${formattedEndDate}`)
   if (first.month !== last.month) return _(t`Du ${first.day} ${first.month} au ${formattedEndDate}`)
-  return _(t`Du ${first.day} au ${formattedEndDate}`)
+  if (first.day !== last.day) return _(t`Du ${first.day} au ${formattedEndDate}`)
+  return formattedEndDate
 }
 
 export function formatDateToISOStringWithoutTime(date: Date): string {

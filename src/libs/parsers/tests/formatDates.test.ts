@@ -11,6 +11,8 @@ import {
 const Oct5 = new Date(2020, 9, 5)
 const Nov1 = new Date(2020, 10, 1)
 const Nov12 = new Date(2020, 10, 12)
+const Nov20Morning = new Date(2020, 10, 20, 9, 30)
+const Nov20Evening = new Date(2020, 10, 20, 21)
 const Dec5 = new Date(2020, 11, 5)
 const Jan2021 = new Date(2021, 0, 5)
 
@@ -41,15 +43,16 @@ describe('formatDatePeriod', () => {
     mockdate.set(Nov1)
   })
   it.each`
-    dates                  | expected
-    ${[]}                  | ${undefined}
-    ${[Nov12]}             | ${'12 novembre 2020'}
-    ${[Nov12, Nov12]}      | ${'12 novembre 2020'}
-    ${[Dec5]}              | ${'5 décembre 2020'}
-    ${[Nov12, Nov12]}      | ${'12 novembre 2020'}
-    ${[Nov1, Nov12, Oct5]} | ${'Du 1 au 12 novembre 2020'}
-    ${[Dec5, Nov12]}       | ${'Du 12 novembre au 5 décembre 2020'}
-    ${[Jan2021, Nov12]}    | ${'Du 12 novembre 2020 au 5 janvier 2021'}
+    dates                           | expected
+    ${[]}                           | ${undefined}
+    ${[Nov12]}                      | ${'12 novembre 2020'}
+    ${[Nov12, Nov12]}               | ${'12 novembre 2020'}
+    ${[Nov20Morning, Nov20Evening]} | ${'20 novembre 2020'}
+    ${[Dec5]}                       | ${'5 décembre 2020'}
+    ${[Nov12, Nov12]}               | ${'12 novembre 2020'}
+    ${[Nov1, Nov12, Oct5]}          | ${'Du 1 au 12 novembre 2020'}
+    ${[Dec5, Nov12]}                | ${'Du 12 novembre au 5 décembre 2020'}
+    ${[Jan2021, Nov12]}             | ${'Du 12 novembre 2020 au 5 janvier 2021'}
   `('formatDatePeriod($dates) \t= $expected', ({ dates, expected }) => {
     expect(formatDatePeriod(dates)).toBe(expected)
   })
