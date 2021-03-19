@@ -3,10 +3,10 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { FavoritesHeader } from 'features/favorites/components/FavoritesHeader'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
+import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 
 import { useFavoritesResults } from './useFavoritesResults'
@@ -36,7 +36,7 @@ export const FavoritesScreen: React.FC = () => {
 
   return (
     <Container>
-      <FavoritesHeader />
+      <SvgPageHeader title="Mes favoris" />
       <FavoritesResults />
     </Container>
   )

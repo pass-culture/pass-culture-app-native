@@ -13,61 +13,35 @@ exports[`Favorites component should render correctly 1`] = `
   }
 >
   <View
-    height={64}
     style={
       Array [
         Object {
-          "height": 64,
-          "left": 0,
+          "alignItems": "center",
+          "maxHeight": 76,
           "overflow": "hidden",
-          "position": "absolute",
-          "top": 0,
-          "zIndex": 0,
+          "position": "relative",
         },
       ]
     }
   >
     <View
       height={280}
-      width={754}
+      width={751}
     >
       <Text>
         undefined-SVG-Mock
       </Text>
     </View>
-  </View>
-  <View
-    customHeight={16}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "alignSelf": "center",
-          "height": 32,
-          "justifyContent": "flex-end",
-          "marginBottom": 8,
-          "marginTop": 8,
-        },
-      ]
-    }
-  >
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
+            "bottom": 12,
             "color": "#ffffff",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 18,
             "lineHeight": 22,
+            "position": "absolute",
           },
         ]
       }
