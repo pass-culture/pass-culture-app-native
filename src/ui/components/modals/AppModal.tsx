@@ -61,7 +61,8 @@ export const AppModal: FunctionComponent<Props> = ({
                   showsVerticalScrollIndicator={false}
                   onContentSizeChange={() =>
                     scrollViewRef.current !== null && scrollViewRef.current.scrollTo({ y: 0 })
-                  }>
+                  }
+                  contentContainerStyle={{ paddingVertical: getSpacing(2) }}>
                   <View onStartShouldSetResponder={() => true}>{children}</View>
                 </StyledScrollView>
               ) : (
@@ -102,4 +103,4 @@ const Content = styled.View({
   maxWidth: getSpacing(125),
 })
 
-const StyledScrollView = styled(ScrollView)({ paddingTop: getSpacing(2), width: '100%' })
+const StyledScrollView = styled(ScrollView)({ width: '100%' })

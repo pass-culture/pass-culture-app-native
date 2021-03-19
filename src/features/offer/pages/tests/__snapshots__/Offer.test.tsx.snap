@@ -1932,12 +1932,16 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             }
                           >
                             <RCTScrollView
+                              contentContainerStyle={
+                                Object {
+                                  "paddingVertical": 8,
+                                }
+                              }
                               onContentSizeChange={[Function]}
                               showsVerticalScrollIndicator={false}
                               style={
                                 Array [
                                   Object {
-                                    "paddingTop": 8,
                                     "width": "100%",
                                   },
                                 ]
@@ -7153,12 +7157,16 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             }
                           >
                             <RCTScrollView
+                              contentContainerStyle={
+                                Object {
+                                  "paddingVertical": 8,
+                                }
+                              }
                               onContentSizeChange={[Function]}
                               showsVerticalScrollIndicator={false}
                               style={
                                 Array [
                                   Object {
-                                    "paddingTop": 8,
                                     "width": "100%",
                                   },
                                 ]
