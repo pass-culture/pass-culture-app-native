@@ -19,7 +19,6 @@ import { Home } from '../Home'
 
 jest.mock('libs/environment', () => ({
   env: {
-    FEATURE_FLAG_CODE_PUSH: true,
     FEATURE_FLIPPING_ONLY_TESTING: false,
   },
 }))
