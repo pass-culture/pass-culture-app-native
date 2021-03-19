@@ -19,14 +19,16 @@ export const Bookings: React.FC = () => {
   return (
     <React.Fragment>
       <SvgPageHeader title="Mes réservations" />
-      {onGoingBookingsCount > 0 ? (
-        <Container>
-          <BookingsCount>{bookingsCountLabel}</BookingsCount>
-          <Spacer.Flex />
-        </Container>
-      ) : (
-        <NoBookingsView />
-      )}
+      <Container>
+        {onGoingBookingsCount > 0 ? (
+          <React.Fragment>
+            <BookingsCount>{bookingsCountLabel}</BookingsCount>
+            <Spacer.Flex />
+          </React.Fragment>
+        ) : (
+          <NoBookingsView />
+        )}
+      </Container>
     </React.Fragment>
   )
 }

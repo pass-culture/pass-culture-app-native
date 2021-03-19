@@ -13,16 +13,24 @@ export function NoBookingsView() {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
     <Container>
+      <Spacer.TopScreen />
+      <Spacer.Flex />
       <NoBookings size={197} color={ColorsEnum.GREY_MEDIUM} />
       <Explanation color={ColorsEnum.GREY_DARK}>
         {_(t`Tu n’as pas de réservations en cours.
       Découvre les offres disponibles 
       sans attendre !`)}
       </Explanation>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
-        <ButtonPrimary title={_(t`Explorer les offres`)} onPress={() => navigate('Search')} />
+        <ButtonPrimary
+          title={_(t`Explorer les offres`)}
+          onPress={() => navigate('Search')}
+          buttonHeight="tall"
+        />
       </ButtonContainer>
+      <Spacer.Flex flex={2} />
+      <Spacer.BottomScreen />
     </Container>
   )
 }
@@ -36,10 +44,11 @@ const Container = styled.View({
 })
 
 const ButtonContainer = styled.View({
-  maxWidth: 200,
+  maxWidth: getSpacing(44),
   width: '100%',
 })
 
 const Explanation = styled(Typo.Body)({
+  flex: 1,
   textAlign: 'center',
 })
