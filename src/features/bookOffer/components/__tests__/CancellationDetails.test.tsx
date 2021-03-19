@@ -2,7 +2,7 @@ import { render } from '@testing-library/react-native'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { CategoryType, OfferStockResponse } from 'api/gen'
+import { OfferStockResponse } from 'api/gen'
 import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
@@ -27,44 +27,33 @@ describe('formatDate()', () => {
 })
 
 let mockStock: OfferStockResponse | undefined = undefined
-let mockCategoryType: CategoryType = CategoryType.Thing
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBookingOffer: jest.fn(() => ({
-    category: { categoryType: mockCategoryType },
-  })),
   useBookingStock: jest.fn(() => mockStock),
 }))
 
-interface Props {
-  cancellationLimitDatetime: OfferStockResponse['cancellationLimitDatetime']
-  category: CategoryType
-  cancellable: boolean
-}
-
 describe('<CancellationDetails />', () => {
-  it.each`
-    cancellationLimitDatetime | category              | cancellable
-    ${null}                   | ${CategoryType.Thing} | ${false}
-    ${pastDate}               | ${CategoryType.Thing} | ${false}
-    ${futureDate}             | ${CategoryType.Thing} | ${false}
-    ${null}                   | ${CategoryType.Event} | ${false}
-    ${pastDate}               | ${CategoryType.Event} | ${false}
-    ${futureDate}             | ${CategoryType.Event} | ${true}
-  `(
-    'should be cancellable=$cancellable for category=$category and date=$cancellationLimitDatetime',
-    ({ cancellationLimitDatetime, category, cancellable }: Props) => {
-      mockStock = { ...notExpiredStock, cancellationLimitDatetime }
-      mockCategoryType = category
+  it('should be cancellable if no limitDate specified', () => {
+    mockStock = { ...notExpiredStock, cancellationLimitDatetime: null }
+    const page = render(reactQueryProviderHOC(<CancellationDetails />))
+    expect(page.queryByText('Cette réservation est annulable')).toBeTruthy()
+    expect(page.queryByText(/Cette réservation n’est pas annulable/)).toBeFalsy()
+    expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeFalsy()
+  })
 
-      const page = render(reactQueryProviderHOC(<CancellationDetails />))
-
-      if (cancellable) {
-        expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeTruthy()
-        expect(page.queryByText(/Cette réservation n’est pas annulable/)).toBeFalsy()
-      } else {
-        expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeFalsy()
-        expect(page.queryByText(/Cette réservation n’est pas annulable/)).toBeTruthy()
-      }
-    }
-  )
+  it('should not be cancellable if limitDate in the past', () => {
+    mockStock = { ...notExpiredStock, cancellationLimitDatetime: pastDate }
+    const page = render(reactQueryProviderHOC(<CancellationDetails />))
+    expect(page.queryByText('Cette réservation n’est pas annulable')).toBeTruthy()
+    expect(page.queryByText(/Cette réservation est annulable/)).toBeFalsy()
+    expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeFalsy()
+  })
+  it('should be cancellable if limitDate in the future', () => {
+    mockStock = { ...notExpiredStock, cancellationLimitDatetime: futureDate }
+    const page = render(reactQueryProviderHOC(<CancellationDetails />))
+    expect(
+      page.queryByText('Cette réservation peut être annulée jusqu’au 6 janvier 2021, 0h00')
+    ).toBeTruthy()
+    expect(page.queryByText(/Cette réservation est annulable/)).toBeFalsy()
+    expect(page.queryByText(/Cette réservation n’est pas annulable/)).toBeFalsy()
+  })
 })
