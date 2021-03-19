@@ -39,6 +39,7 @@ describe('getCtaWordingAndAction', () => {
           isLoggedIn: true,
           isBeneficiary: false,
           offer,
+          hasEnoughCredit: true,
         })
         const { wording, onPress } = result || {}
         expect(wording).toEqual(expected)
@@ -56,6 +57,7 @@ describe('getCtaWordingAndAction', () => {
         isLoggedIn: true,
         isBeneficiary: true,
         offer: buildOffer(partialOffer),
+        hasEnoughCredit: true,
         ...parameters,
       }) || { wording: '' }
 
@@ -78,17 +80,15 @@ describe('getCtaWordingAndAction', () => {
 
     // offer price is 5
     it.each`
-      type                  | creditThing  | creditEvent  | expected                     | disabled
-      ${CategoryType.Thing} | ${2000}      | ${undefined} | ${'Réserver'}                | ${false}
-      ${CategoryType.Thing} | ${2000}      | ${undefined} | ${'Réserver'}                | ${false}
-      ${CategoryType.Event} | ${undefined} | ${2000}      | ${'Voir les disponibilités'} | ${false}
-      ${CategoryType.Event} | ${undefined} | ${2000}      | ${'Voir les disponibilités'} | ${false}
+      type                  | hasEnoughCredit | expected                     | disabled
+      ${CategoryType.Thing} | ${true}         | ${'Réserver'}                | ${false}
+      ${CategoryType.Event} | ${true}         | ${'Voir les disponibilités'} | ${false}
     `(
       'If credit is enough, only iOS user cannot book on Thing type offers | $type => $expected - digital offers',
-      ({ creditEvent, creditThing, disabled, expected, type }) => {
+      ({ disabled, expected, hasEnoughCredit, type }) => {
         const { wording, onPress } = getCta(
           { category: { ...baseOffer.category, categoryType: type }, isDigital: true },
-          { creditEvent, creditThing }
+          { hasEnoughCredit }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -97,17 +97,17 @@ describe('getCtaWordingAndAction', () => {
 
     // offer price is 5
     it.each`
-      type                  | creditThing | creditEvent  | isDigital | expected                          | disabled
-      ${CategoryType.Thing} | ${200}      | ${undefined} | ${true}   | ${'Crédit numérique insuffisant'} | ${true}
-      ${CategoryType.Thing} | ${2000}     | ${undefined} | ${true}   | ${'Réserver'}                     | ${false}
-      ${CategoryType.Thing} | ${200}      | ${undefined} | ${false}  | ${'Crédit insuffisant'}           | ${true}
-      ${CategoryType.Thing} | ${2000}     | ${undefined} | ${false}  | ${'Réserver'}                     | ${false}
+      type                  | hasEnoughCredit | isDigital | expected                          | disabled
+      ${CategoryType.Thing} | ${false}        | ${true}   | ${'Crédit numérique insuffisant'} | ${true}
+      ${CategoryType.Thing} | ${true}         | ${true}   | ${'Réserver'}                     | ${false}
+      ${CategoryType.Thing} | ${false}        | ${false}  | ${'Crédit insuffisant'}           | ${true}
+      ${CategoryType.Thing} | ${true}         | ${false}  | ${'Réserver'}                     | ${false}
     `(
       'check is credit is enough | $type x $isDigital => $expected',
-      ({ creditEvent, creditThing, disabled, expected, type, isDigital }) => {
+      ({ disabled, expected, hasEnoughCredit, type, isDigital }) => {
         const { wording, onPress } = getCta(
           { category: { ...baseOffer.category, categoryType: type }, isDigital },
-          { creditEvent, creditThing }
+          { hasEnoughCredit }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -116,21 +116,17 @@ describe('getCtaWordingAndAction', () => {
 
     // offer price is 5
     it.each`
-      type                  | creditThing  | creditEvent  | expected                     | disabled
-      ${CategoryType.Thing} | ${100}       | ${undefined} | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Thing} | ${100}       | ${2000}      | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Thing} | ${490}       | ${undefined} | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Thing} | ${510}       | ${undefined} | ${'Réserver'}                | ${false}
-      ${CategoryType.Event} | ${undefined} | ${100}       | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Event} | ${2000}      | ${100}       | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Event} | ${undefined} | ${490}       | ${'Crédit insuffisant'}      | ${true}
-      ${CategoryType.Event} | ${undefined} | ${600}       | ${'Voir les disponibilités'} | ${false}
+      type                  | hasEnoughCredit | expected                     | disabled
+      ${CategoryType.Thing} | ${false}        | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Thing} | ${true}         | ${'Réserver'}                | ${false}
+      ${CategoryType.Event} | ${false}        | ${'Crédit insuffisant'}      | ${true}
+      ${CategoryType.Event} | ${true}         | ${'Voir les disponibilités'} | ${false}
     `(
       'check if Credit is enough for the category | $type | creditThing=$creditThing | creditEvent=$creditEvent => $expected',
-      ({ creditEvent, creditThing, disabled, expected, type }) => {
+      ({ disabled, expected, hasEnoughCredit, type }) => {
         const { wording, onPress } = getCta(
           { category: { ...baseOffer.category, categoryType: type } },
-          { creditEvent, creditThing }
+          { hasEnoughCredit }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -139,20 +135,18 @@ describe('getCtaWordingAndAction', () => {
 
     // offer price is 5
     it.each`
-      creditThing | expected                          | disabled
-      ${100}      | ${'Crédit numérique insuffisant'} | ${true}
-      ${100}      | ${'Crédit numérique insuffisant'} | ${true}
-      ${490}      | ${'Crédit numérique insuffisant'} | ${true}
-      ${510}      | ${'Réserver'}                     | ${false}
+      hasEnoughCredit | expected                          | disabled
+      ${false}        | ${'Crédit numérique insuffisant'} | ${true}
+      ${true}         | ${'Réserver'}                     | ${false}
     `(
       'check if Credit is enough for digital offers | creditThing=$creditThing => $expected',
-      ({ creditThing, disabled, expected }) => {
+      ({ disabled, expected, hasEnoughCredit }) => {
         const { wording, onPress } = getCta(
           {
             isDigital: true,
             category: { ...baseOffer.category, categoryType: CategoryType.Thing },
           },
-          { creditThing }
+          { hasEnoughCredit }
         )
         expect(wording).toEqual(expected)
         expect(onPress === undefined).toBe(disabled)
@@ -174,6 +168,7 @@ describe('getCtaWordingAndAction', () => {
           isLoggedIn: true,
           isBeneficiary: true,
           offer,
+          hasEnoughCredit: true,
         }) || {}
 
       expect(analytics.logClickBookOffer).toBeCalledTimes(0)
@@ -193,6 +188,7 @@ describe('getCtaWordingAndAction', () => {
           isLoggedIn: true,
           isBeneficiary: true,
           offer,
+          hasEnoughCredit: true,
         }) || {}
 
       expect(analytics.logConsultAvailableDates).toBeCalledTimes(0)

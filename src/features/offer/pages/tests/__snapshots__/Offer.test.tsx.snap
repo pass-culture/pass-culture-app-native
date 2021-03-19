@@ -1739,13 +1739,16 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                         }
                       >
                         <View
-                          height={48}
-                          width="100%"
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "#ff99be",
+                                "height": 48,
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                        />
                         <Text
                           adjustsFontSizeToFit={true}
                           numberOfLines={1}
@@ -1765,7 +1768,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             ]
                           }
                         >
-                          Voir les disponibilités
+                          Crédit insuffisant
                         </Text>
                       </View>
                     </View>
@@ -6936,13 +6939,16 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                         }
                       >
                         <View
-                          height={48}
-                          width="100%"
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "#ff99be",
+                                "height": 48,
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                        />
                         <Text
                           adjustsFontSizeToFit={true}
                           numberOfLines={1}
@@ -6962,7 +6968,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             ]
                           }
                         >
-                          Voir les disponibilités
+                          Crédit insuffisant
                         </Text>
                       </View>
                     </View>
