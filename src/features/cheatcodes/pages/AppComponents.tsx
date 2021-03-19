@@ -660,7 +660,7 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <OnGoingTicket />
-          <Text> - OnGoing Ticket </Text>
+          <Text> - OnGoing Ticket without image </Text>
         </AlignedText>
       </AccordionItem>
       <Spacer.Column numberOfSpaces={5} />
