@@ -196,6 +196,7 @@ exports[`Home component should render correctly without login modal 1`] = `
               "borderTopStartRadius": 16,
               "flexDirection": "column",
               "justifyContent": "flex-start",
+              "maxHeight": "85%",
               "opacity": 1,
               "paddingBottom": 20,
               "paddingLeft": 20,

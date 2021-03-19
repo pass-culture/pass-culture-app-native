@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react'
-import { Modal, TouchableOpacity } from 'react-native'
+import React, { FunctionComponent, useRef } from 'react'
+import { Modal, ScrollView, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ModalOverlay } from 'ui/components/modals/ModalOverlay'
@@ -17,6 +17,7 @@ interface Props {
   rightIcon?: FunctionComponent<IconInterface>
   onRightIconPress?: () => void
   titleNumberOfLines?: number
+  isScrollable?: boolean
 }
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -28,8 +29,11 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
   titleNumberOfLines,
+  isScrollable,
 }) => {
   const { bottom } = useCustomSafeInsets()
+  const scrollViewRef = useRef<ScrollView | null>(null)
+
   return (
     <React.Fragment>
       <ModalOverlay visible={visible} />
@@ -49,7 +53,21 @@ export const AppModal: FunctionComponent<Props> = ({
               onRightIconPress={onRightIconPress}
               numberOfLines={titleNumberOfLines}
             />
-            <Content style={{ paddingBottom: bottom }}>{children}</Content>
+
+            <Content style={{ paddingBottom: bottom }}>
+              {isScrollable ? (
+                <StyledScrollView
+                  ref={scrollViewRef}
+                  showsVerticalScrollIndicator={false}
+                  onContentSizeChange={() =>
+                    scrollViewRef.current !== null && scrollViewRef.current.scrollTo({ y: 0 })
+                  }>
+                  <View onStartShouldSetResponder={() => true}>{children}</View>
+                </StyledScrollView>
+              ) : (
+                children
+              )}
+            </Content>
           </Container>
         </ClicAwayArea>
       </Modal>
@@ -71,6 +89,7 @@ const Container = styled(TouchableOpacity)({
   justifyContent: 'flex-start',
   alignItems: 'center',
   width: '100%',
+  maxHeight: '85%',
   borderTopStartRadius: getSpacing(4),
   borderTopEndRadius: getSpacing(4),
   padding: getSpacing(5),
@@ -82,3 +101,5 @@ const Content = styled.View({
   alignItems: 'center',
   maxWidth: getSpacing(125),
 })
+
+const StyledScrollView = styled(ScrollView)({ paddingTop: getSpacing(2), width: '100%' })
