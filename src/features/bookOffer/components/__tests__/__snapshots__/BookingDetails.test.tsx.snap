@@ -459,7 +459,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       ]
     }
   >
-    Cette réservation n’est pas annulable
+    Cette réservation est annulable
   </Text>
   <View
     numberOfSpaces={4}

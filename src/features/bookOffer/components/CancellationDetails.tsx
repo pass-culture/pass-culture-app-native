@@ -1,8 +1,7 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { CategoryType } from 'api/gen'
-import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { _ } from 'libs/i18n'
 import { decomposeDate } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
@@ -15,18 +14,19 @@ export const formatDate = (limitDate: Date): string => {
 }
 
 export const CancellationDetails: React.FC = () => {
-  const offer = useBookingOffer()
   const stock = useBookingStock()
 
-  if (!offer || !stock) return <React.Fragment />
+  if (!stock) return <React.Fragment />
 
   const { cancellationLimitDatetime: limitDate } = stock
 
-  // We can only cancel for events where the cancellable limit datetime is in the future
-  const message =
-    !limitDate || limitDate < new Date() || offer.category.categoryType === CategoryType.Thing
-      ? _(t`Cette réservation n’est pas annulable`)
-      : _(t`Cette réservation peut être annulée jusqu’au ${formatDate(limitDate)}`)
+  let message = _(t`Cette réservation est annulable`)
+  if (limitDate) {
+    message =
+      limitDate < new Date()
+        ? _(t`Cette réservation n’est pas annulable`)
+        : _(t`Cette réservation peut être annulée jusqu’au ${formatDate(limitDate)}`)
+  }
 
   return (
     <React.Fragment>
