@@ -1,8 +1,6 @@
 import React, { createContext, useContext } from 'react'
 import CodePush from 'react-native-code-push' // @codepush
 
-import { env } from 'libs/environment'
-
 interface CodePushContext {
   status: null | CodePush.SyncStatus
 }
@@ -12,11 +10,8 @@ const codePushOptionsAuto = {
   checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME,
 }
 
-// @codepush
-const shouldWrapWithCodePush = env.FEATURE_FLAG_CODE_PUSH
-
 const CodePushWrapper = (AppComponent: React.Component) =>
-  shouldWrapWithCodePush ? CodePush(codePushOptionsAuto)(AppComponent) : AppComponent
+  CodePush(codePushOptionsAuto)(AppComponent)
 
 // @ts-ignore no-param
 const CodePushContext = createContext<CodePushContext>({})

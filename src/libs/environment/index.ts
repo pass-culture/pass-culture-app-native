@@ -15,7 +15,6 @@ export interface Environment {
   CULTURAL_SURVEY_TYPEFORM_URL: string
   ENABLE_WHY_DID_YOU_RENDER: boolean
   ENV: string
-  FEATURE_FLAG_CODE_PUSH: boolean
   ID_CHECK_URL: string
   IOS_APP_ID: string
   PRIVACY_POLICY_LINK: string

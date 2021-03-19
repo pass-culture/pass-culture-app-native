@@ -13,11 +13,6 @@ jest.mock('features/home/api', () => ({
 }))
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-jest.mock('libs/environment', () => ({
-  env: {
-    FEATURE_FLAG_CODE_PUSH: true,
-  },
-}))
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: false })),
