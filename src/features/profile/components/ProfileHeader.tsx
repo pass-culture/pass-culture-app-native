@@ -46,11 +46,17 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     )
   }
 
-  if (!user.dateOfBirth) {
+  if (!user.eligibilityStartDatetime || !user.eligibilityEndDatetime) {
     return null
   }
 
-  return <NonBeneficiaryHeader email={user.email} dateOfBirth={user.dateOfBirth.toString()} />
+  return (
+    <NonBeneficiaryHeader
+      email={user.email}
+      eligibilityStartDatetime={user.eligibilityStartDatetime.toString()}
+      eligibilityEndDatetime={user.eligibilityEndDatetime.toString()}
+    />
+  )
 }
 
 export function getBeneficiaryHeaderProps(

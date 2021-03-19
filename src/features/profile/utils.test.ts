@@ -1,12 +1,7 @@
 import { Expense, ExpenseDomain } from 'api/gen/api'
 import { ExpenseV2 } from 'features/profile/components/types'
 
-import {
-  computeEligibilityExpiracy,
-  computeRemainingCredit,
-  computeWalletBalance,
-  sortExpenses,
-} from './utils'
+import { computeRemainingCredit, computeWalletBalance, sortExpenses } from './utils'
 
 const expensesV1: Array<Expense> = [
   { current: 50, domain: ExpenseDomain.Digital, limit: 100 },
@@ -20,18 +15,6 @@ const expensesV2: Array<ExpenseV2> = [
 ]
 
 describe('profile utils', () => {
-  describe('computeEligibilityExpiracy', () => {
-    it.each([
-      // [birthday, expiracy]
-      ['2003-01-13T00:00:00', '2022-01-12T23:59:59.000Z'], // check year variation
-      ['2003-02-01T00:00:00', '2022-01-31T23:59:59.000Z'], // check month variation
-    ])('', (birthday, expectedExpiracy) => {
-      const expiracy = computeEligibilityExpiracy(birthday)
-
-      expect(expiracy.toISOString()).toEqual(expectedExpiracy)
-    })
-  })
-
   describe('sortExpenses', () => {
     it('should sort version 1 expenses in the right order', () => {
       expect(sortExpenses(1, expensesV1)).toEqual([

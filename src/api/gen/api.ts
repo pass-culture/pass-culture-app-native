@@ -1157,10 +1157,10 @@ export interface SigninResponse {
 export interface UserProfileResponse {
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof UserProfileResponse
      */
-    dateOfBirth?: Date | null;
+    dateOfBirth?: string | null;
     /**
      * 
      * @type {Date}
@@ -1179,6 +1179,18 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     domainsCredit?: DomainsCredit | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof UserProfileResponse
+     */
+    eligibilityEndDatetime?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof UserProfileResponse
+     */
+    eligibilityStartDatetime?: Date | null;
     /**
      * 
      * @type {string}
@@ -1209,12 +1221,6 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     isBeneficiary: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserProfileResponse
-     */
-    isEligible: boolean;
     /**
      * 
      * @type {string}
