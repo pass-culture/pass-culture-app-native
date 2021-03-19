@@ -31,7 +31,12 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
 
   const goToConsentSettings = useCallback(() => {
     navigationRef?.current?.navigate('ConsentSettings', {
-      onGoBack: () => setIsVisible(true),
+      onGoBack: () => {
+        setIsVisible(true)
+        if (navigationRef?.current?.canGoBack()) {
+          navigationRef?.current?.goBack()
+        }
+      },
     })
     setIsVisible(false)
   }, [navigationRef])
