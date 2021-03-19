@@ -45,12 +45,6 @@ jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
   },
 }))
 
-jest.mock('libs/environment', () => ({
-  env: {
-    SHOULD_DISPLAY_FAVORITES_FILTER: true,
-  },
-}))
-
 const mockData = {
   nbFavorites: 0,
   favorites: [] as Array<FavoriteResponse>,
@@ -160,7 +154,7 @@ describe('FavoritesResults component', () => {
   })
 
   it('should show number of result and filter button', () => {
-    env.SHOULD_DISPLAY_FAVORITES_FILTER = true
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     const mutate = jest.fn()
     mockUseFavorites.mockReturnValue({
       data: paginatedFavoritesResponseSnap,
@@ -183,7 +177,7 @@ describe('FavoritesResults component', () => {
   })
 
   it('should not display filter button', () => {
-    env.SHOULD_DISPLAY_FAVORITES_FILTER = false
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     const { queryByText } = render(reactQueryProviderHOC(<FavoritesResults />))
     const filterButton = queryByText('Filtrer')
     expect(filterButton).toBeFalsy()

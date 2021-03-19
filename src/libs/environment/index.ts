@@ -31,7 +31,6 @@ export interface Environment {
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
   FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: boolean
-  SHOULD_DISPLAY_FAVORITES_FILTER: boolean
 }
 
 export const env = parseBooleanVariables(Config) as Environment

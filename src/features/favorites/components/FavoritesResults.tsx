@@ -111,7 +111,7 @@ export const FavoritesResults: React.FC = () => {
           keyboardDismissMode="on-drag"
         />
       </Container>
-      {env.SHOULD_DISPLAY_FAVORITES_FILTER && nbFavorites > 0 && (
+      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && nbFavorites > 0 && (
         <FilterContainer>
           <FadeScrollingView isScrolling={isScrolling}>
             <Filter />
@@ -161,7 +161,7 @@ const FavoritesResultsPlaceHolder = () => {
           scrollEnabled={false}
         />
       </Container>
-      {env.SHOULD_DISPLAY_FAVORITES_FILTER && (
+      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <FilterContainer>
           <Filter />
           <Spacer.BottomScreen />
