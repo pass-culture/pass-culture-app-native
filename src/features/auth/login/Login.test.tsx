@@ -7,6 +7,7 @@ import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
 import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
@@ -46,6 +47,7 @@ describe('<Login/>', () => {
 
     await waitForExpect(() => {
       expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
+      expect(analytics.setUserId).toHaveBeenCalledWith(111)
       expect(navigate).toHaveBeenNthCalledWith(1, 'Home', NavigateToHomeWithoutModalOptions)
     })
   })

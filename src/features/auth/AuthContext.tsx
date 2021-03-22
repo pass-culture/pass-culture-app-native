@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
-import { firebaseAnalytics } from 'libs/analytics'
+import { analytics, firebaseAnalytics } from 'libs/analytics'
 import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
@@ -13,10 +13,11 @@ export interface IAuthContext {
   setIsLoggedIn: (isLoggedIn: boolean) => void
 }
 
-const connectUserToBatchWithAccessTokenId = (accessToken: string) => {
+const connectUserToBatchAndFirebase = (accessToken: string) => {
   const userId = getUserIdFromAccesstoken(accessToken)
   if (userId) {
     BatchUser.editor().setIdentifier(userId.toString()).save()
+    analytics.setUserId(userId)
   }
 }
 
@@ -38,7 +39,7 @@ export const AuthWrapper = ({ children }: { children: Element }) => {
       setIsLoggedIn(!!accessToken)
 
       if (accessToken) {
-        connectUserToBatchWithAccessTokenId(accessToken)
+        connectUserToBatchAndFirebase(accessToken)
       }
 
       setIsWaitingForLoggedInState(false)
@@ -68,7 +69,7 @@ export function useLoginRoutine() {
    * @param {LoginRoutineMethod} method The process that triggered the login routine
    */
   const loginRoutine = async (response: SigninResponse, method: LoginRoutineMethod) => {
-    connectUserToBatchWithAccessTokenId(response.accessToken)
+    connectUserToBatchAndFirebase(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     firebaseAnalytics.logLogin({ method })
