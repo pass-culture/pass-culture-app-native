@@ -1,4 +1,9 @@
-import { FavoriteCategoryResponse, FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
+import {
+  ExpenseDomain,
+  FavoriteCategoryResponse,
+  FavoriteResponse,
+  PaginatedFavoritesResponse,
+} from 'api/gen'
 
 // humanizedId AHD3A
 export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
@@ -15,6 +20,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
           label: 'Spectacle',
           name: 'SPECTACLE',
         } as FavoriteCategoryResponse,
+        expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,
         image: null,
         coordinates: {
@@ -37,6 +43,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
           label: 'Pratique artistique',
           name: 'LECON',
         } as FavoriteCategoryResponse,
+        expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
@@ -63,6 +70,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
           label: 'Spectacle',
           name: 'SPECTACLE',
         } as FavoriteCategoryResponse,
+        expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
@@ -89,6 +97,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
           label: 'Pratique artistique',
           name: 'LECON',
         } as FavoriteCategoryResponse,
+        expenseDomains: [ExpenseDomain.All],
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
@@ -118,6 +127,7 @@ export const addFavoriteJsonResponseSnap: FavoriteResponse = {
       label: 'Spectacle',
       name: 'SPECTACLE',
     } as FavoriteCategoryResponse,
+    expenseDomains: [ExpenseDomain.All],
     externalTicketOfficeUrl: null,
     image: null,
     coordinates: {

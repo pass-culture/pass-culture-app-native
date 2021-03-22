@@ -34,6 +34,23 @@ describe('hasEnoughCredit', () => {
     expect(hasEnoughCredit(domains, price, domainsCredit)).toEqual(enoughCredit)
   })
 
+  it('should return true if the price is falsy', () => {
+    const domainsCredit = { [ExpenseDomain.All]: { initial: 50000, remaining: 5000 } }
+    const domains = [ExpenseDomain.All]
+
+    expect(hasEnoughCredit(domains, null, domainsCredit)).toBeTruthy()
+    expect(hasEnoughCredit(domains, undefined, domainsCredit)).toBeTruthy()
+    expect(hasEnoughCredit(domains, 0, domainsCredit)).toBeTruthy()
+  })
+
+  it('should return false if domainsCredit is falsy', () => {
+    const price = 100
+    const domains = [ExpenseDomain.All]
+
+    expect(hasEnoughCredit(domains, price, null)).toBeFalsy()
+    expect(hasEnoughCredit(domains, price, undefined)).toBeFalsy()
+  })
+
   it('should be bookable if it respects all the domains remaining credit - before generalisation', () => {
     const domainsCredit = {
       [ExpenseDomain.All]: { initial: 50000, remaining: 5000 },

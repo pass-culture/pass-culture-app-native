@@ -187,6 +187,12 @@ export interface BookingOfferResponse {
     id: number;
     /**
      * 
+     * @type {OfferImageResponse}
+     * @memberof BookingOfferResponse
+     */
+    image?: OfferImageResponse | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof BookingOfferResponse
      */
@@ -567,6 +573,12 @@ export interface FavoriteOfferResponse {
      * @memberof FavoriteOfferResponse
      */
     date?: Date | null;
+    /**
+     * 
+     * @type {Array<ExpenseDomain>}
+     * @memberof FavoriteOfferResponse
+     */
+    expenseDomains: Array<ExpenseDomain>;
     /**
      * 
      * @type {string}
