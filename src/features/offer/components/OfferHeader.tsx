@@ -4,6 +4,7 @@ import React from 'react'
 import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
+import { isApiError } from 'api/helpers'
 import { useAuthContext } from 'features/auth/AuthContext'
 import {
   useAddFavorite,
@@ -43,9 +44,12 @@ export const OfferHeader: React.FC<Props> = (props) => {
     onSuccess: () => {
       analytics.logHasAddedOfferToFavorites(params.from)
     },
-    onError: () => {
+    onError: (error) => {
       showErrorSnackBar({
-        message: _(t`L'offre n'a pas été ajoutée à tes favoris`),
+        message:
+          isApiError(error) && error.content.code === 'MAX_FAVORITES_REACHED'
+            ? _(t`Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveau`)
+            : _(t`L'offre n'a pas été ajoutée à tes favoris`),
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
