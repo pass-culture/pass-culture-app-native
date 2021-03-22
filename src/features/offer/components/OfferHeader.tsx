@@ -42,7 +42,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
 
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {
-      analytics.logHasAddedOfferToFavorites(params.from)
+      analytics.logHasAddedOfferToFavorites(params.from, offerId, params.moduleName)
     },
     onError: (error) => {
       showErrorSnackBar({

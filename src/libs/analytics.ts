@@ -123,8 +123,12 @@ const logClickBookOffer = (offerId: number) =>
 const logOfferSeenDuration = (offerId: number, duration: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
 
-const logHasAddedOfferToFavorites = (from: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, { from })
+const logHasAddedOfferToFavorites = (from: string, offerId: number, moduleName?: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, {
+    from,
+    offerId,
+    moduleName,
+  })
 
 /**
  * Sign up

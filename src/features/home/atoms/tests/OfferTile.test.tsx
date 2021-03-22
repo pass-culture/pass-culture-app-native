@@ -42,6 +42,7 @@ describe('OfferTile component', () => {
       id: offerId,
       shouldDisplayLoginModal: false,
       from: 'home',
+      moduleName: 'Module Name',
     })
   })
 
@@ -51,7 +52,7 @@ describe('OfferTile component', () => {
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'HOME',
-      moduleName: 'Module Name',
+      moduleName: props.moduleName,
     })
   })
 

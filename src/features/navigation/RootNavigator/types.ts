@@ -43,6 +43,7 @@ export type RootStackParamList = {
     id: number
     shouldDisplayLoginModal: boolean
     from: Referrals
+    moduleName?: string
   }
   OfferDescription: { id: number }
   ReinitializePassword: { token: string; expiration_timestamp: number }
