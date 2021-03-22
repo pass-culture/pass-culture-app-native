@@ -35,8 +35,8 @@ export const Favorite: React.FC<Props> = (props) => {
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance({
-    lat: offer.coordinates.latitude,
-    lng: offer.coordinates.longitude,
+    lat: offer.coordinates?.latitude,
+    lng: offer.coordinates?.longitude,
   })
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 

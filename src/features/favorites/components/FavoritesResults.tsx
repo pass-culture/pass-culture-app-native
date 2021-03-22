@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { Filter } from 'features/favorites/atoms/Buttons/Filter'
+import { Sort } from 'features/favorites/atoms/Buttons/Sort'
 import { Favorite } from 'features/favorites/atoms/Favorite'
 import { NumberOfResults } from 'features/favorites/atoms/NumberOfResults'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
@@ -112,12 +112,12 @@ export const FavoritesResults: React.FC = () => {
         />
       </Container>
       {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && nbFavorites > 0 && (
-        <FilterContainer>
+        <SortContainer>
           <FadeScrollingView isScrolling={isScrolling}>
-            <Filter />
+            <Sort />
           </FadeScrollingView>
           <Spacer.BottomScreen />
-        </FilterContainer>
+        </SortContainer>
       )}
     </React.Fragment>
   )
@@ -133,7 +133,7 @@ const Separator = styled.View({
   marginVertical: getSpacing(4),
 })
 
-const FilterContainer = styled.View({
+const SortContainer = styled.View({
   alignSelf: 'center',
   position: 'absolute',
   bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
@@ -162,10 +162,10 @@ const FavoritesResultsPlaceHolder = () => {
         />
       </Container>
       {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
-        <FilterContainer>
-          <Filter />
+        <SortContainer>
+          <Sort />
           <Spacer.BottomScreen />
-        </FilterContainer>
+        </SortContainer>
       )}
     </React.Fragment>
   )

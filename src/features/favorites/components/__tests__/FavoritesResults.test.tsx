@@ -172,14 +172,14 @@ describe('FavoritesResults component', () => {
     const { getByText } = render(reactQueryProviderHOC(<FavoritesResults />))
     const container = getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
     expect(container).toBeTruthy()
-    const filterButton = getByText('Filtrer')
+    const filterButton = getByText('Trier')
     expect(filterButton).toBeTruthy()
   })
 
   it('should not display filter button', () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     const { queryByText } = render(reactQueryProviderHOC(<FavoritesResults />))
-    const filterButton = queryByText('Filtrer')
+    const filterButton = queryByText('Trier')
     expect(filterButton).toBeFalsy()
   })
 })

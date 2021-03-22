@@ -32,6 +32,7 @@ export type RootStackParamList = {
   CulturalSurvey: undefined
   EligibilityConfirmed: undefined
   ForgottenPassword: undefined
+  FavoritesSorts: undefined
   IdCheck: { email: string; licenceToken: string }
   Login:
     | ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>)

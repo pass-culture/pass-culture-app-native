@@ -1,11 +1,10 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
-import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 
@@ -27,12 +26,7 @@ const useFetchResults = () => {
 
 export const FavoritesScreen: React.FC = () => {
   useKeyboardAdjust()
-  const { dispatch } = useFavoritesState()
   useFetchResults()
-
-  useEffect(() => {
-    dispatch({ type: 'SHOW_RESULTS', payload: true })
-  }, [dispatch])
 
   return (
     <Container>

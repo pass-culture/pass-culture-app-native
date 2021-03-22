@@ -23,6 +23,7 @@ import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
+import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -55,6 +56,10 @@ const routes: Array<Route> = [
   {
     name: 'EighteenBirthday',
     component: EighteenBirthday,
+  },
+  {
+    name: 'FavoritesSorts',
+    component: FavoritesSorts,
   },
   {
     name: 'ForgottenPassword',
