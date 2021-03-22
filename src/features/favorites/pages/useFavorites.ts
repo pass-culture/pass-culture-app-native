@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { FavoriteRequest, FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { ApiError } from 'api/helpers'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { EmptyResponse } from 'libs/fetch'
 
@@ -14,7 +15,7 @@ export interface FavoriteMutationContext {
 export interface AddFavorite {
   onSuccess?: (data?: FavoriteResponse) => void
   onError?: (
-    error: Error | undefined,
+    error: Error | ApiError | undefined,
     { offerId }: { offerId?: number },
     context?: FavoriteMutationContext
   ) => void
@@ -110,7 +111,11 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
       }
       return { previousFavorites: previousFavorites || [] } as FavoriteMutationContext
     },
-    onError: (error: Error, { offerId }, context: FavoriteMutationContext | undefined) => {
+    onError: (
+      error: Error | ApiError,
+      { offerId },
+      context: FavoriteMutationContext | undefined
+    ) => {
       if (context?.previousFavorites) {
         queryClient.setQueryData(QUERY_KEY, context.previousFavorites)
       }

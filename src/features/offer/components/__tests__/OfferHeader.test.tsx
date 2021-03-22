@@ -289,6 +289,23 @@ describe('<OfferHeader />', () => {
     ).toBe(favoriteOfferId)
   })
 
+  it('should add favorite and show error when user as too many favorites - logged in users', async () => {
+    const { getByTestId } = await renderOfferHeader({
+      isLoggedIn: true,
+      id: addFavoriteJsonResponseSnap.offer.id,
+      hasTooManyFavorites: true,
+    })
+
+    fireEvent.press(getByTestId('icon-favorite'))
+
+    await superFlushWithAct()
+
+    expect(showErrorSnackBar).toBeCalledWith({
+      message: `Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveau`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  })
+
   it('should add favorite and log analytic event logHasAddedOfferToFavorites with "favorites" as argument - logged in users', async () => {
     const from = 'favorites'
     useRoute.mockImplementation(() => ({
@@ -331,6 +348,7 @@ interface Options {
   isLoggedIn?: boolean
   hasAddFavoriteError?: boolean
   hasRemoveFavoriteError?: boolean
+  hasTooManyFavorites?: boolean
 }
 
 const defaultOptions = {
@@ -338,13 +356,15 @@ const defaultOptions = {
   isLoggedIn: true,
   hasAddFavoriteError: false,
   hasRemoveFavoriteError: false,
+  hasTooManyFavorites: false,
 }
 
 async function renderOfferHeader(options: Options = defaultOptions) {
-  const { id, isLoggedIn, hasAddFavoriteError, hasRemoveFavoriteError } = {
+  const { id, isLoggedIn, hasAddFavoriteError, hasRemoveFavoriteError, hasTooManyFavorites } = {
     ...defaultOptions,
     ...options,
   }
+
   server.use(
     rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${id}`, (req, res, ctx) =>
       res(ctx.status(200), ctx.json(offerResponseSnap))
@@ -353,11 +373,15 @@ async function renderOfferHeader(options: Options = defaultOptions) {
       `${env.API_BASE_URL}/native/v1/me/favorites`,
       (req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
     ),
-    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
-      !hasAddFavoriteError
-        ? res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
-        : res(ctx.status(415), ctx.json({}))
-    ),
+    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) => {
+      if (hasAddFavoriteError) {
+        return res(ctx.status(415), ctx.json({}))
+      } else if (hasTooManyFavorites) {
+        return res(ctx.status(400), ctx.json({ code: 'MAX_FAVORITES_REACHED' }))
+      } else {
+        return res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
+      }
+    }),
     rest.delete<EmptyResponse>(
       `${env.API_BASE_URL}/native/v1/me/favorites/${
         paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
