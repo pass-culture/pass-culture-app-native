@@ -1,24 +1,30 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
+import { Sort as SortIcon } from 'ui/svg/icons/Sort'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-export const Filter: React.FC = () => {
+export const Sort: React.FC = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
+  function onPress() {
+    navigate('FavoritesSorts')
+  }
   return (
-    <Container onPress={() => null} testID="FilterButton">
+    <Container onPress={onPress} testID="SortButton">
       <StyledLinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         colors={['#bf275f', '#5a0d80']}>
-        <FilterIcon color={ColorsEnum.WHITE} />
+        <SortIcon color={ColorsEnum.WHITE} />
         <Spacer.Row numberOfSpaces={1} />
-        <Title>{_(t`Filtrer`)}</Title>
+        <Title>{_(t`Trier`)}</Title>
         <Spacer.Row numberOfSpaces={2} />
       </StyledLinearGradient>
     </Container>

@@ -34,12 +34,6 @@ describe('Favorites component', () => {
     expect(getByText('Connecte-toi pour profiter de cette fonctionnalité !')).toBeTruthy()
   })
 
-  it('should trigger data loading when logged in', () => {
-    renderFavorites({ isLoggedIn: true })
-    expect(mockDispatch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
-    mockUseAuthContext.mockClear()
-  })
-
   it('should show loading when not logged in', () => {
     renderFavorites({ isLoggedIn: false })
     expect(mockDispatch).not.toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })

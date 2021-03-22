@@ -33,6 +33,7 @@ export type RootStackParamList = {
   EligibilityConfirmed: undefined
   EndedBookings: undefined
   ForgottenPassword: undefined
+  FavoritesSorts: undefined
   IdCheck: { email: string; licenceToken: string }
   Login:
     | ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>)
