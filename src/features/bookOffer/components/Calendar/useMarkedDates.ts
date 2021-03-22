@@ -1,11 +1,13 @@
+import groupBy from 'lodash.groupby'
+
 import { OfferStockResponse } from 'api/gen'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import {
   formatToKeyDate,
-  getDatePrice,
-  getDateStatus,
+  getStatusFromStocks,
   OfferStatus,
 } from 'features/bookOffer/services/utils'
+import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 
 export interface Marking {
   selected: boolean
@@ -25,21 +27,23 @@ interface MarkedDates {
 
 export const useMarkedDates = (
   stocks: OfferStockResponse[],
-  userRemainingCredit: number | null
+  userRemainingCredit: number
 ): MarkedDates => {
   const { bookingState } = useBooking()
   const markedDates: MarkedDates = {}
 
-  stocks.forEach((stock) => {
-    if (stock.beginningDatetime === null || stock.beginningDatetime === undefined) return
-    const key = formatToKeyDate(stock.beginningDatetime)
+  const groupedByDates = groupBy(
+    stocks.filter(({ beginningDatetime: start }) => start !== undefined && start !== null),
+    (stock) => formatToKeyDate(stock.beginningDatetime as Date)
+  )
+
+  Object.entries(groupedByDates).forEach(([key, groupedStocks]) => {
     const selected = bookingState.date ? formatToKeyDate(bookingState.date) === key : false
-    const prev = markedDates[key] || defaultMarking
 
     markedDates[key] = {
-      selected: prev.selected || selected,
-      price: getDatePrice(prev.price, stock),
-      status: getDateStatus(prev.status, stock, userRemainingCredit),
+      selected,
+      price: getOfferPrice(groupedStocks),
+      status: getStatusFromStocks(groupedStocks, userRemainingCredit),
     }
   })
 
