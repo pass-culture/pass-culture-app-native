@@ -46,11 +46,13 @@ export const useCreditForOffer = (offerId: number | undefined): number => {
   // @ts-ignore : TODO(antoinewg, 22/3/21): this is to ensure backward compatibility. Can be removed after next MES/MEP.
   const offerDomains = offer.expenseDomains ?? offer.expense_domains
 
-  const creditsRemainingPerDomain = offerDomains.map((domain) => {
-    const expenseDomain = domainsCredit[domain]
-    if (expenseDomain === null || expenseDomain === undefined) return Infinity
-    return expenseDomain.remaining
-  })
+  const creditsRemainingPerDomain = offerDomains
+    .map((domain) => {
+      const expenseDomain = domainsCredit[domain]
+      if (expenseDomain === null || expenseDomain === undefined) return undefined
+      return expenseDomain.remaining
+    })
+    .filter((remainingCredit) => typeof remainingCredit === 'number') as number[]
 
   return creditsRemainingPerDomain.length > 0 ? Math.min(...creditsRemainingPerDomain) : 0
 }
