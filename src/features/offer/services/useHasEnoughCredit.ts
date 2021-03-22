@@ -27,5 +27,10 @@ export const useHasEnoughCredit = (offerId: number): boolean => {
 
   const price = getOfferPrice(offer.stocks)
 
-  return hasEnoughCredit(offer.expenseDomains, price, domainsCredit)
+  return hasEnoughCredit(
+    // @ts-ignore : TODO(antoinewg, 22/3/21): this is to ensure backward compatibility. Can be removed after next MES/MEP.
+    offer.expenseDomains ?? offer.expense_domains,
+    price,
+    domainsCredit
+  )
 }
