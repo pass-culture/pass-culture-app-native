@@ -323,7 +323,7 @@ describe('<OfferHeader />', () => {
     fireEvent.press(getByTestId('icon-favorite'))
     await superFlushWithAct()
     await waitForExpect(() => {
-      expect(analytics.logHasAddedOfferToFavorites).toBeCalledWith(from, offerId, moduleName)
+      expect(analytics.logHasAddedOfferToFavorites).toBeCalledWith({ from, offerId, moduleName })
     })
   })
 

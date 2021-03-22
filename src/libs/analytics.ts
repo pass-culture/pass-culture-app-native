@@ -1,5 +1,7 @@
 import firebaseAnalyticsModule from '@react-native-firebase/analytics'
 
+import { Referrals } from 'features/navigation/RootNavigator'
+
 export const firebaseAnalytics = firebaseAnalyticsModule()
 
 const setUserId = (userId: number) => firebaseAnalytics.setUserId(userId.toString())
@@ -123,12 +125,11 @@ const logClickBookOffer = (offerId: number) =>
 const logOfferSeenDuration = (offerId: number, duration: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
 
-const logHasAddedOfferToFavorites = (from: string, offerId: number, moduleName?: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, {
-    from,
-    offerId,
-    moduleName,
-  })
+const logHasAddedOfferToFavorites = (params: {
+  from: Referrals
+  offerId: number
+  moduleName?: string
+}) => firebaseAnalytics.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params)
 
 /**
  * Sign up
