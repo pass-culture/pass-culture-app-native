@@ -12,6 +12,7 @@ import { Credit } from 'features/home/services/useAvailableCredit'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useDistance } from 'features/offer/components/useDistance'
+import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
 import { OfferImage } from 'features/search/atoms/OfferImage'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { _ } from 'libs/i18n'
@@ -91,11 +92,14 @@ export const Favorite: React.FC<Props> = (props) => {
 
   function renderBookingButton() {
     const isFreeOffer = getIsFreeOffer(offer)
-    const hasEnoughCredit = getHasEnoughCredit(offer, props.credit)
-    const { isBeneficiary } = props.user
+    const doesUserHaveEnoughCredit = hasEnoughCredit(
+      offer.expenseDomains,
+      offer.price || offer.startPrice,
+      props.user.domainsCredit
+    )
 
     // User is NOT beneficiary
-    if (!isBeneficiary) {
+    if (!props.user.isBeneficiary) {
       if (offer.isExpired || offer.isExhausted) {
         return null
       }
@@ -103,7 +107,7 @@ export const Favorite: React.FC<Props> = (props) => {
     }
 
     // User is an ex-beneficiary == beneficiary with expired credit
-    if (isBeneficiary && props.credit.isExpired) {
+    if (props.user.isBeneficiary && props.credit.isExpired) {
       if (offer.isExpired || offer.isExhausted) {
         return null
       }
@@ -120,7 +124,7 @@ export const Favorite: React.FC<Props> = (props) => {
     if (offer.isExhausted) {
       return <ButtonPrimary title={_(t`Offre épuisée`)} buttonHeight="tall" disabled />
     }
-    if (!isFreeOffer && !hasEnoughCredit) {
+    if (!isFreeOffer && !doesUserHaveEnoughCredit) {
       return <ButtonPrimary title={_(t`Crédit insuffisant`)} buttonHeight="tall" disabled />
     }
     return <BookInAppButton onPress={() => props.setOfferToBook(offer)} />
@@ -195,16 +199,6 @@ function getIsFreeOffer(offer: FavoriteOfferResponse): boolean {
   }
   if (typeof offer.startPrice === 'number') {
     return offer.startPrice === 0
-  }
-  return false
-}
-
-function getHasEnoughCredit(offer: FavoriteOfferResponse, credit: Credit): boolean {
-  if (typeof offer.price === 'number') {
-    return credit.amount >= offer.price
-  }
-  if (typeof offer.startPrice === 'number') {
-    return credit.amount >= offer.startPrice
   }
   return false
 }
