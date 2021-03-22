@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 import { ChoiceBloc } from './ChoiceBloc'
@@ -13,13 +14,20 @@ const getTextColor = (selected: boolean, disabled: boolean) => {
   return ColorsEnum.BLACK
 }
 
+const getWording = (price: number, isBookable: boolean, enoughCredit: boolean): string => {
+  if (!enoughCredit) return _(t`crédit insuffisant`)
+  if (isBookable) return formatToFrenchDecimal(price).replace(' ', '')
+  return _(t`épuisé`)
+}
+
 interface Props {
   hour: string
-  price: string
+  price: number
   selected: boolean
   onPress: () => void
   testID: string
   isBookable: boolean
+  offerCredit: number
 }
 
 export const HourChoice: React.FC<Props> = ({
@@ -29,25 +37,32 @@ export const HourChoice: React.FC<Props> = ({
   onPress,
   testID,
   isBookable,
+  offerCredit,
 }) => {
-  const textColor = getTextColor(selected, !isBookable)
+  const enoughCredit = price <= offerCredit
+  const disabled = !isBookable || !enoughCredit
+  const textColor = getTextColor(selected, disabled)
+  const wording = getWording(price, isBookable, enoughCredit)
 
   return (
-    <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={!isBookable}>
+    <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={disabled}>
       <Container>
         <Typo.ButtonText testID={`${testID}-hour`} color={textColor}>
           {hour}
         </Typo.ButtonText>
 
-        <Typo.Caption testID={`${testID}-price`} color={textColor}>
-          {isBookable ? price : _(t`épuisé`)}
-        </Typo.Caption>
+        <Caption testID={`${testID}-price`} color={textColor}>
+          {wording}
+        </Caption>
       </Container>
     </ChoiceBloc>
   )
 }
 
 const Container = styled.View({
-  paddingVertical: getSpacing(5),
+  minHeight: getSpacing(20),
   alignItems: 'center',
+  justifyContent: 'center',
 })
+
+const Caption = styled(Typo.Caption)({ textAlign: 'center' })
