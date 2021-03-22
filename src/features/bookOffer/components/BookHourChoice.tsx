@@ -10,8 +10,8 @@ import {
   useBookingStock,
 } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
+import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { _ } from 'libs/i18n'
-import { formatToFrenchDecimal } from 'libs/parsers'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -22,6 +22,7 @@ export const BookHourChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
   const { isDuo, stocks = [] } = useBookingOffer() || {}
   const stock = useBookingStock()
+  const offerCredit = useCreditForOffer(bookingState.offerId || 0)
   const debouncedDispatch = useRef(debounce(dispatch, 500)).current
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
@@ -45,14 +46,12 @@ export const BookHourChoice: React.FC = () => {
   const filteredStocks = useMemo(
     () =>
       stocks
-        .filter(({ beginningDatetime }) =>
-          selectedDate && beginningDatetime
+        .filter(({ beginningDatetime }) => {
+          if (beginningDatetime === undefined || beginningDatetime === null) return false
+          return selectedDate && beginningDatetime
             ? formatToKeyDate(beginningDatetime) === selectedDate
             : false
-        )
-        .filter(
-          (stock) => stock.beginningDatetime !== undefined && stock.beginningDatetime !== null
-        )
+        })
         .sort(
           (a, b) =>
             //@ts-ignore : stocks with no beginningDatetime was filtered
@@ -61,15 +60,16 @@ export const BookHourChoice: React.FC = () => {
         .map((stock) => (
           <HourChoice
             key={stock.id}
-            price={formatToFrenchDecimal(stock.price).replace(' ', '')}
+            price={stock.price}
             hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
             selected={stock.id === bookingState.stockId}
             onPress={() => selectStock(stock.id)}
             testID={`HourChoice${stock.id}`}
             isBookable={stock.isBookable}
+            offerCredit={offerCredit}
           />
         )),
-    [stocks, selectedDate, bookingState.stockId, bookingState.quantity]
+    [stocks, selectedDate, bookingState.stockId, bookingState.quantity, offerCredit]
   )
 
   return (
