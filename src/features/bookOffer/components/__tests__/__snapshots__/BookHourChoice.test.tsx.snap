@@ -94,7 +94,8 @@ Array [
             Array [
               Object {
                 "alignItems": "center",
-                "paddingVertical": 20,
+                "justifyContent": "center",
+                "minHeight": 80,
               },
             ]
           }
@@ -124,6 +125,7 @@ Array [
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
+                  "textAlign": "center",
                 },
               ]
             }
@@ -208,7 +210,8 @@ Array [
             Array [
               Object {
                 "alignItems": "center",
-                "paddingVertical": 20,
+                "justifyContent": "center",
+                "minHeight": 80,
               },
             ]
           }
@@ -238,6 +241,7 @@ Array [
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
+                  "textAlign": "center",
                 },
               ]
             }

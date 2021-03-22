@@ -40,7 +40,7 @@ jest.mock('features/home/api', () => ({
 }))
 
 jest.mock('features/offer/services/useHasEnoughCredit', () => ({
-  useCreditForOffer: jest.fn(() => 20),
+  useCreditForOffer: jest.fn(() => 50000),
 }))
 
 describe('<BookingEventChoices />', () => {
