@@ -27,7 +27,7 @@ describe('useMarkedDates()', () => {
   })
 
   it('should not mark any dates if there are no stocks', () => {
-    const { result } = renderHook(() => useMarkedDates([], null))
+    const { result } = renderHook(() => useMarkedDates([], 10))
     expect(result.current).toStrictEqual({})
   })
 
@@ -44,5 +44,35 @@ describe('useMarkedDates()', () => {
     const stock = { ...notExpiredStock, beginningDatetime: null }
     const { result } = renderHook(() => useMarkedDates([stock], credit))
     expect(result.current).toStrictEqual({})
+  })
+
+  it('should select the bookable stock for a particular date', () => {
+    const stocks = [
+      { ...notExpiredStock, isBookable: false, price: 200 },
+      { ...notExpiredStock, isBookable: true, price: 2000 },
+    ]
+    const { result } = renderHook(() => useMarkedDates(stocks, 2000))
+    expect(result.current['2021-01-01'].price).toEqual(2000)
+    expect(result.current['2021-01-01'].status).toEqual('BOOKABLE')
+  })
+
+  it('should return the correct status and price for non bookable stocks', () => {
+    const stocks = [
+      { ...notExpiredStock, isBookable: false, price: 200 },
+      { ...notExpiredStock, isBookable: false, price: 2000 },
+    ]
+    const { result } = renderHook(() => useMarkedDates(stocks, 2000))
+    expect(result.current['2021-01-01'].price).toEqual(200)
+    expect(result.current['2021-01-01'].status).toEqual('NOT_BOOKABLE')
+  })
+
+  it('should select the bookable stock for a particular date even if not enough credit', () => {
+    const stocks = [
+      { ...notExpiredStock, isBookable: false, price: 200 },
+      { ...notExpiredStock, isBookable: true, price: 2000 },
+    ]
+    const { result } = renderHook(() => useMarkedDates(stocks, 200))
+    expect(result.current['2021-01-01'].price).toEqual(2000)
+    expect(result.current['2021-01-01'].status).toEqual('NOT_BOOKABLE')
   })
 })
