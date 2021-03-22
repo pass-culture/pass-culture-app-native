@@ -1,5 +1,4 @@
 import React, { FC, PropsWithChildren } from 'react'
-import { View } from 'react-native'
 import Svg, { ClipPath, Defs, G, Image, Path, Use, LinearGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
@@ -29,23 +28,11 @@ export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
   const Icon = props.altIcon || OfferDigital
 
   return (
-    <View
-      style={{
-        ...getNativeShadow({
-          shadowOffset: {
-            width: 0,
-            height: 2,
-          },
-          shadowRadius: 2,
-          shadowColor: ColorsEnum.BLACK,
-          shadowOpacity: 0.1,
-        }),
-      }}>
-      <Svg
-        width={props.width}
-        height={props.height}
-        viewBox={`0 0 ${props.width} ${props.height}`}
-        {...props}>
+    <DimensionComponensateContainer
+      cwidth={props.width}
+      cheight={props.height}
+      style={shaddowStyle}>
+      <Svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`}>
         <Defs>
           <ClipPath id={props.clipId}>
             <Path d={props.path} />
@@ -75,8 +62,27 @@ export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
           <Icon size={48} color={ColorsEnum.GREY_MEDIUM} />
         </IconContainer>
       )}
-    </View>
+    </DimensionComponensateContainer>
   )
+}
+
+const DimensionComponensateContainer = styled.View<{ cwidth?: number; cheight?: number }>(
+  ({ cwidth, cheight }) => ({
+    width: typeof cwidth === 'number' ? cwidth - 8 : cwidth, // compensate the inner svg dimensions
+    height: typeof cheight === 'number' ? cheight - 8 : cheight, // compensate the inner svg dimensions
+  })
+)
+
+const shaddowStyle = {
+  ...getNativeShadow({
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowRadius: 2,
+    shadowColor: ColorsEnum.BLACK,
+    shadowOpacity: 0.1,
+  }),
 }
 
 const IconContainer = styled.View({
