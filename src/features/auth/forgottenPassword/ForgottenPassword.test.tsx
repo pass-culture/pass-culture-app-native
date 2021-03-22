@@ -5,7 +5,6 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, superFlushWithAct } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
@@ -85,10 +84,6 @@ describe('<ForgottenPassword />', () => {
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
-        backNavigation: {
-          from: homeNavigateConfig.screen,
-          params: homeNavigateConfig.params,
-        },
       })
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })

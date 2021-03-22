@@ -10,7 +10,6 @@ import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { AccountRequest } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
-import { homeNavigateConfig } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -141,10 +140,6 @@ describe('AcceptCgu Page', () => {
       )
       expect(navigate).toBeCalledWith('SignupConfirmationEmailSent', {
         email: 'john.doe@example.com',
-        backNavigation: {
-          from: homeNavigateConfig.screen,
-          params: homeNavigateConfig.params,
-        },
       })
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
