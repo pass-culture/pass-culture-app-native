@@ -39,6 +39,10 @@ jest.mock('features/home/api', () => ({
   })),
 }))
 
+jest.mock('features/offer/services/useHasEnoughCredit', () => ({
+  useCreditForOffer: jest.fn(() => 20),
+}))
+
 describe('<BookingEventChoices />', () => {
   it('should display only date step at beginning', () => {
     const page = render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
