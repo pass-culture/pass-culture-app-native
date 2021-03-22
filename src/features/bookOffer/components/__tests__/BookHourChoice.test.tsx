@@ -33,6 +33,10 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
+jest.mock('features/offer/services/useHasEnoughCredit', () => ({
+  useCreditForOffer: jest.fn(() => 50000),
+}))
+
 describe('BookHourChoice when hour is already selected', () => {
   it('should change step to Hour', async () => {
     mockUseBooking.mockImplementationOnce(() => ({
