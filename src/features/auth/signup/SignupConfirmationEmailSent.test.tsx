@@ -5,6 +5,7 @@ import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, goBack } from '__mocks__/@react-navigation/native'
+import * as NavigationHelpers from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 
@@ -12,15 +13,39 @@ import { contactSupport } from '../support.services'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
 
+const mockUsePreviousRoute = NavigationHelpers.usePreviousRoute as jest.MockedFunction<
+  typeof NavigationHelpers.usePreviousRoute
+>
+type MockNavigationHelpers = typeof NavigationHelpers
+jest.mock('features/navigation/helpers', () => ({
+  ...jest.requireActual<MockNavigationHelpers>('../../navigation/helpers'),
+  usePreviousRoute: jest.fn(),
+}))
+
 describe('<SignupConfirmationEmailSent />', () => {
-  it('should go back to accept CGUs page when clicking on left icon of modal header', async () => {
+  beforeEach(() => {
+    mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
+  })
+
+  it('should go back when clicking on left icon of modal header', async () => {
     const { findByTestId } = renderPage()
 
-    const leftIconButton = await findByTestId('leftIconButton')
+    const leftIconButton = await findByTestId('leftIcon')
     fireEvent.press(leftIconButton)
 
     await waitForExpect(() => {
       expect(goBack).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should NOT display back button when previous screen is AcceptCgu', async () => {
+    mockUsePreviousRoute.mockReturnValue({ name: 'AcceptCgu', key: 'key' })
+    const { queryByTestId } = renderPage()
+
+    const leftIconButton = queryByTestId('leftIcon')
+
+    await waitForExpect(() => {
+      expect(leftIconButton).toBeFalsy()
     })
   })
 

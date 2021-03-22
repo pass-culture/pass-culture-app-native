@@ -6,6 +6,7 @@ import { Text } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { flushAllPromises } from 'tests/utils'
 
@@ -34,6 +35,16 @@ describe('<ResetPasswordEmailSent />', () => {
 
     await waitForExpect(() => {
       expect(renderAPI.queryByText('PreviousScreenText')).toBeTruthy()
+    })
+  })
+
+  it('should NOT display back button when previous screen is ForgottenPassword', async () => {
+    const renderAPI = await renderInitialPage('ForgottenPassword')
+
+    const leftIconButton = renderAPI.queryByTestId('leftIcon')
+
+    await waitForExpect(() => {
+      expect(leftIconButton).toBeFalsy()
     })
   })
 
@@ -77,6 +88,7 @@ describe('<ResetPasswordEmailSent />', () => {
 const navigationRef = React.createRef<NavigationContainerRef>()
 
 type StackParams = {
+  ForgottenPassword: RootStackParamList['ForgottenPassword']
   Home: undefined
   PreviousScreen: undefined
   ResetPasswordEmailSent: { email: string }
@@ -85,8 +97,8 @@ type StackParams = {
 const TestStack = createStackNavigator<StackParams>()
 
 const Home = () => <Text>HomeText</Text>
-
 const PreviousScreen = () => <Text>PreviousScreenText</Text>
+const ForgottenPassword = () => <Text>ForgottenPasswordScreenText</Text>
 
 async function renderInitialPage(initialScreenName: keyof StackParams) {
   const renderAPI = render(
@@ -94,6 +106,7 @@ async function renderInitialPage(initialScreenName: keyof StackParams) {
       <TestStack.Navigator initialRouteName={initialScreenName}>
         <TestStack.Screen name="Home" component={Home} />
         <TestStack.Screen name="PreviousScreen" component={PreviousScreen} />
+        <TestStack.Screen name="ForgottenPassword" component={ForgottenPassword} />
         <TestStack.Screen
           name="ResetPasswordEmailSent"
           component={ResetPasswordEmailSent}

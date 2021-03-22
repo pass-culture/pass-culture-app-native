@@ -5,7 +5,7 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
+import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
@@ -25,15 +25,10 @@ type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
 export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
-
-  function onGoBack() {
-    const { backNavigation } = route.params
-    if (backNavigation) {
-      navigate(backNavigation.from, backNavigation.params)
-    } else {
-      goBack()
-    }
-  }
+  const previousRoute = usePreviousRoute()
+  /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
+  to redo the challenge, so we block the user from going back to ReCAPTCHA screen */
+  const shouldBeAbleToGoBack = previousRoute?.name !== 'AcceptCgu'
 
   function onClose() {
     navigate('Home', NavigateToHomeWithoutModalOptions)
@@ -48,8 +43,8 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
     <BottomContentPage>
       <ModalHeader
         title={_(t`Confirme ton e\u2011mail`)}
-        leftIcon={ArrowPrevious}
-        onLeftIconPress={onGoBack}
+        leftIcon={shouldBeAbleToGoBack ? ArrowPrevious : undefined}
+        onLeftIconPress={shouldBeAbleToGoBack ? goBack : undefined}
         rightIcon={Close}
         onRightIconPress={onClose}
       />
