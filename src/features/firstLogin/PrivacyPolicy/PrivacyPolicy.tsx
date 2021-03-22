@@ -2,6 +2,7 @@ import { NavigationContainerRef } from '@react-navigation/native'
 import React, { RefObject, useEffect, useState } from 'react'
 
 import { PrivacyPolicyModal } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicyModal'
+import { firebaseAnalytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 
 interface Props {
@@ -26,7 +27,9 @@ export function PrivacyPolicy(props: Props) {
 
   function refuseCookie() {
     setHasUserMadeCookieChoice(true)
-    storage.saveObject('has_accepted_cookie', false)
+    storage.saveObject('has_accepted_cookie', false).then(() => {
+      firebaseAnalytics.setAnalyticsCollectionEnabled(false)
+    })
   }
 
   return hasUserMadeCookieChoice ? null : (
