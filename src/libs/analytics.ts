@@ -2,6 +2,8 @@ import firebaseAnalyticsModule from '@react-native-firebase/analytics'
 
 export const firebaseAnalytics = firebaseAnalyticsModule()
 
+const setUserId = (userId: number) => firebaseAnalytics.setUserId(userId.toString())
+
 // Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores
 export enum AnalyticsEvent {
   ALL_MODULES_SEEN = 'AllModulesSeen',
@@ -202,6 +204,7 @@ export const analytics = {
   logSignUpLessThanOrEqualTo13,
   logUseFilter,
   logSearchQuery,
+  setUserId,
 }
 
 const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']
