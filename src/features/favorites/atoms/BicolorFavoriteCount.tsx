@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useRef } from 'react'
-import { Animated } from 'react-native'
+import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -13,6 +13,8 @@ import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, Typo } from 'ui/theme'
 
 const COUNT_MAX = 100
+
+const defaultPaddingRight = Platform.OS === 'android' ? 1 : 0
 
 export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   size = 32,
@@ -64,7 +66,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
                 <Plus>{_(t`+`)}</Plus>
               </React.Fragment>
             ) : (
-              <Count>{data.nbFavorites || '0'}</Count>
+              <Count paddingRight={defaultPaddingRight}>{data.nbFavorites || '0'}</Count>
             )}
           </CountContainer>
         </Animated.View>
