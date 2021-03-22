@@ -33,8 +33,9 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
+let mockCreditOffer = 50000
 jest.mock('features/offer/services/useHasEnoughCredit', () => ({
-  useCreditForOffer: jest.fn(() => 50000),
+  useCreditForOffer: jest.fn(() => mockCreditOffer),
 }))
 
 describe('BookHourChoice when hour is already selected', () => {
@@ -107,5 +108,11 @@ describe('BookHourChoice', () => {
 
     expect(secondHour.props.children).toBe('10h00')
     expect(secondPrice.props.children).toBe('épuisé')
+  })
+
+  fit("should show 'crédit insuffisant' if not enough credit", () => {
+    mockCreditOffer = 0
+    const page = render(reactQueryProviderHOC(<BookHourChoice />))
+    expect(page.getByTestId('HourChoice148409-price').props.children).toBe('crédit insuffisant')
   })
 })
