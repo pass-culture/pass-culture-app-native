@@ -6,14 +6,14 @@ import { computeDistanceInMeters } from 'libs/parsers'
 export function sortByAscendingPrice(a: FavoriteResponse, b: FavoriteResponse) {
   let aPrice
   let bPrice
-  if (a.offer.startPrice) {
+  if (a.offer.startPrice !== null) {
     aPrice = a.offer.startPrice
-  } else if (a.offer.price) {
+  } else if (a.offer.price !== null) {
     aPrice = a.offer.price
   }
-  if (b.offer.startPrice) {
+  if (b.offer.startPrice !== null) {
     bPrice = b.offer.startPrice
-  } else if (b.offer.price) {
+  } else if (b.offer.price !== null) {
     bPrice = b.offer.price
   }
   if (a.offer.isExpired && b.offer.isExpired) {
