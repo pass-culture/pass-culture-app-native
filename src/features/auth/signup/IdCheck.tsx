@@ -9,13 +9,15 @@ import { RootStackParamList, UseNavigationType } from 'features/navigation/RootN
 import { env } from 'libs/environment'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
+import { useKeyboardAdjustFixIdCheck } from '../hooks/useKeyboardAdjustFixIdCheck'
+
 type Props = StackScreenProps<RootStackParamList, 'IdCheck'>
 
 export const IdCheck: React.FC<Props> = function (props) {
   const currentRoute = useCurrentRoute()
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
-
+  const injectedJavascript = useKeyboardAdjustFixIdCheck()
   const { email, licenceToken } = props.route.params
   const encodedEmail = encodeURIComponent(email)
   const uri = `${env.ID_CHECK_URL}/?email=${encodedEmail}&licence_token=${licenceToken}`
@@ -34,6 +36,7 @@ export const IdCheck: React.FC<Props> = function (props) {
   if (currentRoute?.name !== 'IdCheck') return null
   return (
     <StyledWebview
+      injectedJavaScript={injectedJavascript}
       ref={webviewRef}
       testID="idcheck-webview"
       source={{ uri }}
