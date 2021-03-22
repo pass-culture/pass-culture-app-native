@@ -34,3 +34,23 @@ export const useHasEnoughCredit = (offerId: number): boolean => {
     domainsCredit
   )
 }
+
+export const useCreditForOffer = (offerId: number | undefined): number => {
+  const { data: offer } = useOffer({ offerId: offerId || 0 })
+  const { data: user } = useUserProfileInfo()
+  if (!offer || !user) return 0
+
+  const { domainsCredit } = user
+  if (!domainsCredit) return 0
+
+  // @ts-ignore : TODO(antoinewg, 22/3/21): this is to ensure backward compatibility. Can be removed after next MES/MEP.
+  const offerDomains = offer.expenseDomains ?? offer.expense_domains
+
+  const creditsRemainingPerDomain = offerDomains.map((domain) => {
+    const expenseDomain = domainsCredit[domain]
+    if (expenseDomain === null || expenseDomain === undefined) return Infinity
+    return expenseDomain.remaining
+  })
+
+  return creditsRemainingPerDomain.length > 0 ? Math.min(...creditsRemainingPerDomain) : 0
+}

@@ -35,7 +35,7 @@ interface Props {
 }
 
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
-  const markedDates = useMarkedDates(stocks, userRemainingCredit)
+  const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
 
   return (
     <RNCalendar
