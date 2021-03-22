@@ -7,6 +7,8 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
+import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { storage } from 'libs/storage'
 import { flushAllPromises } from 'tests/utils'
@@ -43,6 +45,15 @@ jest.mock('libs/storage', () => ({
   storage: {
     saveObject: jest.fn(),
   },
+}))
+
+const mockFavoritesState = initialFavoritesState
+const mockFavoriteDispatch = jest.fn()
+jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
+  useFavoritesState: () => ({
+    ...mockFavoritesState,
+    dispatch: mockFavoriteDispatch,
+  }),
 }))
 
 describe('Profile component', () => {
@@ -90,12 +101,18 @@ describe('Profile component', () => {
         // geolocation switch is ON and user wants to switch it OFF
         jest.spyOn(storage, 'saveObject').mockResolvedValueOnce()
         mockPosition = { latitude: 2, longitude: 40 }
-        const { getByTestId } = await renderProfile()
+        const { getByTestId } = await renderProfile({
+          wrapper: FavoritesWrapper,
+        })
 
         fireEvent.press(getByTestId('geolocation'))
 
         await waitForExpect(() => {
           expect(mockTriggerPositionUpdate).toHaveBeenCalled()
+          expect(mockFavoriteDispatch).toBeCalledWith({
+            type: 'SET_FILTER',
+            payload: 'RECENTLY_ADDED',
+          })
         })
         expect(storage.saveObject).toBeCalledWith('has_allowed_geolocation', false)
       })
@@ -187,10 +204,17 @@ describe('Profile component', () => {
   })
 })
 
-async function renderProfile() {
-  const wrapper = render(<Profile />)
-  await act(async () => {
-    await flushAllPromises()
-  })
-  return wrapper
+interface Options {
+  wrapper?: (({ children }: { children: Element }) => JSX.Element) | undefined
+}
+
+const defaultOptions = {
+  wrapper: undefined,
+}
+
+async function renderProfile(options: Options = defaultOptions) {
+  const { wrapper } = { ...defaultOptions, ...options }
+  const renderAPI = render(<Profile />, { wrapper })
+  await act(flushAllPromises)
+  return renderAPI
 }

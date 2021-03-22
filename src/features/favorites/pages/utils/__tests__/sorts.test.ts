@@ -17,6 +17,29 @@ describe('Favorites sorts', () => {
     data.sort(sortByAscendingPrice)
     expect(data).toEqual([
       {
+        id: 380,
+        offer: {
+          id: 146193,
+          name: 'Spectacle une seule date',
+          category: {
+            categoryType: 'Event',
+            label: 'Spectacle',
+            name: 'SPECTACLE',
+          },
+          expenseDomains: [ExpenseDomain.All],
+          externalTicketOfficeUrl: null,
+          image: null,
+          coordinates: {
+            latitude: 48.12108,
+            longitude: -1.17896,
+          },
+          price: 0,
+          startPrice: null,
+          date: new Date('2021-03-28T15:45:00.000Z'),
+          startDate: null,
+        },
+      },
+      {
         id: 381,
         offer: {
           id: 146112,
@@ -95,29 +118,6 @@ describe('Favorites sorts', () => {
           startPrice: 2700,
           date: null,
           startDate: new Date('2021-03-04T20:00:00.000Z'),
-        },
-      },
-      {
-        id: 380,
-        offer: {
-          id: 146193,
-          name: 'Spectacle une seule date',
-          category: {
-            categoryType: 'Event',
-            label: 'Spectacle',
-            name: 'SPECTACLE',
-          },
-          expenseDomains: [ExpenseDomain.All],
-          externalTicketOfficeUrl: null,
-          image: null,
-          coordinates: {
-            latitude: 48.12108,
-            longitude: -1.17896,
-          },
-          price: 0,
-          startPrice: null,
-          date: new Date('2021-03-28T15:45:00.000Z'),
-          startDate: null,
         },
       },
     ])

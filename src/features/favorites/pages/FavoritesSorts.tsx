@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Linking, ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -10,6 +10,7 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { IGeolocationContext } from 'libs/geolocation/GeolocationWrapper'
 import { _ } from 'libs/i18n'
+import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -37,14 +38,16 @@ export const useSelectSort = ({
     selectFilter: (sortBy: keyof typeof SORT_OPTIONS) => {
       return () => dispatch({ type: 'SET_FILTER', payload: sortBy })
     },
-    onPressAroundMe: async () => {
+    onPressAroundMe: async (onAcceptance?: () => void) => {
       if (position === null) {
         const shouldDisplayCustomGeolocRequest =
           permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
         if (shouldDisplayCustomGeolocRequest) {
           showGeolocPermissionModal()
         } else {
-          await requestGeolocPermission()
+          await requestGeolocPermission({
+            onAcceptance,
+          })
         }
       }
     },
@@ -85,6 +88,18 @@ export const FavoritesSorts: React.FC = () => {
     hideGeolocPermissionModal()
   }
 
+  const handlePress = useCallback(
+    async (sortBy) => {
+      const hasAllowedGeolocation = await storage.readObject('has_allowed_geolocation')
+      return sortBy === 'AROUND_ME' &&
+        (permissionState !== GeolocPermissionState.GRANTED ||
+          hasAllowedGeolocation === false ||
+          hasAllowedGeolocation === null)
+        ? onPressAroundMe(selectFilter(sortBy))
+        : selectFilter(sortBy)()
+    },
+    [permissionState, onPressAroundMe, selectFilter]
+  )
   return (
     <React.Fragment>
       <ScrollView contentContainerStyle={contentContainerStyle}>
@@ -102,14 +117,7 @@ export const FavoritesSorts: React.FC = () => {
             const isSelected = isFilterSelected(sortBy)
             const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
             return (
-              <LabelContainer
-                key={sortBy}
-                onPress={
-                  sortBy === 'AROUND_ME' && permissionState !== GeolocPermissionState.GRANTED
-                    ? onPressAroundMe
-                    : selectFilter(sortBy)
-                }
-                testID={sortBy}>
+              <LabelContainer key={sortBy} onPress={() => handlePress(sortBy)} testID={sortBy}>
                 <Spacer.Column numberOfSpaces={8} />
                 <Spacer.Row numberOfSpaces={6} />
                 <Typo.ButtonText numberOfLines={2} color={textColor}>

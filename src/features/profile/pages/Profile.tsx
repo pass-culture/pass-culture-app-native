@@ -6,6 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
+import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -36,6 +37,7 @@ import { ProfileHeader } from '../components/ProfileHeader'
 import { ProfileContainer } from '../components/reusables'
 
 export const Profile: React.FC = () => {
+  const { dispatch: favoritesDispatch } = useFavoritesState()
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: user } = useUserProfileInfo()
   const { isLoggedIn } = useAuthContext()
@@ -55,6 +57,7 @@ export const Profile: React.FC = () => {
 
   function disableGeolocation() {
     storage.saveObject('has_allowed_geolocation', false).then(() => {
+      favoritesDispatch({ type: 'SET_FILTER', payload: 'RECENTLY_ADDED' })
       triggerPositionUpdate()
     })
   }
