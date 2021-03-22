@@ -11,6 +11,7 @@ import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
+import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -22,7 +23,7 @@ interface Props {
 export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
   const { bookingState, dispatch } = useBooking()
   const { data: user } = useUserProfileInfo()
-  const remainingCredit = useAvailableCredit()
+  const creditForOffer = useCreditForOffer(bookingState.offerId)
   const { step, quantity, stockId } = bookingState
 
   if (!user) return <React.Fragment />
@@ -39,10 +40,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
   return (
     <Container>
       <Separator />
-      <BookDateChoice
-        stocks={stocks}
-        userRemainingCredit={remainingCredit ? remainingCredit.amount : null}
-      />
+      <BookDateChoice stocks={stocks} userRemainingCredit={creditForOffer} />
 
       <Spacer.Column numberOfSpaces={6} />
       {step && step >= Step.HOUR && (
