@@ -12,6 +12,7 @@ import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT, Typo } from 'ui/th
 
 import { useBookings } from '../api'
 import { NoBookingsView } from '../components/NoBookingsView'
+import { OnGoingBookingsList } from '../components/OnGoingBookingsList'
 
 export const Bookings: React.FC = () => {
   const { data: bookings } = useBookings()
@@ -40,6 +41,7 @@ export const Bookings: React.FC = () => {
         {onGoingBookingsCount > 0 ? (
           <React.Fragment>
             <BookingsCount>{bookingsCountLabel}</BookingsCount>
+            <OnGoingBookingsList bookings={bookings?.ongoing_bookings} />
             <Spacer.Flex />
           </React.Fragment>
         ) : (
