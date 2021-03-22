@@ -291,19 +291,22 @@ describe('<OfferHeader />', () => {
 
   it('should add favorite and log analytic event logHasAddedOfferToFavorites with "favorites" as argument - logged in users', async () => {
     const from = 'favorites'
+    const moduleName = 'testModule'
+    const offerId = addFavoriteJsonResponseSnap.offer.id
     useRoute.mockImplementation(() => ({
       params: {
         from,
+        moduleName,
       },
     }))
     const { getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
-      id: addFavoriteJsonResponseSnap.offer.id,
+      id: offerId,
     })
     fireEvent.press(getByTestId('icon-favorite'))
     await superFlushWithAct()
     await waitForExpect(() => {
-      expect(analytics.logHasAddedOfferToFavorites).toBeCalledWith(from)
+      expect(analytics.logHasAddedOfferToFavorites).toBeCalledWith(from, offerId, moduleName)
     })
   })
 

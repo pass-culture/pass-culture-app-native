@@ -73,6 +73,7 @@ export const OfferTile = (props: OfferTileProps) => {
       id: offer.offerId,
       shouldDisplayLoginModal: false,
       from: 'home',
+      moduleName,
     })
   }
 
