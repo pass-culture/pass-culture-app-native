@@ -110,7 +110,7 @@ describe('BookHourChoice', () => {
     expect(secondPrice.props.children).toBe('épuisé')
   })
 
-  fit("should show 'crédit insuffisant' if not enough credit", () => {
+  it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
     const page = render(reactQueryProviderHOC(<BookHourChoice />))
     expect(page.getByTestId('HourChoice148409-price').props.children).toBe('crédit insuffisant')
