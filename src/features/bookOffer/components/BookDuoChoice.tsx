@@ -3,6 +3,7 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { DuoPerson } from 'ui/svg/icons/DuoPerson'
@@ -17,14 +18,22 @@ import { Step } from '../pages/reducer'
 export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
   const stock = useBookingStock()
+  const offerCredit = useCreditForOffer(bookingState.offerId || 0)
 
-  const getChoiceInfosForQuantity = (quantity: 1 | 2) => ({
-    price: stock ? formatToFrenchDecimal(quantity * stock.price).replace(' ', '') : '',
-    title: quantity === 1 ? _(t`Solo`) : _(t`Duo`),
-    selected: bookingState.quantity === quantity,
-    icon: quantity === 1 ? Profile : DuoPerson,
-    onPress: () => dispatch({ type: 'SELECT_QUANTITY', payload: quantity }),
-  })
+  const getChoiceInfosForQuantity = (quantity: 1 | 2) => {
+    const enoughCredit = stock ? quantity * stock.price <= offerCredit : false
+    return {
+      price:
+        enoughCredit && stock
+          ? formatToFrenchDecimal(quantity * stock.price).replace(' ', '')
+          : _(t`crédit insuffisant`),
+      title: quantity === 1 ? _(t`Solo`) : _(t`Duo`),
+      selected: bookingState.quantity === quantity,
+      icon: quantity === 1 ? Profile : DuoPerson,
+      onPress: () => dispatch({ type: 'SELECT_QUANTITY', payload: quantity }),
+      hasEnoughCredit: enoughCredit,
+    }
+  }
 
   const changeQuantity = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
