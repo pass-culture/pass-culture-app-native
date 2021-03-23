@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
+import { Calendar as RNCalendar, CalendarTheme, LocaleConfig } from 'react-native-calendars'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
@@ -29,6 +29,17 @@ const renderArrow = (direction: string) => {
   return <React.Fragment />
 }
 
+const calendarHeaderStyle = {
+  'stylesheet.calendar.header': {
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: 6,
+      alignItems: 'center',
+    },
+  },
+} as CalendarTheme
+
 interface Props {
   stocks: OfferStockResponse[]
   userRemainingCredit: number | null
@@ -44,16 +55,7 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
       renderHeader={(date) => <MonthHeader date={date} />}
       hideExtraDays={true}
       renderArrow={renderArrow}
-      theme={{
-        'stylesheet.calendar.header': {
-          header: {
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: 6,
-            alignItems: 'center',
-          },
-        },
-      }}
+      theme={calendarHeaderStyle}
       markedDates={markedDates}
       dayComponent={({ date, marking = defaultMarking }) => {
         // problem in the definition of marking in the library:
