@@ -5,6 +5,7 @@ import { ExpenseDomain, UserProfileResponse } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
 
 const userV1: UserProfileResponse = {
+  bookedOffers: {},
   email: 'email2@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,

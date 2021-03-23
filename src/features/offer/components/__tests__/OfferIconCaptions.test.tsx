@@ -35,6 +35,7 @@ jest.mock('features/auth/AuthContext', () => ({
 }))
 
 const userProfileAPIResponse: UserProfileResponse = {
+  bookedOffers: {},
   email: 'email@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,

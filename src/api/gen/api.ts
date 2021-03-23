@@ -1169,6 +1169,12 @@ export interface SigninResponse {
 export interface UserProfileResponse {
     /**
      * 
+     * @type {{ [key: string]: number; }}
+     * @memberof UserProfileResponse
+     */
+    bookedOffers: { [key: string]: number; };
+    /**
+     * 
      * @type {string}
      * @memberof UserProfileResponse
      */
