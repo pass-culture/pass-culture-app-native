@@ -44,6 +44,16 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
       renderHeader={(date) => <MonthHeader date={date} />}
       hideExtraDays={true}
       renderArrow={renderArrow}
+      theme={{
+        'stylesheet.calendar.header': {
+          header: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: 6,
+            alignItems: 'center',
+          },
+        },
+      }}
       markedDates={markedDates}
       dayComponent={({ date, marking = defaultMarking }) => {
         // problem in the definition of marking in the library:
