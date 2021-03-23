@@ -143,15 +143,15 @@ msgstr "Aujourd'hui"
 msgid "Autoriser les notifications"
 msgstr "Autoriser les notifications"
 
-#: src/features/profile/pages/NotificationSettings.tsx:130
+#: src/features/profile/pages/NotificationSettings.tsx:131
 msgid "Autoriser les notifications marketing"
 msgstr "Autoriser les notifications marketing"
 
-#: src/features/profile/pages/NotificationSettings.tsx:120
+#: src/features/profile/pages/NotificationSettings.tsx:121
 msgid "Autoriser l’envoi d’e\\u2011mails"
 msgstr "Autoriser l’envoi d’e\\u2011mails"
 
-#: src/features/profile/pages/ConsentSettings.tsx:77
+#: src/features/profile/pages/ConsentSettings.tsx:78
 msgid "Autoriser l’utilisation de mes données de navigation"
 msgstr "Autoriser l’utilisation de mes données de navigation"
 
@@ -408,7 +408,7 @@ msgstr "Découvrir"
 msgid "Détails de la réservation"
 msgstr "Détails de la réservation"
 
-#: src/features/profile/pages/PersonalData.tsx:25
+#: src/features/profile/pages/PersonalData.tsx:26
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -429,8 +429,8 @@ msgid "En voir plus"
 msgstr "En voir plus"
 
 #: src/features/profile/pages/ChangePassword.tsx:90
-#: src/features/profile/pages/ConsentSettings.tsx:81
-#: src/features/profile/pages/NotificationSettings.tsx:135
+#: src/features/profile/pages/ConsentSettings.tsx:82
+#: src/features/profile/pages/NotificationSettings.tsx:136
 msgid "Enregistrer"
 msgstr "Enregistrer"
 
@@ -517,7 +517,7 @@ msgstr "Il te reste encore {0} à dépenser sur le pass !"
 msgid "Il y a eu un problème. Tu peux réessayer plus tard."
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
 
-#: src/features/profile/pages/PersonalData.tsx:40
+#: src/features/profile/pages/PersonalData.tsx:41
 #: src/features/profile/pages/Profile.tsx:90
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
@@ -534,11 +534,11 @@ msgstr "Je cherche"
 msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
 msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
 
-#: src/features/profile/pages/NotificationSettings.tsx:117
+#: src/features/profile/pages/NotificationSettings.tsx:118
 msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
 msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
 
-#: src/features/profile/pages/NotificationSettings.tsx:127
+#: src/features/profile/pages/NotificationSettings.tsx:128
 msgid "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 msgstr "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 
@@ -548,7 +548,7 @@ msgstr "Je veux être alerté des actualités et des meilleures offres du pass C
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
-#: src/features/profile/pages/ConsentSettings.tsx:65
+#: src/features/profile/pages/ConsentSettings.tsx:66
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
@@ -592,7 +592,7 @@ msgstr "Le pass Culture"
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/profile/pages/NotificationSettings.tsx:76
+#: src/features/profile/pages/NotificationSettings.tsx:77
 msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
 
@@ -682,7 +682,7 @@ msgstr "Nombre de place"
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 
-#: src/features/profile/pages/NotificationSettings.tsx:138
+#: src/features/profile/pages/NotificationSettings.tsx:139
 #: src/features/profile/pages/Profile.tsx:93
 msgid "Notifications"
 msgstr "Notifications"
@@ -700,7 +700,7 @@ msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation 
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/profile/pages/PersonalData.tsx:32
+#: src/features/profile/pages/PersonalData.tsx:33
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
 
@@ -750,7 +750,7 @@ msgid "Où ?"
 msgstr "Où ?"
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:57
-#: src/features/profile/pages/ConsentSettings.tsx:85
+#: src/features/profile/pages/ConsentSettings.tsx:86
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
 
@@ -799,7 +799,7 @@ msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:49
-#: src/features/profile/pages/ConsentSettings.tsx:71
+#: src/features/profile/pages/ConsentSettings.tsx:72
 msgid "Politique des cookies"
 msgstr "Politique des cookies"
 
@@ -807,7 +807,7 @@ msgstr "Politique des cookies"
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
-#: src/features/profile/pages/ConsentSettings.tsx:70
+#: src/features/profile/pages/ConsentSettings.tsx:71
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
@@ -840,7 +840,7 @@ msgstr "Profil"
 msgid "Profite de 300\\u00a0€\\u00a0"
 msgstr "Profite de 300\\u00a0€\\u00a0"
 
-#: src/features/profile/pages/PersonalData.tsx:18
+#: src/features/profile/pages/PersonalData.tsx:19
 msgid "Prénom et nom"
 msgstr "Prénom et nom"
 
@@ -877,7 +877,7 @@ msgstr "Respect de ta vie privée"
 msgid "Reste informé des actualités du pass Culture en activant les notifications."
 msgstr "Reste informé des actualités du pass Culture en activant les notifications."
 
-#: src/features/profile/pages/NotificationSettings.tsx:110
+#: src/features/profile/pages/NotificationSettings.tsx:111
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
@@ -923,6 +923,14 @@ msgstr "Réservation confirmée !"
 #: src/features/bookOffer/services/useModalContent.tsx:28
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
+
+#: src/features/bookings/pages/Bookings.tsx:36
+msgid "Réservation terminée"
+msgstr "Réservation terminée"
+
+#: src/features/bookings/pages/Bookings.tsx:36
+msgid "Réservations terminées"
+msgstr "Réservations terminées"
 
 #: src/features/favorites/atoms/Favorite.tsx:133
 #: src/features/favorites/atoms/Favorite.tsx:134
@@ -1079,7 +1087,7 @@ msgstr "Tu as déjà un compte ?\\u00a0"
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
-#: src/features/profile/pages/NotificationSettings.tsx:111
+#: src/features/profile/pages/NotificationSettings.tsx:112
 msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 msgstr "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 
@@ -1149,7 +1157,7 @@ msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 
-#: src/features/profile/pages/NotificationSettings.tsx:87
+#: src/features/profile/pages/NotificationSettings.tsx:88
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
 
@@ -1300,11 +1308,11 @@ msgstr "metteur en scène"
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
-#: src/features/bookings/pages/Bookings.tsx:24
+#: src/features/bookings/pages/Bookings.tsx:35
 msgid "réservation en cours"
 msgstr "réservation en cours"
 
-#: src/features/bookings/pages/Bookings.tsx:24
+#: src/features/bookings/pages/Bookings.tsx:35
 msgid "réservations en cours"
 msgstr "réservations en cours"
 
