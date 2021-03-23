@@ -14,6 +14,7 @@ import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
+import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 import { Calendar } from 'features/bookOffer/components/Calendar/Calendar'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { ABTestingPOC } from 'features/cheatcodes/pages/ABTestingPOC'
@@ -56,6 +57,7 @@ const routes: Array<Route> = [
     name: 'EighteenBirthday',
     component: EighteenBirthday,
   },
+  { name: 'EndedBookings', component: EndedBookings },
   {
     name: 'ForgottenPassword',
     component: ForgottenPassword,
