@@ -11,11 +11,11 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
-import { SectionRow } from 'features/profile/components/SectionRow'
 import { ExpenseV2 } from 'features/profile/components/types'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { mapCategoryToIcon } from 'libs/parsers'
+import { Badge } from 'ui/components/Badge'
 import { Banner, BannerType } from 'ui/components/Banner'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -36,6 +36,7 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { SectionRow } from 'ui/components/SectionRow'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
@@ -665,6 +666,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <OnGoingTicket />
           <Text> - OnGoing Ticket without image </Text>
+        </AlignedText>
+        <AlignedText>
+          <Badge label={1} />
+          <Text> - Badge </Text>
         </AlignedText>
       </AccordionItem>
       <Spacer.Column numberOfSpaces={5} />

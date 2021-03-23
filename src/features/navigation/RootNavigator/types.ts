@@ -31,6 +31,7 @@ export type RootStackParamList = {
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined
   EligibilityConfirmed: undefined
+  EndedBookings: undefined
   ForgottenPassword: undefined
   IdCheck: { email: string; licenceToken: string }
   Login:
