@@ -2047,8 +2047,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 "flexDirection": "row",
                                                 "justifyContent": "space-between",
                                                 "marginTop": 6,
-                                                "paddingLeft": 10,
-                                                "paddingRight": 10,
                                               }
                                             }
                                           >
@@ -7272,8 +7270,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 "flexDirection": "row",
                                                 "justifyContent": "space-between",
                                                 "marginTop": 6,
-                                                "paddingLeft": 10,
-                                                "paddingRight": 10,
                                               }
                                             }
                                           >
