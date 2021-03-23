@@ -259,8 +259,10 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           "width": "33%",
         }
       }
+      testID="DuoChoice1"
     >
       <View
+        disabled={true}
         selected={true}
         style={
           Array [
@@ -303,7 +305,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             Array [
               Object {
                 "alignItems": "center",
-                "paddingVertical": 8,
+                "justifyContent": "center",
+                "minHeight": 80,
               },
             ]
           }
@@ -341,14 +344,33 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
+                  "textAlign": "center",
                 },
               ]
             }
-            testID="price"
+            testID="DuoChoice1-price"
           >
-            NaN€
+            crédit insuffisant
           </Text>
         </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#c7c7cc",
+                "borderRadius": 0.5,
+                "height": 1,
+                "position": "absolute",
+                "transform": Array [
+                  Object {
+                    "rotate": "-18.924644416051237deg",
+                  },
+                ],
+                "width": 255.33333333333334,
+              },
+            ]
+          }
+        />
       </View>
     </View>
     <View
@@ -371,15 +393,17 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           "width": "33%",
         }
       }
+      testID="DuoChoice2"
     >
       <View
+        disabled={true}
         selected={false}
         style={
           Array [
             Object {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
-              "borderColor": "#626262",
+              "borderColor": "#c7c7cc",
               "borderRadius": 4,
               "borderStyle": "solid",
               "borderWidth": 1,
@@ -405,7 +429,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             Array [
               Object {
                 "alignItems": "center",
-                "paddingVertical": 8,
+                "justifyContent": "center",
+                "minHeight": 80,
               },
             ]
           }
@@ -419,11 +444,11 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             </Text>
           </View>
           <Text
-            color="#151515"
+            color="#626262"
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#626262",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -434,22 +459,41 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             Duo
           </Text>
           <Text
-            color="#151515"
+            color="#626262"
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#626262",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
+                  "textAlign": "center",
                 },
               ]
             }
-            testID="price"
+            testID="DuoChoice2-price"
           >
-            NaN€
+            crédit insuffisant
           </Text>
         </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#c7c7cc",
+                "borderRadius": 0.5,
+                "height": 1,
+                "position": "absolute",
+                "transform": Array [
+                  Object {
+                    "rotate": "-18.924644416051237deg",
+                  },
+                ],
+                "width": 255.33333333333334,
+              },
+            ]
+          }
+        />
       </View>
     </View>
   </View>
