@@ -20,9 +20,22 @@ const MONTHS = [
 
 const DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 
-export const formatToCompleteFrenchDate = (date: Date) => {
+function formatToHour(date: Date) {
+  let hours = date.getHours().toString()
+  hours = hours.length === 1 ? '0' + hours : hours
+  let minutes = date.getMinutes().toString()
+  minutes = minutes.length === 1 ? '0' + minutes : minutes
+
+  return `${hours}h${minutes}`
+}
+
+export const formatToCompleteFrenchDateTime = (date: Date) => {
+  return `${formatToCompleteFrenchDate(date, false)} à ${formatToHour(date)}`
+}
+
+export const formatToCompleteFrenchDate = (date: Date, shouldDisplayWeekDay = true) => {
   const weekDay = DAYS[date.getDay()]
-  return `${weekDay} ${formatToFrenchDate(date)}`
+  return shouldDisplayWeekDay ? `${weekDay} ${formatToFrenchDate(date)}` : formatToFrenchDate(date)
 }
 
 export const decomposeDate = (timestamp: number) => {
@@ -79,4 +92,23 @@ export const formatDatePeriod = (dates: Date[] | undefined): string | undefined 
 export function formatDateToISOStringWithoutTime(date: Date): string {
   const ISOString = date.toISOString()
   return ISOString.substr(0, ISOString.indexOf('T'))
+}
+
+export const isToday = (someDate: Date) => {
+  const today = new Date()
+  return (
+    someDate.getDate() == today.getDate() &&
+    someDate.getMonth() == today.getMonth() &&
+    someDate.getFullYear() == today.getFullYear()
+  )
+}
+
+export const isTomorrow = (someDate: Date) => {
+  const tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  return (
+    someDate.getDate() == tomorrow.getDate() &&
+    someDate.getMonth() == tomorrow.getMonth() &&
+    someDate.getFullYear() == tomorrow.getFullYear()
+  )
 }
