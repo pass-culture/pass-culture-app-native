@@ -34,6 +34,7 @@ export const OnGoingBookingItem = ({ booking }: OnGoingBookingItemProps) => {
             <Title numberOfLines={2}>{stock.offer.name}</Title>
           </TitleContainer>
           {Boolean(dateLabel) && <Typo.Body color={ColorsEnum.GREY_DARK}>{dateLabel}</Typo.Body>}
+          <Spacer.Column numberOfSpaces={1} />
           {isDuo && <DuoBold />}
           <Spacer.Flex />
           {Boolean(withdrawLabel) && (
@@ -49,7 +50,7 @@ export const OnGoingBookingItem = ({ booking }: OnGoingBookingItemProps) => {
     </React.Fragment>
   )
 }
-const viewWidth = Dimensions.get('screen').width - onGoingTicketWidth - 40
+const titleContainerWidth = Dimensions.get('screen').width - onGoingTicketWidth - getSpacing(10)
 
 const ItemContainer = styled.View({
   flexDirection: 'row',
@@ -63,7 +64,7 @@ const AttributesView = styled.View({
 
 const TitleContainer = styled.View({
   flexDirection: 'row',
-  width: viewWidth,
+  width: titleContainerWidth,
   paddingBottom: getSpacing(1),
 })
 

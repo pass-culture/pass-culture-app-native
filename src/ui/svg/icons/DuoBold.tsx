@@ -5,11 +5,11 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
+// Before adding a size property, ask to someone from the UX Team to make this icon regular (32x32)
 export function DuoBold({
-  size: _size = 32,
   color = ColorsEnum.BLACK,
   testID,
-}: IconInterface): JSX.Element {
+}: Omit<IconInterface, 'size'>): JSX.Element {
   return (
     <Svg width={32} height={15} testID={testID} fill={color} viewBox="0 0 32 15">
       <G fill="none" fill-rule="evenodd">
