@@ -335,7 +335,7 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/favorites/atoms/Favorite.tsx:99
+#: src/features/favorites/atoms/Favorite.tsx:96
 #: src/features/offer/services/useCtaWordingAndAction.ts:35
 #: src/features/offer/services/useCtaWordingAndAction.ts:46
 msgid "Crédit insuffisant"
@@ -384,13 +384,13 @@ msgid "Du {0} {1} au {formattedEndDate}"
 msgstr "Du {0} {1} au {formattedEndDate}"
 
 #. Duo offer
-#: src/features/bookOffer/components/BookDuoChoice.tsx:19
-#: src/features/bookOffer/components/BookDuoChoice.tsx:35
+#: src/features/bookOffer/components/BookDuoChoice.tsx:25
+#: src/features/bookOffer/components/BookDuoChoice.tsx:43
 #: src/features/home/atoms/OfferCaption.tsx:15
 msgid "Duo"
 msgstr "Duo"
 
-#: src/features/favorites/atoms/Favorite.tsx:51
+#: src/features/favorites/atoms/Favorite.tsx:52
 #: src/libs/parsers/formatDates.ts:54
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
@@ -557,17 +557,17 @@ msgstr "L'application pass Culture utilise des traceurs susceptibles de réalise
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
-#: src/features/favorites/atoms/Favorite.tsx:34
-#: src/features/offer/components/OfferHeader.tsx:42
+#: src/features/favorites/atoms/Favorite.tsx:35
+#: src/features/offer/components/OfferHeader.tsx:45
 msgid "L'offre a été retirée de tes favoris"
 msgstr "L'offre a été retirée de tes favoris"
 
-#: src/features/offer/components/OfferHeader.tsx:34
+#: src/features/offer/components/OfferHeader.tsx:37
 msgid "L'offre n'a pas été ajoutée à tes favoris"
 msgstr "L'offre n'a pas été ajoutée à tes favoris"
 
-#: src/features/favorites/atoms/Favorite.tsx:40
-#: src/features/offer/components/OfferHeader.tsx:48
+#: src/features/favorites/atoms/Favorite.tsx:41
+#: src/features/offer/components/OfferHeader.tsx:51
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
@@ -674,7 +674,7 @@ msgstr "Mot de passe oublié ?"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/bookOffer/components/BookDuoChoice.tsx:28
+#: src/features/bookOffer/components/BookDuoChoice.tsx:36
 msgid "Nombre de place"
 msgstr "Nombre de place"
 
@@ -704,6 +704,7 @@ msgstr "Nouveau mot de passe"
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
 
+#: src/features/favorites/atoms/Favorite.tsx:90
 #: src/features/offer/services/useCtaWordingAndAction.ts:26
 #: src/features/offer/services/useCtaWordingAndAction.ts:30
 msgid "Offre expirée"
@@ -717,6 +718,7 @@ msgstr "Offre numérique"
 msgid "Offre physique"
 msgstr "Offre physique"
 
+#: src/features/favorites/atoms/Favorite.tsx:93
 #: src/features/offer/services/useCtaWordingAndAction.ts:28
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
@@ -922,8 +924,8 @@ msgstr "Réservation confirmée !"
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
 
-#: src/features/favorites/atoms/Favorite.tsx:96
-#: src/features/favorites/atoms/Favorite.tsx:101
+#: src/features/favorites/atoms/Favorite.tsx:133
+#: src/features/favorites/atoms/Favorite.tsx:134
 #: src/features/offer/services/useCtaWordingAndAction.ts:38
 msgid "Réserver"
 msgstr "Réserver"
@@ -977,8 +979,8 @@ msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 30
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/bookOffer/components/BookDuoChoice.tsx:19
-#: src/features/bookOffer/components/BookDuoChoice.tsx:35
+#: src/features/bookOffer/components/BookDuoChoice.tsx:25
+#: src/features/bookOffer/components/BookDuoChoice.tsx:43
 msgid "Solo"
 msgstr "Solo"
 
@@ -994,7 +996,7 @@ msgstr "Suivre pass Culture"
 msgid "Suppression du compte"
 msgstr "Suppression du compte"
 
-#: src/features/favorites/atoms/Favorite.tsx:130
+#: src/features/favorites/atoms/Favorite.tsx:127
 msgid "Supprimer"
 msgstr "Supprimer"
 
@@ -1060,6 +1062,10 @@ msgstr "Toute la culture"
 #: src/features/home/pages/Home.tsx:50
 msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
+
+#: src/features/offer/components/OfferHeader.tsx:36
+msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveau"
+msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveau"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:32
 msgid "Tu as 18 ans..."
@@ -1240,7 +1246,8 @@ msgstr "c'est..."
 msgid "crédit expiré le {0}"
 msgstr "crédit expiré le {0}"
 
-#: src/features/bookOffer/atoms/HourChoice.tsx:17
+#: src/features/bookOffer/atoms/HourChoice.tsx:10
+#: src/features/bookOffer/components/BookDuoChoice.tsx:24
 msgid "crédit insuffisant"
 msgstr "crédit insuffisant"
 
@@ -1366,6 +1373,6 @@ msgstr "à dépenser dans l'application"
 msgid "à portée de main !"
 msgstr "à portée de main !"
 
-#: src/features/bookOffer/atoms/HourChoice.tsx:20
+#: src/features/bookOffer/atoms/HourChoice.tsx:13
 msgid "épuisé"
 msgstr "épuisé"
