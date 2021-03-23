@@ -5,9 +5,10 @@ import styled from 'styled-components/native'
 import { useUserProfileInfo } from 'features/home/api'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { ProfileContainer, Separator } from '../components/reusables'
+import { ProfileContainer } from '../components/reusables'
 
 export function PersonalData() {
   const { data: user } = useUserProfileInfo()
