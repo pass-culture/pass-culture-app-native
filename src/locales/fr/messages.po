@@ -106,9 +106,13 @@ msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélectio
 msgid "Aides"
 msgstr "Aides"
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:21
+#: src/features/bookOffer/components/BookingImpossible.tsx:45
 msgid "Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver."
 msgstr "Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver."
+
+#: src/features/favorites/pages/FavoritesSorts.tsx:51
+msgid "Ajouté récemment"
+msgstr "Ajouté récemment"
 
 #. Error message on Batch get installation ID
 #: src/features/cheatcodes/pages/CheatCodes.tsx:103
@@ -118,6 +122,14 @@ msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 #: src/features/offer/services/useItinerary.ts:79
 msgid "Annuler"
 msgstr "Annuler"
+
+#: src/features/bookOffer/components/BookingDetails.tsx:19
+msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
+msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
+
+#: src/features/bookOffer/components/BookingDetails.tsx:18
+msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
+msgstr "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
 
 #: src/features/search/pages/SuggestedPlaces.tsx:47
 msgid "Aucun lieu ne correspond à ta recherche"
@@ -281,7 +293,7 @@ msgstr "Confidentialité"
 msgid "Confirme ton e\\u2011mail"
 msgstr "Confirme ton e\\u2011mail"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:59
+#: src/features/bookOffer/components/BookingDetails.tsx:69
 msgid "Confirmer la réservation"
 msgstr "Confirmer la réservation"
 
@@ -335,7 +347,7 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/favorites/atoms/Favorite.tsx:96
+#: src/features/favorites/atoms/BookingButton.tsx:44
 #: src/features/offer/services/useCtaWordingAndAction.ts:35
 #: src/features/offer/services/useCtaWordingAndAction.ts:46
 msgid "Crédit insuffisant"
@@ -390,7 +402,7 @@ msgstr "Du {0} {1} au {formattedEndDate}"
 msgid "Duo"
 msgstr "Duo"
 
-#: src/features/favorites/atoms/Favorite.tsx:52
+#: src/features/favorites/atoms/Favorite.tsx:49
 #: src/libs/parsers/formatDates.ts:54
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
@@ -424,6 +436,10 @@ msgstr "E-mail ou mot de passe incorrect."
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
+#: src/features/bookOffer/components/BookingDetails.tsx:34
+msgid "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
+msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
+
 #: src/features/home/atoms/SeeMore.tsx:21
 msgid "En voir plus"
 msgstr "En voir plus"
@@ -448,16 +464,11 @@ msgstr "Erreur lors de la récupération du token d'accès"
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 
-#: src/features/bookOffer/components/BookingDetails.tsx:29
-msgid "Erreur. L'offre n'a pas été réservée !"
-msgstr "Erreur. L'offre n'a pas été réservée !"
-
 #: src/features/bookings/components/NoBookingsView.tsx:22
 #: src/features/favorites/components/NoFavoritesResult.tsx:31
 msgid "Explorer les offres"
 msgstr "Explorer les offres"
 
-#: src/features/favorites/atoms/Buttons/Filter.tsx:15
 #: src/features/search/atoms/Buttons/Filter.tsx:26
 #: src/features/search/pages/SearchFilter.tsx:110
 msgid "Filtrer"
@@ -557,17 +568,18 @@ msgstr "L'application pass Culture utilise des traceurs susceptibles de réalise
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
-#: src/features/favorites/atoms/Favorite.tsx:35
-#: src/features/offer/components/OfferHeader.tsx:45
+#: src/features/favorites/atoms/Favorite.tsx:32
+#: src/features/offer/components/OfferHeader.tsx:48
 msgid "L'offre a été retirée de tes favoris"
 msgstr "L'offre a été retirée de tes favoris"
 
-#: src/features/offer/components/OfferHeader.tsx:37
+#: src/features/bookOffer/components/BookingImpossible.tsx:26
+#: src/features/offer/components/OfferHeader.tsx:40
 msgid "L'offre n'a pas été ajoutée à tes favoris"
 msgstr "L'offre n'a pas été ajoutée à tes favoris"
 
-#: src/features/favorites/atoms/Favorite.tsx:41
-#: src/features/offer/components/OfferHeader.tsx:51
+#: src/features/favorites/atoms/Favorite.tsx:38
+#: src/features/offer/components/OfferHeader.tsx:54
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
@@ -601,11 +613,11 @@ msgstr "Le réglage est sauvegardé"
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
-#: src/features/bookOffer/components/BookingDetails.tsx:15
+#: src/features/bookOffer/components/BookingDetails.tsx:16
 msgid "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 msgstr "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:17
+#: src/features/bookOffer/components/BookingImpossible.tsx:41
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
@@ -631,7 +643,11 @@ msgstr "Mentions légales"
 msgid "Mes options"
 msgstr "Mes options"
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:26
+#: src/features/bookings/pages/EndedBookings.tsx:25
+msgid "Mes réservations terminées"
+msgstr "Mes réservations terminées"
+
+#: src/features/bookOffer/components/BookingImpossible.tsx:50
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
@@ -704,7 +720,7 @@ msgstr "Nouveau mot de passe"
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
 
-#: src/features/favorites/atoms/Favorite.tsx:90
+#: src/features/favorites/atoms/BookingButton.tsx:38
 #: src/features/offer/services/useCtaWordingAndAction.ts:26
 #: src/features/offer/services/useCtaWordingAndAction.ts:30
 msgid "Offre expirée"
@@ -718,7 +734,12 @@ msgstr "Offre numérique"
 msgid "Offre physique"
 msgstr "Offre physique"
 
-#: src/features/favorites/atoms/Favorite.tsx:93
+#: src/features/favorites/atoms/BookingButton.tsx:23
+#: src/features/favorites/atoms/BookingButton.tsx:35
+msgid "Offre réservée"
+msgstr "Offre réservée"
+
+#: src/features/favorites/atoms/BookingButton.tsx:41
 #: src/features/offer/services/useCtaWordingAndAction.ts:28
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
@@ -740,6 +761,10 @@ msgstr "Oups"
 #: src/features/search/atoms/NoSearchResult.tsx:34
 msgid "Oups !"
 msgstr "Oups !"
+
+#: src/features/bookOffer/components/BookingDetails.tsx:20
+msgid "Oups, cette offre n’est plus disponible !"
+msgstr "Oups, cette offre n’est plus disponible !"
 
 #: src/features/search/components/SearchLandingPage.tsx:33
 msgid "Où"
@@ -831,6 +856,10 @@ msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgid "Prix"
 msgstr "Prix"
 
+#: src/features/favorites/pages/FavoritesSorts.tsx:54
+msgid "Prix croissant"
+msgstr "Prix croissant"
+
 #: src/features/profile/components/ExBeneficiaryHeader.tsx:16
 #: src/features/profile/components/LoggedOutHeader.tsx:17
 msgid "Profil"
@@ -839,6 +868,10 @@ msgstr "Profil"
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:31
 msgid "Profite de 300\\u00a0€\\u00a0"
 msgstr "Profite de 300\\u00a0€\\u00a0"
+
+#: src/features/favorites/pages/FavoritesSorts.tsx:57
+msgid "Proximité géographique"
+msgstr "Proximité géographique"
 
 #: src/features/profile/pages/PersonalData.tsx:19
 msgid "Prénom et nom"
@@ -888,7 +921,7 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:28
+#: src/features/bookOffer/components/BookingImpossible.tsx:52
 msgid "Retourner à l'offre"
 msgstr "Retourner à l'offre"
 
@@ -924,16 +957,8 @@ msgstr "Réservation confirmée !"
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
 
-#: src/features/bookings/pages/Bookings.tsx:36
-msgid "Réservation terminée"
-msgstr "Réservation terminée"
-
-#: src/features/bookings/pages/Bookings.tsx:36
-msgid "Réservations terminées"
-msgstr "Réservations terminées"
-
-#: src/features/favorites/atoms/Favorite.tsx:133
-#: src/features/favorites/atoms/Favorite.tsx:134
+#: src/features/favorites/atoms/BookingButton.tsx:48
+#: src/features/favorites/atoms/BookingButton.tsx:49
 #: src/features/offer/services/useCtaWordingAndAction.ts:38
 msgid "Réserver"
 msgstr "Réserver"
@@ -1004,7 +1029,7 @@ msgstr "Suivre pass Culture"
 msgid "Suppression du compte"
 msgstr "Suppression du compte"
 
-#: src/features/favorites/atoms/Favorite.tsx:127
+#: src/features/favorites/atoms/Favorite.tsx:91
 msgid "Supprimer"
 msgstr "Supprimer"
 
@@ -1071,9 +1096,18 @@ msgstr "Toute la culture"
 msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
 
-#: src/features/offer/components/OfferHeader.tsx:36
-msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveau"
-msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveau"
+#: src/features/favorites/atoms/Buttons/Sort.tsx:20
+#: src/features/favorites/pages/FavoritesSorts.tsx:105
+msgid "Trier"
+msgstr "Trier"
+
+#: src/features/favorites/pages/FavoritesSorts.tsx:83
+msgid "Trier par"
+msgstr "Trier par"
+
+#: src/features/offer/components/OfferHeader.tsx:39
+msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
+msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:32
 msgid "Tu as 18 ans..."
@@ -1186,6 +1220,7 @@ msgid "VISA"
 msgstr "VISA"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:117
+#: src/features/favorites/pages/FavoritesSorts.tsx:107
 msgid "Valider"
 msgstr "Valider"
 
@@ -1308,14 +1343,6 @@ msgstr "metteur en scène"
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
-#: src/features/bookings/pages/Bookings.tsx:35
-msgid "réservation en cours"
-msgstr "réservation en cours"
-
-#: src/features/bookings/pages/Bookings.tsx:35
-msgid "réservations en cours"
-msgstr "réservations en cours"
-
 #: src/features/offer/pages/OfferDescription.tsx:16
 #: src/features/offer/pages/OfferDescription.tsx:20
 msgid "sous genre"
@@ -1341,6 +1368,14 @@ msgstr "voir plus"
 msgid "{0}"
 msgstr "{0}"
 
+#: src/features/bookings/pages/Bookings.tsx:24
+msgid "{endedBookingsCount, plural, one {Réservation terminée} other {Réservations terminées}}"
+msgstr "{endedBookingsCount, plural, one {Réservation terminée} other {Réservations terminées}}"
+
+#: src/features/bookings/pages/EndedBookings.tsx:14
+msgid "{endedBookingsCount, plural, one {réservation terminée} other {réservations terminées}}"
+msgstr "{endedBookingsCount, plural, one {réservation terminée} other {réservations terminées}}"
+
 #: src/features/favorites/atoms/NumberOfResults.tsx:8
 msgid "{nbHits} favori"
 msgstr "{nbHits} favori"
@@ -1357,7 +1392,11 @@ msgstr "{nbHits} résultat"
 msgid "{nbHits} résultats"
 msgstr "{nbHits} résultats"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:60
+#: src/features/bookings/pages/Bookings.tsx:18
+msgid "{onGoingBookingsCount, plural, one {réservation en cours} other {réservations en cours}}"
+msgstr "{onGoingBookingsCount, plural, one {réservation en cours} other {réservations en cours}}"
+
+#: src/features/bookOffer/components/BookingDetails.tsx:70
 msgid "{price} seront déduits de ton crédit pass Culture"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
