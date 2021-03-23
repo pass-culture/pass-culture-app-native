@@ -92,6 +92,7 @@ export const Favorite: React.FC<Props> = (props) => {
 
   function renderBookingButton() {
     const isFreeOffer = getIsFreeOffer(offer)
+    const isBookedOffer = getIsBookedOffer(offer.id, props.user.bookedOffers)
     const doesUserHaveEnoughCredit = hasEnoughCredit(
       offer.expenseDomains,
       offer.price || offer.startPrice,
@@ -100,7 +101,7 @@ export const Favorite: React.FC<Props> = (props) => {
 
     // User is NOT beneficiary
     if (!props.user.isBeneficiary) {
-      if (offer.isExpired || offer.isExhausted) {
+      if (offer.isExpired || offer.isExhausted || isBookedOffer) {
         return null
       }
       return <BookExternallyButton url={offer.externalTicketOfficeUrl} />
@@ -108,6 +109,9 @@ export const Favorite: React.FC<Props> = (props) => {
 
     // User is an ex-beneficiary == beneficiary with expired credit
     if (props.user.isBeneficiary && props.credit.isExpired) {
+      if (isBookedOffer) {
+        return <ButtonPrimary title={_(t`Offre réservée`)} buttonHeight="tall" disabled />
+      }
       if (offer.isExpired || offer.isExhausted) {
         return null
       }
@@ -118,6 +122,9 @@ export const Favorite: React.FC<Props> = (props) => {
     }
 
     // User is beneficiary
+    if (isBookedOffer) {
+      return <ButtonPrimary title={_(t`Offre réservée`)} buttonHeight="tall" disabled />
+    }
     if (offer.isExpired) {
       return <ButtonPrimary title={_(t`Offre expirée`)} buttonHeight="tall" disabled />
     }
@@ -201,6 +208,13 @@ function getIsFreeOffer(offer: FavoriteOfferResponse): boolean {
     return offer.startPrice === 0
   }
   return false
+}
+
+function getIsBookedOffer(
+  offerId: FavoriteOfferResponse['id'],
+  bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
+): boolean {
+  return bookedOffersIds[offerId] !== undefined
 }
 
 const { width: windowWidth } = Dimensions.get('window')
