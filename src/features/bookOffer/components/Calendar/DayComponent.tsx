@@ -50,11 +50,11 @@ export const DayComponent: React.FC<Props> = ({ status, selected, date }) => {
 
   if (status === OfferStatus.NOT_BOOKABLE)
     return (
-      <DayContainer>
-        <DiagonalStripe>
+      <DiagonalStripe>
+        <DayContainer>
           <Day color={ColorsEnum.GREY_DARK}>{date.day}</Day>
-        </DiagonalStripe>
-      </DayContainer>
+        </DayContainer>
+      </DiagonalStripe>
     )
 
   return (
@@ -66,6 +66,7 @@ export const DayComponent: React.FC<Props> = ({ status, selected, date }) => {
 
 const Day = styled(Typo.ButtonText)({
   textAlign: 'center',
+  minWidth: getSpacing(6),
 })
 
 const SelectedDay = styled(View)({
