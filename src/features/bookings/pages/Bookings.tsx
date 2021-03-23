@@ -8,7 +8,7 @@ import { Badge } from 'ui/components/Badge'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
-import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 import { useBookings } from '../api'
 import { NoBookingsView } from '../components/NoBookingsView'
@@ -19,13 +19,6 @@ export const Bookings: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const onGoingBookingsCount = bookings?.ongoing_bookings?.length || 0
-  const bookingsCountLabel =
-    `${onGoingBookingsCount}\u00a0` +
-    i18n.plural({
-      value: onGoingBookingsCount,
-      one: 'réservation en cours',
-      other: 'réservations en cours',
-    })
 
   const endedBookingsCount = bookings?.ended_bookings?.length || 0
   const endedBookingsLabel = i18n.plural({
@@ -40,9 +33,7 @@ export const Bookings: React.FC = () => {
       <Container>
         {onGoingBookingsCount > 0 ? (
           <React.Fragment>
-            <BookingsCount>{bookingsCountLabel}</BookingsCount>
             <OnGoingBookingsList bookings={bookings?.ongoing_bookings} />
-            <Spacer.Flex />
           </React.Fragment>
         ) : (
           <NoBookingsView />
@@ -67,12 +58,6 @@ export const Bookings: React.FC = () => {
 const Container = styled.View({
   flex: 1,
   padding: getSpacing(4),
-})
-
-const BookingsCount = styled(Typo.Body).attrs({
-  color: ColorsEnum.GREY_DARK,
-})({
-  paddingVertical: getSpacing(2),
 })
 
 const EndedBookingsSection = styled(Section)({
