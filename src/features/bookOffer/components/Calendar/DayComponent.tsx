@@ -23,7 +23,7 @@ const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
 
 export const DayComponent: React.FC<Props> = ({ status, selected, date }) => {
   const { dispatch } = useBooking()
-  const debouncedDispatch = useRef(debounce(dispatch, 500)).current
+  const debouncedDispatch = useRef(debounce(dispatch, 300)).current
 
   const selectDate = () => {
     dispatch({ type: 'SELECT_DATE', payload: new Date(date.year, date.month - 1, date.day) })
