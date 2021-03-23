@@ -1,13 +1,11 @@
 import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
-import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { BookDuoChoice } from '../BookDuoChoice'
 
-allowConsole({ log: true })
 const mockStep = Step.DUO
 
 const mockDismissModal = jest.fn()
@@ -28,7 +26,6 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
     id: '148409',
     beginningDatetime: new Date('2021-03-02T20:00:00'),
   })),
-  useBookingOffer: jest.fn(() => mockOffer),
 }))
 
 let mockCreditOffer = 50000
@@ -53,15 +50,11 @@ describe('BookDuoChoice', () => {
   it('should select an item when pressed', async () => {
     const page = render(reactQueryProviderHOC(<BookDuoChoice />))
 
-    const soloChoice = page.queryByTestId('DuoChoice1')
+    const soloChoice = page.getByTestId('DuoChoice1')
 
-    if (soloChoice) {
-      act(() => fireEvent.press(soloChoice))
+    act(() => fireEvent.press(soloChoice))
 
-      expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
-    } else {
-      throw new Error('should have find solo choice')
-    }
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
   })
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
