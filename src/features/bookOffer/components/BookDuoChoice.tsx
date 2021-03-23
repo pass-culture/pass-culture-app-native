@@ -45,8 +45,8 @@ export const BookDuoChoice: React.FC = () => {
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.DUO ? (
         <DuoChoiceContainer>
-          <DuoChoice {...getChoiceInfosForQuantity(1)} />
-          <DuoChoice {...getChoiceInfosForQuantity(2)} />
+          <DuoChoice {...getChoiceInfosForQuantity(1)} testID={`DuoChoice1`} />
+          <DuoChoice {...getChoiceInfosForQuantity(2)} testID={`DuoChoice2`} />
         </DuoChoiceContainer>
       ) : (
         <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeQuantity}>

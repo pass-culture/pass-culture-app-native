@@ -13,6 +13,7 @@ interface Props {
   icon: FunctionComponent<IconInterface>
   onPress: () => void
   hasEnoughCredit: boolean
+  testID: string
 }
 
 export const DuoChoice: React.FC<Props> = ({
@@ -22,17 +23,18 @@ export const DuoChoice: React.FC<Props> = ({
   icon: Icon,
   onPress,
   hasEnoughCredit,
+  testID,
 }) => {
   const disabled = !hasEnoughCredit
   const textColor = getTextColor(selected, disabled)
 
   return (
-    <ChoiceBloc onPress={onPress} selected={selected} disabled={disabled}>
+    <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={disabled}>
       <Container>
         <Icon color={textColor} size={28} />
         <Typo.ButtonText color={textColor}>{title}</Typo.ButtonText>
 
-        <Caption testID="price" color={textColor}>
+        <Caption testID={`${testID}-price`} color={textColor}>
           {price}
         </Caption>
       </Container>
