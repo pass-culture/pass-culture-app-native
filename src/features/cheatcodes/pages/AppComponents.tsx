@@ -288,7 +288,7 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Duo </Text>
         </AlignedText>
         <AlignedText>
-          <DuoBold size={ICON_SIZE} />
+          <DuoBold />
           <Text> - DuoBold </Text>
         </AlignedText>
         <AlignedText>
