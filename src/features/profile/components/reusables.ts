@@ -9,12 +9,6 @@ export const ProfileContainer = styled.View({
   paddingHorizontal: getSpacing(5),
 })
 
-export const Separator = styled.View({
-  width: '100%',
-  height: 1,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-})
-
 export const GreyContainer = styled.View({
   backgroundColor: ColorsEnum.GREY_LIGHT,
   borderRadius: 6,

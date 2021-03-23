@@ -8,12 +8,11 @@ import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { SectionRow } from 'ui/components/SectionRow'
+import { Separator } from 'ui/components/Separator'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { getSpacing, Spacer } from 'ui/theme'
-
-import { Separator } from '../components/reusables'
-import { SectionRow } from '../components/SectionRow'
 
 export function LegalNotices() {
   const { data: user } = useUserProfileInfo()

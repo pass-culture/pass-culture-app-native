@@ -15,6 +15,8 @@ import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { useModal } from 'ui/components/modals/useModal'
+import { Section } from 'ui/components/Section'
+import { SectionRow } from 'ui/components/SectionRow'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { Bell } from 'ui/svg/icons/Bell'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
@@ -31,9 +33,7 @@ import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 import Package from '../../../../package.json'
 import { ProfileHeader } from '../components/ProfileHeader'
-import { ProfileSection } from '../components/ProfileSection'
 import { ProfileContainer } from '../components/reusables'
-import { SectionRow } from '../components/SectionRow'
 
 export const Profile: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -95,7 +95,7 @@ export const Profile: React.FC = () => {
       <ProfileHeader user={user} />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
-        <Section
+        <ProfileSection
           title={isLoggedIn ? _(t`Paramètres du compte`) : _(t`Paramètres de l'application`)}>
           {isLoggedIn && (
             <React.Fragment>
@@ -139,8 +139,8 @@ export const Profile: React.FC = () => {
             }
             testID="row-geolocation"
           />
-        </Section>
-        <Section title={_(t`Aides`)}>
+        </ProfileSection>
+        <ProfileSection title={_(t`Aides`)}>
           <Row
             title={_(t`Comment ça marche ?`)}
             type="navigable"
@@ -157,8 +157,8 @@ export const Profile: React.FC = () => {
             style={styles.row}
             testID="row-faq"
           />
-        </Section>
-        <Section title={_(t`Autres`)}>
+        </ProfileSection>
+        <ProfileSection title={_(t`Autres`)}>
           <Row
             title={_(t`Accessibilité`)}
             type="clickable"
@@ -183,8 +183,8 @@ export const Profile: React.FC = () => {
             style={styles.row}
             testID="row-confidentiality"
           />
-        </Section>
-        <Section title={_(t`Suivre pass Culture`)}>
+        </ProfileSection>
+        <ProfileSection title={_(t`Suivre pass Culture`)}>
           <NetworkRow>
             <NetworkRowContainer>
               <SocialNetworkCard network="instagram" />
@@ -193,9 +193,9 @@ export const Profile: React.FC = () => {
               <SocialNetworkCard network="facebook" />
             </NetworkRowContainer>
           </NetworkRow>
-        </Section>
+        </ProfileSection>
         {isLoggedIn && (
-          <Section>
+          <ProfileSection>
             <SectionRow
               title={_(t`Déconnexion`)}
               onPress={signOut}
@@ -204,15 +204,15 @@ export const Profile: React.FC = () => {
               testID="row-signout"
               style={styles.logoutRow}
             />
-          </Section>
+          </ProfileSection>
         )}
-        <Section>
+        <ProfileSection>
           <Spacer.Column numberOfSpaces={4} />
           <Version>{_(t`Version ${Package.version}`)}</Version>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistere />
           <Spacer.Column numberOfSpaces={4} />
-        </Section>
+        </ProfileSection>
       </ProfileContainer>
       <GeolocationActivationModal
         isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const Section = styled(ProfileSection).attrs({
+const ProfileSection = styled(Section).attrs({
   style: styles.section,
 })``
 

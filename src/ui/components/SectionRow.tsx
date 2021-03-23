@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 
 const TitleContainer = styled.View({
   flex: 1,
-  marginHorizontal: getSpacing(1),
+  marginHorizontal: getSpacing(2),
   textAlign: 'left',
 })
 

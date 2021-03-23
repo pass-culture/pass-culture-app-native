@@ -15,12 +15,13 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
+import { SectionRow } from 'ui/components/SectionRow'
+import { Separator } from 'ui/components/Separator'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useUpdateProfileMutation } from '../api'
-import { ProfileContainer, Separator } from '../components/reusables'
-import { SectionRow } from '../components/SectionRow'
+import { ProfileContainer } from '../components/reusables'
 
 type State = {
   allowEmails: boolean | undefined

@@ -14,11 +14,12 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { SectionRow } from 'ui/components/SectionRow'
+import { Separator } from 'ui/components/Separator'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { ProfileContainer, Separator } from '../components/reusables'
-import { SectionRow } from '../components/SectionRow'
+import { ProfileContainer } from '../components/reusables'
 
 type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
 
