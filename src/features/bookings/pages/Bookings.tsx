@@ -1,10 +1,9 @@
-import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
+import { i18n, _ } from 'libs/i18n'
 import { Badge } from 'ui/components/Badge'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { Section } from 'ui/components/Section'
@@ -20,10 +19,19 @@ export const Bookings: React.FC = () => {
 
   const onGoingBookingsCount = bookings?.ongoing_bookings?.length || 0
   const bookingsCountLabel =
-    `${onGoingBookingsCount}\u00a0` + getBookingsCountLabel(onGoingBookingsCount > 1)
+    `${onGoingBookingsCount}\u00a0` +
+    i18n.plural({
+      value: onGoingBookingsCount,
+      one: 'réservation en cours',
+      other: 'réservations en cours',
+    })
 
   const endedBookingsCount = bookings?.ended_bookings?.length || 0
-  const endedBookingsLabel = getEndedBookingsCountLabel(endedBookingsCount > 1)
+  const endedBookingsLabel = i18n.plural({
+    value: endedBookingsCount,
+    one: 'Réservation terminée',
+    other: 'Réservations terminées',
+  })
 
   return (
     <React.Fragment>
@@ -54,12 +62,6 @@ export const Bookings: React.FC = () => {
   )
 }
 
-const getBookingsCountLabel = (plural: boolean) =>
-  plural ? _(t`réservations en cours`) : _(t`réservation en cours`)
-
-const getEndedBookingsCountLabel = (plural: boolean) =>
-  plural ? _(t`Réservations terminées`) : _(t`Réservation terminée`)
-
 const Container = styled.View({
   flex: 1,
   padding: getSpacing(4),
@@ -68,7 +70,6 @@ const Container = styled.View({
 const BookingsCount = styled(Typo.Body).attrs({
   color: ColorsEnum.GREY_DARK,
 })({
-  fontSize: 15,
   paddingVertical: getSpacing(2),
 })
 
