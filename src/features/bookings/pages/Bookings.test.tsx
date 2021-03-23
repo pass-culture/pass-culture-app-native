@@ -17,7 +17,7 @@ import { Bookings } from './Bookings'
 allowConsole({ error: true })
 
 describe('Bookings', () => {
-  it('should display the right account of ongoing bookings', async () => {
+  it('should display the right number of ongoing bookings', async () => {
     const { queryByText } = renderBookings()
 
     await superFlushWithAct(10)
