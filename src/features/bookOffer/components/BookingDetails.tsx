@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
+import { isApiError } from 'api/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -25,6 +26,14 @@ interface Props {
   stocks: OfferStockResponse[]
 }
 
+const errorCodeToMessage: Record<string, string> = {
+  INSUFFICIENT_CREDIT: _(
+    t`Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !`
+  ),
+  ALREADY_BOOKED: _(t`Attention, il est impossible de réserver plusieurs fois la même offre !`),
+  STOCK_NOT_BOOKABLE: _(t`Oups, cette offre n’est plus disponible !`),
+}
+
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { bookingState, dismissModal, dispatch } = useBooking()
@@ -37,11 +46,17 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       dismissModal()
       navigate('BookingConfirmation')
     },
-    onError: () => {
-      showErrorSnackBar({
-        message: _(t`Erreur. L'offre n'a pas été réservée !`),
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+    onError: (error) => {
+      let message = _(t`En raison d’une erreur technique, l’offre n’a pas pu être réservée`)
+
+      if (isApiError(error)) {
+        const { content } = error as { content: { code: string } }
+        if (content && content.code && content.code in errorCodeToMessage) {
+          message = errorCodeToMessage[content.code]
+        }
+      }
+
+      showErrorSnackBar({ message, timeout: SNACK_BAR_TIME_OUT })
     },
   })
 
