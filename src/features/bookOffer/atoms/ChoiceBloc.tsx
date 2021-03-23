@@ -22,6 +22,12 @@ const getBorderColor = (selected: boolean, disabled?: boolean) => {
   if (disabled) return ColorsEnum.GREY_MEDIUM
   return ColorsEnum.GREY_DARK
 }
+
+export const getTextColor = (selected: boolean, disabled: boolean) => {
+  if (selected) return ColorsEnum.WHITE
+  if (disabled) return ColorsEnum.GREY_DARK
+  return ColorsEnum.BLACK
+}
 interface Props {
   selected: boolean
   onPress: () => void

@@ -4,15 +4,9 @@ import styled from 'styled-components/native'
 
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
-import { ChoiceBloc } from './ChoiceBloc'
-
-const getTextColor = (selected: boolean, disabled: boolean) => {
-  if (selected) return ColorsEnum.WHITE
-  if (disabled) return ColorsEnum.GREY_DARK
-  return ColorsEnum.BLACK
-}
+import { ChoiceBloc, getTextColor } from './ChoiceBloc'
 
 const getWording = (price: number, isBookable: boolean, enoughCredit: boolean): string => {
   if (!enoughCredit) return _(t`crédit insuffisant`)
