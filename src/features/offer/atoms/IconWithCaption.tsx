@@ -5,7 +5,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 interface IconWithCaptionProps {
-  Icon: React.ElementType<IconInterface>
+  Icon: React.FC<IconInterface>
   caption: string
   testID?: string
 }

@@ -6,7 +6,7 @@ import { IconInterface } from '../svg/icons/types'
 import { ColorsEnum } from '../theme'
 
 interface Props {
-  Icon: React.ElementType<IconInterface>
+  Icon: React.FC<IconInterface>
   transition: Animated.AnimatedInterpolation
   size: number
   initialColor: ColorsEnum

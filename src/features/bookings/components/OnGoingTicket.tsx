@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ClippedImage, ClippedImageProps } from 'ui/components/ClippedImage'
-import { Television } from 'ui/svg/icons/Television'
+import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 
 interface OnGoingTicketProps {
   image?: string
@@ -28,8 +28,8 @@ const getClippedImageProps = (image?: string): ClippedImageProps =>
     {
       clipId: 'onGoingClip',
       path: onGoingTicketPath,
-      width: 81,
-      height: 118,
+      width: 73,
+      height: 110,
     },
-    image ? { image } : { altIcon: Television }
+    image ? { image } : { altIcon: OfferDigital }
   )

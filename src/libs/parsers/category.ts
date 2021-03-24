@@ -27,7 +27,7 @@ export const parseCategory = (category: CategoryNameEnum | null | undefined): st
 
 // Map the facetFilter (in algolia) to the category Icon
 export const MAP_CATEGORY_TO_ICON: {
-  [k in CategoryNameEnum]: React.ElementType<IconInterface>
+  [k in CategoryNameEnum]: React.FC<IconInterface>
 } = {
   CINEMA: Category.Cinema,
   VISITE: Category.Exposition,
@@ -42,9 +42,7 @@ export const MAP_CATEGORY_TO_ICON: {
   INSTRUMENT: Category.Instrument,
 }
 
-export const mapCategoryToIcon = (
-  category: CategoryNameEnum | null
-): React.ElementType<IconInterface> => {
+export const mapCategoryToIcon = (category: CategoryNameEnum | null): React.FC<IconInterface> => {
   if (category && category in MAP_CATEGORY_TO_ICON) return MAP_CATEGORY_TO_ICON[category]
   return Category.Artwork
 }

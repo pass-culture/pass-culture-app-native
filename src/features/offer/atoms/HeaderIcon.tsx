@@ -21,7 +21,7 @@ interface HeaderIconProps {
   }
 }
 
-const getIcon = (iconName: HeaderIconProps['iconName']): React.ElementType<IconInterface> => {
+const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface> => {
   if (iconName === 'back') return ArrowPrevious
   if (iconName === 'share') return Share
   if (iconName === 'favorite-filled') return FavoriteFilled

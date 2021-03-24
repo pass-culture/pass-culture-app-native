@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import Svg, { ClipPath, Defs, G, Image, Path, Use, LinearGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { Television } from 'ui/svg/icons/Television'
+import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getNativeShadow } from 'ui/theme'
 
@@ -26,7 +26,7 @@ export type ClippedImageProps = {
 export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
   const linearGradientId = props.clipId + '_linear'
   const pathId = props.clipId + '_path'
-  const Icon = props.altIcon || Television
+  const Icon = props.altIcon || OfferDigital
 
   return (
     <View
@@ -81,8 +81,6 @@ export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
 
 const IconContainer = styled.View({
   position: 'absolute',
-  top: -4,
-  left: -4,
   justifyContent: 'center',
   alignItems: 'center',
   flex: 1,
