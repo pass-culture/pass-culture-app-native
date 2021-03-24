@@ -1,8 +1,6 @@
 import React from 'react'
 
-import { Expense, UserProfileResponse } from 'api/gen'
-import { ExpensesAndDepositVersion, ExpenseV2 } from 'features/profile/components/types'
-import { computeWalletBalance } from 'features/profile/utils'
+import { UserProfileResponse } from 'api/gen'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 
 import { BeneficiaryHeader } from './BeneficiaryHeader'
@@ -22,7 +20,6 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   }
 
   if (user.isBeneficiary) {
-    const depositVersion = user.depositVersion && user.depositVersion === 1 ? 1 : 2
     const depositExpirationDate = user.depositExpirationDate
       ? formatToSlashedFrenchDate(user.depositExpirationDate.toString())
       : undefined
@@ -39,9 +36,8 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       <BeneficiaryHeader
         firstName={user.firstName}
         lastName={user.lastName}
-        walletBalance={computeWalletBalance(user.expenses)}
+        domainsCredit={user.domainsCredit}
         depositExpirationDate={depositExpirationDate}
-        {...getBeneficiaryHeaderProps(depositVersion, user.expenses)}
       />
     )
   }
@@ -57,23 +53,4 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       eligibilityEndDatetime={user.eligibilityEndDatetime.toString()}
     />
   )
-}
-
-export function getBeneficiaryHeaderProps(
-  depositVersion: 1 | 2,
-  expenses: Expense[] | ExpenseV2[]
-) {
-  let localProps: ExpensesAndDepositVersion
-  if (depositVersion === 1) {
-    localProps = {
-      expenses: expenses as Expense[],
-      depositVersion: depositVersion,
-    }
-  } else {
-    localProps = {
-      expenses: expenses as ExpenseV2[],
-      depositVersion: depositVersion,
-    }
-  }
-  return localProps
 }

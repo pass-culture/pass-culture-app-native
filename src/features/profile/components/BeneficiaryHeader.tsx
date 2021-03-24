@@ -2,9 +2,9 @@ import { t } from '@lingui/macro'
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { Expense } from 'api/gen/api'
+import { DomainsCredit } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
-import { ExpenseV2 } from 'features/profile/components/types'
+import { computeCredit } from 'features/profile/utils'
 import { _ } from 'libs/i18n'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -13,27 +13,12 @@ import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
 type BeneficiaryHeaderProps = {
   firstName?: string | null
   lastName?: string | null
-  walletBalance: number
+  domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
-} & (
-  | {
-      depositVersion: 1
-      expenses: Array<Expense>
-    }
-  | {
-      depositVersion: 2
-      expenses: Array<ExpenseV2>
-    }
-)
-
+}
 export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProps>) {
-  const expenses =
-    props.depositVersion === 1
-      ? (props.expenses as Array<Expense>)
-      : (props.expenses as Array<ExpenseV2>)
-
   return (
-    <Container testID={`beneficiary-header-${props.depositVersion}`}>
+    <Container testID="beneficiary-header">
       <HeaderBackgroundWrapper>
         <HeaderBackground width={ScreenWidth} />
       </HeaderBackgroundWrapper>
@@ -44,7 +29,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
         <Spacer.Column numberOfSpaces={4.5} />
         {/* eslint-disable-next-line react-native/no-raw-text */}
         <Typo.Hero color={ColorsEnum.WHITE}>{`${convertCentsToEuros(
-          props.walletBalance
+          computeCredit(props.domainsCredit)
         )} €`}</Typo.Hero>
         <Spacer.Column numberOfSpaces={2} />
         {props.depositExpirationDate && (
@@ -54,11 +39,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
         )}
         <Spacer.Column numberOfSpaces={6} />
       </UserNameAndCredit>
-      <Ceilings
-        depositVersion={props.depositVersion}
-        expenses={expenses}
-        walletBalance={props.walletBalance}
-      />
+      <Ceilings domainsCredit={props.domainsCredit} />
     </Container>
   )
 }

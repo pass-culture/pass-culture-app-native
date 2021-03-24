@@ -45,11 +45,11 @@ function simulateAuthenticatedUser(partialUser?: Partial<UserProfileResponse>) {
           email: 'email@domain.ext',
           firstName: 'Jean',
           depositExpirationDate: '2023-02-16T17:16:04.735235',
-          expenses: [
-            { current: 400, domain: 'all', limit: 50000 },
-            { current: 400, domain: 'digital', limit: 20000 },
-            { current: 0, domain: 'physical', limit: 20000 },
-          ],
+          domainsCredit: {
+            all: { initial: 50000, remaining: 49600 },
+            physical: { initial: 20000, remaining: 0 },
+            digital: { initial: 20000, remaining: 19600 },
+          },
           ...(partialUser || {}),
         } as UserProfileResponse)
       )

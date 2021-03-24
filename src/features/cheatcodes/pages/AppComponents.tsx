@@ -5,13 +5,12 @@ import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum, Expense, ExpenseDomain } from 'api/gen/api'
+import { CategoryNameEnum } from 'api/gen/api'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
-import { ExpenseV2 } from 'features/profile/components/types'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { mapCategoryToIcon } from 'libs/parsers'
@@ -107,16 +106,16 @@ const NUMBER_OF_STEPS = 4
 const THIS_YEAR = new Date().getFullYear()
 const ICON_SIZE = getSpacing(6)
 
-const expenses_v1: Array<Expense> = [
-  { current: 100, domain: ExpenseDomain.All, limit: 500 },
-  { current: 50, domain: ExpenseDomain.Digital, limit: 100 },
-  { current: 50, domain: ExpenseDomain.Physical, limit: 200 },
-]
+const domains_credit_v1 = {
+  all: { initial: 50000, remaining: 40000 },
+  physical: { initial: 30000, remaining: 10000 },
+  digital: { initial: 30000, remaining: 20000 },
+}
 
-const expenses_v2: Array<ExpenseV2> = [
-  { current: 150, domain: ExpenseDomain.All, limit: 300 },
-  { current: 100, domain: ExpenseDomain.Digital, limit: 200 },
-]
+const domains_credit_v2 = {
+  all: { initial: 30000, remaining: 10000 },
+  digital: { initial: 20000, remaining: 5000 },
+}
 
 export const AppComponents: FunctionComponent = () => {
   const {
@@ -618,9 +617,9 @@ export const AppComponents: FunctionComponent = () => {
 
         <Spacer.Column numberOfSpaces={4} />
         <View>
-          <BeneficiaryCeilings depositVersion={1} expenses={expenses_v1} walletBalance={400} />
+          <BeneficiaryCeilings domainsCredit={domains_credit_v1} />
           <Spacer.Column numberOfSpaces={4} />
-          <BeneficiaryCeilings depositVersion={2} expenses={expenses_v2} walletBalance={150} />
+          <BeneficiaryCeilings domainsCredit={domains_credit_v2} />
         </View>
       </AccordionItem>
 

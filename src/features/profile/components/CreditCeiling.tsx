@@ -2,31 +2,65 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Expense, ExpenseDomain } from 'api/gen/api'
+import { ExpenseDomain } from 'api/gen/api'
+import { OfferDigital } from 'ui/svg/icons/OfferDigital'
+import { OfferOutings } from 'ui/svg/icons/OfferOutings'
+import { OfferOutingsPhysical } from 'ui/svg/icons/OfferOutingsPhysical'
+import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 import { ProgressBar } from '../../../ui/components/bars/ProgressBar'
 
-import { CreditCeilingMapV1, CreditCeilingMapV2, ExpenseTypeAndVersion, ExpenseV2 } from './types'
-
 type CreditCeilingProps = {
   amount: number
-  limit: number
-} & ExpenseTypeAndVersion
+  initial: number
+  domain: ExpenseDomain
+  hasPhysicalCeiling: boolean
+}
+
+const CreditCeilingMapWithPhysical = {
+  [ExpenseDomain.All]: {
+    label: 'en sorties (concerts...)',
+    color: ColorsEnum.ACCENT,
+    icon: OfferOutings,
+  },
+  [ExpenseDomain.Physical]: {
+    label: 'en offres physiques (livres...)',
+    color: ColorsEnum.SECONDARY,
+    icon: OfferPhysical,
+  },
+  [ExpenseDomain.Digital]: {
+    label: 'en offres numériques (streaming...)',
+    color: ColorsEnum.PRIMARY,
+    icon: OfferDigital,
+  },
+}
+
+const CreditCeilingMapWithoutPhysical = {
+  [ExpenseDomain.All]: {
+    label: 'en sorties & biens physiques (concerts, livres...)',
+    color: ColorsEnum.PRIMARY,
+    icon: OfferOutingsPhysical,
+  },
+  [ExpenseDomain.Digital]: {
+    label: 'en offres numériques (streaming...)',
+    color: ColorsEnum.SECONDARY,
+    icon: OfferDigital,
+  },
+  [ExpenseDomain.Physical]: null,
+}
 
 export function CreditCeiling(props: CreditCeilingProps) {
   let ceilingConfig = null
-  if (props.depositVersion === 1) {
-    ceilingConfig = CreditCeilingMapV1[props.type]
-  } else if (props.depositVersion === 2) {
-    ceilingConfig = CreditCeilingMapV2[props.type]
-  }
+  ceilingConfig = props.hasPhysicalCeiling
+    ? CreditCeilingMapWithPhysical[props.domain]
+    : CreditCeilingMapWithoutPhysical[props.domain]
 
-  if (!ceilingConfig || props.limit <= 0) {
+  if (!ceilingConfig || props.initial <= 0) {
     return null
   }
   const amountLabel = `${props.amount} €`
-  const progress = Number((props.amount / props.limit).toFixed(2))
+  const progress = Number((props.amount / props.initial).toFixed(2))
   const color = props.amount === 0 ? ColorsEnum.GREY_DARK : ceilingConfig.color
 
   return (
@@ -38,22 +72,6 @@ export function CreditCeiling(props: CreditCeilingProps) {
       </View>
     </Container>
   )
-}
-
-export function getCreditCeilingProps(depositVersion: 1 | 2, expense: Expense | ExpenseV2) {
-  let localProps: ExpenseTypeAndVersion
-  if (depositVersion === 1) {
-    localProps = {
-      type: expense.domain as ExpenseDomain,
-      depositVersion: depositVersion,
-    }
-  } else {
-    localProps = {
-      type: expense.domain as ExpenseV2['domain'],
-      depositVersion: depositVersion,
-    }
-  }
-  return localProps
 }
 
 const Container = styled.View({
