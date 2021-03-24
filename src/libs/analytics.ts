@@ -50,6 +50,7 @@ export enum AnalyticsEvent {
   NOTIFICATION_TOGGLE = 'NotificationToggle',
   OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
   OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
+  ID_CHECK = 'IdCheck',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -188,6 +189,9 @@ const logOpenLocationSettings = () =>
 const logOpenNotificationSettings = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS)
 
+const logIdCheck = (from: 'Profile') =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.ID_CHECK, { from })
+
 const logNotificationToggle = (enableEmail: boolean, enablePush?: boolean) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
     enableEmail,
@@ -238,6 +242,7 @@ export const analytics = {
   logNoSearchResult,
   logNotificationToggle,
   logOfferSeenDuration,
+  logIdCheck,
   logProfilSignUp,
   logRecommendationModuleSeen,
   logReinitializeFilters,
