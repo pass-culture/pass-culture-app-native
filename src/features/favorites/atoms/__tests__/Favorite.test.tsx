@@ -12,7 +12,6 @@ import {
 } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import { Credit } from 'features/home/services/useAvailableCredit'
-import * as NavigationHelpers from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -31,16 +30,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
   }),
 }))
-
-enum ExpectedCTA {
-  InAppBooking = 'InAppBooking',
-  ExternalBooking = 'ExternalBooking',
-  BookedOffer = 'BookedOffer',
-  ExpiredOffer = 'ExpiredOffer',
-  ExhaustedOffer = 'ExhaustedOffer',
-  NotEnoughCredit = 'NotEnoughCredit',
-  NoButton = 'NoButton',
-}
 
 const credit: Credit = { amount: 100, isExpired: false }
 const favorite: FavoriteResponse = {
@@ -87,10 +76,6 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
     favoritesState: mockFavoritesState,
   }),
 }))
-
-const openExternalUrl = jest
-  .spyOn(NavigationHelpers, 'openExternalUrl')
-  .mockImplementation(jest.fn())
 
 describe('<Favorite /> component', () => {
   afterEach(jest.clearAllMocks)
@@ -156,87 +141,6 @@ describe('<Favorite /> component', () => {
   })
 })
 
-describe('<Favorite /> component - Booking button', () => {
-  afterEach(jest.clearAllMocks)
-
-  describe('when user is beneficiary', () => {
-    // prettier-ignore : do not format the following "table" to keep it readable
-    it.each`
-      user                                                     | credit    | favorite                                                                              | expectedCTA
-      ${getUser()}                                             | ${credit} | ${getFavorite()}                                                                      | ${ExpectedCTA.InAppBooking}
-      ${getUser()}                                             | ${credit} | ${getFavorite()}                                                                      | ${ExpectedCTA.InAppBooking}
-      ${getUser({ remainingCredit: 0 })}                       | ${credit} | ${getFavorite({ price: 0, startPrice: null })}                                        | ${ExpectedCTA.InAppBooking}
-      ${getUser({ remainingCredit: 10, isBookedOffer: true })} | ${credit} | ${getFavorite({ isExpired: true, isExhausted: true, price: 50 })}                     | ${ExpectedCTA.BookedOffer}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getFavorite({ isExpired: true, isExhausted: true, price: 50 })}                     | ${ExpectedCTA.ExpiredOffer}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getFavorite({ isExpired: true, isExhausted: false, price: 50 })}                    | ${ExpectedCTA.ExpiredOffer}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getFavorite({ isExpired: false, isExhausted: true, price: 50 })}                    | ${ExpectedCTA.ExhaustedOffer}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getFavorite({ isExpired: false, isExhausted: false, price: 50, startPrice: null })} | ${ExpectedCTA.NotEnoughCredit}
-      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getFavorite({ isExpired: false, isExhausted: false, price: null, startPrice: 50 })} | ${ExpectedCTA.NotEnoughCredit}
-    `(
-      `should has CTA = $expectedCTA when 
-        - credit = $credit 
-        - favorite = $favorite
-        - offer price = $favorite.offer.price
-        - offer startPrice = $favorite.offer.startPrice
-        - offer isExpired = $favorite.offer.isExpired
-        - offer isExhausted = $favorite.offer.isExhausted
-        - offer externalTicketOfficeUrl = $favorite.offer.externalTicketOfficeUrl`,
-      favoriteBookingButtonTestRunner
-    )
-  })
-
-  describe('when user is ex-beneficiary (i.e. beneficiary with expired credit)', () => {
-    const expiredCredit = { ...credit, isExpired: true }
-    // prettier-ignore : do not format the following "table" to keep it readable
-    it.each`
-      user                                | credit           | favorite                                                                               | expectedCTA
-      ${getUser()}                        | ${expiredCredit} | ${getFavorite({ price: 0 })}                                                           | ${ExpectedCTA.InAppBooking}
-      ${getUser()}                        | ${expiredCredit} | ${getFavorite({ price: 100 })}                                                         | ${ExpectedCTA.ExternalBooking}
-      ${getUser()}                        | ${expiredCredit} | ${getFavorite({ externalTicketOfficeUrl: null })}                                      | ${ExpectedCTA.NoButton}
-      ${getUser({ isBookedOffer: true })} | ${expiredCredit} | ${getFavorite({ isExpired: true, isExhausted: true })}                                 | ${ExpectedCTA.BookedOffer}
-      ${getUser()}                        | ${expiredCredit} | ${getFavorite({ isExpired: true, isExhausted: true })}                                 | ${ExpectedCTA.NoButton}
-      ${getUser()}                        | ${expiredCredit} | ${getFavorite({ isExpired: true, isExhausted: false })}                                | ${ExpectedCTA.NoButton}
-      ${getUser()}                        | ${expiredCredit} | ${getFavorite({ isExpired: false, isExhausted: true })}                                | ${ExpectedCTA.NoButton}
-      ${getUser({ remainingCredit: 10 })} | ${expiredCredit} | ${getFavorite({ isExpired: false, isExhausted: false, price: 500, startPrice: null })} | ${ExpectedCTA.ExternalBooking}
-      ${getUser({ remainingCredit: 10 })} | ${expiredCredit} | ${getFavorite({ isExpired: false, isExhausted: false, price: null, startPrice: 500 })} | ${ExpectedCTA.ExternalBooking}
-    `(
-      `should has CTA = $expectedCTA when 
-        - credit = $credit 
-        - favorite = $favorite
-        - offer price = $favorite.offer.price
-        - offer startPrice = $favorite.offer.startPrice
-        - booked offers = $user.bookedOffers
-        - offer isExpired = $favorite.offer.isExpired
-        - offer isExhausted = $favorite.offer.isExhausted
-        - offer externalTicketOfficeUrl = $favorite.offer.externalTicketOfficeUrl`,
-      favoriteBookingButtonTestRunner
-    )
-  })
-
-  describe('when user is NOT a beneficiary', () => {
-    // prettier-ignore : do not format the following "table" to keep it readable
-    it.each`
-      user                                                      | credit    | favorite                                                | expectedCTA
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getFavorite({})}                                      | ${ExpectedCTA.ExternalBooking}
-      ${getUser({ isBeneficiary: false, isBookedOffer: true })} | ${credit} | ${getFavorite({})}                                      | ${ExpectedCTA.NoButton}
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getFavorite({ externalTicketOfficeUrl: null })}       | ${ExpectedCTA.NoButton}
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getFavorite({ isExpired: true, isExhausted: true })}  | ${ExpectedCTA.NoButton}
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getFavorite({ isExpired: true, isExhausted: false })} | ${ExpectedCTA.NoButton}
-      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getFavorite({ isExpired: false, isExhausted: true })} | ${ExpectedCTA.NoButton}
-    `(
-      `should has CTA = $expectedCTA when 
-        - credit = $credit 
-        - favorite = $favorite
-        - offer price = $favorite.offer.price
-        - offer startPrice = $favorite.offer.startPrice
-        - offer isExpired = $favorite.offer.isExpired
-        - offer isExhausted = $favorite.offer.isExhausted
-        - offer externalTicketOfficeUrl = $favorite.offer.externalTicketOfficeUrl`,
-      favoriteBookingButtonTestRunner
-    )
-  })
-})
-
 type Options = {
   id?: number
   hasRemoveFavoriteError?: boolean
@@ -278,141 +182,4 @@ function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {
       <Favorite credit={credit} favorite={favorite} user={user} setOfferToBook={setOfferToBook} />
     )
   )
-}
-
-function getUser(params?: {
-  isBeneficiary?: boolean
-  remainingCredit?: number
-  isBookedOffer?: boolean
-}) {
-  const { isBeneficiary = true, remainingCredit = 300, isBookedOffer = false } = params || {
-    isBeneficiary: true,
-    remainingCredit: 300,
-    isBookedOffer: false,
-  }
-  return {
-    isBeneficiary,
-    bookedOffers: isBookedOffer ? { [favorite.offer.id]: 666 } : {},
-    domainsCredit: { [ExpenseDomain.All]: { initial: 500, remaining: remainingCredit } },
-  }
-}
-
-function getFavorite(params?: {
-  externalTicketOfficeUrl?: string | null
-  isExpired?: boolean
-  isExhausted?: boolean
-  price?: number | null
-  startPrice?: number | null
-}) {
-  const {
-    externalTicketOfficeUrl = favorite.offer.externalTicketOfficeUrl,
-    isExpired = false,
-    isExhausted = false,
-    price = null,
-    startPrice = 270,
-  } = params || {
-    externalTicketOfficeUrl: favorite.offer.externalTicketOfficeUrl,
-    isExpired: false,
-    isExhausted: false,
-    price: null,
-    startPrice: 270,
-  }
-  return {
-    ...favorite,
-    offer: {
-      ...favorite.offer,
-      externalTicketOfficeUrl,
-      isExpired,
-      isExhausted,
-      price,
-      startPrice,
-    },
-  }
-}
-
-function favoriteBookingButtonTestRunner({
-  user,
-  credit,
-  favorite,
-  expectedCTA,
-}: {
-  user: UserProfileResponse
-  credit: Credit
-  favorite: FavoriteResponse
-  expectedCTA: ExpectedCTA
-}) {
-  const renderAPI = renderFavorite({ credit, favorite, user })
-  if (expectedCTA === ExpectedCTA.InAppBooking) {
-    fireEvent.press(renderAPI.getByText('Réserver'))
-    expect(setOfferToBook).toBeCalledWith(favorite.offer)
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
-    return
-  }
-  if (expectedCTA === ExpectedCTA.ExternalBooking) {
-    fireEvent.press(renderAPI.getByText('Réserver'))
-    expect(setOfferToBook).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeTruthy()
-    expect(openExternalUrl).toBeCalledWith(favorite.offer.externalTicketOfficeUrl)
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
-    return
-  }
-  if (expectedCTA === ExpectedCTA.BookedOffer) {
-    expect(setOfferToBook).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeTruthy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
-    return
-  }
-  if (expectedCTA === ExpectedCTA.ExpiredOffer) {
-    expect(setOfferToBook).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeTruthy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
-    return
-  }
-  if (expectedCTA === ExpectedCTA.ExhaustedOffer) {
-    expect(setOfferToBook).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeTruthy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
-    return
-  }
-  if (expectedCTA === ExpectedCTA.NotEnoughCredit) {
-    expect(setOfferToBook).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeTruthy()
-    return
-  }
-  if (expectedCTA === ExpectedCTA.NoButton) {
-    expect(setOfferToBook).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeFalsy()
-    expect(openExternalUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre expirée')).toBeFalsy()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeFalsy()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeFalsy()
-    return
-  }
-  throw new Error('expectedCTA does not match any member of enum ExpectedCTA')
 }
