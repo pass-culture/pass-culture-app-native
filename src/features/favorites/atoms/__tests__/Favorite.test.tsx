@@ -54,7 +54,7 @@ const favorite: FavoriteResponse = {
     price: null,
     startDate: new Date('2021-03-04T20:00:00'),
     startPrice: 270,
-    isExhausted: false,
+    isSoldOut: false,
     isExpired: false,
   },
 }

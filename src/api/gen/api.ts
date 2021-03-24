@@ -602,13 +602,13 @@ export interface FavoriteOfferResponse {
      * @type {boolean}
      * @memberof FavoriteOfferResponse
      */
-    isExhausted?: boolean;
+    isExpired?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof FavoriteOfferResponse
      */
-    isExpired?: boolean;
+    isSoldOut?: boolean;
     /**
      * 
      * @type {string}
@@ -923,6 +923,18 @@ export interface OfferResponse {
     isDuo: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof OfferResponse
+     */
+    isReleased: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferResponse
+     */
+    isSoldOut: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof OfferResponse
      */
@@ -981,6 +993,18 @@ export interface OfferStockResponse {
      * @memberof OfferStockResponse
      */
     isBookable: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferStockResponse
+     */
+    isExpired: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferStockResponse
+     */
+    isSoldOut: boolean;
     /**
      * 
      * @type {number}
