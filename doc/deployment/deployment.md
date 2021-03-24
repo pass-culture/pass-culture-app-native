@@ -48,7 +48,7 @@ We do it once a week at the end of an iteration.
 When you want to deploy the current version of master in staging, you can run the following command:
 
 - `yarn trigger:staging:deploy`
-  This will create a tag `staging_vX.X.X` and push it.
+  This will create a tag `vX.X.X` and push it.
   And this will create a pull request from master to `staging` branch.
   Once, it is all green, you can merge it.
   CircleCI will detect the merge on `staging`branch and launch the lanes `deploy-ios-staging` & `deploy-android-staging` (see `.circleci/config.yml` file)
@@ -59,9 +59,10 @@ When you want to deploy the current version of master in staging, you can run th
 
 To deploy to production:
 
+- `git checkout staging`: because we want to deploy what have been tested by PO on staging env (last tag vX.X.X)
+
 - `yarn trigger:production:deploy`
-  This will create a tag `production_vX.X.X` and push it.
-  And this will create a pull request from master to `production` branch.
+  And this will create a pull request from `staging` to `production` branch.
   CircleCI will detect the tag and launch the lane `deploy-android-production-hard` (see `.circleci/config.yml` file)
 
 This will only trigger Android Production hard deploy for the moment.
