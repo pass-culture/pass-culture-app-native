@@ -1,4 +1,4 @@
-import { act, fireEvent, render } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -50,13 +50,9 @@ describe('Bookings', () => {
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {
     const { getByTestId } = renderBookings()
 
-    await superFlushWithAct(10)
-
-    await act(async () => {
-      const row = getByTestId('row-ended-bookings')
-      await fireEvent.press(row)
-    })
-
+    await superFlushWithAct()
+    fireEvent.press(getByTestId('row-ended-bookings'))
+    await superFlushWithAct()
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('EndedBookings')
     })
