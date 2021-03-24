@@ -12,7 +12,7 @@ import {
 import { useGeolocation } from 'libs/geolocation'
 
 import { useFavoritesState } from './FavoritesWrapper'
-import { FavoritesParameters } from './reducer'
+import { FavoritesState } from './reducer'
 
 export interface FakePaginatedFavoritesOptions {
   page: number
@@ -73,12 +73,12 @@ export const getPaginatedFavorites = async (
 
 const useFavoritesInfiniteQuery = (
   data: PaginatedFavoritesResponse | undefined,
-  favoritesParameters: FavoritesParameters,
+  favoritesParameters: FavoritesState,
   position: GeoCoordinates | null
 ) =>
   useInfiniteQuery<FakePaginatedFavoritesResponse>(
     ['favoritesResults', favoritesParameters],
-    async (context: QueryFunctionContext<[string, FavoritesParameters], number>) =>
+    async (context: QueryFunctionContext<[string, FavoritesState], number>) =>
       await getPaginatedFavorites(data, {
         position,
         page: context.pageParam || 0,

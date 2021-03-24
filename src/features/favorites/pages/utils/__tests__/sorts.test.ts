@@ -1,6 +1,6 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { FavoriteResponse } from 'api/gen'
+import { ExpenseDomain, FavoriteResponse } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/api/snaps/favorisResponseSnap'
 
 import { sortByIdDesc, sortByAscendingPrice, sortByDistanceAroundMe } from '../sorts'
@@ -26,6 +26,7 @@ describe('Favorites sorts', () => {
             label: 'Pratique artistique',
             name: 'LECON',
           },
+          expenseDomains: [ExpenseDomain.All],
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
@@ -52,6 +53,7 @@ describe('Favorites sorts', () => {
             label: 'Spectacle',
             name: 'SPECTACLE',
           },
+          expenseDomains: [ExpenseDomain.All],
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
@@ -78,6 +80,7 @@ describe('Favorites sorts', () => {
             label: 'Pratique artistique',
             name: 'LECON',
           },
+          expenseDomains: [ExpenseDomain.All],
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
@@ -104,6 +107,7 @@ describe('Favorites sorts', () => {
             label: 'Spectacle',
             name: 'SPECTACLE',
           },
+          expenseDomains: [ExpenseDomain.All],
           externalTicketOfficeUrl: null,
           image: null,
           coordinates: {
@@ -134,6 +138,7 @@ describe('Favorites sorts', () => {
             label: 'Pratique artistique',
             name: 'LECON',
           },
+          expenseDomains: [ExpenseDomain.All],
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
@@ -160,6 +165,7 @@ describe('Favorites sorts', () => {
             label: 'Spectacle',
             name: 'SPECTACLE',
           },
+          expenseDomains: [ExpenseDomain.All],
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
@@ -186,6 +192,7 @@ describe('Favorites sorts', () => {
             label: 'Spectacle',
             name: 'SPECTACLE',
           },
+          expenseDomains: [ExpenseDomain.All],
           externalTicketOfficeUrl: null,
           image: null,
           coordinates: {
@@ -208,6 +215,7 @@ describe('Favorites sorts', () => {
             label: 'Pratique artistique',
             name: 'LECON',
           },
+          expenseDomains: [ExpenseDomain.All],
           externalTicketOfficeUrl: null,
           image: {
             credit: null,
