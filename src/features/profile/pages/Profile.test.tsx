@@ -10,6 +10,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { flushAllPromises } from 'tests/utils'
 
@@ -199,7 +200,8 @@ describe('Profile component', () => {
       const row = getByTestId('row-signout')
       fireEvent.press(row)
 
-      expect(mockSignOut).toHaveBeenCalled()
+      expect(analytics.logLogout).toBeCalled()
+      expect(mockSignOut).toBeCalled()
     })
   })
 })

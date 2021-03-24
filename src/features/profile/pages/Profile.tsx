@@ -10,6 +10,7 @@ import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { _ } from 'libs/i18n'
@@ -201,7 +202,10 @@ export const Profile: React.FC = () => {
           <ProfileSection>
             <SectionRow
               title={_(t`Déconnexion`)}
-              onPress={signOut}
+              onPress={() => {
+                analytics.logLogout()
+                signOut()
+              }}
               type="clickable"
               icon={SignOut}
               testID="row-signout"
