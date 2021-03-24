@@ -69,17 +69,17 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   }
 
   async function synchronizePermissionAndPosition(newPermissionState: GeolocPermissionState) {
+    const isPermissionGranted = newPermissionState === GeolocPermissionState.GRANTED
+    await storage.saveObject('has_allowed_geolocation', isPermissionGranted)
     setPermissionState(newPermissionState)
     triggerPositionUpdate()
+    return isPermissionGranted
   }
 
   // this function is used to set OS permissions according to user choice on native geolocation popup
   async function contextualRequestGeolocPermission(params?: RequestGeolocPermissionParams) {
     const newPermissionState = await requestGeolocPermission()
-    const isPermissionGranted = newPermissionState === GeolocPermissionState.GRANTED
-
-    await storage.saveObject('has_allowed_geolocation', isPermissionGranted)
-    synchronizePermissionAndPosition(newPermissionState)
+    const isPermissionGranted = await synchronizePermissionAndPosition(newPermissionState)
 
     if (params?.onSubmit) {
       params.onSubmit()
