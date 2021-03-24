@@ -5,6 +5,7 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { GetIdCheckTokenResponse } from 'api/gen'
+import { analytics } from 'libs/analytics'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
@@ -34,7 +35,7 @@ describe('NonBeneficiaryHeader', () => {
 
     getByTestId('younger-badge')
   })
-  it('should render the right body for 18 years old users', () => {
+  it('should render the right body for 18 years old users and call analytics', () => {
     const today = '2021-02-30T00:00:00Z'
     mockdate.set(new Date(today))
     const { getByTestId } = render(
@@ -50,6 +51,7 @@ describe('NonBeneficiaryHeader', () => {
     const banner = getByTestId('18-banner')
     banner.props.onClick()
 
+    expect(analytics.logIdCheck).toBeCalledWith('Profile')
     expect(navigate).toBeCalledWith('IdCheck', {
       email: 'john@doe.com',
       licenceToken: 'thisIsATokenForIdCheck',
