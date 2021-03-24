@@ -57,15 +57,16 @@ When you want to deploy the current version of master in staging, you can run th
 
 ### Deploy hard
 
-For the moment production deployment is not available on the CD (coming soon), we do it locally.
 To deploy to production:
 
-- `yarn upgrade:production:version`
+- `yarn trigger:production:deploy`
+  This will create a tag `production_vX.X.X` and push it.
+  And this will create a pull request from master to `production` branch.
+  CircleCI will detect the tag and launch the lane `deploy-android-production-hard` (see `.circleci/config.yml` file)
 
-/!\ DO NOT DEPLOY IOS & ANDROID SIMULTANEOUSLY
-
-- Android: `yarn trigger:production:deploy:android`
-- IOS: `yarn trigger:production:deploy:ios`
+This will only trigger Android Production hard deploy for the moment.
+IOS coming soon: PC-4639
+IOS manual deploy: `yarn trigger:production:deploy:ios`
 
 ### Deploy CodePush
 
