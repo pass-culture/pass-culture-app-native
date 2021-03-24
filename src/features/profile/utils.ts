@@ -1,6 +1,7 @@
 import _ from 'lodash'
 
-import { Expense, ExpenseDomain } from 'api/gen/api'
+import { Expense, ExpenseDomain, UserProfileResponse } from 'api/gen/api'
+import { Credit } from 'features/home/services/useAvailableCredit'
 import { ExpenseDomainOrderV1, ExpenseDomainOrderV2 } from 'features/profile/components/types'
 import { ExpenseV2 } from 'features/profile/components/types'
 
@@ -27,4 +28,12 @@ export function computeRemainingCredit(
 ): number {
   const domainRemainingCredit = domainLimitExpense - domainCurrentExpense
   return Math.min(walletBalance, domainRemainingCredit)
+}
+
+export function isUserBeneficiary(user: UserProfileResponse): boolean {
+  return user.isBeneficiary
+}
+
+export function isUserExBeneficiary(user: UserProfileResponse, credit: Credit): boolean {
+  return user.isBeneficiary && credit.isExpired
 }

@@ -5,6 +5,7 @@ import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { Credit } from 'features/home/services/useAvailableCredit'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
+import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
@@ -26,15 +27,15 @@ export const BookingButton: React.FC<Props> = (props) => {
   )
 
   // User is NOT beneficiary
-  if (!props.user.isBeneficiary) {
+  if (!isUserBeneficiary(props.user)) {
     if (props.offer.isExpired || props.offer.isExhausted || isBookedOffer) {
       return null
     }
     return <BookExternallyButton url={props.offer.externalTicketOfficeUrl} />
   }
 
-  // User is an ex-beneficiary == beneficiary with expired credit
-  if (props.user.isBeneficiary && props.credit.isExpired) {
+  // User is an ex-beneficiary
+  if (isUserExBeneficiary(props.user, props.credit)) {
     if (isBookedOffer) {
       return <ButtonPrimary title={_(t`Offre réservée`)} buttonHeight="tall" disabled />
     }
