@@ -5,6 +5,8 @@ import { Referrals } from 'features/navigation/RootNavigator'
 
 export const firebaseAnalytics = firebaseAnalyticsModule()
 
+export const STRING_VALUE_MAX_LENGTH = 100
+
 const setUserId = (userId: number) => firebaseAnalytics.setUserId(userId.toString())
 
 // Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores
@@ -51,6 +53,8 @@ export enum AnalyticsEvent {
   OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
   OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
   ID_CHECK = 'IdCheck',
+  CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
+  OPEN_EXTERNAL_URL = 'OpenExternalURL',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -205,6 +209,14 @@ const logProfilSignUp = () => firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_S
 
 const logLogout = () => firebaseAnalytics.logEvent(AnalyticsEvent.LOGOUT)
 
+const logClickSocialNetwork = (network: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network })
+
+const logOpenExternalUrl = (url: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.OPEN_EXTERNAL_URL, {
+    url: url.slice(0, STRING_VALUE_MAX_LENGTH),
+  })
+
 /**
  * Favorites
  */
@@ -220,6 +232,7 @@ export const analytics = {
   logClickBusinessBlock,
   logClickExclusivityBlock,
   logClickSeeMore,
+  logClickSocialNetwork,
   logConsultAccessibility,
   logConsultAvailableDates,
   logConsultDescriptionDetails,
@@ -241,6 +254,7 @@ export const analytics = {
   logLogout,
   logNoSearchResult,
   logNotificationToggle,
+  logOpenExternalUrl,
   logOfferSeenDuration,
   logIdCheck,
   logProfilSignUp,

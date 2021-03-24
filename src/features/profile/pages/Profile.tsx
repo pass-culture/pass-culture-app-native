@@ -11,6 +11,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { _ } from 'libs/i18n'
@@ -156,7 +157,7 @@ export const Profile: React.FC = () => {
           <Row
             title={_(t`Questions fréquentes`)}
             type="clickable"
-            onPress={() => openExternalUrl('https://aide.passculture.app/fr/')}
+            onPress={() => openExternalUrl(env.FAQ_LINK)}
             icon={ExternalSite}
             style={styles.row}
             testID="row-faq"
@@ -166,7 +167,7 @@ export const Profile: React.FC = () => {
           <Row
             title={_(t`Accessibilité`)}
             type="clickable"
-            onPress={() => openExternalUrl('https://pass.culture.fr/accessibilite-de-la-webapp/')}
+            onPress={() => openExternalUrl(env.ACCESSIBILITY_LINK)}
             icon={ExternalSite}
             style={styles.row}
             testID="row-accessibility"

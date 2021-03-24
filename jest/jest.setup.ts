@@ -71,6 +71,9 @@ jest.mock('libs/environment', () => ({
     CGU_LINK: 'https://passculture.cgu',
     PRIVACY_POLICY_LINK: 'https://passculture.privacy',
     COOKIES_POLICY_LINK: 'https://passculture.cookies',
+    FAQ_LINK: 'https://passculture.faq',
+    ACCESSIBILITY_LINK: 'https://passculture.accessibility',
+    DATA_PRIVACY_CHART_LINK: 'https://passculture.data-privacy-chart',
     FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: true,
   },
 }))

@@ -5,6 +5,7 @@ import { UseQueryResult } from 'react-query'
 import { UserProfileResponse } from 'api/gen'
 import { contactSupport } from 'features/auth/support.services'
 import * as NavigationHelpers from 'features/navigation/helpers'
+import { env } from 'libs/environment'
 import { flushAllPromises } from 'tests/utils'
 
 import { LegalNotices } from './LegalNotices'
@@ -35,7 +36,7 @@ describe('LegalNotices', () => {
     const row = getByTestId('row-cgu')
     fireEvent.press(row)
 
-    expect(openExternalUrl).toBeCalledWith('https://pass.culture.fr/cgu/')
+    expect(openExternalUrl).toBeCalledWith(env.CGU_LINK)
   })
   it('should navigate when the data-privacy-chart row is clicked', async () => {
     const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
@@ -44,7 +45,7 @@ describe('LegalNotices', () => {
     const row = getByTestId('row-data-privacy-chart')
     fireEvent.press(row)
 
-    expect(openExternalUrl).toBeCalledWith('https://pass.culture.fr/donnees-personnelles/')
+    expect(openExternalUrl).toBeCalledWith(env.DATA_PRIVACY_CHART_LINK)
   })
   it('should open email interface when the account-deletion row is clicked', async () => {
     const { getByTestId } = await renderProfile()

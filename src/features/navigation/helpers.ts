@@ -3,6 +3,7 @@ import { Linking } from 'react-native'
 
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { getScreenFromDeeplink } from 'features/deeplinks/useDeeplinkUrlHandler'
+import { analytics } from 'libs/analytics'
 
 import { navigationRef } from './navigationRef'
 import { RouteParams } from './RootNavigator'
@@ -28,7 +29,7 @@ export const homeNavigateConfig: HomeNavigateConfig = {
   },
 }
 
-export async function openExternalUrl(url: string) {
+export async function openExternalUrl(url: string, logEvent: boolean | undefined = true) {
   if (url.match('^' + DEEPLINK_DOMAIN)) {
     const { screen, params } = getScreenFromDeeplink(url)
     return navigationRef.current?.navigate(screen, params)
@@ -36,7 +37,11 @@ export async function openExternalUrl(url: string) {
 
   const canOpen = await Linking.canOpenURL(url)
   if (canOpen) {
-    Linking.openURL(url)
+    Linking.openURL(url).then(() => {
+      if (logEvent) {
+        analytics.logOpenExternalUrl(url)
+      }
+    })
   }
 }
 
