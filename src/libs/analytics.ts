@@ -48,6 +48,7 @@ export enum AnalyticsEvent {
   LOGOUT = 'Logout',
   HAS_CHANGED_PASSWORD = 'HasChangedPassword',
   NOTIFICATION_TOGGLE = 'NotificationToggle',
+  OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -180,6 +181,9 @@ const logSearchScrollToPage = (page: number) =>
 const logNoSearchResult = (query: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
 
+const logOpenLocationSettings = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS)
+
 const logNotificationToggle = (enableEmail: boolean, enablePush?: boolean) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
     enableEmail,
@@ -218,6 +222,7 @@ export const analytics = {
   logConsultWithdrawal,
   logContactSupportResetPasswordEmailSent,
   logContactSupportSignupConfirmationEmailSent,
+  logOpenLocationSettings,
   logHasActivateGeolocFromTutorial,
   logHasAddedOfferToFavorites,
   logHasAppliedFavoritesSorting,

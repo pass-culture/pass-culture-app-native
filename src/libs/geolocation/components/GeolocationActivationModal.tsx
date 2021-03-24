@@ -3,6 +3,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -51,7 +52,10 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         title={_(t`Activer la géolocalisation`)}
-        onPress={onPressGeolocPermissionModalButton}
+        onPress={() => {
+          analytics.logOpenLocationSettings()
+          onPressGeolocPermissionModalButton()
+        }}
       />
     </React.Fragment>
   </AppInformationModal>
