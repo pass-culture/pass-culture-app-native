@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
+import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
 import { _ } from 'libs/i18n'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
@@ -113,6 +114,7 @@ export function NotificationSettings() {
         message: _(t`Le réglage est sauvegardé`),
         timeout: 5000,
       })
+      analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
       goBack()
     },
     /**
