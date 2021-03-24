@@ -74,6 +74,8 @@ describe('OfferTile component', () => {
       image: { url: props.thumbUrl },
       isDigital: false,
       isDuo: false,
+      isReleased: false,
+      isSoldOut: false,
       name: offer.name,
       stocks: [],
       venue: { coordinates: {} },

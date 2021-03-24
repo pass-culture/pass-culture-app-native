@@ -12,21 +12,70 @@ import { server } from 'tests/server'
 import { OfferIconCaptions } from '../OfferIconCaptions'
 
 const defaultBookableStocks: OfferResponse['stocks'] = [
-  { id: 1, price: 2800, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: true },
+  {
+    id: 1,
+    price: 2800,
+    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    isBookable: true,
+    isExpired: false,
+    isSoldOut: false,
+  },
 ]
 const freeBookableStocks: OfferResponse['stocks'] = [
-  { id: 1, price: 0, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: true },
+  {
+    id: 1,
+    price: 0,
+    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    isBookable: true,
+    isExpired: false,
+    isSoldOut: false,
+  },
 ]
 const sevenEurosBookableStocks: OfferResponse['stocks'] = [
-  { id: 1, price: 700, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: true },
+  {
+    id: 1,
+    price: 700,
+    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    isBookable: true,
+    isExpired: false,
+    isSoldOut: false,
+  },
 ]
 const severalStocks: OfferResponse['stocks'] = [
-  { id: 1, price: 700, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: true },
-  { id: 2, price: 200, beginningDatetime: new Date('2021-01-03T13:30:00'), isBookable: false },
+  {
+    id: 1,
+    price: 700,
+    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    isBookable: true,
+    isExpired: false,
+    isSoldOut: false,
+  },
+  {
+    id: 2,
+    price: 200,
+    beginningDatetime: new Date('2021-01-03T13:30:00'),
+    isBookable: false,
+    isExpired: false,
+    isSoldOut: false,
+  },
 ]
 const noBookableStocks: OfferResponse['stocks'] = [
-  { id: 1, price: 700, beginningDatetime: new Date('2021-01-04T13:30:00'), isBookable: false },
-  { id: 2, price: 900, beginningDatetime: new Date('2021-01-03T13:30:00'), isBookable: false },
+  {
+    id: 1,
+    price: 700,
+    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    isBookable: false,
+    isExpired: false,
+    isSoldOut: false,
+  },
+  {
+    id: 2,
+    price: 900,
+    beginningDatetime: new Date('2021-01-03T13:30:00'),
+    isBookable: false,
+    isExpired: false,
+    isSoldOut: false,
+  },
 ]
 const noPrice: OfferResponse['stocks'] = []
 

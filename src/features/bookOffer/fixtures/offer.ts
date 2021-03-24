@@ -26,6 +26,8 @@ export const mockOffer: OfferAdaptedResponse = {
     visa: null,
   },
   isActive: true,
+  isReleased: false,
+  isSoldOut: false,
   isDigital: false,
   isDuo: true,
   name: 'Je ne sais pas ce que je dis',
@@ -42,6 +44,8 @@ export const mockOffer: OfferAdaptedResponse = {
       cancellationLimitDatetime: new Date('2021-03-08T12:14:57.081907'),
       isBookable: true,
       price: 2400,
+      isExpired: false,
+      isSoldOut: false,
     },
     {
       id: 148411,
@@ -50,6 +54,8 @@ export const mockOffer: OfferAdaptedResponse = {
       cancellationLimitDatetime: new Date('2021-03-08T12:14:57.081907'),
       isBookable: false,
       price: 2400,
+      isExpired: false,
+      isSoldOut: false,
     },
     {
       id: 148410,
@@ -58,6 +64,8 @@ export const mockOffer: OfferAdaptedResponse = {
       cancellationLimitDatetime: new Date('2021-03-10T12:14:57.082005'),
       isBookable: true,
       price: 2700,
+      isExpired: false,
+      isSoldOut: false,
     },
   ],
   image: {
@@ -109,6 +117,8 @@ export const mockDigitalOffer: OfferAdaptedResponse = {
     visa: null,
   },
   isActive: true,
+  isReleased: false,
+  isSoldOut: false,
   isDigital: true,
   isDuo: true,
   name: 'Je ne sais pas ce que je dis',
@@ -125,6 +135,8 @@ export const mockDigitalOffer: OfferAdaptedResponse = {
       cancellationLimitDatetime: new Date('2021-03-08T12:14:57.081907'),
       isBookable: false,
       price: 2400,
+      isExpired: false,
+      isSoldOut: false,
     },
   ],
   image: {
