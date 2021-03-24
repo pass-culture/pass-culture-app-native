@@ -51,7 +51,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
       showErrorSnackBar({
         message:
           isApiError(error) && error.content.code === 'MAX_FAVORITES_REACHED'
-            ? _(t`Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveau`)
+            ? _(t`Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.`)
             : _(t`L'offre n'a pas été ajoutée à tes favoris`),
         timeout: SNACK_BAR_TIME_OUT,
       })
