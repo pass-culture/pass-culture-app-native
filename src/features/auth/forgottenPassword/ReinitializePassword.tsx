@@ -9,6 +9,7 @@ import {
 } from 'features/auth/components/PasswordSecurityRules'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -44,6 +45,7 @@ export const ReinitializePassword = () => {
       message: _(t`Ton mot de passe a été modifié !`),
       timeout: SNACK_BAR_TIME_OUT,
     })
+    analytics.logHasChangedPassword()
     navigate('Login')
   })
 

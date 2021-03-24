@@ -32,6 +32,7 @@ export const analytics: typeof actualAnalytics = {
   logContactSupportSignupConfirmationEmailSent: jest.fn(),
   logHasActivateGeolocFromTutorial: jest.fn(),
   logHasAddedOfferToFavorites: jest.fn(),
+  logHasChangedPassword: jest.fn(),
   logHasAppliedFavoritesSorting: jest.fn(),
   logHasSkippedTutorial: jest.fn(),
   logLogout: jest.fn(),

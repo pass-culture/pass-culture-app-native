@@ -1,9 +1,11 @@
-import { fireEvent, render, waitFor } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute, navigate } from '__mocks__/@react-navigation/native'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { superFlushWithAct } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
@@ -36,7 +38,7 @@ describe('ReinitializePassword Page', () => {
     // assuming there's only one button in this page
     const continueButton = getByTestId('button-container')
 
-    await waitFor(async () => {
+    await waitForExpect(async () => {
       const background = continueButton.props.style.backgroundColor
       expect(background).toEqual(ColorsEnum.PRIMARY)
     })
@@ -55,7 +57,7 @@ describe('ReinitializePassword Page', () => {
 
     const notMatchingErrorText = getByText('les mots de passe ne concordent pas')
 
-    await waitFor(async () => {
+    await waitForExpect(async () => {
       const color = notMatchingErrorText.props.style[0].color
       expect(color).toEqual(ColorsEnum.ERROR)
     })
@@ -77,12 +79,10 @@ describe('ReinitializePassword Page', () => {
 
   it('should redirect to login page WHEN password is reset', async () => {
     const { getByText } = render(reactQueryProviderHOC(<ReinitializePassword />))
-
     fireEvent.press(getByText('Continuer'))
-
-    await waitFor(() => {
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('Login')
-    })
+    await superFlushWithAct()
+    expect(navigate).toBeCalledTimes(1)
+    expect(analytics.logHasChangedPassword).toBeCalled()
+    expect(navigate).toBeCalledWith('Login')
   })
 })

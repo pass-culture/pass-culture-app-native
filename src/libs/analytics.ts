@@ -45,6 +45,7 @@ export enum AnalyticsEvent {
   USE_FILTER = 'UseFilter',
   PROFIL_SIGN_UP = 'ProfilSignUp',
   LOGOUT = 'Logout',
+  HAS_CHANGED_PASSWORD = 'HasChangedPassword',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -177,6 +178,8 @@ const logSearchScrollToPage = (page: number) =>
 const logNoSearchResult = (query: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
 
+const logHasChangedPassword = () => firebaseAnalytics.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD)
+
 const logProfilSignUp = () => firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_SIGN_UP)
 
 const logLogout = () => firebaseAnalytics.logEvent(AnalyticsEvent.LOGOUT)
@@ -210,6 +213,7 @@ export const analytics = {
   logHasActivateGeolocFromTutorial,
   logHasAddedOfferToFavorites,
   logHasAppliedFavoritesSorting,
+  logHasChangedPassword,
   logHasSkippedTutorial,
   logLogout,
   logNoSearchResult,
