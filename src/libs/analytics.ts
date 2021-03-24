@@ -46,6 +46,7 @@ export enum AnalyticsEvent {
   PROFIL_SIGN_UP = 'ProfilSignUp',
   LOGOUT = 'Logout',
   HAS_CHANGED_PASSWORD = 'HasChangedPassword',
+  NOTIFICATION_TOGGLE = 'NotificationToggle',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -178,6 +179,9 @@ const logSearchScrollToPage = (page: number) =>
 const logNoSearchResult = (query: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
 
+const logNotificationToggle = (enableEmail: boolean, enablePush?: boolean) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, { enableEmail, enablePush })
+
 const logHasChangedPassword = () => firebaseAnalytics.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD)
 
 const logProfilSignUp = () => firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_SIGN_UP)
@@ -217,6 +221,7 @@ export const analytics = {
   logHasSkippedTutorial,
   logLogout,
   logNoSearchResult,
+  logNotificationToggle,
   logOfferSeenDuration,
   logProfilSignUp,
   logRecommendationModuleSeen,

@@ -12,6 +12,7 @@ import waitForExpect from 'wait-for-expect'
 import { UserProfileResponse } from 'api/gen'
 import { IAuthContext, useAuthContext } from 'features/auth/AuthContext'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -212,7 +213,7 @@ describe('NotificationSettings', () => {
         expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
       })
     })
-    it('should enable the save button when the push switch changed', async () => {
+    it('should enable the save button when the push switch changed and call analytics when pressed', async () => {
       Platform.OS = 'ios'
       mockApiUpdateProfile({
         subscriptions: {
@@ -247,9 +248,14 @@ describe('NotificationSettings', () => {
       saveButton && fireEvent.press(saveButton)
 
       await superFlushWithAct(10)
+
       await waitForExpect(() => {
-        saveButton = getByTestId('button-container')
-        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+        expect(getByTestId('button-container').props.style.backgroundColor).toEqual(
+          ColorsEnum.GREY_LIGHT
+        )
+      })
+      await waitForExpect(async () => {
+        expect(analytics.logNotificationToggle).toBeCalledWith(false, true)
       })
     })
   })
