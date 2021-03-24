@@ -28,7 +28,7 @@ export const BookingButton: React.FC<Props> = (props) => {
 
   // User is NOT beneficiary
   if (!isUserBeneficiary(props.user)) {
-    if (props.offer.isExpired || props.offer.isExhausted || isBookedOffer) {
+    if (props.offer.isExpired || props.offer.isSoldOut || isBookedOffer) {
       return null
     }
     return <BookExternallyButton url={props.offer.externalTicketOfficeUrl} />
@@ -39,7 +39,7 @@ export const BookingButton: React.FC<Props> = (props) => {
     if (isBookedOffer) {
       return <ButtonPrimary title={_(t`Offre réservée`)} buttonHeight="tall" disabled />
     }
-    if (props.offer.isExpired || props.offer.isExhausted) {
+    if (props.offer.isExpired || props.offer.isSoldOut) {
       return null
     }
     if (isFreeOffer) {
@@ -55,7 +55,7 @@ export const BookingButton: React.FC<Props> = (props) => {
   if (props.offer.isExpired) {
     return <ButtonPrimary title={_(t`Offre expirée`)} buttonHeight="tall" disabled />
   }
-  if (props.offer.isExhausted) {
+  if (props.offer.isSoldOut) {
     return <ButtonPrimary title={_(t`Offre épuisée`)} buttonHeight="tall" disabled />
   }
   if (!isFreeOffer && !doesUserHaveEnoughCredit) {
