@@ -2,6 +2,7 @@ import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { analytics } from 'libs/analytics'
 
 import { LoggedOutHeader } from './LoggedOutHeader'
 
@@ -20,6 +21,7 @@ describe('LoggedOutHeader', () => {
     const connectButton = getByTestId('login-button')
     connectButton.props.onClick()
 
+    expect(analytics.logProfilSignUp).toBeCalled()
     expect(navigate).toBeCalledWith('Login', { preventCancellation: true })
   })
 })

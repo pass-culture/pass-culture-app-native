@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -32,7 +33,10 @@ export function LoggedOutHeader() {
         <LoginCta>
           <Typo.Body color={ColorsEnum.WHITE}>{_(t`Tu as déjà un compte ?\u00a0`)}</Typo.Body>
           <TouchableOpacity
-            onPress={() => navigate('Login', { preventCancellation: true })}
+            onPress={() => {
+              analytics.logProfilSignUp()
+              navigate('Login', { preventCancellation: true })
+            }}
             testID="login-button">
             <Typo.ButtonText color={ColorsEnum.WHITE}>{_(t`Connecte-toi`)}</Typo.ButtonText>
           </TouchableOpacity>
