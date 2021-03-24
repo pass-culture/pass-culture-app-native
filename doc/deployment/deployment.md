@@ -1,5 +1,13 @@
 # DEPLOY APP
 
+## Pre-requisites
+
+If you do not have `hub` install on you laptop:
+
+```bash
+brew install hub
+```
+
 ## Testing & Staging: Deploy to AppCenter
 
 Download the apps:
@@ -40,8 +48,10 @@ We do it once a week at the end of an iteration.
 When you want to deploy the current version of master in staging, you can run the following command:
 
 - `yarn trigger:staging:deploy`
-  This will create a tag `vX.X.X` and push it on branch `master` & `staging`
-  CircleCI will detect the tag and launch the lanes `deploy-ios-staging` & `deploy-android-staging` (see `.circleci/config.yml` file)
+  This will create a tag `staging_vX.X.X` and push it.
+  And this will create a pull request from master to `staging` branch.
+  Once, it is all green, you can merge it.
+  CircleCI will detect the merge on `staging`branch and launch the lanes `deploy-ios-staging` & `deploy-android-staging` (see `.circleci/config.yml` file)
 
 ## Production: Deploy to App Store / Google Play Store
 

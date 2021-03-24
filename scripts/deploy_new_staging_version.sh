@@ -32,4 +32,4 @@ git pull
 update_app_version
 git push --follow-tags
 
-git push -f origin HEAD:staging
+hub pull-request -m "Staging hard deploy" -b staging --browse
