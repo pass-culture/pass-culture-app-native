@@ -25,7 +25,7 @@ import { BookingButton } from './BookingButton'
 interface Props {
   credit: Credit
   favorite: FavoriteResponse
-  setOfferToBook: React.Dispatch<React.SetStateAction<FavoriteOfferResponse | null>>
+  onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
   user: UserProfileResponse
 }
 
@@ -135,7 +135,7 @@ export const Favorite: React.FC<Props> = (props) => {
             credit={props.credit}
             offer={offer}
             user={props.user}
-            setOfferToBook={props.setOfferToBook}
+            onInAppBooking={props.onInAppBooking}
           />
         </ButtonContainer>
       </ButtonsRow>
