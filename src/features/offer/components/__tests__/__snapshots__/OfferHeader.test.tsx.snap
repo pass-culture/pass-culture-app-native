@@ -465,6 +465,7 @@ Array [
           "width": "100%",
         }
       }
+      testID="click-away-area"
     >
       <View
         accessible={true}

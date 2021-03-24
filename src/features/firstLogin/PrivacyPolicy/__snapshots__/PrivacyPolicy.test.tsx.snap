@@ -30,7 +30,7 @@ Array [
   >
     <View
       accessible={true}
-      focusable={true}
+      focusable={false}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -48,6 +48,7 @@ Array [
           "width": "100%",
         }
       }
+      testID="click-away-area"
     >
       <View
         accessible={true}

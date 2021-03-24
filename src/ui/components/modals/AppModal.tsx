@@ -18,6 +18,7 @@ interface Props {
   onRightIconPress?: () => void
   titleNumberOfLines?: number
   isScrollable?: boolean
+  disableBackdropTap?: boolean
 }
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -30,6 +31,7 @@ export const AppModal: FunctionComponent<Props> = ({
   children,
   titleNumberOfLines,
   isScrollable = false,
+  disableBackdropTap,
 }) => {
   const { bottom } = useCustomSafeInsets()
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -43,7 +45,10 @@ export const AppModal: FunctionComponent<Props> = ({
         transparent={true}
         visible={visible}
         testID="modal">
-        <ClicAwayArea activeOpacity={1} onPress={onRightIconPress}>
+        <ClicAwayArea
+          activeOpacity={1}
+          onPress={disableBackdropTap ? undefined : onRightIconPress}
+          testID="click-away-area">
           <Container activeOpacity={1}>
             <ModalHeader
               title={title}
