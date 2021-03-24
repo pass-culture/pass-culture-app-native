@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
@@ -42,7 +43,13 @@ export const PushNotificationsModal: React.FC<Props> = ({
         )}
       </InformationText>
       <Spacer.Column numberOfSpaces={6} />
-      <ButtonPrimary title={_(t`Autoriser les notifications`)} onPress={onRequestPermission} />
+      <ButtonPrimary
+        title={_(t`Autoriser les notifications`)}
+        onPress={() => {
+          analytics.logOpenNotificationSettings()
+          onRequestPermission()
+        }}
+      />
     </React.Fragment>
   </AppInformationModal>
 )
