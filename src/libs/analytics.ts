@@ -43,6 +43,7 @@ export enum AnalyticsEvent {
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
+  PROFIL_SIGN_UP = 'ProfilSignUp',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -175,6 +176,8 @@ const logSearchScrollToPage = (page: number) =>
 const logNoSearchResult = (query: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
 
+const logProfilSignUp = () => firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_SIGN_UP)
+
 /**
  * Favorites
  */
@@ -207,6 +210,7 @@ export const analytics = {
   logHasSkippedTutorial,
   logNoSearchResult,
   logOfferSeenDuration,
+  logProfilSignUp,
   logRecommendationModuleSeen,
   logReinitializeFilters,
   logResendEmailResetPasswordExpiredLink,
