@@ -19,6 +19,9 @@ export interface Environment {
   IOS_APP_ID: string
   PRIVACY_POLICY_LINK: string
   COOKIES_POLICY_LINK: string
+  FAQ_LINK: string
+  ACCESSIBILITY_LINK: string
+  DATA_PRIVACY_CHART_LINK: string
   RECOMMENDATION_ENDPOINT: string
   RECOMMENDATION_TOKEN: string
   SENTRY_DSN: string

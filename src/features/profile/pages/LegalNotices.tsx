@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { contactSupport } from 'features/auth/support.services'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
+import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -24,7 +25,7 @@ export function LegalNotices() {
         <Row
           title={_(t`Conditions Générales d’Utilisation`)}
           type="clickable"
-          onPress={() => openExternalUrl('https://pass.culture.fr/cgu/')}
+          onPress={() => openExternalUrl(env.CGU_LINK)}
           icon={ExternalSite}
           style={styles.row}
           testID="row-cgu"
@@ -33,7 +34,7 @@ export function LegalNotices() {
         <Row
           title={_(t`Charte de protection des données personnelles`)}
           type="clickable"
-          onPress={() => openExternalUrl('https://pass.culture.fr/donnees-personnelles/')}
+          onPress={() => openExternalUrl(env.DATA_PRIVACY_CHART_LINK)}
           icon={ExternalSite}
           style={styles.row}
           testID="row-data-privacy-chart"

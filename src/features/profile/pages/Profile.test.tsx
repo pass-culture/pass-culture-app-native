@@ -11,6 +11,7 @@ import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { flushAllPromises } from 'tests/utils'
 
@@ -145,7 +146,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-faq')
       fireEvent.press(row)
 
-      expect(openExternalUrl).toBeCalledWith('https://aide.passculture.app/fr/')
+      expect(openExternalUrl).toBeCalledWith(env.FAQ_LINK)
     })
   })
 
@@ -157,7 +158,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-accessibility')
       fireEvent.press(row)
 
-      expect(openExternalUrl).toBeCalledWith('https://pass.culture.fr/accessibilite-de-la-webapp/')
+      expect(openExternalUrl).toBeCalledWith(env.ACCESSIBILITY_LINK)
     })
 
     it('should navigate when the legal notices row is clicked', async () => {

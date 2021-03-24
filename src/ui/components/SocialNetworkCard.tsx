@@ -3,6 +3,7 @@ import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { openExternalUrl } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { Typo, getSpacing, Spacer } from 'ui/theme'
 
 import { SocialNetwork, SocialNetworkIconsMap } from './socials/types'
@@ -17,7 +18,11 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   const name = network[0].toUpperCase() + network.slice(1)
 
   return (
-    <TouchableOpacity onPress={() => openExternalUrl(link)}>
+    <TouchableOpacity
+      onPress={() => {
+        analytics.logClickSocialNetwork(name)
+        openExternalUrl(link, false)
+      }}>
       <Container>
         <NetworkIconBox>
           <Icon size={24} />
