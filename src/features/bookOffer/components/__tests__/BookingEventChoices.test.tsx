@@ -35,7 +35,10 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
-    data: { id: 1, expenses: [{ current: 12, limit: 200, domain: 'TEST' }] },
+    data: {
+      id: 1,
+      domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
+    },
   })),
 }))
 

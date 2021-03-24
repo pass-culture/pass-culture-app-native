@@ -1,26 +1,23 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import { Expense, ExpenseDomain } from 'api/gen/api'
-import { ExpenseV2 } from 'features/profile/components/types'
-
 import { BeneficiaryCeilings } from './BeneficiaryCeilings'
 
-const expenses_v1: Array<Expense> = [
-  { current: 100, domain: ExpenseDomain.All, limit: 500 },
-  { current: 50, domain: ExpenseDomain.Digital, limit: 100 },
-  { current: 50, domain: ExpenseDomain.Physical, limit: 200 },
-]
+const domains_credit_v1 = {
+  all: { initial: 50000, remaining: 40000 },
+  physical: { initial: 30000, remaining: 10000 },
+  digital: { initial: 30000, remaining: 20000 },
+}
 
-const expenses_v2: Array<ExpenseV2> = [
-  { current: 150, domain: ExpenseDomain.All, limit: 300 },
-  { current: 100, domain: ExpenseDomain.Digital, limit: 200 },
-]
+const domains_credit_v2 = {
+  all: { initial: 30000, remaining: 10000 },
+  digital: { initial: 20000, remaining: 5000 },
+}
 
 describe('BeneficiaryCeilings', () => {
   it('should render properly with deposit version 1', () => {
     const { getAllByTestId, getByText } = render(
-      <BeneficiaryCeilings depositVersion={1} expenses={expenses_v1} walletBalance={400} />
+      <BeneficiaryCeilings domainsCredit={domains_credit_v1} />
     )
 
     const progressBars = getAllByTestId('progress-bar')
@@ -34,7 +31,7 @@ describe('BeneficiaryCeilings', () => {
 
   it('should render properly with deposit version 2', () => {
     const { getAllByTestId, getByText } = render(
-      <BeneficiaryCeilings depositVersion={2} expenses={expenses_v2} walletBalance={150} />
+      <BeneficiaryCeilings domainsCredit={domains_credit_v2} />
     )
 
     const progressBars = getAllByTestId('progress-bar')

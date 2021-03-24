@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 import { useUserProfileInfo } from 'features/home/api'
-import { computeWalletBalance } from 'features/profile/utils'
+import { computeCredit } from 'features/profile/utils'
 
 export type Credit = { amount: number; isExpired: boolean }
 
@@ -13,7 +13,7 @@ export const useAvailableCredit = (): Credit | undefined => {
     }
 
     return {
-      amount: computeWalletBalance(user.expenses),
+      amount: computeCredit(user.domainsCredit),
       isExpired: user.depositExpirationDate
         ? new Date(user.depositExpirationDate) < new Date()
         : false,

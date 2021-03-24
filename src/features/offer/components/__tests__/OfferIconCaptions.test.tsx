@@ -4,7 +4,7 @@ import React from 'react'
 import { QueryClient } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
-import { CategoryNameEnum, ExpenseDomain, OfferResponse, UserProfileResponse } from 'api/gen'
+import { CategoryNameEnum, OfferResponse, UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -88,13 +88,8 @@ const userProfileAPIResponse: UserProfileResponse = {
   email: 'email@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,
-  expenses: [
-    {
-      current: 89,
-      domain: ExpenseDomain.All,
-      limit: 200,
-    },
-  ],
+  domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
+  expenses: [],
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
   id: 1234,
