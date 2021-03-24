@@ -1,15 +1,12 @@
 import { SORT_OPTIONS } from 'features/favorites/pages/FavoritesSorts'
 
-export type FavoritesParameters = {
+export type FavoritesState = {
   sortBy: keyof typeof SORT_OPTIONS
 }
 
-export type FavoritesContext = FavoritesParameters & {
-  sortBy: keyof typeof SORT_OPTIONS
+export type FavoritesContext = FavoritesState & {
   dispatch: (action: Action) => void
 }
-
-export type FavoritesState = Omit<FavoritesContext, 'dispatch'>
 
 export const initialFavoritesState: FavoritesState = {
   sortBy: 'RECENTLY_ADDED',
