@@ -32,4 +32,4 @@ git pull
 update_app_version
 git push --follow-tags
 
-git push -f origin HEAD:production
+hub pull-request -m "Production hard deploy" -b production --browse
