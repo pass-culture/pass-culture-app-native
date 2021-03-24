@@ -22,7 +22,7 @@ update_app_version(){
   
   git add package.json
   git commit -m "v${VERSION}"
-  git tag -a "v${VERSION}" -m "v${VERSION}"
+  git tag -a "production_v${VERSION}" -m "v${VERSION}"
 }
 
 check_branch
@@ -30,4 +30,6 @@ check_branch
 git pull
 
 update_app_version
+git push --follow-tags
 
+git push -f origin HEAD:production

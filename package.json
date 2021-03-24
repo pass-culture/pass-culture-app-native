@@ -26,11 +26,10 @@
     "translations:add-locale": "lingui add-locale",
     "translations:extract": "lingui extract --clean",
     "translations:compile": "lingui compile",
-    "upgrade:production:version": "./scripts/upgrade_production_version.sh",
-    "trigger:production:deploy:android": "./scripts/deploy.sh -o android -t hard -e production",
     "trigger:production:deploy:ios": "./scripts/deploy.sh -o ios -t hard -e production",
     "trigger:production:codepush:android": "./scripts/deploy.sh -o android -t soft -e production",
     "trigger:production:codepush:ios": "./scripts/deploy.sh -o ios -t soft -e production",
+    "trigger:production:deploy": "./scripts/deploy_new_production_version.sh",
     "trigger:staging:deploy": "./scripts/deploy_new_staging_version.sh",
     "trigger:testing:deploy": "./scripts/deploy_new_testing_version.sh",
     "generate:api:client": "./scripts/generate_api_client.sh"
