@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { CategoryNameEnum, Expense, ExpenseDomain } from 'api/gen/api'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
+import { UsedTicket } from 'features/bookings/components/UsedTicket'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
@@ -666,6 +667,14 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <OnGoingTicket />
           <Text> - OnGoing Ticket without image </Text>
+        </AlignedText>
+        <AlignedText>
+          <UsedTicket image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg" />
+          <Text> - Used Ticket </Text>
+        </AlignedText>
+        <AlignedText>
+          <UsedTicket offerCategory={CategoryNameEnum.CINEMA} />
+          <Text> - Used Ticket without image </Text>
         </AlignedText>
         <AlignedText>
           <Badge label={1} />
