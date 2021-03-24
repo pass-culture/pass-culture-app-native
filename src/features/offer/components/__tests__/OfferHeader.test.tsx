@@ -301,7 +301,7 @@ describe('<OfferHeader />', () => {
     await superFlushWithAct()
 
     expect(showErrorSnackBar).toBeCalledWith({
-      message: `Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveau`,
+      message: `Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.`,
       timeout: SNACK_BAR_TIME_OUT,
     })
   })
