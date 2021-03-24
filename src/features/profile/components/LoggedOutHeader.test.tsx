@@ -13,6 +13,7 @@ describe('LoggedOutHeader', () => {
     const signupButton = getByTestId('button-container')
     signupButton.props.onClick()
 
+    expect(analytics.logLogin).toBeCalled()
     expect(navigate).toBeCalledWith('SetEmail', { preventCancellation: true })
   })
   it('should navigate to the login page', () => {

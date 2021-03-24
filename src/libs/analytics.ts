@@ -44,6 +44,7 @@ export enum AnalyticsEvent {
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
   PROFIL_SIGN_UP = 'ProfilSignUp',
+  LOGIN = 'Login',
   LOGOUT = 'Logout',
   HAS_CHANGED_PASSWORD = 'HasChangedPassword',
   NOTIFICATION_TOGGLE = 'NotificationToggle',
@@ -188,6 +189,8 @@ const logProfilSignUp = () => firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_S
 
 const logLogout = () => firebaseAnalytics.logEvent(AnalyticsEvent.LOGOUT)
 
+const logLogin = () => firebaseAnalytics.logEvent(AnalyticsEvent.LOGIN)
+
 /**
  * Favorites
  */
@@ -219,6 +222,7 @@ export const analytics = {
   logHasAppliedFavoritesSorting,
   logHasChangedPassword,
   logHasSkippedTutorial,
+  logLogin,
   logLogout,
   logNoSearchResult,
   logNotificationToggle,
