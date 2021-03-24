@@ -19,6 +19,7 @@ export interface Props {
   onApproval: () => void
   onRefusal: () => void
   navigationRef?: RefObject<NavigationContainerRef>
+  disableBackdropTap?: boolean
 }
 
 export const PrivacyPolicyModal: FunctionComponent<Props> = ({
@@ -26,6 +27,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   visible,
   onApproval,
   onRefusal,
+  disableBackdropTap = true,
 }) => {
   const [isVisible, setIsVisible] = useState<boolean>(visible)
 
@@ -50,7 +52,8 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
       visible={isVisible}
       title={_(t`Respect de ta vie privée`)}
       rightIcon={Close}
-      onRightIconPress={onRefusal}>
+      onRightIconPress={onRefusal}
+      disableBackdropTap={disableBackdropTap}>
       <Description>
         <Typo.Body>
           {_(

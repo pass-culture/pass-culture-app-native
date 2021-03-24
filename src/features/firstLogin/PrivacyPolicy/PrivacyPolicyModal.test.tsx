@@ -6,7 +6,7 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { superFlushWithAct } from 'tests/utils'
 
-import { PrivacyPolicyModal, Props } from './PrivacyPolicyModal'
+import { PrivacyPolicyModal, Props as Options } from './PrivacyPolicyModal'
 
 jest.mock('features/navigation/navigationRef')
 
@@ -71,8 +71,31 @@ describe('<PrivacyPolicyModal />', () => {
     expect(openExternalUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
     await superFlushWithAct(1)
   })
+
+  it('should not close modal on backdrop tap', () => {
+    const { getByTestId } = renderPrivacyModal({
+      onRefusal,
+      onApproval,
+      visible,
+      navigationRef,
+    })
+    const backdrop = getByTestId('click-away-area')
+    expect(() => fireEvent.press(backdrop)).toThrowError(
+      new Error('No handler function found for event: "press"')
+    )
+    expect(onApproval).not.toBeCalled()
+    expect(onRefusal).not.toBeCalled()
+  })
 })
 
-function renderPrivacyModal(props: Props = { onRefusal, onApproval, visible }) {
+const defaultOptions = {
+  onRefusal,
+  onApproval,
+  visible,
+  disableBackdropTap: true,
+}
+
+function renderPrivacyModal(options: Options = defaultOptions) {
+  const props = { ...defaultOptions, ...options }
   return render(<PrivacyPolicyModal {...props} />)
 }

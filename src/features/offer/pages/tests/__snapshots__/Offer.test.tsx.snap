@@ -1800,6 +1800,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             "width": "100%",
                           }
                         }
+                        testID="click-away-area"
                       >
                         <View
                           accessible={true}
@@ -4642,6 +4643,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             "width": "100%",
                           }
                         }
+                        testID="click-away-area"
                       >
                         <View
                           accessible={true}
@@ -7023,6 +7025,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             "width": "100%",
                           }
                         }
+                        testID="click-away-area"
                       >
                         <View
                           accessible={true}
@@ -9865,6 +9868,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                             "width": "100%",
                           }
                         }
+                        testID="click-away-area"
                       >
                         <View
                           accessible={true}

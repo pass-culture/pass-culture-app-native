@@ -38,6 +38,7 @@ export function PrivacyPolicy(props: Props) {
       onApproval={acceptCookie}
       onRefusal={refuseCookie}
       navigationRef={props.navigationRef}
+      disableBackdropTap
     />
   )
 }
