@@ -63,7 +63,7 @@ const user: UserProfileResponse = {
   bookedOffers: {},
   domainsCredit: { [ExpenseDomain.All]: { initial: 500, remaining: 300 } },
 } as UserProfileResponse
-const setOfferToBook = jest.fn()
+const onInAppBooking = jest.fn()
 
 let mockDistance: string | null = null
 jest.mock('features/offer/components/useDistance', () => ({
@@ -166,7 +166,7 @@ const DEFAULT_PROPS = {
   credit,
   favorite,
   user,
-  setOfferToBook,
+  onInAppBooking,
 }
 
 type RenderFavoriteParams = {
@@ -179,7 +179,7 @@ function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {
   const { credit, favorite, user } = { ...DEFAULT_PROPS, ...props }
   return render(
     reactQueryProviderHOC(
-      <Favorite credit={credit} favorite={favorite} user={user} setOfferToBook={setOfferToBook} />
+      <Favorite credit={credit} favorite={favorite} user={user} onInAppBooking={onInAppBooking} />
     )
   )
 }

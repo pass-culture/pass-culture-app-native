@@ -56,7 +56,7 @@ export const FavoritesResults: React.FC = () => {
         return <HitPlaceholder />
       }
       return (
-        <Favorite credit={credit} favorite={favorite} user={user} setOfferToBook={setOfferToBook} />
+        <Favorite credit={credit} favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
       )
     },
     [credit, favoritesState, user, setOfferToBook]

@@ -12,7 +12,7 @@ import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 interface Props {
   credit: Credit
   offer: FavoriteOfferResponse
-  setOfferToBook: React.Dispatch<React.SetStateAction<FavoriteOfferResponse | null>>
+  onInAppBooking: (bookedOffer: FavoriteOfferResponse) => void
   user: UserProfileResponse
 }
 
@@ -42,7 +42,7 @@ export const BookingButton: React.FC<Props> = (props) => {
       return null
     }
     if (isFreeOffer) {
-      return <BookInAppButton onPress={() => props.setOfferToBook(props.offer)} />
+      return <BookInAppButton onPress={() => props.onInAppBooking(props.offer)} />
     }
     return <BookExternallyButton url={props.offer.externalTicketOfficeUrl} />
   }
@@ -60,7 +60,7 @@ export const BookingButton: React.FC<Props> = (props) => {
   if (!isFreeOffer && !doesUserHaveEnoughCredit) {
     return <ButtonPrimary title={_(t`Crédit insuffisant`)} buttonHeight="tall" disabled />
   }
-  return <BookInAppButton onPress={() => props.setOfferToBook(props.offer)} />
+  return <BookInAppButton onPress={() => props.onInAppBooking(props.offer)} />
 }
 
 const BookInAppButton = ({ onPress }: { onPress: () => void }) => (
