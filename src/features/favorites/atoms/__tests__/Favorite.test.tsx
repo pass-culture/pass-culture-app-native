@@ -128,9 +128,10 @@ describe('<Favorite /> component', () => {
       favorite: { ...favorite, id, offer: { ...favorite.offer, id } },
     })
 
-    await superFlushWithAct(20)
+    await superFlushWithAct()
     fireEvent.press(getByText('Supprimer'))
-    await superFlushWithAct(20)
+    await superFlushWithAct()
+
     await waitForExpect(() => {
       expect(mockShowSuccessSnackBar).not.toBeCalled()
       expect(mockShowErrorSnackBar).toBeCalledWith({
