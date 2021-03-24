@@ -44,6 +44,7 @@ export enum AnalyticsEvent {
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
   PROFIL_SIGN_UP = 'ProfilSignUp',
+  LOGOUT = 'Logout',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -178,6 +179,8 @@ const logNoSearchResult = (query: string) =>
 
 const logProfilSignUp = () => firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_SIGN_UP)
 
+const logLogout = () => firebaseAnalytics.logEvent(AnalyticsEvent.LOGOUT)
+
 /**
  * Favorites
  */
@@ -208,6 +211,7 @@ export const analytics = {
   logHasAddedOfferToFavorites,
   logHasAppliedFavoritesSorting,
   logHasSkippedTutorial,
+  logLogout,
   logNoSearchResult,
   logOfferSeenDuration,
   logProfilSignUp,
