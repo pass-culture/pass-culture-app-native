@@ -210,6 +210,32 @@ jobs:
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o android -t hard -e staging
 
+  deploy-android-production-hard:
+    docker:
+      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - install_ruby_modules
+      - run:
+          name: Setup production keystore for production environment
+          command: |
+            mkdir -p android/keystores
+            echo $ANDROID_KEYSTORE_PRODUCTION | base64 -di > android/keystores/production.keystore
+            echo "keyAlias=passculture" >> android/keystores/production.keystore.properties
+            echo "storeFile=production.keystore" >> android/keystores/production.keystore.properties
+            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_PRODUCTION" >> android/keystores/production.keystore.properties
+            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_PRODUCTION" >>  android/keystores/production.keystore.properties
+            echo $ANDROID_PLAYSTORE_SERVICE_ACCOUNT | base64 -di > fastlane/playStoreServiceAccount.json
+      - run:
+          name: Setup android Google services config
+          command: echo $ANDROID_GOOGLE_SERVICES_JSON > android/app/google-services.json
+      - run:
+          name: Deploy Android App for production environment
+          command: |
+            ./scripts/deploy.sh -o android -t hard -e production
+
 workflows:
   version: 2.1
   commit:
@@ -248,5 +274,12 @@ workflows:
             branches:
               only:
                 - staging
+          requires:
+            - run-tests
+      - deploy-android-production-hard:
+          filters:
+            branches:
+              only:
+                - production
           requires:
             - run-tests
