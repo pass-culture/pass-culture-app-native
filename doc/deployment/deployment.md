@@ -43,6 +43,8 @@ If I modified native code, I need to hard deploy:
 
 #### Staging
 
+### Deploy hard
+
 We do it once a week at the end of an iteration.
 
 When you want to deploy the current version of master in staging, you can run the following command:
@@ -67,19 +69,21 @@ To deploy to production:
 
 ### Deploy CodePush
 
-#### Stratégie
+Pre-requisites:
 
-![img](./codepush-strategy.png)
+- The bug fix code is on `master` branch
+- The PO validated the behaviour on staging env
 
-#### How to
-
-/!\ DO NOT DEPLOY CODEPUSH IOS & ANDROID SIMULTANEOUSLY
-
-- `git checkout hotfix/vX.X.X` (X.X.X version currently in production)
-- cherry-pick all fix commits
-- git push
+- `git checkout production` (last commit should be the upgrade to X.X.X: version currently in production)
+- `git checkout -b hotfix/vX.X.X`
+- cherry-pick all fix commits that you previously merge on master and that has been validated by the PO
+- create a pull request on `production` branch
 - wait for the CI to be green
+- merge
+- in a terminal: `git checkout production`
 - deploy:
+
+  /!\ DO NOT DEPLOY CODEPUSH IOS & ANDROID SIMULTANEOUSLY
 
   1. Android: `yarn trigger:production:codepush:android`
 
