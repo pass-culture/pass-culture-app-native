@@ -27,16 +27,16 @@ export function LoggedOutHeader() {
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimaryWhite
           title={_(t`S'inscrire`)}
-          onPress={() => navigate('SetEmail', { preventCancellation: true })}
+          onPress={() => {
+            analytics.logProfilSignUp()
+            navigate('SetEmail', { preventCancellation: true })
+          }}
         />
         <Spacer.Column numberOfSpaces={4} />
         <LoginCta>
           <Typo.Body color={ColorsEnum.WHITE}>{_(t`Tu as déjà un compte ?\u00a0`)}</Typo.Body>
           <TouchableOpacity
-            onPress={() => {
-              analytics.logProfilSignUp()
-              navigate('Login', { preventCancellation: true })
-            }}
+            onPress={() => navigate('Login', { preventCancellation: true })}
             testID="login-button">
             <Typo.ButtonText color={ColorsEnum.WHITE}>{_(t`Connecte-toi`)}</Typo.ButtonText>
           </TouchableOpacity>
