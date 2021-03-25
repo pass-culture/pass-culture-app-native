@@ -45,9 +45,8 @@ export const getCtaWordingAndAction = ({
   }
 
   // Beneficiary
-  if (!offer.isActive) return { wording: _(t`Offre expirée`) }
-  if (isOfferSoldOut(offer)) return { wording: _(t`Offre épuisée`) }
-  if (isOfferExpired(offer)) return { wording: _(t`Offre expirée`) }
+  if (!offer.isReleased) return { wording: _(t`Offre expirée`) }
+  if (offer.isSoldOut) return { wording: _(t`Offre épuisée`) }
 
   if (category.categoryType === CategoryType.Thing) {
     if (!hasEnoughCredit) {
@@ -101,13 +100,3 @@ export const useCtaWordingAndAction = (props: {
   const { isBeneficiary = false } = profileInfo || {}
   return getCtaWordingAndAction({ isLoggedIn, isBeneficiary, offer, hasEnoughCredit })
 }
-
-// An offer is expired if all its stock has an expiration date in the past
-export const isOfferExpired = (offer: OfferAdaptedResponse) =>
-  offer.stocks.every(({ bookingLimitDatetime }) =>
-    bookingLimitDatetime ? bookingLimitDatetime < new Date() : false
-  )
-
-// An offer is sold out if none of its stock is bookable
-export const isOfferSoldOut = (offer: OfferAdaptedResponse) =>
-  offer.stocks.every(({ isBookable }) => !isBookable)

@@ -5,17 +5,7 @@ import { offerAdaptedResponseSnap as baseOffer } from 'features/offer/api/snaps/
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
 
-import { getCtaWordingAndAction, isOfferExpired, isOfferSoldOut } from '../useCtaWordingAndAction'
-import {
-  expiredOffer,
-  notExpiredOffer,
-  notExpiredOfferNoLimitDate,
-  soldOutOffer,
-  notSoldOutOffer,
-  soldOutStock,
-  expiredStock1,
-  expiredStock2,
-} from '../useCtaWordingAndAction.testsFixtures'
+import { getCtaWordingAndAction } from '../useCtaWordingAndAction'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 
@@ -61,19 +51,14 @@ describe('getCtaWordingAndAction', () => {
         ...parameters,
       }) || { wording: '' }
 
-    it('CTA="Offre expirée" if offer is inactive', () => {
-      const { wording, onPress } = getCta({ isActive: false })
-      expect(wording).toEqual('Offre expirée')
-      expect(onPress === undefined).toBeTruthy()
-    })
-
     it('CTA="Offre épuisée" if offer is sold out', () => {
-      const { wording, onPress } = getCta({ stocks: [soldOutStock] })
+      const { wording, onPress } = getCta({ isSoldOut: true })
       expect(wording).toEqual('Offre épuisée')
       expect(onPress === undefined).toBeTruthy()
     })
+
     it('CTA="Offre expirée" if offer is expired', () => {
-      const { wording, onPress } = getCta({ stocks: [expiredStock1, expiredStock2] })
+      const { wording, onPress } = getCta({ isReleased: false })
       expect(wording).toEqual('Offre expirée')
       expect(onPress === undefined).toBeTruthy()
     })
@@ -198,27 +183,6 @@ describe('getCtaWordingAndAction', () => {
       expect(analytics.logConsultAvailableDates).toBeCalledTimes(1)
       expect(analytics.logConsultAvailableDates).toBeCalledWith(baseOffer.id)
     })
-  })
-})
-
-describe('isOfferExpired', () => {
-  it.each`
-    offer                         | isExpired
-    ${expiredOffer}               | ${true}
-    ${notExpiredOffer}            | ${false}
-    ${notExpiredOfferNoLimitDate} | ${false}
-  `('should check offer expiration correctly', ({ offer, isExpired }) => {
-    expect(isOfferExpired(offer)).toBe(isExpired)
-  })
-})
-
-describe('isOfferSoldOut', () => {
-  it.each`
-    offer              | isSoldOut
-    ${soldOutOffer}    | ${true}
-    ${notSoldOutOffer} | ${false}
-  `('should check if offer is sold out correctly', ({ offer, isSoldOut }) => {
-    expect(isOfferSoldOut(offer)).toEqual(isSoldOut)
   })
 })
 
