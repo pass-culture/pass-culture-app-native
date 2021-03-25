@@ -9,6 +9,8 @@ import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
 import './why-did-you-render'
+import 'intl'
+import 'intl/locale-data/jsonp/en'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
