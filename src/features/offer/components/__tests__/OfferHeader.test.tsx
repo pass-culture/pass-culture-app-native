@@ -13,7 +13,6 @@ import {
   addFavoriteJsonResponseSnap,
 } from 'features/favorites/api/snaps/favorisResponseSnap'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -342,9 +341,7 @@ describe('<OfferHeader />', () => {
   })
 })
 
-const humanizedOfferId = 'AHD3A'
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const offerId = dehumanizeId(humanizedOfferId)!
+const offerId = 116656
 
 interface Options {
   id?: number

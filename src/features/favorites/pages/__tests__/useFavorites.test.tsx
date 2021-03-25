@@ -11,7 +11,6 @@ import {
 } from 'features/favorites/api/snaps/favorisResponseSnap'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -23,9 +22,7 @@ import { useFavorites, useRemoveFavorite, useAddFavorite, useFavorite } from '..
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-const humanizedOfferId = 'AHD3A'
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const offerId = dehumanizeId(humanizedOfferId)!
+const offerId = 116656
 
 interface Options {
   id?: number

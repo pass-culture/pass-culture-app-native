@@ -2,7 +2,6 @@ import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -10,8 +9,8 @@ import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { OfferTile } from '../OfferTile'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const offerId = dehumanizeId(offer.id)!
+const offerId = 116656
+
 const props = {
   category: offer.category || '',
   categoryName: offer.category,

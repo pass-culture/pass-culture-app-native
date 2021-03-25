@@ -3,12 +3,9 @@ import React from 'react'
 
 import { analytics } from 'libs/analytics'
 
-import { dehumanizeId } from '../../services/dehumanizeId'
 import { OfferSeeMore } from '../OfferSeeMore'
 
-const humanizedOfferId = 'AHD3A'
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const offerId = dehumanizeId(humanizedOfferId)!
+const offerId = 116656
 
 describe('OfferSeeMore', () => {
   it('displays the short wording when no props are precised', () => {
