@@ -10,11 +10,7 @@ export const EmptyFavorites: React.FunctionComponent<IconInterface> = ({
   color = ColorsEnum.GREY_MEDIUM,
   testID,
 }) => (
-  <Svg
-    width={Math.round(1.58 * (size as number))}
-    height={size}
-    testID={testID}
-    viewBox="0 0 197 124">
+  <Svg width={size} height={size} testID={testID} viewBox="0 0 197 124">
     <G fill="none" fillRule="evenodd">
       <G fill={color} fillRule="nonzero">
         <G>

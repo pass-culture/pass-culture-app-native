@@ -85,6 +85,7 @@ exports[`Favorites component should render correctly 1`] = `
       contentContainerStyle={
         Object {
           "flexGrow": 1,
+          "paddingBottom": 80,
         }
       }
       data={
@@ -653,7 +654,7 @@ exports[`Favorites component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "height": 272,
+                  "height": 0,
                 },
               ]
             }
