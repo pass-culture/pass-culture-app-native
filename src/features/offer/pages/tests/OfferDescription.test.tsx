@@ -7,7 +7,6 @@ import waitForExpect from 'wait-for-expect'
 import { OfferResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { env } from 'libs/environment'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -92,9 +91,7 @@ describe('formatValue()', () => {
 async function renderOfferDescription(
   extraOffer?: Pick<OfferResponse, 'extraData' | 'description'>
 ) {
-  const humanizedOfferId = 'AHD3A'
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const offerId = dehumanizeId(humanizedOfferId)!
+  const offerId = 116656
 
   server.use(
     rest.get<OfferResponse>(env.API_BASE_URL + `/native/v1/offer/${offerId}`, (req, res, ctx) =>
