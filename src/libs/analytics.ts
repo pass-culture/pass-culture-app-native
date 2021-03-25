@@ -25,6 +25,10 @@ export enum AnalyticsEvent {
   CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'ContactSupportSignupConfirmation',
   DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
+  HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
+  HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',
+  HAS_APPLIED_FAVORITES_SORTING = 'HasAppliedFavoritesSorting',
+  HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
   NO_SEARCH_RESULT = 'NoSearchResult',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
   RECOMMENDATION_MODULE_SEEN = 'RecommendationModuleSeen',
@@ -32,16 +36,13 @@ export enum AnalyticsEvent {
   RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
   RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
   SCREEN_VIEW = 'screen_view',
+  SEARCH_QUERY = 'SearchQuery',
   SEARCH_SCROLL_TO_PAGE = 'SearchScrollToPage',
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   SHARE_OFFER = 'Share',
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
-  SEARCH_QUERY = 'SearchQuery',
-  HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
-  HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
-  HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -174,10 +175,14 @@ const logSearchScrollToPage = (page: number) =>
 const logNoSearchResult = (query: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
 
+/**
+ * Favorites
+ */
+type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
+const logHasAppliedFavoritesSorting = ({ sortBy }: { sortBy: FavoriteSortBy }) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING, { type: sortBy })
+
 export const analytics = {
-  logHasSkippedTutorial,
-  logHasActivateGeolocFromTutorial,
-  logHasAddedOfferToFavorites,
   logAllModulesSeen,
   logAllTilesSeen,
   logCancelSignup,
@@ -196,6 +201,10 @@ export const analytics = {
   logConsultWithdrawal,
   logContactSupportResetPasswordEmailSent,
   logContactSupportSignupConfirmationEmailSent,
+  logHasActivateGeolocFromTutorial,
+  logHasAddedOfferToFavorites,
+  logHasAppliedFavoritesSorting,
+  logHasSkippedTutorial,
   logNoSearchResult,
   logOfferSeenDuration,
   logRecommendationModuleSeen,
@@ -203,12 +212,12 @@ export const analytics = {
   logResendEmailResetPasswordExpiredLink,
   logResendEmailSignupConfirmationExpiredLink,
   logScreenView,
+  logSearchQuery,
   logSearchScrollToPage,
   logShareOffer,
   logSignUpBetween14And15Included,
   logSignUpLessThanOrEqualTo13,
   logUseFilter,
-  logSearchQuery,
   setUserId,
 }
 
