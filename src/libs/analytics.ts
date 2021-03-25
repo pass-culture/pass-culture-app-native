@@ -1,4 +1,5 @@
 import firebaseAnalyticsModule from '@react-native-firebase/analytics'
+import { Platform } from 'react-native'
 
 import { Referrals } from 'features/navigation/RootNavigator'
 
@@ -180,7 +181,10 @@ const logNoSearchResult = (query: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
 
 const logNotificationToggle = (enableEmail: boolean, enablePush?: boolean) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, { enableEmail, enablePush })
+  firebaseAnalytics.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
+    enableEmail,
+    enablePush: Platform.OS === 'android' ? true : enablePush,
+  })
 
 const logHasChangedPassword = () => firebaseAnalytics.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD)
 
