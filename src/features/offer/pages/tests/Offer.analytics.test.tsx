@@ -3,12 +3,11 @@ import { AppState } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { analytics } from 'libs/analytics'
+import { superFlushWithAct } from 'tests/utils'
 
-import { offerId, renderOfferPage } from './renderOfferPageTestUtil'
+import { offerId, renderOfferPage, renderOfferBodyPage } from './renderOfferPageTestUtil'
 
-allowConsole({ error: true })
-
-describe('<Offer /> - Analytics', () => {
+describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
@@ -24,7 +23,7 @@ describe('<Offer /> - Analytics', () => {
   }
 
   it('should log ConsultAccessibilityModalities once when opening accessibility modalities', async () => {
-    const { getByText } = await renderOfferPage()
+    const { getByText } = await renderOfferBodyPage()
 
     trigger(getByText('Accessibilité'))
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
@@ -34,8 +33,9 @@ describe('<Offer /> - Analytics', () => {
     trigger(getByText('Accessibilité'))
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
   })
+
   it('should log ConsultWithdrawalModalities once when opening accessibility modalities', async () => {
-    const { getByText } = await renderOfferPage()
+    const { getByText } = await renderOfferBodyPage()
 
     trigger(getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
@@ -46,6 +46,19 @@ describe('<Offer /> - Analytics', () => {
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
   })
 
+  it('should trigger logOfferSeenDuration', async () => {
+    const offerPage = await renderOfferBodyPage()
+    expect(analytics.logOfferSeenDuration).not.toHaveBeenCalled()
+    expect(AppState.addEventListener).toHaveBeenCalled()
+    await act(async () => {
+      await offerPage.unmount()
+    })
+    expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
+    expect(AppState.removeEventListener).toHaveBeenCalled()
+  })
+})
+
+describe('<Offer /> - Analytics', () => {
   const nativeEventMiddle = {
     layoutMeasurement: { height: 1000 },
     contentOffset: { y: 400 }, // how far did we scroll
@@ -81,6 +94,7 @@ describe('<Offer /> - Analytics', () => {
       // 1st scroll to bottom => trigger
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
     })
+    await superFlushWithAct(25)
     expect(analytics.logConsultWholeOffer).toHaveBeenCalledWith(offerId)
 
     // @ts-ignore: logConsultWholeOffer is the mock function but is seen as the real function
@@ -91,18 +105,8 @@ describe('<Offer /> - Analytics', () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
     })
+    await superFlushWithAct(25)
 
     expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
-  })
-
-  it('should trigger logOfferSeenDuration', async () => {
-    const offerPage = await renderOfferPage()
-    expect(analytics.logOfferSeenDuration).not.toHaveBeenCalled()
-    expect(AppState.addEventListener).toHaveBeenCalled()
-    await act(async () => {
-      await offerPage.unmount()
-    })
-    expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
-    expect(AppState.removeEventListener).toHaveBeenCalled()
   })
 })

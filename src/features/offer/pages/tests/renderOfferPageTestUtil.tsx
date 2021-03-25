@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { render } from '@testing-library/react-native'
-import { rest } from 'msw/'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
@@ -8,17 +7,19 @@ import waitForExpect from 'wait-for-expect'
 import { OfferResponse, UserProfileResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
-import { env } from 'libs/environment'
+import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { superFlushWithAct } from 'tests/utils'
 
 import { Offer } from '../Offer'
+import { OfferBody } from '../OfferBody'
 
 jest.mock('libs/geolocation')
 
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual<Record<string, unknown>>('@react-navigation/native'),
+  useFocusEffect: jest.fn(),
+}))
 
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -49,17 +50,40 @@ jest.mock('features/home/api', () => ({
   ),
 }))
 
-const humanizedOfferId = 'AHD3A'
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-export const offerId = dehumanizeId(humanizedOfferId)!
+let mockedOffer: Partial<OfferAdaptedResponse> | undefined = undefined
+jest.mock('features/offer/api/useOffer', () => ({
+  useOffer: () => ({
+    data: mockedOffer,
+  }),
+}))
 
-export async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
-  server.use(
-    rest.get<OfferResponse>(env.API_BASE_URL + `/native/v1/offer/${offerId}`, (req, res, ctx) =>
-      res(ctx.status(200), ctx.json({ ...offerResponseSnap, ...extraOffer }))
+export const offerId = 116656
+
+export async function renderOfferBodyPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
+  mockedOffer = { ...offerResponseSnap, ...extraOffer }
+  const wrapper = render(
+    reactQueryProviderHOC(
+      <NavigationContainer>
+        <RootStack.Navigator initialRouteName="Offer">
+          <RootStack.Screen name="Offer">
+            {() => <OfferBody offerId={offerId} onScroll={jest.fn()} />}
+          </RootStack.Screen>
+        </RootStack.Navigator>
+      </NavigationContainer>
     )
   )
 
+  await superFlushWithAct(25)
+
+  await waitForExpect(() => {
+    expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
+  })
+
+  return wrapper
+}
+
+export async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
+  mockedOffer = { ...offerResponseSnap, ...extraOffer }
   const wrapper = render(
     reactQueryProviderHOC(
       <NavigationContainer>
@@ -74,7 +98,6 @@ export async function renderOfferPage(extraOffer?: Partial<Omit<OfferResponse, '
 
   await waitForExpect(() => {
     expect(wrapper.queryByTestId('offer-container')).toBeTruthy()
-    expect(wrapper.queryByTestId('CTA-button')).toBeTruthy()
   })
 
   return wrapper
