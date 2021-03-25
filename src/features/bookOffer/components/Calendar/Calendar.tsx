@@ -45,11 +45,19 @@ interface Props {
   userRemainingCredit: number | null
 }
 
+export const getMinDate = (dates: string[]): string | undefined => {
+  if (dates.length === 0) return undefined
+  if (dates.length === 1) return dates[0]
+  return dates.sort((dateA, dateB) => new Date(dateA).valueOf() - new Date(dateB).valueOf())[0]
+}
+
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
+  const minDate = getMinDate(Object.keys(markedDates)) || new Date()
 
   return (
     <RNCalendar
+      current={minDate}
       firstDay={1}
       enableSwipeMonths={true}
       renderHeader={(date) => <MonthHeader date={date} />}
