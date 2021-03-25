@@ -1,9 +1,11 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Dimensions } from 'react-native'
+import { Dimensions, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import { formatToCompleteFrenchDateTime, isToday, isTomorrow } from 'libs/parsers'
 import { Separator } from 'ui/components/Separator'
@@ -19,6 +21,7 @@ interface OnGoingBookingItemProps {
 }
 
 export const OnGoingBookingItem = ({ booking }: OnGoingBookingItemProps) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { stock } = booking
   stock.offer.category.categoryType
   const beginningDatetime = stock.beginningDatetime ? new Date(stock.beginningDatetime) : null
@@ -26,7 +29,9 @@ export const OnGoingBookingItem = ({ booking }: OnGoingBookingItemProps) => {
   const { isDuo, dateLabel, withdrawLabel } = getItemViewProperties(booking, beginningDatetime)
 
   return (
-    <React.Fragment>
+    <TouchableOpacity
+      onPress={() => navigate('BookingDetails', { id: booking.id })}
+      testID={'OnGoingBookingItem'}>
       <ItemContainer>
         <OnGoingTicket image={stock.offer.image?.url} />
         <AttributesView>
@@ -47,7 +52,7 @@ export const OnGoingBookingItem = ({ booking }: OnGoingBookingItemProps) => {
         </AttributesView>
       </ItemContainer>
       <Separator />
-    </React.Fragment>
+    </TouchableOpacity>
   )
 }
 const titleContainerWidth = Dimensions.get('screen').width - onGoingTicketWidth - getSpacing(10)
