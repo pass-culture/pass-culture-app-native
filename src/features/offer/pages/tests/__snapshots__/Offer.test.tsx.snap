@@ -876,7 +876,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 },
                               ]
                             }
-                          />
+                          >
+                            Du 3 au 4 janvier 2021
+                          </Text>
                         </View>
                         <View
                           style={
@@ -2105,7 +2107,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                   ]
                                                 }
                                               >
-                                                Mars 2021
+                                                Janvier 2021
                                               </Text>
                                             </View>
                                             <View
@@ -2323,6 +2325,34 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                             <View
                                               style={
                                                 Object {
+                                                  "flex": 1,
+                                                }
+                                              }
+                                            />
+                                            <View
+                                              style={
+                                                Object {
+                                                  "flex": 1,
+                                                }
+                                              }
+                                            />
+                                            <View
+                                              style={
+                                                Object {
+                                                  "flex": 1,
+                                                }
+                                              }
+                                            />
+                                            <View
+                                              style={
+                                                Object {
+                                                  "flex": 1,
+                                                }
+                                              }
+                                            />
+                                            <View
+                                              style={
+                                                Object {
                                                   "alignItems": "center",
                                                   "flex": 1,
                                                 }
@@ -2447,44 +2477,91 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                   ]
                                                 }
                                               >
-                                                <View
-                                                  style={
+                                                <BVLinearGradient
+                                                  colors={
                                                     Array [
-                                                      Object {
-                                                        "height": 24,
-                                                        "justifyContent": "center",
-                                                      },
+                                                      4294967295,
+                                                      4284637794,
+                                                      4294967295,
                                                     ]
                                                   }
+                                                  endPoint={
+                                                    Object {
+                                                      "x": 1,
+                                                      "y": 1,
+                                                    }
+                                                  }
+                                                  locations={
+                                                    Array [
+                                                      0.48,
+                                                      0.5,
+                                                      0.52,
+                                                    ]
+                                                  }
+                                                  startPoint={
+                                                    Object {
+                                                      "x": 0,
+                                                      "y": 0,
+                                                    }
+                                                  }
                                                 >
-                                                  <Text
-                                                    color="#626262"
+                                                  <View
                                                     style={
                                                       Array [
                                                         Object {
-                                                          "color": "#626262",
-                                                          "fontFamily": "Montserrat-Regular",
-                                                          "fontSize": 15,
-                                                          "lineHeight": 20,
+                                                          "height": 24,
+                                                          "justifyContent": "center",
                                                         },
                                                       ]
                                                     }
                                                   >
-                                                    3
-                                                  </Text>
-                                                </View>
-                                                <View
-                                                  numberOfSpaces={4}
+                                                    <Text
+                                                      color="#626262"
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "#626262",
+                                                            "fontFamily": "Montserrat-Bold",
+                                                            "fontSize": 15,
+                                                            "lineHeight": 20,
+                                                            "minWidth": 24,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      3
+                                                    </Text>
+                                                  </View>
+                                                </BVLinearGradient>
+                                                <Text
+                                                  color="#626262"
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "height": 16,
+                                                        "color": "#626262",
+                                                        "fontFamily": "Montserrat-SemiBold",
+                                                        "fontSize": 12,
+                                                        "lineHeight": 16,
                                                       },
                                                     ]
                                                   }
-                                                />
+                                                >
+                                                  5€
+                                                </Text>
                                               </View>
                                             </View>
+                                          </View>
+                                          <View
+                                            style={
+                                              Object {
+                                                "flexDirection": "row",
+                                                "justifyContent": "space-around",
+                                                "marginBottom": 7,
+                                                "marginTop": 7,
+                                              }
+                                            }
+                                          >
                                             <View
                                               style={
                                                 Object {
@@ -2502,42 +2579,78 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                   ]
                                                 }
                                               >
-                                                <View
-                                                  style={
+                                                <BVLinearGradient
+                                                  colors={
                                                     Array [
-                                                      Object {
-                                                        "height": 24,
-                                                        "justifyContent": "center",
-                                                      },
+                                                      4294967295,
+                                                      4284637794,
+                                                      4294967295,
                                                     ]
                                                   }
+                                                  endPoint={
+                                                    Object {
+                                                      "x": 1,
+                                                      "y": 1,
+                                                    }
+                                                  }
+                                                  locations={
+                                                    Array [
+                                                      0.48,
+                                                      0.5,
+                                                      0.52,
+                                                    ]
+                                                  }
+                                                  startPoint={
+                                                    Object {
+                                                      "x": 0,
+                                                      "y": 0,
+                                                    }
+                                                  }
                                                 >
-                                                  <Text
-                                                    color="#626262"
+                                                  <View
                                                     style={
                                                       Array [
                                                         Object {
-                                                          "color": "#626262",
-                                                          "fontFamily": "Montserrat-Regular",
-                                                          "fontSize": 15,
-                                                          "lineHeight": 20,
+                                                          "height": 24,
+                                                          "justifyContent": "center",
                                                         },
                                                       ]
                                                     }
                                                   >
-                                                    4
-                                                  </Text>
-                                                </View>
-                                                <View
-                                                  numberOfSpaces={4}
+                                                    <Text
+                                                      color="#626262"
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "#626262",
+                                                            "fontFamily": "Montserrat-Bold",
+                                                            "fontSize": 15,
+                                                            "lineHeight": 20,
+                                                            "minWidth": 24,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      4
+                                                    </Text>
+                                                  </View>
+                                                </BVLinearGradient>
+                                                <Text
+                                                  color="#626262"
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "height": 16,
+                                                        "color": "#626262",
+                                                        "fontFamily": "Montserrat-SemiBold",
+                                                        "fontSize": 12,
+                                                        "lineHeight": 16,
                                                       },
                                                     ]
                                                   }
-                                                />
+                                                >
+                                                  5€
+                                                </Text>
                                               </View>
                                             </View>
                                             <View
@@ -2705,17 +2818,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                          </View>
-                                          <View
-                                            style={
-                                              Object {
-                                                "flexDirection": "row",
-                                                "justifyContent": "space-around",
-                                                "marginBottom": 7,
-                                                "marginTop": 7,
-                                              }
-                                            }
-                                          >
                                             <View
                                               style={
                                                 Object {
@@ -2881,6 +2983,17 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
+                                          </View>
+                                          <View
+                                            style={
+                                              Object {
+                                                "flexDirection": "row",
+                                                "justifyContent": "space-around",
+                                                "marginBottom": 7,
+                                                "marginTop": 7,
+                                              }
+                                            }
+                                          >
                                             <View
                                               style={
                                                 Object {
@@ -3101,17 +3214,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                          </View>
-                                          <View
-                                            style={
-                                              Object {
-                                                "flexDirection": "row",
-                                                "justifyContent": "space-around",
-                                                "marginBottom": 7,
-                                                "marginTop": 7,
-                                              }
-                                            }
-                                          >
                                             <View
                                               style={
                                                 Object {
@@ -3277,6 +3379,17 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
+                                          </View>
+                                          <View
+                                            style={
+                                              Object {
+                                                "flexDirection": "row",
+                                                "justifyContent": "space-around",
+                                                "marginBottom": 7,
+                                                "marginTop": 7,
+                                              }
+                                            }
+                                          >
                                             <View
                                               style={
                                                 Object {
@@ -3497,17 +3610,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                          </View>
-                                          <View
-                                            style={
-                                              Object {
-                                                "flexDirection": "row",
-                                                "justifyContent": "space-around",
-                                                "marginBottom": 7,
-                                                "marginTop": 7,
-                                              }
-                                            }
-                                          >
                                             <View
                                               style={
                                                 Object {
@@ -3673,6 +3775,17 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
+                                          </View>
+                                          <View
+                                            style={
+                                              Object {
+                                                "flexDirection": "row",
+                                                "justifyContent": "space-around",
+                                                "marginBottom": 7,
+                                                "marginTop": 7,
+                                              }
+                                            }
+                                          >
                                             <View
                                               style={
                                                 Object {
@@ -3893,17 +4006,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                          </View>
-                                          <View
-                                            style={
-                                              Object {
-                                                "flexDirection": "row",
-                                                "justifyContent": "space-around",
-                                                "marginBottom": 7,
-                                                "marginTop": 7,
-                                              }
-                                            }
-                                          >
                                             <View
                                               style={
                                                 Object {
@@ -4069,34 +4171,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                            <View
-                                              style={
-                                                Object {
-                                                  "flex": 1,
-                                                }
-                                              }
-                                            />
-                                            <View
-                                              style={
-                                                Object {
-                                                  "flex": 1,
-                                                }
-                                              }
-                                            />
-                                            <View
-                                              style={
-                                                Object {
-                                                  "flex": 1,
-                                                }
-                                              }
-                                            />
-                                            <View
-                                              style={
-                                                Object {
-                                                  "flex": 1,
-                                                }
-                                              }
-                                            />
                                           </View>
                                         </View>
                                       </View>
@@ -5869,7 +5943,9 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                 },
                               ]
                             }
-                          />
+                          >
+                            Du 3 au 4 janvier 2021
+                          </Text>
                         </View>
                         <View
                           style={
@@ -7330,7 +7406,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                   ]
                                                 }
                                               >
-                                                Mars 2021
+                                                Janvier 2021
                                               </Text>
                                             </View>
                                             <View
@@ -7548,6 +7624,34 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                             <View
                                               style={
                                                 Object {
+                                                  "flex": 1,
+                                                }
+                                              }
+                                            />
+                                            <View
+                                              style={
+                                                Object {
+                                                  "flex": 1,
+                                                }
+                                              }
+                                            />
+                                            <View
+                                              style={
+                                                Object {
+                                                  "flex": 1,
+                                                }
+                                              }
+                                            />
+                                            <View
+                                              style={
+                                                Object {
+                                                  "flex": 1,
+                                                }
+                                              }
+                                            />
+                                            <View
+                                              style={
+                                                Object {
                                                   "alignItems": "center",
                                                   "flex": 1,
                                                 }
@@ -7672,44 +7776,91 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                   ]
                                                 }
                                               >
-                                                <View
-                                                  style={
+                                                <BVLinearGradient
+                                                  colors={
                                                     Array [
-                                                      Object {
-                                                        "height": 24,
-                                                        "justifyContent": "center",
-                                                      },
+                                                      4294967295,
+                                                      4284637794,
+                                                      4294967295,
                                                     ]
                                                   }
+                                                  endPoint={
+                                                    Object {
+                                                      "x": 1,
+                                                      "y": 1,
+                                                    }
+                                                  }
+                                                  locations={
+                                                    Array [
+                                                      0.48,
+                                                      0.5,
+                                                      0.52,
+                                                    ]
+                                                  }
+                                                  startPoint={
+                                                    Object {
+                                                      "x": 0,
+                                                      "y": 0,
+                                                    }
+                                                  }
                                                 >
-                                                  <Text
-                                                    color="#626262"
+                                                  <View
                                                     style={
                                                       Array [
                                                         Object {
-                                                          "color": "#626262",
-                                                          "fontFamily": "Montserrat-Regular",
-                                                          "fontSize": 15,
-                                                          "lineHeight": 20,
+                                                          "height": 24,
+                                                          "justifyContent": "center",
                                                         },
                                                       ]
                                                     }
                                                   >
-                                                    3
-                                                  </Text>
-                                                </View>
-                                                <View
-                                                  numberOfSpaces={4}
+                                                    <Text
+                                                      color="#626262"
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "#626262",
+                                                            "fontFamily": "Montserrat-Bold",
+                                                            "fontSize": 15,
+                                                            "lineHeight": 20,
+                                                            "minWidth": 24,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      3
+                                                    </Text>
+                                                  </View>
+                                                </BVLinearGradient>
+                                                <Text
+                                                  color="#626262"
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "height": 16,
+                                                        "color": "#626262",
+                                                        "fontFamily": "Montserrat-SemiBold",
+                                                        "fontSize": 12,
+                                                        "lineHeight": 16,
                                                       },
                                                     ]
                                                   }
-                                                />
+                                                >
+                                                  5€
+                                                </Text>
                                               </View>
                                             </View>
+                                          </View>
+                                          <View
+                                            style={
+                                              Object {
+                                                "flexDirection": "row",
+                                                "justifyContent": "space-around",
+                                                "marginBottom": 7,
+                                                "marginTop": 7,
+                                              }
+                                            }
+                                          >
                                             <View
                                               style={
                                                 Object {
@@ -7727,42 +7878,78 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                   ]
                                                 }
                                               >
-                                                <View
-                                                  style={
+                                                <BVLinearGradient
+                                                  colors={
                                                     Array [
-                                                      Object {
-                                                        "height": 24,
-                                                        "justifyContent": "center",
-                                                      },
+                                                      4294967295,
+                                                      4284637794,
+                                                      4294967295,
                                                     ]
                                                   }
+                                                  endPoint={
+                                                    Object {
+                                                      "x": 1,
+                                                      "y": 1,
+                                                    }
+                                                  }
+                                                  locations={
+                                                    Array [
+                                                      0.48,
+                                                      0.5,
+                                                      0.52,
+                                                    ]
+                                                  }
+                                                  startPoint={
+                                                    Object {
+                                                      "x": 0,
+                                                      "y": 0,
+                                                    }
+                                                  }
                                                 >
-                                                  <Text
-                                                    color="#626262"
+                                                  <View
                                                     style={
                                                       Array [
                                                         Object {
-                                                          "color": "#626262",
-                                                          "fontFamily": "Montserrat-Regular",
-                                                          "fontSize": 15,
-                                                          "lineHeight": 20,
+                                                          "height": 24,
+                                                          "justifyContent": "center",
                                                         },
                                                       ]
                                                     }
                                                   >
-                                                    4
-                                                  </Text>
-                                                </View>
-                                                <View
-                                                  numberOfSpaces={4}
+                                                    <Text
+                                                      color="#626262"
+                                                      style={
+                                                        Array [
+                                                          Object {
+                                                            "color": "#626262",
+                                                            "fontFamily": "Montserrat-Bold",
+                                                            "fontSize": 15,
+                                                            "lineHeight": 20,
+                                                            "minWidth": 24,
+                                                            "textAlign": "center",
+                                                          },
+                                                        ]
+                                                      }
+                                                    >
+                                                      4
+                                                    </Text>
+                                                  </View>
+                                                </BVLinearGradient>
+                                                <Text
+                                                  color="#626262"
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "height": 16,
+                                                        "color": "#626262",
+                                                        "fontFamily": "Montserrat-SemiBold",
+                                                        "fontSize": 12,
+                                                        "lineHeight": 16,
                                                       },
                                                     ]
                                                   }
-                                                />
+                                                >
+                                                  5€
+                                                </Text>
                                               </View>
                                             </View>
                                             <View
@@ -7930,17 +8117,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                          </View>
-                                          <View
-                                            style={
-                                              Object {
-                                                "flexDirection": "row",
-                                                "justifyContent": "space-around",
-                                                "marginBottom": 7,
-                                                "marginTop": 7,
-                                              }
-                                            }
-                                          >
                                             <View
                                               style={
                                                 Object {
@@ -8106,6 +8282,17 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
+                                          </View>
+                                          <View
+                                            style={
+                                              Object {
+                                                "flexDirection": "row",
+                                                "justifyContent": "space-around",
+                                                "marginBottom": 7,
+                                                "marginTop": 7,
+                                              }
+                                            }
+                                          >
                                             <View
                                               style={
                                                 Object {
@@ -8326,17 +8513,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                          </View>
-                                          <View
-                                            style={
-                                              Object {
-                                                "flexDirection": "row",
-                                                "justifyContent": "space-around",
-                                                "marginBottom": 7,
-                                                "marginTop": 7,
-                                              }
-                                            }
-                                          >
                                             <View
                                               style={
                                                 Object {
@@ -8502,6 +8678,17 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
+                                          </View>
+                                          <View
+                                            style={
+                                              Object {
+                                                "flexDirection": "row",
+                                                "justifyContent": "space-around",
+                                                "marginBottom": 7,
+                                                "marginTop": 7,
+                                              }
+                                            }
+                                          >
                                             <View
                                               style={
                                                 Object {
@@ -8722,17 +8909,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                          </View>
-                                          <View
-                                            style={
-                                              Object {
-                                                "flexDirection": "row",
-                                                "justifyContent": "space-around",
-                                                "marginBottom": 7,
-                                                "marginTop": 7,
-                                              }
-                                            }
-                                          >
                                             <View
                                               style={
                                                 Object {
@@ -8898,6 +9074,17 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
+                                          </View>
+                                          <View
+                                            style={
+                                              Object {
+                                                "flexDirection": "row",
+                                                "justifyContent": "space-around",
+                                                "marginBottom": 7,
+                                                "marginTop": 7,
+                                              }
+                                            }
+                                          >
                                             <View
                                               style={
                                                 Object {
@@ -9118,17 +9305,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                          </View>
-                                          <View
-                                            style={
-                                              Object {
-                                                "flexDirection": "row",
-                                                "justifyContent": "space-around",
-                                                "marginBottom": 7,
-                                                "marginTop": 7,
-                                              }
-                                            }
-                                          >
                                             <View
                                               style={
                                                 Object {
@@ -9294,34 +9470,6 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                                 />
                                               </View>
                                             </View>
-                                            <View
-                                              style={
-                                                Object {
-                                                  "flex": 1,
-                                                }
-                                              }
-                                            />
-                                            <View
-                                              style={
-                                                Object {
-                                                  "flex": 1,
-                                                }
-                                              }
-                                            />
-                                            <View
-                                              style={
-                                                Object {
-                                                  "flex": 1,
-                                                }
-                                              }
-                                            />
-                                            <View
-                                              style={
-                                                Object {
-                                                  "flex": 1,
-                                                }
-                                              }
-                                            />
                                           </View>
                                         </View>
                                       </View>

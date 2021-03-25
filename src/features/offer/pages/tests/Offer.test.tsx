@@ -1,10 +1,15 @@
 import { act, fireEvent } from '@testing-library/react-native'
+import mockdate from 'mockdate'
 
 import { renderOfferPage } from './renderOfferPageTestUtil'
 
 allowConsole({ error: true })
 
 describe('<Offer />', () => {
+  beforeAll(() => {
+    mockdate.set(new Date(2021, 0, 1))
+  })
+
   it('should match snapshot for physical offer', async () => {
     const { toJSON } = await renderOfferPage({ isDigital: false })
     expect(toJSON()).toMatchSnapshot()
