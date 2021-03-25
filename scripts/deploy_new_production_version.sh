@@ -16,4 +16,4 @@ check_branch
 
 git pull
 
-hub pull-request -m "Production hard deploy" -b production --browse
+hub pull-request -m "[MEP] Production hard deploy" -b production --browse

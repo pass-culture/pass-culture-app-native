@@ -63,11 +63,7 @@ To deploy to production:
 
 - `yarn trigger:production:deploy`
   And this will create a pull request from `staging` to `production` branch.
-  CircleCI will detect the tag and launch the lane `deploy-android-production-hard` (see `.circleci/config.yml` file)
-
-This will only trigger Android Production hard deploy for the moment.
-IOS coming soon: PC-4639
-IOS manual deploy: `yarn trigger:production:deploy:ios`
+  CircleCI will detect the tag and launch the lane `deploy-android-production-hard` & `deploy-ios-production-hard` (see `.circleci/config.yml` file)
 
 ### Deploy CodePush
 
