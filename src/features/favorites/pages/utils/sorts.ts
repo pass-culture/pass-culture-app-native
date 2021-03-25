@@ -35,7 +35,7 @@ export function sortByAscendingPrice(a: FavoriteResponse, b: FavoriteResponse) {
 }
 
 export function sortByIdDesc(a: FavoriteResponse, b: FavoriteResponse) {
-  return a.id - b.id
+  return b.id - a.id
 }
 
 export function sortByDistanceAroundMe(position: GeoCoordinates | null) {
@@ -60,7 +60,7 @@ export function sortByDistanceAroundMe(position: GeoCoordinates | null) {
     } else if (aOffer.isExpired && !bOffer.isExpired) {
       return 1
     } else if (!aCoordinate && !bCoordinate) {
-      return 0
+      return -1
     } else if (aCoordinate && !bCoordinate) {
       return -1
     } else if (!aCoordinate && bCoordinate) {

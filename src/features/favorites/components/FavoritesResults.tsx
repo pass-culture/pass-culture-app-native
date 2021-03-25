@@ -20,7 +20,7 @@ import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
 
-export const FavoritesResults: React.FC = () => {
+export const FavoritesResults: React.FC = React.memo(() => {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
 
@@ -82,6 +82,7 @@ export const FavoritesResults: React.FC = () => {
   )
 
   if (isLoading || !data) return <FavoritesResultsPlaceHolder />
+
   return (
     <React.Fragment>
       {offerToBook && (
@@ -121,7 +122,7 @@ export const FavoritesResults: React.FC = () => {
       )}
     </React.Fragment>
   )
-}
+})
 
 const contentContainerStyle = { flexGrow: 1 }
 const Container = styled.View({ height: '100%' })

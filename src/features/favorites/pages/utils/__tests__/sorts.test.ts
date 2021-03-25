@@ -67,33 +67,6 @@ describe('Favorites sorts', () => {
         },
       },
       {
-        id: 389,
-        offer: {
-          id: 146099,
-          name: 'Un lit sous une rivière',
-          category: {
-            categoryType: 'Event',
-            label: 'Spectacle',
-            name: 'SPECTACLE',
-          },
-          expenseDomains: [ExpenseDomain.All],
-          externalTicketOfficeUrl: null,
-          image: {
-            credit: null,
-            url:
-              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
-          },
-          coordinates: {
-            latitude: 48.94538,
-            longitude: 2.5029,
-          },
-          price: null,
-          startPrice: 2700,
-          date: null,
-          startDate: new Date('2021-03-04T20:00:00.000Z'),
-        },
-      },
-      {
         id: 393,
         offer: {
           id: 146105,
@@ -113,6 +86,33 @@ describe('Favorites sorts', () => {
           coordinates: {
             latitude: 48.9263,
             longitude: 2.49008,
+          },
+          price: null,
+          startPrice: 2700,
+          date: null,
+          startDate: new Date('2021-03-04T20:00:00.000Z'),
+        },
+      },
+      {
+        id: 389,
+        offer: {
+          id: 146099,
+          name: 'Un lit sous une rivière',
+          category: {
+            categoryType: 'Event',
+            label: 'Spectacle',
+            name: 'SPECTACLE',
+          },
+          expenseDomains: [ExpenseDomain.All],
+          externalTicketOfficeUrl: null,
+          image: {
+            credit: null,
+            url:
+              'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
+          },
+          coordinates: {
+            latitude: 48.94538,
+            longitude: 2.5029,
           },
           price: null,
           startPrice: 2700,
