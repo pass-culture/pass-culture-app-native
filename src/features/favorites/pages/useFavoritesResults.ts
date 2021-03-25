@@ -2,7 +2,7 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
-import { SORT_OPTIONS } from 'features/favorites/pages/FavoritesSorts'
+import { FavoriteSortBy } from 'features/favorites/pages/FavoritesSorts'
 import { useFavorites } from 'features/favorites/pages/useFavorites'
 import {
   sortByAscendingPrice,
@@ -17,7 +17,7 @@ import { FavoritesState } from './reducer'
 export interface FakePaginatedFavoritesOptions {
   page: number
   favoritesPerPage: number
-  sortBy: keyof typeof SORT_OPTIONS
+  sortBy: FavoriteSortBy
   position: GeoCoordinates | null
 }
 
@@ -31,7 +31,7 @@ export interface FakePaginatedFavoritesResponse {
 
 function applyFilter(
   list: Array<FavoriteResponse>,
-  sortBy: keyof typeof SORT_OPTIONS,
+  sortBy: FavoriteSortBy,
   position: GeoCoordinates | null
 ) {
   if (sortBy === 'ASCENDING_PRICE') {

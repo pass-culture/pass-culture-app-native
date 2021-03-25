@@ -1,7 +1,7 @@
-import { SORT_OPTIONS } from 'features/favorites/pages/FavoritesSorts'
+import { FavoriteSortBy } from 'features/favorites/pages/FavoritesSorts'
 
 export type FavoritesState = {
-  sortBy: keyof typeof SORT_OPTIONS
+  sortBy: FavoriteSortBy
 }
 
 export type FavoritesContext = FavoritesState & {
@@ -12,7 +12,7 @@ export const initialFavoritesState: FavoritesState = {
   sortBy: 'RECENTLY_ADDED',
 }
 
-export type Action = { type: 'INIT' } | { type: 'SET_FILTER'; payload: keyof typeof SORT_OPTIONS }
+export type Action = { type: 'INIT' } | { type: 'SET_FILTER'; payload: FavoriteSortBy }
 
 export const favoritesReducer = (state: FavoritesState, action: Action): FavoritesState => {
   switch (action.type) {

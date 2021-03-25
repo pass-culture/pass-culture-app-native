@@ -1,14 +1,13 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import debounce from 'lodash.debounce'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Linking, ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
+import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
-import { IGeolocationContext } from 'libs/geolocation/GeolocationWrapper'
 import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -18,88 +17,59 @@ import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-export const DEBOUNCED_CALLBACK_MS = 200
-
-interface Options extends IGeolocationContext {
-  showGeolocPermissionModal: () => void
+export type FavoriteSortBy = 'RECENTLY_ADDED' | 'ASCENDING_PRICE' | 'AROUND_ME'
+const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
+  RECENTLY_ADDED: _(t`Ajouté récemment`),
+  ASCENDING_PRICE: _(t`Prix croissant`),
+  AROUND_ME: _(t`Proximité géographique`),
 }
+const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
 
-export const useSelectSort = ({
-  showGeolocPermissionModal,
-  position,
-  permissionState,
-  requestGeolocPermission,
-}: Options) => {
-  const { sortBy: stateSort, dispatch } = useFavoritesState()
-  return {
-    isFilterSelected: (sortBy: string) => {
-      return stateSort === sortBy
-    },
-    selectFilter: (sortBy: keyof typeof SORT_OPTIONS) => {
-      return () => dispatch({ type: 'SET_FILTER', payload: sortBy })
-    },
-    onPressAroundMe: async (onAcceptance?: () => void) => {
-      if (position === null) {
+export const FavoritesSorts: React.FC = () => {
+  const { goBack } = useNavigation()
+  const { permissionState, requestGeolocPermission } = useGeolocation()
+  const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
+  const {
+    visible: isGeolocPermissionModalVisible,
+    showModal: showGeolocPermissionModal,
+    hideModal: hideGeolocPermissionModal,
+  } = useModal(false)
+
+  async function onFilterSelection(sortBy: FavoriteSortBy) {
+    if (sortBy === 'AROUND_ME') {
+      const hasAllowedGeolocation = await storage.readObject('has_allowed_geolocation')
+      const shouldAskGeolocPermission =
+        permissionState !== GeolocPermissionState.GRANTED ||
+        hasAllowedGeolocation === false ||
+        hasAllowedGeolocation === null
+      if (shouldAskGeolocPermission) {
         const shouldDisplayCustomGeolocRequest =
           permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
         if (shouldDisplayCustomGeolocRequest) {
           showGeolocPermissionModal()
         } else {
           await requestGeolocPermission({
-            onAcceptance,
+            onAcceptance() {
+              dispatch({ type: 'SET_FILTER', payload: 'AROUND_ME' })
+            },
           })
         }
+        return
       }
-    },
+    }
+    dispatch({ type: 'SET_FILTER', payload: sortBy })
   }
-}
 
-export const SORT_OPTIONS = {
-  RECENTLY_ADDED: {
-    label: _(t`Ajouté récemment`),
-  },
-  ASCENDING_PRICE: {
-    label: _(t`Prix croissant`),
-  },
-  AROUND_ME: {
-    label: _(t`Proximité géographique`),
-  },
-}
+  function onValidation() {
+    analytics.logHasAppliedFavoritesSorting({ sortBy: selectedSortBy })
+    goBack()
+  }
 
-export const FavoritesSorts: React.FC = () => {
-  const { goBack } = useNavigation()
-
-  const { position, permissionState, requestGeolocPermission } = useGeolocation()
-  const {
-    visible: isGeolocPermissionModalVisible,
-    showModal: showGeolocPermissionModal,
-    hideModal: hideGeolocPermissionModal,
-  } = useModal(false)
-  const { isFilterSelected, selectFilter, onPressAroundMe } = useSelectSort({
-    showGeolocPermissionModal,
-    position,
-    permissionState,
-    requestGeolocPermission,
-  } as Options)
-  const debouncedCallback = React.useRef(debounce(goBack, DEBOUNCED_CALLBACK_MS)).current
-
-  const onPressGeolocPermissionModalButton = () => {
+  function onPressCustomGeolocPermissionModalButton() {
     Linking.openSettings()
     hideGeolocPermissionModal()
   }
 
-  const handlePress = useCallback(
-    async (sortBy) => {
-      const hasAllowedGeolocation = await storage.readObject('has_allowed_geolocation')
-      return sortBy === 'AROUND_ME' &&
-        (permissionState !== GeolocPermissionState.GRANTED ||
-          hasAllowedGeolocation === false ||
-          hasAllowedGeolocation === null)
-        ? onPressAroundMe(selectFilter(sortBy))
-        : selectFilter(sortBy)()
-    },
-    [permissionState, onPressAroundMe, selectFilter]
-  )
   return (
     <React.Fragment>
       <ScrollView contentContainerStyle={contentContainerStyle}>
@@ -111,34 +81,32 @@ export const FavoritesSorts: React.FC = () => {
           <Spacer.Row numberOfSpaces={6} />
           <Typo.Title4>{_(t`Trier par`)}</Typo.Title4>
         </TitleContainer>
-        {Object.entries(SORT_OPTIONS)
-          .map(([f, { label }]) => {
-            const sortBy = f as keyof typeof SORT_OPTIONS
-            const isSelected = isFilterSelected(sortBy)
-            const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
-            return (
-              <LabelContainer key={sortBy} onPress={() => handlePress(sortBy)} testID={sortBy}>
-                <Spacer.Column numberOfSpaces={8} />
-                <Spacer.Row numberOfSpaces={6} />
-                <Typo.ButtonText numberOfLines={2} color={textColor}>
-                  {label}
-                </Typo.ButtonText>
-                <Spacer.Flex />
-                {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
-              </LabelContainer>
-            )
-          })
-          .filter((f) => !!f)}
+
+        {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
+          const isSelected = selectedSortBy === sortBy
+          const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
+          return (
+            <LabelContainer key={sortBy} onPress={() => onFilterSelection(sortBy)} testID={sortBy}>
+              <Spacer.Column numberOfSpaces={8} />
+              <Spacer.Row numberOfSpaces={6} />
+              <Typo.ButtonText numberOfLines={2} color={textColor}>
+                {label}
+              </Typo.ButtonText>
+              <Spacer.Flex />
+              {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+            </LabelContainer>
+          )
+        })}
       </ScrollView>
 
       <PageHeader title={_(t`Trier`)} />
       <ButtonContainer>
-        <ButtonPrimary title={_(t`Valider`)} onPress={debouncedCallback} />
+        <ButtonPrimary title={_(t`Valider`)} onPress={onValidation} />
       </ButtonContainer>
       <GeolocationActivationModal
         isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
         hideGeolocPermissionModal={hideGeolocPermissionModal}
-        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
+        onPressGeolocPermissionModalButton={onPressCustomGeolocPermissionModalButton}
       />
     </React.Fragment>
   )
