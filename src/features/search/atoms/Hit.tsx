@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useDistance } from 'features/offer/components/useDistance'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { SearchAlgoliaHit } from 'libs/algolia'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { analytics } from 'libs/analytics'
@@ -24,13 +23,13 @@ interface Props {
 }
 
 export const Hit: React.FC<Props> = ({ hit, query }) => {
-  const { offer, _geoloc } = hit
+  const { offer, objectID, _geoloc } = hit
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance(_geoloc)
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-  const offerId = dehumanizeId(offer.id)
+  const offerId = +objectID
   const categoryLabel = CATEGORY_CRITERIA[offer.category || 'ALL'].label
   const formattedDate = formatDates(timestampsInMillis)
   const prices = offer.prices ? offer.prices.map(convertEuroToCents) : undefined

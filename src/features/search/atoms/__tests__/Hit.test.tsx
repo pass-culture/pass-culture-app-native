@@ -2,7 +2,6 @@ import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
@@ -13,7 +12,7 @@ import { Hit } from '../Hit'
 const mockSearchState = initialSearchState
 
 const hit = mockedAlgoliaResponse.hits[0]
-const offerId = dehumanizeId(hit.offer.id)
+const offerId = +hit.objectID
 
 let mockDistance: string | null = null
 jest.mock('features/offer/components/useDistance', () => ({

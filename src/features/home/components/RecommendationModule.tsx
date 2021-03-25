@@ -10,7 +10,6 @@ import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { DisplayParametersFields } from 'features/home/contentful'
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { AlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
@@ -28,16 +27,9 @@ type RecommendationModuleProps = {
 }
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const { display, isBeneficiary, position, index, setRecommendationY } = props
+  const { display, isBeneficiary, position, index, setRecommendationY, hits } = props
 
   const moduleName = display.title
-  const hits = props.hits
-    .map((hit) => {
-      const offerId = dehumanizeId(hit.offer.id)
-      return offerId ? { ...hit, offerId } : undefined
-    })
-    .filter(Boolean) as Array<AlgoliaHit & { offerId: number }>
-
   const logHasSeenAllTiles = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
   )
@@ -45,14 +37,14 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const onLayout = (event: LayoutChangeEvent) => setRecommendationY(event.nativeEvent.layout.y)
 
   const renderItem = useCallback(
-    (hit: AlgoliaHit & { offerId: number }) => {
+    (hit: AlgoliaHit) => {
       const timestampsInMillis = hit.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <Row key={hit.objectID}>
           <OfferTile
             category={parseCategory(hit.offer.category)}
             categoryName={hit.offer.category}
-            offerId={hit.offerId}
+            offerId={+hit.objectID}
             description={hit.offer.description || ''}
             distance={formatDistance(hit._geoloc, position)}
             name={hit.offer.name}
