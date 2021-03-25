@@ -57,6 +57,7 @@
     "hi-base32": "^0.5.0",
     "highlight-words-core": "^1.2.2",
     "i18n-js": "^3.5.1",
+    "intl": "^1.2.5",
     "jsc-android": "^241213.1.0",
     "jwt-decode": "^3.1.2",
     "lodash.debounce": "^4.0.8",
