@@ -9,6 +9,7 @@ import {
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
 import { useChangePasswordMutation } from 'features/auth/mutations'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -54,6 +55,7 @@ export function ChangePassword() {
         message: _(t`Mot de passe modifié`),
         timeout: SNACK_BAR_TIME_OUT,
       })
+      analytics.logHasChangedPassword('changePassword')
     },
     () => {
       setHasError(true)

@@ -82,7 +82,7 @@ describe('ReinitializePassword Page', () => {
     fireEvent.press(getByText('Continuer'))
     await superFlushWithAct()
     expect(navigate).toBeCalledTimes(1)
-    expect(analytics.logHasChangedPassword).toBeCalled()
+    expect(analytics.logHasChangedPassword).toBeCalledWith('resetPassword')
     expect(navigate).toBeCalledWith('Login')
   })
 })

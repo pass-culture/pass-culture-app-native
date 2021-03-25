@@ -45,7 +45,7 @@ export const ReinitializePassword = () => {
       message: _(t`Ton mot de passe a été modifié !`),
       timeout: SNACK_BAR_TIME_OUT,
     })
-    analytics.logHasChangedPassword()
+    analytics.logHasChangedPassword('resetPassword')
     navigate('Login')
   })
 
