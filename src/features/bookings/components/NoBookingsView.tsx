@@ -13,7 +13,6 @@ export function NoBookingsView() {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
     <Container>
-      <Spacer.TopScreen />
       <Spacer.Flex />
       <NoBookings size={197} color={ColorsEnum.GREY_MEDIUM} />
       <Explanation color={ColorsEnum.GREY_DARK}>
@@ -30,7 +29,6 @@ export function NoBookingsView() {
         />
       </ButtonContainer>
       <Spacer.Flex flex={2} />
-      <Spacer.BottomScreen />
     </Container>
   )
 }

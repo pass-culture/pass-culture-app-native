@@ -73,10 +73,10 @@ export const FavoritesResults: React.FC = React.memo(() => {
           <Spacer.Column numberOfSpaces={4} />
           <ActivityIndicator />
           <Spacer.Column numberOfSpaces={4} />
-          <Footer />
+          <Footer hasFavotires={!!favorites.length} />
         </React.Fragment>
       ) : (
-        <Footer />
+        <Footer hasFavotires={!!favorites.length} />
       ),
     [isFetchingNextPage, favorites.length]
   )
@@ -124,9 +124,15 @@ export const FavoritesResults: React.FC = React.memo(() => {
   )
 })
 
-const contentContainerStyle = { flexGrow: 1 }
+const contentContainerStyle = {
+  flexGrow: 1,
+  paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(4),
+}
 const Container = styled.View({ height: '100%' })
-const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(52) })
+const Footer = styled.View<{ hasFavotires?: boolean }>(({ hasFavotires = false }) => ({
+  height: hasFavotires ? getSpacing(52) : 0,
+}))
+
 const Separator = styled.View({
   height: 2,
   backgroundColor: ColorsEnum.GREY_LIGHT,
