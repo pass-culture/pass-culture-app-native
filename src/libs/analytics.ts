@@ -186,7 +186,8 @@ const logNotificationToggle = (enableEmail: boolean, enablePush?: boolean) =>
     enablePush: Platform.OS === 'android' ? true : enablePush,
   })
 
-const logHasChangedPassword = () => firebaseAnalytics.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD)
+const logHasChangedPassword = (reason: 'changePassword' | 'resetPassword') =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD, { reason })
 
 const logProfilSignUp = () => firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_SIGN_UP)
 

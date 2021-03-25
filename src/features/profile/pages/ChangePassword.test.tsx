@@ -4,6 +4,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { ChangePasswordRequest } from 'api/gen'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -110,6 +111,7 @@ describe('ChangePassword', () => {
         message: 'Mot de passe modifié',
         timeout: SNACK_BAR_TIME_OUT,
       })
+      expect(analytics.logHasChangedPassword).toBeCalledWith('changePassword')
     })
   })
 
