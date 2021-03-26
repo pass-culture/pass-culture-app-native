@@ -49,13 +49,12 @@ CircleCI will detect the tag `vX.X.X` and launch the lanes `deploy-ios-staging` 
 
 ### Deploy hard
 
-To deploy to production:
+- Know which version (and then tag) you want to deploy
 
-- `git checkout staging`: because we want to deploy what have been tested by PO on staging env (last tag vX.X.X)
+- `yarn trigger:production:deploy <tag>`
 
-- `yarn trigger:production:deploy`
-  And this will create a pull request from `staging` to `production` branch.
-  CircleCI will detect the tag and launch the lane `deploy-android-production-hard` & `deploy-ios-production-hard` (see `.circleci/config.yml` file)
+This will create a tag `prod-hard-deploy`
+CircleCI will detect the tag and launch the lane `deploy-android-production-hard` & `deploy-ios-production-hard` (see `.circleci/config.yml` file)
 
 ### Deploy CodePush
 

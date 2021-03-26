@@ -307,15 +307,17 @@ workflows:
             - run-tests
       - deploy-android-production-hard:
           filters:
+            tags:
+              only: prod-hard-deploy
             branches:
-              only:
-                - production
+              ignore: /.*/
           requires:
             - run-tests
       - deploy-ios-production-hard:
           filters:
+            tags:
+              only: prod-hard-deploy
             branches:
-              only:
-                - production
+              ignore: /.*/
           requires:
             - run-tests

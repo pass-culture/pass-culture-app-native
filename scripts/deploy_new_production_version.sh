@@ -2,18 +2,15 @@
 
 set -e
 
-check_branch(){
-  CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
-
-  if [[ "$CURRENT_BRANCH" != "staging" ]];
-  then
-    echo "Wrong branch, checkout staging to get the last code version tested by the POs, to deploy to production"
-    exit 1
-  fi
+error(){
+  echo "$1"
+  exit 1
 }
 
-check_branch
+[[ -z $(git status -s) ]] || error 'Please make sure you deploy with no changes or untracked files. You can run *git stash --include-untracked*.'
 
-git pull
+git checkout $1
 
-hub pull-request -m "[MEP] Production hard deploy" -b production --browse
+git tag prod-hard-deploy
+git push origin prod-hard-deploy
+
