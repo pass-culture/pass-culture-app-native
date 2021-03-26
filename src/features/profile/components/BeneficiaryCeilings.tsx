@@ -25,10 +25,10 @@ const ceilingsQuestions = {
 
 const ceilingsDescription = {
   physicalAndDigital: _(
-    t`Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles.`
+    t`Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible.`
   ),
   digital: _(
-    t`Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles.`
+    t`Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible.`
   ),
 }
 
