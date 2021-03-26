@@ -115,5 +115,5 @@ const EndedBookingsSection = styled.View<{ safeBottom: number }>(({ safeBottom }
   width: '100%',
   marginBottom: safeBottom ? safeBottom / 2 : 0,
   justifyContent: 'center',
-  padding: getSpacing(4),
+  paddingVertical: getSpacing(4),
 }))

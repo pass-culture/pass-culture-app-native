@@ -21,6 +21,10 @@ export type ClippedImageProps = {
       image?: never
       altIcon: FC<IconInterface>
     }
+  | {
+      image?: never
+      altIcon?: never
+    }
 )
 
 export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
