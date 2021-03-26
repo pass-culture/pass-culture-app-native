@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { FlatList, ListRenderItem, View } from 'react-native'
@@ -5,7 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { i18n } from 'libs/i18n'
+import { _ } from 'libs/i18n'
 import { Badge } from 'ui/components/Badge'
 import { SectionRow } from 'ui/components/SectionRow'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -28,21 +29,13 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
   const { bottom } = useSafeAreaInsets()
 
   const bookings = props.bookings || emptyBookings
-  const hasBookings = bookings.length > 0
+  const onGoingBookingsCount = bookings.length
+  const hasBookings = onGoingBookingsCount > 0
   const bookingsCountLabel =
-    `${bookings.length}\u00a0` +
-    i18n.plural({
-      value: bookings.length,
-      one: 'réservation en cours',
-      other: 'réservations en cours',
-    })
+    `${onGoingBookingsCount}\u00a0` + getBookingsCountLabel(onGoingBookingsCount > 1)
 
   const endedBookings = props?.endedBookings || emptyBookings
-  const endedBookingsLabel = i18n.plural({
-    value: endedBookings.length,
-    one: 'Réservation terminée',
-    other: 'Réservations terminées',
-  })
+  const endedBookingsLabel = getEndedBookingsCountLabel(endedBookings.length > 1)
 
   const ListEmptyComponent = useCallback(() => <NoBookingsView />, [])
   const ListHeaderComponent = useCallback(
@@ -84,6 +77,13 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
     </Container>
   )
 }
+
+const getBookingsCountLabel = (plural: boolean) =>
+  plural ? _(t`réservations en cours`) : _(t`réservation en cours`)
+
+const getEndedBookingsCountLabel = (plural: boolean) =>
+  plural ? _(t`Réservations terminées`) : _(t`Réservation terminée`)
+
 const Container = styled.View<{ flex?: number }>(({ flex }) => ({
   flex,
   height: '100%',
