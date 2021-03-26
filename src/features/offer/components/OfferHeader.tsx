@@ -38,7 +38,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const shareOffer = useShareOffer(offerId)
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const favorite = useFavorite({ offerId })
-  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
+  const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {
@@ -59,13 +59,6 @@ export const OfferHeader: React.FC<Props> = (props) => {
   })
 
   const { mutate: removeFavorite } = useRemoveFavorite({
-    onSuccess: () => {
-      showSuccessSnackBar({
-        message: _(t`L'offre a été retirée de tes favoris`),
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    },
-
     onError: () => {
       showErrorSnackBar({
         message: _(t`L'offre n'a pas été retirée de tes favoris`),
