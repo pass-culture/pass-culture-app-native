@@ -3,7 +3,7 @@ import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { i18n, _ } from 'libs/i18n'
+import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -14,12 +14,7 @@ export const EndedBookings: React.FC = () => {
 
   const endedBookingsCount = bookings?.ended_bookings?.length || 0
   const endedBookingsLabel =
-    `${endedBookingsCount}\u00a0` +
-    i18n.plural({
-      value: endedBookingsCount,
-      one: 'réservation terminée',
-      other: 'réservations terminées',
-    })
+    `${endedBookingsCount}\u00a0` + getEndedBookingsCountLabel(endedBookingsCount > 1)
 
   return (
     <ScrollView>
@@ -32,6 +27,9 @@ export const EndedBookings: React.FC = () => {
     </ScrollView>
   )
 }
+
+const getEndedBookingsCountLabel = (plural: boolean) =>
+  plural ? _(t`réservations terminées`) : _(t`réservation terminée`)
 
 const EndedBookingsCount = styled(Typo.Body)({
   color: ColorsEnum.GREY_DARK,
