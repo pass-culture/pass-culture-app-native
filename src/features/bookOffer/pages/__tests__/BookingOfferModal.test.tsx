@@ -1,8 +1,10 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
+import { act } from 'react-test-renderer'
 
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { flushAllPromises } from 'tests/utils'
 
 import { BookingOfferModalComponent } from '../BookingOfferModal'
 import { Step } from '../reducer'
@@ -22,14 +24,16 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 }))
 
 describe('<BookingOfferModalComponent />', () => {
-  it('should dismiss modal when click on rightIconButton and reset state', () => {
+  it('should dismiss modal when click on rightIconButton and reset state', async () => {
     const page = render(
       reactQueryProviderHOC(<BookingOfferModalComponent visible={true} offerId={20} />)
     )
 
-    const dismissModalButton = page.getByTestId('rightIconButton')
+    await act(async () => {
+      await flushAllPromises()
+    })
 
-    fireEvent.press(dismissModalButton)
+    fireEvent.press(page.getByTestId('rightIconButton'))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
     expect(mockDismissModal).toHaveBeenCalled()
   })
