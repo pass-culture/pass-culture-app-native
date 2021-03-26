@@ -12,10 +12,11 @@ check_branch(){
   fi
 }
 
+VERSION=`json -f package.json version`
+
 update_app_version(){
   yarn version --minor --no-git-tag-version
 
-  VERSION=`json -f package.json version`
   BUILD_NUMBER="${VERSION//./0}"
   json -I -f package.json -e "this.build=$BUILD_NUMBER"
 
@@ -24,11 +25,13 @@ update_app_version(){
   git tag -a "v${VERSION}" -m "v${VERSION}"
 }
 
-check_branch
 
+check_branch
 git pull
 
+git checkout -b MES-${VERSION}
 update_app_version
 git push --follow-tags
 
-hub pull-request -m "[MES] Staging hard deploy" -b staging --browse
+hub pull-request -m "Upgrade version to ${VERSION} for MES " -b master
+hub pull-request -m "[Staging] MES ${VERSION}" -b staging --browse

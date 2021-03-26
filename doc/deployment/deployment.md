@@ -2,11 +2,14 @@
 
 ## Pre-requisites
 
-If you do not have `hub` install on you laptop:
+- Install hub
 
-```bash
-brew install hub
-```
+  ```bash
+  brew install hub
+  ```
+
+- Check you have already a token here: https://github.com/settings/tokens
+  If not create a new one that has at least repo scope checked
 
 ## Testing & Staging: Deploy to AppCenter
 
@@ -48,10 +51,17 @@ We do it once a week at the end of an iteration.
 When you want to deploy the current version of master in staging, you can run the following command:
 
 - `yarn trigger:staging:deploy`
-  This will create a tag `vX.X.X` and push it.
-  And this will create a pull request from master to `staging` branch.
-  Once, it is all green, you can merge it.
-  CircleCI will detect the merge on `staging`branch and launch the lanes `deploy-ios-staging` & `deploy-android-staging` (see `.circleci/config.yml` file)
+  The first time you will be asked about username and password.
+  Username = your github username
+  Password = your token (you created here https://github.com/settings/tokens with at least repo scope)
+
+This will create a tag `vX.X.X` and push it.
+
+And this will create 2 pull request from MES-X.X.X to `staging` branch and `master` branch.
+
+- Merge the 2 PR when tests are green.
+
+CircleCI will detect the merge on `staging` branch and launch the lanes `deploy-ios-staging` & `deploy-android-staging` (see `.circleci/config.yml` file)
 
 ## Production: Deploy to App Store / Google Play Store
 
