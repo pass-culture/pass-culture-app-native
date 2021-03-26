@@ -8,6 +8,9 @@ If you do not have `hub` install on you laptop:
 brew install hub
 ```
 
+- Warning : check you have already a token here : https://github.com/settings/tokens
+  if not create a new one that has at least repo scope checked.
+
 ## Testing & Staging: Deploy to AppCenter
 
 Download the apps:
@@ -52,6 +55,9 @@ When you want to deploy the current version of master in staging, you can run th
   And this will create a pull request from master to `staging` branch.
   Once, it is all green, you can merge it.
   CircleCI will detect the merge on `staging`branch and launch the lanes `deploy-ios-staging` & `deploy-android-staging` (see `.circleci/config.yml` file)
+
+- Warning : when tag is created and pushed, you have to enter your github username and a password
+  Do not put your github password but instead enter the github token you have created !
 
 ## Production: Deploy to App Store / Google Play Store
 
