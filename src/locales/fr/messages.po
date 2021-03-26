@@ -123,6 +123,10 @@ msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 msgid "Annuler"
 msgstr "Annuler"
 
+#: src/features/bookings/components/EndedBookingItem.tsx:22
+msgid "Annulé"
+msgstr "Annulé"
+
 #: src/features/bookOffer/components/BookingDetails.tsx:19
 msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
 msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
@@ -147,7 +151,7 @@ msgstr "Aucun résultat"
 msgid "Aucune valeur à sauvegarder"
 msgstr "Aucune valeur à sauvegarder"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:84
+#: src/features/bookings/components/OnGoingBookingItem.tsx:85
 #: src/features/search/sections/OfferDate.tsx:34
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
@@ -176,7 +180,7 @@ msgstr "Autour de moi"
 msgid "Autres"
 msgstr "Autres"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:98
+#: src/features/bookings/components/OnGoingBookingItem.tsx:101
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
@@ -379,11 +383,11 @@ msgstr "Date de l'offre"
 msgid "Date précise"
 msgstr "Date précise"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:87
+#: src/features/bookings/components/OnGoingBookingItem.tsx:88
 msgid "Demain"
 msgstr "Demain"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:95
+#: src/features/bookings/components/OnGoingBookingItem.tsx:98
 msgid "Dernier jour pour retirer"
 msgstr "Dernier jour pour retirer"
 
@@ -655,7 +659,7 @@ msgstr "Mentions légales"
 msgid "Mes options"
 msgstr "Mes options"
 
-#: src/features/bookings/pages/EndedBookings.tsx:20
+#: src/features/bookings/pages/EndedBookings.tsx:21
 msgid "Mes réservations terminées"
 msgstr "Mes réservations terminées"
 
@@ -734,7 +738,7 @@ msgstr "Numéro de téléphone"
 
 #: src/features/favorites/atoms/BookingButton.tsx:38
 #: src/features/offer/services/useCtaWordingAndAction.ts:26
-#: src/features/offer/services/useCtaWordingAndAction.ts:30
+#: src/features/offer/services/useCtaWordingAndAction.ts:28
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
@@ -752,7 +756,7 @@ msgid "Offre réservée"
 msgstr "Offre réservée"
 
 #: src/features/favorites/atoms/BookingButton.tsx:41
-#: src/features/offer/services/useCtaWordingAndAction.ts:28
+#: src/features/offer/services/useCtaWordingAndAction.ts:30
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
@@ -961,6 +965,10 @@ msgstr "Réessayer"
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
+#: src/features/bookings/components/EndedBookingItem.tsx:23
+msgid "Réservation annulée"
+msgstr "Réservation annulée"
+
 #: src/features/bookOffer/pages/BookingConfirmation.tsx:18
 msgid "Réservation confirmée !"
 msgstr "Réservation confirmée !"
@@ -1117,11 +1125,11 @@ msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
 
 #: src/features/favorites/atoms/Buttons/Sort.tsx:20
-#: src/features/favorites/pages/FavoritesSorts.tsx:97
+#: src/features/favorites/pages/FavoritesSorts.tsx:98
 msgid "Trier"
 msgstr "Trier"
 
-#: src/features/favorites/pages/FavoritesSorts.tsx:79
+#: src/features/favorites/pages/FavoritesSorts.tsx:80
 msgid "Trier par"
 msgstr "Trier par"
 
@@ -1235,12 +1243,16 @@ msgstr "Uniquement les offres duo"
 msgid "Uniquement les offres gratuites"
 msgstr "Uniquement les offres gratuites"
 
+#: src/features/bookings/components/EndedBookingItem.tsx:20
+msgid "Utilisé"
+msgstr "Utilisé"
+
 #: src/features/offer/pages/OfferDescription.tsx:24
 msgid "VISA"
 msgstr "VISA"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:117
-#: src/features/favorites/pages/FavoritesSorts.tsx:99
+#: src/features/favorites/pages/FavoritesSorts.tsx:100
 msgid "Valider"
 msgstr "Valider"
 
@@ -1355,7 +1367,8 @@ msgstr "interprète"
 msgid "intervenant"
 msgstr "intervenant"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:81
+#: src/features/bookings/components/EndedBookingItem.tsx:26
+#: src/features/bookings/components/OnGoingBookingItem.tsx:80
 msgid "le\\u00a0"
 msgstr "le\\u00a0"
 
@@ -1371,7 +1384,7 @@ msgstr "quotidiennes"
 msgid "réservation en cours"
 msgstr "réservation en cours"
 
-#: src/features/bookings/pages/EndedBookings.tsx:23
+#: src/features/bookings/pages/EndedBookings.tsx:24
 msgid "réservation terminée"
 msgstr "réservation terminée"
 
@@ -1379,7 +1392,7 @@ msgstr "réservation terminée"
 msgid "réservations en cours"
 msgstr "réservations en cours"
 
-#: src/features/bookings/pages/EndedBookings.tsx:23
+#: src/features/bookings/pages/EndedBookings.tsx:24
 msgid "réservations terminées"
 msgstr "réservations terminées"
 
@@ -1432,7 +1445,7 @@ msgstr "{price} seront déduits de ton crédit pass Culture"
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:92
+#: src/features/bookings/components/OnGoingBookingItem.tsx:93
 msgid "À retirer avant\\u00a0"
 msgstr "À retirer avant\\u00a0"
 
