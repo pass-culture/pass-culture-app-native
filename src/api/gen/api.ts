@@ -926,6 +926,12 @@ export interface OfferResponse {
      * @type {boolean}
      * @memberof OfferResponse
      */
+    isExpired: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof OfferResponse
+     */
     isReleased: boolean;
     /**
      * 
