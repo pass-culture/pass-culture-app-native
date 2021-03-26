@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useState } from 'react'
 import { Linking, ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -29,6 +29,7 @@ export const FavoritesSorts: React.FC = () => {
   const { goBack } = useNavigation()
   const { permissionState, requestGeolocPermission } = useGeolocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
+  const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
   const {
     visible: isGeolocPermissionModalVisible,
     showModal: showGeolocPermissionModal,
@@ -36,6 +37,9 @@ export const FavoritesSorts: React.FC = () => {
   } = useModal(false)
 
   async function onFilterSelection(sortBy: FavoriteSortBy) {
+    function updateFilterSelection() {
+      setStagedSelectedSortBy(sortBy)
+    }
     if (sortBy === 'AROUND_ME') {
       const hasAllowedGeolocation = await storage.readObject('has_allowed_geolocation')
       const shouldAskGeolocPermission =
@@ -46,22 +50,20 @@ export const FavoritesSorts: React.FC = () => {
         const shouldDisplayCustomGeolocRequest =
           permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
         if (shouldDisplayCustomGeolocRequest) {
-          showGeolocPermissionModal()
-        } else {
-          await requestGeolocPermission({
-            onAcceptance() {
-              dispatch({ type: 'SET_FILTER', payload: 'AROUND_ME' })
-            },
-          })
+          return void showGeolocPermissionModal()
         }
-        return
+        return void (await requestGeolocPermission({
+          onAcceptance: updateFilterSelection,
+        }))
       }
+      return void updateFilterSelection()
     }
-    dispatch({ type: 'SET_FILTER', payload: sortBy })
+    return void updateFilterSelection()
   }
 
   function onValidation() {
-    analytics.logHasAppliedFavoritesSorting({ sortBy: selectedSortBy })
+    analytics.logHasAppliedFavoritesSorting({ sortBy: stagedSelectedSortBy })
+    dispatch({ type: 'SET_FILTER', payload: stagedSelectedSortBy })
     goBack()
   }
 
@@ -83,7 +85,7 @@ export const FavoritesSorts: React.FC = () => {
         </TitleContainer>
 
         {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
-          const isSelected = selectedSortBy === sortBy
+          const isSelected = stagedSelectedSortBy === sortBy
           const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
           return (
             <LabelContainer key={sortBy} onPress={() => onFilterSelection(sortBy)} testID={sortBy}>
