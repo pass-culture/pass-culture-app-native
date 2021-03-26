@@ -55,6 +55,28 @@ When you want to deploy the current version of master in staging, you can run th
   Once, it is all green, you can merge it.
   CircleCI will detect the merge on `staging`branch and launch the lanes `deploy-ios-staging` & `deploy-android-staging` (see `.circleci/config.yml` file)
 
+### Deploy CodePush
+
+Pre-requisites:
+
+- The bug fix code is on `master` branch
+- The PO validated the behaviour on testing env
+
+- `git checkout staging` (last commit should be the upgrade to X.X.X: version currently in staging env)
+- `git checkout -b hotfix/vX.X.X`
+- cherry-pick all fix commits that you previously merge on master and that has been validated by the PO
+- create a pull request on `staging` branch
+- wait for the CI to be green
+- merge
+- in a terminal: `git checkout staging`
+- deploy:
+
+  /!\ DO NOT DEPLOY CODEPUSH IOS & ANDROID SIMULTANEOUSLY
+
+  1. Android: `yarn trigger:staging:codepush:android`
+
+  2. When android finished only, IOS: `yarn trigger:staging:codepush:ios`
+
 ## Production: Deploy to App Store / Google Play Store
 
 ### Deploy hard
@@ -77,7 +99,7 @@ Pre-requisites:
 - `git checkout production` (last commit should be the upgrade to X.X.X: version currently in production)
 - `git checkout -b hotfix/vX.X.X`
 - cherry-pick all fix commits that you previously merge on master and that has been validated by the PO
-- create a pull request on `production` branch
+- `yarn trigger:production:hotfix:deploy`: this will tag the branch and create a pull request on `production` branch
 - wait for the CI to be green
 - merge
 - in a terminal: `git checkout production`

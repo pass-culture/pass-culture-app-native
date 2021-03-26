@@ -32,6 +32,7 @@
     "trigger:production:deploy": "./scripts/deploy_new_production_version.sh",
     "trigger:staging:deploy": "./scripts/deploy_new_staging_version.sh",
     "trigger:testing:deploy": "./scripts/deploy_new_testing_version.sh",
+    "trigger:production:hotfix:deploy": "./scripts/deploy_hotfix_production.sh",
     "generate:api:client": "./scripts/generate_api_client.sh"
   },
   "dependencies": {
