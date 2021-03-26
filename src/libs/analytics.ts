@@ -55,6 +55,7 @@ export enum AnalyticsEvent {
   ID_CHECK = 'IdCheck',
   CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
   OPEN_EXTERNAL_URL = 'OpenExternalURL',
+  MAIL_TO = 'MailTo',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -217,6 +218,16 @@ const logOpenExternalUrl = (url: string) =>
     url: url.slice(0, STRING_VALUE_MAX_LENGTH),
   })
 
+const logMailTo = (
+  reason:
+    | 'forGenericQuestion'
+    | 'forSignupConfirmationEmailNotReceived'
+    | 'forSignupConfirmationExpiredLink'
+    | 'forResetPasswordEmailNotReceived'
+    | 'forResetPasswordExpiredLink'
+    | 'forAccountDeletion'
+) => firebaseAnalytics.logEvent(AnalyticsEvent.MAIL_TO, { reason })
+
 /**
  * Favorites
  */
@@ -252,6 +263,7 @@ export const analytics = {
   logHasChangedPassword,
   logHasSkippedTutorial,
   logLogout,
+  logMailTo,
   logNoSearchResult,
   logNotificationToggle,
   logOpenExternalUrl,
