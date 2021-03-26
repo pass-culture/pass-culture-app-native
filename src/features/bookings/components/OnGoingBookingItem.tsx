@@ -7,7 +7,13 @@ import styled from 'styled-components/native'
 import { CategoryType } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import { formatToCompleteFrenchDateTime, isToday, isTomorrow } from 'libs/parsers'
+import {
+  formatToCompleteFrenchDateTime,
+  formatToCompleteFrenchDate,
+  isToday,
+  isTomorrow,
+  mapCategoryToIcon,
+} from 'libs/parsers'
 import { Separator } from 'ui/components/Separator'
 import { Clock } from 'ui/svg/icons/Clock'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
@@ -23,17 +29,23 @@ interface OnGoingBookingItemProps {
 export const OnGoingBookingItem = ({ booking }: OnGoingBookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { stock } = booking
-  stock.offer.category.categoryType
-  const beginningDatetime = stock.beginningDatetime ? new Date(stock.beginningDatetime) : null
 
-  const { isDuo, dateLabel, withdrawLabel } = getItemViewProperties(booking, beginningDatetime)
+  const beginningDatetime = stock.beginningDatetime ? new Date(stock.beginningDatetime) : null
+  const expirationDatetime = booking.expirationDate ? new Date(booking.expirationDate) : null
+
+  const iconName = stock.offer.category.name || null
+  const { isDuo, dateLabel, withdrawLabel } = getItemViewProperties(
+    booking,
+    beginningDatetime,
+    expirationDatetime
+  )
 
   return (
     <TouchableOpacity
       onPress={() => navigate('BookingDetails', { id: booking.id })}
       testID={'OnGoingBookingItem'}>
       <ItemContainer>
-        <OnGoingTicket image={stock.offer.image?.url} />
+        <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(iconName)} />
         <AttributesView>
           <TitleContainer>
             <Title numberOfLines={2}>{stock.offer.name}</Title>
@@ -86,14 +98,15 @@ function isDuoBooking(booking: Booking) {
   return booking.quantity === 2
 }
 
-function getItemViewProperties(booking: Booking, beginningDatetime?: Date | null) {
+function getItemViewProperties(
+  booking: Booking,
+  beginningDatetime?: Date | null,
+  expirationDatetime?: Date | null
+) {
   const { offer } = booking.stock
 
   const isEvent = Boolean(beginningDatetime)
   const isPhysical = offer.category.categoryType === CategoryType.Thing
-
-  const isBeginningToday = beginningDatetime ? isToday(beginningDatetime) : false
-  const isBeginningTomorrow = beginningDatetime ? isTomorrow(beginningDatetime) : false
 
   let isDuo = false
   let dateLabel = ''
@@ -106,18 +119,24 @@ function getItemViewProperties(booking: Booking, beginningDatetime?: Date | null
     dateLabel = beginningDatetime
       ? _(t`le\u00a0`) + formatToCompleteFrenchDateTime(beginningDatetime)
       : ''
+
+    const isBeginningToday = beginningDatetime ? isToday(beginningDatetime) : false
+    const isBeginningTomorrow = beginningDatetime ? isTomorrow(beginningDatetime) : false
     if (isBeginningToday) {
       withdrawLabel = _(t`Aujourd'hui`)
     } else if (isBeginningTomorrow) {
       withdrawLabel = _(t`Demain`)
     }
   } else if (isPhysical) {
-    dateLabel = beginningDatetime
-      ? _(t`À retirer avant\u00a0`) + formatToCompleteFrenchDateTime(beginningDatetime)
+    dateLabel = expirationDatetime
+      ? _(t`À retirer avant\u00a0`) + formatToCompleteFrenchDate(expirationDatetime)
       : ''
-    if (isBeginningToday) {
+
+    const isExpiringToday = expirationDatetime ? isToday(expirationDatetime) : false
+    const isExpiringTomorrow = expirationDatetime ? isTomorrow(expirationDatetime) : false
+    if (isExpiringToday) {
       withdrawLabel = _(t`Dernier jour pour retirer`)
-    } else if (isBeginningTomorrow) {
+    } else if (isExpiringTomorrow) {
       withdrawLabel = _(t`Avant dernier jour pour retirer`)
     }
   }
