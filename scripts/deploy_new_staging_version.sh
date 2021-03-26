@@ -13,7 +13,6 @@ check_branch(){
 }
 
 update_app_version(){
-  yarn config set version-commit-hooks false
   yarn version --minor --no-git-tag-version
 
   VERSION=`json -f package.json version`
