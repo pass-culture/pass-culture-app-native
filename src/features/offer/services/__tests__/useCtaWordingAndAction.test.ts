@@ -58,6 +58,12 @@ describe('getCtaWordingAndAction', () => {
     })
 
     it('CTA="Offre expirée" if offer is expired', () => {
+      const { wording, onPress } = getCta({ isExpired: true })
+      expect(wording).toEqual('Offre expirée')
+      expect(onPress === undefined).toBeTruthy()
+    })
+
+    it('CTA="Offre expirée" if offer is expired', () => {
       const { wording, onPress } = getCta({ isReleased: false })
       expect(wording).toEqual('Offre expirée')
       expect(onPress === undefined).toBeTruthy()
