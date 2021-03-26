@@ -46,6 +46,7 @@ export const getCtaWordingAndAction = ({
 
   // Beneficiary
   if (!offer.isReleased) return { wording: _(t`Offre expirée`) }
+  if (offer.isExpired) return { wording: _(t`Offre expirée`) }
   if (offer.isSoldOut) return { wording: _(t`Offre épuisée`) }
 
   if (category.categoryType === CategoryType.Thing) {

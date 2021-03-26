@@ -17,6 +17,7 @@ export const offerResponseSnap: OfferResponse = {
   name: 'Sous les étoiles de Paris - VF',
   category: { label: 'Cinéma', categoryType: CategoryType.Event, name: CategoryNameEnum.CINEMA },
   isReleased: true,
+  isExpired: false,
   isSoldOut: false,
   stocks: [
     {

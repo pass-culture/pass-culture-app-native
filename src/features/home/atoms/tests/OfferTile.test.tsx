@@ -74,6 +74,7 @@ describe('OfferTile component', () => {
       isDigital: false,
       isDuo: false,
       isReleased: false,
+      isExpired: false,
       isSoldOut: false,
       name: offer.name,
       stocks: [],
