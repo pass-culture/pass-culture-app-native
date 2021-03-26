@@ -244,11 +244,6 @@ describe('<OfferHeader />', () => {
     expect(
       mutateData.favorites?.find((f: FavoriteResponse) => f.offer.id === favoriteOfferId)?.offer.id
     ).toBe(undefined)
-    await superFlushWithAct()
-    expect(showSuccessSnackBar).toBeCalledWith({
-      message: `L'offre a été retirée de tes favoris`,
-      timeout: SNACK_BAR_TIME_OUT,
-    })
   })
 
   it.skip('should remove favorite and show error when pressing filled favorite icon, and restore favorite - logged in users', async () => {
