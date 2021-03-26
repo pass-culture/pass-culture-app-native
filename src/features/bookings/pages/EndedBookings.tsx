@@ -8,6 +8,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useBookings } from '../api'
+import { EndedBookingsList } from '../components/EndedBookingList'
 
 export const EndedBookings: React.FC = () => {
   const { data: bookings } = useBookings()
@@ -21,7 +22,7 @@ export const EndedBookings: React.FC = () => {
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <EndedBookingsCount>{endedBookingsLabel}</EndedBookingsCount>
-      <Spacer.Flex />
+      <EndedBookingsList bookings={bookings?.ended_bookings} />
 
       <PageHeader title={_(t`Mes réservations terminées`)} />
     </ScrollView>
