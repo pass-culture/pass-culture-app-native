@@ -35,9 +35,14 @@ Add ANDROID to your current PATH env var, by adding theses line in your .bashrc:
 
 ### Workstation SetUp (for deployment)
 
-```bash
-brew install hub
-```
+- Install hub
+
+  ```bash
+  brew install hub
+  ```
+
+- Check you have already a token here: https://github.com/settings/tokens
+  If not create a new one that has at least repo scope checked
 
 ## Installation
 
