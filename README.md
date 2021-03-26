@@ -33,17 +33,6 @@ If you have already installed NVM, a .nvmrc file at project root allow you to di
 Add ANDROID to your current PATH env var, by adding theses line in your .bashrc:
 `export ANDROID_HOME=$HOME/tools/sdk export PATH=$PATH:$ANDROID_HOME/tools export PATH=$PATH:$ANDROID_HOME/platform-tools`
 
-### Workstation SetUp (for deployment)
-
-- Install hub
-
-  ```bash
-  brew install hub
-  ```
-
-- Check you have already a token here: https://github.com/settings/tokens
-  If not create a new one that has at least repo scope checked
-
 ## Installation
 
 Verify if `jq` (dependency required for parsing then inserting `CFBundleVersion` in `Ìnfo.plist`) is installed :
