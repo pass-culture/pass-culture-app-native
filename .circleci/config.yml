@@ -263,6 +263,27 @@ jobs:
           command: |
             ./scripts/deploy.sh -o ios -t hard -e production
 
+  deploy-soft-production:
+    docker:
+      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - install_ruby_modules
+      - run:
+          name: Deploy Android Code push for production environment
+          command: |
+            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_PRODUCTION_APPCENTER_API_TOKEN
+            export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_PRODUCTION
+            ./scripts/deploy.sh -o android -t soft -e production
+      - run:
+          name: Deploy IOS Code push for production environment
+          command: |
+            export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
+            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_PRODUCTION
+            ./scripts/deploy.sh -o ios -t soft -e production
+
 workflows:
   version: 2.1
   commit:
@@ -317,6 +338,14 @@ workflows:
           filters:
             tags:
               only: prod-hard-deploy
+            branches:
+              ignore: /.*/
+          requires:
+            - run-tests
+      - deploy-soft-production:
+          filters:
+            tags:
+              only: hotfix-prod
             branches:
               ignore: /.*/
           requires:
