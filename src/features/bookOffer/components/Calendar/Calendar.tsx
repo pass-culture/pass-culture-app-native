@@ -13,7 +13,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
 import { DayComponent } from './DayComponent'
 import { MonthHeader } from './MonthHeader'
-import { defaultMarking, Marking, useMarkedDates } from './useMarkedDates'
+import { defaultMarking, Marking, useMarkedDates, MarkedDates } from './useMarkedDates'
 
 LocaleConfig.locales['fr'] = {
   monthNames,
@@ -45,15 +45,22 @@ interface Props {
   userRemainingCredit: number | null
 }
 
-export const getMinDate = (dates: string[]): string | undefined => {
-  if (dates.length === 0) return undefined
-  if (dates.length === 1) return dates[0]
-  return dates.sort((dateA, dateB) => new Date(dateA).valueOf() - new Date(dateB).valueOf())[0]
+export const getMinAvailableDate = (markedDates: MarkedDates): string | undefined => {
+  const availableDates = Object.entries(markedDates)
+    .filter(([, marking]) => marking.status === OfferStatus.BOOKABLE)
+    .map(([date, _]) => date)
+
+  if (availableDates.length === 0) return undefined
+  if (availableDates.length === 1) return availableDates[0]
+
+  return availableDates.sort(
+    (dateA, dateB) => new Date(dateA).valueOf() - new Date(dateB).valueOf()
+  )[0]
 }
 
 export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
-  const minDate = getMinDate(Object.keys(markedDates)) || new Date()
+  const minDate = getMinAvailableDate(markedDates) || new Date()
 
   return (
     <RNCalendar

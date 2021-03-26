@@ -21,7 +21,7 @@ export const defaultMarking: Marking = {
   price: null,
 }
 
-interface MarkedDates {
+export interface MarkedDates {
   [key: string]: Marking
 }
 
