@@ -54,7 +54,7 @@ msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
 #: src/features/offer/pages/OfferBody.tsx:59
-#: src/features/profile/pages/Profile.tsx:105
+#: src/features/profile/pages/Profile.tsx:106
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
@@ -102,7 +102,7 @@ msgstr "Afficher {nbHits} résultat"
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
-#: src/features/profile/pages/Profile.tsx:100
+#: src/features/profile/pages/Profile.tsx:101
 msgid "Aides"
 msgstr "Aides"
 
@@ -172,7 +172,7 @@ msgstr "Autoriser l’utilisation de mes données de navigation"
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
-#: src/features/profile/pages/Profile.tsx:104
+#: src/features/profile/pages/Profile.tsx:105
 msgid "Autres"
 msgstr "Autres"
 
@@ -208,16 +208,16 @@ msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx:19
-msgid "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles."
-msgstr "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles."
+msgid "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible."
+msgstr "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible."
 
 #: src/features/search/sections/OfferDate.tsx:38
 msgid "Ce week-end"
 msgstr "Ce week-end"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx:18
-msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles."
-msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles."
+msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
+msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
 #: src/features/bookOffer/components/CancellationDetails.tsx:18
 msgid "Cette réservation est annulable"
@@ -239,7 +239,7 @@ msgstr "Cette semaine"
 msgid "Chargement en cours..."
 msgstr "Chargement en cours..."
 
-#: src/features/profile/pages/LegalNotices.tsx:23
+#: src/features/profile/pages/LegalNotices.tsx:24
 msgid "Charte de protection des données personnelles"
 msgstr "Charte de protection des données personnelles"
 
@@ -270,7 +270,7 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/profile/pages/Profile.tsx:101
+#: src/features/profile/pages/Profile.tsx:102
 msgid "Comment ça marche ?"
 msgstr "Comment ça marche ?"
 
@@ -282,7 +282,7 @@ msgstr "Composants"
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
-#: src/features/profile/pages/LegalNotices.tsx:21
+#: src/features/profile/pages/LegalNotices.tsx:22
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
 
@@ -290,7 +290,7 @@ msgstr "Conditions Générales d’Utilisation"
 msgid "Conditions d'annulation"
 msgstr "Conditions d'annulation"
 
-#: src/features/profile/pages/Profile.tsx:107
+#: src/features/profile/pages/Profile.tsx:108
 msgid "Confidentialité"
 msgstr "Confidentialité"
 
@@ -420,7 +420,7 @@ msgstr "Duo"
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
-#: src/features/profile/pages/Profile.tsx:120
+#: src/features/profile/pages/Profile.tsx:121
 msgid "Déconnexion"
 msgstr "Déconnexion"
 
@@ -498,7 +498,7 @@ msgstr "Format de l'e-mail incorrect"
 msgid "Gratuit"
 msgstr "Gratuit"
 
-#: src/features/profile/pages/Profile.tsx:98
+#: src/features/profile/pages/Profile.tsx:99
 msgid "Géolocalisation"
 msgstr "Géolocalisation"
 
@@ -542,7 +542,7 @@ msgid "Il y a eu un problème. Tu peux réessayer plus tard."
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
 
 #: src/features/profile/pages/PersonalData.tsx:41
-#: src/features/profile/pages/Profile.tsx:94
+#: src/features/profile/pages/Profile.tsx:95
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
@@ -582,7 +582,6 @@ msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
 #: src/features/favorites/atoms/Favorite.tsx:32
-#: src/features/offer/components/OfferHeader.tsx:48
 msgid "L'offre a été retirée de tes favoris"
 msgstr "L'offre a été retirée de tes favoris"
 
@@ -592,7 +591,7 @@ msgid "L'offre n'a pas été ajoutée à tes favoris"
 msgstr "L'offre n'a pas été ajoutée à tes favoris"
 
 #: src/features/favorites/atoms/Favorite.tsx:38
-#: src/features/offer/components/OfferHeader.tsx:54
+#: src/features/offer/components/OfferHeader.tsx:48
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
@@ -647,8 +646,8 @@ msgstr "Localisation"
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/profile/pages/LegalNotices.tsx:30
-#: src/features/profile/pages/Profile.tsx:106
+#: src/features/profile/pages/LegalNotices.tsx:31
+#: src/features/profile/pages/Profile.tsx:107
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
@@ -679,7 +678,7 @@ msgstr "Mon crédit est expiré, que faire ?"
 #: src/features/auth/login/Login.tsx:119
 #: src/features/auth/signup/SetPassword.tsx:38
 #: src/features/profile/pages/ChangePassword.tsx:97
-#: src/features/profile/pages/Profile.tsx:95
+#: src/features/profile/pages/Profile.tsx:96
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -712,7 +711,7 @@ msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. D�
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 
 #: src/features/profile/pages/NotificationSettings.tsx:141
-#: src/features/profile/pages/Profile.tsx:97
+#: src/features/profile/pages/Profile.tsx:98
 msgid "Notifications"
 msgstr "Notifications"
 
@@ -792,7 +791,7 @@ msgstr "Où ?"
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
 
-#: src/features/profile/pages/Profile.tsx:92
+#: src/features/profile/pages/Profile.tsx:93
 msgid "Paramètres de l'application"
 msgstr "Paramètres de l'application"
 
@@ -804,7 +803,7 @@ msgstr "Paramètres de localisation"
 msgid "Paramètres de notifications"
 msgstr "Paramètres de notifications"
 
-#: src/features/profile/pages/Profile.tsx:92
+#: src/features/profile/pages/Profile.tsx:93
 msgid "Paramètres du compte"
 msgstr "Paramètres du compte"
 
@@ -894,7 +893,7 @@ msgstr "Prénom et nom"
 msgid "Quand ?"
 msgstr "Quand ?"
 
-#: src/features/profile/pages/Profile.tsx:102
+#: src/features/profile/pages/Profile.tsx:103
 msgid "Questions fréquentes"
 msgstr "Questions fréquentes"
 
@@ -1042,11 +1041,11 @@ msgstr "Solo"
 msgid "Sortie"
 msgstr "Sortie"
 
-#: src/features/profile/pages/Profile.tsx:109
+#: src/features/profile/pages/Profile.tsx:110
 msgid "Suivre pass Culture"
 msgstr "Suivre pass Culture"
 
-#: src/features/profile/pages/LegalNotices.tsx:26
+#: src/features/profile/pages/LegalNotices.tsx:27
 msgid "Suppression du compte"
 msgstr "Suppression du compte"
 
@@ -1257,7 +1256,7 @@ msgstr "Valider la date"
 msgid "Verifier mon identité"
 msgstr "Verifier mon identité"
 
-#: src/features/profile/pages/Profile.tsx:127
+#: src/features/profile/pages/Profile.tsx:128
 msgid "Version {0}"
 msgstr "Version {0}"
 
