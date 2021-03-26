@@ -21,13 +21,9 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { OnGoingTicket, onGoingTicketWidth } from './OnGoingTicket'
-import { Booking } from './types'
+import { Booking, BookingItemProps } from './types'
 
-interface OnGoingBookingItemProps {
-  booking: Booking
-}
-
-export const OnGoingBookingItem = ({ booking }: OnGoingBookingItemProps) => {
+export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { stock } = booking
 
