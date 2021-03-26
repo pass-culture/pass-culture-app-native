@@ -29,9 +29,5 @@ update_app_version(){
 check_branch
 git pull
 
-git checkout -b MES-${VERSION}
 update_app_version
 git push --follow-tags
-
-hub pull-request -m "Upgrade version to ${VERSION} for MES " -b master
-hub pull-request -m "[Staging] MES ${VERSION}" -b staging --browse

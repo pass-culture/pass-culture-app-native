@@ -291,16 +291,18 @@ workflows:
             - run-tests
       - deploy-android-staging:
           filters:
+            tags:
+              only: /^v.*/
             branches:
-              only:
-                - staging
+              ignore: /.*/
           requires:
             - run-tests
       - deploy-ios-staging:
           filters:
+            tags:
+              only: /^v.*/
             branches:
-              only:
-                - staging
+              ignore: /.*/
           requires:
             - run-tests
       - deploy-android-production-hard:
