@@ -5,13 +5,12 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
 import { NotConnectedFavorites } from 'features/favorites/components/NotConnectedFavorites'
+import { useFavorites } from 'features/favorites/pages/useFavorites'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
 
-import { useFavoritesResults } from './useFavoritesResults'
-
 const useFetchResults = () => {
-  const { refetch, dataUpdatedAt, isFetching } = useFavoritesResults()
+  const { refetch, dataUpdatedAt, isFetching } = useFavorites()
 
   function refetchDebounce() {
     const debounceDelayMs = 100

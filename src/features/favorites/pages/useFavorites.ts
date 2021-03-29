@@ -44,9 +44,13 @@ export function useRemoveFavorite({ onSuccess, onError, onMutate, onSettled }: R
 
         // Optimistically update to the new value
         if (favoriteId && previousFavorites) {
+          const favorites = previousFavorites.favorites.filter(
+            (favorite) => favorite.id !== favoriteId
+          )
           queryClient.setQueryData<PaginatedFavoritesResponse>(QUERY_KEY, {
             ...previousFavorites,
-            favorites: previousFavorites.favorites.filter((favorite) => favorite.id !== favoriteId),
+            nbFavorites: favorites.length,
+            favorites,
           })
         }
 
@@ -64,7 +68,6 @@ export function useRemoveFavorite({ onSuccess, onError, onMutate, onSettled }: R
         }
       },
       onSettled: (data) => {
-        queryClient.invalidateQueries(QUERY_KEY)
         if (onSettled) {
           onSettled(data)
         }
@@ -97,12 +100,15 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
     onMutate: ({ offerId }) => {
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(QUERY_KEY)
       if (previousFavorites) {
+        const favorites = [
+          ...previousFavorites.favorites,
+          { id: Math.random(), offer: { id: offerId, category: {} } },
+        ]
+
         queryClient.setQueryData(QUERY_KEY, {
           ...previousFavorites,
-          favorites: [
-            ...previousFavorites.favorites,
-            { id: Math.random(), offer: { id: offerId } },
-          ],
+          nbFavorites: favorites.length,
+          favorites,
         })
       }
 
@@ -124,7 +130,6 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
       }
     },
     onSettled: (data) => {
-      queryClient.invalidateQueries(QUERY_KEY)
       if (onSettled) {
         onSettled(data)
       }
