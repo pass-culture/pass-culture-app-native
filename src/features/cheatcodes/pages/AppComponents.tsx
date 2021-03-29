@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen/api'
@@ -692,6 +693,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Badge label={1} />
           <Text> - Badge </Text>
+        </AlignedText>
+        <AlignedText>
+          <QRCode value="passculture" />
+          <Text>- {`contient le mot "passculture"`}</Text>
         </AlignedText>
       </AccordionItem>
       <Spacer.Column numberOfSpaces={5} />
