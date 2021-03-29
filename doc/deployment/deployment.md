@@ -45,7 +45,7 @@ When you want to deploy the current version of master in staging, you can run th
 
 This will create a tag `vX.X.X` and push it.
 
-CircleCI will detect the tag `vX.X.X` and launch the lanes `deploy-ios-staging` & `deploy-android-staging` (see `.circleci/config.yml` file)
+CircleCI will detect the tag `vX.X.X` and launch the lanes `deploy-ios-staging-hard` & `deploy-android-staging-hard` (see `.circleci/config.yml` file)
 
 ## Production: Deploy to App Store / Google Play Store
 
