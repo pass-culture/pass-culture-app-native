@@ -99,7 +99,7 @@ const renderItem: ListRenderItem<Booking> | null | undefined = ({ item }) => (
 const contentContainerStyle = {
   flexGrow: 1,
   paddingHorizontal: getSpacing(4),
-  paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(4),
+  paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(2),
 }
 
 const BookingsCount = styled(Typo.Body).attrs({
