@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
+import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Linking, NativeScrollEvent, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -39,6 +40,8 @@ import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 import Package from '../../../../package.json'
 import { ProfileHeader } from '../components/ProfileHeader'
 import { ProfileContainer } from '../components/reusables'
+
+const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 export const Profile: React.FC = () => {
   const { dispatch: favoritesDispatch } = useFavoritesState()
@@ -84,6 +87,11 @@ export const Profile: React.FC = () => {
       }
     }
   }, [isGeolocSwitchActive, permissionState])
+
+  const debouncedLogLocationToggle = useCallback(
+    debounce(analytics.logLocationToggle, DEBOUNCE_TOGGLE_DELAY_MS),
+    []
+  )
 
   function onPressGeolocPermissionModalButton() {
     Linking.openSettings()
@@ -148,7 +156,10 @@ export const Profile: React.FC = () => {
             cta={
               <FilterSwitch
                 active={isGeolocSwitchActive}
-                toggle={switchGeolocation}
+                toggle={() => {
+                  switchGeolocation()
+                  debouncedLogLocationToggle(!isGeolocSwitchActive)
+                }}
                 testID="geolocation"
               />
             }

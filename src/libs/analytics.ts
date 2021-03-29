@@ -35,6 +35,7 @@ export enum AnalyticsEvent {
   HAS_CHANGED_PASSWORD = 'HasChangedPassword',
   HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
   ID_CHECK = 'IdCheck',
+  LOCATION_TOGGLE = 'LocationToggle',
   LOGOUT = 'Logout',
   MAIL_TO = 'MailTo',
   NOTIFICATION_TOGGLE = 'NotificationToggle',
@@ -201,6 +202,9 @@ const logIdCheck = (from: 'Profile') =>
 const logProfilScrolledToBottom = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM)
 
+const logLocationToggle = (enabled: boolean) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.LOCATION_TOGGLE, { enabled })
+
 const logNotificationToggle = (enableEmail: boolean, enablePush?: boolean) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
     enableEmail,
@@ -259,6 +263,7 @@ export const analytics = {
   logConsultWithdrawal,
   logContactSupportResetPasswordEmailSent,
   logContactSupportSignupConfirmationEmailSent,
+  logLocationToggle,
   logOpenLocationSettings,
   logOpenNotificationSettings,
   logHasActivateGeolocFromTutorial,
