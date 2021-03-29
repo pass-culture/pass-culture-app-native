@@ -6,7 +6,7 @@ import { ApiError } from 'api/helpers'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { EmptyResponse } from 'libs/fetch'
 
-const QUERY_KEY = 'favorites'
+export const QUERY_KEY = 'favorites'
 
 export interface FavoriteMutationContext {
   previousFavorites: Array<FavoriteResponse>
