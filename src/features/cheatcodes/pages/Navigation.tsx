@@ -214,9 +214,6 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
-          <NavigationButton title={'Calendar'} onPress={() => navigation.navigate('Calendar')} />
-        </Row>
-        <Row half>
           <NavigationButton
             title={'Réglages cookies'}
             onPress={() => navigation.navigate('ConsentSettings', { onGoBack: () => null })}
