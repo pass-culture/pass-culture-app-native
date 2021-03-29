@@ -11,6 +11,6 @@ error(){
 
 git checkout $1
 
-git tag prod-hard-deploy
-git push origin prod-hard-deploy
+git tag prod-hard-deploy-$1
+git push origin prod-hard-deploy-$1
 
