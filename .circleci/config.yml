@@ -350,7 +350,7 @@ workflows:
       - deploy-soft-staging:
           filters:
             tags:
-              only: hotfix-staging
+              only: /^hotfix-staging.*/
             branches:
               ignore: /.*/
           requires:
@@ -358,7 +358,7 @@ workflows:
       - deploy-android-production-hard:
           filters:
             tags:
-              only: prod-hard-deploy
+              only: /^prod-hard-deploy.*/
             branches:
               ignore: /.*/
           requires:
@@ -366,7 +366,7 @@ workflows:
       - deploy-ios-production-hard:
           filters:
             tags:
-              only: prod-hard-deploy
+              only: /^prod-hard-deploy.*/
             branches:
               ignore: /.*/
           requires:
@@ -374,7 +374,7 @@ workflows:
       - deploy-soft-production:
           filters:
             tags:
-              only: hotfix-prod
+              only: /^hotfix-production.*/
             branches:
               ignore: /.*/
           requires:

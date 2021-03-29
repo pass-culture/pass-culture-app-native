@@ -70,9 +70,9 @@ CircleCI will detect the tag and launch the lane `deploy-android-production-hard
 - checkout on the biggest Y (if no tag with Y, checkout on `vX.X.X`)
 - code the fix
 - `git tag vX.X.X-(Y+1)`
-- `git tag hotfix-staging`
-- `git push origin hotfix-staging`: this will deploy it to `staging`
+- `git tag hotfix-staging-vX.X.X-(Y+1)`
+- `git push origin hotfix-staging-vX.X.X-(Y+1)`: this will deploy it to `staging`
 - validate with the PO
-- `git tag hotfix-production`
-- `git push origin hotfix-production`: this will deploy it to `production`
+- `git tag hotfix-production-vX.X.X-(Y+1)`
+- `git push origin hotfix-production-vX.X.X-(Y+1)`: this will deploy it to `production`
 - create a pull request from your branch to `master` to retrieve fixes on master branch
