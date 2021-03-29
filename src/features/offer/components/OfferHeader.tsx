@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -84,10 +84,12 @@ export const OfferHeader: React.FC<Props> = (props) => {
 
   const animationState = { iconBackgroundColor, iconBorderColor, transition: headerTransition }
 
-  const pressFavorite = () => {
+  const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
+  function pressFavorite() {
     if (!isLoggedIn) {
       showSignInModal()
     } else if (!favorite) {
+      animateIcon(scaleFavoriteIconAnimatedValueRef.current)
       addFavorite({ offerId })
     } else if (favorite) {
       removeFavorite(favorite.id)
@@ -126,6 +128,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
           <Spacer.Row numberOfSpaces={3} />
           <HeaderIcon
             animationState={animationState}
+            scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
             initialColor={favorite ? ColorsEnum.PRIMARY : undefined}
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
@@ -141,6 +144,21 @@ export const OfferHeader: React.FC<Props> = (props) => {
       />
     </React.Fragment>
   )
+}
+
+function animateIcon(animatedValue: Animated.Value): void {
+  Animated.sequence([
+    Animated.timing(animatedValue, {
+      toValue: 1.3,
+      duration: 200,
+      useNativeDriver: false,
+    }),
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: false,
+    }),
+  ]).start()
 }
 
 const HeaderContainer = styled(Animated.View)({
