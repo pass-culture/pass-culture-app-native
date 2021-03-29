@@ -1,12 +1,17 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { _ } from 'libs/i18n'
-import { getSpacing, Typo } from 'ui/theme'
+import { InputRule } from 'ui/components/inputs/rules/InputRule'
+import { Check } from 'ui/svg/icons/Check'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { BookingItemTitle } from './BookingItemTitle'
+import { EndedBookingTicket, endedBookingTicketWidth } from './EndedBookingTicket'
 import { BookingItemProps } from './types'
 
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
@@ -17,12 +22,37 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
 
   return (
     <ItemContainer testID="EndedBookingItem">
-      <Typo.ButtonText>{stock.offer.name}</Typo.ButtonText>
-      <Typo.Caption>{endedBookingReason}</Typo.Caption>
-      <Typo.Caption>{endedBookingDateLabel}</Typo.Caption>
+      <EndedBookingTicket
+        image={stock.offer.image?.url}
+        offerCategory={stock.offer.category.name}
+      />
+      <Spacer.Row numberOfSpaces={4} />
+      <View>
+        <BookingItemTitle ticketWidth={endedBookingTicketWidth} title={stock.offer.name} />
+        <EndedReasonAndDate>
+          {endedBookingReason}
+          <Spacer.Row numberOfSpaces={1} />
+          <DateLabel>{endedBookingDateLabel}</DateLabel>
+        </EndedReasonAndDate>
+      </View>
     </ItemContainer>
   )
 }
+
+const ItemContainer = styled.View({
+  flexDirection: 'row',
+  paddingBottom: getSpacing(7.5),
+  paddingHorizontal: getSpacing(5),
+})
+
+const EndedReasonAndDate = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
+
+const DateLabel = styled(Typo.Caption)({
+  color: ColorsEnum.GREY_DARK,
+})
 
 function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,

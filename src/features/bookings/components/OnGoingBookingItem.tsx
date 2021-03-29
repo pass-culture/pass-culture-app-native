@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -20,6 +19,7 @@ import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
+import { BookingItemTitle } from './BookingItemTitle'
 import { OnGoingTicket, onGoingTicketWidth } from './OnGoingTicket'
 import { Booking, BookingItemProps } from './types'
 
@@ -44,9 +44,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
       <ItemContainer>
         <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(iconName)} />
         <AttributesView>
-          <TitleContainer>
-            <Title numberOfLines={2}>{stock.offer.name}</Title>
-          </TitleContainer>
+          <BookingItemTitle ticketWidth={onGoingTicketWidth} title={stock.offer.name} />
           {Boolean(dateLabel) && <Typo.Body color={ColorsEnum.GREY_DARK}>{dateLabel}</Typo.Body>}
           <Spacer.Column numberOfSpaces={1} />
           {isDuo && <DuoBold />}
@@ -65,8 +63,6 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   )
 }
 
-const titleContainerWidth = Dimensions.get('screen').width - onGoingTicketWidth - getSpacing(10)
-
 const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
 }))({})
@@ -79,16 +75,6 @@ const ItemContainer = styled.View({
 const AttributesView = styled.View({
   paddingLeft: getSpacing(4),
   paddingRight: getSpacing(1),
-})
-
-const TitleContainer = styled.View({
-  flexDirection: 'row',
-  width: titleContainerWidth,
-  paddingBottom: getSpacing(1),
-})
-
-const Title = styled(Typo.ButtonText)({
-  flexShrink: 1,
 })
 
 const WithDrawContainer = styled.View({
