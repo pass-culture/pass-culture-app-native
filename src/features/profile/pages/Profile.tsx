@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Linking, StyleSheet } from 'react-native'
+import { Linking, NativeScrollEvent, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -10,7 +10,9 @@ import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
@@ -45,6 +47,7 @@ export const Profile: React.FC = () => {
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
+
   const {
     position,
     permissionState,
@@ -94,9 +97,16 @@ export const Profile: React.FC = () => {
       }
     }
   }, [isLoggedIn])
+  const logProfilScrolledToBottom = useFunctionOnce(analytics.logProfilScrolledToBottom)
+
+  function onScroll({ nativeEvent }: { nativeEvent: NativeScrollEvent }) {
+    if (isCloseToBottom(nativeEvent)) {
+      logProfilScrolledToBottom()
+    }
+  }
 
   return (
-    <ScrollView bounces={false} ref={scrollViewRef}>
+    <ScrollView bounces={false} ref={scrollViewRef} onScroll={onScroll} testID="profile-scrollview">
       <ProfileHeader user={user} />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />

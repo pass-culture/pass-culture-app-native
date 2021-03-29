@@ -205,7 +205,35 @@ describe('Profile component', () => {
       expect(mockSignOut).toBeCalled()
     })
   })
+
+  describe('Analytics', () => {
+    it('should log event ProfilScrolledToBottom when user reach end of screen', async () => {
+      mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
+      const { getByTestId } = await renderProfile()
+      const scrollContainer = getByTestId('profile-scrollview')
+      await act(async () => await fireEvent.scroll(scrollContainer, middleScrollEvent))
+      expect(analytics.logProfilScrolledToBottom).toBeCalledTimes(0)
+      await act(async () => await fireEvent.scroll(scrollContainer, bottomScrollEvent))
+      expect(analytics.logProfilScrolledToBottom).toBeCalledTimes(1)
+    })
+  })
 })
+
+const middleScrollEvent = {
+  nativeEvent: {
+    layoutMeasurement: { height: 1000 },
+    contentOffset: { y: 400 },
+    contentSize: { height: 1600 },
+  },
+}
+
+const bottomScrollEvent = {
+  nativeEvent: {
+    contentOffset: { y: 1600 },
+    layoutMeasurement: { height: 1600 },
+    contentSize: { height: 1600 },
+  },
+}
 
 interface Options {
   wrapper?: (({ children }: { children: Element }) => JSX.Element) | undefined
