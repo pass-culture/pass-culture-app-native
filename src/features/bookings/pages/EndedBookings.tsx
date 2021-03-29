@@ -35,4 +35,5 @@ const getEndedBookingsCountLabel = (plural: boolean) =>
 const EndedBookingsCount = styled(Typo.Body)({
   color: ColorsEnum.GREY_DARK,
   paddingHorizontal: getSpacing(5),
+  paddingBottom: getSpacing(5.5),
 })

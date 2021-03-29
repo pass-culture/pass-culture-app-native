@@ -7,8 +7,8 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen/api'
+import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
-import { UsedTicket } from 'features/bookings/components/UsedTicket'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
@@ -683,12 +683,12 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - OnGoing Ticket without image </Text>
         </AlignedText>
         <AlignedText>
-          <UsedTicket image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg" />
-          <Text> - Used Ticket </Text>
+          <EndedBookingTicket image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg" />
+          <Text> - Ended booking Ticket </Text>
         </AlignedText>
         <AlignedText>
-          <UsedTicket offerCategory={CategoryNameEnum.CINEMA} />
-          <Text> - Used Ticket without image </Text>
+          <EndedBookingTicket offerCategory={CategoryNameEnum.CINEMA} />
+          <Text> - Ended booking Ticket without image </Text>
         </AlignedText>
         <AlignedText>
           <Badge label={1} />
