@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingCancellationReasons } from 'api/gen'
 
 import { bookingsSnap } from '../api/bookingsSnap'
@@ -48,6 +49,19 @@ describe('EndedBookingItem', () => {
     })
     expect(queryByText('Réservation annulée')).toBeTruthy()
     expect(queryByText('le 15/03/2021')).toBeTruthy()
+  })
+
+  it('should navigate to offer page ', () => {
+    const { getByTestId } = renderEndedBookingItem(bookingsSnap.ended_bookings[0])
+
+    const item = getByTestId('EndedBookingItem')
+    fireEvent.press(item)
+
+    expect(navigate).toHaveBeenCalledWith('Offer', {
+      id: 147874,
+      shouldDisplayLoginModal: false,
+      from: 'endedbookings',
+    })
   })
 })
 

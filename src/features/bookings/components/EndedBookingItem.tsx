@@ -1,48 +1,59 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { _ } from 'libs/i18n'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { BookingItemTitle } from './BookingItemTitle'
 import { EndedBookingTicket, endedBookingTicketWidth } from './EndedBookingTicket'
 import { BookingItemProps } from './types'
 
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
 
   const endedBookingReason = getEndedBookingReason(cancellationReason, dateUsed)
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
   return (
-    <ItemContainer testID="EndedBookingItem">
-      <EndedBookingTicket
-        image={stock.offer.image?.url}
-        offerCategory={stock.offer.category.name}
-      />
-      <Spacer.Row numberOfSpaces={4} />
-      <View>
-        <BookingItemTitle ticketWidth={endedBookingTicketWidth} title={stock.offer.name} />
-        <EndedReasonAndDate>
-          {endedBookingReason}
-          <Spacer.Row numberOfSpaces={1} />
-          <DateLabel>{endedBookingDateLabel}</DateLabel>
-        </EndedReasonAndDate>
-      </View>
-    </ItemContainer>
+    <TouchableOpacity
+      onPress={() =>
+        navigate('Offer', {
+          id: stock.offer.id,
+          shouldDisplayLoginModal: false,
+          from: 'endedbookings',
+        })
+      }
+      testID="EndedBookingItem">
+      <ItemContainer>
+        <EndedBookingTicket
+          image={stock.offer.image?.url}
+          offerCategory={stock.offer.category.name}
+        />
+        <Spacer.Row numberOfSpaces={4} />
+        <View>
+          <BookingItemTitle ticketWidth={endedBookingTicketWidth} title={stock.offer.name} />
+          <EndedReasonAndDate>
+            {endedBookingReason}
+            <Spacer.Row numberOfSpaces={1} />
+            <DateLabel>{endedBookingDateLabel}</DateLabel>
+          </EndedReasonAndDate>
+        </View>
+      </ItemContainer>
+    </TouchableOpacity>
   )
 }
 
 const ItemContainer = styled.View({
   flexDirection: 'row',
-  paddingBottom: getSpacing(7.5),
-  paddingHorizontal: getSpacing(5),
 })
 
 const EndedReasonAndDate = styled.View({
