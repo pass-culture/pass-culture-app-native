@@ -1,6 +1,6 @@
-import flatten from 'lodash.flatten'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, ActivityIndicator } from 'react-native'
+import { FlatList } from 'react-native'
+import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
@@ -9,43 +9,66 @@ import { Sort } from 'features/favorites/atoms/Buttons/Sort'
 import { Favorite } from 'features/favorites/atoms/Favorite'
 import { NumberOfResults } from 'features/favorites/atoms/NumberOfResults'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
+import { FavoriteSortBy } from 'features/favorites/pages/FavoritesSorts'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
-import { useFavoritesResults } from 'features/favorites/pages/useFavoritesResults'
+import { useFavorites } from 'features/favorites/pages/useFavorites'
+import {
+  sortByAscendingPrice,
+  sortByDistanceAroundMe,
+  sortByIdDesc,
+} from 'features/favorites/pages/utils/sorts'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
 import { env } from 'libs/environment'
+import { useGeolocation } from 'libs/geolocation'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
 
-export const FavoritesResults: React.FC = React.memo(() => {
+function applyFilter(
+  list: Array<FavoriteResponse>,
+  sortBy: FavoriteSortBy,
+  position: GeoCoordinates | null
+) {
+  if (sortBy === 'ASCENDING_PRICE') {
+    list.sort(sortByAscendingPrice)
+    return list
+  } else if (sortBy === 'AROUND_ME') {
+    list.sort(sortByDistanceAroundMe(position))
+    return list
+  } else if (sortBy === 'RECENTLY_ADDED') {
+    list.sort(sortByIdDesc)
+    return list
+  } else {
+    return list
+  }
+}
+
+export const FavoritesResults: React.FC = React.memo(function FavoritesResults() {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
-
   const { isScrolling, handleIsScrolling } = useDebouncedScrolling()
-  const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useFavoritesResults()
   const favoritesState = useFavoritesState()
+  const { position } = useGeolocation()
+  const { data, isLoading } = useFavorites()
+  const sortedFavorites = useMemo(() => {
+    if (!data) {
+      return undefined
+    }
+    return !favoritesState.sortBy
+      ? data.favorites
+      : applyFilter(data.favorites, favoritesState.sortBy, position)
+  }, [data, favoritesState, position])
+
   const { data: user } = useUserProfileInfo()
   const credit = useAvailableCredit()
-
-  const favorites: FavoriteResponse[] = useMemo(
-    () => flatten(data?.pages.map((page) => page.favorites)),
-    [data?.pages]
-  )
-  const { nbFavorites } = data?.pages[0] || { nbFavorites: 0 }
 
   useEffect(() => {
     if (flatListRef && flatListRef.current)
       flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
-  }, [nbFavorites])
-
-  const onEndReached = useCallback(() => {
-    if (data && hasNextPage) {
-      fetchNextPage()
-    }
-  }, [hasNextPage])
+  }, [sortedFavorites?.length])
 
   const onScrollEndDrag = useCallback(() => handleIsScrolling(false), [])
   const onScrollBeginDrag = useCallback(() => handleIsScrolling(true), [])
@@ -62,24 +85,11 @@ export const FavoritesResults: React.FC = React.memo(() => {
     [credit, favoritesState, user, setOfferToBook]
   )
 
-  const ListHeaderComponent = useMemo(() => <NumberOfResults nbFavorites={nbFavorites} />, [
-    nbFavorites,
-  ])
-  const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
-  const ListFooterComponent = useMemo(
-    () =>
-      isFetchingNextPage && favorites.length < nbFavorites ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <ActivityIndicator />
-          <Spacer.Column numberOfSpaces={4} />
-          <Footer hasFavotires={!!favorites.length} />
-        </React.Fragment>
-      ) : (
-        <Footer hasFavotires={!!favorites.length} />
-      ),
-    [isFetchingNextPage, favorites.length]
+  const ListHeaderComponent = useMemo(
+    () => <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />,
+    [sortedFavorites?.length]
   )
+  const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
 
   if (isLoading || !data) return <FavoritesResultsPlaceHolder />
 
@@ -96,30 +106,30 @@ export const FavoritesResults: React.FC = React.memo(() => {
         <FlatList
           ref={flatListRef}
           testID="favoritesResultsFlatlist"
-          data={favorites}
+          data={sortedFavorites}
           contentContainerStyle={contentContainerStyle}
           keyExtractor={keyExtractor}
           ListHeaderComponent={ListHeaderComponent}
           ItemSeparatorComponent={Separator}
-          ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
-          onEndReached={onEndReached}
+          onEndReachedThreshold={0.9}
           onScrollEndDrag={onScrollEndDrag}
           onScrollBeginDrag={onScrollBeginDrag}
-          scrollEnabled={nbFavorites > 0}
+          scrollEnabled={sortedFavorites && sortedFavorites.length > 0}
           ListEmptyComponent={ListEmptyComponent}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
+          initialNumToRender={10}
         />
       </Container>
-      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && nbFavorites > 0 && (
-        <SortContainer>
-          <FadeScrollingView isScrolling={isScrolling}>
-            <Sort />
-          </FadeScrollingView>
-          <Spacer.BottomScreen />
-        </SortContainer>
-      )}
+      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING &&
+        sortedFavorites &&
+        sortedFavorites.length > 0 && (
+          <SortContainer>
+            <FadeScrollingView isScrolling={isScrolling}>
+              <Sort />
+            </FadeScrollingView>
+            <Spacer.BottomScreen />
+          </SortContainer>
+        )}
     </React.Fragment>
   )
 })
@@ -129,8 +139,9 @@ const contentContainerStyle = {
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(4),
 }
 const Container = styled.View({ height: '100%' })
-const Footer = styled.View<{ hasFavotires?: boolean }>(({ hasFavotires = false }) => ({
-  height: hasFavotires ? getSpacing(52) : 0,
+
+const Footer = styled.View<{ hasFavorites?: boolean }>(({ hasFavorites = false }) => ({
+  height: hasFavorites ? getSpacing(52) : 0,
 }))
 
 const Separator = styled.View({
