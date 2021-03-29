@@ -16,7 +16,6 @@ import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfir
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
-import { Calendar } from 'features/bookOffer/components/Calendar/Calendar'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { ABTestingPOC } from 'features/cheatcodes/pages/ABTestingPOC'
 import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
@@ -99,8 +98,6 @@ const routes: Array<Route> = [
   { name: 'TabNavigator', component: TabNavigator },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },
-  // TODO: PC-6693 remove this line
-  { name: 'Calendar', component: Calendar },
 ]
 
 export default routes

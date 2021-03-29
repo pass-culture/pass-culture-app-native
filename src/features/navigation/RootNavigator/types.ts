@@ -74,8 +74,6 @@ export type RootStackParamList = {
   VerifyEligibility: { email: string; licenceToken: string }
   FirstTutorial: undefined
   EighteenBirthday: undefined
-  // TODO: PC-6693 remove this line
-  Calendar: undefined
 }
 
 export type AllNavParamList = RootStackParamList & TabParamList
