@@ -29,8 +29,8 @@ function formatToHour(date: Date) {
   return `${hours}h${minutes}`
 }
 
-export const formatToCompleteFrenchDateTime = (date: Date) => {
-  return `${formatToCompleteFrenchDate(date, false)} à ${formatToHour(date)}`
+export const formatToCompleteFrenchDateTime = (date: Date, shouldDisplayWeekDay = true) => {
+  return `${formatToCompleteFrenchDate(date, shouldDisplayWeekDay)} à ${formatToHour(date)}`
 }
 
 export const formatToCompleteFrenchDate = (date: Date, shouldDisplayWeekDay = true) => {

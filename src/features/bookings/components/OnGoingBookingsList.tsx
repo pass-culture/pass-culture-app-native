@@ -111,7 +111,6 @@ const BookingsCount = styled(Typo.Body).attrs({
 })
 
 const EndedBookingsSection = styled.View<{ safeBottom: number }>(({ safeBottom }) => ({
-  flex: 1,
   width: '100%',
   marginBottom: safeBottom ? safeBottom / 2 : 0,
   justifyContent: 'center',
