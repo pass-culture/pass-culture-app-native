@@ -156,7 +156,7 @@ jobs:
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t hard -e testing
 
-  deploy-ios-staging:
+  deploy-ios-staging-hard:
     macos:
       xcode: '12.0.1'
     working_directory: ~/pass-culture
@@ -184,7 +184,7 @@ jobs:
             export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t hard -e staging
 
-  deploy-android-staging:
+  deploy-android-staging-hard:
     docker:
       - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
     working_directory: ~/pass-culture
@@ -331,7 +331,7 @@ workflows:
                 - master
           requires:
             - run-tests
-      - deploy-android-staging:
+      - deploy-android-staging-hard:
           filters:
             tags:
               only: /^v.*/
@@ -339,7 +339,7 @@ workflows:
               ignore: /.*/
           requires:
             - run-tests
-      - deploy-ios-staging:
+      - deploy-ios-staging-hard:
           filters:
             tags:
               only: /^v.*/
