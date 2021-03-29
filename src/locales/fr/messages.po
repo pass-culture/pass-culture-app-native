@@ -151,7 +151,7 @@ msgstr "Aucun résultat"
 msgid "Aucune valeur à sauvegarder"
 msgstr "Aucune valeur à sauvegarder"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:85
+#: src/features/bookings/components/OnGoingBookingItem.tsx:89
 #: src/features/search/sections/OfferDate.tsx:34
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
@@ -180,7 +180,7 @@ msgstr "Autour de moi"
 msgid "Autres"
 msgstr "Autres"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:101
+#: src/features/bookings/components/OnGoingBookingItem.tsx:105
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
@@ -383,11 +383,11 @@ msgstr "Date de l'offre"
 msgid "Date précise"
 msgstr "Date précise"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:88
+#: src/features/bookings/components/OnGoingBookingItem.tsx:92
 msgid "Demain"
 msgstr "Demain"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:98
+#: src/features/bookings/components/OnGoingBookingItem.tsx:102
 msgid "Dernier jour pour retirer"
 msgstr "Dernier jour pour retirer"
 
@@ -1368,7 +1368,7 @@ msgid "intervenant"
 msgstr "intervenant"
 
 #: src/features/bookings/components/EndedBookingItem.tsx:26
-#: src/features/bookings/components/OnGoingBookingItem.tsx:80
+#: src/features/bookings/components/OnGoingBookingItem.tsx:84
 msgid "le\\u00a0"
 msgstr "le\\u00a0"
 
@@ -1445,9 +1445,9 @@ msgstr "{price} seront déduits de ton crédit pass Culture"
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:93
-msgid "À retirer avant\\u00a0"
-msgstr "À retirer avant\\u00a0"
+#: src/features/bookings/components/OnGoingBookingItem.tsx:97
+msgid "À retirer avant le\\u00a0"
+msgstr "À retirer avant le\\u00a0"
 
 #: src/api/helpers.ts:112
 msgid "Échec de la requête {0}, code: {1}"
