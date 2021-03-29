@@ -146,6 +146,25 @@ describe('<Login/>', () => {
     expect(navigate).not.toBeCalled()
   })
 
+  it('should show specific error message when signin rate limit is exceeded', async () => {
+    simulateSigninRateLimitExceeded()
+    const renderAPI = renderLogin()
+    const rateExceededSnapshot = renderAPI.toJSON()
+
+    fireEvent.press(renderAPI.getByText('Se connecter'))
+    await act(flushAllPromises)
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(
+        renderAPI.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute.')
+      ).toBeTruthy()
+    })
+    const errorSnapshot = renderAPI.toJSON()
+    expect(rateExceededSnapshot).toMatchDiffSnapshot(errorSnapshot)
+    expect(navigate).not.toBeCalled()
+  })
+
   it('should enable login button when both text inputs are filled', async () => {
     const renderAPI = renderLogin()
     const disabledButtonSnapshot = renderAPI.toJSON()
@@ -204,6 +223,24 @@ function simulateSigninWrongCredentials() {
           // @ts-ignore: signin response type does not account for "not success" responses
           ctx.json({
             general: ['Identifiant ou Mot de passe incorrect'],
+          })
+        )
+    )
+  )
+}
+
+function simulateSigninRateLimitExceeded() {
+  server.use(
+    rest.post<SigninRequest, SigninResponse>(
+      env.API_BASE_URL + '/native/v1/signin',
+      async (req, res, ctx) =>
+        res(
+          ctx.status(429),
+          // @ts-ignore: signin response type does not account for "not success" responses
+          ctx.json({
+            general: [
+              'Nombre de tentative de connexion dépassé. Veuillez réessayer dans 1 minute.',
+            ],
           })
         )
     )

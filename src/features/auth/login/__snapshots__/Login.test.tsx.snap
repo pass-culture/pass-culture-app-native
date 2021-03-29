@@ -295,3 +295,111 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     \\"flexDirection\\": \\"row\\",
                     \\"height\\": 40,"
 `;
+
+exports[`<Login/> should show specific error message when signin rate limit is exceeded 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -165,10 +165,58 @@
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
++           numberOfSpaces={5}
++           style={
++             Array [
++               Object {
++                 \\"height\\": 20,
++               },
++             ]
++           }
++           testID=\\"input-error-top-spacer\\"
++         />
++         <View
++           style={
++             Array [
++               Object {
++                 \\"alignItems\\": \\"center\\",
++                 \\"flexDirection\\": \\"row\\",
++                 \\"maxWidth\\": 500,
++               },
++             ]
++           }
++         >
++           <View
++             height={24}
++             testID=\\"rule-icon-warn\\"
++             width={24}
++           >
++             <Text>
++               rule-icon-warn-SVG-Mock
++             </Text>
++           </View>
++           <Text
++             color=\\"#b60025\\"
++             style={
++               Array [
++                 Object {
++                   \\"color\\": \\"#b60025\\",
++                   \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++                   \\"fontSize\\": 12,
++                   \\"lineHeight\\": 16,
++                   \\"paddingLeft\\": 4,
++                 },
++               ]
++             }
++           >
++             Nombre de tentatives dépassé. Réessaye dans 1 minute.
++           </Text>
++         </View>
++         <View
+            numberOfSpaces={7}
+            style={
+              Array [
+                Object {
+                  \\"height\\": 28,
+@@ -212,18 +260,18 @@
+                  },
+                ]
+              }
+            />
+            <View
+-             isError={false}
++             isError={true}
+              isFocus={false}
+              style={
+                Array [
+                  Object {
+                    \\"alignItems\\": \\"center\\",
+                    \\"backgroundColor\\": \\"#ffffff\\",
+-                   \\"borderColor\\": \\"#c7c7cc\\",
++                   \\"borderColor\\": \\"#b60025\\",
+                    \\"borderRadius\\": 22,
+                    \\"borderStyle\\": \\"solid\\",
+                    \\"borderWidth\\": 1,
+                    \\"flexDirection\\": \\"row\\",
+                    \\"height\\": 40,
+@@ -321,18 +369,18 @@
+                  },
+                ]
+              }
+            />
+            <View
+-             isError={false}
++             isError={true}
+              isFocus={false}
+              style={
+                Array [
+                  Object {
+                    \\"alignItems\\": \\"center\\",
+                    \\"backgroundColor\\": \\"#ffffff\\",
+-                   \\"borderColor\\": \\"#c7c7cc\\",
++                   \\"borderColor\\": \\"#b60025\\",
+                    \\"borderRadius\\": 22,
+                    \\"borderStyle\\": \\"solid\\",
+                    \\"borderWidth\\": 1,
+                    \\"flexDirection\\": \\"row\\",
+                    \\"height\\": 40,"
+`;

@@ -13,6 +13,7 @@ export type SignInResponseSuccess = {
 
 export type SignInResponseFailure = {
   isSuccess: false
+  statusCode?: number
   content?: {
     code: 'EMAIL_NOT_VALIDATED' | 'NETWORK_REQUEST_FAILED'
     general: string[]
@@ -44,6 +45,7 @@ export function useSignIn(): (data: SigninRequest) => Promise<SignInResponse> {
     } catch (error) {
       const errorResponse: SignInResponseFailure = { isSuccess: false }
       if (isApiError(error)) {
+        errorResponse.statusCode = error.statusCode
         errorResponse.content = error.content
       } else {
         errorResponse.content = { code: 'NETWORK_REQUEST_FAILED', general: [] }
