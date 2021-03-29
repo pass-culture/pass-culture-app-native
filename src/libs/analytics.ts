@@ -16,6 +16,7 @@ export enum AnalyticsEvent {
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   CANCEL_SIGNUP = 'CancelSignup',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
+  CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
   CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
@@ -31,9 +32,19 @@ export enum AnalyticsEvent {
   HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
   HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',
   HAS_APPLIED_FAVORITES_SORTING = 'HasAppliedFavoritesSorting',
+  HAS_CHANGED_PASSWORD = 'HasChangedPassword',
   HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
+  ID_CHECK = 'IdCheck',
+  LOGOUT = 'Logout',
+  MAIL_TO = 'MailTo',
+  NOTIFICATION_TOGGLE = 'NotificationToggle',
   NO_SEARCH_RESULT = 'NoSearchResult',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
+  OPEN_EXTERNAL_URL = 'OpenExternalURL',
+  OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
+  OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
+  PROFIL_SCROLLED_TO_BOTTOM = 'ProfilScrolledToBottom',
+  PROFIL_SIGN_UP = 'ProfilSignUp',
   RECOMMENDATION_MODULE_SEEN = 'RecommendationModuleSeen',
   REINITIALIZE_FILTERS = 'ReinitializeFilters',
   RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
@@ -46,16 +57,6 @@ export enum AnalyticsEvent {
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
-  PROFIL_SIGN_UP = 'ProfilSignUp',
-  LOGOUT = 'Logout',
-  HAS_CHANGED_PASSWORD = 'HasChangedPassword',
-  NOTIFICATION_TOGGLE = 'NotificationToggle',
-  OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
-  OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
-  ID_CHECK = 'IdCheck',
-  CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
-  OPEN_EXTERNAL_URL = 'OpenExternalURL',
-  MAIL_TO = 'MailTo',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -197,6 +198,9 @@ const logOpenNotificationSettings = () =>
 const logIdCheck = (from: 'Profile') =>
   firebaseAnalytics.logEvent(AnalyticsEvent.ID_CHECK, { from })
 
+const logProfilScrolledToBottom = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM)
+
 const logNotificationToggle = (enableEmail: boolean, enablePush?: boolean) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
     enableEmail,
@@ -269,6 +273,7 @@ export const analytics = {
   logOpenExternalUrl,
   logOfferSeenDuration,
   logIdCheck,
+  logProfilScrolledToBottom,
   logProfilSignUp,
   logRecommendationModuleSeen,
   logReinitializeFilters,
