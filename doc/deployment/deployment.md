@@ -37,8 +37,6 @@ If I modified native code, I need to hard deploy:
 
 ![img](./MES.png)
 
-We do it once a week at the end of an iteration.
-
 When you want to deploy the current version of master in staging, you can run the following command:
 
 - `yarn trigger:staging:deploy`
