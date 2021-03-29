@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
+import { QUERY_KEY as FAVORITES_QUERY_KEY } from 'features/favorites/pages/useFavorites'
 import { analytics, firebaseAnalytics } from 'libs/analytics'
 import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
@@ -82,12 +83,14 @@ export function useLoginRoutine() {
 export function useLogoutRoutine(): () => Promise<void> {
   const { setIsLoggedIn } = useAuthContext()
   const { clean: cleanProfile } = useCustomQueryClientHelpers('userProfile')
+  const { clean: cleanFavorites } = useCustomQueryClientHelpers(FAVORITES_QUERY_KEY)
 
   return async () => {
     BatchUser.editor().setIdentifier(null).save()
     await storage.clear('access_token')
     await clearRefreshToken()
     await cleanProfile()
+    await cleanFavorites()
     setIsLoggedIn(false)
   }
 }
