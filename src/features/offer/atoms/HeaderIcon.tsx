@@ -14,6 +14,7 @@ interface HeaderIconProps {
   iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'
   initialColor?: ColorsEnum | undefined
   onPress: () => void
+  scaleAnimatedValue?: Animated.Value
   animationState: {
     iconBackgroundColor: Animated.AnimatedInterpolation
     iconBorderColor: Animated.AnimatedInterpolation
@@ -28,37 +29,32 @@ const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface>
   return Favorite
 }
 
-export const HeaderIcon = ({
-  iconName,
-  onPress,
-  animationState,
-  initialColor,
-}: HeaderIconProps) => {
-  const Icon = getIcon(iconName)
+export const HeaderIcon = (props: HeaderIconProps) => {
+  const Icon = getIcon(props.iconName)
 
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
-      <RoundContainer
+    <TouchableOpacity activeOpacity={0.5} onPress={props.onPress}>
+      <StyledAnimatedView
         testID="headerIconRoundContainer"
-        animationState={animationState}
         style={{
-          borderColor: animationState.iconBorderColor,
-          backgroundColor: animationState.iconBackgroundColor,
+          borderColor: props.animationState.iconBorderColor,
+          backgroundColor: props.animationState.iconBackgroundColor,
+          transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
         }}>
         <AnimatedIcon
           Icon={Icon}
           size={getSpacing(8)}
-          initialColor={initialColor || ColorsEnum.BLACK}
-          testID={`icon-${iconName}`}
-          transition={animationState.transition}
+          initialColor={props.initialColor || ColorsEnum.BLACK}
+          testID={`icon-${props.iconName}`}
+          transition={props.animationState.transition}
           finalColor={ColorsEnum.WHITE}
         />
-      </RoundContainer>
+      </StyledAnimatedView>
     </TouchableOpacity>
   )
 }
 
-const RoundContainer = styled(Animated.View)<Pick<HeaderIconProps, 'animationState'>>(() => ({
+const StyledAnimatedView = styled(Animated.View)({
   width: getSpacing(10),
   aspectRatio: '1',
   borderRadius: getSpacing(10),
@@ -68,4 +64,4 @@ const RoundContainer = styled(Animated.View)<Pick<HeaderIconProps, 'animationSta
   alignItems: 'center',
   overflow: 'hidden',
   borderColor: ColorsEnum.GREY_LIGHT,
-}))
+})

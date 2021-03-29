@@ -72,13 +72,6 @@ Array [
         }
       >
         <View
-          animationState={
-            Object {
-              "iconBackgroundColor": "rgba(255, 255, 255, 1)",
-              "iconBorderColor": "rgba(245, 245, 245, 1)",
-              "transition": 0,
-            }
-          }
           style={
             Object {
               "alignItems": "center",
@@ -90,6 +83,7 @@ Array [
               "borderWidth": 1,
               "justifyContent": "center",
               "overflow": "hidden",
+              "transform": undefined,
               "width": 40,
             }
           }
@@ -234,13 +228,6 @@ Array [
         }
       >
         <View
-          animationState={
-            Object {
-              "iconBackgroundColor": "rgba(255, 255, 255, 1)",
-              "iconBorderColor": "rgba(245, 245, 245, 1)",
-              "transition": 0,
-            }
-          }
           style={
             Object {
               "alignItems": "center",
@@ -252,6 +239,7 @@ Array [
               "borderWidth": 1,
               "justifyContent": "center",
               "overflow": "hidden",
+              "transform": undefined,
               "width": 40,
             }
           }
@@ -338,13 +326,6 @@ Array [
         }
       >
         <View
-          animationState={
-            Object {
-              "iconBackgroundColor": "rgba(255, 255, 255, 1)",
-              "iconBorderColor": "rgba(245, 245, 245, 1)",
-              "transition": 0,
-            }
-          }
           style={
             Object {
               "alignItems": "center",
@@ -356,6 +337,11 @@ Array [
               "borderWidth": 1,
               "justifyContent": "center",
               "overflow": "hidden",
+              "transform": Array [
+                Object {
+                  "scale": 1,
+                },
+              ],
               "width": 40,
             }
           }
