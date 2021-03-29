@@ -586,62 +586,47 @@ Tous les détails du film sur AlloCiné:
                         }
                       >
                         <View
-                          numberOfSpaces={5}
+                          positionInHeader="left"
                           style={
                             Array [
                               Object {
-                                "width": 20,
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "justifyContent": "flex-start",
+                                "paddingLeft": 12,
+                                "paddingRight": 12,
+                                "width": 60,
                               },
                             ]
-                          }
-                        />
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Object {
-                              "opacity": 1,
-                            }
                           }
                         >
                           <View
-                            height={32}
-                            testID="icon-back"
-                            width={32}
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              Object {
+                                "opacity": 1,
+                              }
+                            }
                           >
-                            <Text>
-                              icon-back-SVG-Mock
-                            </Text>
+                            <View
+                              height={32}
+                              testID="icon-back"
+                              width={32}
+                            >
+                              <Text>
+                                icon-back-SVG-Mock
+                              </Text>
+                            </View>
                           </View>
                         </View>
-                        <View
-                          numberOfSpaces={0}
-                          style={
-                            Array [
-                              Object {
-                                "width": 0,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
                         <Text
                           color="#ffffff"
                           numberOfLines={1}
@@ -649,6 +634,8 @@ Tous les détails du film sur AlloCiné:
                             Array [
                               Object {
                                 "color": "#ffffff",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
                                 "flexShrink": 1,
                                 "fontFamily": "Montserrat-Regular",
                                 "fontSize": 15,
@@ -661,32 +648,16 @@ Tous les détails du film sur AlloCiné:
                           Description
                         </Text>
                         <View
+                          positionInHeader="right"
                           style={
                             Array [
                               Object {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          numberOfSpaces={10}
-                          style={
-                            Array [
-                              Object {
-                                "width": 40,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          numberOfSpaces={6}
-                          style={
-                            Array [
-                              Object {
-                                "width": 24,
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "justifyContent": "flex-end",
+                                "paddingLeft": 12,
+                                "paddingRight": 12,
+                                "width": 60,
                               },
                             ]
                           }
