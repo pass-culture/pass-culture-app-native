@@ -57,10 +57,23 @@ const DateLabel = styled(Typo.Caption)({
 function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,
   dateUsed?: Date | null
-): string {
-  if (dateUsed) return _(t`Utilisé`)
-  if (cancellationReason === BookingCancellationReasons.OFFERER) return _(t`Annulé`)
-  return _(t`Réservation annulée`)
+) {
+  if (dateUsed)
+    return (
+      <InputRule title={_(t`Utilisé`)} icon={Check} color={ColorsEnum.GREEN_VALID} iconSize={20} />
+    )
+
+  if (cancellationReason === BookingCancellationReasons.OFFERER)
+    return <InputRule title={_(t`Annulé`)} icon={Check} color={ColorsEnum.ERROR} iconSize={20} />
+
+  return (
+    <InputRule
+      title={_(t`Réservation annulée`)}
+      icon={Check}
+      color={ColorsEnum.ERROR}
+      iconSize={20}
+    />
+  )
 }
 
 function getEndedBookingDateLabel(cancellationDate?: Date | null, dateUsed?: Date | null) {
@@ -70,8 +83,3 @@ function getEndedBookingDateLabel(cancellationDate?: Date | null, dateUsed?: Dat
     return label + formatToSlashedFrenchDate(new Date(cancellationDate).toISOString())
   return null
 }
-
-const ItemContainer = styled.View({
-  flexDirection: 'column',
-  padding: getSpacing(4),
-})
