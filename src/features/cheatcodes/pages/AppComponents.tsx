@@ -54,6 +54,7 @@ import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
+import { Category } from 'ui/svg/icons/categories'
 import { Check } from 'ui/svg/icons/Check'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Close } from 'ui/svg/icons/Close'
@@ -670,11 +671,14 @@ export const AppComponents: FunctionComponent = () => {
           />
         </AlignedText>
         <AlignedText>
-          <OnGoingTicket image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg" />
+          <OnGoingTicket
+            altIcon={Category.Artwork}
+            image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+          />
           <Text> - OnGoing Ticket </Text>
         </AlignedText>
         <AlignedText>
-          <OnGoingTicket />
+          <OnGoingTicket altIcon={Category.Artwork} />
           <Text> - OnGoing Ticket without image </Text>
         </AlignedText>
         <AlignedText>

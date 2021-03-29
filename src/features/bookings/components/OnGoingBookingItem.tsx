@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Dimensions, TouchableOpacity } from 'react-native'
+import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
@@ -18,6 +18,7 @@ import { Separator } from 'ui/components/Separator'
 import { Clock } from 'ui/svg/icons/Clock'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { OnGoingTicket, onGoingTicketWidth } from './OnGoingTicket'
 import { Booking } from './types'
@@ -41,7 +42,7 @@ export const OnGoingBookingItem = ({ booking }: OnGoingBookingItemProps) => {
   )
 
   return (
-    <TouchableOpacity
+    <Container
       onPress={() => navigate('BookingDetails', { id: booking.id })}
       testID={'OnGoingBookingItem'}>
       <ItemContainer>
@@ -64,10 +65,15 @@ export const OnGoingBookingItem = ({ booking }: OnGoingBookingItemProps) => {
         </AttributesView>
       </ItemContainer>
       <Separator />
-    </TouchableOpacity>
+    </Container>
   )
 }
+
 const titleContainerWidth = Dimensions.get('screen').width - onGoingTicketWidth - getSpacing(10)
+
+const Container = styled.TouchableOpacity.attrs(() => ({
+  activeOpacity: ACTIVE_OPACITY,
+}))({})
 
 const ItemContainer = styled.View({
   flexDirection: 'row',
@@ -117,7 +123,7 @@ function getItemViewProperties(
   } else if (isEvent) {
     isDuo = isDuoBooking(booking)
     dateLabel = beginningDatetime
-      ? _(t`le\u00a0`) + formatToCompleteFrenchDateTime(beginningDatetime)
+      ? _(t`le\u00a0`) + formatToCompleteFrenchDateTime(beginningDatetime, false)
       : ''
 
     const isBeginningToday = beginningDatetime ? isToday(beginningDatetime) : false
@@ -129,7 +135,7 @@ function getItemViewProperties(
     }
   } else if (isPhysical) {
     dateLabel = expirationDatetime
-      ? _(t`À retirer avant\u00a0`) + formatToCompleteFrenchDate(expirationDatetime)
+      ? _(t`À retirer avant le\u00a0`) + formatToCompleteFrenchDate(expirationDatetime, false)
       : ''
 
     const isExpiringToday = expirationDatetime ? isToday(expirationDatetime) : false
