@@ -54,9 +54,6 @@ check_environment(){
   if [[ "$APP_ENV" == "testing" && "$CURRENT_BRANCH" != "master" ]];
   then
     warn "Wrong branch, checkout master to deploy to $APP_ENV."
-  elif [[ "$APP_ENV" == "staging" && "$CURRENT_BRANCH" != "staging" ]];
-  then
-    warn "Wrong branch, checkout staging to deploy to $APP_ENV."
   else
     success "Deploying to $APP_ENV."
   fi
