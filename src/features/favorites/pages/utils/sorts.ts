@@ -47,19 +47,13 @@ export function sortByDistanceAroundMe(position: GeoCoordinates | null) {
     if (position === null) {
       return 0
     }
-    if (aOffer.coordinates.latitude && aOffer.coordinates.longitude) {
+    if (aOffer.coordinates?.latitude && aOffer.coordinates?.longitude) {
       aCoordinate = a.offer.coordinates
     }
-    if (bOffer.coordinates.latitude && bOffer.coordinates.longitude) {
+    if (bOffer.coordinates?.latitude && bOffer.coordinates?.longitude) {
       bCoordinate = b.offer.coordinates
     }
-    if (aOffer.isExpired && bOffer.isExpired) {
-      return 0
-    } else if (!aOffer.isExpired && bOffer.isExpired) {
-      return -1
-    } else if (aOffer.isExpired && !bOffer.isExpired) {
-      return 1
-    } else if (!aCoordinate && !bCoordinate) {
+    if (!aCoordinate && !bCoordinate) {
       return -1
     } else if (aCoordinate && !bCoordinate) {
       return -1
