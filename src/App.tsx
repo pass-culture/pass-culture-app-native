@@ -51,34 +51,40 @@ const App: FunctionComponent = function () {
   useStartBatchNotification()
 
   return (
-    <CodePushProvider>
-      <ABTestingProvider>
-        <SafeAreaProvider>
-          <QueryClientProvider client={queryClient}>
-            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <GeolocationWrapper>
-                <AuthWrapper>
-                  <FavoritesWrapper>
-                    <SearchWrapper>
-                      <I18nProvider language={i18n.language} i18n={i18n}>
-                        <SnackBarProvider>
-                          <SplashScreenProvider>
-                            <AppNavigationContainer>
-                              <RootNavigator />
-                            </AppNavigationContainer>
-                          </SplashScreenProvider>
-                        </SnackBarProvider>
-                      </I18nProvider>
-                    </SearchWrapper>
-                  </FavoritesWrapper>
-                </AuthWrapper>
-              </GeolocationWrapper>
-            </ErrorBoundary>
-          </QueryClientProvider>
-        </SafeAreaProvider>
-      </ABTestingProvider>
-    </CodePushProvider>
+    <ABTestingProvider>
+      <SafeAreaProvider>
+        <QueryClientProvider client={queryClient}>
+          <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+            <GeolocationWrapper>
+              <AuthWrapper>
+                <FavoritesWrapper>
+                  <SearchWrapper>
+                    <I18nProvider language={i18n.language} i18n={i18n}>
+                      <SnackBarProvider>
+                        <SplashScreenProvider>
+                          <AppNavigationContainer>
+                            <RootNavigator />
+                          </AppNavigationContainer>
+                        </SplashScreenProvider>
+                      </SnackBarProvider>
+                    </I18nProvider>
+                  </SearchWrapper>
+                </FavoritesWrapper>
+              </AuthWrapper>
+            </GeolocationWrapper>
+          </ErrorBoundary>
+        </QueryClientProvider>
+      </SafeAreaProvider>
+    </ABTestingProvider>
   )
 }
 
-export { App }
+const AppWithCodepush = __DEV__
+  ? App
+  : () => (
+      <CodePushProvider>
+        <App />
+      </CodePushProvider>
+    )
+
+export { AppWithCodepush as App }
