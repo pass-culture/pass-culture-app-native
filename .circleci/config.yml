@@ -309,7 +309,13 @@ workflows:
   version: 2.1
   commit:
     jobs:
-      - run-tests
+      - run-tests:
+          # Need to tell job run-tests to been launched for all tags
+          # as it is a required step for some jobs, triggered by tags
+          # see: https://discuss.circleci.com/t/tag-filter-not-firing-in-workflow/25534/3
+          filters:
+            tags:
+              only: /.*/
       - deploy-soft-testing:
           filters:
             branches:
