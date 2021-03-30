@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react'
+import React, { createContext } from 'react'
 import CodePush from 'react-native-code-push' // @codepush
 
 interface CodePushContext {
@@ -15,8 +15,6 @@ const CodePushWrapper = (AppComponent: React.Component) =>
 
 // @ts-ignore no-param
 const CodePushContext = createContext<CodePushContext>({})
-
-export const useCodePush = () => useContext<CodePushContext>(CodePushContext)
 
 export const CodePushProvider = CodePushWrapper(
   // @ts-ignore no-param
