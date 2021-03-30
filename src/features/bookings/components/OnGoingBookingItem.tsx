@@ -19,7 +19,7 @@ import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-import { BookingItemTitle } from './BookingItemTitle'
+import { BookingItemTitle, getTitleWidth } from './BookingItemTitle'
 import { OnGoingTicket, onGoingTicketWidth } from './OnGoingTicket'
 import { Booking, BookingItemProps } from './types'
 
@@ -45,7 +45,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
         <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(iconName)} />
         <AttributesView>
           <BookingItemTitle ticketWidth={onGoingTicketWidth} title={stock.offer.name} />
-          {Boolean(dateLabel) && <Typo.Body color={ColorsEnum.GREY_DARK}>{dateLabel}</Typo.Body>}
+          {Boolean(dateLabel) && <DateLabel color={ColorsEnum.GREY_DARK}>{dateLabel}</DateLabel>}
           <Spacer.Column numberOfSpaces={1} />
           {isDuo && <DuoBold />}
           <Spacer.Flex />
@@ -80,6 +80,10 @@ const AttributesView = styled.View({
 const WithDrawContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+})
+
+const DateLabel = styled(Typo.Body)({
+  width: getTitleWidth(onGoingTicketWidth),
 })
 
 function isDuoBooking(booking: Booking) {

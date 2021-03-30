@@ -10,7 +10,7 @@ type BookingItemTitleProps = {
 }
 
 export function BookingItemTitle(props: BookingItemTitleProps) {
-  const containerWidth = Dimensions.get('screen').width - props.ticketWidth - getSpacing(10)
+  const containerWidth = getTitleWidth(props.ticketWidth)
 
   return (
     <TitleContainer width={containerWidth}>
@@ -28,3 +28,7 @@ const TitleContainer = styled.View<{ width: number }>(({ width }) => ({
 export const Title = styled(Typo.ButtonText)({
   flexShrink: 1,
 })
+
+export function getTitleWidth(excludedRowWidth: number) {
+  return Dimensions.get('screen').width - excludedRowWidth - getSpacing(10)
+}
