@@ -90,6 +90,10 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
     [sortedFavorites?.length]
   )
   const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
+  const ListFooterComponent = useMemo(
+    () => <Footer hasFavorites={sortedFavorites ? sortedFavorites.length > 0 : false} />,
+    [sortedFavorites]
+  )
 
   if (isLoading || !data) return <FavoritesResultsPlaceHolder />
 
@@ -110,6 +114,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           contentContainerStyle={contentContainerStyle}
           keyExtractor={keyExtractor}
           ListHeaderComponent={ListHeaderComponent}
+          ListFooterComponent={ListFooterComponent}
           ItemSeparatorComponent={Separator}
           renderItem={renderItem}
           onEndReachedThreshold={0.9}
