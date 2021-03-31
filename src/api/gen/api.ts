@@ -148,7 +148,8 @@ export interface BookOfferResponse {
 export enum BookingCancellationReasons {
     OFFERER = 'OFFERER',
     BENEFICIARY = 'BENEFICIARY',
-    EXPIRED = 'EXPIRED'
+    EXPIRED = 'EXPIRED',
+    FRAUD = 'FRAUD'
 }/**
  * 
  * @export
@@ -1158,6 +1159,18 @@ export interface ResetPasswordRequest {
 }/**
  * 
  * @export
+ * @interface SettingsResponse
+ */
+export interface SettingsResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof SettingsResponse
+     */
+    depositAmount: number;
+}/**
+ * 
+ * @export
  * @interface SigninRequest
  */
 export interface SigninRequest {
@@ -1490,6 +1503,27 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             }
             const localVarPath = `/native/v1/offer/{offer_id}`
                 .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary get_settings <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1settings(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/settings`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
@@ -1937,6 +1971,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary get_settings <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1settings(basePath: string, options?: any): Promise<SettingsResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1settings(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary create_account <POST>
          * @param {AccountRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -2179,6 +2224,17 @@ export class DefaultApi extends BaseAPI {
     public async getnativev1offerofferId(offer_id: number, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1offerofferId(this.basePath, offer_id, options)
+    }
+    /**
+     * 
+     * @summary get_settings <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1settings(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1settings(this.basePath, options)
     }
     /**
      * 
