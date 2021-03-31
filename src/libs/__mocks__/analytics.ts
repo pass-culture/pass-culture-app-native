@@ -55,6 +55,7 @@ export const analytics: typeof actualAnalytics = {
   logScreenView: jest.fn(),
   logSearchQuery: jest.fn(),
   logSearchScrollToPage: jest.fn(),
+  logSeeMyBooking: jest.fn(),
   logShareOffer: jest.fn(),
   logSignUpBetween14And15Included: jest.fn(),
   logSignUpLessThanOrEqualTo13: jest.fn(),

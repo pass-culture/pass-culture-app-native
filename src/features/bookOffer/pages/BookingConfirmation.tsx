@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -15,6 +16,8 @@ import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
+  const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
+
   const { navigate } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
 
@@ -38,7 +41,10 @@ export function BookingConfirmation() {
       {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <ButtonPrimaryWhite
           title={_(t`Voir ma réservation`)}
-          onPress={() => navigate('Bookings')}
+          onPress={() => {
+            analytics.logSeeMyBooking(params.offerId)
+            navigate('Bookings')
+          }}
         />
       )}
       <Spacer.Column numberOfSpaces={4} />
