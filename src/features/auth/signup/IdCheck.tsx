@@ -1,12 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { WebView, WebViewNavigation } from 'react-native-webview'
 import styled from 'styled-components/native'
 
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
+import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
 import { useKeyboardAdjustFixIdCheck } from '../hooks/useKeyboardAdjustFixIdCheck'
@@ -18,9 +19,21 @@ export const IdCheck: React.FC<Props> = function (props) {
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
   const injectedJavascript = useKeyboardAdjustFixIdCheck()
-  const { email, licenceToken } = props.route.params
-  const encodedEmail = encodeURIComponent(email)
-  const uri = `${env.ID_CHECK_URL}/?email=${encodedEmail}&licence_token=${licenceToken}`
+
+  const [idCheckUri, setIdCheckUri] = useState<string | undefined>(undefined)
+
+  useEffect(() => {
+    const { email, licenceToken } = props.route.params
+    const encodedEmail = encodeURIComponent(email)
+    storage.readObject<boolean>('has_accepted_cookie').then((hasAcceptedCookies) => {
+      let userConsentDataCollection = false
+      if (hasAcceptedCookies) {
+        userConsentDataCollection = true
+      }
+      const uri = `${env.ID_CHECK_URL}/?email=${encodedEmail}&user_consent_data_collection=${userConsentDataCollection}&licence_token=${licenceToken}`
+      setIdCheckUri(uri)
+    })
+  }, [])
 
   function onNavigationStateChange(event: WebViewNavigation) {
     // For more info, see the buffer pages (i.e. to exit the webview) of the Id Check web app
@@ -33,13 +46,15 @@ export const IdCheck: React.FC<Props> = function (props) {
     }
   }
 
-  if (currentRoute?.name !== 'IdCheck') return null
+  if (!idCheckUri || currentRoute?.name !== 'IdCheck') {
+    return null
+  }
   return (
     <StyledWebview
       injectedJavaScript={injectedJavascript}
       ref={webviewRef}
       testID="idcheck-webview"
-      source={{ uri }}
+      source={{ uri: idCheckUri }}
       startInLoadingState={true}
       renderLoading={() => (
         <LoadingPageContainer>

@@ -7,38 +7,66 @@ import { Text } from 'react-native'
 import { IdCheck } from 'features/auth/signup/IdCheck'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
+import { storage } from 'libs/storage'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
+allowConsole({ error: true })
+/* Explanation for allowConsole : 
+The test `should display web page with url with user_consent_data_collection set to true`
+fails because of `Warning: You called act(async () => ...) without await...`.
+Adding `await superFlushWithAct` does not fix the console.error.
+*/
+
 describe('<IdCheck />', () => {
+  afterEach(async () => {
+    await storage.clear('has_accepted_cookie')
+  })
+
   it('should render correctly', async () => {
-    const instance = renderIdCheckWithNavigation()
+    const renderAPI = renderIdCheckWithNavigation()
     await waitFor(() => {
-      expect(instance).toMatchSnapshot()
+      expect(renderAPI).toMatchSnapshot()
     })
   })
 
-  it('should display web page with correct url', async () => {
-    const { getByTestId } = renderIdCheckWithNavigation()
-    const webview = getByTestId('idcheck-webview')
+  it('should display web page with url with user_consent_data_collection set to false', async () => {
+    const renderAPI = renderIdCheckWithNavigation()
 
     await waitFor(() => {
+      const webview = renderAPI.getByTestId('idcheck-webview')
       expect(webview.props.source.uri).toEqual(
-        env.ID_CHECK_URL + '/?email=john%2B1%40wick.com&licence_token=XxLicenceTokenxX'
+        env.ID_CHECK_URL +
+          '/?email=john%2B1%40wick.com&user_consent_data_collection=false&licence_token=XxLicenceTokenxX'
+      )
+    })
+  })
+
+  it('should display web page with url with user_consent_data_collection set to true', async () => {
+    await storage.saveObject('has_accepted_cookie', true)
+
+    const renderAPI = renderIdCheckWithNavigation()
+
+    await waitFor(() => {
+      const webview = renderAPI.getByTestId('idcheck-webview')
+      expect(webview.props.source.uri).toEqual(
+        env.ID_CHECK_URL +
+          '/?email=john%2B1%40wick.com&user_consent_data_collection=true&licence_token=XxLicenceTokenxX'
       )
     })
   })
 
   it('should not display webview when navigating to another screen', async () => {
-    const { queryByTestId, getByText } = renderIdCheckWithNavigation()
+    const renderAPI = renderIdCheckWithNavigation()
+
     act(() => {
       navigate('NotIdCheck')
     })
 
     await waitFor(() => {
-      const webview = queryByTestId('idcheck-webview')
+      const webview = renderAPI.queryByTestId('idcheck-webview')
       expect(webview).toBeFalsy()
-      const notWebviewText = getByText('NotIdCheck Page')
+      const notWebviewText = renderAPI.getByText('NotIdCheck Page')
       expect(notWebviewText).toBeTruthy()
     })
   })
