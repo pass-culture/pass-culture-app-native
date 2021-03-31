@@ -30,6 +30,7 @@ export const bookingsSnap: BookingsResponse = {
           },
           extraData: null,
           isPermanent: false,
+          isDigital: true,
           venue: {
             id: 2185,
             city: 'Drancy',
@@ -68,6 +69,7 @@ export const bookingsSnap: BookingsResponse = {
           },
           extraData: null,
           isPermanent: false,
+          isDigital: true,
           venue: {
             id: 2185,
             city: 'Drancy',

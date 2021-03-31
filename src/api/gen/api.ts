@@ -197,6 +197,12 @@ export interface BookingOfferResponse {
      * @type {boolean}
      * @memberof BookingOfferResponse
      */
+    isDigital: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BookingOfferResponse
+     */
     isPermanent: boolean;
     /**
      * 
