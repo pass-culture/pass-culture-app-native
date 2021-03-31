@@ -32,7 +32,11 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Title4 testID="DateStep">{_(t`Date`)}</Typo.Title4>
       {bookingState.step === Step.DATE ? (
-        <Calendar stocks={stocks} userRemainingCredit={userRemainingCredit} />
+        <Calendar
+          stocks={stocks}
+          userRemainingCredit={userRemainingCredit}
+          offerId={bookingState.offerId}
+        />
       ) : (
         <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={showCalendar}>
           <Spacer.Column numberOfSpaces={2} />

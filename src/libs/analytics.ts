@@ -13,6 +13,7 @@ const setUserId = (userId: number) => firebaseAnalytics.setUserId(userId.toStrin
 export enum AnalyticsEvent {
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
+  BOOKING_OFFER_CONFIRM_DATES = 'BookOfferConfirmDates',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   CANCEL_SIGNUP = 'CancelSignup',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
@@ -250,9 +251,13 @@ const logHasAppliedFavoritesSorting = ({ sortBy }: { sortBy: FavoriteSortBy }) =
 const logSeeMyBooking = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId })
 
+const logBookingOfferConfirmDates = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_OFFER_CONFIRM_DATES, { offerId })
+
 export const analytics = {
   logAllModulesSeen,
   logAllTilesSeen,
+  logBookingOfferConfirmDates,
   logCancelSignup,
   logClickBookOffer,
   logClickBusinessBlock,
