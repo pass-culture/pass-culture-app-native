@@ -68,7 +68,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
   useEffect(() => {
     if (flatListRef && flatListRef.current)
       flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
-  }, [sortedFavorites?.length])
+  }, [sortedFavorites?.length, favoritesState.sortBy])
 
   const onScrollEndDrag = useCallback(() => handleIsScrolling(false), [])
   const onScrollBeginDrag = useCallback(() => handleIsScrolling(true), [])
