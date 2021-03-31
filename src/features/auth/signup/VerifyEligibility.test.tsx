@@ -11,11 +11,24 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
+let mockDepositAmount = 30000
+jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
+
 const navigationProps = {
   route: { params: { email: 'test@email.com', licenceToken: 'xXLicenceTokenXx' } },
 } as StackScreenProps<RootStackParamList, 'VerifyEligibility'>
 
 describe('<VerifyEligibility />', () => {
+  it('should show the correct deposit amount', async () => {
+    mockDepositAmount = 30000
+    let queryByText = render(<VerifyEligibility {...navigationProps} />).queryByText
+    expect(queryByText(/aide financière de 300 € offerte par le Ministère/)).toBeTruthy()
+
+    mockDepositAmount = 50000
+    queryByText = render(<VerifyEligibility {...navigationProps} />).queryByText
+    expect(queryByText(/aide financière de 500 € offerte par le Ministère/)).toBeTruthy()
+  })
+
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     const { findByText } = render(<VerifyEligibility {...navigationProps} />)
 
