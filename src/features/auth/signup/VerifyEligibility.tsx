@@ -4,8 +4,10 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useDepositAmount } from 'features/auth/api'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -16,6 +18,8 @@ type Props = StackScreenProps<RootStackParamList, 'VerifyEligibility'>
 
 export function VerifyEligibility(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
+  const depositAmount = useDepositAmount()
+  const deposit = formatToFrenchDecimal(depositAmount)
 
   function goToHomeWithoutModal() {
     navigate('Home', { shouldDisplayLoginModal: false })
@@ -33,7 +37,7 @@ export function VerifyEligibility(props: Props) {
       iconSize={getSpacing(65)}>
       <StyledBody>
         {_(
-          t`Pour que tu puisses bénéficier de l’aide financière de 300 € offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité.`
+          t`Pour que tu puisses bénéficier de l’aide financière de ${deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité.`
         )}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
