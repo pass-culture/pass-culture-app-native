@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-raw-text */
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useState } from 'react'
-import { ScrollView, View, Text, Alert, Button } from 'react-native'
+import { ScrollView, View, Text, Alert, Button, Platform } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
@@ -9,6 +9,7 @@ import styled from 'styled-components/native'
 import { CategoryNameEnum } from 'api/gen/api'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
+import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AccordionItem, CallToAction } from 'features/offer/components'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
@@ -695,7 +696,16 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Badge </Text>
         </AlignedText>
         <AlignedText>
-          <QRCode value="passculture" />
+          <ThreeShapesTicket
+            width={200}
+            color={Platform.select({
+              ios: ColorsEnum.WHITE,
+              android: ColorsEnum.PRIMARY,
+            })}>
+            <Center>
+              <QRCode value="passculture" />
+            </Center>
+          </ThreeShapesTicket>
           <Text>- {`contient le mot "passculture"`}</Text>
         </AlignedText>
       </AccordionItem>
