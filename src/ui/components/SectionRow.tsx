@@ -9,6 +9,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type SectionRowProps = {
   title: string
+  renderTitle?: (title: string) => Element
   ctaIconSize?: number
   icon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
@@ -29,6 +30,13 @@ type SectionRowProps = {
 export function SectionRow(props: SectionRowProps) {
   const Icon = props.icon
   const numberOfLines = props.numberOfLines || 2
+
+  const title = props.renderTitle ? (
+    props.renderTitle(props.title)
+  ) : (
+    <Typo.ButtonText numberOfLines={numberOfLines}>{props.title}</Typo.ButtonText>
+  )
+
   return (
     <TouchableOpacity
       activeOpacity={props.onPress ? ACTIVE_OPACITY : 1}
@@ -36,9 +44,7 @@ export function SectionRow(props: SectionRowProps) {
       testID={props.testID ? props.testID : 'section-row-touchable'}>
       <View style={[styles.container, props.style]}>
         {Icon && <Icon />}
-        <TitleContainer>
-          <Typo.ButtonText numberOfLines={numberOfLines}>{props.title}</Typo.ButtonText>
-        </TitleContainer>
+        <TitleContainer>{title}</TitleContainer>
         <CTAContainer>
           {props.type == 'navigable' ? (
             <ArrowNext size={props.ctaIconSize || 24} testID="section-row-navigable-icon" />
