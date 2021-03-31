@@ -1,16 +1,46 @@
+import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Text } from 'react-native'
+import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { _ } from 'libs/i18n'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+
+import { useOngoingBooking } from '../api/queries'
+import { getBookingProperties } from '../helpers'
 
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
+  const booking = useOngoingBooking(params.id)
+  const properties = getBookingProperties(booking)
+
   return (
     <React.Fragment>
       <SvgPageHeader title="Page temporaire" />
-      <Text>Réservation Id : {params.id}</Text>
+      <Container>
+        <Text>Réservation Id : {params.id}</Text>
+        <Spacer.Column numberOfSpaces={4} />
+        {properties.isDigital && (
+          <Typo.Caption color={ColorsEnum.GREY_MEDIUM}>
+            {_(t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu
+            n’as pas le droit de le revendre ou le céder.`)}
+          </Typo.Caption>
+        )}
+        {(properties.isPhysical || properties.isEvent) && (
+          <Typo.Caption color={ColorsEnum.GREY_MEDIUM}>
+            {_(t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour
+            profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le
+            céder.`)}
+          </Typo.Caption>
+        )}
+      </Container>
     </React.Fragment>
   )
 }
+
+const Container = styled.View({
+  padding: getSpacing(6),
+})

@@ -7,7 +7,7 @@ import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useBookings } from '../api'
+import { useBookings } from '../api/queries'
 import { EndedBookingsList } from '../components/EndedBookingList'
 
 export const EndedBookings: React.FC = () => {
