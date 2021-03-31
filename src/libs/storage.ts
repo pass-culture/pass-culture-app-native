@@ -28,7 +28,7 @@ async function readString(storageKey: StorageKey): Promise<string | null> {
   }
 }
 
-async function saveString(storageKey: StorageKey, value: string) {
+async function saveString(storageKey: StorageKey, value: string): Promise<void> {
   if (!value) {
     throw Error(_(t`Aucune valeur à sauvegarder`))
   }
@@ -39,7 +39,7 @@ async function saveString(storageKey: StorageKey, value: string) {
   }
 }
 
-async function readObject(storageKey: StorageKey): Promise<unknown | null> {
+async function readObject<ObjectType>(storageKey: StorageKey): Promise<ObjectType | null> {
   try {
     const stringifiedObject = await AsyncStorage.getItem(storageKey)
     if (stringifiedObject) {
@@ -52,7 +52,7 @@ async function readObject(storageKey: StorageKey): Promise<unknown | null> {
   }
 }
 
-async function saveObject(storageKey: StorageKey, value: unknown) {
+async function saveObject(storageKey: StorageKey, value: unknown): Promise<void> {
   try {
     const stringifiedValue = JSON.stringify(value)
     await AsyncStorage.setItem(storageKey, stringifiedValue)

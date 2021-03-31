@@ -311,7 +311,7 @@ exports[`<IdCheck /> should render correctly 1`] = `
                         onShouldStartLoadWithRequest={[Function]}
                         source={
                           Object {
-                            "uri": "https://id-check-unit-tests/?email=john%2B1%40wick.com&licence_token=XxLicenceTokenxX",
+                            "uri": "https://id-check-unit-tests/?email=john%2B1%40wick.com&user_consent_data_collection=false&licence_token=XxLicenceTokenxX",
                           }
                         }
                         startInLoadingState={true}
