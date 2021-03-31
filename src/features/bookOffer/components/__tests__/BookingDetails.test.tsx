@@ -24,10 +24,12 @@ const mockDispatch = jest.fn()
 
 const mockInitialBookingState = initialBookingState
 
+const mockOfferId = 1337
+
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBooking: jest
     .fn(() => ({
-      bookingState: { quantity: 1 } as BookingState,
+      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
       dismissModal: mockDismissModal,
       dispatch: mockDispatch,
     }))
@@ -91,7 +93,7 @@ describe('<BookingDetails />', () => {
 
     await waitForExpect(() => {
       expect(mockDismissModal).toHaveBeenCalled()
-      expect(navigate).toHaveBeenCalledWith('BookingConfirmation')
+      expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
     })
   })
 

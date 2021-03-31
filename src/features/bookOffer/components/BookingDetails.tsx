@@ -39,12 +39,14 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { bookingState, dismissModal, dispatch } = useBooking()
   const stock = useBookingStock()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { quantity } = bookingState
+  const { quantity, offerId } = bookingState
 
   const { mutate } = useBookOfferMutation({
     onSuccess: () => {
       dismissModal()
-      navigate('BookingConfirmation')
+      if (offerId) {
+        navigate('BookingConfirmation', { offerId })
+      }
     },
     onError: (error) => {
       let message = _(t`En raison d’une erreur technique, l’offre n’a pas pu être réservée`)

@@ -54,6 +54,7 @@ export enum AnalyticsEvent {
   SEARCH_QUERY = 'SearchQuery',
   SEARCH_SCROLL_TO_PAGE = 'SearchScrollToPage',
   SEE_MORE_CLICKED = 'SeeMoreClicked',
+  SEE_MY_BOOKING = 'SeeMyBooking',
   SHARE_OFFER = 'Share',
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
@@ -243,6 +244,12 @@ type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 const logHasAppliedFavoritesSorting = ({ sortBy }: { sortBy: FavoriteSortBy }) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING, { type: sortBy })
 
+/**
+ * Bookings
+ */
+const logSeeMyBooking = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId })
+
 export const analytics = {
   logAllModulesSeen,
   logAllTilesSeen,
@@ -287,6 +294,7 @@ export const analytics = {
   logScreenView,
   logSearchQuery,
   logSearchScrollToPage,
+  logSeeMyBooking,
   logShareOffer,
   logSignUpBetween14And15Included,
   logSignUpLessThanOrEqualTo13,

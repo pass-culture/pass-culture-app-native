@@ -1,6 +1,9 @@
-import { render } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { BookingConfirmation } from '../BookingConfirmation'
@@ -10,8 +13,27 @@ jest.mock('features/home/services/useAvailableCredit', () => ({
 }))
 
 describe('<BookingConfirmation />', () => {
+  const mockOfferId = 1337
+  beforeEach(() => {
+    useRoute.mockImplementation(() => ({
+      params: {
+        offerId: mockOfferId,
+      },
+    }))
+  })
+  afterEach(jest.clearAllMocks)
+
   it('should render correctly', () => {
     const page = render(reactQueryProviderHOC(<BookingConfirmation />))
     expect(page).toMatchSnapshot()
+  })
+
+  it('should go to Bookings and log analytics event', async () => {
+    const renderAPI = render(reactQueryProviderHOC(<BookingConfirmation />))
+    fireEvent.press(renderAPI.getByText('Voir ma réservation'))
+    await waitForExpect(() => {
+      expect(analytics.logSeeMyBooking).toBeCalledWith(mockOfferId)
+      expect(navigate).toBeCalledWith('Bookings')
+    })
   })
 })
