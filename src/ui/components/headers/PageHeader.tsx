@@ -44,19 +44,19 @@ export const PageHeader: React.FC<Props> = (props) => {
       <Spacer.Column numberOfSpaces={2} />
 
       <Row>
-        <IconContainer positionInHeader="left">
+        <ButtonContainer positionInHeader="left">
           <HeaderIconBack onGoBack={props.onGoBack} />
-        </IconContainer>
+        </ButtonContainer>
 
         <Title color={ColorsEnum.WHITE}>{title}</Title>
 
-        <IconContainer positionInHeader="right">
+        <ButtonContainer positionInHeader="right">
           {RightComponent && (
             <View onLayout={onLayout}>
               <RightComponent />
             </View>
           )}
-        </IconContainer>
+        </ButtonContainer>
       </Row>
 
       <Spacer.Column numberOfSpaces={2} />
@@ -82,12 +82,12 @@ const Row = styled.View({
   alignItems: 'center',
 })
 
-const IconContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
+const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   ({ positionInHeader = 'left' }) => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: positionInHeader === 'left' ? 'flex-start' : 'flex-end',
-    width: getSpacing(15),
+    width: getSpacing(30),
     paddingLeft: getSpacing(3),
     paddingRight: getSpacing(3),
   })
