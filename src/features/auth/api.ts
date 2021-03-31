@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { AccountRequest, GetIdCheckTokenResponse, SigninRequest } from 'api/gen'
+import { AccountRequest, GetIdCheckTokenResponse, SettingsResponse, SigninRequest } from 'api/gen'
 import { isApiError } from 'api/helpers'
 import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
 
@@ -77,4 +77,13 @@ export function useGetIdCheckToken(queryCondition?: boolean) {
   return useQuery<GetIdCheckTokenResponse>('idCheckToken', () => api.getnativev1idCheckToken(), {
     enabled: queryCondition && isLoggedIn,
   })
+}
+
+export function useAppSettings() {
+  return useQuery<SettingsResponse>('settings', () => api.getnativev1settings())
+}
+
+export function useDepositAmount() {
+  const { data: settings } = useAppSettings()
+  return settings?.depositAmount ?? 30000
 }
