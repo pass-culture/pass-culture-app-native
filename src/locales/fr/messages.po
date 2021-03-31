@@ -348,7 +348,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetPassword.tsx:44
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:55
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:11
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:11
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -395,7 +395,7 @@ msgstr "Dernier jour pour retirer"
 msgid "Des nouveautés"
 msgstr "Des nouveautés"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:11
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
 
@@ -1338,9 +1338,9 @@ msgstr "crédit photo"
 msgid "crédit valable jusqu'au {0}"
 msgstr "crédit valable jusqu'au {0}"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:11
-msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application."
-msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de 300€ à dépenser dans l’application."
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
+msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
+msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
 
 #: src/features/offer/pages/OfferDescription.tsx:14
 msgid "durée"
@@ -1354,7 +1354,7 @@ msgstr "en détails"
 msgid "en ligne"
 msgstr "en ligne"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:11
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
 msgid "et si tu es..."
 msgstr "et si tu es..."
 
