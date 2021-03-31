@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
 import { OfferStatus } from 'features/bookOffer/services/utils'
+import { analytics } from 'libs/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -43,6 +44,7 @@ const calendarHeaderStyle = {
 interface Props {
   stocks: OfferStockResponse[]
   userRemainingCredit: number | null
+  offerId: number | undefined
 }
 
 export const getMinAvailableDate = (markedDates: MarkedDates): string | undefined => {
@@ -58,7 +60,7 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
   )[0]
 }
 
-export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
+export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
   const minDate = getMinAvailableDate(markedDates) || new Date()
 
@@ -77,6 +79,9 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit }) => {
         // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
         const { price, status, selected } = (marking as unknown) as Marking
 
+        if (selected && offerId) {
+          analytics.logBookingOfferConfirmDates(offerId)
+        }
         return (
           <StyledView>
             <DayComponent status={status} selected={selected} date={date} />
