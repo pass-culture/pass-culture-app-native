@@ -24,17 +24,17 @@ export function BookingDetails() {
         <Text>Réservation Id : {params.id}</Text>
         <Spacer.Column numberOfSpaces={4} />
         {properties.isDigital && (
-          <Typo.Caption color={ColorsEnum.GREY_MEDIUM}>
+          <OfferRules>
             {_(t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu
             n’as pas le droit de le revendre ou le céder.`)}
-          </Typo.Caption>
+          </OfferRules>
         )}
         {(properties.isPhysical || properties.isEvent) && (
-          <Typo.Caption color={ColorsEnum.GREY_MEDIUM}>
+          <OfferRules>
             {_(t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour
             profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le
             céder.`)}
-          </Typo.Caption>
+          </OfferRules>
         )}
       </Container>
     </React.Fragment>
@@ -43,4 +43,9 @@ export function BookingDetails() {
 
 const Container = styled.View({
   padding: getSpacing(6),
+})
+
+const OfferRules = styled(Typo.Caption)({
+  color: ColorsEnum.GREY_MEDIUM,
+  textAlign: 'center',
 })
