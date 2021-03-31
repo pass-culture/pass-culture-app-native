@@ -1,3 +1,4 @@
+import debounce from 'lodash.debounce'
 import flatten from 'lodash.flatten'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
@@ -26,10 +27,19 @@ export const SearchResults: React.FC = () => {
   ])
   const { nbHits } = data?.pages[0] || { nbHits: 0 }
 
-  useEffect(() => {
-    if (flatListRef && flatListRef.current)
-      flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
-  }, [nbHits])
+  useEffect(
+    // Despite the fact that the useEffect hook being called immediately,
+    // scrollToOffset may not always have an effect for unknown reason,
+    // debouncing scrollToOffset solves it.
+    debounce(
+      useCallback(() => {
+        if (flatListRef && flatListRef.current) {
+          flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
+        }
+      }, [flatListRef])
+    ),
+    [nbHits, searchState]
+  )
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
