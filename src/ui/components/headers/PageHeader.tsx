@@ -72,14 +72,13 @@ const HeaderContainer = styled.View({
 })
 
 const Title = styled(Typo.Body).attrs({ numberOfLines: 1, color: ColorsEnum.WHITE })({
-  flex: 1,
   textAlign: 'center',
 })
 
 const Row = styled.View({
-  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
+  justifyContent: 'space-between',
 })
 
 const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
@@ -87,8 +86,8 @@ const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: positionInHeader === 'left' ? 'flex-start' : 'flex-end',
-    width: getSpacing(30),
     paddingLeft: getSpacing(3),
     paddingRight: getSpacing(3),
+    flex: 1,
   })
 )
