@@ -18,15 +18,16 @@ export const EndedBookings: React.FC = () => {
     `${endedBookingsCount}\u00a0` + getEndedBookingsCountLabel(endedBookingsCount > 1)
 
   return (
-    <ScrollView>
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={18} />
-      <EndedBookingsCount>{endedBookingsLabel}</EndedBookingsCount>
-      <EndedBookingsList bookings={bookings?.ended_bookings} />
-      <Spacer.Column numberOfSpaces={4} />
-
+    <React.Fragment>
+      <ScrollView>
+        <Spacer.TopScreen />
+        <Spacer.Column numberOfSpaces={18} />
+        <EndedBookingsCount>{endedBookingsLabel}</EndedBookingsCount>
+        <EndedBookingsList bookings={bookings?.ended_bookings} />
+        <Spacer.Column numberOfSpaces={4} />
+      </ScrollView>
       <PageHeader title={_(t`Mes réservations terminées`)} />
-    </ScrollView>
+    </React.Fragment>
   )
 }
 
