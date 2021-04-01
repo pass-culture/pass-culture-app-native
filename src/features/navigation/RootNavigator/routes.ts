@@ -27,6 +27,7 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
+import { Maintenance } from 'features/maintenance/Maintenance'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
@@ -74,6 +75,7 @@ const routes: Array<Route> = [
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary },
+  { name: 'Maintenance', component: Maintenance },
   { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary },
   { name: 'NotificationSettings', component: NotificationSettings },
   { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary },
