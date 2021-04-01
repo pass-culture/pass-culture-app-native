@@ -36,8 +36,8 @@ export const FavoritesSorts: React.FC = () => {
     hideModal: hideGeolocPermissionModal,
   } = useModal(false)
 
-  async function onFilterSelection(sortBy: FavoriteSortBy) {
-    function updateFilterSelection() {
+  async function onSortBySelection(sortBy: FavoriteSortBy) {
+    function updateSortBySelection() {
       setStagedSelectedSortBy(sortBy)
     }
     if (sortBy === 'AROUND_ME') {
@@ -53,17 +53,17 @@ export const FavoritesSorts: React.FC = () => {
           return void showGeolocPermissionModal()
         }
         return void (await requestGeolocPermission({
-          onAcceptance: updateFilterSelection,
+          onAcceptance: updateSortBySelection,
         }))
       }
-      return void updateFilterSelection()
+      return void updateSortBySelection()
     }
-    return void updateFilterSelection()
+    return void updateSortBySelection()
   }
 
   function onValidation() {
     analytics.logHasAppliedFavoritesSorting({ sortBy: stagedSelectedSortBy })
-    dispatch({ type: 'SET_FILTER', payload: stagedSelectedSortBy })
+    dispatch({ type: 'SET_SORT_BY', payload: stagedSelectedSortBy })
     goBack()
   }
 
@@ -88,7 +88,7 @@ export const FavoritesSorts: React.FC = () => {
           const isSelected = stagedSelectedSortBy === sortBy
           const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
           return (
-            <LabelContainer key={sortBy} onPress={() => onFilterSelection(sortBy)} testID={sortBy}>
+            <LabelContainer key={sortBy} onPress={() => onSortBySelection(sortBy)} testID={sortBy}>
               <Spacer.Column numberOfSpaces={8} />
               <Spacer.Row numberOfSpaces={6} />
               <Typo.ButtonText numberOfLines={2} color={textColor}>

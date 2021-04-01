@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 
 import { Sort } from '../Sort'
 
-describe('Filter component', () => {
+describe('Sort component', () => {
   afterAll(() => jest.resetAllMocks())
   it('should navigate to Sort page on pressing', () => {
     const { getByTestId } = render(<Sort />)

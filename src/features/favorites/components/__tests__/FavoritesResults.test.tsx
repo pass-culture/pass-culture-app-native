@@ -55,9 +55,9 @@ describe('FavoritesResults component', () => {
 
     const { getByText, queryByText } = renderFavoritesResults()
     const button = getByText('Explorer les offres')
-    const filterButton = queryByText('Filter')
+    const sortByButton = queryByText('Trier')
     expect(button).toBeTruthy()
-    expect(filterButton).toBeFalsy()
+    expect(sortByButton).toBeFalsy()
   })
 
   it('should show favorite placeholder on init', () => {
@@ -68,7 +68,7 @@ describe('FavoritesResults component', () => {
     expect(container).toBeTruthy()
   })
 
-  it('should show number of result and filter button', () => {
+  it('should show number of result and sortBy button', () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     const mutate = jest.fn()
     mockUseFavorites.mockReturnValue({
@@ -82,15 +82,15 @@ describe('FavoritesResults component', () => {
     const { getByText } = render(reactQueryProviderHOC(<FavoritesResults />))
     const container = getByText(`${paginatedFavoritesResponseSnap.nbFavorites} favoris`)
     expect(container).toBeTruthy()
-    const filterButton = getByText('Trier')
-    expect(filterButton).toBeTruthy()
+    const sortByButton = getByText('Trier')
+    expect(sortByButton).toBeTruthy()
   })
 
-  it('should not display filter button', () => {
+  it('should not display sortBy button', () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     const { queryByText } = render(reactQueryProviderHOC(<FavoritesResults />))
-    const filterButton = queryByText('Trier')
-    expect(filterButton).toBeFalsy()
+    const sortByButton = queryByText('Trier')
+    expect(sortByButton).toBeFalsy()
   })
 })
 

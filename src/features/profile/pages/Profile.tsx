@@ -65,7 +65,7 @@ export const Profile: React.FC = () => {
 
   function disableGeolocation() {
     storage.saveObject('has_allowed_geolocation', false).then(() => {
-      favoritesDispatch({ type: 'SET_FILTER', payload: 'RECENTLY_ADDED' })
+      favoritesDispatch({ type: 'SET_SORT_BY', payload: 'RECENTLY_ADDED' })
       triggerPositionUpdate()
     })
   }

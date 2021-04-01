@@ -112,7 +112,7 @@ describe('Profile component', () => {
         await waitForExpect(() => {
           expect(mockTriggerPositionUpdate).toHaveBeenCalled()
           expect(mockFavoriteDispatch).toBeCalledWith({
-            type: 'SET_FILTER',
+            type: 'SET_SORT_BY',
             payload: 'RECENTLY_ADDED',
           })
         })
