@@ -37,16 +37,9 @@ export const Favorite: React.FC<Props> = (props) => {
     lat: offer.coordinates?.latitude,
     lng: offer.coordinates?.longitude,
   })
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
-    onSuccess: () => {
-      showSuccessSnackBar({
-        message: _(t`L'offre a été retirée de tes favoris`),
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    },
-
     onError: () => {
       showErrorSnackBar({
         message: _(t`L'offre n'a pas été retirée de tes favoris`),

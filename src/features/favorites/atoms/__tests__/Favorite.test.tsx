@@ -113,10 +113,7 @@ describe('<Favorite /> component', () => {
     fireEvent.press(getByText('Supprimer'))
     await superFlushWithAct()
     await waitForExpect(() => {
-      expect(mockShowSuccessSnackBar).toBeCalledWith({
-        message: `L'offre a été retirée de tes favoris`,
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+      // TODO: add some kind of user feedback on favorite deletion
       expect(mockShowErrorSnackBar).not.toBeCalled()
     })
   })
@@ -133,7 +130,6 @@ describe('<Favorite /> component', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(mockShowSuccessSnackBar).not.toBeCalled()
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `L'offre n'a pas été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
