@@ -4,7 +4,7 @@ import { Animated } from 'react-native'
 export const useDebouncedScrolling = () => {
   const [isScrolling, setIsScrolling] = useState(false)
   let timeoutID: NodeJS.Timeout
-  const handleIsScrolling = useCallback(
+  const handleIsScrollingFactory = useCallback(
     (scrolling: boolean) => () => {
       if (scrolling) {
         if (timeoutID) clearTimeout(timeoutID)
@@ -15,7 +15,7 @@ export const useDebouncedScrolling = () => {
     },
     []
   )
-  return { isScrolling, handleIsScrolling }
+  return { isScrolling, handleIsScrollingFactory }
 }
 
 export const FadeScrollingView: React.FC<{ children: Element; isScrolling: boolean }> = ({

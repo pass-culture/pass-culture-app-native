@@ -18,7 +18,7 @@ const keyExtractor = (item: SearchAlgoliaHit) => item.objectID
 
 export const SearchResults: React.FC = () => {
   const flatListRef = useRef<FlatList<SearchAlgoliaHit> | null>(null)
-  const { isScrolling, handleIsScrolling } = useDebouncedScrolling()
+  const { isScrolling, handleIsScrollingFactory } = useDebouncedScrolling()
   const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useSearchResults()
   const { searchState } = useSearch()
 
@@ -49,8 +49,8 @@ export const SearchResults: React.FC = () => {
     }
   }, [hasNextPage])
 
-  const onScrollEndDrag = useCallback(() => handleIsScrolling(false), [])
-  const onScrollBeginDrag = useCallback(() => handleIsScrolling(true), [])
+  const onScrollEndDrag = useCallback(handleIsScrollingFactory(false), [])
+  const onScrollBeginDrag = useCallback(handleIsScrollingFactory(true), [])
 
   const renderItem = useCallback(
     ({ item: hit }: { item: SearchAlgoliaHit }) => <Hit hit={hit} query={searchState.query} />,
