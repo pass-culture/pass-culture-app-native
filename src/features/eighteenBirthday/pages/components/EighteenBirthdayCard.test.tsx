@@ -51,7 +51,7 @@ describe('<EighteenBirthdayCard />', () => {
   it('should go to id check when user is authed', async () => {
     const { getByText } = await renderEighteenBirthdayCard()
 
-    fireEvent.press(getByText('Verifier mon identité'))
+    fireEvent.press(getByText('Vérifier mon identité'))
     await superFlushWithAct()
 
     await waitForExpect(() => {
@@ -64,7 +64,7 @@ describe('<EighteenBirthdayCard />', () => {
     const { getByText } = await renderEighteenBirthdayCard()
 
     await waitForExpect(() => {
-      expect(() => fireEvent.press(getByText('Verifier mon identité'))).toThrowError(
+      expect(() => fireEvent.press(getByText('Vérifier mon identité'))).toThrowError(
         new MonitoringError(
           'Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !',
           'NotEligibleIdCheckError'
@@ -78,7 +78,7 @@ describe('<EighteenBirthdayCard />', () => {
       isLoggedIn: false,
     })
 
-    fireEvent.press(getByText('Verifier mon identité'))
+    fireEvent.press(getByText('Vérifier mon identité'))
     await superFlushWithAct()
 
     await waitForExpect(() => {

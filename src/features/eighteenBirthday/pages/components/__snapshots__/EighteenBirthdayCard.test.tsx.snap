@@ -190,7 +190,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
           testID="button-title"
           textColor="#ffffff"
         >
-          Verifier mon identité
+          Vérifier mon identité
         </Text>
       </View>
     </View>
