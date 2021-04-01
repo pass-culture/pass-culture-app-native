@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { CategoryType } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import {
@@ -19,6 +18,8 @@ import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
+import { getBookingProperties, BookingProperties } from '../helpers'
+
 import { BookingItemTitle, getTitleWidth } from './BookingItemTitle'
 import { OnGoingTicket, onGoingTicketWidth } from './OnGoingTicket'
 import { Booking, BookingItemProps } from './types'
@@ -26,16 +27,10 @@ import { Booking, BookingItemProps } from './types'
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { stock } = booking
-
-  const beginningDatetime = stock.beginningDatetime ? new Date(stock.beginningDatetime) : null
-  const expirationDatetime = booking.expirationDate ? new Date(booking.expirationDate) : null
+  const bookingProperties = getBookingProperties(booking)
 
   const iconName = stock.offer.category.name || null
-  const { isDuo, dateLabel, withdrawLabel } = getItemViewProperties(
-    booking,
-    beginningDatetime,
-    expirationDatetime
-  )
+  const { dateLabel, withdrawLabel } = getItemViewProperties(booking, bookingProperties)
 
   return (
     <Container
@@ -47,7 +42,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
           <BookingItemTitle ticketWidth={onGoingTicketWidth} title={stock.offer.name} />
           {Boolean(dateLabel) && <DateLabel color={ColorsEnum.GREY_DARK}>{dateLabel}</DateLabel>}
           <Spacer.Column numberOfSpaces={1} />
-          {isDuo && <DuoBold />}
+          {bookingProperties.isDuo && <DuoBold />}
           <Spacer.Flex />
           {Boolean(withdrawLabel) && (
             <WithDrawContainer>
@@ -86,28 +81,18 @@ const DateLabel = styled(Typo.Body)({
   width: getTitleWidth(onGoingTicketWidth),
 })
 
-function isDuoBooking(booking: Booking) {
-  return booking.quantity === 2
-}
+function getItemViewProperties(booking: Booking, properties: BookingProperties) {
+  const { stock } = booking
 
-function getItemViewProperties(
-  booking: Booking,
-  beginningDatetime?: Date | null,
-  expirationDatetime?: Date | null
-) {
-  const { offer } = booking.stock
+  const beginningDatetime = stock.beginningDatetime ? new Date(stock.beginningDatetime) : null
+  const expirationDatetime = booking.expirationDate ? new Date(booking.expirationDate) : null
 
-  const isEvent = Boolean(beginningDatetime)
-  const isPhysical = offer.category.categoryType === CategoryType.Thing
-
-  let isDuo = false
   let dateLabel = ''
   let withdrawLabel = ''
 
-  if (offer.isPermanent) {
+  if (properties.isPermanent) {
     dateLabel = 'permanent'
-  } else if (isEvent) {
-    isDuo = isDuoBooking(booking)
+  } else if (properties.isEvent) {
     dateLabel = beginningDatetime
       ? _(t`le\u00a0`) + formatToCompleteFrenchDateTime(beginningDatetime, false)
       : ''
@@ -119,9 +104,9 @@ function getItemViewProperties(
     } else if (isBeginningTomorrow) {
       withdrawLabel = _(t`Demain`)
     }
-  } else if (isPhysical) {
+  } else if (properties.isPhysical) {
     dateLabel = expirationDatetime
-      ? _(t`À retirer avant le\u00a0`) + formatToCompleteFrenchDate(expirationDatetime, false)
+      ? _(t`À retirer avant le\u00a0`) + formatToCompleteFrenchDate(expirationDatetime)
       : ''
 
     const isExpiringToday = expirationDatetime ? isToday(expirationDatetime) : false
@@ -133,5 +118,5 @@ function getItemViewProperties(
     }
   }
 
-  return { isDuo, dateLabel, withdrawLabel }
+  return { dateLabel, withdrawLabel }
 }
