@@ -10,6 +10,10 @@ import { Booking } from '../components/types'
 
 import { BookingDetails } from './BookingDetails'
 
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({ data: undefined })),
+}))
+
 describe('BookingDetails', () => {
   afterEach(jest.restoreAllMocks)
 

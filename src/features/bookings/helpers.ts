@@ -48,8 +48,7 @@ export function getBookingLabels(booking: Booking, properties: BookingProperties
   const beginningDatetime = stock.beginningDatetime ? new Date(stock.beginningDatetime) : null
   const expirationDatetime = booking.expirationDate ? new Date(booking.expirationDate) : null
   const shouldNotDisplayLocation =
-    properties.isPermanent ||
-    (properties.isDigital && stock.offer.category.categoryType === CategoryType.Event)
+    properties.isPermanent || (properties.isDigital && properties.isEvent)
 
   const locationLabel = shouldNotDisplayLocation
     ? ''

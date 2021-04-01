@@ -5,6 +5,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useOngoingBooking } from 'features/bookings/api/queries'
+import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
@@ -14,6 +15,9 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const booking = useOngoingBooking(params.id)
+
+  if (!booking) return <React.Fragment></React.Fragment>
+
   const properties = getBookingProperties(booking)
 
   return (
@@ -36,12 +40,14 @@ export function BookingDetails() {
           </OfferRules>
         )}
       </Container>
+      <Spacer.Column numberOfSpaces={8} />
+      <BookingPropertiesSection booking={booking} />
     </React.Fragment>
   )
 }
 
 const Container = styled.View({
-  padding: getSpacing(6),
+  paddingHorizontal: getSpacing(6),
 })
 
 const OfferRules = styled(Typo.Caption)({
