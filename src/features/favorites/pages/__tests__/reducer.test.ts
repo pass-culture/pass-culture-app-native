@@ -11,7 +11,7 @@ describe('Favorites reducer', () => {
 
   const state = initialFavoritesState
   it('should handle SET_RESULTS and INIT', () => {
-    let newState = favoritesReducer(state, { type: 'SET_FILTER', payload: 'ASCENDING_PRICE' })
+    let newState = favoritesReducer(state, { type: 'SET_SORT_BY', payload: 'ASCENDING_PRICE' })
     expect(newState).toStrictEqual({ ...state, sortBy: 'ASCENDING_PRICE' })
     newState = favoritesReducer(newState, { type: 'INIT' })
     expect(newState).toStrictEqual(initialFavoritesState)

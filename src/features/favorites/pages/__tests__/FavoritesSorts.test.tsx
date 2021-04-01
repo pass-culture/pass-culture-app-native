@@ -41,21 +41,21 @@ describe('FavoritesSorts component', () => {
   })
 
   it.each`
-    filterWording         | expectedAnalytics
+    sortByWording         | expectedAnalytics
     ${'Ajouté récemment'} | ${'RECENTLY_ADDED'}
     ${'Prix croissant'}   | ${'ASCENDING_PRICE'}
   `(
-    'should trigger analytics=$expectedAnalytics when clicking on "$filterWording" then validating',
+    'should trigger analytics=$expectedAnalytics when clicking on "$sortByWording" then validating',
     async ({
-      filterWording,
+      sortByWording,
       expectedAnalytics,
     }: {
-      filterWording: string
+      sortByWording: string
       expectedAnalytics: FavoriteSortBy
     }) => {
       const renderAPI = await renderFavoritesSort()
 
-      fireEvent.press(renderAPI.getByText(filterWording))
+      fireEvent.press(renderAPI.getByText(sortByWording))
       fireEvent.press(renderAPI.getByText('Valider'))
 
       await waitForExpect(() => {

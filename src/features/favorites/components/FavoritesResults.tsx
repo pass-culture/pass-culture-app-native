@@ -27,7 +27,7 @@ import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
 
-function applyFilter(
+function applySortBy(
   list: Array<FavoriteResponse>,
   sortBy: FavoriteSortBy,
   position: GeoCoordinates | null
@@ -59,7 +59,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
     }
     return !favoritesState.sortBy
       ? data.favorites
-      : applyFilter(data.favorites, favoritesState.sortBy, position)
+      : applySortBy(data.favorites, favoritesState.sortBy, position)
   }, [data, favoritesState, position])
 
   const { data: user } = useUserProfileInfo()
