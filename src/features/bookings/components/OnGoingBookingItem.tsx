@@ -48,7 +48,9 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
             <WithDrawContainer>
               <Clock size={20} color={ColorsEnum.PRIMARY} />
               <Spacer.Row numberOfSpaces={1} />
-              <Typo.Caption color={ColorsEnum.PRIMARY}>{withdrawLabel}</Typo.Caption>
+              <WithdrawCaption color={ColorsEnum.PRIMARY} numberOfLines={2}>
+                {withdrawLabel}
+              </WithdrawCaption>
             </WithDrawContainer>
           )}
         </AttributesView>
@@ -75,10 +77,15 @@ const AttributesView = styled.View({
 const WithDrawContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+  width: getTitleWidth(onGoingTicketWidth),
 })
 
 const DateLabel = styled(Typo.Body)({
   width: getTitleWidth(onGoingTicketWidth),
+})
+
+const WithdrawCaption = styled(Typo.Caption)({
+  marginRight: getSpacing(4),
 })
 
 function getItemViewProperties(booking: Booking, properties: BookingProperties) {

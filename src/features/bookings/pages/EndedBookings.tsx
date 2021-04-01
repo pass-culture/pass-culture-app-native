@@ -23,6 +23,7 @@ export const EndedBookings: React.FC = () => {
       <Spacer.Column numberOfSpaces={18} />
       <EndedBookingsCount>{endedBookingsLabel}</EndedBookingsCount>
       <EndedBookingsList bookings={bookings?.ended_bookings} />
+      <Spacer.Column numberOfSpaces={4} />
 
       <PageHeader title={_(t`Mes réservations terminées`)} />
     </ScrollView>
