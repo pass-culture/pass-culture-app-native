@@ -12,7 +12,7 @@ import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-import { BookingItemTitle } from './BookingItemTitle'
+import { BookingItemTitle, getTitleWidth } from './BookingItemTitle'
 import { EndedBookingTicket, endedBookingTicketWidth } from './EndedBookingTicket'
 import { BookingItemProps } from './types'
 
@@ -58,7 +58,9 @@ const ItemContainer = styled.View({
 
 const EndedReasonAndDate = styled.View({
   flexDirection: 'row',
+  flexWrap: 'wrap',
   alignItems: 'center',
+  width: getTitleWidth(endedBookingTicketWidth),
 })
 
 const DateLabel = styled(Typo.Caption)({
