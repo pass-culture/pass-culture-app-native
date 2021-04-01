@@ -85,6 +85,7 @@ import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
+import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
@@ -494,6 +495,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <MaintenanceCone width={ICON_SIZE * 2} height={ICON_SIZE} color={ColorsEnum.BLACK} />
           <Text> - MaintenanceCone </Text>
+        </AlignedText>
+        <AlignedText>
+          <LogoPassCulture width={ICON_SIZE * 2} height={ICON_SIZE} color={ColorsEnum.BLACK} />
+          <Text> - LogoPassCulture </Text>
         </AlignedText>
       </AccordionItem>
 
