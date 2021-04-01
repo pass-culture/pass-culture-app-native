@@ -39,7 +39,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
     <GenericAchievementCard
       animation={TutorialPassLogo}
       buttonCallback={onButtonPress}
-      buttonText={_(t`Verifier mon identité`)}
+      buttonText={_(t`Vérifier mon identité`)}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={_(t`Tu as 18 ans...`)}
       text={_(
