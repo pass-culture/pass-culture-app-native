@@ -140,5 +140,10 @@ describe('ChangePassword', () => {
     await waitForExpect(() => {
       expect(queryByText('Mot de passe incorrect')).toBeTruthy()
     })
+
+    await fireEvent.changeText(currentPasswordInput, 'user')
+    await waitForExpect(() => {
+      expect(queryByText('Mot de passe incorrect')).toBeFalsy()
+    })
   })
 })
