@@ -577,10 +577,8 @@ Tous les détails du film sur AlloCiné:
                           Array [
                             Object {
                               "alignItems": "center",
-                              "flexBasis": 0,
                               "flexDirection": "row",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
+                              "justifyContent": "space-between",
                             },
                           ]
                         }
@@ -591,11 +589,13 @@ Tous les détails du film sur AlloCiné:
                             Array [
                               Object {
                                 "alignItems": "center",
+                                "flexBasis": 0,
                                 "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
                                 "justifyContent": "flex-start",
                                 "paddingLeft": 12,
                                 "paddingRight": 12,
-                                "width": 120,
                               },
                             ]
                           }
@@ -634,9 +634,6 @@ Tous les détails du film sur AlloCiné:
                             Array [
                               Object {
                                 "color": "#ffffff",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
                                 "fontFamily": "Montserrat-Regular",
                                 "fontSize": 15,
                                 "lineHeight": 20,
@@ -653,11 +650,13 @@ Tous les détails du film sur AlloCiné:
                             Array [
                               Object {
                                 "alignItems": "center",
+                                "flexBasis": 0,
                                 "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
                                 "justifyContent": "flex-end",
                                 "paddingLeft": 12,
                                 "paddingRight": 12,
-                                "width": 120,
                               },
                             ]
                           }
