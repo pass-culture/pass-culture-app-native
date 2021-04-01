@@ -233,6 +233,12 @@ export function Navigation(): JSX.Element {
             }}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={`Maintenance Page`}
+            onPress={() => navigation.navigate('Maintenance')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

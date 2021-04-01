@@ -40,6 +40,7 @@ export type RootStackParamList = {
     | ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>)
     | ({ preventCancellation?: boolean } & BackNavigationParams<'Offer'>)
     | undefined
+  Maintenance: undefined
   Navigation: undefined
   NotificationSettings: undefined
   Offer: {
