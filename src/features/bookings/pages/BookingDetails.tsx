@@ -4,13 +4,12 @@ import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useOngoingBooking } from 'features/bookings/api/queries'
+import { getBookingProperties } from 'features/bookings/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
-import { useOngoingBooking } from '../api/queries'
-import { getBookingProperties } from '../helpers'
 
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()

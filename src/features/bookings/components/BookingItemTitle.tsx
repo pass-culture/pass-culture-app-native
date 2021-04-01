@@ -30,5 +30,5 @@ export const Title = styled(Typo.ButtonText)({
 })
 
 export function getTitleWidth(excludedRowWidth: number) {
-  return Dimensions.get('screen').width - excludedRowWidth - getSpacing(10)
+  return Dimensions.get('screen').width - excludedRowWidth - getSpacing(12)
 }
