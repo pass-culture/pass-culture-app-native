@@ -41,7 +41,7 @@ export function ChangePassword() {
   // on type, reset error field
   useEffect(() => {
     if (hasError) {
-      // setHasError(false)
+      setHasError(false)
     }
   }, [currentPassword, newPassword, confirmedPassword])
 
