@@ -10,6 +10,9 @@ import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
 
+let mockDepositAmount = 30000
+jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
+
 describe('SetBirthday Page', () => {
   beforeEach(() => {
     mockdate.set(new Date('2020-12-01T00:00:00Z'))
@@ -37,6 +40,18 @@ describe('SetBirthday Page', () => {
 
     const button = renderAPI.getByTestId('button-container-validate-birthday')
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+  })
+
+  it('should show the correct deposit amount', async () => {
+    mockDepositAmount = 30000
+    let component = renderSetBirthday()
+    fireEvent.press(component.getByTestId('button-title-why-link'))
+    expect(component.queryByText(/une aide financière de 300 €/)).toBeTruthy()
+
+    mockDepositAmount = 50000
+    component = renderSetBirthday()
+    fireEvent.press(component.getByTestId('button-title-why-link'))
+    expect(component.queryByText(/une aide financière de 500 €/)).toBeTruthy()
   })
 
   it('should display the error message "date incorrecte" when the date is too old', () => {
