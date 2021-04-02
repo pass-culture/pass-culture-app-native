@@ -9,6 +9,7 @@ import { OfferStockResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -98,17 +99,19 @@ describe('<BookingDetails />', () => {
   })
 
   it.each`
-    code                               | message
-    ${{}}                              | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
-    ${{ code: 'INSUFFICIENT_CREDIT' }} | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !'}
-    ${{ code: 'ALREADY_BOOKED' }}      | ${'Attention, il est impossible de réserver plusieurs fois la même offre !'}
-    ${{ code: 'STOCK_NOT_BOOKABLE' }}  | ${'Oups, cette offre n’est plus disponible !'}
+    code                     | message
+    ${undefined}             | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
+    ${'INSUFFICIENT_CREDIT'} | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !'}
+    ${'ALREADY_BOOKED'}      | ${'Attention, il est impossible de réserver plusieurs fois la même offre !'}
+    ${'STOCK_NOT_BOOKABLE'}  | ${'Oups, cette offre n’est plus disponible !'}
   `(
     'should show the error snackbar with message="$message" for errorCode="$code" if booking an offer fails',
-    async ({ code, message }: { code: Record<string, string>; message: string }) => {
+    async ({ code, message }: { code: string | undefined; message: string }) => {
+      const response = code ? { code } : {}
+
       server.use(
         rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
-          res(ctx.status(400), ctx.json(code))
+          res(ctx.status(400), ctx.json(response))
         )
       )
 
@@ -125,6 +128,12 @@ describe('<BookingDetails />', () => {
       await waitForExpect(() => {
         expect(mockShowErrorSnackBar).toHaveBeenCalledTimes(1)
         expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ timeout: 5000, message })
+        if (code) {
+          expect(analytics.logBookingError).toHaveBeenCalledTimes(1)
+          expect(analytics.logBookingError).toHaveBeenCalledWith(mockOfferId, code)
+        } else {
+          expect(analytics.logBookingError).not.toHaveBeenCalled()
+        }
       })
     }
   )

@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { OfferStockResponse } from 'api/gen'
 import { isApiError } from 'api/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
@@ -55,6 +56,9 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
         const { content } = error as { content: { code: string } }
         if (content && content.code && content.code in errorCodeToMessage) {
           message = errorCodeToMessage[content.code]
+          if (typeof offerId === 'number') {
+            analytics.logBookingError(offerId, content.code)
+          }
         }
       }
 

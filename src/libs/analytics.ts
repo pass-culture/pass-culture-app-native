@@ -13,8 +13,9 @@ const setUserId = (userId: number) => firebaseAnalytics.setUserId(userId.toStrin
 export enum AnalyticsEvent {
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
-  BOOKING_OFFER_CONFIRM_DATES = 'BookOfferConfirmDates',
+  BOOKING_ERROR = 'BookingError',
   BOOKING_IMPOSSIBLE_IOS = 'BookingImpossibleiOS',
+  BOOKING_OFFER_CONFIRM_DATES = 'BookOfferConfirmDates',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   CANCEL_SIGNUP = 'CancelSignup',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
@@ -184,6 +185,7 @@ const logReinitializeFilters = () => firebaseAnalytics.logEvent(AnalyticsEvent.R
 
 const logUseFilter = (filter: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.USE_FILTER, { filter })
+
 const logSearchQuery = (query: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.SEARCH_QUERY, { query })
 
@@ -258,11 +260,15 @@ const logBookingOfferConfirmDates = (offerId: number) =>
 const logBookingImpossibleiOS = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_IMPOSSIBLE_IOS, { offerId })
 
+const logBookingError = (offerId: number, code: string) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_ERROR, { offerId, code })
+
 export const analytics = {
   logAllModulesSeen,
   logAllTilesSeen,
-  logBookingOfferConfirmDates,
+  logBookingError,
   logBookingImpossibleiOS,
+  logBookingOfferConfirmDates,
   logCancelSignup,
   logClickBookOffer,
   logClickBusinessBlock,
