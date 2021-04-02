@@ -46,6 +46,7 @@ const offer: FavoriteOfferResponse = {
   startPrice: 270,
   isSoldOut: false,
   isExpired: false,
+  isReleased: true,
 }
 const user: UserProfileResponse = {
   isBeneficiary: true,
@@ -69,8 +70,10 @@ describe('<BookingButtun />', () => {
       ${getUser()}                                             | ${credit} | ${getOffer()}                                                                    | ${ExpectedCTA.InAppBooking}
       ${getUser({ remainingCredit: 0 })}                       | ${credit} | ${getOffer({ price: 0, startPrice: null })}                                      | ${ExpectedCTA.InAppBooking}
       ${getUser({ remainingCredit: 10, isBookedOffer: true })} | ${credit} | ${getOffer({ isExpired: true, isSoldOut: true, price: 50 })}                     | ${ExpectedCTA.BookedOffer}
+      ${getUser({ remainingCredit: 10, isBookedOffer: true })} | ${credit} | ${getOffer({ isReleased: false })}                                               | ${ExpectedCTA.BookedOffer}
       ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: true, isSoldOut: true, price: 50 })}                     | ${ExpectedCTA.ExpiredOffer}
       ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: true, isSoldOut: false, price: 50 })}                    | ${ExpectedCTA.ExpiredOffer}
+      ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isReleased: false })}                                               | ${ExpectedCTA.ExpiredOffer}
       ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: false, isSoldOut: true, price: 50 })}                    | ${ExpectedCTA.ExhaustedOffer}
       ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: false, isSoldOut: false, price: 50, startPrice: null })} | ${ExpectedCTA.NotEnoughCredit}
       ${getUser({ remainingCredit: 10 })}                      | ${credit} | ${getOffer({ isExpired: false, isSoldOut: false, price: null, startPrice: 50 })} | ${ExpectedCTA.NotEnoughCredit}
@@ -82,6 +85,7 @@ describe('<BookingButtun />', () => {
         - offer startPrice = $offer.startPrice
         - offer isExpired = $offer.isExpired
         - offer isSoldOut = $offer.isSoldOut
+        - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
       favoriteBookingButtonTestRunner
     )
@@ -96,9 +100,11 @@ describe('<BookingButtun />', () => {
       ${getUser()}                        | ${expiredCredit} | ${getOffer({ price: 100 })}                                                       | ${ExpectedCTA.ExternalBooking}
       ${getUser()}                        | ${expiredCredit} | ${getOffer({ externalTicketOfficeUrl: null })}                                    | ${ExpectedCTA.NoButton}
       ${getUser({ isBookedOffer: true })} | ${expiredCredit} | ${getOffer({ isExpired: true, isSoldOut: true })}                                 | ${ExpectedCTA.BookedOffer}
+      ${getUser({ isBookedOffer: true })} | ${expiredCredit} | ${getOffer({ isReleased: false })}                                                | ${ExpectedCTA.BookedOffer}
       ${getUser()}                        | ${expiredCredit} | ${getOffer({ isExpired: true, isSoldOut: true })}                                 | ${ExpectedCTA.NoButton}
       ${getUser()}                        | ${expiredCredit} | ${getOffer({ isExpired: true, isSoldOut: false })}                                | ${ExpectedCTA.NoButton}
       ${getUser()}                        | ${expiredCredit} | ${getOffer({ isExpired: false, isSoldOut: true })}                                | ${ExpectedCTA.NoButton}
+      ${getUser()}                        | ${expiredCredit} | ${getOffer({ isReleased: false })}                                                | ${ExpectedCTA.NoButton}
       ${getUser({ remainingCredit: 10 })} | ${expiredCredit} | ${getOffer({ isExpired: false, isSoldOut: false, price: 500, startPrice: null })} | ${ExpectedCTA.ExternalBooking}
       ${getUser({ remainingCredit: 10 })} | ${expiredCredit} | ${getOffer({ isExpired: false, isSoldOut: false, price: null, startPrice: 500 })} | ${ExpectedCTA.ExternalBooking}
     `(
@@ -110,6 +116,7 @@ describe('<BookingButtun />', () => {
         - booked offers = $user.bookedOffers
         - offer isExpired = $offer.isExpired
         - offer isSoldOut = $offer.isSoldOut
+        - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
       favoriteBookingButtonTestRunner
     )
@@ -124,6 +131,7 @@ describe('<BookingButtun />', () => {
       ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ externalTicketOfficeUrl: null })}     | ${ExpectedCTA.NoButton}
       ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ isExpired: true, isSoldOut: true })}  | ${ExpectedCTA.NoButton}
       ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ isExpired: true, isSoldOut: false })} | ${ExpectedCTA.NoButton}
+      ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ isReleased: false })}                 | ${ExpectedCTA.NoButton}
       ${getUser({ isBeneficiary: false })}                      | ${credit} | ${getOffer({ isExpired: false, isSoldOut: true })} | ${ExpectedCTA.NoButton}
     `(
       `should has CTA = $expectedCTA when 
@@ -133,6 +141,7 @@ describe('<BookingButtun />', () => {
         - offer startPrice = $offer.startPrice
         - offer isExpired = $offer.isExpired
         - offer isSoldOut = $offer.isSoldOut
+        - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
       favoriteBookingButtonTestRunner
     )
@@ -182,6 +191,7 @@ function getOffer(params?: {
   externalTicketOfficeUrl?: string | null
   isExpired?: boolean
   isSoldOut?: boolean
+  isReleased?: boolean
   price?: number | null
   startPrice?: number | null
 }) {
@@ -189,12 +199,14 @@ function getOffer(params?: {
     externalTicketOfficeUrl = offer.externalTicketOfficeUrl,
     isExpired = false,
     isSoldOut = false,
+    isReleased = true,
     price = null,
     startPrice = 270,
   } = params || {
     externalTicketOfficeUrl: offer.externalTicketOfficeUrl,
     isExpired: false,
     isSoldOut: false,
+    isReleased: true,
     price: null,
     startPrice: 270,
   }
@@ -203,6 +215,7 @@ function getOffer(params?: {
     externalTicketOfficeUrl,
     isExpired,
     isSoldOut,
+    isReleased,
     price,
     startPrice,
   }

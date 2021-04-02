@@ -266,6 +266,12 @@ export interface BookingReponse {
     id: number;
     /**
      * 
+     * @type {string}
+     * @memberof BookingReponse
+     */
+    qrCodeData?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof BookingReponse
      */
@@ -610,6 +616,12 @@ export interface FavoriteOfferResponse {
      * @memberof FavoriteOfferResponse
      */
     isExpired?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FavoriteOfferResponse
+     */
+    isReleased: boolean;
     /**
      * 
      * @type {boolean}
