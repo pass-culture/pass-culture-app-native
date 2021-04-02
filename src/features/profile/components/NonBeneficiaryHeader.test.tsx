@@ -17,6 +17,7 @@ jest.mock('features/auth/api', () => ({
         data: { token: 'thisIsATokenForIdCheck' },
       } as UseQueryResult<GetIdCheckTokenResponse>)
   ),
+  useDepositAmount: () => 30000,
 }))
 
 describe('NonBeneficiaryHeader', () => {
