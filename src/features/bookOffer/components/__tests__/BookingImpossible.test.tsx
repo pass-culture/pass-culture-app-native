@@ -39,6 +39,10 @@ server.use(
 )
 
 describe('<BookingImpossible />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should render', () => {
     const { toJSON } = render(reactQueryProviderHOC(<BookingImpossible />))
     expect(toJSON()).toMatchSnapshot()
@@ -69,5 +73,10 @@ describe('<BookingImpossible />', () => {
         offerId: 20,
       })
     })
+  })
+
+  it("should log 'BookingImpossibleiOS' on mount", () => {
+    render(reactQueryProviderHOC(<BookingImpossible />))
+    expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
   })
 })
