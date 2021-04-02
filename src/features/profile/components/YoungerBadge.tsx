@@ -2,11 +2,16 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useDepositAmount } from 'features/auth/api'
 import { _ } from 'libs/i18n'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { Clock } from 'ui/svg/icons/Clock'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 export function YoungerBadge() {
+  const depositAmount = useDepositAmount()
+  const deposit = formatToFrenchDecimal(depositAmount).replace(' ', '')
+
   return (
     <Container testID="younger-badge">
       <IconContainer>
@@ -15,7 +20,7 @@ export function YoungerBadge() {
       <TextContainer>
         <Typo.Caption>
           {_(
-            t`Patience ! L’année de tes 18 ans tu bénéficieras de 300€ offerts à dépenser sur l’application.`
+            t`Patience ! L’année de tes 18 ans tu bénéficieras de ${deposit} offerts à dépenser sur l’application.`
           )}
         </Typo.Caption>
       </TextContainer>
