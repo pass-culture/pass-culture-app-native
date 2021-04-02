@@ -114,7 +114,12 @@ export const Profile: React.FC = () => {
   }
 
   return (
-    <ScrollView bounces={false} ref={scrollViewRef} onScroll={onScroll} testID="profile-scrollview">
+    <ScrollView
+      bounces={false}
+      ref={scrollViewRef}
+      onScroll={onScroll}
+      scrollEventThrottle={400}
+      testID="profile-scrollview">
       <ProfileHeader user={user} />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
