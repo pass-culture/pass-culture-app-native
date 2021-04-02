@@ -49,7 +49,7 @@ function applySortBy(
 export const FavoritesResults: React.FC = React.memo(function FavoritesResults() {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
-  const { isScrolling, handleIsScrolling } = useDebouncedScrolling()
+  const { isScrolling, handleIsScrollingFactory } = useDebouncedScrolling()
   const favoritesState = useFavoritesState()
   const { position } = useGeolocation()
   const { data, isLoading } = useFavorites()
@@ -70,8 +70,8 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
       flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
   }, [favoritesState.sortBy])
 
-  const onScrollEndDrag = useCallback(() => handleIsScrolling(false), [])
-  const onScrollBeginDrag = useCallback(() => handleIsScrolling(true), [])
+  const onScrollEndDrag = useCallback(handleIsScrollingFactory(false), [])
+  const onScrollBeginDrag = useCallback(handleIsScrollingFactory(true), [])
 
   const renderItem = useCallback(
     ({ item: favorite }: { item: FavoriteResponse }) => {
