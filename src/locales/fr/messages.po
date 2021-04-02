@@ -151,7 +151,7 @@ msgstr "Aucun résultat"
 msgid "Aucune valeur à sauvegarder"
 msgstr "Aucune valeur à sauvegarder"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:81
+#: src/features/bookings/helpers.ts:44
 #: src/features/search/sections/OfferDate.tsx:34
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
@@ -180,7 +180,7 @@ msgstr "Autour de moi"
 msgid "Autres"
 msgstr "Autres"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:97
+#: src/features/bookings/helpers.ts:60
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
@@ -207,7 +207,7 @@ msgstr "CGU & Données"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/pages/BookingDetails.tsx:21
+#: src/features/bookings/pages/BookingDetails.tsx:24
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -360,7 +360,7 @@ msgstr "Continuer"
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/favorites/atoms/BookingButton.tsx:44
+#: src/features/favorites/atoms/BookingButton.tsx:47
 #: src/features/offer/services/useCtaWordingAndAction.ts:35
 #: src/features/offer/services/useCtaWordingAndAction.ts:46
 msgid "Crédit insuffisant"
@@ -387,11 +387,11 @@ msgstr "Date de l'offre"
 msgid "Date précise"
 msgstr "Date précise"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:84
+#: src/features/bookings/helpers.ts:47
 msgid "Demain"
 msgstr "Demain"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:94
+#: src/features/bookings/helpers.ts:57
 msgid "Dernier jour pour retirer"
 msgstr "Dernier jour pour retirer"
 
@@ -629,6 +629,10 @@ msgstr "Le réglage est sauvegardé"
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
+#: src/features/bookings/helpers.ts:39
+msgid "Le\\u00a0"
+msgstr "Le\\u00a0"
+
 #: src/features/bookOffer/components/BookingDetails.tsx:17
 msgid "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 msgstr "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
@@ -653,6 +657,10 @@ msgstr "L’application est actuellement en maintenance, mais sera à nouveau en
 #: src/features/auth/signup/SetBirthday.tsx:156
 msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+
+#: src/features/bookings/components/BookingPropertiesSection.tsx:19
+msgid "Ma réservation"
+msgstr "Ma réservation"
 
 #: src/features/maintenance/Maintenance.tsx:18
 msgid "Maintenance en cours"
@@ -748,7 +756,7 @@ msgstr "Nouveau mot de passe"
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
 
-#: src/features/favorites/atoms/BookingButton.tsx:38
+#: src/features/favorites/atoms/BookingButton.tsx:41
 #: src/features/offer/services/useCtaWordingAndAction.ts:26
 #: src/features/offer/services/useCtaWordingAndAction.ts:28
 msgid "Offre expirée"
@@ -762,12 +770,12 @@ msgstr "Offre numérique"
 msgid "Offre physique"
 msgstr "Offre physique"
 
-#: src/features/favorites/atoms/BookingButton.tsx:23
-#: src/features/favorites/atoms/BookingButton.tsx:35
+#: src/features/favorites/atoms/BookingButton.tsx:26
+#: src/features/favorites/atoms/BookingButton.tsx:38
 msgid "Offre réservée"
 msgstr "Offre réservée"
 
-#: src/features/favorites/atoms/BookingButton.tsx:41
+#: src/features/favorites/atoms/BookingButton.tsx:44
 #: src/features/offer/services/useCtaWordingAndAction.ts:30
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
@@ -842,6 +850,10 @@ msgstr "Passer"
 #: src/features/profile/components/YoungerBadge.tsx:18
 msgid "Patience ! L’année de tes 18 ans tu bénéficieras de {deposit} offerts à dépenser sur l’application."
 msgstr "Patience ! L’année de tes 18 ans tu bénéficieras de {deposit} offerts à dépenser sur l’application."
+
+#: src/features/bookings/helpers.ts:35
+msgid "Permanent"
+msgstr "Permanent"
 
 #: src/features/auth/signup/VerifyEligibility.tsx:24
 msgid "Plus que quelques étapes !"
@@ -997,8 +1009,8 @@ msgstr "Réservation terminée"
 msgid "Réservations terminées"
 msgstr "Réservations terminées"
 
-#: src/features/favorites/atoms/BookingButton.tsx:48
-#: src/features/favorites/atoms/BookingButton.tsx:49
+#: src/features/favorites/atoms/BookingButton.tsx:51
+#: src/features/favorites/atoms/BookingButton.tsx:52
 #: src/features/offer/services/useCtaWordingAndAction.ts:38
 msgid "Réserver"
 msgstr "Réserver"
@@ -1161,7 +1173,7 @@ msgstr "Tu as déjà un compte ?\\u00a0"
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
-#: src/features/bookings/pages/BookingDetails.tsx:25
+#: src/features/bookings/pages/BookingDetails.tsx:28
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -1384,7 +1396,6 @@ msgid "intervenant"
 msgstr "intervenant"
 
 #: src/features/bookings/components/EndedBookingItem.tsx:59
-#: src/features/bookings/components/OnGoingBookingItem.tsx:76
 msgid "le\\u00a0"
 msgstr "le\\u00a0"
 
@@ -1461,7 +1472,7 @@ msgstr "{price} seront déduits de ton crédit pass Culture"
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/bookings/components/OnGoingBookingItem.tsx:89
+#: src/features/bookings/helpers.ts:52
 msgid "À retirer avant le\\u00a0"
 msgstr "À retirer avant le\\u00a0"
 
