@@ -69,7 +69,7 @@ describe('<BookingImpossible />', () => {
     await waitForExpect(() => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-        from: 'offer',
+        from: 'BookingImpossible',
         offerId: 20,
       })
     })
