@@ -28,7 +28,7 @@ export const BookingImpossible: React.FC = () => {
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {
       if (typeof offerId === 'number') {
-        analytics.logHasAddedOfferToFavorites({ from: 'offer', offerId })
+        analytics.logHasAddedOfferToFavorites({ from: 'BookingImpossible', offerId })
       }
     },
     onError: () => {

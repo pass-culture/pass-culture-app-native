@@ -146,7 +146,7 @@ const logOfferSeenDuration = (offerId: number, duration: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
 
 const logHasAddedOfferToFavorites = (params: {
-  from: Referrals
+  from: Referrals | 'BookingImpossible'
   offerId: number
   moduleName?: string
 }) => firebaseAnalytics.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params)
