@@ -31,6 +31,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         startPrice: null,
         date: new Date('2021-03-28T15:45:00'),
         startDate: null,
+        isReleased: true,
       },
     },
     {
@@ -58,6 +59,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         startPrice: 2400,
         date: null,
         startDate: new Date('2021-03-02T20:00:00'),
+        isReleased: true,
       },
     },
     {
@@ -85,6 +87,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         startPrice: 2700,
         date: null,
         startDate: new Date('2021-03-04T20:00:00'),
+        isReleased: true,
       },
     },
     {
@@ -112,6 +115,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         startPrice: 2700,
         date: null,
         startDate: new Date('2021-03-04T20:00:00'),
+        isReleased: true,
       },
     },
   ],
@@ -138,5 +142,6 @@ export const addFavoriteJsonResponseSnap: FavoriteResponse = {
     startPrice: null,
     date: new Date('2021-04-01T12:00:00'),
     startDate: null,
+    isReleased: true,
   },
 }

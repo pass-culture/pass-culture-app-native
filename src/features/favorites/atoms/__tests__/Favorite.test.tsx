@@ -56,6 +56,7 @@ const favorite: FavoriteResponse = {
     startPrice: 270,
     isSoldOut: false,
     isExpired: false,
+    isReleased: true,
   },
 }
 const user: UserProfileResponse = {

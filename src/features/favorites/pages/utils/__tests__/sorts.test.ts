@@ -37,6 +37,7 @@ describe('Favorites sorts', () => {
           startPrice: null,
           date: new Date('2021-03-28T15:45:00.000Z'),
           startDate: null,
+          isReleased: true,
         },
       },
       {
@@ -64,6 +65,7 @@ describe('Favorites sorts', () => {
           startPrice: 2400,
           date: null,
           startDate: new Date('2021-03-02T20:00:00.000Z'),
+          isReleased: true,
         },
       },
       {
@@ -91,6 +93,7 @@ describe('Favorites sorts', () => {
           startPrice: 2700,
           date: null,
           startDate: new Date('2021-03-04T20:00:00.000Z'),
+          isReleased: true,
         },
       },
       {
@@ -118,6 +121,7 @@ describe('Favorites sorts', () => {
           startPrice: 2700,
           date: null,
           startDate: new Date('2021-03-04T20:00:00.000Z'),
+          isReleased: true,
         },
       },
     ])
@@ -153,6 +157,7 @@ describe('Favorites sorts', () => {
           startPrice: 2700,
           date: null,
           startDate: new Date('2021-03-04T20:00:00.000Z'),
+          isReleased: true,
         },
       },
       {
@@ -180,6 +185,7 @@ describe('Favorites sorts', () => {
           startPrice: 2700,
           date: null,
           startDate: new Date('2021-03-04T20:00:00.000Z'),
+          isReleased: true,
         },
       },
       {
@@ -203,6 +209,7 @@ describe('Favorites sorts', () => {
           startPrice: null,
           date: new Date('2021-03-28T15:45:00.000Z'),
           startDate: null,
+          isReleased: true,
         },
       },
       {
@@ -230,6 +237,7 @@ describe('Favorites sorts', () => {
           startPrice: 2400,
           date: null,
           startDate: new Date('2021-03-02T20:00:00.000Z'),
+          isReleased: true,
         },
       },
     ])
