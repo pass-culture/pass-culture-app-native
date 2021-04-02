@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useAddFavorite, useFavorite } from 'features/favorites/pages/useFavorites'
@@ -18,6 +18,12 @@ export const BookingImpossible: React.FC = () => {
   const { offerId } = bookingState
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
+
+  useEffect(() => {
+    if (typeof offerId === 'number') {
+      analytics.logBookingImpossibleiOS(offerId)
+    }
+  }, [])
 
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {

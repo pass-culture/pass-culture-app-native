@@ -15,6 +15,7 @@ export const analytics: typeof actualAnalytics = {
   logAllModulesSeen: jest.fn(),
   logAllTilesSeen: jest.fn(),
   logBookingOfferConfirmDates: jest.fn(),
+  logBookingImpossibleiOS: jest.fn(),
   logCancelSignup: jest.fn(),
   logClickBookOffer: jest.fn(),
   logClickBusinessBlock: jest.fn(),
