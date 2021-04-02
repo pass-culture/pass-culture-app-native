@@ -347,7 +347,7 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:71
-#: src/features/auth/signup/SetBirthday.tsx:141
+#: src/features/auth/signup/SetBirthday.tsx:144
 #: src/features/auth/signup/SetEmail.tsx:78
 #: src/features/auth/signup/SetPassword.tsx:44
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:55
@@ -650,9 +650,9 @@ msgstr "Localisation"
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
-#: src/features/auth/signup/SetBirthday.tsx:153
-msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
-msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+#: src/features/auth/signup/SetBirthday.tsx:156
+msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/maintenance/Maintenance.tsx:18
 msgid "Maintenance en cours"
@@ -868,7 +868,7 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 msgid "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/auth/signup/SetBirthday.tsx:134
+#: src/features/auth/signup/SetBirthday.tsx:137
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -1077,7 +1077,7 @@ msgstr "Supprimer"
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
-#: src/features/auth/signup/SetBirthday.tsx:130
+#: src/features/auth/signup/SetBirthday.tsx:133
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 

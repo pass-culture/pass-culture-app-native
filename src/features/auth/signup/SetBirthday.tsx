@@ -5,12 +5,13 @@ import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useDepositAmount } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
 import { _ } from 'libs/i18n'
-import { formatDateToISOStringWithoutTime } from 'libs/parsers'
+import { formatDateToISOStringWithoutTime, formatToFrenchDecimal } from 'libs/parsers'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -50,6 +51,9 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     isTooYoung: false,
     isTooOld: false,
   })
+
+  const depositAmount = useDepositAmount()
+  const deposit = formatToFrenchDecimal(depositAmount)
 
   const now = new Date()
   const currentYear = now.getUTCFullYear()
@@ -215,7 +219,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           <Spacer.Column numberOfSpaces={2} />
           <StyledBody>
             {_(t`L’application pass Culture est accessible à tous.
-         Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 €
+         Si tu as 18 ans, tu es éligible pour obtenir une aide financière de ${deposit}
           proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`)}
           </StyledBody>
         </ModalChildrenContainer>
