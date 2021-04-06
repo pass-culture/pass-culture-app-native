@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { useFocusEffect } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -29,7 +30,7 @@ export const FavoritesScreen: React.FC = () => {
 
   return (
     <Container>
-      <SvgPageHeader title="Mes favoris" />
+      <SvgPageHeader title={t`Mes favoris`} />
       <FavoritesResults />
     </Container>
   )

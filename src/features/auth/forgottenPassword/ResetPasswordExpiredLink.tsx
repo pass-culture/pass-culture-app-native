@@ -10,7 +10,6 @@ import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -49,27 +48,25 @@ export function ResetPasswordExpiredLink(props: Props) {
   }
 
   return (
-    <GenericInfoPage title={_(t`Oups`)} icon={SadFace}>
-      <StyledBody>{_(t`Le lien est expiré !`)}</StyledBody>
-      <StyledBody>
-        {_(t`Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.`)}
-      </StyledBody>
+    <GenericInfoPage title={t`Oups`} icon={SadFace}>
+      <StyledBody>{t`Le lien est expiré !`}</StyledBody>
+      <StyledBody>{t`Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.`}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{_(t`Si tu as besoin d’aide n’hésite pas à :`)}</StyledBody>
+      <StyledBody>{t`Si tu as besoin d’aide n’hésite pas à :`}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite
-        title={_(t`Contacter le support`)}
+        title={t`Contacter le support`}
         onPress={() => contactSupport.forResetPasswordExpiredLink(props.route.params.email)}
         icon={Email}
       />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonPrimaryWhite
-        title={_(t`Renvoyer l'email`)}
+        title={t`Renvoyer l'email`}
         onPress={() => resetPasswordEmailQuery()}
         disabled={isFetching}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={_(t`Retourner à l'accueil`)} onPress={goToHomeWithoutModal} />
+      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={goToHomeWithoutModal} />
     </GenericInfoPage>
   )
 }

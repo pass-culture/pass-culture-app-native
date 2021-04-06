@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
-import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -23,7 +22,7 @@ export function PersonalData() {
         {user?.isBeneficiary && (
           <React.Fragment>
             <Row>
-              <Typo.Caption>{_(t`Prénom et nom`)}</Typo.Caption>
+              <Typo.Caption>{t`Prénom et nom`}</Typo.Caption>
               <Spacer.Column numberOfSpaces={2} />
               <Typo.Body>{fullname}</Typo.Body>
             </Row>
@@ -31,7 +30,7 @@ export function PersonalData() {
           </React.Fragment>
         )}
         <Row>
-          <Typo.Caption>{_(t`E-mail`)}</Typo.Caption>
+          <Typo.Caption>{t`E-mail`}</Typo.Caption>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Body>{user?.email}</Typo.Body>
         </Row>
@@ -39,7 +38,7 @@ export function PersonalData() {
         {user?.isBeneficiary && (
           <React.Fragment>
             <Row>
-              <Typo.Caption>{_(t`Numéro de téléphone`)}</Typo.Caption>
+              <Typo.Caption>{t`Numéro de téléphone`}</Typo.Caption>
               <Spacer.Column numberOfSpaces={2} />
               <Typo.Body>{user?.phoneNumber}</Typo.Body>
             </Row>
@@ -48,7 +47,7 @@ export function PersonalData() {
         )}
       </Container>
 
-      <PageHeader title={_(t`Informations personnelles`)} />
+      <PageHeader title={t`Informations personnelles`} />
     </React.Fragment>
   )
 }

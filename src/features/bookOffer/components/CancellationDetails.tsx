@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
-import { _ } from 'libs/i18n'
 import { decomposeDate } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -20,17 +19,17 @@ export const CancellationDetails: React.FC = () => {
 
   const { cancellationLimitDatetime: limitDate } = stock
 
-  let message = _(t`Cette réservation est annulable`)
+  let message = t`Cette réservation est annulable`
   if (limitDate) {
     message =
       limitDate < new Date()
-        ? _(t`Cette réservation n’est pas annulable`)
-        : _(t`Cette réservation peut être annulée jusqu’au ${formatDate(limitDate)}`)
+        ? t`Cette réservation n’est pas annulable`
+        : t`Cette réservation peut être annulée jusqu’au ${formatDate(limitDate)}`
   }
 
   return (
     <React.Fragment>
-      <Typo.Title4>{_(t`Conditions d'annulation`)}</Typo.Title4>
+      <Typo.Title4>{t`Conditions d'annulation`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Caption>{message}</Typo.Caption>
       <Spacer.Column numberOfSpaces={4} />

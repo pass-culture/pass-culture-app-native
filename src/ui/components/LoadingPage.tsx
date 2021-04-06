@@ -3,7 +3,6 @@ import LottieView from 'lottie-react-native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, Typo } from 'ui/theme'
@@ -13,7 +12,7 @@ export const LoadingPage: FunctionComponent = () => {
     <Container>
       <Background />
       <StyledLottieView testID="Loading-Animation" source={LoadingAnimation} autoPlay loop />
-      <LoadingText>{_(t`Chargement en cours...`)}</LoadingText>
+      <LoadingText>{t`Chargement en cours...`}</LoadingText>
     </Container>
   )
 }

@@ -1,7 +1,7 @@
-import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { render, fireEvent } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
 

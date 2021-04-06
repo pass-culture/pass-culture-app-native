@@ -8,7 +8,6 @@ import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
-import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -19,9 +18,9 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export type FavoriteSortBy = 'RECENTLY_ADDED' | 'ASCENDING_PRICE' | 'AROUND_ME'
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
-  RECENTLY_ADDED: _(t`Ajouté récemment`),
-  ASCENDING_PRICE: _(t`Prix croissant`),
-  AROUND_ME: _(t`Proximité géographique`),
+  RECENTLY_ADDED: t`Ajouté récemment`,
+  ASCENDING_PRICE: t`Prix croissant`,
+  AROUND_ME: t`Proximité géographique`,
 }
 const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
 
@@ -81,7 +80,7 @@ export const FavoritesSorts: React.FC = () => {
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
           <Spacer.Row numberOfSpaces={6} />
-          <Typo.Title4>{_(t`Trier par`)}</Typo.Title4>
+          <Typo.Title4>{t`Trier par`}</Typo.Title4>
         </TitleContainer>
 
         {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
@@ -101,9 +100,9 @@ export const FavoritesSorts: React.FC = () => {
         })}
       </ScrollView>
 
-      <PageHeader title={_(t`Trier`)} />
+      <PageHeader title={t`Trier`} />
       <ButtonContainer>
-        <ButtonPrimary title={_(t`Valider`)} onPress={onValidation} />
+        <ButtonPrimary title={t`Valider`} onPress={onValidation} />
       </ButtonContainer>
       <GeolocationActivationModal
         isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}

@@ -11,7 +11,6 @@ import { BookingPropertiesSection } from 'features/bookings/components/BookingPr
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { interpolationConfig } from 'ui/components/headers/animationHelpers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -47,15 +46,12 @@ export function BookingDetails() {
         <Spacer.Column numberOfSpaces={4} />
         {properties.isDigital && (
           <OfferRules>
-            {_(t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu
-            n’as pas le droit de le revendre ou le céder.`)}
+            {t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
           </OfferRules>
         )}
         {(properties.isPhysical || properties.isEvent) && (
           <OfferRules>
-            {_(t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour
-            profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le
-            céder.`)}
+            {t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
           </OfferRules>
         )}
         <Spacer.Column numberOfSpaces={8} />

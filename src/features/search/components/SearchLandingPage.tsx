@@ -10,7 +10,6 @@ import { Search as SearchButton } from 'features/search/atoms/Buttons'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
-import { _ } from 'libs/i18n'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Spacer, Typo, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -30,7 +29,7 @@ export const SearchLandingPage: React.FC = () => {
         <Spacer.Flex />
 
         <TouchableOpacity onPress={() => navigate('SearchCategories')}>
-          <Typo.Body color={ColorsEnum.GREY_DARK}>{_(t`Je cherche`)}</Typo.Body>
+          <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Je cherche`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <BicolorIconLabel title={label} Icon={Icon} />
         </TouchableOpacity>
@@ -38,7 +37,7 @@ export const SearchLandingPage: React.FC = () => {
         <Separator />
 
         <TouchableOpacity onPress={() => navigate('LocationFilter')}>
-          <Typo.Body color={ColorsEnum.GREY_DARK}>{_(t`Où`)}</Typo.Body>
+          <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Où`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <BicolorIconLabel title={locationLabel} Icon={LocationIcon} />
         </TouchableOpacity>

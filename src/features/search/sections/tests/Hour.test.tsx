@@ -1,8 +1,8 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 import { Range } from 'libs/typesUtils/typeHelpers'
+import { fireEvent, render } from 'tests/utils'
 
 import { Hour as HourSection } from '../Hour'
 

@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { fireEvent, render } from 'tests/utils'
 
 import { FirstTutorial } from './FirstTutorial'
 

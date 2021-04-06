@@ -1,6 +1,6 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
+import { fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { DateInput, DateInputRef, FULL_DATE_VALIDATOR } from './DateInput'

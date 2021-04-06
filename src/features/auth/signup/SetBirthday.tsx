@@ -10,7 +10,6 @@ import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupMod
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
-import { _ } from 'libs/i18n'
 import { formatDateToISOStringWithoutTime, formatToFrenchDecimal } from 'libs/parsers'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -171,7 +170,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
         keyboardHeightRef={keyboardHeightRef}
         onKeyboardDismiss={onKeyboardDismiss}>
         <ModalHeader
-          title={_(t`Ton anniversaire`)}
+          title={t`Ton anniversaire`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
           rightIcon={Close}
@@ -181,7 +180,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <InnerContainer>
               <ButtonTertiary
-                title={_(t`Pourquoi ?`)}
+                title={t`Pourquoi ?`}
                 onPress={onPressWhy}
                 testIdSuffix={'why-link'}
               />
@@ -198,7 +197,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               </DateInputContainer>
               <Spacer.Column numberOfSpaces={14} />
               <ButtonPrimary
-                title={_(t`Continuer`)}
+                title={t`Continuer`}
                 disabled={!state.isDateValid}
                 testIdSuffix={'validate-birthday'}
                 onPress={animateBeforeNavigation}
@@ -218,9 +217,9 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           <BirthdayCake />
           <Spacer.Column numberOfSpaces={2} />
           <StyledBody>
-            {_(t`L’application pass Culture est accessible à tous.
+            {t`L’application pass Culture est accessible à tous.
          Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de ${deposit}
-          proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`)}
+          proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`}
           </StyledBody>
         </ModalChildrenContainer>
       </AppInformationModal>

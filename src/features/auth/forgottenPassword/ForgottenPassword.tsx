@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -33,7 +32,7 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   useEffect(() => {
     if (!networkInfo.isConnected) {
-      setErrorMessage(_(t`Hors connexion : en attente du réseau.`))
+      setErrorMessage(t`Hors connexion : en attente du réseau.`)
       setIsDoingReCaptchaChallenge(false)
     } else {
       setErrorMessage(null)
@@ -46,9 +45,7 @@ export const ForgottenPassword: FunctionComponent = () => {
       await api.postnativev1requestPasswordReset({ email, token })
       navigate('ResetPasswordEmailSent', { email })
     } catch (_error) {
-      setErrorMessage(
-        _(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
-      )
+      setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
     } finally {
       setIsFetching(false)
     }
@@ -71,11 +68,11 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   function openReCaptchaChallenge() {
     if (!isEmailValid(email)) {
-      setErrorMessage(_(t`Format de l'e-mail incorrect`))
+      setErrorMessage(t`Format de l'e-mail incorrect`)
       return
     }
     if (!networkInfo.isConnected) {
-      setErrorMessage(_(t`Hors connexion : en attente du réseau.`))
+      setErrorMessage(t`Hors connexion : en attente du réseau.`)
       return
     }
     setIsDoingReCaptchaChallenge(true)
@@ -88,12 +85,12 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   function onReCaptchaError(_error: string) {
     setIsDoingReCaptchaChallenge(false)
-    setErrorMessage(_(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`))
+    setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
   }
 
   function onReCaptchaExpire() {
     setIsDoingReCaptchaChallenge(false)
-    setErrorMessage(_(t`Le token reCAPTCHA a expiré, tu peux réessayer.`))
+    setErrorMessage(t`Le token reCAPTCHA a expiré, tu peux réessayer.`)
   }
 
   function onReCaptchaSuccess(token: string) {
@@ -111,7 +108,7 @@ export const ForgottenPassword: FunctionComponent = () => {
         isVisible={isDoingReCaptchaChallenge}
       />
       <ModalHeader
-        title={_(t`Mot de passe oublié`)}
+        title={t`Mot de passe oublié`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={onBackNavigation}
         rightIcon={Close}
@@ -120,21 +117,19 @@ export const ForgottenPassword: FunctionComponent = () => {
       <ModalContent>
         <CenteredText>
           <Typo.Body>
-            {_(
-              t`Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !`
-            )}
+            {t`Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !`}
           </Typo.Body>
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
         <StyledInput>
-          <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
+          <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <TextInput
             autoCapitalize="none"
             autoFocus={true}
             keyboardType="email-address"
             onChangeText={onChangeEmail}
-            placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
+            placeholder={t`tonadresse@email.com`}
             textContentType="emailAddress"
             value={email}
           />
@@ -142,7 +137,7 @@ export const ForgottenPassword: FunctionComponent = () => {
         </StyledInput>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
-          title={_(t`Valider`)}
+          title={t`Valider`}
           onPress={openReCaptchaChallenge}
           isLoading={isDoingReCaptchaChallenge || isFetching}
           disabled={shouldDisableValidateButton}

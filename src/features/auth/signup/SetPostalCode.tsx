@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -60,7 +59,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
-          title={_(t`Code Postal`)}
+          title={t`Code Postal`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
           rightIcon={Close}
@@ -69,22 +68,20 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
         <ModalContent>
           <Paragraph>
             <Typo.Body>
-              {_(
-                t`Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture.`
-              )}
+              {t`Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture.`}
             </Typo.Body>
           </Paragraph>
           <Spacer.Column numberOfSpaces={6} />
 
           <StyledInput>
-            <Typo.Body>{_(t`Ton code postal`)}</Typo.Body>
+            <Typo.Body>{t`Ton code postal`}</Typo.Body>
             <Spacer.Column numberOfSpaces={2} />
             <TextInput
               autoCapitalize="none"
               autoFocus={true}
               keyboardType="number-pad"
               onChangeText={onChangePostalCode}
-              placeholder={_(/*i18n: postalCode placeholder */ t`Ex: 35000`)}
+              placeholder={t`Ex: 35000`}
               ref={postalCodeInput}
               textContentType="postalCode"
               value={postalCode}
@@ -99,7 +96,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
 
           <Spacer.Column numberOfSpaces={10} />
           <ButtonPrimary
-            title={_(t`Continuer`)}
+            title={t`Continuer`}
             onPress={goToCguAcceptance}
             isLoading={false}
             disabled={!isPostalCodeCorrect}

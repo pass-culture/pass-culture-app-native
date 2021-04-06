@@ -4,7 +4,6 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -51,20 +50,18 @@ export const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dis
   return (
     <AppModal
       visible={visible}
-      title={_(t`Le pass Culture est accessible à tous ! `)}
+      title={t`Le pass Culture est accessible à tous ! `}
       rightIcon={Close}
       onRightIconPress={dismissModal}>
       <Description>
         <Typo.Body>
-          {_(
-            t`Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`
-          )}
+          {t`Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`}
         </Typo.Body>
       </Description>
 
-      <ButtonPrimary title={_(t`S'inscrire`)} onPress={goToSignUp} />
+      <ButtonPrimary title={t`S'inscrire`} onPress={goToSignUp} />
       <Spacer.Column numberOfSpaces={3} />
-      <ButtonTertiary title={_(t`Se connecter`)} onPress={goToLogin} />
+      <ButtonTertiary title={t`Se connecter`} onPress={goToLogin} />
     </AppModal>
   )
 }

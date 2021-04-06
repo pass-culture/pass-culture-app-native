@@ -1,10 +1,10 @@
-import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React, { RefObject } from 'react'
 import Geolocation from 'react-native-geolocation-service'
 import Swiper from 'react-native-web-swiper'
 
 import { analytics } from 'libs/analytics'
 import { GeolocationWrapper } from 'libs/geolocation'
+import { fireEvent, render, waitFor } from 'tests/utils'
 import { GenericAchievement } from 'ui/components/achievements'
 
 import { ThirdCard } from './ThirdCard'

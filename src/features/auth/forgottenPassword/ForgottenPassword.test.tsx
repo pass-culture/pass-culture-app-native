@@ -1,12 +1,11 @@
 import * as netInfoModule from '@react-native-community/netinfo'
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
-import { simulateWebviewMessage, superFlushWithAct } from 'tests/utils'
+import { simulateWebviewMessage, superFlushWithAct, fireEvent, render } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 beforeEach(() => {

@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -8,7 +7,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, render } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 

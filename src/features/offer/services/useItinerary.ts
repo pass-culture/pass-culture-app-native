@@ -5,7 +5,6 @@ import LN from 'react-native-launch-navigator'
 import { AppEnum } from 'react-native-launch-navigator/enum'
 
 import { Coordinates } from 'api/gen'
-import { _ } from 'libs/i18n'
 import { getOpenStreetMapUrl } from 'libs/parsers/getOpenStreetMapUrl'
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -54,9 +53,7 @@ export const useItinerary = () => {
           return
         case BackupSolution.SNACKBAR_ERROR:
           showInfoSnackBar({
-            message: _(
-              t`Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.`
-            ),
+            message: t`Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.`,
             timeout: 10000,
           })
           return
@@ -74,10 +71,10 @@ export const useItinerary = () => {
       text: snakeCaseToUppercaseFirstLetter(app),
       onPress: () => navigateToWithApp(coordinates, app, BackupSolution.SNACKBAR_ERROR),
     }))
-    if (Platform.OS === 'ios') alertButtons.push({ text: _(t`Annuler`), style: 'cancel' })
+    if (Platform.OS === 'ios') alertButtons.push({ text: t`Annuler`, style: 'cancel' })
     Alert.alert(
-      _(t`Voir l'itinéraire`),
-      _(t`Choisissez l'application pour vous rendre sur le lieu de l'offre :`),
+      t`Voir l'itinéraire`,
+      t`Choisissez l'application pour vous rendre sur le lieu de l'offre :`,
       alertButtons,
       { cancelable: true }
     )

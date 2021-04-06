@@ -1,5 +1,4 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
@@ -8,6 +7,7 @@ import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { fireEvent, render } from 'tests/utils'
 
 import { contactSupport } from '../support.services'
 

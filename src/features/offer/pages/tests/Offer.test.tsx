@@ -1,4 +1,4 @@
-import { act, fireEvent } from '@testing-library/react-native'
+import { act, fireEvent } from 'tests/utils'
 
 import { renderOfferPage } from './renderOfferPageTestUtil'
 

@@ -1,5 +1,4 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -11,7 +10,7 @@ import { env } from 'libs/environment'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, render } from 'tests/utils'
 
 import {
   OfferDescription,

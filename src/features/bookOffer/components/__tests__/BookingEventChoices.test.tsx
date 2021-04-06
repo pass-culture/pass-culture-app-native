@@ -1,10 +1,9 @@
-import { render, act, fireEvent } from '@testing-library/react-native'
 import * as React from 'react'
 
 import { useBooking, useBookingOffer } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
 
 import { BookingEventChoices } from '../BookingEventChoices'
 

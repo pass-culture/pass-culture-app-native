@@ -7,7 +7,6 @@ import { useGetIdCheckToken } from 'features/auth/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { _ } from 'libs/i18n'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
@@ -38,11 +37,9 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     body = (
       <BodyContainer testID="body-container-18">
         <Typo.Caption>
-          {_(
-            t`Tu es éligible jusqu'au\u00a0${formatToSlashedFrenchDate(
-              eligibilityEndDatetime.toISOString()
-            )}`
-          )}
+          {t`Tu es éligible jusqu'au\u00a0${formatToSlashedFrenchDate(
+            eligibilityEndDatetime.toISOString()
+          )}`}
         </Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
         <ModuleBanner
@@ -51,8 +48,8 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
             navigate('IdCheck', { email: props.email, licenceToken })
           }}
           leftIcon={<ThumbUp size={68} />}
-          title={_(t`Profite de 300\u00a0€\u00a0`)}
-          subTitle={_(t`à dépenser dans l'application`)}
+          title={t`Profite de 300\u00a0€\u00a0`}
+          subTitle={t`à dépenser dans l'application`}
           testID="18-banner"
         />
       </BodyContainer>
@@ -67,7 +64,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
 
   return (
     <React.Fragment>
-      <SvgPageHeader title="Profil" />
+      <SvgPageHeader title={t`Profil`} />
       {body}
     </React.Fragment>
   )

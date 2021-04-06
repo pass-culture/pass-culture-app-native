@@ -23,7 +23,6 @@
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",
     "fix:lint": "eslint . --ext .js,.ts,.tsx --fix",
     "postinstall": "patch-package && jetify && yarn translations:compile",
-    "translations:add-locale": "lingui add-locale",
     "translations:extract": "lingui extract --clean",
     "translations:compile": "lingui compile",
     "trigger:production:deploy:ios": "./scripts/deploy.sh -o ios -t hard -e production",
@@ -36,7 +35,8 @@
     "@algolia/client-search": "^4.6.0",
     "@bam.tech/react-native-batch": "^5.2.1",
     "@bam.tech/react-native-config": "^0.13.0",
-    "@lingui/react": "^2.9.2",
+    "@lingui/core": "^3.8.4",
+    "@lingui/react": "^3.8.4",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/datetimepicker": "^3.0.9",
@@ -65,6 +65,7 @@
     "lodash.uniqwith": "^4.5.0",
     "lottie-ios": "^3.1.9",
     "lottie-react-native": "^3.5.0",
+    "make-plural": "^6.2.2",
     "patch-package": "^6.2.0",
     "react": "16.13.1",
     "react-content-loader": "^5.1.4",
@@ -104,8 +105,8 @@
     "@babel/preset-react": "^7.12.5",
     "@babel/runtime": "^7.8.4",
     "@bam.tech/react-native-make": "^3.0.0",
-    "@lingui/cli": "^2.9.2",
-    "@lingui/macro": "^2.9.2",
+    "@lingui/cli": "^3.8.4",
+    "@lingui/macro": "^3.8.4",
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/react-hooks": "^3.4.2",
     "@testing-library/react-native": "7.1.0",
@@ -114,9 +115,6 @@
     "@types/highlight-words-core": "^1.2.0",
     "@types/i18n-js": "^3.0.1",
     "@types/jest": "^26.0.14",
-    "@types/lingui__core": "^2.7.1",
-    "@types/lingui__macro": "^2.7.4",
-    "@types/lingui__react": "^2.8.3",
     "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.flatten": "^4.4.6",
     "@types/lodash.groupby": "^4.6.6",
@@ -202,13 +200,11 @@
         "babel-plugin-macros",
         "@lingui/react",
         "@lingui/core",
-        "@lingui/macros",
         "react-native-localize"
       ],
       "devDependencies": [
-        "@types/lingui__react",
-        "@types/lingui__core",
-        "@types/lingui__macros"
+        "@lingui/macro",
+        "@lingui/cli"
       ]
     }
   },

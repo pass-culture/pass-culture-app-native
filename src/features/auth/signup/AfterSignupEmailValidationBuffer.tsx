@@ -5,7 +5,6 @@ import React, { useEffect } from 'react'
 import { ValidateEmailResponse } from 'api/gen'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { isTimestampExpired } from 'libs/dates'
-import { _ } from 'libs/i18n'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -59,7 +58,7 @@ export function AfterSignupEmailValidationBuffer() {
 
   function onEmailValidationFailure() {
     showInfoSnackBar({
-      message: _(t`Ce lien de validation n'est plus valide`),
+      message: t`Ce lien de validation n'est plus valide`,
     })
     delayedNavigate('Home', { shouldDisplayLoginModal: false })
   }

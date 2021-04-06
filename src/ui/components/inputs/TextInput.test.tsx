@@ -1,6 +1,7 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { TextInput as RNTextInput } from 'react-native'
+
+import { fireEvent, render } from 'tests/utils'
 
 import { TextInput } from './TextInput'
 

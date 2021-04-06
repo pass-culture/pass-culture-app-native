@@ -1,4 +1,3 @@
-import { act, cleanup, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import { Animated, Share, Platform } from 'react-native'
@@ -18,7 +17,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, act, cleanup, fireEvent, render } from 'tests/utils'
 import {
   showSuccessSnackBar,
   showErrorSnackBar,

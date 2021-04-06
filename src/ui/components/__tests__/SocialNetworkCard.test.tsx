@@ -1,8 +1,8 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import { fireEvent, render } from 'tests/utils'
 
 import { SocialNetworkCard } from '../SocialNetworkCard'
 

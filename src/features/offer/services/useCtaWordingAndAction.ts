@@ -5,7 +5,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 
 import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
 
@@ -39,24 +38,24 @@ export const getCtaWordingAndAction = ({
 
     return {
       isExternal: isEvent,
-      wording: isEvent ? _(t`Accéder à la billetterie`) : _(t`Accéder à l'offre`),
+      wording: isEvent ? t`Accéder à la billetterie` : t`Accéder à l'offre`,
       onPress: () => openExternalUrl(externalTicketOfficeUrl),
     }
   }
 
   // Beneficiary
-  if (!offer.isReleased) return { wording: _(t`Offre expirée`) }
-  if (offer.isExpired) return { wording: _(t`Offre expirée`) }
-  if (offer.isSoldOut) return { wording: _(t`Offre épuisée`) }
+  if (!offer.isReleased) return { wording: t`Offre expirée` }
+  if (offer.isExpired) return { wording: t`Offre expirée` }
+  if (offer.isSoldOut) return { wording: t`Offre épuisée` }
 
   if (category.categoryType === CategoryType.Thing) {
     if (!hasEnoughCredit) {
-      if (offer.isDigital) return { wording: _(t`Crédit numérique insuffisant`) }
-      return { wording: _(t`Crédit insuffisant`) }
+      if (offer.isDigital) return { wording: t`Crédit numérique insuffisant` }
+      return { wording: t`Crédit insuffisant` }
     }
 
     return {
-      wording: _(t`Réserver`),
+      wording: t`Réserver`,
       onPress: () => {
         analytics.logClickBookOffer(offer.id)
       },
@@ -64,10 +63,10 @@ export const getCtaWordingAndAction = ({
   }
 
   if (category.categoryType === CategoryType.Event) {
-    if (!hasEnoughCredit) return { wording: _(t`Crédit insuffisant`) }
+    if (!hasEnoughCredit) return { wording: t`Crédit insuffisant` }
 
     return {
-      wording: _(t`Voir les disponibilités`),
+      wording: t`Voir les disponibilités`,
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
       },

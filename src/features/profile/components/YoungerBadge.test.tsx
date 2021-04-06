@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
+import { render } from 'tests/utils'
 
 let mockDepositAmount = 30000
 jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))

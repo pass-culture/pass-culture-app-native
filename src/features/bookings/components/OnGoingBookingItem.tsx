@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { Separator } from 'ui/components/Separator'
 import { Clock } from 'ui/svg/icons/Clock'

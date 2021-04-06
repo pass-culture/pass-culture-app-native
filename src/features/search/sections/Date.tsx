@@ -5,7 +5,6 @@ import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { _ } from 'libs/i18n'
 
 export const Date: React.FC = () => {
   const { searchState, dispatch } = useStagedSearch()
@@ -19,7 +18,7 @@ export const Date: React.FC = () => {
   return (
     <SectionWithSwitch
       title={SectionTitle.Date}
-      subtitle={_(t`Seules les sorties seront affichées`)}
+      subtitle={t`Seules les sorties seront affichées`}
       active={!!searchState.date}
       toggle={toggle}
     />

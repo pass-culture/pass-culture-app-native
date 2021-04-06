@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -9,7 +8,7 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/api/snaps/fav
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, render } from 'tests/utils'
 
 import { BicolorFavoriteCount } from '../BicolorFavoriteCount'
 

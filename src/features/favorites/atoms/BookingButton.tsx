@@ -6,7 +6,6 @@ import { Credit } from 'features/home/services/useAvailableCredit'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 
@@ -42,7 +41,7 @@ export const BookingButton: React.FC<Props> = (props) => {
   // User is an ex-beneficiary
   if (isUserExBeneficiary(props.user, props.credit)) {
     if (isBookedOffer) {
-      return <ButtonPrimary title={_(t`Offre réservée`)} buttonHeight="tall" disabled />
+      return <ButtonPrimary title={t`Offre réservée`} buttonHeight="tall" disabled />
     }
     if (!props.offer.isReleased || props.offer.isExpired || props.offer.isSoldOut) {
       return null
@@ -55,28 +54,28 @@ export const BookingButton: React.FC<Props> = (props) => {
 
   // User is beneficiary
   if (isBookedOffer) {
-    return <ButtonPrimary title={_(t`Offre réservée`)} buttonHeight="tall" disabled />
+    return <ButtonPrimary title={t`Offre réservée`} buttonHeight="tall" disabled />
   }
   if (!props.offer.isReleased || props.offer.isExpired) {
-    return <ButtonPrimary title={_(t`Offre expirée`)} buttonHeight="tall" disabled />
+    return <ButtonPrimary title={t`Offre expirée`} buttonHeight="tall" disabled />
   }
   if (props.offer.isSoldOut) {
-    return <ButtonPrimary title={_(t`Offre épuisée`)} buttonHeight="tall" disabled />
+    return <ButtonPrimary title={t`Offre épuisée`} buttonHeight="tall" disabled />
   }
   if (!isFreeOffer && !doesUserHaveEnoughCredit) {
-    return <ButtonPrimary title={_(t`Crédit insuffisant`)} buttonHeight="tall" disabled />
+    return <ButtonPrimary title={t`Crédit insuffisant`} buttonHeight="tall" disabled />
   }
   return <BookInAppButton onPress={() => props.onInAppBooking(props.offer)} />
 }
 
 const BookInAppButton = ({ onPress }: { onPress: () => void }) => (
-  <ButtonPrimary title={_(t`Réserver`)} onPress={onPress} buttonHeight="tall" />
+  <ButtonPrimary title={t`Réserver`} onPress={onPress} buttonHeight="tall" />
 )
 
 const BookExternallyButton = ({ url }: { url: FavoriteOfferResponse['externalTicketOfficeUrl'] }) =>
   url ? (
     <ButtonPrimary
-      title={_(t`Réserver`)}
+      title={t`Réserver`}
       onPress={() => url && openExternalUrl(url)}
       icon={ExternalLinkSite}
       buttonHeight="tall"

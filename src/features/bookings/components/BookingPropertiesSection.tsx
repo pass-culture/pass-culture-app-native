@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { Booking } from 'features/bookings/components/types'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { useUserProfileInfo } from 'features/home/api'
-import { _ } from 'libs/i18n'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
@@ -26,7 +25,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
 
   return (
     <Container>
-      <Typo.Title4>{_(t`Ma réservation`)}</Typo.Title4>
+      <Typo.Title4>{t`Ma réservation`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={4.5} />
       {user?.firstName && user?.lastName && (
         <SectionRow

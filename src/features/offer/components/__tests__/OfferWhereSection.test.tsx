@@ -1,8 +1,8 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { act } from 'react-test-renderer'
 
 import { analytics } from 'libs/analytics'
+import { fireEvent, render } from 'tests/utils'
 
 import { OfferWhereSection } from '../OfferWhereSection'
 

@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { CategoryNameEnum, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
-import { _ } from 'libs/i18n'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
@@ -37,7 +36,7 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, la
       {showDuo && (
         <React.Fragment>
           <Separator />
-          <IconWithCaption testID="iconDuo" Icon={Duo} caption={_(t`À deux !`)} />
+          <IconWithCaption testID="iconDuo" Icon={Duo} caption={t`À deux !`} />
         </React.Fragment>
       )}
       <Separator />

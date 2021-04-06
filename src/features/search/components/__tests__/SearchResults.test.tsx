@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/analytics'
+import { render } from 'tests/utils'
 
 import { SearchResults } from '../SearchResults'
 

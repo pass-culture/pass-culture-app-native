@@ -1,10 +1,9 @@
-import { act, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, act, render } from 'tests/utils'
 
 import { CheatCodes } from './CheatCodes'
 

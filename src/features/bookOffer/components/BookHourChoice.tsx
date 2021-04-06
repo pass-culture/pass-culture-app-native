@@ -11,7 +11,6 @@ import {
 } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
-import { _ } from 'libs/i18n'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -74,7 +73,7 @@ export const BookHourChoice: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4 testID="HourStep">{_(t`Heure`)}</Typo.Title4>
+      <Typo.Title4 testID="HourStep">{t`Heure`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.HOUR ? (
         <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>

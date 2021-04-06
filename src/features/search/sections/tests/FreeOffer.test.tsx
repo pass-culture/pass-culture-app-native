@@ -1,7 +1,7 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
+import { fireEvent, render } from 'tests/utils'
 
 import { FreeOffer } from '../FreeOffer'
 

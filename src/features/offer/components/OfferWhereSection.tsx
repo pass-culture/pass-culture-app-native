@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { Coordinates } from 'api/gen'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo, ColorsEnum } from 'ui/theme'
@@ -34,11 +33,11 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, 
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title4>{_(t`Où ?`)}</Typo.Title4>
+      <Typo.Title4>{t`Où ?`}</Typo.Title4>
       {address && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.Caption>{_(t`Adresse`)}</Typo.Caption>
+          <Typo.Caption>{t`Adresse`}</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <StyledAddress>{address}</StyledAddress>
         </React.Fragment>
@@ -46,7 +45,7 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, 
       {distanceToOffer && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.Caption>{_(t`Distance`)}</Typo.Caption>
+          <Typo.Caption>{t`Distance`}</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Body>{distanceToOffer}</Typo.Body>
         </React.Fragment>
@@ -60,7 +59,7 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, 
           <TouchableContainer onPress={handleOpenNavigation}>
             <LocationPointer color={ColorsEnum.BLACK} size={24} />
             <Spacer.Row numberOfSpaces={1} />
-            <Typo.ButtonText>{_(t`Voir l'itinéraire`)}</Typo.ButtonText>
+            <Typo.ButtonText>{t`Voir l'itinéraire`}</Typo.ButtonText>
           </TouchableContainer>
         </React.Fragment>
       )}

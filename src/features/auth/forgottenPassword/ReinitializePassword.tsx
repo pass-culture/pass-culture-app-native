@@ -10,7 +10,6 @@ import {
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -42,7 +41,7 @@ export const ReinitializePassword = () => {
 
   const { mutate: resetPassword, isLoading } = useResetPasswordMutation(() => {
     showSuccessSnackBar({
-      message: _(t`Ton mot de passe a été modifié !`),
+      message: t`Ton mot de passe a été modifié !`,
       timeout: SNACK_BAR_TIME_OUT,
     })
     analytics.logHasChangedPassword('resetPassword')
@@ -69,32 +68,32 @@ export const ReinitializePassword = () => {
   return (
     <BottomContentPage>
       <ModalHeader
-        title={_(t`Ton mot de passe`)}
+        title={t`Ton mot de passe`}
         rightIcon={Close}
         onRightIconPress={goToHomeWithoutModal}
       />
       <BottomCardContentContainer>
         <Spacer.Column numberOfSpaces={6} />
         <StyledInput>
-          <Typo.Body>{_(t`Nouveau mot de passe`)}</Typo.Body>
+          <Typo.Body>{t`Nouveau mot de passe`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
             value={password}
             autoFocus
             onChangeText={setPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+            placeholder={t`Ton mot de passe`}
             isError={shouldShowPasswordError}
           />
         </StyledInput>
         <PasswordSecurityRules password={password} />
         <Spacer.Column numberOfSpaces={6} />
         <StyledInput>
-          <Typo.Body>{_(t`Confirmer le mot de passe`)}</Typo.Body>
+          <Typo.Body>{t`Confirmer le mot de passe`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
             value={confirmedPassword}
             onChangeText={setConfirmedPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Confirmer le mot de passe`)}
+            placeholder={t`Confirmer le mot de passe`}
             isError={shouldShowConfirmationError}
           />
         </StyledInput>
@@ -106,7 +105,7 @@ export const ReinitializePassword = () => {
         />
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
-          title={_(t`Continuer`)}
+          title={t`Continuer`}
           onPress={submitPassword}
           disabled={!allowSubmission}
           isLoading={isLoading}

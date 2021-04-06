@@ -1,11 +1,10 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { ReinitializePassword } from './ReinitializePassword'

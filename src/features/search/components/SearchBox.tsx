@@ -9,7 +9,6 @@ import styled from 'styled-components/native'
 
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -65,7 +64,7 @@ export const SearchBox: React.FC = () => {
       <SearchInput
         value={query}
         onChangeText={setQuery}
-        placeholder={_(t`Titre, artiste...`)}
+        placeholder={t`Titre, artiste...`}
         autoFocus={false}
         inputHeight="tall"
         LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}

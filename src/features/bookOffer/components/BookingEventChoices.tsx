@@ -11,7 +11,6 @@ import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { useUserProfileInfo } from 'features/home/api'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
@@ -63,7 +62,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
         </React.Fragment>
       )}
       <ButtonPrimary
-        title={enabled ? _(t`Valider ces options`) : _(t`Choisir les options`)}
+        title={enabled ? t`Valider ces options` : t`Choisir les options`}
         onPress={validateOptions}
         disabled={!enabled}
       />

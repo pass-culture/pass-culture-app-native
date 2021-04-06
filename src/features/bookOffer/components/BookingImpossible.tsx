@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { useAddFavorite, useFavorite } from 'features/favorites/pages/useFavorites'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -33,7 +32,7 @@ export const BookingImpossible: React.FC = () => {
     },
     onError: () => {
       showErrorSnackBar({
-        message: _(t`L'offre n'a pas été ajoutée à tes favoris`),
+        message: t`L'offre n'a pas été ajoutée à tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
@@ -51,22 +50,18 @@ export const BookingImpossible: React.FC = () => {
       <Spacer.Column numberOfSpaces={6} />
 
       <Content>
-        {_(
-          t`Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.`
-        )}
+        {t`Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.`}
       </Content>
       <Spacer.Column numberOfSpaces={6} />
       <Content>
-        {_(
-          t`Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver.`
-        )}
+        {t`Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver.`}
       </Content>
 
       <Spacer.Column numberOfSpaces={6} />
 
-      <ButtonPrimary title={_(t`Mettre en favoris`)} onPress={addToFavourite} />
+      <ButtonPrimary title={t`Mettre en favoris`} onPress={addToFavourite} />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiary title={_(t`Retourner à l'offre`)} onPress={dismissModal} />
+      <ButtonTertiary title={t`Retourner à l'offre`} onPress={dismissModal} />
       <Spacer.Column numberOfSpaces={4} />
     </Container>
   )

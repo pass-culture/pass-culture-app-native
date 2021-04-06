@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import { Background } from 'ui/svg/Background'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
@@ -18,7 +17,7 @@ export const Maintenance = () => {
       <ContentContainer>
         <CenteredText>
           <Typo.Title1 color={ColorsEnum.WHITE} numberOfLines={2}>
-            {_(t`Maintenance en cours`)}
+            {t`Maintenance en cours`}
           </Typo.Title1>
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
@@ -27,9 +26,7 @@ export const Maintenance = () => {
           <TextContainer>
             <CenteredText>
               <Typo.Body color={ColorsEnum.WHITE}>
-                {_(
-                  t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !`
-                )}
+                {t`L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !`}
               </Typo.Body>
             </CenteredText>
           </TextContainer>

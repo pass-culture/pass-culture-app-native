@@ -1,8 +1,8 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
+import { fireEvent, render } from 'tests/utils'
 
 import { NoFavoritesResult } from '../NoFavoritesResult'
 

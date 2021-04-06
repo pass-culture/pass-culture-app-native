@@ -1,4 +1,3 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import Geolocation from 'react-native-geolocation-service'
 import * as ReactNativePermissions from 'react-native-permissions'
@@ -7,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { GeolocationWrapper } from 'libs/geolocation/GeolocationWrapper'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { FavoriteSortBy, FavoritesSorts } from '../FavoritesSorts'
 import { FavoritesWrapper } from '../FavoritesWrapper'

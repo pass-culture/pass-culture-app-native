@@ -1,7 +1,5 @@
 import { t } from '@lingui/macro'
 
-import { _ } from 'libs/i18n'
-
 export type RequestCredentials = 'omit' | 'same-origin' | 'include' | undefined
 
 export type Headers = {
@@ -44,7 +42,7 @@ async function makeExternalRequest<ResponseBody>(
   }
 
   if (!response.ok) {
-    throw new Error(_(t`Échec de la requête ${url}, code: ${response.status}`))
+    throw new Error(t`Échec de la requête ${url}, code: ${response.status}`)
   }
 
   const json = await response.json()
@@ -53,14 +51,12 @@ async function makeExternalRequest<ResponseBody>(
 
 export class NotAuthenticatedError extends Error {
   constructor() {
-    super(_(/*i18n: Authentication error message */ t`Erreur d'authentification`))
+    super(t`Erreur d'authentification`)
   }
 }
 
 export class FailedToRefreshAccessTokenError extends Error {
   constructor() {
-    super(
-      _(/*i18n: Authentication error message */ t`Erreur lors de la récupération du token d'accès`)
-    )
+    super(t`Erreur lors de la récupération du token d'accès`)
   }
 }

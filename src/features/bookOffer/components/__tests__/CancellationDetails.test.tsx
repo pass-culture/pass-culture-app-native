@@ -1,10 +1,10 @@
-import { render } from '@testing-library/react-native'
 import mockdate from 'mockdate'
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
 import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render } from 'tests/utils'
 
 import { CancellationDetails, formatDate } from '../CancellationDetails'
 

@@ -1,4 +1,3 @@
-import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
@@ -11,7 +10,7 @@ import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/errorMonitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, act, fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { EighteenBirthdayCard } from './EighteenBirthdayCard'

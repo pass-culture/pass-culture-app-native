@@ -1,8 +1,8 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
+import { fireEvent, render } from 'tests/utils'
 
 describe('GeolocationActivationModal', () => {
   it('should open settings and log event deeplinkEnableLocation', () => {

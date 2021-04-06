@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 
-import { _ } from 'libs/i18n'
 import { CENTS_IN_EURO } from 'libs/parsers/pricesConversion'
 
 const EURO_SYMBOL = '€'
@@ -21,14 +20,14 @@ const getPricePerPlace = (prices: number[]): string => {
 
 export const getDisplayPrice = (prices: number[] | undefined): string => {
   if (!prices || prices.length === 0) return ''
-  if (prices.includes(0)) return _(t`Gratuit`)
+  if (prices.includes(0)) return t`Gratuit`
   return getPricePerPlace(prices)
 }
 
 export const getDisplayPriceWithDuoMention = (prices: number[] | undefined): string => {
   if (!prices || prices.length === 0) return ''
-  if (prices.includes(0)) return _(t`Gratuit`)
-  return `${getPricePerPlace(prices)} ${_(t`/ place`)}`
+  if (prices.includes(0)) return t`Gratuit`
+  return `${getPricePerPlace(prices)} ${t`/ place`}`
 }
 
 export const getFavoriteDisplayPrice = ({
@@ -38,7 +37,7 @@ export const getFavoriteDisplayPrice = ({
   startPrice?: number | undefined | null
   price?: number | undefined | null
 }): string => {
-  if (price === 0) return _(t`Gratuit`)
+  if (price === 0) return t`Gratuit`
   if (price && price > 0) return formatToFrenchDecimal(price)
   if (startPrice === 0 || (startPrice && startPrice > 0)) {
     return `Dès ${formatToFrenchDecimal(startPrice)}`

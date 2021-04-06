@@ -5,14 +5,13 @@ import React, { useEffect, useState } from 'react'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useCommit } from 'features/search/pages/SearchWrapper'
 import { useStagedSearchResults } from 'features/search/pages/useSearchResults'
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 const formatNbHits = (nbHits: number) => {
-  if (nbHits === 0) return _(t`Aucun résultat`)
-  if (nbHits === 1) return _(t`Afficher ${nbHits} résultat`)
-  if (nbHits > 1000) return _(t`Afficher les 999+ résultats`)
-  return _(t`Afficher les ${nbHits} résultats`)
+  if (nbHits === 0) return t`Aucun résultat`
+  if (nbHits === 1) return t`Afficher ${nbHits} résultat`
+  if (nbHits > 1000) return t`Afficher les 999+ résultats`
+  return t`Afficher les ${nbHits} résultats`
 }
 
 export const ShowResults: React.FC = () => {

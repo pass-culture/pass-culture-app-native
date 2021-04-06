@@ -8,7 +8,6 @@ import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
 import { LocationType } from 'libs/algolia'
-import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
@@ -125,7 +124,7 @@ export const SearchFilter: React.FC = () => {
         </StyledScrollView>
       </React.Fragment>
 
-      <PageHeader title={_(t`Filtrer`)} RightComponent={ReinitializeFilters} />
+      <PageHeader title={t`Filtrer`} RightComponent={ReinitializeFilters} />
 
       <ShowResultsContainer>
         <ShowResults />

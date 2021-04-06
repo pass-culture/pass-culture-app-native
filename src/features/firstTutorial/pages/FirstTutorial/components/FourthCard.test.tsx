@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { fireEvent, render } from '@testing-library/react-native'
 import React, { createRef } from 'react'
 import Swiper from 'react-native-web-swiper'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { homeNavigateConfig } from 'features/navigation/helpers'
+import { fireEvent, render } from 'tests/utils'
 
 import { FourthCard } from './FourthCard'
 

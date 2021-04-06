@@ -1,4 +1,3 @@
-import { act, render } from '@testing-library/react-native'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
@@ -8,7 +7,7 @@ import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
 import { useCurrentRoute } from 'features/navigation/helpers'
-import { simulateWebviewMessage, superFlushWithAct } from 'tests/utils'
+import { simulateWebviewMessage, superFlushWithAct, act, render } from 'tests/utils'
 
 import { CulturalSurvey } from './CulturalSurvey'
 

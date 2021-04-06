@@ -1,4 +1,3 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { Text, View } from 'react-native'
 import waitForExpect from 'wait-for-expect'
@@ -6,6 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import { fireEvent, render } from 'tests/utils'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 
 import { GenericAchievement, Props } from './GenericAchievement'

@@ -2,16 +2,15 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { getSpacing, Typo } from 'ui/theme'
 
 import { ChoiceBloc, getTextColor } from './ChoiceBloc'
 
 const getWording = (price: number, isBookable: boolean, enoughCredit: boolean): string => {
-  if (!enoughCredit) return _(t`crédit insuffisant`)
+  if (!enoughCredit) return t`crédit insuffisant`
   if (isBookable) return formatToFrenchDecimal(price).replace(' ', '')
-  return _(t`épuisé`)
+  return t`épuisé`
 }
 
 interface Props {

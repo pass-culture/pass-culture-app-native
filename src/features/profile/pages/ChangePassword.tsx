@@ -10,7 +10,6 @@ import {
 } from 'features/auth/components/PasswordSecurityRules'
 import { useChangePasswordMutation } from 'features/auth/mutations'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -52,7 +51,7 @@ export function ChangePassword() {
       setConfirmedPassword('')
       setShouldDisplayPasswordRules(false)
       showSuccessSnackBar({
-        message: _(t`Mot de passe modifié`),
+        message: t`Mot de passe modifié`,
         timeout: SNACK_BAR_TIME_OUT,
       })
       analytics.logHasChangedPassword('changePassword')
@@ -86,25 +85,25 @@ export function ChangePassword() {
         ref={scrollRef}
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}>
         <StyledInput>
-          <Typo.Body>{_(t`Mot de passe actuel`)}</Typo.Body>
+          <Typo.Body>{t`Mot de passe actuel`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
             value={currentPassword}
             autoFocus={true}
             onChangeText={setCurrentPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe actuel`)}
+            placeholder={t`Ton mot de passe actuel`}
           />
           <Spacer.Column numberOfSpaces={2} />
           <InputError visible={hasError} messageId="Mot de passe incorrect" numberOfSpacesTop={0} />
         </StyledInput>
         <Spacer.Column numberOfSpaces={5} />
         <StyledInput>
-          <Typo.Body>{_(t`Nouveau mot de passe`)}</Typo.Body>
+          <Typo.Body>{t`Nouveau mot de passe`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
             value={newPassword}
             onChangeText={updateNewPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Ton nouveau mot de passe`)}
+            placeholder={t`Ton nouveau mot de passe`}
           />
           {shouldDisplayPasswordRules && newPassword.length > 0 && (
             <PasswordSecurityRules password={newPassword} />
@@ -112,12 +111,12 @@ export function ChangePassword() {
         </StyledInput>
         <Spacer.Column numberOfSpaces={5} />
         <StyledInput>
-          <Typo.Body>{_(t`Confirmer le mot de passe`)}</Typo.Body>
+          <Typo.Body>{t`Confirmer le mot de passe`}</Typo.Body>
           <Spacer.Column numberOfSpaces={2} />
           <PasswordInput
             value={confirmedPassword}
             onChangeText={setConfirmedPassword}
-            placeholder={_(/*i18n: password placeholder */ t`Confirmer le mot de passe`)}
+            placeholder={t`Confirmer le mot de passe`}
             onFocus={() => {
               setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
             }}
@@ -133,7 +132,7 @@ export function ChangePassword() {
         {Boolean(keyboardHeight) && <Spacer.Column numberOfSpaces={2} />}
         <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
           <ButtonPrimary
-            title={_(t`Enregistrer`)}
+            title={t`Enregistrer`}
             onPress={submitPassword}
             disabled={!shouldSave || isLoading}
           />
@@ -141,7 +140,7 @@ export function ChangePassword() {
         <Spacer.Column numberOfSpaces={6} />
       </StyledScrollView>
 
-      <PageHeader title={_(t`Mot de passe`)} />
+      <PageHeader title={t`Mot de passe`} />
     </React.Fragment>
   )
 }

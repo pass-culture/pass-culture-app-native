@@ -1,9 +1,9 @@
 import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
 import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-navigation/native'
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { fireEvent, render } from 'tests/utils'
 
 import { TabBar } from '../TabBar'
 import { tabBarRoutes } from '../TabNavigator'

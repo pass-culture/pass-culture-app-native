@@ -1,5 +1,6 @@
-import { waitFor } from '@testing-library/react-native'
 import Geolocation from 'react-native-geolocation-service'
+
+import { waitFor } from 'tests/utils'
 
 import { getPosition } from './getPosition'
 import { EiffelTourCoordinates, getCurrentPositionSuccess } from './tests.utils'

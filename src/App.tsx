@@ -1,5 +1,6 @@
+import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
@@ -22,7 +23,7 @@ import { ABTestingProvider } from 'libs/ABTesting'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
-import { i18n } from 'libs/i18n' //@translations
+import { activate } from 'libs/i18n'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
@@ -50,6 +51,10 @@ errorMonitoring.init({ enabled: !__DEV__ })
 const App: FunctionComponent = function () {
   useStartBatchNotification()
 
+  useEffect(() => {
+    activate('fr')
+  }, [])
+
   return (
     <ABTestingProvider>
       <SafeAreaProvider>
@@ -59,7 +64,7 @@ const App: FunctionComponent = function () {
               <AuthWrapper>
                 <FavoritesWrapper>
                   <SearchWrapper>
-                    <I18nProvider language={i18n.language} i18n={i18n}>
+                    <I18nProvider i18n={i18n}>
                       <SnackBarProvider>
                         <SplashScreenProvider>
                           <AppNavigationContainer>
