@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useRef } from 'react'
-import { Animated, Easing } from 'react-native'
+import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { isApiError } from 'api/helpers'
@@ -15,6 +15,11 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { analytics } from 'libs/analytics'
 import { _ } from 'libs/i18n'
+import {
+  headerBackgroundInterpolation,
+  iconBackgroundInterpolation,
+  iconBorderInterpolation,
+} from 'ui/components/headers/animationHelpers'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -27,6 +32,7 @@ interface Props {
   title: string
   offerId: number
 }
+
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
@@ -67,20 +73,9 @@ export const OfferHeader: React.FC<Props> = (props) => {
     },
   })
 
-  const iconBackgroundColor = headerTransition.interpolate({
-    inputRange: [0, 1],
-    outputRange: [ColorsEnum.WHITE, 'rgba(255, 255, 255, 0)'],
-    easing: Easing.bezier(0, 0.75, 0, 0.75),
-  })
-  const iconBorderColor = headerTransition.interpolate({
-    inputRange: [0, 1],
-    outputRange: [ColorsEnum.GREY_LIGHT, 'rgba(255, 255, 255, 0)'],
-    easing: Easing.bezier(0, 1, 0, 1),
-  })
-  const headerBackgroundColor = headerTransition.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['rgba(255, 255, 255, 0)', ColorsEnum.PRIMARY],
-  })
+  const iconBackgroundColor = headerTransition.interpolate(iconBackgroundInterpolation)
+  const iconBorderColor = headerTransition.interpolate(iconBorderInterpolation)
+  const headerBackgroundColor = headerTransition.interpolate(headerBackgroundInterpolation)
 
   const animationState = { iconBackgroundColor, iconBorderColor, transition: headerTransition }
 

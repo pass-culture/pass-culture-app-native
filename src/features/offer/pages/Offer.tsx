@@ -7,6 +7,7 @@ import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
+import { interpolationConfig } from 'ui/components/headers/animationHelpers'
 import { getSpacing, Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -16,8 +17,6 @@ import { useCtaWordingAndAction } from '../services/useCtaWordingAndAction'
 import { useFunctionOnce } from '../services/useFunctionOnce'
 
 import { OfferBody } from './OfferBody'
-
-const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 
 export const Offer: FunctionComponent = () => {
   const { bottom } = useCustomSafeInsets()
@@ -37,11 +36,7 @@ export const Offer: FunctionComponent = () => {
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
 
-  const headerTransition = headerScroll.interpolate({
-    inputRange: [0, HEIGHT_END_OF_TRANSITION],
-    outputRange: [0, 1],
-    extrapolate: 'clamp',
-  })
+  const headerTransition = headerScroll.interpolate(interpolationConfig)
 
   const checkIfAllPageHaveBeenSeen = ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => {
     if (isCloseToBottom(nativeEvent)) {
