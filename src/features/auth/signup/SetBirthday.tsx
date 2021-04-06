@@ -219,7 +219,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           <Spacer.Column numberOfSpaces={2} />
           <StyledBody>
             {_(t`L’application pass Culture est accessible à tous.
-         Si tu as 18 ans, tu es éligible pour obtenir une aide financière de ${deposit}
+         Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de ${deposit}
           proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`)}
           </StyledBody>
         </ModalChildrenContainer>
@@ -258,4 +258,5 @@ const DateInputContainer = styled.View({
 
 const ModalChildrenContainer = styled.View({
   paddingTop: getSpacing(5),
+  alignItems: 'center',
 })
