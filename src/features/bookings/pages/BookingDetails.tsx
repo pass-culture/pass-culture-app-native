@@ -1,30 +1,45 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React from 'react'
-import { Text } from 'react-native'
+import React, { useRef } from 'react'
+import { Animated } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { useOngoingBooking } from 'features/bookings/api/queries'
+import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
+import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { _ } from 'libs/i18n'
-import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
+import { interpolationConfig } from 'ui/components/headers/animationHelpers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+
+const HEADER_TICKET_WIDTH = 304
 
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const booking = useOngoingBooking(params.id)
+  const headerScroll = useRef(new Animated.Value(0)).current
 
   if (!booking) return <React.Fragment></React.Fragment>
+
+  const headerTransition = headerScroll.interpolate(interpolationConfig)
+  const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
+    useNativeDriver: false,
+  })
 
   const properties = getBookingProperties(booking)
 
   return (
     <React.Fragment>
-      <SvgPageHeader title="Page temporaire" />
-      <Container>
-        <Text>Réservation Id : {params.id}</Text>
+      <BookingDetailsHeader headerTransition={headerTransition} title={booking.stock.offer.name} />
+      <ScrollView onScroll={onScroll}>
+        <Spacer.Column numberOfSpaces={8.5} />
+        <HeaderTicket>
+          {/* FIXME(PC-7471) change color when add content to this component */}
+          <ThreeShapesTicket width={HEADER_TICKET_WIDTH} color={ColorsEnum.GREY_LIGHT} />
+        </HeaderTicket>
         <Spacer.Column numberOfSpaces={4} />
         {properties.isDigital && (
           <OfferRules>
@@ -39,18 +54,22 @@ export function BookingDetails() {
             céder.`)}
           </OfferRules>
         )}
-      </Container>
-      <Spacer.Column numberOfSpaces={8} />
-      <BookingPropertiesSection booking={booking} />
+        <Spacer.Column numberOfSpaces={8} />
+        <BookingPropertiesSection booking={booking} />
+        {/* FIXME(PC-7477) add itinerary button and remove this space */}
+        <Spacer.Column numberOfSpaces={50} />
+      </ScrollView>
     </React.Fragment>
   )
 }
 
-const Container = styled.View({
-  paddingHorizontal: getSpacing(6),
-})
-
 const OfferRules = styled(Typo.Caption)({
   color: ColorsEnum.GREY_MEDIUM,
   textAlign: 'center',
+  paddingHorizontal: getSpacing(6),
+})
+
+const HeaderTicket = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'center',
 })
