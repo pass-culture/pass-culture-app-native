@@ -2,8 +2,6 @@ import { t } from '@lingui/macro'
 import AsyncStorage from '@react-native-community/async-storage'
 import { Alert } from 'react-native'
 
-import { _ } from 'libs/i18n'
-
 type StorageKey =
   | 'access_token'
   | 'has_seen_tutorials'
@@ -30,7 +28,7 @@ async function readString(storageKey: StorageKey): Promise<string | null> {
 
 async function saveString(storageKey: StorageKey, value: string): Promise<void> {
   if (!value) {
-    throw Error(_(t`Aucune valeur à sauvegarder`))
+    throw Error(t`Aucune valeur à sauvegarder`)
   }
   try {
     await AsyncStorage.setItem(storageKey, value)

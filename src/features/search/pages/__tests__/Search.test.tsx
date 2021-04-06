@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render } from 'tests/utils'
 
 import { initialSearchState } from '../reducer'
 import { Search } from '../Search'

@@ -1,6 +1,6 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
+import { fireEvent, render } from 'tests/utils'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 

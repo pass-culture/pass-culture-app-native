@@ -17,7 +17,6 @@ import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
-import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { useModal } from 'ui/components/modals/useModal'
@@ -124,11 +123,11 @@ export const Profile: React.FC = () => {
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
         <ProfileSection
-          title={isLoggedIn ? _(t`Paramètres du compte`) : _(t`Paramètres de l'application`)}>
+          title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
           {isLoggedIn && (
             <React.Fragment>
               <Row
-                title={_(t`Informations personnelles`)}
+                title={t`Informations personnelles`}
                 type="navigable"
                 onPress={() => navigate('PersonalData')}
                 icon={ProfileIcon}
@@ -136,7 +135,7 @@ export const Profile: React.FC = () => {
                 testID="row-personal-data"
               />
               <Row
-                title={_(t`Mot de passe`)}
+                title={t`Mot de passe`}
                 type="navigable"
                 onPress={() => navigate('ChangePassword')}
                 icon={Lock}
@@ -147,7 +146,7 @@ export const Profile: React.FC = () => {
           )}
           <SectionRow
             type="navigable"
-            title={_(t`Notifications`)}
+            title={t`Notifications`}
             icon={Bell}
             onPress={() => navigate('NotificationSettings')}
             style={styles.row}
@@ -155,7 +154,7 @@ export const Profile: React.FC = () => {
           />
           <SectionRow
             type="clickable"
-            title={_(t`Géolocalisation`)}
+            title={t`Géolocalisation`}
             icon={LocationPointerNotFilled}
             style={styles.row}
             cta={
@@ -171,9 +170,9 @@ export const Profile: React.FC = () => {
             testID="row-geolocation"
           />
         </ProfileSection>
-        <ProfileSection title={_(t`Aides`)}>
+        <ProfileSection title={t`Aides`}>
           <Row
-            title={_(t`Comment ça marche ?`)}
+            title={t`Comment ça marche ?`}
             type="navigable"
             onPress={() => navigate('FirstTutorial')}
             icon={LifeBuoy}
@@ -181,7 +180,7 @@ export const Profile: React.FC = () => {
             testID="row-how-it-works"
           />
           <Row
-            title={_(t`Questions fréquentes`)}
+            title={t`Questions fréquentes`}
             type="clickable"
             onPress={() => openExternalUrl(env.FAQ_LINK)}
             icon={ExternalSite}
@@ -189,9 +188,9 @@ export const Profile: React.FC = () => {
             testID="row-faq"
           />
         </ProfileSection>
-        <ProfileSection title={_(t`Autres`)}>
+        <ProfileSection title={t`Autres`}>
           <Row
-            title={_(t`Accessibilité`)}
+            title={t`Accessibilité`}
             type="clickable"
             onPress={() => openExternalUrl(env.ACCESSIBILITY_LINK)}
             icon={ExternalSite}
@@ -199,7 +198,7 @@ export const Profile: React.FC = () => {
             testID="row-accessibility"
           />
           <Row
-            title={_(t`Mentions légales`)}
+            title={t`Mentions légales`}
             type="navigable"
             onPress={() => navigate('LegalNotices')}
             icon={LegalNotices}
@@ -207,7 +206,7 @@ export const Profile: React.FC = () => {
             testID="row-legal-notices"
           />
           <Row
-            title={_(t`Confidentialité`)}
+            title={t`Confidentialité`}
             type="navigable"
             onPress={() => navigate('ConsentSettings')}
             icon={Confidentiality}
@@ -215,7 +214,7 @@ export const Profile: React.FC = () => {
             testID="row-confidentiality"
           />
         </ProfileSection>
-        <ProfileSection title={_(t`Suivre pass Culture`)}>
+        <ProfileSection title={t`Suivre pass Culture`}>
           <NetworkRow>
             <NetworkRowContainer>
               <SocialNetworkCard network="instagram" />
@@ -228,7 +227,7 @@ export const Profile: React.FC = () => {
         {isLoggedIn && (
           <ProfileSection>
             <SectionRow
-              title={_(t`Déconnexion`)}
+              title={t`Déconnexion`}
               onPress={() => {
                 analytics.logLogout()
                 signOut()
@@ -242,7 +241,7 @@ export const Profile: React.FC = () => {
         )}
         <ProfileSection>
           <Spacer.Column numberOfSpaces={4} />
-          <Version>{_(t`Version ${Package.version}`)}</Version>
+          <Version>{t`Version ${Package.version}`}</Version>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistere />
           <Spacer.Column numberOfSpaces={4} />

@@ -1,11 +1,11 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { waitFor } from '@testing-library/react-native'
 import React from 'react'
 import { Platform } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
 import { GeolocationWrapper, useGeolocation, requestGeolocPermission } from 'libs/geolocation'
 import { storage } from 'libs/storage'
+import { waitFor } from 'tests/utils'
 
 import { getPosition } from './getPosition'
 import { GeolocPermissionState } from './permissionState.d'

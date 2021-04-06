@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import { Linking } from 'react-native'
 
-import { _ } from 'libs/i18n'
-
 import { useDeeplinkUrlHandler, useOnDeeplinkError } from './useDeeplinkUrlHandler'
 
 export function useListenDeepLinksEffect() {

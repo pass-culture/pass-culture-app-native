@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { ExpenseDomain } from 'api/gen'
+import { render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { CreditCeiling } from './CreditCeiling'

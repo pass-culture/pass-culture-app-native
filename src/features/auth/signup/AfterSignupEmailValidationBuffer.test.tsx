@@ -1,4 +1,3 @@
-import { render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 
@@ -8,6 +7,7 @@ import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { render, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { loginRoutine } from '../__mocks__/AuthContext'

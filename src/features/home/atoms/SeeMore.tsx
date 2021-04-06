@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ColorsEnum, getSpacing, LENGTH_L, LENGTH_M, Spacer, Typo, getShadow } from 'ui/theme'
 
@@ -26,7 +25,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ layout, onPress }) => {
         </Row>
         <Spacer.Column numberOfSpaces={2} />
         <Row>
-          <Typo.ButtonText color={ColorsEnum.PRIMARY}>{_(t`En voir plus`)}</Typo.ButtonText>
+          <Typo.ButtonText color={ColorsEnum.PRIMARY}>{t`En voir plus`}</Typo.ButtonText>
         </Row>
       </ClickableArea>
     </Container>

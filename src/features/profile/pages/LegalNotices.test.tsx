@@ -1,4 +1,3 @@
-import { render, act, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
@@ -6,7 +5,7 @@ import { UserProfileResponse } from 'api/gen'
 import { contactSupport } from 'features/auth/support.services'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { env } from 'libs/environment'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
 
 import { LegalNotices } from './LegalNotices'
 

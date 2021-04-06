@@ -1,8 +1,8 @@
-import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
 import { canGoBack, goBack } from '__mocks__/@react-navigation/native'
 import { errorMonitoring } from 'libs/errorMonitoring'
+import { render, fireEvent } from 'tests/utils'
 
 import {
   AsyncErrorBoundary,

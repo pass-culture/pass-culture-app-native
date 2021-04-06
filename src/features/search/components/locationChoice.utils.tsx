@@ -3,7 +3,6 @@ import React from 'react'
 
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationType } from 'libs/algolia'
-import { _ } from 'libs/i18n'
 import { buildPlaceLabel } from 'libs/place'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { BicolorLocationPointer as Place } from 'ui/svg/icons/BicolorLocationPointer'
@@ -17,10 +16,10 @@ export const useLocationChoice = (
   const isSelected = locationType === searchState.locationType
 
   if (locationType === LocationType.EVERYWHERE)
-    return { Icon: Everywhere, label: _(t`Partout`), isSelected }
+    return { Icon: Everywhere, label: t`Partout`, isSelected }
   if (locationType === LocationType.AROUND_ME)
-    return { Icon: AroundMe, label: _(t`Autour de moi`), isSelected }
+    return { Icon: AroundMe, label: t`Autour de moi`, isSelected }
 
   const { place } = searchState
-  return { Icon: Place, label: place ? buildPlaceLabel(place) : _(t`Choisir un lieu`), isSelected }
+  return { Icon: Place, label: place ? buildPlaceLabel(place) : t`Choisir un lieu`, isSelected }
 }

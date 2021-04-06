@@ -11,7 +11,6 @@ import { CrashTestButton } from 'features/cheatcodes/components/CrashTestButton'
 import { NavigateHomeButton } from 'features/cheatcodes/components/NavigateHomeButton/NavigateHomeButton'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { _ } from 'libs/i18n'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken } from 'libs/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -106,9 +105,7 @@ async function getBatchInstallationID() {
   } catch (e) {
     Alert.alert(
       'Batch error',
-      _(
-        /*i18n: Error message on Batch get installation ID*/ t`An error has occured while obtaining the Batch installation ID : ${e}`
-      )
+      t`An error has occured while obtaining the Batch installation ID : ${e}`
     )
     return 'Batch error'
   }

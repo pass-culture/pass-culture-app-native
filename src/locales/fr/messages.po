@@ -13,217 +13,214 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/bookOffer/components/BookingInformations.tsx:32
+#: src/features/bookOffer/components/BookingInformations.tsx:31
 msgid "({0} x 2 places)"
 msgstr "({0} x 2 places)"
 
-#: src/features/favorites/atoms/BicolorFavoriteCount.tsx:46
+#: src/features/favorites/atoms/BicolorFavoriteCount.tsx:45
 msgid "+"
 msgstr "+"
 
-#: src/libs/parsers/getDisplayPrice.ts:30
+#: src/libs/parsers/getDisplayPrice.ts:29
 msgid "/ place"
 msgstr "/ place"
 
-#: src/features/auth/components/PasswordSecurityRules.tsx:40
+#: src/features/auth/components/PasswordSecurityRules.tsx:39
 msgid "1 Caractère spécial (!@#$%^&*...)"
 msgstr "1 Caractère spécial (!@#$%^&*...)"
 
-#: src/features/auth/components/PasswordSecurityRules.tsx:39
+#: src/features/auth/components/PasswordSecurityRules.tsx:38
 msgid "1 Chiffre"
 msgstr "1 Chiffre"
 
-#: src/features/auth/components/PasswordSecurityRules.tsx:37
+#: src/features/auth/components/PasswordSecurityRules.tsx:36
 msgid "1 Majuscule"
 msgstr "1 Majuscule"
 
-#: src/features/auth/components/PasswordSecurityRules.tsx:38
+#: src/features/auth/components/PasswordSecurityRules.tsx:37
 msgid "1 Minuscule"
 msgstr "1 Minuscule"
 
-#: src/features/auth/components/PasswordSecurityRules.tsx:36
+#: src/features/auth/components/PasswordSecurityRules.tsx:35
 msgid "12 Caractères"
 msgstr "12 Caractères"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:37
+#: src/features/auth/signup/QuitSignupModal.tsx:36
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
-#: src/features/auth/signup/AcceptCgu.tsx:122
+#: src/features/auth/signup/AcceptCgu.tsx:119
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/OfferBody.tsx:59
-#: src/features/profile/pages/Profile.tsx:120
+#: src/features/offer/pages/OfferBody.tsx:58
+#: src/features/profile/pages/Profile.tsx:119
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:20
+#: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:20
+#: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à la billetterie"
 msgstr "Accéder à la billetterie"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:32
+#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:31
 msgid "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
 msgstr "Active la géolocalisation pour découvrir toutes les offres existantes autour de toi."
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:32
-#: src/libs/geolocation/components/GeolocationActivationModal.tsx:26
+#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:31
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:25
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
-#: src/features/offer/components/OfferWhereSection.tsx:28
+#: src/features/offer/components/OfferWhereSection.tsx:27
 msgid "Adresse"
 msgstr "Adresse"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:111
-#: src/features/auth/login/Login.tsx:117
-#: src/features/auth/signup/SetEmail.tsx:65
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:110
+#: src/features/auth/login/Login.tsx:116
+#: src/features/auth/signup/SetEmail.tsx:64
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
-#: src/features/search/atoms/Buttons/ShowResults.tsx:14
+#: src/features/search/atoms/Buttons/ShowResults.tsx:13
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
-#: src/features/search/atoms/Buttons/ShowResults.tsx:15
+#: src/features/search/atoms/Buttons/ShowResults.tsx:14
 msgid "Afficher les {nbHits} résultats"
 msgstr "Afficher les {nbHits} résultats"
 
-#: src/features/search/atoms/Buttons/ShowResults.tsx:12
+#: src/features/search/atoms/Buttons/ShowResults.tsx:11
 msgid "Afficher {nbHits} résultat"
 msgstr "Afficher {nbHits} résultat"
 
-#: src/features/auth/signup/AccountCreated.tsx:17
-#: src/features/auth/signup/EligibilityConfirmed.tsx:17
+#: src/features/auth/signup/AccountCreated.tsx:16
+#: src/features/auth/signup/EligibilityConfirmed.tsx:16
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
-#: src/features/profile/pages/Profile.tsx:115
+#: src/features/profile/pages/Profile.tsx:114
 msgid "Aides"
 msgstr "Aides"
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:50
+#: src/features/bookOffer/components/BookingImpossible.tsx:49
 msgid "Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver."
 msgstr "Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver."
 
-#: src/features/favorites/pages/FavoritesSorts.tsx:28
+#: src/features/favorites/pages/FavoritesSorts.tsx:27
 msgid "Ajouté récemment"
 msgstr "Ajouté récemment"
 
-#. Error message on Batch get installation ID
-#: src/features/cheatcodes/pages/CheatCodes.tsx:103
+#: src/features/cheatcodes/pages/CheatCodes.tsx:101
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
-#: src/features/offer/services/useItinerary.ts:79
+#: src/features/offer/services/useItinerary.ts:78
 msgid "Annuler"
 msgstr "Annuler"
 
-#: src/features/bookings/components/EndedBookingItem.tsx:55
+#: src/features/bookings/components/EndedBookingItem.tsx:54
 msgid "Annulé"
 msgstr "Annulé"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:20
+#: src/features/bookOffer/components/BookingDetails.tsx:19
 msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
 msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:19
+#: src/features/bookOffer/components/BookingDetails.tsx:18
 msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
 msgstr "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
 
-#: src/features/search/pages/SuggestedPlaces.tsx:47
+#: src/features/search/pages/SuggestedPlaces.tsx:46
 msgid "Aucun lieu ne correspond à ta recherche"
 msgstr "Aucun lieu ne correspond à ta recherche"
 
-#: src/libs/keychain.ts:17
+#: src/libs/keychain.ts:16
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
 
-#: src/features/search/atoms/Buttons/ShowResults.tsx:10
+#: src/features/search/atoms/Buttons/ShowResults.tsx:9
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
 
-#: src/libs/storage.ts:35
+#: src/libs/storage.ts:34
 msgid "Aucune valeur à sauvegarder"
 msgstr "Aucune valeur à sauvegarder"
 
-#: src/features/bookings/helpers.ts:44
-#: src/features/search/sections/OfferDate.tsx:34
+#: src/features/bookings/helpers.ts:43
+#: src/features/search/sections/OfferDate.tsx:33
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
 
-#: src/libs/notifications/components/PushNotificationsModal.tsx:23
+#: src/libs/notifications/components/PushNotificationsModal.tsx:22
 msgid "Autoriser les notifications"
 msgstr "Autoriser les notifications"
 
-#: src/features/profile/pages/NotificationSettings.tsx:133
+#: src/features/profile/pages/NotificationSettings.tsx:132
 msgid "Autoriser les notifications marketing"
 msgstr "Autoriser les notifications marketing"
 
-#: src/features/profile/pages/NotificationSettings.tsx:123
+#: src/features/profile/pages/NotificationSettings.tsx:122
 msgid "Autoriser l’envoi d’e\\u2011mails"
 msgstr "Autoriser l’envoi d’e\\u2011mails"
 
-#: src/features/profile/pages/ConsentSettings.tsx:78
+#: src/features/profile/pages/ConsentSettings.tsx:77
 msgid "Autoriser l’utilisation de mes données de navigation"
 msgstr "Autoriser l’utilisation de mes données de navigation"
 
-#: src/features/search/components/locationChoice.utils.tsx:15
+#: src/features/search/components/locationChoice.utils.tsx:14
 msgid "Autour de moi"
 msgstr "Autour de moi"
 
-#: src/features/profile/pages/Profile.tsx:119
+#: src/features/profile/pages/Profile.tsx:118
 msgid "Autres"
 msgstr "Autres"
 
-#: src/features/bookings/helpers.ts:60
+#: src/features/bookings/helpers.ts:59
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
-#. Welcome title message
-#: src/features/home/pages/Home.tsx:76
+#: src/features/home/pages/Home.tsx:74
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
-#. Hello title message
-#: src/features/home/pages/Home.tsx:75
-msgid "Bonjour {0}"
-msgstr "Bonjour {0}"
+#: src/features/home/pages/Home.tsx:74
+msgid "Bonjour"
+msgstr "Bonjour"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:32
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:31
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
-#: src/features/auth/signup/AcceptCgu.tsx:101
+#: src/features/auth/signup/AcceptCgu.tsx:100
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
-#: src/features/search/pages/Categories.tsx:56
-#: src/features/search/sections/titles.ts:7
+#: src/features/search/pages/Categories.tsx:55
+#: src/features/search/sections/titles.ts:6
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/pages/BookingDetails.tsx:37
+#: src/features/bookings/pages/BookingDetails.tsx:36
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:56
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:55
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:19
+#: src/features/profile/components/BeneficiaryCeilings.tsx:18
 msgid "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible."
 msgstr "Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible."
 
-#: src/features/search/sections/OfferDate.tsx:38
+#: src/features/search/sections/OfferDate.tsx:37
 msgid "Ce week-end"
 msgstr "Ce week-end"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:18
+#: src/features/profile/components/BeneficiaryCeilings.tsx:17
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
@@ -231,54 +228,54 @@ msgstr "Ces plafonds ont été mis en place pour favoriser la diversification de
 msgid "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 msgstr "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:18
+#: src/features/bookOffer/components/CancellationDetails.tsx:17
 msgid "Cette réservation est annulable"
 msgstr "Cette réservation est annulable"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:22
+#: src/features/bookOffer/components/CancellationDetails.tsx:21
 msgid "Cette réservation n’est pas annulable"
 msgstr "Cette réservation n’est pas annulable"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:23
+#: src/features/bookOffer/components/CancellationDetails.tsx:22
 msgid "Cette réservation peut être annulée jusqu’au {0}"
 msgstr "Cette réservation peut être annulée jusqu’au {0}"
 
-#: src/features/search/sections/OfferDate.tsx:36
+#: src/features/search/sections/OfferDate.tsx:35
 msgid "Cette semaine"
 msgstr "Cette semaine"
 
-#: src/ui/components/LoadingPage.tsx:13
+#: src/ui/components/LoadingPage.tsx:12
 msgid "Chargement en cours..."
 msgstr "Chargement en cours..."
 
-#: src/features/profile/pages/LegalNotices.tsx:24
+#: src/features/profile/pages/LegalNotices.tsx:23
 msgid "Charte de protection des données personnelles"
 msgstr "Charte de protection des données personnelles"
 
-#: src/features/home/pages/Home.tsx:69
+#: src/features/home/pages/Home.tsx:68
 msgid "CheatMenu"
 msgstr "CheatMenu"
 
-#: src/features/bookOffer/components/BookingEventChoices.tsx:49
+#: src/features/bookOffer/components/BookingEventChoices.tsx:48
 msgid "Choisir les options"
 msgstr "Choisir les options"
 
-#: src/features/search/components/locationChoice.utils.tsx:17
-#: src/features/search/pages/LocationPicker.tsx:47
+#: src/features/search/components/locationChoice.utils.tsx:16
+#: src/features/search/pages/LocationPicker.tsx:46
 msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
-#: src/features/offer/services/useItinerary.ts:80
+#: src/features/offer/services/useItinerary.ts:79
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:38
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:36
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:37
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:35
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:52
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:50
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
@@ -286,824 +283,826 @@ msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgid "Code Postal"
 msgstr "Code Postal"
 
-#: src/features/profile/pages/Profile.tsx:116
+#: src/features/profile/pages/Profile.tsx:115
 msgid "Comment ça marche ?"
 msgstr "Comment ça marche ?"
 
-#: src/features/cheatcodes/pages/CheatMenu.tsx:18
+#: src/features/cheatcodes/pages/CheatMenu.tsx:17
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/signup/AcceptCgu.tsx:109
+#: src/features/auth/signup/AcceptCgu.tsx:106
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
-#: src/features/profile/pages/LegalNotices.tsx:22
+#: src/features/profile/pages/LegalNotices.tsx:21
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:26
+#: src/features/bookOffer/components/CancellationDetails.tsx:25
 msgid "Conditions d'annulation"
 msgstr "Conditions d'annulation"
 
-#: src/features/profile/pages/Profile.tsx:122
+#: src/features/profile/pages/Profile.tsx:121
 msgid "Confidentialité"
 msgstr "Confidentialité"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:33
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
 msgid "Confirme ton e\\u2011mail"
 msgstr "Confirme ton e\\u2011mail"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:75
+#: src/features/bookOffer/components/BookingDetails.tsx:74
 msgid "Confirmer la réservation"
 msgstr "Confirmer la réservation"
 
-#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:64
-#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:66
-#: src/features/profile/pages/ChangePassword.tsx:81
-#: src/features/profile/pages/ChangePassword.tsx:83
+#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:63
+#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:65
+#: src/features/profile/pages/ChangePassword.tsx:80
+#: src/features/profile/pages/ChangePassword.tsx:82
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
-#: src/features/profile/components/LoggedOutHeader.tsx:32
+#: src/features/profile/components/LoggedOutHeader.tsx:31
 msgid "Connecte-toi"
 msgstr "Connecte-toi"
 
-#: src/features/auth/login/Login.tsx:113
+#: src/features/auth/login/Login.tsx:112
 msgid "Connecte-toi !"
 msgstr "Connecte-toi !"
 
-#: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:32
+#: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:31
 msgid "Connecte-toi pour profiter de cette fonctionnalité"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité"
 
-#: src/features/favorites/components/NotConnectedFavorites.tsx:20
+#: src/features/favorites/components/NotConnectedFavorites.tsx:19
 msgid "Connecte-toi pour profiter de cette fonctionnalité !"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:51
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:49
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:50
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:48
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:48
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:57
-#: src/features/auth/signup/AcceptCgu.tsx:120
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:46
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:57
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:47
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
+#: src/features/auth/signup/AcceptCgu.tsx:117
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:54
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
-#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:71
-#: src/features/auth/signup/SetBirthday.tsx:144
-#: src/features/auth/signup/SetEmail.tsx:78
-#: src/features/auth/signup/SetPassword.tsx:44
+#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:70
+#: src/features/auth/signup/SetBirthday.tsx:143
+#: src/features/auth/signup/SetEmail.tsx:77
+#: src/features/auth/signup/SetPassword.tsx:43
 #: src/features/auth/signup/SetPostalCode.tsx:59
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:55
-#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:11
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:54
+#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
 msgid "Continuer"
 msgstr "Continuer"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:35
+#: src/features/auth/signup/QuitSignupModal.tsx:34
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
-#: src/features/favorites/atoms/BookingButton.tsx:47
-#: src/features/offer/services/useCtaWordingAndAction.ts:35
-#: src/features/offer/services/useCtaWordingAndAction.ts:46
+#: src/features/favorites/atoms/BookingButton.tsx:46
+#: src/features/offer/services/useCtaWordingAndAction.ts:34
+#: src/features/offer/services/useCtaWordingAndAction.ts:45
 msgid "Crédit insuffisant"
 msgstr "Crédit insuffisant"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:34
+#: src/features/offer/services/useCtaWordingAndAction.ts:33
 msgid "Crédit numérique insuffisant"
 msgstr "Crédit numérique insuffisant"
 
-#: src/features/search/sections/titles.ts:16
+#: src/features/search/sections/titles.ts:15
 msgid "Créneau horaire"
 msgstr "Créneau horaire"
 
-#: src/features/bookOffer/components/BookDateChoice.tsx:20
-#: src/features/search/sections/titles.ts:13
+#: src/features/bookOffer/components/BookDateChoice.tsx:19
+#: src/features/search/sections/titles.ts:12
 msgid "Date"
 msgstr "Date"
 
-#: src/features/search/sections/titles.ts:14
+#: src/features/search/sections/titles.ts:13
 msgid "Date de l'offre"
 msgstr "Date de l'offre"
 
-#: src/features/search/sections/OfferDate.tsx:40
+#: src/features/search/sections/OfferDate.tsx:39
 msgid "Date précise"
 msgstr "Date précise"
 
-#: src/features/bookings/helpers.ts:47
+#: src/features/bookings/helpers.ts:46
 msgid "Demain"
 msgstr "Demain"
 
-#: src/features/bookings/helpers.ts:57
+#: src/features/bookings/helpers.ts:56
 msgid "Dernier jour pour retirer"
 msgstr "Dernier jour pour retirer"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:21
+#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "Des nouveautés"
 msgstr "Des nouveautés"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
 
-#: src/features/offer/components/OfferWhereSection.tsx:34
+#: src/features/offer/components/OfferWhereSection.tsx:33
 msgid "Distance"
 msgstr "Distance"
 
-#: src/libs/parsers/formatDates.ts:76
-#: src/libs/parsers/formatDates.ts:80
+#: src/libs/parsers/formatDates.ts:75
+#: src/libs/parsers/formatDates.ts:79
 msgid "Du {0} au {formattedEndDate}"
 msgstr "Du {0} au {formattedEndDate}"
 
-#: src/libs/parsers/formatDates.ts:78
+#: src/libs/parsers/formatDates.ts:77
 msgid "Du {0} {1} au {formattedEndDate}"
 msgstr "Du {0} {1} au {formattedEndDate}"
 
-#. Duo offer
-#: src/features/bookOffer/components/BookDuoChoice.tsx:25
-#: src/features/bookOffer/components/BookDuoChoice.tsx:43
-#: src/features/home/atoms/OfferCaption.tsx:15
+#: src/features/bookOffer/components/BookDuoChoice.tsx:24
+#: src/features/bookOffer/components/BookDuoChoice.tsx:42
+#: src/features/home/atoms/OfferCaption.tsx:14
 msgid "Duo"
 msgstr "Duo"
 
-#: src/features/favorites/atoms/Favorite.tsx:43
-#: src/libs/parsers/formatDates.ts:64
+#: src/features/favorites/atoms/Favorite.tsx:42
+#: src/libs/parsers/formatDates.ts:63
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
-#: src/features/profile/pages/Profile.tsx:135
+#: src/features/profile/pages/Profile.tsx:134
 msgid "Déconnexion"
 msgstr "Déconnexion"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:21
+#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "Découvrir"
 msgstr "Découvrir"
 
-#: src/features/bookOffer/services/useModalContent.tsx:35
-#: src/features/bookOffer/services/useModalContent.tsx:50
+#: src/features/bookOffer/services/useModalContent.tsx:34
+#: src/features/bookOffer/services/useModalContent.tsx:49
 msgid "Détails de la réservation"
 msgstr "Détails de la réservation"
 
-#: src/features/profile/pages/PersonalData.tsx:26
+#: src/features/profile/pages/PersonalData.tsx:25
 msgid "E-mail"
 msgstr "E-mail"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:34
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
-#: src/features/auth/login/Login.tsx:97
+#: src/features/auth/login/Login.tsx:96
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
-#: src/features/auth/signup/AcceptCgu.tsx:107
+#: src/features/auth/signup/AcceptCgu.tsx:105
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:37
+#: src/features/bookOffer/components/BookingDetails.tsx:36
 msgid "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
 msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
 
-#: src/features/home/atoms/SeeMore.tsx:21
+#: src/features/home/atoms/SeeMore.tsx:20
 msgid "En voir plus"
 msgstr "En voir plus"
 
-#: src/features/profile/pages/ChangePassword.tsx:92
-#: src/features/profile/pages/ConsentSettings.tsx:82
-#: src/features/profile/pages/NotificationSettings.tsx:138
+#: src/features/profile/pages/ChangePassword.tsx:91
+#: src/features/profile/pages/ConsentSettings.tsx:81
+#: src/features/profile/pages/NotificationSettings.tsx:137
 msgid "Enregistrer"
 msgstr "Enregistrer"
 
-#. Authentication error message
-#: src/libs/fetch.ts:38
+#: src/libs/fetch.ts:37
 msgid "Erreur d'authentification"
 msgstr "Erreur d'authentification"
 
-#. Authentication error message
-#: src/libs/fetch.ts:43
+#: src/libs/fetch.ts:42
 msgid "Erreur lors de la récupération du token d'accès"
 msgstr "Erreur lors de la récupération du token d'accès"
 
-#: src/features/auth/login/Login.tsx:89
+#: src/features/auth/login/Login.tsx:88
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 
-#. postalCode placeholder
 #: src/features/auth/signup/SetPostalCode.tsx:54
 msgid "Ex: 35000"
 msgstr "Ex: 35000"
 
-#: src/features/bookings/components/NoBookingsView.tsx:21
-#: src/features/favorites/components/NoFavoritesResult.tsx:21
+#: src/features/bookings/components/NoBookingsView.tsx:20
+#: src/features/favorites/components/NoFavoritesResult.tsx:20
 msgid "Explorer les offres"
 msgstr "Explorer les offres"
 
-#: src/features/search/atoms/Buttons/Filter.tsx:26
-#: src/features/search/pages/SearchFilter.tsx:110
+#: src/features/search/atoms/Buttons/Filter.tsx:25
+#: src/features/search/pages/SearchFilter.tsx:109
 msgid "Filtrer"
 msgstr "Filtrer"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:75
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:74
 msgid "Format de l'e-mail incorrect"
 msgstr "Format de l'e-mail incorrect"
 
-#: src/features/bookOffer/components/BookingInformations.tsx:29
-#: src/libs/parsers/getDisplayPrice.ts:22
-#: src/libs/parsers/getDisplayPrice.ts:29
-#: src/libs/parsers/getDisplayPrice.ts:34
+#: src/features/bookOffer/components/BookingInformations.tsx:28
+#: src/libs/parsers/getDisplayPrice.ts:21
+#: src/libs/parsers/getDisplayPrice.ts:28
+#: src/libs/parsers/getDisplayPrice.ts:33
 msgid "Gratuit"
 msgstr "Gratuit"
 
-#: src/features/profile/pages/Profile.tsx:110
+#: src/features/profile/pages/Profile.tsx:109
 msgid "Géolocalisation"
 msgstr "Géolocalisation"
 
-#: src/features/offer/atoms/AccessibilityAtom.service.ts:23
+#: src/features/offer/atoms/AccessibilityAtom.service.ts:22
 msgid "Handicap auditif"
 msgstr "Handicap auditif"
 
-#: src/features/offer/atoms/AccessibilityAtom.service.ts:21
+#: src/features/offer/atoms/AccessibilityAtom.service.ts:20
 msgid "Handicap moteur"
 msgstr "Handicap moteur"
 
-#: src/features/offer/atoms/AccessibilityAtom.service.ts:19
+#: src/features/offer/atoms/AccessibilityAtom.service.ts:18
 msgid "Handicap psychique ou cognitif"
 msgstr "Handicap psychique ou cognitif"
 
-#: src/features/offer/atoms/AccessibilityAtom.service.ts:17
+#: src/features/offer/atoms/AccessibilityAtom.service.ts:16
 msgid "Handicap visuel"
 msgstr "Handicap visuel"
 
-#: src/features/bookOffer/components/BookHourChoice.tsx:51
-#: src/features/search/sections/titles.ts:15
+#: src/features/bookOffer/components/BookHourChoice.tsx:50
+#: src/features/search/sections/titles.ts:14
 msgid "Heure"
 msgstr "Heure"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:39
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:79
-#: src/features/auth/signup/AcceptCgu.tsx:44
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:38
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:78
+#: src/features/auth/signup/AcceptCgu.tsx:43
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
 
-#: src/features/offer/pages/OfferDescription.tsx:15
+#: src/features/offer/pages/OfferDescription.tsx:14
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:22
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:21
 msgid "Il te reste encore {0} à dépenser sur le pass !"
 msgstr "Il te reste encore {0} à dépenser sur le pass !"
 
-#: src/features/auth/login/Login.tsx:77
+#: src/features/auth/login/Login.tsx:76
 msgid "Il y a eu un problème. Tu peux réessayer plus tard."
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
 
-#: src/features/profile/pages/PersonalData.tsx:41
-#: src/features/profile/pages/Profile.tsx:106
+#: src/features/profile/pages/PersonalData.tsx:40
+#: src/features/profile/pages/Profile.tsx:105
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
-#: src/features/profile/components/LoggedOutHeader.tsx:21
+#: src/features/profile/components/LoggedOutHeader.tsx:20
 msgid "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
 msgstr "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
 
-#: src/features/search/components/SearchLandingPage.tsx:25
+#: src/features/search/components/SearchLandingPage.tsx:24
 msgid "Je cherche"
 msgstr "Je cherche"
 
-#: src/features/offer/services/useShareOffer.ts:25
+#: src/features/offer/services/useShareOffer.ts:24
 msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
 msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
 
-#: src/features/profile/pages/NotificationSettings.tsx:120
+#: src/features/profile/pages/NotificationSettings.tsx:119
 msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
 msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
 
-#: src/features/profile/pages/NotificationSettings.tsx:130
+#: src/features/profile/pages/NotificationSettings.tsx:129
 msgid "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 msgstr "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
 
-#: src/libs/keychain.ts:23
-#: src/libs/keychain.ts:33
-#: src/libs/keychain.ts:47
+#: src/libs/keychain.ts:22
+#: src/libs/keychain.ts:32
+#: src/libs/keychain.ts:46
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
-#: src/features/profile/pages/ConsentSettings.tsx:66
+#: src/features/profile/pages/ConsentSettings.tsx:65
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:43
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:41
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:42
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:40
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:31
-#: src/features/offer/components/OfferHeader.tsx:41
+#: src/features/bookOffer/components/BookingImpossible.tsx:30
+#: src/features/offer/components/OfferHeader.tsx:40
 msgid "L'offre n'a pas été ajoutée à tes favoris"
 msgstr "L'offre n'a pas été ajoutée à tes favoris"
 
-#: src/features/favorites/atoms/Favorite.tsx:32
-#: src/features/offer/components/OfferHeader.tsx:49
+#: src/features/favorites/atoms/Favorite.tsx:31
+#: src/features/offer/components/OfferHeader.tsx:48
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:35
+#: src/features/profile/components/BeneficiaryCeilings.tsx:34
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\\u0020"
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\\u0020"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:50
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:49
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:49
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
-#: src/features/deeplinks/useDeeplinkUrlHandler.ts:20
+#: src/features/deeplinks/useDeeplinkUrlHandler.ts:19
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:11
+#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
 msgid "Le pass Culture"
 msgstr "Le pass Culture"
 
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:32
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:31
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
-#: src/features/profile/pages/NotificationSettings.tsx:78
+#: src/features/profile/pages/NotificationSettings.tsx:77
 msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:94
-#: src/features/auth/signup/AcceptCgu.tsx:92
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:93
+#: src/features/auth/signup/AcceptCgu.tsx:91
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
-#: src/features/bookings/helpers.ts:39
-msgid "Le\\u00a0"
-msgstr "Le\\u00a0"
+#: src/features/bookings/helpers.ts:38
+msgid "Le {0}"
+msgstr "Le {0}"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:17
+#: src/features/bookOffer/components/BookingDetails.tsx:16
 msgid "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 msgstr "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:46
+#: src/features/bookOffer/components/BookingImpossible.tsx:45
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
-#: src/features/auth/signup/QuitSignupModal.tsx:32
+#: src/features/auth/signup/QuitSignupModal.tsx:31
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
-#: src/features/search/pages/LocationFilter.tsx:82
-#: src/features/search/sections/titles.ts:5
+#: src/features/search/pages/LocationFilter.tsx:81
+#: src/features/search/sections/titles.ts:4
 msgid "Localisation"
 msgstr "Localisation"
 
-#: src/features/maintenance/Maintenance.tsx:27
+#: src/features/maintenance/Maintenance.tsx:26
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
-#: src/features/auth/signup/SetBirthday.tsx:156
-msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
-msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+#: src/features/auth/signup/SetBirthday.tsx:155
+msgid ""
+"L’application pass Culture est accessible à tous.\n"
+"Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit}\n"
+"proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgstr ""
+"L’application pass Culture est accessible à tous.\n"
+"Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit}\n"
+"proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/bookings/components/BookingPropertiesSection.tsx:19
+#: src/features/bookings/components/BookingPropertiesSection.tsx:18
 msgid "Ma réservation"
 msgstr "Ma réservation"
 
-#: src/features/maintenance/Maintenance.tsx:18
+#: src/features/maintenance/Maintenance.tsx:17
 msgid "Maintenance en cours"
 msgstr "Maintenance en cours"
 
-#: src/features/profile/pages/LegalNotices.tsx:31
-#: src/features/profile/pages/Profile.tsx:121
+#: src/features/profile/pages/LegalNotices.tsx:30
+#: src/features/profile/pages/Profile.tsx:120
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
-#: src/features/bookOffer/services/useModalContent.tsx:43
+#: src/features/bookOffer/services/useModalContent.tsx:42
 msgid "Mes options"
 msgstr "Mes options"
 
-#: src/features/bookings/pages/EndedBookings.tsx:23
+#: src/features/bookings/pages/EndedBookings.tsx:22
 msgid "Mes réservations terminées"
 msgstr "Mes réservations terminées"
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:55
+#: src/features/bookOffer/components/BookingImpossible.tsx:54
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
-#: src/features/offer/pages/OfferBody.tsx:51
+#: src/features/offer/pages/OfferBody.tsx:50
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
-#: src/features/search/atoms/NoSearchResult.tsx:40
+#: src/features/search/atoms/NoSearchResult.tsx:37
 msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:24
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:23
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
-#: src/features/auth/login/Login.tsx:123
-#: src/features/auth/signup/SetPassword.tsx:38
-#: src/features/profile/pages/ChangePassword.tsx:97
-#: src/features/profile/pages/Profile.tsx:107
+#: src/features/auth/login/Login.tsx:122
+#: src/features/auth/signup/SetPassword.tsx:37
+#: src/features/profile/pages/ChangePassword.tsx:96
+#: src/features/profile/pages/Profile.tsx:106
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
-#: src/features/profile/pages/ChangePassword.tsx:66
+#: src/features/profile/pages/ChangePassword.tsx:65
 msgid "Mot de passe actuel"
 msgstr "Mot de passe actuel"
 
-#: src/features/profile/pages/ChangePassword.tsx:42
+#: src/features/profile/pages/ChangePassword.tsx:41
 msgid "Mot de passe modifié"
 msgstr "Mot de passe modifié"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:102
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:101
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
-#: src/features/auth/login/Login.tsx:130
+#: src/features/auth/login/Login.tsx:129
 msgid "Mot de passe oublié ?"
 msgstr "Mot de passe oublié ?"
 
-#: src/features/cheatcodes/pages/CheatMenu.tsx:22
+#: src/features/cheatcodes/pages/CheatMenu.tsx:21
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/features/bookOffer/components/BookDuoChoice.tsx:36
+#: src/features/bookOffer/components/BookDuoChoice.tsx:35
 msgid "Nombre de place"
 msgstr "Nombre de place"
 
-#: src/features/auth/login/Login.tsx:93
+#: src/features/auth/login/Login.tsx:92
 msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute."
 msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute."
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:21
+#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 
-#: src/features/profile/pages/NotificationSettings.tsx:141
-#: src/features/profile/pages/Profile.tsx:109
+#: src/features/profile/pages/NotificationSettings.tsx:140
+#: src/features/profile/pages/Profile.tsx:108
 msgid "Notifications"
 msgstr "Notifications"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:22
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:21
 msgid "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:46
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:45
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
-#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:57
-#: src/features/profile/pages/ChangePassword.tsx:74
+#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:56
+#: src/features/profile/pages/ChangePassword.tsx:73
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/profile/pages/PersonalData.tsx:33
+#: src/features/profile/pages/PersonalData.tsx:32
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
 
-#: src/features/favorites/atoms/BookingButton.tsx:41
-#: src/features/offer/services/useCtaWordingAndAction.ts:26
-#: src/features/offer/services/useCtaWordingAndAction.ts:28
+#: src/features/favorites/atoms/BookingButton.tsx:40
+#: src/features/offer/services/useCtaWordingAndAction.ts:25
+#: src/features/offer/services/useCtaWordingAndAction.ts:27
 msgid "Offre expirée"
 msgstr "Offre expirée"
 
-#: src/features/search/sections/OfferType.tsx:12
+#: src/features/search/sections/OfferType.tsx:11
 msgid "Offre numérique"
 msgstr "Offre numérique"
 
-#: src/features/search/sections/OfferType.tsx:14
+#: src/features/search/sections/OfferType.tsx:13
 msgid "Offre physique"
 msgstr "Offre physique"
 
-#: src/features/favorites/atoms/BookingButton.tsx:26
-#: src/features/favorites/atoms/BookingButton.tsx:38
+#: src/features/favorites/atoms/BookingButton.tsx:25
+#: src/features/favorites/atoms/BookingButton.tsx:37
 msgid "Offre réservée"
 msgstr "Offre réservée"
 
-#: src/features/favorites/atoms/BookingButton.tsx:44
-#: src/features/offer/services/useCtaWordingAndAction.ts:30
+#: src/features/favorites/atoms/BookingButton.tsx:43
+#: src/features/offer/services/useCtaWordingAndAction.ts:29
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
-#: src/features/auth/signup/AccountCreated.tsx:21
-#: src/features/auth/signup/EligibilityConfirmed.tsx:21
+#: src/features/auth/signup/AccountCreated.tsx:19
+#: src/features/auth/signup/EligibilityConfirmed.tsx:19
 msgid "On y va !"
 msgstr "On y va !"
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:49
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:48
 msgid "Oops !"
 msgstr "Oops !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:49
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:49
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:48
 msgid "Oups"
 msgstr "Oups"
 
-#: src/features/search/atoms/NoSearchResult.tsx:34
+#: src/features/search/atoms/NoSearchResult.tsx:31
 msgid "Oups !"
 msgstr "Oups !"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:21
+#: src/features/bookOffer/components/BookingDetails.tsx:20
 msgid "Oups, cette offre n’est plus disponible !"
 msgstr "Oups, cette offre n’est plus disponible !"
 
-#: src/features/search/components/SearchLandingPage.tsx:33
+#: src/features/search/components/SearchLandingPage.tsx:32
 msgid "Où"
 msgstr "Où"
 
-#: src/features/offer/components/OfferWhereSection.tsx:25
+#: src/features/offer/components/OfferWhereSection.tsx:24
 msgid "Où ?"
 msgstr "Où ?"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:57
-#: src/features/profile/pages/ConsentSettings.tsx:86
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:56
+#: src/features/profile/pages/ConsentSettings.tsx:85
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
 
-#: src/features/profile/pages/Profile.tsx:104
+#: src/features/profile/pages/Profile.tsx:103
 msgid "Paramètres de l'application"
 msgstr "Paramètres de l'application"
 
-#: src/libs/geolocation/components/GeolocationActivationModal.tsx:11
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:10
 msgid "Paramètres de localisation"
 msgstr "Paramètres de localisation"
 
-#: src/libs/notifications/components/PushNotificationsModal.tsx:10
+#: src/libs/notifications/components/PushNotificationsModal.tsx:9
 msgid "Paramètres de notifications"
 msgstr "Paramètres de notifications"
 
-#: src/features/profile/pages/Profile.tsx:104
+#: src/features/profile/pages/Profile.tsx:103
 msgid "Paramètres du compte"
 msgstr "Paramètres du compte"
 
-#: src/features/search/components/locationChoice.utils.tsx:13
+#: src/features/search/components/locationChoice.utils.tsx:12
 msgid "Partout"
 msgstr "Partout"
 
-#: src/features/search/atoms/NoSearchResult.tsx:29
+#: src/features/search/atoms/NoSearchResult.tsx:27
 msgid "Pas de résultat trouvé pour"
 msgstr "Pas de résultat trouvé pour"
 
-#: src/features/search/atoms/NoSearchResult.tsx:30
+#: src/features/search/atoms/NoSearchResult.tsx:27
 msgid "Pas de résultat trouvé."
 msgstr "Pas de résultat trouvé."
 
-#: src/ui/components/achievements/components/GenericAchievementCard.tsx:71
+#: src/ui/components/achievements/components/GenericAchievementCard.tsx:70
 msgid "Passer"
 msgstr "Passer"
 
-#: src/features/profile/components/YoungerBadge.tsx:18
+#: src/features/profile/components/YoungerBadge.tsx:17
 msgid "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
 msgstr "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
 
-#: src/features/bookings/helpers.ts:35
+#: src/features/bookings/helpers.ts:34
 msgid "Permanent"
 msgstr "Permanent"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:24
+#: src/features/auth/signup/VerifyEligibility.tsx:23
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
-#: src/features/auth/signup/AcceptCgu.tsx:112
+#: src/features/auth/signup/AcceptCgu.tsx:109
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:49
-#: src/features/profile/pages/ConsentSettings.tsx:72
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:48
+#: src/features/profile/pages/ConsentSettings.tsx:71
 msgid "Politique des cookies"
 msgstr "Politique des cookies"
 
-#: src/features/auth/signup/AcceptCgu.tsx:117
+#: src/features/auth/signup/AcceptCgu.tsx:114
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
-#: src/features/profile/pages/ConsentSettings.tsx:71
+#: src/features/profile/pages/ConsentSettings.tsx:70
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:26
+#: src/features/auth/signup/VerifyEligibility.tsx:25
 msgid "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/auth/signup/SetBirthday.tsx:137
+#: src/features/auth/signup/SetBirthday.tsx:136
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:15
+#: src/features/profile/components/BeneficiaryCeilings.tsx:14
 msgid "Pourquoi les biens numériques sont-ils limités ?"
 msgstr "Pourquoi les biens numériques sont-ils limités ?"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:14
+#: src/features/profile/components/BeneficiaryCeilings.tsx:13
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 
-#: src/features/search/sections/titles.ts:9
+#: src/features/search/sections/titles.ts:8
 msgid "Prix"
 msgstr "Prix"
 
-#: src/features/favorites/pages/FavoritesSorts.tsx:29
+#: src/features/favorites/pages/FavoritesSorts.tsx:28
 msgid "Prix croissant"
 msgstr "Prix croissant"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:16
-#: src/features/profile/components/LoggedOutHeader.tsx:18
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:15
+#: src/features/profile/components/LoggedOutHeader.tsx:17
 msgid "Profil"
 msgstr "Profil"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:35
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:34
 msgid "Profite de 300\\u00a0€\\u00a0"
 msgstr "Profite de 300\\u00a0€\\u00a0"
 
-#: src/features/favorites/pages/FavoritesSorts.tsx:30
+#: src/features/favorites/pages/FavoritesSorts.tsx:29
 msgid "Proximité géographique"
 msgstr "Proximité géographique"
 
-#: src/features/profile/pages/PersonalData.tsx:19
+#: src/features/profile/pages/PersonalData.tsx:18
 msgid "Prénom et nom"
 msgstr "Prénom et nom"
 
-#: src/features/offer/pages/OfferBody.tsx:42
+#: src/features/offer/pages/OfferBody.tsx:41
 msgid "Quand ?"
 msgstr "Quand ?"
 
-#: src/features/profile/pages/Profile.tsx:117
+#: src/features/profile/pages/Profile.tsx:116
 msgid "Questions fréquentes"
 msgstr "Questions fréquentes"
 
-#: src/features/search/sections/titles.ts:6
+#: src/features/search/sections/titles.ts:5
 msgid "Rayon"
 msgstr "Rayon"
 
-#: src/features/search/atoms/Buttons/Search.tsx:22
+#: src/features/search/atoms/Buttons/Search.tsx:21
 msgid "Rechercher"
 msgstr "Rechercher"
 
-#: src/features/home/components/BusinessModule.tsx:37
+#: src/features/home/components/BusinessModule.tsx:36
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:59
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:59
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:56
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:43
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:42
 msgid "Respect de ta vie privée"
 msgstr "Respect de ta vie privée"
 
-#: src/libs/notifications/components/PushNotificationsModal.tsx:15
+#: src/libs/notifications/components/PushNotificationsModal.tsx:14
 msgid "Reste informé des actualités du pass Culture en activant les notifications."
 msgstr "Reste informé des actualités du pass Culture en activant les notifications."
 
-#: src/features/profile/pages/NotificationSettings.tsx:113
+#: src/features/profile/pages/NotificationSettings.tsx:112
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:61
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:61
-#: src/features/auth/signup/VerifyEligibility.tsx:31
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:34
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:58
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:58
+#: src/features/auth/signup/VerifyEligibility.tsx:30
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:33
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:57
+#: src/features/bookOffer/components/BookingImpossible.tsx:56
 msgid "Retourner à l'offre"
 msgstr "Retourner à l'offre"
 
-#: src/features/offer/services/useShareOffer.ts:21
+#: src/features/offer/services/useShareOffer.ts:20
 msgid "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 
-#: src/libs/geolocation/components/GeolocationActivationModal.tsx:16
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:15
 msgid "Retrouve toutes les offres autour de chez toi en activant les données de localisation."
 msgstr "Retrouve toutes les offres autour de chez toi en activant les données de localisation."
 
-#: src/features/favorites/components/NoFavoritesResult.tsx:17
+#: src/features/favorites/components/NoFavoritesResult.tsx:16
 msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 
-#: src/features/auth/signup/SetEmail.tsx:74
+#: src/features/auth/signup/SetEmail.tsx:73
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:66
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:65
 msgid "Réessayer"
 msgstr "Réessayer"
 
-#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx:20
+#: src/features/search/atoms/Buttons/ReinitializeFilters.tsx:19
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
-#: src/features/bookings/components/EndedBookingItem.tsx:56
+#: src/features/bookings/components/EndedBookingItem.tsx:55
 msgid "Réservation annulée"
 msgstr "Réservation annulée"
 
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:20
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:19
 msgid "Réservation confirmée !"
 msgstr "Réservation confirmée !"
 
-#: src/features/bookOffer/services/useModalContent.tsx:28
+#: src/features/bookOffer/services/useModalContent.tsx:27
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:36
+#: src/features/bookings/components/OnGoingBookingsList.tsx:35
 msgid "Réservation terminée"
 msgstr "Réservation terminée"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:36
+#: src/features/bookings/components/OnGoingBookingsList.tsx:35
 msgid "Réservations terminées"
 msgstr "Réservations terminées"
 
+#: src/features/favorites/atoms/BookingButton.tsx:50
 #: src/features/favorites/atoms/BookingButton.tsx:51
-#: src/features/favorites/atoms/BookingButton.tsx:52
-#: src/features/offer/services/useCtaWordingAndAction.ts:38
+#: src/features/offer/services/useCtaWordingAndAction.ts:37
 msgid "Réserver"
 msgstr "Réserver"
 
-#: src/features/favorites/components/NotConnectedFavorites.tsx:35
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:39
-#: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:39
-#: src/features/profile/components/LoggedOutHeader.tsx:24
+#: src/features/favorites/components/NotConnectedFavorites.tsx:34
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:38
+#: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:38
+#: src/features/profile/components/LoggedOutHeader.tsx:23
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
-#: src/features/search/pages/LocationPicker.tsx:42
+#: src/features/search/pages/LocationPicker.tsx:41
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:106
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:105
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
-#: src/features/auth/login/Login.tsx:134
-#: src/features/favorites/components/NotConnectedFavorites.tsx:37
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:41
-#: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:41
+#: src/features/auth/login/Login.tsx:133
+#: src/features/favorites/components/NotConnectedFavorites.tsx:36
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:40
+#: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:40
 msgid "Se connecter"
 msgstr "Se connecter"
 
-#: src/features/search/sections/Location.tsx:33
+#: src/features/search/sections/Location.tsx:32
 msgid "Seules les sorties et offres physiques seront affichées"
 msgstr "Seules les sorties et offres physiques seront affichées"
 
-#: src/features/search/pages/LocationFilter.tsx:72
+#: src/features/search/pages/LocationFilter.tsx:71
 msgid "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 
-#: src/features/search/sections/Date.tsx:15
-#: src/features/search/sections/Hour.tsx:15
+#: src/features/search/sections/Date.tsx:14
+#: src/features/search/sections/Hour.tsx:14
 msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:47
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:46
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:44
 msgid "Si l'e-mail n'arrive pas, tu peux :"
 msgstr "Si l'e-mail n'arrive pas, tu peux :"
 
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:35
-msgid "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
-msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300\\u00a0€ proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:34
+msgid "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:55
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:55
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:52
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/bookOffer/components/BookDuoChoice.tsx:25
-#: src/features/bookOffer/components/BookDuoChoice.tsx:43
+#: src/features/bookOffer/components/BookDuoChoice.tsx:24
+#: src/features/bookOffer/components/BookDuoChoice.tsx:42
 msgid "Solo"
 msgstr "Solo"
 
-#: src/features/search/sections/OfferType.tsx:13
+#: src/features/search/sections/OfferType.tsx:12
 msgid "Sortie"
 msgstr "Sortie"
 
-#: src/features/profile/pages/Profile.tsx:124
+#: src/features/profile/pages/Profile.tsx:123
 msgid "Suivre pass Culture"
 msgstr "Suivre pass Culture"
 
-#: src/features/profile/pages/LegalNotices.tsx:27
+#: src/features/profile/pages/LegalNotices.tsx:26
 msgid "Suppression du compte"
 msgstr "Suppression du compte"
 
-#: src/features/favorites/atoms/Favorite.tsx:85
+#: src/features/favorites/atoms/Favorite.tsx:84
 msgid "Supprimer"
 msgstr "Supprimer"
 
-#: src/features/search/components/SearchBox.tsx:46
+#: src/features/search/components/SearchBox.tsx:45
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
-#: src/features/auth/signup/SetBirthday.tsx:133
+#: src/features/auth/signup/SetBirthday.tsx:132
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
@@ -1111,123 +1110,127 @@ msgstr "Ton anniversaire"
 msgid "Ton code postal"
 msgstr "Ton code postal"
 
-#: src/features/auth/signup/AccountCreated.tsx:15
+#: src/features/auth/signup/AccountCreated.tsx:14
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
 
-#: src/features/favorites/components/NotConnectedFavorites.tsx:27
-#: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:35
+#: src/features/favorites/components/NotConnectedFavorites.tsx:26
+#: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:34
 msgid "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 
-#: src/features/home/pages/Home.tsx:53
+#: src/features/home/pages/Home.tsx:52
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:26
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:25
 msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 
-#: src/features/auth/signup/SetEmail.tsx:62
+#: src/features/auth/signup/SetEmail.tsx:61
 msgid "Ton e-mail"
 msgstr "Ton e-mail"
 
-#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:53
-#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:59
-#: src/features/auth/login/Login.tsx:125
-#: src/features/auth/signup/SetPassword.tsx:34
-#: src/features/auth/signup/SetPassword.tsx:40
+#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:52
+#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:58
+#: src/features/auth/login/Login.tsx:124
+#: src/features/auth/signup/SetPassword.tsx:33
+#: src/features/auth/signup/SetPassword.tsx:39
 msgid "Ton mot de passe"
 msgstr "Ton mot de passe"
 
-#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:32
+#: src/features/auth/forgottenPassword/ReinitializePassword.tsx:31
 msgid "Ton mot de passe a été modifié !"
 msgstr "Ton mot de passe a été modifié !"
 
-#. password placeholder
-#: src/features/profile/pages/ChangePassword.tsx:68
+#: src/features/profile/pages/ChangePassword.tsx:67
 msgid "Ton mot de passe actuel"
 msgstr "Ton mot de passe actuel"
 
-#. password placeholder
-#: src/features/profile/pages/ChangePassword.tsx:76
+#: src/features/profile/pages/ChangePassword.tsx:75
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
-#: src/ui/components/achievements/components/GenericAchievement.tsx:52
+#: src/ui/components/achievements/components/GenericAchievement.tsx:51
 msgid "Tout passer"
 msgstr "Tout passer"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:32
+#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:31
 msgid "Toute la culture"
 msgstr "Toute la culture"
 
-#: src/features/home/pages/Home.tsx:50
+#: src/features/home/pages/Home.tsx:49
 msgid "Toute la culture dans ta main"
 msgstr "Toute la culture dans ta main"
 
-#: src/features/favorites/atoms/Buttons/Sort.tsx:20
-#: src/features/favorites/pages/FavoritesSorts.tsx:98
+#: src/features/favorites/atoms/Buttons/Sort.tsx:19
+#: src/features/favorites/pages/FavoritesSorts.tsx:97
 msgid "Trier"
 msgstr "Trier"
 
-#: src/features/favorites/pages/FavoritesSorts.tsx:80
+#: src/features/favorites/pages/FavoritesSorts.tsx:79
 msgid "Trier par"
 msgstr "Trier par"
 
-#: src/features/offer/components/OfferHeader.tsx:40
+#: src/features/offer/components/OfferHeader.tsx:39
 msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:32
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:31
 msgid "Tu as 18 ans..."
 msgstr "Tu as 18 ans..."
 
-#: src/features/profile/components/LoggedOutHeader.tsx:30
+#: src/features/profile/components/LoggedOutHeader.tsx:29
 msgid "Tu as déjà un compte ?\\u00a0"
 msgstr "Tu as déjà un compte ?\\u00a0"
 
-#: src/features/home/pages/Home.tsx:54
+#: src/features/home/pages/Home.tsx:53
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
-#: src/features/bookings/pages/BookingDetails.tsx:41
+#: src/features/bookings/pages/BookingDetails.tsx:39
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
-#: src/features/profile/pages/NotificationSettings.tsx:114
+#: src/features/profile/pages/NotificationSettings.tsx:113
 msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 msgstr "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 
-#: src/features/auth/signup/EligibilityConfirmed.tsx:15
+#: src/features/auth/signup/EligibilityConfirmed.tsx:14
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:29
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:28
 msgid "Tu es éligible jusqu'au\\u00a0{0}"
 msgstr "Tu es éligible jusqu'au\\u00a0{0}"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:28
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:27
 msgid "Tu n'es pas connecté !"
 msgstr "Tu n'es pas connecté !"
 
-#: src/features/bookings/components/NoBookingsView.tsx:15
-msgid "Tu n’as pas de réservations en cours. Découvre les offres disponibles  sans attendre !"
-msgstr "Tu n’as pas de réservations en cours. Découvre les offres disponibles  sans attendre !"
+#: src/features/bookings/components/NoBookingsView.tsx:14
+msgid ""
+"Tu n’as pas de réservations en cours.\n"
+"Découvre les offres disponibles \n"
+"sans attendre !"
+msgstr ""
+"Tu n’as pas de réservations en cours.\n"
+"Découvre les offres disponibles \n"
+"sans attendre !"
 
-#: src/libs/geolocation/components/GeolocationActivationModal.tsx:22
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:21
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation."
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation."
 
-#: src/libs/geolocation/components/GeolocationActivationModal.tsx:23
+#: src/libs/geolocation/components/GeolocationActivationModal.tsx:22
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone."
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone."
 
-#: src/libs/notifications/components/PushNotificationsModal.tsx:20
+#: src/libs/notifications/components/PushNotificationsModal.tsx:19
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:33
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:32
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 
@@ -1235,281 +1238,276 @@ msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'applica
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:52
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:51
 msgid "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:26
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:25
 msgid "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:30
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:29
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:32
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:31
 msgid "Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité"
 msgstr "Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité"
 
-#: src/features/search/sections/titles.ts:8
+#: src/features/search/sections/titles.ts:7
 msgid "Type d'offre"
 msgstr "Type d'offre"
 
-#: src/features/auth/signup/AcceptCgu.tsx:69
-#: src/features/auth/signup/AcceptCgu.tsx:88
+#: src/features/auth/signup/AcceptCgu.tsx:68
+#: src/features/auth/signup/AcceptCgu.tsx:87
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:54
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:90
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:53
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:89
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 
-#: src/features/profile/pages/NotificationSettings.tsx:90
+#: src/features/profile/pages/NotificationSettings.tsx:89
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:56
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:55
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
-#: src/features/offer/services/useItinerary.ts:58
+#: src/features/offer/services/useItinerary.ts:57
 msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 
-#: src/features/search/sections/titles.ts:12
+#: src/features/search/sections/titles.ts:11
 msgid "Uniquement les nouveautés"
 msgstr "Uniquement les nouveautés"
 
-#: src/features/search/sections/titles.ts:11
+#: src/features/search/sections/titles.ts:10
 msgid "Uniquement les offres duo"
 msgstr "Uniquement les offres duo"
 
-#: src/features/search/sections/titles.ts:10
+#: src/features/search/sections/titles.ts:9
 msgid "Uniquement les offres gratuites"
 msgstr "Uniquement les offres gratuites"
 
-#: src/features/bookings/components/EndedBookingItem.tsx:53
+#: src/features/bookings/components/EndedBookingItem.tsx:52
 msgid "Utilisé"
 msgstr "Utilisé"
 
-#: src/features/offer/pages/OfferDescription.tsx:24
+#: src/features/offer/pages/OfferDescription.tsx:23
 msgid "VISA"
 msgstr "VISA"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:117
-#: src/features/favorites/pages/FavoritesSorts.tsx:100
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:116
+#: src/features/favorites/pages/FavoritesSorts.tsx:99
 msgid "Valider"
 msgstr "Valider"
 
-#: src/features/bookOffer/components/BookingEventChoices.tsx:49
+#: src/features/bookOffer/components/BookingEventChoices.tsx:48
 msgid "Valider ces options"
 msgstr "Valider ces options"
 
-#: src/features/search/components/CalendarPicker.ios.tsx:24
+#: src/features/search/components/CalendarPicker.ios.tsx:23
 msgid "Valider la date"
 msgstr "Valider la date"
 
-#: src/features/profile/pages/Profile.tsx:142
+#: src/features/profile/pages/Profile.tsx:141
 msgid "Version {0}"
 msgstr "Version {0}"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:30
+#: src/features/auth/signup/QuitSignupModal.tsx:29
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
 
-#: src/features/offer/components/OfferWhereSection.tsx:46
-#: src/features/offer/services/useItinerary.ts:80
+#: src/features/offer/components/OfferWhereSection.tsx:45
+#: src/features/offer/services/useItinerary.ts:79
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/offer/services/useCtaWordingAndAction.ts:48
+#: src/features/offer/services/useCtaWordingAndAction.ts:47
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:29
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:28
 msgid "Voir ma réservation"
 msgstr "Voir ma réservation"
 
-#: src/features/offer/atoms/OfferSeeMore.tsx:17
+#: src/features/offer/atoms/OfferSeeMore.tsx:15
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:32
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:31
 msgid "Vérifier mon identité"
 msgstr "Vérifier mon identité"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:29
+#: src/features/auth/signup/VerifyEligibility.tsx:28
 msgid "Vérifier mon éligibilité"
 msgstr "Vérifier mon éligibilité"
 
-#: src/libs/i18n.test.ts:8
+#: src/libs/i18n.test.ts:19
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/signup/AcceptCgu.tsx:111
+#: src/features/auth/signup/AcceptCgu.tsx:108
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
-#: src/features/offer/pages/OfferDescription.tsx:13
+#: src/features/offer/pages/OfferDescription.tsx:12
 msgid "auteur"
 msgstr "auteur"
 
-#: src/features/search/atoms/NoSearchResult.tsx:42
+#: src/features/search/atoms/NoSearchResult.tsx:39
 msgid "autour de toi"
 msgstr "autour de toi"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:11
+#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
 msgid "c'est..."
 msgstr "c'est..."
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:19
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:18
 msgid "crédit expiré le {0}"
 msgstr "crédit expiré le {0}"
 
-#: src/features/bookOffer/atoms/HourChoice.tsx:10
-#: src/features/bookOffer/components/BookDuoChoice.tsx:24
+#: src/features/bookOffer/atoms/HourChoice.tsx:9
+#: src/features/bookOffer/components/BookDuoChoice.tsx:23
 msgid "crédit insuffisant"
 msgstr "crédit insuffisant"
 
-#: src/features/offer/pages/OfferDescription.tsx:19
+#: src/features/offer/pages/OfferDescription.tsx:18
 msgid "crédit photo"
 msgstr "crédit photo"
 
-#: src/features/profile/components/BeneficiaryHeader.tsx:24
+#: src/features/profile/components/BeneficiaryHeader.tsx:23
 msgid "crédit valable jusqu'au {0}"
 msgstr "crédit valable jusqu'au {0}"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
 msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
 msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
 
-#: src/features/offer/pages/OfferDescription.tsx:14
+#: src/features/offer/pages/OfferDescription.tsx:13
 msgid "durée"
 msgstr "durée"
 
-#: src/features/offer/pages/OfferDescription.tsx:12
+#: src/features/offer/pages/OfferDescription.tsx:11
 msgid "en détails"
 msgstr "en détails"
 
-#: src/features/offer/atoms/LocationCaption.tsx:11
+#: src/features/offer/atoms/LocationCaption.tsx:10
 msgid "en ligne"
 msgstr "en ligne"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
 msgid "et si tu es..."
 msgstr "et si tu es..."
 
-#: src/features/offer/pages/OfferDescription.tsx:17
-#: src/features/offer/pages/OfferDescription.tsx:21
+#: src/features/offer/pages/OfferDescription.tsx:16
+#: src/features/offer/pages/OfferDescription.tsx:20
 msgid "genre"
 msgstr "genre"
 
-#: src/features/offer/pages/OfferDescription.tsx:18
+#: src/features/offer/pages/OfferDescription.tsx:17
 msgid "interprète"
 msgstr "interprète"
 
-#: src/features/offer/pages/OfferDescription.tsx:23
+#: src/features/offer/pages/OfferDescription.tsx:22
 msgid "intervenant"
 msgstr "intervenant"
 
 #: src/features/bookings/components/EndedBookingItem.tsx:59
-msgid "le\\u00a0"
-msgstr "le\\u00a0"
+#: src/features/bookings/components/EndedBookingItem.tsx:61
+msgid "le {0}"
+msgstr "le {0}"
 
-#: src/features/offer/pages/OfferDescription.tsx:22
+#: src/features/offer/pages/OfferDescription.tsx:21
 msgid "metteur en scène"
 msgstr "metteur en scène"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:21
+#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:35
+#: src/features/bookings/components/OnGoingBookingsList.tsx:34
 msgid "réservation en cours"
 msgstr "réservation en cours"
 
-#: src/features/bookings/pages/EndedBookings.tsx:26
+#: src/features/bookings/pages/EndedBookings.tsx:25
 msgid "réservation terminée"
 msgstr "réservation terminée"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:35
+#: src/features/bookings/components/OnGoingBookingsList.tsx:34
 msgid "réservations en cours"
 msgstr "réservations en cours"
 
-#: src/features/bookings/pages/EndedBookings.tsx:26
+#: src/features/bookings/pages/EndedBookings.tsx:25
 msgid "réservations terminées"
 msgstr "réservations terminées"
 
-#: src/features/offer/pages/OfferDescription.tsx:16
-#: src/features/offer/pages/OfferDescription.tsx:20
+#: src/features/offer/pages/OfferDescription.tsx:15
+#: src/features/offer/pages/OfferDescription.tsx:19
 msgid "sous genre"
 msgstr "sous genre"
 
-#. email placeholder
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:113
-#: src/features/auth/login/Login.tsx:119
-#: src/features/auth/signup/SetEmail.tsx:67
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:112
+#: src/features/auth/login/Login.tsx:118
+#: src/features/auth/signup/SetEmail.tsx:66
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:11
+#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
 msgid "une initiative financée par le Ministère de la Culture."
 msgstr "une initiative financée par le Ministère de la Culture."
 
-#: src/features/offer/atoms/OfferSeeMore.tsx:17
+#: src/features/offer/atoms/OfferSeeMore.tsx:15
 msgid "voir plus"
 msgstr "voir plus"
 
-#: src/ui/components/headers/SvgPageHeader.tsx:11
-#: src/ui/components/inputs/InputError.tsx:10
+#: src/ui/components/inputs/InputError.tsx:9
 msgid "{0}"
 msgstr "{0}"
 
-#: src/features/favorites/atoms/NumberOfResults.tsx:8
-msgid "{nbHits} favori"
-msgstr "{nbHits} favori"
+#: src/features/favorites/atoms/NumberOfResults.tsx:10
+msgid "{nbFavorites, plural, one {# favori} other {# favoris}}"
+msgstr "{nbFavorites, plural, one {# favori} other {# favoris}}"
 
-#: src/features/favorites/atoms/NumberOfResults.tsx:9
-msgid "{nbHits} favoris"
-msgstr "{nbHits} favoris"
+#: src/features/search/atoms/NumberOfResults.tsx:10
+msgid "{nbHits, plural, one {# résultat} other {# résultats}}"
+msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
 
-#: src/features/search/atoms/NumberOfResults.tsx:8
-msgid "{nbHits} résultat"
-msgstr "{nbHits} résultat"
-
-#: src/features/search/atoms/NumberOfResults.tsx:9
-msgid "{nbHits} résultats"
-msgstr "{nbHits} résultats"
-
-#: src/features/bookOffer/components/BookingDetails.tsx:76
+#: src/features/bookOffer/components/BookingDetails.tsx:75
 msgid "{price} seront déduits de ton crédit pass Culture"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
-#: src/features/offer/components/OfferIconCaptions.tsx:27
+#: src/ui/components/headers/SvgPageHeader.tsx:10
+msgid "{title}"
+msgstr "{title}"
+
+#: src/features/offer/components/OfferIconCaptions.tsx:26
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/bookings/helpers.ts:52
+#: src/features/bookings/helpers.ts:51
 msgid "À retirer avant le\\u00a0"
 msgstr "À retirer avant le\\u00a0"
 
-#: src/api/helpers.ts:113
+#: src/api/helpers.ts:112
 msgid "Échec de la requête {0}, code: {1}"
 msgstr "Échec de la requête {0}, code: {1}"
 
-#: src/libs/fetch.ts:30
+#: src/libs/fetch.ts:29
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:35
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:34
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:32
+#: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx:31
 msgid "à portée de main !"
 msgstr "à portée de main !"
 
-#: src/features/bookOffer/atoms/HourChoice.tsx:13
+#: src/features/bookOffer/atoms/HourChoice.tsx:12
 msgid "épuisé"
 msgstr "épuisé"

@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { getFilterCount } from 'features/search/utils/getFilterCount'
-import { _ } from 'libs/i18n'
 import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -32,7 +31,7 @@ export const Filter: React.FC = () => {
         colors={['#bf275f', '#5a0d80']}>
         <FilterIcon color={ColorsEnum.WHITE} />
         <Spacer.Row numberOfSpaces={1} />
-        <Title>{_(t`Filtrer`)}</Title>
+        <Title>{t`Filtrer`}</Title>
         <Spacer.Row numberOfSpaces={2} />
         {filterCount > 0 && (
           <React.Fragment>

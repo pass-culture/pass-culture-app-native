@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { initialSearchState } from 'features/search/pages/reducer'
+import { render } from 'tests/utils'
 
 import { TimeSlot } from '../TimeSlot'
 

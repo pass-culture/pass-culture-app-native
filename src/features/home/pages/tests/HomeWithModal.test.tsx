@@ -1,10 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { render, act } from '@testing-library/react-native'
 import React from 'react'
 
 import { Tab } from 'features/navigation/TabBar/TabNavigator'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, render, act } from 'tests/utils'
 
 import { Home } from '../Home'
 

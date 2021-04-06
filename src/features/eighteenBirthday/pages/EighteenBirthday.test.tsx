@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render } from 'tests/utils'
 
 import { EighteenBirthday } from './EighteenBirthday'
 

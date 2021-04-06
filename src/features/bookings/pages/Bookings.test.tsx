@@ -1,4 +1,3 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -8,7 +7,7 @@ import { BookingsResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { emptyBookingsSnap } from '../api/bookingsSnap'
 

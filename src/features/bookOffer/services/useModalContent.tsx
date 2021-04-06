@@ -5,7 +5,6 @@ import { Platform } from 'react-native'
 import { CategoryType } from 'api/gen'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
-import { _ } from 'libs/i18n'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { IconInterface } from 'ui/svg/icons/types'
 
@@ -39,7 +38,7 @@ export const useModalContent = (): ModalContent => {
   if (category.categoryType === CategoryType.Thing) {
     if (isDigital && Platform.OS === 'ios') {
       return {
-        title: _(t`Réservation impossible`),
+        title: t`Réservation impossible`,
         leftIcon: undefined,
         onLeftIconPress: undefined,
         children: <BookingImpossible />,
@@ -47,7 +46,7 @@ export const useModalContent = (): ModalContent => {
     }
 
     return {
-      title: _(t`Détails de la réservation`),
+      title: t`Détails de la réservation`,
       leftIcon: undefined,
       onLeftIconPress: undefined,
       children: <BookingDetails stocks={stocks} />,
@@ -56,7 +55,7 @@ export const useModalContent = (): ModalContent => {
 
   if (bookingState.step !== Step.CONFIRMATION) {
     return {
-      title: _(t`Mes options`),
+      title: t`Mes options`,
       leftIcon: undefined,
       onLeftIconPress: undefined,
       children: <BookingEventChoices stocks={stocks} />,
@@ -64,7 +63,7 @@ export const useModalContent = (): ModalContent => {
   }
 
   return {
-    title: _(t`Détails de la réservation`),
+    title: t`Détails de la réservation`,
     leftIcon: ArrowPrevious,
     onLeftIconPress: goToPreviousStep,
     children: <BookingDetails stocks={stocks} />,

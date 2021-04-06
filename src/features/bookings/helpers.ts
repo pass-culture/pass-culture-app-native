@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 
 import { CategoryType } from 'api/gen'
-import { _ } from 'libs/i18n'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -57,30 +56,30 @@ export function getBookingLabels(booking: Booking, properties: BookingProperties
   let withdrawLabel = ''
 
   if (properties.isPermanent) {
-    dateLabel = _(t`Permanent`)
+    dateLabel = t`Permanent`
   } else if (properties.isEvent) {
     dateLabel = beginningDatetime
-      ? _(t`Le\u00a0`) + formatToCompleteFrenchDateTime(beginningDatetime, false)
+      ? t`Le ${formatToCompleteFrenchDateTime(beginningDatetime, false)}`
       : ''
 
     const isBeginningToday = beginningDatetime ? isToday(beginningDatetime) : false
     const isBeginningTomorrow = beginningDatetime ? isTomorrow(beginningDatetime) : false
     if (isBeginningToday) {
-      withdrawLabel = _(t`Aujourd'hui`)
+      withdrawLabel = t`Aujourd'hui`
     } else if (isBeginningTomorrow) {
-      withdrawLabel = _(t`Demain`)
+      withdrawLabel = t`Demain`
     }
   } else if (properties.isPhysical) {
     dateLabel = expirationDatetime
-      ? _(t`À retirer avant le\u00a0`) + formatToCompleteFrenchDate(expirationDatetime, false)
+      ? t`À retirer avant le\u00a0` + formatToCompleteFrenchDate(expirationDatetime, false)
       : ''
 
     const isExpiringToday = expirationDatetime ? isToday(expirationDatetime) : false
     const isExpiringTomorrow = expirationDatetime ? isTomorrow(expirationDatetime) : false
     if (isExpiringToday) {
-      withdrawLabel = _(t`Dernier jour pour retirer`)
+      withdrawLabel = t`Dernier jour pour retirer`
     } else if (isExpiringTomorrow) {
-      withdrawLabel = _(t`Avant dernier jour pour retirer`)
+      withdrawLabel = t`Avant dernier jour pour retirer`
     }
   }
 

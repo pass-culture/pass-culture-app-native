@@ -4,7 +4,6 @@ import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
-import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { DuoPerson } from 'ui/svg/icons/DuoPerson'
 import { Profile } from 'ui/svg/icons/Profile'
@@ -26,8 +25,8 @@ export const BookDuoChoice: React.FC = () => {
       price:
         enoughCredit && stock
           ? formatToFrenchDecimal(quantity * stock.price).replace(' ', '')
-          : _(t`crédit insuffisant`),
-      title: quantity === 1 ? _(t`Solo`) : _(t`Duo`),
+          : t`crédit insuffisant`,
+      title: quantity === 1 ? t`Solo` : t`Duo`,
       selected: bookingState.quantity === quantity,
       icon: quantity === 1 ? Profile : DuoPerson,
       onPress: () => dispatch({ type: 'SELECT_QUANTITY', payload: quantity }),
@@ -41,7 +40,7 @@ export const BookDuoChoice: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4 testID="DuoStep">{_(t`Nombre de place`)}</Typo.Title4>
+      <Typo.Title4 testID="DuoStep">{t`Nombre de place`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.DUO ? (
         <DuoChoiceContainer>
@@ -51,7 +50,7 @@ export const BookDuoChoice: React.FC = () => {
       ) : (
         <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeQuantity}>
           <Typo.ButtonText>
-            {bookingState.quantity && bookingState.quantity === 1 ? _(t`Solo`) : _(t`Duo`)}
+            {bookingState.quantity && bookingState.quantity === 1 ? t`Solo` : t`Duo`}
           </Typo.ButtonText>
         </TouchableOpacity>
       )}

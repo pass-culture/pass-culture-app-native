@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { render } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import * as splashScreenModule from 'libs/splashscreen'
+import { render } from 'tests/utils'
 
 import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
 

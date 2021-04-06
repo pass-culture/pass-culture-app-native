@@ -9,7 +9,6 @@ import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Typo, ColorsEnum, getSpacing, MARGIN_DP, LENGTH_S, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
@@ -41,7 +40,7 @@ export const BusinessModule = (businessPane: BusinessPane) => {
       return
     }
     if (isProfileDataLoading) {
-      showInfoSnackBar({ message: _(t`Redirection en cours`) })
+      showInfoSnackBar({ message: t`Redirection en cours` })
       return
     }
   }, [url, profileData, shouldRedirect])

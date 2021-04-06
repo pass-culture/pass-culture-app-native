@@ -4,7 +4,6 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -58,19 +57,19 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
   return (
     <AppModal
       visible={visible}
-      title={_(t`Connecte-toi pour profiter de cette fonctionnalité`)}
+      title={t`Connecte-toi pour profiter de cette fonctionnalité`}
       titleNumberOfLines={3}
       rightIcon={Close}
       onRightIconPress={dismissModal}>
       <Description>
         <Typo.Body>
-          {_(t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !`)}
+          {t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !`}
         </Typo.Body>
       </Description>
 
-      <ButtonPrimary title={_(t`S'inscrire`)} onPress={goToSignUp} />
+      <ButtonPrimary title={t`S'inscrire`} onPress={goToSignUp} />
       <Spacer.Column numberOfSpaces={3} />
-      <ButtonTertiary title={_(t`Se connecter`)} onPress={goToLogin} />
+      <ButtonTertiary title={t`Se connecter`} onPress={goToLogin} />
     </AppModal>
   )
 }

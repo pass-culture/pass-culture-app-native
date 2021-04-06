@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 import { QueryClient } from 'react-query'
 
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render } from 'tests/utils'
 
 import { OfferPartialDescription } from '../OfferPartialDescription'
 

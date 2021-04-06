@@ -1,10 +1,10 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { fireEvent, render } from 'tests/utils'
 
 import { BookingConfirmation } from '../BookingConfirmation'
 

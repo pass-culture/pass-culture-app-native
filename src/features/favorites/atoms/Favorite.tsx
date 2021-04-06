@@ -13,7 +13,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useDistance } from 'features/offer/components/useDistance'
 import { OfferImage } from 'features/search/atoms/OfferImage'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
-import { _ } from 'libs/i18n'
 import { formatToFrenchDate, getFavoriteDisplayPrice, parseCategory } from 'libs/parsers'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -42,7 +41,7 @@ export const Favorite: React.FC<Props> = (props) => {
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
     onError: () => {
       showErrorSnackBar({
-        message: _(t`L'offre n'a pas été retirée de tes favoris`),
+        message: t`L'offre n'a pas été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
@@ -54,7 +53,7 @@ export const Favorite: React.FC<Props> = (props) => {
       return formatToFrenchDate(new Date(offer.date))
     }
     if (offer.startDate) {
-      return _(t`Dès le ${formatToFrenchDate(new Date(offer.startDate))}`)
+      return t`Dès le ${formatToFrenchDate(new Date(offer.startDate))}`
     }
     return null
   }, [offer])
@@ -113,7 +112,7 @@ export const Favorite: React.FC<Props> = (props) => {
       <ButtonsRow>
         <ButtonContainer>
           <AppButton
-            title={_(t`Supprimer`)}
+            title={t`Supprimer`}
             onPress={() => removeFavorite(props.favorite.id)}
             textColor={ColorsEnum.BLACK}
             borderColor={ColorsEnum.GREY_MEDIUM}

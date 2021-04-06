@@ -1,4 +1,3 @@
-import { act, fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -11,7 +10,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
-import { flushAllPromises, superFlushWithAct } from 'tests/utils'
+import { flushAllPromises, superFlushWithAct, act, fireEvent, render } from 'tests/utils'
 
 import { AuthContext } from '../AuthContext'
 

@@ -1,9 +1,9 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { render, fireEvent } from 'tests/utils'
 
 import { VerifyEligibility } from './VerifyEligibility'
 

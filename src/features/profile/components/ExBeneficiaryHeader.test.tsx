@@ -1,5 +1,6 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
+
+import { render } from 'tests/utils'
 
 import { ExBeneficiaryHeader } from './ExBeneficiaryHeader'
 
@@ -12,8 +13,7 @@ describe('ExBeneficiaryHeader', () => {
     getByText('Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !')
     getByText('Tu peux toujours réserver les offres gratuites exclusives au pass Culture.')
     getByText(
-      "Tu peux aussi découvrir les autres activités culturelles sur l'application " +
-        "mais leur réservation s'effectuera sur les sites de nos partenaires !"
+      "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
     )
   })
 })

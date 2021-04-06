@@ -1,9 +1,9 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { fireEvent, render } from 'tests/utils'
 
 import { ReinitializeFilters } from '../ReinitializeFilters'
 

@@ -1,10 +1,9 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { PrivacyPolicyModal, Props as Options } from './PrivacyPolicyModal'
 

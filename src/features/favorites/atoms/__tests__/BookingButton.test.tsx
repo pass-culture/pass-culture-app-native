@@ -1,4 +1,3 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import {
@@ -10,6 +9,7 @@ import {
 import { Credit } from 'features/home/services/useAvailableCredit'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { fireEvent, render } from 'tests/utils'
 
 import { BookingButton } from '../BookingButton'
 

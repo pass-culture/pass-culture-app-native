@@ -5,7 +5,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { Sort as SortIcon } from 'ui/svg/icons/Sort'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -24,7 +23,7 @@ export const Sort: React.FC = () => {
         colors={['#bf275f', '#5a0d80']}>
         <SortIcon color={ColorsEnum.WHITE} />
         <Spacer.Row numberOfSpaces={1} />
-        <Title>{_(t`Trier`)}</Title>
+        <Title>{t`Trier`}</Title>
         <Spacer.Row numberOfSpaces={2} />
       </StyledLinearGradient>
     </Container>

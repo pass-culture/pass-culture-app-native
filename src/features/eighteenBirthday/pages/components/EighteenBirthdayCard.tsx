@@ -6,7 +6,6 @@ import { useGetIdCheckToken } from 'features/auth/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { MonitoringError } from 'libs/errorMonitoring'
-import { _ } from 'libs/i18n'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -23,14 +22,14 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
     } else if (profile && !idCheckTokenResponse?.token) {
       // TODO: when backend treat non eligible as an error instead of null, change this error handling
       throw new MonitoringError(
-        _(t`Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !`),
+        t`Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !`,
         'NotEligibleIdCheckError'
       )
     } else {
       // TODO: remove after POs validation this will happen only when POs access this page without auth
       navigate('Login')
       showInfoSnackBar({
-        message: _(t`Tu n'es pas connecté !`),
+        message: t`Tu n'es pas connecté !`,
       })
     }
   }
@@ -39,13 +38,11 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
     <GenericAchievementCard
       animation={TutorialPassLogo}
       buttonCallback={onButtonPress}
-      buttonText={_(t`Vérifier mon identité`)}
+      buttonText={t`Vérifier mon identité`}
       pauseAnimationOnRenderAtFrame={62}
-      subTitle={_(t`Tu as 18 ans...`)}
-      text={_(
-        t`Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité`
-      )}
-      title={_(t`Bonne nouvelle !`)}
+      subTitle={t`Tu as 18 ans...`}
+      text={t`Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité`}
+      title={t`Bonne nouvelle !`}
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}

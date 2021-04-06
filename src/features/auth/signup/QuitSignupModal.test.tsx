@@ -1,9 +1,9 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { analytics } from 'libs/analytics'
+import { fireEvent, render } from 'tests/utils'
 
 const resumeMock = jest.fn()
 

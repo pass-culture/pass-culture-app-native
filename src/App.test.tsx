@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react-native'
 import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { act } from 'react-test-renderer'
@@ -6,7 +5,7 @@ import { act } from 'react-test-renderer'
 import { AsyncErrorBoundary } from 'features/errors'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import * as BatchLocalLib from 'libs/notifications'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, render } from 'tests/utils'
 
 import { App } from './App'
 

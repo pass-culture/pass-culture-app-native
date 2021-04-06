@@ -1,7 +1,7 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { fireEvent, render } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
 

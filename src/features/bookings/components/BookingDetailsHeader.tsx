@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { HeaderIcon } from 'features/offer/atoms'
-import { _ } from 'libs/i18n'
 import {
   headerBackgroundInterpolation,
   iconBackgroundInterpolation,

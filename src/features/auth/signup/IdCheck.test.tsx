@@ -1,6 +1,5 @@
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { act, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import { Text } from 'react-native'
 
@@ -8,6 +7,7 @@ import { IdCheck } from 'features/auth/signup/IdCheck'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
+import { act, render, waitFor } from 'tests/utils'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 

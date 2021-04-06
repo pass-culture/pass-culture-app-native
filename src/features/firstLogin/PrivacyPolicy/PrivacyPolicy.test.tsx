@@ -1,9 +1,8 @@
-import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { firebaseAnalytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 
 import { PrivacyPolicy } from './PrivacyPolicy'
 

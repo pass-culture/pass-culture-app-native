@@ -6,7 +6,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { Badge } from 'ui/components/Badge'
 import { SectionRow } from 'ui/components/SectionRow'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -79,10 +78,10 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
 }
 
 const getBookingsCountLabel = (plural: boolean) =>
-  plural ? _(t`réservations en cours`) : _(t`réservation en cours`)
+  plural ? t`réservations en cours` : t`réservation en cours`
 
 const getEndedBookingsCountLabel = (plural: boolean) =>
-  plural ? _(t`Réservations terminées`) : _(t`Réservation terminée`)
+  plural ? t`Réservations terminées` : t`Réservation terminée`
 
 const Container = styled.View<{ flex?: number }>(({ flex }) => ({
   flex,

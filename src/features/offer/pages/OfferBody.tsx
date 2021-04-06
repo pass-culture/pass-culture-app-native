@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { CategoryType } from 'api/gen'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -75,7 +74,7 @@ export const OfferBody: FunctionComponent<{
       <Spacer.Column numberOfSpaces={4} />
 
       <Section visible={shouldDisplayWhenBlock} margin={true}>
-        <SectionTitle>{_(t`Quand ?`)}</SectionTitle>
+        <SectionTitle>{t`Quand ?`}</SectionTitle>
         <SectionBody>{formatDatePeriod(dates)}</SectionBody>
       </Section>
 
@@ -89,7 +88,7 @@ export const OfferBody: FunctionComponent<{
 
       <Section visible={!!offerResponse.withdrawalDetails}>
         <AccordionItem
-          title={_(t`Modalités de retrait`)}
+          title={t`Modalités de retrait`}
           onOpenOnce={() => analytics.logConsultWithdrawal(offerResponse.id)}>
           <Typo.Body>
             {offerResponse.withdrawalDetails && highlightLinks(offerResponse.withdrawalDetails)}
@@ -102,7 +101,7 @@ export const OfferBody: FunctionComponent<{
           (value) => value !== undefined && value !== null
         )}>
         <AccordionItem
-          title={_(t`Accessibilité`)}
+          title={t`Accessibilité`}
           onOpen={() => {
             if (scrollViewRef !== null && scrollViewRef.current !== null) {
               scrollViewRef.current.scrollToEnd()

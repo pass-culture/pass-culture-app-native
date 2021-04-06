@@ -1,7 +1,5 @@
 import { t } from '@lingui/macro'
 
-import { _ } from '../i18n'
-
 // javascript Date can't find them...
 const MONTHS = [
   'janvier',
@@ -71,7 +69,7 @@ export const formatDates = (timestamps?: number[]): string | undefined => {
   const uniques = getUniqueSortedTimestamps(timestamps)
   if (uniques.length === 0) return
   if (uniques.length === 1) return formatToFrenchDate(uniques[0])
-  return _(t`Dès le ${formatToFrenchDate(uniques[0])}`)
+  return t`Dès le ${formatToFrenchDate(uniques[0])}`
 }
 
 export const formatDatePeriod = (dates: Date[] | undefined): string | undefined => {
@@ -83,9 +81,9 @@ export const formatDatePeriod = (dates: Date[] | undefined): string | undefined 
   const last = decomposeDate(timestamps.slice(-1)[0])
   const formattedEndDate = formatToFrenchDate(last)
 
-  if (first.year !== last.year) return _(t`Du ${formatToFrenchDate(first)} au ${formattedEndDate}`)
-  if (first.month !== last.month) return _(t`Du ${first.day} ${first.month} au ${formattedEndDate}`)
-  if (first.day !== last.day) return _(t`Du ${first.day} au ${formattedEndDate}`)
+  if (first.year !== last.year) return t`Du ${formatToFrenchDate(first)} au ${formattedEndDate}`
+  if (first.month !== last.month) return t`Du ${first.day} ${first.month} au ${formattedEndDate}`
+  if (first.day !== last.day) return t`Du ${first.day} au ${formattedEndDate}`
   return formattedEndDate
 }
 

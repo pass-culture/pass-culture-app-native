@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { act } from '@testing-library/react-native'
 
 import { DEFAULT_SPLASHSCREEN_DELAY } from 'libs/splashscreen'
+import { act } from 'tests/utils'
 
 import { ANIMATION_DELAY, useShowSkeleton } from '../useShowSkeleton'
 

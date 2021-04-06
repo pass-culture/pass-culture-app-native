@@ -9,7 +9,6 @@ import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupMod
 import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { _ } from 'libs/i18n'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomCardContentContainer, BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -45,7 +44,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
 
   useEffect(() => {
     if (!networkInfo.isConnected) {
-      setErrorMessage(_(t`Hors connexion : en attente du réseau.`))
+      setErrorMessage(t`Hors connexion : en attente du réseau.`)
       setIsDoingReCaptchaChallenge(false)
     } else {
       setErrorMessage(null)
@@ -68,7 +67,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
       }
       navigate('SignupConfirmationEmailSent', { email })
     } catch (_error) {
-      setErrorMessage(_(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`))
+      setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
     } finally {
       setIsFetching(false)
     }
@@ -88,12 +87,12 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
 
   function onReCaptchaError(_error: string) {
     setIsDoingReCaptchaChallenge(false)
-    setErrorMessage(_(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`))
+    setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
   }
 
   function onReCaptchaExpire() {
     setIsDoingReCaptchaChallenge(false)
-    setErrorMessage(_(t`Le token reCAPTCHA a expiré, tu peux réessayer.`))
+    setErrorMessage(t`Le token reCAPTCHA a expiré, tu peux réessayer.`)
   }
 
   function onReCaptchaSuccess(token: string) {
@@ -112,7 +111,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
           isVisible={isDoingReCaptchaChallenge}
         />
         <ModalHeader
-          title={_(t`CGU & Données`)}
+          title={t`CGU & Données`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
           rightIcon={Close}
@@ -122,19 +121,17 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
           <CardContent>
             <Spacer.Column numberOfSpaces={5} />
             <Paragraphe>
-              <Typo.Body>
-                {_(t`En cliquant sur “Accepter et s’inscrire”, tu acceptes nos `)}
-              </Typo.Body>
+              <Typo.Body>{t`En cliquant sur “Accepter et s’inscrire”, tu acceptes nos `}</Typo.Body>
               <ExternalLink
-                text={_(t`Conditions Générales d'Utilisation`)}
+                text={t`Conditions Générales d'Utilisation`}
                 url={env.CGU_LINK}
                 color={ColorsEnum.PRIMARY}
                 testID="external-link-cgu"
               />
               <Spacer.Row numberOfSpaces={1} />
-              <Typo.Body>{_(t` ainsi que notre `)}</Typo.Body>
+              <Typo.Body>{t` ainsi que notre `}</Typo.Body>
               <ExternalLink
-                text={_(t`Politique de confidentialité.`)}
+                text={t`Politique de confidentialité.`}
                 color={ColorsEnum.PRIMARY}
                 url={env.PRIVACY_POLICY_LINK}
                 testID="external-link-privacy-policy"
@@ -143,19 +140,17 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
             <Spacer.Column numberOfSpaces={5} />
             <Paragraphe>
               <Typo.Body>
-                {_(
-                  t`Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :`
-                )}
+                {t`Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :`}
               </Typo.Body>
             </Paragraphe>
             <ButtonTertiary
-              title={_(t`Contacter le support`)}
+              title={t`Contacter le support`}
               onPress={contactSupport.forGenericQuestion}
               icon={Email}
             />
             <Spacer.Column numberOfSpaces={6} />
             <ButtonPrimary
-              title={_(t`Accepter et s’inscrire`)}
+              title={t`Accepter et s’inscrire`}
               onPress={openReCaptchaChallenge}
               isLoading={isDoingReCaptchaChallenge || isFetching}
               disabled={isDoingReCaptchaChallenge || isFetching || !networkInfo.isConnected}

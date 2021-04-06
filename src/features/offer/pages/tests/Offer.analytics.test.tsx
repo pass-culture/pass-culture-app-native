@@ -1,9 +1,8 @@
-import { act, fireEvent } from '@testing-library/react-native'
 import { AppState } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { analytics } from 'libs/analytics'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, act, fireEvent } from 'tests/utils'
 
 import { offerId, renderOfferPage, renderOfferBodyPage } from './renderOfferPageTestUtil'
 

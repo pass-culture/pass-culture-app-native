@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
@@ -6,7 +5,7 @@ import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { Booking } from 'features/bookings/components/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, render } from 'tests/utils'
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { firstName: 'Christophe', lastName: 'Dupont' } })),
@@ -36,7 +35,7 @@ describe('<BookingPropertiesSection />', () => {
     const { getByText } = await renderBookingProperties(booking)
 
     await waitForExpect(() => {
-      expect(getByText('Le 15 mars 2021 à 20h00')).toBeTruthy()
+      expect(getByText('Le 15 mars 2021 à 20h00')).toBeTruthy()
     })
   })
 

@@ -7,7 +7,6 @@ import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -25,22 +24,20 @@ export function BookingConfirmation() {
 
   return (
     <GenericInfoPage
-      title={_(t`Réservation confirmée !`)}
+      title={t`Réservation confirmée !`}
       icon={TicketBooked}
       iconSize={getSpacing(65)}>
       <StyledBody>
-        {_(t`Il te reste encore ${formatToFrenchDecimal(amountLeft)} à dépenser sur le pass !`)}
+        {t`Il te reste encore ${formatToFrenchDecimal(amountLeft)} à dépenser sur le pass !`}
       </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
-        {_(
-          t`Tu peux retrouver toutes les informations concernant ta réservation sur l’application`
-        )}
+        {t`Tu peux retrouver toutes les informations concernant ta réservation sur l’application`}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
       {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <ButtonPrimaryWhite
-          title={_(t`Voir ma réservation`)}
+          title={t`Voir ma réservation`}
           onPress={() => {
             analytics.logSeeMyBooking(params.offerId)
             navigate('Bookings')
@@ -49,7 +46,7 @@ export function BookingConfirmation() {
       )}
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite
-        title={_(t`Retourner à l'accueil`)}
+        title={t`Retourner à l'accueil`}
         onPress={() => navigate('Home', { shouldDisplayLoginModal: false })}
       />
     </GenericInfoPage>

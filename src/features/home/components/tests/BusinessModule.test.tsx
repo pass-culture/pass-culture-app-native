@@ -1,4 +1,3 @@
-import { render, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 import { Linking } from 'react-native'
 import { UseQueryResult } from 'react-query'
@@ -9,7 +8,7 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import * as HomeAPI from 'features/home/api'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, render, fireEvent } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BusinessPane } from '../../contentful'

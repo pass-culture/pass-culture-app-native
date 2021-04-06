@@ -7,7 +7,6 @@ import { FlatList, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { _ } from 'libs/i18n'
 import { REGEX_STARTING_WITH_NUMBERS, SuggestedPlace } from 'libs/place'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
@@ -72,7 +71,7 @@ export const SuggestedPlaces: React.FC<Props> = ({ places, query, isLoading }) =
 const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
   show ? (
     <DescriptionErrorTextContainer>
-      <DescriptionErrorText>{_(t`Aucun lieu ne correspond à ta recherche`)}</DescriptionErrorText>
+      <DescriptionErrorText>{t`Aucun lieu ne correspond à ta recherche`}</DescriptionErrorText>
     </DescriptionErrorTextContainer>
   ) : (
     <React.Fragment />

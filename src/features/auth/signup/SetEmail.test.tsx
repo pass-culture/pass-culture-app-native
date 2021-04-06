@@ -1,9 +1,9 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { analytics } from 'libs/analytics'
+import { fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 describe('<SetEmail />', () => {

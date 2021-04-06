@@ -8,15 +8,14 @@ import { SearchState } from 'features/search/pages/reducer'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { _ } from 'libs/i18n'
 import { getSpacing } from 'ui/theme'
 
 type OfferType = keyof SearchState['offerTypes']
 
 export const OFFER_TYPES: Array<[OfferType, string]> = [
-  ['isDigital', _(t`Offre numérique`)],
-  ['isEvent', _(t`Sortie`)],
-  ['isThing', _(t`Offre physique`)],
+  ['isDigital', t`Offre numérique`],
+  ['isEvent', t`Sortie`],
+  ['isThing', t`Offre physique`],
 ]
 
 export const OfferType: React.FC = () => {

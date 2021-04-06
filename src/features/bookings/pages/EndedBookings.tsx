@@ -3,7 +3,6 @@ import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -26,13 +25,13 @@ export const EndedBookings: React.FC = () => {
         <EndedBookingsList bookings={bookings?.ended_bookings} />
         <Spacer.Column numberOfSpaces={4} />
       </ScrollView>
-      <PageHeader title={_(t`Mes réservations terminées`)} />
+      <PageHeader title={t`Mes réservations terminées`} />
     </React.Fragment>
   )
 }
 
 const getEndedBookingsCountLabel = (plural: boolean) =>
-  plural ? _(t`réservations terminées`) : _(t`réservation terminée`)
+  plural ? t`réservations terminées` : t`réservation terminée`
 
 const EndedBookingsCount = styled(Typo.Body)({
   color: ColorsEnum.GREY_DARK,

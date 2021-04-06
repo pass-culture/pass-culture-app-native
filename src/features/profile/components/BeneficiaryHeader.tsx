@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { DomainsCredit } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { computeCredit } from 'features/profile/utils'
-import { _ } from 'libs/i18n'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
@@ -34,7 +33,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
         <Spacer.Column numberOfSpaces={2} />
         {props.depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
-            {_(t`crédit valable jusqu'au ${props.depositExpirationDate}`)}
+            {t`crédit valable jusqu'au ${props.depositExpirationDate}`}
           </Typo.Caption>
         )}
         <Spacer.Column numberOfSpaces={6} />

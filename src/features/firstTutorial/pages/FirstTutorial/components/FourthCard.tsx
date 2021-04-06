@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
 import StarAnimation from 'ui/animations/tutorial_star.json'
 import {
@@ -31,13 +30,11 @@ export function FourthCard(props: AchievementCardKeyProps) {
     <GenericAchievementCard
       animation={StarAnimation}
       buttonCallback={onButtonPress}
-      buttonText={_(t`Découvrir`)}
+      buttonText={t`Découvrir`}
       pauseAnimationOnRenderAtFrame={62}
-      subTitle={_(t`quotidiennes`)}
-      text={_(
-        t`Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !`
-      )}
-      title={_(t`Des nouveautés`)}
+      subTitle={t`quotidiennes`}
+      text={t`Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !`}
+      title={t`Des nouveautés`}
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}

@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useFavorites } from 'features/favorites/pages/useFavorites'
-import { _ } from 'libs/i18n'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
 import { Pastille } from 'ui/svg/icons/Pastille'
@@ -63,7 +62,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
             {hasTooMany ? (
               <React.Fragment>
                 <Count paddingRight={5}>{COUNT_MAX - 1}</Count>
-                <Plus>{_(t`+`)}</Plus>
+                <Plus>{t`+`}</Plus>
               </React.Fragment>
             ) : (
               <Count paddingRight={defaultPaddingRight}>{data.nbFavorites || '0'}</Count>

@@ -1,6 +1,7 @@
-import { act, fireEvent, render } from '@testing-library/react-native'
 import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
+
+import { act, fireEvent, render } from 'tests/utils'
 
 import { FirstCard } from './FirstCard'
 

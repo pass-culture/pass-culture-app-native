@@ -3,7 +3,6 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import { ColorsEnum, Typo, GUTTER_DP } from 'ui/theme'
 
 interface OfferCaptionProps {
@@ -27,7 +26,7 @@ export const OfferCaption = (props: OfferCaptionProps) => {
         </Typo.Caption>
       )}
       <Typo.Caption color={ColorsEnum.GREY_DARK} testID="priceIsDuo">
-        {isDuo && isBeneficiary ? `${price} - ${_(/*i18n: Duo offer */ t`Duo`)}` : price}
+        {isDuo && isBeneficiary ? `${price} - ${t`Duo`}` : price}
       </Typo.Caption>
     </CaptionContainer>
   )

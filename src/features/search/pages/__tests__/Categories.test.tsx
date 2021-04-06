@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
+import { render } from 'tests/utils'
 
 import { Categories } from '../Categories'
 

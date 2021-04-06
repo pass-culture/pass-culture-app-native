@@ -1,8 +1,8 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingCancellationReasons } from 'api/gen'
+import { fireEvent, render } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
 
@@ -21,7 +21,7 @@ describe('EndedBookingItem', () => {
       dateUsed: new Date('2021-03-16T23:01:37.925926'),
     })
     expect(queryByText('Utilisé')).toBeTruthy()
-    expect(queryByText('le 16/03/2021')).toBeTruthy()
+    expect(queryByText('le 16/03/2021')).toBeTruthy()
   })
 
   it('should display "Annulée" and cancellationDate labels if booking was cancelled by offerer', () => {
@@ -30,7 +30,7 @@ describe('EndedBookingItem', () => {
       cancellationReason: BookingCancellationReasons.OFFERER,
     })
     expect(queryByText('Annulé')).toBeTruthy()
-    expect(queryByText('le 15/03/2021')).toBeTruthy()
+    expect(queryByText('le 15/03/2021')).toBeTruthy()
   })
 
   it('should display "Réservation annulée" and cancellationDate labels if booking was cancelled by beneficiary', () => {
@@ -39,7 +39,7 @@ describe('EndedBookingItem', () => {
       cancellationReason: BookingCancellationReasons.BENEFICIARY,
     })
     expect(queryByText('Réservation annulée')).toBeTruthy()
-    expect(queryByText('le 15/03/2021')).toBeTruthy()
+    expect(queryByText('le 15/03/2021')).toBeTruthy()
   })
 
   it('should display "Réservation annulée" and cancellationDate labels if booking was expired', () => {
@@ -48,7 +48,7 @@ describe('EndedBookingItem', () => {
       cancellationReason: BookingCancellationReasons.EXPIRED,
     })
     expect(queryByText('Réservation annulée')).toBeTruthy()
-    expect(queryByText('le 15/03/2021')).toBeTruthy()
+    expect(queryByText('le 15/03/2021')).toBeTruthy()
   })
 
   it('should navigate to offer page ', () => {
