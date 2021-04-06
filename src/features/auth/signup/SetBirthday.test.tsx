@@ -101,13 +101,14 @@ describe('SetBirthday Page', () => {
   })
 
   it('should display a information modal when clicking "Pourquoi" link', () => {
-    const { getByTestId } = renderSetBirthday()
+    const { getByTestId, toJSON } = renderSetBirthday()
 
     const whyBirthdayLink = getByTestId('button-title-why-link')
     fireEvent.press(whyBirthdayLink)
 
     const birthdayModal = getByTestId('modal-birthday-information')
     expect(birthdayModal.props.visible).toBeTruthy()
+    expect(toJSON()).toMatchSnapshot()
   })
 
   it('should display 4 step dots with the third one as current step', () => {
