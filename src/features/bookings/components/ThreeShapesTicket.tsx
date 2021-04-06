@@ -53,5 +53,6 @@ const CenterView = styled.View<{ customWitdh: number; color?: ColorsEnum }>(
   ({ customWitdh, color }) => ({
     width: customWitdh,
     backgroundColor: color,
+    minHeight: 300, // FIXME(PC-7471) adapt height to content
   })
 )
