@@ -4,7 +4,6 @@ import { TouchableOpacity } from 'react-native'
 
 import { OfferStockResponse } from 'api/gen'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
-import { _ } from 'libs/i18n'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -30,7 +29,7 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Title4 testID="DateStep">{_(t`Date`)}</Typo.Title4>
+      <Typo.Title4 testID="DateStep">{t`Date`}</Typo.Title4>
       {bookingState.step === Step.DATE ? (
         <Calendar
           stocks={stocks}

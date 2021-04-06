@@ -1,5 +1,20 @@
+import { i18n } from '@lingui/core'
+import { I18nProvider } from '@lingui/react'
+import { render, RenderOptions } from '@testing-library/react-native'
 import flushPromises from 'flush-promises'
+import { fr } from 'make-plural/plurals'
+import React from 'react'
 import { act, ReactTestInstance } from 'react-test-renderer'
+
+import { messages } from 'locales/fr/messages'
+
+i18n.load({
+  fr: messages,
+})
+i18n.loadLocaleData({
+  fr: { plurals: fr },
+})
+i18n.activate('fr')
 
 export async function flushAllPromises() {
   await flushPromises()
@@ -32,3 +47,17 @@ export function simulateWebviewMessage(webview: ReactTestInstance, message: stri
     })
   })
 }
+
+const LinguiProvider: React.FC = ({ children }) => {
+  return <I18nProvider i18n={i18n}>{children}</I18nProvider>
+}
+
+const customRender = (ui: React.ReactElement<any>, options?: RenderOptions) =>
+  render(ui, {
+    wrapper: LinguiProvider,
+    ...options,
+  })
+
+export * from '@testing-library/react-native'
+
+export { customRender as render }

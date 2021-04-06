@@ -4,7 +4,6 @@ import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
-import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
@@ -35,12 +34,12 @@ export const BookingInformations: React.FC = () => {
       <Typo.Caption>{fullAddress}</Typo.Caption>
     </StyledAddress>
   )
-  const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : _(t`Gratuit`)
+  const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : t`Gratuit`
 
   if (category.categoryType === CategoryType.Event) {
     const subtext =
       stock.price > 0 && quantity === 2
-        ? _(t`(${formatToFrenchDecimal(stock.price)} x 2 places)`)
+        ? t`(${formatToFrenchDecimal(stock.price)} x 2 places)`
         : undefined
 
     return (

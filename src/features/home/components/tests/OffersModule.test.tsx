@@ -1,4 +1,3 @@
-import { act, fireEvent, render } from '@testing-library/react-native'
 import mockdate from 'mockdate'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
@@ -7,7 +6,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoli
 import { analytics } from 'libs/analytics'
 import { convertAlgoliaHitToCents } from 'libs/parsers/pricesConversion'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { AlgoliaParametersFields, DisplayParametersFields } from '../../contentful/contentful'

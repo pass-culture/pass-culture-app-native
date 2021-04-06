@@ -1,9 +1,8 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, render } from 'tests/utils'
 
 import { EndedBookings } from './EndedBookings'
 

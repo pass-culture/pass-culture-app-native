@@ -3,7 +3,6 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
@@ -43,7 +42,7 @@ export const CalendarPicker: React.FC<Props> = ({
         />
       </Container>
       <Spacer.Column numberOfSpaces={2} />
-      <ButtonPrimary title={_(t`Valider la date`)} onPress={onValidate} />
+      <ButtonPrimary title={t`Valider la date`} onPress={onValidate} />
     </AppModal>
   )
 }

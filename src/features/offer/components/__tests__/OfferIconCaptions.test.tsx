@@ -1,4 +1,3 @@
-import { render, waitFor } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import { QueryClient } from 'react-query'
@@ -8,6 +7,7 @@ import { CategoryNameEnum, OfferResponse, UserProfileResponse } from 'api/gen'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
+import { render, waitFor } from 'tests/utils'
 
 import { OfferIconCaptions } from '../OfferIconCaptions'
 

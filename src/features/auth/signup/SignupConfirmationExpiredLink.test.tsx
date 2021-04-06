@@ -1,5 +1,4 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { render, fireEvent } from '@testing-library/react-native'
 import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
@@ -10,7 +9,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, render, fireEvent } from 'tests/utils'
 
 import { contactSupport } from '../support.services'
 

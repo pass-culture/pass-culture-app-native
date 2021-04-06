@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
 import { getSpacing } from 'ui/theme'
 
@@ -49,12 +48,12 @@ function containsSpecialCharacter(password: string): boolean {
 export const PasswordSecurityRules: FunctionComponent<Props> = ({ password }) => {
   return (
     <RulesContainer>
-      <PasswordRule title={_(t`12 Caractères`)} isValidated={isLongEnough(password)} />
-      <PasswordRule title={_(t`1 Majuscule`)} isValidated={containsCapital(password)} />
-      <PasswordRule title={_(t`1 Minuscule`)} isValidated={containsLowercase(password)} />
-      <PasswordRule title={_(t`1 Chiffre`)} isValidated={containsNumber(password)} />
+      <PasswordRule title={t`12 Caractères`} isValidated={isLongEnough(password)} />
+      <PasswordRule title={t`1 Majuscule`} isValidated={containsCapital(password)} />
+      <PasswordRule title={t`1 Minuscule`} isValidated={containsLowercase(password)} />
+      <PasswordRule title={t`1 Chiffre`} isValidated={containsNumber(password)} />
       <PasswordRule
-        title={_(t`1 Caractère spécial (!@#$%^&*...)`)}
+        title={t`1 Caractère spécial (!@#$%^&*...)`}
         isValidated={containsSpecialCharacter(password)}
       />
     </RulesContainer>

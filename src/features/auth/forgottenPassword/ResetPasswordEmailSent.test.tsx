@@ -1,6 +1,5 @@
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { Text } from 'react-native'
 import { openInbox } from 'react-native-email-link'
@@ -8,7 +7,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 
 import { contactSupport } from '../support.services'
 

@@ -1,8 +1,8 @@
-import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, fireEvent, render } from 'tests/utils'
 
 import { BookDuoChoice } from '../BookDuoChoice'
 

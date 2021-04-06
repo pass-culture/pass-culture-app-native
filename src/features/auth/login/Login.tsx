@@ -10,7 +10,6 @@ import { useBackNavigation } from 'features/navigation/backNavigation'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { _ } from 'libs/i18n'
 import { storage } from 'libs/storage'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -67,7 +66,7 @@ export const Login: FunctionComponent = function () {
         navigate('Home', NavigateToHomeWithoutModalOptions)
       }
     } catch {
-      setErrorMessage(_(t`Il y a eu un problème. Tu peux réessayer plus tard.`))
+      setErrorMessage(t`Il y a eu un problème. Tu peux réessayer plus tard.`)
     }
   }
   function handleSigninFailure(response: SignInResponseFailure) {
@@ -76,13 +75,13 @@ export const Login: FunctionComponent = function () {
       navigate('SignupConfirmationEmailSent', { email })
     } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
       setIsLoading(false)
-      setErrorMessage(_(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie.`))
+      setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie.`)
     } else if (response.statusCode === 429) {
       setIsLoading(false)
-      setErrorMessage(_(t`Nombre de tentatives dépassé. Réessaye dans 1 minute.`))
+      setErrorMessage(t`Nombre de tentatives dépassé. Réessaye dans 1 minute.`)
     } else {
       setIsLoading(false)
-      setErrorMessage(_(t`E-mail ou mot de passe incorrect.`))
+      setErrorMessage(t`E-mail ou mot de passe incorrect.`)
     }
   }
 
@@ -102,7 +101,7 @@ export const Login: FunctionComponent = function () {
   return (
     <BottomContentPage>
       <ModalHeader
-        title={_(t`Connecte-toi !`)}
+        title={t`Connecte-toi !`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={complexGoBack}
         rightIcon={params?.preventCancellation ? undefined : Close}
@@ -111,7 +110,7 @@ export const Login: FunctionComponent = function () {
       {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
       <Spacer.Column numberOfSpaces={7} />
       <StyledInput>
-        <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
+        <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
         <Spacer.Column numberOfSpaces={2} />
         <TextInput
           autoCapitalize="none"
@@ -119,19 +118,19 @@ export const Login: FunctionComponent = function () {
           isError={!!errorMessage}
           keyboardType="email-address"
           onChangeText={setEmail}
-          placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
+          placeholder={t`tonadresse@email.com`}
           textContentType="emailAddress"
           value={email}
         />
       </StyledInput>
       <Spacer.Column numberOfSpaces={6} />
       <StyledInput>
-        <Typo.Body>{_(t`Mot de passe`)}</Typo.Body>
+        <Typo.Body>{t`Mot de passe`}</Typo.Body>
         <Spacer.Column numberOfSpaces={2} />
         <PasswordInput
           value={password}
           onChangeText={setPassword}
-          placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+          placeholder={t`Ton mot de passe`}
           isError={!!errorMessage}
           textContentType="password"
         />
@@ -139,12 +138,12 @@ export const Login: FunctionComponent = function () {
       <Spacer.Column numberOfSpaces={7} />
       <ForgottenPasswordContainer>
         <TouchableOpacity onPress={onForgottenPasswordClick}>
-          <Typo.ButtonText>{_(t`Mot de passe oublié ?`)}</Typo.ButtonText>
+          <Typo.ButtonText>{t`Mot de passe oublié ?`}</Typo.ButtonText>
         </TouchableOpacity>
       </ForgottenPasswordContainer>
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimary
-        title={_(t`Se connecter`)}
+        title={t`Se connecter`}
         onPress={onSubmit}
         disabled={shouldDisableLoginButton}
       />

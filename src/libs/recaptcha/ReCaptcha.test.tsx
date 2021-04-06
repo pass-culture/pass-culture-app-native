@@ -1,7 +1,6 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import { simulateWebviewMessage } from 'tests/utils'
+import { simulateWebviewMessage, render } from 'tests/utils'
 
 import { ReCaptcha } from './ReCaptcha'
 

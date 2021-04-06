@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { handleDeeplinkAnalytics } from './analytics'
@@ -27,7 +26,7 @@ export function decodeDeeplinkParts(url: string): DeeplinkParts {
   return { routeName: routeName.replace(/\/$/, ''), params }
 }
 
-const DEFAULT_ERROR_MESSAGE = _(t`Le lien est incorrect`)
+const DEFAULT_ERROR_MESSAGE = t`Le lien est incorrect`
 
 export function useOnDeeplinkError() {
   const { showInfoSnackBar } = useSnackBarContext()

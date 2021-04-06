@@ -1,5 +1,4 @@
 import { renderHook, RenderHookResult } from '@testing-library/react-hooks'
-import { act } from '@testing-library/react-native'
 import { rest } from 'msw'
 import waitForExpect from 'wait-for-expect'
 
@@ -9,7 +8,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, act } from 'tests/utils'
 
 import {
   InitialScreenConfiguration,

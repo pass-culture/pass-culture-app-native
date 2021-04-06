@@ -1,4 +1,3 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import { rest } from 'msw'
 import * as React from 'react'
 import { QueryClient } from 'react-query'
@@ -10,7 +9,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { BookingImpossible } from '../BookingImpossible'
 

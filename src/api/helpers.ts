@@ -3,7 +3,6 @@ import { t } from '@lingui/macro'
 
 import { navigationRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
-import { _ } from 'libs/i18n'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
@@ -129,7 +128,7 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     throw new ApiError(
       response.status,
       await response.json(),
-      _(t`Échec de la requête ${response.url}, code: ${response.status}`)
+      t`Échec de la requête ${response.url}, code: ${response.status}`
     )
   }
 

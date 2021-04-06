@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useCommit, useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { _ } from 'libs/i18n'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -24,7 +23,7 @@ export const Search: React.FC = () => {
     <Container onPress={onPress}>
       <Rectangle height={getSpacing(12)} size="100%" />
       <Title adjustsFontSizeToFit numberOfLines={1}>
-        {_(t`Rechercher`)}
+        {t`Rechercher`}
       </Title>
     </Container>
   )

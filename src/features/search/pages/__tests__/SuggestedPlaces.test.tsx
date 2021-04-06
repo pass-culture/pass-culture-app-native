@@ -1,4 +1,3 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { goBack } from '__mocks__/@react-navigation/native'
@@ -6,6 +5,7 @@ import { initialSearchState } from 'features/search/pages/reducer'
 import { keyExtractor, SuggestedPlaces } from 'features/search/pages/SuggestedPlaces'
 import { buildSuggestedPlaces } from 'libs/place'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
+import { fireEvent, render } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockStagedDispatch = jest.fn()

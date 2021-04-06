@@ -15,7 +15,6 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
-import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useModal } from 'ui/components/modals/useModal'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -63,11 +62,11 @@ export const Home: FunctionComponent = function () {
     }
   })
 
-  let subtitle = _(t`Toute la culture dans ta main`)
+  let subtitle = t`Toute la culture dans ta main`
   if (availableCredit) {
     subtitle = availableCredit.isExpired
-      ? _(t`Ton crédit est expiré`)
-      : _(t`Tu as ${formatToFrenchDecimal(availableCredit.amount)} sur ton pass`)
+      ? t`Ton crédit est expiré`
+      : t`Tu as ${formatToFrenchDecimal(availableCredit.amount)} sur ton pass`
   }
 
   const onScroll = useCallback(
@@ -91,16 +90,14 @@ export const Home: FunctionComponent = function () {
       </HeaderBackgroundWrapper>
       {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <CheatCodeButtonContainer onPress={() => navigation.navigate('CheatMenu')}>
-          <Text>{_(t`CheatMenu`)}</Text>
+          <Text>{t`CheatMenu`}</Text>
         </CheatCodeButtonContainer>
       )}
 
       <CenterContainer>
         <Spacer.Column numberOfSpaces={8} />
         <StyledTitle1 color={ColorsEnum.WHITE} numberOfLines={2}>
-          {userInfos?.firstName
-            ? _(/*i18n: Hello title message */ t`Bonjour ${userInfos?.firstName}`)
-            : _(/*i18n: Welcome title message */ t`Bienvenue !`)}
+          {userInfos?.firstName ? t`Bonjour ${userInfos?.firstName}` : t`Bienvenue !`}
         </StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Body color={ColorsEnum.WHITE}>{subtitle}</Typo.Body>

@@ -11,7 +11,6 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationType } from 'libs/algolia'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
-import { _ } from 'libs/i18n'
 import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -73,9 +72,7 @@ export const LocationFilter: React.FC = () => {
         <Spacer.Column numberOfSpaces={6} />
         <BannerContainer>
           <Banner
-            title={_(
-              t`Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation`
-            )}
+            title={t`Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation`}
           />
         </BannerContainer>
         <Spacer.Column numberOfSpaces={6} />
@@ -99,7 +96,7 @@ export const LocationFilter: React.FC = () => {
         />
       </ScrollView>
 
-      <PageHeader title={_(t`Localisation`)} />
+      <PageHeader title={t`Localisation`} />
       <GeolocationActivationModal
         isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
         hideGeolocPermissionModal={hideGeolocPermissionModal}

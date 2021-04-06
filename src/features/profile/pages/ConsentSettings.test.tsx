@@ -1,6 +1,5 @@
 import { Route } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import React from 'react'
 
 import { goBack } from '__mocks__/@react-navigation/native'
@@ -9,7 +8,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { firebaseAnalytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
-import { superFlushWithAct } from 'tests/utils'
+import { superFlushWithAct, render, fireEvent, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { ConsentSettings } from './ConsentSettings'

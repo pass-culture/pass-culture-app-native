@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { DomainsCredit, ExpenseDomain } from 'api/gen'
 import { AccordionItem } from 'features/offer/components'
 import { CreditCeiling } from 'features/profile/components/CreditCeiling'
-import { _ } from 'libs/i18n'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -19,17 +18,13 @@ type BeneficiaryCeilingsProps = {
 const EXPENSE_DOMAIN_ORDER = [ExpenseDomain.Digital, ExpenseDomain.Physical, ExpenseDomain.All]
 
 const ceilingsQuestions = {
-  physicalAndDigital: _(t`Pourquoi les biens physiques et numériques sont-ils limités ?`),
-  digital: _(t`Pourquoi les biens numériques sont-ils limités ?`),
+  physicalAndDigital: t`Pourquoi les biens physiques et numériques sont-ils limités ?`,
+  digital: t`Pourquoi les biens numériques sont-ils limités ?`,
 }
 
 const ceilingsDescription = {
-  physicalAndDigital: _(
-    t`Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible.`
-  ),
-  digital: _(
-    t`Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible.`
-  ),
+  physicalAndDigital: t`Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible.`,
+  digital: t`Ce plafond a été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ce plafond n'est possible.`,
 }
 
 const getOrderedCeilings = (domainsCredit: DomainsCredit) => {
@@ -50,14 +45,13 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
   const ceilingKey = hasPhysicalCeiling ? 'physicalAndDigital' : 'digital'
   const question = ceilingsQuestions[ceilingKey]
   const description =
-    _(
-      t`Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\u0020`
-    ) + ceilingsDescription[ceilingKey]
+    t`Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\u0020` +
+    ceilingsDescription[ceilingKey]
 
   return (
     <GreyContainer>
       <Spacer.Column numberOfSpaces={6} />
-      <Title>{_(t`Tu peux encore dépenser :`)}</Title>
+      <Title>{t`Tu peux encore dépenser :`}</Title>
       <Spacer.Column numberOfSpaces={5} />
       {!!props.domainsCredit && (
         <CeilingsRow>

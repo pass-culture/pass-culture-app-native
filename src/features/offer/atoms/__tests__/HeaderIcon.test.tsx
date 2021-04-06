@@ -1,9 +1,10 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { Animated } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
+
+import { fireEvent, render } from 'tests/utils'
 
 import { HeaderIcon } from '../HeaderIcon'
 

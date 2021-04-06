@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { OfferExtraData, OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -22,19 +21,19 @@ type Item =
   | { key: 'photoCredit'; value: string }
 
 const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
-  description: _(t`en détails`),
-  author: _(t`auteur`),
-  durationMinutes: _(t`durée`),
-  isbn: _(t`ISBN`),
-  musicSubType: _(t`sous genre`),
-  musicType: _(t`genre`),
-  performer: _(t`interprète`),
-  photoCredit: _(t`crédit photo`),
-  showSubType: _(t`sous genre`),
-  showType: _(t`genre`),
-  stageDirector: _(t`metteur en scène`),
-  speaker: _(t`intervenant`),
-  visa: _(t`VISA`),
+  description: t`en détails`,
+  author: t`auteur`,
+  durationMinutes: t`durée`,
+  isbn: t`ISBN`,
+  musicSubType: t`sous genre`,
+  musicType: t`genre`,
+  performer: t`interprète`,
+  photoCredit: t`crédit photo`,
+  showSubType: t`sous genre`,
+  showType: t`genre`,
+  stageDirector: t`metteur en scène`,
+  speaker: t`intervenant`,
+  visa: t`VISA`,
 }
 
 const KEY_ORDER: { [k in ExtendedKeys]: number } = {

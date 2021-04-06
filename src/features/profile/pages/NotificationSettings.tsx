@@ -10,7 +10,6 @@ import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
-import { _ } from 'libs/i18n'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import FilterSwitch from 'ui/components/FilterSwitch'
@@ -111,7 +110,7 @@ export function NotificationSettings() {
   const { mutate: updateProfile, isLoading: isUpdating } = useUpdateProfileMutation(
     () => {
       showSuccessSnackBar({
-        message: _(t`Le réglage est sauvegardé`),
+        message: t`Le réglage est sauvegardé`,
         timeout: 5000,
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
@@ -123,7 +122,7 @@ export function NotificationSettings() {
      */
     () => {
       showErrorSnackBar({
-        message: _(t`Une erreur est survenue`),
+        message: t`Une erreur est survenue`,
       })
       // on error rollback to the last loaded result
       setState((prevState) => ({
@@ -154,23 +153,19 @@ export function NotificationSettings() {
       <ProfileContainer>
         <Typo.Body color={ColorsEnum.BLACK}>
           {isLoggedIn
-            ? _(t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`)
-            : _(
-                t`Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture `
-              )}
+            ? t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`
+            : t`Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture `}
         </Typo.Body>
         <Spacer.Column numberOfSpaces={4} />
         <Separator />
         <Line>
           <SettingExplanation>
-            {_(
-              t`Je veux recevoir les actualités et les meilleures offres du pass Culture par e\u2011mail.`
-            )}
+            {t`Je veux recevoir les actualités et les meilleures offres du pass Culture par e\u2011mail.`}
           </SettingExplanation>
           <Spacer.Column numberOfSpaces={4} />
           <SectionRow
             type="clickable"
-            title={_(t`Autoriser l’envoi d’e\u2011mails`)}
+            title={t`Autoriser l’envoi d’e\u2011mails`}
             cta={<FilterSwitch testID="email" active={allowEmails} toggle={toggleEmails} />}
           />
           <Spacer.Column numberOfSpaces={3} />
@@ -180,14 +175,12 @@ export function NotificationSettings() {
           <React.Fragment>
             <Line>
               <SettingExplanation>
-                {_(
-                  t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`
-                )}
+                {t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`}
               </SettingExplanation>
               <Spacer.Column numberOfSpaces={4} />
               <SectionRow
                 type="clickable"
-                title={_(t`Autoriser les notifications marketing`)}
+                title={t`Autoriser les notifications marketing`}
                 cta={<FilterSwitch testID="push" active={pushSwitchEnabled} toggle={togglePush} />}
               />
               <Spacer.Column numberOfSpaces={3} />
@@ -197,7 +190,7 @@ export function NotificationSettings() {
         <Spacer.Flex flex={1} />
         {isLoggedIn && (
           <ButtonPrimary
-            title={_(t`Enregistrer`)}
+            title={t`Enregistrer`}
             isLoading={isUpdating}
             disabled={!state.emailTouched && !state.pushTouched}
             onPress={submitProfile}
@@ -205,7 +198,7 @@ export function NotificationSettings() {
         )}
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
-      <PageHeader title={_(t`Notifications`)} />
+      <PageHeader title={t`Notifications`} />
       <PushNotificationsModal
         visible={isNotificationsModalVisible}
         onRequestPermission={onRequestNotificationPermissionFromModal}

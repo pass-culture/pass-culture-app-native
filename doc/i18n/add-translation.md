@@ -4,13 +4,11 @@
 
 ```
 import { t } from '@lingui/macro';
-import { i18n } from 'path/to/lib/i18n';
+
 export const MyComponent = () => (
   <View>
     <Text>
-      i18n._(
-        /*i18n: Here goes the description for the translator*/ t`The English translation`
-      )
+      t`The English translation`
     </Text>
   </View>
 )

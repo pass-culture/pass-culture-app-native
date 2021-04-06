@@ -1,5 +1,4 @@
 import RNDateTimePicker from '@react-native-community/datetimepicker'
-import { render } from '@testing-library/react-native'
 import React from 'react'
 import { View } from 'react-native'
 
@@ -7,6 +6,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { SectionTitle } from 'features/search/sections/titles'
 import { LocationType } from 'libs/algolia'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render } from 'tests/utils'
 
 import { initialSearchState } from '../reducer'
 import { SearchFilter } from '../SearchFilter'

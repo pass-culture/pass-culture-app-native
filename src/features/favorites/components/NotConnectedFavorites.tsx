@@ -4,7 +4,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { CreateAccount } from 'ui/svg/icons/CreateAccount'
@@ -22,14 +21,14 @@ export const NotConnectedFavorites = () => {
 
       <CenteredContainer>
         <TypoTitle4 color={ColorsEnum.WHITE}>
-          {_(t`Connecte-toi pour profiter de cette fonctionnalité !`)}
+          {t`Connecte-toi pour profiter de cette fonctionnalité !`}
         </TypoTitle4>
         <Spacer.Column numberOfSpaces={4} />
 
         <TextContainer>
           <CenteredText>
             <Typo.Body color={ColorsEnum.WHITE}>
-              {_(t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !`)}
+              {t`Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !`}
             </Typo.Body>
           </CenteredText>
         </TextContainer>
@@ -38,7 +37,7 @@ export const NotConnectedFavorites = () => {
       <Row>
         <ButtonContainer>
           <AppButton
-            title={_(t`S'inscrire`)}
+            title={t`S'inscrire`}
             onPress={() => navigate('SetEmail')}
             backgroundColor={ColorsEnum.WHITE}
             textColor={ColorsEnum.PRIMARY}
@@ -47,7 +46,7 @@ export const NotConnectedFavorites = () => {
           />
           <Spacer.Column numberOfSpaces={4} />
           <AppButton
-            title={_(t`Se connecter`)}
+            title={t`Se connecter`}
             onPress={() => navigate('Login')}
             backgroundColor={ColorsEnum.TRANSPARENT}
             textColor={ColorsEnum.WHITE}

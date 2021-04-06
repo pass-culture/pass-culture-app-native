@@ -1,8 +1,8 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { fireEvent, render } from 'tests/utils'
 
 import { BookingOfferModalComponent } from '../BookingOfferModal'
 import { Step } from '../reducer'

@@ -9,7 +9,6 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
-import { _ } from 'libs/i18n'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -39,25 +38,25 @@ export const OfferDate: React.FC = () => {
         <Typo.Title4>{SectionTitle.OfferDate}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
         <DateFilter
-          text={_(t`Aujourd'hui`)}
+          text={t`Aujourd'hui`}
           isSelected={option === DATE_FILTER_OPTIONS.TODAY}
           onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.TODAY)}
         />
         <Spacer.Column numberOfSpaces={4} />
         <DateFilter
-          text={_(t`Cette semaine`)}
+          text={t`Cette semaine`}
           isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK}
           onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK)}
         />
         <Spacer.Column numberOfSpaces={4} />
         <DateFilter
-          text={_(t`Ce week-end`)}
+          text={t`Ce week-end`}
           isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK_END}
           onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)}
         />
         <Spacer.Column numberOfSpaces={4} />
         <DateFilter
-          text={_(t`Date précise`)}
+          text={t`Date précise`}
           isSelected={option === DATE_FILTER_OPTIONS.USER_PICK}
           onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
         />

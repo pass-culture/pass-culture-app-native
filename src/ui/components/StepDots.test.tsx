@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
+import { render } from 'tests/utils'
 import { StepDots } from 'ui/components/StepDots'
 import { ColorsEnum } from 'ui/theme'
 

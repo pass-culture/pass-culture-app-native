@@ -2,11 +2,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
 import { NavigationState } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { act, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, act, render } from 'tests/utils'
 
 import { state1, state2, state3 } from '../mocks/navigationStateSnapshots'
 import { getScreenName, onNavigationStateChange } from '../services'

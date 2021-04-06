@@ -1,11 +1,10 @@
-import { act, render } from '@testing-library/react-native'
 import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DEFAULT_SPLASHSCREEN_DELAY, SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, act, render } from 'tests/utils'
 
 import { homeNavigateConfig } from '../helpers'
 import { InitialRoutingScreen } from '../RootNavigator/InitialRoutingScreen'

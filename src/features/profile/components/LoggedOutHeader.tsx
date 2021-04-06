@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, getSpacing, ScreenWidth, Spacer, Typo } from 'ui/theme'
@@ -19,14 +18,14 @@ export function LoggedOutHeader() {
         <HeaderBackground width={ScreenWidth} />
       </HeaderBackgroundWrapper>
       <HeaderContent>
-        <Typo.Title4 color={ColorsEnum.WHITE}>{_(t`Profil`)}</Typo.Title4>
+        <Typo.Title4 color={ColorsEnum.WHITE}>{t`Profil`}</Typo.Title4>
         <Spacer.Column numberOfSpaces={8} />
         <Description color={ColorsEnum.WHITE}>
-          {_(t`Inscris-toi pour accéder à toutes les fonctionnalités de l’application`)}
+          {t`Inscris-toi pour accéder à toutes les fonctionnalités de l’application`}
         </Description>
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimaryWhite
-          title={_(t`S'inscrire`)}
+          title={t`S'inscrire`}
           onPress={() => {
             analytics.logProfilSignUp()
             navigate('SetEmail', { preventCancellation: true })
@@ -34,11 +33,11 @@ export function LoggedOutHeader() {
         />
         <Spacer.Column numberOfSpaces={4} />
         <LoginCta>
-          <Typo.Body color={ColorsEnum.WHITE}>{_(t`Tu as déjà un compte ?\u00a0`)}</Typo.Body>
+          <Typo.Body color={ColorsEnum.WHITE}>{t`Tu as déjà un compte ?\u00a0`}</Typo.Body>
           <TouchableOpacity
             onPress={() => navigate('Login', { preventCancellation: true })}
             testID="login-button">
-            <Typo.ButtonText color={ColorsEnum.WHITE}>{_(t`Connecte-toi`)}</Typo.ButtonText>
+            <Typo.ButtonText color={ColorsEnum.WHITE}>{t`Connecte-toi`}</Typo.ButtonText>
           </TouchableOpacity>
         </LoginCta>
       </HeaderContent>

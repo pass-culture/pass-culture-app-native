@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react-native'
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
@@ -6,6 +5,7 @@ import { UseQueryResult } from 'react-query'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { GetIdCheckTokenResponse } from 'api/gen'
 import { analytics } from 'libs/analytics'
+import { render } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 

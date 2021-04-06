@@ -1,4 +1,3 @@
-import { render, act, fireEvent } from '@testing-library/react-native'
 import React from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 import { UseQueryResult } from 'react-query'
@@ -13,7 +12,7 @@ import * as NavigationHelpers from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
-import { flushAllPromises } from 'tests/utils'
+import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
 
 import { Profile } from './Profile'
 

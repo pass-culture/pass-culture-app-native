@@ -7,7 +7,7 @@ UI component used to display one or many achievements
 - Includes tracking analytics of page view
   - Automatically generated or customizable achievement card name
 - Skip achievement
-  - Automatically display a button `Skip` (for single achievement) or `Skip all` (for many achievement) 
+  - Automatically display a button `Skip` (for single achievement) or `Skip all` (for many achievement)
 
 ## Usage
 
@@ -19,7 +19,6 @@ This is an example of card with all the `props`:
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { _ } from 'libs/i18n'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import {
   AchievementCardKeyProps,
@@ -35,11 +34,11 @@ export function FirstCard(props: AchievementCardKeyProps) {
     <GenericAchievementCard
       animation={TutorialPassLogo}
       buttonCallback={onButtonPress}
-      buttonText={_(t`Continuer`)}
+      buttonText={t`Continuer`}
       pauseAnimationOnRenderAtFrame={62}
-      subTitle={_(t`c'est...`)}
-      text={_(t`une initiative financée par le Ministère de la Culture.`)}
-      title={_(t`Le pass Culture`)}
+      subTitle={t`c'est...`}
+      text={t`une initiative financée par le Ministère de la Culture.`}
+      title={t`Le pass Culture`}
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}
@@ -49,9 +48,9 @@ export function FirstCard(props: AchievementCardKeyProps) {
 }
 ```
 
-> - `props.swiperRef` is automatically passed by the `GenericAchievement` component and are used to control the `activeIndex` 
+> - `props.swiperRef` is automatically passed by the `GenericAchievement` component and are used to control the `activeIndex`
 > - `props.index` and `props.activeIndex` are automatically passed by the `GenericAchievement` component and are used to detect when the animation should play
-> and when the analytics should trigger a screen view
+>   and when the analytics should trigger a screen view
 > - `props.name` is automatically passed by the `GenericAchievement` component and is used as screen view name for analtyics. It is possible to override it, see section [Analytics](#analytics) below.
 > - `props.lastIndex` is automatically passed by the `GenericAchievement` and is only used internally to decide if `Skip` button should be displayed in the card
 > - `props.swiperRef` is automatically passed by the `GenericAchievement` and give fine control over the `activeIndex`

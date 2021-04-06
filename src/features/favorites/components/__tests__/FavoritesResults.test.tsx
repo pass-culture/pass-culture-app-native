@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 import { Text as MockText } from 'react-native'
 import { QueryObserverSuccessResult, UseMutationResult } from 'react-query'
@@ -14,6 +13,7 @@ import {
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render } from 'tests/utils'
 
 import { FavoritesResults } from '../FavoritesResults'
 

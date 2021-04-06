@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { _ } from 'libs/i18n'
 import { fetchPlaces, SuggestedPlace } from 'libs/place'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -55,7 +54,7 @@ export const LocationPicker: React.FC = () => {
         <SearchInput
           value={value}
           onChangeText={onChangeText}
-          placeholder={_(t`Saisir une adresse...`)}
+          placeholder={t`Saisir une adresse...`}
           autoFocus={true}
           inputHeight="tall"
           RightIcon={() => <RightIcon value={value} onPress={resetSearch} />}
@@ -64,7 +63,7 @@ export const LocationPicker: React.FC = () => {
       <Spacer.Column numberOfSpaces={4} />
       <SuggestedPlaces places={places} query={debouncedValue} isLoading={isLoading} />
 
-      <PageHeader title={_(t`Choisir un lieu`)} />
+      <PageHeader title={t`Choisir un lieu`} />
     </React.Fragment>
   )
 }

@@ -1,7 +1,8 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 import { Linking } from 'react-native'
 import waitForExpect from 'wait-for-expect'
+
+import { fireEvent, render } from 'tests/utils'
 
 import { ExternalLink } from './ExternalLink'
 

@@ -1,9 +1,9 @@
-import { fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { LocationType } from 'libs/algolia'
+import { fireEvent, render } from 'tests/utils'
 
 import { Location } from '../Location'
 

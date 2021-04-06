@@ -1,10 +1,10 @@
-import { act, fireEvent, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, Step } from 'features/bookOffer/pages/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, fireEvent, render } from 'tests/utils'
 
 import { BookHourChoice } from '../BookHourChoice'
 

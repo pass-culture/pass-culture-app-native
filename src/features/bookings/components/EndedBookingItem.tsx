@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { BookingCancellationReasons } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { _ } from 'libs/i18n'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -73,26 +72,20 @@ function getEndedBookingReason(
 ) {
   if (dateUsed)
     return (
-      <InputRule title={_(t`Utilisé`)} icon={Check} color={ColorsEnum.GREEN_VALID} iconSize={20} />
+      <InputRule title={t`Utilisé`} icon={Check} color={ColorsEnum.GREEN_VALID} iconSize={20} />
     )
 
   if (cancellationReason === BookingCancellationReasons.OFFERER)
-    return <InputRule title={_(t`Annulé`)} icon={Check} color={ColorsEnum.ERROR} iconSize={20} />
+    return <InputRule title={t`Annulé`} icon={Check} color={ColorsEnum.ERROR} iconSize={20} />
 
   return (
-    <InputRule
-      title={_(t`Réservation annulée`)}
-      icon={Check}
-      color={ColorsEnum.ERROR}
-      iconSize={20}
-    />
+    <InputRule title={t`Réservation annulée`} icon={Check} color={ColorsEnum.ERROR} iconSize={20} />
   )
 }
 
 function getEndedBookingDateLabel(cancellationDate?: Date | null, dateUsed?: Date | null) {
-  const label = _(t`le\u00a0`)
-  if (dateUsed) return label + formatToSlashedFrenchDate(new Date(dateUsed).toISOString())
+  if (dateUsed) return t`le ${formatToSlashedFrenchDate(new Date(dateUsed).toISOString())}`
   if (cancellationDate)
-    return label + formatToSlashedFrenchDate(new Date(cancellationDate).toISOString())
+    return t`le ${formatToSlashedFrenchDate(new Date(cancellationDate).toISOString())}`
   return null
 }

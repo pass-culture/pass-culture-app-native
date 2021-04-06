@@ -1,11 +1,11 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { fireEvent, render, RenderAPI } from '@testing-library/react-native'
 import mockdate from 'mockdate'
 import React from 'react'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { fireEvent, render, RenderAPI } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'

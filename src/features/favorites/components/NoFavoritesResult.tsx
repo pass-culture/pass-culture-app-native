@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSearch } from 'features/search/pages/SearchWrapper'
-import { _ } from 'libs/i18n'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT, Typo } from 'ui/theme'
@@ -19,12 +18,12 @@ export const NoFavoritesResult = () => {
       <Spacer.Flex />
       <EmptyFavorites size={197} color={ColorsEnum.GREY_MEDIUM} />
       <Explanation color={ColorsEnum.GREY_DARK}>
-        {_(t`Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !`)}
+        {t`Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !`}
       </Explanation>
       <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
         <AppButton
-          title={_(t`Explorer les offres`)}
+          title={t`Explorer les offres`}
           onPress={() => {
             dispatch({ type: 'SHOW_RESULTS', payload: true })
             navigate('Search')

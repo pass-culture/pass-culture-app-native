@@ -7,7 +7,6 @@ import { OfferStockResponse } from 'api/gen'
 import { isApiError } from 'api/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -20,19 +19,16 @@ import { useBookOfferMutation } from '../services/useBookOfferMutation'
 import { BookingInformations } from './BookingInformations'
 import { CancellationDetails } from './CancellationDetails'
 
-const disclaimer = _(
-  t`Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.`
-)
+const disclaimer = t`Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.`
+
 interface Props {
   stocks: OfferStockResponse[]
 }
 
 const errorCodeToMessage: Record<string, string> = {
-  INSUFFICIENT_CREDIT: _(
-    t`Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !`
-  ),
-  ALREADY_BOOKED: _(t`Attention, il est impossible de réserver plusieurs fois la même offre !`),
-  STOCK_NOT_BOOKABLE: _(t`Oups, cette offre n’est plus disponible !`),
+  INSUFFICIENT_CREDIT: t`Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !`,
+  ALREADY_BOOKED: t`Attention, il est impossible de réserver plusieurs fois la même offre !`,
+  STOCK_NOT_BOOKABLE: t`Oups, cette offre n’est plus disponible !`,
 }
 
 export const BookingDetails: React.FC<Props> = ({ stocks }) => {
@@ -50,7 +46,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       }
     },
     onError: (error) => {
-      let message = _(t`En raison d’une erreur technique, l’offre n’a pas pu être réservée`)
+      let message = t`En raison d’une erreur technique, l’offre n’a pas pu être réservée`
 
       if (isApiError(error)) {
         const { content } = error as { content: { code: string } }
@@ -96,9 +92,9 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
       <Spacer.Column numberOfSpaces={6} />
 
-      <ButtonPrimary title={_(t`Confirmer la réservation`)} onPress={onPressBookOffer} />
+      <ButtonPrimary title={t`Confirmer la réservation`} onPress={onPressBookOffer} />
       {price ? (
-        <Caption>{_(t`${price} seront déduits de ton crédit pass Culture`)}</Caption>
+        <Caption>{t`${price} seront déduits de ton crédit pass Culture`}</Caption>
       ) : (
         <Spacer.Column numberOfSpaces={4} />
       )}

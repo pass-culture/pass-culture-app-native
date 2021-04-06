@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
@@ -66,7 +65,7 @@ export const SetEmail: FunctionComponent = () => {
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
-          title={_(t`Ton e-mail`)}
+          title={t`Ton e-mail`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={complexGoBack}
           rightIcon={params?.preventCancellation ? undefined : Close}
@@ -74,14 +73,14 @@ export const SetEmail: FunctionComponent = () => {
         />
         <ModalContent>
           <StyledInput>
-            <Typo.Body>{_(t`Adresse e-mail`)}</Typo.Body>
+            <Typo.Body>{t`Adresse e-mail`}</Typo.Body>
             <Spacer.Column numberOfSpaces={2} />
             <TextInput
               autoCapitalize="none"
               autoFocus={true}
               keyboardType="email-address"
               onChangeText={onChangeEmail}
-              placeholder={_(/*i18n: email placeholder */ t`tonadresse@email.com`)}
+              placeholder={t`tonadresse@email.com`}
               ref={emailInput}
               textContentType="emailAddress"
               value={email}
@@ -96,12 +95,12 @@ export const SetEmail: FunctionComponent = () => {
           <StyledCheckBox>
             <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
             <CheckBoxText>
-              {_(t`Reçois nos recommandations culturelles à proximité de chez toi par e-mail.`)}
+              {t`Reçois nos recommandations culturelles à proximité de chez toi par e-mail.`}
             </CheckBoxText>
           </StyledCheckBox>
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
-            title={_(t`Continuer`)}
+            title={t`Continuer`}
             onPress={validateEmail}
             isLoading={false}
             disabled={shouldDisableValidateButton}

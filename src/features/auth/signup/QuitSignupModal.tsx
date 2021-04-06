@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -44,14 +43,14 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
-      <GenericInfoPage title={_(t`Veux-tu abandonner l'inscription ?`)} icon={Warning}>
+      <GenericInfoPage title={t`Veux-tu abandonner l'inscription ?`} icon={Warning}>
         <StyledBody>
-          {_(t`Les informations que tu as renseignées ne seront pas enregistrées`)}
+          {t`Les informations que tu as renseignées ne seront pas enregistrées`}
         </StyledBody>
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimaryWhite title={_(t`Continuer l'inscription`)} onPress={resume} />
+        <ButtonPrimaryWhite title={t`Continuer l'inscription`} onPress={resume} />
         <Spacer.Column numberOfSpaces={4} />
-        <ButtonTertiaryWhite title={_(t`Abandonner l'inscription`)} onPress={quitSignup} />
+        <ButtonTertiaryWhite title={t`Abandonner l'inscription`} onPress={quitSignup} />
       </GenericInfoPage>
     </AppFullPageModal>
   )

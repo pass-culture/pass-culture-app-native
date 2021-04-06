@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -54,7 +53,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
           {!!lastIndex && (
             <SkipButton>
               <HorizontalPaddingContainer>
-                <ButtonTertiaryGreyDark title={_(t`Tout passer`)} onPress={skip} />
+                <ButtonTertiaryGreyDark title={t`Tout passer`} onPress={skip} />
               </HorizontalPaddingContainer>
             </SkipButton>
           )}

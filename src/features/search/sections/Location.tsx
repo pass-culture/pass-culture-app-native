@@ -10,7 +10,6 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { LocationType } from 'libs/algolia'
-import { _ } from 'libs/i18n'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -37,7 +36,7 @@ export const Location: React.FC = () => {
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
-            {_(t`Seules les sorties et offres physiques seront affichées`)}
+            {t`Seules les sorties et offres physiques seront affichées`}
           </Typo.Caption>
         </React.Fragment>
       )}

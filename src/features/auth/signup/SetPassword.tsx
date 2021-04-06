@@ -11,7 +11,6 @@ import {
 } from 'features/auth/components/PasswordSecurityRules'
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
-import { _ } from 'libs/i18n'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -52,7 +51,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
-          title={_(t`Ton mot de passe`)}
+          title={t`Ton mot de passe`}
           rightIcon={Close}
           onRightIconPress={showQuitSignupModal}
           leftIcon={ArrowPrevious}
@@ -61,20 +60,20 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
         <BottomCardContentContainer>
           <Spacer.Column numberOfSpaces={6} />
           <StyledInput>
-            <Typo.Body>{_(t`Mot de passe`)}</Typo.Body>
+            <Typo.Body>{t`Mot de passe`}</Typo.Body>
             <Spacer.Column numberOfSpaces={2} />
             <PasswordInput
               value={password}
               autoFocus={true}
               onChangeText={setPassword}
-              placeholder={_(/*i18n: password placeholder */ t`Ton mot de passe`)}
+              placeholder={t`Ton mot de passe`}
               ref={passwordInput}
             />
           </StyledInput>
           <PasswordSecurityRules password={password} />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
-            title={_(t`Continuer`)}
+            title={t`Continuer`}
             onPress={submitPassword}
             disabled={!isPasswordCorrect(password)}
           />

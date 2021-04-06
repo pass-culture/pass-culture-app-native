@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
+import { render } from 'tests/utils'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'

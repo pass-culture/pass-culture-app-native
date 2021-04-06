@@ -14,7 +14,6 @@ import {
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
@@ -51,8 +50,8 @@ export const OfferHeader: React.FC<Props> = (props) => {
       showErrorSnackBar({
         message:
           isApiError(error) && error.content.code === 'MAX_FAVORITES_REACHED'
-            ? _(t`Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.`)
-            : _(t`L'offre n'a pas été ajoutée à tes favoris`),
+            ? t`Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.`
+            : t`L'offre n'a pas été ajoutée à tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
@@ -61,7 +60,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { mutate: removeFavorite } = useRemoveFavorite({
     onError: () => {
       showErrorSnackBar({
-        message: _(t`L'offre n'a pas été retirée de tes favoris`),
+        message: t`L'offre n'a pas été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
       })
     },

@@ -7,7 +7,6 @@ import { contactSupport } from 'features/auth/support.services'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
-import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
@@ -23,7 +22,7 @@ export function LegalNotices() {
       <Spacer.Column numberOfSpaces={14} />
       <Container>
         <Row
-          title={_(t`Conditions Générales d’Utilisation`)}
+          title={t`Conditions Générales d’Utilisation`}
           type="clickable"
           onPress={() => openExternalUrl(env.CGU_LINK)}
           icon={ExternalSite}
@@ -32,7 +31,7 @@ export function LegalNotices() {
         />
         <Separator />
         <Row
-          title={_(t`Charte de protection des données personnelles`)}
+          title={t`Charte de protection des données personnelles`}
           type="clickable"
           onPress={() => openExternalUrl(env.DATA_PRIVACY_CHART_LINK)}
           icon={ExternalSite}
@@ -43,7 +42,7 @@ export function LegalNotices() {
           <React.Fragment>
             <Separator />
             <Row
-              title={_(t`Suppression du compte`)}
+              title={t`Suppression du compte`}
               type="clickable"
               onPress={() => contactSupport.forAccountDeletion(user.email)}
               icon={ProfileDeletion}
@@ -54,7 +53,7 @@ export function LegalNotices() {
         )}
       </Container>
 
-      <PageHeader title={_(t`Mentions légales`)} />
+      <PageHeader title={t`Mentions légales`} />
     </React.Fragment>
   )
 }

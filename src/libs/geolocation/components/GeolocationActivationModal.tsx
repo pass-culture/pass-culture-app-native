@@ -4,7 +4,6 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
@@ -22,7 +21,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
   onPressGeolocPermissionModalButton,
 }) => (
   <AppInformationModal
-    title={_(t`Paramètres de localisation`)}
+    title={t`Paramètres de localisation`}
     visible={isGeolocPermissionModalVisible}
     onCloseIconPress={hideGeolocPermissionModal}
     testIdSuffix="geoloc-permission-modal">
@@ -34,24 +33,18 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       />
       <Spacer.Column numberOfSpaces={2} />
       <InformationText>
-        {_(
-          t`Retrouve toutes les offres autour de chez toi en activant les données de localisation.`
-        )}
+        {t`Retrouve toutes les offres autour de chez toi en activant les données de localisation.`}
       </InformationText>
       <Spacer.Column numberOfSpaces={4} />
 
       <InformationText>
         {Platform.OS === 'android'
-          ? _(
-              t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation.`
-            )
-          : _(
-              t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone.`
-            )}
+          ? t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation.`
+          : t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone.`}
       </InformationText>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        title={_(t`Activer la géolocalisation`)}
+        title={t`Activer la géolocalisation`}
         onPress={() => {
           analytics.logOpenLocationSettings()
           onPressGeolocPermissionModalButton()

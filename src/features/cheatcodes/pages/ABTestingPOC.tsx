@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useABTestingContext } from 'libs/ABTesting'
-import { _ } from 'libs/i18n'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ABTestingPOC: React.FC = () => {

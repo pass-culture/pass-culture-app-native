@@ -8,7 +8,6 @@ import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
 import { MonitoringError } from 'libs/errorMonitoring'
-import { _ } from 'libs/i18n'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -112,7 +111,7 @@ Those props are provided by the GenericAchievementCard and must be passed down t
         </Animatable.View>
         {!props.lastIndex && (
           <FlexContainer>
-            <ButtonPrimaryWhite title={_(t`Passer`)} onPress={props.skip} />
+            <ButtonPrimaryWhite title={t`Passer`} onPress={props.skip} />
           </FlexContainer>
         )}
       </BottomButtonsContainer>

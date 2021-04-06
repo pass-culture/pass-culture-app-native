@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { CategoryType } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
+import { render } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
 import { Booking } from '../components/types'

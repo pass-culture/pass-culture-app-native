@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
-import { _ } from 'libs/i18n'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -63,7 +62,7 @@ export const Categories: React.FC = () => {
         })}
       </ScrollView>
 
-      <PageHeader title={_(t`Catégories`)} />
+      <PageHeader title={t`Catégories`} />
     </React.Fragment>
   )
 }

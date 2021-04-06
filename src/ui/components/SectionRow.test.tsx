@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
+import { render } from 'tests/utils'
 import { Close } from 'ui/svg/icons/Close'
 
 import { SectionRow } from './SectionRow'

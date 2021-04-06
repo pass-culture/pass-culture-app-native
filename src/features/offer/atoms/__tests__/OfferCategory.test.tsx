@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
 import { CategoryNameEnum } from 'api/gen'
+import { render } from 'tests/utils'
 
 import { OfferCategory } from '../OfferCategory'
 

@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
-import { render } from '@testing-library/react-native'
 import React from 'react'
 
+import { render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { CheckboxInput } from './CheckboxInput'

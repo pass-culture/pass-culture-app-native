@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { openExternalUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
-import { _ } from 'libs/i18n'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -50,34 +49,29 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   return (
     <AppModal
       visible={isVisible}
-      title={_(t`Respect de ta vie privée`)}
+      title={t`Respect de ta vie privée`}
       rightIcon={Close}
       onRightIconPress={onRefusal}
       disableBackdropTap={disableBackdropTap}>
       <Description>
         <Typo.Body>
-          {_(
-            t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre`
-          )}
+          {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre`}
         </Typo.Body>
       </Description>
       <ButtonTertiary
-        title={_(t`Politique des cookies`)}
+        title={t`Politique des cookies`}
         onPress={openCookiesPolicyExternalUrl}
         icon={ExternalLinkSite}
         textSize={12}
       />
       <SubDescription>
         <Typo.Caption color={ColorsEnum.GREY_DARK}>
-          {_(t`Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil.`)}
+          {t`Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil.`}
         </Typo.Caption>
       </SubDescription>
-      <ButtonPrimary title={_(t`Continuer`)} onPress={onApproval} />
+      <ButtonPrimary title={t`Continuer`} onPress={onApproval} />
       <Spacer.Column numberOfSpaces={2} />
-      <ButtonPrimaryWhite
-        title={_(t`Paramètres de confidentialité`)}
-        onPress={goToConsentSettings}
-      />
+      <ButtonPrimaryWhite title={t`Paramètres de confidentialité`} onPress={goToConsentSettings} />
     </AppModal>
   )
 }

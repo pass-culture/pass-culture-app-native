@@ -1,8 +1,8 @@
-import { cleanup, render } from '@testing-library/react-native'
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { cleanup, render } from 'tests/utils'
 
 import { Favorites } from '../Favorites'
 import { initialFavoritesState } from '../reducer'
