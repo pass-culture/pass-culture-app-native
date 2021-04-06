@@ -655,8 +655,8 @@ msgid "L’application est actuellement en maintenance, mais sera à nouveau en 
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
 #: src/features/auth/signup/SetBirthday.tsx:156
-msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
-msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgid "L’application pass Culture est accessible à tous. Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgstr "L’application pass Culture est accessible à tous. Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/bookings/components/BookingPropertiesSection.tsx:19
 msgid "Ma réservation"
