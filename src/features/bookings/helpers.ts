@@ -25,8 +25,7 @@ export function getBookingProperties(booking?: Booking): BookingProperties {
 
   const { stock } = booking
   const { offer } = stock
-  const beginningDatetime = stock.beginningDatetime ? new Date(stock.beginningDatetime) : null
-  const isEvent = Boolean(beginningDatetime)
+  const isEvent = offer.category.categoryType === CategoryType.Event
 
   return {
     isDuo: isEvent && isDuoBooking(booking),

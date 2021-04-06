@@ -1,5 +1,4 @@
-import React, { PropsWithChildren, useState } from 'react'
-import { LayoutRectangle } from 'react-native'
+import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { TicketFooter } from 'ui/svg/TicketFooter'
@@ -12,19 +11,10 @@ type ThreeShapesTicketProps = PropsWithChildren<{
 }>
 
 export function ThreeShapesTicket(props: ThreeShapesTicketProps) {
-  const [headerDimensions, setHeaderDimensions] = useState<LayoutRectangle | undefined>()
   return (
     <Container customWitdh={props.width} style={shaddowStyle}>
-      <TicketHeader
-        width={props.width}
-        color={props.color}
-        onLayout={(e) => setHeaderDimensions(e.nativeEvent.layout)}
-      />
-      {headerDimensions && (
-        <CenterView customWitdh={headerDimensions?.width} color={props.color}>
-          {props.children}
-        </CenterView>
-      )}
+      <TicketHeader width={props.width} color={props.color} />
+      <CenterView color={props.color}>{props.children}</CenterView>
       <TicketFooter width={props.width} color={props.color} />
     </Container>
   )
@@ -49,10 +39,7 @@ const Container = styled.View<{ customWitdh: number; color?: ColorsEnum }>(({ cu
   maxWidth: customWitdh,
 }))
 
-const CenterView = styled.View<{ customWitdh: number; color?: ColorsEnum }>(
-  ({ customWitdh, color }) => ({
-    width: customWitdh,
-    backgroundColor: color,
-    minHeight: 300, // FIXME(PC-7471) adapt height to content
-  })
-)
+const CenterView = styled.View<{ color?: ColorsEnum }>(({ color }) => ({
+  width: '100%',
+  backgroundColor: color,
+}))
