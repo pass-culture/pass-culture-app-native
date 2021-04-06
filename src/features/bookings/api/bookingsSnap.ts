@@ -56,6 +56,7 @@ export const bookingsSnap: BookingsResponse = {
       totalAmount: 1900,
       token: '352UW4',
       quantity: 10,
+      qrCodeData: 'PASSCULTURE:v3;TOKEN:352UW4',
       stock: {
         id: 150230,
         beginningDatetime: new Date('2021-03-15T20:00:00'),
@@ -67,7 +68,9 @@ export const bookingsSnap: BookingsResponse = {
             label: 'Pratique artistique',
             name: CategoryNameEnum.LECON,
           },
-          extraData: null,
+          extraData: {
+            isbn: '123456789',
+          },
           isPermanent: false,
           isDigital: true,
           venue: {
