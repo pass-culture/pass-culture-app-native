@@ -227,7 +227,7 @@ msgstr "Ce week-end"
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
-#: src/features/auth/signup/SetPostalCode.tsx:49
+#: src/features/auth/signup/SetPostalCode.tsx:46
 msgid "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 msgstr "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 
@@ -282,7 +282,7 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/auth/signup/SetPostalCode.tsx:45
+#: src/features/auth/signup/SetPostalCode.tsx:42
 msgid "Code Postal"
 msgstr "Code Postal"
 
@@ -358,7 +358,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:144
 #: src/features/auth/signup/SetEmail.tsx:78
 #: src/features/auth/signup/SetPassword.tsx:44
-#: src/features/auth/signup/SetPostalCode.tsx:62
+#: src/features/auth/signup/SetPostalCode.tsx:59
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:55
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:11
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
@@ -495,7 +495,7 @@ msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 
 #. postalCode placeholder
-#: src/features/auth/signup/SetPostalCode.tsx:57
+#: src/features/auth/signup/SetPostalCode.tsx:54
 msgid "Ex: 35000"
 msgstr "Ex: 35000"
 
@@ -1107,7 +1107,7 @@ msgstr "Titre, artiste..."
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/SetPostalCode.tsx:55
+#: src/features/auth/signup/SetPostalCode.tsx:52
 msgid "Ton code postal"
 msgstr "Ton code postal"
 

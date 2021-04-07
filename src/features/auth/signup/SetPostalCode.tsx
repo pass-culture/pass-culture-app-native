@@ -34,10 +34,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  const email = route.params.email
-  const isNewsletterChecked = route.params.isNewsletterChecked
-  const password = route.params.password
-  const birthday = route.params.birthday
+  const { email, isNewsletterChecked, password, birthday } = route.params
 
   const isPostalCodeCorrect = postalCode.length === 5 ? true : false
 
@@ -70,13 +67,13 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
           onRightIconPress={showQuitSignupModal}
         />
         <ModalContent>
-          <Paragraphe>
+          <Paragraph>
             <Typo.Body>
               {_(
                 t`Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture.`
               )}
             </Typo.Body>
-          </Paragraphe>
+          </Paragraph>
           <Spacer.Column numberOfSpaces={6} />
 
           <StyledInput>
@@ -135,7 +132,7 @@ const StyledInput = styled.View({
   width: '100%',
 })
 
-const Paragraphe = styled.Text({
+const Paragraph = styled.Text({
   flexWrap: 'wrap',
   flexShrink: 1,
   textAlign: 'center',
