@@ -162,7 +162,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
             />
             {errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
             <Spacer.Column numberOfSpaces={5} />
-            <StepDots numberOfSteps={4} currentStep={4} />
+            <StepDots numberOfSteps={5} currentStep={5} />
           </CardContent>
         </BottomCardContentContainer>
       </BottomContentPage>

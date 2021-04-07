@@ -90,11 +90,11 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     })
   }
 
-  function goToCguAcceptance() {
+  function goToPostalCode() {
     const { date } = state
     if (date) {
       const birthday = formatDateToISOStringWithoutTime(date)
-      navigate('AcceptCgu', { email, isNewsletterChecked, password, birthday })
+      navigate('SetPostalCode', { email, isNewsletterChecked, password, birthday })
     }
   }
 
@@ -112,7 +112,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
    */
   function animateBeforeNavigation() {
     if (keyboardHeightRef.current === 0 && state.date) {
-      return goToCguAcceptance()
+      return goToPostalCode()
     }
 
     canNavigateToCguRef.current = true
@@ -125,7 +125,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       return
     }
     if (canNavigateToCguRef.current && state.date) {
-      goToCguAcceptance()
+      goToPostalCode()
     }
   }, [informationModalVisible, state.date])
 
@@ -204,7 +204,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
                 onPress={animateBeforeNavigation}
               />
               <Spacer.Column numberOfSpaces={5} />
-              <StepDots numberOfSteps={4} currentStep={3} />
+              <StepDots numberOfSteps={5} currentStep={3} />
             </InnerContainer>
           </TouchableWithoutFeedback>
         </BottomCardContentContainer>

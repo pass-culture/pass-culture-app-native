@@ -192,12 +192,12 @@ describe('AcceptCgu Page', () => {
     expect(title).toBeTruthy()
   })
 
-  it('should display 4 step dots with the last one as current step', () => {
+  it('should display 5 step dots with the last one as current step', () => {
     simulateConnectedNetwork()
     const { getAllByTestId } = renderAcceptCGU()
     const dots = getAllByTestId('dot-icon')
-    expect(dots.length).toBe(4)
-    expect(dots[3].props.fill).toEqual(ColorsEnum.PRIMARY)
+    expect(dots.length).toBe(5)
+    expect(dots[4].props.fill).toEqual(ColorsEnum.PRIMARY)
   })
 
   describe('<AcceptCgu /> - Analytics', () => {
@@ -225,6 +225,7 @@ function renderAcceptCGU() {
         isNewsletterChecked: true,
         password: 'password',
         birthday: '12-2-1995',
+        postalCode: '35000',
       },
     },
   } as StackScreenProps<RootStackParamList, 'AcceptCgu'>
