@@ -45,7 +45,7 @@ msgstr "1 Minuscule"
 msgid "12 Caractères"
 msgstr "12 Caractères"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:36
+#: src/features/auth/signup/QuitSignupModal.tsx:37
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
@@ -207,7 +207,7 @@ msgstr "CGU & Données"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/pages/BookingDetails.tsx:24
+#: src/features/bookings/pages/BookingDetails.tsx:37
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -226,6 +226,10 @@ msgstr "Ce week-end"
 #: src/features/profile/components/BeneficiaryCeilings.tsx:18
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
+
+#: src/features/auth/signup/SetPostalCode.tsx:49
+msgid "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
+msgstr "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 
 #: src/features/bookOffer/components/CancellationDetails.tsx:18
 msgid "Cette réservation est annulable"
@@ -277,6 +281,10 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:52
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
+
+#: src/features/auth/signup/SetPostalCode.tsx:45
+msgid "Code Postal"
+msgstr "Code Postal"
 
 #: src/features/profile/pages/Profile.tsx:116
 msgid "Comment ça marche ?"
@@ -350,13 +358,14 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:144
 #: src/features/auth/signup/SetEmail.tsx:78
 #: src/features/auth/signup/SetPassword.tsx:44
+#: src/features/auth/signup/SetPostalCode.tsx:62
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:55
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:11
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:15
 msgid "Continuer"
 msgstr "Continuer"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:34
+#: src/features/auth/signup/QuitSignupModal.tsx:35
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
@@ -485,6 +494,11 @@ msgstr "Erreur lors de la récupération du token d'accès"
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 
+#. postalCode placeholder
+#: src/features/auth/signup/SetPostalCode.tsx:57
+msgid "Ex: 35000"
+msgstr "Ex: 35000"
+
 #: src/features/bookings/components/NoBookingsView.tsx:21
 #: src/features/favorites/components/NoFavoritesResult.tsx:21
 msgid "Explorer les offres"
@@ -590,12 +604,12 @@ msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx:31
-#: src/features/offer/components/OfferHeader.tsx:40
+#: src/features/offer/components/OfferHeader.tsx:41
 msgid "L'offre n'a pas été ajoutée à tes favoris"
 msgstr "L'offre n'a pas été ajoutée à tes favoris"
 
 #: src/features/favorites/atoms/Favorite.tsx:32
-#: src/features/offer/components/OfferHeader.tsx:48
+#: src/features/offer/components/OfferHeader.tsx:49
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
@@ -641,7 +655,7 @@ msgstr "Les biens acquis ou réservés sur le pass Culture sont destinés à un 
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
-#: src/features/auth/signup/QuitSignupModal.tsx:31
+#: src/features/auth/signup/QuitSignupModal.tsx:32
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
@@ -1093,6 +1107,10 @@ msgstr "Titre, artiste..."
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
+#: src/features/auth/signup/SetPostalCode.tsx:55
+msgid "Ton code postal"
+msgstr "Ton code postal"
+
 #: src/features/auth/signup/AccountCreated.tsx:15
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
@@ -1157,7 +1175,7 @@ msgstr "Trier"
 msgid "Trier par"
 msgstr "Trier par"
 
-#: src/features/offer/components/OfferHeader.tsx:39
+#: src/features/offer/components/OfferHeader.tsx:40
 msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
@@ -1173,7 +1191,7 @@ msgstr "Tu as déjà un compte ?\\u00a0"
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
-#: src/features/bookings/pages/BookingDetails.tsx:28
+#: src/features/bookings/pages/BookingDetails.tsx:41
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -1296,7 +1314,7 @@ msgstr "Valider la date"
 msgid "Version {0}"
 msgstr "Version {0}"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:29
+#: src/features/auth/signup/QuitSignupModal.tsx:30
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
 
