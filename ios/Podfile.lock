@@ -27,6 +27,9 @@ PODS:
     - FirebaseAnalytics (= 6.9.0)
   - Firebase/CoreOnly (6.34.0):
     - FirebaseCore (= 6.10.4)
+  - Firebase/DynamicLinks (6.34.0):
+    - Firebase/CoreOnly
+    - FirebaseDynamicLinks (~> 4.3.1)
   - Firebase/RemoteConfig (6.34.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 4.9.1)
@@ -50,6 +53,8 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/Logger (~> 6.7)
     - nanopb (~> 1.30906.0)
+  - FirebaseDynamicLinks (4.3.1):
+    - FirebaseCore (~> 6.10)
   - FirebaseInstallations (1.7.0):
     - FirebaseCore (~> 6.10)
     - GoogleUtilities/Environment (~> 6.7)
@@ -420,9 +425,14 @@ PODS:
     - Firebase/Analytics (= 6.34.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (10.8.1):
+  - RNFBApp (11.2.0):
     - Firebase/CoreOnly (= 6.34.0)
     - React-Core
+  - RNFBDynamicLinks (11.2.0):
+    - Firebase/DynamicLinks (= 6.34.0)
+    - GoogleUtilities/AppDelegateSwizzler
+    - React-Core
+    - RNFBApp
   - RNFBRemoteConfig (10.8.1):
     - Firebase/RemoteConfig (= 6.34.0)
     - React-Core
@@ -522,6 +532,7 @@ DEPENDENCIES:
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
+  - "RNFBDynamicLinks (from `../node_modules/@react-native-firebase/dynamic-links`)"
   - "RNFBRemoteConfig (from `../node_modules/@react-native-firebase/remote-config`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNKeychain (from `../node_modules/react-native-keychain`)
@@ -546,6 +557,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseDynamicLinks
     - FirebaseInstallations
     - FirebaseRemoteConfig
     - Flipper
@@ -659,6 +671,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
+  RNFBDynamicLinks:
+    :path: "../node_modules/@react-native-firebase/dynamic-links"
   RNFBRemoteConfig:
     :path: "../node_modules/@react-native-firebase/remote-config"
   RNGestureHandler:
@@ -698,6 +712,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
   FirebaseCore: d3a978a3cfa3240bf7e4ba7d137fdf5b22b628ec
   FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
+  FirebaseDynamicLinks: 6eac37d86910382eafb6315d952cc44c9e176094
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   FirebaseRemoteConfig: 35a729305f254fb15a2e541d4b36f3a379da7fdc
   Flipper: be611d4b742d8c87fbae2ca5f44603a02539e365
@@ -754,7 +769,8 @@ SPEC CHECKSUMS:
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNDateTimePicker: 8a51a2216c307769e69ef827293d59549ab1ca23
   RNFBAnalytics: b48771a3dfb5f4cc5f1bceb6b0d88d7fbde29650
-  RNFBApp: f3a3e8ab0dda26c89f50c2ef039d97d0f8b0fd27
+  RNFBApp: e30b83b38becc3b5f47e6d9e01a51528da5dd6fc
+  RNFBDynamicLinks: faa22bd8e36488332604dc7c80379d1fc3fe6d46
   RNFBRemoteConfig: 8ccf782e038052588b0899b258c33a9390c49c92
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
