@@ -30,6 +30,7 @@ export interface Environment {
   SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string
   UNIVERSAL_LINK: string
+  FIREBASE_DYNAMIC_LINK: string
   URL_PREFIX: string
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
