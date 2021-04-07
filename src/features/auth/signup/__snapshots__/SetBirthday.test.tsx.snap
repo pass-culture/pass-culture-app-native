@@ -717,6 +717,36 @@ Array [
                   </Text>
                 </View>
               </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignSelf": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#c7c7cc"
+                  height={8}
+                  testID="dot-icon"
+                  width={8}
+                >
+                  <Text>
+                    dot-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -1643,6 +1673,36 @@ Array [
                   height={12}
                   testID="dot-icon"
                   width={12}
+                >
+                  <Text>
+                    dot-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  Array [
+                    Object {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignSelf": "center",
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#c7c7cc"
+                  height={8}
+                  testID="dot-icon"
+                  width={8}
                 >
                   <Text>
                     dot-icon-SVG-Mock

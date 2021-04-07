@@ -80,7 +80,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
           />
           <Spacer.Column numberOfSpaces={5} />
           <StyledStepDots>
-            <StepDots numberOfSteps={4} currentStep={2} />
+            <StepDots numberOfSteps={5} currentStep={2} />
           </StyledStepDots>
         </BottomCardContentContainer>
       </BottomContentPage>

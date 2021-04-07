@@ -107,7 +107,7 @@ export const SetEmail: FunctionComponent = () => {
             disabled={shouldDisableValidateButton}
           />
           <Spacer.Column numberOfSpaces={5} />
-          <StepDots numberOfSteps={4} currentStep={1} />
+          <StepDots numberOfSteps={5} currentStep={1} />
         </ModalContent>
       </BottomContentPage>
       <QuitSignupModal

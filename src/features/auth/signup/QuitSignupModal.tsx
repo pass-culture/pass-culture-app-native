@@ -19,6 +19,7 @@ export enum SignupSteps {
   Email = 'Email',
   Password = 'Password',
   Birthday = 'Birthday',
+  PostalCode = 'PostalCode',
   CGU = 'CGU',
 }
 
