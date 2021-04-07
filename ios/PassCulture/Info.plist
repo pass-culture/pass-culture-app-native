@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Env</key>
-	<string>$(ENV)</string>
 	<key>BatchAPIKey</key>
 	<string>$(BATCH_API_KEY_IOS)</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -33,7 +31,9 @@
 			<string>$(URL_PREFIX)</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>https</string>
+				<string>app.passculture</string>
+				<string>app.passculture.staging</string>
+				<string>app.passculture.test</string>
 			</array>
 		</dict>
 	</array>
@@ -41,34 +41,10 @@
 	<string>$(BUILD)</string>
 	<key>CodePushDeploymentKey</key>
 	<string>$(CODEPUSH_KEY_IOS)</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Montserrat-Bold.ttf</string>
-		<string>Montserrat-ExtraBoldItalic.ttf</string>
-		<string>Montserrat-Medium.ttf</string>
-		<string>Montserrat-MediumItalic.ttf</string>
-		<string>Montserrat-Regular.ttf</string>
-		<string>Montserrat-SemiBold.ttf</string>
-	</array>
+	<key>Env</key>
+	<string>$(ENV)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>citymapper</string>
@@ -90,6 +66,34 @@
 		<string>iosamap</string>
 		<string>fb</string>
 	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Cette application a besoin de ta géolocalisation pour te montrer des offres proche de toi.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Montserrat-Bold.ttf</string>
+		<string>Montserrat-ExtraBoldItalic.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>Montserrat-MediumItalic.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>Montserrat-SemiBold.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -104,6 +108,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>ITSAppUsesNonExemptEncryption</key><false/>
 </dict>
 </plist>

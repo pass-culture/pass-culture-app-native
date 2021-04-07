@@ -9,7 +9,7 @@ import { handleDeeplinkAnalytics } from './analytics'
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
 import { isAllowedRouteTypeGuard } from './typeGuard'
 import { DeeplinkEvent, DeeplinkParts } from './types'
-import { DEEPLINK_DOMAIN } from './utils'
+import { DEEPLINK_DOMAIN, FIREBASE_DYNAMIC_LINK_DOMAIN } from './utils'
 
 export function decodeDeeplinkParts(url: string): DeeplinkParts {
   const route = url.replace(DEEPLINK_DOMAIN, '')
@@ -42,11 +42,17 @@ export function useOnDeeplinkError() {
   }
 }
 
+const isFirebaseDynamicLinks = (url: string) => url.startsWith(FIREBASE_DYNAMIC_LINK_DOMAIN)
+
 export function useDeeplinkUrlHandler() {
   const onError = useOnDeeplinkError()
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (event: DeeplinkEvent) => {
+    // Firebase Dynamic Links are handled with
+    // - dynamicLinks().onLink in src/features/deeplinks/listener.ios.ts on iOs
+    // - come directly with the deeplink specified on the Firebase Console (starting with DEEPLINK_DOMAIN) on Android
+    if (isFirebaseDynamicLinks(event.url)) return
     try {
       const { screen, params } = getScreenFromDeeplink(event.url)
 
