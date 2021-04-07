@@ -11,6 +11,7 @@ import { IdCheck } from 'features/auth/signup/IdCheck'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
+import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
@@ -95,6 +96,7 @@ const routes: Array<Route> = [
   { name: 'SetBirthday', component: SetBirthday },
   { name: 'SetEmail', component: SetEmail },
   { name: 'SetPassword', component: SetPassword },
+  { name: 'SetPostalCode', component: SetPostalCode },
   { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
