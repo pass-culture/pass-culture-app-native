@@ -34,7 +34,11 @@ export function BookingDetails() {
   return (
     <React.Fragment>
       <BookingDetailsHeader headerTransition={headerTransition} title={booking.stock.offer.name} />
-      <ScrollView onScroll={onScroll}>
+      <ScrollView
+        onScroll={onScroll}
+        scrollEventThrottle={10}
+        scrollIndicatorInsets={{ right: 1 }}
+        bounces={false}>
         <Spacer.Column numberOfSpaces={8.5} />
         <HeaderTicket>
           {/* FIXME(PC-7471) change color when add content to this component */}
