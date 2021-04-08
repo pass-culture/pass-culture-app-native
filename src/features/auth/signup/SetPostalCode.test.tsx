@@ -1,11 +1,11 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { fireEvent, render, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetPostalCode } from './SetPostalCode'
