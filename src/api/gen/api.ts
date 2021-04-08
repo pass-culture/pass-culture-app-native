@@ -176,12 +176,6 @@ export interface BookingOfferResponse {
     category: OfferCategoryResponse;
     /**
      * 
-     * @type {string}
-     * @memberof BookingOfferResponse
-     */
-    externalTicketOfficeUrl?: string | null;
-    /**
-     * 
      * @type {BookingOfferExtraData}
      * @memberof BookingOfferResponse
      */
@@ -216,6 +210,12 @@ export interface BookingOfferResponse {
      * @memberof BookingOfferResponse
      */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingOfferResponse
+     */
+    url?: string | null;
     /**
      * 
      * @type {BookingVenueResponse}
