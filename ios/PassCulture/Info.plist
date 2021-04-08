@@ -31,6 +31,7 @@
 			<string>$(URL_PREFIX)</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>https</string>
 				<string>app.passculture</string>
 				<string>app.passculture.staging</string>
 				<string>app.passculture.test</string>
