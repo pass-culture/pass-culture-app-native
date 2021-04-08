@@ -90,8 +90,9 @@ describe('BookingDetails', () => {
         'physical',
         (booking: Booking) => (booking.stock.offer.category.categoryType = CategoryType.Thing),
       ],
-    ])('should display rules for a %s offer', (type, prepareBooking) => {
+    ])('should display rules for a %s & non-digital offer', (type, prepareBooking) => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      booking.stock.offer.isDigital = false
       prepareBooking(booking)
 
       const { getByText } = renderBookingDetails(booking)

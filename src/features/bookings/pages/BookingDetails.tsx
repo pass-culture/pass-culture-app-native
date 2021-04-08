@@ -39,6 +39,18 @@ export function BookingDetails() {
   const { offer } = booking.stock
   const shouldDisplayEAN = offer.extraData?.isbn && offer.category.name === CategoryNameEnum.LIVRE
 
+  const renderOfferRules = properties.isDigital ? (
+    <OfferRules>
+      {t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
+    </OfferRules>
+  ) : properties.isPhysical || properties.isEvent ? (
+    <OfferRules>
+      {t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
+    </OfferRules>
+  ) : (
+    ''
+  )
+
   return (
     <React.Fragment>
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
@@ -85,16 +97,7 @@ export function BookingDetails() {
           </ThreeShapesTicket>
         </DetailedBookingTicket>
         <Spacer.Column numberOfSpaces={4} />
-        {properties.isDigital && (
-          <OfferRules>
-            {t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
-          </OfferRules>
-        )}
-        {(properties.isPhysical || properties.isEvent) && (
-          <OfferRules>
-            {t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
-          </OfferRules>
-        )}
+        {renderOfferRules}
         <Spacer.Column numberOfSpaces={8} />
         <BookingPropertiesSection booking={booking} />
         {/* FIXME(PC-7477) add itinerary button and remove this space */}
