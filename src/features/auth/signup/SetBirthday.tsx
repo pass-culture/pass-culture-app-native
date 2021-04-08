@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -41,7 +41,6 @@ interface State {
 }
 
 export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
-  const keyboardHeightRef = useRef(0)
   const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
   const [state, setState] = useState<State>({
     date: null,
@@ -75,7 +74,6 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked
   const password = route.params.password
-  const canNavigateToCguRef = useRef(false)
 
   const dateInputRef = useRef<DateInputRef>(null)
 
@@ -96,42 +94,6 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       navigate('SetPostalCode', { email, isNewsletterChecked, password, birthday })
     }
   }
-
-  /**
-   * It's a trick to bypass the unexpected keyboard behavior on the next page:
-   *
-   *   Actually the view starts in a top position but without the keyboard displayed
-   *   and animates itself to reach the bottom position.
-   *
-   * To fix:
-   * If the keyboard is already down, we just navigate.
-   * Otherwise, we trigger the keyboard dismissing which will result in:
-   * - a call to onKeyboardDismiss()
-   * - and a navigation to the next screen
-   */
-  function animateBeforeNavigation() {
-    if (keyboardHeightRef.current === 0 && state.date) {
-      return goToPostalCode()
-    }
-
-    canNavigateToCguRef.current = true
-    Keyboard.dismiss()
-  }
-
-  const onKeyboardDismiss = useCallback(() => {
-    if (informationModalVisible) {
-      // quits if the keyboard is dismissed because the modal is displayed
-      return
-    }
-    if (canNavigateToCguRef.current && state.date) {
-      goToPostalCode()
-    }
-  }, [informationModalVisible, state.date])
-
-  useFocusEffect(() => {
-    // reset this variable each time the screen is focused to prevent automatic navigation to the next screen
-    canNavigateToCguRef.current = false
-  })
 
   function showQuitSignupModal() {
     dateInputRef.current && dateInputRef.current.clearFocuses()
@@ -166,9 +128,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
 
   return (
     <React.Fragment>
-      <BottomContentPage
-        keyboardHeightRef={keyboardHeightRef}
-        onKeyboardDismiss={onKeyboardDismiss}>
+      <BottomContentPage>
         <ModalHeader
           title={t`Ton anniversaire`}
           leftIcon={ArrowPrevious}
@@ -200,7 +160,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
                 title={t`Continuer`}
                 disabled={!state.isDateValid}
                 testIdSuffix={'validate-birthday'}
-                onPress={animateBeforeNavigation}
+                onPress={goToPostalCode}
               />
               <Spacer.Column numberOfSpaces={5} />
               <StepDots numberOfSteps={5} currentStep={3} />

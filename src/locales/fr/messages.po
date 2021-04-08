@@ -224,7 +224,7 @@ msgstr "Ce week-end"
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
-#: src/features/auth/signup/SetPostalCode.tsx:46
+#: src/features/auth/signup/SetPostalCode.tsx:45
 msgid "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 msgstr "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 
@@ -279,7 +279,7 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/auth/signup/SetPostalCode.tsx:42
+#: src/features/auth/signup/SetPostalCode.tsx:41
 msgid "Code Postal"
 msgstr "Code Postal"
 
@@ -352,10 +352,10 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:70
-#: src/features/auth/signup/SetBirthday.tsx:143
+#: src/features/auth/signup/SetBirthday.tsx:109
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:43
-#: src/features/auth/signup/SetPostalCode.tsx:59
+#: src/features/auth/signup/SetPostalCode.tsx:58
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:54
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
@@ -488,7 +488,7 @@ msgstr "Erreur lors de la récupération du token d'accès"
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 
-#: src/features/auth/signup/SetPostalCode.tsx:54
+#: src/features/auth/signup/SetPostalCode.tsx:53
 msgid "Ex: 35000"
 msgstr "Ex: 35000"
 
@@ -661,7 +661,7 @@ msgstr "Localisation"
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
-#: src/features/auth/signup/SetBirthday.tsx:155
+#: src/features/auth/signup/SetBirthday.tsx:121
 msgid ""
 "L’application pass Culture est accessible à tous.\n"
 "Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit}\n"
@@ -684,9 +684,17 @@ msgstr "Maintenance en cours"
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
+#: src/features/favorites/pages/Favorites.tsx:26
+msgid "Mes favoris"
+msgstr "Mes favoris"
+
 #: src/features/bookOffer/services/useModalContent.tsx:42
 msgid "Mes options"
 msgstr "Mes options"
+
+#: src/features/bookings/pages/Bookings.tsx:10
+msgid "Mes réservations"
+msgstr "Mes réservations"
 
 #: src/features/bookings/pages/EndedBookings.tsx:22
 msgid "Mes réservations terminées"
@@ -893,7 +901,7 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 msgid "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/auth/signup/SetBirthday.tsx:136
+#: src/features/auth/signup/SetBirthday.tsx:102
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -915,6 +923,7 @@ msgstr "Prix croissant"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx:15
 #: src/features/profile/components/LoggedOutHeader.tsx:17
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:43
 msgid "Profil"
 msgstr "Profil"
 
@@ -1102,11 +1111,11 @@ msgstr "Supprimer"
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
-#: src/features/auth/signup/SetBirthday.tsx:132
+#: src/features/auth/signup/SetBirthday.tsx:98
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/SetPostalCode.tsx:52
+#: src/features/auth/signup/SetPostalCode.tsx:51
 msgid "Ton code postal"
 msgstr "Ton code postal"
 
@@ -1468,6 +1477,14 @@ msgstr "voir plus"
 msgid "{0}"
 msgstr "{0}"
 
+#: src/features/favorites/atoms/__tests__/NumberOfResults.test.tsx:7
+msgid "{count, plural, one {# favori} other {# favoris}}"
+msgstr "{count, plural, one {# favori} other {# favoris}}"
+
+#: src/features/search/atoms/__tests__/NumberOfResults.test.tsx:7
+msgid "{count, plural, one {# résultat} other {# résultats}}"
+msgstr "{count, plural, one {# résultat} other {# résultats}}"
+
 #: src/features/favorites/atoms/NumberOfResults.tsx:10
 msgid "{nbFavorites, plural, one {# favori} other {# favoris}}"
 msgstr "{nbFavorites, plural, one {# favori} other {# favoris}}"
@@ -1479,10 +1496,6 @@ msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
 #: src/features/bookOffer/components/BookingDetails.tsx:75
 msgid "{price} seront déduits de ton crédit pass Culture"
 msgstr "{price} seront déduits de ton crédit pass Culture"
-
-#: src/ui/components/headers/SvgPageHeader.tsx:10
-msgid "{title}"
-msgstr "{title}"
 
 #: src/features/offer/components/OfferIconCaptions.tsx:26
 msgid "À deux !"
