@@ -12,10 +12,11 @@ check_branch(){
   fi
 }
 
-VERSION=`json -f package.json version`
 
 update_app_version(){
   yarn version --minor --no-git-tag-version
+  
+  VERSION=`json -f package.json version`
 
   BUILD_NUMBER="${VERSION//./0}"
   json -I -f package.json -e "this.build=$BUILD_NUMBER"
