@@ -10961,6 +10961,11 @@ schema-utils@^2.6.5:
     ajv "^6.12.0"
     ajv-keywords "^3.4.1"
 
+search-params@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/search-params/-/search-params-4.0.0.tgz#32f0867281ce3d4f07de3017d53a86ad4ef086f9"
+  integrity sha512-CCDNZXqtecn1I+gJsh24EYNxEsrCzWWpxJ7NH23A0BwhARWyUtLn/HfrdBtDPmldZ8paTuc+AM6OETl22ZgHFg==
+
 semver-diff@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/semver-diff/-/semver-diff-3.1.1.tgz#05f77ce59f325e00e2706afd67bb506ddb1ca32b"

@@ -96,6 +96,7 @@
     "react-native-web-swiper": "2.2.1",
     "react-native-webview": "^10.10.0",
     "react-query": "3.8.2",
+    "search-params": "^4.0.0",
     "styled-components": "^5.2.0",
     "url": "^0.11.0",
     "use-debounce": "^5.2.0",
