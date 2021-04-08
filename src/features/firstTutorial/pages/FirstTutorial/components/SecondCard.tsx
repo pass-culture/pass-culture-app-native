@@ -24,7 +24,7 @@ export function SecondCard(props: AchievementCardKeyProps) {
       buttonText={t`Continuer`}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={t`et si tu es...`}
-      text={t`dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de ${deposit} à dépenser dans l’application.`}
+      text={t`dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de ${deposit.toString()} à dépenser dans l’application.`}
       title={t`Des offres pour tous`}
       swiperRef={props.swiperRef}
       name={props.name}
