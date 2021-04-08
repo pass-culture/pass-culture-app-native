@@ -58,6 +58,7 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
+#: src/features/bookings/pages/BookingDetails.tsx:49
 #: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
@@ -150,7 +151,7 @@ msgstr "Aucun résultat"
 msgid "Aucune valeur à sauvegarder"
 msgstr "Aucune valeur à sauvegarder"
 
-#: src/features/bookings/helpers.ts:43
+#: src/features/bookings/helpers.ts:42
 #: src/features/search/sections/OfferDate.tsx:33
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
@@ -179,7 +180,7 @@ msgstr "Autour de moi"
 msgid "Autres"
 msgstr "Autres"
 
-#: src/features/bookings/helpers.ts:59
+#: src/features/bookings/helpers.ts:58
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
@@ -204,7 +205,7 @@ msgstr "CGU & Données"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/pages/BookingDetails.tsx:36
+#: src/features/bookings/pages/BookingDetails.tsx:64
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -224,7 +225,7 @@ msgstr "Ce week-end"
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
-#: src/features/auth/signup/SetPostalCode.tsx:46
+#: src/features/auth/signup/SetPostalCode.tsx:45
 msgid "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 msgstr "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 
@@ -279,7 +280,7 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/auth/signup/SetPostalCode.tsx:42
+#: src/features/auth/signup/SetPostalCode.tsx:41
 msgid "Code Postal"
 msgstr "Code Postal"
 
@@ -355,7 +356,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:143
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:43
-#: src/features/auth/signup/SetPostalCode.tsx:59
+#: src/features/auth/signup/SetPostalCode.tsx:58
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:54
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
@@ -393,11 +394,11 @@ msgstr "Date de l'offre"
 msgid "Date précise"
 msgstr "Date précise"
 
-#: src/features/bookings/helpers.ts:46
+#: src/features/bookings/helpers.ts:45
 msgid "Demain"
 msgstr "Demain"
 
-#: src/features/bookings/helpers.ts:56
+#: src/features/bookings/helpers.ts:55
 msgid "Dernier jour pour retirer"
 msgstr "Dernier jour pour retirer"
 
@@ -458,6 +459,10 @@ msgstr "E-mail envoyé !"
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
+#: src/features/bookings/pages/BookingDetails.tsx:56
+msgid "EAN\\u00a0"
+msgstr "EAN\\u00a0"
+
 #: src/features/auth/signup/AcceptCgu.tsx:105
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
@@ -488,7 +493,7 @@ msgstr "Erreur lors de la récupération du token d'accès"
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 
-#: src/features/auth/signup/SetPostalCode.tsx:54
+#: src/features/auth/signup/SetPostalCode.tsx:53
 msgid "Ex: 35000"
 msgstr "Ex: 35000"
 
@@ -636,7 +641,7 @@ msgstr "Le réglage est sauvegardé"
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
-#: src/features/bookings/helpers.ts:38
+#: src/features/bookings/helpers.ts:37
 msgid "Le {0}"
 msgstr "Le {0}"
 
@@ -684,9 +689,17 @@ msgstr "Maintenance en cours"
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
+#: src/features/favorites/pages/Favorites.tsx:26
+msgid "Mes favoris"
+msgstr "Mes favoris"
+
 #: src/features/bookOffer/services/useModalContent.tsx:42
 msgid "Mes options"
 msgstr "Mes options"
+
+#: src/features/bookings/pages/Bookings.tsx:10
+msgid "Mes réservations"
+msgstr "Mes réservations"
 
 #: src/features/bookings/pages/EndedBookings.tsx:22
 msgid "Mes réservations terminées"
@@ -864,7 +877,7 @@ msgstr "Passer"
 msgid "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
 msgstr "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
 
-#: src/features/bookings/helpers.ts:34
+#: src/features/bookings/helpers.ts:33
 msgid "Permanent"
 msgstr "Permanent"
 
@@ -915,6 +928,7 @@ msgstr "Prix croissant"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx:15
 #: src/features/profile/components/LoggedOutHeader.tsx:17
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:43
 msgid "Profil"
 msgstr "Profil"
 
@@ -1106,7 +1120,7 @@ msgstr "Titre, artiste..."
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/SetPostalCode.tsx:52
+#: src/features/auth/signup/SetPostalCode.tsx:51
 msgid "Ton code postal"
 msgstr "Ton code postal"
 
@@ -1188,7 +1202,7 @@ msgstr "Tu as déjà un compte ?\\u00a0"
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
-#: src/features/bookings/pages/BookingDetails.tsx:39
+#: src/features/bookings/pages/BookingDetails.tsx:67
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -1314,8 +1328,8 @@ msgid "Valider la date"
 msgstr "Valider la date"
 
 #: src/features/profile/pages/Profile.tsx:141
-msgid "Version {0}"
-msgstr "Version {0}"
+msgid "Version"
+msgstr "Version"
 
 #: src/features/auth/signup/QuitSignupModal.tsx:29
 msgid "Veux-tu abandonner l'inscription ?"
@@ -1380,8 +1394,8 @@ msgid "crédit photo"
 msgstr "crédit photo"
 
 #: src/features/profile/components/BeneficiaryHeader.tsx:23
-msgid "crédit valable jusqu'au {0}"
-msgstr "crédit valable jusqu'au {0}"
+msgid "crédit valable jusqu'au"
+msgstr "crédit valable jusqu'au"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
 msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
@@ -1468,6 +1482,14 @@ msgstr "voir plus"
 msgid "{0}"
 msgstr "{0}"
 
+#: src/features/favorites/atoms/__tests__/NumberOfResults.test.tsx:7
+msgid "{count, plural, one {# favori} other {# favoris}}"
+msgstr "{count, plural, one {# favori} other {# favoris}}"
+
+#: src/features/search/atoms/__tests__/NumberOfResults.test.tsx:7
+msgid "{count, plural, one {# résultat} other {# résultats}}"
+msgstr "{count, plural, one {# résultat} other {# résultats}}"
+
 #: src/features/favorites/atoms/NumberOfResults.tsx:10
 msgid "{nbFavorites, plural, one {# favori} other {# favoris}}"
 msgstr "{nbFavorites, plural, one {# favori} other {# favoris}}"
@@ -1480,15 +1502,11 @@ msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
 msgid "{price} seront déduits de ton crédit pass Culture"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
-#: src/ui/components/headers/SvgPageHeader.tsx:10
-msgid "{title}"
-msgstr "{title}"
-
 #: src/features/offer/components/OfferIconCaptions.tsx:26
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/bookings/helpers.ts:51
+#: src/features/bookings/helpers.ts:50
 msgid "À retirer avant le\\u00a0"
 msgstr "À retirer avant le\\u00a0"
 

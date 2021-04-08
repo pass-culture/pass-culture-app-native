@@ -241,7 +241,7 @@ export const Profile: React.FC = () => {
         )}
         <ProfileSection>
           <Spacer.Column numberOfSpaces={4} />
-          <Version>{t`Version ${Package.version}`}</Version>
+          <Version>{t`Version` + `\u00a0${Package.version}`}</Version>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistere />
           <Spacer.Column numberOfSpaces={4} />
