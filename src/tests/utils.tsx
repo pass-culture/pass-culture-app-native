@@ -1,5 +1,6 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
+// eslint-disable-next-line no-restricted-imports
 import { render, RenderOptions } from '@testing-library/react-native'
 import flushPromises from 'flush-promises'
 import { fr } from 'make-plural/plurals'
@@ -54,12 +55,16 @@ const LinguiProvider: React.FC = ({ children }) => {
   return <I18nProvider i18n={i18n}>{children}</I18nProvider>
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const customRender = (ui: React.ReactElement<any>, options?: RenderOptions) =>
   render(ui, {
     wrapper: LinguiProvider,
     ...options,
   })
 
+// eslint-disable-next-line no-restricted-imports
 export * from '@testing-library/react-native'
 
 export { customRender as render }

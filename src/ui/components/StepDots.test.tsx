@@ -1,4 +1,5 @@
 import React from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import { render } from 'tests/utils'
 import { StepDots } from 'ui/components/StepDots'
@@ -20,7 +21,7 @@ describe('<StepDots />', () => {
     it('should render second and third steps properly', () => {
       const { getAllByTestId } = renderThreeStepsFirstIsCurrent()
       const secondAndThirdDots = getAllByTestId('dot-icon').slice(1)
-      secondAndThirdDots.forEach((dot) => {
+      secondAndThirdDots.forEach((dot: ReactTestInstance) => {
         expect(dot.props.fill).toEqual(ColorsEnum.GREY_MEDIUM)
         expect(dot.props.width).toEqual(8)
       })
@@ -54,7 +55,7 @@ describe('<StepDots />', () => {
     it('should render first and second steps properly', () => {
       const { getAllByTestId } = renderThreeStepsLastIsCurrent()
       const firstAndSecondDots = getAllByTestId('dot-icon').slice(0, 1)
-      firstAndSecondDots.forEach((dot) => {
+      firstAndSecondDots.forEach((dot: ReactTestInstance) => {
         expect(dot.props.fill).toEqual(ColorsEnum.GREEN_VALID)
         expect(dot.props.width).toEqual(8)
       })

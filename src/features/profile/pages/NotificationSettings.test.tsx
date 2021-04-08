@@ -201,7 +201,7 @@ describe('NotificationSettings', () => {
       await superFlushWithAct(10)
       await waitForExpect(() => {
         saveButton = getByTestId('button-container')
-        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+        expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
       })
 
       saveButton && fireEvent.press(saveButton)
@@ -209,7 +209,7 @@ describe('NotificationSettings', () => {
       await superFlushWithAct(10)
       await waitForExpect(() => {
         saveButton = getByTestId('button-container')
-        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+        expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
       })
     })
     it('should enable the save button when the push switch changed and call analytics when pressed', async () => {
@@ -241,7 +241,7 @@ describe('NotificationSettings', () => {
       let saveButton: ReactTestInstance | null = null
       await waitForExpect(() => {
         saveButton = getByTestId('button-container')
-        expect(saveButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+        expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
       })
 
       saveButton && fireEvent.press(saveButton)

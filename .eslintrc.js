@@ -56,6 +56,10 @@ module.exports = {
         message: 'use ui/theme instead',
       },
       { name: 'msw/lib/types', message: 'use msw instead' },
+      {
+        name: '@testing-library/react-native',
+        message: 'Use test/utils instead',
+      },
     ],
     strict: ['error', 'global'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
