@@ -353,7 +353,7 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:70
-#: src/features/auth/signup/SetBirthday.tsx:143
+#: src/features/auth/signup/SetBirthday.tsx:109
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:43
 #: src/features/auth/signup/SetPostalCode.tsx:58
@@ -666,7 +666,7 @@ msgstr "Localisation"
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
-#: src/features/auth/signup/SetBirthday.tsx:155
+#: src/features/auth/signup/SetBirthday.tsx:121
 msgid ""
 "L’application pass Culture est accessible à tous.\n"
 "Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit}\n"
@@ -906,7 +906,7 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 msgid "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/auth/signup/SetBirthday.tsx:136
+#: src/features/auth/signup/SetBirthday.tsx:102
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -1116,7 +1116,7 @@ msgstr "Supprimer"
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
-#: src/features/auth/signup/SetBirthday.tsx:132
+#: src/features/auth/signup/SetBirthday.tsx:98
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
