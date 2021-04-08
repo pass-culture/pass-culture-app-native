@@ -40,19 +40,19 @@ describe('BookingDetails', () => {
       getByText("Accéder à l'offre")
     })
 
-    it('should open externalTicketOfficeUrl on offer button press', () => {
+    it('should open offer url on press "Accéder à l\'offre"', () => {
       const openExternalUrl = jest
         .spyOn(NavigationHelpers, 'openExternalUrl')
         .mockImplementation(jest.fn())
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.isDigital = true
-      booking.stock.offer.externalTicketOfficeUrl = 'http://example.com'
+      booking.stock.offer.url = 'http://example.com'
 
       const { getByText } = renderBookingDetails(booking)
       const offerButton = getByText("Accéder à l'offre")
       fireEvent.press(offerButton)
 
-      expect(openExternalUrl).toHaveBeenCalledWith(booking.stock.offer.externalTicketOfficeUrl)
+      expect(openExternalUrl).toHaveBeenCalledWith(booking.stock.offer.url)
     })
 
     it('should display booking qr code if offer is physical', async () => {

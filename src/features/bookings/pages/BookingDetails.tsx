@@ -63,10 +63,7 @@ export function BookingDetails() {
                 <React.Fragment>
                   <ButtonPrimary
                     title={t`Accéder à l'offre`}
-                    onPress={() =>
-                      offer.externalTicketOfficeUrl &&
-                      openExternalUrl(offer.externalTicketOfficeUrl)
-                    }
+                    onPress={() => offer.url && openExternalUrl(offer.url)}
                   />
                   <Spacer.Column numberOfSpaces={9} />
                 </React.Fragment>
