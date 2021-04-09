@@ -6,7 +6,7 @@ import { fireEvent, render } from 'tests/utils'
 
 import { OfferWhereSection } from '../OfferWhereSection'
 
-jest.mock('features/offer/services/useItinerary', () => ({
+jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 

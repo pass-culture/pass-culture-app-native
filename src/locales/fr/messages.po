@@ -119,7 +119,7 @@ msgstr "Ajouté récemment"
 msgid "An error has occured while obtaining the Batch installation ID : {e}"
 msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 
-#: src/features/offer/services/useItinerary.ts:78
+#: src/libs/itinerary/useItinerary.ts:78
 msgid "Annuler"
 msgstr "Annuler"
 
@@ -266,7 +266,7 @@ msgstr "Choisir les options"
 msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
-#: src/features/offer/services/useItinerary.ts:79
+#: src/libs/itinerary/useItinerary.ts:79
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
@@ -1290,7 +1290,7 @@ msgstr "Une erreur est survenue"
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
-#: src/features/offer/services/useItinerary.ts:57
+#: src/libs/itinerary/useItinerary.ts:57
 msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 
@@ -1336,7 +1336,7 @@ msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
 
 #: src/features/offer/components/OfferWhereSection.tsx:45
-#: src/features/offer/services/useItinerary.ts:79
+#: src/libs/itinerary/useItinerary.ts:79
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
