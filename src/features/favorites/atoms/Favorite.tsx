@@ -173,6 +173,7 @@ export const Favorite: React.FC<Props> = (props) => {
           </ButtonContainer>
         </ButtonsRow>
       </Container>
+      <Separator />
     </Animated.View>
   )
 }
@@ -210,3 +211,10 @@ const Name = styled(Typo.ButtonText)({})
 const Distance = styled(Typo.Body)({ textAlign: 'right', color: ColorsEnum.GREY_DARK })
 
 const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+
+const Separator = styled.View({
+  height: 2,
+  backgroundColor: ColorsEnum.GREY_LIGHT,
+  marginHorizontal: getSpacing(6),
+  marginVertical: getSpacing(4),
+})
