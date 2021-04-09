@@ -1,7 +1,6 @@
 export { AccordionItem } from './AccordionItem'
 export { CallToAction } from './CallToAction'
 export { OfferHeader } from './OfferHeader'
-export { OfferHero } from './OfferHero'
 export { OfferIconCaptions } from './OfferIconCaptions'
 export { OfferWhereSection } from './OfferWhereSection'
 export { AccessibilityBlock } from './AccessibilityBlock'

@@ -3,7 +3,7 @@ import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 
 import { RectangleIconInterface } from './icons/types'
 
-export const OfferBackPlaceholder: React.FC<RectangleIconInterface> = ({
+export const BackgroundPlaceholder: React.FC<RectangleIconInterface> = ({
   height = 32,
   width = 38,
   testID,

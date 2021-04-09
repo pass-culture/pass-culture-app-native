@@ -310,32 +310,53 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                             ]
                           }
                         >
-                          <Image
-                            blurRadius={20}
-                            extraHeight={16}
-                            resizeMode="cover"
-                            source={
-                              Object {
-                                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
-                              }
-                            }
+                          <View
                             style={
                               Array [
                                 Object {
-                                  "height": 312,
-                                  "width": 751,
+                                  "alignItems": "center",
+                                  "position": "absolute",
+                                },
+                              ]
+                            }
+                          >
+                            <Image
+                              blurRadius={20}
+                              extraHeight={16}
+                              resizeMode="cover"
+                              source={
+                                Object {
+                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
+                                }
+                              }
+                              style={
+                                Array [
+                                  Object {
+                                    "height": 312,
+                                    "width": 751,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              height={8}
+                              width={751}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
+                          <View
+                            numberOfSpaces={22}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 88,
                                 },
                               ]
                             }
                           />
-                          <View
-                            height={8}
-                            width={751}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
                           <View
                             style={
                               Array [
@@ -343,7 +364,6 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   "borderRadius": 8,
                                   "bottom": 0,
                                   "height": 316,
-                                  "position": "absolute",
                                   "shadowColor": "#151515",
                                   "shadowOffset": Object {
                                     "height": 8,
@@ -374,16 +394,6 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               }
                             />
                           </View>
-                          <View
-                            numberOfSpaces={18}
-                            style={
-                              Array [
-                                Object {
-                                  "height": 72,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <View
                           numberOfSpaces={4}
@@ -2028,32 +2038,53 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                             ]
                           }
                         >
-                          <Image
-                            blurRadius={20}
-                            extraHeight={16}
-                            resizeMode="cover"
-                            source={
-                              Object {
-                                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
-                              }
-                            }
+                          <View
                             style={
                               Array [
                                 Object {
-                                  "height": 312,
-                                  "width": 751,
+                                  "alignItems": "center",
+                                  "position": "absolute",
+                                },
+                              ]
+                            }
+                          >
+                            <Image
+                              blurRadius={20}
+                              extraHeight={16}
+                              resizeMode="cover"
+                              source={
+                                Object {
+                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
+                                }
+                              }
+                              style={
+                                Array [
+                                  Object {
+                                    "height": 312,
+                                    "width": 751,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              height={8}
+                              width={751}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
+                          <View
+                            numberOfSpaces={22}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 88,
                                 },
                               ]
                             }
                           />
-                          <View
-                            height={8}
-                            width={751}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
                           <View
                             style={
                               Array [
@@ -2061,7 +2092,6 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   "borderRadius": 8,
                                   "bottom": 0,
                                   "height": 316,
-                                  "position": "absolute",
                                   "shadowColor": "#151515",
                                   "shadowOffset": Object {
                                     "height": 8,
@@ -2092,16 +2122,6 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               }
                             />
                           </View>
-                          <View
-                            numberOfSpaces={18}
-                            style={
-                              Array [
-                                Object {
-                                  "height": 72,
-                                },
-                              ]
-                            }
-                          />
                         </View>
                         <View
                           numberOfSpaces={4}
