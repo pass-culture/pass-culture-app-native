@@ -86,7 +86,7 @@ export function BookingDetails() {
               ) : null}
               {shouldDisplayEAN && (
                 <EANContainer>
-                  <Typo.Caption>{t`EAN\u00a0`}</Typo.Caption>
+                  <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
                   <Typo.Body color={ColorsEnum.GREY_DARK}>{offer.extraData?.isbn}</Typo.Body>
                 </EANContainer>
               )}

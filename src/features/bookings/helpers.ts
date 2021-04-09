@@ -70,7 +70,7 @@ export function getBookingLabels(booking: Booking, properties: BookingProperties
     }
   } else if (properties.isPhysical) {
     dateLabel = expirationDatetime
-      ? t`À retirer avant le\u00a0` + formatToCompleteFrenchDate(expirationDatetime, false)
+      ? t`À retirer avant le` + `\u00a0${formatToCompleteFrenchDate(expirationDatetime, false)}`
       : ''
 
     const isExpiringToday = expirationDatetime ? isToday(expirationDatetime) : false
