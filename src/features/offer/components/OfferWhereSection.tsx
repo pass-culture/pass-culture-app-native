@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { Coordinates } from 'api/gen'
 import { analytics } from 'libs/analytics'
+import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo, ColorsEnum } from 'ui/theme'
 
 import { useDistance } from './useDistance'
@@ -52,11 +52,7 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, 
           <Spacer.Column numberOfSpaces={4} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
-          <TouchableContainer onPress={openItinerary}>
-            <LocationPointer color={ColorsEnum.BLACK} size={24} />
-            <Spacer.Row numberOfSpaces={1} />
-            <Typo.ButtonText>{t`Voir l'itinéraire`}</Typo.ButtonText>
-          </TouchableContainer>
+          <SeeItineraryButton openItinerary={openItinerary} />
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={6} />
@@ -71,9 +67,4 @@ const StyledAddress = styled(Typo.Body)({
 const Separator = styled.View({
   height: 1,
   backgroundColor: ColorsEnum.GREY_MEDIUM,
-})
-
-const TouchableContainer = styled.TouchableOpacity({
-  flexDirection: 'row',
-  alignItems: 'center',
 })
