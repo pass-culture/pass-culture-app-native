@@ -120,6 +120,7 @@ describe('<Favorite /> component', () => {
 
   it('should fail to delete favorite on button click', async () => {
     const id = 0
+    const timeout = 222222 // prevent act warning
     simulateBackend({ id, hasRemoveFavoriteError: true })
     mockDistance = '10 km'
     const { getByText } = renderFavorite({
@@ -128,13 +129,13 @@ describe('<Favorite /> component', () => {
 
     await superFlushWithAct()
     fireEvent.press(getByText('Supprimer'))
-    await superFlushWithAct(222222)
+    await superFlushWithAct(timeout)
     await waitForExpect(async () => {
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `L'offre n'a pas été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
       })
-    })
+    }, timeout)
   })
 })
 
