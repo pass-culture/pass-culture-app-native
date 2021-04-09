@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Booking } from 'features/bookings/components/types'
@@ -10,13 +11,17 @@ import { Calendar } from 'ui/svg/icons/Calendar'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { Profile } from 'ui/svg/icons/Profile'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type BookingPropertiesSectionProps = {
   booking: Booking
+  style?: StyleProp<ViewStyle>
 }
 
-export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> = ({ booking }) => {
+export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> = ({
+  booking,
+  style,
+}) => {
   const { data: user } = useUserProfileInfo()
   const properties = getBookingProperties(booking)
   const propertiesLabels = getBookingLabels(booking, properties)
@@ -24,7 +29,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
   const renderRowTitle = (title: string) => <Title>{title}</Title>
 
   return (
-    <Container>
+    <View style={style}>
       <Typo.Title4>{t`Ma réservation`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={4.5} />
       {user?.firstName && user?.lastName && (
@@ -57,13 +62,9 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           icon={() => <LocationBuilding size={24} />}
         />
       )}
-    </Container>
+    </View>
   )
 }
-
-const Container = styled.View({
-  marginHorizontal: getSpacing(5.5),
-})
 
 const TitleNameContainer = styled.View({
   flexDirection: 'row',

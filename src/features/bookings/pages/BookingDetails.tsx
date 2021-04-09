@@ -14,8 +14,12 @@ import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicke
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
+import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
+import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { interpolationConfig } from 'ui/components/headers/animationHelpers'
+import { Separator } from 'ui/components/Separator'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const HEADER_TICKET_MAX_WIDTH = 304
@@ -26,6 +30,14 @@ export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const booking = useOngoingBooking(params.id)
   const headerScroll = useRef(new Animated.Value(0)).current
+
+  const { venue, id: offerId } = booking?.stock.offer || {}
+  const { latitude, longitude } = venue?.coordinates || {}
+  const { canOpenItinerary, openItinerary } = useOpenItinerary(
+    latitude,
+    longitude,
+    async () => void (offerId && analytics.logConsultItinerary(offerId))
+  )
 
   if (!booking) return <React.Fragment></React.Fragment>
 
@@ -93,13 +105,22 @@ export function BookingDetails() {
           </OfferRules>
         )}
         <Spacer.Column numberOfSpaces={8} />
-        <BookingPropertiesSection booking={booking} />
-        {/* FIXME(PC-7477) add itinerary button and remove this space */}
+        <BookingProperties booking={booking} />
+        {canOpenItinerary && (
+          <OpenItineraryContainer>
+            <Spacer.Column numberOfSpaces={4} />
+            <Separator />
+            <Spacer.Column numberOfSpaces={4} />
+            <SeeItineraryButton openItinerary={openItinerary} />
+          </OpenItineraryContainer>
+        )}
         <Spacer.Column numberOfSpaces={50} />
       </ScrollView>
     </React.Fragment>
   )
 }
+
+const paddingHorizontal = getSpacing(5)
 
 const OfferRules = styled(Typo.Caption)({
   color: ColorsEnum.GREY_MEDIUM,
@@ -133,4 +154,12 @@ const EANContainer = styled.View({
   paddingTop: getSpacing(2.5),
   flexDirection: 'row',
   alignItems: 'center',
+})
+
+const BookingProperties = styled(BookingPropertiesSection)({
+  paddingHorizontal,
+})
+
+const OpenItineraryContainer = styled.View({
+  paddingHorizontal,
 })
