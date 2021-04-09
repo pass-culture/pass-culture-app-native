@@ -3,10 +3,11 @@ import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { useGetIdCheckToken } from 'features/auth/api'
+import { useDepositAmount, useGetIdCheckToken } from 'features/auth/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
@@ -23,6 +24,8 @@ interface NonBeneficiaryHeaderProps {
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const today = new Date()
+  const depositAmount = useDepositAmount()
+  const deposit = formatToFrenchDecimal(depositAmount).replace(' ', '')
   const eligibilityStartDatetime = new Date(props.eligibilityStartDatetime)
   const eligibilityEndDatetime = new Date(props.eligibilityEndDatetime)
 
@@ -48,7 +51,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
             navigate('IdCheck', { email: props.email, licenceToken })
           }}
           leftIcon={<ThumbUp size={68} />}
-          title={t`Profite de 300\u00a0€\u00a0`}
+          title={t`Profite de ${deposit}`}
           subTitle={t`à dépenser dans l'application`}
           testID="18-banner"
         />
