@@ -4,11 +4,10 @@ import styled from 'styled-components/native'
 
 import { Coordinates } from 'api/gen'
 import { analytics } from 'libs/analytics'
+import { useItinerary } from 'libs/itinetary/useItinerary'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo, ColorsEnum } from 'ui/theme'
-
-import { useItinerary } from '../services/useItinerary'
 
 import { useDistance } from './useDistance'
 

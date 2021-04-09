@@ -3,9 +3,8 @@ import { Alert, Linking, Platform } from 'react-native'
 import waitForExpect from 'wait-for-expect'
 
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
+import { useItinerary } from 'libs/itinetary/useItinerary'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-
-import { useItinerary } from '../useItinerary'
 
 const alertMock = jest.spyOn(Alert, 'alert')
 jest.spyOn(Linking, 'openURL')
