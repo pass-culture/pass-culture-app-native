@@ -1701,28 +1701,28 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lingui/babel-plugin-extract-messages@^3.8.4":
-  version "3.8.4"
-  resolved "https://registry.yarnpkg.com/@lingui/babel-plugin-extract-messages/-/babel-plugin-extract-messages-3.8.4.tgz#f816a1a6a9a8a1287c123c3bcb627030d2e51b24"
-  integrity sha512-ujJsIKTpCZ+it1naNv5+P77431Dmv0uqufQ96xkikZU14HVIScPki4S27u378zvaer72Wqc9VljK0yFxdKxmpQ==
+"@lingui/babel-plugin-extract-messages@^3.8.6":
+  version "3.8.6"
+  resolved "https://registry.yarnpkg.com/@lingui/babel-plugin-extract-messages/-/babel-plugin-extract-messages-3.8.6.tgz#598c0cb53c19a669ffcfcaae3b179fc2745b2e81"
+  integrity sha512-SJoeg6G+vh3AYWDBuwsXitV7YTp9JxUwjPll+TKIsuMITvaOq8+lm1gt9fIhu1FiwmoddmW9wNd9+R231I4TiQ==
   dependencies:
     "@babel/generator" "^7.11.6"
     "@babel/runtime" "^7.11.2"
-    "@lingui/conf" "^3.8.4"
+    "@lingui/conf" "^3.8.6"
     mkdirp "^1.0.4"
 
-"@lingui/cli@^3.8.4":
-  version "3.8.4"
-  resolved "https://registry.yarnpkg.com/@lingui/cli/-/cli-3.8.4.tgz#1c42f68cfcbe3098f7669c6ec020546dad6de855"
-  integrity sha512-gyz8Bb+lrSNnZiVIYAv0HPfW8lbzMotEHuL0lWGqcJVFslSq/oOsiZxfp4Z20/1Fkhy+7mdk4FNEPU8sSoQCNw==
+"@lingui/cli@^3.8.6":
+  version "3.8.6"
+  resolved "https://registry.yarnpkg.com/@lingui/cli/-/cli-3.8.6.tgz#ce71a160a239652ae73214d05b710cc37319e8b9"
+  integrity sha512-D3r6U6W/CGch8rEd/IFgImhoIlKePtyWLEwmybKnNfXjbtWBVtnVWroHl5IHYkXw9oGbOwxJDERMduR3D6IItw==
   dependencies:
     "@babel/generator" "^7.11.6"
     "@babel/parser" "^7.11.5"
     "@babel/plugin-syntax-jsx" "^7.10.4"
     "@babel/runtime" "^7.11.2"
     "@babel/types" "^7.11.5"
-    "@lingui/babel-plugin-extract-messages" "^3.8.4"
-    "@lingui/conf" "^3.8.4"
+    "@lingui/babel-plugin-extract-messages" "^3.8.6"
+    "@lingui/conf" "^3.8.6"
     babel-plugin-macros "^3.0.1"
     bcp-47 "^1.0.7"
     chalk "^4.1.0"
@@ -1748,10 +1748,10 @@
     pseudolocale "^1.1.0"
     ramda "^0.27.1"
 
-"@lingui/conf@^3.8.4":
-  version "3.8.4"
-  resolved "https://registry.yarnpkg.com/@lingui/conf/-/conf-3.8.4.tgz#a440ed8e6fead5951dce15078464380462b99f08"
-  integrity sha512-QtumDBtqSvUsB1eHZMVueBimhLk+p3etAVn5psNypB/zQfUxn8Yoj+zz5J7U1N7v7P+zfI4tlgGnoEj7s2k4Vg==
+"@lingui/conf@^3.8.6":
+  version "3.8.6"
+  resolved "https://registry.yarnpkg.com/@lingui/conf/-/conf-3.8.6.tgz#5658c10655728e9d4f2bd13036984746008ae705"
+  integrity sha512-qfTzii2IIt5CBE3vIKYHHY0cH8Nz6gRnIU6DnJhQD76LvdzplAwa7Pt/QwIGJKaV9IvfFZCrNAM34P/hSKl5uQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
     "@endemolshinegroup/cosmiconfig-typescript-loader" "^3.0.2"
@@ -1760,31 +1760,31 @@
     jest-validate "^26.5.2"
     lodash.get "^4.4.2"
 
-"@lingui/core@^3.8.4":
-  version "3.8.4"
-  resolved "https://registry.yarnpkg.com/@lingui/core/-/core-3.8.4.tgz#fce495b325da50ebc937b755cc7840f045ee903b"
-  integrity sha512-x7sIqV4Ekn/VVqtK4Cj9bgnUy4URwlT2pikqktMqRPojTnXfzcM+obilYMJsnqZCUoPdoaI0r2bLqh+mAD3hQA==
+"@lingui/core@^3.8.6":
+  version "3.8.6"
+  resolved "https://registry.yarnpkg.com/@lingui/core/-/core-3.8.6.tgz#c6d09a09ceab4d95056abee7c8d911cded17adf2"
+  integrity sha512-zuyu8tVCsctVK4A9mdlr0v1GJ1o8CpA8FE0M6vSKtz8vnPDsaPdNr9YqME6EW++w4PwhnuMyfrGx8iFIJBzp1A==
   dependencies:
     "@babel/runtime" "^7.11.2"
     make-plural "^6.2.2"
     messageformat-parser "^4.1.3"
 
-"@lingui/macro@^3.8.4":
-  version "3.8.4"
-  resolved "https://registry.yarnpkg.com/@lingui/macro/-/macro-3.8.4.tgz#16bc795fae9352ae3d8c807d980c837b7402a469"
-  integrity sha512-ZkZxc7B9Irwo36LZcxh6ViEkYvm4qZh+fnHHadXWjUwcf8nEQc5gVR/xjwL3r8kLWIaCPrIdlSMx/bbm6GlZRA==
+"@lingui/macro@^3.8.6":
+  version "3.8.6"
+  resolved "https://registry.yarnpkg.com/@lingui/macro/-/macro-3.8.6.tgz#d32801fb86624ecba769c0ee3165b9fe9cdf3d6e"
+  integrity sha512-WABB1ufaIB5pSoSArA0vk808OPfFCkYDzOL1foE11WS69/LEJ+1XwEd2hdFmrYppml9pLCEG+obcd2PbZXHatw==
   dependencies:
     "@babel/runtime" "^7.11.2"
-    "@lingui/conf" "^3.8.4"
+    "@lingui/conf" "^3.8.6"
     ramda "^0.27.1"
 
-"@lingui/react@^3.8.4":
-  version "3.8.4"
-  resolved "https://registry.yarnpkg.com/@lingui/react/-/react-3.8.4.tgz#be49d0350df6be070cc9c4f8a7b4ccc8f938d5e0"
-  integrity sha512-58s0IHOVWnM6yH6l/PfN6S6hqzr4/hPB753a8lbb1ky9tyCuyrjkCkqS5F6tpEGic58wEtdBCnef9JJAr9yTWA==
+"@lingui/react@^3.8.6":
+  version "3.8.6"
+  resolved "https://registry.yarnpkg.com/@lingui/react/-/react-3.8.6.tgz#cd464b4148385907a19739ad6a5440da6b03c396"
+  integrity sha512-wFWQt+GbCOEwj0BHXAHk0rb0PBmTHQhEWONF61vh1VuNViiuExHwTMRCWP7bHcm9XeuJGPVFWFNcjQZ6Rp+NfQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
-    "@lingui/core" "^3.8.4"
+    "@lingui/core" "^3.8.6"
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"
