@@ -165,8 +165,8 @@ msgid "Autoriser les notifications marketing"
 msgstr "Autoriser les notifications marketing"
 
 #: src/features/profile/pages/NotificationSettings.tsx:122
-msgid "Autoriser l’envoi d’e\\u2011mails"
-msgstr "Autoriser l’envoi d’e\\u2011mails"
+msgid "Autoriser l’envoi d’e‑mails"
+msgstr "Autoriser l’envoi d’e‑mails"
 
 #: src/features/profile/pages/ConsentSettings.tsx:77
 msgid "Autoriser l’utilisation de mes données de navigation"
@@ -280,9 +280,9 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/auth/signup/SetPostalCode.tsx:51
-msgid "Code postal"
-msgstr "Code postal"
+#: src/features/auth/signup/SetPostalCode.tsx:41
+msgid "Code Postal"
+msgstr "Code Postal"
 
 #: src/features/profile/pages/Profile.tsx:115
 msgid "Comment ça marche ?"
@@ -309,8 +309,8 @@ msgid "Confidentialité"
 msgstr "Confidentialité"
 
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
-msgid "Confirme ton e\\u2011mail"
-msgstr "Confirme ton e\\u2011mail"
+msgid "Confirme ton e‑mail"
+msgstr "Confirme ton e‑mail"
 
 #: src/features/bookOffer/components/BookingDetails.tsx:74
 msgid "Confirmer la réservation"
@@ -460,8 +460,8 @@ msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
 #: src/features/bookings/pages/BookingDetails.tsx:55
-msgid "EAN\\u00a0"
-msgstr "EAN\\u00a0"
+msgid "EAN"
+msgstr "EAN"
 
 #: src/features/auth/signup/AcceptCgu.tsx:105
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
@@ -579,8 +579,8 @@ msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
 msgstr "Je t'invite à découvrir une super offre sur le pass Culture !"
 
 #: src/features/profile/pages/NotificationSettings.tsx:119
-msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
-msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e\\u2011mail."
+msgid "Je veux recevoir les actualités et les meilleures offres du pass Culture par e‑mail."
+msgstr "Je veux recevoir les actualités et les meilleures offres du pass Culture par e‑mail."
 
 #: src/features/profile/pages/NotificationSettings.tsx:129
 msgid "Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil."
@@ -612,8 +612,8 @@ msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx:34
-msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\\u0020"
-msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\\u0020"
+msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
+msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:49
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:49
@@ -933,8 +933,8 @@ msgid "Profil"
 msgstr "Profil"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:34
-msgid "Profite de 300\\u00a0€\\u00a0"
-msgstr "Profite de 300\\u00a0€\\u00a0"
+msgid "Profite de 300 €"
+msgstr "Profite de 300 €"
 
 #: src/features/favorites/pages/FavoritesSorts.tsx:29
 msgid "Proximité géographique"
@@ -1120,7 +1120,7 @@ msgstr "Titre, artiste..."
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/SetPostalCode.tsx:41
+#: src/features/auth/signup/SetPostalCode.tsx:51
 msgid "Ton code postal"
 msgstr "Ton code postal"
 
@@ -1195,8 +1195,8 @@ msgid "Tu as 18 ans..."
 msgstr "Tu as 18 ans..."
 
 #: src/features/profile/components/LoggedOutHeader.tsx:29
-msgid "Tu as déjà un compte ?\\u00a0"
-msgstr "Tu as déjà un compte ?\\u00a0"
+msgid "Tu as déjà un compte ?"
+msgstr "Tu as déjà un compte ?"
 
 #: src/features/home/pages/Home.tsx:53
 msgid "Tu as {0} sur ton pass"
@@ -1215,8 +1215,8 @@ msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:28
-msgid "Tu es éligible jusqu'au\\u00a0{0}"
-msgstr "Tu es éligible jusqu'au\\u00a0{0}"
+msgid "Tu es éligible jusqu'au {0}"
+msgstr "Tu es éligible jusqu'au {0}"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:27
 msgid "Tu n'es pas connecté !"
@@ -1507,8 +1507,8 @@ msgid "À deux !"
 msgstr "À deux !"
 
 #: src/features/bookings/helpers.ts:50
-msgid "À retirer avant le\\u00a0"
-msgstr "À retirer avant le\\u00a0"
+msgid "À retirer avant le"
+msgstr "À retirer avant le"
 
 #: src/api/helpers.ts:112
 msgid "Échec de la requête {0}, code: {1}"
