@@ -280,9 +280,9 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/auth/signup/SetPostalCode.tsx:41
-msgid "Code Postal"
-msgstr "Code Postal"
+#: src/features/auth/signup/SetPostalCode.tsx:51
+msgid "Code postal"
+msgstr "Code postal"
 
 #: src/features/profile/pages/Profile.tsx:115
 msgid "Comment ça marche ?"
@@ -353,13 +353,13 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:70
-#: src/features/auth/signup/SetBirthday.tsx:109
+#: src/features/auth/signup/SetBirthday.tsx:108
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:43
 #: src/features/auth/signup/SetPostalCode.tsx:58
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:54
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:13
 msgid "Continuer"
 msgstr "Continuer"
 
@@ -406,7 +406,7 @@ msgstr "Dernier jour pour retirer"
 msgid "Des nouveautés"
 msgstr "Des nouveautés"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:13
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
 
@@ -666,7 +666,7 @@ msgstr "Localisation"
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
-#: src/features/auth/signup/SetBirthday.tsx:121
+#: src/features/auth/signup/SetBirthday.tsx:120
 msgid ""
 "L’application pass Culture est accessible à tous.\n"
 "Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit}\n"
@@ -873,7 +873,7 @@ msgstr "Pas de résultat trouvé."
 msgid "Passer"
 msgstr "Passer"
 
-#: src/features/profile/components/YoungerBadge.tsx:17
+#: src/features/profile/components/YoungerBadge.tsx:16
 msgid "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
 msgstr "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
 
@@ -881,7 +881,7 @@ msgstr "Patience ! L’année de tes 18 ans, si tu fais partie d’un des dépar
 msgid "Permanent"
 msgstr "Permanent"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:23
+#: src/features/auth/signup/VerifyEligibility.tsx:21
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
@@ -902,11 +902,11 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:25
+#: src/features/auth/signup/VerifyEligibility.tsx:23
 msgid "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/auth/signup/SetBirthday.tsx:102
+#: src/features/auth/signup/SetBirthday.tsx:101
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -928,13 +928,13 @@ msgstr "Prix croissant"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx:15
 #: src/features/profile/components/LoggedOutHeader.tsx:17
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:43
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:45
 msgid "Profil"
 msgstr "Profil"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:34
-msgid "Profite de 300 €"
-msgstr "Profite de 300 €"
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:36
+msgid "Profite de {deposit}"
+msgstr "Profite de {deposit}"
 
 #: src/features/favorites/pages/FavoritesSorts.tsx:29
 msgid "Proximité géographique"
@@ -983,7 +983,7 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:58
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:58
-#: src/features/auth/signup/VerifyEligibility.tsx:30
+#: src/features/auth/signup/VerifyEligibility.tsx:28
 #: src/features/bookOffer/pages/BookingConfirmation.tsx:33
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
@@ -1116,11 +1116,11 @@ msgstr "Supprimer"
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
-#: src/features/auth/signup/SetBirthday.tsx:98
+#: src/features/auth/signup/SetBirthday.tsx:97
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/SetPostalCode.tsx:51
+#: src/features/auth/signup/SetPostalCode.tsx:41
 msgid "Ton code postal"
 msgstr "Ton code postal"
 
@@ -1214,7 +1214,7 @@ msgstr "Tu dois être connecté pour activer les notifications et rester inform�
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:28
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:30
 msgid "Tu es éligible jusqu'au {0}"
 msgstr "Tu es éligible jusqu'au {0}"
 
@@ -1356,7 +1356,7 @@ msgstr "Voir plus d'informations"
 msgid "Vérifier mon identité"
 msgstr "Vérifier mon identité"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:28
+#: src/features/auth/signup/VerifyEligibility.tsx:26
 msgid "Vérifier mon éligibilité"
 msgstr "Vérifier mon éligibilité"
 
@@ -1397,7 +1397,7 @@ msgstr "crédit photo"
 msgid "crédit valable jusqu'au"
 msgstr "crédit valable jusqu'au"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:13
 msgid "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
 msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture d’un montant de {deposit} à dépenser dans l’application."
 
@@ -1413,7 +1413,7 @@ msgstr "en détails"
 msgid "en ligne"
 msgstr "en ligne"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:14
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:13
 msgid "et si tu es..."
 msgstr "et si tu es..."
 
@@ -1518,7 +1518,7 @@ msgstr "Échec de la requête {0}, code: {1}"
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:34
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:36
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
