@@ -115,7 +115,6 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           keyExtractor={keyExtractor}
           ListHeaderComponent={ListHeaderComponent}
           ListFooterComponent={ListFooterComponent}
-          ItemSeparatorComponent={Separator}
           renderItem={renderItem}
           onEndReachedThreshold={0.9}
           onScrollEndDrag={onScrollEndDrag}
