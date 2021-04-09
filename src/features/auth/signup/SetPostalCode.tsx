@@ -59,7 +59,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
     <React.Fragment>
       <BottomContentPage>
         <ModalHeader
-          title={t`Code Postal`}
+          title={t`Ton code postal`}
           leftIcon={ArrowPrevious}
           onLeftIconPress={goBack}
           rightIcon={Close}
@@ -74,7 +74,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
           <Spacer.Column numberOfSpaces={6} />
 
           <StyledInput>
-            <Typo.Body>{t`Ton code postal`}</Typo.Body>
+            <Typo.Body>{t`Code postal`}</Typo.Body>
             <Spacer.Column numberOfSpaces={2} />
             <TextInput
               autoCapitalize="none"

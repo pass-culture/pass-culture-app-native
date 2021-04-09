@@ -205,7 +205,7 @@ msgstr "CGU & Données"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/pages/BookingDetails.tsx:64
+#: src/features/bookings/pages/BookingDetails.tsx:63
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -280,9 +280,9 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 
-#: src/features/auth/signup/SetPostalCode.tsx:41
-msgid "Code Postal"
-msgstr "Code Postal"
+#: src/features/auth/signup/SetPostalCode.tsx:51
+msgid "Code postal"
+msgstr "Code postal"
 
 #: src/features/profile/pages/Profile.tsx:115
 msgid "Comment ça marche ?"
@@ -459,7 +459,7 @@ msgstr "E-mail envoyé !"
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
-#: src/features/bookings/pages/BookingDetails.tsx:56
+#: src/features/bookings/pages/BookingDetails.tsx:55
 msgid "EAN\\u00a0"
 msgstr "EAN\\u00a0"
 
@@ -1120,7 +1120,7 @@ msgstr "Titre, artiste..."
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
-#: src/features/auth/signup/SetPostalCode.tsx:51
+#: src/features/auth/signup/SetPostalCode.tsx:41
 msgid "Ton code postal"
 msgstr "Ton code postal"
 
@@ -1202,7 +1202,7 @@ msgstr "Tu as déjà un compte ?\\u00a0"
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
-#: src/features/bookings/pages/BookingDetails.tsx:67
+#: src/features/bookings/pages/BookingDetails.tsx:66
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
