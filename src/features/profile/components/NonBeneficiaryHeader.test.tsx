@@ -9,7 +9,7 @@ import { render } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
-let mockDepositAmount = 30000
+let mockDepositAmount = '300 €'
 
 jest.mock('features/auth/api', () => ({
   useGetIdCheckToken: jest.fn(
@@ -74,7 +74,7 @@ describe('NonBeneficiaryHeader', () => {
     expect(container).toBeNull()
   })
   it('should display correct depositAmount', () => {
-    mockDepositAmount = 30000
+    mockDepositAmount = '300 €'
     let { queryByText } = render(
       <NonBeneficiaryHeader
         email="john@doe.com"
@@ -84,7 +84,7 @@ describe('NonBeneficiaryHeader', () => {
     )
     expect(queryByText(/Profite de 300€/)).toBeTruthy()
 
-    mockDepositAmount = 50000
+    mockDepositAmount = '500 €'
     queryByText = render(
       <NonBeneficiaryHeader
         email="john@doe.com"

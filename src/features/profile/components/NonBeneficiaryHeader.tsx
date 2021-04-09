@@ -7,7 +7,6 @@ import { useDepositAmount, useGetIdCheckToken } from 'features/auth/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { formatToFrenchDecimal } from 'libs/parsers'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
@@ -25,7 +24,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const { navigate } = useNavigation<UseNavigationType>()
   const today = new Date()
   const depositAmount = useDepositAmount()
-  const deposit = formatToFrenchDecimal(depositAmount).replace(' ', '')
+  const deposit = depositAmount.replace(' ', '')
   const eligibilityStartDatetime = new Date(props.eligibilityStartDatetime)
   const eligibilityEndDatetime = new Date(props.eligibilityEndDatetime)
 

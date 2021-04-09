@@ -5,6 +5,8 @@ import { AccountRequest, GetIdCheckTokenResponse, SettingsResponse, SigninReques
 import { isApiError } from 'api/helpers'
 import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
 
+import { formatToFrenchDecimal } from '../../libs/parsers'
+
 export type SignInResponse = SignInResponseSuccess | SignInResponseFailure
 
 export type SignInResponseSuccess = {
@@ -85,5 +87,6 @@ export function useAppSettings() {
 
 export function useDepositAmount() {
   const { data: settings } = useAppSettings()
-  return settings?.depositAmount ?? 30000
+  const amount = settings?.depositAmount ?? 30000
+  return formatToFrenchDecimal(amount)
 }

@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { useDepositAmount } from 'features/auth/api'
-import { formatToFrenchDecimal } from 'libs/parsers'
 import TutorialOffers from 'ui/animations/tutorial_offers.json'
 import {
   AchievementCardKeyProps,
@@ -11,7 +10,7 @@ import {
 
 export function SecondCard(props: AchievementCardKeyProps) {
   const depositAmount = useDepositAmount()
-  const deposit = formatToFrenchDecimal(depositAmount).replace(' ', '')
+  const deposit = depositAmount.replace(' ', '')
 
   function onButtonPress() {
     props.swiperRef?.current?.goToNext()
