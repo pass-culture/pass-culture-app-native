@@ -45,7 +45,8 @@ export function BeneficiaryCeilings(props: BeneficiaryCeilingsProps) {
   const ceilingKey = hasPhysicalCeiling ? 'physicalAndDigital' : 'digital'
   const question = ceilingsQuestions[ceilingKey]
   const description =
-    t`Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.\u0020` +
+    t`Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles.` +
+    '\u0020' +
     ceilingsDescription[ceilingKey]
 
   return (

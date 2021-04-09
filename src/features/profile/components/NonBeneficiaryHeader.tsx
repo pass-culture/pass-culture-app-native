@@ -39,9 +39,8 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     body = (
       <BodyContainer testID="body-container-18">
         <Typo.Caption>
-          {t`Tu es éligible jusqu'au\u00a0${formatToSlashedFrenchDate(
-            eligibilityEndDatetime.toISOString()
-          )}`}
+          {t`Tu es éligible jusqu'au` +
+            `\u00a0${formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString())}`}
         </Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
         <ModuleBanner

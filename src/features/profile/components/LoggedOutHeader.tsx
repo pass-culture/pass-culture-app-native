@@ -33,7 +33,7 @@ export function LoggedOutHeader() {
         />
         <Spacer.Column numberOfSpaces={4} />
         <LoginCta>
-          <Typo.Body color={ColorsEnum.WHITE}>{t`Tu as déjà un compte ?\u00a0`}</Typo.Body>
+          <Typo.Body color={ColorsEnum.WHITE}>{t`Tu as déjà un compte ?` + '\u00a0'}</Typo.Body>
           <TouchableOpacity
             onPress={() => navigate('Login', { preventCancellation: true })}
             testID="login-button">

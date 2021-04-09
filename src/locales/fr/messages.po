@@ -928,11 +928,11 @@ msgstr "Prix croissant"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx:15
 #: src/features/profile/components/LoggedOutHeader.tsx:17
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:45
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:46
 msgid "Profil"
 msgstr "Profil"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:36
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:37
 msgid "Profite de {deposit}"
 msgstr "Profite de {deposit}"
 
@@ -1215,8 +1215,8 @@ msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:30
-msgid "Tu es éligible jusqu'au {0}"
-msgstr "Tu es éligible jusqu'au {0}"
+msgid "Tu es éligible jusqu'au"
+msgstr "Tu es éligible jusqu'au"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:27
 msgid "Tu n'es pas connecté !"
@@ -1248,7 +1248,7 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 
-#: src/features/profile/components/BeneficiaryCeilings.tsx:38
+#: src/features/profile/components/BeneficiaryCeilings.tsx:39
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
@@ -1518,7 +1518,7 @@ msgstr "Échec de la requête {0}, code: {1}"
 msgid "Échec de la requête {url}, code: {0}"
 msgstr "Échec de la requête {url}, code: {0}"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:36
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:37
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
