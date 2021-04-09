@@ -9,6 +9,8 @@ import { render } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
 
+let mockDepositAmount = 30000
+
 jest.mock('features/auth/api', () => ({
   useGetIdCheckToken: jest.fn(
     () =>
@@ -17,7 +19,7 @@ jest.mock('features/auth/api', () => ({
         data: { token: 'thisIsATokenForIdCheck' },
       } as UseQueryResult<GetIdCheckTokenResponse>)
   ),
-  useDepositAmount: () => 30000,
+  useDepositAmount: () => mockDepositAmount,
 }))
 
 describe('NonBeneficiaryHeader', () => {
@@ -70,5 +72,26 @@ describe('NonBeneficiaryHeader', () => {
     )
     const container = queryByTestId('body-container')
     expect(container).toBeNull()
+  })
+  it('should display correct depositAmount', () => {
+    mockDepositAmount = 30000
+    let { queryByText } = render(
+      <NonBeneficiaryHeader
+        email="john@doe.com"
+        eligibilityStartDatetime="2021-02-30T00:00Z"
+        eligibilityEndDatetime="2022-02-30T00:00Z"
+      />
+    )
+    expect(queryByText(/Profite de 300€/)).toBeTruthy()
+
+    mockDepositAmount = 50000
+    queryByText = render(
+      <NonBeneficiaryHeader
+        email="john@doe.com"
+        eligibilityStartDatetime="2021-02-30T00:00Z"
+        eligibilityEndDatetime="2022-02-30T00:00Z"
+      />
+    ).queryByText
+    expect(queryByText(/Profite de 500€/)).toBeTruthy()
   })
 })
