@@ -10,7 +10,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
 
-let mockDepositAmount = 30000
+let mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
 
 describe('SetBirthday Page', () => {
@@ -43,12 +43,12 @@ describe('SetBirthday Page', () => {
   })
 
   it('should show the correct deposit amount', async () => {
-    mockDepositAmount = 30000
+    mockDepositAmount = '300 €'
     let component = renderSetBirthday()
     fireEvent.press(component.getByTestId('button-title-why-link'))
     expect(component.queryByText(/une aide financière de 300 €/)).toBeTruthy()
 
-    mockDepositAmount = 50000
+    mockDepositAmount = '500 €'
     component = renderSetBirthday()
     fireEvent.press(component.getByTestId('button-title-why-link'))
     expect(component.queryByText(/une aide financière de 500 €/)).toBeTruthy()

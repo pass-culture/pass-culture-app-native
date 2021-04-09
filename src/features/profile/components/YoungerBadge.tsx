@@ -3,13 +3,12 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useDepositAmount } from 'features/auth/api'
-import { formatToFrenchDecimal } from 'libs/parsers'
 import { Clock } from 'ui/svg/icons/Clock'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 export function YoungerBadge() {
   const depositAmount = useDepositAmount()
-  const deposit = formatToFrenchDecimal(depositAmount).replace(' ', '')
+  const deposit = depositAmount.replace(' ', '')
 
   return (
     <Container testID="younger-badge">

@@ -10,7 +10,7 @@ import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupMod
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
-import { formatDateToISOStringWithoutTime, formatToFrenchDecimal } from 'libs/parsers'
+import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { BottomCardContentContainer } from 'ui/components/BottomCard'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -50,8 +50,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     isTooOld: false,
   })
 
-  const depositAmount = useDepositAmount()
-  const deposit = formatToFrenchDecimal(depositAmount)
+  const deposit = useDepositAmount()
 
   const now = new Date()
   const currentYear = now.getUTCFullYear()

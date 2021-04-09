@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { useDepositAmount } from 'features/auth/api'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
-import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -17,8 +16,7 @@ type Props = StackScreenProps<RootStackParamList, 'VerifyEligibility'>
 
 export function VerifyEligibility(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
-  const depositAmount = useDepositAmount()
-  const deposit = formatToFrenchDecimal(depositAmount)
+  const deposit = useDepositAmount()
 
   function goToHomeWithoutModal() {
     navigate('Home', { shouldDisplayLoginModal: false })

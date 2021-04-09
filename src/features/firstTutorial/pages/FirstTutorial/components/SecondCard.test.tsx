@@ -5,7 +5,7 @@ import { fireEvent, render } from 'tests/utils'
 
 import { SecondCard } from './SecondCard'
 
-let mockDepositAmount = 30000
+let mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
 
 describe('SecondCard', () => {
@@ -16,11 +16,11 @@ describe('SecondCard', () => {
   })
 
   it('should show the correct deposit amount', async () => {
-    mockDepositAmount = 30000
+    mockDepositAmount = '300 €'
     let queryByText = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />).queryByText
     expect(queryByText(/un montant de 300€ à dépenser/)).toBeTruthy()
 
-    mockDepositAmount = 50000
+    mockDepositAmount = '500 €'
     queryByText = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />).queryByText
     expect(queryByText(/un montant de 500€ à dépenser/)).toBeTruthy()
   })

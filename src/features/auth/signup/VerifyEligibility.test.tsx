@@ -11,7 +11,7 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
-let mockDepositAmount = 30000
+let mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
 
 const navigationProps = {
@@ -20,11 +20,11 @@ const navigationProps = {
 
 describe('<VerifyEligibility />', () => {
   it('should show the correct deposit amount', async () => {
-    mockDepositAmount = 30000
+    mockDepositAmount = '300 €'
     let queryByText = render(<VerifyEligibility {...navigationProps} />).queryByText
     expect(queryByText(/aide financière de 300 € offerte par le Ministère/)).toBeTruthy()
 
-    mockDepositAmount = 50000
+    mockDepositAmount = '500 €'
     queryByText = render(<VerifyEligibility {...navigationProps} />).queryByText
     expect(queryByText(/aide financière de 500 € offerte par le Ministère/)).toBeTruthy()
   })
