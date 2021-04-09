@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useMemo } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
+import { Animated, LayoutChangeEvent } from 'react-native'
 import { Dimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -30,6 +31,9 @@ interface Props {
 
 export const Favorite: React.FC<Props> = (props) => {
   const { offer } = props.favorite
+  const [height, setHeight] = useState<number | undefined>(undefined)
+  const animatedOpacity = useRef(new Animated.Value(1)).current
+  const animatedCollapse = useRef(new Animated.Value(1)).current
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance({
@@ -80,58 +84,96 @@ export const Favorite: React.FC<Props> = (props) => {
     })
   }
 
+  function onRemove() {
+    Animated.parallel([
+      Animated.timing(animatedOpacity, {
+        toValue: 0,
+        delay: 0,
+        duration: 300,
+        useNativeDriver: false,
+      }),
+      Animated.timing(animatedCollapse, {
+        toValue: 0,
+        delay: 100,
+        duration: 300,
+        useNativeDriver: false,
+      }),
+    ]).start(() => {
+      removeFavorite(props.favorite.id)
+    })
+  }
+
+  function onLayout(event: LayoutChangeEvent) {
+    const { height: newHeight } = event.nativeEvent.layout
+    if (!height) {
+      setHeight(newHeight)
+    }
+  }
+
   return (
-    <Container onPress={handlePressOffer} testID="favorite">
-      <Row>
-        <OfferImage imageUrl={offer.image?.url} categoryName={offer.category.name} />
-        <Spacer.Row numberOfSpaces={4} />
-        <Column>
-          <Row>
-            {distanceToOffer ? (
-              <React.Fragment>
-                <Spacer.Flex flex={0.7}>
-                  <Name numberOfLines={2}>{offer.name}</Name>
-                </Spacer.Flex>
-                <Spacer.Flex flex={0.3}>
-                  <Distance>{distanceToOffer}</Distance>
-                </Spacer.Flex>
-              </React.Fragment>
-            ) : (
-              <Name numberOfLines={2}>{offer.name}</Name>
-            )}
-          </Row>
-          <Spacer.Column numberOfSpaces={1} />
-          <Body>{categoryLabel}</Body>
-          {formattedDate && <Body>{formattedDate}</Body>}
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.Caption>
-            {getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })}
-          </Typo.Caption>
-        </Column>
-      </Row>
-      <ButtonsRow>
-        <ButtonContainer>
-          <AppButton
-            title={t`Supprimer`}
-            onPress={() => removeFavorite(props.favorite.id)}
-            textColor={ColorsEnum.BLACK}
-            borderColor={ColorsEnum.GREY_MEDIUM}
-            backgroundColor={ColorsEnum.WHITE}
-            loadingIconColor={ColorsEnum.PRIMARY}
-            buttonHeight="tall"
-            disabled={isLoading}
-          />
-        </ButtonContainer>
-        <ButtonContainer>
-          <BookingButton
-            credit={props.credit}
-            offer={offer}
-            user={props.user}
-            onInAppBooking={props.onInAppBooking}
-          />
-        </ButtonContainer>
-      </ButtonsRow>
-    </Container>
+    <Animated.View
+      onLayout={onLayout}
+      style={{
+        opacity: animatedOpacity,
+        height: height
+          ? animatedCollapse.interpolate({
+              inputRange: [0, 1],
+              outputRange: [0, height],
+            })
+          : undefined,
+      }}>
+      <Container onPress={handlePressOffer} testID="favorite">
+        <Row>
+          <OfferImage imageUrl={offer.image?.url} categoryName={offer.category.name} />
+          <Spacer.Row numberOfSpaces={4} />
+          <Column>
+            <Row>
+              {distanceToOffer ? (
+                <React.Fragment>
+                  <Spacer.Flex flex={0.7}>
+                    <Name numberOfLines={2}>{offer.name}</Name>
+                  </Spacer.Flex>
+                  <Spacer.Flex flex={0.3}>
+                    <Distance>{distanceToOffer}</Distance>
+                  </Spacer.Flex>
+                </React.Fragment>
+              ) : (
+                <Name numberOfLines={2}>{offer.name}</Name>
+              )}
+            </Row>
+            <Spacer.Column numberOfSpaces={1} />
+            <Body>{categoryLabel}</Body>
+            {formattedDate && <Body>{formattedDate}</Body>}
+            <Spacer.Column numberOfSpaces={1} />
+            <Typo.Caption>
+              {getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })}
+            </Typo.Caption>
+          </Column>
+        </Row>
+        <ButtonsRow>
+          <ButtonContainer>
+            <AppButton
+              title={t`Supprimer`}
+              onPress={onRemove}
+              textColor={ColorsEnum.BLACK}
+              borderColor={ColorsEnum.GREY_MEDIUM}
+              backgroundColor={ColorsEnum.WHITE}
+              loadingIconColor={ColorsEnum.PRIMARY}
+              buttonHeight="tall"
+              disabled={isLoading}
+            />
+          </ButtonContainer>
+          <ButtonContainer>
+            <BookingButton
+              credit={props.credit}
+              offer={offer}
+              user={props.user}
+              onInAppBooking={props.onInAppBooking}
+            />
+          </ButtonContainer>
+        </ButtonsRow>
+      </Container>
+    </Animated.View>
   )
 }
 
