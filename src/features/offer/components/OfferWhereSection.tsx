@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Coordinates } from 'api/gen'
 import { analytics } from 'libs/analytics'
-import { useItinerary } from 'libs/itinetary/useItinerary'
+import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo, ColorsEnum } from 'ui/theme'
@@ -20,14 +20,11 @@ type Props = {
 export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, offerId }) => {
   const { latitude: lat, longitude: lng } = offerCoordinates
   const distanceToOffer = useDistance({ lat, lng })
-  const { availableApps, navigateTo } = useItinerary()
-  if (distanceToOffer === undefined && address === null) return null
-
-  const handleOpenNavigation = () => {
-    if (!lat || !lng) return
+  const { canOpenItinerary, openItinerary } = useOpenItinerary(lat, lng, () =>
     analytics.logConsultItinerary(offerId)
-    navigateTo({ latitude: lat, longitude: lng })
-  }
+  )
+
+  if (distanceToOffer === undefined && address === null) return null
 
   return (
     <React.Fragment>
@@ -50,12 +47,12 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, 
         </React.Fragment>
       )}
 
-      {lat !== undefined && lng !== undefined && availableApps !== undefined && (
+      {canOpenItinerary && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
-          <TouchableContainer onPress={handleOpenNavigation}>
+          <TouchableContainer onPress={openItinerary}>
             <LocationPointer color={ColorsEnum.BLACK} size={24} />
             <Spacer.Row numberOfSpaces={1} />
             <Typo.ButtonText>{t`Voir l'itinéraire`}</Typo.ButtonText>
