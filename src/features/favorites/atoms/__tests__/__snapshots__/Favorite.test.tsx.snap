@@ -5,67 +5,67 @@ exports[`<Favorite /> component offer name should take full space if no geolocat
 - First value
 + Second value
 
-@@ -88,10 +88,22 @@
-                \\"flexDirection\\": \\"row\\",
-              },
-            ]
-          }
-        >
-+         <View
-+           flex={0.7}
-+           style={
-+             Array [
-+               Object {
-+                 \\"flexBasis\\": 0,
-+                 \\"flexGrow\\": 0.7,
-+                 \\"flexShrink\\": 1,
-+               },
-+             ]
-+           }
-+         >
-            <Text
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-@@ -103,10 +115,39 @@
-                ]
-              }
-            >
-              Un lit sous une rivière
-            </Text>
-+         </View>
-+         <View
-+           flex={0.3}
-+           style={
-+             Array [
-+               Object {
-+                 \\"flexBasis\\": 0,
-+                 \\"flexGrow\\": 0.3,
-+                 \\"flexShrink\\": 1,
-+               },
-+             ]
-+           }
-+         >
-+           <Text
+@@ -97,10 +97,22 @@
+                  \\"flexDirection\\": \\"row\\",
+                },
+              ]
+            }
+          >
++           <View
++             flex={0.7}
 +             style={
 +               Array [
 +                 Object {
-+                   \\"color\\": \\"#626262\\",
-+                   \\"fontFamily\\": \\"Montserrat-Regular\\",
-+                   \\"fontSize\\": 15,
-+                   \\"lineHeight\\": 20,
-+                   \\"textAlign\\": \\"right\\",
++                   \\"flexBasis\\": 0,
++                   \\"flexGrow\\": 0.7,
++                   \\"flexShrink\\": 1,
 +                 },
 +               ]
 +             }
 +           >
-+             10 km
-+           </Text>
-+         </View>
-        </View>
-        <View
-          numberOfSpaces={1}
-          style={
-            Array ["
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+@@ -112,10 +124,39 @@
+                  ]
+                }
+              >
+                Un lit sous une rivière
+              </Text>
++           </View>
++           <View
++             flex={0.3}
++             style={
++               Array [
++                 Object {
++                   \\"flexBasis\\": 0,
++                   \\"flexGrow\\": 0.3,
++                   \\"flexShrink\\": 1,
++                 },
++               ]
++             }
++           >
++             <Text
++               style={
++                 Array [
++                   Object {
++                     \\"color\\": \\"#626262\\",
++                     \\"fontFamily\\": \\"Montserrat-Regular\\",
++                     \\"fontSize\\": 15,
++                     \\"lineHeight\\": 20,
++                     \\"textAlign\\": \\"right\\",
++                   },
++                 ]
++               }
++             >
++               10 km
++             </Text>
++           </View>
+          </View>
+          <View
+            numberOfSpaces={1}
+            style={
+              Array ["
 `;

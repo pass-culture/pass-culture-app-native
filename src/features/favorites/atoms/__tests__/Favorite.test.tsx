@@ -117,6 +117,7 @@ describe('<Favorite /> component', () => {
       expect(mockShowErrorSnackBar).not.toBeCalled()
     })
   })
+
   it('should fail to delete favorite on button click', async () => {
     const id = 0
     simulateBackend({ id, hasRemoveFavoriteError: true })
@@ -127,9 +128,8 @@ describe('<Favorite /> component', () => {
 
     await superFlushWithAct()
     fireEvent.press(getByText('Supprimer'))
-    await superFlushWithAct()
-
-    await waitForExpect(() => {
+    await superFlushWithAct(222222)
+    await waitForExpect(async () => {
       expect(mockShowErrorSnackBar).toBeCalledWith({
         message: `L'offre n'a pas été retirée de tes favoris`,
         timeout: SNACK_BAR_TIME_OUT,
@@ -143,13 +143,13 @@ type Options = {
   hasRemoveFavoriteError?: boolean
 }
 
-const DEFAULT_GET_FAVORITE_OPTIONDS = {
+const DEFAULT_GET_FAVORITE_OPTIONS = {
   id: favorite.id,
   hasRemoveFavoriteError: false,
 }
 
-function simulateBackend(options: Options = DEFAULT_GET_FAVORITE_OPTIONDS) {
-  const { id, hasRemoveFavoriteError } = { ...DEFAULT_GET_FAVORITE_OPTIONDS, ...options }
+function simulateBackend(options: Options = DEFAULT_GET_FAVORITE_OPTIONS) {
+  const { id, hasRemoveFavoriteError } = { ...DEFAULT_GET_FAVORITE_OPTIONS, ...options }
   server.use(
     rest.delete<EmptyResponse>(
       `${env.API_BASE_URL}/native/v1/me/favorites/${id}`,
