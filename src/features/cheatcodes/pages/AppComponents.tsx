@@ -43,6 +43,7 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { StepDots } from 'ui/components/StepDots'
+import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -102,7 +103,6 @@ import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
-import { OfferBackPlaceholder } from 'ui/svg/OfferBackPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -663,8 +663,8 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
 
         <AlignedText>
-          <OfferBackPlaceholder />
-          <Text> - OfferBackPlaceholder </Text>
+          <BackgroundPlaceholder />
+          <Text> - BackgroundPlaceholder </Text>
         </AlignedText>
 
         <AlignedText>

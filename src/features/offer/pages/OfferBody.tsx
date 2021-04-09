@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
+import { OfferHero } from 'features/offer/components/OfferHero'
 import { analytics } from 'libs/analytics'
 import { formatDatePeriod } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -13,7 +14,6 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useOffer } from '../api/useOffer'
 import {
   AccordionItem,
-  OfferHero,
   OfferIconCaptions,
   OfferWhereSection,
   AccessibilityBlock,
