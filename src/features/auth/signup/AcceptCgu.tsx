@@ -54,13 +54,14 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
   async function subscribe(token: string) {
     try {
       setIsFetching(true)
-      const { birthday, email, isNewsletterChecked, password } = route.params
+      const { birthday, email, isNewsletterChecked, password, postalCode } = route.params
       const signupResponse = await signUp({
         birthdate: birthday,
         email,
         marketingEmailSubscription: isNewsletterChecked,
         password,
         token,
+        postalCode,
       })
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
