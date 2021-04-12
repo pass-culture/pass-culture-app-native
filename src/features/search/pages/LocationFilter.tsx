@@ -20,7 +20,7 @@ const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
-  const { position, permissionState, requestGeolocPermission } = useGeolocation()
+  const { position, phoneSettingsGeolocPermission, requestGeolocPermission } = useGeolocation()
   const { dispatch } = useStagedSearch()
   const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
   const {
@@ -36,10 +36,14 @@ export const LocationFilter: React.FC = () => {
 
   const onPressAroundMe = async () => {
     if (position === null) {
-      const shouldDisplayCustomGeolocRequest =
-        permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
-      if (shouldDisplayCustomGeolocRequest) {
+      const shouldRedirectToInAppSettings =
+        phoneSettingsGeolocPermission === GeolocPermissionState.GRANTED
+      const shouldRedirectToPhoneSettings =
+        phoneSettingsGeolocPermission === GeolocPermissionState.NEVER_ASK_AGAIN
+      if (shouldRedirectToPhoneSettings) {
         showGeolocPermissionModal()
+      } else if (shouldRedirectToInAppSettings) {
+        navigate('Profile')
       } else {
         await requestGeolocPermission()
         debouncedGoBack()

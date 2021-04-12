@@ -8,7 +8,6 @@ import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
-import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -25,8 +24,8 @@ const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
 const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy, string]>
 
 export const FavoritesSorts: React.FC = () => {
-  const { goBack } = useNavigation()
-  const { permissionState, requestGeolocPermission } = useGeolocation()
+  const { goBack, navigate } = useNavigation()
+  const { position, phoneSettingsGeolocPermission, requestGeolocPermission } = useGeolocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
   const {
@@ -39,25 +38,23 @@ export const FavoritesSorts: React.FC = () => {
     function updateSortBySelection() {
       setStagedSelectedSortBy(sortBy)
     }
-    if (sortBy === 'AROUND_ME') {
-      const hasAllowedGeolocation = await storage.readObject('has_allowed_geolocation')
-      const shouldAskGeolocPermission =
-        permissionState !== GeolocPermissionState.GRANTED ||
-        hasAllowedGeolocation === false ||
-        hasAllowedGeolocation === null
-      if (shouldAskGeolocPermission) {
-        const shouldDisplayCustomGeolocRequest =
-          permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
-        if (shouldDisplayCustomGeolocRequest) {
-          return void showGeolocPermissionModal()
-        }
-        return void (await requestGeolocPermission({
+    if (sortBy === 'AROUND_ME' && !position) {
+      const shouldRedirectToInAppSettings =
+        phoneSettingsGeolocPermission === GeolocPermissionState.GRANTED
+      const shouldRedirectToPhoneSettings =
+        phoneSettingsGeolocPermission === GeolocPermissionState.NEVER_ASK_AGAIN
+      if (shouldRedirectToPhoneSettings) {
+        showGeolocPermissionModal()
+      } else if (shouldRedirectToInAppSettings) {
+        navigate('Profile')
+      } else {
+        await requestGeolocPermission({
           onAcceptance: updateSortBySelection,
-        }))
+        })
       }
-      return void updateSortBySelection()
+      return
     }
-    return void updateSortBySelection()
+    updateSortBySelection()
   }
 
   function onValidation() {

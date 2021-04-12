@@ -1,4 +1,5 @@
-import React, { memo, useEffect } from 'react'
+import { useFocusEffect } from '@react-navigation/core'
+import React, { memo } from 'react'
 import { Animated, Easing, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -20,14 +21,14 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
     outputRange: [0, 28],
   })
 
-  useEffect(() => {
+  useFocusEffect(() => {
     Animated.timing(animatedValue, {
       toValue: active ? 1 : 0,
       duration: 200,
       easing: Easing.bezier(0, 0.75, 0, 0.75),
       useNativeDriver: false,
     }).start()
-  }, [active])
+  })
 
   return (
     <FilterSwitchContainer>

@@ -23,13 +23,13 @@ export const SearchWrapper = ({ children }: { children: Element }) => {
   const [stagedSearchState, stagedDispatch] = useReducer(searchReducer, initialSearchState)
 
   useEffect(() => {
-    if (position !== null) {
+    if (position) {
       const { latitude, longitude } = position
       stagedDispatch({ type: 'LOCATION_AROUND_ME', payload: { latitude, longitude } })
     } else {
       stagedDispatch({ type: 'LOCATION_EVERYWHERE' })
     }
-  }, [!position])
+  }, [position])
 
   return (
     <SearchContext.Provider value={{ searchState, stagedSearchState, dispatch, stagedDispatch }}>

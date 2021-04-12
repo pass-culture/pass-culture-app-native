@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { Linking, NativeScrollEvent, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -17,7 +17,6 @@ import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
-import { storage } from 'libs/storage'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { useModal } from 'ui/components/modals/useModal'
 import { Section } from 'ui/components/Section'
@@ -51,22 +50,19 @@ export const Profile: React.FC = () => {
   const scrollViewRef = useRef<ScrollView | null>(null)
 
   const {
-    position,
-    permissionState,
+    appGeolocPermission,
+    phoneSettingsGeolocPermission,
+    setAppGeolocPermission,
     requestGeolocPermission,
-    triggerPositionUpdate,
   } = useGeolocation()
-  const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(false)
 
-  useEffect(() => {
-    setIsGeolocSwitchActive(position !== null)
-  }, [position])
+  function disableInAppGeolocation() {
+    setAppGeolocPermission(false)
+    favoritesDispatch({ type: 'SET_SORT_BY', payload: 'RECENTLY_ADDED' })
+  }
 
-  function disableGeolocation() {
-    storage.saveObject('has_allowed_geolocation', false).then(() => {
-      favoritesDispatch({ type: 'SET_SORT_BY', payload: 'RECENTLY_ADDED' })
-      triggerPositionUpdate()
-    })
+  function enableInAppGeolocation() {
+    setAppGeolocPermission(true)
   }
 
   const {
@@ -76,16 +72,18 @@ export const Profile: React.FC = () => {
   } = useModal(false)
 
   const switchGeolocation = useCallback(async () => {
-    if (isGeolocSwitchActive) {
-      disableGeolocation()
+    if (appGeolocPermission) {
+      disableInAppGeolocation()
     } else {
-      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      if (phoneSettingsGeolocPermission === GeolocPermissionState.GRANTED) {
+        enableInAppGeolocation()
+      } else if (phoneSettingsGeolocPermission === GeolocPermissionState.NEVER_ASK_AGAIN) {
         showGeolocPermissionModal()
       } else {
         await requestGeolocPermission()
       }
     }
-  }, [isGeolocSwitchActive, permissionState])
+  }, [appGeolocPermission, phoneSettingsGeolocPermission])
 
   const debouncedLogLocationToggle = useCallback(
     debounce(analytics.logLocationToggle, DEBOUNCE_TOGGLE_DELAY_MS),
@@ -164,10 +162,10 @@ export const Profile: React.FC = () => {
             style={styles.row}
             cta={
               <FilterSwitch
-                active={isGeolocSwitchActive}
+                active={appGeolocPermission}
                 toggle={() => {
                   switchGeolocation()
-                  debouncedLogLocationToggle(!isGeolocSwitchActive)
+                  debouncedLogLocationToggle(!appGeolocPermission)
                 }}
                 testID="geolocation"
               />
