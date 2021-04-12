@@ -289,136 +289,128 @@ Array [
           ]
         }
       >
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#151515",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
-              },
-            ]
-          }
-        >
-          Ma réservation
-        </Text>
-        <View
-          numberOfSpaces={4.5}
-          style={
-            Array [
-              Object {
-                "height": 18,
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={5}
-          style={
-            Array [
-              Object {
-                "height": 20,
-              },
-            ]
-          }
-        />
-        <View
-          accessible={true}
-          focusable={false}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-          testID="section-row-touchable"
-        >
-          <View
+        <View>
+          <Text
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
+                  "color": "#151515",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
                 },
-                undefined,
               ]
             }
           >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
+            Ma réservation
+          </Text>
+          <View
+            numberOfSpaces={4.5}
+            style={
+              Array [
+                Object {
+                  "height": 18,
+                },
+              ]
+            }
+          />
+          <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "height": 20,
+                },
+              ]
+            }
+          />
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+            testID="section-row-touchable"
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "marginHorizontal": 8,
-                    "textAlign": "left",
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
                   },
+                  undefined,
                 ]
               }
             >
-              <Text
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginHorizontal": 8,
+                      "textAlign": "left",
                     },
                   ]
                 }
               >
-                Le 15 mars 2021 à 20h00
-              </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Le 15 mars 2021 à 20h00
+                </Text>
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "flex-end",
+                    },
+                  ]
+                }
+              />
             </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "flex-end",
-                  },
-                ]
-              }
-            />
           </View>
+          <View
+            numberOfSpaces={5}
+            style={
+              Array [
+                Object {
+                  "height": 20,
+                },
+              ]
+            }
+          />
         </View>
-        <View
-          numberOfSpaces={5}
-          style={
-            Array [
-              Object {
-                "height": 20,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingHorizontal": 20,
-            },
-          ]
-        }
-      >
         <View
           numberOfSpaces={4}
           style={

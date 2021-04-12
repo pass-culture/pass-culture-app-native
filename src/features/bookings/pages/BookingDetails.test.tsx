@@ -129,6 +129,28 @@ describe('BookingDetails', () => {
       )
     })
   })
+
+  describe('withdrawalDetails', () => {
+    it('should display withdrawal details', () => {
+      const booking = bookingsSnap.ongoing_bookings[0]
+      booking.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
+      const { getByText } = renderBookingDetails(booking)
+
+      getByText('Modalités de retrait')
+      getByText(booking.stock.offer.withdrawalDetails)
+    })
+    it('should not display withdrawal details', () => {
+      const booking = bookingsSnap.ongoing_bookings[0]
+      booking.stock.offer.withdrawalDetails = undefined
+      const { queryByTestId, queryByText } = renderBookingDetails(booking)
+
+      const title = queryByText('Modalités de retrait')
+      const withdrawalText = queryByTestId('withdrawalDetails')
+
+      expect(title).toBeFalsy()
+      expect(withdrawalText).toBeFalsy()
+    })
+  })
 })
 
 function renderBookingDetails(booking: Booking) {
