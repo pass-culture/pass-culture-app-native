@@ -58,7 +58,7 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/bookings/pages/BookingDetails.tsx:49
+#: src/features/bookings/pages/BookingDetails.tsx:70
 #: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
@@ -76,7 +76,7 @@ msgstr "Active la géolocalisation pour découvrir toutes les offres existantes 
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
-#: src/features/offer/components/OfferWhereSection.tsx:27
+#: src/features/offer/components/OfferWhereSection.tsx:21
 msgid "Adresse"
 msgstr "Adresse"
 
@@ -205,7 +205,7 @@ msgstr "CGU & Données"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/pages/BookingDetails.tsx:63
+#: src/features/bookings/pages/BookingDetails.tsx:52
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -410,7 +410,7 @@ msgstr "Des nouveautés"
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
 
-#: src/features/offer/components/OfferWhereSection.tsx:33
+#: src/features/offer/components/OfferWhereSection.tsx:27
 msgid "Distance"
 msgstr "Distance"
 
@@ -429,7 +429,7 @@ msgstr "Du {0} {1} au {formattedEndDate}"
 msgid "Duo"
 msgstr "Duo"
 
-#: src/features/favorites/atoms/Favorite.tsx:42
+#: src/features/favorites/atoms/Favorite.tsx:46
 #: src/libs/parsers/formatDates.ts:63
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
@@ -459,7 +459,7 @@ msgstr "E-mail envoyé !"
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
-#: src/features/bookings/pages/BookingDetails.tsx:55
+#: src/features/bookings/pages/BookingDetails.tsx:76
 msgid "EAN"
 msgstr "EAN"
 
@@ -606,7 +606,7 @@ msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier te
 msgid "L'offre n'a pas été ajoutée à tes favoris"
 msgstr "L'offre n'a pas été ajoutée à tes favoris"
 
-#: src/features/favorites/atoms/Favorite.tsx:31
+#: src/features/favorites/atoms/Favorite.tsx:35
 #: src/features/offer/components/OfferHeader.tsx:48
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
@@ -676,7 +676,7 @@ msgstr ""
 "Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit}\n"
 "proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
-#: src/features/bookings/components/BookingPropertiesSection.tsx:18
+#: src/features/bookings/components/BookingPropertiesSection.tsx:19
 msgid "Ma réservation"
 msgstr "Ma réservation"
 
@@ -709,6 +709,7 @@ msgstr "Mes réservations terminées"
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
+#: src/features/bookings/pages/BookingDetails.tsx:94
 #: src/features/offer/pages/OfferBody.tsx:50
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
@@ -832,7 +833,7 @@ msgstr "Oups, cette offre n’est plus disponible !"
 msgid "Où"
 msgstr "Où"
 
-#: src/features/offer/components/OfferWhereSection.tsx:24
+#: src/features/offer/components/OfferWhereSection.tsx:18
 msgid "Où ?"
 msgstr "Où ?"
 
@@ -963,6 +964,10 @@ msgstr "Rechercher"
 #: src/features/home/components/BusinessModule.tsx:36
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
+
+#: src/features/bookings/pages/BookingDetails.tsx:97
+msgid "Rend toi à l’événement le jour J et présente ton code ! Si tu as besoin de plus d’informations n’hésite pas à aller :"
+msgstr "Rend toi à l’événement le jour J et présente ton code ! Si tu as besoin de plus d’informations n’hésite pas à aller :"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:56
@@ -1108,7 +1113,7 @@ msgstr "Suivre pass Culture"
 msgid "Suppression du compte"
 msgstr "Suppression du compte"
 
-#: src/features/favorites/atoms/Favorite.tsx:84
+#: src/features/favorites/atoms/Favorite.tsx:121
 msgid "Supprimer"
 msgstr "Supprimer"
 
@@ -1202,7 +1207,7 @@ msgstr "Tu as déjà un compte ?"
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
-#: src/features/bookings/pages/BookingDetails.tsx:66
+#: src/features/bookings/pages/BookingDetails.tsx:54
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -1335,7 +1340,7 @@ msgstr "Version"
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
 
-#: src/features/offer/components/OfferWhereSection.tsx:45
+#: src/libs/itinerary/components/SeeItineraryButton.tsx:11
 #: src/libs/itinerary/useItinerary.ts:79
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
