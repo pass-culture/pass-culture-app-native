@@ -109,15 +109,25 @@ export function BookingDetails() {
         <Spacer.Column numberOfSpaces={4} />
         {renderOfferRules}
         <Spacer.Column numberOfSpaces={8} />
-        <BookingProperties booking={booking} />
-        {canOpenItinerary && (
-          <OpenItineraryContainer>
-            <Spacer.Column numberOfSpaces={4} />
-            <Separator />
-            <Spacer.Column numberOfSpaces={4} />
-            <SeeItineraryButton openItinerary={openItinerary} />
-          </OpenItineraryContainer>
-        )}
+        <ViewWithPadding>
+          <BookingPropertiesSection booking={booking} />
+          {canOpenItinerary && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={4} />
+              <Separator />
+              <Spacer.Column numberOfSpaces={4} />
+              <SeeItineraryButton openItinerary={openItinerary} />
+            </React.Fragment>
+          )}
+          {offer.withdrawalDetails && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={8} />
+              <Typo.Title4>{t`Modalités de retrait`}</Typo.Title4>
+              <Spacer.Column numberOfSpaces={4} />
+              <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
+            </React.Fragment>
+          )}
+        </ViewWithPadding>
         <Spacer.Column numberOfSpaces={50} />
       </ScrollView>
 
@@ -157,10 +167,6 @@ const OfferRules = styled(Typo.Caption)({
   paddingHorizontal: getSpacing(6),
 })
 
-const BookingProperties = styled(BookingPropertiesSection)({
-  paddingHorizontal,
-})
-
-const OpenItineraryContainer = styled.View({
+const ViewWithPadding = styled.View({
   paddingHorizontal,
 })
