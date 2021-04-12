@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useRef } from 'react'
 import { Animated, Dimensions, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -13,7 +13,7 @@ import { BookingPropertiesSection } from 'features/bookings/components/BookingPr
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openExternalUrl } from 'features/navigation/helpers'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
@@ -30,6 +30,7 @@ const QR_CODE_SIZE = 170
 
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const booking = useOngoingBooking(params.id)
   const headerScroll = useRef(new Animated.Value(0)).current
 
@@ -129,8 +130,20 @@ export function BookingDetails() {
               <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
             </React.Fragment>
           )}
+          <Spacer.Column numberOfSpaces={8} />
+          <ButtonPrimary
+            testIdSuffix="see-offer-details"
+            title={t`Voir le détail de l’offre`}
+            onPress={() =>
+              navigate('Offer', {
+                id: offer.id,
+                shouldDisplayLoginModal: false,
+                from: 'bookingdetails',
+              })
+            }
+          />
         </ViewWithPadding>
-        <Spacer.Column numberOfSpaces={50} />
+        <Spacer.Column numberOfSpaces={20} />
       </ScrollView>
 
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />

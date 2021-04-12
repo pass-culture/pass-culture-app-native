@@ -411,13 +411,74 @@ Array [
             }
           />
         </View>
+        <View
+          numberOfSpaces={8}
+          style={
+            Array [
+              Object {
+                "height": 32,
+              },
+            ]
+          }
+        />
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#eb0055",
+              "borderRadius": 24,
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            }
+          }
+          testID="button-container-see-offer-details"
+        >
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 5,
+                  "maxWidth": 650,
+                },
+              ]
+            }
+            testID="button-title-see-offer-details"
+            textColor="#ffffff"
+          >
+            Voir le détail de l’offre
+          </Text>
+        </View>
       </View>
       <View
-        numberOfSpaces={50}
+        numberOfSpaces={20}
         style={
           Array [
             Object {
-              "height": 200,
+              "height": 80,
             },
           ]
         }

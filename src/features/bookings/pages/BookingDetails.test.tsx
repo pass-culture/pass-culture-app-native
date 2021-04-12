@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { CategoryNameEnum, CategoryType } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as NavigationHelpers from 'features/navigation/helpers'
@@ -149,6 +149,19 @@ describe('BookingDetails', () => {
 
       expect(title).toBeFalsy()
       expect(withdrawalText).toBeFalsy()
+    })
+  })
+  it('should redirect to the Offer page', () => {
+    const booking = bookingsSnap.ongoing_bookings[0]
+    const { getByText } = renderBookingDetails(booking)
+
+    const text = getByText('Voir le détail de l’offre')
+    fireEvent.press(text)
+
+    expect(navigate).toBeCalledWith('Offer', {
+      id: booking.stock.offer.id,
+      shouldDisplayLoginModal: false,
+      from: 'bookingdetails',
     })
   })
 })
