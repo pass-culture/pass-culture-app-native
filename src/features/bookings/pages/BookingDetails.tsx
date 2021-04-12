@@ -52,6 +52,8 @@ export function BookingDetails() {
 
   const { offer } = booking.stock
   const shouldDisplayEAN = offer.extraData?.isbn && offer.category.name === CategoryNameEnum.LIVRE
+  const shouldDisplayItineraryButton =
+    canOpenItinerary && properties.isEvent && properties.isPhysical
 
   const renderOfferRules = properties.isDigital ? (
     <OfferRules>
@@ -111,7 +113,7 @@ export function BookingDetails() {
         <Spacer.Column numberOfSpaces={8} />
         <ViewWithPadding>
           <BookingPropertiesSection booking={booking} />
-          {canOpenItinerary && (
+          {shouldDisplayItineraryButton && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <Separator />
@@ -162,7 +164,7 @@ const EANContainer = styled.View({
 })
 
 const OfferRules = styled(Typo.Caption)({
-  color: ColorsEnum.GREY_MEDIUM,
+  color: ColorsEnum.GREY_DARK,
   textAlign: 'center',
   paddingHorizontal: getSpacing(6),
 })

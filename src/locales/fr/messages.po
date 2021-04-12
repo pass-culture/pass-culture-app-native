@@ -49,16 +49,16 @@ msgstr "12 Caractères"
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
-#: src/features/auth/signup/AcceptCgu.tsx:119
+#: src/features/auth/signup/AcceptCgu.tsx:120
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/OfferBody.tsx:58
+#: src/features/offer/pages/OfferBody.tsx:59
 #: src/features/profile/pages/Profile.tsx:119
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/bookings/pages/BookingDetails.tsx:70
+#: src/features/bookings/pages/BookingDetails.tsx:71
 #: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
@@ -196,7 +196,7 @@ msgstr "Bonjour"
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
-#: src/features/auth/signup/AcceptCgu.tsx:100
+#: src/features/auth/signup/AcceptCgu.tsx:101
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
@@ -205,7 +205,7 @@ msgstr "CGU & Données"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/pages/BookingDetails.tsx:52
+#: src/features/bookings/pages/BookingDetails.tsx:55
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -292,7 +292,7 @@ msgstr "Comment ça marche ?"
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/signup/AcceptCgu.tsx:106
+#: src/features/auth/signup/AcceptCgu.tsx:107
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -346,7 +346,7 @@ msgstr "Consulter mes e-mails"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:47
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
-#: src/features/auth/signup/AcceptCgu.tsx:117
+#: src/features/auth/signup/AcceptCgu.tsx:118
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:54
 msgid "Contacter le support"
@@ -459,11 +459,11 @@ msgstr "E-mail envoyé !"
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
-#: src/features/bookings/pages/BookingDetails.tsx:76
+#: src/features/bookings/pages/BookingDetails.tsx:77
 msgid "EAN"
 msgstr "EAN"
 
-#: src/features/auth/signup/AcceptCgu.tsx:105
+#: src/features/auth/signup/AcceptCgu.tsx:106
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
@@ -637,7 +637,7 @@ msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:93
-#: src/features/auth/signup/AcceptCgu.tsx:91
+#: src/features/auth/signup/AcceptCgu.tsx:92
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
@@ -709,8 +709,8 @@ msgstr "Mes réservations terminées"
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
-#: src/features/bookings/pages/BookingDetails.tsx:94
-#: src/features/offer/pages/OfferBody.tsx:50
+#: src/features/bookings/pages/BookingDetails.tsx:97
+#: src/features/offer/pages/OfferBody.tsx:51
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -886,7 +886,7 @@ msgstr "Permanent"
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
-#: src/features/auth/signup/AcceptCgu.tsx:109
+#: src/features/auth/signup/AcceptCgu.tsx:110
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
@@ -895,7 +895,7 @@ msgstr "Politique de confidentialité."
 msgid "Politique des cookies"
 msgstr "Politique des cookies"
 
-#: src/features/auth/signup/AcceptCgu.tsx:114
+#: src/features/auth/signup/AcceptCgu.tsx:115
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
@@ -945,7 +945,7 @@ msgstr "Proximité géographique"
 msgid "Prénom et nom"
 msgstr "Prénom et nom"
 
-#: src/features/offer/pages/OfferBody.tsx:41
+#: src/features/offer/pages/OfferBody.tsx:42
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -964,10 +964,6 @@ msgstr "Rechercher"
 #: src/features/home/components/BusinessModule.tsx:36
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
-
-#: src/features/bookings/pages/BookingDetails.tsx:97
-msgid "Rend toi à l’événement le jour J et présente ton code ! Si tu as besoin de plus d’informations n’hésite pas à aller :"
-msgstr "Rend toi à l’événement le jour J et présente ton code ! Si tu as besoin de plus d’informations n’hésite pas à aller :"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:56
@@ -1207,7 +1203,7 @@ msgstr "Tu as déjà un compte ?"
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
-#: src/features/bookings/pages/BookingDetails.tsx:54
+#: src/features/bookings/pages/BookingDetails.tsx:57
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -1277,8 +1273,8 @@ msgstr "Tu pourras bénéficier des 300€ offerts par le Ministère de la Cultu
 msgid "Type d'offre"
 msgstr "Type d'offre"
 
-#: src/features/auth/signup/AcceptCgu.tsx:68
-#: src/features/auth/signup/AcceptCgu.tsx:87
+#: src/features/auth/signup/AcceptCgu.tsx:69
+#: src/features/auth/signup/AcceptCgu.tsx:88
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
@@ -1369,7 +1365,7 @@ msgstr "Vérifier mon éligibilité"
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/signup/AcceptCgu.tsx:108
+#: src/features/auth/signup/AcceptCgu.tsx:109
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
