@@ -17,6 +17,7 @@ export const analytics: typeof actualAnalytics = {
   logBookingError: jest.fn(),
   logBookingImpossibleiOS: jest.fn(),
   logBookingOfferConfirmDates: jest.fn(),
+  logBookingsScrolledToBottom: jest.fn(),
   logCancelSignup: jest.fn(),
   logClickBookOffer: jest.fn(),
   logClickBusinessBlock: jest.fn(),

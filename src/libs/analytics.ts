@@ -17,6 +17,7 @@ export enum AnalyticsEvent {
   BOOKING_IMPOSSIBLE_IOS = 'BookingImpossibleiOS',
   BOOKING_OFFER_CONFIRM_DATES = 'BookOfferConfirmDates',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
+  BOOKINGS_SCROLLED_TO_BOTTOM = 'BookingsScrolledToBottom',
   CANCEL_SIGNUP = 'CancelSignup',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
   CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
@@ -195,6 +196,9 @@ const logSearchScrollToPage = (page: number) =>
 const logNoSearchResult = (query: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
 
+/**
+ * Others
+ */
 const logOpenLocationSettings = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS)
 
@@ -249,7 +253,7 @@ const logHasAppliedFavoritesSorting = ({ sortBy }: { sortBy: FavoriteSortBy }) =
   firebaseAnalytics.logEvent(AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING, { type: sortBy })
 
 /**
- * Bookings
+ * Tunnel de résa / bookOffer
  */
 const logSeeMyBooking = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId })
@@ -263,12 +267,19 @@ const logBookingImpossibleiOS = (offerId: number) =>
 const logBookingError = (offerId: number, code: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_ERROR, { offerId, code })
 
+/**
+ * Bookings
+ */
+const logBookingsScrolledToBottom = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKINGS_SCROLLED_TO_BOTTOM)
+
 export const analytics = {
   logAllModulesSeen,
   logAllTilesSeen,
   logBookingError,
   logBookingImpossibleiOS,
   logBookingOfferConfirmDates,
+  logBookingsScrolledToBottom,
   logCancelSignup,
   logClickBookOffer,
   logClickBusinessBlock,
