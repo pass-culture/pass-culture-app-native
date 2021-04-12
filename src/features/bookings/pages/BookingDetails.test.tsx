@@ -4,7 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { CategoryNameEnum, CategoryType } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as NavigationHelpers from 'features/navigation/helpers'
-import { fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
 import { Booking } from '../components/types'
@@ -29,21 +29,30 @@ describe('BookingDetails', () => {
     }))
   })
 
+  it('should render correctly', async () => {
+    const booking = bookingsSnap.ongoing_bookings[0]
+    const { getByTestId, toJSON } = renderBookingDetails(booking)
+
+    await act(async () => {
+      getByTestId('three-shapes-ticket').props.onLayout({ nativeEvent: { layout: { width: 150 } } })
+    })
+    expect(toJSON()).toMatchSnapshot()
+  })
+
   describe('<DetailedBookingTicket />', () => {
-    it('should display booking token', () => {
+    it('should display booking token', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
-      const { getByText } = renderBookingDetails(booking)
+      const { getByText, getByTestId } = renderBookingDetails(booking)
+      await act(async () => {
+        getByTestId('three-shapes-ticket').props.onLayout({
+          nativeEvent: { layout: { width: 150 } },
+        })
+      })
+
       getByText('352UW4')
     })
 
-    it('should display offer link button if offer is digital', () => {
-      const booking = bookingsSnap.ongoing_bookings[0]
-      booking.stock.offer.isDigital = true
-      const { getByText } = renderBookingDetails(booking)
-      getByText("Accéder à l'offre")
-    })
-
-    it('should open offer url on press "Accéder à l\'offre"', () => {
+    it('should display offer link button if offer is digital and open url on press', async () => {
       const openExternalUrl = jest
         .spyOn(NavigationHelpers, 'openExternalUrl')
         .mockImplementation(jest.fn())
@@ -51,7 +60,12 @@ describe('BookingDetails', () => {
       booking.stock.offer.isDigital = true
       booking.stock.offer.url = 'http://example.com'
 
-      const { getByText } = renderBookingDetails(booking)
+      const { getByText, getByTestId } = renderBookingDetails(booking)
+      await act(async () => {
+        getByTestId('three-shapes-ticket').props.onLayout({
+          nativeEvent: { layout: { width: 150 } },
+        })
+      })
       const offerButton = getByText("Accéder à l'offre")
       fireEvent.press(offerButton)
 
@@ -62,13 +76,23 @@ describe('BookingDetails', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.isDigital = false
       const { getByTestId } = renderBookingDetails(booking)
+      await act(async () => {
+        getByTestId('three-shapes-ticket').props.onLayout({
+          nativeEvent: { layout: { width: 150 } },
+        })
+      })
       getByTestId('qr-code')
     })
 
-    it('should display EAN code if offer is a book (digital or physical)', () => {
+    it('should display EAN code if offer is a book (digital or physical)', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.category.name = CategoryNameEnum.LIVRE
-      const { getByText } = renderBookingDetails(booking)
+      const { getByText, getByTestId } = renderBookingDetails(booking)
+      await act(async () => {
+        getByTestId('three-shapes-ticket').props.onLayout({
+          nativeEvent: { layout: { width: 150 } },
+        })
+      })
       getByText('123456789')
     })
   })

@@ -19,11 +19,13 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { interpolationConfig } from 'ui/components/headers/animationHelpers'
+import { HeroHeader } from 'ui/components/headers/HeroHeader'
 import { Separator } from 'ui/components/Separator'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-const HEADER_TICKET_MAX_WIDTH = 304
-const HEADER_TICKET_WIDTH = Dimensions.get('screen').width - getSpacing(15)
+const TICKET_MAX_WIDTH = 300
+const TICKET_MIN_HEIGHT = 220
+const TICKET_WIDTH = Dimensions.get('screen').width - getSpacing(15)
 const QR_CODE_SIZE = 170
 
 export function BookingDetails() {
@@ -65,20 +67,18 @@ export function BookingDetails() {
 
   return (
     <React.Fragment>
-      <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
       <ScrollView
         onScroll={onScroll}
         scrollEventThrottle={10}
         scrollIndicatorInsets={{ right: 1 }}
         bounces={false}>
-        <Spacer.Column numberOfSpaces={8.5} />
-        <DetailedBookingTicket>
-          {/* FIXME(PC-7474) change color when add background */}
+        <HeroHeader categoryName={offer.category.name} imageUrl={offer.image?.url || ''}>
+          <Spacer.Column numberOfSpaces={18} />
           <ThreeShapesTicket
-            width={Math.min(HEADER_TICKET_WIDTH, HEADER_TICKET_MAX_WIDTH)}
-            color={ColorsEnum.GREY_LIGHT}>
+            width={Math.min(TICKET_WIDTH, TICKET_MAX_WIDTH)}
+            color={ColorsEnum.WHITE}>
             <TicketContent>
-              <Title numberOfLines={3}>{offer.name}</Title>
+              <Title>{offer.name}</Title>
               <Spacer.Column numberOfSpaces={properties.isDigital ? 8 : 3} />
               <Token>{booking.token}</Token>
               <Spacer.Column numberOfSpaces={2.5} />
@@ -104,7 +104,8 @@ export function BookingDetails() {
               )}
             </TicketContent>
           </ThreeShapesTicket>
-        </DetailedBookingTicket>
+        </HeroHeader>
+
         <Spacer.Column numberOfSpaces={4} />
         {renderOfferRules}
         <Spacer.Column numberOfSpaces={8} />
@@ -119,28 +120,19 @@ export function BookingDetails() {
         )}
         <Spacer.Column numberOfSpaces={50} />
       </ScrollView>
+
+      <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
     </React.Fragment>
   )
 }
 
 const paddingHorizontal = getSpacing(5)
 
-const OfferRules = styled(Typo.Caption)({
-  color: ColorsEnum.GREY_MEDIUM,
-  textAlign: 'center',
-  paddingHorizontal: getSpacing(6),
-})
-
-const DetailedBookingTicket = styled.View({
-  flexDirection: 'row',
-  justifyContent: 'center',
-})
-
 const TicketContent = styled.View({
-  flexDirection: 'column',
   paddingHorizontal: getSpacing(7),
   paddingVertical: getSpacing(2),
   alignItems: 'center',
+  minHeight: TICKET_MIN_HEIGHT,
 })
 
 const Title = styled(Typo.Title3)({
@@ -157,6 +149,12 @@ const EANContainer = styled.View({
   paddingTop: getSpacing(2.5),
   flexDirection: 'row',
   alignItems: 'center',
+})
+
+const OfferRules = styled(Typo.Caption)({
+  color: ColorsEnum.GREY_MEDIUM,
+  textAlign: 'center',
+  paddingHorizontal: getSpacing(6),
 })
 
 const BookingProperties = styled(BookingPropertiesSection)({
