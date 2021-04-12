@@ -130,10 +130,10 @@ export interface BookOfferRequest {
     quantity: number;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof BookOfferRequest
      */
-    stockId: string;
+    stockId: number;
 }/**
  * 
  * @export
@@ -1599,32 +1599,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postnativev1bookOffer(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/book_offer`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"BookOfferRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary book_offer <POST>
-         * @param {BookOfferRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
         async postnativev1bookings(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/bookings`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -2029,18 +2003,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postnativev1bookOffer(basePath: string, body?: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookOffer(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary book_offer <POST>
-         * @param {BookOfferRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
         async postnativev1bookings(basePath: string, body?: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookings(body, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
@@ -2277,18 +2239,6 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1account(body?: AccountRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1account(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary book_offer <POST>
-     * @param {BookOfferRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1bookOffer(body?: BookOfferRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1bookOffer(this.basePath, body, options)
     }
     /**
      * 

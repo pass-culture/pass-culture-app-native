@@ -36,7 +36,7 @@ describe('useBookOfferMutation', () => {
     expect(queryCache.find('userProfile')?.state.isInvalidated).toBeFalsy()
 
     await act(async () => {
-      await result.current.mutate({ quantity: 1, stockId: '10' })
+      await result.current.mutate({ quantity: 1, stockId: 10 })
       await waitForNextUpdate()
     })
 
@@ -62,7 +62,7 @@ describe('useBookOfferMutation', () => {
     expect(queryCache.find('userProfile')?.state.isInvalidated).toBeFalsy()
 
     await act(async () => {
-      await result.current.mutate({ quantity: 1, stockId: '10' })
+      await result.current.mutate({ quantity: 1, stockId: 10 })
       await waitForNextUpdate()
     })
 
