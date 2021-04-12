@@ -1,11 +1,14 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { FlatList, ListRenderItem, View } from 'react-native'
+import { FlatList, ListRenderItem, NativeScrollEvent, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
+import { analytics } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics.utils'
 import { Badge } from 'ui/components/Badge'
 import { SectionRow } from 'ui/components/SectionRow'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -61,10 +64,19 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
     [endedBookings, bottom, endedBookingsLabel]
   )
 
+  const logBookingsScrolledToBottom = useFunctionOnce(analytics.logBookingsScrolledToBottom)
+
+  function onScroll({ nativeEvent }: { nativeEvent: NativeScrollEvent }) {
+    if (isCloseToBottom(nativeEvent)) {
+      logBookingsScrolledToBottom()
+    }
+  }
+
   return (
     <Container flex={hasBookings ? 1 : undefined}>
       <FlatList
-        keyExtractor={extractKey}
+        testID="OnGoingBookingsList"
+        keyExtractor={keyExtractor}
         data={bookings}
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
@@ -72,6 +84,8 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
         ListEmptyComponent={ListEmptyComponent}
         ListFooterComponent={ListFooterComponent}
         scrollEnabled={hasBookings}
+        onScroll={onScroll}
+        scrollEventThrottle={400}
       />
     </Container>
   )
@@ -83,23 +97,20 @@ const getBookingsCountLabel = (plural: boolean) =>
 const getEndedBookingsCountLabel = (plural: boolean) =>
   plural ? t`Réservations terminées` : t`Réservation terminée`
 
-const Container = styled.View<{ flex?: number }>(({ flex }) => ({
-  flex,
-  height: '100%',
-}))
+const keyExtractor = (item: Booking) => item.id.toString()
 
-const extractKey: ((item: Booking, index: number) => string) | undefined = (item) =>
-  item.id.toString()
-
-const renderItem: ListRenderItem<Booking> | null | undefined = ({ item }) => (
-  <OnGoingBookingItem booking={item} />
-)
+const renderItem: ListRenderItem<Booking> = ({ item }) => <OnGoingBookingItem booking={item} />
 
 const contentContainerStyle = {
   flexGrow: 1,
   paddingHorizontal: getSpacing(4),
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(2),
 }
+
+const Container = styled.View<{ flex?: number }>(({ flex }) => ({
+  flex,
+  height: '100%',
+}))
 
 const BookingsCount = styled(Typo.Body).attrs({
   color: ColorsEnum.GREY_DARK,
