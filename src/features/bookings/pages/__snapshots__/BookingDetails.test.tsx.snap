@@ -258,7 +258,7 @@ Array [
         style={
           Array [
             Object {
-              "color": "#c7c7cc",
+              "color": "#626262",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -410,88 +410,6 @@ Array [
               ]
             }
           />
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "backgroundColor": "#f5f5f5",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "opacity": 1,
-            }
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={1}
-            style={
-              Array [
-                Object {
-                  "width": 4,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Voir l'itinéraire
-          </Text>
         </View>
       </View>
       <View
