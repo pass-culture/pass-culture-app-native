@@ -1,15 +1,15 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT, Typo } from 'ui/theme'
 
 export function NoBookingsView() {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const onPressExploreOffers = useNavigateToSearchResults({ from: 'bookings' })
+
   return (
     <Container>
       <Spacer.Flex />
@@ -23,7 +23,7 @@ export function NoBookingsView() {
       <ButtonContainer>
         <ButtonPrimary
           title={t`Explorer les offres`}
-          onPress={() => navigate('Search')}
+          onPress={onPressExploreOffers}
           buttonHeight="tall"
         />
       </ButtonContainer>
