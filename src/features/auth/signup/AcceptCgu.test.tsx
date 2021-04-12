@@ -134,6 +134,7 @@ describe('AcceptCgu Page', () => {
           marketingEmailSubscription: true,
           password: 'password',
           token: 'fakeToken',
+          postalCode: '35000',
         },
         { credentials: 'omit' }
       )
