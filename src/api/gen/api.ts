@@ -109,6 +109,12 @@ export interface AccountRequest {
      * @type {string}
      * @memberof AccountRequest
      */
+    postalCode?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountRequest
+     */
     token: string;
 }/**
  * 
