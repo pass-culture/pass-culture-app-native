@@ -17,7 +17,9 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { analytics } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
+import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { interpolationConfig } from 'ui/components/headers/animationHelpers'
 import { HeroHeader } from 'ui/components/headers/HeroHeader'
 import { Separator } from 'ui/components/Separator'
@@ -50,7 +52,6 @@ export function BookingDetails() {
   })
 
   const properties = getBookingProperties(booking)
-
   const { offer } = booking.stock
   const shouldDisplayEAN = offer.extraData?.isbn && offer.category.name === CategoryNameEnum.LIVRE
   const shouldDisplayItineraryButton =
@@ -67,6 +68,41 @@ export function BookingDetails() {
   ) : (
     ''
   )
+
+  const renderCancellationCTA = () => {
+    // TODO (PC-7481) display cancel modal on press
+    const renderButton = <ButtonSecondary title={t`Annuler ma réservation`} />
+    if (properties.isPermanent) {
+      return renderButton
+    }
+    if (booking.confirmationDate) {
+      const isStillCancellable = new Date(booking.confirmationDate) > new Date()
+      const formattedConfirmationDate = formatToCompleteFrenchDate(
+        new Date(booking.confirmationDate),
+        false
+      )
+      if (isStillCancellable) {
+        return (
+          <React.Fragment>
+            {renderButton}
+            <Spacer.Column numberOfSpaces={4} />
+            <CancellationCaption>
+              {t`La réservation est annulable jusqu'au` + '\u00a0' + formattedConfirmationDate}
+            </CancellationCaption>
+          </React.Fragment>
+        )
+      } else {
+        return (
+          <CancellationCaption>
+            {t`Tu ne peux plus annuler ta réservation : elle devait être annulée avant le` +
+              '\u00a0' +
+              formattedConfirmationDate}
+          </CancellationCaption>
+        )
+      }
+    }
+    return <React.Fragment />
+  }
 
   return (
     <React.Fragment>
@@ -109,10 +145,10 @@ export function BookingDetails() {
           </ThreeShapesTicket>
         </HeroHeader>
 
-        <Spacer.Column numberOfSpaces={4} />
-        {renderOfferRules}
-        <Spacer.Column numberOfSpaces={8} />
         <ViewWithPadding>
+          <Spacer.Column numberOfSpaces={4} />
+          {renderOfferRules}
+          <Spacer.Column numberOfSpaces={8} />
           <BookingPropertiesSection booking={booking} />
           {shouldDisplayItineraryButton && (
             <React.Fragment>
@@ -142,8 +178,11 @@ export function BookingDetails() {
               })
             }
           />
+          <Spacer.Column numberOfSpaces={4} />
+          {renderCancellationCTA()}
+          <Spacer.Column numberOfSpaces={6} />
         </ViewWithPadding>
-        <Spacer.Column numberOfSpaces={20} />
+        <Spacer.Column numberOfSpaces={5} />
       </ScrollView>
 
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
@@ -179,9 +218,13 @@ const EANContainer = styled.View({
 const OfferRules = styled(Typo.Caption)({
   color: ColorsEnum.GREY_DARK,
   textAlign: 'center',
-  paddingHorizontal: getSpacing(6),
 })
 
 const ViewWithPadding = styled.View({
   paddingHorizontal,
+})
+
+const CancellationCaption = styled(Typo.Caption)({
+  textAlign: 'center',
+  color: ColorsEnum.GREY_DARK,
 })

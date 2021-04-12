@@ -53,10 +53,10 @@ describe('BookingDetails', () => {
     })
 
     it('should display offer link button if offer is digital and open url on press', async () => {
+      const booking = bookingsSnap.ongoing_bookings[0]
       const openExternalUrl = jest
         .spyOn(NavigationHelpers, 'openExternalUrl')
         .mockImplementation(jest.fn())
-      const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.isDigital = true
       booking.stock.offer.url = 'http://example.com'
 
@@ -162,6 +162,32 @@ describe('BookingDetails', () => {
       id: booking.stock.offer.id,
       shouldDisplayLoginModal: false,
       from: 'bookingdetails',
+    })
+  })
+
+  describe('cancellation button', () => {
+    it('should display button if offer is permanent', () => {
+      const booking = bookingsSnap.ongoing_bookings[0]
+      booking.stock.offer.isPermanent = true
+      const { getByText } = renderBookingDetails(booking)
+      getByText('Annuler ma réservation')
+    })
+
+    it('should display button if confirmation date is not expired', () => {
+      const booking = bookingsSnap.ongoing_bookings[0]
+      const date = new Date()
+      date.setDate(date.getDate() + 1)
+      booking.confirmationDate = date
+      const { getByText } = renderBookingDetails(booking)
+      getByText('Annuler ma réservation')
+    })
+
+    it('should not display button if confirmation date is expired', async () => {
+      const booking = bookingsSnap.ongoing_bookings[0]
+      booking.stock.offer.isPermanent = false
+      booking.confirmationDate = new Date('2020-03-15T23:01:37.925926')
+      const { queryByText } = renderBookingDetails(booking)
+      expect(queryByText('Annuler ma réservation')).toBeFalsy()
     })
   })
 })
