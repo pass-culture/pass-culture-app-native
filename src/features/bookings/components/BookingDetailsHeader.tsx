@@ -39,7 +39,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
             <HeaderIcon animationState={animationState} iconName="back" onPress={goBack} />
           </IconContainer>
 
-          <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
+          <Title style={{ opacity: headerTransition }}>
             <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
           </Title>
 
@@ -71,4 +71,5 @@ const IconContainer = styled.View({
 
 const Title = styled(Animated.Text).attrs({ numberOfLines: 1 })({
   textAlign: 'center',
+  flex: 5,
 })

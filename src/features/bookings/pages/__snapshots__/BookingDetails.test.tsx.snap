@@ -658,11 +658,13 @@ Array [
         numberOfLines={1}
         style={
           Object {
+            "flexBasis": 0,
+            "flexGrow": 5,
+            "flexShrink": 1,
             "opacity": 0,
             "textAlign": "center",
           }
         }
-        testID="offerHeaderName"
       >
         <Text
           color="#ffffff"
