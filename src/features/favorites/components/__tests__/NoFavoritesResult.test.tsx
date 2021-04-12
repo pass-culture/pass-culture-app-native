@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { NoFavoritesResult } from '../NoFavoritesResult'
@@ -33,11 +34,12 @@ describe('NoFavoritesResult component', () => {
     expect(text).toBeTruthy()
   })
 
-  it('should navigate to Search when pressing button', () => {
+  it('should navigate to Search when pressing button and log event', () => {
     const renderAPI = render(<NoFavoritesResult />)
     const button = renderAPI.getByText('Explorer les offres')
     fireEvent.press(button)
     expect(navigate).toBeCalledWith('Search')
     expect(mockDispatchSearch).toBeCalledWith({ type: 'SHOW_RESULTS', payload: true })
+    expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')
   })
 })
