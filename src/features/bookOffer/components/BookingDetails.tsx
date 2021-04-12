@@ -75,7 +75,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   const price = stock.price > 0 ? formatToFrenchDecimal(quantity * stock.price) : undefined
 
-  const onPressBookOffer = () => mutate({ quantity, stockId: stock.id.toString() })
+  const onPressBookOffer = () => mutate({ quantity, stockId: stock.id })
 
   return (
     <Container>
