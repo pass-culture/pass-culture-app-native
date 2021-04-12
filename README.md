@@ -210,6 +210,9 @@ You can use test accounts:
 
 ## API Schema
 
-To update the API schema, run: `yarn generate:api:client`
+To update the API schema,
+
+- pull the `swagger-codegen-cli-v3` image: `docker pull swaggerapi/swagger-codegen-cli-v3`
+- run: `yarn generate:api:client`
 
 If the file `src/api/gen/.swagger-codegen/VERSION` changes, make sure you locally have the desired version of `swagger-codegen-cli`, otherwise run `docker pull swaggerapi/swagger-codegen-cli-v3:3.0.24`
