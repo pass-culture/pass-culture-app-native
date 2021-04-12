@@ -174,8 +174,8 @@ describe('BookingDetails', () => {
     it('should display button if offer is permanent', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.isPermanent = true
-      const { getByText } = renderBookingDetails(booking)
-      getByText('Annuler ma réservation')
+      const { getByTestId } = renderBookingDetails(booking)
+      getByTestId('button-title-cancel')
     })
 
     it('should display button if confirmation date is not expired', () => {
@@ -183,16 +183,16 @@ describe('BookingDetails', () => {
       const date = new Date()
       date.setDate(date.getDate() + 1)
       booking.confirmationDate = date
-      const { getByText } = renderBookingDetails(booking)
-      getByText('Annuler ma réservation')
+      const { getByTestId } = renderBookingDetails(booking)
+      getByTestId('button-title-cancel')
     })
 
     it('should not display button if confirmation date is expired', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.isPermanent = false
       booking.confirmationDate = new Date('2020-03-15T23:01:37.925926')
-      const { queryByText } = renderBookingDetails(booking)
-      expect(queryByText('Annuler ma réservation')).toBeFalsy()
+      const { queryByTestId } = renderBookingDetails(booking)
+      expect(queryByTestId('button-title-cancel')).toBeFalsy()
     })
 
     it('should log event "CancelBooking" when cancelling booking', () => {
@@ -200,8 +200,8 @@ describe('BookingDetails', () => {
       const date = new Date()
       date.setDate(date.getDate() + 1)
       booking.confirmationDate = date
-      const { getByText } = renderBookingDetails(booking)
-      fireEvent.press(getByText('Annuler ma réservation'))
+      const { getByTestId } = renderBookingDetails(booking)
+      fireEvent.press(getByTestId('button-title-cancel'))
 
       expect(analytics.logCancelBooking).toHaveBeenCalledWith(booking.stock.offer.id)
     })
