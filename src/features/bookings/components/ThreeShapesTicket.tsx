@@ -17,7 +17,8 @@ export function ThreeShapesTicket(props: ThreeShapesTicketProps) {
     <Container
       customWitdh={props.width}
       style={shaddowStyle}
-      onLayout={(e) => setHeaderDimensions(e.nativeEvent.layout)}>
+      onLayout={(e) => setHeaderDimensions(e.nativeEvent.layout)}
+      testID="three-shapes-ticket">
       <TicketHeader width={props.width} color={props.color} />
       {headerDimensions && (
         <CenterView customWitdh={headerDimensions?.width} color={props.color}>
