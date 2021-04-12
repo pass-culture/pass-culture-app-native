@@ -32,6 +32,7 @@ export enum AnalyticsEvent {
   CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT = 'ContactSupportResetPassword',
   CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'ContactSupportSignupConfirmation',
   DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
+  DISCOVER_OFFERS = 'DiscoverOffers',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL = 'HasActivateGeolocFromTutorial',
   HAS_ADDED_OFFER_TO_FAVORITES = 'HasAddedOfferToFavorites',
@@ -273,6 +274,9 @@ const logBookingError = (offerId: number, code: string) =>
 const logBookingsScrolledToBottom = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.BOOKINGS_SCROLLED_TO_BOTTOM)
 
+const logDiscoverOffers = (from: Referrals) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from })
+
 export const analytics = {
   logAllModulesSeen,
   logAllTilesSeen,
@@ -297,6 +301,7 @@ export const analytics = {
   logConsultWithdrawal,
   logContactSupportResetPasswordEmailSent,
   logContactSupportSignupConfirmationEmailSent,
+  logDiscoverOffers,
   logLocationToggle,
   logOpenLocationSettings,
   logOpenNotificationSettings,
