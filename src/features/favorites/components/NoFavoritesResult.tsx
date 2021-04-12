@@ -1,17 +1,14 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useSearch } from 'features/search/pages/SearchWrapper'
+import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT, Typo } from 'ui/theme'
 
 export const NoFavoritesResult = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { dispatch } = useSearch()
+  const onPressExploreOffers = useNavigateToSearchResults({ from: 'favorites' })
 
   return (
     <Container>
@@ -24,10 +21,7 @@ export const NoFavoritesResult = () => {
       <ButtonContainer>
         <AppButton
           title={t`Explorer les offres`}
-          onPress={() => {
-            dispatch({ type: 'SHOW_RESULTS', payload: true })
-            navigate('Search')
-          }}
+          onPress={onPressExploreOffers}
           textColor={ColorsEnum.WHITE}
           backgroundColor={ColorsEnum.PRIMARY}
           loadingIconColor={ColorsEnum.WHITE}
