@@ -10,6 +10,7 @@ import { CategoryNameEnum } from 'api/gen'
 import { useOngoingBooking } from 'features/bookings/api/queries'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
+import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openExternalUrl } from 'features/navigation/helpers'
@@ -22,6 +23,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { interpolationConfig } from 'ui/components/headers/animationHelpers'
 import { HeroHeader } from 'ui/components/headers/HeroHeader'
+import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -35,6 +37,7 @@ export function BookingDetails() {
   const { navigate } = useNavigation<UseNavigationType>()
   const booking = useOngoingBooking(params.id)
   const headerScroll = useRef(new Animated.Value(0)).current
+  const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
 
   const { venue, id: offerId } = booking?.stock.offer || {}
   const { latitude, longitude } = venue?.coordinates || {}
@@ -70,13 +73,17 @@ export function BookingDetails() {
   )
 
   const cancelBooking = () => {
+    showCancelModal()
     analytics.logCancelBooking(offer.id)
   }
 
   const renderCancellationCTA = () => {
-    // TODO (PC-7481) display cancel modal on press
     const renderButton = (
-      <ButtonSecondary title={t`Annuler ma réservation`} onPress={cancelBooking} />
+      <ButtonSecondary
+        title={t`Annuler ma réservation`}
+        onPress={cancelBooking}
+        testIdSuffix={'cancel'}
+      />
     )
     if (properties.isPermanent) {
       return renderButton
@@ -197,6 +204,7 @@ export function BookingDetails() {
         <Spacer.Column numberOfSpaces={5} />
       </ScrollView>
 
+      <CancelBookingModal visible={cancelModalVisible} dismissModal={hideModal} booking={booking} />
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
     </React.Fragment>
   )
