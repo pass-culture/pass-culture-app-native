@@ -81,9 +81,9 @@ export const formatDatePeriod = (dates: Date[] | undefined): string | undefined 
   const last = decomposeDate(timestamps.slice(-1)[0])
   const formattedEndDate = formatToFrenchDate(last)
 
-  if (first.year !== last.year) return t`Du ${formatToFrenchDate(first)} au ${formattedEndDate}`
-  if (first.month !== last.month) return t`Du ${first.day} ${first.month} au ${formattedEndDate}`
-  if (first.day !== last.day) return t`Du ${first.day} au ${formattedEndDate}`
+  if (first.year !== last.year) return `Du ${formatToFrenchDate(first)} au ${formattedEndDate}`
+  if (first.month !== last.month) return `Du ${first.day} ${first.month} au ${formattedEndDate}`
+  if (first.day !== last.day) return `Du ${first.day} au ${formattedEndDate}`
   return formattedEndDate
 }
 
