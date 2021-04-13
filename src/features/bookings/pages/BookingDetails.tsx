@@ -69,9 +69,15 @@ export function BookingDetails() {
     ''
   )
 
+  const cancelBooking = () => {
+    analytics.logCancelBooking(offer.id)
+  }
+
   const renderCancellationCTA = () => {
     // TODO (PC-7481) display cancel modal on press
-    const renderButton = <ButtonSecondary title={t`Annuler ma réservation`} />
+    const renderButton = (
+      <ButtonSecondary title={t`Annuler ma réservation`} onPress={cancelBooking} />
+    )
     if (properties.isPermanent) {
       return renderButton
     }
