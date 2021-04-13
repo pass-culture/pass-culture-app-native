@@ -8,7 +8,7 @@ import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 
-import { GenericAchievement, Props } from './GenericAchievement'
+import { GenericAchievement, Props, onBackAction } from './GenericAchievement'
 import { GenericAchievementCard, AchievementCardKeyProps } from './GenericAchievementCard'
 
 describe('<GenericAchievement />', () => {
@@ -23,16 +23,16 @@ describe('<GenericAchievement />', () => {
 
   it('should render correctly', () => {
     const renderAPI = renderGenericAchievementComponent({
-      name: 'FirstAchievement',
+      screenName: 'FirstTutorial',
       children: [<TestCard key={1} />],
     })
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should redirect on home and run analytics when pressing skip all button', async () => {
-    const name = 'FirstAchievement'
+    const name = 'FirstTutorial'
     const { getByText } = renderGenericAchievementComponent({
-      name: name,
+      screenName: name,
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
         <TestCard activeIndex={0} index={1} key={1} />,
@@ -46,7 +46,7 @@ describe('<GenericAchievement />', () => {
 
   it('should have a swiperRef passed to each children', () => {
     const { getByText } = renderGenericAchievementComponent({
-      name: 'FirstAchievement',
+      screenName: 'FirstTutorial',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
     expect(getByText('swipeRef exist')).toBeTruthy()
@@ -55,7 +55,7 @@ describe('<GenericAchievement />', () => {
 
   it('should have an automatically set name passed to each children', async () => {
     const { getByText } = renderGenericAchievementComponent({
-      name: 'Achievement',
+      screenName: 'FirstTutorial',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
     expect(await getByText('name exist')).toBeTruthy()
@@ -65,7 +65,7 @@ describe('<GenericAchievement />', () => {
   it('should call skip custom function on skip', async () => {
     const skip = jest.fn()
     const { getByText } = renderGenericAchievementComponent({
-      name: 'Achievement',
+      screenName: 'FirstTutorial',
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
         <TestCard activeIndex={0} index={0} key={0} />,
@@ -81,7 +81,7 @@ describe('<GenericAchievement />', () => {
 
   it('should have a skip all button when more than one cards', () => {
     const { queryByText } = renderGenericAchievementComponent({
-      name: 'Achievement',
+      screenName: 'FirstTutorial',
       children: [
         <TestCard activeIndex={0} index={0} key={0} />,
         <TestCard activeIndex={0} index={1} key={1} />,
@@ -92,7 +92,7 @@ describe('<GenericAchievement />', () => {
 
   it('should not have a skip all button when just one cards', () => {
     const { queryByText } = renderGenericAchievementComponent({
-      name: 'Achievement',
+      screenName: 'FirstTutorial',
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
     expect(queryByText('Tout passer')).toBeFalsy()
@@ -101,7 +101,7 @@ describe('<GenericAchievement />', () => {
   it('should trigger analytics with a custom name instead of Achievement1', async () => {
     const cardCustomName = 'CustomName'
     const { getByTestId } = renderGenericAchievementComponent({
-      name: 'Achievement',
+      screenName: 'FirstTutorial',
       children: [
         <GenericAchievementCard
           key={0}
@@ -125,10 +125,10 @@ describe('<GenericAchievement />', () => {
       ],
     })
     expect(analytics.logScreenView).toHaveBeenCalledWith(cardCustomName)
-    const next = await getByTestId('controlButton')
+    const next = getByTestId('controlButton')
     fireEvent.press(next)
     await waitForExpect(() => {
-      expect(analytics.logScreenView).toHaveBeenCalledWith('Achievement2')
+      expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial2')
     })
   })
 })
@@ -136,3 +136,57 @@ describe('<GenericAchievement />', () => {
 function renderGenericAchievementComponent(props: Props) {
   return render(<GenericAchievement {...props} />)
 }
+
+describe('onBackAction', () => {
+  afterEach(jest.clearAllMocks)
+
+  const onFirstCardBackAction = jest.fn()
+  const swiperRefValue = {
+    getActiveIndex: jest.fn(() => 0),
+    goTo: jest.fn(),
+    goToPrev: jest.fn(),
+    goToNext: jest.fn(),
+    startAutoplay: jest.fn(),
+    stopAutoplay: jest.fn(),
+    setState: jest.fn(),
+    forceUpdate: jest.fn(),
+    render: jest.fn(),
+    context: undefined,
+    props: {},
+    state: {},
+    refs: {},
+  }
+
+  it('should return true swiperRefValue is null', () => {
+    const result = onBackAction(null, onFirstCardBackAction)
+
+    expect(result).toBe(true)
+    expect(onFirstCardBackAction).not.toBeCalled()
+    expect(swiperRefValue.goToPrev).not.toBeCalled()
+  })
+
+  it('should return false and not call onFirstCardBackAction() when it is not defined and activeIndex is 0', () => {
+    const result = onBackAction(swiperRefValue, undefined)
+
+    expect(result).toBe(false)
+    expect(onFirstCardBackAction).not.toBeCalled()
+    expect(swiperRefValue.goToPrev).not.toBeCalled()
+  })
+
+  it('should call onFirstCardBackAction() when it is defined and activeIndex is 0', () => {
+    const result = onBackAction(swiperRefValue, onFirstCardBackAction)
+
+    expect(result).toBe(true)
+    expect(onFirstCardBackAction).toBeCalled()
+    expect(swiperRefValue.goToPrev).not.toBeCalled()
+  })
+
+  it('should call swiperRefValue.goToPrev() when activeIndex is not 0', () => {
+    swiperRefValue.getActiveIndex.mockReturnValueOnce(1)
+    const result = onBackAction(swiperRefValue, onFirstCardBackAction)
+
+    expect(result).toBe(true)
+    expect(onFirstCardBackAction).not.toBeCalled()
+    expect(swiperRefValue.goToPrev).toBeCalled()
+  })
+})
