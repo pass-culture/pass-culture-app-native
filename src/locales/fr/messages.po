@@ -58,7 +58,7 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/bookings/pages/BookingDetails.tsx:71
+#: src/features/bookings/pages/BookingDetails.tsx:122
 #: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
@@ -122,6 +122,11 @@ msgstr "Une erreur a eu lieu en obtenant l'ID d'installation Batch : {e}"
 #: src/libs/itinerary/useItinerary.ts:78
 msgid "Annuler"
 msgstr "Annuler"
+
+#: src/features/bookings/components/CancelBookingModal.tsx:25
+#: src/features/bookings/pages/BookingDetails.tsx:70
+msgid "Annuler ma réservation"
+msgstr "Annuler ma réservation"
 
 #: src/features/bookings/components/EndedBookingItem.tsx:54
 msgid "Annulé"
@@ -205,7 +210,7 @@ msgstr "CGU & Données"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/pages/BookingDetails.tsx:55
+#: src/features/bookings/pages/BookingDetails.tsx:61
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -459,7 +464,7 @@ msgstr "E-mail envoyé !"
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
-#: src/features/bookings/pages/BookingDetails.tsx:77
+#: src/features/bookings/pages/BookingDetails.tsx:128
 msgid "EAN"
 msgstr "EAN"
 
@@ -498,7 +503,7 @@ msgid "Ex: 35000"
 msgstr "Ex: 35000"
 
 #: src/features/bookings/components/NoBookingsView.tsx:20
-#: src/features/favorites/components/NoFavoritesResult.tsx:20
+#: src/features/favorites/components/NoFavoritesResult.tsx:18
 msgid "Explorer les offres"
 msgstr "Explorer les offres"
 
@@ -611,6 +616,10 @@ msgstr "L'offre n'a pas été ajoutée à tes favoris"
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
+#: src/features/bookings/pages/BookingDetails.tsx:82
+msgid "La réservation est annulable jusqu'au"
+msgstr "La réservation est annulable jusqu'au"
+
 #: src/features/profile/components/BeneficiaryCeilings.tsx:34
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
@@ -656,6 +665,10 @@ msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permetten
 #: src/features/auth/signup/QuitSignupModal.tsx:31
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
+
+#: src/features/bookings/components/CancelBookingModal.tsx:46
+msgid "Les {price} € ne seront pas recrédités sur ton pass Culture car il est expiré."
+msgstr "Les {price} € ne seront pas recrédités sur ton pass Culture car il est expiré."
 
 #: src/features/search/pages/LocationFilter.tsx:81
 #: src/features/search/sections/titles.ts:4
@@ -709,7 +722,7 @@ msgstr "Mes réservations terminées"
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
-#: src/features/bookings/pages/BookingDetails.tsx:97
+#: src/features/bookings/pages/BookingDetails.tsx:148
 #: src/features/offer/pages/OfferBody.tsx:51
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
@@ -812,7 +825,7 @@ msgstr "Offre épuisée"
 msgid "On y va !"
 msgstr "On y va !"
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:48
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:45
 msgid "Oops !"
 msgstr "Oops !"
 
@@ -993,6 +1006,10 @@ msgstr "Retourner à l'accueil"
 msgid "Retourner à l'offre"
 msgstr "Retourner à l'offre"
 
+#: src/features/bookings/components/CancelBookingModal.tsx:27
+msgid "Retourner à ma réservation"
+msgstr "Retourner à ma réservation"
+
 #: src/features/offer/services/useShareOffer.ts:20
 msgid "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
@@ -1001,7 +1018,7 @@ msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 msgid "Retrouve toutes les offres autour de chez toi en activant les données de localisation."
 msgstr "Retrouve toutes les offres autour de chez toi en activant les données de localisation."
 
-#: src/features/favorites/components/NoFavoritesResult.tsx:16
+#: src/features/favorites/components/NoFavoritesResult.tsx:14
 msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 
@@ -1009,7 +1026,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:65
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:62
 msgid "Réessayer"
 msgstr "Réessayer"
 
@@ -1029,11 +1046,11 @@ msgstr "Réservation confirmée !"
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:35
+#: src/features/bookings/components/OnGoingBookingsList.tsx:44
 msgid "Réservation terminée"
 msgstr "Réservation terminée"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:35
+#: src/features/bookings/components/OnGoingBookingsList.tsx:44
 msgid "Réservations terminées"
 msgstr "Réservations terminées"
 
@@ -1203,13 +1220,17 @@ msgstr "Tu as déjà un compte ?"
 msgid "Tu as {0} sur ton pass"
 msgstr "Tu as {0} sur ton pass"
 
-#: src/features/bookings/pages/BookingDetails.tsx:57
+#: src/features/bookings/pages/BookingDetails.tsx:63
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
 #: src/features/profile/pages/NotificationSettings.tsx:113
 msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 msgstr "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
+
+#: src/features/bookings/components/CancelBookingModal.tsx:17
+msgid "Tu es sur le point d'annuler"
+msgstr "Tu es sur le point d'annuler"
 
 #: src/features/auth/signup/EligibilityConfirmed.tsx:14
 msgid "Tu es éligible !"
@@ -1222,6 +1243,10 @@ msgstr "Tu es éligible jusqu'au"
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:27
 msgid "Tu n'es pas connecté !"
 msgstr "Tu n'es pas connecté !"
+
+#: src/features/bookings/pages/BookingDetails.tsx:88
+msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le"
+msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le"
 
 #: src/features/bookings/components/NoBookingsView.tsx:14
 msgid ""
@@ -1287,7 +1312,7 @@ msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus ta
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:55
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:52
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
@@ -1340,6 +1365,10 @@ msgstr "Veux-tu abandonner l'inscription ?"
 #: src/libs/itinerary/useItinerary.ts:79
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
+
+#: src/features/bookings/pages/BookingDetails.tsx:153
+msgid "Voir le détail de l’offre"
+msgstr "Voir le détail de l’offre"
 
 #: src/features/offer/services/useCtaWordingAndAction.ts:47
 msgid "Voir les disponibilités"
@@ -1444,7 +1473,7 @@ msgstr "metteur en scène"
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:34
+#: src/features/bookings/components/OnGoingBookingsList.tsx:43
 msgid "réservation en cours"
 msgstr "réservation en cours"
 
@@ -1452,7 +1481,7 @@ msgstr "réservation en cours"
 msgid "réservation terminée"
 msgstr "réservation terminée"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:34
+#: src/features/bookings/components/OnGoingBookingsList.tsx:43
 msgid "réservations en cours"
 msgstr "réservations en cours"
 
@@ -1530,3 +1559,7 @@ msgstr "à portée de main !"
 #: src/features/bookOffer/atoms/HourChoice.tsx:12
 msgid "épuisé"
 msgstr "épuisé"
+
+#: src/features/bookings/components/CancelBookingModal.tsx:48
+msgid "€ seront recrédités sur ton pass Culture."
+msgstr "€ seront recrédités sur ton pass Culture."
