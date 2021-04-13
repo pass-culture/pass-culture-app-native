@@ -11,8 +11,6 @@ import { Home as HomeComponent } from 'features/home/pages/Home'
 import { Profile } from 'features/profile/pages/Profile'
 import { Search } from 'features/search/pages/Search'
 
-import { InitialRoutingScreen } from '../RootNavigator/InitialRoutingScreen'
-
 import { shouldDisplayTabIconPredicate } from './helpers'
 import { TabBar } from './TabBar'
 import { TabParamList, TabRoute } from './types'
@@ -54,11 +52,6 @@ export const tabBarRoutes: Array<TabRoute> = [
     component: Profile,
     key: 'Profile-key',
   },
-  {
-    name: 'InitialRoutingScreen',
-    component: InitialRoutingScreen,
-    key: 'InitialRoutingScreen-key',
-  },
 ]
 
 export const TabNavigator: React.FC = () => {
@@ -68,7 +61,7 @@ export const TabNavigator: React.FC = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName="InitialRoutingScreen"
+      initialRouteName="Home"
       tabBar={({ state, navigation }) => <TabBar state={state} navigation={navigation} />}>
       {tabBarRoutes.filter(shouldDisplayTabIconPredicate(authContext, user)).map((route) => (
         <Tab.Screen

@@ -1,25 +1,31 @@
 import { renderHook, RenderHookResult } from '@testing-library/react-hooks'
 import { rest } from 'msw'
+import React from 'react'
+import SplashScreen from 'react-native-splash-screen'
 import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { DEFAULT_SPLASHSCREEN_DELAY, SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
 import { superFlushWithAct, act } from 'tests/utils'
 
-import {
-  InitialScreenConfiguration,
-  useGetInitialScreenConfig,
-} from '../RootNavigator/useGetInitialScreenConfig'
+import { useInitialScreenConfig } from '../RootNavigator/useInitialScreenConfig'
 
 const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('features/auth/AuthContext')
 
-describe('useGetInitialScreenConfig()', () => {
+describe('useInitialScreenConfig()', () => {
   beforeEach(() => {
+    jest.useFakeTimers()
+  })
+
+  afterEach(() => {
+    jest.useRealTimers()
     jest.clearAllMocks()
   })
 
@@ -54,33 +60,43 @@ describe('useGetInitialScreenConfig()', () => {
       expectedScreenParams,
       expectedAnalyticsScreen,
     }) => {
-      storage.saveObject('has_seen_tutorials', hasSeenTutorials)
-      storage.saveObject('has_seen_eligible_card', hasSeenEligibleCard)
+      await storage.saveObject('has_seen_tutorials', hasSeenTutorials)
+      await storage.saveObject('has_seen_eligible_card', hasSeenEligibleCard)
       mockedUseAuthContext.mockReturnValue({
         isLoggedIn: isLogged,
         setIsLoggedIn: jest.fn(),
       })
       mockMeApiCall(userProfile as UserProfileResponse)
 
-      const testComponent = await renderUseGetInitialRouteName()
+      await renderUseInitialScreenConfig()
+      await waitForSplashScreenDelay()
 
       await waitForExpect(() => {
-        expect(testComponent?.result.current).toEqual({
-          screen: expectedScreen,
-          params: expectedScreenParams,
-        })
+        expect(navigate).toHaveBeenNthCalledWith(1, expectedScreen, expectedScreenParams)
       })
       expect(analytics.logScreenView).toBeCalledTimes(1)
       expect(analytics.logScreenView).toBeCalledWith(expectedAnalyticsScreen)
     }
   )
+
+  it('should call SplashScreen.hide() after 200ms', async () => {
+    expect.assertions(2)
+
+    await renderUseInitialScreenConfig()
+    expect(SplashScreen.hide).toBeCalledTimes(0)
+
+    await waitForSplashScreenDelay()
+    expect(SplashScreen.hide).toBeCalledTimes(1)
+  })
 })
 
-async function renderUseGetInitialRouteName() {
-  let testComponent: RenderHookResult<unknown, InitialScreenConfiguration | undefined> | undefined
+async function renderUseInitialScreenConfig() {
+  const wrapper = (props: { children: any }) => (
+    <SplashScreenProvider>{props.children}</SplashScreenProvider>
+  )
+  let testComponent: RenderHookResult<{ children: any }, void | undefined> | undefined
   await act(async () => {
-    testComponent = renderHook(useGetInitialScreenConfig)
-    await superFlushWithAct()
+    testComponent = renderHook(useInitialScreenConfig, { wrapper })
   })
   await superFlushWithAct()
   return testComponent
@@ -92,4 +108,11 @@ function mockMeApiCall(response: UserProfileResponse) {
       return res(ctx.status(200), ctx.json(response))
     })
   )
+}
+
+async function waitForSplashScreenDelay() {
+  act(() => {
+    jest.advanceTimersByTime(DEFAULT_SPLASHSCREEN_DELAY)
+  })
+  await superFlushWithAct()
 }
