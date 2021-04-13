@@ -86,17 +86,9 @@ msgstr "Adresse"
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
-#: src/features/search/atoms/Buttons/ShowResults.tsx:13
+#: src/features/search/atoms/Buttons/ShowResults.tsx:11
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
-
-#: src/features/search/atoms/Buttons/ShowResults.tsx:14
-msgid "Afficher les {nbHits} résultats"
-msgstr "Afficher les {nbHits} résultats"
-
-#: src/features/search/atoms/Buttons/ShowResults.tsx:11
-msgid "Afficher {nbHits} résultat"
-msgstr "Afficher {nbHits} résultat"
 
 #: src/features/auth/signup/AccountCreated.tsx:16
 #: src/features/auth/signup/EligibilityConfirmed.tsx:16
@@ -418,15 +410,6 @@ msgstr "Des offres pour tous"
 #: src/features/offer/components/OfferWhereSection.tsx:27
 msgid "Distance"
 msgstr "Distance"
-
-#: src/libs/parsers/formatDates.ts:75
-#: src/libs/parsers/formatDates.ts:79
-msgid "Du {0} au {formattedEndDate}"
-msgstr "Du {0} au {formattedEndDate}"
-
-#: src/libs/parsers/formatDates.ts:77
-msgid "Du {0} {1} au {formattedEndDate}"
-msgstr "Du {0} {1} au {formattedEndDate}"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx:24
 #: src/features/bookOffer/components/BookDuoChoice.tsx:42
@@ -1527,6 +1510,10 @@ msgstr "{nbFavorites, plural, one {# favori} other {# favoris}}"
 #: src/features/search/atoms/NumberOfResults.tsx:10
 msgid "{nbHits, plural, one {# résultat} other {# résultats}}"
 msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
+
+#: src/features/search/atoms/Buttons/ShowResults.tsx:12
+msgid "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
+msgstr "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
 
 #: src/features/bookOffer/components/BookingDetails.tsx:75
 msgid "{price} seront déduits de ton crédit pass Culture"
