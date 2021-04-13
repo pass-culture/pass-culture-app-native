@@ -137,8 +137,8 @@ const logConsultDescriptionDetails = (offerId: number) =>
 const logConsultWholeOffer = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId })
 
-const logConsultItinerary = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId })
+const logConsultItinerary = (offerId: number, from: Referrals) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId, from })
 
 const logConsultAvailableDates = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })

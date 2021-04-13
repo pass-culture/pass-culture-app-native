@@ -24,7 +24,7 @@ describe('OfferWhereSection', () => {
         fireEvent.press(getByText("Voir l'itinéraire"))
       })
       expect(analytics.logConsultItinerary).toHaveBeenCalledTimes(1)
-      expect(analytics.logConsultItinerary).toHaveBeenCalledWith(30)
+      expect(analytics.logConsultItinerary).toHaveBeenCalledWith(30, 'offer')
     })
   })
 })
