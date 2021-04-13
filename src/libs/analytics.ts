@@ -18,6 +18,7 @@ export enum AnalyticsEvent {
   BOOKING_OFFER_CONFIRM_DATES = 'BookOfferConfirmDates',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   BOOKINGS_SCROLLED_TO_BOTTOM = 'BookingsScrolledToBottom',
+  CANCEL_BOOKING = 'CancelBooking',
   CANCEL_SIGNUP = 'CancelSignup',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
   CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
@@ -277,6 +278,9 @@ const logBookingsScrolledToBottom = () =>
 const logDiscoverOffers = (from: Referrals) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from })
 
+const logCancelBooking = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId })
+
 export const analytics = {
   logAllModulesSeen,
   logAllTilesSeen,
@@ -284,6 +288,7 @@ export const analytics = {
   logBookingImpossibleiOS,
   logBookingOfferConfirmDates,
   logBookingsScrolledToBottom,
+  logCancelBooking,
   logCancelSignup,
   logClickBookOffer,
   logClickBusinessBlock,

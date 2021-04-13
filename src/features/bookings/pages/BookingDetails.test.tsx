@@ -193,6 +193,17 @@ describe('BookingDetails', () => {
       const { queryByText } = renderBookingDetails(booking)
       expect(queryByText('Annuler ma réservation')).toBeFalsy()
     })
+
+    it('should log event "CancelBooking" when cancelling booking', () => {
+      const booking = bookingsSnap.ongoing_bookings[0]
+      const date = new Date()
+      date.setDate(date.getDate() + 1)
+      booking.confirmationDate = date
+      const { getByText } = renderBookingDetails(booking)
+      fireEvent.press(getByText('Annuler ma réservation'))
+
+      expect(analytics.logCancelBooking).toHaveBeenCalledWith(booking.stock.offer.id)
+    })
   })
 })
 
