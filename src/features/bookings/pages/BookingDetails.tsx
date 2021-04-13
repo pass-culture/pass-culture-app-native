@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useRef } from 'react'
-import { Animated, Dimensions, View } from 'react-native'
+import { Animated, Dimensions, NativeScrollEvent, NativeSyntheticEvent, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
@@ -15,14 +15,16 @@ import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicke
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics.utils'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { interpolationConfig } from 'ui/components/headers/animationHelpers'
-import { HeroHeader } from 'ui/components/headers/HeroHeader'
+import { HeroHeader, blurImageHeight } from 'ui/components/headers/HeroHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -31,6 +33,8 @@ const TICKET_MAX_WIDTH = 300
 const TICKET_MIN_HEIGHT = 220
 const TICKET_WIDTH = Dimensions.get('screen').width - getSpacing(15)
 const QR_CODE_SIZE = 170
+
+const contentHeight = Dimensions.get('window').height - blurImageHeight
 
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
@@ -47,11 +51,25 @@ export function BookingDetails() {
     async () => void (offerId && analytics.logConsultItinerary(offerId, 'bookingdetails'))
   )
 
+  const logConsultWholeBooking = useFunctionOnce(
+    () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
+  )
+
   if (!booking) return <React.Fragment></React.Fragment>
 
   const headerTransition = headerScroll.interpolate(interpolationConfig)
+
+  const checkIfAllPageHaveBeenSeen = ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => {
+    if (isCloseToBottom(nativeEvent)) {
+      logConsultWholeBooking()
+    }
+  }
+
   const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
     useNativeDriver: false,
+    listener: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+      checkIfAllPageHaveBeenSeen({ nativeEvent })
+    },
   })
 
   const properties = getBookingProperties(booking)
@@ -138,6 +156,11 @@ export function BookingDetails() {
         onScroll={onScroll}
         scrollEventThrottle={10}
         scrollIndicatorInsets={{ right: 1 }}
+        onContentSizeChange={(_w: number, h: number) => {
+          if (h <= contentHeight) {
+            logConsultWholeBooking()
+          }
+        }}
         bounces={false}>
         <HeroHeader categoryName={offer.category.name} imageUrl={offer.image?.url || ''}>
           <Spacer.Column numberOfSpaces={18} />
