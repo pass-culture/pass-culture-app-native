@@ -58,7 +58,7 @@ export function BookingDetails() {
   const { offer } = booking.stock
   const shouldDisplayEAN = offer.extraData?.isbn && offer.category.name === CategoryNameEnum.LIVRE
   const shouldDisplayItineraryButton =
-    canOpenItinerary && properties.isEvent && properties.isPhysical
+    canOpenItinerary && (properties.isEvent || properties.isPhysical)
 
   const renderOfferRules = properties.isDigital ? (
     <OfferRules>

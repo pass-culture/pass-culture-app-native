@@ -3,8 +3,10 @@ import React from 'react'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { CategoryNameEnum, CategoryType } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
+import * as Helpers from 'features/bookings/helpers'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render } from 'tests/utils'
 
@@ -215,6 +217,55 @@ describe('BookingDetails', () => {
 
       expect(analytics.logCancelBooking).toHaveBeenCalledWith(booking.stock.offer.id)
     })
+  })
+
+  describe('Itinerary', () => {
+    it.each([
+      ['isEvent == true', { isEvent: true }],
+      ['isPhysical == true', { isPhysical: true }],
+    ])('should render the itinerary button when %s', (_testLabel, dataProvider) => {
+      const openItinerary = jest.spyOn(OpenItinerary, 'default').mockReturnValue({
+        openItinerary: jest.fn(),
+        canOpenItinerary: true,
+      })
+      const getBookingProperties = jest
+        .spyOn(Helpers, 'getBookingProperties')
+        .mockReturnValue(dataProvider)
+
+      const booking = bookingsSnap.ongoing_bookings[0]
+      const { getByText } = renderBookingDetails(booking)
+      getByText("Voir l'itinéraire")
+
+      openItinerary.mockRestore()
+      getBookingProperties.mockRestore()
+    })
+    it.each([
+      ['canOpenItinerary == false', false, {}],
+      [
+        'canOpenItinerary == true && isEvent == false && isPhysical == false',
+        true,
+        { isEvent: false, isPhysical: false },
+      ],
+    ])(
+      'should not render the itinerary button when %s',
+      (_testLabel, canOpenItinerary, dataProvider) => {
+        const openItinerary = jest.spyOn(OpenItinerary, 'default').mockReturnValue({
+          openItinerary: jest.fn(),
+          canOpenItinerary,
+        })
+        const getBookingProperties = jest
+          .spyOn(Helpers, 'getBookingProperties')
+          .mockReturnValue(dataProvider)
+
+        const booking = bookingsSnap.ongoing_bookings[0]
+        const { queryByText } = renderBookingDetails(booking)
+        const button = queryByText("Voir l'itinéraire")
+        expect(button).toBeFalsy()
+
+        openItinerary.mockRestore()
+        getBookingProperties.mockRestore()
+      }
+    )
   })
 })
 
