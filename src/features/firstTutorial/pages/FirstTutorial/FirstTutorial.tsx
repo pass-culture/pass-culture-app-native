@@ -1,4 +1,5 @@
 import React from 'react'
+import { BackHandler } from 'react-native'
 
 import { storage } from 'libs/storage'
 import { GenericAchievement } from 'ui/components/achievements'
@@ -9,16 +10,23 @@ import { SecondCard } from './components/SecondCard'
 import { ThirdCard } from './components/ThirdCard'
 
 export function FirstTutorial() {
-  function skip() {
-    storage.saveObject('has_seen_tutorials', true)
-  }
-
   return (
-    <GenericAchievement name="FirstTutorial" skip={skip}>
+    <GenericAchievement
+      screenName="FirstTutorial"
+      skip={onSkip}
+      onFirstCardBackAction={onFirstCardBackAction}>
       <FirstCard />
       <SecondCard />
       <ThirdCard />
       <FourthCard />
     </GenericAchievement>
   )
+}
+
+function onSkip() {
+  storage.saveObject('has_seen_tutorials', true)
+}
+
+function onFirstCardBackAction() {
+  BackHandler.exitApp()
 }

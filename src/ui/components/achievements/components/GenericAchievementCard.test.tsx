@@ -66,7 +66,7 @@ describe('<GenericAchievementCard />', () => {
 
   it('should call card analytics on active index', () => {
     const { getByTestId } = render(
-      <GenericAchievement name="TestAchievement">
+      <GenericAchievement screenName="FirstTutorial">
         <GenericAchievementCard
           buttonText={buttonText}
           animation={animation}
@@ -93,10 +93,10 @@ describe('<GenericAchievementCard />', () => {
         />
       </GenericAchievement>
     )
-    expect(analytics.logScreenView).toHaveBeenCalledWith('TestAchievement1')
+    expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial1')
     expect(analytics.logScreenView).toBeCalledTimes(1)
     fireEvent.press(getByTestId('controlButton'))
-    expect(analytics.logScreenView).toHaveBeenCalledWith('TestAchievement2')
+    expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial2')
     expect(analytics.logScreenView).toBeCalledTimes(2)
   })
 
@@ -300,7 +300,7 @@ describe('<GenericAchievementCard />', () => {
 
 function renderGenericAchievementCardComponent(props: AchievementCardProps) {
   return render(
-    <GenericAchievement name="TestAchievement">
+    <GenericAchievement screenName="FirstTutorial">
       <GenericAchievementCard {...props} />
     </GenericAchievement>
   )

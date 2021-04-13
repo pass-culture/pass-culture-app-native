@@ -19,7 +19,7 @@ describe('ThirdCard', () => {
     const ref = { current: { goToNext: jest.fn() } }
     const { getByText } = render(
       <GeolocationWrapper>
-        <GenericAchievement name="TestAchievement">
+        <GenericAchievement screenName="FirstTutorial">
           <ThirdCard
             swiperRef={(ref as unknown) as RefObject<Swiper>}
             index={0}
@@ -40,7 +40,7 @@ describe('ThirdCard', () => {
     const ref = { current: { goToNext: jest.fn() } }
     const { getByText } = render(
       <GeolocationWrapper>
-        <GenericAchievement name="TestAchievement">
+        <GenericAchievement screenName="FirstTutorial">
           <ThirdCard
             swiperRef={(ref as unknown) as RefObject<Swiper>}
             index={0}

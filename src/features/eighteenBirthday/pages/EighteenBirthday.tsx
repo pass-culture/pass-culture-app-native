@@ -11,7 +11,7 @@ export function EighteenBirthday() {
   }, [])
 
   return (
-    <GenericAchievement name="EighteenBirthday">
+    <GenericAchievement screenName="EighteenBirthday">
       <EighteenBirthdayCard />
     </GenericAchievement>
   )

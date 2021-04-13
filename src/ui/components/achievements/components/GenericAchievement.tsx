@@ -1,11 +1,12 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { Children, cloneElement, FunctionComponent, ReactElement, useMemo } from 'react'
+import { BackHandler } from 'react-native'
 import Swiper from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
 import { homeNavigateConfig } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
 import { Background } from 'ui/svg/Background'
@@ -22,24 +23,36 @@ const controlProps = {
 }
 
 export type Props = {
-  name: string
+  screenName: ScreenNames
   children: Array<ReactElement<AchievementCardKeyProps>> | ReactElement<AchievementCardKeyProps>
+  onFirstCardBackAction?: () => void
   skip?: () => void
 }
 
 export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const swiperRef = React.useRef<Swiper>(null)
+
   const cards = useMemo(() => Children.toArray(props.children), [props.children])
   const lastIndex = cards.length - 1
 
+  // We use useFocusEffect(...) because we want to remove the BackHandler listener on blur
+  // of this GenericAchievement component, otherwise the logic of the "back action"
+  // would leak to other components / screens.
+  useFocusEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () =>
+      onBackAction(swiperRef?.current, props.onFirstCardBackAction)
+    )
+    return () => backHandler.remove()
+  })
+
   async function skip() {
     if (props.skip) {
-      await props.skip()
+      props.skip()
     }
     if (swiperRef?.current) {
       const index = swiperRef.current.getActiveIndex()
-      analytics.logHasSkippedTutorial(`${props.name}${index + 1}`)
+      analytics.logHasSkippedTutorial(`${props.screenName}${index + 1}`)
     }
     navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
@@ -70,7 +83,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
                   swiperRef,
                   name:
                     (card as ReactElement<AchievementCardKeyProps>).props.name ||
-                    `${props.name}${index + 1}`,
+                    `${props.screenName}${index + 1}`,
                   lastIndex,
                   skip,
                 })
@@ -83,6 +96,25 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
       </EntireScreen>
     </React.Fragment>
   )
+}
+
+export function onBackAction(
+  swiperRefValue: Swiper | null,
+  onFirstCardBackAction?: () => void
+): boolean {
+  if (swiperRefValue) {
+    const activeIndex = swiperRefValue.getActiveIndex()
+    if (activeIndex === 0) {
+      if (onFirstCardBackAction) {
+        onFirstCardBackAction()
+      } else {
+        return false // use default back handler action
+      }
+    } else {
+      swiperRefValue.goToPrev()
+    }
+  }
+  return true
 }
 
 const HorizontalPaddingContainer = styled.View({
