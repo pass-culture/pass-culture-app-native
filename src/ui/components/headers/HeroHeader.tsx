@@ -43,7 +43,7 @@ const Container = styled.View({
   alignItems: 'center',
 })
 
-const blurImageHeight = getSpacing(74)
+export const blurImageHeight = getSpacing(74)
 
 const HeroContainer = styled.View({ alignItems: 'center', position: 'absolute' })
 const BlurImage = styled.Image<{ extraHeight: number }>(({ extraHeight }) => ({
