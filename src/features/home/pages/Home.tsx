@@ -5,12 +5,14 @@ import { NativeSyntheticEvent, NativeScrollEvent, ScrollView, Text } from 'react
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
 import styled from 'styled-components/native'
 
+import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { useUserProfileInfo } from 'features/home/api'
 import { HomeBodyPlaceholder, SignUpSignInChoiceModal } from 'features/home/components'
 import { HomeBody } from 'features/home/components/HomeBody'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { useInitialScreenConfig } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
@@ -36,6 +38,9 @@ export const Home: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const [recommendationY, setRecommendationY] = useState<number>(Infinity)
   const { displayedModules, algoliaModules, recommendedHits } = useDisplayedHomeModules()
+
+  useInitialScreenConfig()
+  useListenDeepLinksEffect()
 
   const logHasSeenAllModules = useFunctionOnce(() =>
     analytics.logAllModulesSeen(displayedModules.length)

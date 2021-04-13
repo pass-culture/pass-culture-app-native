@@ -1,14 +1,16 @@
+import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { ScreenConfiguration } from 'features/deeplinks/types'
 import { analytics } from 'libs/analytics'
+import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 
 import { homeNavigateConfig } from '../helpers'
 
-import { ScreenNames } from './types'
+import { ScreenNames, UseNavigationType } from './types'
 
 export type InitialScreenConfiguration =
   | ScreenConfiguration<'EighteenBirthday'>
@@ -16,20 +18,29 @@ export type InitialScreenConfiguration =
   | ScreenConfiguration<'TabNavigator'>
   | ScreenConfiguration<'FirstTutorial'>
 
-export function useGetInitialScreenConfig(): InitialScreenConfiguration | undefined {
+export function useInitialScreenConfig(): void {
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { hideSplashScreen } = useSplashScreenContext()
+  const { isLoggedIn } = useAuthContext()
+
   const [initialScreenConfig, setInitialScreenConfig] = useState<
     InitialScreenConfiguration | undefined
   >()
-  const { isLoggedIn } = useAuthContext()
 
   useEffect(() => {
     getInitialScreenConfig({ isLoggedIn }).then((screenConfiguration) => {
       setInitialScreenConfig(screenConfiguration)
       triggerInitialScreenNameAnalytics(screenConfiguration.screen)
     })
-  }, [])
+  }, [isLoggedIn])
 
-  return initialScreenConfig
+  useEffect(() => {
+    if (!initialScreenConfig || !hideSplashScreen) {
+      return
+    }
+    navigate(initialScreenConfig.screen, initialScreenConfig.params)
+    hideSplashScreen()
+  }, [initialScreenConfig, hideSplashScreen])
 }
 
 async function getInitialScreenConfig({
