@@ -17,7 +17,7 @@ describe('OnGoingBookingItem', () => {
     const item = getByTestId('OnGoingBookingItem')
     fireEvent.press(item)
 
-    expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: 123 })
+    expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: 123, shouldFetchAll: false })
   })
 })
 

@@ -26,7 +26,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
 
   return (
     <Container
-      onPress={() => navigate('BookingDetails', { id: booking.id })}
+      onPress={() => navigate('BookingDetails', { id: booking.id, shouldFetchAll: false })}
       testID={'OnGoingBookingItem'}>
       <ItemContainer>
         <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(iconName)} />

@@ -35,7 +35,7 @@ const QR_CODE_SIZE = 170
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const booking = useOngoingBooking(params.id)
+  const booking = useOngoingBooking(params.id, params.shouldFetchAll)
   const headerScroll = useRef(new Animated.Value(0)).current
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
 
