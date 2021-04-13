@@ -1,6 +1,13 @@
+import { errorMonitoring } from 'libs/errorMonitoring/services'
+
 export class MonitoringError extends Error {
-  constructor(message: string, name = 'MonitoringError') {
+  constructor(message: string, name?: string) {
     super(message)
-    this.name = name
+    if (name) {
+      this.name = name
+    }
+    errorMonitoring.captureException(this)
   }
 }
+
+MonitoringError.prototype.name = 'MonitoringError'

@@ -28,7 +28,7 @@ import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
-LogBox.ignoreLogs(['Setting a timer'])
+LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
 
 const queryCache = new QueryCache()
 

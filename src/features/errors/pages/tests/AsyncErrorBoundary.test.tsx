@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { canGoBack, goBack } from '__mocks__/@react-navigation/native'
-import { errorMonitoring } from 'libs/errorMonitoring'
 import { render, fireEvent } from 'tests/utils'
 
 import {
@@ -19,14 +18,6 @@ describe('AsyncErrorBoundary component', () => {
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={resetErrorBoundary} />
     )
     expect(renderAPI).toMatchSnapshot()
-  })
-
-  it('should call errorMonitoring.captureException() on render', () => {
-    const resetErrorBoundary = jest.fn()
-    const error = new Error('error')
-    render(<AsyncErrorBoundary error={error} resetErrorBoundary={resetErrorBoundary} />)
-
-    expect(errorMonitoring.captureException).toBeCalledWith(error)
   })
 
   it('should have back arrow if possible', () => {
