@@ -8,7 +8,7 @@ import * as NavigationHelpers from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render } from 'tests/utils'
+import { act, flushAllPromises, fireEvent, render } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
 import { Booking } from '../components/types'
@@ -266,6 +266,39 @@ describe('BookingDetails', () => {
         getBookingProperties.mockRestore()
       }
     )
+  })
+
+  describe('Analytics', () => {
+    it('should trigger logEvent "BookingDetailsScrolledToBottom" when reaching the end', async () => {
+      const nativeEventMiddle = {
+        layoutMeasurement: { height: 1000 },
+        contentOffset: { y: 400 }, // how far did we scroll
+        contentSize: { height: 1600 },
+      }
+      const nativeEventBottom = {
+        layoutMeasurement: { height: 1000 },
+        contentOffset: { y: 900 },
+        contentSize: { height: 1600 },
+      }
+
+      const booking = bookingsSnap.ongoing_bookings[0]
+      const { getByTestId } = renderBookingDetails(booking)
+      const scrollView = getByTestId('BookingDetailsScrollView')
+      await act(async () => {
+        await flushAllPromises()
+      })
+
+      await act(async () => {
+        await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+      })
+      expect(analytics.logBookingDetailsScrolledToBottom).not.toHaveBeenCalled()
+
+      await act(async () => {
+        await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
+      })
+
+      expect(analytics.logBookingDetailsScrolledToBottom).toHaveBeenCalledTimes(1)
+    })
   })
 })
 
