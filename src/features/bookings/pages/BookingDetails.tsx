@@ -119,6 +119,12 @@ export function BookingDetails() {
     })
   }
 
+  const accessExternalOffer = () => {
+    if (offer.url) {
+      analytics.logAccessExternalOffer(offer.id)
+      openExternalUrl(offer.url)
+    }
+  }
   return (
     <React.Fragment>
       <ScrollView
@@ -139,10 +145,7 @@ export function BookingDetails() {
 
               {properties.isDigital ? (
                 <React.Fragment>
-                  <ButtonPrimary
-                    title={t`Accéder à l'offre`}
-                    onPress={() => offer.url && openExternalUrl(offer.url)}
-                  />
+                  <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
                   <Spacer.Column numberOfSpaces={9} />
                 </React.Fragment>
               ) : booking.qrCodeData ? (

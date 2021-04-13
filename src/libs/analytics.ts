@@ -11,6 +11,7 @@ const setUserId = (userId: number) => firebaseAnalytics.setUserId(userId.toStrin
 
 // Event names can be up to 40 characters long, may only contain alphanumeric characters and underscores
 export enum AnalyticsEvent {
+  ACCESS_EXTERNAL_OFFER = 'AccessExternalOffer',
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
   BOOKING_ERROR = 'BookingError',
@@ -281,7 +282,11 @@ const logDiscoverOffers = (from: Referrals) =>
 const logCancelBooking = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId })
 
+const logAccessExternalOffer = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.ACCESS_EXTERNAL_OFFER, { offerId })
+
 export const analytics = {
+  logAccessExternalOffer,
   logAllModulesSeen,
   logAllTilesSeen,
   logBookingError,
