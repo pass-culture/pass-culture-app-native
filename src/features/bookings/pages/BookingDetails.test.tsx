@@ -71,6 +71,7 @@ describe('BookingDetails', () => {
       fireEvent.press(offerButton)
 
       expect(openExternalUrl).toHaveBeenCalledWith(booking.stock.offer.url)
+      expect(analytics.logAccessExternalOffer).toHaveBeenCalledWith(booking.stock.offer.id)
     })
 
     it('should display booking qr code if offer is physical', async () => {

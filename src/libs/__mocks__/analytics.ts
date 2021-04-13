@@ -12,6 +12,7 @@ export const firebaseAnalytics: jest.Mocked<AnalyticsReturn> = {
 }
 
 export const analytics: typeof actualAnalytics = {
+  logAccessExternalOffer: jest.fn(),
   logAllModulesSeen: jest.fn(),
   logAllTilesSeen: jest.fn(),
   logBookingError: jest.fn(),
