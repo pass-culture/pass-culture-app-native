@@ -5,6 +5,7 @@ import { CategoryNameEnum, CategoryType } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
@@ -210,5 +211,5 @@ describe('BookingDetails', () => {
 
 function renderBookingDetails(booking: Booking) {
   jest.spyOn(Queries, 'useOngoingBooking').mockReturnValue(booking)
-  return render(<BookingDetails />)
+  return render(reactQueryProviderHOC(<BookingDetails />))
 }
