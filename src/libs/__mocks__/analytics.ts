@@ -26,6 +26,7 @@ export const analytics: typeof actualAnalytics = {
   logClickExclusivityBlock: jest.fn(),
   logClickSeeMore: jest.fn(),
   logClickSocialNetwork: jest.fn(),
+  logConfirmBookingCancellation: jest.fn(),
   logConsultAccessibility: jest.fn(),
   logConsultAvailableDates: jest.fn(),
   logConsultDescriptionDetails: jest.fn(),

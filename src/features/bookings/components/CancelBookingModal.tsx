@@ -7,6 +7,7 @@ import { Booking } from 'features/bookings/components/types'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
+import { analytics } from 'libs/analytics'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -29,6 +30,10 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   const credit = useAvailableCredit()
   const refundRule = getRefundRule(booking, user, credit)
 
+  const confirmCancelBooking = () => {
+    analytics.logConfirmBookingCancellation(booking.stock.offer.id)
+  }
+
   return (
     <AppModal
       visible={visible}
@@ -44,7 +49,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
           </React.Fragment>
         )}
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary title={t`Annuler ma réservation`} />
+        <ButtonPrimary title={t`Annuler ma réservation`} onPress={confirmCancelBooking} />
         <Spacer.Column numberOfSpaces={5} />
         <ButtonPrimaryWhite title={t`Retourner à ma réservation`} onPress={dismissModal} />
         <Spacer.Column numberOfSpaces={1} />
