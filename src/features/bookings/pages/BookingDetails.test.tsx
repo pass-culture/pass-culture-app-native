@@ -172,9 +172,9 @@ describe('BookingDetails', () => {
   })
 
   describe('cancellation button', () => {
-    it('should display button if offer is permanent', () => {
+    it('should display button if confirmationDate is null', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
-      booking.stock.offer.isPermanent = true
+      booking.confirmationDate = null
       const { getByTestId } = renderBookingDetails(booking)
       getByTestId('button-title-cancel')
     })
