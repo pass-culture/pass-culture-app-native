@@ -104,6 +104,15 @@ export function BookingDetails() {
     return <React.Fragment />
   }
 
+  const navigateToOffer = () => {
+    analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
+    navigate('Offer', {
+      id: offer.id,
+      shouldDisplayLoginModal: false,
+      from: 'bookingdetails',
+    })
+  }
+
   return (
     <React.Fragment>
       <ScrollView
@@ -170,13 +179,7 @@ export function BookingDetails() {
           <ButtonPrimary
             testIdSuffix="see-offer-details"
             title={t`Voir le détail de l’offre`}
-            onPress={() =>
-              navigate('Offer', {
-                id: offer.id,
-                shouldDisplayLoginModal: false,
-                from: 'bookingdetails',
-              })
-            }
+            onPress={navigateToOffer}
           />
           <Spacer.Column numberOfSpaces={4} />
           {renderCancellationCTA()}

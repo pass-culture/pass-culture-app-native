@@ -50,7 +50,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
         offerId,
       })
     )
-    analytics.logConsultOffer({ offerId, from: 'SEARCH', query: query })
+    analytics.logConsultOffer({ offerId, from: 'search', query: query })
     navigation.navigate('Offer', { id: offerId, shouldDisplayLoginModal: false, from: 'search' })
   }
 
