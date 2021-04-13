@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro'
+import { t, plural } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 
@@ -9,9 +9,11 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 const formatNbHits = (nbHits: number) => {
   if (nbHits === 0) return t`Aucun résultat`
-  if (nbHits === 1) return t`Afficher ${nbHits} résultat`
   if (nbHits > 1000) return t`Afficher les 999+ résultats`
-  return t`Afficher les ${nbHits} résultats`
+  return plural(nbHits, {
+    one: 'Afficher # résultat',
+    other: 'Afficher les # résultats',
+  })
 }
 
 export const ShowResults: React.FC = () => {
