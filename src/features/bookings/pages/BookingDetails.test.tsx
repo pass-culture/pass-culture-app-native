@@ -4,6 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { CategoryNameEnum, CategoryType } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as NavigationHelpers from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { act, fireEvent, render } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
@@ -151,18 +152,21 @@ describe('BookingDetails', () => {
       expect(withdrawalText).toBeFalsy()
     })
   })
-  it('should redirect to the Offer page', () => {
+  it('should redirect to the Offer page and log event', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const { getByText } = renderBookingDetails(booking)
 
     const text = getByText('Voir le détail de l’offre')
     fireEvent.press(text)
 
+    const offerId = booking.stock.offer.id
+
     expect(navigate).toBeCalledWith('Offer', {
-      id: booking.stock.offer.id,
+      id: offerId,
       shouldDisplayLoginModal: false,
       from: 'bookingdetails',
     })
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, from: 'bookings' })
   })
 
   describe('cancellation button', () => {

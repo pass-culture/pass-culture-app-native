@@ -94,7 +94,7 @@ const logAllTilesSeen = (moduleName: string, numberOfTiles: number) =>
 
 const logConsultOffer = (params: {
   offerId: number
-  from: 'SEARCH' | 'HOME'
+  from: Referrals
   moduleName?: string
   query?: string
 }) => firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_OFFER, params)
