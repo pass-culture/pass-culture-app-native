@@ -52,7 +52,11 @@ export function simulateWebviewMessage(webview: ReactTestInstance, message: stri
 }
 
 const LinguiProvider: React.FC = ({ children }) => {
-  return <I18nProvider i18n={i18n}>{children}</I18nProvider>
+  return (
+    <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
+      {children}
+    </I18nProvider>
+  )
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
