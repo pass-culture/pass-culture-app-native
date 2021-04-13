@@ -5,6 +5,7 @@ Array [
   <RCTScrollView
     bounces={false}
     collapsable={false}
+    onContentSizeChange={[Function]}
     onGestureHandlerEvent={[Function]}
     onGestureHandlerStateChange={[Function]}
     onScroll={[Function]}
@@ -14,6 +15,7 @@ Array [
         "right": 1,
       }
     }
+    testID="BookingDetailsScrollView"
   >
     <View>
       <View

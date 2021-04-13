@@ -161,6 +161,7 @@ export function BookingDetails() {
             logConsultWholeBooking()
           }
         }}
+        testID="BookingDetailsScrollView"
         bounces={false}>
         <HeroHeader categoryName={offer.category.name} imageUrl={offer.image?.url || ''}>
           <Spacer.Column numberOfSpaces={18} />
