@@ -2,6 +2,7 @@ import React from 'react'
 
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 const mockDismissModal = jest.fn()
@@ -41,6 +42,16 @@ describe('<CancelBookingModal />', () => {
 
     fireEvent.press(goBackButton)
     expect(mockDismissModal).toHaveBeenCalled()
+  })
+
+  it('should log "ConfirmBookingCancellation" on press "Annuler ma réservation"', () => {
+    const booking = bookingsSnap.ongoing_bookings[0]
+    const { getByText } = render(
+      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
+    )
+
+    fireEvent.press(getByText('Annuler ma réservation'))
+    expect(analytics.logConfirmBookingCancellation).toHaveBeenCalledWith(booking.stock.offer.id)
   })
 
   it('should display offer name', () => {

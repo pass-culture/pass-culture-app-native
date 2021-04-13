@@ -23,6 +23,7 @@ export enum AnalyticsEvent {
   CANCEL_SIGNUP = 'CancelSignup',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
   CLICK_SOCIAL_NETWORK = 'ClickSocialNetwork',
+  CONFIRM_BOOKING_CANCELLATION = 'ConfirmBookingCancellation',
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
   CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
@@ -285,6 +286,9 @@ const logCancelBooking = (offerId: number) =>
 const logAccessExternalOffer = (offerId: number) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.ACCESS_EXTERNAL_OFFER, { offerId })
 
+const logConfirmBookingCancellation = (offerId: number) =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId })
+
 export const analytics = {
   logAccessExternalOffer,
   logAllModulesSeen,
@@ -300,6 +304,7 @@ export const analytics = {
   logClickExclusivityBlock,
   logClickSeeMore,
   logClickSocialNetwork,
+  logConfirmBookingCancellation,
   logConsultAccessibility,
   logConsultAvailableDates,
   logConsultDescriptionDetails,
