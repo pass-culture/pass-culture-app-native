@@ -85,9 +85,6 @@ export function BookingDetails() {
         testIdSuffix={'cancel'}
       />
     )
-    if (properties.isPermanent) {
-      return renderButton
-    }
     if (booking.confirmationDate) {
       const isStillCancellable = new Date(booking.confirmationDate) > new Date()
       const formattedConfirmationDate = formatToCompleteFrenchDate(
@@ -114,7 +111,7 @@ export function BookingDetails() {
         )
       }
     }
-    return <React.Fragment />
+    return renderButton
   }
 
   const navigateToOffer = () => {
