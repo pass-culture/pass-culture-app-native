@@ -15,6 +15,8 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { useCancelBookingMutation } from '../services/useCancelBookingMutation'
+
 interface Props {
   visible: boolean
   dismissModal: () => void
@@ -30,8 +32,22 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   const credit = useAvailableCredit()
   const refundRule = getRefundRule(booking, user, credit)
 
+  function onSuccess() {
+    // TODO add sucess behaviour
+  }
+
+  function onError() {
+    // TODO add error behaviour PC-7466
+  }
+
+  const { mutate } = useCancelBookingMutation({
+    onSuccess,
+    onError,
+  })
+
   const confirmCancelBooking = () => {
     analytics.logConfirmBookingCancellation(booking.stock.offer.id)
+    mutate(booking.id)
   }
 
   return (
