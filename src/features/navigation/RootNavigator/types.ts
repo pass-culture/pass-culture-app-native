@@ -28,8 +28,8 @@ export type RootStackParamList = {
   ChangePassword: undefined
   CheatCodes: undefined
   CheatMenu: undefined
-  BookingConfirmation: { offerId: number }
-  BookingDetails: { id: number }
+  BookingConfirmation: { offerId: number; bookingId: number }
+  BookingDetails: { id: number; shouldFetchAll: boolean }
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined
   EligibilityConfirmed: undefined

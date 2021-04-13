@@ -10,7 +10,7 @@ import { useBookings } from '../api/queries'
 import { EndedBookingsList } from '../components/EndedBookingList'
 
 export const EndedBookings: React.FC = () => {
-  const { data: bookings } = useBookings()
+  const { data: bookings } = useBookings(true)
 
   const endedBookingsCount = bookings?.ended_bookings?.length || 0
   const endedBookingsLabel =

@@ -40,7 +40,10 @@ export function BookingConfirmation() {
           title={t`Voir ma réservation`}
           onPress={() => {
             analytics.logSeeMyBooking(params.offerId)
-            navigate('Bookings')
+            navigate('BookingDetails', {
+              id: params.bookingId,
+              shouldFetchAll: true,
+            })
           }}
         />
       )}

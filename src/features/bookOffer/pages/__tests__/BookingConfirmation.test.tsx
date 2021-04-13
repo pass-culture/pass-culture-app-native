@@ -18,6 +18,7 @@ describe('<BookingConfirmation />', () => {
     useRoute.mockImplementation(() => ({
       params: {
         offerId: mockOfferId,
+        bookingId: 345,
       },
     }))
   })
@@ -33,7 +34,10 @@ describe('<BookingConfirmation />', () => {
     fireEvent.press(renderAPI.getByText('Voir ma réservation'))
     await waitForExpect(() => {
       expect(analytics.logSeeMyBooking).toBeCalledWith(mockOfferId)
-      expect(navigate).toBeCalledWith('Bookings')
+      expect(navigate).toBeCalledWith('BookingDetails', {
+        id: 345,
+        shouldFetchAll: true,
+      })
     })
   })
 })

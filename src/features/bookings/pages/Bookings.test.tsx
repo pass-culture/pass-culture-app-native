@@ -1,45 +1,42 @@
-import { rest } from 'msw'
 import React from 'react'
+import { QueryObserverResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse } from 'api/gen'
-import { env } from 'libs/environment'
+import * as Queries from 'features/bookings/api/queries'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils'
 
-import { emptyBookingsSnap } from '../api/bookingsSnap'
+import { emptyBookingsSnap, bookingsSnap } from '../api/bookingsSnap'
 
 import { Bookings } from './Bookings'
 
 allowConsole({ error: true })
 
 describe('Bookings', () => {
-  it('should display the right number of ongoing bookings', async () => {
-    const { queryByText } = renderBookings()
+  afterEach(jest.restoreAllMocks)
 
-    await superFlushWithAct(10)
-    await waitForExpect(() => {
-      expect(queryByText('1\u00a0réservation en cours')).toBeTruthy()
-    })
+  it('should always execute the query (in cache or in network)', () => {
+    const useBookings = jest.spyOn(Queries, 'useBookings')
+    renderBookings(bookingsSnap)
+    expect(useBookings).toBeCalledWith(true)
+  })
+
+  it('should display the right number of ongoing bookings', async () => {
+    const { queryByText } = renderBookings(bookingsSnap)
+
+    expect(queryByText('1\u00a0réservation en cours')).toBeTruthy()
   })
 
   it('should display the empty bookings dedicated view', async () => {
-    server.use(
-      rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => {
-        return res.once(ctx.status(200), ctx.json(emptyBookingsSnap))
-      })
-    )
-    const { getByText } = await renderBookings()
-    await superFlushWithAct(10)
+    const { getByText } = await renderBookings(emptyBookingsSnap)
     getByText('Explorer les offres')
   })
 
   it('should display ended bookings CTA with the right number', async () => {
-    const { queryByText } = renderBookings()
+    const { queryByText } = renderBookings(bookingsSnap)
 
-    await superFlushWithAct(10)
     await waitForExpect(() => {
       expect(queryByText('1')).toBeTruthy()
       expect(queryByText('Réservation terminée')).toBeTruthy()
@@ -47,17 +44,19 @@ describe('Bookings', () => {
   })
 
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {
-    const { getByTestId } = renderBookings()
+    const { getByTestId } = renderBookings(bookingsSnap)
 
-    await superFlushWithAct()
     fireEvent.press(getByTestId('row-ended-bookings'))
-    await superFlushWithAct()
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('EndedBookings')
     })
   })
 })
 
-const renderBookings = () => {
+const renderBookings = (bookings: BookingsResponse) => {
+  jest
+    .spyOn(Queries, 'useBookings')
+    .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
+
   return render(reactQueryProviderHOC(<Bookings />))
 }

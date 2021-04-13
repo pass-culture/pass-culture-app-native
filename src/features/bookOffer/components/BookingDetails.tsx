@@ -39,10 +39,10 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { quantity, offerId } = bookingState
 
   const { mutate } = useBookOfferMutation({
-    onSuccess: () => {
+    onSuccess: ({ bookingId }) => {
       dismissModal()
       if (offerId) {
-        navigate('BookingConfirmation', { offerId })
+        navigate('BookingConfirmation', { offerId, bookingId })
       }
     },
     onError: (error) => {

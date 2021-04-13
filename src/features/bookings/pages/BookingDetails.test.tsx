@@ -26,8 +26,17 @@ describe('BookingDetails', () => {
     useRoute.mockImplementation(() => ({
       params: {
         id: 456,
+        shouldFetchAll: true,
       },
     }))
+  })
+
+  it('should call useOngoingBooking with the right parameters', () => {
+    const useOngoingBooking = jest.spyOn(Queries, 'useOngoingBooking')
+
+    const booking = bookingsSnap.ongoing_bookings[0]
+    renderBookingDetails(booking)
+    expect(useOngoingBooking).toBeCalledWith(456, true)
   })
 
   it('should render correctly', async () => {

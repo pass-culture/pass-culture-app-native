@@ -1,22 +1,33 @@
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
+import { QueryObserverResult } from 'react-query'
 
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { superFlushWithAct, render } from 'tests/utils'
+import { BookingsResponse } from 'api/gen'
+import * as Queries from 'features/bookings/api/queries'
+import { render } from 'tests/utils'
+
+import { bookingsSnap } from '../api/bookingsSnap'
 
 import { EndedBookings } from './EndedBookings'
 
 describe('EndedBookings', () => {
-  it('should display the right number of ended bookings', async () => {
-    const { queryByText } = renderEndedBookings()
+  afterEach(jest.restoreAllMocks)
 
-    await superFlushWithAct(10)
-    await waitForExpect(() => {
-      expect(queryByText('1\u00a0réservation terminée')).toBeTruthy()
-    })
+  it('should always execute the query (in cache or in network)', () => {
+    const useBookings = jest.spyOn(Queries, 'useBookings')
+    renderEndedBookings(bookingsSnap)
+    expect(useBookings).toBeCalledWith(true)
+  })
+  it('should display the right number of ended bookings', () => {
+    const { queryByText } = renderEndedBookings(bookingsSnap)
+
+    expect(queryByText('1\u00a0réservation terminée')).toBeTruthy()
   })
 })
 
-const renderEndedBookings = () => {
-  return render(reactQueryProviderHOC(<EndedBookings />))
+const renderEndedBookings = (bookings: BookingsResponse) => {
+  jest
+    .spyOn(Queries, 'useBookings')
+    .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
+
+  return render(<EndedBookings />)
 }
