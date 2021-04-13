@@ -44,7 +44,7 @@ export function BookingDetails() {
   const { canOpenItinerary, openItinerary } = useOpenItinerary(
     latitude,
     longitude,
-    async () => void (offerId && analytics.logConsultItinerary(offerId))
+    async () => void (offerId && analytics.logConsultItinerary(offerId, 'bookingdetails'))
   )
 
   if (!booking) return <React.Fragment></React.Fragment>

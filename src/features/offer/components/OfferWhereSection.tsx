@@ -21,7 +21,7 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, 
   const { latitude: lat, longitude: lng } = offerCoordinates
   const distanceToOffer = useDistance({ lat, lng })
   const { canOpenItinerary, openItinerary } = useOpenItinerary(lat, lng, () =>
-    analytics.logConsultItinerary(offerId)
+    analytics.logConsultItinerary(offerId, 'offer')
   )
 
   if (distanceToOffer === undefined && address === null) return null
