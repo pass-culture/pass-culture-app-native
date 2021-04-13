@@ -1,9 +1,10 @@
 ## How to add a new French translation key
 
-- in your component, add the following code :
+In your component, add the following code:
 
-```
-import { t } from '@lingui/macro';
+```tsx
+import { Text, View } from 'react-native'
+import { t } from '@lingui/macro'
 
 export const MyComponent = () => (
   <View>
