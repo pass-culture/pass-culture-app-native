@@ -10,7 +10,7 @@ import {
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { BottomCardContentContainer } from 'ui/components/BottomCard'
+import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
