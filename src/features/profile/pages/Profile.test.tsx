@@ -30,7 +30,7 @@ const mockedUseAuthContext = useAuthContext as jest.Mock
 const mockSignOut = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-  useLogoutRoutine: jest.fn(() => mockSignOut),
+  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
 let mockPosition: Pick<GeoCoordinates, 'latitude' | 'longitude'> | null = null
