@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
+import { isApiError } from 'api/helpers'
 import { Booking } from 'features/bookings/components/types'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -35,7 +36,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
   const credit = useAvailableCredit()
   const refundRule = getRefundRule(booking, user, credit)
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar } = useSnackBarContext()
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   function onSuccess() {
     navigate('Bookings')
@@ -45,8 +46,17 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
     })
   }
 
-  function onError() {
-    // TODO add error behaviour PC-7466
+  function onError(error: unknown) {
+    navigate('Bookings')
+
+    let message = t`Une erreur est survenue`
+    if (isApiError(error)) {
+      const { content } = error as { content: { code: string; message: string } }
+      if (content && content.code && content.message) {
+        message = content.message
+      }
+    }
+    showErrorSnackBar({ message, timeout: SNACK_BAR_TIME_OUT })
   }
 
   const { mutate } = useCancelBookingMutation({

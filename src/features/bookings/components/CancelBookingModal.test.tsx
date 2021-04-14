@@ -1,10 +1,16 @@
+import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { server } from 'tests/server'
+import { fireEvent, render, superFlushWithAct } from 'tests/utils'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockDismissModal = jest.fn()
 jest.mock('features/home/api', () => ({
@@ -16,6 +22,14 @@ jest.mock('features/home/api', () => ({
 let mockIsCreditExpired = false
 jest.mock('features/home/services/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: mockIsCreditExpired, amount: 2000 })),
+}))
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
+  SNACK_BAR_TIME_OUT: 5000,
 }))
 
 describe('<CancelBookingModal />', () => {
@@ -91,5 +105,35 @@ describe('<CancelBookingModal />', () => {
     )
 
     getByText('Les 19 € ne seront pas recrédités sur ton pass Culture car il est expiré.')
+  })
+
+  it('should navigate to bookings and show error snackbar if cancel booking request fails', async () => {
+    const response = { code: 'ALREADY_USED', message: 'La réservation a déjà été utilisée.' }
+    server.use(
+      rest.post(env.API_BASE_URL + '/native/v1/bookings/123/cancel', (req, res, ctx) =>
+        res.once(ctx.status(400), ctx.json(response))
+      )
+    )
+
+    const booking = bookingsSnap.ongoing_bookings[0]
+    const { getByText } = render(
+      reactQueryProviderHOC(
+        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
+      )
+    )
+
+    const cancelButton = getByText('Annuler ma réservation')
+
+    fireEvent.press(cancelButton)
+
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledWith('Bookings')
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message: response.message,
+        timeout: 5000,
+      })
+    })
   })
 })
