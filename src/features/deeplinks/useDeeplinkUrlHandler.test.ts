@@ -2,12 +2,45 @@ import { renderHook } from '@testing-library/react-hooks'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 
-import { decodeDeeplinkParts, useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
+import {
+  decodeDeeplinkParts,
+  useDeeplinkUrlHandler,
+  sanitizeURI,
+  parseURI,
+} from './useDeeplinkUrlHandler'
 import { DEEPLINK_DOMAIN } from './utils'
 
 jest.mock('features/navigation/navigationRef')
 
 describe('useDeeplinkUrlHandler', () => {
+  describe('sanitizeURI', () => {
+    it.each([
+      ['/?&id=123&/'],
+      ['/&id=123&'],
+      ['/id=123/'],
+      ['?&id=123&'],
+      ['?id=123'],
+      ['&id=123&'],
+    ])('should sanitize uri %s', (expectedUri) => {
+      const sanitizedUri = sanitizeURI(expectedUri)
+      expect(sanitizedUri).toBe('id=123')
+    })
+  })
+
+  describe('parseURI', () => {
+    it('should sanitize uri', () => {
+      const parsedUri = parseURI(
+        '?id=123&screen=home&link=https://app.passculture.testing/home?sdsd=sds&emptyParam'
+      )
+      expect(parsedUri).toEqual({
+        id: '123',
+        screen: 'home',
+        link: 'https://app.passculture.testing/home?sdsd=sds',
+        emptyParam: '',
+      })
+    })
+  })
+
   describe('Url parts', () => {
     const uri = 'my-route?param1=one&param2=2&param3=true&param4=false'
     const uriWithoutParams = 'my-route/test' // slash will be included in the route name
@@ -31,13 +64,15 @@ describe('useDeeplinkUrlHandler', () => {
       ['iOS', DEEPLINK_DOMAIN + uriWithoutParams],
     ])('should handle url without uri params for %s', (_platform, url) => {
       const { routeName, params } = decodeDeeplinkParts(url)
-      expect(routeName).toEqual('my-route/test')
-      expect(params).toEqual({})
+      expect(routeName).toEqual('my-route')
+      expect(params).toEqual({
+        test: '',
+      })
     })
 
     it("doesn't take into account the trailing slash", () => {
-      const { routeName, params } = decodeDeeplinkParts('passculture/offer/?id=ABCDE')
-      expect(routeName).toEqual('passculture/offer')
+      const { routeName, params } = decodeDeeplinkParts(DEEPLINK_DOMAIN + 'offer/?id=ABCDE')
+      expect(routeName).toEqual('offer')
       expect(params).toEqual({ id: 'ABCDE' })
     })
   })
