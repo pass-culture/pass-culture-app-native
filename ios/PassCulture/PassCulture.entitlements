@@ -9,9 +9,9 @@
 		<string>applinks:app.passculture-testing.beta.gouv.fr</string>
 		<string>applinks:app.passculture-staging.beta.gouv.fr</string>
 		<string>applinks:app.passculture.beta.gouv.fr</string>
-		<string>applinks:passculturetesting.page.link</string>
-		<string>applinks:passculturestaging.page.link</string>
-		<string>applinks:passculture.page.link</string>
+		<string>applinks:passcultureapptesting.page.link</string>
+		<string>applinks:passcultureappstaging.page.link</string>
+		<string>applinks:passcultureapp.page.link</string>
 	</array>
 </dict>
 </plist>
