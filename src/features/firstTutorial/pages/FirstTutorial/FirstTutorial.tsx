@@ -1,6 +1,8 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { BackHandler } from 'react-native'
 
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { storage } from 'libs/storage'
 import { GenericAchievement } from 'ui/components/achievements'
 
@@ -9,7 +11,12 @@ import { FourthCard } from './components/FourthCard'
 import { SecondCard } from './components/SecondCard'
 import { ThirdCard } from './components/ThirdCard'
 
-export function FirstTutorial() {
+type Props = StackScreenProps<RootStackParamList, 'FirstTutorial'>
+
+export function FirstTutorial({ route }: Props) {
+  const onFirstCardBackAction = route.params.shouldCloseAppOnBackAction
+    ? BackHandler.exitApp
+    : undefined
   return (
     <GenericAchievement
       screenName="FirstTutorial"
@@ -25,8 +32,4 @@ export function FirstTutorial() {
 
 function onSkip() {
   storage.saveObject('has_seen_tutorials', true)
-}
-
-function onFirstCardBackAction() {
-  BackHandler.exitApp()
 }
