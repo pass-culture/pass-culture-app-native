@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -35,18 +34,16 @@ export function BookingConfirmation() {
         {t`Tu peux retrouver toutes les informations concernant ta réservation sur l’application`}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
-        <ButtonPrimaryWhite
-          title={t`Voir ma réservation`}
-          onPress={() => {
-            analytics.logSeeMyBooking(params.offerId)
-            navigate('BookingDetails', {
-              id: params.bookingId,
-              shouldFetchAll: true,
-            })
-          }}
-        />
-      )}
+      <ButtonPrimaryWhite
+        title={t`Voir ma réservation`}
+        onPress={() => {
+          analytics.logSeeMyBooking(params.offerId)
+          navigate('BookingDetails', {
+            id: params.bookingId,
+            shouldFetchAll: true,
+          })
+        }}
+      />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite
         title={t`Retourner à l'accueil`}

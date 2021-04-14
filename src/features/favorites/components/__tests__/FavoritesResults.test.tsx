@@ -85,13 +85,6 @@ describe('FavoritesResults component', () => {
     const sortByButton = getByText('Trier')
     expect(sortByButton).toBeTruthy()
   })
-
-  it('should not display sortBy button', () => {
-    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
-    const { queryByText } = render(reactQueryProviderHOC(<FavoritesResults />))
-    const sortByButton = queryByText('Trier')
-    expect(sortByButton).toBeFalsy()
-  })
 })
 
 function renderFavoritesResults() {

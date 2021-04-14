@@ -21,7 +21,6 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
-import { env } from 'libs/environment'
 import { useGeolocation } from 'libs/geolocation'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
@@ -124,16 +123,14 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           initialNumToRender={10}
         />
       </Container>
-      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING &&
-        sortedFavorites &&
-        sortedFavorites.length > 0 && (
-          <SortContainer>
-            <FadeScrollingView isScrolling={isScrolling}>
-              <Sort />
-            </FadeScrollingView>
-            <Spacer.BottomScreen />
-          </SortContainer>
-        )}
+      {sortedFavorites && sortedFavorites.length > 0 && (
+        <SortContainer>
+          <FadeScrollingView isScrolling={isScrolling}>
+            <Sort />
+          </FadeScrollingView>
+          <Spacer.BottomScreen />
+        </SortContainer>
+      )}
     </React.Fragment>
   )
 })
@@ -183,12 +180,10 @@ const FavoritesResultsPlaceHolder = () => {
           scrollEnabled={false}
         />
       </Container>
-      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
-        <SortContainer>
-          <Sort />
-          <Spacer.BottomScreen />
-        </SortContainer>
-      )}
+      <SortContainer>
+        <Sort />
+        <Spacer.BottomScreen />
+      </SortContainer>
     </React.Fragment>
   )
 }
