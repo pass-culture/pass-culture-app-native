@@ -189,31 +189,6 @@ exports[`Search component should render correctly 1`] = `
           }
         }
       >
-        <Text
-          color="#626262"
-          style={
-            Array [
-              Object {
-                "color": "#626262",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Je cherche
-        </Text>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "height": 8,
-              },
-            ]
-          }
-        />
         <View
           style={
             Array [
@@ -225,28 +200,79 @@ exports[`Search component should render correctly 1`] = `
           }
         >
           <View
-            height={48}
-            width={48}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <Text
-            numberOfLines={1}
             style={
               Array [
                 Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 20,
-                  "lineHeight": 24,
+                  "top": 10,
                 },
               ]
             }
           >
-            Toutes les catégories
-          </Text>
+            <View
+              height={48}
+              width={48}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "left": -10,
+                },
+              ]
+            }
+          >
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Je cherche
+            </Text>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <Text
+              adjustPaddingLeft={true}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
+                    "paddingLeft": 10,
+                  },
+                ]
+              }
+            >
+              Toutes les catégories
+            </Text>
+          </View>
         </View>
       </View>
       <View
@@ -278,31 +304,6 @@ exports[`Search component should render correctly 1`] = `
           }
         }
       >
-        <Text
-          color="#626262"
-          style={
-            Array [
-              Object {
-                "color": "#626262",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Où
-        </Text>
-        <View
-          numberOfSpaces={2}
-          style={
-            Array [
-              Object {
-                "height": 8,
-              },
-            ]
-          }
-        />
         <View
           style={
             Array [
@@ -314,28 +315,79 @@ exports[`Search component should render correctly 1`] = `
           }
         >
           <View
-            height={48}
-            width={48}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <Text
-            numberOfLines={1}
             style={
               Array [
                 Object {
-                  "color": "#151515",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 20,
-                  "lineHeight": 24,
+                  "top": 10,
                 },
               ]
             }
           >
-            Partout
-          </Text>
+            <View
+              height={48}
+              width={48}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "left": -10,
+                },
+              ]
+            }
+          >
+            <Text
+              color="#626262"
+              style={
+                Array [
+                  Object {
+                    "color": "#626262",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Où
+            </Text>
+            <View
+              numberOfSpaces={2}
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <Text
+              adjustPaddingLeft={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
+                    "paddingLeft": 0,
+                  },
+                ]
+              }
+            >
+              Partout
+            </Text>
+          </View>
         </View>
       </View>
       <View

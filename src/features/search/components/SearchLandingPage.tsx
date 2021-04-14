@@ -29,17 +29,13 @@ export const SearchLandingPage: React.FC = () => {
         <Spacer.Flex />
 
         <TouchableOpacity onPress={() => navigate('SearchCategories')}>
-          <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Je cherche`}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
-          <BicolorIconLabel title={label} Icon={Icon} />
+          <BicolorListItem title={label} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
 
         <Separator />
 
         <TouchableOpacity onPress={() => navigate('LocationFilter')}>
-          <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Où`}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
-          <BicolorIconLabel title={locationLabel} Icon={LocationIcon} />
+          <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
         </TouchableOpacity>
 
         <Spacer.Flex flex={2} />
@@ -74,17 +70,45 @@ const TouchableOpacity = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,
 })({ alignItems: 'center' })
 
-const BicolorIconLabel: React.FC<{
+const iconSize = getSpacing(12)
+const iconSpacing = Math.round(iconSize / 5)
+
+const BicolorListItem: React.FC<{
   title: string
   Icon: React.FC<BicolorIconInterface>
-}> = ({ title, Icon }) => (
-  <Container>
-    <Icon size={getSpacing(12)} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
-    <Typo.Title3 numberOfLines={1}>{title}</Typo.Title3>
-  </Container>
-)
+  secondaryText: string | React.ElementType
+}> = ({ title, secondaryText, Icon }) => {
+  return (
+    <Container>
+      <IconContainer>
+        <Icon size={iconSize} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
+      </IconContainer>
+      <TextContainer>
+        <Typo.Body color={ColorsEnum.GREY_DARK}>{secondaryText}</Typo.Body>
+        <Spacer.Column numberOfSpaces={2} />
+        <Title numberOfLines={1} adjustPaddingLeft={title.length > 10}>
+          {title}
+        </Title>
+      </TextContainer>
+    </Container>
+  )
+}
 
 const Container = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+})
+
+const TextContainer = styled.View({
+  flex: 1,
+  alignItems: 'center',
+  left: -iconSpacing,
+})
+
+const Title = styled(Typo.Title3)<{ adjustPaddingLeft: boolean }>(({ adjustPaddingLeft }) => ({
+  paddingLeft: adjustPaddingLeft ? iconSpacing : 0,
+}))
+
+const IconContainer = styled.View({
+  top: iconSpacing,
 })
