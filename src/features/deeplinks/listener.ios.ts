@@ -35,10 +35,10 @@ export const resolveHandler = (handleDeeplinkUrl: ReturnType<typeof useDeeplinkU
     // Universal links: https://app.passculture-{env}.beta.gouv.fr/<routeName>
     return handleDeeplinkUrl(event)
   } else if (isFirebaseLongLink === true) {
-    // Long Firebase Dynamic Links: https://passculture{env}.page.link/?link=https://app.passculture-{env}.beta.gouv.fr/<routeName>?param=214906&apn=app.passculture.testing&isi=1557887412&ibi=app.passculture.test&efr=1
+    // Long Firebase Dynamic Links: https://passcultureapp{env}.page.link/?link=https://app.passculture-{env}.beta.gouv.fr/<routeName>?param=214906&apn=app.passculture.testing&isi=1557887412&ibi=app.passculture.test&efr=1
     return handleDeeplinkUrl({ url: extractUniversalLinkFromLongFirebaseDynamicLink(event) })
   }
-  // Short Firebase Dynamic Links: https://passculture{env}.page.link/<routeName>
+  // Short Firebase Dynamic Links: https://passcultureapp{env}.page.link/<routeName>
   // => handled with dynamicLinks().onLink
 }
 
