@@ -97,11 +97,14 @@ export const Profile: React.FC = () => {
     hideGeolocPermissionModal()
   }
 
+  function scrollToTop() {
+    if (scrollViewRef && scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
+    }
+  }
   useEffect(() => {
     if (!isLoggedIn) {
-      if (scrollViewRef && scrollViewRef.current) {
-        scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
-      }
+      scrollToTop()
     }
   }, [isLoggedIn])
   const logProfilScrolledToBottom = useFunctionOnce(analytics.logProfilScrolledToBottom)
@@ -230,7 +233,7 @@ export const Profile: React.FC = () => {
               title={t`Déconnexion`}
               onPress={() => {
                 analytics.logLogout()
-                signOut()
+                signOut().then(scrollToTop)
               }}
               type="clickable"
               icon={SignOut}
