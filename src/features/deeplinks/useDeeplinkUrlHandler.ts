@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { handleDeeplinkAnalytics } from './analytics'
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
@@ -35,6 +35,7 @@ export function useOnDeeplinkError() {
   return (errorMessage?: string) => {
     showInfoSnackBar({
       message: errorMessage ? errorMessage : DEFAULT_ERROR_MESSAGE,
+      timeout: SNACK_BAR_TIME_OUT,
     })
     const { screen, params } = DEEPLINK_TO_SCREEN_CONFIGURATION['default']()
     navigate(screen, params)
