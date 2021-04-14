@@ -225,7 +225,7 @@ describe('BookingDetails', () => {
   describe('Itinerary', () => {
     it.each([
       ['isEvent == true', { isEvent: true }],
-      ['isPhysical == true', { isPhysical: true }],
+      ['isPhysical == true', { isPhysical: true, isDigital: false }],
     ])('should render the itinerary button when %s', (_testLabel, dataProvider) => {
       const openItinerary = jest.spyOn(OpenItinerary, 'default').mockReturnValue({
         openItinerary: jest.fn(),
@@ -248,6 +248,11 @@ describe('BookingDetails', () => {
         'canOpenItinerary == true && isEvent == false && isPhysical == false',
         true,
         { isEvent: false, isPhysical: false },
+      ],
+      [
+        'canOpenItinerary == true && isEvent == false && isPhysical == true && isDigital == true',
+        true,
+        { isEvent: false, isPhysical: true, isDigital: true },
       ],
     ])(
       'should not render the itinerary button when %s',
