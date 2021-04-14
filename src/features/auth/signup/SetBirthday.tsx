@@ -11,7 +11,7 @@ import { RootStackParamList, UseNavigationType } from 'features/navigation/RootN
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
-import { BottomCardContentContainer } from 'ui/components/BottomCard'
+import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
