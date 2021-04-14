@@ -10,20 +10,47 @@ import { isAllowedRouteTypeGuard } from './typeGuard'
 import { DeeplinkEvent, DeeplinkParts } from './types'
 import { DEEPLINK_DOMAIN } from './utils'
 
+export function sanitizeURI(uri: string) {
+  return (
+    uri
+      // in this order ...
+      .trim()
+      .replace(/^\/+|\/+$/g, '') // removes external '/'
+      .replace(/^\?+/g, '') // removes initial '?'
+      .replace(/^&+|&+$/g, '') // removes external '&'
+  )
+}
+
+export function parseURI(uri: string) {
+  const sanitizedUri = sanitizeURI(uri)
+  const parameterFields =
+    sanitizedUri.split('&').reduce((accumulator, field) => {
+      accumulator = accumulator || {}
+      const index = field.indexOf('=')
+      if (index === -1) {
+        accumulator[field] = '' // empty parameter
+      } else {
+        const key = field.slice(0, index)
+        const value = field.slice(index + 1)
+        accumulator[key] = value
+      }
+      return accumulator
+    }, <Record<string, string> | null>{}) || {}
+
+  return parameterFields
+}
+
 export function decodeDeeplinkParts(url: string): DeeplinkParts {
   const route = url.replace(DEEPLINK_DOMAIN, '')
 
-  const [routeName, searchParams] = route.split('?')
-  const params = searchParams
-    ? JSON.parse(
-        `{"${decodeURI(searchParams)
-          .replace(/"/g, '\\"')
-          .replace(/&/g, '","')
-          .replace(/=/g, '":"')}"}`
-      )
-    : {}
+  const routeNameRegexp = /^([a-zA-Z0-9-_]+)/g
 
-  return { routeName: routeName.replace(/\/$/, ''), params }
+  const routeName = route.match(routeNameRegexp)?.[0] || 'unknown'
+  const searchParams = route.replace(routeNameRegexp, '')
+
+  const params = parseURI(decodeURI(searchParams))
+
+  return { routeName: routeName, params }
 }
 
 const DEFAULT_ERROR_MESSAGE = t`Le lien est incorrect`
