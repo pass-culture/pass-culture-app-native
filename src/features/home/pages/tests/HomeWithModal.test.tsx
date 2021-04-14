@@ -8,7 +8,7 @@ import { flushAllPromises, render, act } from 'tests/utils'
 import { Home } from '../Home'
 
 jest.mock('features/home/api', () => ({
-  useUserProfileInfo: jest.fn(() => ({ data: undefined })),
+  useUserProfileInfo: jest.fn(() => ({ data: undefined, refetch: jest.fn() })),
 }))
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
