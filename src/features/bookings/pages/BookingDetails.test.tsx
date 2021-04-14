@@ -122,6 +122,7 @@ describe('BookingDetails', () => {
         'Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
+
     it.each([
       [
         'event',
@@ -153,6 +154,7 @@ describe('BookingDetails', () => {
       getByText('Modalités de retrait')
       getByText(booking.stock.offer.withdrawalDetails)
     })
+
     it('should not display withdrawal details', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.withdrawalDetails = undefined
@@ -165,6 +167,7 @@ describe('BookingDetails', () => {
       expect(withdrawalText).toBeFalsy()
     })
   })
+
   it('should redirect to the Offer page and log event', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const { getByText } = renderBookingDetails(booking)
