@@ -1,12 +1,11 @@
 import React, { FC, MutableRefObject, useEffect, useState } from 'react'
-import { Keyboard, View } from 'react-native'
+import { Keyboard, View, KeyboardAvoidingView, Platform } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getShadow, getSpacing, Spacer } from 'ui/theme'
-
-import { AvoidingKeyboardContainer } from './keyboard'
 
 interface Props {
   onKeyboardDismiss?: () => void
@@ -37,37 +36,45 @@ export const BottomContentPage: FC<Props> = (props) => {
   }, [keyboardHeight])
 
   return (
-    <React.Fragment>
+    <BottomContentPageContainer>
       <Background />
       <Container>
-        <AvoidingKeyboardContainer keyboardHeight={keyboardHeight}>
-          <StyledBottomCardContainer>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+          <StyledBottomCardContainer
+            // eslint-disable-next-line react-native/no-inline-styles
+            contentContainerStyle={{
+              width: '100%',
+              padding: getSpacing(6),
+              borderTopLeftRadius: getSpacing(4),
+              borderTopRightRadius: getSpacing(4),
+              backgroundColor: `${ColorsEnum.WHITE}`,
+              alignItems: 'center',
+              flexDirection: 'column',
+              paddingBottom: keyboardHeight !== 0 ? 50 : 20,
+            }}
+            scrollEnabled={keyboardHeight !== 0}>
             {props.children}
             <Spacer.BottomScreen />
           </StyledBottomCardContainer>
-        </AvoidingKeyboardContainer>
+        </KeyboardAvoidingView>
       </Container>
-    </React.Fragment>
+    </BottomContentPageContainer>
   )
 }
+
+const BottomContentPageContainer = styled(SafeAreaView)({
+  height: '100%',
+})
 
 const Container = styled(View).attrs({
   onPress: Keyboard.dismiss,
 })({
-  zIndex: 41,
-  position: 'absolute',
-  bottom: 0,
   width: '100%',
+  height: '100%',
+  justifyContent: 'flex-end',
 })
 
-const StyledBottomCardContainer = styled.View({
-  width: '100%',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: getSpacing(6),
-  borderTopLeftRadius: getSpacing(4),
-  borderTopRightRadius: getSpacing(4),
-  backgroundColor: `${ColorsEnum.WHITE}`,
+const StyledBottomCardContainer = styled.ScrollView({
   ...getShadow({
     shadowOffset: {
       width: 0,
