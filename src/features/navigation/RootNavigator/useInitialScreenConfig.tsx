@@ -66,7 +66,7 @@ async function getInitialScreenConfig({
     return homeNavigateConfig
   }
 
-  return { screen: 'FirstTutorial', params: undefined }
+  return { screen: 'FirstTutorial', params: { shouldCloseAppOnBackAction: true } }
 }
 
 function triggerInitialScreenNameAnalytics(screenName: ScreenNames) {

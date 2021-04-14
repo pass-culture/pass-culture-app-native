@@ -155,7 +155,9 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={'First Tutorial'}
-            onPress={() => navigation.navigate('FirstTutorial')}
+            onPress={() =>
+              navigation.navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })
+            }
           />
         </Row>
         <Row half>

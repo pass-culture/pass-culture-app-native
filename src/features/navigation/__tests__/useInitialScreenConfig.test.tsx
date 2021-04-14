@@ -44,7 +44,7 @@ describe('useInitialScreenConfig()', () => {
     ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true }}   | ${'EighteenBirthday'} | ${undefined}                                                      | ${'EighteenBirthday'}
     ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'TabNavigator'}     | ${{ screen: 'Home', params: { shouldDisplayLoginModal: false } }} | ${'Home'}
     ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true }}  | ${'TabNavigator'}     | ${{ screen: 'Home', params: { shouldDisplayLoginModal: false } }} | ${'Home'}
-    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false }} | ${'FirstTutorial'}    | ${undefined}                                                      | ${'FirstTutorial'}
+    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false }} | ${'FirstTutorial'}    | ${{ shouldCloseAppOnBackAction: true }}                           | ${'FirstTutorial'}
   `(
     `should return $expectedScreen when 
       - has_seen_tutorials = $hasSeenTutorials 
