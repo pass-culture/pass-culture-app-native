@@ -322,7 +322,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                           >
                             <Image
                               blurRadius={20}
-                              extraHeight={16}
+                              height={312}
                               resizeMode="cover"
                               source={
                                 Object {
@@ -2050,7 +2050,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                           >
                             <Image
                               blurRadius={20}
-                              extraHeight={16}
+                              height={312}
                               resizeMode="cover"
                               source={
                                 Object {

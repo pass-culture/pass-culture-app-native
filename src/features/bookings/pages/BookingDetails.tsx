@@ -1,7 +1,14 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useRef, useState } from 'react'
-import { Animated, Dimensions, NativeScrollEvent, NativeSyntheticEvent, View } from 'react-native'
+import {
+  Animated,
+  Dimensions,
+  LayoutRectangle,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  View,
+} from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
@@ -27,6 +34,7 @@ import { interpolationConfig } from 'ui/components/headers/animationHelpers'
 import { blurImageHeight, HeroHeader } from 'ui/components/headers/HeroHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
+import { ticketFooterRatio } from 'ui/svg/TicketFooter'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -153,6 +161,11 @@ export function BookingDetails() {
   const ticketFooterWidth = Math.min(TICKET_WIDTH, TICKET_MAX_WIDTH)
   const ticketFooterHeigth = ticketFooterWidth / ticketFooterRatio
 
+  const updateTicketBottomPosition = (layout: LayoutRectangle) => {
+    const { y, height } = layout
+    setTicketBottomPosition(y + height - ticketFooterHeigth)
+  }
+
   return (
     <React.Fragment>
       <ScrollView
@@ -171,29 +184,34 @@ export function BookingDetails() {
           categoryName={offer.category.name}
           imageUrl={offer.image?.url || ''}>
           <Spacer.Column numberOfSpaces={18} />
-          <ThreeShapesTicket width={ticketFooterWidth} color={ColorsEnum.WHITE}>
-            <TicketContent>
-              <Title>{offer.name}</Title>
-              <TicketInnerContent>
-                <Token>{booking.token}</Token>
-                {properties.isDigital ? (
-                  <InnerButtonContainer>
-                    <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
-                  </InnerButtonContainer>
-                ) : booking.qrCodeData ? (
-                  <View testID="qr-code">
-                    <QRCode value={booking.qrCodeData} size={QR_CODE_SIZE} />
-                  </View>
-                ) : null}
-                {shouldDisplayEAN && (
-                  <EANContainer>
-                    <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
-                    <Typo.Body color={ColorsEnum.GREY_DARK}>{offer.extraData?.isbn}</Typo.Body>
-                  </EANContainer>
-                )}
-              </TicketInnerContent>
-            </TicketContent>
-          </ThreeShapesTicket>
+          <TicketContainer
+            onLayout={(event) => {
+              updateTicketBottomPosition(event.nativeEvent.layout)
+            }}>
+            <ThreeShapesTicket width={ticketFooterWidth} color={ColorsEnum.WHITE}>
+              <TicketContent>
+                <Title>{offer.name}</Title>
+                <TicketInnerContent>
+                  <Token>{booking.token}</Token>
+                  {properties.isDigital ? (
+                    <InnerButtonContainer>
+                      <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
+                    </InnerButtonContainer>
+                  ) : booking.qrCodeData ? (
+                    <View testID="qr-code">
+                      <QRCode value={booking.qrCodeData} size={QR_CODE_SIZE} />
+                    </View>
+                  ) : null}
+                  {shouldDisplayEAN && (
+                    <EANContainer>
+                      <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
+                      <Typo.Body color={ColorsEnum.GREY_DARK}>{offer.extraData?.isbn}</Typo.Body>
+                    </EANContainer>
+                  )}
+                </TicketInnerContent>
+              </TicketContent>
+            </ThreeShapesTicket>
+          </TicketContainer>
         </HeroHeader>
 
         <ViewWithPadding>
@@ -237,6 +255,10 @@ export function BookingDetails() {
 }
 
 const paddingHorizontal = getSpacing(5)
+
+const TicketContainer = styled.View({
+  flex: 1,
+})
 
 const TicketContent = styled.View({
   paddingHorizontal: getSpacing(7),
