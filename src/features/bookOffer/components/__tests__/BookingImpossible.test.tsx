@@ -71,6 +71,7 @@ describe('<BookingImpossible />', () => {
         from: 'BookingImpossible',
         offerId: 20,
       })
+      expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })
   })
 

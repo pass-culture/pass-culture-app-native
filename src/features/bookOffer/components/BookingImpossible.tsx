@@ -41,6 +41,7 @@ export const BookingImpossible: React.FC = () => {
   const addToFavourite = () => {
     if (!favorite && typeof offerId === 'number') {
       addFavorite({ offerId })
+      dismissModal()
     }
   }
 
