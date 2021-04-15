@@ -1,15 +1,22 @@
 import { NavigationContainer, NavigationContainerRef, Theme } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ColorsEnum } from 'ui/theme'
 
-import { navigationRef } from './navigationRef'
+import { isReadyRef, navigationRef } from './navigationRef'
 import { onNavigationStateChange } from './services'
 
 const NAV_THEME = { colors: { background: ColorsEnum.WHITE } } as Theme
 
 export const AppNavigationContainer: React.FC<{ children: Element }> = ({ children }) => {
   const [isRefDefined, setIsRefDefined] = useState(false)
+
+  useEffect(() => {
+    return () => {
+      /* @ts-ignore : Cannot assign to 'current' because it is a read-only property. */
+      isReadyRef.current = false
+    }
+  }, [])
 
   function setRef(ref: NavigationContainerRef | null) {
     if (ref) {
@@ -20,7 +27,14 @@ export const AppNavigationContainer: React.FC<{ children: Element }> = ({ childr
   }
 
   return (
-    <NavigationContainer onStateChange={onNavigationStateChange} ref={setRef} theme={NAV_THEME}>
+    <NavigationContainer
+      onStateChange={onNavigationStateChange}
+      ref={setRef}
+      onReady={() => {
+        /* @ts-ignore : Cannot assign to 'current' because it is a read-only property. */
+        isReadyRef.current = true
+      }}
+      theme={NAV_THEME}>
       {isRefDefined && children}
     </NavigationContainer>
   )
