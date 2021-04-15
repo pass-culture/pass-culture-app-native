@@ -139,101 +139,99 @@ Array [
                 Avez-vous déjà vu ?
               </Text>
               <View
-                numberOfSpaces={8}
                 style={
                   Array [
                     Object {
-                      "height": 32,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "center",
                     },
                   ]
                 }
-              />
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                352UW4
-              </Text>
-              <View
-                numberOfSpaces={2.5}
-                style={
-                  Array [
-                    Object {
-                      "height": 10,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 2,
-                    "paddingRight": 2,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  }
-                }
-                testID="button-container"
               >
                 <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
                   style={
                     Array [
                       Object {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 5,
-                        "maxWidth": 650,
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 18,
+                        "lineHeight": 22,
+                        "paddingBottom": 10,
+                        "paddingLeft": 10,
+                        "paddingRight": 10,
+                        "paddingTop": 10,
+                        "textAlign": "center",
                       },
                     ]
                   }
-                  testID="button-title"
-                  textColor="#ffffff"
                 >
-                  Accéder à l'offre
+                  352UW4
                 </Text>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#eb0055",
+                        "borderRadius": 24,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "opacity": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 2,
+                        "paddingRight": 2,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      }
+                    }
+                    testID="button-container"
+                  >
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "marginLeft": 5,
+                            "maxWidth": 650,
+                          },
+                        ]
+                      }
+                      testID="button-title"
+                      textColor="#ffffff"
+                    >
+                      Accéder à l'offre
+                    </Text>
+                  </View>
+                </View>
               </View>
-              <View
-                numberOfSpaces={9}
-                style={
-                  Array [
-                    Object {
-                      "height": 36,
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
           <View
@@ -930,6 +928,13 @@ Array [
       Object {
         "backgroundColor": "rgba(255, 255, 255, 0)",
         "position": "absolute",
+        "shadowColor": "#151515",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 2,
         "top": 0,
         "width": "100%",
         "zIndex": 1,

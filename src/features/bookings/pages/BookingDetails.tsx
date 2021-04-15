@@ -167,26 +167,24 @@ export function BookingDetails() {
             color={ColorsEnum.WHITE}>
             <TicketContent>
               <Title>{offer.name}</Title>
-              <Spacer.Column numberOfSpaces={properties.isDigital ? 8 : 3} />
-              <Token>{booking.token}</Token>
-              <Spacer.Column numberOfSpaces={2.5} />
-
-              {properties.isDigital ? (
-                <React.Fragment>
-                  <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
-                  <Spacer.Column numberOfSpaces={9} />
-                </React.Fragment>
-              ) : booking.qrCodeData ? (
-                <View testID="qr-code">
-                  <QRCode value={booking.qrCodeData} size={QR_CODE_SIZE} />
-                </View>
-              ) : null}
-              {shouldDisplayEAN && (
-                <EANContainer>
-                  <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
-                  <Typo.Body color={ColorsEnum.GREY_DARK}>{offer.extraData?.isbn}</Typo.Body>
-                </EANContainer>
-              )}
+              <TicketInnerContent>
+                <Token>{booking.token}</Token>
+                {properties.isDigital ? (
+                  <InnerButtonContainer>
+                    <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
+                  </InnerButtonContainer>
+                ) : booking.qrCodeData ? (
+                  <View testID="qr-code">
+                    <QRCode value={booking.qrCodeData} size={QR_CODE_SIZE} />
+                  </View>
+                ) : null}
+                {shouldDisplayEAN && (
+                  <EANContainer>
+                    <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
+                    <Typo.Body color={ColorsEnum.GREY_DARK}>{offer.extraData?.isbn}</Typo.Body>
+                  </EANContainer>
+                )}
+              </TicketInnerContent>
             </TicketContent>
           </ThreeShapesTicket>
         </HeroHeader>
@@ -248,6 +246,17 @@ const Title = styled(Typo.Title3)({
 const Token = styled(Typo.Title4)({
   color: ColorsEnum.PRIMARY,
   textAlign: 'center',
+  padding: getSpacing(2.5),
+})
+
+const TicketInnerContent = styled.View({
+  alignItems: 'center',
+  justifyContent: 'center',
+  flex: 1,
+})
+
+const InnerButtonContainer = styled.View({
+  flexDirection: 'row',
 })
 
 const EANContainer = styled.View({
