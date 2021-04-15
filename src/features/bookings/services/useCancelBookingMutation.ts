@@ -12,7 +12,7 @@ export const useCancelBookingMutation = ({ onSuccess, onError }: Props) => {
 
   return useMutation((bookingId: number) => api.postnativev1bookingsbookingIdcancel(bookingId), {
     onSuccess: () => {
-      queryClient.invalidateQueries('me')
+      queryClient.invalidateQueries('userProfile')
       queryClient.invalidateQueries('bookings')
       onSuccess()
     },
