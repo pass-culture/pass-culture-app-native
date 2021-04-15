@@ -500,30 +500,6 @@ export interface DomainsCredit {
      */
     physical?: Credit | null;
 }/**
- * 
- * @export
- * @interface Expense
- */
-export interface Expense {
-    /**
-     * 
-     * @type {number}
-     * @memberof Expense
-     */
-    current: number;
-    /**
-     * 
-     * @type {ExpenseDomain}
-     * @memberof Expense
-     */
-    domain: ExpenseDomain;
-    /**
-     * 
-     * @type {number}
-     * @memberof Expense
-     */
-    limit: number;
-}/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1288,12 +1264,6 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     email: string;
-    /**
-     * 
-     * @type {Array<Expense>}
-     * @memberof UserProfileResponse
-     */
-    expenses: Array<Expense>;
     /**
      * 
      * @type {string}

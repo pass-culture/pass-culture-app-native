@@ -16,7 +16,6 @@ const user: UserProfileResponse = {
     physical: { initial: 30000, remaining: 10000 },
     digital: { initial: 30000, remaining: 20000 },
   },
-  expenses: [],
   lastName: '93 HNMM 2',
   id: 1234,
   needsToFillCulturalSurvey: true,

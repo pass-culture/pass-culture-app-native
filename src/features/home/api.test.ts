@@ -20,7 +20,6 @@ const userProfileAPIResponse: UserProfileResponse = {
     physical: { initial: 30000, remaining: 10000 },
     digital: { initial: 30000, remaining: 20000 },
   },
-  expenses: [],
   email: 'email@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,
