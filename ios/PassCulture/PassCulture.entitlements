@@ -6,12 +6,8 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:app.passculture-testing.beta.gouv.fr</string>
-		<string>applinks:app.passculture-staging.beta.gouv.fr</string>
-		<string>applinks:app.passculture.beta.gouv.fr</string>
-		<string>applinks:passcultureapptesting.page.link</string>
-		<string>applinks:passcultureappstaging.page.link</string>
-		<string>applinks:passcultureapp.page.link</string>
+		<string>applinks:$(UNIVERSAL_LINK)</string>
+		<string>applinks:$(FIREBASE_DYNAMIC_LINK)</string>
 	</array>
 </dict>
 </plist>
