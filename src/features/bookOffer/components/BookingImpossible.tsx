@@ -60,10 +60,14 @@ export const BookingImpossible: React.FC = () => {
 
       <Spacer.Column numberOfSpaces={6} />
 
-      <ButtonPrimary title={t`Mettre en favoris`} onPress={addToFavourite} />
-      <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiary title={t`Retourner à l'offre`} onPress={dismissModal} />
-      <Spacer.Column numberOfSpaces={4} />
+      {!favorite && (
+        <React.Fragment>
+          <ButtonPrimary title={t`Mettre en favoris`} onPress={addToFavourite} />
+          <Spacer.Column numberOfSpaces={4} />
+          <ButtonTertiary title={t`Retourner à l'offre`} onPress={dismissModal} />
+          <Spacer.Column numberOfSpaces={4} />
+        </React.Fragment>
+      )}
     </Container>
   )
 }

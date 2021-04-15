@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BookingImpossible /> should render 1`] = `
+exports[`<BookingImpossible /> should render with CTAs when offer is not yet favorite 1`] = `
 <View
   style={
     Array [
