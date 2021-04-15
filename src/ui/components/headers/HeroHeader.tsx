@@ -6,23 +6,20 @@ import { CategoryNameEnum } from 'api/gen'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, ScreenWidth } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface Props {
   imageUrl: string
   categoryName?: CategoryNameEnum | null
+  imageHeight: number
 }
 
 export const HeroHeader: React.FC<Props> = (props) => {
-  const { top } = useCustomSafeInsets()
-  const imageHeight = blurImageHeight + top
-
   return (
     <Container>
       <HeroContainer>
         {props.imageUrl ? (
           <BlurImage
-            height={imageHeight}
+            height={props.imageHeight}
             blurRadius={Platform.OS === 'android' ? 5 : 20}
             resizeMode={'cover'}
             source={{ uri: props.imageUrl }}
@@ -31,7 +28,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
           <BackgroundPlaceholder
             testID="BackgroundPlaceholder"
             width={ScreenWidth}
-            height={imageHeight}
+            height={props.imageHeight}
           />
         )}
         <Rectangle size={ScreenWidth} />

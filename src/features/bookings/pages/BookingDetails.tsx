@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Animated, Dimensions, NativeScrollEvent, NativeSyntheticEvent, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
@@ -28,6 +28,7 @@ import { blurImageHeight, HeroHeader } from 'ui/components/headers/HeroHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const TICKET_MAX_WIDTH = 300
 const TICKET_MIN_HEIGHT = 220
@@ -54,6 +55,8 @@ export function BookingDetails() {
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
   )
+  const { top } = useCustomSafeInsets()
+  const [ticketBottomPosition, setTicketBottomPosition] = useState(blurImageHeight + top)
 
   if (!booking) return <React.Fragment></React.Fragment>
 
@@ -147,6 +150,7 @@ export function BookingDetails() {
       openExternalUrl(offer.url)
     }
   }
+
   return (
     <React.Fragment>
       <ScrollView
@@ -160,7 +164,10 @@ export function BookingDetails() {
         }}
         testID="BookingDetailsScrollView"
         bounces={false}>
-        <HeroHeader categoryName={offer.category.name} imageUrl={offer.image?.url || ''}>
+        <HeroHeader
+          imageHeight={ticketBottomPosition}
+          categoryName={offer.category.name}
+          imageUrl={offer.image?.url || ''}>
           <Spacer.Column numberOfSpaces={18} />
           <ThreeShapesTicket
             width={Math.min(TICKET_WIDTH, TICKET_MAX_WIDTH)}
