@@ -220,7 +220,6 @@ export function BookingDetails() {
           />
           <Spacer.Column numberOfSpaces={4} />
           {renderCancellationCTA()}
-          <Spacer.Column numberOfSpaces={6} />
         </ViewWithPadding>
         <Spacer.Column numberOfSpaces={5} />
       </ScrollView>
