@@ -4,6 +4,7 @@ import { api } from 'api/api'
 import { AccountRequest, GetIdCheckTokenResponse, SettingsResponse, SigninRequest } from 'api/gen'
 import { isApiError } from 'api/helpers'
 import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
+import { QueryKeys } from 'libs/queryKeys'
 
 import { formatToFrenchDecimal } from '../../libs/parsers'
 
@@ -76,13 +77,17 @@ export function useGetIdCheckToken(queryCondition?: boolean) {
 
   const { isLoggedIn } = useAuthContext()
 
-  return useQuery<GetIdCheckTokenResponse>('idCheckToken', () => api.getnativev1idCheckToken(), {
-    enabled: queryCondition && isLoggedIn,
-  })
+  return useQuery<GetIdCheckTokenResponse>(
+    QueryKeys.ID_CHECK_TOKEN,
+    () => api.getnativev1idCheckToken(),
+    {
+      enabled: queryCondition && isLoggedIn,
+    }
+  )
 }
 
 export function useAppSettings() {
-  return useQuery<SettingsResponse>('settings', () => api.getnativev1settings())
+  return useQuery<SettingsResponse>(QueryKeys.SETTINGS, () => api.getnativev1settings())
 }
 
 export function useDepositAmount() {

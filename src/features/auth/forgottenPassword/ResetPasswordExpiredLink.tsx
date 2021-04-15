@@ -10,6 +10,7 @@ import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -24,7 +25,7 @@ type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 export function ResetPasswordExpiredLink(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { refetch: resetPasswordEmailQuery, isFetching } = useQuery(
-    'resetPasswordExpiredLink',
+    QueryKeys.RESET_PASSWORD_EXPIRED_LINK,
     resetPasswordExpiredLink,
     {
       cacheTime: 0,

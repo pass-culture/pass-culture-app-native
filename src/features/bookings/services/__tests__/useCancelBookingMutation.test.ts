@@ -1,6 +1,7 @@
 import { useQueryClient, useMutation } from 'react-query'
 
 import { api } from 'api/api'
+import { QueryKeys } from 'libs/queryKeys'
 
 import { useCancelBookingMutation } from '../useCancelBookingMutation'
 
@@ -30,8 +31,8 @@ describe('[hook] useCancelBookingMutation', () => {
     const { mutationOptions } = returnedMutationValue
     mutationOptions.onSuccess()
     expect(onSuccess).toHaveBeenCalledWith()
-    expect(queryClient.invalidateQueries).toHaveBeenCalledWith('me')
-    expect(queryClient.invalidateQueries).toHaveBeenCalledWith('bookings')
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.USER_PROFILE)
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith(QueryKeys.BOOKINGS)
   })
 
   it('call api to cancel a booking', () => {

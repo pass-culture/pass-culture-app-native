@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
+import { QueryKeys } from 'libs/queryKeys'
 
 interface Props {
   onSuccess: () => void
@@ -12,8 +13,8 @@ export const useCancelBookingMutation = ({ onSuccess, onError }: Props) => {
 
   return useMutation((bookingId: number) => api.postnativev1bookingsbookingIdcancel(bookingId), {
     onSuccess: () => {
-      queryClient.invalidateQueries('userProfile')
-      queryClient.invalidateQueries('bookings')
+      queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
+      queryClient.invalidateQueries(QueryKeys.BOOKINGS)
       onSuccess()
     },
     onError,

@@ -9,6 +9,7 @@ import { AsyncError } from 'features/errors/pages/AsyncErrorBoundary'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useDistance } from 'features/offer/components/useDistance'
+import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -27,10 +28,14 @@ export function Navigation(): JSX.Element {
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
 
-  const { refetch: errorAsyncQuery, isFetching } = useQuery('errorAsync', () => errorAsync(), {
-    cacheTime: 0,
-    enabled: false,
-  })
+  const { refetch: errorAsyncQuery, isFetching } = useQuery(
+    QueryKeys.ERROR_ASYNC,
+    () => errorAsync(),
+    {
+      cacheTime: 0,
+      enabled: false,
+    }
+  )
 
   async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)
