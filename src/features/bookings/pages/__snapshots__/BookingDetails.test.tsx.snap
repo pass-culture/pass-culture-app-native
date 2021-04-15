@@ -941,6 +941,13 @@ Array [
       Object {
         "backgroundColor": "rgba(255, 255, 255, 0)",
         "position": "absolute",
+        "shadowColor": "#151515",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0,
+        "shadowRadius": 2,
         "top": 0,
         "width": "100%",
         "zIndex": 1,

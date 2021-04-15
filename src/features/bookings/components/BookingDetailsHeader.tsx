@@ -9,9 +9,9 @@ import {
   headerBackgroundInterpolation,
   iconBackgroundInterpolation,
   iconBorderInterpolation,
+  headerShadowOpacityInterpolation,
 } from 'ui/components/headers/animationHelpers'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { ColorsEnum, getSpacing, Spacer, Typo, getAnimatedNativeShadow } from 'ui/theme'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
@@ -26,12 +26,26 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const iconBackgroundColor = headerTransition.interpolate(iconBackgroundInterpolation)
   const iconBorderColor = headerTransition.interpolate(iconBorderInterpolation)
   const headerBackgroundColor = headerTransition.interpolate(headerBackgroundInterpolation)
+  const headerShadowOpacity = headerTransition.interpolate(headerShadowOpacityInterpolation)
 
   const animationState = { iconBackgroundColor, iconBorderColor, transition: headerTransition }
 
   return (
     <React.Fragment>
-      <HeaderContainer style={{ backgroundColor: headerBackgroundColor }}>
+      <HeaderContainer
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{
+          backgroundColor: headerBackgroundColor,
+          ...getAnimatedNativeShadow({
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowRadius: 2,
+            shadowColor: ColorsEnum.BLACK,
+            shadowOpacity: headerShadowOpacity,
+          }),
+        }}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={2} />
         <Row>
