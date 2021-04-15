@@ -14,3 +14,7 @@ export function getShadow(shadowInput: ShadowInput): AndroidShadow {
 export function getNativeShadow(shadowInput: ShadowInput): AndroidShadow | undefined {
   return getShadow(shadowInput)
 }
+
+export function getAnimatedNativeShadow(shadowInput: ShadowInput): AndroidShadow | undefined {
+  return { elevation: shadowInput.shadowOpacity }
+}

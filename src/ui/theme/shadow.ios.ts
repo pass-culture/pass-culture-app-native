@@ -16,3 +16,7 @@ export function getShadow(shadowInput: ShadowInput): iOSShadowOutput {
 export function getNativeShadow(shadowInput: ShadowInput): ShadowInput {
   return shadowInput
 }
+
+export function getAnimatedNativeShadow(shadowInput: ShadowInput): ShadowInput {
+  return shadowInput
+}
