@@ -32,12 +32,7 @@ const statusBarHeight = getStatusBarHeight(true)
 export const Home: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { data: userInfos, refetch } = useUserProfileInfo()
-  useFocusEffect(
-    useCallback(() => {
-      refetch()
-    }, [])
-  )
+  const { data: userInfos } = useUserProfileInfo()
   const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const showSkeleton = useShowSkeleton()
   const availableCredit = useAvailableCredit()
