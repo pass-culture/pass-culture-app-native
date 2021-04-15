@@ -5,8 +5,7 @@ import { FavoriteRequest, FavoriteResponse, PaginatedFavoritesResponse } from 'a
 import { ApiError } from 'api/helpers'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { EmptyResponse } from 'libs/fetch'
-
-export const QUERY_KEY = 'favorites'
+import { QueryKeys } from 'libs/queryKeys'
 
 export interface FavoriteMutationContext {
   previousFavorites: Array<FavoriteResponse>
@@ -38,16 +37,18 @@ export function useRemoveFavorite({ onSuccess, onError, onMutate, onSettled }: R
     {
       onSuccess,
       onMutate: async (favoriteId) => {
-        await queryClient.cancelQueries(QUERY_KEY)
+        await queryClient.cancelQueries(QueryKeys.FAVORITES)
         // Snapshot the previous value
-        const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(QUERY_KEY)
+        const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(
+          QueryKeys.FAVORITES
+        )
 
         // Optimistically update to the new value
         if (favoriteId && previousFavorites) {
           const favorites = previousFavorites.favorites.filter(
             (favorite) => favorite.id !== favoriteId
           )
-          queryClient.setQueryData<PaginatedFavoritesResponse>(QUERY_KEY, {
+          queryClient.setQueryData<PaginatedFavoritesResponse>(QueryKeys.FAVORITES, {
             ...previousFavorites,
             nbFavorites: favorites.length,
             favorites,
@@ -61,7 +62,7 @@ export function useRemoveFavorite({ onSuccess, onError, onMutate, onSettled }: R
       },
       onError: (error: Error, favoriteId, context: FavoriteMutationContext | undefined) => {
         if (context?.previousFavorites) {
-          queryClient.setQueryData(QUERY_KEY, context.previousFavorites)
+          queryClient.setQueryData(QueryKeys.FAVORITES, context.previousFavorites)
         }
         if (onError) {
           onError(error, favoriteId, context)
@@ -80,10 +81,12 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
   const queryClient = useQueryClient()
   return useMutation((body: FavoriteRequest) => api.postnativev1mefavorites(body), {
     onSuccess: (data: FavoriteResponse) => {
-      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(QUERY_KEY)
+      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(
+        QueryKeys.FAVORITES
+      )
 
       if (previousFavorites) {
-        queryClient.setQueryData(QUERY_KEY, {
+        queryClient.setQueryData(QueryKeys.FAVORITES, {
           ...previousFavorites,
           favorites: [
             ...previousFavorites.favorites.filter((favoris) => favoris.offer.id !== data.offer.id),
@@ -91,21 +94,23 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
           ],
         })
       } else {
-        queryClient.invalidateQueries(QUERY_KEY)
+        queryClient.invalidateQueries(QueryKeys.FAVORITES)
       }
       if (onSuccess) {
         onSuccess(data)
       }
     },
     onMutate: ({ offerId }) => {
-      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(QUERY_KEY)
+      const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>(
+        QueryKeys.FAVORITES
+      )
       if (previousFavorites) {
         const favorites = [
           ...previousFavorites.favorites,
           { id: Math.random(), offer: { id: offerId, category: {} } },
         ]
 
-        queryClient.setQueryData(QUERY_KEY, {
+        queryClient.setQueryData(QueryKeys.FAVORITES, {
           ...previousFavorites,
           nbFavorites: favorites.length,
           favorites,
@@ -123,7 +128,7 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
       context: FavoriteMutationContext | undefined
     ) => {
       if (context?.previousFavorites) {
-        queryClient.setQueryData(QUERY_KEY, context.previousFavorites)
+        queryClient.setQueryData(QueryKeys.FAVORITES, context.previousFavorites)
       }
       if (onError) {
         onError(error, { offerId }, context)
@@ -140,9 +145,13 @@ export function useAddFavorite({ onSuccess, onError, onMutate, onSettled }: AddF
 export function useFavorites() {
   const { isLoggedIn } = useAuthContext()
 
-  return useQuery<PaginatedFavoritesResponse>(QUERY_KEY, () => api.getnativev1mefavorites(), {
-    enabled: isLoggedIn,
-  })
+  return useQuery<PaginatedFavoritesResponse>(
+    QueryKeys.FAVORITES,
+    () => api.getnativev1mefavorites(),
+    {
+      enabled: isLoggedIn,
+    }
+  )
 }
 
 export function useFavorite({ offerId, id }: { offerId?: number; id?: number }) {

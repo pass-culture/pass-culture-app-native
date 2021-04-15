@@ -6,6 +6,7 @@ import { fetchAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { env } from 'libs/environment'
 import { useGeolocation } from 'libs/geolocation'
 import { convertAlgoliaHitToCents } from 'libs/parsers/pricesConversion'
+import { QueryKeys } from 'libs/queryKeys'
 
 import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
@@ -20,7 +21,7 @@ export const useHomeRecommendedHits = (
   const recommendationEndpoint = getRecommendationEndpoint(userId, position)
 
   const { data: recommendedIds } = useQuery(
-    'recommendationOfferIds',
+    QueryKeys.RECOMMENDATION_OFFER_IDS,
     async () => {
       const response = await fetch(recommendationEndpoint as string)
       return response.json() as Promise<{ recommended_offers: string[] }>
@@ -31,7 +32,7 @@ export const useHomeRecommendedHits = (
   const ids = recommendedIds?.recommended_offers || []
 
   const { data } = useQuery(
-    'recommendationHits',
+    QueryKeys.RECOMMENDATION_HITS,
     async () => await fetchAlgoliaHits<AlgoliaHit>(ids),
     { enabled: ids.length > 0 }
   )

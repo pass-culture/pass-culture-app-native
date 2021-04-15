@@ -13,6 +13,7 @@ import {
 } from 'features/home/contentful'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
+import { QueryKeys } from 'libs/queryKeys'
 
 export const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 const DEPTH_LEVEL = 2
@@ -37,7 +38,7 @@ export async function getHomepageEntries() {
 }
 
 export function useHomepageModules() {
-  return useQuery<ProcessedModule[]>('homepageModules', async () =>
+  return useQuery<ProcessedModule[]>(QueryKeys.HOMEPAGE_MODULES, async () =>
     processHomepageEntries(await getHomepageEntries())
   )
 }
@@ -45,7 +46,7 @@ export function useHomepageModules() {
 export function useUserProfileInfo() {
   const { isLoggedIn } = useAuthContext()
 
-  return useQuery<UserProfileResponse>('userProfile', () => api.getnativev1me(), {
+  return useQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
     enabled: isLoggedIn,
   })
 }

@@ -3,9 +3,10 @@ import { useQuery, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { BookingsResponse } from 'api/gen'
+import { QueryKeys } from 'libs/queryKeys'
 
 export function useBookings(enabled: boolean) {
-  return useQuery<BookingsResponse>('bookings', () => api.getnativev1bookings(), {
+  return useQuery<BookingsResponse>(QueryKeys.BOOKINGS, () => api.getnativev1bookings(), {
     enabled,
   })
 }

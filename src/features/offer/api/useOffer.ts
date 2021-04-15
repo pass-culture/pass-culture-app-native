@@ -2,6 +2,7 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { OfferResponse } from 'api/gen'
+import { QueryKeys } from 'libs/queryKeys'
 
 export interface OfferAdaptedResponse extends OfferResponse {
   fullAddress: string | null
@@ -42,4 +43,6 @@ const getOfferById = async (offerId: number) => {
 }
 
 export const useOffer = ({ offerId }: { offerId: number }) =>
-  useQuery<OfferAdaptedResponse | undefined>(['offer', offerId], () => getOfferById(offerId))
+  useQuery<OfferAdaptedResponse | undefined>([QueryKeys.OFFER, offerId], () =>
+    getOfferById(offerId)
+  )

@@ -3,10 +3,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
-import { QUERY_KEY as FAVORITES_QUERY_KEY } from 'features/favorites/pages/useFavorites'
 import { analytics, firebaseAnalytics } from 'libs/analytics'
 import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
+import { QueryKeys } from 'libs/queryKeys'
 import { storage } from 'libs/storage'
 
 export interface IAuthContext {
@@ -82,8 +82,8 @@ export function useLoginRoutine() {
 
 export function useLogoutRoutine(): () => Promise<void> {
   const { setIsLoggedIn } = useAuthContext()
-  const { clean: cleanProfile } = useCustomQueryClientHelpers('userProfile')
-  const { clean: cleanFavorites } = useCustomQueryClientHelpers(FAVORITES_QUERY_KEY)
+  const { clean: cleanProfile } = useCustomQueryClientHelpers(QueryKeys.USER_PROFILE)
+  const { clean: cleanFavorites } = useCustomQueryClientHelpers(QueryKeys.FAVORITES)
 
   return async () => {
     BatchUser.editor().setIdentifier(null).save()
@@ -98,7 +98,7 @@ export function useLogoutRoutine(): () => Promise<void> {
 /**
  * Returns helpers to play with inner react-query methods
  */
-export function useCustomQueryClientHelpers(queryKey: string) {
+export function useCustomQueryClientHelpers(queryKey: QueryKeys) {
   const queryClient = useQueryClient()
   return {
     clean: async () => await queryClient.removeQueries(queryKey),
