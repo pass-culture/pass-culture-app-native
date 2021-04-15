@@ -42,9 +42,22 @@ describe('<BookingImpossible />', () => {
     jest.clearAllMocks()
   })
 
-  it('should render', () => {
+  it('should render with CTAs when offer is not yet favorite', () => {
     const { toJSON } = render(reactQueryProviderHOC(<BookingImpossible />))
     expect(toJSON()).toMatchSnapshot()
+  })
+
+  it('should render without CTAs when offer is favorite', async () => {
+    const setup = (queryClient: QueryClient) => {
+      queryClient.setQueryData('favorites', {
+        favorites: [{ offer: { id: 20 } }],
+      })
+    }
+    const { queryByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
+    const addToFavoriteButton = queryByText('Mettre en favoris')
+    const backToOfferbutton = queryByText("Retourner à l'offre")
+    expect(addToFavoriteButton).toBeFalsy()
+    expect(backToOfferbutton).toBeFalsy()
   })
 
   it("should dismiss modal when clicking on 'Retourner à l'offre'", () => {
