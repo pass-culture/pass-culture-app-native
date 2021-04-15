@@ -102,9 +102,11 @@ export const Profile: React.FC = () => {
       scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
     }
   }
+  const debouncedScrollToTop = debounce(scrollToTop, 400)
+
   useEffect(() => {
     if (!isLoggedIn) {
-      scrollToTop()
+      debouncedScrollToTop()
     }
   }, [isLoggedIn])
   const logProfilScrolledToBottom = useFunctionOnce(analytics.logProfilScrolledToBottom)
@@ -233,7 +235,7 @@ export const Profile: React.FC = () => {
               title={t`Déconnexion`}
               onPress={() => {
                 analytics.logLogout()
-                signOut().then(scrollToTop)
+                signOut()
               }}
               type="clickable"
               icon={SignOut}
