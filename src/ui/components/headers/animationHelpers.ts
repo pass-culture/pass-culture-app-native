@@ -26,3 +26,7 @@ export const headerBackgroundInterpolation = {
   inputRange: [0, 1],
   outputRange: ['rgba(255, 255, 255, 0)', ColorsEnum.PRIMARY],
 }
+export const headerShadowOpacityInterpolation = {
+  inputRange: [0, 1],
+  outputRange: [0, 1],
+}
