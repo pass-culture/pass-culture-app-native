@@ -17,6 +17,7 @@ export interface Environment {
   ENV: string
   ID_CHECK_URL: string
   IOS_APP_ID: string
+  IOS_APP_STORE_ID: string
   PRIVACY_POLICY_LINK: string
   COOKIES_POLICY_LINK: string
   FAQ_LINK: string
