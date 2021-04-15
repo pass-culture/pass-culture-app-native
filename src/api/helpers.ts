@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { t } from '@lingui/macro'
-
-import { navigationRef } from 'features/navigation/navigationRef'
+import { navigationRef, isReadyRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
@@ -10,8 +8,9 @@ import { storage } from 'libs/storage'
 import { DefaultApi } from './gen'
 
 export function navigateToLogin() {
-  // todo remove setTimeout and use https://reactnavigation.org/docs/navigating-without-navigation-prop/#handling-initialization
-  setTimeout(() => void navigationRef.current?.navigate('Login'), 0)
+  if (isReadyRef.current && navigationRef.current) {
+    navigationRef.current.navigate('Login')
+  }
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
@@ -127,7 +126,7 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     throw new ApiError(
       response.status,
       await response.json(),
-      t`Échec de la requête ${response.url}, code: ${response.status}`
+      `Échec de la requête ${response.url}, code: ${response.status}`
     )
   }
 
