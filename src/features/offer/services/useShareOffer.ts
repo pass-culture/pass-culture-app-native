@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { Platform, Share } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
-import { DEEPLINK_DOMAIN } from 'features/deeplinks'
+import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { analytics } from 'libs/analytics'
 
 import { useOffer } from '../api/useOffer'
@@ -14,7 +14,8 @@ const shareOffer = async (offer: OfferResponse) => {
   const { id, isDigital, name, venue } = offer
   const locationName = getLocationName(venue, isDigital)
   const message = t`Retrouve "${name}" chez "${locationName}" sur le pass Culture`
-  const url = `${DEEPLINK_DOMAIN}offer/?id=${id}`
+  const url = generateLongFirebaseDynamicLink('offer', `id=${id}`)
+
   // url share content param is only for iOs, so we add url in message for android
   const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
   const title = t`Je t'invite à découvrir une super offre sur le pass Culture !`

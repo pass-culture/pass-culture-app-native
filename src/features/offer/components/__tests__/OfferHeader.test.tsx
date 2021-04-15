@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { useRoute, goBack } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { DEEPLINK_DOMAIN } from 'features/deeplinks'
+import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import {
   paginatedFavoritesResponseSnap,
   addFavoriteJsonResponseSnap,
@@ -100,7 +100,7 @@ describe('<OfferHeader />', () => {
 
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const url = DEEPLINK_DOMAIN + 'offer/?id=116656'
+    const url = generateLongFirebaseDynamicLink('offer', 'id=116656')
     const message =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
     const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
@@ -117,7 +117,7 @@ describe('<OfferHeader />', () => {
 
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const url = DEEPLINK_DOMAIN + 'offer/?id=116656'
+    const url = generateLongFirebaseDynamicLink('offer', 'id=116656')
     const messageWithUrl =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
       url

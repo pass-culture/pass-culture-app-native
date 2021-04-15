@@ -63,6 +63,7 @@ jest.mock('libs/environment', () => ({
     UNIVERSAL_LINK: 'app.passculture-testing.beta.gouv.fr',
     URL_PREFIX: 'passculture',
     IOS_APP_ID: 'app.ios',
+    IOS_APP_STORE_ID: 1557887412,
     ANDROID_APP_ID: 'app.android',
     SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
     ID_CHECK_URL: 'https://id-check-unit-tests',
