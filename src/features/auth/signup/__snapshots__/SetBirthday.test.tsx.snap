@@ -66,6 +66,7 @@ Array [
               "width": "100%",
             }
           }
+          customPaddingBottom={20}
           scrollEnabled={false}
           style={
             Array [
@@ -1071,6 +1072,7 @@ exports[`SetBirthday Page should render properly 1`] = `
             "width": "100%",
           }
         }
+        customPaddingBottom={20}
         scrollEnabled={false}
         style={
           Array [

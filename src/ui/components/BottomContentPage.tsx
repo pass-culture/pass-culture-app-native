@@ -41,17 +41,7 @@ export const BottomContentPage: FC<Props> = (props) => {
       <Container>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           <StyledBottomCardContainer
-            // eslint-disable-next-line react-native/no-inline-styles
-            contentContainerStyle={{
-              width: '100%',
-              padding: getSpacing(6),
-              borderTopLeftRadius: getSpacing(4),
-              borderTopRightRadius: getSpacing(4),
-              backgroundColor: `${ColorsEnum.WHITE}`,
-              alignItems: 'center',
-              flexDirection: 'column',
-              paddingBottom: keyboardHeight !== 0 ? 50 : 20,
-            }}
+            customPaddingBottom={keyboardHeight !== 0 ? 50 : 20}
             scrollEnabled={keyboardHeight !== 0}>
             {props.children}
             <Spacer.BottomScreen />
@@ -74,7 +64,20 @@ const Container = styled(View).attrs({
   justifyContent: 'flex-end',
 })
 
-const StyledBottomCardContainer = styled.ScrollView({
+const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom: number }>(
+  ({ customPaddingBottom }) => ({
+    contentContainerStyle: {
+      width: '100%',
+      padding: getSpacing(6),
+      borderTopLeftRadius: getSpacing(4),
+      borderTopRightRadius: getSpacing(4),
+      backgroundColor: `${ColorsEnum.WHITE}`,
+      alignItems: 'center',
+      flexDirection: 'column',
+      paddingBottom: customPaddingBottom,
+    },
+  })
+)<{ customPaddingBottom: number }>({
   ...getShadow({
     shadowOffset: {
       width: 0,
