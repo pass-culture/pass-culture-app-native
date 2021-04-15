@@ -6,7 +6,7 @@
 Example:
 
 ```bash
-$ react-native set-splash --path "assets/splash-screen/source.png" --background "#ffffff" --resize cover
+$ react-native set-splash --path "assets/splash-screen/source.png" --background "#ffffff" --resize contain
 $ git status
 On branch PC-7938-fix
 Changes not staged for commit:
