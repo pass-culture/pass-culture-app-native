@@ -39,7 +39,7 @@ export const BottomContentPage: FC<Props> = (props) => {
     <BottomContentPageContainer>
       <Background />
       <Container>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           <StyledBottomCardContainer
             // eslint-disable-next-line react-native/no-inline-styles
             contentContainerStyle={{
