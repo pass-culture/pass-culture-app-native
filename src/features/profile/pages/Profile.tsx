@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Linking, NativeScrollEvent, StyleSheet } from 'react-native'
@@ -45,13 +45,7 @@ const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 export const Profile: React.FC = () => {
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: user, refetch } = useUserProfileInfo()
-  useFocusEffect(
-    useCallback(() => {
-      refetch()
-    }, [])
-  )
-
+  const { data: user } = useUserProfileInfo()
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
