@@ -15,12 +15,14 @@ interface Props {
 
 export const HeroHeader: React.FC<Props> = (props) => {
   const { top } = useCustomSafeInsets()
+  const imageHeight = blurImageHeight + top
+
   return (
     <Container>
       <HeroContainer>
         {props.imageUrl ? (
           <BlurImage
-            extraHeight={top}
+            height={imageHeight}
             blurRadius={Platform.OS === 'android' ? 5 : 20}
             resizeMode={'cover'}
             source={{ uri: props.imageUrl }}
@@ -29,7 +31,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
           <BackgroundPlaceholder
             testID="BackgroundPlaceholder"
             width={ScreenWidth}
-            height={blurImageHeight + top}
+            height={imageHeight}
           />
         )}
         <Rectangle size={ScreenWidth} />
@@ -39,14 +41,14 @@ export const HeroHeader: React.FC<Props> = (props) => {
   )
 }
 
+export const blurImageHeight = getSpacing(74)
+
 const Container = styled.View({
   alignItems: 'center',
 })
 
-export const blurImageHeight = getSpacing(74)
-
 const HeroContainer = styled.View({ alignItems: 'center', position: 'absolute' })
-const BlurImage = styled.Image<{ extraHeight: number }>(({ extraHeight }) => ({
-  height: blurImageHeight + extraHeight,
+const BlurImage = styled.Image<{ height: number }>(({ height }) => ({
+  height,
   width: ScreenWidth,
 }))
