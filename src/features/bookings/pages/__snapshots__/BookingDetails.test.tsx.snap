@@ -66,87 +66,70 @@ Array [
           }
         />
         <View
-          customWitdh={300}
           onLayout={[Function]}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "column",
-                "justifyContent": "center",
-                "maxWidth": 300,
-              },
-              Object {
-                "shadowColor": "#151515",
-                "shadowOffset": Object {
-                  "height": 2,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.1,
-                "shadowRadius": 3,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }
-          testID="three-shapes-ticket"
         >
           <View
-            height={37.62376237623762}
-            width={300}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            color="#ffffff"
-            customWitdh={150}
+            customWitdh={300}
+            onLayout={[Function]}
             style={
               Array [
                 Object {
-                  "backgroundColor": "#ffffff",
-                  "marginTop": -1,
-                  "width": 150,
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                  "maxWidth": 300,
+                },
+                Object {
+                  "shadowColor": "#151515",
+                  "shadowOffset": Object {
+                    "height": 2,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.1,
+                  "shadowRadius": 3,
                 },
               ]
             }
+            testID="three-shapes-ticket"
           >
             <View
+              height={37.62376237623762}
+              width={300}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              color="#ffffff"
+              customWitdh={150}
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
-                    "minHeight": 220,
-                    "paddingHorizontal": 28,
-                    "paddingVertical": 8,
+                    "backgroundColor": "#ffffff",
+                    "marginTop": -1,
+                    "width": 150,
                   },
                 ]
               }
             >
-              <Text
-                style={
-                  Array [
-                    Object {
-                      "color": "#151515",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 20,
-                      "lineHeight": 24,
-                      "paddingHorizontal": 4,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Avez-vous déjà vu ?
-              </Text>
               <View
                 style={
                   Array [
                     Object {
                       "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
+                      "minHeight": 220,
+                      "paddingHorizontal": 28,
+                      "paddingVertical": 8,
                     },
                   ]
                 }
@@ -155,92 +138,122 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "paddingBottom": 10,
-                        "paddingLeft": 10,
-                        "paddingRight": 10,
-                        "paddingTop": 10,
+                        "color": "#151515",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
+                        "paddingHorizontal": 4,
                         "textAlign": "center",
                       },
                     ]
                   }
                 >
-                  352UW4
+                  Avez-vous déjà vu ?
                 </Text>
                 <View
                   style={
                     Array [
                       Object {
-                        "flexDirection": "row",
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
                       },
                     ]
                   }
                 >
-                  <View
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
+                  <Text
                     style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#eb0055",
-                        "borderRadius": 24,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "opacity": 1,
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      }
+                      Array [
+                        Object {
+                          "color": "#eb0055",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "paddingBottom": 10,
+                          "paddingLeft": 10,
+                          "paddingRight": 10,
+                          "paddingTop": 10,
+                          "textAlign": "center",
+                        },
+                      ]
                     }
-                    testID="button-container"
                   >
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
+                    352UW4
+                  </Text>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
-                        Array [
-                          Object {
-                            "color": "#ffffff",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 5,
-                            "maxWidth": 650,
-                          },
-                        ]
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#eb0055",
+                          "borderRadius": 24,
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "justifyContent": "center",
+                          "maxWidth": 500,
+                          "opacity": 1,
+                          "paddingBottom": 2,
+                          "paddingLeft": 2,
+                          "paddingRight": 2,
+                          "paddingTop": 2,
+                          "width": "100%",
+                        }
                       }
-                      testID="button-title"
-                      textColor="#ffffff"
+                      testID="button-container"
                     >
-                      Accéder à l'offre
-                    </Text>
+                      <Text
+                        adjustsFontSizeToFit={false}
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                              "marginLeft": 5,
+                              "maxWidth": 650,
+                            },
+                          ]
+                        }
+                        testID="button-title"
+                        textColor="#ffffff"
+                      >
+                        Accéder à l'offre
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
             </View>
-          </View>
-          <View
-            height={37.62376237623762}
-            width={300}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
+            <View
+              height={37.62376237623762}
+              width={300}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -918,13 +931,6 @@ Array [
       Object {
         "backgroundColor": "rgba(255, 255, 255, 0)",
         "position": "absolute",
-        "shadowColor": "#151515",
-        "shadowOffset": Object {
-          "height": 2,
-          "width": 0,
-        },
-        "shadowOpacity": 0.1,
-        "shadowRadius": 2,
         "top": 0,
         "width": "100%",
         "zIndex": 1,
