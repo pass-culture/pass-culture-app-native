@@ -3,7 +3,7 @@ import Svg, { Path, G, Stop, LinearGradient, Use } from 'react-native-svg'
 
 import { ColorsEnum } from 'ui/theme'
 
-const ratio = 303 / 38
+export const ticketFooterRatio = 303 / 38
 const viewBox = '0 0 303 38'
 
 interface Props {
@@ -12,13 +12,17 @@ interface Props {
 }
 
 function TicketFooterComponent(props: Props) {
-  const height = props.width / ratio
+  const height = props.width / ticketFooterRatio
   const color = props.color || ColorsEnum.WHITE
   const linearGradientId = 'ticket-footer-gradient'
   const pathId = 'ticket-footer-path'
 
   return (
-    <Svg style={{ aspectRatio: ratio }} width={props.width} height={height} viewBox={viewBox}>
+    <Svg
+      style={{ aspectRatio: ticketFooterRatio }}
+      width={props.width}
+      height={height}
+      viewBox={viewBox}>
       <LinearGradient x1="0" y1="1" x2="0" y2="0" id={linearGradientId}>
         <Stop offset="0" stopColor={props.color} stopOpacity="1" />
         <Stop offset="1" stopColor={'#F0F0F0'} stopOpacity="1" />
