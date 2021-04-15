@@ -150,6 +150,8 @@ export function BookingDetails() {
       openExternalUrl(offer.url)
     }
   }
+  const ticketFooterWidth = Math.min(TICKET_WIDTH, TICKET_MAX_WIDTH)
+  const ticketFooterHeigth = ticketFooterWidth / ticketFooterRatio
 
   return (
     <React.Fragment>
@@ -169,9 +171,7 @@ export function BookingDetails() {
           categoryName={offer.category.name}
           imageUrl={offer.image?.url || ''}>
           <Spacer.Column numberOfSpaces={18} />
-          <ThreeShapesTicket
-            width={Math.min(TICKET_WIDTH, TICKET_MAX_WIDTH)}
-            color={ColorsEnum.WHITE}>
+          <ThreeShapesTicket width={ticketFooterWidth} color={ColorsEnum.WHITE}>
             <TicketContent>
               <Title>{offer.name}</Title>
               <TicketInnerContent>
