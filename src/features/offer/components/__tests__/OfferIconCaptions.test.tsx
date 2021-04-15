@@ -89,7 +89,6 @@ const userProfileAPIResponse: UserProfileResponse = {
   firstName: 'Jean',
   isBeneficiary: true,
   domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
-  expenses: [],
   needsToFillCulturalSurvey: true,
   showEligibleCard: false,
   id: 1234,
