@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
-import { HeroHeader } from 'ui/components/headers/HeroHeader'
+import { blurImageHeight, HeroHeader } from 'ui/components/headers/HeroHeader'
 import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ImagePlaceholder } from '../atoms/ImagePlaceholder'
 
@@ -14,8 +15,10 @@ interface Props {
 }
 
 export const OfferHero: React.FC<Props> = ({ imageUrl, categoryName }) => {
+  const { top } = useCustomSafeInsets()
+  const imageHeight = blurImageHeight + top
   return (
-    <HeroHeader categoryName={categoryName} imageUrl={imageUrl || ''}>
+    <HeroHeader imageHeight={imageHeight} categoryName={categoryName} imageUrl={imageUrl || ''}>
       <Spacer.Column numberOfSpaces={22} />
       <ImageContainer>
         {imageUrl ? (
