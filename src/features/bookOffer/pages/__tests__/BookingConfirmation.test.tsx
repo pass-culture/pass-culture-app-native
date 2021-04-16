@@ -1,7 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
@@ -34,9 +34,24 @@ describe('<BookingConfirmation />', () => {
     fireEvent.press(renderAPI.getByText('Voir ma réservation'))
     await waitForExpect(() => {
       expect(analytics.logSeeMyBooking).toBeCalledWith(mockOfferId)
-      expect(navigate).toBeCalledWith('BookingDetails', {
-        id: 345,
-        shouldFetchAll: true,
+      expect(reset).toBeCalledWith({
+        index: 1,
+        routes: [
+          {
+            name: 'TabNavigator',
+            state: {
+              routes: [{ name: 'Bookings' }],
+              index: 0,
+            },
+          },
+          {
+            name: 'BookingDetails',
+            params: {
+              id: 345,
+              shouldFetchAll: true,
+            },
+          },
+        ],
       })
     })
   })

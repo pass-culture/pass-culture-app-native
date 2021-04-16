@@ -16,16 +16,31 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
 
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, reset } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
 
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
   const displayBookingDetails = () => {
     analytics.logSeeMyBooking(params.offerId)
-    navigate('BookingDetails', {
-      id: params.bookingId,
-      shouldFetchAll: true,
+    reset({
+      index: 1,
+      routes: [
+        {
+          name: 'TabNavigator',
+          state: {
+            routes: [{ name: 'Bookings' }],
+            index: 0,
+          },
+        },
+        {
+          name: 'BookingDetails',
+          params: {
+            id: params.bookingId,
+            shouldFetchAll: true,
+          },
+        },
+      ],
     })
   }
 
