@@ -1,5 +1,4 @@
-import debounce from 'lodash.debounce'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useIsFetching } from 'react-query'
 
 import { DEFAULT_SPLASHSCREEN_DELAY } from 'libs/splashscreen'
@@ -11,24 +10,23 @@ const DELAY = ANIMATION_DELAY + DEFAULT_SPLASHSCREEN_DELAY
 
 export const useShowSkeleton = function () {
   const [showSkeleton, setShowSkeleton] = useState(true)
-  const debouncedShowSkeleton = useRef(debounce(() => setShowSkeleton(false), DELAY)).current
-
   const isFetchingHomepageModules = useIsFetching({ queryKey: 'homepageModules' })
   const isFetchingAlgoliaModules = useIsFetching({ queryKey: 'algoliaModule' })
   const isFetchingOfferIds = useIsFetching({ queryKey: 'recommendationOfferIds' })
   const isFetchingRecommendedHits = useIsFetching({ queryKey: 'recommendationHits' })
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout
     if (
       isFetchingAlgoliaModules === 0 &&
       isFetchingHomepageModules === 0 &&
       isFetchingOfferIds === 0 &&
       isFetchingRecommendedHits === 0
     ) {
-      debouncedShowSkeleton()
+      timeout = setTimeout(() => setShowSkeleton(false), DELAY)
     }
     return () => {
-      debouncedShowSkeleton.cancel()
+      if (timeout) clearTimeout(timeout)
     }
   }, [
     isFetchingAlgoliaModules,
