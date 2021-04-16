@@ -1,12 +1,10 @@
-import { env } from 'libs/environment'
-
 import {
   isFirebaseDynamicLink,
   isFirebaseLongDynamicLink,
   extractUniversalLinkFromLongFirebaseDynamicLink,
   resolveHandler,
 } from './listener.ios'
-import { FIREBASE_DYNAMIC_LINK_DOMAIN } from './utils'
+import { DEEPLINK_DOMAIN, FIREBASE_DYNAMIC_LINK_DOMAIN } from './utils'
 
 describe('listener.ios', () => {
   describe('isFirebaseDynamicLink', () => {
@@ -32,9 +30,9 @@ describe('listener.ios', () => {
       )
       expect(isLongDynamicLink).toBe(false)
     })
-    it('should return undefined when the given link is not a firebase dynamic link', () => {
+    it('should return false when the given link is not a firebase dynamic link', () => {
       const isLongDynamicLink = isFirebaseLongDynamicLink('https://www.not-google.fr/home')
-      expect(isLongDynamicLink).toBe(undefined)
+      expect(isLongDynamicLink).toBe(false)
     })
   })
   describe('convertLongDynamicLinkToUniversalLink', () => {
@@ -46,7 +44,7 @@ describe('listener.ios', () => {
   })
   describe('handleLinks', () => {
     it('should forward deeplink event for universal link', () => {
-      const url = env.UNIVERSAL_LINK + '/home'
+      const url = DEEPLINK_DOMAIN + '/home'
       const deeplinkEvent = { url }
       const handleDeeplinkUrl = jest.fn()
 
