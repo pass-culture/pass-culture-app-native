@@ -1,5 +1,3 @@
-import { t } from '@lingui/macro'
-
 // javascript Date can't find them...
 const MONTHS = [
   'janvier',
@@ -69,7 +67,7 @@ export const formatDates = (timestamps?: number[]): string | undefined => {
   const uniques = getUniqueSortedTimestamps(timestamps)
   if (uniques.length === 0) return
   if (uniques.length === 1) return formatToFrenchDate(uniques[0])
-  return t`Dès le ${formatToFrenchDate(uniques[0])}`
+  return `Dès le ${formatToFrenchDate(uniques[0])}`
 }
 
 export const formatDatePeriod = (dates: Date[] | undefined): string | undefined => {

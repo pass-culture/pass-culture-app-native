@@ -418,7 +418,6 @@ msgid "Duo"
 msgstr "Duo"
 
 #: src/features/favorites/atoms/Favorite.tsx:46
-#: src/libs/parsers/formatDates.ts:63
 msgid "Dès le {0}"
 msgstr "Dès le {0}"
 
