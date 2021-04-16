@@ -42,10 +42,6 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     )
   }
 
-  if (user.eligibilityStartDatetime === undefined || user.eligibilityEndDatetime === undefined) {
-    return null
-  }
-
   return (
     <NonBeneficiaryHeader
       email={user.email}

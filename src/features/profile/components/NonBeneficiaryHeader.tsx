@@ -16,8 +16,8 @@ import { YoungerBadge } from './YoungerBadge'
 
 interface NonBeneficiaryHeaderProps {
   email: string
-  eligibilityStartDatetime: string | undefined
-  eligibilityEndDatetime: string | undefined
+  eligibilityStartDatetime?: string
+  eligibilityEndDatetime?: string
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
