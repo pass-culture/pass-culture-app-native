@@ -4,7 +4,7 @@ import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { GetIdCheckTokenResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
@@ -55,6 +55,17 @@ jest.mock('features/favorites/pages/FavoritesWrapper', () => ({
     ...mockFavoritesState,
     dispatch: mockFavoriteDispatch,
   }),
+}))
+const mockDepositAmount = '300 €'
+jest.mock('features/auth/api', () => ({
+  useGetIdCheckToken: jest.fn(
+    () =>
+      ({
+        isLoading: false,
+        data: { token: 'thisIsATokenForIdCheck' },
+      } as UseQueryResult<GetIdCheckTokenResponse>)
+  ),
+  useDepositAmount: () => mockDepositAmount,
 }))
 
 describe('Profile component', () => {
