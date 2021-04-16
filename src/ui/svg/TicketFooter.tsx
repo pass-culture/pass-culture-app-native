@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import Svg, { Path, G, Stop, LinearGradient, Use } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { ColorsEnum } from 'ui/theme'
 
@@ -18,8 +19,8 @@ function TicketFooterComponent(props: Props) {
   const pathId = 'ticket-footer-path'
 
   return (
-    <Svg
-      style={{ aspectRatio: ticketFooterRatio }}
+    <StyledSvg
+      aspectRatio={ticketFooterRatio}
       width={props.width}
       height={height}
       viewBox={viewBox}>
@@ -39,8 +40,12 @@ function TicketFooterComponent(props: Props) {
           </G>
         </G>
       </G>
-    </Svg>
+    </StyledSvg>
   )
 }
 
 export const TicketFooter = memo(TicketFooterComponent)
+
+const StyledSvg = styled(Svg)<{ aspectRatio: number }>`
+  aspect-ratio: ${({ aspectRatio }) => aspectRatio};
+`
