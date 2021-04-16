@@ -21,6 +21,14 @@ export function BookingConfirmation() {
 
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
+  const displayBookingDetails = () => {
+    analytics.logSeeMyBooking(params.offerId)
+    navigate('BookingDetails', {
+      id: params.bookingId,
+      shouldFetchAll: true,
+    })
+  }
+
   return (
     <GenericInfoPage
       title={t`Réservation confirmée !`}
@@ -34,16 +42,7 @@ export function BookingConfirmation() {
         {t`Tu peux retrouver toutes les informations concernant ta réservation sur l’application`}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite
-        title={t`Voir ma réservation`}
-        onPress={() => {
-          analytics.logSeeMyBooking(params.offerId)
-          navigate('BookingDetails', {
-            id: params.bookingId,
-            shouldFetchAll: true,
-          })
-        }}
-      />
+      <ButtonPrimaryWhite title={t`Voir ma réservation`} onPress={displayBookingDetails} />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite
         title={t`Retourner à l'accueil`}
