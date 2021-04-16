@@ -42,15 +42,15 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     )
   }
 
-  if (!user.eligibilityStartDatetime || !user.eligibilityEndDatetime) {
+  if (user.eligibilityStartDatetime === undefined || user.eligibilityEndDatetime === undefined) {
     return null
   }
 
   return (
     <NonBeneficiaryHeader
       email={user.email}
-      eligibilityStartDatetime={user.eligibilityStartDatetime.toString()}
-      eligibilityEndDatetime={user.eligibilityEndDatetime.toString()}
+      eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
+      eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
     />
   )
 }
