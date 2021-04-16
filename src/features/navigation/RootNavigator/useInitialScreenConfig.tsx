@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { ScreenConfiguration } from 'features/deeplinks/types'
 import { analytics } from 'libs/analytics'
+import { useSafeState } from 'libs/hooks'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 
@@ -23,9 +24,9 @@ export function useInitialScreenConfig(): void {
   const { hideSplashScreen } = useSplashScreenContext()
   const { isLoggedIn } = useAuthContext()
 
-  const [initialScreenConfig, setInitialScreenConfig] = useState<
+  const [initialScreenConfig, setInitialScreenConfig] = useSafeState<
     InitialScreenConfiguration | undefined
-  >()
+  >(undefined)
 
   useEffect(() => {
     getInitialScreenConfig({ isLoggedIn }).then((screenConfiguration) => {
@@ -49,15 +50,20 @@ async function getInitialScreenConfig({
   isLoggedIn: boolean
 }): Promise<InitialScreenConfiguration> {
   if (isLoggedIn) {
-    const user = await api.getnativev1me()
+    try {
+      const user = await api.getnativev1me()
 
-    const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
-    if (!hasSeenEligibleCard && user.showEligibleCard) {
-      return { screen: 'EighteenBirthday', params: undefined }
-    }
+      const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
+      if (!hasSeenEligibleCard && user.showEligibleCard) {
+        return { screen: 'EighteenBirthday', params: undefined }
+      }
 
-    if (user.needsToFillCulturalSurvey) {
-      return { screen: 'CulturalSurvey', params: undefined }
+      if (user.needsToFillCulturalSurvey) {
+        return { screen: 'CulturalSurvey', params: undefined }
+      }
+    } catch {
+      // If we cannot get user's information, we just go to the homepage
+      return homeNavigateConfig
     }
   }
 
