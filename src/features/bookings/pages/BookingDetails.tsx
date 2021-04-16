@@ -36,12 +36,13 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ticketFooterRatio } from 'ui/svg/TicketFooter'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const TICKET_MAX_WIDTH = 300
 const TICKET_MIN_HEIGHT = 220
 const TICKET_WIDTH = Dimensions.get('screen').width - getSpacing(15)
 const QR_CODE_SIZE = 170
+const MINIMAL_TICKET_CONTENT_SIZE = 115
+const MINIMAL_BACKGROUND_SIZE = TICKET_MIN_HEIGHT + MINIMAL_TICKET_CONTENT_SIZE
 
 const contentHeight = Dimensions.get('window').height - blurImageHeight
 
@@ -63,8 +64,7 @@ export function BookingDetails() {
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
   )
-  const { top } = useCustomSafeInsets()
-  const [ticketBottomPosition, setTicketBottomPosition] = useState(blurImageHeight + top)
+  const [ticketBottomPosition, setTicketBottomPosition] = useState(MINIMAL_BACKGROUND_SIZE)
 
   if (!booking) return <React.Fragment></React.Fragment>
 
@@ -163,7 +163,10 @@ export function BookingDetails() {
 
   const updateTicketBottomPosition = (layout: LayoutRectangle) => {
     const { y, height } = layout
-    setTicketBottomPosition(y + height - ticketFooterHeigth)
+    const newBackgroudSize = y + height - ticketFooterHeigth
+    if (MINIMAL_BACKGROUND_SIZE < newBackgroudSize) {
+      setTicketBottomPosition(newBackgroudSize)
+    }
   }
 
   return (
