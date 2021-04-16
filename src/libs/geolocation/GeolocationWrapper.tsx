@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { useAppStateChange } from 'libs/appState'
+import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
@@ -38,11 +39,11 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
 })
 
 export const GeolocationWrapper = ({ children }: { children: Element }) => {
-  const [position, setPosition] = useState<GeoCoordinates | null>(null)
-  const [permissionState, setPermissionState] = useState<GeolocPermissionState>(
+  const [position, setPosition] = useSafeState<GeoCoordinates | null>(null)
+  const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState>(
     GeolocPermissionState.DENIED
   )
-  const [shouldComputePosition, setShouldComputePosition] = useState(0)
+  const [shouldComputePosition, setShouldComputePosition] = useSafeState(0)
 
   useEffect(() => {
     contextualCheckPermission()

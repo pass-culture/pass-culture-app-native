@@ -1,6 +1,8 @@
-import { createContext, useCallback, useContext, useState } from 'react'
+import { createContext, useCallback, useContext } from 'react'
 import React from 'react'
 import SplashScreen from 'react-native-splash-screen'
+
+import { useSafeState } from './hooks'
 
 export const DEFAULT_SPLASHSCREEN_DELAY = 1800
 
@@ -29,7 +31,7 @@ export function SplashScreenProvider(props: { children: Element }) {
     }, DEFAULT_SPLASHSCREEN_DELAY)
   }, [])
 
-  const [contextValue, setContextValue] = useState({
+  const [contextValue, setContextValue] = useSafeState({
     isSplashScreenHidden: false,
     hideSplashScreen,
   })
