@@ -13,10 +13,6 @@ import { FavoritesWrapper } from '../FavoritesWrapper'
 
 jest.mock('../FavoritesWrapper', () => jest.requireActual('../FavoritesWrapper'))
 
-jest.spyOn(React, 'useRef').mockReturnValue({
-  current: goBack,
-})
-
 describe('FavoritesSorts component', () => {
   beforeEach(() => {
     jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValue('granted')
