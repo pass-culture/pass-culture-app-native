@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -10,6 +10,7 @@ import { useBackNavigation } from 'features/navigation/backNavigation'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
+import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -31,10 +32,10 @@ if (__DEV__) {
 }
 
 export const Login: FunctionComponent = function () {
-  const [email, setEmail] = useState(INITIAL_IDENTIFIER)
-  const [password, setPassword] = useState(INITIAL_PASSWORD)
-  const [isLoading, setIsLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [email, setEmail] = useSafeState(INITIAL_IDENTIFIER)
+  const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
+  const [isLoading, setIsLoading] = useSafeState(false)
+  const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
   const signIn = useSignIn()
 
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
