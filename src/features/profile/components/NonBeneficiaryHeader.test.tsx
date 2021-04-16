@@ -73,6 +73,19 @@ describe('NonBeneficiaryHeader', () => {
     const container = queryByTestId('body-container')
     expect(container).toBeNull()
   })
+  it('should render the right body for user above 18 years old and in a department non elligible', () => {
+    const today = '2021-02-30T00:00:00'
+    mockdate.set(new Date(today))
+    const { queryByTestId } = render(
+      <NonBeneficiaryHeader
+        email="john@doe.com"
+        eligibilityStartDatetime={undefined}
+        eligibilityEndDatetime={undefined}
+      />
+    )
+    const container = queryByTestId('body-container')
+    expect(container).toBeNull()
+  })
   it('should display correct depositAmount', () => {
     mockDepositAmount = '300 €'
     let { queryByText } = render(

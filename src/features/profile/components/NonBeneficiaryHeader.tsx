@@ -16,8 +16,8 @@ import { YoungerBadge } from './YoungerBadge'
 
 interface NonBeneficiaryHeaderProps {
   email: string
-  eligibilityStartDatetime: string
-  eligibilityEndDatetime: string
+  eligibilityStartDatetime: string | undefined
+  eligibilityEndDatetime: string | undefined
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
@@ -25,15 +25,24 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const today = new Date()
   const depositAmount = useDepositAmount()
   const deposit = depositAmount.replace(' ', '')
-  const eligibilityStartDatetime = new Date(props.eligibilityStartDatetime)
-  const eligibilityEndDatetime = new Date(props.eligibilityEndDatetime)
+  const eligibilityStartDatetime = props.eligibilityStartDatetime
+    ? new Date(props.eligibilityStartDatetime)
+    : undefined
+  const eligibilityEndDatetime = props.eligibilityEndDatetime
+    ? new Date(props.eligibilityEndDatetime)
+    : undefined
 
-  const isEligible = today >= eligibilityStartDatetime && today < eligibilityEndDatetime
+  const isEligible =
+    eligibilityStartDatetime && eligibilityEndDatetime
+      ? today >= eligibilityStartDatetime && today < eligibilityEndDatetime
+      : false
   const { data } = useGetIdCheckToken(isEligible)
   const licenceToken = data?.token || ''
 
   let body = null
-  if (today >= eligibilityEndDatetime) {
+  if (!eligibilityStartDatetime || !eligibilityEndDatetime) {
+    body = <BodyContainer testID="body-container-above-18-not-elligible-department" padding={1} />
+  } else if (today >= eligibilityEndDatetime) {
     body = <BodyContainer testID="body-container-above-18" padding={1} />
   } else if (today >= eligibilityStartDatetime) {
     body = (
