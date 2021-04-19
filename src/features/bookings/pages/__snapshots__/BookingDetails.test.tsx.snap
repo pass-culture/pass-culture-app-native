@@ -38,7 +38,7 @@ Array [
           }
         >
           <View
-            height={335}
+            height={320}
             testID="BackgroundPlaceholder"
             width={751}
           >

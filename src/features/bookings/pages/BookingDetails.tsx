@@ -41,7 +41,7 @@ const TICKET_MAX_WIDTH = 300
 const TICKET_MIN_HEIGHT = 220
 const TICKET_WIDTH = Dimensions.get('screen').width - getSpacing(15)
 const QR_CODE_SIZE = 170
-const MINIMAL_TICKET_CONTENT_SIZE = 115
+const MINIMAL_TICKET_CONTENT_SIZE = 100
 const MINIMAL_BACKGROUND_SIZE = TICKET_MIN_HEIGHT + MINIMAL_TICKET_CONTENT_SIZE
 
 const contentHeight = Dimensions.get('window').height - blurImageHeight
