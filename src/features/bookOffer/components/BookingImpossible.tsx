@@ -54,9 +54,13 @@ export const BookingImpossible: React.FC = () => {
         {t`Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.`}
       </Content>
       <Spacer.Column numberOfSpaces={6} />
-      <Content>
-        {t`Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver.`}
-      </Content>
+      {!favorite ? (
+        <Content>
+          {t`Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver.`}
+        </Content>
+      ) : (
+        <Content>{t`Rends-toi vite sur le site pass Culture afin de la réserver.`}</Content>
+      )}
 
       <Spacer.Column numberOfSpaces={6} />
 

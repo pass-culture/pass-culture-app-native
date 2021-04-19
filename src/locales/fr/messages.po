@@ -58,7 +58,7 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/bookings/pages/BookingDetails.tsx:146
+#: src/features/bookings/pages/BookingDetails.tsx:149
 #: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
@@ -446,7 +446,7 @@ msgstr "E-mail envoyé !"
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
-#: src/features/bookings/pages/BookingDetails.tsx:151
+#: src/features/bookings/pages/BookingDetails.tsx:154
 msgid "EAN"
 msgstr "EAN"
 
@@ -708,7 +708,7 @@ msgstr "Mes réservations terminées"
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
-#: src/features/bookings/pages/BookingDetails.tsx:173
+#: src/features/bookings/pages/BookingDetails.tsx:176
 #: src/features/offer/pages/OfferBody.tsx:51
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
@@ -963,6 +963,10 @@ msgstr "Rechercher"
 #: src/features/home/components/BusinessModule.tsx:36
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
+
+#: src/features/bookOffer/components/BookingImpossible.tsx:51
+msgid "Rends-toi vite sur le site pass Culture afin de la réserver."
+msgstr "Rends-toi vite sur le site pass Culture afin de la réserver."
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:57
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:57
@@ -1353,7 +1357,7 @@ msgstr "Veux-tu abandonner l'inscription ?"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/bookings/pages/BookingDetails.tsx:178
+#: src/features/bookings/pages/BookingDetails.tsx:181
 msgid "Voir le détail de l’offre"
 msgstr "Voir le détail de l’offre"
 
