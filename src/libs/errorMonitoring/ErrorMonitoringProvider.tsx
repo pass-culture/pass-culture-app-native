@@ -5,7 +5,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { errorMonitoring } from 'libs/errorMonitoring/services'
 
 interface Props {
-  enabled?: boolean
+  enabled: boolean
 }
 
 export const ErrorMonitoringProvider: FC<PropsWithChildren<Props>> = memo(
@@ -13,7 +13,7 @@ export const ErrorMonitoringProvider: FC<PropsWithChildren<Props>> = memo(
     const { data: user } = useUserProfileInfo()
 
     useEffect(() => {
-      errorMonitoring.init({ enabled: !!enabled })
+      errorMonitoring.init({ enabled })
     }, [enabled])
 
     useEffect(() => {
