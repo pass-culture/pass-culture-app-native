@@ -109,10 +109,20 @@ const Refund = styled(Typo.Body)({
 function getRefundRule(booking: Booking, user?: UserProfileResponse, credit?: Credit) {
   const price = convertCentsToEuros(booking.totalAmount)
   if (price > 0 && user && credit) {
-    if (isUserExBeneficiary(user, credit))
-      return t`Les ${price} € ne seront pas recrédités sur ton pass Culture car il est expiré.`
-    if (isUserBeneficiary(user))
-      return price + '\u00a0' + t`€ seront recrédités sur ton pass Culture.`
+    if (isUserExBeneficiary(user, credit)) {
+      return t({
+        id: 'not refunded because expired',
+        values: { price },
+        message: 'Les {price} € ne seront pas recrédités sur ton pass Culture car il est expiré.',
+      })
+    }
+    if (isUserBeneficiary(user)) {
+      return t({
+        id: 'refunded on your pass',
+        values: { price },
+        message: '{price} € seront recrédités sur ton pass Culture.',
+      })
+    }
   }
   return null
 }

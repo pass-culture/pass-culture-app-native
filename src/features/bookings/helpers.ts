@@ -58,7 +58,11 @@ export function getBookingLabels(booking: Booking, properties: BookingProperties
     dateLabel = t`Permanent`
   } else if (properties.isEvent) {
     dateLabel = beginningDatetime
-      ? t`Le ${formatToCompleteFrenchDateTime(beginningDatetime, false)}`
+      ? t({
+          id: 'le jour',
+          values: { day: formatToCompleteFrenchDateTime(beginningDatetime, false) },
+          message: 'Le {day}',
+        })
       : ''
 
     const isBeginningToday = beginningDatetime ? isToday(beginningDatetime) : false
@@ -70,7 +74,11 @@ export function getBookingLabels(booking: Booking, properties: BookingProperties
     }
   } else if (properties.isPhysical) {
     dateLabel = expirationDatetime
-      ? t`À retirer avant le` + `\u00a0${formatToCompleteFrenchDate(expirationDatetime, false)}`
+      ? t({
+          id: 'withdraw before date',
+          values: { dateLimit: formatToCompleteFrenchDate(expirationDatetime, false) },
+          message: 'À retirer avant le {dateLimit}',
+        })
       : ''
 
     const isExpiringToday = expirationDatetime ? isToday(expirationDatetime) : false

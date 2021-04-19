@@ -33,7 +33,12 @@ export function VerifyEligibility(props: Props) {
       icon={HappyFaceStars}
       iconSize={getSpacing(65)}>
       <StyledBody>
-        {t`Pour que tu puisses bénéficier de l’aide financière de ${deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité.`}
+        {t({
+          id: 'need verify eligibility',
+          values: { deposit },
+          message:
+            'Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité.',
+        })}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimaryWhite title={t`Vérifier mon éligibilité`} onPress={goToIdCheckWebView} />

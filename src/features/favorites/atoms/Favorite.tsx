@@ -57,7 +57,11 @@ export const Favorite: React.FC<Props> = (props) => {
       return formatToFrenchDate(new Date(offer.date))
     }
     if (offer.startDate) {
-      return t`Dès le ${formatToFrenchDate(new Date(offer.startDate))}`
+      return t({
+        id: 'starting from date',
+        values: { date: formatToFrenchDate(new Date(offer.startDate)) },
+        message: 'Dès le {date}',
+      })
     }
     return null
   }, [offer])

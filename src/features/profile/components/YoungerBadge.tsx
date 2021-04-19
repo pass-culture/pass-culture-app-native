@@ -17,7 +17,12 @@ export function YoungerBadge() {
       </IconContainer>
       <TextContainer>
         <Typo.Caption>
-          {t`Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de ${deposit} offerts à dépenser sur l’application.`}
+          {t({
+            id: 'patience enfin',
+            values: { deposit },
+            message:
+              'Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application.',
+          })}
         </Typo.Caption>
       </TextContainer>
     </Container>
