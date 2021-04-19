@@ -6,6 +6,8 @@ import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
 import { ColorsEnum, getNativeShadow } from 'ui/theme'
 
+const TICKET_MIN_HEIGHT = 220
+
 type ThreeShapesTicketProps = PropsWithChildren<{
   color?: ColorsEnum
   width: number
@@ -47,6 +49,7 @@ const Container = styled.View<{ customWitdh: number; color?: ColorsEnum }>(({ cu
   alignItems: 'center',
   justifyContent: 'center',
   maxWidth: customWitdh,
+  minHeight: TICKET_MIN_HEIGHT,
 }))
 
 const CenterView = styled.View<{ customWitdh: number; color?: ColorsEnum }>(

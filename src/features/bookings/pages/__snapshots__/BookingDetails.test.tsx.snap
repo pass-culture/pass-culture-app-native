@@ -87,6 +87,7 @@ Array [
                   "flexDirection": "column",
                   "justifyContent": "center",
                   "maxWidth": 300,
+                  "minHeight": 220,
                 },
                 Object {
                   "shadowColor": "#151515",
