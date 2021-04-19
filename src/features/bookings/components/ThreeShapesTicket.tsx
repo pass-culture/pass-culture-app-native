@@ -6,7 +6,7 @@ import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
 import { ColorsEnum, getNativeShadow } from 'ui/theme'
 
-const TICKET_MIN_HEIGHT = 220
+export const TICKET_MIN_HEIGHT = 220
 
 type ThreeShapesTicketProps = PropsWithChildren<{
   color?: ColorsEnum

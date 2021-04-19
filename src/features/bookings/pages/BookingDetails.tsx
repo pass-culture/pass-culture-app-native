@@ -18,7 +18,10 @@ import { useOngoingBooking } from 'features/bookings/api/queries'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
+import {
+  ThreeShapesTicket,
+  TICKET_MIN_HEIGHT,
+} from 'features/bookings/components/ThreeShapesTicket'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -38,7 +41,6 @@ import { ticketFooterRatio } from 'ui/svg/TicketFooter'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const TICKET_MAX_WIDTH = 300
-const TICKET_MIN_HEIGHT = 220
 const TICKET_WIDTH = Dimensions.get('screen').width - getSpacing(15)
 const QR_CODE_SIZE = 170
 const MINIMAL_TICKET_CONTENT_SIZE = 100
