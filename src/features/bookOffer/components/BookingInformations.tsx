@@ -39,7 +39,11 @@ export const BookingInformations: React.FC = () => {
   if (category.categoryType === CategoryType.Event) {
     const subtext =
       stock.price > 0 && quantity === 2
-        ? t`(${formatToFrenchDecimal(stock.price)} x 2 places)`
+        ? t({
+            id: 'prix duo',
+            values: { price: formatToFrenchDecimal(stock.price) },
+            message: '({price} x 2 places)',
+          })
         : undefined
 
     return (
