@@ -1,5 +1,4 @@
 import { BatchUser } from '@bam.tech/react-native-batch'
-import { t } from '@lingui/macro'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Text, Alert, Button } from 'react-native'
@@ -105,7 +104,7 @@ async function getBatchInstallationID() {
   } catch (e) {
     Alert.alert(
       'Batch error',
-      t`An error has occured while obtaining the Batch installation ID : ${e}`
+      `An error has occured while obtaining the Batch installation ID : ${e}`
     )
     return 'Batch error'
   }

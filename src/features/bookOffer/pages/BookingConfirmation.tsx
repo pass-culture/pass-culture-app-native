@@ -50,7 +50,11 @@ export function BookingConfirmation() {
       icon={TicketBooked}
       iconSize={getSpacing(65)}>
       <StyledBody>
-        {t`Il te reste encore ${formatToFrenchDecimal(amountLeft)} à dépenser sur le pass !`}
+        {t({
+          id: 'credit left to spend',
+          values: { credit: formatToFrenchDecimal(amountLeft) },
+          message: 'Il te reste encore {credit} à dépenser sur le pass !',
+        })}
       </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>

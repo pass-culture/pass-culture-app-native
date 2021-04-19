@@ -67,11 +67,23 @@ export const Home: FunctionComponent = function () {
     }
   })
 
+  const welcomeTitle = userInfos?.firstName
+    ? t({
+        id: 'hello name',
+        values: { name: userInfos?.firstName },
+        message: 'Bonjour {name}',
+      })
+    : t`Bienvenue !`
+
   let subtitle = t`Toute la culture dans ta main`
   if (availableCredit) {
     subtitle = availableCredit.isExpired
       ? t`Ton crédit est expiré`
-      : t`Tu as ${formatToFrenchDecimal(availableCredit.amount)} sur ton pass`
+      : t({
+          id: 'credit left on pass',
+          values: { credit: formatToFrenchDecimal(availableCredit.amount) },
+          message: 'Tu as {credit} sur ton pass',
+        })
   }
 
   const onScroll = useCallback(
@@ -102,7 +114,7 @@ export const Home: FunctionComponent = function () {
       <CenterContainer>
         <Spacer.Column numberOfSpaces={8} />
         <StyledTitle1 color={ColorsEnum.WHITE} numberOfLines={2}>
-          {userInfos?.firstName ? t`Bonjour` + ` ${userInfos?.firstName}` : t`Bienvenue !`}
+          {welcomeTitle}
         </StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Body color={ColorsEnum.WHITE}>{subtitle}</Typo.Body>

@@ -92,7 +92,7 @@ describe('<CancelBookingModal />', () => {
         <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
       )
     )
-    getByText('19' + '\u00a0' + '€ seront recrédités sur ton pass Culture.')
+    getByText('19 € seront recrédités sur ton pass Culture.')
   })
 
   it('should display refund rule if user is ex beneficiary and offer is not free', () => {

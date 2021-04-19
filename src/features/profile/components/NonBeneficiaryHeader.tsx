@@ -48,8 +48,11 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     body = (
       <BodyContainer testID="body-container-18">
         <Typo.Caption>
-          {t`Tu es éligible jusqu'au` +
-            `\u00a0${formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString())}`}
+          {t({
+            id: 'elibility deadline',
+            values: { deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()) },
+            message: "Tu es éligible jusqu'au {deadline}",
+          })}
         </Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
         <ModuleBanner
@@ -58,7 +61,11 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
             navigate('IdCheck', { email: props.email, licenceToken })
           }}
           leftIcon={<ThumbUp size={68} />}
-          title={t`Profite de ${deposit}`}
+          title={t({
+            id: 'enjoy deposit',
+            values: { deposit },
+            message: 'Profite de {deposit}',
+          })}
           subTitle={t`à dépenser dans l'application`}
           testID="18-banner"
         />
