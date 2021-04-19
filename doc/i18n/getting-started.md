@@ -7,7 +7,32 @@ import { Text, View } from 'react-native'
 import { t } from '@lingui/macro'
 
 function HelloWorld({ name: string }) {
-  return <View><Text>{t(`Hello ${name}`)}</Text></View>
+  return (
+    <View>
+      <Text>{t(`Hello World`)}</Text>
+    </View>
+  )
+}
+```
+
+For parameterized text, use this syntax:
+
+```tsx
+import { Text, View } from 'react-native'
+import { t } from '@lingui/macro'
+
+function HelloWorld({ name: string }) {
+  return (
+    <View>
+      <Text>
+        {t({
+          id: 'hello name', // Mandatory
+          values: { name },
+          message: 'Hello {name}',
+        })}
+      </Text>
+    </View>
+  )
 }
 ```
 
@@ -17,7 +42,7 @@ For plural, you can use:
 import { Text } from 'react-native'
 import { plural } from '@lingui/macro'
 
-function ShowResultsText({ countr: number }) {
+function ShowResultsText({ count: number }) {
   return (
     <Text>
       {plural(count, {
@@ -36,19 +61,14 @@ V3 brings the `plural` into our application, but it also brings two new non bloc
 1. Test unit doesn't exist properly : https://github.com/lingui/js-lingui/issues/1041
 2. Translation may be empty in `development` and show a warning : https://github.com/lingui/js-lingui/issues/1042
 
-*(2)* can be problematic while in development, 
-this happens because the variable to interpolate is returning a `function` instead of a `string`.
-It can easily be fixed by calling `.toString()` on the variable. 
-
-> Don't forget to remove every `.toString()` as they are not required in `production` builds 
-> and that bug should be fixed in a futur release of Lingui v3.
+To solve (2), prefer the parameterised syntax.
 
 ### v2 to v3 syntax changes
 
 V2 syntax:
 
 ```jsx
-_(t(`text`)) 
+_(t(`text`))
 ```
 
 V3 use macro, you don't need `_` anymore:
@@ -83,8 +103,10 @@ You don't need to add date formatting in the translation, do not write:
 t`À retirer avant le\u00a0${formatToCompleteFrenchDate(expirationDatetime, false)}`
 ```
 
-Instead, write the translation and concatenate the non translated text : 
+Instead, write the translation and concatenate the non translated text:
 
 ```jsx
 t`À retirer avant le` + `\u00a0${formatToCompleteFrenchDate(expirationDatetime, false)}`
 ```
+
+You can also use the parameterised syntax.
