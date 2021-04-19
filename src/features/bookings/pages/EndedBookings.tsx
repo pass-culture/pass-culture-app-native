@@ -27,7 +27,7 @@ export const EndedBookings: React.FC = () => {
         <EndedBookingsList bookings={bookings?.ended_bookings} />
         <Spacer.Column numberOfSpaces={4} />
       </ScrollView>
-      <PageHeader title={t`Mes réservations terminées`} />
+      <PageHeader title={t`Réservations terminées`} />
     </React.Fragment>
   )
 }
