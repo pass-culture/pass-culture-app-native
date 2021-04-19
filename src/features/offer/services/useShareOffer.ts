@@ -13,7 +13,11 @@ import { useFunctionOnce } from './useFunctionOnce'
 const shareOffer = async (offer: OfferResponse) => {
   const { id, isDigital, name, venue } = offer
   const locationName = getLocationName(venue, isDigital)
-  const message = t`Retrouve "${name}" chez "${locationName}" sur le pass Culture`
+  const message = t({
+    id: 'share offer message',
+    values: { name, locationName },
+    message: 'Retrouve "{name}" chez "{locationName}" sur le pass Culture',
+  })
   const url = generateLongFirebaseDynamicLink('offer', `id=${id}`)
 
   // url share content param is only for iOs, so we add url in message for android

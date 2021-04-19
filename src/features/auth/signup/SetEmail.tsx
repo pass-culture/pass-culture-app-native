@@ -87,7 +87,7 @@ export const SetEmail: FunctionComponent = () => {
             />
             <InputError
               visible={hasError}
-              messageId="Format de l'e-mail incorrect"
+              messageId={t`Format de l'e-mail incorrect`}
               numberOfSpacesTop={1}
             />
           </StyledInput>

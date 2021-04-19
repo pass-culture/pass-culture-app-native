@@ -84,8 +84,13 @@ function getEndedBookingReason(
 }
 
 function getEndedBookingDateLabel(cancellationDate?: Date | null, dateUsed?: Date | null) {
-  if (dateUsed) return t`le ${formatToSlashedFrenchDate(new Date(dateUsed).toISOString())}`
-  if (cancellationDate)
-    return t`le ${formatToSlashedFrenchDate(new Date(cancellationDate).toISOString())}`
+  const endDate = dateUsed ?? cancellationDate
+  if (endDate) {
+    return t({
+      id: 'jour de fin de résa',
+      values: { date: formatToSlashedFrenchDate(new Date(endDate).toISOString()) },
+      message: 'le {date}',
+    })
+  }
   return null
 }
