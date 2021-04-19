@@ -1336,7 +1336,7 @@ msgstr "ainsi que notre"
 msgid "application accessible pour certains départements"
 msgstr ""
 "L’application pass Culture est accessible à tous.\n"
-"Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+"Si tu as 18 ans et que tu fais partie d’un département éligible, tu pourras obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/offer/pages/OfferDescription.tsx:12
 msgid "auteur"
