@@ -423,19 +423,19 @@ PODS:
     - React-Core
   - RNDeviceInfo (8.1.2):
     - React-Core
-  - RNFBAnalytics (10.8.1):
+  - RNFBAnalytics (11.3.1):
     - Firebase/Analytics (= 6.34.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (11.2.0):
+  - RNFBApp (11.3.1):
     - Firebase/CoreOnly (= 6.34.0)
     - React-Core
-  - RNFBDynamicLinks (11.2.0):
+  - RNFBDynamicLinks (11.3.1):
     - Firebase/DynamicLinks (= 6.34.0)
     - GoogleUtilities/AppDelegateSwizzler
     - React-Core
     - RNFBApp
-  - RNFBRemoteConfig (10.8.1):
+  - RNFBRemoteConfig (11.3.1):
     - Firebase/RemoteConfig (= 6.34.0)
     - React-Core
     - RNFBApp
@@ -774,10 +774,10 @@ SPEC CHECKSUMS:
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNDateTimePicker: 8a51a2216c307769e69ef827293d59549ab1ca23
   RNDeviceInfo: 3266783bcb6aa4b0c785d6080a407f8a5fc68326
-  RNFBAnalytics: b48771a3dfb5f4cc5f1bceb6b0d88d7fbde29650
-  RNFBApp: e30b83b38becc3b5f47e6d9e01a51528da5dd6fc
-  RNFBDynamicLinks: faa22bd8e36488332604dc7c80379d1fc3fe6d46
-  RNFBRemoteConfig: 8ccf782e038052588b0899b258c33a9390c49c92
+  RNFBAnalytics: 8015006a8c1c21babae864981881dc90f9c4fc0c
+  RNFBApp: 05aa41acf140d713545952d3931c6d791d929a68
+  RNFBDynamicLinks: 50859b591efe1073e99ce861f40b84dac2c58d7d
+  RNFBRemoteConfig: 6ace6faa4b312e5dad8337bdccd10c5c55f48907
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
@@ -794,4 +794,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 02b90053d5665977b9334abdd89e3507e042734d
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1
