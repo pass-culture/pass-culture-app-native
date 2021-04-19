@@ -305,7 +305,7 @@ msgstr "Confidentialité"
 msgid "Confirme ton e‑mail"
 msgstr "Confirme ton e‑mail"
 
-#: src/features/bookOffer/components/BookingDetails.tsx:74
+#: src/features/bookOffer/components/BookingDetails.tsx:79
 msgid "Confirmer la réservation"
 msgstr "Confirmer la réservation"
 
@@ -1448,6 +1448,10 @@ msgstr "le {0}"
 msgid "metteur en scène"
 msgstr "metteur en scène"
 
+#: src/features/bookOffer/components/BookingDetails.tsx:60
+msgid "montant déduit"
+msgstr "{price} seront déduits de ton crédit pass Culture"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "quotidiennes"
 msgstr "quotidiennes"
@@ -1506,10 +1510,6 @@ msgstr "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résul
 #: src/features/bookings/components/OnGoingBookingsList.tsx:23
 msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
-
-#: src/features/bookOffer/components/BookingDetails.tsx:75
-msgid "{price} seront déduits de ton crédit pass Culture"
-msgstr "{price} seront déduits de ton crédit pass Culture"
 
 #: src/features/offer/components/OfferIconCaptions.tsx:26
 msgid "À deux !"
