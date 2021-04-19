@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { FC, Fragment } from 'react'
 
 import { Warning } from 'ui/svg/icons/Warning'
@@ -17,7 +16,7 @@ export const InputError: FC<Props> = (props) => {
     <Fragment>
       <Spacer.Column testID="input-error-top-spacer" numberOfSpaces={props.numberOfSpacesTop} />
       <InputRule
-        title={t`${props.messageId}`}
+        title={props.messageId}
         color={ColorsEnum.ERROR}
         icon={Warning}
         testIdSuffix="warn"
