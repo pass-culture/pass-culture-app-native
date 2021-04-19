@@ -24,7 +24,11 @@ export const CancellationDetails: React.FC = () => {
     message =
       limitDate < new Date()
         ? t`Cette réservation n’est pas annulable`
-        : t`Cette réservation peut être annulée jusqu’au ${formatDate(limitDate)}`
+        : t({
+            id: "réservation annulable jusqu'au",
+            values: { date: formatDate(limitDate) },
+            message: 'Cette réservation peut être annulée jusqu’au {date}',
+          })
   }
 
   return (

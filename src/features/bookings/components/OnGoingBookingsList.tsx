@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro'
+import { plural } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent, View } from 'react-native'
@@ -33,11 +33,16 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
   const bookings = props.bookings || emptyBookings
   const onGoingBookingsCount = bookings.length
   const hasBookings = onGoingBookingsCount > 0
-  const bookingsCountLabel =
-    `${onGoingBookingsCount}\u00a0` + getBookingsCountLabel(onGoingBookingsCount > 1)
+  const bookingsCountLabel = plural(onGoingBookingsCount, {
+    one: '# réservation en cours',
+    other: '# réservations en cours',
+  })
 
   const endedBookings = props?.endedBookings || emptyBookings
-  const endedBookingsLabel = getEndedBookingsCountLabel(endedBookings.length > 1)
+  const endedBookingsLabel = plural(endedBookings.length, {
+    one: 'Réservation terminée',
+    other: 'Réservations terminées',
+  })
 
   const ListEmptyComponent = useCallback(() => <NoBookingsView />, [])
   const ListHeaderComponent = useCallback(
@@ -90,12 +95,6 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
     </Container>
   )
 }
-
-const getBookingsCountLabel = (plural: boolean) =>
-  plural ? t`réservations en cours` : t`réservation en cours`
-
-const getEndedBookingsCountLabel = (plural: boolean) =>
-  plural ? t`Réservations terminées` : t`Réservation terminée`
 
 const keyExtractor = (item: Booking) => item.id.toString()
 
