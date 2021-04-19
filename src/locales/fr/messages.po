@@ -58,7 +58,7 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/bookings/pages/BookingDetails.tsx:146
+#: src/features/bookings/pages/BookingDetails.tsx:149
 #: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
@@ -447,7 +447,7 @@ msgstr "E-mail envoyé !"
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
-#: src/features/bookings/pages/BookingDetails.tsx:151
+#: src/features/bookings/pages/BookingDetails.tsx:154
 msgid "EAN"
 msgstr "EAN"
 
@@ -541,7 +541,7 @@ msgstr "Hors connexion : en attente du réseau."
 msgid "ISBN"
 msgstr "ISBN"
 
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:20
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:42
 msgid "Il te reste encore {0} à dépenser sur le pass !"
 msgstr "Il te reste encore {0} à dépenser sur le pass !"
 
@@ -709,7 +709,7 @@ msgstr "Mes réservations terminées"
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
-#: src/features/bookings/pages/BookingDetails.tsx:173
+#: src/features/bookings/pages/BookingDetails.tsx:176
 #: src/features/offer/pages/OfferBody.tsx:51
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
@@ -965,6 +965,10 @@ msgstr "Rechercher"
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
+#: src/features/bookOffer/components/BookingImpossible.tsx:51
+msgid "Rends-toi vite sur le site pass Culture afin de la réserver."
+msgstr "Rends-toi vite sur le site pass Culture afin de la réserver."
+
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:57
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:57
 msgid "Renvoyer l'email"
@@ -985,7 +989,7 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:59
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:59
 #: src/features/auth/signup/VerifyEligibility.tsx:28
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:35
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:51
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
 
@@ -1025,7 +1029,7 @@ msgstr "Réinitialiser"
 msgid "Réservation annulée"
 msgstr "Réservation annulée"
 
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:18
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:40
 msgid "Réservation confirmée !"
 msgstr "Réservation confirmée !"
 
@@ -1269,7 +1273,7 @@ msgstr "Tu peux encore dépenser :"
 msgid "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:24
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:46
 msgid "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 
@@ -1354,7 +1358,7 @@ msgstr "Veux-tu abandonner l'inscription ?"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/bookings/pages/BookingDetails.tsx:178
+#: src/features/bookings/pages/BookingDetails.tsx:181
 msgid "Voir le détail de l’offre"
 msgstr "Voir le détail de l’offre"
 
@@ -1362,7 +1366,7 @@ msgstr "Voir le détail de l’offre"
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
-#: src/features/bookOffer/pages/BookingConfirmation.tsx:27
+#: src/features/bookOffer/pages/BookingConfirmation.tsx:49
 msgid "Voir ma réservation"
 msgstr "Voir ma réservation"
 

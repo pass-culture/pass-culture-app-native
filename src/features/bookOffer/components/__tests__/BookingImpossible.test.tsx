@@ -60,6 +60,19 @@ describe('<BookingImpossible />', () => {
     expect(backToOfferbutton).toBeFalsy()
   })
 
+  it('should have the correct wording when offer is favorite', async () => {
+    const setup = (queryClient: QueryClient) => {
+      queryClient.setQueryData('favorites', {
+        favorites: [{ offer: { id: 20 } }],
+      })
+    }
+    const { queryByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
+    const redirectionToWebsiteWording = queryByText(
+      'Rends-toi vite sur le site pass Culture afin de la réserver.'
+    )
+    expect(redirectionToWebsiteWording).toBeTruthy()
+  })
+
   it("should dismiss modal when clicking on 'Retourner à l'offre'", () => {
     const { getByText } = render(reactQueryProviderHOC(<BookingImpossible />))
     fireEvent.press(getByText("Retourner à l'offre"))
