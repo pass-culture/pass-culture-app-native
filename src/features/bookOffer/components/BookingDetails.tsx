@@ -77,6 +77,12 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   const onPressBookOffer = () => mutate({ quantity, stockId: stock.id })
 
+  const deductedAmount = t({
+    id: 'montant déduit',
+    values: { price },
+    message: '{price} seront déduits de ton crédit pass Culture',
+  })
+
   return (
     <Container>
       <Banner title={disclaimer} />
@@ -93,11 +99,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       <Spacer.Column numberOfSpaces={6} />
 
       <ButtonPrimary title={t`Confirmer la réservation`} onPress={onPressBookOffer} />
-      {price ? (
-        <Caption>{t`${price} seront déduits de ton crédit pass Culture`}</Caption>
-      ) : (
-        <Spacer.Column numberOfSpaces={4} />
-      )}
+      {price ? <Caption>{deductedAmount}</Caption> : <Spacer.Column numberOfSpaces={4} />}
     </Container>
   )
 }
