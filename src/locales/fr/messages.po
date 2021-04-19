@@ -667,10 +667,6 @@ msgstr "Mes options"
 msgid "Mes réservations"
 msgstr "Mes réservations"
 
-#: src/features/bookings/pages/EndedBookings.tsx:25
-msgid "Mes réservations terminées"
-msgstr "Mes réservations terminées"
-
 #: src/features/bookOffer/components/BookingImpossible.tsx:56
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
@@ -994,6 +990,10 @@ msgstr "Réservation confirmée !"
 #: src/features/bookOffer/services/useModalContent.tsx:27
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
+
+#: src/features/bookings/pages/EndedBookings.tsx:25
+msgid "Réservations terminées"
+msgstr "Réservations terminées"
 
 #: src/features/favorites/atoms/BookingButton.tsx:50
 #: src/features/favorites/atoms/BookingButton.tsx:51
