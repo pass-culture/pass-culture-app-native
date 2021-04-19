@@ -13,10 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/bookOffer/components/BookingInformations.tsx:31
-msgid "({0} x 2 places)"
-msgstr "({0} x 2 places)"
-
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx:45
 msgid "+"
 msgstr "+"
@@ -1451,6 +1447,10 @@ msgstr "metteur en scène"
 #: src/features/bookOffer/components/BookingDetails.tsx:60
 msgid "montant déduit"
 msgstr "{price} seront déduits de ton crédit pass Culture"
+
+#: src/features/bookOffer/components/BookingInformations.tsx:31
+msgid "prix duo"
+msgstr "({price} x 2 places)"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "quotidiennes"
