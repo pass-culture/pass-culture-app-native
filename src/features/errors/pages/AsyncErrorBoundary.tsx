@@ -1,12 +1,13 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { ReactNode } from 'react'
+import React, { useEffect, ReactNode } from 'react'
 import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { AsyncError } from 'libs/errorMonitoring'
+import { AsyncError, MonitoringError } from 'libs/errorMonitoring'
+import { errorMonitoring } from 'libs/errorMonitoring'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
@@ -27,6 +28,13 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   header,
 }: AsyncFallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
+
+  useEffect(() => {
+    // we already captures MonitoringError exceptions (in constructor)
+    if (!(error instanceof MonitoringError)) {
+      errorMonitoring.captureException(error)
+    }
+  }, [error])
 
   const handleRetry = async () => {
     reset()
