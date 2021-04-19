@@ -42,7 +42,13 @@ async function makeExternalRequest<ResponseBody>(
   }
 
   if (!response.ok) {
-    throw new Error(t`Échec de la requête ${url}, code: ${response.status}`)
+    throw new Error(
+      t({
+        id: 'request error',
+        values: { url, status: response.status },
+        message: 'Échec de la requête {url}, code: {status}',
+      })
+    )
   }
 
   const json = await response.json()

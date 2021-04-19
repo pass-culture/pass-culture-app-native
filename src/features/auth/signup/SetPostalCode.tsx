@@ -89,7 +89,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
             />
             <InputError
               visible={hasError}
-              messageId="Code postal introuvable"
+              messageId={t`Code postal introuvable`}
               numberOfSpacesTop={1}
             />
           </StyledInput>

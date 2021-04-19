@@ -94,7 +94,11 @@ export function ChangePassword() {
             placeholder={t`Ton mot de passe actuel`}
           />
           <Spacer.Column numberOfSpaces={2} />
-          <InputError visible={hasError} messageId="Mot de passe incorrect" numberOfSpacesTop={0} />
+          <InputError
+            visible={hasError}
+            messageId={t`Mot de passe incorrect`}
+            numberOfSpacesTop={0}
+          />
         </StyledInput>
         <Spacer.Column numberOfSpaces={5} />
         <StyledInput>
@@ -125,7 +129,7 @@ export function ChangePassword() {
         <Spacer.Column numberOfSpaces={2} />
         <InputError
           visible={displayNotMatchingError}
-          messageId="les mots de passe ne concordent pas"
+          messageId={t`les mots de passe ne concordent pas`}
           numberOfSpacesTop={0}
         />
         <Spacer.Flex flex={1} />

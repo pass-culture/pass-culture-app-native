@@ -117,12 +117,14 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
       return (
         <InputError
           visible
-          messageId="Tu dois avoir 16 ans pour t'inscrire"
+          messageId={t`Tu dois avoir 16 ans pour t'inscrire`}
           numberOfSpacesTop={5}
         />
       )
     }
-    return <InputError visible messageId="La date choisie est incorrecte" numberOfSpacesTop={5} />
+    return (
+      <InputError visible messageId={t`La date choisie est incorrecte`} numberOfSpacesTop={5} />
+    )
   }
 
   return (
@@ -176,9 +178,12 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
           <BirthdayCake />
           <Spacer.Column numberOfSpaces={2} />
           <StyledBody>
-            {t`L’application pass Culture est accessible à tous.
-         Si tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de ${deposit}
-          proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`}
+            {t({
+              id: 'application accessible pour certains départements',
+              values: { deposit },
+              message:
+                'L’application pass Culture est accessible à tous.\nSi tu as 18 ans et que tu fais partie d’un département éligible, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.',
+            })}
           </StyledBody>
         </ModalChildrenContainer>
       </AppInformationModal>

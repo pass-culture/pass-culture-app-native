@@ -24,7 +24,11 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
         <Spacer.Column numberOfSpaces={4} />
         {props.depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
-            {t`crédit expiré le ${props.depositExpirationDate}`}
+            {t({
+              id: 'credit expired on date',
+              values: { deadline: props.depositExpirationDate },
+              message: 'crédit expiré le {deadline}',
+            })}
           </Typo.Caption>
         )}
       </TitleContainer>

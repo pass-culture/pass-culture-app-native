@@ -100,7 +100,7 @@ export const ReinitializePassword = () => {
         <Spacer.Column numberOfSpaces={2} />
         <InputError
           visible={displayNotMatchingError}
-          messageId="les mots de passe ne concordent pas"
+          messageId={t`les mots de passe ne concordent pas`}
           numberOfSpacesTop={0}
         />
         <Spacer.Column numberOfSpaces={6} />
