@@ -6,21 +6,13 @@ import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { MonitoringError } from 'libs/errorMonitoring'
+import { AsyncError } from 'libs/errorMonitoring'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-
-export class AsyncError extends MonitoringError {
-  retry?: () => Promise<unknown>
-  constructor(message: string, retry?: () => Promise<unknown>, name = 'AsyncError') {
-    super(message, name)
-    this.retry = retry
-  }
-}
 
 interface AsyncFallbackProps extends FallbackProps {
   resetErrorBoundary: (...args: Array<unknown>) => void

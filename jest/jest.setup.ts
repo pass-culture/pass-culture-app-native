@@ -26,6 +26,12 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
   removeEventListener: jest.fn(),
 }))
 
+jest.mock('react-native-device-info', () => ({
+  getVersion: jest.fn().mockReturnValue('1.0'),
+  getApplicationName: jest.fn().mockReturnValue('Pass Culture App Native'),
+  getUniqueId: jest.fn().mockReturnValue('ad7b7b5a169641e27cadbdb35adad9c4ca23099a'),
+}))
+
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),

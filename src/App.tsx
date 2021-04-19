@@ -21,7 +21,7 @@ import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
-import { errorMonitoring } from 'libs/errorMonitoring'
+import { ErrorMonitoringProvider } from 'libs/errorMonitoring/ErrorMonitoringProvider'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { useStartBatchNotification } from 'libs/notifications'
@@ -45,9 +45,6 @@ const queryClient = new QueryClient({
   },
 })
 
-// Disable error monitoring in development environment
-errorMonitoring.init({ enabled: !__DEV__ })
-
 const App: FunctionComponent = function () {
   useStartBatchNotification()
 
@@ -59,25 +56,27 @@ const App: FunctionComponent = function () {
     <ABTestingProvider>
       <SafeAreaProvider>
         <QueryClientProvider client={queryClient}>
-          <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-            <GeolocationWrapper>
-              <AuthWrapper>
-                <FavoritesWrapper>
-                  <SearchWrapper>
-                    <I18nProvider i18n={i18n}>
-                      <SnackBarProvider>
-                        <SplashScreenProvider>
-                          <AppNavigationContainer>
-                            <RootNavigator />
-                          </AppNavigationContainer>
-                        </SplashScreenProvider>
-                      </SnackBarProvider>
-                    </I18nProvider>
-                  </SearchWrapper>
-                </FavoritesWrapper>
-              </AuthWrapper>
-            </GeolocationWrapper>
-          </ErrorBoundary>
+          <AuthWrapper>
+            <ErrorMonitoringProvider enabled={!__DEV__}>
+              <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                <GeolocationWrapper>
+                  <FavoritesWrapper>
+                    <SearchWrapper>
+                      <I18nProvider i18n={i18n}>
+                        <SnackBarProvider>
+                          <SplashScreenProvider>
+                            <AppNavigationContainer>
+                              <RootNavigator />
+                            </AppNavigationContainer>
+                          </SplashScreenProvider>
+                        </SnackBarProvider>
+                      </I18nProvider>
+                    </SearchWrapper>
+                  </FavoritesWrapper>
+                </GeolocationWrapper>
+              </ErrorBoundary>
+            </ErrorMonitoringProvider>
+          </AuthWrapper>
         </QueryClientProvider>
       </SafeAreaProvider>
     </ABTestingProvider>

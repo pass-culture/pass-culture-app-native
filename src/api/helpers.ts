@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { getUniqueId } from 'react-native-device-info'
+
 import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
@@ -49,10 +51,18 @@ export const safeFetch = async (
   options: RequestInit,
   api: DefaultApi
 ): Promise<Response> => {
+  let runtimeOptions: RequestInit = {
+    ...options,
+    headers: {
+      ...options.headers,
+      'device-id': getUniqueId(),
+    },
+  }
+
   // dont ask a new token for this specific api call
   for (const apiRoute of NotAuthenticatedCalls) {
     if (url.includes(apiRoute)) {
-      return await fetch(url, options)
+      return await fetch(url, runtimeOptions)
     }
   }
 
@@ -69,10 +79,10 @@ export const safeFetch = async (
     try {
       const newAccessToken = await refreshAccessToken(api)
 
-      options = {
-        ...options,
+      runtimeOptions = {
+        ...runtimeOptions,
         headers: {
-          ...options.headers,
+          ...runtimeOptions.headers,
           Authorization: `Bearer ${newAccessToken}`,
         },
       }
@@ -81,7 +91,7 @@ export const safeFetch = async (
     }
   }
 
-  return await fetch(url, options)
+  return await fetch(url, runtimeOptions)
 }
 
 /**

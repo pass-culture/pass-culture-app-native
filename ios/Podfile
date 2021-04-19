@@ -25,6 +25,8 @@ target 'PassCulture' do
   pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications"
 
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
   post_install do |installer|
     flipper_post_install(installer)
   end
