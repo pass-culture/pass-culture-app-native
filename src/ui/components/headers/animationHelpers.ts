@@ -28,5 +28,5 @@ export const headerBackgroundInterpolation = {
 }
 export const headerShadowOpacityInterpolation = {
   inputRange: [0, 1],
-  outputRange: [0, 1],
+  outputRange: [0, 0.2],
 }
