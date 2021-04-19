@@ -96,3 +96,7 @@ ios/GoogleService-Info.plist
 # Multi simulators script
 SimulatorsList.txt
 scripts/multipleSimulatorsStartup.sh
+
+# Sentry
+android/sentry.properties
+ios/sentry.properties
