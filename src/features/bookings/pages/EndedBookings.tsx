@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro'
+import { plural, t } from '@lingui/macro'
 import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -13,8 +13,10 @@ export const EndedBookings: React.FC = () => {
   const { data: bookings } = useBookings(true)
 
   const endedBookingsCount = bookings?.ended_bookings?.length || 0
-  const endedBookingsLabel =
-    `${endedBookingsCount}\u00a0` + getEndedBookingsCountLabel(endedBookingsCount > 1)
+  const endedBookingsLabel = plural(endedBookingsCount, {
+    one: '# réservation terminée',
+    other: '# réservations terminées',
+  })
 
   return (
     <React.Fragment>
@@ -29,9 +31,6 @@ export const EndedBookings: React.FC = () => {
     </React.Fragment>
   )
 }
-
-const getEndedBookingsCountLabel = (plural: boolean) =>
-  plural ? t`réservations terminées` : t`réservation terminée`
 
 const EndedBookingsCount = styled(Typo.Body)({
   color: ColorsEnum.GREY_DARK,

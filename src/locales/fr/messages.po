@@ -234,10 +234,6 @@ msgstr "Cette réservation est annulable"
 msgid "Cette réservation n’est pas annulable"
 msgstr "Cette réservation n’est pas annulable"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:22
-msgid "Cette réservation peut être annulée jusqu’au {0}"
-msgstr "Cette réservation peut être annulée jusqu’au {0}"
-
 #: src/features/search/sections/OfferDate.tsx:35
 msgid "Cette semaine"
 msgstr "Cette semaine"
@@ -297,7 +293,7 @@ msgstr "Conditions Générales d'Utilisation"
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:25
+#: src/features/bookOffer/components/CancellationDetails.tsx:29
 msgid "Conditions d'annulation"
 msgstr "Conditions d'annulation"
 
@@ -700,7 +696,7 @@ msgstr "Mes options"
 msgid "Mes réservations"
 msgstr "Mes réservations"
 
-#: src/features/bookings/pages/EndedBookings.tsx:22
+#: src/features/bookings/pages/EndedBookings.tsx:25
 msgid "Mes réservations terminées"
 msgstr "Mes réservations terminées"
 
@@ -1035,14 +1031,6 @@ msgstr "Réservation confirmée !"
 #: src/features/bookOffer/services/useModalContent.tsx:27
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
-
-#: src/features/bookings/components/OnGoingBookingsList.tsx:44
-msgid "Réservation terminée"
-msgstr "Réservation terminée"
-
-#: src/features/bookings/components/OnGoingBookingsList.tsx:44
-msgid "Réservations terminées"
-msgstr "Réservations terminées"
 
 #: src/features/favorites/atoms/BookingButton.tsx:50
 #: src/features/favorites/atoms/BookingButton.tsx:51
@@ -1464,21 +1452,9 @@ msgstr "metteur en scène"
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:43
-msgid "réservation en cours"
-msgstr "réservation en cours"
-
-#: src/features/bookings/pages/EndedBookings.tsx:25
-msgid "réservation terminée"
-msgstr "réservation terminée"
-
-#: src/features/bookings/components/OnGoingBookingsList.tsx:43
-msgid "réservations en cours"
-msgstr "réservations en cours"
-
-#: src/features/bookings/pages/EndedBookings.tsx:25
-msgid "réservations terminées"
-msgstr "réservations terminées"
+#: src/features/bookOffer/components/CancellationDetails.tsx:22
+msgid "réservation annulable jusqu'au"
+msgstr "Cette réservation peut être annulée jusqu’au {date}"
 
 #: src/features/offer/pages/OfferDescription.tsx:15
 #: src/features/offer/pages/OfferDescription.tsx:19
@@ -1499,6 +1475,10 @@ msgstr "une initiative financée par le Ministère de la Culture."
 msgid "voir plus"
 msgstr "voir plus"
 
+#: src/features/bookings/components/OnGoingBookingsList.tsx:28
+msgid "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
+msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
+
 #: src/ui/components/inputs/InputError.tsx:9
 msgid "{0}"
 msgstr "{0}"
@@ -1511,6 +1491,10 @@ msgstr "{count, plural, one {# favori} other {# favoris}}"
 msgid "{count, plural, one {# résultat} other {# résultats}}"
 msgstr "{count, plural, one {# résultat} other {# résultats}}"
 
+#: src/features/bookings/pages/EndedBookings.tsx:13
+msgid "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
+msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
+
 #: src/features/favorites/atoms/NumberOfResults.tsx:10
 msgid "{nbFavorites, plural, one {# favori} other {# favoris}}"
 msgstr "{nbFavorites, plural, one {# favori} other {# favoris}}"
@@ -1522,6 +1506,10 @@ msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
 #: src/features/search/atoms/Buttons/ShowResults.tsx:12
 msgid "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
 msgstr "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
+
+#: src/features/bookings/components/OnGoingBookingsList.tsx:23
+msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
+msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 
 #: src/features/bookOffer/components/BookingDetails.tsx:75
 msgid "{price} seront déduits de ton crédit pass Culture"
