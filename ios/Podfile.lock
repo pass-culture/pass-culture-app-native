@@ -421,6 +421,8 @@ PODS:
     - React
   - RNDateTimePicker (3.0.9):
     - React-Core
+  - RNDeviceInfo (8.1.0):
+    - React-Core
   - RNFBAnalytics (10.8.1):
     - Firebase/Analytics (= 6.34.0)
     - React-Core
@@ -530,6 +532,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBDynamicLinks (from `../node_modules/@react-native-firebase/dynamic-links`)"
@@ -667,6 +670,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNDateTimePicker:
     :path: "../node_modules/@react-native-community/datetimepicker"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
   RNFBAnalytics:
     :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
@@ -768,6 +773,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 2a692bcb9b69b76a2f1a95f33db057129700af64
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNDateTimePicker: 8a51a2216c307769e69ef827293d59549ab1ca23
+  RNDeviceInfo: 677a08eaafcfac4e85d2d2aab68a3708ff261c04
   RNFBAnalytics: b48771a3dfb5f4cc5f1bceb6b0d88d7fbde29650
   RNFBApp: e30b83b38becc3b5f47e6d9e01a51528da5dd6fc
   RNFBDynamicLinks: faa22bd8e36488332604dc7c80379d1fc3fe6d46
@@ -786,6 +792,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: d0bd8b7a3fe846691d74b58e2be51131e6d959a6
+PODFILE CHECKSUM: 02b90053d5665977b9334abdd89e3507e042734d
 
 COCOAPODS: 1.8.4
