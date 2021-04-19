@@ -37,11 +37,7 @@ interface FlexSpacerProps {
 const FlexSpacer = styled.View<FlexSpacerProps>(({ flex }) => ({
   flex: flex ? flex : 1,
 }))
-/**
- * margin : `numberOfSpaces={6}`
- *
- * gutter : `numberOfSpaces={4}`
- */
+
 export const Spacer = {
   Flex: FlexSpacer,
   Row: RowSpacer,
