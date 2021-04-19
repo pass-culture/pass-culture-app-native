@@ -39,7 +39,8 @@ export const OfferBody: FunctionComponent<{
       stock.beginningDatetime ? [...accumulator, stock.beginningDatetime] : accumulator,
     []
   )
-  const shouldDisplayWhenBlock = category.categoryType === CategoryType.Event && dates.length > 0
+  const formattedDate = formatDatePeriod(dates)
+  const shouldDisplayWhenBlock = category.categoryType === CategoryType.Event && !!formattedDate
 
   return (
     <Container
@@ -75,7 +76,7 @@ export const OfferBody: FunctionComponent<{
 
       <Section visible={shouldDisplayWhenBlock} margin={true}>
         <SectionTitle>{t`Quand ?`}</SectionTitle>
-        <SectionBody>{formatDatePeriod(dates)}</SectionBody>
+        <SectionBody>{formattedDate}</SectionBody>
       </Section>
 
       <Section visible={!offerResponse.isDigital} margin={true}>
