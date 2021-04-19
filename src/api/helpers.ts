@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { navigationRef, isReadyRef } from 'features/navigation/navigationRef'
+import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
@@ -8,7 +8,7 @@ import { storage } from 'libs/storage'
 import { DefaultApi } from './gen'
 
 export function navigateToLogin() {
-  if (isReadyRef.current && navigationRef.current) {
+  if (isNavigationReadyRef.current && navigationRef.current) {
     navigationRef.current.navigate('Login')
   }
 }

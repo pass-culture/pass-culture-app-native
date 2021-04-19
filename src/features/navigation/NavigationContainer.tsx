@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import { ColorsEnum } from 'ui/theme'
 
-import { isReadyRef, navigationRef } from './navigationRef'
+import { isNavigationReadyRef, navigationRef } from './navigationRef'
 import { onNavigationStateChange } from './services'
 
 const NAV_THEME = { colors: { background: ColorsEnum.WHITE } } as Theme
@@ -14,7 +14,7 @@ export const AppNavigationContainer: React.FC<{ children: Element }> = ({ childr
   useEffect(() => {
     return () => {
       /* @ts-ignore : Cannot assign to 'current' because it is a read-only property. */
-      isReadyRef.current = false
+      isNavigationReadyRef.current = false
     }
   }, [])
 
@@ -32,7 +32,7 @@ export const AppNavigationContainer: React.FC<{ children: Element }> = ({ childr
       ref={setRef}
       onReady={() => {
         /* @ts-ignore : Cannot assign to 'current' because it is a read-only property. */
-        isReadyRef.current = true
+        isNavigationReadyRef.current = true
       }}
       theme={NAV_THEME}>
       {isRefDefined && children}
