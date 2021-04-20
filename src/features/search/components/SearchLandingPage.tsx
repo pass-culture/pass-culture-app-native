@@ -80,35 +80,32 @@ const BicolorListItem: React.FC<{
 }> = ({ title, secondaryText, Icon }) => {
   return (
     <Container>
-      <IconContainer>
-        <Icon size={iconSize} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
-      </IconContainer>
-      <TextContainer>
-        <Typo.Body color={ColorsEnum.GREY_DARK}>{secondaryText}</Typo.Body>
-        <Spacer.Column numberOfSpaces={2} />
-        <Title numberOfLines={1} adjustPaddingLeft={title.length > 10}>
-          {title}
-        </Title>
-      </TextContainer>
+      <Typo.Body color={ColorsEnum.GREY_DARK}>{secondaryText}</Typo.Body>
+      <Spacer.Column numberOfSpaces={2} />
+      <TitleIconContainer>
+        <IconContainer>
+          <Icon size={iconSize} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
+        </IconContainer>
+        <Title numberOfLines={1}>{title}</Title>
+      </TitleIconContainer>
     </Container>
   )
 }
 
 const Container = styled.View({
+  alignItems: 'center',
+})
+
+const TitleIconContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 })
 
-const TextContainer = styled.View({
-  flex: 1,
-  alignItems: 'center',
+const Title = styled(Typo.Title3)({
+  flexShrink: 1,
   left: -iconSpacing,
 })
 
-const Title = styled(Typo.Title3)<{ adjustPaddingLeft: boolean }>(({ adjustPaddingLeft }) => ({
-  paddingLeft: adjustPaddingLeft ? iconSpacing : 0,
-}))
-
 const IconContainer = styled.View({
-  top: iconSpacing,
+  left: -iconSpacing,
 })
