@@ -74,7 +74,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
           ]
         }
       >
-        Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.
+        Les réservations effectuées sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.
       </Text>
     </View>
     <View

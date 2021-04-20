@@ -621,10 +621,6 @@ msgstr "Le réglage est sauvegardé"
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
-#: src/features/bookOffer/components/BookingDetails.tsx:16
-msgid "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
-msgstr "Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
-
 #: src/features/bookOffer/components/BookingImpossible.tsx:46
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
@@ -632,6 +628,10 @@ msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permetten
 #: src/features/auth/signup/QuitSignupModal.tsx:31
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
+
+#: src/features/bookOffer/components/BookingDetails.tsx:16
+msgid "Les réservations effectuées sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
+msgstr "Les réservations effectuées sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
 
 #: src/features/search/pages/LocationFilter.tsx:81
 #: src/features/search/sections/titles.ts:4
