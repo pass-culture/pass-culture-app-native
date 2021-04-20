@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, Ref, useState } from 'react'
 import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -6,18 +6,20 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 
-type Identifier = string | number
-
-interface PartialDateInputProps extends React.ComponentPropsWithRef<typeof TextInput> {
+// unknown will be infered
+type PartialDateInputProps<Identifier extends unknown> = React.ComponentPropsWithRef<
+  typeof TextInput
+> & {
   identifier: Identifier
   isValid?: boolean
   onChangeValue: (value: string, identifier: Identifier) => void
   placeholder: string
 }
 
-export const _PartialDateInput: React.ForwardRefRenderFunction<TextInput, PartialDateInputProps> = (
-  props,
-  forwardedRef
+// unknown will be infered
+export const _PartialDateInput = <Identifier extends unknown>(
+  props: PartialDateInputProps<Identifier>,
+  forwardedRef: Ref<TextInput>
 ) => {
   const [value, setValue] = useState<string>('')
   const [isFocused, setFocused] = useState(false)
@@ -61,7 +63,9 @@ export const _PartialDateInput: React.ForwardRefRenderFunction<TextInput, Partia
   )
 }
 
-export const PartialDateInput = forwardRef<TextInput, PartialDateInputProps>(_PartialDateInput)
+export const PartialDateInput = forwardRef(_PartialDateInput) as <Identifier extends unknown>(
+  p: PartialDateInputProps<Identifier> & { ref?: Ref<TextInput> }
+) => JSX.Element
 
 const Container = styled.View({
   alignItems: 'center',
