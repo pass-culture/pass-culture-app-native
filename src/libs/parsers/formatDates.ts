@@ -16,7 +16,7 @@ const MONTHS = [
 
 const DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 
-function formatToHour(date: Date) {
+export function formatToHour(date: Date) {
   let hours = date.getHours().toString()
   hours = hours.length === 1 ? '0' + hours : hours
   let minutes = date.getMinutes().toString()
