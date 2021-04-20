@@ -551,7 +551,14 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Code Input of length 20</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <Spacer.Flex flex={1}>
-          <CodeInput codeLength={20} />
+          <CodeInput
+            codeLength={20}
+            enableValidation
+            isValid={(code, isComplete) => {
+              return isComplete && code !== null && code.length >= 5
+            }}
+            onChangeValue={(_code, _validation) => undefined}
+          />
         </Spacer.Flex>
       </AccordionItem>
 
