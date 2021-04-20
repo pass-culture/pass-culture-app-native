@@ -891,7 +891,7 @@ msgstr "Prix croissant"
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx:15
 #: src/features/profile/components/LoggedOutHeader.tsx:17
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:62
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:65
 msgid "Profil"
 msgstr "Profil"
 
@@ -1383,7 +1383,7 @@ msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture
 msgid "durée"
 msgstr "durée"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:39
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:42
 msgid "elibility deadline"
 msgstr "Tu es éligible jusqu'au {deadline}"
 
@@ -1395,7 +1395,7 @@ msgstr "en détails"
 msgid "en ligne"
 msgstr "en ligne"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:49
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:52
 msgid "enjoy deposit"
 msgstr "Profite de {deposit}"
 
@@ -1449,6 +1449,7 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} of
 msgid "not refunded because expired"
 msgstr "Les {price} € ne seront pas recrédités sur ton pass Culture car il est expiré."
 
+#: src/features/profile/components/NonElligibleDepartmentBadge.tsx:13
 #: src/features/profile/components/YoungerBadge.tsx:16
 msgid "patience enfin"
 msgstr "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
@@ -1540,7 +1541,7 @@ msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# r�
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:53
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:56
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
