@@ -73,7 +73,7 @@ describe('NonBeneficiaryHeader', () => {
     const container = queryByTestId('body-container')
     expect(container).toBeNull()
   })
-  it('should render the right body for user above 18 years old and in a department non elligible', () => {
+  it('should render the right body for user above 18 years old and in a department non eligible', () => {
     const today = '2021-02-30T00:00:00'
     mockdate.set(new Date(today))
     const { getByTestId } = render(
@@ -83,7 +83,8 @@ describe('NonBeneficiaryHeader', () => {
         eligibilityEndDatetime={undefined}
       />
     )
-    getByTestId('non-elligible-department-badge')
+    const nonEligibleDepartmentBadge = getByTestId('non-eligible-department-badge')
+    expect(nonEligibleDepartmentBadge).toBeTruthy()
   })
   it('should display correct depositAmount', () => {
     mockDepositAmount = '300 €'

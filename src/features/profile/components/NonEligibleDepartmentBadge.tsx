@@ -5,18 +5,15 @@ import styled from 'styled-components/native'
 import { Clock } from 'ui/svg/icons/Clock'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
-export function NonElligibleDepartmentBadge() {
+export function NonEligibleDepartmentBadge() {
   return (
-    <Container testID="non-elligible-department-badge">
+    <Container testID="non-eligible-department-badge">
       <IconContainer>
         <Clock size={48} />
       </IconContainer>
       <TextContainer>
         <Typo.Caption>
-          {t({
-            id: 'patience enfin',
-            message: 'Patience ! Le pass Culture sera bientôt disponible dans ton département !',
-          })}
+          {t`Patience ! Le pass Culture sera bientôt disponible dans ton département !`}
         </Typo.Caption>
       </TextContainer>
     </Container>
@@ -34,8 +31,8 @@ const Container = styled.View({
 
 const IconContainer = styled.View({
   flex: 0.1,
-  minWidth: 48,
-  maxWidth: 48,
+  minWidth: getSpacing(12),
+  maxWidth: getSpacing(12),
 })
 const TextContainer = styled.View({
   flex: 0.85,
