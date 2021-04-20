@@ -542,13 +542,17 @@ export const AppComponents: FunctionComponent = () => {
           placeholder="AAAA"
         />
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Code Input</Typo.Title4>
-        <Spacer.Column numberOfSpaces={1} />
-        <CodeInput codeLength={5} />
-        <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <DateInput />
+        <Spacer.Flex flex={1}>
+          <DateInput />
+        </Spacer.Flex>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Title4 color={ColorsEnum.TERTIARY}>Code Input of length 20</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <Spacer.Flex flex={1}>
+          <CodeInput codeLength={20} />
+        </Spacer.Flex>
       </AccordionItem>
 
       <Divider />
