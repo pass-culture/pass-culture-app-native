@@ -49,7 +49,7 @@ msgstr "Abandonner l'inscription"
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
-#: src/features/offer/pages/OfferBody.tsx:59
+#: src/features/offer/pages/OfferBody.tsx:60
 #: src/features/profile/pages/Profile.tsx:123
 msgid "Accessibilité"
 msgstr "Accessibilité"
@@ -672,7 +672,7 @@ msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
 #: src/features/bookings/pages/BookingDetails.tsx:175
-#: src/features/offer/pages/OfferBody.tsx:51
+#: src/features/offer/pages/OfferBody.tsx:52
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
 
@@ -903,7 +903,7 @@ msgstr "Proximité géographique"
 msgid "Prénom et nom"
 msgstr "Prénom et nom"
 
-#: src/features/offer/pages/OfferBody.tsx:42
+#: src/features/offer/pages/OfferBody.tsx:43
 msgid "Quand ?"
 msgstr "Quand ?"
 
@@ -1408,7 +1408,6 @@ msgid "et si tu es..."
 msgstr "et si tu es..."
 
 #: src/features/offer/pages/OfferDescription.tsx:16
-#: src/features/offer/pages/OfferDescription.tsx:20
 msgid "genre"
 msgstr "genre"
 
@@ -1483,8 +1482,8 @@ msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 
 #: src/features/offer/pages/OfferDescription.tsx:15
 #: src/features/offer/pages/OfferDescription.tsx:19
-msgid "sous genre"
-msgstr "sous genre"
+msgid "spécialité"
+msgstr "spécialité"
 
 #: src/features/favorites/atoms/Favorite.tsx:46
 msgid "starting from date"
@@ -1495,6 +1494,10 @@ msgstr "Dès le {date}"
 #: src/features/auth/signup/SetEmail.tsx:66
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
+
+#: src/features/offer/pages/OfferDescription.tsx:20
+msgid "type"
+msgstr "type"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
 msgid "une initiative financée par le Ministère de la Culture."
