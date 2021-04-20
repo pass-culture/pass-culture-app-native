@@ -6,7 +6,6 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 
-// unknown will be infered
 type ShortInputProps<Identifier extends unknown> = React.ComponentPropsWithRef<typeof TextInput> & {
   identifier: Identifier
   isValid?: boolean
@@ -14,7 +13,6 @@ type ShortInputProps<Identifier extends unknown> = React.ComponentPropsWithRef<t
   placeholder: string
 }
 
-// unknown will be infered
 export const ShortInputComponent = <Identifier extends unknown>(
   props: ShortInputProps<Identifier>,
   forwardedRef: Ref<TextInput>

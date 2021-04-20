@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { RefObject, useEffect, useState } from 'react'
+import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ShortInput } from './ShortInput'
@@ -12,22 +13,51 @@ interface CodeInputProps {
 }
 
 export const CodeInput = (props: CodeInputProps) => {
+  const [digitInputsRef, setDigitInputsRef] = useState<Record<string, React.RefObject<TextInput>>>(
+    {}
+  )
+  const [_, setDigitValues] = useState<Record<string, string>>({})
+
+  useEffect(() => {
+    setDigitInputsRef(createMapOfRef<TextInput>({}, props.codeLength))
+    return () => setDigitInputsRef({})
+  }, [props.codeLength])
+
+  const setField = (value: string, identifier: number) => {
+    setDigitValues((old) => ({ ...old, [identifier]: value }))
+  }
+
   return (
-    <Container>
-      <ShortInput
-        autoFocus={props.autoFocus}
-        identifier={0}
-        isValid={true}
-        onChangeValue={(_value, _identifier) => {
-          // TODO: next Ticket 8213
-        }}
-        placeholder="0"
-      />
+    <Container testID="code-input-container">
+      {Object.keys(digitInputsRef || {}).map((key) => {
+        const index = Number(key)
+        return (
+          <ShortInput
+            key={index} // using index is safe since inputs are ordered and refreshed atomically
+            autoFocus={index === 0 ? props.autoFocus : false}
+            identifier={index}
+            isValid={true}
+            onChangeValue={setField}
+            placeholder="0"
+            ref={digitInputsRef[index]}
+          />
+        )
+      })}
     </Container>
   )
 }
 
 const Container = styled.View({
   flexDirection: 'row',
-  alignItems: 'center',
+  flexWrap: 'wrap',
 })
+
+function createMapOfRef<U, T extends RefObject<U> = RefObject<U>>(
+  map: Record<string, T>,
+  length: number
+) {
+  Array(length)
+    .fill(0)
+    .forEach((_, i) => void (map[i] = map[i] ?? React.createRef()))
+  return map
+}
