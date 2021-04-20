@@ -2,14 +2,13 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
-import { decomposeDate } from 'libs/parsers/formatDates'
+import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
 
 export const formatDate = (limitDate: Date): string => {
   const limit = new Date(limitDate)
-  const { day, month, year } = decomposeDate(limit.getTime())
   const minutes = limit.getMinutes() === 0 ? '00' : limit.getMinutes()
-  return `${day} ${month} ${year}, ${limit.getHours()}h${minutes}`
+  return `${formatToFrenchDate(limit)}, ${limit.getHours()}h${minutes}`
 }
 
 export const CancellationDetails: React.FC = () => {
