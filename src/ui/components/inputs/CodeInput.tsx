@@ -4,32 +4,42 @@ import styled from 'styled-components/native'
 
 import { ShortInput } from './ShortInput'
 
-interface CodeInputProps {
-  codeLength: number
-  autoFocus?: boolean
-  onChangeValue?: (value: number | null) => void
-  minValue?: number
-  maxValue?: number
+export interface CodeValidation {
+  isComplete: boolean
+  isValid: boolean
 }
 
+export type CodeInputProps = {
+  codeLength: number
+  autoFocus?: boolean
+} & (
+  | {
+      enableValidation: true
+      onChangeValue?: (value: string | null, codeValidation: CodeValidation) => void
+      isValid: (value: string | null, isComplete: boolean) => boolean
+    }
+  | {
+      enableValidation?: false
+      onChangeValue?: (value: string | null) => void
+    }
+)
+
 export const CodeInput = (props: CodeInputProps) => {
-  const [digitInputsRef, setDigitInputsRef] = useState<Record<string, React.RefObject<TextInput>>>(
-    {}
-  )
-  const [_, setDigitValues] = useState<Record<string, string>>({})
+  const [inputsRef, setInputsRef] = useState<Record<string, React.RefObject<TextInput>>>({})
+  const [_, setInputValues] = useState<Record<string, string>>({})
 
   useEffect(() => {
-    setDigitInputsRef(createMapOfRef<TextInput>({}, props.codeLength))
-    return () => setDigitInputsRef({})
+    setInputsRef(createMapOfRef<TextInput>({}, props.codeLength))
+    return () => setInputsRef({})
   }, [props.codeLength])
 
-  const setField = (value: string, identifier: number) => {
-    setDigitValues((old) => ({ ...old, [identifier]: value }))
+  const onChangeValue = (value: string, identifier: number) => {
+    setInputValues(inputUpdator(value, identifier, props))
   }
 
   return (
     <Container testID="code-input-container">
-      {Object.keys(digitInputsRef || {}).map((key) => {
+      {Object.keys(inputsRef || {}).map((key) => {
         const index = Number(key)
         return (
           <ShortInput
@@ -37,9 +47,9 @@ export const CodeInput = (props: CodeInputProps) => {
             autoFocus={index === 0 ? props.autoFocus : false}
             identifier={index}
             isValid={true}
-            onChangeValue={setField}
+            onChangeValue={onChangeValue}
             placeholder="0"
-            ref={digitInputsRef[index]}
+            ref={inputsRef[index]}
           />
         )
       })}
@@ -56,8 +66,48 @@ function createMapOfRef<U, T extends RefObject<U> = RefObject<U>>(
   map: Record<string, T>,
   length: number
 ) {
-  Array(length)
-    .fill(0)
-    .forEach((_, i) => void (map[i] = map[i] ?? React.createRef()))
+  for (let i = 0; i < length; i++) {
+    map[i] = map[i] ?? React.createRef()
+  }
   return map
+}
+
+/**
+ * Generates a state action to update the current map of values with the digit
+ * typed into the current input
+ * @param newDigitValue the value typed into the current input
+ * @param identifier the input identifier
+ * @param props the CodeInput props
+ */
+export const inputUpdator = (newDigitValue: string, identifier: number, props: CodeInputProps) => (
+  currentDigitValues: Record<string, string>
+) => {
+  let completion = 0
+  let code = ''
+
+  for (let index = 0; index < props.codeLength; index++) {
+    const currentDigitValue = currentDigitValues[index] || ''
+    /**
+     * use the rigth value:
+     * - for the current index: the value that will be stored into the state
+     * - for the others indexes: the value already stored in the state
+     */
+    const consideredValue = index === identifier ? newDigitValue : currentDigitValue
+
+    completion += Number(consideredValue.length > 0)
+    code += consideredValue
+  }
+
+  const isComplete = completion === props.codeLength
+
+  if (props.enableValidation) {
+    props.onChangeValue?.(code, {
+      isComplete,
+      isValid: props.isValid(code, isComplete),
+    })
+  } else {
+    props.onChangeValue?.(code)
+  }
+
+  return { ...currentDigitValues, [identifier]: newDigitValue }
 }
