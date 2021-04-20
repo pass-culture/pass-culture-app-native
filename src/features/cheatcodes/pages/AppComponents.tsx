@@ -28,11 +28,12 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import FilterSwitch from 'ui/components/FilterSwitch'
+import { CodeInput } from 'ui/components/inputs/CodeInput'
 import { DateInput, DatePartType } from 'ui/components/inputs/DateInput'
-import { PartialDateInput } from 'ui/components/inputs/PartialDateInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { ShortInput } from 'ui/components/inputs/ShortInput'
 import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -531,15 +532,19 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Password Input</Typo.Title4>
         <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Partial Date Input</Typo.Title4>
+        <Typo.Title4 color={ColorsEnum.TERTIARY}>Short Input</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <PartialDateInput
+        <ShortInput
           identifier={DatePartType.DAY}
           isValid={_partialDate.length === 4}
           maxLength={4}
           onChangeValue={setPartialDate}
           placeholder="AAAA"
         />
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Title4 color={ColorsEnum.TERTIARY}>Code Input</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <CodeInput codeLength={5} />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />

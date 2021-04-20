@@ -7,9 +7,7 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { BaseTextInput } from './BaseTextInput'
 
 // unknown will be infered
-type PartialDateInputProps<Identifier extends unknown> = React.ComponentPropsWithRef<
-  typeof TextInput
-> & {
+type ShortInputProps<Identifier extends unknown> = React.ComponentPropsWithRef<typeof TextInput> & {
   identifier: Identifier
   isValid?: boolean
   onChangeValue: (value: string, identifier: Identifier) => void
@@ -17,8 +15,8 @@ type PartialDateInputProps<Identifier extends unknown> = React.ComponentPropsWit
 }
 
 // unknown will be infered
-export const _PartialDateInput = <Identifier extends unknown>(
-  props: PartialDateInputProps<Identifier>,
+export const ShortInputComponent = <Identifier extends unknown>(
+  props: ShortInputProps<Identifier>,
   forwardedRef: Ref<TextInput>
 ) => {
   const [value, setValue] = useState<string>('')
@@ -63,8 +61,8 @@ export const _PartialDateInput = <Identifier extends unknown>(
   )
 }
 
-export const PartialDateInput = forwardRef(_PartialDateInput) as <Identifier extends unknown>(
-  p: PartialDateInputProps<Identifier> & { ref?: Ref<TextInput> }
+export const ShortInput = forwardRef(ShortInputComponent) as <Identifier extends unknown>(
+  p: ShortInputProps<Identifier> & { ref?: Ref<TextInput> }
 ) => JSX.Element
 
 const Container = styled.View({

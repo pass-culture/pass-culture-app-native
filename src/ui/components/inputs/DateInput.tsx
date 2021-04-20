@@ -2,7 +2,7 @@ import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } f
 import { NativeSyntheticEvent, TextInput, TextInputKeyPressEventData } from 'react-native'
 import styled from 'styled-components/native'
 
-import { PartialDateInput } from './PartialDateInput'
+import { ShortInput } from './ShortInput'
 
 export enum DatePartType {
   DAY = 'day',
@@ -144,7 +144,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
 
   return (
     <Container>
-      <PartialDateInput
+      <ShortInput
         autoFocus={props.autoFocus}
         identifier={DatePartType.DAY}
         isValid={(!dateValidation.isComplete && isDayValid) || dateValidation.isValid}
@@ -152,7 +152,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
         placeholder="JJ"
         ref={dayInputRef}
       />
-      <PartialDateInput
+      <ShortInput
         identifier={DatePartType.MONTH}
         isValid={(!dateValidation.isComplete && isMonthValid) || dateValidation.isValid}
         onChangeValue={setMonth}
@@ -162,7 +162,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
           handleBackSpace(e, DatePartType.MONTH)
         }
       />
-      <PartialDateInput
+      <ShortInput
         identifier={DatePartType.YEAR}
         isValid={(!dateValidation.isComplete && isYearValid) || dateValidation.isValid}
         onChangeValue={setYear}
