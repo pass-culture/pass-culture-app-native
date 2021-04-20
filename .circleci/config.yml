@@ -65,10 +65,13 @@ commands:
     description: Setup sentry credentials
     steps:
       - run: |
-          export SENTRY_URL=https://logs.passculture.app/
-          export SENTRY_ORG=sentry
-          export SENTRY_PROJECT=application-native
-          echo "[defaults]\nurl = $SENTRY_URL\norg = $SENTRY_ORG\nproject = $SENTRY_PROJECT\n\n[auth]\ntoken=$SENTRY_AUTH_TOKEN" > ~/.sentryclirc
+          echo "[defaults]" >> ~/.sentryclirc
+          echo "url=https://logs.passculture.app/" >> ~/.sentryclirc
+          echo "org=sentry" >> ~/.sentryclirc
+          echo "project=application-native" >> ~/.sentryclirc
+          echo "" >> ~/.sentryclirc
+          echo "[auth]" >> ~/.sentryclirc
+          echo "token=$SENTRY_AUTH_TOKEN" >> ~/.sentryclirc
 
 jobs:
   run-tests:
