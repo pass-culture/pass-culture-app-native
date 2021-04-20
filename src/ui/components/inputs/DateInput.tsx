@@ -2,7 +2,13 @@ import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } f
 import { NativeSyntheticEvent, TextInput, TextInputKeyPressEventData } from 'react-native'
 import styled from 'styled-components/native'
 
-import { DatePartType, PartialDateInput } from './PartialDateInput'
+import { PartialDateInput } from './PartialDateInput'
+
+export enum DatePartType {
+  DAY = 'day',
+  MONTH = 'month',
+  YEAR = 'year',
+}
 
 export interface DateValidation {
   isComplete: boolean
