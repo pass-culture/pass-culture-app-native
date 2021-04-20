@@ -844,6 +844,10 @@ msgstr "Pas de résultat trouvé."
 msgid "Passer"
 msgstr "Passer"
 
+#: src/features/profile/components/NonEligibleDepartmentBadge.tsx:13
+msgid "Patience ! Le pass Culture sera bientôt disponible dans ton département !"
+msgstr "Patience ! Le pass Culture sera bientôt disponible dans ton département !"
+
 #: src/features/bookings/helpers.ts:33
 msgid "Permanent"
 msgstr "Permanent"
@@ -1449,7 +1453,6 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} of
 msgid "not refunded because expired"
 msgstr "Les {price} € ne seront pas recrédités sur ton pass Culture car il est expiré."
 
-#: src/features/profile/components/NonElligibleDepartmentBadge.tsx:13
 #: src/features/profile/components/YoungerBadge.tsx:16
 msgid "patience enfin"
 msgstr "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."

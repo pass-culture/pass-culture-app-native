@@ -12,7 +12,7 @@ import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { NonElligibleDepartmentBadge } from './NonElligibleDepartmentBadge'
+import { NonEligibleDepartmentBadge } from './NonEligibleDepartmentBadge'
 import { YoungerBadge } from './YoungerBadge'
 
 interface NonBeneficiaryHeaderProps {
@@ -43,8 +43,8 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   let body = null
   if (!eligibilityStartDatetime || !eligibilityEndDatetime) {
     body = (
-      <BodyContainer testID="body-container-above-18-not-elligible-department">
-        <NonElligibleDepartmentBadge />
+      <BodyContainer testID="body-container-above-18-not-eligible-department">
+        <NonEligibleDepartmentBadge />
       </BodyContainer>
     )
   } else if (today >= eligibilityEndDatetime) {
