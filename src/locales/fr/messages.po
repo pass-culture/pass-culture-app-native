@@ -214,11 +214,11 @@ msgstr "Ces plafonds ont été mis en place pour favoriser la diversification de
 msgid "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 msgstr "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:17
+#: src/features/bookOffer/components/CancellationDetails.tsx:15
 msgid "Cette réservation est annulable"
 msgstr "Cette réservation est annulable"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:21
+#: src/features/bookOffer/components/CancellationDetails.tsx:19
 msgid "Cette réservation n’est pas annulable"
 msgstr "Cette réservation n’est pas annulable"
 
@@ -285,7 +285,7 @@ msgstr "Conditions Générales d'Utilisation"
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:29
+#: src/features/bookOffer/components/CancellationDetails.tsx:27
 msgid "Conditions d'annulation"
 msgstr "Conditions d'annulation"
 
@@ -1469,7 +1469,7 @@ msgstr "{price} € seront recrédités sur ton pass Culture."
 msgid "request error"
 msgstr "Échec de la requête {url}, code: {status}"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:22
+#: src/features/bookOffer/components/CancellationDetails.tsx:20
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
 
