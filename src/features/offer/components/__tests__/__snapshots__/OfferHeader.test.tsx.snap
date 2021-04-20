@@ -426,6 +426,7 @@ Array [
   <Modal
     animationType="slide"
     hardwareAccelerated={false}
+    onRequestClose={[Function]}
     statusBarTranslucent={true}
     testID="modal"
     transparent={true}
