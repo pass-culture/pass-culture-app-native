@@ -5,6 +5,7 @@ import { Platform } from 'react-native'
 import { CategoryType } from 'api/gen'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
+import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { IconInterface } from 'ui/svg/icons/types'
 
@@ -36,7 +37,7 @@ export const useModalContent = (): ModalContent => {
   }
 
   if (category.categoryType === CategoryType.Thing) {
-    if (isDigital && Platform.OS === 'ios') {
+    if (isDigital && Platform.OS === 'ios' && getOfferPrice(stocks) > 0) {
       return {
         title: t`Réservation impossible`,
         leftIcon: undefined,
