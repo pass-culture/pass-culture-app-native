@@ -19,7 +19,7 @@ import { useBookOfferMutation } from '../services/useBookOfferMutation'
 import { BookingInformations } from './BookingInformations'
 import { CancellationDetails } from './CancellationDetails'
 
-const disclaimer = t`Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.`
+const disclaimer = t`Les réservations effectuées sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.`
 
 interface Props {
   stocks: OfferStockResponse[]
