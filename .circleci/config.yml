@@ -61,6 +61,14 @@ commands:
     description: Decode match secrets
     steps:
       - run: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+  setup_sentry_credentials:
+    description: Setup sentry credentials
+    steps:
+      - run: |
+          export SENTRY_URL=https://logs.passculture.app/
+          export SENTRY_ORG=sentry
+          export SENTRY_PROJECT=application-native
+          echo "[defaults]\nurl = $SENTRY_URL\norg = $SENTRY_ORG\nproject = $SENTRY_PROJECT\n\n[auth]\ntoken=$SENTRY_AUTH_TOKEN" > ~/.sentryclirc
 
 jobs:
   run-tests:
@@ -129,6 +137,7 @@ jobs:
             echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
       - setup_android_google_services_config
+      - setup_sentry_credentials
       - run:
           name: Deploy Android App for testing environment
           command: |
@@ -152,6 +161,7 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
+      - setup_sentry_credentials
       - run:
           name: Setup iOS Google services config
           command: echo $IOS_GOOGLE_SERVICES_PLIST_TESTING > ios/GoogleService-Info.plist
@@ -176,6 +186,7 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
+      - setup_sentry_credentials
       - run:
           name: Setup iOS Google services config
           command: echo $IOS_GOOGLE_SERVICES_PLIST_STAGING > ios/GoogleService-Info.plist
@@ -204,6 +215,7 @@ jobs:
             echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_STAGING" >> android/keystores/staging.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_STAGING" >>  android/keystores/staging.keystore.properties
       - setup_android_google_services_config
+      - setup_sentry_credentials
       - run:
           name: Deploy Android App for staging environment
           command: |
@@ -218,6 +230,7 @@ jobs:
       - checkout
       - install_node_modules
       - install_ruby_modules
+      - setup_sentry_credentials
       - run:
           name: Deploy Android Code push for staging environment
           command: |
@@ -250,6 +263,7 @@ jobs:
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_PRODUCTION" >>  android/keystores/production.keystore.properties
             echo $ANDROID_PLAYSTORE_SERVICE_ACCOUNT | base64 -di > fastlane/playStoreServiceAccount.json
       - setup_android_google_services_config
+      - setup_sentry_credentials
       - run:
           name: Deploy Android App for production environment
           command: |
@@ -269,6 +283,7 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
+      - setup_sentry_credentials
       - run:
           name: Setup iOS Google services config
           command: echo $IOS_GOOGLE_SERVICES_PLIST_PRODUCTION > ios/GoogleService-Info.plist
