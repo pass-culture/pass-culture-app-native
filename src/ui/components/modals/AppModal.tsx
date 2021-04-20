@@ -15,7 +15,7 @@ interface Props {
   leftIcon?: FunctionComponent<IconInterface>
   onLeftIconPress?: () => void
   rightIcon?: FunctionComponent<IconInterface>
-  onRightIconPress?: () => void
+  onRightIconPress: () => void
   titleNumberOfLines?: number
   isScrollable?: boolean
   disableBackdropTap?: boolean
@@ -44,6 +44,7 @@ export const AppModal: FunctionComponent<Props> = ({
         statusBarTranslucent
         transparent={true}
         visible={visible}
+        onRequestClose={onLeftIconPress ?? onRightIconPress}
         testID="modal">
         <ClicAwayArea
           activeOpacity={1}

@@ -5,9 +5,9 @@ exports[`Home component modal test should render modal correctly 1`] = `
 - First value
 + Second value
 
-@@ -251,11 +251,11 @@
-                    animationType=\\"slide\\"
+@@ -252,11 +252,11 @@
                     hardwareAccelerated={false}
+                    onRequestClose={[Function hideSignInModal]}
                     statusBarTranslucent={true}
                     testID=\\"modal\\"
                     transparent={true}

@@ -23,6 +23,7 @@ Array [
   <Modal
     animationType="slide"
     hardwareAccelerated={false}
+    onRequestClose={[MockFunction]}
     statusBarTranslucent={true}
     testID="modal"
     transparent={true}

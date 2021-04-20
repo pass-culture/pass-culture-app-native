@@ -152,6 +152,7 @@ exports[`Home component should render correctly without login modal 1`] = `
     <Modal
       animationType="slide"
       hardwareAccelerated={false}
+      onRequestClose={[Function]}
       statusBarTranslucent={true}
       testID="modal"
       transparent={true}
