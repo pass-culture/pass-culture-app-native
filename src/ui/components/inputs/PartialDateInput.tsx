@@ -6,16 +6,12 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 
-export enum DatePartType {
-  DAY = 'day',
-  MONTH = 'month',
-  YEAR = 'year',
-}
+type Identifier = string | number
 
 interface PartialDateInputProps extends React.ComponentPropsWithRef<typeof TextInput> {
-  identifier: DatePartType
+  identifier: Identifier
   isValid?: boolean
-  onChangeValue: (value: string, identifier: DatePartType) => void
+  onChangeValue: (value: string, identifier: Identifier) => void
   placeholder: string
 }
 
