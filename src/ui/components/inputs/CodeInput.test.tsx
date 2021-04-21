@@ -5,8 +5,8 @@ import { render } from 'tests/utils'
 import { CodeInput, CodeInputProps, inputUpdator } from './CodeInput'
 
 describe('CodeInput', () => {
-  it.each([1, 2, 3])('should be contain the right number of inputs', (length) => {
-    const { getByTestId } = render(<CodeInput codeLength={length} />)
+  it.each([1, 2, 3])('should contain the right number of inputs', (length) => {
+    const { getByTestId } = render(<CodeInput codeLength={length} placeholder="O" />)
 
     const container = getByTestId('code-input-container')
 
@@ -17,7 +17,7 @@ describe('CodeInput', () => {
     [1, false],
     [2, false],
   ])('should pass the autofocus only to the first input', (inputIndex, expectedAutoFocus) => {
-    const { getByTestId } = render(<CodeInput codeLength={3} autoFocus />)
+    const { getByTestId } = render(<CodeInput codeLength={3} placeholder="O" autoFocus />)
 
     const container = getByTestId('code-input-container')
     const input = container.props.children[inputIndex]
@@ -31,15 +31,15 @@ describe('CodeInput', () => {
         const onChangeValue = jest.fn()
         const props: CodeInputProps = {
           codeLength: 3,
+          placeholder: '0',
           autoFocus: true,
           enableValidation,
           onChangeValue,
-          isValid: (code: string | null, isComplete: boolean) => {
-            return Boolean(code && isComplete)
-          },
+          isValid: (code: string | null, isComplete: boolean) => Boolean(code && isComplete),
+          isInputValid: () => true,
         }
 
-        const inputPosition = 2 // used as identifier
+        const inputPosition = 2
         const setStateAction = inputUpdator('5', inputPosition, props)
         setStateAction({
           0: '1',
@@ -48,10 +48,15 @@ describe('CodeInput', () => {
         })
 
         if (enableValidation) {
-          expect(onChangeValue).toBeCalledWith('125', {
-            isValid: true,
-            isComplete: true,
-          })
+          expect(onChangeValue).toBeCalledWith(
+            '125',
+            {
+              isValid: true,
+              isComplete: true,
+            },
+            inputPosition,
+            '5'
+          )
         } else {
           expect(onChangeValue).toBeCalledWith('125')
         }
@@ -62,15 +67,15 @@ describe('CodeInput', () => {
       const onChangeValue = jest.fn()
       const props: CodeInputProps = {
         codeLength: 3,
+        placeholder: '0',
         autoFocus: true,
         enableValidation: true,
         onChangeValue,
-        isValid: () => {
-          return isValid
-        },
+        isValid: () => isValid,
+        isInputValid: () => true,
       }
 
-      const inputPosition = 1 // used as identifier
+      const inputPosition = 1
       const setStateAction = inputUpdator('7', inputPosition, props)
       setStateAction({
         0: '1',
@@ -78,10 +83,15 @@ describe('CodeInput', () => {
         2: '7',
       })
 
-      expect(onChangeValue).toBeCalledWith('177', {
-        isValid,
-        isComplete: true,
-      })
+      expect(onChangeValue).toBeCalledWith(
+        '177',
+        {
+          isValid,
+          isComplete: true,
+        },
+        inputPosition,
+        '7'
+      )
     })
 
     it.each([
@@ -96,19 +106,26 @@ describe('CodeInput', () => {
         const onChangeValue = jest.fn()
         const props: CodeInputProps = {
           codeLength: 3,
+          placeholder: '0',
           autoFocus: true,
           enableValidation: true,
           onChangeValue,
           isValid: () => true,
+          isInputValid: () => true,
         }
 
         const setStateAction = inputUpdator(typed, inputPosition, props)
         setStateAction(currentState)
 
-        expect(onChangeValue).toBeCalledWith(expectedCode, {
-          isValid: true,
-          isComplete: expectedIsComplete,
-        })
+        expect(onChangeValue).toBeCalledWith(
+          expectedCode,
+          {
+            isValid: true,
+            isComplete: expectedIsComplete,
+          },
+          inputPosition,
+          typed
+        )
       }
     )
   })
@@ -117,13 +134,15 @@ describe('CodeInput', () => {
     const onChangeValue = jest.fn()
     const props: CodeInputProps = {
       codeLength: 3,
+      placeholder: '0',
       autoFocus: true,
       enableValidation: true,
       onChangeValue,
       isValid: () => true,
+      isInputValid: () => true,
     }
 
-    const inputPosition = 1 // used as identifier
+    const inputPosition = 1
     const setStateAction = inputUpdator('7', inputPosition, props)
     const newState = setStateAction({
       0: '1',

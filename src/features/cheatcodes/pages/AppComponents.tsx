@@ -550,16 +550,26 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Code Input of length 20</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
+        <Typo.Caption color={ColorsEnum.BLACK}>is valid if number of 5 digits</Typo.Caption>
+        <Spacer.Column numberOfSpaces={1} />
         <Spacer.Flex flex={1}>
           <CodeInput
             codeLength={20}
+            placeholder="0"
             enableValidation
-            isValid={(code, isComplete) => {
-              return isComplete && code !== null && code.length >= 5
+            isValid={(code, _isComplete) => {
+              return code !== null && !isNaN(Number(code)) && code.length >= 5
             }}
-            onChangeValue={(_code, _validation) => undefined}
+            isInputValid={(inputValue, _position) => {
+              return !isNaN(Number(inputValue)) && inputValue.length === 1
+            }}
+            onChangeValue={(code, validation) => {
+              setInputText(validation.isValid ? `CODE: ${code} OK` : `CODE: ${code} KO`)
+            }}
           />
         </Spacer.Flex>
+        <Typo.Caption color={ColorsEnum.BLACK}>{inputText}</Typo.Caption>
+        <Spacer.Column numberOfSpaces={1} />
       </AccordionItem>
 
       <Divider />
