@@ -194,78 +194,74 @@ exports[`Search component should render correctly 1`] = `
             Array [
               Object {
                 "alignItems": "center",
-                "flexDirection": "row",
               },
             ]
           }
         >
-          <View
+          <Text
+            color="#626262"
             style={
               Array [
                 Object {
-                  "top": 10,
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                 },
               ]
             }
           >
-            <View
-              height={48}
-              width={48}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </View>
+            Je cherche
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "height": 8,
+                },
+              ]
+            }
+          />
           <View
             style={
               Array [
                 Object {
                   "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "left": -10,
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            <Text
-              color="#626262"
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#626262",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "left": -10,
                   },
                 ]
               }
             >
-              Je cherche
-            </Text>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
+              <View
+                height={48}
+                width={48}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
             <Text
-              adjustPaddingLeft={true}
               numberOfLines={1}
               style={
                 Array [
                   Object {
                     "color": "#151515",
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 20,
+                    "left": -10,
                     "lineHeight": 24,
-                    "paddingLeft": 10,
                   },
                 ]
               }
@@ -309,78 +305,74 @@ exports[`Search component should render correctly 1`] = `
             Array [
               Object {
                 "alignItems": "center",
-                "flexDirection": "row",
               },
             ]
           }
         >
-          <View
+          <Text
+            color="#626262"
             style={
               Array [
                 Object {
-                  "top": 10,
+                  "color": "#626262",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                 },
               ]
             }
           >
-            <View
-              height={48}
-              width={48}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </View>
+            Où
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              Array [
+                Object {
+                  "height": 8,
+                },
+              ]
+            }
+          />
           <View
             style={
               Array [
                 Object {
                   "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "left": -10,
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            <Text
-              color="#626262"
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#626262",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "left": -10,
                   },
                 ]
               }
             >
-              Où
-            </Text>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
+              <View
+                height={48}
+                width={48}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
             <Text
-              adjustPaddingLeft={false}
               numberOfLines={1}
               style={
                 Array [
                   Object {
                     "color": "#151515",
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 20,
+                    "left": -10,
                     "lineHeight": 24,
-                    "paddingLeft": 0,
                   },
                 ]
               }
