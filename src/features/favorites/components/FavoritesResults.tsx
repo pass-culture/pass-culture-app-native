@@ -19,7 +19,6 @@ import {
 } from 'features/favorites/pages/utils/sorts'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
 import { useGeolocation } from 'libs/geolocation'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -48,7 +47,6 @@ function applySortBy(
 export const FavoritesResults: React.FC = React.memo(function FavoritesResults() {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
-  const { isScrolling, handleIsScrollingFactory } = useDebouncedScrolling()
   const favoritesState = useFavoritesState()
   const { position } = useGeolocation()
   const { data, isLoading } = useFavorites()
@@ -68,9 +66,6 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
     if (flatListRef && flatListRef.current)
       flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
   }, [favoritesState.sortBy])
-
-  const onScrollEndDrag = useCallback(handleIsScrollingFactory(false), [])
-  const onScrollBeginDrag = useCallback(handleIsScrollingFactory(true), [])
 
   const renderItem = useCallback(
     ({ item: favorite }: { item: FavoriteResponse }) => {
@@ -116,8 +111,6 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
           onEndReachedThreshold={0.9}
-          onScrollEndDrag={onScrollEndDrag}
-          onScrollBeginDrag={onScrollBeginDrag}
           scrollEnabled={sortedFavorites && sortedFavorites.length > 0}
           ListEmptyComponent={ListEmptyComponent}
           initialNumToRender={10}
@@ -125,9 +118,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
       </Container>
       {sortedFavorites && sortedFavorites.length > 0 && (
         <SortContainer>
-          <FadeScrollingView isScrolling={isScrolling}>
-            <Sort />
-          </FadeScrollingView>
+          <Sort />
           <Spacer.BottomScreen />
         </SortContainer>
       )}
