@@ -4,7 +4,6 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { FadeScrollingView, useDebouncedScrolling } from 'features/search/atoms'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { Filter } from 'features/search/atoms/Buttons'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
@@ -18,7 +17,6 @@ const keyExtractor = (item: SearchAlgoliaHit) => item.objectID
 
 export const SearchResults: React.FC = () => {
   const flatListRef = useRef<FlatList<SearchAlgoliaHit> | null>(null)
-  const { isScrolling, handleIsScrollingFactory } = useDebouncedScrolling()
   const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useSearchResults()
   const { searchState } = useSearch()
 
@@ -48,9 +46,6 @@ export const SearchResults: React.FC = () => {
       fetchNextPage()
     }
   }, [hasNextPage])
-
-  const onScrollEndDrag = useCallback(handleIsScrollingFactory(false), [])
-  const onScrollBeginDrag = useCallback(handleIsScrollingFactory(true), [])
 
   const renderItem = useCallback(
     ({ item: hit }: { item: SearchAlgoliaHit }) => <Hit hit={hit} query={searchState.query} />,
@@ -89,8 +84,6 @@ export const SearchResults: React.FC = () => {
           ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
           onEndReached={onEndReached}
-          onScrollEndDrag={onScrollEndDrag}
-          onScrollBeginDrag={onScrollBeginDrag}
           scrollEnabled={nbHits > 0}
           ListEmptyComponent={ListEmptyComponent}
           keyboardShouldPersistTaps="handled"
@@ -99,9 +92,7 @@ export const SearchResults: React.FC = () => {
       </Container>
       {nbHits > 0 && (
         <FilterContainer>
-          <FadeScrollingView isScrolling={isScrolling}>
-            <Filter />
-          </FadeScrollingView>
+          <Filter />
           <Spacer.BottomScreen />
         </FilterContainer>
       )}
