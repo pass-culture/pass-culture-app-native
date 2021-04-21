@@ -1,4 +1,3 @@
-export * from './FadeScrollingView'
 export * from './Hit'
 export * from './NumberOfResults'
 export * from './NoSearchResult'
