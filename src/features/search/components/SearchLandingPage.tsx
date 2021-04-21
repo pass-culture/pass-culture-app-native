@@ -97,8 +97,8 @@ const Container = styled.View({
 })
 
 const TitleIconContainer = styled.View({
-  flexDirection: 'row',
   alignItems: 'center',
+  flexDirection: 'row',
 })
 
 const Title = styled(Typo.Title3)({
