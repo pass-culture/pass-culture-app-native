@@ -59,6 +59,23 @@ cd ios
 bundle exec pod install
 ```
 
+### Build the app
+
+To be able to build the app, you need to configure sentry:
+
+Run `yarn sentry:configure` and select the project `application-native`. This should create 2 files `sentry.properties`, in the `ios/` and `android/` folders.
+
+The content of this file should look like that:
+
+```
+defaults.url=https://logs.passculture.app/
+defaults.org=sentry
+defaults.project=application-native
+auth.token=<token>
+```
+
+The token is available in your sentry account: https://logs.passculture.app/settings/account/api/auth-tokens/.
+
 ### Run the app
 
 #### Android
