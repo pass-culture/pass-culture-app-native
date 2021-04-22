@@ -19,12 +19,12 @@ Array [
   >
     <View>
       <View
-        minHeight={386.6237623762376}
+        minHeight={387.6237623762376}
         style={
           Array [
             Object {
               "alignItems": "center",
-              "minHeight": 386.6237623762376,
+              "minHeight": 387.6237623762376,
             },
           ]
         }
