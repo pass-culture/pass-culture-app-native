@@ -67,6 +67,7 @@ Array [
             }
           }
           customPaddingBottom={16}
+          keyboardShouldPersistTaps="handled"
           scrollEnabled={false}
           style={
             Array [
@@ -1072,6 +1073,7 @@ exports[`SetBirthday Page should render properly 1`] = `
           }
         }
         customPaddingBottom={16}
+        keyboardShouldPersistTaps="handled"
         scrollEnabled={false}
         style={
           Array [

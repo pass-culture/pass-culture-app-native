@@ -53,7 +53,8 @@ export const BottomContentPage: FC<Props> = (props) => {
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           <StyledBottomCardContainer
             customPaddingBottom={getCorrectPadding(keyboardHeight)}
-            scrollEnabled={keyboardHeight !== 0}>
+            scrollEnabled={keyboardHeight !== 0}
+            keyboardShouldPersistTaps="handled">
             {props.children}
             <Spacer.BottomScreen />
           </StyledBottomCardContainer>

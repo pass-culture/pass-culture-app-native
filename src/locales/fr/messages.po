@@ -54,7 +54,7 @@ msgstr "Accepter et s’inscrire"
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/features/bookings/pages/BookingDetails.tsx:148
+#: src/features/bookings/pages/BookingDetails.tsx:151
 #: src/features/offer/services/useCtaWordingAndAction.ts:19
 msgid "Accéder à l'offre"
 msgstr "Accéder à l'offre"
@@ -413,8 +413,8 @@ msgstr "Déconnexion"
 msgid "Découvrir"
 msgstr "Découvrir"
 
-#: src/features/bookOffer/services/useModalContent.tsx:34
-#: src/features/bookOffer/services/useModalContent.tsx:49
+#: src/features/bookOffer/services/useModalContent.tsx:35
+#: src/features/bookOffer/services/useModalContent.tsx:50
 msgid "Détails de la réservation"
 msgstr "Détails de la réservation"
 
@@ -430,7 +430,7 @@ msgstr "E-mail envoyé !"
 msgid "E-mail ou mot de passe incorrect."
 msgstr "E-mail ou mot de passe incorrect."
 
-#: src/features/bookings/pages/BookingDetails.tsx:153
+#: src/features/bookings/pages/BookingDetails.tsx:156
 msgid "EAN"
 msgstr "EAN"
 
@@ -659,7 +659,7 @@ msgstr "Mentions légales"
 msgid "Mes favoris"
 msgstr "Mes favoris"
 
-#: src/features/bookOffer/services/useModalContent.tsx:42
+#: src/features/bookOffer/services/useModalContent.tsx:43
 msgid "Mes options"
 msgstr "Mes options"
 
@@ -671,7 +671,7 @@ msgstr "Mes réservations"
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
-#: src/features/bookings/pages/BookingDetails.tsx:175
+#: src/features/bookings/pages/BookingDetails.tsx:178
 #: src/features/offer/pages/OfferBody.tsx:52
 msgid "Modalités de retrait"
 msgstr "Modalités de retrait"
@@ -778,7 +778,7 @@ msgstr "Offre épuisée"
 msgid "On y va !"
 msgstr "On y va !"
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:38
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:46
 msgid "Oops !"
 msgstr "Oops !"
 
@@ -971,7 +971,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:55
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:63
 msgid "Réessayer"
 msgstr "Réessayer"
 
@@ -987,7 +987,7 @@ msgstr "Réservation annulée"
 msgid "Réservation confirmée !"
 msgstr "Réservation confirmée !"
 
-#: src/features/bookOffer/services/useModalContent.tsx:27
+#: src/features/bookOffer/services/useModalContent.tsx:28
 msgid "Réservation impossible"
 msgstr "Réservation impossible"
 
@@ -1250,7 +1250,7 @@ msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus ta
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
 
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:45
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:53
 msgid "Une erreur s'est produite pendant le chargement."
 msgstr "Une erreur s'est produite pendant le chargement."
 
@@ -1304,7 +1304,7 @@ msgstr "Veux-tu abandonner l'inscription ?"
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
-#: src/features/bookings/pages/BookingDetails.tsx:180
+#: src/features/bookings/pages/BookingDetails.tsx:183
 msgid "Voir le détail de l’offre"
 msgstr "Voir le détail de l’offre"
 
