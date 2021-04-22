@@ -62,11 +62,11 @@ Array [
               "borderTopRightRadius": 16,
               "flexDirection": "column",
               "padding": 24,
-              "paddingBottom": 20,
+              "paddingBottom": 16,
               "width": "100%",
             }
           }
-          customPaddingBottom={20}
+          customPaddingBottom={16}
           scrollEnabled={false}
           style={
             Array [
@@ -1067,11 +1067,11 @@ exports[`SetBirthday Page should render properly 1`] = `
             "borderTopRightRadius": 16,
             "flexDirection": "column",
             "padding": 24,
-            "paddingBottom": 20,
+            "paddingBottom": 16,
             "width": "100%",
           }
         }
-        customPaddingBottom={20}
+        customPaddingBottom={16}
         scrollEnabled={false}
         style={
           Array [
