@@ -8,7 +8,7 @@ import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 
-import { GenericAchievement, Props, onBackAction } from './GenericAchievement'
+import { GenericAchievement, Props, onRemoveScreenAction } from './GenericAchievement'
 import { GenericAchievementCard, AchievementCardKeyProps } from './GenericAchievementCard'
 
 describe('<GenericAchievement />', () => {
@@ -137,10 +137,13 @@ function renderGenericAchievementComponent(props: Props) {
   return render(<GenericAchievement {...props} />)
 }
 
-describe('onBackAction', () => {
+describe('onRemoveScreenAction()', () => {
   afterEach(jest.clearAllMocks)
 
   const onFirstCardBackAction = jest.fn()
+  const goBackEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'GO_BACK' } } }
+  const popEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'POP' } } }
+  const navigateEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'NAVIGATE' } } }
   const swiperRefValue = {
     getActiveIndex: jest.fn(() => 0),
     goTo: jest.fn(),
@@ -157,36 +160,53 @@ describe('onBackAction', () => {
     refs: {},
   }
 
-  it('should return true swiperRefValue is null', () => {
-    const result = onBackAction(null, onFirstCardBackAction)
+  it('should NOT call onFirstCardBackAction(), goToPrev() or preventDefault() when action of event is NOT GO_BACK or POP', () => {
+    onRemoveScreenAction({ swiperRefValue, onFirstCardBackAction, event: navigateEvent })
 
-    expect(result).toBe(true)
     expect(onFirstCardBackAction).not.toBeCalled()
     expect(swiperRefValue.goToPrev).not.toBeCalled()
+    expect(navigateEvent.preventDefault).not.toBeCalled()
   })
 
-  it('should return false and not call onFirstCardBackAction() when it is not defined and activeIndex is 0', () => {
-    const result = onBackAction(swiperRefValue, undefined)
+  it('should NOT call onFirstCardBackAction(), goToPrev() or preventDefault() when swiperRefValue is null', () => {
+    onRemoveScreenAction({ swiperRefValue: null, onFirstCardBackAction, event: goBackEvent })
 
-    expect(result).toBe(false)
     expect(onFirstCardBackAction).not.toBeCalled()
     expect(swiperRefValue.goToPrev).not.toBeCalled()
+    expect(goBackEvent.preventDefault).not.toBeCalled()
   })
 
-  it('should call onFirstCardBackAction() when it is defined and activeIndex is 0', () => {
-    const result = onBackAction(swiperRefValue, onFirstCardBackAction)
+  it('should NOT call onFirstCardBackAction() or preventDefault() when onFirstCardBackAction is NOT defined and activeIndex is 0', () => {
+    onRemoveScreenAction({ swiperRefValue, onFirstCardBackAction: undefined, event: goBackEvent })
 
-    expect(result).toBe(true)
+    expect(onFirstCardBackAction).not.toBeCalled()
+    expect(swiperRefValue.goToPrev).not.toBeCalled()
+    expect(goBackEvent.preventDefault).not.toBeCalled()
+  })
+
+  it('should call onFirstCardBackAction() and preventDefault() when onFirstCardBackAction is defined and activeIndex is 0', () => {
+    onRemoveScreenAction({ swiperRefValue, onFirstCardBackAction, event: goBackEvent })
+
     expect(onFirstCardBackAction).toBeCalled()
     expect(swiperRefValue.goToPrev).not.toBeCalled()
+    expect(goBackEvent.preventDefault).toBeCalled()
   })
 
-  it('should call swiperRefValue.goToPrev() when activeIndex is not 0', () => {
+  it('should call goToPrev() and preventDefault() when activeIndex is not 0', () => {
     swiperRefValue.getActiveIndex.mockReturnValueOnce(1)
-    const result = onBackAction(swiperRefValue, onFirstCardBackAction)
+    onRemoveScreenAction({ swiperRefValue, onFirstCardBackAction, event: goBackEvent })
 
-    expect(result).toBe(true)
     expect(onFirstCardBackAction).not.toBeCalled()
     expect(swiperRefValue.goToPrev).toBeCalled()
+    expect(goBackEvent.preventDefault).toBeCalled()
+  })
+
+  it('should call goToPrev() and preventDefault() when activeIndex is not 0 and action type is POP', () => {
+    swiperRefValue.getActiveIndex.mockReturnValueOnce(1)
+    onRemoveScreenAction({ swiperRefValue, onFirstCardBackAction, event: popEvent })
+
+    expect(onFirstCardBackAction).not.toBeCalled()
+    expect(swiperRefValue.goToPrev).toBeCalled()
+    expect(popEvent.preventDefault).toBeCalled()
   })
 })

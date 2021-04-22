@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { EventArg, useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { Children, cloneElement, FunctionComponent, ReactElement, useMemo } from 'react'
-import { BackHandler } from 'react-native'
 import Swiper from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
@@ -30,7 +29,7 @@ export type Props = {
 }
 
 export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const navigation = useNavigation<UseNavigationType>()
   const swiperRef = React.useRef<Swiper>(null)
 
   const cards = useMemo(() => Children.toArray(props.children), [props.children])
@@ -40,10 +39,15 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
   // of this GenericAchievement component, otherwise the logic of the "back action"
   // would leak to other components / screens.
   useFocusEffect(() => {
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', () =>
-      onBackAction(swiperRef?.current, props.onFirstCardBackAction)
-    )
-    return () => backHandler.remove()
+    // For overriding iOS and Android go back and pop screen behaviour
+    const unsubscribeFromNavigationListener = navigation.addListener('beforeRemove', (event) => {
+      onRemoveScreenAction({
+        swiperRefValue: swiperRef?.current,
+        onFirstCardBackAction: props.onFirstCardBackAction,
+        event,
+      })
+    })
+    return unsubscribeFromNavigationListener
   })
 
   async function skip() {
@@ -54,7 +58,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
       const index = swiperRef.current.getActiveIndex()
       analytics.logHasSkippedTutorial(`${props.screenName}${index + 1}`)
     }
-    navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+    navigation.navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
 
   return (
@@ -98,23 +102,40 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
   )
 }
 
-export function onBackAction(
-  swiperRefValue: Swiper | null,
+export function onRemoveScreenAction({
+  swiperRefValue,
+  onFirstCardBackAction,
+  event,
+}: {
+  swiperRefValue: Swiper | null
   onFirstCardBackAction?: () => void
-): boolean {
-  if (swiperRefValue) {
-    const activeIndex = swiperRefValue.getActiveIndex()
-    if (activeIndex === 0) {
-      if (onFirstCardBackAction) {
-        onFirstCardBackAction()
-      } else {
-        return false // use default back handler action
-      }
-    } else {
-      swiperRefValue.goToPrev()
+  event: EventArg<
+    'beforeRemove',
+    true,
+    {
+      action: Readonly<{
+        type: string
+        payload?: Record<string, any> | undefined
+        source?: string | undefined
+        target?: string | undefined
+      }>
     }
+  >
+}): void {
+  const isGoBackAction = ['GO_BACK', 'POP'].includes(event.data.action.type)
+  if (!isGoBackAction || !swiperRefValue) {
+    return // Remove screen
   }
-  return true
+  const activeIndex = swiperRefValue.getActiveIndex()
+  if (activeIndex === 0 && onFirstCardBackAction) {
+    onFirstCardBackAction()
+    event.preventDefault() // Do not remove screen
+  } else if (activeIndex === 0) {
+    return // Remove screen
+  } else {
+    swiperRefValue.goToPrev()
+    event.preventDefault() // Do not remove screen
+  }
 }
 
 const HorizontalPaddingContainer = styled.View({
