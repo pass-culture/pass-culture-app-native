@@ -11,11 +11,12 @@ interface Props {
   imageUrl: string
   categoryName?: CategoryNameEnum | null
   imageHeight: number
+  minHeight?: number
 }
 
 export const HeroHeader: React.FC<Props> = (props) => {
   return (
-    <Container>
+    <Container minHeight={props.minHeight}>
       <HeroContainer>
         {props.imageUrl ? (
           <BlurImage
@@ -40,9 +41,10 @@ export const HeroHeader: React.FC<Props> = (props) => {
 
 export const blurImageHeight = getSpacing(74)
 
-const Container = styled.View({
-  alignItems: 'center',
-})
+const Container = styled.View<{ minHeight?: number }>`
+  align-items: center;
+  ${({ minHeight }) => (minHeight ? `min-height: ${minHeight}px;` : '')};
+`
 
 const HeroContainer = styled.View({ alignItems: 'center', position: 'absolute' })
 const BlurImage = styled.Image<{ height: number }>(({ height }) => ({
