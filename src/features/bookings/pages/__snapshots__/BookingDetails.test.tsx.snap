@@ -19,10 +19,12 @@ Array [
   >
     <View>
       <View
+        minHeight={386.6237623762376}
         style={
           Array [
             Object {
               "alignItems": "center",
+              "minHeight": 386.6237623762376,
             },
           ]
         }
@@ -38,7 +40,7 @@ Array [
           }
         >
           <View
-            height={320}
+            height={350}
             testID="BackgroundPlaceholder"
             width={751}
           >
@@ -87,7 +89,7 @@ Array [
                   "flexDirection": "column",
                   "justifyContent": "center",
                   "maxWidth": 300,
-                  "minHeight": 220,
+                  "minHeight": 250,
                 },
                 Object {
                   "shadowColor": "#151515",
@@ -128,7 +130,7 @@ Array [
                   Array [
                     Object {
                       "alignItems": "center",
-                      "minHeight": 220,
+                      "minHeight": 250,
                       "paddingHorizontal": 28,
                       "paddingVertical": 8,
                     },
