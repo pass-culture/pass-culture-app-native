@@ -5,7 +5,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 - First value
 + Second value
 
-@@ -280,10 +280,11 @@
+@@ -281,10 +281,11 @@
                       },
                     ]
                   }
@@ -17,7 +17,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
             </View>
             <View
               numberOfSpaces={6}
-@@ -393,10 +394,11 @@
+@@ -394,10 +395,11 @@
                       },
                     ]
                   }
@@ -29,7 +29,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   accessible={true}
                   focusable={true}
                   onClick={[Function onClick]}
-@@ -492,22 +494,22 @@
+@@ -493,22 +495,22 @@
                 ]
               }
             />
@@ -54,7 +54,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -526,21 +528,21 @@
+@@ -527,21 +529,21 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -85,7 +85,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -175,10 +175,58 @@
+@@ -176,10 +176,58 @@
                   </Text>
                 </View>
               </View>
@@ -144,7 +144,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -222,18 +270,18 @@
+@@ -223,18 +271,18 @@
                     },
                   ]
                 }
@@ -165,7 +165,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -331,18 +379,18 @@
+@@ -332,18 +380,18 @@
                     },
                   ]
                 }
@@ -193,7 +193,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 - First value
 + Second value
 
-@@ -175,10 +175,58 @@
+@@ -176,10 +176,58 @@
                   </Text>
                 </View>
               </View>
@@ -252,7 +252,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -222,18 +270,18 @@
+@@ -223,18 +271,18 @@
                     },
                   ]
                 }
@@ -273,7 +273,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -331,18 +379,18 @@
+@@ -332,18 +380,18 @@
                     },
                   ]
                 }
@@ -301,7 +301,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 - First value
 + Second value
 
-@@ -175,10 +175,58 @@
+@@ -176,10 +176,58 @@
                   </Text>
                 </View>
               </View>
@@ -360,7 +360,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -222,18 +270,18 @@
+@@ -223,18 +271,18 @@
                     },
                   ]
                 }
@@ -381,7 +381,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -331,18 +379,18 @@
+@@ -332,18 +380,18 @@
                     },
                   ]
                 }
