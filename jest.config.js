@@ -17,6 +17,7 @@ module.exports = {
       '|@react-native-firebase/remote-config' +
       '|@sentry/react-native' +
       '|react-native-geolocation-service' +
+      '|@pass-culture/id-check' +
       '/(?!(lib)))',
   ],
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
