@@ -7,6 +7,17 @@ import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Background } from 'ui/svg/Background'
 import { ColorsEnum, getShadow, getSpacing, Spacer } from 'ui/theme'
 
+const getCorrectPadding = (keyboardHeight: number) => {
+  if (Platform.OS === 'ios') {
+    if (keyboardHeight !== 0) {
+      return 50
+    } else {
+      return 16
+    }
+  } else {
+    return 20
+  }
+}
 interface Props {
   onKeyboardDismiss?: () => void
   // used to communicate the keyboard height to the parent without triggering a rerendering
@@ -41,7 +52,7 @@ export const BottomContentPage: FC<Props> = (props) => {
       <Container>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           <StyledBottomCardContainer
-            customPaddingBottom={keyboardHeight !== 0 ? 50 : 20}
+            customPaddingBottom={getCorrectPadding(keyboardHeight)}
             scrollEnabled={keyboardHeight !== 0}>
             {props.children}
             <Spacer.BottomScreen />
