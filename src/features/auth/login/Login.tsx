@@ -115,7 +115,6 @@ export const Login: FunctionComponent = function () {
         <Spacer.Column numberOfSpaces={2} />
         <TextInput
           autoCapitalize="none"
-          autoFocus={true}
           isError={!!errorMessage}
           keyboardType="email-address"
           onChangeText={setEmail}
