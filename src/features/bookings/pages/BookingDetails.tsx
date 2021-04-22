@@ -185,6 +185,7 @@ export function BookingDetails() {
         testID="BookingDetailsScrollView"
         bounces={false}>
         <HeroHeader
+          minHeight={ticketBottomPosition + ticketFooterHeigth - 1}
           imageHeight={ticketBottomPosition}
           categoryName={offer.category.name}
           imageUrl={offer.image?.url || ''}>
