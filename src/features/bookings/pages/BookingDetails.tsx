@@ -191,6 +191,8 @@ export function BookingDetails() {
           imageUrl={offer.image?.url || ''}>
           <Spacer.Column numberOfSpaces={18} />
           <TicketContainer
+            // TODO remove this by adaping component to design
+            // https://passculture.atlassian.net/browse/PC-8272
             onLayout={(event) => {
               updateTicketBottomPosition(event.nativeEvent.layout)
             }}>
