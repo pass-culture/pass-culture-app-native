@@ -15,7 +15,9 @@ type BeneficiaryHeaderProps = {
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
 }
+
 export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProps>) {
+  const { firstName, lastName, domainsCredit, depositExpirationDate } = props
   return (
     <Container testID="beneficiary-header">
       <HeaderBackgroundWrapper>
@@ -23,22 +25,20 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={12} />
       <UserNameAndCredit>
-        {/* eslint-disable-next-line react-native/no-raw-text */}
-        <Typo.Title4 color={ColorsEnum.WHITE}>{`${props.firstName} ${props.lastName}`}</Typo.Title4>
+        <Typo.Title4 color={ColorsEnum.WHITE}>{t`${firstName} ${lastName}`}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4.5} />
-        {/* eslint-disable-next-line react-native/no-raw-text */}
-        <Typo.Hero color={ColorsEnum.WHITE}>{`${convertCentsToEuros(
-          computeCredit(props.domainsCredit)
-        )} €`}</Typo.Hero>
+        <Typo.Hero color={ColorsEnum.WHITE}>
+          {t`${convertCentsToEuros(computeCredit(domainsCredit))} €`}
+        </Typo.Hero>
         <Spacer.Column numberOfSpaces={2} />
-        {props.depositExpirationDate && (
+        {depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
-            {t`crédit valable jusqu'au` + `\u00a0${props.depositExpirationDate}`}
+            {t`crédit valable jusqu'au` + `\u00a0${depositExpirationDate}`}
           </Typo.Caption>
         )}
         <Spacer.Column numberOfSpaces={6} />
       </UserNameAndCredit>
-      <Ceilings domainsCredit={props.domainsCredit} />
+      <Ceilings domainsCredit={domainsCredit} />
     </Container>
   )
 }
