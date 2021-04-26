@@ -17,6 +17,7 @@ export function LoggedOutHeader() {
       <HeaderBackgroundWrapper>
         <HeaderBackground width={ScreenWidth} />
       </HeaderBackgroundWrapper>
+      <Spacer.Column numberOfSpaces={12} />
       <HeaderContent>
         <Typo.Title4 color={ColorsEnum.WHITE}>{t`Profil`}</Typo.Title4>
         <Spacer.Column numberOfSpaces={8} />
@@ -40,6 +41,7 @@ export function LoggedOutHeader() {
             <Typo.ButtonText color={ColorsEnum.WHITE}>{t`Connecte-toi`}</Typo.ButtonText>
           </TouchableOpacity>
         </LoginCta>
+        <Spacer.Column numberOfSpaces={6} />
       </HeaderContent>
     </Container>
   )
@@ -55,8 +57,8 @@ const HeaderBackgroundWrapper = styled.View({
 
 const HeaderContent = styled.View({
   alignItems: 'center',
-  padding: getSpacing(5),
-  paddingTop: getSpacing(10),
+  paddingRight: getSpacing(5),
+  paddingLeft: getSpacing(5),
   width: '100%',
 })
 

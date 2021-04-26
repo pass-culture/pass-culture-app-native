@@ -2,37 +2,48 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { DomainsCredit } from 'api/gen/api'
 import { AccordionItem } from 'features/offer/components'
+import { computeCredit } from 'features/profile/utils'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
 
 import { accordionStyle, GreyContainer, Description } from './reusables'
 
 type ExBeneficiaryHeaderProps = {
+  firstName?: string | null
+  lastName?: string | null
+  domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
 }
 
 export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
+  const { firstName, lastName, domainsCredit, depositExpirationDate } = props
   return (
     <Container testID={'ex-beneficiary-header'}>
       <HeaderBackgroundWrapper>
         <HeaderBackground width={ScreenWidth} />
       </HeaderBackgroundWrapper>
+      <Spacer.Column numberOfSpaces={12} />
       <TitleContainer>
-        <Spacer.Column numberOfSpaces={12} />
-        <Typo.Title4 color={ColorsEnum.WHITE}>{t`Profil`}</Typo.Title4>
-        <Spacer.Column numberOfSpaces={4} />
-        {props.depositExpirationDate && (
+        <Typo.Title4 color={ColorsEnum.WHITE}>{t`${firstName} ${lastName}`}</Typo.Title4>
+        <Spacer.Column numberOfSpaces={4.5} />
+        <Typo.Hero color={ColorsEnum.WHITE}>
+          {t`${convertCentsToEuros(computeCredit(domainsCredit))} €`}
+        </Typo.Hero>
+        <Spacer.Column numberOfSpaces={2} />
+        {depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
             {t({
               id: 'credit expired on date',
-              values: { deadline: props.depositExpirationDate },
+              values: { deadline: depositExpirationDate },
               message: 'crédit expiré le {deadline}',
             })}
           </Typo.Caption>
         )}
       </TitleContainer>
-      <Spacer.Column numberOfSpaces={3.5} />
+      <Spacer.Column numberOfSpaces={6} />
       <DescriptionContainer>
         <AccordionItem
           title={<Typo.ButtonText>{t`Mon crédit est expiré, que faire ?`}</Typo.ButtonText>}
@@ -61,7 +72,7 @@ const Container = styled.View({
 })
 
 const HeaderBackgroundWrapper = styled.View({
-  maxHeight: getSpacing(37),
+  maxHeight: getSpacing(60),
   overflow: 'hidden',
   position: 'absolute',
 })

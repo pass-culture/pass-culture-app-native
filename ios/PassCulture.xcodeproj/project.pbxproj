@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		042C3F171E8246C0835AF4E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C1955A99E745B9B354F57A /* AppDelegate.m */; };
 		1AFC4F7B230841A78FC27836 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A44026DF307C44498490941C /* Montserrat-MediumItalic.ttf */; };

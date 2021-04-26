@@ -29,7 +29,14 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       : false
 
     if (isExpired) {
-      return <ExBeneficiaryHeader depositExpirationDate={depositExpirationDate} />
+      return (
+        <ExBeneficiaryHeader
+          firstName={user.firstName}
+          lastName={user.lastName}
+          domainsCredit={user.domainsCredit}
+          depositExpirationDate={depositExpirationDate}
+        />
+      )
     }
 
     return (
