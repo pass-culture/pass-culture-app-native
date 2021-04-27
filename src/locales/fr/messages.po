@@ -107,7 +107,7 @@ msgstr "Ajouté récemment"
 msgid "Annuler"
 msgstr "Annuler"
 
-#: src/features/bookings/components/CancelBookingModal.tsx:58
+#: src/features/bookings/components/CancelBookingModal.tsx:59
 #: src/features/bookings/pages/BookingDetails.tsx:85
 msgid "Annuler ma réservation"
 msgstr "Annuler ma réservation"
@@ -308,7 +308,7 @@ msgstr "Confirmer la réservation"
 msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
-#: src/features/profile/components/LoggedOutHeader.tsx:31
+#: src/features/profile/components/LoggedOutHeader.tsx:32
 msgid "Connecte-toi"
 msgstr "Connecte-toi"
 
@@ -534,7 +534,7 @@ msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
 
-#: src/features/profile/components/LoggedOutHeader.tsx:20
+#: src/features/profile/components/LoggedOutHeader.tsx:21
 msgid "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
 msgstr "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
 
@@ -583,7 +583,7 @@ msgstr "L'offre n'a pas été retirée de tes favoris"
 msgid "La date choisie est incorrecte"
 msgstr "La date choisie est incorrecte"
 
-#: src/features/bookings/components/CancelBookingModal.tsx:27
+#: src/features/bookings/components/CancelBookingModal.tsx:28
 msgid "La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées"
 msgstr "La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées"
 
@@ -680,7 +680,7 @@ msgstr "Modalités de retrait"
 msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:27
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:46
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
@@ -889,8 +889,7 @@ msgstr "Prix"
 msgid "Prix croissant"
 msgstr "Prix croissant"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:15
-#: src/features/profile/components/LoggedOutHeader.tsx:17
+#: src/features/profile/components/LoggedOutHeader.tsx:18
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:65
 msgid "Profil"
 msgstr "Profil"
@@ -955,7 +954,7 @@ msgstr "Retourner à l'accueil"
 msgid "Retourner à l'offre"
 msgstr "Retourner à l'offre"
 
-#: src/features/bookings/components/CancelBookingModal.tsx:60
+#: src/features/bookings/components/CancelBookingModal.tsx:61
 msgid "Retourner à ma réservation"
 msgstr "Retourner à ma réservation"
 
@@ -1004,7 +1003,7 @@ msgstr "Réserver"
 #: src/features/favorites/components/NotConnectedFavorites.tsx:34
 #: src/features/home/components/SignUpSignInChoiceModal.tsx:38
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:38
-#: src/features/profile/components/LoggedOutHeader.tsx:23
+#: src/features/profile/components/LoggedOutHeader.tsx:24
 msgid "S'inscrire"
 msgstr "S'inscrire"
 
@@ -1096,7 +1095,7 @@ msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil 
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:29
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:48
 msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 
@@ -1124,7 +1123,7 @@ msgstr "Ton mot de passe actuel"
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
-#: src/ui/components/achievements/components/GenericAchievement.tsx:59
+#: src/ui/components/achievements/components/GenericAchievement.tsx:65
 msgid "Tout passer"
 msgstr "Tout passer"
 
@@ -1153,7 +1152,7 @@ msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de no
 msgid "Tu as 18 ans..."
 msgstr "Tu as 18 ans..."
 
-#: src/features/profile/components/LoggedOutHeader.tsx:29
+#: src/features/profile/components/LoggedOutHeader.tsx:30
 msgid "Tu as déjà un compte ?"
 msgstr "Tu as déjà un compte ?"
 
@@ -1169,7 +1168,7 @@ msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères po
 msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 msgstr "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 
-#: src/features/bookings/components/CancelBookingModal.tsx:50
+#: src/features/bookings/components/CancelBookingModal.tsx:51
 msgid "Tu es sur le point d'annuler"
 msgstr "Tu es sur le point d'annuler"
 
@@ -1207,7 +1206,7 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:36
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:55
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 
@@ -1223,7 +1222,7 @@ msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page
 msgid "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:33
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:52
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
@@ -1245,7 +1244,7 @@ msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 
-#: src/features/bookings/components/CancelBookingModal.tsx:33
+#: src/features/bookings/components/CancelBookingModal.tsx:34
 #: src/features/profile/pages/NotificationSettings.tsx:89
 msgid "Une erreur est survenue"
 msgstr "Une erreur est survenue"
@@ -1354,7 +1353,12 @@ msgstr "autour de toi"
 msgid "c'est..."
 msgstr "c'est..."
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:18
+#: src/features/profile/components/BeneficiaryHeader.tsx:28
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:29
+msgid "credit"
+msgstr "{credit}"
+
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:37
 msgid "credit expired on date"
 msgstr "crédit expiré le {deadline}"
 
@@ -1375,7 +1379,7 @@ msgstr "crédit insuffisant"
 msgid "crédit photo"
 msgstr "crédit photo"
 
-#: src/features/profile/components/BeneficiaryHeader.tsx:23
+#: src/features/profile/components/BeneficiaryHeader.tsx:36
 msgid "crédit valable jusqu'au"
 msgstr "crédit valable jusqu'au"
 
@@ -1444,13 +1448,18 @@ msgstr "metteur en scène"
 msgid "montant déduit"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
+#: src/features/profile/components/BeneficiaryHeader.tsx:20
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:21
+msgid "name"
+msgstr "{name}"
+
 #: src/features/auth/signup/VerifyEligibility.tsx:23
 msgid "need verify eligibility"
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/bookings/components/CancelBookingModal.tsx:79
+#: src/features/bookings/components/CancelBookingModal.tsx:81
 msgid "not refunded because expired"
-msgstr "Les {price} € ne seront pas recrédités sur ton pass Culture car il est expiré."
+msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré."
 
 #: src/features/profile/components/YoungerBadge.tsx:16
 msgid "patience enfin"
@@ -1464,9 +1473,9 @@ msgstr "({price} x 2 places)"
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
-#: src/features/bookings/components/CancelBookingModal.tsx:86
+#: src/features/bookings/components/CancelBookingModal.tsx:88
 msgid "refunded on your pass"
-msgstr "{price} € seront recrédités sur ton pass Culture."
+msgstr "{price} seront recrédités sur ton pass Culture."
 
 #: src/libs/fetch.ts:29
 msgid "request error"
