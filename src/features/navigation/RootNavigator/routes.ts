@@ -28,6 +28,7 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
+import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
@@ -102,6 +103,7 @@ const routes: Array<Route> = [
   { name: 'TabNavigator', component: TabNavigator },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },
+  { name: 'ForceUpdate', component: ForceUpdate },
 ]
 
 export default routes

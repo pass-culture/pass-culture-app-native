@@ -246,6 +246,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('Maintenance')}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={`ForceUpdate Page`}
+            onPress={() => navigation.navigate('ForceUpdate')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
