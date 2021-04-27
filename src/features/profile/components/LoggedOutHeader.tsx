@@ -20,11 +20,11 @@ export function LoggedOutHeader() {
       <Spacer.Column numberOfSpaces={12} />
       <HeaderContent>
         <Typo.Title4 color={ColorsEnum.WHITE}>{t`Profil`}</Typo.Title4>
-        <Spacer.Column numberOfSpaces={8} />
+        <Spacer.Column numberOfSpaces={7} />
         <Description color={ColorsEnum.WHITE}>
           {t`Inscris-toi pour accéder à toutes les fonctionnalités de l’application`}
         </Description>
-        <Spacer.Column numberOfSpaces={8} />
+        <Spacer.Column numberOfSpaces={8.5} />
         <ButtonPrimaryWhite
           title={t`S'inscrire`}
           onPress={() => {
@@ -32,7 +32,7 @@ export function LoggedOutHeader() {
             navigate('SetEmail', { preventCancellation: true })
           }}
         />
-        <Spacer.Column numberOfSpaces={4} />
+        <Spacer.Column numberOfSpaces={5} />
         <LoginCta>
           <Typo.Body color={ColorsEnum.WHITE}>{t`Tu as déjà un compte ?` + '\u00a0'}</Typo.Body>
           <TouchableOpacity
@@ -41,7 +41,7 @@ export function LoggedOutHeader() {
             <Typo.ButtonText color={ColorsEnum.WHITE}>{t`Connecte-toi`}</Typo.ButtonText>
           </TouchableOpacity>
         </LoginCta>
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={7} />
       </HeaderContent>
     </Container>
   )
@@ -53,6 +53,8 @@ const Container = styled.View({
 
 const HeaderBackgroundWrapper = styled.View({
   position: 'absolute',
+  top: 0,
+  maxHeight: getSpacing(73.5),
 })
 
 const HeaderContent = styled.View({
