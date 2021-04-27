@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { DomainsCredit } from 'api/gen/api'
 import { AccordionItem } from 'features/offer/components'
 import { computeCredit } from 'features/profile/utils'
-import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
 
@@ -20,6 +20,9 @@ type ExBeneficiaryHeaderProps = {
 
 export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
   const { firstName, lastName, domainsCredit, depositExpirationDate } = props
+  const name = `${firstName} ${lastName}`
+  const credit = formatToFrenchDecimal(computeCredit(domainsCredit))
+
   return (
     <Container testID={'ex-beneficiary-header'}>
       <HeaderBackgroundWrapper>
@@ -27,10 +30,20 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={12} />
       <TitleContainer>
-        <Typo.Title4 color={ColorsEnum.WHITE}>{t`${firstName} ${lastName}`}</Typo.Title4>
+        <Typo.Title4 color={ColorsEnum.WHITE}>
+          {t({
+            id: 'name',
+            values: { name },
+            message: '{name}',
+          })}
+        </Typo.Title4>
         <Spacer.Column numberOfSpaces={4.5} />
         <Typo.Hero color={ColorsEnum.WHITE}>
-          {t`${convertCentsToEuros(computeCredit(domainsCredit))} €`}
+          {t({
+            id: 'credit',
+            values: { credit },
+            message: '{credit}',
+          })}
         </Typo.Hero>
         <Spacer.Column numberOfSpaces={2} />
         {depositExpirationDate && (
