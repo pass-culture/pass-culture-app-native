@@ -12,10 +12,10 @@ describe('ExBeneficiaryHeader', () => {
   it('should render properly', () => {
     const { getByText } = render(
       <ExBeneficiaryHeader
-        firstName={'Rosa'}
-        lastName={'Bonheur'}
+        firstName="Rosa"
+        lastName="Bonheur"
         domainsCredit={credit}
-        depositExpirationDate={'25/12/2020'}
+        depositExpirationDate="25/12/2020"
       />
     )
 
