@@ -1,11 +1,23 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { openExternalUrl } from 'features/navigation/helpers'
+import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { Background } from 'ui/svg/Background'
 import { Star } from 'ui/svg/icons/Star'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+
+const ANDROID_STORE_LINK = `https://play.google.com/store/apps/details?id:${env.ANDROID_APP_ID}`
+const IOS_STORE_LINK = `https://apps.apple.com/us/app/pass-culture/id${env.IOS_APP_STORE_ID}`
+
+const STORE_LINK = Platform.select({
+  ios: IOS_STORE_LINK,
+  android: ANDROID_STORE_LINK,
+  default: ANDROID_STORE_LINK,
+})
 
 export const ForceUpdate = () => {
   return (
@@ -35,7 +47,10 @@ export const ForceUpdate = () => {
           </Row>
         </ContentContainer>
         <ButtonContainer>
-          <ButtonPrimaryWhite title={t`Télécharger la dernière version`} onPress={() => {}} />
+          <ButtonPrimaryWhite
+            title={t`Télécharger la dernière version`}
+            onPress={() => openExternalUrl(STORE_LINK)}
+          />
         </ButtonContainer>
       </PageContainer>
       <Spacer.BottomScreen />
