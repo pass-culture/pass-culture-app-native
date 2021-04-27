@@ -24,7 +24,7 @@ export function LoggedOutHeader() {
         <Description color={ColorsEnum.WHITE}>
           {t`Inscris-toi pour accéder à toutes les fonctionnalités de l’application`}
         </Description>
-        <Spacer.Column numberOfSpaces={8.5} />
+        <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimaryWhite
           title={t`S'inscrire`}
           onPress={() => {
@@ -59,8 +59,7 @@ const HeaderBackgroundWrapper = styled.View({
 
 const HeaderContent = styled.View({
   alignItems: 'center',
-  paddingRight: getSpacing(5),
-  paddingLeft: getSpacing(5),
+  paddingHorizontal: getSpacing(5),
   width: '100%',
 })
 

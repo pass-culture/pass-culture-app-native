@@ -11,6 +11,7 @@ import { Credit, useAvailableCredit } from 'features/home/services/useAvailableC
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
+import { formatToFrenchDecimal } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -112,15 +113,15 @@ function getRefundRule(booking: Booking, user?: UserProfileResponse, credit?: Cr
     if (isUserExBeneficiary(user, credit)) {
       return t({
         id: 'not refunded because expired',
-        values: { price },
-        message: 'Les {price} € ne seront pas recrédités sur ton pass Culture car il est expiré.',
+        values: { price: formatToFrenchDecimal(price) },
+        message: 'Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré.',
       })
     }
     if (isUserBeneficiary(user)) {
       return t({
         id: 'refunded on your pass',
-        values: { price },
-        message: '{price} € seront recrédités sur ton pass Culture.',
+        values: { price: formatToFrenchDecimal(price) },
+        message: '{price} seront recrédités sur ton pass Culture.',
       })
     }
   }
