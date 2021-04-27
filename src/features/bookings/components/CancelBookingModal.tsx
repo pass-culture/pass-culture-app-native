@@ -113,14 +113,14 @@ function getRefundRule(booking: Booking, user?: UserProfileResponse, credit?: Cr
     if (isUserExBeneficiary(user, credit)) {
       return t({
         id: 'not refunded because expired',
-        values: { price: formatToFrenchDecimal(price) },
+        values: { price: formatToFrenchDecimal(booking.totalAmount) },
         message: 'Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré.',
       })
     }
     if (isUserBeneficiary(user)) {
       return t({
         id: 'refunded on your pass',
-        values: { price: formatToFrenchDecimal(price) },
+        values: { price: formatToFrenchDecimal(booking.totalAmount) },
         message: '{price} seront recrédités sur ton pass Culture.',
       })
     }
