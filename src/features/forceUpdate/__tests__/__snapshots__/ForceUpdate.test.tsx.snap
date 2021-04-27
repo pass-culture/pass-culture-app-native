@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ForceUpdate/> should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      height="100%"
+      width="100%"
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    numberOfSpaces={10}
+    style={
+      Array [
+        Object {
+          "height": 40,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    height={36}
+    width={107}
+  >
+    <Text>
+      undefined-SVG-Mock
+    </Text>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+  <View
+    customHeight={8}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />
+</View>
+`;

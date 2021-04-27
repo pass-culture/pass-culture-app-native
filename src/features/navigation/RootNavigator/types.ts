@@ -77,6 +77,7 @@ export type RootStackParamList = {
   VerifyEligibility: { email: string; licenceToken: string }
   FirstTutorial: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
+  ForceUpdate: undefined
 }
 
 export type AllNavParamList = RootStackParamList & TabParamList
