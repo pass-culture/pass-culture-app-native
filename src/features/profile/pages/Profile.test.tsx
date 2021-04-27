@@ -1,20 +1,26 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { GeoCoordinates } from 'react-native-geolocation-service'
 import { UseQueryResult } from 'react-query'
-import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { GetIdCheckTokenResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/pages/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers'
+import { Tab } from 'features/navigation/TabBar/TabNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { storage } from 'libs/storage'
+import { GeolocPermissionState } from 'libs/geolocation'
 import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
 
 import { Profile } from './Profile'
+
+const mockNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => ({
+  // @ts-ignore : Spread types may only be created from object types.
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({ navigate: mockNavigate }),
+}))
 
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(
@@ -33,19 +39,11 @@ jest.mock('features/auth/AuthContext', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
-let mockPosition: Pick<GeoCoordinates, 'latitude' | 'longitude'> | null = null
-const mockTriggerPositionUpdate = jest.fn()
-jest.mock('libs/geolocation', () => ({
-  useGeolocation: jest.fn(() => ({
-    position: mockPosition,
-    triggerPositionUpdate: mockTriggerPositionUpdate,
-  })),
-}))
-
-jest.mock('libs/storage', () => ({
-  storage: {
-    saveObject: jest.fn(),
-  },
+let mockPermissionState = GeolocPermissionState.GRANTED
+jest.mock('libs/geolocation/GeolocationWrapper', () => ({
+  useGeolocation: () => ({
+    permissionState: mockPermissionState,
+  }),
 }))
 
 const mockFavoritesState = initialFavoritesState
@@ -70,8 +68,10 @@ jest.mock('features/auth/api', () => ({
 
 describe('Profile component', () => {
   beforeEach(() => {
-    navigate.mockRestore()
     jest.clearAllMocks()
+  })
+  afterEach(() => {
+    mockPermissionState = GeolocPermissionState.GRANTED
   })
 
   describe('user settings section', () => {
@@ -81,7 +81,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-personal-data')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('PersonalData')
+      expect(mockNavigate).toBeCalledWith('PersonalData')
     })
 
     it('should navigate when the password row is clicked', async () => {
@@ -90,43 +90,40 @@ describe('Profile component', () => {
       const row = getByTestId('row-password')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('ChangePassword')
+      expect(mockNavigate).toBeCalledWith('ChangePassword')
     })
 
     describe('geolocation switch', () => {
-      it('should display switch ON if position not null', async () => {
-        mockPosition = { latitude: 2, longitude: 40 }
+      it('should display switch ON if geoloc permission is granted', async () => {
+        mockPermissionState = GeolocPermissionState.GRANTED
 
         const { getByTestId } = await renderProfile()
         const geolocSwitch = getByTestId('geolocation-switch-background')
         expect(geolocSwitch.props.active).toBeTruthy()
       })
 
-      it('should display switch OFF if position is null', async () => {
-        mockPosition = null
+      it('should display switch OFF if geoloc permission is denied', async () => {
+        mockPermissionState = GeolocPermissionState.DENIED
         const { getByTestId } = await renderProfile()
         const geolocSwitch = getByTestId('geolocation-switch-background')
         expect(geolocSwitch.props.active).toBeFalsy()
       })
 
-      it('should set `has_allowed_geolocation` to FALSE when clicking on ACTIVE switch and call setShouldComputePosition', async () => {
+      it('should open "Deactivate geoloc" modal when clicking on ACTIVE switch and call mockFavoriteDispatch()', async () => {
         // geolocation switch is ON and user wants to switch it OFF
-        jest.spyOn(storage, 'saveObject').mockResolvedValueOnce()
-        mockPosition = { latitude: 2, longitude: 40 }
-        const { getByTestId } = await renderProfile({
+        mockPermissionState = GeolocPermissionState.GRANTED
+        const { getByTestId, getByText } = await renderProfile({
           wrapper: FavoritesWrapper,
         })
 
         fireEvent.press(getByTestId('geolocation'))
 
-        await waitForExpect(() => {
-          expect(mockTriggerPositionUpdate).toHaveBeenCalled()
-          expect(mockFavoriteDispatch).toBeCalledWith({
-            type: 'SET_SORT_BY',
-            payload: 'RECENTLY_ADDED',
-          })
+        expect(mockFavoriteDispatch).toBeCalledWith({
+          type: 'SET_SORT_BY',
+          payload: 'RECENTLY_ADDED',
         })
-        expect(storage.saveObject).toBeCalledWith('has_allowed_geolocation', false)
+        expect(getByTestId('modal-geoloc-permission-modal').props.visible).toBe(true)
+        expect(getByText('Désactiver la géolocalisation'))
       })
     })
     it('should navigate when the notifications row is clicked', async () => {
@@ -135,7 +132,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-notifications')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('NotificationSettings')
+      expect(mockNavigate).toBeCalledWith('NotificationSettings')
     })
   })
 
@@ -146,7 +143,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-how-it-works')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
+      expect(mockNavigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
     })
 
     it('should navigate when the faq row is clicked', async () => {
@@ -177,7 +174,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-legal-notices')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('LegalNotices')
+      expect(mockNavigate).toBeCalledWith('LegalNotices')
     })
 
     it('should navigate when the confidentiality row is clicked', async () => {
@@ -186,7 +183,7 @@ describe('Profile component', () => {
       const row = getByTestId('row-confidentiality')
       fireEvent.press(row)
 
-      expect(navigate).toBeCalledWith('ConsentSettings')
+      expect(mockNavigate).toBeCalledWith('ConsentSettings')
     })
   })
 
@@ -255,7 +252,14 @@ const defaultOptions = {
 
 async function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
-  const renderAPI = render(<Profile />, { wrapper })
+  const renderAPI = render(
+    <NavigationContainer>
+      <Tab.Navigator initialRouteName="Profile">
+        <Tab.Screen name="Profile" component={Profile} />
+      </Tab.Navigator>
+    </NavigationContainer>,
+    { wrapper }
+  )
   await act(flushAllPromises)
   return renderAPI
 }

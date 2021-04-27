@@ -5,7 +5,6 @@ import Geolocation from 'react-native-geolocation-service'
 import * as permissions from 'react-native-permissions'
 
 import { GeolocationWrapper, GeolocPermissionState, useGeolocation } from 'libs/geolocation'
-import { storage } from 'libs/storage'
 import { waitFor } from 'tests/utils'
 
 import { getPosition } from './getPosition'
@@ -13,14 +12,6 @@ import { getPosition } from './getPosition'
 beforeEach(() => {
   jest.clearAllMocks()
 })
-
-let mockReadObject = true
-jest.mock('libs/storage', () => ({
-  storage: {
-    saveObject: jest.fn(),
-    readObject: jest.fn(() => Promise.resolve(mockReadObject)),
-  },
-}))
 
 jest.mock('./getPosition', () => ({
   getPosition: jest.fn(),
@@ -76,38 +67,7 @@ describe('useGeolocation()', () => {
     })
   })
 
-  it('should store "has_allowed_geolocation" = TRUE when requestGeolocPermission returns access is granted', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('granted')
-    const { result } = renderGeolocationHook()
-    result.current.requestGeolocPermission()
-
-    await waitFor(() => {
-      expect(storage.saveObject).toHaveBeenCalledWith('has_allowed_geolocation', true)
-    })
-  })
-
-  it('should store "has_allowed_geolocation" = FALSE when requestGeolocPermission returns access is denied', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('denied')
-    const { result } = renderGeolocationHook()
-    result.current.requestGeolocPermission()
-
-    await waitFor(() => {
-      expect(storage.saveObject).toHaveBeenCalledWith('has_allowed_geolocation', false)
-    })
-  })
-
-  it('should store "has_allowed_geolocation" = FALSE when requestGeolocPermission returns access is blocked', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('restricted')
-    const { result } = renderGeolocationHook()
-    result.current.requestGeolocPermission()
-
-    await waitFor(() => {
-      expect(storage.saveObject).toHaveBeenCalledWith('has_allowed_geolocation', false)
-    })
-  })
-
-  it('should set position when permission is granted and "has_allowed_geolocation" is true', async () => {
-    mockReadObject = true
+  it('should set position when permission is granted', async () => {
     jest.spyOn(permissions, 'check').mockResolvedValueOnce('granted')
     renderGeolocationHook()
 
@@ -116,18 +76,7 @@ describe('useGeolocation()', () => {
     })
   })
 
-  it('should not set position when permission is granted and "has_allowed_geolocation" is false', async () => {
-    mockReadObject = false
-    jest.spyOn(permissions, 'check').mockResolvedValueOnce('granted')
-    renderGeolocationHook()
-
-    await waitFor(() => {
-      expect(getPosition).not.toHaveBeenCalled()
-    })
-  })
-
-  it('should not set position when permission is denied and "has_allowed_geolocation" is true', async () => {
-    mockReadObject = true
+  it('should not set position when permission is denied', async () => {
     jest.spyOn(permissions, 'check').mockResolvedValueOnce('denied')
     renderGeolocationHook()
 
@@ -136,8 +85,7 @@ describe('useGeolocation()', () => {
     })
   })
 
-  it('should not set position when permission is blocked and "has_allowed_geolocation" is true', async () => {
-    mockReadObject = true
+  it('should not set position when permission is blocked', async () => {
     jest.spyOn(permissions, 'check').mockResolvedValueOnce('blocked')
     renderGeolocationHook()
 

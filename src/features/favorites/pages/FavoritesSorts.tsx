@@ -8,7 +8,6 @@ import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
-import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -40,22 +39,17 @@ export const FavoritesSorts: React.FC = () => {
       setStagedSelectedSortBy(sortBy)
     }
     if (sortBy === 'AROUND_ME') {
-      const hasAllowedGeolocation = await storage.readObject('has_allowed_geolocation')
-      const shouldAskGeolocPermission =
-        permissionState !== GeolocPermissionState.GRANTED ||
-        hasAllowedGeolocation === false ||
-        hasAllowedGeolocation === null
-      if (shouldAskGeolocPermission) {
-        const shouldDisplayCustomGeolocRequest =
-          permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
-        if (shouldDisplayCustomGeolocRequest) {
-          return void showGeolocPermissionModal()
-        }
-        return void (await requestGeolocPermission({
-          onAcceptance: updateSortBySelection,
-        }))
+      if (permissionState === GeolocPermissionState.GRANTED) {
+        return void updateSortBySelection()
       }
-      return void updateSortBySelection()
+      const shouldDisplayCustomGeolocRequest =
+        permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
+      if (shouldDisplayCustomGeolocRequest) {
+        return void showGeolocPermissionModal()
+      }
+      return void (await requestGeolocPermission({
+        onAcceptance: updateSortBySelection,
+      }))
     }
     return void updateSortBySelection()
   }

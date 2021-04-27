@@ -3,7 +3,6 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { useAppStateChange } from 'libs/appState'
 import { useSafeState } from 'libs/hooks'
-import { storage } from 'libs/storage'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
 import { getPosition } from './getPosition'
@@ -53,16 +52,11 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   // if user choice is not consistent with OS permissions, position is set to null
   useEffect(() => {
     if (shouldComputePosition === 0) return
-    storage
-      .readObject('has_allowed_geolocation')
-      .then((hasAllowedGeolocation) => {
-        if (permissionState === GeolocPermissionState.GRANTED && Boolean(hasAllowedGeolocation)) {
-          getPosition(setPosition)
-        } else {
-          setPosition(null)
-        }
-      })
-      .catch(() => setPosition(null))
+    if (permissionState === GeolocPermissionState.GRANTED) {
+      getPosition(setPosition)
+    } else {
+      setPosition(null)
+    }
   }, [shouldComputePosition])
 
   function triggerPositionUpdate() {
@@ -71,7 +65,6 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
 
   async function synchronizePermissionAndPosition(newPermissionState: GeolocPermissionState) {
     const isPermissionGranted = newPermissionState === GeolocPermissionState.GRANTED
-    await storage.saveObject('has_allowed_geolocation', isPermissionGranted)
     setPermissionState(newPermissionState)
     triggerPositionUpdate()
     return isPermissionGranted

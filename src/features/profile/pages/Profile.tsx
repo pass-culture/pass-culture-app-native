@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Linking, NativeScrollEvent, StyleSheet } from 'react-native'
@@ -17,7 +17,6 @@ import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
-import { storage } from 'libs/storage'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { useModal } from 'ui/components/modals/useModal'
 import { Section } from 'ui/components/Section'
@@ -50,24 +49,16 @@ export const Profile: React.FC = () => {
   const signOut = useLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  const {
-    position,
-    permissionState,
-    requestGeolocPermission,
-    triggerPositionUpdate,
-  } = useGeolocation()
+  const { permissionState, requestGeolocPermission } = useGeolocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(false)
 
-  useEffect(() => {
-    setIsGeolocSwitchActive(position !== null)
-  }, [position])
-
-  function disableGeolocation() {
-    storage.saveObject('has_allowed_geolocation', false).then(() => {
-      favoritesDispatch({ type: 'SET_SORT_BY', payload: 'RECENTLY_ADDED' })
-      triggerPositionUpdate()
-    })
-  }
+  useFocusEffect(() => {
+    if (permissionState === GeolocPermissionState.GRANTED) {
+      setIsGeolocSwitchActive(true)
+    } else {
+      setIsGeolocSwitchActive(false)
+    }
+  })
 
   const {
     visible: isGeolocPermissionModalVisible,
@@ -76,16 +67,15 @@ export const Profile: React.FC = () => {
   } = useModal(false)
 
   const switchGeolocation = useCallback(async () => {
-    if (isGeolocSwitchActive) {
-      disableGeolocation()
+    if (permissionState === GeolocPermissionState.GRANTED) {
+      favoritesDispatch({ type: 'SET_SORT_BY', payload: 'RECENTLY_ADDED' })
+      showGeolocPermissionModal()
+    } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      showGeolocPermissionModal()
     } else {
-      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-        showGeolocPermissionModal()
-      } else {
-        await requestGeolocPermission()
-      }
+      await requestGeolocPermission()
     }
-  }, [isGeolocSwitchActive, permissionState])
+  }, [permissionState])
 
   const debouncedLogLocationToggle = useCallback(
     debounce(analytics.logLocationToggle, DEBOUNCE_TOGGLE_DELAY_MS),

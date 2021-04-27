@@ -4,7 +4,6 @@ import { Platform } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
 import { GeolocationWrapper, useGeolocation, requestGeolocPermission } from 'libs/geolocation'
-import { storage } from 'libs/storage'
 import { waitFor } from 'tests/utils'
 
 import { getPosition } from './getPosition'
@@ -19,14 +18,6 @@ jest.mock('libs/geolocation/requestGeolocPermission', () => ({
 let mockCheckGeolocPermission = 'granted'
 jest.mock('libs/geolocation/checkGeolocPermission', () => ({
   checkGeolocPermission: jest.fn(() => mockCheckGeolocPermission),
-}))
-
-let mockReadObject = true
-jest.mock('libs/storage', () => ({
-  storage: {
-    saveObject: jest.fn(),
-    readObject: jest.fn(() => Promise.resolve(mockReadObject)),
-  },
 }))
 
 const mockAndroidPermission = 'granted'
@@ -95,40 +86,7 @@ describe('useGeolocation()', () => {
     })
   })
 
-  it('should store "has_allowed_geolocation" = TRUE when requestGeolocPermission returns access is granted', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('granted')
-    const { result } = renderGeolocationHook()
-    result.current.requestGeolocPermission()
-
-    await waitFor(() => {
-      expect(storage.saveObject).toHaveBeenCalledWith('has_allowed_geolocation', true)
-    })
-  })
-
-  it('should store "has_allowed_geolocation" = FALSE when requestGeolocPermission returns access is denied', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('denied')
-    mockRequestGeolocPermission.mockImplementationOnce(() => 'denied')
-    const { result } = renderGeolocationHook()
-    result.current.requestGeolocPermission()
-
-    await waitFor(() => {
-      expect(storage.saveObject).toHaveBeenCalledWith('has_allowed_geolocation', false)
-    })
-  })
-
-  it('should store "has_allowed_geolocation" = FALSE when requestGeolocPermission returns access is never_ask_again', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('denied')
-    mockRequestGeolocPermission.mockImplementationOnce(() => 'never_ask_again')
-    const { result } = renderGeolocationHook()
-    result.current.requestGeolocPermission()
-
-    await waitFor(() => {
-      expect(storage.saveObject).toHaveBeenCalledWith('has_allowed_geolocation', false)
-    })
-  })
-
-  it('should set position when permission is granted and "has_allowed_geolocation" is true', async () => {
-    mockReadObject = true
+  it('should set position when permission is granted', async () => {
     mockCheckGeolocPermission = 'granted'
     const { result } = renderGeolocationHook()
     result.current.checkGeolocPermission()
@@ -138,19 +96,7 @@ describe('useGeolocation()', () => {
     })
   })
 
-  it('should not set position when permission is granted and "has_allowed_geolocation" is false', async () => {
-    mockReadObject = false
-    mockCheckGeolocPermission = 'granted'
-    const { result } = renderGeolocationHook()
-    result.current.checkGeolocPermission()
-
-    await waitFor(() => {
-      expect(getPosition).not.toHaveBeenCalled()
-    })
-  })
-
-  it('should not set position when permission is denied and "has_allowed_geolocation" is true', async () => {
-    mockReadObject = true
+  it('should not set position when permission is denied', async () => {
     mockCheckGeolocPermission = 'never_ask_again'
     const { result } = renderGeolocationHook()
     result.current.checkGeolocPermission()
