@@ -8,6 +8,7 @@ export interface Environment {
   ALGOLIA_SEARCH_API_KEY: string
   ANDROID_APP_ID: string
   API_BASE_URL: string
+  APPS_FLYER_DEV_KEY: string
   CGU_LINK: string
   CONTENTFUL_ACCESS_TOKEN: string
   CONTENTFUL_ENVIRONMENT: string
