@@ -12,7 +12,7 @@ export const errorMonitoring = {
 }
 
 function init({ enabled } = { enabled: true }) {
-  // if (!enabled) return
+  if (!enabled) return
 
   SentryModule.init({
     dsn: env.SENTRY_DSN,
