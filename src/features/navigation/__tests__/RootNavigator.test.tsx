@@ -77,6 +77,12 @@ describe('wrapRoute()', () => {
     wrapRoute(routeWithoutHoc)
     expect(hoc).not.toBeCalledWith(AccountCreated)
   })
+  it('should display force update page when global variable is set', () => {
+    const rootNavigator = renderRootNavigator()
+    global.setMustUpdateApp && global.setMustUpdateApp(true)
+    expect(rootNavigator).toMatchSnapshot()
+    global.setMustUpdateApp && global.setMustUpdateApp(false)
+  })
 })
 
 function renderRootNavigator() {
