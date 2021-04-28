@@ -15,5 +15,5 @@ To create locally the source maps:
   - android: `react-native bundle --platform android --entry-file index.js --dev false --bundle-output index.android.bundle --sourcemap-output index.android.bundle.map`
   - ios: `react-native bundle --dev false --platform ios --entry-file index.js --bundle-output ./main.jsbundle --sourcemap-output ./main.jsbundle.map`
 - upload the source maps (⚠️ with the correct dist and release):
-  - android: `node_modules/@sentry/cli/bin/sentry-cli releases files 1.131.4 upload-sourcemaps --dist 1013104 --strip-prefix /Users/agarcia/passculture/pass-culture-app-native/ --rewrite index.android.bundle index.android.bundle.map`
-  - ios: `node_modules/@sentry/cli/bin/sentry-cli releases files app.passculture.test@1.131.7+1013107 upload-sourcemaps --dist 1013107 main.jsbundle main.jsbundle.map --url-prefix "app:///"`
+  - android: `node_modules/@sentry/cli/bin/sentry-cli releases files 1.132.3 upload-sourcemaps --dist 1013203 --strip-prefix /Users/agarcia/passculture/pass-culture-app-native/ --rewrite index.android.bundle index.android.bundle.map --url-prefix "app:///"`
+  - ios: `node_modules/@sentry/cli/bin/sentry-cli releases files 1.132.3 upload-sourcemaps --dist 1013203 main.jsbundle main.jsbundle.map --url-prefix "app:///" --rewrite`
