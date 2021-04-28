@@ -2,9 +2,8 @@ import * as SentryModule from '@sentry/react-native'
 
 import { env } from 'libs/environment'
 
-import { version } from '../../../package.json'
-
-import { errorMonitoring } from '.'
+import { version } from '../../../../package.json'
+import { errorMonitoring } from '../services'
 
 afterEach(jest.clearAllMocks)
 
