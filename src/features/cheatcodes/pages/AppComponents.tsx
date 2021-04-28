@@ -7,6 +7,7 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen/api'
+import { SetPhoneNumberValidationCode } from 'features/auth/signup/SetPhoneNumberValidationCode'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
@@ -132,7 +133,11 @@ export const AppComponents: FunctionComponent = () => {
     showModal: showBasicModal,
     hideModal: hideBasicModal,
   } = useModal(false)
-
+  const {
+    visible: PhoneValidationModalVisible,
+    showModal: showPhoneValidationModal,
+    hideModal,
+  } = useModal(false)
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
   const [inputText, setInputText] = useState('')
@@ -744,7 +749,14 @@ export const AppComponents: FunctionComponent = () => {
           </ThreeShapesTicket>
           <Text>- {`contient le mot "passculture"`}</Text>
         </AlignedText>
+        <AlignedText>
+          <ButtonPrimary title="Phone number validation modal" onPress={showPhoneValidationModal} />
+        </AlignedText>
       </AccordionItem>
+      <SetPhoneNumberValidationCode
+        visible={PhoneValidationModalVisible}
+        dismissModal={hideModal}
+      />
       <Spacer.Column numberOfSpaces={5} />
       <Spacer.BottomScreen />
     </StyledScrollView>
