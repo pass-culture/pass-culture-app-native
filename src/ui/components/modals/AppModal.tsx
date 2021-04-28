@@ -1,7 +1,8 @@
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import { Modal, ScrollView, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { ModalOverlay } from 'ui/components/modals/ModalOverlay'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
@@ -34,7 +35,17 @@ export const AppModal: FunctionComponent<Props> = ({
   disableBackdropTap,
 }) => {
   const { bottom } = useCustomSafeInsets()
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
   const scrollViewRef = useRef<ScrollView | null>(null)
+
+  useKeyboardEvents({
+    onBeforeShow(data) {
+      setKeyboardHeight(data.keyboardHeight)
+    },
+    onBeforeHide() {
+      setKeyboardHeight(0)
+    },
+  })
 
   return (
     <React.Fragment>
@@ -60,7 +71,7 @@ export const AppModal: FunctionComponent<Props> = ({
               numberOfLines={titleNumberOfLines}
             />
 
-            <Content style={{ paddingBottom: bottom }}>
+            <Content style={{ paddingBottom: keyboardHeight || bottom }}>
               {isScrollable ? (
                 <StyledScrollView
                   ref={scrollViewRef}
@@ -96,7 +107,7 @@ const Container = styled(TouchableOpacity)({
   justifyContent: 'flex-start',
   alignItems: 'center',
   width: '100%',
-  maxHeight: '85%',
+  maxHeight: '90%',
   borderTopStartRadius: getSpacing(4),
   borderTopEndRadius: getSpacing(4),
   padding: getSpacing(5),
