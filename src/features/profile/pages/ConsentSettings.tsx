@@ -68,6 +68,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         <MoreInformationContainer>
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
+            <Spacer.Row numberOfSpaces={1} />
             <ButtonTertiary
               title={t`Politique des cookies`}
               icon={ExternalLinkSite}
