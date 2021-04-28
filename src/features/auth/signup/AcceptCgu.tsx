@@ -5,7 +5,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FC, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
+import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { AsyncError, MonitoringError } from 'libs/errorMonitoring'
