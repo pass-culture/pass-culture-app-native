@@ -1,8 +1,12 @@
-import React from 'react'
+import * as React from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
+import waitForExpect from 'wait-for-expect'
 
-import { render } from 'tests/utils'
+import { render, fireEvent, act } from 'tests/utils'
+import { ColorsEnum } from 'ui/theme'
 
 import { CodeInput, CodeInputProps, inputUpdator } from './CodeInput'
+import * as CodeInputUtilsModule from './CodeInput.utils'
 
 describe('CodeInput', () => {
   it.each([1, 2, 3])('should contain the right number of inputs', (length) => {
@@ -128,32 +132,152 @@ describe('CodeInput', () => {
         )
       }
     )
+
+    it('should return the expected state', () => {
+      const onChangeValue = jest.fn()
+      const props: CodeInputProps = {
+        codeLength: 3,
+        placeholder: '0',
+        autoFocus: true,
+        enableValidation: true,
+        onChangeValue,
+        isValid: () => true,
+        isInputValid: () => true,
+      }
+
+      const inputPosition = 1
+      const setStateAction = inputUpdator('7', inputPosition, props)
+      const newState = setStateAction({
+        0: '1',
+        1: '2', // changing the third column
+        2: '7',
+      })
+
+      expect(newState).toEqual({
+        0: '1',
+        1: '7', // changed
+        2: '7',
+      })
+    })
   })
 
-  it('should return the expected state', () => {
-    const onChangeValue = jest.fn()
-    const props: CodeInputProps = {
-      codeLength: 3,
-      placeholder: '0',
-      autoFocus: true,
-      enableValidation: true,
-      onChangeValue,
-      isValid: () => true,
-      isInputValid: () => true,
-    }
+  describe('blur/focus behavior', () => {
+    describe('forward animation', () => {
+      it('should focus the next input', async () => {
+        const codeLength = 3
+        const executeInputMethod = jest.spyOn(CodeInputUtilsModule, 'executeInputMethod')
+        const { getByTestId } = render(
+          <CodeInput codeLength={codeLength} placeholder="O" autoFocus />
+        )
 
-    const inputPosition = 1
-    const setStateAction = inputUpdator('7', inputPosition, props)
-    const newState = setStateAction({
-      0: '1',
-      1: '2', // changing the third column
-      2: '7',
+        const input0 = getByTestId('input-0')
+
+        pressKey('1', input0)
+        expect(executeInputMethod).toBeCalledWith(expect.anything(), 'focus')
+
+        const bars: Record<string, ReactTestInstance> = {}
+
+        for (let i = 0; i < 3; i++) {
+          bars[i] = getByTestId(`datepart-bar-${i}`)
+        }
+
+        await waitForExpect(() => {
+          // input validated
+          expect(bars[0].props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
+          // input remain unchanged
+          expect(bars[2].props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+        })
+        executeInputMethod.mockRestore()
+      })
+      it('should blur on the last input', async () => {
+        const codeLength = 3
+        const executeInputMethod = jest.spyOn(CodeInputUtilsModule, 'executeInputMethod')
+        const { getByTestId } = render(
+          <CodeInput codeLength={codeLength} placeholder="O" autoFocus />
+        )
+
+        const input2 = getByTestId('input-2')
+
+        pressKey('1', input2)
+        expect(executeInputMethod).toBeCalledWith(expect.anything(), 'blur')
+
+        const bars: Record<string, ReactTestInstance> = {}
+
+        for (let i = 0; i < 2; i++) {
+          bars[i] = getByTestId(`datepart-bar-${i}`)
+        }
+
+        await waitForExpect(() => {
+          // inputs remain unchanged
+          expect(bars[0].props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+          expect(bars[1].props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+        })
+        executeInputMethod.mockRestore()
+      })
     })
+    describe('backward animation', () => {
+      it('should focus the previous input', async () => {
+        const codeLength = 3
+        const executeInputMethod = jest.spyOn(CodeInputUtilsModule, 'executeInputMethod')
+        const { getByTestId } = render(
+          <CodeInput codeLength={codeLength} placeholder="O" autoFocus />
+        )
 
-    expect(newState).toEqual({
-      0: '1',
-      1: '7', // changed
-      2: '7',
+        const input2 = getByTestId('input-2')
+
+        pressKey(CodeInputUtilsModule.BackspaceKey, input2)
+        expect(executeInputMethod).toBeCalledWith(expect.anything(), 'focus')
+
+        const bars: Record<string, ReactTestInstance> = {}
+
+        for (let i = 0; i < 3; i++) {
+          bars[i] = getByTestId(`datepart-bar-${i}`)
+        }
+
+        await waitForExpect(() => {
+          // input validated => green
+          expect(bars[2].props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
+          // input remain unchanged
+          expect(bars[0].props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+        })
+        executeInputMethod.mockRestore()
+      })
+      it('should stay on the current input', async () => {
+        const codeLength = 3
+        const executeInputMethod = jest.spyOn(CodeInputUtilsModule, 'executeInputMethod')
+        const { getByTestId } = render(
+          <CodeInput codeLength={codeLength} placeholder="O" autoFocus />
+        )
+
+        const input0 = getByTestId('input-0')
+
+        pressKey(CodeInputUtilsModule.BackspaceKey, input0)
+        expect(executeInputMethod).not.toBeCalled()
+
+        const bars: Record<string, ReactTestInstance> = {}
+
+        for (let i = 1; i < 3; i++) {
+          bars[i] = getByTestId(`datepart-bar-${i}`)
+        }
+
+        await waitForExpect(() => {
+          // inputs remain unchanged
+          expect(bars[1].props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+          expect(bars[2].props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+        })
+        executeInputMethod.mockRestore()
+      })
     })
   })
 })
+
+function pressKey(char: string, input: ReactTestInstance) {
+  act(() => {
+    fireEvent.changeText(input, char)
+    input.props.onKeyPress({
+      nativeEvent: {
+        key: char,
+      },
+    })
+  })
+}
