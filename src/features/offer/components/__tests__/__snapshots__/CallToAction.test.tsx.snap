@@ -51,6 +51,34 @@ exports[`<CallToAction /> should render disabled 1`] = `
       ]
     }
   >
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        height={16}
+        width={16}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "width": 16,
+            },
+          ]
+        }
+      />
+    </View>
     Wording to display
   </Text>
 </View>
@@ -104,6 +132,34 @@ exports[`<CallToAction /> should render not disabled 1`] = `
       ]
     }
   >
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        height={16}
+        width={16}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "width": 16,
+            },
+          ]
+        }
+      />
+    </View>
     Wording to display
   </Text>
 </View>
