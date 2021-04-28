@@ -61,17 +61,23 @@ commands:
     description: Decode match secrets
     steps:
       - run: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
-  setup_sentry_credentials:
-    description: Setup sentry credentials
+  upload_sourcemaps:
+    description: Upload source maps
     steps:
-      - run: |
-          echo "[defaults]" >> ~/.sentryclirc
-          echo "url=https://logs.passculture.app/" >> ~/.sentryclirc
-          echo "org=sentry" >> ~/.sentryclirc
-          echo "project=application-native" >> ~/.sentryclirc
-          echo "" >> ~/.sentryclirc
-          echo "[auth]" >> ~/.sentryclirc
-          echo "token=$SENTRY_AUTH_TOKEN" >> ~/.sentryclirc
+      - run:
+          name: Setup sentry credentials
+          command: |
+            echo "[defaults]" >> ~/.sentryclirc
+            echo "url=https://logs.passculture.app/" >> ~/.sentryclirc
+            echo "org=sentry" >> ~/.sentryclirc
+            echo "project=application-native" >> ~/.sentryclirc
+            echo "" >> ~/.sentryclirc
+            echo "[auth]" >> ~/.sentryclirc
+            echo "token=$SENTRY_AUTH_TOKEN" >> ~/.sentryclirc
+      - run:
+          name: Upload source maps
+          command: |
+            ./scripts/upload_sourcemaps_to_sentry.sh
 
 jobs:
   run-tests:
@@ -96,6 +102,15 @@ jobs:
           name: Unit Tests
           command: |
             yarn test:unit:ci
+
+  upload-sourcemaps:
+    docker:
+      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - upload_sourcemaps
 
   deploy-soft-testing:
     docker:
@@ -125,9 +140,6 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - run:
-          name: Skip job when no tag found
-          command: git tag --points-at HEAD | grep -E '^(testing_)?v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - install_node_modules
       - install_ruby_modules
       - run:
@@ -140,7 +152,6 @@ jobs:
             echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
       - setup_android_google_services_config
-      - setup_sentry_credentials
       - run:
           name: Deploy Android App for testing environment
           command: |
@@ -153,9 +164,6 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - run:
-          name: Skip job when no tag found
-          command: git tag --points-at HEAD | grep -E '^(testing_)?v[0-9]+(\.[0-9]+){2}$' || circleci step halt
       - add_ssh_keys:
           fingerprints:
             - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
@@ -164,7 +172,6 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
-      - setup_sentry_credentials
       - run:
           name: Setup iOS Google services config
           command: echo $IOS_GOOGLE_SERVICES_PLIST_TESTING > ios/GoogleService-Info.plist
@@ -189,7 +196,6 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
-      - setup_sentry_credentials
       - run:
           name: Setup iOS Google services config
           command: echo $IOS_GOOGLE_SERVICES_PLIST_STAGING > ios/GoogleService-Info.plist
@@ -218,7 +224,6 @@ jobs:
             echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_STAGING" >> android/keystores/staging.keystore.properties
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_STAGING" >>  android/keystores/staging.keystore.properties
       - setup_android_google_services_config
-      - setup_sentry_credentials
       - run:
           name: Deploy Android App for staging environment
           command: |
@@ -233,7 +238,6 @@ jobs:
       - checkout
       - install_node_modules
       - install_ruby_modules
-      - setup_sentry_credentials
       - run:
           name: Deploy Android Code push for staging environment
           command: |
@@ -266,7 +270,6 @@ jobs:
             echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_PRODUCTION" >>  android/keystores/production.keystore.properties
             echo $ANDROID_PLAYSTORE_SERVICE_ACCOUNT | base64 -di > fastlane/playStoreServiceAccount.json
       - setup_android_google_services_config
-      - setup_sentry_credentials
       - run:
           name: Deploy Android App for production environment
           command: |
@@ -286,7 +289,6 @@ jobs:
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
-      - setup_sentry_credentials
       - run:
           name: Setup iOS Google services config
           command: echo $IOS_GOOGLE_SERVICES_PLIST_PRODUCTION > ios/GoogleService-Info.plist
@@ -337,6 +339,8 @@ workflows:
             - run-tests
       - deploy-android-testing-hard:
           filters:
+            tags:
+              only: /^(testing_)?v.*/
             branches:
               only:
                 - master
@@ -344,11 +348,23 @@ workflows:
             - run-tests
       - deploy-ios-testing-hard:
           filters:
+            tags:
+              only: /^(testing_)?v.*/
             branches:
               only:
                 - master
           requires:
             - run-tests
+      - upload-sourcemaps:
+          filters:
+            tags:
+              only: /^(testing_)?v.*/
+            branches:
+              only:
+                - master
+          requires:
+            - deploy-android-testing-hard
+            - deploy-ios-testing-hard
       - deploy-android-staging-hard:
           filters:
             tags:
