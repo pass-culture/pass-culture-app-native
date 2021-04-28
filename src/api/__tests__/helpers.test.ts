@@ -10,6 +10,7 @@ describe('[api] helpers', () => {
       await safeFetch('url', {}, api)
       expect(global.fetch).toHaveBeenCalledWith('url', {
         headers: {
+          'app-version': '1.10.5',
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         },
       })

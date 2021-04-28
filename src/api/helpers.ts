@@ -7,6 +7,8 @@ import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
 
+import Package from '../../package.json'
+
 import { DefaultApi } from './gen'
 
 export function navigateToLogin() {
@@ -56,6 +58,7 @@ export const safeFetch = async (
     headers: {
       ...options.headers,
       'device-id': getUniqueId(),
+      'app-version': Package.version,
     },
   }
 
