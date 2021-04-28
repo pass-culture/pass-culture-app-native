@@ -100,3 +100,4 @@ scripts/multipleSimulatorsStartup.sh
 # Sentry
 android/sentry.properties
 ios/sentry.properties
+sourcemaps/*
