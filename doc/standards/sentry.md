@@ -6,14 +6,54 @@ Sentry helps us monitor crash and errors in the application. See our project [he
 
 To have a better understanding of the potential crashes and errors, we have to provide sentry with the source maps. This helps us see the source of the error in the un-minified bundle.
 
-The build is configured to upload the source maps automatically but you may want to do it manually.
+The build is configured to upload the source maps automatically, on every new release (or new version), but you may want to do it manually. If so, follow along.
 
-To create locally the source maps:
+#### 🗝 Configure sentry cli
 
-- configure sentry: `yarn sentry:configure`: this will create the necessary credentials for you and `sentry.properties`.
-- create the source maps:
-  - android: `react-native bundle --platform android --entry-file index.js --dev false --bundle-output index.android.bundle --sourcemap-output index.android.bundle.map`
-  - ios: `react-native bundle --dev false --platform ios --entry-file index.js --bundle-output ./main.jsbundle --sourcemap-output ./main.jsbundle.map`
-- upload the source maps (⚠️ with the correct dist and release):
-  - android: `node_modules/@sentry/cli/bin/sentry-cli releases files 1.132.3 upload-sourcemaps --dist 1013203 --strip-prefix /Users/agarcia/passculture/pass-culture-app-native/ --rewrite index.android.bundle index.android.bundle.map --url-prefix "app:///"`
-  - ios: `node_modules/@sentry/cli/bin/sentry-cli releases files 1.132.3 upload-sourcemaps --dist 1013203 main.jsbundle main.jsbundle.map --url-prefix "app:///" --rewrite`
+- add a file `~/.sentryclirc`:
+
+```
+[defaults]
+url = https://logs.passculture.app/
+org = sentry
+project = application-native
+
+[auth]
+token=<token>
+```
+
+#### 📦 Create the source maps locally
+
+##### Android
+
+```bash
+  npx react-native bundle \
+  --platform android \
+  --entry-file index.js \
+  --dev false \
+  --bundle-output sourcemaps/index.android.bundle \
+  --sourcemap-output sourcemaps/index.android.bundle.map
+```
+
+##### iOS
+
+```bash
+  npx react-native bundle \
+    --platform ios \
+    --entry-file index.js \
+    --dev false \
+    --bundle-output sourcemaps/main.jsbundle \
+    --sourcemap-output sourcemaps/main.jsbundle.map
+```
+
+#### 🚢 Upload the local source maps
+
+- ⚠️ Make sure to change the version and release:
+
+```bash
+node_modules/@sentry/cli/bin/sentry-cli releases files 1.132.3 \
+  upload-sourcemaps sourcemaps \
+  --dist 1013203 \
+  --url-prefix "app:///" \
+  --no-rewrite
+```
