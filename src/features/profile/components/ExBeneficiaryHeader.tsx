@@ -30,21 +30,9 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={12} />
       <TitleContainer>
-        <Typo.Title4 color={ColorsEnum.WHITE}>
-          {t({
-            id: 'name',
-            values: { name },
-            message: '{name}',
-          })}
-        </Typo.Title4>
+        <Typo.Title4 color={ColorsEnum.WHITE}>{name}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4.5} />
-        <Typo.Hero color={ColorsEnum.WHITE}>
-          {t({
-            id: 'credit',
-            values: { credit },
-            message: '{credit}',
-          })}
-        </Typo.Hero>
+        <Typo.Hero color={ColorsEnum.WHITE}>{credit}</Typo.Hero>
         <Spacer.Column numberOfSpaces={2} />
         {depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
