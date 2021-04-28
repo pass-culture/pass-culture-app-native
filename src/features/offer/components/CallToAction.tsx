@@ -26,7 +26,7 @@ export const CallToAction: React.FC<Props> = ({
       {isExternal && (
         <IconContainer>
           <ExternalLinkSite color={ColorsEnum.WHITE} height={getSpacing(4)} width={getSpacing(4)} />
-          <Spacer.Row numberOfSpaces={4} />
+          <Spacer.Row numberOfSpaces={2} />
         </IconContainer>
       )}
       {wording}
