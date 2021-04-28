@@ -88,3 +88,5 @@ jest.mock('libs/environment', () => ({
 jest.mock('features/search/pages/SearchWrapper')
 
 jest.mock('features/favorites/pages/FavoritesWrapper')
+
+jest.mock('../package.json')
