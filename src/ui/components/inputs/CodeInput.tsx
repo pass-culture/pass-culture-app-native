@@ -2,7 +2,11 @@ import React, { RefObject, useRef, useState } from 'react'
 import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 
+import { getSpacing } from 'ui/theme'
+
 import { ShortInput } from './ShortInput'
+
+const SHORT_INPUT_MIN_WIDTH = getSpacing(8)
 
 export interface CodeValidation {
   isComplete: boolean
@@ -65,6 +69,7 @@ export const CodeInput = (props: CodeInputProps) => {
             onChangeValue={onChangeValue}
             placeholder={props.placeholder}
             ref={inputsRef.current[index]}
+            minWidth={SHORT_INPUT_MIN_WIDTH}
           />
         )
       })}

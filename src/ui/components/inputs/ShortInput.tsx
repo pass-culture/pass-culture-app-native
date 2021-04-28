@@ -6,11 +6,14 @@ import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 
+const DEFAULT_MIN_WIDTH = 20
+
 type ShortInputProps<Identifier extends unknown> = React.ComponentPropsWithRef<typeof TextInput> & {
   identifier: Identifier
   isValid?: boolean
   onChangeValue: (value: string, identifier: Identifier) => void
   placeholder: string
+  minWidth?: number
 }
 
 export const ShortInputComponent = <Identifier extends unknown>(
@@ -47,6 +50,7 @@ export const ShortInputComponent = <Identifier extends unknown>(
         ref={forwardedRef}
         selectTextOnFocus
         value={value}
+        minWidth={props.minWidth || DEFAULT_MIN_WIDTH}
       />
       <Spacer.Column numberOfSpaces={1} />
       <ValidationBar
@@ -69,13 +73,13 @@ const Container = styled.View({
 })
 
 // using styled.TextInput triggers a typescript error on the 'ref' property
-const StyledInput = styled(BaseTextInput)<{ numberOfChar: number }>(
-  ({ numberOfChar: lengthByChar }) => ({
+const StyledInput = styled(BaseTextInput)<{ numberOfChar: number; minWidth: number }>(
+  ({ numberOfChar: lengthByChar, minWidth }) => ({
     textAlign: 'center',
     fontSize: 18,
     lineHeight: '22px',
     paddingHorizontal: 10,
-    minWidth: lengthByChar * 20,
+    minWidth: lengthByChar * minWidth,
   })
 )
 
