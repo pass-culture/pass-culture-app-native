@@ -20,6 +20,7 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
+import { appsFlyerClient } from 'libs/campaign'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
 import { ErrorMonitoringProvider } from 'libs/errorMonitoring/ErrorMonitoringProvider'
 import { GeolocationWrapper } from 'libs/geolocation'
@@ -50,6 +51,10 @@ const App: FunctionComponent = function () {
 
   useEffect(() => {
     activate('fr')
+  }, [])
+
+  useEffect(() => {
+    appsFlyerClient.init({ enabled: !__DEV__ })
   }, [])
 
   return (

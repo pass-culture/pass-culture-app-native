@@ -20,6 +20,7 @@ export enum AnalyticsEvent {
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   BOOKING_DETAILS_SCROLLED_TO_BOTTOM = 'BookingDetailsScrolledToBottom',
   BOOKINGS_SCROLLED_TO_BOTTOM = 'BookingsScrolledToBottom',
+  CAMPAIGN_TRACKER_ENABLED = 'CampaignTrackerEnabled',
   CANCEL_BOOKING = 'CancelBooking',
   CANCEL_SIGNUP = 'CancelSignup',
   CLICK_BOOK_OFFER = 'ClickBookOffer',
@@ -250,6 +251,9 @@ const logMailTo = (
     | 'forAccountDeletion'
 ) => firebaseAnalytics.logEvent(AnalyticsEvent.MAIL_TO, { reason })
 
+const logCampaignTrackerEnabled = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.CAMPAIGN_TRACKER_ENABLED)
+
 /**
  * Favorites
  */
@@ -302,6 +306,7 @@ export const analytics = {
   logBookingImpossibleiOS,
   logBookingOfferConfirmDates,
   logBookingsScrolledToBottom,
+  logCampaignTrackerEnabled,
   logCancelBooking,
   logCancelSignup,
   logClickBookOffer,
