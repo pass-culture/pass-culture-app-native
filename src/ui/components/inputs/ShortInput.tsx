@@ -14,6 +14,7 @@ type ShortInputProps<Identifier extends unknown> = React.ComponentPropsWithRef<t
   onChangeValue: (value: string, identifier: Identifier) => void
   placeholder: string
   minWidth?: number
+  testID?: string
 }
 
 export const ShortInputComponent = <Identifier extends unknown>(
@@ -51,6 +52,7 @@ export const ShortInputComponent = <Identifier extends unknown>(
         selectTextOnFocus
         value={value}
         minWidth={props.minWidth || DEFAULT_MIN_WIDTH}
+        testID={props.testID}
       />
       <Spacer.Column numberOfSpaces={1} />
       <ValidationBar

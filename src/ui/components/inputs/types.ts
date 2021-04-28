@@ -32,7 +32,9 @@ export type RNTextInputProps = Pick<
   | 'textContentType'
   | 'value'
 > &
-  RefAttributes<RNTextInput>
+  RefAttributes<RNTextInput> & {
+    testID?: string
+  }
 
 export type TextInputProps = CustomTextInputProps & RNTextInputProps
 

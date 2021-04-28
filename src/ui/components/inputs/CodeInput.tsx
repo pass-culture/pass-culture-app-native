@@ -1,9 +1,10 @@
 import React, { RefObject, useRef, useState } from 'react'
-import { TextInput } from 'react-native'
+import { TextInput, NativeSyntheticEvent, TextInputKeyPressEventData } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 
+import { executeInputMethod, NativePressEvent, InputRefMap, BackspaceKey } from './CodeInput.utils'
 import { ShortInput } from './ShortInput'
 
 const SHORT_INPUT_MIN_WIDTH = getSpacing(8)
@@ -19,7 +20,8 @@ export interface CodeValidation {
  * You can just get its inner value using the props onChangeValue.
  * If the requirement comes one day, do the following:
  * - add a new props: 'value: string'
- * - creates a function that converts a string to a map (index=>letter) and use it to initialise 'inputValues'
+ * - initialise the state like this:
+ *   useState<Record<string, string>>(createMapOfInputValues({}, props.codeLength))
  */
 export type CodeInputProps = {
   codeLength: number
@@ -48,11 +50,16 @@ export type CodeInputProps = {
 )
 
 export const CodeInput = (props: CodeInputProps) => {
-  const inputsRef = useRef(createMapOfRef<TextInput>({}, props.codeLength))
-  const [inputValues, setInputValues] = useState<Record<string, string>>({})
+  const inputsRef = useRef(
+    createMap<RefObject<TextInput>>({}, props.codeLength, () => React.createRef())
+  )
+  const [inputValues, setInputValues] = useState<Record<string, string>>(
+    createMap({}, props.codeLength, () => '')
+  )
 
   const onChangeValue = (value: string, inputId: number) => {
-    setInputValues(inputUpdator(value, inputId, props))
+    const newInputValues = inputUpdator(value, inputId, props)
+    setInputValues(newInputValues)
   }
 
   return (
@@ -70,6 +77,10 @@ export const CodeInput = (props: CodeInputProps) => {
             placeholder={props.placeholder}
             ref={inputsRef.current[index]}
             minWidth={SHORT_INPUT_MIN_WIDTH}
+            onKeyPress={(e: NativeSyntheticEvent<TextInputKeyPressEventData>) =>
+              handleInputTransitions(e, index, inputsRef, inputValues, props)
+            }
+            testID={`input-${index}`}
           />
         )
       })}
@@ -82,12 +93,13 @@ const Container = styled.View({
   flexWrap: 'wrap',
 })
 
-function createMapOfRef<U, T extends RefObject<U> = RefObject<U>>(
+export function createMap<T>(
   map: Record<string, T>,
-  length: number
+  length: number,
+  initializer: (index: number) => T
 ) {
   for (let i = 0; i < length; i++) {
-    map[i] = map[i] ?? React.createRef()
+    map[i] = initializer(i)
   }
   return map
 }
@@ -105,7 +117,6 @@ export const inputUpdator = (
   inputPosition: number,
   props: CodeInputProps
 ) => (currentDigitValues: Record<string, string>) => {
-  let completion = 0
   let code = ''
 
   for (let index = 0; index < props.codeLength; index++) {
@@ -117,11 +128,10 @@ export const inputUpdator = (
      */
     const consideredValue = index === inputPosition ? newDigitValue : currentDigitValue
 
-    completion += Number(consideredValue.length > 0)
     code += consideredValue
   }
 
-  const isComplete = completion === props.codeLength
+  const isComplete = code.length === props.codeLength
 
   if (props.enableValidation) {
     props.onChangeValue?.(
@@ -138,4 +148,30 @@ export const inputUpdator = (
   }
 
   return { ...currentDigitValues, [inputPosition]: newDigitValue }
+}
+
+/** focus previous input after deleting all the content: only for month and year */
+function handleInputTransitions<KeyEvent extends NativePressEvent, InputsRef extends InputRefMap>(
+  e: KeyEvent,
+  position: number,
+  inputsRef: InputsRef,
+  inputValues: Record<string, string>,
+  props: CodeInputProps
+) {
+  const backspacePressed = e.nativeEvent.key === BackspaceKey
+  const inputLength = inputValues[position].length
+
+  // handle backspace
+  if (backspacePressed && position > 0 && inputLength <= 1) {
+    executeInputMethod(inputsRef.current[position - 1].current, 'focus')
+  }
+  // handle forward
+  if (!backspacePressed && inputLength >= props.placeholder.length - 1) {
+    if (position < props.codeLength - 1) {
+      executeInputMethod(inputsRef.current[position + 1].current, 'focus')
+    }
+    if (position == props.codeLength - 1) {
+      executeInputMethod(inputsRef.current[position].current, 'blur')
+    }
+  }
 }
