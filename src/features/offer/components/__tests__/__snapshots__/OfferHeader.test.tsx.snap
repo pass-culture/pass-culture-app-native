@@ -472,7 +472,7 @@ Array [
             "borderTopStartRadius": 16,
             "flexDirection": "column",
             "justifyContent": "flex-start",
-            "maxHeight": "85%",
+            "maxHeight": "90%",
             "opacity": 1,
             "paddingBottom": 20,
             "paddingLeft": 20,
