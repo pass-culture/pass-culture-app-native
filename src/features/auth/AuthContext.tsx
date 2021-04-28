@@ -4,6 +4,7 @@ import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
 import { analytics, firebaseAnalytics } from 'libs/analytics'
+import { errorMonitoring } from 'libs/errorMonitoring'
 import { getUserIdFromAccesstoken } from 'libs/jwt'
 import { clearRefreshToken, saveRefreshToken } from 'libs/keychain'
 import { QueryKeys } from 'libs/queryKeys'
@@ -19,6 +20,7 @@ const connectUserToBatchAndFirebase = (accessToken: string) => {
   if (userId) {
     BatchUser.editor().setIdentifier(userId.toString()).save()
     analytics.setUserId(userId)
+    errorMonitoring.setUser({ id: userId.toString() })
   }
 }
 
