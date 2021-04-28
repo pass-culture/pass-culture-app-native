@@ -25,8 +25,8 @@ export const CallToAction: React.FC<Props> = ({
     <Title adjustsFontSizeToFit numberOfLines={1}>
       {isExternal && (
         <IconContainer>
-          <Spacer.Column numberOfSpaces={4} />
-          <ExternalLinkSite color={ColorsEnum.WHITE} height={getSpacing(5)} width={getSpacing(5)} />
+          <ExternalLinkSite color={ColorsEnum.WHITE} height={getSpacing(4)} width={getSpacing(4)} />
+          <Spacer.Row numberOfSpaces={4} />
         </IconContainer>
       )}
       {wording}
@@ -55,4 +55,6 @@ const DisabledRectangle = styled.View({
   backgroundColor: ColorsEnum.PRIMARY_DISABLED,
 })
 
-const IconContainer = styled.View({ width: getSpacing(2.75), height: getSpacing(2.75) })
+const IconContainer = styled.View({
+  flexDirection: 'row',
+})
