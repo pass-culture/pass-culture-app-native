@@ -6,7 +6,7 @@ import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useDepositAmount } from 'features/auth/api'
-import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
+import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'

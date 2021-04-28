@@ -41,7 +41,7 @@ msgstr "1 Minuscule"
 msgid "12 Caractères"
 msgstr "12 Caractères"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:36
+#: src/features/auth/components/QuitSignupModal.tsx:36
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
@@ -354,7 +354,7 @@ msgstr "Contacter le support"
 msgid "Continuer"
 msgstr "Continuer"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:34
+#: src/features/auth/components/QuitSignupModal.tsx:34
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
@@ -643,7 +643,7 @@ msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
-#: src/features/auth/signup/QuitSignupModal.tsx:31
+#: src/features/auth/components/QuitSignupModal.tsx:31
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
@@ -1333,7 +1333,7 @@ msgstr "Valider la date"
 msgid "Version"
 msgstr "Version"
 
-#: src/features/auth/signup/QuitSignupModal.tsx:29
+#: src/features/auth/components/QuitSignupModal.tsx:29
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
 
