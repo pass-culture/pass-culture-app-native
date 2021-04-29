@@ -31,7 +31,7 @@ const isAlgoliaModule = (
 export const useHomeAlgoliaModules = (
   offerModules: Array<Offers | OffersWithCover>
 ): AlgoliaModuleResponse => {
-  const { position } = useGeolocation()
+  const { position, positionReceived } = useGeolocation()
   const [algoliaModules, setAlgoliaModules] = useState<AlgoliaModuleResponse>({})
 
   useQueries(
@@ -61,6 +61,7 @@ export const useHomeAlgoliaModules = (
             }))
           }
         },
+        enabled: positionReceived,
       }
     })
   )
