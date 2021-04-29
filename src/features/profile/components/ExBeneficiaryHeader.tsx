@@ -4,8 +4,6 @@ import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
 import { AccordionItem } from 'features/offer/components'
-import { computeCredit } from 'features/profile/utils'
-import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, ColorsEnum, Typo, Spacer, ScreenWidth } from 'ui/theme'
 
@@ -19,9 +17,8 @@ type ExBeneficiaryHeaderProps = {
 }
 
 export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
-  const { firstName, lastName, domainsCredit, depositExpirationDate } = props
+  const { firstName, lastName, depositExpirationDate } = props
   const name = `${firstName} ${lastName}`
-  const credit = formatToFrenchDecimal(computeCredit(domainsCredit))
 
   return (
     <Container testID={'ex-beneficiary-header'}>
@@ -32,8 +29,6 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
       <TitleContainer>
         <Typo.Title4 color={ColorsEnum.WHITE}>{name}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4.5} />
-        <Typo.Hero color={ColorsEnum.WHITE}>{credit}</Typo.Hero>
-        <Spacer.Column numberOfSpaces={2} />
         {depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
             {t({
@@ -73,7 +68,7 @@ const Container = styled.View({
 })
 
 const HeaderBackgroundWrapper = styled.View({
-  maxHeight: getSpacing(60),
+  maxHeight: getSpacing(45),
   overflow: 'hidden',
   position: 'absolute',
 })

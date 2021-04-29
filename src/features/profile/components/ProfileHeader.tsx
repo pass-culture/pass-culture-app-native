@@ -33,7 +33,6 @@ export function ProfileHeader(props: ProfileHeaderProps) {
         <ExBeneficiaryHeader
           firstName={user.firstName}
           lastName={user.lastName}
-          domainsCredit={user.domainsCredit}
           depositExpirationDate={depositExpirationDate}
         />
       )
