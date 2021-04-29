@@ -37,7 +37,7 @@ export const getCtaWordingAndAction = ({
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
     return {
-      isExternal: isEvent,
+      isExternal: true,
       wording: isEvent ? t`Accéder à la billetterie` : t`Accéder à l'offre`,
       onPress: () => openExternalUrl(externalTicketOfficeUrl),
     }
