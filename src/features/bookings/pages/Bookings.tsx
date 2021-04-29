@@ -9,6 +9,7 @@ import { OnGoingBookingsList } from '../components/OnGoingBookingsList'
 
 export const Bookings: React.FC = () => {
   const { data: bookings } = useBookings(true)
+
   return (
     <Container>
       <SvgPageHeader title={t`Mes réservations`} />
