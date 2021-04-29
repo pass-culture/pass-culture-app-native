@@ -2,16 +2,6 @@
 
 set -e
 
-check_branch(){
-  CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
-
-  if [[ "$CURRENT_BRANCH" != "master" ]];
-  then
-    echo "Wrong branch, checkout master to upload source maps"
-    exit 1
-  fi
-}
-
 create_sourcemaps_android(){
   npx react-native bundle \
     --platform android \
@@ -41,8 +31,6 @@ upload_sourcemaps(){
     --no-rewrite # or rewrite
 }
 
-
-check_branch
 
 mkdir -p sourcemaps
 
