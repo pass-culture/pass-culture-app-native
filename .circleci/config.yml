@@ -342,8 +342,7 @@ workflows:
             tags:
               only: /^(testing_)?v.*/
             branches:
-              only:
-                - master
+              ignore: /.*/
           requires:
             - run-tests
       - deploy-ios-testing-hard:
@@ -351,8 +350,7 @@ workflows:
             tags:
               only: /^(testing_)?v.*/
             branches:
-              only:
-                - master
+              ignore: /.*/
           requires:
             - run-tests
       - upload-sourcemaps:
