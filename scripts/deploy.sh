@@ -50,10 +50,20 @@ DEPLOY_TYPE="soft"
 
 check_environment(){
   CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+  CURRENT_TAG=`git tag --points-at HEAD`
+
+  # If we are not on master, we can still deploy if we have a valid tag
+  # The CI jobs are based on a tag (not a branch)
+  HARD_DEPLOY_TESTING_TAG_REGEX="^(testing_)?v[0-9]+(\.[0-9]+){2}$"
 
   if [[ "$APP_ENV" == "testing" && "$CURRENT_BRANCH" != "master" ]];
   then
-    warn "Wrong branch, checkout master to deploy to $APP_ENV."
+    if [[ $CURRENT_TAG =~ $HARD_DEPLOY_TESTING_TAG_REGEX ]];
+    then
+      success "Not on master but tag found. Deploying to $APP_ENV."
+    else
+      warn "Wrong branch, checkout master or create tag to deploy to $APP_ENV."
+    fi
   else
     success "Deploying to $APP_ENV."
   fi
