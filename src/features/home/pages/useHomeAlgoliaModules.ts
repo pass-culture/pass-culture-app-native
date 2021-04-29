@@ -7,6 +7,7 @@ import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
 import { fetchAlgolia } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { convertAlgoliaHitToCents } from 'libs/parsers/pricesConversion'
+import { QueryKeys } from 'libs/queryKeys'
 
 export type AlgoliaModuleResponse = {
   [moduleId: string]: {
@@ -47,7 +48,7 @@ export const useHomeAlgoliaModules = (
       }
 
       return {
-        queryKey: ['algoliaModule', moduleId],
+        queryKey: [QueryKeys.ALGOLIA_MODULE, moduleId],
         queryFn: fetchModule,
         onSuccess: (data) => {
           if (isAlgoliaModule(data)) {
