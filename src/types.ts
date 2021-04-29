@@ -20,3 +20,12 @@ export interface IUser {
   postalCode: string
   publicName: string
 }
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace NodeJS {
+    interface Global {
+      setMustUpdateApp?: (input: boolean) => void
+    }
+  }
+}
