@@ -42,7 +42,7 @@ upload_sourcemaps(){
 }
 
 
-# check_branch
+check_branch
 
 mkdir -p sourcemaps
 
