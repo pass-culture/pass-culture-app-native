@@ -126,8 +126,9 @@ export const refreshAccessToken = async (api: DefaultApi): Promise<string | null
   }
 }
 
-const mustUpdateApp = (response: Response) => {
-  return response.status === 403 && response.statusText === 'UPGRADE_REQUIRED'
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mustUpdateApp = (response: Response, responseBody: any) => {
+  return response.status === 403 && responseBody.code === 'UPGRADE_REQUIRED'
 }
 
 // In this case, the following `any` is not that much of a problem in the context of usage
@@ -138,8 +139,8 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   if (response.status === 204) {
     return {}
   }
-
-  if (mustUpdateApp(response)) {
+  const responseBody = await response.json()
+  if (mustUpdateApp(response, responseBody)) {
     global.setMustUpdateApp && global.setMustUpdateApp(true)
     return {}
   }
@@ -147,12 +148,12 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   if (!response.ok) {
     throw new ApiError(
       response.status,
-      await response.json(),
+      await responseBody,
       `Échec de la requête ${response.url}, code: ${response.status}`
     )
   }
 
-  return await response.json()
+  return await responseBody
 }
 
 export function isApiError(error: ApiError | unknown): error is ApiError {
