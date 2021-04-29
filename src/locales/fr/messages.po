@@ -591,6 +591,14 @@ msgstr "La réservation a bien été annulée. Tu pourras la retrouver dans tes 
 msgid "La réservation est annulable jusqu'au"
 msgstr "La réservation est annulable jusqu'au"
 
+#: src/features/forceUpdate/ForceUpdate.tsx:37
+msgid ""
+"Le Pass Culture ne semble plus à jour sur ton téléphone !\n"
+"Pour des questions de performances et de sécurité merci de télécharger la dernière version disponible."
+msgstr ""
+"Le Pass Culture ne semble plus à jour sur ton téléphone !\n"
+"Pour des questions de performances et de sécurité merci de télécharger la dernière version disponible."
+
 #: src/features/profile/components/BeneficiaryCeilings.tsx:34
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
@@ -630,8 +638,8 @@ msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
 #: src/features/bookOffer/components/BookingDetails.tsx:16
-msgid "Les réservations effectuées sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
-msgstr "Les réservations effectuées sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
+msgid "Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
+msgstr "Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
 
 #: src/features/search/pages/LocationFilter.tsx:81
 #: src/features/search/sections/titles.ts:4
@@ -671,6 +679,10 @@ msgstr "Mes réservations"
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
+#: src/features/forceUpdate/ForceUpdate.tsx:31
+msgid "Mise à jour de l'application"
+msgstr "Mise à jour de l'application"
+
 #: src/features/bookings/pages/BookingDetails.tsx:178
 #: src/features/offer/pages/OfferBody.tsx:52
 msgid "Modalités de retrait"
@@ -680,7 +692,7 @@ msgstr "Modalités de retrait"
 msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:46
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:34
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
@@ -1095,7 +1107,7 @@ msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil 
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:48
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:36
 msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 
@@ -1206,7 +1218,7 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:55
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:43
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 
@@ -1222,7 +1234,7 @@ msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page
 msgid "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:52
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:40
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
@@ -1233,6 +1245,10 @@ msgstr "Tu pourras bénéficier des 300€ offerts par le Ministère de la Cultu
 #: src/features/search/sections/titles.ts:7
 msgid "Type d'offre"
 msgstr "Type d'offre"
+
+#: src/features/forceUpdate/ForceUpdate.tsx:45
+msgid "Télécharger la dernière version"
+msgstr "Télécharger la dernière version"
 
 #: src/features/auth/signup/AcceptCgu.tsx:69
 #: src/features/auth/signup/AcceptCgu.tsx:88
@@ -1353,12 +1369,7 @@ msgstr "autour de toi"
 msgid "c'est..."
 msgstr "c'est..."
 
-#: src/features/profile/components/BeneficiaryHeader.tsx:28
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:29
-msgid "credit"
-msgstr "{credit}"
-
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:37
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:25
 msgid "credit expired on date"
 msgstr "crédit expiré le {deadline}"
 
@@ -1379,7 +1390,7 @@ msgstr "crédit insuffisant"
 msgid "crédit photo"
 msgstr "crédit photo"
 
-#: src/features/profile/components/BeneficiaryHeader.tsx:36
+#: src/features/profile/components/BeneficiaryHeader.tsx:24
 msgid "crédit valable jusqu'au"
 msgstr "crédit valable jusqu'au"
 
@@ -1448,16 +1459,11 @@ msgstr "metteur en scène"
 msgid "montant déduit"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
-#: src/features/profile/components/BeneficiaryHeader.tsx:20
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:21
-msgid "name"
-msgstr "{name}"
-
 #: src/features/auth/signup/VerifyEligibility.tsx:23
 msgid "need verify eligibility"
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
-#: src/features/bookings/components/CancelBookingModal.tsx:81
+#: src/features/bookings/components/CancelBookingModal.tsx:80
 msgid "not refunded because expired"
 msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré."
 
@@ -1473,7 +1479,7 @@ msgstr "({price} x 2 places)"
 msgid "quotidiennes"
 msgstr "quotidiennes"
 
-#: src/features/bookings/components/CancelBookingModal.tsx:88
+#: src/features/bookings/components/CancelBookingModal.tsx:87
 msgid "refunded on your pass"
 msgstr "{price} seront recrédités sur ton pass Culture."
 
