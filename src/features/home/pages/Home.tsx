@@ -76,7 +76,7 @@ export const Home: FunctionComponent = function () {
     : t`Bienvenue !`
 
   let subtitle = t`Toute la culture dans ta main`
-  if (availableCredit) {
+  if (userInfos?.isBeneficiary && availableCredit) {
     subtitle = availableCredit.isExpired
       ? t`Ton crédit est expiré`
       : t({

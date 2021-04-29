@@ -43,6 +43,7 @@ function simulateAuthenticatedUser(partialUser?: Partial<UserProfileResponse>) {
         ctx.json({
           email: 'email@domain.ext',
           firstName: 'Jean',
+          isBeneficiary: true,
           depositExpirationDate: '2023-02-16T17:16:04.735235',
           domainsCredit: {
             all: { initial: 50000, remaining: 49600 },
@@ -102,6 +103,15 @@ describe('Home component', () => {
 
   it('should show the available credit to the user - not logged in', async () => {
     const { queryByText } = await homeRenderer({ isLoggedIn: false, withModal: false })
+    expect(queryByText('Toute la culture dans ta main')).toBeTruthy()
+  })
+
+  it('should show the available credit to the user - not beneficiary', async () => {
+    const { queryByText } = await homeRenderer({
+      isLoggedIn: true,
+      withModal: false,
+      partialUser: { isBeneficiary: false },
+    })
     expect(queryByText('Toute la culture dans ta main')).toBeTruthy()
   })
 
