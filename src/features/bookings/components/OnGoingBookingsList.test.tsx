@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, render, act } from 'tests/utils'
 
 import { bookingsSnap } from '../api/bookingsSnap'
@@ -69,10 +70,12 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
 async function renderBookings() {
   const renderAPI = render(
-    <OnGoingBookingsList
-      bookings={bookingsSnap.ongoing_bookings}
-      endedBookings={bookingsSnap.ended_bookings}
-    />
+    reactQueryProviderHOC(
+      <OnGoingBookingsList
+        bookings={bookingsSnap.ongoing_bookings}
+        endedBookings={bookingsSnap.ended_bookings}
+      />
+    )
   )
   return renderAPI
 }

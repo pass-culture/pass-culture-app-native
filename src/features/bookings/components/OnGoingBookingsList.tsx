@@ -44,7 +44,7 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
         <EndedBookingsSection />
       </FooterContainer>
     ),
-    [hasBookings]
+    [hasBookings, bookingsCountLabel]
   )
 
   const logBookingsScrolledToBottom = useFunctionOnce(analytics.logBookingsScrolledToBottom)

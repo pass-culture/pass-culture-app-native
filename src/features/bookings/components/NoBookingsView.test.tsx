@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
 import { NoBookingsView } from './NoBookingsView'
@@ -18,7 +19,7 @@ describe('<NoBookingsView />', () => {
   beforeEach(jest.clearAllMocks)
 
   it('should navigate to Search when pressing button and log event', () => {
-    const renderAPI = render(<NoBookingsView />)
+    const renderAPI = render(reactQueryProviderHOC(<NoBookingsView />))
     const button = renderAPI.getByText('Explorer les offres')
     fireEvent.press(button)
     expect(navigate).toBeCalledWith('Search')
