@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
@@ -27,7 +28,8 @@ export function NoBookingsView() {
           buttonHeight="tall"
         />
       </ButtonContainer>
-      <Spacer.Flex flex={2} />
+      <Spacer.Flex flex={1} />
+      <EndedBookingsSection />
     </Container>
   )
 }
