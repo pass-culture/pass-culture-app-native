@@ -2,11 +2,13 @@ import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { useEffect, useRef, useState } from 'react'
 import { WebView, WebViewNavigation } from 'react-native-webview'
+import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
+import { QueryKeys } from 'libs/queryKeys'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
@@ -19,6 +21,7 @@ export const IdCheck: React.FC<Props> = function (props) {
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
   const injectedJavascript = useKeyboardAdjustFixIdCheck()
+  const queryClient = useQueryClient()
 
   const [idCheckUri, setIdCheckUri] = useState<string | undefined>(undefined)
 
@@ -42,6 +45,7 @@ export const IdCheck: React.FC<Props> = function (props) {
     if (isEligibilityProcessAbandonned) {
       navigation.navigate('Home', { shouldDisplayLoginModal: false })
     } else if (isEligibilityProcessFinished) {
+      queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
       navigation.navigate('EligibilityConfirmed')
     }
   }
