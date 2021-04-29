@@ -39,8 +39,8 @@ export const ForceUpdate = () => {
             <TextContainer>
               <CenteredText>
                 <Typo.Body color={ColorsEnum.WHITE}>
-                  {t`Le Pass Culture ne semble plus à jour sur ton téléphone !
-                Pour des questions de performances et de sécurité merci de télécharger la dernière version disponible.`}
+                  {t`Le pass Culture ne semble plus à jour sur ton téléphone !
+                Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.`}
                 </Typo.Body>
               </CenteredText>
             </TextContainer>

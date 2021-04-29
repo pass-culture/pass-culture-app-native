@@ -183,8 +183,8 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
                 ]
               }
             >
-              Le Pass Culture ne semble plus à jour sur ton téléphone !
-Pour des questions de performances et de sécurité merci de télécharger la dernière version disponible.
+              Le pass Culture ne semble plus à jour sur ton téléphone !
+Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
             </Text>
           </Text>
         </View>
