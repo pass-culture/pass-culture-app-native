@@ -11,7 +11,6 @@ import { SearchAlgoliaHit } from 'libs/algolia'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { analytics } from 'libs/analytics'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
-import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -32,7 +31,6 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   const offerId = +objectID
   const categoryLabel = CATEGORY_CRITERIA[offer.category || 'ALL'].label
   const formattedDate = formatDates(timestampsInMillis)
-  const prices = offer.prices ? offer.prices.map(convertEuroToCents) : undefined
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from algolia for a smooth transition
@@ -78,7 +76,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
           <Body>{categoryLabel}</Body>
           {formattedDate && <Body>{formattedDate}</Body>}
           <Spacer.Column numberOfSpaces={1} />
-          <Typo.Caption>{getDisplayPrice(prices)}</Typo.Caption>
+          <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>
         </Column>
       </Row>
     </Container>

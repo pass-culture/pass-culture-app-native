@@ -1,4 +1,4 @@
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaHit, SearchAlgoliaHit } from 'libs/algolia'
 
 // Prices are stored in euros in Algolia, but retrieved as cents in OfferResponse
 // To follow good frontend practices (see https://frontstuff.io/how-to-handle-monetary-values-in-javascript)
@@ -10,7 +10,9 @@ export const convertEuroToCents = (p: number): number => Math.floor(p * CENTS_IN
 
 export const convertCentsToEuros = (p: number): number => Math.floor(p / CENTS_IN_EURO)
 
-export const convertAlgoliaHitToCents = (hit: AlgoliaHit): AlgoliaHit => {
+export const convertAlgoliaHitToCents = <Hit extends AlgoliaHit | SearchAlgoliaHit>(
+  hit: Hit
+): Hit => {
   const { prices, priceMax, priceMin, ...offer } = hit.offer
   return {
     ...hit,

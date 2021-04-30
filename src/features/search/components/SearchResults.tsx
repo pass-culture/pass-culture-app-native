@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
+import { formatAlgoliaHit } from 'features/home/pages/useHomeAlgoliaModules'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { Filter } from 'features/search/atoms/Buttons'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
@@ -20,9 +21,10 @@ export const SearchResults: React.FC = () => {
   const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useSearchResults()
   const { searchState } = useSearch()
 
-  const hits: SearchAlgoliaHit[] = useMemo(() => flatten(data?.pages.map((page) => page.hits)), [
-    data?.pages,
-  ])
+  const hits: SearchAlgoliaHit[] = useMemo(
+    () => flatten(data?.pages.map((page) => page.hits.map(formatAlgoliaHit))),
+    [data?.pages]
+  )
   const { nbHits } = data?.pages[0] || { nbHits: 0 }
 
   useEffect(
