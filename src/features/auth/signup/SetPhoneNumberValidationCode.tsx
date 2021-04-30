@@ -67,18 +67,17 @@ export const SetPhoneNumberValidationCode: FC<Props> = (props) => {
         <Separator color={ColorsEnum.GREY_MEDIUM} />
         <Spacer.Column numberOfSpaces={4} />
         <HelpRow>
-          <Typo.Caption
-            color={
-              ColorsEnum.GREY_DARK
-            }>{t`Si tu n’arrives pas à récuperer ton code tu peux`}</Typo.Caption>
-          <Spacer.Row numberOfSpaces={1} />
-          <ButtonQuaternary
-            title={t`Contacter le support`}
-            icon={Email}
-            // TODO(PC-8138) contactSupport.forPhoneNumberConfirmation
-            onPress={contactSupport.forGenericQuestion}
-            inline
-          />
+          <Typo.Caption color={ColorsEnum.GREY_DARK}>
+            {t`Si tu n’arrives pas à récuperer ton code tu peux`}
+            <Spacer.Row numberOfSpaces={1} />
+            <ButtonQuaternary
+              title={t`Contacter le support`}
+              icon={Email}
+              // TODO(PC-8138) contactSupport.forPhoneNumberConfirmation
+              onPress={contactSupport.forGenericQuestion}
+              inline
+            />
+          </Typo.Caption>
         </HelpRow>
       </ModalContent>
       <QuitSignupModal
