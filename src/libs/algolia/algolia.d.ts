@@ -59,7 +59,17 @@ export interface AlgoliaHit {
 
 type PartialOffer = Pick<
   Offer,
-  'category' | 'dates' | 'id' | 'description' | 'thumbUrl' | 'isDuo' | 'name' | 'prices'
+  | 'category'
+  | 'dates'
+  | 'id'
+  | 'description'
+  | 'thumbUrl'
+  | 'isDuo'
+  | 'name'
+  | 'prices'
+  | 'priceMax'
+  | 'priceMin'
+  | 'isDigital'
 >
 export interface SearchAlgoliaHit {
   offer: PartialOffer

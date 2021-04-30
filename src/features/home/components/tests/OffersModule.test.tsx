@@ -2,9 +2,9 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
+import { formatAlgoliaHit } from 'features/home/pages/useHomeAlgoliaModules'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
-import { convertAlgoliaHitToCents } from 'libs/parsers/pricesConversion'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
@@ -21,7 +21,7 @@ const props = {
     title: 'Module title',
     layout: 'one-item-medium',
   } as DisplayParametersFields,
-  hits: mockedAlgoliaResponse.hits.map(convertAlgoliaHitToCents),
+  hits: mockedAlgoliaResponse.hits.map(formatAlgoliaHit),
   nbHits: mockedAlgoliaResponse.nbHits,
   cover: null,
   position: null,
