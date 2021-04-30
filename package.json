@@ -27,9 +27,9 @@
     "translations:compile": "lingui compile",
     "trigger:production:deploy:ios": "./scripts/deploy.sh -o ios -t hard -e production",
     "trigger:production:deploy": "./scripts/deploy_new_production_version.sh",
-    "trigger:staging:deploy": "./scripts/deploy_new_staging_version.sh",
+    "trigger:staging:deploy": "./scripts/deploy_new_version.sh v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh v patch",
-    "trigger:testing:deploy": "./scripts/deploy_new_testing_version.sh",
+    "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing_v patch",
     "generate:api:client": "./scripts/generate_api_client.sh"
   },
   "dependencies": {
