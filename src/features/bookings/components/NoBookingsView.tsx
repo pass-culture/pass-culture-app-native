@@ -28,7 +28,7 @@ export function NoBookingsView() {
           buttonHeight="tall"
         />
       </ButtonContainer>
-      <Spacer.Flex flex={1} />
+      <Spacer.Flex />
       <EndedBookingsSection />
     </Container>
   )
@@ -39,7 +39,6 @@ const Container = styled.View({
   justifyContent: 'center',
   alignItems: 'center',
   marginBottom: TAB_BAR_COMP_HEIGHT,
-  padding: getSpacing(4),
 })
 
 const ButtonContainer = styled.View({
