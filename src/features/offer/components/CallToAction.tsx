@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { Rectangle } from 'ui/svg/Rectangle'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -22,15 +22,12 @@ export const CallToAction: React.FC<Props> = ({
 }) => (
   <Container onPress={onPress} disabled={isDisabled}>
     {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
-    <Title adjustsFontSizeToFit numberOfLines={1}>
-      {isExternal && (
-        <IconContainer>
-          <ExternalLinkSite color={ColorsEnum.WHITE} height={getSpacing(4)} width={getSpacing(4)} />
-          <Spacer.Row numberOfSpaces={2} />
-        </IconContainer>
-      )}
-      {wording}
-    </Title>
+    <LegendContainer>
+      {isExternal && <ExternalLinkSite color={ColorsEnum.WHITE} />}
+      <Title adjustsFontSizeToFit numberOfLines={1}>
+        {wording}
+      </Title>
+    </LegendContainer>
   </Container>
 )
 
@@ -44,17 +41,18 @@ const Container = styled.TouchableOpacity.attrs(() => ({
 })
 
 const Title = styled(Typo.ButtonText)({
-  position: 'absolute',
   color: ColorsEnum.WHITE,
   padding: getSpacing(5),
+})
+
+const LegendContainer = styled.View({
+  position: 'absolute',
+  alignItems: 'center',
+  flexDirection: 'row',
 })
 
 const DisabledRectangle = styled.View({
   width: '100%',
   height: getSpacing(12),
   backgroundColor: ColorsEnum.PRIMARY_DISABLED,
-})
-
-const IconContainer = styled.View({
-  flexDirection: 'row',
 })

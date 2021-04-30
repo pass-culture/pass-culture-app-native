@@ -32,27 +32,38 @@ exports[`<CallToAction /> should render disabled 1`] = `
       ]
     }
   />
-  <Text
-    adjustsFontSizeToFit={true}
-    numberOfLines={1}
+  <View
     style={
       Array [
         Object {
-          "color": "#ffffff",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 15,
-          "lineHeight": 20,
-          "paddingBottom": 20,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 20,
+          "alignItems": "center",
+          "flexDirection": "row",
           "position": "absolute",
         },
       ]
     }
   >
-    Wording to display
-  </Text>
+    <Text
+      adjustsFontSizeToFit={true}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "paddingBottom": 20,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 20,
+          },
+        ]
+      }
+    >
+      Wording to display
+    </Text>
+  </View>
 </View>
 `;
 
@@ -85,26 +96,37 @@ exports[`<CallToAction /> should render not disabled 1`] = `
       undefined-SVG-Mock
     </Text>
   </View>
-  <Text
-    adjustsFontSizeToFit={true}
-    numberOfLines={1}
+  <View
     style={
       Array [
         Object {
-          "color": "#ffffff",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 15,
-          "lineHeight": 20,
-          "paddingBottom": 20,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 20,
+          "alignItems": "center",
+          "flexDirection": "row",
           "position": "absolute",
         },
       ]
     }
   >
-    Wording to display
-  </Text>
+    <Text
+      adjustsFontSizeToFit={true}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "paddingBottom": 20,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 20,
+          },
+        ]
+      }
+    >
+      Wording to display
+    </Text>
+  </View>
 </View>
 `;
