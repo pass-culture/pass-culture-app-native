@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { Separator } from 'ui/components/Separator'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT, Typo } from 'ui/theme'
 
@@ -30,8 +29,6 @@ export function NoBookingsView() {
         />
       </ButtonContainer>
       <Spacer.Flex />
-      <Separator />
-      <Spacer.Column numberOfSpaces={4} />
       <EndedBookingsSection />
     </Container>
   )
