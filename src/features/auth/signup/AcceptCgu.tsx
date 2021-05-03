@@ -53,9 +53,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     }
   }, [networkInfo.isConnected])
 
-  // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
-  // Cf. backend logic for token validation
-  async function subscribe(token = 'dummyToken') {
+  async function subscribe(token: string) {
     setErrorMessage(null)
     try {
       setIsFetching(true)
@@ -161,7 +159,13 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
             <Spacer.Column numberOfSpaces={6} />
             <ButtonPrimary
               title={t`Accepter et s’inscrire`}
-              onPress={settings?.isRecaptchaEnabled ? openReCaptchaChallenge : subscribe}
+              // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
+              // Cf. backend logic for token validation
+              onPress={
+                settings?.isRecaptchaEnabled
+                  ? openReCaptchaChallenge
+                  : () => subscribe('dummyToken')
+              }
               isLoading={isDoingReCaptchaChallenge || isFetching}
               disabled={
                 isDoingReCaptchaChallenge ||

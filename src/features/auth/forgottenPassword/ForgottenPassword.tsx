@@ -42,9 +42,7 @@ export const ForgottenPassword: FunctionComponent = () => {
     }
   }, [networkInfo.isConnected])
 
-  // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
-  // Cf. backend logic for token validation
-  async function requestPasswordReset(token = 'dummyToken') {
+  async function requestPasswordReset(token: string) {
     setErrorMessage(null)
     try {
       setIsFetching(true)
@@ -148,7 +146,13 @@ export const ForgottenPassword: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           title={t`Valider`}
-          onPress={settings?.isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
+          // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
+          // Cf. backend logic for token validation
+          onPress={
+            settings?.isRecaptchaEnabled
+              ? openReCaptchaChallenge
+              : () => requestPasswordReset('dummyToken')
+          }
           isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
           disabled={shouldDisableValidateButton}
         />
