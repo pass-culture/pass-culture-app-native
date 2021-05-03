@@ -1174,6 +1174,12 @@ export interface SettingsResponse {
      * @memberof SettingsResponse
      */
     depositAmount: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
+    isRecaptchaEnabled: boolean;
 }/**
  * 
  * @export
@@ -1817,6 +1823,34 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * give them webapp link.
+         * @summary On iOS native app, users cannot book numeric offers with price > 0, so
+         * @param {number} offer_id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1sendOfferWebappLinkByEmailofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
+            // verify required parameter 'offer_id' is not null or undefined
+            if (offer_id === null || offer_id === undefined) {
+                throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1sendOfferWebappLinkByEmailofferId.');
+            }
+            const localVarPath = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`
+                .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * 
          * @summary signin <POST>
          * @param {SigninRequest} [body] 
@@ -2086,6 +2120,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
             return handleGeneratedApiResponse(response)
         },
         /**
+         * give them webapp link.
+         * @summary On iOS native app, users cannot book numeric offers with price > 0, so
+         * @param {number} offer_id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1sendOfferWebappLinkByEmailofferId(basePath: string, offer_id: number, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendOfferWebappLinkByEmailofferId(offer_id, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
          * 
          * @summary signin <POST>
          * @param {SigninRequest} [body] 
@@ -2328,6 +2374,18 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1resetPassword(body?: ResetPasswordRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1resetPassword(this.basePath, body, options)
+    }
+    /**
+     * give them webapp link.
+     * @summary On iOS native app, users cannot book numeric offers with price > 0, so
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1sendOfferWebappLinkByEmailofferId(offer_id: number, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1sendOfferWebappLinkByEmailofferId(this.basePath, offer_id, options)
     }
     /**
      * 

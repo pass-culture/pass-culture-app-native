@@ -23,6 +23,8 @@ import { contactSupport } from '../support.services'
 
 import { AcceptCgu } from './AcceptCgu'
 
+jest.mock('features/auth/settings')
+
 jest.mock('libs/errorMonitoring')
 
 afterEach(jest.clearAllMocks)

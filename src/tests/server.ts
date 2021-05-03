@@ -7,6 +7,7 @@ import {
   OfferResponse,
   RequestPasswordResetRequest,
   ResetPasswordRequest,
+  SettingsResponse,
   SigninRequest,
   SigninResponse,
   UserProfileResponse,
@@ -27,6 +28,7 @@ export const server = setupServer(
     }
   ),
   requestPasswordResetSuccess(),
+  requestSettingsSuccess(),
   rest.post<ResetPasswordRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/reset_password',
     (req, res, ctx) => {
@@ -76,4 +78,12 @@ export function requestPasswordResetFail() {
       return res(ctx.status(400), ctx.json({}))
     }
   )
+}
+
+export function requestSettingsSuccess(
+  settingsResponse: SettingsResponse = { depositAmount: 30000, isRecaptchaEnabled: true }
+) {
+  return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(settingsResponse))
+  })
 }
