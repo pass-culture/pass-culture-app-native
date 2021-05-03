@@ -2,11 +2,13 @@ import { t } from '@lingui/macro'
 import React, { FC, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { CodeInput } from 'ui/components/inputs/CodeInput'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
@@ -25,16 +27,20 @@ interface Props {
 
 export const SetPhoneNumberValidationCode: FC<Props> = (props) => {
   const [_code, setCode] = useState<string | null>('')
+  const {
+    visible: fullPageModalVisible,
+    showModal: showFullPageModal,
+    hideModal: hideFullPageModal,
+  } = useModal(props.visible)
 
   return (
     <AppModal
       visible={props.visible}
       title={t`Confirme ton numéro`}
       rightIcon={Close}
-      // TODO(PC-8132) display QuitSignupModal on right icon press
-      onRightIconPress={props.dismissModal}
+      onRightIconPress={showFullPageModal}
       leftIcon={ArrowPrevious}
-      disableBackdropTap={true}
+      disableBackdropTap
       isScrollable>
       <ModalContent>
         <Paragraphe>
@@ -75,6 +81,11 @@ export const SetPhoneNumberValidationCode: FC<Props> = (props) => {
           />
         </HelpRow>
       </ModalContent>
+      <QuitSignupModal
+        visible={fullPageModalVisible}
+        resume={hideFullPageModal}
+        signupStep={SignupSteps.PhoneNumber}
+      />
     </AppModal>
   )
 }
