@@ -74,9 +74,16 @@ export enum AnalyticsEvent {
 const logScreenView = async (screenName: string) => {
   // 1. We log an event screen_view so that Firebase knows the screen of the user
   await firebaseAnalytics.logScreenView({ screen_name: screenName, screen_class: screenName })
+
   // 2. We also log an event screen_view_<screen> to help with funnels.
   // See https://blog.theodo.com/2018/01/building-google-analytics-funnel-firebase-react-native/
-  await firebaseAnalytics.logEvent(`${AnalyticsEvent.SCREEN_VIEW}_${screenName.toLowerCase()}`)
+  const eventName = `${AnalyticsEvent.SCREEN_VIEW}_${screenName.toLowerCase()}`
+
+  // Firebase only allow events up to 40 characters.
+  // See https://github.com/invertase/react-native-firebase-docs/blob/master/docs/analytics/reference/analytics.md#logevent
+  // We don't mind this hack because this feature (funnels in the Firebase dashboard) still works.
+  const slicedEventName = eventName.slice(0, 40)
+  await firebaseAnalytics.logEvent(slicedEventName)
 }
 
 /**
