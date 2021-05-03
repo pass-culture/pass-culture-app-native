@@ -8,7 +8,7 @@ import styled from 'styled-components/native'
 import { QuitSignupModal, SignupSteps } from 'features/auth/signup/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { AsyncError } from 'libs/errorMonitoring'
+import { AsyncError, MonitoringError } from 'libs/errorMonitoring'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomCardContentContainer, BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -67,8 +67,9 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       }
       navigate('SignupConfirmationEmailSent', { email })
-    } catch (_error) {
+    } catch (error) {
       setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
+      new MonitoringError(error, 'AcceptCguSignUpError')
     } finally {
       setIsFetching(false)
     }
@@ -86,9 +87,10 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     setIsDoingReCaptchaChallenge(false)
   }
 
-  function onReCaptchaError(_error: string) {
+  function onReCaptchaError(error: string) {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
+    new MonitoringError(error, 'AcceptCguOnReCaptchaError')
   }
 
   function onReCaptchaExpire() {
