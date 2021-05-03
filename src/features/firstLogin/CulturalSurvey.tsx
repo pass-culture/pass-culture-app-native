@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useRef, useState } from 'react'
 import { WebView, WebViewMessageEvent } from 'react-native-webview'
 import { WebViewNavigation } from 'react-native-webview/lib/WebViewTypes'
+import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
@@ -12,6 +13,7 @@ import { useCurrentRoute } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/errorMonitoring'
+import { QueryKeys } from 'libs/queryKeys'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { Background } from 'ui/svg/Background'
 import { Spacer } from 'ui/theme'
@@ -36,6 +38,7 @@ export const CulturalSurvey: React.FC = function () {
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
   const { data: user } = useUserProfileInfo()
+  const queryClient = useQueryClient()
 
   function onWebviewLoadEnd(userPk: UserProfileResponse['id']) {
     if (webviewRef.current) {
@@ -78,7 +81,7 @@ export const CulturalSurvey: React.FC = function () {
             })
           }
           if (onClose) {
-            navigation.navigate('Home', { shouldDisplayLoginModal: false })
+            refetchProfileAndNavigateToHome()
           }
           if (onSubmit) {
             await api.postnativev1meculturalSurvey({
@@ -96,15 +99,22 @@ export const CulturalSurvey: React.FC = function () {
         }
       }
     } catch (error) {
-      navigation.navigate('Home', { shouldDisplayLoginModal: false })
+      refetchProfileAndNavigateToHome()
     }
   }
 
   function onNavigationStateChange(event: WebViewNavigation) {
     const isWebViewRedirectedtoWebapp = event.url.includes('app.passculture')
     if (isWebViewRedirectedtoWebapp) {
-      navigation.navigate('Home', { shouldDisplayLoginModal: false })
+      refetchProfileAndNavigateToHome()
     }
+  }
+
+  function refetchProfileAndNavigateToHome() {
+    // we need to invalidate user profile query in order to update home
+    // and profile pages with the latest user information.
+    queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
+    navigation.navigate('Home', { shouldDisplayLoginModal: false })
   }
 
   if (currentRoute?.name !== 'CulturalSurvey') {

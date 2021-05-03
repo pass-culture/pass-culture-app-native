@@ -11,6 +11,8 @@ import { simulateWebviewMessage, superFlushWithAct, act, render } from 'tests/ut
 
 import { CulturalSurvey } from './CulturalSurvey'
 
+jest.mock('react-query')
+
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<
   typeof useUserProfileInfo
 >
