@@ -24,11 +24,13 @@ import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { useSignUp } from '../api'
+import { useAppSettings } from '../settings'
 import { contactSupport } from '../support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'AcceptCgu'>
 
 export const AcceptCgu: FC<Props> = ({ route }) => {
+  const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
   const { goBack, navigate } = useNavigation<UseNavigationType>()
   const signUp = useSignUp()
   const networkInfo = useNetInfo()
@@ -51,7 +53,10 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
     }
   }, [networkInfo.isConnected])
 
-  async function subscribe(token: string) {
+  // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
+  // Cf. backend logic for token validation
+  async function subscribe(token = 'dummyToken') {
+    setErrorMessage(null)
     try {
       setIsFetching(true)
       const { birthday, email, isNewsletterChecked, password, postalCode } = route.params
@@ -106,13 +111,15 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
   return (
     <React.Fragment>
       <BottomContentPage>
-        <ReCaptcha
-          onClose={onReCaptchaClose}
-          onError={onReCaptchaError}
-          onExpire={onReCaptchaExpire}
-          onSuccess={onReCaptchaSuccess}
-          isVisible={isDoingReCaptchaChallenge}
-        />
+        {settings?.isRecaptchaEnabled && (
+          <ReCaptcha
+            onClose={onReCaptchaClose}
+            onError={onReCaptchaError}
+            onExpire={onReCaptchaExpire}
+            onSuccess={onReCaptchaSuccess}
+            isVisible={isDoingReCaptchaChallenge}
+          />
+        )}
         <ModalHeader
           title={t`CGU & Données`}
           leftIcon={ArrowPrevious}
@@ -154,9 +161,14 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
             <Spacer.Column numberOfSpaces={6} />
             <ButtonPrimary
               title={t`Accepter et s’inscrire`}
-              onPress={openReCaptchaChallenge}
+              onPress={settings?.isRecaptchaEnabled ? openReCaptchaChallenge : subscribe}
               isLoading={isDoingReCaptchaChallenge || isFetching}
-              disabled={isDoingReCaptchaChallenge || isFetching || !networkInfo.isConnected}
+              disabled={
+                isDoingReCaptchaChallenge ||
+                isFetching ||
+                !networkInfo.isConnected ||
+                areSettingsLoading
+              }
             />
             {errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
             <Spacer.Column numberOfSpaces={5} />

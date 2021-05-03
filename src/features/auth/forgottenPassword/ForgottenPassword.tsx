@@ -5,6 +5,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
+import { useAppSettings } from 'features/auth/settings'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { MonitoringError } from 'libs/errorMonitoring'
@@ -21,6 +22,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ForgottenPassword: FunctionComponent = () => {
+  const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
   const { navigate } = useNavigation<UseNavigationType>()
   const networkInfo = useNetInfo()
 
@@ -40,7 +42,10 @@ export const ForgottenPassword: FunctionComponent = () => {
     }
   }, [networkInfo.isConnected])
 
-  async function requestPasswordReset(token: string) {
+  // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
+  // Cf. backend logic for token validation
+  async function requestPasswordReset(token = 'dummyToken') {
+    setErrorMessage(null)
     try {
       setIsFetching(true)
       await api.postnativev1requestPasswordReset({ email, token })
@@ -103,13 +108,15 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   return (
     <BottomContentPage>
-      <ReCaptcha
-        onClose={onReCaptchaClose}
-        onError={onReCaptchaError}
-        onExpire={onReCaptchaExpire}
-        onSuccess={onReCaptchaSuccess}
-        isVisible={isDoingReCaptchaChallenge}
-      />
+      {settings?.isRecaptchaEnabled && (
+        <ReCaptcha
+          onClose={onReCaptchaClose}
+          onError={onReCaptchaError}
+          onExpire={onReCaptchaExpire}
+          onSuccess={onReCaptchaSuccess}
+          isVisible={isDoingReCaptchaChallenge}
+        />
+      )}
       <ModalHeader
         title={t`Mot de passe oublié`}
         leftIcon={ArrowPrevious}
@@ -141,8 +148,8 @@ export const ForgottenPassword: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           title={t`Valider`}
-          onPress={openReCaptchaChallenge}
-          isLoading={isDoingReCaptchaChallenge || isFetching}
+          onPress={settings?.isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
+          isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
           disabled={shouldDisableValidateButton}
         />
       </ModalContent>

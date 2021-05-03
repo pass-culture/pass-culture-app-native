@@ -10,6 +10,8 @@ import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 't
 import { simulateWebviewMessage, superFlushWithAct, fireEvent, render } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
+jest.mock('features/auth/settings')
+
 jest.mock('libs/errorMonitoring')
 
 beforeEach(() => {
