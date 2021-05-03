@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mapCategoryToIcon } from 'libs/parsers'
-import { Separator } from 'ui/components/Separator'
 import { Clock } from 'ui/svg/icons/Clock'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -47,7 +46,6 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
           )}
         </AttributesView>
       </ItemContainer>
-      <Separator />
     </Container>
   )
 }

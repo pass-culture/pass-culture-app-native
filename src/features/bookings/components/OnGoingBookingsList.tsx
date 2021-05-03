@@ -8,6 +8,7 @@ import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSecti
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
+import { Separator } from 'ui/components/Separator'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
@@ -66,6 +67,7 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
         ListHeaderComponent={ListHeaderComponent}
         ListEmptyComponent={ListEmptyComponent}
         ListFooterComponent={ListFooterComponent}
+        ItemSeparatorComponent={Separator}
         scrollEnabled={hasBookings}
         onScroll={onScroll}
         scrollEventThrottle={400}
