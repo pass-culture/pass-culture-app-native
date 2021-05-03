@@ -3,15 +3,22 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { ApiError } from 'api/helpers'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, superFlushWithAct, fireEvent, render } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
+jest.mock('libs/errorMonitoring')
+
 beforeEach(() => {
-  jest.clearAllMocks()
   simulateConnectedNetwork()
   server.use(requestPasswordResetSuccess())
+})
+
+afterEach(() => {
+  jest.clearAllMocks()
 })
 
 describe('<ForgottenPassword />', () => {
@@ -104,6 +111,11 @@ describe('<ForgottenPassword />', () => {
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
       ).toBeTruthy()
+      expect(MonitoringError).toHaveBeenNthCalledWith(
+        1,
+        'someError',
+        'ForgottenPasswordOnRecaptchaError'
+      )
       expect(navigate).not.toBeCalled()
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
@@ -117,7 +129,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     fireEvent.press(renderAPI.getByText('Valider'))
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
     await superFlushWithAct()
 
     await waitForExpect(() => {
@@ -126,6 +138,15 @@ describe('<ForgottenPassword />', () => {
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
       ).toBeTruthy()
+      expect(MonitoringError).toHaveBeenNthCalledWith(
+        1,
+        new ApiError(
+          400,
+          {},
+          'Échec de la requête http://localhost/native/v1/request_password_reset, code: 400'
+        ),
+        'ForgottenPasswordRequestResetError'
+      )
       expect(navigate).not.toBeCalled()
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })

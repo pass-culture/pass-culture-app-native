@@ -12,6 +12,7 @@ import { AuthContext } from 'features/auth/AuthContext'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -21,6 +22,8 @@ import { ColorsEnum } from 'ui/theme'
 import { contactSupport } from '../support.services'
 
 import { AcceptCgu } from './AcceptCgu'
+
+jest.mock('libs/errorMonitoring')
 
 afterEach(jest.clearAllMocks)
 
@@ -145,6 +148,42 @@ describe('AcceptCgu Page', () => {
     })
   })
 
+  it('should log monitoring error and display error message when API call to create user account fails', async () => {
+    simulateConnectedNetwork()
+    const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
+    server.use(
+      rest.post<AccountRequest, EmptyResponse>(
+        env.API_BASE_URL + '/native/v1/account',
+        (_req, res, ctx) => res.once(ctx.status(400), ctx.json({}))
+      )
+    )
+    const renderAPI = renderAcceptCGU()
+    fireEvent.press(renderAPI.getByText('Accepter et s’inscrire'))
+    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+
+    await waitFor(() => {
+      expect(postnativev1accountSpy).toBeCalledWith(
+        {
+          birthdate: '12-2-1995',
+          email: 'john.doe@example.com',
+          marketingEmailSubscription: true,
+          password: 'password',
+          token: 'fakeToken',
+          postalCode: '35000',
+        },
+        { credentials: 'omit' }
+      )
+      expect(
+        renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
+      ).toBeTruthy()
+      expect(MonitoringError).toHaveBeenNthCalledWith(1, {}, 'AcceptCguSignUpError')
+      expect(navigate).not.toBeCalled()
+      expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
+    })
+  })
+
   it('should NOT call API to create user account when reCAPTCHA challenge was failed', async () => {
     simulateConnectedNetwork()
     const postnativev1accountSpy = jest.spyOn(api, 'postnativev1account')
@@ -158,6 +197,7 @@ describe('AcceptCgu Page', () => {
       expect(
         renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
       ).toBeTruthy()
+      expect(MonitoringError).toHaveBeenNthCalledWith(1, 'someError', 'AcceptCguOnReCaptchaError')
       expect(postnativev1accountSpy).not.toBeCalled()
       expect(navigate).not.toBeCalled()
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()

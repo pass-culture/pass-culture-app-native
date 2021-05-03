@@ -73,7 +73,7 @@ export function requestPasswordResetFail() {
   return rest.post<RequestPasswordResetRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/request_password_reset',
     (req, res, ctx) => {
-      return res(ctx.status(400))
+      return res(ctx.status(400), ctx.json({}))
     }
   )
 }
