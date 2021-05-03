@@ -10,7 +10,6 @@ import { storage } from 'libs/storage'
 import { act, render, waitFor } from 'tests/utils'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-jest.mock('react-query')
 
 allowConsole({ error: true })
 /* Explanation for allowConsole : 
