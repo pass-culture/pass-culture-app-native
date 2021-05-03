@@ -97,7 +97,7 @@ export const reCaptchaWebviewHTML = `
                     if (numberOfRetryRender === 4) {
                         addReCaptchaScript()
                     }
-                    if (numberOfRetryRender > 10) {
+                    if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
                         onError("reCAPTCHA error : Number of retry render exceeded");
                     }
