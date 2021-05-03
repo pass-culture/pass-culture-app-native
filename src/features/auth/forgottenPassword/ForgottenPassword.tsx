@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -44,8 +45,9 @@ export const ForgottenPassword: FunctionComponent = () => {
       setIsFetching(true)
       await api.postnativev1requestPasswordReset({ email, token })
       navigate('ResetPasswordEmailSent', { email })
-    } catch (_error) {
+    } catch (error) {
       setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
+      new MonitoringError(error, 'ForgottenPasswordRequestResetError')
     } finally {
       setIsFetching(false)
     }
@@ -83,9 +85,10 @@ export const ForgottenPassword: FunctionComponent = () => {
     setIsDoingReCaptchaChallenge(false)
   }
 
-  function onReCaptchaError(_error: string) {
+  function onReCaptchaError(error: string) {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
+    new MonitoringError(error, 'ForgottenPasswordOnRecaptchaError')
   }
 
   function onReCaptchaExpire() {
