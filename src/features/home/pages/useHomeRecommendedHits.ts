@@ -5,6 +5,7 @@ import { filterAlgoliaHit, formatAlgoliaHit } from 'features/home/pages/useHomeA
 import { AlgoliaHit } from 'libs/algolia'
 import { fetchAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { env } from 'libs/environment'
+import { errorMonitoring } from 'libs/errorMonitoring'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -18,13 +19,22 @@ export const useHomeRecommendedHits = (
   const { data: profile } = useUserProfileInfo()
   const userId = profile?.id
 
-  const recommendationEndpoint = getRecommendationEndpoint(userId, position)
+  const recommendationEndpoint = getRecommendationEndpoint(userId, position) as string
 
   const { data: recommendedIds } = useQuery(
     QueryKeys.RECOMMENDATION_OFFER_IDS,
     async () => {
-      const response = await fetch(recommendationEndpoint as string)
-      return response.json() as Promise<{ recommended_offers: string[] }>
+      const response = await fetch(recommendationEndpoint)
+      if (response.ok) {
+        return response.json() as Promise<{ recommended_offers: string[] }>
+      } else {
+        errorMonitoring.captureException(
+          new Error(
+            `Error with recommendation endpoint: ${recommendationEndpoint}. status code ${response.status}`
+          )
+        )
+        return { recommended_offers: [] }
+      }
     },
     { enabled: !!recommendationModule && typeof userId === 'number' && !!recommendationEndpoint }
   )
