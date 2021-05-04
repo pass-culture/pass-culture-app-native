@@ -58,8 +58,12 @@ export const CodeInput = (props: CodeInputProps) => {
   )
 
   const onChangeValue = (value: string, inputId: number) => {
-    const newInputValues = inputUpdator(value, inputId, props)
-    setInputValues(newInputValues)
+    const newInputValuesAction = inputUpdator(value, inputId, props)
+    setInputValues((old) => {
+      handleForwardTransitions(value, inputId, inputsRef, props)
+
+      return newInputValuesAction(old)
+    })
   }
 
   return (
@@ -78,7 +82,7 @@ export const CodeInput = (props: CodeInputProps) => {
             ref={inputsRef.current[index]}
             minWidth={SHORT_INPUT_MIN_WIDTH}
             onKeyPress={(e: NativeSyntheticEvent<TextInputKeyPressEventData>) =>
-              handleInputTransitions(e, index, inputsRef, inputValues, props)
+              handleBackspaceTransitions(e, index, inputsRef, inputValues)
             }
             testID={`input-${index}`}
           />
@@ -151,22 +155,29 @@ export const inputUpdator = (
 }
 
 /** focus previous input after deleting all the content: only for month and year */
-function handleInputTransitions<KeyEvent extends NativePressEvent, InputsRef extends InputRefMap>(
-  e: KeyEvent,
-  position: number,
-  inputsRef: InputsRef,
-  inputValues: Record<string, string>,
-  props: CodeInputProps
-) {
+function handleBackspaceTransitions<
+  KeyEvent extends NativePressEvent,
+  InputsRef extends InputRefMap
+>(e: KeyEvent, position: number, inputsRef: InputsRef, inputValues: Record<string, string>) {
   const backspacePressed = e.nativeEvent.key === BackspaceKey
   const inputLength = inputValues[position].length
 
-  // handle backspace
   if (backspacePressed && position > 0 && inputLength <= 1) {
     executeInputMethod(inputsRef.current[position - 1].current, 'focus')
   }
-  // handle forward
-  if (!backspacePressed && inputLength >= props.placeholder.length - 1) {
+}
+
+/** focus previous input after deleting all the content: only for month and year */
+function handleForwardTransitions<InputsRef extends InputRefMap>(
+  value: string,
+  position: number,
+  inputsRef: InputsRef,
+  props: CodeInputProps
+) {
+  const newLength = value.length
+  const isForward = newLength > props.placeholder.length - 1
+
+  if (isForward) {
     if (position < props.codeLength - 1) {
       executeInputMethod(inputsRef.current[position + 1].current, 'focus')
     }

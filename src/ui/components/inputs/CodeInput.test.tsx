@@ -172,7 +172,7 @@ describe('CodeInput', () => {
 
         const input0 = getByTestId('input-0')
 
-        pressKey('1', input0)
+        fireEvent.changeText(input0, '1')
         expect(executeInputMethod).toBeCalledWith(expect.anything(), 'focus')
 
         const bars: Record<string, ReactTestInstance> = {}
@@ -198,7 +198,8 @@ describe('CodeInput', () => {
 
         const input2 = getByTestId('input-2')
 
-        pressKey('1', input2)
+        fireEvent.changeText(input2, '1')
+
         expect(executeInputMethod).toBeCalledWith(expect.anything(), 'blur')
 
         const bars: Record<string, ReactTestInstance> = {}
@@ -225,7 +226,7 @@ describe('CodeInput', () => {
 
         const input2 = getByTestId('input-2')
 
-        pressKey(CodeInputUtilsModule.BackspaceKey, input2)
+        pressBackspaceKey(input2, '')
         expect(executeInputMethod).toBeCalledWith(expect.anything(), 'focus')
 
         const bars: Record<string, ReactTestInstance> = {}
@@ -235,8 +236,8 @@ describe('CodeInput', () => {
         }
 
         await waitForExpect(() => {
-          // input validated => green
-          expect(bars[2].props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
+          // input deleted => grey
+          expect(bars[2].props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
           // input remain unchanged
           expect(bars[0].props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
         })
@@ -251,7 +252,7 @@ describe('CodeInput', () => {
 
         const input0 = getByTestId('input-0')
 
-        pressKey(CodeInputUtilsModule.BackspaceKey, input0)
+        pressBackspaceKey(input0, '')
         expect(executeInputMethod).not.toBeCalled()
 
         const bars: Record<string, ReactTestInstance> = {}
@@ -271,12 +272,12 @@ describe('CodeInput', () => {
   })
 })
 
-function pressKey(char: string, input: ReactTestInstance) {
+function pressBackspaceKey(input: ReactTestInstance, nextContent: string) {
   act(() => {
-    fireEvent.changeText(input, char)
+    fireEvent.changeText(input, nextContent)
     input.props.onKeyPress({
       nativeEvent: {
-        key: char,
+        key: CodeInputUtilsModule.BackspaceKey,
       },
     })
   })
