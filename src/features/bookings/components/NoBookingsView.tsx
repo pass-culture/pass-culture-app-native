@@ -6,7 +6,7 @@ import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSecti
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
-import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function NoBookingsView() {
   const onPressExploreOffers = useNavigateToSearchResults({ from: 'bookings' })
@@ -29,6 +29,7 @@ export function NoBookingsView() {
         />
       </ButtonContainer>
       <Spacer.Flex />
+      <Spacer.Column numberOfSpaces={12} />
       <EndedBookingsSection />
     </Container>
   )
@@ -38,7 +39,7 @@ const Container = styled.View({
   flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom: TAB_BAR_COMP_HEIGHT,
+  marginBottom: getSpacing(10),
 })
 
 const ButtonContainer = styled.View({
