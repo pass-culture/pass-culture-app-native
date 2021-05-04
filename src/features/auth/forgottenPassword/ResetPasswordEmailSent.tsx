@@ -25,7 +25,7 @@ type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const complexGoBack = useBackNavigation<'ResetPasswordEmailSent'>()
+  const complexGoBack = useBackNavigation()
   const previousRoute = usePreviousRoute()
   /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
   to redo the challenge, so we block the user from going back to ReCAPTCHA screen */

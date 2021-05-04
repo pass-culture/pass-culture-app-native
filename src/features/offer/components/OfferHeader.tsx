@@ -125,11 +125,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
         </Row>
         <Spacer.Column numberOfSpaces={2} />
       </HeaderContainer>
-      <SignUpSignInChoiceOfferModal
-        visible={signInModalVisible}
-        dismissModal={hideSignInModal}
-        id={params.id}
-      />
+      <SignUpSignInChoiceOfferModal visible={signInModalVisible} dismissModal={hideSignInModal} />
     </React.Fragment>
   )
 }

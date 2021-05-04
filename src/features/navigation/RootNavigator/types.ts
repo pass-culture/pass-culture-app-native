@@ -38,10 +38,7 @@ export type RootStackParamList = {
   ForgottenPassword: undefined
   FavoritesSorts: undefined
   IdCheck: { email: string; licenceToken: string }
-  Login:
-    | ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>)
-    | ({ preventCancellation?: boolean } & BackNavigationParams<'Offer'>)
-    | undefined
+  Login: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
   Maintenance: undefined
   Navigation: undefined
   NotificationSettings: undefined
@@ -62,10 +59,7 @@ export type RootStackParamList = {
   SearchCategories: undefined
   SearchFilter: undefined
   SetBirthday: { email: string; isNewsletterChecked: boolean; password: string }
-  SetEmail:
-    | ({ preventCancellation?: boolean } & BackNavigationParams<'Home'>)
-    | ({ preventCancellation?: boolean } & BackNavigationParams<'Offer'>)
-    | undefined
+  SetEmail: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
   SetPassword: { email: string; isNewsletterChecked: boolean }
   SetPostalCode: { email: string; isNewsletterChecked: boolean; password: string; birthday: string }
   SignupConfirmationEmailSent: { email: string }
@@ -84,19 +78,6 @@ export type AllNavParamList = RootStackParamList & TabParamList
 
 /** Type helper to share screen names */
 export type ScreenNames = keyof AllNavParamList
-
-/**
- * RootStackParamList = {
- *  // understand: can navigate from Login or Home to SetEmail
- *  SetEmail: BackNavigationParams<'Login'> | BackNavigationParams<'Home'> | undefined
- * }
- */
-export type BackNavigationParams<ScreenName extends ScreenNames> = {
-  backNavigation?: {
-    from: ScreenName
-    params: AllNavParamList[ScreenName]
-  }
-}
 
 /**
  * Type helper for useRoute

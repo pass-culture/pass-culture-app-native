@@ -39,7 +39,7 @@ export const SetEmail: FunctionComponent = () => {
     hideModal: hideFullPageModal,
   } = useModal(false)
 
-  const complexGoBack = useBackNavigation<'SetEmail'>()
+  const complexGoBack = useBackNavigation()
 
   function onChangeEmail(email: string) {
     if (hasError) {
