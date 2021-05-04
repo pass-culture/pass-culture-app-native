@@ -4,9 +4,14 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
-import { LogBox } from 'react-native'
+import { AppState, AppStateStatus, LogBox } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
+import {
+  focusManager as reactQueryFocusManager,
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
 
 import './why-did-you-render'
@@ -44,6 +49,22 @@ const queryClient = new QueryClient({
       useErrorBoundary: true,
     },
   },
+})
+
+// By default, on the web, if a user leaves the app and returns to stale data,
+// React Query automatically requests fresh data in the background.
+// To have the equivalent behaviour for React-Native, we provide focus information through
+// the AppState module :
+reactQueryFocusManager.setEventListener((handleFocus) => {
+  function triggerReactQueryFocusOnBecomeActive(appState: AppStateStatus) {
+    if (appState === 'active') {
+      handleFocus()
+    }
+  }
+  AppState.addEventListener('change', triggerReactQueryFocusOnBecomeActive)
+  return () => {
+    AppState.removeEventListener('change', triggerReactQueryFocusOnBecomeActive)
+  }
 })
 
 const App: FunctionComponent = function () {
