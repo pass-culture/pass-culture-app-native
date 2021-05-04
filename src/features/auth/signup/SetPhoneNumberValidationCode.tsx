@@ -6,7 +6,7 @@ import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignu
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
-import { CodeInput } from 'ui/components/inputs/CodeInput'
+import { CodeInput, CodeValidation } from 'ui/components/inputs/CodeInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
@@ -25,13 +25,29 @@ interface Props {
   // TODO(PC-8137) create phone number property retrieved from SetPhoneNumberModal
 }
 
+interface CodeInputState extends CodeValidation {
+  code: string | null
+}
+
 export const SetPhoneNumberValidationCode: FC<Props> = (props) => {
-  const [_code, setCode] = useState<string | null>('')
+  const [codeInputState, setCodeInputState] = useState<CodeInputState>({
+    code: null,
+    isComplete: false,
+    isValid: false,
+  })
+
   const {
     visible: fullPageModalVisible,
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(props.visible)
+
+  function onChangeValue(value: string | null, validation: CodeValidation) {
+    setCodeInputState({
+      code: value,
+      ...validation,
+    })
+  }
 
   return (
     <AppModal
@@ -54,10 +70,14 @@ export const SetPhoneNumberValidationCode: FC<Props> = (props) => {
           enableValidation
           isValid={isCodeValid}
           isInputValid={isInputValid}
-          onChangeValue={(code, _validation) => setCode(code)}
+          onChangeValue={onChangeValue}
         />
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary title={t`Continuer`} />
+        <ButtonPrimary
+          title={t`Continuer`}
+          disabled={!codeInputState.isValid}
+          testIdSuffix={t`continue`}
+        />
         <Spacer.Column numberOfSpaces={4} />
         <HelpRow>
           <Typo.Body>{t`Tu n'as pas reçu le sms ?`}</Typo.Body>
