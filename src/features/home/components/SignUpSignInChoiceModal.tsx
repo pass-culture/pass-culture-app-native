@@ -3,6 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { useDepositAmount } from 'features/auth/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -18,6 +19,7 @@ interface Props {
 export const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dismissModal }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute()
+  const deposit = useDepositAmount()
 
   function goToSignUp() {
     dismissModal()
@@ -55,7 +57,12 @@ export const SignUpSignInChoiceModal: FunctionComponent<Props> = ({ visible, dis
       onRightIconPress={dismissModal}>
       <Description>
         <Typo.Body>
-          {t`Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`}
+          {t({
+            id: 'sign up explanation',
+            values: { deposit },
+            message:
+              'Si tu as 18 ans, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.',
+          })}
         </Typo.Body>
       </Description>
 
