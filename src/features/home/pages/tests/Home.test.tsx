@@ -2,7 +2,6 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
 import { ProcessedModule } from 'features/home/contentful'
@@ -60,30 +59,25 @@ function simulateAuthenticatedUser(partialUser?: Partial<UserProfileResponse>) {
 describe('Home component', () => {
   it('should render correctly without login modal', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
-    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
+    const home = await homeRenderer({ isLoggedIn: false })
     expect(home).toMatchSnapshot()
   })
 
-  it('should render modal correctly', async () => {
-    const { getByText } = await homeRenderer({ isLoggedIn: false, withModal: true })
-    expect(getByText('Se connecter')).toBeTruthy()
-  })
-
   it('should have a welcome message', async () => {
-    const { getByText } = await homeRenderer({ isLoggedIn: false, withModal: false })
+    const { getByText } = await homeRenderer({ isLoggedIn: false })
     const welcomeText = getByText('Bienvenue !')
     expect(welcomeText.props.children).toBe('Bienvenue !')
   })
 
   it('should have a personalized welcome message when user is logged in', async () => {
-    const { getByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
+    const { getByText } = await homeRenderer({ isLoggedIn: true })
     await waitForExpect(() => {
       expect(getByText('Bonjour Jean')).toBeTruthy()
     })
   })
 
   it('should show the available credit to the user - remaining', async () => {
-    const { getByText } = await homeRenderer({ isLoggedIn: true, withModal: false })
+    const { getByText } = await homeRenderer({ isLoggedIn: true })
     await waitForExpect(() => {
       expect(getByText('Tu as 496 € sur ton pass')).toBeTruthy()
     })
@@ -92,7 +86,6 @@ describe('Home component', () => {
   it('should show the available credit to the user - expired', async () => {
     const { queryByText, getByText } = await homeRenderer({
       isLoggedIn: true,
-      withModal: false,
       partialUser: { depositExpirationDate: new Date('2020-02-16T17:16:04.735235') },
     })
     await waitForExpect(() => {
@@ -102,33 +95,32 @@ describe('Home component', () => {
   })
 
   it('should show the available credit to the user - not logged in', async () => {
-    const { queryByText } = await homeRenderer({ isLoggedIn: false, withModal: false })
+    const { queryByText } = await homeRenderer({ isLoggedIn: false })
     expect(queryByText('Toute la culture dans ta main')).toBeTruthy()
   })
 
   it('should show the available credit to the user - not beneficiary', async () => {
     const { queryByText } = await homeRenderer({
       isLoggedIn: true,
-      withModal: false,
       partialUser: { isBeneficiary: false },
     })
     expect(queryByText('Toute la culture dans ta main')).toBeTruthy()
   })
 
   it('should not have code push button', async () => {
-    const home = await homeRenderer({ withModal: false })
+    const home = await homeRenderer({})
     expect(home.queryByText('Check update')).toBeFalsy()
   })
 
   it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
-    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
+    const home = await homeRenderer({ isLoggedIn: false })
     expect(home.queryByText('CheatMenu')).toBeTruthy()
   })
 
   it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
-    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
+    const home = await homeRenderer({ isLoggedIn: false })
     expect(home.queryByText('CheatMenu')).toBeFalsy()
   })
 })
@@ -146,7 +138,7 @@ describe('Home component - Analytics', () => {
   }
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
-    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
+    const home = await homeRenderer({ isLoggedIn: false })
     const scrollView = home.getByTestId('homeScrollView')
     await act(async () => {
       await flushAllPromises()
@@ -165,7 +157,7 @@ describe('Home component - Analytics', () => {
   })
 
   it('should trigger logEvent "AllModulesSeen" only once', async () => {
-    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
+    const home = await homeRenderer({ isLoggedIn: false })
     const scrollView = home.getByTestId('homeScrollView')
 
     await act(async () => {
@@ -198,7 +190,7 @@ describe('Home component - Analytics', () => {
         display: { title: 'Tes offres recommandées', minOffers: 2, layout: 'one-item-medium' },
       }),
     ]
-    const home = await homeRenderer({ isLoggedIn: false, withModal: false })
+    const home = await homeRenderer({ isLoggedIn: false })
     const scrollView = home.getByTestId('homeScrollView')
 
     await act(async () =>
@@ -222,22 +214,15 @@ describe('Home component - Analytics', () => {
 
 interface Props {
   isLoggedIn?: boolean | undefined
-  withModal?: boolean | undefined
   partialUser?: Partial<UserProfileResponse>
 }
 
 async function homeRenderer(
-  { isLoggedIn, withModal, partialUser }: Props = {
+  { isLoggedIn, partialUser }: Props = {
     isLoggedIn: false,
-    withModal: false,
     partialUser: {},
   }
 ) {
-  useRoute.mockReturnValue({
-    params: {
-      shouldDisplayLoginModal: withModal,
-    },
-  })
   if (isLoggedIn) simulateAuthenticatedUser(partialUser)
   const renderAPI = render(
     reactQueryProviderHOC(

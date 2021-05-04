@@ -29,7 +29,6 @@ export const tabBarRoutes: Array<TabRoute> = [
   {
     name: 'Home',
     component: Home,
-    params: { shouldDisplayLoginModal: false },
     key: 'Home-key',
   },
   {

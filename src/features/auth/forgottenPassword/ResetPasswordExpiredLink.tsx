@@ -6,7 +6,6 @@ import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { AsyncError } from 'libs/errorMonitoring'
@@ -33,8 +32,8 @@ export function ResetPasswordExpiredLink(props: Props) {
     }
   )
 
-  function goToHomeWithoutModal() {
-    navigate('Home', NavigateToHomeWithoutModalOptions)
+  function goToHome() {
+    navigate('Home')
   }
 
   async function resetPasswordExpiredLink() {
@@ -67,7 +66,7 @@ export function ResetPasswordExpiredLink(props: Props) {
         disabled={isFetching}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={goToHomeWithoutModal} />
+      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={goToHome} />
     </GenericInfoPage>
   )
 }

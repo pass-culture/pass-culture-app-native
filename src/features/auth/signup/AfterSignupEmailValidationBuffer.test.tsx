@@ -118,7 +118,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
           message: "Ce lien de validation n'est plus valide",
         })
         expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
+        expect(navigate).toHaveBeenCalledWith('Home')
       })
     })
   })

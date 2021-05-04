@@ -42,7 +42,7 @@ describe('QuitSignupModal', () => {
     const abandonButton = getByText("Abandonner l'inscription")
     fireEvent.press(abandonButton)
 
-    expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
+    expect(navigate).toHaveBeenCalledWith('Home')
   })
 
   describe('QuitSignupModal - Analytics', () => {

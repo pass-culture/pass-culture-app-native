@@ -60,7 +60,7 @@ export function AfterSignupEmailValidationBuffer() {
     showInfoSnackBar({
       message: t`Ce lien de validation n'est plus valide`,
     })
-    delayedNavigate('Home', { shouldDisplayLoginModal: false })
+    delayedNavigate('Home')
   }
 
   return <LoadingPage />

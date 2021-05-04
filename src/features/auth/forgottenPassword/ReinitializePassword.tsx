@@ -7,7 +7,6 @@ import {
   isPasswordCorrect,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
-import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
@@ -55,8 +54,8 @@ export const ReinitializePassword = () => {
     })
   }
 
-  function goToHomeWithoutModal() {
-    navigate('Home', NavigateToHomeWithoutModalOptions)
+  function goToHome() {
+    navigate('Home')
   }
 
   useEffect(() => {
@@ -67,11 +66,7 @@ export const ReinitializePassword = () => {
 
   return (
     <BottomContentPage>
-      <ModalHeader
-        title={t`Ton mot de passe`}
-        rightIcon={Close}
-        onRightIconPress={goToHomeWithoutModal}
-      />
+      <ModalHeader title={t`Ton mot de passe`} rightIcon={Close} onRightIconPress={goToHome} />
       <BottomCardContentContainer>
         <Spacer.Column numberOfSpaces={6} />
         <StyledInput>

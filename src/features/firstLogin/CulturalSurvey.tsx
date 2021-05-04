@@ -114,7 +114,7 @@ export const CulturalSurvey: React.FC = function () {
     // we need to invalidate user profile query in order to update home
     // and profile pages with the latest user information.
     queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
-    navigation.navigate('Home', { shouldDisplayLoginModal: false })
+    navigation.navigate('Home')
   }
 
   if (currentRoute?.name !== 'CulturalSurvey') {

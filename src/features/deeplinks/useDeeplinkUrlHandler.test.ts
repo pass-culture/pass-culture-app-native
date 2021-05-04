@@ -107,9 +107,7 @@ describe('useDeeplinkUrlHandler', () => {
 
       handleDeeplinkUrl({ url })
 
-      expect(navigate).toHaveBeenCalledWith('Home', {
-        shouldDisplayLoginModal: false,
-      })
+      expect(navigate).toHaveBeenCalledWith('Home', undefined)
     })
   })
 })
@@ -129,7 +127,7 @@ jest.mock('features/deeplinks/routing', () => ({
       }
     },
     default: function () {
-      return { screen: 'Home', params: { shouldDisplayLoginModal: false } }
+      return { screen: 'Home' }
     },
   },
 }))

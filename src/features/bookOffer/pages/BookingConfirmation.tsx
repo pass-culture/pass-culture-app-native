@@ -63,10 +63,7 @@ export function BookingConfirmation() {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimaryWhite title={t`Voir ma réservation`} onPress={displayBookingDetails} />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite
-        title={t`Retourner à l'accueil`}
-        onPress={() => navigate('Home', { shouldDisplayLoginModal: false })}
-      />
+      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={() => navigate('Home')} />
     </GenericInfoPage>
   )
 }
