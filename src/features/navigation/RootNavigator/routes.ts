@@ -6,6 +6,7 @@ import { Login } from 'features/auth/login/Login'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
+import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
 import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
 import { IdCheck } from 'features/auth/signup/IdCheck'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
@@ -54,6 +55,7 @@ const routes: Array<Route> = [
   { name: 'CheatCodes', component: CheatCodes },
   { name: 'CheatMenu', component: CheatMenu },
   { name: 'ConsentSettings', component: ConsentSettings },
+  { name: 'BeneficiaryRequestSent', component: BeneficiaryRequestSent },
   { name: 'BookingConfirmation', component: BookingConfirmation },
   { name: 'BookingDetails', component: BookingDetails },
   { name: 'CulturalSurvey', component: CulturalSurvey },

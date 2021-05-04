@@ -99,6 +99,7 @@ import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
+import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
@@ -505,6 +506,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <LogoPassCulture width={ICON_SIZE * 2} height={ICON_SIZE} color={ColorsEnum.BLACK} />
           <Text> - LogoPassCulture </Text>
+        </AlignedText>
+        <AlignedText>
+          <RequestSent size={ICON_SIZE} />
+          <Text> - RequestSent </Text>
         </AlignedText>
       </AccordionItem>
 

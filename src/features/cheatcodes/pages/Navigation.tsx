@@ -252,6 +252,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('ForceUpdate')}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={`Beneficiary request sent`}
+            onPress={() => navigation.navigate('BeneficiaryRequestSent')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
