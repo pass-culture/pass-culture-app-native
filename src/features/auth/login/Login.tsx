@@ -41,7 +41,7 @@ export const Login: FunctionComponent = function () {
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const complexGoBack = useBackNavigation<'Login'>()
+  const complexGoBack = useBackNavigation()
 
   async function handleSignin() {
     setIsLoading(true)
