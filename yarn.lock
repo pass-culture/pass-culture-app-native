@@ -2002,6 +2002,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/dynamic-links/-/dynamic-links-11.3.1.tgz#3c1f1c8d2e76b731aed683a349290f592a0ac7a7"
   integrity sha512-C0buC/MiPXDD4piSkbSIh6AfKNcXQfxWtNtCCrWFqRUdTMeij5BgKXDNjry/oky5qHua/PxyUmMXJhmFNq5HsQ==
 
+"@react-native-firebase/firestore@^11.3.1":
+  version "11.4.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-11.4.1.tgz#7ed87577cc9eef0f24a8367003186711ce6ec058"
+  integrity sha512-bptsAFRR5RbnsHnpRbJP8JVS1YugPtHOPS83ufESIInJvd7lVrWo3w6NJZmVbjIs696WVtN534J2zRRenACqxw==
+
 "@react-native-firebase/remote-config@^11.3.1":
   version "11.3.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/remote-config/-/remote-config-11.3.1.tgz#1b3234232a155a6f0ede540ece2a5bbf5c57e7f5"
