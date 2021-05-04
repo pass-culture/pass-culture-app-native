@@ -389,6 +389,10 @@ msgstr "Date précise"
 msgid "Demain"
 msgstr "Demain"
 
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:14
+msgid "Demande envoyée !"
+msgstr "Demande envoyée !"
+
 #: src/features/bookings/helpers.ts:63
 msgid "Dernier jour pour retirer"
 msgstr "Dernier jour pour retirer"
@@ -762,6 +766,10 @@ msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:15
+msgid "Nous étudions ton dossier..."
+msgstr "Nous étudions ton dossier..."
+
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:56
 #: src/features/profile/pages/ChangePassword.tsx:73
 msgid "Nouveau mot de passe"
@@ -796,6 +804,7 @@ msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
 #: src/features/auth/signup/AccountCreated.tsx:19
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:20
 #: src/features/auth/signup/EligibilityConfirmed.tsx:19
 msgid "On y va !"
 msgstr "On y va !"
@@ -912,7 +921,7 @@ msgid "Prix croissant"
 msgstr "Prix croissant"
 
 #: src/features/profile/components/LoggedOutHeader.tsx:18
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:65
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:74
 msgid "Profil"
 msgstr "Profil"
 
@@ -1257,6 +1266,10 @@ msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:17
+msgid "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+msgstr "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+
 #: src/features/search/sections/titles.ts:7
 msgid "Type d'offre"
 msgstr "Type d'offre"
@@ -1417,7 +1430,7 @@ msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture
 msgid "durée"
 msgstr "durée"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:42
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:50
 msgid "elibility deadline"
 msgstr "Tu es éligible jusqu'au {deadline}"
 
@@ -1429,7 +1442,7 @@ msgstr "en détails"
 msgid "en ligne"
 msgstr "en ligne"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:52
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:60
 msgid "enjoy deposit"
 msgstr "Profite de {deposit}"
 
@@ -1585,7 +1598,7 @@ msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# r�
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:56
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:64
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
