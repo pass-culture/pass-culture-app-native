@@ -42,6 +42,7 @@ export const IdCheck: React.FC<Props> = function (props) {
     if (isEligibilityProcessAbandonned) {
       navigation.navigate('Home', { shouldDisplayLoginModal: false })
     } else if (isEligibilityProcessFinished) {
+      storage.saveObject('has_completed_idcheck', true)
       navigation.navigate('EligibilityConfirmed')
     }
   }

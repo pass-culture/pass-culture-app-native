@@ -5,6 +5,7 @@ import { UseQueryResult } from 'react-query'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { GetIdCheckTokenResponse } from 'api/gen'
 import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
 import { render } from 'tests/utils'
 
 import { NonBeneficiaryHeader } from './NonBeneficiaryHeader'
@@ -23,6 +24,10 @@ jest.mock('features/auth/api', () => ({
 }))
 
 describe('NonBeneficiaryHeader', () => {
+  afterEach(async () => {
+    await storage.clear('has_completed_idcheck')
+  })
+
   afterAll(() => mockdate.reset())
 
   it('should render the right body for user under 18 years old', () => {
@@ -38,7 +43,8 @@ describe('NonBeneficiaryHeader', () => {
 
     getByTestId('younger-badge')
   })
-  it('should render the right body for 18 years old users and call analytics', () => {
+
+  it('should render the right body for 18 years old users, call analytics and navigate to idcheck', () => {
     const today = '2021-02-30T00:00:00Z'
     mockdate.set(new Date(today))
     const { getByTestId } = render(
@@ -60,6 +66,39 @@ describe('NonBeneficiaryHeader', () => {
       licenceToken: 'thisIsATokenForIdCheck',
     })
   })
+
+  it('should render the right body for 18 years old users if user has not completed idcheck', async () => {
+    await storage.saveObject('has_completed_idcheck', false)
+
+    const today = '2021-02-30T00:00:00Z'
+    mockdate.set(new Date(today))
+    const { getByTestId } = render(
+      <NonBeneficiaryHeader
+        email="john@doe.com"
+        eligibilityStartDatetime="2021-02-30T00:00Z"
+        eligibilityEndDatetime="2022-02-30T00:00Z"
+      />
+    )
+
+    getByTestId('body-container-18')
+  })
+
+  it('should render the right body for 18 years old users if user has completed idcheck', async () => {
+    await storage.saveObject('has_completed_idcheck', true)
+
+    const today = '2021-02-30T00:00:00Z'
+    mockdate.set(new Date(today))
+    const { queryByTestId } = render(
+      <NonBeneficiaryHeader
+        email="john@doe.com"
+        eligibilityStartDatetime="2021-02-30T00:00Z"
+        eligibilityEndDatetime="2022-02-30T00:00Z"
+      />
+    )
+    const container = queryByTestId('body-container')
+    expect(container).toBeNull()
+  })
+
   it('should render the right body for user above 18 years old', () => {
     const today = '2021-02-30T00:00:00'
     mockdate.set(new Date(today))
