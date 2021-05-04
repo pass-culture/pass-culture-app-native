@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { useGetIdCheckToken } from 'features/auth/api'
+import { useDepositAmount, useGetIdCheckToken } from 'features/auth/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { MonitoringError } from 'libs/errorMonitoring'
@@ -15,6 +15,8 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const { data: idCheckTokenResponse } = useGetIdCheckToken(true)
   const { data: profile } = useUserProfileInfo()
   const { showInfoSnackBar } = useSnackBarContext()
+  const depositAmount = useDepositAmount()
+  const deposit = depositAmount.replace(' ', '')
 
   function onButtonPress() {
     if (profile && idCheckTokenResponse?.token) {
@@ -41,7 +43,12 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
       buttonText={t`Vérifier mon identité`}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={t`Tu as 18 ans...`}
-      text={t`Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité`}
+      text={t({
+        id: 'id check explanation',
+        values: { deposit },
+        message:
+          'Tu pourras bénéficier des {deposit} offerts par le Ministère de la Culture dès que tu auras vérifié ton identité',
+      })}
       title={t`Bonne nouvelle !`}
       swiperRef={props.swiperRef}
       name={props.name}

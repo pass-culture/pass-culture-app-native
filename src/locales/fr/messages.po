@@ -41,11 +41,11 @@ msgstr "1 Minuscule"
 msgid "12 Caractères"
 msgstr "12 Caractères"
 
-#: src/features/auth/components/QuitSignupModal.tsx:36
+#: src/features/auth/components/QuitSignupModal.tsx:37
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
-#: src/features/auth/signup/AcceptCgu.tsx:120
+#: src/features/auth/signup/AcceptCgu.tsx:125
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
@@ -76,7 +76,7 @@ msgstr "Activer la géolocalisation"
 msgid "Adresse"
 msgstr "Adresse"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:110
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:116
 #: src/features/auth/login/Login.tsx:117
 #: src/features/auth/signup/SetEmail.tsx:64
 msgid "Adresse e-mail"
@@ -177,11 +177,11 @@ msgstr "Avant dernier jour pour retirer"
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:31
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:37
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
-#: src/features/auth/signup/AcceptCgu.tsx:101
+#: src/features/auth/signup/AcceptCgu.tsx:106
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
@@ -277,7 +277,7 @@ msgstr "Comment ça marche ?"
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/signup/AcceptCgu.tsx:107
+#: src/features/auth/signup/AcceptCgu.tsx:112
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -297,7 +297,7 @@ msgstr "Confidentialité"
 msgid "Confirme ton e‑mail"
 msgstr "Confirme ton e‑mail"
 
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:18
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:21
 msgid "Confirme ton numéro"
 msgstr "Confirme ton numéro"
 
@@ -335,8 +335,8 @@ msgstr "Consulter mes e-mails"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:47
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:55
-#: src/features/auth/signup/AcceptCgu.tsx:118
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:41
+#: src/features/auth/signup/AcceptCgu.tsx:123
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:42
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:55
 msgid "Contacter le support"
@@ -346,7 +346,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday.tsx:108
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:43
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:29
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:30
 #: src/features/auth/signup/SetPostalCode.tsx:58
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:54
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
@@ -354,7 +354,7 @@ msgstr "Contacter le support"
 msgid "Continuer"
 msgstr "Continuer"
 
-#: src/features/auth/components/QuitSignupModal.tsx:34
+#: src/features/auth/components/QuitSignupModal.tsx:35
 msgid "Continuer l'inscription"
 msgstr "Continuer l'inscription"
 
@@ -444,7 +444,7 @@ msgstr "E-mail ou mot de passe incorrect."
 msgid "EAN"
 msgstr "EAN"
 
-#: src/features/auth/signup/AcceptCgu.tsx:106
+#: src/features/auth/signup/AcceptCgu.tsx:111
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
@@ -488,7 +488,7 @@ msgstr "Explorer les offres"
 msgid "Filtrer"
 msgstr "Filtrer"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:74
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:79
 #: src/features/auth/signup/SetEmail.tsx:67
 msgid "Format de l'e-mail incorrect"
 msgstr "Format de l'e-mail incorrect"
@@ -525,9 +525,9 @@ msgstr "Handicap visuel"
 msgid "Heure"
 msgstr "Heure"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:38
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:78
-#: src/features/auth/signup/AcceptCgu.tsx:43
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:41
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:83
+#: src/features/auth/signup/AcceptCgu.tsx:45
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
 
@@ -618,7 +618,7 @@ msgstr "Le lien est incorrect"
 msgid "Le pass Culture"
 msgstr "Le pass Culture"
 
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:31
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:33
 msgid "Le pass Culture est accessible à tous !"
 msgstr "Le pass Culture est accessible à tous !"
 
@@ -634,8 +634,8 @@ msgstr ""
 msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:93
-#: src/features/auth/signup/AcceptCgu.tsx:92
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:99
+#: src/features/auth/signup/AcceptCgu.tsx:97
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
@@ -643,7 +643,7 @@ msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
-#: src/features/auth/components/QuitSignupModal.tsx:31
+#: src/features/auth/components/QuitSignupModal.tsx:32
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 
@@ -702,7 +702,7 @@ msgstr "Modalités de retrait"
 msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:34
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:29
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
 
@@ -725,7 +725,7 @@ msgstr "Mot de passe incorrect"
 msgid "Mot de passe modifié"
 msgstr "Mot de passe modifié"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:101
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:107
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
@@ -754,7 +754,7 @@ msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. D
 msgid "Notifications"
 msgstr "Notifications"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:21
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:23
 msgid "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 
@@ -874,7 +874,7 @@ msgstr "Permanent"
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
-#: src/features/auth/signup/AcceptCgu.tsx:110
+#: src/features/auth/signup/AcceptCgu.tsx:115
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
@@ -883,7 +883,7 @@ msgstr "Politique de confidentialité."
 msgid "Politique des cookies"
 msgstr "Politique des cookies"
 
-#: src/features/auth/signup/AcceptCgu.tsx:115
+#: src/features/auth/signup/AcceptCgu.tsx:120
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
@@ -992,7 +992,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:33
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:34
 #: src/features/errors/pages/AsyncErrorBoundary.tsx:63
 msgid "Réessayer"
 msgstr "Réessayer"
@@ -1024,7 +1024,7 @@ msgid "Réserver"
 msgstr "Réserver"
 
 #: src/features/favorites/components/NotConnectedFavorites.tsx:34
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:38
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:44
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:38
 #: src/features/profile/components/LoggedOutHeader.tsx:24
 msgid "S'inscrire"
@@ -1034,17 +1034,17 @@ msgstr "S'inscrire"
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:24
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:25
 msgid "Saisis le code envoyé par SMS au numéro +33 1 23 45 67 89."
 msgstr "Saisis le code envoyé par SMS au numéro +33 1 23 45 67 89."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:105
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:111
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
 #: src/features/auth/login/Login.tsx:134
 #: src/features/favorites/components/NotConnectedFavorites.tsx:36
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:40
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:46
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx:40
 msgid "Se connecter"
 msgstr "Se connecter"
@@ -1067,16 +1067,12 @@ msgstr "Seules les sorties seront affichées"
 msgid "Si l'e-mail n'arrive pas, tu peux :"
 msgstr "Si l'e-mail n'arrive pas, tu peux :"
 
-#: src/features/home/components/SignUpSignInChoiceModal.tsx:34
-msgid "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
-msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de 300 € proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
-
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:53
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:53
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:39
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:40
 msgid "Si tu n’arrives pas à récuperer ton code tu peux"
 msgstr "Si tu n’arrives pas à récuperer ton code tu peux"
 
@@ -1126,7 +1122,7 @@ msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil 
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:36
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:31
 msgid "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 msgstr "Ton crédit pass Culture est arrivé à expiration mais l’aventure continue !"
 
@@ -1179,7 +1175,7 @@ msgstr "Trier par"
 msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:31
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:33
 msgid "Tu as 18 ans..."
 msgstr "Tu as 18 ans..."
 
@@ -1207,11 +1203,11 @@ msgstr "Tu es sur le point d'annuler"
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:32
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:33
 msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:27
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:29
 msgid "Tu n'es pas connecté !"
 msgstr "Tu n'es pas connecté !"
 
@@ -1241,7 +1237,7 @@ msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètre
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:43
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:38
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 
@@ -1257,13 +1253,9 @@ msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page
 msgid "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:40
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:35
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
 msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."
-
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:31
-msgid "Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité"
-msgstr "Tu pourras bénéficier des 300€ offerts par le Ministère de la Culture dès que tu auras vérifié ton identité"
 
 #: src/features/search/sections/titles.ts:7
 msgid "Type d'offre"
@@ -1273,13 +1265,13 @@ msgstr "Type d'offre"
 msgid "Télécharger la dernière version"
 msgstr "Télécharger la dernière version"
 
-#: src/features/auth/signup/AcceptCgu.tsx:69
-#: src/features/auth/signup/AcceptCgu.tsx:88
+#: src/features/auth/signup/AcceptCgu.tsx:72
+#: src/features/auth/signup/AcceptCgu.tsx:92
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:53
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:89
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:57
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:94
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 
@@ -1316,7 +1308,7 @@ msgstr "Utilisé"
 msgid "VISA"
 msgstr "VISA"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:116
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:122
 #: src/features/favorites/pages/FavoritesSorts.tsx:94
 msgid "Valider"
 msgstr "Valider"
@@ -1333,7 +1325,7 @@ msgstr "Valider la date"
 msgid "Version"
 msgstr "Version"
 
-#: src/features/auth/components/QuitSignupModal.tsx:29
+#: src/features/auth/components/QuitSignupModal.tsx:30
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
 
@@ -1358,7 +1350,7 @@ msgstr "Voir ma réservation"
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
-#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:31
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:33
 msgid "Vérifier mon identité"
 msgstr "Vérifier mon identité"
 
@@ -1370,7 +1362,7 @@ msgstr "Vérifier mon éligibilité"
 msgid "Welcome to Pass Culture"
 msgstr "Bienvenue à Pass Culture"
 
-#: src/features/auth/signup/AcceptCgu.tsx:109
+#: src/features/auth/signup/AcceptCgu.tsx:114
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
@@ -1392,7 +1384,7 @@ msgstr "autour de toi"
 msgid "c'est..."
 msgstr "c'est..."
 
-#: src/features/profile/components/ExBeneficiaryHeader.tsx:25
+#: src/features/profile/components/ExBeneficiaryHeader.tsx:20
 msgid "credit expired on date"
 msgstr "crédit expiré le {deadline}"
 
@@ -1452,6 +1444,10 @@ msgstr "genre"
 #: src/features/home/pages/Home.tsx:53
 msgid "hello name"
 msgstr "Bonjour {name}"
+
+#: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:33
+msgid "id check explanation"
+msgstr "Tu pourras bénéficier des {deposit} offerts par le Ministère de la Culture dès que tu auras vérifié ton identité"
 
 #: src/features/offer/pages/OfferDescription.tsx:17
 msgid "interprète"
@@ -1518,6 +1514,10 @@ msgstr "Cette réservation peut être annulée jusqu’au {date}"
 msgid "share offer message"
 msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 
+#: src/features/home/components/SignUpSignInChoiceModal.tsx:36
+msgid "sign up explanation"
+msgstr "Si tu as 18 ans, tu es éligible pour obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+
 #: src/features/offer/pages/OfferDescription.tsx:15
 #: src/features/offer/pages/OfferDescription.tsx:19
 msgid "spécialité"
@@ -1527,7 +1527,7 @@ msgstr "spécialité"
 msgid "starting from date"
 msgstr "Dès le {date}"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:112
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:118
 #: src/features/auth/login/Login.tsx:119
 #: src/features/auth/signup/SetEmail.tsx:66
 msgid "tonadresse@email.com"
@@ -1549,7 +1549,7 @@ msgstr "voir plus"
 msgid "withdraw before date"
 msgstr "À retirer avant le {dateLimit}"
 
-#: src/features/bookings/pages/EndedBookingsSection.tsx:15
+#: src/features/bookings/pages/EndedBookingsSection.tsx:17
 msgid "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
 msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
 
@@ -1577,7 +1577,7 @@ msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
 msgid "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
 msgstr "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
 
-#: src/features/bookings/components/OnGoingBookingsList.tsx:20
+#: src/features/bookings/components/OnGoingBookingsList.tsx:21
 msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 msgstr "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
 
