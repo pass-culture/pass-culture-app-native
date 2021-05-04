@@ -18,7 +18,6 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 interface AsyncFallbackProps extends FallbackProps {
   resetErrorBoundary: (...args: Array<unknown>) => void
   error: AsyncError
-  backNavigation?: boolean
   header?: ReactNode
 }
 
