@@ -9,125 +9,54 @@ export const reCaptchaWebviewHTML = `
             <title>ReCAPTCHA web view</title>
             <script>
                 let numberOfRetryRender = 0;
-                let readyInterval;
-                let onCloseInterval;
-                let widget;
-                let onCloseObserver;
-                
-                function sendMessagePayload(payload) {
-                    window.ReactNativeWebView.postMessage(JSON.stringify(payload));
-                }
-                function onClose() {
-                    sendMessagePayload({ "message": "close" });
-                }
-                function onDebug(log) {
-                    sendMessagePayload({ "message": "debug", "log": log });
-                }
-                function onLoad() {
-                    sendMessagePayload({ "message": "load" });
-                }
-                function onExpire() {
-                    sendMessagePayload({ "message": "expire" });
-                }
-                function onError(error) {
-                    sendMessagePayload({ "message": "error", "error": error });
-                }
+
+                function sendMessagePayload(payload) { window.ReactNativeWebView.postMessage(JSON.stringify(payload)); }
+                function onClose() { sendMessagePayload({ "message": "close" }); }
+                function onDebug(log) { sendMessagePayload({ "message": "debug", "log": log }); }
+                function onExpire() { sendMessagePayload({ "message": "expire" }); }
+                function onError(error) { sendMessagePayload({ "message": "error", "error": error }); }
+                function onLoad() { sendMessagePayload({ "message": "load" }); }
                 function onSuccess(token) {
                     window.grecaptcha.reset()
                     sendMessagePayload({ "message": "success", "token": token });
                 }
-        
-                function registerOnCloseListener() {
-                    if (onCloseObserver) {
-                        onCloseObserver.disconnect();
-                    }
-        
-                    const iframes = document.getElementsByTagName("iframe");
-        
-                    const recaptchaFrame = Array.prototype.find
-                        .call(iframes, e => e.src.includes("google.com/recaptcha/api2/bframe"));
-                    const recaptchaElement = recaptchaFrame.parentNode.parentNode;
-        
-                    clearInterval(onCloseInterval);
-        
-                    let lastOpacity = recaptchaElement.style.opacity;
-                    onCloseObserver = new MutationObserver(mutations => {
-                        if (lastOpacity !== recaptchaElement.style.opacity
-                            && recaptchaElement.style.opacity == 0) {
-                            onClose();
-                        }
-                        lastOpacity = recaptchaElement.style.opacity;
-                    });
-                    onCloseObserver.observe(recaptchaElement, {
-                        attributes: true,
-                        attributeFilter: ["style"],
-                    });
-                }
-        
-                function renderRecaptcha() {
-                    const options = {
-                        sitekey: "${env.SITE_KEY}",
-                        size: "invisible",
-                        theme: "light",
-                        callback: onSuccess,
-                        "expired-callback": onExpire,
-                        "error-callback": function() {
-                            onError("reCAPTCHA error : error-callback of widget called")
-                        },
-                    }
-                    window.grecaptcha.render("recaptcha-container", options);
-                    window.grecaptcha.execute();
-                    if (onLoad) {
-                        onLoad();
-                    }
-                    onCloseInterval = setInterval(registerOnCloseListener, 1000);
+
+                function onRecaptchaErrorCallback() {
+                    onError("reCAPTCHA error : error-callback of widget called")
                 }
 
-                function isReCaptchaScriptReady() { 
-                    return Boolean(typeof window === "object" && window.grecaptcha && window.grecaptcha.render);
+                function isReadyToExecute() { 
+                    return Boolean(window.grecaptcha && window.grecaptcha.execute);
                 }
 
-                function renderReCaptchaWhenReady() {
+                function executeWhenReady() {
                     numberOfRetryRender = numberOfRetryRender + 1;
-                    if (isReCaptchaScriptReady()) {
+                    if (isReadyToExecute()) {
                         clearInterval(readyInterval);
-                        renderRecaptcha();
+                        window.grecaptcha.execute();
                         return;
                     } 
-                    if (numberOfRetryRender === 4) {
-                        addReCaptchaScript()
-                    }
                     if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
                         onError("reCAPTCHA error : Number of retry render exceeded");
                     }
                 }
 
-                function addReCaptchaScript() {
-                    const head = document.getElementsByTagName('head')[0];
-                    const script = document.createElement('script');
-                    script.src = "https://www.google.com/recaptcha/api.js?hl=fr" 
-                    script.async = true
-                    script.defer = true
-                    head.appendChild(script);
-                }
-
-                addReCaptchaScript() 
-                try {
-                    if (isReCaptchaScriptReady()) {
-                        renderRecaptcha();
-                    } else {
-                        readyInterval = setInterval(renderReCaptchaWhenReady, 1000);
+                window.onload = function(event) {
+                    try {
+                        if (isReadyToExecute()) {
+                            window.grecaptcha.execute();
+                        } else {
+                            readyInterval = setInterval(executeWhenReady, 1000);
+                        }
+                    } catch(error) {
+                        onError("reCAPTCHA error : " + error.message);
                     }
-                } catch(error) {
-                    onError("reCAPTCHA error : " + error.message);
-                }
+                };
             </script>
-        
+            <script src="https://www.google.com/recaptcha/api.js?hl=fr" async defer></script>
             <style>
-                html,
-                body,
-                .container {
+                html, body, .container {
                     height: 100%;
                     width: 100%;
                     margin: 0;
@@ -144,7 +73,14 @@ export const reCaptchaWebviewHTML = `
         
         <body>
             <div class="container">
-                <span id="recaptcha-container"></span>
+                <div class="g-recaptcha"
+                     data-sitekey="${env.SITE_KEY}"
+                     data-callback="onSuccess"
+                     data-expired-callback="onExpire"
+                     data-error-callback="onRecaptchaErrorCallback"
+                     data-size="invisible"
+                     data-theme="light">
+                </div>
             </div>
         </body>
     </html>`
