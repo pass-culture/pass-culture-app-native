@@ -86,7 +86,6 @@ describe('<Favorite /> component', () => {
     expect(navigate).toHaveBeenCalledWith('Offer', {
       from: 'favorites',
       id: favorite.offer.id,
-      shouldDisplayLoginModal: false,
     })
   })
 

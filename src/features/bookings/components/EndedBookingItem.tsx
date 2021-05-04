@@ -27,7 +27,6 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
       onPress={() =>
         navigate('Offer', {
           id: stock.offer.id,
-          shouldDisplayLoginModal: false,
           from: 'endedbookings',
         })
       }

@@ -32,7 +32,6 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
         params: {
           // protect against a potential evolution of the current route params
           ...params,
-          shouldDisplayLoginModal: true,
           id,
         },
       },
@@ -47,7 +46,6 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
         params: {
           // protect against a potential evolution of the current route params
           ...params,
-          shouldDisplayLoginModal: true,
           id,
         },
       },

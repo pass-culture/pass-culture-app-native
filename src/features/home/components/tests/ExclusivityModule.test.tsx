@@ -30,7 +30,6 @@ describe('ExclusivityModule component', () => {
     fireEvent.press(getByTestId('imageExclu'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id,
-      shouldDisplayLoginModal: false,
       from: 'home',
     })
   })

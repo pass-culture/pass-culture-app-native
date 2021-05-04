@@ -149,7 +149,6 @@ export function BookingDetails() {
     analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
     navigate('Offer', {
       id: offer.id,
-      shouldDisplayLoginModal: false,
       from: 'bookingdetails',
     })
   }

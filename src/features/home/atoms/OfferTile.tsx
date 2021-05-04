@@ -74,7 +74,6 @@ export const OfferTile = (props: OfferTileProps) => {
     analytics.logConsultOffer({ offerId: offer.offerId, from: 'home', moduleName })
     navigation.navigate('Offer', {
       id: offer.offerId,
-      shouldDisplayLoginModal: false,
       from: 'home',
       moduleName,
     })

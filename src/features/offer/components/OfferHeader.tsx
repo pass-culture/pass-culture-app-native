@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useRef } from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
@@ -38,8 +38,12 @@ interface Props {
 export const OfferHeader: React.FC<Props> = (props) => {
   const { headerTransition, offerId, title } = props
   const { isLoggedIn } = useAuthContext()
-  const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
-  const { goBack, setParams } = useNavigation<UseNavigationType>()
+  const {
+    visible: signInModalVisible,
+    showModal: showSignInModal,
+    hideModal: hideSignInModal,
+  } = useModal(false)
+  const { goBack } = useNavigation<UseNavigationType>()
   const shareOffer = useShareOffer(offerId)
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const favorite = useFavorite({ offerId })
@@ -79,6 +83,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const animationState = { iconBackgroundColor, iconBorderColor, transition: headerTransition }
 
   const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
+
   function pressFavorite() {
     if (!isLoggedIn) {
       showSignInModal()
@@ -89,17 +94,6 @@ export const OfferHeader: React.FC<Props> = (props) => {
       removeFavorite(favorite.id)
     }
   }
-
-  function hideSignInModal() {
-    setParams({ shouldDisplayLoginModal: false })
-    hideModal()
-  }
-
-  useFocusEffect(() => {
-    if (params.shouldDisplayLoginModal) {
-      showSignInModal()
-    }
-  })
 
   return (
     <React.Fragment>

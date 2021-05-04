@@ -59,7 +59,6 @@ describe('EndedBookingItem', () => {
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: 147874,
-      shouldDisplayLoginModal: false,
       from: 'endedbookings',
     })
   })

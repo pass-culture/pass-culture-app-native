@@ -136,7 +136,6 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
       expect(configureScreen.screen).toBe('Offer')
       expect(configureScreen.params).toEqual({
         id: 12345,
-        shouldDisplayLoginModal: false,
         from: 'deeplink',
       })
     })
