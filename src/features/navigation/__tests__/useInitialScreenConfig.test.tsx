@@ -36,15 +36,15 @@ describe('useInitialScreenConfig()', () => {
 
   // prettier-ignore : do not format the following "table" to keep it readable
   it.each`
-    hasSeenTutorials | hasSeenEligibleCard | isLogged | userProfile                                                      | expectedScreen        | expectedScreenParams                                              | expectedAnalyticsScreen
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false }} | ${'TabNavigator'}     | ${{ screen: 'Home', params: { shouldDisplayLoginModal: false } }} | ${'Home'}
-    ${null}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'CulturalSurvey'}   | ${undefined}                                                      | ${'CulturalSurvey'}
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'CulturalSurvey'}   | ${undefined}                                                      | ${'CulturalSurvey'}
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true }}   | ${'CulturalSurvey'}   | ${undefined}                                                      | ${'CulturalSurvey'}
-    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true }}   | ${'EighteenBirthday'} | ${undefined}                                                      | ${'EighteenBirthday'}
-    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'TabNavigator'}     | ${{ screen: 'Home', params: { shouldDisplayLoginModal: false } }} | ${'Home'}
-    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true }}  | ${'TabNavigator'}     | ${{ screen: 'Home', params: { shouldDisplayLoginModal: false } }} | ${'Home'}
-    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false }} | ${'FirstTutorial'}    | ${{ shouldCloseAppOnBackAction: true }}                           | ${'FirstTutorial'}
+    hasSeenTutorials | hasSeenEligibleCard | isLogged | userProfile                                                      | expectedScreen        | expectedScreenParams                    | expectedAnalyticsScreen
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false }} | ${'TabNavigator'}     | ${{ screen: 'Home' }}                   | ${'Home'}
+    ${null}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'CulturalSurvey'}   | ${undefined}                            | ${'CulturalSurvey'}
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'CulturalSurvey'}   | ${undefined}                            | ${'CulturalSurvey'}
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true }}   | ${'CulturalSurvey'}   | ${undefined}                            | ${'CulturalSurvey'}
+    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true }}   | ${'EighteenBirthday'} | ${undefined}                            | ${'EighteenBirthday'}
+    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false }}  | ${'TabNavigator'}     | ${{ screen: 'Home' }}                   | ${'Home'}
+    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true }}  | ${'TabNavigator'}     | ${{ screen: 'Home' }}                   | ${'Home'}
+    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false }} | ${'FirstTutorial'}    | ${{ shouldCloseAppOnBackAction: true }} | ${'FirstTutorial'}
   `(
     `should return $expectedScreen when 
       - has_seen_tutorials = $hasSeenTutorials 

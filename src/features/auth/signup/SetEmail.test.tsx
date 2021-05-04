@@ -31,27 +31,6 @@ describe('<SetEmail />', () => {
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
   })
 
-  it('should redirect to SignUpSignInChoiceModal when clicking on ArrowPrevious icon', async () => {
-    useRoute.mockImplementation(() => ({
-      params: {
-        backNavigation: {
-          from: 'Home',
-          params: {
-            shouldDisplayLoginModal: true,
-          },
-        },
-      },
-    }))
-    const { getByTestId } = renderPage()
-
-    const leftIcon = getByTestId('leftIcon')
-    fireEvent.press(leftIcon)
-
-    expect(navigate).toBeCalledWith('Home', {
-      shouldDisplayLoginModal: true,
-    })
-  })
-
   it('should display 5 step dots with the first one as current step', () => {
     const { getAllByTestId } = renderPage()
     const dots = getAllByTestId('dot-icon')

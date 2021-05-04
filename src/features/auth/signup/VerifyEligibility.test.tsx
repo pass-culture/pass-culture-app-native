@@ -36,9 +36,7 @@ describe('<VerifyEligibility />', () => {
     fireEvent.press(button)
 
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('Home', {
-      shouldDisplayLoginModal: false,
-    })
+    expect(navigate).toBeCalledWith('Home')
   })
 
   it('should redirect to IdCheck screen WHEN clicking on "Vérifier mon éligibilité" button', async () => {

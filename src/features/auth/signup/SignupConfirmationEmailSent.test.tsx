@@ -57,7 +57,7 @@ describe('<SignupConfirmationEmailSent />', () => {
 
     await waitForExpect(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
+      expect(navigate).toHaveBeenCalledWith('Home')
     })
   })
 

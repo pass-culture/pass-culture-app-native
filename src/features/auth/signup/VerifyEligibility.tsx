@@ -18,8 +18,8 @@ export function VerifyEligibility(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const deposit = useDepositAmount()
 
-  function goToHomeWithoutModal() {
-    navigate('Home', { shouldDisplayLoginModal: false })
+  function goToHome() {
+    navigate('Home')
   }
 
   function goToIdCheckWebView() {
@@ -43,7 +43,7 @@ export function VerifyEligibility(props: Props) {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimaryWhite title={t`Vérifier mon éligibilité`} onPress={goToIdCheckWebView} />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={goToHomeWithoutModal} />
+      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={goToHome} />
     </GenericInfoPage>
   )
 }

@@ -93,7 +93,7 @@ describe('Back Navigation', () => {
       const complexGoBack = useBackNavigation()
       complexGoBack()
 
-      expect(navigate).toHaveBeenCalledWith('Home', { shouldDisplayLoginModal: false })
+      expect(navigate).toHaveBeenCalledWith('Home')
       expect(goBack).not.toHaveBeenCalled()
     })
   })

@@ -6,18 +6,12 @@ import { getScreenFromDeeplink } from 'features/deeplinks/useDeeplinkUrlHandler'
 import { analytics } from 'libs/analytics'
 
 import { navigationRef } from './navigationRef'
-import { RouteParams } from './RootNavigator'
-import { TabParamList } from './TabBar/types'
-
-export const NavigateToHomeWithoutModalOptions: RouteParams<TabParamList, 'Home'> = {
-  shouldDisplayLoginModal: false,
-}
 
 interface HomeNavigateConfig {
   screen: 'TabNavigator'
   params: {
     screen: 'Home'
-    params: RouteParams<TabParamList, 'Home'>
+    params: undefined
   }
 }
 
@@ -25,7 +19,7 @@ export const homeNavigateConfig: HomeNavigateConfig = {
   screen: 'TabNavigator',
   params: {
     screen: 'Home',
-    params: { shouldDisplayLoginModal: false },
+    params: undefined,
   },
 }
 

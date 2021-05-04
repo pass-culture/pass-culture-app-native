@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import React, { useState, FunctionComponent, useCallback } from 'react'
 import { NativeSyntheticEvent, NativeScrollEvent, ScrollView, Text } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
@@ -7,18 +7,17 @@ import styled from 'styled-components/native'
 
 import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { useUserProfileInfo } from 'features/home/api'
-import { HomeBodyPlaceholder, SignUpSignInChoiceModal } from 'features/home/components'
+import { HomeBodyPlaceholder } from 'features/home/components'
 import { HomeBody } from 'features/home/components/HomeBody'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useInitialScreenConfig } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
-import { useModal } from 'ui/components/modals/useModal'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -31,9 +30,7 @@ const statusBarHeight = getStatusBarHeight(true)
 
 export const Home: FunctionComponent = function () {
   const navigation = useNavigation<UseNavigationType>()
-  const { params } = useRoute<UseRouteType<'Home'>>()
   const { data: userInfos } = useUserProfileInfo()
-  const { visible: signInModalVisible, showModal: showSignInModal, hideModal } = useModal(false)
   const showSkeleton = useShowSkeleton()
   const availableCredit = useAvailableCredit()
   const [recommendationY, setRecommendationY] = useState<number>(Infinity)
@@ -53,17 +50,6 @@ export const Home: FunctionComponent = function () {
         (recommendationModule as RecommendationPane).display.title,
         recommendedHits.length
       )
-    }
-  })
-
-  function hideSignInModal() {
-    navigation.setParams({ shouldDisplayLoginModal: false })
-    hideModal()
-  }
-
-  useFocusEffect(() => {
-    if (params.shouldDisplayLoginModal) {
-      showSignInModal()
     }
   })
 
@@ -130,8 +116,6 @@ export const Home: FunctionComponent = function () {
           setRecommendationY={setRecommendationY}
         />
       </HomeBodyLoadingContainer>
-
-      <SignUpSignInChoiceModal visible={signInModalVisible} dismissModal={hideSignInModal} />
       <Spacer.TabBar />
     </ScrollView>
   )

@@ -5,7 +5,7 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
+import { usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -30,7 +30,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
   const shouldBeAbleToGoBack = previousRoute?.name !== 'AcceptCgu'
 
   function onClose() {
-    navigate('Home', NavigateToHomeWithoutModalOptions)
+    navigate('Home')
   }
 
   function onContactSupport() {

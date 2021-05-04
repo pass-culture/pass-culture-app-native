@@ -35,7 +35,7 @@ export function useBackNavigation<CurrentScreenName extends ScreenNames>(
         if (fallbackNavigation) {
           fallbackNavigation()
         } else {
-          navigate('Home', { shouldDisplayLoginModal: false })
+          navigate('Home')
         }
       }
     }

@@ -6,7 +6,7 @@ import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useBackNavigation } from 'features/navigation/backNavigation'
-import { NavigateToHomeWithoutModalOptions, usePreviousRoute } from 'features/navigation/helpers'
+import { usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -32,7 +32,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   const shouldBeAbleToGoBack = previousRoute?.name !== 'ForgottenPassword'
 
   function onClose() {
-    navigate('Home', NavigateToHomeWithoutModalOptions)
+    navigate('Home')
   }
 
   function onContactSupport() {

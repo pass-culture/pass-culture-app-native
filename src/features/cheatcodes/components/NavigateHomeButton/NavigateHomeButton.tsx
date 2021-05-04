@@ -6,6 +6,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 
 export const NavigateHomeButton: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToHome = useCallback(() => navigate('Home', { shouldDisplayLoginModal: false }), [])
+  const navigateToHome = useCallback(() => navigate('Home'), [])
   return <Button title="Naviguer vers la page d'accueil" onPress={navigateToHome} />
 }

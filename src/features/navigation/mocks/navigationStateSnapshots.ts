@@ -44,9 +44,6 @@ export const state1 = {
           {
             name: 'Home',
             key: 'Home-PzAFhQy59EwZUe86ApZk9',
-            params: {
-              shouldDisplayLoginModal: false,
-            },
           },
           {
             name: 'Search',
@@ -116,9 +113,6 @@ export const state2 = {
           {
             name: 'Home',
             key: 'Home-PzAFhQy59EwZUe86ApZk9',
-            params: {
-              shouldDisplayLoginModal: false,
-            },
           },
           {
             name: 'Search',
@@ -183,11 +177,7 @@ export const state3 = {
           { type: 'route', key: 'Home-8OaZyZHUrT6DUli-oYAvA' },
         ],
         routes: [
-          {
-            name: 'Home',
-            key: 'Home-8OaZyZHUrT6DUli-oYAvA',
-            params: { shouldDisplayLoginModal: false },
-          },
+          { name: 'Home', key: 'Home-8OaZyZHUrT6DUli-oYAvA' },
           { name: 'Search', key: 'Search-V3zAr5Zyr2U5kf5_E4GFY' },
           { name: 'Favorites', key: 'Favorites-jKouxtH01u71N12gk-Btk' },
           { name: 'Profile', key: 'Profile-xJDZVLEx1wSH_QgyQCeMq' },

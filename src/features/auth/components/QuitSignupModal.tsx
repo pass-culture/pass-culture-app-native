@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { NavigateToHomeWithoutModalOptions } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -40,7 +39,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
 
   function quitSignup() {
     analytics.logCancelSignup(signupStep)
-    navigate('Home', NavigateToHomeWithoutModalOptions)
+    navigate('Home')
   }
 
   return (

@@ -95,7 +95,7 @@ describe('<CulturalSurvey />', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('Home', { shouldDisplayLoginModal: false })
+      expect(navigate).toBeCalledWith('Home')
     })
     expect(postnativev1meculturalSurveySpy).toBeCalledWith({
       culturalSurveyId: null,
@@ -120,7 +120,7 @@ describe('<CulturalSurvey />', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('Home', { shouldDisplayLoginModal: false })
+      expect(navigate).toBeCalledWith('Home')
     })
     expect(postnativev1meculturalSurveySpy).toHaveBeenNthCalledWith(1, {
       culturalSurveyId: 'fakeUUID',
@@ -151,7 +151,7 @@ describe('<CulturalSurvey />', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('Home', { shouldDisplayLoginModal: false })
+      expect(navigate).toBeCalledWith('Home')
     })
   })
 })
