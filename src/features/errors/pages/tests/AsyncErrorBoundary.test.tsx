@@ -4,7 +4,7 @@ import { canGoBack, goBack } from '__mocks__/@react-navigation/native'
 import { AsyncError } from 'libs/errorMonitoring'
 import { render, fireEvent } from 'tests/utils'
 
-import { AsyncErrorBoundary, AsyncErrorBoundaryWithoutNavigation } from '../AsyncErrorBoundary'
+import { AsyncErrorBoundary } from '../AsyncErrorBoundary'
 
 jest.mock('libs/errorMonitoring/services')
 
@@ -20,45 +20,11 @@ describe('AsyncErrorBoundary component', () => {
   it('should have back arrow if possible', () => {
     canGoBack.mockImplementation(() => true)
     const { getByTestId, queryByTestId } = render(
-      <AsyncErrorBoundary
-        backNavigation
-        error={new Error('error')}
-        resetErrorBoundary={jest.fn()}
-      />
+      <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />
     )
     expect(queryByTestId('backArrow')).toBeTruthy()
     fireEvent.press(getByTestId('backArrow'))
     expect(goBack).toHaveBeenCalled()
-  })
-
-  it('should not have back arrow if impossible', () => {
-    canGoBack.mockImplementation(() => false)
-    const { queryByTestId } = render(
-      <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />
-    )
-    expect(queryByTestId('backArrow')).toBeFalsy()
-  })
-
-  it('should not have back arrow if disabled', () => {
-    const { queryByTestId } = render(
-      <AsyncErrorBoundary
-        backNavigation={false}
-        error={new Error('error')}
-        resetErrorBoundary={jest.fn()}
-      />
-    )
-    expect(queryByTestId('backArrow')).toBeFalsy()
-  })
-
-  it('should not have back navigation in any case', () => {
-    const { queryByTestId } = render(
-      <AsyncErrorBoundaryWithoutNavigation
-        backNavigation={true}
-        error={new Error('error')}
-        resetErrorBoundary={jest.fn()}
-      />
-    )
-    expect(queryByTestId('backArrow')).toBeFalsy()
   })
 
   it('should call retry with AsyncError', async () => {
