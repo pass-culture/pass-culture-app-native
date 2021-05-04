@@ -39,16 +39,6 @@ describe('useHomeAlgoliaModules', () => {
     await cleanup()
   })
 
-  it('should not call fetchAlgolia if the position is still fetching', async () => {
-    renderHook(
-      () => useHomeAlgoliaModules(offerModules),
-      // eslint-disable-next-line react/display-name
-      { wrapper: ({ children }) => reactQueryProviderHOC(children) }
-    )
-
-    expect(mockFetchAlgolia).not.toHaveBeenCalled()
-  })
-
   it('calls fetchAlgolia with params and returns data', async () => {
     mockPositionReceived = true
     const { result, waitForNextUpdate } = renderHook(

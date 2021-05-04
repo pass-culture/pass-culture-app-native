@@ -1,5 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
@@ -43,10 +43,10 @@ export const formatAlgoliaHit = <Hit extends AlgoliaHit | SearchAlgoliaHit>(hit:
 export const useHomeAlgoliaModules = (
   offerModules: Array<Offers | OffersWithCover>
 ): AlgoliaModuleResponse => {
-  const { position, positionReceived } = useGeolocation()
+  const { position } = useGeolocation()
   const [algoliaModules, setAlgoliaModules] = useState<AlgoliaModuleResponse>({})
 
-  useQueries(
+  const queries = useQueries(
     offerModules.map(({ algolia, moduleId }) => {
       const parsedParameters = parseAlgoliaParameters({
         geolocation: position,
@@ -73,10 +73,16 @@ export const useHomeAlgoliaModules = (
             }))
           }
         },
-        enabled: positionReceived,
       }
     })
   )
+
+  useEffect(() => {
+    // When we enable or disable the geolocation, we want to refetch the algolia modules
+    queries.forEach(({ refetch }) => {
+      refetch()
+    })
+  }, [!!position])
 
   return algoliaModules
 }

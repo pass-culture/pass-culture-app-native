@@ -17,7 +17,6 @@ type RequestGeolocPermissionParams = {
 
 export interface IGeolocationContext {
   position: GeoCoordinates | null
-  positionReceived: boolean
   setPosition: (position: GeoCoordinates | null) => void
   permissionState: GeolocPermissionState
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
@@ -27,7 +26,6 @@ export interface IGeolocationContext {
 
 export const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
-  positionReceived: false,
   setPosition: () => undefined,
   permissionState: GeolocPermissionState.DENIED,
   requestGeolocPermission: async () => {
@@ -45,7 +43,6 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
     GeolocPermissionState.DENIED
   )
   const [shouldComputePosition, setShouldComputePosition] = useSafeState(0)
-  const [positionReceived, setPositionReceived] = useSafeState(false)
 
   useEffect(() => {
     contextualCheckPermission()
@@ -56,13 +53,9 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   useEffect(() => {
     if (shouldComputePosition === 0) return
     if (permissionState === GeolocPermissionState.GRANTED) {
-      getPosition((coordinates) => {
-        setPosition(coordinates)
-        setPositionReceived(true)
-      })
+      getPosition(setPosition)
     } else {
       setPosition(null)
-      setPositionReceived(true)
     }
   }, [shouldComputePosition])
 
@@ -122,7 +115,6 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
     <GeolocationContext.Provider
       value={{
         position,
-        positionReceived,
         setPosition,
         permissionState,
         requestGeolocPermission: contextualRequestGeolocPermission,
