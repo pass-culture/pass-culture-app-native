@@ -179,7 +179,6 @@ describe('BookingDetails', () => {
 
     expect(navigate).toBeCalledWith('Offer', {
       id: offerId,
-      shouldDisplayLoginModal: false,
       from: 'bookingdetails',
     })
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, from: 'bookings' })

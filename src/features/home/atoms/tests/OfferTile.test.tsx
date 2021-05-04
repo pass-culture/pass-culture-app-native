@@ -39,7 +39,6 @@ describe('OfferTile component', () => {
     fireEvent.press(getByTestId('offerTileImage'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
-      shouldDisplayLoginModal: false,
       from: 'home',
       moduleName: 'Module Name',
     })

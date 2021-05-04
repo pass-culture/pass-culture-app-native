@@ -16,7 +16,7 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
   const handlePressExclu = () => {
     const id = dehumanizeId(offerId)
     if (typeof id === 'number') {
-      navigate('Offer', { id, shouldDisplayLoginModal: false, from: 'home' })
+      navigate('Offer', { id, from: 'home' })
       analytics.logClickExclusivityBlock(id)
     }
   }

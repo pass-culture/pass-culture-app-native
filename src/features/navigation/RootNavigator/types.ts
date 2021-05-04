@@ -47,7 +47,6 @@ export type RootStackParamList = {
   NotificationSettings: undefined
   Offer: {
     id: number
-    shouldDisplayLoginModal: boolean
     from: Referrals
     moduleName?: string
   }

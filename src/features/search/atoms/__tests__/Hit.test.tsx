@@ -37,7 +37,6 @@ describe('Hit component', () => {
     })
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
-      shouldDisplayLoginModal: false,
       from: 'search',
     })
   })

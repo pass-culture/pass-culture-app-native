@@ -83,7 +83,6 @@ export const Favorite: React.FC<Props> = (props) => {
     )
     navigation.navigate('Offer', {
       id: offer.id,
-      shouldDisplayLoginModal: false,
       from: 'favorites',
     })
   }

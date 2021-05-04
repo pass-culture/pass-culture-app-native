@@ -37,7 +37,6 @@ describe('SignUpSignInChoiceOfferModal', () => {
         from: 'Offer',
         params: {
           id: 1337,
-          shouldDisplayLoginModal: true,
         },
       },
     })
@@ -56,7 +55,6 @@ describe('SignUpSignInChoiceOfferModal', () => {
         from: 'Offer',
         params: {
           id: 1337,
-          shouldDisplayLoginModal: true,
         },
       },
     })
