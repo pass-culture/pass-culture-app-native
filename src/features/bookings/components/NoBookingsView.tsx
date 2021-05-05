@@ -29,7 +29,7 @@ export function NoBookingsView() {
         />
       </ButtonContainer>
       <Spacer.Flex />
-      <Spacer.Column numberOfSpaces={12} />
+      <Spacer.Column numberOfSpaces={8} />
       <EndedBookingsSection />
     </Container>
   )
