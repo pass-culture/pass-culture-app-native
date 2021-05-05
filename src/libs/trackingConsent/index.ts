@@ -1,0 +1,1 @@
+export { useTrackingConsent } from './useTrackingConsent'
