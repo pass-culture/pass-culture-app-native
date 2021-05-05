@@ -68,8 +68,8 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
 })
 
 const App: FunctionComponent = function () {
-  useStartBatchNotification()
   useCampaignTracker()
+  useStartBatchNotification()
 
   useEffect(() => {
     activate('fr')
