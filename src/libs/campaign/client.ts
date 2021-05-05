@@ -3,7 +3,10 @@ import appsFlyer from 'react-native-appsflyer'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 
+import { isCompatible } from './isCompatible'
+
 export const appsFlyerClient = {
+  isCompatible,
   init: ({ enabled }: { enabled: boolean }) => {
     if (!enabled) return
 
