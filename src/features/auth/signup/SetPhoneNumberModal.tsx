@@ -1,13 +1,14 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface SetPhoneNumberModalProps {
   visible: boolean
@@ -20,6 +21,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     showModal: showQuitSignupModal,
     hideModal: hideQuitSignupModal,
   } = useModal(props.visible)
+  const [phoneNumber, setPhoneNumber] = useState('')
 
   return (
     <AppModal
@@ -31,13 +33,30 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
       isScrollable>
       <ModalContent>
         <Paragraphe>
-          <Typo.Body>{t`Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro.`}</Typo.Body>
+          <Typo.Body color={ColorsEnum.GREY_DARK}>
+            {t`Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro.`}
+          </Typo.Body>
         </Paragraphe>
-        <Spacer.Column numberOfSpaces={6} />
-
-        {/* Input */}
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary title={t`Continuer`} />
+        <StyledInput>
+          <Typo.Body color={ColorsEnum.BLACK}>{t`Numéro de téléphone`}</Typo.Body>
+          <Spacer.Column numberOfSpaces={2} />
+          <TextInput
+            autoCapitalize="none"
+            isError={false}
+            keyboardType="number-pad"
+            onChangeText={setPhoneNumber}
+            placeholder={t`0612345678`}
+            textContentType="telephoneNumber"
+            value={phoneNumber}
+          />
+        </StyledInput>
+        <Spacer.Column numberOfSpaces={8} />
+        <ButtonPrimary
+          title={t`Continuer`}
+          disabled={!isValidPhoneNumber(phoneNumber)}
+          testIdSuffix="continue"
+        />
       </ModalContent>
       <QuitSignupModal
         visible={quitSignupModalVisible}
@@ -58,3 +77,19 @@ const Paragraphe = styled.Text({
   flexShrink: 1,
   textAlign: 'center',
 })
+
+const StyledInput = styled.View({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  width: '100%',
+  maxWidth: getSpacing(125),
+})
+
+/**
+ * - starts with 0
+ * - contains 10 digits
+ */
+function isValidPhoneNumber(word: string) {
+  return word.match(/^0[0-9]{9}$/g)
+}
