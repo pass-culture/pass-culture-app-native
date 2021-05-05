@@ -82,6 +82,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Pourquoi on te demande la permission de te tracker.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Cette application peut vérifier ton identité avec une photo.</string>
 	<key>NSLocationAlwaysUsageDescription</key>

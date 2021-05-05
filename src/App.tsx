@@ -6,6 +6,7 @@ import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 import { AppState, AppStateStatus, LogBox } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { getTrackingStatus, requestTrackingPermission } from 'react-native-tracking-transparency'
 import {
   focusManager as reactQueryFocusManager,
   QueryCache,
@@ -25,6 +26,7 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
+import { firebaseAnalytics } from 'libs/analytics'
 import { appsFlyerClient } from 'libs/campaign'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
 import { errorMonitoring } from 'libs/errorMonitoring'
@@ -75,7 +77,17 @@ const App: FunctionComponent = function () {
   }, [])
 
   useEffect(() => {
-    appsFlyerClient.init({ enabled: !__DEV__ })
+    getTrackingStatus().then((trackingStatus) => {
+      if (trackingStatus === 'not-determined') {
+        requestTrackingPermission().then((trackingStatus) => {
+          if (trackingStatus === 'authorized') {
+            appsFlyerClient.init({ enabled: !__DEV__ })
+          } else {
+            firebaseAnalytics.setAnalyticsCollectionEnabled(false)
+          }
+        })
+      }
+    })
   }, [])
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import React, { useState } from 'react'
+import { Platform } from 'react-native'
 
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
@@ -50,7 +51,9 @@ export const RootNavigator: React.FC = () => {
       )}
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
-      {isSplashScreenHidden && <PrivacyPolicy navigationRef={navigationRef} />}
+      {isSplashScreenHidden && Platform.OS !== 'ios' && (
+        <PrivacyPolicy navigationRef={navigationRef} />
+      )}
     </React.Fragment>
   )
 }
