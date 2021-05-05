@@ -10326,6 +10326,11 @@ react-native-swipe-gestures@^1.0.5:
   resolved "https://registry.yarnpkg.com/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz#a172cb0f3e7478ccd681fd36b8bfbcdd098bde7c"
   integrity sha512-Ns7Bn9H/Tyw278+5SQx9oAblDZ7JixyzeOczcBK8dipQk2pD7Djkcfnf1nB/8RErAmMLL9iXgW0QHqiII8AhKw==
 
+react-native-tracking-transparency@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-tracking-transparency/-/react-native-tracking-transparency-0.1.0.tgz#d3204f165f3bc7851b66eeb50d814bc65eb6f2cf"
+  integrity sha512-daq2bPV4Yme4dpSHEL1iJLVqbV14bLjyIdaMfMQ1XAfGDtGToyq4Fb18hKeObLKP8w2TYHaUUErPoIwNuqtORA==
+
 react-native-web-swiper@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.1.tgz#48d53e0ecf86d3fcd49f63ef7894db4beaa3b6f2"
