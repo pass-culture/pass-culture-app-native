@@ -22,5 +22,8 @@ export const useTrackingConsent = () => {
     })
   }, [])
 
-  return trackingStatus === 'unavailable' || trackingStatus === 'authorized'
+  return {
+    consentTracking: trackingStatus === 'unavailable' || trackingStatus === 'authorized',
+    consentAsked: trackingStatus !== 'not-determined',
+  }
 }
