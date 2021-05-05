@@ -83,6 +83,7 @@ jest.mock('libs/environment', () => ({
     ACCESSIBILITY_LINK: 'https://passculture.accessibility',
     DATA_PRIVACY_CHART_LINK: 'https://passculture.data-privacy-chart',
     FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: true,
+    SITE_KEY: 'SITE_KEY',
   },
 }))
 

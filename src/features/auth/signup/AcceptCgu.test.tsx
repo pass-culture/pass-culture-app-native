@@ -165,22 +165,28 @@ describe('AcceptCgu Page', () => {
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
+    const requestBody = {
+      birthdate: '12-2-1995',
+      email: 'john.doe@example.com',
+      marketingEmailSubscription: true,
+      password: 'password',
+      postalCode: '35000',
+      token: 'fakeToken',
+    }
     await waitFor(() => {
-      expect(postnativev1accountSpy).toBeCalledWith(
-        {
-          birthdate: '12-2-1995',
-          email: 'john.doe@example.com',
-          marketingEmailSubscription: true,
-          password: 'password',
-          token: 'fakeToken',
-          postalCode: '35000',
-        },
-        { credentials: 'omit' }
-      )
+      expect(postnativev1accountSpy).toBeCalledWith(requestBody, { credentials: 'omit' })
       expect(
         renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
       ).toBeTruthy()
-      expect(MonitoringError).toHaveBeenNthCalledWith(1, {}, 'AcceptCguSignUpError')
+      expect(MonitoringError).toHaveBeenNthCalledWith(
+        1,
+        `Request info : ${JSON.stringify({
+          ...requestBody,
+          password: 'excludedFromSentryLog',
+          captchaSiteKey: env.SITE_KEY,
+        })}`,
+        'AcceptCguSignUpError'
+      )
       expect(navigate).not.toBeCalled()
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })
