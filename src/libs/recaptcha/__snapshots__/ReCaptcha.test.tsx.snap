@@ -117,7 +117,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
         <body>
             <div class=\\"container\\">
                 <div class=\\"g-recaptcha\\"
-                     data-sitekey=\\"undefined\\"
+                     data-sitekey=\\"SITE_KEY\\"
                      data-callback=\\"onSuccess\\"
                      data-expired-callback=\\"onExpire\\"
                      data-error-callback=\\"onRecaptchaErrorCallback\\"

@@ -55,24 +55,30 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
 
   async function subscribe(token: string) {
     setErrorMessage(null)
+    const { birthday, email, isNewsletterChecked, password, postalCode } = route.params
+    const signUpData = {
+      birthdate: birthday,
+      email,
+      marketingEmailSubscription: isNewsletterChecked,
+      password,
+      postalCode,
+      token,
+    }
     try {
       setIsFetching(true)
-      const { birthday, email, isNewsletterChecked, password, postalCode } = route.params
-      const signupResponse = await signUp({
-        birthdate: birthday,
-        email,
-        marketingEmailSubscription: isNewsletterChecked,
-        password,
-        token,
-        postalCode,
-      })
+      const signupResponse = await signUp(signUpData)
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       }
       navigate('SignupConfirmationEmailSent', { email })
-    } catch (error) {
+    } catch {
       setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
-      new MonitoringError(error, 'AcceptCguSignUpError')
+      const errorMessage = `Request info : ${JSON.stringify({
+        ...signUpData,
+        password: 'excludedFromSentryLog',
+        captchaSiteKey: env.SITE_KEY,
+      })}`
+      new MonitoringError(errorMessage, 'AcceptCguSignUpError')
     } finally {
       setIsFetching(false)
     }
