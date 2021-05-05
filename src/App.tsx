@@ -75,7 +75,9 @@ const App: FunctionComponent = function () {
   }, [])
 
   useEffect(() => {
-    appsFlyerClient.init({ enabled: !__DEV__ })
+    if (appsFlyerClient.isCompatible()) {
+      appsFlyerClient.init({ enabled: !__DEV__ })
+    }
   }, [])
 
   useEffect(() => {
