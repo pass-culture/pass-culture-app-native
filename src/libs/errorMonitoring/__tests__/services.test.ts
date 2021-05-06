@@ -10,7 +10,7 @@ afterEach(jest.clearAllMocks)
 describe('errorMonitoring', () => {
   describe('init()', () => {
     it("should call sentry's init() when enabled", () => {
-      errorMonitoring.init()
+      errorMonitoring.init({ enabled: true })
       expect(SentryModule.init).toBeCalledWith({
         dsn: env.SENTRY_DSN,
         environment: env.ENV,
