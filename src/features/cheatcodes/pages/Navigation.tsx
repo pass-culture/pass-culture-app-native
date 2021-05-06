@@ -1,3 +1,4 @@
+import { initialRouteName as idCheckInitialRouteName } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, createElement } from 'react'
 import { Alert, ScrollView } from 'react-native'
@@ -256,6 +257,12 @@ export function Navigation(): JSX.Element {
           <NavigationButton
             title={`Beneficiary request sent`}
             onPress={() => navigation.navigate('BeneficiaryRequestSent')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
+            title={`Id Check V2`}
+            onPress={() => navigation.navigate(idCheckInitialRouteName)}
           />
         </Row>
       </StyledContainer>
