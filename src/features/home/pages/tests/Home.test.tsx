@@ -96,7 +96,7 @@ describe('Home component', () => {
 
   it('should show the available credit to the user - not logged in', async () => {
     const { queryByText } = await homeRenderer({ isLoggedIn: false })
-    expect(queryByText('Toute la culture dans ta main')).toBeTruthy()
+    expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
   })
 
   it('should show the available credit to the user - not beneficiary', async () => {
@@ -104,7 +104,7 @@ describe('Home component', () => {
       isLoggedIn: true,
       partialUser: { isBeneficiary: false },
     })
-    expect(queryByText('Toute la culture dans ta main')).toBeTruthy()
+    expect(queryByText('Toute la culture à portée de main')).toBeTruthy()
   })
 
   it('should not have code push button', async () => {
