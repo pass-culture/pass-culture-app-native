@@ -102,7 +102,7 @@ exports[`Home component should render correctly without login modal 1`] = `
           ]
         }
       >
-        Toute la culture dans ta main
+        Toute la culture à portée de main
       </Text>
     </View>
     <View
