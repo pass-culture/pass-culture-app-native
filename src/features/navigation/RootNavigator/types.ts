@@ -1,3 +1,4 @@
+import { IdCheckRoute, IdCheckRootStackParamList } from '@pass-culture/id-check'
 import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { StackNavigationOptions } from '@react-navigation/stack/lib/typescript/src/types'
@@ -37,7 +38,7 @@ export type RootStackParamList = {
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
-  IdCheck: { email: string; licenceToken: string }
+  // IdCheck: { email: string; licenceToken: string }
   Login: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
   Maintenance: undefined
   Navigation: undefined
@@ -72,7 +73,7 @@ export type RootStackParamList = {
   FirstTutorial: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   ForceUpdate: undefined
-}
+} & IdCheckRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList
 
@@ -122,9 +123,6 @@ export type RouteParams<
 /**
  * Type helper to declare a route
  */
-export interface Route {
-  name: keyof RootStackParamList
-  component: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
+export interface Route extends IdCheckRoute<StackNavigationOptions, RootStackParamList> {
   hoc?(component: ComponentType<any>): ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
-  options?: StackNavigationOptions
 }

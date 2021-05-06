@@ -1,6 +1,7 @@
 import { NavigationContainer, NavigationContainerRef, Theme } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 
+import { linking } from 'features/navigation/RootNavigator/routes'
 import { ColorsEnum } from 'ui/theme'
 
 import { isNavigationReadyRef, navigationRef } from './navigationRef'
@@ -28,6 +29,7 @@ export const AppNavigationContainer: React.FC<{ children: Element }> = ({ childr
 
   return (
     <NavigationContainer
+      linking={linking}
       onStateChange={onNavigationStateChange}
       ref={setRef}
       onReady={() => {

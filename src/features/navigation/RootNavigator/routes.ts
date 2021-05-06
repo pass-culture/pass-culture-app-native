@@ -1,3 +1,6 @@
+import { routes as idCheckRoutes } from '@pass-culture/id-check'
+import { LinkingOptions } from '@react-navigation/native'
+
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
@@ -8,7 +11,7 @@ import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
 import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
-import { IdCheck } from 'features/auth/signup/IdCheck'
+// import { IdCheck } from 'features/auth/signup/IdCheck'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
@@ -74,7 +77,7 @@ const routes: Array<Route> = [
     component: ForgottenPassword,
     hoc: withAsyncErrorBoundary,
   },
-  { name: 'IdCheck', component: IdCheck },
+  // { name: 'IdCheck', component: IdCheck },
   { name: 'LegalNotices', component: LegalNotices },
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },
@@ -106,6 +109,17 @@ const routes: Array<Route> = [
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },
   { name: 'ForceUpdate', component: ForceUpdate },
+  ...idCheckRoutes,
 ]
+
+export const linking: LinkingOptions = {
+  prefixes: [],
+  config: {
+    screens: routes.reduce(
+      (route, currentRoute) => ({ ...route, [currentRoute.name]: currentRoute.path }),
+      {}
+    ),
+  },
+}
 
 export default routes
