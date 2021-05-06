@@ -1,5 +1,6 @@
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
+import { IdCheckContextProvider, theme } from '@pass-culture/id-check'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -13,6 +14,7 @@ import {
   QueryClientProvider,
 } from 'react-query'
 import { addPlugin } from 'react-query-native-devtools'
+import { ThemeProvider } from 'styled-components/native'
 
 import './why-did-you-render'
 import 'intl'
@@ -30,6 +32,7 @@ import CodePushProvider from 'libs/codepush/CodePushProvider'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
+import { idCheckAnalytics } from 'libs/idCheckAnalytics'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
@@ -84,30 +87,48 @@ const App: FunctionComponent = function () {
     errorMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
+  function onIdCheckSuccess() {
+    // eslint-disable-next-line no-console
+    console.log('success')
+  }
+
+  function onIdCheckAbandon() {
+    // eslint-disable-next-line no-console
+    console.log('abandon')
+  }
+
   return (
     <ABTestingProvider>
       <SafeAreaProvider>
-        <QueryClientProvider client={queryClient}>
-          <AuthWrapper>
-            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <GeolocationWrapper>
-                <FavoritesWrapper>
-                  <SearchWrapper>
-                    <I18nProvider i18n={i18n}>
-                      <SnackBarProvider>
-                        <SplashScreenProvider>
-                          <AppNavigationContainer>
-                            <RootNavigator />
-                          </AppNavigationContainer>
-                        </SplashScreenProvider>
-                      </SnackBarProvider>
-                    </I18nProvider>
-                  </SearchWrapper>
-                </FavoritesWrapper>
-              </GeolocationWrapper>
-            </ErrorBoundary>
-          </AuthWrapper>
-        </QueryClientProvider>
+        <ThemeProvider theme={theme}>
+          <QueryClientProvider client={queryClient}>
+            <AuthWrapper>
+              <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                <GeolocationWrapper>
+                  <FavoritesWrapper>
+                    <SearchWrapper>
+                      <I18nProvider i18n={i18n}>
+                        <SnackBarProvider>
+                          <IdCheckContextProvider
+                            errorMonitoring={errorMonitoring}
+                            analytics={idCheckAnalytics}
+                            onSuccess={onIdCheckSuccess}
+                            onAbandon={onIdCheckAbandon}>
+                            <SplashScreenProvider>
+                              <AppNavigationContainer>
+                                <RootNavigator />
+                              </AppNavigationContainer>
+                            </SplashScreenProvider>
+                          </IdCheckContextProvider>
+                        </SnackBarProvider>
+                      </I18nProvider>
+                    </SearchWrapper>
+                  </FavoritesWrapper>
+                </GeolocationWrapper>
+              </ErrorBoundary>
+            </AuthWrapper>
+          </QueryClientProvider>
+        </ThemeProvider>
       </SafeAreaProvider>
     </ABTestingProvider>
   )
