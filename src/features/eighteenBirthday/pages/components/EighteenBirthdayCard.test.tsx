@@ -54,7 +54,7 @@ describe('<EighteenBirthdayCard />', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdCheck', { email, licenceToken: token })
+      expect(navigate).toBeCalledWith('IdCheckWebView', { email, licenceToken: token })
     })
   })
 

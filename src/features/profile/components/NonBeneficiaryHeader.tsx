@@ -72,7 +72,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
           <ModuleBanner
             onPress={() => {
               analytics.logIdCheck('Profile')
-              navigate('IdCheck', { email: props.email, licenceToken })
+              navigate('IdCheckWebView', { email: props.email, licenceToken })
             }}
             leftIcon={<ThumbUp size={68} />}
             title={t({

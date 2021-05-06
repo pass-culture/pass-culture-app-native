@@ -11,7 +11,6 @@ import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
 import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
-// import { IdCheck } from 'features/auth/signup/IdCheck'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
@@ -33,6 +32,7 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
+import { IdCheckWebView } from 'features/idcheck/IdCheck'
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
@@ -77,7 +77,7 @@ const routes: Array<Route> = [
     component: ForgottenPassword,
     hoc: withAsyncErrorBoundary,
   },
-  // { name: 'IdCheck', component: IdCheck },
+  { name: 'IdCheckWebView', component: IdCheckWebView },
   { name: 'LegalNotices', component: LegalNotices },
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },

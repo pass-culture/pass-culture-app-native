@@ -295,6 +295,30 @@ exports[`<IdCheck /> should render correctly 1`] = `
                     >
                       <RNCWebView
                         cacheEnabled={true}
+                        injectedJavaScript="(function() {
+function addCss(rule) {
+  let css = document.createElement('style');
+  css.type = 'text/css';
+  if (css.styleSheet) {
+    css.styleSheet.cssText = rule; // Support for IE
+  }
+  else {
+    css.appendChild(document.createTextNode(rule)); // Support for the rest
+  }
+  document.getElementsByTagName('head')[0].appendChild(css);
+}
+
+// CSS rules
+let rules = [
+  '.form.form { justify-content: initial !important; }',
+  '.form.form > button.primary { margin-top: 2em !important; }',
+];
+
+// Load the rules and execute after the DOM loads
+window.onload = function() { 
+  addCss(rules.join('\\\\n'));
+};
+})();"
                         injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
                         injectedJavaScriptForMainFrameOnly={true}
                         javaScriptEnabled={true}

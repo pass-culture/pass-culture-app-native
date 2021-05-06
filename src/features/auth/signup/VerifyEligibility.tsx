@@ -24,7 +24,7 @@ export function VerifyEligibility(props: Props) {
 
   function goToIdCheckWebView() {
     const { email, licenceToken } = props.route.params
-    navigate('IdCheck', { email, licenceToken })
+    navigate('IdCheckWebView', { email, licenceToken })
   }
 
   return (

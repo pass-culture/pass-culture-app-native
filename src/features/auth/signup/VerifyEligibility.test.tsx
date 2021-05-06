@@ -46,7 +46,7 @@ describe('<VerifyEligibility />', () => {
     fireEvent.press(button)
 
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('IdCheck', {
+    expect(navigate).toBeCalledWith('IdCheckWebView', {
       email: 'test@email.com',
       licenceToken: 'xXLicenceTokenXx',
     })

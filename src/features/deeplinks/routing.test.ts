@@ -141,9 +141,9 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
     })
   })
 
-  describe('link id-check', () => {
+  describe('link id-check-web-view', () => {
     it('should return Home page when no params are passed', () => {
-      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check']()
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check-web-view']()
       expect(configureScreen).toEqual(homeNavigateConfig)
     })
 
@@ -153,15 +153,15 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
       ${{ emai: 'data', licenceToken: '' }}
       ${{ email: 'data', licenceToke: 'data' }}
     `('should return Home page when params are invalid', ({ params }) => {
-      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check'](params)
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check-web-view'](params)
       expect(configureScreen).toEqual(homeNavigateConfig)
     })
 
-    it('should return IdCheck page when email and licenseToken are set', () => {
+    it('should return IdCheckWebView page when email and licenseToken are set', () => {
       const params = { email: 'user@site', licenceToken: '42' }
-      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check'](params)
+      const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check-web-view'](params)
 
-      expect(configureScreen.screen).toBe('IdCheck')
+      expect(configureScreen.screen).toBe('IdCheckWebView')
       expect(configureScreen.params).toEqual(params)
     })
   })

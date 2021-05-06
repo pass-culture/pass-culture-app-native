@@ -61,7 +61,7 @@ describe('NonBeneficiaryHeader', () => {
     banner.props.onClick()
 
     expect(analytics.logIdCheck).toBeCalledWith('Profile')
-    expect(navigate).toBeCalledWith('IdCheck', {
+    expect(navigate).toBeCalledWith('IdCheckWebView', {
       email: 'john@doe.com',
       licenceToken: 'thisIsATokenForIdCheck',
     })

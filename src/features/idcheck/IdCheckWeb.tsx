@@ -1,20 +1,21 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
 import React, { useEffect, useRef, useState } from 'react'
 import { WebView, WebViewNavigation } from 'react-native-webview'
 import styled from 'styled-components/native'
 
+import { useKeyboardAdjustFixIdCheck } from 'features/auth/hooks/useKeyboardAdjustFixIdCheck.android'
 import { useCurrentRoute } from 'features/navigation/helpers'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
-import { useKeyboardAdjustFixIdCheck } from '../hooks/useKeyboardAdjustFixIdCheck'
+type Props = {
+  email: string
+  licenceToken: string
+}
 
-type Props = StackScreenProps<RootStackParamList, 'IdCheck'>
-
-export const IdCheck: React.FC<Props> = function (props) {
+export const IdCheckWeb: React.FC<Props> = function (props) {
   const currentRoute = useCurrentRoute()
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
@@ -23,7 +24,7 @@ export const IdCheck: React.FC<Props> = function (props) {
   const [idCheckUri, setIdCheckUri] = useState<string | undefined>(undefined)
 
   useEffect(() => {
-    const { email, licenceToken } = props.route.params
+    const { email, licenceToken } = props
     const encodedEmail = encodeURIComponent(email)
     storage.readObject<boolean>('has_accepted_cookie').then((hasAcceptedCookies) => {
       let userConsentDataCollection = false
@@ -47,7 +48,7 @@ export const IdCheck: React.FC<Props> = function (props) {
     }
   }
 
-  if (!idCheckUri || currentRoute?.name !== 'IdCheck') {
+  if (!idCheckUri || currentRoute?.name !== 'IdCheckWebView') {
     return null
   }
   return (

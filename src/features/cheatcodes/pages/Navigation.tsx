@@ -62,6 +62,17 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={'Id Check'}
+            onPress={() =>
+              navigation.navigate('IdCheckWebView', {
+                email: 'john.doe@example.com',
+                licenceToken: '',
+              })
+            }
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={'Set Birthday'}
             onPress={() =>
               navigation.navigate('SetBirthday', {

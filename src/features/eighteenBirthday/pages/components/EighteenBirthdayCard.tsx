@@ -20,7 +20,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
 
   function onButtonPress() {
     if (profile && idCheckTokenResponse?.token) {
-      navigate('IdCheck', { email: profile.email, licenceToken: idCheckTokenResponse.token })
+      navigate('IdCheckWebView', { email: profile.email, licenceToken: idCheckTokenResponse.token })
     } else if (profile && !idCheckTokenResponse?.token) {
       // TODO: when backend treat non eligible as an error instead of null, change this error handling
       throw new MonitoringError(
