@@ -1180,7 +1180,15 @@ export interface SettingsResponse {
      * @memberof SettingsResponse
      */
     isRecaptchaEnabled: boolean;
-}/**
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
+    allowIdCheckRegistration: boolean;
+}
+
+/**
  * 
  * @export
  * @interface SigninRequest
