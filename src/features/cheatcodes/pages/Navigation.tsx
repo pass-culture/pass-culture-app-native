@@ -262,7 +262,12 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton
             title={`Id Check V2`}
-            onPress={() => navigation.navigate(idCheckInitialRouteName)}
+            onPress={() =>
+              navigation.navigate(idCheckInitialRouteName, {
+                licence_token: 'ycUszRYRBKAmB8wR1KVQq2vXdUSjcJeeISY-M9zHiKc',
+                email: 'john@example.com',
+              })
+            }
           />
         </Row>
       </StyledContainer>
