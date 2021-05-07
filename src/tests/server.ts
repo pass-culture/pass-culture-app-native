@@ -81,7 +81,11 @@ export function requestPasswordResetFail() {
 }
 
 export function requestSettingsSuccess(
-  settingsResponse: SettingsResponse = { depositAmount: 30000, isRecaptchaEnabled: true }
+  settingsResponse: SettingsResponse = {
+    depositAmount: 30000,
+    isRecaptchaEnabled: true,
+    allowIdCheckRegistration: true,
+  }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(settingsResponse))
