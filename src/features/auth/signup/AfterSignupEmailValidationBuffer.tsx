@@ -3,6 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { ValidateEmailResponse } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -12,6 +13,7 @@ import { useLoginRoutine } from '../AuthContext'
 import { useValidateEmailMutation } from '../mutations'
 
 export function AfterSignupEmailValidationBuffer() {
+  const { data: settings } = useAppSettings()
   const { showInfoSnackBar } = useSnackBarContext()
 
   const { navigate } = useNavigation<UseNavigationType>()
@@ -46,7 +48,7 @@ export function AfterSignupEmailValidationBuffer() {
       { accessToken: response.accessToken, refreshToken: response.refreshToken },
       'fromSignup'
     )
-    if (!response.idCheckToken) {
+    if (!response.idCheckToken || !settings?.allowIdCheckRegistration) {
       delayedNavigate('AccountCreated')
     } else {
       delayedNavigate('VerifyEligibility', {

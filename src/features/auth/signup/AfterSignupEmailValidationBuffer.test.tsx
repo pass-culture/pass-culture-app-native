@@ -1,8 +1,11 @@
 import { rest } from 'msw'
 import React from 'react'
+import { UseQueryResult } from 'react-query'
+import { mocked } from 'ts-jest/utils'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { ValidateEmailRequest, ValidateEmailResponse } from 'api/gen'
+import { SettingsResponse, ValidateEmailRequest, ValidateEmailResponse } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -15,6 +18,8 @@ import * as Auth from '../AuthContext'
 
 import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBuffer'
 
+jest.mock('features/auth/settings')
+const mockedUseAppSettings = mocked(useAppSettings, true)
 jest.mock('features/auth/AuthContext')
 const mockLoginRoutine = Auth.useLoginRoutine as jest.Mock
 
@@ -95,6 +100,35 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
           email: 'john@wick.com',
           licenceToken: 'XxLicenceTokenxX',
         })
+      })
+      loginRoutine.mockRestore()
+    })
+
+    it('should not redirect to Verify Eligibility when allowIdCheckRegistration flag is turned to false"', async () => {
+      const response: ValidateEmailResponse = {
+        accessToken: 'access_token',
+        idCheckToken: 'XxLicenceTokenxX',
+        refreshToken: 'refresh_token',
+      }
+      // eligible user call
+      server.use(
+        rest.post<ValidateEmailRequest, ValidateEmailResponse>(
+          env.API_BASE_URL + '/native/v1/validate_email',
+          (_req, res, ctx) => res.once(ctx.status(200), ctx.json(response))
+        )
+      )
+
+      const mockedAppSettingsValues = {
+        data: { depositAmount: 1, isRecaptchaEnabled: true, allowIdCheckRegistration: false },
+      } as UseQueryResult<SettingsResponse, unknown>
+      mockedUseAppSettings.mockReturnValueOnce(mockedAppSettingsValues)
+      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
+      renderPage()
+
+      await waitFor(() => {
+        expect(loginRoutine).toBeCalledTimes(1)
+        expect(navigate).toBeCalledTimes(1)
+        expect(navigate).toHaveBeenCalledWith('AccountCreated')
       })
       loginRoutine.mockRestore()
     })
