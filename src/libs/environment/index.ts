@@ -37,6 +37,7 @@ export interface Environment {
   WEBAPP_URL: string
   WEBSOCKET_ENDPOINT: string
   FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: boolean
+  ID_CHECK_API_URL: string
 }
 
 export const env = parseBooleanVariables(Config) as Environment
