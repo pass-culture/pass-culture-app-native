@@ -38,4 +38,10 @@ export const contactSupport = {
       false
     ).then(() => analytics.logMailTo('forAccountDeletion'))
   },
+  forPhoneNumberConfirmation() {
+    openExternalUrl(
+      `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=Confirmation%20de%20num%C3%A9ro%20de%20t%C3%A9l%C3%A9phone`,
+      false
+    ).then(() => analytics.logMailTo('forPhoneNumberConfirmation'))
+  },
 }

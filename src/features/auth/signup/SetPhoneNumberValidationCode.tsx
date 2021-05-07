@@ -73,8 +73,7 @@ export const SetPhoneNumberValidationCode: FC<Props> = (props) => {
             <ButtonQuaternary
               title={t`Contacter le support`}
               icon={Email}
-              // TODO(PC-8138) contactSupport.forPhoneNumberConfirmation
-              onPress={contactSupport.forGenericQuestion}
+              onPress={contactSupport.forPhoneNumberConfirmation}
               inline
             />
           </Typo.Caption>

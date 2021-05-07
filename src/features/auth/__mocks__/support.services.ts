@@ -7,4 +7,5 @@ export const contactSupport: typeof actualContactSupport = {
   forResetPasswordEmailNotReceived: jest.fn(),
   forResetPasswordExpiredLink: jest.fn(),
   forAccountDeletion: jest.fn(),
+  forPhoneNumberConfirmation: jest.fn(),
 }
