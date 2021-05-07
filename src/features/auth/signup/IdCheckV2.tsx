@@ -1,4 +1,4 @@
-import { Stepper, useIdCheckContext } from '@pass-culture/id-check'
+import { IdCheckHomePage, useIdCheckContext } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
@@ -25,5 +25,7 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
       })
     }
   }, [setContextValue])
-  return <Stepper {...props} />
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return <IdCheckHomePage {...props} />
 }
