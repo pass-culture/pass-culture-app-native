@@ -13,6 +13,7 @@ import { AsyncError } from 'libs/errorMonitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
@@ -28,6 +29,7 @@ export function Navigation(): JSX.Element {
   const [renderedError, setRenderedError] = useState(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
+  const { showErrorSnackBar } = useSnackBarContext()
 
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     QueryKeys.ERROR_ASYNC,
@@ -42,6 +44,46 @@ export function Navigation(): JSX.Element {
     setAsyncTestReqCount((v) => ++v)
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', errorAsyncQuery)
+    }
+  }
+
+  async function onIdCheckV2() {
+    const email = 'pctest.jeune93.has-booked-some.v2@example.com'
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    try {
+      const response = await fetch(
+        'https://backend.passculture-testing.beta.gouv.fr/native/v1/signin',
+        {
+          method: 'POST',
+          headers: new Headers({
+            accept: 'application/json',
+            'content-type': 'application/json',
+          }),
+          body: JSON.stringify({
+            identifier: email,
+            password: 'user@AZERTY123',
+          }),
+        }
+      )
+      const { accessToken } = await response.json()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const response2 = await fetch(
+        'https://backend.passculture-testing.beta.gouv.fr/native/v1/id_check_token',
+        {
+          headers: new Headers({
+            authorization: `Bearer ${accessToken}`,
+          }),
+        }
+      )
+      const { token } = await response2.json()
+      navigation.navigate(idCheckInitialRouteName, {
+        licence_token: token,
+        email,
+      })
+    } catch (error) {
+      showErrorSnackBar({ message: error.message, timeout: SNACK_BAR_TIME_OUT })
     }
   }
 
@@ -260,15 +302,7 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
-          <NavigationButton
-            title={`Id Check V2`}
-            onPress={() =>
-              navigation.navigate(idCheckInitialRouteName, {
-                licence_token: 'ycUszRYRBKAmB8wR1KVQq2vXdUSjcJeeISY-M9zHiKc',
-                email: 'john@example.com',
-              })
-            }
-          />
+          <NavigationButton title={`Id Check V2`} onPress={onIdCheckV2} />
         </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
