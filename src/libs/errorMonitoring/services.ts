@@ -1,12 +1,16 @@
 import { IdCheckErrorMonitoringInterface } from '@pass-culture/id-check'
-import SentryModule, { Scope } from '@sentry/react-native'
+import * as SentryModule from '@sentry/react-native'
 import { CaptureContext, User } from '@sentry/types'
 
 import { env } from 'libs/environment'
 
 import { version } from '../../../package.json'
 
-export const errorMonitoring: IdCheckErrorMonitoringInterface<Scope, User, CaptureContext> = {
+export const errorMonitoring: IdCheckErrorMonitoringInterface<
+  SentryModule.Scope,
+  User,
+  CaptureContext
+> = {
   captureException: SentryModule.captureException,
   configureScope: SentryModule.configureScope,
   init,
