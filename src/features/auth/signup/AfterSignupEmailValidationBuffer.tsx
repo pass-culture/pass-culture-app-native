@@ -46,13 +46,13 @@ export function AfterSignupEmailValidationBuffer() {
       { accessToken: response.accessToken, refreshToken: response.refreshToken },
       'fromSignup'
     )
-    if (response.idCheckToken) {
+    if (!response.idCheckToken) {
+      delayedNavigate('AccountCreated')
+    } else {
       delayedNavigate('VerifyEligibility', {
         email: params.email,
         licenceToken: response.idCheckToken,
       })
-    } else {
-      delayedNavigate('AccountCreated')
     }
   }
 
