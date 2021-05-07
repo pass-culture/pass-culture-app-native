@@ -70,6 +70,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
 const ModalContent = styled.View({
   width: '100%',
   alignItems: 'center',
+  paddingHorizontal: 8,
 })
 
 const Paragraphe = styled.Text({
