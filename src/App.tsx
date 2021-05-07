@@ -29,6 +29,7 @@ import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
 import { appsFlyerClient } from 'libs/campaign'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
+import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
@@ -110,6 +111,7 @@ const App: FunctionComponent = function () {
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
                           <IdCheckContextProvider
+                            apiBaseUrl={env.ID_CHECK_API_URL}
                             errorMonitoring={errorMonitoring}
                             analytics={idCheckAnalytics}
                             onSuccess={onIdCheckSuccess}

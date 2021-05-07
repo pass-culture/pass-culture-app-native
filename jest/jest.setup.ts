@@ -84,6 +84,7 @@ jest.mock('libs/environment', () => ({
     DATA_PRIVACY_CHART_LINK: 'https://passculture.data-privacy-chart',
     FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: true,
     SITE_KEY: 'SITE_KEY',
+    ID_CHECK_API_URL: 'https://passculture.idcheck',
   },
 }))
 
