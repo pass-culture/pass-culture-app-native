@@ -1,4 +1,7 @@
-import { routes as idCheckRoutes } from '@pass-culture/id-check'
+import {
+  routes as idCheckRoutes,
+  initialRouteName as idCheckInitialRouteName,
+} from '@pass-culture/id-check'
 import { LinkingOptions } from '@react-navigation/native'
 
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
@@ -11,6 +14,7 @@ import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
 import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
+import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 // import { IdCheck } from 'features/auth/signup/IdCheck'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
@@ -109,7 +113,8 @@ const routes: Array<Route> = [
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },
   { name: 'ForceUpdate', component: ForceUpdate },
-  ...idCheckRoutes,
+  ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
+  { name: idCheckInitialRouteName, component: IdCheckV2 },
 ]
 
 export const linking: LinkingOptions = {
