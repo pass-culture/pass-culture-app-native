@@ -256,6 +256,7 @@ const logMailTo = (
     | 'forResetPasswordEmailNotReceived'
     | 'forResetPasswordExpiredLink'
     | 'forAccountDeletion'
+    | 'forPhoneNumberConfirmation'
 ) => firebaseAnalytics.logEvent(AnalyticsEvent.MAIL_TO, { reason })
 
 const logCampaignTrackerEnabled = () =>
