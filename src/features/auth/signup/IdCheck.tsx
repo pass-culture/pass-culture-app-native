@@ -1,9 +1,11 @@
+import { initialRouteName as idCheckInitialRouteName } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { useEffect, useRef, useState } from 'react'
 import { WebView, WebViewNavigation } from 'react-native-webview'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
@@ -15,12 +17,21 @@ import { useKeyboardAdjustFixIdCheck } from '../hooks/useKeyboardAdjustFixIdChec
 type Props = StackScreenProps<RootStackParamList, 'IdCheck'>
 
 export const IdCheck: React.FC<Props> = function (props) {
+  const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
+  settings.enableNativeIdCheckVersion = true
   const currentRoute = useCurrentRoute()
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
   const injectedJavascript = useKeyboardAdjustFixIdCheck()
 
   const [idCheckUri, setIdCheckUri] = useState<string | undefined>(undefined)
+
+  useEffect(() => {
+    if (!areSettingsLoading && settings?.enableNativeIdCheckVersion) {
+      const { email, licenceToken } = props.route.params
+      navigation.navigate(idCheckInitialRouteName, { email, licence_token: licenceToken })
+    }
+  }, [settings?.enableNativeIdCheckVersion, areSettingsLoading])
 
   useEffect(() => {
     const { email, licenceToken } = props.route.params
@@ -47,7 +58,7 @@ export const IdCheck: React.FC<Props> = function (props) {
     }
   }
 
-  if (!idCheckUri || currentRoute?.name !== 'IdCheck') {
+  if (areSettingsLoading || !idCheckUri || currentRoute?.name !== 'IdCheck') {
     return null
   }
   return (
