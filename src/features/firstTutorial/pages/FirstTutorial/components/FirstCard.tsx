@@ -13,21 +13,19 @@ export function FirstCard(props: AchievementCardKeyProps) {
   }
 
   return (
-    <React.Fragment>
-      <GenericAchievementCard
-        animation={TutorialPassLogo}
-        buttonCallback={onButtonPress}
-        buttonText={t`Continuer`}
-        pauseAnimationOnRenderAtFrame={62}
-        subTitle={t`c'est...`}
-        text={t`une initiative financée par le Ministère de la Culture.`}
-        title={t`Le pass Culture`}
-        swiperRef={props.swiperRef}
-        name={props.name}
-        index={props.index}
-        activeIndex={props.activeIndex}
-        lastIndex={props.lastIndex}
-      />
-    </React.Fragment>
+    <GenericAchievementCard
+      animation={TutorialPassLogo}
+      buttonCallback={onButtonPress}
+      buttonText={t`Continuer`}
+      pauseAnimationOnRenderAtFrame={62}
+      subTitle={t`c'est...`}
+      text={t`une initiative financée par le Ministère de la Culture.`}
+      title={t`Le pass Culture`}
+      swiperRef={props.swiperRef}
+      name={props.name}
+      index={props.index}
+      activeIndex={props.activeIndex}
+      lastIndex={props.lastIndex}
+    />
   )
 }
