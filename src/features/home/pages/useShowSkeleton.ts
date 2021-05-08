@@ -24,7 +24,7 @@ export const useShowSkeleton = function () {
       isFetchingOfferIds === 0 &&
       isFetchingRecommendedHits === 0
     ) {
-      timeout = setTimeout(() => setShowSkeleton(false), DELAY)
+      timeout = global.setTimeout(() => setShowSkeleton(false), DELAY)
     }
     return () => {
       if (timeout) clearTimeout(timeout)

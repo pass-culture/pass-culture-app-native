@@ -84,6 +84,7 @@
     "react-native-geolocation-service": "^5.0.0",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-get-random-values": "^1.5.1",
+    "react-native-image-picker": "2.3.4",
     "react-native-keychain": "^6.2.0",
     "react-native-launch-navigator": "^1.0.8",
     "react-native-linear-gradient": "^2.5.6",
