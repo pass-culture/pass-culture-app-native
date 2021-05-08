@@ -164,6 +164,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.4.0):
     - GoogleUtilities/Logger
+  - InputMask (6.1.0)
   - JWT (3.0.0-beta.12):
     - Base64 (~> 1.1.2)
   - libevent (2.1.12)
@@ -369,6 +370,10 @@ PODS:
     - React
   - react-native-tracking-transparency (0.1.0):
     - React
+  - react-native-text-input-mask (3.1.4):
+    - InputMask (~> 6.1.0)
+    - React-Core
+    - React-RCTText
   - react-native-webview (10.10.0):
     - React-Core
   - React-RCTActionSheet (0.63.3):
@@ -543,6 +548,7 @@ DEPENDENCIES:
   - react-native-sensitive-info (from `../node_modules/react-native-sensitive-info`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-tracking-transparency (from `../node_modules/react-native-tracking-transparency`)
+  - react-native-text-input-mask (from `../node_modules/react-native-text-input-mask`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -600,6 +606,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
+    - InputMask
     - JWT
     - libevent
     - nanopb
@@ -675,6 +682,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-splash-screen"
   react-native-tracking-transparency:
     :path: "../node_modules/react-native-tracking-transparency"
+  react-native-text-input-mask:
+    :path: "../node_modules/react-native-text-input-mask"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
@@ -772,9 +781,10 @@ SPEC CHECKSUMS:
   FlipperKit: f42987ea58737ac0fb3fbc38f8e703452ba56940
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
-  GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
-  GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
-  GoogleUtilities: 284cddc7fffc14ae1907efb6f78ab95c1fccaedc
+  GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
+  GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
+  GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
+  InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
@@ -803,6 +813,7 @@ SPEC CHECKSUMS:
   react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
   react-native-sensitive-info: 400c6e3d27945e15c8cddb5b4b92233c85ee06f8
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
+  react-native-text-input-mask: 36a546b378fadd2efe1b7484a859d34bc2c80395
   react-native-tracking-transparency: c1c4b412fcdcb0a02e23bb42b123def5a6d86a56
   react-native-webview: 73e409ecc987c189772bda27ba7f0e2f3dcd2e81
   React-RCTActionSheet: 53ea72699698b0b47a6421cb1c8b4ab215a774aa
@@ -839,6 +850,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: e9395724a6159b79a8457b172153f984ddcbcda5
+PODFILE CHECKSUM: 8934a98a5360fb8590dc9653e055bfce1820633d
 
 COCOAPODS: 1.10.1
