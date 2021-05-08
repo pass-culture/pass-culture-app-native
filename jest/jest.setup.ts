@@ -94,3 +94,7 @@ jest.mock('features/favorites/pages/FavoritesWrapper')
 
 jest.mock('../package.json')
 jest.mock('api/helpers')
+
+jest.mock('react-native-text-input-mask', () => ({
+  default: jest.fn(),
+}))
