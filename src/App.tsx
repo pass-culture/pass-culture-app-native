@@ -1,6 +1,7 @@
 import { i18n } from '@lingui/core'
+import { t } from '@lingui/macro'
 import { I18nProvider } from '@lingui/react'
-import { IdCheckContextProvider, theme } from '@pass-culture/id-check'
+import { IdCheckContextProvider, theme, imagePickerOptions } from '@pass-culture/id-check'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -37,6 +38,7 @@ import { idCheckAnalytics } from 'libs/idCheckAnalytics'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { ColorsEnum } from 'ui/theme'
 
 LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
 
@@ -111,6 +113,20 @@ const App: FunctionComponent = function () {
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
                           <IdCheckContextProvider
+                            imagePickerOptions={{
+                              tintColor: ColorsEnum.PRIMARY,
+                              title: t`Ou ce trouve votre document ?`,
+                              cancelButtonTitle: t`Plus tard`,
+                              takePhotoButtonTitle: t`Je le prend en photo`,
+                              chooseFromLibraryButtonTitle: t`J'envoie une copie`,
+                              chooseWhichLibraryTitle: t`Ou ce trouve votre copie ?`,
+                              permissionDenied: {
+                                title: t`Des permissions sont nécessaires`,
+                                text: t`pour prendre votre document en photo ou le sélectionner depuis vos fichiers`,
+                                reTryTitle: t`Recommencer`,
+                                okTitle: t`OK`,
+                              },
+                            }}
                             apiBaseUrl={env.ID_CHECK_API_URL}
                             errorMonitoring={errorMonitoring}
                             analytics={idCheckAnalytics}
