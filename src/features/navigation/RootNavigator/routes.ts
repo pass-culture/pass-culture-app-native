@@ -14,8 +14,8 @@ import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
 import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestSent'
 import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
+import { IdCheck } from 'features/auth/signup/IdCheck'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
-// import { IdCheck } from 'features/auth/signup/IdCheck'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
@@ -81,7 +81,7 @@ const routes: Array<Route> = [
     component: ForgottenPassword,
     hoc: withAsyncErrorBoundary,
   },
-  // { name: 'IdCheck', component: IdCheck },
+  { name: 'IdCheck', component: IdCheck },
   { name: 'LegalNotices', component: LegalNotices },
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },

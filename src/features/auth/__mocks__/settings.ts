@@ -5,7 +5,12 @@ import { UseQueryResult } from 'react-query'
 export const useAppSettings: typeof actualUseAppSettings = jest.fn(
   () =>
     ({
-      data: { depositAmount: 30000, isRecaptchaEnabled: true, allowIdCheckRegistration: true },
+      data: {
+        depositAmount: 30000,
+        isRecaptchaEnabled: true,
+        allowIdCheckRegistration: true,
+        enableNativeIdCheckVersion: false,
+      },
       isLoading: false,
     } as UseQueryResult<SettingsResponse, unknown>)
 )

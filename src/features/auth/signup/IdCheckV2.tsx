@@ -25,7 +25,8 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
       })
     }
   }, [setContextValue])
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+
+  // @ts-ignore : props typing issue with IdCheck screen from module.
+  // Probably needs some change on the side of the module.
   return <IdCheckHomePage {...props} />
 }

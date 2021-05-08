@@ -1,15 +1,22 @@
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { Text } from 'react-native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { IdCheck } from 'features/auth/signup/IdCheck'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { act, render, waitFor } from 'tests/utils'
 
+const EMAIL = 'john+1@wick.com'
+const LICENCE_TOKEN = 'XxLicenceTokenxX'
+
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+
+const mockUseAppSettings = useAppSettings as jest.MockedFunction<typeof useAppSettings>
+jest.mock('features/auth/settings')
 
 allowConsole({ error: true })
 /* Explanation for allowConsole : 
@@ -19,8 +26,37 @@ Adding `await superFlushWithAct` does not fix the console.error.
 */
 
 describe('<IdCheck />', () => {
+  beforeEach(() => {
+    mockAppSettings({ enableNativeIdCheckVersion: false, isLoading: false })
+  })
   afterEach(async () => {
     await storage.clear('has_accepted_cookie')
+  })
+
+  it('should not display anything while settings are not loaded', async () => {
+    mockAppSettings({ enableNativeIdCheckVersion: true, isLoading: true })
+    const renderAPI = renderIdCheckWithNavigation()
+
+    await waitFor(() => {
+      const webview = renderAPI.queryByTestId('idcheck-webview')
+      expect(webview).toBeFalsy()
+      const idCheckV2Text = renderAPI.queryByText(`email=${EMAIL};licence_token=${LICENCE_TOKEN}`)
+      expect(idCheckV2Text).toBeFalsy()
+      const notWebviewText = renderAPI.queryByText('NotIdCheck Page')
+      expect(notWebviewText).toBeFalsy()
+    })
+  })
+
+  it('should navigate to IdCheckV2 when setting enableNativeIdCheckVersion is true', async () => {
+    mockAppSettings({ enableNativeIdCheckVersion: true, isLoading: false })
+    const renderAPI = renderIdCheckWithNavigation()
+
+    await waitFor(() => {
+      const webview = renderAPI.queryByTestId('idcheck-webview')
+      expect(webview).toBeFalsy()
+      const idCheckV2Text = renderAPI.getByText(`email=${EMAIL};licence_token=${LICENCE_TOKEN}`)
+      expect(idCheckV2Text).toBeTruthy()
+    })
   })
 
   it('should render correctly', async () => {
@@ -74,6 +110,7 @@ describe('<IdCheck />', () => {
 
 type StackParamList = {
   IdCheck: RootStackParamList['IdCheck']
+  IdCheckV2: RootStackParamList['IdCheckV2']
   NotIdCheck: undefined
 }
 
@@ -86,6 +123,10 @@ function navigate(name: string) {
 }
 
 const NotIdCheck = () => <Text>NotIdCheck Page</Text>
+const IdCheckV2 = (props: StackScreenProps<StackParamList, 'IdCheckV2'>) => {
+  const { email, licence_token } = props.route.params
+  return <Text>{`email=${email};licence_token=${licence_token}`}</Text>
+}
 
 function renderIdCheckWithNavigation() {
   return render(
@@ -95,12 +136,28 @@ function renderIdCheckWithNavigation() {
           name="IdCheck"
           component={IdCheck}
           initialParams={{
-            email: 'john+1@wick.com',
-            licenceToken: 'XxLicenceTokenxX',
+            email: EMAIL,
+            licenceToken: LICENCE_TOKEN,
           }}
         />
         <Stack.Screen name="NotIdCheck" component={NotIdCheck} />
+        <Stack.Screen name="IdCheckV2" component={IdCheckV2} />
       </Stack.Navigator>
     </NavigationContainer>
   )
+}
+
+function mockAppSettings({
+  enableNativeIdCheckVersion,
+  isLoading,
+}: {
+  enableNativeIdCheckVersion: boolean
+  isLoading: boolean
+}) {
+  mockUseAppSettings.mockReturnValue({
+    data: {
+      enableNativeIdCheckVersion,
+    },
+    isLoading,
+  } as ReturnType<typeof useAppSettings>)
 }
