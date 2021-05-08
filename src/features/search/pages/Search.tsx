@@ -22,7 +22,7 @@ const useShowResults = () => {
       } else {
         // For most networks, 20ms is enough time to fetch the results fom Algolia
         // In this case we can avoid displaying the placeholders
-        timer.current = setTimeout(() => {
+        timer.current = global.setTimeout(() => {
           setShowResults(true)
         }, 20)
       }
