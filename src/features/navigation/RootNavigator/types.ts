@@ -38,7 +38,7 @@ export type RootStackParamList = {
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
-  // IdCheck: { email: string; licenceToken: string }
+  IdCheck: { email: string; licenceToken: string }
   Login: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
   Maintenance: undefined
   Navigation: undefined
