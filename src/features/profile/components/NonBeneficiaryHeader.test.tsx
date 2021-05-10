@@ -22,6 +22,7 @@ jest.mock('features/auth/api', () => ({
   ),
   useDepositAmount: () => mockDepositAmount,
 }))
+jest.mock('features/auth/settings')
 
 describe('NonBeneficiaryHeader', () => {
   afterEach(async () => {

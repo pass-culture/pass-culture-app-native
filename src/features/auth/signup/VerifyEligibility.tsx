@@ -19,7 +19,7 @@ export function VerifyEligibility(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const deposit = useDepositAmount()
 
-  const navigateToIdCheck = useNavigateToIdCheck()
+  const navigateToIdCheck = useNavigateToIdCheck({ onIdCheckNavigationBlocked: () => {} })
 
   function goToHome() {
     navigate('Home')
