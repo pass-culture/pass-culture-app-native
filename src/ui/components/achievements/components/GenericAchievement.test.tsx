@@ -141,9 +141,9 @@ describe('onRemoveScreenAction()', () => {
   afterEach(jest.clearAllMocks)
 
   const onFirstCardBackAction = jest.fn()
-  const goBackEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'GO_BACK' } } }
-  const popEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'POP' } } }
-  const navigateEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'NAVIGATE' } } }
+  const goBackEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'GO_BACK' } } } // eslint-disable-line @typescript-eslint/no-explicit-any
+  const popEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'POP' } } } // eslint-disable-line @typescript-eslint/no-explicit-any
+  const navigateEvent: any = { preventDefault: jest.fn(), data: { action: { type: 'NAVIGATE' } } } // eslint-disable-line @typescript-eslint/no-explicit-any
   const swiperRefValue = {
     getActiveIndex: jest.fn(() => 0),
     goTo: jest.fn(),
