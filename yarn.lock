@@ -1814,7 +1814,7 @@
 
 "@pass-culture/id-check@file:./manual_dependencies/pass-culture-id-check-v0.0.1.tgz":
   version "0.0.1"
-  resolved "file:./manual_dependencies/pass-culture-id-check-v0.0.1.tgz#151da9799750bb7dde043e77bead4b2c07d30548"
+  resolved "file:./manual_dependencies/pass-culture-id-check-v0.0.1.tgz#63a7a9d503013b5eaba474ab195e89d22781efb5"
   dependencies:
     deepmerge "^4.2.2"
     lodash "^4.17.21"
