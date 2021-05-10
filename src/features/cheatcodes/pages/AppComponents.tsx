@@ -7,6 +7,7 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen/api'
+import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
@@ -77,6 +78,7 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
+import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { Info } from 'ui/svg/icons/Info'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -134,6 +136,11 @@ export const AppComponents: FunctionComponent = () => {
     hideModal: hideBasicModal,
   } = useModal(false)
 
+  const {
+    visible: denyAccessToIdCheckModalVisible,
+    showModal: showDenyAccessToIdCheckModal,
+    hideModal: hideDenyAccessToIdCheckModal,
+  } = useModal(false)
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
   const [inputText, setInputText] = useState('')
@@ -349,6 +356,10 @@ export const AppComponents: FunctionComponent = () => {
         <AlignedText>
           <Warning size={ICON_SIZE} />
           <Text> - Warning </Text>
+        </AlignedText>
+        <AlignedText>
+          <HappyFace size={ICON_SIZE} />
+          <Text> - HappyFace </Text>
         </AlignedText>
         <AlignedText>
           <SadFace size={ICON_SIZE} />
@@ -749,7 +760,19 @@ export const AppComponents: FunctionComponent = () => {
           </ThreeShapesTicket>
           <Text>- {`contient le mot "passculture"`}</Text>
         </AlignedText>
+        <AlignedText>
+          <Center>
+            <ButtonPrimary
+              title="Deny Access To IdCheck Modal"
+              onPress={showDenyAccessToIdCheckModal}
+            />
+          </Center>
+        </AlignedText>
       </AccordionItem>
+      <DenyAccessToIdCheckModal
+        visible={denyAccessToIdCheckModalVisible}
+        dismissModal={hideDenyAccessToIdCheckModal}
+      />
       <Spacer.Column numberOfSpaces={5} />
       <Spacer.BottomScreen />
     </StyledScrollView>
