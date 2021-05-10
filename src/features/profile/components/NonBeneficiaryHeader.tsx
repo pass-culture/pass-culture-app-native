@@ -4,11 +4,13 @@ import React, { memo, PropsWithChildren, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useDepositAmount, useGetIdCheckToken } from 'features/auth/api'
+import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { storage } from 'libs/storage'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
+import { useModal } from 'ui/components/modals/useModal'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -23,6 +25,11 @@ interface NonBeneficiaryHeaderProps {
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
+  const {
+    visible: denyAccessToIdCheckModalVisible,
+    showModal: showDenyAccessToIdCheckModal,
+    hideModal: hideDenyAccessToIdCheckModal,
+  } = useModal(false)
   const [hasCompletedIdCheck, setHasCompletedIdCheck] = useState(false)
   const today = new Date()
   const depositAmount = useDepositAmount()
@@ -40,7 +47,9 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
       : false
   const { data } = useGetIdCheckToken(isEligible)
   const licenceToken = data?.token || ''
-  const navigateToIdCheck = useNavigateToIdCheck({ onIdCheckNavigationBlocked: () => {} })
+  const navigateToIdCheck = useNavigateToIdCheck({
+    onIdCheckNavigationBlocked: showDenyAccessToIdCheckModal,
+  })
   useFocusEffect(() => {
     storage.readObject('has_completed_idcheck').then((value) => {
       setHasCompletedIdCheck(Boolean(value))
@@ -97,6 +106,10 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     <React.Fragment>
       <SvgPageHeader title={t`Profil`} />
       {body}
+      <DenyAccessToIdCheckModal
+        visible={denyAccessToIdCheckModalVisible}
+        dismissModal={hideDenyAccessToIdCheckModal}
+      />
     </React.Fragment>
   )
 }
