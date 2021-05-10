@@ -22,7 +22,7 @@ const CODE_INPUT_LENGTH = 6
 interface Props {
   visible: boolean
   dismissModal: () => void
-  // TODO(PC-8137) create phone number property retrieved from SetPhoneNumberModal
+  phoneNumber: string
 }
 
 interface CodeInputState extends CodeValidation {

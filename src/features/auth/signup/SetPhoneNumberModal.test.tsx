@@ -37,6 +37,32 @@ describe('SetPhoneNumberModal', () => {
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
     })
+
+    it('should call onValidationCodeAsked property on press button "Continuer"', () => {
+      const mockOnValidationCodeAsked = jest.fn()
+      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal({
+        onValidationCodeAsked: mockOnValidationCodeAsked,
+      })
+      const button = getByTestId('button-container-continue')
+      const input = getByPlaceholderText('0612345678')
+      fireEvent.changeText(input, '0687654321')
+      fireEvent.press(button)
+      expect(mockOnValidationCodeAsked).toHaveBeenCalled()
+    })
+  })
+
+  describe('phone number input', () => {
+    it('should call onChangePhoneNumber property on change input text', () => {
+      const mockOnChangePhoneNumber = jest.fn()
+      const { getByPlaceholderText } = renderSetPhoneNumberModal({
+        onChangePhoneNumber: mockOnChangePhoneNumber,
+      })
+
+      const input = getByPlaceholderText('0612345678')
+      fireEvent.changeText(input, '0687654321')
+
+      expect(mockOnChangePhoneNumber).toHaveBeenCalled()
+    })
   })
 })
 
@@ -44,6 +70,9 @@ function renderSetPhoneNumberModal(customProps?: any) {
   const props = {
     visible: true,
     dismissModal: jest.fn(),
+    onChangePhoneNumber: jest.fn(),
+    onValidationCodeAsked: jest.fn(),
+    phoneNumber: '',
     ...customProps,
   }
   return render(<SetPhoneNumberModal {...props} />)
