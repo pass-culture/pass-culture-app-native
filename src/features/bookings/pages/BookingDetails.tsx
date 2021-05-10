@@ -14,6 +14,7 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { useOngoingBooking } from 'features/bookings/api/queries'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
@@ -55,6 +56,8 @@ export function BookingDetails() {
   const headerScroll = useRef(new Animated.Value(0)).current
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
 
+  const { data: appSettings } = useAppSettings()
+
   const { venue, id: offerId } = booking?.stock.offer || {}
   const { latitude, longitude } = venue?.coordinates || {}
   const { canOpenItinerary, openItinerary } = useOpenItinerary(
@@ -90,6 +93,8 @@ export function BookingDetails() {
   const shouldDisplayEAN = offer.extraData?.isbn && offer.category.name === CategoryNameEnum.LIVRE
   const shouldDisplayItineraryButton =
     canOpenItinerary && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
+  const activationCodeFeatureEnabled =
+    properties.hasActivationCode == true && appSettings && appSettings.autoActivateDigitalBookings
 
   const renderOfferRules = properties.isDigital ? (
     <OfferRules>
@@ -109,6 +114,10 @@ export function BookingDetails() {
   }
 
   const renderCancellationCTA = () => {
+    if (activationCodeFeatureEnabled) {
+      return <ButtonSecondary title={t`Terminer`} onPress={() => null} testIdSuffix={'archive'} />
+    }
+
     const renderButton = (
       <ButtonSecondary
         title={t`Annuler ma réservation`}
