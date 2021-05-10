@@ -198,7 +198,7 @@ msgstr "Catégories"
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
-#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:55
+#: src/features/auth/signup/AfterSignupEmailValidationBuffer.tsx:57
 msgid "Ce lien de validation n'est plus valide"
 msgstr "Ce lien de validation n'est plus valide"
 
@@ -218,11 +218,11 @@ msgstr "Ces plafonds ont été mis en place pour favoriser la diversification de
 msgid "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 msgstr "Cette information nous permet de déterminer si ton département est éligible à l’aide financière pass Culture."
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:15
+#: src/features/bookOffer/components/CancellationDetails.tsx:35
 msgid "Cette réservation est annulable"
 msgstr "Cette réservation est annulable"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:19
+#: src/features/bookOffer/components/CancellationDetails.tsx:36
 msgid "Cette réservation n’est pas annulable"
 msgstr "Cette réservation n’est pas annulable"
 
@@ -289,7 +289,7 @@ msgstr "Conditions Générales d'Utilisation"
 msgid "Conditions Générales d’Utilisation"
 msgstr "Conditions Générales d’Utilisation"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:27
+#: src/features/bookOffer/components/CancellationDetails.tsx:18
 msgid "Conditions d'annulation"
 msgstr "Conditions d'annulation"
 
@@ -302,7 +302,7 @@ msgid "Confirme ton e‑mail"
 msgstr "Confirme ton e‑mail"
 
 #: src/features/auth/signup/SetPhoneNumberModal.tsx:14
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:21
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:28
 msgid "Confirme ton numéro"
 msgstr "Confirme ton numéro"
 
@@ -341,7 +341,7 @@ msgstr "Consulter mes e-mails"
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:47
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
 #: src/features/auth/signup/AcceptCgu.tsx:125
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:43
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:50
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:54
 msgid "Contacter le support"
@@ -352,7 +352,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetEmail.tsx:77
 #: src/features/auth/signup/SetPassword.tsx:43
 #: src/features/auth/signup/SetPhoneNumberModal.tsx:28
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:30
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:37
 #: src/features/auth/signup/SetPostalCode.tsx:58
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:54
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
@@ -1008,7 +1008,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:34
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:41
 #: src/features/errors/pages/AsyncErrorBoundary.tsx:63
 msgid "Réessayer"
 msgstr "Réessayer"
@@ -1049,7 +1049,7 @@ msgstr "S'inscrire"
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:25
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:32
 msgid "Saisis le code envoyé par SMS au numéro +33 1 23 45 67 89."
 msgstr "Saisis le code envoyé par SMS au numéro +33 1 23 45 67 89."
 
@@ -1086,7 +1086,7 @@ msgstr "Si l'e-mail n'arrive pas, tu peux :"
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:41
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:48
 msgid "Si tu n’arrives pas à récuperer ton code tu peux"
 msgstr "Si tu n’arrives pas à récuperer ton code tu peux"
 
@@ -1217,7 +1217,7 @@ msgstr "Tu es sur le point d'annuler"
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:33
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:40
 msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
 
@@ -1402,6 +1402,10 @@ msgstr "autour de toi"
 msgid "c'est..."
 msgstr "c'est..."
 
+#: src/features/auth/signup/SetPhoneNumberValidationCode.tsx:37
+msgid "continue"
+msgstr "continue"
+
 #: src/features/profile/components/ExBeneficiaryHeader.tsx:20
 msgid "credit expired on date"
 msgstr "crédit expiré le {deadline}"
@@ -1524,7 +1528,7 @@ msgstr "{price} seront recrédités sur ton pass Culture."
 msgid "request error"
 msgstr "Échec de la requête {url}, code: {status}"
 
-#: src/features/bookOffer/components/CancellationDetails.tsx:20
+#: src/features/bookOffer/components/CancellationDetails.tsx:38
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
 
