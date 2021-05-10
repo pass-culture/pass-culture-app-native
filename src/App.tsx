@@ -85,16 +85,6 @@ const App: FunctionComponent = function () {
     errorMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
-  function onIdCheckSuccess() {
-    // eslint-disable-next-line no-console
-    console.log('success')
-  }
-
-  function onIdCheckAbandon() {
-    // eslint-disable-next-line no-console
-    console.log('abandon')
-  }
-
   return (
     <ABTestingProvider>
       <SafeAreaProvider>
@@ -124,9 +114,7 @@ const App: FunctionComponent = function () {
                             }}
                             apiBaseUrl={env.ID_CHECK_API_URL}
                             errorMonitoring={errorMonitoring}
-                            analytics={idCheckAnalytics}
-                            onSuccess={onIdCheckSuccess}
-                            onAbandon={onIdCheckAbandon}>
+                            analytics={idCheckAnalytics}>
                             <SplashScreenProvider>
                               <AppNavigationContainer>
                                 <RootNavigator />
