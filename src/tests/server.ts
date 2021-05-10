@@ -85,6 +85,8 @@ export function requestSettingsSuccess(
     depositAmount: 30000,
     isRecaptchaEnabled: true,
     allowIdCheckRegistration: true,
+    autoActivateDigitalBookings: false,
+    enableNativeIdCheckVersion: true,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {
