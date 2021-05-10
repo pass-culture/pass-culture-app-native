@@ -115,11 +115,11 @@ const App: FunctionComponent = function () {
                           <IdCheckContextProvider
                             imagePickerOptions={{
                               tintColor: ColorsEnum.PRIMARY,
-                              title: t`Ou ce trouve votre document ?`,
+                              title: t`Où se trouve votre document ?`,
                               cancelButtonTitle: t`Plus tard`,
                               takePhotoButtonTitle: t`Je le prend en photo`,
                               chooseFromLibraryButtonTitle: t`J'envoie une copie`,
-                              chooseWhichLibraryTitle: t`Ou ce trouve votre copie ?`,
+                              chooseWhichLibraryTitle: t`Où se trouve votre copie ?`,
                               permissionDenied: {
                                 title: t`Des permissions sont nécessaires`,
                                 text: t`pour prendre votre document en photo ou le sélectionner depuis vos fichiers`,
