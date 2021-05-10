@@ -8,7 +8,7 @@ export const TemporaryIdCheck: React.FC = function () {
   const [phoneNumber, setPhoneNumber] = useState('')
   const {
     visible: phoneNumberModalVisible,
-    showModal: _showPhoneNumberModal,
+    showModal: showPhoneNumberModal,
     hideModal: hidePhoneNumberModal,
   } = useModal(true)
 
@@ -21,6 +21,11 @@ export const TemporaryIdCheck: React.FC = function () {
   function onValidationCodeAsked() {
     hidePhoneNumberModal()
     showPhoneValidationModal()
+  }
+
+  function goBackOnSetPhoneNumber() {
+    showPhoneNumberModal()
+    hidePhoneValidationModal()
   }
 
   return (
@@ -36,6 +41,7 @@ export const TemporaryIdCheck: React.FC = function () {
         visible={phoneValidationModalVisible}
         dismissModal={hidePhoneValidationModal}
         phoneNumber={phoneNumber}
+        onGoBack={goBackOnSetPhoneNumber}
       />
     </React.Fragment>
   )

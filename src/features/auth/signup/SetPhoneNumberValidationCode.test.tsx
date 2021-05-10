@@ -8,8 +8,8 @@ import * as ModalModule from 'ui/components/modals/useModal'
 import { ColorsEnum } from 'ui/theme'
 
 describe('SetPhoneNumberValidationCode', () => {
-  describe('Quit process', () => {
-    it('should open the quit modal', () => {
+  describe('modal header', () => {
+    it('should open the quit modal on press right icon', () => {
       const visible = false
       const showModal = jest.fn()
       const uselessFunction = jest.fn()
@@ -29,6 +29,15 @@ describe('SetPhoneNumberValidationCode', () => {
       expect(showModal).toBeCalled()
 
       useModalMock.mockRestore()
+    })
+
+    it('should call onGoBack property on press left arrow', () => {
+      const mockOnGoBack = jest.fn()
+      const { getByTestId } = renderSetPhoneValidationCode({ onGoBack: mockOnGoBack })
+
+      const leftArrow = getByTestId('leftIconButton')
+      fireEvent.press(leftArrow)
+      expect(mockOnGoBack).toHaveBeenCalled()
     })
   })
 
@@ -60,6 +69,7 @@ describe('SetPhoneNumberValidationCode', () => {
             dismissModal={jest.fn()}
             visible={true}
             phoneNumber={'0612345678'}
+            onGoBack={jest.fn()}
           />
         )
       }
@@ -85,6 +95,7 @@ describe('SetPhoneNumberValidationCode', () => {
             dismissModal={jest.fn()}
             visible={true}
             phoneNumber={'0612345678'}
+            onGoBack={jest.fn()}
           />
         )
       }
@@ -101,6 +112,7 @@ function renderSetPhoneValidationCode(customProps?: any) {
     dismissModal: jest.fn(),
     visible: true,
     phoneNumber: '0612345678',
+    onGoBack: jest.fn(),
     ...customProps,
   }
   return render(<SetPhoneNumberValidationCode {...props} />)

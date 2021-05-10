@@ -23,6 +23,7 @@ interface Props {
   visible: boolean
   dismissModal: () => void
   phoneNumber: string
+  onGoBack: () => void
 }
 
 interface CodeInputState extends CodeValidation {
@@ -56,6 +57,7 @@ export const SetPhoneNumberValidationCode: FC<Props> = (props) => {
       rightIcon={Close}
       onRightIconPress={showFullPageModal}
       leftIcon={ArrowPrevious}
+      onLeftIconPress={props.onGoBack}
       disableBackdropTap
       isScrollable>
       <ModalContent>
