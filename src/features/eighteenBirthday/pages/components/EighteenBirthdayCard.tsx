@@ -18,7 +18,7 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const { showInfoSnackBar } = useSnackBarContext()
   const depositAmount = useDepositAmount()
   const deposit = depositAmount.replace(' ', '')
-  const navigateToIdCheck = useNavigateToIdCheck()
+  const navigateToIdCheck = useNavigateToIdCheck({ onIdCheckNavigationBlocked: () => {} })
 
   function onButtonPress() {
     if (profile && idCheckTokenResponse?.token) {

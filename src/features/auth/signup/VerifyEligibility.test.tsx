@@ -13,6 +13,7 @@ beforeEach(() => {
 
 let mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
+jest.mock('features/auth/settings')
 
 const navigationProps = {
   route: { params: { email: 'test@email.com', licenceToken: 'xXLicenceTokenXx' } },

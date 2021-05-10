@@ -40,8 +40,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
       : false
   const { data } = useGetIdCheckToken(isEligible)
   const licenceToken = data?.token || ''
-  const navigateToIdCheck = useNavigateToIdCheck()
-
+  const navigateToIdCheck = useNavigateToIdCheck({ onIdCheckNavigationBlocked: () => {} })
   useFocusEffect(() => {
     storage.readObject('has_completed_idcheck').then((value) => {
       setHasCompletedIdCheck(Boolean(value))
