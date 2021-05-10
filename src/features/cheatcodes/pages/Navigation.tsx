@@ -304,6 +304,12 @@ export function Navigation(): JSX.Element {
         <Row half>
           <NavigationButton title={`Id Check V2`} onPress={onIdCheckV2} />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={`Temporary IdCheck`}
+            onPress={() => navigation.navigate('TemporaryIdCheck')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

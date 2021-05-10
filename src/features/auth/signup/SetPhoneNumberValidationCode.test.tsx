@@ -55,7 +55,13 @@ describe('SetPhoneNumberValidationCode', () => {
       const codeInputContainer = getByTestId('code-input-container')
       for (let i = 0; i < codeInputContainer.props.children.length; i++) {
         fireEvent.changeText(getByTestId(`input-${i}`), '1')
-        rerender(<SetPhoneNumberValidationCode dismissModal={jest.fn()} visible={true} />)
+        rerender(
+          <SetPhoneNumberValidationCode
+            dismissModal={jest.fn()}
+            visible={true}
+            phoneNumber={'0612345678'}
+          />
+        )
       }
 
       await waitForExpect(() => {
@@ -74,7 +80,13 @@ describe('SetPhoneNumberValidationCode', () => {
 
       for (let i = 0; i < codeTyped.length; i++) {
         fireEvent.changeText(getByTestId(`input-${i}`), codeTyped[i])
-        rerender(<SetPhoneNumberValidationCode dismissModal={jest.fn()} visible={true} />)
+        rerender(
+          <SetPhoneNumberValidationCode
+            dismissModal={jest.fn()}
+            visible={true}
+            phoneNumber={'0612345678'}
+          />
+        )
       }
 
       await waitForExpect(() => {
@@ -88,6 +100,7 @@ function renderSetPhoneValidationCode(customProps?: any) {
   const props = {
     dismissModal: jest.fn(),
     visible: true,
+    phoneNumber: '0612345678',
     ...customProps,
   }
   return render(<SetPhoneNumberValidationCode {...props} />)

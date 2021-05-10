@@ -13,15 +13,23 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 interface SetPhoneNumberModalProps {
   visible: boolean
   dismissModal: () => void
+  onChangePhoneNumber: (value: string) => void
+  onValidationCodeAsked: () => void
+  phoneNumber: string
 }
 
 export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
+  const [phoneNumber, setPhoneNumber] = useState(props.phoneNumber)
   const {
     visible: quitSignupModalVisible,
     showModal: showQuitSignupModal,
     hideModal: hideQuitSignupModal,
-  } = useModal(props.visible)
-  const [phoneNumber, setPhoneNumber] = useState('')
+  } = useModal(false)
+
+  const onChangeText = (value: string) => {
+    setPhoneNumber(value)
+    props.onChangePhoneNumber(value)
+  }
 
   return (
     <AppModal
@@ -45,7 +53,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
             autoCapitalize="none"
             isError={false}
             keyboardType="number-pad"
-            onChangeText={setPhoneNumber}
+            onChangeText={onChangeText}
             placeholder={t`0612345678`}
             textContentType="telephoneNumber"
             value={phoneNumber}
@@ -56,6 +64,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
           title={t`Continuer`}
           disabled={!isValidPhoneNumber(phoneNumber)}
           testIdSuffix="continue"
+          onPress={props.onValidationCodeAsked}
         />
       </ModalContent>
       <QuitSignupModal
