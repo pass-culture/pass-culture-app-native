@@ -16,6 +16,7 @@ export type BookingProperties = {
   isPhysical?: boolean
   isDigital?: boolean
   isPermanent?: boolean
+  hasActivationCode?: boolean
 }
 
 export function getBookingProperties(booking?: Booking): BookingProperties {
@@ -33,6 +34,7 @@ export function getBookingProperties(booking?: Booking): BookingProperties {
     isPhysical: offer.category.categoryType === CategoryType.Thing,
     isDigital: offer.isDigital,
     isPermanent: offer.isPermanent,
+    hasActivationCode: booking.activationCode != null,
   }
 }
 
