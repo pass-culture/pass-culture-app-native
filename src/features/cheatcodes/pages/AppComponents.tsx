@@ -7,8 +7,6 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen/api'
-import { SetPhoneNumberModal } from 'features/auth/signup/SetPhoneNumberModal'
-import { SetPhoneNumberValidationCode } from 'features/auth/signup/SetPhoneNumberValidationCode'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
@@ -135,16 +133,7 @@ export const AppComponents: FunctionComponent = () => {
     showModal: showBasicModal,
     hideModal: hideBasicModal,
   } = useModal(false)
-  const {
-    visible: phoneValidationModalVisible,
-    showModal: showPhoneValidationModal,
-    hideModal,
-  } = useModal(false)
-  const {
-    visible: phoneNumberModalVisible,
-    showModal: showPhoneNumberModal,
-    hideModal: hidePhoneNumberModal,
-  } = useModal(false)
+
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
   const [inputText, setInputText] = useState('')
@@ -760,21 +749,7 @@ export const AppComponents: FunctionComponent = () => {
           </ThreeShapesTicket>
           <Text>- {`contient le mot "passculture"`}</Text>
         </AlignedText>
-        <AlignedText>
-          <Center>
-            <ButtonPrimary
-              title="Phone number validation modal"
-              onPress={showPhoneValidationModal}
-            />
-            <ButtonPrimary title="Phone number modal" onPress={showPhoneNumberModal} />
-          </Center>
-        </AlignedText>
       </AccordionItem>
-      <SetPhoneNumberValidationCode
-        visible={phoneValidationModalVisible}
-        dismissModal={hideModal}
-      />
-      <SetPhoneNumberModal visible={phoneNumberModalVisible} dismissModal={hidePhoneNumberModal} />
       <Spacer.Column numberOfSpaces={5} />
       <Spacer.BottomScreen />
     </StyledScrollView>
