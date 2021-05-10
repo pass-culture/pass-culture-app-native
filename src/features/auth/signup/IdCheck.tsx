@@ -18,9 +18,6 @@ type Props = StackScreenProps<RootStackParamList, 'IdCheck'>
 
 export const IdCheck: React.FC<Props> = function (props) {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
-  if (settings) {
-    settings.enableNativeIdCheckVersion = true
-  }
   const currentRoute = useCurrentRoute()
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
