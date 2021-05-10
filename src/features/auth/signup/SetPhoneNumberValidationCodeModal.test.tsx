@@ -1,13 +1,13 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { SetPhoneNumberValidationCode } from 'features/auth/signup/SetPhoneNumberValidationCode'
+import { SetPhoneNumberValidationCodeModal } from 'features/auth/signup/SetPhoneNumberValidationCodeModal'
 import { contactSupport } from 'features/auth/support.services'
 import { fireEvent, render } from 'tests/utils'
 import * as ModalModule from 'ui/components/modals/useModal'
 import { ColorsEnum } from 'ui/theme'
 
-describe('SetPhoneNumberValidationCode', () => {
+describe('SetPhoneNumberValidationCodeModal', () => {
   describe('modal header', () => {
     it('should open the quit modal on press right icon', () => {
       const visible = false
@@ -65,7 +65,7 @@ describe('SetPhoneNumberValidationCode', () => {
       for (let i = 0; i < codeInputContainer.props.children.length; i++) {
         fireEvent.changeText(getByTestId(`input-${i}`), '1')
         rerender(
-          <SetPhoneNumberValidationCode
+          <SetPhoneNumberValidationCodeModal
             dismissModal={jest.fn()}
             visible={true}
             phoneNumber={'0612345678'}
@@ -91,7 +91,7 @@ describe('SetPhoneNumberValidationCode', () => {
       for (let i = 0; i < codeTyped.length; i++) {
         fireEvent.changeText(getByTestId(`input-${i}`), codeTyped[i])
         rerender(
-          <SetPhoneNumberValidationCode
+          <SetPhoneNumberValidationCodeModal
             dismissModal={jest.fn()}
             visible={true}
             phoneNumber={'0612345678'}
@@ -115,5 +115,5 @@ function renderSetPhoneValidationCode(customProps?: any) {
     onGoBack: jest.fn(),
     ...customProps,
   }
-  return render(<SetPhoneNumberValidationCode {...props} />)
+  return render(<SetPhoneNumberValidationCodeModal {...props} />)
 }
