@@ -147,6 +147,24 @@ export interface BookOfferResponse {
      */
     bookingId: number;
 }/**
+ * 
+ * @export
+ * @interface BookingActivationCodeResponse
+ */
+export interface BookingActivationCodeResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingActivationCodeResponse
+     */
+    code: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof BookingActivationCodeResponse
+     */
+    expirationDate?: Date | null;
+}/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -156,6 +174,18 @@ export enum BookingCancellationReasons {
     BENEFICIARY = 'BENEFICIARY',
     EXPIRED = 'EXPIRED',
     FRAUD = 'FRAUD'
+}/**
+ * 
+ * @export
+ * @interface BookingDisplayStatusRequest
+ */
+export interface BookingDisplayStatusRequest {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BookingDisplayStatusRequest
+     */
+    ended: boolean;
 }/**
  * 
  * @export
@@ -240,6 +270,12 @@ export interface BookingOfferResponse {
  * @interface BookingReponse
  */
 export interface BookingReponse {
+    /**
+     * 
+     * @type {BookingActivationCodeResponse}
+     * @memberof BookingReponse
+     */
+    activationCode?: BookingActivationCodeResponse | null;
     /**
      * 
      * @type {Date}
@@ -1170,6 +1206,18 @@ export interface ResetPasswordRequest {
 export interface SettingsResponse {
     /**
      * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
+    allowIdCheckRegistration: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
+    autoActivateDigitalBookings: boolean;
+    /**
+     * 
      * @type {number}
      * @memberof SettingsResponse
      */
@@ -1179,16 +1227,14 @@ export interface SettingsResponse {
      * @type {boolean}
      * @memberof SettingsResponse
      */
-    isRecaptchaEnabled: boolean;
+    enableNativeIdCheckVersion: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof SettingsResponse
      */
-    allowIdCheckRegistration: boolean;
-}
-
-/**
+    isRecaptchaEnabled: boolean;
+}/**
  * 
  * @export
  * @interface SigninRequest
@@ -1380,6 +1426,18 @@ export interface ValidateEmailResponse {
      * @memberof ValidateEmailResponse
      */
     refreshToken: string;
+}/**
+ * 
+ * @export
+ * @interface ValidatePhoneNumberRequest
+ */
+export interface ValidatePhoneNumberRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof ValidatePhoneNumberRequest
+     */
+    code: string;
 }
 /**
  * DefaultApi - fetch parameter creator
@@ -1632,6 +1690,38 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary flag_booking_as_used <POST>
+         * @param {number} booking_id 
+         * @param {BookingDisplayStatusRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1bookingsbookingIdtoggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options: any = {}): Promise<FetchArgs> {
+            // verify required parameter 'booking_id' is not null or undefined
+            if (booking_id === null || booking_id === undefined) {
+                throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdtoggleDisplay.');
+            }
+            const localVarPath = `/native/v1/bookings/{booking_id}/toggle_display`
+                .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"BookingDisplayStatusRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary change_password <POST>
          * @param {ChangePasswordRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -1860,6 +1950,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary send_phone_validation_code <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1sendPhoneValidationCode(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/send_phone_validation_code`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary signin <POST>
          * @param {SigninRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -1902,6 +2014,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"ValidateEmailRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary validate_phone_number <POST>
+         * @param {ValidatePhoneNumberRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/validate_phone_number`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"ValidatePhoneNumberRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
             return {
                 url: url.format(localVarUrlObj),
@@ -2034,6 +2172,19 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary flag_booking_as_used <POST>
+         * @param {number} booking_id 
+         * @param {BookingDisplayStatusRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1bookingsbookingIdtoggleDisplay(basePath: string, booking_id: number, body?: BookingDisplayStatusRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookingsbookingIdtoggleDisplay(booking_id, body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary change_password <POST>
          * @param {ChangePasswordRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -2141,6 +2292,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary send_phone_validation_code <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1sendPhoneValidationCode(basePath: string, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendPhoneValidationCode(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary signin <POST>
          * @param {SigninRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -2160,6 +2322,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async postnativev1validateEmail(basePath: string, body?: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1validateEmail(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary validate_phone_number <POST>
+         * @param {ValidatePhoneNumberRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1validatePhoneNumber(basePath: string, body?: ValidatePhoneNumberRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1validatePhoneNumber(body, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -2290,6 +2464,19 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
+     * @summary flag_booking_as_used <POST>
+     * @param {number} booking_id 
+     * @param {BookingDisplayStatusRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1bookingsbookingIdtoggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1bookingsbookingIdtoggleDisplay(this.basePath, booking_id, body, options)
+    }
+    /**
+     * 
      * @summary change_password <POST>
      * @param {ChangePasswordRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -2397,6 +2584,17 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
+     * @summary send_phone_validation_code <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1sendPhoneValidationCode(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1sendPhoneValidationCode(this.basePath, options)
+    }
+    /**
+     * 
      * @summary signin <POST>
      * @param {SigninRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -2418,5 +2616,17 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1validateEmail(body?: ValidateEmailRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1validateEmail(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary validate_phone_number <POST>
+     * @param {ValidatePhoneNumberRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1validatePhoneNumber(this.basePath, body, options)
     }
 }
