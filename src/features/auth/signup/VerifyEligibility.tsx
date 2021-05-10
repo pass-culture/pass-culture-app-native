@@ -5,6 +5,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useDepositAmount } from 'features/auth/api'
+import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -18,13 +19,15 @@ export function VerifyEligibility(props: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const deposit = useDepositAmount()
 
+  const navigateToIdCheck = useNavigateToIdCheck()
+
   function goToHome() {
     navigate('Home')
   }
 
   function goToIdCheckWebView() {
     const { email, licenceToken } = props.route.params
-    navigate('IdCheck', { email, licenceToken })
+    navigateToIdCheck(email, licenceToken)
   }
 
   return (
