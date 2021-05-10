@@ -60,8 +60,10 @@ export const SetPhoneNumberValidationCode: FC<Props> = (props) => {
       isScrollable>
       <ModalContent>
         <Paragraphe>
-          {/* TODO(PC-8137) display phone number property */}
-          <Typo.Body>{t`Saisis le code envoyé par SMS au numéro +33\u00a01\u00a023\u00a045\u00a067\u00a089.`}</Typo.Body>
+          <Typo.Body>
+            {t`Saisis le code envoyé par SMS au numéro` +
+              ` ${formatPhoneNumber(props.phoneNumber)}.`}
+          </Typo.Body>
         </Paragraphe>
         <Spacer.Column numberOfSpaces={6} />
         <CodeInput
@@ -106,6 +108,13 @@ export const SetPhoneNumberValidationCode: FC<Props> = (props) => {
       />
     </AppModal>
   )
+}
+
+/** returns a 10-digit phone number with an unbreakable space every 2 digits
+ *  example: formatPhoneNumber('0612345678) => '06 12 34 56 78'
+ */
+const formatPhoneNumber = (phoneNumber: string) => {
+  return phoneNumber.split(/(\d{2})/).join('\u00a0')
 }
 
 const isCodeValid = (code: string | null, _isComplete: boolean) => {
