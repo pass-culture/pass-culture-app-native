@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useDepositAmount, useGetIdCheckToken } from 'features/auth/api'
+import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { MonitoringError } from 'libs/errorMonitoring'
@@ -17,10 +18,11 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const { showInfoSnackBar } = useSnackBarContext()
   const depositAmount = useDepositAmount()
   const deposit = depositAmount.replace(' ', '')
+  const navigateToIdCheck = useNavigateToIdCheck()
 
   function onButtonPress() {
     if (profile && idCheckTokenResponse?.token) {
-      navigate('IdCheck', { email: profile.email, licenceToken: idCheckTokenResponse.token })
+      navigateToIdCheck(profile.email, idCheckTokenResponse.token)
     } else if (profile && !idCheckTokenResponse?.token) {
       // TODO: when backend treat non eligible as an error instead of null, change this error handling
       throw new MonitoringError(

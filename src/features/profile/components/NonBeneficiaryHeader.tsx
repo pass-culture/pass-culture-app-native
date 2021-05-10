@@ -1,10 +1,10 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { useFocusEffect } from '@react-navigation/native'
 import React, { memo, PropsWithChildren, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useDepositAmount, useGetIdCheckToken } from 'features/auth/api'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { storage } from 'libs/storage'
@@ -24,7 +24,6 @@ interface NonBeneficiaryHeaderProps {
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   const [hasCompletedIdCheck, setHasCompletedIdCheck] = useState(false)
-  const { navigate } = useNavigation<UseNavigationType>()
   const today = new Date()
   const depositAmount = useDepositAmount()
   const deposit = depositAmount.replace(' ', '')
@@ -41,6 +40,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
       : false
   const { data } = useGetIdCheckToken(isEligible)
   const licenceToken = data?.token || ''
+  const navigateToIdCheck = useNavigateToIdCheck()
 
   useFocusEffect(() => {
     storage.readObject('has_completed_idcheck').then((value) => {
@@ -72,7 +72,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
           <ModuleBanner
             onPress={() => {
               analytics.logIdCheck('Profile')
-              navigate('IdCheck', { email: props.email, licenceToken })
+              navigateToIdCheck(props.email, licenceToken)
             }}
             leftIcon={<ThumbUp size={68} />}
             title={t({
