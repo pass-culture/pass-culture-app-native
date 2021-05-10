@@ -370,12 +370,12 @@ PODS:
     - React
   - react-native-splash-screen (3.2.0):
     - React
-  - react-native-tracking-transparency (0.1.0):
-    - React
   - react-native-text-input-mask (3.1.4):
     - InputMask (~> 6.1.0)
     - React-Core
     - React-RCTText
+  - react-native-tracking-transparency (0.1.0):
+    - React
   - react-native-webview (10.10.0):
     - React-Core
   - React-RCTActionSheet (0.63.3):
@@ -550,8 +550,8 @@ DEPENDENCIES:
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-sensitive-info (from `../node_modules/react-native-sensitive-info`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
-  - react-native-tracking-transparency (from `../node_modules/react-native-tracking-transparency`)
   - react-native-text-input-mask (from `../node_modules/react-native-text-input-mask`)
+  - react-native-tracking-transparency (from `../node_modules/react-native-tracking-transparency`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -685,10 +685,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-sensitive-info"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
-  react-native-tracking-transparency:
-    :path: "../node_modules/react-native-tracking-transparency"
   react-native-text-input-mask:
     :path: "../node_modules/react-native-text-input-mask"
+  react-native-tracking-transparency:
+    :path: "../node_modules/react-native-tracking-transparency"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
@@ -786,9 +786,9 @@ SPEC CHECKSUMS:
   FlipperKit: f42987ea58737ac0fb3fbc38f8e703452ba56940
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
-  GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
-  GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
-  GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
+  GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
+  GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
+  GoogleUtilities: 284cddc7fffc14ae1907efb6f78ab95c1fccaedc
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
@@ -856,6 +856,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 8934a98a5360fb8590dc9653e055bfce1820633d
+PODFILE CHECKSUM: 40318e93379c2de4d579821c977c6a0e09a56199
 
 COCOAPODS: 1.10.1
