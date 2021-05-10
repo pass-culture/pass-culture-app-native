@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
-update_app_version(){  
-  yarn version --"$2" --no-git-tag-version    
+update_app_version(){
+  yarn version --"$2" --no-git-tag-version
 
   VERSION=`json -f package.json version`
 
