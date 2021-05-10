@@ -21,9 +21,7 @@ describe('SetPhoneNumberValidationCode', () => {
         toggleModal: uselessFunction,
       })
 
-      const { getByTestId } = render(
-        <SetPhoneNumberValidationCode dismissModal={jest.fn()} visible={visible} />
-      )
+      const { getByTestId } = renderSetPhoneValidationCode()
 
       const rightIconButton = getByTestId('rightIconButton')
 
@@ -36,9 +34,7 @@ describe('SetPhoneNumberValidationCode', () => {
 
   describe('Contact support button', () => {
     it('should open mail app when clicking on contact support button', async () => {
-      const { findByText } = render(
-        <SetPhoneNumberValidationCode dismissModal={jest.fn()} visible={true} />
-      )
+      const { findByText } = renderSetPhoneValidationCode()
 
       const contactSupportButton = await findByText('Contacter le support')
       fireEvent.press(contactSupportButton)
@@ -51,9 +47,7 @@ describe('SetPhoneNumberValidationCode', () => {
 
   describe('Continue button', () => {
     it('should enable continue button if input is valid and complete', async () => {
-      const { getByTestId, rerender } = render(
-        <SetPhoneNumberValidationCode dismissModal={jest.fn()} visible={true} />
-      )
+      const { getByTestId, rerender } = renderSetPhoneValidationCode()
 
       const continueButton = getByTestId('button-container-continue')
       expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
@@ -74,9 +68,7 @@ describe('SetPhoneNumberValidationCode', () => {
       ['includes string', 's09453'],
       ['is too short', '54'],
     ])('should not enable continue button when "%s"', async (_reason, codeTyped) => {
-      const { getByTestId, rerender } = render(
-        <SetPhoneNumberValidationCode dismissModal={jest.fn()} visible={true} />
-      )
+      const { getByTestId, rerender } = renderSetPhoneValidationCode()
 
       const continueButton = getByTestId('button-container-continue')
 
@@ -91,3 +83,12 @@ describe('SetPhoneNumberValidationCode', () => {
     })
   })
 })
+
+function renderSetPhoneValidationCode(customProps?: any) {
+  const props = {
+    dismissModal: jest.fn(),
+    visible: true,
+    ...customProps,
+  }
+  return render(<SetPhoneNumberValidationCode {...props} />)
+}

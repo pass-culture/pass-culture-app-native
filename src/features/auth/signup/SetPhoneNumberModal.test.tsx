@@ -7,9 +7,7 @@ import { ColorsEnum } from 'ui/theme'
 describe('SetPhoneNumberModal', () => {
   describe('button "Continuer"', () => {
     it('should enable the button when the phone number is valid', () => {
-      const { getByTestId, getByPlaceholderText } = render(
-        <SetPhoneNumberModal visible dismissModal={jest.fn()} />
-      )
+      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
 
       const button = getByTestId('button-container-continue')
 
@@ -20,6 +18,7 @@ describe('SetPhoneNumberModal', () => {
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     })
+
     it.each([
       '', // empty
       '03', // too short
@@ -27,9 +26,7 @@ describe('SetPhoneNumberModal', () => {
       '022435463m', // includes char
       '1224354635', // dont start with 0
     ])('should disable the button when the phone number is not valid (%s)', (phoneNumber) => {
-      const { getByTestId, getByPlaceholderText } = render(
-        <SetPhoneNumberModal visible dismissModal={jest.fn()} />
-      )
+      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
 
       const button = getByTestId('button-container-continue')
 
@@ -42,3 +39,12 @@ describe('SetPhoneNumberModal', () => {
     })
   })
 })
+
+function renderSetPhoneNumberModal(customProps?: any) {
+  const props = {
+    visible: true,
+    dismissModal: jest.fn(),
+    ...customProps,
+  }
+  return render(<SetPhoneNumberModal {...props} />)
+}
