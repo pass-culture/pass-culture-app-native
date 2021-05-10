@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useAppSettings } from 'features/auth/settings'
+import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatToFrenchDate, formatToHour } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -12,8 +13,10 @@ export const formatDate = (limitDate: Date): string => {
 
 export const CancellationDetails: React.FC = () => {
   const stock = useBookingStock()
+  const offer = useBookingOffer()
+  const { data: settings } = useAppSettings(offer?.isDigital)
 
-  if (!stock) return <React.Fragment />
+  if (!stock || !offer) return <React.Fragment />
 
   const { cancellationLimitDatetime: limitDate } = stock
 
@@ -21,12 +24,17 @@ export const CancellationDetails: React.FC = () => {
   if (limitDate) {
     message =
       limitDate < new Date()
-        ? t`Cette réservation n’est pas annulable`
+        ? notCancellableMessage
         : t({
             id: "réservation annulable jusqu'au",
             values: { date: formatDate(limitDate) },
             message: 'Cette réservation peut être annulée jusqu’au {date}',
           })
+  }
+
+  // if "autoActivateDigitalBookings" is set, any digital booking is not cancellable
+  if (settings && settings.autoActivateDigitalBookings && offer.isDigital) {
+    message = notCancellableMessage
   }
 
   return (
@@ -38,3 +46,5 @@ export const CancellationDetails: React.FC = () => {
     </React.Fragment>
   )
 }
+
+const notCancellableMessage = t`Cette réservation n’est pas annulable`

@@ -1,7 +1,9 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import { QueryObserverResult } from 'react-query'
 
-import { OfferStockResponse } from 'api/gen'
+import { OfferStockResponse, SettingsResponse } from 'api/gen'
+import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
@@ -28,11 +30,28 @@ describe('formatDate()', () => {
 })
 
 let mockStock: OfferStockResponse | undefined = undefined
+let mockOffer = ({
+  id: 1,
+  isDuo: true,
+} as unknown) as OfferAdaptedResponse
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBookingStock: jest.fn(() => mockStock),
+  useBookingOffer: jest.fn(() => mockOffer),
 }))
 
-describe('<CancellationDetails />', () => {
+let mockSettings = {
+  autoActivateDigitalBookings: false,
+}
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(
+    () =>
+      (({
+        data: mockSettings,
+      } as unknown) as QueryObserverResult<SettingsResponse, unknown>)
+  ),
+}))
+
+describe('<CancellationDetails /> when autoActivateDigitalBookings = false', () => {
   it('should be cancellable if no limitDate specified', () => {
     mockStock = { ...notExpiredStock, cancellationLimitDatetime: null }
     const page = render(reactQueryProviderHOC(<CancellationDetails />))
@@ -57,4 +76,19 @@ describe('<CancellationDetails />', () => {
     expect(page.queryByText(/Cette réservation est annulable/)).toBeFalsy()
     expect(page.queryByText(/Cette réservation n’est pas annulable/)).toBeFalsy()
   })
+})
+
+describe('<CancellationDetails /> when autoActivateDigitalBookings = true', () => {
+  it.each([null, pastDate, futureDate])(
+    'should not be cancellable when booking is digital and cancellation limit date is set to "%s"',
+    (cancellationLimitDatetime) => {
+      mockStock = { ...notExpiredStock, cancellationLimitDatetime }
+      mockOffer = ({ ...mockOffer, isDigital: true } as unknown) as OfferAdaptedResponse
+      mockSettings = { autoActivateDigitalBookings: true }
+      const page = render(reactQueryProviderHOC(<CancellationDetails />))
+      expect(page.queryByText('Cette réservation n’est pas annulable')).toBeTruthy()
+      expect(page.queryByText(/Cette réservation est annulable/)).toBeFalsy()
+      expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeFalsy()
+    }
+  )
 })
