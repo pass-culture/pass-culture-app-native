@@ -37,6 +37,25 @@ export async function flushAllPromisesTimes(times: number) {
   }
 }
 
+export const useMutationFactory = (storageFunction: {
+  onError: (error: unknown) => void
+  onSuccess: () => void
+}) => {
+  const mutate = jest.fn()
+  return (
+    mutationFunction: () => void,
+    mutationOptions: { onError: () => void; onSuccess: () => void }
+  ) => {
+    storageFunction.onError = mutationOptions?.onError
+    storageFunction.onSuccess = mutationOptions?.onSuccess
+    return {
+      mutationFunction,
+      mutationOptions,
+      mutate,
+    }
+  }
+}
+
 export async function superFlushWithAct(times = 50) {
   await act(async () => {
     await flushAllPromisesTimes(times)
