@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { CategoryType } from 'api/gen'
+import { CategoryType, SettingsResponse } from 'api/gen'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -42,7 +42,11 @@ function isDuoBooking(booking: Booking) {
   return booking.quantity === 2
 }
 
-export function getBookingLabels(booking: Booking, properties: BookingProperties) {
+export function getBookingLabels(
+  booking: Booking,
+  properties: BookingProperties,
+  appSettings?: SettingsResponse
+) {
   const { stock } = booking
 
   const beginningDatetime = stock.beginningDatetime ? new Date(stock.beginningDatetime) : null
@@ -58,6 +62,12 @@ export function getBookingLabels(booking: Booking, properties: BookingProperties
 
   if (properties.isPermanent) {
     dateLabel = t`Permanent`
+  } else if (
+    appSettings &&
+    appSettings.autoActivateDigitalBookings &&
+    properties.hasActivationCode
+  ) {
+    dateLabel = getBookingLabelForActivationCode(booking)
   } else if (properties.isEvent) {
     dateLabel = beginningDatetime
       ? t({
@@ -93,4 +103,26 @@ export function getBookingLabels(booking: Booking, properties: BookingProperties
   }
 
   return { dateLabel, withdrawLabel, locationLabel }
+}
+
+/**
+ * @warning Calling this function assumes appSettings.autoActivateDigitalBookings === true
+ * @param booking
+ * @param properties
+ */
+export function getBookingLabelForActivationCode(booking: Booking) {
+  let dateLabel = ''
+
+  if (booking.activationCode?.expirationDate) {
+    const dateLimit = formatToCompleteFrenchDate(booking.activationCode?.expirationDate, false)
+    dateLabel = t({
+      id: 'activate before date',
+      values: { dateLimit },
+      message: 'À activer avant le {dateLimit}',
+    })
+  } else {
+    dateLabel = t`À activer`
+  }
+
+  return dateLabel
 }
