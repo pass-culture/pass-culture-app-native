@@ -7,16 +7,14 @@ import {
   LayoutRectangle,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  View,
 } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryNameEnum } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { useOngoingBooking } from 'features/bookings/api/queries'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
+import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import {
@@ -24,7 +22,6 @@ import {
   TICKET_MIN_HEIGHT,
 } from 'features/bookings/components/ThreeShapesTicket'
 import { getBookingProperties } from 'features/bookings/helpers'
-import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
@@ -43,7 +40,6 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const TICKET_MAX_WIDTH = 300
 const TICKET_WIDTH = Dimensions.get('screen').width - getSpacing(15)
-const QR_CODE_SIZE = 170
 const MINIMAL_TICKET_CONTENT_SIZE = 100
 const MINIMAL_BACKGROUND_SIZE = TICKET_MIN_HEIGHT + MINIMAL_TICKET_CONTENT_SIZE
 
@@ -90,7 +86,6 @@ export function BookingDetails() {
 
   const properties = getBookingProperties(booking)
   const { offer } = booking.stock
-  const shouldDisplayEAN = offer.extraData?.isbn && offer.category.name === CategoryNameEnum.LIVRE
   const shouldDisplayItineraryButton =
     canOpenItinerary && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
   const activationCodeFeatureEnabled =
@@ -162,12 +157,6 @@ export function BookingDetails() {
     })
   }
 
-  const accessExternalOffer = () => {
-    if (offer.url) {
-      analytics.logAccessExternalOffer(offer.id)
-      openExternalUrl(offer.url)
-    }
-  }
   const ticketFooterWidth = Math.min(TICKET_WIDTH, TICKET_MAX_WIDTH)
   const ticketFooterHeigth = ticketFooterWidth / ticketFooterRatio
 
@@ -205,27 +194,7 @@ export function BookingDetails() {
               updateTicketBottomPosition(event.nativeEvent.layout)
             }}>
             <ThreeShapesTicket width={ticketFooterWidth} color={ColorsEnum.WHITE}>
-              <TicketContent>
-                <Title>{offer.name}</Title>
-                <TicketInnerContent>
-                  <Token>{booking.token}</Token>
-                  {properties.isDigital ? (
-                    <InnerButtonContainer>
-                      <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
-                    </InnerButtonContainer>
-                  ) : booking.qrCodeData ? (
-                    <View testID="qr-code">
-                      <QRCode value={booking.qrCodeData} size={QR_CODE_SIZE} />
-                    </View>
-                  ) : null}
-                  {shouldDisplayEAN && (
-                    <EANContainer>
-                      <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
-                      <Typo.Body color={ColorsEnum.GREY_DARK}>{offer.extraData?.isbn}</Typo.Body>
-                    </EANContainer>
-                  )}
-                </TicketInnerContent>
-              </TicketContent>
+              <BookingDetailsTicketContent booking={booking} offer={offer} />
             </ThreeShapesTicket>
           </TicketContainer>
         </HeroHeader>
@@ -273,40 +242,6 @@ const paddingHorizontal = getSpacing(5)
 
 const TicketContainer = styled.View({
   flex: 1,
-})
-
-const TicketContent = styled.View({
-  paddingHorizontal: getSpacing(7),
-  paddingVertical: getSpacing(2),
-  alignItems: 'center',
-  minHeight: TICKET_MIN_HEIGHT,
-})
-
-const Title = styled(Typo.Title3)({
-  paddingHorizontal: getSpacing(1),
-  textAlign: 'center',
-})
-
-const Token = styled(Typo.Title4)({
-  color: ColorsEnum.PRIMARY,
-  textAlign: 'center',
-  padding: getSpacing(2.5),
-})
-
-const TicketInnerContent = styled.View({
-  alignItems: 'center',
-  justifyContent: 'center',
-  flex: 1,
-})
-
-const InnerButtonContainer = styled.View({
-  flexDirection: 'row',
-})
-
-const EANContainer = styled.View({
-  paddingTop: getSpacing(2.5),
-  flexDirection: 'row',
-  alignItems: 'center',
 })
 
 const OfferRules = styled(Typo.Caption)({
