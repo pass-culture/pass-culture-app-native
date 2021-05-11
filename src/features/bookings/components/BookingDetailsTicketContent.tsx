@@ -19,7 +19,6 @@ interface BookingDetailsTicketContentProps {
 
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
   const { offer, booking } = props
-  const shouldDisplayEAN = offer.extraData?.isbn && offer.category.name === CategoryNameEnum.LIVRE
   const properties = getBookingProperties(booking)
 
   const accessExternalOffer = () => {
@@ -39,21 +38,39 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
             <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
           </InnerButtonContainer>
         ) : booking.qrCodeData ? (
-          <View testID="qr-code">
-            <QRCode value={booking.qrCodeData} size={QR_CODE_SIZE} />
-          </View>
+          <QrCodeView qrCodeData={booking.qrCodeData} />
         ) : null}
-        {shouldDisplayEAN && (
-          <EANContainer>
-            <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
-            <Typo.Body color={ColorsEnum.GREY_DARK}>{offer.extraData?.isbn}</Typo.Body>
-          </EANContainer>
-        )}
+        <Ean offer={offer} />
       </TicketInnerContent>
     </TicketContent>
   )
 }
+
 const QR_CODE_SIZE = 170
+
+type EanProps = {
+  offer: BookingOfferResponse
+}
+const Ean = ({ offer }: EanProps) => {
+  const shouldDisplayEAN = offer.extraData?.isbn && offer.category.name === CategoryNameEnum.LIVRE
+  return shouldDisplayEAN ? (
+    <EANContainer>
+      <Typo.Caption>{t`EAN` + '\u00a0'}</Typo.Caption>
+      <Typo.Body color={ColorsEnum.GREY_DARK}>{offer.extraData?.isbn}</Typo.Body>
+    </EANContainer>
+  ) : null
+}
+
+type QrCodeViewProps = {
+  qrCodeData: string
+}
+const QrCodeView = ({ qrCodeData }: QrCodeViewProps) => {
+  return (
+    <View testID="qr-code">
+      <QRCode value={qrCodeData} size={QR_CODE_SIZE} />
+    </View>
+  )
+}
 
 const TicketContent = styled.View({
   paddingHorizontal: getSpacing(7),
