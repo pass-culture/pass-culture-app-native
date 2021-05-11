@@ -88,8 +88,7 @@ export function BookingDetails() {
   const { offer } = booking.stock
   const shouldDisplayItineraryButton =
     canOpenItinerary && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
-  const activationCodeFeatureEnabled =
-    properties.hasActivationCode == true && appSettings && appSettings.autoActivateDigitalBookings
+  const activationCodeFeatureEnabled = appSettings && appSettings.autoActivateDigitalBookings
 
   const renderOfferRules = properties.isDigital ? (
     <OfferRules>
@@ -109,7 +108,7 @@ export function BookingDetails() {
   }
 
   const renderCancellationCTA = () => {
-    if (activationCodeFeatureEnabled) {
+    if (properties.hasActivationCode == true && activationCodeFeatureEnabled) {
       return <ButtonSecondary title={t`Terminer`} onPress={() => null} testIdSuffix={'archive'} />
     }
 
