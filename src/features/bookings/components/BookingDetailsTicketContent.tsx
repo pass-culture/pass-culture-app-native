@@ -13,12 +13,13 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 interface BookingDetailsTicketContentProps {
-  offer: BookingOfferResponse
   booking: BookingReponse
+  activationCodeFeatureEnabled?: boolean
 }
 
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
-  const { offer, booking } = props
+  const { booking, activationCodeFeatureEnabled } = props
+  const offer = booking.stock.offer
   const properties = getBookingProperties(booking)
 
   const accessExternalOffer = () => {
@@ -28,11 +29,13 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
     }
   }
 
+  const token = activationCodeFeatureEnabled ? booking.activationCode?.code : booking.token
+
   return (
     <TicketContent>
       <Title>{offer.name}</Title>
       <TicketInnerContent>
-        <Token>{booking.token}</Token>
+        <Token>{token}</Token>
         {properties.isDigital ? (
           <InnerButtonContainer>
             <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
