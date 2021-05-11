@@ -1812,9 +1812,9 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
-"@pass-culture/id-check@file:./manual_dependencies/pass-culture-id-check-v0.0.3.tgz":
-  version "0.0.3"
-  resolved "file:./manual_dependencies/pass-culture-id-check-v0.0.3.tgz#7d19248077b487cf2a4d71ff997bcbe6f8e694c5"
+"@pass-culture/id-check@file:./manual_dependencies/pass-culture-id-check-v0.0.4.tgz":
+  version "0.0.4"
+  resolved "file:./manual_dependencies/pass-culture-id-check-v0.0.4.tgz#8ea8e6f5bd10bc89d92a182df4e0cd3af46dbf4e"
   dependencies:
     deepmerge "^4.2.2"
     lodash "^4.17.21"

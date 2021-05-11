@@ -111,6 +111,9 @@ const App: FunctionComponent = function () {
                                 reTryTitle: t`Recommencer`,
                                 okTitle: t`OK`,
                               },
+                              maxWidth: 3000,
+                              maxHeight: 3000,
+                              quality: 0.7,
                             }}
                             apiBaseUrl={env.ID_CHECK_API_URL}
                             errorMonitoring={errorMonitoring}

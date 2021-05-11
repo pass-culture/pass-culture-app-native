@@ -85,7 +85,7 @@ module.exports = {
   },
 
   resolver: {
-    sourceExts: ['js', 'ts', 'tsx', 'mjs'],
+    sourceExts: ['jsx', 'js', 'ts', 'tsx', 'mjs'],
 
     // Register an "extra modules proxy" for resolving modules outside of the normal resolution logic.
     // eslint-disable-next-line no-undef
