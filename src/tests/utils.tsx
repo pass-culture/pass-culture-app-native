@@ -37,6 +37,17 @@ export async function flushAllPromisesTimes(times: number) {
   }
 }
 
+// @ts-ignore TODO type or general uses
+export const useMutationFactory = (storageFunction) => (mutationFunction, mutationOptions) => {
+  storageFunction.onError = mutationOptions.onError
+  storageFunction.onSuccess = mutationOptions.onSuccess
+  return {
+    mutationFunction,
+    mutationOptions,
+    mutate: () => {},
+  }
+}
+
 export async function superFlushWithAct(times = 50) {
   await act(async () => {
     await flushAllPromisesTimes(times)
