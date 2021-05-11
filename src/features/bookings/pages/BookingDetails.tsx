@@ -194,7 +194,10 @@ export function BookingDetails() {
               updateTicketBottomPosition(event.nativeEvent.layout)
             }}>
             <ThreeShapesTicket width={ticketFooterWidth} color={ColorsEnum.WHITE}>
-              <BookingDetailsTicketContent booking={booking} offer={offer} />
+              <BookingDetailsTicketContent
+                booking={booking}
+                activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+              />
             </ThreeShapesTicket>
           </TicketContainer>
         </HeroHeader>
