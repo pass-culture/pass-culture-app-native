@@ -114,7 +114,8 @@ export function getBookingLabelForActivationCode(booking: Booking) {
   let dateLabel = ''
 
   if (booking.activationCode?.expirationDate) {
-    const dateLimit = formatToCompleteFrenchDate(booking.activationCode?.expirationDate, false)
+    const dateLimit = formatToCompleteFrenchDate(booking.activationCode.expirationDate, false)
+
     dateLabel = t({
       id: 'activate before date',
       values: { dateLimit },

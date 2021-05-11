@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { Clock } from 'ui/svg/icons/Clock'
@@ -17,11 +18,13 @@ import { BookingItemProps } from './types'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { data: settings } = useAppSettings()
+
   const { stock } = booking
   const bookingProperties = getBookingProperties(booking)
 
   const iconName = stock.offer.category.name || null
-  const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties)
+  const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties, settings)
 
   return (
     <Container
