@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { AccountRequest, GetIdCheckTokenResponse, SigninRequest } from 'api/gen'
@@ -36,6 +36,11 @@ type SignUpResponse =
         general: string[]
       }
     }
+
+interface SendPhoneValidationProps {
+  onSuccess: () => void
+  onError: (error: unknown) => void
+}
 
 export function useSignIn(): (data: SigninRequest) => Promise<SignInResponse> {
   const loginRoutine = useLoginRoutine()
@@ -91,4 +96,14 @@ export function useDepositAmount() {
   const { data: settings } = useAppSettings()
   const amount = settings?.depositAmount ?? 30000
   return formatToFrenchDecimal(amount)
+}
+
+export function useSendPhoneValidationMutation({ onSuccess, onError }: SendPhoneValidationProps) {
+  return useMutation(
+    (phoneNumber: string) => api.postnativev1sendPhoneValidationCode({ phoneNumber }),
+    {
+      onSuccess,
+      onError,
+    }
+  )
 }
