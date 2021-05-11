@@ -42,6 +42,7 @@ export type RootStackParamList = {
   Login: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
   Maintenance: undefined
   Navigation: undefined
+  NavigationIdCheckErrors: undefined
   NotificationSettings: undefined
   Offer: {
     id: number
