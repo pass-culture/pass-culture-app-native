@@ -6,6 +6,7 @@ export enum QueryKeys {
   HOMEPAGE_MODULES = 'homepageModules',
   ID_CHECK_TOKEN = 'idCheckToken',
   OFFER = 'offer',
+  PHONE_VALIDATION_CODE = 'phoneValidationCode',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
   RESET_PASSWORD_EXPIRED_LINK = 'resetPasswordExpiredLink',

@@ -7,6 +7,7 @@ import {
   OfferResponse,
   RequestPasswordResetRequest,
   ResetPasswordRequest,
+  SendPhoneValidationRequest,
   SettingsResponse,
   SigninRequest,
   SigninResponse,
@@ -59,7 +60,13 @@ export const server = setupServer(
   ),
   rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(bookingsSnap))
-  })
+  }),
+  rest.post<SendPhoneValidationRequest, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/send_phone_validation_code',
+    (_req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({}))
+    }
+  )
 )
 
 export function requestPasswordResetSuccess() {
