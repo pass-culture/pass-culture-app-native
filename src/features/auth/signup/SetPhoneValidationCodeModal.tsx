@@ -30,7 +30,7 @@ interface CodeInputState extends CodeValidation {
   code: string | null
 }
 
-export const SetPhoneNumberValidationCodeModal: FC<Props> = (props) => {
+export const SetPhoneValidationCodeModal: FC<Props> = (props) => {
   const [codeInputState, setCodeInputState] = useState<CodeInputState>({
     code: null,
     isComplete: false,

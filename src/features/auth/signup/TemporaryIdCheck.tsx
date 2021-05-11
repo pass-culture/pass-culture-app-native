@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { SetPhoneNumberModal } from 'features/auth/signup/SetPhoneNumberModal'
-import { SetPhoneNumberValidationCodeModal } from 'features/auth/signup/SetPhoneNumberValidationCodeModal'
+import { SetPhoneValidationCodeModal } from 'features/auth/signup/SetPhoneValidationCodeModal'
 import { useModal } from 'ui/components/modals/useModal'
 
 export const TemporaryIdCheck: React.FC = function () {
@@ -37,7 +37,7 @@ export const TemporaryIdCheck: React.FC = function () {
         onValidationCodeAsked={onValidationCodeAsked}
         phoneNumber={phoneNumber}
       />
-      <SetPhoneNumberValidationCodeModal
+      <SetPhoneValidationCodeModal
         visible={phoneValidationModalVisible}
         dismissModal={hidePhoneValidationModal}
         phoneNumber={phoneNumber}
