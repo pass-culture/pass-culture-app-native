@@ -1,5 +1,6 @@
-import { useMutation } from 'react-query'
+import { useState } from 'react'
 
 export const useFlakyUseQueryMutation = () => {
-  return useMutation(() => Promise.resolve('hello'))
+  const [toto, setToto] = useState(true)
+  return { mutate: () => setToto(false), toto }
 }
