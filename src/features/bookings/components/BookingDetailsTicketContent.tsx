@@ -29,24 +29,35 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
     }
   }
 
-  const token =
+  const accessOfferButton = (
+    <InnerButtonContainer>
+      <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
+    </InnerButtonContainer>
+  )
+
+  const isDigitalAndActivationCodeEnabled =
     activationCodeFeatureEnabled && properties.hasActivationCode
-      ? booking.activationCode?.code
-      : booking.token
 
   return (
     <TicketContent>
       <Title>{offer.name}</Title>
       <TicketInnerContent>
-        <Token>{token}</Token>
-        {properties.isDigital ? (
-          <InnerButtonContainer>
-            <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
-          </InnerButtonContainer>
-        ) : booking.qrCodeData ? (
-          <QrCodeView qrCodeData={booking.qrCodeData} />
-        ) : null}
-        <Ean offer={offer} />
+        {isDigitalAndActivationCodeEnabled ? (
+          <React.Fragment>
+            <Token>{booking.activationCode?.code}</Token>
+            {accessOfferButton}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <Token>{booking.token}</Token>
+            {properties.isDigital ? (
+              accessOfferButton
+            ) : booking.qrCodeData ? (
+              <QrCodeView qrCodeData={booking.qrCodeData} />
+            ) : null}
+            <Ean offer={offer} />
+          </React.Fragment>
+        )}
       </TicketInnerContent>
     </TicketContent>
   )
