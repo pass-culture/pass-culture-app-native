@@ -310,6 +310,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('TemporaryIdCheck')}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={`Id Check V2 errors`}
+            onPress={() => navigation.navigate('NavigationIdCheckErrors')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

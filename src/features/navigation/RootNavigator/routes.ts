@@ -1,6 +1,7 @@
 import {
   routes as idCheckRoutes,
   initialRouteName as idCheckInitialRouteName,
+  withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
 } from '@pass-culture/id-check'
 import { LinkingOptions } from '@react-navigation/native'
 
@@ -32,6 +33,7 @@ import { AppComponents } from 'features/cheatcodes/pages/AppComponents'
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
+import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
@@ -89,6 +91,11 @@ const routes: Array<Route> = [
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary },
   { name: 'Maintenance', component: Maintenance },
   { name: 'Navigation', component: Navigation, hoc: withAsyncErrorBoundary },
+  {
+    name: 'NavigationIdCheckErrors',
+    component: NavigationIdCheckErrors,
+    hoc: withIdCheckAsyncErrorBoundary,
+  },
   { name: 'NotificationSettings', component: NotificationSettings },
   { name: 'Offer', component: Offer, hoc: withAsyncErrorBoundary },
   { name: 'OfferDescription', component: OfferDescription, hoc: withAsyncErrorBoundary },
