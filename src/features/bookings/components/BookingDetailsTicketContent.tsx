@@ -29,7 +29,10 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
     }
   }
 
-  const token = activationCodeFeatureEnabled ? booking.activationCode?.code : booking.token
+  const token =
+    activationCodeFeatureEnabled && properties.hasActivationCode
+      ? booking.activationCode?.code
+      : booking.token
 
   return (
     <TicketContent>
