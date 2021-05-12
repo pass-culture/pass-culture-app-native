@@ -1201,6 +1201,18 @@ export interface ResetPasswordRequest {
 }/**
  * 
  * @export
+ * @interface SendPhoneValidationRequest
+ */
+export interface SendPhoneValidationRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SendPhoneValidationRequest
+     */
+    phoneNumber?: string | null;
+}/**
+ * 
+ * @export
  * @interface SettingsResponse
  */
 export interface SettingsResponse {
@@ -1951,20 +1963,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary send_phone_validation_code <POST>
+         * @param {SendPhoneValidationRequest} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postnativev1sendPhoneValidationCode(options: any = {}): Promise<FetchArgs> {
+        async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/send_phone_validation_code`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
             // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"SendPhoneValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -2293,11 +2309,12 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         /**
          * 
          * @summary send_phone_validation_code <POST>
+         * @param {SendPhoneValidationRequest} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postnativev1sendPhoneValidationCode(basePath: string, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendPhoneValidationCode(options);
+        async postnativev1sendPhoneValidationCode(basePath: string, body?: SendPhoneValidationRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendPhoneValidationCode(body, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -2585,13 +2602,14 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @summary send_phone_validation_code <POST>
+     * @param {SendPhoneValidationRequest} [body] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public async postnativev1sendPhoneValidationCode(options?: any) {
+    public async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1sendPhoneValidationCode(this.basePath, options)
+        return functionalApi.postnativev1sendPhoneValidationCode(this.basePath, body, options)
     }
     /**
      * 
