@@ -102,7 +102,7 @@ const App: FunctionComponent = function () {
                               tintColor: ColorsEnum.PRIMARY,
                               title: t`Où se trouve votre document ?`,
                               cancelButtonTitle: t`Plus tard`,
-                              takePhotoButtonTitle: t`Je le prend en photo`,
+                              takePhotoButtonTitle: t`Je le prends en photo`,
                               chooseFromLibraryButtonTitle: t`J'envoie une copie`,
                               chooseWhichLibraryTitle: t`Où se trouve votre copie ?`,
                               permissionDenied: {
