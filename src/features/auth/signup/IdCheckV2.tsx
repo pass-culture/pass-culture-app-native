@@ -14,7 +14,7 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   }
 
   function onSuccess() {
-    replace(homeNavigateConfig.screen, homeNavigateConfig.params)
+    replace('BeneficiaryRequestSent')
   }
 
   useEffect(() => {
