@@ -74,8 +74,9 @@ export function useDeeplinkUrlHandler() {
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (event: DeeplinkEvent) => {
+    const url = unescape(event.url)
     try {
-      const { screen, params } = getScreenFromDeeplink(event.url)
+      const { screen, params } = getScreenFromDeeplink(url)
 
       if (!screen) {
         // this error is not displayed to the user but used to trigger the catch branch below
@@ -85,7 +86,7 @@ export function useDeeplinkUrlHandler() {
       handleDeeplinkAnalytics(screen, params)
       navigate(screen, params)
     } catch {
-      onError(DEFAULT_ERROR_MESSAGE + ' : ' + event.url)
+      onError(DEFAULT_ERROR_MESSAGE + ' : ' + url)
     }
   }
 }
