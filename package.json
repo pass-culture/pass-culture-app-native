@@ -1,7 +1,7 @@
 {
   "name": "PassCulture",
-  "version": "1.134.1",
-  "build": 1013401,
+  "version": "1.134.2",
+  "build": 1013402,
   "private": true,
   "engines": {
     "node": ">=12.13.0 <13.0.0"
