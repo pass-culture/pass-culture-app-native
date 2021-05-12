@@ -1,8 +1,11 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { useSendPhoneValidationMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { currentTimestamp } from 'libs/dates'
+import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -20,11 +23,42 @@ interface SetPhoneNumberModalProps {
 
 export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
   const [phoneNumber, setPhoneNumber] = useState(props.phoneNumber)
+  const [validationCodeRequestTimestamp, setValidationCodeRequestTimestamp] = useState<
+    null | number
+  >(null)
   const {
     visible: quitSignupModalVisible,
     showModal: showQuitSignupModal,
     hideModal: hideQuitSignupModal,
   } = useModal(false)
+
+  useEffect(() => {
+    storage.readObject('phone_validation_code_asked_at').then((value) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setValidationCodeRequestTimestamp(value as any)
+    })
+  }, [])
+
+  function onSuccess() {
+    const now = currentTimestamp()
+    storage.saveObject('phone_validation_code_asked_at', now)
+    setValidationCodeRequestTimestamp(now)
+    props.onValidationCodeAsked()
+  }
+
+  const { mutate: sendPhoneValidationCode } = useSendPhoneValidationMutation({
+    onSuccess,
+    onError: (_error: unknown) => {
+      // TODO(8702) display error message in a toaster
+    },
+  })
+
+  function requestSendPhoneValidationCode() {
+    const timeSinceLastRequest = currentTimestamp() - (validationCodeRequestTimestamp ?? 0)
+    if (validationCodeRequestTimestamp === null || timeSinceLastRequest > 60) {
+      sendPhoneValidationCode(phoneNumber)
+    }
+  }
 
   const onChangeText = (value: string) => {
     setPhoneNumber(value)
@@ -62,9 +96,10 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
           title={t`Continuer`}
+          // TODO(PC-8374) display timer if validation code was requested less than a minute ago
           disabled={!isValidPhoneNumber(phoneNumber)}
           testIdSuffix="continue"
-          onPress={props.onValidationCodeAsked}
+          onPress={requestSendPhoneValidationCode}
         />
       </ModalContent>
       <QuitSignupModal
