@@ -32,12 +32,24 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     hideModal: hideQuitSignupModal,
   } = useModal(false)
 
+  const [timeSinceLastRequest, setTimeSinceLastRequest] = useState(0)
+  const isRequestTimestampExpired =
+    validationCodeRequestTimestamp === null || timeSinceLastRequest > 60
+
   useEffect(() => {
     storage.readObject('phone_validation_code_asked_at').then((value) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setValidationCodeRequestTimestamp(value as any)
     })
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeSinceLastRequest(currentTimestamp() - (validationCodeRequestTimestamp ?? 0))
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [validationCodeRequestTimestamp])
 
   function onSuccess() {
     const now = currentTimestamp()
@@ -54,15 +66,23 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
   })
 
   function requestSendPhoneValidationCode() {
-    const timeSinceLastRequest = currentTimestamp() - (validationCodeRequestTimestamp ?? 0)
-    if (validationCodeRequestTimestamp === null || timeSinceLastRequest > 60) {
+    if (isRequestTimestampExpired) {
       sendPhoneValidationCode(phoneNumber)
     }
   }
 
-  const onChangeText = (value: string) => {
+  function onChangeText(value: string) {
     setPhoneNumber(value)
     props.onChangePhoneNumber(value)
+  }
+
+  const isContinueButtonEnabled =
+    isRequestTimestampExpired && Boolean(isValidPhoneNumber(phoneNumber))
+
+  function getButtonTitle() {
+    if (!isValidPhoneNumber(phoneNumber) || isRequestTimestampExpired) return t`Continuer`
+    const remainingTime = 60 - timeSinceLastRequest
+    return t`Attends` + ` ${remainingTime}s.`
   }
 
   return (
@@ -95,9 +115,9 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
         </StyledInput>
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
-          title={t`Continuer`}
+          title={getButtonTitle()}
           // TODO(PC-8374) display timer if validation code was requested less than a minute ago
-          disabled={!isValidPhoneNumber(phoneNumber)}
+          disabled={!isContinueButtonEnabled}
           testIdSuffix="continue"
           onPress={requestSendPhoneValidationCode}
         />
