@@ -74,8 +74,8 @@ export function useDeeplinkUrlHandler() {
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (event: DeeplinkEvent) => {
+    const url = unescape(event.url)
     try {
-      const url = unescape(event.url)
       const { screen, params } = getScreenFromDeeplink(url)
 
       if (!screen) {
