@@ -1,4 +1,4 @@
-# DEPLOY APP
+# Application deployment
 
 Linked documentation: https://www.notion.so/passcultureapp/Processus-d-ploiement-MES-MEP-App-Native-bc75cbf31d6146ee88c8c031eb14b655
 
@@ -30,7 +30,7 @@ If I modified native code, I need to hard deploy:
 
 - `yarn trigger:testing:deploy:patch`
   This will bump the patch number, create a tag `testing_vX.X.X+1` and push it.
-  CircleCI will detect the tag and launch the lanes `deploy-android-testing-hard` & `deploy-ios-testing-hard` (see `.circleci/config.yml` file)
+  CircleCI will detect the tag and run `deploy-android-testing-hard` & `deploy-ios-testing-hard` jobs (see `.circleci/config.yml` file)
 
 ## Staging (MES)
 
@@ -42,7 +42,7 @@ Download the app:
 
 ### Hard deploy (once a week, manual)
 
-When you want to deploy the current version of master in staging, you can run the following commands:
+To deploy the current version of master in staging, you can run the following commands:
 
 - `yarn trigger:staging:deploy`
 
@@ -51,7 +51,7 @@ This will bump the `minor` version, create a tag `vX.X+1.X` and push it.
 - or `trigger:staging:deploy:patch`
   This will bump the `patch` version, create a  tag `vX.X.X+1` and push it.
 
-CircleCI will detect the tag `vX.X.X` and launch the lanes `deploy-ios-staging-hard` & `deploy-android-staging-hard` (see `.circleci/config.yml` file)
+CircleCI will detect the tag `vX.X.X` and run `deploy-ios-staging-hard` & `deploy-android-staging-hard` jobs (see `.circleci/config.yml` file)
 
 ## Production (MEP)
 
@@ -62,34 +62,38 @@ CircleCI will detect the tag `vX.X.X` and launch the lanes `deploy-ios-staging-h
 - `yarn trigger:production:deploy <tag>`
 
 This will create a tag `prod-hard-deploy`
-CircleCI will detect the tag and launch the lane `deploy-android-production-hard` & `deploy-ios-production-hard` (see `.circleci/config.yml` file)
+CircleCI will detect the tag and run `deploy-android-production-hard` & `deploy-ios-production-hard` jobs (see `.circleci/config.yml` file)
 
 ## Hotfix
 
 ### When
 
-Only if there is a bug really urgent in production, that we need to fix very quickly.
+Only if there is a bug in production, we need to hotfix as soon as possible.
 
 ### How
 
-- List all tags of the version `X.X.X`, tags of type: `vX.X.X-Y`
-- Checkout on the tag with the biggest Y (if no tag with Y, checkout on `vX.X.X`)
-- `git checkout -b hotfix/vX.X.X-Y`
-- Code the fix
-- Commit
-- `git tag vX.X.X-(Y+1)`
-- `git tag hotfix-staging-vX.X.X-(Y+1)`
-- `git push origin hotfix-staging-vX.X.X-(Y+1)`: this will deploy it to `staging`
-- Validate the fix with the PO on staging app (version X.X.X)
-- If it is OK for the PO, deploy it to production:
-- `git tag hotfix-production-vX.X.X-(Y+1)`
-- `git push origin hotfix-production-vX.X.X-(Y+1)`: this will deploy it to `production`
-- ⚠️ Do not forget to create a pull request from your branch to `master` to retrieve fixes on master branch
+1. To list `X.X.X` and `vX.X.X-Y` related tags: `git tag -l | grep X.X.X`
+1. Checkout on the tag with the biggest Y (if no tag with Y, checkout on `vX.X.X`)
+1. `git checkout -b hotfix/vX.X.X-Y`  *(with `Y` greater that `0`)*
+1. Code the fix
+1. Commit
+1. `git tag vX.X.X-(Y+1)`
+1. `git tag hotfix-staging-vX.X.X-(Y+1)`
+1. `git push origin hotfix-staging-vX.X.X-(Y+1)`: this will deploy it to `staging`
+1. Validate the fix with the PO on staging app (version X.X.X)
+1. After PO validation, you can now deploy to production:
+1. `git tag hotfix-production-vX.X.X-(Y+1)`
+1. `git push origin hotfix-production-vX.X.X-(Y+1)`: this will soft deploy to `production` on Circle CI.
+1. Track the CI job until it succeed then warn your PO to test the latest production version. If it fail: you can delete the local and remote created tag and redo. 
+1. ⚠️ If you have not done it yet, **do not** forget to create a pull request from your branch to `master` to also includes your fix on `master` branch
 
+> It is on purpose that we do not push the tag without the prefix as it will trigger a hard deploy.
+> TODO: see with marion why we need a local tag 
+> 
 ### Troubleshooting
 
 If I don't see my codepush on staging/prod app:
 
 - Check that you find it on AppCenter: https://appcenter.ms/orgs/pass-Culture/apps/PassCulture-<env></env:staging|prod>-<os:ios|android>/distribute/code-push
 
-![img](./CodePushOnAppCenter.png)
+![Code push](./CodePushOnAppCenter.png)
