@@ -6,6 +6,7 @@ import { useSendPhoneValidationMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
+import { useTimer } from 'libs/timer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -32,7 +33,10 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     hideModal: hideQuitSignupModal,
   } = useModal(false)
 
-  const [timeSinceLastRequest, setTimeSinceLastRequest] = useState(0)
+  const timeSinceLastRequest = useTimer(
+    validationCodeRequestTimestamp,
+    (elapsedTime: number) => elapsedTime > 60
+  )
   const isRequestTimestampExpired =
     validationCodeRequestTimestamp === null || timeSinceLastRequest > 60
 
@@ -42,14 +46,6 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
       setValidationCodeRequestTimestamp(value as any)
     })
   }, [])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeSinceLastRequest(currentTimestamp() - (validationCodeRequestTimestamp ?? 0))
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [validationCodeRequestTimestamp])
 
   function onSuccess() {
     const now = currentTimestamp()
