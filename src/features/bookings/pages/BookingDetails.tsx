@@ -13,6 +13,7 @@ import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { useOngoingBooking } from 'features/bookings/api/queries'
+import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
@@ -28,9 +29,7 @@ import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
-import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { interpolationConfig } from 'ui/components/headers/animationHelpers'
 import { blurImageHeight, HeroHeader } from 'ui/components/headers/HeroHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -105,47 +104,6 @@ export function BookingDetails() {
   const cancelBooking = () => {
     showCancelModal()
     analytics.logCancelBooking(offer.id)
-  }
-
-  const renderCancellationCTA = () => {
-    if (properties.hasActivationCode == true && activationCodeFeatureEnabled) {
-      return <ButtonSecondary title={t`Terminer`} onPress={() => null} testIdSuffix={'archive'} />
-    }
-
-    const renderButton = (
-      <ButtonSecondary
-        title={t`Annuler ma réservation`}
-        onPress={cancelBooking}
-        testIdSuffix={'cancel'}
-      />
-    )
-    if (booking.confirmationDate) {
-      const isStillCancellable = new Date(booking.confirmationDate) > new Date()
-      const formattedConfirmationDate = formatToCompleteFrenchDate(
-        new Date(booking.confirmationDate),
-        false
-      )
-      if (isStillCancellable) {
-        return (
-          <React.Fragment>
-            {renderButton}
-            <Spacer.Column numberOfSpaces={4} />
-            <CancellationCaption>
-              {t`La réservation est annulable jusqu'au` + '\u00a0' + formattedConfirmationDate}
-            </CancellationCaption>
-          </React.Fragment>
-        )
-      } else {
-        return (
-          <CancellationCaption>
-            {t`Tu ne peux plus annuler ta réservation : elle devait être annulée avant le` +
-              '\u00a0' +
-              formattedConfirmationDate}
-          </CancellationCaption>
-        )
-      }
-    }
-    return renderButton
   }
 
   const navigateToOffer = () => {
@@ -229,7 +187,11 @@ export function BookingDetails() {
             onPress={navigateToOffer}
           />
           <Spacer.Column numberOfSpaces={4} />
-          {renderCancellationCTA()}
+          <BookingDetailsCancelButton
+            booking={booking}
+            activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+            onCancel={cancelBooking}
+          />
         </ViewWithPadding>
         <Spacer.Column numberOfSpaces={5} />
       </ScrollView>
@@ -253,9 +215,4 @@ const OfferRules = styled(Typo.Caption)({
 
 const ViewWithPadding = styled.View({
   paddingHorizontal,
-})
-
-const CancellationCaption = styled(Typo.Caption)({
-  textAlign: 'center',
-  color: ColorsEnum.GREY_DARK,
 })
