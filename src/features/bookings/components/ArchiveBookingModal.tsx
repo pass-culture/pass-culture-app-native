@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import * as React from 'react'
 import styled from 'styled-components/native'
 
+import { useArchiveBookingMutation } from 'features/bookings/api/mutations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -14,6 +15,16 @@ interface ArchiveBookingModalProps {
 }
 
 export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
+  const { mutate, isLoading } = useArchiveBookingMutation({
+    bookingId: 232423, // FIX IN NEXT COMMIT
+    onSuccess: () => {
+      props.onDismiss()
+    },
+    onError: () => null,
+  })
+
+  const terminateCancel = () => mutate()
+
   return (
     <AppModal
       visible={props.visible}
@@ -24,7 +35,11 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
         <Title>{FAKE_TITLE_TO_CHANGE_IN_NEXT_COMMIT}</Title>
         <Explanation>{t`tu pourras retrouver l’offre dans tes réservations teminées`}</Explanation>
         <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary title={t`Terminer ma réservation`} />
+        <ButtonPrimary
+          title={t`Terminer ma réservation`}
+          onPress={terminateCancel}
+          disabled={isLoading}
+        />
         <Spacer.Column numberOfSpaces={3} />
         <ButtonTertiary
           title={t`Retourner à ma réservation`}
