@@ -194,40 +194,6 @@ describe('BookingDetails', () => {
   })
 
   describe('cancellation button', () => {
-    it('should display the "Terminer" button for digital offers when autoActivateDigitalBookings is true', () => {
-      mockSettings.autoActivateDigitalBookings = true
-      const booking = { ...bookingsSnap.ongoing_bookings[0] }
-      booking.stock.offer.isDigital = true
-      booking.activationCode = {
-        code: 'someCode',
-      }
-      const { getByTestId } = renderBookingDetails(booking)
-      getByTestId('button-title-archive')
-    })
-    it('should display button if confirmationDate is null', () => {
-      const booking = { ...bookingsSnap.ongoing_bookings[0] }
-      booking.confirmationDate = null
-      const { getByTestId } = renderBookingDetails(booking)
-      getByTestId('button-title-cancel')
-    })
-
-    it('should display button if confirmation date is not expired', () => {
-      const booking = { ...bookingsSnap.ongoing_bookings[0] }
-      const date = new Date()
-      date.setDate(date.getDate() + 1)
-      booking.confirmationDate = date
-      const { getByTestId } = renderBookingDetails(booking)
-      getByTestId('button-title-cancel')
-    })
-
-    it('should not display button if confirmation date is expired', async () => {
-      const booking = { ...bookingsSnap.ongoing_bookings[0] }
-      booking.stock.offer.isPermanent = false
-      booking.confirmationDate = new Date('2020-03-15T23:01:37.925926')
-      const { queryByTestId } = renderBookingDetails(booking)
-      expect(queryByTestId('button-title-cancel')).toBeFalsy()
-    })
-
     it('should log event "CancelBooking" when cancelling booking', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       const date = new Date()
