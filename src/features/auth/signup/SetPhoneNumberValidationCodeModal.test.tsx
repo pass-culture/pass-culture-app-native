@@ -1,7 +1,10 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { SetPhoneValidationCodeModal } from 'features/auth/signup/SetPhoneValidationCodeModal'
+import {
+  SetPhoneValidationCodeModal,
+  SetPhoneValidationCodeModalProps,
+} from 'features/auth/signup/SetPhoneValidationCodeModal'
 import { contactSupport } from 'features/auth/support.services'
 import { fireEvent, render } from 'tests/utils'
 import * as ModalModule from 'ui/components/modals/useModal'
@@ -107,7 +110,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
   })
 })
 
-function renderSetPhoneValidationCode(customProps?: any) {
+function renderSetPhoneValidationCode(customProps?: Partial<SetPhoneValidationCodeModalProps>) {
   const props = {
     dismissModal: jest.fn(),
     visible: true,
