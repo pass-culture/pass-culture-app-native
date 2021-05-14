@@ -13,6 +13,7 @@ import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { useOngoingBooking } from 'features/bookings/api/queries'
+import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
@@ -50,6 +51,11 @@ export function BookingDetails() {
   const booking = useOngoingBooking(params.id, params.shouldFetchAll)
   const headerScroll = useRef(new Animated.Value(0)).current
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
+  const {
+    visible: archiveModalVisible,
+    showModal: showArchiveModal,
+    hideModal: hideArchiveModal,
+  } = useModal(false)
 
   const { data: appSettings } = useAppSettings()
 
@@ -191,12 +197,14 @@ export function BookingDetails() {
             booking={booking}
             activationCodeFeatureEnabled={activationCodeFeatureEnabled}
             onCancel={cancelBooking}
+            onTerminate={showArchiveModal}
           />
         </ViewWithPadding>
         <Spacer.Column numberOfSpaces={5} />
       </ScrollView>
 
       <CancelBookingModal visible={cancelModalVisible} dismissModal={hideModal} booking={booking} />
+      <ArchiveBookingModal visible={archiveModalVisible} onDismiss={hideArchiveModal} />
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
     </React.Fragment>
   )

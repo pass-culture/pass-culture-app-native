@@ -930,6 +930,336 @@ Array [
       </View>
     </View>
   </Modal>,
+  <Modal
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    statusBarTranslucent={true}
+    testID="modal"
+    transparent={true}
+    visible={false}
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "height": "100%",
+          "justifyContent": "flex-end",
+          "opacity": 1,
+          "width": "100%",
+        }
+      }
+      testID="click-away-area"
+    >
+      <View
+        accessible={true}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderTopEndRadius": 16,
+            "borderTopStartRadius": 16,
+            "flexDirection": "column",
+            "justifyContent": "flex-start",
+            "maxHeight": "90%",
+            "opacity": 1,
+            "paddingBottom": 20,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 20,
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "width": "100%",
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={false}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-start",
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "marginLeft": -4,
+                "opacity": 1,
+              }
+            }
+            testID="leftIconButton"
+          />
+          <Text
+            numberOfLines={2}
+            style={
+              Array [
+                Object {
+                  "color": "#151515",
+                  "flexBasis": 0,
+                  "flexGrow": 0.8,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Tu es sur le point d'archiver
+          </Text>
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+                "marginRight": -4,
+                "opacity": 1,
+              }
+            }
+            testID="rightIconButton"
+          >
+            <View
+              height={32}
+              testID="rightIcon"
+              width={32}
+            >
+              <Text>
+                rightIcon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "maxWidth": 500,
+                "paddingTop": 20,
+                "width": "100%",
+              },
+              Object {
+                "paddingBottom": 8,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "paddingHorizontal": 22,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              A Temporay title: Harry Potter - Tome 5 : Harry Potter et l’Ordre du Phoenix
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#151515",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginTop": 8,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              tu pourras retrouver l’offre dans tes réservations teminées
+            </Text>
+            <View
+              numberOfSpaces={6}
+              style={
+                Array [
+                  Object {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              accessible={true}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="button-container"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": 650,
+                    },
+                  ]
+                }
+                testID="button-title"
+                textColor="#ffffff"
+              >
+                Terminer ma réservation
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={3}
+              style={
+                Array [
+                  Object {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                }
+              }
+              testID="button-container-back-to-booking"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 5,
+                      "maxWidth": 650,
+                    },
+                  ]
+                }
+                testID="button-title-back-to-booking"
+                textColor="#eb0055"
+              >
+                Retourner à ma réservation
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </Modal>,
   <View
     style={
       Object {
