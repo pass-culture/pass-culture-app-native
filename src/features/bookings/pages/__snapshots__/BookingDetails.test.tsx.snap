@@ -1115,7 +1115,7 @@ Array [
                 ]
               }
             >
-              A Temporay title: Harry Potter - Tome 5 : Harry Potter et l’Ordre du Phoenix
+              Avez-vous déjà vu ?
             </Text>
             <Text
               style={
@@ -1145,7 +1145,7 @@ Array [
             />
             <View
               accessible={true}
-              focusable={false}
+              focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}

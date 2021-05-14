@@ -3,10 +3,12 @@ import { useNavigation } from '@react-navigation/native'
 import * as React from 'react'
 import styled from 'styled-components/native'
 
+import { extractApiErrorMessage } from 'features/bookings/api/helpers'
 import { useArchiveBookingMutation } from 'features/bookings/api/mutations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -19,6 +21,7 @@ export interface ArchiveBookingModalProps {
 
 export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
   const { goBack } = useNavigation()
+  const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate, isLoading } = useArchiveBookingMutation({
     bookingId: props.bookingId,
@@ -26,7 +29,12 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
       goBack()
       props.onDismiss()
     },
-    onError: () => null,
+    onError: (error) => {
+      showErrorSnackBar({
+        message: extractApiErrorMessage(error),
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
   })
 
   const terminateCancel = () => mutate()

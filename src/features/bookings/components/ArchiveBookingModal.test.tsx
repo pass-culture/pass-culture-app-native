@@ -2,6 +2,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { goBack } from '__mocks__/@react-navigation/native'
 import {
   ArchiveBookingModal,
   ArchiveBookingModalProps,
@@ -10,6 +11,15 @@ import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { fireEvent, render, superFlushWithAct } from 'tests/utils'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
+  SNACK_BAR_TIME_OUT: 5000,
+}))
 
 describe('<ArchiveBookingModal />', () => {
   it('should call on onDismiss', () => {
@@ -24,7 +34,7 @@ describe('<ArchiveBookingModal />', () => {
     fireEvent.press(button)
     expect(onDismiss).toBeCalled()
   })
-  it('should call the mutation without failure', async () => {
+  it('should call the mutation to toggle booking display', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/bookings/2/toggle_display', (req, res, ctx) =>
         res.once(ctx.status(204))
@@ -46,6 +56,35 @@ describe('<ArchiveBookingModal />', () => {
 
     await waitForExpect(() => {
       expect(onDismiss).toBeCalled()
+      expect(goBack).toBeCalled()
+    })
+  })
+  it('should show error snackbar if terminate booking request fails', async () => {
+    const response = { code: 'ALREADY_USED', message: 'La réservation a déjà été utilisée.' }
+    server.use(
+      rest.post(env.API_BASE_URL + '/native/v1/bookings/2/toggle_display', (req, res, ctx) =>
+        res.once(ctx.status(400), ctx.json(response))
+      )
+    )
+
+    const onDismiss = jest.fn()
+    const { getByText } = renderArchiveDigitalBookingOfferModal({
+      visible: true,
+      bookingId: 2,
+      bookingTitle: 'title',
+      onDismiss,
+    })
+
+    const cancelButton = getByText('Terminer ma réservation')
+    fireEvent.press(cancelButton)
+
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message: response.message,
+        timeout: 5000,
+      })
     })
   })
 })
