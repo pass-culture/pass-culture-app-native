@@ -22,6 +22,8 @@ interface SetPhoneNumberModalProps {
   phoneNumber: string
 }
 
+const TIMER = 60
+
 export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
   const [phoneNumber, setPhoneNumber] = useState(props.phoneNumber)
   const [validationCodeRequestTimestamp, setValidationCodeRequestTimestamp] = useState<
@@ -35,10 +37,12 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
 
   const timeSinceLastRequest = useTimer(
     validationCodeRequestTimestamp,
-    (elapsedTime: number) => elapsedTime > 60
+    (elapsedTime: number) => elapsedTime > TIMER
   )
   const isRequestTimestampExpired =
-    validationCodeRequestTimestamp === null || timeSinceLastRequest > 60
+    !validationCodeRequestTimestamp || timeSinceLastRequest === 0 || timeSinceLastRequest >= TIMER
+
+  const isPhoneValid = Boolean(isValidPhoneNumber(phoneNumber))
 
   useEffect(() => {
     storage.readObject('phone_validation_code_asked_at').then((value) => {
@@ -72,12 +76,11 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     props.onChangePhoneNumber(value)
   }
 
-  const isContinueButtonEnabled =
-    isRequestTimestampExpired && Boolean(isValidPhoneNumber(phoneNumber))
+  const isContinueButtonEnabled = isRequestTimestampExpired && isPhoneValid
 
   function getButtonTitle() {
-    if (!isValidPhoneNumber(phoneNumber) || isRequestTimestampExpired) return t`Continuer`
-    const remainingTime = 60 - timeSinceLastRequest
+    if (isRequestTimestampExpired) return t`Continuer`
+    const remainingTime = TIMER - timeSinceLastRequest
     return t`Attends` + ` ${remainingTime}s.`
   }
 
@@ -112,7 +115,6 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
           title={getButtonTitle()}
-          // TODO(PC-8374) display timer if validation code was requested less than a minute ago
           disabled={!isContinueButtonEnabled}
           testIdSuffix="continue"
           onPress={requestSendPhoneValidationCode}
