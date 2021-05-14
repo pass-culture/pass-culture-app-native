@@ -7,7 +7,7 @@ describe('Helpers', () => {
     it('should display the date in the label', () => {
       const booking = ({
         ...bookingsSnap.ongoing_bookings[0],
-        activationCode: { expirationDate: new Date('2021-03-15T23:01:37.925926') },
+        activationCode: { expirationDate: '2021-03-15T23:01:37.925926' },
       } as unknown) as Booking
 
       const label = getBookingLabelForActivationCode(booking)
