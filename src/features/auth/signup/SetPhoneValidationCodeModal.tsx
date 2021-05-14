@@ -19,7 +19,7 @@ import { contactSupport } from '../support.services'
 
 const CODE_INPUT_LENGTH = 6
 
-interface Props {
+export interface SetPhoneValidationCodeModalProps {
   visible: boolean
   dismissModal: () => void
   phoneNumber: string
@@ -30,7 +30,7 @@ interface CodeInputState extends CodeValidation {
   code: string | null
 }
 
-export const SetPhoneValidationCodeModal: FC<Props> = (props) => {
+export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> = (props) => {
   const [codeInputState, setCodeInputState] = useState<CodeInputState>({
     code: null,
     isComplete: false,
