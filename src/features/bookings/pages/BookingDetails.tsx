@@ -204,7 +204,12 @@ export function BookingDetails() {
       </ScrollView>
 
       <CancelBookingModal visible={cancelModalVisible} dismissModal={hideModal} booking={booking} />
-      <ArchiveBookingModal visible={archiveModalVisible} onDismiss={hideArchiveModal} />
+      <ArchiveBookingModal
+        visible={archiveModalVisible}
+        bookingId={booking.id}
+        bookingTitle={offer.name}
+        onDismiss={hideArchiveModal}
+      />
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
     </React.Fragment>
   )

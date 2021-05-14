@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import * as React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,15 +10,20 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-interface ArchiveBookingModalProps {
+export interface ArchiveBookingModalProps {
+  bookingId: number
+  bookingTitle: string
   visible: boolean
   onDismiss: () => void
 }
 
 export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
+  const { goBack } = useNavigation()
+
   const { mutate, isLoading } = useArchiveBookingMutation({
-    bookingId: 232423, // FIX IN NEXT COMMIT
+    bookingId: props.bookingId,
     onSuccess: () => {
+      goBack()
       props.onDismiss()
     },
     onError: () => null,
@@ -32,7 +38,7 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
       rightIcon={Close}
       onRightIconPress={props.onDismiss}>
       <ModalContent>
-        <Title>{FAKE_TITLE_TO_CHANGE_IN_NEXT_COMMIT}</Title>
+        <Title>{props.bookingTitle}</Title>
         <Explanation>{t`tu pourras retrouver l’offre dans tes réservations teminées`}</Explanation>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
@@ -50,9 +56,6 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
     </AppModal>
   )
 }
-
-const FAKE_TITLE_TO_CHANGE_IN_NEXT_COMMIT =
-  'A Temporay title: Harry Potter - Tome 5 : Harry Potter et l’Ordre du Phoenix'
 
 const ModalContent = styled.View({
   paddingHorizontal: getSpacing(5.5),
