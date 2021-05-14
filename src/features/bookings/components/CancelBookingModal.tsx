@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
-import { isApiError } from 'api/helpers'
+import { extractApiErrorMessage } from 'features/bookings/api/helpers'
 import { Booking } from 'features/bookings/components/types'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -49,15 +49,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
 
   function onError(error: unknown) {
     navigate('Bookings')
-
-    let message = t`Une erreur est survenue`
-    if (isApiError(error)) {
-      const { content } = error as { content: { code: string; message: string } }
-      if (content && content.code && content.message) {
-        message = content.message
-      }
-    }
-    showErrorSnackBar({ message, timeout: SNACK_BAR_TIME_OUT })
+    showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
   }
 
   const { mutate } = useCancelBookingMutation({
