@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { useNotifyWebappLinkSent } from 'features/bookOffer/services/useNotifyWebappLinkSent'
 import { useAddFavorite, useFavorite } from 'features/favorites/pages/useFavorites'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -17,6 +18,7 @@ export const BookingImpossible: React.FC = () => {
   const { offerId } = bookingState
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
+  const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSent({ offerId })
 
   useEffect(() => {
     if (typeof offerId === 'number') {
@@ -29,6 +31,7 @@ export const BookingImpossible: React.FC = () => {
       if (typeof offerId === 'number') {
         analytics.logHasAddedOfferToFavorites({ from: 'BookingImpossible', offerId })
       }
+      notifyWebappLinkSent()
     },
     onError: () => {
       showErrorSnackBar({
