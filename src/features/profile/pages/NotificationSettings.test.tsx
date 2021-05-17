@@ -20,6 +20,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { NotificationSettings } from './NotificationSettings'
 
+// eslint-disable-next-line local-rules/no-allow-console
 allowConsole({
   error: true,
 })

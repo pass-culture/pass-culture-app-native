@@ -15,6 +15,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { ChangePassword } from './ChangePassword'
 
+// eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
 const mockedUseSnackBarContext = useSnackBarContext as jest.Mock

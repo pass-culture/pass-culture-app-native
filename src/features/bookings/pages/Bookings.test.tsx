@@ -12,6 +12,7 @@ import { emptyBookingsSnap, bookingsSnap } from '../api/bookingsSnap'
 
 import { Bookings } from './Bookings'
 
+// eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
 describe('Bookings', () => {
