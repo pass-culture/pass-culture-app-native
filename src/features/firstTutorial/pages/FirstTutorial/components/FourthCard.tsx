@@ -12,7 +12,7 @@ import {
 } from 'ui/components/achievements/components/GenericAchievementCard'
 
 export function FourthCard(props: AchievementCardKeyProps) {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { reset } = useNavigation<UseNavigationType>()
 
   const { activeIndex, index } = props
   const isActiveCard = index !== undefined && activeIndex === index
@@ -23,7 +23,7 @@ export function FourthCard(props: AchievementCardKeyProps) {
   }, [isActiveCard])
 
   function onButtonPress() {
-    navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+    reset({ index: 0, routes: [{ name: homeNavigateConfig.screen }] })
   }
 
   return (

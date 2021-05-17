@@ -3,7 +3,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { analytics } from 'libs/analytics'
@@ -65,7 +65,14 @@ describe('useInitialScreenConfig()', () => {
       await renderUseInitialScreenConfig()
 
       await waitForExpect(() => {
-        expect(navigate).toHaveBeenNthCalledWith(1, expectedScreen, expectedScreenParams)
+        if (expectedScreen === 'TabNavigator') {
+          expect(navigate).toHaveBeenNthCalledWith(1, expectedScreen, expectedScreenParams)
+        } else {
+          expect(reset).toHaveBeenNthCalledWith(1, {
+            index: 0,
+            routes: [{ name: expectedScreen, params: expectedScreenParams }],
+          })
+        }
       })
       expect(analytics.logScreenView).toBeCalledTimes(1)
       expect(analytics.logScreenView).toBeCalledWith(expectedAnalyticsScreen)

@@ -20,7 +20,7 @@ export type InitialScreenConfiguration =
   | ScreenConfiguration<'FirstTutorial'>
 
 export function useInitialScreenConfig(): void {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, reset } = useNavigation<UseNavigationType>()
   const { hideSplashScreen } = useSplashScreenContext()
   const { isLoggedIn } = useAuthContext()
 
@@ -39,7 +39,12 @@ export function useInitialScreenConfig(): void {
     if (!initialScreenConfig || !hideSplashScreen) {
       return
     }
-    navigate(initialScreenConfig.screen, initialScreenConfig.params)
+    if (initialScreenConfig.screen !== 'TabNavigator') {
+      const { screen: name, params } = initialScreenConfig
+      reset({ index: 0, routes: [{ name, params }] })
+    } else {
+      navigate(initialScreenConfig.screen, initialScreenConfig.params)
+    }
     hideSplashScreen()
   }, [initialScreenConfig, hideSplashScreen])
 }

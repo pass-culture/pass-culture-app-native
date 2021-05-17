@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import React, { createRef } from 'react'
 import Swiper from 'react-native-web-swiper'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { reset } from '__mocks__/@react-navigation/native'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { fireEvent, render } from 'tests/utils'
 
@@ -48,7 +48,7 @@ describe('FourthCard', () => {
 
     fireEvent.press(getByText('Découvrir'))
 
-    expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toHaveBeenCalledWith(homeNavigateConfig.screen, homeNavigateConfig.params)
+    expect(reset).toBeCalledTimes(1)
+    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavigateConfig.screen }] })
   })
 })
