@@ -1,11 +1,11 @@
 import React from 'react'
-import Geolocation from 'react-native-geolocation-service'
-import * as ReactNativePermissions from 'react-native-permissions'
+import { GeoCoordinates } from 'react-native-geolocation-service'
 import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
-import { GeolocationWrapper } from 'libs/geolocation/GeolocationWrapper'
+import { env } from 'libs/environment'
+import { GeolocPermissionState } from 'libs/geolocation'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { FavoriteSortBy, FavoritesSorts } from '../FavoritesSorts'
@@ -13,10 +13,20 @@ import { FavoritesWrapper } from '../FavoritesWrapper'
 
 jest.mock('../FavoritesWrapper', () => jest.requireActual('../FavoritesWrapper'))
 
+const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
+let mockPermissionState = GeolocPermissionState.GRANTED
+let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+jest.mock('libs/geolocation/GeolocationWrapper', () => ({
+  useGeolocation: () => ({
+    permissionState: mockPermissionState,
+    position: mockPosition,
+  }),
+}))
+
 describe('FavoritesSorts component', () => {
   beforeEach(() => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValue('granted')
-    jest.spyOn(ReactNativePermissions, 'check').mockResolvedValue('granted')
+    mockPermissionState = GeolocPermissionState.GRANTED
+    mockPosition = DEFAULT_POSITION
   })
   afterEach(jest.resetAllMocks)
 
@@ -61,6 +71,19 @@ describe('FavoritesSorts component', () => {
     }
   )
 
+  it('should display error message when clicking on "Proximité géographique" and position is unavailable', async () => {
+    mockPosition = null
+    const renderAPI = await renderFavoritesSort()
+
+    fireEvent.press(renderAPI.getByText('Proximité géographique'))
+
+    await waitForExpect(() => {
+      renderAPI.getByText(
+        `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
+      )
+    })
+  })
+
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {
     const renderAPI = await renderFavoritesSort()
 
@@ -69,6 +92,11 @@ describe('FavoritesSorts component', () => {
     fireEvent.press(renderAPI.getByText('Valider'))
 
     await waitForExpect(() => {
+      expect(
+        renderAPI.queryByText(
+          `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
+        )
+      ).toBeFalsy()
       expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
         sortBy: 'AROUND_ME',
       })
@@ -76,8 +104,7 @@ describe('FavoritesSorts component', () => {
   })
 
   it('should NOT trigger analytics=AROUND_ME when clicking on "Proximité géographique" then refusing geoloc then validating', async () => {
-    jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValue('denied')
-    jest.spyOn(ReactNativePermissions, 'check').mockResolvedValue('denied')
+    mockPermissionState = GeolocPermissionState.DENIED
     const renderAPI = await renderFavoritesSort()
 
     fireEvent.press(renderAPI.getByText('Proximité géographique'))
@@ -97,11 +124,9 @@ describe('FavoritesSorts component', () => {
 
 async function renderFavoritesSort() {
   const renderAPI = render(
-    <GeolocationWrapper>
-      <FavoritesWrapper>
-        <FavoritesSorts />
-      </FavoritesWrapper>
-    </GeolocationWrapper>
+    <FavoritesWrapper>
+      <FavoritesSorts />
+    </FavoritesWrapper>
   )
   await superFlushWithAct()
   return renderAPI

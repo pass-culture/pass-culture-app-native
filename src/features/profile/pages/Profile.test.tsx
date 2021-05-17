@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
+import { GeoCoordinates } from 'react-native-geolocation-service'
 import { UseQueryResult } from 'react-query'
 
 import { GetIdCheckTokenResponse, UserProfileResponse } from 'api/gen'
@@ -39,10 +40,13 @@ jest.mock('features/auth/AuthContext', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
+const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 let mockPermissionState = GeolocPermissionState.GRANTED
+let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
+    position: mockPosition,
   }),
 }))
 
@@ -73,6 +77,7 @@ describe('Profile component', () => {
   })
   afterEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
+    mockPosition = DEFAULT_POSITION
   })
 
   describe('user settings section', () => {
@@ -98,9 +103,23 @@ describe('Profile component', () => {
       it('should display switch ON if geoloc permission is granted', async () => {
         mockPermissionState = GeolocPermissionState.GRANTED
 
-        const { getByTestId } = await renderProfile()
+        const { getByTestId, queryByText } = await renderProfile()
         const geolocSwitch = getByTestId('geolocation-switch-background')
+        const positionErrorMessage = queryByText(
+          `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
+        )
+        expect(positionErrorMessage).toBeFalsy()
         expect(geolocSwitch.props.active).toBeTruthy()
+      })
+
+      it('should display position error message if geoloc permission is granted bnut position is null', async () => {
+        mockPermissionState = GeolocPermissionState.GRANTED
+        mockPosition = null
+
+        const { getByText } = await renderProfile()
+        getByText(
+          `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
+        )
       })
 
       it('should display switch OFF if geoloc permission is denied', async () => {

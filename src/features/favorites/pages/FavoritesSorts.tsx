@@ -6,10 +6,13 @@ import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -25,9 +28,10 @@ const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy,
 
 export const FavoritesSorts: React.FC = () => {
   const { goBack } = useNavigation()
-  const { permissionState, requestGeolocPermission } = useGeolocation()
+  const { position, permissionState, requestGeolocPermission } = useGeolocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
+  const [noPositionError, setNoPositionError] = useState(false)
   const {
     visible: isGeolocPermissionModalVisible,
     showModal: showGeolocPermissionModal,
@@ -35,11 +39,20 @@ export const FavoritesSorts: React.FC = () => {
   } = useModal(false)
 
   async function onSortBySelection(sortBy: FavoriteSortBy) {
+    setNoPositionError(false)
     function updateSortBySelection() {
       setStagedSelectedSortBy(sortBy)
     }
     if (sortBy === 'AROUND_ME') {
       if (permissionState === GeolocPermissionState.GRANTED) {
+        if (position === null) {
+          setNoPositionError(true)
+          new MonitoringError(
+            'position === null when permissionState === GeolocPermissionState.GRANTED',
+            'NoPositionFavoritesSorts'
+          )
+          return
+        }
         return void updateSortBySelection()
       }
       const shouldDisplayCustomGeolocRequest =
@@ -81,15 +94,27 @@ export const FavoritesSorts: React.FC = () => {
           const isSelected = stagedSelectedSortBy === sortBy
           const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
           return (
-            <LabelContainer key={sortBy} onPress={() => onSortBySelection(sortBy)} testID={sortBy}>
-              <Spacer.Column numberOfSpaces={8} />
-              <Spacer.Row numberOfSpaces={6} />
-              <Typo.ButtonText numberOfLines={2} color={textColor}>
-                {label}
-              </Typo.ButtonText>
-              <Spacer.Flex />
-              {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
-            </LabelContainer>
+            <React.Fragment key={sortBy}>
+              <LabelContainer
+                key={sortBy}
+                onPress={() => onSortBySelection(sortBy)}
+                testID={sortBy}>
+                <Spacer.Column numberOfSpaces={8} />
+                <Spacer.Row numberOfSpaces={6} />
+                <Typo.ButtonText numberOfLines={2} color={textColor}>
+                  {label}
+                </Typo.ButtonText>
+                <Spacer.Flex />
+                {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+              </LabelContainer>
+              {sortBy === 'AROUND_ME' && noPositionError && (
+                <InputError
+                  visible
+                  messageId={t`Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`}
+                  numberOfSpacesTop={1}
+                />
+              )}
+            </React.Fragment>
           )
         })}
       </ScrollView>

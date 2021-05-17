@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { ScrollView, ViewStyle, Linking } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -9,16 +9,21 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationType } from 'libs/algolia'
+import { env } from 'libs/environment'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
+  const [noPositionError, setNoPositionError] = useState(false)
+
   const { navigate, goBack } = useNavigation<UseNavigationType>()
   const { position, permissionState, requestGeolocPermission } = useGeolocation()
   const { dispatch } = useStagedSearch()
@@ -35,10 +40,15 @@ export const LocationFilter: React.FC = () => {
   }
 
   const onPressAroundMe = async () => {
+    setNoPositionError(false)
     if (position === null) {
-      const shouldDisplayCustomGeolocRequest =
-        permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
-      if (shouldDisplayCustomGeolocRequest) {
+      if (permissionState === GeolocPermissionState.GRANTED) {
+        setNoPositionError(true)
+        new MonitoringError(
+          'position === null when permissionState === GeolocPermissionState.GRANTED',
+          'NoPositionOfferSearchResults'
+        )
+      } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
         showGeolocPermissionModal()
       } else {
         await requestGeolocPermission()
@@ -88,6 +98,13 @@ export const LocationFilter: React.FC = () => {
           locationType={LocationType.AROUND_ME}
           onPress={onPressAroundMe}
         />
+        {noPositionError && (
+          <InputError
+            visible
+            messageId={t`Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`}
+            numberOfSpacesTop={1}
+          />
+        )}
         <Spacer.Column numberOfSpaces={4} />
         <LocationChoice
           testID="everywhere"

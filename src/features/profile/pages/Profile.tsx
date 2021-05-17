@@ -15,9 +15,11 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
+import { MonitoringError } from 'libs/errorMonitoring'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import FilterSwitch from 'ui/components/FilterSwitch'
+import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -49,13 +51,24 @@ export const Profile: React.FC = () => {
   const signOut = useLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  const { permissionState, requestGeolocPermission } = useGeolocation()
+  const { position, permissionState, requestGeolocPermission } = useGeolocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(false)
+  const [noPositionError, setNoPositionError] = useState(false)
 
   useFocusEffect(() => {
     if (permissionState === GeolocPermissionState.GRANTED) {
+      if (position === null) {
+        setNoPositionError(true)
+        new MonitoringError(
+          'position === null when permissionState === GeolocPermissionState.GRANTED',
+          'NoPositionProfilePage'
+        )
+      } else {
+        setNoPositionError(false)
+      }
       setIsGeolocSwitchActive(true)
     } else {
+      setNoPositionError(false)
       setIsGeolocSwitchActive(false)
     }
   })
@@ -164,6 +177,13 @@ export const Profile: React.FC = () => {
             }
             testID="row-geolocation"
           />
+          {noPositionError && (
+            <InputError
+              visible
+              messageId={t`Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`}
+              numberOfSpacesTop={1}
+            />
+          )}
         </ProfileSection>
         <ProfileSection title={t`Aides`}>
           <Row
