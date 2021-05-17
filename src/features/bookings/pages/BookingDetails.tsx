@@ -95,17 +95,22 @@ export function BookingDetails() {
     canOpenItinerary && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
   const activationCodeFeatureEnabled = appSettings && appSettings.autoActivateDigitalBookings
 
-  const renderOfferRules = properties.isDigital ? (
-    <OfferRules>
-      {t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
-    </OfferRules>
-  ) : properties.isPhysical || properties.isEvent ? (
-    <OfferRules>
-      {t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
-    </OfferRules>
-  ) : (
-    ''
-  )
+  const renderOfferRules =
+    properties.hasActivationCode && activationCodeFeatureEnabled ? (
+      <OfferRules>
+        {t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
+      </OfferRules>
+    ) : properties.isDigital ? (
+      <OfferRules>
+        {t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
+      </OfferRules>
+    ) : properties.isPhysical || properties.isEvent ? (
+      <OfferRules>
+        {t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
+      </OfferRules>
+    ) : (
+      ''
+    )
 
   const cancelBooking = () => {
     showCancelModal()

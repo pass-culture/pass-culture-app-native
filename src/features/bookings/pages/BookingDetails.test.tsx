@@ -122,13 +122,27 @@ describe('BookingDetails', () => {
 
   describe('Offer rules', () => {
     it('should display rules for a digital offer', () => {
-      const booking = bookingsSnap.ongoing_bookings[0]
+      const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.stock.offer.isDigital = true
 
       const { getByText } = renderBookingDetails(booking)
 
       getByText(
         'Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+      )
+    })
+    it.only('should display rules for a digital offer with activation code', () => {
+      mockSettings.autoActivateDigitalBookings = true
+      const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      booking.stock.offer.isDigital = true
+      booking.activationCode = {
+        code: 'fdfdfsds',
+      }
+
+      const { getByText } = renderBookingDetails(booking)
+
+      getByText(
+        'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
 
