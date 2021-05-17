@@ -46,13 +46,17 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           icon={() => <Profile size={24} />}
         />
       )}
-      <Spacer.Column numberOfSpaces={5} />
-      <SectionRow
-        title={propertiesLabels.dateLabel}
-        renderTitle={renderRowTitle}
-        type={'clickable'}
-        icon={() => <Calendar size={24} />}
-      />
+      {propertiesLabels.dateLabel?.length > 0 && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={5} />
+          <SectionRow
+            title={propertiesLabels.dateLabel}
+            renderTitle={renderRowTitle}
+            type={'clickable'}
+            icon={() => <Calendar size={24} />}
+          />
+        </React.Fragment>
+      )}
       <Spacer.Column numberOfSpaces={5} />
       {!!propertiesLabels.locationLabel && (
         <SectionRow
