@@ -1,7 +1,6 @@
 import { renderHook, RenderHookResult } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 import React from 'react'
-import SplashScreen from 'react-native-splash-screen'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -9,7 +8,7 @@ import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { DEFAULT_SPLASHSCREEN_DELAY, SplashScreenProvider } from 'libs/splashscreen'
+import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { server } from 'tests/server'
 import { superFlushWithAct, act } from 'tests/utils'
@@ -20,12 +19,7 @@ const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAut
 jest.mock('features/auth/AuthContext')
 
 describe('useInitialScreenConfig()', () => {
-  beforeEach(() => {
-    jest.useFakeTimers()
-  })
-
   afterEach(() => {
-    jest.useRealTimers()
     jest.clearAllMocks()
   })
 
@@ -69,7 +63,6 @@ describe('useInitialScreenConfig()', () => {
       mockMeApiCall(userProfile as UserProfileResponse)
 
       await renderUseInitialScreenConfig()
-      await waitForSplashScreenDelay()
 
       await waitForExpect(() => {
         expect(navigate).toHaveBeenNthCalledWith(1, expectedScreen, expectedScreenParams)
@@ -78,16 +71,6 @@ describe('useInitialScreenConfig()', () => {
       expect(analytics.logScreenView).toBeCalledWith(expectedAnalyticsScreen)
     }
   )
-
-  it('should call SplashScreen.hide() after 200ms', async () => {
-    expect.assertions(2)
-
-    await renderUseInitialScreenConfig()
-    expect(SplashScreen.hide).toBeCalledTimes(0)
-
-    await waitForSplashScreenDelay()
-    expect(SplashScreen.hide).toBeCalledTimes(1)
-  })
 })
 
 async function renderUseInitialScreenConfig() {
@@ -108,11 +91,4 @@ function mockMeApiCall(response: UserProfileResponse) {
       return res(ctx.status(200), ctx.json(response))
     })
   )
-}
-
-async function waitForSplashScreenDelay() {
-  act(() => {
-    jest.advanceTimersByTime(DEFAULT_SPLASHSCREEN_DELAY)
-  })
-  await superFlushWithAct()
 }

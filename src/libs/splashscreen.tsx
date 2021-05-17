@@ -4,8 +4,6 @@ import SplashScreen from 'react-native-splash-screen'
 
 import { useSafeState } from './hooks'
 
-export const DEFAULT_SPLASHSCREEN_DELAY = 1800
-
 interface SplashScreenContext {
   isSplashScreenHidden: boolean
   hideSplashScreen?: () => void
@@ -18,17 +16,12 @@ export function useSplashScreenContext() {
 }
 
 export function SplashScreenProvider(props: { children: Element }) {
-  /**
-   * Hides the splash screen after some delay.
-   */
   const hideSplashScreen = useCallback(function () {
-    setTimeout(() => {
-      SplashScreen.hide()
-      setContextValue((previousContextValue) => ({
-        ...previousContextValue,
-        isSplashScreenHidden: true,
-      }))
-    }, DEFAULT_SPLASHSCREEN_DELAY)
+    SplashScreen.hide()
+    setContextValue((previousContextValue) => ({
+      ...previousContextValue,
+      isSplashScreenHidden: true,
+    }))
   }, [])
 
   const [contextValue, setContextValue] = useSafeState({
