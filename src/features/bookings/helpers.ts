@@ -45,7 +45,7 @@ function isDuoBooking(booking: Booking) {
 export function getBookingLabels(
   booking: Booking,
   properties: BookingProperties,
-  appSettings?: SettingsResponse
+  appSettings: SettingsResponse | null
 ) {
   const { stock } = booking
 

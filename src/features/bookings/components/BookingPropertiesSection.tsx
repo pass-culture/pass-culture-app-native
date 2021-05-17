@@ -3,6 +3,7 @@ import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SettingsResponse } from 'api/gen'
 import { Booking } from 'features/bookings/components/types'
 import { getBookingLabels, getBookingProperties } from 'features/bookings/helpers'
 import { useUserProfileInfo } from 'features/home/api'
@@ -15,16 +16,18 @@ import { Spacer, Typo } from 'ui/theme'
 
 type BookingPropertiesSectionProps = {
   booking: Booking
+  appSettings: SettingsResponse
   style?: StyleProp<ViewStyle>
 }
 
 export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> = ({
   booking,
+  appSettings,
   style,
 }) => {
   const { data: user } = useUserProfileInfo()
   const properties = getBookingProperties(booking)
-  const propertiesLabels = getBookingLabels(booking, properties)
+  const propertiesLabels = getBookingLabels(booking, properties, appSettings)
 
   const renderRowTitle = (title: string) => <Title>{title}</Title>
 

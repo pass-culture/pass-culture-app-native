@@ -50,7 +50,20 @@ describe('<BookingPropertiesSection />', () => {
 })
 
 async function renderBookingProperties(booking: Booking) {
-  const wrapper = render(reactQueryProviderHOC(<BookingPropertiesSection booking={booking} />))
+  const wrapper = render(
+    reactQueryProviderHOC(
+      <BookingPropertiesSection
+        booking={booking}
+        appSettings={{
+          allowIdCheckRegistration: false,
+          autoActivateDigitalBookings: false,
+          depositAmount: 5000,
+          enableNativeIdCheckVersion: false,
+          isRecaptchaEnabled: false,
+        }}
+      />
+    )
+  )
   await superFlushWithAct()
   return wrapper
 }

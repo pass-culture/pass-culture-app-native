@@ -18,7 +18,7 @@ import { BookingItemProps } from './types'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: settings } = useAppSettings()
+  const { data: settings = null } = useAppSettings()
 
   const { stock } = booking
   const bookingProperties = getBookingProperties(booking)
