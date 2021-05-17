@@ -177,7 +177,7 @@ msgstr "Autres"
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
-#: src/features/home/pages/Home.tsx:46
+#: src/features/home/components/HomeHeader.tsx:24
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
@@ -242,7 +242,7 @@ msgstr "Chargement en cours..."
 msgid "Charte de protection des données personnelles"
 msgstr "Charte de protection des données personnelles"
 
-#: src/features/home/pages/Home.tsx:70
+#: src/features/home/components/HomeHeader.tsx:40
 msgid "CheatMenu"
 msgstr "CheatMenu"
 
@@ -1194,7 +1194,7 @@ msgstr "Ton compte a été activé !"
 msgid "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 msgstr "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
 
-#: src/features/home/pages/Home.tsx:50
+#: src/features/home/components/HomeHeader.tsx:28
 msgid "Ton crédit est expiré"
 msgstr "Ton crédit est expiré"
 
@@ -1234,7 +1234,7 @@ msgstr "Tout passer"
 msgid "Toute la culture"
 msgstr "Toute la culture"
 
-#: src/features/home/pages/Home.tsx:47
+#: src/features/home/components/HomeHeader.tsx:25
 msgid "Toute la culture à portée de main"
 msgstr "Toute la culture à portée de main"
 
@@ -1480,7 +1480,7 @@ msgstr "continue"
 msgid "credit expired on date"
 msgstr "crédit expiré le {deadline}"
 
-#: src/features/home/pages/Home.tsx:51
+#: src/features/home/components/HomeHeader.tsx:29
 msgid "credit left on pass"
 msgstr "Tu as {credit} sur ton pass"
 
@@ -1533,7 +1533,7 @@ msgstr "et si tu es..."
 msgid "genre"
 msgstr "genre"
 
-#: src/features/home/pages/Home.tsx:41
+#: src/features/home/components/HomeHeader.tsx:19
 msgid "hello name"
 msgstr "Bonjour {name}"
 
