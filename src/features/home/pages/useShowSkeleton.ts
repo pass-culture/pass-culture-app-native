@@ -2,12 +2,8 @@ import { useEffect, useState } from 'react'
 import { useIsFetching } from 'react-query'
 
 import { QueryKeys } from 'libs/queryKeys'
-import { DEFAULT_SPLASHSCREEN_DELAY } from 'libs/splashscreen'
 
 export const ANIMATION_DELAY = 700 // Time for the skeleton animation to finish
-
-// minimum delay so that the tiles images are loaded
-const DELAY = ANIMATION_DELAY + DEFAULT_SPLASHSCREEN_DELAY
 
 export const useShowSkeleton = function () {
   const [showSkeleton, setShowSkeleton] = useState(true)
@@ -24,7 +20,7 @@ export const useShowSkeleton = function () {
       isFetchingOfferIds === 0 &&
       isFetchingRecommendedHits === 0
     ) {
-      timeout = global.setTimeout(() => setShowSkeleton(false), DELAY)
+      timeout = global.setTimeout(() => setShowSkeleton(false), ANIMATION_DELAY)
     }
     return () => {
       if (timeout) clearTimeout(timeout)

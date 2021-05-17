@@ -1,6 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
 
-import { DEFAULT_SPLASHSCREEN_DELAY } from 'libs/splashscreen'
 import { act } from 'tests/utils'
 
 import { ANIMATION_DELAY, useShowSkeleton } from '../useShowSkeleton'
@@ -28,10 +27,6 @@ describe('useShowSkeleton', () => {
     expect(result.current).toBeTruthy()
     await act(async () => await rerender())
 
-    expect(result.current).toBeTruthy()
-    await act(async () => {
-      jest.advanceTimersByTime(DEFAULT_SPLASHSCREEN_DELAY)
-    })
     expect(result.current).toBeTruthy()
     await act(async () => {
       jest.advanceTimersByTime(ANIMATION_DELAY)
