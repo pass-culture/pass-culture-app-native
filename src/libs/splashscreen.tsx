@@ -16,21 +16,15 @@ export function useSplashScreenContext() {
 }
 
 export function SplashScreenProvider(props: { children: Element }) {
-  const hideSplashScreen = useCallback(function () {
+  const [isSplashScreenHidden, setIsSplashScreenHidden] = useSafeState<boolean>(false)
+
+  const hideSplashScreen = useCallback(() => {
     SplashScreen.hide()
-    setContextValue((previousContextValue) => ({
-      ...previousContextValue,
-      isSplashScreenHidden: true,
-    }))
+    setIsSplashScreenHidden(true)
   }, [])
 
-  const [contextValue, setContextValue] = useSafeState({
-    isSplashScreenHidden: false,
-    hideSplashScreen,
-  })
-
   return (
-    <SplashScreenContext.Provider value={contextValue}>
+    <SplashScreenContext.Provider value={{ isSplashScreenHidden, hideSplashScreen }}>
       {props.children}
     </SplashScreenContext.Provider>
   )
