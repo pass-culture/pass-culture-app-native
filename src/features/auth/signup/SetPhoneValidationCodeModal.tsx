@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { FC, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
@@ -43,11 +44,24 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     hideModal: hideFullPageModal,
   } = useModal(props.visible)
 
+  const { mutate: validatePhoneNumber } = useValidatePhoneNumberMutation(onSuccess)
+
+  function onSuccess() {
+    props.dismissModal()
+  }
+
   function onChangeValue(value: string | null, validation: CodeValidation) {
     setCodeInputState({
       code: value,
       ...validation,
     })
+  }
+
+  function validateCode() {
+    const { code } = codeInputState
+    if (code) {
+      validatePhoneNumber(code)
+    }
   }
 
   return (
@@ -80,6 +94,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
           title={t`Continuer`}
           disabled={!codeInputState.isValid}
           testIdSuffix={t`continue`}
+          onPress={validateCode}
         />
         <Spacer.Column numberOfSpaces={4} />
         <HelpRow>

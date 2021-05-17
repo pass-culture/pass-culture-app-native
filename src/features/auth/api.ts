@@ -112,3 +112,9 @@ export function useSendPhoneValidationMutation({ onSuccess, onError }: SendPhone
     }
   )
 }
+
+export function useValidatePhoneNumberMutation(onSuccess: () => void) {
+  return useMutation((code: string) => api.postnativev1validatePhoneNumber({ code }), {
+    onSuccess,
+  })
+}
