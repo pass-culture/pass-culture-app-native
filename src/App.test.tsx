@@ -8,6 +8,7 @@ import { flushAllPromises, render } from 'tests/utils'
 
 import { App } from './App'
 
+// eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
 jest.mock('./libs/notifications', () => ({

@@ -10,6 +10,7 @@ import { render } from 'tests/utils'
 
 import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
 
+// eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))

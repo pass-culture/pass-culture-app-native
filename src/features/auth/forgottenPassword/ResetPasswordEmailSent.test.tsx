@@ -13,6 +13,7 @@ import { contactSupport } from '../support.services'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
+// eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))

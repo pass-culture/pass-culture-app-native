@@ -17,6 +17,7 @@ module.exports = {
     },
   },
   rules: {
+    'local-rules/no-allow-console': ['error'],
     '@typescript-eslint/ban-ts-comment': [
       2, // error
       {

@@ -8,6 +8,7 @@ import { ColorsEnum } from 'ui/theme'
 import { SnackBar, SnackBarProps } from './SnackBar'
 import { SnackBarHelperSettings } from './types'
 
+// eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
 const getAnimatedTimingImplementation = () =>
