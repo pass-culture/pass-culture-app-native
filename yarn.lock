@@ -5165,6 +5165,11 @@ eslint-plugin-jest@22.4.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.4.1.tgz#a5fd6f7a2a41388d16f527073b778013c5189a9c"
   integrity sha512-gcLfn6P2PrFAVx3AobaOzlIEevpAEf9chTpFZz7bYfc7pz8XRv7vuKTIE4hxPKZSha6XWKKplDQ0x9Pq8xX2mg==
 
+eslint-plugin-local-rules@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-local-rules/-/eslint-plugin-local-rules-1.1.0.tgz#5f934f685b08c96eed40b92aee7b02f03cf55f7b"
+  integrity sha512-FdPyzxakUKgZkeNM3x/vvRcB6nCjTNbui5gWALhvcaH1R6aCiD37fWtdesagcyBpEe9S9XRHAJ8CJ4rUJ3K9tQ==
+
 eslint-plugin-prettier@3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.2.tgz#432e5a667666ab84ce72f945c72f77d996a5c9ba"

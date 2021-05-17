@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys'],
+  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules'],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
