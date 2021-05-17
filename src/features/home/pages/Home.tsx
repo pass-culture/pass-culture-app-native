@@ -78,7 +78,7 @@ export const Home: FunctionComponent = function () {
       const padding = nativeEvent.contentSize.height - recommendationY
       if (isCloseToBottom({ ...nativeEvent, padding })) logHasSeenRecommendationModule()
     },
-    [recommendationY]
+    [recommendationY, displayedModules.length]
   )
 
   return (
