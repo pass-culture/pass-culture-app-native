@@ -1,3 +1,4 @@
+import { initialRouteName as idCheckInitialRouteName } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -13,7 +14,11 @@ export const useNavigateToIdCheck = ({
 
   return (email: string, licenceToken: string) => {
     if (settings?.allowIdCheckRegistration) {
-      navigate('IdCheck', { email, licenceToken })
+      if (settings?.enableNativeIdCheckVersion) {
+        navigate(idCheckInitialRouteName, { email, licence_token: licenceToken })
+      } else {
+        navigate('IdCheck', { email, licenceToken })
+      }
     } else {
       onIdCheckNavigationBlocked()
     }
