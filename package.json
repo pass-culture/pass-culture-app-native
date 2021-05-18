@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@algolia/client-search": "^4.6.0",
-    "@bam.tech/react-native-batch": "^5.2.1",
+    "@bam.tech/react-native-batch": "^6.0.0-rc.1",
     "@bam.tech/react-native-config": "^0.13.0",
     "@lingui/core": "^3.8.9",
     "@lingui/react": "^3.8.9",
