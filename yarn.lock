@@ -1320,10 +1320,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@bam.tech/react-native-batch@^5.2.1":
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/@bam.tech/react-native-batch/-/react-native-batch-5.2.1.tgz#c8dbe3ce5dca9f704e9522ba5b22bbad4d2c4088"
-  integrity sha512-yX4wIAlPgzhqcp6LLIxjywjXW4lr42wUEDVkiQgZA+ekqR8T8FdcRylo7T+tWz69kA2uIsYPojT3Ya9m0ErErQ==
+"@bam.tech/react-native-batch@^6.0.0-rc.1":
+  version "6.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@bam.tech/react-native-batch/-/react-native-batch-6.0.0-rc.1.tgz#44765741e5b02966d76ca9e9ea9f367214903931"
+  integrity sha512-d6cXjBLZRY3G0Lz68kF+5DIHh1+6A+42nQPiLGEWpwkY8Ccfx1KXqlHlhN6VeyY5w8aPKXo4SC2roWUVMD154g==
 
 "@bam.tech/react-native-config@^0.13.0":
   version "0.13.0"
