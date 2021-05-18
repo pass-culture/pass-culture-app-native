@@ -90,8 +90,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
       title={t`Confirme ton numéro`}
       rightIcon={Close}
       onRightIconPress={showQuitSignupModal}
-      disableBackdropTap
-      isScrollable>
+      disableBackdropTap>
       <ModalContent>
         <Paragraphe>
           <Typo.Body color={ColorsEnum.GREY_DARK}>

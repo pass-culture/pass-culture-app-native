@@ -58,8 +58,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
       onRightIconPress={showFullPageModal}
       leftIcon={ArrowPrevious}
       onLeftIconPress={props.onGoBack}
-      disableBackdropTap
-      isScrollable>
+      disableBackdropTap>
       <ModalContent>
         <Paragraphe>
           <Typo.Body>
