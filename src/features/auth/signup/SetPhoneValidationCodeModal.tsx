@@ -2,12 +2,14 @@ import { t } from '@lingui/macro'
 import React, { FC, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { extractApiErrorMessage } from 'api/helpers'
 import { useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { CodeInput, CodeValidation } from 'ui/components/inputs/CodeInput'
+import { InputError } from 'ui/components/inputs/InputError'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
@@ -37,6 +39,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     isComplete: false,
     isValid: false,
   })
+  const [invalidCodeMessage, setInvalidCodeMessage] = useState('')
 
   const {
     visible: fullPageModalVisible,
@@ -44,10 +47,14 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     hideModal: hideFullPageModal,
   } = useModal(props.visible)
 
-  const { mutate: validatePhoneNumber } = useValidatePhoneNumberMutation(onSuccess)
+  const { mutate: validatePhoneNumber } = useValidatePhoneNumberMutation({ onSuccess, onError })
 
   function onSuccess() {
     props.dismissModal()
+  }
+
+  function onError(error: unknown) {
+    setInvalidCodeMessage(extractApiErrorMessage(error))
   }
 
   function onChangeValue(value: string | null, validation: CodeValidation) {
@@ -89,7 +96,14 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
           isInputValid={isInputValid}
           onChangeValue={onChangeValue}
         />
-        <Spacer.Column numberOfSpaces={8} />
+        {invalidCodeMessage ? (
+          <React.Fragment>
+            <InputError visible messageId={invalidCodeMessage} numberOfSpacesTop={3} />
+            <Spacer.Column numberOfSpaces={5} />
+          </React.Fragment>
+        ) : (
+          <Spacer.Column numberOfSpaces={8} />
+        )}
         <ButtonPrimary
           title={t`Continuer`}
           disabled={!codeInputState.isValid}

@@ -8,15 +8,24 @@ import {
   SetPhoneValidationCodeModalProps,
 } from 'features/auth/signup/SetPhoneValidationCodeModal'
 import { contactSupport } from 'features/auth/support.services'
-import { fireEvent, render, useMutationFactory } from 'tests/utils'
+import { act, fireEvent, render, useMutationFactory } from 'tests/utils'
 import * as ModalModule from 'ui/components/modals/useModal'
 import { ColorsEnum } from 'ui/theme'
 
 jest.mock('react-query')
 
 const mockedUseMutation = mocked(useMutation)
+const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
+  onSuccess: () => {},
+  onError: () => {},
+}
 
 describe('SetPhoneNumberValidationCodeModal', () => {
+  beforeEach(() => {
+    // @ts-ignore ts(2345)
+    mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
+  })
+
   describe('modal header', () => {
     it('should open the quit modal on press right icon', () => {
       const visible = false
@@ -87,13 +96,6 @@ describe('SetPhoneNumberValidationCodeModal', () => {
     })
 
     it('should dismiss modal if validate phone number request succeeds', () => {
-      const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
-        onSuccess: () => {},
-        onError: () => {},
-      }
-      // @ts-ignore ts(2345)
-      mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
-
       const mockDismissModal = jest.fn()
       const { getByTestId } = renderModalWithFilledCodeInput('123456', {
         dismissModal: mockDismissModal,
@@ -104,6 +106,27 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       useMutationCallbacks.onSuccess()
 
       expect(mockDismissModal).toHaveBeenCalled()
+    })
+
+    it('should display input error message if validate phone number request fails', async () => {
+      const response = {
+        content: { code: 'INVALID_VALIDATION_CODE', message: 'Le code est invalide' },
+        name: 'ApiError',
+      }
+
+      const { getByTestId, getByText } = renderModalWithFilledCodeInput('123456')
+      const continueButton = getByTestId('button-container-continue')
+
+      fireEvent.press(continueButton)
+
+      await act(async () => {
+        useMutationCallbacks.onError(response)
+      })
+
+      const errorMessage = getByText('Le code est invalide')
+      await waitForExpect(() => {
+        expect(errorMessage).toBeTruthy()
+      })
     })
   })
 })

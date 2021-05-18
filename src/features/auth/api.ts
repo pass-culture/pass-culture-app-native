@@ -37,7 +37,7 @@ type SignUpResponse =
       }
     }
 
-interface SendPhoneValidationProps {
+interface PhoneValidationMutationsOptions {
   onSuccess: () => void
   onError: (error: unknown) => void
 }
@@ -103,7 +103,10 @@ export function useSignInNumberOfSteps() {
   return settings?.wholeFranceOpening ? 4 : 5
 }
 
-export function useSendPhoneValidationMutation({ onSuccess, onError }: SendPhoneValidationProps) {
+export function useSendPhoneValidationMutation({
+  onSuccess,
+  onError,
+}: PhoneValidationMutationsOptions) {
   return useMutation(
     (phoneNumber: string) => api.postnativev1sendPhoneValidationCode({ phoneNumber }),
     {
@@ -113,8 +116,12 @@ export function useSendPhoneValidationMutation({ onSuccess, onError }: SendPhone
   )
 }
 
-export function useValidatePhoneNumberMutation(onSuccess: () => void) {
+export function useValidatePhoneNumberMutation({
+  onSuccess,
+  onError,
+}: PhoneValidationMutationsOptions) {
   return useMutation((code: string) => api.postnativev1validatePhoneNumber({ code }), {
     onSuccess,
+    onError,
   })
 }
