@@ -56,6 +56,8 @@ static void InitializeFlipper(UIApplication *application) {
                                             initialProperties:nil];
 
   [RNBatch start:false]; // or true if you want the do not disturb mode
+  [BatchUNUserNotificationCenterDelegate registerAsDelegate];
+  [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
