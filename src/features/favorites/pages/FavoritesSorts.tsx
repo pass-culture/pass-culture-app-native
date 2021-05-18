@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/errorMonitoring'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
@@ -110,7 +109,7 @@ export const FavoritesSorts: React.FC = () => {
               {sortBy === 'AROUND_ME' && noPositionError && (
                 <InputError
                   visible
-                  messageId={t`Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`}
+                  messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}
                   numberOfSpacesTop={1}
                 />
               )}

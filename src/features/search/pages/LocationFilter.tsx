@@ -9,7 +9,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationType } from 'libs/algolia'
-import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/errorMonitoring'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
@@ -101,7 +100,7 @@ export const LocationFilter: React.FC = () => {
         {noPositionError && (
           <InputError
             visible
-            messageId={t`Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`}
+            messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}
             numberOfSpacesTop={1}
           />
         )}
