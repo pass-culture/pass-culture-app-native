@@ -3,7 +3,7 @@ PODS:
     - AppsFlyerFramework/Main (= 6.2.4)
   - AppsFlyerFramework/Main (6.2.4)
   - Base64 (1.1.2)
-  - Batch (1.17.1)
+  - Batch (1.15.2)
   - boost-for-react-native (1.63.0)
   - BVLinearGradient (2.5.6):
     - React
@@ -497,7 +497,6 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
-  - Batch (~> 1.17)
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - CodePush (from `../node_modules/react-native-code-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -761,7 +760,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AppsFlyerFramework: f3f0e978cfb8e7dc09a3ab90da316f52cd9c56fe
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
-  Batch: 01ccf9b1819b8a468196e9fad4e7da2623845172
+  Batch: cf8eb2939d662b1d68319d814528df7aef29f348
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
@@ -833,7 +832,7 @@ SPEC CHECKSUMS:
   React-RCTText: 65a6de06a7389098ce24340d1d3556015c38f746
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
-  RNBatchPush: 8b5ce832fcdb4f4ba94033f20e45df9157a73a5b
+  RNBatchPush: 3f65c36b08903567ebd0a4fb75a1a17db8fd6839
   RNCAsyncStorage: 2a692bcb9b69b76a2f1a95f33db057129700af64
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNDateTimePicker: 8a51a2216c307769e69ef827293d59549ab1ca23
@@ -857,6 +856,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c20e47c85b228c8e37ac69429ba37601d337141e
+PODFILE CHECKSUM: 40318e93379c2de4d579821c977c6a0e09a56199
 
 COCOAPODS: 1.10.1
