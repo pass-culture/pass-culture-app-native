@@ -1,17 +1,17 @@
-import { rest } from 'msw'
 import * as React from 'react'
-import { QueryClient } from 'react-query'
-import waitForExpect from 'wait-for-expect'
+import { useMutation } from 'react-query'
+import { mocked } from 'ts-jest/utils'
 
-import { addFavoriteJsonResponseSnap } from 'features/favorites/api/snaps/favorisResponseSnap'
-import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
-import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+import { fireEvent, render, useMutationFactory } from 'tests/utils'
 
 import { BookingImpossible } from '../BookingImpossible'
+
+jest.mock('react-query')
+const mockedUseMutation = mocked(useMutation)
+
+jest.mock('features/auth/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
+}))
 
 const mockDismissModal = jest.fn()
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
@@ -27,82 +27,49 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   })),
 }))
 
-jest.mock('features/auth/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
-
-server.use(
-  rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) =>
-    res(ctx.status(200), ctx.json(addFavoriteJsonResponseSnap))
-  )
-)
-
 describe('<BookingImpossible />', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should render with CTAs when offer is not yet favorite', () => {
-    const { toJSON } = render(reactQueryProviderHOC(<BookingImpossible />))
-    expect(toJSON()).toMatchSnapshot()
-  })
-
-  it('should render without CTAs when offer is favorite', async () => {
-    const setup = (queryClient: QueryClient) => {
-      queryClient.setQueryData('favorites', {
-        favorites: [{ offer: { id: 20 } }],
-      })
+  it('should call notifyWebappLinkSent when adding to favorites', async () => {
+    const useMutationAddFavoriteCallbacks: {
+      onError: (error: unknown) => void
+      onSuccess: () => void
+    } = {
+      onSuccess: () => {},
+      onError: () => {},
     }
-    const { queryByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
-    const addToFavoriteButton = queryByText('Mettre en favoris')
-    const backToOfferbutton = queryByText("Retourner à l'offre")
-    expect(addToFavoriteButton).toBeFalsy()
-    expect(backToOfferbutton).toBeFalsy()
-  })
-
-  it('should have the correct wording when offer is favorite', async () => {
-    const setup = (queryClient: QueryClient) => {
-      queryClient.setQueryData('favorites', {
-        favorites: [{ offer: { id: 20 } }],
-      })
+    const useMutationNotifyWebappLinkSentCallbacks: {
+      onError: (error: unknown) => void
+      onSuccess: () => void
+    } = {
+      onSuccess: () => {},
+      onError: () => {},
     }
-    const { queryByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
-    const redirectionToWebsiteWording = queryByText(
-      'Rends-toi vite sur le site pass Culture afin de la réserver.'
+
+    const mockUseMutationNotifyWebappLinkSent = useMutationFactory(
+      useMutationNotifyWebappLinkSentCallbacks
     )
-    expect(redirectionToWebsiteWording).toBeTruthy()
-  })
 
-  it("should dismiss modal when clicking on 'Retourner à l'offre'", () => {
-    const { getByText } = render(reactQueryProviderHOC(<BookingImpossible />))
-    fireEvent.press(getByText("Retourner à l'offre"))
-    expect(mockDismissModal).toHaveBeenCalledTimes(1)
-  })
+    mockedUseMutation
+      // @ts-ignore ts(2345)
+      .mockImplementationOnce(mockUseMutationNotifyWebappLinkSent)
+      // @ts-ignore ts(2345)
+      .mockImplementationOnce(useMutationFactory(useMutationAddFavoriteCallbacks))
 
-  it('should log analytics event when adding to favorites', async () => {
-    const setup = (queryClient: QueryClient) => {
-      queryClient.setQueryData('favorites', {
-        favorites: [],
-      })
-    }
+    const { getByText } = render(<BookingImpossible />)
 
-    const { getByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
+    const addToFavoriteButton = getByText('Mettre en favoris')
 
-    fireEvent.press(getByText('Mettre en favoris'))
-    await superFlushWithAct()
+    fireEvent.press(addToFavoriteButton)
 
-    await waitForExpect(() => {
-      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
-      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-        from: 'BookingImpossible',
-        offerId: 20,
-      })
-      expect(mockDismissModal).toHaveBeenCalledTimes(1)
-    })
-  })
-
-  it("should log 'BookingImpossibleiOS' on mount", () => {
-    render(reactQueryProviderHOC(<BookingImpossible />))
-    expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
+    useMutationAddFavoriteCallbacks.onSuccess()
+    expect(
+      mockUseMutationNotifyWebappLinkSent(() => {}, {
+        onSuccess: () => {},
+        onError: () => {},
+      }).mutate
+    ).toHaveBeenCalled()
   })
 })
