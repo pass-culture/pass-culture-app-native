@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 set -e
 
 docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate \
