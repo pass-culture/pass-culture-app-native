@@ -6,12 +6,18 @@ import { goBack, navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, RenderAPI } from 'tests/utils'
+import { useAppSettings } from 'features/auth/settings'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
+import { mocked } from 'ts-jest/utils'
+import { UseQueryResult } from 'react-query'
+import { SettingsResponse } from 'api/gen'
 
 let mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
+jest.mock('features/auth/settings')
+const mockedUseAppSettings = mocked(useAppSettings, true)
 
 describe('SetBirthday Page', () => {
   beforeEach(() => {
@@ -93,6 +99,32 @@ describe('SetBirthday Page', () => {
     expect(buttonContainer.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     expect(renderAPI.queryByText('La date choisie est incorrecte')).toBeFalsy()
     expect(navigate).toBeCalledWith('SetPostalCode', {
+      birthday: '1995-01-16',
+      email: 'john.doe@example.com',
+      isNewsletterChecked: true,
+      password: 'password',
+    })
+  })
+  it('should navigate to CGU when app is open to the whole France', () => {
+    const mockedSettings = {
+      data: {
+        depositAmount: 30000,
+        isRecaptchaEnabled: true,
+        allowIdCheckRegistration: true,
+        enableNativeIdCheckVersion: false,
+        wholeFranceOpening: true,
+      },
+      isLoading: false,
+    } as UseQueryResult<SettingsResponse, unknown>
+    mockedUseAppSettings.mockReturnValue(mockedSettings)
+    const renderAPI = renderSetBirthday()
+
+    changeDate(renderAPI, '16', '01', '1995')
+
+    const continueButton = renderAPI.getByText('Continuer')
+    fireEvent.press(continueButton)
+
+    expect(navigate).toBeCalledWith('AcceptCgu', {
       birthday: '1995-01-16',
       email: 'john.doe@example.com',
       isNewsletterChecked: true,
