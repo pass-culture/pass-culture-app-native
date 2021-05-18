@@ -96,7 +96,6 @@
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.0.0-beta.8",
-    "react-native-sensitive-info": "^5.5.5",
     "react-native-splash-screen": "^3.2.0",
     "react-native-svg": "^12.1.0",
     "react-native-text-input-mask": "^3.1.4",
@@ -107,7 +106,6 @@
     "search-params": "^4.0.0",
     "styled-components": "^5.2.0",
     "url": "^0.11.0",
-    "use-debounce": "^5.2.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
