@@ -21,7 +21,7 @@ export type RootStackParamList = {
     isNewsletterChecked: boolean
     password: string
     birthday: string
-    postalCode: string
+    postalCode: string | undefined
   }
   AccountCreated: undefined
   AfterSignupEmailValidationBuffer: { token: string; expirationTimestamp: number; email: string }

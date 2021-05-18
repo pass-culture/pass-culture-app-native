@@ -25,6 +25,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { useAppSettings } from 'features/auth/settings'
 
 type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
 
@@ -41,6 +42,7 @@ interface State {
 }
 
 export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
+  const { data: settings } = useAppSettings()
   const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
   const [state, setState] = useState<State>({
     date: null,
@@ -87,10 +89,11 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   }
 
   function goToNextStep() {
+    const nextPage = settings?.wholeFranceOpening ? 'AcceptCgu' : 'SetPostalCode'
     const { date } = state
     if (date) {
       const birthday = formatDateToISOStringWithoutTime(date)
-      navigate('SetPostalCode', { email, isNewsletterChecked, password, birthday })
+      navigate(nextPage, { email, isNewsletterChecked, password, birthday })
     }
   }
 
