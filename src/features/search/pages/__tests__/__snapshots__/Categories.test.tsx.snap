@@ -1034,6 +1034,82 @@ Array [
           }
         />
       </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginBottom": 16,
+            "opacity": 1,
+          }
+        }
+        testID="MATERIEL_ART_CREA"
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height={48}
+          width={48}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "width": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          color="#151515"
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#151515",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Matériel arts créatifs
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+      </View>
     </View>
   </RCTScrollView>,
   <View

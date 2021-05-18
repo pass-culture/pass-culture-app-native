@@ -18,6 +18,7 @@ const MAP_CATEGORY_TO_LABEL: { [k in CategoryNameEnum]: string } = {
   JEUX_VIDEO: 'Jeux',
   CONFERENCE: 'Rencontre',
   INSTRUMENT: 'Musique',
+  MATERIEL_ART_CREA: 'Matériel artistique',
 }
 
 export const parseCategory = (category: CategoryNameEnum | null | undefined): string => {
@@ -40,6 +41,7 @@ export const MAP_CATEGORY_TO_ICON: {
   JEUX_VIDEO: Category.VideoGames,
   CONFERENCE: Category.Conference,
   INSTRUMENT: Category.Instrument,
+  MATERIEL_ART_CREA: Category.ArtsMaterial,
 }
 
 export const mapCategoryToIcon = (category: CategoryNameEnum | null): React.FC<IconInterface> => {

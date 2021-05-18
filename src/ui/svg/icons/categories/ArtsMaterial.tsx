@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from '../types'
 
-export function Streaming({
+export function ArtsMaterial({
   size = 192,
   color = ColorsEnum.GREY_DARK,
   testID,
