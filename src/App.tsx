@@ -116,6 +116,10 @@ const App: FunctionComponent = function () {
                               quality: 0.7,
                             }}
                             apiBaseUrl={env.ID_CHECK_API_URL}
+                            supportEmail={env.SUPPORT_EMAIL_ADDRESS}
+                            dsmUrl={env.DSM_URL}
+                            personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
+                            cguDocUrl={env.DOC_CGU_URL}
                             errorMonitoring={errorMonitoring}
                             analytics={idCheckAnalytics}>
                             <SplashScreenProvider>
