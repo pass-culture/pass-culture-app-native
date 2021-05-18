@@ -180,7 +180,7 @@ export const Profile: React.FC = () => {
           {noPositionError && (
             <InputError
               visible
-              messageId={t`Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`}
+              messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}
               numberOfSpacesTop={1}
             />
           )}

@@ -4,7 +4,6 @@ import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
@@ -78,9 +77,7 @@ describe('FavoritesSorts component', () => {
     fireEvent.press(renderAPI.getByText('Proximité géographique'))
 
     await waitForExpect(() => {
-      renderAPI.getByText(
-        `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
-      )
+      renderAPI.getByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
     })
   })
 
@@ -94,7 +91,7 @@ describe('FavoritesSorts component', () => {
     await waitForExpect(() => {
       expect(
         renderAPI.queryByText(
-          `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
+          `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
       ).toBeFalsy()
       expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({

@@ -106,7 +106,7 @@ describe('Profile component', () => {
         const { getByTestId, queryByText } = await renderProfile()
         const geolocSwitch = getByTestId('geolocation-switch-background')
         const positionErrorMessage = queryByText(
-          `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
+          `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
         expect(positionErrorMessage).toBeFalsy()
         expect(geolocSwitch.props.active).toBeTruthy()
@@ -117,9 +117,7 @@ describe('Profile component', () => {
         mockPosition = null
 
         const { getByText } = await renderProfile()
-        getByText(
-          `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
-        )
+        getByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
       })
 
       it('should display switch OFF if geoloc permission is denied', async () => {

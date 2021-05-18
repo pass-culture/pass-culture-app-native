@@ -2,7 +2,6 @@ import React from 'react'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { initialSearchState } from 'features/search/pages/reducer'
-import { env } from 'libs/environment'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { fireEvent, render } from 'tests/utils'
 
@@ -43,9 +42,7 @@ describe('LocationFilter component', () => {
     mockPosition = null
     const { getByText, getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
-    getByText(
-      `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
-    )
+    getByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
     expect(mockDispatch).not.toBeCalled()
   })
 
@@ -53,9 +50,7 @@ describe('LocationFilter component', () => {
     const { getByTestId, queryByText } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
     expect(
-      queryByText(
-        `Nous n'arrivons pas à récuperer ta position, si le problème persiste tu peux contacter ${env.SUPPORT_EMAIL_ADDRESS}`
-      )
+      queryByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
     ).toBeFalsy()
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'LOCATION_AROUND_ME',
