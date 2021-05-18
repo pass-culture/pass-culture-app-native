@@ -4,7 +4,7 @@ import Svg, { Defs, G, LinearGradient, Path, Stop } from 'react-native-svg'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme'
 
-export function Streaming({
+export function ArtsMaterial({
   size = 48,
   color = ColorsEnum.PRIMARY,
   color2,

@@ -1231,6 +1231,67 @@ Array [
                 }
               />
             </View>
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#c7c7cc",
+                  "borderRadius": 40,
+                  "borderWidth": 2,
+                  "flexDirection": "row",
+                  "marginBottom": 12,
+                  "marginRight": 12,
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                color="#151515"
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "paddingVertical": 10,
+                    },
+                  ]
+                }
+              >
+                Matériel arts créatifs
+              </Text>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+            </View>
           </View>
         </View>
       </View>

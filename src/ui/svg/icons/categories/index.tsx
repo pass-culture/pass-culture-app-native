@@ -1,3 +1,4 @@
+import { ArtsMaterial } from './ArtsMaterial'
 import { Artwork } from './Artwork'
 import { Atelier } from './Atelier'
 import { Book } from './Book'
@@ -12,6 +13,7 @@ import { Streaming } from './Streaming'
 import { VideoGames } from './VideoGames'
 
 export const Category = {
+  ArtsMaterial: ArtsMaterial,
   Atelier: Atelier,
   Cinema: Cinema,
   Conference: Conference,
