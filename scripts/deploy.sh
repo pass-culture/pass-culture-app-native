@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 set -e
 RED='\033[0;31m'
 BLUE='\033[0;34m'
@@ -72,7 +72,7 @@ check_environment(){
 check_dependency(){
   if ! which jq >/dev/null
   then
-    error "Please install jq at: https://stedolan.github.io/jq/download/" 
+    error "Please install jq at: https://stedolan.github.io/jq/download/"
     exit 1
   fi
 }
