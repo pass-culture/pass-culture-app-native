@@ -38,7 +38,6 @@ import { idCheckAnalytics } from 'libs/idCheckAnalytics'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
-import { ColorsEnum } from 'ui/theme'
 
 LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
 
@@ -99,11 +98,10 @@ const App: FunctionComponent = function () {
                         <SnackBarProvider>
                           <IdCheckContextProvider
                             imagePickerOptions={{
-                              tintColor: ColorsEnum.PRIMARY,
                               title: t`Où se trouve votre document ?`,
                               cancelButtonTitle: t`Plus tard`,
-                              takePhotoButtonTitle: t`Je le prends en photo`,
-                              chooseFromLibraryButtonTitle: t`J'envoie une copie`,
+                              takePhotoButtonTitle: t`Prendre une photo`,
+                              chooseFromLibraryButtonTitle: t`Photothèque`,
                               chooseWhichLibraryTitle: t`Où se trouve votre copie ?`,
                               permissionDenied: {
                                 title: t`Des permissions sont nécessaires`,
