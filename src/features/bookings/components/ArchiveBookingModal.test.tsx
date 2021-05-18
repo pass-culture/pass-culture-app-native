@@ -14,8 +14,10 @@ import { fireEvent, render, superFlushWithAct } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockShowErrorSnackBar = jest.fn()
+const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
+    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
     showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
   }),
   SNACK_BAR_TIME_OUT: 5000,
@@ -55,9 +57,15 @@ describe('<ArchiveBookingModal />', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+        message:
+          'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
+        timeout: 5000,
+      })
       expect(onDismiss).toBeCalled()
       expect(goBack).toBeCalled()
     })
+    await superFlushWithAct()
   })
   it('should show error snackbar if terminate booking request fails', async () => {
     const response = { code: 'ALREADY_USED', message: 'La réservation a déjà été utilisée.' }

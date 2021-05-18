@@ -21,11 +21,15 @@ export interface ArchiveBookingModalProps {
 
 export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
   const { goBack } = useNavigation()
-  const { showErrorSnackBar } = useSnackBarContext()
+  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
 
   const { mutate, isLoading } = useArchiveBookingMutation({
     bookingId: props.bookingId,
     onSuccess: () => {
+      showSuccessSnackBar({
+        message: t`La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
       goBack()
       props.onDismiss()
     },
@@ -47,7 +51,7 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
       onRightIconPress={props.onDismiss}>
       <ModalContent>
         <Title>{props.bookingTitle}</Title>
-        <Explanation>{t`tu pourras retrouver l’offre dans tes réservations teminées`}</Explanation>
+        <Explanation>{t`Tu pourras retrouver l’offre dans tes réservations teminées`}</Explanation>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           title={t`Terminer ma réservation`}
