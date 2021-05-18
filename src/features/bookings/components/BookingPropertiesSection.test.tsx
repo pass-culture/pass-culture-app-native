@@ -60,6 +60,7 @@ async function renderBookingProperties(booking: Booking) {
           depositAmount: 5000,
           enableNativeIdCheckVersion: false,
           isRecaptchaEnabled: false,
+          wholeFranceOpening: false,
         }}
       />
     )
