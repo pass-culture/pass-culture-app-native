@@ -1,9 +1,11 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
+
+jest.mock('features/navigation/helpers')
 
 const resumeMock = jest.fn()
 
@@ -42,7 +44,7 @@ describe('QuitSignupModal', () => {
     const abandonButton = getByText("Abandonner l'inscription")
     fireEvent.press(abandonButton)
 
-    expect(navigate).toHaveBeenCalledWith('Home')
+    expect(navigateToHome).toBeCalled()
   })
 
   describe('QuitSignupModal - Analytics', () => {

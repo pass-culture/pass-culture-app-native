@@ -2,6 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { render, fireEvent } from 'tests/utils'
 
@@ -14,6 +15,7 @@ beforeEach(() => {
 let mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
 jest.mock('features/auth/settings')
+jest.mock('features/navigation/helpers')
 
 const navigationProps = {
   route: { params: { email: 'test@email.com', licenceToken: 'xXLicenceTokenXx' } },
@@ -36,8 +38,7 @@ describe('<VerifyEligibility />', () => {
     const button = await findByText("Retourner à l'accueil")
     fireEvent.press(button)
 
-    expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('Home')
+    expect(navigateToHome).toBeCalled()
   })
 
   it('should redirect to IdCheck screen WHEN clicking on "Vérifier mon éligibilité" button', async () => {

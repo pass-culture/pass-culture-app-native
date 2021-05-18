@@ -1,9 +1,8 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -35,11 +34,9 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
   testIdSuffix,
   signupStep,
 }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-
   function quitSignup() {
     analytics.logCancelSignup(signupStep)
-    navigate('Home')
+    navigateToHome()
   }
 
   return (

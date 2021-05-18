@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
 
-import { usePreviousRoute } from './helpers'
+import { navigateToHome, usePreviousRoute } from './helpers'
 
 export function useBackNavigation(fallbackNavigation?: () => void) {
-  const { canGoBack, goBack, navigate } = useNavigation()
+  const { canGoBack, goBack } = useNavigation()
   const previousRoute = usePreviousRoute()
 
   return () => {
@@ -13,7 +13,7 @@ export function useBackNavigation(fallbackNavigation?: () => void) {
       if (fallbackNavigation) {
         fallbackNavigation()
       } else {
-        navigate('Home')
+        navigateToHome()
       }
     }
   }

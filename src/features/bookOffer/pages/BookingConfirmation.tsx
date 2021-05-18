@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -16,7 +17,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
 
-  const { navigate, reset } = useNavigation<UseNavigationType>()
+  const { reset } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
 
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
@@ -63,7 +64,7 @@ export function BookingConfirmation() {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimaryWhite title={t`Voir ma réservation`} onPress={displayBookingDetails} />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={() => navigate('Home')} />
+      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )
 }

@@ -6,6 +6,7 @@ import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
+import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { AsyncError } from 'libs/errorMonitoring'
@@ -31,10 +32,6 @@ export function ResetPasswordExpiredLink(props: Props) {
       enabled: false,
     }
   )
-
-  function goToHome() {
-    navigate('Home')
-  }
 
   async function resetPasswordExpiredLink() {
     try {
@@ -66,7 +63,7 @@ export function ResetPasswordExpiredLink(props: Props) {
         disabled={isFetching}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={goToHome} />
+      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )
 }

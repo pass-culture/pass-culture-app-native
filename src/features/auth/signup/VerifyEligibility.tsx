@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -7,7 +6,8 @@ import styled from 'styled-components/native'
 import { useDepositAmount } from 'features/auth/api'
 import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { navigateToHome } from 'features/navigation/helpers'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -23,16 +23,11 @@ export function VerifyEligibility(props: Props) {
     showModal: showDenyAccessToIdCheckModal,
     hideModal: hideDenyAccessToIdCheckModal,
   } = useModal(false)
-  const { navigate } = useNavigation<UseNavigationType>()
   const deposit = useDepositAmount()
 
   const navigateToIdCheck = useNavigateToIdCheck({
     onIdCheckNavigationBlocked: showDenyAccessToIdCheckModal,
   })
-
-  function goToHome() {
-    navigate('Home')
-  }
 
   function goToIdCheckWebView() {
     const { email, licenceToken } = props.route.params
@@ -55,7 +50,7 @@ export function VerifyEligibility(props: Props) {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimaryWhite title={t`Vérifier mon éligibilité`} onPress={goToIdCheckWebView} />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={goToHome} />
+      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
       <DenyAccessToIdCheckModal
         visible={denyAccessToIdCheckModalVisible}
         dismissModal={hideDenyAccessToIdCheckModal}

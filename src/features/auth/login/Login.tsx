@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
 import { useBackNavigation } from 'features/navigation/backNavigation'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { useSafeState } from 'libs/hooks'
@@ -63,7 +64,7 @@ export const Login: FunctionComponent = function () {
       } else if (user.needsToFillCulturalSurvey) {
         navigate('CulturalSurvey')
       } else {
-        navigate('Home')
+        navigateToHome()
       }
     } catch {
       setErrorMessage(t`Il y a eu un problème. Tu peux réessayer plus tard.`)
@@ -91,7 +92,7 @@ export const Login: FunctionComponent = function () {
   }
 
   function onClose() {
-    navigate('Home')
+    navigateToHome()
   }
 
   function onForgottenPasswordClick() {

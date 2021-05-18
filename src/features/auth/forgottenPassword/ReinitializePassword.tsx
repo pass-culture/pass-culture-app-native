@@ -7,6 +7,7 @@ import {
   isPasswordCorrect,
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
@@ -54,10 +55,6 @@ export const ReinitializePassword = () => {
     })
   }
 
-  function goToHome() {
-    navigate('Home')
-  }
-
   useEffect(() => {
     if (params.expiration_timestamp * MILLISECONDS_IN_A_SECOND < new Date().getTime()) {
       navigate('Login')
@@ -66,7 +63,11 @@ export const ReinitializePassword = () => {
 
   return (
     <BottomContentPage>
-      <ModalHeader title={t`Ton mot de passe`} rightIcon={Close} onRightIconPress={goToHome} />
+      <ModalHeader
+        title={t`Ton mot de passe`}
+        rightIcon={Close}
+        onRightIconPress={navigateToHome}
+      />
       <BottomCardContentContainer>
         <Spacer.Column numberOfSpaces={6} />
         <StyledInput>

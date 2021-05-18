@@ -5,7 +5,7 @@ import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { usePreviousRoute } from 'features/navigation/helpers'
+import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -23,14 +23,14 @@ import { contactSupport } from '../support.services'
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
 export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route }) => {
-  const { navigate, goBack } = useNavigation<UseNavigationType>()
+  const { goBack } = useNavigation<UseNavigationType>()
   const previousRoute = usePreviousRoute()
   /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
   to redo the challenge, so we block the user from going back to ReCAPTCHA screen */
   const shouldBeAbleToGoBack = previousRoute?.name !== 'AcceptCgu'
 
   function onClose() {
-    navigate('Home')
+    navigateToHome()
   }
 
   function onContactSupport() {

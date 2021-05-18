@@ -6,7 +6,7 @@ import { WebView, WebViewNavigation } from 'react-native-webview'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { useCurrentRoute } from 'features/navigation/helpers'
+import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
@@ -50,7 +50,7 @@ export const IdCheck: React.FC<Props> = function (props) {
     const isEligibilityProcessAbandonned = event.url.includes('/exit')
     const isEligibilityProcessFinished = event.url.includes('/end')
     if (isEligibilityProcessAbandonned) {
-      navigation.navigate('Home')
+      navigateToHome()
     } else if (isEligibilityProcessFinished) {
       storage.saveObject('has_completed_idcheck', true)
       navigation.navigate('BeneficiaryRequestSent')

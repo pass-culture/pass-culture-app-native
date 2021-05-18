@@ -3,8 +3,8 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, goBack } from '__mocks__/@react-navigation/native'
-import * as NavigationHelpers from 'features/navigation/helpers'
+import { goBack } from '__mocks__/@react-navigation/native'
+import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
@@ -13,14 +13,8 @@ import { contactSupport } from '../support.services'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
 
-const mockUsePreviousRoute = NavigationHelpers.usePreviousRoute as jest.MockedFunction<
-  typeof NavigationHelpers.usePreviousRoute
->
-type MockNavigationHelpers = typeof NavigationHelpers
-jest.mock('features/navigation/helpers', () => ({
-  ...jest.requireActual<MockNavigationHelpers>('../../navigation/helpers'),
-  usePreviousRoute: jest.fn(),
-}))
+const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
+jest.mock('features/navigation/helpers')
 
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
@@ -56,8 +50,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     fireEvent.press(rightIconButton)
 
     await waitForExpect(() => {
-      expect(navigate).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('Home')
+      expect(navigateToHome).toBeCalledTimes(1)
     })
   })
 
