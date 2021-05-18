@@ -2,6 +2,7 @@ import { renderHook } from '@testing-library/react-hooks'
 
 import * as Dates from 'libs/dates'
 import * as Timer from 'libs/timer'
+import { act } from 'tests/utils'
 
 describe('Timer', () => {
   describe('Undefined start time', () => {
@@ -24,27 +25,44 @@ describe('Timer', () => {
     })
     afterEach(jest.restoreAllMocks)
 
-    it('shold stop if shouldStop return true', () => {
+    it('should stop if shouldStop return true', () => {
       renderHook(() => Timer.useTimer(1, () => true))
 
       jest.runOnlyPendingTimers()
 
       expect(clearLocalIntervalMock).toBeCalled()
     })
-    it('shold not stop if shouldStop return false', () => {
+    it('should not stop if shouldStop return false', () => {
+      jest.useFakeTimers()
       jest.spyOn(Dates, 'currentTimestamp').mockReturnValue(1)
-      const myInspector = jest.fn()
-      renderHook(() =>
-        Timer.useTimer(1, (elapsed) => {
-          myInspector(elapsed)
-          return false
-        })
-      )
+      const myInspector = jest.fn((_elapstedTime: number) => false)
+      renderHook(() => Timer.useTimer(1, myInspector))
 
-      jest.runOnlyPendingTimers()
+      act(() => jest.advanceTimersByTime(1000))
 
       expect(clearLocalIntervalMock).not.toBeCalled()
+      // expect call with the result of currentTimestamp()-timer = 1 - 1 = 0
       expect(myInspector).toBeCalledWith(0)
+    })
+  })
+
+  describe('onSecondTick', () => {
+    it('should call onSecondTick when supplied', () => {
+      const onSecondTick = jest.fn()
+      const {
+        result: { current },
+      } = renderHook(() => Timer.useTimer(Dates.currentTimestamp() - 1, () => false, onSecondTick))
+      jest.runOnlyPendingTimers()
+      expect(onSecondTick).toBeCalledWith(1)
+      expect(current).toEqual(Timer.TIMER_NOT_INITIALIZED)
+    })
+    it('should not call onSecondTick when not supplied', () => {
+      jest.useFakeTimers()
+      const {
+        result: { current },
+      } = renderHook(() => Timer.useTimer(Dates.currentTimestamp() - 1, () => false))
+      act(() => jest.advanceTimersByTime(1000))
+      expect(current).toEqual(Timer.TIMER_NOT_INITIALIZED)
     })
   })
 })

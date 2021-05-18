@@ -6,7 +6,7 @@ import { useSendPhoneValidationMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
-import { useTimer } from 'libs/timer'
+import { useTimer, TIMER_NOT_INITIALIZED } from 'libs/timer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -40,7 +40,9 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     (elapsedTime: number) => elapsedTime > TIMER
   )
   const isRequestTimestampExpired =
-    !validationCodeRequestTimestamp || timeSinceLastRequest === 0 || timeSinceLastRequest >= TIMER
+    !validationCodeRequestTimestamp ||
+    timeSinceLastRequest === TIMER_NOT_INITIALIZED ||
+    timeSinceLastRequest >= TIMER
 
   const isPhoneValid = Boolean(isValidPhoneNumber(phoneNumber))
 
