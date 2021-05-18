@@ -7,6 +7,7 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen/api'
+import { useSignInNumberOfSteps } from 'features/auth/api'
 import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
@@ -114,7 +115,6 @@ function onButtonPress() {
   Alert.alert('you pressed it')
 }
 
-const NUMBER_OF_STEPS = 4
 const THIS_YEAR = new Date().getFullYear()
 const ICON_SIZE = getSpacing(6)
 
@@ -146,6 +146,7 @@ export const AppComponents: FunctionComponent = () => {
   const [inputText, setInputText] = useState('')
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
+  const numberOfSteps = useSignInNumberOfSteps()
 
   const onTriggerFakeLoading = useCallback(() => {
     setButtonIsLoading(true)
@@ -710,7 +711,7 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
 
         <AlignedText>
-          <StepDots numberOfSteps={NUMBER_OF_STEPS} currentStep={currentStep} />
+          <StepDots numberOfSteps={numberOfSteps} currentStep={currentStep} />
           <Text> - Steps </Text>
         </AlignedText>
         <AlignedText>
@@ -721,7 +722,7 @@ export const AppComponents: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={2} />
           <Button
             title="Next"
-            onPress={() => setCurrentStep((step) => (step === NUMBER_OF_STEPS ? step : step + 1))}
+            onPress={() => setCurrentStep((step) => (step === numberOfSteps ? step : step + 1))}
           />
         </AlignedText>
         <AlignedText>

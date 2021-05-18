@@ -10,6 +10,8 @@ import { analytics } from 'libs/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
+jest.mock('features/auth/settings')
+
 describe('SetPassword Page', () => {
   it('should enable the submit button when password is correct', async () => {
     const { getByPlaceholderText, getByTestId } = renderChoosePassword()

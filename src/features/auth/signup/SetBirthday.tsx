@@ -5,8 +5,9 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { Keyboard, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useDepositAmount } from 'features/auth/api'
+import { useDepositAmount, useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { useAppSettings } from 'features/auth/settings'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
@@ -25,7 +26,6 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { useAppSettings } from 'features/auth/settings'
 
 type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
 
@@ -77,6 +77,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   const password = route.params.password
 
   const dateInputRef = useRef<DateInputRef>(null)
+  const numberOfSteps = useSignInNumberOfSteps()
 
   function onChangeValue(date: Date | null, validation: DateValidation) {
     setState({
@@ -167,7 +168,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
                 onPress={goToNextStep}
               />
               <Spacer.Column numberOfSpaces={5} />
-              <StepDots numberOfSteps={5} currentStep={3} />
+              <StepDots numberOfSteps={numberOfSteps} currentStep={3} />
             </InnerContainer>
           </TouchableWithoutFeedback>
         </BottomCardContentContainer>

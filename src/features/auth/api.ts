@@ -98,6 +98,11 @@ export function useDepositAmount() {
   return formatToFrenchDecimal(amount)
 }
 
+export function useSignInNumberOfSteps() {
+  const { data: settings } = useAppSettings()
+  return settings?.wholeFranceOpening ? 4 : 5
+}
+
 export function useSendPhoneValidationMutation({ onSuccess, onError }: SendPhoneValidationProps) {
   return useMutation(
     (phoneNumber: string) => api.postnativev1sendPhoneValidationCode({ phoneNumber }),

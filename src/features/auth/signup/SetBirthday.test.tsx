@@ -1,21 +1,24 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import mockdate from 'mockdate'
 import React from 'react'
+import { UseQueryResult } from 'react-query'
+import { mocked } from 'ts-jest/utils'
 
 import { goBack, navigate } from '__mocks__/@react-navigation/native'
+import { SettingsResponse } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, RenderAPI } from 'tests/utils'
-import { useAppSettings } from 'features/auth/settings'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetBirthday } from './SetBirthday'
-import { mocked } from 'ts-jest/utils'
-import { UseQueryResult } from 'react-query'
-import { SettingsResponse } from 'api/gen'
 
 let mockDepositAmount = '300 €'
-jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
+jest.mock('features/auth/api', () => ({
+  useDepositAmount: () => mockDepositAmount,
+  useSignInNumberOfSteps: () => 5,
+}))
 jest.mock('features/auth/settings')
 const mockedUseAppSettings = mocked(useAppSettings, true)
 

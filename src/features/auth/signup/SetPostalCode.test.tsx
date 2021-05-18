@@ -9,6 +9,7 @@ import { fireEvent, render, waitFor } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 import { SetPostalCode } from './SetPostalCode'
+jest.mock('features/auth/settings')
 
 describe('SetPostalCode Page', () => {
   it('should enable the submit button when postalCode contains 5 numbers', async () => {
