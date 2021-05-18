@@ -77,4 +77,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: CategoryIcon.Instrument,
     facetFilter: CategoryNameEnum.INSTRUMENT,
   },
+  [CategoryNameEnum.MATERIEL_ART_CREA]: {
+    label: 'Matériel arts créatifs',
+    icon: CategoryIcon.ArtsMaterial,
+    facetFilter: CategoryNameEnum.MATERIEL_ART_CREA,
+  },
 }

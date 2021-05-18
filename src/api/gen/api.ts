@@ -290,6 +290,12 @@ export interface BookingReponse {
     cancellationReason?: BookingCancellationReasons | null;
     /**
      * 
+     * @type {string}
+     * @memberof BookingReponse
+     */
+    completedUrl?: string | null;
+    /**
+     * 
      * @type {Date}
      * @memberof BookingReponse
      */
@@ -430,7 +436,8 @@ export enum CategoryNameEnum {
     MUSIQUE = 'MUSIQUE',
     PRESSE = 'PRESSE',
     SPECTACLE = 'SPECTACLE',
-    VISITE = 'VISITE'
+    VISITE = 'VISITE',
+    MATERIEL_ART_CREA = 'MATERIEL_ART_CREA'
 }/**
  * An enumeration.
  * @export
