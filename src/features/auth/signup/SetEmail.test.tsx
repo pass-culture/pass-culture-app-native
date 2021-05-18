@@ -6,6 +6,10 @@ import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
+jest.mock('features/auth/api', () => ({
+  useSignInNumberOfSteps: () => 5,
+}))
+
 describe('<SetEmail />', () => {
   beforeEach(() =>
     useRoute.mockImplementation(() => ({

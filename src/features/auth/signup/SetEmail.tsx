@@ -4,6 +4,7 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -40,6 +41,7 @@ export const SetEmail: FunctionComponent = () => {
   } = useModal(false)
 
   const complexGoBack = useBackNavigation()
+  const numberOfSteps = useSignInNumberOfSteps()
 
   function onChangeEmail(email: string) {
     if (hasError) {
@@ -106,7 +108,7 @@ export const SetEmail: FunctionComponent = () => {
             disabled={shouldDisableValidateButton}
           />
           <Spacer.Column numberOfSpaces={5} />
-          <StepDots numberOfSteps={5} currentStep={1} />
+          <StepDots numberOfSteps={numberOfSteps} currentStep={1} />
         </ModalContent>
       </BottomContentPage>
       <QuitSignupModal

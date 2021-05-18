@@ -5,6 +5,7 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -32,6 +33,8 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
+
+  const numberOfSteps = useSignInNumberOfSteps()
 
   const { email, isNewsletterChecked, password, birthday } = route.params
 
@@ -102,7 +105,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
             disabled={!isPostalCodeCorrect}
           />
           <Spacer.Column numberOfSpaces={5} />
-          <StepDots numberOfSteps={5} currentStep={4} />
+          <StepDots numberOfSteps={numberOfSteps} currentStep={4} />
         </ModalContent>
       </BottomContentPage>
       <QuitSignupModal

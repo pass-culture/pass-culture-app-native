@@ -5,6 +5,7 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useSignInNumberOfSteps } from 'features/auth/api'
 import {
   isPasswordCorrect,
   PasswordSecurityRules,
@@ -37,6 +38,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
     showModal: showFullPageModal,
     hideModal: hideFullPageModal,
   } = useModal(false)
+  const numberOfSteps = useSignInNumberOfSteps()
 
   function submitPassword() {
     navigate('SetBirthday', { email, isNewsletterChecked, password })
@@ -79,7 +81,7 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
           />
           <Spacer.Column numberOfSpaces={5} />
           <StyledStepDots>
-            <StepDots numberOfSteps={5} currentStep={2} />
+            <StepDots numberOfSteps={numberOfSteps} currentStep={2} />
           </StyledStepDots>
         </BottomCardContentContainer>
       </BottomContentPage>
