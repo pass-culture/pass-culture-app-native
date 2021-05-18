@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 
 import { currentTimestamp } from 'libs/dates'
 
+export const TIMER_NOT_INITIALIZED = -1
+
 export function useTimer(
   startTime: number | undefined | null,
   shouldStop: (elapsed: number) => boolean,
-  onSecondPass?: (elapsed: number) => void
+  onSecondTick?: (elapsed: number) => void
 ) {
-  const [elapsedTime, setElapsedTime] = useState(0)
+  const [elapsedTime, setElapsedTime] = useState(TIMER_NOT_INITIALIZED)
   const timerIdRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
@@ -25,8 +27,11 @@ export function useTimer(
         return exports.clearLocalInterval(timerIdRef.current)
       }
 
-      setElapsedTime(newElapsedTime)
-      onSecondPass?.(newElapsedTime)
+      if (onSecondTick) {
+        onSecondTick(newElapsedTime)
+      } else {
+        setElapsedTime(newElapsedTime)
+      }
     }, 1000)
 
     return () => {

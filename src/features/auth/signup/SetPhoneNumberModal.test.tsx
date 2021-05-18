@@ -1,11 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { SetPhoneNumberModal } from 'features/auth/signup/SetPhoneNumberModal'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, flushAllPromises, render, superFlushWithAct } from 'tests/utils'
+import { act, fireEvent, flushAllPromises, render, superFlushWithAct } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
 describe('SetPhoneNumberModal', () => {
@@ -84,6 +84,7 @@ describe('SetPhoneNumberModal', () => {
     })
 
     it('should NOT call onValidationCodeAsked property on press button "Continuer" if last request timestamp < 1 min', async () => {
+      jest.useFakeTimers()
       // we assume last call was made 5 seconds ago
       await storage.saveObject('phone_validation_code_asked_at', currentTimestamp() - 5)
 
@@ -92,6 +93,9 @@ describe('SetPhoneNumberModal', () => {
         onValidationCodeAsked: mockOnValidationCodeAsked,
       })
       await superFlushWithAct()
+
+      // stop timer to simulate the click before the end of the timer
+      act(() => jest.advanceTimersByTime(1000))
 
       const button = getByTestId('button-container-continue')
       const input = getByPlaceholderText('0612345678')
