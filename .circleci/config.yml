@@ -78,6 +78,14 @@ commands:
           name: Upload source maps
           command: |
             ./scripts/upload_sourcemaps_to_sentry.sh
+  notify-release:
+    description: Notify deployment
+    steps:
+      - run:
+          name: Notify deployed version
+          command: |
+            BOT_MESSAGE="'[App Native] Version *"$CIRCLE_TAG"* has been successfully deployed :muscle:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
 
 jobs:
   run-tests:
@@ -111,6 +119,13 @@ jobs:
       - checkout
       - install_node_modules
       - upload_sourcemaps
+
+  notify-hard-release:
+    docker:
+      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    working_directory: ~/pass-culture
+    steps:
+      - notify-release
 
   deploy-soft-testing:
     docker:
@@ -250,6 +265,7 @@ jobs:
             export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_STAGING
             ./scripts/deploy.sh -o ios -t soft -e staging
+      - notify-release
 
   deploy-android-production-hard:
     docker:
@@ -318,6 +334,7 @@ jobs:
             export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_PRODUCTION
             ./scripts/deploy.sh -o ios -t soft -e production
+      - notify-release
 
 workflows:
   version: 2.1
@@ -379,6 +396,15 @@ workflows:
               ignore: /.*/
           requires:
             - run-tests
+      - notify-hard-release:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - deploy-ios-staging-hard
+            - deploy-android-staging-hard
       - deploy-soft-staging:
           filters:
             tags:
@@ -403,6 +429,15 @@ workflows:
               ignore: /.*/
           requires:
             - run-tests
+      - notify-hard-release:
+          filters:
+            tags:
+              only: /^prod-hard-deploy.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - deploy-ios-production-hard
+            - deploy-android-production-hard
       - deploy-soft-production:
           filters:
             tags:
