@@ -571,16 +571,16 @@ msgid "Inscris-toi pour accéder à toutes les fonctionnalités de l’applicati
 msgstr "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
 
 #: src/App.tsx:89
-msgid "J'envoie une copie"
-msgstr "J'envoie une copie"
+msgid "Photothèque"
+msgstr "Photothèque"
 
 #: src/features/search/components/SearchLandingPage.tsx:24
 msgid "Je cherche"
 msgstr "Je cherche"
 
 #: src/App.tsx:88
-msgid "Je le prends en photo"
-msgstr "Je le prends en photo"
+msgid "Prendre une photo"
+msgstr "Prendre une photo"
 
 #: src/features/offer/services/useShareOffer.ts:28
 msgid "Je t'invite à découvrir une super offre sur le pass Culture !"
