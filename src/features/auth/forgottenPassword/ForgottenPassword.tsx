@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { useAppSettings } from 'features/auth/settings'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { MonitoringError } from 'libs/errorMonitoring'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
@@ -60,7 +61,7 @@ export const ForgottenPassword: FunctionComponent = () => {
   }
 
   function onClose() {
-    navigate('Home')
+    navigateToHome()
   }
 
   function onChangeEmail(email: string) {

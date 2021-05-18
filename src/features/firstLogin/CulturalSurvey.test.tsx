@@ -6,7 +6,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
-import { useCurrentRoute } from 'features/navigation/helpers'
+import { useCurrentRoute, navigateToHome } from 'features/navigation/helpers'
 import { simulateWebviewMessage, superFlushWithAct, act, render } from 'tests/utils'
 
 import { CulturalSurvey } from './CulturalSurvey'
@@ -21,9 +21,7 @@ jest.mock('features/home/api', () => ({
 }))
 
 const mockedUseCurrentRoute = useCurrentRoute as jest.MockedFunction<typeof useCurrentRoute>
-jest.mock('features/navigation/helpers', () => ({
-  useCurrentRoute: jest.fn(),
-}))
+jest.mock('features/navigation/helpers')
 
 beforeEach(() => {
   mockedUseUserProfileInfo.mockReturnValue({ data: { id: 1234 } } as UseQueryResult<
@@ -95,7 +93,7 @@ describe('<CulturalSurvey />', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('Home')
+      expect(navigateToHome).toBeCalled()
     })
     expect(postnativev1meculturalSurveySpy).toBeCalledWith({
       culturalSurveyId: null,
@@ -120,7 +118,7 @@ describe('<CulturalSurvey />', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('Home')
+      expect(navigateToHome).toBeCalled()
     })
     expect(postnativev1meculturalSurveySpy).toHaveBeenNthCalledWith(1, {
       culturalSurveyId: 'fakeUUID',
@@ -151,7 +149,7 @@ describe('<CulturalSurvey />', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('Home')
+      expect(navigateToHome).toBeCalled()
     })
   })
 })

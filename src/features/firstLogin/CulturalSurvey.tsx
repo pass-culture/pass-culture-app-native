@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useRef, useState } from 'react'
 import { WebView, WebViewMessageEvent } from 'react-native-webview'
 import { WebViewNavigation } from 'react-native-webview/lib/WebViewTypes'
@@ -9,8 +8,7 @@ import { v1 as uuidv1 } from 'uuid'
 import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { useUserProfileInfo } from 'features/home/api'
-import { useCurrentRoute } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/errorMonitoring'
 import { QueryKeys } from 'libs/queryKeys'
@@ -35,7 +33,6 @@ export const CulturalSurvey: React.FC = function () {
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
   const currentRoute = useCurrentRoute()
-  const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
   const { data: user } = useUserProfileInfo()
   const queryClient = useQueryClient()
@@ -114,7 +111,7 @@ export const CulturalSurvey: React.FC = function () {
     // we need to invalidate user profile query in order to update home
     // and profile pages with the latest user information.
     queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
-    navigation.navigate('Home')
+    navigateToHome()
   }
 
   if (currentRoute?.name !== 'CulturalSurvey') {

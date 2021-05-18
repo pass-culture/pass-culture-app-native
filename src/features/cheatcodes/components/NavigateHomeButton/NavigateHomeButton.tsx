@@ -1,11 +1,8 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Button } from 'react-native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { navigateToHome } from 'features/navigation/helpers'
 
 export const NavigateHomeButton: React.FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToHome = useCallback(() => navigate('Home'), [])
   return <Button title="Naviguer vers la page d'accueil" onPress={navigateToHome} />
 }

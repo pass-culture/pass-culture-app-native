@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 import { BatchUser } from '__mocks__/@bam.tech/react-native-batch'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
-import { usePreviousRoute } from 'features/navigation/helpers'
+import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
@@ -47,7 +47,7 @@ describe('<Login/>', () => {
     await waitForExpect(() => {
       expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
       expect(analytics.setUserId).toHaveBeenCalledWith(111)
-      expect(navigate).toHaveBeenNthCalledWith(1, 'Home')
+      expect(navigateToHome).toBeCalledTimes(1)
     })
   })
 
@@ -78,7 +78,7 @@ describe('<Login/>', () => {
     await act(flushAllPromises)
 
     await waitForExpect(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'Home')
+      expect(navigateToHome).toBeCalledTimes(1)
     })
   })
 

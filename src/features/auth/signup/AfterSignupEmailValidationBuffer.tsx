@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 
 import { ValidateEmailResponse } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -62,7 +63,7 @@ export function AfterSignupEmailValidationBuffer() {
     showInfoSnackBar({
       message: t`Ce lien de validation n'est plus valide`,
     })
-    delayedNavigate('Home')
+    delayedNavigate(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
 
   return <LoadingPage />

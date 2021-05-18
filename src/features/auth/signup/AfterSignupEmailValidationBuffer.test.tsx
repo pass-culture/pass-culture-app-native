@@ -6,6 +6,7 @@ import { mocked } from 'ts-jest/utils'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SettingsResponse, ValidateEmailRequest, ValidateEmailResponse } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -152,7 +153,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
           message: "Ce lien de validation n'est plus valide",
         })
         expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('Home')
+        expect(navigate).toHaveBeenCalledWith(homeNavigateConfig.screen, homeNavigateConfig.params)
       })
     })
   })

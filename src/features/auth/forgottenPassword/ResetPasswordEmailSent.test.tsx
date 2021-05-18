@@ -5,6 +5,7 @@ import { Text } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import waitForExpect from 'wait-for-expect'
 
+import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
@@ -17,6 +18,7 @@ import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 allowConsole({ error: true })
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+jest.mock('features/navigation/helpers')
 
 describe('<ResetPasswordEmailSent />', () => {
   it('should match snapshot', async () => {
@@ -54,7 +56,7 @@ describe('<ResetPasswordEmailSent />', () => {
     fireEvent.press(renderAPI.getByTestId('rightIcon'))
 
     await waitForExpect(() => {
-      expect(renderAPI.getByText('HomeText')).toBeTruthy()
+      expect(navigateToHome).toBeCalled()
     })
   })
 

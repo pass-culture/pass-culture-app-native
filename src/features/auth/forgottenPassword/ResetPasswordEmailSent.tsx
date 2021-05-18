@@ -1,13 +1,12 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useBackNavigation } from 'features/navigation/backNavigation'
-import { usePreviousRoute } from 'features/navigation/helpers'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -24,7 +23,6 @@ import { contactSupport } from '../support.services'
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation()
   const previousRoute = usePreviousRoute()
   /* Note : we have issues with previously successfully valided ReCAPTCHA not being able
@@ -32,7 +30,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   const shouldBeAbleToGoBack = previousRoute?.name !== 'ForgottenPassword'
 
   function onClose() {
-    navigate('Home')
+    navigateToHome()
   }
 
   function onContactSupport() {
