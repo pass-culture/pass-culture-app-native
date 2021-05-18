@@ -97,19 +97,6 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - install_node_modules
-      - run:
-          name: Linter
-          command: |
-            yarn test:lint
-      - run:
-          name: Typescript Type Check
-          command: |
-            yarn test:types
-      - run:
-          name: Unit Tests
-          command: |
-            yarn test:unit:ci
 
   upload-sourcemaps:
     docker:
@@ -155,23 +142,6 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - install_node_modules
-      - install_ruby_modules
-      - run:
-          name: Setup android keystore for testing environment
-          command: |
-            mkdir -p android/keystores
-            echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
-            echo "keyAlias=passculture" >> android/keystores/testing.keystore.properties
-            echo "storeFile=testing.keystore" >> android/keystores/testing.keystore.properties
-            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
-            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
-      - setup_android_google_services_config
-      - run:
-          name: Deploy Android App for testing environment
-          command: |
-            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o android -t hard -e testing
 
   deploy-ios-testing-hard:
     macos:
@@ -179,23 +149,6 @@ jobs:
     working_directory: ~/pass-culture
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
-      - install_node_version
-      - install_node_modules
-      - install_ruby_modules
-      - install_cocoapods
-      - decode_match_secrets
-      - run:
-          name: Setup iOS Google services config
-          command: echo $IOS_GOOGLE_SERVICES_PLIST_TESTING > ios/GoogleService-Info.plist
-      - run:
-          name: Deploy IOS App for testing environment
-          no_output_timeout: 30m
-          command: |
-            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o ios -t hard -e testing
 
   deploy-ios-staging-hard:
     macos:
@@ -370,6 +323,15 @@ workflows:
               ignore: /.*/
           requires:
             - run-tests
+      - notify-hard-release:
+          filters:
+            tags:
+              only: /^(testing_)?v.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - deploy-ios-testing-hard
+            - deploy-android-testing-hard
       - upload-sourcemaps:
           filters:
             tags:
