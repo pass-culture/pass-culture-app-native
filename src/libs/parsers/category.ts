@@ -18,7 +18,7 @@ const MAP_CATEGORY_TO_LABEL: { [k in CategoryNameEnum]: string } = {
   JEUX_VIDEO: 'Jeux',
   CONFERENCE: 'Rencontre',
   INSTRUMENT: 'Musique',
-  MATERIEL_ART_CREA: 'Matériel artistique',
+  MATERIEL_ART_CREA: 'Art',
 }
 
 export const parseCategory = (category: CategoryNameEnum | null | undefined): string => {
