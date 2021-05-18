@@ -1,4 +1,5 @@
 import { All } from './All'
+import { ArtsMaterial } from './ArtsMaterial'
 import { Atelier } from './Atelier'
 import { Cinema } from './Cinema'
 import { Conference } from './Conference'
@@ -24,4 +25,5 @@ export default {
   Presse,
   Spectacles,
   Streaming,
+  ArtsMaterial,
 }

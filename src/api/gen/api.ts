@@ -436,7 +436,8 @@ export enum CategoryNameEnum {
     MUSIQUE = 'MUSIQUE',
     PRESSE = 'PRESSE',
     SPECTACLE = 'SPECTACLE',
-    VISITE = 'VISITE'
+    VISITE = 'VISITE',
+    MATERIEL_ART_CREA = 'MATERIEL_ART_CREA'
 }/**
  * An enumeration.
  * @export
