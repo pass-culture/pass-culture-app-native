@@ -86,7 +86,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     })
   }
 
-  function goToPostalCode() {
+  function goToNextStep() {
     const { date } = state
     if (date) {
       const birthday = formatDateToISOStringWithoutTime(date)
@@ -161,7 +161,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
                 title={t`Continuer`}
                 disabled={!state.isDateValid}
                 testIdSuffix={'validate-birthday'}
-                onPress={goToPostalCode}
+                onPress={goToNextStep}
               />
               <Spacer.Column numberOfSpaces={5} />
               <StepDots numberOfSteps={5} currentStep={3} />
