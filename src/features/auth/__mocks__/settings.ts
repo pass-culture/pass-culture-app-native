@@ -10,6 +10,7 @@ export const useAppSettings: typeof actualUseAppSettings = jest.fn(
         isRecaptchaEnabled: true,
         allowIdCheckRegistration: true,
         enableNativeIdCheckVersion: false,
+        wholeFranceOpening: false,
       },
       isLoading: false,
     } as UseQueryResult<SettingsResponse, unknown>)
