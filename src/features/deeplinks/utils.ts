@@ -28,9 +28,10 @@ export function getLongDynamicLinkURI(ignoreMiddlePage = true) {
  */
 export function generateLongFirebaseDynamicLink(
   screen: keyof DeepLinksToScreenConfiguration,
-  uri: string
+  universalLinksParams: string,
+  customDynamicLinksParams = ''
 ) {
-  return `${FIREBASE_DYNAMIC_LINK_DOMAIN}?link=${DEEPLINK_DOMAIN}${screen}?${uri}&${getLongDynamicLinkURI()}`
+  return `${FIREBASE_DYNAMIC_LINK_DOMAIN}?link=${DEEPLINK_DOMAIN}${screen}?${universalLinksParams}&${getLongDynamicLinkURI()}${customDynamicLinksParams}`
 }
 
 /**
