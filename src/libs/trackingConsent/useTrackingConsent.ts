@@ -13,6 +13,7 @@ export const useTrackingConsent = () => {
       // android and iOS < 14
       if (status === 'unavailable') {
         setTrackingStatus(status)
+        return
       }
 
       // iOS >= 14
