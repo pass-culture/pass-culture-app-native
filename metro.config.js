@@ -107,5 +107,5 @@ module.exports = {
   // Also additionally watch all the mapped local directories for changes to support live updates.
   watchFolders: Object.values(moduleMappings),
 
-  maxWorkers: 2,
+  maxWorkers: 1,
 }
