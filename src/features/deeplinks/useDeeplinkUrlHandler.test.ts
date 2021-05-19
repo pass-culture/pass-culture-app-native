@@ -10,6 +10,7 @@ import {
 } from './useDeeplinkUrlHandler'
 import { DEEPLINK_DOMAIN } from './utils'
 
+jest.mock('features/auth/settings')
 jest.mock('features/navigation/navigationRef')
 
 describe('useDeeplinkUrlHandler', () => {

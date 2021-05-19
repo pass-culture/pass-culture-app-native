@@ -1,12 +1,14 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 
+import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { handleDeeplinkAnalytics } from './analytics'
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
-import { isAllowedRouteTypeGuard } from './typeGuard'
+import { isAllowedRouteTypeGuard, isIdCheckScreenConfig } from './typeGuard'
 import { DeeplinkEvent, DeeplinkParts } from './types'
 import { DEEPLINK_DOMAIN } from './utils'
 
@@ -72,11 +74,13 @@ export function useOnDeeplinkError() {
 export function useDeeplinkUrlHandler() {
   const onError = useOnDeeplinkError()
   const { navigate } = useNavigation<UseNavigationType>()
+  const navigateToIdCheck = useNavigateToIdCheck({ onIdCheckNavigationBlocked: navigateToHome })
 
   return (event: DeeplinkEvent) => {
     const url = unescape(event.url)
     try {
-      const { screen, params } = getScreenFromDeeplink(url)
+      const screenConfig = getScreenFromDeeplink(url)
+      const { screen, params } = screenConfig
 
       if (!screen) {
         // this error is not displayed to the user but used to trigger the catch branch below
@@ -84,7 +88,11 @@ export function useDeeplinkUrlHandler() {
       }
 
       handleDeeplinkAnalytics(screen, params)
-      navigate(screen, params)
+      if (isIdCheckScreenConfig(screenConfig)) {
+        navigateToIdCheck(screenConfig.params.email, screenConfig.params.licenceToken)
+      } else {
+        navigate(screen, params)
+      }
     } catch {
       onError(DEFAULT_ERROR_MESSAGE + ' : ' + url)
     }
