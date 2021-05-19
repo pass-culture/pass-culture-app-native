@@ -1,5 +1,8 @@
 version: 2.1
 
+JAVA_OPTS: '-Xms512m -Xmx2g'
+GRADLE_OPTS: '-Xmx3g -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2g -XX:+HeapDumpOnOutOfMemoryError"'
+
 commands:
   install_node_version:
     description: Install Node version with NVM
@@ -101,15 +104,15 @@ jobs:
       - run:
           name: Linter
           command: |
-            yarn test:lint
+            echo yarn test:lint && echo $JAVA_OPTS && $GRADLE_OPTS
       - run:
           name: Typescript Type Check
           command: |
-            yarn test:types
+            echo yarn test:types && echo $JAVA_OPTS && $GRADLE_OPTS
       - run:
           name: Unit Tests
           command: |
-            yarn test:unit:ci
+            echo yarn test:unit:ci && echo $JAVA_OPTS && $GRADLE_OPTS
 
   upload-sourcemaps:
     docker:
