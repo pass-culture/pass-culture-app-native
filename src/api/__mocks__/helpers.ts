@@ -10,6 +10,7 @@ import { storage } from 'libs/storage'
 import Package from '../../../package.json'
 
 import { DefaultApi } from '../gen'
+import { t } from '@lingui/macro'
 
 export function navigateToLogin() {
   if (isNavigationReadyRef.current && navigationRef.current) {
@@ -173,3 +174,15 @@ export class ApiError extends Error {
     this.statusCode = statusCode
   }
 }
+
+export function extractApiErrorMessage(error: unknown) {
+  let message = t`Une erreur est survenue`
+  if (isApiError(error)) {
+    const { content } = error as { content: { code: string; message: string } }
+    if (content && content.code && content.message) {
+      message = content.message
+    }
+  }
+  return message
+}
+

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { t } from '@lingui/macro'
 import { getUniqueId } from 'react-native-device-info'
 
 import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigationRef'
@@ -173,4 +174,15 @@ export class ApiError extends Error {
     this.content = content
     this.statusCode = statusCode
   }
+}
+
+export function extractApiErrorMessage(error: unknown) {
+  let message = t`Une erreur est survenue`
+  if (isApiError(error)) {
+    const { content } = error as { content: { code: string; message: string } }
+    if (content && content.code && content.message) {
+      message = content.message
+    }
+  }
+  return message
 }
