@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
-import { extractApiErrorMessage } from 'features/bookings/api/helpers'
+import { extractApiErrorMessage } from 'api/helpers'
 import { Booking } from 'features/bookings/components/types'
 import { useUserProfileInfo } from 'features/home/api'
 import { Credit, useAvailableCredit } from 'features/home/services/useAvailableCredit'

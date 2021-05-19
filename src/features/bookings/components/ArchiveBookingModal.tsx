@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import * as React from 'react'
 import styled from 'styled-components/native'
 
-import { extractApiErrorMessage } from 'features/bookings/api/helpers'
+import { extractApiErrorMessage } from 'api/helpers'
 import { useArchiveBookingMutation } from 'features/bookings/api/mutations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
