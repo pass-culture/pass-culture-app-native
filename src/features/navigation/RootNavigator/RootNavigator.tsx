@@ -5,7 +5,6 @@ import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { useSplashScreenContext } from 'libs/splashscreen'
-import { useTrackingConsent } from 'libs/trackingConsent'
 
 import routes from './routes'
 import { RootStackParamList, Route } from './types'
@@ -32,7 +31,6 @@ const screens = routes
 
 export const RootNavigator: React.FC = () => {
   const { isSplashScreenHidden } = useSplashScreenContext()
-  const { consentAsked } = useTrackingConsent()
 
   const [mustUpdateApp, setMustUpdateApp] = useState(false)
 
@@ -52,7 +50,7 @@ export const RootNavigator: React.FC = () => {
       )}
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
-      {isSplashScreenHidden && consentAsked && <PrivacyPolicy navigationRef={navigationRef} />}
+      {isSplashScreenHidden && <PrivacyPolicy navigationRef={navigationRef} />}
     </React.Fragment>
   )
 }

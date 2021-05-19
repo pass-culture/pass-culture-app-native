@@ -3,10 +3,6 @@ import { renderHook } from '@testing-library/react-hooks'
 
 import { useStartBatchNotification } from './useStartBatchNotification'
 
-jest.mock('libs/trackingConsent', () => ({
-  useTrackingConsent: () => ({ consentTracking: true, consentAsked: true }),
-}))
-
 describe('startBatchNotification', () => {
   it('should call Batch.start', () => {
     renderHook(useStartBatchNotification)

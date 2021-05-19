@@ -5,7 +5,6 @@ import waitForExpect from 'wait-for-expect'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import * as splashScreenModule from 'libs/splashscreen'
-import * as consentTrackingModule from 'libs/trackingConsent/useTrackingConsent'
 import { render } from 'tests/utils'
 
 import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
@@ -40,13 +39,10 @@ describe('<RootNavigator />', () => {
     renderAPI.unmount()
   })
 
-  it('should display PrivacyPolicy if splash screen is hidden and tracking consent has been asked', async () => {
+  it('should display PrivacyPolicy if splash screen is hidden', async () => {
     jest
       .spyOn(splashScreenModule, 'useSplashScreenContext')
       .mockReturnValue({ isSplashScreenHidden: true })
-    jest
-      .spyOn(consentTrackingModule, 'useTrackingConsent')
-      .mockReturnValue({ consentTracking: true, consentAsked: true })
 
     const renderAPI = renderRootNavigator()
 
@@ -55,23 +51,6 @@ describe('<RootNavigator />', () => {
       expect(privacyPolicyTitle).toBeTruthy()
     })
     renderAPI.unmount()
-  })
-
-  it('should not display PrivacyPolicy if tracking consent has not yet been asked', async () => {
-    jest
-      .spyOn(splashScreenModule, 'useSplashScreenContext')
-      .mockReturnValue({ isSplashScreenHidden: true })
-    jest
-      .spyOn(consentTrackingModule, 'useTrackingConsent')
-      .mockReturnValue({ consentTracking: true, consentAsked: false })
-
-    const { queryByText, unmount } = renderRootNavigator()
-
-    await waitForExpect(() => {
-      expect(queryByText('Respect de ta vie privée')).toBeFalsy()
-    })
-
-    unmount()
   })
 })
 
