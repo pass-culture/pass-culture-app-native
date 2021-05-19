@@ -101,7 +101,11 @@ describe('<OfferHeader />', () => {
 
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const url = generateLongFirebaseDynamicLink('offer', 'id=116656')
+    const url = generateLongFirebaseDynamicLink(
+      'offer',
+      'id=116656',
+      '&ofl=undefined/accueil/details/AHD3A'
+    )
     const message =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture'
     const title = "Je t'invite à découvrir une super offre sur le pass Culture !"
@@ -118,7 +122,11 @@ describe('<OfferHeader />', () => {
 
     fireEvent.press(getByTestId('icon-share'))
     expect(share).toHaveBeenCalledTimes(1)
-    const url = generateLongFirebaseDynamicLink('offer', 'id=116656')
+    const url = generateLongFirebaseDynamicLink(
+      'offer',
+      'id=116656',
+      '&ofl=undefined/accueil/details/AHD3A'
+    )
     const messageWithUrl =
       'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\n\n' +
       url
