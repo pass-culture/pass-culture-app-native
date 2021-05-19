@@ -65,23 +65,8 @@ describe('SetPhoneNumberValidationCodeModal', () => {
 
   describe('Continue button', () => {
     it('should enable continue button if input is valid and complete', async () => {
-      const { getByTestId, rerender } = renderSetPhoneValidationCode()
-
+      const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('button-container-continue')
-      expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
-
-      const codeInputContainer = getByTestId('code-input-container')
-      for (let i = 0; i < codeInputContainer.props.children.length; i++) {
-        fireEvent.changeText(getByTestId(`input-${i}`), '1')
-        rerender(
-          <SetPhoneValidationCodeModal
-            dismissModal={jest.fn()}
-            visible={true}
-            phoneNumber={'0612345678'}
-            onGoBack={jest.fn()}
-          />
-        )
-      }
 
       await waitForExpect(() => {
         expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
@@ -93,21 +78,8 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       ['includes string', 's09453'],
       ['is too short', '54'],
     ])('should not enable continue button when "%s"', async (_reason, codeTyped) => {
-      const { getByTestId, rerender } = renderSetPhoneValidationCode()
-
+      const { getByTestId } = renderModalWithFilledCodeInput(codeTyped)
       const continueButton = getByTestId('button-container-continue')
-
-      for (let i = 0; i < codeTyped.length; i++) {
-        fireEvent.changeText(getByTestId(`input-${i}`), codeTyped[i])
-        rerender(
-          <SetPhoneValidationCodeModal
-            dismissModal={jest.fn()}
-            visible={true}
-            phoneNumber={'0612345678'}
-            onGoBack={jest.fn()}
-          />
-        )
-      }
 
       await waitForExpect(() => {
         expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
@@ -123,25 +95,10 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
 
       const mockDismissModal = jest.fn()
-      const { getByTestId, rerender } = renderSetPhoneValidationCode({
+      const { getByTestId } = renderModalWithFilledCodeInput('123456', {
         dismissModal: mockDismissModal,
       })
-
       const continueButton = getByTestId('button-container-continue')
-      expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
-
-      const codeInputContainer = getByTestId('code-input-container')
-      for (let i = 0; i < codeInputContainer.props.children.length; i++) {
-        fireEvent.changeText(getByTestId(`input-${i}`), '1')
-        rerender(
-          <SetPhoneValidationCodeModal
-            dismissModal={mockDismissModal}
-            visible={true}
-            phoneNumber={'0612345678'}
-            onGoBack={jest.fn()}
-          />
-        )
-      }
 
       fireEvent.press(continueButton)
       useMutationCallbacks.onSuccess()
@@ -160,4 +117,23 @@ function renderSetPhoneValidationCode(customProps?: Partial<SetPhoneValidationCo
     ...customProps,
   }
   return render(<SetPhoneValidationCodeModal {...props} />)
+}
+
+function renderModalWithFilledCodeInput(
+  code: string,
+  customProps?: Partial<SetPhoneValidationCodeModalProps>
+) {
+  const renderAPI = renderSetPhoneValidationCode(customProps)
+  for (let i = 0; i < code.length; i++) {
+    fireEvent.changeText(renderAPI.getByTestId(`input-${i}`), code[i])
+    renderAPI.rerender(
+      <SetPhoneValidationCodeModal
+        dismissModal={jest.fn()}
+        visible={true}
+        phoneNumber={'0612345678'}
+        onGoBack={jest.fn()}
+      />
+    )
+  }
+  return renderAPI
 }
