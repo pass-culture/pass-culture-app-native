@@ -5,6 +5,8 @@ import { analytics } from 'libs/analytics'
 import { useDeeplinkUrlHandler } from './useDeeplinkUrlHandler'
 import { DEEPLINK_DOMAIN } from './utils'
 
+jest.mock('features/auth/settings')
+
 describe('useDeeplinkUrlHandler Analytics', () => {
   it('should log an event when we open an offer', () => {
     const {
