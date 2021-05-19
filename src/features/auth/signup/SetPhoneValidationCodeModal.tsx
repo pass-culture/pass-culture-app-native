@@ -65,10 +65,16 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
   }
 
   function validateCode() {
+    setInvalidCodeMessage('')
     const { code } = codeInputState
     if (code) {
       validatePhoneNumber(code)
     }
+  }
+
+  function goBack() {
+    setInvalidCodeMessage('')
+    props.onGoBack()
   }
 
   return (
@@ -78,7 +84,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
       rightIcon={Close}
       onRightIconPress={showFullPageModal}
       leftIcon={ArrowPrevious}
-      onLeftIconPress={props.onGoBack}
+      onLeftIconPress={goBack}
       disableBackdropTap>
       <ModalContent>
         <Paragraphe>
