@@ -1,8 +1,5 @@
 version: 2.1
 
-JAVA_OPTS: '-Xms512m -Xmx2g'
-GRADLE_OPTS: '-Xmx3g -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2g -XX:+HeapDumpOnOutOfMemoryError"'
-
 commands:
   install_node_version:
     description: Install Node version with NVM
@@ -20,18 +17,18 @@ commands:
   install_node_modules:
     description: Install Node Dependencies
     steps:
-#      - restore_cache:
-#          name: Restore Node Modules
-#          keys:
-#            - node-modules-v5-{{ checksum "yarn.lock" }}-{{ arch }}
+      - restore_cache:
+          name: Restore Node Modules
+          keys:
+            - node-modules-v5-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
           name: Install Dependencies
           command: yarn install --immutable
-#      - save_cache:
-#          name: Save Node Modules
-#          key: node-modules-v5-{{ checksum "yarn.lock" }}-{{ arch }}
-#          paths:
-#            - node_modules
+      - save_cache:
+          name: Save Node Modules
+          key: node-modules-v5-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - node_modules
   install_ruby_modules:
     description: Install Ruby Dependencies
     steps:
@@ -104,15 +101,15 @@ jobs:
       - run:
           name: Linter
           command: |
-            echo yarn test:lint && echo $JAVA_OPTS && $GRADLE_OPTS
+            yarn test:lint
       - run:
           name: Typescript Type Check
           command: |
-            echo yarn test:types && echo $JAVA_OPTS && $GRADLE_OPTS
+            yarn test:types
       - run:
           name: Unit Tests
           command: |
-            echo yarn test:unit:ci && echo $JAVA_OPTS && $GRADLE_OPTS
+            yarn test:unit:ci
 
   upload-sourcemaps:
     docker:
