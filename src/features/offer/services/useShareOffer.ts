@@ -3,7 +3,9 @@ import { Platform, Share } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
+import { humanizeId } from 'features/offer/services/dehumanizeId'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 
 import { useOffer } from '../api/useOffer'
 import { getLocationName } from '../atoms/LocationCaption'
@@ -18,7 +20,11 @@ const shareOffer = async (offer: OfferResponse) => {
     values: { name, locationName },
     message: 'Retrouve "{name}" chez "{locationName}" sur le pass Culture',
   })
-  const url = generateLongFirebaseDynamicLink('offer', `id=${id}`)
+  const url = generateLongFirebaseDynamicLink(
+    'offer',
+    `id=${id}`,
+    `&ofl=${env.WEBAPP_URL}/accueil/details/${humanizeId(id)}`
+  )
 
   // url share content param is only for iOs, so we add url in message for android
   const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
