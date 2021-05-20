@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
+import { SearchAlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { render } from 'tests/utils'
 
@@ -24,6 +25,10 @@ jest.mock('features/search/pages/useSearchResults', () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
   }),
+}))
+
+jest.mock('libs/algolia/fetchAlgolia', () => ({
+  useTransformAlgoliaHits: () => (hit: SearchAlgoliaHit) => hit,
 }))
 
 describe('SearchResults component', () => {

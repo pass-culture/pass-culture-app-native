@@ -14,6 +14,9 @@ const mockUserId = 30
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { id: mockUserId } })),
 }))
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({})),
+}))
 
 const objectIds = mockedAlgoliaResponse.hits.map(({ objectID }) => objectID)
 

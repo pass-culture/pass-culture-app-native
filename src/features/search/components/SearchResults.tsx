@@ -10,7 +10,7 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/comp
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { SearchAlgoliaHit } from 'libs/algolia'
-import { transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
+import { useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
@@ -20,6 +20,7 @@ export const SearchResults: React.FC = () => {
   const flatListRef = useRef<FlatList<SearchAlgoliaHit> | null>(null)
   const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useSearchResults()
   const { searchState } = useSearch()
+  const transformAlgoliaHit = useTransformAlgoliaHits()
 
   const hits: SearchAlgoliaHit[] = useMemo(
     () => flatten(data?.pages.map((page) => page.hits.map(transformAlgoliaHit))),
