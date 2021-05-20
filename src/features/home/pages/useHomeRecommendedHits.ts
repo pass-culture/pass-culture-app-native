@@ -1,9 +1,8 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 import { useQuery } from 'react-query'
 
-import { filterAlgoliaHit, formatAlgoliaHit } from 'features/home/pages/useHomeAlgoliaModules'
 import { AlgoliaHit } from 'libs/algolia'
-import { fetchAlgoliaHits } from 'libs/algolia/fetchAlgolia'
+import { fetchAlgoliaHits, filterAlgoliaHit, transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
 import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { useGeolocation } from 'libs/geolocation'
@@ -49,7 +48,7 @@ export const useHomeRecommendedHits = (
 
   if (!data?.results) return [] as AlgoliaHit[]
 
-  return (data?.results as AlgoliaHit[]).filter(filterAlgoliaHit).map(formatAlgoliaHit)
+  return (data?.results as AlgoliaHit[]).filter(filterAlgoliaHit).map(transformAlgoliaHit)
 }
 
 export const getRecommendationEndpoint = (

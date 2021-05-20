@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { AlgoliaHit, parseAlgoliaParameters, SearchAlgoliaHit } from 'libs/algolia'
-import { fetchAlgolia } from 'libs/algolia/fetchAlgolia'
+import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
+import { fetchAlgolia, filterAlgoliaHit, transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
-import { convertAlgoliaHitToCents } from 'libs/parsers/pricesConversion'
 import { QueryKeys } from 'libs/queryKeys'
 
 export type AlgoliaModuleResponse = {
@@ -27,18 +26,6 @@ const isAlgoliaModule = (
     'moduleId' in response
   )
 }
-
-export const filterAlgoliaHit = (hit: AlgoliaHit): boolean =>
-  hit && hit.offer && !!hit.offer.thumbUrl
-
-// https://github.com/pass-culture/pass-culture-api/blob/6b2b07be32f92bd37ad6c08158765a8098665cce/src/pcapi/algolia/infrastructure/builder.py#L90
-// The _geoloc is hardcoded for digital offers (without position) so that the results appear in the Search:
-// original PR: https://github.com/pass-culture/pass-culture-api/pull/1334
-// Here we dehardcode those coordinates, so that we don't show a wrong distance to the user.
-export const formatAlgoliaHit = <Hit extends AlgoliaHit | SearchAlgoliaHit>(hit: Hit): Hit => ({
-  ...convertAlgoliaHitToCents(hit),
-  _geoloc: hit.offer.isDigital ? { lat: null, lng: null } : hit._geoloc,
-})
 
 export const useHomeAlgoliaModules = (
   offerModules: Array<Offers | OffersWithCover>
@@ -67,7 +54,7 @@ export const useHomeAlgoliaModules = (
             setAlgoliaModules((prevAlgoliaModules) => ({
               ...prevAlgoliaModules,
               [data.moduleId]: {
-                hits: data.hits.filter(filterAlgoliaHit).map(formatAlgoliaHit),
+                hits: data.hits.filter(filterAlgoliaHit).map(transformAlgoliaHit),
                 nbHits: data.nbHits,
               },
             }))

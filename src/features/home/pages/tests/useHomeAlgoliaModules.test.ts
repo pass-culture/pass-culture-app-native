@@ -1,24 +1,22 @@
+import { SearchResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
+import { AlgoliaHit } from 'libs/algolia'
+import * as FetchAlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { parseAlgoliaParameters } from 'libs/algolia/parseAlgoliaParameters'
-import { FetchAlgoliaParameters } from 'libs/algolia/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { Offers } from '../../contentful'
 import { useHomeAlgoliaModules } from '../useHomeAlgoliaModules'
 
-const mockFetchAlgolia = jest.fn().mockResolvedValue({
+const fetchAlgolia = jest.spyOn(FetchAlgoliaModule, 'fetchAlgolia').mockResolvedValue({
   hits: [
     { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },
     { objectID: '2', offer: { thumbUrl: 'http://to-image-two' } },
     { objectID: '3', offer: { thumbUrl: undefined } },
   ],
   nbHits: 10,
-})
-
-jest.mock('libs/algolia/fetchAlgolia', () => ({
-  fetchAlgolia: (arg: FetchAlgoliaParameters) => mockFetchAlgolia(arg),
-}))
+} as SearchResponse<AlgoliaHit>)
 
 const offerModules = [
   new Offers({
@@ -47,7 +45,7 @@ describe('useHomeAlgoliaModules', () => {
       { wrapper: ({ children }) => reactQueryProviderHOC(children) }
     )
 
-    expect(mockFetchAlgolia).toHaveBeenCalledWith({
+    expect(fetchAlgolia).toHaveBeenCalledWith({
       ...parseAlgoliaParameters({
         geolocation: null,
         parameters: { title: 'tile', hitsPerPage: 4 },

@@ -2,6 +2,7 @@ import { renderHook, cleanup } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
+import * as FetchAlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -16,12 +17,9 @@ jest.mock('features/home/api', () => ({
 
 const objectIds = mockedAlgoliaResponse.hits.map(({ objectID }) => objectID)
 
-const mockFetchAlgoliaHits = jest.fn().mockResolvedValue({
+const fetchAlgoliaHits = jest.spyOn(FetchAlgoliaModule, 'fetchAlgoliaHits').mockResolvedValue({
   results: mockedAlgoliaResponse.hits,
 })
-jest.mock('libs/algolia/fetchAlgolia', () => ({
-  fetchAlgoliaHits: (objectIds: string[]) => mockFetchAlgoliaHits(objectIds),
-}))
 
 const endpoint = getRecommendationEndpoint(mockUserId, null) as string
 
@@ -45,7 +43,7 @@ describe('useHomeRecommendedHits', () => {
     })
 
     await waitFor(() => {
-      expect(mockFetchAlgoliaHits).not.toHaveBeenCalled()
+      expect(fetchAlgoliaHits).not.toHaveBeenCalled()
       expect(queryCache.get('recommendationOfferIds')).toBeUndefined()
       expect(queryCache.get('recommendationHits')).toBeUndefined()
     })
@@ -61,8 +59,8 @@ describe('useHomeRecommendedHits', () => {
 
     await waitFor(() => {
       expect(result.current).toHaveLength(4)
-      expect(mockFetchAlgoliaHits).toHaveBeenCalledTimes(1)
-      expect(mockFetchAlgoliaHits).toHaveBeenCalledWith(objectIds)
+      expect(fetchAlgoliaHits).toHaveBeenCalledTimes(1)
+      expect(fetchAlgoliaHits).toHaveBeenCalledWith(objectIds)
     })
   })
 })
