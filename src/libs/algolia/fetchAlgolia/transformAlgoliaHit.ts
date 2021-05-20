@@ -1,3 +1,6 @@
+import { useCallback } from 'react'
+
+import { useAppSettings } from 'features/auth/settings'
 import { AlgoliaHit, SearchAlgoliaHit } from 'libs/algolia'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 
@@ -19,7 +22,10 @@ export const convertAlgoliaOfferToCents = <T extends Offer>(offer: T): T => ({
 })
 
 // (PC-8526): due to the migration to GCP, we extract the path to the image
-export const parseThumbUrl = (thumbUrl: Offer['thumbUrl']): Offer['thumbUrl'] => {
+export const parseThumbUrl = (
+  thumbUrl: Offer['thumbUrl'],
+  _urlPrefix: string
+): Offer['thumbUrl'] => {
   return thumbUrl
 }
 
@@ -33,12 +39,19 @@ export const parseGeoloc = (hit: Hit): Hit['_geoloc'] =>
 export const filterAlgoliaHit = (hit: AlgoliaHit): boolean =>
   hit && hit.offer && !!hit.offer.thumbUrl
 
-export const transformAlgoliaHit = <T extends Hit>(hit: T): T => ({
+export const transformAlgoliaHit = (urlPrefix: string) => <T extends Hit>(hit: T): T => ({
   ...hit,
   offer: {
     ...hit.offer,
     ...convertAlgoliaOfferToCents(hit.offer),
-    thumbUrl: parseThumbUrl(hit.offer.thumbUrl),
+    thumbUrl: parseThumbUrl(hit.offer.thumbUrl, urlPrefix),
   },
   _geoloc: parseGeoloc(hit),
 })
+
+export const useTransformAlgoliaHits = () => {
+  const { data: _settings } = useAppSettings()
+  const urlPrefix = 'urlPrefix'
+
+  return useCallback(transformAlgoliaHit(urlPrefix), [urlPrefix])
+}

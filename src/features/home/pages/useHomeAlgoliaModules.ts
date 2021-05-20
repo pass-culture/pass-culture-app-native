@@ -4,7 +4,7 @@ import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
 import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
-import { fetchAlgolia, filterAlgoliaHit, transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
+import { fetchAlgolia, filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -32,6 +32,7 @@ export const useHomeAlgoliaModules = (
 ): AlgoliaModuleResponse => {
   const { position } = useGeolocation()
   const [algoliaModules, setAlgoliaModules] = useState<AlgoliaModuleResponse>({})
+  const transformAlgoliaHit = useTransformAlgoliaHits()
 
   const queries = useQueries(
     offerModules.map(({ algolia, moduleId }) => {

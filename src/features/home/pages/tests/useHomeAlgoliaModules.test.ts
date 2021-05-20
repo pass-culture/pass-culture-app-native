@@ -9,6 +9,10 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { Offers } from '../../contentful'
 import { useHomeAlgoliaModules } from '../useHomeAlgoliaModules'
 
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({})),
+}))
+
 const fetchAlgolia = jest.spyOn(FetchAlgoliaModule, 'fetchAlgolia').mockResolvedValue({
   hits: [
     { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },

@@ -21,7 +21,7 @@ const props = {
     title: 'Module title',
     layout: 'one-item-medium',
   } as DisplayParametersFields,
-  hits: mockedAlgoliaResponse.hits.map(transformAlgoliaHit),
+  hits: mockedAlgoliaResponse.hits.map(transformAlgoliaHit('fakeUrlPrefix')),
   nbHits: mockedAlgoliaResponse.nbHits,
   cover: null,
   position: null,

@@ -1,2 +1,6 @@
 export { fetchAlgolia, fetchAlgoliaHits } from './fetchAlgolia'
-export { filterAlgoliaHit, transformAlgoliaHit } from './transformAlgoliaHit'
+export {
+  filterAlgoliaHit,
+  transformAlgoliaHit,
+  useTransformAlgoliaHits,
+} from './transformAlgoliaHit'

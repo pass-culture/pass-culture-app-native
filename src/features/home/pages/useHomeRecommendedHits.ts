@@ -2,7 +2,11 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 import { useQuery } from 'react-query'
 
 import { AlgoliaHit } from 'libs/algolia'
-import { fetchAlgoliaHits, filterAlgoliaHit, transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
+import {
+  fetchAlgoliaHits,
+  filterAlgoliaHit,
+  useTransformAlgoliaHits,
+} from 'libs/algolia/fetchAlgolia'
 import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { useGeolocation } from 'libs/geolocation'
@@ -15,6 +19,7 @@ export const useHomeRecommendedHits = (
   recommendationModule: RecommendationPane | undefined
 ): AlgoliaHit[] => {
   const { position } = useGeolocation()
+  const transformAlgoliaHit = useTransformAlgoliaHits()
   const { data: profile } = useUserProfileInfo()
   const userId = profile?.id
 
