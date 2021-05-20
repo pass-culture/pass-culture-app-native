@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Linking, ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -36,6 +36,12 @@ export const FavoritesSorts: React.FC = () => {
     showModal: showGeolocPermissionModal,
     hideModal: hideGeolocPermissionModal,
   } = useModal(false)
+
+  useEffect(() => {
+    if (noPositionError && position) {
+      setNoPositionError(false)
+    }
+  }, [noPositionError, position])
 
   async function onSortBySelection(sortBy: FavoriteSortBy) {
     setNoPositionError(false)

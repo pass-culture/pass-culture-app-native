@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ScrollView, ViewStyle, Linking } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -32,6 +32,12 @@ export const LocationFilter: React.FC = () => {
     showModal: showGeolocPermissionModal,
     hideModal: hideGeolocPermissionModal,
   } = useModal(false)
+
+  useEffect(() => {
+    if (noPositionError && position) {
+      setNoPositionError(false)
+    }
+  }, [noPositionError, position])
 
   const onPressPickPlace = () => {
     if (debouncedGoBack) debouncedGoBack.cancel()
