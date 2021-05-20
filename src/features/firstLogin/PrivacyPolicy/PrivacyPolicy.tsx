@@ -25,13 +25,11 @@ export function PrivacyPolicy(props: Props) {
     storage.saveObject('has_accepted_cookie', true)
   }
 
-  function refuseCookie() {
+  async function refuseCookie() {
     setHasUserMadeCookieChoice(true)
-    storage.saveObject('has_accepted_cookie', false).then(() => {
-      analytics.logHasRefusedCookie().then(() => {
-        firebaseAnalytics.setAnalyticsCollectionEnabled(false)
-      })
-    })
+    await storage.saveObject('has_accepted_cookie', false)
+    await analytics.logHasRefusedCookie()
+    await firebaseAnalytics.setAnalyticsCollectionEnabled(false)
   }
 
   return hasUserMadeCookieChoice ? null : (
