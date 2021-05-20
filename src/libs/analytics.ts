@@ -69,6 +69,7 @@ export enum AnalyticsEvent {
   SIGN_UP_BETWEEN_14_AND_15_INCLUDED = 'SignUpBetween14And15Included',
   SIGN_UP_LESS_THAN_OR_EQUAL_TO_13 = 'SignUpLessThanOrEqualTo13',
   USE_FILTER = 'UseFilter',
+  HAS_REFUSED_COOKIE = 'HasRefusedCookie',
 }
 
 const logScreenView = async (screenName: string) => {
@@ -240,6 +241,8 @@ const logProfilSignUp = () => firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_S
 
 const logLogout = () => firebaseAnalytics.logEvent(AnalyticsEvent.LOGOUT)
 
+const logHasRefusedCookie = () => firebaseAnalytics.logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE)
+
 const logClickSocialNetwork = (network: string) =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network })
 
@@ -343,6 +346,7 @@ export const analytics = {
   logHasAppliedFavoritesSorting,
   logHasChangedPassword,
   logHasSkippedTutorial,
+  logHasRefusedCookie,
   logLogout,
   logMailTo,
   logNoSearchResult,
