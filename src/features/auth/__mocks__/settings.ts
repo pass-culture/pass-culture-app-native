@@ -11,6 +11,7 @@ export const useAppSettings: typeof actualUseAppSettings = jest.fn(
         allowIdCheckRegistration: true,
         enableNativeIdCheckVersion: false,
         wholeFranceOpening: false,
+        enablePhoneValidation: true,
       },
       isLoading: false,
     } as UseQueryResult<SettingsResponse, unknown>)
