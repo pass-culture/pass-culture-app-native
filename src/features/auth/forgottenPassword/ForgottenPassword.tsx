@@ -8,7 +8,7 @@ import { api } from 'api/api'
 import { useAppSettings } from 'features/auth/settings'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { MonitoringError } from 'libs/errorMonitoring'
+import { errorMonitoring, MonitoringError } from 'libs/errorMonitoring'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -46,6 +46,9 @@ export const ForgottenPassword: FunctionComponent = () => {
     setErrorMessage(null)
     try {
       setIsFetching(true)
+      errorMonitoring.captureException(
+        new Error(`ResetPasswordEmailSent[Success]: ${email.slice(3)}`)
+      )
       await api.postnativev1requestPasswordReset({ email, token })
       navigate('ResetPasswordEmailSent', { email })
     } catch (error) {
