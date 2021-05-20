@@ -4,13 +4,13 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { formatAlgoliaHit } from 'features/home/pages/useHomeAlgoliaModules'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { Filter } from 'features/search/atoms/Buttons'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { SearchAlgoliaHit } from 'libs/algolia'
+import { transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
 import { analytics } from 'libs/analytics'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
@@ -22,7 +22,7 @@ export const SearchResults: React.FC = () => {
   const { searchState } = useSearch()
 
   const hits: SearchAlgoliaHit[] = useMemo(
-    () => flatten(data?.pages.map((page) => page.hits.map(formatAlgoliaHit))),
+    () => flatten(data?.pages.map((page) => page.hits.map(transformAlgoliaHit))),
     [data?.pages]
   )
   const { nbHits } = data?.pages[0] || { nbHits: 0 }
