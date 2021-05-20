@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { firebaseAnalytics } from 'libs/analytics'
+import { analytics, firebaseAnalytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 
@@ -78,6 +78,7 @@ describe('<PrivacyPolicy />', () => {
 
     expect(await storage.readObject('has_accepted_cookie')).toBe(false)
     expect(renderAPI.queryByText('Continuer')).toBeFalsy()
+    expect(analytics.logHasRefusedCookie).toHaveBeenCalled()
 
     expect(firebaseAnalytics.setAnalyticsCollectionEnabled).toHaveBeenCalled()
   })
