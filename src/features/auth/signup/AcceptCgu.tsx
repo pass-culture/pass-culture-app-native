@@ -8,7 +8,7 @@ import styled from 'styled-components/native'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
-import { AsyncError, MonitoringError } from 'libs/errorMonitoring'
+import { AsyncError, errorMonitoring, MonitoringError } from 'libs/errorMonitoring'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomCardContentContainer, BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -70,6 +70,8 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
       const signupResponse = await signUp(signUpData)
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
+      } else {
+        errorMonitoring.captureException(new Error(`AcceptCgu[Success]: ${email.slice(3)}`))
       }
       navigate('SignupConfirmationEmailSent', { email })
     } catch {
