@@ -79,6 +79,7 @@ describe('<PrivacyPolicy />', () => {
     expect(await storage.readObject('has_accepted_cookie')).toBe(false)
     expect(renderAPI.queryByText('Continuer')).toBeFalsy()
     expect(analytics.logHasRefusedCookie).toHaveBeenCalled()
+    await act(flushAllPromises)
     expect(firebaseAnalytics.setAnalyticsCollectionEnabled).toHaveBeenCalled()
   })
 })
