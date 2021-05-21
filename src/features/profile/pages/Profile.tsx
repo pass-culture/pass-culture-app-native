@@ -202,6 +202,14 @@ export const Profile: React.FC = () => {
             style={styles.row}
             testID="row-faq"
           />
+          <Row
+            title={t`Problèmes pour ouvrir un lien ?`}
+            type="navigable"
+            onPress={() => navigate('DeeplinkImporter')}
+            icon={LifeBuoy}
+            style={styles.row}
+            testID="row-import-deeplink"
+          />
         </ProfileSection>
         <ProfileSection title={t`Autres`}>
           <Row

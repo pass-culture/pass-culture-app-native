@@ -173,6 +173,14 @@ describe('Profile component', () => {
 
       expect(openExternalUrl).toBeCalledWith(env.FAQ_LINK)
     })
+    it('should navigate when the how-import-deeplink row is clicked', async () => {
+      const { getByTestId } = await renderProfile()
+
+      const row = getByTestId('row-import-deeplink')
+      fireEvent.press(row)
+
+      expect(mockNavigate).toBeCalledWith('DeeplinkImporter')
+    })
   })
 
   describe('other section', () => {
