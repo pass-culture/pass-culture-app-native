@@ -1109,10 +1109,6 @@ msgstr "Réservation annulée"
 msgid "Réservation confirmée !"
 msgstr "Réservation confirmée !"
 
-#: src/features/bookOffer/services/useModalContent.tsx:28
-msgid "Réservation impossible"
-msgstr "Réservation impossible"
-
 #: src/features/bookings/pages/EndedBookings.tsx:25
 msgid "Réservations terminées"
 msgstr "Réservations terminées"
@@ -1374,6 +1370,10 @@ msgstr "Tu pourras retrouver l’offre dans tes réservations teminées"
 #: src/features/auth/signup/BeneficiaryRequestSent.tsx:17
 msgid "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 msgstr "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+
+#: src/features/bookOffer/services/useModalContent.tsx:28
+msgid "Tu y es presque"
+msgstr "Tu y es presque"
 
 #: src/features/search/sections/titles.ts:7
 msgid "Type d'offre"

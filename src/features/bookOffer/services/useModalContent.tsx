@@ -39,7 +39,7 @@ export const useModalContent = (): ModalContent => {
   if (category.categoryType === CategoryType.Thing) {
     if (isDigital && Platform.OS === 'ios' && getOfferPrice(stocks) > 0) {
       return {
-        title: t`Réservation impossible`,
+        title: t`Tu y es presque`,
         leftIcon: undefined,
         onLeftIconPress: undefined,
         children: <BookingImpossible />,
