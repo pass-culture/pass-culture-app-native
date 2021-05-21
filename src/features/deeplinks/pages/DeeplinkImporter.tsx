@@ -1,16 +1,20 @@
 import { t } from '@lingui/macro'
 import { ColorsEnum } from '@pass-culture/id-check/src/theme/colors'
-import { ButtonPrimaryWhite } from '@pass-culture/id-check/src/ui/components/buttons/ButtonPrimaryWhite'
-import { ButtonTertiaryWhite } from '@pass-culture/id-check/src/ui/components/buttons/ButtonTertiaryWhite'
+import { useNavigation } from '@react-navigation/native'
 import * as React from 'react'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { Spacer, Typo } from 'ui/theme'
 
 export const DeeplinkImporter: React.FC = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
+
   return (
     <GenericInfoPage icon={BrokenConnection} title="" spacingMatrix={{ afterIcon: 1 }}>
       <StyledTitle1 color={ColorsEnum.WHITE}>{t`Accès aux liens`}</StyledTitle1>
@@ -24,7 +28,11 @@ export const DeeplinkImporter: React.FC = () => {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimaryWhite title="Importer le lien" testIdSuffix="import" />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={t`Accéder aux offres`} />
+      <ButtonTertiaryWhite
+        title={t`Accéder aux offres`}
+        onPress={() => navigate('Home')}
+        testIdSuffix="to-offers"
+      />
     </GenericInfoPage>
   )
 }
