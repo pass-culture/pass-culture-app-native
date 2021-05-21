@@ -1,6 +1,7 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { goBack } from '__mocks__/@react-navigation/native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { FIREBASE_DYNAMIC_LINK_DOMAIN } from 'features/deeplinks/utils'
@@ -10,13 +11,16 @@ import { render, fireEvent } from 'tests/utils'
 jest.mock('react-query')
 
 describe('DeeplinkImporter', () => {
-  it('should navigate to the home', () => {
+  it.skip('should redirect to Home when clicking on ArrowPrevious icon', async () => {
     const { getByTestId } = render(<DeeplinkImporter />)
 
-    const goToOffersButton = getByTestId('button-container-to-offers')
-    fireEvent.press(goToOffersButton)
+    const leftIcon = getByTestId('leftIcon')
+    fireEvent.press(leftIcon)
 
-    expect(navigate).toBeCalledWith('Home')
+    await waitForExpect(() => {
+      expect(goBack).toBeCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('Home')
+    })
   })
   it('should resolve the link', async () => {
     const url = FIREBASE_DYNAMIC_LINK_DOMAIN + 'home'
