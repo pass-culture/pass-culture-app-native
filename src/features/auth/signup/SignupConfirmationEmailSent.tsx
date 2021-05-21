@@ -22,6 +22,8 @@ import { contactSupport } from '../support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
+const text = `Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver.`
+
 export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation<UseNavigationType>()
   const previousRoute = usePreviousRoute()
@@ -53,9 +55,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           <Typo.Body>{route.params.email}</Typo.Body>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
-            <Typo.Body>
-              {t`Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver.`}
-            </Typo.Body>
+            <Typo.Body>{text}</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
