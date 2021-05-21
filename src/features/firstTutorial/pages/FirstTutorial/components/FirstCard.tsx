@@ -19,7 +19,7 @@ export function FirstCard(props: AchievementCardKeyProps) {
       buttonText={t`Continuer`}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={t`c'est...`}
-      text={t`une initiative portée par le Ministère de la Culture.`}
+      text={t`une initiative du Gouvernement financée par le ministère de la Culture.`}
       title={t`Le pass Culture`}
       swiperRef={props.swiperRef}
       name={props.name}
