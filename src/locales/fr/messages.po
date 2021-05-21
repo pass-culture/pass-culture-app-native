@@ -1336,8 +1336,8 @@ msgid "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations >
 msgstr "Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation."
 
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx:29
-msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone."
-msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone."
+msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone."
+msgstr "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone."
 
 #: src/libs/notifications/components/PushNotificationsModal.tsx:19
 msgid "Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de ton appareil."
