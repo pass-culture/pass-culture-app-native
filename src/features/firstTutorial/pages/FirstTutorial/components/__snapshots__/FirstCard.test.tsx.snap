@@ -108,7 +108,7 @@ exports[`FirstCard should render first card 1`] = `
       ]
     }
   >
-    une initiative portée par le Ministère de la Culture.
+    une initiative du Gouvernement financée par le ministère de la Culture.
   </Text>
   <View
     flex={2}

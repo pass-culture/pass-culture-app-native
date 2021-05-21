@@ -1665,8 +1665,8 @@ msgid "type"
 msgstr "type"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
-msgid "une initiative portée par le Ministère de la Culture."
-msgstr "une initiative portée par le Ministère de la Culture."
+msgid "une initiative du Gouvernement financée par le ministère de la Culture."
+msgstr "une initiative du Gouvernement financée par le ministère de la Culture."
 
 #: src/features/offer/atoms/OfferSeeMore.tsx:15
 msgid "voir plus"
