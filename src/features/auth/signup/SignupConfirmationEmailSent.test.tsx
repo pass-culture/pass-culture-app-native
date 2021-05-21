@@ -54,18 +54,15 @@ describe('<SignupConfirmationEmailSent />', () => {
     })
   })
 
-  it('should open mail app when clicking on contact support button', async () => {
+  it('should open faq webpage when clicking on consult help support', async () => {
     const { findByText } = renderPage()
 
-    const contactSupportButton = await findByText('Contacter le support')
-    fireEvent.press(contactSupportButton)
+    const consultHelpSupportButton = await findByText("Consulter notre centre d'aide")
+    fireEvent.press(consultHelpSupportButton)
 
     await waitForExpect(() => {
-      expect(analytics.logContactSupportSignupConfirmationEmailSent).toBeCalledTimes(1)
+      expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toBeCalledTimes(1)
       expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledTimes(1)
-      expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledWith(
-        'john.doe@gmail.com'
-      )
     })
   })
 

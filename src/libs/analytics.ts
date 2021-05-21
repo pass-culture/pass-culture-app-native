@@ -35,7 +35,7 @@ export enum AnalyticsEvent {
   CONSULT_WHY_ANNIVERSARY = 'ConsultModalWhyAnniversary',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT = 'ContactSupportResetPassword',
-  CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'ContactSupportSignupConfirmation',
+  HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'HelpCenterContactSignUpConfirmation',
   DEEPLINK_CONSULT_OFFER = 'DeeplinkConsultOffer',
   DISCOVER_OFFERS = 'DiscoverOffers',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
@@ -177,8 +177,8 @@ const logCancelSignup = (pageName: string) =>
 const logContactSupportResetPasswordEmailSent = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT)
 
-const logContactSupportSignupConfirmationEmailSent = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT_SIGNUP_CONFIRMATION_EMAIL_SENT)
+const logHelpCenterContactSignupConfirmationEmailSent = () =>
+  firebaseAnalytics.logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT)
 
 const logResendEmailResetPasswordExpiredLink = () =>
   firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK)
@@ -333,12 +333,12 @@ export const analytics = {
   logConsultWhyAnniversary,
   logConsultWithdrawal,
   logContactSupportResetPasswordEmailSent,
-  logContactSupportSignupConfirmationEmailSent,
   logDiscoverOffers,
   logLocationToggle,
   logOpenLocationSettings,
   logOpenNotificationSettings,
   logHasActivateGeolocFromTutorial,
+  logHelpCenterContactSignupConfirmationEmailSent,
   logHasAddedOfferToFavorites,
   logHasAppliedFavoritesSorting,
   logHasChangedPassword,
