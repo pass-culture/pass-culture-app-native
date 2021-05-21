@@ -49,7 +49,7 @@ When you want to deploy the current version of master in staging, you can run th
 This will bump the `minor` version, create a tag `vX.X+1.X` and push it.
 
 - or `trigger:staging:deploy:patch`
-  This will bump the `patch` version, create a  tag `vX.X.X+1` and push it.
+  This will bump the `patch` version, create a tag `vX.X.X+1` and push it.
 
 CircleCI will detect the tag `vX.X.X` and launch the lanes `deploy-ios-staging-hard` & `deploy-android-staging-hard` (see `.circleci/config.yml` file)
 
@@ -75,8 +75,7 @@ Only if there is a bug really urgent in production, that we need to fix very qui
 - List all tags of the version `X.X.X`, tags of type: `vX.X.X-Y`
 - Checkout on the tag with the biggest Y (if no tag with Y, checkout on `vX.X.X`)
 - `git checkout -b hotfix/vX.X.X-Y`
-- Code the fix
-- Commit
+- Cherry-pick all the commits of the feature `git cherry-pick <commit-hash>`
 - `git tag vX.X.X-(Y+1)`
 - `git tag hotfix-staging-vX.X.X-(Y+1)`
 - `git push origin hotfix-staging-vX.X.X-(Y+1)`: this will deploy it to `staging`
