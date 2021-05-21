@@ -34,6 +34,7 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
+import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
@@ -69,6 +70,7 @@ const routes: Array<Route> = [
   { name: 'BookingConfirmation', component: BookingConfirmation },
   { name: 'BookingDetails', component: BookingDetails },
   { name: 'CulturalSurvey', component: CulturalSurvey },
+  { name: 'DeeplinkImporter', component: DeeplinkImporter },
   { name: 'EligibilityConfirmed', component: EligibilityConfirmed },
   {
     name: 'EighteenBirthday',
