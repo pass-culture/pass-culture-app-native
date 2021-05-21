@@ -247,3 +247,6 @@ DEPENDENCIES
   fastlane
   fastlane-plugin-appcenter
   fastlane-plugin-load_json!
+
+BUNDLED WITH
+   2.1.4
