@@ -89,6 +89,7 @@ jest.mock('libs/environment', () => ({
     SITE_KEY: 'SITE_KEY',
     SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
     UNIVERSAL_LINK: 'app.passculture-testing.beta.gouv.fr',
+    FIREBASE_DYNAMIC_LINK: 'passcultureapptesting.page.link',
     URL_PREFIX: 'passculture',
   },
 }))

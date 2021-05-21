@@ -1,5 +1,5 @@
-import Clipboard from '@react-native-clipboard/clipboard'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
@@ -18,17 +18,22 @@ describe('DeeplinkImporter', () => {
 
     expect(navigate).toBeCalledWith('Home')
   })
-  it('should resolve the link', () => {
-    const url = FIREBASE_DYNAMIC_LINK_DOMAIN + '/home'
-    Clipboard.setString(url)
+  it('should resolve the link', async () => {
+    const url = FIREBASE_DYNAMIC_LINK_DOMAIN + 'home'
 
     const resolveHandlerSpy = jest.spyOn(DeeplinkUtils, 'resolveHandler')
 
-    const { getByTestId } = render(<DeeplinkImporter />)
+    const { getByTestId, getByPlaceholderText } = render(<DeeplinkImporter />)
 
+    const urlInput = getByPlaceholderText('Colle ton lien ici ...')
     const importButton = getByTestId('button-container-import')
+
+    fireEvent.changeText(urlInput, url)
     fireEvent.press(importButton)
 
+    await waitForExpect(() => {
+      expect(resolveHandlerSpy).toBeCalled()
+    })
     resolveHandlerSpy.mockRestore()
   })
 })
