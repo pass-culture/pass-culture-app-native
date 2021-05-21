@@ -90,11 +90,12 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   }
 
   function goToNextStep() {
-    const nextPage = settings?.wholeFranceOpening ? 'AcceptCgu' : 'SetPostalCode'
+    // const nextPage = settings?.wholeFranceOpening ? 'AcceptCgu' : 'SetPostalCode'
+    const nextPage = 'AcceptCgu'
     const { date } = state
     if (date) {
       const birthday = formatDateToISOStringWithoutTime(date)
-      navigate(nextPage, { email, isNewsletterChecked, password, birthday })
+      navigate(nextPage, { email, isNewsletterChecked, password, birthday, postalCode: undefined })
     }
   }
 
