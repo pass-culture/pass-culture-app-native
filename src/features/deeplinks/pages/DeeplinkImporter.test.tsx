@@ -1,5 +1,6 @@
 import Clipboard from '@react-native-clipboard/clipboard'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { navigate } from '__mocks__/@react-navigation/native'
