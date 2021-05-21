@@ -108,14 +108,27 @@ describe('Formatting deeplink url', () => {
 
       expect(handleDeeplinkUrl).toBeCalledWith({ url: 'https://a.link' })
     })
-    it('should do anything for firebase short dynamic link', () => {
+    it.each([undefined, false])(
+      'should do anything for firebase short dynamic link (listenShortLinks=%s)',
+      (listenShortLinks) => {
+        const url = FIREBASE_DYNAMIC_LINK_DOMAIN + '/home'
+        const handleDeeplinkUrl = jest.fn()
+
+        const handler = resolveHandler(handleDeeplinkUrl, listenShortLinks)
+        handler({ url })
+
+        expect(handleDeeplinkUrl).not.toBeCalled()
+      }
+    )
+    it('should handle firebase short dynamic link when listenShortLinks=true', () => {
       const url = FIREBASE_DYNAMIC_LINK_DOMAIN + '/home'
       const handleDeeplinkUrl = jest.fn()
+      const listenShortLinks = true
 
-      const handler = resolveHandler(handleDeeplinkUrl)
+      const handler = resolveHandler(handleDeeplinkUrl, listenShortLinks)
       handler({ url })
 
-      expect(handleDeeplinkUrl).not.toBeCalled()
+      expect(handleDeeplinkUrl).toBeCalledWith({ url: '/home' })
     })
   })
 })
