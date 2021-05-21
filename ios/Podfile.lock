@@ -356,7 +356,7 @@ PODS:
     - React
   - react-native-flipper (0.61.0):
     - React
-  - react-native-geolocation-service (5.3.0-beta.1):
+  - react-native-geolocation-service (5.0.0):
     - React
   - react-native-get-random-values (1.5.1):
     - React-Core
@@ -808,7 +808,7 @@ SPEC CHECKSUMS:
   react-native-appsflyer: ec4692492ff4f889d207fe2fe60c0dfcc0a0235b
   react-native-config: 056581a0891d0269428219c45c696dd91c6f9eee
   react-native-flipper: 7936453fec474d5360a14cf6ac035bd689611ffd
-  react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
+  react-native-geolocation-service: 141e33bdb179bcba10b216ee13962611e21f2be4
   react-native-get-random-values: 41f0c91ac0da870e47b307e07752e9e54bc2dc7e
   react-native-image-picker: c6d75c4ab2cf46f9289f341242b219cb3c1180d3
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
