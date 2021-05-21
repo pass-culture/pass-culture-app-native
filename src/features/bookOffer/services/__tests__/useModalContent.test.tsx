@@ -52,7 +52,7 @@ describe('useModalContent', () => {
     expect(result.current.children).toMatchInlineSnapshot('<BookingImpossible />')
     expect(result.current.leftIcon).toBeUndefined()
     expect(result.current.onLeftIconPress).toBeUndefined()
-    expect(result.current.title).toBe('Réservation impossible')
+    expect(result.current.title).toBe('Tu y es presque')
   })
 
   it('iOS - shows BookingDetails if the digital offer is free', () => {
