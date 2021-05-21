@@ -14,6 +14,7 @@ type Props = {
   icon?: FunctionComponent<IconInterface>
   iconSize?: number
   title: string
+  spacingMatrix?: Partial<SpacingMatrix>
 }
 
 export const GenericInfoPage: FunctionComponent<Props> = (props) => {
@@ -24,32 +25,43 @@ export const GenericInfoPage: FunctionComponent<Props> = (props) => {
     iconSize = getSpacing(25),
     title,
   } = props
+  const spacingMatrix: SpacingMatrix = Object.assign(defaultSpacingMatrix, props.spacingMatrix)
+
   return (
     <React.Fragment>
       <Background />
       <ScrollView contentContainerStyle={scrollViewContentContainerStyle}>
-        <Spacer.Column numberOfSpaces={18} />
+        <Spacer.Column numberOfSpaces={spacingMatrix.top} />
         {Icon ? (
           <React.Fragment>
             <Icon color={ColorsEnum.WHITE} size={iconSize} />
-            <Spacer.Column numberOfSpaces={9} />
+            <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
           </React.Fragment>
         ) : (
           animation && (
             <React.Fragment>
               <StyledLottieView source={animation} autoPlay loop={false} size={animationSize} />
-              <Spacer.Column numberOfSpaces={9} />
+              <Spacer.Column numberOfSpaces={spacingMatrix.afterLottieAnimation} />
             </React.Fragment>
           )
         )}
         <StyledTitle2>{title}</StyledTitle2>
-        <Spacer.Column numberOfSpaces={5} />
+        <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {props.children}
         <Spacer.BottomScreen />
       </ScrollView>
     </React.Fragment>
   )
 }
+
+const defaultSpacingMatrix = {
+  top: 18,
+  afterIcon: 9,
+  afterLottieAnimation: 9,
+  afterTitle: 5,
+}
+
+type SpacingMatrix = typeof defaultSpacingMatrix
 
 const scrollViewContentContainerStyle: ViewStyle = {
   flexDirection: 'column',
