@@ -1,57 +1,99 @@
 import { t } from '@lingui/macro'
-import { ColorsEnum } from '@pass-culture/id-check/src/theme/colors'
-import { useNavigation } from '@react-navigation/native'
-import * as React from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
+import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
+import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { resolveHandler } from 'features/deeplinks'
 import { useDeeplinkUrlHandler } from 'features/deeplinks/useDeeplinkUrlHandler'
-import { resolveHandler } from 'features/deeplinks/utils'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { useBackNavigation } from 'features/navigation/backNavigation'
+import { BottomContentPage } from 'ui/components/BottomContentPage'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
-import { BrokenConnection } from 'ui/svg/BrokenConnection'
-import { Spacer, Typo } from 'ui/theme'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { useModal } from 'ui/components/modals/useModal'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const DeeplinkImporter: React.FC = () => {
-  const [url, setUrl] = React.useState('')
-  const { navigate } = useNavigation<UseNavigationType>()
+export const DeeplinkImporter: FunctionComponent = () => {
+  const [url, setUrl] = useState('')
   const handleDeeplinkUrl = useDeeplinkUrlHandler()
-  const resolveLink = () => {
+
+  function resolveLink() {
     if (url.length > 0) {
       resolveHandler(handleDeeplinkUrl, true)({ url })
+    } else {
+      setHasError(true)
     }
   }
 
+  const [hasError, setHasError] = useState(false)
+  const urlInput = useRef<RNTextInput | null>(null)
+
+  const { visible: fullPageModalVisible, hideModal: hideFullPageModal } = useModal(false)
+
+  const complexGoBack = useBackNavigation()
+
   return (
-    <GenericInfoPage icon={BrokenConnection} title="" spacingMatrix={{ afterIcon: 1 }}>
-      <StyledTitle1 color={ColorsEnum.WHITE}>{t`Accès aux liens`}</StyledTitle1>
-      <Spacer.Column numberOfSpaces={4} />
-      <Explanation
-        color={
-          ColorsEnum.WHITE
-        }>{t`Pour copier ton lien, ouvre l'e-mail que tu as reçu, appuie sur le bouton ou le lien pendant environ 3 secondes, sélectionne l'option "Copier le lien" et clique sur le bouton "Importer le lien"`}</Explanation>
-      <Spacer.Column numberOfSpaces={12} />
-      <TextInput placeholder={t`Colle ton lien ici ...`} value={url} onChangeText={setUrl} />
-      <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite title="Importer le lien" onPress={resolveLink} testIdSuffix="import" />
-      <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite
-        title={t`Accéder aux offres`}
-        onPress={() => navigate('Home')}
-        testIdSuffix="to-offers"
+    <React.Fragment>
+      <BottomContentPage>
+        <ModalHeader
+          title={t`Accès aux liens`}
+          leftIcon={ArrowPrevious}
+          onLeftIconPress={complexGoBack}
+        />
+        <ModalContent>
+          <StyledInput>
+            <Typo.Body>{t`Un lien ne fonctionne pas ?`}</Typo.Body>
+            <Spacer.Column numberOfSpaces={2} />
+            <TextInput
+              autoFocus={true}
+              onChangeText={setUrl}
+              placeholder={t`Colle ton lien ici ...`}
+              ref={urlInput}
+              value={url}
+            />
+            <InputError
+              visible={hasError}
+              messageId={t`Format du lien incorrect`}
+              numberOfSpacesTop={1}
+            />
+          </StyledInput>
+          <Spacer.Column numberOfSpaces={4} />
+          <Typo.Caption color={ColorsEnum.GREY_DARK}>
+            {t`Copie ici le lien qui t'a été envoyé par email et clique sur le bouton "Importer le lien"`}
+          </Typo.Caption>
+          <Spacer.Column numberOfSpaces={6} />
+          <ButtonPrimary
+            testIdSuffix="import"
+            title={t`Importer le lien`}
+            onPress={resolveLink}
+            isLoading={false}
+          />
+          <Spacer.Column numberOfSpaces={3} />
+        </ModalContent>
+      </BottomContentPage>
+      <QuitSignupModal
+        visible={fullPageModalVisible}
+        resume={hideFullPageModal}
+        testIdSuffix="email-quit-signup"
+        signupStep={SignupSteps.Email}
       />
-    </GenericInfoPage>
+    </React.Fragment>
   )
 }
 
-const StyledTitle1 = styled(Typo.Title1)({
-  textAlign: 'center',
-  padding: 0,
-  margin: 0,
+const ModalContent = styled.View({
+  paddingTop: getSpacing(7),
+  alignItems: 'center',
+  width: '100%',
+  maxWidth: getSpacing(125),
 })
 
-const Explanation = styled(Typo.Body)({
-  textAlign: 'center',
+const StyledInput = styled.View({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  width: '100%',
 })
