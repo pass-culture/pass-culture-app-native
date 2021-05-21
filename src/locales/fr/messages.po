@@ -354,15 +354,18 @@ msgid "Connecte-toi pour profiter de cette fonctionnalité !"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité !"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:48
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:48
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:50
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
+
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:47
+msgid "Consulter notre centre d'aide"
+msgstr "Consulter notre centre d'aide"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
 #: src/features/auth/signup/AcceptCgu.tsx:126
 #: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:77
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:52
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -613,7 +616,6 @@ msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:40
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:40
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
@@ -656,7 +658,7 @@ msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:47
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
 msgid "Le lien est expiré !"
-msgstr "Le lien est expiré !<<<<<<< HEAD"
+msgstr "Le lien est expiré !"
 
 #: src/features/deeplinks/useDeeplinkUrlHandler.ts:45
 msgid "Le lien est incorrect"
@@ -800,7 +802,11 @@ msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. D
 #: src/features/profile/pages/NotificationSettings.tsx:140
 #: src/features/profile/pages/Profile.tsx:120
 msgid "Notifications"
-msgstr "Notifications<<<<<<< HEAD"
+msgstr "Notifications"
+
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:40
+msgid "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
+msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver.>>>>>>> 5ff31d96... (PC-8860) add translations update"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:30
 msgid "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
@@ -1157,7 +1163,6 @@ msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:44
 msgid "Si l'e-mail n'arrive pas, tu peux :"
 msgstr "Si l'e-mail n'arrive pas, tu peux :"
 
@@ -1169,6 +1174,10 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 #: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:75
 msgid "Si tu n’arrives pas à récuperer ton code tu peux"
 msgstr "Si tu n’arrives pas à récuperer ton code tu peux"
+
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
+msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
+msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx:24
 #: src/features/bookOffer/components/BookDuoChoice.tsx:42
