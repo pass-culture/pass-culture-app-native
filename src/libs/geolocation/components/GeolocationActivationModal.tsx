@@ -49,7 +49,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
         <InformationText>
           {Platform.OS === 'android'
             ? t`Tu peux activer ou désactiver cette fonctionnalité dans Autorisations > Localisation.`
-            : t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation ton téléphone.`}
+            : t`Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone.`}
         </InformationText>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
