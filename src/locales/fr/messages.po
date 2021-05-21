@@ -268,7 +268,7 @@ msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:35
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:36
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
@@ -313,7 +313,7 @@ msgstr "Conditions d'annulation"
 msgid "Confidentialité"
 msgstr "Confidentialité"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:33
 msgid "Confirme ton e‑mail"
 msgstr "Confirme ton e‑mail"
 
@@ -350,11 +350,11 @@ msgid "Connecte-toi pour profiter de cette fonctionnalité !"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité !"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:48
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:50
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:49
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:47
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:46
 msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
 
@@ -816,10 +816,6 @@ msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. D
 msgid "Notifications"
 msgstr "Notifications"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:40
-msgid "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
-msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver.>>>>>>> 5ff31d96... (PC-8860) add translations update"
-
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:30
 msgid "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
@@ -1183,7 +1179,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Si tu n’arrives pas à récuperer ton code tu peux"
 msgstr "Si tu n’arrives pas à récuperer ton code tu peux"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:44
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 
