@@ -45,7 +45,7 @@ describe('NonBeneficiaryHeader', () => {
     getByTestId('younger-badge')
   })
 
-  it('should render the right body for 18 years old users, call analytics and navigate to idcheck', () => {
+  it.skip('should render the right body for 18 years old users, call analytics and navigate to idcheck', () => {
     const today = '2021-02-30T00:00:00Z'
     mockdate.set(new Date(today))
     const { getByTestId } = render(
@@ -126,7 +126,8 @@ describe('NonBeneficiaryHeader', () => {
     const nonEligibleDepartmentBadge = getByTestId('non-eligible-department-badge')
     expect(nonEligibleDepartmentBadge).toBeTruthy()
   })
-  it('should display correct depositAmount', () => {
+
+  it.skip('should display correct depositAmount', () => {
     mockDepositAmount = '300 €'
     let { queryByText } = render(
       <NonBeneficiaryHeader
