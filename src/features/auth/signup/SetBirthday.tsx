@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { useDepositAmount, useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
-import { useAppSettings } from 'features/auth/settings'
+// import { useAppSettings } from 'features/auth/settings'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
@@ -42,7 +42,7 @@ interface State {
 }
 
 export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
-  const { data: settings } = useAppSettings()
+  // const { data: settings } = useAppSettings()
   const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
   const [state, setState] = useState<State>({
     date: null,
