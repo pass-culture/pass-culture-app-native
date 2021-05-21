@@ -2,7 +2,7 @@ import { useMutation, useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { AccountRequest, GetIdCheckTokenResponse, SigninRequest } from 'api/gen'
-import { isApiError } from 'api/helpers'
+import { ApiError, isApiError } from 'api/helpers'
 import { useAuthContext, useLoginRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { QueryKeys } from 'libs/queryKeys'
@@ -78,7 +78,10 @@ export function useSignUp(): (data: AccountRequest) => Promise<SignUpResponse> {
   }
 }
 
-export function useGetIdCheckToken(queryCondition?: boolean) {
+export function useGetIdCheckToken(
+  queryCondition?: boolean,
+  onError?: (error: ApiError | unknown) => void
+) {
   queryCondition = queryCondition ?? true
 
   const { isLoggedIn } = useAuthContext()
@@ -88,6 +91,7 @@ export function useGetIdCheckToken(queryCondition?: boolean) {
     () => api.getnativev1idCheckToken(),
     {
       enabled: queryCondition && isLoggedIn,
+      onError,
     }
   )
 }
