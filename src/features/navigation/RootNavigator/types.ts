@@ -34,6 +34,7 @@ export type RootStackParamList = {
   BeneficiaryRequestSent: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined
+  DeeplinkImporter: undefined
   EligibilityConfirmed: undefined
   EndedBookings: undefined
   ForgottenPassword: undefined
