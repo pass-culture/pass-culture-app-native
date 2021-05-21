@@ -3,15 +3,19 @@ import { useFocusEffect } from '@react-navigation/native'
 import React, { memo, PropsWithChildren, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { useDepositAmount, useGetIdCheckToken } from 'features/auth/api'
+import { api } from 'api/api'
+import { useDepositAmount } from 'features/auth/api'
+import { useAppSettings } from 'features/auth/settings'
 import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { errorMonitoring } from 'libs/errorMonitoring'
 import { storage } from 'libs/storage'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -33,6 +37,9 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const [hasCompletedIdCheck, setHasCompletedIdCheck] = useState(false)
   const today = new Date()
   const depositAmount = useDepositAmount()
+  const { showErrorSnackBar } = useSnackBarContext()
+  const { data: settings } = useAppSettings()
+
   const deposit = depositAmount.replace(' ', '')
   const eligibilityStartDatetime = props.eligibilityStartDatetime
     ? new Date(props.eligibilityStartDatetime)
@@ -45,11 +52,35 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     eligibilityStartDatetime && eligibilityEndDatetime
       ? today >= eligibilityStartDatetime && today < eligibilityEndDatetime
       : false
-  const { data } = useGetIdCheckToken(isEligible)
-  const licenceToken = data?.token || ''
+
+  // NOTE: we comment here because react query throw to error boundary because of 400 and this should not query token on focus!!
+  // const { data } = useGetIdCheckToken(isEligible, onIdCheckError)
+  // const licenceToken = data?.token || ''
   const navigateToIdCheck = useNavigateToIdCheck({
     onIdCheckNavigationBlocked: showDenyAccessToIdCheckModal,
   })
+
+  async function onIdCheckPress() {
+    if (isEligible && settings?.allowIdCheckRegistration) {
+      try {
+        const response = await api.getnativev1idCheckToken()
+        analytics.logIdCheck('Profile')
+        if (response?.token != null) {
+          navigateToIdCheck(props.email, response?.token)
+        }
+      } catch (err) {
+        errorMonitoring.captureException(err, {
+          isEligible,
+        })
+        showErrorSnackBar({
+          message: t`Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans quelques heures.`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+      }
+    } else {
+      showDenyAccessToIdCheckModal()
+    }
+  }
   useFocusEffect(() => {
     storage.readObject('has_completed_idcheck').then((value) => {
       setHasCompletedIdCheck(Boolean(value))
@@ -73,15 +104,12 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
             {t({
               id: 'elibility deadline',
               values: { deadline: formatToSlashedFrenchDate(eligibilityEndDatetime.toISOString()) },
-              message: "Tu es éligible jusqu'au {deadline}",
+              message: `Tu es éligible jusqu'au {deadline}`,
             })}
           </Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <ModuleBanner
-            onPress={() => {
-              analytics.logIdCheck('Profile')
-              navigateToIdCheck(props.email, licenceToken)
-            }}
+            onPress={onIdCheckPress}
             leftIcon={<ThumbUp size={68} />}
             title={t({
               id: 'enjoy deposit',
