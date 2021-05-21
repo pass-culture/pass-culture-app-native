@@ -33,9 +33,9 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
     navigateToHome()
   }
 
-  function onContactSupport() {
-    analytics.logContactSupportSignupConfirmationEmailSent()
-    contactSupport.forSignupConfirmationEmailNotReceived(route.params.email)
+  function onConsultHelpSupport() {
+    analytics.logHelpCenterContactSignupConfirmationEmailSent()
+    contactSupport.forSignupConfirmationEmailNotReceived()
   }
 
   return (
@@ -54,12 +54,18 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
             <Typo.Body>
-              {t`L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !`}
+              {t`Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver.`}
             </Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
-          <Typo.Body>{t`Si l'e-mail n'arrive pas, tu peux : `}</Typo.Body>
-          <ButtonTertiary title={t`Contacter le support`} onPress={onContactSupport} icon={Email} />
+          <CenteredText>
+            <Typo.Body>{t`Si tu rencontres des difficultés, tu peux consulter notre centre d'aide.`}</Typo.Body>
+          </CenteredText>
+          <ButtonTertiary
+            title={t`Consulter notre centre d'aide`}
+            onPress={onConsultHelpSupport}
+            icon={Email}
+          />
         </Description>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary title={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />
