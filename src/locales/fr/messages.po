@@ -94,7 +94,7 @@ msgstr "Adresse e-mail"
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
-#: src/features/auth/signup/AccountCreated.tsx:16
+#: src/features/auth/signup/AccountCreated.tsx:25
 #: src/features/auth/signup/EligibilityConfirmed.tsx:16
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
@@ -272,7 +272,7 @@ msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:48
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
@@ -359,7 +359,6 @@ msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
 #: src/features/auth/signup/AcceptCgu.tsx:126
 #: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:77
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:52
@@ -667,7 +666,7 @@ msgstr "La réservation est annulable jusqu'au"
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:47
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:45
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
@@ -730,10 +729,6 @@ msgstr "Maintenance en cours"
 #: src/features/profile/pages/Profile.tsx:134
 msgid "Mentions légales"
 msgstr "Mentions légales"
-
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx:25
-msgid "Merci, ta demande pour bénéficier des 300€ a bien été prise en compte. Vous êtes très nombreux à solliciter le service. Active la notification pour être informé du suivi de ton dossier."
-msgstr "Merci, ta demande pour bénéficier des 300€ a bien été prise en compte. Vous êtes très nombreux à solliciter le service. Active la notification pour être informé du suivi de ton dossier."
 
 #: src/features/favorites/pages/Favorites.tsx:26
 msgid "Mes favoris"
@@ -866,7 +861,7 @@ msgstr "Offre réservée"
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
-#: src/features/auth/signup/AccountCreated.tsx:19
+#: src/features/auth/signup/AccountCreated.tsx:28
 #: src/features/auth/signup/BeneficiaryRequestSent.tsx:20
 #: src/features/auth/signup/EligibilityConfirmed.tsx:19
 msgid "On y va !"
@@ -877,7 +872,7 @@ msgstr "On y va !"
 msgid "Oops !"
 msgstr "Oops !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:44
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:46
 msgid "Oups"
 msgstr "Oups"
@@ -970,7 +965,7 @@ msgstr "Politique de confidentialité."
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:48
 #: src/features/profile/pages/ConsentSettings.tsx:72
 msgid "Politique des cookies"
-msgstr "Politique des cookies"
+msgstr "Politique des cookies<<<<<<< HEAD"
 
 #: src/features/auth/signup/AcceptCgu.tsx:123
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
@@ -1057,7 +1052,7 @@ msgstr "Redirection en cours"
 msgid "Rends-toi vite sur le site pass Culture afin de la réserver."
 msgstr "Rends-toi vite sur le site pass Culture afin de la réserver."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:54
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
@@ -1074,7 +1069,7 @@ msgstr "Reste informé des actualités du pass Culture en activant les notificat
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:56
 #: src/features/auth/signup/VerifyEligibility.tsx:35
 #: src/features/bookOffer/pages/BookingConfirmation.tsx:56
@@ -1170,7 +1165,7 @@ msgstr "Seules les sorties seront affichées"
 msgid "Si l'e-mail n'arrive pas, tu peux :"
 msgstr "Si l'e-mail n'arrive pas, tu peux :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:50
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
@@ -1224,7 +1219,7 @@ msgstr "Ton anniversaire"
 msgid "Ton code postal"
 msgstr "Ton code postal"
 
-#: src/features/auth/signup/AccountCreated.tsx:14
+#: src/features/auth/signup/AccountCreated.tsx:23
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
 
@@ -1398,7 +1393,7 @@ msgstr "Télécharger la dernière version"
 
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx:36
 msgid "Un lien ne fonctionne pas ?"
-msgstr "Un lien ne fonctionne pas ?"
+msgstr "Un lien ne fonctionne pas ?<<<<<<< HEAD"
 
 #: src/features/auth/signup/AcceptCgu.tsx:74
 #: src/features/auth/signup/AcceptCgu.tsx:95
@@ -1485,6 +1480,10 @@ msgstr "Voir ma réservation"
 #: src/features/offer/atoms/OfferSeeMore.tsx:15
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
+
+#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx:25
+msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Reçois une alerte pour commencer ta demande de crédit dès que le service sera de nouveau disponible !"
+msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Reçois une alerte pour commencer ta demande de crédit dès que le service sera de nouveau disponible !"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:41
 msgid "Vérifier mon identité"
