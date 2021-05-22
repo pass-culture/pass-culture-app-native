@@ -26,6 +26,7 @@ describe('<Login/>', () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: false,
       showEligibleCard: false,
+      isBeneficiary: true,
     } as UserProfileResponse)
     jest.clearAllMocks()
     mockUsePreviousRoute.mockReturnValue(null)
@@ -38,7 +39,25 @@ describe('<Login/>', () => {
     await storage.clear('has_seen_eligible_card')
   })
 
-  it('should redirect to home page WHEN signin is successful', async () => {
+  it('should redirect to home WHEN signin is successful', async () => {
+    const renderAPI = renderLogin()
+
+    fireEvent.press(renderAPI.getByText('Se connecter'))
+    await act(flushAllPromises)
+
+    await waitForExpect(() => {
+      expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
+      expect(analytics.setUserId).toHaveBeenCalledWith(111)
+      expect(navigateToHome).toBeCalledTimes(1)
+    })
+  })
+
+  it('should redirect to home WHEN signin is successful, user needs to fill cultural survey but user is not beneficiary', async () => {
+    mockMeApiCall({
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: false,
+      isBeneficiary: false,
+    } as UserProfileResponse)
     const renderAPI = renderLogin()
 
     fireEvent.press(renderAPI.getByText('Se connecter'))
@@ -55,6 +74,7 @@ describe('<Login/>', () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: false,
+      isBeneficiary: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
 
@@ -71,6 +91,7 @@ describe('<Login/>', () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: false,
       showEligibleCard: true,
+      isBeneficiary: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
 
@@ -86,6 +107,7 @@ describe('<Login/>', () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: true,
+      isBeneficiary: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
 
