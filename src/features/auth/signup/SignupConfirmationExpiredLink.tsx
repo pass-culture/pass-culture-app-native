@@ -6,7 +6,7 @@ import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome, openExternalUrl } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { AsyncError } from 'libs/errorMonitoring'
@@ -15,6 +15,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 // import { Email } from 'ui/svg/icons/Email'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
@@ -57,6 +58,16 @@ export function SignupConfirmationExpiredLink(props: Props) {
       {/*  icon={Email}*/}
       {/*/>*/}
       {/*<Spacer.Column numberOfSpaces={4} />*/}
+      <ButtonTertiaryWhite
+        title={t`Consulter l'article d'aide`}
+        onPress={() =>
+          openExternalUrl(
+            'https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe'
+          )
+        }
+        icon={ExternalSite}
+      />
+      <Spacer.Column numberOfSpaces={4} />
       <ButtonPrimaryWhite
         title={t`Renvoyer l'email`}
         onPress={() => signupConfirmationExpiredLinkQuery()}
