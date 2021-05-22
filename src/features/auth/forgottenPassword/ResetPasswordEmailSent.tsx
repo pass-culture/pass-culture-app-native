@@ -7,18 +7,18 @@ import styled from 'styled-components/native'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { analytics } from 'libs/analytics'
+// import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+// import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { Email } from 'ui/svg/icons/Email'
+// import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { padding, Spacer, Typo } from 'ui/theme'
 
-import { contactSupport } from '../support.services'
+// import { contactSupport } from '../support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
@@ -33,10 +33,10 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
     navigateToHome()
   }
 
-  function onContactSupport() {
-    analytics.logContactSupportResetPasswordEmailSent()
-    contactSupport.forResetPasswordEmailNotReceived(route.params.email)
-  }
+  // function onContactSupport() {
+  //   analytics.logContactSupportResetPasswordEmailSent()
+  //   contactSupport.forResetPasswordEmailNotReceived(route.params.email)
+  // }
 
   return (
     <BottomContentPage>
@@ -57,9 +57,10 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
               {t`L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !`}
             </Typo.Body>
           </CenteredText>
-          <Spacer.Column numberOfSpaces={5} />
-          <Typo.Body>{t`Si l'e-mail n'arrive pas, tu peux : `}</Typo.Body>
-          <ButtonTertiary title={t`Contacter le support`} onPress={onContactSupport} icon={Email} />
+          <Spacer.Column numberOfSpaces={2} />
+          {/*<Spacer.Column numberOfSpaces={5} />*/}
+          {/*<Typo.Body>{t`Si l'e-mail n'arrive pas, tu peux : `}</Typo.Body>*/}
+          {/*<ButtonTertiary title={t`Contacter le support`} onPress={onContactSupport} icon={Email} />*/}
         </Description>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary title={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />
