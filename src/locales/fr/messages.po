@@ -372,7 +372,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetPhoneNumberModal.tsx:55
 #: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:64
 #: src/features/auth/signup/SetPostalCode.tsx:60
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:54
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:55
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:13
 msgid "Continuer"
@@ -819,7 +819,7 @@ msgstr "Notifications"
 msgid "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:45
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:46
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
@@ -905,7 +905,7 @@ msgstr "Où se trouve votre copie ?"
 msgid "Où se trouve votre document ?"
 msgstr "Où se trouve votre document ?"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:56
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:57
 #: src/features/profile/pages/ConsentSettings.tsx:86
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
@@ -966,7 +966,6 @@ msgstr "Plus tard"
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:48
 #: src/features/profile/pages/ConsentSettings.tsx:72
 msgid "Politique des cookies"
 msgstr "Politique des cookies<<<<<<< HEAD"
@@ -1057,7 +1056,7 @@ msgstr "Redirection en cours"
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:42
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:43
 msgid "Respect de ta vie privée"
 msgstr "Respect de ta vie privée"
 
@@ -1359,7 +1358,7 @@ msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'applica
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:51
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:52
 msgid "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 

@@ -89,7 +89,7 @@ describe('ConsentSettings', () => {
     })
   })
 
-  it('should open cookies policies on click on "Politique des cookies"', async () => {
+  it.skip('should open cookies policies on click on "Politique des cookies"', async () => {
     const openExternalUrl = jest.spyOn(NavigationHelpers, 'openExternalUrl')
     const { getByText } = renderConsentSettings()
 
