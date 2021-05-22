@@ -60,7 +60,7 @@ describe('<ResetPasswordEmailSent />', () => {
     })
   })
 
-  it('should open mail app when clicking on contact support button', async () => {
+  it.skip('should open mail app when clicking on contact support button', async () => {
     const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
 
     const contactSupportButton = renderAPI.getByText('Contacter le support')

@@ -14,11 +14,11 @@ import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { Email } from 'ui/svg/icons/Email'
+// import { Email } from 'ui/svg/icons/Email'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-import { contactSupport } from '../support.services'
+// import { contactSupport } from '../support.services'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink'>
 
@@ -51,12 +51,12 @@ export function SignupConfirmationExpiredLink(props: Props) {
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{t`Si tu as besoin d’aide n’hésite pas à :`}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite
-        title={t`Contacter le support`}
-        onPress={() => contactSupport.forSignupConfirmationExpiredLink(props.route.params.email)}
-        icon={Email}
-      />
-      <Spacer.Column numberOfSpaces={4} />
+      {/*<ButtonTertiaryWhite*/}
+      {/*  title={t`Contacter le support`}*/}
+      {/*  onPress={() => contactSupport.forSignupConfirmationExpiredLink(props.route.params.email)}*/}
+      {/*  icon={Email}*/}
+      {/*/>*/}
+      {/*<Spacer.Column numberOfSpaces={4} />*/}
       <ButtonPrimaryWhite
         title={t`Renvoyer l'email`}
         onPress={() => signupConfirmationExpiredLinkQuery()}
