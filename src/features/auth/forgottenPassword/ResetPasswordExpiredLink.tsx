@@ -6,6 +6,7 @@ import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
+import { openExternalUrl } from 'features/navigation/helpers'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -14,6 +15,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
@@ -47,7 +49,17 @@ export function ResetPasswordExpiredLink(props: Props) {
       <StyledBody>{t`Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.`}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{t`Si tu as besoin d’aide n’hésite pas à :`}</StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={4} />
+      <ButtonTertiaryWhite
+        title={t`Consulter l'article d'aide`}
+        onPress={() =>
+          openExternalUrl(
+            'https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe'
+          )
+        }
+        icon={ExternalSite}
+      />
+      <Spacer.Column numberOfSpaces={4} />
       <ButtonPrimaryWhite
         title={t`Renvoyer l'email`}
         onPress={() => resetPasswordEmailQuery()}
