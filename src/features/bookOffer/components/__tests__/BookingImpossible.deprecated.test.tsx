@@ -71,7 +71,7 @@ describe('<BookingImpossible />', () => {
     }
     const { queryByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
     const redirectionToWebsiteWording = queryByText(
-      'Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !'
+      'Met cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !'
     )
     expect(redirectionToWebsiteWording).toBeTruthy()
   })

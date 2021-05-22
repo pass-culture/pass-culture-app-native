@@ -49,7 +49,7 @@ msgstr "12 Caractères"
 msgid "Abandonner l'inscription"
 msgstr "Abandonner l'inscription"
 
-#: src/features/auth/signup/AcceptCgu.tsx:128
+#: src/features/auth/signup/AcceptCgu.tsx:131
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
 
@@ -84,7 +84,7 @@ msgstr "Activer la géolocalisation"
 msgid "Adresse"
 msgstr "Adresse"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:116
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:117
 #: src/features/auth/login/Login.tsx:117
 #: src/features/auth/signup/SetEmail.tsx:66
 msgid "Adresse e-mail"
@@ -193,7 +193,7 @@ msgstr "Bienvenue !"
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
-#: src/features/auth/signup/AcceptCgu.tsx:109
+#: src/features/auth/signup/AcceptCgu.tsx:112
 msgid "CGU & Données"
 msgstr "CGU & Données"
 
@@ -267,12 +267,12 @@ msgstr "Choisir un lieu"
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:36
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:36
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:35
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:48
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
@@ -297,7 +297,7 @@ msgstr "Comment ça marche ?"
 msgid "Composants"
 msgstr "Composants"
 
-#: src/features/auth/signup/AcceptCgu.tsx:115
+#: src/features/auth/signup/AcceptCgu.tsx:118
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
 
@@ -313,7 +313,7 @@ msgstr "Conditions d'annulation"
 msgid "Confidentialité"
 msgstr "Confidentialité"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:33
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:32
 msgid "Confirme ton e‑mail"
 msgstr "Confirme ton e‑mail"
 
@@ -349,19 +349,23 @@ msgstr "Connecte-toi pour profiter de cette fonctionnalité"
 msgid "Connecte-toi pour profiter de cette fonctionnalité !"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:48
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:49
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:58
+msgid "Consulter l'article d'aide"
+msgstr "Consulter l'article d'aide"
+
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:51
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:50
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:46
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:47
 msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
-#: src/features/auth/signup/AcceptCgu.tsx:126
+#: src/features/auth/signup/AcceptCgu.tsx:129
 #: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:77
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:52
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -472,7 +476,7 @@ msgstr "Détails de la réservation"
 msgid "E-mail"
 msgstr "E-mail"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:32
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:33
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
@@ -488,7 +492,7 @@ msgstr "EAN"
 msgid "Email enregistré. Tu seras averti lors du retour du service."
 msgstr "Email enregistré. Tu seras averti lors du retour du service."
 
-#: src/features/auth/signup/AcceptCgu.tsx:114
+#: src/features/auth/signup/AcceptCgu.tsx:117
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
@@ -532,7 +536,7 @@ msgstr "Explorer les offres"
 msgid "Filtrer"
 msgstr "Filtrer"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:79
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:80
 #: src/features/auth/signup/SetEmail.tsx:69
 msgid "Format de l'e-mail incorrect"
 msgstr "Format de l'e-mail incorrect"
@@ -574,7 +578,7 @@ msgid "Heure"
 msgstr "Heure"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword.tsx:41
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:83
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:84
 #: src/features/auth/signup/AcceptCgu.tsx:46
 msgid "Hors connexion : en attente du réseau."
 msgstr "Hors connexion : en attente du réseau."
@@ -626,7 +630,7 @@ msgstr "Keychain non accessible"
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:40
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:41
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
@@ -644,9 +648,9 @@ msgstr "L'offre n'a pas été retirée de tes favoris"
 msgid "La date choisie est incorrecte"
 msgstr "La date choisie est incorrecte"
 
-#: src/features/favorites/pages/FavoritesSorts.tsx:99
+#: src/features/favorites/pages/FavoritesSorts.tsx:104
 #: src/features/profile/pages/Profile.tsx:125
-#: src/features/search/pages/LocationFilter.tsx:84
+#: src/features/search/pages/LocationFilter.tsx:89
 msgid "La géolocalisation est temporairement inutilisable sur ton téléphone"
 msgstr "La géolocalisation est temporairement inutilisable sur ton téléphone"
 
@@ -666,12 +670,12 @@ msgstr "La réservation est annulable jusqu'au"
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:45
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:47
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
 
-#: src/features/deeplinks/useDeeplinkUrlHandler.ts:45
+#: src/features/deeplinks/useDeeplinkUrlHandler.ts:44
 msgid "Le lien est incorrect"
 msgstr "Le lien est incorrect"
 
@@ -691,8 +695,8 @@ msgstr ""
 msgid "Le réglage est sauvegardé"
 msgstr "Le réglage est sauvegardé"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:99
-#: src/features/auth/signup/AcceptCgu.tsx:100
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:100
+#: src/features/auth/signup/AcceptCgu.tsx:103
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
@@ -708,7 +712,7 @@ msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
 msgid "Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
 msgstr "Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
 
-#: src/features/search/pages/LocationFilter.tsx:89
+#: src/features/search/pages/LocationFilter.tsx:94
 #: src/features/search/sections/titles.ts:4
 msgid "Localisation"
 msgstr "Localisation"
@@ -743,8 +747,8 @@ msgid "Mes réservations"
 msgstr "Mes réservations"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx:54
-msgid "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
-msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+msgid "Met cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+msgstr "Met cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx:59
 msgid "Mettre en favoris"
@@ -786,7 +790,7 @@ msgstr "Mot de passe incorrect"
 msgid "Mot de passe modifié"
 msgstr "Mot de passe modifié"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:107
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:108
 msgid "Mot de passe oublié"
 msgstr "Mot de passe oublié"
 
@@ -814,6 +818,10 @@ msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. D
 #: src/features/profile/pages/Profile.tsx:120
 msgid "Notifications"
 msgstr "Notifications"
+
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:40
+msgid "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
+msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:30
 msgid "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
@@ -876,7 +884,7 @@ msgstr "On y va !"
 msgid "Oops !"
 msgstr "Oops !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:44
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:46
 msgid "Oups"
 msgstr "Oups"
@@ -962,11 +970,11 @@ msgstr "Plus que quelques étapes !"
 msgid "Plus tard"
 msgstr "Plus tard"
 
-#: src/features/auth/signup/AcceptCgu.tsx:118
+#: src/features/auth/signup/AcceptCgu.tsx:121
 msgid "Politique de confidentialité."
-msgstr "Politique de confidentialité.<<<<<<< HEAD"
+msgstr "Politique de confidentialité."
 
-#: src/features/auth/signup/AcceptCgu.tsx:123
+#: src/features/auth/signup/AcceptCgu.tsx:126
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
@@ -1047,8 +1055,8 @@ msgstr "Recommencer"
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:54
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:60
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
@@ -1064,8 +1072,8 @@ msgstr "Reste informé des actualités du pass Culture en activant les notificat
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:56
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:62
 #: src/features/auth/signup/VerifyEligibility.tsx:35
 #: src/features/bookOffer/pages/BookingConfirmation.tsx:56
 msgid "Retourner à l'accueil"
@@ -1133,7 +1141,7 @@ msgstr "Saisir une adresse..."
 msgid "Saisis le code envoyé par SMS au numéro"
 msgstr "Saisis le code envoyé par SMS au numéro"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:111
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:112
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
@@ -1147,7 +1155,7 @@ msgstr "Se connecter"
 msgid "Seules les sorties et offres physiques seront affichées"
 msgstr "Seules les sorties et offres physiques seront affichées"
 
-#: src/features/search/pages/LocationFilter.tsx:78
+#: src/features/search/pages/LocationFilter.tsx:83
 msgid "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 msgstr "Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation"
 
@@ -1156,11 +1164,7 @@ msgstr "Seules les sorties et offres physiques seront affichées pour une recher
 msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
-msgid "Si l'e-mail n'arrive pas, tu peux :"
-msgstr "Si l'e-mail n'arrive pas, tu peux :"
-
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:50
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
@@ -1169,7 +1173,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Si tu n’arrives pas à récuperer ton code tu peux"
 msgstr "Si tu n’arrives pas à récuperer ton code tu peux"
 
-#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:44
+#: src/features/auth/signup/SignupConfirmationEmailSent.tsx:45
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 
@@ -1268,11 +1272,11 @@ msgid "Toute la culture à portée de main"
 msgstr "Toute la culture à portée de main"
 
 #: src/features/favorites/atoms/Buttons/Sort.tsx:19
-#: src/features/favorites/pages/FavoritesSorts.tsx:104
+#: src/features/favorites/pages/FavoritesSorts.tsx:109
 msgid "Trier"
 msgstr "Trier"
 
-#: src/features/favorites/pages/FavoritesSorts.tsx:83
+#: src/features/favorites/pages/FavoritesSorts.tsx:88
 msgid "Trier par"
 msgstr "Trier par"
 
@@ -1388,15 +1392,15 @@ msgstr "Télécharger la dernière version"
 
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx:36
 msgid "Un lien ne fonctionne pas ?"
-msgstr "Un lien ne fonctionne pas ?<<<<<<< HEAD"
+msgstr "Un lien ne fonctionne pas ?"
 
-#: src/features/auth/signup/AcceptCgu.tsx:74
-#: src/features/auth/signup/AcceptCgu.tsx:95
+#: src/features/auth/signup/AcceptCgu.tsx:77
+#: src/features/auth/signup/AcceptCgu.tsx:98
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
 msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:57
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:94
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:58
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:95
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 
@@ -1434,8 +1438,8 @@ msgstr "Utilisé"
 msgid "VISA"
 msgstr "VISA"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:122
-#: src/features/favorites/pages/FavoritesSorts.tsx:106
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:123
+#: src/features/favorites/pages/FavoritesSorts.tsx:111
 msgid "Valider"
 msgstr "Valider"
 
@@ -1496,7 +1500,7 @@ msgstr "Bienvenue à Pass Culture"
 msgid "activate before date"
 msgstr "À activer avant le {dateLimit}"
 
-#: src/features/auth/signup/AcceptCgu.tsx:117
+#: src/features/auth/signup/AcceptCgu.tsx:120
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
@@ -1665,7 +1669,7 @@ msgstr "spécialité"
 msgid "starting from date"
 msgstr "Dès le {date}"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:118
+#: src/features/auth/forgottenPassword/ForgottenPassword.tsx:119
 #: src/features/auth/login/Login.tsx:119
 #: src/features/auth/signup/SetEmail.tsx:68
 msgid "tonadresse@email.com"
