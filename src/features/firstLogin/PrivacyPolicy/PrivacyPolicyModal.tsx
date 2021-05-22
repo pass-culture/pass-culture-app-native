@@ -21,6 +21,8 @@ export interface Props {
   disableBackdropTap?: boolean
 }
 
+const cookieButtonText = 'Politique des cookies'
+
 export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   navigationRef,
   visible,
@@ -59,7 +61,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
         </Typo.Body>
       </Description>
       <ButtonTertiary
-        title={t`Politique des cookies`}
+        title={cookieButtonText}
         onPress={openCookiesPolicyExternalUrl}
         icon={ExternalLinkSite}
         textSize={12}
