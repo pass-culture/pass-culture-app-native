@@ -169,7 +169,7 @@ msgstr "Autoriser les notifications marketing"
 msgid "Autoriser l’envoi d’e‑mails"
 msgstr "Autoriser l’envoi d’e‑mails"
 
-#: src/features/profile/pages/ConsentSettings.tsx:78
+#: src/features/profile/pages/ConsentSettings.tsx:79
 msgid "Autoriser l’utilisation de mes données de navigation"
 msgstr "Autoriser l’utilisation de mes données de navigation"
 
@@ -372,7 +372,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetPhoneNumberModal.tsx:55
 #: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:64
 #: src/features/auth/signup/SetPostalCode.tsx:60
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:54
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:55
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx:13
 msgid "Continuer"
@@ -501,7 +501,7 @@ msgid "En voir plus"
 msgstr "En voir plus"
 
 #: src/features/profile/pages/ChangePassword.tsx:91
-#: src/features/profile/pages/ConsentSettings.tsx:82
+#: src/features/profile/pages/ConsentSettings.tsx:83
 #: src/features/profile/pages/NotificationSettings.tsx:137
 msgid "Enregistrer"
 msgstr "Enregistrer"
@@ -622,7 +622,7 @@ msgstr "Je veux être alerté des actualités et des meilleures offres du pass C
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
-#: src/features/profile/pages/ConsentSettings.tsx:65
+#: src/features/profile/pages/ConsentSettings.tsx:66
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
@@ -823,7 +823,7 @@ msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques m
 msgid "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:45
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:46
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
@@ -909,8 +909,8 @@ msgstr "Où se trouve votre copie ?"
 msgid "Où se trouve votre document ?"
 msgstr "Où se trouve votre document ?"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:56
-#: src/features/profile/pages/ConsentSettings.tsx:86
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:57
+#: src/features/profile/pages/ConsentSettings.tsx:87
 msgid "Paramètres de confidentialité"
 msgstr "Paramètres de confidentialité"
 
@@ -970,16 +970,11 @@ msgstr "Plus tard"
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:48
-#: src/features/profile/pages/ConsentSettings.tsx:72
-msgid "Politique des cookies"
-msgstr "Politique des cookies"
-
 #: src/features/auth/signup/AcceptCgu.tsx:126
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 
-#: src/features/profile/pages/ConsentSettings.tsx:70
+#: src/features/profile/pages/ConsentSettings.tsx:71
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
@@ -1061,7 +1056,7 @@ msgstr "Redirection en cours"
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:42
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:43
 msgid "Respect de ta vie privée"
 msgstr "Respect de ta vie privée"
 
@@ -1363,7 +1358,7 @@ msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'applica
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
 
-#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:51
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:52
 msgid "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 msgstr "Tu peux modifier tes paramètres de confidentialité ici ou dans la page profil."
 

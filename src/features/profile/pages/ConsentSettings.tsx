@@ -21,6 +21,7 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ProfileContainer } from '../components/reusables'
 
 type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
+const cookieButtonText = 'Politique des cookies'
 
 export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation()
@@ -70,7 +71,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
             <Spacer.Row numberOfSpaces={1} />
             <ButtonTertiary
-              title={t`Politique des cookies`}
+              title={cookieButtonText}
               icon={ExternalLinkSite}
               onPress={openCookiesPolicyExternalUrl}
               textSize={12}
