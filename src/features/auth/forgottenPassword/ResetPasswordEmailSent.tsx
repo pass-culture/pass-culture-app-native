@@ -10,8 +10,8 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 // import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-// import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+// import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 // import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -60,7 +60,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             </Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
-          <ButtonTertiaryWhite
+          <ButtonTertiary
             title={t`Consulter l'article d'aide`}
             onPress={() =>
               openExternalUrl(

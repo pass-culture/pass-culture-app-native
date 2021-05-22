@@ -267,12 +267,12 @@ msgstr "Choisir un lieu"
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:35
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:36
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:35
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:48
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
@@ -349,7 +349,13 @@ msgstr "Connecte-toi pour profiter de cette fonctionnalité"
 msgid "Connecte-toi pour profiter de cette fonctionnalité !"
 msgstr "Connecte-toi pour profiter de cette fonctionnalité !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:48
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:58
+msgid "Consulter l'article d'aide"
+msgstr "Consulter l'article d'aide"
+
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:51
 #: src/features/auth/signup/SignupConfirmationEmailSent.tsx:50
 msgid "Consulter mes e-mails"
 msgstr "Consulter mes e-mails"
@@ -358,10 +364,8 @@ msgstr "Consulter mes e-mails"
 msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:45
 #: src/features/auth/signup/AcceptCgu.tsx:129
 #: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:77
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:52
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -472,7 +476,7 @@ msgstr "Détails de la réservation"
 msgid "E-mail"
 msgstr "E-mail"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:32
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:33
 msgid "E-mail envoyé !"
 msgstr "E-mail envoyé !"
 
@@ -626,7 +630,7 @@ msgstr "Keychain non accessible"
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:40
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:41
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
@@ -666,7 +670,7 @@ msgstr "La réservation est annulable jusqu'au"
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:45
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:47
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:47
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
@@ -743,8 +747,8 @@ msgid "Mes réservations"
 msgstr "Mes réservations"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx:54
-msgid "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
-msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+msgid "Met cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+msgstr "Met cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx:59
 msgid "Mettre en favoris"
@@ -880,7 +884,7 @@ msgstr "On y va !"
 msgid "Oops !"
 msgstr "Oops !"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:44
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:46
 msgid "Oups"
 msgstr "Oups"
@@ -1051,8 +1055,8 @@ msgstr "Recommencer"
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:54
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:60
 msgid "Renvoyer l'email"
 msgstr "Renvoyer l'email"
 
@@ -1068,8 +1072,8 @@ msgstr "Reste informé des actualités du pass Culture en activant les notificat
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:52
-#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:56
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
+#: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:62
 #: src/features/auth/signup/VerifyEligibility.tsx:35
 #: src/features/bookOffer/pages/BookingConfirmation.tsx:56
 msgid "Retourner à l'accueil"
@@ -1160,11 +1164,7 @@ msgstr "Seules les sorties et offres physiques seront affichées pour une recher
 msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent.tsx:44
-msgid "Si l'e-mail n'arrive pas, tu peux :"
-msgstr "Si l'e-mail n'arrive pas, tu peux :"
-
-#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:48
+#: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:50
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
