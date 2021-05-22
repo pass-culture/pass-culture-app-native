@@ -61,7 +61,7 @@ export const Login: FunctionComponent = function () {
 
       if (!hasSeenEligibleCard && user.showEligibleCard) {
         navigate('EighteenBirthday')
-      } else if (user.needsToFillCulturalSurvey) {
+      } else if (user.isBeneficiary && user.needsToFillCulturalSurvey) {
         navigate('CulturalSurvey')
       } else {
         navigateToHome()
