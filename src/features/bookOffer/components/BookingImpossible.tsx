@@ -13,6 +13,9 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useBooking } from '../pages/BookingOfferWrapper'
 
+const addToFavoriteText =
+  'Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !'
+
 export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal } = useBooking()
   const { offerId } = bookingState
@@ -62,7 +65,7 @@ export const BookingImpossible: React.FC = () => {
           {t`Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver.`}
         </Content>
       ) : (
-        <Content>{t`Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !`}</Content>
+        <Content>{addToFavoriteText}</Content>
       )}
 
       <Spacer.Column numberOfSpaces={6} />
