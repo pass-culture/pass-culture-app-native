@@ -12,8 +12,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils'
 
-import { contactSupport } from '../support.services'
-
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
 jest.mock('features/navigation/helpers')
@@ -31,17 +29,6 @@ describe('<ResetPasswordExpiredLink/>', () => {
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalledTimes(1)
     })
-  })
-
-  it('should contact support WHEN contact support button is clicked', async () => {
-    const { getByText } = await renderResetPasswordExpiredLink()
-
-    fireEvent.press(getByText('Contacter le support'))
-
-    await waitForExpect(() => {
-      expect(contactSupport.forResetPasswordExpiredLink).toBeCalledTimes(1)
-    })
-    expect(contactSupport.forResetPasswordExpiredLink).toBeCalledWith('test@email.com')
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
