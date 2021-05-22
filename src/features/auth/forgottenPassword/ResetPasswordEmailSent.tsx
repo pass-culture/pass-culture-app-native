@@ -5,12 +5,14 @@ import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useBackNavigation } from 'features/navigation/backNavigation'
-import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
+import { navigateToHome, openExternalUrl, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 // import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 // import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+// import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
@@ -57,7 +59,16 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
               {t`L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !`}
             </Typo.Body>
           </CenteredText>
-          <Spacer.Column numberOfSpaces={2} />
+          <Spacer.Column numberOfSpaces={5} />
+          <ButtonTertiaryWhite
+            title={t`Consulter l'article d'aide`}
+            onPress={() =>
+              openExternalUrl(
+                'https://aide.passculture.app/fr/articles/5261997-je-n-ai-pas-recu-le-mail-de-confirmation-de-changement-de-mot-de-passe'
+              )
+            }
+            icon={ExternalSite}
+          />
           {/*<Spacer.Column numberOfSpaces={5} />*/}
           {/*<Typo.Body>{t`Si l'e-mail n'arrive pas, tu peux : `}</Typo.Body>*/}
           {/*<ButtonTertiary title={t`Contacter le support`} onPress={onContactSupport} icon={Email} />*/}
