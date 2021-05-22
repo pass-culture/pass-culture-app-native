@@ -37,7 +37,7 @@ export const DenyAccessToIdCheckModal = (props: DenyAccessToIdCheckModalProps) =
         <Spacer.Column numberOfSpaces={getSpacing(2)} />
         <Paragraphe>
           <Typo.Body color={ColorsEnum.GREY_DARK}>
-            {t`Merci, ta demande pour bénéficier des 300€ a bien été prise en compte. Vous êtes très nombreux à solliciter le service. Active la notification pour être informé du suivi de ton dossier.`}
+            {t`Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Reçois une alerte pour commencer ta demande de crédit dès que le service sera de nouveau disponible !`}
           </Typo.Body>
         </Paragraphe>
         <Spacer.Column numberOfSpaces={getSpacing(2)} />
