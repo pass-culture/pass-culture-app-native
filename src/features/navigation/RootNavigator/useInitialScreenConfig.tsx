@@ -63,7 +63,7 @@ async function getInitialScreenConfig({
         return { screen: 'EighteenBirthday', params: undefined }
       }
 
-      if (user.needsToFillCulturalSurvey) {
+      if (user.isBeneficiary && user.needsToFillCulturalSurvey) {
         return { screen: 'CulturalSurvey', params: undefined }
       }
     } catch {
