@@ -742,6 +742,10 @@ msgstr "Mes options"
 msgid "Mes réservations"
 msgstr "Mes réservations"
 
+#: src/features/bookOffer/components/BookingImpossible.tsx:54
+msgid "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+
 #: src/features/bookOffer/components/BookingImpossible.tsx:59
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
@@ -1051,10 +1055,6 @@ msgstr "Recommencer"
 #: src/features/home/components/BusinessModule.tsx:36
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
-
-#: src/features/bookOffer/components/BookingImpossible.tsx:54
-msgid "Rends-toi vite sur le site pass Culture afin de la réserver."
-msgstr "Rends-toi vite sur le site pass Culture afin de la réserver."
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:54

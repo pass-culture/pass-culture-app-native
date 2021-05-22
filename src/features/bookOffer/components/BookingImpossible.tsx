@@ -62,7 +62,7 @@ export const BookingImpossible: React.FC = () => {
           {t`Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver.`}
         </Content>
       ) : (
-        <Content>{t`Rends-toi vite sur le site pass Culture afin de la réserver.`}</Content>
+        <Content>{t`Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !`}</Content>
       )}
 
       <Spacer.Column numberOfSpaces={6} />
