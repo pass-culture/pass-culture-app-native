@@ -90,8 +90,8 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
   }
 
   function goToNextStep() {
-    // const nextPage = settings?.wholeFranceOpening ? 'AcceptCgu' : 'SetPostalCode'
     const nextPage = 'AcceptCgu'
+    // const nextPage = settings?.wholeFranceOpening ? 'AcceptCgu' : 'SetPostalCode'
     const { date } = state
     if (date) {
       const birthday = formatDateToISOStringWithoutTime(date)
