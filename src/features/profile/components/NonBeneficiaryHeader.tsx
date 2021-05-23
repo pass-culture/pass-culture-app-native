@@ -73,7 +73,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
           isEligible,
         })
         showErrorSnackBar({
-          message: t`Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans quelques heures.`,
+          message: t`Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures.`,
           timeout: SNACK_BAR_TIME_OUT,
         })
       }
