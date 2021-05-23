@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
-import { useSetIsLicenceTokenChecked, LocalStorageService } from '@pass-culture/id-check'
-import { useFocusEffect } from '@react-navigation/native'
-import React, { memo, PropsWithChildren, useState } from 'react'
+import { useSetIsLicenceTokenChecked } from '@pass-culture/id-check'
+import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
