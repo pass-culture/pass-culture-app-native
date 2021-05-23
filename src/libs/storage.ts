@@ -7,7 +7,6 @@ type StorageKey =
   | 'has_seen_tutorials'
   | 'has_accepted_cookie'
   | 'has_seen_eligible_card'
-  | 'has_completed_idcheck'
   | 'phone_validation_code_asked_at'
 
 export const storage = {
