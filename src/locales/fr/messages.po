@@ -464,8 +464,8 @@ msgid "Désactiver la géolocalisation"
 msgstr "Désactiver la géolocalisation"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx:69
-msgid "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans quelques heures."
-msgstr "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans quelques heures."
+msgid "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
+msgstr "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 
 #: src/features/bookOffer/services/useModalContent.tsx:35
 #: src/features/bookOffer/services/useModalContent.tsx:50
@@ -1481,8 +1481,8 @@ msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx:25
-msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Reçois une alerte pour commencer ta demande de crédit dès que le service sera de nouveau disponible !"
-msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Reçois une alerte pour commencer ta demande de crédit dès que le service sera de nouveau disponible !"
+msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
+msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
 
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:41
 msgid "Vérifier mon identité"
