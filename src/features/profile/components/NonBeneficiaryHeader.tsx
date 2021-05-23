@@ -1,5 +1,7 @@
 import { t } from '@lingui/macro'
-import React, { memo, PropsWithChildren } from 'react'
+import { useSetIsLicenceTokenChecked, LocalStorageService } from '@pass-culture/id-check'
+import { useFocusEffect } from '@react-navigation/native'
+import React, { memo, PropsWithChildren, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -38,6 +40,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const depositAmount = useDepositAmount()
   const { showErrorSnackBar } = useSnackBarContext()
   const { data: settings } = useAppSettings()
+  const setIsLicenceTokenChecked = useSetIsLicenceTokenChecked()
 
   const deposit = depositAmount.replace(' ', '')
   const eligibilityStartDatetime = props.eligibilityStartDatetime
@@ -62,6 +65,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   async function onIdCheckPress() {
     if (isEligible && settings?.allowIdCheckRegistration) {
       try {
+        setIsLicenceTokenChecked(false)
         const response = await api.getnativev1idCheckToken()
         analytics.logIdCheck('Profile')
         if (response?.token != null) {
