@@ -83,6 +83,21 @@ describe('NonBeneficiaryHeader', () => {
 
     getByTestId('body-container-18')
   })
+  it('should render the right body for 18 years old users if user has completed idcheck', async () => {
+    await storage.saveObject('has_completed_idcheck', true)
+
+    const today = '2021-02-30T00:00:00Z'
+    mockdate.set(new Date(today))
+    const { getByTestId } = render(
+      <NonBeneficiaryHeader
+        email="john@doe.com"
+        eligibilityStartDatetime="2021-02-30T00:00Z"
+        eligibilityEndDatetime="2022-02-30T00:00Z"
+      />
+    )
+
+    getByTestId('body-container-18')
+  })
 
   it('should render the right body for 18 years old users if user has completed idcheck', async () => {
     await storage.saveObject('has_completed_idcheck', true)
