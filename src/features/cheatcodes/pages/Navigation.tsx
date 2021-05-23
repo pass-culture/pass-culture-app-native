@@ -77,6 +77,13 @@ export function Navigation(): JSX.Element {
           }),
         }
       )
+      if (response.status === 400) {
+        showErrorSnackBar({
+          message: `Trop d'essais ! Réessayer dans 12 heures`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+        return
+      }
       const { token } = await response2.json()
       navigation.navigate(idCheckInitialRouteName, {
         licence_token: token,
