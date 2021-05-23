@@ -52,7 +52,6 @@ export const IdCheck: React.FC<Props> = function (props) {
     if (isEligibilityProcessAbandonned) {
       navigateToHome()
     } else if (isEligibilityProcessFinished) {
-      storage.saveObject('has_completed_idcheck', true)
       navigation.navigate('BeneficiaryRequestSent')
     }
   }
