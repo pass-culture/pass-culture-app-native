@@ -103,10 +103,6 @@ msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélectio
 msgid "Aides"
 msgstr "Aides"
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:53
-msgid "Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver."
-msgstr "Ajoute cette offre à tes favoris et rends-toi vite sur le site pass Culture afin de la réserver."
-
 #: src/features/favorites/pages/FavoritesSorts.tsx:28
 msgid "Ajouté récemment"
 msgstr "Ajouté récemment"
@@ -421,7 +417,7 @@ msgstr "Date précise"
 msgid "Demain"
 msgstr "Demain"
 
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:14
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:19
 msgid "Demande envoyée !"
 msgstr "Demande envoyée !"
 
@@ -445,6 +441,10 @@ msgstr "Des permissions sont nécessaires"
 msgid "Distance"
 msgstr "Distance"
 
+#: src/features/profile/components/IdCheckProcessingBadge.tsx:6
+msgid "Dossier déposé ! Nous avons bien reçu ton dossier et sommes en train de l'analyser."
+msgstr "Dossier déposé ! Nous avons bien reçu ton dossier et sommes en train de l'analyser."
+
 #: src/features/bookOffer/components/BookDuoChoice.tsx:24
 #: src/features/bookOffer/components/BookDuoChoice.tsx:42
 #: src/features/home/atoms/OfferCaption.tsx:14
@@ -463,7 +463,7 @@ msgstr "Découvrir"
 msgid "Désactiver la géolocalisation"
 msgstr "Désactiver la géolocalisation"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:69
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:70
 msgid "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 msgstr "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 
@@ -746,7 +746,7 @@ msgstr "Mes options"
 msgid "Mes réservations"
 msgstr "Mes réservations"
 
-#: src/features/bookOffer/components/BookingImpossible.tsx:54
+#: src/features/bookOffer/components/BookingImpossible.tsx:53
 msgid "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 
@@ -831,7 +831,7 @@ msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:15
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:20
 msgid "Nous étudions ton dossier..."
 msgstr "Nous étudions ton dossier..."
 
@@ -874,7 +874,7 @@ msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
 #: src/features/auth/signup/AccountCreated.tsx:28
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:20
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:25
 #: src/features/auth/signup/EligibilityConfirmed.tsx:19
 msgid "On y va !"
 msgstr "On y va !"
@@ -1015,7 +1015,7 @@ msgid "Problèmes pour ouvrir un lien ?"
 msgstr "Problèmes pour ouvrir un lien ?"
 
 #: src/features/profile/components/LoggedOutHeader.tsx:18
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:118
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:119
 msgid "Profil"
 msgstr "Profil"
 
@@ -1054,6 +1054,10 @@ msgstr "Recommencer"
 #: src/features/home/components/BusinessModule.tsx:36
 msgid "Redirection en cours"
 msgstr "Redirection en cours"
+
+#: src/features/bookOffer/components/BookingImpossible.tsx:54
+msgid "Rends-toi vite sur le site pass Culture afin de la réserver"
+msgstr "Rends-toi vite sur le site pass Culture afin de la réserver"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:54
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:60
@@ -1374,7 +1378,7 @@ msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Cultu
 msgid "Tu pourras retrouver l’offre dans tes réservations teminées"
 msgstr "Tu pourras retrouver l’offre dans tes réservations teminées"
 
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:17
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:22
 msgid "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 msgstr "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 
@@ -1559,7 +1563,7 @@ msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture
 msgid "durée"
 msgstr "durée"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:97
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:93
 msgid "elibility deadline"
 msgstr "Tu es éligible jusqu'au {deadline}"
 
@@ -1571,7 +1575,7 @@ msgstr "en détails"
 msgid "en ligne"
 msgstr "en ligne"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:104
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:100
 msgid "enjoy deposit"
 msgstr "Profite de {deposit}"
 
@@ -1628,7 +1632,7 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} of
 msgid "not refunded because expired"
 msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré."
 
-#: src/features/profile/components/YoungerBadge.tsx:16
+#: src/features/profile/components/YoungerBadge.tsx:9
 msgid "patience enfin"
 msgstr "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
 
@@ -1731,7 +1735,7 @@ msgstr "À activer"
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:108
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:104
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
