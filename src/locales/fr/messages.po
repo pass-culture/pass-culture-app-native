@@ -747,8 +747,8 @@ msgid "Mes réservations"
 msgstr "Mes réservations"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx:54
-msgid "Met cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
-msgstr "Met cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+msgid "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
+msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx:59
 msgid "Mettre en favoris"
