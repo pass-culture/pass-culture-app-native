@@ -94,6 +94,7 @@ export function requestSettingsSuccess(
     allowIdCheckRegistration: true,
     autoActivateDigitalBookings: false,
     enableNativeIdCheckVersion: false,
+    enablePhoneValidation: false,
     wholeFranceOpening: false,
   }
 ) {

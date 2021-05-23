@@ -716,6 +716,18 @@ export interface FavoriteResponse {
 }/**
  * 
  * @export
+ * @interface FavoritesCountResponse
+ */
+export interface FavoritesCountResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof FavoritesCountResponse
+     */
+    count: number;
+}/**
+ * 
+ * @export
  * @interface GetIdCheckTokenResponse
  */
 export interface GetIdCheckTokenResponse {
@@ -1016,9 +1028,27 @@ export interface OfferResponse {
 }/**
  * 
  * @export
+ * @interface OfferStockActivationCodeResponse
+ */
+export interface OfferStockActivationCodeResponse {
+    /**
+     * 
+     * @type {Date}
+     * @memberof OfferStockActivationCodeResponse
+     */
+    expirationDate: Date;
+}/**
+ * 
+ * @export
  * @interface OfferStockResponse
  */
 export interface OfferStockResponse {
+    /**
+     * 
+     * @type {OfferStockActivationCodeResponse}
+     * @memberof OfferStockResponse
+     */
+    activationCode?: OfferStockActivationCodeResponse | null;
     /**
      * 
      * @type {Date}
@@ -1252,13 +1282,19 @@ export interface SettingsResponse {
      * @type {boolean}
      * @memberof SettingsResponse
      */
+    enablePhoneValidation: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
     isRecaptchaEnabled: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof SettingsResponse
      */
-     wholeFranceOpening: boolean;
+    wholeFranceOpening: boolean;
 }/**
  * 
  * @export
@@ -1357,6 +1393,12 @@ export interface UserProfileResponse {
     firstName?: string | null;
     /**
      * 
+     * @type {boolean}
+     * @memberof UserProfileResponse
+     */
+    hasCompletedIdCheck?: boolean | null;
+    /**
+     * 
      * @type {number}
      * @memberof UserProfileResponse
      */
@@ -1379,6 +1421,12 @@ export interface UserProfileResponse {
      * @memberof UserProfileResponse
      */
     needsToFillCulturalSurvey: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserProfileResponse
+     */
+    needsToValidatePhone: boolean;
     /**
      * 
      * @type {string}
@@ -1588,6 +1636,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary get_favorites_count <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1mefavoritescount(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/me/favorites/count`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary get_offer <GET>
          * @param {number} offer_id 
          * @param {*} [options] Override http request option.
@@ -1654,6 +1724,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary has_completed_id_check <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1accounthasCompletedIdCheck(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/account/has_completed_id_check`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -2170,6 +2262,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary get_favorites_count <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1mefavoritescount(basePath: string, options?: any): Promise<FavoritesCountResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1mefavoritescount(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary get_offer <GET>
          * @param {number} offer_id 
          * @param {*} [options] Override http request option.
@@ -2200,6 +2303,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async postnativev1account(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1account(body, options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary has_completed_id_check <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1accounthasCompletedIdCheck(basePath: string, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accounthasCompletedIdCheck(options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -2475,6 +2589,17 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
+     * @summary get_favorites_count <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1mefavoritescount(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1mefavoritescount(this.basePath, options)
+    }
+    /**
+     * 
      * @summary get_offer <GET>
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
@@ -2507,6 +2632,17 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1account(body?: AccountRequest, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1account(this.basePath, body, options)
+    }
+    /**
+     * 
+     * @summary has_completed_id_check <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1accounthasCompletedIdCheck(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1accounthasCompletedIdCheck(this.basePath, options)
     }
     /**
      * 
