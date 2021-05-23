@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useSetIsLicenceTokenChecked } from '@pass-culture/id-check'
+import { useSetIsLicenceTokenChecked } from '@pass-culture/id-check/src/IdCheckContext'
 import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
