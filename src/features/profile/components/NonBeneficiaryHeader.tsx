@@ -8,6 +8,7 @@ import { useDepositAmount } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
+import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { errorMonitoring } from 'libs/errorMonitoring'
@@ -20,7 +21,6 @@ import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { NonEligibleDepartmentBadge } from './NonEligibleDepartmentBadge'
-import { YoungerBadge } from './YoungerBadge'
 
 interface NonBeneficiaryHeaderProps {
   email: string
