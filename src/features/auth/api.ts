@@ -96,6 +96,10 @@ export function useGetIdCheckToken(
   )
 }
 
+export function useNotifyIdCheckCompleted() {
+  return useMutation(() => api.postnativev1accounthasCompletedIdCheck())
+}
+
 export function useDepositAmount() {
   const { data: settings } = useAppSettings()
   const amount = settings?.depositAmount ?? 30000

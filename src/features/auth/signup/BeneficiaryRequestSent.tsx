@@ -1,8 +1,9 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { useNotifyIdCheckCompleted } from 'features/auth/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -11,6 +12,12 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {
   const { navigate } = useNavigation<UseNavigationType>()
+
+  const { mutate: notifyIdCheckCompleted } = useNotifyIdCheckCompleted()
+
+  useEffect(() => {
+    notifyIdCheckCompleted()
+  }, [])
 
   function goToCulturalSurvey() {
     navigate('CulturalSurvey')
