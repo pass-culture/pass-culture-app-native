@@ -8,6 +8,7 @@ import { useDepositAmount } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
+import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
@@ -119,6 +120,12 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
             subTitle={t`à dépenser dans l'application`}
             testID="18-banner"
           />
+        </BodyContainer>
+      )
+    } else {
+      body = (
+        <BodyContainer testID="body-container-18-idcheck-completed">
+          <IdCheckProcessingBadge />
         </BodyContainer>
       )
     }
