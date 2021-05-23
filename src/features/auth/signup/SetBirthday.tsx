@@ -187,7 +187,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               id: 'application accessible pour certains départements',
               values: { deposit },
               message:
-                'L’application pass Culture est accessible à tous.\nSi tu as 18 ans et que tu fais partie d’un département éligible, tu pourras obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.',
+                'L’application pass Culture est accessible à tous.\nSi tu as 18 ans, tu pourras obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.',
             })}
           </StyledBody>
         </ModalChildrenContainer>
