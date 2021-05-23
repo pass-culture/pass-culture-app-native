@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect } from '@react-navigation/native'
-import React, { memo, PropsWithChildren, useState } from 'react'
+import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -13,7 +12,6 @@ import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { errorMonitoring } from 'libs/errorMonitoring'
-import { storage } from 'libs/storage'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
@@ -27,6 +25,7 @@ interface NonBeneficiaryHeaderProps {
   email: string
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
+  hasCompletedIdCheck?: boolean | null
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
@@ -35,7 +34,6 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     showModal: showDenyAccessToIdCheckModal,
     hideModal: hideDenyAccessToIdCheckModal,
   } = useModal(false)
-  const [hasCompletedIdCheck, setHasCompletedIdCheck] = useState(false)
   const today = new Date()
   const depositAmount = useDepositAmount()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -82,11 +80,6 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
       showDenyAccessToIdCheckModal()
     }
   }
-  useFocusEffect(() => {
-    storage.readObject('has_completed_idcheck').then((value) => {
-      setHasCompletedIdCheck(Boolean(value))
-    })
-  })
 
   let body = null
   if (!eligibilityStartDatetime || !eligibilityEndDatetime) {
@@ -98,7 +91,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   } else if (today >= eligibilityEndDatetime) {
     body = <BodyContainer testID="body-container-above-18" padding={1} />
   } else if (today >= eligibilityStartDatetime) {
-    if (!hasCompletedIdCheck) {
+    if (!props.hasCompletedIdCheck) {
       body = (
         <BodyContainer testID="body-container-18">
           <Typo.Caption>
