@@ -6,7 +6,7 @@ import { WebView, WebViewNavigation } from 'react-native-webview'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
+import { navigateToHome, openExternalUrl, useCurrentRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
@@ -49,10 +49,15 @@ export const IdCheck: React.FC<Props> = function (props) {
     // For more info, see the buffer pages (i.e. to exit the webview) of the Id Check web app
     const isEligibilityProcessAbandonned = event.url.includes('/exit')
     const isEligibilityProcessFinished = event.url.includes('/end')
+    const isRedirectedToDMS = event.url.includes('demarches-simplifiees')
     if (isEligibilityProcessAbandonned) {
       navigateToHome()
     } else if (isEligibilityProcessFinished) {
       navigation.navigate('BeneficiaryRequestSent')
+    } else if (isRedirectedToDMS) {
+      openExternalUrl(event.url)
+      // we need to force the webview to go back otherwise it opens DMS url
+      webviewRef.current?.goBack()
     }
   }
 
