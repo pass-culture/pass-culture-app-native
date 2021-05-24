@@ -1,8 +1,8 @@
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
-import { contactSupport } from 'features/auth/support.services'
 import * as NavigationHelpers from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
@@ -46,12 +46,12 @@ describe('LegalNotices', () => {
 
     expect(openExternalUrl).toBeCalledWith(env.DATA_PRIVACY_CHART_LINK)
   })
-  it('should open email interface when the account-deletion row is clicked', async () => {
+  it('should redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     const { getByTestId } = await renderProfile()
 
     const row = getByTestId('row-account-deletion')
     fireEvent.press(row)
 
-    expect(contactSupport.forAccountDeletion).toBeCalledWith('email2@domain.ext')
+    expect(navigate).toBeCalledWith('ConfirmDeleteProfile')
   })
 })
