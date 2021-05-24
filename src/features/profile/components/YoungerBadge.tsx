@@ -9,15 +9,12 @@ export function YoungerBadge() {
   const depositAmount = useDepositAmount()
   const deposit = depositAmount.replace(' ', '')
 
-  return (
-    <ProfileBadge
-      icon={Clock}
-      message={t({
-        id: 'patience enfin',
-        values: { deposit },
-        message:
-          'Patience ! L’année de tes 18 ans, tu bénéficieras de {deposit} offerts à dépenser sur l’application.',
-      })}
-    />
-  )
+  const information =
+    t`Patience ! À tes 18 ans, tu bénéficieras de` +
+    '\u00a0' +
+    deposit +
+    '\u00a0' +
+    t`offerts à dépenser sur l’application.`
+
+  return <ProfileBadge icon={Clock} message={information} />
 }

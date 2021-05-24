@@ -133,6 +133,15 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
     )
   }
 
+  const birthdayInformation =
+    t`L’application pass Culture est accessible à tous.` +
+    '\n' +
+    t`Si tu as 18 ans, tu pourras obtenir une aide financière de` +
+    '\u00a0' +
+    deposit +
+    '\u00a0' +
+    t`proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.`
+
   return (
     <React.Fragment>
       <BottomContentPage>
@@ -183,14 +192,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
         <ModalChildrenContainer>
           <BirthdayCake />
           <Spacer.Column numberOfSpaces={2} />
-          <StyledBody>
-            {t({
-              id: 'application accessible pour certains départements',
-              values: { deposit },
-              message:
-                'L’application pass Culture est accessible à tous.\nSi tu as 18 ans, tu pourras obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture.',
-            })}
-          </StyledBody>
+          <StyledBody>{birthdayInformation}</StyledBody>
         </ModalChildrenContainer>
       </AppInformationModal>
       <QuitSignupModal
