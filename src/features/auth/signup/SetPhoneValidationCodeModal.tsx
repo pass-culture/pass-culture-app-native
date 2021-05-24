@@ -65,6 +65,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
   }
 
   function validateCode() {
+    setInvalidCodeMessage('')
     const { code } = codeInputState
     if (code) {
       validatePhoneNumber(code)

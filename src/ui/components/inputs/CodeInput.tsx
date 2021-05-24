@@ -95,6 +95,7 @@ export const CodeInput = (props: CodeInputProps) => {
 const Container = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
+  minHeight: getSpacing(10),
 })
 
 export function createMap<T>(
