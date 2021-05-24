@@ -48,6 +48,7 @@ import { Maintenance } from 'features/maintenance/Maintenance'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
+import { ConfirmDeleteProfile } from 'features/profile/pages/ConfirmDeleteProfile'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
@@ -91,6 +92,7 @@ const routes: Array<Route> = [
   },
   { name: 'IdCheck', component: IdCheck },
   { name: 'LegalNotices', component: LegalNotices },
+  { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile },
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary },
