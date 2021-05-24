@@ -39,7 +39,7 @@ describe('useModalContent', () => {
     expect(result.current.onLeftIconPress).toBeUndefined()
     expect(result.current.title).toBe('')
   })
-  it('iOS - shows BookingImpossible if the digital offer is CINEMA', () => {
+  it('iOS - does not show BookingImpossible if the digital offer is CINEMA', () => {
     mockOffer = baseOffer
     mockOffer.isDigital = true
     mockOffer.name = CategoryNameEnum.CINEMA
@@ -49,10 +49,26 @@ describe('useModalContent', () => {
 
     const { result } = renderHook(useModalContent)
 
-    expect(result.current.children).toMatchInlineSnapshot('<BookingImpossible />')
+    expect(result.current.children).toMatchInlineSnapshot(`
+      <BookingDetails
+        stocks={
+          Array [
+            Object {
+              "beginningDatetime": 2021-01-01T13:30:00.000Z,
+              "bookingLimitDatetime": 2021-01-05T13:30:00.000Z,
+              "id": 118929,
+              "isBookable": true,
+              "isExpired": false,
+              "isSoldOut": false,
+              "price": 500,
+            },
+          ]
+        }
+      />
+    `)
     expect(result.current.leftIcon).toBeUndefined()
     expect(result.current.onLeftIconPress).toBeUndefined()
-    expect(result.current.title).toBe('Tu y es presque')
+    expect(result.current.title).toBe('Détails de la réservation')
     mockOffer.name = CategoryNameEnum.SPECTACLE
   })
 
