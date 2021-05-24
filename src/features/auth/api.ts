@@ -107,8 +107,11 @@ export function useDepositAmount() {
 }
 
 export function useSignInNumberOfSteps() {
-  const { data: settings } = useAppSettings()
-  return settings?.wholeFranceOpening ? 4 : 5
+  // FIXME: we disabled this after gen cause it was displaying postal code during registration
+  const signInNumberOfSteps = 4
+  return signInNumberOfSteps
+  // const { data: settings } = useAppSettings()
+  // return settings?.wholeFranceOpening ? 4 : 5
 }
 
 export function useSendPhoneValidationMutation({
