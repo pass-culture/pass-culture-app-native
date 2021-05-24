@@ -1,11 +1,12 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
-import { contactSupport } from 'features/auth/support.services'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -16,6 +17,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 export function LegalNotices() {
   const { data: user } = useUserProfileInfo()
+  const { navigate } = useNavigation<UseNavigationType>()
   return (
     <React.Fragment>
       <Spacer.TopScreen />
@@ -44,7 +46,7 @@ export function LegalNotices() {
             <Row
               title={t`Suppression du compte`}
               type="clickable"
-              onPress={() => contactSupport.forAccountDeletion(user.email)}
+              onPress={() => navigate('ConfirmDeleteProfile')}
               icon={ProfileDeletion}
               style={styles.row}
               testID="row-account-deletion"
