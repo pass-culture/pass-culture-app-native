@@ -1,19 +1,19 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { useDepositAmount } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
-import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
-import { useModal } from 'ui/components/modals/useModal'
 import { ModuleBanner } from 'ui/components/ModuleBanner'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
@@ -29,11 +29,7 @@ interface NonBeneficiaryHeaderProps {
 }
 
 function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHeaderProps>) {
-  const {
-    visible: denyAccessToIdCheckModalVisible,
-    showModal: showDenyAccessToIdCheckModal,
-    hideModal: hideDenyAccessToIdCheckModal,
-  } = useModal(false)
+  const { navigate } = useNavigation<UseNavigationType>()
   const today = new Date()
   const depositAmount = useDepositAmount()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -52,11 +48,15 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
       ? today >= eligibilityStartDatetime && today < eligibilityEndDatetime
       : false
 
+  function navigateToIdCheckUnavailable() {
+    navigate('IdCheckUnavailable')
+  }
+
   // NOTE: we comment here because react query throw to error boundary because of 400 and this should not query token on focus!!
   // const { data } = useGetIdCheckToken(isEligible, onIdCheckError)
   // const licenceToken = data?.token || ''
   const navigateToIdCheck = useNavigateToIdCheck({
-    onIdCheckNavigationBlocked: showDenyAccessToIdCheckModal,
+    onIdCheckNavigationBlocked: navigateToIdCheckUnavailable,
   })
 
   async function onIdCheckPress() {
@@ -77,7 +77,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
         })
       }
     } else {
-      showDenyAccessToIdCheckModal()
+      navigateToIdCheckUnavailable()
     }
   }
 
@@ -134,10 +134,6 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     <React.Fragment>
       <SvgPageHeader title={t`Profil`} />
       {body}
-      <DenyAccessToIdCheckModal
-        visible={denyAccessToIdCheckModalVisible}
-        dismissModal={hideDenyAccessToIdCheckModal}
-      />
     </React.Fragment>
   )
 }
