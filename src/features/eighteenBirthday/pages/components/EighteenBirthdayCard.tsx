@@ -3,30 +3,28 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useDepositAmount, useGetIdCheckToken } from 'features/auth/api'
-import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { MonitoringError } from 'libs/errorMonitoring'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
-import { useModal } from 'ui/components/modals/useModal'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
-  const {
-    visible: denyAccessToIdCheckModalVisible,
-    showModal: showDenyAccessToIdCheckModal,
-    hideModal: hideDenyAccessToIdCheckModal,
-  } = useModal(false)
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: idCheckTokenResponse } = useGetIdCheckToken(true)
   const { data: profile } = useUserProfileInfo()
   const { showInfoSnackBar } = useSnackBarContext()
   const depositAmount = useDepositAmount()
   const deposit = depositAmount.replace(' ', '')
+
+  function navigateToIdCheckUnavailable() {
+    navigate('IdCheckUnavailable')
+  }
+
   const navigateToIdCheck = useNavigateToIdCheck({
-    onIdCheckNavigationBlocked: showDenyAccessToIdCheckModal,
+    onIdCheckNavigationBlocked: navigateToIdCheckUnavailable,
   })
 
   function onButtonPress() {
@@ -68,10 +66,6 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
         activeIndex={props.activeIndex}
         lastIndex={props.lastIndex}
         skip={props.skip}
-      />
-      <DenyAccessToIdCheckModal
-        visible={denyAccessToIdCheckModalVisible}
-        dismissModal={hideDenyAccessToIdCheckModal}
       />
     </React.Fragment>
   )

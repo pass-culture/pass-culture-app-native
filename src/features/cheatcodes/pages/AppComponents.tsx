@@ -135,18 +135,18 @@ export const AppComponents: FunctionComponent = () => {
     showModal: showBasicModal,
     hideModal: hideBasicModal,
   } = useModal(false)
+  const { navigate } = useNavigation<UseNavigationType>()
 
-  const {
-    visible: denyAccessToIdCheckModalVisible,
-    showModal: showDenyAccessToIdCheckModal,
-    hideModal: hideDenyAccessToIdCheckModal,
-  } = useModal(false)
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [_partialDate, setPartialDate] = useState('')
   const [inputText, setInputText] = useState('')
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
   const numberOfSteps = useSignInNumberOfSteps()
+
+  function navigateToIdCheckUnavailable() {
+    navigate('IdCheckUnavailable')
+  }
 
   const onTriggerFakeLoading = useCallback(() => {
     setButtonIsLoading(true)
@@ -763,17 +763,10 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <Center>
-            <ButtonPrimary
-              title="Deny Access To IdCheck Modal"
-              onPress={showDenyAccessToIdCheckModal}
-            />
+            <ButtonPrimary title="Deny Access To IdCheck" onPress={navigateToIdCheckUnavailable} />
           </Center>
         </AlignedText>
       </AccordionItem>
-      <DenyAccessToIdCheckModal
-        visible={denyAccessToIdCheckModalVisible}
-        dismissModal={hideDenyAccessToIdCheckModal}
-      />
       <Spacer.Column numberOfSpaces={5} />
       <Spacer.BottomScreen />
     </StyledScrollView>
