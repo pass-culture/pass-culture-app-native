@@ -51,7 +51,8 @@ export function ConfirmDeleteProfile() {
         <ButtonContainer>
           <AppButton
             title={t`Je supprime mon compte`}
-            // onPress={() => navigate('SetEmail')}
+            // [WIP] Add POST /account/suspend onPress
+            // @ts-ignore: Object is possibly 'null'
             onPress={() => contactSupport.forAccountDeletion(user.email)}
             backgroundColor={ColorsEnum.WHITE}
             textColor={ColorsEnum.PRIMARY}
