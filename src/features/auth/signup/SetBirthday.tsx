@@ -91,6 +91,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
 
   function goToNextStep() {
     const nextPage = 'AcceptCgu'
+    // FIXME: we disabled this after gen cause it was displaying postal code during registration
     // const nextPage = settings?.wholeFranceOpening ? 'AcceptCgu' : 'SetPostalCode'
     const { date } = state
     if (date) {

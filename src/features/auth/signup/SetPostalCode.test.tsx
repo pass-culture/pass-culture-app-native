@@ -69,10 +69,10 @@ describe('SetPostalCode Page', () => {
     expect(title).toBeTruthy()
   })
 
-  it('should display 5 step dots with the fourth one as current step', () => {
+  it('should display 4 step dots with the fourth one as current step', () => {
     const { getAllByTestId } = renderChoosePostalCode()
     const dots = getAllByTestId('dot-icon')
-    expect(dots.length).toBe(5)
+    expect(dots.length).toBe(4)
     expect(dots[3].props.fill).toEqual(ColorsEnum.PRIMARY)
   })
 })
