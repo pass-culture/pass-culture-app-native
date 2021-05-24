@@ -3,6 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useUserProfileInfo } from 'features/home/api'
+import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -11,9 +13,14 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function EligibilityConfirmed() {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { data: user } = useUserProfileInfo()
 
   function goToCulturalSurvey() {
-    navigate('CulturalSurvey')
+    if (user?.needsToFillCulturalSurvey) {
+      navigate('CulturalSurvey')
+    } else {
+      navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+    }
   }
 
   return (
