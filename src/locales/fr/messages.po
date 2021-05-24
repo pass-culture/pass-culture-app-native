@@ -95,7 +95,7 @@ msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
 #: src/features/auth/signup/AccountCreated.tsx:25
-#: src/features/auth/signup/EligibilityConfirmed.tsx:16
+#: src/features/auth/signup/EligibilityConfirmed.tsx:24
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
@@ -217,6 +217,10 @@ msgstr "Ce plafond a été mis en place pour favoriser la diversification des pr
 #: src/features/search/sections/OfferDate.tsx:37
 msgid "Ce week-end"
 msgstr "Ce week-end"
+
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:34
+msgid "Cependant, tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées, et on reviendra vers toi d'ici quelques jours au plus tard :"
+msgstr "Cependant, tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées, et on reviendra vers toi d'ici quelques jours au plus tard :"
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx:17
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
@@ -366,7 +370,7 @@ msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:67
-#: src/features/auth/signup/SetBirthday.tsx:112
+#: src/features/auth/signup/SetBirthday.tsx:120
 #: src/features/auth/signup/SetEmail.tsx:79
 #: src/features/auth/signup/SetPassword.tsx:45
 #: src/features/auth/signup/SetPhoneNumberModal.tsx:55
@@ -417,7 +421,7 @@ msgstr "Date précise"
 msgid "Demain"
 msgstr "Demain"
 
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:14
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:19
 msgid "Demande envoyée !"
 msgstr "Demande envoyée !"
 
@@ -440,6 +444,10 @@ msgstr "Des permissions sont nécessaires"
 #: src/features/offer/components/OfferWhereSection.tsx:27
 msgid "Distance"
 msgstr "Distance"
+
+#: src/features/profile/components/IdCheckProcessingBadge.tsx:6
+msgid "Dossier déposé ! Nous avons bien reçu ton dossier et sommes en train de l'analyser."
+msgstr "Dossier déposé ! Nous avons bien reçu ton dossier et sommes en train de l'analyser."
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx:24
 #: src/features/bookOffer/components/BookDuoChoice.tsx:42
@@ -640,7 +648,7 @@ msgstr "L'offre n'a pas été ajoutée à tes favoris"
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
-#: src/features/auth/signup/SetBirthday.tsx:97
+#: src/features/auth/signup/SetBirthday.tsx:98
 msgid "La date choisie est incorrecte"
 msgstr "La date choisie est incorrecte"
 
@@ -716,6 +724,10 @@ msgstr "Localisation"
 #: src/features/maintenance/Maintenance.tsx:26
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
+
+#: src/features/auth/signup/SetBirthday.tsx:100
+msgid "L’application pass Culture est accessible à tous."
+msgstr "L’application pass Culture est accessible à tous."
 
 #: src/features/bookings/components/BookingPropertiesSection.tsx:20
 msgid "Ma réservation"
@@ -823,7 +835,7 @@ msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:15
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:20
 msgid "Nous étudions ton dossier..."
 msgstr "Nous étudions ton dossier..."
 
@@ -866,8 +878,8 @@ msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
 #: src/features/auth/signup/AccountCreated.tsx:28
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:20
-#: src/features/auth/signup/EligibilityConfirmed.tsx:19
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:25
+#: src/features/auth/signup/EligibilityConfirmed.tsx:27
 msgid "On y va !"
 msgstr "On y va !"
 
@@ -946,6 +958,10 @@ msgstr "Passer"
 msgid "Patience ! Le pass Culture sera bientôt disponible dans ton département !"
 msgstr "Patience ! Le pass Culture sera bientôt disponible dans ton département !"
 
+#: src/features/profile/components/YoungerBadge.tsx:9
+msgid "Patience ! À tes 18 ans, tu bénéficieras de"
+msgstr "Patience ! À tes 18 ans, tu bénéficieras de"
+
 #: src/features/bookings/helpers.ts:34
 msgid "Permanent"
 msgstr "Permanent"
@@ -954,7 +970,7 @@ msgstr "Permanent"
 msgid "Photothèque"
 msgstr "Photothèque"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:24
+#: src/features/auth/signup/VerifyEligibility.tsx:26
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
@@ -978,7 +994,7 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 
-#: src/features/auth/signup/SetBirthday.tsx:105
+#: src/features/auth/signup/SetBirthday.tsx:113
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -1068,9 +1084,13 @@ msgstr "Reste informé des actualités du pass Culture en activant les notificat
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:38
+msgid "Retour"
+msgstr "Retour"
+
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:62
-#: src/features/auth/signup/VerifyEligibility.tsx:35
+#: src/features/auth/signup/VerifyEligibility.tsx:37
 #: src/features/bookOffer/pages/BookingConfirmation.tsx:56
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
@@ -1160,6 +1180,10 @@ msgstr "Seules les sorties et offres physiques seront affichées pour une recher
 msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
+#: src/features/auth/signup/SetBirthday.tsx:102
+msgid "Si tu as 18 ans, tu pourras obtenir une aide financière de"
+msgstr "Si tu as 18 ans, tu pourras obtenir une aide financière de"
+
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:50
 msgid "Si tu as besoin d’aide n’hésite pas à :"
@@ -1206,7 +1230,7 @@ msgstr "Terminer ma réservation"
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
-#: src/features/auth/signup/SetBirthday.tsx:101
+#: src/features/auth/signup/SetBirthday.tsx:109
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
@@ -1267,6 +1291,10 @@ msgstr "Toute la culture"
 msgid "Toute la culture à portée de main"
 msgstr "Toute la culture à portée de main"
 
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:36
+msgid "Transmettre un dossier"
+msgstr "Transmettre un dossier"
+
 #: src/features/favorites/atoms/Buttons/Sort.tsx:19
 #: src/features/favorites/pages/FavoritesSorts.tsx:104
 msgid "Trier"
@@ -1288,7 +1316,7 @@ msgstr "Tu as 18 ans..."
 msgid "Tu as déjà un compte ?"
 msgstr "Tu as déjà un compte ?"
 
-#: src/features/auth/signup/SetBirthday.tsx:95
+#: src/features/auth/signup/SetBirthday.tsx:96
 msgid "Tu dois avoir 16 ans pour t'inscrire"
 msgstr "Tu dois avoir 16 ans pour t'inscrire"
 
@@ -1308,7 +1336,7 @@ msgstr "Tu es sur le point d'annuler"
 msgid "Tu es sur le point d'archiver"
 msgstr "Tu es sur le point d'archiver"
 
-#: src/features/auth/signup/EligibilityConfirmed.tsx:14
+#: src/features/auth/signup/EligibilityConfirmed.tsx:22
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
@@ -1370,7 +1398,7 @@ msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Cultu
 msgid "Tu pourras retrouver l’offre dans tes réservations teminées"
 msgstr "Tu pourras retrouver l’offre dans tes réservations teminées"
 
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:17
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:22
 msgid "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 msgstr "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 
@@ -1455,6 +1483,10 @@ msgstr "Version"
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
 
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:31
+msgid "Victime de notre succès"
+msgstr "Victime de notre succès"
+
 #: src/libs/itinerary/components/SeeItineraryButton.tsx:11
 #: src/libs/itinerary/useItinerary.ts:79
 msgid "Voir l'itinéraire"
@@ -1476,6 +1508,10 @@ msgstr "Voir ma réservation"
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:32
+msgid "Vous êtes actuellement très nombreux à demander les 300€ et notre service rencontre quelques difficultés."
+msgstr "Vous êtes actuellement très nombreux à demander les 300€ et notre service rencontre quelques difficultés."
+
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx:25
 msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
 msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
@@ -1484,7 +1520,7 @@ msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demand
 msgid "Vérifier mon identité"
 msgstr "Vérifier mon identité"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:33
+#: src/features/auth/signup/VerifyEligibility.tsx:35
 msgid "Vérifier mon éligibilité"
 msgstr "Vérifier mon éligibilité"
 
@@ -1499,12 +1535,6 @@ msgstr "À activer avant le {dateLimit}"
 #: src/features/auth/signup/AcceptCgu.tsx:117
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
-
-#: src/features/auth/signup/SetBirthday.tsx:124
-msgid "application accessible pour certains départements"
-msgstr ""
-"L’application pass Culture est accessible à tous.\n"
-"Si tu as 18 ans et que tu fais partie d’un département éligible, tu pourras obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/offer/pages/OfferDescription.tsx:12
 msgid "auteur"
@@ -1555,7 +1585,7 @@ msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture
 msgid "durée"
 msgstr "durée"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:97
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:92
 msgid "elibility deadline"
 msgstr "Tu es éligible jusqu'au {deadline}"
 
@@ -1567,7 +1597,7 @@ msgstr "en détails"
 msgid "en ligne"
 msgstr "en ligne"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:104
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:99
 msgid "enjoy deposit"
 msgstr "Profite de {deposit}"
 
@@ -1616,7 +1646,7 @@ msgstr "metteur en scène"
 msgid "montant déduit"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:26
+#: src/features/auth/signup/VerifyEligibility.tsx:28
 msgid "need verify eligibility"
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
@@ -1624,9 +1654,9 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} of
 msgid "not refunded because expired"
 msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré."
 
-#: src/features/profile/components/YoungerBadge.tsx:16
-msgid "patience enfin"
-msgstr "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
+#: src/features/profile/components/YoungerBadge.tsx:13
+msgid "offerts à dépenser sur l’application."
+msgstr "offerts à dépenser sur l’application."
 
 #: src/App.tsx:91
 msgid "pour prendre votre document en photo ou le sélectionner depuis vos fichiers"
@@ -1635,6 +1665,10 @@ msgstr "pour prendre votre document en photo ou le sélectionner depuis vos fich
 #: src/features/bookOffer/components/BookingInformations.tsx:31
 msgid "prix duo"
 msgstr "({price} x 2 places)"
+
+#: src/features/auth/signup/SetBirthday.tsx:106
+msgid "proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgstr "proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "quotidiennes"
@@ -1727,7 +1761,7 @@ msgstr "À activer"
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:108
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:103
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
