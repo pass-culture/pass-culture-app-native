@@ -55,12 +55,14 @@ describe('SetBirthday Page', () => {
     mockDepositAmount = '300 €'
     let component = renderSetBirthday()
     fireEvent.press(component.getByTestId('button-title-why-link'))
-    expect(component.queryByText(/une aide financière de 300 €/)).toBeTruthy()
+    expect(component.queryByText(/une aide financière de/)).toBeTruthy()
+    expect(component.queryByText(/300 €/)).toBeTruthy()
 
     mockDepositAmount = '500 €'
     component = renderSetBirthday()
     fireEvent.press(component.getByTestId('button-title-why-link'))
-    expect(component.queryByText(/une aide financière de 500 €/)).toBeTruthy()
+    expect(component.queryByText(/une aide financière de/)).toBeTruthy()
+    expect(component.queryByText(/500 €/)).toBeTruthy()
   })
 
   it('should display the error message "date incorrecte" when the date is too old', () => {

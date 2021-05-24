@@ -314,7 +314,7 @@ msgid "Confirme ton e‑mail"
 msgstr "Confirme ton e‑mail"
 
 #: src/features/auth/signup/SetPhoneNumberModal.tsx:59
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:50
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:49
 msgid "Confirme ton numéro"
 msgstr "Confirme ton numéro"
 
@@ -361,16 +361,16 @@ msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
 
 #: src/features/auth/signup/AcceptCgu.tsx:129
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:77
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:76
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
 #: src/features/auth/forgottenPassword/ReinitializePassword.tsx:67
-#: src/features/auth/signup/SetBirthday.tsx:112
+#: src/features/auth/signup/SetBirthday.tsx:120
 #: src/features/auth/signup/SetEmail.tsx:79
 #: src/features/auth/signup/SetPassword.tsx:45
 #: src/features/auth/signup/SetPhoneNumberModal.tsx:55
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:64
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:63
 #: src/features/auth/signup/SetPostalCode.tsx:60
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:55
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
@@ -467,8 +467,8 @@ msgstr "Désactiver la géolocalisation"
 msgid "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 msgstr "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 
-#: src/features/bookOffer/services/useModalContent.tsx:35
-#: src/features/bookOffer/services/useModalContent.tsx:50
+#: src/features/bookOffer/services/useModalContent.tsx:38
+#: src/features/bookOffer/services/useModalContent.tsx:53
 msgid "Détails de la réservation"
 msgstr "Détails de la réservation"
 
@@ -644,7 +644,7 @@ msgstr "L'offre n'a pas été ajoutée à tes favoris"
 msgid "L'offre n'a pas été retirée de tes favoris"
 msgstr "L'offre n'a pas été retirée de tes favoris"
 
-#: src/features/auth/signup/SetBirthday.tsx:97
+#: src/features/auth/signup/SetBirthday.tsx:98
 msgid "La date choisie est incorrecte"
 msgstr "La date choisie est incorrecte"
 
@@ -721,6 +721,10 @@ msgstr "Localisation"
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
+#: src/features/auth/signup/SetBirthday.tsx:100
+msgid "L’application pass Culture est accessible à tous."
+msgstr "L’application pass Culture est accessible à tous."
+
 #: src/features/bookings/components/BookingPropertiesSection.tsx:20
 msgid "Ma réservation"
 msgstr "Ma réservation"
@@ -738,7 +742,7 @@ msgstr "Mentions légales"
 msgid "Mes favoris"
 msgstr "Mes favoris"
 
-#: src/features/bookOffer/services/useModalContent.tsx:43
+#: src/features/bookOffer/services/useModalContent.tsx:46
 msgid "Mes options"
 msgstr "Mes options"
 
@@ -954,6 +958,10 @@ msgstr "Passer"
 msgid "Patience ! Le pass Culture sera bientôt disponible dans ton département !"
 msgstr "Patience ! Le pass Culture sera bientôt disponible dans ton département !"
 
+#: src/features/profile/components/YoungerBadge.tsx:9
+msgid "Patience ! À tes 18 ans, tu bénéficieras de"
+msgstr "Patience ! À tes 18 ans, tu bénéficieras de"
+
 #: src/features/bookings/helpers.ts:34
 msgid "Permanent"
 msgstr "Permanent"
@@ -986,7 +994,7 @@ msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 
-#: src/features/auth/signup/SetBirthday.tsx:105
+#: src/features/auth/signup/SetBirthday.tsx:113
 msgid "Pourquoi ?"
 msgstr "Pourquoi ?"
 
@@ -1104,7 +1112,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:68
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:67
 #: src/features/errors/pages/AsyncErrorBoundary.tsx:63
 msgid "Réessayer"
 msgstr "Réessayer"
@@ -1141,7 +1149,7 @@ msgstr "S'inscrire"
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:54
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:53
 msgid "Saisis le code envoyé par SMS au numéro"
 msgstr "Saisis le code envoyé par SMS au numéro"
 
@@ -1168,12 +1176,16 @@ msgstr "Seules les sorties et offres physiques seront affichées pour une recher
 msgid "Seules les sorties seront affichées"
 msgstr "Seules les sorties seront affichées"
 
+#: src/features/auth/signup/SetBirthday.tsx:102
+msgid "Si tu as 18 ans, tu pourras obtenir une aide financière de"
+msgstr "Si tu as 18 ans, tu pourras obtenir une aide financière de"
+
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:50
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:50
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:75
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:74
 msgid "Si tu n’arrives pas à récuperer ton code tu peux"
 msgstr "Si tu n’arrives pas à récuperer ton code tu peux"
 
@@ -1214,7 +1226,7 @@ msgstr "Terminer ma réservation"
 msgid "Titre, artiste..."
 msgstr "Titre, artiste..."
 
-#: src/features/auth/signup/SetBirthday.tsx:101
+#: src/features/auth/signup/SetBirthday.tsx:109
 msgid "Ton anniversaire"
 msgstr "Ton anniversaire"
 
@@ -1296,7 +1308,7 @@ msgstr "Tu as 18 ans..."
 msgid "Tu as déjà un compte ?"
 msgstr "Tu as déjà un compte ?"
 
-#: src/features/auth/signup/SetBirthday.tsx:95
+#: src/features/auth/signup/SetBirthday.tsx:96
 msgid "Tu dois avoir 16 ans pour t'inscrire"
 msgstr "Tu dois avoir 16 ans pour t'inscrire"
 
@@ -1320,7 +1332,7 @@ msgstr "Tu es sur le point d'archiver"
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:67
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:66
 msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
 
@@ -1382,7 +1394,7 @@ msgstr "Tu pourras retrouver l’offre dans tes réservations teminées"
 msgid "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 msgstr "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 
-#: src/features/bookOffer/services/useModalContent.tsx:28
+#: src/features/bookOffer/services/useModalContent.tsx:31
 msgid "Tu y es presque"
 msgstr "Tu y es presque"
 
@@ -1508,12 +1520,6 @@ msgstr "À activer avant le {dateLimit}"
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
 
-#: src/features/auth/signup/SetBirthday.tsx:124
-msgid "application accessible pour certains départements"
-msgstr ""
-"L’application pass Culture est accessible à tous.\n"
-"Si tu as 18 ans et que tu fais partie d’un département éligible, tu pourras obtenir une aide financière de {deposit} proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
-
 #: src/features/offer/pages/OfferDescription.tsx:12
 msgid "auteur"
 msgstr "auteur"
@@ -1526,7 +1532,7 @@ msgstr "autour de toi"
 msgid "c'est..."
 msgstr "c'est..."
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:64
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:63
 msgid "continue"
 msgstr "continue"
 
@@ -1632,9 +1638,9 @@ msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} of
 msgid "not refunded because expired"
 msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est expiré."
 
-#: src/features/profile/components/YoungerBadge.tsx:9
-msgid "patience enfin"
-msgstr "Patience ! L’année de tes 18 ans, si tu fais partie d’un des départements éligibles, tu bénéficieras de {deposit} offerts à dépenser sur l’application."
+#: src/features/profile/components/YoungerBadge.tsx:13
+msgid "offerts à dépenser sur l’application."
+msgstr "offerts à dépenser sur l’application."
 
 #: src/App.tsx:91
 msgid "pour prendre votre document en photo ou le sélectionner depuis vos fichiers"
@@ -1643,6 +1649,10 @@ msgstr "pour prendre votre document en photo ou le sélectionner depuis vos fich
 #: src/features/bookOffer/components/BookingInformations.tsx:31
 msgid "prix duo"
 msgstr "({price} x 2 places)"
+
+#: src/features/auth/signup/SetBirthday.tsx:106
+msgid "proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
+msgstr "proposée par le Ministère de la Culture qui sera créditée directement sur ton compte pass Culture."
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx:20
 msgid "quotidiennes"
