@@ -2,7 +2,7 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { Platform } from 'react-native'
 
-import { CategoryType, OfferResponse } from 'api/gen'
+import { CategoryNameEnum, CategoryType, OfferResponse } from 'api/gen'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { notExpiredStock as baseStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
@@ -38,6 +38,22 @@ describe('useModalContent', () => {
     expect(result.current.leftIcon).toBeUndefined()
     expect(result.current.onLeftIconPress).toBeUndefined()
     expect(result.current.title).toBe('')
+  })
+  it('iOS - shows BookingImpossible if the digital offer is CINEMA', () => {
+    mockOffer = baseOffer
+    mockOffer.isDigital = true
+    mockOffer.name = CategoryNameEnum.CINEMA
+    mockOffer.category.categoryType = CategoryType.Thing
+    Platform.OS = 'ios'
+    mockOffer.stocks = [baseStock]
+
+    const { result } = renderHook(useModalContent)
+
+    expect(result.current.children).toMatchInlineSnapshot('<BookingImpossible />')
+    expect(result.current.leftIcon).toBeUndefined()
+    expect(result.current.onLeftIconPress).toBeUndefined()
+    expect(result.current.title).toBe('Tu y es presque')
+    mockOffer.name = CategoryNameEnum.SPECTACLE
   })
 
   it('iOS - shows BookingImpossible if the digital offer is not free', () => {
