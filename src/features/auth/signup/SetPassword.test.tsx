@@ -71,7 +71,7 @@ describe('SetPassword Page', () => {
   it('should display 5 step dots with the second one as current step', () => {
     const { getAllByTestId } = renderChoosePassword()
     const dots = getAllByTestId('dot-icon')
-    expect(dots.length).toBe(5)
+    expect(dots.length).toBe(4)
     expect(dots[1].props.fill).toEqual(ColorsEnum.PRIMARY)
   })
 
