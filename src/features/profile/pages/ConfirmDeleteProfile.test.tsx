@@ -34,7 +34,6 @@ describe('ConfirmDeleteProfile component', () => {
   it('should redirect to LegalNotices when clicking on "Abandonner" button', () => {
     const renderAPI = render(<ConfirmDeleteProfile />)
     fireEvent.press(renderAPI.getByText(`Abandonner`))
-    expect(goBack).toBeCalled()
-    expect(navigate).toBeCalledWith('LegalNotices')
+    expect(goBack).toBeCalledTimes(1)
   })
 })
