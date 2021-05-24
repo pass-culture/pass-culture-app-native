@@ -1,7 +1,6 @@
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { contactSupport } from 'features/auth/support.services'
