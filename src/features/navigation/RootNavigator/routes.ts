@@ -9,6 +9,7 @@ import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPass
 import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
 import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetPasswordExpiredLink'
+import { IdCheckUnavailable } from 'features/auth/idcheckUnavailable/IdCheckUnavailable'
 import { Login } from 'features/auth/login/Login'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
@@ -124,6 +125,7 @@ const routes: Array<Route> = [
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },
   { name: 'ForceUpdate', component: ForceUpdate },
+  { name: 'IdCheckUnavailable', component: IdCheckUnavailable },
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
   { name: idCheckInitialRouteName, component: IdCheckV2 },
 ]

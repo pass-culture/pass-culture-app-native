@@ -323,6 +323,12 @@ export function Navigation(): JSX.Element {
             onPress={() => navigation.navigate('NavigationIdCheckErrors')}
           />
         </Row>
+        <Row half>
+          <NavigationButton
+            title={`Id Check Unavailable`}
+            onPress={() => navigation.navigate('IdCheckUnavailable')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

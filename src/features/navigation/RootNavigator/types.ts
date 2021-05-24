@@ -40,6 +40,7 @@ export type RootStackParamList = {
   ForgottenPassword: undefined
   FavoritesSorts: undefined
   IdCheck: { email: string; licenceToken: string }
+  IdCheckUnavailable: undefined
   Login: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
   Maintenance: undefined
   Navigation: undefined

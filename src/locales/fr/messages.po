@@ -218,6 +218,10 @@ msgstr "Ce plafond a été mis en place pour favoriser la diversification des pr
 msgid "Ce week-end"
 msgstr "Ce week-end"
 
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:34
+msgid "Cependant, tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées, et on reviendra vers toi d'ici quelques jours au plus tard :"
+msgstr "Cependant, tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées, et on reviendra vers toi d'ici quelques jours au plus tard :"
+
 #: src/features/profile/components/BeneficiaryCeilings.tsx:17
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
@@ -463,7 +467,7 @@ msgstr "Découvrir"
 msgid "Désactiver la géolocalisation"
 msgstr "Désactiver la géolocalisation"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:70
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:69
 msgid "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 msgstr "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 
@@ -970,7 +974,7 @@ msgstr "Permanent"
 msgid "Photothèque"
 msgstr "Photothèque"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:24
+#: src/features/auth/signup/VerifyEligibility.tsx:26
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
 
@@ -1023,7 +1027,7 @@ msgid "Problèmes pour ouvrir un lien ?"
 msgstr "Problèmes pour ouvrir un lien ?"
 
 #: src/features/profile/components/LoggedOutHeader.tsx:18
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:119
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:118
 msgid "Profil"
 msgstr "Profil"
 
@@ -1084,9 +1088,13 @@ msgstr "Reste informé des actualités du pass Culture en activant les notificat
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:38
+msgid "Retour"
+msgstr "Retour"
+
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:62
-#: src/features/auth/signup/VerifyEligibility.tsx:35
+#: src/features/auth/signup/VerifyEligibility.tsx:37
 #: src/features/bookOffer/pages/BookingConfirmation.tsx:56
 msgid "Retourner à l'accueil"
 msgstr "Retourner à l'accueil"
@@ -1287,6 +1295,10 @@ msgstr "Toute la culture"
 msgid "Toute la culture à portée de main"
 msgstr "Toute la culture à portée de main"
 
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:36
+msgid "Transmettre un dossier"
+msgstr "Transmettre un dossier"
+
 #: src/features/favorites/atoms/Buttons/Sort.tsx:19
 #: src/features/favorites/pages/FavoritesSorts.tsx:109
 msgid "Trier"
@@ -1475,6 +1487,10 @@ msgstr "Version"
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
 
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:31
+msgid "Victime de notre succès"
+msgstr "Victime de notre succès"
+
 #: src/libs/itinerary/components/SeeItineraryButton.tsx:11
 #: src/libs/itinerary/useItinerary.ts:79
 msgid "Voir l'itinéraire"
@@ -1496,6 +1512,10 @@ msgstr "Voir ma réservation"
 msgid "Voir plus d'informations"
 msgstr "Voir plus d'informations"
 
+#: src/features/auth/idcheckUnavailable/IdCheckUnavailable.tsx:32
+msgid "Vous êtes actuellement très nombreux à demander les 300€ et notre service rencontre quelques difficultés."
+msgstr "Vous êtes actuellement très nombreux à demander les 300€ et notre service rencontre quelques difficultés."
+
 #: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx:25
 msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
 msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300€. Tu recevras une alerte par mail pour commencer ta demande des 300€ dès que le service sera de nouveau disponible !"
@@ -1504,7 +1524,7 @@ msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demand
 msgid "Vérifier mon identité"
 msgstr "Vérifier mon identité"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:33
+#: src/features/auth/signup/VerifyEligibility.tsx:35
 msgid "Vérifier mon éligibilité"
 msgstr "Vérifier mon éligibilité"
 
@@ -1569,7 +1589,7 @@ msgstr "dans l’année de tes 18 ans, obtiens l’aide financière pass Culture
 msgid "durée"
 msgstr "durée"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:93
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:92
 msgid "elibility deadline"
 msgstr "Tu es éligible jusqu'au {deadline}"
 
@@ -1581,7 +1601,7 @@ msgstr "en détails"
 msgid "en ligne"
 msgstr "en ligne"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:100
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:99
 msgid "enjoy deposit"
 msgstr "Profite de {deposit}"
 
@@ -1630,7 +1650,7 @@ msgstr "metteur en scène"
 msgid "montant déduit"
 msgstr "{price} seront déduits de ton crédit pass Culture"
 
-#: src/features/auth/signup/VerifyEligibility.tsx:26
+#: src/features/auth/signup/VerifyEligibility.tsx:28
 msgid "need verify eligibility"
 msgstr "Pour que tu puisses bénéficier de l’aide financière de {deposit} offerte par le Ministère de la Culture, nous avons besoin de vérifier ton éligibilité."
 
@@ -1745,7 +1765,7 @@ msgstr "À activer"
 msgid "À deux !"
 msgstr "À deux !"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx:104
+#: src/features/profile/components/NonBeneficiaryHeader.tsx:103
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
 
