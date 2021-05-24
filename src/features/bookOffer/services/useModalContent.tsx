@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import { Platform } from 'react-native'
 
-import { CategoryType } from 'api/gen'
+import { CategoryNameEnum, CategoryType } from 'api/gen'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
@@ -30,14 +30,19 @@ export const useModalContent = (): ModalContent => {
   const onLeftIconPress = undefined
 
   if (!offer) return { children, title, leftIcon, onLeftIconPress }
-  const { category, isDigital, stocks } = offer
+  const { category, isDigital, stocks, name: categoryName } = offer
 
   const goToPreviousStep = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
   }
 
   if (category.categoryType === CategoryType.Thing) {
-    if (isDigital && Platform.OS === 'ios' && getOfferPrice(stocks) > 0) {
+    if (
+      isDigital &&
+      categoryName !== CategoryNameEnum.CINEMA &&
+      Platform.OS === 'ios' &&
+      getOfferPrice(stocks) > 0
+    ) {
       return {
         title: t`Tu y es presque`,
         leftIcon: undefined,
