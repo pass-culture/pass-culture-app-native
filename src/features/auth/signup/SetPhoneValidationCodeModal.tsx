@@ -1,10 +1,12 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { FC, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
@@ -39,6 +41,7 @@ interface CodeInputState extends CodeValidation {
 const TIMER = 60
 
 export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> = (props) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const [codeInputState, setCodeInputState] = useState<CodeInputState>({
     code: null,
     isComplete: false,
@@ -89,7 +92,12 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
   }
 
   function onValidateError(error: unknown) {
-    setInvalidCodeMessage(extractApiErrorMessage(error))
+    const { content } = error as { content: { code: string; message: string } }
+    if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
+      navigate('TooManyAttempts')
+    } else {
+      setInvalidCodeMessage(extractApiErrorMessage(error))
+    }
   }
 
   function onSendCodeSucess() {

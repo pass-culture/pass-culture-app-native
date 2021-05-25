@@ -3,6 +3,7 @@ import { useMutation, UseMutationResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import * as AuthApi from 'features/auth/api'
 import {
   SetPhoneValidationCodeModal,
@@ -128,6 +129,29 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       const errorMessage = getByText('Le code est invalide')
       await waitForExpect(() => {
         expect(errorMessage).toBeTruthy()
+      })
+    })
+
+    it('should navigate to TooManyAttempts page if request fails with TOO_MANY_VALIDATION_ATTEMPTS code', async () => {
+      const response = {
+        content: {
+          code: 'TOO_MANY_VALIDATION_ATTEMPTS',
+          message: 'Le nombre de tentatives maximal est dépassé',
+        },
+        name: 'ApiError',
+      }
+
+      const { getByTestId } = renderModalWithFilledCodeInput('123456')
+      const continueButton = getByTestId('button-container-continue')
+
+      fireEvent.press(continueButton)
+
+      await act(async () => {
+        useMutationCallbacks.onError(response)
+      })
+
+      await waitForExpect(() => {
+        expect(navigate).toHaveBeenCalledWith('TooManyAttempts')
       })
     })
   })
