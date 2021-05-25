@@ -95,7 +95,7 @@ msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
 #: src/features/auth/signup/AccountCreated.tsx:25
-#: src/features/auth/signup/EligibilityConfirmed.tsx:16
+#: src/features/auth/signup/EligibilityConfirmed.tsx:25
 msgid "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 msgstr "Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées."
 
@@ -318,7 +318,7 @@ msgid "Confirme ton e‑mail"
 msgstr "Confirme ton e‑mail"
 
 #: src/features/auth/signup/SetPhoneNumberModal.tsx:59
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:49
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:50
 msgid "Confirme ton numéro"
 msgstr "Confirme ton numéro"
 
@@ -365,7 +365,7 @@ msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
 
 #: src/features/auth/signup/AcceptCgu.tsx:129
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:76
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:77
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -374,7 +374,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetEmail.tsx:79
 #: src/features/auth/signup/SetPassword.tsx:45
 #: src/features/auth/signup/SetPhoneNumberModal.tsx:55
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:63
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:64
 #: src/features/auth/signup/SetPostalCode.tsx:60
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx:55
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx:10
@@ -421,7 +421,7 @@ msgstr "Date précise"
 msgid "Demain"
 msgstr "Demain"
 
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:19
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:28
 msgid "Demande envoyée !"
 msgstr "Demande envoyée !"
 
@@ -839,7 +839,7 @@ msgstr "Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus
 msgid "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 msgstr "Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur Continuer, tu acceptes l'utilisation de ces services détaillés dans notre"
 
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:20
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:29
 msgid "Nous étudions ton dossier..."
 msgstr "Nous étudions ton dossier..."
 
@@ -882,21 +882,18 @@ msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
 #: src/features/auth/signup/AccountCreated.tsx:28
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:25
-#: src/features/auth/signup/EligibilityConfirmed.tsx:19
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:34
+#: src/features/auth/signup/EligibilityConfirmed.tsx:28
 msgid "On y va !"
 msgstr "On y va !"
-
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx:19
-#: src/features/errors/pages/AsyncErrorBoundary.tsx:46
-msgid "Oops !"
-msgstr "Oops !"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:46
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:46
 msgid "Oups"
 msgstr "Oups"
 
+#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx:19
+#: src/features/errors/pages/AsyncErrorBoundary.tsx:46
 #: src/features/search/atoms/NoSearchResult.tsx:31
 msgid "Oups !"
 msgstr "Oups !"
@@ -1120,7 +1117,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 msgstr "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:67
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:68
 #: src/features/errors/pages/AsyncErrorBoundary.tsx:63
 msgid "Réessayer"
 msgstr "Réessayer"
@@ -1157,7 +1154,7 @@ msgstr "S'inscrire"
 msgid "Saisir une adresse..."
 msgstr "Saisir une adresse..."
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:53
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:54
 msgid "Saisis le code envoyé par SMS au numéro"
 msgstr "Saisis le code envoyé par SMS au numéro"
 
@@ -1193,7 +1190,7 @@ msgstr "Si tu as 18 ans, tu pourras obtenir une aide financière de"
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:74
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:75
 msgid "Si tu n’arrives pas à récuperer ton code tu peux"
 msgstr "Si tu n’arrives pas à récuperer ton code tu peux"
 
@@ -1340,11 +1337,11 @@ msgstr "Tu es sur le point d'annuler"
 msgid "Tu es sur le point d'archiver"
 msgstr "Tu es sur le point d'archiver"
 
-#: src/features/auth/signup/EligibilityConfirmed.tsx:14
+#: src/features/auth/signup/EligibilityConfirmed.tsx:23
 msgid "Tu es éligible !"
 msgstr "Tu es éligible !"
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:66
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:67
 msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
 
@@ -1402,7 +1399,11 @@ msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Cultu
 msgid "Tu pourras retrouver l’offre dans tes réservations teminées"
 msgstr "Tu pourras retrouver l’offre dans tes réservations teminées"
 
-#: src/features/auth/signup/BeneficiaryRequestSent.tsx:22
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:32
+msgid "Tu recevras un e-mail lorsque ta demande sera validée."
+msgstr "Tu recevras un e-mail lorsque ta demande sera validée."
+
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx:31
 msgid "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 msgstr "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 
@@ -1552,7 +1553,7 @@ msgstr "autour de toi"
 msgid "c'est..."
 msgstr "c'est..."
 
-#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:63
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:64
 msgid "continue"
 msgstr "continue"
 

@@ -34,7 +34,7 @@ describe('ErrorBoundary', () => {
     // TODO (PC-6360) : console error displayed in DEV mode even if caught by ErrorBoundary
     const { getByText } = renderErrorBoundary()
 
-    expect(getByText('Oops !')).toBeTruthy()
+    expect(getByText('Oups !')).toBeTruthy()
   })
 })
 
