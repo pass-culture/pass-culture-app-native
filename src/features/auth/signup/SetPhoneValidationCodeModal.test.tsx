@@ -1,14 +1,16 @@
 import React from 'react'
-import { useMutation } from 'react-query'
+import { useMutation, UseMutationResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
+import * as AuthApi from 'features/auth/api'
 import {
   SetPhoneValidationCodeModal,
   SetPhoneValidationCodeModalProps,
 } from 'features/auth/signup/SetPhoneValidationCodeModal'
 import { contactSupport } from 'features/auth/support.services'
-import { act, fireEvent, render, useMutationFactory } from 'tests/utils'
+import { EmptyResponse } from 'libs/fetch'
+import { act, fireEvent, render, superFlushWithAct, useMutationFactory } from 'tests/utils'
 import * as ModalModule from 'ui/components/modals/useModal'
 import { ColorsEnum } from 'ui/theme'
 
@@ -127,6 +129,23 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       await waitForExpect(() => {
         expect(errorMessage).toBeTruthy()
       })
+    })
+  })
+
+  describe('retry button', () => {
+    it('should request new validation code on press', async () => {
+      const sendPhoneValidationCode = jest.fn()
+      jest.spyOn(AuthApi, 'useSendPhoneValidationMutation').mockReturnValue(({
+        mutate: sendPhoneValidationCode,
+      } as unknown) as UseMutationResult<EmptyResponse, unknown, string, unknown>)
+
+      const { getByTestId } = renderSetPhoneValidationCode()
+      await superFlushWithAct()
+
+      const retryButton = getByTestId('button-container-retry')
+      fireEvent.press(retryButton)
+
+      expect(sendPhoneValidationCode).toHaveBeenCalled()
     })
   })
 })

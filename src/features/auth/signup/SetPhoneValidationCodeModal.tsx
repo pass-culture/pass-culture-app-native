@@ -1,10 +1,13 @@
 import { t } from '@lingui/macro'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/helpers'
-import { useValidatePhoneNumberMutation } from 'features/auth/api'
+import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { currentTimestamp } from 'libs/dates'
+import { storage } from 'libs/storage'
+import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -33,6 +36,8 @@ interface CodeInputState extends CodeValidation {
   code: string | null
 }
 
+const TIMER = 60
+
 export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> = (props) => {
   const [codeInputState, setCodeInputState] = useState<CodeInputState>({
     code: null,
@@ -40,6 +45,19 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     isValid: false,
   })
   const [invalidCodeMessage, setInvalidCodeMessage] = useState('')
+  const [validationCodeRequestTimestamp, setValidationCodeRequestTimestamp] = useState<
+    null | number
+  >(null)
+
+  const timeSinceLastRequest = useTimer(
+    validationCodeRequestTimestamp,
+    (elapsedTime: number) => elapsedTime > TIMER
+  )
+
+  const isRequestTimestampExpired =
+    !validationCodeRequestTimestamp ||
+    timeSinceLastRequest === TIMER_NOT_INITIALIZED ||
+    timeSinceLastRequest >= TIMER
 
   const {
     visible: fullPageModalVisible,
@@ -52,12 +70,32 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     onError: onValidateError,
   })
 
+  const { mutate: sendPhoneValidationCode } = useSendPhoneValidationMutation({
+    onSuccess: onSendCodeSucess,
+    onError: (_error: unknown) => {
+      // TODO(8702) display error message in a toaster
+    },
+  })
+
+  useEffect(() => {
+    storage.readObject('phone_validation_code_asked_at').then((value) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setValidationCodeRequestTimestamp(value as any)
+    })
+  }, [props.visible])
+
   function onValidateSuccess() {
     props.dismissModal()
   }
 
   function onValidateError(error: unknown) {
     setInvalidCodeMessage(extractApiErrorMessage(error))
+  }
+
+  function onSendCodeSucess() {
+    const now = currentTimestamp()
+    storage.saveObject('phone_validation_code_asked_at', now)
+    setValidationCodeRequestTimestamp(now)
   }
 
   function onChangeValue(value: string | null, validation: CodeValidation) {
@@ -78,6 +116,18 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
   function goBack() {
     setInvalidCodeMessage('')
     props.onGoBack()
+  }
+
+  function getRetryButtonTitle() {
+    if (isRequestTimestampExpired) return t`Réessayer`
+    const remainingTime = TIMER - timeSinceLastRequest
+    return t`Attends` + ` ${remainingTime}s.`
+  }
+
+  function requestSendPhoneValidationCode() {
+    if (isRequestTimestampExpired) {
+      sendPhoneValidationCode(props.phoneNumber)
+    }
   }
 
   return (
@@ -117,13 +167,19 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
         <ButtonPrimary
           title={t`Continuer`}
           disabled={!codeInputState.isValid}
-          testIdSuffix={t`continue`}
+          testIdSuffix={'continue'}
           onPress={validateCode}
         />
         <Spacer.Column numberOfSpaces={4} />
         <HelpRow>
           <Typo.Body>{t`Tu n'as pas reçu le sms ?`}</Typo.Body>
-          <ButtonTertiary title={t`Réessayer`} inline />
+          <ButtonTertiary
+            title={getRetryButtonTitle()}
+            onPress={requestSendPhoneValidationCode}
+            inline
+            disabled={!isRequestTimestampExpired}
+            testIdSuffix={'retry'}
+          />
         </HelpRow>
         <Spacer.Column numberOfSpaces={4} />
         <Separator color={ColorsEnum.GREY_MEDIUM} />
