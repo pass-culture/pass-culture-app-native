@@ -484,7 +484,7 @@ PODS:
   - RNSentry (2.4.2):
     - React-Core
     - Sentry (= 6.1.4)
-  - RNSVG (12.1.0):
+  - RNSVG (12.1.1):
     - React
   - Sentry (6.1.4):
     - Sentry/Core (= 6.1.4)
