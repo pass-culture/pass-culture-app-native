@@ -25,6 +25,7 @@ import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { TemporaryIdCheck } from 'features/auth/signup/TemporaryIdCheck'
+import { TooManyAttempts } from 'features/auth/signup/TooManyAttempts'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
@@ -122,6 +123,7 @@ const routes: Array<Route> = [
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
   { name: 'TemporaryIdCheck', component: TemporaryIdCheck },
+  { name: 'TooManyAttempts', component: TooManyAttempts },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },
   { name: 'ForceUpdate', component: ForceUpdate },
