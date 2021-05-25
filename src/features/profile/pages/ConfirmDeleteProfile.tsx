@@ -3,8 +3,9 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { contactSupport } from 'features/auth/support.services'
-import { useUserProfileInfo } from 'features/home/api'
+import { useNotifyAccountSuspend } from 'features/auth/api'
+// import { contactSupport } from 'features/auth/support.services'
+// import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
@@ -12,7 +13,9 @@ import { Error } from 'ui/svg/icons/Error'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function ConfirmDeleteProfile() {
-  const { data: user } = useUserProfileInfo()
+  // const { data: user } = useUserProfileInfo()
+  // console.log('USER : ', user)
+  const { mutate: notifyAccountSuspend } = useNotifyAccountSuspend()
   const { goBack } = useNavigation<UseNavigationType>()
   return (
     <Container>
@@ -51,12 +54,11 @@ export function ConfirmDeleteProfile() {
         <ButtonContainer>
           <AppButton
             title={t`Je supprime mon compte`}
-            // [WIP] Add POST /account/suspend onPress
-            // @ts-ignore: Object is possibly 'null'
-            onPress={() => contactSupport.forAccountDeletion(user.email)}
+            // onPress={() => contactSupport.forAccountDeletion(user.email)}
+            onPress={notifyAccountSuspend}
             backgroundColor={ColorsEnum.WHITE}
             textColor={ColorsEnum.PRIMARY}
-            loadingIconColor={ColorsEnum.WHITE}
+            loadingIconColor={ColorsEnum.PRIMARY}
             buttonHeight="tall"
           />
           <Spacer.Column numberOfSpaces={4} />
