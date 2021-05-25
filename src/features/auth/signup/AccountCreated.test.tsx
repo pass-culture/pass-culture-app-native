@@ -16,7 +16,7 @@ jest.mock('features/navigation/helpers')
 
 beforeEach(() => {
   mockedUseUserProfileInfo.mockReturnValue({
-    data: { isBeneficiary: true },
+    data: { isBeneficiary: true, needsToFillCulturalSurvey: true },
   } as UseQueryResult<UserProfileResponse>)
   jest.clearAllMocks()
 })
@@ -30,8 +30,7 @@ describe('<AccountCreated />', () => {
   it('should redirect to cultural survey page WHEN "On y va !" button is clicked', async () => {
     const renderAPI = render(<AccountCreated />)
 
-    const button = await renderAPI.findByText('On y va !')
-    fireEvent.press(button)
+    fireEvent.press(await renderAPI.findByText('On y va !'))
 
     expect(navigateToHome).not.toBeCalledTimes(1)
     expect(navigate).toBeCalledTimes(1)
@@ -40,12 +39,23 @@ describe('<AccountCreated />', () => {
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user is not beneficiary', async () => {
     mockedUseUserProfileInfo.mockReturnValue({
-      data: { isBeneficiary: false },
+      data: { isBeneficiary: false, needsToFillCulturalSurvey: true },
     } as UseQueryResult<UserProfileResponse>)
     const renderAPI = render(<AccountCreated />)
 
-    const button = await renderAPI.findByText('On y va !')
-    fireEvent.press(button)
+    fireEvent.press(await renderAPI.findByText('On y va !'))
+
+    expect(navigateToHome).toBeCalledTimes(1)
+    expect(navigate).not.toBeCalledWith('CulturalSurvey')
+  })
+
+  it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
+    mockedUseUserProfileInfo.mockReturnValue({
+      data: { isBeneficiary: true, needsToFillCulturalSurvey: false },
+    } as UseQueryResult<UserProfileResponse>)
+    const renderAPI = render(<AccountCreated />)
+
+    fireEvent.press(await renderAPI.findByText('On y va !'))
 
     expect(navigateToHome).toBeCalledTimes(1)
     expect(navigate).not.toBeCalledWith('CulturalSurvey')

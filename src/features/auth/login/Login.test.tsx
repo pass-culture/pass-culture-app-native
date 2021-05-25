@@ -82,7 +82,8 @@ describe('<Login/>', () => {
     await act(flushAllPromises)
 
     await waitForExpect(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurvey')
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toBeCalledWith('CulturalSurvey')
     })
   })
 
