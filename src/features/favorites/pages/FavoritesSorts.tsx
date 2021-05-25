@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Linking, ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -27,42 +27,33 @@ const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy,
 
 export const FavoritesSorts: React.FC = () => {
   const { goBack } = useNavigation()
-  const { position, permissionState, requestGeolocPermission } = useGeolocation()
+  const {
+    position,
+    isPositionUnavailable,
+    permissionState,
+    requestGeolocPermission,
+  } = useGeolocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
-  const [noPositionError, setNoPositionError] = useState(false)
   const {
     visible: isGeolocPermissionModalVisible,
     showModal: showGeolocPermissionModal,
     hideModal: hideGeolocPermissionModal,
   } = useModal(false)
 
-  useEffect(() => {
-    if (noPositionError && position) {
-      setNoPositionError(false)
-    }
-  }, [noPositionError, position])
-
   async function onSortBySelection(sortBy: FavoriteSortBy) {
-    setNoPositionError(false)
     function updateSortBySelection() {
       setStagedSelectedSortBy(sortBy)
     }
     if (sortBy === 'AROUND_ME') {
-      if (permissionState === GeolocPermissionState.GRANTED) {
-        if (position === null) {
-          setNoPositionError(true)
-          new MonitoringError(
-            'position === null when permissionState === GeolocPermissionState.GRANTED',
-            'NoPositionFavoritesSorts'
-          )
-          return
-        }
+      if (position) {
         return void updateSortBySelection()
       }
-      const shouldDisplayCustomGeolocRequest =
-        permissionState === GeolocPermissionState.NEVER_ASK_AGAIN
-      if (shouldDisplayCustomGeolocRequest) {
+      if (!position && permissionState === GeolocPermissionState.GRANTED) {
+        new MonitoringError('Position is unavailable', 'NoPositionFavoritesSorts')
+        return
+      }
+      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
         return void showGeolocPermissionModal()
       }
       return void (await requestGeolocPermission({
@@ -112,7 +103,7 @@ export const FavoritesSorts: React.FC = () => {
                 <Spacer.Flex />
                 {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
               </LabelContainer>
-              {sortBy === 'AROUND_ME' && noPositionError && (
+              {sortBy === 'AROUND_ME' && isPositionUnavailable && (
                 <InputError
                   visible
                   messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}

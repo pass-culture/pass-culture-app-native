@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { ScrollView, ViewStyle, Linking } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -21,10 +21,13 @@ import { getSpacing, Spacer } from 'ui/theme'
 const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
-  const [noPositionError, setNoPositionError] = useState(false)
-
   const { navigate, goBack } = useNavigation<UseNavigationType>()
-  const { position, permissionState, requestGeolocPermission } = useGeolocation()
+  const {
+    position,
+    isPositionUnavailable,
+    permissionState,
+    requestGeolocPermission,
+  } = useGeolocation()
   const { dispatch } = useStagedSearch()
   const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
   const {
@@ -33,27 +36,18 @@ export const LocationFilter: React.FC = () => {
     hideModal: hideGeolocPermissionModal,
   } = useModal(false)
 
-  useEffect(() => {
-    if (noPositionError && position) {
-      setNoPositionError(false)
-    }
-  }, [noPositionError, position])
-
   const onPressPickPlace = () => {
     if (debouncedGoBack) debouncedGoBack.cancel()
     navigate('LocationPicker')
   }
 
   const onPressAroundMe = async () => {
-    setNoPositionError(false)
     if (position === null) {
       if (permissionState === GeolocPermissionState.GRANTED) {
-        setNoPositionError(true)
-        new MonitoringError(
-          'position === null when permissionState === GeolocPermissionState.GRANTED',
-          'NoPositionOfferSearchResults'
-        )
-      } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+        new MonitoringError('Position is unavailable', 'NoPositionOfferSearchResults')
+        return
+      }
+      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
         showGeolocPermissionModal()
       } else {
         await requestGeolocPermission()
@@ -103,7 +97,7 @@ export const LocationFilter: React.FC = () => {
           locationType={LocationType.AROUND_ME}
           onPress={onPressAroundMe}
         />
-        {noPositionError && (
+        {isPositionUnavailable && (
           <InputError
             visible
             messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}

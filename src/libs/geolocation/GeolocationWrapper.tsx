@@ -17,6 +17,7 @@ type RequestGeolocPermissionParams = {
 
 export interface IGeolocationContext {
   position: GeoCoordinates | null
+  isPositionUnavailable: boolean
   setPosition: (position: GeoCoordinates | null) => void
   permissionState: GeolocPermissionState
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
@@ -26,6 +27,7 @@ export interface IGeolocationContext {
 
 export const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
+  isPositionUnavailable: false,
   setPosition: () => undefined,
   permissionState: GeolocPermissionState.DENIED,
   requestGeolocPermission: async () => {
@@ -38,46 +40,31 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
 })
 
 export const GeolocationWrapper = ({ children }: { children: Element }) => {
+  const [isPositionUnavailable, setIsPositionUnavailable] = useSafeState(false)
   const [position, setPosition] = useSafeState<GeoCoordinates | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState>(
     GeolocPermissionState.DENIED
   )
-  const [shouldComputePosition, setShouldComputePosition] = useSafeState(0)
 
   useEffect(() => {
     contextualCheckPermission()
   }, [])
 
-  // reset position every time user updates his choice on the app or in his phone settings
-  // if user choice is not consistent with OS permissions, position is set to null
-  useEffect(() => {
-    if (shouldComputePosition === 0) return
-    if (permissionState === GeolocPermissionState.GRANTED) {
-      getPosition(setPosition)
-    } else {
-      setPosition(null)
-    }
-  }, [shouldComputePosition])
-
   function triggerPositionUpdate() {
-    setShouldComputePosition((previousValue) => previousValue + 1)
-  }
-
-  async function synchronizePermissionAndPosition(newPermissionState: GeolocPermissionState) {
-    const isPermissionGranted = newPermissionState === GeolocPermissionState.GRANTED
-    setPermissionState(newPermissionState)
-    triggerPositionUpdate()
-    return isPermissionGranted
+    setIsPositionUnavailable(false)
+    getPosition(setPosition, setIsPositionUnavailable)
   }
 
   // this function is used to set OS permissions according to user choice on native geolocation popup
   async function contextualRequestGeolocPermission(params?: RequestGeolocPermissionParams) {
     const newPermissionState = await requestGeolocPermission()
-    const isPermissionGranted = await synchronizePermissionAndPosition(newPermissionState)
+    setPermissionState(newPermissionState)
+    triggerPositionUpdate()
 
     if (params?.onSubmit) {
       params.onSubmit()
     }
+    const isPermissionGranted = newPermissionState === GeolocPermissionState.GRANTED
     if (isPermissionGranted && params?.onAcceptance) {
       params.onAcceptance()
     } else if (!isPermissionGranted && params?.onRefusal) {
@@ -87,34 +74,29 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
 
   // in case user updates his preferences in his phone settings we check if his local
   // storage choice is consistent with phone permissions, and update position if not
-  const contextualCheckPermission = async (
-    shouldSynchronize?: (permission: GeolocPermissionState) => boolean
-  ) => {
+  async function contextualCheckPermission() {
     const newPermissionState: GeolocPermissionState = await checkGeolocPermission()
-
-    shouldSynchronize = shouldSynchronize ?? (() => true)
-
-    if (shouldSynchronize(newPermissionState)) {
-      synchronizePermissionAndPosition(newPermissionState)
-    }
+    triggerPositionUpdate()
+    setPermissionState(newPermissionState)
   }
 
-  const onAppBecomeActive = async () => {
-    await contextualCheckPermission((newPermission) => permissionState !== newPermission)
-  }
-  const onAppBecomeInactive = async () => {
-    // nothing
-  }
   // WARNING: the reference of contextualCheckPermission() changes between
   // - the registration of the "onAppBecomeActive" handler in the "useAppStateChange" effect
   // - and its execution (when app becomes active).
   // that's why it's very important to add the 'permissionState' to the dependencies of the "useAppStateChange" effect
   useAppStateChange(onAppBecomeActive, onAppBecomeInactive, [permissionState])
+  async function onAppBecomeActive() {
+    await contextualCheckPermission()
+  }
+  async function onAppBecomeInactive() {
+    // nothing
+  }
 
   return (
     <GeolocationContext.Provider
       value={{
         position,
+        isPositionUnavailable,
         setPosition,
         permissionState,
         requestGeolocPermission: contextualRequestGeolocPermission,
