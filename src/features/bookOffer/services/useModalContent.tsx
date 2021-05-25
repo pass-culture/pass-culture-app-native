@@ -30,7 +30,7 @@ export const useModalContent = (): ModalContent => {
   const onLeftIconPress = undefined
 
   if (!offer) return { children, title, leftIcon, onLeftIconPress }
-  const { category, isDigital, stocks, name: categoryName } = offer
+  const { category, isDigital, stocks } = offer
 
   const goToPreviousStep = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
@@ -39,7 +39,7 @@ export const useModalContent = (): ModalContent => {
   if (category.categoryType === CategoryType.Thing) {
     if (
       isDigital &&
-      categoryName !== CategoryNameEnum.CINEMA &&
+      category.name !== CategoryNameEnum.CINEMA &&
       Platform.OS === 'ios' &&
       getOfferPrice(stocks) > 0
     ) {

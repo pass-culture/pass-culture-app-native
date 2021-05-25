@@ -42,7 +42,7 @@ describe('useModalContent', () => {
   it('iOS - does not show BookingImpossible if the digital offer is CINEMA', () => {
     mockOffer = baseOffer
     mockOffer.isDigital = true
-    mockOffer.name = CategoryNameEnum.CINEMA
+    mockOffer.category.name = CategoryNameEnum.CINEMA
     mockOffer.category.categoryType = CategoryType.Thing
     Platform.OS = 'ios'
     mockOffer.stocks = [baseStock]
@@ -69,7 +69,7 @@ describe('useModalContent', () => {
     expect(result.current.leftIcon).toBeUndefined()
     expect(result.current.onLeftIconPress).toBeUndefined()
     expect(result.current.title).toBe('Détails de la réservation')
-    mockOffer.name = CategoryNameEnum.SPECTACLE
+    mockOffer.category.name = CategoryNameEnum.SPECTACLE
   })
 
   it('iOS - shows BookingImpossible if the digital offer is not free', () => {
