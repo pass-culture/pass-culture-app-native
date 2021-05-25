@@ -131,7 +131,7 @@ Array [
               ]
             }
           >
-            Oops !
+            Oups !
           </Text>
           <View
             accessible={true}
