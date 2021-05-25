@@ -1,4 +1,5 @@
 import React from 'react'
+import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
@@ -22,7 +23,11 @@ export const OfferHero: React.FC<Props> = ({ imageUrl, categoryName }) => {
       <Spacer.Column numberOfSpaces={22} />
       <ImageContainer>
         {imageUrl ? (
-          <Image resizeMode="cover" source={{ uri: imageUrl }} />
+          <FastImage
+            style={imageStyle}
+            source={{ uri: imageUrl }}
+            resizeMode={FastImage.resizeMode.cover}
+          />
         ) : (
           <ImagePlaceholder categoryName={categoryName || null} size={getSpacing(24)} />
         )}
@@ -34,11 +39,15 @@ export const OfferHero: React.FC<Props> = ({ imageUrl, categoryName }) => {
 const imageWidth = getSpacing(53)
 const imageHeight = getSpacing(79)
 
+const imageStyle = {
+  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+  height: imageHeight,
+  width: imageWidth,
+}
+
 const ImageContainer = styled.View({
   bottom: 0,
-  width: imageWidth,
-  height: imageHeight,
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+  ...imageStyle,
   ...getShadow({
     shadowOffset: {
       width: 0,
@@ -48,9 +57,4 @@ const ImageContainer = styled.View({
     shadowColor: ColorsEnum.BLACK,
     shadowOpacity: 0.2,
   }),
-})
-const Image = styled.Image({
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-  height: imageHeight,
-  width: imageWidth,
 })
