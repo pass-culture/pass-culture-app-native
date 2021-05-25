@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View, PixelRatio } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -78,17 +79,19 @@ export const OfferTile = (props: OfferTileProps) => {
       moduleName,
     })
   }
+  const imageStyle = {
+    height: imageHeight,
+    width: imageWidth,
+    borderTopLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
+    borderTopRightRadius: BorderRadiusEnum.BORDER_RADIUS,
+  }
+  const imageSource = { uri: offer.thumbUrl }
 
   return (
     <Container>
       <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer}>
         <View>
-          <Image
-            imageHeight={imageHeight}
-            imageWidth={imageWidth}
-            source={{ uri: offer.thumbUrl }}
-            testID="offerTileImage"
-          />
+          <FastImage style={imageStyle} source={imageSource} testID="offerTileImage" />
           <ImageCaption
             imageWidth={imageWidth}
             category={offer.category}
@@ -117,14 +120,5 @@ const TouchableHighlight = styled.TouchableHighlight<{ imageHeight: number }>(
   ({ imageHeight }) => ({
     borderRadius: BorderRadiusEnum.BORDER_RADIUS,
     height: imageHeight + rowHeight,
-  })
-)
-
-const Image = styled.Image<{ imageWidth: number; imageHeight: number }>(
-  ({ imageWidth, imageHeight }) => ({
-    height: imageHeight,
-    width: imageWidth,
-    borderTopLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
-    borderTopRightRadius: BorderRadiusEnum.BORDER_RADIUS,
   })
 )

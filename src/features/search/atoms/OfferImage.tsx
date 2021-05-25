@@ -1,4 +1,5 @@
 import React from 'react'
+import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen'
@@ -13,7 +14,11 @@ interface Props {
 export const OfferImage: React.FC<Props> = ({ categoryName, imageUrl }) => (
   <Container>
     {imageUrl ? (
-      <Image resizeMode="cover" source={{ uri: imageUrl }} />
+      <FastImage
+        style={imageStyle}
+        source={{ uri: imageUrl }}
+        resizeMode={FastImage.resizeMode.cover}
+      />
     ) : (
       <ImagePlaceholder
         categoryName={categoryName || null}
@@ -28,7 +33,8 @@ const borderRadius = 4
 const width = getSpacing(16)
 const height = getSpacing(24) // ratio 2/3
 
-const Image = styled.Image({ borderRadius, height, width })
+const imageStyle = { borderRadius, height, width }
+
 const Container = styled.View({
   width,
   height,
