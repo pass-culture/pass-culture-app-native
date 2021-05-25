@@ -13,7 +13,7 @@ export const ButtonSecondary: FunctionComponent<BaseButtonProps> = (props) => {
   if (props.isLoading) {
     borderColor = ColorsEnum.PRIMARY_DARK
   } else if (props.disabled) {
-    borderColor = textColor = iconColor = ColorsEnum.PRIMARY_DISABLED
+    borderColor = textColor = iconColor = ColorsEnum.GREY_DARK
   }
 
   return (

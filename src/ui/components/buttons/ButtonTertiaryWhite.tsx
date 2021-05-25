@@ -10,7 +10,7 @@ export const ButtonTertiaryWhite: FunctionComponent<BaseButtonProps> = (props) =
   let iconColor = ColorsEnum.WHITE
 
   if (props.disabled) {
-    textColor = iconColor = ColorsEnum.PRIMARY_DISABLED
+    textColor = iconColor = ColorsEnum.GREY_DARK
   }
 
   return (

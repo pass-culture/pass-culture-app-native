@@ -10,7 +10,7 @@ export const ButtonQuaternary: FunctionComponent<BaseButtonProps> = (props) => {
   let iconColor = ColorsEnum.PRIMARY
 
   if (props.disabled) {
-    textColor = iconColor = ColorsEnum.PRIMARY_DISABLED
+    textColor = iconColor = ColorsEnum.GREY_DARK
   }
 
   return (
