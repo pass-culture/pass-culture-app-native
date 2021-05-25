@@ -366,6 +366,7 @@ msgstr "Consulter notre centre d'aide"
 
 #: src/features/auth/signup/AcceptCgu.tsx:129
 #: src/features/auth/signup/SetPhoneValidationCodeModal.tsx:77
+#: src/features/auth/signup/TooManyAttempts.tsx:18
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -1091,6 +1092,7 @@ msgstr "Retour"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx:56
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx:62
+#: src/features/auth/signup/TooManyAttempts.tsx:20
 #: src/features/auth/signup/VerifyEligibility.tsx:37
 #: src/features/bookOffer/pages/BookingConfirmation.tsx:56
 msgid "Retourner à l'accueil"
@@ -1309,6 +1311,10 @@ msgstr "Trier par"
 msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
+#: src/features/auth/signup/TooManyAttempts.tsx:13
+msgid "Trop de tentatives !"
+msgstr "Trop de tentatives !"
+
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx:41
 msgid "Tu as 18 ans..."
 msgstr "Tu as 18 ans..."
@@ -1316,6 +1322,10 @@ msgstr "Tu as 18 ans..."
 #: src/features/profile/components/LoggedOutHeader.tsx:30
 msgid "Tu as déjà un compte ?"
 msgstr "Tu as déjà un compte ?"
+
+#: src/features/auth/signup/TooManyAttempts.tsx:15
+msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
+msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
 
 #: src/features/auth/signup/SetBirthday.tsx:96
 msgid "Tu dois avoir 16 ans pour t'inscrire"
