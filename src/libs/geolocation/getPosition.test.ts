@@ -13,10 +13,11 @@ describe('getPosition', () => {
       .spyOn(Geolocation, 'getCurrentPosition')
       .mockImplementation(getCurrentPositionSuccess)
 
-    const setInitialPosition = jest.fn()
-    getPosition(setInitialPosition)
+    const setPosition = jest.fn()
+    const setIsPositionUnavailable = jest.fn()
+    getPosition(setPosition, setIsPositionUnavailable)
 
-    await waitFor(() => expect(getCurrentPosition).toHaveBeenCalled())
-    expect(setInitialPosition).toHaveBeenCalledWith(EiffelTourCoordinates)
+    await waitFor(() => expect(getCurrentPosition).toBeCalled())
+    expect(setPosition).toBeCalledWith(EiffelTourCoordinates)
   })
 })

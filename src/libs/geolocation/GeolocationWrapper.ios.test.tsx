@@ -3,19 +3,14 @@ import React from 'react'
 import { Platform } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 import * as permissions from 'react-native-permissions'
+import { mocked } from 'ts-jest/utils'
 
 import { GeolocationWrapper, GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { getPosition } from 'libs/geolocation/getPosition'
 import { waitFor } from 'tests/utils'
 
-import { getPosition } from './getPosition'
-
-beforeEach(() => {
-  jest.clearAllMocks()
-})
-
-jest.mock('./getPosition', () => ({
-  getPosition: jest.fn(),
-}))
+const mockGetPosition = mocked(getPosition)
+jest.mock('./getPosition')
 
 const onSubmit = jest.fn()
 const onAcceptance = jest.fn()
@@ -23,6 +18,11 @@ const onRefusal = jest.fn()
 
 describe('useGeolocation()', () => {
   Platform.OS = 'ios'
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('should call onAcceptance when requestGeolocPermission returns access is granted', async () => {
     jest.spyOn(Geolocation, 'requestAuthorization').mockResolvedValueOnce('granted')
     const { result } = renderGeolocationHook()
@@ -67,30 +67,30 @@ describe('useGeolocation()', () => {
     })
   })
 
-  it('should set position when permission is granted', async () => {
+  it('should call get position when permission is granted', async () => {
     jest.spyOn(permissions, 'check').mockResolvedValueOnce('granted')
     renderGeolocationHook()
 
     await waitFor(() => {
-      expect(getPosition).toHaveBeenCalled()
+      expect(mockGetPosition).toBeCalledTimes(1)
     })
   })
 
-  it('should not set position when permission is denied', async () => {
+  it('should not get position when permission is denied', async () => {
     jest.spyOn(permissions, 'check').mockResolvedValueOnce('denied')
     renderGeolocationHook()
 
     await waitFor(() => {
-      expect(getPosition).not.toHaveBeenCalled()
+      expect(mockGetPosition).toBeCalledTimes(1)
     })
   })
 
-  it('should not set position when permission is blocked', async () => {
+  it('should call get position when permission is blocked', async () => {
     jest.spyOn(permissions, 'check').mockResolvedValueOnce('blocked')
     renderGeolocationHook()
 
     await waitFor(() => {
-      expect(getPosition).not.toHaveBeenCalled()
+      expect(mockGetPosition).toBeCalledTimes(1)
     })
   })
 })
