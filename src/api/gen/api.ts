@@ -1787,7 +1787,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postnativev1accountsuspend(options: any = {}): Promise<FetchArgs> {
+        async postnativev1accountSuspend(options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/account/suspend`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
@@ -2375,8 +2375,8 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postnativev1accountsuspend(basePath: string, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accountsuspend(options);
+        async postnativev1accountSuspend(basePath: string, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accountSuspend(options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -2714,9 +2714,9 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public async postnativev1accountsuspend(options?: any) {
+     public async postnativev1accountSuspend(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1accountsuspend(this.basePath, options)
+        return functionalApi.postnativev1accountSuspend(this.basePath, options)
     }
     /**
      * 
