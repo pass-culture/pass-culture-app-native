@@ -158,11 +158,20 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
     })
 
     it('should return IdCheck page when email and licenseToken are set', () => {
-      const params = { email: 'user@site', licenceToken: '42' }
+      const now = new Date()
+      const params = {
+        email: 'user@site',
+        licenceToken: '42',
+        expiringTimestamp: `${now.getTime() / 1000}`,
+      }
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['id-check'](params)
 
       expect(configureScreen.screen).toBe('IdCheck')
-      expect(configureScreen.params).toEqual(params)
+      expect(configureScreen.params).toEqual({
+        email: 'user@site',
+        licence_token: '42',
+        expiring_timestamp: now.getTime(),
+      })
     })
   })
 })

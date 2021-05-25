@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { api } from 'api/api'
 import { useDepositAmount } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
@@ -52,9 +51,6 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
     navigate('IdCheckUnavailable')
   }
 
-  // NOTE: we comment here because react query throw to error boundary because of 400 and this should not query token on focus!!
-  // const { data } = useGetIdCheckToken(isEligible, onIdCheckError)
-  // const licenceToken = data?.token || ''
   const navigateToIdCheck = useNavigateToIdCheck({
     onIdCheckNavigationBlocked: navigateToIdCheckUnavailable,
   })
@@ -62,11 +58,8 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   async function onIdCheckPress() {
     if (isEligible && settings?.allowIdCheckRegistration) {
       try {
-        const response = await api.getnativev1idCheckToken()
         analytics.logIdCheck('Profile')
-        if (response?.token != null) {
-          navigateToIdCheck(props.email, response?.token)
-        }
+        navigateToIdCheck(props.email)
       } catch (err) {
         errorMonitoring.captureException(err, {
           isEligible,

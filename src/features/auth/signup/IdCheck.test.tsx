@@ -39,7 +39,7 @@ describe('<IdCheck />', () => {
       const webview = renderAPI.getByTestId('idcheck-webview')
       expect(webview.props.source.uri).toEqual(
         env.ID_CHECK_URL +
-          '/?email=john%2B1%40wick.com&user_consent_data_collection=false&licence_token=XxLicenceTokenxX'
+          '/?email=john%2B1%40wick.com&user_consent_data_collection=false&licence_token=XxLicenceTokenxX&expiration_timestamp=1622065697871&expiration_timestamp=1622065697871'
       )
     })
   })
@@ -53,7 +53,7 @@ describe('<IdCheck />', () => {
       const webview = renderAPI.getByTestId('idcheck-webview')
       expect(webview.props.source.uri).toEqual(
         env.ID_CHECK_URL +
-          '/?email=john%2B1%40wick.com&user_consent_data_collection=true&licence_token=XxLicenceTokenxX'
+          '/?email=john%2B1%40wick.com&user_consent_data_collection=true&licence_token=XxLicenceTokenxX&expiration_timestamp=1622065697871&expiration_timestamp=1622065697871'
       )
     })
   })
@@ -99,7 +99,8 @@ function renderIdCheckWithNavigation() {
             component={IdCheck}
             initialParams={{
               email: 'john+1@wick.com',
-              licenceToken: 'XxLicenceTokenxX',
+              licence_token: 'XxLicenceTokenxX',
+              expiration_timestamp: new Date('2021-05-26T21:48:17.871Z').getTime(),
             }}
           />
           <Stack.Screen name="NotIdCheck" component={NotIdCheck} />

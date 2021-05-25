@@ -5,6 +5,7 @@ import { Alert, ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
+import { useSignIn } from 'features/auth/api'
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -30,6 +31,7 @@ export function Navigation(): JSX.Element {
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const { showErrorSnackBar } = useSnackBarContext()
+  const signIn = useSignIn()
 
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     QueryKeys.ERROR_ASYNC,
@@ -48,47 +50,22 @@ export function Navigation(): JSX.Element {
   }
 
   async function onIdCheckV2() {
-    const email = 'pctest.jeune93.has-booked-some.v2@example.com'
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    const email = 'dka@dka.com' || 'pctest.jeune93.has-booked-some.v2@example.com'
+    const password = 'user@AZERTY123'
     try {
-      const response = await fetch(
-        'https://backend.passculture-testing.beta.gouv.fr/native/v1/signin',
-        {
-          method: 'POST',
-          headers: new Headers({
-            accept: 'application/json',
-            'content-type': 'application/json',
-          }),
-          body: JSON.stringify({
-            identifier: email,
-            password: 'user@AZERTY123',
-          }),
-        }
-      )
-      const { accessToken } = await response.json()
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      const response2 = await fetch(
-        'https://backend.passculture-testing.beta.gouv.fr/native/v1/id_check_token',
-        {
-          headers: new Headers({
-            authorization: `Bearer ${accessToken}`,
-          }),
-        }
-      )
-      if (response.status === 400) {
+      const signInResponse = await signIn({ identifier: email, password })
+      if (signInResponse.isSuccess) {
+        navigation.navigate(idCheckInitialRouteName, {
+          email,
+          licence_token: undefined,
+          expiration_timestamp: null,
+        })
+      } else {
         showErrorSnackBar({
-          message: `Trop d'essais ! Réessayer dans 12 heures`,
+          message: `Échec du quick sign in pour l'utilisateur "${email}"`,
           timeout: SNACK_BAR_TIME_OUT,
         })
-        return
       }
-      const { token } = await response2.json()
-      navigation.navigate(idCheckInitialRouteName, {
-        licence_token: token,
-        email,
-      })
     } catch (error) {
       showErrorSnackBar({ message: error.message, timeout: SNACK_BAR_TIME_OUT })
     }
@@ -196,7 +173,8 @@ export function Navigation(): JSX.Element {
             onPress={() =>
               navigation.navigate('VerifyEligibility', {
                 email: 'jean.dupont@gmail.com',
-                licenceToken: 'xXLicenceTokenXx',
+                licence_token: 'xXLicenceTokenXx',
+                expiration_timestamp: new Date().getTime(),
               })
             }
           />

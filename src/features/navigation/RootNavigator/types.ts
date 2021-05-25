@@ -39,7 +39,7 @@ export type RootStackParamList = {
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
-  IdCheck: { email: string; licenceToken: string }
+  IdCheck: { email: string; licence_token?: string; expiration_timestamp?: number | null }
   IdCheckUnavailable: undefined
   Login: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
   Maintenance: undefined
@@ -74,7 +74,7 @@ export type RootStackParamList = {
   }
   TemporaryIdCheck: undefined
   TooManyAttempts: undefined
-  VerifyEligibility: { email: string; licenceToken: string }
+  VerifyEligibility: { email: string; licence_token?: string; expiration_timestamp?: number | null }
   FirstTutorial: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   ForceUpdate: undefined

@@ -72,7 +72,8 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
         screen: 'IdCheck',
         params: {
           email: parsedEmail,
-          licenceToken: params.licenceToken,
+          licence_token: params.licenceToken,
+          expiring_timestamp: Number(params.expiringTimestamp) * 1000,
         },
       }
     }

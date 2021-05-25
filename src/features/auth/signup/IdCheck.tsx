@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { WebView, WebViewNavigation } from 'react-native-webview'
 import styled from 'styled-components/native'
 
+import { api } from 'api/api'
 import { useAppSettings } from 'features/auth/settings'
 import { navigateToHome, openExternalUrl, useCurrentRoute } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
@@ -27,21 +28,50 @@ export const IdCheck: React.FC<Props> = function (props) {
 
   useEffect(() => {
     if (!areSettingsLoading && settings?.enableNativeIdCheckVersion) {
-      const { email, licenceToken } = props.route.params
-      navigation.navigate(idCheckInitialRouteName, { email, licence_token: licenceToken })
+      const { email, licence_token, expiration_timestamp } = props.route.params
+      navigation.navigate(idCheckInitialRouteName, {
+        email,
+        licence_token,
+        expiration_timestamp,
+      })
     }
   }, [settings?.enableNativeIdCheckVersion, areSettingsLoading])
 
   useEffect(() => {
-    const { email, licenceToken } = props.route.params
+    const { email, licence_token, expiration_timestamp } = props.route.params
     const encodedEmail = encodeURIComponent(email)
     storage.readObject<boolean>('has_accepted_cookie').then((hasAcceptedCookies) => {
       let userConsentDataCollection = false
       if (hasAcceptedCookies) {
         userConsentDataCollection = true
       }
-      const uri = `${env.ID_CHECK_URL}/?email=${encodedEmail}&user_consent_data_collection=${userConsentDataCollection}&licence_token=${licenceToken}`
-      setIdCheckUri(uri)
+      const uri = `${env.ID_CHECK_URL}/?email=${encodedEmail}&user_consent_data_collection=${userConsentDataCollection}`
+      if (licence_token && expiration_timestamp) {
+        const expiration = expiration_timestamp
+          ? `&expiration_timestamp=${expiration_timestamp}`
+          : ''
+        const token = `&licence_token=${licence_token}${expiration}`
+        setIdCheckUri(uri + token + expiration)
+      } else {
+        api
+          .getnativev1idCheckToken()
+          .then(({ token: licence_token, token_timestamp }) => {
+            if (licence_token && token_timestamp) {
+              const expiration = token_timestamp
+                ? `&expiration_timestamp=${token_timestamp.getTime()}`
+                : ''
+              const token = `&licence_token=${licence_token}${expiration}`
+              setIdCheckUri(uri + token + expiration)
+            } else {
+              navigation.navigate('TooManyAttempts')
+            }
+          })
+          .catch((err) => {
+            if (err.status === 400) {
+              navigation.navigate('TooManyAttempts')
+            }
+          })
+      }
     })
   }, [])
 
