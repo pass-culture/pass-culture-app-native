@@ -19,6 +19,7 @@ beforeEach(() => {
 
 const EMAIL = 'EMAIL'
 const LICENCE_TOKEN = 'LICENCE_TOKEN'
+const LICENCE_TOKEN_EXPIRATION_TIMESTAMP = new Date('2021-05-26T21:48:17.871Z').getTime()
 
 describe('useNavigateToIdCheck()', () => {
   it('should navigate to IdCheck v1 when shouldControlNavWithSetting=false, enableNativeIdCheckVersion=false, allowIdCheckRegistration=false', () => {
@@ -29,9 +30,13 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked: undefined,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN)
+    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
 
-    expect(navigate).toBeCalledWith('IdCheck', { email: EMAIL, licenceToken: LICENCE_TOKEN })
+    expect(navigate).toBeCalledWith('IdCheck', {
+      email: EMAIL,
+      licence_token: LICENCE_TOKEN,
+      expiration_timestamp: LICENCE_TOKEN_EXPIRATION_TIMESTAMP,
+    })
   })
 
   it('should navigate to IdCheck v2 when shouldControlNavWithSetting=false, enableNativeIdCheckVersion=true, allowIdCheckRegistration=false', () => {
@@ -42,9 +47,13 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked: undefined,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN)
+    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
 
-    expect(navigate).toBeCalledWith('IdCheckV2', { email: EMAIL, licence_token: LICENCE_TOKEN })
+    expect(navigate).toBeCalledWith('IdCheckV2', {
+      email: EMAIL,
+      licence_token: LICENCE_TOKEN,
+      expiration_timestamp: LICENCE_TOKEN_EXPIRATION_TIMESTAMP,
+    })
   })
 
   it('should navigate to home when shouldControlNavWithSetting=true, enableNativeIdCheckVersion=false, allowIdCheckRegistration=false', () => {
@@ -55,7 +64,7 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked: undefined,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN)
+    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
 
     expect(navigateToHome).toBeCalled()
   })
@@ -69,7 +78,7 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN)
+    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
 
     expect(onIdCheckNavigationBlocked).toBeCalled()
     expect(navigateToHome).not.toBeCalled()
@@ -83,9 +92,13 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked: undefined,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN)
+    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
 
-    expect(navigate).toBeCalledWith('IdCheck', { email: EMAIL, licenceToken: LICENCE_TOKEN })
+    expect(navigate).toBeCalledWith('IdCheck', {
+      email: EMAIL,
+      licence_token: LICENCE_TOKEN,
+      expiration_timestamp: LICENCE_TOKEN_EXPIRATION_TIMESTAMP,
+    })
   })
 
   it('should navigate to IdCheck v2 when shouldControlNavWithSetting=true, enableNativeIdCheckVersion=true, allowIdCheckRegistration=true', () => {
@@ -96,9 +109,13 @@ describe('useNavigateToIdCheck()', () => {
       onIdCheckNavigationBlocked: undefined,
     })
 
-    navigateToIdCheck(EMAIL, LICENCE_TOKEN)
+    navigateToIdCheck(EMAIL, LICENCE_TOKEN, LICENCE_TOKEN_EXPIRATION_TIMESTAMP)
 
-    expect(navigate).toBeCalledWith('IdCheckV2', { email: EMAIL, licence_token: LICENCE_TOKEN })
+    expect(navigate).toBeCalledWith('IdCheckV2', {
+      email: EMAIL,
+      licence_token: LICENCE_TOKEN,
+      expiration_timestamp: LICENCE_TOKEN_EXPIRATION_TIMESTAMP,
+    })
   })
 })
 

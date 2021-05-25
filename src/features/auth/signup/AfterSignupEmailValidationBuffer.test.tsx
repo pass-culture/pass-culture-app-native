@@ -101,17 +101,19 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         expect(navigate).toBeCalledTimes(1)
         expect(navigate).toHaveBeenCalledWith('VerifyEligibility', {
           email: 'john@wick.com',
-          licenceToken: 'XxLicenceTokenxX',
+          licence_token: 'XxLicenceTokenxX',
         })
       })
       loginRoutine.mockRestore()
     })
 
     it('should not redirect to Verify Eligibility when allowIdCheckRegistration flag is turned to false"', async () => {
+      const now = new Date()
       const response: ValidateEmailResponse = {
         accessToken: 'access_token',
         idCheckToken: 'XxLicenceTokenxX',
         refreshToken: 'refresh_token',
+        idCheckTokenTimestamp: now,
         needsToValidatePhone: false,
       }
       // eligible user call

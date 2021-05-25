@@ -18,7 +18,13 @@ jest.mock('features/auth/settings')
 jest.mock('features/navigation/helpers')
 
 const navigationProps = {
-  route: { params: { email: 'test@email.com', licenceToken: 'xXLicenceTokenXx' } },
+  route: {
+    params: {
+      email: 'test@email.com',
+      licence_token: 'xXLicenceTokenXx',
+      expiration_timestamp: 1621965271646000,
+    },
+  },
 } as StackScreenProps<RootStackParamList, 'VerifyEligibility'>
 
 describe('<VerifyEligibility />', () => {
@@ -50,7 +56,8 @@ describe('<VerifyEligibility />', () => {
     expect(navigate).toBeCalledTimes(1)
     expect(navigate).toBeCalledWith('IdCheck', {
       email: 'test@email.com',
-      licenceToken: 'xXLicenceTokenXx',
+      licence_token: 'xXLicenceTokenXx',
+      expiration_timestamp: 1621965271646000,
     })
   })
 })

@@ -21,6 +21,7 @@ import './why-did-you-render'
 import 'intl'
 import 'intl/locale-data/jsonp/en'
 
+import { api } from 'api/api'
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
@@ -119,7 +120,8 @@ const App: FunctionComponent = function () {
                             personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
                             cguDocUrl={env.DOC_CGU_URL}
                             errorMonitoring={errorMonitoring}
-                            analytics={idCheckAnalytics}>
+                            analytics={idCheckAnalytics}
+                            requestLicenceToken={() => api.getnativev1idCheckToken()}>
                             <SplashScreenProvider>
                               <AppNavigationContainer>
                                 <RootNavigator />

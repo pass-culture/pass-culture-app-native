@@ -54,7 +54,11 @@ export function AfterSignupEmailValidationBuffer() {
     } else {
       delayedNavigate('VerifyEligibility', {
         email: params.email,
-        licenceToken: response.idCheckToken,
+        licence_token: response.idCheckToken,
+        expiration_timestamp:
+          response.idCheckTokenTimestamp instanceof Date
+            ? response.idCheckTokenTimestamp.getTime()
+            : response.idCheckTokenTimestamp,
       })
     }
   }

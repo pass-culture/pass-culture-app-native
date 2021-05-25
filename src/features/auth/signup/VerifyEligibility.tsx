@@ -25,8 +25,8 @@ export function VerifyEligibility(props: Props) {
   })
 
   function goToIdCheckWebView() {
-    const { email, licenceToken } = props.route.params
-    navigateToIdCheck(email, licenceToken)
+    const { email, licence_token, expiration_timestamp } = props.route.params
+    navigateToIdCheck(email, licence_token, expiration_timestamp)
   }
 
   function navigateToIdCheckUnavailable() {

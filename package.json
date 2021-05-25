@@ -38,7 +38,7 @@
     "@bam.tech/react-native-config": "^0.13.0",
     "@lingui/core": "^3.8.9",
     "@lingui/react": "^3.8.9",
-    "@pass-culture/id-check": "^2.0.15",
+    "@pass-culture/id-check": "2.0.16-beta",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/datetimepicker": "^3.0.9",

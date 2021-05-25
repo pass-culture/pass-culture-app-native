@@ -88,7 +88,11 @@ export function useDeeplinkUrlHandler() {
 
       handleDeeplinkAnalytics(screen, params)
       if (isIdCheckScreenConfig(screenConfig)) {
-        navigateToIdCheck(screenConfig.params.email, screenConfig.params.licenceToken)
+        navigateToIdCheck(
+          screenConfig.params.email,
+          screenConfig.params.licence_token,
+          screenConfig.params.expiration_timestamp
+        )
       } else {
         navigate(screen, params)
       }

@@ -31,6 +31,7 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
         onAbandon,
         onSuccess,
         displayDmsRedirection: !!settings?.displayDmsRedirection,
+        isLicenceTokenChecked: false,
       })
     }
   }, [setContextValue])

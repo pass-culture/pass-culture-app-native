@@ -2,18 +2,16 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { useDepositAmount, useGetIdCheckToken } from 'features/auth/api'
+import { useDepositAmount } from 'features/auth/api'
 import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { MonitoringError } from 'libs/errorMonitoring'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: idCheckTokenResponse } = useGetIdCheckToken(true)
   const { data: profile } = useUserProfileInfo()
   const { showInfoSnackBar } = useSnackBarContext()
   const depositAmount = useDepositAmount()
@@ -28,14 +26,15 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   })
 
   function onButtonPress() {
-    if (profile && idCheckTokenResponse?.token) {
-      navigateToIdCheck(profile.email, idCheckTokenResponse.token)
-    } else if (profile && !idCheckTokenResponse?.token) {
-      // TODO: when backend treat non eligible as an error instead of null, change this error handling
-      throw new MonitoringError(
-        t`Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !`,
-        'NotEligibleIdCheckError'
-      )
+    if (profile) {
+      navigateToIdCheck(profile.email)
+      // TODO: fix me after https://passculture.atlassian.net/browse/PC-8995 is done
+      // } else if (profile && !idCheckTokenResponse?.token) {
+      //   // TODO: when backend treat non eligible as an error instead of null, change this error handling
+      //   throw new MonitoringError(
+      //     t`Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !`,
+      //     'NotEligibleIdCheckError'
+      //   )
     } else {
       // TODO: remove after POs validation this will happen only when POs access this page without auth
       navigate('Login')
