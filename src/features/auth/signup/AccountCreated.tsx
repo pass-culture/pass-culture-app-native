@@ -15,7 +15,7 @@ export function AccountCreated() {
   const { data: user } = useUserProfileInfo()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const shouldNavigateToCulturalSurvey = user?.isBeneficiary
+  const shouldNavigateToCulturalSurvey = user?.isBeneficiary && user?.needsToFillCulturalSurvey
 
   function onPress() {
     if (shouldNavigateToCulturalSurvey) {

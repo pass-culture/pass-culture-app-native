@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
-import { homeNavigateConfig } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -15,19 +15,23 @@ export function EligibilityConfirmed() {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: user } = useUserProfileInfo()
 
+  const shouldNavigateToCulturalSurvey = user?.needsToFillCulturalSurvey
+
   function goToCulturalSurvey() {
-    if (user?.needsToFillCulturalSurvey) {
+    if (shouldNavigateToCulturalSurvey) {
       navigate('CulturalSurvey')
     } else {
-      navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
+      navigateToHome()
     }
   }
 
   return (
     <GenericInfoPage title={t`Tu es éligible !`} animation={IlluminatedSmileyAnimation}>
-      <StyledBody>
-        {t`Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées.`}
-      </StyledBody>
+      {shouldNavigateToCulturalSurvey && (
+        <StyledBody>
+          {t`Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées.`}
+        </StyledBody>
+      )}
       <Spacer.Column numberOfSpaces={15} />
       <ButtonPrimaryWhite title={t`On y va !`} onPress={goToCulturalSurvey} />
     </GenericInfoPage>
