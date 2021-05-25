@@ -47,13 +47,16 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     hideModal: hideFullPageModal,
   } = useModal(props.visible)
 
-  const { mutate: validatePhoneNumber } = useValidatePhoneNumberMutation({ onSuccess, onError })
+  const { mutate: validatePhoneNumber } = useValidatePhoneNumberMutation({
+    onSuccess: onValidateSuccess,
+    onError: onValidateError,
+  })
 
-  function onSuccess() {
+  function onValidateSuccess() {
     props.dismissModal()
   }
 
-  function onError(error: unknown) {
+  function onValidateError(error: unknown) {
     setInvalidCodeMessage(extractApiErrorMessage(error))
   }
 
