@@ -376,15 +376,12 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               ]
                             }
                           >
-                            <Image
-                              resizeMode="cover"
-                              source={
-                                Object {
-                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
-                                }
-                              }
+                            <View
                               style={
                                 Array [
+                                  Object {
+                                    "overflow": "hidden",
+                                  },
                                   Object {
                                     "borderRadius": 8,
                                     "height": 316,
@@ -392,7 +389,25 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   },
                                 ]
                               }
-                            />
+                            >
+                              <FastImageView
+                                resizeMode="cover"
+                                source={
+                                  Object {
+                                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "bottom": 0,
+                                    "left": 0,
+                                    "position": "absolute",
+                                    "right": 0,
+                                    "top": 0,
+                                  }
+                                }
+                              />
+                            </View>
                           </View>
                         </View>
                         <View
@@ -2104,15 +2119,12 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               ]
                             }
                           >
-                            <Image
-                              resizeMode="cover"
-                              source={
-                                Object {
-                                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
-                                }
-                              }
+                            <View
                               style={
                                 Array [
+                                  Object {
+                                    "overflow": "hidden",
+                                  },
                                   Object {
                                     "borderRadius": 8,
                                     "height": 316,
@@ -2120,7 +2132,25 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   },
                                 ]
                               }
-                            />
+                            >
+                              <FastImageView
+                                resizeMode="cover"
+                                source={
+                                  Object {
+                                    "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS",
+                                  }
+                                }
+                                style={
+                                  Object {
+                                    "bottom": 0,
+                                    "left": 0,
+                                    "position": "absolute",
+                                    "right": 0,
+                                    "top": 0,
+                                  }
+                                }
+                              />
+                            </View>
                           </View>
                         </View>
                         <View

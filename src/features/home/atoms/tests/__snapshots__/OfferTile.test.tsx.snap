@@ -32,16 +32,12 @@ exports[`OfferTile component should render correctly 1`] = `
     }
   >
     <View>
-      <Image
-        imageHeight={288}
-        imageWidth={192}
-        source={
-          Object {
-            "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
-          }
-        }
+      <View
         style={
           Array [
+            Object {
+              "overflow": "hidden",
+            },
             Object {
               "borderTopLeftRadius": 8,
               "borderTopRightRadius": 8,
@@ -50,8 +46,26 @@ exports[`OfferTile component should render correctly 1`] = `
             },
           ]
         }
-        testID="offerTileImage"
-      />
+      >
+        <FastImageView
+          resizeMode="cover"
+          source={
+            Object {
+              "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
+            }
+          }
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+          testID="offerTileImage"
+        />
+      </View>
       <View
         style={
           Array [
