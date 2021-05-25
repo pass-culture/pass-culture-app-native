@@ -19,10 +19,12 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 let mockPermissionState = GeolocPermissionState.GRANTED
+let mockIsPositionUnavailable = false
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
     position: mockPosition,
+    isPositionUnavailable: mockIsPositionUnavailable,
   }),
 }))
 
@@ -31,6 +33,7 @@ describe('LocationFilter component', () => {
   afterEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION
+    mockIsPositionUnavailable = false
   })
 
   it('should render correctly', () => {
@@ -39,6 +42,7 @@ describe('LocationFilter component', () => {
   })
 
   it('should display error message when (position=null, type=AROUND_ME)', async () => {
+    mockIsPositionUnavailable = true
     mockPosition = null
     const { getByText, getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-aroundMe'))

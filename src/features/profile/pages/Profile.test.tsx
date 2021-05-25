@@ -43,10 +43,12 @@ jest.mock('features/auth/AuthContext', () => ({
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 let mockPermissionState = GeolocPermissionState.GRANTED
 let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+let mockIsPositionUnavailable = false
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
     position: mockPosition,
+    isPositionUnavailable: mockIsPositionUnavailable,
   }),
 }))
 
@@ -115,6 +117,7 @@ describe('Profile component', () => {
       it('should display position error message if geoloc permission is granted bnut position is null', async () => {
         mockPermissionState = GeolocPermissionState.GRANTED
         mockPosition = null
+        mockIsPositionUnavailable = true
 
         const { getByText } = await renderProfile()
         getByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)

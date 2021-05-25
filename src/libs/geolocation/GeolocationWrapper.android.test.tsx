@@ -102,7 +102,7 @@ describe('useGeolocation()', () => {
     result.current.checkGeolocPermission()
 
     await waitFor(() => {
-      expect(getPosition).not.toHaveBeenCalled()
+      expect(result.current.position).toBeNull()
     })
   })
 })

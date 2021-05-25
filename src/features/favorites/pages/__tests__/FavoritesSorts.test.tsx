@@ -15,10 +15,12 @@ jest.mock('../FavoritesWrapper', () => jest.requireActual('../FavoritesWrapper')
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 let mockPermissionState = GeolocPermissionState.GRANTED
 let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
+let mockIsPositionUnavailable = false
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
     position: mockPosition,
+    isPositionUnavailable: mockIsPositionUnavailable,
   }),
 }))
 
@@ -26,6 +28,7 @@ describe('FavoritesSorts component', () => {
   beforeEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION
+    mockIsPositionUnavailable = false
   })
   afterEach(jest.resetAllMocks)
 
@@ -71,6 +74,7 @@ describe('FavoritesSorts component', () => {
   )
 
   it('should display error message when clicking on "Proximité géographique" and position is unavailable', async () => {
+    mockIsPositionUnavailable = true
     mockPosition = null
     const renderAPI = await renderFavoritesSort()
 
@@ -101,6 +105,7 @@ describe('FavoritesSorts component', () => {
   })
 
   it('should NOT trigger analytics=AROUND_ME when clicking on "Proximité géographique" then refusing geoloc then validating', async () => {
+    mockPosition = null
     mockPermissionState = GeolocPermissionState.DENIED
     const renderAPI = await renderFavoritesSort()
 
