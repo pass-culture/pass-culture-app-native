@@ -1,13 +1,18 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { ApiError, extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { currentTimestamp } from 'libs/dates'
+import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { useTimer, TIMER_NOT_INITIALIZED } from 'libs/timer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -25,7 +30,9 @@ export interface SetPhoneNumberModalProps {
 const TIMER = 60
 
 export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const [phoneNumber, setPhoneNumber] = useState(props.phoneNumber)
+  const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')
   const [validationCodeRequestTimestamp, setValidationCodeRequestTimestamp] = useState<
     null | number
   >(null)
@@ -60,11 +67,20 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     props.onValidationCodeAsked()
   }
 
+  function onError(error: ApiError | unknown) {
+    const { content } = error as ApiError
+    if (content.code === 'TOO_MANY_SMS_SENT') {
+      props.dismissModal()
+      navigate('TooManyAttempts')
+    } else {
+      const message = extractApiErrorMessage(error)
+      setInvalidPhoneNumberMessage(message)
+    }
+  }
+
   const { mutate: sendPhoneValidationCode } = useSendPhoneValidationMutation({
     onSuccess,
-    onError: (_error: unknown) => {
-      // TODO(8702) display error message in a toaster
-    },
+    onError,
   })
 
   function requestSendPhoneValidationCode() {
@@ -113,7 +129,14 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
             value={phoneNumber}
           />
         </StyledInput>
-        <Spacer.Column numberOfSpaces={8} />
+        {invalidPhoneNumberMessage ? (
+          <React.Fragment>
+            <InputError visible messageId={invalidPhoneNumberMessage} numberOfSpacesTop={3} />
+            <Spacer.Column numberOfSpaces={5} />
+          </React.Fragment>
+        ) : (
+          <Spacer.Column numberOfSpaces={8} />
+        )}
         <ButtonPrimary
           title={getButtonTitle()}
           disabled={!isContinueButtonEnabled}
