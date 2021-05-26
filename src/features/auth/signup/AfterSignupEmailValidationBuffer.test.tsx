@@ -56,6 +56,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         accessToken: 'access_token',
         idCheckToken: (null as unknown) as undefined, // actual value returned is `null`, conflicting with the typing
         refreshToken: 'refresh_token',
+        needsToValidatePhone: false,
       }
       server.use(
         // NOT eligible user call
@@ -82,6 +83,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         accessToken: 'access_token',
         idCheckToken: 'XxLicenceTokenxX',
         refreshToken: 'refresh_token',
+        needsToValidatePhone: false,
       }
       // eligible user call
       server.use(
@@ -110,6 +112,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         accessToken: 'access_token',
         idCheckToken: 'XxLicenceTokenxX',
         refreshToken: 'refresh_token',
+        needsToValidatePhone: false,
       }
       // eligible user call
       server.use(

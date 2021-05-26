@@ -737,6 +737,12 @@ export interface GetIdCheckTokenResponse {
      * @memberof GetIdCheckTokenResponse
      */
     token?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetIdCheckTokenResponse
+     */
+    token_timestamp?: Date | null;
 }/**
  * 
  * @export
@@ -1276,6 +1282,12 @@ export interface SettingsResponse {
      * @type {boolean}
      * @memberof SettingsResponse
      */
+    displayDmsRedirection: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
     enableNativeIdCheckVersion: boolean;
     /**
      * 
@@ -1493,6 +1505,18 @@ export interface ValidateEmailResponse {
      * @memberof ValidateEmailResponse
      */
     idCheckToken?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ValidateEmailResponse
+     */
+    idCheckTokenTimestamp?: Date | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ValidateEmailResponse
+     */
+    needsToValidatePhone: boolean;
     /**
      * 
      * @type {string}
@@ -1737,6 +1761,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
          */
         async postnativev1accounthasCompletedIdCheck(options: any = {}): Promise<FetchArgs> {
             const localVarPath = `/native/v1/account/has_completed_id_check`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary suspend_account <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1accountsuspend(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/account/suspend`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
@@ -2319,6 +2365,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary suspend_account <POST>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postnativev1accountsuspend(basePath: string, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accountsuspend(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary book_offer <POST>
          * @param {BookOfferRequest} [body] 
          * @param {*} [options] Override http request option.
@@ -2643,6 +2700,17 @@ export class DefaultApi extends BaseAPI {
     public async postnativev1accounthasCompletedIdCheck(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.postnativev1accounthasCompletedIdCheck(this.basePath, options)
+    }
+    /**
+     * 
+     * @summary suspend_account <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async postnativev1accountsuspend(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.postnativev1accountsuspend(this.basePath, options)
     }
     /**
      * 
