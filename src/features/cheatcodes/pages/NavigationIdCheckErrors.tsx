@@ -1,9 +1,10 @@
-import { IdCheckError, IdCheckErrors } from '@pass-culture/id-check'
+import { IdCheckError, IdCheckErrors, useIdCheckContext } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -13,6 +14,16 @@ import { padding, Spacer } from 'ui/theme'
 export function NavigationIdCheckErrors(): JSX.Element {
   const navigation = useNavigation<UseNavigationType>()
   const [error, setError] = useState<IdCheckError | Error | null>(null)
+  const { setContextValue } = useIdCheckContext()
+  const { data: settings } = useAppSettings()
+
+  useEffect(() => {
+    if (setContextValue) {
+      setContextValue({
+        displayDmsRedirection: !!settings?.displayDmsRedirection,
+      })
+    }
+  }, [setContextValue])
 
   if (error) {
     throw error
