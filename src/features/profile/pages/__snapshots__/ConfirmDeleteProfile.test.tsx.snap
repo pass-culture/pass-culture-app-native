@@ -57,21 +57,30 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     }
   />
   <View
-    height={75}
-    width={116}
+    height={85}
+    width={132}
   >
     <Text>
       undefined-SVG-Mock
     </Text>
   </View>
   <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+  <View
     style={
       Array [
         Object {
           "alignItems": "center",
-          "flexGrow": 1,
           "justifyContent": "center",
-          "marginHorizontal": 32,
+          "marginHorizontal": 24,
           "textAlign": "center",
         },
       ]
@@ -134,51 +143,17 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           ]
         }
       >
-        Tu as 30 jours pour te rétracter en envoyant un message à support@passculture.app
-      </Text>
-    </Text>
-    <View
-      numberOfSpaces={4}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      <Text
-        color="#ffffff"
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Une fois ce délai écoulé, tes données seront supprimées de nos fichier
+        Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies.
       </Text>
     </Text>
   </View>
   <View
-    numberOfSpaces={8}
     style={
       Array [
         Object {
-          "height": 32,
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
         },
       ]
     }
@@ -199,7 +174,8 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "marginHorizontal": 32,
+            "marginHorizontal": 24,
+            "paddingBottom": 24,
           },
         ]
       }
@@ -221,7 +197,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             "borderRadius": 24,
             "borderWidth": 0,
             "flexDirection": "row",
-            "height": 48,
+            "height": 40,
             "justifyContent": "center",
             "maxWidth": 500,
             "opacity": 1,
@@ -252,15 +228,15 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           testID="button-title"
           textColor="#eb0055"
         >
-          Je supprime mon compte
+          Supprimer mon compte
         </Text>
       </View>
       <View
-        numberOfSpaces={4}
+        numberOfSpaces={2}
         style={
           Array [
             Object {
-              "height": 16,
+              "height": 8,
             },
           ]
         }
@@ -318,17 +294,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       </View>
     </View>
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
   <View
     customHeight={8}
     style={
