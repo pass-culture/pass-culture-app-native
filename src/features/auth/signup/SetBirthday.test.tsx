@@ -118,6 +118,7 @@ describe('SetBirthday Page', () => {
         allowIdCheckRegistration: true,
         enableNativeIdCheckVersion: false,
         wholeFranceOpening: true,
+        displayDmsRedirection: true,
       },
       isLoading: false,
     } as UseQueryResult<SettingsResponse, unknown>

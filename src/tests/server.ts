@@ -96,6 +96,7 @@ export function requestSettingsSuccess(
     enableNativeIdCheckVersion: false,
     enablePhoneValidation: false,
     wholeFranceOpening: false,
+    displayDmsRedirection: true,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {
