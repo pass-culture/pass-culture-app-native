@@ -54,6 +54,9 @@ export const IdCheck: React.FC<Props> = function (props) {
       navigateToHome()
     } else if (isEligibilityProcessFinished) {
       navigation.navigate('BeneficiaryRequestSent')
+    } else if (!settings?.displayDmsRedirection) {
+      // this is double check as button is not shown on idCheck component
+      return
     } else if (isRedirectedToDMS) {
       openExternalUrl(event.url)
       // we need to force the webview to go back otherwise it opens DMS url
