@@ -8,6 +8,8 @@ import { render, fireEvent } from 'tests/utils'
 
 import { IdCheckUnavailable } from './IdCheckUnavailable'
 
+jest.mock('features/auth/settings')
+
 beforeEach(() => {
   jest.clearAllMocks()
 })
