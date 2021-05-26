@@ -9,13 +9,16 @@ import { ScreenNavigationProp, UseNavigationType } from 'features/navigation/Roo
 export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   const { setContextValue } = useIdCheckContext()
   const { replace } = useNavigation<UseNavigationType>()
-  const { refetch } = useUserProfileInfo()
+  const { refetch, remove } = useUserProfileInfo({
+    cacheTime: 0,
+  })
 
   function onAbandon() {
     replace(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
 
   function onSuccess() {
+    remove()
     refetch()
     replace('BeneficiaryRequestSent')
   }
