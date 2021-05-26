@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { useMutation, UseMutationResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
+import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import * as AuthApi from 'features/auth/api'
 import {
   SetPhoneNumberModal,
@@ -96,6 +98,40 @@ describe('SetPhoneNumberModal', () => {
       expect(mockOnValidationCodeAsked).toHaveBeenCalled()
     })
 
+    it('should display input error message if validate phone number request fails', async () => {
+      const response = {
+        content: {
+          code: 'INVALID_PHONE_NUMBER',
+          message: 'Le numéro est invalide.',
+        },
+        name: 'ApiError',
+      }
+
+      const { getByTestId, getByPlaceholderText, getByText, rerender } = renderSetPhoneNumberModal()
+      const continueButton = getByTestId('button-container-continue')
+      const input = getByPlaceholderText('0612345678')
+      fireEvent.changeText(input, '0000000000')
+      const props = {
+        visible: true,
+        dismissModal: jest.fn(),
+        onChangePhoneNumber: jest.fn(),
+        onValidationCodeAsked: jest.fn(),
+        phoneNumber: '',
+      }
+      rerender(<SetPhoneNumberModal {...props} />)
+
+      fireEvent.press(continueButton)
+
+      await act(async () => {
+        useMutationCallbacks.onError(response)
+      })
+
+      const errorMessage = getByText('Le numéro est invalide.')
+      await waitForExpect(() => {
+        expect(errorMessage).toBeTruthy()
+      })
+    })
+
     it.each([
       ['', 'null', -1, null, 1], // first call (-1 means timer is not initialized)
       ['', '> 1 min', 65, currentTimestamp() - 65, 1], // last call was made 65 seconds ago
@@ -125,6 +161,28 @@ describe('SetPhoneNumberModal', () => {
         expect(sendPhoneValidationCode).toHaveBeenCalledTimes(numberOfCall)
       }
     )
+
+    it('should navigate to TooManyAttempts page if request fails with TOO_MANY_VALIDATION_ATTEMPTS code', async () => {
+      const response = {
+        content: {
+          code: 'TOO_MANY_SMS_SENT',
+          message: 'Le nombre de tentatives maximal est dépassé',
+        },
+        name: 'ApiError',
+      }
+
+      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
+
+      const continueButton = getByTestId('button-container-continue')
+      const input = getByPlaceholderText('0612345678')
+      fireEvent.changeText(input, '0687654321')
+      fireEvent.press(continueButton)
+
+      await act(async () => {
+        useMutationCallbacks.onError(response)
+      })
+      expect(navigate).toHaveBeenCalledWith('TooManyAttempts')
+    })
   })
 
   describe('phone number input', () => {
