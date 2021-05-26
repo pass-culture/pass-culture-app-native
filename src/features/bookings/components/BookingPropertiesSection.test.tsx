@@ -61,6 +61,7 @@ async function renderBookingProperties(booking: Booking) {
           enableNativeIdCheckVersion: false,
           isRecaptchaEnabled: false,
           wholeFranceOpening: false,
+          displayDmsRedirection: true,
         }}
       />
     )

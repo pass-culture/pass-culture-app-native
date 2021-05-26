@@ -95,6 +95,7 @@ export function requestSettingsSuccess(
     autoActivateDigitalBookings: false,
     enableNativeIdCheckVersion: false,
     wholeFranceOpening: false,
+    displayDmsRedirection: true,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {
