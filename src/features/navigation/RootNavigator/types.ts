@@ -59,6 +59,7 @@ export type RootStackParamList = {
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
   ConfirmDeleteProfile: undefined
+  DeleteProfileSuccess: undefined
   LocationFilter: undefined
   LocationPicker: undefined
   Profile: undefined
