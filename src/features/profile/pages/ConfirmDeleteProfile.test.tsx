@@ -1,9 +1,11 @@
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { goBack } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
 
@@ -15,21 +17,26 @@ jest.mock('features/auth/AuthContext', () => ({
 
 describe('ConfirmDeleteProfile component', () => {
   it('should render confirm delete profile', () => {
-    const renderAPI = render(<ConfirmDeleteProfile />)
+    const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     expect(renderAPI.toJSON()).toMatchSnapshot()
   })
 
-  it('should open mail app when clicking on "Je supprime mon compte" button', () => {
-    const renderAPI = render(<ConfirmDeleteProfile />)
-    fireEvent.press(renderAPI.getByText(`Je supprime mon compte`))
-    expect(navigate).toHaveBeenCalledWith('DeleteProfileSuccess')
-    expect(analytics.logLogout).toBeCalled()
-    expect(mockSignOut).toBeCalled()
+  it('should redirect to DeleteProfileSuccess when clicking on "Je supprime mon compte" button', async () => {
+    const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
+    fireEvent.press(renderAPI.getByText('Supprimer mon compte'))
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('DeleteProfileSuccess')
+      expect(analytics.logLogout).toBeCalled()
+      expect(mockSignOut).toBeCalled()
+    })
   })
 
   it('should redirect to LegalNotices when clicking on "Abandonner" button', () => {
-    const renderAPI = render(<ConfirmDeleteProfile />)
-    fireEvent.press(renderAPI.getByText(`Abandonner`))
+    const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
+    fireEvent.press(renderAPI.getByText('Abandonner'))
     expect(goBack).toBeCalledTimes(1)
   })
 })

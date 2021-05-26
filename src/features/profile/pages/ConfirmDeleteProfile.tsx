@@ -13,7 +13,7 @@ import { Error } from 'ui/svg/icons/Error'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function ConfirmDeleteProfile() {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate, goBack } = useNavigation<UseNavigationType>()
   const signOut = useLogoutRoutine()
 
   const { mutate: notifyAccountSuspend, isLoading } = useNotifyAccountSuspend(() => {
@@ -22,7 +22,6 @@ export function ConfirmDeleteProfile() {
     signOut()
   })
 
-  const { goBack } = useNavigation<UseNavigationType>()
   return (
     <Container>
       <Background />
