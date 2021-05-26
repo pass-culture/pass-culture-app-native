@@ -24,9 +24,12 @@ export const convertAlgoliaOfferToCents = <T extends Offer>(offer: T): T => ({
 // (PC-8526): due to the migration to GCP, we extract the path to the image
 export const parseThumbUrl = (
   thumbUrl: Offer['thumbUrl'],
-  _urlPrefix: string
+  urlPrefix?: string
 ): Offer['thumbUrl'] => {
-  return thumbUrl
+  if (!thumbUrl) return undefined
+  if (!urlPrefix) return thumbUrl
+  const [base, suffix] = thumbUrl.split('/thumbs')
+  return `${urlPrefix || base}/thumbs${suffix}`
 }
 
 // The _geoloc is hardcoded for digital offers (without position) so that the results appear in the Search:
@@ -39,7 +42,7 @@ export const parseGeoloc = (hit: Hit): Hit['_geoloc'] =>
 export const filterAlgoliaHit = (hit: AlgoliaHit): boolean =>
   hit && hit.offer && !!hit.offer.thumbUrl
 
-export const transformAlgoliaHit = (urlPrefix: string) => <T extends Hit>(hit: T): T => ({
+export const transformAlgoliaHit = (urlPrefix?: string) => <T extends Hit>(hit: T): T => ({
   ...hit,
   offer: {
     ...hit.offer,
@@ -50,8 +53,8 @@ export const transformAlgoliaHit = (urlPrefix: string) => <T extends Hit>(hit: T
 })
 
 export const useTransformAlgoliaHits = () => {
-  const { data: _settings } = useAppSettings()
-  const urlPrefix = 'urlPrefix'
+  const { data: settings } = useAppSettings()
+  const { objectStorageUrl: urlPrefix } = settings || {}
 
   return useCallback(transformAlgoliaHit(urlPrefix), [urlPrefix])
 }
