@@ -2,6 +2,7 @@ import { IdCheckHomePage, useIdCheckContext } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
+import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { ScreenNavigationProp, UseNavigationType } from 'features/navigation/RootNavigator'
@@ -10,7 +11,7 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   const { setContextValue } = useIdCheckContext()
   const { replace } = useNavigation<UseNavigationType>()
   const { refetch } = useUserProfileInfo()
-
+  const { data: settings } = useAppSettings()
   function onAbandon() {
     replace(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
@@ -25,6 +26,7 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
       setContextValue({
         onAbandon,
         onSuccess,
+        displayDmsRedirection: !!settings?.displayDmsRedirection,
       })
     }
   }, [setContextValue])
