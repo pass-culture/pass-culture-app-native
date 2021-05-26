@@ -347,6 +347,8 @@ workflows:
           filters:
             tags:
               only: /.*/
+            branches:
+              ignore: /^(android-build).*/
       - deploy-soft-testing:
           filters:
             branches:
@@ -356,12 +358,16 @@ workflows:
             - run-tests
       - deploy-android-testing-hard:
           filters:
-            tags:
-              only: /^(testing_)?v.*/
             branches:
-              ignore: /.*/
-          requires:
-            - run-tests
+              only: /^(android-build).*/
+      # - deploy-android-testing-hard:
+      #     filters:
+      #       tags:
+      #         only: /^(testing_)?v.*/
+      #       branches:
+      #         ignore: /.*/
+      #     requires:
+      #       - run-tests
       - deploy-ios-testing-hard:
           filters:
             tags:

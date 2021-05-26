@@ -92,7 +92,7 @@ check_dependency
 
 [[ -z $(git status -s) ]] || warn 'Please make sure you deploy with no changes or untracked files. You can run *git stash --include-untracked*.'
 
-check_environment $APP_ENV
+# check_environment $APP_ENV
 
 if [ $DEPLOY_TYPE == "hard" ]; then
   echo -e "${BLUE}* * * * *"
@@ -108,7 +108,7 @@ if [ $DEPLOY_TYPE == "hard" ]; then
     echo -e "${YELLOW}- - - - -"
     echo "Fastlane 🤖  Android $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane android deploy --env $APP_ENV --verbose
+    bundle exec fastlane android build --env $APP_ENV --verbose
   fi
 fi
 
