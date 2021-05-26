@@ -50,6 +50,7 @@ import { Offer, OfferDescription } from 'features/offer'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConfirmDeleteProfile } from 'features/profile/pages/ConfirmDeleteProfile'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings'
+import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfileSuccess'
 import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData'
@@ -93,6 +94,7 @@ const routes: Array<Route> = [
   { name: 'IdCheck', component: IdCheck },
   { name: 'LegalNotices', component: LegalNotices },
   { name: 'ConfirmDeleteProfile', component: ConfirmDeleteProfile },
+  { name: 'DeleteProfileSuccess', component: DeleteProfileSuccess },
   { name: 'LocationFilter', component: LocationFilter },
   { name: 'LocationPicker', component: LocationPicker },
   { name: 'Login', component: Login, hoc: withAsyncErrorBoundary },

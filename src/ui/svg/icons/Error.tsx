@@ -6,7 +6,7 @@ import { ColorsEnum } from 'ui/theme'
 import { IconInterface } from './types'
 
 export const Error: React.FunctionComponent<IconInterface> = ({
-  size = 75,
+  size = 85,
   color = ColorsEnum.WHITE,
   testID,
 }) => (
