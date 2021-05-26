@@ -133,6 +133,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
     })
 
     it('should navigate to TooManyAttempts page if request fails with TOO_MANY_VALIDATION_ATTEMPTS code', async () => {
+      const mockDismissModal = jest.fn()
       const response = {
         content: {
           code: 'TOO_MANY_VALIDATION_ATTEMPTS',
@@ -141,7 +142,9 @@ describe('SetPhoneNumberValidationCodeModal', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId } = renderModalWithFilledCodeInput('123456')
+      const { getByTestId } = renderModalWithFilledCodeInput('123456', {
+        dismissModal: mockDismissModal,
+      })
       const continueButton = getByTestId('button-container-continue')
 
       fireEvent.press(continueButton)
@@ -152,6 +155,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
 
       await waitForExpect(() => {
         expect(navigate).toHaveBeenCalledWith('TooManyAttempts')
+        expect(mockDismissModal).toHaveBeenCalled()
       })
     })
   })
