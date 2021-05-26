@@ -54,6 +54,9 @@ export const IdCheck: React.FC<Props> = function (props) {
     } else if (isEligibilityProcessFinished) {
       storage.saveObject('has_completed_idcheck', true)
       navigation.navigate('BeneficiaryRequestSent')
+    } else if (!settings?.displayDmsRedirection) {
+      // this is double check as button is not shown on idCheck component
+      return
     }
   }
 
