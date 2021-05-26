@@ -22,21 +22,24 @@ export const getPosition = (
           setIsPositionUnavailable(true)
           new MonitoringError(
             'AgonTukGeolocation.getCurrentPosition() - POSITION_UNAVAILABLE',
-            'PositionError'
+            'PositionError_PositionUnavailable'
           )
           break
         case PositionError.TIMEOUT:
           // TODO: we could implement a retry pattern if we got time ??
           setIsPositionUnavailable(true)
           setInitialPosition(null)
-          new MonitoringError('AgonTukGeolocation.getCurrentPosition() - TIMEOUT', 'PositionError')
+          new MonitoringError(
+            'AgonTukGeolocation.getCurrentPosition() - TIMEOUT',
+            'PositionError_Timeout'
+          )
           break
         case PositionError.PLAY_SERVICE_NOT_AVAILABLE:
           setIsPositionUnavailable(true)
           setInitialPosition(null)
           new MonitoringError(
             'AgonTukGeolocation.getCurrentPosition() - PLAY_SERVICE_NOT_AVAILABLE',
-            'PositionError'
+            'PositionError_PlayServiceNotAvailable'
           )
           break
         case PositionError.SETTINGS_NOT_SATISFIED:
@@ -47,7 +50,7 @@ export const getPosition = (
           setInitialPosition(null)
           new MonitoringError(
             'AgonTukGeolocation.getCurrentPosition() - SETTINGS_NOT_SATISFIED',
-            'PositionError'
+            'PositionError_SettingsNotSatisfied'
           )
           break
         case PositionError.INTERNAL_ERROR:
@@ -55,7 +58,7 @@ export const getPosition = (
           setInitialPosition(null)
           new MonitoringError(
             'AgonTukGeolocation.getCurrentPosition() - INTERNAL_ERROR',
-            'PositionError'
+            'PositionError_InternalError'
           )
           break
       }
