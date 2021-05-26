@@ -100,8 +100,10 @@ export function useNotifyIdCheckCompleted(options = {}) {
   return useMutation(() => api.postnativev1accounthasCompletedIdCheck(), options)
 }
 
-export function useNotifyAccountSuspend() {
-  return useMutation(() => api.postnativev1accountSuspend())
+export function useNotifyAccountSuspend(onSuccess: () => void) {
+  return useMutation(() => api.postnativev1accountSuspend(), {
+    onSuccess,
+  })
 }
 
 export function useDepositAmount() {
