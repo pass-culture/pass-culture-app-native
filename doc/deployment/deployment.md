@@ -77,6 +77,7 @@ Only if there is a bug really urgent in production, that we need to fix very qui
 - `git checkout -b hotfix/vX.X.X-Y`
 - Cherry-pick all the commits of the feature `git cherry-pick <commit-hash>`
 - ⚠️ do not update package.json version number (the code push targets only one version)
+- check if tests are OK `yarn test`
 - `git tag vX.X.X-(Y+1)`
 - `git tag hotfix-staging-vX.X.X-(Y+1)`
 - `git push origin hotfix-staging-vX.X.X-(Y+1)`: this will deploy it to `staging`
