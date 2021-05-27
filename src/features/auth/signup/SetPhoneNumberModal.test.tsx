@@ -1,14 +1,44 @@
 import * as React from 'react'
-import waitForExpect from 'wait-for-expect'
+import { useMutation, UseMutationResult } from 'react-query'
+import { mocked } from 'ts-jest/utils'
 
-import { SetPhoneNumberModal } from 'features/auth/signup/SetPhoneNumberModal'
+import * as AuthApi from 'features/auth/api'
+import {
+  SetPhoneNumberModal,
+  SetPhoneNumberModalProps,
+} from 'features/auth/signup/SetPhoneNumberModal'
 import { currentTimestamp } from 'libs/dates'
+import { EmptyResponse } from 'libs/fetch'
 import { storage } from 'libs/storage'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, flushAllPromises, render, superFlushWithAct } from 'tests/utils'
+import {
+  act,
+  fireEvent,
+  flushAllPromises,
+  render,
+  superFlushWithAct,
+  useMutationFactory,
+} from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
+jest.mock('react-query')
+
+const mockedUseMutation = mocked(useMutation)
+const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
+  onSuccess: () => {},
+  onError: () => {},
+}
+
+let mockTimeSinceLastRequest = -1 // not initialized
+jest.mock('libs/timer', () => ({
+  useTimer: jest.fn(() => mockTimeSinceLastRequest),
+}))
+
 describe('SetPhoneNumberModal', () => {
+  beforeEach(() => {
+    // @ts-ignore ts(2345)
+    mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
+  })
+
   afterEach(async () => {
     await storage.clear('phone_validation_code_asked_at')
   })
@@ -48,65 +78,53 @@ describe('SetPhoneNumberModal', () => {
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
     })
 
-    it('should call onValidationCodeAsked property on press button "Continuer" on first request', async () => {
+    it('should call onValidationCodeAsked property on /send_phone_validation request success', async () => {
       const mockOnValidationCodeAsked = jest.fn()
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal({
         onValidationCodeAsked: mockOnValidationCodeAsked,
       })
-      const button = getByTestId('button-container-continue')
-      const input = getByPlaceholderText('0612345678')
-      fireEvent.changeText(input, '0687654321')
-      fireEvent.press(button)
-
-      await superFlushWithAct()
-      await waitForExpect(() => {
-        expect(mockOnValidationCodeAsked).toHaveBeenCalled()
-      })
-    })
-
-    it('should call onValidationCodeAsked property on press button "Continuer" if last request timestamp > 1 min', async () => {
-      // we assume last call was made 65 seconds ago
-      await storage.saveObject('phone_validation_code_asked_at', currentTimestamp() - 65)
-
-      const mockOnValidationCodeAsked = jest.fn()
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal({
-        onValidationCodeAsked: mockOnValidationCodeAsked,
-      })
-      const button = getByTestId('button-container-continue')
-      const input = getByPlaceholderText('0612345678')
-      fireEvent.changeText(input, '0687654321')
-      fireEvent.press(button)
-
-      await superFlushWithAct()
-      await waitForExpect(() => {
-        expect(mockOnValidationCodeAsked).toHaveBeenCalled()
-      })
-    })
-
-    it('should NOT call onValidationCodeAsked property on press button "Continuer" if last request timestamp < 1 min', async () => {
-      jest.useFakeTimers()
-      // we assume last call was made 5 seconds ago
-      await storage.saveObject('phone_validation_code_asked_at', currentTimestamp() - 5)
-
-      const mockOnValidationCodeAsked = jest.fn()
-      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal({
-        onValidationCodeAsked: mockOnValidationCodeAsked,
-      })
-      await superFlushWithAct()
-
-      // stop timer to simulate the click before the end of the timer
-      act(() => jest.advanceTimersByTime(1000))
+      await flushAllPromises()
 
       const button = getByTestId('button-container-continue')
       const input = getByPlaceholderText('0612345678')
       fireEvent.changeText(input, '0687654321')
       fireEvent.press(button)
 
-      await superFlushWithAct()
-      await waitForExpect(() => {
-        expect(mockOnValidationCodeAsked).not.toHaveBeenCalled()
+      await act(async () => {
+        useMutationCallbacks.onSuccess()
       })
+      expect(mockOnValidationCodeAsked).toHaveBeenCalled()
     })
+
+    it.each([
+      ['', 'null', -1, null, 1], // first call (-1 means timer is not initialized)
+      ['', '> 1 min', 65, currentTimestamp() - 65, 1], // last call was made 65 seconds ago
+      ['NOT', '< 1 min', 5, currentTimestamp() - 5, 0], // last call was made 5 seconds ago
+    ])(
+      'should %s call sendPhoneValidationCode mutation if SetPhoneNumberModal if last request timestamp is %s',
+      async (_should, _label, timeSinceLastRequest, storageValue, numberOfCall) => {
+        await storage.saveObject('phone_validation_code_asked_at', storageValue)
+
+        mockTimeSinceLastRequest = timeSinceLastRequest
+
+        const sendPhoneValidationCode = jest.fn()
+        jest.spyOn(AuthApi, 'useSendPhoneValidationMutation').mockReturnValue(({
+          mutate: sendPhoneValidationCode,
+        } as unknown) as UseMutationResult<EmptyResponse, unknown, string, unknown>)
+
+        const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
+        await superFlushWithAct()
+
+        const button = getByTestId('button-container-continue')
+        const input = getByPlaceholderText('0612345678')
+        fireEvent.changeText(input, '0687654321')
+        fireEvent.press(button)
+
+        await flushAllPromises()
+
+        expect(sendPhoneValidationCode).toHaveBeenCalledTimes(numberOfCall)
+      }
+    )
   })
 
   describe('phone number input', () => {
@@ -134,5 +152,5 @@ function renderSetPhoneNumberModal(customProps?: Partial<SetPhoneNumberModalProp
     phoneNumber: '',
     ...customProps,
   }
-  return render(reactQueryProviderHOC(<SetPhoneNumberModal {...props} />))
+  return render(<SetPhoneNumberModal {...props} />)
 }
