@@ -7,7 +7,6 @@ import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { ScreenNavigationProp, UseNavigationType } from 'features/navigation/RootNavigator'
-import { errorMonitoring } from 'libs/errorMonitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
@@ -29,13 +28,9 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   }
 
   function onSuccess() {
-    queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
-    refetch()
-      .then(goToBeneficiaryRequestSent)
-      .catch((err) => {
-        errorMonitoring.captureException(err)
-        goToBeneficiaryRequestSent()
-      })
+    queryClient.invalidateQueries(QueryKeys.USER_PROFILE).finally(() => {
+      refetch().finally(goToBeneficiaryRequestSent)
+    })
   }
 
   useEffect(() => {
