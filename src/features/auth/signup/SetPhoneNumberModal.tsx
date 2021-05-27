@@ -14,7 +14,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-interface SetPhoneNumberModalProps {
+export interface SetPhoneNumberModalProps {
   visible: boolean
   dismissModal: () => void
   onChangePhoneNumber: (value: string) => void
