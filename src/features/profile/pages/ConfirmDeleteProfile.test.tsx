@@ -21,7 +21,7 @@ describe('ConfirmDeleteProfile component', () => {
     expect(renderAPI.toJSON()).toMatchSnapshot()
   })
 
-  it('should redirect to DeleteProfileSuccess when clicking on "Je supprime mon compte" button', async () => {
+  it.only('should redirect to DeleteProfileSuccess when clicking on "Je supprime mon compte" button', async () => {
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
     fireEvent.press(renderAPI.getByText('Supprimer mon compte'))
     await superFlushWithAct()
