@@ -4,10 +4,8 @@ import React, { useEffect } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { useAppSettings } from 'features/auth/settings'
-import { useUserProfileInfo } from 'features/home/api'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { ScreenNavigationProp, UseNavigationType } from 'features/navigation/RootNavigator'
-import { errorMonitoring } from 'libs/errorMonitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
@@ -16,26 +14,13 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   const { data: settings } = useAppSettings()
   const queryClient = useQueryClient()
 
-  const { refetch } = useUserProfileInfo({
-    cacheTime: 0,
-  })
-
-  function goToBeneficiaryRequestSent() {
-    replace('BeneficiaryRequestSent')
-  }
-
   function onAbandon() {
     replace(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
 
-  function onSuccess() {
-    queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
-    refetch()
-      .then(goToBeneficiaryRequestSent)
-      .catch((err) => {
-        errorMonitoring.captureException(err)
-        goToBeneficiaryRequestSent()
-      })
+  async function onSuccess() {
+    await queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
+    replace('BeneficiaryRequestSent')
   }
 
   useEffect(() => {
