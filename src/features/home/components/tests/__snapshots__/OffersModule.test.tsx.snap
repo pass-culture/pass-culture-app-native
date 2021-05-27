@@ -116,7 +116,7 @@ Array [
                   resizeMode="cover"
                   source={
                     Object {
-                      "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                     }
                   }
                   style={
@@ -296,7 +296,7 @@ Array [
                   resizeMode="cover"
                   source={
                     Object {
-                      "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDKQ",
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDKQ",
                     }
                   }
                   style={
@@ -476,7 +476,7 @@ Array [
                   resizeMode="cover"
                   source={
                     Object {
-                      "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDBA",
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDBA",
                     }
                   }
                   style={
@@ -672,7 +672,7 @@ Array [
                   resizeMode="cover"
                   source={
                     Object {
-                      "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDZQ",
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDZQ",
                     }
                   }
                   style={
