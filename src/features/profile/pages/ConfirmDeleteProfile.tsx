@@ -16,11 +16,18 @@ export function ConfirmDeleteProfile() {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
   const signOut = useLogoutRoutine()
 
-  const { mutate: notifyAccountSuspend, isLoading } = useNotifyAccountSuspend(() => {
-    navigate('DeleteProfileSuccess')
-    analytics.logLogout()
-    signOut()
-  })
+  const { mutate: notifyAccountSuspend, isLoading } = useNotifyAccountSuspend()
+
+  async function onAccountSuspend() {
+    try {
+      await notifyAccountSuspend()
+      navigate('DeleteProfileSuccess')
+      analytics.logLogout()
+      signOut()
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <Container>
@@ -53,7 +60,7 @@ export function ConfirmDeleteProfile() {
         <ButtonContainer>
           <AppButton
             title={t`Supprimer mon compte`}
-            onPress={notifyAccountSuspend}
+            onPress={onAccountSuspend}
             backgroundColor={ColorsEnum.WHITE}
             textColor={ColorsEnum.PRIMARY}
             loadingIconColor={ColorsEnum.PRIMARY}
