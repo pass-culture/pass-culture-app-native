@@ -125,8 +125,7 @@ describe('SetPhoneNumberModal', () => {
   })
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function renderSetPhoneNumberModal(customProps?: any) {
+function renderSetPhoneNumberModal(customProps?: Partial<SetPhoneNumberModalProps>) {
   const props = {
     visible: true,
     dismissModal: jest.fn(),
