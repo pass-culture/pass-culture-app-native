@@ -6,6 +6,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { ScreenNavigationProp, UseNavigationType } from 'features/navigation/RootNavigator'
+import { errorMonitoring } from 'libs/errorMonitoring'
 
 export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   const { setContextValue } = useIdCheckContext()
@@ -15,6 +16,10 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
     cacheTime: 0,
   })
 
+  function goToBeneficiaryRequestSent() {
+    replace('BeneficiaryRequestSent')
+  }
+
   function onAbandon() {
     replace(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
@@ -22,7 +27,11 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   function onSuccess() {
     remove()
     refetch()
-    replace('BeneficiaryRequestSent')
+      .then(goToBeneficiaryRequestSent)
+      .catch((err) => {
+        errorMonitoring.captureException(err)
+        goToBeneficiaryRequestSent()
+      })
   }
 
   useEffect(() => {
