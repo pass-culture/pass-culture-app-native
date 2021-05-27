@@ -15,6 +15,7 @@ const mockedUseAuthContext = useAuthContext as jest.Mock
 const userProfileApiMock = jest.fn()
 const userProfileAPIResponse: UserProfileResponse = {
   bookedOffers: {},
+  needsToValidatePhone: true,
   domainsCredit: {
     all: { initial: 50000, remaining: 40000 },
     physical: { initial: 30000, remaining: 10000 },

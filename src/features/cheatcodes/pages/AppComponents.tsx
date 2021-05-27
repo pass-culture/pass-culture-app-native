@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 
 import { CategoryNameEnum } from 'api/gen/api'
 import { useSignInNumberOfSteps } from 'features/auth/api'
+import { DenyAccessToIdCheckModal } from 'features/auth/signup/idCheck/DenyAccessToIdCheck'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'

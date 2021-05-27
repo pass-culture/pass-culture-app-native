@@ -7,6 +7,7 @@ import { render } from 'tests/utils'
 const user: UserProfileResponse = {
   bookedOffers: {},
   email: 'email2@domain.ext',
+  needsToValidatePhone: true,
   firstName: 'Jean',
   isBeneficiary: true,
   dateOfBirth: '2003-01-01',

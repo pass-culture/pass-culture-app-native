@@ -1,14 +1,12 @@
 import React from 'react'
-import { UseMutationResult, UseQueryResult } from 'react-query'
+import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
-import * as AuthApi from 'features/auth/api'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
-import { EmptyResponse } from 'libs/fetch'
-import { render, fireEvent, waitFor } from 'tests/utils'
+import { render, fireEvent } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
 
