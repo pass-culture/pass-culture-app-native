@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { useQueryClient } from 'react-query'
 
+import { useNotifyIdCheckCompleted } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
 import { homeNavigateConfig } from 'features/navigation/helpers'
@@ -14,6 +15,10 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   const { replace } = useNavigation<UseNavigationType>()
   const { data: settings } = useAppSettings()
   const queryClient = useQueryClient()
+  const { mutate: notifyIdCheckCompleted } = useNotifyIdCheckCompleted({
+    onSuccess: syncUserAndProceedToNextScreen,
+    onError: syncUserAndProceedToNextScreen,
+  })
 
   const { refetch } = useUserProfileInfo({
     cacheTime: 0,
@@ -27,10 +32,14 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
     replace(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
 
-  function onSuccess() {
+  function syncUserAndProceedToNextScreen() {
     queryClient.invalidateQueries(QueryKeys.USER_PROFILE).finally(() => {
       refetch().finally(goToBeneficiaryRequestSent)
     })
+  }
+
+  function onSuccess() {
+    notifyIdCheckCompleted()
   }
 
   useEffect(() => {

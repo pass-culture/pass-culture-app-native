@@ -1,4 +1,7 @@
-import { initialRouteName as idCheckInitialRouteName } from '@pass-culture/id-check'
+import {
+  initialRouteName as idCheckInitialRouteName,
+  useIdCheckContext,
+} from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { useEffect, useRef, useState } from 'react'
@@ -7,7 +10,12 @@ import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { useAppSettings } from 'features/auth/settings'
-import { navigateToHome, openExternalUrl, useCurrentRoute } from 'features/navigation/helpers'
+import {
+  homeNavigateConfig,
+  navigateToHome,
+  openExternalUrl,
+  useCurrentRoute,
+} from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
@@ -23,8 +31,22 @@ export const IdCheck: React.FC<Props> = function (props) {
   const navigation = useNavigation<UseNavigationType>()
   const webviewRef = useRef<WebView>(null)
   const injectedJavascript = useKeyboardAdjustFixIdCheck()
+  const { setContextValue } = useIdCheckContext()
 
   const [idCheckUri, setIdCheckUri] = useState<string | undefined>(undefined)
+
+  function onAbandon() {
+    navigation.replace(homeNavigateConfig.screen, homeNavigateConfig.params)
+  }
+
+  useEffect(() => {
+    if (setContextValue) {
+      setContextValue({
+        // necessary so we can use the id check v2 errors page with abandon button outside the id check v2 context (webview)
+        onAbandon,
+      })
+    }
+  }, [setContextValue])
 
   useEffect(() => {
     if (!areSettingsLoading && settings?.enableNativeIdCheckVersion) {
@@ -56,19 +78,19 @@ export const IdCheck: React.FC<Props> = function (props) {
         api
           .getnativev1idCheckToken()
           .then(({ token: licence_token, token_timestamp }) => {
-            if (licence_token && token_timestamp) {
-              const expiration = token_timestamp
-                ? `&expiration_timestamp=${token_timestamp.getTime()}`
-                : ''
-              const token = `&licence_token=${licence_token}${expiration}`
-              setIdCheckUri(uri + token + expiration)
-            } else {
-              navigation.navigate('TooManyAttempts')
-            }
+            const expiration = token_timestamp
+              ? `&expiration_timestamp=${token_timestamp.getTime()}`
+              : ''
+            const token = `&licence_token=${licence_token}${expiration}`
+            setIdCheckUri(uri + token + expiration)
           })
           .catch((err) => {
-            if (err.status === 400) {
-              navigation.navigate('TooManyAttempts')
+            if (err.name === 'ApiError' && err.content.code === 'TOO_MANY_ID_CHECK_TOKEN') {
+              navigation.navigate('IdCheckTooManyAttempts')
+            } else if (err.name === 'ApiError' && err.content.code === 'USER_NOT_ELIGIBLE') {
+              navigation.navigate('NotEligible')
+            } else {
+              navigation.navigate('NotEligible')
             }
           })
       }
