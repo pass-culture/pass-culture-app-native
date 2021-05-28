@@ -14,5 +14,6 @@ const config = {
       exclude: ['**/node_modules/**', '/__tests__/', '*.test.*'],
     },
   ],
+  formatOptions: { origins: true, lineNumbers: false },
 }
 module.exports = config
