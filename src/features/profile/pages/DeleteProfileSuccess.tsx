@@ -1,17 +1,14 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { navigateToHome } from 'features/navigation/helpers'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { ProfileDeletionLight } from 'ui/svg/icons/ProfileDeletionLight'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
-  const { navigate } = useNavigation<UseNavigationType>()
-
   return (
     <Container>
       <Background />
@@ -49,7 +46,7 @@ export function DeleteProfileSuccess() {
         <ButtonContainer>
           <AppButton
             title={t`Retourner à l'accueil`}
-            onPress={() => navigate('Home')}
+            onPress={navigateToHome}
             backgroundColor={ColorsEnum.WHITE}
             textColor={ColorsEnum.PRIMARY}
             loadingIconColor={ColorsEnum.PRIMARY}
