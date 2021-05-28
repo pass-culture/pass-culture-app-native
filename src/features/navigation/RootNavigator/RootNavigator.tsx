@@ -50,7 +50,7 @@ export const RootNavigator: React.FC = () => {
       )}
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
-      {isSplashScreenHidden && <PrivacyPolicy navigationRef={navigationRef} />}
+      {!!isSplashScreenHidden && <PrivacyPolicy navigationRef={navigationRef} />}
     </React.Fragment>
   )
 }

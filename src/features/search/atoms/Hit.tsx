@@ -74,7 +74,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
           </Row>
           <Spacer.Column numberOfSpaces={1} />
           <Body>{categoryLabel}</Body>
-          {formattedDate && <Body>{formattedDate}</Body>}
+          {!!formattedDate && <Body>{formattedDate}</Body>}
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>
         </Column>

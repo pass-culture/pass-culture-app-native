@@ -84,7 +84,7 @@ export const SearchFilter: React.FC = () => {
           <Separator marginVertical={getSpacing(6)} />
 
           {/* Uniquement les offres duo */}
-          {profile?.isBeneficiary && (
+          {!!profile?.isBeneficiary && (
             <React.Fragment>
               <Section.DuoOffer />
               <Separator marginVertical={getSpacing(6)} />

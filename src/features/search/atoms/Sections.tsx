@@ -40,7 +40,7 @@ export const InlineSection: React.FC<{
       <Spacer.Row numberOfSpaces={7} />
       {children}
     </InlineSectionTitleContainer>
-    {subtitle && (
+    {!!subtitle && (
       <React.Fragment>
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Caption color={ColorsEnum.GREY_DARK}>{subtitle}</Typo.Caption>

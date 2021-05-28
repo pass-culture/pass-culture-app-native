@@ -33,7 +33,7 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, category, la
     <Row>
       <Spacer.Row numberOfSpaces={6} />
       <OfferCategory category={category} label={label} />
-      {showDuo && (
+      {!!showDuo && (
         <React.Fragment>
           <Separator />
           <IconWithCaption testID="iconDuo" Icon={Duo} caption={t`À deux !`} />

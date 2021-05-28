@@ -34,13 +34,15 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   return (
     <Container customStyle={customStyles?.container}>
       <LeftHeaderAction onPress={onLeftIconPress} testID="leftIconButton">
-        {LeftIcon && <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />}
+        {!!LeftIcon && (
+          <LeftIcon size={32} testID="leftIcon" color={customStyles?.leftIcon?.color} />
+        )}
       </LeftHeaderAction>
       <TitleComponent customStyle={customStyles?.title} numberOfLines={numberOfLines}>
         {title}
       </TitleComponent>
       <RightHeaderAction onPress={onRightIconPress} testID="rightIconButton">
-        {RightIcon && (
+        {!!RightIcon && (
           <RightIcon size={32} testID="rightIcon" color={customStyles?.rightIcon?.color} />
         )}
       </RightHeaderAction>

@@ -174,8 +174,10 @@ export function BookingDetails() {
           <Spacer.Column numberOfSpaces={4} />
           {renderOfferRules}
           <Spacer.Column numberOfSpaces={8} />
-          {appSettings && <BookingPropertiesSection booking={booking} appSettings={appSettings} />}
-          {shouldDisplayItineraryButton && (
+          {!!appSettings && (
+            <BookingPropertiesSection booking={booking} appSettings={appSettings} />
+          )}
+          {!!shouldDisplayItineraryButton && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <Separator />
@@ -183,7 +185,7 @@ export function BookingDetails() {
               <SeeItineraryButton openItinerary={openItinerary} />
             </React.Fragment>
           )}
-          {offer.withdrawalDetails && (
+          {!!offer.withdrawalDetails && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={8} />
               <Typo.Title4>{t`Modalités de retrait`}</Typo.Title4>

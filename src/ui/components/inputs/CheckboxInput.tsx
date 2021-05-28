@@ -17,7 +17,7 @@ export function CheckboxInput({ isChecked, setIsChecked }: CustomCheckboxProps):
 
   return (
     <StyledCheckboxInput checked={isChecked} onPress={setToggleCheckbox} testID="checkbox">
-      {isChecked && <CheckboxMark testID={'checkbox-mark'} />}
+      {!!isChecked && <CheckboxMark testID={'checkbox-mark'} />}
     </StyledCheckboxInput>
   )
 }

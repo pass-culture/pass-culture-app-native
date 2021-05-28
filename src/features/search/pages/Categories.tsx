@@ -56,7 +56,7 @@ export const Categories: React.FC = () => {
                 {label}
               </Typo.ButtonText>
               <Spacer.Flex />
-              {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+              {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
             </LabelContainer>
           )
         })}

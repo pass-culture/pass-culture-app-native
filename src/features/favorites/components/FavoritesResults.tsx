@@ -93,7 +93,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
 
   return (
     <React.Fragment>
-      {offerToBook && (
+      {!!offerToBook && (
         <BookingOfferModal
           visible
           dismissModal={() => setOfferToBook(null)}
@@ -116,7 +116,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           initialNumToRender={10}
         />
       </Container>
-      {sortedFavorites && sortedFavorites.length > 0 && (
+      {!!(sortedFavorites && sortedFavorites.length > 0) && (
         <SortContainer>
           <Sort />
           <Spacer.BottomScreen />

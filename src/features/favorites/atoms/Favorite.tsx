@@ -146,7 +146,7 @@ export const Favorite: React.FC<Props> = (props) => {
             </Row>
             <Spacer.Column numberOfSpaces={1} />
             <Body>{categoryLabel}</Body>
-            {formattedDate && <Body>{formattedDate}</Body>}
+            {!!formattedDate && <Body>{formattedDate}</Body>}
             <Spacer.Column numberOfSpaces={1} />
             <Typo.Caption>
               {getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })}

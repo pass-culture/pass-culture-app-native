@@ -29,7 +29,7 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
       <TitleContainer>
         <Typo.Title4 color={ColorsEnum.WHITE}>{name}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4.5} />
-        {depositExpirationDate && (
+        {!!depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
             {t({
               id: 'credit expired on date',

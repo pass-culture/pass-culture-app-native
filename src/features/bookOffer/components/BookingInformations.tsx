@@ -49,7 +49,7 @@ export const BookingInformations: React.FC = () => {
     return (
       <React.Fragment>
         <Item Icon={Booking} message={name} />
-        {stock.beginningDatetime && (
+        {!!stock.beginningDatetime && (
           <Item Icon={Calendar} message={formatDate(stock.beginningDatetime)} />
         )}
         <Item Icon={LocationBuilding} message={address} />

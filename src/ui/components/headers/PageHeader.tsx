@@ -51,7 +51,7 @@ export const PageHeader: React.FC<Props> = (props) => {
         <Title color={ColorsEnum.WHITE}>{title}</Title>
 
         <ButtonContainer positionInHeader="right">
-          {RightComponent && (
+          {!!RightComponent && (
             <View onLayout={onLayout}>
               <RightComponent />
             </View>

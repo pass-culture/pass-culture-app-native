@@ -22,7 +22,7 @@ export const TabBarComponent: React.FC<TabComponentInterface> = ({
 }) => {
   return (
     <TabComponentContainer onPress={onPress} activeOpacity={1} testID={testID}>
-      {isSelected && (
+      {!!isSelected && (
         <BicolorSelector
           width={SELECTOR_WIDTH}
           height={SELECTOR_HEIGHT}
@@ -36,7 +36,7 @@ export const TabBarComponent: React.FC<TabComponentInterface> = ({
         thin: !isSelected,
       })}
       <Spacer.Flex />
-      {isSelected && <BicolorSelectorPlaceholder />}
+      {!!isSelected && <BicolorSelectorPlaceholder />}
     </TabComponentContainer>
   )
 }

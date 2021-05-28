@@ -32,7 +32,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
         <Spacer.Column numberOfSpaces={4.5} />
         <Typo.Hero color={ColorsEnum.WHITE}>{credit}</Typo.Hero>
         <Spacer.Column numberOfSpaces={2} />
-        {depositExpirationDate && (
+        {!!depositExpirationDate && (
           <Typo.Caption color={ColorsEnum.WHITE}>
             {t`crédit valable jusqu'au` + `\u00a0${depositExpirationDate}`}
           </Typo.Caption>
