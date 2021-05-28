@@ -1,5 +1,6 @@
 import { MultipleQueriesResponse } from '@algolia/client-search'
 import flatten from 'lodash.flatten'
+import uniqBy from 'lodash.uniqby'
 import { useEffect, useState } from 'react'
 import { useQueries } from 'react-query'
 
@@ -60,7 +61,7 @@ export const useHomeAlgoliaModules = (
             setAlgoliaModules((prevAlgoliaModules) => ({
               ...prevAlgoliaModules,
               [response.moduleId]: {
-                hits: hits.filter(filterAlgoliaHit).map(transformAlgoliaHit),
+                hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformAlgoliaHit), 'objectID'),
                 nbHits,
               },
             }))

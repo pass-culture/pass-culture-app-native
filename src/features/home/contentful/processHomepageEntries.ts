@@ -30,10 +30,18 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
 
     const contentType = getContentType(module)
     if (contentType === 'algolia') {
-      const { algoliaParameters, displayParameters, cover } = fields as AlgoliaFields
+      const {
+        algoliaParameters,
+        displayParameters,
+        cover,
+        additionalAlgoliaParameters = [],
+      } = fields as AlgoliaFields
       if (!hasAtLeastOneField(algoliaParameters)) return
 
-      const algolia = [algoliaParameters.fields]
+      const algolia = [
+        algoliaParameters.fields,
+        ...additionalAlgoliaParameters.filter(hasAtLeastOneField).map(({ fields }) => fields),
+      ]
       const { fields: display } = displayParameters
 
       if (cover && hasAtLeastOneField(cover)) {
