@@ -41,11 +41,13 @@ export type RootStackParamList = {
   FavoritesSorts: undefined
   IdCheck: { email: string; licence_token?: string; expiration_timestamp?: number | null }
   IdCheckUnavailable: undefined
+  IdCheckTooManyAttempts: undefined
   Login: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
   Maintenance: undefined
   Navigation: undefined
   NavigationIdCheckErrors: undefined
   NotificationSettings: undefined
+  NotEligible: undefined
   Offer: {
     id: number
     from: Referrals
