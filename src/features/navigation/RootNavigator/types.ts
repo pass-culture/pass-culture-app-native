@@ -29,12 +29,14 @@ export type RootStackParamList = {
   ChangePassword: undefined
   CheatCodes: undefined
   CheatMenu: undefined
+  ConfirmDeleteProfile: undefined
   BookingConfirmation: { offerId: number; bookingId: number }
   BookingDetails: { id: number; shouldFetchAll: boolean }
   BeneficiaryRequestSent: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined
   DeeplinkImporter: undefined
+  DeleteProfileSuccess: undefined
   EligibilityConfirmed: undefined
   EndedBookings: undefined
   ForgottenPassword: undefined
@@ -58,8 +60,6 @@ export type RootStackParamList = {
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
-  ConfirmDeleteProfile: undefined
-  DeleteProfileSuccess: undefined
   LocationFilter: undefined
   LocationPicker: undefined
   Profile: undefined

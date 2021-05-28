@@ -89,6 +89,7 @@ export function useLogoutRoutine(): () => Promise<void> {
 
   return async () => {
     BatchUser.editor().setIdentifier(null).save()
+    analytics.logLogout()
     await storage.clear('access_token')
     await clearRefreshToken()
     await cleanProfile()

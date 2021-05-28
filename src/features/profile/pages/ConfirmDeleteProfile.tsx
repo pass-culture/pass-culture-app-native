@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { useNotifyAccountSuspend } from 'features/auth/api'
 import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { analytics } from 'libs/analytics'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Background } from 'ui/svg/Background'
@@ -20,7 +19,6 @@ export function ConfirmDeleteProfile() {
 
   function onAccountSuspendSuccess() {
     navigate('DeleteProfileSuccess')
-    analytics.logLogout()
     signOut()
   }
 
