@@ -7,16 +7,13 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { Confidentiality } from 'ui/svg/icons/Confidentiality'
+import { AccountLocked } from 'ui/svg/icons/AccountLocked'
 import { Email } from 'ui/svg/icons/Email'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function TooManyAttempts() {
   return (
-    <GenericInfoPage
-      title={t`Trop de tentatives !`}
-      icon={Confidentiality}
-      iconSize={getSpacing(45)}>
+    <GenericInfoPage title={t`Trop de tentatives !`} icon={AccountLocked}>
       <StyledBody>
         {t`Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :`}
       </StyledBody>
@@ -27,7 +24,7 @@ export function TooManyAttempts() {
         onPress={contactSupport.forPhoneNumberConfirmation}
         inline
       />
-      <Spacer.Column numberOfSpaces={17} />
+      <Spacer.Column numberOfSpaces={15} />
       <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )
