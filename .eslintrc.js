@@ -18,6 +18,7 @@ module.exports = {
   },
   rules: {
     'local-rules/no-allow-console': ['error'],
+    'local-rules/no-string-check-before-component': ['warn'],
     '@typescript-eslint/ban-ts-comment': [
       2, // error
       {
@@ -172,8 +173,8 @@ module.exports = {
         jest: true,
       },
       rules: {
-        '@typescript-eslint/no-empty-function' : 'off'
-      }
+        '@typescript-eslint/no-empty-function': 'off',
+      },
     },
   ],
 }
