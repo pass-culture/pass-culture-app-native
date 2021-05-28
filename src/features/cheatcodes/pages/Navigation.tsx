@@ -291,8 +291,8 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={`Temporary IdCheck`}
-            onPress={() => navigation.navigate('TemporaryIdCheck')}
+            title={`PhoneValidation`}
+            onPress={() => navigation.navigate('PhoneValidation')}
           />
         </Row>
         <Row half>
