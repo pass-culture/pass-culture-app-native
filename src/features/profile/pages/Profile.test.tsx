@@ -237,7 +237,6 @@ describe('Profile component', () => {
       const row = getByTestId('row-signout')
       fireEvent.press(row)
 
-      expect(analytics.logLogout).toBeCalled()
       expect(mockSignOut).toBeCalled()
     })
   })

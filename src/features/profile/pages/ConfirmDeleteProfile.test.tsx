@@ -3,9 +3,7 @@ import { useMutation } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
-import { goBack } from '__mocks__/@react-navigation/native'
-import { analytics } from 'libs/analytics'
+import { navigate, goBack } from '__mocks__/@react-navigation/native'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -20,7 +18,7 @@ jest.mock('react-query')
 const mockSignOut = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
+  useLogoutRoutine: () => mockSignOut,
 }))
 
 const mockShowErrorSnackBar = jest.fn()
@@ -49,7 +47,6 @@ describe('ConfirmDeleteProfile component', () => {
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toHaveBeenCalledWith('DeleteProfileSuccess')
-      expect(analytics.logLogout).toBeCalled()
       expect(mockSignOut).toBeCalled()
     })
   })
