@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-05-28 14:08+0200\n"
+"POT-Creation-Date: 2021-05-28 14:28+0200\n"
 "Mime-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1565,7 +1565,7 @@ msgstr "Vérifier mon éligibilité"
 
 #: src/libs/i18n.test.ts:19
 msgid "Welcome to Pass Culture"
-msgstr "Welcome to Pass Culture"
+msgstr "Bienvenue à Pass Culture"
 
 #: src/features/bookings/helpers.ts:87
 msgid "activate before date"

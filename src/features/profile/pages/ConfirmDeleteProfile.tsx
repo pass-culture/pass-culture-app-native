@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useNotifyAccountSuspend } from 'features/auth/api'
+import { useAccountSuspend } from 'features/auth/api'
 import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AppButton } from 'ui/components/buttons/AppButton'
@@ -29,7 +29,7 @@ export function ConfirmDeleteProfile() {
     })
   }
 
-  const { mutate: notifyAccountSuspend, isLoading } = useNotifyAccountSuspend(
+  const { mutate: notifyAccountSuspend, isLoading } = useAccountSuspend(
     onAccountSuspendSuccess,
     onAccountSuspendFailure
   )
