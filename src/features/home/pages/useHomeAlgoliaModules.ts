@@ -1,10 +1,15 @@
-import { SearchResponse } from '@algolia/client-search'
+import { MultipleQueriesResponse } from '@algolia/client-search'
+import flatten from 'lodash.flatten'
 import { useEffect, useState } from 'react'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
-import { fetchAlgolia, filterAlgoliaHit, useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
+import { AlgoliaHit, parseAlgoliaParameters, ParsedAlgoliaParameters } from 'libs/algolia'
+import {
+  fetchMultipleAlgolia,
+  filterAlgoliaHit,
+  useTransformAlgoliaHits,
+} from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -15,17 +20,16 @@ export type AlgoliaModuleResponse = {
   }
 }
 
-const isAlgoliaModule = (
+const isParsedParameter = (parameter: unknown): parameter is ParsedAlgoliaParameters =>
+  typeof parameter === 'object' && parameter !== null
+
+const isMultipleAlgoliaHit = (
   response: unknown
-): response is SearchResponse<AlgoliaHit> & { moduleId: string } => {
-  return (
-    typeof response === 'object' &&
-    response !== null &&
-    'hits' in response &&
-    'nbHits' in response &&
-    'moduleId' in response
-  )
-}
+): response is MultipleQueriesResponse<AlgoliaHit> & { moduleId: string } =>
+  typeof response === 'object' &&
+  response !== null &&
+  'results' in response &&
+  'moduleId' in response
 
 export const useHomeAlgoliaModules = (
   offerModules: Array<Offers | OffersWithCover>
@@ -36,27 +40,28 @@ export const useHomeAlgoliaModules = (
 
   const queries = useQueries(
     offerModules.map(({ algolia, moduleId }) => {
-      const parsedParameters = parseAlgoliaParameters({
-        geolocation: position,
-        parameters: algolia,
-      })
+      const parsedParameters = algolia
+        .map((parameters) => parseAlgoliaParameters({ geolocation: position, parameters }))
+        .filter(isParsedParameter)
 
       const fetchModule = async () => {
-        if (!parsedParameters) return undefined
-        const response = await fetchAlgolia<AlgoliaHit>(parsedParameters)
+        const response = await fetchMultipleAlgolia(parsedParameters)
         return { moduleId: moduleId, ...response }
       }
 
       return {
         queryKey: [QueryKeys.ALGOLIA_MODULE, moduleId],
         queryFn: fetchModule,
-        onSuccess: (data) => {
-          if (isAlgoliaModule(data)) {
+        onSuccess: (response) => {
+          if (isMultipleAlgoliaHit(response)) {
+            const hits = flatten(response.results.map(({ hits }) => hits))
+            const nbHits = response.results.reduce((prev, curr) => prev + curr.nbHits, 0)
+
             setAlgoliaModules((prevAlgoliaModules) => ({
               ...prevAlgoliaModules,
-              [data.moduleId]: {
-                hits: data.hits.filter(filterAlgoliaHit).map(transformAlgoliaHit),
-                nbHits: data.nbHits,
+              [response.moduleId]: {
+                hits: hits.filter(filterAlgoliaHit).map(transformAlgoliaHit),
+                nbHits,
               },
             }))
           }
