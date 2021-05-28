@@ -118,7 +118,7 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
   return (
     <React.Fragment>
       <BottomContentPage>
-        {settings?.isRecaptchaEnabled && (
+        {!!settings?.isRecaptchaEnabled && (
           <ReCaptcha
             onClose={onReCaptchaClose}
             onError={onReCaptchaError}
@@ -183,7 +183,9 @@ export const AcceptCgu: FC<Props> = ({ route }) => {
                 areSettingsLoading
               }
             />
-            {errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
+            {!!errorMessage && (
+              <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />
+            )}
             <Spacer.Column numberOfSpaces={5} />
             <StepDots numberOfSteps={numberOfSteps} currentStep={numberOfSteps} />
           </CardContent>

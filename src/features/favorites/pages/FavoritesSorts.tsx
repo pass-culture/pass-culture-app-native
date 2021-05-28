@@ -101,9 +101,9 @@ export const FavoritesSorts: React.FC = () => {
                   {label}
                 </Typo.ButtonText>
                 <Spacer.Flex />
-                {isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+                {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
               </LabelContainer>
-              {sortBy === 'AROUND_ME' && isPositionUnavailable && (
+              {!!(sortBy === 'AROUND_ME' && isPositionUnavailable) && (
                 <InputError
                   visible
                   messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}

@@ -30,7 +30,7 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, 
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Title4>{t`Où ?`}</Typo.Title4>
-      {address && (
+      {!!address && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Typo.Caption>{t`Adresse`}</Typo.Caption>
@@ -38,7 +38,7 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, 
           <StyledAddress>{address}</StyledAddress>
         </React.Fragment>
       )}
-      {distanceToOffer && (
+      {!!distanceToOffer && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Typo.Caption>{t`Distance`}</Typo.Caption>
@@ -47,7 +47,7 @@ export const OfferWhereSection: React.FC<Props> = ({ address, offerCoordinates, 
         </React.Fragment>
       )}
 
-      {canOpenItinerary && (
+      {!!canOpenItinerary && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Separator />

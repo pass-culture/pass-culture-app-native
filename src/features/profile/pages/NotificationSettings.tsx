@@ -188,7 +188,7 @@ export function NotificationSettings() {
           </React.Fragment>
         )}
         <Spacer.Flex flex={1} />
-        {isLoggedIn && (
+        {!!isLoggedIn && (
           <ButtonPrimary
             title={t`Enregistrer`}
             isLoading={isUpdating}

@@ -97,7 +97,7 @@ export const LocationFilter: React.FC = () => {
           locationType={LocationType.AROUND_ME}
           onPress={onPressAroundMe}
         />
-        {isPositionUnavailable && (
+        {!!isPositionUnavailable && (
           <InputError
             visible
             messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}

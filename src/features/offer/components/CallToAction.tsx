@@ -23,7 +23,7 @@ export const CallToAction: React.FC<Props> = ({
   <Container onPress={onPress} disabled={isDisabled}>
     {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
     <LegendContainer>
-      {isExternal && <ExternalLinkSite color={ColorsEnum.WHITE} />}
+      {!!isExternal && <ExternalLinkSite color={ColorsEnum.WHITE} />}
       <Title adjustsFontSizeToFit numberOfLines={1}>
         {wording}
       </Title>

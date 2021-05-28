@@ -34,11 +34,11 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
         <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(iconName)} />
         <AttributesView>
           <BookingItemTitle ticketWidth={onGoingTicketWidth} title={stock.offer.name} />
-          {Boolean(dateLabel) && <DateLabel color={ColorsEnum.GREY_DARK}>{dateLabel}</DateLabel>}
+          {!!dateLabel && <DateLabel color={ColorsEnum.GREY_DARK}>{dateLabel}</DateLabel>}
           <Spacer.Column numberOfSpaces={1} />
-          {bookingProperties.isDuo && <DuoBold />}
+          {!!bookingProperties.isDuo && <DuoBold />}
           <Spacer.Flex />
-          {Boolean(withdrawLabel) && (
+          {!!withdrawLabel && (
             <WithDrawContainer>
               <Clock size={20} color={ColorsEnum.PRIMARY} />
               <Spacer.Row numberOfSpaces={1} />

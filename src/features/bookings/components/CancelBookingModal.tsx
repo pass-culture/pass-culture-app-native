@@ -70,7 +70,7 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
       onRightIconPress={dismissModal}>
       <ModalContent>
         <OfferName>{booking.stock.offer.name}</OfferName>
-        {refundRule && (
+        {!!refundRule && (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={2} />
             <Refund>{refundRule}</Refund>

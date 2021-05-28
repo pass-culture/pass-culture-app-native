@@ -19,7 +19,7 @@ export function PersonalData() {
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={14} />
       <Container>
-        {user?.isBeneficiary && (
+        {!!user?.isBeneficiary && (
           <React.Fragment>
             <Row>
               <Typo.Caption>{t`Prénom et nom`}</Typo.Caption>
@@ -35,7 +35,7 @@ export function PersonalData() {
           <Typo.Body>{user?.email}</Typo.Body>
         </Row>
         <Separator />
-        {user?.isBeneficiary && (
+        {!!user?.isBeneficiary && (
           <React.Fragment>
             <Row>
               <Typo.Caption>{t`Numéro de téléphone`}</Typo.Caption>

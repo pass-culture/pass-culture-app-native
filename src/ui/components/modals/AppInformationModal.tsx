@@ -26,7 +26,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
   const paddingBottom = Math.max(bottom, getSpacing(3))
   return (
     <React.Fragment>
-      {visible && (
+      {!!visible && (
         <Modal
           animationType="fade"
           statusBarTranslucent

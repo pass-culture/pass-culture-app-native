@@ -30,7 +30,7 @@ export function IdCheckUnavailable() {
       icon={({ color }) => <HappyFaceStars size={220} color={color} />}>
       <StyledBody>{t`Vous êtes actuellement très nombreux à demander les 300€ et notre service rencontre quelques difficultés.`}</StyledBody>
       <Spacer.Column numberOfSpaces={6} />
-      {settings?.displayDmsRedirection && (
+      {!!settings?.displayDmsRedirection && (
         <React.Fragment>
           <StyledBody>{t`Cependant, tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées, et on reviendra vers toi d'ici quelques jours au plus tard :`}</StyledBody>
           <Spacer.Column numberOfSpaces={8} />

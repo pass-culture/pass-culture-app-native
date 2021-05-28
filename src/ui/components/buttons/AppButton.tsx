@@ -58,7 +58,7 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
         <Logo testID="button-isloading-icon" color={props.loadingIconColor} size={props.iconSize} />
       ) : (
         <Fragment>
-          {Icon && <Icon testID="button-icon" color={props.iconColor} size={props.iconSize} />}
+          {!!Icon && <Icon testID="button-icon" color={props.iconColor} size={props.iconSize} />}
           <Title
             testID={titleTestID}
             textColor={props.textColor}

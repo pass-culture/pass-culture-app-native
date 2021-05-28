@@ -45,7 +45,7 @@ export const HomeHeader: FunctionComponent = function () {
       <HeaderBackgroundWrapper>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
-      {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
+      {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <CheatCodeButtonContainer onPress={() => navigation.navigate('CheatMenu')}>
           <Text>{t`CheatMenu`}</Text>
         </CheatCodeButtonContainer>

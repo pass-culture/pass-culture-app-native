@@ -109,7 +109,7 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   return (
     <BottomContentPage>
-      {settings?.isRecaptchaEnabled && (
+      {!!settings?.isRecaptchaEnabled && (
         <ReCaptcha
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}
@@ -144,7 +144,7 @@ export const ForgottenPassword: FunctionComponent = () => {
             textContentType="emailAddress"
             value={email}
           />
-          {errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={1} />}
+          {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={1} />}
         </StyledInput>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary

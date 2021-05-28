@@ -27,7 +27,7 @@ export function AccountCreated() {
 
   return (
     <GenericInfoPage title={t`Ton compte a été activé !`} animation={IlluminatedSmileyAnimation}>
-      {shouldNavigateToCulturalSurvey && (
+      {!!shouldNavigateToCulturalSurvey && (
         <StyledBody>
           {t`Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées.`}
         </StyledBody>

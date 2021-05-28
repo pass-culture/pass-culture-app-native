@@ -32,7 +32,7 @@ export const LocationChoice: React.FC<Props> = (props) => {
           {label}
         </Typo.ButtonText>
       </FirstPart>
-      {isSelected && (
+      {!!isSelected && (
         <ValidateIconContainer>
           <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />
         </ValidateIconContainer>
