@@ -77,7 +77,7 @@ export type RootStackParamList = {
     params: TabParamList[TabRouteName]
   }
   PhoneValidation: undefined
-  TooManyAttempts: undefined
+  PhoneValidationTooManyAttempts: undefined
   VerifyEligibility: { email: string; licence_token?: string; expiration_timestamp?: number | null }
   FirstTutorial: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined

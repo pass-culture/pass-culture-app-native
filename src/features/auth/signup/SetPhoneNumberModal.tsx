@@ -71,7 +71,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     const { content } = error as ApiError
     if (content.code === 'TOO_MANY_SMS_SENT') {
       props.dismissModal()
-      navigate('TooManyAttempts')
+      navigate('PhoneValidationTooManyAttempts')
     } else {
       const message = extractApiErrorMessage(error)
       setInvalidPhoneNumberMessage(message)

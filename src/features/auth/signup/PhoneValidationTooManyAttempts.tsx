@@ -11,7 +11,7 @@ import { AccountLocked } from 'ui/svg/icons/AccountLocked'
 import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-export function TooManyAttempts() {
+export function PhoneValidationTooManyAttempts() {
   return (
     <GenericInfoPage title={t`Trop de tentatives !`} icon={AccountLocked}>
       <StyledBody>
