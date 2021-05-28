@@ -244,7 +244,6 @@ export const Profile: React.FC = () => {
             <SectionRow
               title={t`Déconnexion`}
               onPress={() => {
-                analytics.logLogout()
                 signOut()
               }}
               type="clickable"
