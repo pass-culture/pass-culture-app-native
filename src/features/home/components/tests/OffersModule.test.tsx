@@ -15,17 +15,25 @@ import { OffersModule } from '../OffersModule'
 mockdate.set(new Date(2020, 10, 16))
 
 const props = {
-  algolia: {} as AlgoliaParametersFields,
+  algolia: [{}] as AlgoliaParametersFields[],
   display: {
     minOffers: 0,
     title: 'Module title',
     layout: 'one-item-medium',
   } as DisplayParametersFields,
-  hits: mockedAlgoliaResponse.hits.map(transformAlgoliaHit('fakeUrlPrefix')),
-  nbHits: mockedAlgoliaResponse.nbHits,
+  moduleId: 'moduleId',
   cover: null,
   position: null,
 }
+
+const mockHits = mockedAlgoliaResponse.hits.map(transformAlgoliaHit('fakeUrlPrefix'))
+let mockNbHits = mockedAlgoliaResponse.nbHits
+jest.mock('features/home/pages/useAlgoliaHits', () => ({
+  useAlgoliaHits: () => ({
+    hits: mockHits,
+    nbHits: mockNbHits,
+  }),
+}))
 
 const nativeEventMiddle = {
   layoutMeasurement: { width: 1000 },
@@ -75,7 +83,7 @@ describe('OffersModule component - Analytics', () => {
       await flushAllPromises()
     })
 
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, props.nbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, mockNbHits)
   })
 
   it('should trigger logEvent "AllTilesSeen" only once', async () => {
@@ -87,7 +95,7 @@ describe('OffersModule component - Analytics', () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
       await flushAllPromises()
     })
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, props.nbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, mockNbHits)
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
 
     scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
@@ -99,7 +107,7 @@ describe('OffersModule component - Analytics', () => {
       reactQueryProviderHOC(
         <OffersModule
           {...props}
-          algolia={{ ...props.algolia, title: 'Algolia title' }}
+          algolia={[{ ...props.algolia[0], title: 'Algolia title' }]}
           display={{ ...props.display, title: '' }}
           index={1}
         />
@@ -112,13 +120,12 @@ describe('OffersModule component - Analytics', () => {
       await flushAllPromises()
     })
 
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith('Algolia title', props.nbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith('Algolia title', mockNbHits)
   })
 
   it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', async () => {
-    const component = render(
-      reactQueryProviderHOC(<OffersModule {...props} nbHits={10} index={1} />)
-    )
+    mockNbHits = 10
+    const component = render(reactQueryProviderHOC(<OffersModule {...props} index={1} />))
 
     await act(async () => {
       fireEvent.press(component.getByText('En voir plus'))

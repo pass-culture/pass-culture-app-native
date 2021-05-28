@@ -6,11 +6,8 @@ import {
   ProcessedModule,
 } from 'features/home/contentful'
 import { isArrayOfOfferTypeguard } from 'features/home/typeguards'
-import { AlgoliaHit } from 'libs/algolia'
 
 import { RecommendationPane } from '../contentful/moduleTypes'
-
-import { AlgoliaModuleResponse } from './useHomeAlgoliaModules'
 
 export const showBusinessModule = (
   targetNotConnectedUsersOnly: boolean | undefined,
@@ -39,24 +36,17 @@ export const getRecommendationModule = (
 ): RecommendationPane | undefined =>
   modules.find((module) => module instanceof RecommendationPane) as RecommendationPane | undefined
 
-export const getModulesToDisplay = (
-  modules: ProcessedModule[],
-  algoliaModules: AlgoliaModuleResponse,
-  recommendedHits: AlgoliaHit[],
-  isLoggedIn: boolean
-) =>
+export const getModulesToDisplay = (modules: ProcessedModule[], isLoggedIn: boolean) =>
   modules.filter((module: ProcessedModule) => {
     if (module instanceof BusinessPane) {
       return showBusinessModule(module.targetNotConnectedUsersOnly, isLoggedIn)
     }
-    if (module instanceof ExclusivityPane) return true
     if (module instanceof RecommendationPane) {
-      return recommendedHits.length > module.display.minOffers
+      return isLoggedIn
     }
-
-    if (module.moduleId in algoliaModules) {
-      const { hits, nbHits } = algoliaModules[module.moduleId]
-      return hits.length > 0 && nbHits >= module.display.minOffers
-    }
-    return false
+    return (
+      module instanceof ExclusivityPane ||
+      module instanceof OffersWithCover ||
+      module instanceof Offers
+    )
   })

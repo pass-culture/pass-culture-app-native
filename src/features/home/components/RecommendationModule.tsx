@@ -6,16 +6,20 @@ import {
   ScrollView,
 } from 'react-native'
 import { GeoCoordinates } from 'react-native-geolocation-service'
+import { useIsFetching } from 'react-query'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
+import { SkeletonList, useShowSkeleton } from 'features/home/components/skeleton'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { AlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { isCloseToEndHorizontal } from 'libs/analytics.utils'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
+import { QueryKeys } from 'libs/queryKeys'
 import { ColorsEnum, Spacer } from 'ui/theme'
+import { getAlgoliaDimensions } from 'ui/theme/grid'
 
 type RecommendationModuleProps = {
   display: DisplayParametersFields
@@ -28,6 +32,11 @@ type RecommendationModuleProps = {
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { display, isBeneficiary, position, index, setRecommendationY, hits } = props
+  const fetchingOfferIds = useIsFetching(QueryKeys.RECOMMENDATION_OFFER_IDS)
+  const fetchingHits = useIsFetching(QueryKeys.RECOMMENDATION_HITS)
+  const fetchingCount = fetchingOfferIds + fetchingHits
+  const { width, height } = getAlgoliaDimensions(display.layout)
+  const showSkeleton = useShowSkeleton(fetchingCount === 0)
 
   const moduleName = display.title
   const logHasSeenAllTiles = useFunctionOnce(() =>
@@ -72,6 +81,8 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     []
   )
 
+  if (fetchingCount === 0 && hits.length === 0) return <React.Fragment />
+
   return (
     <React.Fragment>
       <ModuleTitle
@@ -86,6 +97,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         scrollEventThrottle={200}
         onScroll={checkIfAllTilesHaveBeenSeen}>
         <Spacer.Row numberOfSpaces={6} />
+        {showSkeleton ? <SkeletonList width={width} height={height} /> : null}
         {hits.map(renderItem)}
         <Spacer.Row numberOfSpaces={6} />
       </ScrollView>

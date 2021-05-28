@@ -1,5 +1,6 @@
 import { Dimensions, PixelRatio } from 'react-native'
 
+import { Layout } from 'features/home/contentful'
 import { getSpacing } from 'ui/theme/spacing'
 
 export enum BorderRadiusEnum {
@@ -45,4 +46,10 @@ export const getGrid = (grid: Grid, axis: Axis = Axis.WIDTH) => {
     return grid.sm
   }
   return grid.default
+}
+
+export const getAlgoliaDimensions = (layout?: Layout): { height: number; width: number } => {
+  const height = layout === 'two-items' ? LENGTH_M : LENGTH_L
+  const width = height * RATIO_ALGOLIA
+  return { height, width }
 }

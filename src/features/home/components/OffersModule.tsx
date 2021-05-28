@@ -5,32 +5,38 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
+import { SkeletonList, useShowSkeleton } from 'features/home/components/skeleton'
 import { AlgoliaParametersFields, DisplayParametersFields } from 'features/home/contentful'
+import { useAlgoliaHits } from 'features/home/pages/useAlgoliaHits'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { isCloseToEndHorizontal } from 'libs/analytics.utils'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
-import { ColorsEnum, LENGTH_M, RATIO_ALGOLIA, Spacer } from 'ui/theme'
+import { ColorsEnum, Spacer } from 'ui/theme'
+import { getAlgoliaDimensions } from 'ui/theme/grid'
 
 import { Cover } from '../atoms/Cover'
 
 type OffersModuleProps = {
-  algolia: AlgoliaParametersFields
+  algolia: AlgoliaParametersFields[]
   display: DisplayParametersFields
   isBeneficiary?: boolean
   position: GeoCoordinates | null
-  hits: AlgoliaHit[]
-  nbHits: number
   cover: string | null
   index: number
+  moduleId: string
 }
 
 export const OffersModule = (props: OffersModuleProps) => {
-  const { nbHits, display, algolia: parameters, position, index, isBeneficiary, hits } = props
+  const { display, algolia, position, index, isBeneficiary, moduleId } = props
   const { navigate } = useNavigation<UseNavigationType>()
+  const { hits, nbHits } = useAlgoliaHits(algolia, moduleId, position)
+  const showSkeleton = useShowSkeleton(hits.length > 0)
+  const { width, height } = getAlgoliaDimensions(display.layout)
 
+  const parameters = algolia[0]
   const moduleName = display.title || parameters.title
   const logHasSeenAllTiles = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
@@ -67,12 +73,9 @@ export const OffersModule = (props: OffersModuleProps) => {
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
 
-  const imageHeight = display.layout === 'two-items' ? LENGTH_M : LENGTH_M
-  const imageWidth = imageHeight * RATIO_ALGOLIA
-  const padding = showSeeMore ? imageWidth : 0
-
   const checkIfAllTilesHaveBeenSeen = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const padding = showSeeMore ? width : 0
       if (isCloseToEndHorizontal({ ...nativeEvent, padding })) {
         logHasSeenAllTiles()
       }
@@ -110,6 +113,7 @@ export const OffersModule = (props: OffersModuleProps) => {
             <Spacer.Row numberOfSpaces={4} />
           </Row>
         )}
+        {showSkeleton ? <SkeletonList width={width} height={height} /> : null}
         {hits.map(renderItem)}
         {!!showSeeMore && <SeeMore layout={display.layout} onPress={onPressSeeMore} />}
         <Spacer.Row numberOfSpaces={6} />

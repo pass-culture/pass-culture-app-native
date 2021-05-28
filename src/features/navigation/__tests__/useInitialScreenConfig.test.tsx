@@ -17,6 +17,9 @@ import { useInitialScreenConfig } from '../RootNavigator/useInitialScreenConfig'
 
 const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('features/auth/AuthContext')
+jest.mock('react-query', () => ({
+  useIsFetching: () => 0,
+}))
 
 describe('useInitialScreenConfig()', () => {
   afterEach(() => {

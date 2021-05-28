@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 
 import { Layout } from 'features/home/contentful'
 import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
-import { LENGTH_M, LENGTH_L, RATIO_ALGOLIA, MARGIN_DP, ColorsEnum, getSpacing } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { RATIO_ALGOLIA, MARGIN_DP, ColorsEnum, getSpacing } from 'ui/theme'
+import { BorderRadiusEnum, getAlgoliaDimensions } from 'ui/theme/grid'
 
 interface CoverProps {
   layout: Layout
@@ -13,7 +13,8 @@ interface CoverProps {
 }
 
 export const Cover = ({ layout, uri }: CoverProps) => {
-  const imageHeight = MARGIN_DP + (layout === 'two-items' ? LENGTH_M : LENGTH_L)
+  const { height } = getAlgoliaDimensions(layout)
+  const imageHeight = MARGIN_DP + height
   const imageWidth = PixelRatio.roundToNearestPixel(imageHeight * RATIO_ALGOLIA)
 
   return (

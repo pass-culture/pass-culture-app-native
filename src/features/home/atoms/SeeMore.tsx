@@ -3,23 +3,26 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ColorsEnum, getSpacing, LENGTH_L, LENGTH_M, Spacer, Typo, getShadow } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
+import { getAlgoliaDimensions } from 'ui/theme/grid'
 
 import { Layout } from '../contentful'
 interface SeeMoreProps {
   layout?: Layout
   onPress: () => void
 }
+
 export const SeeMore: React.FC<SeeMoreProps> = ({ layout, onPress }) => {
-  const containerHeight = layout && layout === 'two-items' ? LENGTH_M : LENGTH_L
+  const { height } = getAlgoliaDimensions(layout)
+
   return (
-    <Container containerHeight={containerHeight}>
+    <Container containerHeight={height}>
       <Spacer.Column numberOfSpaces={2} />
       <ClickableArea activeOpacity={1} onPress={onPress}>
         <Row>
           <Spacer.Row numberOfSpaces={16} />
           <RoundContainer onPress={onPress}>
-            <ArrowNext size={56} color={ColorsEnum.PRIMARY} testID={'arrow-next'} />
+            <ArrowNext size={56} color={ColorsEnum.PRIMARY} testID="arrow-next" />
           </RoundContainer>
           <Spacer.Row numberOfSpaces={16} />
         </Row>

@@ -10,8 +10,8 @@ import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
-import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { MARGIN_DP } from 'ui/theme'
+import { BorderRadiusEnum, getAlgoliaDimensions } from 'ui/theme/grid'
 
 import { ImageCaption } from './ImageCaption'
 import { OfferCaption } from './OfferCaption'
@@ -64,10 +64,9 @@ export const mergeOfferData = (offer: PartialOffer) => (
 
 export const OfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
-  const { layout = 'one-item-medium', moduleName, isBeneficiary, ...offer } = props
-  const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
-  const imageWidth = imageHeight * RATIO_ALGOLIA
   const queryClient = useQueryClient()
+  const { layout = 'one-item-medium', moduleName, isBeneficiary, ...offer } = props
+  const { height, width } = getAlgoliaDimensions(layout)
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from algolia for a smooth transition
@@ -80,8 +79,8 @@ export const OfferTile = (props: OfferTileProps) => {
     })
   }
   const imageStyle = {
-    height: imageHeight,
-    width: imageWidth,
+    height,
+    width,
     borderTopLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
     borderTopRightRadius: BorderRadiusEnum.BORDER_RADIUS,
   }
@@ -89,19 +88,15 @@ export const OfferTile = (props: OfferTileProps) => {
 
   return (
     <Container>
-      <TouchableHighlight imageHeight={imageHeight} onPress={handlePressOffer}>
+      <TouchableHighlight imageHeight={height} onPress={handlePressOffer}>
         <View>
           <FastImage style={imageStyle} source={imageSource} testID="offerTileImage" />
-          <ImageCaption
-            imageWidth={imageWidth}
-            category={offer.category}
-            distance={offer.distance}
-          />
+          <ImageCaption imageWidth={width} category={offer.category} distance={offer.distance} />
         </View>
       </TouchableHighlight>
 
       <OfferCaption
-        imageWidth={imageWidth}
+        imageWidth={width}
         name={offer.name}
         date={offer.date}
         isDuo={offer.isDuo}

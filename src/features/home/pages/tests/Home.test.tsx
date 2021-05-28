@@ -21,7 +21,7 @@ jest.mock('libs/environment', () => ({
   },
 }))
 
-jest.mock('features/home/pages/useShowSkeleton', () => ({
+jest.mock('features/home/components/skeleton/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 
