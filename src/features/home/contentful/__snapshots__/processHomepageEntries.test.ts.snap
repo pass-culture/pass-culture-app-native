@@ -9,13 +9,15 @@ Array [
     "offerId": "AE67",
   },
   Offers {
-    "algolia": Object {
-      "hitsPerPage": 10,
-      "tags": Array [
-        "	starter_pack_rentree",
-      ],
-      "title": "Pour bien commencer...",
-    },
+    "algolia": Array [
+      Object {
+        "hitsPerPage": 10,
+        "tags": Array [
+          "	starter_pack_rentree",
+        ],
+        "title": "Pour bien commencer...",
+      },
+    ],
     "display": Object {
       "layout": "one-item-medium",
       "minOffers": 2,
@@ -24,13 +26,15 @@ Array [
     "moduleId": "GlQb8Zg3n1PoYVmOyVCgW",
   },
   Offers {
-    "algolia": Object {
-      "hitsPerPage": 4,
-      "tags": Array [
-        "visites",
-      ],
-      "title": "Puisque tu aimes les visites",
-    },
+    "algolia": Array [
+      Object {
+        "hitsPerPage": 4,
+        "tags": Array [
+          "visites",
+        ],
+        "title": "Puisque tu aimes les visites",
+      },
+    ],
     "display": Object {
       "layout": "two-items",
       "minOffers": 2,
@@ -39,13 +43,15 @@ Array [
     "moduleId": "5u3NaFTcu2XR5KgJ1OAg8C",
   },
   Offers {
-    "algolia": Object {
-      "hitsPerPage": 4,
-      "tags": Array [
-        "offre_du_moment",
-      ],
-      "title": "Les offres du moment",
-    },
+    "algolia": Array [
+      Object {
+        "hitsPerPage": 4,
+        "tags": Array [
+          "offre_du_moment",
+        ],
+        "title": "Les offres du moment",
+      },
+    ],
     "display": Object {
       "layout": "one-item-medium",
       "minOffers": 1,
@@ -54,12 +60,14 @@ Array [
     "moduleId": "1LgDMVOKdH3agA0WG2LFEr",
   },
   Offers {
-    "algolia": Object {
-      "beginningDatetime": "2020-09-11T00:01+02:00",
-      "endingDatetime": "2020-09-12T23:59+02:00",
-      "hitsPerPage": 30,
-      "title": "Week-end",
-    },
+    "algolia": Array [
+      Object {
+        "beginningDatetime": "2020-09-11T00:01+02:00",
+        "endingDatetime": "2020-09-12T23:59+02:00",
+        "hitsPerPage": 30,
+        "title": "Week-end",
+      },
+    ],
     "display": Object {
       "layout": "two-items",
       "minOffers": 2,
@@ -98,13 +106,15 @@ Array [
     "url": "https://aide.passculture.app/fr/",
   },
   Offers {
-    "algolia": Object {
-      "hitsPerPage": 10,
-      "tags": Array [
-        "duo",
-      ],
-      "title": "Offres duo",
-    },
+    "algolia": Array [
+      Object {
+        "hitsPerPage": 10,
+        "tags": Array [
+          "duo",
+        ],
+        "title": "Offres duo",
+      },
+    ],
     "display": Object {
       "layout": "two-items",
       "minOffers": 2,
@@ -113,13 +123,15 @@ Array [
     "moduleId": "3HnwRT9WtAl8pxywz83sX3",
   },
   OffersWithCover {
-    "algolia": Object {
-      "hitsPerPage": 2,
-      "tags": Array [
-        "foot",
-      ],
-      "title": "Sélection Mbappé",
-    },
+    "algolia": Array [
+      Object {
+        "hitsPerPage": 2,
+        "tags": Array [
+          "foot",
+        ],
+        "title": "Sélection Mbappé",
+      },
+    ],
     "cover": "https://images.ctfassets.net/2bg01iqy0isv/bRKhK9wmpNkD6l5Zeo71J/cc59c22fe0382b61e831e4693e32826f/1020_Mbapp__2.png",
     "display": Object {
       "layout": "one-item-medium",
@@ -129,13 +141,15 @@ Array [
     "moduleId": "2Fjxhdirgh17ZvdPNZGDP4",
   },
   Offers {
-    "algolia": Object {
-      "hitsPerPage": 4,
-      "tags": Array [
-        "goncourt",
-      ],
-      "title": "Goncourt",
-    },
+    "algolia": Array [
+      Object {
+        "hitsPerPage": 4,
+        "tags": Array [
+          "goncourt",
+        ],
+        "title": "Goncourt",
+      },
+    ],
     "display": Object {
       "layout": "two-items",
       "minOffers": 2,
@@ -144,14 +158,16 @@ Array [
     "moduleId": "7c7xq3ulzqO2yDRJLDmths",
   },
   Offers {
-    "algolia": Object {
-      "categories": Array [
-        "Instruments de musique",
-        "Musique",
-      ],
-      "hitsPerPage": 6,
-      "title": "Musique",
-    },
+    "algolia": Array [
+      Object {
+        "categories": Array [
+          "Instruments de musique",
+          "Musique",
+        ],
+        "hitsPerPage": 6,
+        "title": "Musique",
+      },
+    ],
     "display": Object {
       "layout": "one-item-medium",
       "minOffers": 2,

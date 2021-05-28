@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
 import { AlgoliaHit } from 'libs/algolia'
@@ -13,18 +13,24 @@ jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => ({})),
 }))
 
-const fetchAlgolia = jest.spyOn(FetchAlgoliaModule, 'fetchAlgolia').mockResolvedValue({
-  hits: [
-    { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },
-    { objectID: '2', offer: { thumbUrl: 'http://to-image-two' } },
-    { objectID: '3', offer: { thumbUrl: undefined } },
-  ],
-  nbHits: 10,
-} as SearchResponse<AlgoliaHit>)
+const fetchMultipleAlgolia = jest
+  .spyOn(FetchAlgoliaModule, 'fetchMultipleAlgolia')
+  .mockResolvedValue({
+    results: [
+      {
+        hits: [
+          { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },
+          { objectID: '2', offer: { thumbUrl: 'http://to-image-two' } },
+          { objectID: '3', offer: { thumbUrl: undefined } },
+        ],
+        nbHits: 10,
+      },
+    ],
+  } as MultipleQueriesResponse<AlgoliaHit>)
 
 const offerModules = [
   new Offers({
-    algolia: { title: 'tile', hitsPerPage: 4 },
+    algolia: [{ title: 'tile', hitsPerPage: 4 }],
     display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
     moduleId: 'algoliaModuleShown',
   }),
@@ -41,7 +47,7 @@ describe('useHomeAlgoliaModules', () => {
     await cleanup()
   })
 
-  it('calls fetchAlgolia with params and returns data', async () => {
+  it('calls fetchMultipleAlgolia with params and returns data', async () => {
     mockPositionReceived = true
     const { result, waitForNextUpdate } = renderHook(
       () => useHomeAlgoliaModules(offerModules),
@@ -49,12 +55,14 @@ describe('useHomeAlgoliaModules', () => {
       { wrapper: ({ children }) => reactQueryProviderHOC(children) }
     )
 
-    expect(fetchAlgolia).toHaveBeenCalledWith({
-      ...parseAlgoliaParameters({
-        geolocation: null,
-        parameters: { title: 'tile', hitsPerPage: 4 },
-      }),
-    })
+    expect(fetchMultipleAlgolia).toHaveBeenCalledWith([
+      {
+        ...parseAlgoliaParameters({
+          geolocation: null,
+          parameters: { title: 'tile', hitsPerPage: 4 },
+        }),
+      },
+    ])
 
     await act(async () => {
       await waitForNextUpdate()

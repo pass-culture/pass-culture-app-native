@@ -1,11 +1,12 @@
-import { GetObjectsResponse, SearchResponse } from '@algolia/client-search'
+import { GetObjectsResponse, MultipleQueriesResponse, SearchResponse } from '@algolia/client-search'
 import algoliasearch from 'algoliasearch'
 
 import { SearchParameters } from 'features/search/pages/reducer'
+import { AlgoliaHit } from 'libs/algolia/algolia.d'
 import { RADIUS_FILTERS } from 'libs/algolia/enums'
 import { buildFacetFilters } from 'libs/algolia/fetchAlgolia/fetchAlgolia.facetFilters'
 import { buildNumericFilters } from 'libs/algolia/fetchAlgolia/fetchAlgolia.numericFilters'
-import { FetchAlgoliaParameters, LocationType } from 'libs/algolia/types'
+import { FetchAlgoliaParameters, LocationType, ParsedAlgoliaParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 
 const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
@@ -43,6 +44,22 @@ const buildSearchParameters = ({
   ...buildGeolocationParameter({ aroundRadius, geolocation, locationType }),
 })
 
+export const fetchMultipleAlgolia = (
+  parsedParametersList: ParsedAlgoliaParameters[]
+): Readonly<Promise<MultipleQueriesResponse<AlgoliaHit>>> => {
+  const queries = parsedParametersList.map((parsedParameters) => ({
+    indexName: env.ALGOLIA_INDEX_NAME,
+    query: '',
+    params: {
+      ...buildHitsPerPage(parsedParameters.hitsPerPage),
+      ...buildSearchParameters(parsedParameters),
+      attributesToHighlight: [], // We disable highlighting because we don't need it
+    },
+  }))
+
+  return client.multipleQueries(queries)
+}
+
 export const fetchAlgolia = <T>({
   query = '',
   page = 0,
@@ -60,7 +77,7 @@ export const fetchAlgolia = <T>({
     ...buildHitsPerPage(hitsPerPage),
     ...searchParameters,
     attributesToRetrieve: attributesToRetrieve ?? ['*'],
-    attributesToHighlight: [], // We disable highlighting for performance reasons
+    attributesToHighlight: [], // We disable highlighting because we don't need it
   })
 }
 

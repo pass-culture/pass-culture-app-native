@@ -40,7 +40,7 @@ export const HomeBody = (props: HomeBodyProps) => {
             return (
               <OffersModule
                 key={module.moduleId}
-                algolia={module.algolia}
+                algolia={module.algolia[0]}
                 display={module.display}
                 isBeneficiary={profile?.isBeneficiary}
                 position={position}

@@ -33,7 +33,7 @@ export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModu
       const { algoliaParameters, displayParameters, cover } = fields as AlgoliaFields
       if (!hasAtLeastOneField(algoliaParameters)) return
 
-      const { fields: algolia } = algoliaParameters
+      const algolia = [algoliaParameters.fields]
       const { fields: display } = displayParameters
 
       if (cover && hasAtLeastOneField(cover)) {
