@@ -18,13 +18,13 @@ import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestS
 import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
 import { IdCheck } from 'features/auth/signup/IdCheck'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
+import { PhoneValidation } from 'features/auth/signup/PhoneValidation'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
-import { TemporaryIdCheck } from 'features/auth/signup/TemporaryIdCheck'
 import { TooManyAttempts } from 'features/auth/signup/TooManyAttempts'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
@@ -122,7 +122,7 @@ const routes: Array<Route> = [
   { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
-  { name: 'TemporaryIdCheck', component: TemporaryIdCheck },
+  { name: 'PhoneValidation', component: PhoneValidation },
   { name: 'TooManyAttempts', component: TooManyAttempts },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },

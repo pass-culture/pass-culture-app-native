@@ -72,7 +72,7 @@ export type RootStackParamList = {
     screen: TabRouteName
     params: TabParamList[TabRouteName]
   }
-  TemporaryIdCheck: undefined
+  PhoneValidation: undefined
   TooManyAttempts: undefined
   VerifyEligibility: { email: string; licence_token?: string; expiration_timestamp?: number | null }
   FirstTutorial: { shouldCloseAppOnBackAction: boolean }

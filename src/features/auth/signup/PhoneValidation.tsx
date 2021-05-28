@@ -4,8 +4,9 @@ import { useAppSettings } from 'features/auth/settings'
 import { SetPhoneNumberModal } from 'features/auth/signup/SetPhoneNumberModal'
 import { SetPhoneValidationCodeModal } from 'features/auth/signup/SetPhoneValidationCodeModal'
 import { useModal } from 'ui/components/modals/useModal'
+import { Background } from 'ui/svg/Background'
 
-export const TemporaryIdCheck: React.FC = function () {
+export const PhoneValidation: React.FC = function () {
   const { data: settings } = useAppSettings()
   const [phoneNumber, setPhoneNumber] = useState('')
   const {
@@ -32,6 +33,7 @@ export const TemporaryIdCheck: React.FC = function () {
 
   return (
     <React.Fragment>
+      <Background />
       <SetPhoneNumberModal
         visible={phoneNumberModalVisible}
         dismissModal={hidePhoneNumberModal}
