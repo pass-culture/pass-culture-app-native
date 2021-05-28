@@ -132,7 +132,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       })
     })
 
-    it('should navigate to TooManyAttempts page if request fails with TOO_MANY_VALIDATION_ATTEMPTS code', async () => {
+    it('should navigate to PhoneValidationTooManyAttempts page if request fails with TOO_MANY_VALIDATION_ATTEMPTS code', async () => {
       const mockDismissModal = jest.fn()
       const response = {
         content: {
@@ -154,7 +154,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       })
 
       await waitForExpect(() => {
-        expect(navigate).toHaveBeenCalledWith('TooManyAttempts')
+        expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManyAttempts')
         expect(mockDismissModal).toHaveBeenCalled()
       })
     })

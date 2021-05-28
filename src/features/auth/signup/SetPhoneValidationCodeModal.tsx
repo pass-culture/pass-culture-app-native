@@ -95,7 +95,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     const { content } = error as { content: { code: string; message: string } }
     if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
       props.dismissModal()
-      navigate('TooManyAttempts')
+      navigate('PhoneValidationTooManyAttempts')
     } else {
       setInvalidCodeMessage(extractApiErrorMessage(error))
     }

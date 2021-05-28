@@ -309,8 +309,8 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={`Trop de tentatives`}
-            onPress={() => navigation.navigate('TooManyAttempts')}
+            title={`Phone validation too many attempts`}
+            onPress={() => navigation.navigate('PhoneValidationTooManyAttempts')}
           />
         </Row>
       </StyledContainer>

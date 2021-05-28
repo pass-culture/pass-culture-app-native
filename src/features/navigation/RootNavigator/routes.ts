@@ -20,13 +20,13 @@ import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
 import { IdCheck } from 'features/auth/signup/IdCheck'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { PhoneValidation } from 'features/auth/signup/PhoneValidation'
+import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidationTooManyAttempts'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { SetPassword } from 'features/auth/signup/SetPassword'
 import { SetPostalCode } from 'features/auth/signup/SetPostalCode'
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
-import { TooManyAttempts } from 'features/auth/signup/TooManyAttempts'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligibility'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
@@ -128,7 +128,7 @@ const routes: Array<Route> = [
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
   { name: 'PhoneValidation', component: PhoneValidation },
-  { name: 'TooManyAttempts', component: TooManyAttempts },
+  { name: 'PhoneValidationTooManyAttempts', component: PhoneValidationTooManyAttempts },
   { name: 'VerifyEligibility', component: VerifyEligibility },
   { name: 'FirstTutorial', component: FirstTutorial },
   { name: 'ForceUpdate', component: ForceUpdate },
