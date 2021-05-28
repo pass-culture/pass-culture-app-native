@@ -8,6 +8,7 @@ import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { AppButton } from 'ui/components/buttons/AppButton'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Background } from 'ui/svg/Background'
 import { Error } from 'ui/svg/icons/Error'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -15,19 +16,25 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 export function ConfirmDeleteProfile() {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
   const signOut = useLogoutRoutine()
+  const { showErrorSnackBar } = useSnackBarContext()
 
-  const { mutate: notifyAccountSuspend, isLoading } = useNotifyAccountSuspend()
-
-  async function onAccountSuspend() {
-    try {
-      await notifyAccountSuspend()
-      navigate('DeleteProfileSuccess')
-      analytics.logLogout()
-      signOut()
-    } catch (err) {
-      console.log(err)
-    }
+  function onAccountSuspendSuccess() {
+    navigate('DeleteProfileSuccess')
+    analytics.logLogout()
+    signOut()
   }
+
+  function onAccountSuspendFailure() {
+    showErrorSnackBar({
+      message: t`Une erreur s’est produite pendant le chargement.`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  }
+
+  const { mutate: notifyAccountSuspend, isLoading } = useNotifyAccountSuspend(
+    onAccountSuspendSuccess,
+    onAccountSuspendFailure
+  )
 
   return (
     <Container>
@@ -60,7 +67,7 @@ export function ConfirmDeleteProfile() {
         <ButtonContainer>
           <AppButton
             title={t`Supprimer mon compte`}
-            onPress={onAccountSuspend}
+            onPress={notifyAccountSuspend}
             backgroundColor={ColorsEnum.WHITE}
             textColor={ColorsEnum.PRIMARY}
             loadingIconColor={ColorsEnum.PRIMARY}
