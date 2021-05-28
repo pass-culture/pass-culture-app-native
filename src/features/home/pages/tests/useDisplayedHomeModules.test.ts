@@ -24,24 +24,24 @@ const algoliaModules: AlgoliaModuleResponse = {
 }
 
 const visibleOfferModule = new Offers({
-  algolia: { title: 'tile', hitsPerPage: 4 },
+  algolia: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
   moduleId: 'algoliaModuleShown',
 })
 
 const hiddenOfferModule = new Offers({
-  algolia: { title: 'tile', hitsPerPage: 4 },
+  algolia: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 10, title: 'title', layout: 'one-item-medium' },
   moduleId: 'algoliaModuleHidden',
 })
 const emptyHits = new OffersWithCover({
-  algolia: { title: 'tile', hitsPerPage: 4 },
+  algolia: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
   moduleId: 'emptyHits',
   cover: 'uri_to_cover_image',
 })
 const notInAlgoliaModules = new Offers({
-  algolia: { title: 'tile', hitsPerPage: 4 },
+  algolia: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
   moduleId: 'notInAlgoliaModules',
 })
