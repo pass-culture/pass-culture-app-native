@@ -104,14 +104,14 @@ export const OffersModule = (props: OffersModuleProps) => {
         scrollEventThrottle={200}
         onScroll={checkIfAllTilesHaveBeenSeen}>
         <Spacer.Row numberOfSpaces={6} />
-        {props.cover && (
+        {!!props.cover && (
           <Row>
             <Cover layout={display.layout} uri={props.cover} />
             <Spacer.Row numberOfSpaces={4} />
           </Row>
         )}
         {hits.map(renderItem)}
-        {showSeeMore && <SeeMore layout={display.layout} onPress={onPressSeeMore} />}
+        {!!showSeeMore && <SeeMore layout={display.layout} onPress={onPressSeeMore} />}
         <Spacer.Row numberOfSpaces={6} />
       </ScrollView>
     </React.Fragment>

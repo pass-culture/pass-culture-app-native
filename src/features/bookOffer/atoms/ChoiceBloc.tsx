@@ -52,7 +52,7 @@ export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, childre
           <Spacer.Row numberOfSpaces={5} />
         )}
         {children}
-        {disabled && <StrikeLine />}
+        {!!disabled && <StrikeLine />}
       </ChoiceContent>
     </ChoiceContainer>
   )

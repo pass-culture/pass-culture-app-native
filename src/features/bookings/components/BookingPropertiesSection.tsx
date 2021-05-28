@@ -35,14 +35,14 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
     <View style={style}>
       <Typo.Title4>{t`Ma réservation`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={4.5} />
-      {user?.firstName && user?.lastName && (
+      {!!(user?.firstName && user?.lastName) && (
         <SectionRow
           title={user.firstName + '\u00a0' + user.lastName}
           renderTitle={(title) => (
             <TitleNameContainer>
               <Title>{title}</Title>
               <Spacer.Row numberOfSpaces={2} />
-              {properties.isDuo && <DuoBold testID="duo-icon" />}
+              {!!properties.isDuo && <DuoBold testID="duo-icon" />}
             </TitleNameContainer>
           )}
           type={'clickable'}

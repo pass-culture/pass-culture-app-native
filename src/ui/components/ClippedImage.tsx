@@ -59,7 +59,7 @@ export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
           </G>
         )}
       </Svg>
-      {!props.image && Icon && (
+      {!!(props.image && !!Icon) && (
         <IconContainer>
           <Icon size={48} color={ColorsEnum.GREY_MEDIUM} />
         </IconContainer>

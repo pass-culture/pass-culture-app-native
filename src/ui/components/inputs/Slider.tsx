@@ -31,7 +31,7 @@ export const Slider: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
-      {props.showValues && (
+      {!!props.showValues && (
         <Typo.ButtonText>
           {values.length === 1 && formatValues(values[0])}
           {values.length === 2 && `${formatValues(values[0])} - ${formatValues(values[1])}`}

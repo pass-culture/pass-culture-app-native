@@ -28,8 +28,7 @@ const renderAccessibilityAtom = (
   handicap: HandicapCategory,
   addSpacer: boolean
 ) =>
-  disability !== null &&
-  disability !== undefined && (
+  !!(disability !== null && disability !== undefined) && (
     <React.Fragment>
       <AccessibilityAtom
         handicap={handicap}

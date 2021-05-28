@@ -43,7 +43,7 @@ export function SectionRow(props: SectionRowProps) {
       onPress={props.onPress}
       testID={props.testID ? props.testID : 'section-row-touchable'}>
       <View style={[styles.container, props.style]}>
-        {Icon && <Icon />}
+        {!!Icon && <Icon />}
         <TitleContainer>{title}</TitleContainer>
         <CTAContainer>
           {props.type == 'navigable' ? (

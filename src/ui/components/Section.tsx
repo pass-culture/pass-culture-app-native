@@ -14,7 +14,7 @@ interface SectionProps {
 export function Section(props: PropsWithChildren<SectionProps>) {
   return (
     <Container style={props.style}>
-      {props.title && <Title>{props.title}</Title>}
+      {!!props.title && <Title>{props.title}</Title>}
       <Separator />
       {props.children}
     </Container>

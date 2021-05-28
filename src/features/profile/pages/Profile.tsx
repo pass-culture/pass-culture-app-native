@@ -124,7 +124,7 @@ export const Profile: React.FC = () => {
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
         <ProfileSection
           title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
-          {isLoggedIn && (
+          {!!isLoggedIn && (
             <React.Fragment>
               <Row
                 title={t`Informations personnelles`}
@@ -169,7 +169,7 @@ export const Profile: React.FC = () => {
             }
             testID="row-geolocation"
           />
-          {isPositionUnavailable && (
+          {!!isPositionUnavailable && (
             <InputError
               visible
               messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}
@@ -239,7 +239,7 @@ export const Profile: React.FC = () => {
             </NetworkRowContainer>
           </NetworkRow>
         </ProfileSection>
-        {isLoggedIn && (
+        {!!isLoggedIn && (
           <ProfileSection>
             <SectionRow
               title={t`Déconnexion`}

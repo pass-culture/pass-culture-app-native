@@ -38,7 +38,7 @@ export function LegalNotices() {
           style={styles.row}
           testID="row-data-privacy-chart"
         />
-        {user && (
+        {!!user && (
           <React.Fragment>
             <Separator />
             <Row

@@ -19,7 +19,7 @@ export const ImageCaption = ({ category, imageWidth, distance }: ImageCaptionPro
           {category}
         </Typo.Caption>
       </TextWrapper>
-      {distance && (
+      {!!distance && (
         <React.Fragment>
           <Separator />
           <TextWrapper>

@@ -109,7 +109,7 @@ export function ChangePassword() {
             onChangeText={updateNewPassword}
             placeholder={t`Ton nouveau mot de passe`}
           />
-          {shouldDisplayPasswordRules && newPassword.length > 0 && (
+          {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
             <PasswordSecurityRules password={newPassword} />
           )}
         </StyledInput>
@@ -133,7 +133,7 @@ export function ChangePassword() {
           numberOfSpacesTop={0}
         />
         <Spacer.Flex flex={1} />
-        {Boolean(keyboardHeight) && <Spacer.Column numberOfSpaces={2} />}
+        {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
         <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
           <ButtonPrimary
             title={t`Enregistrer`}
