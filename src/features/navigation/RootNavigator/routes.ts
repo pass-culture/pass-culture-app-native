@@ -2,6 +2,7 @@ import {
   routes as idCheckRoutes,
   initialRouteName as idCheckInitialRouteName,
   withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
+  pages,
 } from '@pass-culture/id-check'
 import { LinkingOptions } from '@react-navigation/native'
 
@@ -130,6 +131,12 @@ const routes: Array<Route> = [
   { name: 'IdCheckUnavailable', component: IdCheckUnavailable },
   ...idCheckRoutes.filter((screen) => screen.name !== idCheckInitialRouteName),
   { name: idCheckInitialRouteName, component: IdCheckV2 },
+  { name: 'NotEligible', component: pages['not-eligible'], hoc: withIdCheckAsyncErrorBoundary },
+  {
+    name: 'IdCheckTooManyAttempts',
+    component: pages['no-remaining-tries'],
+    hoc: withIdCheckAsyncErrorBoundary,
+  },
 ]
 
 export const linking: LinkingOptions = {

@@ -736,13 +736,13 @@ export interface GetIdCheckTokenResponse {
      * @type {string}
      * @memberof GetIdCheckTokenResponse
      */
-    token?: string | null;
+    token: string;
     /**
      * 
      * @type {Date}
      * @memberof GetIdCheckTokenResponse
      */
-    token_timestamp?: Date | null;
+    token_timestamp: Date;
 }/**
  * 
  * @export

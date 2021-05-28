@@ -96,8 +96,8 @@ export function useGetIdCheckToken(
   )
 }
 
-export function useNotifyIdCheckCompleted() {
-  return useMutation(() => api.postnativev1accounthasCompletedIdCheck())
+export function useNotifyIdCheckCompleted(options = {}) {
+  return useMutation(() => api.postnativev1accounthasCompletedIdCheck(), options)
 }
 
 export function useDepositAmount() {

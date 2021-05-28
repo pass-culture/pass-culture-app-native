@@ -28,13 +28,6 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   function onButtonPress() {
     if (profile) {
       navigateToIdCheck(profile.email)
-      // TODO: fix me after https://passculture.atlassian.net/browse/PC-8995 is done
-      // } else if (profile && !idCheckTokenResponse?.token) {
-      //   // TODO: when backend treat non eligible as an error instead of null, change this error handling
-      //   throw new MonitoringError(
-      //     t`Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !`,
-      //     'NotEligibleIdCheckError'
-      //   )
     } else {
       // TODO: remove after POs validation this will happen only when POs access this page without auth
       navigate('Login')

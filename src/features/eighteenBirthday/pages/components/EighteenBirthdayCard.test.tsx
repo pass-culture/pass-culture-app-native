@@ -4,13 +4,12 @@ import Swiper from 'react-native-web-swiper'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { GetIdCheckTokenResponse, UserProfileResponse } from 'api/gen'
+import { UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
-import { MonitoringError } from 'libs/errorMonitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, superFlushWithAct } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { EighteenBirthdayCard } from './EighteenBirthdayCard'
@@ -60,21 +59,6 @@ describe('<EighteenBirthdayCard />', () => {
     })
   })
 
-  // TODO: fix me after https://passculture.atlassian.net/browse/PC-8995 is done
-  it.skip('should throw an error when opening id check when not eligible', async () => {
-    simulateNotEligibleIdCheckToken()
-    const { getByText } = await renderEighteenBirthdayCard()
-
-    await waitForExpect(() => {
-      expect(() => fireEvent.press(getByText('Vérifier mon identité'))).toThrowError(
-        new MonitoringError(
-          'Nous ne pouvons pas vérifier ton identité pour le moment, reviens plus tard !',
-          'NotEligibleIdCheckError'
-        )
-      )
-    })
-  })
-
   it('should go to login check when user is not authed', async () => {
     const { getByText } = await renderEighteenBirthdayCard({
       isLoggedIn: false,
@@ -114,14 +98,6 @@ function simulateUserMeSuccess() {
   server.use(
     rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({ email, firstName } as UserProfileResponse))
-    })
-  )
-}
-
-function simulateNotEligibleIdCheckToken() {
-  server.use(
-    rest.get(env.API_BASE_URL + '/native/v1/id_check_token', (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json({ token: null } as GetIdCheckTokenResponse))
     })
   )
 }
