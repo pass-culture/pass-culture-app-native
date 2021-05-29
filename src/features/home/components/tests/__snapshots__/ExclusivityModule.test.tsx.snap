@@ -51,16 +51,12 @@ exports[`ExclusivityModule component should render correctly 1`] = `
         ]
       }
     >
-      <Image
-        accessibilityLabel="Image d'Adèle"
-        accessible={true}
-        source={
-          Object {
-            "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
-          }
-        }
+      <View
         style={
           Array [
+            Object {
+              "overflow": "hidden",
+            },
             Object {
               "borderRadius": 8,
               "height": 585,
@@ -68,8 +64,28 @@ exports[`ExclusivityModule component should render correctly 1`] = `
             },
           ]
         }
-        testID="imageExclu"
-      />
+      >
+        <FastImageView
+          accessibilityLabel="Image d'Adèle"
+          accessible={true}
+          resizeMode="cover"
+          source={
+            Object {
+              "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
+            }
+          }
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+          testID="imageExclu"
+        />
+      </View>
     </View>
   </View>
   <View

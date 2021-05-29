@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Dimensions, PixelRatio } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { ExclusivityPane } from 'features/home/contentful'
@@ -26,11 +27,12 @@ export const ExclusivityModule = ({ alt, image, offerId }: ExclusivityPane) => {
       <Spacer.Row numberOfSpaces={6} />
       <ImageContainer>
         <TouchableHighlight onPress={handlePressExclu}>
-          <Image
+          <FastImage
             source={{ uri: image }}
             accessible={!!alt}
             accessibilityLabel={alt}
             testID="imageExclu"
+            style={imageStyle}
           />
         </TouchableHighlight>
       </ImageContainer>
@@ -56,8 +58,8 @@ const TouchableHighlight = styled.TouchableHighlight({
   maxHeight: LENGTH_XL,
 })
 
-const Image = styled.Image({
+const imageStyle = {
   height: imageHeight,
   borderRadius: BorderRadiusEnum.BORDER_RADIUS,
   maxHeight: LENGTH_XL,
-})
+}
