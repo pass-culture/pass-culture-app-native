@@ -87,6 +87,21 @@ export function useDeeplinkUrlHandler() {
       }
 
       handleDeeplinkAnalytics(screen, params)
+      /**
+       * TODO: supprimer ce BAD pattern d'architecture:
+       * l'idée d'architecture ici c'est d'appliquer une mécanique simple, robuste mais surtout
+       * "screen-agnostique".
+       * => C'est à l'écran d'implémenter l'interface Deeplink
+       * => et non à l'architecture des deeplinks de s'adapter à l'écran
+       *
+       * Recommandation:
+       * - importer les settings: const { data: settings } = useAppSettings()
+       * - injecter les settings dans le handler: configureScreen(params, settings)
+       * - exporter la logique de navigation de IdCheck dans une fonction du type:
+       *  function navigateToIdCheckPipe(settings): {screen, params}
+       * - dans le handler: implémenter la différence de navigation selon le retour de navigateToIdCheckPipe(settings)
+       * - supprimer isIdCheckScreenConfig
+       */
       if (isIdCheckScreenConfig(screenConfig)) {
         navigateToIdCheck(
           screenConfig.params.email,
