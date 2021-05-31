@@ -43,4 +43,70 @@ export const idCheckAnalytics: IdCheckAnalyticsInterface = {
       canOpen: canOpen ? 'true' : 'false',
     })
   },
+  hasValidSession({
+    valid,
+    accessToken,
+    accessTokenExpiresAt,
+  }: {
+    valid: boolean
+    accessToken: string | undefined
+    accessTokenExpiresAt: string | undefined
+  }) {
+    firebaseAnalytics.logEvent('IdCheck_HasValidSession', {
+      valid,
+      accessToken,
+      accessTokenExpiresAt,
+    })
+  },
+  startCheckTokens() {
+    firebaseAnalytics.logEvent('IdCheck_StartCheckTokens')
+  },
+  endCheckTokens() {
+    firebaseAnalytics.logEvent('IdCheck_EndCheckTokens')
+  },
+  getJouveToken({
+    appIsAllowedToRenewLicenceToken,
+    isLocalLicenceToken,
+    licenceToken,
+    licenceTokenExpirationTimestamp,
+    success,
+    accessToken,
+    accessTokenExpiresAt,
+  }: {
+    appIsAllowedToRenewLicenceToken: boolean
+    isLocalLicenceToken: boolean
+    licenceToken: string
+    licenceTokenExpirationTimestamp: string | null | undefined
+    success: boolean
+    accessToken: string | undefined
+    accessTokenExpiresAt: string | undefined
+  }) {
+    firebaseAnalytics.logEvent('IdCheck_GetJouveToken', {
+      appIsAllowedToRenewLicenceToken,
+      isLocalLicenceToken,
+      licenceToken,
+      licenceTokenExpirationTimestamp,
+      success,
+      accessToken,
+      accessTokenExpiresAt,
+    })
+  },
+  getLicenceToken({
+    isError,
+    errorCode,
+    licenceToken,
+    licenceTokenExpirationTimestamp,
+  }: {
+    isError: boolean
+    errorCode: string | undefined
+    licenceToken: string | null | undefined
+    licenceTokenExpirationTimestamp: string | null | undefined
+  }) {
+    firebaseAnalytics.logEvent('IdCheck_GetLicenceToken', {
+      isError,
+      errorCode,
+      licenceToken,
+      licenceTokenExpirationTimestamp,
+    })
+  },
 }

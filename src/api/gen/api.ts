@@ -117,6 +117,14 @@ export interface AccountRequest {
      */
     token: string;
 }/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum BeneficiaryValidationStep {
+    PhoneValidation = 'phone-validation',
+    IdCheck = 'id-check'
+}/**
  * 
  * @export
  * @interface BookOfferRequest
@@ -746,6 +754,18 @@ export interface GetIdCheckTokenResponse {
 }/**
  * 
  * @export
+ * @interface GetNextBeneficiaryValidationStep
+ */
+export interface GetNextBeneficiaryValidationStep {
+    /**
+     * 
+     * @type {BeneficiaryValidationStep}
+     * @memberof GetNextBeneficiaryValidationStep
+     */
+    next_beneficiary_validation_step?: BeneficiaryValidationStep | null;
+}/**
+ * 
+ * @export
  * @interface NotificationSubscriptions
  */
 export interface NotificationSubscriptions {
@@ -1288,6 +1308,12 @@ export interface SettingsResponse {
      * @type {boolean}
      * @memberof SettingsResponse
      */
+    enableNativeIdCheckVerboseDebugging: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
     enableNativeIdCheckVersion: boolean;
     /**
      * 
@@ -1441,12 +1467,6 @@ export interface UserProfileResponse {
     needsToFillCulturalSurvey: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserProfileResponse
-     */
-    needsToValidatePhone: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof UserProfileResponse
      */
@@ -1519,12 +1539,6 @@ export interface ValidateEmailResponse {
     idCheckTokenTimestamp?: Date | null;
     /**
      * 
-     * @type {boolean}
-     * @memberof ValidateEmailResponse
-     */
-    needsToValidatePhone: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof ValidateEmailResponse
      */
@@ -1564,6 +1578,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
                 .replace(`{${"favorite_id"}}`, encodeURIComponent(String(favorite_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary next_beneficiary_validation_step <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1accountnextBeneficiaryValidationStep(options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/account/next_beneficiary_validation_step`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
             // authentication JWTAuth required
@@ -2270,6 +2306,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
+         * @summary next_beneficiary_validation_step <GET>
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getnativev1accountnextBeneficiaryValidationStep(basePath: string, options?: any): Promise<GetNextBeneficiaryValidationStep> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1accountnextBeneficiaryValidationStep(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
          * @summary get_bookings <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2605,6 +2652,17 @@ export class DefaultApi extends BaseAPI {
     public async deletenativev1mefavoritesfavoriteId(favorite_id: number, options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.deletenativev1mefavoritesfavoriteId(this.basePath, favorite_id, options)
+    }
+    /**
+     * 
+     * @summary next_beneficiary_validation_step <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async getnativev1accountnextBeneficiaryValidationStep(options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.getnativev1accountnextBeneficiaryValidationStep(this.basePath, options)
     }
     /**
      * 
