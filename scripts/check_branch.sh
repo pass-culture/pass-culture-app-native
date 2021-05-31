@@ -7,8 +7,15 @@ check_branch(){
   echo $CURRENT_BRANCH
   if [ "$CURRENT_BRANCH" != "master" ];
   then
-    echo "Wrong branch, checkout master to deploy"
-    exit 1
+    read -p "Are you sure you want to deploy this branch? " -n 1 -r
+    echo    # step a new line
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+       echo "YOU ARE DEPLOYING $CURRENT_BRANCH"
+    else
+     echo "Deployment aborted, checkout master to deploy"
+     exit 1
+    fi
   fi
 }
 
