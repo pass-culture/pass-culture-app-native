@@ -5,6 +5,7 @@ export enum QueryKeys {
   FAVORITES = 'favorites',
   HOMEPAGE_MODULES = 'homepageModules',
   ID_CHECK_TOKEN = 'idCheckToken',
+  NEXT_BENEFICIARY_VALIDATION_STEP = 'nextBeneficiaryValidationStep',
   OFFER = 'offer',
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
   RECOMMENDATION_HITS = 'recommendationHits',
