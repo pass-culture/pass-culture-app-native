@@ -16,38 +16,26 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails } from '../BookingDetails'
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
-
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
 const mockInitialBookingState = initialBookingState
 
 const mockOfferId = 1337
+let mockBookingState = {
+  bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+  dismissModal: mockDismissModal,
+  dispatch: mockDispatch,
+}
+let mockBookingStock = {
+  price: 2000,
+  id: 148409,
+  beginningDatetime: new Date('2021-03-02T20:00:00'),
+} as ReturnType<typeof useBookingStock>
 
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
-  useBooking: jest
-    .fn(() => ({
-      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }))
-    .mockImplementationOnce(() => ({
-      bookingState: mockInitialBookingState as BookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    })),
-  useBookingStock: jest
-    .fn(
-      () =>
-        ({
-          price: 2000,
-          id: 148409,
-          beginningDatetime: new Date('2021-03-02T20:00:00'),
-        } as ReturnType<typeof useBookingStock>)
-    )
-    .mockImplementationOnce(() => undefined),
+  useBooking: jest.fn(() => mockBookingState),
+  useBookingStock: jest.fn(() => mockBookingStock),
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
@@ -68,14 +56,34 @@ describe('<BookingDetails />', () => {
   })
 
   it('should initialize correctly state when offer isDigital', async () => {
+    mockBookingState = {
+      bookingState: mockInitialBookingState as BookingState,
+      dismissModal: mockDismissModal,
+      dispatch: mockDispatch,
+    }
+    mockBookingStock = undefined
+
     await renderBookingDetails(mockDigitalStocks)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148401 })
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
   })
+
   it('should render correctly when user has selected options and offer is an event', async () => {
+    mockBookingState = {
+      bookingState: { quantity: 1, offerId: mockOfferId } as BookingState,
+      dismissModal: mockDismissModal,
+      dispatch: mockDispatch,
+    }
+    mockBookingStock = {
+      price: 2000,
+      id: 148409,
+      beginningDatetime: new Date('2021-03-02T20:00:00'),
+    } as ReturnType<typeof useBookingStock>
+
     const page = await renderBookingDetails(mockStocks)
     expect(page).toMatchSnapshot()
   })
+
   it('should dismiss modal on successfully booking an offer', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
@@ -93,6 +101,7 @@ describe('<BookingDetails />', () => {
 
     await waitForExpect(() => {
       expect(mockDismissModal).toHaveBeenCalled()
+      expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(mockOfferId, undefined)
       expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: mockOfferId })
     })
   })
