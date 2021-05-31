@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 
+import { analytics } from 'libs/analytics'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 
@@ -19,6 +20,12 @@ export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }
   useEffect(() => {
     dispatch({ type: 'SET_OFFER_ID', payload: offerId })
   }, [])
+
+  useEffect(() => {
+    if (visible) {
+      analytics.logBookingProcessStart(offerId)
+    }
+  }, [visible])
 
   const onPressRightIcon = () => {
     dismissModal()

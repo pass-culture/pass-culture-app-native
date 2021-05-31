@@ -42,6 +42,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
     onSuccess: ({ bookingId }) => {
       dismissModal()
       if (offerId) {
+        analytics.logBookingConfirmation(offerId, bookingId)
         navigate('BookingConfirmation', { offerId, bookingId })
       }
     },
