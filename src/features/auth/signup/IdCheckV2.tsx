@@ -49,6 +49,7 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
         onSuccess,
         displayDmsRedirection: !!settings?.displayDmsRedirection,
         isLicenceTokenChecked: false,
+        debug: !!settings?.enableNativeIdCheckVerboseDebugging,
       })
     }
   }, [setContextValue])

@@ -90,7 +90,6 @@ const userProfileAPIResponse: UserProfileResponse = {
   isBeneficiary: true,
   domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
   needsToFillCulturalSurvey: true,
-  needsToValidatePhone: false,
   showEligibleCard: false,
   id: 1234,
   subscriptions: {
