@@ -1,6 +1,12 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
+import { Animated } from 'react-native'
+import CountryPicker, {
+  Country,
+  CountryCode,
+  DEFAULT_THEME,
+} from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 
 import { ApiError, extractApiErrorMessage } from 'api/helpers'
@@ -16,6 +22,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -28,6 +35,20 @@ export interface SetPhoneNumberModalProps {
 }
 
 const TIMER = 60
+const ALLOWED_COUNTRY_CODES: CountryCode[] = [
+  'FR',
+  'MQ',
+  'YT',
+  'GP',
+  'GF',
+  'RE',
+  'PM',
+  'BL',
+  'MF',
+  'WF',
+  'PF',
+  'NC',
+]
 
 export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -36,6 +57,8 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
   const [validationCodeRequestTimestamp, setValidationCodeRequestTimestamp] = useState<
     null | number
   >(null)
+  const [countryCode, setCountryCode] = useState<CountryCode>('FR')
+  const [phoneNumberPrefix, setPhoneNumberPrefix] = useState('33')
   const {
     visible: quitSignupModalVisible,
     showModal: showQuitSignupModal,
@@ -85,13 +108,15 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
 
   function requestSendPhoneValidationCode() {
     if (isRequestTimestampExpired) {
-      sendPhoneValidationCode(phoneNumber)
+      setInvalidPhoneNumberMessage('')
+      const phoneNumberWithPrefix = '+' + phoneNumberPrefix + phoneNumber
+      sendPhoneValidationCode(phoneNumberWithPrefix)
+      props.onChangePhoneNumber(phoneNumberWithPrefix)
     }
   }
 
   function onChangeText(value: string) {
     setPhoneNumber(value)
-    props.onChangePhoneNumber(value)
   }
 
   const isContinueButtonEnabled = isRequestTimestampExpired && isPhoneValid
@@ -100,6 +125,11 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     if (isRequestTimestampExpired) return t`Continuer`
     const remainingTime = TIMER - timeSinceLastRequest
     return t`Attends` + ` ${remainingTime}s.`
+  }
+
+  function onSelectCountryCode(country: Country) {
+    setCountryCode(country.cca2)
+    setPhoneNumberPrefix(country.callingCode[0])
   }
 
   return (
@@ -116,19 +146,33 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
           </Typo.Body>
         </Paragraphe>
         <Spacer.Column numberOfSpaces={8} />
-        <StyledInput>
-          <Typo.Body color={ColorsEnum.BLACK}>{t`Numéro de téléphone`}</Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
+        <Spacer.Column numberOfSpaces={2} />
+        <PhoneNumberInput>
+          <CountryPicker
+            countryCode={countryCode}
+            countryCodes={ALLOWED_COUNTRY_CODES}
+            onSelect={onSelectCountryCode}
+            translation={'fra'}
+            theme={{ ...DEFAULT_THEME, fontFamily: 'Montserrat-Bold', fontSize: getSpacing(3.75) }}
+            withCallingCode
+            withCallingCodeButton
+          />
+          <Spacer.Row numberOfSpaces={2} />
+          <Animated.View
+            style={{ transform: [{ rotateZ: `${Math.PI / 2}rad` }] }}
+            testID="accordionArrow">
+            <ArrowNext size={getSpacing(6)} />
+          </Animated.View>
+          <Spacer.Row numberOfSpaces={2} />
           <TextInput
             autoCapitalize="none"
             isError={false}
             keyboardType="number-pad"
             onChangeText={onChangeText}
-            placeholder={t`0612345678`}
+            placeholder={t`6 12 34 56 78`}
             textContentType="telephoneNumber"
-            value={phoneNumber}
           />
-        </StyledInput>
+        </PhoneNumberInput>
         {invalidPhoneNumberMessage ? (
           <React.Fragment>
             <InputError visible messageId={invalidPhoneNumberMessage} numberOfSpacesTop={3} />
@@ -156,7 +200,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
 const ModalContent = styled.View({
   width: '100%',
   alignItems: 'center',
-  paddingHorizontal: 8,
+  paddingHorizontal: getSpacing(2),
 })
 
 const Paragraphe = styled.Text({
@@ -165,18 +209,15 @@ const Paragraphe = styled.Text({
   textAlign: 'center',
 })
 
-const StyledInput = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  width: '100%',
-  maxWidth: getSpacing(125),
+const PhoneNumberInput = styled.View({
+  flexDirection: 'row',
+  paddingHorizontal: getSpacing(14),
+  alignItems: 'center',
 })
 
 /**
- * - starts with 0
- * - contains 10 digits
+ * - contains 9 digits
  */
 function isValidPhoneNumber(word: string) {
-  return word.match(/^0[0-9]{9}$/g)
+  return word.match(/^\d{9}$/)
 }

@@ -50,14 +50,14 @@ describe('SetPhoneNumberModal', () => {
   describe('button "Continuer"', () => {
     it('should enable the button when the phone number is valid', async () => {
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
-      await flushAllPromises()
+      await superFlushWithAct()
 
       const button = getByTestId('button-container-continue')
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
-      const input = getByPlaceholderText('0612345678')
-      fireEvent.changeText(input, '0612345678')
+      const input = getByPlaceholderText('6 12 34 56 78')
+      fireEvent.changeText(input, '612345678')
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     })
@@ -65,18 +65,17 @@ describe('SetPhoneNumberModal', () => {
     it.each([
       '', // empty
       '03', // too short
-      '02243546357', // too long
-      '022435463m', // includes char
-      '1224354635', // dont start with 0
+      '6243546357', // too long
+      '33224354m', // includes char
     ])('should disable the button when the phone number is not valid (%s)', async (phoneNumber) => {
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
-      await flushAllPromises()
+      await superFlushWithAct()
 
       const button = getByTestId('button-container-continue')
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
-      const input = getByPlaceholderText('0612345678')
+      const input = getByPlaceholderText('6 12 34 56 78')
       fireEvent.changeText(input, phoneNumber)
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
@@ -87,17 +86,32 @@ describe('SetPhoneNumberModal', () => {
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal({
         onValidationCodeAsked: mockOnValidationCodeAsked,
       })
-      await flushAllPromises()
+      await superFlushWithAct()
 
       const button = getByTestId('button-container-continue')
-      const input = getByPlaceholderText('0612345678')
-      fireEvent.changeText(input, '0687654321')
+      const input = getByPlaceholderText('6 12 34 56 78')
+      fireEvent.changeText(input, '612345678')
       fireEvent.press(button)
 
       await act(async () => {
         useMutationCallbacks.onSuccess()
       })
       expect(mockOnValidationCodeAsked).toHaveBeenCalled()
+    })
+
+    it('should call onChangePhoneNumber property on /send_phone_validation request', async () => {
+      const mockOnChangePhoneNumber = jest.fn()
+      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal({
+        onChangePhoneNumber: mockOnChangePhoneNumber,
+      })
+      await superFlushWithAct()
+
+      const button = getByTestId('button-container-continue')
+      const input = getByPlaceholderText('6 12 34 56 78')
+      fireEvent.changeText(input, '612345678')
+      fireEvent.press(button)
+
+      expect(mockOnChangePhoneNumber).toHaveBeenCalled()
     })
 
     it('should display input error message if validate phone number request fails', async () => {
@@ -111,8 +125,8 @@ describe('SetPhoneNumberModal', () => {
 
       const { getByTestId, getByPlaceholderText, getByText, rerender } = renderSetPhoneNumberModal()
       const continueButton = getByTestId('button-container-continue')
-      const input = getByPlaceholderText('0612345678')
-      fireEvent.changeText(input, '0000000000')
+      const input = getByPlaceholderText('6 12 34 56 78')
+      fireEvent.changeText(input, '600000000')
       const props = {
         visible: true,
         dismissModal: jest.fn(),
@@ -149,8 +163,8 @@ describe('SetPhoneNumberModal', () => {
         await superFlushWithAct()
 
         const button = getByTestId('button-container-continue')
-        const input = getByPlaceholderText('0612345678')
-        fireEvent.changeText(input, '0687654321')
+        const input = getByPlaceholderText('6 12 34 56 78')
+        fireEvent.changeText(input, '612345678')
         fireEvent.press(button)
 
         await flushAllPromises()
@@ -172,30 +186,15 @@ describe('SetPhoneNumberModal', () => {
 
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
 
-      const continueButton = getByTestId('button-container-continue')
-      const input = getByPlaceholderText('0612345678')
-      fireEvent.changeText(input, '0687654321')
-      fireEvent.press(continueButton)
+      const button = getByTestId('button-container-continue')
+      const input = getByPlaceholderText('6 12 34 56 78')
+      fireEvent.changeText(input, '612345678')
+      fireEvent.press(button)
 
       await act(async () => {
         useMutationCallbacks.onError(response)
       })
       expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManyAttempts')
-    })
-  })
-
-  describe('phone number input', () => {
-    it('should call onChangePhoneNumber property on change input text', async () => {
-      const mockOnChangePhoneNumber = jest.fn()
-      const { getByPlaceholderText } = renderSetPhoneNumberModal({
-        onChangePhoneNumber: mockOnChangePhoneNumber,
-      })
-      await flushAllPromises()
-
-      const input = getByPlaceholderText('0612345678')
-      fireEvent.changeText(input, '0687654321')
-
-      expect(mockOnChangePhoneNumber).toHaveBeenCalled()
     })
   })
 })
