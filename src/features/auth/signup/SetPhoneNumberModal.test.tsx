@@ -1,16 +1,14 @@
 import * as React from 'react'
-import { useMutation, UseMutationResult } from 'react-query'
+import { useMutation } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import * as AuthApi from 'features/auth/api'
 import {
   SetPhoneNumberModal,
   SetPhoneNumberModalProps,
 } from 'features/auth/signup/SetPhoneNumberModal'
 import { currentTimestamp } from 'libs/dates'
-import { EmptyResponse } from 'libs/fetch'
 import { storage } from 'libs/storage'
 import {
   act,
@@ -35,10 +33,14 @@ jest.mock('libs/timer', () => ({
   useTimer: jest.fn(() => mockTimeSinceLastRequest),
 }))
 
+let mockedSendPhoneValidationCode = jest.fn()
+
 describe('SetPhoneNumberModal', () => {
   beforeEach(() => {
-    // @ts-ignore ts(2345)
-    mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
+    mockedSendPhoneValidationCode = mockedUseMutation.mockImplementation(
+      // @ts-ignore ts(2345)
+      useMutationFactory(useMutationCallbacks)
+    )
   })
 
   afterEach(async () => {
@@ -143,11 +145,6 @@ describe('SetPhoneNumberModal', () => {
 
         mockTimeSinceLastRequest = timeSinceLastRequest
 
-        const sendPhoneValidationCode = jest.fn()
-        jest.spyOn(AuthApi, 'useSendPhoneValidationMutation').mockReturnValue(({
-          mutate: sendPhoneValidationCode,
-        } as unknown) as UseMutationResult<EmptyResponse, unknown, string, unknown>)
-
         const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
         await superFlushWithAct()
 
@@ -158,6 +155,8 @@ describe('SetPhoneNumberModal', () => {
 
         await flushAllPromises()
 
+        // @ts-ignore use mock to get inner mutate
+        const sendPhoneValidationCode = mockedSendPhoneValidationCode().mutate
         expect(sendPhoneValidationCode).toHaveBeenCalledTimes(numberOfCall)
       }
     )
