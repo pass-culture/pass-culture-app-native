@@ -18,7 +18,7 @@ export function ThreeShapesTicket(props: ThreeShapesTicketProps) {
   return (
     <Container
       customWitdh={props.width}
-      style={shaddowStyle}
+      style={shadowStyle}
       onLayout={(e) => setHeaderDimensions(e.nativeEvent.layout)}
       testID="three-shapes-ticket">
       <TicketHeader width={props.width} color={props.color} />
@@ -32,7 +32,7 @@ export function ThreeShapesTicket(props: ThreeShapesTicketProps) {
   )
 }
 
-const shaddowStyle = {
+const shadowStyle = {
   ...getNativeShadow({
     shadowOffset: {
       width: 0,

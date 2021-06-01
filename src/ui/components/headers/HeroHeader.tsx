@@ -8,7 +8,7 @@ import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, ScreenWidth } from 'ui/theme'
 
 interface Props {
-  imageUrl: string
+  imageUrl?: string
   categoryName?: CategoryNameEnum | null
   imageHeight: number
   minHeight?: number
@@ -22,7 +22,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
           <BlurImage
             height={props.imageHeight}
             blurRadius={Platform.OS === 'android' ? 5 : 20}
-            resizeMode={'cover'}
+            resizeMode="cover"
             source={{ uri: props.imageUrl }}
           />
         ) : (
@@ -41,10 +41,10 @@ export const HeroHeader: React.FC<Props> = (props) => {
 
 export const blurImageHeight = getSpacing(74)
 
-const Container = styled.View<{ minHeight?: number }>`
-  align-items: center;
-  ${({ minHeight }) => (minHeight ? `min-height: ${minHeight}px;` : '')};
-`
+const Container = styled.View<{ minHeight?: number }>(({ minHeight = 0 }) => ({
+  alignItems: 'center',
+  minHeight,
+}))
 
 const HeroContainer = styled.View({ alignItems: 'center', position: 'absolute' })
 const BlurImage = styled.Image<{ height: number }>(({ height }) => ({

@@ -306,6 +306,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                             Array [
                               Object {
                                 "alignItems": "center",
+                                "minHeight": 0,
                               },
                             ]
                           }
@@ -2049,6 +2050,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                             Array [
                               Object {
                                 "alignItems": "center",
+                                "minHeight": 0,
                               },
                             ]
                           }

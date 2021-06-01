@@ -40,6 +40,9 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const TICKET_MAX_WIDTH = 300
 const TICKET_WIDTH = Dimensions.get('screen').width - getSpacing(15)
+const ticketFooterWidth = Math.min(TICKET_WIDTH, TICKET_MAX_WIDTH)
+const ticketFooterHeight = ticketFooterWidth / ticketFooterRatio
+
 const MINIMAL_TICKET_CONTENT_SIZE = 100
 const MINIMAL_BACKGROUND_SIZE = TICKET_MIN_HEIGHT + MINIMAL_TICKET_CONTENT_SIZE
 
@@ -124,14 +127,11 @@ export function BookingDetails() {
     })
   }
 
-  const ticketFooterWidth = Math.min(TICKET_WIDTH, TICKET_MAX_WIDTH)
-  const ticketFooterHeigth = ticketFooterWidth / ticketFooterRatio
-
   const updateTicketBottomPosition = (layout: LayoutRectangle) => {
     const { y, height } = layout
-    const newBackgroudSize = y + height - ticketFooterHeigth
-    if (MINIMAL_BACKGROUND_SIZE < newBackgroudSize) {
-      setTicketBottomPosition(newBackgroudSize)
+    const newBackgroundSize = y + height - ticketFooterHeight
+    if (MINIMAL_BACKGROUND_SIZE < newBackgroundSize) {
+      setTicketBottomPosition(newBackgroundSize)
     }
   }
 
@@ -149,10 +149,10 @@ export function BookingDetails() {
         testID="BookingDetailsScrollView"
         bounces={false}>
         <HeroHeader
-          minHeight={ticketBottomPosition + ticketFooterHeigth - 1}
+          minHeight={ticketBottomPosition + ticketFooterHeight - 1}
           imageHeight={ticketBottomPosition}
           categoryName={offer.category.name}
-          imageUrl={offer.image?.url || ''}>
+          imageUrl={offer.image?.url}>
           <Spacer.Column numberOfSpaces={18} />
           <TicketContainer
             // TODO remove this by adaping component to design
@@ -221,11 +221,7 @@ export function BookingDetails() {
   )
 }
 
-const paddingHorizontal = getSpacing(5)
-
-const TicketContainer = styled.View({
-  flex: 1,
-})
+const TicketContainer = styled.View({ flex: 1 })
 
 const OfferRules = styled(Typo.Caption)({
   color: ColorsEnum.GREY_DARK,
@@ -233,5 +229,5 @@ const OfferRules = styled(Typo.Caption)({
 })
 
 const ViewWithPadding = styled.View({
-  paddingHorizontal,
+  paddingHorizontal: getSpacing(5),
 })
