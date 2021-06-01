@@ -23,7 +23,7 @@ import {
   ThreeShapesTicket,
   TICKET_MIN_HEIGHT,
 } from 'features/bookings/components/ThreeShapesTicket'
-import { getBookingProperties } from 'features/bookings/helpers'
+import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
@@ -44,6 +44,20 @@ const MINIMAL_TICKET_CONTENT_SIZE = 100
 const MINIMAL_BACKGROUND_SIZE = TICKET_MIN_HEIGHT + MINIMAL_TICKET_CONTENT_SIZE
 
 const contentHeight = Dimensions.get('window').height - blurImageHeight
+
+const getOfferRules = (
+  properties: BookingProperties,
+  activationCodeFeatureEnabled?: boolean
+): string => {
+  const { hasActivationCode, isDigital, isPhysical, isEvent } = properties
+  if (hasActivationCode && activationCodeFeatureEnabled)
+    return t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+  if (isDigital)
+    return t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+  if (isPhysical || isEvent)
+    return t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+  return ''
+}
 
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
@@ -95,22 +109,7 @@ export function BookingDetails() {
     canOpenItinerary && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
   const activationCodeFeatureEnabled = appSettings && appSettings.autoActivateDigitalBookings
 
-  const renderOfferRules =
-    properties.hasActivationCode && activationCodeFeatureEnabled ? (
-      <OfferRules>
-        {t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
-      </OfferRules>
-    ) : properties.isDigital ? (
-      <OfferRules>
-        {t`Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
-      </OfferRules>
-    ) : properties.isPhysical || properties.isEvent ? (
-      <OfferRules>
-        {t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`}
-      </OfferRules>
-    ) : (
-      ''
-    )
+  const offerRules = getOfferRules(properties, activationCodeFeatureEnabled)
 
   const cancelBooking = () => {
     showCancelModal()
@@ -172,7 +171,7 @@ export function BookingDetails() {
 
         <ViewWithPadding>
           <Spacer.Column numberOfSpaces={4} />
-          {renderOfferRules}
+          <OfferRules>{offerRules}</OfferRules>
           <Spacer.Column numberOfSpaces={8} />
           {!!appSettings && (
             <BookingPropertiesSection booking={booking} appSettings={appSettings} />
