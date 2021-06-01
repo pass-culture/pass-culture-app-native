@@ -111,22 +111,18 @@ export function getBookingLabels(
  * @param properties
  */
 export function getBookingLabelForActivationCode(booking: Booking) {
-  let dateLabel = ''
-
   if (booking.activationCode?.expirationDate) {
     const dateLimit = formatToCompleteFrenchDate(
       new Date(booking.activationCode.expirationDate),
       false
     )
 
-    dateLabel = t({
+    return t({
       id: 'activate before date',
       values: { dateLimit },
       message: 'À activer avant le {dateLimit}',
     })
-  } else {
-    dateLabel = t`À activer`
   }
 
-  return dateLabel
+  return t`À activer`
 }
