@@ -121,7 +121,7 @@ export function BookingDetails() {
         testID="BookingDetailsScrollView"
         bounces={false}>
         <HeroHeader
-          imageHeight={blurImageHeight + getSpacing(22)}
+          imageHeight={blurImageHeight + getSpacing(16)}
           categoryName={offer.category.name}
           imageUrl={offer.image?.url}>
           <Spacer.Column numberOfSpaces={22} />
