@@ -31,7 +31,7 @@ export type RootStackParamList = {
   CheatMenu: undefined
   ConfirmDeleteProfile: undefined
   BookingConfirmation: { offerId: number; bookingId: number }
-  BookingDetails: { id: number; shouldFetchAll: boolean }
+  BookingDetails: { id: number }
   BeneficiaryRequestSent: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined

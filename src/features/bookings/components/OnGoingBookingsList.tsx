@@ -42,7 +42,7 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
   const ListFooterComponent = useCallback(
     () => (
       <FooterContainer safeBottom={bottom}>
-        <EndedBookingsSection />
+        <EndedBookingsSection endedBookings={props.endedBookings} />
       </FooterContainer>
     ),
     [hasBookings, bookingsCountLabel]

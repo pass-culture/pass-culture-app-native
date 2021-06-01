@@ -62,7 +62,7 @@ const getOfferRules = (
 export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const booking = useOngoingBooking(params.id, params.shouldFetchAll)
+  const booking = useOngoingBooking(params.id)
   const headerScroll = useRef(new Animated.Value(0)).current
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {

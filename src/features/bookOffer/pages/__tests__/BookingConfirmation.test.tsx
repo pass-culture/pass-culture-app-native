@@ -48,7 +48,6 @@ describe('<BookingConfirmation />', () => {
             name: 'BookingDetails',
             params: {
               id: 345,
-              shouldFetchAll: true,
             },
           },
         ],
