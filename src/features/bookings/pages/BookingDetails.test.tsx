@@ -47,29 +47,19 @@ describe('BookingDetails', () => {
 
     const booking = bookingsSnap.ongoing_bookings[0]
     renderBookingDetails(booking)
-    expect(useOngoingBooking).toBeCalledWith(456, true)
+    expect(useOngoingBooking).toBeCalledWith(456)
   })
 
   it('should render correctly', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByTestId, toJSON } = renderBookingDetails(booking)
-
-    await act(async () => {
-      getByTestId('three-shapes-ticket').props.onLayout({ nativeEvent: { layout: { width: 150 } } })
-    })
+    const { toJSON } = renderBookingDetails(booking)
     expect(toJSON()).toMatchSnapshot()
   })
 
   describe('<DetailedBookingTicket />', () => {
     it('should display booking token', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
-      const { getByText, getByTestId } = renderBookingDetails(booking)
-      await act(async () => {
-        getByTestId('three-shapes-ticket').props.onLayout({
-          nativeEvent: { layout: { width: 150 } },
-        })
-      })
-
+      const { getByText } = renderBookingDetails(booking)
       getByText('352UW4')
     })
 
@@ -81,12 +71,7 @@ describe('BookingDetails', () => {
       booking.stock.offer.isDigital = true
       booking.stock.offer.url = 'http://example.com'
 
-      const { getByText, getByTestId } = renderBookingDetails(booking)
-      await act(async () => {
-        getByTestId('three-shapes-ticket').props.onLayout({
-          nativeEvent: { layout: { width: 150 } },
-        })
-      })
+      const { getByText } = renderBookingDetails(booking)
       const offerButton = getByText("Accéder à l'offre")
       fireEvent.press(offerButton)
 
@@ -98,23 +83,13 @@ describe('BookingDetails', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.isDigital = false
       const { getByTestId } = renderBookingDetails(booking)
-      await act(async () => {
-        getByTestId('three-shapes-ticket').props.onLayout({
-          nativeEvent: { layout: { width: 150 } },
-        })
-      })
       getByTestId('qr-code')
     })
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.category.name = CategoryNameEnum.LIVRE
-      const { getByText, getByTestId } = renderBookingDetails(booking)
-      await act(async () => {
-        getByTestId('three-shapes-ticket').props.onLayout({
-          nativeEvent: { layout: { width: 150 } },
-        })
-      })
+      const { getByText } = renderBookingDetails(booking)
       getByText('123456789')
     })
   })
@@ -130,7 +105,7 @@ describe('BookingDetails', () => {
         'Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
-    it.only('should display rules for a digital offer with activation code', () => {
+    it('should display rules for a digital offer with activation code', () => {
       mockSettings.autoActivateDigitalBookings = true
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.stock.offer.isDigital = true
