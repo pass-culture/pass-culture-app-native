@@ -15,6 +15,7 @@ export const useBookOfferMutation = ({ onSuccess, onError }: Props) => {
   return useMutation((body: BookOfferRequest) => api.postnativev1bookings(body), {
     onSuccess: (data) => {
       queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
+      queryClient.invalidateQueries(QueryKeys.BOOKINGS)
       onSuccess(data)
     },
     onError,

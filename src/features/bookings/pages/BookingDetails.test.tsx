@@ -38,7 +38,6 @@ describe('BookingDetails', () => {
     useRoute.mockImplementation(() => ({
       params: {
         id: 456,
-        shouldFetchAll: true,
       },
     }))
   })

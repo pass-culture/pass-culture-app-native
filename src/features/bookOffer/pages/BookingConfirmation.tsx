@@ -38,7 +38,6 @@ export function BookingConfirmation() {
           name: 'BookingDetails',
           params: {
             id: params.bookingId,
-            shouldFetchAll: true,
           },
         },
       ],

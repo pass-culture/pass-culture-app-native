@@ -15,11 +15,11 @@ describe('EndedBookings', () => {
   it('should always execute the query (in cache or in network)', () => {
     const useBookings = jest.spyOn(Queries, 'useBookings')
     renderEndedBookings(bookingsSnap)
-    expect(useBookings).toBeCalledWith(true)
+    expect(useBookings).toBeCalledTimes(1)
   })
+
   it('should display the right number of ended bookings', () => {
     const { queryByText } = renderEndedBookings(bookingsSnap)
-
     expect(queryByText('1 réservation terminée')).toBeTruthy()
   })
 })

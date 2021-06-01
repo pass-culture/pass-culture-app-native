@@ -8,7 +8,7 @@ import SvgPageHeader from 'ui/components/headers/SvgPageHeader'
 import { OnGoingBookingsList } from '../components/OnGoingBookingsList'
 
 export const Bookings: React.FC = () => {
-  const { data: bookings } = useBookings(true)
+  const { data: bookings } = useBookings()
 
   return (
     <Container>

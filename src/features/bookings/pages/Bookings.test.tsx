@@ -12,16 +12,13 @@ import { emptyBookingsSnap, bookingsSnap } from '../api/bookingsSnap'
 
 import { Bookings } from './Bookings'
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
-
 describe('Bookings', () => {
   afterEach(jest.restoreAllMocks)
 
   it('should always execute the query (in cache or in network)', () => {
     const useBookings = jest.spyOn(Queries, 'useBookings')
     renderBookings(bookingsSnap)
-    expect(useBookings).toBeCalledWith(true)
+    expect(useBookings).toBeCalledTimes(1)
   })
 
   it('should display the right number of ongoing bookings', async () => {
