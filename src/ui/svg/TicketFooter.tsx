@@ -1,6 +1,5 @@
 import React, { memo } from 'react'
 import Svg, { Path, G, Stop, LinearGradient, Use } from 'react-native-svg'
-import styled from 'styled-components/native'
 
 import { ColorsEnum } from 'ui/theme'
 
@@ -19,8 +18,8 @@ function TicketFooterComponent(props: Props) {
   const pathId = 'ticket-footer-path'
 
   return (
-    <StyledSvg
-      aspectRatio={ticketFooterRatio}
+    <Svg
+      style={{ aspectRatio: ticketFooterRatio }}
       width={props.width}
       height={height}
       viewBox={viewBox}>
@@ -30,22 +29,16 @@ function TicketFooterComponent(props: Props) {
       </LinearGradient>
       <G fill="none" fillRule="evenodd">
         <G fill={color}>
-          <G>
-            <Path
-              id={pathId}
-              d="M121.004 329c.27 16.616 13.82 30 30.496 30 16.678 0 30.229-13.386 30.496-30H283c11.046 0 20 8.954 20 20l-.001 18H0v-18c0-11.046 8.954-20 20-20h101.004z"
-              transform="translate(-36 -356) translate(36 27) matrix(1 0 0 -1 0 696)"
-            />
-            <Use fill={`url(#${linearGradientId})`} xlinkHref={`#${pathId}`} />
-          </G>
+          <Path
+            id={pathId}
+            d="M121.004 329c.27 16.616 13.82 30 30.496 30 16.678 0 30.229-13.386 30.496-30H283c11.046 0 20 8.954 20 20l-.001 18H0v-18c0-11.046 8.954-20 20-20h101.004z"
+            transform="translate(-36 -356) translate(36 27) matrix(1 0 0 -1 0 696)"
+          />
+          <Use fill={`url(#${linearGradientId})`} xlinkHref={`#${pathId}`} />
         </G>
       </G>
-    </StyledSvg>
+    </Svg>
   )
 }
 
 export const TicketFooter = memo(TicketFooterComponent)
-
-const StyledSvg = styled(Svg)<{ aspectRatio: number }>`
-  aspect-ratio: ${({ aspectRatio }) => aspectRatio};
-`

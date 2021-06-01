@@ -1,13 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useRef, useState } from 'react'
-import {
-  Animated,
-  Dimensions,
-  LayoutRectangle,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-} from 'react-native'
+import React, { useRef } from 'react'
+import { Animated, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -19,10 +13,8 @@ import { BookingDetailsHeader } from 'features/bookings/components/BookingDetail
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import {
-  ThreeShapesTicket,
-  TICKET_MIN_HEIGHT,
-} from 'features/bookings/components/ThreeShapesTicket'
+import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
+import { contentHeight } from 'features/bookings/components/ThreeShapesTicket.constants'
 import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
@@ -35,18 +27,7 @@ import { interpolationConfig } from 'ui/components/headers/animationHelpers'
 import { blurImageHeight, HeroHeader } from 'ui/components/headers/HeroHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { ticketFooterRatio } from 'ui/svg/TicketFooter'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
-const TICKET_MAX_WIDTH = 300
-const TICKET_WIDTH = Dimensions.get('screen').width - getSpacing(15)
-const ticketFooterWidth = Math.min(TICKET_WIDTH, TICKET_MAX_WIDTH)
-const ticketFooterHeight = ticketFooterWidth / ticketFooterRatio
-
-const MINIMAL_TICKET_CONTENT_SIZE = 100
-const MINIMAL_BACKGROUND_SIZE = TICKET_MIN_HEIGHT + MINIMAL_TICKET_CONTENT_SIZE
-
-const contentHeight = Dimensions.get('window').height - blurImageHeight
 
 const getOfferRules = (
   properties: BookingProperties,
@@ -87,7 +68,6 @@ export function BookingDetails() {
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
   )
-  const [ticketBottomPosition, setTicketBottomPosition] = useState(MINIMAL_BACKGROUND_SIZE)
 
   if (!booking) return <React.Fragment></React.Fragment>
 
@@ -127,14 +107,6 @@ export function BookingDetails() {
     })
   }
 
-  const updateTicketBottomPosition = (layout: LayoutRectangle) => {
-    const { y, height } = layout
-    const newBackgroundSize = y + height - ticketFooterHeight
-    if (MINIMAL_BACKGROUND_SIZE < newBackgroundSize) {
-      setTicketBottomPosition(newBackgroundSize)
-    }
-  }
-
   return (
     <React.Fragment>
       <ScrollView
@@ -149,24 +121,16 @@ export function BookingDetails() {
         testID="BookingDetailsScrollView"
         bounces={false}>
         <HeroHeader
-          minHeight={ticketBottomPosition + ticketFooterHeight - 1}
-          imageHeight={ticketBottomPosition}
+          imageHeight={blurImageHeight + getSpacing(22)}
           categoryName={offer.category.name}
           imageUrl={offer.image?.url}>
-          <Spacer.Column numberOfSpaces={18} />
-          <TicketContainer
-            // TODO remove this by adaping component to design
-            // https://passculture.atlassian.net/browse/PC-8272
-            onLayout={(event) => {
-              updateTicketBottomPosition(event.nativeEvent.layout)
-            }}>
-            <ThreeShapesTicket width={ticketFooterWidth} color={ColorsEnum.WHITE}>
-              <BookingDetailsTicketContent
-                booking={booking}
-                activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-              />
-            </ThreeShapesTicket>
-          </TicketContainer>
+          <Spacer.Column numberOfSpaces={22} />
+          <ThreeShapesTicket>
+            <BookingDetailsTicketContent
+              booking={booking}
+              activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+            />
+          </ThreeShapesTicket>
         </HeroHeader>
 
         <ViewWithPadding>
@@ -220,8 +184,6 @@ export function BookingDetails() {
     </React.Fragment>
   )
 }
-
-const TicketContainer = styled.View({ flex: 1 })
 
 const OfferRules = styled(Typo.Caption)({
   color: ColorsEnum.GREY_DARK,

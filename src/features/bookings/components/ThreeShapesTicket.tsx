@@ -1,33 +1,25 @@
-import React, { PropsWithChildren, useState } from 'react'
-import { LayoutRectangle } from 'react-native'
+import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
 import { ColorsEnum, getNativeShadow } from 'ui/theme'
 
-export const TICKET_MIN_HEIGHT = 250
+import { TICKET_WIDTH } from './ThreeShapesTicket.constants'
 
 type ThreeShapesTicketProps = PropsWithChildren<{
-  color?: ColorsEnum
-  width: number
+  width?: number
 }>
 
 export function ThreeShapesTicket(props: ThreeShapesTicketProps) {
-  const [headerDimensions, setHeaderDimensions] = useState<LayoutRectangle | undefined>()
+  const { width = TICKET_WIDTH, children } = props
+  const contentWidth = width - 5
+
   return (
-    <Container
-      customWitdh={props.width}
-      style={shadowStyle}
-      onLayout={(e) => setHeaderDimensions(e.nativeEvent.layout)}
-      testID="three-shapes-ticket">
-      <TicketHeader width={props.width} color={props.color} />
-      {!!headerDimensions && (
-        <CenterView customWitdh={headerDimensions?.width} color={props.color}>
-          {props.children}
-        </CenterView>
-      )}
-      <TicketFooter width={props.width} color={props.color} />
+    <Container style={shadowStyle} testID="three-shapes-ticket">
+      <TicketHeader width={width} color={ColorsEnum.WHITE} />
+      <TicketContent width={contentWidth}>{children}</TicketContent>
+      <TicketFooter width={width} color={ColorsEnum.WHITE} />
     </Container>
   )
 }
@@ -44,18 +36,14 @@ const shadowStyle = {
   }),
 }
 
-const Container = styled.View<{ customWitdh: number; color?: ColorsEnum }>(({ customWitdh }) => ({
+const Container = styled.View({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  maxWidth: customWitdh,
-  minHeight: TICKET_MIN_HEIGHT,
-}))
+})
 
-const CenterView = styled.View<{ customWitdh: number; color?: ColorsEnum }>(
-  ({ customWitdh, color }) => ({
-    marginTop: -1, // prevent small draft between header and center view on some android phone
-    width: customWitdh,
-    backgroundColor: color,
-  })
-)
+const TicketContent = styled.View<{ width: number }>(({ width }) => ({
+  backgroundColor: ColorsEnum.WHITE,
+  width,
+  flex: 0,
+}))

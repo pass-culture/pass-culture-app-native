@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-raw-text */
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useState } from 'react'
-import { ScrollView, View, Text, Alert, Button, Platform } from 'react-native'
+import { ScrollView, View, Text, Alert, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
@@ -748,12 +748,7 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - Badge </Text>
         </AlignedText>
         <AlignedText>
-          <ThreeShapesTicket
-            width={200}
-            color={Platform.select({
-              ios: ColorsEnum.WHITE,
-              android: ColorsEnum.PRIMARY,
-            })}>
+          <ThreeShapesTicket width={200}>
             <Center>
               <QRCode value="passculture" />
             </Center>

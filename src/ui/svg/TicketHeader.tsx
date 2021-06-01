@@ -20,9 +20,7 @@ function TicketHeaderComponent(props: Props) {
     <Svg style={{ aspectRatio: ratio }} width={props.width} height={height} viewBox={viewBox}>
       <G fill="none" fillRule="evenodd">
         <G fill={color}>
-          <G>
-            <Path d={path} transform="translate(-36 -27) translate(36 27)" />
-          </G>
+          <Path d={path} />
         </G>
       </G>
     </Svg>

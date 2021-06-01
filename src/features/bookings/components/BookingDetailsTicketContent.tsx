@@ -5,7 +5,10 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryNameEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
-import { TICKET_MIN_HEIGHT } from 'features/bookings/components/ThreeShapesTicket'
+import {
+  TICKET_MIN_HEIGHT,
+  QR_CODE_SIZE,
+} from 'features/bookings/components/ThreeShapesTicket.constants'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openExternalUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
@@ -62,8 +65,6 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
     </TicketContent>
   )
 }
-
-const QR_CODE_SIZE = 170
 
 type EanProps = {
   offer: BookingOfferResponse
