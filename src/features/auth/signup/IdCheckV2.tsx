@@ -12,7 +12,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   const { setContextValue } = useIdCheckContext()
-  const { replace } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { data: settings } = useAppSettings()
   const queryClient = useQueryClient()
   const { mutate: notifyIdCheckCompleted } = useNotifyIdCheckCompleted({
@@ -25,11 +25,11 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   })
 
   function goToBeneficiaryRequestSent() {
-    replace('BeneficiaryRequestSent')
+    navigate('BeneficiaryRequestSent')
   }
 
   function onAbandon() {
-    replace(homeNavigateConfig.screen, homeNavigateConfig.params)
+    navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
   }
 
   function syncUserAndProceedToNextScreen() {
