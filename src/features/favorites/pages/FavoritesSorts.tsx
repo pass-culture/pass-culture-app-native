@@ -128,7 +128,11 @@ export const FavoritesSorts: React.FC = () => {
   )
 }
 
-const contentContainerStyle: ViewStyle = { flexGrow: 1, marginRight: getSpacing(6) }
+const contentContainerStyle: ViewStyle = {
+  flexGrow: 1,
+  paddingLeft: getSpacing(2),
+  paddingRight: getSpacing(6),
+}
 
 const LabelContainer = styled.TouchableOpacity.attrs({
   activeOpacity: ACTIVE_OPACITY,

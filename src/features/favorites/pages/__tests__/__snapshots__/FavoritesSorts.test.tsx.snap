@@ -6,7 +6,8 @@ Array [
     contentContainerStyle={
       Object {
         "flexGrow": 1,
-        "marginRight": 24,
+        "paddingLeft": 8,
+        "paddingRight": 24,
       }
     }
   >
