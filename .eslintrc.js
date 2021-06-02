@@ -18,6 +18,7 @@ module.exports = {
   },
   rules: {
     'local-rules/no-allow-console': ['error'],
+    'local-rules/independant-mocks': ['warn'],
     'local-rules/no-string-check-before-component': ['error'],
     '@typescript-eslint/ban-ts-comment': [
       2, // error
