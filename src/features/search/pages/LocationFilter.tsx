@@ -22,12 +22,7 @@ const DEBOUNCED_CALLBACK = 500
 
 export const LocationFilter: React.FC = () => {
   const { navigate, goBack } = useNavigation<UseNavigationType>()
-  const {
-    position,
-    isPositionUnavailable,
-    permissionState,
-    requestGeolocPermission,
-  } = useGeolocation()
+  const { position, positionError, permissionState, requestGeolocPermission } = useGeolocation()
   const { dispatch } = useStagedSearch()
   const debouncedGoBack = useRef(debounce(goBack, DEBOUNCED_CALLBACK)).current
   const {
@@ -97,12 +92,8 @@ export const LocationFilter: React.FC = () => {
           locationType={LocationType.AROUND_ME}
           onPress={onPressAroundMe}
         />
-        {!!isPositionUnavailable && (
-          <InputError
-            visible
-            messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}
-            numberOfSpacesTop={1}
-          />
+        {!!positionError && (
+          <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
         )}
         <Spacer.Column numberOfSpaces={4} />
         <LocationChoice

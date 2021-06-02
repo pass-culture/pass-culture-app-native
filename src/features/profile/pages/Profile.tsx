@@ -51,11 +51,17 @@ export const Profile: React.FC = () => {
   const signOut = useLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  const { isPositionUnavailable, permissionState, requestGeolocPermission } = useGeolocation()
+  const {
+    positionError,
+    permissionState,
+    requestGeolocPermission,
+    triggerPositionUpdate,
+  } = useGeolocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(false)
 
   useFocusEffect(() => {
-    if (isPositionUnavailable) {
+    triggerPositionUpdate()
+    if (positionError) {
       new MonitoringError('Position is unavailable', 'NoPositionProfilePage')
     }
     if (permissionState === GeolocPermissionState.GRANTED) {
@@ -169,12 +175,8 @@ export const Profile: React.FC = () => {
             }
             testID="row-geolocation"
           />
-          {!!isPositionUnavailable && (
-            <InputError
-              visible
-              messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}
-              numberOfSpacesTop={1}
-            />
+          {!!positionError && (
+            <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
           )}
         </ProfileSection>
         <ProfileSection title={t`Aides`}>

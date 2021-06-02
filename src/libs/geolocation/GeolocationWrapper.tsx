@@ -5,7 +5,7 @@ import { useAppStateChange } from 'libs/appState'
 import { useSafeState } from 'libs/hooks'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
-import { getPosition } from './getPosition'
+import { getPosition, GeolocationError } from './getPosition'
 import { GeolocPermissionState } from './permissionState.d'
 import { requestGeolocPermission } from './requestGeolocPermission'
 
@@ -17,7 +17,7 @@ type RequestGeolocPermissionParams = {
 
 export interface IGeolocationContext {
   position: GeoCoordinates | null
-  isPositionUnavailable: boolean
+  positionError: GeolocationError | null
   setPosition: (position: GeoCoordinates | null) => void
   permissionState: GeolocPermissionState
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
@@ -27,7 +27,7 @@ export interface IGeolocationContext {
 
 export const GeolocationContext = React.createContext<IGeolocationContext>({
   position: null,
-  isPositionUnavailable: false,
+  positionError: null,
   setPosition: () => undefined,
   permissionState: GeolocPermissionState.DENIED,
   requestGeolocPermission: async () => {
@@ -40,8 +40,8 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
 })
 
 export const GeolocationWrapper = ({ children }: { children: Element }) => {
-  const [isPositionUnavailable, setIsPositionUnavailable] = useSafeState(false)
   const [position, setPosition] = useSafeState<GeoCoordinates | null>(null)
+  const [positionError, setPositionError] = useSafeState<GeolocationError | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState>(
     GeolocPermissionState.DENIED
   )
@@ -51,8 +51,7 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   }, [])
 
   function triggerPositionUpdate() {
-    setIsPositionUnavailable(false)
-    getPosition(setPosition, setIsPositionUnavailable)
+    getPosition(setPosition, setPositionError)
   }
 
   // this function is used to set OS permissions according to user choice on native geolocation popup
@@ -96,7 +95,7 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
     <GeolocationContext.Provider
       value={{
         position,
-        isPositionUnavailable,
+        positionError,
         setPosition,
         permissionState,
         requestGeolocPermission: contextualRequestGeolocPermission,

@@ -27,12 +27,7 @@ const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy,
 
 export const FavoritesSorts: React.FC = () => {
   const { goBack } = useNavigation()
-  const {
-    position,
-    isPositionUnavailable,
-    permissionState,
-    requestGeolocPermission,
-  } = useGeolocation()
+  const { position, positionError, permissionState, requestGeolocPermission } = useGeolocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
   const {
@@ -103,13 +98,9 @@ export const FavoritesSorts: React.FC = () => {
                 <Spacer.Flex />
                 {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
               </LabelContainer>
-              {!!(sortBy === 'AROUND_ME' && isPositionUnavailable) && (
-                <InputError
-                  visible
-                  messageId={t`La géolocalisation est temporairement inutilisable sur ton téléphone`}
-                  numberOfSpacesTop={1}
-                />
-              )}
+              {sortBy === 'AROUND_ME' && positionError ? (
+                <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
+              ) : null}
             </React.Fragment>
           )
         })}
