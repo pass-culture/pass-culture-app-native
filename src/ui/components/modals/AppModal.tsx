@@ -20,6 +20,7 @@ interface Props {
   titleNumberOfLines?: number
   isScrollable?: boolean
   disableBackdropTap?: boolean
+  shouldDisplayOverlay?: boolean
 }
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -33,6 +34,7 @@ export const AppModal: FunctionComponent<Props> = ({
   titleNumberOfLines,
   isScrollable = false,
   disableBackdropTap,
+  shouldDisplayOverlay = true,
 }) => {
   const { bottom } = useCustomSafeInsets()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -49,7 +51,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <ModalOverlay visible={visible} />
+      <ModalOverlay visible={shouldDisplayOverlay && visible} />
       <Modal
         animationType="slide"
         statusBarTranslucent
