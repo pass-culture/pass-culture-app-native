@@ -6,10 +6,13 @@ import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { useEffect, useRef, useState } from 'react'
 import { WebView, WebViewNavigation } from 'react-native-webview'
+import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
+import { useNotifyIdCheckCompleted } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
+import { useUserProfileInfo } from 'features/home/api'
 import {
   homeNavigateConfig,
   navigateToHome,
@@ -18,6 +21,7 @@ import {
 } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
+import { QueryKeys } from 'libs/queryKeys'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
@@ -32,11 +36,35 @@ export const IdCheck: React.FC<Props> = function (props) {
   const webviewRef = useRef<WebView>(null)
   const injectedJavascript = useKeyboardAdjustFixIdCheck()
   const { setContextValue } = useIdCheckContext()
+  const queryClient = useQueryClient()
 
   const [idCheckUri, setIdCheckUri] = useState<string | undefined>(undefined)
 
   function onAbandon() {
     navigation.replace(homeNavigateConfig.screen, homeNavigateConfig.params)
+  }
+
+  const { mutate: notifyIdCheckCompleted } = useNotifyIdCheckCompleted({
+    onSuccess: syncUserAndProceedToNextScreen,
+    onError: syncUserAndProceedToNextScreen,
+  })
+
+  const { refetch } = useUserProfileInfo({
+    cacheTime: 0,
+  })
+
+  function goToBeneficiaryRequestSent() {
+    navigation.navigate('BeneficiaryRequestSent')
+  }
+
+  function syncUserAndProceedToNextScreen() {
+    queryClient.invalidateQueries(QueryKeys.USER_PROFILE).finally(() => {
+      refetch().finally(goToBeneficiaryRequestSent)
+    })
+  }
+
+  function onSuccess() {
+    notifyIdCheckCompleted()
   }
 
   useEffect(() => {
@@ -105,7 +133,7 @@ export const IdCheck: React.FC<Props> = function (props) {
     if (isEligibilityProcessAbandonned) {
       navigateToHome()
     } else if (isEligibilityProcessFinished) {
-      navigation.navigate('BeneficiaryRequestSent')
+      onSuccess()
     } else if (!settings?.displayDmsRedirection) {
       // this is double check as button is not shown on idCheck component
       return
