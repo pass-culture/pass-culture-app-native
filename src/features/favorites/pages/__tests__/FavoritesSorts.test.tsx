@@ -1,10 +1,11 @@
 import React from 'react'
-import { GeoCoordinates } from 'react-native-geolocation-service'
+import { GeoCoordinates, PositionError } from 'react-native-geolocation-service'
 import waitForExpect from 'wait-for-expect'
 
 import { goBack } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState } from 'libs/geolocation'
+import { GeolocationError, GEOLOCATION_USER_ERROR_MESSAGE } from 'libs/geolocation/getPosition'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
 
 import { FavoriteSortBy, FavoritesSorts } from '../FavoritesSorts'
@@ -15,12 +16,14 @@ jest.mock('../FavoritesWrapper', () => jest.requireActual('../FavoritesWrapper')
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 let mockPermissionState = GeolocPermissionState.GRANTED
 let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
-let mockIsPositionUnavailable = false
+let mockPositionError: GeolocationError | null = null
+const mockTriggerPositionUpdate = jest.fn()
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
     position: mockPosition,
-    isPositionUnavailable: mockIsPositionUnavailable,
+    positionError: mockPositionError,
+    triggerPositionUpdate: mockTriggerPositionUpdate,
   }),
 }))
 
@@ -28,7 +31,7 @@ describe('FavoritesSorts component', () => {
   beforeEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION
-    mockIsPositionUnavailable = false
+    mockPositionError = null
   })
   afterEach(jest.resetAllMocks)
 
@@ -74,15 +77,16 @@ describe('FavoritesSorts component', () => {
   )
 
   it('should display error message when clicking on "Proximité géographique" and position is unavailable', async () => {
-    mockIsPositionUnavailable = true
     mockPosition = null
+    mockPositionError = {
+      type: PositionError.SETTINGS_NOT_SATISFIED,
+      message: GEOLOCATION_USER_ERROR_MESSAGE[PositionError.SETTINGS_NOT_SATISFIED],
+    }
     const renderAPI = await renderFavoritesSort()
 
     fireEvent.press(renderAPI.getByText('Proximité géographique'))
 
-    await waitForExpect(() => {
-      renderAPI.getByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
-    })
+    renderAPI.getByText(mockPositionError.message)
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {

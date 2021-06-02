@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { GeoCoordinates } from 'react-native-geolocation-service'
+import { GeoCoordinates, PositionError } from 'react-native-geolocation-service'
 import { UseQueryResult } from 'react-query'
 
 import { GetIdCheckTokenResponse, UserProfileResponse } from 'api/gen'
@@ -12,6 +12,7 @@ import { Tab } from 'features/navigation/TabBar/TabNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeolocPermissionState } from 'libs/geolocation'
+import { GeolocationError, GEOLOCATION_USER_ERROR_MESSAGE } from 'libs/geolocation/getPosition'
 import { flushAllPromises, render, act, fireEvent } from 'tests/utils'
 
 import { Profile } from './Profile'
@@ -43,12 +44,14 @@ jest.mock('features/auth/AuthContext', () => ({
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 let mockPermissionState = GeolocPermissionState.GRANTED
 let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
-let mockIsPositionUnavailable = false
+let mockPositionError: GeolocationError | null = null
+const mockTriggerPositionUpdate = jest.fn()
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
     position: mockPosition,
-    isPositionUnavailable: mockIsPositionUnavailable,
+    positionError: mockPositionError,
+    triggerPositionUpdate: mockTriggerPositionUpdate,
   }),
 }))
 
@@ -80,6 +83,7 @@ describe('Profile component', () => {
   afterEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION
+    mockPositionError = null
   })
 
   describe('user settings section', () => {
@@ -114,13 +118,16 @@ describe('Profile component', () => {
         expect(geolocSwitch.props.active).toBeTruthy()
       })
 
-      it('should display position error message if geoloc permission is granted bnut position is null', async () => {
+      it('should display position error message if geoloc permission is granted but position is null', async () => {
         mockPermissionState = GeolocPermissionState.GRANTED
         mockPosition = null
-        mockIsPositionUnavailable = true
+        mockPositionError = {
+          type: PositionError.SETTINGS_NOT_SATISFIED,
+          message: GEOLOCATION_USER_ERROR_MESSAGE[PositionError.SETTINGS_NOT_SATISFIED],
+        }
 
         const { getByText } = await renderProfile()
-        getByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
+        getByText(mockPositionError.message)
       })
 
       it('should display switch OFF if geoloc permission is denied', async () => {

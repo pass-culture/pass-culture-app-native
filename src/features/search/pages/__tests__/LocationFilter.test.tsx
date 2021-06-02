@@ -1,8 +1,9 @@
 import React from 'react'
-import { GeoCoordinates } from 'react-native-geolocation-service'
+import { GeoCoordinates, PositionError } from 'react-native-geolocation-service'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 import { GeolocPermissionState } from 'libs/geolocation'
+import { GeolocationError, GEOLOCATION_USER_ERROR_MESSAGE } from 'libs/geolocation/getPosition'
 import { fireEvent, render } from 'tests/utils'
 
 import { LocationFilter } from '../LocationFilter'
@@ -19,12 +20,14 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 let mockPermissionState = GeolocPermissionState.GRANTED
-let mockIsPositionUnavailable = false
+let mockPositionError: GeolocationError | null = null
+const mockTriggerPositionUpdate = jest.fn()
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
     permissionState: mockPermissionState,
     position: mockPosition,
-    isPositionUnavailable: mockIsPositionUnavailable,
+    positionError: mockPositionError,
+    triggerPositionUpdate: mockTriggerPositionUpdate,
   }),
 }))
 
@@ -33,7 +36,7 @@ describe('LocationFilter component', () => {
   afterEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION
-    mockIsPositionUnavailable = false
+    mockPositionError = null
   })
 
   it('should render correctly', () => {
@@ -42,11 +45,14 @@ describe('LocationFilter component', () => {
   })
 
   it('should display error message when (position=null, type=AROUND_ME)', async () => {
-    mockIsPositionUnavailable = true
     mockPosition = null
+    mockPositionError = {
+      type: PositionError.SETTINGS_NOT_SATISFIED,
+      message: GEOLOCATION_USER_ERROR_MESSAGE[PositionError.SETTINGS_NOT_SATISFIED],
+    }
     const { getByText, getByTestId } = render(<LocationFilter />)
     fireEvent.press(getByTestId('locationChoice-aroundMe'))
-    getByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
+    getByText(mockPositionError.message)
     expect(mockDispatch).not.toBeCalled()
   })
 
