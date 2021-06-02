@@ -4,7 +4,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { extractApiErrorMessage } from 'api/helpers'
+import { ApiError, extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -50,7 +50,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     isComplete: false,
     isValid: false,
   })
-  const [invalidCodeMessage, setInvalidCodeMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
   const [validationCodeRequestTimestamp, setValidationCodeRequestTimestamp] = useState<
     null | number
   >(null)
@@ -73,14 +73,12 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
 
   const { mutate: validatePhoneNumber } = useValidatePhoneNumberMutation({
     onSuccess: onValidateSuccess,
-    onError: onValidateError,
+    onError,
   })
 
   const { mutate: sendPhoneValidationCode } = useSendPhoneValidationMutation({
-    onSuccess: onSendCodeSucess,
-    onError: (_error: unknown) => {
-      // TODO(8702) display error message in a toaster
-    },
+    onSuccess: onSendCodeSuccess,
+    onError,
   })
 
   useEffect(() => {
@@ -94,17 +92,17 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     props.dismissModal()
   }
 
-  function onValidateError(error: unknown) {
-    const { content } = error as { content: { code: string; message: string } }
-    if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
+  function onError(error: unknown | ApiError) {
+    const { content } = error as ApiError
+    if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS' || content.code === 'TOO_MANY_SMS_SENT') {
       props.dismissModal()
       navigate('PhoneValidationTooManyAttempts')
     } else {
-      setInvalidCodeMessage(extractApiErrorMessage(error))
+      setErrorMessage(extractApiErrorMessage(error))
     }
   }
 
-  function onSendCodeSucess() {
+  function onSendCodeSuccess() {
     const now = currentTimestamp()
     storage.saveObject('phone_validation_code_asked_at', now)
     setValidationCodeRequestTimestamp(now)
@@ -118,7 +116,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
   }
 
   function validateCode() {
-    setInvalidCodeMessage('')
+    setErrorMessage('')
     const { code } = codeInputState
     if (code) {
       validatePhoneNumber(code)
@@ -126,7 +124,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
   }
 
   function goBack() {
-    setInvalidCodeMessage('')
+    setErrorMessage('')
     props.onGoBack()
   }
 
@@ -169,9 +167,9 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
           isInputValid={isInputValid}
           onChangeValue={onChangeValue}
         />
-        {invalidCodeMessage ? (
+        {errorMessage ? (
           <React.Fragment>
-            <InputError visible messageId={invalidCodeMessage} numberOfSpacesTop={3} />
+            <InputError visible messageId={errorMessage} numberOfSpacesTop={3} />
             <Spacer.Column numberOfSpaces={5} />
           </React.Fragment>
         ) : (
