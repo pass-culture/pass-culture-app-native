@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FC, useEffect, useState } from 'react'
+import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/helpers'
@@ -26,6 +27,8 @@ import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 import { contactSupport } from '../support.services'
 
 const CODE_INPUT_LENGTH = 6
+
+const screenWidth = Dimensions.get('window').width
 
 export interface SetPhoneValidationCodeModalProps {
   visible: boolean
@@ -183,6 +186,8 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
         <Spacer.Column numberOfSpaces={4} />
         <HelpRow>
           <Typo.Body>{t`Tu n'as pas reçu le sms ?`}</Typo.Body>
+          {/* force button to wrap on small screen, otherwise timer will "unwrap" when timer is under 10 seconds */}
+          {screenWidth <= 320 ? <Break /> : null}
           <ButtonTertiary
             title={getRetryButtonTitle()}
             onPress={requestSendPhoneValidationCode}
@@ -230,6 +235,10 @@ const isCodeValid = (code: string | null, _isComplete: boolean) => {
 const isInputValid = (inputValue: string, _position: number) => {
   return !isNaN(Number(inputValue)) && inputValue.length === 1
 }
+
+const Break = styled.View({
+  flexBasis: '100%',
+})
 
 const ModalContent = styled.View({
   width: '100%',
