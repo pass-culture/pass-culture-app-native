@@ -6,6 +6,7 @@ import {
   formatDates,
   getUniqueSortedTimestamps,
   formatToCompleteFrenchDate,
+  formatToFrenchDate,
 } from '../formatDates'
 
 const Oct5 = new Date(2020, 9, 5)
@@ -35,6 +36,24 @@ describe('formatDates', () => {
   `('formatDates($dates) \t= $expected', ({ dates, expected }) => {
     const timestampsInSeconds = dates && dates.map((date: Date) => date.valueOf())
     expect(formatDates(timestampsInSeconds)).toBe(expected)
+  })
+})
+
+describe('formatToFrenchDate', () => {
+  beforeAll(() => {
+    mockdate.set(Nov1)
+  })
+
+  it.each`
+    date                                        | expected
+    ${Nov12}                                    | ${'12 novembre 2020'}
+    ${Oct5}                                     | ${'5 octobre 2020'}
+    ${Oct5.valueOf()}                           | ${'5 octobre 2020'}
+    ${{ day: 5, month: 'octobre', year: 2020 }} | ${'5 octobre 2020'}
+    ${'2030-02-05T00:00:00Z'}                   | ${'undefined undefined undefined'}
+    ${Nov12.toString()}                         | ${'undefined undefined undefined'}
+  `('formatToFrenchDate($dates) \t= $expected', ({ date, expected }) => {
+    expect(formatToFrenchDate(date)).toBe(expected)
   })
 })
 
