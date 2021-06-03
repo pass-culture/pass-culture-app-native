@@ -50,8 +50,8 @@ describe('formatToFrenchDate', () => {
     ${Oct5}                                     | ${'5 octobre 2020'}
     ${Oct5.valueOf()}                           | ${'5 octobre 2020'}
     ${{ day: 5, month: 'octobre', year: 2020 }} | ${'5 octobre 2020'}
-    ${'2030-02-05T00:00:00Z'}                   | ${'undefined undefined undefined'}
-    ${Nov12.toString()}                         | ${'undefined undefined undefined'}
+    ${'2030-02-05T00:00:00Z'}                   | ${'5 février 2030'}
+    ${Nov12.toString()}                         | ${'12 novembre 2020'}
   `('formatToFrenchDate($dates) \t= $expected', ({ date, expected }) => {
     expect(formatToFrenchDate(date)).toBe(expected)
   })
