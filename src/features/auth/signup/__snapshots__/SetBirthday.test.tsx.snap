@@ -214,6 +214,7 @@ Array [
                 }
               >
                 <View
+                  accessibilityLabel="Pourquoi ?"
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}
@@ -241,7 +242,7 @@ Array [
                       "width": "100%",
                     }
                   }
-                  testID="button-container-why-link"
+                  testID="Pourquoi ?"
                 >
                   <Text
                     adjustsFontSizeToFit={false}
@@ -258,7 +259,6 @@ Array [
                         },
                       ]
                     }
-                    testID="button-title-why-link"
                     textColor="#eb0055"
                   >
                     Pourquoi ?
@@ -308,6 +308,8 @@ Array [
                       }
                     >
                       <TextInput
+                        accessibilityLabel="Entrée pour le jour"
+                        accessible={true}
                         allowFontScaling={true}
                         blurOnSubmit={true}
                         keyboardType="number-pad"
@@ -344,6 +346,7 @@ Array [
                             },
                           ]
                         }
+                        testID="Entrée pour le jour"
                         underlineColorAndroid="transparent"
                         value=""
                       />
@@ -389,6 +392,8 @@ Array [
                       }
                     >
                       <TextInput
+                        accessibilityLabel="Entrée pour le mois"
+                        accessible={true}
                         allowFontScaling={true}
                         blurOnSubmit={true}
                         keyboardType="number-pad"
@@ -426,6 +431,7 @@ Array [
                             },
                           ]
                         }
+                        testID="Entrée pour le mois"
                         underlineColorAndroid="transparent"
                         value=""
                       />
@@ -471,6 +477,8 @@ Array [
                       }
                     >
                       <TextInput
+                        accessibilityLabel="Entrée pour l'année"
+                        accessible={true}
                         allowFontScaling={true}
                         blurOnSubmit={true}
                         keyboardType="number-pad"
@@ -508,6 +516,7 @@ Array [
                             },
                           ]
                         }
+                        testID="Entrée pour l'année"
                         underlineColorAndroid="transparent"
                         value=""
                       />
@@ -552,6 +561,7 @@ Array [
                   }
                 />
                 <View
+                  accessibilityLabel="Continuer"
                   accessible={true}
                   focusable={false}
                   onClick={[Function]}
@@ -579,7 +589,7 @@ Array [
                       "width": "100%",
                     }
                   }
-                  testID="button-container-validate-birthday"
+                  testID="Continuer"
                 >
                   <Text
                     adjustsFontSizeToFit={false}
@@ -596,7 +606,6 @@ Array [
                         },
                       ]
                     }
-                    testID="button-title-validate-birthday"
                     textColor="#626262"
                   >
                     Continuer
@@ -1223,6 +1232,7 @@ exports[`SetBirthday Page should render properly 1`] = `
               }
             >
               <View
+                accessibilityLabel="Pourquoi ?"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -1250,7 +1260,7 @@ exports[`SetBirthday Page should render properly 1`] = `
                     "width": "100%",
                   }
                 }
-                testID="button-container-why-link"
+                testID="Pourquoi ?"
               >
                 <Text
                   adjustsFontSizeToFit={false}
@@ -1267,7 +1277,6 @@ exports[`SetBirthday Page should render properly 1`] = `
                       },
                     ]
                   }
-                  testID="button-title-why-link"
                   textColor="#eb0055"
                 >
                   Pourquoi ?
@@ -1317,6 +1326,8 @@ exports[`SetBirthday Page should render properly 1`] = `
                     }
                   >
                     <TextInput
+                      accessibilityLabel="Entrée pour le jour"
+                      accessible={true}
                       allowFontScaling={true}
                       blurOnSubmit={true}
                       keyboardType="number-pad"
@@ -1353,6 +1364,7 @@ exports[`SetBirthday Page should render properly 1`] = `
                           },
                         ]
                       }
+                      testID="Entrée pour le jour"
                       underlineColorAndroid="transparent"
                       value=""
                     />
@@ -1398,6 +1410,8 @@ exports[`SetBirthday Page should render properly 1`] = `
                     }
                   >
                     <TextInput
+                      accessibilityLabel="Entrée pour le mois"
+                      accessible={true}
                       allowFontScaling={true}
                       blurOnSubmit={true}
                       keyboardType="number-pad"
@@ -1435,6 +1449,7 @@ exports[`SetBirthday Page should render properly 1`] = `
                           },
                         ]
                       }
+                      testID="Entrée pour le mois"
                       underlineColorAndroid="transparent"
                       value=""
                     />
@@ -1480,6 +1495,8 @@ exports[`SetBirthday Page should render properly 1`] = `
                     }
                   >
                     <TextInput
+                      accessibilityLabel="Entrée pour l'année"
+                      accessible={true}
                       allowFontScaling={true}
                       blurOnSubmit={true}
                       keyboardType="number-pad"
@@ -1517,6 +1534,7 @@ exports[`SetBirthday Page should render properly 1`] = `
                           },
                         ]
                       }
+                      testID="Entrée pour l'année"
                       underlineColorAndroid="transparent"
                       value=""
                     />
@@ -1561,6 +1579,7 @@ exports[`SetBirthday Page should render properly 1`] = `
                 }
               />
               <View
+                accessibilityLabel="Continuer"
                 accessible={true}
                 focusable={false}
                 onClick={[Function]}
@@ -1588,7 +1607,7 @@ exports[`SetBirthday Page should render properly 1`] = `
                     "width": "100%",
                   }
                 }
-                testID="button-container-validate-birthday"
+                testID="Continuer"
               >
                 <Text
                   adjustsFontSizeToFit={false}
@@ -1605,7 +1624,6 @@ exports[`SetBirthday Page should render properly 1`] = `
                       },
                     ]
                   }
-                  testID="button-title-validate-birthday"
                   textColor="#626262"
                 >
                   Continuer

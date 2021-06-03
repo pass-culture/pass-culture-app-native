@@ -21,7 +21,7 @@ describe('<SetEmail />', () => {
   it('should display disabled validate button when email input is not filled', async () => {
     const { getByTestId } = renderPage()
 
-    const button = getByTestId('button-container')
+    const button = getByTestId('Continuer')
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
   })
 
@@ -31,7 +31,7 @@ describe('<SetEmail />', () => {
     const emailInput = getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
-    const button = getByTestId('button-container')
+    const button = getByTestId('Continuer')
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
   })
 

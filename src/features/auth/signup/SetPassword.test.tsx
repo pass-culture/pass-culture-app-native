@@ -16,7 +16,7 @@ describe('SetPassword Page', () => {
   it('should enable the submit button when password is correct', async () => {
     const { getByPlaceholderText, getByTestId } = renderChoosePassword()
 
-    const continueButton = getByTestId('button-container')
+    const continueButton = getByTestId('Continuer')
 
     const background = continueButton.props.style.backgroundColor
     expect(background).toEqual(ColorsEnum.GREY_LIGHT)

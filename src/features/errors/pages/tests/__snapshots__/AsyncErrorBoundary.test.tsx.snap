@@ -176,6 +176,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
       }
     >
       <View
+        accessibilityLabel="Bouton"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -203,7 +204,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
             "width": "100%",
           }
         }
-        testID="button-container"
+        testID="Bouton"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -220,7 +221,6 @@ exports[`AsyncErrorBoundary component should render 1`] = `
               },
             ]
           }
-          testID="button-title"
           textColor="#ffffff"
         >
           Réessayer

@@ -45,7 +45,7 @@ describe('ChangePassword', () => {
     fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
     // assuming there's only one button in this page
-    const continueButton = getByTestId('button-container')
+    const continueButton = getByTestId('Bouton')
 
     const background = continueButton.props.style.backgroundColor
     expect(background).toEqual(ColorsEnum.PRIMARY)
@@ -103,7 +103,7 @@ describe('ChangePassword', () => {
     await superFlushWithAct()
 
     // assuming there's only one button in this page
-    fireEvent.press(getByTestId('button-container'))
+    fireEvent.press(getByTestId('Bouton'))
     await superFlushWithAct()
 
     await waitForExpect(() => {
@@ -133,7 +133,7 @@ describe('ChangePassword', () => {
     await fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
     // assuming there's only one button in this page
-    const continueButton = getByTestId('button-container')
+    const continueButton = getByTestId('Bouton')
     fireEvent.press(continueButton)
     await superFlushWithAct()
 

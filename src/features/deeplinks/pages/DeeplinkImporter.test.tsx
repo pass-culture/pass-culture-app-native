@@ -30,7 +30,7 @@ describe('DeeplinkImporter', () => {
     const { getByTestId, getByPlaceholderText } = render(<DeeplinkImporter />)
 
     const urlInput = getByPlaceholderText('Colle ton lien ici ...')
-    const importButton = getByTestId('button-container-import')
+    const importButton = getByTestId('Importer le lien')
 
     fireEvent.changeText(urlInput, url)
     fireEvent.press(importButton)

@@ -181,6 +181,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       }
     >
       <View
+        accessibilityLabel="Bouton"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -208,7 +209,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             "width": "100%",
           }
         }
-        testID="button-container"
+        testID="Bouton"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -225,7 +226,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               },
             ]
           }
-          testID="button-title"
           textColor="#eb0055"
         >
           Supprimer mon compte
@@ -242,6 +242,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         }
       />
       <View
+        accessibilityLabel="Bouton"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -269,7 +270,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             "width": "100%",
           }
         }
-        testID="button-container"
+        testID="Bouton"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -286,7 +287,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               },
             ]
           }
-          testID="button-title"
           textColor="#ffffff"
         >
           Abandonner

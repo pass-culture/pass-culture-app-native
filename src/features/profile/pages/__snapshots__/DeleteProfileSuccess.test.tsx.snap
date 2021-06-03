@@ -216,6 +216,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       }
     >
       <View
+        accessibilityLabel="Bouton"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -243,7 +244,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
             "width": "100%",
           }
         }
-        testID="button-container"
+        testID="Bouton"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -260,7 +261,6 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
               },
             ]
           }
-          testID="button-title"
           textColor="#eb0055"
         >
           Retourner à l'accueil

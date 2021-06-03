@@ -43,7 +43,7 @@ export const DenyAccessToIdCheckModal = (props: DenyAccessToIdCheckModalProps) =
         <Spacer.Column numberOfSpaces={getSpacing(2)} />
         <ButtonPrimary
           title={t`Recevoir une alerte`}
-          testIdSuffix="continue"
+          testId="Recevoir une alerte"
           onPress={onGetAlertedPress}
         />
       </ModalContent>

@@ -25,12 +25,11 @@ describe('<ShowResults />', () => {
     'should display the correct translation ($expected) and be disabled=$disabled',
     ({ nbHits, expected, disabled }) => {
       mockData = { pages: [{ nbHits }] }
-      const { getByTestId } = render(<ShowResults />)
-      expect(getByTestId('button-title')).toBeTruthy()
-      expect(getByTestId('button-title').children[0]).toBe(expected)
+      const { getByText, getByTestId } = render(<ShowResults />)
+      getByText(expected)
 
       const expectedColor = disabled ? ColorsEnum.GREY_LIGHT : ColorsEnum.PRIMARY
-      expect(getByTestId('button-container').props.style.backgroundColor).toBe(expectedColor)
+      expect(getByTestId('Bouton').props.style.backgroundColor).toBe(expectedColor)
     }
   )
 })

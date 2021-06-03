@@ -2,6 +2,7 @@ import React, { Fragment, FunctionComponent, memo } from 'react'
 import { Dimensions, GestureResponderEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { testID } from 'tests/utils'
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
@@ -17,7 +18,7 @@ export interface BaseButtonProps {
   isLoading?: boolean
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
-  testIdSuffix?: string
+  testId?: string
   textSize?: number
   title: string
 }
@@ -40,14 +41,11 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
   const inline = props.inline
   const pressHandler = props.disabled || props.isLoading ? undefined : props.onPress
   const longPressHandler = props.disabled || props.isLoading ? undefined : props.onLongPress
-  const titleTestID = props.testIdSuffix ? `button-title-${props.testIdSuffix}` : 'button-title'
-  const containerTestID = props.testIdSuffix
-    ? `button-container-${props.testIdSuffix}`
-    : 'button-container'
+  const containerTestID = props.testId ? props.testId : 'Bouton'
 
   return (
     <Container
-      testID={containerTestID}
+      {...testID(containerTestID)}
       backgroundColor={props.backgroundColor}
       borderColor={props.borderColor}
       onPress={pressHandler}
@@ -55,12 +53,17 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
       buttonHeight={props.buttonHeight ?? 'small'}
       inline={inline}>
       {props.isLoading ? (
-        <Logo testID="button-isloading-icon" color={props.loadingIconColor} size={props.iconSize} />
+        <Logo
+          {...testID('button-isloading-icon')}
+          color={props.loadingIconColor}
+          size={props.iconSize}
+        />
       ) : (
         <Fragment>
-          {!!Icon && <Icon testID="button-icon" color={props.iconColor} size={props.iconSize} />}
+          {!!Icon && (
+            <Icon {...testID('button-icon')} color={props.iconColor} size={props.iconSize} />
+          )}
           <Title
-            testID={titleTestID}
             textColor={props.textColor}
             textSize={props.textSize}
             adjustsFontSizeToFit={props.adjustsFontSizeToFit ?? false}

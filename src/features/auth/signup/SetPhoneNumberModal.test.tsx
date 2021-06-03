@@ -52,7 +52,7 @@ describe('SetPhoneNumberModal', () => {
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
       await superFlushWithAct()
 
-      const button = getByTestId('button-container-continue')
+      const button = getByTestId('Continuer')
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
@@ -71,7 +71,7 @@ describe('SetPhoneNumberModal', () => {
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
       await superFlushWithAct()
 
-      const button = getByTestId('button-container-continue')
+      const button = getByTestId('Continuer')
 
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
 
@@ -88,7 +88,7 @@ describe('SetPhoneNumberModal', () => {
       })
       await superFlushWithAct()
 
-      const button = getByTestId('button-container-continue')
+      const button = getByTestId('Continuer')
       const input = getByPlaceholderText('6 12 34 56 78')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(button)
@@ -106,7 +106,7 @@ describe('SetPhoneNumberModal', () => {
       })
       await superFlushWithAct()
 
-      const button = getByTestId('button-container-continue')
+      const button = getByTestId('Continuer')
       const input = getByPlaceholderText('6 12 34 56 78')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(button)
@@ -124,7 +124,7 @@ describe('SetPhoneNumberModal', () => {
       }
 
       const { getByTestId, getByPlaceholderText, getByText, rerender } = renderSetPhoneNumberModal()
-      const continueButton = getByTestId('button-container-continue')
+      const continueButton = getByTestId('Continuer')
       const input = getByPlaceholderText('6 12 34 56 78')
       fireEvent.changeText(input, '600000000')
       const props = {
@@ -162,7 +162,7 @@ describe('SetPhoneNumberModal', () => {
         const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
         await superFlushWithAct()
 
-        const button = getByTestId('button-container-continue')
+        const button = getByTestId('Continuer')
         const input = getByPlaceholderText('6 12 34 56 78')
         fireEvent.changeText(input, '612345678')
         fireEvent.press(button)
@@ -186,7 +186,7 @@ describe('SetPhoneNumberModal', () => {
 
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
 
-      const button = getByTestId('button-container-continue')
+      const button = getByTestId('Continuer')
       const input = getByPlaceholderText('6 12 34 56 78')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(button)

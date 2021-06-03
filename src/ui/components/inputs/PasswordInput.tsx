@@ -6,6 +6,7 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
+import { testID } from 'tests/utils'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 
@@ -45,11 +46,13 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
         secureTextEntry={shouldHidePassword}
         ref={forwardedRef}
       />
-      <IconTouchableOpacity onPress={togglePasswordDisplay}>
+      <IconTouchableOpacity
+        {...testID("Basculer l'affichage du mot de passe")}
+        onPress={togglePasswordDisplay}>
         {shouldHidePassword ? (
-          <EyeSlash testID="eye-slash" size="100%" />
+          <EyeSlash {...testID('eye-slash')} size="100%" />
         ) : (
-          <Eye testID="eye" size="100%" />
+          <Eye {...testID('eye')} size="100%" />
         )}
       </IconTouchableOpacity>
     </InputContainer>

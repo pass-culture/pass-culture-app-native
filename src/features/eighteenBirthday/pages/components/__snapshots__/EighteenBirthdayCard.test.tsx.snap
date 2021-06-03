@@ -143,6 +143,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
       }
     >
       <View
+        accessibilityLabel="Bouton"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -170,7 +171,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
             "width": "100%",
           }
         }
-        testID="button-container"
+        testID="Bouton"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -187,7 +188,6 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
               },
             ]
           }
-          testID="button-title"
           textColor="#ffffff"
         >
           Vérifier mon identité
@@ -205,6 +205,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
       }
     >
       <View
+        accessibilityLabel="Bouton"
         accessible={true}
         focusable={false}
         onClick={[Function]}
@@ -232,7 +233,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
             "width": "100%",
           }
         }
-        testID="button-container"
+        testID="Bouton"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -249,7 +250,6 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
               },
             ]
           }
-          testID="button-title"
           textColor="#eb0055"
         >
           Passer

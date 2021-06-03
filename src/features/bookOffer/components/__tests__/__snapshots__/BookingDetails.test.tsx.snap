@@ -482,6 +482,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     }
   />
   <View
+    accessibilityLabel="Bouton"
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -509,7 +510,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         "width": "100%",
       }
     }
-    testID="button-container"
+    testID="Bouton"
   >
     <Text
       adjustsFontSizeToFit={false}
@@ -526,7 +527,6 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
           },
         ]
       }
-      testID="button-title"
       textColor="#ffffff"
     >
       Confirmer la réservation

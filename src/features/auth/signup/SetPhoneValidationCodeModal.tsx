@@ -177,8 +177,8 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
         )}
         <ButtonPrimary
           title={t`Continuer`}
+          testId={'Continuer'}
           disabled={!codeInputState.isValid}
-          testIdSuffix={'continue'}
           onPress={validateCode}
         />
         <Spacer.Column numberOfSpaces={4} />
@@ -188,10 +188,10 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
           {screenWidth <= 320 ? <Break /> : null}
           <ButtonTertiary
             title={getRetryButtonTitle()}
+            testId={'Réessayer'}
             onPress={requestSendPhoneValidationCode}
             inline
             disabled={!isRequestTimestampExpired}
-            testIdSuffix={'retry'}
           />
         </HelpRow>
         <Spacer.Column numberOfSpaces={4} />

@@ -143,6 +143,7 @@ Array [
         }
       />
       <View
+        accessibilityLabel="Bouton"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -170,7 +171,7 @@ Array [
             "width": "100%",
           }
         }
-        testID="button-container"
+        testID="Bouton"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -187,7 +188,6 @@ Array [
               },
             ]
           }
-          testID="button-title"
           textColor="#eb0055"
         >
           Voir ma réservation
@@ -204,6 +204,7 @@ Array [
         }
       />
       <View
+        accessibilityLabel="Bouton"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -231,7 +232,7 @@ Array [
             "width": "100%",
           }
         }
-        testID="button-container"
+        testID="Bouton"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -248,7 +249,6 @@ Array [
               },
             ]
           }
-          testID="button-title"
           textColor="#ffffff"
         >
           Retourner à l'accueil

@@ -78,7 +78,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
   describe('Continue button', () => {
     it('should enable continue button if input is valid and complete', async () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
-      const continueButton = getByTestId('button-container-continue')
+      const continueButton = getByTestId('Continuer')
 
       await waitForExpect(() => {
         expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
@@ -91,7 +91,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       ['is too short', '54'],
     ])('should not enable continue button when "%s"', async (_reason, codeTyped) => {
       const { getByTestId } = renderModalWithFilledCodeInput(codeTyped)
-      const continueButton = getByTestId('button-container-continue')
+      const continueButton = getByTestId('Continuer')
 
       await waitForExpect(() => {
         expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
@@ -103,7 +103,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456', {
         dismissModal: mockDismissModal,
       })
-      const continueButton = getByTestId('button-container-continue')
+      const continueButton = getByTestId('Continuer')
 
       fireEvent.press(continueButton)
       useMutationCallbacks.onSuccess()
@@ -118,7 +118,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       }
 
       const { getByTestId, getByText } = renderModalWithFilledCodeInput('123456')
-      const continueButton = getByTestId('button-container-continue')
+      const continueButton = getByTestId('Continuer')
 
       fireEvent.press(continueButton)
 
@@ -145,7 +145,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456', {
         dismissModal: mockDismissModal,
       })
-      const continueButton = getByTestId('button-container-continue')
+      const continueButton = getByTestId('Continuer')
 
       fireEvent.press(continueButton)
 
@@ -170,7 +170,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       const { getByTestId } = renderSetPhoneValidationCode()
       await superFlushWithAct()
 
-      const retryButton = getByTestId('button-container-retry')
+      const retryButton = getByTestId('Réessayer')
       fireEvent.press(retryButton)
 
       expect(sendPhoneValidationCode).toHaveBeenCalled()

@@ -66,7 +66,7 @@ export const DeeplinkImporter: FunctionComponent = () => {
           </Typo.Caption>
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
-            testIdSuffix="import"
+            testId="Importer le lien"
             title={t`Importer le lien`}
             onPress={resolveLink}
             isLoading={false}

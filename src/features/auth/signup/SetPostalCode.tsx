@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { testID } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -89,6 +90,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
               textContentType="postalCode"
               value={postalCode}
               maxLength={5}
+              {...testID('Entrée pour le code postal')}
             />
             <InputError
               visible={hasError}
@@ -103,6 +105,7 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
             onPress={goToCguAcceptance}
             isLoading={false}
             disabled={!isPostalCodeCorrect}
+            testId="Continuer"
           />
           <Spacer.Column numberOfSpaces={5} />
           <StepDots numberOfSteps={numberOfSteps} currentStep={4} />

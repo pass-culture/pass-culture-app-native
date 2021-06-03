@@ -8,6 +8,7 @@ import { useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { testID } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
@@ -86,6 +87,7 @@ export const SetEmail: FunctionComponent = () => {
               ref={emailInput}
               textContentType="emailAddress"
               value={email}
+              {...testID("Entrée pour l'email")}
             />
             <InputError
               visible={hasError}
@@ -103,6 +105,7 @@ export const SetEmail: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
             title={t`Continuer`}
+            testId="Continuer"
             onPress={validateEmail}
             isLoading={false}
             disabled={shouldDisableValidateButton}

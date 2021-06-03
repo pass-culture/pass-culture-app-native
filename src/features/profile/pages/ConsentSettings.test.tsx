@@ -56,7 +56,7 @@ describe('ConsentSettings', () => {
     fireEvent.press(toggleButton)
 
     await waitFor(() => {
-      const saveButton = getAllByTestId('button-container')[1]
+      const saveButton = getAllByTestId('Bouton')[1]
       const background = saveButton.props.style.backgroundColor
       expect(background).toEqual(ColorsEnum.PRIMARY)
     })

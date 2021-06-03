@@ -508,6 +508,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     }
   />
   <View
+    accessibilityLabel="Bouton"
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -535,7 +536,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         "width": "100%",
       }
     }
-    testID="button-container"
+    testID="Bouton"
   >
     <Text
       adjustsFontSizeToFit={false}
@@ -552,7 +553,6 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           },
         ]
       }
-      testID="button-title"
       textColor="#ffffff"
     >
       Valider ces options
