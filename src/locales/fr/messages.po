@@ -21,10 +21,6 @@ msgstr "+"
 msgid "/ place"
 msgstr "/ place"
 
-#: src/features/auth/signup/SetPhoneNumberModal.tsx
-msgid "0612345678"
-msgstr "0612345678"
-
 #: src/features/auth/components/PasswordSecurityRules.tsx
 msgid "1 Caractère spécial (!@#$%^&*...)"
 msgstr "1 Caractère spécial (!@#$%^&*...)"
@@ -44,6 +40,10 @@ msgstr "1 Minuscule"
 #: src/features/auth/components/PasswordSecurityRules.tsx
 msgid "12 Caractères"
 msgstr "12 Caractères"
+
+#: src/features/auth/signup/SetPhoneNumberModal.tsx
+msgid "6 12 34 56 78"
+msgstr "6 12 34 56 78"
 
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Abandonner"
@@ -378,8 +378,8 @@ msgid "Consulter notre centre d'aide"
 msgstr "Consulter notre centre d'aide"
 
 #: src/features/auth/signup/AcceptCgu.tsx
+#: src/features/auth/signup/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
-#: src/features/auth/signup/TooManyAttempts.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
 
@@ -862,7 +862,6 @@ msgstr "Nous étudions ton dossier..."
 msgid "Nouveau mot de passe"
 msgstr "Nouveau mot de passe"
 
-#: src/features/auth/signup/SetPhoneNumberModal.tsx
 #: src/features/profile/pages/PersonalData.tsx
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
@@ -1104,8 +1103,8 @@ msgid "Retour"
 msgstr "Retour"
 
 #: src/features/auth/forgottenPassword/ResetPasswordExpiredLink.tsx
+#: src/features/auth/signup/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/SignupConfirmationExpiredLink.tsx
-#: src/features/auth/signup/TooManyAttempts.tsx
 #: src/features/auth/signup/VerifyEligibility.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/profile/pages/DeleteProfileSuccess.tsx
@@ -1329,7 +1328,7 @@ msgstr "Trier par"
 msgid "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 msgstr "Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux."
 
-#: src/features/auth/signup/TooManyAttempts.tsx
+#: src/features/auth/signup/PhoneValidationTooManyAttempts.tsx
 msgid "Trop de tentatives !"
 msgstr "Trop de tentatives !"
 
@@ -1345,7 +1344,7 @@ msgstr "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.ap
 msgid "Tu as déjà un compte ?"
 msgstr "Tu as déjà un compte ?"
 
-#: src/features/auth/signup/TooManyAttempts.tsx
+#: src/features/auth/signup/PhoneValidationTooManyAttempts.tsx
 msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
 msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
 
@@ -1576,6 +1575,10 @@ msgstr "Bienvenue à Pass Culture"
 #: src/features/bookings/helpers.ts
 msgid "activate before date"
 msgstr "À activer avant le {dateLimit}"
+
+#: src/features/bookOffer/components/BookingInformations.tsx
+msgid "activation message"
+msgstr "À activer avant le {date}"
 
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "ainsi que notre"
