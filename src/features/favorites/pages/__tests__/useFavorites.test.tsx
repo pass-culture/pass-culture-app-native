@@ -315,6 +315,7 @@ describe('useFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
@@ -353,6 +354,7 @@ describe('useFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
@@ -391,6 +393,7 @@ describe('useFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
@@ -429,6 +432,7 @@ describe('useFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
@@ -460,6 +464,7 @@ describe('useFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
@@ -491,6 +496,7 @@ describe('useFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
@@ -523,6 +529,7 @@ describe('useFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),

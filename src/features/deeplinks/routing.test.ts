@@ -21,6 +21,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
     })
 
     it('should return ResetPasswordExpiredLink page when expiration_timestamp is expired', () => {
+      // eslint-disable-next-line local-rules/independant-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(true)
       const params = { token: 'token', expiration_timestamp: '11111', email: 'test@gmail.com' }
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['mot-de-passe-perdu'](params)
@@ -42,6 +43,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
     })
 
     it('should return ReinitializePassword page when expiration_timestamp is NOT expired', () => {
+      // eslint-disable-next-line local-rules/independant-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       const params = { token: 'token', expiration_timestamp: '11111', email: 'test@gmail.com' }
       const configureScreen = DEEPLINK_TO_SCREEN_CONFIGURATION['mot-de-passe-perdu'](params)

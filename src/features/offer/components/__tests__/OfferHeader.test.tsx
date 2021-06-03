@@ -312,6 +312,7 @@ describe('<OfferHeader />', () => {
     const from = 'favorites'
     const moduleName = 'testModule'
     const offerId = addFavoriteJsonResponseSnap.offer.id
+    // eslint-disable-next-line local-rules/independant-mocks
     useRoute.mockImplementation(() => ({
       params: {
         from,

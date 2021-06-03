@@ -698,7 +698,9 @@ describe('fetchAlgolia', () => {
         // Given
         const query = 'search query'
         const selectedDate = new Date(2020, 3, 19, 11)
+        // eslint-disable-next-line local-rules/independant-mocks
         mockGetFromDate.mockReturnValue(123456789)
+        // eslint-disable-next-line local-rules/independant-mocks
         mockGetLastOfDate.mockReturnValue(987654321)
 
         // When
@@ -725,7 +727,9 @@ describe('fetchAlgolia', () => {
         // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
+        // eslint-disable-next-line local-rules/independant-mocks
         mockGetFromDate.mockReturnValue(123456789)
+        // eslint-disable-next-line local-rules/independant-mocks
         mock_WEEK_getLastFromDate.mockReturnValue(987654321)
 
         // When
@@ -752,7 +756,9 @@ describe('fetchAlgolia', () => {
         // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
+        // eslint-disable-next-line local-rules/independant-mocks
         mock_WEEKEND_getFirstFromDate.mockReturnValue(123456789)
+        // eslint-disable-next-line local-rules/independant-mocks
         mock_WEEK_getLastFromDate.mockReturnValue(987654321)
 
         // When
@@ -779,7 +785,9 @@ describe('fetchAlgolia', () => {
         // Given
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
+        // eslint-disable-next-line local-rules/independant-mocks
         mockGetFirstOfDate.mockReturnValue(123456789)
+        // eslint-disable-next-line local-rules/independant-mocks
         mockGetLastOfDate.mockReturnValue(987654321)
 
         // When
@@ -807,6 +815,7 @@ describe('fetchAlgolia', () => {
       it('should fetch with time filter when timeRange is provided', () => {
         // Given
         const timeRange = [18, 22]
+        // eslint-disable-next-line local-rules/independant-mocks
         mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([64800, 79200])
 
         // When
@@ -829,6 +838,7 @@ describe('fetchAlgolia', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
+        // eslint-disable-next-line local-rules/independant-mocks
         mockGetAllFromTimeRangeAndDate.mockReturnValue([123, 124])
 
         // When
@@ -856,6 +866,7 @@ describe('fetchAlgolia', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
+        // eslint-disable-next-line local-rules/independant-mocks
         mock_WEEK_getAllFromTimeRangeAndDate.mockReturnValue([
           [123, 124],
           [225, 226],
@@ -889,6 +900,7 @@ describe('fetchAlgolia', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
+        // eslint-disable-next-line local-rules/independant-mocks
         mock_WEEKEND_getAllFromTimeRangeAndDate.mockReturnValue([
           [123, 124],
           [225, 226],
@@ -922,6 +934,7 @@ describe('fetchAlgolia', () => {
         const query = ''
         const selectedDate = new Date(2020, 3, 19, 11)
         const timeRange = [18, 22]
+        // eslint-disable-next-line local-rules/independant-mocks
         mockGetAllFromTimeRangeAndDate.mockReturnValue([123, 124])
 
         // When
@@ -949,7 +962,9 @@ describe('fetchAlgolia', () => {
   describe('multiple parameters', () => {
     it('should fetch with price and date numericFilters', () => {
       // Given
+      // eslint-disable-next-line local-rules/independant-mocks
       mockGetFirstOfDate.mockReturnValue(123456789)
+      // eslint-disable-next-line local-rules/independant-mocks
       mockGetLastOfDate.mockReturnValue(987654321)
       const query = ''
       const isFree = true
@@ -975,6 +990,7 @@ describe('fetchAlgolia', () => {
 
     it('should fetch with price and time numericFilters', () => {
       // Given
+      // eslint-disable-next-line local-rules/independant-mocks
       mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([123456789, 987654321])
       const query = ''
       const isFree = true
@@ -997,6 +1013,7 @@ describe('fetchAlgolia', () => {
 
     it('should fetch with price, date and time numericFilters', () => {
       // Given
+      // eslint-disable-next-line local-rules/independant-mocks
       mock_WEEKEND_getAllFromTimeRangeAndDate.mockReturnValue([
         [123456789, 987654321],
         [123, 1234],

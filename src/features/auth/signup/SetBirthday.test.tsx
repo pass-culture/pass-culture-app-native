@@ -122,6 +122,7 @@ describe('SetBirthday Page', () => {
       },
       isLoading: false,
     } as UseQueryResult<SettingsResponse, unknown>
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedUseAppSettings.mockReturnValue(mockedSettings)
     const renderAPI = renderSetBirthday()
 

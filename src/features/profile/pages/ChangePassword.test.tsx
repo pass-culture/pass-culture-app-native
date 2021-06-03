@@ -86,6 +86,7 @@ describe('ChangePassword', () => {
         (_req, res, ctx) => res.once(ctx.status(200), ctx.json({}))
       )
     )
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedUseSnackBarContext.mockImplementation(() => ({
       showSuccessSnackBar,
     }))

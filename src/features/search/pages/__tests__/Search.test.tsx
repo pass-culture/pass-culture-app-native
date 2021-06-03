@@ -51,6 +51,7 @@ describe('Search component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
   it('should handle coming from "See More" correctly', () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     useRoute.mockImplementation(() => ({ params: { parameters } }))
     render(reactQueryProviderHOC(<Search />))
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT_FROM_SEE_MORE', payload: parameters })

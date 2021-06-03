@@ -51,6 +51,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is NOT expired', () => {
     it('should redirect to Home when the user is not "éligible"', async () => {
+      // eslint-disable-next-line local-rules/independant-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       const response: ValidateEmailResponse = {
         accessToken: 'access_token',
@@ -76,6 +77,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should redirect to Verify Eligibility when the user is "éligible"', async () => {
+      // eslint-disable-next-line local-rules/independant-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       const response: ValidateEmailResponse = {
         accessToken: 'access_token',
@@ -134,6 +136,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       // TODO(PC-6360): ignore warning displayed by react-query's useMutation onError callback.
       // Note : it appears next to impossible to hide this warning by acting on the console object alone.
       // The only solution probably lies in mocking partially or completely react-query.
+      // eslint-disable-next-line local-rules/independant-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       server.use(
         rest.post(env.API_BASE_URL + '/native/v1/validate_email', (_req, res, ctx) =>
@@ -156,6 +159,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is expired', () => {
     it('should redirect to SignupConfirmationExpiredLink', async () => {
+      // eslint-disable-next-line local-rules/independant-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(true)
       renderPage()
 

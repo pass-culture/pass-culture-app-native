@@ -52,6 +52,7 @@ describe('<BeneficiaryRequestSent />', () => {
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user is not beneficiary', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedUseUserProfileInfo.mockReturnValue({
       data: { isBeneficiary: false, needsToFillCulturalSurvey: true },
     } as UseQueryResult<UserProfileResponse>)
@@ -64,6 +65,7 @@ describe('<BeneficiaryRequestSent />', () => {
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedUseUserProfileInfo.mockReturnValue({
       data: { isBeneficiary: true, needsToFillCulturalSurvey: false },
     } as UseQueryResult<UserProfileResponse>)

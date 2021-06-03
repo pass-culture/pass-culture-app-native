@@ -1,5 +1,5 @@
 /**
- * This rule aims to spot depedant testss.
+ * This rule aims to spot dependant tests.
  * Ex:  I mock a function in test A and the mock is not reset after. So test B uses test A's mock
  */
 

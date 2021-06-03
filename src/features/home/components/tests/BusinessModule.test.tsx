@@ -84,6 +84,7 @@ describe('BusinessModule component', () => {
   })
 
   it('should redirect with filled email when required without the snackbar being displayed when email is already okay', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     homeAPISpy.mockImplementation(() => {
       return {
         isLoading: false,
@@ -102,6 +103,7 @@ describe('BusinessModule component', () => {
   })
 
   it('should not display a snackbar when user profile data is yet to be received but the email is not needed', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     homeAPISpy.mockImplementation(() => {
       return {
         isLoading: true,

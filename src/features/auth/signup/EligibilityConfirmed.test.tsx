@@ -19,6 +19,7 @@ describe('<EligibilityConfirmed />', () => {
   afterEach(jest.clearAllMocks)
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user.needsToFillCulturalSurvey is false', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedUseUserProfileInfo.mockReturnValue({
       data: { needsToFillCulturalSurvey: false },
     } as UseQueryResult<UserProfileResponse>)
@@ -31,6 +32,7 @@ describe('<EligibilityConfirmed />', () => {
   })
 
   it('should redirect to cultural survey page WHEN "On y va !" button is clicked and user.needsToFillCulturalSurvey is true', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedUseUserProfileInfo.mockReturnValue({
       data: { needsToFillCulturalSurvey: true },
     } as UseQueryResult<UserProfileResponse>)
