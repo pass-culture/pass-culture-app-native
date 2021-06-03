@@ -158,7 +158,7 @@ export function BookingDetails() {
           )}
           <Spacer.Column numberOfSpaces={8} />
           <ButtonPrimary
-            testIdSuffix="see-offer-details"
+            testId="Voir le détail de l’offre"
             title={t`Voir le détail de l’offre`}
             onPress={navigateToOffer}
           />

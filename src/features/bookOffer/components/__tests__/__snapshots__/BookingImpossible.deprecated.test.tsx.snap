@@ -84,6 +84,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     }
   />
   <View
+    accessibilityLabel="Bouton"
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -111,7 +112,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
         "width": "100%",
       }
     }
-    testID="button-container"
+    testID="Bouton"
   >
     <Text
       adjustsFontSizeToFit={false}
@@ -128,7 +129,6 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
           },
         ]
       }
-      testID="button-title"
       textColor="#ffffff"
     >
       Mettre en favoris
@@ -145,6 +145,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     }
   />
   <View
+    accessibilityLabel="Bouton"
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -172,7 +173,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
         "width": "100%",
       }
     }
-    testID="button-container"
+    testID="Bouton"
   >
     <Text
       adjustsFontSizeToFit={false}
@@ -189,7 +190,6 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
           },
         ]
       }
-      testID="button-title"
       textColor="#eb0055"
     >
       Retourner à l'offre

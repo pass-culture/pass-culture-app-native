@@ -32,7 +32,7 @@ describe('<ArchiveBookingModal />', () => {
       bookingTitle: 'title',
       onDismiss,
     })
-    const button = getByTestId('button-container-back-to-booking')
+    const button = getByTestId('Retourner à ma réservation')
     fireEvent.press(button)
     expect(onDismiss).toBeCalled()
   })

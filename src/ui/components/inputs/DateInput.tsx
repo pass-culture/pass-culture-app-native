@@ -151,6 +151,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
         onChangeValue={setDay}
         placeholder="JJ"
         ref={dayInputRef}
+        testID="Entrée pour le jour"
       />
       <ShortInput
         identifier={DatePartType.MONTH}
@@ -161,6 +162,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
         onKeyPress={(e: NativeSyntheticEvent<TextInputKeyPressEventData>) =>
           handleBackSpace(e, DatePartType.MONTH)
         }
+        testID="Entrée pour le mois"
       />
       <ShortInput
         identifier={DatePartType.YEAR}
@@ -171,6 +173,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
         onKeyPress={(e: NativeSyntheticEvent<TextInputKeyPressEventData>) =>
           handleBackSpace(e, DatePartType.YEAR)
         }
+        testID="Entrée pour l'année"
       />
     </Container>
   )

@@ -206,6 +206,7 @@ Array [
             </Text>
           </Text>
           <View
+            accessibilityLabel="Bouton"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -233,7 +234,7 @@ Array [
                 "width": "100%",
               }
             }
-            testID="button-container"
+            testID="Bouton"
           >
             <View
               height={16}
@@ -259,7 +260,6 @@ Array [
                   },
                 ]
               }
-              testID="button-title"
               textColor="#eb0055"
               textSize={12}
             >
@@ -294,6 +294,7 @@ Array [
             </Text>
           </Text>
           <View
+            accessibilityLabel="Bouton"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -321,7 +322,7 @@ Array [
                 "width": "100%",
               }
             }
-            testID="button-container"
+            testID="Bouton"
           >
             <Text
               adjustsFontSizeToFit={false}
@@ -338,7 +339,6 @@ Array [
                   },
                 ]
               }
-              testID="button-title"
               textColor="#ffffff"
             >
               Continuer
@@ -355,6 +355,7 @@ Array [
             }
           />
           <View
+            accessibilityLabel="Bouton"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -382,7 +383,7 @@ Array [
                 "width": "100%",
               }
             }
-            testID="button-container"
+            testID="Bouton"
           >
             <Text
               adjustsFontSizeToFit={false}
@@ -399,7 +400,6 @@ Array [
                   },
                 ]
               }
-              testID="button-title"
               textColor="#eb0055"
             >
               Paramètres de confidentialité

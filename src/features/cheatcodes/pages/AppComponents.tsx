@@ -556,6 +556,7 @@ export const AppComponents: FunctionComponent = () => {
           maxLength={4}
           onChangeValue={setPartialDate}
           placeholder="AAAA"
+          testID="Entrée pour l'année"
         />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>

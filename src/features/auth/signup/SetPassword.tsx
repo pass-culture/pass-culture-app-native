@@ -12,6 +12,7 @@ import {
 } from 'features/auth/components/PasswordSecurityRules'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { testID } from 'tests/utils'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -70,12 +71,14 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
               onChangeText={setPassword}
               placeholder={t`Ton mot de passe`}
               ref={passwordInput}
+              {...testID('Entrée pour le mot de passe')}
             />
           </StyledInput>
           <PasswordSecurityRules password={password} />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
             title={t`Continuer`}
+            testId="Continuer"
             onPress={submitPassword}
             disabled={!isPasswordCorrect(password)}
           />

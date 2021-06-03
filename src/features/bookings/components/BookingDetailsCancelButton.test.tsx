@@ -20,13 +20,13 @@ describe('<BookingDetailsCancelButton />', () => {
     const { getByTestId } = renderBookingDetailsCancelButton(booking, {
       activationCodeFeatureEnabled: true,
     })
-    getByTestId('button-title-archive')
+    getByTestId('Terminer')
   })
   it('should display button if confirmationDate is null', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = null
     const { getByTestId } = renderBookingDetailsCancelButton(booking)
-    getByTestId('button-title-cancel')
+    getByTestId('Annuler ma réservation')
   })
 
   it('should display button if confirmation date is not expired', () => {
@@ -35,7 +35,7 @@ describe('<BookingDetailsCancelButton />', () => {
     date.setDate(date.getDate() + 1)
     booking.confirmationDate = date
     const { getByTestId } = renderBookingDetailsCancelButton(booking)
-    getByTestId('button-title-cancel')
+    getByTestId('Annuler ma réservation')
   })
 
   it('should not display button if confirmation date is expired', async () => {
@@ -43,7 +43,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.stock.offer.isPermanent = false
     booking.confirmationDate = new Date('2020-03-15T23:01:37.925926')
     const { queryByTestId } = renderBookingDetailsCancelButton(booking)
-    expect(queryByTestId('button-title-cancel')).toBeFalsy()
+    expect(queryByTestId('Annuler ma réservation')).toBeFalsy()
   })
 
   it('should call onCancel', () => {
@@ -55,7 +55,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const { getByTestId } = renderBookingDetailsCancelButton(booking, {
       onCancel,
     })
-    const button = getByTestId('button-container-cancel')
+    const button = getByTestId('Annuler ma réservation')
     fireEvent.press(button)
 
     expect(onCancel).toBeCalled()
@@ -67,7 +67,7 @@ describe('<BookingDetailsCancelButton />', () => {
       activationCodeFeatureEnabled: true,
       onTerminate,
     })
-    const button = getByTestId('button-container-archive')
+    const button = getByTestId('Terminer')
     fireEvent.press(button)
 
     expect(onTerminate).toBeCalled()

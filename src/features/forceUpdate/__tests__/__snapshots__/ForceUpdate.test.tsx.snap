@@ -203,6 +203,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
       }
     >
       <View
+        accessibilityLabel="Bouton"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -230,7 +231,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
             "width": "100%",
           }
         }
-        testID="button-container"
+        testID="Bouton"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -247,7 +248,6 @@ Pour des questions de performance et de sécurité merci de télécharger la der
               },
             ]
           }
-          testID="button-title"
           textColor="#eb0055"
         >
           Télécharger la dernière version

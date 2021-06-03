@@ -10,7 +10,7 @@ describe('LoggedOutHeader', () => {
   it('should navigate to the setEmail page', () => {
     const { getByTestId } = render(<LoggedOutHeader />)
 
-    const signupButton = getByTestId('button-container')
+    const signupButton = getByTestId('Bouton')
     signupButton.props.onClick()
 
     expect(analytics.logProfilSignUp).toBeCalled()

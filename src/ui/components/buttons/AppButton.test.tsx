@@ -62,7 +62,7 @@ describe('AppButton Component', () => {
         />
       )
 
-      const container = getByTestId('button-container')
+      const container = getByTestId('Bouton')
 
       expect(container.props.onPress).toBeFalsy()
       expect(container.props.onLongPress).toBeFalsy()

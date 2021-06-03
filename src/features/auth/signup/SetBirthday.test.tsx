@@ -47,20 +47,20 @@ describe('SetBirthday Page', () => {
 
     changeDate(renderAPI, '1', '1', '1')
 
-    const button = renderAPI.getByTestId('button-container-validate-birthday')
+    const button = renderAPI.getByTestId('Continuer')
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
   })
 
   it('should show the correct deposit amount', async () => {
     mockDepositAmount = '300 €'
     let component = renderSetBirthday()
-    fireEvent.press(component.getByTestId('button-title-why-link'))
+    fireEvent.press(component.getByTestId('Pourquoi ?'))
     expect(component.queryByText(/une aide financière de/)).toBeTruthy()
     expect(component.queryByText(/300 €/)).toBeTruthy()
 
     mockDepositAmount = '500 €'
     component = renderSetBirthday()
-    fireEvent.press(component.getByTestId('button-title-why-link'))
+    fireEvent.press(component.getByTestId('Pourquoi ?'))
     expect(component.queryByText(/une aide financière de/)).toBeTruthy()
     expect(component.queryByText(/500 €/)).toBeTruthy()
   })
@@ -100,7 +100,7 @@ describe('SetBirthday Page', () => {
     const continueButton = renderAPI.getByText('Continuer')
     fireEvent.press(continueButton)
 
-    const buttonContainer = renderAPI.getByTestId('button-container-validate-birthday')
+    const buttonContainer = renderAPI.getByTestId('Continuer')
     expect(buttonContainer.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     expect(renderAPI.queryByText('La date choisie est incorrecte')).toBeFalsy()
     expect(navigate).toBeCalledWith('SetPostalCode', {
@@ -141,7 +141,7 @@ describe('SetBirthday Page', () => {
   it('should display a information modal when clicking "Pourquoi" link', () => {
     const { getByTestId, toJSON } = renderSetBirthday()
 
-    const whyBirthdayLink = getByTestId('button-title-why-link')
+    const whyBirthdayLink = getByTestId('Pourquoi ?')
     fireEvent.press(whyBirthdayLink)
 
     const birthdayModal = getByTestId('modal-birthday-information')
@@ -169,7 +169,7 @@ describe('SetBirthday Page', () => {
     it('should log ConsultModalWhyAnniversary when clicking "Pourquoi" link', () => {
       const { getByTestId } = renderSetBirthday()
 
-      const whyBirthdayLink = getByTestId('button-title-why-link')
+      const whyBirthdayLink = getByTestId('Pourquoi ?')
       fireEvent.press(whyBirthdayLink)
 
       expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)

@@ -35,7 +35,7 @@ describe('ReinitializePassword Page', () => {
     fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
     // assuming there's only one button in this page
-    const continueButton = getByTestId('button-container')
+    const continueButton = getByTestId('Bouton')
 
     await waitForExpect(async () => {
       const background = continueButton.props.style.backgroundColor

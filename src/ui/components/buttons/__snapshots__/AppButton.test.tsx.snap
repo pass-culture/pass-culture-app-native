@@ -2,6 +2,7 @@
 
 exports[`AppButton Component * inline property should use inline css style when true 1`] = `
 <View
+  accessibilityLabel="Bouton"
   accessible={true}
   focusable={false}
   onClick={[Function]}
@@ -29,7 +30,7 @@ exports[`AppButton Component * inline property should use inline css style when 
       "width": "auto",
     }
   }
-  testID="button-container"
+  testID="Bouton"
 >
   <View
     height={32}
@@ -55,7 +56,6 @@ exports[`AppButton Component * inline property should use inline css style when 
         },
       ]
     }
-    testID="button-title"
   >
     Testing inline
   </Text>

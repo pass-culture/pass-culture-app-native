@@ -26,14 +26,14 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 +                 value=\\"mypassword\\"
                 />
                 <View
+                  accessibilityLabel=\\"Basculer l'affichage du mot de passe\\"
                   accessible={true}
                   focusable={true}
-                  onClick={[Function onClick]}
-@@ -493,22 +495,22 @@
-                ]
+@@ -496,22 +498,22 @@
               }
             />
             <View
+              accessibilityLabel=\\"Se connecter\\"
               accessible={true}
 -             focusable={false}
 +             focusable={true}
@@ -54,7 +54,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -527,21 +529,21 @@
+@@ -530,20 +532,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -70,7 +70,6 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                     },
                   ]
                 }
-                testID=\\"button-title\\"
 -               textColor=\\"#626262\\"
 +               textColor=\\"#ffffff\\"
               >

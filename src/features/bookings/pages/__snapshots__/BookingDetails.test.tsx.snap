@@ -179,6 +179,7 @@ Array [
                   }
                 >
                   <View
+                    accessibilityLabel="Bouton"
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}
@@ -206,7 +207,7 @@ Array [
                         "width": "100%",
                       }
                     }
-                    testID="button-container"
+                    testID="Bouton"
                   >
                     <Text
                       adjustsFontSizeToFit={false}
@@ -223,7 +224,6 @@ Array [
                           },
                         ]
                       }
-                      testID="button-title"
                       textColor="#ffffff"
                     >
                       Accéder à l'offre
@@ -502,6 +502,7 @@ Array [
           }
         />
         <View
+          accessibilityLabel="Voir le détail de l’offre"
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -529,7 +530,7 @@ Array [
               "width": "100%",
             }
           }
-          testID="button-container-see-offer-details"
+          testID="Voir le détail de l’offre"
         >
           <Text
             adjustsFontSizeToFit={false}
@@ -546,7 +547,6 @@ Array [
                 },
               ]
             }
-            testID="button-title-see-offer-details"
             textColor="#ffffff"
           >
             Voir le détail de l’offre
@@ -787,6 +787,7 @@ Array [
               }
             />
             <View
+              accessibilityLabel="Bouton"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -814,7 +815,7 @@ Array [
                   "width": "100%",
                 }
               }
-              testID="button-container"
+              testID="Bouton"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -831,7 +832,6 @@ Array [
                     },
                   ]
                 }
-                testID="button-title"
                 textColor="#ffffff"
               >
                 Annuler ma réservation
@@ -848,6 +848,7 @@ Array [
               }
             />
             <View
+              accessibilityLabel="Bouton"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -875,7 +876,7 @@ Array [
                   "width": "100%",
                 }
               }
-              testID="button-container"
+              testID="Bouton"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -892,7 +893,6 @@ Array [
                     },
                   ]
                 }
-                testID="button-title"
                 textColor="#eb0055"
               >
                 Retourner à ma réservation
@@ -1127,6 +1127,7 @@ Array [
               }
             />
             <View
+              accessibilityLabel="Bouton"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -1154,7 +1155,7 @@ Array [
                   "width": "100%",
                 }
               }
-              testID="button-container"
+              testID="Bouton"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -1171,7 +1172,6 @@ Array [
                     },
                   ]
                 }
-                testID="button-title"
                 textColor="#ffffff"
               >
                 Terminer ma réservation
@@ -1188,6 +1188,7 @@ Array [
               }
             />
             <View
+              accessibilityLabel="Retourner à ma réservation"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -1215,7 +1216,7 @@ Array [
                   "width": "100%",
                 }
               }
-              testID="button-container-back-to-booking"
+              testID="Retourner à ma réservation"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -1232,7 +1233,6 @@ Array [
                     },
                   ]
                 }
-                testID="button-title-back-to-booking"
                 textColor="#eb0055"
               >
                 Retourner à ma réservation

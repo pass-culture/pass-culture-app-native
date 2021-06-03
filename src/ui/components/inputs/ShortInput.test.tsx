@@ -9,7 +9,12 @@ describe('ShortInput Component', () => {
   it('should call onChangeValue when the value is modified', () => {
     const onChangeValue = jest.fn()
     const { getByPlaceholderText } = render(
-      <ShortInput identifier="identifier" onChangeValue={onChangeValue} placeholder="PP" />
+      <ShortInput
+        identifier="identifier"
+        onChangeValue={onChangeValue}
+        placeholder="PP"
+        testID="testID"
+      />
     )
     const input = getByPlaceholderText('PP')
 
@@ -19,7 +24,12 @@ describe('ShortInput Component', () => {
   it('has a maxlength of the placeholder length', () => {
     const onChangeValue = jest.fn()
     const { getByPlaceholderText } = render(
-      <ShortInput identifier="identifier" onChangeValue={onChangeValue} placeholder="PP" />
+      <ShortInput
+        identifier="identifier"
+        onChangeValue={onChangeValue}
+        placeholder="PP"
+        testID="testID"
+      />
     )
     const input = getByPlaceholderText('PP')
 
@@ -31,7 +41,12 @@ describe('ShortInput Component', () => {
     it('should display a grey bar when empty', () => {
       const onChangeValue = jest.fn()
       const { getByTestId } = render(
-        <ShortInput identifier="identifier" onChangeValue={onChangeValue} placeholder="PP" />
+        <ShortInput
+          identifier="identifier"
+          onChangeValue={onChangeValue}
+          placeholder="PP"
+          testID="testID"
+        />
       )
       const validationBar = getByTestId('datepart-bar-identifier')
 
@@ -48,6 +63,7 @@ describe('ShortInput Component', () => {
           isValid={false}
           onChangeValue={onChangeValue}
           placeholder="PP"
+          testID="testID"
         />
       )
 
@@ -67,6 +83,7 @@ describe('ShortInput Component', () => {
           isValid
           onChangeValue={onChangeValue}
           placeholder="PP"
+          testID="testID"
         />
       )
 
@@ -86,6 +103,7 @@ describe('ShortInput Component', () => {
           isValid
           onChangeValue={onChangeValue}
           placeholder="PP"
+          testID="testID"
         />
       )
 

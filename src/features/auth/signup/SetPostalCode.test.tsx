@@ -15,7 +15,7 @@ describe('SetPostalCode Page', () => {
   it('should enable the submit button when postalCode contains 5 numbers', async () => {
     const { getByPlaceholderText, getByTestId } = renderChoosePostalCode()
 
-    const continueButton = getByTestId('button-container')
+    const continueButton = getByTestId('Continuer')
 
     const background = continueButton.props.style.backgroundColor
     expect(background).toEqual(ColorsEnum.GREY_LIGHT)

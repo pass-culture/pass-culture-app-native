@@ -188,7 +188,7 @@ describe('BookingDetails', () => {
       date.setDate(date.getDate() + 1)
       booking.confirmationDate = date
       const { getByTestId } = renderBookingDetails(booking)
-      fireEvent.press(getByTestId('button-title-cancel'))
+      fireEvent.press(getByTestId('Annuler ma réservation'))
 
       expect(analytics.logCancelBooking).toHaveBeenCalledWith(booking.stock.offer.id)
     })
