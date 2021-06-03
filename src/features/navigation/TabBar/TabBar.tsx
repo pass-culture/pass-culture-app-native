@@ -62,10 +62,10 @@ export const TabBar: React.FC<Pick<
           return (
             <TabBarComponent
               key={`key-tab-nav-${index}-${route.key}`}
+              tabName={route.name}
               isSelected={isSelected}
               bicolorIcon={mapRouteToIcon(route.name)}
               onPress={onPress}
-              testID={`tab-${route.name}`}
             />
           )
         })}

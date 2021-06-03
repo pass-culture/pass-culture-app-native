@@ -44,6 +44,7 @@ exports[`TabBar renders correctly 1`] = `
       }
     />
     <View
+      accessibilityLabel="Home tab"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -64,15 +65,15 @@ exports[`TabBar renders correctly 1`] = `
           "opacity": 1,
         }
       }
-      testID="tab-Home"
+      testID="Home tab"
     >
       <View
         height={3}
-        testID="selector-tab-Home"
+        testID="Home tab selected"
         width={44}
       >
         <Text>
-          selector-tab-Home-SVG-Mock
+          Home tab selected-SVG-Mock
         </Text>
       </View>
       <View
@@ -116,6 +117,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
+      accessibilityLabel="Search tab"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -136,7 +138,7 @@ exports[`TabBar renders correctly 1`] = `
           "opacity": 1,
         }
       }
-      testID="tab-Search"
+      testID="Search tab"
     >
       <View
         style={
@@ -170,6 +172,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
+      accessibilityLabel="Bookings tab"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -190,7 +193,7 @@ exports[`TabBar renders correctly 1`] = `
           "opacity": 1,
         }
       }
-      testID="tab-Bookings"
+      testID="Bookings tab"
     >
       <View
         style={
@@ -224,6 +227,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
+      accessibilityLabel="Favorites tab"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -244,7 +248,7 @@ exports[`TabBar renders correctly 1`] = `
           "opacity": 1,
         }
       }
-      testID="tab-Favorites"
+      testID="Favorites tab"
     >
       <View
         style={
@@ -278,6 +282,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
+      accessibilityLabel="Profile tab"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -298,7 +303,7 @@ exports[`TabBar renders correctly 1`] = `
           "opacity": 1,
         }
       }
-      testID="tab-Profile"
+      testID="Profile tab"
     >
       <View
         style={
