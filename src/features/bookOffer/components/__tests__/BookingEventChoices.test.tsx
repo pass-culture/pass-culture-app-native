@@ -90,6 +90,7 @@ describe('<BookingEventChoices />', () => {
   })
 
   it('should display date step and hour step and duo step on a snapshot', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseBooking.mockImplementation(() => ({
       bookingState: {
         offerId: 1,
@@ -105,6 +106,7 @@ describe('<BookingEventChoices />', () => {
     expect(page.toJSON()).toMatchSnapshot()
   })
   it('should skip duo step if quantity is already selected', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseBooking.mockImplementation(() => ({
       bookingState: {
         offerId: 1,
@@ -115,6 +117,7 @@ describe('<BookingEventChoices />', () => {
       },
       dispatch: mockDispatch,
     }))
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseBookingOffer.mockImplementation(() => ({
       id: 1,
       isDuo: true,
@@ -131,6 +134,7 @@ describe('<BookingEventChoices />', () => {
     }))
 
     const debouncedFunction = jest.fn()
+    // eslint-disable-next-line local-rules/independant-mocks
     jest.spyOn(React, 'useRef').mockReturnValue({
       current: debouncedFunction,
     })

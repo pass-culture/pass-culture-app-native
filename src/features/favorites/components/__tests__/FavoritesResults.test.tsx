@@ -48,6 +48,7 @@ describe('FavoritesResults component', () => {
   })
 
   it('should show no result message when list is empty', () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseFavorites.mockReturnValue({
       data: mockData,
       isFetching: false,
@@ -71,11 +72,13 @@ describe('FavoritesResults component', () => {
   it('should show number of result and sortBy button', () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     const mutate = jest.fn()
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseFavorites.mockReturnValue({
       data: paginatedFavoritesResponseSnap,
       isFetching: false,
     } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
+    // eslint-disable-next-line local-rules/independant-mocks
     mockUseRemoveFavorites.mockReturnValue(({
       mutate,
     } as unknown) as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)

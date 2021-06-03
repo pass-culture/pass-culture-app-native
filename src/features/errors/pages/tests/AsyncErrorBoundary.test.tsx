@@ -18,6 +18,7 @@ describe('AsyncErrorBoundary component', () => {
   })
 
   it('should have back arrow if possible', () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     canGoBack.mockImplementation(() => true)
     const { getByTestId, queryByTestId } = render(
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />

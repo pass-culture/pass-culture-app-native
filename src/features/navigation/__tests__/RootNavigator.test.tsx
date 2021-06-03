@@ -29,6 +29,7 @@ describe('<RootNavigator />', () => {
   })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     jest
       .spyOn(splashScreenModule, 'useSplashScreenContext')
       .mockReturnValue({ isSplashScreenHidden: false })
@@ -40,6 +41,7 @@ describe('<RootNavigator />', () => {
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     jest
       .spyOn(splashScreenModule, 'useSplashScreenContext')
       .mockReturnValue({ isSplashScreenHidden: true })

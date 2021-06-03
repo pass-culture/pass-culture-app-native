@@ -40,6 +40,7 @@ describe('<CulturalSurvey />', () => {
   })
 
   it('should not display webview when another screen is displayed', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedUseCurrentRoute.mockReturnValue({ name: 'Home', key: 'key' })
     const renderAPI = await renderCulturalSurveyWithNavigation()
 
@@ -47,6 +48,7 @@ describe('<CulturalSurvey />', () => {
   })
 
   it('should display loading screen while user info is undefined', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedUseUserProfileInfo.mockReturnValue({ data: undefined } as UseQueryResult<
       UserProfileResponse,
       unknown

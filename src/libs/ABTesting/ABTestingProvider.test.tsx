@@ -12,6 +12,7 @@ afterEach(jest.clearAllMocks)
 
 describe('<ABTestingProvider />', () => {
   it('should configure() then refresh() A/B testing values then NOT call getValues() if no new config is available', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedAbTestingRefresh.mockResolvedValue(false)
     renderABTestingProvider()
 
@@ -23,6 +24,7 @@ describe('<ABTestingProvider />', () => {
   })
 
   it('should configure() then refresh() A/B testing values then call getValues() if new config is available', async () => {
+    // eslint-disable-next-line local-rules/independant-mocks
     mockedAbTestingRefresh.mockResolvedValue(true)
     renderABTestingProvider()
 

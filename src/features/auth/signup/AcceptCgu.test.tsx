@@ -65,6 +65,7 @@ describe('AcceptCgu Page', () => {
 
   it('should redirect to the "CGU" page', async () => {
     simulateConnectedNetwork()
+    // eslint-disable-next-line local-rules/independant-mocks
     jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
 
     const { getByTestId } = renderAcceptCGU()
@@ -79,6 +80,7 @@ describe('AcceptCgu Page', () => {
 
   it('should redirect to the "Politique de confidentialité" page', async () => {
     simulateConnectedNetwork()
+    // eslint-disable-next-line local-rules/independant-mocks
     jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true)
 
     const { getByTestId } = renderAcceptCGU()
