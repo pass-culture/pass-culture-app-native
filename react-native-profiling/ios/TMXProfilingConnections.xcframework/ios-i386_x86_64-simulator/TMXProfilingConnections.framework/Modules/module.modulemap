@@ -1,0 +1,6 @@
+framework module TMXProfilingConnections {
+  umbrella header "TMXProfilingConnections.h"
+
+  export *
+  module * { export * }
+}
