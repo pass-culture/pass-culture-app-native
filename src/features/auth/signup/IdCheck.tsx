@@ -1,6 +1,8 @@
 import {
   initialRouteName as idCheckInitialRouteName,
   useIdCheckContext,
+  IdCheckError,
+  IdCheckErrors,
 } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
@@ -39,6 +41,7 @@ export const IdCheck: React.FC<Props> = function (props) {
   const queryClient = useQueryClient()
 
   const [idCheckUri, setIdCheckUri] = useState<string | undefined>(undefined)
+  const [error, setError] = useState<Error | IdCheckError | null>(null)
 
   function onAbandon() {
     navigation.replace(homeNavigateConfig.screen, homeNavigateConfig.params)
@@ -114,11 +117,11 @@ export const IdCheck: React.FC<Props> = function (props) {
           })
           .catch((err) => {
             if (err.name === 'ApiError' && err.content.code === 'TOO_MANY_ID_CHECK_TOKEN') {
-              navigation.navigate('IdCheckTooManyAttempts')
+              setError(new IdCheckError(IdCheckErrors['no-remaining-tries']))
             } else if (err.name === 'ApiError' && err.content.code === 'USER_NOT_ELIGIBLE') {
-              navigation.navigate('NotEligible')
+              setError(new IdCheckError(IdCheckErrors['not-eligible']))
             } else {
-              navigation.navigate('NotEligible')
+              setError(err as Error)
             }
           })
       }
@@ -142,6 +145,10 @@ export const IdCheck: React.FC<Props> = function (props) {
       // we need to force the webview to go back otherwise it opens DMS url
       webviewRef.current?.goBack()
     }
+  }
+
+  if (error) {
+    throw error
   }
 
   if (areSettingsLoading || !idCheckUri || currentRoute?.name !== 'IdCheck') {
