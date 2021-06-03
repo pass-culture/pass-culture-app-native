@@ -13,6 +13,7 @@ export const useAppSettings: typeof actualUseAppSettings = jest.fn(
         wholeFranceOpening: false,
         enablePhoneValidation: true,
         displayDmsRedirection: true,
+        autoActivateDigitalBookings: true,
       },
       isLoading: false,
     } as UseQueryResult<SettingsResponse, unknown>)
