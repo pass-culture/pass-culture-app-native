@@ -4,7 +4,9 @@ import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
@@ -18,10 +20,27 @@ import { formatDate } from './CancellationDetails'
 
 const { width } = Dimensions.get('window')
 
+const ExpirationDate: React.FC<{
+  autoActivateDigitalBookings: boolean | undefined
+  expirationDate: Date | undefined
+}> = ({ autoActivateDigitalBookings, expirationDate }) => {
+  if (!autoActivateDigitalBookings || !expirationDate) return <React.Fragment></React.Fragment>
+
+  const activationText = t({
+    id: 'activation message',
+    values: { date: formatToFrenchDate(expirationDate) },
+    message: 'À activer avant le {date}',
+  })
+
+  return <Item Icon={Calendar} message={activationText} />
+}
+
 export const BookingInformations: React.FC = () => {
   const { bookingState } = useBooking()
   const offer = useBookingOffer()
   const stock = useBookingStock()
+  const { data: settings } = useAppSettings()
+
   const { quantity } = bookingState
 
   if (!offer) return <React.Fragment />
@@ -68,10 +87,16 @@ export const BookingInformations: React.FC = () => {
     )
   }
 
+  const expirationDate = stock?.activationCode?.expirationDate
+
   return (
     <React.Fragment>
       <Item Icon={Booking} message={name} />
       <Item Icon={OrderPrice} message={price} />
+      <ExpirationDate
+        autoActivateDigitalBookings={settings?.autoActivateDigitalBookings}
+        expirationDate={expirationDate}
+      />
     </React.Fragment>
   )
 }
