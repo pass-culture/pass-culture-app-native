@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import Svg, { ClipPath, Defs, G, Image, Path, Use, LinearGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
@@ -19,7 +19,7 @@ export type ClippedImageProps = {
     }
   | {
       image?: never
-      altIcon: FC<IconInterface>
+      altIcon: React.FC<IconInterface>
     }
   | {
       image?: never
@@ -27,13 +27,13 @@ export type ClippedImageProps = {
     }
 )
 
-export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
+export function ClippedImage(props: ClippedImageProps) {
   const linearGradientId = props.clipId + '_linear'
   const pathId = props.clipId + '_path'
   const Icon = props.altIcon || OfferDigital
 
   return (
-    <View style={shaddowStyle}>
+    <View style={shadowStyle}>
       <Svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`}>
         <Defs>
           <ClipPath id={props.clipId}>
@@ -59,16 +59,16 @@ export function ClippedImage(props: PropsWithChildren<ClippedImageProps>) {
           </G>
         )}
       </Svg>
-      {!!(props.image && !!Icon) && (
-        <IconContainer>
+      {!props.image && Icon ? (
+        <IconContainer testID="iconContainer">
           <Icon size={48} color={ColorsEnum.GREY_MEDIUM} />
         </IconContainer>
-      )}
+      ) : null}
     </View>
   )
 }
 
-const shaddowStyle = {
+const shadowStyle = {
   ...getNativeShadow({
     shadowOffset: {
       width: 0,
