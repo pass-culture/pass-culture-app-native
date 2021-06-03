@@ -9,13 +9,15 @@ export const computeBicolorSelectorHeight = (width: number) => Math.ceil((3 / 44
 
 export const BicolorSelector: React.FC<
   Omit<BicolorIconInterface, 'size'> & { width: number; height?: number }
-> = ({ width, height, color, color2, testID }) => {
+> = ({ accessible, accessibilityLabel, width, height, color, color2, testID }) => {
   return (
     <Svg
       width={width}
       height={height ?? computeBicolorSelectorHeight(width)}
       viewBox="0 0 44 3"
-      testID={testID}>
+      testID={testID}
+      accessible={accessible}
+      accessibilityLabel={accessibilityLabel}>
       <Defs>
         <LinearGradient id="prefix__a" x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
           <Stop offset="0%" stopColor={color ?? ColorsEnum.PRIMARY} />

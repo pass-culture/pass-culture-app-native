@@ -1,6 +1,8 @@
 import { ColorsEnum } from 'ui/theme'
 
 interface IconSharedProperties {
+  accessibilityLabel?: string
+  accessible?: boolean
   color?: ColorsEnum
   testID?: string
 }

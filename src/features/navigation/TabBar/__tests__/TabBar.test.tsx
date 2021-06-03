@@ -55,30 +55,35 @@ describe('TabBar', () => {
 
   it('should display the 5 following tabs', () => {
     const tabBar = renderTabBar()
-    expect(tabBar.queryAllByTestId(/^tab-/)).toHaveLength(5)
-    expect(tabBar.queryByTestId('tab-Home')).toBeTruthy()
-    expect(tabBar.queryByTestId('tab-Search')).toBeTruthy()
-    expect(tabBar.queryByTestId('tab-Bookings')).toBeTruthy()
-    expect(tabBar.queryByTestId('tab-Favorites')).toBeTruthy()
-    expect(tabBar.queryByTestId('tab-Profile')).toBeTruthy()
+    const tabs = tabBar.getAllByTestId(/tab/)
+    const tabsTestIds = tabs.map((tab) => tab.props.testID).sort()
+    const expectedTabsTestIds = [
+      'Home tab selected',
+      'Home tab',
+      'Search tab',
+      'Bookings tab',
+      'Favorites tab',
+      'Profile tab',
+    ].sort()
+    expect(tabsTestIds).toEqual(expectedTabsTestIds)
   })
 
   it('should NOT display InitialRoutingScreen tab', () => {
     const tabBar = renderTabBar()
-    expect(tabBar.queryByTestId('tab-InitialRoutingScreen')).toBeFalsy()
+    expect(tabBar.queryByTestId('InitialRoutingScreen tab')).toBeFalsy()
   })
 
   it('displays only one selected at a time', () => {
     const tabBar = renderTabBar()
-    expect(tabBar.queryAllByTestId(/selector/)).toHaveLength(1)
+    expect(tabBar.queryAllByTestId(/selected/)).toHaveLength(1)
   })
 
   it('switches tab when clicked on another tab', () => {
     const tabBar = renderTabBar()
-    expect(tabBar.queryByTestId('selector-tab-Home')).toBeTruthy()
-    expect(tabBar.queryByTestId('selector-tab-Search')).toBeFalsy()
+    expect(tabBar.queryByTestId('Home tab selected')).toBeTruthy()
+    expect(tabBar.queryByTestId('Search tab selected')).toBeFalsy()
 
-    const searchTab = tabBar.getByTestId('tab-Search')
+    const searchTab = tabBar.getByTestId('Search tab')
     fireEvent.press(searchTab)
 
     expect(navigation.emit).toHaveBeenCalled()
@@ -87,15 +92,15 @@ describe('TabBar', () => {
       reactQueryProviderHOC(<TabBar state={{ ...state, index: 1 }} navigation={navigation} />)
     )
 
-    expect(tabBar.queryByTestId('selector-tab-Home')).toBeFalsy()
-    expect(tabBar.queryByTestId('selector-tab-Search')).toBeTruthy()
+    expect(tabBar.queryByTestId('Home tab selected')).toBeFalsy()
+    expect(tabBar.queryByTestId('Search tab selected')).toBeTruthy()
   })
 
   it('does not reset navigation when clicked on selected tab', () => {
     const tabBar = renderTabBar()
-    expect(tabBar.queryByTestId('selector-tab-Home')).toBeTruthy()
+    expect(tabBar.queryByTestId('Home tab selected')).toBeTruthy()
 
-    const homeTab = tabBar.getByTestId('tab-Home')
+    const homeTab = tabBar.getByTestId('Home tab')
     fireEvent.press(homeTab)
 
     expect(navigation.emit).not.toHaveBeenCalled()
@@ -104,7 +109,7 @@ describe('TabBar', () => {
 
   it('navigates to Profile on Profile tab click', () => {
     const tabBar = renderTabBar()
-    const profileTab = tabBar.getByTestId('tab-Profile')
+    const profileTab = tabBar.getByTestId('Profile tab')
     fireEvent.press(profileTab)
 
     expect(navigation.navigate).toHaveBeenCalledWith('Profile')

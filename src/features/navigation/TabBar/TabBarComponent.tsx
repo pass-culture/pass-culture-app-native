@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { testID } from 'tests/utils'
 import { BicolorSelector, computeBicolorSelectorHeight } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, Spacer, getSpacing, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
@@ -12,31 +13,29 @@ interface TabComponentInterface {
   isSelected?: boolean
   bicolorIcon: (props: BicolorIconInterface) => React.ReactNode
   onPress: () => void
-  testID: string
+  tabName: string
 }
-export const TabBarComponent: React.FC<TabComponentInterface> = ({
-  isSelected,
-  bicolorIcon,
-  onPress,
-  testID,
-}) => {
+export const TabBarComponent: React.FC<TabComponentInterface> = (props) => {
   return (
-    <TabComponentContainer onPress={onPress} activeOpacity={1} testID={testID}>
-      {!!isSelected && (
+    <TabComponentContainer
+      onPress={props.onPress}
+      activeOpacity={1}
+      {...testID(`${props.tabName} tab`)}>
+      {!!props.isSelected && (
         <BicolorSelector
           width={SELECTOR_WIDTH}
           height={SELECTOR_HEIGHT}
-          testID={`selector-${testID}`}
+          {...testID(`${props.tabName} tab selected`)}
         />
       )}
       <Spacer.Flex />
-      {bicolorIcon({
-        color: isSelected ? undefined : ColorsEnum.GREY_DARK,
+      {props.bicolorIcon({
+        color: props.isSelected ? undefined : ColorsEnum.GREY_DARK,
         size: getSpacing(11),
-        thin: !isSelected,
+        thin: !props.isSelected,
       })}
       <Spacer.Flex />
-      {!!isSelected && <BicolorSelectorPlaceholder />}
+      {!!props.isSelected && <BicolorSelectorPlaceholder />}
     </TabComponentContainer>
   )
 }
