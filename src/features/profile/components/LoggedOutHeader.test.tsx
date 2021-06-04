@@ -10,7 +10,7 @@ describe('LoggedOutHeader', () => {
   it('should navigate to the setEmail page', () => {
     const { getByTestId } = render(<LoggedOutHeader />)
 
-    const signupButton = getByTestId('Bouton')
+    const signupButton = getByTestId("S'inscrire")
     signupButton.props.onClick()
 
     expect(analytics.logProfilSignUp).toBeCalled()
@@ -19,7 +19,7 @@ describe('LoggedOutHeader', () => {
   it('should navigate to the login page', () => {
     const { getByTestId } = render(<LoggedOutHeader />)
 
-    const connectButton = getByTestId('login-button')
+    const connectButton = getByTestId('Connecte-toi')
     connectButton.props.onClick()
 
     expect(navigate).toBeCalledWith('Login', { preventCancellation: true })

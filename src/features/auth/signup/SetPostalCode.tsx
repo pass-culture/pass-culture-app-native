@@ -105,7 +105,6 @@ export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
             onPress={goToCguAcceptance}
             isLoading={false}
             disabled={!isPostalCodeCorrect}
-            testId="Continuer"
           />
           <Spacer.Column numberOfSpaces={5} />
           <StepDots numberOfSteps={numberOfSteps} currentStep={4} />

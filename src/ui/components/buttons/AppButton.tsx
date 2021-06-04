@@ -41,8 +41,7 @@ const _AppButton = <T extends AppButtonProps>(props: Only<T, AppButtonProps>) =>
   const inline = props.inline
   const pressHandler = props.disabled || props.isLoading ? undefined : props.onPress
   const longPressHandler = props.disabled || props.isLoading ? undefined : props.onLongPress
-  const containerTestID = props.testId ? props.testId : 'Bouton'
-
+  const containerTestID = props.testId ? props.testId : props.title
   return (
     <Container
       {...testID(containerTestID)}

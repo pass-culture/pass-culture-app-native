@@ -41,11 +41,7 @@ export const DenyAccessToIdCheckModal = (props: DenyAccessToIdCheckModalProps) =
           </Typo.Body>
         </Paragraphe>
         <Spacer.Column numberOfSpaces={getSpacing(2)} />
-        <ButtonPrimary
-          title={t`Recevoir une alerte`}
-          testId="Recevoir une alerte"
-          onPress={onGetAlertedPress}
-        />
+        <ButtonPrimary title={t`Recevoir une alerte`} onPress={onGetAlertedPress} />
       </ModalContent>
     </AppModal>
   )

@@ -179,7 +179,7 @@ Array [
                   }
                 >
                   <View
-                    accessibilityLabel="Bouton"
+                    accessibilityLabel="Accéder à l'offre"
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}
@@ -207,7 +207,7 @@ Array [
                         "width": "100%",
                       }
                     }
-                    testID="Bouton"
+                    testID="Accéder à l'offre"
                   >
                     <Text
                       adjustsFontSizeToFit={false}
@@ -787,7 +787,7 @@ Array [
               }
             />
             <View
-              accessibilityLabel="Bouton"
+              accessibilityLabel="Annuler ma réservation"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -815,7 +815,7 @@ Array [
                   "width": "100%",
                 }
               }
-              testID="Bouton"
+              testID="Annuler ma réservation"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -848,7 +848,7 @@ Array [
               }
             />
             <View
-              accessibilityLabel="Bouton"
+              accessibilityLabel="Retourner à ma réservation"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -876,7 +876,7 @@ Array [
                   "width": "100%",
                 }
               }
-              testID="Bouton"
+              testID="Retourner à ma réservation"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -1127,7 +1127,7 @@ Array [
               }
             />
             <View
-              accessibilityLabel="Bouton"
+              accessibilityLabel="Terminer ma réservation"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -1155,7 +1155,7 @@ Array [
                   "width": "100%",
                 }
               }
-              testID="Bouton"
+              testID="Terminer ma réservation"
             >
               <Text
                 adjustsFontSizeToFit={false}

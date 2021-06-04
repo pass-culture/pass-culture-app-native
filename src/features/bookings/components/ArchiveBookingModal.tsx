@@ -59,11 +59,7 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
           disabled={isLoading}
         />
         <Spacer.Column numberOfSpaces={3} />
-        <ButtonTertiary
-          title={t`Retourner à ma réservation`}
-          testId="Retourner à ma réservation"
-          onPress={props.onDismiss}
-        />
+        <ButtonTertiary title={t`Retourner à ma réservation`} onPress={props.onDismiss} />
       </ModalContent>
     </AppModal>
   )

@@ -2984,7 +2984,7 @@ Array [
     }
   >
     <View
-      accessibilityLabel="Bouton"
+      accessibilityLabel="Aucun résultat"
       accessible={true}
       focusable={false}
       onClick={[Function]}
@@ -3012,7 +3012,7 @@ Array [
           "width": "100%",
         }
       }
-      testID="Bouton"
+      testID="Aucun résultat"
     >
       <Text
         adjustsFontSizeToFit={true}

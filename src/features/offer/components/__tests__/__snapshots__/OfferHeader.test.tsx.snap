@@ -610,7 +610,7 @@ Array [
             </Text>
           </Text>
           <View
-            accessibilityLabel="Bouton"
+            accessibilityLabel="S'inscrire"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -638,7 +638,7 @@ Array [
                 "width": "100%",
               }
             }
-            testID="Bouton"
+            testID="S'inscrire"
           >
             <Text
               adjustsFontSizeToFit={false}
@@ -671,7 +671,7 @@ Array [
             }
           />
           <View
-            accessibilityLabel="Bouton"
+            accessibilityLabel="Se connecter"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -699,7 +699,7 @@ Array [
                 "width": "100%",
               }
             }
-            testID="Bouton"
+            testID="Se connecter"
           >
             <Text
               adjustsFontSizeToFit={false}

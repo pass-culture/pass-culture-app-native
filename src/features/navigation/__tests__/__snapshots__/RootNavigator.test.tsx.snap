@@ -203,7 +203,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
       }
     >
       <View
-        accessibilityLabel="Bouton"
+        accessibilityLabel="Télécharger la dernière version"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -231,7 +231,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
             "width": "100%",
           }
         }
-        testID="Bouton"
+        testID="Télécharger la dernière version"
       >
         <Text
           adjustsFontSizeToFit={false}

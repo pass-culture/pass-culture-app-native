@@ -78,7 +78,6 @@ export const SetPassword: FunctionComponent<Props> = ({ route }) => {
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
             title={t`Continuer`}
-            testId="Continuer"
             onPress={submitPassword}
             disabled={!isPasswordCorrect(password)}
           />

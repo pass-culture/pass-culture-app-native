@@ -184,7 +184,6 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
         )}
         <ButtonPrimary
           title={getButtonTitle()}
-          testId="Continuer"
           disabled={!isContinueButtonEnabled}
           onPress={requestSendPhoneValidationCode}
         />

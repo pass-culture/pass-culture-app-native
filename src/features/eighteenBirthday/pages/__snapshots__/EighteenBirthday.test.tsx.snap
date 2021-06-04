@@ -279,7 +279,7 @@ Array [
                       }
                     >
                       <View
-                        accessibilityLabel="Bouton"
+                        accessibilityLabel="Vérifier mon identité"
                         accessible={true}
                         focusable={true}
                         onClick={[Function]}
@@ -307,7 +307,7 @@ Array [
                             "width": "100%",
                           }
                         }
-                        testID="Bouton"
+                        testID="Vérifier mon identité"
                       >
                         <Text
                           adjustsFontSizeToFit={false}
@@ -341,7 +341,7 @@ Array [
                       }
                     >
                       <View
-                        accessibilityLabel="Bouton"
+                        accessibilityLabel="Passer"
                         accessible={true}
                         focusable={true}
                         onClick={[Function]}
@@ -369,7 +369,7 @@ Array [
                             "width": "100%",
                           }
                         }
-                        testID="Bouton"
+                        testID="Passer"
                       >
                         <Text
                           adjustsFontSizeToFit={false}

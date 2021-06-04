@@ -177,7 +177,6 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
         )}
         <ButtonPrimary
           title={t`Continuer`}
-          testId={'Continuer'}
           disabled={!codeInputState.isValid}
           onPress={validateCode}
         />

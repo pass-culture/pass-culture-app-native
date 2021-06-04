@@ -149,7 +149,6 @@ export const Login: FunctionComponent = function () {
         title={t`Se connecter`}
         onPress={onSubmit}
         disabled={shouldDisableLoginButton}
-        testId="Se connecter"
       />
     </BottomContentPage>
   )
