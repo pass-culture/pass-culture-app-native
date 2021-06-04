@@ -18,6 +18,7 @@ import { env } from 'libs/environment'
 import { MonitoringError } from 'libs/errorMonitoring'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
+import { testID } from 'tests/utils'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
@@ -245,12 +246,12 @@ export const Profile: React.FC = () => {
           <ProfileSection>
             <SectionRow
               title={t`Déconnexion`}
+              {...testID(t`Déconnexion`)}
               onPress={() => {
                 signOut()
               }}
               type="clickable"
               icon={SignOut}
-              testID="row-signout"
               style={styles.logoutRow}
             />
           </ProfileSection>
