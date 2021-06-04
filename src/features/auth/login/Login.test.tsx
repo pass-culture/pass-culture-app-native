@@ -15,7 +15,7 @@ import { flushAllPromises, superFlushWithAct, act, fireEvent, render } from 'tes
 import { AuthContext } from '../AuthContext'
 
 import { Login } from './Login'
-
+jest.mock('react-query')
 jest.mock('features/navigation/helpers')
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
