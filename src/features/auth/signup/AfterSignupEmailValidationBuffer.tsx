@@ -54,7 +54,8 @@ export function AfterSignupEmailValidationBuffer() {
     try {
       const me = await api.getnativev1me()
       const nextStepIsIdCheck = // @ts-ignore TODO: this will prevent a breaking change since api v138 sends redirection info in /me route instead of /validate_email response, remove afterwards (See PC-9026)
-        (me.nextBeneficiaryValidationStep === 'id-check' || response.idCheckToken) &&
+        (['id-check', 'phone-validation'].includes(me.nextBeneficiaryValidationStep) ||
+          response.idCheckToken) &&
         settings?.allowIdCheckRegistration
       if (!nextStepIsIdCheck) {
         delayedNavigate('AccountCreated')
