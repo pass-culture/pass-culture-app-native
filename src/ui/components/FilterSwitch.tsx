@@ -1,62 +1,68 @@
-import React, { memo, useEffect, useRef } from 'react'
-import { Animated, Easing, TouchableOpacity } from 'react-native'
+import React from 'react'
+import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
+import { testID } from 'tests/utils'
 import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
-  toggle: () => void
   active: boolean
-  testID?: string
+  toggle: () => void
+  testID: string
 }
 
-const FilterSwitch: React.FC<Props> = (props: Props) => {
-  const { toggle, active = false, testID } = props
-  const animatedValue = useRef(new Animated.Value(active ? 0 : 1)).current
+interface State {
+  animatedValue: Animated.Value
+}
 
-  const marginLeft = animatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 28],
-  })
+const KNOB_OFFSET = getSpacing(5)
 
-  useEffect(() => {
-    Animated.timing(animatedValue, {
-      toValue: active ? 1 : 0,
-      duration: 200,
+export default class FilterSwitch extends React.Component<Props, State> {
+  static defaultProps = {
+    active: false,
+  }
+
+  state = {
+    animatedValue: new Animated.Value(this.props.active ? KNOB_OFFSET : 0),
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.active === this.props.active) {
+      return
+    }
+    Animated.timing(this.state.animatedValue, {
+      toValue: this.props.active ? KNOB_OFFSET : 0,
       easing: Easing.bezier(0, 0.75, 0, 0.75),
+      duration: 250,
       useNativeDriver: false,
     }).start()
-  }, [active])
+  }
 
-  return (
-    <FilterSwitchContainer>
-      <TouchableOpacity
+  render() {
+    const translateX = this.state.animatedValue
+    return (
+      <StyledTouchableOpacity
         activeOpacity={ACTIVE_OPACITY}
-        testID={testID ? testID : 'filterSwitch'}
-        onPress={toggle}>
-        <StyledBackgroundColor
-          active={active}
-          testID={testID ? `${testID}-switch-background` : 'switchBackground'}>
-          <StyledToggle style={{ marginLeft }} />
-        </StyledBackgroundColor>
-      </TouchableOpacity>
-    </FilterSwitchContainer>
-  )
+        active={this.props.active}
+        onPress={() => this.props.toggle()}
+        {...testID(this.props.testID)}>
+        <StyledAnimatedView style={{ transform: [{ translateX }] }} />
+      </StyledTouchableOpacity>
+    )
+  }
 }
 
-const StyledBackgroundColor = styled.View<{ active: boolean }>(({ active }) => ({
+const StyledTouchableOpacity = styled.TouchableOpacity<{ active: boolean }>(({ active }) => ({
   backgroundColor: active ? ColorsEnum.GREEN_VALID : ColorsEnum.GREY_MEDIUM,
   width: getSpacing(14),
   height: getSpacing(8),
-  marginLeft: getSpacing(5),
+  paddingLeft: getSpacing(1),
   borderRadius: getSpacing(4),
   justifyContent: 'center',
 }))
 
-const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
-
-const StyledToggle = styled(Animated.View)({
+const StyledAnimatedView = styled(Animated.View)({
   aspectRatio: '1',
   width: getSpacing(7),
   height: getSpacing(7),
@@ -72,5 +78,3 @@ const StyledToggle = styled(Animated.View)({
     shadowOpacity: 0.2,
   }),
 })
-
-export default memo(FilterSwitch)

@@ -20,11 +20,12 @@ describe('ConsentSettings', () => {
 
   it('should save has_accepted_cookie to true (default)', async () => {
     storage.saveObject('has_accepted_cookie', null)
-    const { getByTestId } = renderConsentSettings()
+    const { getByTestId, debug } = renderConsentSettings()
+    debug()
 
     await waitFor(async () => {
       expect(await storage.readObject('has_accepted_cookie')).toBe(true)
-      const trackingSwitch = getByTestId('switchBackground')
+      const trackingSwitch = getByTestId('Interrupteur données de navigation')
       expect(trackingSwitch.props.active).toBeTruthy()
     })
   })
@@ -34,7 +35,7 @@ describe('ConsentSettings', () => {
     const { getByTestId } = renderConsentSettings()
 
     await waitFor(() => {
-      const trackingSwitch = getByTestId('switchBackground')
+      const trackingSwitch = getByTestId('Interrupteur données de navigation')
       expect(trackingSwitch.props.active).toBeFalsy()
     })
   })
@@ -44,7 +45,7 @@ describe('ConsentSettings', () => {
     const { getByTestId } = renderConsentSettings()
 
     await waitFor(() => {
-      const trackingSwitch = getByTestId('switchBackground')
+      const trackingSwitch = getByTestId('Interrupteur données de navigation')
       expect(trackingSwitch.props.active).toBeTruthy()
     })
   })
@@ -52,7 +53,7 @@ describe('ConsentSettings', () => {
   it('should enable save button on toggle switch', async () => {
     const { getByTestId } = renderConsentSettings()
 
-    const toggleButton = getByTestId('filterSwitch')
+    const toggleButton = getByTestId('Interrupteur données de navigation')
     fireEvent.press(toggleButton)
 
     await waitFor(() => {
@@ -65,7 +66,7 @@ describe('ConsentSettings', () => {
   it('should save user choice in storage and call setAnalyticsCollectionEnabled on press save', async () => {
     const { getByTestId, getByText } = renderConsentSettings()
 
-    const toggleButton = getByTestId('filterSwitch')
+    const toggleButton = getByTestId('Interrupteur données de navigation')
     fireEvent.press(toggleButton)
 
     await waitFor(async () => {
@@ -79,7 +80,7 @@ describe('ConsentSettings', () => {
   it('should go back on press save', async () => {
     const { getByTestId, getByText } = renderConsentSettings()
 
-    const toggleButton = getByTestId('filterSwitch')
+    const toggleButton = getByTestId('Interrupteur données de navigation')
     fireEvent.press(toggleButton)
 
     await waitFor(() => {

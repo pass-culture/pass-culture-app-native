@@ -166,7 +166,13 @@ export function NotificationSettings() {
           <SectionRow
             type="clickable"
             title={t`Autoriser l’envoi d’e\u2011mails`}
-            cta={<FilterSwitch testID="email" active={allowEmails} toggle={toggleEmails} />}
+            cta={
+              <FilterSwitch
+                testID={t`Interrupteur email`}
+                active={allowEmails}
+                toggle={toggleEmails}
+              />
+            }
           />
           <Spacer.Column numberOfSpaces={3} />
         </Line>
@@ -181,7 +187,13 @@ export function NotificationSettings() {
               <SectionRow
                 type="clickable"
                 title={t`Autoriser les notifications marketing`}
-                cta={<FilterSwitch testID="push" active={pushSwitchEnabled} toggle={togglePush} />}
+                cta={
+                  <FilterSwitch
+                    testID={t`Interrupteur push notifications`}
+                    active={pushSwitchEnabled}
+                    toggle={togglePush}
+                  />
+                }
               />
               <Spacer.Column numberOfSpaces={3} />
             </Line>

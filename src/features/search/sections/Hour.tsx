@@ -17,9 +17,10 @@ export const Hour: React.FC = () => {
 
   return (
     <SectionWithSwitch
-      title={SectionTitle.Hour}
-      subtitle={t`Seules les sorties seront affichées`}
       active={!!searchState.timeRange}
+      subtitle={t`Seules les sorties seront affichées`}
+      testID={t`Interrupteur filtre sorties avec heure`}
+      title={SectionTitle.Hour}
       toggle={toggle}
     />
   )

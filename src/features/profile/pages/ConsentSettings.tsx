@@ -86,7 +86,13 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
             numberOfLines={3}
             type="clickable"
             title={t`Autoriser l’utilisation de mes données de navigation`}
-            cta={<FilterSwitch active={isTrackingSwitchActive} toggle={toggleTrackingSwitch} />}
+            cta={
+              <FilterSwitch
+                active={isTrackingSwitchActive}
+                toggle={toggleTrackingSwitch}
+                testID={t`Interrupteur données de navigation`}
+              />
+            }
           />
           <Spacer.Column numberOfSpaces={3} />
         </Line>

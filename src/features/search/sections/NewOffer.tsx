@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 
 import { SectionWithSwitch } from 'features/search/components/SectionWithSwitch'
@@ -15,6 +16,11 @@ export const NewOffer: React.FC = () => {
   }, [])
 
   return (
-    <SectionWithSwitch title={SectionTitle.New} active={searchState.offerIsNew} toggle={toggle} />
+    <SectionWithSwitch
+      active={searchState.offerIsNew}
+      testID={t`Interrupteur filtre sorties avec date`}
+      title={SectionTitle.New}
+      toggle={toggle}
+    />
   )
 }

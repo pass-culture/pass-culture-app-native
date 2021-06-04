@@ -850,7 +850,13 @@ const Label: React.FC<{ label: string }> = ({ label }) => {
 }
 const ExampleSwitch: React.FC = () => {
   const [active, setActive] = useState<boolean>(false)
-  return <FilterSwitch active={active} toggle={() => setActive((prevActive) => !prevActive)} />
+  return (
+    <FilterSwitch
+      active={active}
+      toggle={() => setActive((prevActive) => !prevActive)}
+      testID="Interrupteur"
+    />
+  )
 }
 
 const SnackBars = () => {
