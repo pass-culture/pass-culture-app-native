@@ -1,8 +1,7 @@
 import { t } from '@lingui/macro'
 import { useEffect, useState } from 'react'
 import { Alert, AlertButton, Linking, Platform } from 'react-native'
-import LN from 'react-native-launch-navigator'
-import { AppEnum } from 'react-native-launch-navigator/enum'
+import LaunchNavigator, { AppEnum } from 'react-native-launch-navigator'
 
 import { Coordinates } from 'api/gen'
 import { getOpenStreetMapUrl } from 'libs/parsers/getOpenStreetMapUrl'
@@ -22,7 +21,7 @@ export const useItinerary = () => {
   const { showInfoSnackBar } = useSnackBarContext()
   const getApps = async () => {
     try {
-      const appsAvailability = await LN.getAvailableApps()
+      const appsAvailability = await LaunchNavigator.getAvailableApps()
       const appsKeys = Object.keys(appsAvailability)
       const apps = appsKeys.filter(
         (appKey): appKey is AppEnum => appEnumTypeGuard(appKey) && appsAvailability[appKey]
@@ -45,7 +44,7 @@ export const useItinerary = () => {
       if (!coordinates.latitude || !coordinates.longitude) {
         throw Error()
       }
-      await LN.navigate([coordinates.latitude, coordinates.longitude], { app })
+      await LaunchNavigator.navigate([coordinates.latitude, coordinates.longitude], { app })
     } catch (_error: unknown) {
       switch (backupSolution) {
         case BackupSolution.OPEN_STREET_MAP:

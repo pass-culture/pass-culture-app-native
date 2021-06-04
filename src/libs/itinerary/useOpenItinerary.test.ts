@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { AppEnum } from 'react-native-launch-navigator/enum'
+import { AppEnum } from 'react-native-launch-navigator'
 
 import * as Itinerary from 'libs/itinerary/useItinerary'
 
