@@ -226,14 +226,14 @@ describe('Profile component', () => {
   describe('signout section', () => {
     it('should display signout row if the user is connected', async () => {
       const { getByTestId } = await renderProfile()
-      const row = getByTestId('row-signout')
+      const row = getByTestId('Déconnexion')
       expect(row).toBeTruthy()
     })
 
     it('should NOT display signout row if the user is NOT connected', async () => {
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: false }))
       const { queryByTestId } = await renderProfile()
-      const row = queryByTestId('row-signout')
+      const row = queryByTestId('Déconnexion')
       expect(row).toBeFalsy()
     })
 
@@ -241,7 +241,7 @@ describe('Profile component', () => {
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('row-signout')
+      const row = getByTestId('Déconnexion')
       fireEvent.press(row)
 
       expect(mockSignOut).toBeCalled()
