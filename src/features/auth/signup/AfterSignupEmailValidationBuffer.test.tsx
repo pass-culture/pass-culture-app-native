@@ -54,7 +54,6 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       const response: ValidateEmailResponse = {
         accessToken: 'access_token',
-        idCheckToken: (null as unknown) as undefined, // actual value returned is `null`, conflicting with the typing
         refreshToken: 'refresh_token',
       }
       server.use(
@@ -80,8 +79,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       const response: ValidateEmailResponse = {
         accessToken: 'access_token',
-        idCheckToken: 'XxLicenceTokenxX',
         refreshToken: 'refresh_token',
+        idCheckToken: 'xXLicenceTokenXx',
       }
       // eligible user call
       server.use(
@@ -97,21 +96,16 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
         expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('VerifyEligibility', {
-          email: 'john@wick.com',
-          licence_token: 'XxLicenceTokenxX',
-        })
+        expect(navigate).toHaveBeenCalledWith('VerifyEligibility', { email: 'john@wick.com' })
       })
       loginRoutine.mockRestore()
     })
 
     it('should not redirect to Verify Eligibility when allowIdCheckRegistration flag is turned to false"', async () => {
-      const now = new Date()
       const response: ValidateEmailResponse = {
         accessToken: 'access_token',
-        idCheckToken: 'XxLicenceTokenxX',
         refreshToken: 'refresh_token',
-        idCheckTokenTimestamp: now,
+        idCheckToken: 'xXLicenceTokenXx',
       }
       // eligible user call
       server.use(
@@ -138,7 +132,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
     it('should redirect to Home with a snackbar message on error', async () => {
       // TODO(PC-6360): ignore warning displayed by react-query's useMutation onError callback.
-      // Note : it appears next to impossible to hide this warnibg by acting on the console object alone.
+      // Note : it appears next to impossible to hide this warning by acting on the console object alone.
       // The only solution probably lies in mocking partially or completely react-query.
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       server.use(

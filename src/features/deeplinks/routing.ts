@@ -66,14 +66,17 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
     return homeNavigateConfig
   },
   'id-check'(params) {
-    if (params?.email && params?.licenceToken) {
+    if (params?.email?.includes('@')) {
       const parsedEmail = decodeURIComponent(params.email)
       return {
-        screen: 'IdCheck',
+        screen: 'Login',
         params: {
-          email: parsedEmail,
-          licence_token: params.licenceToken,
-          expiring_timestamp: Number(params.expiringTimestamp) * 1000,
+          follow: {
+            screen: 'IdCheck',
+            params: {
+              email: parsedEmail,
+            },
+          },
         },
       }
     }

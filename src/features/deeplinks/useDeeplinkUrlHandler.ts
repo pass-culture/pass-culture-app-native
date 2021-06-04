@@ -1,13 +1,12 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 
-import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { handleDeeplinkAnalytics } from './analytics'
 import { DEEPLINK_TO_SCREEN_CONFIGURATION } from './routing'
-import { isAllowedRouteTypeGuard, isIdCheckScreenConfig } from './typeGuard'
+import { isAllowedRouteTypeGuard } from './typeGuard'
 import { DeeplinkEvent, DeeplinkParts } from './types'
 import { DEEPLINK_DOMAIN } from './utils'
 
@@ -73,7 +72,6 @@ export function useOnDeeplinkError() {
 export function useDeeplinkUrlHandler() {
   const onError = useOnDeeplinkError()
   const { navigate } = useNavigation<UseNavigationType>()
-  const navigateToIdCheck = useNavigateToIdCheck({ shouldControlNavWithSetting: false })
 
   return (event: DeeplinkEvent) => {
     const url = unescape(event.url)
@@ -87,15 +85,7 @@ export function useDeeplinkUrlHandler() {
       }
 
       handleDeeplinkAnalytics(screen, params)
-      if (isIdCheckScreenConfig(screenConfig)) {
-        navigateToIdCheck(
-          screenConfig.params.email,
-          screenConfig.params.licence_token,
-          screenConfig.params.expiration_timestamp
-        )
-      } else {
-        navigate(screen, params)
-      }
+      navigate(screen, params)
     } catch {
       onError(DEFAULT_ERROR_MESSAGE + ' : ' + url)
     }

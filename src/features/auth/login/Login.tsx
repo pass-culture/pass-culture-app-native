@@ -1,11 +1,13 @@
 import { t } from '@lingui/macro'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
+import { useAuthContext } from 'features/auth/AuthContext'
+import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -19,6 +21,7 @@ import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { TextInput } from 'ui/components/inputs/TextInput'
+import { LoadingPage } from 'ui/components/LoadingPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
@@ -38,12 +41,25 @@ export const Login: FunctionComponent = function () {
   const [isLoading, setIsLoading] = useSafeState(false)
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
   const signIn = useSignIn()
+  const { isLoggedIn } = useAuthContext()
 
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation()
+  const navigateToIdCheck = useNavigateToIdCheck()
+
+  useFocusEffect(() => {
+    if (params?.follow) {
+      const { screen, params: idCheckParams } = params.follow
+      if (isLoggedIn && ['IdCheck', 'IdCheckV2'].includes(screen) && idCheckParams.email) {
+        navigateToIdCheck(idCheckParams.email)
+      } else if (isLoggedIn && screen) {
+        navigate(screen, idCheckParams)
+      }
+    }
+  })
 
   async function handleSignin() {
     setIsLoading(true)
@@ -55,12 +71,17 @@ export const Login: FunctionComponent = function () {
       handleSigninFailure(signinResponse)
     }
   }
+
   async function handleSigninSuccess() {
     try {
       const user = await api.getnativev1me()
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 
-      if (!hasSeenEligibleCard && user.showEligibleCard) {
+      if (params?.follow && ['IdCheck', 'IdCheckV2'].includes(params.follow.screen)) {
+        navigateToIdCheck(params?.follow?.params?.email)
+      } else if (params?.follow) {
+        navigate(params.follow.screen, params.follow.params)
+      } else if (!hasSeenEligibleCard && user.showEligibleCard) {
         navigate('EighteenBirthday')
       } else if (user.isBeneficiary && user.needsToFillCulturalSurvey) {
         navigate('CulturalSurvey')
@@ -98,6 +119,10 @@ export const Login: FunctionComponent = function () {
 
   function onForgottenPasswordClick() {
     navigate('ForgottenPassword')
+  }
+
+  if (isLoggedIn && params?.follow?.screen) {
+    return <LoadingPage />
   }
 
   return (

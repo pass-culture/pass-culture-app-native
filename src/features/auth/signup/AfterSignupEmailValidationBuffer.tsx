@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
+import { api } from 'api/api'
 import { ValidateEmailResponse } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { homeNavigateConfig } from 'features/navigation/helpers'
@@ -49,17 +50,21 @@ export function AfterSignupEmailValidationBuffer() {
       { accessToken: response.accessToken, refreshToken: response.refreshToken },
       'fromSignup'
     )
-    if (!response.idCheckToken || !settings?.allowIdCheckRegistration) {
+
+    try {
+      const me = await api.getnativev1me()
+      const nextStepIsIdCheck = // @ts-ignore TODO: this will prevent a breaking change since api v138 sends redirection info in /me route instead of /validate_email response, remove afterwards (See PC-9026)
+        (me.nextBeneficiaryValidationStep === 'id-check' || response.idCheckToken) &&
+        settings?.allowIdCheckRegistration
+      if (!nextStepIsIdCheck) {
+        delayedNavigate('AccountCreated')
+      } else {
+        delayedNavigate('VerifyEligibility', {
+          email: params.email,
+        })
+      }
+    } catch {
       delayedNavigate('AccountCreated')
-    } else {
-      delayedNavigate('VerifyEligibility', {
-        email: params.email,
-        licence_token: response.idCheckToken,
-        expiration_timestamp:
-          response.idCheckTokenTimestamp instanceof Date
-            ? response.idCheckTokenTimestamp.getTime()
-            : response.idCheckTokenTimestamp,
-      })
     }
   }
 

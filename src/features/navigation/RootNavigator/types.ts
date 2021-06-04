@@ -44,7 +44,15 @@ export type RootStackParamList = {
   IdCheck: { email: string; licence_token?: string; expiration_timestamp?: number | null }
   IdCheckUnavailable: undefined
   IdCheckTooManyAttempts: undefined
-  Login: { preventCancellation?: boolean } | { preventCancellation?: boolean } | undefined
+  Login:
+    | {
+        preventCancellation?: boolean
+        follow?: {
+          screen: 'IdCheck'
+          params: RootStackParamList['IdCheck']
+        }
+      }
+    | undefined
   Maintenance: undefined
   Navigation: undefined
   NavigationIdCheckErrors: undefined
