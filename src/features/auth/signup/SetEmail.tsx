@@ -105,7 +105,6 @@ export const SetEmail: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
             title={t`Continuer`}
-            testId="Continuer"
             onPress={validateEmail}
             isLoading={false}
             disabled={shouldDisableValidateButton}

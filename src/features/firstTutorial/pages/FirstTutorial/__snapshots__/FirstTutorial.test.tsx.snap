@@ -80,7 +80,7 @@ Array [
           }
         >
           <View
-            accessibilityLabel="Bouton"
+            accessibilityLabel="Tout passer"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -108,7 +108,7 @@ Array [
                 "width": "100%",
               }
             }
-            testID="Bouton"
+            testID="Tout passer"
           >
             <Text
               adjustsFontSizeToFit={false}
@@ -350,7 +350,7 @@ Array [
                       }
                     >
                       <View
-                        accessibilityLabel="Bouton"
+                        accessibilityLabel="Continuer"
                         accessible={true}
                         focusable={true}
                         onClick={[Function]}
@@ -378,7 +378,7 @@ Array [
                             "width": "100%",
                           }
                         }
-                        testID="Bouton"
+                        testID="Continuer"
                       >
                         <Text
                           adjustsFontSizeToFit={false}

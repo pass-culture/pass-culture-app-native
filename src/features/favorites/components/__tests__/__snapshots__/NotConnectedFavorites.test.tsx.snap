@@ -161,7 +161,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       }
     >
       <View
-        accessibilityLabel="Bouton"
+        accessibilityLabel="S'inscrire"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -189,7 +189,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             "width": "100%",
           }
         }
-        testID="Bouton"
+        testID="S'inscrire"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -222,7 +222,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         }
       />
       <View
-        accessibilityLabel="Bouton"
+        accessibilityLabel="Se connecter"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -250,7 +250,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             "width": "100%",
           }
         }
-        testID="Bouton"
+        testID="Se connecter"
       >
         <Text
           adjustsFontSizeToFit={false}

@@ -65,12 +65,7 @@ export const DeeplinkImporter: FunctionComponent = () => {
             {t`Copie ici le lien qui t'a été envoyé par email et clique sur le bouton "Importer le lien"`}
           </Typo.Caption>
           <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary
-            testId="Importer le lien"
-            title={t`Importer le lien`}
-            onPress={resolveLink}
-            isLoading={false}
-          />
+          <ButtonPrimary title={t`Importer le lien`} onPress={resolveLink} isLoading={false} />
           <Spacer.Column numberOfSpaces={3} />
         </ModalContent>
       </BottomContentPage>

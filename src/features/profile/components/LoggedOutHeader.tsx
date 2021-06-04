@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { testID } from 'tests/utils'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, getSpacing, ScreenWidth, Spacer, Typo } from 'ui/theme'
@@ -37,7 +38,7 @@ export function LoggedOutHeader() {
           <Typo.Body color={ColorsEnum.WHITE}>{t`Tu as déjà un compte ?` + '\u00a0'}</Typo.Body>
           <TouchableOpacity
             onPress={() => navigate('Login', { preventCancellation: true })}
-            testID="login-button">
+            {...testID(t`Connecte-toi`)}>
             <Typo.ButtonText color={ColorsEnum.WHITE}>{t`Connecte-toi`}</Typo.ButtonText>
           </TouchableOpacity>
         </LoginCta>

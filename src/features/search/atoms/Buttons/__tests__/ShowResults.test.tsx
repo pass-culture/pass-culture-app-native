@@ -29,7 +29,7 @@ describe('<ShowResults />', () => {
       getByText(expected)
 
       const expectedColor = disabled ? ColorsEnum.GREY_LIGHT : ColorsEnum.PRIMARY
-      expect(getByTestId('Bouton').props.style.backgroundColor).toBe(expectedColor)
+      expect(getByTestId(expected).props.style.backgroundColor).toBe(expectedColor)
     }
   )
 })

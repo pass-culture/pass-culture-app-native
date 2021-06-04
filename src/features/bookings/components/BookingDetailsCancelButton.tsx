@@ -21,15 +21,11 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const properties = getBookingProperties(booking)
 
   if (properties.hasActivationCode == true && props.activationCodeFeatureEnabled) {
-    return <ButtonSecondary testId={'Terminer'} title={t`Terminer`} onPress={props.onTerminate} />
+    return <ButtonSecondary title={t`Terminer`} onPress={props.onTerminate} />
   }
 
   const renderButton = (
-    <ButtonSecondary
-      testId={'Annuler ma réservation'}
-      title={t`Annuler ma réservation`}
-      onPress={props.onCancel}
-    />
+    <ButtonSecondary title={t`Annuler ma réservation`} onPress={props.onCancel} />
   )
 
   if (booking.confirmationDate) {

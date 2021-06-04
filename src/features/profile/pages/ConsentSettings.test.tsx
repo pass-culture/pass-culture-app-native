@@ -50,13 +50,13 @@ describe('ConsentSettings', () => {
   })
 
   it('should enable save button on toggle switch', async () => {
-    const { getAllByTestId, getByTestId } = renderConsentSettings()
+    const { getByTestId } = renderConsentSettings()
 
     const toggleButton = getByTestId('filterSwitch')
     fireEvent.press(toggleButton)
 
     await waitFor(() => {
-      const saveButton = getAllByTestId('Bouton')[1]
+      const saveButton = getByTestId('Enregistrer')
       const background = saveButton.props.style.backgroundColor
       expect(background).toEqual(ColorsEnum.PRIMARY)
     })

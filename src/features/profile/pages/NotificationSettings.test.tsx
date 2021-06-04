@@ -167,7 +167,7 @@ describe('NotificationSettings', () => {
         false
       )
       let saveButton: ReactTestInstance | null = null
-      saveButton = queryByTestId('Bouton')
+      saveButton = queryByTestId('Enregistrer')
 
       await superFlushWithAct(10)
       await waitForExpect(() => {
@@ -201,7 +201,7 @@ describe('NotificationSettings', () => {
       let saveButton: ReactTestInstance | null = null
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        saveButton = getByTestId('Bouton')
+        saveButton = getByTestId('Enregistrer')
         expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
       })
 
@@ -209,7 +209,7 @@ describe('NotificationSettings', () => {
 
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        saveButton = getByTestId('Bouton')
+        saveButton = getByTestId('Enregistrer')
         expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
       })
     })
@@ -241,7 +241,7 @@ describe('NotificationSettings', () => {
       await superFlushWithAct(10)
       let saveButton: ReactTestInstance | null = null
       await waitForExpect(() => {
-        saveButton = getByTestId('Bouton')
+        saveButton = getByTestId('Enregistrer')
         expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
       })
 
@@ -250,7 +250,9 @@ describe('NotificationSettings', () => {
       await superFlushWithAct(10)
 
       await waitForExpect(() => {
-        expect(getByTestId('Bouton').props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+        expect(getByTestId('Enregistrer').props.style.backgroundColor).toEqual(
+          ColorsEnum.GREY_LIGHT
+        )
       })
       await waitForExpect(async () => {
         expect(analytics.logNotificationToggle).toBeCalledWith(false, true)

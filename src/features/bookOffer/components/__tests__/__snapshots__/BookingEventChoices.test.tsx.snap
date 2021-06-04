@@ -508,7 +508,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     }
   />
   <View
-    accessibilityLabel="Bouton"
+    accessibilityLabel="Valider ces options"
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -536,7 +536,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         "width": "100%",
       }
     }
-    testID="Bouton"
+    testID="Valider ces options"
   >
     <Text
       adjustsFontSizeToFit={false}

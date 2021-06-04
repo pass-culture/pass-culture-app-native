@@ -155,7 +155,7 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
         <BottomCardContentContainer>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <InnerContainer>
-              <ButtonTertiary title={t`Pourquoi ?`} testId="Pourquoi ?" onPress={onPressWhy} />
+              <ButtonTertiary title={t`Pourquoi ?`} onPress={onPressWhy} />
               <Spacer.Column numberOfSpaces={10} />
               <DateInputContainer>
                 <DateInput
@@ -170,7 +170,6 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
               <Spacer.Column numberOfSpaces={14} />
               <ButtonPrimary
                 title={t`Continuer`}
-                testId="Continuer"
                 disabled={!state.isDateValid}
                 onPress={goToNextStep}
               />

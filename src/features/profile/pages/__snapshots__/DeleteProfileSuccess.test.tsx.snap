@@ -216,7 +216,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       }
     >
       <View
-        accessibilityLabel="Bouton"
+        accessibilityLabel="Retourner à l'accueil"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -244,7 +244,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
             "width": "100%",
           }
         }
-        testID="Bouton"
+        testID="Retourner à l'accueil"
       >
         <Text
           adjustsFontSizeToFit={false}

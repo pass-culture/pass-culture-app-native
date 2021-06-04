@@ -149,12 +149,12 @@ describe('SetPhoneNumberModal', () => {
     })
 
     it.each([
-      ['', 'null', -1, null, 1], // first call (-1 means timer is not initialized)
-      ['', '> 1 min', 65, currentTimestamp() - 65, 1], // last call was made 65 seconds ago
-      ['NOT', '< 1 min', 5, currentTimestamp() - 5, 0], // last call was made 5 seconds ago
+      ['', 'null', 'Continuer', -1, null, 1], // first call (-1 means timer is not initialized)
+      ['', '> 1 min', 'Continuer', 65, currentTimestamp() - 65, 1], // last call was made 65 seconds ago
+      ['NOT', '< 1 min', /Attends/, 5, currentTimestamp() - 5, 0], // last call was made 5 seconds ago
     ])(
       'should %s call sendPhoneValidationCode mutation if SetPhoneNumberModal if last request timestamp is %s',
-      async (_should, _label, timeSinceLastRequest, storageValue, numberOfCall) => {
+      async (_should, _label, buttonTestId, timeSinceLastRequest, storageValue, numberOfCall) => {
         await storage.saveObject('phone_validation_code_asked_at', storageValue)
 
         mockTimeSinceLastRequest = timeSinceLastRequest
@@ -162,7 +162,7 @@ describe('SetPhoneNumberModal', () => {
         const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
         await superFlushWithAct()
 
-        const button = getByTestId('Continuer')
+        const button = getByTestId(buttonTestId)
         const input = getByPlaceholderText('6 12 34 56 78')
         fireEvent.changeText(input, '612345678')
         fireEvent.press(button)

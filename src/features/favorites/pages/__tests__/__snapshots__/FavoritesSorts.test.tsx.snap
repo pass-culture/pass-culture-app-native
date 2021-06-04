@@ -438,7 +438,7 @@ Array [
     }
   >
     <View
-      accessibilityLabel="Bouton"
+      accessibilityLabel="Valider"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -466,7 +466,7 @@ Array [
           "width": "100%",
         }
       }
-      testID="Bouton"
+      testID="Valider"
     >
       <Text
         adjustsFontSizeToFit={false}

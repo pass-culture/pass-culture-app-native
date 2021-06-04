@@ -206,7 +206,7 @@ Array [
             </Text>
           </Text>
           <View
-            accessibilityLabel="Bouton"
+            accessibilityLabel="Politique des cookies"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -234,7 +234,7 @@ Array [
                 "width": "100%",
               }
             }
-            testID="Bouton"
+            testID="Politique des cookies"
           >
             <View
               height={16}
@@ -294,7 +294,7 @@ Array [
             </Text>
           </Text>
           <View
-            accessibilityLabel="Bouton"
+            accessibilityLabel="Continuer"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -322,7 +322,7 @@ Array [
                 "width": "100%",
               }
             }
-            testID="Bouton"
+            testID="Continuer"
           >
             <Text
               adjustsFontSizeToFit={false}
@@ -355,7 +355,7 @@ Array [
             }
           />
           <View
-            accessibilityLabel="Bouton"
+            accessibilityLabel="Paramètres de confidentialité"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -383,7 +383,7 @@ Array [
                 "width": "100%",
               }
             }
-            testID="Bouton"
+            testID="Paramètres de confidentialité"
           >
             <Text
               adjustsFontSizeToFit={false}
