@@ -43,10 +43,6 @@ import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
 
 const queryCache = new QueryCache()
-
-if (__DEV__ && process.env.JEST !== 'true') {
-  addPlugin(queryCache)
-}
 const queryClient = new QueryClient({
   queryCache,
   defaultOptions: {
@@ -56,6 +52,10 @@ const queryClient = new QueryClient({
     },
   },
 })
+
+if (__DEV__ && process.env.JEST !== 'true') {
+  addPlugin({ queryClient })
+}
 
 // By default, on the web, if a user leaves the app and returns to stale data,
 // React Query automatically requests fresh data in the background.
