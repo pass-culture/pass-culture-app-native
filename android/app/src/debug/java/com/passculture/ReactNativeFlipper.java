@@ -5,6 +5,7 @@
  * directory of this source tree.
  */
 package com.passculture;
+
 import android.content.Context;
 import com.facebook.flipper.android.AndroidFlipperClient;
 import com.facebook.flipper.android.utils.FlipperUtils;
@@ -14,6 +15,8 @@ import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin;
 import com.facebook.flipper.plugins.fresco.FrescoFlipperPlugin;
 import com.facebook.flipper.plugins.inspector.DescriptorMapping;
 import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin;
+import com.facebook.flipper.plugins.leakcanary2.FlipperLeakListener;
+import com.facebook.flipper.plugins.leakcanary2.LeakCanary2FlipperPlugin;
 import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor;
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin;
 import com.facebook.flipper.plugins.react.ReactFlipperPlugin;
@@ -21,7 +24,10 @@ import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPl
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.modules.network.NetworkingModule;
+
+import leakcanary.LeakCanary;
 import okhttp3.OkHttpClient;
+
 public class ReactNativeFlipper {
   public static void initializeFlipper(Context context, ReactInstanceManager reactInstanceManager) {
     if (FlipperUtils.shouldEnableFlipper(context)) {
@@ -40,6 +46,13 @@ public class ReactNativeFlipper {
             }
           });
       client.addPlugin(networkFlipperPlugin);
+
+      LeakCanary.Config config = LeakCanary.getConfig().newBuilder()
+        .retainedVisibleThreshold(3)
+        .onHeapAnalyzedListener(new FlipperLeakListener())
+        .build();
+      LeakCanary.setConfig(config);
+      client.addPlugin(new LeakCanary2FlipperPlugin());
       client.start();
       // Fresco Plugin needs to ensure that ImagePipelineFactory is initialized
       // Hence we run if after all native modules have been initialized
