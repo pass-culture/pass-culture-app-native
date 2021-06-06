@@ -5789,18 +5789,18 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
-flatted@^3.0.4:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.1.0.tgz#a5d06b4a8b01e3a63771daa5cb7a1903e2e57067"
-  integrity sha512-tW+UkmtNg/jv9CSofAKvgVcO7c2URjhTdW1ZTkcAritblu8tajiYy7YisnIflEwtKssCtOxpnBRoCB7iap0/TA==
+flatted@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.1.1.tgz#c4b489e80096d9df1dfc97c79871aea7c617c469"
+  integrity sha512-zAoAQiudy+r5SvnSw3KJy5os/oRJYHzrzja/tBDqrZtNhUw8bt6y8OBzMWcjWr+8liV8Eb6yOhw8WZ7VFZ5ZzA==
 
-flipper-plugin-react-query-native-devtools@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/flipper-plugin-react-query-native-devtools/-/flipper-plugin-react-query-native-devtools-0.5.0.tgz#c9924979dd5ae4b846c5dd7aba60f4ccd670e220"
-  integrity sha512-T9ZlSS/RTpP1k53n5P4628ubU+IQ5P3+/Ahc1eNMzqJ2RQAqmbSvgllBNgQBzRMk6bs5cssQ4GSpFkYhLmOVhQ==
+flipper-plugin-react-query-native-devtools@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/flipper-plugin-react-query-native-devtools/-/flipper-plugin-react-query-native-devtools-3.0.0.tgz#052e473ea7e6bd43fbcbf8210983bc516ef4daf9"
+  integrity sha512-e3rm61vHNwQ+yoty6g3t7RrfeNOhIDiadXnHNT3hQUlHFvjB+HcleTLsxgdu1vF0XhYBCQlwJmEye8BfJ3IjaA==
   dependencies:
-    flatted "^3.0.4"
-    lodash "^4.17.15"
+    flatted "^3.1.0"
+    lodash "^4.17.19"
 
 flush-promises@^1.0.2:
   version "1.0.2"
@@ -10342,10 +10342,10 @@ react-native-fast-image@^8.3.4:
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.3.4.tgz#79edca177e30311b19d59ff335625bcbe22650d7"
   integrity sha512-LpzAdjUphihUpVEBn5fEv5AILe55rHav0YiZroPZ1rumKDhAl4u2cG01ku2Pb7l8sayjTsNu7FuURAlXUUDsow==
 
-react-native-flipper@^0.61.0:
-  version "0.61.0"
-  resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.61.0.tgz#9613f1e8a7f90d1564f44ffc9fd7ced4f366debc"
-  integrity sha512-wRa2Y2pXBoW3m+p3QbtL4NesuRXQW4gJgRHnDe6nkm+ifgt/6+WHGNcWqngmKdNCsNtWTIoDiLOc3/CNdhyfHQ==
+react-native-flipper@^0.92.0:
+  version "0.92.0"
+  resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.92.0.tgz#d1d047fc55358d78bb44e007440cdfde5cfb4001"
+  integrity sha512-xcI10Uc4/Q9wdyg8q8N5i6/Ri8goWglc/uu3do0uMglT3Qs380yqOn/5wX3XzcdQB/QD39JW7wbf8ENTFFu4aA==
 
 react-native-geolocation-service@5.3.0-beta.1:
   version "5.3.0-beta.1"
@@ -10530,10 +10530,12 @@ react-native@0.63.3:
     use-subscription "^1.0.0"
     whatwg-fetch "^3.0.0"
 
-react-query-native-devtools@0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/react-query-native-devtools/-/react-query-native-devtools-0.3.2.tgz#967471d08f786896f8afda223b04c8e2785eb200"
-  integrity sha512-N3Qeb4iRAqscY6O1TnQ2+Lh/c8kmzmVVX4NlDHf5U2VCvhkX9kbF0J+nr1B7Ji8ahimON+sMLV0zVmH8QDc/dg==
+react-query-native-devtools@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-query-native-devtools/-/react-query-native-devtools-3.0.1.tgz#7244eddb7f6d18bad87a373ba83f16e7a5a0454e"
+  integrity sha512-n7Sf3jQz9kdaEWN1gzZkIOePTQ09KOG1KMEQqJRvMylW7mdG8Ec9GqvuFn8bhZ4Y/mnCQcGMbMpDn0kYmKy2DQ==
+  dependencies:
+    flatted "^3.1.0"
 
 react-query@3.8.2:
   version "3.8.2"
