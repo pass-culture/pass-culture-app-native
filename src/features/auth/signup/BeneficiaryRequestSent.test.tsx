@@ -4,8 +4,9 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { SettingsResponse, UserProfileResponse } from 'api/gen'
 import * as AuthApi from 'features/auth/api'
+import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { EmptyResponse } from 'libs/fetch'
@@ -13,10 +14,12 @@ import { render, fireEvent } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
 
+const mockedUseAppSettings = mocked(useAppSettings, true)
 const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 jest.mock('features/home/api')
 jest.mock('react-query')
 jest.mock('features/navigation/helpers')
+jest.mock('features/auth/settings')
 
 describe('<BeneficiaryRequestSent />', () => {
   beforeEach(() => {
@@ -75,5 +78,46 @@ describe('<BeneficiaryRequestSent />', () => {
 
     expect(navigateToHome).toBeCalledTimes(1)
     expect(navigate).not.toBeCalledWith('CulturalSurvey')
+  })
+
+  it('should show specific body message when retention is on and cultural survey is off', async () => {
+    const mockedSettings = {
+      data: {
+        enableIdCheckRetention: true,
+      },
+      isLoading: false,
+    } as UseQueryResult<SettingsResponse, unknown>
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseAppSettings.mockReturnValueOnce(mockedSettings)
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseUserProfileInfo.mockReturnValue({
+      data: { isBeneficiary: true, needsToFillCulturalSurvey: false },
+    } as UseQueryResult<UserProfileResponse>)
+    const { getByText } = render(<BeneficiaryRequestSent />)
+    expect(
+      getByText(
+        "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, tu peux découvrir l'application !"
+      )
+    ).toBeDefined()
+  })
+  it('should show specific body message when retention is on and cultural survey is on', async () => {
+    const mockedSettings = {
+      data: {
+        enableIdCheckRetention: true,
+      },
+      isLoading: false,
+    } as UseQueryResult<SettingsResponse, unknown>
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseAppSettings.mockReturnValueOnce(mockedSettings)
+    // eslint-disable-next-line local-rules/independant-mocks
+    mockedUseUserProfileInfo.mockReturnValue({
+      data: { isBeneficiary: true, needsToFillCulturalSurvey: true },
+    } as UseQueryResult<UserProfileResponse>)
+    const { getByText } = render(<BeneficiaryRequestSent />)
+    expect(
+      getByText(
+        'Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !'
+      )
+    ).toBeDefined()
   })
 })
