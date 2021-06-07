@@ -1,7 +1,6 @@
 import { i18n } from '@lingui/core'
-import { t } from '@lingui/macro'
 import { I18nProvider } from '@lingui/react'
-import { IdCheckContextProvider, theme } from '@pass-culture/id-check'
+import { theme } from '@pass-culture/id-check'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -21,7 +20,6 @@ import './why-did-you-render'
 import 'intl'
 import 'intl/locale-data/jsonp/en'
 
-import { api } from 'api/api'
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
@@ -31,15 +29,14 @@ import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { ABTestingProvider } from 'libs/ABTesting'
 import { useCampaignTracker } from 'libs/campaign'
 import CodePushProvider from 'libs/codepush/CodePushProvider'
-import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
-import { idCheckAnalytics } from 'libs/idCheckAnalytics'
-import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+
+import { ConfiguredIdCheckProvider } from './ConfiguredIdCheckProvider'
 
 LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
 
@@ -98,38 +95,13 @@ const App: FunctionComponent = function () {
                     <SearchWrapper>
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
-                          <IdCheckContextProvider
-                            imagePickerOptions={{
-                              title: t`Où se trouve votre document ?`,
-                              cancelButtonTitle: t`Plus tard`,
-                              takePhotoButtonTitle: t`Prendre une photo`,
-                              chooseFromLibraryButtonTitle: t`Photothèque`,
-                              chooseWhichLibraryTitle: t`Où se trouve votre copie ?`,
-                              permissionDenied: {
-                                title: t`Des permissions sont nécessaires`,
-                                text: t`pour prendre votre document en photo ou le sélectionner depuis vos fichiers`,
-                                reTryTitle: t`Recommencer`,
-                                okTitle: t`OK`,
-                              },
-                              maxWidth: 3000,
-                              maxHeight: 3000,
-                              quality: 0.7,
-                            }}
-                            apiBaseUrl={env.ID_CHECK_API_URL}
-                            supportEmail={env.SUPPORT_EMAIL_ADDRESS}
-                            dsmUrl={env.DSM_URL}
-                            personalDataDocUrl={env.DOC_PERSONAL_DATA_URL}
-                            cguDocUrl={env.DOC_CGU_URL}
-                            errorMonitoring={errorMonitoring}
-                            analytics={idCheckAnalytics}
-                            retentionClient={idCheckRetentionClient}
-                            requestLicenceToken={() => api.getnativev1idCheckToken()}>
+                          <ConfiguredIdCheckProvider>
                             <SplashScreenProvider>
                               <AppNavigationContainer>
                                 <RootNavigator />
                               </AppNavigationContainer>
                             </SplashScreenProvider>
-                          </IdCheckContextProvider>
+                          </ConfiguredIdCheckProvider>
                         </SnackBarProvider>
                       </I18nProvider>
                     </SearchWrapper>

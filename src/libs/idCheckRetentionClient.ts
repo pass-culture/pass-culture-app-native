@@ -15,7 +15,6 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
         ...(values?.postalCode ? { postalCode: values?.postalCode } : {}),
         ...(values?.status ? { activity: values?.status as ActivityEnum } : {}),
       } as BeneficiaryInformationUpdateRequest)
-      console.log('success', res)
       return res
     } catch (err) {
       errorMonitoring.captureException(err)
