@@ -85,6 +85,7 @@ export function NotificationSettings() {
       allowEmails: !prevState.allowEmails,
     }))
   }, [user, isLoggedIn])
+
   const togglePush = useCallback(() => {
     if (!isLoggedIn) {
       return

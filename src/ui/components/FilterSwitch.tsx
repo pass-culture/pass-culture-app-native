@@ -73,4 +73,9 @@ const StyledToggle = styled(Animated.View)({
   }),
 })
 
-export default memo(FilterSwitch)
+const propsAreEqual = (
+  prevProps: Readonly<React.PropsWithChildren<Props>>,
+  nextProps: Readonly<React.PropsWithChildren<Props>>
+) => prevProps.active === nextProps.active
+
+export default memo(FilterSwitch, propsAreEqual)
