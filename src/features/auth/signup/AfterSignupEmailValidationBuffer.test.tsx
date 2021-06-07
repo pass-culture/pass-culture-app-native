@@ -1,16 +1,8 @@
 import { rest } from 'msw'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import {
-  SettingsResponse,
-  UserProfileResponse,
-  ValidateEmailRequest,
-  ValidateEmailResponse,
-} from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
+import { UserProfileResponse } from 'api/gen'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
@@ -25,7 +17,6 @@ import * as Auth from '../AuthContext'
 import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBuffer'
 
 jest.mock('features/auth/settings')
-const mockedUseAppSettings = mocked(useAppSettings, true)
 jest.mock('features/auth/AuthContext')
 const mockLoginRoutine = Auth.useLoginRoutine as jest.Mock
 
@@ -55,102 +46,42 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
   })
 
   describe('when timestamp is NOT expired', () => {
-    it('should redirect to Home when the user is not "éligible"', async () => {
-      // eslint-disable-next-line local-rules/independant-mocks
-      jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
-      const response: ValidateEmailResponse = {
-        accessToken: 'access_token',
-        refreshToken: 'refresh_token',
-      }
+    it('should redirect to AccountCreated when nextBeneficiaryValidationStep is null', async () => {
+      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
+      renderPage()
+
+      await waitFor(() => {
+        expect(loginRoutine).toBeCalledTimes(1)
+        expect(navigate).toBeCalledTimes(1)
+        expect(navigate).toHaveBeenCalledWith('AccountCreated')
+      })
+      loginRoutine.mockRestore()
+    })
+
+    it('should redirect to Verify Eligibility when nextBeneficiaryValidationStep is phone-validation or id-check', async () => {
       server.use(
-        // NOT eligible user call
-        rest.post<ValidateEmailRequest, ValidateEmailResponse>(
-          env.API_BASE_URL + '/native/v1/validate_email',
-          (_req, res, ctx) => res.once(ctx.status(200), ctx.json(response))
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) =>
+          res.once(
+            ctx.status(200),
+            ctx.json({
+              email: 'email@domain.ext',
+              firstName: 'Jean',
+              isBeneficiary: true,
+              nextBeneficiaryValidationStep: 'phone-validation',
+            })
+          )
         )
       )
-
       mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
       renderPage()
 
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
         expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('AccountCreated')
-      })
-      loginRoutine.mockRestore()
-    })
-
-    it('should redirect to Verify Eligibility when the user is "éligible"', async () => {
-      // eslint-disable-next-line local-rules/independant-mocks
-      jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
-      const response: ValidateEmailResponse = {
-        accessToken: 'access_token',
-        refreshToken: 'refresh_token',
-      }
-      // eligible user call
-      server.use(
-        rest.post<ValidateEmailRequest, ValidateEmailResponse>(
-          env.API_BASE_URL + '/native/v1/validate_email',
-          (_req, res, ctx) => res.once(ctx.status(200), ctx.json(response))
-        ),
-        rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-          return res(
-            ctx.status(200),
-            ctx.json({
-              email: 'john@wick.com',
-              firstName: 'john',
-              nextBeneficiaryValidationStep: 'id-check',
-            } as UserProfileResponse)
-          )
+        expect(navigate).toHaveBeenCalledWith('VerifyEligibility', {
+          email: 'email@domain.ext',
+          nextBeneficiaryValidationStep: 'phone-validation',
         })
-      )
-
-      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
-      renderPage()
-
-      await waitFor(() => {
-        expect(loginRoutine).toBeCalledTimes(1)
-        expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('VerifyEligibility', { email: 'john@wick.com' })
-      })
-      loginRoutine.mockRestore()
-    })
-
-    it('should not redirect to Verify Eligibility when allowIdCheckRegistration flag is turned to false"', async () => {
-      const response: ValidateEmailResponse = {
-        accessToken: 'access_token',
-        refreshToken: 'refresh_token',
-      }
-      // eligible user call
-      server.use(
-        rest.post<ValidateEmailRequest, ValidateEmailResponse>(
-          env.API_BASE_URL + '/native/v1/validate_email',
-          (_req, res, ctx) => res.once(ctx.status(200), ctx.json(response))
-        ),
-        rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-          return res(
-            ctx.status(200),
-            ctx.json({
-              email: 'john@wick.com',
-              firstName: 'john',
-              nextBeneficiaryValidationStep: 'id-check',
-            } as UserProfileResponse)
-          )
-        })
-      )
-
-      const mockedAppSettingsValues = {
-        data: { depositAmount: 1, isRecaptchaEnabled: true, allowIdCheckRegistration: false },
-      } as UseQueryResult<SettingsResponse, unknown>
-      mockedUseAppSettings.mockReturnValueOnce(mockedAppSettingsValues)
-      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
-      renderPage()
-
-      await waitFor(() => {
-        expect(loginRoutine).toBeCalledTimes(1)
-        expect(navigate).toBeCalledTimes(1)
-        expect(navigate).toHaveBeenCalledWith('AccountCreated')
       })
       loginRoutine.mockRestore()
     })

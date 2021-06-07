@@ -12,6 +12,8 @@ import {
   SigninRequest,
   SigninResponse,
   UserProfileResponse,
+  ValidateEmailRequest,
+  ValidateEmailResponse,
 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
@@ -45,7 +47,11 @@ export const server = setupServer(
   rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) =>
     res(
       ctx.status(200),
-      ctx.json({ email: 'email@domain.ext', firstName: 'Jean', isBeneficiary: true })
+      ctx.json({
+        email: 'email@domain.ext',
+        firstName: 'Jean',
+        isBeneficiary: true,
+      })
     )
   ),
   rest.get<OfferResponse>(
@@ -66,6 +72,17 @@ export const server = setupServer(
     (_req, res, ctx) => {
       return res(ctx.status(200), ctx.json({}))
     }
+  ),
+  rest.post<ValidateEmailRequest, ValidateEmailResponse>(
+    env.API_BASE_URL + '/native/v1/validate_email',
+    (_req, res, ctx) =>
+      res(
+        ctx.status(200),
+        ctx.json({
+          accessToken: 'access_token',
+          refreshToken: 'refresh_token',
+        })
+      )
   )
 )
 

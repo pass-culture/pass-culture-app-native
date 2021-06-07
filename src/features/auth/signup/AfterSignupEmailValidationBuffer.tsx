@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { ValidateEmailResponse } from 'api/gen'
-import { useAppSettings } from 'features/auth/settings'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { isTimestampExpired } from 'libs/dates'
@@ -15,7 +14,6 @@ import { useLoginRoutine } from '../AuthContext'
 import { useValidateEmailMutation } from '../mutations'
 
 export function AfterSignupEmailValidationBuffer() {
-  const { data: settings } = useAppSettings()
   const { showInfoSnackBar } = useSnackBarContext()
 
   const { navigate } = useNavigation<UseNavigationType>()
@@ -52,18 +50,14 @@ export function AfterSignupEmailValidationBuffer() {
     )
 
     try {
-      const me = await api.getnativev1me()
-      const nextStepIsIdCheck = // @ts-ignore TODO: this will prevent a breaking change since api v138 sends redirection info in /me route instead of /validate_email response, remove afterwards (See PC-9026)
-        (['id-check', 'phone-validation'].includes(me.nextBeneficiaryValidationStep) ||
-          // @ts-ignore TODO: removed from API (see PC-9026)
-          response.idCheckToken) &&
-        settings?.allowIdCheckRegistration
-      if (!nextStepIsIdCheck) {
-        delayedNavigate('AccountCreated')
-      } else {
+      const user = await api.getnativev1me()
+      if (user?.nextBeneficiaryValidationStep) {
         delayedNavigate('VerifyEligibility', {
-          email: params.email,
+          email: user.email,
+          nextBeneficiaryValidationStep: user.nextBeneficiaryValidationStep,
         })
+      } else {
+        delayedNavigate('AccountCreated')
       }
     } catch {
       delayedNavigate('AccountCreated')
