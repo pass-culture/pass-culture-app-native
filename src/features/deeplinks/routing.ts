@@ -67,15 +67,11 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   },
   'id-check'(params) {
     if (params?.email?.includes('@')) {
-      const parsedEmail = decodeURIComponent(params.email)
       return {
         screen: 'Login',
         params: {
           follow: {
-            screen: 'IdCheck',
-            params: {
-              email: parsedEmail,
-            },
+            screen: 'PhoneValidation',
           },
         },
       }
