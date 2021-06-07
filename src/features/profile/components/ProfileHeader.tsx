@@ -53,7 +53,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       email={user.email}
       eligibilityStartDatetime={user.eligibilityStartDatetime?.toString()}
       eligibilityEndDatetime={user.eligibilityEndDatetime?.toString()}
-      hasCompletedIdCheck={user.hasCompletedIdCheck}
+      nextBeneficiaryValidationStep={user.nextBeneficiaryValidationStep}
     />
   )
 }
