@@ -11,11 +11,33 @@ import {
 } from 'features/auth/signup/SetPhoneValidationCodeModal'
 import { contactSupport } from 'features/auth/support.services'
 import { EmptyResponse } from 'libs/fetch'
-import { act, fireEvent, render, superFlushWithAct, useMutationFactory } from 'tests/utils'
+import {
+  act,
+  fireEvent,
+  flushAllPromises,
+  render,
+  superFlushWithAct,
+  useMutationFactory,
+} from 'tests/utils'
 import * as ModalModule from 'ui/components/modals/useModal'
 import { ColorsEnum } from 'ui/theme'
 
 jest.mock('react-query')
+jest.mock('features/auth/settings')
+jest.mock('features/home/api', () => ({
+  useUserProfileInfo: jest.fn(() => ({
+    refetch: jest.fn(() =>
+      Promise.resolve({
+        data: {
+          email: 'christophe.dupont@example.com',
+          firstName: 'Christophe',
+          lastName: 'Dupont',
+          nextBeneficiaryValidationStep: 'id-check',
+        },
+      })
+    ),
+  })),
+}))
 
 const mockedUseMutation = mocked(useMutation)
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
@@ -98,7 +120,7 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       })
     })
 
-    it('should dismiss modal if validate phone number request succeeds', () => {
+    it('should navigate to id-check if validate phone number request succeeds', async () => {
       const mockDismissModal = jest.fn()
       const { getByTestId } = renderModalWithFilledCodeInput('123456', {
         dismissModal: mockDismissModal,
@@ -108,7 +130,10 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       fireEvent.press(continueButton)
       useMutationCallbacks.onSuccess()
 
-      expect(mockDismissModal).toHaveBeenCalled()
+      await flushAllPromises()
+      expect(navigate).toBeCalledWith('IdCheck', {
+        email: 'christophe.dupont@example.com',
+      })
     })
 
     it('should display input error message if validate phone number request fails', async () => {

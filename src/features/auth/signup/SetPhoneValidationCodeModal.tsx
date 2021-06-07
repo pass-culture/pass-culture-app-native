@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { ApiError, extractApiErrorMessage } from 'api/helpers'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
@@ -71,6 +72,8 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     hideModal: hideFullPageModal,
   } = useModal(props.visible)
 
+  const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
+
   const { mutate: validatePhoneNumber } = useValidatePhoneNumberMutation({
     onSuccess: onValidateSuccess,
     onError,
@@ -89,6 +92,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
   }, [props.visible])
 
   function onValidateSuccess() {
+    navigateToNextBeneficiaryValidationStep()
     props.dismissModal()
   }
 
@@ -138,6 +142,10 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     if (isRequestTimestampExpired) {
       sendPhoneValidationCode(props.phoneNumber)
     }
+  }
+
+  if (error) {
+    throw error
   }
 
   return (
