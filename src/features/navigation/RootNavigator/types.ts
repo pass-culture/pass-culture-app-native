@@ -48,8 +48,8 @@ export type RootStackParamList = {
     | {
         preventCancellation?: boolean
         follow?: {
-          screen: 'IdCheck'
-          params: RootStackParamList['IdCheck']
+          screen: 'PhoneValidation'
+          params?: RootStackParamList['PhoneValidation']
         }
       }
     | undefined

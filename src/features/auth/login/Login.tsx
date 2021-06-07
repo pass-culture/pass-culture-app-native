@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -48,14 +47,11 @@ export const Login: FunctionComponent = function () {
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation()
-  const navigateToIdCheck = useNavigateToIdCheck()
 
   useFocusEffect(() => {
     if (params?.follow) {
       const { screen, params: idCheckParams } = params.follow
-      if (isLoggedIn && ['IdCheck', 'IdCheckV2'].includes(screen) && idCheckParams.email) {
-        navigateToIdCheck(idCheckParams.email)
-      } else if (isLoggedIn && screen) {
+      if (isLoggedIn && screen) {
         navigate(screen, idCheckParams)
       }
     }
@@ -77,9 +73,7 @@ export const Login: FunctionComponent = function () {
       const user = await api.getnativev1me()
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 
-      if (params?.follow && ['IdCheck', 'IdCheckV2'].includes(params.follow.screen)) {
-        navigateToIdCheck(params?.follow?.params?.email)
-      } else if (params?.follow) {
+      if (params?.follow) {
         navigate(params.follow.screen, params.follow.params)
       } else if (!hasSeenEligibleCard && user.showEligibleCard) {
         navigate('EighteenBirthday')

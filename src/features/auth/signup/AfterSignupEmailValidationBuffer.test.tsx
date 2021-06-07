@@ -51,7 +51,6 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   afterEach(() => {
     navigate.mockRestore()
-    mockShowInfoSnackBar.mockClear()
     jest.clearAllMocks()
   })
 
