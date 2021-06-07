@@ -110,12 +110,12 @@ describe('Profile component', () => {
         mockPermissionState = GeolocPermissionState.GRANTED
 
         const { getByTestId, queryByText } = await renderProfile()
-        const geolocSwitch = getByTestId('geolocation-switch-background')
+        const geolocSwitch = getByTestId('geolocation')
         const positionErrorMessage = queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
         expect(positionErrorMessage).toBeFalsy()
-        expect(geolocSwitch.props.active).toBeTruthy()
+        expect(geolocSwitch.parent?.props.accessibilityValue.text).toBe('true')
       })
 
       it('should display position error message if geoloc permission is granted but position is null', async () => {
@@ -133,8 +133,8 @@ describe('Profile component', () => {
       it('should display switch OFF if geoloc permission is denied', async () => {
         mockPermissionState = GeolocPermissionState.DENIED
         const { getByTestId } = await renderProfile()
-        const geolocSwitch = getByTestId('geolocation-switch-background')
-        expect(geolocSwitch.props.active).toBeFalsy()
+        const geolocSwitch = getByTestId('geolocation')
+        expect(geolocSwitch.parent?.props.accessibilityValue.text).toBe('false')
       })
 
       it('should open "Deactivate geoloc" modal when clicking on ACTIVE switch and call mockFavoriteDispatch()', async () => {

@@ -15,15 +15,21 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
+const testID = 'Interrupteur Uniquement les nouveautés'
+
 describe('NewOffer component', () => {
   it('should be controlled by searchState.offerIsNew', () => {
-    expect(render(<NewOffer />).getByTestId('switchBackground').props.active).toBeFalsy()
+    let { parent } = render(<NewOffer />).getByTestId(testID)
+    expect(parent?.props.accessibilityValue.text).toBe('false')
+
     mockSearchState = { ...initialSearchState, offerIsNew: true }
-    expect(render(<NewOffer />).getByTestId('switchBackground').props.active).toBeTruthy()
+    parent = render(<NewOffer />).getByTestId(testID).parent
+    expect(parent?.props.accessibilityValue.text).toBe('true')
   })
+
   it('should dispatch TOGGLE_OFFER_NEW onPress', () => {
     const { getByTestId } = render(<NewOffer />)
-    fireEvent.press(getByTestId('filterSwitch'))
+    fireEvent.press(getByTestId(testID))
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_NEW' })
   })
 

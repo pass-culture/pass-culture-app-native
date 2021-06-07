@@ -2118,6 +2118,12 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Interrupteur Uniquement les offres gratuites"
+              accessibilityValue={
+                Object {
+                  "text": "false",
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -2132,10 +2138,10 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="filterSwitch"
+              testID="Interrupteur Uniquement les offres gratuites"
             >
               <View
-                active={false}
+                backgroundColor="#c7c7cc"
                 style={
                   Array [
                     Object {
@@ -2148,7 +2154,6 @@ Array [
                     },
                   ]
                 }
-                testID="switchBackground"
               >
                 <View
                   style={
@@ -2157,7 +2162,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 28,
+                      "marginLeft": 0,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2260,6 +2265,12 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Interrupteur Uniquement les offres duo"
+              accessibilityValue={
+                Object {
+                  "text": "false",
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -2274,10 +2285,10 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="filterSwitch"
+              testID="Interrupteur Uniquement les offres duo"
             >
               <View
-                active={false}
+                backgroundColor="#c7c7cc"
                 style={
                   Array [
                     Object {
@@ -2290,7 +2301,6 @@ Array [
                     },
                   ]
                 }
-                testID="switchBackground"
               >
                 <View
                   style={
@@ -2299,7 +2309,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 28,
+                      "marginLeft": 0,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2401,6 +2411,12 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Interrupteur Uniquement les nouveautés"
+              accessibilityValue={
+                Object {
+                  "text": "false",
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -2415,10 +2431,10 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="filterSwitch"
+              testID="Interrupteur Uniquement les nouveautés"
             >
               <View
-                active={false}
+                backgroundColor="#c7c7cc"
                 style={
                   Array [
                     Object {
@@ -2431,7 +2447,6 @@ Array [
                     },
                   ]
                 }
-                testID="switchBackground"
               >
                 <View
                   style={
@@ -2440,7 +2455,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 28,
+                      "marginLeft": 0,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2542,6 +2557,12 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Interrupteur Date"
+              accessibilityValue={
+                Object {
+                  "text": "false",
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -2556,10 +2577,10 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="filterSwitch"
+              testID="Interrupteur Date"
             >
               <View
-                active={false}
+                backgroundColor="#c7c7cc"
                 style={
                   Array [
                     Object {
@@ -2572,7 +2593,6 @@ Array [
                     },
                   ]
                 }
-                testID="switchBackground"
               >
                 <View
                   style={
@@ -2581,7 +2601,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 28,
+                      "marginLeft": 0,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,
@@ -2708,6 +2728,12 @@ Array [
             }
           >
             <View
+              accessibilityLabel="Interrupteur Heure"
+              accessibilityValue={
+                Object {
+                  "text": "false",
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -2722,10 +2748,10 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="filterSwitch"
+              testID="Interrupteur Heure"
             >
               <View
-                active={false}
+                backgroundColor="#c7c7cc"
                 style={
                   Array [
                     Object {
@@ -2738,7 +2764,6 @@ Array [
                     },
                   ]
                 }
-                testID="switchBackground"
               >
                 <View
                   style={
@@ -2747,7 +2772,7 @@ Array [
                       "backgroundColor": "#ffffff",
                       "borderRadius": 28,
                       "height": 28,
-                      "marginLeft": 28,
+                      "marginLeft": 0,
                       "shadowColor": "#151515",
                       "shadowOffset": Object {
                         "height": 2,

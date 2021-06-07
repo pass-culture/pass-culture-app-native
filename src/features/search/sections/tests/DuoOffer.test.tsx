@@ -15,15 +15,21 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
+const testID = 'Interrupteur Uniquement les offres duo'
+
 describe('DuoOffer component', () => {
   it('should be controlled by searchState.offerIsDuo', () => {
-    expect(render(<DuoOffer />).getByTestId('switchBackground').props.active).toBeFalsy()
+    let { parent } = render(<DuoOffer />).getByTestId(testID)
+    expect(parent?.props.accessibilityValue.text).toBe('false')
+
     mockSearchState = { ...initialSearchState, offerIsDuo: true }
-    expect(render(<DuoOffer />).getByTestId('switchBackground').props.active).toBeTruthy()
+    parent = render(<DuoOffer />).getByTestId(testID).parent
+    expect(parent?.props.accessibilityValue.text).toBe('true')
   })
+
   it('should dispatch TOGGLE_OFFER_DUO onPress', () => {
     const { getByTestId } = render(<DuoOffer />)
-    fireEvent.press(getByTestId('filterSwitch'))
+    fireEvent.press(getByTestId(testID))
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_OFFER_DUO' })
   })
 

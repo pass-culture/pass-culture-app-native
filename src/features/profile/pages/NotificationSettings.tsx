@@ -91,6 +91,7 @@ export function NotificationSettings() {
         showNotificationsModal()
         return prevState
       }
+
       return {
         ...prevState,
         pushTouched: prevState.allowPush === user?.subscriptions?.marketingPush,
@@ -165,7 +166,7 @@ export function NotificationSettings() {
             title={t`Autoriser l’envoi d’e\u2011mails`}
             cta={
               <FilterSwitch
-                testID="email"
+                testID="Interrupteur autorisation emails"
                 active={allowEmails}
                 toggle={toggleEmails}
                 disabled={!isLoggedIn}
@@ -187,7 +188,7 @@ export function NotificationSettings() {
                 title={t`Autoriser les notifications marketing`}
                 cta={
                   <FilterSwitch
-                    testID="push"
+                    testID="Interrupteur push notifications"
                     active={pushSwitchEnabled}
                     toggle={togglePush}
                     disabled={!isLoggedIn}
