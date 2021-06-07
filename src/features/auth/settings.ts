@@ -4,8 +4,9 @@ import { api } from 'api/api'
 import { SettingsResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-export function useAppSettings(enabled = true) {
+export function useAppSettings(options = {}) {
   return useQuery<SettingsResponse>(QueryKeys.SETTINGS, () => api.getnativev1settings(), {
-    enabled,
+    enabled: true,
+    ...options,
   })
 }

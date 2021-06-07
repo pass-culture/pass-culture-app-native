@@ -14,7 +14,9 @@ export const formatDate = (limitDate: Date): string => {
 export const CancellationDetails: React.FC = () => {
   const stock = useBookingStock()
   const offer = useBookingOffer()
-  const { data: settings } = useAppSettings(offer?.isDigital)
+  const { data: settings } = useAppSettings({
+    enabled: offer?.isDigital,
+  })
 
   if (!stock || !offer) return <React.Fragment />
 

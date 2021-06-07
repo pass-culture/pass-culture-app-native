@@ -36,6 +36,7 @@ import { errorMonitoring } from 'libs/errorMonitoring'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { idCheckAnalytics } from 'libs/idCheckAnalytics'
+import { idCheckRetentionClient } from 'libs/idCheckRetentionClient'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
@@ -121,6 +122,7 @@ const App: FunctionComponent = function () {
                             cguDocUrl={env.DOC_CGU_URL}
                             errorMonitoring={errorMonitoring}
                             analytics={idCheckAnalytics}
+                            retentionClient={idCheckRetentionClient}
                             requestLicenceToken={() => api.getnativev1idCheckToken()}>
                             <SplashScreenProvider>
                               <AppNavigationContainer>
