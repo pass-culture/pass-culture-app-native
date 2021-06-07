@@ -1,13 +1,12 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
-import React from 'react'
+import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { useDepositAmount } from 'features/auth/api'
-import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
+import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -16,23 +15,13 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'VerifyEligibility'>
 
-export function VerifyEligibility(props: Props) {
+export const VerifyEligibility: FunctionComponent<Props> = ({ route }) => {
   const deposit = useDepositAmount()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { error, navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation()
 
-  const navigateToIdCheck = useNavigateToIdCheck({
-    onIdCheckNavigationBlocked: navigateToIdCheckUnavailable,
-  })
-
-  function goToIdCheckWebView() {
-    const { email, licence_token, expiration_timestamp } = props.route.params
-    navigateToIdCheck(email, licence_token, expiration_timestamp)
+  if (error) {
+    throw error
   }
-
-  function navigateToIdCheckUnavailable() {
-    navigate('IdCheckUnavailable')
-  }
-
   return (
     <GenericInfoPage
       title={t`Plus que quelques étapes !`}
@@ -47,7 +36,10 @@ export function VerifyEligibility(props: Props) {
         })}
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite title={t`Vérifier mon éligibilité`} onPress={goToIdCheckWebView} />
+      <ButtonPrimaryWhite
+        title={t`Vérifier mon éligibilité`}
+        onPress={() => navigateToNextBeneficiaryValidationStep(route.params)}
+      />
       <Spacer.Column numberOfSpaces={4} />
       <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>

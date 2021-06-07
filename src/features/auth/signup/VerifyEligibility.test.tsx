@@ -16,13 +16,13 @@ let mockDepositAmount = '300 €'
 jest.mock('features/auth/api', () => ({ useDepositAmount: () => mockDepositAmount }))
 jest.mock('features/auth/settings')
 jest.mock('features/navigation/helpers')
+jest.mock('react-query')
 
 const navigationProps = {
   route: {
     params: {
-      email: 'test@email.com',
-      licence_token: 'xXLicenceTokenXx',
-      expiration_timestamp: 1621965271646000,
+      email: 'christophe.dupont@gmail.com',
+      nextBeneficiaryValidationStep: 'id-check',
     },
   },
 } as StackScreenProps<RootStackParamList, 'VerifyEligibility'>
@@ -55,9 +55,9 @@ describe('<VerifyEligibility />', () => {
 
     expect(navigate).toBeCalledTimes(1)
     expect(navigate).toBeCalledWith('IdCheck', {
-      email: 'test@email.com',
-      licence_token: 'xXLicenceTokenXx',
-      expiration_timestamp: 1621965271646000,
+      email: 'christophe.dupont@gmail.com',
+      expiration_timestamp: undefined,
+      licence_token: undefined,
     })
   })
 })

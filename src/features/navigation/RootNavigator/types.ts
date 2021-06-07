@@ -4,6 +4,8 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { StackNavigationOptions } from '@react-navigation/stack/lib/typescript/src/types'
 import { ComponentType } from 'react'
 
+import { BeneficiaryValidationStep } from 'api/gen'
+
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
 export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink'
@@ -86,7 +88,7 @@ export type RootStackParamList = {
   }
   PhoneValidation: undefined
   PhoneValidationTooManyAttempts: undefined
-  VerifyEligibility: { email: string; licence_token?: string; expiration_timestamp?: number | null }
+  VerifyEligibility: { email: string; nextBeneficiaryValidationStep: BeneficiaryValidationStep }
   FirstTutorial: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   ForceUpdate: undefined

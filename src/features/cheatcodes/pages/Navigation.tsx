@@ -5,6 +5,7 @@ import { Alert, ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
+import { BeneficiaryValidationStep } from 'api/gen'
 import { useSignIn } from 'features/auth/api'
 import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { openExternalUrl } from 'features/navigation/helpers'
@@ -173,8 +174,7 @@ export function Navigation(): JSX.Element {
             onPress={() =>
               navigation.navigate('VerifyEligibility', {
                 email: 'jean.dupont@gmail.com',
-                licence_token: 'xXLicenceTokenXx',
-                expiration_timestamp: new Date().getTime(),
+                nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
               })
             }
           />
