@@ -121,6 +121,50 @@ export interface AccountRequest {
  * @export
  * @enum {string}
  */
+export enum ActivityEnum {
+    Lycen = 'Lycéen',
+    Tudiant = 'Étudiant',
+    Employ = 'Employé',
+    Apprenti = 'Apprenti',
+    Alternant = 'Alternant',
+    Volontaire = 'Volontaire',
+    Inactif = 'Inactif',
+    Chmeur = 'Chômeur'
+}/**
+ * 
+ * @export
+ * @interface BeneficiaryInformationUpdateRequest
+ */
+export interface BeneficiaryInformationUpdateRequest {
+    /**
+     * 
+     * @type {ActivityEnum}
+     * @memberof BeneficiaryInformationUpdateRequest
+     */
+    activity: ActivityEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof BeneficiaryInformationUpdateRequest
+     */
+    address: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BeneficiaryInformationUpdateRequest
+     */
+    city: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BeneficiaryInformationUpdateRequest
+     */
+    postalCode: string;
+}/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
 export enum BeneficiaryValidationStep {
     PhoneValidation = 'phone-validation',
     IdCheck = 'id-check'
@@ -754,18 +798,6 @@ export interface GetIdCheckTokenResponse {
 }/**
  * 
  * @export
- * @interface GetNextBeneficiaryValidationStep
- */
-export interface GetNextBeneficiaryValidationStep {
-    /**
-     * 
-     * @type {BeneficiaryValidationStep}
-     * @memberof GetNextBeneficiaryValidationStep
-     */
-    next_beneficiary_validation_step?: BeneficiaryValidationStep | null;
-}/**
- * 
- * @export
  * @interface NotificationSubscriptions
  */
 export interface NotificationSubscriptions {
@@ -1308,6 +1340,12 @@ export interface SettingsResponse {
      * @type {boolean}
      * @memberof SettingsResponse
      */
+    enableIdCheckRetention: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SettingsResponse
+     */
     enableNativeIdCheckVerboseDebugging: boolean;
     /**
      * 
@@ -1467,6 +1505,12 @@ export interface UserProfileResponse {
     needsToFillCulturalSurvey: boolean;
     /**
      * 
+     * @type {BeneficiaryValidationStep}
+     * @memberof UserProfileResponse
+     */
+    nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null;
+    /**
+     * 
      * @type {string}
      * @memberof UserProfileResponse
      */
@@ -1530,18 +1574,6 @@ export interface ValidateEmailResponse {
      * @type {string}
      * @memberof ValidateEmailResponse
      */
-    idCheckToken?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ValidateEmailResponse
-     */
-    idCheckTokenTimestamp?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ValidateEmailResponse
-     */
     refreshToken: string;
 }/**
  * 
@@ -1578,28 +1610,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
                 .replace(`{${"favorite_id"}}`, encodeURIComponent(String(favorite_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary next_beneficiary_validation_step <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1accountnextBeneficiaryValidationStep(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/account/next_beneficiary_validation_step`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = await getAuthenticationHeaders();
             const localVarQueryParameter = {} as any;
             // authentication JWTAuth required
@@ -1765,6 +1775,32 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary update_beneficiary_mandatory_information <PATCH>
+         * @param {BeneficiaryInformationUpdateRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options: any = {}): Promise<FetchArgs> {
+            const localVarPath = `/native/v1/beneficiary_information`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarHeaderParameter = await getAuthenticationHeaders();
+            const localVarQueryParameter = {} as any;
+            // authentication JWTAuth required
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"BeneficiaryInformationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -2306,17 +2342,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
         },
         /**
          * 
-         * @summary next_beneficiary_validation_step <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1accountnextBeneficiaryValidationStep(basePath: string, options?: any): Promise<GetNextBeneficiaryValidationStep> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1accountnextBeneficiaryValidationStep(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
          * @summary get_bookings <GET>
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2390,6 +2415,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
          */
         async getnativev1settings(basePath: string, options?: any): Promise<SettingsResponse> {
             const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1settings(options);
+            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+            return handleGeneratedApiResponse(response)
+        },
+        /**
+         * 
+         * @summary update_beneficiary_mandatory_information <PATCH>
+         * @param {BeneficiaryInformationUpdateRequest} [body] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async patchnativev1beneficiaryInformation(basePath: string, body?: BeneficiaryInformationUpdateRequest, options?: any): Promise<EmptyResponse> {
+            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).patchnativev1beneficiaryInformation(body, options);
             const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
             return handleGeneratedApiResponse(response)
         },
@@ -2655,17 +2692,6 @@ export class DefaultApi extends BaseAPI {
     }
     /**
      * 
-     * @summary next_beneficiary_validation_step <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1accountnextBeneficiaryValidationStep(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1accountnextBeneficiaryValidationStep(this.basePath, options)
-    }
-    /**
-     * 
      * @summary get_bookings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2741,6 +2767,18 @@ export class DefaultApi extends BaseAPI {
     public async getnativev1settings(options?: any) {
         const functionalApi = DefaultApiFp(this, this.configuration)
         return functionalApi.getnativev1settings(this.basePath, options)
+    }
+    /**
+     * 
+     * @summary update_beneficiary_mandatory_information <PATCH>
+     * @param {BeneficiaryInformationUpdateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options?: any) {
+        const functionalApi = DefaultApiFp(this, this.configuration)
+        return functionalApi.patchnativev1beneficiaryInformation(this.basePath, body, options)
     }
     /**
      * 
