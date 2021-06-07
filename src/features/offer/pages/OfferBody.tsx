@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryType } from 'api/gen'
+import { useUserProfileInfo } from 'features/home/api'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { OfferHero } from 'features/offer/components/OfferHero'
 import { analytics } from 'libs/analytics'
@@ -27,6 +28,7 @@ export const OfferBody: FunctionComponent<{
   onScroll: () => void
 }> = ({ offerId, onScroll }) => {
   const { data: offerResponse } = useOffer({ offerId })
+  const { data: user } = useUserProfileInfo()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
   useTrackOfferSeenDuration(offerId)
@@ -87,7 +89,7 @@ export const OfferBody: FunctionComponent<{
         />
       </Section>
 
-      <Section visible={!!offerResponse.withdrawalDetails}>
+      <Section visible={!!offerResponse.withdrawalDetails && !!user?.isBeneficiary}>
         <AccordionItem
           title={t`Modalités de retrait`}
           onOpenOnce={() => analytics.logConsultWithdrawal(offerResponse.id)}>

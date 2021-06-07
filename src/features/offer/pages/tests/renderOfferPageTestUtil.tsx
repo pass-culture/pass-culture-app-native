@@ -34,17 +34,19 @@ const mockDomainsCredit = {
   physical: { initial: 20000, remaining: 150 },
 }
 
+const baseUser = {
+  email: 'email2@domain.ext',
+  firstName: 'Jean',
+  isBeneficiary: true,
+  domainsCredit: mockDomainsCredit,
+}
+let mockedUser: Partial<UserProfileResponse> = baseUser
 jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(
     () =>
       ({
         isLoading: false,
-        data: {
-          email: 'email2@domain.ext',
-          firstName: 'Jean',
-          isBeneficiary: true,
-          domainsCredit: mockDomainsCredit,
-        },
+        data: mockedUser,
       } as UseQueryResult<UserProfileResponse>)
   ),
 }))
@@ -58,8 +60,13 @@ jest.mock('features/offer/api/useOffer', () => ({
 
 export const offerId = 116656
 
-export async function renderOfferBodyPage(extraOffer?: Partial<Omit<OfferResponse, 'id'>>) {
+export async function renderOfferBodyPage(
+  extraOffer?: Partial<Omit<OfferResponse, 'id'>>,
+  user?: Partial<UserProfileResponse>
+) {
   mockedOffer = { ...offerResponseSnap, ...extraOffer }
+  mockedUser = { ...baseUser, ...user }
+
   const wrapper = render(
     reactQueryProviderHOC(
       <NavigationContainer>
