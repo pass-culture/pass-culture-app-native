@@ -96,6 +96,7 @@ export function requestSettingsSuccess(
     enableNativeIdCheckVersion: false,
     enableNativeIdCheckVerboseDebugging: false,
     enablePhoneValidation: false,
+    enableIdCheckRetention: false,
     wholeFranceOpening: false,
     objectStorageUrl: 'http://localhost',
     displayDmsRedirection: true,

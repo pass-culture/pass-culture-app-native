@@ -4,7 +4,12 @@ import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SettingsResponse, ValidateEmailRequest, ValidateEmailResponse } from 'api/gen'
+import {
+  SettingsResponse,
+  UserProfileResponse,
+  ValidateEmailRequest,
+  ValidateEmailResponse,
+} from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { homeNavigateConfig } from 'features/navigation/helpers'
 import * as datesLib from 'libs/dates'
@@ -47,6 +52,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
   afterEach(() => {
     navigate.mockRestore()
     mockShowInfoSnackBar.mockClear()
+    jest.clearAllMocks()
   })
 
   describe('when timestamp is NOT expired', () => {
@@ -82,14 +88,23 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       const response: ValidateEmailResponse = {
         accessToken: 'access_token',
         refreshToken: 'refresh_token',
-        idCheckToken: 'xXLicenceTokenXx',
       }
       // eligible user call
       server.use(
         rest.post<ValidateEmailRequest, ValidateEmailResponse>(
           env.API_BASE_URL + '/native/v1/validate_email',
           (_req, res, ctx) => res.once(ctx.status(200), ctx.json(response))
-        )
+        ),
+        rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
+          return res(
+            ctx.status(200),
+            ctx.json({
+              email: 'john@wick.com',
+              firstName: 'john',
+              nextBeneficiaryValidationStep: 'id-check',
+            } as UserProfileResponse)
+          )
+        })
       )
 
       mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
@@ -107,14 +122,23 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       const response: ValidateEmailResponse = {
         accessToken: 'access_token',
         refreshToken: 'refresh_token',
-        idCheckToken: 'xXLicenceTokenXx',
       }
       // eligible user call
       server.use(
         rest.post<ValidateEmailRequest, ValidateEmailResponse>(
           env.API_BASE_URL + '/native/v1/validate_email',
           (_req, res, ctx) => res.once(ctx.status(200), ctx.json(response))
-        )
+        ),
+        rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
+          return res(
+            ctx.status(200),
+            ctx.json({
+              email: 'john@wick.com',
+              firstName: 'john',
+              nextBeneficiaryValidationStep: 'id-check',
+            } as UserProfileResponse)
+          )
+        })
       )
 
       const mockedAppSettingsValues = {
