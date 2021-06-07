@@ -76,9 +76,7 @@ export function NotificationSettings() {
   }
 
   const toggleEmails = useCallback(() => {
-    if (!isLoggedIn) {
-      return
-    }
+    if (!isLoggedIn) return
     setState((prevState) => ({
       ...prevState,
       emailTouched: prevState.allowEmails === user?.subscriptions?.marketingEmail,
@@ -87,9 +85,7 @@ export function NotificationSettings() {
   }, [user, isLoggedIn])
 
   const togglePush = useCallback(() => {
-    if (!isLoggedIn) {
-      return
-    }
+    if (!isLoggedIn) return
     setState((prevState) => {
       if (prevState.pushPermission !== 'granted') {
         showNotificationsModal()
@@ -167,7 +163,14 @@ export function NotificationSettings() {
           <SectionRow
             type="clickable"
             title={t`Autoriser l’envoi d’e\u2011mails`}
-            cta={<FilterSwitch testID="email" active={allowEmails} toggle={toggleEmails} />}
+            cta={
+              <FilterSwitch
+                testID="email"
+                active={allowEmails}
+                toggle={toggleEmails}
+                disabled={!isLoggedIn}
+              />
+            }
           />
           <Spacer.Column numberOfSpaces={3} />
         </Line>
@@ -182,7 +185,14 @@ export function NotificationSettings() {
               <SectionRow
                 type="clickable"
                 title={t`Autoriser les notifications marketing`}
-                cta={<FilterSwitch testID="push" active={pushSwitchEnabled} toggle={togglePush} />}
+                cta={
+                  <FilterSwitch
+                    testID="push"
+                    active={pushSwitchEnabled}
+                    toggle={togglePush}
+                    disabled={!isLoggedIn}
+                  />
+                }
               />
               <Spacer.Column numberOfSpaces={3} />
             </Line>
