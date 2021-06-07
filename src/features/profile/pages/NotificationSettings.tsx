@@ -140,7 +140,7 @@ export function NotificationSettings() {
     }
   }
 
-  const allowEmails = state.allowEmails ?? user?.subscriptions?.marketingEmail ?? true
+  const allowEmails = state.allowEmails ?? user?.subscriptions?.marketingEmail ?? isLoggedIn
   const pushSwitchEnabled = Boolean(state.pushPermission === 'granted' && state.allowPush)
 
   return (

@@ -14,7 +14,7 @@ interface Props {
 
 const FilterSwitch: React.FC<Props> = (props: Props) => {
   const { toggle, active = false, disabled = false, testID } = props
-  const animatedValue = useRef(new Animated.Value(active ? 0 : 1)).current
+  const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
 
   const marginLeft = animatedValue.interpolate({
     inputRange: [0, 1],
