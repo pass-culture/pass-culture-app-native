@@ -60,6 +60,7 @@ describe('NotificationSettings', () => {
       queryByText('Autoriser l’envoi d’e\u2011mails')
     })
   })
+
   describe('Display the push switch properly (only iOS)', () => {
     it('should display an enabled switch', async () => {
       Platform.OS = 'ios'
@@ -70,8 +71,10 @@ describe('NotificationSettings', () => {
         },
       } as UserProfileResponse)
       await superFlushWithAct(10)
-      const pushSwitch = getByTestId('push-switch-background')
-      await waitForExpect(() => expect(pushSwitch.props.active).toBeTruthy())
+      const pushSwitch = getByTestId('Interrupteur push notifications')
+      await waitForExpect(() =>
+        expect(pushSwitch.parent?.props.accessibilityValue.text).toBe('true')
+      )
     })
     it.each<[PermissionStatus, boolean]>([
       ['unavailable', true],
@@ -89,12 +92,15 @@ describe('NotificationSettings', () => {
             marketingPush,
           },
         } as UserProfileResponse)
-        const pushSwitch = getByTestId('push-switch-background')
+        const pushSwitch = getByTestId('Interrupteur push notifications')
         await superFlushWithAct(10)
-        await waitForExpect(() => expect(pushSwitch.props.active).toBeFalsy())
+        await waitForExpect(() =>
+          expect(pushSwitch.parent?.props.accessibilityValue.text).toBe('false')
+        )
       }
     )
   })
+
   describe('The transitions of the push switch', () => {
     it('should enable the switch when permission=="granted" and push previously not allowed', async () => {
       const { getByTestId } = await renderNotificationSettings('granted', {
@@ -105,15 +111,17 @@ describe('NotificationSettings', () => {
       } as UserProfileResponse)
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('push')
+        const toggleSwitch = getByTestId('Interrupteur push notifications')
         fireEvent.press(toggleSwitch)
       })
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('push-switch-background')
+        const toggleSwitch = getByTestId('Interrupteur push notifications')
         // expect activated
-        expect(toggleSwitch.props.active).toEqual(true)
-        expect(toggleSwitch.props.style[0].backgroundColor).toEqual(ColorsEnum.GREEN_VALID)
+        expect(toggleSwitch.parent?.props.accessibilityValue.text).toBe('true')
+        expect((toggleSwitch.children[0] as ReactTestInstance).props.backgroundColor).toEqual(
+          ColorsEnum.GREEN_VALID
+        )
       })
     })
     it('should disable the switch when permission=="granted" and push previously allowed', async () => {
@@ -125,15 +133,17 @@ describe('NotificationSettings', () => {
       } as UserProfileResponse)
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('push')
+        const toggleSwitch = getByTestId('Interrupteur push notifications')
         fireEvent.press(toggleSwitch)
       })
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('push-switch-background')
+        const toggleSwitch = getByTestId('Interrupteur push notifications')
         // expect not activated
-        expect(toggleSwitch.props.active).toEqual(false)
-        expect(toggleSwitch.props.style[0].backgroundColor).toEqual(ColorsEnum.GREY_MEDIUM)
+        expect(toggleSwitch.parent?.props.accessibilityValue.text).toBe('false')
+        expect((toggleSwitch.children[0] as ReactTestInstance).props.backgroundColor).toEqual(
+          ColorsEnum.GREY_MEDIUM
+        )
       })
     })
     it.each<PermissionStatus>(['unavailable', 'blocked', 'denied', 'limited'])(
@@ -147,7 +157,7 @@ describe('NotificationSettings', () => {
         } as UserProfileResponse)
         await superFlushWithAct(10)
         await waitForExpect(() => {
-          const toggleSwitch = getByTestId('push')
+          const toggleSwitch = getByTestId('Interrupteur push notifications')
           fireEvent.press(toggleSwitch)
         })
         await superFlushWithAct(10)
@@ -157,6 +167,7 @@ describe('NotificationSettings', () => {
       }
     )
   })
+
   describe('The behavior of the save button', () => {
     it('should not be displayed when for unauthenticated users', async () => {
       const { queryByTestId } = await renderNotificationSettings(
@@ -194,7 +205,7 @@ describe('NotificationSettings', () => {
 
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('email')
+        const toggleSwitch = getByTestId('Interrupteur autorisation emails')
         fireEvent.press(toggleSwitch)
       })
 
@@ -218,7 +229,7 @@ describe('NotificationSettings', () => {
       mockApiUpdateProfile({
         subscriptions: {
           marketingEmail: false,
-          marketingPush: true,
+          marketingPush: false,
         },
       } as UserProfileResponse)
       const { getByTestId } = await renderNotificationSettings(
@@ -226,7 +237,7 @@ describe('NotificationSettings', () => {
         {
           subscriptions: {
             marketingEmail: false,
-            marketingPush: false,
+            marketingPush: true,
           },
         } as UserProfileResponse,
         true
@@ -234,11 +245,11 @@ describe('NotificationSettings', () => {
 
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('push')
+        const toggleSwitch = getByTestId('Interrupteur push notifications')
         fireEvent.press(toggleSwitch)
       })
 
-      await superFlushWithAct(10)
+      await superFlushWithAct(20)
       let saveButton: ReactTestInstance | null = null
       await waitForExpect(() => {
         saveButton = getByTestId('Enregistrer')
@@ -255,7 +266,7 @@ describe('NotificationSettings', () => {
         )
       })
       await waitForExpect(async () => {
-        expect(analytics.logNotificationToggle).toBeCalledWith(false, true)
+        expect(analytics.logNotificationToggle).toBeCalledWith(false, false)
       })
     })
   })

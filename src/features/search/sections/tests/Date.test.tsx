@@ -19,13 +19,16 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 
 describe('Date component', () => {
   it('should be controlled by searchState.date', () => {
-    expect(render(<DateSection />).getByTestId('switchBackground').props.active).toBeFalsy()
+    let { parent } = render(<DateSection />).getByTestId('Interrupteur Date')
+    expect(parent?.props.accessibilityValue.text).toBe('false')
+
     mockSearchState = { ...initialSearchState, date }
-    expect(render(<DateSection />).getByTestId('switchBackground').props.active).toBeTruthy()
+    parent = render(<DateSection />).getByTestId('Interrupteur Date').parent
+    expect(parent?.props.accessibilityValue.text).toBe('true')
   })
   it('should dispatch TOGGLE_DATE onPress', () => {
     const { getByTestId } = render(<DateSection />)
-    fireEvent.press(getByTestId('filterSwitch'))
+    fireEvent.press(getByTestId('Interrupteur Date'))
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_DATE' })
   })
 

@@ -18,7 +18,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
       title={<TitleWithCount title={title} count={+active} />}
       subtitle={subtitle}
       testID={testID}>
-      <FilterSwitch active={active} toggle={toggle} />
+      <FilterSwitch active={active} toggle={toggle} testID={`Interrupteur ${title}`} />
     </InlineSection>
   )
 }

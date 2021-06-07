@@ -2,18 +2,19 @@ import React, { memo, useEffect, useRef } from 'react'
 import { Animated, Easing, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { testID } from 'tests/utils'
 import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
-  toggle: () => void
   active: boolean
   disabled?: boolean
-  testID?: string
+  testID: string
+  toggle: () => void
 }
 
 const FilterSwitch: React.FC<Props> = (props: Props) => {
-  const { toggle, active = false, disabled = false, testID } = props
+  const { toggle, active = false, disabled = false } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
 
   const marginLeft = animatedValue.interpolate({
@@ -34,12 +35,11 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
     <FilterSwitchContainer>
       <TouchableOpacity
         activeOpacity={ACTIVE_OPACITY}
-        testID={testID ? testID : 'filterSwitch'}
         onPress={toggle}
-        disabled={disabled}>
-        <StyledBackgroundColor
-          backgroundColor={getBackgroundColor(active, disabled)}
-          testID={testID ? `${testID}-switch-background` : 'switchBackground'}>
+        disabled={disabled}
+        accessibilityValue={{ text: active.toString() }}
+        {...testID(props.testID)}>
+        <StyledBackgroundColor backgroundColor={getBackgroundColor(active, disabled)}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
       </TouchableOpacity>

@@ -17,15 +17,21 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
+const testID = 'Interrupteur Heure'
+
 describe('Hour component', () => {
   it('should be controlled by searchState.timeRange', () => {
-    expect(render(<HourSection />).getByTestId('switchBackground').props.active).toBeFalsy()
+    let { parent } = render(<HourSection />).getByTestId(testID)
+    expect(parent?.props.accessibilityValue.text).toBe('false')
+
     mockSearchState = { ...initialSearchState, timeRange }
-    expect(render(<HourSection />).getByTestId('switchBackground').props.active).toBeTruthy()
+    parent = render(<HourSection />).getByTestId(testID).parent
+    expect(parent?.props.accessibilityValue.text).toBe('true')
   })
+
   it('should dispatch TOGGLE_HOUR onPress', () => {
     const { getByTestId } = render(<HourSection />)
-    fireEvent.press(getByTestId('filterSwitch'))
+    fireEvent.press(getByTestId(testID))
     expect(mockStagedDispatch).toHaveBeenCalledWith({ type: 'TOGGLE_HOUR' })
   })
 

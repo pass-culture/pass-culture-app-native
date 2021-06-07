@@ -143,9 +143,6 @@ export const AppComponents: FunctionComponent = () => {
   const [year, setYear] = useState(THIS_YEAR - 18)
   const numberOfSteps = useSignInNumberOfSteps()
 
-  const [switch1, setSwitch1] = useState(true)
-  const [switch2, setSwitch2] = useState(false)
-
   function navigateToIdCheckUnavailable() {
     navigate('IdCheckUnavailable')
   }
@@ -277,33 +274,7 @@ export const AppComponents: FunctionComponent = () => {
 
       {/* Switches */}
       <AccordionItem title="Switches">
-        <SectionRow
-          type="clickable"
-          title="Active and enabled"
-          cta={
-            <FilterSwitch active={switch1} disabled={false} toggle={() => setSwitch1((p) => !p)} />
-          }
-        />
-        <Spacer.Column numberOfSpaces={1} />
-        <SectionRow
-          type="clickable"
-          title="Active and disabled"
-          cta={<FilterSwitch active={true} disabled={true} toggle={() => null} />}
-        />
-        <Spacer.Column numberOfSpaces={1} />
-        <SectionRow
-          type="clickable"
-          title="Inactive and enabled"
-          cta={
-            <FilterSwitch active={switch2} disabled={false} toggle={() => setSwitch2((p) => !p)} />
-          }
-        />
-        <Spacer.Column numberOfSpaces={1} />
-        <SectionRow
-          type="clickable"
-          title="Inactive and disabled"
-          cta={<FilterSwitch active={false} disabled={true} toggle={() => null} />}
-        />
+        <FilterSwitchesSection />
       </AccordionItem>
 
       <Divider />
@@ -880,13 +851,80 @@ const SocialNetworkIcons = () => {
   )
 }
 
+const FilterSwitchesSection = () => {
+  const [switch1, setSwitch1] = useState(true)
+  const [switch2, setSwitch2] = useState(false)
+
+  return (
+    <React.Fragment>
+      <SectionRow
+        type="clickable"
+        title="Active and enabled"
+        cta={
+          <FilterSwitch
+            active={switch1}
+            disabled={false}
+            toggle={() => setSwitch1((p) => !p)}
+            testID="Active and enabled"
+          />
+        }
+      />
+      <Spacer.Column numberOfSpaces={1} />
+      <SectionRow
+        type="clickable"
+        title="Active and disabled"
+        cta={
+          <FilterSwitch
+            active={true}
+            disabled={true}
+            toggle={() => null}
+            testID="Active and disabled"
+          />
+        }
+      />
+      <Spacer.Column numberOfSpaces={1} />
+      <SectionRow
+        type="clickable"
+        title="Inactive and enabled"
+        cta={
+          <FilterSwitch
+            active={switch2}
+            disabled={false}
+            toggle={() => setSwitch2((p) => !p)}
+            testID="Inactive and enabled"
+          />
+        }
+      />
+      <Spacer.Column numberOfSpaces={1} />
+      <SectionRow
+        type="clickable"
+        title="Inactive and disabled"
+        cta={
+          <FilterSwitch
+            active={false}
+            disabled={true}
+            toggle={() => null}
+            testID="Inactive and disabled"
+          />
+        }
+      />
+    </React.Fragment>
+  )
+}
+
 const Label: React.FC<{ label: string }> = ({ label }) => {
   const [selected, setSelected] = useState<boolean>(false)
   return <SelectionLabel label={label} selected={selected} onPress={() => setSelected((p) => !p)} />
 }
 const ExampleSwitch: React.FC = () => {
   const [active, setActive] = useState<boolean>(false)
-  return <FilterSwitch active={active} toggle={() => setActive((prevActive) => !prevActive)} />
+  return (
+    <FilterSwitch
+      active={active}
+      toggle={() => setActive((prevActive) => !prevActive)}
+      testID="Example Switch"
+    />
+  )
 }
 
 const SnackBars = () => {
