@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
 
-import { useAppSettings } from 'features/auth/settings'
 import { SetPhoneNumberModal } from 'features/auth/signup/SetPhoneNumberModal'
 import { SetPhoneValidationCodeModal } from 'features/auth/signup/SetPhoneValidationCodeModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Background } from 'ui/svg/Background'
 
+// TODO(PC-9271) replace SetPhoneNumberModal and SetPhoneValidationCodeModal by BottomContentPages
 export const PhoneValidation: React.FC = function () {
-  const { data: settings } = useAppSettings()
   const [phoneNumber, setPhoneNumber] = useState('')
   const {
     visible: phoneNumberModalVisible,
     showModal: showPhoneNumberModal,
     hideModal: hidePhoneNumberModal,
-  } = useModal(settings?.enablePhoneValidation)
+  } = useModal(true)
 
   const {
     visible: phoneValidationModalVisible,
