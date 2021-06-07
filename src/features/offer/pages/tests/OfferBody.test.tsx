@@ -29,8 +29,19 @@ describe('<OfferBody />', () => {
   })
 
   it('should show withdrawalDetails', async () => {
-    const wrapper = await renderOfferBodyPage({ withdrawalDetails: 'How to withdraw' })
+    const wrapper = await renderOfferBodyPage(
+      { withdrawalDetails: 'How to withdraw' },
+      { isBeneficiary: true }
+    )
     expect(wrapper.queryByText('Modalités de retrait')).toBeTruthy()
+  })
+
+  it('should show withdrawalDetails for non beneficiary user', async () => {
+    const wrapper = await renderOfferBodyPage(
+      { withdrawalDetails: 'How to withdraw' },
+      { isBeneficiary: false }
+    )
+    expect(wrapper.queryByText('Modalités de retrait')).toBeFalsy()
   })
 
   it('should not show withdrawalDetails', async () => {
