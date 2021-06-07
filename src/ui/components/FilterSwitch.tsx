@@ -8,11 +8,12 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 interface Props {
   toggle: () => void
   active: boolean
+  disabled?: boolean
   testID?: string
 }
 
 const FilterSwitch: React.FC<Props> = (props: Props) => {
-  const { toggle, active = false, testID } = props
+  const { toggle, active = false, disabled = false, testID } = props
   const animatedValue = useRef(new Animated.Value(active ? 0 : 1)).current
 
   const marginLeft = animatedValue.interpolate({
@@ -34,9 +35,10 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
       <TouchableOpacity
         activeOpacity={ACTIVE_OPACITY}
         testID={testID ? testID : 'filterSwitch'}
-        onPress={toggle}>
+        onPress={toggle}
+        disabled={disabled}>
         <StyledBackgroundColor
-          active={active}
+          backgroundColor={getBackgroundColor(active, disabled)}
           testID={testID ? `${testID}-switch-background` : 'switchBackground'}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
@@ -45,14 +47,21 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
   )
 }
 
-const StyledBackgroundColor = styled.View<{ active: boolean }>(({ active }) => ({
-  backgroundColor: active ? ColorsEnum.GREEN_VALID : ColorsEnum.GREY_MEDIUM,
-  width: getSpacing(14),
-  height: getSpacing(8),
-  marginLeft: getSpacing(5),
-  borderRadius: getSpacing(4),
-  justifyContent: 'center',
-}))
+const getBackgroundColor = (active: boolean, disabled: boolean): ColorsEnum => {
+  if (active) return disabled ? ColorsEnum.GREEN_DISABLED : ColorsEnum.GREEN_VALID
+  return disabled ? ColorsEnum.GREY_DISABLED : ColorsEnum.GREY_MEDIUM
+}
+
+const StyledBackgroundColor = styled.View<{ backgroundColor: ColorsEnum }>(
+  ({ backgroundColor }) => ({
+    backgroundColor,
+    width: getSpacing(14),
+    height: getSpacing(8),
+    marginLeft: getSpacing(5),
+    borderRadius: getSpacing(4),
+    justifyContent: 'center',
+  })
+)
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
@@ -76,6 +85,6 @@ const StyledToggle = styled(Animated.View)({
 const propsAreEqual = (
   prevProps: Readonly<React.PropsWithChildren<Props>>,
   nextProps: Readonly<React.PropsWithChildren<Props>>
-) => prevProps.active === nextProps.active
+) => prevProps.active === nextProps.active && prevProps.disabled === nextProps.disabled
 
 export default memo(FilterSwitch, propsAreEqual)

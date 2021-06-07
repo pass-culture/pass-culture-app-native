@@ -143,6 +143,9 @@ export const AppComponents: FunctionComponent = () => {
   const [year, setYear] = useState(THIS_YEAR - 18)
   const numberOfSteps = useSignInNumberOfSteps()
 
+  const [switch1, setSwitch1] = useState(true)
+  const [switch2, setSwitch2] = useState(false)
+
   function navigateToIdCheckUnavailable() {
     navigate('IdCheckUnavailable')
   }
@@ -268,6 +271,39 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Title4>Modal Header</Typo.Title4>
         <ModalHeader title="My modal header" leftIcon={ArrowPrevious} rightIcon={Close} />
+      </AccordionItem>
+
+      <Divider />
+
+      {/* Switches */}
+      <AccordionItem title="Switches">
+        <SectionRow
+          type="clickable"
+          title="Active and enabled"
+          cta={
+            <FilterSwitch active={switch1} disabled={false} toggle={() => setSwitch1((p) => !p)} />
+          }
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <SectionRow
+          type="clickable"
+          title="Active and disabled"
+          cta={<FilterSwitch active={true} disabled={true} toggle={() => null} />}
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <SectionRow
+          type="clickable"
+          title="Inactive and enabled"
+          cta={
+            <FilterSwitch active={switch2} disabled={false} toggle={() => setSwitch2((p) => !p)} />
+          }
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <SectionRow
+          type="clickable"
+          title="Inactive and disabled"
+          cta={<FilterSwitch active={false} disabled={true} toggle={() => null} />}
+        />
       </AccordionItem>
 
       <Divider />
