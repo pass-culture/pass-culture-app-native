@@ -5,12 +5,10 @@ import waitForExpect from 'wait-for-expect'
 import { AcceptCgu } from 'features/auth/signup/AcceptCgu'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import * as splashScreenModule from 'libs/splashscreen'
-import { render } from 'tests/utils'
+import { storage } from 'libs/storage'
+import { act, render, flushAllPromises } from 'tests/utils'
 
 import { RootNavigator, Route, wrapRoute } from '../RootNavigator'
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 jest.mock('features/auth/AuthContext', () => ({
@@ -24,8 +22,9 @@ jest.mock('features/navigation/TabBar/TabNavigator', () => ({
 }))
 
 describe('<RootNavigator />', () => {
-  afterEach(() => {
+  afterEach(async () => {
     jest.clearAllMocks()
+    await storage.clear('has_accepted_cookie')
   })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
@@ -33,7 +32,7 @@ describe('<RootNavigator />', () => {
     jest
       .spyOn(splashScreenModule, 'useSplashScreenContext')
       .mockReturnValue({ isSplashScreenHidden: false })
-    const renderAPI = renderRootNavigator()
+    const renderAPI = await renderRootNavigator()
 
     const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
     expect(privacyPolicyTitle).toBeFalsy()
@@ -46,7 +45,7 @@ describe('<RootNavigator />', () => {
       .spyOn(splashScreenModule, 'useSplashScreenContext')
       .mockReturnValue({ isSplashScreenHidden: true })
 
-    const renderAPI = renderRootNavigator()
+    const renderAPI = await renderRootNavigator()
 
     await waitForExpect(() => {
       const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
@@ -61,6 +60,9 @@ describe('wrapRoute()', () => {
 
   beforeEach(() => {
     hoc.mockClear()
+  })
+  afterEach(async () => {
+    await storage.clear('has_accepted_cookie')
   })
 
   it('should wrap a route when declared with hocs wrapper', () => {
@@ -81,18 +83,29 @@ describe('wrapRoute()', () => {
     wrapRoute(routeWithoutHoc)
     expect(hoc).not.toBeCalledWith(AccountCreated)
   })
-  it('should display force update page when global variable is set', () => {
-    const rootNavigator = renderRootNavigator()
-    global.setMustUpdateApp && global.setMustUpdateApp(true)
+
+  it('should display force update page when global variable is set', async () => {
+    await storage.saveObject('has_accepted_cookie', false)
+    const rootNavigator = await renderRootNavigator()
+    act(() => {
+      global.setMustUpdateApp && global.setMustUpdateApp(true)
+    })
     expect(rootNavigator).toMatchSnapshot()
-    global.setMustUpdateApp && global.setMustUpdateApp(false)
+    expect(rootNavigator.queryByText("Mise à jour de l'application")).toBeTruthy()
+    act(() => {
+      global.setMustUpdateApp && global.setMustUpdateApp(false)
+    })
+    expect(rootNavigator.queryByText("Mise à jour de l'application")).toBeFalsy()
   })
 })
 
-function renderRootNavigator() {
-  return render(
+async function renderRootNavigator() {
+  const renderAPI = render(
     <NavigationContainer>
       <RootNavigator />
     </NavigationContainer>
   )
+
+  await act(flushAllPromises)
+  return renderAPI
 }
