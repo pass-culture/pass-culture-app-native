@@ -12,14 +12,14 @@ mockdate.set(new Date('2021-01-04T00:00:00Z'))
 describe('getCtaWordingAndAction', () => {
   describe('Non Beneficiary', () => {
     it.each`
-      type                  | url                     | expected                      | disabled | isExternal
-      ${CategoryType.Event} | ${undefined}            | ${undefined}                  | ${true}  | ${undefined}
-      ${CategoryType.Event} | ${'http://url-externe'} | ${'Accéder à la billetterie'} | ${false} | ${true}
-      ${CategoryType.Thing} | ${undefined}            | ${undefined}                  | ${true}  | ${undefined}
-      ${CategoryType.Thing} | ${'http://url-externe'} | ${"Accéder à l'offre"}        | ${false} | ${true}
+      type                  | url                     | bookedOffers | expected                      | disabled | isExternal
+      ${CategoryType.Event} | ${undefined}            | ${{}}        | ${undefined}                  | ${true}  | ${undefined}
+      ${CategoryType.Event} | ${'http://url-externe'} | ${{}}        | ${'Accéder à la billetterie'} | ${false} | ${true}
+      ${CategoryType.Thing} | ${undefined}            | ${{}}        | ${undefined}                  | ${true}  | ${undefined}
+      ${CategoryType.Thing} | ${'http://url-externe'} | ${{}}        | ${"Accéder à l'offre"}        | ${false} | ${true}
     `(
       'CTA(disabled=$disabled) = "$expected" for categoryType=$type and url=$url',
-      ({ disabled, expected, type, url, isExternal }) => {
+      ({ disabled, expected, type, url, bookedOffers, isExternal }) => {
         const offer = buildOffer({
           externalTicketOfficeUrl: url,
           category: { ...baseOffer.category, categoryType: type },
@@ -30,6 +30,7 @@ describe('getCtaWordingAndAction', () => {
           isBeneficiary: false,
           offer,
           hasEnoughCredit: true,
+          bookedOffers,
         })
         const { wording, onPress } = result || {}
         expect(wording).toEqual(expected)
@@ -48,6 +49,7 @@ describe('getCtaWordingAndAction', () => {
         isBeneficiary: true,
         offer: buildOffer(partialOffer),
         hasEnoughCredit: true,
+        bookedOffers: {},
         ...parameters,
       }) || { wording: '' }
 
@@ -166,6 +168,7 @@ describe('getCtaWordingAndAction', () => {
           isBeneficiary: true,
           offer,
           hasEnoughCredit: true,
+          bookedOffers: {},
         }) || {}
 
       expect(analytics.logClickBookOffer).toBeCalledTimes(0)
@@ -186,6 +189,7 @@ describe('getCtaWordingAndAction', () => {
           isBeneficiary: true,
           offer,
           hasEnoughCredit: true,
+          bookedOffers: {},
         }) || {}
 
       expect(analytics.logConsultAvailableDates).toBeCalledTimes(0)
