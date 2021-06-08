@@ -347,6 +347,7 @@ msgid "Confirmer le mot de passe"
 msgstr "Confirmer le mot de passe"
 
 #: src/features/profile/components/LoggedOutHeader.tsx
+#: src/features/profile/components/LoggedOutHeader.tsx
 msgid "Connecte-toi"
 msgstr "Connecte-toi"
 
@@ -469,6 +470,7 @@ msgstr "Dossier déposé ! Nous avons bien reçu ton dossier et sommes en train 
 msgid "Duo"
 msgstr "Duo"
 
+#: src/features/profile/pages/Profile.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Déconnexion"
 msgstr "Déconnexion"
@@ -648,6 +650,10 @@ msgstr "Je veux être alerté des actualités et des meilleures offres du pass C
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
+#: src/libs/geolocation/getPosition.ts
+msgid "L'absence des services Google Play bloquent possiblement la géolocalisation"
+msgstr "L'absence des services Google Play bloquent possiblement la géolocalisation"
+
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
@@ -670,11 +676,15 @@ msgstr "L'offre n'a pas été retirée de tes favoris"
 msgid "La date choisie est incorrecte"
 msgstr "La date choisie est incorrecte"
 
-#: src/features/favorites/pages/FavoritesSorts.tsx
-#: src/features/profile/pages/Profile.tsx
-#: src/features/search/pages/LocationFilter.tsx
-msgid "La géolocalisation est temporairement inutilisable sur ton téléphone"
-msgstr "La géolocalisation est temporairement inutilisable sur ton téléphone"
+#: src/libs/geolocation/getPosition.ts
+msgid "La géolocalisation est désactivée sur l'application"
+msgstr "La géolocalisation est désactivée sur l'application"
+
+#: src/libs/geolocation/getPosition.ts
+#: src/libs/geolocation/getPosition.ts
+#: src/libs/geolocation/getPosition.ts
+msgid "La géolocalisation est temporairement inutilisable"
+msgstr "La géolocalisation est temporairement inutilisable"
 
 #: src/features/bookings/components/CancelBookingModal.tsx
 msgid "La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées"
@@ -729,6 +739,10 @@ msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permetten
 #: src/features/auth/components/QuitSignupModal.tsx
 msgid "Les informations que tu as renseignées ne seront pas enregistrées"
 msgstr "Les informations que tu as renseignées ne seront pas enregistrées"
+
+#: src/libs/geolocation/getPosition.ts
+msgid "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
+msgstr "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
@@ -1437,6 +1451,14 @@ msgstr "Tu recevras un e-mail lorsque ta demande sera validée."
 #: src/features/auth/signup/BeneficiaryRequestSent.tsx
 msgid "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
 msgstr "Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx
+msgid "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !"
+
+#: src/features/auth/signup/BeneficiaryRequestSent.tsx
+msgid "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, tu peux découvrir l'application !"
+msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés. En attendant, tu peux découvrir l'application !"
 
 #: src/features/bookOffer/services/useModalContent.tsx
 msgid "Tu y es presque"
