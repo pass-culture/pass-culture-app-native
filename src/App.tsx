@@ -36,7 +36,7 @@ import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
-import { ConfiguredIdCheckProvider } from './ConfiguredIdCheckProvider'
+import { ConfiguredIdCheckProvider } from './features/idcheck/ConfiguredIdCheckProvider'
 
 LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
 

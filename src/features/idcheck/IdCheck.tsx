@@ -27,7 +27,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
-import { useKeyboardAdjustFixIdCheck } from '../hooks/useKeyboardAdjustFixIdCheck'
+import { useKeyboardAdjustFixIdCheck } from './hooks/useKeyboardAdjustFixIdCheck'
 
 type Props = StackScreenProps<RootStackParamList, 'IdCheck'>
 

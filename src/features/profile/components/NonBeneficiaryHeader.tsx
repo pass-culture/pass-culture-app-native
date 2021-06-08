@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { useDepositAmount } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
-import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
+import { useNavigateToIdCheck } from 'features/idcheck/hooks/useNavigateToIdCheck'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { IdCheckProcessingBadge } from 'features/profile/components/IdCheckProcessingBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'

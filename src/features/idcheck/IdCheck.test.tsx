@@ -3,12 +3,13 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import { Text } from 'react-native'
 
-import { IdCheck } from 'features/auth/signup/IdCheck'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, waitFor } from 'tests/utils'
+
+import { IdCheck } from './IdCheck'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 

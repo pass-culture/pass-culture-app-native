@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useDepositAmount } from 'features/auth/api'
-import { useNavigateToIdCheck } from 'features/auth/signup/idCheck/useNavigateToIdCheck'
+import { useNavigateToIdCheck } from 'features/idcheck/hooks/useNavigateToIdCheck'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
