@@ -41,6 +41,8 @@ import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
+import { LocalStorageService } from '../../id-check-front/packages/id-check/src'
+
 LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
 
 const queryCache = new QueryCache()

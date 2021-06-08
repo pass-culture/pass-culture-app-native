@@ -8,6 +8,7 @@ import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
 
+import { IdCheckError } from '../../../id-check-front/packages/id-check/src'
 import Package from '../../package.json'
 
 import { DefaultApi } from './gen'
@@ -175,6 +176,7 @@ export class ApiError extends Error {
     this.statusCode = statusCode
   }
 }
+IdCheckError.prototype.name = 'ApiError'
 
 export function extractApiErrorMessage(error: unknown) {
   let message = t`Une erreur est survenue`
