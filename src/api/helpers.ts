@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { t } from '@lingui/macro'
+import { IdCheckError } from '@pass-culture/id-check'
 import { getUniqueId } from 'react-native-device-info'
 
 import { navigationRef, isNavigationReadyRef } from 'features/navigation/navigationRef'
@@ -175,6 +176,7 @@ export class ApiError extends Error {
     this.statusCode = statusCode
   }
 }
+IdCheckError.prototype.name = 'ApiError'
 
 export function extractApiErrorMessage(error: unknown) {
   let message = t`Une erreur est survenue`
