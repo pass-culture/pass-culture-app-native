@@ -22,10 +22,11 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
       ...(values?.status ? { activity: values?.status as ActivityEnum } : {}),
     } as BeneficiaryInformationUpdateRequest)
   },
-  uploadDocument: async (file: IdCheckFile) => {
+  async uploadDocument(file: IdCheckFile) {
     let error, token
     try {
       token = await LocalStorageService.getLicenceToken()
+      await LocalStorageService.resetLicenceToken()
       if (!token) {
         error = new IdCheckApiError('Auth required', 400, {
           code: IdCheckErrors['auth-required'],
@@ -46,10 +47,11 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
       })
     } catch (err) {
       error = err
+      console.log('RAW error', JSON.stringify(error))
       if (err instanceof ApiError) {
         if (err.content.code === 'EXPIRED_TOKEN') {
           error = new IdCheckApiError(err.content.message, err.statusCode, {
-            code: IdCheckErrors['auth-token-expired'],
+            code: IdCheckErrors['auth-required'],
           })
         } else if (err.content.code === 'INVALID_TOKEN') {
           error = new IdCheckApiError(err.content.message, err.statusCode, {
@@ -65,6 +67,7 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
           })
         }
       }
+      console.log('Final error', JSON.stringify(error))
       return Promise.reject(error)
     }
   },
