@@ -23,11 +23,11 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
     } as BeneficiaryInformationUpdateRequest)
   },
   async uploadDocument(file: IdCheckFile) {
-    let error, token
+    let error, queryParams
     try {
-      token = await LocalStorageService.getLicenceToken()
+      queryParams = await LocalStorageService.getQueryParams()
       await LocalStorageService.resetLicenceToken()
-      if (!token) {
+      if (!queryParams.licenceToken) {
         error = new IdCheckApiError('Auth required', 400, {
           code: IdCheckErrors['auth-required'],
         })
@@ -40,14 +40,13 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
     }
     try {
       const data = new FormData()
-      data.append('token', token)
+      data.append('token', queryParams?.licenceToken)
       data.append('identityDocumentFile', file as Blob)
       return await api.postnativev1identityDocument({
         body: data,
       })
     } catch (err) {
       error = err
-      console.log('RAW error', JSON.stringify(error))
       if (err instanceof ApiError) {
         if (err.content.code === 'EXPIRED_TOKEN') {
           error = new IdCheckApiError(err.content.message, err.statusCode, {
@@ -61,13 +60,15 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
           error = new IdCheckApiError(err.content.message, err.statusCode, {
             code: IdCheckErrors['file-size-exceeded'],
           })
+          if (queryParams) {
+            await LocalStorageService.saveQueryParams(queryParams)
+          }
         } else if (err.content.code === 'SERVICE_UNAVAILABLE') {
           error = new IdCheckApiError(err.content.message, err.statusCode, {
             code: IdCheckErrors['validation-unavailable'],
           })
         }
       }
-      console.log('Final error', JSON.stringify(error))
       return Promise.reject(error)
     }
   },
