@@ -1,4 +1,11 @@
-import { IdCheckHomePage, useIdCheckContext } from '@pass-culture/id-check'
+import {
+  ConfirmationIcon,
+  IdCardIcon,
+  IdCheckHomePage,
+  ProfileIcon,
+  StepConfig,
+  useIdCheckContext,
+} from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { useQueryClient } from 'react-query'
@@ -54,6 +61,10 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
             isLicenceTokenChecked: false,
             retention: !!data?.enableIdCheckRetention,
             debug: !!data?.enableNativeIdCheckVerboseDebugging,
+            stepsConfigs: getStepsConfigs({
+              isRetentionEnabled: !!data?.enableIdCheckRetention,
+              isPhoneValidationEnabled: !!data?.enablePhoneValidation,
+            }),
           })
         })
         .catch((error) => {
@@ -65,6 +76,10 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
             isLicenceTokenChecked: false,
             retention: !!settings?.enableIdCheckRetention,
             debug: !!settings?.enableNativeIdCheckVerboseDebugging,
+            stepsConfigs: getStepsConfigs({
+              isRetentionEnabled: !!settings?.enableIdCheckRetention,
+              isPhoneValidationEnabled: !!settings?.enablePhoneValidation,
+            }),
           })
         })
     }
@@ -73,4 +88,38 @@ export const IdCheckV2 = (props: ScreenNavigationProp<'IdCheckV2'>) => {
   // @ts-ignore : props typing issue with IdCheck screen from module.
   // Probably needs some change on the side of the module.
   return <IdCheckHomePage {...props} />
+}
+
+function getStepsConfigs({
+  isRetentionEnabled = false,
+  isPhoneValidationEnabled = false,
+}): StepConfig[] {
+  return [
+    {
+      icon: IdCardIcon,
+      name: 'identity',
+      path: '/uploadDocument',
+      screenName: 'UploadDocument',
+      screens: isRetentionEnabled ? ['Conditions'] : ['Conditions', 'Validation'],
+      text: "Ta pièce d'identité",
+    },
+    {
+      icon: ProfileIcon,
+      name: 'profile',
+      path: isPhoneValidationEnabled ? '/status' : '/phone',
+      screenName: isPhoneValidationEnabled ? 'Status' : 'Phone',
+      screens: isPhoneValidationEnabled
+        ? ['Status', 'City', 'Address']
+        : ['Phone', 'Status', 'City', 'Address'],
+      text: 'Ton profil',
+    },
+    {
+      icon: ConfirmationIcon,
+      name: 'confirmation',
+      path: '/honor',
+      screenName: 'Honor',
+      screens: ['Honor'],
+      text: 'Confirmation',
+    },
+  ]
 }
