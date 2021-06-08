@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { CategoryType } from 'api/gen'
+import { CategoryType, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
@@ -10,11 +10,19 @@ import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
 
 import { useHasEnoughCredit } from './useHasEnoughCredit'
 
+function getIsBookedOffer(
+  offerId: FavoriteOfferResponse['id'],
+  bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
+): boolean {
+  return bookedOffersIds[offerId] !== undefined
+}
+
 interface Props {
   isLoggedIn: boolean
   isBeneficiary: boolean
   offer: OfferAdaptedResponse
   hasEnoughCredit: boolean
+  bookedOffers: UserProfileResponse['bookedOffers']
 }
 interface ICTAWordingAndAction {
   isExternal?: boolean
@@ -28,8 +36,10 @@ export const getCtaWordingAndAction = ({
   isBeneficiary,
   offer,
   hasEnoughCredit,
+  bookedOffers,
 }: Props): ICTAWordingAndAction | undefined => {
   const { category, externalTicketOfficeUrl } = offer
+  const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
 
   // Non beneficiary
   if (!isLoggedIn || !isBeneficiary) {
@@ -97,6 +107,12 @@ export const useCtaWordingAndAction = (props: {
   )
     return
 
-  const { isBeneficiary = false } = profileInfo || {}
-  return getCtaWordingAndAction({ isLoggedIn, isBeneficiary, offer, hasEnoughCredit })
+  const { isBeneficiary = false, bookedOffers = {} } = profileInfo || {}
+  return getCtaWordingAndAction({
+    isLoggedIn,
+    isBeneficiary,
+    offer,
+    hasEnoughCredit,
+    bookedOffers,
+  })
 }
