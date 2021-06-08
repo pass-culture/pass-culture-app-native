@@ -27,6 +27,10 @@ export function navigateToHome() {
   navigationRef.current?.navigate(homeNavigateConfig.screen, homeNavigateConfig.params)
 }
 
+export function navigateToBooking(bookingId: number) {
+  navigationRef.current?.navigate('BookingDetails', { id: bookingId })
+}
+
 export async function openExternalUrl(url: string, logEvent: boolean | undefined = true) {
   if (url.match('^' + DEEPLINK_DOMAIN)) {
     const { screen, params } = getScreenFromDeeplink(url)

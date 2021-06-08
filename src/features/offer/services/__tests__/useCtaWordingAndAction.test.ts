@@ -12,11 +12,12 @@ mockdate.set(new Date('2021-01-04T00:00:00Z'))
 describe('getCtaWordingAndAction', () => {
   describe('Non Beneficiary', () => {
     it.each`
-      type                  | url                     | bookedOffers | expected                      | disabled | isExternal
-      ${CategoryType.Event} | ${undefined}            | ${{}}        | ${undefined}                  | ${true}  | ${undefined}
-      ${CategoryType.Event} | ${'http://url-externe'} | ${{}}        | ${'Accéder à la billetterie'} | ${false} | ${true}
-      ${CategoryType.Thing} | ${undefined}            | ${{}}        | ${undefined}                  | ${true}  | ${undefined}
-      ${CategoryType.Thing} | ${'http://url-externe'} | ${{}}        | ${"Accéder à l'offre"}        | ${false} | ${true}
+      type                  | url                     | bookedOffers                 | expected                      | disabled | isExternal
+      ${CategoryType.Event} | ${undefined}            | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${CategoryType.Event} | ${'http://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${true}
+      ${CategoryType.Thing} | ${undefined}            | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${CategoryType.Thing} | ${'http://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${true}
+      ${CategoryType.Thing} | ${undefined}            | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${true}
     `(
       'CTA(disabled=$disabled) = "$expected" for categoryType=$type and url=$url',
       ({ disabled, expected, type, url, bookedOffers, isExternal }) => {

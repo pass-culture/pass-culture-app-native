@@ -3,7 +3,7 @@ import { t } from '@lingui/macro'
 import { CategoryType, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
-import { openExternalUrl } from 'features/navigation/helpers'
+import { openExternalUrl, navigateToBooking } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 
 import { OfferAdaptedResponse, useOffer } from '../api/useOffer'
@@ -40,6 +40,14 @@ export const getCtaWordingAndAction = ({
 }: Props): ICTAWordingAndAction | undefined => {
   const { category, externalTicketOfficeUrl } = offer
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
+
+  if (isAlreadyBookedOffer) {
+    return {
+      isExternal: true,
+      wording: t`Voir ma réservation`,
+      onPress: () => navigateToBooking(bookedOffers[offer.id]),
+    }
+  }
 
   // Non beneficiary
   if (!isLoggedIn || !isBeneficiary) {
