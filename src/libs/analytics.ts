@@ -79,42 +79,59 @@ const logScreenView = async (screenName: string) => {
   await firebaseAnalytics.logScreenView({ screen_name: screenName, screen_class: screenName })
 }
 
+const logEvent = <P extends Record<string, unknown>>(
+  name: AnalyticsEvent,
+  params?: P
+): Promise<void> => {
+  if (!params) return firebaseAnalytics.logEvent(name)
+
+  // We don't send integers to firebase because they will be cast into int_value, float_value,
+  // or double_value in BigQuery depending on its value. To facilitate the work of the team,
+  // we just cast it to string.
+  const newParams = Object.keys(params).reduce((acc: Record<string, unknown>, key) => {
+    acc[key] = typeof params[key] === 'number' ? (params[key] as number).toString() : params[key]
+    return acc
+  }, {})
+
+  return firebaseAnalytics.logEvent(name, newParams)
+}
+
 /**
  * First Tutorial
  */
 const logHasSkippedTutorial = (pageName: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_SKIPPED_TUTORIAL, { pageName })
+  logEvent(AnalyticsEvent.HAS_SKIPPED_TUTORIAL, { pageName })
 
 const logHasActivateGeolocFromTutorial = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL)
+  logEvent(AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL)
 
 /**
  * Home
  */
 const logAllModulesSeen = (numberOfModules: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules })
+  logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules })
 
 const logAllTilesSeen = (moduleName: string, numberOfTiles: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
+  logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles })
 
 const logConsultOffer = (params: {
   offerId: number
   from: Referrals
   moduleName?: string
   query?: string
-}) => firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_OFFER, params)
+}) => logEvent(AnalyticsEvent.CONSULT_OFFER, params)
 
 const logClickExclusivityBlock = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })
+  logEvent(AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED, { offerId })
 
 const logClickSeeMore = (moduleName: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName })
+  logEvent(AnalyticsEvent.SEE_MORE_CLICKED, { moduleName })
 
 const logClickBusinessBlock = (moduleName: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName })
+  logEvent(AnalyticsEvent.BUSINESS_BLOCK_CLICKED, { moduleName })
 
 const logRecommendationModuleSeen = (moduleName: string, numberOfTiles: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.RECOMMENDATION_MODULE_SEEN, {
+  logEvent(AnalyticsEvent.RECOMMENDATION_MODULE_SEEN, {
     moduleName,
     numberOfTiles,
   })
@@ -123,123 +140,112 @@ const logRecommendationModuleSeen = (moduleName: string, numberOfTiles: number) 
  * Offer
  */
 const logConsultOfferFromDeeplink = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.DEEPLINK_CONSULT_OFFER, { offerId })
+  logEvent(AnalyticsEvent.DEEPLINK_CONSULT_OFFER, { offerId })
 
 const logConsultAccessibility = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId })
+  logEvent(AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES, { offerId })
 
 const logConsultWithdrawal = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, { offerId })
+  logEvent(AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES, { offerId })
 
-const logShareOffer = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.SHARE_OFFER, { offerId })
+const logShareOffer = (offerId: number) => logEvent(AnalyticsEvent.SHARE_OFFER, { offerId })
 
 const logConsultDescriptionDetails = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId })
+  logEvent(AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS, { offerId })
 
 const logConsultWholeOffer = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId })
+  logEvent(AnalyticsEvent.CONSULT_WHOLE_OFFER, { offerId })
 
 const logConsultItinerary = (offerId: number, from: Referrals) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId, from })
+  logEvent(AnalyticsEvent.CONSULT_ITINERARY, { offerId, from })
 
 const logConsultAvailableDates = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
+  logEvent(AnalyticsEvent.CONSULT_AVAILABLE_DATES, { offerId })
 
 const logClickBookOffer = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
+  logEvent(AnalyticsEvent.CLICK_BOOK_OFFER, { offerId })
 
 const logOfferSeenDuration = (offerId: number, duration: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
+  logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration })
 
 const logHasAddedOfferToFavorites = (params: {
   from: Referrals | 'BookingImpossible'
   offerId: number
   moduleName?: string
-}) => firebaseAnalytics.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params)
+}) => logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params)
 
 /**
  * Sign up
  */
-const logConsultWhyAnniversary = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY)
+const logConsultWhyAnniversary = () => logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY)
 
-const logCancelSignup = (pageName: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName })
+const logCancelSignup = (pageName: string) => logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName })
 
 const logContactSupportResetPasswordEmailSent = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT)
+  logEvent(AnalyticsEvent.CONTACT_SUPPORT_RESET_PASSWORD_EMAIL_SENT)
 
 const logHelpCenterContactSignupConfirmationEmailSent = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT)
+  logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT)
 
 const logResendEmailResetPasswordExpiredLink = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK)
+  logEvent(AnalyticsEvent.RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK)
 
 const logResendEmailSignupConfirmationExpiredLink = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK)
+  logEvent(AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK)
 
 const logSignUpBetween14And15Included = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.SIGN_UP_BETWEEN_14_AND_15_INCLUDED)
+  logEvent(AnalyticsEvent.SIGN_UP_BETWEEN_14_AND_15_INCLUDED)
 
-const logSignUpLessThanOrEqualTo13 = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.SIGN_UP_LESS_THAN_OR_EQUAL_TO_13)
+const logSignUpLessThanOrEqualTo13 = () => logEvent(AnalyticsEvent.SIGN_UP_LESS_THAN_OR_EQUAL_TO_13)
 
 /**
  * Search
  */
-const logReinitializeFilters = () => firebaseAnalytics.logEvent(AnalyticsEvent.REINITIALIZE_FILTERS)
+const logReinitializeFilters = () => logEvent(AnalyticsEvent.REINITIALIZE_FILTERS)
 
-const logUseFilter = (filter: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.USE_FILTER, { filter })
+const logUseFilter = (filter: string) => logEvent(AnalyticsEvent.USE_FILTER, { filter })
 
-const logSearchQuery = (query: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.SEARCH_QUERY, { query })
+const logSearchQuery = (query: string) => logEvent(AnalyticsEvent.SEARCH_QUERY, { query })
 
 const logSearchScrollToPage = (page: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page })
+  logEvent(AnalyticsEvent.SEARCH_SCROLL_TO_PAGE, { page })
 
-const logNoSearchResult = (query: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
+const logNoSearchResult = (query: string) => logEvent(AnalyticsEvent.NO_SEARCH_RESULT, { query })
 
 /**
  * Others
  */
-const logOpenLocationSettings = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS)
+const logOpenLocationSettings = () => logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS)
 
-const logOpenNotificationSettings = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS)
+const logOpenNotificationSettings = () => logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS)
 
-const logIdCheck = (from: 'Profile') =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.ID_CHECK, { from })
+const logIdCheck = (from: 'Profile') => logEvent(AnalyticsEvent.ID_CHECK, { from })
 
-const logProfilScrolledToBottom = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM)
+const logProfilScrolledToBottom = () => logEvent(AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM)
 
 const logLocationToggle = (enabled: boolean) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.LOCATION_TOGGLE, { enabled })
+  logEvent(AnalyticsEvent.LOCATION_TOGGLE, { enabled })
 
 const logNotificationToggle = (enableEmail: boolean, enablePush?: boolean) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
+  logEvent(AnalyticsEvent.NOTIFICATION_TOGGLE, {
     enableEmail,
     enablePush: Platform.OS === 'android' ? true : enablePush,
   })
 
 const logHasChangedPassword = (reason: 'changePassword' | 'resetPassword') =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD, { reason })
+  logEvent(AnalyticsEvent.HAS_CHANGED_PASSWORD, { reason })
 
-const logProfilSignUp = () => firebaseAnalytics.logEvent(AnalyticsEvent.PROFIL_SIGN_UP)
+const logProfilSignUp = () => logEvent(AnalyticsEvent.PROFIL_SIGN_UP)
 
-const logLogout = () => firebaseAnalytics.logEvent(AnalyticsEvent.LOGOUT)
+const logLogout = () => logEvent(AnalyticsEvent.LOGOUT)
 
-const logHasRefusedCookie = () => firebaseAnalytics.logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE)
+const logHasRefusedCookie = () => logEvent(AnalyticsEvent.HAS_REFUSED_COOKIE)
 
 const logClickSocialNetwork = (network: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network })
+  logEvent(AnalyticsEvent.CLICK_SOCIAL_NETWORK, { network })
 
 const logOpenExternalUrl = (url: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.OPEN_EXTERNAL_URL, {
+  logEvent(AnalyticsEvent.OPEN_EXTERNAL_URL, {
     url: url.slice(0, STRING_VALUE_MAX_LENGTH),
   })
 
@@ -252,59 +258,54 @@ const logMailTo = (
     | 'forResetPasswordExpiredLink'
     | 'forAccountDeletion'
     | 'forPhoneNumberConfirmation'
-) => firebaseAnalytics.logEvent(AnalyticsEvent.MAIL_TO, { reason })
+) => logEvent(AnalyticsEvent.MAIL_TO, { reason })
 
-const logCampaignTrackerEnabled = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CAMPAIGN_TRACKER_ENABLED)
+const logCampaignTrackerEnabled = () => logEvent(AnalyticsEvent.CAMPAIGN_TRACKER_ENABLED)
 
 /**
  * Favorites
  */
 type FavoriteSortBy = 'ASCENDING_PRICE' | 'AROUND_ME' | 'RECENTLY_ADDED'
 const logHasAppliedFavoritesSorting = ({ sortBy }: { sortBy: FavoriteSortBy }) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING, { type: sortBy })
+  logEvent(AnalyticsEvent.HAS_APPLIED_FAVORITES_SORTING, { type: sortBy })
 
 /**
  * Tunnel de résa / bookOffer
  */
 const logBookingProcessStart = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_PROCESS_START, { offerId })
+  logEvent(AnalyticsEvent.BOOKING_PROCESS_START, { offerId })
 
-const logSeeMyBooking = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId })
+const logSeeMyBooking = (offerId: number) => logEvent(AnalyticsEvent.SEE_MY_BOOKING, { offerId })
 
 const logBookingOfferConfirmDates = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_OFFER_CONFIRM_DATES, { offerId })
+  logEvent(AnalyticsEvent.BOOKING_OFFER_CONFIRM_DATES, { offerId })
 
 const logBookingImpossibleiOS = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_IMPOSSIBLE_IOS, { offerId })
+  logEvent(AnalyticsEvent.BOOKING_IMPOSSIBLE_IOS, { offerId })
 
 const logBookingError = (offerId: number, code: string) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_ERROR, { offerId, code })
+  logEvent(AnalyticsEvent.BOOKING_ERROR, { offerId, code })
 
 const logBookingConfirmation = (offerId: number, bookingId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_CONFIRMATION, { offerId, bookingId })
+  logEvent(AnalyticsEvent.BOOKING_CONFIRMATION, { offerId, bookingId })
 
 /**
  * Bookings
  */
-const logBookingsScrolledToBottom = () =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKINGS_SCROLLED_TO_BOTTOM)
+const logBookingsScrolledToBottom = () => logEvent(AnalyticsEvent.BOOKINGS_SCROLLED_TO_BOTTOM)
 
 const logBookingDetailsScrolledToBottom = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.BOOKING_DETAILS_SCROLLED_TO_BOTTOM, { offerId })
+  logEvent(AnalyticsEvent.BOOKING_DETAILS_SCROLLED_TO_BOTTOM, { offerId })
 
-const logDiscoverOffers = (from: Referrals) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from })
+const logDiscoverOffers = (from: Referrals) => logEvent(AnalyticsEvent.DISCOVER_OFFERS, { from })
 
-const logCancelBooking = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId })
+const logCancelBooking = (offerId: number) => logEvent(AnalyticsEvent.CANCEL_BOOKING, { offerId })
 
 const logAccessExternalOffer = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.ACCESS_EXTERNAL_OFFER, { offerId })
+  logEvent(AnalyticsEvent.ACCESS_EXTERNAL_OFFER, { offerId })
 
 const logConfirmBookingCancellation = (offerId: number) =>
-  firebaseAnalytics.logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId })
+  logEvent(AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION, { offerId })
 
 export const analytics = {
   logAccessExternalOffer,

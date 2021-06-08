@@ -1,8 +1,12 @@
 export {}
 
-jest.mock('@react-native-firebase/analytics')
+const mockLogEvent = jest.fn()
 
-const { AnalyticsEvent, validateAnalyticsEvent } = jest.requireActual('./analytics')
+jest.mock('@react-native-firebase/analytics', () => () => ({
+  logEvent: mockLogEvent,
+}))
+
+const { AnalyticsEvent, validateAnalyticsEvent, analytics } = jest.requireActual('./analytics')
 
 describe('analytics', () => {
   describe('AnalyticsEvent', () => {
@@ -37,6 +41,16 @@ describe('analytics', () => {
       expect(validateAnalyticsEvent('test_firebase_test')).toBeTruthy()
       expect(validateAnalyticsEvent('test_googletest')).toBeTruthy()
       expect(validateAnalyticsEvent('test_ga_test')).toBeTruthy()
+    })
+  })
+
+  describe('logEvent', () => {
+    it('should cast offerId and bookingId from number to string', () => {
+      analytics.logBookingConfirmation(123456, 789)
+      expect(mockLogEvent).toHaveBeenCalledWith(AnalyticsEvent.BOOKING_CONFIRMATION, {
+        offerId: '123456',
+        bookingId: '789',
+      })
     })
   })
 })
