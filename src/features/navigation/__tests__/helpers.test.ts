@@ -5,7 +5,7 @@ import { DEEPLINK_DOMAIN } from 'features/deeplinks'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 
-import { openExternalUrl } from '../helpers'
+import { openExternalUrl, navigateToBooking } from '../helpers'
 
 // Jest.Mocks are located at the end of file for a better reading
 
@@ -55,6 +55,14 @@ describe('Navigation helpers', () => {
     await openExternalUrl(link)
 
     expect(navigationRef.current?.navigate).toBeCalledWith('UniqueTestRoute', { param1: 'ok' })
+  })
+
+  describe('[Method] navigateToBooking', () => {
+    it('should navigate to BookingDetails', async () => {
+      const bookingId = 37815152
+      navigateToBooking(bookingId)
+      expect(navigationRef.current?.navigate).toBeCalledWith('BookingDetails', { id: bookingId })
+    })
   })
 })
 

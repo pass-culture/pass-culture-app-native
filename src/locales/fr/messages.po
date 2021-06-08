@@ -1567,6 +1567,7 @@ msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
+#: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir ma réservation"
 msgstr "Voir ma réservation"
 
