@@ -142,6 +142,10 @@ To make sure that your xcode build will find those frameworks, add them to your 
 
 ![import framework application](./import_framework_application.png)
 
+Also make sure that you select `Embed & Sign` under "General > Frameworks, Libraries, and Embedded Content"
+
+![embedded](./embedded.png)
+
 Finally adapt the code in `Profiling.m` by replacing the `sampleMethod` with this code:
 
 ```objectivec

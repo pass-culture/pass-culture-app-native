@@ -14,8 +14,10 @@
 		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
 		6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */; };
 		7323393B84C441F488A4C363 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D886722584EDD87A2BB44 /* main.m */; };
-		78B919902670EB0C00D1667A /* TMXProfiling.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B9198F2670EB0C00D1667A /* TMXProfiling.xcframework */; };
-		78B919932670EB1300D1667A /* TMXProfilingConnections.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B919922670EB1300D1667A /* TMXProfilingConnections.xcframework */; };
+		7880E6C2267119BB00183430 /* TMXProfiling.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B9198F2670EB0C00D1667A /* TMXProfiling.xcframework */; };
+		7880E6C3267119BB00183430 /* TMXProfiling.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78B9198F2670EB0C00D1667A /* TMXProfiling.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7880E6C5267119BD00183430 /* TMXProfilingConnections.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B919922670EB1300D1667A /* TMXProfilingConnections.xcframework */; };
+		7880E6C6267119BD00183430 /* TMXProfilingConnections.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78B919922670EB1300D1667A /* TMXProfilingConnections.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8FEB737BACB244CF8BB8C051 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33106CFBBB44FF5B75130D1 /* SplashScreen.storyboard */; };
 		94D55C9476A7485C9076C139 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F423851ED1194E90940E001F /* Montserrat-Regular.ttf */; };
 		98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */; };
@@ -23,6 +25,21 @@
 		DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */; };
 		F4E8C120AED243C7AB108C37 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7880E6C4267119BB00183430 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7880E6C6267119BD00183430 /* TMXProfilingConnections.xcframework in Embed Frameworks */,
+				7880E6C3267119BB00183430 /* TMXProfiling.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		030D8707D3F8414C91A9D78A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PassCulture/AppDelegate.h; sourceTree = "<group>"; };
@@ -68,9 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B919932670EB1300D1667A /* TMXProfilingConnections.xcframework in Frameworks */,
-				78B919902670EB0C00D1667A /* TMXProfiling.xcframework in Frameworks */,
+				7880E6C5267119BD00183430 /* TMXProfilingConnections.xcframework in Frameworks */,
 				2A5B3D8DAFAA4030AF31D9D7 /* libPods-PassCulture.a in Frameworks */,
+				7880E6C2267119BB00183430 /* TMXProfiling.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +203,7 @@
 				43BBA1AD232846FE981BE1BF /* [CP] Copy Pods Resources */,
 				3473BCC6A0BA38473EEDEC83 /* [CP-User] [RNFB] Core Configuration */,
 				00008FAFBA4FDCBAC697A7FF /* [CP] Embed Pods Frameworks */,
+				7880E6C4267119BB00183430 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
