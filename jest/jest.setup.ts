@@ -88,6 +88,8 @@ jest.mock('libs/environment', () => ({
     RECOMMENDATION_TOKEN: 'recommmendation-token',
     SITE_KEY: 'SITE_KEY',
     SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
+    TMX_FP_SERVER: 'TMX_FP_SERVER',
+    TMX_ORG_ID: 'TMX_ORG_ID',
     UNIVERSAL_LINK: 'app.passculture-testing.beta.gouv.fr',
     FIREBASE_DYNAMIC_LINK: 'passcultureapptesting.page.link',
     URL_PREFIX: 'passculture',
