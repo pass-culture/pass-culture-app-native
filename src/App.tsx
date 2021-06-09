@@ -7,6 +7,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
 import { AppState, AppStateStatus, LogBox } from 'react-native'
+import Profiling from 'react-native-profiling'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import {
   focusManager as reactQueryFocusManager,
@@ -74,6 +75,7 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
   }
 })
 
+Profiling.sampleMethod('hello', 23, console.log)
 const App: FunctionComponent = function () {
   useCampaignTracker()
   useStartBatchNotification()

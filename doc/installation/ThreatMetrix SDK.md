@@ -41,5 +41,31 @@ In javascript, we will just call it like that:
 import { NativeModules } from 'react-native'
 
 const { Profiling } = NativeModules
-Profiling.sampleMethod('hello', 23) // and this will print "Received numberArgument: 23  stringArgument: hello"
+Profiling.sampleMethod('hello', 23, console.log) // and this will print "Received numberArgument: 23  stringArgument: hello"
+```
+
+The equivalent method for iOS will be in `packages/react-native-profiling/ios/Profiling.m`
+
+First, we need to install the module into our application by adding it to the `package.json` as a local module.
+
+```json
+    "react-native-profiling": "file:./packages/react-native-profiling",
+```
+
+And run
+
+```bash
+$ yarn  # to install react-native-profiling
+$ cd ios && bundle exec pod install && cd ..  # to install the new pod for iOS
+$ yarn start && yarn start --reset-cache  # restart the metro server (due to patched package conflicts)
+```
+
+Make sure you can build for iOS and Android. You may need to enable `inlineRequires` in your metro.config.js.
+
+✅ Check: invoke the function `sampleMethod`:
+
+```javascript
+import Profiling from 'react-native-profiling'
+
+Profiling.sampleMethod('hello', 23, console.log)
 ```
