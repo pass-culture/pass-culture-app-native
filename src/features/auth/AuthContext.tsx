@@ -1,4 +1,5 @@
 import { BatchUser } from '@bam.tech/react-native-batch'
+import { LocalStorageService } from '@pass-culture/id-check'
 import React, { useContext, useEffect, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
@@ -94,6 +95,9 @@ export function useLogoutRoutine(): () => Promise<void> {
     await clearRefreshToken()
     await cleanProfile()
     await cleanFavorites()
+    await LocalStorageService.resetCurrentUser()
+    await LocalStorageService.resetProfile()
+    await LocalStorageService.resetLicenceToken()
     setIsLoggedIn(false)
   }
 }
