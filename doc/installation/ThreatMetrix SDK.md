@@ -17,6 +17,7 @@ Next install [`create-react-native-module`](https://www.npmjs.com/package/create
 $ yarn add global react-native-cli
 $ yarn global add create-react-native-module
 $ create-react-native-module profiling  # This will create the module react-native-profiling
+$ cd react-native-profiling && yarn
 ```
 
 You can choose whichever name for your module. We'll stick with profiling.
