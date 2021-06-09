@@ -1,7 +1,7 @@
 {
   "name": "react-native-profiling",
   "title": "React Native Profiling",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "TODO",
   "main": "index.ts",
   "files": [

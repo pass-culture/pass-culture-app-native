@@ -141,3 +141,44 @@ Open the `Profiling.xcodeproj` with Xcode and add those frameworks under "Link B
 To make sure that your xcode build will find those frameworks, add them to your application's framework as well.
 
 ![import framework application](./import_framework_application.png)
+
+Finally adapt the code in `Profiling.m` by replacing the `sampleMethod` with this code:
+
+```objectivec
+RCT_EXPORT_METHOD(profileDevice:(NSString *)strDevice callback: (RCTResponseSenderBlock)mycallback)
+{
+    TMXProfilingConnections *tcn = [[TMXProfilingConnections alloc] init];
+    tcn.connectionTimeout = 30;  // Default value is 10 seconds
+    tcn.connectionRetryCount = 2;  // Default value is 0 (no retry)
+
+    [[TMXProfiling sharedInstance] configure:@{
+        TMXOrgID:@"<org_id>",
+        TMXFingerprintServer:@"<enhanced-profiling-domain>",
+        TMXProfilingConnectionsInstance:tcn
+    }];
+
+    NSArray *customAttributes = @[@"attribute 1", @"attribute 2"];
+
+    TMXProfileHandle *profileHandle = [[TMXProfiling sharedInstance] profileDeviceUsing:@{TMXCustomAttributes : customAttributes} callbackBlock:^(NSDictionary * _Nullable result) {
+        TMXStatusCode statusCode = [[result valueForKey:TMXProfileStatus] integerValue];
+
+        NSLog(@"Profile completed with: %s and session ID: %@", statusCode == TMXStatusCodeOk ? "OK"
+              : statusCode == TMXStatusCodeNetworkTimeoutError ? "Timed out"
+              : statusCode == TMXStatusCodeConnectionError     ? "Connection Error"
+              : statusCode == TMXStatusCodeHostNotFoundError   ? "Host not found error"
+              : statusCode == TMXStatusCodeInternalError       ? "Internal Error"
+              : statusCode == TMXStatusCodeInterruptedError    ? "Interrupted"
+              : "other",
+              [result valueForKey:TMXSessionID]
+        );
+    }];
+
+    // Session id can be collected here (to use in API call (AKA session query))
+    NSLog(@"Session id is %@", profileHandle.sessionID);
+    mycallback(@[profileHandle.sessionID]);
+}
+```
+
+After bumping the version number of your library, you should be able to build and run your application.
+
+✅ Check: Make sure that you can call `profileDevice` from your iOS application.
