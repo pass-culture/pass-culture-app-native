@@ -109,7 +109,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
   function requestSendPhoneValidationCode() {
     if (isRequestTimestampExpired) {
       setInvalidPhoneNumberMessage('')
-      const phoneNumberWithPrefix = '+' + phoneNumberPrefix + phoneNumber
+      const phoneNumberWithPrefix = '+' + phoneNumberPrefix + formatPhoneNumber(phoneNumber)
       sendPhoneValidationCode(phoneNumberWithPrefix)
       props.onChangePhoneNumber(phoneNumberWithPrefix)
     }
@@ -219,5 +219,12 @@ const PhoneNumberInput = styled.View({
  * - contains 9 digits
  */
 function isValidPhoneNumber(word: string) {
-  return word.match(/^\d{9}$/)
+  return word.match(/^\d{6,10}$/)
+}
+
+function formatPhoneNumber(phoneNumber: string) {
+  if (phoneNumber.startsWith('0')) {
+    return phoneNumber.substring(1)
+  }
+  return phoneNumber
 }
