@@ -89,16 +89,21 @@ export function useLogoutRoutine(): () => Promise<void> {
   const { clean: cleanFavorites } = useCustomQueryClientHelpers(QueryKeys.FAVORITES)
 
   return async () => {
-    BatchUser.editor().setIdentifier(null).save()
-    analytics.logLogout()
-    await storage.clear('access_token')
-    await clearRefreshToken()
-    await cleanProfile()
-    await cleanFavorites()
-    await LocalStorageService.resetCurrentUser()
-    await LocalStorageService.resetProfile()
-    await LocalStorageService.resetLicenceToken()
-    setIsLoggedIn(false)
+    try {
+      BatchUser.editor().setIdentifier(null).save()
+      analytics.logLogout()
+      await storage.clear('access_token')
+      await clearRefreshToken()
+      await cleanProfile()
+      await cleanFavorites()
+      await LocalStorageService.resetCurrentUser()
+      await LocalStorageService.resetProfile()
+      await LocalStorageService.resetLicenceToken()
+    } catch (err) {
+      errorMonitoring.captureException(err)
+    } finally {
+      setIsLoggedIn(false)
+    }
   }
 }
 
