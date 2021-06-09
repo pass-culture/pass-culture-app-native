@@ -81,3 +81,51 @@ $ cd ios && bundle exec pod install && cd ..
 ```
 
 Now our IDE recognises `react-native-profiling` as a typed module 🎉.
+
+So far, we have a working local module, let's adapt the native code so that it does what we want.
+We'll start with Android
+
+### Android
+
+First, download the archives `TMXProfiling.aar` and `TMXProfilingConnections.aar` and place them inside `react-native-profiling/android/libs`.
+Make sure the `packages/react-native-profiling/android/build.gradle` recognises those archives by adding:
+
+- `flatDir { dirs project( ':react-native-profiling' ).file( 'libs' ) }` to your appplication's `android/build.gradle`,
+- `flatDir { dirs 'libs' }` to the repositories section of your module,
+- and `implementation(name:'TmxProfiling', ext:'aar')` && `implementation(name:'TmxProfilingConnections', ext:'aar')` to the dependencies section of the module.
+
+Next, remove the `sampleMethod` from `ProfilingModule.java` and replace it by the actual profiling method:
+
+```java
+    @ReactMethod
+    public void profileDevice(String strDevice, final Callback callback) {
+        TMXProfilingConnections tmxConn = new TMXProfilingConnections();
+        tmxConn.setConnectionTimeout(30, TimeUnit.SECONDS);
+        tmxConn.setRetryTimes(2);
+        TMXConfig tmxConfig = new TMXConfig();
+        tmxConfig.setContext(this.reactContext)
+            .setOrgId("<org_id>")
+            .setFPServer("<enhanced-profiling-domain>")
+            .setProfilingConnections(tmxConn)
+            .setProfileTimeout(30, TimeUnit.SECONDS);
+
+        List<String> m_customMobileList = new ArrayList<String>();
+        m_customMobileList.add("React Native TMX libs 6.0");
+        TMXProfiling.getInstance().init(tmxConfig);
+        TMXProfiling.getInstance().profile((new TMXProfilingOptions()).setCustomAttributes(m_customMobileList), ( new TMXEndNotifier() {
+            @Override
+            public void complete(TMXProfilingHandle.Result result) {
+                System.out.println("Profiling Status: " +result.getStatus() + "  session_id: "+ result.getSessionID());
+                callback.invoke(result.getSessionID());
+            }
+        }));
+    }
+```
+
+✅ Check: Make sure that you can call `profileDevice` from your Android application:
+
+After bumping the version of the module, upgrading it and rebuilding the project:
+
+```javascript
+Profiling.profileDevice('device', (sessionId) => console.log(sessionId)) // This should console.log the session id (ex: 5396838fd816f243bd6262142442e202)
+```

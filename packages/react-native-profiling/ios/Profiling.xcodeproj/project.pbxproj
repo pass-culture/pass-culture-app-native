@@ -3,8 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		783AF1A22670D1C400FF8802 /* TMXProfilingConnections.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783AF1A12670D1C400FF8802 /* TMXProfilingConnections.xcframework */; };
+		783AF1A62670D1DF00FF8802 /* TMXProfiling.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783AF1A52670D1DF00FF8802 /* TMXProfiling.xcframework */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
@@ -20,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libProfiling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libProfiling.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		783AF1A12670D1C400FF8802 /* TMXProfilingConnections.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfilingConnections.xcframework; sourceTree = "<group>"; };
+		783AF1A52670D1DF00FF8802 /* TMXProfiling.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfiling.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				783AF1A62670D1DF00FF8802 /* TMXProfiling.xcframework in Frameworks */,
+				783AF1A22670D1C400FF8802 /* TMXProfilingConnections.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +54,17 @@
 			isa = PBXGroup;
 			children = (
 				134814211AA4EA7D00B7C361 /* Products */,
+				783AF19D2670D1A700FF8802 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		783AF19D2670D1A700FF8802 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				783AF1A12670D1C400FF8802 /* TMXProfilingConnections.xcframework */,
+				783AF1A52670D1DF00FF8802 /* TMXProfiling.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +177,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
@@ -210,7 +232,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
