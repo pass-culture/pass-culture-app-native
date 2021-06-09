@@ -6,6 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as AuthApi from 'features/auth/api'
 import {
+  formatPhoneNumber,
   SetPhoneValidationCodeModal,
   SetPhoneValidationCodeModalProps,
 } from 'features/auth/signup/SetPhoneValidationCodeModal'
@@ -200,6 +201,15 @@ describe('SetPhoneNumberValidationCodeModal', () => {
       fireEvent.press(retryButton)
 
       expect(sendPhoneValidationCode).toHaveBeenCalled()
+    })
+  })
+
+  describe.only('formatPhoneNumber helper', () => {
+    it.each([
+      ['+33612345678', '+33\u00a06\u00a012\u00a034\u00a056\u00a078'],
+      ['+687723160', '+687\u00a072\u00a031\u00a060'],
+    ])('should format number correctly"', (phoneNumber, expectedPhoneNumber) => {
+      expect(formatPhoneNumber(phoneNumber)).toEqual(expectedPhoneNumber)
     })
   })
 })

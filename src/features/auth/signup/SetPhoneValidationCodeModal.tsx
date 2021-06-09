@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
+import parsePhoneNumber from 'libphonenumber-js'
 import React, { FC, useEffect, useState } from 'react'
 import { Dimensions } from 'react-native'
 import styled from 'styled-components/native'
@@ -144,6 +145,12 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     }
   }
 
+  const validationCodeInformation =
+    t`Saisis le code envoyé par SMS au numéro` +
+    ` ${formatPhoneNumber(props.phoneNumber)}.` +
+    '\n' +
+    t`Attention tu n'as que 3 tentatives.`
+
   if (error) {
     throw error
   }
@@ -161,10 +168,7 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
       shouldDisplayOverlay={false}>
       <ModalContent>
         <Paragraphe>
-          <Typo.Body>
-            {t`Saisis le code envoyé par SMS au numéro` +
-              ` ${formatPhoneNumber(props.phoneNumber)}.`}
-          </Typo.Body>
+          <Typo.Body>{validationCodeInformation}</Typo.Body>
         </Paragraphe>
         <Spacer.Column numberOfSpaces={6} />
         <CodeInput
@@ -226,11 +230,11 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
   )
 }
 
-/** returns a 10-digit phone number with an unbreakable space every 2 digits
- *  example: formatPhoneNumber('0612345678) => '06 12 34 56 78'
+/** returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces
  */
-const formatPhoneNumber = (phoneNumber: string) => {
-  return phoneNumber.split(/(\d{2})/).join('\u00a0')
+export const formatPhoneNumber = (phoneNumber: string) => {
+  const parsedPhoneNumber = parsePhoneNumber(phoneNumber)
+  return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0')
 }
 
 const isCodeValid = (code: string | null, _isComplete: boolean) => {
