@@ -64,8 +64,8 @@ describe('SetPhoneNumberModal', () => {
 
     it.each([
       '', // empty
-      '03', // too short
-      '6243546357', // too long
+      '03', // too short (min 6)
+      '62435463579', // too long (max 10)
       '33224354m', // includes char
     ])('should disable the button when the phone number is not valid (%s)', async (phoneNumber) => {
       const { getByTestId, getByPlaceholderText } = renderSetPhoneNumberModal()
