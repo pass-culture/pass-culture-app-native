@@ -460,10 +460,6 @@ msgstr "Des permissions sont nécessaires"
 msgid "Distance"
 msgstr "Distance"
 
-#: src/features/profile/components/IdCheckProcessingBadge.tsx
-msgid "Dossier déposé ! Nous avons bien reçu ton dossier et sommes en train de l'analyser."
-msgstr "Dossier déposé ! Nous avons bien reçu ton dossier et sommes en train de l'analyser."
-
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/home/atoms/OfferCaption.tsx
@@ -483,7 +479,7 @@ msgstr "Découvrir"
 msgid "Désactiver la géolocalisation"
 msgstr "Désactiver la géolocalisation"
 
-#: src/features/profile/components/NonBeneficiaryHeader.tsx
+#: src/features/auth/signup/useBeneficiaryValidationNavigation.ts
 msgid "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 msgstr "Désolé, tu as effectué trop de tentatives. Essaye de nouveau dans 12 heures."
 
@@ -1475,6 +1471,10 @@ msgstr "Télécharger la dernière version"
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Un lien ne fonctionne pas ?"
 msgstr "Un lien ne fonctionne pas ?"
+
+#: src/features/profile/components/IdCheckProcessingBadge.tsx
+msgid "Un peu de patience. En raison du grand nombre de demandes ton dossier doit être analysé manuellement par nos équipes."
+msgstr "Un peu de patience. En raison du grand nombre de demandes ton dossier doit être analysé manuellement par nos équipes."
 
 #: src/features/auth/signup/AcceptCgu.tsx
 #: src/features/auth/signup/AcceptCgu.tsx
