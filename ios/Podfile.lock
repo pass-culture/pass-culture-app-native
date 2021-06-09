@@ -192,9 +192,9 @@ PODS:
     - libwebp/demux
   - libwebp/webp (1.2.0)
   - lottie-ios (3.1.9)
-  - lottie-react-native (3.5.0):
+  - lottie-react-native (4.0.2):
     - lottie-ios (~> 3.1.8)
-    - React
+    - React-Core
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -833,7 +833,7 @@ SPEC CHECKSUMS:
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
-  lottie-react-native: 1fb4ce21d6ad37dab8343eaff8719df76035bd93
+  lottie-react-native: 4dff8fe8d10ddef9e7880e770080f4a56121397e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
   Permission-LocationWhenInUse: e2b8c40ce0f3675a521f26787ab47ebb9bace503
