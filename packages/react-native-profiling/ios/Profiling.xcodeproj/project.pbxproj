@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		783AF1A22670D1C400FF8802 /* TMXProfilingConnections.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783AF1A12670D1C400FF8802 /* TMXProfilingConnections.xcframework */; };
-		783AF1A62670D1DF00FF8802 /* TMXProfiling.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783AF1A52670D1DF00FF8802 /* TMXProfiling.xcframework */; };
+		78B91B412670EE0B00D1667A /* TMXProfiling.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B91B3F2670EE0A00D1667A /* TMXProfiling.xcframework */; };
+		78B91B422670EE0B00D1667A /* TMXProfilingConnections.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B91B402670EE0B00D1667A /* TMXProfilingConnections.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,8 +25,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libProfiling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libProfiling.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		783AF1A12670D1C400FF8802 /* TMXProfilingConnections.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfilingConnections.xcframework; sourceTree = "<group>"; };
-		783AF1A52670D1DF00FF8802 /* TMXProfiling.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfiling.xcframework; sourceTree = "<group>"; };
+		78B91B3F2670EE0A00D1667A /* TMXProfiling.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfiling.xcframework; sourceTree = "<group>"; };
+		78B91B402670EE0B00D1667A /* TMXProfilingConnections.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfilingConnections.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,8 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				783AF1A62670D1DF00FF8802 /* TMXProfiling.xcframework in Frameworks */,
-				783AF1A22670D1C400FF8802 /* TMXProfilingConnections.xcframework in Frameworks */,
+				78B91B422670EE0B00D1667A /* TMXProfilingConnections.xcframework in Frameworks */,
+				78B91B412670EE0B00D1667A /* TMXProfiling.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,8 +61,8 @@
 		783AF19D2670D1A700FF8802 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				783AF1A12670D1C400FF8802 /* TMXProfilingConnections.xcframework */,
-				783AF1A52670D1DF00FF8802 /* TMXProfiling.xcframework */,
+				78B91B3F2670EE0A00D1667A /* TMXProfiling.xcframework */,
+				78B91B402670EE0B00D1667A /* TMXProfilingConnections.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

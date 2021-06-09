@@ -129,3 +129,15 @@ After bumping the version of the module, upgrading it and rebuilding the project
 ```javascript
 Profiling.profileDevice('device', (sessionId) => console.log(sessionId)) // This should console.log the session id (ex: 5396838fd816f243bd6262142442e202)
 ```
+
+### iOS
+
+This part may be tricky, so first make sure that you can build and run the app for iOS with the module but without profiling yet.
+Download the SDK `TMXProfiling.xcframework` and `TMXProfilingConnections.xcframework`.
+Open the `Profiling.xcodeproj` with Xcode and add those frameworks under "Link Binary with Libraries" ("Profiling" > "Target" > "Build Phases").
+
+![import framework module](./import_framework_module.png)
+
+To make sure that your xcode build will find those frameworks, add them to your application's framework as well.
+
+![import framework application](./import_framework_application.png)
