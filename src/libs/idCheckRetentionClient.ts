@@ -10,6 +10,7 @@ import {
 import { api } from 'api/api'
 import { ActivityEnum, BeneficiaryInformationUpdateRequest } from 'api/gen'
 import { ApiError } from 'api/helpers'
+import { errorMonitoring } from 'libs/errorMonitoring'
 
 export const idCheckRetentionClient: IdCheckRetentionClient = {
   confirmProfile(values?: Partial<UserProfile>) {
@@ -26,6 +27,9 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
     let error, queryParams
     try {
       queryParams = await LocalStorageService.getQueryParams()
+      errorMonitoring.captureMessage(
+        `[retention][retentionClient.uploadDocument] ${JSON.stringify(queryParams || {})}`
+      )
       await LocalStorageService.resetLicenceToken()
       if (!queryParams.licenceToken) {
         error = new IdCheckApiError('Auth required', 400, {
@@ -33,6 +37,7 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
         })
       }
     } catch (err) {
+      errorMonitoring.captureException(err)
       error = err
     }
     if (error) {
@@ -46,6 +51,7 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
         body: data,
       })
     } catch (err) {
+      errorMonitoring.captureException(err)
       error = err
       if (err instanceof ApiError) {
         if (err.content.code === 'EXPIRED_TOKEN') {
@@ -60,7 +66,11 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
           error = new IdCheckApiError(err.content.message, err.statusCode, {
             code: IdCheckErrors['file-size-exceeded'],
           })
+          errorMonitoring.captureMessage(`[retention] restore queryParams`)
           if (queryParams) {
+            errorMonitoring.captureMessage(
+              `[retention] save queryParams ${JSON.stringify(queryParams)}`
+            )
             await LocalStorageService.saveQueryParams(queryParams)
           }
         } else if (err.content.code === 'SERVICE_UNAVAILABLE') {
@@ -69,6 +79,11 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
           })
         }
       }
+      errorMonitoring.captureMessage(
+        `[retention][retentionClient.uploadDocument][error] ${JSON.stringify(
+          err
+        )} [edited] ${JSON.stringify(error)}`
+      )
       return Promise.reject(error)
     }
   },
