@@ -10423,7 +10423,7 @@ react-native-permissions@^3.0.0:
   integrity sha512-zBvf+o3NhgKmBk1I06GzZXaDfc9SUyO4M5TMcaCF1pwG1h4sI+XAv3gWSbryl6WnaZQc1zA+g7SocSoYcpJN5g==
 
 "react-native-profiling@file:./packages/react-native-profiling":
-  version "1.0.0"
+  version "1.0.1"
 
 react-native-qrcode-svg@^6.1.1:
   version "6.1.1"

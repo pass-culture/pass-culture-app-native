@@ -1,13 +1,13 @@
 {
   "name": "react-native-profiling",
   "title": "React Native Profiling",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TODO",
-  "main": "index.js",
+  "main": "index.ts",
   "files": [
     "README.md",
     "android",
-    "index.js",
+    "index.ts",
     "ios",
     "react-native-profiling.podspec"
   ],

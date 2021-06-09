@@ -69,3 +69,15 @@ import Profiling from 'react-native-profiling'
 
 Profiling.sampleMethod('hello', 23, console.log)
 ```
+
+### Move to typescript
+
+Let's change the extension of `index.js` into `.ts` and add some types.
+When you make a change to the module, you need to bump its version (inside `react-native-profiling/package.json`) and update it from your application:
+
+```bash
+$ yarn upgrade react-native-profiling
+$ cd ios && bundle exec pod install && cd ..
+```
+
+Now our IDE recognises `react-native-profiling` as a typed module 🎉.
