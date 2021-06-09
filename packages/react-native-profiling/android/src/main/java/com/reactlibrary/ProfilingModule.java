@@ -32,14 +32,14 @@ public class ProfilingModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void profileDevice(String strDevice, final Callback callback) {
+    public void profileDevice(String orgId, String fpServer, final Callback callback) {
         TMXProfilingConnections tmxConn = new TMXProfilingConnections();
         tmxConn.setConnectionTimeout(30, TimeUnit.SECONDS);
         tmxConn.setRetryTimes(2);
         TMXConfig tmxConfig = new TMXConfig();
         tmxConfig.setContext(this.reactContext)
-            .setOrgId("16khy574")
-            .setFPServer("h.online-metrix.net")
+            .setOrgId(orgId)
+            .setFPServer(fpServer)
             .setProfilingConnections(tmxConn)
             .setProfileTimeout(30, TimeUnit.SECONDS);
 

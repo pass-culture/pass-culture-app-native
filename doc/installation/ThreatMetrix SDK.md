@@ -182,3 +182,27 @@ RCT_EXPORT_METHOD(profileDevice:(NSString *)strDevice callback: (RCTResponseSend
 After bumping the version number of your library, you should be able to build and run your application.
 
 ✅ Check: Make sure that you can call `profileDevice` from your iOS application.
+
+### Environment variables
+
+We still have to fill in `<org_id>` and `<enhanced-profiling-domain>` for both iOS and Android.
+I had some issues trying to pass the BuildConfig from the env variables to the native module following [react-native-config](https://github.com/bamlab/react-native-config). It worked for iOS but not for Android.
+As a result, we will pass those variables as parameters to the function `profileDevice`. Thus we have to change its signature.
+
+For Android:
+
+```java
+    public void profileDevice(String orgId, String fpServer, final Callback callback) {
+```
+
+and for iOS:
+
+```objectivec
+RCT_EXPORT_METHOD(profileDevice:(NSString *)orgId fpServer:(NSString *)fpServer callback:(RCTResponseSenderBlock)mycallback)
+```
+
+That means we can now call from our application:
+
+```javascript
+Profiling.profileDevice(env.TMX_ORG_ID, env.TMX_FFP_SERVER, (sessionId) => console.log(sessionId))
+```

@@ -1,7 +1,7 @@
 {
   "name": "react-native-profiling",
   "title": "React Native Profiling",
-  "version": "1.0.3",
+  "version": "1.0.17",
   "description": "TODO",
   "main": "index.ts",
   "files": [
@@ -30,11 +30,11 @@
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
   "peerDependencies": {
-    "react": ">=16.8.1",
-    "react-native": ">=0.60.0-rc.0 <1.0.x"
+    "react": "*",
+    "react-native": "*"
   },
   "devDependencies": {
-    "react": "^16.9.0",
-    "react-native": "^0.61.5"
+    "react": "*",
+    "react-native": "*"
   }
 }

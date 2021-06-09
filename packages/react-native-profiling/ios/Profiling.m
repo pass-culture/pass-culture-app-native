@@ -9,15 +9,15 @@
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(profileDevice:(NSString *)strDevice callback: (RCTResponseSenderBlock)mycallback)
+RCT_EXPORT_METHOD(profileDevice:(NSString *)orgId fpServer:(NSString *)fpServer callback:(RCTResponseSenderBlock)mycallback)
 {
     TMXProfilingConnections *tcn = [[TMXProfilingConnections alloc] init];
     tcn.connectionTimeout = 30;  // Default value is 10 seconds
     tcn.connectionRetryCount = 2;  // Default value is 0 (no retry)
 
     [[TMXProfiling sharedInstance] configure:@{
-        TMXOrgID:@"16khy574",
-        TMXFingerprintServer:@"h.online-metrix.net",
+        TMXOrgID:orgId,
+        TMXFingerprintServer:fpServer,
         TMXProfilingConnectionsInstance:tcn
     }];
 
