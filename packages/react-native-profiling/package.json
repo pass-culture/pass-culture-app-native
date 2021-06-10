@@ -1,0 +1,40 @@
+{
+  "name": "react-native-profiling",
+  "title": "React Native Profiling",
+  "version": "1.0.17",
+  "description": "TODO",
+  "main": "index.ts",
+  "files": [
+    "README.md",
+    "android",
+    "index.ts",
+    "ios",
+    "react-native-profiling.podspec"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github_account/react-native-profiling.git",
+    "baseUrl": "https://github.com/github_account/react-native-profiling"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Antoine Garcia",
+    "email": "antoine.garcia@passculture.app"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "react": "*",
+    "react-native": "*"
+  }
+}
