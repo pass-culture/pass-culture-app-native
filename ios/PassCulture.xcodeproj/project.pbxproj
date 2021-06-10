@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,10 @@
 		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
 		6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */; };
 		7323393B84C441F488A4C363 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D886722584EDD87A2BB44 /* main.m */; };
+		7880E6C2267119BB00183430 /* TMXProfiling.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B9198F2670EB0C00D1667A /* TMXProfiling.xcframework */; };
+		7880E6C3267119BB00183430 /* TMXProfiling.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78B9198F2670EB0C00D1667A /* TMXProfiling.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7880E6C5267119BD00183430 /* TMXProfilingConnections.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B919922670EB1300D1667A /* TMXProfilingConnections.xcframework */; };
+		7880E6C6267119BD00183430 /* TMXProfilingConnections.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78B919922670EB1300D1667A /* TMXProfilingConnections.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8FEB737BACB244CF8BB8C051 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33106CFBBB44FF5B75130D1 /* SplashScreen.storyboard */; };
 		94D55C9476A7485C9076C139 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F423851ED1194E90940E001F /* Montserrat-Regular.ttf */; };
 		98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */; };
@@ -21,6 +25,21 @@
 		DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */; };
 		F4E8C120AED243C7AB108C37 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7880E6C4267119BB00183430 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7880E6C6267119BD00183430 /* TMXProfilingConnections.xcframework in Embed Frameworks */,
+				7880E6C3267119BB00183430 /* TMXProfiling.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		030D8707D3F8414C91A9D78A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PassCulture/AppDelegate.h; sourceTree = "<group>"; };
@@ -41,6 +60,8 @@
 		72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		7365A19A886E4D88A9D9D4C2 /* PassCulture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PassCulture-Bridging-Header.h"; sourceTree = "<group>"; };
 		75F5044862EC419997CE98CD /* Pods-PassCulture-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassCulture-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-PassCulture-tvOSTests/Pods-PassCulture-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		78B9198F2670EB0C00D1667A /* TMXProfiling.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfiling.xcframework; sourceTree = "<group>"; };
+		78B919922670EB1300D1667A /* TMXProfilingConnections.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfilingConnections.xcframework; sourceTree = "<group>"; };
 		866FC5E348B2460296FB5F7B /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		A44026DF307C44498490941C /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-MediumItalic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
@@ -64,7 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7880E6C5267119BD00183430 /* TMXProfilingConnections.xcframework in Frameworks */,
 				2A5B3D8DAFAA4030AF31D9D7 /* libPods-PassCulture.a in Frameworks */,
+				7880E6C2267119BB00183430 /* TMXProfiling.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +152,8 @@
 		77E58495325A4481BF007316 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78B9198F2670EB0C00D1667A /* TMXProfiling.xcframework */,
+				78B919922670EB1300D1667A /* TMXProfilingConnections.xcframework */,
 				C3EB4C7EF21447BFA7F60E12 /* JavaScriptCore.framework */,
 				22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */,
 				F625F4D6377B4766806FA581 /* libPods-PassCulture.a */,
@@ -178,6 +203,7 @@
 				43BBA1AD232846FE981BE1BF /* [CP] Copy Pods Resources */,
 				3473BCC6A0BA38473EEDEC83 /* [CP-User] [RNFB] Core Configuration */,
 				00008FAFBA4FDCBAC697A7FF /* [CP] Embed Pods Frameworks */,
+				7880E6C4267119BB00183430 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -383,7 +409,10 @@
 					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = PassCulture/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -412,7 +441,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "$(IOS_TEAM_ID)";
 				INFOPLIST_FILE = PassCulture/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -477,7 +509,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
@@ -531,7 +566,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
