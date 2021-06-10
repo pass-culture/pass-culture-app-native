@@ -6,7 +6,7 @@ export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
   InitialRoutingScreen: undefined
-  Home: undefined
+  Home: { entryId: string } | undefined
   Search: { parameters: ParsedAlgoliaParameters | null } | undefined
   Bookings: undefined
   Favorites: undefined

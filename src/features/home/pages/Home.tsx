@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native'
 import React, { useState, FunctionComponent, useCallback } from 'react'
 import { NativeSyntheticEvent, NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
@@ -6,6 +7,7 @@ import { useListenDeepLinksEffect } from 'features/deeplinks'
 import { HomeBodyPlaceholder, HomeHeader } from 'features/home/components'
 import { HomeBody } from 'features/home/components/HomeBody'
 import { useDisplayedHomeModules } from 'features/home/pages/useDisplayedHomeModules'
+import { UseRouteType } from 'features/navigation/RootNavigator'
 import { useInitialScreenConfig } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
@@ -17,9 +19,12 @@ import { RecommendationPane } from '../contentful/moduleTypes'
 import { useShowSkeleton } from './useShowSkeleton'
 
 export const Home: FunctionComponent = function () {
+  const { params } = useRoute<UseRouteType<'Home'>>()
   const showSkeleton = useShowSkeleton()
   const [recommendationY, setRecommendationY] = useState<number>(Infinity)
-  const { displayedModules, algoliaModules, recommendedHits } = useDisplayedHomeModules()
+  const { displayedModules, algoliaModules, recommendedHits } = useDisplayedHomeModules(
+    params?.entryId
+  )
 
   useInitialScreenConfig()
   useListenDeepLinksEffect()
