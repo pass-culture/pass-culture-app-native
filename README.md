@@ -116,6 +116,24 @@ You can get a copy of the testing configuration one through the password manager
 And then, you can run the following command:
 `yarn ios:testing`
 
+#### Start the app on your Apple device (with Xcode)
+
+In order to launch the app in your Apple device, you need to follow these steps:
+
+Download the iOS certificates to your computer:
+
+1. Create an Apple Developer passCulture account (https://developer.apple.com/).
+2. Connect to the Apple Developper account with Xcode.
+3. Get invited to the Apple Developer group by an Admin.
+4. Download the private key via fastlane
+   `bundle exec fastlane ios download_certificates --env testing`
+5. Add the URL of the private certificates git repository named "pass-culture-app-native-certificates".
+6. Get the passphrase on 1password in the "Tech" vault.
+
+Connect your device to the computer and:
+run `yarn ios:testing --device`
+or use the Xcode interface. Choose a scheme (your device) and click the Run button in the toolbar (https://developer.apple.com/documentation/xcode/running-your-app-in-the-simulator-or-on-a-device)
+
 ### Debugging
 
 #### Tools
