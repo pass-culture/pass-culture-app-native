@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`processHomepageEntries should format homepage entries so we can use it to display infos on home page 1`] = `
+exports[`processHomepageEntry should format homepage entries so we can use it to display infos on home page 1`] = `
 Array [
   ExclusivityPane {
     "alt": "Exclusitivité du moment",

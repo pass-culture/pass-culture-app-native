@@ -3,8 +3,9 @@ import { rest } from 'msw'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { processHomepageEntry } from 'features/home/contentful'
 import { env } from 'libs/environment'
-import { homepageEntriesAPIResponse, adaptedHomepageEntries } from 'tests/fixtures/homepageEntries'
+import { homepageEntriesAPIResponse, adaptedHomepageEntry } from 'tests/fixtures/homepageEntries'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 
