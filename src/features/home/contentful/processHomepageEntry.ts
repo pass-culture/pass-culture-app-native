@@ -2,7 +2,7 @@ import {
   AlgoliaFields,
   BusinessFields,
   ExclusivityFields,
-  HomepageEntries,
+  HomepageEntry,
   HomepageModule,
   CONTENT_TYPES,
   Image,
@@ -17,7 +17,7 @@ import {
   RecommendationPane,
 } from './moduleTypes'
 
-export const processHomepageEntries = (homepage: HomepageEntries): ProcessedModule[] => {
+export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[] => {
   const {
     fields: { modules },
   } = homepage

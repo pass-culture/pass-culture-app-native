@@ -1,13 +1,13 @@
-import { adaptedHomepageEntries } from 'tests/fixtures/homepageEntries'
+import { adaptedHomepageEntry } from 'tests/fixtures/homepageEntries'
 
-import { processHomepageEntries } from './processHomepageEntries'
+import { processHomepageEntry } from './processHomepageEntry'
 
-describe('processHomepageEntries', () => {
+describe('processHomepageEntry', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
   it('should format homepage entries so we can use it to display infos on home page', () => {
-    expect(processHomepageEntries(adaptedHomepageEntries)).toMatchSnapshot()
+    expect(processHomepageEntry(adaptedHomepageEntry)).toMatchSnapshot()
   })
 
   it('should format homepage entries: no fields case', () => {
@@ -30,6 +30,6 @@ describe('processHomepageEntries', () => {
         modules: [],
       },
     }
-    expect(processHomepageEntries(emptyModulesHomepageEntries)).toEqual([])
+    expect(processHomepageEntry(emptyModulesHomepageEntries)).toEqual([])
   })
 })

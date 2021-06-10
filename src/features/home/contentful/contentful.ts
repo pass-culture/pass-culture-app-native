@@ -228,7 +228,7 @@ interface Image {
   }
 }
 
-interface HomepageEntries {
+interface HomepageEntry {
   sys: Sys<typeof CONTENT_TYPES.HOMEPAGE_NATIF>
   fields: HomepageNatifFields
 }
@@ -246,6 +246,6 @@ export type {
   ExclusivityFields,
   CoverFields,
   Image,
-  HomepageEntries,
+  HomepageEntry,
   RecommendationFields,
 }
