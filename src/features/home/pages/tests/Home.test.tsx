@@ -2,6 +2,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/AuthContext'
 import { ProcessedModule } from 'features/home/contentful'
@@ -24,6 +25,8 @@ jest.mock('libs/environment', () => ({
 jest.mock('features/home/pages/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
+
+useRoute.mockImplementation(() => ({ params: { entryId: 'specific_entry_id' } }))
 
 let mockDisplayedModules: ProcessedModule[] = []
 jest.mock('features/home/pages/useDisplayedHomeModules', () => ({

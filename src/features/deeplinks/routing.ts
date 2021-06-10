@@ -7,6 +7,18 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
   default() {
     return homeNavigateConfig
   },
+  home: (params) => {
+    if (params?.entryId) {
+      return {
+        screen: 'TabNavigator',
+        params: {
+          screen: 'Home',
+          params: { entryId: params.entryId },
+        },
+      }
+    }
+    return homeNavigateConfig
+  },
   favoris() {
     return { screen: 'Favorites', params: undefined }
   },

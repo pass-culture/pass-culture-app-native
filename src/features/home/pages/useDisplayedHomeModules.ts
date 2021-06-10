@@ -9,11 +9,11 @@ import {
 import { useHomeAlgoliaModules } from './useHomeAlgoliaModules'
 import { useHomeRecommendedHits } from './useHomeRecommendedHits'
 
-export function useDisplayedHomeModules() {
+export function useDisplayedHomeModules(entryId?: string) {
   const { isLoggedIn } = useAuthContext()
 
   // 1. Get the list of modules from contentful
-  const { data: modules = [] } = useHomepageModules()
+  const { data: modules = [] } = useHomepageModules(entryId)
 
   // 2. Get the hits and nbHits for each algolia module
   const algoliaModules = useHomeAlgoliaModules(getOfferModules(modules))
