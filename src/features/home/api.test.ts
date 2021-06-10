@@ -5,11 +5,15 @@ import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { processHomepageEntry } from 'features/home/contentful'
 import { env } from 'libs/environment'
-import { homepageEntriesAPIResponse, adaptedHomepageEntry } from 'tests/fixtures/homepageEntries'
+import {
+  homepageEntriesAPIResponse,
+  adaptedHomepageEntry,
+  adaptedSecondHomepageEntry,
+} from 'tests/fixtures/homepageEntries'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 
-import { getHomepageEntries, CONTENTFUL_BASE_URL, useUserProfileInfo } from './api'
+import { getEntries, BASE_URL, PARAMS, useUserProfileInfo, useHomepageModules } from './api'
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 
@@ -33,12 +37,9 @@ const userProfileAPIResponse: UserProfileResponse = {
   },
 }
 server.use(
-  rest.get(
-    `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}/entries?include=2&content_type=homepageNatif&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`,
-    async (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
-    }
-  ),
+  rest.get(`${BASE_URL}/entries/${PARAMS}`, async (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
+  }),
   rest.get(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
     userProfileApiMock()
     return res(ctx.status(200), ctx.json(userProfileAPIResponse))
@@ -48,15 +49,37 @@ server.use(
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
+const entryId = homepageEntriesAPIResponse.items[1].sys.id
 
 describe('Home api calls', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })
 
-  it('getHomepageEntries', async () => {
-    const result = await getHomepageEntries()
-    expect(result).toEqual(adaptedHomepageEntries)
+  it('getEntries', async () => {
+    const result = await getEntries()
+    expect(result[0]).toEqual(adaptedHomepageEntry)
+    expect(result[1]).toEqual(adaptedSecondHomepageEntry)
+  })
+
+  describe('useHomepageModules', () => {
+    it('calls the API and returns the data', async () => {
+      const { result, waitFor } = renderHook(useHomepageModules, {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => result.current.data.length > 0)
+      expect(result.current.data).toEqual(processHomepageEntry(adaptedHomepageEntry))
+    })
+
+    it('calls the API and returns the data with specified entryId', async () => {
+      const { result, waitFor } = renderHook(() => useHomepageModules(entryId), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => result.current.data.length > 0)
+      expect(result.current.data).toEqual(processHomepageEntry(adaptedSecondHomepageEntry))
+    })
   })
 
   describe('useUserProfileInfo', () => {
