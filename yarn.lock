@@ -1821,14 +1821,15 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
-"@pass-culture/id-check@^2.1.6":
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.1.6.tgz#0485c75760d6e2baba260edbf846d9ad53827569"
-  integrity sha512-mFcjRkfxEQg0wJkT3YxZrt5uICL7YCnsnNeiWP+rxMA/x1fizbu6TAbgP2xPDznWkri5XkIOtHn4I18dL+9glw==
+"@pass-culture/id-check@^2.1.7":
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.1.7.tgz#25822233d4c0b6b590db7e21de173a67b5115972"
+  integrity sha512-8FICBISHkUqnvIN+uKRe1iDW8SDIijdPQQWOLUkhU8X27TZ58Bzwt9z+Govo/dy71UNk7Py1rZ6oX7+tOTZ4cw==
   dependencies:
     deepmerge "^4.2.2"
     lodash "^4.17.21"
     moment "^2.29.1"
+    react-native-image-picker "4.0.3"
     validator "^13.6.0"
 
 "@ptomasroos/react-native-multi-slider@^2.2.2":
@@ -10363,10 +10364,10 @@ react-native-get-random-values@^1.5.1:
   dependencies:
     fast-base64-decode "^1.0.0"
 
-react-native-image-picker@2.3.4:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-2.3.4.tgz#1c31dbe9872ade17e2ed6457b0c669d63c322590"
-  integrity sha512-4UHu+zOyDT570r5mIbjH6h1iMrKIq/qfsKiAVUEZwncVegh0usJiEYNyJw4CEVwNeehmye/ia5sLDsa+kzIE4g==
+react-native-image-picker@4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-4.0.3.tgz#dd8d393e0c57321688885c74b52244ad36e532d6"
+  integrity sha512-S4a1jE4fAPDzmah/7OVTEAXGz1/wlGyClU+spygmek5rVLERR5BgwnkX3tLP/UvMQbfdPZNUbnH0hEe7su2AZg==
 
 react-native-iphone-x-helper@^1.2.1:
   version "1.2.1"

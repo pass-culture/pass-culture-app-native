@@ -1,5 +1,4 @@
 import { i18n } from '@lingui/core'
-import { t } from '@lingui/macro'
 import { I18nProvider } from '@lingui/react'
 import { IdCheckContextProvider, theme } from '@pass-culture/id-check'
 import React, { FunctionComponent, useEffect } from 'react'
@@ -103,18 +102,14 @@ const App: FunctionComponent = function () {
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
                           <IdCheckContextProvider
-                            imagePickerOptions={{
-                              title: t`Où se trouve votre document ?`,
-                              cancelButtonTitle: t`Plus tard`,
-                              takePhotoButtonTitle: t`Prendre une photo`,
-                              chooseFromLibraryButtonTitle: t`Photothèque`,
-                              chooseWhichLibraryTitle: t`Où se trouve votre copie ?`,
-                              permissionDenied: {
-                                title: t`Des permissions sont nécessaires`,
-                                text: t`pour prendre votre document en photo ou le sélectionner depuis vos fichiers`,
-                                reTryTitle: t`Recommencer`,
-                                okTitle: t`OK`,
-                              },
+                            cameraOptions={{
+                              mediaType: 'photo',
+                              maxWidth: 3000,
+                              maxHeight: 3000,
+                              quality: 0.7,
+                            }}
+                            imageLibraryOptions={{
+                              mediaType: 'photo',
                               maxWidth: 3000,
                               maxHeight: 3000,
                               quality: 0.7,

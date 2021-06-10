@@ -129,6 +129,10 @@ msgstr "Annulé"
 msgid "Attends"
 msgstr "Attends"
 
+#: src/features/auth/signup/SetPhoneValidationCodeModal.tsx
+msgid "Attention tu n'as que 3 tentatives."
+msgstr "Attention tu n'as que 3 tentatives."
+
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "Attention, il est impossible de réserver plusieurs fois la même offre !"
 msgstr "Attention, il est impossible de réserver plusieurs fois la même offre !"
@@ -451,10 +455,6 @@ msgstr "Des nouveautés"
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
-
-#: src/App.tsx
-msgid "Des permissions sont nécessaires"
-msgstr "Des permissions sont nécessaires"
 
 #: src/features/offer/components/OfferWhereSection.tsx
 msgid "Distance"
@@ -876,10 +876,6 @@ msgstr "Nouveau mot de passe"
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
 
-#: src/App.tsx
-msgid "OK"
-msgstr "OK"
-
 #: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 #: src/features/offer/services/useCtaWordingAndAction.ts
@@ -933,14 +929,6 @@ msgstr "Où"
 msgid "Où ?"
 msgstr "Où ?"
 
-#: src/App.tsx
-msgid "Où se trouve votre copie ?"
-msgstr "Où se trouve votre copie ?"
-
-#: src/App.tsx
-msgid "Où se trouve votre document ?"
-msgstr "Où se trouve votre document ?"
-
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "Paramètres de confidentialité"
@@ -990,17 +978,9 @@ msgstr "Patience ! À tes 18 ans, tu bénéficieras de"
 msgid "Permanent"
 msgstr "Permanent"
 
-#: src/App.tsx
-msgid "Photothèque"
-msgstr "Photothèque"
-
 #: src/features/auth/signup/VerifyEligibility.tsx
 msgid "Plus que quelques étapes !"
 msgstr "Plus que quelques étapes !"
-
-#: src/App.tsx
-msgid "Plus tard"
-msgstr "Plus tard"
 
 #: src/features/auth/signup/AcceptCgu.tsx
 msgid "Politique de confidentialité."
@@ -1029,10 +1009,6 @@ msgstr "Pourquoi les biens numériques sont-ils limités ?"
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
-
-#: src/App.tsx
-msgid "Prendre une photo"
-msgstr "Prendre une photo"
 
 #: src/features/search/sections/titles.ts
 msgid "Prix"
@@ -1078,10 +1054,6 @@ msgstr "Recevoir une alerte"
 #: src/features/search/atoms/Buttons/Search.tsx
 msgid "Rechercher"
 msgstr "Rechercher"
-
-#: src/App.tsx
-msgid "Recommencer"
-msgstr "Recommencer"
 
 #: src/features/home/components/BusinessModule.tsx
 msgid "Redirection en cours"
@@ -1724,10 +1696,6 @@ msgstr "Les {price} ne seront pas recrédités sur ton pass Culture car il est e
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "offerts à dépenser sur l’application."
 msgstr "offerts à dépenser sur l’application."
-
-#: src/App.tsx
-msgid "pour prendre votre document en photo ou le sélectionner depuis vos fichiers"
-msgstr "pour prendre votre document en photo ou le sélectionner depuis vos fichiers"
 
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "prix duo"
