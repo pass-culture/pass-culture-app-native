@@ -6,7 +6,11 @@ import { Linking, NativeScrollEvent, StyleSheet } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
+import {
+  useAuthContext,
+  useLogoutRoutine,
+  useIdCheckLogoutRoutine,
+} from 'features/auth/AuthContext'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/home/api'
 import { openExternalUrl } from 'features/navigation/helpers'
@@ -50,6 +54,7 @@ export const Profile: React.FC = () => {
   const { data: user } = useUserProfileInfo()
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
+  const signOutFromIdCheck = useIdCheckLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
 
   const {
@@ -248,7 +253,7 @@ export const Profile: React.FC = () => {
               title={t`Déconnexion`}
               {...testID(t`Déconnexion`)}
               onPress={() => {
-                signOut()
+                signOut().finally(signOutFromIdCheck)
               }}
               type="clickable"
               icon={SignOut}

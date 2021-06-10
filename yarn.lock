@@ -1821,10 +1821,10 @@
   resolved "https://registry.yarnpkg.com/@open-draft/until/-/until-1.0.3.tgz#db9cc719191a62e7d9200f6e7bab21c5b848adca"
   integrity sha512-Aq58f5HiWdyDlFffbbSjAlv596h/cOnt2DO1w3DOC7OJ5EHs0hd/nycJfiu9RJbT6Yk6F1knnRRXNSpxoIVZ9Q==
 
-"@pass-culture/id-check@^2.1.5":
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.1.5.tgz#8a6ce4262df51da7cad411fa2da1bc680e51afef"
-  integrity sha512-nV8zRVaxf6izH50/zjLJL2Z9psWTs+E7dOBiQhbxjj+bWfdMu/PlFlQo15/1Wb32SfLs9sO4iuPyI01chRKnDA==
+"@pass-culture/id-check@^2.1.6":
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/@pass-culture/id-check/-/id-check-2.1.6.tgz#0485c75760d6e2baba260edbf846d9ad53827569"
+  integrity sha512-mFcjRkfxEQg0wJkT3YxZrt5uICL7YCnsnNeiWP+rxMA/x1fizbu6TAbgP2xPDznWkri5XkIOtHn4I18dL+9glw==
   dependencies:
     deepmerge "^4.2.2"
     lodash "^4.17.21"
@@ -1836,10 +1836,10 @@
   resolved "https://registry.yarnpkg.com/@ptomasroos/react-native-multi-slider/-/react-native-multi-slider-2.2.2.tgz#35a97fb8c355627c6a2ded010b360ac5728b44ad"
   integrity sha512-HWyCnRD3Z3SbHK2FLWYmBBqd1B4iXipeKv1+AK0FoY/CElEDTEixHE8hN60TsqxalPrznn798LE2Q4tHuCiyaA==
 
-"@react-native-community/async-storage@^1.7.1":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.12.0.tgz#d2fc65bc08aa1c3e9514bbe9fe7095eab8e8aca3"
-  integrity sha512-y3zVxuVyiOxI8TXrvajmYfDbIt2vFNxzV5MiA28v15DQTxDk6uJH3rpc9my+la7u2Tiwt3PpdU2+59ZgZ4h7wA==
+"@react-native-async-storage/async-storage@^1.15.5":
+  version "1.15.5"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.5.tgz#0d221a5ef1cd7a6494a42fcaad43136d68379afb"
+  integrity sha512-4AYehLH39B9a8UXCMf3ieOK+G61wGMP72ikx6/XSMA0DUnvx0PgaeaT2Wyt06kTrDTy8edewKnbrbeqwaM50TQ==
   dependencies:
     deep-assign "^3.0.0"
 

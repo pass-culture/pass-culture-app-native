@@ -1,6 +1,6 @@
 import { BatchUser } from '@bam.tech/react-native-batch'
 import { LocalStorageService } from '@pass-culture/id-check'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { SigninResponse } from 'api/gen'
@@ -83,12 +83,20 @@ export function useLoginRoutine() {
   return loginRoutine
 }
 
+export function useIdCheckLogoutRoutine() {
+  return useCallback(() => {
+    LocalStorageService.resetCurrentUser()
+    LocalStorageService.resetProfile()
+    LocalStorageService.resetLicenceToken()
+  }, [])
+}
+
 export function useLogoutRoutine(): () => Promise<void> {
   const { setIsLoggedIn } = useAuthContext()
   const { clean: cleanProfile } = useCustomQueryClientHelpers(QueryKeys.USER_PROFILE)
   const { clean: cleanFavorites } = useCustomQueryClientHelpers(QueryKeys.FAVORITES)
 
-  return async () => {
+  return useCallback(async () => {
     try {
       BatchUser.editor().setIdentifier(null).save()
       analytics.logLogout()
@@ -96,15 +104,12 @@ export function useLogoutRoutine(): () => Promise<void> {
       await clearRefreshToken()
       await cleanProfile()
       await cleanFavorites()
-      await LocalStorageService.resetCurrentUser()
-      await LocalStorageService.resetProfile()
-      await LocalStorageService.resetLicenceToken()
     } catch (err) {
       errorMonitoring.captureException(err)
     } finally {
       setIsLoggedIn(false)
     }
-  }
+  }, [setIsLoggedIn, cleanProfile, cleanFavorites])
 }
 
 /**
@@ -112,8 +117,11 @@ export function useLogoutRoutine(): () => Promise<void> {
  */
 export function useCustomQueryClientHelpers(queryKey: QueryKeys) {
   const queryClient = useQueryClient()
-  return {
-    clean: async () => await queryClient.removeQueries(queryKey),
-    // add your helper function that uses queryKey
-  }
+  return useMemo(
+    () => ({
+      clean: async () => await queryClient.removeQueries(queryKey),
+      // add your helper function that uses queryKey
+    }),
+    [queryClient]
+  )
 }

@@ -36,9 +36,11 @@ jest.mock('features/home/api', () => ({
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 const mockSignOut = jest.fn()
+const mockSignOutFromIdCheck = jest.fn()
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
+  useIdCheckLogoutRoutine: jest.fn(() => mockSignOutFromIdCheck.mockResolvedValueOnce(jest.fn())),
 }))
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
