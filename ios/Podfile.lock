@@ -201,6 +201,8 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - OpenSSL-Universal (1.1.180)
+  - Permission-Camera (3.0.0):
+    - RNPermissions
   - Permission-LocationWhenInUse (3.0.0):
     - RNPermissions
   - Permission-Notifications (3.0.0):
@@ -383,7 +385,7 @@ PODS:
     - React
   - react-native-get-random-values (1.5.1):
     - React-Core
-  - react-native-image-picker (2.3.4):
+  - react-native-image-picker (4.0.3):
     - React-Core
   - react-native-netinfo (5.9.10):
     - React-Core
@@ -558,6 +560,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - lottie-ios (from `../node_modules/lottie-ios`)
   - lottie-react-native (from `../node_modules/lottie-react-native`)
+  - Permission-Camera (from `../node_modules/react-native-permissions/ios/Camera`)
   - Permission-LocationWhenInUse (from `../node_modules/react-native-permissions/ios/LocationWhenInUse`)
   - Permission-Notifications (from `../node_modules/react-native-permissions/ios/Notifications`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
@@ -678,6 +681,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/lottie-ios"
   lottie-react-native:
     :path: "../node_modules/lottie-react-native"
+  Permission-Camera:
+    :path: "../node_modules/react-native-permissions/ios/Camera"
   Permission-LocationWhenInUse:
     :path: "../node_modules/react-native-permissions/ios/LocationWhenInUse"
   Permission-Notifications:
@@ -836,6 +841,7 @@ SPEC CHECKSUMS:
   lottie-react-native: 4dff8fe8d10ddef9e7880e770080f4a56121397e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
+  Permission-Camera: 119b01de97a5b3edb637999e38476b68143b9d17
   Permission-LocationWhenInUse: e2b8c40ce0f3675a521f26787ab47ebb9bace503
   Permission-Notifications: 5c69bf2f6c1e30345af4f25e2981dc1c8dafbc22
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
@@ -854,7 +860,7 @@ SPEC CHECKSUMS:
   react-native-flipper: 51d058827cc04d89cd23cc4b1aa2d724c3d820bf
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
   react-native-get-random-values: 41f0c91ac0da870e47b307e07752e9e54bc2dc7e
-  react-native-image-picker: c6d75c4ab2cf46f9289f341242b219cb3c1180d3
+  react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
   react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
@@ -898,6 +904,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 2e1062842783fe684d8d75da198b29bd26a65d17
+PODFILE CHECKSUM: eb7f31ee63a0abeeaa702232a9192309aea6b629
 
 COCOAPODS: 1.10.1

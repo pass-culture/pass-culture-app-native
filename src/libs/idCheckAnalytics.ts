@@ -64,6 +64,15 @@ export const idCheckAnalytics: IdCheckAnalyticsInterface = {
   endCheckTokens() {
     firebaseAnalytics.logEvent('IdCheck_EndCheckTokens')
   },
+  fileSizeExceeded() {
+    firebaseAnalytics.logEvent('IdCheck_FileSizeExceeded')
+  },
+  permissionsBlocked() {
+    firebaseAnalytics.logEvent('IdCheck_PermissionsBlocked')
+  },
+  cameraUnavailable() {
+    firebaseAnalytics.logEvent('IdCheck_CameraUnavailable')
+  },
   getJouveToken({
     appIsAllowedToRenewLicenceToken,
     isLocalLicenceToken,
