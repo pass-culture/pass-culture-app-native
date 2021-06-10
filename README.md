@@ -136,7 +136,7 @@ When you generated the repository with [react-native-make](https://github.com/ba
 - You can deploy automatically with fastlane to appcenter
 - You can deploy with codepush to staging too
 - We installed the following libraries for you:
-  - @react-native-community/async-storage
+  - @react-native-async-storage/async-storage
   - react-native-localize
   - lingui-js
   - typesafe-actions
