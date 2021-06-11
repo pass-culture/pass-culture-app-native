@@ -74,7 +74,6 @@
     "make-plural": "^6.2.2",
     "patch-package": "^6.2.0",
     "react": "16.13.1",
-    "react-content-loader": "^5.1.4",
     "react-error-boundary": "^3.1.0",
     "react-native": "0.63.3",
     "react-native-android-keyboard-adjust": "^1.2.0",
