@@ -42,7 +42,6 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://www.jitpack.io' }
-        flatDir { dirs project( ':react-native-profiling' ).file( 'libs' ) }
     }
 }
 

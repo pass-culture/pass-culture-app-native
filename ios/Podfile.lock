@@ -584,7 +584,7 @@ DEPENDENCIES:
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
-  - react-native-profiling (from `../node_modules/react-native-profiling`)
+  - react-native-profiling (from `../node_modules/@pass-culture/react-native-profiling`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-text-input-mask (from `../node_modules/react-native-text-input-mask`)
@@ -725,7 +725,7 @@ EXTERNAL SOURCES:
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-profiling:
-    :path: "../node_modules/react-native-profiling"
+    :path: "../node_modules/@pass-culture/react-native-profiling"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-splash-screen:
