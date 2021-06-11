@@ -1,0 +1,6 @@
+.gitignore
+.npmrc
+pass-*.tgz
+# packages
+pass-culture-react-native-profiling-*.tgz
+node_modules
