@@ -1,16 +1,9 @@
 {
-  "name": "react-native-profiling",
+  "name": "@pass-culture/react-native-profiling",
   "title": "React Native Profiling",
-  "version": "1.0.17",
-  "description": "TODO",
+  "version": "1.0.2",
+  "description": "Profiling for Pass Culture",
   "main": "index.ts",
-  "files": [
-    "README.md",
-    "android",
-    "index.ts",
-    "ios",
-    "react-native-profiling.podspec"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +18,9 @@
   "author": {
     "name": "Antoine Garcia",
     "email": "antoine.garcia@passculture.app"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",

@@ -1832,6 +1832,11 @@
     react-native-image-picker "4.0.3"
     validator "^13.6.0"
 
+"@pass-culture/react-native-profiling@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@pass-culture/react-native-profiling/-/react-native-profiling-1.0.2.tgz#8fe37a6a824b5f1235f7e14898bc6dde662adb2b"
+  integrity sha512-8rHi+lLczb+ubrVwuTkGqWLczCZ4hd/+1spmnM/E4Ayv0kUUOGEEzbg9AtxJY9w/ZUHO96/USaXpTMgI4XOYIw==
+
 "@ptomasroos/react-native-multi-slider@^2.2.2":
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/@ptomasroos/react-native-multi-slider/-/react-native-multi-slider-2.2.2.tgz#35a97fb8c355627c6a2ded010b360ac5728b44ad"
@@ -10416,9 +10421,6 @@ react-native-permissions@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.0.0.tgz#d9d107700741d41f8392f202f35a61f481fb0e68"
   integrity sha512-zBvf+o3NhgKmBk1I06GzZXaDfc9SUyO4M5TMcaCF1pwG1h4sI+XAv3gWSbryl6WnaZQc1zA+g7SocSoYcpJN5g==
-
-"react-native-profiling@file:./packages/react-native-profiling":
-  version "1.0.17"
 
 react-native-qrcode-svg@^6.1.1:
   version "6.1.1"
