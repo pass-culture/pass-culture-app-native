@@ -41,7 +41,11 @@ import { useStartBatchNotification } from 'libs/notifications'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
-LogBox.ignoreLogs(['Setting a timer', 'Expected style "elevation:'])
+LogBox.ignoreLogs([
+  'Setting a timer',
+  'Expected style "elevation:',
+  'Cannot update a component from inside the function body of a different component.',
+])
 
 const queryCache = new QueryCache()
 const queryClient = new QueryClient({
