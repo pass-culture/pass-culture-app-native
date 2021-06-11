@@ -389,7 +389,7 @@ PODS:
     - React-Core
   - react-native-netinfo (5.9.10):
     - React-Core
-  - react-native-profiling (1.0.17):
+  - react-native-profiling (1.0.2):
     - React
   - react-native-safe-area-context (3.1.8):
     - React-Core
@@ -584,7 +584,7 @@ DEPENDENCIES:
   - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
-  - react-native-profiling (from `../node_modules/@pass-culture/react-native-profiling`)
+  - "react-native-profiling (from `../node_modules/@pass-culture/react-native-profiling`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-text-input-mask (from `../node_modules/react-native-text-input-mask`)
@@ -867,7 +867,7 @@ SPEC CHECKSUMS:
   react-native-get-random-values: 41f0c91ac0da870e47b307e07752e9e54bc2dc7e
   react-native-image-picker: 474cf2c33c2b6671da53d293a16c97995f0aec15
   react-native-netinfo: 30fb89fa913c342be82a887b56e96be6d71201dd
-  react-native-profiling: cd6e115ecc0099222ca07c2921628a25dea19c3d
+  react-native-profiling: 4bc6b4413cf5ab9970292cc75427ead780944f70
   react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-text-input-mask: 36a546b378fadd2efe1b7484a859d34bc2c80395
