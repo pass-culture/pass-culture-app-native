@@ -1,9 +1,8 @@
 import React from 'react'
-import ContentLoader from 'react-content-loader/native'
 import { View, Dimensions, PixelRatio } from 'react-native'
-import { G, Rect } from 'react-native-svg'
 import styled from 'styled-components/native'
 
+import { SkeletonTile } from 'features/home/atoms/SkeletonTile'
 import {
   getSpacing,
   LENGTH_L,
@@ -12,7 +11,6 @@ import {
   RATIO_ALGOLIA,
   RATIO_BUSINESS,
   Spacer,
-  UniqueColors,
 } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -22,7 +20,7 @@ enum TileSize {
 }
 
 export const HomeBodyPlaceholder = () => (
-  <React.Fragment>
+  <View>
     <OfferModulePlaceholder size={LENGTH_L} numberOfTiles={4} />
     <Spacer.Column numberOfSpaces={6} />
     <OfferModulePlaceholder size={LENGTH_M} numberOfTiles={5} />
@@ -34,100 +32,68 @@ export const HomeBodyPlaceholder = () => (
     <OfferModulePlaceholder size={LENGTH_M} numberOfTiles={5} />
     <Spacer.Column numberOfSpaces={6} />
     <OfferModulePlaceholder size={LENGTH_L} numberOfTiles={4} />
-  </React.Fragment>
+  </View>
 )
+
 const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }> = ({
   size,
   numberOfTiles,
-}) => {
-  return (
-    <Row>
-      <Spacer.Row numberOfSpaces={6} />
-      <View>
-        <ModuleTitlePlaceholder />
-        <Spacer.Column numberOfSpaces={4} />
-        <Row>
-          {new Array(numberOfTiles).fill(null).map((_, index) => (
-            <React.Fragment key={`placeholder-${index}`}>
-              <OfferTilePlaceholder size={size} />
-              <Spacer.Row numberOfSpaces={4} />
-            </React.Fragment>
-          ))}
-        </Row>
-      </View>
-    </Row>
-  )
-}
+}) => (
+  <Row>
+    <Spacer.Row numberOfSpaces={6} />
+    <View>
+      <ModuleTitlePlaceholder />
+      <Spacer.Column numberOfSpaces={4} />
+      <Row>
+        {new Array(numberOfTiles).fill(null).map((_, index) => (
+          <React.Fragment key={`placeholder-${index}`}>
+            <OfferTilePlaceholder size={size} />
+            <Spacer.Row numberOfSpaces={4} />
+          </React.Fragment>
+        ))}
+      </Row>
+    </View>
+  </Row>
+)
 
 const ModuleTitlePlaceholder = () => (
-  <ContentLoader
-    height={getSpacing(4)}
-    width={getSpacing(40)}
-    speed={1}
-    backgroundColor={UniqueColors.BACKGROUND_COLOR}
-    foregroundColor={UniqueColors.FOREGROUND_COLOR}>
-    <Rect rx={2} ry={2} width={getSpacing(40)} height={getSpacing(4)} />
-  </ContentLoader>
+  <SkeletonTile width={getSpacing(40)} height={getSpacing(4)} borderRadius={2} />
 )
 
 const OfferTilePlaceholder = ({ size }: { size: TileSize }) => {
   const height = size + PixelRatio.roundToNearestPixel(MARGIN_DP)
   const width = size * RATIO_ALGOLIA
   return (
-    <ContentLoader
-      height={height + getSpacing(10)}
-      width={width}
-      speed={1}
-      backgroundColor={UniqueColors.BACKGROUND_COLOR}
-      foregroundColor={UniqueColors.FOREGROUND_COLOR}>
-      <G>
-        <BasePlaceholder height={height} width={width} />
-      </G>
-      <G y={height + getSpacing(2)}>
-        <TextPlaceholder width={0.8 * width} />
-      </G>
-      <G y={height + getSpacing(7)}>
-        <TextPlaceholder width={0.3 * width} />
-      </G>
-    </ContentLoader>
+    <View>
+      <BasePlaceholder height={height} width={width} />
+      <Spacer.Column numberOfSpaces={2} />
+      <TextPlaceholder width={0.8 * width} />
+      <Spacer.Column numberOfSpaces={2} />
+      <TextPlaceholder width={0.3 * width} />
+      <Spacer.Column numberOfSpaces={2} />
+    </View>
   )
 }
 
 const BasePlaceholder = ({ height, width }: { height: number; width: number }) => (
-  <Rect
-    rx={BorderRadiusEnum.BORDER_RADIUS}
-    ry={BorderRadiusEnum.BORDER_RADIUS}
-    height={height}
-    width={width}
+  <SkeletonTile borderRadius={BorderRadiusEnum.BORDER_RADIUS} height={height} width={width} />
+)
+
+const TextPlaceholder = ({ width, height }: { width: number; height?: number }) => (
+  <SkeletonTile height={height ?? getSpacing(3)} width={width} borderRadius={2} />
+)
+
+const businessWidth = Dimensions.get('window').width - 2 * MARGIN_DP
+const businessHeight = PixelRatio.roundToNearestPixel(businessWidth * RATIO_BUSINESS)
+const BusinessModulePlaceholder = () => (
+  <SkeletonTile
+    height={businessHeight}
+    width={businessWidth}
+    borderRadius={BorderRadiusEnum.BORDER_RADIUS}
   />
 )
-const TextPlaceholder = ({ width, height }: { width: number; height?: number }) => (
-  <Rect rx={2} ry={2} height={height ?? getSpacing(3)} width={width} />
-)
 
-const BusinessModulePlaceholder = () => {
-  const width = Dimensions.get('window').width - 2 * MARGIN_DP
-  const height = PixelRatio.roundToNearestPixel(width * RATIO_BUSINESS)
-  return (
-    <ContentLoader
-      height={height}
-      width={width}
-      speed={1}
-      backgroundColor={UniqueColors.BACKGROUND_COLOR}
-      foregroundColor={UniqueColors.FOREGROUND_COLOR}>
-      <Rect
-        rx={BorderRadiusEnum.BORDER_RADIUS}
-        ry={BorderRadiusEnum.BORDER_RADIUS}
-        width={width}
-        height={height}
-      />
-    </ContentLoader>
-  )
-}
-
-const Row = styled.View({
-  flexDirection: 'row',
-})
+const Row = styled.View({ flexDirection: 'row' })
 
 const CenterContainer = styled.View({
   flex: 1,
