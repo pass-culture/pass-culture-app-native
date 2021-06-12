@@ -9,7 +9,5 @@
 		<string>applinks:$(UNIVERSAL_LINK)</string>
 		<string>applinks:$(FIREBASE_DYNAMIC_LINK)</string>
 	</array>
-	<key>com.apple.developer.networking.wifi-info</key>
-	<true/>
 </dict>
 </plist>

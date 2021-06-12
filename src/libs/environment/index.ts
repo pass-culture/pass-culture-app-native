@@ -37,8 +37,6 @@ export interface Environment {
   SIGNIN_PASSWORD: string
   SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string
-  TMX_FP_SERVER: string
-  TMX_ORG_ID: string
   UNIVERSAL_LINK: string
   URL_PREFIX: string
   WEBAPP_URL: string
