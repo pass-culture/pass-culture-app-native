@@ -101,6 +101,3 @@ scripts/multipleSimulatorsStartup.sh
 android/sentry.properties
 ios/sentry.properties
 sourcemaps/*
-
-# packages
-pass-culture-react-native-profiling-*.tgz
