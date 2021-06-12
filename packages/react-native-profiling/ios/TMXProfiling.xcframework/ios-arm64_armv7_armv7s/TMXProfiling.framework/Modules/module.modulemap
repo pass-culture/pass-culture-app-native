@@ -1,6 +1,0 @@
-framework module TMXProfiling {
-  umbrella header "TMXProfiling.h"
-
-  export *
-  module * { export * }
-}
