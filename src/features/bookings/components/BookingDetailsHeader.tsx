@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Animated } from 'react-native'
@@ -50,7 +51,12 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <IconContainer>
-            <HeaderIcon animationState={animationState} iconName="back" onPress={goBack} />
+            <HeaderIcon
+              animationState={animationState}
+              iconName="back"
+              onPress={goBack}
+              testID={t`Revenir en arrière`}
+            />
           </IconContainer>
 
           <Title style={{ opacity: headerTransition }}>

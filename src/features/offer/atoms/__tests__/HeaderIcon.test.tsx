@@ -27,6 +27,7 @@ const DummyComponent: React.FC = () => {
         iconName="back"
         onPress={() => null}
         animationState={{ iconBackgroundColor, iconBorderColor, transition: animatedValue }}
+        testID="Revenir en arrière"
       />
     </TouchableOpacity>
   )

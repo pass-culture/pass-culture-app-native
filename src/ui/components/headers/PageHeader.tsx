@@ -1,9 +1,11 @@
+import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { testID } from 'tests/utils'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -28,7 +30,10 @@ const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
     goBack()
   }
   return (
-    <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={onPress}>
+    <TouchableOpacity
+      activeOpacity={ACTIVE_OPACITY}
+      onPress={onPress}
+      {...testID(t`Revenir en arrière`)}>
       <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
     </TouchableOpacity>
   )

@@ -601,6 +601,7 @@ Tous les détails du film sur AlloCiné:
                           }
                         >
                           <View
+                            accessibilityLabel="Revenir en arrière"
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}
@@ -615,6 +616,7 @@ Tous les détails du film sur AlloCiné:
                                 "opacity": 1,
                               }
                             }
+                            testID="Revenir en arrière"
                           >
                             <View
                               height={32}

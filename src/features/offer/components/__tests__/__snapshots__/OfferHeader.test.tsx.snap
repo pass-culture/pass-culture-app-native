@@ -56,6 +56,7 @@ Array [
         }
       />
       <View
+        accessibilityLabel="Revenir en arrière"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -70,6 +71,7 @@ Array [
             "opacity": 1,
           }
         }
+        testID="Revenir en arrière"
       >
         <View
           style={
@@ -212,6 +214,7 @@ Array [
         }
       />
       <View
+        accessibilityLabel="Partager"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -226,6 +229,7 @@ Array [
             "opacity": 1,
           }
         }
+        testID="Partager"
       >
         <View
           style={
@@ -310,6 +314,7 @@ Array [
         }
       />
       <View
+        accessibilityLabel="Mettre en favoris"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -324,6 +329,7 @@ Array [
             "opacity": 1,
           }
         }
+        testID="Mettre en favoris"
       >
         <View
           style={
