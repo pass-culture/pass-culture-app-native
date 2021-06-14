@@ -18,6 +18,7 @@ import { BeneficiaryRequestSent } from 'features/auth/signup/BeneficiaryRequestS
 import { EligibilityConfirmed } from 'features/auth/signup/EligibilityConfirmed'
 import { IdCheck } from 'features/auth/signup/IdCheck'
 import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
+import { NextBeneficiaryStep } from 'features/auth/signup/NextBeneficiaryStep'
 import { PhoneValidation } from 'features/auth/signup/PhoneValidation'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidationTooManyAttempts'
 import { SetBirthday } from 'features/auth/signup/SetBirthday'
@@ -126,6 +127,7 @@ const routes: Array<Route> = [
   { name: 'SignupConfirmationEmailSent', component: SignupConfirmationEmailSent },
   { name: 'SignupConfirmationExpiredLink', component: SignupConfirmationExpiredLink },
   { name: 'TabNavigator', component: TabNavigator },
+  { name: 'NextBeneficiaryStep', component: NextBeneficiaryStep },
   { name: 'PhoneValidation', component: PhoneValidation },
   { name: 'PhoneValidationTooManyAttempts', component: PhoneValidationTooManyAttempts },
   { name: 'VerifyEligibility', component: VerifyEligibility },

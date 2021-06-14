@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import { Keyboard, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -41,21 +41,22 @@ export const Login: FunctionComponent = function () {
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
   const signIn = useSignIn()
   const { isLoggedIn } = useAuthContext()
-
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const complexGoBack = useBackNavigation()
 
-  useFocusEffect(() => {
-    if (params?.follow) {
-      const { screen, params: idCheckParams } = params.follow
-      if (isLoggedIn && screen) {
-        navigate(screen, idCheckParams)
+  useFocusEffect(
+    useCallback(() => {
+      if (params?.follow) {
+        const { screen, params: idCheckParams } = params.follow
+        if (isLoggedIn && screen) {
+          navigate(screen, idCheckParams)
+        }
       }
-    }
-  })
+    }, [params?.follow])
+  )
 
   async function handleSignin() {
     setIsLoading(true)
