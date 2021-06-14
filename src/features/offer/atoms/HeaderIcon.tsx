@@ -2,6 +2,7 @@ import React from 'react'
 import { Animated, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { testID } from 'tests/utils'
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'
@@ -20,6 +21,7 @@ interface HeaderIconProps {
     iconBorderColor: Animated.AnimatedInterpolation
     transition: Animated.AnimatedInterpolation
   }
+  testID: string
 }
 
 const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface> => {
@@ -33,7 +35,7 @@ export const HeaderIcon = (props: HeaderIconProps) => {
   const Icon = getIcon(props.iconName)
 
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={props.onPress}>
+    <TouchableOpacity activeOpacity={0.5} onPress={props.onPress} {...testID(props.testID)}>
       <StyledAnimatedView
         testID="headerIconRoundContainer"
         style={{

@@ -102,7 +102,12 @@ export const OfferHeader: React.FC<Props> = (props) => {
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <Spacer.Row numberOfSpaces={6} />
-          <HeaderIcon animationState={animationState} iconName="back" onPress={goBack} />
+          <HeaderIcon
+            animationState={animationState}
+            iconName="back"
+            onPress={goBack}
+            testID={t`Revenir en arrière`}
+          />
           <Spacer.Row numberOfSpaces={3} />
           <Spacer.Row testID="leftShareIconPlaceholder" numberOfSpaces={10} />
           <Spacer.Flex />
@@ -112,7 +117,12 @@ export const OfferHeader: React.FC<Props> = (props) => {
           </Title>
 
           <Spacer.Flex />
-          <HeaderIcon animationState={animationState} iconName="share" onPress={shareOffer} />
+          <HeaderIcon
+            animationState={animationState}
+            iconName="share"
+            onPress={shareOffer}
+            testID={t`Partager`}
+          />
           <Spacer.Row numberOfSpaces={3} />
           <HeaderIcon
             animationState={animationState}
@@ -120,6 +130,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             initialColor={favorite ? ColorsEnum.PRIMARY : undefined}
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
+            testID={t`Mettre en favoris`}
           />
           <Spacer.Row numberOfSpaces={6} />
         </Row>

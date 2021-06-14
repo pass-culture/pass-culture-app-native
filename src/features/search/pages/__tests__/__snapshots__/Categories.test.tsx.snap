@@ -1173,6 +1173,7 @@ Array [
         }
       >
         <View
+          accessibilityLabel="Revenir en arrière"
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -1187,6 +1188,7 @@ Array [
               "opacity": 1,
             }
           }
+          testID="Revenir en arrière"
         >
           <View
             height={32}
