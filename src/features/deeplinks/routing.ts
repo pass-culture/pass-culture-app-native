@@ -83,7 +83,7 @@ export const DEEPLINK_TO_SCREEN_CONFIGURATION: DeepLinksToScreenConfiguration = 
         screen: 'Login',
         params: {
           follow: {
-            screen: 'PhoneValidation',
+            screen: 'NextBeneficiaryStep',
           },
         },
       }

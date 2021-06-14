@@ -168,7 +168,7 @@ describe('DEEPLINK_TO_SCREEN_CONFIGURATION', () => {
       expect(configureScreen.screen).toBe('Login')
       expect(configureScreen.params).toEqual({
         follow: {
-          screen: 'PhoneValidation',
+          screen: 'NextBeneficiaryStep',
         },
       })
     })

@@ -50,8 +50,8 @@ export type RootStackParamList = {
     | {
         preventCancellation?: boolean
         follow?: {
-          screen: 'PhoneValidation'
-          params?: RootStackParamList['PhoneValidation']
+          screen: 'NextBeneficiaryStep'
+          params?: RootStackParamList['NextBeneficiaryStep']
         }
       }
     | undefined
@@ -72,6 +72,7 @@ export type RootStackParamList = {
   LegalNotices: undefined
   LocationFilter: undefined
   LocationPicker: undefined
+  NextBeneficiaryStep: undefined
   Profile: undefined
   PersonalData: undefined
   SearchCategories: undefined
