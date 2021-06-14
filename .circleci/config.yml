@@ -149,6 +149,52 @@ jobs:
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
 
+
+  build-android-testing-hard:
+    docker:
+      - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
+    working_directory: ~/pass-culture
+    resource_class: medium+
+    steps:
+      - checkout
+      - install_node_modules
+      - install_ruby_modules
+      - run:
+          name: Setup android keystore for testing environment
+          command: |
+            mkdir -p android/keystores
+            echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
+            echo "keyAlias=passculture" >> android/keystores/testing.keystore.properties
+            echo "storeFile=testing.keystore" >> android/keystores/testing.keystore.properties
+            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
+            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
+      - setup_android_google_services_config
+      - run:
+          name: Build Android App for testing environment
+          command: bundle exec fastlane android build --env testing --verbose
+
+  build-ios-testing-hard:
+    macos:
+      xcode: '12.0.1'
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - 'c2:ef:26:74:b8:dd:d6:3e:be:9b:ea:1a:cb:a1:a3:c3'
+      - install_node_version
+      - install_node_modules
+      - install_ruby_modules
+      - install_cocoapods
+      - decode_match_secrets
+      - run:
+          name: Setup iOS Google services config
+          command: echo $IOS_GOOGLE_SERVICES_PLIST_TESTING > ios/GoogleService-Info.plist
+      - run:
+          name: Build IOS App for testing environment
+          no_output_timeout: 30m
+          command: bundle exec fastlane ios build --env testing --verbose
+
   deploy-android-testing-hard:
     docker:
       - image: circleci/android@sha256:1be18bcc7582be501a1986bb222561298c7f7760673a50c21d5ec782b5d70b45
@@ -355,6 +401,22 @@ workflows:
             branches:
               only:
                 - master
+          requires:
+            - run-tests
+      - build-android-testing-hard:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: master
+          requires:
+            - run-tests
+      - build-ios-testing-hard:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: master
           requires:
             - run-tests
       - deploy-android-testing-hard:
