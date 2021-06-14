@@ -29,6 +29,7 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
   const bookings = props.bookings || emptyBookings
   const onGoingBookingsCount = bookings.length
   const hasBookings = onGoingBookingsCount > 0
+  const hasEndedBookings = (props.endedBookings || []).length > 0
   const bookingsCountLabel = plural(onGoingBookingsCount, {
     one: '# réservation en cours',
     other: '# réservations en cours',
@@ -45,7 +46,7 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
         <EndedBookingsSection endedBookings={props.endedBookings} />
       </FooterContainer>
     ),
-    [hasBookings, bookingsCountLabel]
+    [hasBookings, bookingsCountLabel, props.endedBookings]
   )
 
   const logBookingsScrolledToBottom = useFunctionOnce(analytics.logBookingsScrolledToBottom)
@@ -57,7 +58,7 @@ export function OnGoingBookingsList(props: OnGoingBookingsListProps) {
   }
 
   return (
-    <Container flex={hasBookings ? 1 : undefined}>
+    <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
       <FlatList
         testID="OnGoingBookingsList"
         keyExtractor={keyExtractor}
