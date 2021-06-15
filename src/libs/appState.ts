@@ -7,11 +7,12 @@ export const useAppStateChange = (
   deps: DependencyList | undefined = []
 ) => {
   const appState = useRef(AppState.currentState)
-  const handleAppStateChange = (nextAppState: AppStateStatus) => {
-    if (appState.current === 'active' && nextAppState.match(/inactive|background/)) {
+
+  function handleAppStateChange(nextAppState: AppStateStatus) {
+    if (isActive(appState.current) && isInactiveOrBackground(nextAppState)) {
       onAppBecomeInactive()
     }
-    if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
+    if (isInactiveOrBackground(appState.current) && isActive(nextAppState)) {
       onAppBecomeActive()
     }
     appState.current = nextAppState
@@ -24,4 +25,12 @@ export const useAppStateChange = (
     }
   }, deps)
   return appState
+}
+
+function isActive(stateStatus: AppStateStatus) {
+  return stateStatus === 'active'
+}
+
+function isInactiveOrBackground(stateStatus: AppStateStatus) {
+  return stateStatus === 'inactive' || stateStatus === 'background'
 }
