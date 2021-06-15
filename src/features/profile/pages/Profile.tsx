@@ -65,17 +65,19 @@ export const Profile: React.FC = () => {
   } = useGeolocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(false)
 
-  useFocusEffect(() => {
-    triggerPositionUpdate()
-    if (positionError) {
-      new MonitoringError('Position is unavailable', 'NoPositionProfilePage')
-    }
-    if (permissionState === GeolocPermissionState.GRANTED) {
-      setIsGeolocSwitchActive(true)
-    } else {
-      setIsGeolocSwitchActive(false)
-    }
-  })
+  useFocusEffect(
+    useCallback(() => {
+      if (positionError) {
+        new MonitoringError('Position is unavailable', 'NoPositionProfilePage')
+      }
+      if (permissionState === GeolocPermissionState.GRANTED) {
+        triggerPositionUpdate()
+        setIsGeolocSwitchActive(true)
+      } else {
+        setIsGeolocSwitchActive(false)
+      }
+    }, [positionError, permissionState])
+  )
 
   const {
     visible: isGeolocPermissionModalVisible,
