@@ -81,16 +81,16 @@ describe('useGeolocation()', () => {
     renderGeolocationHook()
 
     await waitFor(() => {
-      expect(mockGetPosition).toBeCalledTimes(1)
+      expect(mockGetPosition).not.toBeCalled()
     })
   })
 
-  it('should call get position when permission is blocked', async () => {
+  it('should not get position when permission is blocked', async () => {
     jest.spyOn(permissions, 'check').mockResolvedValueOnce('blocked')
     renderGeolocationHook()
 
     await waitFor(() => {
-      expect(mockGetPosition).toBeCalledTimes(1)
+      expect(mockGetPosition).not.toBeCalled()
     })
   })
 })

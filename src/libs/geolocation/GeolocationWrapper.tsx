@@ -58,16 +58,14 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   async function contextualRequestGeolocPermission(params?: RequestGeolocPermissionParams) {
     const newPermissionState = await requestGeolocPermission()
     setPermissionState(newPermissionState)
-    triggerPositionUpdate()
 
-    if (params?.onSubmit) {
-      params.onSubmit()
-    }
-    const isPermissionGranted = newPermissionState === GeolocPermissionState.GRANTED
-    if (isPermissionGranted && params?.onAcceptance) {
-      params.onAcceptance()
-    } else if (!isPermissionGranted && params?.onRefusal) {
-      params.onRefusal()
+    !!params?.onSubmit && params.onSubmit()
+
+    if (isGranted(newPermissionState)) {
+      triggerPositionUpdate()
+      !!params?.onAcceptance && params.onAcceptance()
+    } else {
+      !!params?.onRefusal && params.onRefusal()
     }
   }
 
@@ -75,7 +73,9 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
   // storage choice is consistent with phone permissions, and update position if not
   async function contextualCheckPermission() {
     const newPermissionState: GeolocPermissionState = await checkGeolocPermission()
-    triggerPositionUpdate()
+    if (isGranted(newPermissionState)) {
+      triggerPositionUpdate()
+    }
     setPermissionState(newPermissionState)
   }
 
@@ -109,4 +109,8 @@ export const GeolocationWrapper = ({ children }: { children: Element }) => {
 
 export function useGeolocation(): IGeolocationContext {
   return useContext(GeolocationContext)
+}
+
+function isGranted(permissionState: GeolocPermissionState) {
+  return permissionState === GeolocPermissionState.GRANTED
 }
