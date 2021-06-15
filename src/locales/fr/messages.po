@@ -460,6 +460,10 @@ msgstr "Des offres pour tous"
 msgid "Distance"
 msgstr "Distance"
 
+#: src/features/profile/components/IdCheckProcessingBadge.tsx
+msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes entrain de l’analyser !"
+msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes entrain de l’analyser !"
+
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/home/atoms/OfferCaption.tsx
@@ -1443,10 +1447,6 @@ msgstr "Télécharger la dernière version"
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Un lien ne fonctionne pas ?"
 msgstr "Un lien ne fonctionne pas ?"
-
-#: src/features/profile/components/IdCheckProcessingBadge.tsx
-msgid "Un peu de patience. En raison du grand nombre de demandes ton dossier doit être analysé manuellement par nos équipes."
-msgstr "Un peu de patience. En raison du grand nombre de demandes ton dossier doit être analysé manuellement par nos équipes."
 
 #: src/features/auth/signup/AcceptCgu.tsx
 #: src/features/auth/signup/AcceptCgu.tsx
