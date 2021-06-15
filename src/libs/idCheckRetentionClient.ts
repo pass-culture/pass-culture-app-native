@@ -62,21 +62,26 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
           error = new IdCheckApiError(err.content.message, err.statusCode, {
             code: IdCheckErrors['auth-required'],
           })
-        } else if (err.content.code === 'FILE_SIZE_EXCEEDED') {
-          error = new IdCheckApiError(err.content.message, err.statusCode, {
-            code: IdCheckErrors['file-size-exceeded'],
-          })
-          errorMonitoring.captureMessage(`[retention] restore queryParams`)
-          if (queryParams) {
-            errorMonitoring.captureMessage(
-              `[retention] save queryParams ${JSON.stringify(queryParams)}`
-            )
-            await LocalStorageService.saveQueryParams(queryParams)
-          }
         } else if (err.content.code === 'SERVICE_UNAVAILABLE') {
           error = new IdCheckApiError(err.content.message, err.statusCode, {
             code: IdCheckErrors['validation-unavailable'],
           })
+        }
+      }
+      if (
+        (err instanceof ApiError && err.content.code === 'FILE_SIZE_EXCEEDED') ||
+        err.status === 413 ||
+        err.statusCode === 413
+      ) {
+        error = new IdCheckApiError('File exceeded the maximum size of 10Mo', 413, {
+          code: IdCheckErrors['file-size-exceeded'],
+        })
+        errorMonitoring.captureMessage(`[retention] restore queryParams`)
+        if (queryParams) {
+          errorMonitoring.captureMessage(
+            `[retention] save queryParams ${JSON.stringify(queryParams)}`
+          )
+          await LocalStorageService.saveQueryParams(queryParams)
         }
       }
       errorMonitoring.captureMessage(
