@@ -35,7 +35,7 @@ print_usage(){
   echo "Usage : ./scripts/deploy [-e <env>] [-t hard|soft] [-o ios|android] [-h]
 
 Options:
-    -e               Environement to deploy, default staging
+    -e               Environment to deploy, default staging
     -t               Deployment type for feature envs, default soft
     -o               OS to deploy, default ios and android
     -h               Display this usage
