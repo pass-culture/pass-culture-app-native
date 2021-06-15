@@ -1,10 +1,14 @@
 import { t } from '@lingui/macro'
 import { Dispatch, SetStateAction } from 'react'
-import AgonTukGeolocation, { GeoCoordinates, PositionError } from 'react-native-geolocation-service'
+import AgonTukGeolocation, {
+  GeoCoordinates,
+  GeoOptions,
+  PositionError,
+} from 'react-native-geolocation-service'
 
 import { MonitoringError } from 'libs/errorMonitoring'
 
-const GET_POSITION_SETTINGS = {
+const GET_POSITION_SETTINGS: GeoOptions = {
   enableHighAccuracy: false,
   timeout: 20000,
   maximumAge: 10000,
@@ -42,13 +46,14 @@ export const getPosition = (
           setPosition(null)
           break
         case PositionError.POSITION_UNAVAILABLE:
-          // since we don't know if the previous request was successful
-          // we do nothing to avoid side effects with existing features
+          // Location provider not available
+          // or old iPhones (5s, 6s confirmed) only : global localisation setting is off with message "Location service is turned off"
           setPositionError({ type: code, message: GEOLOCATION_USER_ERROR_MESSAGE[code] })
           new MonitoringError(message, 'PositionError_PositionUnavailable')
           break
         case PositionError.TIMEOUT:
-          // TODO: we could implement a retry pattern if we got time ??
+          // Location request timed out
+          // TODO: we could implement a retry pattern
           setPositionError({ type: code, message: GEOLOCATION_USER_ERROR_MESSAGE[code] })
           setPosition(null)
           new MonitoringError(message, 'PositionError_Timeout')
@@ -59,14 +64,13 @@ export const getPosition = (
           new MonitoringError(message, 'PositionError_PlayServiceNotAvailable')
           break
         case PositionError.SETTINGS_NOT_SATISFIED:
-          // global localisation parameter setting is off
-          // OR network is off
-          // OR offline id on
+          // Android only : location service is disabled or location mode is not appropriate for the current request
           setPositionError({ type: code, message: GEOLOCATION_USER_ERROR_MESSAGE[code] })
           setPosition(null)
           new MonitoringError(message, 'PositionError_SettingsNotSatisfied')
           break
         case PositionError.INTERNAL_ERROR:
+          /// Android only : library crashed for some reason or getCurrentActivity() returned null
           setPositionError({ type: code, message: GEOLOCATION_USER_ERROR_MESSAGE[code] })
           setPosition(null)
           new MonitoringError(message, 'PositionError_InternalError')
