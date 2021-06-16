@@ -12,6 +12,8 @@ import {
 } from 'features/auth/components/PasswordSecurityRules'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { env } from 'libs/environment'
+import { randomPassword } from 'libs/random'
 import { testID } from 'tests/utils'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -26,8 +28,14 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SetPassword'>
 
+let INITIAL_PASSWORD = ''
+
+if (__DEV__ && env.SIGNUP_RANDOM_PASSWORD) {
+  INITIAL_PASSWORD = randomPassword()
+}
+
 export const SetPassword: FunctionComponent<Props> = ({ route }) => {
-  const [password, setPassword] = useState('')
+  const [password, setPassword] = useState(INITIAL_PASSWORD)
   const { goBack, navigate } = useNavigation<UseNavigationType>()
   const email = route.params.email
   const isNewsletterChecked = route.params.isNewsletterChecked

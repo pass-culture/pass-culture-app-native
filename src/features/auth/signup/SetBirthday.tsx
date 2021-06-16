@@ -7,10 +7,10 @@ import styled from 'styled-components/native'
 
 import { useDepositAmount, useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
-// import { useAppSettings } from 'features/auth/settings'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
+import { env } from 'libs/environment'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -29,6 +29,18 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SetBirthday'>
 
+let INITIAL_DATE: Date | null = null
+let INITIAL_DAY: string | undefined = undefined
+let INITIAL_MONTH: string | undefined = undefined
+let INITIAL_YEAR: string | undefined = undefined
+
+if (__DEV__ && env.SIGNUP_DATE) {
+  INITIAL_DATE = new Date(env.SIGNUP_DATE) // '2003-01-01T00:00:00Z'
+  INITIAL_DAY = `${INITIAL_DATE.getDate()}`.padStart(2, '0')
+  INITIAL_MONTH = `${INITIAL_DATE.getMonth() + 1}`.padStart(2, '0')
+  INITIAL_YEAR = `${INITIAL_DATE.getFullYear()}`
+}
+
 const YOUNGEST_AGE = 16
 
 const MIN_DATE = new Date('1900-01-01T00:00:00Z')
@@ -42,10 +54,9 @@ interface State {
 }
 
 export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
-  // const { data: settings } = useAppSettings()
   const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
   const [state, setState] = useState<State>({
-    date: null,
+    date: INITIAL_DATE,
     isDateComplete: false,
     isDateValid: false,
     isTooYoung: false,
@@ -164,6 +175,9 @@ export const SetBirthday: FunctionComponent<Props> = ({ route }) => {
                   ref={dateInputRef}
                   minDate={MIN_DATE}
                   maxDate={maxDate}
+                  initialDay={INITIAL_DAY}
+                  initialMonth={INITIAL_MONTH}
+                  initialYear={INITIAL_YEAR}
                 />
                 {renderErrorMessages()}
               </DateInputContainer>
