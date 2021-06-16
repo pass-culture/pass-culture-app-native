@@ -122,7 +122,7 @@ export const FavoritesSorts: React.FC = () => {
 const contentContainerStyle: ViewStyle = {
   flexGrow: 1,
   paddingLeft: getSpacing(2),
-  paddingRight: getSpacing(6),
+  paddingRight: getSpacing(3),
 }
 
 const LabelContainer = styled.TouchableOpacity.attrs({
