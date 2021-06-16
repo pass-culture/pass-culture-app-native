@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator'
+import { env } from 'libs/environment'
 import { testID } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -22,8 +23,14 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SetPostalCode'>
 
+let INITIAL_POSTAL_CODE = ''
+
+if (__DEV__ && env.SIGNUP_POSTAL_CODE) {
+  INITIAL_POSTAL_CODE = env.SIGNUP_POSTAL_CODE // '93000'
+}
+
 export const SetPostalCode: FunctionComponent<Props> = ({ route }) => {
-  const [postalCode, setPostalCode] = useState('')
+  const [postalCode, setPostalCode] = useState(INITIAL_POSTAL_CODE)
   const [hasError, setHasError] = useState(false)
 
   const { navigate, goBack } = useNavigation<UseNavigationType>()

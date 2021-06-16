@@ -22,6 +22,9 @@ interface DateInputProps {
   onChangeValue?: (value: Date | null, dateValidation: DateValidation) => void
   minDate?: Date
   maxDate?: Date
+  initialDay?: string
+  initialMonth?: string
+  initialYear?: string
 }
 
 export interface DateInputRef {
@@ -62,9 +65,9 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   const monthInputRef = useRef<TextInput>(null)
   const yearInputRef = useRef<TextInput>(null)
 
-  const [day, setDay] = useState('')
-  const [month, setMonth] = useState('')
-  const [year, setYear] = useState('')
+  const [day, setDay] = useState(props.initialDay || '')
+  const [month, setMonth] = useState(props.initialMonth || '')
+  const [year, setYear] = useState(props.initialYear || '')
 
   const dateValidation: DateValidation = {
     isComplete: false,

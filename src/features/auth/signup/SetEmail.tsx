@@ -8,6 +8,8 @@ import { useSignInNumberOfSteps } from 'features/auth/api'
 import { QuitSignupModal, SignupSteps } from 'features/auth/components/QuitSignupModal'
 import { useBackNavigation } from 'features/navigation/backNavigation'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { env } from 'libs/environment'
+import { randomAlphaString } from 'libs/random'
 import { testID } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,8 +25,14 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
 
+let INITIAL_EMAIL = ''
+
+if (__DEV__ && env.SIGNUP_RANDOM_EMAIL) {
+  INITIAL_EMAIL = `${randomAlphaString()}@${randomAlphaString()}.com`
+}
+
 export const SetEmail: FunctionComponent = () => {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState(INITIAL_EMAIL)
   const [hasError, setHasError] = useState(false)
   const [isNewsletterChecked, setIsNewsletterChecked] = useState(false)
 
