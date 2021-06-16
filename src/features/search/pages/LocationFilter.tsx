@@ -116,7 +116,6 @@ export const LocationFilter: React.FC = () => {
 const contentContainerStyle: ViewStyle = {
   flexGrow: 1,
   paddingLeft: getSpacing(2),
-  paddingRight: getSpacing(2),
 }
 
 const BannerContainer = styled.View({ marginHorizontal: getSpacing(6) })

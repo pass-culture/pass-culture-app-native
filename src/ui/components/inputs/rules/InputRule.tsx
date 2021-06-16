@@ -30,4 +30,5 @@ const StyledView = styled.View({
 
 const StyledTypoCaption = styled(Typo.Caption)({
   paddingLeft: getSpacing(1),
+  flexShrink: 1,
 })
