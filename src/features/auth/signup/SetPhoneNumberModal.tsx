@@ -59,6 +59,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
   >(null)
   const [countryCode, setCountryCode] = useState<CountryCode>('FR')
   const [phoneNumberPrefix, setPhoneNumberPrefix] = useState('33')
+  const [isCountryPickerVisible, setIsCountryPickerVisible] = useState(false)
   const {
     visible: quitSignupModalVisible,
     showModal: showQuitSignupModal,
@@ -132,6 +133,13 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     setPhoneNumberPrefix(country.callingCode[0])
   }
 
+  function openCountryPickerModal() {
+    setIsCountryPickerVisible(true)
+  }
+  function closeCountryPickerModal() {
+    setIsCountryPickerVisible(false)
+  }
+
   return (
     <AppModal
       visible={props.visible}
@@ -147,24 +155,31 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
           </Typo.Body>
         </Paragraphe>
         <Spacer.Column numberOfSpaces={8} />
-        <Spacer.Column numberOfSpaces={2} />
         <PhoneNumberInput>
-          <CountryPicker
-            countryCode={countryCode}
-            countryCodes={ALLOWED_COUNTRY_CODES}
-            onSelect={onSelectCountryCode}
-            translation={'fra'}
-            theme={{ ...DEFAULT_THEME, fontFamily: 'Montserrat-Bold', fontSize: getSpacing(3.75) }}
-            withCallingCode
-            withCallingCodeButton
-          />
-          <Spacer.Row numberOfSpaces={2} />
-          <Animated.View
-            style={{ transform: [{ rotateZ: `${Math.PI / 2}rad` }] }}
-            testID="accordionArrow">
-            <ArrowNext size={getSpacing(6)} />
-          </Animated.View>
-          <Spacer.Row numberOfSpaces={2} />
+          <CountryPickerPressable onPress={openCountryPickerModal}>
+            <CountryPicker
+              countryCode={countryCode}
+              countryCodes={ALLOWED_COUNTRY_CODES}
+              onSelect={onSelectCountryCode}
+              translation={'fra'}
+              theme={{
+                ...DEFAULT_THEME,
+                fontFamily: 'Montserrat-Bold',
+                fontSize: getSpacing(3.75),
+              }}
+              withCallingCode
+              withCallingCodeButton
+              modalProps={{ visible: isCountryPickerVisible }}
+              onClose={closeCountryPickerModal}
+              onOpen={openCountryPickerModal}
+            />
+            <Animated.View
+              style={{ transform: [{ rotateZ: `${Math.PI / 2}rad` }] }}
+              testID="accordionArrow">
+              <ArrowNext size={getSpacing(6)} />
+            </Animated.View>
+          </CountryPickerPressable>
+          <Spacer.Row numberOfSpaces={4} />
           <TextInput
             autoCapitalize="none"
             isError={false}
@@ -213,6 +228,10 @@ const PhoneNumberInput = styled.View({
   flexDirection: 'row',
   paddingHorizontal: getSpacing(14),
   alignItems: 'center',
+})
+
+const CountryPickerPressable = styled.TouchableOpacity({
+  flexDirection: 'row',
 })
 
 /**
