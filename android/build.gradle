@@ -42,6 +42,9 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://www.jitpack.io' }
+        flatDir {
+            dirs project( ':@pass-culture_react-native-profiling' ).file( 'libs' )
+        }
     }
 }
 
