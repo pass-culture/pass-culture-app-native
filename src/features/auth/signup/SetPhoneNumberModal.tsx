@@ -7,6 +7,7 @@ import CountryPicker, {
   CountryCode,
   DEFAULT_THEME,
 } from 'react-native-country-picker-modal'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { ApiError, extractApiErrorMessage } from 'api/helpers'
@@ -59,6 +60,7 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
   >(null)
   const [countryCode, setCountryCode] = useState<CountryCode>('FR')
   const [phoneNumberPrefix, setPhoneNumberPrefix] = useState('33')
+  const [shouldCountryPickerBeVisible, setShouldCountryPickerBeVisible] = useState(false)
   const {
     visible: quitSignupModalVisible,
     showModal: showQuitSignupModal,
@@ -132,6 +134,13 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
     setPhoneNumberPrefix(country.callingCode[0])
   }
 
+  function openCountryPickerModal() {
+    setShouldCountryPickerBeVisible(true)
+  }
+  function closeCountryPickerModal() {
+    setShouldCountryPickerBeVisible(false)
+  }
+
   return (
     <AppModal
       visible={props.visible}
@@ -147,22 +156,31 @@ export const SetPhoneNumberModal = (props: SetPhoneNumberModalProps) => {
           </Typo.Body>
         </Paragraphe>
         <Spacer.Column numberOfSpaces={8} />
-        <Spacer.Column numberOfSpaces={2} />
         <PhoneNumberInput>
-          <CountryPicker
-            countryCode={countryCode}
-            countryCodes={ALLOWED_COUNTRY_CODES}
-            onSelect={onSelectCountryCode}
-            translation={'fra'}
-            theme={{ ...DEFAULT_THEME, fontFamily: 'Montserrat-Bold', fontSize: getSpacing(3.75) }}
-            withCallingCode
-            withCallingCodeButton
-          />
+          <TouchableOpacity onPress={openCountryPickerModal}>
+            <CountryPicker
+              countryCode={countryCode}
+              countryCodes={ALLOWED_COUNTRY_CODES}
+              onSelect={onSelectCountryCode}
+              translation={'fra'}
+              theme={{
+                ...DEFAULT_THEME,
+                fontFamily: 'Montserrat-Bold',
+                fontSize: getSpacing(3.75),
+              }}
+              withCallingCode
+              withCallingCodeButton
+              modalProps={{ visible: shouldCountryPickerBeVisible }}
+              onClose={closeCountryPickerModal}
+            />
+          </TouchableOpacity>
           <Spacer.Row numberOfSpaces={2} />
           <Animated.View
             style={{ transform: [{ rotateZ: `${Math.PI / 2}rad` }] }}
             testID="accordionArrow">
-            <ArrowNext size={getSpacing(6)} />
+            <TouchableOpacity onPress={openCountryPickerModal}>
+              <ArrowNext size={getSpacing(6)} />
+            </TouchableOpacity>
           </Animated.View>
           <Spacer.Row numberOfSpaces={2} />
           <TextInput
