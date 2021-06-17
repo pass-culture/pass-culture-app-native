@@ -1832,10 +1832,10 @@
     react-native-image-picker "4.0.3"
     validator "^13.6.0"
 
-"@pass-culture/react-native-profiling@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@pass-culture/react-native-profiling/-/react-native-profiling-1.0.5.tgz#12a91e96572f1557f5dfae1e616ce2f4acb2061d"
-  integrity sha512-5ASF9WFZ6cOff4oI10mb1/lFXA0KnGNjBCi3WJ1wvBB0w4JX4O3Bn5wIE4rU1S7cV0no41CkPKjNPNPypz1S4A==
+"@pass-culture/react-native-profiling@1.0.14":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@pass-culture/react-native-profiling/-/react-native-profiling-1.0.14.tgz#8081a68e35e38a63406ae0033c9471d3ac68205d"
+  integrity sha512-J93kQe0JE67MGPmSzbX1RILguTKs/bgslRtgN0twI+3CqW7wpzSAwJkIx7o+1dYoPIED2hoLfi8/Y05poeOI7g==
 
 "@ptomasroos/react-native-multi-slider@^2.2.2":
   version "2.2.2"
