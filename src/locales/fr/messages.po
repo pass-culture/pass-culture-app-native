@@ -461,8 +461,8 @@ msgid "Distance"
 msgstr "Distance"
 
 #: src/features/profile/components/IdCheckProcessingBadge.tsx
-msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes entrain de l’analyser !"
-msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes entrain de l’analyser !"
+msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
+msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 #: src/features/bookOffer/components/BookDuoChoice.tsx
@@ -791,6 +791,7 @@ msgid "Mets cette offre en favoris : tu recevras une notification avec un lien p
 msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien pour la réserver sur notre application web !"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx
+#: src/features/offer/components/OfferHeader.tsx
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
@@ -954,6 +955,10 @@ msgstr "Paramètres de notifications"
 msgid "Paramètres du compte"
 msgstr "Paramètres du compte"
 
+#: src/features/offer/components/OfferHeader.tsx
+msgid "Partager"
+msgstr "Partager"
+
 #: src/features/search/components/locationChoice.utils.tsx
 msgid "Partout"
 msgstr "Partout"
@@ -1113,6 +1118,12 @@ msgstr "Retrouve toutes les offres autour de chez toi en activant les données d
 #: src/features/favorites/components/NoFavoritesResult.tsx
 msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
+
+#: src/features/bookings/components/BookingDetailsHeader.tsx
+#: src/features/offer/components/OfferHeader.tsx
+#: src/ui/components/headers/PageHeader.tsx
+msgid "Revenir en arrière"
+msgstr "Revenir en arrière"
 
 #: src/features/auth/signup/SetEmail.tsx
 msgid "Reçois nos recommandations culturelles à proximité de chez toi par e-mail."
