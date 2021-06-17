@@ -8,7 +8,7 @@ export function IdCheckProcessingBadge() {
   return (
     <ProfileBadge
       icon={Clock}
-      message={t`Dossier déposé, nous avons bien reçu ton dossier et sommes entrain de l’analyser !`}
+      message={t`Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !`}
     />
   )
 }
