@@ -1,8 +1,10 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import parsePhoneNumber from 'libphonenumber-js'
+import _ from 'lodash'
 import React, { FC, useEffect, useState } from 'react'
 import { Dimensions } from 'react-native'
+import TextInputMask from 'react-native-text-input-mask'
 import styled from 'styled-components/native'
 
 import { ApiError, extractApiErrorMessage } from 'api/helpers'
@@ -16,7 +18,6 @@ import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
-import { CodeInput, CodeValidation } from 'ui/components/inputs/CodeInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -24,7 +25,7 @@ import { Separator } from 'ui/components/Separator'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { contactSupport } from '../support.services'
 
@@ -39,8 +40,9 @@ export interface SetPhoneValidationCodeModalProps {
   onGoBack: () => void
 }
 
-interface CodeInputState extends CodeValidation {
-  code: string | null
+interface CodeInputState {
+  code: string
+  isValid: boolean
 }
 
 const TIMER = 60
@@ -48,8 +50,7 @@ const TIMER = 60
 export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> = (props) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const [codeInputState, setCodeInputState] = useState<CodeInputState>({
-    code: null,
-    isComplete: false,
+    code: '',
     isValid: false,
   })
   const [errorMessage, setErrorMessage] = useState('')
@@ -113,10 +114,11 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     setValidationCodeRequestTimestamp(now)
   }
 
-  function onChangeValue(value: string | null, validation: CodeValidation) {
+  function onChangeValue(_formatted: string, extracted?: string) {
+    const code = extracted ?? ''
     setCodeInputState({
-      code: value,
-      ...validation,
+      code: code,
+      isValid: isCodeValid(code),
     })
   }
 
@@ -151,6 +153,16 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
     '\n' +
     t`Attention tu n'as que 3 tentatives.`
 
+  function getDashColor(index: number) {
+    if (codeInputState.code?.length > index) {
+      return ColorsEnum.GREEN_VALID
+    }
+    if (errorMessage) {
+      return ColorsEnum.ERROR
+    }
+    return ColorsEnum.GREY_MEDIUM
+  }
+
   if (error) {
     throw error
   }
@@ -171,14 +183,20 @@ export const SetPhoneValidationCodeModal: FC<SetPhoneValidationCodeModalProps> =
           <Typo.Body>{validationCodeInformation}</Typo.Body>
         </Paragraphe>
         <Spacer.Column numberOfSpaces={6} />
-        <CodeInput
-          codeLength={CODE_INPUT_LENGTH}
-          placeholder={'0'}
-          enableValidation
-          isValid={isCodeValid}
-          isInputValid={isInputValid}
-          onChangeValue={onChangeValue}
-        />
+        <CodeInputContainer>
+          <CodeInput
+            onChangeText={onChangeValue}
+            placeholder={codeInputPlaceholder}
+            placeholderTextColor={ColorsEnum.GREY_DARK}
+            mask={codeInputMask}
+          />
+          <Spacer.Column numberOfSpaces={1} />
+          <CodeInputBorder>
+            {_.times(6, (number) => (
+              <CodeInputDash color={getDashColor(number)} />
+            ))}
+          </CodeInputBorder>
+        </CodeInputContainer>
         {errorMessage ? (
           <React.Fragment>
             <InputError visible messageId={errorMessage} numberOfSpacesTop={3} />
@@ -237,13 +255,35 @@ export const formatPhoneNumber = (phoneNumber: string) => {
   return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0')
 }
 
-const isCodeValid = (code: string | null, _isComplete: boolean) => {
+const isCodeValid = (code: string | null) => {
   return code !== null && !isNaN(Number(code)) && code.length === CODE_INPUT_LENGTH
 }
 
-const isInputValid = (inputValue: string, _position: number) => {
-  return !isNaN(Number(inputValue)) && inputValue.length === 1
-}
+const codeInputPlaceholder = ('0' + '\u00a0'.repeat(6)).repeat(5) + '0'
+const codeInputMask = ('[0]' + '\u00a0'.repeat(6)).repeat(5) + '[0]'
+
+const CodeInputBorder = styled.View({
+  flexDirection: 'row',
+})
+
+const CodeInputDash = styled.View<{ color: ColorsEnum }>(({ color }) => ({
+  background: color,
+  height: 5,
+  width: 32,
+  borderRadius: 22,
+  marginHorizontal: getSpacing(1),
+}))
+
+const CodeInput = styled(TextInputMask)({
+  fontSize: 20,
+  marginLeft: getSpacing(3),
+})
+
+const CodeInputContainer = styled.View({
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  width: 240,
+})
 
 const Break = styled.View({
   flexBasis: '100%',
