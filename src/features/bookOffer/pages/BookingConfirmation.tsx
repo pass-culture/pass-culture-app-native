@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
@@ -22,7 +22,7 @@ export function BookingConfirmation() {
 
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
-  const displayBookingDetails = () => {
+  const displayBookingDetails = useCallback(() => {
     analytics.logSeeMyBooking(params.offerId)
     reset({
       index: 1,
@@ -42,7 +42,7 @@ export function BookingConfirmation() {
         },
       ],
     })
-  }
+  }, [reset, params?.offerId, params?.bookingId])
 
   return (
     <GenericInfoPage
