@@ -24,6 +24,7 @@ import { api } from 'api/api'
 import { AuthWrapper } from 'features/auth/AuthContext'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
+import { useBlockForMaintenance } from 'features/maintenance/useMaintenance'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
@@ -76,6 +77,8 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
 const App: FunctionComponent = function () {
   useCampaignTracker()
   useStartBatchNotification()
+
+  useBlockForMaintenance()
 
   useEffect(() => {
     activate('fr')
