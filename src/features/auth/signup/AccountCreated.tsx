@@ -1,11 +1,13 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
+import appsFlyer from 'react-native-appsflyer'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { CampaignEvents } from 'libs/campaign/events'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -24,6 +26,10 @@ export function AccountCreated() {
       navigateToHome()
     }
   }
+
+  useEffect(() => {
+    if (user?.id) appsFlyer.logEvent(CampaignEvents.COMPLETE_REGISTRATION, { af_user_id: user?.id })
+  }, [user?.id])
 
   return (
     <GenericInfoPage title={t`Ton compte a été activé !`} animation={IlluminatedSmileyAnimation}>
