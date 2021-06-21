@@ -47,7 +47,7 @@ export const useHomeRecommendedHits = (
 
   const { data } = useQuery(
     QueryKeys.RECOMMENDATION_HITS,
-    async () => await fetchAlgoliaHits<AlgoliaHit>(ids),
+    async () => await fetchAlgoliaHits(ids),
     { enabled: ids.length > 0 }
   )
 

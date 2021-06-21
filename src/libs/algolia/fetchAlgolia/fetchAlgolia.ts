@@ -11,6 +11,21 @@ import { env } from 'libs/environment'
 
 const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
+// We don't use all the fields indexed. Simply retrieve the one we use.
+// see AlgoliaHit
+export const attributesToRetrieve = [
+  'offer.category',
+  'offer.dates',
+  'offer.description',
+  'offer.isDigital',
+  'offer.isDuo',
+  'offer.name',
+  'offer.prices',
+  'offer.thumbUrl',
+  'objectID',
+  '_geoloc',
+]
+
 const buildSearchParameters = ({
   aroundRadius = RADIUS_FILTERS.DEFAULT_RADIUS_IN_KILOMETERS,
   beginningDatetime = null,
@@ -54,38 +69,36 @@ export const fetchMultipleAlgolia = (
       ...buildHitsPerPage(parsedParameters.hitsPerPage),
       ...buildSearchParameters(parsedParameters),
       attributesToHighlight: [], // We disable highlighting because we don't need it
+      attributesToRetrieve,
     },
   }))
 
   return client.multipleQueries(queries)
 }
 
-export const fetchAlgolia = <T>({
+export const fetchAlgolia = ({
   query = '',
   page = 0,
   hitsPerPage = null,
-  attributesToRetrieve,
   ...parameters
-}: FetchAlgoliaParameters & { attributesToRetrieve?: string[] }): Readonly<
-  Promise<SearchResponse<T>>
-> => {
+}: FetchAlgoliaParameters): Readonly<Promise<SearchResponse<AlgoliaHit>>> => {
   const searchParameters = buildSearchParameters(parameters)
   const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
 
-  return index.search<T>(query, {
+  return index.search(query, {
     page,
     ...buildHitsPerPage(hitsPerPage),
     ...searchParameters,
-    attributesToRetrieve: attributesToRetrieve ?? ['*'],
+    attributesToRetrieve,
     attributesToHighlight: [], // We disable highlighting because we don't need it
   })
 }
 
-export const fetchAlgoliaHits = <T>(
+export const fetchAlgoliaHits = (
   objectIds: string[]
-): Readonly<Promise<GetObjectsResponse<T>>> => {
+): Readonly<Promise<GetObjectsResponse<AlgoliaHit>>> => {
   const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
-  return index.getObjects<T>(objectIds)
+  return index.getObjects(objectIds, { attributesToRetrieve })
 }
 
 const buildHitsPerPage = (hitsPerPage: FetchAlgoliaParameters['hitsPerPage']) =>
