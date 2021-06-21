@@ -283,7 +283,7 @@ const bottomScrollEvent = {
 }
 
 interface Options {
-  wrapper?: (({ children }: { children: Element }) => JSX.Element) | undefined
+  wrapper?: (({ children }: { children: JSX.Element }) => JSX.Element) | undefined
 }
 
 const defaultOptions = {

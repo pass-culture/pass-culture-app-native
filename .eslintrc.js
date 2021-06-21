@@ -15,6 +15,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true, // Allows for the parsing of JSX
     },
+    project: ['./tsconfig.json'],
+    tsconfigRootDir: __dirname,
   },
   rules: {
     'local-rules/no-allow-console': ['error'],
@@ -131,8 +133,12 @@ module.exports = {
   },
   env: {
     'react-native/react-native': true,
+    node: true,
+    browser: true,
+    jest: true,
+    serviceworker: true,
   },
-
+  ignorePatterns: ['build', '.*.js', '*.config.js', 'node_modules'],
   // TypeScript files overrides
   overrides: [
     {

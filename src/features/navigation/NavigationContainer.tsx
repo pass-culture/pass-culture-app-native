@@ -9,7 +9,7 @@ import { onNavigationStateChange } from './services'
 
 const NAV_THEME = { colors: { background: ColorsEnum.WHITE } } as Theme
 
-export const AppNavigationContainer: React.FC<{ children: Element }> = ({ children }) => {
+export const AppNavigationContainer: React.FC<{ children: JSX.Element }> = ({ children }) => {
   const [isRefDefined, setIsRefDefined] = useState(false)
 
   useEffect(() => {

@@ -10,7 +10,7 @@ export function useABTestingContext() {
   return useContext<CustomRemoteConfig>(Context)
 }
 
-export function ABTestingProvider(props: { children: Element }) {
+export function ABTestingProvider(props: { children: JSX.Element }) {
   const [contextValue, setContextValue] = useState<CustomRemoteConfig>(DEFAULT_REMOTE_CONFIG)
 
   useEffect(() => {

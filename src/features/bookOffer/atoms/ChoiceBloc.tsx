@@ -32,7 +32,7 @@ interface Props {
   selected: boolean
   onPress: () => void
   testID?: string
-  children: Element
+  children: JSX.Element
   disabled?: boolean
 }
 

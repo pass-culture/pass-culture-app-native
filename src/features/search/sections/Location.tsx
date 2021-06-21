@@ -32,14 +32,14 @@ export const Location: React.FC = () => {
         <Typo.ButtonText>{label}</Typo.ButtonText>
         <ArrowNext size={24} />
       </LocationContentContainer>
-      {locationType === LocationType.AROUND_ME && (
+      {locationType === LocationType.AROUND_ME ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Caption color={ColorsEnum.GREY_DARK}>
             {t`Seules les sorties et offres physiques seront affichées`}
           </Typo.Caption>
         </React.Fragment>
-      )}
+      ) : null}
     </Section>
   )
 }

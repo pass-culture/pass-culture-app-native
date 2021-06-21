@@ -50,7 +50,7 @@ describe('getRefreshToken()', () => {
   })
 
   it('should return false when no credentials are found', async () => {
-    Keychain.getGenericPassword.mockImplementationOnce(async () => false)
+    Keychain.getGenericPassword.mockImplementationOnce(async () => false as any)
 
     const refreshToken = await getRefreshToken()
 

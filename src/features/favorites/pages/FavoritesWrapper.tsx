@@ -8,7 +8,7 @@ import {
 
 export const FavoritesContext = React.createContext<FavoritesContextType | null>(null)
 
-export const FavoritesWrapper = ({ children }: { children: Element }) => {
+export const FavoritesWrapper = ({ children }: { children: JSX.Element }) => {
   const [contextValueWithoutDispatch, dispatch] = useReducer(
     favoritesReducer,
     initialFavoritesState

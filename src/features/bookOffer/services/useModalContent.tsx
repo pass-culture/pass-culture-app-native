@@ -14,7 +14,7 @@ import { useBooking, useBookingOffer } from '../pages/BookingOfferWrapper'
 import { Step } from '../pages/reducer'
 
 interface ModalContent {
-  children: Element
+  children: JSX.Element
   title: string
   leftIcon: React.FC<IconInterface> | undefined
   onLeftIconPress: (() => void) | undefined

@@ -9,7 +9,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type SectionRowProps = {
   title: string
-  renderTitle?: (title: string) => Element
+  renderTitle?: (title: string) => JSX.Element
   ctaIconSize?: number
   icon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>

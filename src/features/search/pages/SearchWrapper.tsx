@@ -17,7 +17,7 @@ export interface ISearchContext {
 
 export const SearchContext = React.createContext<ISearchContext | null>(null)
 
-export const SearchWrapper = ({ children }: { children: Element }) => {
+export const SearchWrapper = ({ children }: { children: JSX.Element }) => {
   const { position } = useGeolocation()
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
   const [stagedSearchState, stagedDispatch] = useReducer(searchReducer, initialSearchState)

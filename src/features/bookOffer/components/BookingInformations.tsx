@@ -103,7 +103,7 @@ export const BookingInformations: React.FC = () => {
 
 const Item: React.FC<{
   Icon: React.FC<IconInterface>
-  message: Element | string
+  message: JSX.Element | string
   subtext?: string
 }> = ({ Icon, message, subtext = '' }) => (
   <Row>

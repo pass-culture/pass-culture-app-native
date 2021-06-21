@@ -108,7 +108,7 @@ describe('useGeolocation()', () => {
 })
 
 function renderGeolocationHook() {
-  const wrapper = (props: { children: Element }) => (
+  const wrapper = (props: { children: JSX.Element }) => (
     <GeolocationWrapper>{props.children}</GeolocationWrapper>
   )
   return renderHook(useGeolocation, { wrapper })

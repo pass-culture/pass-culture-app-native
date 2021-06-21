@@ -39,7 +39,7 @@ export const GeolocationContext = React.createContext<IGeolocationContext>({
   triggerPositionUpdate: () => undefined,
 })
 
-export const GeolocationWrapper = ({ children }: { children: Element }) => {
+export const GeolocationWrapper = ({ children }: { children: JSX.Element }) => {
   const [position, setPosition] = useSafeState<GeoCoordinates | null>(null)
   const [positionError, setPositionError] = useSafeState<GeolocationError | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState>(
