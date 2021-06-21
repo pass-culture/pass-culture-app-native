@@ -68,7 +68,7 @@ commands:
           name: Setup sentry credentials
           command: |
             echo "[defaults]" >> ~/.sentryclirc
-            echo "url=https://logs.passculture.app/" >> ~/.sentryclirc
+            echo "url=https://sentry.internal-passculture.app/" >> ~/.sentryclirc
             echo "org=sentry" >> ~/.sentryclirc
             echo "project=application-native" >> ~/.sentryclirc
             echo "" >> ~/.sentryclirc
@@ -148,7 +148,6 @@ jobs:
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
-
 
   build-android-production-hard:
     docker:
