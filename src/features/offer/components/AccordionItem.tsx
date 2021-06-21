@@ -16,8 +16,8 @@ import { getSpacing, Typo } from 'ui/theme'
 import { useFunctionOnce } from '../services/useFunctionOnce'
 
 interface IAccordionItemProps {
-  title: Element | string
-  children: Element
+  title: JSX.Element | string
+  children: JSX.Element | JSX.Element[]
   defaultOpen?: boolean
   onOpen?: () => void
   onOpenOnce?: () => void

@@ -5,10 +5,10 @@ import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
 
 import { TitleWithCount } from './TitleWithCount'
 
-export const CenteredSection: React.FC<{ title: Element | string; children: Element }> = ({
-  title,
-  children,
-}) => (
+export const CenteredSection: React.FC<{
+  title: JSX.Element | string
+  children: JSX.Element | Array<JSX.Element | null>
+}> = ({ title, children }) => (
   <MarginHorizontalContainer>
     <Typo.Title4>{title}</Typo.Title4>
     <Spacer.Column numberOfSpaces={4} />
@@ -16,11 +16,11 @@ export const CenteredSection: React.FC<{ title: Element | string; children: Elem
   </MarginHorizontalContainer>
 )
 
-export const Section: React.FC<{ title: string; count: number; children: Element }> = ({
-  title,
-  count,
-  children,
-}) => (
+export const Section: React.FC<{
+  title: string
+  count: number
+  children: JSX.Element | Array<JSX.Element | null>
+}> = ({ title, count, children }) => (
   <MarginHorizontalContainer>
     <TitleWithCount title={title} count={count} />
     <Spacer.Column numberOfSpaces={4} />
@@ -29,9 +29,9 @@ export const Section: React.FC<{ title: string; count: number; children: Element
 )
 
 export const InlineSection: React.FC<{
-  title: Element | string
+  title: JSX.Element | string
   subtitle?: string
-  children: Element
+  children: JSX.Element | Array<JSX.Element | null>
   testID?: string
 }> = ({ title, subtitle, children, testID }) => (
   <MarginHorizontalContainer testID={testID}>

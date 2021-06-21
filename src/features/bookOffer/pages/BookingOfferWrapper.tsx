@@ -17,7 +17,7 @@ export interface IBookingContext {
 export const BookingContext = React.createContext<IBookingContext | null>(null)
 
 interface BookingWrapperProps {
-  children: Element
+  children: JSX.Element
   dismissModal: () => void
 }
 

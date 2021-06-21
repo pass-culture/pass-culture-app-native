@@ -83,7 +83,7 @@ describe('useInitialScreenConfig()', () => {
 
 async function renderUseInitialScreenConfig() {
   const wrapper = (props: { children: unknown }) => (
-    <SplashScreenProvider>{props.children as Element}</SplashScreenProvider>
+    <SplashScreenProvider>{props.children as JSX.Element}</SplashScreenProvider>
   )
   let testComponent: RenderHookResult<{ children: unknown }, void | undefined> | undefined
   await act(async () => {

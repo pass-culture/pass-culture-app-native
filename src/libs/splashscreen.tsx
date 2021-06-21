@@ -15,7 +15,7 @@ export function useSplashScreenContext() {
   return useContext<SplashScreenContext>(SplashScreenContext)
 }
 
-export function SplashScreenProvider(props: { children: Element }) {
+export function SplashScreenProvider(props: { children: JSX.Element }) {
   const [isSplashScreenHidden, setIsSplashScreenHidden] = useSafeState<boolean>(false)
 
   const hideSplashScreen = useCallback(() => {

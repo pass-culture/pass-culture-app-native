@@ -34,7 +34,7 @@ export function useAuthContext(): IAuthContext {
   return useContext(AuthContext)
 }
 
-export const AuthWrapper = ({ children }: { children: Element }) => {
+export const AuthWrapper = ({ children }: { children: JSX.Element }) => {
   const [isWaitingForLoggedInState, setIsWaitingForLoggedInState] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 

@@ -8,8 +8,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["ES6"],
+    "jsx": "react",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "ESNext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -18,8 +18,11 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "resolveJsonModule": true,
-    "target": "esnext",
-    "skipLibCheck": true
+    "target": "es5",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "downlevelIteration": true
   },
   "exclude": [
     "node_modules",

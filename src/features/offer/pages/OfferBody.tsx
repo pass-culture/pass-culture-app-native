@@ -120,7 +120,7 @@ export const OfferBody: FunctionComponent<{
 
 interface SectionProps {
   visible: boolean
-  children: Element
+  children: JSX.Element | JSX.Element[]
   margin?: boolean
 }
 

@@ -45,7 +45,9 @@ export const idCheckRetentionClient: IdCheckRetentionClient = {
     }
     try {
       const data = new FormData()
-      data.append('token', queryParams?.licenceToken)
+      if (queryParams?.licenceToken) {
+        data.append('token', queryParams.licenceToken)
+      }
       data.append('identityDocumentFile', file as Blob)
       return await api.postnativev1identityDocument({
         body: data,
