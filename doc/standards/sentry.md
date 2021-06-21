@@ -1,6 +1,6 @@
 # Error Monitoring with sentry
 
-Sentry helps us monitor crash and errors in the application. See our project [here](https://logs.passculture.app/organizations/sentry/issues/?project=6)
+Sentry helps us monitor crash and errors in the application. See our project [here](https://sentry.internal-passculture.app/organizations/sentry/issues/?project=6)
 
 ## Source maps
 
@@ -14,7 +14,7 @@ The build is configured to upload the source maps automatically, on every new re
 
 ```
 [defaults]
-url = https://logs.passculture.app/
+url = https://sentry.internal-passculture.app/
 org = sentry
 project = application-native
 
