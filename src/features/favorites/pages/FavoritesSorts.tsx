@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { analytics } from 'libs/analytics'
-import { MonitoringError } from 'libs/errorMonitoring'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -41,12 +40,11 @@ export const FavoritesSorts: React.FC = () => {
       setStagedSelectedSortBy(sortBy)
     }
     if (sortBy === 'AROUND_ME') {
+      if (!position && permissionState === GeolocPermissionState.GRANTED) {
+        return
+      }
       if (position) {
         return void updateSortBySelection()
-      }
-      if (!position && permissionState === GeolocPermissionState.GRANTED) {
-        new MonitoringError('Position is unavailable', 'NoPositionFavoritesSorts')
-        return
       }
       if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
         return void showGeolocPermissionModal()

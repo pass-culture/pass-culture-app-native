@@ -19,7 +19,6 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToBottom } from 'libs/analytics.utils'
 import { env } from 'libs/environment'
-import { MonitoringError } from 'libs/errorMonitoring'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { testID } from 'tests/utils'
@@ -67,9 +66,6 @@ export const Profile: React.FC = () => {
 
   useFocusEffect(
     useCallback(() => {
-      if (positionError) {
-        new MonitoringError('Position is unavailable', 'NoPositionProfilePage')
-      }
       if (permissionState === GeolocPermissionState.GRANTED) {
         triggerPositionUpdate()
         setIsGeolocSwitchActive(true)
