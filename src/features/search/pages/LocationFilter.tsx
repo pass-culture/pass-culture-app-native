@@ -9,7 +9,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { LocationChoice } from 'features/search/components/LocationChoice'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { LocationType } from 'libs/algolia'
-import { MonitoringError } from 'libs/errorMonitoring'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { Banner } from 'ui/components/Banner'
@@ -39,7 +38,6 @@ export const LocationFilter: React.FC = () => {
   const onPressAroundMe = async () => {
     if (position === null) {
       if (permissionState === GeolocPermissionState.GRANTED) {
-        new MonitoringError('Position is unavailable', 'NoPositionOfferSearchResults')
         return
       }
       if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
