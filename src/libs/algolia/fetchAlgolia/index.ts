@@ -1,4 +1,9 @@
-export { fetchAlgolia, fetchAlgoliaHits, fetchMultipleAlgolia } from './fetchAlgolia'
+export {
+  attributesToRetrieve,
+  fetchAlgolia,
+  fetchAlgoliaHits,
+  fetchMultipleAlgolia,
+} from './fetchAlgolia'
 export {
   filterAlgoliaHit,
   transformAlgoliaHit,

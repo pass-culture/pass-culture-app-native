@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { mergeOfferData } from 'features/home/atoms/OfferTile'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useDistance } from 'features/offer/components/useDistance'
-import { SearchAlgoliaHit } from 'libs/algolia'
+import { AlgoliaHit } from 'libs/algolia'
 import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import { analytics } from 'libs/analytics'
 import { formatDates, getDisplayPrice, parseCategory } from 'libs/parsers'
@@ -17,7 +17,7 @@ import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { OfferImage } from './OfferImage'
 
 interface Props {
-  hit: SearchAlgoliaHit
+  hit: AlgoliaHit
   query: string
 }
 
