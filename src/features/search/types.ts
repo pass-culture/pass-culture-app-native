@@ -1,6 +1,5 @@
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SuggestedPlace } from 'libs/place'
-import { AlgoliaGeolocation } from 'libs/search'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
 import { LocationType } from './enums'
@@ -16,7 +15,7 @@ export interface SearchParameters {
   date: SelectedDate | null
   endingDatetime: Date | null
   hitsPerPage: number | null
-  geolocation: AlgoliaGeolocation | null
+  geolocation: { latitude: number; longitude: number } | null
   offerCategories: string[]
   offerIsDuo: boolean
   offerIsFree: boolean

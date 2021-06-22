@@ -1,8 +1,4 @@
-import { GeoCoordinates } from 'react-native-geolocation-service'
-
 import { SearchParameters } from 'features/search/types'
-
-export type AlgoliaGeolocation = Pick<GeoCoordinates, 'longitude' | 'latitude'>
 
 /**
  * See Algolia doc on numericFilters and facetFilters
