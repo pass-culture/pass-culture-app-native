@@ -6,7 +6,7 @@ import {
   ProcessedModule,
 } from 'features/home/contentful'
 import { isArrayOfOfferTypeguard } from 'features/home/typeguards'
-import { AlgoliaHit } from 'libs/search'
+import { SearchHit } from 'libs/search'
 
 import { RecommendationPane } from '../contentful/moduleTypes'
 
@@ -42,7 +42,7 @@ export const getRecommendationModule = (
 export const getModulesToDisplay = (
   modules: ProcessedModule[],
   algoliaModules: AlgoliaModuleResponse,
-  recommendedHits: AlgoliaHit[],
+  recommendedHits: SearchHit[],
   isLoggedIn: boolean
 ) =>
   modules.filter((module: ProcessedModule) => {

@@ -9,7 +9,7 @@ import {
   ProcessedModule,
 } from 'features/home/contentful'
 import { useGeolocation } from 'libs/geolocation'
-import { AlgoliaHit } from 'libs/search'
+import { SearchHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
 
 import { useUserProfileInfo } from '../api'
@@ -22,7 +22,7 @@ import { RecommendationModule } from './RecommendationModule'
 interface HomeBodyProps {
   modules: ProcessedModule[]
   algoliaModules: AlgoliaModuleResponse
-  recommendedHits: AlgoliaHit[]
+  recommendedHits: SearchHit[]
   setRecommendationY: (y: number) => void
 }
 

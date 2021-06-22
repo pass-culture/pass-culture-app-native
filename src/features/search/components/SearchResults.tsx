@@ -10,18 +10,18 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/comp
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
-import { AlgoliaHit, useTransformHits } from 'libs/search'
+import { SearchHit, useTransformHits } from 'libs/search'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
-const keyExtractor = (item: AlgoliaHit) => item.objectID
+const keyExtractor = (item: SearchHit) => item.objectID
 
 export const SearchResults: React.FC = () => {
-  const flatListRef = useRef<FlatList<AlgoliaHit> | null>(null)
+  const flatListRef = useRef<FlatList<SearchHit> | null>(null)
   const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useSearchResults()
   const { searchState } = useSearch()
   const transformHits = useTransformHits()
 
-  const hits: AlgoliaHit[] = useMemo(
+  const hits: SearchHit[] = useMemo(
     () => flatten(data?.pages.map((page) => page.hits.map(transformHits))),
     [data?.pages]
   )
@@ -50,7 +50,7 @@ export const SearchResults: React.FC = () => {
   }, [hasNextPage])
 
   const renderItem = useCallback(
-    ({ item: hit }: { item: AlgoliaHit }) => <Hit hit={hit} query={searchState.query} />,
+    ({ item: hit }: { item: SearchHit }) => <Hit hit={hit} query={searchState.query} />,
     [searchState.query]
   )
 

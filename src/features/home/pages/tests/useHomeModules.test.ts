@@ -2,7 +2,7 @@ import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
 import * as SearchModule from 'libs/search'
-import { AlgoliaHit, parseAlgoliaParameters } from 'libs/search'
+import { SearchHit, parseAlgoliaParameters } from 'libs/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { Offers } from '../../contentful'
@@ -23,7 +23,7 @@ const fetchMultipleHits = jest.spyOn(SearchModule, 'fetchMultipleHits').mockReso
       nbHits: 10,
     },
   ],
-} as MultipleQueriesResponse<AlgoliaHit>)
+} as MultipleQueriesResponse<SearchHit>)
 
 const offerModules = [
   new Offers({

@@ -1,13 +1,13 @@
 import { SearchResponse } from '@algolia/client-search'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
-import { AlgoliaHit, fetchAlgolia } from 'libs/search'
+import { SearchHit, fetchAlgolia } from 'libs/search'
 
 import { SearchParameters } from './reducer'
 import { useSearch, useStagedSearch } from './SearchWrapper'
 
 const useSearchInfiniteQuery = (searchParameters: SearchParameters) =>
-  useInfiniteQuery<SearchResponse<AlgoliaHit>>(
+  useInfiniteQuery<SearchResponse<SearchHit>>(
     ['searchResults', searchParameters],
     async (context: QueryFunctionContext<[string, SearchParameters], number>) =>
       await fetchAlgolia({

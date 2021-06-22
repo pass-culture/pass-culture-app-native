@@ -16,14 +16,9 @@ export const fetchHits = fetchAlgoliaHits
 export const fetchMultipleHits = fetchMultipleAlgolia
 export const transformHit = transformAlgoliaHit
 export const useTransformHits = useTransformAlgoliaHits
+export type SearchHit = AlgoliaHit
 
-export type {
-  AlgoliaHit,
-  ParsedAlgoliaParameters,
-  Geoloc,
-  AlgoliaGeolocation,
-  FetchAlgoliaParameters,
-}
+export type { ParsedAlgoliaParameters, Geoloc, AlgoliaGeolocation, FetchAlgoliaParameters }
 export {
   CATEGORY_CRITERIA,
   LocationType,
