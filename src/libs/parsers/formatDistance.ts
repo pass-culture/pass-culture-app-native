@@ -1,6 +1,6 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { Geoloc } from 'libs/algolia'
+import { Geoloc } from 'libs/search'
 
 const EARTH_RADIUS_KM = 6378.137
 

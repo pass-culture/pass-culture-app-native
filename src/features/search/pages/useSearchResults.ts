@@ -1,8 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query'
 
-import { AlgoliaHit } from 'libs/algolia'
-import { fetchAlgolia } from 'libs/algolia/fetchAlgolia'
+import { AlgoliaHit, fetchAlgolia } from 'libs/search'
 
 import { SearchParameters } from './reducer'
 import { useSearch, useStagedSearch } from './SearchWrapper'

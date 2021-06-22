@@ -6,7 +6,7 @@ import {
   ProcessedModule,
 } from 'features/home/contentful'
 import { isArrayOfOfferTypeguard } from 'features/home/typeguards'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaHit } from 'libs/search'
 
 import { RecommendationPane } from '../contentful/moduleTypes'
 

@@ -5,14 +5,16 @@ import { useEffect, useState } from 'react'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
-import { AlgoliaHit, parseAlgoliaParameters, ParsedAlgoliaParameters } from 'libs/algolia'
-import {
-  fetchMultipleAlgolia,
-  filterAlgoliaHit,
-  useTransformAlgoliaHits,
-} from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
+import {
+  AlgoliaHit,
+  parseAlgoliaParameters,
+  ParsedAlgoliaParameters,
+  fetchMultipleHits,
+  filterAlgoliaHit,
+  useTransformHits,
+} from 'libs/search'
 
 export type AlgoliaModuleResponse = {
   [moduleId: string]: {
@@ -37,7 +39,7 @@ export const useHomeAlgoliaModules = (
 ): AlgoliaModuleResponse => {
   const { position } = useGeolocation()
   const [algoliaModules, setAlgoliaModules] = useState<AlgoliaModuleResponse>({})
-  const transformAlgoliaHit = useTransformAlgoliaHits()
+  const transformHits = useTransformHits()
 
   const queries = useQueries(
     offerModules.map(({ algolia, moduleId }) => {
@@ -46,7 +48,7 @@ export const useHomeAlgoliaModules = (
         .filter(isParsedParameter)
 
       const fetchModule = async () => {
-        const response = await fetchMultipleAlgolia(parsedParameters)
+        const response = await fetchMultipleHits(parsedParameters)
         return { moduleId: moduleId, ...response }
       }
 
@@ -61,7 +63,7 @@ export const useHomeAlgoliaModules = (
             setAlgoliaModules((prevAlgoliaModules) => ({
               ...prevAlgoliaModules,
               [response.moduleId]: {
-                hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformAlgoliaHit), 'objectID'),
+                hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID'),
                 nbHits,
               },
             }))

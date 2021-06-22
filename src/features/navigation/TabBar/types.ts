@@ -1,6 +1,6 @@
 import { ComponentType } from 'react'
 
-import { ParsedAlgoliaParameters } from 'libs/algolia'
+import { ParsedAlgoliaParameters } from 'libs/search'
 
 export type TabRouteName = keyof TabParamList
 

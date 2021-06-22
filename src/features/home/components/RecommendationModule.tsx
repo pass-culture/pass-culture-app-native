@@ -11,10 +11,10 @@ import styled from 'styled-components/native'
 import { OfferTile, ModuleTitle } from 'features/home/atoms'
 import { DisplayParametersFields } from 'features/home/contentful'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
-import { AlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { isCloseToEndHorizontal } from 'libs/analytics.utils'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
+import { AlgoliaHit } from 'libs/search'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 type RecommendationModuleProps = {

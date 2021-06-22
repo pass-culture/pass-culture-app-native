@@ -5,7 +5,7 @@ import {
   ExclusivityPane,
   ProcessedModule,
 } from 'features/home/contentful'
-import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 
 import {
   showBusinessModule,

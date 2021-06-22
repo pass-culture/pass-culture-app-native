@@ -1,9 +1,8 @@
 import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
-import { AlgoliaHit } from 'libs/algolia'
-import * as FetchAlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
-import { parseAlgoliaParameters } from 'libs/algolia/parseAlgoliaParameters'
+import * as SearchModule from 'libs/search'
+import { AlgoliaHit, parseAlgoliaParameters } from 'libs/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { Offers } from '../../contentful'
@@ -13,20 +12,18 @@ jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => ({})),
 }))
 
-const fetchMultipleAlgolia = jest
-  .spyOn(FetchAlgoliaModule, 'fetchMultipleAlgolia')
-  .mockResolvedValue({
-    results: [
-      {
-        hits: [
-          { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },
-          { objectID: '2', offer: { thumbUrl: 'http://to-image-two' } },
-          { objectID: '3', offer: { thumbUrl: undefined } },
-        ],
-        nbHits: 10,
-      },
-    ],
-  } as MultipleQueriesResponse<AlgoliaHit>)
+const fetchMultipleHits = jest.spyOn(SearchModule, 'fetchMultipleHits').mockResolvedValue({
+  results: [
+    {
+      hits: [
+        { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },
+        { objectID: '2', offer: { thumbUrl: 'http://to-image-two' } },
+        { objectID: '3', offer: { thumbUrl: undefined } },
+      ],
+      nbHits: 10,
+    },
+  ],
+} as MultipleQueriesResponse<AlgoliaHit>)
 
 const offerModules = [
   new Offers({
@@ -47,7 +44,7 @@ describe('useHomeAlgoliaModules', () => {
     await cleanup()
   })
 
-  it('calls fetchMultipleAlgolia with params and returns data', async () => {
+  it('calls fetchMultipleHits with params and returns data', async () => {
     mockPositionReceived = true
     const { result, waitForNextUpdate } = renderHook(
       () => useHomeAlgoliaModules(offerModules),
@@ -55,7 +52,7 @@ describe('useHomeAlgoliaModules', () => {
       { wrapper: ({ children }) => reactQueryProviderHOC(children) }
     )
 
-    expect(fetchMultipleAlgolia).toHaveBeenCalledWith([
+    expect(fetchMultipleHits).toHaveBeenCalledWith([
       {
         ...parseAlgoliaParameters({
           geolocation: null,

@@ -1,8 +1,8 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { AlgoliaParametersFields } from 'features/home/contentful'
-import { parseAlgoliaParameters } from 'libs/algolia'
 
+import { parseAlgoliaParameters } from '../parseAlgoliaParameters'
 import { LocationType } from '../types'
 
 describe('src | components | parseAlgoliaParameters', () => {

@@ -1,5 +1,5 @@
-import { FetchAlgoliaParameters, FiltersArray } from 'libs/algolia'
-import { FACETS_ENUM } from 'libs/algolia/enums'
+import { FACETS_ENUM } from '../enums'
+import { FetchAlgoliaParameters, FiltersArray } from '../types'
 
 export const buildFacetFilters = ({
   offerCategories,

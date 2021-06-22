@@ -4,7 +4,7 @@ import { View } from 'react-native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { SectionTitle } from 'features/search/sections/titles'
-import { LocationType } from 'libs/algolia'
+import { LocationType } from 'libs/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 

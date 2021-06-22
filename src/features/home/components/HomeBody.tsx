@@ -8,8 +8,8 @@ import {
   OffersWithCover,
   ProcessedModule,
 } from 'features/home/contentful'
-import { AlgoliaHit } from 'libs/algolia'
 import { useGeolocation } from 'libs/geolocation'
+import { AlgoliaHit } from 'libs/search'
 import { Spacer } from 'ui/theme'
 
 import { useUserProfileInfo } from '../api'

@@ -6,7 +6,7 @@ import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
+import { CATEGORY_CRITERIA } from 'libs/search'
 import { getSpacing } from 'ui/theme'
 
 // First we filter out the 'All' category

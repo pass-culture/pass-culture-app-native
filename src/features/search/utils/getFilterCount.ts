@@ -1,6 +1,6 @@
 import { SearchState } from 'features/search/pages/reducer'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
-import { LocationType } from 'libs/algolia'
+import { LocationType } from 'libs/search'
 
 export const getFilterCount = (searchState: SearchState): number => {
   const { offerTypes } = searchState
