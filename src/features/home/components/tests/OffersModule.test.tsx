@@ -15,7 +15,7 @@ import { OffersModule } from '../OffersModule'
 mockdate.set(new Date(2020, 10, 16))
 
 const props = {
-  algolia: {} as SearchParametersFields,
+  search: {} as SearchParametersFields,
   display: {
     minOffers: 0,
     title: 'Module title',
@@ -99,7 +99,7 @@ describe('OffersModule component - Analytics', () => {
       reactQueryProviderHOC(
         <OffersModule
           {...props}
-          algolia={{ ...props.algolia, title: 'Algolia title' }}
+          search={{ ...props.search, title: 'Algolia title' }}
           display={{ ...props.display, title: '' }}
           index={1}
         />

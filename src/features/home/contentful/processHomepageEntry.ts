@@ -38,7 +38,7 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
       } = fields as AlgoliaFields
       if (!hasAtLeastOneField(algoliaParameters)) return
 
-      const algolia = [
+      const search = [
         algoliaParameters.fields,
         ...additionalAlgoliaParameters.filter(hasAtLeastOneField).map(({ fields }) => fields),
       ]
@@ -46,13 +46,13 @@ export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[]
 
       if (cover && hasAtLeastOneField(cover)) {
         return new OffersWithCover({
-          algolia,
+          search,
           cover: buildImageUrl(cover.fields.image),
           display,
           moduleId,
         })
       }
-      return new Offers({ algolia, display, moduleId })
+      return new Offers({ search, display, moduleId })
     }
 
     if (contentType === 'recommendation') {

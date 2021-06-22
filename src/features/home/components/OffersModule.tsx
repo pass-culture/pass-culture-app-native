@@ -17,7 +17,7 @@ import { ColorsEnum, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 import { Cover } from '../atoms/Cover'
 
 type OffersModuleProps = {
-  algolia: SearchParametersFields
+  search: SearchParametersFields
   display: DisplayParametersFields
   isBeneficiary?: boolean
   position: GeoCoordinates | null
@@ -28,7 +28,7 @@ type OffersModuleProps = {
 }
 
 export const OffersModule = (props: OffersModuleProps) => {
-  const { nbHits, display, algolia: parameters, position, index, isBeneficiary, hits } = props
+  const { nbHits, display, search: parameters, position, index, isBeneficiary, hits } = props
   const { navigate } = useNavigation<UseNavigationType>()
 
   const moduleName = display.title || parameters.title

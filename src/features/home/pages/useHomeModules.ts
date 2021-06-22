@@ -42,8 +42,8 @@ export const useHomeModules = (
   const transformHits = useTransformHits()
 
   const queries = useQueries(
-    offerModules.map(({ algolia, moduleId }) => {
-      const parsedParameters = algolia
+    offerModules.map(({ search, moduleId }) => {
+      const parsedParameters = search
         .map((parameters) => parseAlgoliaParameters({ geolocation: position, parameters }))
         .filter(isParsedParameter)
 

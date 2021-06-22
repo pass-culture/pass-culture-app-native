@@ -9,7 +9,13 @@ Array [
     "offerId": "AE67",
   },
   Offers {
-    "algolia": Array [
+    "display": Object {
+      "layout": "one-item-medium",
+      "minOffers": 2,
+      "title": "Pour bien commencer...",
+    },
+    "moduleId": "GlQb8Zg3n1PoYVmOyVCgW",
+    "search": Array [
       Object {
         "hitsPerPage": 10,
         "tags": Array [
@@ -18,15 +24,15 @@ Array [
         "title": "Pour bien commencer...",
       },
     ],
-    "display": Object {
-      "layout": "one-item-medium",
-      "minOffers": 2,
-      "title": "Pour bien commencer...",
-    },
-    "moduleId": "GlQb8Zg3n1PoYVmOyVCgW",
   },
   Offers {
-    "algolia": Array [
+    "display": Object {
+      "layout": "two-items",
+      "minOffers": 2,
+      "title": "Puisque tu aimes les visites...",
+    },
+    "moduleId": "5u3NaFTcu2XR5KgJ1OAg8C",
+    "search": Array [
       Object {
         "hitsPerPage": 4,
         "tags": Array [
@@ -35,15 +41,15 @@ Array [
         "title": "Puisque tu aimes les visites",
       },
     ],
-    "display": Object {
-      "layout": "two-items",
-      "minOffers": 2,
-      "title": "Puisque tu aimes les visites...",
-    },
-    "moduleId": "5u3NaFTcu2XR5KgJ1OAg8C",
   },
   Offers {
-    "algolia": Array [
+    "display": Object {
+      "layout": "one-item-medium",
+      "minOffers": 1,
+      "title": "Offres du moment",
+    },
+    "moduleId": "1LgDMVOKdH3agA0WG2LFEr",
+    "search": Array [
       Object {
         "hitsPerPage": 4,
         "tags": Array [
@@ -52,15 +58,15 @@ Array [
         "title": "Les offres du moment",
       },
     ],
-    "display": Object {
-      "layout": "one-item-medium",
-      "minOffers": 1,
-      "title": "Offres du moment",
-    },
-    "moduleId": "1LgDMVOKdH3agA0WG2LFEr",
   },
   Offers {
-    "algolia": Array [
+    "display": Object {
+      "layout": "two-items",
+      "minOffers": 2,
+      "title": "A faire ce week-end !",
+    },
+    "moduleId": "3AbfVZZIZhfvSfGxJSrSqe",
+    "search": Array [
       Object {
         "beginningDatetime": "2020-09-11T00:01+02:00",
         "endingDatetime": "2020-09-12T23:59+02:00",
@@ -68,12 +74,6 @@ Array [
         "title": "Week-end",
       },
     ],
-    "display": Object {
-      "layout": "two-items",
-      "minOffers": 2,
-      "title": "A faire ce week-end !",
-    },
-    "moduleId": "3AbfVZZIZhfvSfGxJSrSqe",
   },
   BusinessPane {
     "firstLine": "Donne ton avis...",
@@ -106,7 +106,13 @@ Array [
     "url": "https://aide.passculture.app/fr/",
   },
   Offers {
-    "algolia": Array [
+    "display": Object {
+      "layout": "two-items",
+      "minOffers": 2,
+      "title": "A faire à deux",
+    },
+    "moduleId": "3HnwRT9WtAl8pxywz83sX3",
+    "search": Array [
       Object {
         "hitsPerPage": 10,
         "tags": Array [
@@ -115,15 +121,16 @@ Array [
         "title": "Offres duo",
       },
     ],
-    "display": Object {
-      "layout": "two-items",
-      "minOffers": 2,
-      "title": "A faire à deux",
-    },
-    "moduleId": "3HnwRT9WtAl8pxywz83sX3",
   },
   OffersWithCover {
-    "algolia": Array [
+    "cover": "https://images.ctfassets.net/2bg01iqy0isv/bRKhK9wmpNkD6l5Zeo71J/cc59c22fe0382b61e831e4693e32826f/1020_Mbapp__2.png",
+    "display": Object {
+      "layout": "one-item-medium",
+      "minOffers": 2,
+      "title": "La sélection de ...",
+    },
+    "moduleId": "2Fjxhdirgh17ZvdPNZGDP4",
+    "search": Array [
       Object {
         "hitsPerPage": 2,
         "tags": Array [
@@ -132,16 +139,15 @@ Array [
         "title": "Sélection Mbappé",
       },
     ],
-    "cover": "https://images.ctfassets.net/2bg01iqy0isv/bRKhK9wmpNkD6l5Zeo71J/cc59c22fe0382b61e831e4693e32826f/1020_Mbapp__2.png",
-    "display": Object {
-      "layout": "one-item-medium",
-      "minOffers": 2,
-      "title": "La sélection de ...",
-    },
-    "moduleId": "2Fjxhdirgh17ZvdPNZGDP4",
   },
   Offers {
-    "algolia": Array [
+    "display": Object {
+      "layout": "two-items",
+      "minOffers": 2,
+      "title": "Découvre les livres sélectionnés pour le Goncourt des lycéens 2020 !",
+    },
+    "moduleId": "7c7xq3ulzqO2yDRJLDmths",
+    "search": Array [
       Object {
         "hitsPerPage": 4,
         "tags": Array [
@@ -150,15 +156,15 @@ Array [
         "title": "Goncourt",
       },
     ],
-    "display": Object {
-      "layout": "two-items",
-      "minOffers": 2,
-      "title": "Découvre les livres sélectionnés pour le Goncourt des lycéens 2020 !",
-    },
-    "moduleId": "7c7xq3ulzqO2yDRJLDmths",
   },
   Offers {
-    "algolia": Array [
+    "display": Object {
+      "layout": "one-item-medium",
+      "minOffers": 2,
+      "title": "Parce que tu aimes la musique...",
+    },
+    "moduleId": "6lk6vCol5Qza2mfdtsTzW",
+    "search": Array [
       Object {
         "categories": Array [
           "Instruments de musique",
@@ -168,12 +174,6 @@ Array [
         "title": "Musique",
       },
     ],
-    "display": Object {
-      "layout": "one-item-medium",
-      "minOffers": 2,
-      "title": "Parce que tu aimes la musique...",
-    },
-    "moduleId": "6lk6vCol5Qza2mfdtsTzW",
   },
 ]
 `;

@@ -1,19 +1,19 @@
 import { SearchParametersFields, DisplayParametersFields } from './contentful'
 
 export class Offers {
-  algolia: SearchParametersFields[]
+  search: SearchParametersFields[]
   display: DisplayParametersFields
   moduleId: string
   constructor({
-    algolia,
+    search,
     display,
     moduleId,
   }: {
-    algolia: SearchParametersFields[]
+    search: SearchParametersFields[]
     display: DisplayParametersFields
     moduleId: string
   }) {
-    this.algolia = algolia
+    this.search = search
     this.display = display
     this.moduleId = moduleId
   }
@@ -22,17 +22,17 @@ export class Offers {
 export class OffersWithCover extends Offers {
   cover: string | null
   constructor({
-    algolia,
     cover,
     display,
+    search,
     moduleId,
   }: {
-    algolia: SearchParametersFields[]
+    search: SearchParametersFields[]
     display: DisplayParametersFields
     cover: string | null
     moduleId: string
   }) {
-    super({ algolia, display, moduleId })
+    super({ search, display, moduleId })
     this.cover = cover
   }
 }
