@@ -94,12 +94,12 @@ describe('OffersModule component - Analytics', () => {
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
   })
 
-  it('should trigger logEvent "AllTilesSeen" with algolia title if no display.title', async () => {
+  it('should trigger logEvent "AllTilesSeen" with module title if no display.title', async () => {
     const component = render(
       reactQueryProviderHOC(
         <OffersModule
           {...props}
-          search={{ ...props.search, title: 'Algolia title' }}
+          search={{ ...props.search, title: 'Search title' }}
           display={{ ...props.display, title: '' }}
           index={1}
         />
@@ -112,7 +112,7 @@ describe('OffersModule component - Analytics', () => {
       await flushAllPromises()
     })
 
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith('Algolia title', props.nbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith('Search title', props.nbHits)
   })
 
   it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', async () => {

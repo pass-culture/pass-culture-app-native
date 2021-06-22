@@ -74,7 +74,7 @@ export const useHomeModules = (
   )
 
   useEffect(() => {
-    // When we enable or disable the geolocation, we want to refetch the algolia modules
+    // When we enable or disable the geolocation, we want to refetch the home modules
     queries.forEach(({ refetch }) => {
       refetch()
     })

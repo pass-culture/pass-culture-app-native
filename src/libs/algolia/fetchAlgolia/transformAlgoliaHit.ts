@@ -6,7 +6,7 @@ import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 import { AlgoliaHit } from '..'
 
 // Go to https://github.com/pass-culture/pass-culture-api/blob/master/src/pcapi/algolia/infrastructure/builder.py
-// to see how the data is indexed into algolia
+// to see how the data is indexed into the search client (algolia => app search)
 
 type Offer = AlgoliaHit['offer']
 

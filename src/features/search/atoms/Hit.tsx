@@ -32,7 +32,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   const formattedDate = formatDates(timestampsInMillis)
 
   function handlePressOffer() {
-    // We pre-populate the query-cache with the data from algolia for a smooth transition
+    // We pre-populate the query-cache with the data from the search client for a smooth transition
     if (!offerId) return
     queryClient.setQueryData(
       ['offer', offerId],
