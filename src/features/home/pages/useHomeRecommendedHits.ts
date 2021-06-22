@@ -5,14 +5,14 @@ import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
-import { AlgoliaHit, fetchHits, filterAlgoliaHit, useTransformHits } from 'libs/search'
+import { SearchHit, fetchHits, filterAlgoliaHit, useTransformHits } from 'libs/search'
 
 import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
 
 export const useHomeRecommendedHits = (
   recommendationModule: RecommendationPane | undefined
-): AlgoliaHit[] => {
+): SearchHit[] => {
   const { position } = useGeolocation()
   const transformHits = useTransformHits()
   const { data: profile } = useUserProfileInfo()
@@ -44,9 +44,9 @@ export const useHomeRecommendedHits = (
     enabled: ids.length > 0,
   })
 
-  if (!data?.results) return [] as AlgoliaHit[]
+  if (!data?.results) return [] as SearchHit[]
 
-  return (data?.results as AlgoliaHit[]).filter(filterAlgoliaHit).map(transformHits)
+  return (data?.results as SearchHit[]).filter(filterAlgoliaHit).map(transformHits)
 }
 
 export const getRecommendationEndpoint = (

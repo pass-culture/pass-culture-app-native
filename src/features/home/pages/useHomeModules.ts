@@ -8,7 +8,7 @@ import { Offers, OffersWithCover } from 'features/home/contentful'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import {
-  AlgoliaHit,
+  SearchHit,
   parseAlgoliaParameters,
   ParsedAlgoliaParameters,
   fetchMultipleHits,
@@ -18,7 +18,7 @@ import {
 
 export type AlgoliaModuleResponse = {
   [moduleId: string]: {
-    hits: AlgoliaHit[]
+    hits: SearchHit[]
     nbHits: number
   }
 }
@@ -28,7 +28,7 @@ const isParsedParameter = (parameter: unknown): parameter is ParsedAlgoliaParame
 
 const isMultipleAlgoliaHit = (
   response: unknown
-): response is MultipleQueriesResponse<AlgoliaHit> & { moduleId: string } =>
+): response is MultipleQueriesResponse<SearchHit> & { moduleId: string } =>
   typeof response === 'object' &&
   response !== null &&
   'results' in response &&

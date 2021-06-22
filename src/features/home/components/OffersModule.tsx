@@ -11,7 +11,7 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToEndHorizontal } from 'libs/analytics.utils'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
-import { AlgoliaHit, parseAlgoliaParameters } from 'libs/search'
+import { SearchHit, parseAlgoliaParameters } from 'libs/search'
 import { ColorsEnum, LENGTH_M, RATIO_ALGOLIA, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'
@@ -21,7 +21,7 @@ type OffersModuleProps = {
   display: DisplayParametersFields
   isBeneficiary?: boolean
   position: GeoCoordinates | null
-  hits: AlgoliaHit[]
+  hits: SearchHit[]
   nbHits: number
   cover: string | null
   index: number
@@ -37,7 +37,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   )
 
   const renderItem = useCallback(
-    (hit: AlgoliaHit) => {
+    (hit: SearchHit) => {
       const timestampsInMillis = hit.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <Row key={hit.objectID}>

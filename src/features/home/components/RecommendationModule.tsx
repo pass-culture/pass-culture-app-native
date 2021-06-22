@@ -14,14 +14,14 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToEndHorizontal } from 'libs/analytics.utils'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
-import { AlgoliaHit } from 'libs/search'
+import { SearchHit } from 'libs/search'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 type RecommendationModuleProps = {
   display: DisplayParametersFields
   isBeneficiary?: boolean
   position: GeoCoordinates | null
-  hits: AlgoliaHit[]
+  hits: SearchHit[]
   index: number
   setRecommendationY: (y: number) => void
 }
@@ -37,7 +37,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const onLayout = (event: LayoutChangeEvent) => setRecommendationY(event.nativeEvent.layout.y)
 
   const renderItem = useCallback(
-    (hit: AlgoliaHit) => {
+    (hit: SearchHit) => {
       const timestampsInMillis = hit.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <Row key={hit.objectID}>

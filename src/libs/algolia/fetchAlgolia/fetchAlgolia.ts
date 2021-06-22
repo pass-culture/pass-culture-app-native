@@ -13,7 +13,7 @@ import { FetchAlgoliaParameters, LocationType, ParsedAlgoliaParameters } from '.
 const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
 // We don't use all the fields indexed. Simply retrieve the one we use.
-// see AlgoliaHit
+// see SearchHit
 export const attributesToRetrieve = [
   'offer.category',
   'offer.dates',
