@@ -1,9 +1,9 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { SearchParametersFields } from 'features/home/contentful'
+import { LocationType } from 'features/search/enums'
 
 import { parseAlgoliaParameters } from '../parseAlgoliaParameters'
-import { LocationType } from '../types'
 
 describe('src | components | parseAlgoliaParameters', () => {
   it('should return default parameters when no parameters are provided', () => {
@@ -17,6 +17,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -28,6 +29,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -44,6 +46,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -55,6 +58,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -71,6 +75,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -82,6 +87,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
+      timeRange: null,
     })
   })
 
@@ -98,6 +104,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: 5,
@@ -109,6 +116,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -125,6 +133,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -136,6 +145,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -152,6 +162,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -163,6 +174,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -179,6 +191,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -190,6 +203,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -206,6 +220,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -217,6 +232,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -233,6 +249,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -244,6 +261,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -262,6 +280,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -273,6 +292,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -289,6 +309,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -300,6 +321,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [50, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -316,6 +338,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -327,6 +350,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -344,6 +368,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -355,6 +380,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [50, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -371,6 +397,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     expect(result).toStrictEqual({
       aroundRadius: null,
       beginningDatetime: null,
+      date: null,
       endingDatetime: null,
       geolocation,
       hitsPerPage: null,
@@ -382,6 +409,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       priceRange: [0, 300],
       locationType: LocationType.EVERYWHERE,
       tags: [],
+      timeRange: null,
     })
   })
 
@@ -404,6 +432,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       expect(result).toStrictEqual({
         aroundRadius: null,
         beginningDatetime: null,
+        date: null,
         endingDatetime: null,
         geolocation: geolocation,
         hitsPerPage: null,
@@ -415,6 +444,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         priceRange: [0, 300],
         locationType: LocationType.AROUND_ME,
         tags: [],
+        timeRange: null,
       })
     })
 
@@ -432,6 +462,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       expect(result).toStrictEqual({
         aroundRadius: 10,
         beginningDatetime: null,
+        date: null,
         endingDatetime: null,
         geolocation: geolocation,
         hitsPerPage: null,
@@ -443,6 +474,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         priceRange: [0, 300],
         locationType: LocationType.AROUND_ME,
         tags: [],
+        timeRange: null,
       })
     })
 
@@ -497,6 +529,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       expect(result).toStrictEqual({
         aroundRadius: null,
         beginningDatetime: beginningDatetime,
+        date: null,
         endingDatetime: null,
         geolocation,
         hitsPerPage: null,
@@ -508,6 +541,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         priceRange: [0, 300],
         locationType: LocationType.EVERYWHERE,
         tags: [],
+        timeRange: null,
       })
     })
 
@@ -526,6 +560,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       expect(result).toStrictEqual({
         aroundRadius: null,
         beginningDatetime: null,
+        date: null,
         endingDatetime: endingDatetime,
         geolocation,
         hitsPerPage: null,
@@ -537,6 +572,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         priceRange: [0, 300],
         locationType: LocationType.EVERYWHERE,
         tags: [],
+        timeRange: null,
       })
     })
 
@@ -558,6 +594,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       expect(result).toStrictEqual({
         aroundRadius: null,
         beginningDatetime: beginningDatetime,
+        date: null,
         endingDatetime: endingDatetime,
         geolocation,
         hitsPerPage: null,
@@ -569,6 +606,7 @@ describe('src | components | parseAlgoliaParameters', () => {
         priceRange: [0, 300],
         locationType: LocationType.EVERYWHERE,
         tags: [],
+        timeRange: null,
       })
     })
   })

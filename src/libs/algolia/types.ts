@@ -1,21 +1,8 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { Range } from 'libs/typesUtils/typeHelpers'
-
-import { DATE_FILTER_OPTIONS } from './enums'
+import { SearchParameters } from 'features/search/types'
 
 export type AlgoliaGeolocation = Pick<GeoCoordinates, 'longitude' | 'latitude'>
-
-interface AlgoliaDate {
-  option: DATE_FILTER_OPTIONS
-  selectedDate: Date
-}
-
-export enum LocationType {
-  AROUND_ME = 'AROUND_ME',
-  EVERYWHERE = 'EVERYWHERE',
-  PLACE = 'PLACE',
-}
 
 /**
  * See Algolia doc on numericFilters and facetFilters
@@ -24,30 +11,7 @@ export enum LocationType {
  */
 export type FiltersArray = string[][]
 
-export interface ParsedAlgoliaParameters {
-  hitsPerPage: number | null
-  aroundRadius: number | null
-  offerCategories: string[]
-  tags: string[]
-  offerIsDuo: boolean
-  offerIsFree: boolean
-  offerIsNew: boolean
-  offerTypes: {
-    isDigital: boolean
-    isEvent: boolean
-    isThing: boolean
-  }
-  beginningDatetime: Date | null
-  endingDatetime: Date | null
-  priceRange: Range<number> | null
-  locationType: LocationType
-  geolocation: AlgoliaGeolocation | null
-}
-
-export interface ExtraAlgoliaParameters {
-  date: AlgoliaDate | null
+export interface SearchParametersQuery extends SearchParameters {
   query: string
   page: number
-  timeRange: Range<number> | null
 }
-export type FetchAlgoliaParameters = ParsedAlgoliaParameters & Partial<ExtraAlgoliaParameters>

@@ -1,9 +1,10 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { SearchParametersFields } from 'features/home/contentful'
+import { LocationType } from 'features/search/enums'
+import { SearchParameters } from 'features/search/types'
 
 import { CATEGORY_CRITERIA } from './enums/criteriaEnums'
-import { LocationType, ParsedAlgoliaParameters } from './types'
 
 export const parseAlgoliaParameters = ({
   geolocation,
@@ -11,7 +12,7 @@ export const parseAlgoliaParameters = ({
 }: {
   geolocation: GeoCoordinates | null
   parameters: SearchParametersFields
-}): ParsedAlgoliaParameters | null => {
+}): SearchParameters | null => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
 
   const notGeolocatedButRadiusIsProvided = !isGeolocated && aroundRadius
@@ -50,6 +51,8 @@ export const parseAlgoliaParameters = ({
     priceRange: _buildPriceRange({ priceMin, priceMax }),
     locationType: isGeolocated ? LocationType.AROUND_ME : LocationType.EVERYWHERE,
     tags: parameters.tags || [],
+    date: null,
+    timeRange: null,
   }
 }
 

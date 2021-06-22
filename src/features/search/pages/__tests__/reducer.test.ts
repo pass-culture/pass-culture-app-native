@@ -1,10 +1,11 @@
 import mockdate from 'mockdate'
 
+import { LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
-import { LocationType } from 'libs/search'
-import { DATE_FILTER_OPTIONS } from 'libs/search'
 
-import { Action, initialSearchState, searchReducer, SearchState } from '../reducer'
+import { Action, initialSearchState, searchReducer } from '../reducer'
 import { MAX_PRICE } from '../reducer.helpers'
 
 const Today = new Date(2020, 10, 1)
@@ -73,7 +74,10 @@ describe('Search reducer', () => {
   })
 
   it('should handle PRICE_RANGE', () => {
-    const action: Action = { type: 'PRICE_RANGE', payload: [30, 200] as SearchState['priceRange'] }
+    const action: Action = {
+      type: 'PRICE_RANGE',
+      payload: [30, 200] as SearchState['priceRange'],
+    }
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       priceRange: [30, 200],
@@ -86,7 +90,10 @@ describe('Search reducer', () => {
   })
 
   it('should handle TIME_RANGE', () => {
-    const action: Action = { type: 'TIME_RANGE', payload: [10, 24] as SearchState['timeRange'] }
+    const action: Action = {
+      type: 'TIME_RANGE',
+      payload: [10, 24] as SearchState['timeRange'],
+    }
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       timeRange: [10, 24],

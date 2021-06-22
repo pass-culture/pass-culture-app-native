@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react'
 import { useQueries } from 'react-query'
 
 import { Offers, OffersWithCover } from 'features/home/contentful'
+import { SearchParameters } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import {
   SearchHit,
   parseAlgoliaParameters,
-  ParsedAlgoliaParameters,
   fetchMultipleHits,
   filterSearchHit,
   useTransformHits,
@@ -23,7 +23,7 @@ export type HomeModuleResponse = {
   }
 }
 
-const isParsedParameter = (parameter: unknown): parameter is ParsedAlgoliaParameters =>
+const isParsedParameter = (parameter: unknown): parameter is SearchParameters =>
   typeof parameter === 'object' && parameter !== null
 
 const isMultipleAlgoliaHit = (

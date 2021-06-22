@@ -5,10 +5,8 @@ export enum DATE_FILTER_OPTIONS {
   USER_PICK = 'picked',
 }
 
-export const PRICE_FILTER = {
-  DEFAULT_RANGE: [0, 300],
-}
-
-export const TIME_FILTER = {
-  DEFAULT_RANGE: [8, 24],
+export enum LocationType {
+  AROUND_ME = 'AROUND_ME',
+  EVERYWHERE = 'EVERYWHERE',
+  PLACE = 'PLACE',
 }

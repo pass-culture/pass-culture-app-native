@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { LocationType } from 'libs/search'
 import { fireEvent, render } from 'tests/utils'
 
 import { Location } from '../Location'

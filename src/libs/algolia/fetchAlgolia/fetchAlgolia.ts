@@ -1,14 +1,15 @@
 import { GetObjectsResponse, MultipleQueriesResponse, SearchResponse } from '@algolia/client-search'
 import algoliasearch from 'algoliasearch'
 
-import { SearchParameters } from 'features/search/pages/reducer'
+import { LocationType } from 'features/search/enums'
+import { SearchParameters } from 'features/search/types'
+import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 
 import { AlgoliaHit } from '../algolia.d'
 import { RADIUS_FILTERS } from '../enums'
 import { buildFacetFilters } from '../fetchAlgolia/fetchAlgolia.facetFilters'
 import { buildNumericFilters } from '../fetchAlgolia/fetchAlgolia.numericFilters'
-import { FetchAlgoliaParameters, LocationType, ParsedAlgoliaParameters } from '../types'
 
 const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 
@@ -61,7 +62,7 @@ const buildSearchParameters = ({
 })
 
 export const fetchMultipleAlgolia = (
-  parsedParametersList: ParsedAlgoliaParameters[]
+  parsedParametersList: SearchParameters[]
 ): Readonly<Promise<MultipleQueriesResponse<AlgoliaHit>>> => {
   const queries = parsedParametersList.map((parsedParameters) => ({
     indexName: env.ALGOLIA_INDEX_NAME,
@@ -80,15 +81,14 @@ export const fetchMultipleAlgolia = (
 export const fetchAlgolia = ({
   query = '',
   page = 0,
-  hitsPerPage = null,
   ...parameters
-}: FetchAlgoliaParameters): Readonly<Promise<SearchResponse<AlgoliaHit>>> => {
+}: SearchParametersQuery): Readonly<Promise<SearchResponse<AlgoliaHit>>> => {
   const searchParameters = buildSearchParameters(parameters)
   const index = client.initIndex(env.ALGOLIA_INDEX_NAME)
 
   return index.search(query, {
     page,
-    ...buildHitsPerPage(hitsPerPage),
+    ...buildHitsPerPage(parameters.hitsPerPage),
     ...searchParameters,
     attributesToRetrieve,
     attributesToHighlight: [], // We disable highlighting because we don't need it
@@ -102,14 +102,14 @@ export const fetchAlgoliaHits = (
   return index.getObjects(objectIds, { attributesToRetrieve })
 }
 
-const buildHitsPerPage = (hitsPerPage: FetchAlgoliaParameters['hitsPerPage']) =>
+const buildHitsPerPage = (hitsPerPage: SearchParameters['hitsPerPage']) =>
   hitsPerPage ? { hitsPerPage } : null
 
 const buildGeolocationParameter = ({
   aroundRadius,
   geolocation,
   locationType,
-}: Pick<FetchAlgoliaParameters, 'aroundRadius' | 'geolocation' | 'locationType'>):
+}: Pick<SearchParameters, 'aroundRadius' | 'geolocation' | 'locationType'>):
   | { aroundLatLng: string; aroundRadius: 'all' | number }
   | undefined => {
   if (!geolocation) return

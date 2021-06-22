@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
+import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { buildPlaceLabel } from 'libs/place'
-import { LocationType } from 'libs/search'
 import { AroundMe } from 'ui/svg/icons/AroundMe'
 import { BicolorLocationPointer as Place } from 'ui/svg/icons/BicolorLocationPointer'
 import { Everywhere } from 'ui/svg/icons/Everywhere'

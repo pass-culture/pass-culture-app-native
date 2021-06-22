@@ -1,8 +1,10 @@
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { FACETS_ENUM } from 'libs/algolia/enums'
+import { SearchParametersQuery } from 'libs/algolia/types'
 import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'
 import { Range, NoNullProperties } from 'libs/typesUtils/typeHelpers'
 
-import { FACETS_ENUM, DATE_FILTER_OPTIONS } from '../enums'
-import { FetchAlgoliaParameters, FiltersArray } from '../types'
+import { FiltersArray } from '../types'
 
 export const buildNumericFilters = ({
   date,
@@ -13,7 +15,7 @@ export const buildNumericFilters = ({
   priceRange,
   timeRange,
 }: Pick<
-  FetchAlgoliaParameters,
+  SearchParametersQuery,
   | 'beginningDatetime'
   | 'endingDatetime'
   | 'date'
@@ -41,7 +43,7 @@ export const buildNumericFilters = ({
 const buildOfferPriceRangePredicate = ({
   offerIsFree,
   priceRange,
-}: Pick<FetchAlgoliaParameters, 'offerIsFree' | 'priceRange'>): FiltersArray[0] | undefined => {
+}: Pick<SearchParametersQuery, 'offerIsFree' | 'priceRange'>): FiltersArray[0] | undefined => {
   if (offerIsFree) return [`${FACETS_ENUM.OFFER_PRICE} = 0`]
   if (priceRange) return [`${FACETS_ENUM.OFFER_PRICE}: ${priceRange.join(' TO ')}`]
   return undefined
@@ -50,7 +52,7 @@ const buildOfferPriceRangePredicate = ({
 const buildDatePredicate = ({
   date,
   timeRange,
-}: Pick<FetchAlgoliaParameters, 'date' | 'timeRange'>): FiltersArray[0] | undefined => {
+}: Pick<SearchParametersQuery, 'date' | 'timeRange'>): FiltersArray[0] | undefined => {
   if (date && timeRange) return buildDateAndTimePredicate({ date, timeRange })
   if (date) return buildDateOnlyPredicate(date)
   if (timeRange) return buildTimeOnlyPredicate(timeRange)
@@ -60,7 +62,7 @@ const buildDatePredicate = ({
 const buildHomepageDatePredicate = ({
   beginningDatetime,
   endingDatetime,
-}: Pick<FetchAlgoliaParameters, 'beginningDatetime' | 'endingDatetime'>):
+}: Pick<SearchParametersQuery, 'beginningDatetime' | 'endingDatetime'>):
   | undefined
   | FiltersArray[0] => {
   if (!(beginningDatetime || endingDatetime)) return undefined
@@ -93,7 +95,7 @@ const buildDateAndTimePredicate = ({
   date,
   timeRange,
 }: NoNullProperties<
-  Required<Pick<FetchAlgoliaParameters, 'date' | 'timeRange'>>
+  Required<Pick<SearchParametersQuery, 'date' | 'timeRange'>>
 >): FiltersArray[0] => {
   let dateFilter
   switch (date.option) {
@@ -111,7 +113,7 @@ const buildDateAndTimePredicate = ({
 }
 
 const buildDateOnlyPredicate = (
-  date: Exclude<FetchAlgoliaParameters['date'], null | undefined>
+  date: Exclude<SearchParametersQuery['date'], null | undefined>
 ): FiltersArray[0] => {
   let beginningDate, endingDate
   switch (date.option) {
@@ -136,7 +138,7 @@ const buildDateOnlyPredicate = (
 }
 
 const buildNewestOffersPredicate = (
-  offerIsNew: FetchAlgoliaParameters['offerIsNew']
+  offerIsNew: SearchParametersQuery['offerIsNew']
 ): FiltersArray[0] | undefined => {
   if (!offerIsNew) return undefined
 

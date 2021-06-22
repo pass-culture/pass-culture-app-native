@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { DATE_FILTER_OPTIONS } from 'libs/search'
 import { fireEvent, render } from 'tests/utils'
 
 import { OfferDate } from '../OfferDate'

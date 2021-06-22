@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { AccordionItem } from 'features/offer/components'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
-import { SearchState } from 'features/search/pages/reducer'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
+import { SearchState } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { getSpacing } from 'ui/theme'
 
