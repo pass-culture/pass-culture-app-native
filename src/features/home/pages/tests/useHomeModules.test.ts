@@ -6,7 +6,7 @@ import { AlgoliaHit, parseAlgoliaParameters } from 'libs/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { Offers } from '../../contentful'
-import { useHomeAlgoliaModules } from '../useHomeAlgoliaModules'
+import { useHomeModules } from '../useHomeModules'
 
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => ({})),
@@ -38,7 +38,7 @@ jest.mock('libs/geolocation', () => ({
   useGeolocation: jest.fn(() => ({ position: null, positionReceived: mockPositionReceived })),
 }))
 
-describe('useHomeAlgoliaModules', () => {
+describe('useHomeModules', () => {
   afterEach(async () => {
     jest.clearAllMocks()
     await cleanup()
@@ -47,7 +47,7 @@ describe('useHomeAlgoliaModules', () => {
   it('calls fetchMultipleHits with params and returns data', async () => {
     mockPositionReceived = true
     const { result, waitForNextUpdate } = renderHook(
-      () => useHomeAlgoliaModules(offerModules),
+      () => useHomeModules(offerModules),
       // eslint-disable-next-line react/display-name
       { wrapper: ({ children }) => reactQueryProviderHOC(children) }
     )
