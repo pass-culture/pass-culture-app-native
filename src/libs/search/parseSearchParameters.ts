@@ -4,7 +4,7 @@ import { SearchParametersFields } from 'features/home/contentful'
 import { LocationType, CATEGORY_CRITERIA } from 'features/search/enums'
 import { SearchParameters } from 'features/search/types'
 
-export const parseAlgoliaParameters = ({
+export const parseSearchParameters = ({
   geolocation,
   parameters,
 }: {
