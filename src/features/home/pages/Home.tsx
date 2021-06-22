@@ -22,7 +22,7 @@ export const Home: FunctionComponent = function () {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const showSkeleton = useShowSkeleton()
   const [recommendationY, setRecommendationY] = useState<number>(Infinity)
-  const { displayedModules, algoliaModules, recommendedHits } = useDisplayedHomeModules(
+  const { displayedModules, homeModules, recommendedHits } = useDisplayedHomeModules(
     params?.entryId
   )
 
@@ -65,7 +65,7 @@ export const Home: FunctionComponent = function () {
       <HomeBodyLoadingContainer isLoading={showSkeleton}>
         <HomeBody
           modules={displayedModules}
-          algoliaModules={algoliaModules}
+          homeModules={homeModules}
           recommendedHits={recommendedHits}
           setRecommendationY={setRecommendationY}
         />

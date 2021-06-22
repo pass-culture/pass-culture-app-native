@@ -14,20 +14,20 @@ import { Spacer } from 'ui/theme'
 
 import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
-import { AlgoliaModuleResponse } from '../pages/useHomeModules'
+import { HomeModuleResponse } from '../pages/useHomeModules'
 import { isOfferModuleTypeguard } from '../typeguards'
 
 import { RecommendationModule } from './RecommendationModule'
 
 interface HomeBodyProps {
   modules: ProcessedModule[]
-  algoliaModules: AlgoliaModuleResponse
+  homeModules: HomeModuleResponse
   recommendedHits: SearchHit[]
   setRecommendationY: (y: number) => void
 }
 
 export const HomeBody = (props: HomeBodyProps) => {
-  const { modules, algoliaModules, recommendedHits, setRecommendationY } = props
+  const { modules, homeModules, recommendedHits, setRecommendationY } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
 
@@ -36,7 +36,7 @@ export const HomeBody = (props: HomeBodyProps) => {
       {modules
         .map((module: ProcessedModule, index: number) => {
           if (isOfferModuleTypeguard(module)) {
-            const { hits, nbHits } = algoliaModules[module.moduleId]
+            const { hits, nbHits } = homeModules[module.moduleId]
             return (
               <OffersModule
                 key={module.moduleId}

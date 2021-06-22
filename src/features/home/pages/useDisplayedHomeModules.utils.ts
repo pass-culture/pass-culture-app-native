@@ -10,7 +10,7 @@ import { SearchHit } from 'libs/search'
 
 import { RecommendationPane } from '../contentful/moduleTypes'
 
-import { AlgoliaModuleResponse } from './useHomeModules'
+import { HomeModuleResponse } from './useHomeModules'
 
 export const showBusinessModule = (
   targetNotConnectedUsersOnly: boolean | undefined,
@@ -41,7 +41,7 @@ export const getRecommendationModule = (
 
 export const getModulesToDisplay = (
   modules: ProcessedModule[],
-  algoliaModules: AlgoliaModuleResponse,
+  homeModules: HomeModuleResponse,
   recommendedHits: SearchHit[],
   isLoggedIn: boolean
 ) =>
@@ -54,8 +54,8 @@ export const getModulesToDisplay = (
       return recommendedHits.length > module.display.minOffers
     }
 
-    if (module.moduleId in algoliaModules) {
-      const { hits, nbHits } = algoliaModules[module.moduleId]
+    if (module.moduleId in homeModules) {
+      const { hits, nbHits } = homeModules[module.moduleId]
       return hits.length > 0 && nbHits >= module.display.minOffers
     }
     return false

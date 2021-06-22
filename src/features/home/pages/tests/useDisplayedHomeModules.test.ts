@@ -12,27 +12,27 @@ import {
   getOfferModules,
   getModulesToDisplay,
 } from '../useDisplayedHomeModules.utils'
-import { AlgoliaModuleResponse } from '../useHomeModules'
+import { HomeModuleResponse } from '../useHomeModules'
 
 const nbHits = 2
 const hits = mockedAlgoliaResponse.hits.slice(0, nbHits)
-const algoliaModules: AlgoliaModuleResponse = {
-  // notInAlgoliaModules should no be here
-  ['algoliaModuleShown']: { hits, nbHits },
-  ['algoliaModuleHidden']: { hits, nbHits },
+const homeModules: HomeModuleResponse = {
+  // notInHomeModules should no be here
+  ['homeModuleShown']: { hits, nbHits },
+  ['homeModuleHidden']: { hits, nbHits },
   ['emptyHits']: { hits: [], nbHits },
 }
 
 const visibleOfferModule = new Offers({
   algolia: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
-  moduleId: 'algoliaModuleShown',
+  moduleId: 'homeModuleShown',
 })
 
 const hiddenOfferModule = new Offers({
   algolia: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 10, title: 'title', layout: 'one-item-medium' },
-  moduleId: 'algoliaModuleHidden',
+  moduleId: 'homeModuleHidden',
 })
 const emptyHits = new OffersWithCover({
   algolia: [{ title: 'tile', hitsPerPage: 4 }],
@@ -40,10 +40,10 @@ const emptyHits = new OffersWithCover({
   moduleId: 'emptyHits',
   cover: 'uri_to_cover_image',
 })
-const notInAlgoliaModules = new Offers({
+const notInHomeModules = new Offers({
   algolia: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
-  moduleId: 'notInAlgoliaModules',
+  moduleId: 'notInHomeModules',
 })
 
 const offerModules: ProcessedModule[] = [visibleOfferModule, hiddenOfferModule, emptyHits]
@@ -99,7 +99,7 @@ describe('useDisplayedHomeModules.utils', () => {
     it('does display BusinessPane accordingly to showBusinessModule', () => {
       const connectedModules = getModulesToDisplay(
         [...offerModules, connectedBusinessModule],
-        algoliaModules,
+        homeModules,
         hits,
         true
       )
@@ -107,7 +107,7 @@ describe('useDisplayedHomeModules.utils', () => {
 
       const notConnectedModules = getModulesToDisplay(
         [...offerModules, connectedBusinessModule],
-        algoliaModules,
+        homeModules,
         hits,
         false
       )
@@ -116,7 +116,7 @@ describe('useDisplayedHomeModules.utils', () => {
     it('does always display ExclusivityPane', () => {
       const displayedModules = getModulesToDisplay(
         [excluModule, connectedBusinessModule, ...offerModules],
-        algoliaModules,
+        homeModules,
         hits,
         false
       )
@@ -124,18 +124,18 @@ describe('useDisplayedHomeModules.utils', () => {
     })
     it('does not display modules if it has no data', () => {
       const displayedModules = getModulesToDisplay(
-        [excluModule, connectedBusinessModule, notInAlgoliaModules],
-        algoliaModules,
+        [excluModule, connectedBusinessModule, notInHomeModules],
+        homeModules,
         hits,
         true
       )
-      expect(notInAlgoliaModules).not.toContain(excluModule)
+      expect(notInHomeModules).not.toContain(excluModule)
       expect(displayedModules.length).toBe(2)
     })
     it('does not display a module that has no hits', () => {
       const displayedModules = getModulesToDisplay(
         [emptyHits, excluModule, connectedBusinessModule],
-        algoliaModules,
+        homeModules,
         hits,
         true
       )
@@ -145,7 +145,7 @@ describe('useDisplayedHomeModules.utils', () => {
     it('does not display a module that has nbhits < minOffers', () => {
       const displayedModules = getModulesToDisplay(
         [connectedBusinessModule, excluModule, hiddenOfferModule],
-        algoliaModules,
+        homeModules,
         hits,
         true
       )
@@ -155,7 +155,7 @@ describe('useDisplayedHomeModules.utils', () => {
     it('does display a module that has enough hits and nbHits >= minOffers', () => {
       const displayedModules = getModulesToDisplay(
         [connectedBusinessModule, excluModule, visibleOfferModule],
-        algoliaModules,
+        homeModules,
         hits,
         true
       )

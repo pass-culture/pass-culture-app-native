@@ -16,7 +16,7 @@ import {
   useTransformHits,
 } from 'libs/search'
 
-export type AlgoliaModuleResponse = {
+export type HomeModuleResponse = {
   [moduleId: string]: {
     hits: SearchHit[]
     nbHits: number
@@ -36,9 +36,9 @@ const isMultipleAlgoliaHit = (
 
 export const useHomeModules = (
   offerModules: Array<Offers | OffersWithCover>
-): AlgoliaModuleResponse => {
+): HomeModuleResponse => {
   const { position } = useGeolocation()
-  const [algoliaModules, setAlgoliaModules] = useState<AlgoliaModuleResponse>({})
+  const [homeModules, setHomeModules] = useState<HomeModuleResponse>({})
   const transformHits = useTransformHits()
 
   const queries = useQueries(
@@ -53,15 +53,15 @@ export const useHomeModules = (
       }
 
       return {
-        queryKey: [QueryKeys.ALGOLIA_MODULE, moduleId],
+        queryKey: [QueryKeys.HOME_MODULE, moduleId],
         queryFn: fetchModule,
         onSuccess: (response) => {
           if (isMultipleAlgoliaHit(response)) {
             const hits = flatten(response.results.map(({ hits }) => hits))
             const nbHits = response.results.reduce((prev, curr) => prev + curr.nbHits, 0)
 
-            setAlgoliaModules((prevAlgoliaModules) => ({
-              ...prevAlgoliaModules,
+            setHomeModules((prevHomeModules) => ({
+              ...prevHomeModules,
               [response.moduleId]: {
                 hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID'),
                 nbHits,
@@ -80,5 +80,5 @@ export const useHomeModules = (
     })
   }, [!!position])
 
-  return algoliaModules
+  return homeModules
 }
