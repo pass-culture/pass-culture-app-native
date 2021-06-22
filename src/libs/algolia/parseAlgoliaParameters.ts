@@ -1,6 +1,6 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { AlgoliaParametersFields } from 'features/home/contentful'
+import { SearchParametersFields } from 'features/home/contentful'
 
 import { CATEGORY_CRITERIA } from './enums/criteriaEnums'
 import { LocationType, ParsedAlgoliaParameters } from './types'
@@ -10,7 +10,7 @@ export const parseAlgoliaParameters = ({
   parameters,
 }: {
   geolocation: GeoCoordinates | null
-  parameters: AlgoliaParametersFields
+  parameters: SearchParametersFields
 }): ParsedAlgoliaParameters | null => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
 

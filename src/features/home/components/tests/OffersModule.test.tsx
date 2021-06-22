@@ -9,13 +9,13 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
-import { AlgoliaParametersFields, DisplayParametersFields } from '../../contentful/contentful'
+import { SearchParametersFields, DisplayParametersFields } from '../../contentful/contentful'
 import { OffersModule } from '../OffersModule'
 
 mockdate.set(new Date(2020, 10, 16))
 
 const props = {
-  algolia: {} as AlgoliaParametersFields,
+  algolia: {} as SearchParametersFields,
   display: {
     minOffers: 0,
     title: 'Module title',

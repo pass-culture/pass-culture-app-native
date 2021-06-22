@@ -5,7 +5,7 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 import styled from 'styled-components/native'
 
 import { OfferTile, ModuleTitle, SeeMore } from 'features/home/atoms'
-import { AlgoliaParametersFields, DisplayParametersFields } from 'features/home/contentful'
+import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
@@ -17,7 +17,7 @@ import { ColorsEnum, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 import { Cover } from '../atoms/Cover'
 
 type OffersModuleProps = {
-  algolia: AlgoliaParametersFields
+  algolia: SearchParametersFields
   display: DisplayParametersFields
   isBeneficiary?: boolean
   position: GeoCoordinates | null
