@@ -1,6 +1,6 @@
+import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/search/datetime/time'
 import { Range, NoNullProperties } from 'libs/typesUtils/typeHelpers'
 
-import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from '../datetime/time'
 import { FACETS_ENUM, DATE_FILTER_OPTIONS } from '../enums'
 import { FetchAlgoliaParameters, FiltersArray } from '../types'
 
