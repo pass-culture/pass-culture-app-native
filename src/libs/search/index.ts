@@ -1,4 +1,4 @@
-import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
+import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc } from 'libs/algolia/algolia.d'
 import {
   attributesToRetrieve,
@@ -9,6 +9,7 @@ import {
   transformAlgoliaHit,
   useTransformAlgoliaHits,
 } from 'libs/algolia/fetchAlgolia'
+export { parseSearchParameters } from './parseSearchParameters'
 
 export const fetchHits = fetchAlgoliaHits
 export const fetchMultipleHits = fetchMultipleAlgolia
@@ -17,4 +18,4 @@ export const useTransformHits = useTransformAlgoliaHits
 export type SearchHit = AlgoliaHit
 
 export type { Geoloc }
-export { attributesToRetrieve, parseAlgoliaParameters, fetchAlgolia, filterSearchHit }
+export { attributesToRetrieve, fetchAlgolia, filterSearchHit }

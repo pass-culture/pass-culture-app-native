@@ -3,15 +3,15 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 import { SearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
 
-import { parseAlgoliaParameters } from '../parseAlgoliaParameters'
+import { parseSearchParameters } from '../parseSearchParameters'
 
-describe('src | components | parseAlgoliaParameters', () => {
+describe('src | components | parseSearchParameters', () => {
   it('should return default parameters when no parameters are provided', () => {
     // given
     const parameters = {} as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -40,7 +40,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -69,7 +69,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -98,7 +98,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -127,7 +127,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -156,7 +156,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -185,7 +185,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -214,7 +214,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -243,7 +243,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -274,7 +274,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -303,7 +303,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -332,7 +332,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -362,7 +362,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -391,7 +391,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     } as SearchParametersFields
     const geolocation = null
     // when
-    const result = parseAlgoliaParameters({ geolocation, parameters })
+    const result = parseSearchParameters({ geolocation, parameters })
 
     // then
     expect(result).toStrictEqual({
@@ -426,7 +426,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       } as SearchParametersFields
 
       // when
-      const result = parseAlgoliaParameters({ geolocation, parameters })
+      const result = parseSearchParameters({ geolocation, parameters })
 
       // then
       expect(result).toStrictEqual({
@@ -456,7 +456,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       } as SearchParametersFields
 
       // when
-      const result = parseAlgoliaParameters({ geolocation, parameters })
+      const result = parseSearchParameters({ geolocation, parameters })
 
       // then
       expect(result).toStrictEqual({
@@ -486,7 +486,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       } as SearchParametersFields
 
       // when
-      const result = parseAlgoliaParameters({
+      const result = parseSearchParameters({
         geolocation: null,
         parameters,
       })
@@ -503,7 +503,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       } as SearchParametersFields
 
       // when
-      const result = parseAlgoliaParameters({
+      const result = parseSearchParameters({
         geolocation: null,
         parameters,
       })
@@ -523,7 +523,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       } as SearchParametersFields
       const geolocation = null
       // when
-      const result = parseAlgoliaParameters({ geolocation, parameters })
+      const result = parseSearchParameters({ geolocation, parameters })
 
       // then
       expect(result).toStrictEqual({
@@ -554,7 +554,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       } as SearchParametersFields
       const geolocation = null
       // when
-      const result = parseAlgoliaParameters({ geolocation, parameters })
+      const result = parseSearchParameters({ geolocation, parameters })
 
       // then
       expect(result).toStrictEqual({
@@ -588,7 +588,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       } as SearchParametersFields
       const geolocation = null
       // when
-      const result = parseAlgoliaParameters({ geolocation, parameters })
+      const result = parseSearchParameters({ geolocation, parameters })
 
       // then
       expect(result).toStrictEqual({

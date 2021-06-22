@@ -10,7 +10,7 @@ import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import {
   SearchHit,
-  parseAlgoliaParameters,
+  parseSearchParameters,
   fetchMultipleHits,
   filterSearchHit,
   useTransformHits,
@@ -44,7 +44,7 @@ export const useHomeModules = (
   const queries = useQueries(
     offerModules.map(({ search, moduleId }) => {
       const parsedParameters = search
-        .map((parameters) => parseAlgoliaParameters({ geolocation: position, parameters }))
+        .map((parameters) => parseSearchParameters({ geolocation: position, parameters }))
         .filter(isParsedParameter)
 
       const fetchModule = async () => {

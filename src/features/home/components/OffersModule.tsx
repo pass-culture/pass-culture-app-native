@@ -11,7 +11,7 @@ import { useFunctionOnce } from 'features/offer/services/useFunctionOnce'
 import { analytics } from 'libs/analytics'
 import { isCloseToEndHorizontal } from 'libs/analytics.utils'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
-import { SearchHit, parseAlgoliaParameters } from 'libs/search'
+import { SearchHit, parseSearchParameters } from 'libs/search'
 import { ColorsEnum, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'
@@ -83,7 +83,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const onPressSeeMore = useCallback(() => {
     analytics.logClickSeeMore(moduleName)
     navigate('Search', {
-      parameters: parseAlgoliaParameters({ geolocation: position, parameters }),
+      parameters: parseSearchParameters({ geolocation: position, parameters }),
     })
   }, [position])
 

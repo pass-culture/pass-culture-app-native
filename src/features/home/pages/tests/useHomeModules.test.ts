@@ -2,7 +2,7 @@ import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
 import * as SearchModule from 'libs/search'
-import { SearchHit, parseAlgoliaParameters } from 'libs/search'
+import { SearchHit, parseSearchParameters } from 'libs/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { Offers } from '../../contentful'
@@ -54,7 +54,7 @@ describe('useHomeModules', () => {
 
     expect(fetchMultipleHits).toHaveBeenCalledWith([
       {
-        ...parseAlgoliaParameters({
+        ...parseSearchParameters({
           geolocation: null,
           parameters: { title: 'tile', hitsPerPage: 4 },
         }),
