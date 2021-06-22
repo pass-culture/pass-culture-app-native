@@ -1,5 +1,5 @@
 export enum QueryKeys {
-  ALGOLIA_MODULE = 'algoliaModule',
+  HOME_MODULE = 'homeModule',
   BOOKINGS = 'bookings',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',

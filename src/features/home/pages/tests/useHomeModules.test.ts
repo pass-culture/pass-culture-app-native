@@ -29,7 +29,7 @@ const offerModules = [
   new Offers({
     algolia: [{ title: 'tile', hitsPerPage: 4 }],
     display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
-    moduleId: 'algoliaModuleShown',
+    moduleId: 'homeModuleShown',
   }),
 ]
 
@@ -65,7 +65,7 @@ describe('useHomeModules', () => {
       await waitForNextUpdate()
     })
 
-    const { hits, nbHits } = result.current['algoliaModuleShown']
+    const { hits, nbHits } = result.current['homeModuleShown']
     expect(nbHits).toEqual(10)
     expect(hits).toEqual([
       { objectID: '1', offer: { thumbUrl: 'http://to-image-one' } },

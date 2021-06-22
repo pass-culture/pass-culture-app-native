@@ -15,13 +15,13 @@ export function useDisplayedHomeModules(entryId?: string) {
   // 1. Get the list of modules from contentful
   const { data: modules = [] } = useHomepageModules(entryId)
 
-  // 2. Get the hits and nbHits for each algolia module
-  const algoliaModules = useHomeModules(getOfferModules(modules))
+  // 2. Get the hits and nbHits for each home module
+  const homeModules = useHomeModules(getOfferModules(modules))
 
   // 3. Get the offers for the recommended hits
   const recommendedHits = useHomeRecommendedHits(getRecommendationModule(modules))
 
   // 4. Reconcile the three and filter the modules that will eventually be displayed
-  const displayedModules = getModulesToDisplay(modules, algoliaModules, recommendedHits, isLoggedIn)
-  return { algoliaModules, displayedModules, recommendedHits }
+  const displayedModules = getModulesToDisplay(modules, homeModules, recommendedHits, isLoggedIn)
+  return { homeModules, displayedModules, recommendedHits }
 }

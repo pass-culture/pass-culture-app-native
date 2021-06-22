@@ -23,8 +23,8 @@ const useShowSkeletonFromFetchingCount = (fetchingCount: number) => {
 
 export const useShowSkeleton = function () {
   const isFetchingHomepageModules = useIsFetching(QueryKeys.HOMEPAGE_MODULES)
-  const isFetchingAlgoliaModules = useIsFetching([QueryKeys.ALGOLIA_MODULE])
-  const fetchingCount = isFetchingHomepageModules + isFetchingAlgoliaModules
+  const isFetchingHomeModules = useIsFetching([QueryKeys.HOME_MODULE])
+  const fetchingCount = isFetchingHomepageModules + isFetchingHomeModules
 
   return useShowSkeletonFromFetchingCount(fetchingCount)
 }

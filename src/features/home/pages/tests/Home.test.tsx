@@ -32,7 +32,7 @@ let mockDisplayedModules: ProcessedModule[] = []
 jest.mock('features/home/pages/useDisplayedHomeModules', () => ({
   useDisplayedHomeModules: jest.fn(() => ({
     displayedModules: mockDisplayedModules,
-    algoliaModules: {},
+    homeModules: {},
     recommendedHits: mockedAlgoliaResponse.hits.slice(0, 4),
   })),
 }))
