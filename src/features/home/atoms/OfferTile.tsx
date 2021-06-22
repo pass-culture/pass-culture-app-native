@@ -10,7 +10,7 @@ import { Layout } from 'features/home/contentful'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { OfferAdaptedResponse } from 'features/offer/api/useOffer'
 import { analytics } from 'libs/analytics'
-import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_ALGOLIA } from 'ui/theme'
+import { MARGIN_DP, LENGTH_M, LENGTH_L, RATIO_HOME_IMAGE } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 import { ImageCaption } from './ImageCaption'
@@ -66,7 +66,7 @@ export const OfferTile = (props: OfferTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
   const { layout = 'one-item-medium', moduleName, isBeneficiary, ...offer } = props
   const imageHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
-  const imageWidth = imageHeight * RATIO_ALGOLIA
+  const imageWidth = imageHeight * RATIO_HOME_IMAGE
   const queryClient = useQueryClient()
 
   function handlePressOffer() {

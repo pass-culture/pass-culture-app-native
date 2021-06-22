@@ -8,7 +8,7 @@ import {
   LENGTH_L,
   LENGTH_M,
   MARGIN_DP,
-  RATIO_ALGOLIA,
+  RATIO_HOME_IMAGE,
   RATIO_BUSINESS,
   Spacer,
 } from 'ui/theme'
@@ -62,7 +62,7 @@ const ModuleTitlePlaceholder = () => (
 
 const OfferTilePlaceholder = ({ size }: { size: TileSize }) => {
   const height = size + PixelRatio.roundToNearestPixel(MARGIN_DP)
-  const width = size * RATIO_ALGOLIA
+  const width = size * RATIO_HOME_IMAGE
   return (
     <View>
       <BasePlaceholder height={height} width={width} />
