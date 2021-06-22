@@ -27,7 +27,7 @@ const fetchMultipleHits = jest.spyOn(SearchModule, 'fetchMultipleHits').mockReso
 
 const offerModules = [
   new Offers({
-    algolia: [{ title: 'tile', hitsPerPage: 4 }],
+    search: [{ title: 'tile', hitsPerPage: 4 }],
     display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
     moduleId: 'homeModuleShown',
   }),

@@ -24,24 +24,24 @@ const homeModules: HomeModuleResponse = {
 }
 
 const visibleOfferModule = new Offers({
-  algolia: [{ title: 'tile', hitsPerPage: 4 }],
+  search: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
   moduleId: 'homeModuleShown',
 })
 
 const hiddenOfferModule = new Offers({
-  algolia: [{ title: 'tile', hitsPerPage: 4 }],
+  search: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 10, title: 'title', layout: 'one-item-medium' },
   moduleId: 'homeModuleHidden',
 })
 const emptyHits = new OffersWithCover({
-  algolia: [{ title: 'tile', hitsPerPage: 4 }],
+  search: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
   moduleId: 'emptyHits',
   cover: 'uri_to_cover_image',
 })
 const notInHomeModules = new Offers({
-  algolia: [{ title: 'tile', hitsPerPage: 4 }],
+  search: [{ title: 'tile', hitsPerPage: 4 }],
   display: { minOffers: 1, title: 'title', layout: 'one-item-medium' },
   moduleId: 'notInHomeModules',
 })
