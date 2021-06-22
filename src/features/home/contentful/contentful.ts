@@ -116,7 +116,7 @@ interface EntryCollectionError {
 
 interface AlgoliaParameters {
   sys: Sys<typeof CONTENT_TYPES.ALGOLIA>
-  fields: AlgoliaParametersFields
+  fields: SearchParametersFields
 }
 
 interface DisplayParameters {
@@ -151,7 +151,7 @@ interface RecommendationFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algoliaParameters/fields
-interface AlgoliaParametersFields {
+interface SearchParametersFields {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
@@ -237,7 +237,7 @@ export type {
   HomepageModule,
   AlgoliaFields,
   AlgoliaParameters,
-  AlgoliaParametersFields,
+  SearchParametersFields,
   BusinessFields,
   Cover,
   DisplayParametersFields,

@@ -1,6 +1,6 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { AlgoliaParametersFields } from 'features/home/contentful'
+import { SearchParametersFields } from 'features/home/contentful'
 
 import { parseAlgoliaParameters } from '../parseAlgoliaParameters'
 import { LocationType } from '../types'
@@ -8,7 +8,7 @@ import { LocationType } from '../types'
 describe('src | components | parseAlgoliaParameters', () => {
   it('should return default parameters when no parameters are provided', () => {
     // given
-    const parameters = {} as AlgoliaParametersFields
+    const parameters = {} as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -35,7 +35,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       categories: ['Cinéma', 'Cours, ateliers', 'Livres'],
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -62,7 +62,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -89,7 +89,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       hitsPerPage: 5,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -116,7 +116,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       isDuo: true,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -143,7 +143,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       newestOnly: true,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -170,7 +170,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       isDigital: true,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -197,7 +197,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       isEvent: true,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -224,7 +224,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       isThing: true,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -253,7 +253,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       isDigital: true,
       isEvent: true,
       isThing: true,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -280,7 +280,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       priceMin: 50,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -307,7 +307,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       priceMax: 300,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -335,7 +335,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     const parameters = {
       priceMin: 50,
       priceMax: 300,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -362,7 +362,7 @@ describe('src | components | parseAlgoliaParameters', () => {
     // given
     const parameters = {
       isFree: true,
-    } as AlgoliaParametersFields
+    } as SearchParametersFields
     const geolocation = null
     // when
     const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -395,7 +395,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       // given
       const parameters = {
         isGeolocated: true,
-      } as AlgoliaParametersFields
+      } as SearchParametersFields
 
       // when
       const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -423,7 +423,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       const parameters = {
         aroundRadius: 10,
         isGeolocated: true,
-      } as AlgoliaParametersFields
+      } as SearchParametersFields
 
       // when
       const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -451,7 +451,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       const parameters = {
         aroundRadius: 10,
         isGeolocated: true,
-      } as AlgoliaParametersFields
+      } as SearchParametersFields
 
       // when
       const result = parseAlgoliaParameters({
@@ -468,7 +468,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       const parameters = {
         aroundRadius: 10,
         isGeolocated: false,
-      } as AlgoliaParametersFields
+      } as SearchParametersFields
 
       // when
       const result = parseAlgoliaParameters({
@@ -488,7 +488,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       const beginningDatetimeAsString = '2020-10-01T22:00:00'
       const parameters = {
         beginningDatetime: beginningDatetimeAsString,
-      } as AlgoliaParametersFields
+      } as SearchParametersFields
       const geolocation = null
       // when
       const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -517,7 +517,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       const endingDatetimeAsString = '2020-10-01T22:00:00'
       const parameters = {
         endingDatetime: endingDatetimeAsString,
-      } as AlgoliaParametersFields
+      } as SearchParametersFields
       const geolocation = null
       // when
       const result = parseAlgoliaParameters({ geolocation, parameters })
@@ -549,7 +549,7 @@ describe('src | components | parseAlgoliaParameters', () => {
       const parameters = {
         beginningDatetime: beginningDatetimeAsString,
         endingDatetime: endingDatetimeAsString,
-      } as AlgoliaParametersFields
+      } as SearchParametersFields
       const geolocation = null
       // when
       const result = parseAlgoliaParameters({ geolocation, parameters })
