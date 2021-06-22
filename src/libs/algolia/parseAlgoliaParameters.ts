@@ -1,10 +1,8 @@
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import { SearchParametersFields } from 'features/home/contentful'
-import { LocationType } from 'features/search/enums'
+import { LocationType, CATEGORY_CRITERIA } from 'features/search/enums'
 import { SearchParameters } from 'features/search/types'
-
-import { CATEGORY_CRITERIA } from './enums/criteriaEnums'
 
 export const parseAlgoliaParameters = ({
   geolocation,

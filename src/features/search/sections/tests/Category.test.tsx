@@ -1,7 +1,7 @@
 import React from 'react'
 
+import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
-import { CATEGORY_CRITERIA } from 'libs/search'
 import { fireEvent, render } from 'tests/utils'
 
 import { Category } from '../Category'

@@ -1,6 +1,5 @@
 import { AlgoliaHit, parseAlgoliaParameters } from 'libs/algolia'
 import { Geoloc } from 'libs/algolia/algolia.d'
-import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
 import {
   attributesToRetrieve,
   fetchAlgolia,
@@ -18,10 +17,4 @@ export const useTransformHits = useTransformAlgoliaHits
 export type SearchHit = AlgoliaHit
 
 export type { Geoloc }
-export {
-  CATEGORY_CRITERIA,
-  attributesToRetrieve,
-  parseAlgoliaParameters,
-  fetchAlgolia,
-  filterSearchHit,
-}
+export { attributesToRetrieve, parseAlgoliaParameters, fetchAlgolia, filterSearchHit }

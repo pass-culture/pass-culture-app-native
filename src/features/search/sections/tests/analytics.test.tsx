@@ -3,10 +3,10 @@ import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import Section from 'features/search/sections'
 import { analytics } from 'libs/analytics'
-import { CATEGORY_CRITERIA } from 'libs/search'
 import { fireEvent, render } from 'tests/utils'
 
 import { SectionTitle } from '../titles'
