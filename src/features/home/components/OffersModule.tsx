@@ -12,7 +12,7 @@ import { analytics } from 'libs/analytics'
 import { isCloseToEndHorizontal } from 'libs/analytics.utils'
 import { formatDates, formatDistance, parseCategory, getDisplayPrice } from 'libs/parsers'
 import { SearchHit, parseAlgoliaParameters } from 'libs/search'
-import { ColorsEnum, LENGTH_M, RATIO_ALGOLIA, Spacer } from 'ui/theme'
+import { ColorsEnum, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 
 import { Cover } from '../atoms/Cover'
 
@@ -68,7 +68,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
 
   const imageHeight = display.layout === 'two-items' ? LENGTH_M : LENGTH_M
-  const imageWidth = imageHeight * RATIO_ALGOLIA
+  const imageWidth = imageHeight * RATIO_HOME_IMAGE
   const padding = showSeeMore ? imageWidth : 0
 
   const checkIfAllTilesHaveBeenSeen = useCallback(

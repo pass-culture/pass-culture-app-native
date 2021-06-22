@@ -14,6 +14,6 @@ export {
   LENGTH_L,
   LENGTH_XL,
   RATIO_BUSINESS,
-  RATIO_ALGOLIA,
+  RATIO_HOME_IMAGE,
   RATIO_EXCLU,
 } from 'ui/theme/grid'
