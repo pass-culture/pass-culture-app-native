@@ -64,6 +64,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
             isLicenceTokenChecked: false,
             retention: !!data?.enableIdCheckRetention,
             debug: !!data?.enableNativeIdCheckVerboseDebugging,
+            addressAutoCompletion: !!data?.idCheckAddressAutocompletion,
             stepsConfigs: getStepsConfigs({
               isRetentionEnabled: !!data?.enableIdCheckRetention,
               isPhoneValidationEnabled: !!data?.enablePhoneValidation,
@@ -79,6 +80,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
             isLicenceTokenChecked: false,
             retention: !!settings?.enableIdCheckRetention,
             debug: !!settings?.enableNativeIdCheckVerboseDebugging,
+            addressAutoCompletion: !!settings?.idCheckAddressAutocompletion,
             stepsConfigs: getStepsConfigs({
               isRetentionEnabled: !!settings?.enableIdCheckRetention,
               isPhoneValidationEnabled: !!settings?.enablePhoneValidation,

@@ -66,6 +66,8 @@ async function renderBookingProperties(booking: Booking) {
           wholeFranceOpening: false,
           objectStorageUrl: 'http://localhost',
           displayDmsRedirection: true,
+          idCheckAddressAutocompletion: false,
+          useAppSearch: false,
         }}
       />
     )

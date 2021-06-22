@@ -117,6 +117,8 @@ export function requestSettingsSuccess(
     wholeFranceOpening: false,
     objectStorageUrl: 'http://localhost',
     displayDmsRedirection: true,
+    idCheckAddressAutocompletion: false,
+    useAppSearch: false,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {
