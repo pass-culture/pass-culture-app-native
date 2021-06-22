@@ -5,11 +5,11 @@ import styled from 'styled-components/native'
 
 import { DateFilter } from 'features/search/atoms/Buttons'
 import { CalendarPicker } from 'features/search/components'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
-import { DATE_FILTER_OPTIONS } from 'libs/search'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 

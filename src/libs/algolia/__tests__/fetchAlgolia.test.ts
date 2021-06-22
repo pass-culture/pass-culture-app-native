@@ -1,9 +1,11 @@
 import algoliasearch from 'algoliasearch'
 
+import { LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { SearchParametersQuery } from 'libs/algolia/types'
+
 import { Range } from '../../typesUtils/typeHelpers'
-import { DATE_FILTER_OPTIONS } from '../enums/filtersEnums'
 import { fetchAlgolia, attributesToRetrieve } from '../fetchAlgolia'
-import { FetchAlgoliaParameters, LocationType } from '../types'
 
 const mockGetFromDate = jest.fn()
 const mockGetLastOfDate = jest.fn()
@@ -55,7 +57,7 @@ describe('fetchAlgolia', () => {
     // when
     fetchAlgolia({
       query: query,
-    } as FetchAlgoliaParameters)
+    } as SearchParametersQuery)
 
     // then
     expect(search).toHaveBeenCalledWith(query, {
@@ -74,7 +76,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         geolocation: null,
         query: query,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(algoliasearch).toHaveBeenCalledWith('algoliaAppId', 'algoliaApiKey')
@@ -91,7 +93,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: '',
         page: 0,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith('', {
@@ -115,7 +117,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         geolocation,
         query,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -136,7 +138,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         geolocation: geolocation,
         query: query,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -159,7 +161,7 @@ describe('fetchAlgolia', () => {
         geolocation: geolocation,
         query: query,
         locationType: LocationType.EVERYWHERE,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -185,7 +187,7 @@ describe('fetchAlgolia', () => {
         geolocation: geolocation,
         query: query,
         locationType: LocationType.AROUND_ME,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -211,7 +213,7 @@ describe('fetchAlgolia', () => {
         geolocation: geolocation,
         query: query,
         locationType: LocationType.AROUND_ME,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -237,7 +239,7 @@ describe('fetchAlgolia', () => {
         geolocation: geolocation,
         query: query,
         locationType: LocationType.AROUND_ME,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -260,7 +262,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerCategories: offerCategories,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -279,7 +281,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerCategories: offerCategories,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -299,7 +301,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerCategories: offerCategories,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -322,7 +324,7 @@ describe('fetchAlgolia', () => {
       // when
       fetchAlgolia({
         query: query,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -345,7 +347,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerTypes: offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -369,7 +371,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerTypes: offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -392,7 +394,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerTypes: offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -416,7 +418,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerTypes: offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -440,7 +442,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerTypes: offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -464,7 +466,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerTypes: offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -488,7 +490,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerTypes: offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -512,7 +514,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerTypes: offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -535,7 +537,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerTypes: offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -555,7 +557,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerIsDuo: false,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -574,7 +576,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerIsDuo: offerIsDuo,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -595,7 +597,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerIsNew: false,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -615,7 +617,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerIsNew: offerIsNew,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -637,7 +639,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query: query,
         offerIsFree: isFree,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -658,7 +660,7 @@ describe('fetchAlgolia', () => {
         query,
         offerIsFree,
         priceRange,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -680,7 +682,7 @@ describe('fetchAlgolia', () => {
         query,
         offerIsFree,
         priceRange,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -710,7 +712,7 @@ describe('fetchAlgolia', () => {
             option: DATE_FILTER_OPTIONS.TODAY,
             selectedDate,
           },
-        } as FetchAlgoliaParameters)
+        } as SearchParametersQuery)
 
         // Then
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
@@ -739,7 +741,7 @@ describe('fetchAlgolia', () => {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
             selectedDate,
           },
-        } as FetchAlgoliaParameters)
+        } as SearchParametersQuery)
 
         // Then
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
@@ -768,7 +770,7 @@ describe('fetchAlgolia', () => {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
             selectedDate,
           },
-        } as FetchAlgoliaParameters)
+        } as SearchParametersQuery)
 
         // Then
         expect(mock_WEEKEND_getFirstFromDate).toHaveBeenCalledWith(selectedDate)
@@ -797,7 +799,7 @@ describe('fetchAlgolia', () => {
             option: DATE_FILTER_OPTIONS.USER_PICK,
             selectedDate,
           },
-        } as FetchAlgoliaParameters)
+        } as SearchParametersQuery)
 
         // Then
         expect(mockGetFirstOfDate).toHaveBeenCalledWith(selectedDate)
@@ -819,7 +821,7 @@ describe('fetchAlgolia', () => {
         mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([64800, 79200])
 
         // When
-        fetchAlgolia({ timeRange } as FetchAlgoliaParameters)
+        fetchAlgolia({ timeRange } as SearchParametersQuery)
 
         // Then
         expect(mockComputeTimeRangeFromHoursToSeconds).toHaveBeenCalledWith(timeRange)
@@ -849,7 +851,7 @@ describe('fetchAlgolia', () => {
             selectedDate,
           },
           timeRange: timeRange as Range<number>,
-        } as FetchAlgoliaParameters)
+        } as SearchParametersQuery)
 
         // Then
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
@@ -881,7 +883,7 @@ describe('fetchAlgolia', () => {
             selectedDate,
           },
           timeRange: timeRange as Range<number>,
-        } as FetchAlgoliaParameters)
+        } as SearchParametersQuery)
 
         // Then
         expect(mock_WEEK_getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
@@ -914,7 +916,7 @@ describe('fetchAlgolia', () => {
             selectedDate,
           },
           timeRange: timeRange as Range<number>,
-        } as FetchAlgoliaParameters)
+        } as SearchParametersQuery)
 
         // Then
         expect(mock_WEEKEND_getAllFromTimeRangeAndDate).toHaveBeenCalledWith(
@@ -945,7 +947,7 @@ describe('fetchAlgolia', () => {
             selectedDate,
           },
           timeRange: timeRange as Range<number>,
-        } as FetchAlgoliaParameters)
+        } as SearchParametersQuery)
 
         // Then
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
@@ -977,7 +979,7 @@ describe('fetchAlgolia', () => {
           selectedDate,
         },
         offerIsFree: isFree,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // Then
       expect(search).toHaveBeenCalledWith(query, {
@@ -1000,7 +1002,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         timeRange: timeRange as Range<number>,
         offerIsFree: isFree,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // Then
       expect(search).toHaveBeenCalledWith(query, {
@@ -1030,7 +1032,7 @@ describe('fetchAlgolia', () => {
         },
         timeRange: [18, 22],
         offerIsFree: isFree,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // Then
       expect(search).toHaveBeenCalledWith(query, {
@@ -1066,7 +1068,7 @@ describe('fetchAlgolia', () => {
         offerCategories: offerCategories,
         offerTypes: offerTypes,
         page: page,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -1104,7 +1106,7 @@ describe('fetchAlgolia', () => {
         offerIsDuo,
         priceRange: priceRange as Range<number>,
         offerTypes,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith(query, {
@@ -1132,7 +1134,7 @@ describe('fetchAlgolia', () => {
       // when
       fetchAlgolia({
         tags: tags,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith('', {
@@ -1149,7 +1151,7 @@ describe('fetchAlgolia', () => {
       // when
       fetchAlgolia({
         tags: tags,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith('', {
@@ -1171,7 +1173,7 @@ describe('fetchAlgolia', () => {
       // when
       fetchAlgolia({
         hitsPerPage,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith('', {
@@ -1188,7 +1190,7 @@ describe('fetchAlgolia', () => {
       // when
       fetchAlgolia({
         hitsPerPage,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // then
       expect(search).toHaveBeenCalledWith('', {
@@ -1211,7 +1213,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query,
         beginningDatetime,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // Then
       expect(search).toHaveBeenCalledWith(query, {
@@ -1232,7 +1234,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({
         query,
         endingDatetime,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // Then
       expect(search).toHaveBeenCalledWith(query, {
@@ -1256,7 +1258,7 @@ describe('fetchAlgolia', () => {
         query,
         beginningDatetime,
         endingDatetime,
-      } as FetchAlgoliaParameters)
+      } as SearchParametersQuery)
 
       // Then
       expect(search).toHaveBeenCalledWith(query, {

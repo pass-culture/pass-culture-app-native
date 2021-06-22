@@ -1,12 +1,12 @@
-import { FACETS_ENUM } from '../enums'
-import { FetchAlgoliaParameters, FiltersArray } from '../types'
+import { FACETS_ENUM } from 'libs/algolia/enums'
+import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
 
 export const buildFacetFilters = ({
   offerCategories,
   offerTypes,
   offerIsDuo,
   tags,
-}: Pick<FetchAlgoliaParameters, 'offerCategories' | 'offerTypes' | 'offerIsDuo' | 'tags'>): null | {
+}: Pick<SearchParametersQuery, 'offerCategories' | 'offerTypes' | 'offerIsDuo' | 'tags'>): null | {
   facetFilters: FiltersArray
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
@@ -32,20 +32,20 @@ export const buildFacetFilters = ({
 }
 
 const buildOfferCategoriesPredicate = (
-  offerCategories: FetchAlgoliaParameters['offerCategories']
+  offerCategories: SearchParametersQuery['offerCategories']
 ): string[] => {
   return offerCategories.map((category: string) => `${FACETS_ENUM.OFFER_CATEGORY}:${category}`)
 }
 
 const buildOfferIsDuoPredicate = (
-  offerIsDuo: FetchAlgoliaParameters['offerIsDuo']
+  offerIsDuo: SearchParametersQuery['offerIsDuo']
 ): string[] | undefined => {
   if (offerIsDuo) return [`${FACETS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`]
   return undefined
 }
 
 const buildOfferTypesPredicate = (
-  offerTypes: FetchAlgoliaParameters['offerTypes']
+  offerTypes: SearchParametersQuery['offerTypes']
 ): FiltersArray | undefined => {
   const { isDigital, isEvent, isThing } = offerTypes
   const DIGITAL = `${FACETS_ENUM.OFFER_IS_DIGITAL}:${isDigital}`
@@ -64,7 +64,7 @@ const buildOfferTypesPredicate = (
   return undefined
 }
 
-const buildTagsPredicate = (tags: FetchAlgoliaParameters['tags']): FiltersArray[0] | undefined => {
+const buildTagsPredicate = (tags: SearchParametersQuery['tags']): FiltersArray[0] | undefined => {
   if (tags.length > 0) return tags.map((tag: string) => `${FACETS_ENUM.OFFER_TAGS}:${tag}`)
   return undefined
 }

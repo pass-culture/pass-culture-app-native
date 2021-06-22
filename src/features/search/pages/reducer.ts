@@ -1,20 +1,19 @@
+import { LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { SearchState } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
-import { FetchAlgoliaParameters, LocationType, AlgoliaGeolocation } from 'libs/search'
-import { DATE_FILTER_OPTIONS } from 'libs/search'
 
 import { clampPrice, addOrRemove } from './reducer.helpers'
 
-export type SearchParameters = Omit<FetchAlgoliaParameters, 'hitsPerPage' | 'page' | 'query'>
-export type SearchState = SearchParameters & {
-  showResults: boolean
-  query: string
-  place?: SuggestedPlace | null
-}
-
 export const initialSearchState: SearchState = {
   aroundRadius: null,
+  beginningDatetime: null,
+  date: null,
+  endingDatetime: null,
+  geolocation: null,
+  hitsPerPage: 20,
+  locationType: LocationType.EVERYWHERE,
   offerCategories: [],
-  tags: [],
   offerIsDuo: false,
   offerIsFree: false,
   offerIsNew: false,
@@ -23,16 +22,12 @@ export const initialSearchState: SearchState = {
     isEvent: false,
     isThing: false,
   },
-  beginningDatetime: null,
-  endingDatetime: null,
-  priceRange: null,
-  locationType: LocationType.EVERYWHERE,
-  geolocation: null,
-  date: null,
-  timeRange: null,
-  showResults: false,
   place: null,
+  priceRange: null,
   query: '',
+  showResults: false,
+  tags: [],
+  timeRange: null,
 }
 
 export type Action =
@@ -53,7 +48,7 @@ export type Action =
   | { type: 'TOGGLE_HOUR' }
   | { type: 'SELECT_DATE_FILTER_OPTION'; payload: DATE_FILTER_OPTIONS }
   | { type: 'SELECT_DATE'; payload: Date }
-  | { type: 'LOCATION_AROUND_ME'; payload: AlgoliaGeolocation }
+  | { type: 'LOCATION_AROUND_ME'; payload: SearchState['geolocation'] }
   | { type: 'LOCATION_EVERYWHERE' }
   | { type: 'LOCATION_PLACE'; payload: SuggestedPlace }
   | { type: 'SET_QUERY'; payload: string }

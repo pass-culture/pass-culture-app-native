@@ -1,11 +1,7 @@
 import React, { useContext, useEffect, useReducer } from 'react'
 
-import {
-  Action,
-  initialSearchState,
-  searchReducer,
-  SearchState,
-} from 'features/search/pages/reducer'
+import { Action, initialSearchState, searchReducer } from 'features/search/pages/reducer'
+import { SearchState } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
 
 export interface ISearchContext {

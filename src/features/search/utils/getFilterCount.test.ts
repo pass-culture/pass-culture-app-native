@@ -1,7 +1,8 @@
-import { initialSearchState, SearchState } from 'features/search/pages/reducer'
+import { LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { initialSearchState } from 'features/search/pages/reducer'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/pages/reducer.helpers'
-import { LocationType } from 'libs/search'
-import { DATE_FILTER_OPTIONS } from 'libs/search'
+import { SearchState } from 'features/search/types'
 
 import { getFilterCount } from './getFilterCount'
 

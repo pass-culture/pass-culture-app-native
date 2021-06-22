@@ -1,13 +1,13 @@
 import { ComponentType } from 'react'
 
-import { ParsedAlgoliaParameters } from 'libs/search'
+import { SearchParameters } from 'features/search/types'
 
 export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
   InitialRoutingScreen: undefined
   Home: { entryId: string } | undefined
-  Search: { parameters: ParsedAlgoliaParameters | null } | undefined
+  Search: { parameters: SearchParameters | null } | undefined
   Bookings: undefined
   Favorites: undefined
   Profile: undefined
