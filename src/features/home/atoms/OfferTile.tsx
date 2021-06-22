@@ -70,7 +70,7 @@ export const OfferTile = (props: OfferTileProps) => {
   const queryClient = useQueryClient()
 
   function handlePressOffer() {
-    // We pre-populate the query-cache with the data from algolia for a smooth transition
+    // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData(['offer', offer.offerId], mergeOfferData(offer))
     analytics.logConsultOffer({ offerId: offer.offerId, from: 'home', moduleName })
     navigation.navigate('Offer', {

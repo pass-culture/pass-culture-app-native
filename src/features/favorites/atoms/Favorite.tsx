@@ -67,7 +67,7 @@ export const Favorite: React.FC<Props> = (props) => {
   }, [offer])
 
   function handlePressOffer() {
-    // We pre-populate the query-cache with the data from algolia for a smooth transition
+    // We pre-populate the query-cache with the data from the search result for a smooth transition
     if (!offer.id) return
     queryClient.setQueryData(
       ['offer', offer.id],
