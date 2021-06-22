@@ -14,7 +14,7 @@ import { Spacer } from 'ui/theme'
 
 import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
-import { AlgoliaModuleResponse } from '../pages/useHomeAlgoliaModules'
+import { AlgoliaModuleResponse } from '../pages/useHomeModules'
 import { isOfferModuleTypeguard } from '../typeguards'
 
 import { RecommendationModule } from './RecommendationModule'

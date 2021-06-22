@@ -10,7 +10,7 @@ import { AlgoliaHit } from 'libs/search'
 
 import { RecommendationPane } from '../contentful/moduleTypes'
 
-import { AlgoliaModuleResponse } from './useHomeAlgoliaModules'
+import { AlgoliaModuleResponse } from './useHomeModules'
 
 export const showBusinessModule = (
   targetNotConnectedUsersOnly: boolean | undefined,

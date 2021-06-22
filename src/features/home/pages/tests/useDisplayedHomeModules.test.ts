@@ -12,7 +12,7 @@ import {
   getOfferModules,
   getModulesToDisplay,
 } from '../useDisplayedHomeModules.utils'
-import { AlgoliaModuleResponse } from '../useHomeAlgoliaModules'
+import { AlgoliaModuleResponse } from '../useHomeModules'
 
 const nbHits = 2
 const hits = mockedAlgoliaResponse.hits.slice(0, nbHits)

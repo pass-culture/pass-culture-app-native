@@ -34,7 +34,7 @@ const isMultipleAlgoliaHit = (
   'results' in response &&
   'moduleId' in response
 
-export const useHomeAlgoliaModules = (
+export const useHomeModules = (
   offerModules: Array<Offers | OffersWithCover>
 ): AlgoliaModuleResponse => {
   const { position } = useGeolocation()

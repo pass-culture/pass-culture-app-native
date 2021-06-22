@@ -6,7 +6,7 @@ import {
   getOfferModules,
   getRecommendationModule,
 } from './useDisplayedHomeModules.utils'
-import { useHomeAlgoliaModules } from './useHomeAlgoliaModules'
+import { useHomeModules } from './useHomeModules'
 import { useHomeRecommendedHits } from './useHomeRecommendedHits'
 
 export function useDisplayedHomeModules(entryId?: string) {
@@ -16,7 +16,7 @@ export function useDisplayedHomeModules(entryId?: string) {
   const { data: modules = [] } = useHomepageModules(entryId)
 
   // 2. Get the hits and nbHits for each algolia module
-  const algoliaModules = useHomeAlgoliaModules(getOfferModules(modules))
+  const algoliaModules = useHomeModules(getOfferModules(modules))
 
   // 3. Get the offers for the recommended hits
   const recommendedHits = useHomeRecommendedHits(getRecommendationModule(modules))
