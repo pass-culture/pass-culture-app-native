@@ -35,11 +35,6 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
     navigateToHome()
   }
 
-  // function onContactSupport() {
-  //   analytics.logContactSupportResetPasswordEmailSent()
-  //   contactSupport.forResetPasswordEmailNotReceived(route.params.email)
-  // }
-
   return (
     <BottomContentPage>
       <ModalHeader
@@ -69,9 +64,6 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             }
             icon={ExternalSite}
           />
-          {/*<Spacer.Column numberOfSpaces={5} />*/}
-          {/*<Typo.Body>{t`Si l'e-mail n'arrive pas, tu peux : `}</Typo.Body>*/}
-          {/*<ButtonTertiary title={t`Contacter le support`} onPress={onContactSupport} icon={Email} />*/}
         </Description>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary title={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />

@@ -7,10 +7,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
-import { analytics } from 'libs/analytics'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
-
-import { contactSupport } from '../support.services'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
@@ -57,21 +54,6 @@ describe('<ResetPasswordEmailSent />', () => {
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalled()
-    })
-  })
-
-  it.skip('should open mail app when clicking on contact support button', async () => {
-    const renderAPI = await renderInitialPage('ResetPasswordEmailSent')
-
-    const contactSupportButton = renderAPI.getByText('Contacter le support')
-    fireEvent.press(contactSupportButton)
-
-    await waitForExpect(() => {
-      expect(analytics.logContactSupportResetPasswordEmailSent).toBeCalledTimes(1)
-      expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledTimes(1)
-      expect(contactSupport.forResetPasswordEmailNotReceived).toHaveBeenCalledWith(
-        'john.doe@gmail.com'
-      )
     })
   })
 
