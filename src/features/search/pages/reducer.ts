@@ -5,7 +5,11 @@ import { DATE_FILTER_OPTIONS } from 'libs/search'
 import { clampPrice, addOrRemove } from './reducer.helpers'
 
 export type SearchParameters = Omit<FetchAlgoliaParameters, 'hitsPerPage' | 'page' | 'query'>
-export type SearchState = SearchParameters & { showResults: boolean; query: string }
+export type SearchState = SearchParameters & {
+  showResults: boolean
+  query: string
+  place?: SuggestedPlace | null
+}
 
 export const initialSearchState: SearchState = {
   aroundRadius: null,
