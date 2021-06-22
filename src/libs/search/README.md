@@ -43,7 +43,7 @@ interface SearchParameters {
   date: SelectedDate | null
   endingDatetime: Date | null
   hitsPerPage: number | null
-  geolocation: AlgoliaGeolocation | null
+  geolocation: { latitude: number; longitude: number } | null
   offerCategories: string[]
   offerIsDuo: boolean
   offerIsFree: boolean

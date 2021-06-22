@@ -10,7 +10,6 @@ import {
   transformAlgoliaHit,
   useTransformAlgoliaHits,
 } from 'libs/algolia/fetchAlgolia'
-import { AlgoliaGeolocation } from 'libs/algolia/types'
 
 export const fetchHits = fetchAlgoliaHits
 export const fetchMultipleHits = fetchMultipleAlgolia
@@ -18,7 +17,7 @@ export const transformHit = transformAlgoliaHit
 export const useTransformHits = useTransformAlgoliaHits
 export type SearchHit = AlgoliaHit
 
-export type { Geoloc, AlgoliaGeolocation }
+export type { Geoloc }
 export {
   CATEGORY_CRITERIA,
   attributesToRetrieve,
