@@ -1,5 +1,11 @@
 module.exports = {
-  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules'],
+  plugins: [
+    'react-native',
+    'react-hooks',
+    'typescript-sort-keys',
+    'eslint-plugin-local-rules',
+    'no-skip-tests',
+  ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
@@ -92,6 +98,7 @@ module.exports = {
         iosPathRegex: '\\.ios(.test)?.(ts|tsx)$',
       },
     ],
+    'no-skip-tests/no-skip-tests': 2,
   },
   settings: {
     react: {
