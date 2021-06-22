@@ -1,8 +1,9 @@
 import { useCallback } from 'react'
 
 import { useAppSettings } from 'features/auth/settings'
-import { AlgoliaHit } from 'libs/algolia'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
+
+import { AlgoliaHit } from '..'
 
 // Go to https://github.com/pass-culture/pass-culture-api/blob/master/src/pcapi/algolia/infrastructure/builder.py
 // to see how the data is indexed into algolia

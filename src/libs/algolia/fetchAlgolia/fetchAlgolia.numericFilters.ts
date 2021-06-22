@@ -1,7 +1,8 @@
-import { FetchAlgoliaParameters, FiltersArray } from 'libs/algolia'
-import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from 'libs/algolia/datetime/time'
-import { FACETS_ENUM, DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 import { Range, NoNullProperties } from 'libs/typesUtils/typeHelpers'
+
+import { TIMESTAMP, computeTimeRangeFromHoursToSeconds } from '../datetime/time'
+import { FACETS_ENUM, DATE_FILTER_OPTIONS } from '../enums'
+import { FetchAlgoliaParameters, FiltersArray } from '../types'
 
 export const buildNumericFilters = ({
   date,

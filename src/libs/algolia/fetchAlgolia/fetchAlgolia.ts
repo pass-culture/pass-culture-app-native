@@ -2,12 +2,13 @@ import { GetObjectsResponse, MultipleQueriesResponse, SearchResponse } from '@al
 import algoliasearch from 'algoliasearch'
 
 import { SearchParameters } from 'features/search/pages/reducer'
-import { AlgoliaHit } from 'libs/algolia/algolia.d'
-import { RADIUS_FILTERS } from 'libs/algolia/enums'
-import { buildFacetFilters } from 'libs/algolia/fetchAlgolia/fetchAlgolia.facetFilters'
-import { buildNumericFilters } from 'libs/algolia/fetchAlgolia/fetchAlgolia.numericFilters'
-import { FetchAlgoliaParameters, LocationType, ParsedAlgoliaParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
+
+import { AlgoliaHit } from '../algolia.d'
+import { RADIUS_FILTERS } from '../enums'
+import { buildFacetFilters } from '../fetchAlgolia/fetchAlgolia.facetFilters'
+import { buildNumericFilters } from '../fetchAlgolia/fetchAlgolia.numericFilters'
+import { FetchAlgoliaParameters, LocationType, ParsedAlgoliaParameters } from '../types'
 
 const client = algoliasearch(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
 

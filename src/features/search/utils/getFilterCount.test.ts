@@ -1,7 +1,7 @@
 import { initialSearchState, SearchState } from 'features/search/pages/reducer'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/pages/reducer.helpers'
-import { LocationType } from 'libs/algolia'
-import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
+import { LocationType } from 'libs/search'
+import { DATE_FILTER_OPTIONS } from 'libs/search'
 
 import { getFilterCount } from './getFilterCount'
 

@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 
-import { LocationType } from 'libs/algolia'
-import { DATE_FILTER_OPTIONS } from 'libs/algolia/enums'
 import { SuggestedPlace } from 'libs/place'
+import { LocationType } from 'libs/search'
+import { DATE_FILTER_OPTIONS } from 'libs/search'
 
 import { Action, initialSearchState, searchReducer, SearchState } from '../reducer'
 import { MAX_PRICE } from '../reducer.helpers'

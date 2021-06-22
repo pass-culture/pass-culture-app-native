@@ -9,9 +9,8 @@ import { Filter } from 'features/search/atoms/Buttons'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/components/Placeholders'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
-import { AlgoliaHit } from 'libs/algolia'
-import { useTransformAlgoliaHits } from 'libs/algolia/fetchAlgolia'
 import { analytics } from 'libs/analytics'
+import { AlgoliaHit, useTransformHits } from 'libs/search'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 const keyExtractor = (item: AlgoliaHit) => item.objectID
@@ -20,10 +19,10 @@ export const SearchResults: React.FC = () => {
   const flatListRef = useRef<FlatList<AlgoliaHit> | null>(null)
   const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useSearchResults()
   const { searchState } = useSearch()
-  const transformAlgoliaHit = useTransformAlgoliaHits()
+  const transformHits = useTransformHits()
 
   const hits: AlgoliaHit[] = useMemo(
-    () => flatten(data?.pages.map((page) => page.hits.map(transformAlgoliaHit))),
+    () => flatten(data?.pages.map((page) => page.hits.map(transformHits))),
     [data?.pages]
   )
   const { nbHits } = data?.pages[0] || { nbHits: 0 }

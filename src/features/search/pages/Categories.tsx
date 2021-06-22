@@ -6,7 +6,7 @@ import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
-import { CATEGORY_CRITERIA } from 'libs/algolia/enums'
+import { CATEGORY_CRITERIA } from 'libs/search'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'

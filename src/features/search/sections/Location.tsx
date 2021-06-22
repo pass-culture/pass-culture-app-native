@@ -9,7 +9,7 @@ import { useLocationChoice } from 'features/search/components/locationChoice.uti
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { LocationType } from 'libs/algolia'
+import { LocationType } from 'libs/search'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'

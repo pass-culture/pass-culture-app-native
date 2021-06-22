@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
-import { AlgoliaHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
+import * as SearchModule from 'libs/search'
+import { AlgoliaHit } from 'libs/search'
 import { render } from 'tests/utils'
 
 import { SearchResults } from '../SearchResults'
@@ -27,9 +28,7 @@ jest.mock('features/search/pages/useSearchResults', () => ({
   }),
 }))
 
-jest.mock('libs/algolia/fetchAlgolia', () => ({
-  useTransformAlgoliaHits: () => (hit: AlgoliaHit) => hit,
-}))
+jest.spyOn(SearchModule, 'useTransformHits').mockImplementation(() => (hit: AlgoliaHit) => hit)
 
 describe('SearchResults component', () => {
   beforeEach(() => {

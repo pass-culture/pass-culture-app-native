@@ -2,9 +2,9 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
-import { transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
-import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import { transformHit } from 'libs/search'
+import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
@@ -21,7 +21,7 @@ const props = {
     title: 'Module title',
     layout: 'one-item-medium',
   } as DisplayParametersFields,
-  hits: mockedAlgoliaResponse.hits.map(transformAlgoliaHit('fakeUrlPrefix')),
+  hits: mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')),
   nbHits: mockedAlgoliaResponse.nbHits,
   cover: null,
   position: null,
