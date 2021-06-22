@@ -12,7 +12,7 @@ import {
   parseAlgoliaParameters,
   ParsedAlgoliaParameters,
   fetchMultipleHits,
-  filterAlgoliaHit,
+  filterSearchHit,
   useTransformHits,
 } from 'libs/search'
 
@@ -63,7 +63,7 @@ export const useHomeModules = (
             setHomeModules((prevHomeModules) => ({
               ...prevHomeModules,
               [response.moduleId]: {
-                hits: uniqBy(hits.filter(filterAlgoliaHit).map(transformHits), 'objectID'),
+                hits: uniqBy(hits.filter(filterSearchHit).map(transformHits), 'objectID'),
                 nbHits,
               },
             }))

@@ -6,7 +6,7 @@ import {
   fetchAlgolia,
   fetchAlgoliaHits,
   fetchMultipleAlgolia,
-  filterAlgoliaHit,
+  filterSearchHit,
   transformAlgoliaHit,
   useTransformAlgoliaHits,
 } from 'libs/algolia/fetchAlgolia'
@@ -26,5 +26,5 @@ export {
   attributesToRetrieve,
   parseAlgoliaParameters,
   fetchAlgolia,
-  filterAlgoliaHit,
+  filterSearchHit,
 }

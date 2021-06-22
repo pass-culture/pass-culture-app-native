@@ -5,7 +5,7 @@ import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
-import { SearchHit, fetchHits, filterAlgoliaHit, useTransformHits } from 'libs/search'
+import { SearchHit, fetchHits, filterSearchHit, useTransformHits } from 'libs/search'
 
 import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
@@ -46,7 +46,7 @@ export const useHomeRecommendedHits = (
 
   if (!data?.results) return [] as SearchHit[]
 
-  return (data?.results as SearchHit[]).filter(filterAlgoliaHit).map(transformHits)
+  return (data?.results as SearchHit[]).filter(filterSearchHit).map(transformHits)
 }
 
 export const getRecommendationEndpoint = (
