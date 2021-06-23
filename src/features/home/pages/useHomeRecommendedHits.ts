@@ -5,7 +5,7 @@ import { env } from 'libs/environment'
 import { errorMonitoring } from 'libs/errorMonitoring'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
-import { SearchHit, fetchHits, filterSearchHit, useTransformHits } from 'libs/search'
+import { SearchHit, useFetchHits } from 'libs/search'
 
 import { useUserProfileInfo } from '../api'
 import { RecommendationPane } from '../contentful/moduleTypes'
@@ -13,14 +13,32 @@ import { RecommendationPane } from '../contentful/moduleTypes'
 export const useHomeRecommendedHits = (
   recommendationModule: RecommendationPane | undefined
 ): SearchHit[] => {
+  const { data: recommendedIds } = useRecommendedOfferIds(recommendationModule)
+  return useRecommendedHits(recommendedIds?.recommended_offers || [])
+}
+
+export const getRecommendationEndpoint = (
+  userId: number | undefined,
+  position: GeoCoordinates | null
+): string | undefined => {
+  if (!userId) return undefined
+  const endpoint = `${env.RECOMMENDATION_ENDPOINT}/recommendation/${userId}?token=${env.RECOMMENDATION_TOKEN}`
+
+  if (position) return `${endpoint}&longitude=${position.longitude}&latitude=${position.latitude}`
+  return endpoint
+}
+
+const useRecommendationEndpoint = (userId: number | undefined) => {
   const { position } = useGeolocation()
-  const transformHits = useTransformHits()
+  return getRecommendationEndpoint(userId, position) as string
+}
+
+const useRecommendedOfferIds = (recommendationModule: RecommendationPane | undefined) => {
   const { data: profile } = useUserProfileInfo()
   const userId = profile?.id
+  const recommendationEndpoint = useRecommendationEndpoint(userId)
 
-  const recommendationEndpoint = getRecommendationEndpoint(userId, position) as string
-
-  const { data: recommendedIds } = useQuery(
+  return useQuery(
     QueryKeys.RECOMMENDATION_OFFER_IDS,
     async () => {
       const response = await fetch(recommendationEndpoint)
@@ -37,25 +55,15 @@ export const useHomeRecommendedHits = (
     },
     { enabled: !!recommendationModule && typeof userId === 'number' && !!recommendationEndpoint }
   )
-
-  const ids = recommendedIds?.recommended_offers || []
-
-  const { data } = useQuery(QueryKeys.RECOMMENDATION_HITS, async () => await fetchHits(ids), {
-    enabled: ids.length > 0,
-  })
-
-  if (!data?.results) return [] as SearchHit[]
-
-  return (data?.results as SearchHit[]).filter(filterSearchHit).map(transformHits)
 }
 
-export const getRecommendationEndpoint = (
-  userId: number | undefined,
-  position: GeoCoordinates | null
-): string | undefined => {
-  if (!userId) return undefined
-  const endpoint = `${env.RECOMMENDATION_ENDPOINT}/recommendation/${userId}?token=${env.RECOMMENDATION_TOKEN}`
+const useRecommendedHits = (ids: string[]): SearchHit[] => {
+  const { enabled, fetchHits, transformHits, filterHits } = useFetchHits()
 
-  if (position) return `${endpoint}&longitude=${position.longitude}&latitude=${position.latitude}`
-  return endpoint
+  const { data } = useQuery(QueryKeys.RECOMMENDATION_HITS, async () => await fetchHits(ids), {
+    enabled: ids.length > 0 && enabled,
+  })
+
+  const results = data?.results || []
+  return (results as SearchHit[]).filter(filterHits).map(transformHits)
 }

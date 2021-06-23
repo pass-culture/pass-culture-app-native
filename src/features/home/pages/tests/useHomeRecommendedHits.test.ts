@@ -2,7 +2,7 @@ import { renderHook, cleanup } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 
 import { RecommendationPane } from 'features/home/contentful/moduleTypes'
-import * as SearchModule from 'libs/search'
+import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { mockedAlgoliaResponse } from 'libs/search/fixtures'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -15,14 +15,13 @@ jest.mock('features/home/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { id: mockUserId } })),
 }))
 jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({})),
+  useAppSettings: jest.fn(() => ({ data: { useAppSearch: false } })),
 }))
 
 const objectIds = mockedAlgoliaResponse.hits.map(({ objectID }) => objectID)
 
-const fetchHits = jest.spyOn(SearchModule, 'fetchHits').mockResolvedValue({
-  results: mockedAlgoliaResponse.hits,
-})
+const fetchHits = jest.fn().mockResolvedValue({ results: mockedAlgoliaResponse.hits })
+jest.spyOn(AlgoliaModule, 'fetchAlgoliaHits').mockImplementation(fetchHits)
 
 const endpoint = getRecommendationEndpoint(mockUserId, null) as string
 
