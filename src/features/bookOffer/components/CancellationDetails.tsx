@@ -34,8 +34,9 @@ export const CancellationDetails: React.FC = () => {
           })
   }
 
-  // if "autoActivateDigitalBookings" is set, any digital booking is not cancellable
-  if (settings && settings.autoActivateDigitalBookings && offer.isDigital && !!activationCode) {
+  // if "autoActivateDigitalBookings" is set, any digital booking with activationCode will be
+  // automatically activated. As a result, they are not cancellable
+  if (settings?.autoActivateDigitalBookings && offer.isDigital && !!activationCode) {
     message = notCancellableMessage
   }
 
