@@ -5,7 +5,7 @@ export {
   fetchMultipleAlgolia,
 } from './fetchAlgolia'
 export {
-  filterSearchHit,
+  filterAlgoliaHit,
   transformAlgoliaHit,
   useTransformAlgoliaHits,
 } from './transformAlgoliaHit'

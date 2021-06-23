@@ -37,7 +37,7 @@ export const parseGeoloc = (hit: AlgoliaHit): AlgoliaHit['_geoloc'] =>
   hit.offer.isDigital ? { lat: null, lng: null } : hit._geoloc
 
 // We don't want to display offers without image
-export const filterSearchHit = (hit: AlgoliaHit): boolean =>
+export const filterAlgoliaHit = (hit: AlgoliaHit): boolean =>
   hit && hit.offer && !!hit.offer.thumbUrl
 
 export const transformAlgoliaHit = (urlPrefix?: string) => (hit: AlgoliaHit): AlgoliaHit => ({

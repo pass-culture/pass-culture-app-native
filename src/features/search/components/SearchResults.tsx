@@ -1,5 +1,4 @@
 import debounce from 'lodash.debounce'
-import flatten from 'lodash.flatten'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
@@ -10,22 +9,23 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'features/search/comp
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
-import { SearchHit, useTransformHits } from 'libs/search'
+import { SearchHit } from 'libs/search'
 import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT } from 'ui/theme'
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
 export const SearchResults: React.FC = () => {
   const flatListRef = useRef<FlatList<SearchHit> | null>(null)
-  const { hasNextPage, fetchNextPage, data, isLoading, isFetchingNextPage } = useSearchResults()
+  const {
+    hasNextPage,
+    fetchNextPage,
+    data,
+    hits,
+    nbHits,
+    isLoading,
+    isFetchingNextPage,
+  } = useSearchResults()
   const { searchState } = useSearch()
-  const transformHits = useTransformHits()
-
-  const hits: SearchHit[] = useMemo(
-    () => flatten(data?.pages.map((page) => page.hits.map(transformHits))),
-    [data?.pages]
-  )
-  const { nbHits } = data?.pages[0] || { nbHits: 0 }
 
   useEffect(
     // Despite the fact that the useEffect hook being called immediately,
