@@ -7,4 +7,5 @@ export const transformHit = transformAlgoliaHit
 export type SearchHit = AlgoliaHit
 
 export type Geoloc = AlgoliaGeoloc
-export { useFetchMultipleHits } from './fetch'
+
+export { useFetchMultipleHits, useFetchHits } from './fetch'
