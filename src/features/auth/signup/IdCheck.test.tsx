@@ -12,8 +12,7 @@ import { act, render, waitFor } from 'tests/utils'
 
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
+// allowConsole({ error: true })
 /* Explanation for allowConsole :
 The test `should display web page with url with user_consent_data_collection set to true`
 fails because of `Warning: You called act(async () => ...) without await...`.

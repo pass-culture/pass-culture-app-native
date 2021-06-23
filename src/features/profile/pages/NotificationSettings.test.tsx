@@ -20,10 +20,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { NotificationSettings } from './NotificationSettings'
 
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({
-  error: true,
-})
+// allowConsole({ error: true })
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
