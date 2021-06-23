@@ -10,6 +10,7 @@ export enum QueryKeys {
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
   RESET_PASSWORD_EXPIRED_LINK = 'resetPasswordExpiredLink',
+  SEARCH_RESULTS = 'searchResults',
   SETTINGS = 'settings',
   SIGNUP_CONFIRMATION_EXPIRED_LINK = 'signupConfirmationExpiredLink',
   USER_PROFILE = 'userProfile',

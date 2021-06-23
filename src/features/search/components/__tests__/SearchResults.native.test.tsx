@@ -2,8 +2,6 @@ import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
 import { analytics } from 'libs/analytics'
-import * as SearchModule from 'libs/search'
-import { SearchHit } from 'libs/search'
 import { render } from 'tests/utils'
 
 import { SearchResults } from '../SearchResults'
@@ -22,13 +20,15 @@ const mockFetchNextPage = jest.fn()
 jest.mock('features/search/pages/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
+    hits: [],
+    nbHits: 0,
     isFetching: false,
+    isLoading: false,
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
+    isFetchingNextPage: false,
   }),
 }))
-
-jest.spyOn(SearchModule, 'useTransformHits').mockImplementation(() => (hit: SearchHit) => hit)
 
 describe('SearchResults component', () => {
   beforeEach(() => {

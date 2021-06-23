@@ -8,4 +8,4 @@ export type SearchHit = AlgoliaHit
 
 export type Geoloc = AlgoliaGeoloc
 
-export { useFetchMultipleHits, useFetchHits } from './fetch'
+export { useFetchMultipleHits, useFetchHits, useFetchQuery } from './fetch'
