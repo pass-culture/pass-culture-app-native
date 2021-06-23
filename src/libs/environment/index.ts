@@ -10,6 +10,9 @@ export interface Environment {
   ANDROID_APP_ID: string
   API_BASE_URL: string
   APPS_FLYER_DEV_KEY: string
+  APP_SEARCH_KEY: string
+  APP_SEARCH_ENDPOINT: string
+  APP_SEARCH_ENGINE: string
   CGU_LINK: string
   CONTENTFUL_ACCESS_TOKEN: string
   CONTENTFUL_ENVIRONMENT: string
