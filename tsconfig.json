@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*": ["src/*", "*"]
+      "*": ["src/*", "*"],
+      "@elastic/app-search-javascript": ["src/types/@elastic/app-search-javascript"]
     },
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -19,6 +20,7 @@
     "noImplicitThis": true,
     "resolveJsonModule": true,
     "target": "es5",
+    "typeRoots": ["node_modules/@types", "src/types"],
     "skipLibCheck": true,
     "sourceMap": true,
     "removeComments": true,
@@ -26,6 +28,7 @@
   },
   "exclude": [
     "node_modules",
+    "src/types",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js",
