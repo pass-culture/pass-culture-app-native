@@ -1,19 +1,21 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
+import appsFlyer from 'react-native-appsflyer'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
 import { isApiError } from 'api/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { CampaignEvents } from 'libs/campaign/events'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useBooking, useBookingStock } from '../pages/BookingOfferWrapper'
+import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
 import { useBookOfferMutation } from '../services/useBookOfferMutation'
 
 import { BookingInformations } from './BookingInformations'
@@ -35,6 +37,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { bookingState, dismissModal, dispatch } = useBooking()
   const stock = useBookingStock()
+  const offer = useBookingOffer()
   const { showErrorSnackBar } = useSnackBarContext()
   const { quantity, offerId } = bookingState
 
@@ -43,6 +46,13 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       dismissModal()
       if (offerId) {
         analytics.logBookingConfirmation(offerId, bookingId)
+        if (!!stock && !!offer)
+          appsFlyer.logEvent(CampaignEvents.COMPLETE_BOOK_OFFER, {
+            af_offer_id: offer.id,
+            af_booking_id: stock.id,
+            af_price: stock.price,
+            af_category: offer.category.label,
+          })
         navigate('BookingConfirmation', { offerId, bookingId })
       }
     },
