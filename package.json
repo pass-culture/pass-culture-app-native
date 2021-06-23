@@ -68,6 +68,7 @@
     "@react-native-firebase/app": "^11.4.1",
     "@react-native-firebase/dynamic-links": "^11.4.1",
     "@react-native-firebase/firestore": "^11.4.1",
+    "@react-native-firebase/perf": "11.4.1",
     "@react-native-firebase/remote-config": "^11.4.1",
     "@react-navigation/bottom-tabs": "^5.11.1",
     "@react-navigation/native": "5.8.9",
