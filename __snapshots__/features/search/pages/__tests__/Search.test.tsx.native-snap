@@ -409,6 +409,7 @@ exports[`Search component should render correctly 1`] = `
     }
   >
     <View
+      accessibilityLabel="Rechercher"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -427,6 +428,7 @@ exports[`Search component should render correctly 1`] = `
           "overflow": "hidden",
         }
       }
+      testID="Rechercher"
     >
       <View
         height={48}
