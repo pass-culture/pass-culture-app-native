@@ -8,13 +8,7 @@ import { Offers, OffersWithCover } from 'features/home/contentful'
 import { SearchParameters } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
-import {
-  SearchHit,
-  parseSearchParameters,
-  fetchMultipleHits,
-  filterSearchHit,
-  useTransformHits,
-} from 'libs/search'
+import { SearchHit, parseSearchParameters, useFetchMultipleHits } from 'libs/search'
 
 export type HomeModuleResponse = {
   [moduleId: string]: {
@@ -39,7 +33,7 @@ export const useHomeModules = (
 ): HomeModuleResponse => {
   const { position } = useGeolocation()
   const [homeModules, setHomeModules] = useState<HomeModuleResponse>({})
-  const transformHits = useTransformHits()
+  const { enabled, fetchMultipleHits, filterHits, transformHits } = useFetchMultipleHits()
 
   const queries = useQueries(
     offerModules.map(({ search, moduleId }) => {
@@ -63,12 +57,13 @@ export const useHomeModules = (
             setHomeModules((prevHomeModules) => ({
               ...prevHomeModules,
               [response.moduleId]: {
-                hits: uniqBy(hits.filter(filterSearchHit).map(transformHits), 'objectID'),
+                hits: uniqBy(hits.filter(filterHits).map(transformHits), 'objectID'),
                 nbHits,
               },
             }))
           }
         },
+        enabled,
       }
     })
   )

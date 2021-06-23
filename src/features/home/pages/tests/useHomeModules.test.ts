@@ -1,7 +1,7 @@
 import { MultipleQueriesResponse } from '@algolia/client-search'
 import { renderHook, act, cleanup } from '@testing-library/react-hooks'
 
-import * as SearchModule from 'libs/search'
+import * as AlgoliaModule from 'libs/algolia/fetchAlgolia/fetchAlgolia'
 import { SearchHit, parseSearchParameters } from 'libs/search'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
@@ -9,10 +9,10 @@ import { Offers } from '../../contentful'
 import { useHomeModules } from '../useHomeModules'
 
 jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({})),
+  useAppSettings: jest.fn(() => ({ data: { useAppSearch: false } })),
 }))
 
-const fetchMultipleHits = jest.spyOn(SearchModule, 'fetchMultipleHits').mockResolvedValue({
+const mockMultipleHits = {
   results: [
     {
       hits: [
@@ -23,7 +23,10 @@ const fetchMultipleHits = jest.spyOn(SearchModule, 'fetchMultipleHits').mockReso
       nbHits: 10,
     },
   ],
-} as MultipleQueriesResponse<SearchHit>)
+} as MultipleQueriesResponse<SearchHit>
+
+const fetchMultipleHits = jest.fn().mockResolvedValue(mockMultipleHits)
+jest.spyOn(AlgoliaModule, 'fetchMultipleAlgolia').mockImplementation(fetchMultipleHits)
 
 const offerModules = [
   new Offers({
