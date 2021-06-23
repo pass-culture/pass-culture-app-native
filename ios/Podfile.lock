@@ -4,6 +4,9 @@ PODS:
   - AppsFlyerFramework/Main (6.2.4)
   - Base64 (1.1.2)
   - Batch (1.17.2)
+  - BatchFirebaseDispatcher (2.0.0):
+    - Batch (~> 1.17)
+    - Firebase/Analytics
   - boost-for-react-native (1.63.0)
   - BVLinearGradient (2.5.6):
     - React
@@ -22,9 +25,11 @@ PODS:
     - React-Core (= 0.63.3)
     - React-jsi (= 0.63.3)
     - ReactCommon/turbomodule/core (= 0.63.3)
-  - Firebase/AnalyticsWithoutAdIdSupport (7.11.0):
+  - Firebase/Analytics (7.11.0):
+    - Firebase/Core
+  - Firebase/Core (7.11.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics/WithoutAdIdSupport (~> 7.11.0)
+    - FirebaseAnalytics (~> 7.11.0)
   - Firebase/CoreOnly (7.11.0):
     - FirebaseCore (= 7.11.0)
   - Firebase/DynamicLinks (7.11.0):
@@ -41,7 +46,8 @@ PODS:
     - FirebaseRemoteConfig (~> 7.11.0)
   - FirebaseABTesting (7.11.0):
     - FirebaseCore (~> 7.0)
-  - FirebaseAnalytics/Base (7.11.0):
+  - FirebaseAnalytics (7.11.0):
+    - FirebaseAnalytics/AdIdSupport (= 7.11.0)
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
@@ -49,11 +55,19 @@ PODS:
     - GoogleUtilities/Network (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
     - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/WithoutAdIdSupport (7.11.0):
+  - FirebaseAnalytics/AdIdSupport (7.11.0):
     - FirebaseAnalytics/Base (= 7.11.0)
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
-    - GoogleAppMeasurement/WithoutAdIdSupport (= 7.11.0)
+    - GoogleAppMeasurement/AdIdSupport (= 7.11.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/MethodSwizzler (~> 7.0)
+    - GoogleUtilities/Network (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - nanopb (~> 2.30908.0)
+  - FirebaseAnalytics/Base (7.11.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
     - GoogleUtilities/Network (~> 7.0)
@@ -161,7 +175,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - GoogleAppMeasurement/WithoutAdIdSupport (7.11.0):
+  - GoogleAppMeasurement/AdIdSupport (7.11.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
     - GoogleUtilities/Network (~> 7.0)
@@ -192,7 +206,7 @@ PODS:
   - GoogleUtilities/UserDefaults (7.4.1):
     - GoogleUtilities/Logger
   - InputMask (6.1.0)
-  - JWT (3.0.0-beta.13):
+  - JWT (3.0.0-beta.14):
     - Base64 (~> 1.1.2)
   - libevent (2.1.12)
   - libwebp (1.2.0):
@@ -493,7 +507,7 @@ PODS:
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
   - RNFBAnalytics (11.4.1):
-    - Firebase/AnalyticsWithoutAdIdSupport (= 7.11.0)
+    - Firebase/Analytics (= 7.11.0)
     - React-Core
     - RNFBApp
   - RNFBApp (11.4.1):
@@ -551,6 +565,7 @@ PODS:
 
 DEPENDENCIES:
   - Batch (~> 1.17)
+  - BatchFirebaseDispatcher
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - CodePush (from `../node_modules/react-native-code-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -646,6 +661,7 @@ SPEC REPOS:
     - AppsFlyerFramework
     - Base64
     - Batch
+    - BatchFirebaseDispatcher
     - boost-for-react-native
     - CocoaAsyncSocket
     - Firebase
@@ -831,6 +847,7 @@ SPEC CHECKSUMS:
   AppsFlyerFramework: f3f0e978cfb8e7dc09a3ab90da316f52cd9c56fe
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Batch: 1f61abf4f10880fbfee8e6fe804bfb5403af49a8
+  BatchFirebaseDispatcher: 512b3998e96d8ab2926747f4425bb63168dd1a84
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
@@ -863,7 +880,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
-  JWT: eb8a861a0a7f55353fd73c9f5aa8ee2ec2363bea
+  JWT: ef71dfb03e1f842081e64dc42eef0e164f35d251
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
@@ -914,7 +931,7 @@ SPEC CHECKSUMS:
   RNDateTimePicker: 8a51a2216c307769e69ef827293d59549ab1ca23
   RNDeviceInfo: 3266783bcb6aa4b0c785d6080a407f8a5fc68326
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
-  RNFBAnalytics: 2c881139a98653af8fccb25bb3a74cbfb945324a
+  RNFBAnalytics: 1190435dcd25d7403d28ceb4342c0d1e050843de
   RNFBApp: 996860ad6832996faba79ef3f6ec2d3ea5870dd9
   RNFBDynamicLinks: e6c9cd9cba02cc65f8b76fbd22cf50a66d473bdd
   RNFBFirestore: 7fa546e352aad031a78b934a67435e55b32cba49
@@ -936,6 +953,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: ede84016b211b32922e24b41f3e999044b0e91ea
+PODFILE CHECKSUM: 81da3e2e0d949a9bb48a15c4c3886bde06db8236
 
 COCOAPODS: 1.10.1

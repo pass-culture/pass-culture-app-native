@@ -8,6 +8,7 @@
 #import "RNBatch.h"
 #import <Firebase.h>
 #import <React/RCTLinkingManager.h>
+#import "BatchFirebaseDispatcher.h"
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -58,6 +59,7 @@ static void InitializeFlipper(UIApplication *application) {
   [RNBatch start:false]; // or true if you want the do not disturb mode
   [BatchUNUserNotificationCenterDelegate registerAsDelegate];
   [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;
+  [BatchEventDispatcher addDispatcher:[BatchFirebaseDispatcher instance]];
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -65,6 +67,9 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+
+  NSString* BatchKey = [plistConfig valueForKey:@"BATCH_API_KEY_IOS"];
+  [Batch startWithAPIKey:BatchKey];
 
   [RNSplashScreen show]; // react-native-splash-screen
   return YES;
