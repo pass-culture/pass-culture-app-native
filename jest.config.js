@@ -4,11 +4,12 @@ module.exports = {
   setupFiles: ['./jest/jest.setup.ts', './node_modules/react-native-gesture-handler/jestSetup.js'],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
   transform: {
-    '^.+\\.(js)$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.(js)$': 'babel-jest',
   },
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?react-native' +
       '|@react-navigation' +
+      '|@react-native' +
       '|@ptomasroos/react-native-multi-slider' +
       '|react-navigation' +
       '|@react-native-community/masked-view' +
@@ -26,4 +27,5 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
   coveragePathIgnorePatterns: ['/node_modules/', '/src/environment', '/src/locales'],
   collectCoverage: false,
+  snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
 }
