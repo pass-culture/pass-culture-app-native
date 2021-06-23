@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoordinatesView component should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 9,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#0066ff",
+        }
+      }
+    >
+       Lat 
+    </Text>
+    45
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 9,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#0066ff",
+        }
+      }
+    >
+       Lon 
+    </Text>
+    25
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 9,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#0066ff",
+        }
+      }
+    >
+       Alt 
+    </Text>
+    200
+  </Text>
+</View>
+`;
