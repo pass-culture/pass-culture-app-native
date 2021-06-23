@@ -20,7 +20,7 @@ export const CancellationDetails: React.FC = () => {
 
   if (!stock || !offer) return <React.Fragment />
 
-  const { cancellationLimitDatetime: limitDate } = stock
+  const { activationCode, cancellationLimitDatetime: limitDate } = stock
 
   let message = t`Cette réservation est annulable`
   if (limitDate) {
@@ -35,7 +35,7 @@ export const CancellationDetails: React.FC = () => {
   }
 
   // if "autoActivateDigitalBookings" is set, any digital booking is not cancellable
-  if (settings && settings.autoActivateDigitalBookings && offer.isDigital) {
+  if (settings && settings.autoActivateDigitalBookings && offer.isDigital && !!activationCode) {
     message = notCancellableMessage
   }
 
