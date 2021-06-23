@@ -1,18 +1,16 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { ScrollView, TouchableOpacity, View, ViewStyle } from 'react-native'
-import RNModal from 'react-native-modal'
+import { Modal, ScrollView, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { Style } from 'ui/components/Style'
+import { ModalOverlay } from 'ui/components/modals/ModalOverlay'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, UniqueColors } from 'ui/theme'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
-import { ModalStyles, useModalStyles } from './useModalStyles'
 
-interface Props extends ModalStyles {
+interface Props {
   title: string
   visible: boolean
   leftIcon?: FunctionComponent<IconInterface>
@@ -23,16 +21,9 @@ interface Props extends ModalStyles {
   isScrollable?: boolean
   disableBackdropTap?: boolean
   shouldDisplayOverlay?: boolean
-  style?: ViewStyle
 }
 
-const webcss = `div[aria-modal="true"] { align-items: center }`
-
 export const AppModal: FunctionComponent<Props> = ({
-  height,
-  maxWidth,
-  layout,
-  style,
   title,
   visible,
   leftIcon,
@@ -45,11 +36,6 @@ export const AppModal: FunctionComponent<Props> = ({
   disableBackdropTap,
   shouldDisplayOverlay = true,
 }) => {
-  const styles = useModalStyles({
-    layout: layout || 'bottom',
-    height,
-    maxWidth,
-  })
   const { bottom } = useCustomSafeInsets()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -65,15 +51,13 @@ export const AppModal: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <Style>{webcss}</Style>
-      <RNModal
-        supportedOrientations={['portrait', 'landscape']}
+      <ModalOverlay visible={shouldDisplayOverlay && visible} />
+      <Modal
+        animationType="slide"
         statusBarTranslucent
-        hasBackdrop={shouldDisplayOverlay}
-        backdropColor={UniqueColors.GREY_OVERLAY}
-        isVisible={visible}
-        onBackdropPress={disableBackdropTap ? undefined : onLeftIconPress ?? onRightIconPress}
-        style={[styles.container, styles.topOffset, style]}
+        transparent={true}
+        visible={visible}
+        onRequestClose={onLeftIconPress ?? onRightIconPress}
         testID="modal">
         <ClicAwayArea
           activeOpacity={1}
@@ -106,7 +90,7 @@ export const AppModal: FunctionComponent<Props> = ({
             </Content>
           </Container>
         </ClicAwayArea>
-      </RNModal>
+      </Modal>
     </React.Fragment>
   )
 }
@@ -114,7 +98,7 @@ export const AppModal: FunctionComponent<Props> = ({
 const ClicAwayArea = styled(TouchableOpacity)({
   flexGrow: 1,
   flexDirection: 'column',
-  justifyContent: 'flex-start',
+  justifyContent: 'flex-end',
   height: '100%',
   width: '100%',
 })

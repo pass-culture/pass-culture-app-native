@@ -1,106 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
-<Modal
-  animationType="none"
-  deviceHeight={null}
-  deviceWidth={null}
-  hardwareAccelerated={false}
-  hideModalContentWhileAnimating={false}
-  onBackdropPress={[MockFunction]}
-  onModalHide={[Function]}
-  onModalWillHide={[Function]}
-  onModalWillShow={[Function]}
-  onRequestClose={[Function]}
-  panResponderThreshold={4}
-  scrollHorizontal={false}
-  scrollOffset={0}
-  scrollOffsetMax={0}
-  scrollTo={null}
-  statusBarTranslucent={true}
-  supportedOrientations={
-    Array [
-      "portrait",
-      "landscape",
-    ]
-  }
-  swipeThreshold={100}
-  testID="modal"
-  transparent={true}
-  visible={true}
->
+Array [
   <View
-    accessible={true}
-    focusable={true}
-    forwardedRef={[Function]}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+    opacity={0}
     style={
       Object {
         "backgroundColor": "#00000080",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
+        "flexBasis": 0,
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "height": "100%",
+        "justifyContent": "flex-end",
         "position": "absolute",
-        "right": 0,
         "top": 0,
-        "width": 750,
-      }
-    }
-  />
-  <View
-    deviceHeight={null}
-    deviceWidth={null}
-    forwardedRef={[Function]}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[MockFunction]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    panResponderThreshold={4}
-    pointerEvents="box-none"
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    style={
-      Object {
-        "backgroundColor": "#ffffff",
-        "borderTopLeftRadius": 20,
-        "borderTopRightRadius": 20,
-        "bottom": 0,
-        "flex": 1,
-        "height": undefined,
-        "justifyContent": "center",
-        "margin": "auto",
-        "marginBottom": 0,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "maxWidth": undefined,
-        "padding": 4,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
         "width": "100%",
+        "zIndex": 49,
       }
     }
-    supportedOrientations={
-      Array [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
+  />,
+  <Modal
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[MockFunction]}
+    statusBarTranslucent={true}
+    testID="modal"
+    transparent={true}
+    visible={true}
   >
     <View
       accessible={true}
@@ -117,7 +44,7 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
           "flexDirection": "column",
           "flexGrow": 1,
           "height": "100%",
-          "justifyContent": "flex-start",
+          "justifyContent": "flex-end",
           "opacity": 1,
           "width": "100%",
         }
@@ -398,6 +325,6 @@ exports[`<DenyAccessToIdCheckModal /> should match snapshot 1`] = `
         </View>
       </View>
     </View>
-  </View>
-</Modal>
+  </Modal>,
+]
 `;
