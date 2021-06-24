@@ -4,7 +4,7 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { PhoneValidation } from 'features/auth/signup/PhoneValidation/PhoneValidation'
+import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
 import {
@@ -30,11 +30,11 @@ jest.mock('libs/timer', () => ({
   useTimer: jest.fn(() => mockTimeSinceLastRequest),
 }))
 
-let mockedSendPhoneValidationCode = jest.fn()
+let mockedSendSetPhoneNumberCode = jest.fn()
 
-describe('PhoneValidation', () => {
+describe('SetPhoneNumber', () => {
   beforeEach(() => {
-    mockedSendPhoneValidationCode = mockedUseMutation.mockImplementation(
+    mockedSendSetPhoneNumberCode = mockedUseMutation.mockImplementation(
       // @ts-ignore ts(2345)
       useMutationFactory(useMutationCallbacks)
     )
@@ -42,11 +42,12 @@ describe('PhoneValidation', () => {
 
   afterEach(async () => {
     await storage.clear('phone_validation_code_asked_at')
+    navigate.mockReset()
   })
 
   describe('button "Continuer"', () => {
     it('should enable the button when the phone number is valid', async () => {
-      const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
+      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
       await superFlushWithAct()
 
       const button = getByTestId('Continuer')
@@ -65,7 +66,7 @@ describe('PhoneValidation', () => {
       '62435463579', // too long (max 10)
       '33224354m', // includes char
     ])('should disable the button when the phone number is not valid (%s)', async (phoneNumber) => {
-      const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
+      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
       await superFlushWithAct()
 
       const button = getByTestId('Continuer')
@@ -78,8 +79,8 @@ describe('PhoneValidation', () => {
       expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
     })
 
-    it('should navigate to SetPhoneValidationCode on /send_phone_validation request success', async () => {
-      const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
+    it('should navigate to SetSetPhoneNumberCode on /send_phone_validation request success', async () => {
+      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
       await superFlushWithAct()
 
       const button = getByTestId('Continuer')
@@ -105,12 +106,12 @@ describe('PhoneValidation', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId, getByPlaceholderText, getByText, rerender } = renderPhoneValidation()
+      const { getByTestId, getByPlaceholderText, getByText, rerender } = renderSetPhoneNumber()
       const continueButton = getByTestId('Continuer')
       const input = getByPlaceholderText('6 12 34 56 78')
       fireEvent.changeText(input, '600000000')
 
-      rerender(<PhoneValidation />)
+      rerender(<SetPhoneNumber />)
 
       fireEvent.press(continueButton)
 
@@ -129,13 +130,13 @@ describe('PhoneValidation', () => {
       ['', '> 1 min', 'Continuer', 65, currentTimestamp() - 65, 1], // last call was made 65 seconds ago
       ['NOT', '< 1 min', /Attends/, 5, currentTimestamp() - 5, 0], // last call was made 5 seconds ago
     ])(
-      'should %s call sendPhoneValidationCode mutation if PhoneValidation if last request timestamp is %s',
+      'should %s call sendSetPhoneNumberCode mutation if SetPhoneNumber if last request timestamp is %s',
       async (_should, _label, buttonTestId, timeSinceLastRequest, storageValue, numberOfCall) => {
         await storage.saveObject('phone_validation_code_asked_at', storageValue)
 
         mockTimeSinceLastRequest = timeSinceLastRequest
 
-        const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
+        const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
         await superFlushWithAct()
 
         const button = getByTestId(buttonTestId)
@@ -146,12 +147,12 @@ describe('PhoneValidation', () => {
         await flushAllPromises()
 
         // @ts-ignore use mock to get inner mutate
-        const sendPhoneValidationCode = mockedSendPhoneValidationCode().mutate
-        expect(sendPhoneValidationCode).toHaveBeenCalledTimes(numberOfCall)
+        const sendSetPhoneNumberCode = mockedSendSetPhoneNumberCode().mutate
+        expect(sendSetPhoneNumberCode).toHaveBeenCalledTimes(numberOfCall)
       }
     )
 
-    it('should navigate to PhoneValidationTooManyAttempts page if request fails with TOO_MANY_VALIDATION_ATTEMPTS code', async () => {
+    it('should navigate to SetPhoneNumberTooManyAttempts page if request fails with TOO_MANY_VALIDATION_ATTEMPTS code', async () => {
       const response = {
         content: {
           code: 'TOO_MANY_SMS_SENT',
@@ -160,7 +161,7 @@ describe('PhoneValidation', () => {
         name: 'ApiError',
       }
 
-      const { getByTestId, getByPlaceholderText } = renderPhoneValidation()
+      const { getByTestId, getByPlaceholderText } = renderSetPhoneNumber()
 
       const button = getByTestId('Continuer')
       const input = getByPlaceholderText('6 12 34 56 78')
@@ -175,6 +176,6 @@ describe('PhoneValidation', () => {
   })
 })
 
-function renderPhoneValidation() {
-  return render(<PhoneValidation />)
+function renderSetPhoneNumber() {
+  return render(<SetPhoneNumber />)
 }

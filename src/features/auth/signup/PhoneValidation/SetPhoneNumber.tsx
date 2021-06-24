@@ -43,7 +43,7 @@ const ALLOWED_COUNTRY_CODES: CountryCode[] = [
   'NC',
 ]
 
-export const PhoneValidation: FunctionComponent = () => {
+export const SetPhoneNumber: FunctionComponent = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const [phoneNumber, setPhoneNumber] = useState('')
   const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')

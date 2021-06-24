@@ -88,7 +88,7 @@ export type RootStackParamList = {
     screen: TabRouteName
     params: TabParamList[TabRouteName]
   }
-  PhoneValidation: undefined
+  SetPhoneNumber: undefined
   SetPhoneValidationCode: { phoneNumber: string; countryCode: CountryCode }
   PhoneValidationTooManyAttempts: undefined
   VerifyEligibility: { email: string; nextBeneficiaryValidationStep: BeneficiaryValidationStep }

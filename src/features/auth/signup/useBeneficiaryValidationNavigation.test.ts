@@ -49,7 +49,7 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await flushAllPromises()
 
-    expect(navigate).toBeCalledWith('PhoneValidation')
+    expect(navigate).toBeCalledWith('SetPhoneNumber')
   })
 
   it('should navigate to IdCheck if user.nextBeneficiaryValidationStep is undefined', async () => {
@@ -104,6 +104,6 @@ describe('useBeneficiaryValidationNavigation', () => {
       nextBeneficiaryValidationStep: BeneficiaryValidationStep.PhoneValidation,
     })
 
-    expect(navigate).toBeCalledWith('PhoneValidation')
+    expect(navigate).toBeCalledWith('SetPhoneNumber')
   })
 })
