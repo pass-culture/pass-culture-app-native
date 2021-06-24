@@ -26,7 +26,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-import { contactSupport } from '../support.services'
+import { contactSupport } from '../../support.services'
 
 const CODE_INPUT_LENGTH = 6
 

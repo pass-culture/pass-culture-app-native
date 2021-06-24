@@ -7,7 +7,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import {
   SetPhoneNumberModal,
   SetPhoneNumberModalProps,
-} from 'features/auth/signup/SetPhoneNumberModal'
+} from 'features/auth/signup/PhoneValidation/SetPhoneNumberModal'
 import { currentTimestamp } from 'libs/dates'
 import { storage } from 'libs/storage'
 import {
